@@ -56,7 +56,8 @@
     "BIO-WK-T3-W06-W07 (2026-11-08) indexed scheme rows 6 and 7 separately within the combined WEEK SIX& SEVEN section. Crop pests/life cycles, animal parasites, crop/livestock disease tables and general effects/control were reviewed. Existing visual tasks own both lifecycle figures and all four tables. Source pesticide/fumigant products and concentration are not reproduced as instructions; chemical-safety review is blocked pending qualified approval. Roundworm/liver-fluke life cycles and five fungal-disease examples are missing from the source. No answer key was invented.",
     "BIO-WK-T3-W08 (2026-11-08) indexed government roles, food-production factors, crop-improvement methods, food-shortage/population effects, preservation and food-storage effects. The label says WEEK THREE although this is scheme row 8. Food-science claims (including pasteurisation, irradiation and unspecified chemicals) need authoritative review; no parameters or chemical instructions are repeated. Silos/barns and the Africa-wide 'biggest factor' ranking are not supported by the teaching body. No answer key was invented.",
     "BIO-SEC-T1-RELEVANCE (2026-11-08) indexed the unlisted heading/definition/four-needs section at blocks 265-267. It lies inside the Week 3 body but is not named by the Classification of Living Things scheme objective. The owner placement decision remains open; source text was not moved.",
-    "BIO-SEC-T1-AGRI-ECOLOGY (2026-11-08) indexed the unlisted agricultural-activity section (448-501) and farming-systems section (502-547). Both are within the Week 3 body but are not named by scheme row 3. The crop-rotation table at block 514 is recorded as 6×6. Owner placement and agricultural fact review remain open; source text was not moved and no chemical-use directions were added."
+    "BIO-SEC-T1-AGRI-ECOLOGY (2026-11-08) indexed the unlisted agricultural-activity section (448-501) and farming-systems section (502-547). Both are within the Week 3 body but are not named by scheme row 3. The crop-rotation table at block 514 is recorded as 6×6. Owner placement and agricultural fact review remain open; source text was not moved and no chemical-use directions were added.",
+    "BIO-SEC-T1-PESTS-DISEASES (2026-11-08) indexed unlisted crop/animal pest groups and life histories (550-604), agricultural disease groups (605-610), effects (611-619) and controls (620-629). Both lifecycle diagrams remain with the existing visual task. These sections are within Week 3 but not named by scheme row 3. Owner placement and veterinary fact review remain open; no chemical or treatment instructions were added."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -72,8 +73,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 39,
-    "PENDING": 102,
+    "IMPLEMENTED_TESTING_DEFERRED": 40,
+    "PENDING": 101,
     "BLOCKED": 8
   },
   "items": [
@@ -829,8 +830,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): block 550 'THE PEST'; block 568 'EFFECT OF PEST'; block 605 'DISEASES OF AGRICULTURAL IMPORTANCE'; disease examples at blocks 607-610 (include Rinder pest, anthrax, brucellosis, tuberculosis, trypanosomiasis, piroplasmosis); control list blocks 620-629 mentions chemicals, vaccines and isolation without doses. Range blocks 550-629, range sha256 4b3d3a1ca273e08edbcb5ef984b35b8522406648f2c0a42c0674b00b3fde5cd3. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-SEC-T1-PESTS-DISEASES.md; verified first-term DOCX member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Indexed crop/animal pest groups and life histories (550-604), agricultural disease groups (605-610), effects (611-619) and controls (620-629). Both life-cycle diagrams remain with existing BIO-VIS-T1-PEST-LIFECYCLES. The sections are inside the Week 3 body but are not named by scheme row 3; owner placement and veterinary fact review remain open. No chemical or veterinary instructions were added.",
       "completion_condition": "Sections classified against the scheme with exact locators; disease and control statements listed as fact-check candidates; nothing invented."
     },
     {
@@ -5134,7 +5135,6 @@
   },
   "next_runnable": [
     "BIO-TEST-PACKAGE",
-    "BIO-SEC-T1-PESTS-DISEASES",
     "BIO-VIS-T1-PLANT-ANIMAL-HDR",
     "BIO-VIS-T1-MICROSCOPE",
     "BIO-VIS-T1-CLASS-HIERARCHY",

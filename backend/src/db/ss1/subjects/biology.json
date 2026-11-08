@@ -2627,6 +2627,84 @@
           "explanation": "The farming-systems section is within the Week 3 body but is not named by scheme row 3; its placement requires owner confirmation."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T1-W03-PESTS",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Unlisted Week 3 section: The Pest — crop/animal pest groups, effects, control and selected pest life cycles",
+      "objective_locator": "Heading block 550; teaching blocks 550-604; range hash blocks 550-629: 4b3d3a1ca273e08edbcb5ef984b35b8522406648f2c0a42c0674b00b3fde5cd3",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 550-557 (range sha256 d4319c038697f159d9e73b31221e3e67dc8e7315e9b1268ba1ae3683a4fe16b4)",
+          "explanation": "Defines pests and describes insect pests, crop-eating, sap-sucking, biting/chewing and piercing/sucking groups."
+        },
+        {
+          "locator": "blocks 558-565 (range sha256 f78f2e45ba38039657c5d2edfc839bae3386b8de7e822a3cfa8f9e8b76c06360)",
+          "explanation": "Describes worm pests/borers, pod/stem borers, army worms, mammal pests and bird pests."
+        },
+        {
+          "locator": "blocks 568-574 (range sha256 276b4cfc027aff9b73e6e36c97cdb6efd87d47659352eefb76e49ea34bb22292)",
+          "explanation": "Lists source-stated pest effects on vegetation, food availability, crop quality/quantity, farm income and disease transmission."
+        },
+        {
+          "locator": "blocks 575-579 (range sha256 085d28afe0e3f8d7a35d92a5ab0e53d6d9a0378011fe2e2e632d70c96d7f94d2)",
+          "explanation": "Names chemical, cultural, physical and biological pest-control categories. Specific chemical names are not repeated or converted into instructions."
+        },
+        {
+          "locator": "blocks 580-590 (range sha256 a28180709ea2093af3be678d1705196ce58fc65b1f4dee1b801aae7de255d7cf)",
+          "explanation": "Describes yam beetle life history and its damage to yam tubers; the lifecycle diagram remains with BIO-VIS-T1-PEST-LIFECYCLES."
+        },
+        {
+          "locator": "blocks 591-604 (range sha256 b8e4262cb39d45703ef34c7328e6a330b9f320951758a119c9efcb780cae1b5b)",
+          "explanation": "Describes rhinoceros beetle effects/life history and source-stated control. The second lifecycle diagram remains with BIO-VIS-T1-PEST-LIFECYCLES."
+        },
+        {
+          "locator": "scheme row 3 and Week 3 body",
+          "explanation": "The pest section is inside the Week 3 body but is not named by the scheme objective Classification of Living things; placement is unresolved."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W03-AGRICULTURAL-DISEASES",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Unlisted Week 3 section: Diseases of Agricultural Importance — disease definition and viral, bacterial, fungal and protozoan disease groups",
+      "objective_locator": "Heading block 605; teaching blocks 605-610 (range sha256 4d1976b707204414e32e8901dea50f51b0fc2f1e0cccd03e3450d35545381082)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 606-610",
+          "explanation": "Defines disease and lists source examples under viral, bacterial, fungal and protozoan groups, including animal and plant diseases. Scientific names, spelling and disease/agent associations are preserved for authoritative review."
+        },
+        {
+          "locator": "scheme row 3 and Week 3 body",
+          "explanation": "No scheme row names agricultural disease classification in this Week 3 position; no placement is inferred."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W03-PEST-DISEASE-CONTROL",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Unlisted Week 3 section: effects and general control of agricultural diseases",
+      "objective_locator": "Disease effects blocks 611-619 (range sha256 18faf7d219d6932efb8589acb46332c1eb9a11b9568f758597149062aab4d37b); control blocks 620-629 (range sha256 903e176905a6854c89a133607e4aec6e232153f771baae40e9568152c605750d)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 611-619",
+          "explanation": "Lists source-stated effects of disease on yield, quality, form, survival, farmer income, production costs and marketability."
+        },
+        {
+          "locator": "blocks 620-629",
+          "explanation": "Lists general control categories involving breeding-ground management, chemicals, vaccination, sanitation, isolation of new stock, grazing management, bedding and veterinary staff. Chemical and veterinary statements require qualified review; no doses or procedures are inferred."
+        },
+        {
+          "locator": "scheme row 3 and Week 3 body",
+          "explanation": "No scheme line names agricultural disease control in this Week 3 body; intended placement is unresolved."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -3812,6 +3890,30 @@
       "affected_ids": [
         "COV-BIO-T1-W03-AGRICULTURAL-ACTIVITIES",
         "COV-BIO-T1-W03-FARMING-SYSTEMS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W03-PESTS-PLACEMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The headings 'THE PEST' (550) and 'DISEASES OF AGRICULTURAL IMPORTANCE' (605), with associated life cycles/effects/controls, are inside the Week 3 body but are not named by scheme row 3, Classification of Living things.",
+      "required_action": "Confirm whether these pest/disease sections are intended in Week 3, belong to another scheme week/subject or should remain supplemental. Preserve source blocks and diagrams until approval.",
+      "affected_ids": [
+        "COV-BIO-T1-W03-PESTS",
+        "COV-BIO-T1-W03-AGRICULTURAL-DISEASES",
+        "COV-BIO-T1-W03-PEST-DISEASE-CONTROL"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "BIOLOGY-T1-W03-PEST-DISEASE-FACTS",
+      "kind": "FACT",
+      "detail": "The section lists plant/animal pests, yam/rhinoceros beetle life histories, animal diseases (Rinder pest, anthrax, brucellosis, tuberculosis, trypanosomiasis and piroplasmosis) and control statements involving chemicals, vaccines and isolation.",
+      "required_action": "Verify pest/disease names, scientific names, causative agents and veterinary control statements against authoritative agricultural/veterinary references. Keep corrections separate; do not add chemical rates, doses or veterinary treatment procedures.",
+      "affected_ids": [
+        "COV-BIO-T1-W03-PESTS",
+        "COV-BIO-T1-W03-AGRICULTURAL-DISEASES",
+        "COV-BIO-T1-W03-PEST-DISEASE-CONTROL"
       ],
       "blocks_delivery": true
     }
