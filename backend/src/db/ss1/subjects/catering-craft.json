@@ -108,6 +108,32 @@
           "explanation": "Four assessment items have no matching teaching inside this week. Line 248 ('Draw and label an egg.') is a drawing prompt with no figure or labelled part list in the source. General evaluation 362 asks for types of game, which only Week One teaches (lines 189-199). Lines 363 (fire-fighting equipment) and 364 (accident prevention in the kitchen) have no teaching text and are already owned by CC-FACT-T2-SAFETY-QUESTIONS-WITHOUT-TEACHING. Weekend question 377 asks about offal, which is defined only in Week One's meat appearance section. They are indexed and left unanswered; no answer, figure or teaching is authored here."
         }
       ]
+    },
+    {
+      "id": "COV-CC-T2-W03-SCHEME-3",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "objective": "Scheme week 3: Food Commodities- Milk, Vegetables and Fruits",
+      "objective_locator": "opening scheme list line 10 (SHA-256 db22520e7f7ae49ba79ba4539d49e5450cef438ebfb1dd504c0faaf4b8adacd8); body WEEK THREE lines 384-613 (SHA-256 e3fc8b5b4a674e546281d2dacf8f8f5f340d273675e09eb2588a31507bfd5330)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() line 10; scheme list lines 7-19 (SHA-256 fdccb94d2a5100376ee767ad8b99fcee0211232818b0ff4b4380ff4d5b6fc097); WEEK THREE label line 384, TOPIC line 385 and CONTENT lines 386-387",
+          "explanation": "Scheme row 3 reads 'Food Commodities- Milk, Vegetables and Fruits'. WEEK THREE is the third labelled week; its topic line is 'TOPIC: FOOD COMMODITIES' and its CONTENT list at lines 386-387 names 'Milk, Vegetables and Fruits'. The row is mapped by position and the matching content list. The opening scheme block remains separately indexed."
+        },
+        {
+          "locator": "source lines 384-613; section index in docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W03.md",
+          "explanation": "The source teaches milk (definition, food value, types, digestibility, storage, heat treatment/preservation and uses), cheese and yoghurt (production, types and uses), vegetables (definition, classification, food value, selection, storage and preservation), and fruits (definition, classification, nutrition, serving, purchasing and preservation). Seven EVALUATION blocks and one GENERAL EVALUATION are present, followed by reading, weekend-assignment and theory blocks. PARTIAL, not SUPPORTED: no deliverable lesson exists, no answer key or marking is supplied, and factual claims are awaiting the separately queued factual reviews. No parsed lesson id is bound because the importer has not been run."
+        },
+        {
+          "locator": "source lines 415-445, 582-583; docs/ss1/work/microtasks/catering-craft/QUEUE.json item CC-FACT-T2-MILK-HEAT-STORAGE",
+          "explanation": "The source contains claims about milk digestibility, refrigerated storage duration, pasteurization/sterilization/UHT time-temperature combinations and fruit freezing/cold-storage temperatures. They are preserved verbatim and routed to the existing factual-dependency item; no correction or replacement wording is made here."
+        },
+        {
+          "locator": "source lines 589-609; docs/ss1/work/microtasks/catering-craft/QUEUE.json item CC-FACT-T2-SAFETY-QUESTIONS-WITHOUT-TEACHING",
+          "explanation": "The general evaluation repeats a question on catering-establishment safety precautions. The source's separate safety-question dependency remains responsible for identifying questions without corresponding teaching; this indexing entry supplies no answer."
+        }
+      ]
     }
   ],
   "open_items": [
