@@ -428,6 +428,108 @@
           "explanation": "The revision question sends the learner back to Week Two apparatus. Week Two has entries for the fume cupboard (293) and the burette (305) but no entry for the Bunsen burner, which Week Two names only in the list at line 269 (COV-CHEM-T1A-W02-APPARATUS-USES). Nothing in Week Three describes it either. No coverage is claimed for the fume cupboard or the burette here; they are Week Two's. The gap becomes the bounded lesson item CHEM-LES-T1A-W03-BUNSEN-BURNER."
         }
       ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W04-SCHEME-4",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Scheme week 4: ELEMENTS & SYMBOLS, VALENCY",
+      "objective_locator": "opening scheme list line 53 (SHA-256 a1cb7406976849488f3621a6448ddd1d1a354062f4573fdf5667b8316296e183); body WEEK FOUR source lines 608-867 (SHA-256 4aea3a2b6e25c43d020c89763df5216007c01031981f9040d4373a57b580dd9c)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "mammoth 1.12.2 extractRawText line 53; WEEK FOUR label line 609, TOPIC line 611 and CONTENT lines 613-619",
+          "explanation": "Scheme row 4 reads 'ELEMENTS & SYMBOLS, VALENCY' and the week topic line reads 'TOPIC:  ELEMENTS, SYMBOLS & VALENCY' (two spaces after the colon). The two differ in word order and punctuation but name the same three subjects, and row 4 is the fourth scheme row for the fourth body marker (CHEM-INV-T1A), so the mapping is by position and by the shared words. The scheme row carries no sub-items, so the objectives below come from the week's own headings and CONTENT list."
+        },
+        {
+          "locator": "source lines 609-863; section index in docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1A-W04.md",
+          "explanation": "The body has fifteen indexed sections (label, topic, CONTENT list, elements and symbols, symbols of elements, two evaluations, classification, metals versus non-metals, valency, radicals, general evaluation and revision, reading, weekend and theory blocks). The DOCX XML for the week holds fifteen 1x1 PNG spacer parts, no text box, no Word table, no equation and no hyperlink. The element, valency and radical tables are tab-separated paragraph text. Twenty-three subscript or superscript runs sit in the radical formulae and are flattened in the extracted text. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W04-ELEMENTS-SYMBOLS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Elements and the three ways symbols are derived",
+      "objective_locator": "body lines 621-695 (ELEMENTS AND SYMBOLS 621-623 SHA-256 8de03cd3f31bbd864f4410e721e26badc6e4633184615b519e2530b5d2b0d00e; SYMBOLS OF ELEMENTS 627-695 SHA-256 25f65075e9c281876847981b627ab2eb0bd3b44f00b234a3e351787570506d14); questions 701, 703, 841 and 855",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 623 (definition) and 629-695 (three derivations and 26 element-symbol rows)",
+          "explanation": "One definition sentence gives what an element is and that over one hundred are known. Three derivations follow: the first letter (8 elements, 631-649), a capital plus one small letter (9, 651-671) and Latin names (9, 675-695), each with a tab-separated list. Evaluation questions 701 and 703 and theory question 855 ask about the count, symbols and the definition; weekend question 841 concerns a symbol. Spellings and symbols are recorded as written: 'Bramine' (657), 'Berylium' (665), 'Hydragyrium' (679) and the symbol 'L' for lithium (671). The statements are unverified; later verification belongs to CHEM-FACT-T1A-W04-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W04-SYMBOLS-GAPS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Symbols the questions ask for but the tables do not give",
+      "objective_locator": "evaluation question 703 (silicon, line 703) and theory question 1(b) (manganese, caesium, cobalt, lines 857-859); no matching row in lines 633-695",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 703 and 857-859 against the symbol lists at 633-649, 653-671 and 677-695",
+          "explanation": "Question 703 lists nine elements; eight of them (iodine, fluorine, sulphur, silver, iron, copper, potassium, sodium) have a row in the symbol lists, but silicon has none (it appears only in the metalloid sentence at 715, without a symbol). Theory question 857-859 asks for the symbols of manganese, caesium and cobalt, none of which appears anywhere in the week. Both gaps are recorded as written and nothing is invented. The gap becomes the bounded lesson item CHEM-LES-T1A-W04-SYMBOLS-VALENCY-GAPS."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W04-CLASSIFICATION",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Classification of elements: metals, non-metals and metalloids",
+      "objective_locator": "body lines 707-737 (CLASSIFICATION OF ELEMENTS 707-715 SHA-256 f8030a8c5d990e5584d3b9a403b97898a84eaee8ccb386fa0ea53e87256d406f; THE DIFFERENCES BETWEEN METALS AND NON-METALS 719-737 SHA-256 a3cea309a01d5e6723d7fdcd1cd86d3614dfadf01c5984ecb231dce92028aaa1); questions 743, 745, 839, 847, 861 and 863",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 709-715 and 721-737",
+          "explanation": "Elements are classified into metals and non-metals (709) with example lists (711, 713) and metalloids with two examples (715). A tab-separated comparison gives five typed points and a density row without a typed number (735-737). Evaluation question 743 and theory question 861 ask about metalloids; questions 745 and 863 ask for two differences; weekend questions 839 and 847 concern a metalloid and a liquid metal. Line 721 and line 789 use an en dash ('Non – metals', 'non – metal'); line 863 reads 'non-metal'. All are recorded as written. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W04-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W04-VALENCY",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Valency: definition, dependence on structure and the valency table",
+      "objective_locator": "body lines 749-789 (SHA-256 988a3c2792442031190e31a62fccc3e089d8aa19276f98e6c5168da93fb0fe06); questions 823(i), 825(c), 837 and 843",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 751-789: two definitions (751), dependence on structure (753), a 12-row table (759-783) and two explanatory paragraphs (787, 789)",
+          "explanation": "Valency is defined as combining power and as the number of hydrogen atoms that combine with or replace one atom. The table gives element, symbol and valency for aluminium, argon, calcium, chlorine, sulphur, sodium, magnesium, copper, carbon, barium, silver and iron; sulphur reads '-2, -4 or -6' (769) and carbon '-2 or -4' (777) as written. The explanatory paragraphs tie sign to gaining or losing electrons and call valency oxidation number or state. General evaluation questions 823(i) and 825(c) and weekend questions 837 and 843 concern this section. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W04-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W04-VALENCY-GAPS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Valencies the questions ask for but the table does not give",
+      "objective_locator": "general evaluation question 825(a) oxygen and 825(b) potassium (line 825) and weekend question 1 (line 837); no matching row in lines 759-783",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 825 and 837 against the valency table at 759-783",
+          "explanation": "Question 825 asks for the valency of oxygen, potassium, sulphur, SO4 2- and NH4+. Sulphur has a row (769) and the two radicals have rows (813, 803), but oxygen and potassium have no valency row, and weekend question 837 also concerns oxygen's combining power. No sentence in the week states either valency. Both gaps are recorded as written and nothing is invented. The gap becomes the bounded lesson item CHEM-LES-T1A-W04-SYMBOLS-VALENCY-GAPS."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W04-RADICALS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Radicals, acid radicals and the radical table",
+      "objective_locator": "body lines 793-815 (SHA-256 44b7d09383808966785de7b1cfb25e510c16f0453ce62f44347b3ae44d4eef03); questions 823(ii) and 825(d)(e); CHEM-PRES-T1A-FORMULAE",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 795-815: definition (795), valency of a radical (797) and a 7-row table (803-815)",
+          "explanation": "A radical is defined as a charged group of atoms that acts as a single unit; acid radicals are negatively charged groups with three examples at 795. The table lists ammonium, hydroxide, trioxonitrate(V), dioxonitrate(III), trioxocarbonate(IV), tetraoxosulphate(VI) and hydrogen trioxocarbonate with formula and valency. In the extracted text the formulae are flattened and the digit zero stands where the letter O belongs: '0H-' (805), 'N03-' (807), 'N02-' (809), 'C032-' (811), 'S042-' (813), 'HC03-' (815), and the same in 795 and 825; the DOCX XML shows the digits following the symbols as subscripts and the charges as superscripts (11 subscript and 12 superscript runs in total). Nothing is corrected here; the formatted-run preservation belongs to CHEM-PRES-T1A-FORMULAE and the wording to CHEM-FACT-T1A-W04-STATEMENTS. Line 817 is whitespace only (a tab and a space). The statements are unverified; later verification belongs to CHEM-FACT-T1A-W04-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
     }
   ],
   "open_items": [
