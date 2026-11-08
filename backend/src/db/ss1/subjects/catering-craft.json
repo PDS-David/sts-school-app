@@ -83,6 +83,18 @@
         "locator": "word-extractor 1.0.4 getBody() lines 1405-1406; unique marker anchor 'WEEK TWELVE'",
         "explanation": "The exact WEEK TWELVE marker is followed only by 'EXAMINATION' in the source. No instructional body, practical task, rubric, exam paper or marking scheme is present in this source block. This rule classifies the marker without discarding or inventing a lesson."
       }
+    },
+    {
+      "id": "SS1-SRC-d068ede78d16-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "source_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e",
+      "anchor": "WEEK\t ELEVEN AND TWELVE",
+      "kind": "EXAMINATION",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody() lines 938-939; exact combined marker",
+        "explanation": "The source ends with a two-line combined 'WEEK ELEVEN AND TWELVE / REVISION AND EXAMINATION' marker. It contains no teaching body, revision notes, examination paper or marking scheme. The rule classifies the combined row as an examination marker while retaining the revision wording; no lesson is discarded or invented."
+      }
     }
   ],
   "lessons": [],
@@ -492,6 +504,22 @@
           "explanation": "Week Eight teaches table laying and setting steps and is recorded as possible supporting material only. It is not Week Ten's missing demonstration body and is not used as a substitute for a practical demonstration."
         }
       ]
+    },
+    {
+      "id": "COV-CC-T3-W11-12-MARKER",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "objective": "Scheme row 11-12: Revision and Examination",
+      "objective_locator": "opening scheme list line 18 (SHA-256 7f62a884f4920b2ccac6ff021f826aac506d87c431bc9e01129fccdfe84b28ed); body lines 938-939 (SHA-256 a769b7e88df5e469591f3eb3b20c9a25f583dccffc6af97ead2eea2830d7e280)",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-d068ede78d16-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "source lines 938-939; rule SS1-SRC-d068ede78d16-R002",
+          "explanation": "The source has only the combined revision/examination marker and no instructional body, revision notes, examination paper or marking scheme. Classified as a marker, not a lesson; the rule target is the only coverage target."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -541,6 +569,17 @@
         "CC-IDX-T3-W10",
         "CC-LES-T3-W10-DEMONSTRATION",
         "COV-CC-T3-W10-SCHEME-10"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "CC-T3-REVISION-EXAM-MATERIALS",
+      "kind": "CONTENT",
+      "detail": "The third-term scheme row 11-12 is 'Revision and Examination', but the source ends with only a two-line combined marker. No revision notes, examination paper or marking scheme are included.",
+      "required_action": "Obtain authorized revision/examination materials or record an explicit owner decision that the marker is scheduling-only and no such assessment materials are required in this package.",
+      "affected_ids": [
+        "CC-MARK-T3-REVEXAM",
+        "COV-CC-T3-W11-12-MARKER"
       ],
       "blocks_delivery": true
     }
