@@ -38,8 +38,8 @@
     "LESSON": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 7,
-    "PENDING": 34,
+    "IMPLEMENTED_TESTING_DEFERRED": 8,
+    "PENDING": 33,
     "BLOCKED": 2
   },
   "items": [
@@ -377,8 +377,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): block 22 text \"Revision of the Term’s Work.\"; no WEEK 11 label exists (last label is block 866, WEEK 10; document ends at block 931). Per-week 'GENERAL EVALUATION/REVISION QUESTIONS' sections sit inside the week bodies and are not this marker. Importer behaviour for this scheme line was not run (testing deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added source rule SS1-SRC-7aa642b0085b-R002 (classify_marker, SCHEME_ONLY) anchored to scheme item 11 at block 22, and coverage COV-AG-T1-REVISION-MARKER with status MARKER. Evidence is the existing AG-INV-T1.md record of original DOCX XML inspection: ten teaching weeks only (WEEK 1–10), no WEEK 11 body, revision worksheet or marking scheme. No revision lesson/content was invented. The source inventory's standalone member hash matches SOURCE_ASSIGNMENTS.csv; the composite archive hash was not verified in that inventory. Compiler/importer and tests were not run; testing remains deferred.",
       "completion_condition": "Marker classified with its locator and an explicit statement that no instructional body exists; nothing invented."
     },
     {
@@ -1659,8 +1659,7 @@
   "next_runnable": [
     "AG-INV-T3",
     "AG-PRE-T1",
-    "AG-MARK-T1-REVISION",
-    "AG-MARK-T1-EXAM",
+    "AG-PRE-T2",
     "AG-WK-T1-W02",
     "AG-WK-T1-W03",
     "AG-WK-T1-W04",
@@ -1669,12 +1668,6 @@
     "AG-WK-T1-W07",
     "AG-WK-T1-W08",
     "AG-WK-T1-W10",
-    "AG-VIS-T1-TBL-W02",
-    "AG-VIS-T1-TBL-W06",
-    "AG-VIS-T1-BRANDING",
-    "AG-PRE-T2",
-    "AG-MARK-T2-REVISION",
-    "AG-MARK-T2-EXAM",
     "AG-WK-T2-W01",
     "AG-WK-T2-W02-03",
     "AG-WK-T2-W04-05",
@@ -1682,10 +1675,17 @@
     "AG-WK-T2-W07",
     "AG-WK-T2-W08",
     "AG-WK-T2-W09",
+    "AG-MARK-T1-EXAM",
+    "AG-MARK-T2-REVISION",
+    "AG-MARK-T2-EXAM",
+    "AG-VIS-T1-TBL-W02",
+    "AG-VIS-T1-TBL-W06",
+    "AG-VIS-T1-BRANDING",
     "AG-VIS-T2-TBL-CEREALS",
     "AG-VIS-T2-TBL-LEGUMES",
     "AG-VIS-T2-TBL-ROOTS",
     "AG-VIS-T2-BRANDING",
-    "AG-LES-T1-W01-CROP-ASPECTS"
+    "AG-LES-T1-W01-CROP-ASPECTS",
+    "AG-TEST-PACKAGE"
   ]
 }
