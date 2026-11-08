@@ -33,23 +33,24 @@
     "BIO-PRE-T3 (2026-11-08) accounted for every block 0-24 of the 3rd Term original (generic header, subject line, eight auto-numbered scheme rows, eight references, blanks) and recorded that the list numbers disagree with two section labels while rows 6 and 7 share one topic line. No package, rule, coverage, lesson, correction or asset was written.",
     "BIO-WK-T1-W03 (2026-11-08) indexed the Week 3 classification objective and assessed all seven assignment questions against the source. The source archive and assigned first-term member hashes were verified. The unlisted 'Relevance of Biology to Agriculture' section at blocks 265-267 was split into BIO-SEC-T1-RELEVANCE; blocks 448-549 and 550-629 remain with their existing section tasks. No lesson, answer key, correction, rule or asset was written; testing remains deferred.",
     "BIO-WK-T1-W04 (2026-11-08) indexed the Organization of life scheme objective (blocks 647-664) and reviewed all 'Questions to practice' (blocks 666-677). The practice mixes Week 4 organization content with Week 3 symmetry/body-layer, monocot/dicot and animal-group material; no key is present. No practical work or safety instructions were found. No lesson or answer key was authored; testing remains deferred.",
-    "BIO-WK-T1-W05 (2026-11-08) indexed Plant Nutrition, chemosynthetic nutrition, five practical-investigation aims and the Week 5 assignment. Detailed practical methods/chemical-handling instructions were not copied into the index. The source contains no separate safety/supervision section; practical delivery remains gated. Assignment question 1d asks for five conditions but the source explicitly names only four; the fifth is not guessed. Photosynthesis equations at blocks 683 and 700 are flagged for authoritative review. Follow-up fact and supplemental-lesson tasks were appended; testing remains deferred."
+    "BIO-WK-T1-W05 (2026-11-08) indexed Plant Nutrition, chemosynthetic nutrition, five practical-investigation aims and the Week 5 assignment. Detailed practical methods/chemical-handling instructions were not copied into the index. The source contains no separate safety/supervision section; practical delivery remains gated. Assignment question 1d asks for five conditions but the source explicitly names only four; the fifth is not guessed. Photosynthesis equations at blocks 683 and 700 are flagged for authoritative review. Follow-up fact and supplemental-lesson tasks were appended; testing remains deferred.",
+    "BIO-WK-T1-W07 (2026-11-08) indexed Nutrition in Animals: food substances and balanced diet, digestive enzymes, and the two enzyme assignment prompts. Protein-breakdown and mineral/vitamin/enzyme tables remain with existing visual-disposition tasks. No experiments/practicals were found. Food-formula and enzyme claims were retained and appended for fact review before any correction; no lesson or answer key was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 7,
+    "FACTUAL_DEPENDENCY": 8,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 27,
     "SOURCE_SECTION_INDEXING": 3,
     "VISUAL_DISPOSITION": 36,
     "SOURCE_MARKER_DISPOSITION": 1,
-    "LESSON": 5
+    "LESSON": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 16,
-    "PENDING": 68,
+    "IMPLEMENTED_TESTING_DEFERRED": 17,
+    "PENDING": 69,
     "BLOCKED": 5
   },
   "items": [
@@ -615,8 +616,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): label block 835 \"WEEK 7\" (sha256 5d222602d23f6b6f007aa6721de2a971a44013ddf864d5b98d8b6d25dcaeace1); blocks 835-925; range sha256 d447b3593efc132f6eed1264640b15969a8a5712d3111a4e0470d6c8adb553a6. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 8): 'Week 7 -Nutrition in Animals'. Heading label is the digit form 'WEEK 7' (block 835). Body: food substances, protein/fats/minerals/vitamins/water, balanced diet, enzymes (836-920) with three tables (881, 888, 920) and a protein breakdown shape (859). Assignment: block 921 'ASSIGNMENT', block 922 'WEEK SEVEN', questions 923-924 (enzymes only). Blank block 925.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T1-W07.md; verified the assigned source member hash against the archive and manifest. Re-derived Week 7 label block 835 and body range blocks 835-925; indexed food substances/balanced diet (836-902), digestive enzymes (903-920), and the assignment (921-924). Recorded the protein-breakdown diagram and the mineral, vitamin and enzyme tables as belonging to their existing visual-disposition tasks. The assignment is supported by source teaching but has no answer key. Several printed food/enzyme claims were retained and appended for authoritative fact review before any correction. No experiment or practical work occurs in this range. No lesson or key invented; testing remains deferred.",
       "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -3395,6 +3396,79 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T1-W05; task scope and exact source locators are recorded in the Week 5 index."
+    },
+    {
+      "id": "BIO-FACT-T1-W07-FOOD-CLAIMS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 7, blocks 835-925",
+      "objective": "Verify the source's food-substance and enzyme claims against approved Biology references before authoring a corrected lesson: monosaccharide formula (block 841), sucrose formation wording (844), lipid formula (871), and amylase statements (916-917). Preserve the original wording and record exact supporting references.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W07-FOOD-CLAIMS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T1-W07; see the Week 7 objective index for exact source locators."
+    },
+    {
+      "id": "BIO-LES-T1-W07-ANIMAL-NUTRITION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 7, blocks 835-925",
+      "objective": "Author a clearly labelled supplemental lesson for animal nutrition and digestive enzymes, covering the six food-substance groups, balanced diet, enzyme characteristics and classes. Use approved references for facts flagged by BIO-FACT-T1-W07-FOOD-CLAIMS, distinguish supplements from original source text, and include complete keyed practice.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T1-W07-ANIMAL-NUTRITION.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W07",
+        "BIO-FACT-T1-W07-FOOD-CLAIMS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T1-W07; see the Week 7 objective index for exact source locators."
     }
   ],
   "review": {
@@ -3411,7 +3485,6 @@
   },
   "next_runnable": [
     "BIO-TEST-PACKAGE",
-    "BIO-WK-T1-W07",
     "BIO-WK-T1-W08",
     "BIO-WK-T1-W09",
     "BIO-WK-T1-W10",
@@ -3472,6 +3545,7 @@
     "BIO-VIS-T3-HDR-BRANDING",
     "BIO-SEC-T1-RELEVANCE",
     "BIO-FACT-T1-W05-CONDITIONS",
-    "BIO-FACT-T1-W05-EQUATIONS"
+    "BIO-FACT-T1-W05-EQUATIONS",
+    "BIO-FACT-T1-W07-FOOD-CLAIMS"
   ]
 }
