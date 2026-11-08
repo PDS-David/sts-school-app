@@ -3100,8 +3100,8 @@
     {
       "id": "BIOLOGY-T1-W07-FOOD-CLAIMS",
       "kind": "FACT",
-      "detail": "The Week 7 food-substance and enzyme material contains unverified factual claims: monosaccharide formula at block 841, sucrose formation wording at 844, lipid formula at 871, amylase statements at 916-917, mineral/vitamin function and deficiency statements at tables 881 and 888, and digestive-enzyme names/sources/locations/substrates/products at table 920. These are school Biology claims requiring authoritative review, not medical advice. The original source remains unchanged.",
-      "required_action": "Verify the formula, biochemical and enzyme claims at blocks 841, 844, 871 and 916-917, the mineral/vitamin table claims at blocks 881 and 888, and all five columns of the digestive-enzyme table at block 920 against approved Biology references. Record precise citations and evidence-based corrections for the delivery supplement. Keep source wording separate and do not present health-related claims as medical advice or treatment guidance.",
+      "detail": "The Week 7 source has several factual errors or overstatements across carbohydrate/lipid formulas, mineral/vitamin functions and deficiency claims, and digestive-enzyme actions. The factual review records evidence-based corrections for a separate supplement while preserving all original source wording. The source does not itself provide a complete answer key or an authored lesson.",
+      "required_action": "Use the corrections in BIO-FACT-T1-W07-FOOD-CLAIMS.md in a clearly labelled supplemental lesson/answer guide. Correct the common hexose formula, sucrose composition and tristearin formula; qualify mineral deficiency claims; correct vitamin names and deficiency descriptions; and replace the broad amylase/legacy-enzyme claims with specific modern enzyme actions. Preserve the original source unchanged. Complete the keyed lesson and marking guide before student-facing use.",
       "affected_ids": [
         "COV-BIO-T1-W07-SCHEME-7",
         "COV-BIO-T1-W07-ENZYMES",
@@ -3155,8 +3155,8 @@
     {
       "id": "BIOLOGY-T1-W10-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 10 covers growth, mitosis, growth regulation, irritability, movement and cyclosis, but the Biology package has no lessons or registered teaching rows. The four source mitosis figures (blocks 997, 1006, 1015 and 1021) match the written stages but their labels are raster-only; a project-authored redraw is queued. The animal-hormone table at blocks 1042-1049 is a three-column tab-aligned list, not a Word table; extraction collapses its columns and the names/associations require fact review. The movement table at blocks 1083-1092 also uses line shapes and tab-aligned rows, with one mechanism wrapping across blocks 1088-1089; its three-column pairings do not survive text extraction.",
-      "required_action": "Complete BIO-VIS-T1-W10-MITOSIS-REDRAW; author and bind an approved equivalent Week 10 lesson using the redraw and written stage descriptions. Restate the animal-hormone list as a semantic three-column table only after BIO-FACT-T1-W10-ANIMAL-HORMONES has verified its names and gland/site associations. Restate the movement list as a semantic three-column table, keeping source wording distinct from any delivery correction.",
+      "detail": "Week 10 covers growth, mitosis, growth regulation, irritability, movement and cyclosis, but the Biology package has no lessons or registered teaching rows. The four source mitosis figures (blocks 997, 1006, 1015 and 1021) match the written stages but their labels are raster-only; a project-authored redraw is queued. The animal-hormone table at blocks 1042-1049 is a three-column tab-aligned list, not a Word table; extraction collapses its columns and the names/associations require fact review. The movement table at blocks 1083-1092 also uses line shapes and tab-aligned rows, with one mechanism wrapping across blocks 1088-1089; its three-column pairings do not survive text extraction. The compiler also requires the redraw asset's lesson_id to resolve to an identified source lesson or supplement. No such lesson ID is recorded in the current package, and importer execution is deferred; the redraw cannot be registered until an exact lesson ID is available.",
+      "required_action": "Complete the factual review of the hormone and movement tables, then author and bind the Week 10 lesson. The mitosis redraw is source-structurally specified in BIO-VIS-T1-MITOSIS, but its asset registration must wait for a verified lesson_id under BIOLOGY-ASSET-LESSON-ID-BINDING. Do not invent a lesson ID or commit an unregistered asset. Restate the animal-hormone list only after BIO-FACT-T1-W10-ANIMAL-HORMONES has verified its names and gland/site associations; restate the movement list as a semantic three-column table.",
       "affected_ids": [
         "COV-BIO-T1-W10-GROWTH",
         "COV-BIO-T1-W10-IRRITABILITY",
@@ -3167,7 +3167,8 @@
         "BIO-FACT-T1-W10-ANIMAL-HORMONES",
         "BIOLOGY-T1-W10-HORMONE-FACTS",
         "BIO-VIS-T1-MOVEMENT-TABLE",
-        "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT"
+        "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT",
+        "BIOLOGY-ASSET-LESSON-ID-BINDING"
       ],
       "blocks_delivery": true
     },
@@ -3216,10 +3217,12 @@
     {
       "id": "BIOLOGY-T2-W01-REVISION-FACTS",
       "kind": "FACT",
-      "detail": "Several assessment prompts need authoritative review: 'sporulation in amoeba' (block 76), the Paramecium zygote/eight-nuclei question labelled asexual (block 85), and the perennating-organ multiple-choice item (block 87). The source does not teach or key these points sufficiently.",
-      "required_action": "Verify each item against an approved Biology reference and record the intended terminology and answer evidence before authoring any key or correction. Do not guess answers.",
+      "detail": "The Week 1 revision prompts have been checked against school-level and university Biology references. 'Sporulation in Amoeba' is a recognized term for encystation followed by multiple fission in the CBSE/NCERT material. The Paramecium eight-nuclei question has the correct count (three divisions) but incorrectly labels the process asexual; the zygote/synkaryon forms during sexual conjugation. The perennating-organ multiple-choice item remains ambiguous: the source lists the options as vegetative-propagation structures but does not classify them, and references differ on whether suckers are perennating organs.",
+      "required_action": "In a supplemental lesson, explain Amoeba sporulation as cyst-associated multiple fission, and correct the Paramecium question to refer to conjugation (sexual reproduction); the synkaryon divides three times to produce eight nuclei. Do not create an answer key for the perennating-organ question until the teacher selects the approved definition/reference or revises the options so there is one unambiguous answer. Preserve the source wording and complete the lesson/marking guide separately.",
       "affected_ids": [
-        "COV-BIO-T2-W01-ASSESSMENT"
+        "COV-BIO-T2-W01-ASSESSMENT",
+        "BIO-FACT-T2-W01-REVISION-FACTS",
+        "BIO-FACT-T2-W01-PERENNATING-ORGAN-CHOICE"
       ],
       "blocks_delivery": true
     },
@@ -3854,14 +3857,15 @@
     {
       "id": "BIOLOGY-T3-W05-AGRICULTURE-FACTS",
       "kind": "FACT",
-      "detail": "Botanical rank terminology at block 344, the native botanical-classification chart and its A-I labels/relationships at blocks 345-358, crop examples/nutritional statements at 370-380, life-cycle examples at 387-389 and soil/fertilizer/pesticide claims at 401-445 need authoritative review.",
-      "required_action": "Verify botanical rank terminology and the source chart's A-I plant-group labels and hierarchy against approved botanical references; also verify crop examples, life-cycle classifications and soil/agricultural impact claims against authoritative botanical/agricultural sources. Keep corrections distinct from source text; do not add pesticide concentrations or application instructions.",
+      "detail": "Botanical rank terminology at block 344, the native botanical-classification chart and its A-I labels/relationships at blocks 345-358, crop examples/nutritional statements at 370-380, life-cycle examples at 387-389 and soil/fertilizer/pesticide claims at 401-445 need authoritative review. The duplicate follow-up task BIO-VIS-T3-W05-PLANT-CLASSIFICATION refers to the same source member and the same blocks 350-355 chart already inspected in BIO-VIS-T3-SHP-PLANT-CLASS-CHART.md. The existing report records every A-I label and visible connector; no taxonomy correction has been applied to the source.",
+      "required_action": "Use the verified A-I labels and connector relationships in BIO-VIS-T3-SHP-PLANT-CLASS-CHART.md as the structural evidence for both visual-disposition records. Keep any taxonomy correction in a separately authored supplement; do not alter the source chart. Continue authoritative review of rank terminology, crop examples, life-cycle claims and agricultural-impact statements.",
       "affected_ids": [
         "COV-BIO-T3-W05-BOTANICAL-CLASSIFICATION",
         "COV-BIO-T3-W05-AGRICULTURAL-CLASSIFICATION",
         "COV-BIO-T3-W05-LIFE-CYCLE-SIZE",
         "COV-BIO-T3-W05-AGRICULTURAL-EFFECTS",
-        "BIO-VIS-T3-SHP-PLANT-CLASS-CHART"
+        "BIO-VIS-T3-SHP-PLANT-CLASS-CHART",
+        "BIO-VIS-T3-W05-PLANT-CLASSIFICATION"
       ],
       "blocks_delivery": true
     },
@@ -4189,6 +4193,23 @@
         "BIO-VIS-T3-FIG-MEALYBUG",
         "BIO-FACT-T3-W06-W07-PEST-DISEASES",
         "COV-BIO-T3-W06-PLANT-PESTS-DISEASES"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-ASSET-LESSON-ID-BINDING",
+      "kind": "CONTENT",
+      "detail": "The Biology package currently has no registered lesson rows, and no exact parser-generated source lesson IDs are recorded for asset attachment. The SS1 compiler validates that every asset.lesson_id resolves to an identified original source lesson or an authored supplement. The owner has deferred importer/compiler execution, and project instructions prohibit inventing source lesson IDs. Consequently, project-authored visual assets cannot yet be registered safely; unregistered orphan files must not be committed.",
+      "required_action": "After the owner permits the parser/importer to identify exact original lesson IDs, or an approved supplement lesson is authored with a stable ID, bind each visual asset to that exact lesson_id and register its exact bytes/hash, alt text, source locator and project-created provenance. Do not guess IDs, register assets against coverage IDs, or commit unregistered asset files.",
+      "affected_ids": [
+        "BIO-VIS-T1-W03-RHINO-BEETLE-CYCLE-REDRAW",
+        "BIO-VIS-T1-W10-MITOSIS-REDRAW",
+        "BIO-VIS-T2-W03-PARAMECIUM-REDRAW",
+        "BIO-VIS-T2-W03-SPIROGYRA-REDRAW",
+        "BIO-VIS-T2-W03-COCKROACH-REDRAW",
+        "BIO-VIS-T2-W03-HOUSEFLY-REDRAW",
+        "BIO-VIS-T2-W09-FOODWEB-REDRAW",
+        "BIO-VIS-T1-W02-MICROSCOPE-REDRAW"
       ],
       "blocks_delivery": true
     }
