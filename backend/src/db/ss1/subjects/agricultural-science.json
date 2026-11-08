@@ -1131,6 +1131,32 @@
         }
       ],
       "source_id": "SS1-SRC-458a07f7ea5a"
+    },
+    {
+      "id": "COV-AG-T3-W03-MECHANIZATION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Scheme Week 3: Farm mechanization (tractORIZATION) — definition, objectives, advantages, disadvantages, limitations and prospects",
+      "objective_locator": "Third Term scheme block 9; Week Three label 280; topic 281",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Definition/objectives blocks 289-296",
+          "explanation": "The source defines mechanization and lists five objectives."
+        },
+        {
+          "locator": "Advantages 298-306; disadvantages 308-315; limitations 321-328; prospects 334-340",
+          "explanation": "The source supplies lists for all four aspects."
+        },
+        {
+          "locator": "Evaluations 317-319,330-332,342-344; general evaluation 346-351; weekend 357-363; theory 365-367",
+          "explanation": "Most assessment items map to the lists. The definition includes farm inputs as part of mechanization, the crop-mechanization statement is broad, and the labour exception MCQ requires contextual verification."
+        },
+        {
+          "locator": "Week Three range blocks 280-369; SHA-256 d27df15557ac65f36ae3eb3ab8e83d532800d46b3798a4efd262818061e55db2",
+          "explanation": "Source teaching exists, but package lesson rows and importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -1940,6 +1966,50 @@
       "required_action": "Verify the intended wording against a teacher-approved original or parallel source and bind delivery-only corrections if confirmed.",
       "affected_ids": [
         "AG-CORR-T3-W02-POWER-TEXT",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W03-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week Three defines mechanization, objectives, advantages, disadvantages, limitations and prospects (289-340), but package lesson rows and importer-confirmed parsed-row identity are absent. COV-AG-T3-W03-MECHANIZATION is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T3-W03-MECHANIZATION; do not invent a lesson ID or duplicate source teaching.",
+      "affected_ids": [
+        "COV-AG-T3-W03-MECHANIZATION",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W03-MECHANIZATION-DEFINITION",
+      "kind": "FACT",
+      "detail": "Definition block 289 describes mechanization as use of machines and also farm inputs such as insecticides, improved seeds and fertilizer. This may conflate mechanization with agricultural inputs/technology.",
+      "required_action": "Verify the scope of agricultural mechanization against authoritative agricultural-engineering references and recommend a precise delivery correction if the input list is conceptually misclassified.",
+      "affected_ids": [
+        "AG-FACT-T3-W03-MECHANIZATION-DEFINITION",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W03-CROP-CLAIM",
+      "kind": "FACT",
+      "detail": "Disadvantage block 315 says very few crops such as maize and rice can be mechanized. The claim may be overgeneralised or inconsistent with modern crop mechanization.",
+      "required_action": "Verify the claim against authoritative agricultural-engineering sources and recommend a qualified/corrected delivery statement without altering the source.",
+      "affected_ids": [
+        "AG-FACT-T3-W03-CROP-MECHANIZATION",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W03-LABOUR-MCQ",
+      "kind": "FACT",
+      "detail": "Weekend MCQ 360 asks which is not a limitation of mechanization in West Africa, offering labour as the exception. The source lists small holdings, technical know-how and capital constraints, but also says mechanization displaces labour (310).",
+      "required_action": "Verify the intended category and regional context for labour in mechanization limitations; recommend a precise correction or clarification if the item is ambiguous.",
+      "affected_ids": [
+        "AG-FACT-T3-W03-LABOUR-MCQ",
         "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true
