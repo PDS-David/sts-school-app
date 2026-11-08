@@ -40,13 +40,35 @@ Any output means someone else is working on `<slug>`; pick a different subject. 
 - exit 5: your tree is not clean or you have unpushed commits. Fix, then retry.
 - exit 6: stale claim. Check `git log` for work on that subject in the last two hours; only if there is none, retry with `--takeover`.
 
-**Step 5 — do exactly that one item** (section 4). For anything longer than about 45 minutes run `claim.sh heartbeat <slug> A1`. Claims older than 120 minutes are treated as abandoned.
+**Step 5 — do exactly that one item** (section 4). For anything longer than about 45 minutes run `claim.sh heartbeat <slug> A1`. Dynamic claims older than 120 minutes are treated as abandoned; static assignments never are.
 
 **Step 6 — validate, update the queue, commit, push** (sections 5 and 6).
 
 **Step 7 — release.** `docs/ss1/work/claims/claim.sh release <slug> A1`, then report (section 8) and return to Step 1.
 
+**No script, or given a subject?** If your prompt names a `SUBJECT`, or you cannot run `claim.sh`, do not use Steps 2, 4 and 7; follow section 3A instead.
+
 **If nothing is runnable** (every subject locked, blocked or done): report that, list the blocked items and their exact gates, and stop. Do not invent tasks or take a locked subject.
+
+## 3A. Working without claim.sh (modes A, M and R)
+
+`claim.sh` is only a convenience. The lock is a file in git, so every mode below respects the same rule: **one agent per subject at a time, one not-yet-executed item at a time.**
+
+**Mode A: assigned subject (preferred for agents that cannot run the script).** Your prompt gives `AGENT_ID` and `SUBJECT`. A static claim file already exists on master at `docs/ss1/work/claims/<SUBJECT>.json` with `"static": true`, `"item": "*"` and your id. It is never stale and no one may take it over.
+1. At the start of every session: `git fetch origin && git pull --rebase origin master`, then open that file. If it is missing, or `agent` is not your id, or `static` is not true: stop and tell the owner. Never assign yourself a subject and never edit claim files.
+2. Work only in `<SUBJECT>`. For each item there is no claim commit and no release.
+3. Per item: sync; find the first eligible item (open `docs/ss1/work/microtasks/<SUBJECT>/QUEUE.json`; an item is eligible when its `status` is `PENDING` and every item in its `depends_on` has `status` `IMPLEMENTED_TESTING_DEFERRED`; take the first in the kind order of section 4); check it is not already done (Step 3: its `implementation_reference` and `git log origin/master --grep=<ITEM-ID>`); do it (section 4); validate and update the queue (section 5); commit and push (section 6); report (section 8).
+4. When the subject has no eligible item, report why (blocked items and their exact gates) and stop. Do not take another subject. The owner reassigns.
+
+**Mode M: manual dynamic claim (you have git but cannot run the script).**
+1. Sync. Check `docs/ss1/work/claims/<slug>.json` does not exist, or is older than 120 minutes and not static (and `git log` shows no recent work on that subject). Confirm the item is eligible (Mode A, step 3).
+2. Create the claim file with the fields `subject`, `item`, `agent`, `claimed_at` (UTC, `YYYY-MM-DDTHH:MM:SSZ`) and `base_sha`. Commit it as `claim(<slug>): <ITEM-ID> by <AGENT_ID>` and run `git push origin HEAD:master`.
+3. If the push is rejected, pull and look at the file. If another agent's claim is there you lost: run `git rebase --abort; git reset --hard origin/master` and pick a different subject. Do not hand-merge claim files.
+4. After your item is pushed, remove the file with `git rm` and push `release(<slug>) by <AGENT_ID>`.
+
+**Mode R: relay (you cannot push at all).** A git-capable agent or the owner claims the subject for you under a relay id such as `N1` (Mode M, or `claim.sh assign`). You work from a fresh copy of the repository at the recorded `base_sha` and return the changed files. The relay applies them with the section 6 conflict rule (re-apply your change to current master, never merge JSON by hand), validates, commits, pushes and reports. Because this adds a hand-off, take whole-subject work units rather than single items.
+
+**Assigning and ending.** Anyone who can run the script may assign: `docs/ss1/work/claims/claim.sh assign <slug> <AGENT_ID> "<note>"`. End it with `claim.sh unassign <slug> <AGENT_ID>` (name the assignee) when the subject is finished or reassigned. A scripted agent that tries a statically assigned subject gets `ASSIGNED` (exit 3) and must pick another. `claim.sh status` marks static assignments.
 
 ## 4. Doing an item
 

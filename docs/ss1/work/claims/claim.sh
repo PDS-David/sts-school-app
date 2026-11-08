@@ -4,7 +4,10 @@
 #   claim.sh acquire <slug> <item-id> <agent-id>   take the subject lock for ONE item (exit 0 = yours)
 #   claim.sh heartbeat <slug> <agent-id>           refresh claimed_at for a long item
 #   claim.sh release <slug> <agent-id>             free the subject after your item is pushed
-#   claim.sh status                                show all current claims (with age)
+#   claim.sh status                                show all current claims (with age; static assignments marked)
+#   claim.sh assign <slug> <agent-id> [note]       give a subject to ONE agent permanently (static claim, never stale)
+#   claim.sh unassign <slug> <agent-id>            end a static assignment (name the assignee)
+# A static claim lets an agent without this script work on its subject with no per-item claiming.
 # Exit codes: 0 ok, 3 busy/lost race, 4 item not runnable on master, 5 local tree not clean, 6 stale (use --takeover)
 set -uo pipefail
 cd "$(git rev-parse --show-toplevel)" || exit 1
@@ -16,6 +19,7 @@ now() { date -u +%Y-%m-%dT%H:%M:%SZ; }
 age_min() { python3 -c "import sys,datetime as d;t=d.datetime.strptime(sys.argv[1],'%Y-%m-%dT%H:%M:%SZ');print(int((d.datetime.now(d.timezone.utc).replace(tzinfo=None)-t).total_seconds()//60))" "$1"; }
 remote_file() { git show "origin/$BR:$1" 2>/dev/null; }
 claim_field() { python3 -c "import sys,json;print(json.load(sys.stdin).get(sys.argv[1],''))" "$1"; }
+is_static() { [ "$(claim_field static < "$1")" = "True" ]; }
 clean_tree() {
   git diff --quiet && git diff --cached --quiet && [ -z "$(git rev-list "origin/$BR"..HEAD 2>/dev/null)" ]
 }
@@ -32,7 +36,8 @@ status)
   git fetch -q origin
   for f in $(git ls-tree --name-only "origin/$BR" "$DIR/" 2>/dev/null | grep '\.json$'); do
     j=$(remote_file "$f"); a=$(echo "$j" | claim_field claimed_at)
-    echo "$(basename "$f" .json): item=$(echo "$j" | claim_field item) agent=$(echo "$j" | claim_field agent) age=$(age_min "$a")min"
+    stat=""; [ "$(echo "$j" | claim_field static)" = "True" ] && stat=" STATIC-ASSIGNMENT"
+    echo "$(basename "$f" .json): item=$(echo "$j" | claim_field item) agent=$(echo "$j" | claim_field agent) age=$(age_min "$a")min$stat"
   done ;;
 next)
   git fetch -q origin
@@ -57,7 +62,11 @@ acquire)
   clean_tree || { echo "NOT CLEAN: commit or discard local changes and push or drop local commits first"; exit 5; }
   git pull -q --rebase origin "$BR"
   f="$DIR/$slug.json"
-  if [ -f "$f" ]; then
+  static_own=0
+  if [ -f "$f" ] && is_static "$f"; then
+    if [ "$(claim_field agent < "$f")" = "$agent" ]; then static_own=1
+    else echo "ASSIGNED: $slug is permanently assigned to $(claim_field agent < "$f"); pick another subject"; exit 3; fi
+  elif [ -f "$f" ]; then
     a=$(claim_field claimed_at < "$f"); m=$(age_min "$a")
     if [ "$m" -lt "$STALE_MIN" ] || [ $takeover -eq 0 ]; then
       [ "$m" -ge "$STALE_MIN" ] && { echo "STALE ($m min) claim by $(claim_field agent < "$f") on $(claim_field item < "$f"). Check git log for recent work on $slug; re-run with --takeover only if there is none."; exit 6; }
@@ -72,6 +81,7 @@ q=json.load(open(sys.argv[1])); by={t["id"]:t for t in q["items"]}; t=by.get(sys
 sys.exit(0 if t and t["status"]=="PENDING" and all(by[d]["status"]=="IMPLEMENTED_TESTING_DEFERRED" for d in t["depends_on"] if d in by) else 1)
 P
   fi
+  if [ "$static_own" = 1 ]; then echo "ASSIGNED to you: $slug / $item is runnable (static assignment, nothing to commit)"; exit 0; fi
   mkdir -p "$DIR"
   printf '{\n  "subject": "%s",\n  "item": "%s",\n  "agent": "%s",\n  "claimed_at": "%s",\n  "base_sha": "%s"\n}\n' "$slug" "$item" "$agent" "$(now)" "$(git rev-parse --short HEAD)" > "$f"
   git add "$f"; git commit -q -m "claim($slug): $item by $agent"
@@ -85,6 +95,7 @@ heartbeat)
   slug="${1:?}"; agent="${2:?}"; f="$DIR/$slug.json"
   git fetch -q origin; clean_tree || exit 5; git pull -q --rebase origin "$BR"
   [ -f "$f" ] && [ "$(claim_field agent < "$f")" = "$agent" ] || { echo "not your claim"; exit 3; }
+  if is_static "$f"; then echo "static assignment: no heartbeat needed"; exit 0; fi
   python3 - "$f" "$(now)" <<'P'
 import sys,json;j=json.load(open(sys.argv[1]));j["claimed_at"]=sys.argv[2];open(sys.argv[1],"w").write(json.dumps(j,indent=2)+"\n")
 P
@@ -94,6 +105,29 @@ release)
   git fetch -q origin; clean_tree || exit 5; git pull -q --rebase origin "$BR"
   [ -f "$f" ] || { echo "no claim on $slug"; exit 0; }
   [ "$(claim_field agent < "$f")" = "$agent" ] || { echo "not your claim"; exit 3; }
+  if is_static "$f"; then echo "KEPT: $slug is a static assignment; it is ended with 'unassign', not 'release'"; exit 0; fi
   git rm -q "$f"; git commit -q -m "release($slug) by $agent"; push_retry && echo "RELEASED $slug" ;;
-*) sed -n 2,10p "$0"; exit 2 ;;
+assign)
+  slug="${1:?slug}"; agent="${2:?agent}"; note="${3:-}"; f="$DIR/$slug.json"
+  git fetch -q origin; clean_tree || { echo "NOT CLEAN"; exit 5; }; git pull -q --rebase origin "$BR"
+  if [ -f "$f" ]; then echo "EXISTS: $slug already claimed by $(claim_field agent < "$f")"; exit 3; fi
+  mkdir -p "$DIR"
+  python3 - "$f" "$slug" "$agent" "$(now)" "$(git rev-parse --short HEAD)" "$note" <<'PYEOF'
+import sys, json
+f, slug, agent, t, sha, note = sys.argv[1:7]
+j = {"subject": slug, "item": "*", "agent": agent, "claimed_at": t, "base_sha": sha, "static": True}
+if note: j["note"] = note
+open(f, "w").write(json.dumps(j, indent=2) + "\n")
+PYEOF
+  git add "$f"; git commit -q -m "assign($slug): $agent (static)"
+  if push_retry; then echo "ASSIGNED $slug to $agent (static)"; exit 0; fi
+  git rebase --abort 2>/dev/null; git fetch -q origin; git reset -q --hard "origin/$BR"; echo "FAILED or LOST RACE assigning $slug"; exit 3 ;;
+unassign)
+  slug="${1:?slug}"; agent="${2:?agent}"; f="$DIR/$slug.json"
+  git fetch -q origin; clean_tree || exit 5; git pull -q --rebase origin "$BR"
+  [ -f "$f" ] || { echo "no claim on $slug"; exit 0; }
+  is_static "$f" || { echo "not a static assignment; use release"; exit 3; }
+  [ "$(claim_field agent < "$f")" = "$agent" ] || { echo "assigned to $(claim_field agent < "$f"), not $agent (name the assignee to end it)"; exit 3; }
+  git rm -q "$f"; git commit -q -m "unassign($slug): $agent"; push_retry && echo "UNASSIGNED $slug" ;;
+*) sed -n 2,14p "$0"; exit 2 ;;
 esac
