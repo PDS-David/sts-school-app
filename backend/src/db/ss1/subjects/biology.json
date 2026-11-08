@@ -1883,6 +1883,110 @@
           "explanation": "Pathogens/vectors definitions are supported by blocks 76-83 and virus structure by block 51. No marking guide is supplied."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T3-W02-GROWTH",
+      "source_id": "SS1-SRC-78059230037f",
+      "objective": "3rd Term Week 2: Growth of microorganisms — generation time, growth phases and measurement methods",
+      "objective_locator": "Week 2 label block 110 (sha256 76f11e6f549d493bb970870a93138143bdb2c49cbec52c22a1c2563aec98d58d); growth blocks 119-123 (range sha256 a75cff00a91008f21938da2e4efa5ce2906cc5af0753a1f757e49b8b286bc3e0)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 120",
+          "explanation": "Defines generation time and lists lag, logarithmic/exponential, stationary and decline/death phases, but does not define or describe each phase. Questions 157 and 172 ask learners to identify/define phases, so a supplemental lesson is required."
+        },
+        {
+          "locator": "blocks 121-123",
+          "explanation": "Names turbidity, serial dilution and squared transparent paper/cellophane methods for measuring microbial growth, but provides no detailed procedure or worked measurement."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for microbial growth; source-only content is not deliverable."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T3-W02-BENEFICIAL-HARMFUL",
+      "source_id": "SS1-SRC-78059230037f",
+      "objective": "3rd Term Week 2: Beneficial and harmful effects of microorganisms",
+      "objective_locator": "Heading block 128; teaching blocks 128-143 (range sha256 62e5f3ca3ad2bd54cb6697f09ad90688b3db300af0711b27096f2f01318c8f72)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 129-139",
+          "explanation": "Lists beneficial roles including cellulose digestion in herbivores, vitamin synthesis, antibiotic production, amino-acid/vinegar production, milk processing, sewage decomposition, enzyme production, baking and soil fertility/SCP."
+        },
+        {
+          "locator": "blocks 140-143",
+          "explanation": "Lists food spoilage, material deterioration and disease as harmful effects."
+        },
+        {
+          "locator": "general evaluation blocks 158-161",
+          "explanation": "Industrial, agricultural and medical uses are asked; some are supported by the examples, but the source does not provide full sector-by-sector explanations."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T3-W02-DISEASES",
+      "source_id": "SS1-SRC-78059230037f",
+      "objective": "3rd Term Week 2: Diseases caused by microorganisms, symptoms, transmission and control",
+      "objective_locator": "Heading block 149; disease table block 151 (21 rows × 5 columns; range 149-151 hash sha256 53e7a298d402d22c31a84c2561764e8b99bbb10dcc810a35f5fe44cd515e5ad7)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "table block 151",
+          "explanation": "A 21-row, five-column table lists disease, causative agent, symptoms, transmission and control. It includes chickenpox, cholera, common cold, dengue, diarrhoea, diphtheria, leprosy, measles, pneumonia, poliomyelitis, rabies, septic sore throat, sleeping sickness, smallpox, tuberculosis, tetanus, typhoid, whooping cough, influenza and malaria."
+        },
+        {
+          "locator": "table block 151 external hyperlinks",
+          "explanation": "The table contains eight external symptom-guide hyperlinks (one NHLBI page and seven legacy NYT Health symptom pages). They are recorded as source links only; they were not opened or treated as authoritative disease references."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for disease content. All medical/disease statements require authoritative review before a current lesson is authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T3-W02-ASSESSMENT",
+      "source_id": "SS1-SRC-78059230037f",
+      "objective": "3rd Term Week 2 evaluation, general evaluation, weekend assignment and theory",
+      "objective_locator": "Evaluation blocks 124-126, 144-146 and 152-154; general evaluation 156-164; reading 164; weekend assignment 165-170; theory 171-173",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "evaluation blocks 124-126 (range sha256 5805867a30b365611799070566cc5a7687386e655916f40763d3d34edef34bf9)",
+          "explanation": "Factors affecting microbial growth are listed in block 120; measurement methods are named at 121-123, but their procedures are not taught."
+        },
+        {
+          "locator": "evaluation blocks 144-146 (range sha256 64ce2c780af296533cb7f1ab7d8755958374f6e8551550542d865a46cc39e513)",
+          "explanation": "The beneficial/harmful effects list is in 129-143. The prompt for five beneficial and five harmful microorganisms asks for examples beyond the source's short list; no answer key is supplied."
+        },
+        {
+          "locator": "evaluation blocks 152-154 (range sha256 9f0518dbd2b1ccb8a8d27a4cc057004f5bd9d32e425bf88067d2d0812185973f)",
+          "explanation": "The disease table contains malaria, cholera, tuberculosis, measles and poliomyelitis rows. The table's health content and disease-control claims require authoritative review. Airborne/waterborne classification is not presented as a separate keyed list."
+        },
+        {
+          "locator": "general evaluation blocks 156-164 (range sha256 ea16e21fe2edb459b67afd1bbdc4cfe9b0690692edb7592d1270840ff2e97868)",
+          "explanation": "Growth phases and industrial uses are partially supported. General microorganism control (159) is not taught as a distinct framework; microorganisms involved in nitrogen/carbon cycles (160) are not identified; agriculture/medicine examples (161) are partial; growth measurement methods (162) are named but not explained; transmission routes (163) refer back to Week 1 block 77."
+        },
+        {
+          "locator": "reading assignment block 164",
+          "explanation": "College Biology, chapter 21, pages 467-484. The cited book is not part of the archive and was not opened."
+        },
+        {
+          "locator": "weekend assignment blocks 165-170 (range sha256 123f1a1ccbe646ea1892624e9258f6389eb5b47baec888762f4e7549194f6d5f)",
+          "explanation": "Q166 exponential phase is named in block 120 but not defined; Q167 cholera bacterium is listed in table 151; Q168 dry weight is not among the three listed growth-measurement methods; Q169's sanitation/control option is not discussed in the body; Q170's tsetse-fly vector is in the Week 1 carrier table, while this week's disease table describes fly-bite transmission more generally. No answer key is supplied."
+        },
+        {
+          "locator": "theory blocks 171-173 (range sha256 e89cd4904977c1c7715ced2775051dc0225e3b40540deaab20460c10c9a1fa2f)",
+          "explanation": "The four growth phases are named in block 120 but not defined; beneficial effects of bacteria/fungi are listed in blocks 130-139 but not separated into a full four-item keyed list per organism. No marking guide is supplied."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -2720,6 +2824,70 @@
       "required_action": "A Biology teacher should approve keyed responses and marking after factual review, particularly Q99 and the vector/disease table.",
       "affected_ids": [
         "COV-BIO-T3-W01-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W02-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 2 growth, beneficial/harmful effects and disease teaching is present in the source, but the Biology package has no registered lesson.",
+      "required_action": "Author and bind approved lesson content, keeping medical/disease claims distinct from the original source and using authoritative references.",
+      "affected_ids": [
+        "COV-BIO-T3-W02-GROWTH",
+        "COV-BIO-T3-W02-BENEFICIAL-HARMFUL",
+        "COV-BIO-T3-W02-DISEASES"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W02-HEALTH-CLAIMS",
+      "kind": "FACT",
+      "detail": "The disease table at block 151 contains 21 rows of disease agents, symptoms, transmission and control claims, with eight external symptom-guide hyperlinks. These statements require authoritative disease-specific review; legacy symptom links are not accepted as the sole authority.",
+      "required_action": "Verify disease names, agents, symptom summaries, transmission and prevention/control against current authoritative public-health sources. Record citations and keep corrected supplemental text distinct from the original. Do not provide individualized medical advice.",
+      "affected_ids": [
+        "COV-BIO-T3-W02-DISEASES",
+        "COV-BIO-T3-W02-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W02-GROWTH-PHASES",
+      "kind": "CONTENT",
+      "detail": "Block 120 names lag, exponential, stationary and decline/death phases but does not define them, while evaluation/theory questions ask students to describe or define them.",
+      "required_action": "Author a clearly labelled supplemental lesson defining each phase with an approved Biology reference and complete keyed practice.",
+      "affected_ids": [
+        "COV-BIO-T3-W02-GROWTH",
+        "COV-BIO-T3-W02-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W02-MICROBIAL-CONTROL",
+      "kind": "CONTENT",
+      "detail": "General evaluation block 159 asks for four general ways of controlling microorganisms, but the body provides only scattered disease-specific control entries in the table.",
+      "required_action": "Author a clearly labelled, source-distinct supplement on general microbial control using approved curriculum references; keep any practical procedures outside scope unless separately safety-approved.",
+      "affected_ids": [
+        "COV-BIO-T3-W02-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W02-NITROGEN-CARBON-CYCLES",
+      "kind": "CONTENT",
+      "detail": "General evaluation block 160 asks for microorganisms involved in nitrogen and carbon cycles; the Week 2 teaching body does not identify them.",
+      "required_action": "Author a clearly labelled supplemental lesson for microbial roles in nitrogen and carbon cycles using approved Biology references and keyed practice.",
+      "affected_ids": [
+        "COV-BIO-T3-W02-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W02-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "Week 2 evaluation, general evaluation, weekend assignment and theory have no answer key or marking guide. Several prompts are not fully taught (growth-phase definitions, general microbial control, N/C cycle microbes).",
+      "required_action": "A Biology teacher should approve a complete answer/marking guide after the missing teaching and disease fact checks are resolved.",
+      "affected_ids": [
+        "COV-BIO-T3-W02-ASSESSMENT"
       ],
       "blocks_delivery": true
     }
