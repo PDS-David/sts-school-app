@@ -77,7 +77,8 @@
     "AG-VIS-T3-W04-MALE-REPRODUCTION (2026-11-08): block 487 contains a photographed textbook page (image10) and a cleaner labelled male reproductive-system schematic (image11), plus hdphoto1.wdp as an effect layer. The photographed page is not suitable as a standalone asset; neither image has a visible reuse licence or source citation. Reuse is blocked pending rights clearance or a rights-cleared replacement.",
     "AG-VIS-T3-W04-FEMALE-REPRODUCTION-A (2026-11-08): image12.jpeg at block 493 is a small labelled female reproductive-tract schematic (fallopian tube, ovary, uterus, cervix, vagina); it does not label vulva/labia mentioned in block 490. No credit/licence is supplied; reuse is blocked pending rights clearance or a rights-cleared replacement.",
     "AG-VIS-T3-W04-FEMALE-REPRODUCTION-B (2026-11-08): image13.jpeg at block 494 is a photographed textbook page with a female reproductive-system diagram and text; hdphoto2.wdp is its alternate/effect layer, not a separate figure. No visible source citation/licence; reuse is blocked pending rights clearance or a rights-cleared replacement.",
-    "AG-VIS-T3-W04-TBL-DIGESTION (2026-11-08): block 431 is a native 7×3 Word table with six paired monogastric/polygastric distinctions; source table structure is intact. The table hash recorded in the task/inventory does not match the documented concatenated-cell-text method; AG-CORR-T3-W04-TBL-DIGESTION-HASH was appended to verify/correct the inventory hash."
+    "AG-VIS-T3-W04-TBL-DIGESTION (2026-11-08): block 431 is a native 7×3 Word table with six paired monogastric/polygastric distinctions; source table structure is intact. The table hash recorded in the task/inventory does not match the documented concatenated-cell-text method; AG-CORR-T3-W04-TBL-DIGESTION-HASH was appended to verify/correct the inventory hash.",
+    "AG-VIS-T3-W05-RESPIRATORY (2026-11-08): image14.jpeg at block 547 is a slide-like lower-respiratory-tract graphic with readable text and labelled lung diagram. 'Syrinx (in birds)' and hyoid bone appear as image labels but are not explained in block 546. No credit/licence is supplied; reuse is blocked pending rights clearance or a rights-cleared replacement."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -92,8 +93,8 @@
     "CORRECTION_BINDING": 13
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 62,
-    "PENDING": 88,
+    "IMPLEMENTED_TESTING_DEFERRED": 63,
+    "PENDING": 87,
     "BLOCKED": 2
   },
   "items": [
@@ -2719,8 +2720,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a, and image14.jpeg SHA-256 9d96753f568bbe76fe06754861a620a2a1fe7487d7ce308382e5a3a8bc7cdb42 (98,245 bytes; 638×479 JPEG). The graphic is anchored at document.xml body block 547. It is a slide-like composition headed 'Lower Respiratory Tract' with large explanatory text at left and a lung/airway diagram at right. Diagram labels include hyoid bone, larynx, trachea, right/left lung, bronchi, bronchiole, alveolar sac, alveolus and syrinx (in birds). Text and major labels are legible; smaller labels require enlargement. The prose at block 546 describes larynx, trachea, bronchi, bronchioles and alveoli; 'syrinx' and hyoid bone are image labels not explained in that passage. No visible credit or reuse licence is supplied; JPEG metadata is technical only. Do not reuse without rights clearance; use a rights-cleared lower respiratory-tract diagram if permission cannot be obtained. Added open item AGRICULTURAL-SCIENCE-T3-W05-RESPIRATORY-RIGHTS. No derivative created. Importer/rendering/device checks not run.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5724,7 +5725,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W05-RESPIRATORY",
     "AG-VIS-T3-W05-FISH-GILLS",
     "AG-VIS-T3-W05-RESPIRATION-EQUATIONS",
     "AG-VIS-T3-W06-TBL-GESTATION",
