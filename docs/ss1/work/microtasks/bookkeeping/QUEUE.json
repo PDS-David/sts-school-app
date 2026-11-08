@@ -35,16 +35,17 @@
     "On work/bookkeeping-ss1: completed first-term Week 1 T-account visual disposition, Week 3 and Week 4 table dispositions, and first-term worked-material and currency preservation records. All are source-reading dispositions; importer/rendering/package tests remain deferred.",
     "On work/bookkeeping-ss1: BK-TEST-PACKAGE test file drafted only, following the French package test pattern. It is intentionally not run; execution and typecheck remain deferred by owner.",
     "On work/bookkeeping-ss1: added a static package test for coverage referential integrity (registered source IDs, declared lesson/classify_marker targets, evidence, and required targets for complete statuses). Not run (testing remains deferred). Queue next_runnable is empty pending the missing original 3rd Term DOCX for BK-INV-T3 and owner resolution of BOOKKEEPING-T2-TEXT-MATCHES-T1 plus the first-term factual-decision gates; T2 indexing/dispositions remain intentionally held and no duplicate coverage is linked.",
-    "On work/bookkeeping-followup: BK-INV-T3 completed from user-supplied original DOCX. Member SHA-256 343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d exactly matches manifest/package source SS1-SRC-97f226215927. Inventory at BK-INV-T3.md: 499 content blocks, scheme weeks 1–12, no body WEEK labels, four continuous unlabelled topic sections, 67 VML objects, no native tables/media/OLE/equations. Added 19 PENDING tasks for preamble, markers, Weeks 2–10 indexing, worked/currency preservation and five visual dispositions. No lesson, coverage or source rule added; parser/tests remain deferred."
+    "On work/bookkeeping-followup: BK-INV-T3 completed from user-supplied original DOCX. Member SHA-256 343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d exactly matches manifest/package source SS1-SRC-97f226215927. Inventory at BK-INV-T3.md: 499 content blocks, scheme weeks 1–12, no body WEEK labels, four continuous unlabelled topic sections, 67 VML objects, no native tables/media/OLE/equations. Added 19 PENDING tasks for preamble, markers, Weeks 2–10 indexing, worked/currency preservation and five visual dispositions. No lesson, coverage or source rule added; parser/tests remain deferred.",
+    "On work/bookkeeping-followup: BK-PRE-T3, BK-MARK-T3-REVISION and BK-MARK-T3-EXAM completed. Preamble mapping is recorded; exact Week 1/11 revision and Week 12 exam markers are classified SCHEME_ONLY with MARKER coverage targeting their respective rule IDs. No revision/exam content invented; tests/importer remain deferred."
   ],
   "counts": {
-    "PENDING": 38,
-    "IMPLEMENTED_TESTING_DEFERRED": 20,
+    "PENDING": 35,
+    "IMPLEMENTED_TESTING_DEFERRED": 23,
     "BLOCKED": 6
   },
   "status_counts": {
-    "PENDING": 38,
-    "IMPLEMENTED_TESTING_DEFERRED": 20,
+    "PENDING": 35,
+    "IMPLEMENTED_TESTING_DEFERRED": 23,
     "BLOCKED": 6
   },
   "items": [
@@ -1802,12 +1803,12 @@
         "BK-INV-T3",
         "BK-SRC-T3"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-PRE-T3",
       "kind": "SOURCE_PREAMBLE_INDEXING",
       "week_or_locator": "Blocks 0–43; range SHA-256 bccc05419af499fe4b74c00fa80fb410ba127765bf6d3d6e0c487e9c899d8434",
       "objective": "Inventory the complete third-term opening and scheme preamble: exact title, scheme heading, WEEK column label, all twelve manually numbered entries and their sub-items, plus blank/spacing blocks. Map each scheme objective to source body evidence or an explicit gap. Preserve the OMEGA TERM heading/3rd Term manifest distinction.",
-      "implementation_reference": "Inventory BK-INV-T3 blocks 0–43; scheme entries blocks 5–41. Whole preamble hash bccc05419af499fe4b74c00fa80fb410ba127765bf6d3d6e0c487e9c899d8434.",
+      "implementation_reference": "Inventory BK-INV-T3 blocks 0–43; scheme entries blocks 5–41. Whole preamble hash bccc05419af499fe4b74c00fa80fb410ba127765bf6d3d6e0c487e9c899d8434.; implemented on work/bookkeeping-followup with source-faithful evidence record and no fabricated approval or verification.",
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
         "docs/ss1/work/microtasks/bookkeeping/BK-PRE-T3.md"
@@ -1839,12 +1840,12 @@
         "BK-INV-T3",
         "BK-SRC-T3"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-MARK-T3-REVISION",
       "kind": "SOURCE_MARKER_DISPOSITION",
       "week_or_locator": "Scheme entries Week 1 block 5 (SHA-256 001512a6ddbf840fdbd3388e661b790495094a020e23a723cbd9cf14eeaa0204) and Week 11 block 40 (SHA-256 b6d1ba5101b51df16c679e834778c5122b62ba0722f8b3685cd0d92892466166)",
       "objective": "Disposition both revision scheme markers. Confirm whether any revision body, worksheet, questions, answers or marking scheme exists; inventory shows none. Classify as preamble-only markers without creating revision lessons.",
-      "implementation_reference": "BK-INV-T3 scheme blocks 5 and 40; no revision section occurs in body blocks 44–468.",
+      "implementation_reference": "BK-INV-T3 scheme blocks 5 and 40; no revision section occurs in body blocks 44–468.; implemented on work/bookkeeping-followup with source-faithful evidence record and no fabricated approval or verification.",
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/bookkeeping.json",
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
@@ -1877,12 +1878,12 @@
         "BK-INV-T3",
         "BK-SRC-T3"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-MARK-T3-EXAM",
       "kind": "SOURCE_MARKER_DISPOSITION",
       "week_or_locator": "Scheme entry Week 12 block 41 (SHA-256 96bdf60333eb1cb78ace49a418eb4ba0f4fffec531a07fece7da63eecacba7be)",
       "objective": "Disposition the examination marker. Confirm that no examination paper, questions, answers, marks, duration or marking scheme is supplied; classify only the scheme marker.",
-      "implementation_reference": "BK-INV-T3 scheme block 41; no examination material occurs in body blocks 44–468.",
+      "implementation_reference": "BK-INV-T3 scheme block 41; no examination material occurs in body blocks 44–468.; implemented on work/bookkeeping-followup with source-faithful evidence record and no fabricated approval or verification.",
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/bookkeeping.json",
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
@@ -2505,9 +2506,6 @@
     }
   },
   "next_runnable": [
-    "BK-PRE-T3",
-    "BK-MARK-T3-REVISION",
-    "BK-MARK-T3-EXAM",
     "BK-WK-T3-W02",
     "BK-WK-T3-W03",
     "BK-WK-T3-W04",
