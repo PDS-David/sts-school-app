@@ -32,23 +32,29 @@
     "AG-WK-T1-W02 (2026-11-08) indexed First Term Week 2: scheme entry 2 is source-taught (blocks 149, 152, comparison table 160), but delivery mapping remains PARTIAL pending importer/parsed-row verification; ten-tool/ten-machine and five agro-based-industry assessment gaps and the unresolved foreign-exchange exception item were split into bounded lesson/fact tasks. Composite archive, member and Week 2 range hashes were independently verified. No lesson, source byte, rule, correction or asset was written.",
     "AG-WK-T1-W03 (2026-11-08) indexed First Term Week 3: scheme entry 3 maps to fifteen problem/solution pairs in blocks 193-287. Cross-week crop rotation item is supported by Week 6 block 436. Extension roles, herbicide terminology, credit-source options and malformed storage solution were separately recorded as follow-up gaps; no unsafe chemical directions were added.",
     "AG-WK-T1-W04 (2026-11-08) indexed First Term Week 4: scheme entry 4 covers government roles (335-381) and NGO roles (386-399). Six NGO roles and seven research institutes are listed. Follow-ups record mixed-geography NGO examples, absent programme objectives and unresolved weekend assessment items; no external answers were invented.",
-    "AG-WK-T1-W05 (2026-11-08) indexed First Term Week 5: scheme entry 5 maps to eleven science-and-technology roles (426-436). Assessment gaps for technology definition, five improved systems and five storage facilities, plus a genetics terminology MCQ fact-check, were appended. Agro-chemical names preserved without invented doses or handling instructions."
+    "AG-WK-T1-W05 (2026-11-08) indexed First Term Week 5: scheme entry 5 maps to eleven science-and-technology roles (426-436). Assessment gaps for technology definition, five improved systems and five storage facilities, plus a genetics terminology MCQ fact-check, were appended. Agro-chemical names preserved without invented doses or handling instructions.",
+    "AG-WK-T1-W06 (2026-11-08) indexed First Term Week 6: definition, 14-row industry/raw-material table and ten agriculture-industry relationships are source-taught. Cereal questions cross-map to Week 10 block 893; agro-chemical list supported across Weeks 5-6. Storage-structure/produce pairings and incubator MCQ classification remain follow-ups; table visual disposition remains separate.",
+    "AG-WK-T1-W07 (2026-11-08) indexed First Term Week 7: land definition, agricultural/non-agricultural uses and land-availability factors are source-taught. Four game reserves supplied for five-item questions; socio-economic factors, land-mobility wording, game-reserve use MCQ and labour-factor MCQ need bounded follow-up.",
+    "AG-WK-T1-W08 (2026-11-08) indexed First Term Week 8: source teaches five land-tenure systems but not the agricultural laws/reforms named in the scheme heading. Land Use Act references in Weeks 3/7 require legal verification; questions on most common tenure system are not answered in source. Evaluation heading 643 is empty; reading assignment points back to Week4 government roles.",
+    "AG-WK-T1-W10 (2026-11-08) indexed First Term Week 10: crop classification by life cycle, morphology and uses is source-taught. Seven-difference monocot/dicot theory exceeds the three source contrasts; biennial definition at block 878 is defective and examples need fact-check. Five biotic-factor revision item cross-maps to Week 9 blocks 805-824.",
+    "AG-WK-T2-W01 (2026-11-08) indexed Second Term Week One: scheme item is Revision of Last Term Work, but source has only placeholder bullets for objective/theory answers and no questions or answers. Revision remains UNRESOLVED pending exact prior-term papers and approved answer key; no answers invented.",
+    "AG-WK-T2-W02-03 (2026-11-08) indexed combined Second Term Weeks 2-3: pre-planting, planting and post-planting operations and the practical school-farm demonstration are source-taught. Green-manure timing differs between teaching and MCQ; fertilizer-production claim and minor wording defects recorded for evidence-based correction. No numerical seed rates or fertilizer/herbicide rates added."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 7,
+    "FACTUAL_DEPENDENCY": 15,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 13,
-    "CORRECTION_BINDING": 1
+    "LESSON": 18,
+    "CORRECTION_BINDING": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 17,
-    "PENDING": 76,
+    "IMPLEMENTED_TESTING_DEFERRED": 23,
+    "PENDING": 84,
     "BLOCKED": 2
   },
   "items": [
@@ -652,8 +658,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): label block 473 text \"WEEK 6                                                                                                 DATE ………………………………\" (sha256 5056bc5e7bd4597466f4482b114a23c6bb8c36ef953fed94e1a8dc08bc9a2bf5); blocks 473-533; range sha256 19248abe8aded1d7f739cf4d6f75759c8eb099022e21e45614135bc4815d36c5. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme topic: Agro-Allied Industries and Relationship between Agriculture and Industry (block 475 spells 'IDUSTRIES'). One 15-row (header plus 14 data rows), 3-column table (block 486: S/N, Agro-based Industries, Raw Materials Used; 14 data rows) - see AG-VIS-T1-TBL-W06. Ten relationship bullets (493-502). Evaluation 3 and General Evaluation 3 (blocks 490, 511) ask for five cereals, which the document teaches only in Week 10 (block 893); General Evaluation 6 (block 515) revisits Week 5.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, First Term member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526 and Week 6 range blocks 473-533 SHA-256 19248abe8aded1d7f739cf4d6f75759c8eb099022e21e45614135bc4815d36c5. Scheme entry 6 maps to definition block 482, 14-row table 486 and ten relationships 493-502. Industry/raw-material questions are supported; ten relationships support the relationship questions. Five cereal examples are cross-week supported by Week 10 block 893; five agro-chemical examples appear across Weeks 5-6. Storage structure questions (506, 513-514, 531) are not fully taught: block 499 is generic; Week 3 block 234 names silos/cribs/cold rooms but gives no produce pairings or industry-origin binding. Weekend Q1 519 asks about an incubator, not classified in source. MCQs 520-525 are supported by the raw-material table and storage/processing distinction; grinder is named as processing equipment at 500. The comparison table at 486 remains under separate visual task AG-VIS-T1-TBL-W06. Source typos 'IDUSTRIES' (475) and 'INDUSRIES' (481) preserved. Added PARTIAL/UNRESOLVED coverage and bounded follow-ups AG-LES-T1-W06-STORAGE-STRUCTURES and AG-FACT-T1-W06-INCUBATOR-ITEM. Reading reference 517 recorded but not checked. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -690,8 +696,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): label block 534 text \"WEEK 7                                                                                                 DATE ………………………………\" (sha256 b5ca2dbd91ad1c43c1f09bdf71862696673aaefffcd459e4d5715918c1ff1627); blocks 534-617; range sha256 dd96618ec8f4bed3121558a23f941d506c6fa6ca0be4bccf91ebc31b703a9aa1. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme topic: Land and its Uses: Agricultural and Non-Agricultural Uses. Definition and characteristics (544-552), agricultural uses (554-568), non-agricultural uses (570-576), factors affecting land availability (578-590), General Evaluation (592-598), Reading (600-602), Weekend MCQ (604-609), Theory (611-613); whitespace-only block 614 and empty blocks 615-617. Block 549 reads 'Land is mobile i.e. cannot be moved...' - the statement contradicts its own gloss; flag for factual verification in any lesson task, do not correct source text.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, First Term member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526 and Week 7 range blocks 534-617 SHA-256 dd96618ec8f4bed312155a23f941d506c6fa6ca0be4bccf91ebc31b703a9aa1. Scheme entry 7 maps to land definition 545, characteristics 547-549, agricultural uses 557-565, non-agricultural uses 571-576 and availability factors 578-587. Four game reserves are named at 562-565 but assessments ask for five; names/locations not independently verified. Only one factor (587) is explicitly labelled socio-economic, while general evaluation 598 asks for five. Block 549's 'land is mobile' contradicts 'cannot be moved'; Weekend Q4 608 conflicts with source classification of game reserves/pastures as agricultural uses at 558/561; Weekend Q5 609 includes labour without source explanation. Cross-week Weekend Q2 606 climate factors supported by Week 9; Q3 607 supported by Week 6 crop rotation 436 and Week 3 flooding 283. Added three coverage rows, six open items and five bounded follow-ups: AG-LES-T1-W07-GAME-RESERVES, AG-LES-T1-W07-SOCIOECONOMIC-FACTORS, AG-FACT-T1-W07-LAND-MOBILITY, AG-FACT-T1-W07-GAME-RESERVE-USE and AG-FACT-T1-W07-LABOUR-FACTOR. Full assessment analysis: AG-WK-T1-W07.md. Reading references at 600-602 recorded but not checked. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -728,8 +734,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): label block 618 text \"WEEK 8                                                                                                DATE ………………………………\" (sha256 fd2ec2c6ab406ac79c707a303a8c4e5ffabdbad7d4e5b49c395e6664b6c8809d); blocks 618-720; range sha256 5b0cac0de95cf5e17ccd5c4c5544da456300a217f35414511af3ee3525a70d14. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme topic: Agricultural Laws and Reforms. Body headings found are land ownership/tenure only: communal, inheritance, lease hold, free gift, state/government ownership (blocks 622-695) with advantages/disadvantages. No separate heading for agricultural laws or reforms was found in the body; the Land Use Act of 1978 appears in Weeks 3 and 7 (blocks 195, 583). Block 643 'EVALUATION' is followed by empty blocks 644-645 (heading with no question). Reading assignment (block 705) points to Roles of Government (a Week 4 topic). Weekend MCQ (707-712), Theory (713-716); blank blocks 717-720.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, First Term member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526 and Week 8 range blocks 618-720 SHA-256 5b0cac0de95cf5e17ccd5c4c5544da456300a217f35414511af3ee3525a70d14. Scheme entry 8 (block 19) is titled Agricultural Laws and Reforms, but Week 8 body (620-716) teaches land tenure only: definition 626; five types (communal 628-641, inheritance 646-656, leasehold 662-673, free gift 675-682, state/government 684-692) and advantages/disadvantages. No agricultural law/reform section is taught. Land Use Act 1978 is mentioned in Week 3 block 195 and Week 7 block 583; the latter says it prevents individuals from owning land, which requires legal verification. Evaluation heading 643 has no question; blocks 644-645 empty. Questions 658-659, 698-700, 702, 708, 711-712 and theory 714-716 are supported by land-tenure teaching. Questions 701/710 ask for the most common tenure system, not stated. Weekend 709 cross-week supported by Week 7 factors. Reading assignment 705 points to Week4 government roles, not Week8 land tenure. Added one PARTIAL and two UNRESOLVED coverage entries, four open items, and bounded tasks AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS, AG-FACT-T1-W08-PROMINENT-TENURE and AG-FACT-T1-W08-LAND-USE-ACT. Full scope report AG-WK-T1-W08.md. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -804,8 +810,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): label block 866 text \"WEEK 10                                                                                               DATE ………………………………\" (sha256 40b4d4f8953b8b0330d7667294b3dcc1444b464bdcee30bd13c5e8e42d9b8b29); blocks 866-931; range sha256 63ef5e359e9b53ed3a47905e9ee92a78704a699a47f8f2e9b4349f888a325208. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme topic: Classification of Crops: Based on Life Cycle, Morphology and Uses. Life cycle (875-882), morphology (884-890), uses (892-908), General Evaluation (910-916), Reading (918-919), Weekend MCQ (920-927) and Theory (928-931). Block 878 defines biennial crops as completing the life cycle 'within as year' and lists cassava, pepper, onions, carrot, ginger; block 879 defines perennial as 'more than two years' - flag for factual verification in any lesson task. Theory 2 (block 931) asks for a tabular comparison of monocots and dicots; no table exists in the week. General Evaluation 6 (block 916) revisits biotic factors from Week 9.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, First Term member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526 and Week 10 range blocks 866-931 SHA-256 63ef5e359e9b53ed3a47905e9ee92a78704a699a47f8f2e9b4349f888a325208. Scheme entry 10 (block 21) maps to life-cycle classification 875-879, morphology 884-887 and uses 892-905. Crop definition and all three classification bases are taught. Annual examples at 877, biennial examples at 878 and perennial examples at 879; the biennial sentence reads 'within as year' and examples need factual verification. Morphology teaching supplies three paired differences (cotyledon count, leaf venation, root system) but theory 931 asks for seven. Evaluation 880-882 and 888-890 supported; evaluation 906-908 supported by uses 897-903; general evaluation 911-915 supported; general evaluation 916 cross-week supported by Week 9 biotic-factor section 805-824. Weekend 921-927 supported by definitions and examples at 877-887, 893 and 898; theory 929-930 supported. Added one PARTIAL and one UNRESOLVED coverage entry, three open items and two follow-ups AG-LES-T1-W10-MONOCOT-DICOT-TABLE and AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION. Reading reference 919 recorded but not checked. Full assessment analysis: AG-WK-T1-W10.md. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -1070,8 +1076,8 @@
         "AG-INV-T2",
         "AG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): label block 24 text \"WEEK ONEDATE: __________\" (sha256 e2d88213935cb2a74c6f5b63b48658fed021499c0e466015b262c70f79aa1174); blocks 24-30; range sha256 6b1186edc3dd9b108beb340f504a00dcc4e7935fb2ba1cc428c13b8f084e3e6d. Topic: Revision of Last Term Work (scheme item 1, inferred from order). Only a topic line (block 25), the heading CONTENT (26) and two bullets 'Answers to last term’s objective questions' (27) and 'Answers to last term’s theory questions' (28); no answers, questions or other teaching text are present. Any lesson would have to cite last term's papers, which this source does not contain; record as a gap, do not invent answers. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-676; block 677 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Second Term member 'SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx' SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042, and Week One range blocks 24-30 SHA-256 6b1186edc3dd9b108beb340f504a00dcc4e7935fb2ba1cc428c13b8f084e3e6d. Scheme block 7 names Revision of Last Term Work. Week One has only topic block 25, CONTENT heading 26 and placeholder bullets 27-28 for objective/theory answers; no actual questions, answers, key or marking guidance. Added UNRESOLVED coverage COV-AG-T2-W01-REVISION and open item AGRICULTURAL-SCIENCE-T2-W01-REVISION-SOURCE requiring exact prior-term revision papers and approved answer key before authoring a lesson. No answers invented; no source bytes changed. Full analysis: AG-WK-T2-W01.md. Importer/tests/typecheck/DB/device checks not run; testing deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -1108,8 +1114,8 @@
         "AG-INV-T2",
         "AG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): label block 31 text \"WEEK TWO AND THREEDATE: __________\" (sha256 01121871f3f6eccc5c172fdec68054baec6b5ea77543c053a9dd300f9e753591); blocks 31-278; range sha256 e251c8cbae1ddbd96d258e22b897e588dc6cd69adcde2c84b21212db14ed0d72. Topic: Cultural Practices: Pre-planting, Planting and Post-Planting Operations. One label for two scheme weeks (2 and 3). Sub-topics: pre-planting (blocks 41-73), planting operations incl. distance, date, seed rate, nursery (74-134), post-planting (135-231), General Evaluation/Revision Questions (232-234), field work (236-237), weekend assignment (239-278, theory from 272). Contains PRACTICAL DEMONSTRATION (blocks 68-73: clear and till the school farm with cutlass, layout, ten maize ridges) and FIELD WORK ON LAND PREPARATION (236-237). Block 186 carries a caution about inorganic fertilizer burning plants; block 205 mentions herbicide spraying without any rate. No doses are given. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-676; block 677 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Second Term member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 and combined Weeks 2-3 range blocks 31-278 SHA-256 e251c8cbae1ddbd96d258e22b897e588dc6cd69adcde2c84b21212db14ed0d72. Scheme item 2-3 maps to cultural practices: pre-planting (38-73), planting (74-134) and post-planting/post-harvest (135-231). Practical demonstration blocks 68-73 and field work 236-237 preserved. Evaluations 61-66,128-133,222-230; general evaluation 232-234; MCQ 239-270; theory 272-275 reviewed. The green-manure timing at 175 ('just before flowering') differs from MCQ 268 ('as soon as it flowers'). Block 180 says inorganic fertilizers are usually prepared on the farm, requiring verification. Block 39 says 'post-posting operations' vs heading 135 'post-planting'; MCQ 254 says 'plating space'. No numerical crop-specific spacing/seed-rate figures are supplied; none invented. Fertilizer caution at 186 preserved; herbicide mention at 205 has no rate; no rates/doses/handling instructions invented. Added PARTIAL coverage, open items and bounded follow-ups AG-FACT-T2-W02-03-GREEN-MANURE-ITEM and AG-CORR-T2-W02-03-SOURCE-TERMS. Full assessment analysis: AG-WK-T2-W02-03.md. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -3597,6 +3603,503 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T1-W05: block 429 says genetics and breeding, while block 454 offers genetic engineering; source does not resolve the equivalence.",
       "completion_condition": "A sourced note establishes whether the MCQ is accurate and recommends a precise disposition."
+    },
+    {
+      "id": "AG-LES-T1-W06-STORAGE-STRUCTURES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 6 blocks 499, 506, 513-514 and 531; Week 3 block 234",
+      "objective": "Teach at least three accurate agricultural storage structures, identify the produce stored in each and explain their role in agricultural supply chains. Use authoritative sources, distinguish the supplement from the original source's general statement about industry-provided storage, and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W06.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W06-STORAGE-STRUCTURES.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W06: source names silos/cribs/cold rooms and generic industry-provided storage but does not pair structures with produce stored.",
+      "completion_condition": "A clearly labelled supplement teaches at least three structures and produce pairings, includes complete keyed practice and criterion-level marks, truthful provenance and PENDING approval."
+    },
+    {
+      "id": "AG-FACT-T1-W06-INCUBATOR-ITEM",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 6 weekend assignment block 519",
+      "objective": "Verify whether an incubator should be classified as a farm machine in the context of the Week 6 MCQ and whether the item has one defensible answer. Use authoritative agricultural-engineering references and recommend retention or correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W06.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W06-INCUBATOR-ITEM.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W06: block 519 offers incubator as an exception but the source does not define/classify incubators.",
+      "completion_condition": "A sourced note establishes the item's defensibility and recommends retaining or correcting it."
+    },
+    {
+      "id": "AG-LES-T1-W07-GAME-RESERVES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 7 blocks 561-565; evaluation 568 and 596",
+      "objective": "Teach at least five verified Nigerian game reserves and accurate locations. Verify the source's four examples and preserve original spellings in provenance; distinguish verified additions/corrections from original wording and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W07.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W07-GAME-RESERVES.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W07: the source supplies fewer than five game reserves and one explicitly labelled socio-economic factor.",
+      "completion_condition": "A clearly labelled source-backed supplement teaches the requested material, includes complete keyed practice and criterion-level marks, truthful provenance and PENDING approval."
+    },
+    {
+      "id": "AG-LES-T1-W07-SOCIOECONOMIC-FACTORS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 7 block 587; general evaluation 598",
+      "objective": "Teach five accurately sourced socio-economic factors affecting land use, distinguish supplement content from the source's one explicitly labelled factor, and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W07.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W07-SOCIOECONOMIC-FACTORS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W07: the source supplies fewer than five game reserves and one explicitly labelled socio-economic factor.",
+      "completion_condition": "A clearly labelled source-backed supplement teaches the requested material, includes complete keyed practice and criterion-level marks, truthful provenance and PENDING approval."
+    },
+    {
+      "id": "AG-FACT-T1-W07-LAND-MOBILITY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 7 characteristic block 549",
+      "objective": "Verify the contradictory statement that land is mobile yet cannot be moved. Use authoritative references and record a correction or unresolved disposition without altering source bytes.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W07.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W07-LAND-MOBILITY.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W07: source and assessment wording conflict or require factual confirmation.",
+      "completion_condition": "A sourced note establishes the factual issue and recommends a precise disposition; source bytes remain unchanged."
+    },
+    {
+      "id": "AG-FACT-T1-W07-GAME-RESERVE-USE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 7 blocks 558, 561 and weekend assignment 608",
+      "objective": "Verify the conflict between the source's classification of grazing/pasture and wildlife/game reserves as agricultural uses and weekend Q4's assertion that agricultural land should not be used for game reserves or pasture.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W07.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W07-GAME-RESERVE-USE.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W07: source and assessment wording conflict or require factual confirmation.",
+      "completion_condition": "A sourced note establishes the factual issue and recommends a precise disposition; source bytes remain unchanged."
+    },
+    {
+      "id": "AG-FACT-T1-W07-LABOUR-FACTOR",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 7 blocks 579, 581, 585 and weekend assignment 609",
+      "objective": "Verify whether labour is a factor influencing land use for agriculture; distinguish source-supported climate/topography/population factors from external evidence.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W07.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W07-LABOUR-FACTOR.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W07: source and assessment wording conflict or require factual confirmation.",
+      "completion_condition": "A sourced note establishes the factual issue and recommends a precise disposition; source bytes remain unchanged."
+    },
+    {
+      "id": "AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 8 topic block 620; body blocks 622-695; cross-week Land Use Act references at Week 3 block 195 and Week 7 block 583",
+      "objective": "Teach the agricultural laws and reforms relevant to the scheme objective, including an accurate, age-appropriate account of the Nigerian Land Use Act 1978 and its effects on landholding, agricultural access and tenure. Use the statute and authoritative Nigerian sources; distinguish source wording from verified supplement content and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W08.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W08: Week 8 body is land tenure only; the Land Use Act is only briefly mentioned in Weeks 3 and 7.",
+      "completion_condition": "A clearly labelled, legally accurate, source-backed supplement teaches the agricultural-law/reform objective with complete keyed practice and criterion-level marks, truthful provenance and PENDING approval."
+    },
+    {
+      "id": "AG-FACT-T1-W08-PROMINENT-TENURE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 8 general evaluation 701 and weekend assignment 710",
+      "objective": "Verify which land-tenure system is most common/prominent in Nigeria in the context intended by the source, with reliable evidence and clear date/definition; recommend whether the assessment items are defensible.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W08.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W08-PROMINENT-TENURE.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W08: the source explains five tenure types but does not identify prevalence.",
+      "completion_condition": "A sourced note establishes the relevant prevalence claim and recommends retention or correction of the two items."
+    },
+    {
+      "id": "AG-FACT-T1-W08-LAND-USE-ACT",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 3 block 195; Week 7 block 583; Week 8 topic block 620",
+      "objective": "Verify the Land Use Act 1978's actual provisions and effect on landholding/rights against the statute and authoritative Nigerian legal sources; assess the source's claim that it prevents individuals from owning land and recommend precise correction if needed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W08.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W08-LAND-USE-ACT.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W08: source's Land Use Act references are brief and may be legally oversimplified.",
+      "completion_condition": "A statute-backed note verifies the legal claim and provides a precise correction/recommendation or records an unresolved issue."
+    },
+    {
+      "id": "AG-LES-T1-W10-MONOCOT-DICOT-TABLE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 10 morphology blocks 884-887; theory block 931",
+      "objective": "Teach seven scientifically accurate paired differences between monocotyledonous and dicotyledonous crops in a clear comparison table. Preserve the source's three contrasts and label additional distinctions as supplement content; include reliable references, complete keyed practice and criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W10.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W10-MONOCOT-DICOT-TABLE.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W10: theory block 931 asks for seven differences, while source blocks 886-887 teach three.",
+      "completion_condition": "A clearly labelled supplement presents seven accurate paired differences, sources, keyed practice and criterion-level marks, truthful provenance and PENDING approval."
+    },
+    {
+      "id": "AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 10 block 878; weekend assignment block 922",
+      "objective": "Verify the correct definition of biennial crops and the classification of the examples cassava, pepper, onions, carrot and ginger. Assess whether weekend Q2's pepper exception is correct in the intended crop-science context; recommend source correction if needed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W10.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W10: block 878 says 'within as year' and the examples require verification.",
+      "completion_condition": "A sourced note verifies the definition/examples and recommends a precise correction or records unresolved classifications."
+    },
+    {
+      "id": "AG-FACT-T2-W02-03-GREEN-MANURE-ITEM",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "Second Term blocks 175 and 268",
+      "objective": "Verify the difference between the source's 'just before flowering' green-manure timing (block 175) and weekend MCQ 268's 'as soon as it flowers'. Use authoritative agronomy references and recommend a precise correction or unresolved disposition.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T2-W02-03.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T2-W02-03-GREEN-MANURE-ITEM.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T2",
+        "AG-WK-T2-W02-03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T2-W02-03: block 175 and MCQ 268 specify different green-manure timings.",
+      "completion_condition": "A sourced note verifies the agronomic timing and recommends a precise correction or records unresolved conflict."
+    },
+    {
+      "id": "AG-CORR-T2-W02-03-SOURCE-TERMS",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "Second Term block 39; fertilizer statement block 180; weekend MCQ block 254",
+      "objective": "Verify and bind delivery-only corrections for 'post-posting operations' at block 39 (cross-checked with heading 135), 'plating space' at MCQ 254, and the claim that inorganic fertilizers are usually prepared on the farm at block 180. Correct only when supported by source context and authoritative evidence; preserve source bytes and record provenance.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T2-W02-03.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-CORR-T2-W02-03-SOURCE-TERMS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T2",
+        "AG-WK-T2-W02-03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T2-W02-03: repeated topic wording and fertilizer-manufacture claim need evidence-based correction review.",
+      "completion_condition": "A correction-binding record cites each changed span and source; only verified corrections are proposed; original source bytes remain unchanged."
     }
   ],
   "review": {
@@ -3612,12 +4115,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T1-W06",
-    "AG-WK-T1-W07",
-    "AG-WK-T1-W08",
-    "AG-WK-T1-W10",
-    "AG-WK-T2-W01",
-    "AG-WK-T2-W02-03",
     "AG-WK-T2-W04-05",
     "AG-WK-T2-W06",
     "AG-WK-T2-W07",
@@ -3673,7 +4170,16 @@
     "AG-FACT-T1-W04-PEST-CONTROL-ITEM",
     "AG-FACT-T1-W04-NGO-STATUS",
     "AG-FACT-T1-W05-GENETICS-ITEM",
+    "AG-FACT-T1-W06-INCUBATOR-ITEM",
+    "AG-FACT-T1-W07-LAND-MOBILITY",
+    "AG-FACT-T1-W07-GAME-RESERVE-USE",
+    "AG-FACT-T1-W07-LABOUR-FACTOR",
+    "AG-FACT-T1-W08-PROMINENT-TENURE",
+    "AG-FACT-T1-W08-LAND-USE-ACT",
+    "AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION",
+    "AG-FACT-T2-W02-03-GREEN-MANURE-ITEM",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
+    "AG-CORR-T2-W02-03-SOURCE-TERMS",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
     "AG-LES-T1-W02-AGRO-INDUSTRIES",
@@ -3684,6 +4190,11 @@
     "AG-LES-T1-W05-TECHNOLOGY-DEFINITION",
     "AG-LES-T1-W05-FARM-MANAGEMENT",
     "AG-LES-T1-W05-STORAGE-FACILITIES",
+    "AG-LES-T1-W06-STORAGE-STRUCTURES",
+    "AG-LES-T1-W07-GAME-RESERVES",
+    "AG-LES-T1-W07-SOCIOECONOMIC-FACTORS",
+    "AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS",
+    "AG-LES-T1-W10-MONOCOT-DICOT-TABLE",
     "AG-TEST-PACKAGE"
   ]
 }
