@@ -60,7 +60,8 @@
     "BIO-SEC-T1-PESTS-DISEASES (2026-11-08) indexed unlisted crop/animal pest groups and life histories (550-604), agricultural disease groups (605-610), effects (611-619) and controls (620-629). Both lifecycle diagrams remain with the existing visual task. These sections are within Week 3 but not named by scheme row 3. Owner placement and veterinary fact review remain open; no chemical or treatment instructions were added.",
     "BIO-VIS-T1-PLANT-ANIMAL-HDR (2026-11-08) inspected the verified source and private rendered page: blocks 69-70 contain only a vertical divider and horizontal rule; the Plants/Animals labels and ten comparison pairs are text, not a Word table. Rendered layout is clear, but text extraction depends on whitespace and cannot guarantee paired columns. No asset/redraw is needed; a semantic two-column supplement is required and was appended as BIO-LES-T1-W02-PLANT-ANIMAL-TABLE, gated on the existing BIO-FACT-T1-W02-WORDING expert decision. No source content was changed; testing remains deferred.",
     "BIO-VIS-T1-MICROSCOPE (2026-11-08) inspected the hash-verified source image at full enlarged resolution and in a private rendered page. The diagram labels ten parts, including a 100x objective; the written list states x4/x10/x40 and calls x40 the highest, and uses different stage/illumination terms. The original 239x211 image is not copied because reuse permission is unrecorded. A teacher fact gate BIO-FACT-T1-W02-MICROSCOPE-LABELS and a dependent project-redraw task BIO-VIS-T1-W02-MICROSCOPE-REDRAW were appended. No label was silently corrected; testing remains deferred.",
-    "BIO-VIS-T1-CLASS-HIERARCHY (2026-11-08) inspected all six native downward connector shapes and the seven text labels across rendered PDF pages 4-5. Text labels survive extraction; arrows do not, but block 136 states the sequence in prose. The source repeatedly prints 'Genius'/'genius' for Genus. No asset/redraw is needed; a semantic ordered sequence and corrected delivery spelling were assigned to BIO-LES-T1-W03-CLASSIFICATION. Original source remains unchanged; testing deferred."
+    "BIO-VIS-T1-CLASS-HIERARCHY (2026-11-08) inspected all six native downward connector shapes and the seven text labels across rendered PDF pages 4-5. Text labels survive extraction; arrows do not, but block 136 states the sequence in prose. The source repeatedly prints 'Genius'/'genius' for Genus. No asset/redraw is needed; a semantic ordered sequence and corrected delivery spelling were assigned to BIO-LES-T1-W03-CLASSIFICATION. Original source remains unchanged; testing deferred.",
+    "BIO-VIS-T1-MONOCOT-DICOT (2026-11-08) inspected the original two-column comparison at blocks 235-244 and its private rendered page 8. The two line shapes are only table rules; labels and comparison rows are text but tab/space alignment is not robust under plain-text extraction. Seven paired differences and the examples row require a semantic two-column restatement in the existing BIO-LES-T1-W03-CLASSIFICATION task. No asset/redraw is needed; source header spelling is preserved and the adjacent block 234 spelling is used only in delivery. No source content was changed; testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -76,8 +77,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 43,
-    "PENDING": 101,
+    "IMPLEMENTED_TESTING_DEFERRED": 44,
+    "PENDING": 100,
     "BLOCKED": 9
   },
   "items": [
@@ -985,8 +986,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): block 235 holds two shapes and the first row ('Leaves have parallel veins' / 'Leaves have network veins'); rows ii-vii and an example row follow in blocks 236-244, with row iv wrapped across blocks 238-239. Not a w:tbl.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and assigned DOCX member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Direct w:body blocks 235-244 have range SHA-256 ec528b4e285814fe8df1ec2640e4700ab4a18e3392bd979a3d69af0705c73b79. Block 235 contains two native line shapes: a horizontal top rule and a vertical column divider; neither carries content. The two headings and seven paired differences plus examples are ordinary text, not a Word table. The rendered source PDF page 8 shows a clear two-column layout, but text extraction collapses the headings and first pair into block 235 and relies on tabs/spaces for the rest; the divider rules are omitted. Pairings therefore do not survive reliably in plain-text extraction. One row wraps across blocks 237-238 (one cotyledon/seed leaf); the vascular-bundle row wraps across blocks 242-243. Disposition: a semantic two-column table is required in the supplemental lesson; no preserved asset or redraw is needed. The header at block 235 prints 'Dicotyledonea', while adjacent category block 234 prints 'Dicotyledoneae'; retain the source variant unchanged and use the adjacent full spelling only in the delivery supplement. The existing BIO-LES-T1-W03-CLASSIFICATION task now includes this table. No source bytes changed and no app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
     },
     {
@@ -5241,7 +5242,7 @@
       "source_id": "SS1-SRC-422e0e6ddde9",
       "term": "1st Term",
       "week_or_locator": "Week 3, blocks 133-447; taxonomy definition and hierarchy blocks 135-155; rank diagram blocks 137-155",
-      "objective": "Author a clearly labelled supplemental lesson for classification of living things. Preserve the hierarchy as a semantic ordered sequence: Kingdom → Phylum/Division → Class → Order → Family → Genus → Species. Use the correct taxonomic spelling 'Genus' in the delivery supplement while retaining the source's 'Genius'/'genius' wording unchanged in the original. Cover the source's classification framework and include complete keyed practice with criterion-level marking. Cite the source provenance and any authoritative reference actually used for the corrected term; do not invent an original parsed lesson ID or delivery-correction binding before importer identification.",
+      "objective": "Author a clearly labelled supplemental lesson for classification of living things. Preserve the hierarchy as a semantic ordered sequence: Kingdom → Phylum/Division → Class → Order → Family → Genus → Species. Use the correct taxonomic spelling 'Genus' in the delivery supplement while retaining the source's 'Genius'/'genius' wording unchanged in the original. Restate the seven monocot/dicot differences and the examples from blocks 235-244 as a semantic two-column table with one pair per row; use 'Dicotyledoneae' as shown at block 234 in the delivery supplement while retaining the block 235 header spelling in the source record. Cover the source's classification framework and include complete keyed practice with criterion-level marking. Cite the source provenance and any authoritative reference actually used; do not invent an original parsed lesson ID or delivery-correction binding before importer identification.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
         "docs/ss1/contracts/CONTRACT.md",
@@ -5251,7 +5252,8 @@
         "backend/src/db/ss1/subjects/biology.json",
         "docs/ss1/work/microtasks/biology/QUEUE.json",
         "docs/ss1/work/microtasks/biology/BIO-WK-T1-W03.md",
-        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-CLASS-HIERARCHY.md"
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-CLASS-HIERARCHY.md",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-MONOCOT-DICOT.md"
       ],
       "required_attachments": [
         {
@@ -5268,7 +5270,8 @@
       ],
       "depends_on": [
         "BIO-WK-T1-W03",
-        "BIO-VIS-T1-CLASS-HIERARCHY"
+        "BIO-VIS-T1-CLASS-HIERARCHY",
+        "BIO-VIS-T1-MONOCOT-DICOT"
       ],
       "status": "PENDING",
       "implementation_reference": "Appended after the hierarchy disposition (2026-11-08): the source prose and diagram both use 'genius' for the rank Genus; the lesson must correct the delivery spelling without altering source text. No separate image asset is needed because an ordered text hierarchy preserves the rank sequence.",
@@ -5288,7 +5291,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T1-MONOCOT-DICOT",
     "BIO-VIS-T1-PEST-LIFECYCLES",
     "BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME",
     "BIO-VIS-T1-EXPERIMENT-FIGURES",
