@@ -1087,6 +1087,50 @@
           "explanation": "The question asks for seven post-planting tools; no list or mapping is taught."
         }
       ]
+    },
+    {
+      "id": "COV-AG-T3-W02-FARM-POWER",
+      "objective": "Scheme Week 2: Farm power — definition, sources, advantages and disadvantages",
+      "objective_locator": "Third Term scheme block 8; Week Two label 76; topic 77",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week Two blocks 83-84; sources 86-247",
+          "explanation": "The source defines farm power and describes eight sources: human, animal, mechanical, electrical, solar, wind, water and biogas."
+        },
+        {
+          "locator": "Human 87-100; animal 106-124; mechanical 126-142; electrical 148-163; solar 165-183; wind 189-207; water 209-227; biogas 233-248",
+          "explanation": "Advantages and disadvantages are provided for all eight sources."
+        },
+        {
+          "locator": "Evaluations 102-104,144-146,185-187,229-231; general evaluation 250-257; weekend 263-272; theory 274-277",
+          "explanation": "Most assessment items map to the source. The most common source for grain drying in West Africa is not explicitly identified; theory 275 asks for farm operations by power source without sufficient examples for every source."
+        },
+        {
+          "locator": "Week Two blocks 76-279; SHA-256 a580fafc641cfb780fe608ca29b6bd943fe335d12df02e1d98147ee8d33fe4ba",
+          "explanation": "Source teaching exists, but package lesson rows and importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ],
+      "source_id": "SS1-SRC-458a07f7ea5a"
+    },
+    {
+      "id": "COV-AG-T3-W02-OPERATIONS",
+      "objective": "Assessment scope: examples of farm operations requiring machines, electricity, wind and solar radiation",
+      "objective_locator": "Week Two theory block 275",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week Two blocks 126-135,148-156,189-200,165-175",
+          "explanation": "The source gives general machine use, electrical appliances, wind uses and solar uses, but does not consistently map two named farm operations to each requested power source."
+        },
+        {
+          "locator": "Week Two theory block 275",
+          "explanation": "The theory asks for two farm operations each requiring machine, electricity, wind and solar radiation; some source examples are generic or absent."
+        }
+      ],
+      "source_id": "SS1-SRC-458a07f7ea5a"
     }
   ],
   "open_items": [
@@ -1840,6 +1884,62 @@
       "required_action": "Verify purpose/anatomical terminology against authoritative veterinary references and recommend safe, non-procedural wording; do not add castration instructions.",
       "affected_ids": [
         "AG-FACT-T3-W01-EMASCULATOR",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W02-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week Two defines farm power and explains eight sources with advantages/disadvantages (83-248), but package lesson rows and importer-confirmed parsed-row identity are absent. COV-AG-T3-W02-FARM-POWER is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T3-W02-FARM-POWER; preserve each of the eight source categories.",
+      "affected_ids": [
+        "COV-AG-T3-W02-FARM-POWER",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W02-OPERATIONS",
+      "kind": "CONTENT",
+      "detail": "Theory 275 asks for two farm operations each requiring machines, electricity, wind and solar radiation. The source gives broad uses but not enough clearly mapped farm-operation examples for every requested source.",
+      "required_action": "Author AG-LES-T3-W02-FARM-POWER-OPERATIONS with verified, clearly mapped examples for all four power sources, labelling supplement content and including keyed practice.",
+      "affected_ids": [
+        "COV-AG-T3-W02-OPERATIONS",
+        "AG-LES-T3-W02-FARM-POWER-OPERATIONS",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W02-DRYING-POWER",
+      "kind": "FACT",
+      "detail": "Weekend MCQ 264 asks for the most common source of farm power for drying grains in West Africa. The source says solar energy dries crops (173) and wind dries farm produce (197), but does not identify the most common source in West Africa.",
+      "required_action": "Verify the regional claim using authoritative West African agricultural sources and recommend a defensible answer or correction; do not infer prevalence from the examples.",
+      "affected_ids": [
+        "AG-FACT-T3-W02-DRYING-POWER",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W02-WATER-POWER",
+      "kind": "FACT",
+      "detail": "The section defines water power as energy from flowing water used to drive hydro-electric turbines (209-210), but then lists transportation of farm goods, seed germination and photosynthesis as uses (217-220). These appear to conflate hydropower with water as a resource/transport medium.",
+      "required_action": "Verify the distinctions and recommend precise delivery corrections or reclassification for blocks 217-220; preserve original source text and do not silently relabel water use as water power.",
+      "affected_ids": [
+        "AG-CORR-T3-W02-WATER-POWER",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W02-TEXT",
+      "kind": "CONTENT",
+      "detail": "Animal traction block 107 prints 'Pair of working bullyolked together'; mechanical-power disadvantage block 138 prints 'acquisition' as 'accusation'. These are apparent text errors.",
+      "required_action": "Verify the intended wording against a teacher-approved original or parallel source and bind delivery-only corrections if confirmed.",
+      "affected_ids": [
+        "AG-CORR-T3-W02-POWER-TEXT",
         "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true
