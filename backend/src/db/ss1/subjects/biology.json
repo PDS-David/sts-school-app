@@ -1131,6 +1131,94 @@
           "explanation": "No answer key or marking guide accompanies the evaluation, revision, weekend assignment or theory questions."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T2-W04-IRRITABILITY",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 4: Irritability and types of responses",
+      "objective_locator": "SS1-SRC-eb6e9665f42c Week 4 label block 262 (sha256 51a39a7c2f829455c7b65f114ff747cb9660bf21e1579af6d295ae1c57d1cf32); teaching blocks 268-284 (range sha256 68564403b3e8922290803d2b4b6c69f9329d776618b412dcc1eb89c2997bde57)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 268-279",
+          "explanation": "Defines irritability, stimulus and response, then describes tactic/taxis, nastic/nastism and tropic/tropism movements with examples including responses to light, chemicals, touch and gravity."
+        },
+        {
+          "locator": "blocks 282-284",
+          "explanation": "Evaluation asks for further examples of the three response types and environmental factors that evoke responses."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for this objective; source-only teaching is not deliverable."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W04-MOVEMENT",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 4: Movement and cyclosis",
+      "objective_locator": "SS1-SRC-eb6e9665f42c blocks 286-297 (range sha256 a4427d8d2aa1f0ebdbf927f7080690819b724f9e5f151168634891c109eec8e0)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 286-292",
+          "explanation": "Lists reasons organisms move, defines cyclosis/cytoplasmic streaming and describes its transport role and examples in protozoa and plant cells."
+        },
+        {
+          "locator": "blocks 294-296",
+          "explanation": "Evaluation asks for a definition and examples of cyclosis."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W04-ORGANELLES",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 4: Organelles for movement",
+      "objective_locator": "SS1-SRC-eb6e9665f42c blocks 298-301 (range sha256 1e502a1beee33f5f98bafce17e17017fc9ffa74bb58292c82b41e3e143aec0ca)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 298-300",
+          "explanation": "Describes flagella and cilia and gives examples of organisms/cells where they occur. Amoeboid movement is named at block 291, but the structure used by Amoeba is not identified in the organelles section; general evaluation block 303 asks for the movement structure in Amoeba, Paramecium and Euglena."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for the movement-organelle objective; PARTIAL remains pending approved lesson content."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W04-ASSESSMENT",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 4 evaluation, weekend assignment and theory",
+      "objective_locator": "converted DOCX blocks 282-284, 294-296, 302-309, 311-312, 314-319 and 321-323",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "general evaluation blocks 302-309",
+          "explanation": "The questions on movement structures, amoeboid movement, cyclosis, nastic movement, tropism and tactic/nastic differences are supported in part by blocks 268-300. The source names amoeboid movement but does not identify pseudopodia. The request to describe a geotropism experiment is not accompanied by an experiment description in the source."
+        },
+        {
+          "locator": "reading assignment blocks 311-312",
+          "explanation": "College Biology, Chapter 12, pages 236-243. The cited book itself is not in the source archive."
+        },
+        {
+          "locator": "weekend assignment blocks 314-319",
+          "explanation": "Questions on gravitropism, cyclosis, taxis and nastic movement are supported by the teaching sections. The klinostat item at block 319 introduces an instrument not described in the body."
+        },
+        {
+          "locator": "theory blocks 321-323",
+          "explanation": "The tropic/nastic comparison is supported by blocks 274-279. The horizontal-seedling question is related to the source's gravity-response description at 278-279, but no keyed expected observation is supplied."
+        },
+        {
+          "locator": "whole Week 4 evaluation and assignment range",
+          "explanation": "No answer key or marking guide accompanies the evaluation, weekend assignment or theory questions."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -1645,6 +1733,49 @@
       "required_action": "Verify the organism comparisons and intended answer terminology against approved Biology references, recording primary evidence before creating any answer key. Do not guess the answers.",
       "affected_ids": [
         "COV-BIO-T2-W03-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W04-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 4 covers irritability, responses, movement, cyclosis and movement organelles, but the Biology package has no registered lessons.",
+      "required_action": "Author and bind an approved lesson for the Week 4 objectives, including the missing Amoeba movement structure and the existing geotropism concepts.",
+      "affected_ids": [
+        "COV-BIO-T2-W04-IRRITABILITY",
+        "COV-BIO-T2-W04-MOVEMENT",
+        "COV-BIO-T2-W04-ORGANELLES"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W04-KLINOSTAT",
+      "kind": "FACT",
+      "detail": "Weekend assignment block 319 asks what a klinostat is used to demonstrate, but the instrument is not described in the Week 4 body.",
+      "required_action": "Verify the intended use and terminology against an approved Biology reference before preparing the keyed response.",
+      "affected_ids": [
+        "COV-BIO-T2-W04-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W04-GEOTROPISM",
+      "kind": "CONTENT",
+      "detail": "Evaluation block 309 asks learners to describe an experiment to demonstrate geotropism, and theory block 323 asks for the observation when a green seedling is horizontal. The source describes gravity responses but gives no practical description or keyed observation.",
+      "required_action": "Add a clearly labelled, teacher-approved conceptual lesson/observation explanation for geotropism and the expected response, with appropriate classroom oversight; keep it distinct from original source wording.",
+      "affected_ids": [
+        "COV-BIO-T2-W04-IRRITABILITY",
+        "COV-BIO-T2-W04-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W04-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 4 evaluation, weekend assignment and theory questions have no supplied answer key or marking guide. The Amoeba movement structure and klinostat item are not taught in the body.",
+      "required_action": "A Biology teacher should approve the keyed responses and marking guide after the movement-organelle and klinostat gaps are resolved.",
+      "affected_ids": [
+        "COV-BIO-T2-W04-ASSESSMENT"
       ],
       "blocks_delivery": true
     }
