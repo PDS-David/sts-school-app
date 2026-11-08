@@ -34,7 +34,7 @@
     "SOURCE_WEEK_INDEXING": 26,
     "LESSON": 8,
     "CORRECTION_BINDING": 8,
-    "FACTUAL_DEPENDENCY": 11,
+    "FACTUAL_DEPENDENCY": 12,
     "ASSET": 1,
     "VISUAL_DISPOSITION": 8,
     "SCOPE_DECOMPOSITION": 2,
@@ -43,8 +43,8 @@
     "SOURCE_SECTION_INDEXING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 28,
-    "PENDING": 55,
+    "IMPLEMENTED_TESTING_DEFERRED": 29,
+    "PENDING": 54,
     "BLOCKED": 7
   },
   "items": [
@@ -358,8 +358,8 @@
         "FM-WK-T1-W02",
         "FM-LES-T1-W02-EQUATIONS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by FM-WK-T1-W02. No delivery_corrections entry exists for the 1st Term; the row id and body hash are both 5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c (the row id is SS1-SRC-e9efc9a976ed:BODY:<that hash>). Not started.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added delivery_corrections[id=CORR-FURTHER-MATHEMATICS-T1-W02-EQUATIONS] in backend/src/db/ss1/subjects/further-mathematics.json. Exact source id SS1-SRC-e9efc9a976ed; source SHA-256 995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145; source lesson/body id SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c; body SHA-256 5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c; single replacement SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS. Scope reviewed against COV-FM-T1-W02-OBJ-1 and OBJ-2. Binding reason and evidence recorded. Original row retained unchanged. OI-FM-T1-W02-FACT-DEFECTS and OI-FM-T1-W02-ASSESSMENT-GAPS remain OPEN; FM-FACT-T1-W02-EQ-OBJECTS remains pending; teacher decision about including the logarithm step in Week Two remains open. Content approval PENDING; verification DEFERRED; no tests run.",
       "completion_condition": "delivery_corrections entry added with exact source id, source SHA-256, source lesson id, body hash, replacement id, reason and evidence; no whole-row correction is activated while teaching scope is unresolved."
     },
     {
@@ -2927,7 +2927,7 @@
     }
   ],
   "review": {
-    "date": "2026-10-27",
+    "date": "2026-11-08",
     "reviewed_master_sha": "8fb376f413cf70403d161439800738677bbc396a",
     "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
     "source_archive": {
@@ -2948,10 +2948,10 @@
         "tests/ss1/further-mathematics.test.mts (blob b88d3d64b8311d4bab759997b686a7a3cb25d072)"
       ],
       "disposition": "Preserve; do not merge #71 or copy its schema. Ports are bounded items FM-PORT-D3-* and FM-PORT-D4-*."
-    }
+    },
+    "notes": "Added the single Week Two Further Mathematics delivery correction binding to the existing replacement after scope review of both objective-level coverage entries. Original equation-object and teacher decision items remain open; testing deferred."
   },
   "next_runnable": [
-    "FM-COR-T1-W02",
     "FM-FACT-T1-W02-EQ-OBJECTS",
     "FM-WK-T1-W03",
     "FM-WK-T1-W04",
@@ -2991,5 +2991,6 @@
     "FM-FACT-EQUATION-LOSS-T2",
     "FM-SEC-T3-W08-PERIOD3",
     "FM-FACT-T2-W11-W12-REVISION-PLAN"
-  ]
+  ],
+  "total": 90
 }
