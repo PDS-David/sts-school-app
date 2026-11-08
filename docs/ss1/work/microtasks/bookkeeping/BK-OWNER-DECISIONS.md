@@ -54,6 +54,10 @@ The three source documents use variant headings:
 
 The package keeps the observed headings and canonical subject name separately. Formal alias approval remains a metadata/owner review item; it must not be confused with teacher approval of lesson content.
 
+## Standing handling rule for analogous source defects
+
+For similar cases elsewhere in this Bookkeeping implementation, preserve the original source and its defect evidence; author a clearly labelled project replacement or equivalent teaching resource; bind the exact original lesson identity to the replacement with a delivery-correction record; and mark the defect nonblocking only for delivery once the replacement actually covers it. Do not guess missing source figures, rewrite original documents, or claim the original was corrected. Keep teacher/content approval and technical verification as separate gates. If an issue cannot be genuinely resolved by the replacement, leave it blocking and ask for the required on-the-spot subject decision without holding up unrelated work.
+
 ## Content approval versus technical verification
 
 All authored lessons remain `content_approval=PENDING` and `verification=DEFERRED`. Package status remains `PENDING`. The owner must review the teaching content and record approval or requested changes. Technical verification is separate and requires actual tests, typecheck, importer/compiler, database, device and delivery checks. No approval or verification is presumed.
