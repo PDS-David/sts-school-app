@@ -40,8 +40,8 @@
     "SOURCE_PRESERVATION": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 12,
-    "PENDING": 42,
+    "IMPLEMENTED_TESTING_DEFERRED": 13,
+    "PENDING": 41,
     "BLOCKED": 1
   },
   "items": [
@@ -336,8 +336,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Restored on the active Catering Craft branch after consolidating the source-index batch. Original archive/member hashes verified; full getBody hash 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a; week lines 384-613 hash e3fc8b5b4a674e546281d2dacf8f8f5f340d273675e09eb2588a31507bfd5330. Section and assessment index in CC-IDX-T2-W03.md. Added COV-CC-T2-W03-SCHEME-3 as PARTIAL, no lesson ids; no lesson, answer, correction, rule, approval or verification invented.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 e3fc8b5b4a674e546281d2dacf8f8f5f340d273675e09eb2588a31507bfd5330; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -2009,7 +2009,6 @@
     }
   },
   "next_runnable": [
-    "CC-IDX-T2-W03",
     "CC-IDX-T2-W09",
     "CC-IDX-T2-W10",
     "CC-IDX-T2-OPEN",

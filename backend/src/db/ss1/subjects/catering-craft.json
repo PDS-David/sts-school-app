@@ -110,6 +110,28 @@
       ]
     },
     {
+      "id": "COV-CC-T2-W03-SCHEME-3",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "objective": "Scheme week 3: Food Commodities- Milk, Vegetables and Fruits",
+      "objective_locator": "opening scheme list line 10 (SHA-256 db22520e7f7ae49ba79ba4539d49e5450cef438ebfb1dd504c0faaf4b8adacd8); body WEEK THREE lines 384-613 (SHA-256 e3fc8b5b4a674e546281d2dacf8f8f5f340d273675e09eb2588a31507bfd5330)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() line 10; scheme list lines 7-19; WEEK THREE label line 384, TOPIC line 385 and CONTENT lines 386-387",
+          "explanation": "Scheme row 3 maps by position and the matching CONTENT list 'Milk, Vegetables and Fruits'. The full section and assignment index is retained in CC-IDX-T2-W03.md."
+        },
+        {
+          "locator": "source lines 384-613; docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W03.md",
+          "explanation": "Milk, dairy products, vegetables and fruits are indexed with all seven evaluation blocks, general evaluation, reading, weekend assignment and theory. PARTIAL: no deliverable lesson exists, no answer key or marking is supplied, and factual claims remain queued. No parsed lesson id is asserted because the importer was not run."
+        },
+        {
+          "locator": "source lines 415-445 and 582-583; queue item CC-FACT-T2-MILK-HEAT-STORAGE",
+          "explanation": "Milk digestibility, storage, heat-treatment and fruit preservation figures remain assigned to the existing factual review; this index does not correct them."
+        }
+      ]
+    },
+    {
       "id": "COV-CC-T2-W04-SCHEME-4",
       "source_id": "SS1-SRC-f433169ca25c",
       "objective": "Scheme week 4: Food Commodities- Cereals, Pulses, Herbs and Flavouring",
