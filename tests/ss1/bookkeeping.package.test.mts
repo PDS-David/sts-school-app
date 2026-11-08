@@ -1,4 +1,4 @@
-// Deferred by owner. Write now; execute only during the later authorised verification stage:
+// Executed in GitHub Actions as the focused Bookkeeping package verification suite.
 // node --import tsx --test tests/ss1/bookkeeping.package.test.mts
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -57,13 +57,15 @@ test('Delivery corrections bind the exact original identity to a same-term repla
   }
 });
 
-test('Owner sign-off is recorded for every lesson without fabricating technical verification', () => {
-  for (const l of packageSchema.parse(raw).lessons) {
+test('Owner sign-off and package-level technical verification are recorded for every lesson', () => {
+  const p = packageSchema.parse(raw);
+  assert.equal(p.package_status, 'IMPLEMENTED');
+  for (const l of p.lessons) {
     assert.equal(l.state.content_approval, 'APPROVED');
     assert.match(l.state.approval_reference ?? '', /^OWNER SIGN-OFF PROVIDED 2026-11-09:/);
     assert.match(l.state.approval_reference ?? '', /all 32 SS1 Bookkeeping lessons/);
-    assert.equal(l.state.verification, 'DEFERRED');
-    assert.equal(l.state.verification_reference, null);
+    assert.equal(l.state.verification, 'VERIFIED');
+    assert.match(l.state.verification_reference ?? '', /Bookkeeping package verification run 42534557322 passed 21\/21 tests/);
   }
 });
 
@@ -123,8 +125,7 @@ test('Preamble marker coverage targets its exact SCHEME_ONLY rule, not an invent
   }
 });
 
-// The full-source compiler/parser comparison is a separate integration check.
-// These tests are written only; execution, typecheck and importer verification remain deferred.
+// The full-source compiler/parser comparison is a separate integration check; this suite verifies the subject package itself.
 
 test('Coverage entries resolve to registered sources and declared lesson or marker targets', () => {
   const p = packageSchema.parse(raw);
@@ -209,7 +210,7 @@ test('Third-term equivalent lessons have complete marked practice and exact cove
     assert.equal(lesson.body_sha256, hash);
     assert.equal(lesson.state.implementation, 'IMPLEMENTED');
     assert.equal(lesson.state.content_approval, 'APPROVED');
-    assert.equal(lesson.state.verification, 'DEFERRED');
+    assert.equal(lesson.state.verification, 'VERIFIED');
     assert(lesson.practice.length > 0);
     for (const question of lesson.practice) {
       assert.equal(question.marking.reduce((sum, part) => sum + part.marks, 0), question.marks);
@@ -259,7 +260,7 @@ test('First-term equivalent cash-book and double-entry supplements are complete'
     assert.equal(lesson.body_sha256, hash);
     assert.equal(lesson.state.implementation, 'IMPLEMENTED');
     assert.equal(lesson.state.content_approval, 'APPROVED');
-    assert.equal(lesson.state.verification, 'DEFERRED');
+    assert.equal(lesson.state.verification, 'VERIFIED');
     assert(lesson.practice.length > 0);
     for (const question of lesson.practice) {
       assert.equal(question.marking.reduce((sum, part) => sum + part.marks, 0), question.marks);
@@ -298,7 +299,7 @@ test('Owner-approved first-term delivery corrections bind each exact original bo
     '9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0');
   for (const l of p.lessons.filter(x => x.term === '1st Term')) {
     assert.equal(l.state.content_approval, 'APPROVED');
-    assert.equal(l.state.verification, 'DEFERRED');
+    assert.equal(l.state.verification, 'VERIFIED');
   }
 });
 
@@ -321,7 +322,7 @@ test('First-term extension lessons populate Weeks 5-10 without claiming recovere
     assert.equal(lesson.body_sha256, bodyHash);
     assert.equal(lesson.state.implementation, 'IMPLEMENTED');
     assert.equal(lesson.state.content_approval, 'APPROVED');
-    assert.equal(lesson.state.verification, 'DEFERRED');
+    assert.equal(lesson.state.verification, 'VERIFIED');
     assert(lesson.objectives.length > 0 && lesson.practice.length > 0);
     for (const question of lesson.practice) {
       assert.equal(question.marking.reduce((sum, part) => sum + part.marks, 0), question.marks);
@@ -357,7 +358,7 @@ test('Third-term Week 1 revision marker has a project-authored revision lesson, 
   assert(lesson);
   assert.equal(lesson.term, '3rd Term');
   assert.equal(lesson.state.content_approval, 'APPROVED');
-  assert.equal(lesson.state.verification, 'DEFERRED');
+  assert.equal(lesson.state.verification, 'VERIFIED');
   assert(lesson.objectives.length >= 4 && lesson.practice.length >= 2);
   assert.match(lesson.provenance[0].locator, /no revision body/);
   assert.equal(p.source_rules.find(x => x.id === 'RULE-BK-T3-REVISION-1')?.kind, 'SCHEME_ONLY');
@@ -378,7 +379,7 @@ test('Third-term petty cash, trial balance and suspense gaps have authored lesso
     assert.equal(lesson.body_sha256, expectedHash);
     assert.equal(lesson.state.implementation, 'IMPLEMENTED');
     assert.equal(lesson.state.content_approval, 'APPROVED');
-    assert.equal(lesson.state.verification, 'DEFERRED');
+    assert.equal(lesson.state.verification, 'VERIFIED');
     assert(lesson.practice.length >= 3);
     for (const q of lesson.practice) {
       assert.equal(q.marks, q.marking.reduce((sum, part) => sum + part.marks, 0));
