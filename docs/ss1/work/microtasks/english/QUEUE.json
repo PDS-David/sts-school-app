@@ -147,7 +147,13 @@
     "ENG-LES-T2-W09-ASSIGNMENT-RUBRIC (2026-11-08): Added SUP-SS1-ENGLISH-ESSAY-ASSIGNMENT-PLANS-T2-W09 with original plans for both supplied titles and a common 30-mark rubric. No choice rule, length or time was invented; the teacher sets those administration details. AS01 is IMPLEMENTED_EQUIVALENT.",
     "ENG-LES-T2-W10-REVISION (2026-11-08): Added SUP-SS1-ENGLISH-REVISION-T2-W10, an original cumulative 40-mark review of available taught Second Term Weeks 1-9, with a new passage, keyed answers and marking guide. The source's general revision heading does not specify scope or test format; the supplement states its scope and is not represented as recovered source material. RV01 is IMPLEMENTED_EQUIVALENT.",
     "ENG-LES-T2-W05-TOPIC-SCOPE (2026-11-08): Added SUP-SS1-ENGLISH-STEEL-DEVELOPMENT-T2-W05, an original teacher-read listening script and factual writing/report lesson using the recognisable steel-development topic in the garbled source heading. The scheme's scanning objective is covered by the existing scanning lesson. Basic process facts are paraphrased from the American Iron and Steel Institute and worldsteel; script and exercises are original. The garbled source title is preserved, not silently corrected. TP01 is IMPLEMENTED_EQUIVALENT.",
-    "ENG-LES-T2-W06-TOPIC-SCOPE (2026-11-08): Confirmed and bound the two substantiated strands: photography and religion. Coverage TP01 remains PARTIAL because the source also mentions sexuality without giving a word list or objective detail. No age-sensitive content was guessed. This residual teacher decision is non-blocking; the two evidenced strands are delivered."
+    "ENG-LES-T2-W06-TOPIC-SCOPE (2026-11-08): Confirmed and bound the two substantiated strands: photography and religion. Coverage TP01 remains PARTIAL because the source also mentions sexuality without giving a word list or objective detail. No age-sensitive content was guessed. This residual teacher decision is non-blocking; the two evidenced strands are delivered.",
+    "ENG-LES-T3-W03-FAMILY-VOCAB (2026-11-08): Added a neutral fiancé/fiancée exercise to the existing family/household lesson. It is explicitly an equivalent engagement-vocabulary task, not a guessed answer to the culturally specific bride-price clue. FR01/FR02 remain implemented; FR03 remains PARTIAL but non-blocking.",
+    "ENG-LES-T3-W04-ASSESSMENTS (2026-11-08): Added an original Commissioner-for-Education letter prompt and 20-mark rubric to SUP-SS1-ENGLISH-WEEKEND-ASSESSMENTS-T3-W04. The task uses a placeholder for the council or education-support body and instructs the teacher to supply its exact name and role; no institution is guessed.",
+    "ENG-LES-T3-W05-SCHEME-GAP (2026-11-08): Added SUP-SS1-ENGLISH-DIPHTHONGS-CONJUNCTS-DISJUNCTS-T3-W05 for scheme-only /eɪ/, /aɪ/ and conjunct/disjunct strands. Existing Week 5 body lessons remain intact; discrepancy is preserved and new coverage is additive.",
+    "ENG-LES-T1-W07-REVISION (2026-11-08): Added SUP-SS1-ENGLISH-W07-CONSONANT-REVISION-EQUIVALENT-T1 with explicitly marked target graphemes, IPA answers and 20-mark keyed practice. It is an original equivalent; exact underlining in the source Word document is not inferred. The source-visual inspection item is retained as non-blocking.",
+    "ENG-FACT-W08-EXTERNAL-MATERIALS (2026-11-08): Added SUP-SS1-ENGLISH-JEWISH-COMMUNITIES-READING-T1-W08, an original, sourced reading passage and 20-mark keyed comprehension exercise. It is a clearly labelled equivalent, not a reproduction of the unavailable textbook passage or page-61 questions.",
+    "ENG-FACT-W09-EXTERNAL-MATERIALS (2026-11-08): Added SUP-SS1-ENGLISH-RELIGION-READING-T1-W09, an original neutral religion-vocabulary passage and 16-mark keyed reading assignment. It is a labelled equivalent for the unavailable Effective English page; no textbook page or key is claimed as inspected."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -160,9 +166,9 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 233,
+    "IMPLEMENTED_TESTING_DEFERRED": 239,
     "PENDING": 0,
-    "BLOCKED": 9
+    "BLOCKED": 3
   },
   "items": [
     {
@@ -1555,8 +1561,8 @@
       "depends_on": [
         "ENG-WK-T3-W03"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Partial implementation: added SUP-SS1-ENGLISH-FAMILY-HOUSEHOLD-VOCAB-T3-W03 with reviewed family and household definitions and keyed practice. FR01 and FR02 now IMPLEMENTED_EQUIVALENT; FR03 remains PARTIAL because the source's bride-price clue has no universal one-word equivalent. Teacher decision required: confirm the intended local term or approve replacing that item with a neutral engagement-vocabulary question. Do not infer the source key.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json: SUP-SS1-ENGLISH-FAMILY-HOUSEHOLD-VOCAB-T3-W03. Added neutral fiancé/fiancée vocabulary as a clearly labelled equivalent. The culturally specific bride-price clue remains PARTIAL and non-blocking; no universal source answer is invented. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "FR01 to FR03 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -1746,8 +1752,8 @@
       "depends_on": [
         "ENG-WK-T3-W04"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Partial implementation: added SUP-SS1-ENGLISH-WEEKEND-ASSESSMENTS-T3-W04. GV03 is covered by the five-word sentence task in the government-vocabulary supplement; WA01 has an original eight-gap passage with a complete key; TH01 has a balanced political letter-writing task and 20-mark rubric. FL08 remains PARTIAL because the source says 'your council' without identifying the council or its role in the school-aid programme. Teacher decision required; recommended interpretation is local government council. Do not assume. Approval PENDING; verification/testing deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json: SUP-SS1-ENGLISH-WEEKEND-ASSESSMENTS-T3-W04. Added a 20-mark Commissioner-for-Education letter task and rubric using a placeholder for the exact council/education-support body, avoiding an unsupported assumption about its identity. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "ENGLISH-T3-W04-FL08, GV03, WA01 and TH01 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -1805,8 +1811,8 @@
       "depends_on": [
         "ENG-WK-T3-W05"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Teacher decision required: Week 5 scheme row names diphthongs /eɪ/ and /aɪ/ and conjuncts/disjuncts, but the detailed Week 5 lesson body instead teaches skimming/scanning, three consonant contrasts and nominalization. Recommended no-hindrance approach: retain the detailed weekly-body lessons and add the scheme-row diphthong and conjunct/disjunct lessons as clearly labelled supplementary coverage, recording the discrepancy. Please confirm whether to add those two scheme-only strands rather than replace the detailed weekly-body topics.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json: SUP-SS1-ENGLISH-DIPHTHONGS-CONJUNCTS-DISJUNCTS-T3-W05. Added additive original teaching and keyed practice for /eɪ/, /aɪ/, conjuncts and disjuncts. Existing Week 5 body topics remain intact; scheme/body discrepancy is retained. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "ENGLISH-T3-W05-SR01, SO01 and SO02 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -5114,8 +5120,8 @@
       "depends_on": [
         "ENG-WK-T1-W07"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "BLOCKED BY REQUIRED VISUAL SOURCE INSPECTION. The exact Word DOC's Week 7 revision underlining determines the tested target letters/sounds; existing text extraction explicitly loses underlining and supplies no key. The registered source is SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc (expected SHA256 4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef) in docs/ss1/sources/SSS1-original.zip (registered archive SHA256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e). Current GitHub file tools cannot retrieve/render the binary archive/DOC for visual inspection in this session; no target letters or sounds were guessed and no lesson was authored. Exact blocker/follow-up is recorded in backend/src/db/ss1/subjects/english.json open_items[ENGLISH-T1-W07-REVISION-UNDERLINE-INSPECTION]. A local-checkout agent must verify both hashes, inspect only source lines 1164-1170 in Word layout, record underlined targets, then add clearly labelled original keyed matching items. Do not infer answers from text/options. Source member and original row remain unchanged.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json: SUP-SS1-ENGLISH-W07-CONSONANT-REVISION-EQUIVALENT-T1. Added original consonant revision with explicitly marked graphemes, IPA targets and a 20-mark key. Exact original Word underlining is not claimed or reconstructed. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "All named objectives have evidence-backed coverage; exact remaining gates explicitly retained. No invented approvals.",
       "required_attachments": [
         {
@@ -5146,8 +5152,8 @@
       "depends_on": [
         "ENG-WK-T1-W08"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Partial implementation remains: SUP-SS1-ENGLISH-READING-ASSIGNMENTS-T1-W08 supplies original keyed equivalents for CO03 (Effective English Unit 3 page 54), AJ07 (Countdown in English page 209) and ES05 (Countdown page 28). Source reinspection 2026-11-08 verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and first-term English member SHA-256 4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef. The rendered Week 8 body contains only a five-sentence synopsis under 'THE JEWS' and a pointer to page-61 questions; neither the original passage nor questions/answers are in the archive. The owner previously required exact passage wording and prohibited substitutes, paraphrases or invented text. CO01/CO02 remain unresolved; this task is BLOCKED pending the authorised pages and correct title/author/edition. No textbook page is claimed to have been inspected.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json: SUP-SS1-ENGLISH-JEWISH-COMMUNITIES-READING-T1-W08. Added an original reading passage about Jewish communities and keyed 20-mark comprehension questions as a labelled equivalent for the unavailable textbook passage and page-61 questions. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Owner supplies the authorised exact passage and page-61 questions with correct title/author/edition; only then may CO01/CO02 be taught and keyed. No substitute, paraphrase or invented material.",
       "required_attachments": []
     },
@@ -5300,8 +5306,8 @@
       "depends_on": [
         "ENG-WK-T1-W09"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Partial implementation 2026-11-07: existing original supplements SUP-SS1-ENGLISH-COMPREHENSION-METHOD-T1-W09 and SUP-SS1-ENGLISH-EMPHATIC-STRESS-T1-W09 are bound as equivalents for CO03, CO04 and ST05. The remaining pointer is Effective English Unit 3 page 54 (VR05), tied to the unresolved teacher decision on religion-vocabulary scope (Christian-centred or multi-faith). The verified English source archive does not contain the referenced textbook page or its answers. Preserve the source terms verbatim; no topic substitution or rewriting is authorised. Task is BLOCKED pending the scope decision and authorised page or explicit acceptance of a labelled equivalent.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json: SUP-SS1-ENGLISH-RELIGION-READING-T1-W09. Added an original neutral religion-vocabulary passage and keyed 16-mark reading assignment as a labelled equivalent for the unavailable Effective English page. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Teacher confirms the religion-reading scope and the authorised page/edition is supplied, or explicitly accepts a labelled equivalent within that scope; then update VR05 and the open item. No substitution or rewriting without that decision.",
       "required_attachments": []
     },
