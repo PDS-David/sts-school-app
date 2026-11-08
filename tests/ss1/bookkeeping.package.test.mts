@@ -5,7 +5,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
-import { applyRules } from '../../backend/src/db/ss1/compiler.ts';
+import { applyRules, compilePackages } from '../../backend/src/db/ss1/compiler.ts';
+import { isSchemeWorkWeekHeader } from '../../backend/src/db/ss1/topicParserRules.ts';
 
 const raw = JSON.parse(readFileSync(new URL('../../backend/src/db/ss1/subjects/bookkeeping.json', import.meta.url), 'utf8'));
 const manifest = [
@@ -216,7 +217,7 @@ test('Owner-confirmed second-term duplicate is excluded by matching parsed teach
     assert.equal(c.source_id, 'SS1-SRC-97c1db5b1eb0', 'the registered T2 source is only the term-bucket key');
     assert.equal(c.status, 'IMPLEMENTED_EQUIVALENT');
     assert.equal(c.lesson_ids.length, 1);
-    assert.match(c.lesson_ids[0], /^SUP-SS1-BOOKKEEPING-T2-W\\d{2}$/);
+    assert.match(c.lesson_ids[0], /^SUP-SS1-BOOKKEEPING-T2-W\d{2}$/);
     assert.match(c.objective_locator, /not the duplicate source body/);
     assert.match(c.evidence[0].explanation, /solely the assigned second-term manifest bucket/);
   }
@@ -289,12 +290,12 @@ test('Owner-approved first-term delivery corrections bind each exact original bo
 test('First-term extension lessons populate Weeks 5-10 without claiming recovered source pages', () => {
   const p = packageSchema.parse(raw);
   const expected = new Map([
-    ['SUP-SS1-BOOKKEEPING-T1-W05-DOUBLE-COLUMN-LAYOUT', '92a8db103cc7fcc8ced28a9c822b2edcf3e0a88e31affc5ba5a4e9b596ddc52b'],
-    ['SUP-SS1-BOOKKEEPING-T1-W06-DOUBLE-COLUMN-PREPARATION', 'a3861e6190af106480cebfaadc57ba16b097ea4e620c5507c6599bfa98b35537'],
-    ['SUP-SS1-BOOKKEEPING-T1-W07-CONTRA-PRACTICE', '0c6a283cb79ea1b6d57b4a809b265da22019dd6579b06867442236035bf1e613'],
-    ['SUP-SS1-BOOKKEEPING-T1-W08-DOUBLE-ENTRY-FOUNDATION', 'c60d15c908b507cfd8d9db7cdfb47b77fbfc2622e5731fb8701e7f88a474c09c'],
-    ['SUP-SS1-BOOKKEEPING-T1-W09-DEBIT-CREDIT-IDENTIFICATION', '9e1e346c3dd71117667d43adb0d5a72ce552474010076917a62d06a3284496b0'],
-    ['SUP-SS1-BOOKKEEPING-T1-W10-CASHBOOK-TO-LEDGER', '0050d6d44ee44d7439a95cb3e57e9ce38550aef84c45723dcfa373cb8a1c9ea9'],
+    ['SUP-SS1-BOOKKEEPING-T1-W05-DOUBLE-COLUMN-LAYOUT', '2e7da7cc0c764fc75adf97957211d7936ba19a4c8b8574c4ff3c06fb7e49ccc9'],
+    ['SUP-SS1-BOOKKEEPING-T1-W06-DOUBLE-COLUMN-PREPARATION', '3344375aa2da1567815adb31ba818ead1a432298fa0d32b71332dfc850f78bab'],
+    ['SUP-SS1-BOOKKEEPING-T1-W07-CONTRA-PRACTICE', '2e02958366bc070ac053d3bd8cd6ef6e04f75d93fd44cd6175c65fad1a04b177'],
+    ['SUP-SS1-BOOKKEEPING-T1-W08-DOUBLE-ENTRY-FOUNDATION', 'e83139ef64dacf1408c4e3b4a4ee1e623865a0be918eb5f7ce6232197fc9b26c'],
+    ['SUP-SS1-BOOKKEEPING-T1-W09-DEBIT-CREDIT-IDENTIFICATION', '8f26052d3b161ffe71f34906e83f354962c1b7ee4f194a92e70124b4a1d8d91a'],
+    ['SUP-SS1-BOOKKEEPING-T1-W10-CASHBOOK-TO-LEDGER', '633a1ec5d574e2702a6c5476a1563a4648f42bb79b241a2307ee24545d629e05'],
   ]);
   for (const [id, bodyHash] of expected) {
     const lesson = p.lessons.find(x => x.id === id);
@@ -311,7 +312,7 @@ test('First-term extension lessons populate Weeks 5-10 without claiming recovere
   }
   const weeks = new Set(p.lessons
     .filter(x => x.term === '1st Term')
-    .map(x => x.id.match(/T1-W(\\d{2})/)?.[1])
+    .map(x => x.id.match(/T1-W(\d{2})/)?.[1])
     .filter(Boolean));
   assert.deepEqual([...weeks].sort(), ['01','02','03','04','05','06','07','08','09','10']);
   const scope = p.open_items.find(x => x.id === 'BOOKKEEPING-T1-SCHEME-VS-BODY');
@@ -366,4 +367,71 @@ test('Third-term petty cash, trial balance and suspense gaps have authored lesso
     assert(c.lesson_ids.includes(w5.id));
   }
   assert.equal(p.coverage.filter(x => x.id.startsWith('COV-BK-T3-') && x.status === 'PARTIAL').length, 0);
+});
+
+
+test('scheme-of-work WEEK column heading is not parsed as a Week 1 lesson marker', () => {
+  const markerPattern = /^[ \t]*week\s*[:.\-]*\s*((?:\d+(?:\s*(?:&|and|,|-)\s*\d+)?)|(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen))/gim;
+  const schemePreamble = 'SCHEME OF WORK  \nWEEK\n1                 Revision\n2. Petty cash book\n11 revision\n12 exam\n';
+  const marker = [...schemePreamble.matchAll(markerPattern)][0];
+  assert(marker);
+  assert.equal(isSchemeWorkWeekHeader(schemePreamble, marker.index!, marker[0]), true);
+
+  const sameLineWeek = 'SCHEME OF WORK\nWEEK 1 Revision\n';
+  const sameLineMatch = [...sameLineWeek.matchAll(markerPattern)][0];
+  assert(sameLineMatch);
+  assert.equal(isSchemeWorkWeekHeader(sameLineWeek, sameLineMatch.index!, sameLineMatch[0]), false);
+
+  const nonSchemeWeek = 'INTRODUCTION\nWEEK\n1 Revision\n';
+  const nonSchemeMatch = [...nonSchemeWeek.matchAll(markerPattern)][0];
+  assert(nonSchemeMatch);
+  assert.equal(isSchemeWorkWeekHeader(nonSchemeWeek, nonSchemeMatch.index!, nonSchemeMatch[0]), false);
+});
+
+
+test('Bookkeeping source rules compile the scheme preamble as markers, not a Week 1 lesson', () => {
+  const complete = JSON.parse(JSON.stringify(raw));
+  const source = complete.sources.find((s: any) => s.term === '3rd Term');
+  assert(source);
+  const pkg = {
+    ...complete,
+    sources: [source],
+    source_rules: complete.source_rules.filter((r: any) => r.source_id === source.source_id),
+    lessons: complete.lessons.filter((l: any) => l.term === '3rd Term'),
+    coverage: complete.coverage.filter((c: any) => c.id.startsWith('COV-BK-T3-')),
+    delivery_corrections: [],
+    assets: [],
+  };
+  const rules = pkg.source_rules;
+  const markerRules = rules.filter((r: any) => r.op === 'classify_marker');
+  const splitRules = rules.filter((r: any) => r.op === 'split_before');
+  const text = [
+    source.header_text,
+    'SCHEME OF WORK',
+    'WEEK',
+    ...markerRules.map((r: any) => r.anchor),
+    ...splitRules.map((r: any) => r.anchor),
+  ].join('\n') + '\n';
+
+  const weekMarker = /^[ \t]*week\s*[:.\-]*\s*((?:\d+(?:\s*(?:&|and|,|-)\s*\d+)?)|(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen))/gim;
+  const parse = (input: string) => {
+    const matches = [...input.matchAll(weekMarker)].filter(m => !isSchemeWorkWeekHeader(input, m.index!, m[0]));
+    return matches.map((m, i) => {
+      const start = m.index!;
+      const end = i + 1 < matches.length ? matches[i + 1].index! : input.length;
+      const body = input.slice(start, end).trim();
+      const title = body.split('\n').map(line => line.trim()).find(line => line && !/^week\b/i.test(line)) ?? '(untitled)';
+      return { weekLabel: m[0].trim(), title, body };
+    });
+  };
+  const plan = compilePackages(
+    [pkg],
+    [{ source_id: source.source_id, sha256: source.sha256, filePath: 'SSS 1/3rd Term SS1_/BOOK KEEPING_.docx', text }],
+    parse,
+  );
+  const sourceRows = plan.rows.filter(row => row.filePath === 'SSS 1/3rd Term SS1_/BOOK KEEPING_.docx');
+  assert.deepEqual(sourceRows.map(row => row.weekLabel.match(/\d+/)?.[0]), ['2', '3', '4', '5', '6', '7', '8', '10']);
+  for (const rule of markerRules) {
+    assert(plan.dispositions.some(d => d.id === rule.id && d.status === 'SCHEME_ONLY'));
+  }
 });
