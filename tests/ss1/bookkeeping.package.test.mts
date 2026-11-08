@@ -65,11 +65,15 @@ test('No lesson checkpoint fabricates content approval or completed verification
   }
 });
 
-test('Source aliases remain visibly pending owner confirmation', () => {
+test('Source aliases carry the recorded owner confirmation without implying lesson approval', () => {
   const p = packageSchema.parse(raw);
   for (const r of p.source_rules.filter(r => r.op === 'source_alias')) {
-    assert.match(r.approval_reference, /^PENDING-OWNER:/);
+    assert.match(r.approval_reference, /^OWNER CONFIRMED 2026-11-08:/);
+    assert.match(r.approval_reference, /metadata alias/);
     assert(p.sources.some(s => s.source_id === r.source_id && s.sha256 === r.source_sha256));
+  }
+  for (const id of ['BOOKKEEPING-ALIAS-APPROVAL', 'BOOKKEEPING-ALIAS-APPROVAL-T2', 'BOOKKEEPING-ALIAS-APPROVAL-T3']) {
+    assert.equal(p.open_items.find(x => x.id === id)?.blocks_delivery, false);
   }
 });
 
@@ -248,3 +252,35 @@ test('First-term equivalent cash-book and double-entry supplements are complete'
   assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W01-ILLUS-2').status, 'PARTIAL');
   assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W04-ILLUSTRATION').status, 'PARTIAL');
 });
+
+test('Owner-approved first-term delivery corrections bind each exact original body to its authored replacement', () => {
+  const p = packageSchema.parse(raw);
+  const expected = new Map([
+    ['CORR-BK-T1-W01', ['e4dbc7a1ff59d4a1fe5da4b9ff975ab60c94df281e8774f5bf2330ddc21d7ccd', 'SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK']],
+    ['CORR-BK-T1-W02', ['bb5f26395bbe6ce4bae80f128748821df86b6895d8a4a4e87ead79c6d31f2e4b', 'SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK']],
+    ['CORR-BK-T1-W03', ['194de4c5fde3e27a5596871b7a860b26a5456eaedf0d3c24ab31f89e2132eb8a', 'SUP-SS1-BOOKKEEPING-T1-W03-CONTRA']],
+    ['CORR-BK-T1-W04', ['890fb8fac8f6b9b6cf32bfe5fc5a3e21bcd464e447b214ac1a9eb9d7128f8409', 'SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY']],
+  ]);
+  assert.equal(p.delivery_corrections.length, expected.size);
+  for (const [id, [bodyHash, replacementId]] of expected) {
+    const c = p.delivery_corrections.find(x => x.id === id);
+    assert(c);
+    assert.equal(c.source_id, 'SS1-SRC-62b02f2adcb3');
+    assert.equal(c.body_sha256, bodyHash);
+    assert.equal(c.source_lesson_id, `SS1-SRC-62b02f2adcb3:BODY:${bodyHash}`);
+    assert.equal(c.replacement_id, replacementId);
+    assert.match(c.evidence.explanation, /Owner approved/);
+  }
+  for (const item of p.open_items.filter(x => /^BOOKKEEPING-T1-W0[1-4]-/.test(x.id))) {
+    assert.equal(item.blocks_delivery, false, `approved replacement should resolve delivery blocker: ${item.id}`);
+    assert.match(item.required_action, /owner approval/i);
+  }
+  // Approval substitutes the delivery lesson; it never rewrites the registered source or claims it is technically verified.
+  assert.equal(p.sources.find(s => s.source_id === 'SS1-SRC-62b02f2adcb3')?.sha256,
+    '9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0');
+  for (const l of p.lessons.filter(x => x.term === '1st Term')) {
+    assert.equal(l.state.content_approval, 'PENDING');
+    assert.equal(l.state.verification, 'DEFERRED');
+  }
+});
+
