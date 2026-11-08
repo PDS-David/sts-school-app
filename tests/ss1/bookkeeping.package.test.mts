@@ -197,24 +197,17 @@ test('Third-term equivalent lessons have complete marked practice and exact cove
   }
 });
 
-test('Second-term revision and examination markers remain scheme-only', () => {
+test('Owner-confirmed second-term duplicate is excluded by matching parsed teaching, not file metadata', () => {
   const p = packageSchema.parse(raw);
-  const expected = new Map([
-    ['COV-BK-T2-REVISION-1', 'RULE-BK-T2-REVISION-1'],
-    ['COV-BK-T2-REVISION-11', 'RULE-BK-T2-REVISION-11'],
-    ['COV-BK-T2-EXAM-12', 'RULE-BK-T2-EXAM-12'],
-  ]);
-  for (const [coverageId, ruleId] of expected) {
-    const c = p.coverage.find(x => x.id === coverageId);
-    const r = p.source_rules.find(x => x.id === ruleId);
-    assert(c && r);
-    assert.equal(c.status, 'MARKER');
-    assert.deepEqual(c.lesson_ids, [ruleId]);
-    if (r.op !== 'classify_marker') assert.fail('marker target must be a classify_marker rule');
-    assert.equal(r.kind, 'SCHEME_ONLY');
-    assert.equal(r.source_id, 'SS1-SRC-97c1db5b1eb0');
-    assert.equal(r.source_sha256, 'c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3');
-  }
+  const r = p.source_rules.find(x => x.id === 'RULE-BK-T2-EXCLUDE-DUPLICATE');
+  assert(r && r.op === 'exclude_duplicate');
+  assert.equal(r.source_id, 'SS1-SRC-97c1db5b1eb0');
+  assert.equal(r.source_sha256, 'c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3');
+  assert.equal(r.target_source_id, 'SS1-SRC-62b02f2adcb3');
+  assert.equal(r.target_sha256, '9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0');
+  assert.match(r.evidence.explanation, /Owner confirmed/);
+  assert.equal(p.coverage.some(c => c.id.startsWith('COV-BK-T2-')), false);
+  assert.equal(p.open_items.find(x => x.id === 'BOOKKEEPING-T2-TEXT-MATCHES-T1')?.blocks_delivery, false);
 });
 
 test('First-term equivalent cash-book and double-entry supplements are complete', () => {
