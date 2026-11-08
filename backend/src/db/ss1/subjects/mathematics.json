@@ -714,12 +714,15 @@
       "subject": "Mathematics",
       "title": "Modular arithmetic: reducing, operations and equations",
       "objectives": [
-        "Reduce positive and negative integers modulo n",
-        "Add, subtract and multiply in a modulus",
-        "Solve linear equations in a modulus and recognise when there is more than one solution"
+        "Explain modulus and congruence as equality of remainders.",
+        "Reduce positive and negative integers to their simplest form in a given modulus.",
+        "Add, subtract and multiply in modular arithmetic.",
+        "Complete addition and multiplication tables in a given modulus.",
+        "Apply modular arithmetic to cyclic events such as clocks, market days and circular tracks.",
+        "Solve simple linear congruences and recognise when more than one solution exists."
       ],
-      "body": "MODULAR ARITHMETIC\n\nWhat you will learn: how to reduce a number to its remainder in a given modulus, add, subtract and multiply in a modulus, and solve simple modular equations.\n\n1. Meaning\nModular arithmetic describes repeating (cyclic) situations such as hours on a clock, days of the week or months of the year. Working modulo n means we only care about the remainder after dividing by n. We write a = r (mod n) when a and r leave the same remainder on division by n, so a - r is a multiple of n. The possible results are 0, 1, ..., n-1. Any integer, positive or negative, can be reduced; the number being reduced does not have to be smaller than the modulus.\n\n2. Reducing\n- 15 (mod 4): 15 = 3 x 4 + 3, so 3.\n- 102 (mod 4): 102 = 25 x 4 + 2, so 2.\n- Clock: the short hand points to 5. After 30 hours it points to (5 + 30) mod 12 = 35 mod 12 = 11.\nNegative numbers: add multiples of n until the result is between 0 and n-1.\n- -5 (mod 6) = -5 + 6 = 1.   - -17 (mod 10) = -17 + 20 = 3.   - -75 (mod 7) = -75 + 77 = 2.\n\n3. Addition, subtraction, multiplication\nAdd, subtract or multiply as usual, then reduce.\n- (42 + 28) mod 8 = 70 mod 8 = 6.   - (54 + 25) mod 5 = 79 mod 5 = 4.\n- (16 x 7) mod 5 = 112 mod 5 = 2.   - (21 x 65) mod 4 = 1365 mod 4 = 1.\nNote: 16 x 7 = 112 (not 117); the answer 2 only happens to be correct because 117 mod 5 is also 2. Always check the product.\n\n4. Equations\nExample 1. Solve 3x = 5 (mod 7). Test x = 0 to 6, or add 7 to the right side until it divides by 3: 5, 12. 3x = 12 gives x = 4. Check: 3 x 4 = 12 = 5 (mod 7).\nExample 2. Solve 2x + 3 = 1 (mod 6). Subtract 3: 2x = -2 = 4 (mod 6). Test x = 0..5: x = 2 gives 4, x = 5 gives 10 = 4 (mod 6). Both work, so x = 2 or x = 5 (mod 6). Check: 2 x 5 + 3 = 13 = 1 (mod 6). When the coefficient of x and the modulus share a factor (here 2 and 6), there can be more than one solution.\n",
-      "body_sha256": "0ed48fe41aba6d8684b87418468375fd012e725d8e0ac0f1b72d178e7854f7b5",
+      "body": "MODULAR ARITHMETIC\n\nWhat you will learn: how to reduce a number to its remainder in a given modulus, add, subtract and multiply in a modulus, and solve simple modular equations.\n\n1. Meaning\nModular arithmetic describes repeating (cyclic) situations such as hours on a clock, days of the week or months of the year. Working modulo n means we only care about the remainder after dividing by n. We write a = r (mod n) when a and r leave the same remainder on division by n, so a - r is a multiple of n. The possible results are 0, 1, ..., n-1. Any integer, positive or negative, can be reduced; the number being reduced does not have to be smaller than the modulus.\n\n2. Reducing\n- 15 (mod 4): 15 = 3 x 4 + 3, so 3.\n- 102 (mod 4): 102 = 25 x 4 + 2, so 2.\n- Clock: the short hand points to 5. After 30 hours it points to (5 + 30) mod 12 = 35 mod 12 = 11.\nNegative numbers: add multiples of n until the result is between 0 and n-1.\n- -5 (mod 6) = -5 + 6 = 1.   - -17 (mod 10) = -17 + 20 = 3.   - -75 (mod 7) = -75 + 77 = 2.\n\n3. Addition, subtraction, multiplication\nAdd, subtract or multiply as usual, then reduce.\n- (42 + 28) mod 8 = 70 mod 8 = 6.   - (54 + 25) mod 5 = 79 mod 5 = 4.\n- (16 x 7) mod 5 = 112 mod 5 = 2.   - (21 x 65) mod 4 = 1365 mod 4 = 1.\nNote: 16 x 7 = 112 (not 117); the answer 2 only happens to be correct because 117 mod 5 is also 2. Always check the product.\n\n7. Equations\nExample 1. Solve 3x = 5 (mod 7). Test x = 0 to 6, or add 7 to the right side until it divides by 3: 5, 12. 3x = 12 gives x = 4. Check: 3 x 4 = 12 = 5 (mod 7).\nExample 2. Solve 2x + 3 = 1 (mod 6). Subtract 3: 2x = -2 = 4 (mod 6). Test x = 0..5: x = 2 gives 4, x = 5 gives 10 = 4 (mod 6). Both work, so x = 2 or x = 5 (mod 6). Check: 2 x 5 + 3 = 13 = 1 (mod 6). When the coefficient of x and the modulus share a factor (here 2 and 6), there can be more than one solution.\n\n4. Subtraction and operation tables\nFor subtraction, subtract first and then reduce the result to one of 0, 1, ..., n-1. For example:\n- 2 − 3 = −1 = 3 (mod 4).\n- 17 − 23 = −6 = 0 (mod 6).\n\nAddition table modulo 4:\n⊕ | 0 | 1 | 2 | 3\n0 | 0 | 1 | 2 | 3\n1 | 1 | 2 | 3 | 0\n2 | 2 | 3 | 0 | 1\n3 | 3 | 0 | 1 | 2\n\nSubtraction table modulo 4:\n⊖ | 0 | 1 | 2 | 3\n0 | 0 | 3 | 2 | 1\n1 | 1 | 0 | 3 | 2\n2 | 2 | 1 | 0 | 3\n3 | 3 | 2 | 1 | 0\n\nMultiplication table modulo 4:\n× | 0 | 1 | 2 | 3\n0 | 0 | 0 | 0 | 0\n1 | 0 | 1 | 2 | 3\n2 | 0 | 2 | 0 | 2\n3 | 0 | 3 | 2 | 1\n\n5. Applications to cyclic events\n- Clock: the short hand points to 5. Thirty hours later it points to (5 + 30) mod 12 = 11.\n- Rotating market days: if a market repeats every 4 days, a date 10 days later is 10 mod 4 = 2 places forward in the cycle.\n- A toy car on a circular track returns to its starting point after each complete circuit; the position can be described by the distance travelled modulo the track circumference.\n\n6. Completing a multiplication table modulo 6\nFor rows and columns 2, 3, 4 and 5, multiply and reduce each product modulo 6:\n× | 2 | 3 | 4 | 5\n2 | 4 | 0 | 2 | 4\n3 | 0 | 3 | 0 | 3\n4 | 2 | 0 | 4 | 2\n5 | 4 | 3 | 2 | 1\n\n8. Source correction and calculation checks\nThe modulus does not have to be greater than the number being reduced; any integer can be reduced modulo n. Also check ordinary products before reducing: 16 × 7 = 112, not 117.",
+      "body_sha256": "f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875",
       "practice": [
         {
           "id": "M1W4-Q1",
@@ -792,6 +795,114 @@
               "marks": 1
             }
           ]
+        },
+        {
+          "id": "M1W4-Q4",
+          "question": "Find (a) −75 (mod 7) and (b) −56 (mod 13).",
+          "answer": "(a) −75 + 77 = 2, so −75 = 2 (mod 7). (b) −56 + 65 = 9, so −56 = 9 (mod 13).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Finds −75 (mod 7) = 2.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds −56 (mod 13) = 9.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W4-Q5",
+          "question": "Evaluate (a) 8 × 25 (mod 3), (b) 27 × 4 (mod 7), and (c) 21 × 65 (mod 4).",
+          "answer": "(a) 200 mod 3 = 2. (b) 108 mod 7 = 3. (c) 1,365 mod 4 = 1.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "(a) answer 2.",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) answer 3.",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) answer 1.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W4-Q6",
+          "question": "Calculate (a) 42 + 28 (mod 8) and (b) 12 + 9 (mod 4).",
+          "answer": "(a) 70 mod 8 = 6. (b) 21 mod 4 = 1.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "(a) answer 6.",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) answer 1.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W4-Q7",
+          "question": "Calculate (a) 2 − 3 (mod 4) and (b) 17 − 23 (mod 6).",
+          "answer": "(a) −1 mod 4 = 3. (b) −6 mod 6 = 0.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "(a) answer 3.",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) answer 0.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W4-Q8",
+          "question": "Complete the multiplication table modulo 6 for rows and columns 2, 3, 4 and 5.",
+          "answer": "Rows: 2 → 4,0,2,4; 3 → 0,3,0,3; 4 → 2,0,4,2; 5 → 4,3,2,1.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Correct row for 2.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct row for 3.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct row for 4.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct row for 5.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W4-Q9",
+          "question": "A clock's short hand points to 5. What number will it point to 30 hours later? A market repeats every 4 days; how many places forward in its cycle is a date 10 days later?",
+          "answer": "Clock: (5 + 30) mod 12 = 35 mod 12 = 11. Market: 10 mod 4 = 2 places forward.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Clock answer 11.",
+              "marks": 1
+            },
+            {
+              "criterion": "Market-cycle answer 2 places forward.",
+              "marks": 1
+            }
+          ]
         }
       ],
       "provenance": [
@@ -802,6 +913,30 @@
           "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. The teaching sequence follows the school's own scheme in the cited source. ",
           "reuse_status": "PERMITTED",
           "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        },
+        {
+          "title": "Modular Arithmetic | SS1 Mathematics",
+          "locator": "Federal Ministry of Education, Nigeria, Inspire portal; SS1 outcomes include concept of modular arithmetic, addition/subtraction/multiplication operations and applications to daily life.",
+          "url": "https://inspire.education.gov.ng/lessons/1305/preview",
+          "rights": "No wording, video, tables or exercises are copied. The supplement is independently authored; the official portal is cited to corroborate SS1 scope only.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Federal Ministry of Education, Nigeria, Inspire, “Modular Arithmetic | SS1 Mathematics”, accessed 2026-11-08."
+        },
+        {
+          "title": "Modular Arithmetic — SS1 Maths Lesson Note (First Term)",
+          "locator": "Public close-equivalent page; definitions, remainder reduction, positive/negative values, addition/multiplication tables, evaluation and assignment. It is not verified byte-identical to the archive member.",
+          "url": "https://lessonnotes.ng/ss1/mathematics/modular-arithmetic/",
+          "rights": "No wording, tables, examples or questions are copied. Original teaching text, tables and practice are independently authored; page used only to corroborate topic sequence and assessment scope.",
+          "reuse_status": "PERMITTED",
+          "attribution": "LessonNotes.ng, “Modular Arithmetic — SS1 Maths Lesson Note (First Term)”, accessed 2026-11-08."
+        },
+        {
+          "title": "Mathematics Lesson Note for SS1 (First Term) 2024",
+          "locator": "Public close-equivalent Week 4 modular arithmetic note; clock arithmetic, addition/subtraction/multiplication and exercise structure.",
+          "url": "https://schoolgist.ng/mathematics-lesson-note-for-ss1-first-term-3",
+          "rights": "No wording, diagrams, tables or exercises are copied. Independently authored supplement; source used for topic and exercise corroboration only.",
+          "reuse_status": "PERMITTED",
+          "attribution": "SchoolGist, “Mathematics Lesson Note for SS1 (First Term) 2024”, Week 4, accessed 2026-11-08."
         }
       ],
       "state": {
@@ -2948,7 +3083,7 @@
       "reason": "Source states the modulus must exceed the number reduced (false), gives 16×7=117 (correct 112) and lists only x=2 for 2x+3≡1 (mod 6) (x=2 and x=5).",
       "evidence": {
         "locator": "Mathematics 1st term; parsed row 3 (\"MODULAR ARITHMETIC\")",
-        "explanation": "Original row text is retained unchanged in provenance; the replacement is delivered instead (runtime wiring by SS1-08)."
+        "explanation": "The correction retains three source defects: the modulus need not be greater than the number reduced; 16×7 is 112, not 117; and 2x+3≡1 (mod 6) has both x=2 and x=5. The replacement now includes explicit modular subtraction, operation tables modulo 4 and a completed multiplication table modulo 6, positive/negative reductions, clock/market-cycle applications and the full close-equivalent assessment set. Exercise mapping: −75 mod7 and −56 mod13 -> M1W4-Q4; 8×25 mod3, 27×4 mod7, 21×65 mod4 -> Q5; 42+28 mod8 and 12+9 mod4 -> Q6; explicit subtraction -> Q7; multiplication table mod6 -> Q8; cyclic clock/market application -> Q9. Existing Q1–Q3 retain positive/negative reduction, cycle movement and modular equations. The public close-equivalent source is not asserted byte-identical to the archive member. No source row/hash was changed."
       }
     },
     {
@@ -3456,7 +3591,7 @@
     {
       "id": "COV-MATH-T1-R03",
       "source_id": "SS1-SRC-0c9004137f95",
-      "objective": "Modular arithmetic",
+      "objective": "Concept of modular arithmetic; reduction of positive/negative integers; addition, subtraction and multiplication in a modulus; application to cyclic daily-life situations.",
       "objective_locator": "1st-term scheme line 4; parsed row 3",
       "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
@@ -3465,8 +3600,16 @@
       ],
       "evidence": [
         {
-          "locator": "supplement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
-          "explanation": "Authored lesson with explanation, worked examples recomputed from first principles, practice with full answers and marking; replaces the original row for delivery."
+          "locator": "Supplement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875.",
+          "explanation": "Original equivalent lesson now covers remainder/congruence, positive and negative reduction, addition/subtraction/multiplication, operation tables, cyclic applications and modular equations. Source arithmetic defects are corrected."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire, “Modular Arithmetic | SS1 Mathematics”.",
+          "explanation": "Official SS1 outcomes corroborate the concept, operations and daily-life applications."
+        },
+        {
+          "locator": "Public close-equivalent Week 4 modular arithmetic note, lessonnotes.ng and SchoolGist.",
+          "explanation": "These sources corroborate the exercise types and assignment inventory; they are not asserted byte-identical to the archive member."
         }
       ]
     },
@@ -4187,6 +4330,153 @@
           "explanation": "The exact textbook exercise questions are not present in the school's source row and are not reproduced. The replacement's original practice covers the row's base operations, unknown-base and binary-code skills, but does not claim to be the named textbook exercise."
         }
       ]
+    },
+    {
+      "id": "COV-MATH-T1-W04-CONCEPT-REMAINDER",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Modulus and congruence as equality of remainders.",
+      "objective_locator": "1st-term scheme line 4; parsed row 3, MODULAR ARITHMETIC; source body SHA-256 6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
+        "SS1-SRC-0c9004137f95:BODY:6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308"
+      ],
+      "evidence": [
+        {
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875; nine keyed practice items.",
+          "explanation": "Original equivalent lesson covers and assesses this objective; approval pending and formal verification deferred."
+        },
+        {
+          "locator": "FME Inspire SS1 Modular Arithmetic lesson and public Week 4 close-equivalent notes.",
+          "explanation": "References corroborate the objective and assessment scope; no external text, tables or exercises copied."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W04-POSITIVE-NEGATIVE-REDUCTION",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Reduce positive and negative integers to the standard remainder 0 to n−1.",
+      "objective_locator": "1st-term scheme line 4; parsed row 3, MODULAR ARITHMETIC; source body SHA-256 6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
+        "SS1-SRC-0c9004137f95:BODY:6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308"
+      ],
+      "evidence": [
+        {
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875; nine keyed practice items.",
+          "explanation": "Original equivalent lesson covers and assesses this objective; approval pending and formal verification deferred."
+        },
+        {
+          "locator": "FME Inspire SS1 Modular Arithmetic lesson and public Week 4 close-equivalent notes.",
+          "explanation": "References corroborate the objective and assessment scope; no external text, tables or exercises copied."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W04-MODULAR-ADDITION",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Addition in a modulus and addition tables.",
+      "objective_locator": "1st-term scheme line 4; parsed row 3, MODULAR ARITHMETIC; source body SHA-256 6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
+        "SS1-SRC-0c9004137f95:BODY:6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308"
+      ],
+      "evidence": [
+        {
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875; nine keyed practice items.",
+          "explanation": "Original equivalent lesson covers and assesses this objective; approval pending and formal verification deferred."
+        },
+        {
+          "locator": "FME Inspire SS1 Modular Arithmetic lesson and public Week 4 close-equivalent notes.",
+          "explanation": "References corroborate the objective and assessment scope; no external text, tables or exercises copied."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W04-MODULAR-SUBTRACTION",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Subtraction in a modulus, including negative intermediate results.",
+      "objective_locator": "1st-term scheme line 4; parsed row 3, MODULAR ARITHMETIC; source body SHA-256 6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
+        "SS1-SRC-0c9004137f95:BODY:6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308"
+      ],
+      "evidence": [
+        {
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875; nine keyed practice items.",
+          "explanation": "Original equivalent lesson covers and assesses this objective; approval pending and formal verification deferred."
+        },
+        {
+          "locator": "FME Inspire SS1 Modular Arithmetic lesson and public Week 4 close-equivalent notes.",
+          "explanation": "References corroborate the objective and assessment scope; no external text, tables or exercises copied."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W04-MODULAR-MULTIPLICATION",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Multiplication in a modulus and multiplication tables.",
+      "objective_locator": "1st-term scheme line 4; parsed row 3, MODULAR ARITHMETIC; source body SHA-256 6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
+        "SS1-SRC-0c9004137f95:BODY:6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308"
+      ],
+      "evidence": [
+        {
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875; nine keyed practice items.",
+          "explanation": "Original equivalent lesson covers and assesses this objective; approval pending and formal verification deferred."
+        },
+        {
+          "locator": "FME Inspire SS1 Modular Arithmetic lesson and public Week 4 close-equivalent notes.",
+          "explanation": "References corroborate the objective and assessment scope; no external text, tables or exercises copied."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W04-CYCLIC-APPLICATIONS",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Applications to clocks, market-day cycles and circular tracks.",
+      "objective_locator": "1st-term scheme line 4; parsed row 3, MODULAR ARITHMETIC; source body SHA-256 6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
+        "SS1-SRC-0c9004137f95:BODY:6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308"
+      ],
+      "evidence": [
+        {
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875; nine keyed practice items.",
+          "explanation": "Original equivalent lesson covers and assesses this objective; approval pending and formal verification deferred."
+        },
+        {
+          "locator": "FME Inspire SS1 Modular Arithmetic lesson and public Week 4 close-equivalent notes.",
+          "explanation": "References corroborate the objective and assessment scope; no external text, tables or exercises copied."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W04-MODULAR-EQUATIONS",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Simple linear congruences, including cases with multiple solutions.",
+      "objective_locator": "1st-term scheme line 4; parsed row 3, MODULAR ARITHMETIC; source body SHA-256 6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
+        "SS1-SRC-0c9004137f95:BODY:6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308"
+      ],
+      "evidence": [
+        {
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875; nine keyed practice items.",
+          "explanation": "Original equivalent lesson covers and assesses this objective; approval pending and formal verification deferred."
+        },
+        {
+          "locator": "FME Inspire SS1 Modular Arithmetic lesson and public Week 4 close-equivalent notes.",
+          "explanation": "References corroborate the objective and assessment scope; no external text, tables or exercises copied."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -4441,6 +4731,18 @@
       "affected_ids": [
         "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS",
         "COV-MATH-T1-W03-BOOK-ASSIGNMENT"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "MATH-T1-W04-ORIGINAL-ROW-RECONCILIATION",
+      "kind": "VERIFICATION",
+      "detail": "The modular arithmetic replacement is checked against the scheme and public close-equivalent Week 4 notes, but the original archive DOCX's equation/table objects are not re-extracted in this execution session. The exact original row table layout and any lost notation remain covered by OI-MATH-001.",
+      "required_action": "When the original DOCX is accessible, inspect its operation tables and equation objects, confirm exact source assessment notation, and reconcile any remaining differences without replacing source evidence with the public copy.",
+      "affected_ids": [
+        "SS1-SRC-0c9004137f95:BODY:6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308",
+        "SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
+        "OI-MATH-001"
       ],
       "blocks_delivery": false
     }
