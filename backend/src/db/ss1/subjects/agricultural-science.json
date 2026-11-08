@@ -2974,6 +2974,18 @@
         "SS1-SRC-7aa642b0085b"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W06-TABLE-STRUCTURE",
+      "kind": "CONTENT",
+      "detail": "The original Week Six agro-based industries table at block 486 is a 15-row, three-column Word table (header plus fourteen industry/raw-material pairs). The original DOCX preserves row and column boundaries, but concatenated plain-text extraction removes cell separators and makes the S/N, industry and raw-material values run together.",
+      "required_action": "When the owner-authorised importer/lesson mapping stage binds the original Week Six row, preserve the 14 data rows as a three-column table or explicit paired list with industry and raw material kept together and S/N retained. Do not rely on concatenated plain text or create a duplicate supplemental lesson for already-taught content. If the frozen importer/schema cannot preserve this structure, request a versioned foundation change; do not alter source wording.",
+      "affected_ids": [
+        "COV-AG-T1-W06-AGRO-INDUSTRIES",
+        "AG-VIS-T1-TBL-W06",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
     }
   ]
 }

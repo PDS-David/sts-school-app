@@ -58,7 +58,8 @@
     "AG-MARK-T2-EXAM (2026-11-08): scheme block 15 '11-12. Examination' classified SCHEME_ONLY. The source has no Week 11/12 instructional body, examination paper or marking scheme; no content is invented.",
     "AG-MARK-T3-REVISION (2026-11-08): scheme block 14 '11Revision ' is a SCHEME_ONLY revision marker. The source has ten teaching-week bodies only and no Week 11 revision lesson, worksheet or marking scheme.",
     "AG-MARK-T3-EXAM (2026-11-08): scheme block 15 '12Examination' is a SCHEME_ONLY examination marker. Rule R003 and MARKER coverage COV-AG-T3-EXAMINATION-SCHEME are already present. No Week 12 body, exam paper or marking scheme exists.",
-    "AG-VIS-T1-TBL-W02 (2026-11-08): source Word table 160 has 12 paired contrasts in two columns. Plain-text block extraction concatenates cells and loses pairing; future lesson binding must preserve a structured table/paired list. No duplicate supplement or source edit."
+    "AG-VIS-T1-TBL-W02 (2026-11-08): source Word table 160 has 12 paired contrasts in two columns. Plain-text block extraction concatenates cells and loses pairing; future lesson binding must preserve a structured table/paired list. No duplicate supplement or source edit.",
+    "AG-VIS-T1-TBL-W06 (2026-11-08): source Word table 486 has fourteen agro-industry/raw-material pairs in three columns. Plain-text block extraction concatenates cells and loses pair boundaries; future lesson binding must preserve the structure. No duplicate supplement or source edit."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -73,8 +74,8 @@
     "CORRECTION_BINDING": 11
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 43,
-    "PENDING": 105,
+    "IMPLEMENTED_TESTING_DEFERRED": 44,
+    "PENDING": 104,
     "BLOCKED": 2
   },
   "items": [
@@ -906,8 +907,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): block 486 is a w:tbl, header S/N | Agro-based Industries | Raw Materials Used, fourteen data rows (oil mill ... beverage). Extractor output for this table was not generated (importer deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact First Term member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. Original Word table block 486 is 15 rows x 3 columns (header plus fourteen industry/raw-material rows); block text SHA-256 6369ac8fa5a7579448710b6647aae3dfbd6aeef800b300976ebe3acdad0bd57d. The original DOCX retains each S/N, industry and raw-material cell, but plain-text block extraction concatenates all cells with no separators. Recorded a blocking open item requiring future lesson mapping to preserve the 14 paired rows as a three-column table or explicit paired list; no duplicate supplement is authorized because the table is already source-taught. Importer and app rendering were not run; testing remains deferred.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -5622,7 +5623,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T1-TBL-W06",
     "AG-VIS-T1-BRANDING",
     "AG-VIS-T2-TBL-CEREALS",
     "AG-VIS-T2-TBL-LEGUMES",
