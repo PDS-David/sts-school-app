@@ -659,6 +659,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
           "explanation": "No lesson or keyed practice is registered for this objective. PARTIAL: source teaching exists but is not yet deliverable."
+        },
+        {
+          "locator": "Protein breakdown flow block 859 SHA-256 c9f67eb9e6d356a565d4a2440a5fee8a1c3bb853cfc4c4782abfc6c0a0f954a; enzyme table block 920 SHA-256 6f1f3aa0be2c83dbe5ab075287d7994531bb425eefddaeb4153965510841bed5",
+          "explanation": "The flow at block 859 reads Protein → Peptone → Polypeptide → Amino acid and has three right-pointing straight-arrow connectors. The stage names are ordinary text and retain their order in text extraction; the arrowheads/direction do not. The source's own enzyme table at block 920 confirms the same progression: pepsin converts protein to peptones, trypsin converts proteins/peptones to polypeptide, and erepsin converts polypeptide to amino acid. The diagram uses singular 'Peptone' while the enzyme table uses plural 'peptones'; use 'Peptones' in a delivery supplement to match the explanatory table, retaining the source diagram unchanged. The arrows render clearly in private PDF page 33. No separate asset or redraw is needed; the sequence can be represented as structured text with arrows."
         }
       ]
     },
@@ -3013,11 +3017,13 @@
     {
       "id": "BIOLOGY-T1-W07-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 7 Nutrition in Animals and digestive enzymes are described in the source, but the Biology package has no lessons or registered teaching rows.",
-      "required_action": "Author and bind an approved equivalent lesson for the animal-nutrition and digestive-enzyme objectives, retaining source wording separately from any corrected supplement.",
+      "detail": "Week 7 Nutrition in Animals and digestive enzymes are described in the source, but the Biology package has no lessons or registered teaching rows. The protein breakdown flow at block 859 reads Protein → Peptone → Polypeptide → Amino acid; the source enzyme table at block 920 confirms the progression through pepsin, trypsin and erepsin. The arrowheads are visual-only, but the stage labels retain their order in text. The diagram uses singular 'Peptone' while the enzyme table uses plural 'peptones'. The supplement should use the table's plural form and preserve original source wording unchanged.",
+      "required_action": "Author and bind BIO-LES-T1-W07-ANIMAL-NUTRITION for animal nutrition and digestive enzymes, including the protein-breakdown sequence Protein → Peptones → Polypeptide → Amino acid as confirmed by the source enzyme table. Use approved references for claims already assigned to BIO-FACT-T1-W07-FOOD-CLAIMS; distinguish delivery wording from the original source and include complete keyed practice.",
       "affected_ids": [
         "COV-BIO-T1-W07-SCHEME-7",
-        "COV-BIO-T1-W07-ENZYMES"
+        "COV-BIO-T1-W07-ENZYMES",
+        "BIO-VIS-T1-PROTEIN-BREAKDOWN",
+        "BIO-LES-T1-W07-ANIMAL-NUTRITION"
       ],
       "blocks_delivery": true
     },
