@@ -739,6 +739,78 @@
           "explanation": "The prompt asks for 'three components of ecosystem'. Block 969 first says an ecosystem has biotic and abiotic components; blocks 970-973 then list producers, consumers and decomposers as groups within the biotic component. The intended three-item answer is ambiguous from the source's own organization. No answer key is supplied."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T1-W10-GROWTH",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 10 scheme: Growth — cell division, cell enlargement, differentiation, mitosis, meristematic growth and growth regulation",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 11 (sha256 a978ff61f7d1d5d23a8c74052effefeecb2ab9dd65c926c9c29d25af44a0f28f); Week 10 label block 985 (sha256 3ee3bfdc68d8630b1fb02fe862672c802a6d5e762236767928f0d739d3291e10); body blocks 985-1104 (range sha256 9c91bae8cde7ad21425a3c40ab314c04aa4c62c7b2cde3f7da40798633501bea)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 986-991; range blocks 986-1021 (sha256 eab008243f6bdd5b240e62c436c0748e261de30f5e5cb787b17f2b53675e3b05)",
+          "explanation": "Defines growth and gives three processes: cell division, cell enlargement and cell differentiation. Mitosis is defined and its five stages are named and described across blocks 992-1021. The four mitosis figures are assigned to BIO-VIS-T1-MITOSIS."
+        },
+        {
+          "locator": "blocks 1026-1054 (range sha256 9de7a1ad25dbe7e95a0515ded4b3d4f7611bb605806f53a65fa8fc007d9323f2)",
+          "explanation": "Describes meristematic tissues and apical/auxiliary growth, introduces growth regulation by hormones, lists plant hormones and their stated roles, and introduces animal hormones. The animal-hormone table at blocks 1042-1049 is assigned to BIO-VIS-T1-HORMONE-TABLE; its names are retained for the separate factual review."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W10-IRRITABILITY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 10 scheme: Irritability — stimuli and tactic, nastic and tropic responses",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 blocks 1057-1073 (range sha256 bf40ffd4845ee2497b7e95e925bfc2075c24f3ca893577314f9a5e5639674a48)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 1057-1073",
+          "explanation": "Defines irritability and stimulus, then describes tactic/taxis, nastic/nastism and tropic/tropism responses with examples including photo-, chemo-, nycti-, hapto-, hydro- and geotropism."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W10-MOVEMENT",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 10 scheme: Movement and cyclosis",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 blocks 1074-1092 (range sha256 1be721a64362beb982ed9ba0ae9d2f05467c2aeb30914c6474868e8cfccf7334)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 1074-1082 (range sha256 3bf96bae737febe9b1d228f7092502423be6ec44dff1422ad38a94d7f8e7a6a3)",
+          "explanation": "Defines movement, lists reasons for movement and defines cyclosis/cytoplasmic streaming."
+        },
+        {
+          "locator": "movement table blocks 1084-1092 (range sha256 39608539dfb4bf05579769f63b79a4ff0901727a5266b6c687d7027bb6884aa5)",
+          "explanation": "Lists organisms, movement organelles and mechanisms for Amoeba, Paramecium, Euglena, Hydra, earthworm, fish and frogs/toads. Its row/column pairing is separately assigned to BIO-VIS-T1-MOVEMENT-TABLE."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W10-ASSIGNMENT",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 10 assignment: explain cell division, enlargement and differentiation; identify locomotory organelles",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 WEEK TEN label block 1094 (sha256 3ee3bfdc68d8630b1fb02fe862672c802a6d5e762236767928f0d739d3291e10); ASSIGNMENT heading block 1095 (sha256 ab04ccc137d58ef30f41dbd29a7ca11eb5e87fb3def8b238329b3ab6efdd68d3); questions blocks 1096-1103 (range sha256 39830b4d86cdc30788eb80170210457d16be57f39de6fb2192f0d19f5d9c2c47)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "question blocks 1096-1098; teaching blocks 989-991",
+          "explanation": "The three requested growth processes are described in blocks 989-991, so the first question is supported by the source."
+        },
+        {
+          "locator": "question blocks 1099-1103; movement table blocks 1084-1092",
+          "explanation": "The requested organisms (Amoeba, Paramecium, toad and earthworm) appear in the movement table with their movement organelles. No answer key or marking guide accompanies the assignment."
+        },
+        {
+          "locator": "source heading order blocks 1094-1095",
+          "explanation": "Unlike earlier weeks, the WEEK TEN label at block 1094 appears immediately before the ASSIGNMENT heading at block 1095. Both are retained as distinct source markers."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -1075,6 +1147,28 @@
       "required_action": "A Biology teacher should confirm the intended three components and approve a keyed response/marking guide before delivery. Do not guess which classification the question intends.",
       "affected_ids": [
         "COV-BIO-T1-W09-ASSIGNMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W10-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 10 covers growth, mitosis, growth regulation, irritability, movement and cyclosis, but the Biology package has no lessons or registered teaching rows.",
+      "required_action": "Author and bind an approved equivalent lesson for the Week 10 objectives, keeping source wording distinct from any supplement and using the existing visual tasks for the diagrams and tables.",
+      "affected_ids": [
+        "COV-BIO-T1-W10-GROWTH",
+        "COV-BIO-T1-W10-IRRITABILITY",
+        "COV-BIO-T1-W10-MOVEMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W10-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 10 assignment prompts are supported by source teaching, but no answer key or marking guide is supplied.",
+      "required_action": "A Biology teacher should approve keyed responses and a marking guide before delivery. Do not invent a source answer key.",
+      "affected_ids": [
+        "COV-BIO-T1-W10-ASSIGNMENT"
       ],
       "blocks_delivery": true
     }
