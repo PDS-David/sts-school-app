@@ -1683,6 +1683,10 @@
         {
           "locator": "Verified second-term source member SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc (SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44); block 818 media/image5.jpeg 444×318, SHA-256 50311108eb6f166b8be28eb7b6a4bbeac8bbf1c0c76acaafe2884e81988ee563",
           "explanation": "The forest food-web figure at block 818 is a raster image with no text in its source block, so it is absent from plain-text extraction. Visible labels: Green Plant; Poducer (source spelling); Mouse; Rabbit; Goat; Owl; Wild Cat; Jackal; Snake; Lion; Kite; caption 'Food Web in a Forest'. Orange arrows connect the plant and animal nodes into a food web; arrows are drawn from the plant toward herbivore nodes and onward between animal nodes and predators. Several crossing links are difficult to assign confidently at the source image's resolution; any redraw must trace only clearly visible arrow endpoints and must not invent links. The label 'Poducer' is a source spelling error; any delivery restatement or project-authored redraw must show 'Producer' and include a correction note that the original image spells it 'Poducer'. The original source image is not registered or committed as an app asset because reuse rights are not recorded. A project-authored redraw is appropriate; it must preserve only the visible labels and verified arrow network without copying original pixels."
+        },
+        {
+          "locator": "Food-chain arrow shapes blocks 797, 800, 803, 806, 809, 813 and 816; rendered source PDF page 27; source block text hashes recorded in the task report",
+          "explanation": "The five examples are present as ordinary text in source order, but their arrows are separate DrawingML connector shapes and disappear from plain-text extraction. Private rendered PDF page 27 confirms all example arrows point right. Exact source sequences: Grass → zebra → lion (labels Producer → Primary consumer → Secondary consumer); Guinea grass → grasshopper → toad → snake → hawk (labels producer → primary consumer → secondary consumer → tertiary consumer, with no trophic label printed under hawk); Spirogyra → tadpoles → crabs → kingfish (producer → primary consumer → secondary consumer → tertiary consumer); Diatoms → mosquito larva → Tilapia fish → whale (producer → primary consumer → secondary consumer → tertiary consumer); Humus → earthworm → domestic fowl → man (no trophic labels printed). The sequence words survive extraction in order, but direction/arrowheads do not; the delivery lesson must restate each chain as an ordered sequence with arrows. The separate arrow in block 797 accompanies the linear-energy-transfer definition, and the arrow in block 816 sits at the left margin of the food-web definition; neither is an additional food-chain example. No separate image asset or redraw is needed; the chains can be represented as structured text with arrows. No source wording or sequence was changed."
         }
       ]
     },
@@ -3543,14 +3547,16 @@
     {
       "id": "BIOLOGY-T2-W09-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 9 feeding relationships, trophic levels, food chains/webs, energy flow and thermodynamics are present in the source, but the Biology package has no registered lessons. The forest food-web figure at block 818 is a labelled raster image absent from plain-text extraction; its labels are Green Plant, Poducer, Mouse, Rabbit, Goat, Owl, Wild Cat, Jackal, Snake, Lion and Kite. The source typo 'Poducer' must be corrected to 'Producer' with a correction note in any delivery restatement. The original image is not an app asset because reuse rights are not recorded; a project-authored redraw is queued.",
-      "required_action": "Complete the food-web redraw and the separate food-chain shape disposition, then author and bind the functioning-ecosystem lesson. In the redraw/restatement, use 'Producer' and note that the original image spells it 'Poducer'; preserve the original source image unchanged. Keep the consumer-survival and energy-flow claims under BIO-FACT-T2-W09-ENERGY-CLAIMS.",
+      "detail": "Week 9 feeding relationships, trophic levels, food chains/webs, energy flow and thermodynamics are present in the source, but the Biology package has no registered lessons. The food-chain examples at blocks 800, 803, 806, 809 and 813 retain organism order in plain-text extraction, but the right-pointing arrow connectors are separate shapes and disappear. The lesson must restate each chain as an ordered sequence with arrows. The food-web figure at block 818 is a labelled raster image absent from text extraction; its redraw and the 'Poducer'→'Producer' correction note are recorded separately.",
+      "required_action": "Complete the food-web redraw and the separate food-chain shape disposition, then author and bind the functioning-ecosystem lesson. Restate the five source food chains as ordered arrow sequences, preserving the printed organism order and trophic labels (including the missing hawk label and the unlabelled Humus chain). In the food-web redraw/restatement, use 'Producer' and note that the original image spells it 'Poducer'; preserve the original source image unchanged. Keep the consumer-survival and energy-flow claims under BIO-FACT-T2-W09-ENERGY-CLAIMS.",
       "affected_ids": [
         "COV-BIO-T2-W09-FUNCTIONING-ECOSYSTEM",
         "COV-BIO-T2-W09-ENERGY-FLOW",
         "BIO-VIS-T2-FIG-FOODWEB",
         "BIO-VIS-T2-W09-FOODWEB-REDRAW",
-        "BIOLOGY-T2-W09-FOODWEB-SPELLING"
+        "BIOLOGY-T2-W09-FOODWEB-SPELLING",
+        "BIO-VIS-T2-SHP-FOODCHAINS",
+        "BIO-LES-T2-W09-FUNCTIONING-ECOSYSTEM"
       ],
       "blocks_delivery": true
     },
