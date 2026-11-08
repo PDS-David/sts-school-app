@@ -695,6 +695,50 @@
           "explanation": "All six requested modes are described in the Week 8 source: commensalism, parasitism, symbiotic and holozoic nutrition at 931-936; fluid and filter feeding at 941-944. No answer key or marking guide accompanies the assignment."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T1-W09-SCHEME-9",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Scheme entry 9: Basic ecological concept",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 10 (sha256 d1280651e04f2949bdf20742f3d11e06ded8d319bde136b880fa79bbe9c33e72); Week 9 label block 951 (sha256 e38b03944a5cbe25a9e8b633065edd7490e9360c352bcb33ba8e6926594b756f); body blocks 951-984 (range sha256 e0fd7a606c08dec6adab6b72e24bb790bf4e05a77905ea2ec9230f504917f7dd)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 953-955 (range sha256 4e2248cd299fef9581d1d7534529697b33c89699a9643c2a6367e3e67d8c74fd)",
+          "explanation": "Defines ecology and its two branches, autecology and synecology, with examples."
+        },
+        {
+          "locator": "blocks 956-967 (within body range 953-967)",
+          "explanation": "Defines habitat, environment, ecosystem, community, biome, biosphere/ecosphere, lithosphere, hydrosphere, atmosphere, ecological niche and population."
+        },
+        {
+          "locator": "blocks 968-974 (range sha256 fd44a59ad93caf6690d7a057312bcffd9f521faf24feca364b4b174f00ff9f1a)",
+          "explanation": "Describes ecosystem components as biotic and abiotic; lists producers, consumers and decomposers within the biotic component, and gives examples of abiotic factors."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer/compiler not run",
+          "explanation": "The source teaches the ecological concepts, but the package has no lessons. Source-only teaching is not deliverable; PARTIAL remains until a lesson or approved equivalent is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W09-ASSIGNMENT",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 9 assignment: define ecosystem, niche, biosphere, population and habitat; list three ecosystem components",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 assignment block 975 (sha256 ab04ccc137d58ef30f41dbd29a7ca11eb5e87fb3def8b238329b3ab6efdd68d3); WEEK NINE block 976 (sha256 e38b03944a5cbe25a9e8b633065edd7490e9360c352bcb33ba8e6926594b756f); questions blocks 977-983 (range sha256 22f97f48eafe27762037363be892498203d3137f15dbe3d81193ec59afea52f7)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "questions blocks 977-982; definitions blocks 957-962 and 966-967",
+          "explanation": "The source defines ecosystem, ecological niche, biosphere, population and habitat, so the definition prompts are covered by the source text."
+        },
+        {
+          "locator": "question block 983; component discussion blocks 968-974",
+          "explanation": "The prompt asks for 'three components of ecosystem'. Block 969 first says an ecosystem has biotic and abiotic components; blocks 970-973 then list producers, consumers and decomposers as groups within the biotic component. The intended three-item answer is ambiguous from the source's own organization. No answer key is supplied."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -1011,6 +1055,26 @@
       "required_action": "A Biology teacher should approve a keyed response and marking guide before the assignment is delivered. Do not invent a source answer key.",
       "affected_ids": [
         "COV-BIO-T1-W08-ASSIGNMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W09-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 9 Basic ecological concept is described in the source, but the Biology package has no lessons or registered teaching rows.",
+      "required_action": "Author and bind an approved equivalent lesson for the ecological concepts and ecosystem components, keeping source wording separate from any supplement.",
+      "affected_ids": [
+        "COV-BIO-T1-W09-SCHEME-9"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W09-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 9 assignment definitions are supported, but the request to list 'three components of ecosystem' is ambiguous: the source names biotic and abiotic components, then lists producers, consumers and decomposers within the biotic component. No answer key is supplied.",
+      "required_action": "A Biology teacher should confirm the intended three components and approve a keyed response/marking guide before delivery. Do not guess which classification the question intends.",
+      "affected_ids": [
+        "COV-BIO-T1-W09-ASSIGNMENT"
       ],
       "blocks_delivery": true
     }
