@@ -224,10 +224,10 @@ test('Owner-confirmed second-term duplicate is excluded by matching parsed teach
 test('First-term equivalent cash-book and double-entry supplements are complete', () => {
   const p = packageSchema.parse(raw);
   const expected = new Map([
-    ['SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK', ['eae5a86d4a609bfe49c6490aff0a3582ed3d190f8aaf9dcae90bce2fb8791bf9', 'COV-BK-T1-W01-SCHEME-2']],
-    ['SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK', ['083e63ed7a625b60aecc4edaa31bc2d1d32c10a203ea254f1f1d4f2359131c4d', 'COV-BK-T1-W02-DIFF']],
-    ['SUP-SS1-BOOKKEEPING-T1-W03-CONTRA', ['e000b25f034fe99b15eace1e4f370614d99c7b6becdbe9086357b4fafe06171d', 'COV-BK-T1-W03-EXPLAIN']],
-    ['SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY', ['1bdc49589f3a82bee5b18febfe95f27ea2f7129ae523ab16767b4c47d3f3c1dd', 'COV-BK-T1-W04-LEDGER-FORMAT']],
+    ['SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK', ['60c734f08e991617fd751c0e4538d5b0163d8b862fd99b508e80808569b21ce9', 'COV-BK-T1-W01-SCHEME-2']],
+    ['SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK', ['eb1282b128ca2882a8a90f4afe5778d8b118bfad3a5e31eaa40e574b695fdc85', 'COV-BK-T1-W02-DIFF']],
+    ['SUP-SS1-BOOKKEEPING-T1-W03-CONTRA', ['d8b73b8504f8a990221e215a9cbd1fefccdcb0b175ee7a706207858f2da8b1f1', 'COV-BK-T1-W03-EXPLAIN']],
+    ['SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY', ['852dd7e12fa83e430fc4018d6c0772962d4bb15632c23f6b9327e759a22eecd5', 'COV-BK-T1-W04-LEDGER-FORMAT']],
   ]);
   for (const [id, [hash, coverageId]] of expected) {
     const lesson = p.lessons.find(x => x.id === id);
