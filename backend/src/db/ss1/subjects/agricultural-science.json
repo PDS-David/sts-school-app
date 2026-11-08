@@ -134,6 +134,18 @@
         "explanation": "The final source label is 'WEEK TENDATE: ……………' followed only by the word 'REVISION'; the next body child is section properties. This is a terminal revision marker with no instructional body, worksheet or marking scheme; classify it outside parsed teaching rows and do not invent content."
       },
       "kind": "SCHEME_ONLY"
+    },
+    {
+      "id": "SS1-SRC-956594d97094-R004",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-956594d97094",
+      "source_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042",
+      "anchor": "11-12.      Examination",
+      "evidence": {
+        "locator": "SS1-SRC-956594d97094: word/document.xml direct w:body block 15 (0-based); exact text SHA-256 bac0b093473a05db7f10edf4b01389a4286ccdc654f300f89ea7ec1501d2631a",
+        "explanation": "Scheme block 15 explicitly labels weeks 11-12 as Examination. This is a scheme-only examination marker, not an instructional lesson. The document has no Week Eleven or Week Twelve body, examination paper or marking scheme; the final source text block is the Week Ten revision marker at block 676."
+      },
+      "kind": "SCHEME_ONLY"
     }
   ],
   "lessons": [],
@@ -1739,6 +1751,22 @@
         {
           "locator": "Blocks 675-676; range SHA-256 6d1209926076460d476c866e9e81b211418f8a1df5bd3238b5f7d132fc598717",
           "explanation": "The terminal label is followed only by 'REVISION'; no further instructional blocks, worksheet or marking scheme exist. Classified SCHEME_ONLY rather than a lesson."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T2-EXAMINATION-SCHEME",
+      "source_id": "SS1-SRC-956594d97094",
+      "objective": "Scheme-only examination marker for weeks 11-12",
+      "objective_locator": "Second Term scheme block 15; exact text '11-12. Examination'",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-956594d97094-R004"
+      ],
+      "evidence": [
+        {
+          "locator": "Scheme block 15; text SHA-256 bac0b093473a05db7f10edf4b01389a4286ccdc654f300f89ea7ec1501d2631a",
+          "explanation": "Classified as SCHEME_ONLY examination marker. No Week 11/12 body, examination paper or marking scheme exists in this document."
         }
       ]
     }

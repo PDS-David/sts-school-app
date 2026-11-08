@@ -54,7 +54,8 @@
     "AG-WK-T3-W08 (2026-11-08) indexed environmental physiology across rainfall, wind, temperature, relative humidity and light, plus effects on growth, milk and egg production. Humidity measurement, a second airborne-disease example and immunity are under-taught; regional claims and milk spoilage threshold require fact-checking.",
     "AG-WK-T3-W09 (2026-11-08) indexed pig management. Terms, breeds, characteristics, systems, housing, feeding, hygiene, breeding-to-finishing, parasites and diseases are source-taught. Weekend MCQ 'sty' and the requested second intensive-system disadvantage are not taught; source chemical/veterinary statements are routed for safety/factual review. Pig diagram at block 1006 remains for its separate visual task.",
     "AG-WK-T3-W10 (2026-11-08) indexed cattle management. Breeds, terms, characteristics, rearing systems, feeding, management stages and parasites/diseases are source-taught. Theory 1253 asks for a tattooing definition not supplied; 'Rational grazing' vs 'rotational grazing' and 'pig houses' in cattle mange section are flagged. Veterinary/chemical statements including a printed 10 mg/kg/8-week TB drug regimen are preserved as source statements and routed for safety/factual review, not endorsed.",
-    "AG-MARK-T2-REVISION (2026-11-08): scheme block 14 'Revision.' and terminal Week Ten label plus 'REVISION' blocks 675-676 are SCHEME_ONLY markers, not lessons. No Week Ten body, revision worksheet or marking scheme exists. The in-body 'GENERAL EVALUATION/REVISION QUESTIONS' at block 232 remains teaching-week assessment material."
+    "AG-MARK-T2-REVISION (2026-11-08): scheme block 14 'Revision.' and terminal Week Ten label plus 'REVISION' blocks 675-676 are SCHEME_ONLY markers, not lessons. No Week Ten body, revision worksheet or marking scheme exists. The in-body 'GENERAL EVALUATION/REVISION QUESTIONS' at block 232 remains teaching-week assessment material.",
+    "AG-MARK-T2-EXAM (2026-11-08): scheme block 15 '11-12. Examination' classified SCHEME_ONLY. The source has no Week 11/12 instructional body, examination paper or marking scheme; no content is invented."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -69,8 +70,8 @@
     "CORRECTION_BINDING": 11
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 39,
-    "PENDING": 109,
+    "IMPLEMENTED_TESTING_DEFERRED": 40,
+    "PENDING": 108,
     "BLOCKED": 2
   },
   "items": [
@@ -1054,8 +1055,8 @@
         "AG-INV-T2",
         "AG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): block 15 text \"11-12.      Examination\"; no WEEK ELEVEN/TWELVE label exists (last label is block 675, WEEK TEN). Importer behaviour not run (testing deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08. Exact Second Term member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 verified. Scheme block 15 exact text '11-12. Examination' SHA-256 bac0b093473a05db7f10edf4b01389a4286ccdc654f300f89ea7ec1501d2631a classified as SCHEME_ONLY examination marker, not a lesson. No Week 11/12 body, examination paper or marking scheme exists; the final teaching label is Week Ten (675) followed only by REVISION (676). Added rule R004 and MARKER coverage COV-AG-T2-EXAMINATION-SCHEME. No source bytes, lesson bodies, other marker classifications, corrections or assets changed. Importer/compiler/tests not run; testing remains deferred.",
       "completion_condition": "Marker classified with its locator and an explicit statement that no examination content exists; nothing invented."
     },
     {
@@ -5618,7 +5619,6 @@
     }
   },
   "next_runnable": [
-    "AG-MARK-T2-EXAM",
     "AG-MARK-T3-REVISION",
     "AG-MARK-T3-EXAM",
     "AG-VIS-T1-TBL-W02",
