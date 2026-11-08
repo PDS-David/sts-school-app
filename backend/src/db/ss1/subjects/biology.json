@@ -1009,6 +1009,18 @@
         {
           "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
           "explanation": "No lesson is registered for these objectives. Source-only teaching is not deliverable; PARTIAL remains until approved lesson content is authored and bound."
+        },
+        {
+          "locator": "blocks 170-173 (range sha256 b1c94a07299bfa2693dd40f39a449617996a71173f0209511dba91bc741d418e)",
+          "explanation": "Amoeba is taught as reproducing by binary fission and multiple fission (sporulation), with the source describing nuclear division and cyst formation."
+        },
+        {
+          "locator": "blocks 175-184 (range sha256 a19825552d24bfad95259b6fef155269fc064a661bf8889001bc8160f6f8bcec)",
+          "explanation": "Paramecium is taught as reproducing asexually by binary fission and sexually by conjugation; the source describes the micronuclear divisions, exchange, syngamy and zygote division."
+        },
+        {
+          "locator": "blocks 192-200 (range sha256 2d6cac87514f1bd002a182e384d86bf0dbe68704e79fa1dea1dc763ae98a2fcc)",
+          "explanation": "Spirogyra is taught as reproducing by fragmentation and conjugation; the source describes conjugation tubes, gamete fusion, zygote wall and zygospore."
         }
       ]
     },
@@ -1039,6 +1051,22 @@
         {
           "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
           "explanation": "No lesson is registered for these objectives. Source-only teaching is not deliverable; PARTIAL remains until approved lesson content is authored and bound."
+        },
+        {
+          "locator": "blocks 203-209 (range sha256 65b96c57c90223a8720446d134cc83b9c77be7956529b1a4fbc5fde088510106)",
+          "explanation": "Earthworms are described as hermaphrodites; the source describes copulation, the relative segment/clitellum positions, chaetae, cocoon fertilization and embryo development."
+        },
+        {
+          "locator": "blocks 216-220 (range sha256 ee3d2b7ea379eedbbd83d6df9b9926ad14578c92440433c3e02daaeafe01f0ba)",
+          "explanation": "Cockroach reproduction and development are described, including internal fertilization, ootheca, nymphs, moulting and incomplete metamorphosis. Figure block 221 is separately assigned to BIO-VIS-T2-FIG-COCKROACH."
+        },
+        {
+          "locator": "blocks 222-227 (range sha256 6bba82a55396e5c0506a480e0d8b23b4b8423ff63af6cbeacdbbc7f0b5724232)",
+          "explanation": "Housefly reproduction and development are described, including eggs, larva/maggot, puparium and adult emergence; the source identifies complete metamorphosis. Figure block 228 is separately assigned to BIO-VIS-T2-FIG-HOUSEFLY."
+        },
+        {
+          "locator": "blocks 230-231 (range sha256 a70530f4e4be260a3890a28ac52f1b9253fdf240fe55bfe4600ee421c16967d5)",
+          "explanation": "Land-snail reproduction is described as hermaphroditic with internal fertilization; the source names sperm-transfer structures and torsion."
         }
       ]
     },
@@ -1072,6 +1100,34 @@
         },
         {
           "locator": "whole evaluation and assignment range",
+          "explanation": "No answer key or marking guide accompanies the evaluation, revision, weekend assignment or theory questions."
+        },
+        {
+          "locator": "evaluation blocks 188-190 (range sha256 7678f510850a4e7e41c01de4ca0be3f183eed42ea6400d91cd36516ef1a9b1b8)",
+          "explanation": "Both questions are supported: Amoeba binary fission is described at 171-172; Paramecium conjugation is described at 178-184."
+        },
+        {
+          "locator": "evaluation blocks 211-214 (range sha256 649fc0be73ece5f0de2bcbb7e2f06a6e30a0727585604d34cc2b51b3388e3ffc)",
+          "explanation": "Conjugation in a named alga is supported by Spirogyra blocks 193-200; hermaphroditism and earthworm copulation are described at 204-209."
+        },
+        {
+          "locator": "evaluation blocks 233-235 (range sha256 ae7a69d441498c0cc1c2c47e1ad68c09896e03dc228724ec2990e88fe4a2a127)",
+          "explanation": "Housefly complete metamorphosis (223-227) and cockroach incomplete metamorphosis (217-220) are contrasted in the source; snail fertilization is described in block 231."
+        },
+        {
+          "locator": "general evaluation blocks 237-242 (range sha256 7ccc1691d26be8582f7397cf53345491fbb7096617cbcb21cd1a54469c698fd6)",
+          "explanation": "Conjugation is described in Paramecium and Spirogyra, but the request for conjugation in a named fungus (Mucor) is not taught. Complete/incomplete metamorphosis is supported. Sexual reproduction in tapeworm is not taught in this week; a later tapeworm mention at block 931 concerns parasitism, not reproduction. The earthworm question asks for five structural parts, but the source does not present a five-part list or answer key."
+        },
+        {
+          "locator": "weekend assignment blocks 248-255 (range sha256 17bbad09b211f10e488b460e78c16351f80dd8153e7e9fa51017b64a3cd2d2a6)",
+          "explanation": "The Spirogyra zygospore and Paramecium binary-fission questions are supported. The conjugation-exception item includes Mucor and Hydra, which are not covered here; the hermaphroditism item is supported; the internal-fertilization exception cannot be determined from this source alone because the options are not all taught and the earthworm account does not explicitly classify fertilization as internal/external."
+        },
+        {
+          "locator": "theory blocks 257-259 (range sha256 17bbad09b211f10e488b460e78c16351f80dd8153e7e9fa51017b64a3cd2d2a6)",
+          "explanation": "Sexual reproduction in tapeworm is not taught. Advantages and disadvantages of sexual reproduction are also absent from the Week 3 body; both are recorded as supplemental scope, not invented source teaching."
+        },
+        {
+          "locator": "whole evaluation and assignment range blocks 188-259",
           "explanation": "No answer key or marking guide accompanies the evaluation, revision, weekend assignment or theory questions."
         }
       ]
@@ -1577,6 +1633,16 @@
       "kind": "OWNER_ACTION",
       "detail": "The Week 3 evaluation, weekend assignment and theory questions have no supplied answer key or marking guide; the tapeworm and sexual-reproduction advantages/disadvantages prompts need additional scope/teaching.",
       "required_action": "A Biology teacher should approve a complete answer/marking guide after the missing teaching and scope dependencies are resolved.",
+      "affected_ids": [
+        "COV-BIO-T2-W03-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W03-REVISION-FACTS",
+      "kind": "FACT",
+      "detail": "The conjugation-exception question (block 249) names Mucor and Hydra, which are not taught in this week; the internal-fertilization exception (blocks 251-252) includes earthworm, tapeworm, butterfly and toad, but the source does not provide enough comparative detail to key the item. The earthworm structures question (block 242) also lacks a complete five-part source list.",
+      "required_action": "Verify the organism comparisons and intended answer terminology against approved Biology references, recording primary evidence before creating any answer key. Do not guess the answers.",
       "affected_ids": [
         "COV-BIO-T2-W03-ASSESSMENT"
       ],
