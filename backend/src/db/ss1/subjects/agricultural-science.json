@@ -146,6 +146,30 @@
         "explanation": "Scheme block 15 explicitly labels weeks 11-12 as Examination. This is a scheme-only examination marker, not an instructional lesson. The document has no Week Eleven or Week Twelve body, examination paper or marking scheme; the final source text block is the Week Ten revision marker at block 676."
       },
       "kind": "SCHEME_ONLY"
+    },
+    {
+      "id": "SS1-SRC-458a07f7ea5a-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "source_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a",
+      "anchor": "11Revision ",
+      "evidence": {
+        "locator": "SS1-SRC-458a07f7ea5a: word/document.xml direct w:body block 14 (0-based); exact text SHA-256 b2b9524e250fc89af5cb83bc7c361e11726e54e0feef9d280456b08b105ec0a1",
+        "explanation": "Third Term scheme block 14 contains the exact entry '11Revision '. The inventory identifies it as scheme item 11, a revision marker. The document has ten teaching-week bodies only and no Week 11 body, revision worksheet or revision marking scheme."
+      },
+      "kind": "SCHEME_ONLY"
+    },
+    {
+      "id": "SS1-SRC-458a07f7ea5a-R003",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "source_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a",
+      "anchor": "12Examination",
+      "evidence": {
+        "locator": "SS1-SRC-458a07f7ea5a: word/document.xml direct w:body block 15 (0-based); exact text SHA-256 71922f45b5afa7b8dc4121bcf450a62b7961da3f379568aaaa0d1c2de8720e7a",
+        "explanation": "Third Term scheme block 15 contains the exact entry '12Examination'. The inventory identifies it as scheme item 12, an examination marker. There is no Week 12 teaching body, examination paper or marking scheme."
+      },
+      "kind": "SCHEME_ONLY"
     }
   ],
   "lessons": [],
@@ -1767,6 +1791,38 @@
         {
           "locator": "Scheme block 15; text SHA-256 bac0b093473a05db7f10edf4b01389a4286ccdc654f300f89ea7ec1501d2631a",
           "explanation": "Classified as SCHEME_ONLY examination marker. No Week 11/12 body, examination paper or marking scheme exists in this document."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-REVISION-SCHEME",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Scheme-only revision marker (Week 11)",
+      "objective_locator": "Third Term scheme block 14; exact text '11Revision '",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-458a07f7ea5a-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "Scheme block 14; text SHA-256 b2b9524e250fc89af5cb83bc7c361e11726e54e0feef9d280456b08b105ec0a1",
+          "explanation": "Classified as SCHEME_ONLY. The source contains ten teaching-week bodies (Weeks One–Ten) and no Week 11 revision body, worksheet or marking scheme."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-EXAMINATION-SCHEME",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Scheme-only examination marker (Week 12)",
+      "objective_locator": "Third Term scheme block 15; exact text '12Examination'",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-458a07f7ea5a-R003"
+      ],
+      "evidence": [
+        {
+          "locator": "Scheme block 15; text SHA-256 71922f45b5afa7b8dc4121bcf450a62b7961da3f379568aaaa0d1c2de8720e7a",
+          "explanation": "Classified as SCHEME_ONLY. The source has no Week 12 teaching body, examination paper or marking scheme."
         }
       ]
     }
