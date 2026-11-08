@@ -33,7 +33,8 @@
     "BK-VIS-T1-BRACE-W04 (2026-11-06) recorded the disposition of the single decorative right brace at block 170 (empty text, 7.15pt x 42.7pt, beside blocks 171-172): excluded from delivered lessons, no asset, lesson or rule created, nothing committed from the drawing. Wording kept in blocks 171-172; the tab separator between name and value stays under defect 2 of BOOKKEEPING-T1-W04-SOURCE-DEFECTS. One evidence entry appended to COV-BK-T1-W04-TWO-ACCOUNTS (PARTIAL unchanged). BK-WK-T1-W04's statement that Week 4 has no drawing is wrong (block 170); left unedited as outside this task's paths. Items 45 (unchanged); notes 16->17; status 11 implemented / 28 pending / 6 blocked; next_runnable head BK-MARK-T1-REVISION. Not approved, not verified; nothing run (testing deferred by owner).",
     "On work/bookkeeping-ss1: BK-MARK-T1-REVISION and BK-MARK-T1-EXAM implemented as source-only marker dispositions; 3 preamble classify_marker rules and 3 MARKER coverage entries added. No lessons or exam/revision content invented. Parser/schema/tests deferred.",
     "On work/bookkeeping-ss1: completed first-term Week 1 T-account visual disposition, Week 3 and Week 4 table dispositions, and first-term worked-material and currency preservation records. All are source-reading dispositions; importer/rendering/package tests remain deferred.",
-    "On work/bookkeeping-ss1: BK-TEST-PACKAGE test file drafted only, following the French package test pattern. It is intentionally not run; execution and typecheck remain deferred by owner."
+    "On work/bookkeeping-ss1: BK-TEST-PACKAGE test file drafted only, following the French package test pattern. It is intentionally not run; execution and typecheck remain deferred by owner.",
+    "On work/bookkeeping-ss1: added a static package test for coverage referential integrity (registered source IDs, declared lesson/classify_marker targets, evidence, and required targets for complete statuses). Not run (testing remains deferred). Queue next_runnable is empty pending the missing original 3rd Term DOCX for BK-INV-T3 and owner resolution of BOOKKEEPING-T2-TEXT-MATCHES-T1 plus the first-term factual-decision gates; T2 indexing/dispositions remain intentionally held and no duplicate coverage is linked."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -1795,26 +1796,5 @@
       "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
     }
   },
-  "next_runnable": [
-    "BK-INV-T3",
-    "BK-WK-T2-W02",
-    "BK-WK-T2-W04",
-    "BK-WK-T2-W01",
-    "BK-WK-T2-W03",
-    "BK-PRE-T2",
-    "BK-MARK-T2-REVISION",
-    "BK-MARK-T2-EXAM",
-    "BK-VIS-T2-TACC-W01",
-    "BK-VIS-T2-TBL-W03",
-    "BK-VIS-T2-TBL-W04",
-    "BK-VIS-T2-BRACE-W04",
-    "BK-PRES-T2-WORKED",
-    "BK-PRES-T2-CURRENCY",
-    "BK-LES-T1-W02-DIFF",
-    "BK-LES-T1-W02-PREP",
-    "BK-LES-T1-W04-DOUBLE-ENTRY",
-    "BK-LES-T1-W04-POSTING",
-    "BK-LES-T1-W01-CASH-BOOK",
-    "BK-LES-T1-W03-CONTRA"
-  ]
+  "next_runnable": []
 }
