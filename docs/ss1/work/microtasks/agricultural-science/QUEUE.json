@@ -32,15 +32,15 @@
     "AG-WK-T1-W02 (2026-11-08) indexed First Term Week 2: scheme entry 2 is source-taught (blocks 149, 152, comparison table 160), but delivery mapping remains PARTIAL pending importer/parsed-row verification; ten-tool/ten-machine and five agro-based-industry assessment gaps and the unresolved foreign-exchange exception item were split into bounded lesson/fact tasks. Composite archive, member and Week 2 range hashes were independently verified. No lesson, source byte, rule, correction or asset was written."
   ],
   "counts": {
+    "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
-    "SOURCE_PREAMBLE_INDEXING": 3,
-    "SOURCE_WEEK_INDEXING": 27,
-    "SOURCE_MARKER_DISPOSITION": 6,
-    "VISUAL_DISPOSITION": 31,
-    "FACTUAL_DEPENDENCY": 3,
-    "LESSON": 6,
     "TEST": 1,
-    "SOURCE_REGISTRATION": 3
+    "FACTUAL_DEPENDENCY": 3,
+    "SOURCE_PREAMBLE_INDEXING": 3,
+    "SOURCE_MARKER_DISPOSITION": 6,
+    "SOURCE_WEEK_INDEXING": 27,
+    "VISUAL_DISPOSITION": 31,
+    "LESSON": 6
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 14,
@@ -48,6 +48,108 @@
     "BLOCKED": 2
   },
   "items": [
+    {
+      "id": "AG-SRC-T1",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+      "objective": "Register the 1st Term Agricultural Science source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). PERMISSION: because no package exists, this item may create the minimum package under the existing contract (schema_version ss1-subject-v1, subject_slug agricultural-science, canonical_subject confirmed from the header, package_status PENDING, all other arrays empty) and register this one source in it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-SRC-T1.md"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/agricultural-science.json created (package_status PENDING; lessons, corrections, assets, coverage empty). sources[0]: source_id=SS1-SRC-7aa642b0085b sha256=df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526 archive_member='SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx' term='1st Term' canonical_subject='Agricultural Science' header_text='FIRST TERM E-LEARNING NOTE'; rule SS1-SRC-7aa642b0085b-R001 (source_alias, approval_reference PENDING-OWNER); open item AGRICULTURAL-SCIENCE-ALIAS-APPROVAL (OWNER_ACTION, blocking). Member SHA-256 verified from the standalone/term-archive copy; the enclosing archive supplied was '1st Term SS1' zip (SHA-256 8055d852938afa44d20b03139af9958b0c9f7da6874419aa667174854895e636), NOT the composite archive, so the composite hash was not checked. Header read from the DOCX XML, not via the importer. Record: docs/ss1/work/microtasks/agricultural-science/AG-SRC-T1.md. Implemented, not approved or verified.",
+      "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "AG-SRC-T2",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+      "objective": "Register the 2nd Term Agricultural Science source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by AG-SRC-T1; add only this source's entry and rules.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-SRC-T2.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/agricultural-science.json (existing package from AG-SRC-T1; only additions): sources[1] source_id=SS1-SRC-956594d97094 sha256=e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 archive_member='SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx' (verbatim from the manifest) term='2nd Term' canonical_subject='Agricultural Science' header_text='SECOND TERM E-LEARNING NOTE'; rule SS1-SRC-956594d97094-R001 (source_alias, approval_reference PENDING-OWNER); open item AGRICULTURAL-SCIENCE-ALIAS-APPROVAL-T2 (OWNER_ACTION, blocking). Subject confirmed from the document: the opening heading is the generic template title (occurs once); the next line reads 'SUBJECT: AGRICULTURAL SCIENCE ... CLASS: SS 1'; the filename spelling 'AGRICULTRAL' was not used as evidence. Container supplied: the complete composite ZIP (SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, verified) and the member's own SHA-256 was also verified from the extracted bytes; both equal SOURCE_ASSIGNMENTS.csv (188,799 bytes). Method: DOCX XML paragraphs plus mammoth 1.12.2 extractRawText in a private scratch directory; importer/plan run not performed (deferred). Record: docs/ss1/work/microtasks/agricultural-science/AG-SRC-T2.md. Implemented, not approved or verified.",
+      "completion_condition": "Registered source entry added to the existing package with no other source touched. Package stays PENDING; the 'source without coverage' blocker remains until AG-INV-T2 indexing. Alias owner approval is an open item, not invented. Testing deferred by owner."
+    },
+    {
+      "id": "AG-SRC-T3",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+      "objective": "Register the 3rd Term Agricultural Science source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by AG-SRC-T1; add only this source's entry and rules.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-SRC-T3.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/agricultural-science.json: sources[2] SS1-SRC-458a07f7ea5a (sha256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a, member 'SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx', term '3rd Term', canonical_subject 'Agricultural Science'), header_text 'THIRD TERM E-LEARNING NOTE' (first paragraph; single occurrence), source_alias rule SS1-SRC-458a07f7ea5a-R001 (approval_reference PENDING-OWNER) and open item AGRICULTURAL-SCIENCE-ALIAS-APPROVAL-T3 (OWNER_ACTION, blocks_delivery). Subject confirmed from the SUBJECT line, scheme and teaching headings; no handoff needed. Evidence note: docs/ss1/work/microtasks/agricultural-science/AG-SRC-T3.md. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
     {
       "id": "AG-INV-T1",
       "kind": "SOURCE_WEEK_INVENTORY",
@@ -154,6 +256,61 @@
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
+      "id": "AG-TEST-PACKAGE",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/agricultural-science.package.test.mts",
+      "objective": "Write (do not run) the package test file following tests/ss1/french.package.test.mts: schema parse, one registered source per assigned document, source hash and member equal to SOURCE_ASSIGNMENTS.csv, no fabricated approval or verification state, and guards for any rules or lessons the package contains at the time of writing.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "tests/ss1/french.package.test.mts",
+        "backend/src/db/ss1/subjects/agricultural-science.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "tests/ss1/agricultural-science.package.test.mts",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-SRC-T2",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "tests/ss1/agricultural-science.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
+    },
+    {
+      "id": "AG-FACT-CONTENT-APPROVAL",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "package approval and verification",
+      "objective": "Owner content approval and later verification of any agricultural-science lessons. Separate stage; no agent may invent an approval_reference or verification.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json"
+      ],
+      "depends_on": [
+        "AG-INV-T1",
+        "AG-INV-T2",
+        "AG-INV-T3",
+        "AG-TEST-PACKAGE"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
+      "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    },
+    {
       "id": "AG-PRE-T1",
       "kind": "SOURCE_PREAMBLE_INDEXING",
       "source_id": "SS1-SRC-7aa642b0085b",
@@ -192,12 +349,12 @@
       "completion_condition": "Every non-week block hash-accounted and mapped or recorded as an explicit open item; no coverage, rule or lesson invented by this item beyond what it names."
     },
     {
-      "id": "AG-PRE-T2",
-      "kind": "SOURCE_PREAMBLE_INDEXING",
-      "source_id": "SS1-SRC-956594d97094",
-      "term": "2nd Term",
-      "week_or_locator": "blocks 0-23 (range sha256 9967f8c0eb88e7a77adad2d6f9c1495888393fa2eab579a7e05ee5740b5f0791)",
-      "objective": "Inventory all 2nd Term text outside the week bodies and map or classify each block: 'SECOND TERM E-LEARNING NOTE' (0), SUBJECT/CLASS line (2), SCHEME OF WORK list (4-15; header block 6 'WEEKTOPIC', nine items 7-15), REFERENCES (17-21: four books) and blank blocks. Per-week scheme objectives belong to the AG-WK-T2 items; revision/examination lines belong to AG-MARK-T2-REVISION and AG-MARK-T2-EXAM.",
+      "id": "AG-MARK-T1-REVISION",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "scheme item 11 'Revision of the Term’s Work.' (block 22; text sha256 85ccf500892b65cad9414f8eea121c37aec0733924aec52bfa823444e1214f9b)",
+      "objective": "Disposition the revision marker in the scheme list (block 22): classify as a marker, not a lesson, and record that the document has no Week 11 body, revision worksheet or marking scheme. Do not invent content.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
         "docs/ss1/contracts/CONTRACT.md",
@@ -206,36 +363,36 @@
         "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
         "backend/src/db/ss1/subjects/agricultural-science.json",
         "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T2.md"
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md"
       ],
       "required_attachments": [
         {
           "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
           "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
-          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
         }
       ],
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/agricultural-science.json",
         "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-PRE-T2.md"
+        "docs/ss1/work/microtasks/agricultural-science/AG-MARK-T1-REVISION.md"
       ],
       "depends_on": [
-        "AG-INV-T2",
-        "AG-SRC-T2"
+        "AG-INV-T1",
+        "AG-SRC-T1"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "docs/ss1/work/microtasks/agricultural-science/AG-PRE-T2.md; blocks 0-23 classified from AG-INV-T2; preamble range SHA-256 9967f8c0eb88e7a77adad2d6f9c1495888393fa2eab579a7e05ee5740b5f0791. Scheme rows mapped to their week-indexing tasks; revision/exam markers delegated to AG-MARK-T2 tasks. No package content/rule/coverage/asset changes. Testing deferred by owner.",
-      "completion_condition": "Every block 0-23 mapped or classified with its locator; scheme week numbers not read from text are marked inferred; nothing invented."
+      "implementation_reference": "Implemented 2026-11-08: added source rule SS1-SRC-7aa642b0085b-R002 (classify_marker, SCHEME_ONLY) anchored to scheme item 11 at block 22, and coverage COV-AG-T1-REVISION-MARKER with status MARKER. Evidence is the existing AG-INV-T1.md record of original DOCX XML inspection: ten teaching weeks only (WEEK 1–10), no WEEK 11 body, revision worksheet or marking scheme. No revision lesson/content was invented. The source inventory's standalone member hash matches SOURCE_ASSIGNMENTS.csv; the composite archive hash was not verified in that inventory. Compiler/importer and tests were not run; testing remains deferred.",
+      "completion_condition": "Marker classified with its locator and an explicit statement that no instructional body exists; nothing invented."
     },
     {
-      "id": "AG-PRE-T3",
-      "kind": "SOURCE_PREAMBLE_INDEXING",
-      "source_id": "SS1-SRC-458a07f7ea5a",
-      "term": "3rd Term",
-      "week_or_locator": "blocks 0-25 (range sha256 3f38a1bf54c05301d2a842b6fce4450dc0594cbdcf6394c34061879232353cda)",
-      "objective": "Index all 3rd Term source text outside teaching-week bodies: generic opening heading, SUBJECT/CLASS line, scheme-of-work list (blocks 4-15), references (blocks 17-23) and intervening blank blocks. Map each block or classify it; scheme objectives belong to the week items, and Revision/Examination belong to the marker items. Do not silently drop preamble material or infer a lesson from references.",
+      "id": "AG-MARK-T1-EXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "scheme item 12 'Examination.' (block 23; text sha256 c60e32db919b2fb4abce1f8e727f3c741a7e9052ee1ade94b9322df2bc92c8af)",
+      "objective": "Disposition the examination marker in the scheme list (block 23): classify as a marker, not a lesson, and record that the document has no examination paper, marking scheme or Week 12 body. Do not invent content.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
         "docs/ss1/contracts/CONTRACT.md",
@@ -244,28 +401,28 @@
         "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
         "backend/src/db/ss1/subjects/agricultural-science.json",
         "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md"
       ],
       "required_attachments": [
         {
           "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
           "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
-          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
         }
       ],
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/agricultural-science.json",
         "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-PRE-T3.md"
+        "docs/ss1/work/microtasks/agricultural-science/AG-MARK-T1-EXAM.md"
       ],
       "depends_on": [
-        "AG-INV-T3",
-        "AG-SRC-T3"
+        "AG-INV-T1",
+        "AG-SRC-T1"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "docs/ss1/work/microtasks/agricultural-science/AG-PRE-T3.md; blocks 0-25 classified from AG-INV-T3; preamble range SHA-256 3f38a1bf54c05301d2a842b6fce4450dc0594cbdcf6394c34061879232353cda. Scheme items 1-10 delegated to weekly indexing; items 11-12 delegated to marker tasks. Existing source_alias reused. No package content/rule/coverage/asset changes. Testing deferred by owner.",
-      "completion_condition": "Every preamble block is mapped or classified with exact block locators; no scheme objective is omitted or invented."
+      "implementation_reference": "Implemented 2026-11-08: added source rule SS1-SRC-7aa642b0085b-R003 (classify_marker, SCHEME_ONLY) anchored to scheme item 12 at block 23, and coverage COV-AG-T1-EXAM-MARKER with status MARKER. Evidence is the existing AG-INV-T1.md record of original DOCX XML inspection: ten teaching weeks only (WEEK 1–10), no WEEK 12 body, examination paper or marking scheme. No examination content was invented. The source inventory's standalone member hash matches SOURCE_ASSIGNMENTS.csv; the composite archive hash was not verified in that inventory. Compiler/importer and tests were not run; testing remains deferred.",
+      "completion_condition": "Marker classified with its locator and an explicit statement that no examination content exists; nothing invented."
     },
     {
       "id": "AG-WK-T1-W01",
@@ -648,6 +805,234 @@
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
+      "id": "AG-VIS-T1-TBL-W02",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 2 table, block 160 (13 rows incl. header x 2 columns; block hash sha256 9cc53b2bd0d0fccc6e1b1201a426be4d0157bc8bae17412a737ce50cfd485c5a)",
+      "objective": "Record a disposition for the Subsistence vs Commercial comparison table in Week 2: whether it survives plain-text extraction as readable paired rows, and whether a supplement must restate it as a table or paired list. Do not alter source wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T1-TBL-W02.md"
+      ],
+      "depends_on": [
+        "AG-INV-T1",
+        "AG-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (AG-INV-T1): block 160 is a w:tbl, header cells 'SUBSISTENCE AGRICULTURE' | 'COMMERCIAL AGRICULTURE', twelve numbered contrast rows. Extractor output for this table was not generated (importer deferred).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "AG-VIS-T1-TBL-W06",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 6 table, block 486 (15 rows x 3 columns; block hash sha256 6369ac8fa5a7579448710b6647aae3dfbd6aeef800b300976ebe3acdad0bd57d)",
+      "objective": "Record a disposition for the agro-based industries and raw materials table in Week 6: whether it survives plain-text extraction with each industry kept beside its raw material, and whether a supplement must restate it. Do not alter source wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T1-TBL-W06.md"
+      ],
+      "depends_on": [
+        "AG-INV-T1",
+        "AG-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (AG-INV-T1): block 486 is a w:tbl, header S/N | Agro-based Industries | Raw Materials Used, fourteen data rows (oil mill ... beverage). Extractor output for this table was not generated (importer deferred).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "AG-VIS-T1-BRANDING",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "cover table block 2 + drawing block 4 (media/image1.jpeg) and page header (header1.xml, media/image2.jpeg)",
+      "objective": "Record the disposition of the two embedded images: both are tutor-brand material, not teaching figures; decide that they are excluded from delivered lessons and that the contact details they show are not republished. Do not commit the images.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T1-BRANDING.md"
+      ],
+      "depends_on": [
+        "AG-INV-T1",
+        "AG-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (AG-INV-T1), viewed directly: media/image1.jpeg (3306x2515, sha256 b334a0e127cb7f94bf10dd46672a8545fe303971ba10d0dc9a50600962ddea9a) is a branding/vision-statement cover page for a tutoring business; media/image2.jpeg (949x359, sha256 b9a670e77d35617fedda9696cd2068b55a2a0185ccac52c9b778496c6bf44045) is the same brand banner used in the page header. Neither contains agricultural teaching content. The drawing in block 4 also carries one empty text box. The document body has no equation objects, no OLE objects and no other drawings.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "AG-PRE-T2",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "blocks 0-23 (range sha256 9967f8c0eb88e7a77adad2d6f9c1495888393fa2eab579a7e05ee5740b5f0791)",
+      "objective": "Inventory all 2nd Term text outside the week bodies and map or classify each block: 'SECOND TERM E-LEARNING NOTE' (0), SUBJECT/CLASS line (2), SCHEME OF WORK list (4-15; header block 6 'WEEKTOPIC', nine items 7-15), REFERENCES (17-21: four books) and blank blocks. Per-week scheme objectives belong to the AG-WK-T2 items; revision/examination lines belong to AG-MARK-T2-REVISION and AG-MARK-T2-EXAM.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-PRE-T2.md"
+      ],
+      "depends_on": [
+        "AG-INV-T2",
+        "AG-SRC-T2"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/agricultural-science/AG-PRE-T2.md; blocks 0-23 classified from AG-INV-T2; preamble range SHA-256 9967f8c0eb88e7a77adad2d6f9c1495888393fa2eab579a7e05ee5740b5f0791. Scheme rows mapped to their week-indexing tasks; revision/exam markers delegated to AG-MARK-T2 tasks. No package content/rule/coverage/asset changes. Testing deferred by owner.",
+      "completion_condition": "Every block 0-23 mapped or classified with its locator; scheme week numbers not read from text are marked inferred; nothing invented."
+    },
+    {
+      "id": "AG-MARK-T2-REVISION",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "scheme item 'Revision.' (block 14, text sha256 067123e0afb74e0255aa210d2d56577c04613c68ae2b1d2cd4c3bf2845cf6103) and Week 10 label + 'REVISION' (blocks 675-676, range sha256 6d1209926076460d476c866e9e81b211418f8a1df5bd3238b5f7d132fc598717)",
+      "objective": "Disposition the revision markers: scheme block 14 and the Week 10 label (block 675) with its single word 'REVISION' (block 676). Classify as markers, not lessons, and record that the document has no Week 10 body, revision worksheet or marking scheme. Do not invent content. Week 1 revision content is handled by AG-WK-T2-W01.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-MARK-T2-REVISION.md"
+      ],
+      "depends_on": [
+        "AG-INV-T2",
+        "AG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (AG-INV-T2): label block 675 text \"WEEK TENDATE: ……………\" (sha256 31939d9c0dafc228d9c0b276ea88670bd77d9b9b536acd3a1b7c3ff5df797a92); block 676 text 'REVISION' (sha256 b7d6d78d896c296b9c65f6edafe294742fb55a648a75adc39ae2248918a4dba8) is the last text block, followed only by w:sectPr (677). Block 14 text 'Revision.'. Per-week 'GENERAL EVALUATION/REVISION QUESTIONS' (block 232) sits inside Weeks 2-3 and is not a marker. Importer behaviour not run (testing deferred).",
+      "completion_condition": "Markers classified with locators and an explicit statement that no instructional body exists; nothing invented."
+    },
+    {
+      "id": "AG-MARK-T2-EXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "scheme item '11-12.      Examination' (block 15; text sha256 bac0b093473a05db7f10edf4b01389a4286ccdc654f300f89ea7ec1501d2631a)",
+      "objective": "Disposition the examination marker in the scheme list (block 15, weeks 11-12): classify as a marker, not a lesson, and record that the document has no examination paper, marking scheme or Week 11/12 body. Do not invent content.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-MARK-T2-EXAM.md"
+      ],
+      "depends_on": [
+        "AG-INV-T2",
+        "AG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (AG-INV-T2): block 15 text \"11-12.      Examination\"; no WEEK ELEVEN/TWELVE label exists (last label is block 675, WEEK TEN). Importer behaviour not run (testing deferred).",
+      "completion_condition": "Marker classified with its locator and an explicit statement that no examination content exists; nothing invented."
+    },
+    {
       "id": "AG-WK-T2-W01",
       "kind": "SOURCE_WEEK_INDEXING",
       "source_id": "SS1-SRC-956594d97094",
@@ -912,6 +1297,470 @@
       "status": "PENDING",
       "implementation_reference": "Inventory (AG-INV-T2): label block 599 text \"WEEK NINEDATE: ……………………..\" (sha256 6da53770c7591dca1f306e5079aa5d61a4949ab93e170abf64976f7e0caaff72); blocks 599-674; range sha256 bc1d1321d855bd1376adc8b8d0f08f6c5dbd9b31eae703f1358a34060ae8ba81. Topic: Factors of Soil Formation. Factors of soil formation (608): climate (611), parent material (622), topography (626), biotic factors (633), time (645), General Evaluation (648), Book Review (655), Reading Assignment (658), Weekend Assignment (661-674, theory from 670). Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-676; block 677 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "AG-VIS-T2-TBL-CEREALS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "Weeks 4-5 table, block 286 (17 rows incl. header x 3 columns; block text sha256 e85f47c0bf2bab22cd9534ddf5368d4d76f9ccbcf75c9930c4ca8b5f47b4394e)",
+      "objective": "Record a disposition for the cereals (Maize | Rice) crop table in Weeks 4-5: whether it survives plain-text extraction as readable paired rows (the extracted block text concatenates cells with no separators), and whether a supplement must restate it as paired rows. Keep every figure (seed rate, spacing, climate, maturity) verbatim; do not alter source wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T2-TBL-CEREALS.md"
+      ],
+      "depends_on": [
+        "AG-INV-T2",
+        "AG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (AG-INV-T2): block 286 is a w:tbl of 17 rows and 3 columns: an empty header cell then two crop names, followed by 16 attribute rows (Description, Varieties / cultivar, Land preparation, Climatic requirement, Soil requirement, Method of propagation, Planting date, Planting, Seed rate, Spacing, Cultural practices, Maturity period, Harvesting, Processing, Uses, Storage). The table holds agronomic figures (seed rates per hectare, spacings, temperature and rainfall ranges, maturity periods); they are source facts to preserve, and later items must not add rates the table lacks. Extractor output for this table was not generated (importer deferred).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "AG-VIS-T2-TBL-LEGUMES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "Weeks 4-5 table, block 298 (17 rows incl. header x 3 columns; block text sha256 87186ec68d7711e5caba1564d1775c94d59235baff5757eda7bcae6d97cb0cf0)",
+      "objective": "Record a disposition for the legumes (Cowpea | Groundnut) crop table in Weeks 4-5: whether it survives plain-text extraction as readable paired rows (the extracted block text concatenates cells with no separators), and whether a supplement must restate it as paired rows. Keep every figure (seed rate, spacing, climate, maturity) verbatim; do not alter source wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T2-TBL-LEGUMES.md"
+      ],
+      "depends_on": [
+        "AG-INV-T2",
+        "AG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (AG-INV-T2): block 298 is a w:tbl of 17 rows and 3 columns: an empty header cell then two crop names, followed by 16 attribute rows (Description, Varieties / cultivar, Land preparation, Climatic requirement, Soil requirement, Method of propagation, Planting date, Planting, Seed rate, Spacing, Cultural practices, Maturity period, Harvesting, Processing, Uses, Storage). The table holds agronomic figures (seed rates per hectare, spacings, temperature and rainfall ranges, maturity periods); they are source facts to preserve, and later items must not add rates the table lacks. Extractor output for this table was not generated (importer deferred).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "AG-VIS-T2-TBL-ROOTS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "Weeks 4-5 table, block 309 (17 rows incl. header x 3 columns; block text sha256 b35aa8b43354f8934274af4ad2fadcafd68aceb8c9de6e6ce890f60e1de98575)",
+      "objective": "Record a disposition for the roots and tubers (Yam | Cassava) crop table in Weeks 4-5: whether it survives plain-text extraction as readable paired rows (the extracted block text concatenates cells with no separators), and whether a supplement must restate it as paired rows. Keep every figure (seed rate, spacing, climate, maturity) verbatim; do not alter source wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T2-TBL-ROOTS.md"
+      ],
+      "depends_on": [
+        "AG-INV-T2",
+        "AG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (AG-INV-T2): block 309 is a w:tbl of 17 rows and 3 columns: an empty header cell then two crop names, followed by 16 attribute rows (Description, Varieties / cultivar, Land preparation, Climatic requirement, Soil requirement, Method of propagation, Planting date, Planting, Seed rate, Spacing, Cultural practices, Maturity period, Harvesting, Processing, Uses, Storage). The table holds agronomic figures (seed rates per hectare, spacings, temperature and rainfall ranges, maturity periods); they are source facts to preserve, and later items must not add rates the table lacks. Extractor output for this table was not generated (importer deferred).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "AG-VIS-T2-BRANDING",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "page header (header2.xml, media/image1.jpeg)",
+      "objective": "Record the disposition of the one embedded image: a tutor-brand banner in the page header, not a teaching figure; decide that it is excluded from delivered lessons and that the contact details it shows are not republished. Do not commit the image.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T2-BRANDING.md"
+      ],
+      "depends_on": [
+        "AG-INV-T2",
+        "AG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (AG-INV-T2), viewed directly: word/media/image1.jpeg (949x359, sha256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14) is referenced only by header2.xml and is a tutor brand banner with logo, tagline and contact details; it has no agricultural teaching content. The document body has no w:drawing, w:pict, equation (m:oMath) or OLE objects. Header1 and header3 have no text or objects; footer2 holds the subject/term/class line and a page field.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "AG-LES-T1-W09-FARMSTEAD",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 9, General Evaluation blocks 785-786 (block 785 sha256 d5cf8e34fdad4fab40e51a03bc7b2b1f1cba6649e5a6f27a74cf648f39fecb30; block 786 sha256 b0ebee3f5260b3eef4ff302b7c4b6f56e73843d84b99faf2f77e1f35217b9b56); objective COV-AG-T1-W09-FARMSTEAD (UNRESOLVED)",
+      "objective": "Author a bounded supplement lesson on the difference between a farm and a farmstead and the five principles of farmstead layout, which Week 9's General Evaluation asks for but no block in the 1st Term document teaches. Teach only content supported by a recorded expert decision, label the lesson as a Week 9 evaluation supplement rather than the environmental-factors objective, and include practice with complete answers and criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W09.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W09-FARMSTEAD.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W09",
+        "AG-FACT-T1-W09-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by AG-WK-T1-W09 (2026-11-03): blocks 785-786 ask the two questions and 'farmstead' occurs nowhere else among the 933 blocks; COV-AG-T1-W09-FARMSTEAD is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W09-COVERAGE is open. AG-WK-T1-W09 authors no farmstead text.",
+      "completion_condition": "A lesson in agricultural-science.json teaches the farm/farmstead distinction and the layout principles cleared by AG-FACT-T1-W09-SCOPE, labels itself a Week 9 evaluation supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented, no answer key is inferred, and no schema, compiler or shared file is edited."
+    },
+    {
+      "id": "AG-LES-T1-W09-FORESTRY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 9, WK 9A blocks 790-801 (range sha256 b62f2832092cb5e127201a28ded8a3087d90f5395e45224b35a5fd5016a64455) and WK 9B block 855 (sha256 e0aa20d02e167f22c95ce77b8c9159ef947f90cc3106fb42592e8558f8616d45); objective COV-AG-T1-W09-FORESTRY (UNRESOLVED)",
+      "objective": "Author a bounded supplement lesson for the forestry cluster that Week 9 assesses but never teaches: the forest and its uses, forestry-department functions, taungya, forest regulation, selective exploitation (printed 'selective exploration' at block 801), afforestation, reforestation and primary forest products. Use only content cleared by AG-FACT-T1-W09-SCOPE, distinguish it from the one-sentence Week 7 definition at block 560, and include practice with complete answers and criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W09.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W09-FORESTRY.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W09",
+        "AG-FACT-T1-W09-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by AG-WK-T1-W09 (2026-11-03): blocks 793-801 and 855 assess forestry, while the only teaching mention in the document is the one-sentence Week 7 definition at block 560; COV-AG-T1-W09-FORESTRY is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W09-COVERAGE is open. AG-WK-T1-W09 authors no forestry text.",
+      "completion_condition": "A lesson in agricultural-science.json teaches the forestry cluster cleared by AG-FACT-T1-W09-SCOPE, labels itself a Week 9 assessment supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented, no answer key is inferred, and no schema, compiler or shared file is edited."
+    },
+    {
+      "id": "AG-FACT-T1-W09-SCOPE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 9, blocks 721-865 (range sha256 888982547014538459e63665cd22a6f311c6acbeeb72bb511cf855ff495b4018); specifically blocks 723, 731, 750, 779, 785-786, 790-801, 851, 853-855 and 857",
+      "objective": "Obtain one recorded subject-expert decision on every Week 9 item that the source does not teach or words defectively, so the two appended lessons and any re-scoping proceed without invented content: (1) the farm/farmstead distinction and five principles of farmstead layout; (2) the forestry cluster and the correct term for 'selective exploration'; (3) whether compost (854) and mulching (857) belong to another term or week or should be withdrawn; (4) the misdirected reading at 851; (5) whether pressure, named at 731, is to be taught; (6) which wording defects are retained or corrected through a delivery replacement.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W09.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W09-SCOPE.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W09"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Raised by AG-WK-T1-W09 (2026-11-03): the numbered items in AGRICULTURAL-SCIENCE-T1-W09-ASSESSMENT-SCOPE and the untaught objectives COV-AG-T1-W09-FARMSTEAD and COV-AG-T1-W09-FORESTRY. No correction or content is invented here.",
+      "completion_condition": "Every numbered item has a named expert decision recorded with evidence and locators; the two lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
+    },
+    {
+      "id": "AG-LES-T1-W01-CROP-ASPECTS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1, block 77 (sha256 123feadbedd18ec1767626dc1138178cbef6a9490650ab27d554f7eee9e06ce1) and questions at blocks 93, 122, 129-132; objective COV-AG-T1-W01-CROP-SCIENCE-ASPECTS (UNRESOLVED)",
+      "objective": "Author a bounded supplement lesson that defines the three aspects of crop production which Week 1 names at block 77 but never defines: agronomy, crop pathology and entomology. Use the spelling entomology, say exactly whether pathology is taught as the study of crop diseases only or of crop and animal diseases (see item 4 of AGRICULTURAL-SCIENCE-T1-W01-FACT-CHECKS), label the lesson as a Week 1 supplement rather than a replacement for the original, and include practice with complete answers and criterion-level marking that sums exactly. Do not invent doses, rates or handling instructions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W01-CROP-ASPECTS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by AG-WK-T1-W01 (2026-11-06): block 77 lists the three aspects, blocks 93, 122 and 129-132 ask for them, and no block among the 933 defines any of them; COV-AG-T1-W01-CROP-SCIENCE-ASPECTS is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W01-COVERAGE is open. AG-WK-T1-W01 authors no definition.",
+      "completion_condition": "A lesson in agricultural-science.json teaches the three definitions, labels itself a Week 1 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-AG-T1-W01-CROP-SCIENCE-ASPECTS then cites it with evidence; no source byte, correction or shared file is edited."
+    },
+    {
+      "id": "AG-LES-T1-W01-KEYED-PRACTICE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1, blocks 60-63, 91-95, 110-113, 115-122, 126-140 (no key in source); objective COV-AG-T1-W01-ASSESSMENT-KEYS (UNRESOLVED)",
+      "objective": "Author a bounded keyed practice supplement for Week 1 that gives complete answers and criterion-level marking for the source’s evaluation, general evaluation, weekend and theory questions, restated in original wording where needed. Answer only from taught blocks 53-107 and the AG-LES-T1-W01-CROP-ASPECTS lesson; where an item needs Week 6 blocks 481-486 (blocks 95, 112, 118 and 135) cite them, and for weekend Q4 (block 133) give the reasoning without claiming the source states a ranking. Do not copy answers from anywhere that is not a taught block.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W01-KEYED-PRACTICE.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W01",
+        "AG-LES-T1-W01-CROP-ASPECTS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by AG-WK-T1-W01 (2026-11-06): no answer key or marking guide exists anywhere in the 1st Term document; COV-AG-T1-W01-ASSESSMENT-KEYS is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W01-COVERAGE is open. AG-WK-T1-W01 authors no answer.",
+      "completion_condition": "A lesson in agricultural-science.json provides complete answers and marking that sums exactly for the listed Week 1 items, labels itself a Week 1 keyed-practice supplement, has body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-AG-T1-W01-ASSESSMENT-KEYS then cites it with evidence; no answer is inferred outside taught text and no source byte, correction or shared file is edited."
+    },
+    {
+      "id": "AG-PRE-T3",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 0-25 (range sha256 3f38a1bf54c05301d2a842b6fce4450dc0594cbdcf6394c34061879232353cda)",
+      "objective": "Index all 3rd Term source text outside teaching-week bodies: generic opening heading, SUBJECT/CLASS line, scheme-of-work list (blocks 4-15), references (blocks 17-23) and intervening blank blocks. Map each block or classify it; scheme objectives belong to the week items, and Revision/Examination belong to the marker items. Do not silently drop preamble material or infer a lesson from references.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-PRE-T3.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/agricultural-science/AG-PRE-T3.md; blocks 0-25 classified from AG-INV-T3; preamble range SHA-256 3f38a1bf54c05301d2a842b6fce4450dc0594cbdcf6394c34061879232353cda. Scheme items 1-10 delegated to weekly indexing; items 11-12 delegated to marker tasks. Existing source_alias reused. No package content/rule/coverage/asset changes. Testing deferred by owner.",
+      "completion_condition": "Every preamble block is mapped or classified with exact block locators; no scheme objective is omitted or invented."
+    },
+    {
+      "id": "AG-MARK-T3-REVISION",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "scheme block 14 ('11Revision ') and no Week 11 label/body",
+      "objective": "Disposition scheme item 11, 'Revision'. Classify it as a scheme-only revision marker, not a teaching week or lesson. The document contains ten teaching-week bodies (WEEK ONE through WEEK TEN) and no Week 11 body, revision worksheet or revision marking scheme. Do not invent revision content.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-MARK-T3-REVISION.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Revision marker is recorded as SCHEME_ONLY with exact locator; no Week 11 lesson or assessment is invented."
+    },
+    {
+      "id": "AG-MARK-T3-EXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "scheme block 15 ('12Examination') and no Week 12 label/body",
+      "objective": "Disposition scheme item 12, 'Examination'. Classify it as a scheme-only examination marker, not a teaching week or lesson. The document has no Week 12 body, examination paper or marking scheme. Do not invent exam content.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-MARK-T3-EXAM.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Examination marker is recorded as SCHEME_ONLY with exact locator; no Week 12 lesson or examination paper is invented."
     },
     {
       "id": "AG-WK-T3-W01",
@@ -1292,500 +2141,6 @@
       "status": "PENDING",
       "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
       "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
-    },
-    {
-      "id": "AG-MARK-T1-REVISION",
-      "kind": "SOURCE_MARKER_DISPOSITION",
-      "source_id": "SS1-SRC-7aa642b0085b",
-      "term": "1st Term",
-      "week_or_locator": "scheme item 11 'Revision of the Term’s Work.' (block 22; text sha256 85ccf500892b65cad9414f8eea121c37aec0733924aec52bfa823444e1214f9b)",
-      "objective": "Disposition the revision marker in the scheme list (block 22): classify as a marker, not a lesson, and record that the document has no Week 11 body, revision worksheet or marking scheme. Do not invent content.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
-          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-MARK-T1-REVISION.md"
-      ],
-      "depends_on": [
-        "AG-INV-T1",
-        "AG-SRC-T1"
-      ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Implemented 2026-11-08: added source rule SS1-SRC-7aa642b0085b-R002 (classify_marker, SCHEME_ONLY) anchored to scheme item 11 at block 22, and coverage COV-AG-T1-REVISION-MARKER with status MARKER. Evidence is the existing AG-INV-T1.md record of original DOCX XML inspection: ten teaching weeks only (WEEK 1–10), no WEEK 11 body, revision worksheet or marking scheme. No revision lesson/content was invented. The source inventory's standalone member hash matches SOURCE_ASSIGNMENTS.csv; the composite archive hash was not verified in that inventory. Compiler/importer and tests were not run; testing remains deferred.",
-      "completion_condition": "Marker classified with its locator and an explicit statement that no instructional body exists; nothing invented."
-    },
-    {
-      "id": "AG-MARK-T1-EXAM",
-      "kind": "SOURCE_MARKER_DISPOSITION",
-      "source_id": "SS1-SRC-7aa642b0085b",
-      "term": "1st Term",
-      "week_or_locator": "scheme item 12 'Examination.' (block 23; text sha256 c60e32db919b2fb4abce1f8e727f3c741a7e9052ee1ade94b9322df2bc92c8af)",
-      "objective": "Disposition the examination marker in the scheme list (block 23): classify as a marker, not a lesson, and record that the document has no examination paper, marking scheme or Week 12 body. Do not invent content.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
-          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-MARK-T1-EXAM.md"
-      ],
-      "depends_on": [
-        "AG-INV-T1",
-        "AG-SRC-T1"
-      ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Implemented 2026-11-08: added source rule SS1-SRC-7aa642b0085b-R003 (classify_marker, SCHEME_ONLY) anchored to scheme item 12 at block 23, and coverage COV-AG-T1-EXAM-MARKER with status MARKER. Evidence is the existing AG-INV-T1.md record of original DOCX XML inspection: ten teaching weeks only (WEEK 1–10), no WEEK 12 body, examination paper or marking scheme. No examination content was invented. The source inventory's standalone member hash matches SOURCE_ASSIGNMENTS.csv; the composite archive hash was not verified in that inventory. Compiler/importer and tests were not run; testing remains deferred.",
-      "completion_condition": "Marker classified with its locator and an explicit statement that no examination content exists; nothing invented."
-    },
-    {
-      "id": "AG-MARK-T2-REVISION",
-      "kind": "SOURCE_MARKER_DISPOSITION",
-      "source_id": "SS1-SRC-956594d97094",
-      "term": "2nd Term",
-      "week_or_locator": "scheme item 'Revision.' (block 14, text sha256 067123e0afb74e0255aa210d2d56577c04613c68ae2b1d2cd4c3bf2845cf6103) and Week 10 label + 'REVISION' (blocks 675-676, range sha256 6d1209926076460d476c866e9e81b211418f8a1df5bd3238b5f7d132fc598717)",
-      "objective": "Disposition the revision markers: scheme block 14 and the Week 10 label (block 675) with its single word 'REVISION' (block 676). Classify as markers, not lessons, and record that the document has no Week 10 body, revision worksheet or marking scheme. Do not invent content. Week 1 revision content is handled by AG-WK-T2-W01.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T2.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
-          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-MARK-T2-REVISION.md"
-      ],
-      "depends_on": [
-        "AG-INV-T2",
-        "AG-SRC-T2"
-      ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): label block 675 text \"WEEK TENDATE: ……………\" (sha256 31939d9c0dafc228d9c0b276ea88670bd77d9b9b536acd3a1b7c3ff5df797a92); block 676 text 'REVISION' (sha256 b7d6d78d896c296b9c65f6edafe294742fb55a648a75adc39ae2248918a4dba8) is the last text block, followed only by w:sectPr (677). Block 14 text 'Revision.'. Per-week 'GENERAL EVALUATION/REVISION QUESTIONS' (block 232) sits inside Weeks 2-3 and is not a marker. Importer behaviour not run (testing deferred).",
-      "completion_condition": "Markers classified with locators and an explicit statement that no instructional body exists; nothing invented."
-    },
-    {
-      "id": "AG-MARK-T2-EXAM",
-      "kind": "SOURCE_MARKER_DISPOSITION",
-      "source_id": "SS1-SRC-956594d97094",
-      "term": "2nd Term",
-      "week_or_locator": "scheme item '11-12.      Examination' (block 15; text sha256 bac0b093473a05db7f10edf4b01389a4286ccdc654f300f89ea7ec1501d2631a)",
-      "objective": "Disposition the examination marker in the scheme list (block 15, weeks 11-12): classify as a marker, not a lesson, and record that the document has no examination paper, marking scheme or Week 11/12 body. Do not invent content.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T2.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
-          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-MARK-T2-EXAM.md"
-      ],
-      "depends_on": [
-        "AG-INV-T2",
-        "AG-SRC-T2"
-      ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): block 15 text \"11-12.      Examination\"; no WEEK ELEVEN/TWELVE label exists (last label is block 675, WEEK TEN). Importer behaviour not run (testing deferred).",
-      "completion_condition": "Marker classified with its locator and an explicit statement that no examination content exists; nothing invented."
-    },
-    {
-      "id": "AG-MARK-T3-REVISION",
-      "kind": "SOURCE_MARKER_DISPOSITION",
-      "source_id": "SS1-SRC-458a07f7ea5a",
-      "term": "3rd Term",
-      "week_or_locator": "scheme block 14 ('11Revision ') and no Week 11 label/body",
-      "objective": "Disposition scheme item 11, 'Revision'. Classify it as a scheme-only revision marker, not a teaching week or lesson. The document contains ten teaching-week bodies (WEEK ONE through WEEK TEN) and no Week 11 body, revision worksheet or revision marking scheme. Do not invent revision content.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
-          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-MARK-T3-REVISION.md"
-      ],
-      "depends_on": [
-        "AG-INV-T3",
-        "AG-SRC-T3"
-      ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
-      "completion_condition": "Revision marker is recorded as SCHEME_ONLY with exact locator; no Week 11 lesson or assessment is invented."
-    },
-    {
-      "id": "AG-MARK-T3-EXAM",
-      "kind": "SOURCE_MARKER_DISPOSITION",
-      "source_id": "SS1-SRC-458a07f7ea5a",
-      "term": "3rd Term",
-      "week_or_locator": "scheme block 15 ('12Examination') and no Week 12 label/body",
-      "objective": "Disposition scheme item 12, 'Examination'. Classify it as a scheme-only examination marker, not a teaching week or lesson. The document has no Week 12 body, examination paper or marking scheme. Do not invent exam content.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
-          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-MARK-T3-EXAM.md"
-      ],
-      "depends_on": [
-        "AG-INV-T3",
-        "AG-SRC-T3"
-      ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
-      "completion_condition": "Examination marker is recorded as SCHEME_ONLY with exact locator; no Week 12 lesson or examination paper is invented."
-    },
-    {
-      "id": "AG-VIS-T1-TBL-W02",
-      "kind": "VISUAL_DISPOSITION",
-      "source_id": "SS1-SRC-7aa642b0085b",
-      "term": "1st Term",
-      "week_or_locator": "Week 2 table, block 160 (13 rows incl. header x 2 columns; block hash sha256 9cc53b2bd0d0fccc6e1b1201a426be4d0157bc8bae17412a737ce50cfd485c5a)",
-      "objective": "Record a disposition for the Subsistence vs Commercial comparison table in Week 2: whether it survives plain-text extraction as readable paired rows, and whether a supplement must restate it as a table or paired list. Do not alter source wording.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
-          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T1-TBL-W02.md"
-      ],
-      "depends_on": [
-        "AG-INV-T1",
-        "AG-SRC-T1"
-      ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): block 160 is a w:tbl, header cells 'SUBSISTENCE AGRICULTURE' | 'COMMERCIAL AGRICULTURE', twelve numbered contrast rows. Extractor output for this table was not generated (importer deferred).",
-      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
-    },
-    {
-      "id": "AG-VIS-T1-TBL-W06",
-      "kind": "VISUAL_DISPOSITION",
-      "source_id": "SS1-SRC-7aa642b0085b",
-      "term": "1st Term",
-      "week_or_locator": "Week 6 table, block 486 (15 rows x 3 columns; block hash sha256 6369ac8fa5a7579448710b6647aae3dfbd6aeef800b300976ebe3acdad0bd57d)",
-      "objective": "Record a disposition for the agro-based industries and raw materials table in Week 6: whether it survives plain-text extraction with each industry kept beside its raw material, and whether a supplement must restate it. Do not alter source wording.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
-          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T1-TBL-W06.md"
-      ],
-      "depends_on": [
-        "AG-INV-T1",
-        "AG-SRC-T1"
-      ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): block 486 is a w:tbl, header S/N | Agro-based Industries | Raw Materials Used, fourteen data rows (oil mill ... beverage). Extractor output for this table was not generated (importer deferred).",
-      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
-    },
-    {
-      "id": "AG-VIS-T1-BRANDING",
-      "kind": "VISUAL_DISPOSITION",
-      "source_id": "SS1-SRC-7aa642b0085b",
-      "term": "1st Term",
-      "week_or_locator": "cover table block 2 + drawing block 4 (media/image1.jpeg) and page header (header1.xml, media/image2.jpeg)",
-      "objective": "Record the disposition of the two embedded images: both are tutor-brand material, not teaching figures; decide that they are excluded from delivered lessons and that the contact details they show are not republished. Do not commit the images.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
-          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T1-BRANDING.md"
-      ],
-      "depends_on": [
-        "AG-INV-T1",
-        "AG-SRC-T1"
-      ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1), viewed directly: media/image1.jpeg (3306x2515, sha256 b334a0e127cb7f94bf10dd46672a8545fe303971ba10d0dc9a50600962ddea9a) is a branding/vision-statement cover page for a tutoring business; media/image2.jpeg (949x359, sha256 b9a670e77d35617fedda9696cd2068b55a2a0185ccac52c9b778496c6bf44045) is the same brand banner used in the page header. Neither contains agricultural teaching content. The drawing in block 4 also carries one empty text box. The document body has no equation objects, no OLE objects and no other drawings.",
-      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
-    },
-    {
-      "id": "AG-VIS-T2-TBL-CEREALS",
-      "kind": "VISUAL_DISPOSITION",
-      "source_id": "SS1-SRC-956594d97094",
-      "term": "2nd Term",
-      "week_or_locator": "Weeks 4-5 table, block 286 (17 rows incl. header x 3 columns; block text sha256 e85f47c0bf2bab22cd9534ddf5368d4d76f9ccbcf75c9930c4ca8b5f47b4394e)",
-      "objective": "Record a disposition for the cereals (Maize | Rice) crop table in Weeks 4-5: whether it survives plain-text extraction as readable paired rows (the extracted block text concatenates cells with no separators), and whether a supplement must restate it as paired rows. Keep every figure (seed rate, spacing, climate, maturity) verbatim; do not alter source wording.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T2.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
-          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T2-TBL-CEREALS.md"
-      ],
-      "depends_on": [
-        "AG-INV-T2",
-        "AG-SRC-T2"
-      ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): block 286 is a w:tbl of 17 rows and 3 columns: an empty header cell then two crop names, followed by 16 attribute rows (Description, Varieties / cultivar, Land preparation, Climatic requirement, Soil requirement, Method of propagation, Planting date, Planting, Seed rate, Spacing, Cultural practices, Maturity period, Harvesting, Processing, Uses, Storage). The table holds agronomic figures (seed rates per hectare, spacings, temperature and rainfall ranges, maturity periods); they are source facts to preserve, and later items must not add rates the table lacks. Extractor output for this table was not generated (importer deferred).",
-      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
-    },
-    {
-      "id": "AG-VIS-T2-TBL-LEGUMES",
-      "kind": "VISUAL_DISPOSITION",
-      "source_id": "SS1-SRC-956594d97094",
-      "term": "2nd Term",
-      "week_or_locator": "Weeks 4-5 table, block 298 (17 rows incl. header x 3 columns; block text sha256 87186ec68d7711e5caba1564d1775c94d59235baff5757eda7bcae6d97cb0cf0)",
-      "objective": "Record a disposition for the legumes (Cowpea | Groundnut) crop table in Weeks 4-5: whether it survives plain-text extraction as readable paired rows (the extracted block text concatenates cells with no separators), and whether a supplement must restate it as paired rows. Keep every figure (seed rate, spacing, climate, maturity) verbatim; do not alter source wording.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T2.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
-          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T2-TBL-LEGUMES.md"
-      ],
-      "depends_on": [
-        "AG-INV-T2",
-        "AG-SRC-T2"
-      ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): block 298 is a w:tbl of 17 rows and 3 columns: an empty header cell then two crop names, followed by 16 attribute rows (Description, Varieties / cultivar, Land preparation, Climatic requirement, Soil requirement, Method of propagation, Planting date, Planting, Seed rate, Spacing, Cultural practices, Maturity period, Harvesting, Processing, Uses, Storage). The table holds agronomic figures (seed rates per hectare, spacings, temperature and rainfall ranges, maturity periods); they are source facts to preserve, and later items must not add rates the table lacks. Extractor output for this table was not generated (importer deferred).",
-      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
-    },
-    {
-      "id": "AG-VIS-T2-TBL-ROOTS",
-      "kind": "VISUAL_DISPOSITION",
-      "source_id": "SS1-SRC-956594d97094",
-      "term": "2nd Term",
-      "week_or_locator": "Weeks 4-5 table, block 309 (17 rows incl. header x 3 columns; block text sha256 b35aa8b43354f8934274af4ad2fadcafd68aceb8c9de6e6ce890f60e1de98575)",
-      "objective": "Record a disposition for the roots and tubers (Yam | Cassava) crop table in Weeks 4-5: whether it survives plain-text extraction as readable paired rows (the extracted block text concatenates cells with no separators), and whether a supplement must restate it as paired rows. Keep every figure (seed rate, spacing, climate, maturity) verbatim; do not alter source wording.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T2.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
-          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T2-TBL-ROOTS.md"
-      ],
-      "depends_on": [
-        "AG-INV-T2",
-        "AG-SRC-T2"
-      ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): block 309 is a w:tbl of 17 rows and 3 columns: an empty header cell then two crop names, followed by 16 attribute rows (Description, Varieties / cultivar, Land preparation, Climatic requirement, Soil requirement, Method of propagation, Planting date, Planting, Seed rate, Spacing, Cultural practices, Maturity period, Harvesting, Processing, Uses, Storage). The table holds agronomic figures (seed rates per hectare, spacings, temperature and rainfall ranges, maturity periods); they are source facts to preserve, and later items must not add rates the table lacks. Extractor output for this table was not generated (importer deferred).",
-      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
-    },
-    {
-      "id": "AG-VIS-T2-BRANDING",
-      "kind": "VISUAL_DISPOSITION",
-      "source_id": "SS1-SRC-956594d97094",
-      "term": "2nd Term",
-      "week_or_locator": "page header (header2.xml, media/image1.jpeg)",
-      "objective": "Record the disposition of the one embedded image: a tutor-brand banner in the page header, not a teaching figure; decide that it is excluded from delivered lessons and that the contact details it shows are not republished. Do not commit the image.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T2.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
-          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T2-BRANDING.md"
-      ],
-      "depends_on": [
-        "AG-INV-T2",
-        "AG-SRC-T2"
-      ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2), viewed directly: word/media/image1.jpeg (949x359, sha256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14) is referenced only by header2.xml and is a tutor brand banner with logo, tagline and contact details; it has no agricultural teaching content. The document body has no w:drawing, w:pict, equation (m:oMath) or OLE objects. Header1 and header3 have no text or objects; footer2 holds the subject/term/class line and a page field.",
-      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
       "id": "AG-VIS-T3-W01-TBL-TOOLS",
@@ -2700,70 +3055,6 @@
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
-      "id": "AG-FACT-CONTENT-APPROVAL",
-      "kind": "FACTUAL_DEPENDENCY",
-      "source_id": null,
-      "term": null,
-      "week_or_locator": "package approval and verification",
-      "objective": "Owner content approval and later verification of any agricultural-science lessons. Separate stage; no agent may invent an approval_reference or verification.",
-      "required_files": [
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json"
-      ],
-      "required_attachments": [],
-      "allowed_write_paths": [
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json"
-      ],
-      "depends_on": [
-        "AG-INV-T1",
-        "AG-INV-T2",
-        "AG-INV-T3",
-        "AG-TEST-PACKAGE"
-      ],
-      "status": "BLOCKED",
-      "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
-      "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
-    },
-    {
-      "id": "AG-FACT-T1-W09-SCOPE",
-      "kind": "FACTUAL_DEPENDENCY",
-      "source_id": "SS1-SRC-7aa642b0085b",
-      "term": "1st Term",
-      "week_or_locator": "1st Term Week 9, blocks 721-865 (range sha256 888982547014538459e63665cd22a6f311c6acbeeb72bb511cf855ff495b4018); specifically blocks 723, 731, 750, 779, 785-786, 790-801, 851, 853-855 and 857",
-      "objective": "Obtain one recorded subject-expert decision on every Week 9 item that the source does not teach or words defectively, so the two appended lessons and any re-scoping proceed without invented content: (1) the farm/farmstead distinction and five principles of farmstead layout; (2) the forestry cluster and the correct term for 'selective exploration'; (3) whether compost (854) and mulching (857) belong to another term or week or should be withdrawn; (4) the misdirected reading at 851; (5) whether pressure, named at 731, is to be taught; (6) which wording defects are retained or corrected through a delivery replacement.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md",
-        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W09.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
-          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W09-SCOPE.md"
-      ],
-      "depends_on": [
-        "AG-SRC-T1",
-        "AG-WK-T1-W09"
-      ],
-      "status": "BLOCKED",
-      "implementation_reference": "Raised by AG-WK-T1-W09 (2026-11-03): the numbered items in AGRICULTURAL-SCIENCE-T1-W09-ASSESSMENT-SCOPE and the untaught objectives COV-AG-T1-W09-FARMSTEAD and COV-AG-T1-W09-FORESTRY. No correction or content is invented here.",
-      "completion_condition": "Every numbered item has a named expert decision recorded with evidence and locators; the two lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
-    },
-    {
       "id": "AG-FACT-T1-W02-EXPORT-ITEM",
       "kind": "FACTUAL_DEPENDENCY",
       "source_id": "SS1-SRC-7aa642b0085b",
@@ -2796,165 +3087,6 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T1-W02 (2026-11-08): block 178's options include yam, but block 104's export list does not; omission alone is not a sufficient key.",
       "completion_condition": "A sourced evidence record determines whether the item is factually defensible, and gives a precise correction/recommendation or leaves it explicitly unresolved; no unsupported answer is added."
-    },
-    {
-      "id": "AG-LES-T1-W09-FARMSTEAD",
-      "kind": "LESSON",
-      "source_id": "SS1-SRC-7aa642b0085b",
-      "term": "1st Term",
-      "week_or_locator": "1st Term Week 9, General Evaluation blocks 785-786 (block 785 sha256 d5cf8e34fdad4fab40e51a03bc7b2b1f1cba6649e5a6f27a74cf648f39fecb30; block 786 sha256 b0ebee3f5260b3eef4ff302b7c4b6f56e73843d84b99faf2f77e1f35217b9b56); objective COV-AG-T1-W09-FARMSTEAD (UNRESOLVED)",
-      "objective": "Author a bounded supplement lesson on the difference between a farm and a farmstead and the five principles of farmstead layout, which Week 9's General Evaluation asks for but no block in the 1st Term document teaches. Teach only content supported by a recorded expert decision, label the lesson as a Week 9 evaluation supplement rather than the environmental-factors objective, and include practice with complete answers and criterion-level marking.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md",
-        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W09.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
-          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W09-FARMSTEAD.md"
-      ],
-      "depends_on": [
-        "AG-SRC-T1",
-        "AG-WK-T1-W09",
-        "AG-FACT-T1-W09-SCOPE"
-      ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by AG-WK-T1-W09 (2026-11-03): blocks 785-786 ask the two questions and 'farmstead' occurs nowhere else among the 933 blocks; COV-AG-T1-W09-FARMSTEAD is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W09-COVERAGE is open. AG-WK-T1-W09 authors no farmstead text.",
-      "completion_condition": "A lesson in agricultural-science.json teaches the farm/farmstead distinction and the layout principles cleared by AG-FACT-T1-W09-SCOPE, labels itself a Week 9 evaluation supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented, no answer key is inferred, and no schema, compiler or shared file is edited."
-    },
-    {
-      "id": "AG-LES-T1-W09-FORESTRY",
-      "kind": "LESSON",
-      "source_id": "SS1-SRC-7aa642b0085b",
-      "term": "1st Term",
-      "week_or_locator": "1st Term Week 9, WK 9A blocks 790-801 (range sha256 b62f2832092cb5e127201a28ded8a3087d90f5395e45224b35a5fd5016a64455) and WK 9B block 855 (sha256 e0aa20d02e167f22c95ce77b8c9159ef947f90cc3106fb42592e8558f8616d45); objective COV-AG-T1-W09-FORESTRY (UNRESOLVED)",
-      "objective": "Author a bounded supplement lesson for the forestry cluster that Week 9 assesses but never teaches: the forest and its uses, forestry-department functions, taungya, forest regulation, selective exploitation (printed 'selective exploration' at block 801), afforestation, reforestation and primary forest products. Use only content cleared by AG-FACT-T1-W09-SCOPE, distinguish it from the one-sentence Week 7 definition at block 560, and include practice with complete answers and criterion-level marking.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md",
-        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W09.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
-          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W09-FORESTRY.md"
-      ],
-      "depends_on": [
-        "AG-SRC-T1",
-        "AG-WK-T1-W09",
-        "AG-FACT-T1-W09-SCOPE"
-      ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by AG-WK-T1-W09 (2026-11-03): blocks 793-801 and 855 assess forestry, while the only teaching mention in the document is the one-sentence Week 7 definition at block 560; COV-AG-T1-W09-FORESTRY is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W09-COVERAGE is open. AG-WK-T1-W09 authors no forestry text.",
-      "completion_condition": "A lesson in agricultural-science.json teaches the forestry cluster cleared by AG-FACT-T1-W09-SCOPE, labels itself a Week 9 assessment supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented, no answer key is inferred, and no schema, compiler or shared file is edited."
-    },
-    {
-      "id": "AG-LES-T1-W01-CROP-ASPECTS",
-      "kind": "LESSON",
-      "source_id": "SS1-SRC-7aa642b0085b",
-      "term": "1st Term",
-      "week_or_locator": "1st Term Week 1, block 77 (sha256 123feadbedd18ec1767626dc1138178cbef6a9490650ab27d554f7eee9e06ce1) and questions at blocks 93, 122, 129-132; objective COV-AG-T1-W01-CROP-SCIENCE-ASPECTS (UNRESOLVED)",
-      "objective": "Author a bounded supplement lesson that defines the three aspects of crop production which Week 1 names at block 77 but never defines: agronomy, crop pathology and entomology. Use the spelling entomology, say exactly whether pathology is taught as the study of crop diseases only or of crop and animal diseases (see item 4 of AGRICULTURAL-SCIENCE-T1-W01-FACT-CHECKS), label the lesson as a Week 1 supplement rather than a replacement for the original, and include practice with complete answers and criterion-level marking that sums exactly. Do not invent doses, rates or handling instructions.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md",
-        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W01.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
-          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W01-CROP-ASPECTS.md"
-      ],
-      "depends_on": [
-        "AG-SRC-T1",
-        "AG-WK-T1-W01"
-      ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by AG-WK-T1-W01 (2026-11-06): block 77 lists the three aspects, blocks 93, 122 and 129-132 ask for them, and no block among the 933 defines any of them; COV-AG-T1-W01-CROP-SCIENCE-ASPECTS is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W01-COVERAGE is open. AG-WK-T1-W01 authors no definition.",
-      "completion_condition": "A lesson in agricultural-science.json teaches the three definitions, labels itself a Week 1 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-AG-T1-W01-CROP-SCIENCE-ASPECTS then cites it with evidence; no source byte, correction or shared file is edited."
-    },
-    {
-      "id": "AG-LES-T1-W01-KEYED-PRACTICE",
-      "kind": "LESSON",
-      "source_id": "SS1-SRC-7aa642b0085b",
-      "term": "1st Term",
-      "week_or_locator": "1st Term Week 1, blocks 60-63, 91-95, 110-113, 115-122, 126-140 (no key in source); objective COV-AG-T1-W01-ASSESSMENT-KEYS (UNRESOLVED)",
-      "objective": "Author a bounded keyed practice supplement for Week 1 that gives complete answers and criterion-level marking for the source’s evaluation, general evaluation, weekend and theory questions, restated in original wording where needed. Answer only from taught blocks 53-107 and the AG-LES-T1-W01-CROP-ASPECTS lesson; where an item needs Week 6 blocks 481-486 (blocks 95, 112, 118 and 135) cite them, and for weekend Q4 (block 133) give the reasoning without claiming the source states a ranking. Do not copy answers from anywhere that is not a taught block.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md",
-        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W01.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
-          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W01-KEYED-PRACTICE.md"
-      ],
-      "depends_on": [
-        "AG-SRC-T1",
-        "AG-WK-T1-W01",
-        "AG-LES-T1-W01-CROP-ASPECTS"
-      ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by AG-WK-T1-W01 (2026-11-06): no answer key or marking guide exists anywhere in the 1st Term document; COV-AG-T1-W01-ASSESSMENT-KEYS is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W01-COVERAGE is open. AG-WK-T1-W01 authors no answer.",
-      "completion_condition": "A lesson in agricultural-science.json provides complete answers and marking that sums exactly for the listed Week 1 items, labels itself a Week 1 keyed-practice supplement, has body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-AG-T1-W01-ASSESSMENT-KEYS then cites it with evidence; no answer is inferred outside taught text and no source byte, correction or shared file is edited."
     },
     {
       "id": "AG-LES-T1-W02-TOOLS-MACHINES",
@@ -3029,138 +3161,6 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T1-W02 (2026-11-08): cross-week questions at blocks 168 and 181 require five agro-based industries and raw materials; Week 1 block 103 supplies fewer distinct categories.",
       "completion_condition": "A bounded cross-week supplement teaches five distinct agro-based industries and their raw materials, distinguishes agro-based from agro-allied industries, includes complete keyed practice and criterion-level marks, truthful provenance and PENDING content approval; no original source text is changed."
-    },
-    {
-      "id": "AG-TEST-PACKAGE",
-      "kind": "TEST",
-      "source_id": null,
-      "term": null,
-      "week_or_locator": "tests/ss1/agricultural-science.package.test.mts",
-      "objective": "Write (do not run) the package test file following tests/ss1/french.package.test.mts: schema parse, one registered source per assigned document, source hash and member equal to SOURCE_ASSIGNMENTS.csv, no fabricated approval or verification state, and guards for any rules or lessons the package contains at the time of writing.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "tests/ss1/french.package.test.mts",
-        "backend/src/db/ss1/subjects/agricultural-science.json"
-      ],
-      "required_attachments": [],
-      "allowed_write_paths": [
-        "tests/ss1/agricultural-science.package.test.mts",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json"
-      ],
-      "depends_on": [
-        "AG-SRC-T1",
-        "AG-SRC-T2",
-        "AG-SRC-T3"
-      ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/agricultural-science.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
-      "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
-    },
-    {
-      "id": "AG-SRC-T1",
-      "kind": "SOURCE_REGISTRATION",
-      "source_id": "SS1-SRC-7aa642b0085b",
-      "term": "1st Term",
-      "week_or_locator": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
-      "objective": "Register the 1st Term Agricultural Science source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). PERMISSION: because no package exists, this item may create the minimum package under the existing contract (schema_version ss1-subject-v1, subject_slug agricultural-science, canonical_subject confirmed from the header, package_status PENDING, all other arrays empty) and register this one source in it.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
-          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-SRC-T1.md"
-      ],
-      "depends_on": [],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "backend/src/db/ss1/subjects/agricultural-science.json created (package_status PENDING; lessons, corrections, assets, coverage empty). sources[0]: source_id=SS1-SRC-7aa642b0085b sha256=df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526 archive_member='SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx' term='1st Term' canonical_subject='Agricultural Science' header_text='FIRST TERM E-LEARNING NOTE'; rule SS1-SRC-7aa642b0085b-R001 (source_alias, approval_reference PENDING-OWNER); open item AGRICULTURAL-SCIENCE-ALIAS-APPROVAL (OWNER_ACTION, blocking). Member SHA-256 verified from the standalone/term-archive copy; the enclosing archive supplied was '1st Term SS1' zip (SHA-256 8055d852938afa44d20b03139af9958b0c9f7da6874419aa667174854895e636), NOT the composite archive, so the composite hash was not checked. Header read from the DOCX XML, not via the importer. Record: docs/ss1/work/microtasks/agricultural-science/AG-SRC-T1.md. Implemented, not approved or verified.",
-      "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
-    },
-    {
-      "id": "AG-SRC-T2",
-      "kind": "SOURCE_REGISTRATION",
-      "source_id": "SS1-SRC-956594d97094",
-      "term": "2nd Term",
-      "week_or_locator": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
-      "objective": "Register the 2nd Term Agricultural Science source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by AG-SRC-T1; add only this source's entry and rules.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
-          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-SRC-T2.md"
-      ],
-      "depends_on": [
-        "AG-SRC-T1"
-      ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "backend/src/db/ss1/subjects/agricultural-science.json (existing package from AG-SRC-T1; only additions): sources[1] source_id=SS1-SRC-956594d97094 sha256=e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 archive_member='SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx' (verbatim from the manifest) term='2nd Term' canonical_subject='Agricultural Science' header_text='SECOND TERM E-LEARNING NOTE'; rule SS1-SRC-956594d97094-R001 (source_alias, approval_reference PENDING-OWNER); open item AGRICULTURAL-SCIENCE-ALIAS-APPROVAL-T2 (OWNER_ACTION, blocking). Subject confirmed from the document: the opening heading is the generic template title (occurs once); the next line reads 'SUBJECT: AGRICULTURAL SCIENCE ... CLASS: SS 1'; the filename spelling 'AGRICULTRAL' was not used as evidence. Container supplied: the complete composite ZIP (SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, verified) and the member's own SHA-256 was also verified from the extracted bytes; both equal SOURCE_ASSIGNMENTS.csv (188,799 bytes). Method: DOCX XML paragraphs plus mammoth 1.12.2 extractRawText in a private scratch directory; importer/plan run not performed (deferred). Record: docs/ss1/work/microtasks/agricultural-science/AG-SRC-T2.md. Implemented, not approved or verified.",
-      "completion_condition": "Registered source entry added to the existing package with no other source touched. Package stays PENDING; the 'source without coverage' blocker remains until AG-INV-T2 indexing. Alias owner approval is an open item, not invented. Testing deferred by owner."
-    },
-    {
-      "id": "AG-SRC-T3",
-      "kind": "SOURCE_REGISTRATION",
-      "source_id": "SS1-SRC-458a07f7ea5a",
-      "term": "3rd Term",
-      "week_or_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
-      "objective": "Register the 3rd Term Agricultural Science source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by AG-SRC-T1; add only this source's entry and rules.",
-      "required_files": [
-        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-        "docs/ss1/contracts/CONTRACT.md",
-        "backend/src/db/ss1/subjectPackageSchema.ts",
-        "backend/src/db/ss1/compiler.ts",
-        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
-        "backend/src/db/ss1/subjects/agricultural-science.json"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
-          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/agricultural-science.json",
-        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
-        "docs/ss1/work/microtasks/agricultural-science/AG-SRC-T3.md"
-      ],
-      "depends_on": [
-        "AG-SRC-T1"
-      ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "backend/src/db/ss1/subjects/agricultural-science.json: sources[2] SS1-SRC-458a07f7ea5a (sha256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a, member 'SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx', term '3rd Term', canonical_subject 'Agricultural Science'), header_text 'THIRD TERM E-LEARNING NOTE' (first paragraph; single occurrence), source_alias rule SS1-SRC-458a07f7ea5a-R001 (approval_reference PENDING-OWNER) and open item AGRICULTURAL-SCIENCE-ALIAS-APPROVAL-T3 (OWNER_ACTION, blocks_delivery). Subject confirmed from the SUBJECT line, scheme and teaching headings; no handoff needed. Evidence note: docs/ss1/work/microtasks/agricultural-science/AG-SRC-T3.md. Not approved, not verified; testing deferred by owner.",
-      "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     }
   ],
   "review": {
