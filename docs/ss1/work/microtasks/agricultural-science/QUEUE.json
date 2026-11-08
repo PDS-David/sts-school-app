@@ -66,7 +66,8 @@
     "AG-VIS-T2-TBL-ROOTS (2026-11-08): source table 309 is a 17x3 Yam/Cassava comparison. Plain-text extraction concatenates cells and loses pairings. Preserve all sixteen attributes and printed figures verbatim; the Cassava seed-rate cell is blank and must remain not supplied. No duplicate supplement or source change.",
     "AG-VIS-T2-BRANDING (2026-11-08): header2 image1.jpeg is tutor-brand promotional material, not an agricultural teaching figure. Exclude from delivered lessons and do not republish contact details. No image file committed.",
     "AG-VIS-T3-W01-TBL-TOOLS (2026-11-08): block 36 is a 6x10 list of 30 numbered tool names, not 30 illustrations. Project 38 asks for drawings and notes for all 30; no tool drawings are embedded. Existing tool-reference supplement task now explicitly requires one rights-cleared, provenance-recorded illustration per tool.",
-    "AG-VIS-T3-W02-DRAUGHT-ANIMALS (2026-11-08): image1.png is a relevant draught-horse/animal-traction photograph with photographer/agency credit; reuse rights are not supplied. Do not republish unless licensed; otherwise use a rights-cleared equivalent. Original media not committed."
+    "AG-VIS-T3-W02-DRAUGHT-ANIMALS (2026-11-08): image1.png is a relevant draught-horse/animal-traction photograph with photographer/agency credit; reuse rights are not supplied. Do not republish unless licensed; otherwise use a rights-cleared equivalent. Original media not committed.",
+    "AG-VIS-T3-W02-MECHANICAL-POWER (2026-11-08): image2.png appears to depict a motor grader/earthmoving machine, not an unambiguous farm tractor. It is broadly mechanical power but needs accurate labelling; credit is visible and reuse rights are not supplied. Do not republish unless licensed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -81,8 +82,8 @@
     "CORRECTION_BINDING": 11
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 51,
-    "PENDING": 97,
+    "IMPLEMENTED_TESTING_DEFERRED": 52,
+    "PENDING": 96,
     "BLOCKED": 2
   },
   "items": [
@@ -2290,8 +2291,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Inspected word/media/image2.png (436x340; 238855 bytes; SHA-256 48e250b180b2492f2f6b2f947d36ca4e577940c8528053d3dff534a5166ee077), linked to Week Two block 128 under MECHANICAL POWER. It appears to show a yellow six-wheel motor grader/earthmoving machine, not an unambiguous agricultural tractor; there is no explanatory caption/label in the body. It is broadly relevant to engine-powered machinery but needs accurate labelling to avoid implying it is a farm tractor. A visible credit reads 'Lee F. Snyder/Photo Researchers, Inc.'; no licence/permission supplied. Added blocking open item requiring rights clearance and accurate scope/rights-cleared agricultural replacement if needed. No source image committed or package asset added; importer/app rendering not run.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5631,7 +5632,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W02-MECHANICAL-POWER",
     "AG-VIS-T3-W02-SOLAR",
     "AG-VIS-T3-W02-WIND",
     "AG-VIS-T3-W02-ELECTRIC-WATER",
