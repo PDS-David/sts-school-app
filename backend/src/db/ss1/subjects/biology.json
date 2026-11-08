@@ -1987,6 +1987,80 @@
           "explanation": "The four growth phases are named in block 120 but not defined; beneficial effects of bacteria/fungi are listed in blocks 130-139 but not separated into a full four-item keyed list per organism. No marking guide is supplied."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T3-W03-STI",
+      "source_id": "SS1-SRC-78059230037f",
+      "objective": "3rd Term scheme row 3: Sexually Transmitted Infections (STI) — definition, transmission, symptoms, prevention and control",
+      "objective_locator": "Scheme row 3; body label block 175 (text 'WEEK SEVEN', sha256 e43a5742583e8a8ba386bade0de387b049a94a50485144d8443fbc82e136ed11); STI heading block 177; teaching blocks 182-194",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 182-183 (range sha256 5c6d5b6de7f764067dcb9fee7871b33db3bb893a95a9f175810b1d12fe36fb8a)",
+          "explanation": "Defines STIs and provides a four-row table for gonorrhoea, syphilis, AIDS and genital warts, with source-stated agents, symptoms and prevention/control. These medical claims are preserved as source content and require authoritative review."
+        },
+        {
+          "locator": "blocks 185-194 (range sha256 247717dfec1a266ba7145e0db9c9727afc7a0512618d0eb83e6e609a75aa69f5)",
+          "explanation": "Provides a section on HIV and AIDS, a list of transmission routes and source-stated prevention/control. The HIV expansion at block 186 conflicts with the table's wording at block 183; claims about transmission and prevention require authoritative review. No current health advice is inferred."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No STI lesson is registered in the package; source-only medical content is not deliverable."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T3-W03-HIV-AIDS",
+      "source_id": "SS1-SRC-78059230037f",
+      "objective": "3rd Term Week 3 body section: HIV and AIDS — pathogen/disease distinction and source-stated transmission",
+      "objective_locator": "Heading block 185; teaching blocks 185-194 (range sha256 247717dfec1a266ba7145e0db9c9727afc7a0512618d0eb83e6e609a75aa69f5)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 185-187",
+          "explanation": "Describes HIV as the pathogen associated with AIDS and discusses immune-system effects. The source expands HIV as 'Acquired immune deficiency virus' at block 186, while table block 183 uses 'Human immune – deficiency virus (HIV)'; the inconsistency is preserved and flagged for factual correction."
+        },
+        {
+          "locator": "blocks 188-194",
+          "explanation": "Lists several transmission routes and includes a kissing-related claim. All such health claims require current authoritative review before use; this index does not provide personal medical advice or endorse the printed claims."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No approved HIV/STI lesson is registered; source-only health content is not deliverable."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T3-W03-ASSESSMENT",
+      "source_id": "SS1-SRC-78059230037f",
+      "objective": "3rd Term Week 3 evaluation, general evaluation, weekend assignment and theory",
+      "objective_locator": "Evaluation blocks 196-198; general evaluation blocks 199-205; reading 205; weekend assignment 206-211; theory 212-214",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "evaluation blocks 196-198 (range sha256 c19817132e38e3cd22ee0addcbb8b6711d721662becd92b9e3eefe0168e30058)",
+          "explanation": "The STI list and causative agents are only partially supported by the four-row table; the introductory list at 182 names other STI examples without giving their agents/details. No key is supplied."
+        },
+        {
+          "locator": "general evaluation blocks 199-205 (range sha256 7edaac0eb527d9a4e8fc7be99f22029ab2f947c833ba0ee4979692dc5df24cf6)",
+          "explanation": "Question 200 revises Week 2 beneficial/harmful effects; Q201 asks for five bacterial diseases/symptoms beyond this week's STI table; Q202 asks for airborne diseases/symptoms not taught here. Q203's STI definition and Q204's five-STI request are only partly supported by the four-row table. No key is supplied."
+        },
+        {
+          "locator": "reading assignment block 205",
+          "explanation": "College Biology, chapter 21, pages 469-472. The cited book is not part of the archive and was not opened."
+        },
+        {
+          "locator": "weekend assignment blocks 206-211 (range sha256 bc0ba3ce1c2ab853528394973dc506c6b5d6512bcae0f9ea5c41f2ff5cdcb958)",
+          "explanation": "The items distinguish bacterial from viral causes and test STI identification; the source table supports the listed STI groups but no answer key is supplied. The item about symptoms shared with other diseases is not explained in the teaching body."
+        },
+        {
+          "locator": "theory blocks 212-214 (range sha256 65315e4154a1e18cb60490704f42f96ac0d63c688e0c585dbbd9521987d3f56e)",
+          "explanation": "The source lists transmission routes and prevention/control statements, but does not present five complete, keyed infection routes and five evidence-checked control measures. The requested HIV/AIDS distinction is only briefly described. No marking guide is supplied."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -2888,6 +2962,49 @@
       "required_action": "A Biology teacher should approve a complete answer/marking guide after the missing teaching and disease fact checks are resolved.",
       "affected_ids": [
         "COV-BIO-T3-W02-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W03-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "The Week 3 STI/HIV content is present in the source, but the Biology package has no registered lesson.",
+      "required_action": "Author and bind a source-distinct, evidence-checked STI/HIV lesson after factual review and teacher approval; do not present the original health statements as current advice.",
+      "affected_ids": [
+        "COV-BIO-T3-W03-STI",
+        "COV-BIO-T3-W03-HIV-AIDS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W03-HEALTH-CLAIMS",
+      "kind": "FACT",
+      "detail": "The STI table at block 183 and HIV/AIDS statements at blocks 186-194 contain health claims requiring current authoritative review. HIV is expanded differently in the table and body; the source also includes a kissing-related transmission claim.",
+      "required_action": "Verify disease names, causative agents, symptoms, transmission and prevention/control against current authoritative public-health sources. Record exact citations, distinguish corrected supplement wording from the original and do not provide individualized medical advice.",
+      "affected_ids": [
+        "COV-BIO-T3-W03-STI",
+        "COV-BIO-T3-W03-HIV-AIDS",
+        "COV-BIO-T3-W03-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W03-LABEL-ALIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The scheme row 3 is Sexually Transmitted Infections, but its body label at block 175 says WEEK SEVEN. The same WEEK SEVEN label appears again at block 474 in the source; this is a numbering/section-boundary mismatch.",
+      "required_action": "Confirm the intended week numbering and section boundaries with the subject owner. Preserve both original labels until the owner approves any correction.",
+      "affected_ids": [
+        "COV-BIO-T3-W03-STI"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "BIOLOGY-T3-W03-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "Week 3 evaluation, general evaluation, weekend assignment and theory have no answer key or marking guide; several prompts ask for more STIs/diseases and transmission/control detail than the source provides.",
+      "required_action": "A Biology teacher should approve a complete keyed answer/marking guide after the health-claim review and section-label decision.",
+      "affected_ids": [
+        "COV-BIO-T3-W03-ASSESSMENT"
       ],
       "blocks_delivery": true
     }
