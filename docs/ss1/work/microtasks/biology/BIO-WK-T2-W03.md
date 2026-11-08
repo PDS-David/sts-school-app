@@ -40,7 +40,7 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. Objective indexing and evaluation/assi
 
 No answer key or marking guide accompanies the evaluation, revision, weekend assignment or theory items. The assessment coverage remains UNRESOLVED.
 
-## B ounded follow-up tasks
+## Bounded follow-up tasks
 
 - `BIO-FACT-T2-W03-TAPEWORM-SCOPE`: verify whether tapeworm reproduction and the related internal-fertilization prompt belong in this week, using an approved Biology reference. The later tapeworm mention is about parasitism, not reproduction.
 - `BIO-LES-T2-W03-REPRODUCTION-ORGANISMS`: author an approved supplemental lesson for the seven organisms listed in the Week 3 content list, using the existing visual tasks for the four source figures. Include tapeworm only if the fact task confirms the scope.

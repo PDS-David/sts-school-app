@@ -40,7 +40,7 @@ The Week 1 `CONTENT` list at blocks 31-35 includes “Sexual Reproduction (Conju
 
 No answer key or marking guide accompanies the evaluation, general revision questions, weekend assignment or theory items. Assignment coverage remains UNRESOLVED until the missing teaching and factual dependencies are resolved and a teacher-approved key is supplied.
 
-## B ounded follow-up tasks
+## Bounded follow-up tasks
 
 - `BIO-LES-T2-W01-ARTIFICIAL-PROPAGATION`: explain the five artificial methods named at block 65 using an approved Biology reference, and provide keyed practice for blocks 74 and 90.
 - `BIO-LES-T2-W01-ASEXUAL-ADVANTAGES`: add a clearly labelled supplement for the advantages and disadvantages requested at block 91.
