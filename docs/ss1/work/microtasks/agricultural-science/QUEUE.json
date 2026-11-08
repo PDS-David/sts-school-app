@@ -70,7 +70,8 @@
     "AG-VIS-T3-W02-MECHANICAL-POWER (2026-11-08): image2.png appears to depict a motor grader/earthmoving machine, not an unambiguous farm tractor. It is broadly mechanical power but needs accurate labelling; credit is visible and reuse rights are not supplied. Do not republish unless licensed.",
     "AG-VIS-T3-W02-SOLAR (2026-11-08): image3.png is a legible rooftop photovoltaic-panel image matching the solar-power text/caption, but not farm-specific. Photographer/agency credit is visible; reuse rights are not supplied. Do not republish unless licensed.",
     "AG-VIS-T3-W02-WIND (2026-11-08): inspected image4.png at Week Two block 194. It is a recognizable water-pumping windmill photo, relevant to the caption at 192 and wind-power section; credit Guy R. Higbee/Photo Researchers, Inc. is visible but no reuse licence is supplied. Delivery reuse is blocked pending rights clearance or a separately sourced rights-cleared replacement.",
-    "AG-VIS-T3-W02-ELECTRIC-WATER (2026-11-08): block 211 has two visuals only—generator-room photo image5 and hydroelectric-dam diagram image6. Both carry third-party credits and no source reuse licence. Image6 has unkeyed numeric callouts 1-6. Correction follow-up AG-CORR-T3-W02-WDP-LOCATORS records that WDP layers are actually in Week Four groups at blocks 487 and 494, not block 211."
+    "AG-VIS-T3-W02-ELECTRIC-WATER (2026-11-08): block 211 has two visuals only—generator-room photo image5 and hydroelectric-dam diagram image6. Both carry third-party credits and no source reuse licence. Image6 has unkeyed numeric callouts 1-6. Correction follow-up AG-CORR-T3-W02-WDP-LOCATORS records that WDP layers are actually in Week Four groups at blocks 487 and 494, not block 211.",
+    "AG-VIS-T3-W04-RUMINANT-DIGESTION (2026-11-08): image7.png at block 395 is a readable labelled cattle digestive-tract diagram supporting the four-compartment text at 391-396. No credit/licence is supplied; reuse is blocked pending permission or a separately sourced rights-cleared diagram."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -85,8 +86,8 @@
     "CORRECTION_BINDING": 12
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 55,
-    "PENDING": 94,
+    "IMPLEMENTED_TESTING_DEFERRED": 56,
+    "PENDING": 93,
     "BLOCKED": 2
   },
   "items": [
@@ -2446,8 +2447,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a, and image7.png SHA-256 4f1fd7332caef496e1f26881710e9ae5d4174ba276a898b80f385d4cd28dd2f2 (11,447 bytes; 449×326 PNG). Relationship rId13 targets media/image7.png at document.xml body block 395. The monochrome cattle profile diagram labels oesophagus, rumen, reticulum, omasum, abomasum, small intestine and large intestine. Labels and major anatomical compartments are readable; arrows/compartment labels are somewhat crowded around the stomach, so no redrawing or label repositioning is justified without a rights-cleared source. The surrounding teaching at blocks 391-396 explains the four compartments and the rumination/digestion sequence; image is relevant. No visible author/publisher credit or reuse licence is supplied; PNG metadata only contains technical fields (sRGB, transparency, DPI and Microsoft Office software). Do not reuse without rights clearance; a separate rights-cleared diagram is needed if permission cannot be obtained. Added open item AGRICULTURAL-SCIENCE-T3-W04-RUMINANT-DIGESTION-RIGHTS. No derivative created. Importer, rendering and device checks not run.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5676,7 +5677,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W04-RUMINANT-DIGESTION",
     "AG-VIS-T3-W04-PIG-DIGESTION",
     "AG-VIS-T3-W04-POULTRY-DIGESTION",
     "AG-VIS-T3-W04-MALE-REPRODUCTION",
