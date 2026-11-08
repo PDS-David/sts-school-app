@@ -30,7 +30,10 @@
     "BK-WK-T1-W01 (2026-10-30) indexed 1st Term Week 1 (blocks 30-86, sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3) at objective level and added 11 coverage entries (9 PARTIAL, 2 UNRESOLVED) and 6 open items. Scheme entries 2-4 (blocks 4-9, sha256 7914229a77efd82c9b24e1d88235825f5f51c1424951b4b36e3e6af6eba3eab8) name the cash book, the single column cash book and its continuing preparation; the body defines the book and the cash and bank accounts, then prints two T-account solutions. The scheme items sub-item has no teaching, no single column format or folio column is shown, balancing is printed but never explained, and both printed solutions disagree with their questions: Illustration 1 prints 115 for 155 and 750 for 700 with a balance of 1,010 instead of 1,100; Illustration 2 repeats Illustration 1 credit entries, omits the June 9 cheque of 300 and prints a false 3,180 equality. No exercise or assignment exists; the illustrations are teaching, not assessment. Blocks 30-86 contain zero non-ASCII characters and no tab characters; the account rules are drawing objects at blocks 49, 56, 70 and 79, not Word tables. Appended one PENDING lesson (BK-LES-T1-W01-CASH-BOOK) and one BLOCKED FACTUAL_DEPENDENCY (BK-FACT-T1-W01-DEFECTS). Nothing was run: no lesson, no rule, no asset, no importer or plan run. Testing deferred by owner.",
     "BK-WK-T1-W03 (2026-10-30) indexed 1st Term Week 3 (blocks 109-157, sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997, 1362 characters) at objective level and added 7 coverage entries, all PARTIAL, and 5 open items. Scheme entry 8 (blocks 18-21, sha256 b4c3675b322d919a77f8b9dc26366c102255418656c15111b5b3c2b712d3e8a9) names explain, identify and record contra entry; the body carries all three, but block 113 defines contra as a transfer to the identical side, the opposite of the rule its own two examples apply, block 112 limits contra to payments into the bank, and N710 is paid in against a N300 cash balance with no stated source. The two Word tables are correct contras when read by cell - Dr Bank 300 and 710 against Cr Cash at block 122, Dr Cash 800 against Cr Bank at block 135 - and each carries the C folio on both sides. No total, balance or exercise exists and blocks 136-157 are empty. Follow-ups appended: BK-LES-T1-W03-CONTRA (LESSON, PENDING) and BK-FACT-T1-W03-DEFECTS (FACTUAL_DEPENDENCY, BLOCKED). Coverage 33->40; open items 21->26; items 43->45; notes 14->15; status 9 implemented / 30 pending / 6 blocked; next_runnable head BK-PRE-T1. No lesson, delivery, schema, compiler, parser or importer change; bookkeeping.json edited for coverage and open items only. Evidence note: docs/ss1/work/microtasks/bookkeeping/BK-WK-T1-W03.md. Not approved, not verified; nothing run (testing deferred by owner).",
     "BK-PRE-T1 (2026-11-03) indexed the 1st Term preamble (blocks 0-29, range sha256 581587fcf71c6d77b82abac943b40f79becbda4807c855bd3431cf63bc6d302b; 880 characters, no non-ASCII) and hash-accounted every block. Blocks 0-2 are the term label, scheme heading and flattened scheme header 'SUBJECT: BOOK-KEEPINGCLASS: SS 1  TOPIC' (four tabs between the runs, dropped by the block-text rule); block 2 is the registered alias anchor and BOOKKEEPING-ALIAS-APPROVAL stays open. Blocks 3-29 are twelve manually numbered entries (no w:numPr). Entries 2-4 map to Week 1, 5-7 to Week 2, 8 to Week 3 and 9-10 to Week 4; entries 1 and 11 are revision markers and 12 is the examination marker, each with its own pending item. Every sub-item maps to an existing coverage row; block 14's difference sub-item remains UNRESOLVED and the single-column items and format remain UNRESOLVED, all already named by blocking open items. Findings recorded: four week bodies for twelve scheme entries with no Week 5-12 body; blocks 15 and 17 are byte-identical sub-item lines under near-duplicate entries 6 and 7; entry 4 says 'continues' but the Week 1 body teaches the bank account; 'difference' occurs only in block 14 in the whole document. Added one blocking OWNER_ACTION open item (BOOKKEEPING-T1-SCHEME-VS-BODY) and wrote no coverage, rule, lesson, asset or correction. Coverage 40; open items 26->27; items 45 (unchanged); notes 15->16; status 10 implemented / 29 pending / 6 blocked; next_runnable head BK-MARK-T1-REVISION. Nothing run (testing deferred by owner).",
-    "BK-VIS-T1-BRACE-W04 (2026-11-06) recorded the disposition of the single decorative right brace at block 170 (empty text, 7.15pt x 42.7pt, beside blocks 171-172): excluded from delivered lessons, no asset, lesson or rule created, nothing committed from the drawing. Wording kept in blocks 171-172; the tab separator between name and value stays under defect 2 of BOOKKEEPING-T1-W04-SOURCE-DEFECTS. One evidence entry appended to COV-BK-T1-W04-TWO-ACCOUNTS (PARTIAL unchanged). BK-WK-T1-W04's statement that Week 4 has no drawing is wrong (block 170); left unedited as outside this task's paths. Items 45 (unchanged); notes 16->17; status 11 implemented / 28 pending / 6 blocked; next_runnable head BK-MARK-T1-REVISION. Not approved, not verified; nothing run (testing deferred by owner)."
+    "BK-VIS-T1-BRACE-W04 (2026-11-06) recorded the disposition of the single decorative right brace at block 170 (empty text, 7.15pt x 42.7pt, beside blocks 171-172): excluded from delivered lessons, no asset, lesson or rule created, nothing committed from the drawing. Wording kept in blocks 171-172; the tab separator between name and value stays under defect 2 of BOOKKEEPING-T1-W04-SOURCE-DEFECTS. One evidence entry appended to COV-BK-T1-W04-TWO-ACCOUNTS (PARTIAL unchanged). BK-WK-T1-W04's statement that Week 4 has no drawing is wrong (block 170); left unedited as outside this task's paths. Items 45 (unchanged); notes 16->17; status 11 implemented / 28 pending / 6 blocked; next_runnable head BK-MARK-T1-REVISION. Not approved, not verified; nothing run (testing deferred by owner).",
+    "On work/bookkeeping-ss1: BK-MARK-T1-REVISION and BK-MARK-T1-EXAM implemented as source-only marker dispositions; 3 preamble classify_marker rules and 3 MARKER coverage entries added. No lessons or exam/revision content invented. Parser/schema/tests deferred.",
+    "On work/bookkeeping-ss1: completed first-term Week 1 T-account visual disposition, Week 3 and Week 4 table dispositions, and first-term worked-material and currency preservation records. All are source-reading dispositions; importer/rendering/package tests remain deferred.",
+    "On work/bookkeeping-ss1: BK-TEST-PACKAGE test file drafted only, following the French package test pattern. It is intentionally not run; execution and typecheck remain deferred by owner."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -45,8 +48,8 @@
     "LESSON": 6
   },
   "status_counts": {
-    "PENDING": 28,
-    "IMPLEMENTED_TESTING_DEFERRED": 11,
+    "PENDING": 20,
+    "IMPLEMENTED_TESTING_DEFERRED": 19,
     "BLOCKED": 6
   },
   "items": [
@@ -283,8 +286,8 @@
         "BK-SRC-T2",
         "BK-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/bookkeeping.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "tests/ss1/bookkeeping.package.test.mts written only, following the French package test pattern: frozen-schema parse; exact three manifest source identities; lesson hashes and marking totals; correction identity/same-term binding; pending approval/deferred verification; pending source aliases; exact SCHEME_ONLY marker rule targets; and wrong-hash/missing/ambiguous-anchor guards. Test execution, typecheck and importer remain deferred by owner.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -384,8 +387,8 @@
         "BK-INV-T1",
         "BK-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T1): block 3 '1.Revision.' (sha256 7a903777d5427675bcd33f525cb7d451e982d9676d19f0ecfc983fc71f97813c) is the first scheme entry, immediately before '2.Cash book'; block 28 '11.Revision.' (sha256 2a63828deabed8b07ba2aee44c8aec95f42a1c3e56a3d147aaf004f5ca697fc9) is the eleventh, immediately before '12.Examination'. Both sit in the preamble (before the first WEEK marker at block 30), so neither is inside a parsed row. The only ASSIGNMENT heading (block 207) is inside Week 4 and is not a revision marker. classify_marker with kind SCHEME_ONLY is the contract op that covers preamble material outside parsed rows; no rule is written by this item. Parser behaviour not run (testing deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in BK-MARK-T1-REVISION.md and backend/src/db/ss1/subjects/bookkeeping.json: two exact SCHEME_ONLY classify_marker rules and two MARKER coverage records; no revision content invented. Testing deferred.",
       "completion_condition": "Both markers classified with their locators and an explicit statement that no instructional body, questions or marking scheme exists; nothing invented."
     },
     {
@@ -422,8 +425,8 @@
         "BK-INV-T1",
         "BK-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T1): block 29 '12.Examination' (sha256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9) is the twelfth and last scheme entry; block 30 begins the Week One body, so nothing follows the marker and the document ends with the Week 4 ASSIGNMENT (blocks 207-217) and blank blocks 218-219. classify_marker/SCHEME_ONLY applicable; no rule written by this item. Parser behaviour not run (testing deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in BK-MARK-T1-EXAM.md and backend/src/db/ss1/subjects/bookkeeping.json: exact SCHEME_ONLY classify_marker rule and MARKER coverage record; no examination content invented. Testing deferred.",
       "completion_condition": "Marker classified with its locator and an explicit statement that no examination material exists; nothing invented."
     },
     {
@@ -612,8 +615,8 @@
         "BK-INV-T1",
         "BK-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T1), arithmetic by reading only: Illustration 1 prints debit 1,500 + 500 + 115 = 2,115 and credit 250 + 750 + 50 + 30 + 25 + balance 1,010 = 2,115, so it reconciles internally but uses 115 and 750 where its question states 155 (block 47) and 700 (block 52); with the question's figures the debit is 2,155, the credit items 1,055 and the balance 1,100. Illustration 2 prints debit 2,500 + 450 + 230 = 3,180, credit items 650 + 750 + 50 + 30 + 25 = 1,505 against a printed credit total of 3,180 (gap 1,675), and printed balances of 1,910 and 1,010 that sum to 2,920; the June 9 cheque purchase of 300 is missing and June 7 has no amount. Block 122 and block 135 are correct contras by cell position (see BK-VIS-T1-TBL-W03). Block 175's eleven answers are complete and consistent by reading. Blocks 105-108, 206 and 218-219 are empty: the Week 2 example, the Week 4 posting illustration and both ASSIGNMENT questions have no solution. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-219; block 220 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BK-PRES-T1-WORKED.md records all first-term worked examples, source locators, accounting structure and arithmetic/solution defects without changing source figures.",
       "completion_condition": "Each worked item listed with its locator, its preserved steps and an explicit consistency finding; no source figure altered and no solution invented by this item."
     },
     {
@@ -650,8 +653,8 @@
         "BK-INV-T1",
         "BK-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T1): the only currency marker in the text is a bare 'N' (column header line 39 'N', line 50 'N    N', table sub-header cells 'N' at blocks 122 and 135, and amounts such as 'N2,900', 'N1,850' and 'N75' in blocks 96-104). No naira sign and no 'NGN'/'kobo' text appears. Block 95 contains '19x9' as a deliberate placeholder year. docProps/core.xml of the verified member records dcterms:created and dcterms:modified 2020-05-30T10:24:00Z, dc:creator 'oladoyin faasoranti', cp:lastModifiedBy 'ADEDOLAPO', cp:revision 2, and docProps/app.xml records 10 pages and 1,372 words. No figure is changed by this item.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BK-PRES-T1-CURRENCY.md records source currency notation, placeholder year and document metadata; no figures updated.",
       "completion_condition": "Currency notation and the dated figures recorded with locators and the document's date; no figure changed; any need for updated data becomes an open item rather than an invented figure."
     },
     {
@@ -688,8 +691,8 @@
         "BK-INV-T1",
         "BK-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T1), objects enumerated: the member has no image parts at all (no word/media directory) and no OLE objects or equations, but eight VML objects sit in five paragraphs. Block 49 holds 'Straight Arrow Connector 18' (vertical, width 0, height 242.8pt) and 'Straight Arrow Connector 17' (horizontal, 405.25pt) — the ruled T. Block 56 holds groups 'Group 14' and 'Group 11' — the double rule under the debit total. Block 70 repeats the connector pair ('Straight Arrow Connector 10' vertical, '9' horizontal). Block 79 holds 'Group 2' (267.1pt) — the double rule under the bank total. Extracted text keeps dates and amounts as tab-separated runs (for example 'July 1 bal. b/f\\t1,500 \\t\\tJuly 3 Okola\\t\\t   250') and the 'DR ... CR' header line, but the ruled box, the column rules and the visual separation of the two sides are geometry only. Importer/plan output not generated (deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BK-VIS-T1-TACC-W01.md records the VML T-account ruling and double-rule geometry, extraction loss, required semantic table restatement, and verification boundary.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -726,8 +729,8 @@
         "BK-INV-T1",
         "BK-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T1), cells read directly from w:tbl: block 122 header ['Date','Particulars','Folio','Cash','Bank'] twice, row 1 ['','','','N','N',...], row 2 ['Jan. 1','Cash','C','','300','Jan. 1','Bank','C','300',''], row 3 the same with 710 — the amount sits in the Bank cell on the debit side and the Cash cell on the credit side, so this is Dr Bank / Cr Cash. Block 135 row 2 ['Jan. 4','Bank','C','800','','Jan. 4','Cash','C','','800'] — Dr Cash / Cr Bank. The 'Effect / Action Required' pairs are paragraphs, not a table: blocks 116 and 130 have identical block text ('EffectAction Required', sha256 1db4bc45a5efc035e858390ba776222e60cb197f34071115e157e232365c432c) and each is followed by two row paragraphs such as 'Cash balance is decreasedCr. Cash column' (block 117). Mammoth emits table cells one per line, so row grouping survives only as blank-line positions. No importer or plan run (deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BK-VIS-T1-TBL-W03.md records both contra table cell layouts, flattened Effect/Action paragraphs, extraction loss and required semantic restatement.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -764,8 +767,8 @@
         "BK-INV-T1",
         "BK-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T1), cells read directly from w:tbl: 12 rows; header ['','','Debited','Credited']; row i ['i.','Start business with N800 cash','Cash ','Capital']; row ii ['ii.','Goods sold on credit to Mr. Ayo','Ayo','Sales']; row iii ['iii.','We paid creditor Mr. Olu by cheque','Mr. Olu','Bank']; row iv ['iv.','Goods bought by cheque','Purchases','Bank']; row v ['v.','Sold goods for cash','Cash','Sales']; row vi ['vi.','Goods were returned to Mr. Kufor','Kufor','Returns Outwards']; row vii ['vii.','Biodun lent us N80 cash','Cash','Loan (Biodun)']; row viii ['viii.','Took N20 of the cash and paid into the bank','Bank','Cash']; row ix ['ix.','Bought a motor van by cheque','Motor van','Bank']; row x ['x.','Goods were returned to Olotu','Olotu','Returns Outwards']; row xi ['xi.','Paid further cash into the business as capital','Cash','Capital']. All eleven answers are present and consistent by reading; no arithmetic is involved. Mammoth emits one cell per line, so the two account columns and the header lose their positions and a reader sees marker, transaction, debit account, credit account in sequence. No importer run (deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BK-VIS-T1-TBL-W04.md records the 11 answered debit/credit rows, extraction loss and that this is worked material, not an unsolved assessment.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -1793,13 +1796,6 @@
     }
   },
   "next_runnable": [
-    "BK-MARK-T1-REVISION",
-    "BK-MARK-T1-EXAM",
-    "BK-VIS-T1-TACC-W01",
-    "BK-VIS-T1-TBL-W03",
-    "BK-VIS-T1-TBL-W04",
-    "BK-PRES-T1-WORKED",
-    "BK-PRES-T1-CURRENCY",
     "BK-INV-T3",
     "BK-WK-T2-W02",
     "BK-WK-T2-W04",
@@ -1814,7 +1810,6 @@
     "BK-VIS-T2-BRACE-W04",
     "BK-PRES-T2-WORKED",
     "BK-PRES-T2-CURRENCY",
-    "BK-TEST-PACKAGE",
     "BK-LES-T1-W02-DIFF",
     "BK-LES-T1-W02-PREP",
     "BK-LES-T1-W04-DOUBLE-ENTRY",
