@@ -41,24 +41,25 @@
     "BIO-WK-T2-W01 (2026-11-08) indexed the 2nd Term reproduction week using a private conversion of the hash-verified legacy DOC. The Week 1 content list's sexual reproduction/meiosis entries map to the Week 2 scheme/body; they were not duplicated. Artificial propagation is only listed, asexual-reproduction advantages/disadvantages are absent, and three assessment prompts need authoritative fact review. Two bounded lesson tasks and one fact task were appended; no source extract or converted document was committed.",
     "BIO-WK-T2-W02 (2026-11-08) indexed sexual reproduction and meiosis, then confirmed the scheme's Excretion objective has only a content-list heading and no teaching body in Week 2. Gametogenesis is mentioned but spermatogenesis/oogenesis are not defined. Excretion questions and several revision prompts need supplemental teaching or approved-reference review. Two bounded lesson tasks and one fact task were appended; no key was invented.",
     "BIO-WK-T2-W03 (2026-11-08) indexed reproduction in Amoeba, Paramecium, Spirogyra, earthworm, cockroach, housefly and snail, including every evaluation and assignment. Tapeworm reproduction appears in questions but is not taught in the week; the later tapeworm mention is parasitism. Advantages/disadvantages of sexual reproduction are also not taught. A factual scope check and two bounded lesson tasks were appended; no answer key was invented.",
-    "BIO-WK-T2-W04 (2026-11-08) indexed irritability, response types, movement, cyclosis and movement organelles. The Amoeba structure is not identified; a klinostat appears only in a question; geotropism questions have no supplied practical description/key. A factual check and bounded supplemental lesson were appended; no answer key was invented."
+    "BIO-WK-T2-W04 (2026-11-08) indexed irritability, response types, movement, cyclosis and movement organelles. The Amoeba structure is not identified; a klinostat appears only in a question; geotropism questions have no supplied practical description/key. A factual check and bounded supplemental lesson were appended; no answer key was invented.",
+    "BIO-WK-T2-W05 (2026-11-08) indexed animal nutrition, food-substance groups, balanced diet, digestive enzymes and all assessment items. Health/deficiency claims are held for authoritative review. Theory block 477 asks for food tests but the week provides no test teaching or approved practical source; no reagent names or procedures were added. A health-claim fact task and animal-nutrition lesson were appended; the food-test resource dependency is blocked pending qualified teacher approval."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 12,
+    "FACTUAL_DEPENDENCY": 14,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 27,
     "SOURCE_SECTION_INDEXING": 3,
     "VISUAL_DISPOSITION": 36,
     "SOURCE_MARKER_DISPOSITION": 1,
-    "LESSON": 16
+    "LESSON": 17
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 24,
-    "PENDING": 76,
-    "BLOCKED": 5
+    "IMPLEMENTED_TESTING_DEFERRED": 25,
+    "PENDING": 77,
+    "BLOCKED": 6
   },
   "items": [
     {
@@ -1649,8 +1650,8 @@
         "BIO-INV-T2",
         "BIO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T2): label block 326 text \"WEEK FIVE                                                                                              DATE…………………\" (sha256 ef40f02a7290eb069023a5ba59fb18ef5456d93d8bbf52dcaf42c6ce07a7b358); blocks 326-480; range sha256 b4b3a27765e6fbac3169fe274538cbdb262462295e886eed280471c310232d55. Topic: Nutrition in Animals (Food Substances and Digestive Enzymes). Animal nutrition (333), classes of food substances (339: carbohydrate 349, proteins 361, fats and oils 372, mineral salt 381, vitamins 390, water 401, roughages 412), vitamin table (block 399), balanced diet (419), digestive enzymes (438), General Evaluation/Revisional Questions (458), Reading Assignment (465), Weekend Assignment (468-480, theory from 476). Theory block 477 asks for a table of food tests (test, observation, inference) but no food-test heading or procedure is in the week. Health statements needing authoritative checking before any lesson: block 426 (protein lack and kwashiorkor), the vitamin deficiency table (399), mineral deficiency questions (462, 474). Locator rule: converted copy (LibreOffice 24.2.7.2, headless --convert-to docx of the hash-verified .doc): word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-961; block 962 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T2-W05.md; verified the assigned legacy DOC member hash and private DOCX conversion; Week 5 label and range hashes match the inventory/queue. Indexed animal nutrition, seven food-substance groups, balanced diet, digestive enzymes, all evaluations, weekend questions and theory. Health/deficiency statements are recorded by block locator only and held for authoritative review. Theory block 477 requests a food-test table, but no food-test teaching or approved practical reference is present; no reagent names, materials or procedures were added. No answer key exists. No source extract or converted file committed; tests remain deferred.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -3983,6 +3984,115 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T2-W04; exact source locators and gaps are recorded in the Week 4 index."
+    },
+    {
+      "id": "BIO-FACT-T2-W05-HEALTH-CLAIMS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 5, blocks 326-480",
+      "objective": "Verify the Week 5 source's health/deficiency claims at blocks 399, 426, 461-462 and 474 against authoritative health/Biology references. Record exact citations and distinguish any corrected supplemental wording from the source. Do not present source statements as medical advice.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T2-W05-HEALTH-CLAIMS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W05; see the Week 5 index for exact source locators and delivery gates."
+    },
+    {
+      "id": "BIO-FACT-T2-W05-FOOD-TESTS-SAFETY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 5, blocks 326-480",
+      "objective": "Obtain a teacher-approved, safety-reviewed source for the conceptual food-test table requested at block 477. The Week 5 body has no food-test teaching or approved practical reference. Do not add reagent names, materials, handling steps or procedures without the required qualified approval.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T2-W05-FOOD-TESTS-SAFETY.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W05"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Appended by BIO-WK-T2-W05; see the Week 5 index for exact source locators and delivery gates."
+    },
+    {
+      "id": "BIO-LES-T2-W05-ANIMAL-NUTRITION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 5, blocks 326-480",
+      "objective": "Author a clearly labelled supplemental lesson for animal nutrition, food-substance groups, balanced diet and digestive enzymes. Preserve original source wording separately; include health/deficiency claims only after BIO-FACT-T2-W05-HEALTH-CLAIMS has verified them. Do not add food-test practical instructions; keep block 477 gated on the approved teacher resource.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T2-W05-ANIMAL-NUTRITION.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W05",
+        "BIO-FACT-T2-W05-HEALTH-CLAIMS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W05; see the Week 5 index for exact source locators and delivery gates."
     }
   ],
   "review": {
@@ -4016,7 +4126,6 @@
     "BIO-VIS-T1-TBL-CROP-ROTATION",
     "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
     "BIO-VIS-T1-TBL-ENZYMES",
-    "BIO-WK-T2-W05",
     "BIO-WK-T2-W06",
     "BIO-WK-T2-W07",
     "BIO-WK-T2-W08",
@@ -4065,6 +4174,7 @@
     "BIO-FACT-T2-W02-REVISION-FACTS",
     "BIO-FACT-T2-W03-TAPEWORM-SCOPE",
     "BIO-LES-T2-W03-SEXUAL-ADVANTAGES",
-    "BIO-FACT-T2-W04-KLINOSTAT"
+    "BIO-FACT-T2-W04-KLINOSTAT",
+    "BIO-FACT-T2-W05-HEALTH-CLAIMS"
   ]
 }
