@@ -56,7 +56,7 @@ The scheme is in preamble blocks 4–41. It has twelve manually typed entries, w
 - The body contains no explicit `WEEK n` line or stranded week label. The importer/parser's actual result has not been run in this task; do not claim the document parses into ten lesson rows.
 - `classify_marker` is the likely source-rule family for the three scheme-only markers (Week 1 revision, Week 11 revision, Week 12 examination), because their exact anchors are in preamble material and have no corresponding body. Exact rule authoring belongs to the marker-disposition tasks.
 - No `attach_stranded_label` case is evidenced: no detached week label immediately precedes a following body anchor.
-- `split_before` may be needed if a reviewed mapping chooses to create parser boundaries at body topic headings, but the current document does not itself mark those headings as week labels. Do not add split rules until each anchor and week assignment is reviewed against the contract and parser behavior.
+- Subsequent week-indexing work added eight exact `split_before` rules at the section headings for scheme Weeks 2–8 and 10; see `BK-RULE-T3-SEGMENTATION.md`. No Week 9 split rule was added because the source has no distinct Week 9 body heading. These rules are written but importer/compiler execution remains deferred.
 
 ## Preservation and currency observations
 - The source uses `#` before monetary values (for example, petty cash figures and the June 1999 illustration); it does not explicitly name a currency, use an ISO currency code or identify a currency symbol. Do not silently replace `#` with a currency sign.
