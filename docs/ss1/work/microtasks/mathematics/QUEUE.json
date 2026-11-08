@@ -45,8 +45,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 48,
-    "PENDING": 42,
+    "IMPLEMENTED_TESTING_DEFERRED": 49,
+    "PENDING": 41,
     "BLOCKED": 9
   },
   "total": 99,
@@ -466,8 +466,8 @@
         "MATH-SRC-T1",
         "MATH-FACT-HEADER-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 3 (source label 'WEEK 4', title \"MODULAR ARITHMETIC\", 2579 characters, body sha256 6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. Existing coverage COV-MATH-T1-R03 status IMPLEMENTED_EQUIVALENT: row-level only, not objective-level proof. Existing replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC and correction CORR-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC (implemented, approval PENDING, verification DEFERRED); its reason cites specific source defects but whole-row objective scope has NOT been reviewed. Equation-aware extraction recovered about 5 more characters than the plain extractor (SS1-03 author evidence), so the delivered original text loses notation (OI-MATH-001).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: reviewed parsed row 3 (MODULAR ARITHMETIC; body SHA-256 6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308). Updated replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC to body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875, six objectives and nine keyed practice questions. Added explicit modular subtraction, addition/subtraction/multiplication tables, market-day cycle, and complete mod-6 multiplication table. Mapped all close-equivalent assignment items to Q4–Q9. Retained source corrections: modulus need not exceed reduced number; 16×7=112 not117; 2x+3≡1 mod6 has x=2 and5. Official FME Inspire lesson and public Week4 notes used for scope corroboration only, not asserted identical to archive. Original DOCX table/notation inspection remains under OI-MATH-001; approval PENDING, verification DEFERRED, tests not run.",
       "completion_condition": "Each scheme objective listed with a reproducible locator and a status; defects, lost notation and figures noted; any uncovered objective becomes an appended bounded task (lesson, correction or asset) rather than a note."
     },
     {
@@ -1679,7 +1679,7 @@
         "MATH-SRC-T1"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "mathematics.json lessons[id=SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC] body_sha256=0ed48fe41aba6d8684b87418468375fd012e725d8e0ac0f1b72d178e7854f7b5; 3 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}. Referenced by coverage COV-MATH-T1-R03; bound by CORR-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC. Implemented code, not verified; whole-row scope review pending in MATH-WK-T1-W04.",
+      "implementation_reference": "Implemented 2026-11-08: replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875; six objectives, nine practice items and 25 total marks (existing 13 plus new 12); all marking guides total correctly. Added subtraction examples, operation tables, cyclic applications and source-assignment equivalents. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Implemented in the package. Delivery stays blocked: content approval PENDING with no approval_reference and verification DEFERRED; neither is to be invented."
     },
     {
@@ -1832,7 +1832,7 @@
         "MATH-WK-T1-W04"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "mathematics.json delivery_corrections[id=CORR-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC] source_lesson_id=SS1-SRC-0c9004137f95:BODY:6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308 body_sha256=6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308 replacement_id=SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC. Stated defects: Source states the modulus must exceed the number reduced (false), gives 16×7=117 (correct 112) and lists only x=2 for 2x+3≡1 (mod 6) (x=2 and x=5). The binding exists as code; its objective-scope review is NOT done (see MATH-WK-T1-W04). Do not activate delivery until that review closes.",
+      "implementation_reference": "mathematics.json delivery_corrections[id=CORR-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC] retains source row SS1-SRC-0c9004137f95:BODY:6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308 (body SHA-256 6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308) and replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC (body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875). Corrected modulus rule, 16×7 arithmetic and multiple modular equation solutions; added objective-level operation/table/application coverage and exercise mapping.",
       "completion_condition": "Binding implemented (done). This item reopens only if the week review finds a defect that needs the binding changed, in which case record it here."
     },
     {
@@ -3211,11 +3211,10 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "MATH-WK-T1-W03 objective-level scope review completed; division added to the replacement and every source assessment mapped. OI-MATH-001 remains open for equation-aware extraction; tests deferred."
+    "notes": "MATH-WK-T1-W04 modular arithmetic objective and exercise mapping completed; subtraction and operation tables added; source defects retained as corrections. Original DOCX notation/table verification remains open; tests deferred."
   },
   "next_runnable": [
     "MATH-PRE-T3",
-    "MATH-WK-T1-W04",
     "MATH-WK-T1-W05",
     "MATH-WK-T1-W06",
     "MATH-WK-T1-W07",
@@ -3255,7 +3254,6 @@
   ],
   "runnable_now": [
     "MATH-PRE-T3",
-    "MATH-WK-T1-W04",
     "MATH-WK-T1-W05",
     "MATH-WK-T1-W06",
     "MATH-WK-T1-W07",
