@@ -30,7 +30,8 @@
     "BIO-PRE-T1 (2026-11-08) accounted for every block 0-12 of the 1st Term original (title and class line = registered header; scheme lines 2-11 mapped to the BIO-WK-T1 items; block 12 blank) and recorded the scheme spacing quirks. No package, rule, coverage, lesson, correction or asset was written.",
     "BIO-PRE-T2 (2026-11-08) accounted for every block 0-28 of the 2nd Term original (generic header, subject line, eleven auto-numbered scheme rows, eight references, blanks) and recorded that the scheme week numbers come from list numbering and agree with the ten TOPIC lines. No package, rule, coverage, lesson, correction or asset was written.",
     "BIO-MARK-T2-REVEXAM (2026-11-08) classified the 2nd Term scheme row 'Revision and Examination' (block 17) as a preamble scheme-only marker with no instructional body (no week 11 or 12, no worksheet, paper or marking scheme), recorded the in-body evaluation headings that are not markers, and noted that block 940's revision questions are off-topic for Week 10. No package, rule, coverage, lesson, correction or asset was written.",
-    "BIO-PRE-T3 (2026-11-08) accounted for every block 0-24 of the 3rd Term original (generic header, subject line, eight auto-numbered scheme rows, eight references, blanks) and recorded that the list numbers disagree with two section labels while rows 6 and 7 share one topic line. No package, rule, coverage, lesson, correction or asset was written."
+    "BIO-PRE-T3 (2026-11-08) accounted for every block 0-24 of the 3rd Term original (generic header, subject line, eight auto-numbered scheme rows, eight references, blanks) and recorded that the list numbers disagree with two section labels while rows 6 and 7 share one topic line. No package, rule, coverage, lesson, correction or asset was written.",
+    "BIO-WK-T1-W03 (2026-11-08) indexed the Week 3 classification objective and assessed all seven assignment questions against the source. The source archive and assigned first-term member hashes were verified. The unlisted 'Relevance of Biology to Agriculture' section at blocks 265-267 was split into BIO-SEC-T1-RELEVANCE; blocks 448-549 and 550-629 remain with their existing section tasks. No lesson, answer key, correction, rule or asset was written; testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -39,13 +40,13 @@
     "FACTUAL_DEPENDENCY": 4,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 27,
-    "SOURCE_SECTION_INDEXING": 2,
+    "SOURCE_SECTION_INDEXING": 3,
     "VISUAL_DISPOSITION": 36,
     "SOURCE_MARKER_DISPOSITION": 1,
     "LESSON": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 13,
+    "IMPLEMENTED_TESTING_DEFERRED": 14,
     "PENDING": 67,
     "BLOCKED": 4
   },
@@ -460,8 +461,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): label block 133 \"WEEK THREE\" (sha256 9a970d2a5cd0bee91213221e6275188baf1dd13c1f90530302e9dbc234cf3b51); blocks 133-644; range sha256 0103345f39d4a3f64705635245f85b0bbbc69edfea60ec9d843c00cf6d88e227. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 4): 'Week 3 -Classification of Living things'. Body runs 133-630 and contains much more than the scheme title: ranks and five-kingdom characteristics (135-187), plant divisions (188-247), agricultural classification of crops and life cycles (248-264), Relevance of Biology to Agriculture (265-267), animal kingdom and invertebrate/vertebrate phyla and classes (268-447), then two sections the scheme does not name (blocks 448-549 and 550-629; see BIO-SEC-T1-AGRI-ECOLOGY and BIO-SEC-T1-PESTS-DISEASES). Assignment: block 631 'ASSIGNMENT', block 632 'WEEK THREE', items 634-642 (labelled-drawing and tabular-difference questions, blocks 640-642). Blank blocks 643-644.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T1-W03.md; verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and the assigned 1st Term member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Re-derived the 1,106 direct w:body block inventory; Week 3 label block 133 and range blocks 133-644 match the queue hashes. Indexed the scheme objective across blocks 133-447; separately recorded the unlisted Relevance of Biology to Agriculture heading at 265-267 as a new section-indexing item, and left the unlabelled sections 448-549 and 550-629 to their existing section tasks. Reviewed the Week 3 assignment blocks 631-642: Q1/Q4 are not fully supported by this source, Q5 has no supplied fish figure, Q2/Q7 wording issues are recorded, Q3/Q6 are supported by source text, and no answer key exists. No lesson, answer key, correction, source rule or asset was invented. Testing/importer/compiler/DB/device checks remain deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -3211,6 +3212,43 @@
       "status": "PENDING",
       "implementation_reference": "Inventory (BIO-INV-T3), viewed directly: header1.xml holds one picture, media/image4.jpeg (949x359, sha256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14), a tutor business letterhead (a name, a tutoring tag line, professional descriptions, a phone number, an email address and a slogan) and footer1.xml reads 'MR OSHO'. Neither appears in the body blocks and neither is teaching content. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BIO-SEC-T1-RELEVANCE",
+      "kind": "SOURCE_SECTION_INDEXING",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "blocks 265-267 inside the Week 3 body (range sha256 d65058818f5615666c88631e669991c237a13e89aad11c12712f4a6ac145f766)",
+      "objective": "Index the unlisted teaching section 'Relevance of Biology to Agriculture' (definition of agriculture and the four needs listed at block 267): record that no scheme line names it, bind its exact source blocks, and determine whether it belongs with Week 3 or requires owner placement. Do not move or delete source text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-SEC-T1-RELEVANCE.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Week 3 indexing found a standalone heading at block 265, 'Relevance of Biology to Agriculture', with definition at 266 and four needs at 267. It is within Week 3's body range but is not named by scheme entry 3 ('Classification of Living things'). This bounded item records its objective and exact scope before any placement or lesson decision."
     }
   ],
   "review": {
@@ -3227,7 +3265,6 @@
   },
   "next_runnable": [
     "BIO-TEST-PACKAGE",
-    "BIO-WK-T1-W03",
     "BIO-WK-T1-W04",
     "BIO-WK-T1-W05",
     "BIO-WK-T1-W07",
@@ -3288,6 +3325,7 @@
     "BIO-VIS-T3-FIG-GRASSHOPPER",
     "BIO-VIS-T3-FIG-MEALYBUG",
     "BIO-VIS-T3-SHP-PLANT-CLASS-CHART",
-    "BIO-VIS-T3-HDR-BRANDING"
+    "BIO-VIS-T3-HDR-BRANDING",
+    "BIO-SEC-T1-RELEVANCE"
   ]
 }
