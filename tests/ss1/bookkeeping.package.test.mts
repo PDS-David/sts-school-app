@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
-import { applyRules } from '../../backend/src/db/ss1/compiler.ts';
+import { applyRules, compilePackages } from '../../backend/src/db/ss1/compiler.ts';
 import { isSchemeWorkWeekHeader } from '../../backend/src/db/ss1/topicParserRules.ts';
 
 const raw = JSON.parse(readFileSync(new URL('../../backend/src/db/ss1/subjects/bookkeeping.json', import.meta.url), 'utf8'));
@@ -386,4 +386,44 @@ test('scheme-of-work WEEK column heading is not parsed as a Week 1 lesson marker
   const nonSchemeMatch = [...nonSchemeWeek.matchAll(markerPattern)][0];
   assert(nonSchemeMatch);
   assert.equal(isSchemeWorkWeekHeader(nonSchemeWeek, nonSchemeMatch.index!, nonSchemeMatch[0]), false);
+});
+
+
+test('Bookkeeping source rules compile the scheme preamble as markers, not a Week 1 lesson', () => {
+  const pkg = JSON.parse(JSON.stringify(raw));
+  pkg.delivery_corrections = [];
+  const source = pkg.sources.find((s: any) => s.term === '3rd Term');
+  assert(source);
+  const rules = pkg.source_rules.filter((r: any) => r.source_id === source.source_id);
+  const markerRules = rules.filter((r: any) => r.op === 'classify_marker');
+  const splitRules = rules.filter((r: any) => r.op === 'split_before');
+  const text = [
+    source.header_text,
+    'SCHEME OF WORK',
+    'WEEK',
+    ...markerRules.map((r: any) => r.anchor),
+    ...splitRules.map((r: any) => r.anchor),
+  ].join('\n') + '\n';
+
+  const weekMarker = /^[ \t]*week\s*[:.\-]*\s*((?:\d+(?:\s*(?:&|and|,|-)\s*\d+)?)|(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen))/gim;
+  const parse = (input: string) => {
+    const matches = [...input.matchAll(weekMarker)].filter(m => !isSchemeWorkWeekHeader(input, m.index!, m[0]));
+    return matches.map((m, i) => {
+      const start = m.index!;
+      const end = i + 1 < matches.length ? matches[i + 1].index! : input.length;
+      const body = input.slice(start, end).trim();
+      const title = body.split('\n').map(line => line.trim()).find(line => line && !/^week\b/i.test(line)) ?? '(untitled)';
+      return { weekLabel: m[0].trim(), title, body };
+    });
+  };
+  const plan = compilePackages(
+    [pkg],
+    [{ source_id: source.source_id, sha256: source.sha256, filePath: 'SSS 1/3rd Term SS1_/BOOK KEEPING_.docx', text }],
+    parse,
+  );
+  const sourceRows = plan.rows.filter(row => row.filePath === 'SSS 1/3rd Term SS1_/BOOK KEEPING_.docx');
+  assert.deepEqual(sourceRows.map(row => row.weekLabel.match(/\d+/)?.[0]), ['2', '3', '4', '5', '6', '7', '8', '10']);
+  for (const rule of markerRules) {
+    assert(plan.dispositions.some(d => d.id === rule.id && d.status === 'SCHEME_ONLY'));
+  }
 });
