@@ -208,8 +208,8 @@
         "Add, subtract, multiply and divide integers, including negative integers, with correct signs",
         "State what integer, simplify and evaluate mean, and give a value when a question says \"Evaluate\" and an easier form of the same value when it says \"Simplify\""
       ],
-      "body": "REVISION AND BASIC OPERATIONS ON INTEGERS\n\nWhat you will learn: how to test quickly whether one whole number divides another, how to add, subtract, multiply and divide positive and negative integers correctly, and what the words integer, simplify and evaluate ask you to do when one of them begins a question.\n\n1. Integers\nIntegers are the whole numbers and their negatives: ... -3, -2, -1, 0, 1, 2, 3 ... Fractions and decimals such as 1.5 or 3/5 are not integers. The scheme’s own list is 1, 3, 6, 7, 9 etc. for integers and 1.5, 3 3/5, 5 1/2 for numbers that are not integers. The last two are mixed numbers: 3 3/5 means 3 + 3/5, which is 3.6, and 5 1/2 means 5 + 1/2, which is 5.5, so each carries a fraction and neither is a whole number; -3 3/5 is not an integer either. A number with a non-zero fraction or decimal part is not an integer, while 0, 7 and -7 all are. (In the plain text of the scheme this line arrives as \"not 1.5,,5.\" because the two mixed numbers are typed as equation objects that a text-only extractor drops; the reading above comes from the document’s own equation markup.)\n\n2. Divisibility tests\nA number is divisible by:\n- 2 if its last digit is 0, 2, 4, 6 or 8.\n- 3 if the sum of its digits is divisible by 3.\n- 4 if the number made by its last two digits is divisible by 4.\n- 5 if its last digit is 0 or 5.\n- 6 if it is divisible by both 2 and 3.\n- 8 if the number made by its last three digits is divisible by 8.\n- 9 if the sum of its digits is divisible by 9.\n- 10 if its last digit is 0.\n- 11 if (sum of digits in odd places) - (sum of digits in even places) is 0 or a multiple of 11.\n- 7: there is a test. Remove the last digit, double it, and subtract it from the rest of the number. If the result is divisible by 7 (or is 0), so is the original. Repeat if the result is still large.\n\nWorked example 1. Test 7168.\nLast digit 8 is even, so it is divisible by 2. Last two digits 68 = 4 x 17, so by 4. Last three digits 168 = 8 x 21, so by 8. Digit sum 7+1+6+8 = 22, not divisible by 3 or 9, so not by 3, 6 or 9. It does not end in 0 or 5, so not by 5 or 10. For 11: 8 - 6 + 1 - 7 = -4, not a multiple of 11. For 7: 716 - 2 x 8 = 700, which is divisible by 7, so 7168 is divisible by 7. Answer: 2, 4, 7 and 8.\n\nWorked example 2. Which of 2, 3, 4, 5, 6, 8, 9, 10, 11 divide 35120?\nEnds in 0: divisible by 2, 5 and 10. Last two digits 20 = 4 x 5: divisible by 4. Last three digits 120 = 8 x 15: divisible by 8. Digit sum 3+5+1+2+0 = 11: not divisible by 3, 6 or 9. For 11: 0 - 2 + 1 - 5 + 3 = -3: not divisible. Answer: 2, 4, 5, 8 and 10.\n\nWorked example 3. Is 24739 divisible by 11?\nDigits from the right: 9, 3, 7, 4, 2. Odd places: 9+7+2 = 18. Even places: 3+4 = 7. Difference 18 - 7 = 11, a multiple of 11. So yes: 24739 = 11 x 2249.\n\n3. Operations on integers\nAddition and subtraction of larger numbers: write the numbers in columns with units under units, tens under tens, and carry or borrow carefully.\n- 961 + 86 + 422 = 1469.\n- 4312 + 504 + 614 + 24 = 5454 (units 2+4+4+4 = 14, write 4 carry 1; tens 1+0+1+2+1 = 5; hundreds 3+5+6 = 14, write 4 carry 1; thousands 4+1 = 5).\n- 306 - 287 = 19.\n- 452 x 219 = 452 x 200 + 452 x 19 = 90400 + 8588 = 98988.\n\nSigns: subtracting a negative number adds its positive. Two numbers with the same sign multiplied or divided give a positive result; different signs give a negative result.\n- 8 - (+7) = 8 - 7 = 1.\n- -5 - (-9) = -5 + 9 = 4.\n- ((-8) x (-12)) / (-10) = 96 / (-10) = -9.6.\n\nCommon mistakes: forgetting that 9 needs the digit sum divisible by 9 (divisible by 3 alone is not enough); dropping a carried digit in column addition; losing a minus sign when two negatives meet.\n\n4. Command words: simplify and evaluate\nBefore the week’s exercises the scheme stops to define three words, and the definitions are its own. INTEGERS: integers are whole numbers - the examples given are 1, 3, 6, 7, 9 and the counter-examples are 1.5, 3 3/5 and 5 1/2, all of them now set out in section 1. SIMPLIFY: \"Simplify is to make easier to do or understand.\" EVALUATE: \"To Evaluate is to form a value or quality after thinking, resolving or working a problem.\"\nSimplify asks you to rewrite something so that it is easier to work with, without changing its value. Evaluate asks you to do the work and state the value - one number or one quantity. On a short sum the two look alike, because the easier form of 8 - (+7) is 8 - 7 and its value is 1. They come apart when the work has steps: to evaluate (-18 x (-5) x 3) / (9 x (-2)) you first simplify the top to 270 and the bottom to -18, and only then give the value, -15. In the same way 452 x 219 is simplified by splitting it into 90400 + 8588 and evaluated as 98988.\nRead the command word before you write anything down. \"Evaluate\" is not satisfied by working that stops short: leaving 270/(-18) on the page without the value -15 loses the answer. \"Simplify\" is not satisfied by a bare number with no easier form shown. The second exercise below opens with the word \"Evaluate:\", so every part of it asks for a final value.\n",
-      "body_sha256": "2ce49d2c33afaae0c6b4d71d219c3f73e024e194bac51c4ee3926bbccf205dec",
+      "body": "REVISION AND BASIC OPERATIONS ON INTEGERS\n\nWhat you will learn: how to test quickly whether one whole number divides another, how to add, subtract, multiply and divide positive and negative integers correctly, and what the words integer, simplify and evaluate ask you to do when one of them begins a question.\n\n1. Integers\nIntegers are the whole numbers and their negatives: ... -3, -2, -1, 0, 1, 2, 3 ... Fractions and decimals such as 1.5 or 3/5 are not integers. The scheme’s own list is 1, 3, 6, 7, 9 etc. for integers and 1.5, 3 3/5, 5 1/2 for numbers that are not integers. The last two are mixed numbers: 3 3/5 means 3 + 3/5, which is 3.6, and 5 1/2 means 5 + 1/2, which is 5.5, so each carries a fraction and neither is a whole number; -3 3/5 is not an integer either. A number with a non-zero fraction or decimal part is not an integer, while 0, 7 and -7 all are. (In the plain text of the scheme this line arrives as \"not 1.5,,5.\" because the two mixed numbers are typed as equation objects that a text-only extractor drops; the reading above comes from the document’s own equation markup.)\n\n2. Divisibility tests\nA number is divisible by:\n- 2 if its last digit is 0, 2, 4, 6 or 8.\n- 3 if the sum of its digits is divisible by 3.\n- 4 if the number made by its last two digits is divisible by 4.\n- 5 if its last digit is 0 or 5.\n- 6 if it is divisible by both 2 and 3.\n- 8 if the number made by its last three digits is divisible by 8.\n- 9 if the sum of its digits is divisible by 9.\n- 10 if its last digit is 0.\n- 11 if (sum of digits in odd places) - (sum of digits in even places) is 0 or a multiple of 11.\n- 7: there is a test. Remove the last digit, double it, and subtract it from the rest of the number. If the result is divisible by 7 (or is 0), so is the original. Repeat if the result is still large.\n\nWorked example 1. Test 7168.\nLast digit 8 is even, so it is divisible by 2. Last two digits 68 = 4 x 17, so by 4. Last three digits 168 = 8 x 21, so by 8. Digit sum 7+1+6+8 = 22, not divisible by 3 or 9, so not by 3, 6 or 9. It does not end in 0 or 5, so not by 5 or 10. For 11: 8 - 6 + 1 - 7 = -4, not a multiple of 11. For 7: 716 - 2 x 8 = 700, which is divisible by 7, so 7168 is divisible by 7. Answer: 2, 4, 7 and 8.\n\nWorked example 2. Which of 2, 3, 4, 5, 6, 8, 9, 10, 11 divide 35120?\nEnds in 0: divisible by 2, 5 and 10. Last two digits 20 = 4 x 5: divisible by 4. Last three digits 120 = 8 x 15: divisible by 8. Digit sum 3+5+1+2+0 = 11: not divisible by 3, 6 or 9. For 11: 0 - 2 + 1 - 5 + 3 = -3: not divisible. Answer: 2, 4, 5, 8 and 10.\n\nWorked example 3. Is 24739 divisible by 11?\nDigits from the right: 9, 3, 7, 4, 2. Odd places: 9+7+2 = 18. Even places: 3+4 = 7. Difference 18 - 7 = 11, a multiple of 11. So yes: 24739 = 11 x 2249.\n\n3. Operations on integers\nAddition and subtraction of larger numbers: write the numbers in columns with units under units, tens under tens, and carry or borrow carefully.\n- 961 + 86 + 422 = 1469.\n- 4312 + 504 + 614 + 24 = 5454 (units 2+4+4+4 = 14, write 4 carry 1; tens 1+0+1+2+1 = 5; hundreds 3+5+6 = 14, write 4 carry 1; thousands 4+1 = 5).\n- 306 - 287 = 19.\n- 452 x 219 = 452 x 200 + 452 x 19 = 90400 + 8588 = 98988.\n\nSigns: subtracting a negative number adds its positive. Two numbers with the same sign multiplied or divided give a positive result; different signs give a negative result.\n- 8 - (+7) = 8 - 7 = 1.\n- -5 - (-9) = -5 + 9 = 4.\n- ((-8) x (-12)) / (-10) = 96 / (-10) = -9.6.\n\nCommon mistakes: forgetting that 9 needs the digit sum divisible by 9 (divisible by 3 alone is not enough); dropping a carried digit in column addition; losing a minus sign when two negatives meet.\n\n4. Command words: simplify and evaluate\nBefore the week’s exercises the scheme stops to define three words, and the definitions are its own. INTEGERS: integers are whole numbers - the examples given are 1, 3, 6, 7, 9 and the counter-examples are 1.5, 3 3/5 and 5 1/2, all of them now set out in section 1. SIMPLIFY: \"Simplify is to make easier to do or understand.\" EVALUATE: \"To Evaluate is to form a value or quality after thinking, resolving or working a problem.\"\nSimplify asks you to rewrite something so that it is easier to work with, without changing its value. Evaluate asks you to do the work and state the value - one number or one quantity. On a short sum the two look alike, because the easier form of 8 - (+7) is 8 - 7 and its value is 1. They come apart when the work has steps: to evaluate (-18 x (-5) x 3) / (9 x (-2)) you first simplify the top to 270 and the bottom to -18, and only then give the value, -15. In the same way 452 x 219 is simplified by splitting it into 90400 + 8588 and evaluated as 98988.\nRead the command word before you write anything down. \"Evaluate\" is not satisfied by working that stops short: leaving 270/(-18) on the page without the value -15 loses the answer. \"Simplify\" is not satisfied by a bare number with no easier form shown. The second exercise below opens with the word \"Evaluate:\", so every part of it asks for a final value.\n\n\n5. Multiplication, subtraction and division: further worked practice\nUse place value and the distributive property for multiplication. For subtraction, subtract the smaller amount from the larger amount when the wording says “subtract ... from ...”. For division, divide the magnitudes and then apply the sign rule: equal signs give a positive quotient; different signs give a negative quotient.\n\nWorked example 4. Multiply 2,184 by 11.\n2,184 × 11 = 2,184 × (10 + 1) = 21,840 + 2,184 = 24,024.\n\nWorked example 5. Multiply 217 by 405.\n217 × 405 = 217 × (400 + 5) = 86,800 + 1,085 = 87,885.\n\nWorked example 6. Subtract 23 from 36, then subtract 94 from 104.\n36 − 23 = 13. 104 − 94 = 10. Check each answer by adding the subtracted number back: 13 + 23 = 36; 10 + 94 = 104.\n\nWorked example 7. Divide 336 by 4 and 1,848 by 12.\n336 ÷ 4 = 84. 1,848 ÷ 12 = 154 because 12 × 154 = 1,848.\n\nWorked example 8. Divide signed integers.\n(−18) ÷ (−3) = 18 ÷ 3 = 6 because the signs are the same. −25 ÷ 4 = −25/4 = −6.25 because the signs differ. Keep the exact fraction −25/4 if a question asks for an exact value.\n\nPractice: show the working and give the final answer for each item. Each item is worth one mark in this authored practice set; these marks are not represented as marks printed in the source scheme.",
+      "body_sha256": "9b75756dad026ddf8d903a5cc69292bf0782088597d63387ffc8962001114195",
       "practice": [
         {
           "id": "M1W1-Q1",
@@ -306,6 +306,102 @@
               "marks": 1
             }
           ]
+        },
+        {
+          "id": "M1W1-Q4",
+          "question": "Calculate 2,184 × 11.",
+          "answer": "2,184 × (10 + 1) = 21,840 + 2,184 = 24,024.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct product: 24,024",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W1-Q5",
+          "question": "Find the product of 217 and 405.",
+          "answer": "217 × 405 = 217 × (400 + 5) = 86,800 + 1,085 = 87,885.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct product: 87,885",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W1-Q6",
+          "question": "Subtract 23 from 36.",
+          "answer": "36 − 23 = 13.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct difference: 13",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W1-Q7",
+          "question": "Subtract 94 from 104.",
+          "answer": "104 − 94 = 10.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct difference: 10",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W1-Q8",
+          "question": "Calculate 336 ÷ 4.",
+          "answer": "336 ÷ 4 = 84.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct quotient: 84",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W1-Q9",
+          "question": "Calculate 1,848 ÷ 12.",
+          "answer": "1,848 ÷ 12 = 154, since 12 × 154 = 1,848.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct quotient: 154",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W1-Q10",
+          "question": "Evaluate (−18) ÷ (−3).",
+          "answer": "The signs are the same, so the quotient is positive: 18 ÷ 3 = 6.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct signed quotient: 6",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W1-Q11",
+          "question": "Evaluate −25 ÷ 4. Give an exact fraction or a terminating decimal.",
+          "answer": "−25 ÷ 4 = −25/4 = −6.25.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct negative quotient: −25/4 or −6.25",
+              "marks": 1
+            }
+          ]
         }
       ],
       "provenance": [
@@ -324,6 +420,14 @@
           "rights": "The registered scheme of work was supplied by the owner for this project and the school owns its wording; the source is quoted here only for the two command-word definitions and the counter-example list that the row teaches, which the task requires in the source’s own words. No third-party text is reproduced and no printed exercise is copied as an answer key. Reuse status PERMITTED on that basis; owner content approval for the lesson remains PENDING (OI-MATH-005).",
           "reuse_status": "PERMITTED",
           "attribution": "Sow the Seed Schools SS1 Mathematics 1st-term scheme of work; supplement wording authored for this project, owner content approval pending"
+        },
+        {
+          "title": "School source note SS1-SRC-0c9004137f95 — 1st Term Week 1 assessment scope",
+          "locator": "Parsed row 0, assessment blocks at mammoth extractRawText() lines 163–181; task evidence in MATH-LES-T1-W01-ASSESSMENT-PRACTICE",
+          "url": null,
+          "rights": "The school-provided scheme defines the assessment scope. The worked explanations, answer wording and marking criteria in this supplement are newly authored; no third-party exercise or passage is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics; authored practice supplement, content approval pending."
         }
       ],
       "state": {
@@ -3792,9 +3896,10 @@
       "source_id": "SS1-SRC-0c9004137f95",
       "objective": "ASSESSMENT: the twelve end-of-week items - three products, two subtractions, five divisions and two signed fraction evaluations",
       "objective_locator": "parsed row 0, mammoth extractRawText() lines 163-181 (block SHA-256 c99d40d3ec7e8ff9c0f17e7a7c4007d415917dbe41a2e78b873811f749a11bfc)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5"
+        "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5",
+        "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS"
       ],
       "evidence": [
         {
@@ -3812,6 +3917,10 @@
         {
           "locator": "MATH-LES-T1-W01-ASSESSMENT-PRACTICE (appended bounded task)",
           "explanation": "Eight items are in neither place - 2184x11, 217x405, 23 from 36, 94 from 104, 336÷4, 1848÷12, (-18)÷(-3) and -25÷4 - and -25÷4 is the only non-terminating signed division in the set. The end-of-week assessment is therefore only a third covered, so the objective is PARTIAL and becomes the appended implementation task rather than a note. Status stays PARTIAL (blocks delivery) until that task lands."
+        },
+        {
+          "locator": "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS practice M1W1-Q4–M1W1-Q11 and body section 5",
+          "explanation": "Added eight separately keyed practice items for the eight previously uncarried assessment operations: two products, two subtractions and four divisions. Each has its own answer and one-mark criterion; all arithmetic was independently recomputed. The four other source assessment items were already carried in M1W1-Q2(c)/(d) and M1W1-Q3(b)/(c). This closes the authored practice coverage; it does not confer teacher approval or verification."
         }
       ]
     },
@@ -5290,13 +5399,13 @@
     {
       "id": "OI-MATH-T1-W01-ASSESSMENT-GAPS",
       "kind": "CONTENT",
-      "detail": "1st Term Week 1 provides no answers, working or marks for any of its 20 practice items: CLASS WORK (lines 97-101, eight numbers) and ASSESSMENT (lines 163-181, twelve items in four blocks). The bound supplement covers 12 of the 20: all eight class-work numbers as M1W1-Q1 (8 marks, key recomputed and correct) and four assessment items as M1W1-Q2(c)/(d) and M1W1-Q3(b)/(c) (the marking arrays sum to the declared 6 and 4 marks). Eight assessment items are covered nowhere: 2184x11, 217x405 (line 167); 23 from 36, 94 from 104 (line 171); 336÷4, 1848÷12, (-18)÷(-3), -25÷4 (line 175, all written with the division sign). Two of the twelve (line 179 and the first half of line 181) are additionally invisible in the delivered text because they are OMML fractions, so a learner sees the heading 'find the values of the following:' with nothing under it. The source also never states marks or a marking scheme for anything in the week.",
-      "required_action": "MATH-LES-T1-W01-ASSESSMENT-PRACTICE extends the bound supplement’s practice with the eight uncarried items, each with its own answer and marking criteria under the contract. Do not copy the printed items into the package as an answer key, and do not record teacher-approved marks: no approval exists (OI-MATH-005). Narrowed on 2026-11-06 by MATH-LES-T1-W01-VOCABULARY, which supplied the two command-word definitions this action used to ask for at lines 105 and 107: they are taught in SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS body section 4 and COV-MATH-T1-W01-OBJ-4 is now IMPLEMENTED_EQUIVALENT, so only the eight ASSESSMENT items at lines 165-181 are left here.",
+      "detail": "The source Week 1 class work and assessment originally supplied no answer key or marking scheme. The bound supplement now contains keyed practice for all eight class-work items and all twelve assessment items: M1W1-Q1 covers the eight class-work numbers; M1W1-Q2(c)/(d) and M1W1-Q3(b)/(c) carry four assessment items; M1W1-Q4 through M1W1-Q11 carry the remaining eight. The OMML fraction questions are represented in the authored lesson practice rather than left blank. Authored marks and marking criteria are provided for learning and review; they are not claimed to be marks printed in or approved by the source.",
+      "required_action": "Content gap closed by MATH-LES-T1-W01-ASSESSMENT-PRACTICE. Teacher content approval remains separately pending under OI-MATH-005; do not represent the authored marks as teacher-approved. No source row was altered.",
       "affected_ids": [
         "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5",
         "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "OI-MATH-T1-W02-FACT-DEFECTS",
