@@ -103,3 +103,27 @@ test('Preamble marker coverage targets its exact SCHEME_ONLY rule, not an invent
 
 // The full-source compiler/parser comparison is a separate integration check.
 // These tests are written only; execution, typecheck and importer verification remain deferred.
+
+test('Coverage entries resolve to registered sources and declared lesson or marker targets', () => {
+  const p = packageSchema.parse(raw);
+  const sourceIds = new Set(p.sources.map(s => s.source_id));
+  const lessonIds = new Set(p.lessons.map(l => l.id));
+  const markerRules = new Set(p.source_rules
+    .filter(r => r.op === 'classify_marker')
+    .map(r => r.id));
+  for (const c of p.coverage) {
+    assert(sourceIds.has(c.source_id), `unknown coverage source: ${c.id}`);
+    assert(c.evidence.length > 0, `coverage evidence missing: ${c.id}`);
+    for (const target of c.lesson_ids) {
+      assert(lessonIds.has(target) || markerRules.has(target),
+        `unknown coverage target ${target} in ${c.id}`);
+    }
+    if (['SUPPORTED', 'IMPLEMENTED_EQUIVALENT', 'MARKER'].includes(c.status)) {
+      assert(c.lesson_ids.length > 0, `complete coverage has no target: ${c.id}`);
+    }
+    if (c.status === 'MARKER') {
+      assert(c.lesson_ids.every(id => markerRules.has(id)),
+        `marker coverage must target a classify_marker rule: ${c.id}`);
+    }
+  }
+});
