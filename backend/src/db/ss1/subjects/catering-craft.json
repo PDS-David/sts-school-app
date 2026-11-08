@@ -59,6 +59,18 @@
         "locator": "word-extractor 1.0.4 getBody(), line 3; docs/ss1/work/microtasks/catering-craft/CC-SRC-T3.md",
         "explanation": "The exact subject/class line occurs once after THIRD TERM E-LEARNING NOTE. It names Catering Craft Practice and SS 1. Scheme headings describe personnel, food service and table setting. No source text normalized."
       }
+    },
+    {
+      "id": "SS1-SRC-f433169ca25c-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "source_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59",
+      "anchor": "WEEK ELEVEN",
+      "kind": "REVISION",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody() lines 1401-1402; unique marker anchor 'WEEK ELEVEN'",
+        "explanation": "The exact WEEK ELEVEN marker is followed only by 'PRACTICAL & REVISION' in the source. No instructional body, practical task, rubric, exam paper or marking scheme is present in this source block. This rule classifies the marker without discarding or inventing a lesson."
+      }
     }
   ],
   "lessons": [],
@@ -256,6 +268,22 @@
           "explanation": "Sections and assessment blocks are indexed. PARTIAL: no deliverable lesson exists, no answer key or marking is supplied, and no parsed lesson identity is asserted because the importer was not run."
         }
       ]
+    },
+    {
+      "id": "COV-CC-T2-W11-MARKER",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "objective": "Scheme row 18: Practical and Revision",
+      "objective_locator": "opening scheme list line 18 (SHA-256 de7fe9f0e18562e992ee52bfef86808bddebb8a2cc94108665db45d4b91fbc46); body WEEK ELEVEN lines 1401-1402 (SHA-256 82e377b7878d4797f7c4af7596d9b86c20695f4a4b69d9522ec3b3e407bac722)",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-f433169ca25c-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "source lines 1401-1402; source rule SS1-SRC-f433169ca25c-R002",
+          "explanation": "WEEK ELEVEN is a two-line revision marker only. There is no instructional lesson, practical task, rubric, examination paper or marking scheme in this source. The marker is explicitly classified by SS1-SRC-f433169ca25c-R002; no lesson ID is fabricated."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -269,6 +297,19 @@
         "SS1-SRC-f433169ca25c",
         "SS1-SRC-d068ede78d16",
         "SS1-SRC-d068ede78d16-R001"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "CC-T2-PRACTICAL-REVISION-EXAM-MATERIALS",
+      "kind": "CONTENT",
+      "detail": "The 2nd Term scheme includes 'Practical and Revision' (row 11) and 'Examination' (row 12), but the source provides only two-line markers for both. It contains no practical task, rubric, examination paper or marking scheme.",
+      "required_action": "Obtain the intended practical task/rubric and examination paper/marking scheme from an authorized source, or record an explicit owner decision that these scheme markers are scheduling-only and outside this package's required deliverables.",
+      "affected_ids": [
+        "CC-MARK-T2-W11",
+        "CC-MARK-T2-W12",
+        "COV-CC-T2-W11-MARKER",
+        "COV-CC-T2-W12-MARKER"
       ],
       "blocks_delivery": true
     }
