@@ -1287,6 +1287,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
           "explanation": "No lesson is registered for animal nutrition. Source-only teaching is not deliverable; PARTIAL remains until approved lesson content is authored and bound."
+        },
+        {
+          "locator": "Verified source member SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc (SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44); converted private DOCX block 399; native 10×4 table text SHA-256 c8cfb5d9b0aa6fb9534d61ffd694ba04095ebdb4fddb7cf003a3741376f4f54c; rendered PDF page 14",
+          "explanation": "The vitamin table is a native w:tbl with 10 rows and 4 columns (vitamin, source, function, deficiency symptoms). Original DOCX cell boundaries are intact; rendered PDF page 14 shows the full table. Flattened text extraction concatenates cells and loses the row/column pairings. The nine data rows are Vitamin A, B1, B2, B3, B12, C, D, E and K. Source deficiency claims include night blindness/reduced resistance to disease; beri-beri/paralysis; slow growth/dermatitis; pellagra; pernicious anaemia; scurvy; rickets/osteomalacia; sterility/premature abortion; and haemorrhage. The table also makes source/function claims about growth, vision, heart/nervous system, co-enzymes, red blood cells, wound healing, infection resistance, calcium/phosphorus absorption, bone formation, fertility and blood clotting. These are source claims flagged for authoritative Biology review, not medical advice. A semantic four-column table is required in the lesson. No image asset or redraw is needed, and no source wording is changed."
         }
       ]
     },
@@ -3360,11 +3364,14 @@
     {
       "id": "BIOLOGY-T2-W05-HEALTH-CLAIMS",
       "kind": "FACT",
-      "detail": "The vitamin deficiency table (block 399), protein-deficiency statement (block 426), mineral deficiency/function questions (blocks 461-462) and deficiency question at block 474 contain health claims requiring authoritative review before use in a lesson.",
-      "required_action": "Verify each claim against authoritative health/Biology references, record precise citations and distinguish corrected supplemental wording from the original source. Do not present these source statements as medical advice.",
+      "detail": "The vitamin deficiency table at block 399, protein-deficiency statement at block 426, mineral deficiency/function questions at blocks 461-462 and deficiency question at block 474 contain health claims requiring authoritative review before use in a lesson. The native 10×4 vitamin table lists nine vitamins with source, function and deficiency statements; flattened text extraction loses its cell pairings. The source claims include night blindness, beri-beri, dermatitis, pellagra, pernicious anaemia, scurvy, rickets/osteomalacia, sterility/premature abortion and haemorrhage. These are source claims for fact-checking, not medical advice.",
+      "required_action": "Verify the vitamin table's source/function/deficiency claims at block 399 and the other Week 5 health claims at blocks 426, 461-462 and 474 against authoritative Biology references. Record precise citations and distinguish any corrected supplemental wording from the original source. Restate the table as a semantic four-column table; do not present its contents as medical advice or treatment guidance.",
       "affected_ids": [
         "COV-BIO-T2-W05-ANIMAL-NUTRITION",
-        "COV-BIO-T2-W05-ASSESSMENT"
+        "COV-BIO-T2-W05-ASSESSMENT",
+        "BIO-VIS-T2-TBL-VITAMINS",
+        "BIO-FACT-T2-W05-HEALTH-CLAIMS",
+        "BIO-LES-T2-W05-ANIMAL-NUTRITION"
       ],
       "blocks_delivery": true
     },
