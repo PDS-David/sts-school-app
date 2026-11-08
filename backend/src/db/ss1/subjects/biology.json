@@ -2559,6 +2559,74 @@
           "explanation": "No scheme row explicitly names Relevance of Biology to Agriculture. Its intended placement is an owner decision; no new week or lesson is assigned here."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T1-W03-AGRICULTURAL-ACTIVITIES",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Unlisted Week 3 section: Effects of Agricultural Activities on Ecological System",
+      "objective_locator": "Heading block 448; introduction block 449; teaching blocks 450-501; range blocks 448-549 hash 9b687134eb1369508738f144502584713f5c27da3cfd92abe30df000c7d29cc9",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 448-449 (range sha256 6f62aa6fbf39a1a0096feb13c7b6438cad463b10497febfd3ffca121e992e1fe)",
+          "explanation": "Defines an ecosystem and introduces human agricultural activities as possible causes of ecological imbalance."
+        },
+        {
+          "locator": "blocks 450-458 (range sha256 1b72ee1b0ce27b296e257b8ff78c18c615451a7ad32e2e624c6c4567b4b1b8d1)",
+          "explanation": "Lists source-stated effects of bush clearing on soil exposure, erosion/leaching, desertification, wildlife displacement and succession."
+        },
+        {
+          "locator": "blocks 459-473 (range sha256 1ed71154e74380160ed690b8cd7900cfcdb163f21b64a20abd541e4e02279815)",
+          "explanation": "Lists source-stated effects and claimed advantages of bush burning. The ecological claims are retained as source statements pending review."
+        },
+        {
+          "locator": "blocks 475-486 (range sha256 6712a4d9817b55cd926a9ff69182b4059cb8d093589e29ceb1968bebf022eb25)",
+          "explanation": "Defines tillage and lists source-stated effects/advantages concerning soil structure, erosion, leaching, microorganisms and aeration."
+        },
+        {
+          "locator": "blocks 487-501 (range sha256 b24b1a0e9c707a6a3a56194421ad0d115241ba1c0393ce661f1c6bc962716212)",
+          "explanation": "Defines organic/chemical fertilizers, pesticides and herbicides and lists source-stated soil/water/organism effects. No rates, doses or handling instructions are present in the indexed range."
+        },
+        {
+          "locator": "scheme row 3 and Week 3 body",
+          "explanation": "This section is within the Week 3 body but no scheme row names agricultural-activity ecological effects; its intended placement is an owner decision."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W03-FARMING-SYSTEMS",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Unlisted Week 3 section: Effects of Different Kinds of Farming on Ecological System",
+      "objective_locator": "Heading block 502; teaching blocks 503-547; section range blocks 502-549 hash 88cf10cd7a1bff89c872bc3c3dc0e2a7e72a6e9fc62523eb1b43c6164509b338",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 503-514 (range sha256 275620a8c22589dd82e1acc30763cca2ad801e389fc2aea509bdbfe44a234032)",
+          "explanation": "Defines crop rotation and lists claimed benefits; a 6×6 crop-rotation table at block 514 gives five plots across five years plus header row."
+        },
+        {
+          "locator": "blocks 515-522 (ranges sha256 5831bce9e9d240aef0f8d498ead815b04dc2f788403f1f0a0329beee265f4bae and 545d57ee313e5531fc7843e2fd9ee62f54b67d8ab19b920401afe710cbf8cce0)",
+          "explanation": "Defines mixed farming and mixed cropping and lists benefits of mixed farming."
+        },
+        {
+          "locator": "blocks 523-530 (range sha256 00f4a983c466a7edbf7edacc6d94c4912f5e9d2fb9b8b51dcbbbc4bc07025e60)",
+          "explanation": "Defines continuous cropping and lists source-stated effects."
+        },
+        {
+          "locator": "blocks 531-537 (range sha256 6bfe46c8405d79b43e7a62ea5d3f56c6ef8ff16b3d21bd90c3917582d0a40feb)",
+          "explanation": "Defines monoculture/monocropping and lists source-stated ecological effects."
+        },
+        {
+          "locator": "blocks 541-547 (range sha256 f4fd46d6b51dabfd966f968fa229232c788a6248d8dbe6296ddfb9b8024cc32b)",
+          "explanation": "Defines shifting cultivation and lists source-stated effects including deforestation, land wastage, erosion and animal migration."
+        },
+        {
+          "locator": "scheme row 3 and Week 3 body",
+          "explanation": "The farming-systems section is within the Week 3 body but is not named by scheme row 3; its placement requires owner confirmation."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -3715,6 +3783,37 @@
         "COV-BIO-T1-W03-RELEVANCE"
       ],
       "blocks_delivery": false
+    },
+    {
+      "id": "BIOLOGY-T1-W03-AGRICULTURAL-ACTIVITIES-PLACEMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The heading 'Effects of Agricultural Activities on Ecological System' at block 448 and its bush clearing/burning, tillage and fertilizer/pesticide/herbicide content are within Week 3 but are not named by scheme row 3.",
+      "required_action": "Confirm the intended scheme placement for this section. Preserve source blocks and do not move/delete them without approval.",
+      "affected_ids": [
+        "COV-BIO-T1-W03-AGRICULTURAL-ACTIVITIES"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "BIOLOGY-T1-W03-FARMING-SYSTEMS-PLACEMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The heading 'Effects of Different Kind of Farming on Ecological System' at block 502 covers crop rotation, mixed farming/cropping, continuous cropping, monoculture and shifting cultivation, but no scheme line names these objectives.",
+      "required_action": "Confirm whether these farming-system topics belong in Week 3, another scheme week or supplemental material. Preserve the source blocks and crop-rotation table until approval.",
+      "affected_ids": [
+        "COV-BIO-T1-W03-FARMING-SYSTEMS"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "BIOLOGY-T1-W03-AGRICULTURE-FACTS",
+      "kind": "FACT",
+      "detail": "The source makes ecological/soil claims about bush clearing, bush burning, tillage, fertilizers, pesticides/herbicides and farming systems across blocks 450-547.",
+      "required_action": "Verify the soil/agricultural claims against approved agricultural/soil-science sources. Keep corrections separate from source wording; do not add chemical rates, doses or handling instructions.",
+      "affected_ids": [
+        "COV-BIO-T1-W03-AGRICULTURAL-ACTIVITIES",
+        "COV-BIO-T1-W03-FARMING-SYSTEMS"
+      ],
+      "blocks_delivery": true
     }
   ]
 }

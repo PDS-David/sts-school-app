@@ -55,7 +55,8 @@
     "BIO-WK-T3-W05 (2026-11-08) indexed plant taxonomy, agricultural crop groups, life-cycle/size classes and ecological effects of farming practices. The A-I botanical chart remains with a new visual task. Crop rotation, bush clearing, shifting cultivation and monocropping are asked but not taught. Taxonomy/crop/soil/fertilizer/pesticide claims require authoritative review; no pesticide instructions or answer key were invented.",
     "BIO-WK-T3-W06-W07 (2026-11-08) indexed scheme rows 6 and 7 separately within the combined WEEK SIX& SEVEN section. Crop pests/life cycles, animal parasites, crop/livestock disease tables and general effects/control were reviewed. Existing visual tasks own both lifecycle figures and all four tables. Source pesticide/fumigant products and concentration are not reproduced as instructions; chemical-safety review is blocked pending qualified approval. Roundworm/liver-fluke life cycles and five fungal-disease examples are missing from the source. No answer key was invented.",
     "BIO-WK-T3-W08 (2026-11-08) indexed government roles, food-production factors, crop-improvement methods, food-shortage/population effects, preservation and food-storage effects. The label says WEEK THREE although this is scheme row 8. Food-science claims (including pasteurisation, irradiation and unspecified chemicals) need authoritative review; no parameters or chemical instructions are repeated. Silos/barns and the Africa-wide 'biggest factor' ranking are not supported by the teaching body. No answer key was invented.",
-    "BIO-SEC-T1-RELEVANCE (2026-11-08) indexed the unlisted heading/definition/four-needs section at blocks 265-267. It lies inside the Week 3 body but is not named by the Classification of Living Things scheme objective. The owner placement decision remains open; source text was not moved."
+    "BIO-SEC-T1-RELEVANCE (2026-11-08) indexed the unlisted heading/definition/four-needs section at blocks 265-267. It lies inside the Week 3 body but is not named by the Classification of Living Things scheme objective. The owner placement decision remains open; source text was not moved.",
+    "BIO-SEC-T1-AGRI-ECOLOGY (2026-11-08) indexed the unlisted agricultural-activity section (448-501) and farming-systems section (502-547). Both are within the Week 3 body but are not named by scheme row 3. The crop-rotation table at block 514 is recorded as 6×6. Owner placement and agricultural fact review remain open; source text was not moved and no chemical-use directions were added."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -71,8 +72,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 38,
-    "PENDING": 103,
+    "IMPLEMENTED_TESTING_DEFERRED": 39,
+    "PENDING": 102,
     "BLOCKED": 8
   },
   "items": [
@@ -790,8 +791,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): block 448 heading 'EFFECTS OF AGRICULTURAL ACTIVITIES ON ECOLOGICAL SYSTEM'; block 502 'EFFECTS OF DIFFERENT KIND OF FARMING ON ECOLOGICAL SYSTEM'; table block 514 (crop rotation, 6 x 6). Range blocks 448-549, range sha256 9b687134eb1369508738f144502584713f5c27da3cfd92abe30df000c7d29cc9. Chemical content (fertilizer, pesticides, herbicides, blocks 487-501) is descriptive; no rates, doses or handling instructions were found in the inventory read. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-SEC-T1-AGRI-ECOLOGY.md; verified first-term DOCX member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Indexed agricultural-activity effects (blocks 448-501) and farming systems (502-547), including the 6×6 crop-rotation table at block 514. Both sections are within the Week 3 body but are not named by scheme row 3. Owner placement remains open; no source text was moved. Chemical content has no rates/doses in this section and is not turned into instructions.",
       "completion_condition": "Section classified against the scheme with exact locators and an explicit owner-placement open item if needed; nothing invented."
     },
     {
@@ -5133,7 +5134,6 @@
   },
   "next_runnable": [
     "BIO-TEST-PACKAGE",
-    "BIO-SEC-T1-AGRI-ECOLOGY",
     "BIO-SEC-T1-PESTS-DISEASES",
     "BIO-VIS-T1-PLANT-ANIMAL-HDR",
     "BIO-VIS-T1-MICROSCOPE",
