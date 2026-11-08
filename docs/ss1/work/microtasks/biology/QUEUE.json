@@ -32,24 +32,25 @@
     "BIO-MARK-T2-REVEXAM (2026-11-08) classified the 2nd Term scheme row 'Revision and Examination' (block 17) as a preamble scheme-only marker with no instructional body (no week 11 or 12, no worksheet, paper or marking scheme), recorded the in-body evaluation headings that are not markers, and noted that block 940's revision questions are off-topic for Week 10. No package, rule, coverage, lesson, correction or asset was written.",
     "BIO-PRE-T3 (2026-11-08) accounted for every block 0-24 of the 3rd Term original (generic header, subject line, eight auto-numbered scheme rows, eight references, blanks) and recorded that the list numbers disagree with two section labels while rows 6 and 7 share one topic line. No package, rule, coverage, lesson, correction or asset was written.",
     "BIO-WK-T1-W03 (2026-11-08) indexed the Week 3 classification objective and assessed all seven assignment questions against the source. The source archive and assigned first-term member hashes were verified. The unlisted 'Relevance of Biology to Agriculture' section at blocks 265-267 was split into BIO-SEC-T1-RELEVANCE; blocks 448-549 and 550-629 remain with their existing section tasks. No lesson, answer key, correction, rule or asset was written; testing remains deferred.",
-    "BIO-WK-T1-W04 (2026-11-08) indexed the Organization of life scheme objective (blocks 647-664) and reviewed all 'Questions to practice' (blocks 666-677). The practice mixes Week 4 organization content with Week 3 symmetry/body-layer, monocot/dicot and animal-group material; no key is present. No practical work or safety instructions were found. No lesson or answer key was authored; testing remains deferred."
+    "BIO-WK-T1-W04 (2026-11-08) indexed the Organization of life scheme objective (blocks 647-664) and reviewed all 'Questions to practice' (blocks 666-677). The practice mixes Week 4 organization content with Week 3 symmetry/body-layer, monocot/dicot and animal-group material; no key is present. No practical work or safety instructions were found. No lesson or answer key was authored; testing remains deferred.",
+    "BIO-WK-T1-W05 (2026-11-08) indexed Plant Nutrition, chemosynthetic nutrition, five practical-investigation aims and the Week 5 assignment. Detailed practical methods/chemical-handling instructions were not copied into the index. The source contains no separate safety/supervision section; practical delivery remains gated. Assignment question 1d asks for five conditions but the source explicitly names only four; the fifth is not guessed. Photosynthesis equations at blocks 683 and 700 are flagged for authoritative review. Follow-up fact and supplemental-lesson tasks were appended; testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 4,
+    "FACTUAL_DEPENDENCY": 7,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 27,
     "SOURCE_SECTION_INDEXING": 3,
     "VISUAL_DISPOSITION": 36,
     "SOURCE_MARKER_DISPOSITION": 1,
-    "LESSON": 4
+    "LESSON": 5
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 15,
-    "PENDING": 66,
-    "BLOCKED": 4
+    "IMPLEMENTED_TESTING_DEFERRED": 16,
+    "PENDING": 68,
+    "BLOCKED": 5
   },
   "items": [
     {
@@ -538,8 +539,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): label block 679 \"WEEK FIVE \" (sha256 8ee47ba1948276278acd4756c10e25cf6739d5687371d857fd9be652bde6a506); blocks 679-780; range sha256 4686f3b47c869d4b3359ada8483a6d7324db6f10dbf211eed9346ed7dd28b8f4. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 6): 'Week 5 -Plant Nutrition'. Body: photosynthesis (block 680 onward), light and dark reaction scheme drawn as shapes (683-701), chemosynthesis (710-713), then Experiments I-V (714-765): Experiment I has no figure; II-V have hand-drawn figures (blocks 733, 746, 754, 765). Assignment: block 773 'ASSIGNMENT', block 774 'WEEK FIVE', questions 775-778. Practical content is present - see Practical and chemical content below.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T1-W05.md; verified the archive and assigned 1st Term member digest. Re-derived Week 5 label block 679 and body range blocks 679-780; indexed the Plant Nutrition teaching, chemosynthesis subsection, five practical-investigation aims, and assignment blocks 773-778. Detailed practical methods and chemical-handling instructions were not copied into the index. The source does not include a separate safety/supervision section; a teacher-approved safety review is required before practical delivery. The assignment asks for five photosynthesis conditions but the source explicitly names only light/sunlight, chlorophyll, water and carbon (IV) oxide; no fifth condition or answer key was invented. The two printed photosynthesis equations need authoritative review. Added fact-check, supplemental-lesson and safety-gate tasks. Tests/importer/compiler/DB/device checks remain deferred.",
       "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -3250,6 +3251,150 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Week 3 indexing found a standalone heading at block 265, 'Relevance of Biology to Agriculture', with definition at 266 and four needs at 267. It is within Week 3's body range but is not named by scheme entry 3 ('Classification of Living things'). This bounded item records its objective and exact scope before any placement or lesson decision."
+    },
+    {
+      "id": "BIO-FACT-T1-W05-CONDITIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "assignment block 778; source teaching blocks 682-708",
+      "objective": "Verify the fifth condition required by Week 5 assignment question 1d against an approved Biology reference. The source explicitly names light/sunlight, chlorophyll, water and carbon (IV) oxide only; do not guess or attribute an unprinted fifth condition to the source.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W05-CONDITIONS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T1-W05; task scope and exact source locators are recorded in the Week 5 index."
+    },
+    {
+      "id": "BIO-FACT-T1-W05-EQUATIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "equation blocks 683 and 700",
+      "objective": "Verify the photosynthesis equations printed at blocks 683 and 700 against an approved Biology reference. Record the exact source forms and evidence before any correction is bound; do not silently rewrite source text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W05-EQUATIONS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T1-W05; task scope and exact source locators are recorded in the Week 5 index."
+    },
+    {
+      "id": "BIO-FACT-T1-W05-PRACTICAL-SAFETY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "practical section blocks 714-765",
+      "objective": "Obtain and review a teacher-approved safety assessment and supervised-delivery decision for the five practical investigations at blocks 714-765. The source index does not reproduce detailed methods or chemical-handling instructions; practical delivery must remain gated until the safety resource is supplied.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W05-PRACTICAL-SAFETY.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W05"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Appended by BIO-WK-T1-W05; task scope and exact source locators are recorded in the Week 5 index."
+    },
+    {
+      "id": "BIO-LES-T1-W05-CONDITIONS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "assignment block 778",
+      "objective": "After BIO-FACT-T1-W05-CONDITIONS establishes the approved fifth condition, author a clearly labelled supplemental lesson that completes the five-condition objective in assignment question 1d. Distinguish supplemental material from the original source and include cited provenance and marked practice.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T1-W05-CONDITIONS.md"
+      ],
+      "depends_on": [
+        "BIO-FACT-T1-W05-CONDITIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T1-W05; task scope and exact source locators are recorded in the Week 5 index."
     }
   ],
   "review": {
@@ -3266,7 +3411,6 @@
   },
   "next_runnable": [
     "BIO-TEST-PACKAGE",
-    "BIO-WK-T1-W05",
     "BIO-WK-T1-W07",
     "BIO-WK-T1-W08",
     "BIO-WK-T1-W09",
@@ -3326,6 +3470,8 @@
     "BIO-VIS-T3-FIG-MEALYBUG",
     "BIO-VIS-T3-SHP-PLANT-CLASS-CHART",
     "BIO-VIS-T3-HDR-BRANDING",
-    "BIO-SEC-T1-RELEVANCE"
+    "BIO-SEC-T1-RELEVANCE",
+    "BIO-FACT-T1-W05-CONDITIONS",
+    "BIO-FACT-T1-W05-EQUATIONS"
   ]
 }
