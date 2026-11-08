@@ -44,7 +44,8 @@
     "BIO-WK-T2-W04 (2026-11-08) indexed irritability, response types, movement, cyclosis and movement organelles. The Amoeba structure is not identified; a klinostat appears only in a question; geotropism questions have no supplied practical description/key. A factual check and bounded supplemental lesson were appended; no answer key was invented.",
     "BIO-WK-T2-W05 (2026-11-08) indexed animal nutrition, food-substance groups, balanced diet, digestive enzymes and all assessment items. Health/deficiency claims are held for authoritative review. Theory block 477 asks for food tests but the week provides no test teaching or approved practical source; no reagent names or procedures were added. A health-claim fact task and animal-nutrition lesson were appended; the food-test resource dependency is blocked pending qualified teacher approval.",
     "BIO-WK-T2-W06 (2026-11-08) indexed ecology, branches, ecological terms and ecosystem components, plus all evaluation and assignment items. Biomes is briefly defined in Week 6 although the scheme assigns it to Week 7; a cross-week scope task was appended. Earth-surface and atmospheric-composition figures were held for authoritative review. No answer key is present; testing remains deferred.",
-    "BIO-WK-T2-W07 (2026-11-08) indexed Nigerian local and world biomes and reviewed all questions. The source's 3000 m body threshold conflicts with the weekend option's 300 m; the question also places a tundra description under montane vegetation. Nigerian distribution and climate figures were recorded for authoritative review. A geography fact task and bounded biome lesson task were appended; no answer key was invented."
+    "BIO-WK-T2-W07 (2026-11-08) indexed Nigerian local and world biomes and reviewed all questions. The source's 3000 m body threshold conflicts with the weekend option's 300 m; the question also places a tundra description under montane vegetation. Nigerian distribution and climate figures were recorded for authoritative review. A geography fact task and bounded biome lesson task were appended; no answer key was invented.",
+    "BIO-WK-T2-W08 (2026-11-08) indexed population characteristics, population-study steps, population factors and ecological instruments. The hydrometer/light-intensity table pairing requires authoritative review; overpopulation effects are asked at block 739 but not taught. A fact task and bounded supplement task were appended. No worked sampling data, practical protocol or answer key was invented."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -60,8 +61,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 27,
-    "PENDING": 80,
+    "IMPLEMENTED_TESTING_DEFERRED": 28,
+    "PENDING": 81,
     "BLOCKED": 6
   },
   "items": [
@@ -1767,8 +1768,8 @@
         "BIO-INV-T2",
         "BIO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T2): label block 683 text \"WEEK EIGHT                                                                                            DATE ……………………                                                     \" (sha256 d51a5484f766c11525c6d8225707ab2a439343808cb869aa9ea045ea77875c39); blocks 683-759; range sha256 57560f6e158b2a737e144712f71b9c981d4fa72c17e99ae88d7149735e009393. Topic: Population Studies. Population characteristics (690), population studies (704; sampling with a quadrat or transect, block 707), factors affecting population (716; emigration 720, seasonal climatic change 722), measurement of ecological factors (726; instruments table block 728), General Evaluation/Revisional Questions (735), Reading Assignment (744), Weekend Assignment (747-759, theory from 755). The instruments table pairs Hydrometer with 'Light intensity in water' (row b), which needs an authoritative check before any lesson; source wording is not altered here. Locator rule: converted copy (LibreOffice 24.2.7.2, headless --convert-to docx of the hash-verified .doc): word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-961; block 962 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T2-W08.md; verified the assigned legacy DOC member hash against the archive and manifest; private DOCX conversion reproduced the exact Week 8 label and range hashes. Indexed population characteristics and density formula, sampling-study outline, population factors, ecological-measurement instruments and all evaluation/revision/weekend/theory items. The instruments table is a 12×3 Word table at block 728 and remains with BIO-VIS-T2-TBL-INSTRUMENTS; its hydrometer/light-intensity pairing needs authoritative review. Overpopulation effects are asked but not taught. No practical protocol, answer key or worked sampling data is supplied. No extract or converted file committed; tests remain deferred.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -4255,6 +4256,53 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T2-W07; no supplemental biome lesson is registered in biology.json."
+    },
+    {
+      "id": "BIO-FACT-T2-W08-INSTRUMENTS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 8 instruments table block 728",
+      "objective": "Verify all instrument/function pairs in the Week 8 ecological measurement table against approved scientific references, especially the source's hydrometer — 'Light intensity in water' pairing. Preserve the source table and record any correction as separate evidence-backed supplemental wording.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T2-W08.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T2-W08-INSTRUMENTS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W08; table mapping requires authoritative review before it is used in a keyed lesson."
+    },
+    {
+      "id": "BIO-LES-T2-W08-OVERPOPULATION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 8 general evaluation block 739",
+      "objective": "Author a clearly labelled supplemental lesson explaining effects of overpopulation in a community, which the Week 8 general evaluation asks for but the source does not teach. Use an approved Biology reference, distinguish supplement from source, and include complete keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T2-W08.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T2-W08-OVERPOPULATION.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W08; no overpopulation lesson is present in the source or package."
     }
   ],
   "review": {
@@ -4288,7 +4336,6 @@
     "BIO-VIS-T1-TBL-CROP-ROTATION",
     "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
     "BIO-VIS-T1-TBL-ENZYMES",
-    "BIO-WK-T2-W08",
     "BIO-WK-T2-W09",
     "BIO-WK-T2-W10",
     "BIO-VIS-T2-TBL-VITAMINS",
@@ -4338,6 +4385,8 @@
     "BIO-FACT-T2-W05-HEALTH-CLAIMS",
     "BIO-FACT-T2-W06-ENVIRONMENT-FACTS",
     "BIO-SCOPE-T2-W06-BIOMES",
-    "BIO-FACT-T2-W07-GEOGRAPHY"
+    "BIO-FACT-T2-W07-GEOGRAPHY",
+    "BIO-FACT-T2-W08-INSTRUMENTS",
+    "BIO-LES-T2-W08-OVERPOPULATION"
   ]
 }
