@@ -69,7 +69,8 @@
     "AG-VIS-T3-W02-DRAUGHT-ANIMALS (2026-11-08): image1.png is a relevant draught-horse/animal-traction photograph with photographer/agency credit; reuse rights are not supplied. Do not republish unless licensed; otherwise use a rights-cleared equivalent. Original media not committed.",
     "AG-VIS-T3-W02-MECHANICAL-POWER (2026-11-08): image2.png appears to depict a motor grader/earthmoving machine, not an unambiguous farm tractor. It is broadly mechanical power but needs accurate labelling; credit is visible and reuse rights are not supplied. Do not republish unless licensed.",
     "AG-VIS-T3-W02-SOLAR (2026-11-08): image3.png is a legible rooftop photovoltaic-panel image matching the solar-power text/caption, but not farm-specific. Photographer/agency credit is visible; reuse rights are not supplied. Do not republish unless licensed.",
-    "AG-VIS-T3-W02-WIND (2026-11-08): inspected image4.png at Week Two block 194. It is a recognizable water-pumping windmill photo, relevant to the caption at 192 and wind-power section; credit Guy R. Higbee/Photo Researchers, Inc. is visible but no reuse licence is supplied. Delivery reuse is blocked pending rights clearance or a separately sourced rights-cleared replacement."
+    "AG-VIS-T3-W02-WIND (2026-11-08): inspected image4.png at Week Two block 194. It is a recognizable water-pumping windmill photo, relevant to the caption at 192 and wind-power section; credit Guy R. Higbee/Photo Researchers, Inc. is visible but no reuse licence is supplied. Delivery reuse is blocked pending rights clearance or a separately sourced rights-cleared replacement.",
+    "AG-VIS-T3-W02-ELECTRIC-WATER (2026-11-08): block 211 has two visuals only—generator-room photo image5 and hydroelectric-dam diagram image6. Both carry third-party credits and no source reuse licence. Image6 has unkeyed numeric callouts 1-6. Correction follow-up AG-CORR-T3-W02-WDP-LOCATORS records that WDP layers are actually in Week Four groups at blocks 487 and 494, not block 211."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -81,10 +82,10 @@
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
     "LESSON": 29,
-    "CORRECTION_BINDING": 11
+    "CORRECTION_BINDING": 12
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 54,
+    "IMPLEMENTED_TESTING_DEFERRED": 55,
     "PENDING": 94,
     "BLOCKED": 2
   },
@@ -2407,8 +2408,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4c2849cc77c769b6033be9176f4f6b35c27935999e12a, image5.png SHA-256 64c22c9d1d7bf0529a369609aa0e99038c03b6dbf05d22759fdcc83f9fcfee8e (58,417 bytes; 216×193 RGB), and image6.png SHA-256 c41581779456eaf4f6d966d31cf783925e8869459f4bb661497bb67a67becdcc (41,168 bytes; 530×318 RGB). Both images are linked at document.xml body block 211 (rId11 -> image5.png; rId12 -> image6.png). Image5 is a generator-room photograph; visible credit 'Porterfield-Chickering/Photo Researchers, Inc.' Image6 is a hydroelectric dam cross-section with numbered callouts 1-6; visible notice 'Encarta Encyclopedia, © Microsoft Corporation. All Rights Reserved.' The numbers have no key in surrounding blocks. Heading 'Electricity Generators' at 212 and explanatory paragraph at 213 describe generators at Bonneville Dam. The images are recognizable; image5 is low-resolution but contextually identifiable; image6 labels and major features are legible but the callout key is absent. Neither image has reuse permission/licence in the DOCX; no delivery reuse without clearance. Added open item AGRICULTURAL-SCIENCE-T3-W02-ELECTRIC-WATER-RIGHTS. The task prompt's WDP mapping is incorrect: XML places hdphoto1.wdp at block 487 with image10.jpeg and image11.jpeg, and hdphoto2.wdp at block 494 with image13.jpeg; neither WDP layer is in block 211. Appended AG-CORR-T3-W02-WDP-LOCATORS to correct AG-INV-T3.md. Importer/rendering/device checks not run.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5619,6 +5620,47 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T3-W10: tattooing is assessed in theory 1253 but is only named, not defined, at 1203.",
       "completion_condition": "A PENDING-approval lesson is authored only from recorded factual decision, with complete keyed practice, criterion-level marking, body_sha256 and provenance; COV-AG-T3-W10-ASSESSMENT-GAPS is updated to reference it."
+    },
+    {
+      "id": "AG-CORR-T3-W02-WDP-LOCATORS",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Third Term image groups: Week Two block 211 (image5.png + image6.png); Week Four blocks 487 (image10.jpeg + image11.jpeg + hdphoto1.wdp) and 494 (image13.jpeg + hdphoto2.wdp)",
+      "objective": "Correct the Third Term visual inventory's WDP image-effect-layer associations. The inventory/task locator currently groups hdphoto1.wdp and hdphoto2.wdp with Week Two image5/image6, but document.xml shows no WDP imgLayer at block 211. It places hdphoto1.wdp as an a14:imgLayer at block 487 alongside image10.jpeg and image11.jpeg, and hdphoto2.wdp at block 494 alongside image13.jpeg. Update AG-INV-T3.md so Week Two block 211 lists only image5/image6 and the WDP layer mapping is attached to the actual Week Four image groups. Preserve the distinction that WDP are alternate/effect layers, not independent teaching figures.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W02-ELECTRIC-WATER.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4c2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-CORR-T3-W02-WDP-LOCATORS.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3",
+        "AG-VIS-T3-W02-ELECTRIC-WATER"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-VIS-T3-W02-ELECTRIC-WATER after XML inspection: WDP layers are not attached to block 211; hdphoto1.wdp is at block 487 with image10/image11, and hdphoto2.wdp is at block 494 with image13.",
+      "completion_condition": "Re-verify archive/member hashes and XML relationships; correct only the WDP associations in AG-INV-T3.md with exact body-block locators and hashes. Do not alter source bytes or create independent visual records for WDP layers."
     }
   ],
   "review": {
@@ -5634,7 +5676,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W02-ELECTRIC-WATER",
     "AG-VIS-T3-W04-RUMINANT-DIGESTION",
     "AG-VIS-T3-W04-PIG-DIGESTION",
     "AG-VIS-T3-W04-POULTRY-DIGESTION",
@@ -5697,6 +5738,7 @@
     "AG-CORR-T3-W01-TOOL-NAMES",
     "AG-CORR-T3-W02-WATER-POWER",
     "AG-CORR-T3-W02-POWER-TEXT",
+    "AG-CORR-T3-W02-WDP-LOCATORS",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
     "AG-LES-T1-W02-AGRO-INDUSTRIES",
