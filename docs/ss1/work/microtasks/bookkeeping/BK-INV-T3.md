@@ -99,3 +99,21 @@ This delivery completion does not repair or overwrite the original DOCX. In part
 ### Verification status
 
 A Bookkeeping-specific package regression test has been added to the GitHub Actions workflow and extended for the new lessons and coverage links. Pull request #390 triggers workflow run 42526235246. Until that run completes successfully, package schema, hash, marking and integration checks remain pending. Full parser/compiler/importer and device/delivery verification are also not yet claimed.
+
+
+## Verification result correction — 8 November 2026
+
+The initial run 42526235246 failed on stale lesson-hash assertions and over-escaped week-ID regular expressions. Those defects were corrected in the package/test files. The corrected full GitHub Actions run **42526555833 (run 1319)** passed on commit `43df21e71419b870ec05cfb3ebabe32e82680d17`.
+
+Passed workflow steps include:
+- npm dependency installation;
+- Python baseline tools;
+- backend and mobile TypeScript checks;
+- static and focused regressions, including `tests/ss1/bookkeeping.package.test.mts`;
+- live PostgreSQL and real asset-byte integration;
+- authenticated science asset retrieval;
+- YO-LICENSE authenticated-route attribution;
+- sequencing apply/rollback tools;
+- staging-admin CLI.
+
+This successful workflow does not execute the separate Bookkeeping full-source parser/compiler comparison, Bookkeeping importer/database delivery path, or device acceptance. Those remain deferred and must not be described as verified. All authored lessons remain `content_approval=PENDING`; formal teacher/curriculum-owner approval is still outstanding.
