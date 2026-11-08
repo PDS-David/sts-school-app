@@ -82,7 +82,8 @@
     "BIO-VIS-T2-FIG-FOODWEB (2026-11-08) inspected the verified image at block 818. The figure is absent from text extraction and carries the labels Green Plant, Poducer, Mouse, Rabbit, Goat, Owl, Wild Cat, Jackal, Snake, Lion and Kite, with caption 'Food Web in a Forest'. The original typo 'Poducer' is recorded for delivery-only correction to 'Producer'. Several arrow endpoints are ambiguous at the raster resolution; a project-authored redraw task requires verified links only and no invented connections. Original-image rights are not recorded. Testing remains deferred.",
     "BIO-VIS-T2-SHP-FOODCHAINS (2026-11-08) inspected all seven source blocks with arrow shapes and rendered PDF page 27. The five chain names survive plain-text extraction in order, but all right-pointing arrowheads are separate shapes and disappear. The lesson must restate the five chains as ordered arrow sequences, preserving trophic labels and omissions. The two additional arrows in blocks 797 and 816 are not food-chain examples. No asset/redraw is required. Testing remains deferred.",
     "BIO-VIS-T3-FIG-BACTERIA-SHAPES (2026-11-09) verified the 3rd Term DOCX member and embedded image. Block 55 is an inline drawing with no text runs; rId7 targets image1.png (649x599, SHA-256 3150bccfa985db5e26f851cec90b8d66b442a1db104c514d70c342f697d613ba). The four visible panel headings and 22 label strings are transcribed in the disposition report. Plain-text extraction loses the whole figure. No source pixels/layout are reused; a blocking CONTENT item requires a fact-reviewed, project-authored accessible asset. Testing and student-facing approval remain deferred.",
-    "BIO-VIS-T3-FIG-GRASSHOPPER (2026-11-09) verified the 3rd Term member and image at block 515. The native paragraph text 'LIFE CYCLE OF A GRASSHOPPER' duplicates the raster title, but the arrows, illustrated stages and embedded labels Adult, Eggs and Molt are lost in text extraction. The visible Education.com copyright footer is recorded; no permission decision is made. A blocking PERMISSION open item records that the source raster must not be reused without permission. Testing and student-facing approval remain deferred."
+    "BIO-VIS-T3-FIG-GRASSHOPPER (2026-11-09) verified the 3rd Term member and image at block 515. The native paragraph text 'LIFE CYCLE OF A GRASSHOPPER' duplicates the raster title, but the arrows, illustrated stages and embedded labels Adult, Eggs and Molt are lost in text extraction. The visible Education.com copyright footer is recorded; no permission decision is made. A blocking PERMISSION open item records that the source raster must not be reused without permission. Testing and student-facing approval remain deferred.",
+    "BIO-VIS-T3-FIG-MEALYBUG (2026-11-09) verified the 3rd Term member and inspected blocks 543 and 545. Block 543 contains 'The Life Cycle of Cassava Mealy bug'; block 545 is an anchored image-only drawing (rId17 -> image3.jpeg) with no text runs. The raster labels and arrows are lost in text extraction. The low-resolution caption recorded as 'Instar symphs 1' remains uncertain and uncorrected. A blocking CONTENT item requires fact review and a project-authored accessible asset. Testing and student-facing approval remain deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -98,9 +99,9 @@
     "SCOPE_DECOMPOSITION": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 74,
+    "IMPLEMENTED_TESTING_DEFERRED": 75,
     "BLOCKED": 12,
-    "PENDING": 80
+    "PENDING": 79
   },
   "items": [
     {
@@ -3187,8 +3188,8 @@
         "BIO-INV-T3",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T3), viewed directly: block 545 holds an anchored w:drawing of media/image3.jpeg (300x240, sha256 b8be588c24d7a7161e74842ac3c3ea7de776c5f688b3bb34704ed9ff3bf81fdd): a cycle titled 'Mealybugs life cycle' with photos labelled Egg, 'Instar symphs 1', two further 'Instar nymphs' labels without a number, 'Instar nymphs 3', 'imago out from pupa' and 'Imago' (source spellings kept). The block has no text, so plain-text extraction loses it. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Disposition report BIO-VIS-T3-FIG-MEALYBUG.md (2026-11-09): verified archive/member/image hashes; inspected native DOCX block 543 heading and block 545 anchored drawing rId17 -> media/image3.jpeg. Block 545 has no text runs, so plain-text extraction loses the title, labels, illustrations and cycle arrows. Recorded visible labels and preserved the uncertain low-resolution caption as 'Instar symphs 1' without correction. Added blocking CONTENT open item BIOLOGY-T3-W06-MEALYBUG-FIGURE for a fact-reviewed, project-authored accessible asset. Not approved, not fact-verified, importer/tests/display not run.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -5825,7 +5826,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T3-FIG-MEALYBUG",
     "BIO-VIS-T3-SHP-PLANT-CLASS-CHART",
     "BIO-VIS-T3-HDR-BRANDING",
     "BIO-VIS-T3-W05-PLANT-CLASSIFICATION",

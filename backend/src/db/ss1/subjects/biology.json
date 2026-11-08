@@ -4175,6 +4175,18 @@
         "COV-BIO-T3-W06-PLANT-PESTS-DISEASES"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W06-MEALYBUG-FIGURE",
+      "kind": "CONTENT",
+      "detail": "The image-only mealybug life-cycle figure at source block 545 is absent from plain-text extraction. The heading at block 543 names 'The Life Cycle of Cassava Mealy bug', but the small raster captions include an uncertain spelling/numbering ('Instar symphs 1' in the inventory) and do not provide a fully reliable, text-accessible stage sequence. No 3rd Term asset or lesson is registered.",
+      "required_action": "After BIO-FACT-T3-W06-W07-PEST-DISEASES verifies the cassava mealybug stages and sequence, re-inspect the original raster to confirm any low-resolution caption that can be read; preserve uncertain source spellings rather than silently correcting them. Create a project-authored accessible figure from only supported labels/facts, without reusing source pixels or copying its layout, and bind/register it to the actual Week 6 lesson with hash, alt text, locator and project-created provenance.",
+      "affected_ids": [
+        "BIO-VIS-T3-FIG-MEALYBUG",
+        "BIO-FACT-T3-W06-W07-PEST-DISEASES",
+        "COV-BIO-T3-W06-PLANT-PESTS-DISEASES"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
