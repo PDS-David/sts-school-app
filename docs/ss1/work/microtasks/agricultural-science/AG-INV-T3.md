@@ -19,7 +19,7 @@ Block = direct child of `w:body` in `word/document.xml`, 0-based. The document h
 |---|---|---|---|---|---|
 | 1 | `WEEK ONE` (26) | Simple farm tools | 26–75 | `635789fb4e63974d59acfd3667c0b0fb9a4b935d51684c017ac9879e598deb6b` | `fd12c22ae7e30ab3b7903457502daa6125da806655322eab6090e7f4e0e819d7` |
 | 2 | `WEEK TWO` (76) | Farm power | 76–279 | `88b3326818ebf3577b66bea2ea4fa2f670e9335dbeaf07bbe3729906fa939df6` | `a580fafc641cfb780fe608ca29b6bd943fe335d12df02e1d98147ee8d33fe4ba` |
-| 3 | `WEEK THREE` (280) | Farm mechanization (tractorizaton) | 280–369 | `9a970d2a5cd0bee91213221e6275188baf1dd13c1f90530302e9dbc234cf3b51` | `d27df15557ac65f36ae3eb3ab8e83d532800d46b3798a4efd262818061e55db2` |
+| 3 | `WEEK THREE` (280) | Farm mechanization (TRACTORIZATION) | 280–369 | `9a970d2a5cd0bee91213221e6275188baf1dd13c1f90530302e9dbc234cf3b51` | `d27df15557ac65f36ae3eb3ab8e83d532800d46b3798a4efd262818061e55db2` |
 | 4 | `WEEK FOUR` (370) | Anatomy and physiology of farm animals | 370–523 | `3c43507c7d6178122a308f5e7ede8deda1dd2dfab7a0beebb4601d6d26ea10c2` | `53f4e7e4e5be6ec369a81e8b68b0098b12f85395e248ff0f13035f01c88d1499` |
 | 5 | `WEEK FIVE` (524) | Respiratory system | 524–606 | `700c30e110b71fbdb4d6aaa0ea0a922cb9d63b799643acd01e32055226c62598` | `df93004697a28727f740591bb0256c07afbeab82aa6a032d14098df02ac63cde` |
 | 6 | `WEEK SIX` (607) | Reproduction in farm animals | 607–787 | `8c07e3bd938cea9a3897d0d69eb6c600bf1fbace15d21b346bf0372fa095c038` | `984ba7e0f5936a9a5dfb7680e93fc00ab7c64faa8bc8cbab696cbeda6b6159c7` |
@@ -89,7 +89,7 @@ The image relationship map shows 23 linked raster media files in the body; image
 
 ## Edits
 
-- `QUEUE.json`: `AG-INV-T3` -> `IMPLEMENTED_TESTING_DEFERRED`; 36 PENDING follow-up items appended: one preamble index, ten week-indexing items, two scheme-marker dispositions and 23 visual dispositions. Counts, status counts and `next_runnable` recomputed. No existing item ID or unrelated subject was changed.
+- `QUEUE.json`: `AG-INV-T3` -> `IMPLEMENTED_TESTING_DEFERRED`; 37 PENDING follow-up items appended: one preamble index, ten week-indexing items, two scheme-marker dispositions and 24 visual dispositions. Counts, status counts and `next_runnable` recomputed. No existing item ID or unrelated subject was changed.
 - This inventory report. No package lesson, coverage entry, source rule, correction or asset was written.
 - Authoring checks: member SHA-256 matched manifest; week labels and range hashes computed from original DOCX XML; queue JSON parsed; IDs checked unique; counts and runnable dependencies recomputed. No tests, importer, compiler, typecheck, database or learner-rendering checks were run.
 
