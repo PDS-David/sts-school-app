@@ -340,6 +340,17 @@
         "COV-CC-T2-W12-MARKER"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "CC-T2-MULTILINGUAL-PLANT-NAMES",
+      "kind": "FACT",
+      "detail": "The Week Four English/Yoruba/Hausa/Igbo plant-name table (source lines 681–695) contains unverified local-language equivalents. The original entries are preserved, but their accuracy is not established.",
+      "required_action": "Complete CC-FACT-T2-MULTILINGUAL-PLANT-NAMES with language-aware authoritative references before using the entries in delivered teaching; record uncertain items rather than guessing.",
+      "affected_ids": [
+        "CC-VIS-T2-W04-TBL2",
+        "CC-FACT-T2-MULTILINGUAL-PLANT-NAMES"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
