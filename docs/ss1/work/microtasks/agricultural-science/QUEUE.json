@@ -27,7 +27,8 @@
     "AG-WK-T1-W01 (2026-11-06) indexed Week 1 at objective level: scheme entry 1 mapped to blocks 53-107 as three SUPPORTED rows against the reproduced generic parsed-row id; agronomy, crop pathology and entomology (block 77) are never defined and the source has no answer key, so two UNRESOLVED rows and two bounded lessons were appended. The agro-based/agro-allied items at blocks 95, 112, 118 and 135 depend on Week 6. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written.",
     "AG-INV-T3 (2026-11-08) inventoried the attached 3rd Term Agricultural Science DOCX after verifying its exact member SHA-256 against SOURCE_ASSIGNMENTS.csv. Ten teaching-week bodies (WEEK ONE–WEEK TEN) were found; scheme items 11 Revision and 12 Examination have no instructional bodies. Preamble, practical project, four tables, 18 embedded body image groups, respiration equations, inline Office Math, parser-rule findings and pig/cattle chemical/dose content were recorded. No package lesson, coverage, source rule, correction or asset was written; 37 bounded indexing/marker/visual tasks were appended. Composite ZIP hash and importer/rendering remain unverified/deferred.",
     "AG-PRE-T1 (2026-11-08) classified First Term preamble blocks 0-44: cover/branding, generic term heading, subject/class metadata, scheme structure/items 1-12, references and blank blocks. Reused existing alias and SCHEME_ONLY marker rules/coverage; scheme objectives 1-10 remain delegated to weekly indexing. No package content, rules, coverage, corrections or assets changed. Testing deferred.",
-    "AG-PRE-T2 (2026-11-08) classified Second Term preamble blocks 0-23: generic term heading, subject/class metadata, scheme header and rows, revision/examination markers, references and blank blocks. Scheme objectives delegated to weekly indexing; marker decisions delegated to AG-MARK-T2. No package content, rules, coverage, corrections or assets changed. Testing deferred."
+    "AG-PRE-T2 (2026-11-08) classified Second Term preamble blocks 0-23: generic term heading, subject/class metadata, scheme header and rows, revision/examination markers, references and blank blocks. Scheme objectives delegated to weekly indexing; marker decisions delegated to AG-MARK-T2. No package content, rules, coverage, corrections or assets changed. Testing deferred.",
+    "AG-PRE-T3 (2026-11-08) classified Third Term preamble blocks 0-25: generic heading, subject/class metadata, scheme header and rows 1-12, references and blank blocks. Scheme items 1-10 delegated to weekly indexing; revision/examination items 11-12 delegated to marker tasks. Existing source alias reused. No package content, rules, coverage, corrections or assets changed. Testing deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -41,8 +42,8 @@
     "LESSON": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 12,
-    "PENDING": 66,
+    "IMPLEMENTED_TESTING_DEFERRED": 13,
+    "PENDING": 65,
     "BLOCKED": 2
   },
   "items": [
@@ -1680,8 +1681,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/agricultural-science/AG-PRE-T3.md; blocks 0-25 classified from AG-INV-T3; preamble range SHA-256 3f38a1bf54c05301d2a842b6fce4450dc0594cbdcf6394c34061879232353cda. Scheme items 1-10 delegated to weekly indexing; items 11-12 delegated to marker tasks. Existing source_alias reused. No package content/rule/coverage/asset changes. Testing deferred by owner.",
       "completion_condition": "Every preamble block is mapped or classified with exact block locators; no scheme objective is omitted or invented."
     },
     {
@@ -3066,7 +3067,6 @@
     }
   },
   "next_runnable": [
-    "AG-PRE-T3",
     "AG-WK-T1-W02",
     "AG-WK-T1-W03",
     "AG-WK-T1-W04",
