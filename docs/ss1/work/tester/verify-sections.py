@@ -14,7 +14,11 @@ for line in open(md, encoding='utf8'):
     cells = [c.strip() for c in line.strip().strip('|').split('|')]
     hashes = [re.fullmatch(r'`([0-9a-f]{64})`', c) for c in cells]
     hi = next((i for i, m in enumerate(hashes) if m), None)
-    rng = next((re.fullmatch(r'(\d+)(?:-(\d+))?', c) for c in cells if re.fullmatch(r'\d+(?:-\d+)?', c)), None)
+    # Prefer an explicit a-b range; accept a bare integer only when it is the only integer cell (so a '#' or count column is never mistaken for a line).
+    rng = next((re.fullmatch(r'(\d+)(?:-(\d+))?', c) for c in cells if re.fullmatch(r'\d+-\d+', c)), None)
+    if rng is None:
+        ints = [c for c in cells if re.fullmatch(r'\d+', c)]
+        rng = re.fullmatch(r'(\d+)(?:-(\d+))?', ints[0]) if len(ints) == 1 else None
     if hi is None or rng is None: unparsed.append(cells[0][:40]); continue
     a = int(rng.group(1)); b = int(rng.group(2) or a); tot += 1
     if H(a, b) == hashes[hi].group(1): ok += 1
