@@ -73,7 +73,8 @@
     "BIO-VIS-T1-TBL-CROP-ROTATION (2026-11-08) confirmed block 514 is a native 6×6 Word table, rendered across PDF pages 18-19. Cell boundaries exist in DOCX but flattened text loses plot/year pairing; any text-based supplement must restate the semantic table. No image asset/redraw is needed. Farming-systems placement remains an owner decision; no Week 3 scheme scope was inferred. Testing remains deferred.",
     "BIO-VIS-T1-TBL-MINERALS-VITAMINS (2026-11-08) confirmed the mineral and vitamin lists are native Word tables (11×4 and 10×4). Their cell structure survives in DOCX/PDF but not flattened text. A semantic four-column table is required in the lesson; no asset/redraw is needed. Source function/deficiency statements were recorded for the existing authoritative Biology fact task; no health advice or source corrections were added. Testing remains deferred.",
     "BIO-VIS-T1-TBL-ENZYMES (2026-11-08) confirmed block 920 is a native 8×5 Word table spanning rendered PDF pages 37-38. Cell boundaries are preserved in DOCX/PDF but lost in flattened text; a semantic five-column table is required. The source's enzyme names, sources, locations, substrates and products were added to the existing authoritative Biology fact task. No asset/redraw or source correction is needed. Testing remains deferred.",
-    "BIO-VIS-T2-TBL-VITAMINS (2026-11-08) verified the exact second-term source member and inspected the native 10×4 Word table at block 399, rendered on PDF page 14. Original cell boundaries are intact; flattened text loses row/column pairing. A semantic four-column table is required in the delivery lesson; no image asset/redraw is needed. The source's health/deficiency claims were added to the existing authoritative Biology fact task; no medical advice or source corrections were added. Testing remains deferred."
+    "BIO-VIS-T2-TBL-VITAMINS (2026-11-08) verified the exact second-term source member and inspected the native 10×4 Word table at block 399, rendered on PDF page 14. Original cell boundaries are intact; flattened text loses row/column pairing. A semantic four-column table is required in the delivery lesson; no image asset/redraw is needed. The source's health/deficiency claims were added to the existing authoritative Biology fact task; no medical advice or source corrections were added. Testing remains deferred.",
+    "BIO-VIS-T2-TBL-INSTRUMENTS (2026-11-08) confirmed the second-term source member and inspected the native 12×3 Word table at block 728. Cell boundaries are intact in DOCX but lost in flattened text. All eleven instrument/use pairs are recorded; row b's Hydrometer/light-intensity-in-water pairing remains under authoritative review, and source spelling 'Rainguage' is retained. A semantic three-column table is required; no asset/redraw is needed. A dedicated ecological-instruments lesson was appended because the existing Week 8 lesson task covers overpopulation, not this objective. Testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -85,11 +86,11 @@
     "SOURCE_SECTION_INDEXING": 3,
     "VISUAL_DISPOSITION": 40,
     "SOURCE_MARKER_DISPOSITION": 1,
-    "LESSON": 21,
+    "LESSON": 22,
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 56,
+    "IMPLEMENTED_TESTING_DEFERRED": 57,
     "PENDING": 92,
     "BLOCKED": 11
   },
@@ -1948,8 +1949,8 @@
         "BIO-INV-T2",
         "BIO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T2): block 728 is a w:tbl of 12 rows and 3 columns (letter, INSTRUMENTS, USES): photometer, hydrometer, wind vane, anemometer, rain gauge, hygrometer, barometer, glass thermometer, colorimeter or pH scale, secchi disc and further rows. Extractor output was not generated (importer deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact source member SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44. The private DOCX conversion was used only for structural inspection; no converted file was committed. Direct block 728 is a native 12×3 w:tbl with SHA-256 ec059d6f06a56afd4c7eeb05d104f6bda7889ea68ab8217584998412f351866a. Original DOCX cell boundaries are intact; flattened text extraction loses row pairings. The 11 source pairs are recorded in package evidence, including row b (Hydrometer / Light intensity in water) which remains flagged for authoritative review, and the source spelling 'Rainguage' is retained. A semantic three-column table is required in the delivery lesson; no image asset or redraw is needed. The existing BIO-FACT-T2-W08-INSTRUMENTS task and package open item own the row-b review. A dedicated ecological-instruments lesson task was appended because the existing Week 8 lesson queue covered overpopulation only. No source wording changed; no app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -4319,7 +4320,8 @@
       "required_files": [
         "backend/src/db/ss1/subjects/biology.json",
         "docs/ss1/work/microtasks/biology/QUEUE.json",
-        "docs/ss1/work/microtasks/biology/BIO-WK-T2-W08.md"
+        "docs/ss1/work/microtasks/biology/BIO-WK-T2-W08.md",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T2-TBL-INSTRUMENTS.md"
       ],
       "required_attachments": [],
       "allowed_write_paths": [
@@ -4328,7 +4330,8 @@
         "docs/ss1/work/microtasks/biology/BIO-FACT-T2-W08-INSTRUMENTS.md"
       ],
       "depends_on": [
-        "BIO-WK-T2-W08"
+        "BIO-WK-T2-W08",
+        "BIO-VIS-T2-TBL-INSTRUMENTS"
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T2-W08; table mapping requires authoritative review before it is used in a keyed lesson."
@@ -5530,6 +5533,47 @@
       "status": "PENDING",
       "implementation_reference": "Appended after the table disposition (2026-11-08). The source table's seven gland/site/hormone pairings require authoritative Biology verification before delivery.",
       "completion_condition": "Each of the seven associations is checked against an approved Biology source with exact citations; any delivery correction is separately recorded and the original source table remains unchanged."
+    },
+    {
+      "id": "BIO-LES-T2-W08-ECOLOGICAL-INSTRUMENTS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 8, ecological measurement/instruments heading block 726 and table block 728",
+      "objective": "Author a clearly labelled supplemental lesson for measuring ecological factors and the instruments named in the Week 8 source. Restate the source's eleven instrument/use pairs as a semantic three-column table (letter, instrument, use), preserving the source wording and spelling. Keep row b (Hydrometer / Light intensity in water) pending BIO-FACT-T2-W08-INSTRUMENTS; do not silently correct it. Include safe, high-level descriptions only and complete keyed practice; do not add operational procedures or unsupported uses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T2-W08.md",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T2-TBL-INSTRUMENTS.md",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T2-W08-INSTRUMENTS.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T2-W08-ECOLOGICAL-INSTRUMENTS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W08",
+        "BIO-VIS-T2-TBL-INSTRUMENTS",
+        "BIO-FACT-T2-W08-INSTRUMENTS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended after the native-table disposition (2026-11-08). The table's cell boundaries survive in DOCX but not flattened text; row b remains under fact review.",
+      "completion_condition": "A source-distinct lesson teaches ecological measurement and includes all eleven instrument/use pairs in a semantic three-column table, preserves source wording, includes complete keyed practice, and binds to COV-BIO-T2-W08-ECOLOGICAL-INSTRUMENTS after the hydrometer pairing is verified."
     }
   ],
   "review": {
@@ -5545,7 +5589,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T2-TBL-INSTRUMENTS",
     "BIO-VIS-T2-FIG-PARAMECIUM",
     "BIO-VIS-T2-FIG-SPIROGYRA",
     "BIO-VIS-T2-FIG-COCKROACH",
