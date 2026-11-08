@@ -63,7 +63,8 @@
     "BIO-VIS-T1-CLASS-HIERARCHY (2026-11-08) inspected all six native downward connector shapes and the seven text labels across rendered PDF pages 4-5. Text labels survive extraction; arrows do not, but block 136 states the sequence in prose. The source repeatedly prints 'Genius'/'genius' for Genus. No asset/redraw is needed; a semantic ordered sequence and corrected delivery spelling were assigned to BIO-LES-T1-W03-CLASSIFICATION. Original source remains unchanged; testing deferred.",
     "BIO-VIS-T1-MONOCOT-DICOT (2026-11-08) inspected the original two-column comparison at blocks 235-244 and its private rendered page 8. The two line shapes are only table rules; labels and comparison rows are text but tab/space alignment is not robust under plain-text extraction. Seven paired differences and the examples row require a semantic two-column restatement in the existing BIO-LES-T1-W03-CLASSIFICATION task. No asset/redraw is needed; source header spelling is preserved and the adjacent block 234 spelling is used only in delivery. No source content was changed; testing remains deferred.",
     "BIO-VIS-T1-PEST-LIFECYCLES (2026-11-08) inspected the 15 text boxes and nine DrawingML/VML drawings across blocks 582-593 and rendered PDF pages 21-22. The first nymph-bearing figure's labels conflict with the yam-beetle prose and its stage sequence cannot be safely assigned; a teacher identity gate and dependent redraw task were added. The second figure under the rhinoceros-beetle heading has Egg, Larvae, Pupa and Adults with a clear directed loop; a separate project-authored redraw task was appended. Source drawings are not copied, and no chemical-control instructions are reproduced. Testing remains deferred.",
-    "BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME (2026-11-08) inspected all 13 arrow connectors and their text at blocks 683-713 in rendered PDF pages 25-26. Formula text survives extraction but arrow flow does not. The source equations at blocks 683, 697, 700 and 713 contain unresolved differences/defects; no correction was made. The existing BIO-FACT-T1-W05-EQUATIONS task now covers the complete set. No separate asset is needed; a structured equation/arrow presentation is sufficient. Testing remains deferred."
+    "BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME (2026-11-08) inspected all 13 arrow connectors and their text at blocks 683-713 in rendered PDF pages 25-26. Formula text survives extraction but arrow flow does not. The source equations at blocks 683, 697, 700 and 713 contain unresolved differences/defects; no correction was made. The existing BIO-FACT-T1-W05-EQUATIONS task now covers the complete set. No separate asset is needed; a structured equation/arrow presentation is sufficient. Testing remains deferred.",
+    "BIO-VIS-T1-EXPERIMENT-FIGURES (2026-11-08) verified that Experiment I has no figure and inspected the four source drawings for Experiments II-V. Handwritten labels were transcribed into package evidence; they do not survive plain-text extraction. No original raster assets were committed because reuse rights are unrecorded. The existing practical safety gate remains blocking; no practical instructions or quantities were added. Testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -79,8 +80,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 46,
-    "PENDING": 99,
+    "IMPLEMENTED_TESTING_DEFERRED": 47,
+    "PENDING": 98,
     "BLOCKED": 11
   },
   "items": [
@@ -1102,8 +1103,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1), viewed directly: exercise-book hand drawings. block 733 image2 (1043x445, sha256 069e41b3c8437b1dcb0bfc1e573338779776e6f6601da2e3429ae9e47a8e1827) under Experiment II; block 746 image3 (1338x689, sha256 0247c4e6d6b28a8a9154bcb1a119c8c62b7db137ef5da5b9d461ad608bcea7b6) under Experiment III; block 754 image4 (993x479, sha256 7199a1d3791c8ad6816e88ed2f119881b1ef08b6c3f70393d0921688ce372b66) under Experiment IV; block 765 image5 (677x423, sha256 273f28a32f0ea205afa828a9cd1310bb6f8f26ae3757ce67e6539f9322aac6cc) under Experiment V. Visible labels include 'black paper', 'covered leaf', 'conical flask', 'split cork', 'caustic soda', 'leaf outside', 'white patch', 'green colour', 'test tube', 'beaker', 'funnel', 'Elodea plant', 'oxygen collected'.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and assigned DOCX member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Experiment I (blocks 715-724) has no embedded figure. Four embedded raster figures were inspected directly: Experiment II block 733 image2.jpeg, 1043×445, SHA-256 069e41b3c8437b1dcb0bfc1e573338779776e6f6601da2e3429ae9e47a8e1827, labels 'black paper' and 'covered leaf'; Experiment III block 746 image3.jpeg, 1338×689, SHA-256 0247c4e6d6b28a8a9154bcb1a119c8c62b7db137ef5da5b9d461ad608bcea7b6, labels include 'split cork', 'conical flask', 'caustic soda', 'leaf outside' and a leaf/inside-flask label; Experiment IV block 754 image4.jpeg, 993×479, SHA-256 7199a1d3791c8ad6816e88ed2f119881b1ef08b6c3f70393d0921688ce372b66, labels 'white patch' and 'green colour'; Experiment V block 765 image5.jpeg, 677×423, SHA-256 273f28a32f0ea205afa828a9cd1310bb6f8f26ae3757ce67e6539f9322aac6cc, labels 'test tube', 'oxygen collected', 'beaker', 'funnel' and 'Elodea plant'. Labels are handwritten within the raster images and do not survive plain-text extraction. No original figure has been committed or registered as an app asset because reuse rights are not recorded. The existing BIOLOGY-T1-W05-PRACTICAL-SAFETY open item was updated: teacher/safety approval is required before any practical or replacement figure is delivered. No quantities, procedures or chemical-handling instructions were added. No app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
     },
     {
@@ -5401,7 +5402,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T1-EXPERIMENT-FIGURES",
     "BIO-VIS-T1-NUTRIENT-CYCLES",
     "BIO-VIS-T1-PROTEIN-BREAKDOWN",
     "BIO-VIS-T1-MITOSIS",
