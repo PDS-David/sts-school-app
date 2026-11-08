@@ -80,25 +80,26 @@
     "BIO-VIS-T2-FIG-COCKROACH (2026-11-08) inspected the verified second-term image at block 221. The visible Egg Case, two Nymph stages and Adult labels form a clockwise loop matching the written description at blocks 216-220. The image is absent from plain-text extraction. Original-image rights are not recorded, so a project-authored redraw task was appended and the Week 3 reproduction lesson now depends on it. Testing remains deferred.",
     "BIO-VIS-T2-FIG-HOUSEFLY (2026-11-08) inspected the verified second-term image at block 228. The visible Egg, Embryo stage, Adult stage, Immature stage, Adult, Larva, Pupa and METAMORPHOSIS labels form a clockwise Egg→Larva→Pupa→Adult loop matching the written description at blocks 222-227. The image is absent from plain-text extraction. Original-image rights are not recorded, so a project-authored redraw task was appended and the Week 3 reproduction lesson now depends on it. Testing remains deferred.",
     "BIO-VIS-T2-FIG-FOODWEB (2026-11-08) inspected the verified image at block 818. The figure is absent from text extraction and carries the labels Green Plant, Poducer, Mouse, Rabbit, Goat, Owl, Wild Cat, Jackal, Snake, Lion and Kite, with caption 'Food Web in a Forest'. The original typo 'Poducer' is recorded for delivery-only correction to 'Producer'. Several arrow endpoints are ambiguous at the raster resolution; a project-authored redraw task requires verified links only and no invented connections. Original-image rights are not recorded. Testing remains deferred.",
-    "BIO-VIS-T2-SHP-FOODCHAINS (2026-11-08) inspected all seven source blocks with arrow shapes and rendered PDF page 27. The five chain names survive plain-text extraction in order, but all right-pointing arrowheads are separate shapes and disappear. The lesson must restate the five chains as ordered arrow sequences, preserving trophic labels and omissions. The two additional arrows in blocks 797 and 816 are not food-chain examples. No asset/redraw is required. Testing remains deferred."
+    "BIO-VIS-T2-SHP-FOODCHAINS (2026-11-08) inspected all seven source blocks with arrow shapes and rendered PDF page 27. The five chain names survive plain-text extraction in order, but all right-pointing arrowheads are separate shapes and disappear. The lesson must restate the five chains as ordered arrow sequences, preserving trophic labels and omissions. The two additional arrows in blocks 797 and 816 are not food-chain examples. No asset/redraw is required. Testing remains deferred.",
+    "BIO-VIS-T3-FIG-BACTERIA-SHAPES (2026-11-09) verified the 3rd Term DOCX member and embedded image. Block 55 is an inline drawing with no text runs; rId7 targets image1.png (649x599, SHA-256 3150bccfa985db5e26f851cec90b8d66b442a1db104c514d70c342f697d613ba). The four visible panel headings and 22 label strings are transcribed in the disposition report. Plain-text extraction loses the whole figure. No source pixels/layout are reused; a blocking CONTENT item requires a fact-reviewed, project-authored accessible asset. Testing and student-facing approval remain deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 18,
+    "FACTUAL_DEPENDENCY": 32,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 27,
     "SOURCE_SECTION_INDEXING": 3,
-    "VISUAL_DISPOSITION": 45,
+    "VISUAL_DISPOSITION": 47,
     "SOURCE_MARKER_DISPOSITION": 1,
-    "LESSON": 22,
-    "SCOPE_DECOMPOSITION": 1
+    "LESSON": 43,
+    "SCOPE_DECOMPOSITION": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 64,
-    "PENDING": 90,
-    "BLOCKED": 11
+    "IMPLEMENTED_TESTING_DEFERRED": 73,
+    "BLOCKED": 12,
+    "PENDING": 81
   },
   "items": [
     {
@@ -3109,8 +3110,8 @@
         "BIO-INV-T3",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T3), viewed directly: block 55 holds an inline w:drawing of media/image1.png (649x599, sha256 3150bccfa985db5e26f851cec90b8d66b442a1db104c514d70c342f697d613ba), a labelled chart of bacterial forms in four panels: Cocci (coccus, diplococci, diplococci encapsulated Pneumococcus, Staphylococci, streptococci, sarcina, tetrad), Bacilli (coccobacillus, bacillus, diplobacilli, palisades, Streptobacilli), Budding and appendaged bacteria (hypha, stalk) and Others (enlarged rod Fusobacterium, Vibrio, Comma's form Bdellovibrio, Club Rod Corynebacteriaceae, Helical form Helicobacter pylori, Corkscrew's form Borrelia burgdorferi, Filamentous, spirochete). The block has no text, so plain-text extraction loses it; its origin and rights are not stated in the document. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Disposition report BIO-VIS-T3-FIG-BACTERIA-SHAPES.md (2026-11-09): verified archive SHA 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact DOCX member SHA 1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4, and embedded PNG SHA 3150bccfa985db5e26f851cec90b8d66b442a1db104c514d70c342f697d613ba. Inspected native DOCX body block 55: one inline drawing, no text runs, rId7 -> media/image1.png. Viewed the full 649x599 raster and recorded the four panel headings and all visible labels without endorsing their accuracy. Text extraction loses the figure. Added blocking package CONTENT item BIOLOGY-T3-W01-BACTERIA-FIGURE for a fact-reviewed, project-authored accessible asset; source pixels/layout are not to be reused. Not approved, not fact-verified, importer/tests/display not run.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -5823,15 +5824,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T2-SHP-PYRAMID",
-    "BIO-VIS-T3-TBL-VECTORS",
-    "BIO-VIS-T3-TBL-DISEASES",
-    "BIO-VIS-T3-TBL-STI",
-    "BIO-VIS-T3-TBL-CROP-PESTS",
-    "BIO-VIS-T3-TBL-LIVESTOCK-PARASITES",
-    "BIO-VIS-T3-TBL-CROP-DISEASES",
-    "BIO-VIS-T3-TBL-LIVESTOCK-DISEASES",
-    "BIO-VIS-T3-FIG-BACTERIA-SHAPES",
     "BIO-VIS-T3-FIG-GRASSHOPPER",
     "BIO-VIS-T3-FIG-MEALYBUG",
     "BIO-VIS-T3-SHP-PLANT-CLASS-CHART",
@@ -5882,7 +5874,6 @@
     "BIO-LES-T3-W02-NITROGEN-CARBON-CYCLES",
     "BIO-LES-T3-W08-STORAGE-STRUCTURES",
     "BIO-LES-T1-W03-CLASSIFICATION",
-    "BIO-LES-T1-W06-CARBON-WATER",
-    "BIO-TEST-PACKAGE"
+    "BIO-LES-T1-W06-CARBON-WATER"
   ]
 }

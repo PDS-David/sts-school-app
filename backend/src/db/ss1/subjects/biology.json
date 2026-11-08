@@ -4152,6 +4152,18 @@
         "BIO-VIS-T3-TBL-LIVESTOCK-DISEASES"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W01-BACTERIA-FIGURE",
+      "kind": "CONTENT",
+      "detail": "The image-only bacteria-shapes figure at source block 55 contains four labelled panels and 22 visible label strings, but the block has no text runs and plain-text extraction loses the figure and its group structure. No corresponding 3rd Term asset is registered in the package. The visible classifications have not been fact-verified.",
+      "required_action": "After BIO-FACT-T3-W01-MICROBE-CLAIMS verifies the source-visible labels, create a project-authored accessible diagram using only labels that remain supported. Do not reuse source pixels or reproduce the source layout. Bind the new asset to the actual Week 1 lesson and register its own hash, alt text, source locator and project-created provenance. Record any correction separately from the original wording.",
+      "affected_ids": [
+        "BIO-VIS-T3-FIG-BACTERIA-SHAPES",
+        "BIO-FACT-T3-W01-MICROBE-CLAIMS",
+        "COV-BIO-T3-W01-MICROORGANISMS"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
