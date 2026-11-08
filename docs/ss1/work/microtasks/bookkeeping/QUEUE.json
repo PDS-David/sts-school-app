@@ -49,7 +49,8 @@
     "2026-11-08 subject-basis correction: Financial Accounting scheme references previously cited in BK-T2-RECONSTRUCTION-PLAN.md were withdrawn. The plan now relies only on sources explicitly labelled Bookkeeping/Book Keeping, with the centre's actual T1/T3 materials controlling overlap. BK-RECON-T2-W03 lesson draft has been authored; it remains PENDING until package integration.",
     "On work/bookkeeping-owner-decisions: prepared BK-OWNER-DECISIONS.md to consolidate the remaining T2 source identity decision, three source-alias approvals, T1 Weeks 1–4 subject-expert decisions, external textbook disposition and package content approval. Corrected stale BK-FACT-CONTENT-APPROVAL implementation_reference: package and authored lessons now exist; approval remains PENDING and verification DEFERRED. No decisions were presumed; no tests or technical verification run.",
     "2026-11-08: Reconstructed Bookkeeping lesson drafts W04-W07 authored. They remain PENDING until package lesson/coverage integration and static checks; no tests have been run.",
-    "2026-11-08: Reconstructed Bookkeeping lesson drafts W08-W10 authored. All ten proposed instructional weeks W01-W10 now have project-authored lesson drafts. All remain PENDING until package integration and static validation; technical tests remain deferred and unrun."
+    "2026-11-08: Reconstructed Bookkeeping lesson drafts W08-W10 authored. All ten proposed instructional weeks W01-W10 now have project-authored lesson drafts. All remain PENDING until package integration and static validation; technical tests remain deferred and unrun.",
+    "2026-11-08: All ten reconstructed Bookkeeping T2 lessons W01-W10 are now integrated into bookkeeping.json as SUP-SS1-BOOKKEEPING-T2-W01..W10 with separate COV-BK-T2-RECON-W01..W10 coverage. The excluded duplicate source remains preserved and contributes no lesson content; its source_id is used only as the manifest term-bucket key because the current package schema requires coverage to reference a registered source. Coverage locators/evidence explicitly point to the reconstruction plan and authored lesson files. Package tests were updated to assert this separation but have not been run. Tasks moved to IMPLEMENTED_TESTING_DEFERRED, not VERIFIED."
   ],
   "counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 61,
@@ -3047,8 +3048,8 @@
       "depends_on": [
         "BK-T2-RECON-SCHEME"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Project-authored lesson draft created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W01.md. Includes outcomes, complete teaching notes, original worked examples, guided practice, independent assessment, answers and marking. Package lesson/coverage integration and static hash/marking checks remain outstanding; keep task PENDING until integrated.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W01.md and integrated as SUP-SS1-BOOKKEEPING-T2-W01 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W01. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
       "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
     },
     {
@@ -3072,8 +3073,8 @@
       "depends_on": [
         "BK-T2-RECON-SCHEME"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Project-authored lesson draft created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W02.md. Includes outcomes, complete teaching notes, original worked examples, guided practice, independent assessment, answers and marking. Package lesson/coverage integration and static hash/marking checks remain outstanding; keep task PENDING until integrated.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W02.md and integrated as SUP-SS1-BOOKKEEPING-T2-W02 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W02. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
       "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
     },
     {
@@ -3097,8 +3098,8 @@
       "depends_on": [
         "BK-T2-RECON-SCHEME"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Project-authored Bookkeeping lesson draft created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W03.md. Includes outcomes, explanations, original worked sales/purchases day-book examples, trade-discount calculations, guided practice, independent assessment, answers and marking. Package lesson/coverage integration and static hash/marking checks remain outstanding; keep task PENDING until integrated.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W03.md and integrated as SUP-SS1-BOOKKEEPING-T2-W03 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W03. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
       "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
     },
     {
@@ -3122,8 +3123,8 @@
       "depends_on": [
         "BK-T2-RECON-SCHEME"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Project-authored Bookkeeping lesson draft created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W04.md. Covers returns inwards/outwards, source documents, day-book formats, ledger treatment, general-journal boundary, practice and marked assessment. Package integration and static checks remain outstanding.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W04.md and integrated as SUP-SS1-BOOKKEEPING-T2-W04 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W04. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
       "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
     },
     {
@@ -3147,8 +3148,8 @@
       "depends_on": [
         "BK-T2-RECON-SCHEME"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Project-authored Bookkeeping lesson draft created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W05.md. Covers ledger purpose, personal/real/nominal accounts, debtors/creditors and subsidiary-book relationships, with practice and marked assessment. Package integration and static checks remain outstanding.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W05.md and integrated as SUP-SS1-BOOKKEEPING-T2-W05 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W05. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
       "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
     },
     {
@@ -3172,8 +3173,8 @@
       "depends_on": [
         "BK-T2-RECON-SCHEME"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Project-authored Bookkeeping lesson draft created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W06.md. Covers posting sales/purchases/returns book entries to personal and nominal accounts, with worked postings and marked assessment. Package integration and static checks remain outstanding.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W06.md and integrated as SUP-SS1-BOOKKEEPING-T2-W06 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W06. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
       "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
     },
     {
@@ -3197,8 +3198,8 @@
       "depends_on": [
         "BK-T2-RECON-SCHEME"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Project-authored Bookkeeping lesson draft created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W07.md. Covers trade vs cash discount, calculation, discount allowed/received and recording principles, with practice and marked assessment. Package integration and static checks remain outstanding.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W07.md and integrated as SUP-SS1-BOOKKEEPING-T2-W07 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W07. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
       "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
     },
     {
@@ -3222,8 +3223,8 @@
       "depends_on": [
         "BK-T2-RECON-SCHEME"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Project-authored Bookkeeping lesson draft created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W08.md. Covers three-column cash-book layout, discount columns, receipts/payments and contra entries, with examples and marked assessment. Package integration and static checks remain outstanding.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W08.md and integrated as SUP-SS1-BOOKKEEPING-T2-W08 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W08. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
       "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
     },
     {
@@ -3247,8 +3248,8 @@
       "depends_on": [
         "BK-T2-RECON-SCHEME"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Project-authored Bookkeeping lesson draft created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W09.md. Covers balancing cash/bank columns, balance c/d and b/d, overdraft, discount totals and integrated practice. Package integration and static checks remain outstanding.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W09.md and integrated as SUP-SS1-BOOKKEEPING-T2-W09 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W09. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
       "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
     },
     {
@@ -3272,8 +3273,8 @@
       "depends_on": [
         "BK-T2-RECON-SCHEME"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Project-authored Bookkeeping lesson draft created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W10.md. Covers cash-book updates, timing differences and a reconciled bank reconciliation example, with practice and marked assessment. Package integration and static checks remain outstanding.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W10.md and integrated as SUP-SS1-BOOKKEEPING-T2-W10 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W10. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
       "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
     }
   ],
