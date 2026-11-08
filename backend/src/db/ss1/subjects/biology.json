@@ -1497,6 +1497,92 @@
           "explanation": "Regional distributions, rainfall/temperature/latitude values and the conflicting 3000 m/300 m threshold require authoritative checking before a keyed lesson is delivered."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T2-W08-POPULATION-STUDIES",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 8: Population Studies — population characteristics, sampling study and factors affecting population",
+      "objective_locator": "Scheme row block 14; Week 8 label block 683 (sha256 d51a5484f766c11525c6d8225707ab2a439343808cb869aa9ea045ea77875c39); body blocks 683-759 (range sha256 57560f6e158b2a737e144712f71b9c981d4fa72c17e99ae88d7149735e009393)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 690-698 (range sha256 cd014eaaa0d40110e7251c4692e460ba2d830db5003a03026dc585949848343c)",
+          "explanation": "Defines population size, density, frequency, percentage cover, growth rate and distribution; gives the density formula as population size divided by habitat area."
+        },
+        {
+          "locator": "blocks 704-710 (range sha256 47e6db5b554bfed43990bcc306766c0613f78af35833da82d4b6a8abab215f39)",
+          "explanation": "Outlines a population study: choose a habitat, select a sampling method, collect/count/record organisms, identify dominant species, repeat at intervals and determine population characteristics. It mentions quadrat (printed 'quadrant') or transect (printed 'transcent') sampling but does not give detailed field protocols or sample quantities."
+        },
+        {
+          "locator": "blocks 716-724 (range sha256 0514911081f8a093e9b34817653dbb89d5dec80d92e41687000ab1689c487632)",
+          "explanation": "Lists natality, mortality, immigration, emigration, food availability, seasonal climatic changes, breeding season and natural disasters as factors affecting population."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for population studies; source-only teaching is not deliverable. PARTIAL remains pending an approved lesson."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W08-ECOLOGICAL-INSTRUMENTS",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 8: simple measurement of ecological factors and instruments",
+      "objective_locator": "Heading block 726; instruments table block 728 (12 rows × 3 columns; block hash sha256 ec059d6f06a56afd4c7eeb05d104f6bda7889ea68ab8217584998412f351866a)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 726-728 (range sha256 8de8bb57170e7fc1bcc809f71ddf0573340037d72cb74b03fdaea8ea86d1b827)",
+          "explanation": "Lists instruments for photometer/light intensity, hydrometer/light intensity in water, wind vane/direction, anemometer/speed, rain gauge/amount, hygrometer/relative humidity, barometer/pressure, glass thermometer/temperature, colorimeter or pH scale/acidity or alkalinity, Secchi disc/turbidity and sweep insect net/catching insects. The hydrometer/light-intensity pairing is flagged for authoritative review, not silently corrected. The source table's row/column alignment is owned by BIO-VIS-T2-TBL-INSTRUMENTS."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; no visual asset registered",
+          "explanation": "No lesson or asset is registered; table preservation and approved lesson binding remain outstanding."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W08-ASSESSMENT",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 8 evaluation, revision, weekend assignment and theory",
+      "objective_locator": "Evaluation blocks 700-702, 712-714 and 730-733; general evaluation 735-742; reading 744-745; weekend assignment 747-753; theory 755-757",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "evaluation blocks 700-702 (range sha256 288a1ad5ff636a98b451b991ebbcbe495495d0be266500490ccfa1c59a80fedc)",
+          "explanation": "Definitions of population characteristics are taught in 690-698. The source does not explain two alternative population-size methods beyond the population-study steps and sampling methods in 704-710."
+        },
+        {
+          "locator": "evaluation blocks 712-714 (range sha256 74a92751375cd03c2ee7f284c94ef31c77386a3da2acfe4b7618e4cfe86d276b)",
+          "explanation": "Population density formula and sampling are introduced, but no worked insect/grass count example or sample area is supplied."
+        },
+        {
+          "locator": "evaluation blocks 730-733 (range sha256 cbd086a8b1d6a39306ca90c767beff6fe247a27899a5928666d5cd0fcc24c03a)",
+          "explanation": "Factors affecting population and instrument uses are listed. Bush-burning effects are not separately explained."
+        },
+        {
+          "locator": "general evaluation blocks 735-742 (range sha256 0d18bd1d7e55df25e5bdffc2b811d1b0866111a0859ee5ca59d50488ecd67c56)",
+          "explanation": "Ecosystem components and biotic components refer back to Week 6. Population factors and ecological instruments are covered. The request for five effects of overpopulation (739) is not taught in Week 8. Aquatic/terrestrial abiotic examples are not developed as a distinct list in this week."
+        },
+        {
+          "locator": "reading assignment blocks 744-745 (range sha256 ec4e8125593a49b13c82042dfaf2ea2c985cc8f69441d10ace9b270887fc700f)",
+          "explanation": "College Biology, chapter 23, pages 530-532. The cited book is not part of the source archive and was not opened."
+        },
+        {
+          "locator": "weekend assignment blocks 747-753 (range sha256 b0302f0c70d5d76c09f233fd9448be221acb5ce12a9ba56e06be5bfd59f40dd0)",
+          "explanation": "The climatic-factor question (748) and abiotic organic/inorganic question (750) draw on Week 6 content; population density (751) is supported by 693-694. The 'nature' option in 752 is not defined. Population definition (753) is taught in Week 6 block 522. No answer key is supplied."
+        },
+        {
+          "locator": "theory blocks 755-757 (range sha256 00df1d4c59634afab5f466514168020c688be07a7c8a3a2afab4ba86d8c53e66)",
+          "explanation": "The instrument list is in table 728, but the hydrometer pairing requires review. The five population factors can be selected from blocks 717-724. No marking guide is supplied."
+        },
+        {
+          "locator": "instrument table block 728",
+          "explanation": "The hydrometer is paired with 'Light intensity in water' in the original table. This factual pairing must be checked before a keyed answer or lesson is authored; no correction is invented."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -2163,6 +2249,48 @@
       "required_action": "A Biology teacher should approve a complete answer/marking guide after the geographic/factual review is resolved.",
       "affected_ids": [
         "COV-BIO-T2-W07-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W08-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 8 population characteristics, population studies, population factors and ecological instruments are present in the source, but the Biology package has no registered lessons.",
+      "required_action": "Author and bind an approved population-studies lesson and preserve the source instruments table through its assigned visual task.",
+      "affected_ids": [
+        "COV-BIO-T2-W08-POPULATION-STUDIES",
+        "COV-BIO-T2-W08-ECOLOGICAL-INSTRUMENTS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W08-INSTRUMENTS",
+      "kind": "FACT",
+      "detail": "The ecological-instruments table at block 728 pairs a hydrometer with 'Light intensity in water'. This instrument/function pairing requires authoritative review.",
+      "required_action": "Verify each instrument/function pair against an approved scientific reference, record citations and keep any correction separate from the source table.",
+      "affected_ids": [
+        "COV-BIO-T2-W08-ECOLOGICAL-INSTRUMENTS",
+        "COV-BIO-T2-W08-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W08-OVERPOPULATION",
+      "kind": "CONTENT",
+      "detail": "General evaluation block 739 asks for five effects of overpopulation in a community, but Week 8 does not teach those effects.",
+      "required_action": "Author a clearly labelled supplemental lesson on effects of overpopulation using an approved Biology reference and include complete keyed practice.",
+      "affected_ids": [
+        "COV-BIO-T2-W08-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W08-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "Week 8 evaluation, revision, weekend assignment and theory questions have no answer key or marking guide. Some prompts require a worked population-study example, overpopulation teaching, and clarification of the instrument table.",
+      "required_action": "A Biology teacher should approve complete keyed responses and marking after the hydrometer pairing and missing overpopulation teaching are resolved.",
+      "affected_ids": [
+        "COV-BIO-T2-W08-ASSESSMENT"
       ],
       "blocks_delivery": true
     }
