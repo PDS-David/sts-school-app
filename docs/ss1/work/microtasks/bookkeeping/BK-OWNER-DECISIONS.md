@@ -1,121 +1,66 @@
 # Bookkeeping — consolidated owner and subject-expert decisions
 
-Status: **Decision record prepared; no owner or subject-expert decisions are presumed.**
+Status: **Updated 8 November 2026. Second-term source disposition is resolved. First-term source replacement approval and final content approval remain open.**
 
-This sheet consolidates the outstanding Bookkeeping decisions after PR #365 was merged. It is intended to prevent repeated questions and to let independent implementation continue as soon as each decision is recorded.
+## Decisions already given by the owner
 
-## What is already implemented
+1. **The second-term file was not supposed to be identical to first term.** The owner confirmed that no other original second-term resource is currently available.
+2. **Proceed without waiting for another original.** Build a project-authored reconstruction using Bookkeeping-specific references or original project-authored material. Do not represent it as the recovered original.
+3. **Subject identity is Bookkeeping.** Financial Accounting is a different subject. Financial Accounting schemes and materials are not acceptable substitutes for this package; the earlier Financial Accounting references have been withdrawn.
+4. **Do not let unavailable external resources halt implementation.** Use a close, subject-appropriate resource or create an original substitute. Do not reproduce unsupplied or unlicensed textbook material.
 
-- The three source documents are registered and preserved.
-- First-term and third-term source inventories, objective indexing, structural dispositions and preservation records are in the package.
-- Four first-term and six third-term project-authored equivalent lessons are present.
-- Third-term Week 2–10 source indexing and eight supported structural boundaries are implemented. Week 9 has no distinct source heading, so no boundary was invented.
-- Second-term preamble, marker, preservation and visual dispositions are implemented. No duplicate second-term lesson coverage has been linked.
-- Package/queue JSON, referential integrity and authored marking totals were checked statically. The automated suite, typecheck, importer/compiler execution, database and delivery checks remain deferred; no verification is claimed.
+## Work completed under those decisions
 
-## Decisions needed
+- The registered second-term file is preserved unchanged as evidence and excluded from second-term teaching because its parsed teaching bodies duplicate first term.
+- A provisional ten-week second-term Bookkeeping reconstruction plan is recorded in `BK-T2-RECONSTRUCTION-PLAN.md`.
+- Ten project-authored second-term lessons W01-W10 are integrated into `bookkeeping.json`, each with separate reconstructed coverage. They cover books of original entry, general journal, sales/purchases day books, returns books, ledger classification, posting, discounts, three-column cash book and bank reconciliation.
+- The second-term references used are explicitly Bookkeeping/Book Keeping SS1 sources. The plan records that they are comparative references with differing week orders, not the centre's missing original.
+- First-term Week 1–4 supplements have been strengthened with full cash-book layouts, worked examples, contra treatment, double-entry and ledger posting.
+- A complete independent twenty-transaction cash-book and ledger-posting exercise has been added for first-term Week 4. It does not claim to correct the source's missing answer.
+- All original source documents and defective figures remain preserved; no source document has been edited.
+- Static integrity checks recomputed the body hashes and practice mark totals for the 15 affected lessons and checked their coverage links. Automated tests, schema execution, typecheck, importer/compiler, database, device and delivery verification remain deferred and unrun.
 
-### 1. Is the registered second-term file the intended second-term teaching source?
+## One consolidated first-term delivery decision requested
 
-The second-term file's teaching body and scheme are text-identical to the first-term file; only the opening term label and a line break differ.
+The original first-term Weeks 1–4 contain material defects and missing solutions. To avoid teaching defective examples, the package now has separately labelled, fully authored replacement teaching and practice. The original source remains unchanged and its defects remain documented.
 
-Choose one:
-- **A — Yes, intentional:** confirm it is the intended second-term document, even though it repeats first-term content. The worker can index it as a second-term source, but should record the repetition transparently and avoid implying new teaching.
-- **B — No:** provide the correct second-term Bookkeeping document.
-- **C — Not confirmed:** keep second-term week indexing and duplicate-coverage linking on hold.
+**Recommended decision:** approve using the project-authored Week 1–4 supplements as the teaching versions in delivery, while retaining the original source documents for audit/history and retaining all defect notes. This does **not** mean the original figures have been corrected, does not approve any guessed replacement value, and does not mark the lessons technically verified.
 
-Recommended safe default: **C** until the source owner confirms A or supplies B.
+This approval would allow the project to mark the corresponding source-defect items nonblocking for delivery and create explicit delivery-correction links from the original source lesson identities to the project-authored replacements. If not approved, keep those source items blocking and do not present the defective source bodies as corrected.
 
-### 2. Confirm the three source-heading aliases
+### Specific boundaries preserved in the replacement lessons
 
-The package uses the canonical subject name “Bookkeeping”, while the original headings are:
+- **Week 1:** the printed single-column cash-book solutions contain wrong totals/figures and the bank example is incomplete. The replacement lesson uses an independent, balanced example; it does not guess the missing June 7 amount.
+- **Week 2:** the source's nine April transactions have no solution and use the placeholder year `19x9`. The replacement lesson uses a fully stated independent example and now defers contra entries to the formal Week 3 lesson.
+- **Week 3:** the source definition reverses the debit/credit treatment used by its own table, and its N710 transfer cannot be funded by the stated N300 cash balance. The replacement lesson teaches the standard two-direction contra treatment with new, internally consistent figures.
+- **Week 4:** the source's N20 motor-van figure is not guessed, the personal withdrawal is not treated as a contra entry, and the source's unsolved twenty-transaction list is not falsely presented as solved. A separate, independently authored twenty-transaction exercise is fully worked and posted.
+
+## External textbook assignment — handled under the owner's standing instruction
+
+The Week 4 source cites an external textbook page that was not supplied. No passage has been copied. A complete original practice replacement is present in `BK-LES-T1-W04-POSTING.md`. This follows the owner's standing instruction to self-generate a suitable resource where an external resource is unavailable. No further textbook upload is required.
+
+## Subject-heading aliases
+
+The three source documents use variant headings:
 - First term: “SUBJECT: BOOK-KEEPING” / “CLASS: SS 1”
 - Second term: “SUBJECT: BOOK-KEEPING” / “CLASS: SS 1”
 - Third term: “SS 1 OMEGA TERM BOOK- KEEPING”
 
-The contract requires owner approval for each alias. Confirm or reject each separately:
-- First-term alias: approve / reject.
-- Second-term alias: approve / reject.
-- Third-term alias: approve / reject.
+The package keeps the observed headings and canonical subject name separately. Formal alias approval remains a metadata/owner review item; it must not be confused with teacher approval of lesson content.
 
-A rejection means the package must not silently map that source to Bookkeeping; the owner must state the correct subject disposition.
+## Content approval versus technical verification
 
-### 3. First-term Week 1 — cash-book source defects and figures
+All authored lessons remain `content_approval=PENDING` and `verification=DEFERRED`. Package status remains `PENDING`. The owner must review the teaching content and record approval or requested changes. Technical verification is separate and requires actual tests, typecheck, importer/compiler, database, device and delivery checks. No approval or verification is presumed.
 
-The original source has fourteen recorded defects. The main consequential issues are:
-- Illustration 1's transaction list gives receipts of 2,155, payments of 1,055 and a closing balance of 1,100; its printed solution instead uses 2,115, 1,105 and 1,010 through incorrect figures.
-- Illustration 2 omits a cheque payment, has an unquantified June 7 cheque, repeats unrelated credit entries and prints a false equality.
-- The source shows T-accounts rather than the single-column cash-book format required by the scheme; it does not teach the columns or balancing procedure.
+## Remaining source dispositions
 
-Decision: may the teaching supplement use newly prepared, internally consistent worked examples and explicitly identify the printed source solutions as unreliable, while leaving the original document unchanged?
-
-Recommended default: **Yes.** Do not guess the missing June 7 amount; omit that transaction from any numerical reconstruction or present it as an unresolved source omission. Do not reuse the printed totals as correct.
-
-### 4. First-term Week 2 — double-column cash book
-
-The source has seven recorded defects, no solution to its nine April transactions, and no taught balancing procedure. Two transactions transfer money between cash and bank:
-- 4 April: N1,850 of capital paid into the bank.
-- 29 April: N1,000 cash paid into the bank.
-
-The scheme teaches contra entries in Week 3, after this Week 2 exercise.
-
-Decisions:
-- May the Week 2 worked solution identify and record these transfers as contra entries before the formal Week 3 lesson, or should the lesson defer those entries until Week 3?
-- Should the source placeholder year “19x9” remain visible, or should the supplement use a clearly labelled new illustrative year?
-- May the project-authored lesson replace defective wording/layout while preserving the original source verbatim?
-
-Recommended defaults: preserve the source verbatim; label all corrected teaching as project-authored; use a clearly stated illustrative year rather than pretending “19x9” is a real date. The sequencing of contra entries needs a teacher decision.
-
-### 5. First-term Week 3 — contra entry
-
-The source definition at block 113 reverses the debit/credit treatment used by its own examples. Block 112 also limits contra entries to cash paid into the bank, omitting withdrawals. One example states that N710 is paid into the bank when the stated cash balance is only N300, with no source for the difference; the other has no stated opening bank balance. Neither table is balanced or totalled.
-
-Decision: approve the standard corrected teaching rule for the supplement: a transfer between cash and bank is debited to one account/column and credited to the other; the direction depends on whether cash is banked or withdrawn. Personal drawings are not contra entries.
-
-For the two source examples, may the lesson replace them with new, internally consistent worked examples, labelled project-authored, rather than inventing missing opening balances or receipts?
-
-Recommended default: **Yes.** Preserve all printed source text and figures, explain why the examples cannot be reconciled as printed, and use newly stated opening balances in the replacement examples.
-
-### 6. First-term Week 4 — double entry and ledger posting
-
-Eleven defects are recorded. The consequential decisions are:
-- Confirm that a personal withdrawal from the bank is drawings, not a cash-to-bank contra transfer.
-- Confirm whether the “N20 motor van” figure is wrong. Do not guess a replacement amount.
-- Confirm the treatment of each cash/bank transfer row; contra rows are not posted a second time to ledger accounts.
-- Approve a corrected, clear definition and teaching rules for double entry and posting.
-- Approve an author-created ledger account format and fully worked, internally consistent replacement illustration.
-
-Recommended defaults: classify the personal withdrawal as drawings; do not invent a motor-van amount; use a new labelled example if the N20 figure cannot be verified; preserve the original list unchanged.
-
-### 7. Week 4 external textbook assignment
-
-The source cites an external textbook page that was not supplied. No text has been copied. An original project-authored substitute exercise is already present.
-
-Choose one:
-- **A — Approve** replacing the unavailable textbook assignment with the existing original practice.
-- **B — Supply** the exact textbook page/question for review and rights assessment.
-- **C — Keep** the assignment unresolved and do not deliver it.
-
-Recommended safe default: **A**, unless the exact textbook material is supplied with permission to use it.
-
-### 8. Content approval versus verification
-
-All authored equivalent lessons remain marked **content approval PENDING** and **verification DEFERRED**. Package status remains **PENDING**.
-
-After reviewing the lesson content, the owner may approve or request changes. Approval does not mean technical verification: tests, typecheck, importer/compiler, database, device and delivery checks remain separate and must be run and evidenced later under the project verification process.
-
-## Preservation and safety rules
-
-- Original source files, wording and printed figures remain unchanged.
-- No missing source value, opening balance, date, textbook content or teacher decision is invented.
-- Newly authored examples and lessons must be labelled project-authored.
-- No package is to be marked APPROVED or VERIFIED without the corresponding actual decision/evidence.
-- The remaining second-term indexing and first-term source-specific lessons must not be marked complete until their dependencies are resolved.
+- The erroneous second-term source and its repeated week/marker tasks remain quarantined as forensic evidence; they are not outstanding requests for the owner to supply a file.
+- First-term source defects remain recorded and blocking until the consolidated replacement-delivery decision above is made.
+- No source correction, missing figure, external textbook content or expert decision is invented.
 
 ## Queue references
 
-- Second-term source identity: `BOOKKEEPING-T2-TEXT-MATCHES-T1`
-- Source aliases: `BOOKKEEPING-ALIAS-APPROVAL`, `BOOKKEEPING-ALIAS-APPROVAL-T2`, `BOOKKEEPING-ALIAS-APPROVAL-T3`
-- First-term factual decisions: `BK-FACT-T1-W01-DEFECTS`, `BK-FACT-T1-W02-DEFECTS`, `BK-FACT-T1-W03-DEFECTS`, `BK-FACT-T1-W04-BRIEF`
-- External assignment: `BK-FACT-T1-W04-TEXTBOOK`
-- Package content approval: `BK-FACT-CONTENT-APPROVAL`
+- Second-term source disposition: owner-confirmed; duplicate excluded under `RULE-BK-T2-EXCLUDE-DUPLICATE`.
+- First-term source decisions: `BK-FACT-T1-W01-DEFECTS`, `BK-FACT-T1-W02-DEFECTS`, `BK-FACT-T1-W03-DEFECTS`, `BK-FACT-T1-W04-BRIEF`.
+- Package content approval: `BK-FACT-CONTENT-APPROVAL`.
+- Source-heading aliases: pending metadata owner review.
