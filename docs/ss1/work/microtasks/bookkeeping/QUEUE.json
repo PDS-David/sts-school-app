@@ -38,16 +38,17 @@
     "On work/bookkeeping-followup: BK-INV-T3 completed from user-supplied original DOCX. Member SHA-256 343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d exactly matches manifest/package source SS1-SRC-97f226215927. Inventory at BK-INV-T3.md: 499 content blocks, scheme weeks 1–12, no body WEEK labels, four continuous unlabelled topic sections, 67 VML objects, no native tables/media/OLE/equations. Added 19 PENDING tasks for preamble, markers, Weeks 2–10 indexing, worked/currency preservation and five visual dispositions. No lesson, coverage or source rule added; parser/tests remain deferred.",
     "On work/bookkeeping-followup: BK-PRE-T3, BK-MARK-T3-REVISION and BK-MARK-T3-EXAM completed. Preamble mapping is recorded; exact Week 1/11 revision and Week 12 exam markers are classified SCHEME_ONLY with MARKER coverage targeting their respective rule IDs. No revision/exam content invented; tests/importer remain deferred.",
     "On work/bookkeeping-followup: completed objective-level indexing for scheme Weeks 2–10. Added 24 third-term PARTIAL/UNRESOLVED coverage entries with empty lesson targets (no false claims of authored teaching). Appended six bounded original-lesson tasks for missing scheme objectives and three worked-material arithmetic review tasks. Week body segmentation remains unverified because the DOCX contains no explicit WEEK markers.",
-    "On work/bookkeeping-followup: completed third-term worked-material and currency preservation plus five visual dispositions. Recorded the petty-cash layout, trial-balance list/diagram, cash and ledger accounts, journal/suspense account, and balance-sheet format. Arithmetic discrepancies and the 1983/1883 date conflict remain explicit; no original figures changed."
+    "On work/bookkeeping-followup: completed third-term worked-material and currency preservation plus five visual dispositions. Recorded the petty-cash layout, trial-balance list/diagram, cash and ledger accounts, journal/suspense account, and balance-sheet format. Arithmetic discrepancies and the 1983/1883 date conflict remain explicit; no original figures changed.",
+    "On work/bookkeeping-followup: completed petty-cash, Mr Odili trial-balance and Fashola suspense arithmetic reviews. Added eight source-scoped split_before rules for body sections corresponding to Weeks 2–8 and 10; Week 9 has no distinct body heading and remains in combined final-accounts material. Static test drafted; parser/compiler execution remains deferred."
   ],
   "counts": {
-    "PENDING": 28,
-    "IMPLEMENTED_TESTING_DEFERRED": 39,
+    "PENDING": 25,
+    "IMPLEMENTED_TESTING_DEFERRED": 43,
     "BLOCKED": 6
   },
   "status_counts": {
-    "PENDING": 28,
-    "IMPLEMENTED_TESTING_DEFERRED": 39,
+    "PENDING": 25,
+    "IMPLEMENTED_TESTING_DEFERRED": 43,
     "BLOCKED": 6
   },
   "items": [
@@ -2730,12 +2731,12 @@
           "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
         }
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-CHECK-T3-W02-PETTY-CASH",
       "kind": "SOURCE_PRESERVATION",
       "week_or_locator": "Petty cash illustration blocks 62–81",
       "objective": "Reconstruct and check every receipt, payment, expense-analysis total, cash balance and reimbursement in the petty cash book. Preserve the source version and record any corrected arithmetic only in a separate clearly labelled correction note.",
-      "implementation_reference": "BK-INV-T3 petty-cash section blocks 62–81.",
+      "implementation_reference": "BK-INV-T3 petty-cash section blocks 62–81.; arithmetic review recorded in BK-CHECK-T3-W02-PETTY-CASH.md; original source values unchanged.",
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
         "docs/ss1/work/microtasks/bookkeeping/BK-CHECK-T3-W02-PETTY-CASH.md"
@@ -2765,12 +2766,12 @@
           "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
         }
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-CHECK-T3-W03-TB",
       "kind": "SOURCE_PRESERVATION",
       "week_or_locator": "Mr Odili illustration blocks 180–254",
       "objective": "Reconcile the five source transactions to the cash account, individual ledger balances and printed trial balance. Record the correct debit/credit classification and totals in a separate correction note; do not alter source figures or imply the source answer reconciles.",
-      "implementation_reference": "BK-INV-T3 blocks 180–254; source trial-balance totals at blocks 251–253.",
+      "implementation_reference": "BK-INV-T3 blocks 180–254; source trial-balance totals at blocks 251–253.; arithmetic review recorded in BK-CHECK-T3-W03-TB.md; original source values unchanged.",
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
         "docs/ss1/work/microtasks/bookkeeping/BK-CHECK-T3-W03-TB.md"
@@ -2801,12 +2802,12 @@
           "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
         }
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-CHECK-T3-W06-SUSPENSE",
       "kind": "SOURCE_PRESERVATION",
       "week_or_locator": "Fashola Ltd suspense-account illustration blocks 332–388",
       "objective": "Recalculate the seven listed errors, every journal correction and the suspense-account debit/credit totals. Identify any source-side direction or arithmetic errors, but preserve the printed solution and place any corrected treatment in a separate labelled correction note.",
-      "implementation_reference": "BK-INV-T3 blocks 332–388; printed suspense totals at blocks 381–386.",
+      "implementation_reference": "BK-INV-T3 blocks 332–388; printed suspense totals at blocks 381–386.; arithmetic review recorded in BK-CHECK-T3-W06-SUSPENSE.md; original source values unchanged.",
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
         "docs/ss1/work/microtasks/bookkeeping/BK-CHECK-T3-W06-SUSPENSE.md"
@@ -2815,6 +2816,50 @@
         "BK-PRES-T3-WORKED",
         "BK-WK-T3-W06"
       ]
+    },
+    {
+      "id": "BK-RULE-T3-SEGMENTATION",
+      "kind": "SOURCE_RULE_DISPOSITION",
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "week_or_locator": "Body headings at blocks 44, 85, 151, 261, 308, 394, 418 and 426",
+      "objective": "Create source-scoped split_before rules only where an exact unique body heading supports a scheme-week boundary. Preserve the combined final-account definitions and do not invent a Week 9 body heading. Record the unverified parser boundary.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-RULE-T3-SEGMENTATION.md"
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3",
+        "BK-WK-T3-W02",
+        "BK-WK-T3-W03",
+        "BK-WK-T3-W04",
+        "BK-WK-T3-W05",
+        "BK-WK-T3-W06",
+        "BK-WK-T3-W07",
+        "BK-WK-T3-W08",
+        "BK-WK-T3-W10"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Eight split_before rules RULE-BK-T3-W02 through RULE-BK-T3-W08 and RULE-BK-T3-W10 added to bookkeeping.json. Week 9 remains in combined final-account definitions/steps; no fabricated split. Evidence in BK-RULE-T3-SEGMENTATION.md.",
+      "completion_condition": "Exact unique source anchors and numeric week labels are recorded; no source text is deleted; Week 9 is not given an unsupported boundary. Importer/compiler verification remains deferred."
     }
   ],
   "review": {
@@ -2835,9 +2880,6 @@
     "BK-LES-T3-W08-PREP",
     "BK-LES-T3-W09-PNL",
     "BK-LES-T3-W10-USERS",
-    "BK-LES-T3-W10-BALANCE-SHEET",
-    "BK-CHECK-T3-W02-PETTY-CASH",
-    "BK-CHECK-T3-W03-TB",
-    "BK-CHECK-T3-W06-SUSPENSE"
+    "BK-LES-T3-W10-BALANCE-SHEET"
   ]
 }
