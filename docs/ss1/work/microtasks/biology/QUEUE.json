@@ -25,23 +25,24 @@
     "BIO-INV-T2 (2026-10-30) inventoried the 2nd Term original (read from a LibreOffice conversion of the .doc) and appended the preamble, marker, week-indexing and visual items; the 3rd Term inventory remains unread. No lesson, coverage entry, rule, correction or asset was written.",
     "BIO-WK-T1-W06 (2026-11-03) indexed Week 6 at objective level: carbon and water cycles taught in blocks 781-825; sulphur named at 783 but never taught; assignment at 826-833 is Week 7 food-substance and enzyme material. Two bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written.",
     "BIO-WK-T1-W01 (2026-11-05) indexed Week 1 at objective level: Biology and inquiry taught at blocks 15-40 (six PARTIAL entries); the scheme's Week 1 objective 'Recognizing Living things' has no teaching in 13-41 while the matching teaching sits at 45-87 inside Week 2's range; the process steps named at 27 are defined nowhere; the term's first assignment (122-132) is combined with Week 2 and tests none of Week 1's teaching, with question 1 needing Week 3's ranks. Two bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written.",
-    "BIO-WK-T1-W02 (2026-11-06) indexed Week 2 at objective level: scheme entry 2 and the plant/animal differences SUPPORTED against the reproduced generic parsed-row id; the microscope diagram is not carried (PARTIAL) and the combined assignment is unkeyed with two questions resting on unstated facts (UNRESOLVED). The generic parse reproduced outside the importer gives 28 rows, including a separate WEEK ONE AND TWO assignment row and ten scheme-line rows. One BLOCKED expert-decision item was appended. No source byte, rule, correction, asset or shared file was written."
+    "BIO-WK-T1-W02 (2026-11-06) indexed Week 2 at objective level: scheme entry 2 and the plant/animal differences SUPPORTED against the reproduced generic parsed-row id; the microscope diagram is not carried (PARTIAL) and the combined assignment is unkeyed with two questions resting on unstated facts (UNRESOLVED). The generic parse reproduced outside the importer gives 28 rows, including a separate WEEK ONE AND TWO assignment row and ten scheme-line rows. One BLOCKED expert-decision item was appended. No source byte, rule, correction, asset or shared file was written.",
+    "BIO-INV-T3 (2026-11-08) inventoried the 3rd Term original (native .docx) and appended the preamble, seven week-indexing, eleven visual and one header/footer disposition items. Section labels are out of order and two disagree with their scheme position (WEEK SEVEN at the STI topic, WEEK THREE at the last topic); rows 6 and 7 share one section; no scheme revision or examination row exists. No lesson, coverage entry, rule, correction or asset was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
     "FACTUAL_DEPENDENCY": 4,
-    "SOURCE_PREAMBLE_INDEXING": 2,
-    "SOURCE_WEEK_INDEXING": 20,
+    "SOURCE_PREAMBLE_INDEXING": 3,
+    "SOURCE_WEEK_INDEXING": 27,
     "SOURCE_SECTION_INDEXING": 2,
-    "VISUAL_DISPOSITION": 24,
+    "VISUAL_DISPOSITION": 36,
     "SOURCE_MARKER_DISPOSITION": 1,
     "LESSON": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 8,
-    "PENDING": 52,
+    "IMPLEMENTED_TESTING_DEFERRED": 9,
+    "PENDING": 71,
     "BLOCKED": 4
   },
   "items": [
@@ -248,8 +249,8 @@
       "depends_on": [
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence (SS1-03 evidence covers other subjects). Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-08 (A2, base 9971e56): inventoried the 3rd Term original (native .docx, archive and member hashes verified; blocks 0-801, block 802 is w:sectPr). Seven labelled sections for eight scheme topics (labels out of order: ONE, TWO, SEVEN, FOUR, FIVE, SIX& SEVEN, THREE; two labels disagree with their scheme position, and rows 6 and 7 share one section). 20 PENDING items appended (preamble, seven week-indexing, eleven visual, one header/footer disposition). No scheme revision or examination row, so no marker item. Record: docs/ss1/work/microtasks/biology/BIO-INV-T3.md. Still open: all appended items, BIOLOGY-ALIAS-APPROVAL-T3 (owner), health, pesticide, history and rights statements for later correction work, and parser behaviour on the label order (importer not run). Not approved, not verified.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -2446,6 +2447,766 @@
       "status": "BLOCKED",
       "implementation_reference": "Not decided. Required by BIO-WK-T1-W02 (2026-11-06): BIOLOGY-T1-W02-SOURCE-DEFECTS is open and no expert reference is recorded and none may be invented. BIO-WK-T1-W02 supplies no corrected wording.",
       "completion_condition": "Every numbered item has a named expert decision recorded with evidence and locators; any delivery replacement the expert wants becomes its own bounded lesson item; no correction is invented and no lesson is authored here."
+    },
+    {
+      "id": "BIO-PRE-T3",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 0-24 (range sha256 2a9906ba5a26582ec0545cd973ba0d2179e209b6abb61a4759099223a122b874)",
+      "objective": "Inventory all 3rd Term text outside the labelled week bodies and map or classify each block: 'THIRD TERM E-LEARNING NOTE' (0), SUBJECT/CLASS line (1), 'SCHEME OF WORK' (2), scheme header (4) and eight rows (5-12), REFERENCES (14-22: eight lines) and blank blocks. Per-week scheme objectives belong to the BIO-WK-T3 items; the scheme has no revision or examination row.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-PRE-T3.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3): blocks 0-24, range sha256 2a9906ba5a26582ec0545cd973ba0d2179e209b6abb61a4759099223a122b874. Scheme rows are unnumbered in the text (week numbers implicit, inferred): 5 Micro-Organisms Around Us and the Concept of Culturing; 6 Micro-Organisms in Action; 7 Sexually Transmitted Infections (STI); 8 Towards BetterHealth; 9 Relevance of Biology to Agriculture; 10 Pests and Diseases of Plants; 11 Pests and Diseases of Animals; 12 Food Storage and Production. Scheme blocks 10 and 11 (rows 6 and 7 of the scheme) share the single section labelled 'WEEK SIX& SEVEN'. References (blocks 15-22) are eight titles including 'Biology practical text' (22); they are citations, not reuse permission. The page header carries a third-party tutor letterhead and the footer text 'MR OSHO'; neither is teaching. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Every block in the range mapped or classified with its locator; scheme week numbers not read from text are marked inferred; nothing invented."
+    },
+    {
+      "id": "BIO-WK-T3-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 1 (scheme row 1; label 'WEEK ONE') (blocks 25-109; range sha256 68cdbeec7e7e1e84882216467bc5c4aaf8964defb7abb1940c18f8f2f00350a2)",
+      "objective": "Index 3rd Term 'WEEK ONE                          DATE: ……………………………' at objective level: list each scheme objective for the section (1 Micro-Organisms Around Us and the Concept of Culturing), bind it to exact source blocks (locators from BIO-INV-T3) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 25-109. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent doses, reagents, procedures or medical claims; health statements, pesticide names and concentrations and regional facts in the source need authoritative primary sources in later correction work, and the source's own wording must stay distinct from current fact. Record the section label exactly as written even where it disagrees with the scheme position.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W01.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3): label block 25 text \"WEEK ONE                          DATE: ……………………………\" (sha256 95035b774fa79cba584a3293bfc6dcb0df22dc8e14bf9b934f8172bff079eb35); blocks 25-109; range sha256 68cdbeec7e7e1e84882216467bc5c4aaf8964defb7abb1940c18f8f2f00350a2. Topic MICRO-ORGANISMS AROUND US (27); content list 29-33; description and groups (35-55: bacteria 41-49, viruses 50-51, protists 52), shapes of bacteria figure (55-56), culturing (62-66: agar at 66), identification (71-77; petri-dish sterilising 73), carriers (82-85; vector table block 84), General Evaluation (91), Weekend Assignment (97-102, theory 103). Block 73 gives no temperature or time; no procedure with quantities exists. Heading 'DESCRIPTION AND GROUS OF MICROORGANISMS' (35) keeps its source spelling. History statement at 38 (Leeuwenhoek, 1632-1723) needs checking in correction work. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-WK-T3-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2 (scheme row 2; label 'WEEK TWO') (blocks 110-174; range sha256 7c5e4bfd7c750a8ebd47065d4c3fd2720d0ee4f4a8163aba15791e71f7ef761e)",
+      "objective": "Index 3rd Term 'WEEK TWO                                  DATE: ……………………………' at objective level: list each scheme objective for the section (2 Micro-Organisms in Action), bind it to exact source blocks (locators from BIO-INV-T3) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 110-174. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent doses, reagents, procedures or medical claims; health statements, pesticide names and concentrations and regional facts in the source need authoritative primary sources in later correction work, and the source's own wording must stay distinct from current fact. Record the section label exactly as written even where it disagrees with the scheme position.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W02.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3): label block 110 text \"                                                          WEEK TWO                                  DATE: ……………………………\" (sha256 76f11e6f549d493bb970870a93138143bdb2c49cbec52c22a1c2563aec98d58d); blocks 110-174; range sha256 7c5e4bfd7c750a8ebd47065d4c3fd2720d0ee4f4a8163aba15791e71f7ef761e. Topic MICRO-ORGANISMS IN ACTION (112); growth of micro-organisms (119-124: generation time and growth phases at 120), beneficial (129-139) and harmful (140-143) effects, diseases caused by micro-organisms (149-152; disease table block 151 with eight external hyperlinks), General Evaluation (156), Weekend Assignment (165-170, theory 171). Health statements in the disease table need authoritative checking. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-WK-T3-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 3 position (scheme row 3; label 'WEEK SEVEN') (blocks 175-215; range sha256 3e25575a5318d1b1efb11d9e15e9a689b9e1a7de2209728bd1b6b9c4fb7138cd)",
+      "objective": "Index 3rd Term '                                                       WEEK SEVEN                              DATE ……………………………….' at objective level: list each scheme objective for the section (3 Sexually Transmitted Infections (STI)), bind it to exact source blocks (locators from BIO-INV-T3) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 175-215. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent doses, reagents, procedures or medical claims; health statements, pesticide names and concentrations and regional facts in the source need authoritative primary sources in later correction work, and the source's own wording must stay distinct from current fact. Record the section label exactly as written even where it disagrees with the scheme position.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W03.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3): label block 175 text \"                                                       WEEK SEVEN                              DATE ……………………………….\" (sha256 e43a5742583e8a8ba386bade0de387b049a94a50485144d8443fbc82e136ed11); blocks 175-215; range sha256 3e25575a5318d1b1efb11d9e15e9a689b9e1a7de2209728bd1b6b9c4fb7138cd. Label says SEVEN but the topic SEXUALLY TRANSMITTED INFECTIONS (177) is scheme row 3, and the label SEVEN also appears in block 474. Content: definition, mode of transmission, symptoms, prevention and control; STI table (block 183; gonorrhoea, syphilis, AIDS, genital warts); HIV and AIDS (185-187, mode of transmission 188-194), Evaluation (196), GENERALEVALUATION/REVISIONAL QUESTIONS (199), Weekend Assignment (206-211, theory 212-214). HIV is named 'Acquired immune deficiency virus' at 186 and 'Human immune – deficiency virus (HIV)' in table 183. Health statements need authoritative checking in correction work; do not extend or soften them. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-WK-T3-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4 (scheme row 4; label 'WEEK FOUR') (blocks 216-326; range sha256 40674987f567df1a082f175d4af63e68ec164781c64998a8f91235a2bbf06e80)",
+      "objective": "Index 3rd Term '                                                 WEEK FOUR                             DATE ……………………' at objective level: list each scheme objective for the section (4 Towards BetterHealth), bind it to exact source blocks (locators from BIO-INV-T3) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 216-326. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent doses, reagents, procedures or medical claims; health statements, pesticide names and concentrations and regional facts in the source need authoritative primary sources in later correction work, and the source's own wording must stay distinct from current fact. Record the section label exactly as written even where it disagrees with the scheme position.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W04.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3): label block 216 text \"                                                 WEEK FOUR                             DATE …………………………\" (sha256 c9fad62e4fc82300a6da196d52f9c65bd950f3027a4c048c9d904b11a9f9d933); blocks 216-326; range sha256 40674987f567df1a082f175d4af63e68ec164781c64998a8f91235a2bbf06e80. Topic TOWARDS BETTER HEALTH (218); control of harmful micro-organisms (225-236: antibiotics and antiseptics named at 229-230), vectors and ways of controlling them (241-258: mosquitoes 243, houseflies 252), maintenance of good health (263-268), roles of health organisations (273-303: WHO 279-287, UNICEF 288-294, International Red Cross 295-301, UNESCO 302-303), General Evaluation (308), Weekend Assignment (315-320, theory 321-325). Block 280 says WHO was established in 1964 and became operational in 1948 (internally inconsistent). Headings 'EVALUTION' (237) and 'MAINTAINANCE' (263) keep source spelling. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-WK-T3-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 5 (scheme row 5; label 'WEEK FIVE') (blocks 327-473; range sha256 104006510a30c7891efa6cefce8563c2c5741bdc91c51e5f5f5dc737f1b6873f)",
+      "objective": "Index 3rd Term '                     WEEK FIVE         DATE …………………………………' at objective level: list each scheme objective for the section (5 Relevance of Biology to Agriculture), bind it to exact source blocks (locators from BIO-INV-T3) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 327-473. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent doses, reagents, procedures or medical claims; health statements, pesticide names and concentrations and regional facts in the source need authoritative primary sources in later correction work, and the source's own wording must stay distinct from current fact. Record the section label exactly as written even where it disagrees with the scheme position.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W05.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3): label block 327 text \"                     WEEK FIVE         DATE …………………………………\" (sha256 90f6fe7477e2fc785f6ed6babdf240ad6cea2cf7d35e4e48fef447c755a3295d); blocks 327-473; range sha256 104006510a30c7891efa6cefce8563c2c5741bdc91c51e5f5f5dc737f1b6873f. Topic RELEVANCE OF BIOLOGY TO AGRICULTURE (328); classification of plants (337-358: botanical classification 343, shape-drawing chart blocks 350-355 with letters A-I defined at 345-348 and keyed at 358), agricultural classification (363-380: beverage and drug plants 379), classification by life cycle and size (385-397), effects of agricultural activities on the ecological system (398-445: fertilizer 432, pesticides and herbicides 440-445), General Evaluation (449), Weekend Assignment (456-461, theory 462-472). Pesticide and fertilizer statements need authoritative checking. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-WK-T3-W06-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Weeks 6-7 combined (scheme rows 6 and 7; label 'WEEK SIX& SEVEN', no DATE field) (blocks 474-668; range sha256 7bac1633f75a0650a074e59d61e47c14f6d4e4ce76bc22f5c2c63e299264fc1d)",
+      "objective": "Index 3rd Term 'WEEK SIX& SEVEN' at objective level: list each scheme objective for the section (6 Pests and Diseases of Plants and 7 Pests and Diseases of Animals), bind it to exact source blocks (locators from BIO-INV-T3) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 474-668. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent doses, reagents, procedures or medical claims; health statements, pesticide names and concentrations and regional facts in the source need authoritative primary sources in later correction work, and the source's own wording must stay distinct from current fact. Record the section label exactly as written even where it disagrees with the scheme position.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W06-W07.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3): label block 474 text \"WEEK SIX& SEVEN\" (sha256 8c37b1a31117541cb5c6ff0f2bf356b03f859edb820de4b7a003e9af74b88ce2); blocks 474-668; range sha256 7bac1633f75a0650a074e59d61e47c14f6d4e4ce76bc22f5c2c63e299264fc1d. One section covers two scheme rows. Topic PEST AND DISEASES OF CROPS AND LIVESTOCK (475); definition and types of pest (490-494), groups of insect crop pests (495-506), life cycles of selected pests (507-578: grasshopper 508-524 with figure at 515, cassava mealybug 529-553 with figure at 545, bean weevil 554-560, cocoa capsid 561-570, yam beetle 571-578; control with 0.1% ultracide at 538), pest summary table (584), livestock pests and parasites (591-596; table 595), economic importance (597-605), diseases (610-627: crop-disease table 614, livestock-disease table 621), general effects (628-636), general control (637-642), General Evaluation (643), Weekend Assignment (652-660, theory 661-667). Scheme blocks 10 and 11 (rows 6 and 7) must each get their own objective entries. Pesticide names and concentrations in 538 and 584 need authoritative checking. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-WK-T3-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 8 position (scheme row 8; label 'WEEK THREE') (blocks 669-801; range sha256 b72e95dd984d339182364ed02c5ec739cc9db1bce9cd30c048158ad88a940491)",
+      "objective": "Index 3rd Term 'WEEK THREE                     DATE ………….              ' at objective level: list each scheme objective for the section (8 Food Storage and Production), bind it to exact source blocks (locators from BIO-INV-T3) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 669-801. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent doses, reagents, procedures or medical claims; health statements, pesticide names and concentrations and regional facts in the source need authoritative primary sources in later correction work, and the source's own wording must stay distinct from current fact. Record the section label exactly as written even where it disagrees with the scheme position.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W08.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3): label block 669 text \"WEEK THREE                     DATE ………….              \" (sha256 e791c34f727e46a2b601cf2875bfca87b52f862637654cb7b21421d66efc6976); blocks 669-801; range sha256 b72e95dd984d339182364ed02c5ec739cc9db1bce9cd30c048158ad88a940491. Label says THREE but the topic FOOD PRODUCTION AND STORAGE (672) is scheme row 8 (the last section). Content: introduction (684), role of government (690-702), environmental factors (703-709), ways of improving food production (710-721), effects of food shortage on population size (722-730), methods of food preservation (735-768: smoking 746, pasteurisation at 72 degrees C for about 10 minutes at 755, 'harmless chemicals' at 761-762), effects of food storage on population (769-774), evaluation items (731, 748, 764, 775), reading assignment (782), Weekend Assignment (783-793, theory 794-797). There is no General Evaluation heading. Blocks 798-801 are empty. Food-science statements need authoritative checking. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-VIS-T3-TBL-VECTORS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 1 (blocks 82-86) table, block 84 (5 x 3 rows x columns; block text sha256 41b3dd72df3e9f92f0505586554f78cb7cd5de26a9842043b4da31eddc74a4a0)",
+      "objective": "Record a disposition for the vectors and carriers table in Week 1 (vector or carrier, micro-organism, disease caused): whether it survives plain-text extraction as readable rows (the extracted block text concatenates cells with no separators), and whether a supplement must restate it as rows. The disease and vector pairings are health statements: flag them for authoritative-source checking in correction work (source spelling 'Vibro cholera' kept). Keep source wording; do not alter or extend it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T3-TBL-VECTORS.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3): block 84 is a w:tbl of 5 x 3 (columns: Vector or Carrier; Micro-organisms; Disease caused). Extractor output was not generated (importer deferred). Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BIO-VIS-T3-TBL-DISEASES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2 (blocks 149-152) table, block 151 (21 x 5 rows x columns; block text sha256 781a2ddb44d6167e3e2956d4c26ba46fdb5a267edf56387cc17b5d4fdc179f5c)",
+      "objective": "Record a disposition for the diseases table in Week 2 (disease, causative agent, symptoms, transmission, control): whether it survives plain-text extraction as readable rows (the extracted block text concatenates cells with no separators), and whether a supplement must restate it as rows. The symptoms, transmission routes and controls are health statements: flag them for authoritative-source checking and record the hyperlinks as found without treating them as verified sources. Keep source wording; do not alter or extend it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T3-TBL-DISEASES.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3): block 151 is a w:tbl of 21 x 5 (columns: DISEASE; CAUSATIVE AGENT; SYMPTOMS; TRANSMISSION; CONTROL; 20 diseases from Chickenpox to Malaria. Eight cells carry external hyperlinks (one nhlbi.nih.gov cough page and seven health.nytimes.com symptom pages, not opened)). Extractor output was not generated (importer deferred). Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BIO-VIS-T3-TBL-STI",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "STI section labelled 'WEEK SEVEN' table, block 183 (5 x 4 rows x columns; block text sha256 0582a55b1abc45343de967bc1fe916bb0744cd94bafbb144af7a54b350de8c44)",
+      "objective": "Record a disposition for the sexually transmitted infections table in the STI section (disease, causative organism, symptoms, prevention/control): whether it survives plain-text extraction as readable rows (the extracted block text concatenates cells with no separators), and whether a supplement must restate it as rows. The symptoms, prevention statements and the vaccine age range are health statements: flag them for authoritative-source checking; do not alter or extend them. Keep source wording; do not alter or extend it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T3-TBL-STI.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3): block 183 is a w:tbl of 5 x 4 (columns: DISEASE; CAUSATIVE ORGANISM; SYMPTOMS; PREVENTION/CONTROL; rows gonorrhoea, syphilis, AIDS, genital warts). Extractor output was not generated (importer deferred). Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BIO-VIS-T3-TBL-CROP-PESTS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Weeks 6-7 table, block 584 (9 x 3 rows x columns; block text sha256 4adf3ba8954ae272ca10341350945c30f7fc9cbf8aca4af25a679628c9cf9d18)",
+      "objective": "Record a disposition for the crop pests summary table in Weeks 6-7 (pest, effects, control): whether it survives plain-text extraction as readable rows (the extracted block text concatenates cells with no separators), and whether a supplement must restate it as rows. The control column names pesticides and a 0.1% rogor concentration (gammalin 20, aldrin, kokotine, rogor): flag for authoritative-source checking; do not alter, extend or add doses. Keep source wording; do not alter or extend it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T3-TBL-CROP-PESTS.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3): block 584 is a w:tbl of 9 x 3 (columns: PESTS; EFFECTS; CONTROL; eight pest rows from grasshopper to birds). Extractor output was not generated (importer deferred). Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BIO-VIS-T3-TBL-LIVESTOCK-PARASITES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Weeks 6-7 table, block 595 (6 x 4 rows x columns; block text sha256 639490ecce6becdc9d9e039a4c17f021671dee7214360513fd6947c97e557e9a)",
+      "objective": "Record a disposition for the livestock pests and parasites table in Weeks 6-7 (parasite, host, effects/economic importance, control): whether it survives plain-text extraction as readable rows (the extracted block text concatenates cells with no separators), and whether a supplement must restate it as rows. The control column (insecticides, copper sulphate for pools) is a chemical and animal-health statement: flag for authoritative-source checking; the liver fluke row has an empty host cell in the extracted text. Keep source wording; do not alter or extend it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T3-TBL-LIVESTOCK-PARASITES.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3): block 595 is a w:tbl of 6 x 4 (columns: PARASITE; HOST; EFFECTS/ECONOMIC IMPORTANCE; CONTROL; ticks, liver fluke, round worm, lice, tse-tse fly). Extractor output was not generated (importer deferred). Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BIO-VIS-T3-TBL-CROP-DISEASES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Weeks 6-7 table, block 614 (8 x 4 rows x columns; block text sha256 8efb2438f9684f936134d0f44f641d131c6daae06fd49d932e512ff41f171092)",
+      "objective": "Record a disposition for the crop diseases table in Weeks 6-7 (disease, causative organisms, symptoms, control): whether it survives plain-text extraction as readable rows (the extracted block text concatenates cells with no separators), and whether a supplement must restate it as rows. The control statements (fungicides, burning infected plants) need authoritative-source checking; the source spelling 'Phytophytorapalmivora' is kept. Keep source wording; do not alter or extend it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T3-TBL-CROP-DISEASES.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3): block 614 is a w:tbl of 8 x 4 (columns: NAME OF DISEASE; CAUSATIVE ORGANISMS; SYMPTOMS; CONTROL; seven crop diseases from maize rust to cocoa swollen shoot). Extractor output was not generated (importer deferred). Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BIO-VIS-T3-TBL-LIVESTOCK-DISEASES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Weeks 6-7 table, block 621 (6 x 4 rows x columns; block text sha256 7da8b2be37d612d45533d879fe022efab04c03e0b1859864b39144a67bd31b1f)",
+      "objective": "Record a disposition for the livestock diseases table in Weeks 6-7 (disease, causative organisms, symptoms, control): whether it survives plain-text extraction as readable rows (the extracted block text concatenates cells with no separators), and whether a supplement must restate it as rows. The symptoms and vaccination or immunisation statements are animal-health statements: flag for authoritative-source checking. Keep source wording; do not alter or extend it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T3-TBL-LIVESTOCK-DISEASES.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3): block 621 is a w:tbl of 6 x 4 (columns: NAME OF DISEASE; CAUSATIVE ORGANISMS; SYMPTOMS; CONTROL; five diseases from new castle disease to trypanosomiasis). Extractor output was not generated (importer deferred). Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BIO-VIS-T3-FIG-BACTERIA-SHAPES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 1 drawing, block 55 (media/image1.png, 649x599, sha256 3150bccfa985db5e26f851cec90b8d66b442a1db104c514d70c342f697d613ba) above heading block 56",
+      "objective": "Record a disposition for the diagram at block 55 (shapes of bacteria): preserve it as a figure with its labels (a supplement, a described figure or an asset item), and record that it is absent from extracted text. Do not alter the source figure; reproduce only labels that appear in it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T3-FIG-BACTERIA-SHAPES.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3), viewed directly: block 55 holds an inline w:drawing of media/image1.png (649x599, sha256 3150bccfa985db5e26f851cec90b8d66b442a1db104c514d70c342f697d613ba), a labelled chart of bacterial forms in four panels: Cocci (coccus, diplococci, diplococci encapsulated Pneumococcus, Staphylococci, streptococci, sarcina, tetrad), Bacilli (coccobacillus, bacillus, diplobacilli, palisades, Streptobacilli), Budding and appendaged bacteria (hypha, stalk) and Others (enlarged rod Fusobacterium, Vibrio, Comma's form Bdellovibrio, Club Rod Corynebacteriaceae, Helical form Helicobacter pylori, Corkscrew's form Borrelia burgdorferi, Filamentous, spirochete). The block has no text, so plain-text extraction loses it; its origin and rights are not stated in the document. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BIO-VIS-T3-FIG-GRASSHOPPER",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Weeks 6-7 drawing, block 515 (media/image2.jpeg, 350x453, sha256 8b1970555ff8d7ed75bdbe95d7bc39f0579be458cc75e48f83cf5782648f5e56)",
+      "objective": "Record a disposition for the grasshopper life-cycle figure at block 515: preserve it as a figure with its labels (a supplement, a described figure or an asset item), record that it is absent from extracted text, and record that the picture carries a visible third-party copyright line. Do not alter the source figure; do not decide rights; reproduce only labels that appear in it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T3-FIG-GRASSHOPPER.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3), viewed directly: block 515 holds an anchored w:drawing of media/image2.jpeg (350x453, sha256 8b1970555ff8d7ed75bdbe95d7bc39f0579be458cc75e48f83cf5782648f5e56) with the text 'LIFE CYCLE OF A GRASSHOPPER' in the block; the image shows a green cycle with the labels Adult, Eggs, Molt and the title Life Cycle of a Grasshopper, and a footer with a copyright notice and website address of a worksheet publisher. Whether the block text duplicates the title in the picture is not recorded. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BIO-VIS-T3-FIG-MEALYBUG",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Weeks 6-7 drawing, block 545 (media/image3.jpeg, 300x240, sha256 b8be588c24d7a7161e74842ac3c3ea7de776c5f688b3bb34704ed9ff3bf81fdd)",
+      "objective": "Record a disposition for the mealybug life-cycle figure at block 545 (heading block 543 'The Life Cycle of Cassava Mealy bug'): preserve it as a figure with its labels (a supplement, a described figure or an asset item) and record that it is absent from extracted text. Do not alter the source figure or its spellings; reproduce only labels that appear in it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T3-FIG-MEALYBUG.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3), viewed directly: block 545 holds an anchored w:drawing of media/image3.jpeg (300x240, sha256 b8be588c24d7a7161e74842ac3c3ea7de776c5f688b3bb34704ed9ff3bf81fdd): a cycle titled 'Mealybugs life cycle' with photos labelled Egg, 'Instar symphs 1', two further 'Instar nymphs' labels without a number, 'Instar nymphs 3', 'imago out from pupa' and 'Imago' (source spellings kept). The block has no text, so plain-text extraction loses it. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BIO-VIS-T3-SHP-PLANT-CLASS-CHART",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 5 shape drawing, blocks 350-355 (nine VML shapes lettered A-I; range sha256 050aad2b5ea0d4374eeb6aa0680c2bef70bffa9ee0b8316ee745bdeea0ac852f); letters defined in blocks 345-348, heading block 357, key block 358",
+      "objective": "Record a disposition for the plant-classification chart built from shape drawings at blocks 350-355: whether its structure (which letters connect to which) survives plain-text extraction or must be restated, using the definitions at blocks 345-348 and the key at block 358. Do not infer connections that a fresh private render does not show; do not alter the source wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T3-SHP-PLANT-CLASS-CHART.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3): blocks 350-355 contain nine VML shapes and only stray letters in the extracted text (A, B, D, F, H, C, E, G, I with the word 'Plants'); the lines or arrows between them are not text. Blocks 345-348 define the letters (Thallophytes A, Bryophytes B, Tracheophytes C, pteridophytes D, spermatophytes E, gymnosperms F, angiosperms G, dicot H, Monocot I) and block 358 reads 'A & B are non- vascular plants, C refers to vascular plants. D refers to non-flowering plants; E refers to seed plants while G refers to flowering plants proper.' Block 348 also defines dicot (H) and Monocot (I) as the subdivisions of the angiosperms. A fresh render was not made by this inventory. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BIO-VIS-T3-HDR-BRANDING",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Page header and footer: word/header1.xml with media/image4.jpeg (949x359, sha256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14) and word/footer1.xml text 'MR OSHO'",
+      "objective": "Record a disposition for the page header graphic and footer text: confirm they are page furniture and not source teaching, that they never enter a lesson or supplement, and that the personal phone number and email address they show are not carried into any package or note. Do not decide rights or the author's identity.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx",
+          "member_sha256": "1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T3-HDR-BRANDING.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T3",
+        "BIO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T3), viewed directly: header1.xml holds one picture, media/image4.jpeg (949x359, sha256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14), a tutor business letterhead (a name, a tutoring tag line, professional descriptions, a phone number, an email address and a slogan) and footer1.xml reads 'MR OSHO'. Neither appears in the body blocks and neither is teaching content. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     }
   ],
   "review": {
@@ -2461,7 +3222,7 @@
     }
   },
   "next_runnable": [
-    "BIO-INV-T3",
+    "BIO-TEST-PACKAGE",
     "BIO-PRE-T1",
     "BIO-WK-T1-W03",
     "BIO-WK-T1-W04",
@@ -2507,6 +3268,26 @@
     "BIO-VIS-T2-FIG-HOUSEFLY",
     "BIO-VIS-T2-FIG-FOODWEB",
     "BIO-VIS-T2-SHP-FOODCHAINS",
-    "BIO-VIS-T2-SHP-PYRAMID"
+    "BIO-VIS-T2-SHP-PYRAMID",
+    "BIO-PRE-T3",
+    "BIO-WK-T3-W01",
+    "BIO-WK-T3-W02",
+    "BIO-WK-T3-W03",
+    "BIO-WK-T3-W04",
+    "BIO-WK-T3-W05",
+    "BIO-WK-T3-W06-W07",
+    "BIO-WK-T3-W08",
+    "BIO-VIS-T3-TBL-VECTORS",
+    "BIO-VIS-T3-TBL-DISEASES",
+    "BIO-VIS-T3-TBL-STI",
+    "BIO-VIS-T3-TBL-CROP-PESTS",
+    "BIO-VIS-T3-TBL-LIVESTOCK-PARASITES",
+    "BIO-VIS-T3-TBL-CROP-DISEASES",
+    "BIO-VIS-T3-TBL-LIVESTOCK-DISEASES",
+    "BIO-VIS-T3-FIG-BACTERIA-SHAPES",
+    "BIO-VIS-T3-FIG-GRASSHOPPER",
+    "BIO-VIS-T3-FIG-MEALYBUG",
+    "BIO-VIS-T3-SHP-PLANT-CLASS-CHART",
+    "BIO-VIS-T3-HDR-BRANDING"
   ]
 }
