@@ -228,6 +228,7 @@ test('First-term equivalent cash-book and double-entry supplements are complete'
     ['SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK', ['eb1282b128ca2882a8a90f4afe5778d8b118bfad3a5e31eaa40e574b695fdc85', 'COV-BK-T1-W02-DIFF']],
     ['SUP-SS1-BOOKKEEPING-T1-W03-CONTRA', ['d8b73b8504f8a990221e215a9cbd1fefccdcb0b175ee7a706207858f2da8b1f1', 'COV-BK-T1-W03-EXPLAIN']],
     ['SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY', ['852dd7e12fa83e430fc4018d6c0772962d4bb15632c23f6b9327e759a22eecd5', 'COV-BK-T1-W04-LEDGER-FORMAT']],
+    ['SUP-SS1-BOOKKEEPING-T1-W04-POSTING', ['5e0e159df28b50a4a4eacce12a7e8a3a49126980c7b463660ac8405b4823708d', 'COV-BK-T1-W04-POSTING-REPLACEMENT']],
   ]);
   for (const [id, [hash, coverageId]] of expected) {
     const lesson = p.lessons.find(x => x.id === id);
