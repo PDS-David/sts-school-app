@@ -36,32 +36,26 @@ The business should first update its cash book for bank-originated items that it
 **Stage 2 — Prepare the reconciliation statement.** Starting with the updated cash-book balance, adjust for unpresented cheques and deposits not yet credited to arrive at the bank statement balance. Always read the question carefully: the direction of each adjustment depends on which balance is the starting point.
 
 ## 4. Worked example
-At 30 June, the cash book shows a favourable bank balance of 25,000. The bank statement shows 28,200. The following are identified:
-- bank charges of 500 appear on the bank statement but are not in the cash book;
-- a customer paid 1,200 directly into the bank; this is on the bank statement but not in the cash book;
+At 30 June, the cash book shows a favourable bank balance of 25,000. The following items appear on the bank statement but have not yet been entered in the cash book:
+- bank charges, 500;
+- a direct credit received from a customer, 1,200.
+
+The following timing differences are also identified:
 - cheques issued totalling 4,000 have not yet been presented;
 - a deposit of 6,500 has not yet been credited by the bank.
 
-### Stage 1: Updated cash book
+### Stage 1: Update the cash book
 Start with cash-book balance: 25,000.
 Add direct credit received: +1,200.
 Deduct bank charges: −500.
 Updated cash-book balance = **25,700 favourable**.
 
-### Stage 2: Bank reconciliation statement
-Starting with updated cash-book balance:
+### Stage 2: Prepare the reconciliation statement
+Starting with the updated cash-book balance:
 - add unpresented cheques: +4,000;
 - deduct deposit not yet credited: −6,500.
 
 Reconciled bank statement balance = 25,700 + 4,000 − 6,500 = **23,200 favourable**.
-
-**Important verification:** The figures above are deliberately presented as a worked method, but the stated bank statement balance of 28,200 does not agree with the reconciliation result of 23,200. This exposes a data inconsistency in the example and must not be taught as a balanced reconciliation. The consistent statement balance implied by the listed reconciling items is 23,200. For classroom use, the bank statement figure should therefore be 23,200, not 28,200. The exercise below uses internally consistent figures.
-
-## 5. Corrected classroom version
-Cash book after update: 25,700 favourable.
-Add unpresented cheques: 4,000.
-Less deposit not yet credited: 6,500.
-Bank statement balance: **23,200 favourable**.
 
 | Bank reconciliation statement at 30 June | Amount |
 |---|---:|
@@ -69,6 +63,8 @@ Bank statement balance: **23,200 favourable**.
 | Add: unpresented cheques | 4,000 |
 | Less: deposit not yet credited | (6,500) |
 | **Balance as per bank statement** | **23,200** |
+
+The reconciliation agrees. The bank charges and direct credit were first entered in the updated cash book; they are not repeated as timing differences in the statement.
 
 ## 6. Guided practice
 The cash book shows 14,000 favourable. Bank charges of 300 and a direct credit of 2,000 are missing from the cash book. Calculate the updated cash-book balance.
