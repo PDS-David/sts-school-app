@@ -64,7 +64,8 @@
     "BIO-VIS-T1-MONOCOT-DICOT (2026-11-08) inspected the original two-column comparison at blocks 235-244 and its private rendered page 8. The two line shapes are only table rules; labels and comparison rows are text but tab/space alignment is not robust under plain-text extraction. Seven paired differences and the examples row require a semantic two-column restatement in the existing BIO-LES-T1-W03-CLASSIFICATION task. No asset/redraw is needed; source header spelling is preserved and the adjacent block 234 spelling is used only in delivery. No source content was changed; testing remains deferred.",
     "BIO-VIS-T1-PEST-LIFECYCLES (2026-11-08) inspected the 15 text boxes and nine DrawingML/VML drawings across blocks 582-593 and rendered PDF pages 21-22. The first nymph-bearing figure's labels conflict with the yam-beetle prose and its stage sequence cannot be safely assigned; a teacher identity gate and dependent redraw task were added. The second figure under the rhinoceros-beetle heading has Egg, Larvae, Pupa and Adults with a clear directed loop; a separate project-authored redraw task was appended. Source drawings are not copied, and no chemical-control instructions are reproduced. Testing remains deferred.",
     "BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME (2026-11-08) inspected all 13 arrow connectors and their text at blocks 683-713 in rendered PDF pages 25-26. Formula text survives extraction but arrow flow does not. The source equations at blocks 683, 697, 700 and 713 contain unresolved differences/defects; no correction was made. The existing BIO-FACT-T1-W05-EQUATIONS task now covers the complete set. No separate asset is needed; a structured equation/arrow presentation is sufficient. Testing remains deferred.",
-    "BIO-VIS-T1-EXPERIMENT-FIGURES (2026-11-08) verified that Experiment I has no figure and inspected the four source drawings for Experiments II-V. Handwritten labels were transcribed into package evidence; they do not survive plain-text extraction. No original raster assets were committed because reuse rights are unrecorded. The existing practical safety gate remains blocking; no practical instructions or quantities were added. Testing remains deferred."
+    "BIO-VIS-T1-EXPERIMENT-FIGURES (2026-11-08) verified that Experiment I has no figure and inspected the four source drawings for Experiments II-V. Handwritten labels were transcribed into package evidence; they do not survive plain-text extraction. No original raster assets were committed because reuse rights are unrecorded. The existing practical safety gate remains blocking; no practical instructions or quantities were added. Testing remains deferred.",
+    "BIO-VIS-T1-NUTRIENT-CYCLES (2026-11-08) inspected the two hand-drawn diagrams at blocks 795 and 821. Labels and paths were transcribed; the carbon diagram's Animals→Plants arrow conflicts with written block 785, and the water diagram omits the underground-water route and uses 'transpiration' where the prose prints 'transportation'. No nitrogen cycle diagram or teaching text exists in Week 6; sulphur is named but not taught. No source images are registered as assets because rights are unrecorded. A structured carbon/water lesson was appended; no separate asset/redraw is required. The existing assessment task now depends on this lesson. Testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -76,11 +77,11 @@
     "SOURCE_SECTION_INDEXING": 3,
     "VISUAL_DISPOSITION": 39,
     "SOURCE_MARKER_DISPOSITION": 1,
-    "LESSON": 20,
+    "LESSON": 21,
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 47,
+    "IMPLEMENTED_TESTING_DEFERRED": 48,
     "PENDING": 98,
     "BLOCKED": 11
   },
@@ -1141,8 +1142,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1), viewed directly: block 795 image6 (556x513, sha256 87e5a6ee5d40cdd770056a899b8c2131ad8fe8c76481bf950e047714e0de7f1e) is a carbon cycle sketch (CO2 in atmosphere, photosynthesis, animals, plants, fossil fuels, combustion in industries, sea as reservoir of CO2); block 821 image7 (651x408, sha256 d9713621b42933a7d3d63f23703e3e0236c28bd87303f39dec0f30f7ae83497c) is a water cycle sketch (water in the atmosphere, evaporation, precipitation as rainfall, run-off from ponds, lakes, river and sea, animals, plants). Handwriting is partly faint.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and assigned DOCX member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Carbon diagram at block 795: image6.jpeg 556×513, SHA-256 87e5a6ee5d40cdd770056a899b8c2131ad8fe8c76481bf950e047714e0de7f1e. Visible labels: CO2 in atmosphere; photosynthesis; animals; plants; fossil fuels (oil, gas, coal); combustion in industries; sea as reservoir of CO2; respiration & decay. Drawn paths: atmosphere→photosynthesis→plants; atmosphere→sea reservoir; plants→fossil fuels; fossil fuels→combustion in industries→atmosphere; respiration/decay return paths toward atmosphere; a central Animals→Plants arrow and an unclear sea-reservoir path toward Plants. The Animals→Plants arrow conflicts with prose block 785 (plants are eaten by animals, so Plants→Animals); the sea path is not explained by prose, which describes exchange between sea and atmosphere. Water diagram at block 821: image7.jpeg 651×408, SHA-256 d9713621b42933a7d3d63f23703e3e0236c28bd87303f39dec0f30f7ae83497c. Visible labels: water in the atmosphere; evaporation; precipitation as rainfall; run-off from ponds, lakes, river & sea; plants; animals; transpiration; respiration. Outer flow: atmosphere→rainfall→run-off→evaporation→atmosphere; internal arrows show Plants→Animals, Plants→atmosphere (transpiration) and Animals→atmosphere (respiration). The diagram omits the underground-water/percolation route described in block 804. The image uses 'transpiration' while prose blocks 804/806 print 'transportation'. Labels are handwritten inside raster images and do not survive text extraction; handwriting is partly faint. No nitrogen cycle diagram or teaching text exists in Week 6. The scheme and body do not name nitrogen; sulphur is named in block 783 but no sulphur cycle is taught. No original image is committed or registered as an asset because reuse rights are unrecorded. A structured flow sequence in the supplement is sufficient; no separate asset/redraw is needed. The carbon/water lesson task was appended and the existing assessment task now depends on it. No source bytes changed; no app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
     },
     {
@@ -2283,7 +2284,9 @@
       "depends_on": [
         "BIO-SRC-T1",
         "BIO-WK-T1-W06",
-        "BIO-FACT-T1-W06-SCOPE"
+        "BIO-FACT-T1-W06-SCOPE",
+        "BIO-LES-T1-W06-CARBON-WATER",
+        "BIO-VIS-T1-NUTRIENT-CYCLES"
       ],
       "status": "PENDING",
       "implementation_reference": "Not authored. Required by BIO-WK-T1-W06 (2026-11-03): blocks 828-833 ask about carbohydrates, proteins, lipids and enzymes, taught at Week 7 blocks 837-909; no Week 6 question exists. BIOLOGY-T1-W06-ASSIGNMENT-MISPLACED is open. BIO-WK-T1-W06 authors no assessment and infers no answer key.",
@@ -5387,6 +5390,45 @@
       "status": "PENDING",
       "implementation_reference": "Appended after the source figure disposition (2026-11-08). The original rhinoceros-beetle cycle has four clear labels and a four-arrow loop; a project-authored redraw will preserve the stages without copying the source vector artwork.",
       "completion_condition": "A new original vector diagram shows Egg → Larvae → Pupa → Adults in a directed loop, is registered under backend/src/db/ss1/assets/biology/ with schema-compliant metadata and provenance, and leaves the source figure untouched."
+    },
+    {
+      "id": "BIO-LES-T1-W06-CARBON-WATER",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 6, carbon cycle blocks 784-803 and image block 795; water cycle blocks 804-825 and image block 821",
+      "objective": "Author a clearly labelled supplemental lesson teaching the two cycles actually present in Week 6: carbon and water. Present each as a semantic flow sequence with labelled stages and directions. For the carbon cycle, follow the written explanation (Plants → Animals; respiration/decay and combustion return carbon dioxide to the atmosphere; show sea-atmosphere exchange) rather than copying the conflicting Animals→Plants diagram arrow. For the water cycle, include the underground-water route described in the prose and use 'transpiration' in the delivery replacement, while retaining the source's 'transportation' wording unchanged. Do not invent or teach nitrogen or sulphur cycles unless BIO-FACT-T1-W06-SCOPE clears them. Include complete keyed practice with criterion-level marking and cite source provenance.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W06.md",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-NUTRIENT-CYCLES.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T1-W06-CARBON-WATER.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W06",
+        "BIO-VIS-T1-NUTRIENT-CYCLES"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended after the nutrient-cycle diagram disposition (2026-11-08). Covers only the two cycles taught in Week 6; the sulphur/nitrogen scope decision remains with BIO-FACT-T1-W06-SCOPE.",
+      "completion_condition": "A source-distinct lesson accurately teaches carbon and water cycle flows, corrects the delivery flow using the written text without altering source diagrams/text, includes the groundwater route and 'transpiration' spelling, has complete keyed practice and source provenance, and binds to COV-BIO-T1-W06-SCHEME-6."
     }
   ],
   "review": {
@@ -5402,7 +5444,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T1-NUTRIENT-CYCLES",
     "BIO-VIS-T1-PROTEIN-BREAKDOWN",
     "BIO-VIS-T1-MITOSIS",
     "BIO-VIS-T1-HORMONE-TABLE",
@@ -5471,6 +5512,7 @@
     "BIO-LES-T3-W02-NITROGEN-CARBON-CYCLES",
     "BIO-LES-T3-W08-STORAGE-STRUCTURES",
     "BIO-LES-T1-W03-CLASSIFICATION",
+    "BIO-LES-T1-W06-CARBON-WATER",
     "BIO-TEST-PACKAGE"
   ]
 }
