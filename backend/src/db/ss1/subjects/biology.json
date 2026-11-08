@@ -455,6 +455,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; no parsed row or importer/compiler result was run",
           "explanation": "The objective is taught in the original source, but no Biology lesson exists in the package. Source-only teaching is not deliverable; PARTIAL remains until a lesson or approved equivalent is authored and bound."
+        },
+        {
+          "locator": "Direct w:body blocks 136-155; block 136 SHA-256 a018fe50087dde8c17c5bd502f6ebae306ad9ecd3ee1f828ab9026d123662087; diagram range 137-155 SHA-256 e04ec56a91a301393fc767f2e14780206239d6d75237930d6a15675be39927e9",
+          "explanation": "The source prose at block 136 gives the hierarchy in order: Kingdom → Phylum/Division → Class → Order → Family → Genera → Species, and the labels in blocks 137, 140, 143, 146, 149, 152 and 155 are ordinary text runs, so the rank names survive plain-text extraction. Six embedded straight-connector shapes (blocks 137, 140, 143, 146, 149, 152) each have a triangle at the tail end and render as downward arrows; they are not text and disappear from plain-text extraction. The rendered sequence continues across PDF pages 4-5. The source spells the rank 'Genius' at block 152 and repeats 'genius' for 'genus' in block 136; retain these source spellings unchanged. No separate image asset or redraw is needed: the order is already stated in prose and can be preserved in a semantic ordered chain in the supplemental lesson, with 'Genus' correctly spelled in that delivery replacement only. No parsed lesson ID or delivery_correction binding is inferred."
         }
       ]
     },
@@ -2901,10 +2905,12 @@
     {
       "id": "BIOLOGY-T1-W03-COVERAGE",
       "kind": "CONTENT",
-      "detail": "The 1st Term Week 3 scheme objective is taught across source blocks 133-447, but the Biology package has no lessons and no source row has been imported. The source-only classification content is not deliverable.",
-      "required_action": "Author and bind a lesson or approved equivalent for the Week 3 classification objective, preserving source provenance and keeping any corrections distinct from original wording.",
+      "detail": "The 1st Term Week 3 classification objective is taught across source blocks 133-447, but the Biology package has no lessons and no source row has been imported. The hierarchy is stated in prose at block 136 and labelled in diagram blocks 137-155. The six downward connector arrows are visual-only and disappear from plain-text extraction; the rank labels survive. The diagram and prose both print 'Genius'/'genius' for the taxonomic rank Genus. The original wording remains untouched. A semantic ordered hierarchy and the corrected spelling 'Genus' belong in the delivery supplement; no separate diagram asset is required.",
+      "required_action": "Author BIO-LES-T1-W03-CLASSIFICATION as a clearly labelled supplement bound to COV-BIO-T1-W03-SCHEME-3. Preserve the hierarchy as an ordered sequence (Kingdom → Phylum/Division → Class → Order → Family → Genus → Species), using the correct delivery spelling 'Genus' while retaining the original 'Genius'/'genius' source text unchanged. Include complete keyed practice and source provenance; do not invent an original parsed lesson ID or delivery-correction binding before the importer identifies it.",
       "affected_ids": [
-        "COV-BIO-T1-W03-SCHEME-3"
+        "COV-BIO-T1-W03-SCHEME-3",
+        "BIO-VIS-T1-CLASS-HIERARCHY",
+        "BIO-LES-T1-W03-CLASSIFICATION"
       ],
       "blocks_delivery": true
     },
