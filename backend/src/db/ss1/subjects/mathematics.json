@@ -551,12 +551,14 @@
       "subject": "Mathematics",
       "title": "Operations on numbers in other bases and binary codes",
       "objectives": [
-        "Add, subtract and multiply numbers expressed in the same base",
-        "Find an unknown base from an equation, rejecting impossible values",
-        "Represent letters using binary codes"
+        "Apply the valid-digit rule in any base and explain why every digit must be less than the base.",
+        "Add, subtract, multiply and divide numbers expressed in the same base, using correct carrying and borrowing.",
+        "Convert to a common base when operating on numbers expressed in different bases.",
+        "Find an unknown base from a place-value equation and reject values that cannot be bases.",
+        "Represent letters and simple yes/no states using binary codes."
       ],
-      "body": "OPERATIONS ON NUMBERS IN OTHER BASES\n\nWhat you will learn: rules for working in a base, how to add, subtract and multiply numbers in the same base, how to find an unknown base, and how binary is used to encode letters.\n\n1. Rules\n- In base b the only digits allowed are 0, 1, ..., b-1. In base 5 the digit 5 never appears; in base 2 only 0 and 1 appear.\n- Numbers in the same base can be added, subtracted and multiplied directly. Numbers in different bases are first converted to base ten (or to one common base).\n- When you add and a column reaches b or more, write the remainder after dividing by b and carry the quotient. When you subtract and must borrow, the borrowed 1 is worth b (not 10) in the column you borrow into.\n\n2. Worked examples\nExample 1. Add 174 and 233 in base eight.\nUnits: 4 + 3 = 7 (less than 8, write 7). Eights: 7 + 3 = 10 = 1 x 8 + 2, write 2 carry 1. Sixty-fours: 1 + 2 + 1 = 4. Answer: 427 (base 8). Check in base ten: 124 + 155 = 279 and 4 x 64 + 2 x 8 + 7 = 279.\n\nExample 2. Simplify 2311 - 213 in base four.\nConvert: 2311 (base 4) = 2 x 64 + 3 x 16 + 1 x 4 + 1 = 181. 213 (base 4) = 2 x 16 + 1 x 4 + 3 = 39. 181 - 39 = 142. Convert back: 142 = 2 x 64 + 0 x 16 + 3 x 4 + 2, so the answer is 2032 (base 4).\n\nExample 3. Multiply 214 by 23 in base five.\n214 (base 5) = 59 and 23 (base 5) = 13. 59 x 13 = 767. Convert: 767 = 1 x 625 + 1 x 125 + 0 x 25 + 3 x 5 + 2, so 11032 (base 5).\n\nExample 4. If 104 in base x equals 68 in base ten, find x.\nx² + 0 + 4 = 68, so x² = 64 and x = 8. A base is a positive whole number greater than 1 and larger than every digit used (here 4), so only x = 8 is allowed; the value -8 is rejected.\n\n3. Binary codes for letters\nComputers store letters as numbers, written in binary. If A = 1, B = 2, C = 3, ... Z = 26, each letter can be written with five binary digits: A = 00001, B = 00010, C = 00011, P = 10000, Z = 11010. In a yes/no code, Yes = 1 and No = 0.\n\nExample 5. Write \"HI\" in this five-digit code. H is the 8th letter: 8 = 1000 in binary, so 01000. I is the 9th letter: 9 = 1001, so 01001. \"HI\" = 01000 01001.\n",
-      "body_sha256": "9782d282a763a2d9507ed5356b035e026d889982c5f505fd2cff49415c5301b2",
+      "body": "OPERATIONS ON NUMBERS IN OTHER BASES\n\nWhat you will learn: rules for working in a base, how to add, subtract, multiply and divide numbers in the same base, how to find an unknown base, and how binary is used to encode letters.\n\n1. Rules\n- In base b the only digits allowed are 0, 1, ..., b-1. In base 5 the digit 5 never appears; in base 2 only 0 and 1 appear.\n- Numbers in the same base can be added, subtracted, multiplied and divided directly. Numbers in different bases are first converted to base ten (or to one common base).\n- When you add and a column reaches b or more, write the remainder after dividing by b and carry the quotient. When you subtract and must borrow, the borrowed 1 is worth b (not 10) in the column you borrow into.\n\n2. Worked examples\nExample 1. Add 174 and 233 in base eight.\nUnits: 4 + 3 = 7 (less than 8, write 7). Eights: 7 + 3 = 10 = 1 x 8 + 2, write 2 carry 1. Sixty-fours: 1 + 2 + 1 = 4. Answer: 427 (base 8). Check in base ten: 124 + 155 = 279 and 4 x 64 + 2 x 8 + 7 = 279.\n\nExample 2. Simplify 2311 - 213 in base four.\nConvert: 2311 (base 4) = 2 x 64 + 3 x 16 + 1 x 4 + 1 = 181. 213 (base 4) = 2 x 16 + 1 x 4 + 3 = 39. 181 - 39 = 142. Convert back: 142 = 2 x 64 + 0 x 16 + 3 x 4 + 2, so the answer is 2032 (base 4).\n\nExample 3. Multiply 214 by 23 in base five.\n214 (base 5) = 59 and 23 (base 5) = 13. 59 x 13 = 767. Convert: 767 = 1 x 625 + 1 x 125 + 0 x 25 + 3 x 5 + 2, so 11032 (base 5).\n\nExample 4. If 104 in base x equals 68 in base ten, find x.\nx² + 0 + 4 = 68, so x² = 64 and x = 8. A base is a positive whole number greater than 1 and larger than every digit used (here 4), so only x = 8 is allowed; the value -8 is rejected.\n\n3. Binary codes for letters\nComputers store letters as numbers, written in binary. If A = 1, B = 2, C = 3, ... Z = 26, each letter can be written with five binary digits: A = 00001, B = 00010, C = 00011, P = 10000, Z = 11010. In a yes/no code, Yes = 1 and No = 0.\n\nExample 5. Write \"HI\" in this five-digit code. H is the 8th letter: 8 = 1000 in binary, so 01000. I is the 9th letter: 9 = 1001, so 01001. \"HI\" = 01000 01001.\n\nA simple yes/no signal can be stored as one binary bit: Yes = 1 and No = 0.\n\n4. Division in the same base\nUse the usual long-division process, but keep every digit and subtraction in the stated base. When a subtraction requires borrowing, the borrowed unit is worth the base.\n\nExample 6. Divide 1440 (base 5) by 12 (base 5).\n- 14 (base 5) ÷ 12 (base 5) gives 1, remainder 2 (base 5).\n- Bring down the next digit 4 to make 24 (base 5). 24 (base 5) ÷ 12 (base 5) gives 2, remainder 0.\n- Bring down the final 0; the next quotient digit is 0.\nAnswer: 1440 (base 5) ÷ 12 (base 5) = 120 (base 5).\nCheck: 12 (base 5) = 7 and 120 (base 5) = 35; 7 × 35 = 245, which is 1440 (base 5).",
+      "body_sha256": "6f81f256bda8030d04111f3a70ba16f85083c4ce71d3929b03a3cd573a5fe4f3",
       "practice": [
         {
           "id": "M1W3-Q1",
@@ -629,6 +631,54 @@
               "marks": 1
             }
           ]
+        },
+        {
+          "id": "M1W3-Q4",
+          "question": "Multiply 1101 (base 2) by 10 (base 2).",
+          "answer": "10 (base 2) is 2 in base ten. 1101 (base 2) is 13 in base ten; 13 × 2 = 26, which is 11010 (base 2). Therefore 1101₂ × 10₂ = 11010₂.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses the fact that multiplication by 10 in base two shifts the digits one place to the left (or converts correctly to base ten).",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 11010 (base 2).",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W3-Q5",
+          "question": "Divide 1320 (base 4) by 2 (base 4). Show a check.",
+          "answer": "1320₄ = 120₁₀ and 2₄ = 2₁₀, so the quotient is 60₁₀ = 330₄. Check: 330₄ × 2₄ = 1320₄.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Sets out a valid base-four division or converts correctly to base ten.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives quotient 330 (base 4).",
+              "marks": 1
+            },
+            {
+              "criterion": "Checks by multiplying 330₄ × 2₄ = 1320₄.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W3-Q6",
+          "question": "A device records five yes/no responses: Yes, No, Yes, Yes, No. Using Yes = 1 and No = 0, write the binary sequence.",
+          "answer": "10110.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Writes 10110 in the correct order.",
+              "marks": 1
+            }
+          ]
         }
       ],
       "provenance": [
@@ -639,6 +689,14 @@
           "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. The teaching sequence follows the school's own scheme in the cited source. ",
           "reuse_status": "PERMITTED",
           "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        },
+        {
+          "title": "Week 2 and 3 – SS1 First Term General Mathematics Notes (public close-equivalent copy)",
+          "locator": "Week 3, “Rules of Base Number”, lines 127–163: three base rules, worked examples, binary letter coding, assessment and the MAN Mathematics page 8 assignment reference. This page is not verified byte-identical to the archive member.",
+          "url": "https://ecolebooks.com/nigeria/posts/week-2-and-3-ss1-first-term-general-mathematics-notes/",
+          "rights": "No text, diagrams, exercises or answer keys are copied. The replacement is independently authored; the page is used only to corroborate the topic sequence and exercise inventory. The external textbook assignment is retained as a reference and not reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Ecolebooks Nigeria, “Week 2 and 3 – SS1 First Term General Mathematics Notes”, Week 3 section, accessed 2026-11-08; close-equivalent copy, not asserted identical to the archive member."
         }
       ],
       "state": {
@@ -2874,10 +2932,10 @@
       "source_lesson_id": "SS1-SRC-0c9004137f95:BODY:afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7",
       "body_sha256": "afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7",
       "replacement_id": "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS",
-      "reason": "Source solves 104 in base x = 68 as x = ±8 (a base cannot be negative) and gives 2311₄−213₄ as 2033₄ (correct 2032₄).",
+      "reason": "Source solves 104 in base x = 68 as x = ±8 (a base cannot be negative) and gives 2311₄−213₄ as 2033₄ (correct 2032₄). The initial replacement omitted division, which is stated in the source's same-base operations rule; division is now taught and assessed. The source assessment's binary multiplication item is also represented by an original keyed exercise.",
       "evidence": {
         "locator": "Mathematics 1st term; parsed row 2 (\"RULES OF BASE NUMBER\")",
-        "explanation": "Original row text is retained unchanged in provenance; the replacement is delivered instead (runtime wiring by SS1-08)."
+        "explanation": "Objective-level review against the Week 3 source row and close-equivalent source page has been completed. The replacement preserves: valid-digit/base rules; same-base addition, subtraction, multiplication and division; conversion to a common base when required; unknown-base place-value equations; and binary letter/yes-no coding. Source worked examples are mapped as follows: 174₈+233₈ -> Example 1; 2311₄−213₄ -> Example 2 (corrected to 2032₄); 214₅×23₅ -> Example 3; 104_x=68 -> Example 4 (rejects negative base). Source assessment items map to M1W3-Q1 through Q6: 614₈−506₈ and 123_y=83 in Q1; 4103₆=2112₆+x in Q2; I LOVE MATHEMATICS in Q3; binary 1101₂×10₂ in Q4; and a new base-4 division check in Q5. The yes/no binary state is explicit in section 3 and Q6. The external MAN Mathematics SS1 page 8 assignment pointer is recorded but its questions are not reproduced; the lesson's original practice provides equivalent skills. The public source copy is not verified byte-identical to the archive member; OI-MATH-001 remains open for the original equation/superscript extraction decision. No source hashes or original row text were changed."
       }
     },
     {
@@ -3377,7 +3435,7 @@
     {
       "id": "COV-MATH-T1-R02",
       "source_id": "SS1-SRC-0c9004137f95",
-      "objective": "Operations in number bases; application to computer programming",
+      "objective": "Rules of number bases; basic operations in the same base; unknown-base equations; application of binary codes to computer programming.",
       "objective_locator": "1st-term scheme line 3; parsed row 2",
       "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
@@ -3386,8 +3444,12 @@
       ],
       "evidence": [
         {
-          "locator": "supplement SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS",
-          "explanation": "Authored lesson with explanation, worked examples recomputed from first principles, practice with full answers and marking; replaces the original row for delivery."
+          "locator": "Original replacement lesson SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS, body SHA-256 6f81f256bda8030d04111f3a70ba16f85083c4ce71d3929b03a3cd573a5fe4f3.",
+          "explanation": "Objective-level review confirms coverage of valid digits, addition, subtraction, multiplication, division, unknown bases, binary letter coding and yes/no bits. Original source errors in the unknown-base and base-four subtraction examples are corrected."
+        },
+        {
+          "locator": "Public close-equivalent source page, Week 3 lines 127–163.",
+          "explanation": "The source page shows the three base rules, worked examples, programming application, assessment and external textbook assignment. It is not asserted to be byte-identical to the archive member."
         }
       ]
     },
@@ -3949,6 +4011,182 @@
       "status": "UNRESOLVED",
       "lesson_ids": [],
       "evidence": []
+    },
+    {
+      "id": "COV-MATH-T1-W03-OBJ-1-VALID-DIGITS",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Valid digits and the rule that each digit must be less than its base.",
+      "objective_locator": "1st-term scheme line 3; parsed source row 2, WEEK 3, title RULES OF BASE NUMBER, 2,682 characters, body SHA-256 afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS"
+      ],
+      "evidence": [
+        {
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS, body SHA-256 6f81f256bda8030d04111f3a70ba16f85083c4ce71d3929b03a3cd573a5fe4f3.",
+          "explanation": "Original equivalent lesson teaches and assesses this objective; content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "Public close-equivalent source page, Week 3, lines 127–163.",
+          "explanation": "The page provides objective-level corroboration of the Week 3 rules, worked examples, programming application and assessment sequence; it is not asserted byte-identical to the archive member."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W03-OBJ-2-ADDITION",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Addition of numbers in the same base using carrying in that base.",
+      "objective_locator": "1st-term scheme line 3; parsed source row 2, WEEK 3, title RULES OF BASE NUMBER, 2,682 characters, body SHA-256 afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS"
+      ],
+      "evidence": [
+        {
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS, body SHA-256 6f81f256bda8030d04111f3a70ba16f85083c4ce71d3929b03a3cd573a5fe4f3.",
+          "explanation": "Original equivalent lesson teaches and assesses this objective; content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "Public close-equivalent source page, Week 3, lines 127–163.",
+          "explanation": "The page provides objective-level corroboration of the Week 3 rules, worked examples, programming application and assessment sequence; it is not asserted byte-identical to the archive member."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W03-OBJ-3-SUBTRACTION",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Subtraction of numbers in the same base using borrowing in that base.",
+      "objective_locator": "1st-term scheme line 3; parsed source row 2, WEEK 3, title RULES OF BASE NUMBER, 2,682 characters, body SHA-256 afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS"
+      ],
+      "evidence": [
+        {
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS, body SHA-256 6f81f256bda8030d04111f3a70ba16f85083c4ce71d3929b03a3cd573a5fe4f3.",
+          "explanation": "Original equivalent lesson teaches and assesses this objective; content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "Public close-equivalent source page, Week 3, lines 127–163.",
+          "explanation": "The page provides objective-level corroboration of the Week 3 rules, worked examples, programming application and assessment sequence; it is not asserted byte-identical to the archive member."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W03-OBJ-4-MULTIPLICATION",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Multiplication of numbers in the same base.",
+      "objective_locator": "1st-term scheme line 3; parsed source row 2, WEEK 3, title RULES OF BASE NUMBER, 2,682 characters, body SHA-256 afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS"
+      ],
+      "evidence": [
+        {
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS, body SHA-256 6f81f256bda8030d04111f3a70ba16f85083c4ce71d3929b03a3cd573a5fe4f3.",
+          "explanation": "Original equivalent lesson teaches and assesses this objective; content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "Public close-equivalent source page, Week 3, lines 127–163.",
+          "explanation": "The page provides objective-level corroboration of the Week 3 rules, worked examples, programming application and assessment sequence; it is not asserted byte-identical to the archive member."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W03-OBJ-5-DIVISION",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Division of numbers in the same base, with a worked base-five example and a keyed base-four exercise.",
+      "objective_locator": "1st-term scheme line 3; parsed source row 2, WEEK 3, title RULES OF BASE NUMBER, 2,682 characters, body SHA-256 afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS"
+      ],
+      "evidence": [
+        {
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS, body SHA-256 6f81f256bda8030d04111f3a70ba16f85083c4ce71d3929b03a3cd573a5fe4f3.",
+          "explanation": "Original equivalent lesson teaches and assesses this objective; content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "Public close-equivalent source page, Week 3, lines 127–163.",
+          "explanation": "The page provides objective-level corroboration of the Week 3 rules, worked examples, programming application and assessment sequence; it is not asserted byte-identical to the archive member."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W03-OBJ-6-UNKNOWN-BASE",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Finding an unknown base by expressing a numeral in place-value form and rejecting invalid bases.",
+      "objective_locator": "1st-term scheme line 3; parsed source row 2, WEEK 3, title RULES OF BASE NUMBER, 2,682 characters, body SHA-256 afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS"
+      ],
+      "evidence": [
+        {
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS, body SHA-256 6f81f256bda8030d04111f3a70ba16f85083c4ce71d3929b03a3cd573a5fe4f3.",
+          "explanation": "Original equivalent lesson teaches and assesses this objective; content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "Public close-equivalent source page, Week 3, lines 127–163.",
+          "explanation": "The page provides objective-level corroboration of the Week 3 rules, worked examples, programming application and assessment sequence; it is not asserted byte-identical to the archive member."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W03-OBJ-7-BINARY-CODING",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Applying binary to computer programming, including five-bit letter codes and yes/no bits.",
+      "objective_locator": "1st-term scheme line 3; parsed source row 2, WEEK 3, title RULES OF BASE NUMBER, 2,682 characters, body SHA-256 afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS"
+      ],
+      "evidence": [
+        {
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS, body SHA-256 6f81f256bda8030d04111f3a70ba16f85083c4ce71d3929b03a3cd573a5fe4f3.",
+          "explanation": "Original equivalent lesson teaches and assesses this objective; content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "Public close-equivalent source page, Week 3, lines 127–163.",
+          "explanation": "The page provides objective-level corroboration of the Week 3 rules, worked examples, programming application and assessment sequence; it is not asserted byte-identical to the archive member."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W03-OBJ-8-ASSESSMENT-COVERAGE",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Source assessment exercises mapped to keyed replacement questions, including base-four/base-eight operations, unknown base and binary coding.",
+      "objective_locator": "1st-term scheme line 3; parsed source row 2, WEEK 3, title RULES OF BASE NUMBER, 2,682 characters, body SHA-256 afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS"
+      ],
+      "evidence": [
+        {
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS, body SHA-256 6f81f256bda8030d04111f3a70ba16f85083c4ce71d3929b03a3cd573a5fe4f3.",
+          "explanation": "Original equivalent lesson teaches and assesses this objective; content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "Public close-equivalent source page, Week 3, lines 127–163.",
+          "explanation": "The page provides objective-level corroboration of the Week 3 rules, worked examples, programming application and assessment sequence; it is not asserted byte-identical to the archive member."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W03-BOOK-ASSIGNMENT",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "External assignment pointer: MAN Mathematics for Senior Secondary Schools 1, page 8, Exercise C4 (numbers 1, 2, 3 and 7) and Miscellaneous Exercise items 3, 6, 10, 14 and 15.",
+      "objective_locator": "Public close-equivalent source page, Week 3, line 161; original parsed row 2, WEEK 3.",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS"
+      ],
+      "evidence": [
+        {
+          "locator": "Source assignment pointer, public page line 161: MAN Mathematics for Senior Secondary Schools 1, page 8, Exercise C4 and selected miscellaneous items.",
+          "explanation": "The exact textbook exercise questions are not present in the school's source row and are not reproduced. The replacement's original practice covers the row's base operations, unknown-base and binary-code skills, but does not claim to be the named textbook exercise."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -4194,6 +4432,17 @@
         "SUP-SS1-MATHEMATICS-T3-W10-STATISTICAL-GRAPHS",
         "SUP-SS1-MATHEMATICS-T3-W11-STANDARD-DEVIATION"
       ]
+    },
+    {
+      "id": "MATH-T1-W03-BOOK-ASSIGNMENT-REFERENCE",
+      "kind": "CONTENT",
+      "detail": "The Week 3 source points learners to MAN Mathematics for Senior Secondary Schools 1, page 8, Exercise C4 items 1, 2, 3 and 7, and Miscellaneous Exercise items 3, 6, 10, 14 and 15. Those textbook questions are not included in the archive member and are not reproduced in the replacement.",
+      "required_action": "Retain the textbook reference for teachers. The new lesson includes independently authored equivalent practice for same-base operations, unknown bases and binary coding. Do not copy the textbook questions without permission; if the school requires the exact book exercise, a teacher can assign it from the authorised textbook.",
+      "affected_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS",
+        "COV-MATH-T1-W03-BOOK-ASSIGNMENT"
+      ],
+      "blocks_delivery": false
     }
   ]
 }
