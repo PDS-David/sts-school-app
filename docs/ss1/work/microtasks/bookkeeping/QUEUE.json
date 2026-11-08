@@ -53,17 +53,16 @@
     "2026-11-08: All ten reconstructed Bookkeeping T2 lessons W01-W10 are now integrated into bookkeeping.json as SUP-SS1-BOOKKEEPING-T2-W01..W10 with separate COV-BK-T2-RECON-W01..W10 coverage. The excluded duplicate source remains preserved and contributes no lesson content; its source_id is used only as the manifest term-bucket key because the current package schema requires coverage to reference a registered source. Coverage locators/evidence explicitly point to the reconstruction plan and authored lesson files. Package tests were updated to assert this separation but have not been run. Tasks moved to IMPLEMENTED_TESTING_DEFERRED, not VERIFIED.",
     "2026-11-08 queue recount after T2 package integration: IMPLEMENTED_TESTING_DEFERRED=71, BLOCKED=12, PENDING=6; total=89. No test execution is implied.",
     "2026-11-08 static integrity check (not automated test execution): all 10 T2 lesson body_sha256 values recomputed and matched; all T2 practice mark totals matched their marking allocations; all 10 COV-BK-T2-RECON-* entries resolve to exactly one registered T2 supplement lesson. packageSchema, automated tests, typecheck, compiler/parser, importer, DB, device and delivery checks remain unrun/deferred.",
-    "2026-11-08: Strengthened the existing first-term Bookkeeping supplements W01-W04 with explicit tabular formats, balanced independent examples and marked practice. Queue tasks BK-LES-T1-W01-CASH-BOOK, BK-LES-T1-W02-DIFF, BK-LES-T1-W02-PREP, BK-LES-T1-W03-CONTRA and BK-LES-T1-W04-DOUBLE-ENTRY moved to IMPLEMENTED_TESTING_DEFERRED. Source defects involving the original T1 figures remain preserved and are not treated as corrected; the separate W04 posting task still requires a complete independent integrated posting example."
+    "2026-11-08: Strengthened the existing first-term Bookkeeping supplements W01-W04 with explicit tabular formats, balanced independent examples and marked practice. Queue tasks BK-LES-T1-W01-CASH-BOOK, BK-LES-T1-W02-DIFF, BK-LES-T1-W02-PREP, BK-LES-T1-W03-CONTRA and BK-LES-T1-W04-DOUBLE-ENTRY moved to IMPLEMENTED_TESTING_DEFERRED. Source defects involving the original T1 figures remain preserved and are not treated as corrected; the separate W04 posting task still requires a complete independent integrated posting example.",
+    "2026-11-08: Completed the final pending first-term lesson task by adding a fully worked, independently authored twenty-transaction cash-book and ledger-posting exercise. The original source's unsolved transaction list and Assignment 2 are still preserved as source defects; no source correction or expert approval is implied. All 89 queue tasks now have non-PENDING statuses; 12 remain BLOCKED and require their recorded owner/expert actions."
   ],
   "counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 76,
-    "BLOCKED": 12,
-    "PENDING": 1
+    "IMPLEMENTED_TESTING_DEFERRED": 77,
+    "BLOCKED": 12
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 76,
-    "BLOCKED": 12,
-    "PENDING": 1
+    "IMPLEMENTED_TESTING_DEFERRED": 77,
+    "BLOCKED": 12
   },
   "items": [
     {
@@ -1533,8 +1532,8 @@
         "BK-WK-T1-W04",
         "BK-FACT-T1-W04-BRIEF"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by BK-WK-T1-W04 (2026-10-30). Blocked in content on BK-FACT-T1-W04-BRIEF (N20 motor van at 196, drawings at 194, blanket posting rule at 181-182).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored replacement lesson created at docs/ss1/work/microtasks/bookkeeping/BK-LES-T1-W04-POSTING.md and integrated as SUP-SS1-BOOKKEEPING-T1-W04-POSTING with COV-BK-T1-W04-POSTING-REPLACEMENT. It contains a fully specified independent twenty-transaction June exercise, balanced cash/bank columns, ledger postings and marked assessment. The original source's twenty transactions and Assignment 2 remain uncorrected/unanswered as source defects; the new lesson does not claim to reconstruct them. Testing/approval deferred.",
       "completion_condition": "A complete balanced cash book, a labelled author-supplied ledger ruling and every posting for the illustration are supplied with folio references, contra rows are excluded and explained, ASSIGNMENT 2 is answered with marks, and the lesson states what came from the source and what was authored."
     },
     {
