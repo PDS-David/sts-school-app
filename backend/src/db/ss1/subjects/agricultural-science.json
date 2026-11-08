@@ -869,6 +869,54 @@
         }
       ],
       "source_id": "SS1-SRC-956594d97094"
+    },
+    {
+      "id": "COV-AG-T2-W06-AGRICULTURAL-ECOLOGY",
+      "objective": "Scheme item 6: Agricultural Ecology",
+      "objective_locator": "Second Term scheme block 10; Week Six label block 337; topic block 338",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week Six blocks 344-354; definition 345; autecology 350; synecology 352; ecosystem 354",
+          "explanation": "The source defines agricultural ecology, autecology, synecology and ecosystem."
+        },
+        {
+          "locator": "Blocks 361-376; components 362-376",
+          "explanation": "The source explains biotic and abiotic components, autotrophs/producers, heterotrophs/consumers, primary consumers, climate, nutrients, edaphic and other abiotic factors."
+        },
+        {
+          "locator": "Blocks 383-395; mono-cropping 384-387; mixed cropping 388-391; mixed farming 392-395",
+          "explanation": "Interactions are taught in three farm settings: mono-cropping, mixed cropping and mixed farming."
+        },
+        {
+          "locator": "Evaluations 356-359, 378-381; general evaluation 397-402; weekend 407-414; theory 416-418",
+          "explanation": "Most questions are supported; fish-pond and forest/savannah interactions in 402 and 418 are not explained, and polygastric animal classification in MCQ 408 is not taught."
+        },
+        {
+          "locator": "Week Six range blocks 337-420; SHA-256 8e54b81a1ac02ed85c99e0746d481317ad31d9191f6ecdab2bcaeb687cd97ce5",
+          "explanation": "Source teaching exists, but package lesson rows and importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ],
+      "source_id": "SS1-SRC-956594d97094"
+    },
+    {
+      "id": "COV-AG-T2-W06-INTERACTIONS",
+      "objective": "Assessment scope: interaction among ecosystem components in fish ponds and forest/savannah settings",
+      "objective_locator": "Week Six general evaluation block 402; theory block 418",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week Six blocks 383-395",
+          "explanation": "The source explains interactions in mono-cropping, mixed cropping and mixed farming only."
+        },
+        {
+          "locator": "Week Six blocks 402 and 418",
+          "explanation": "General evaluation asks for fish-pond interaction; theory asks for fish pond and forest/savannah. No corresponding interaction teaching is supplied, although fish ponds appear as an example in synecology definition at 352."
+        }
+      ],
+      "source_id": "SS1-SRC-956594d97094"
     }
   ],
   "open_items": [
@@ -1431,6 +1479,51 @@
       "required_action": "Create AG-CORR-T2-W04-05-TABLE-TEXT to verify each anomalous string against an authoritative parallel source or teacher-approved original. Bind only evidence-backed delivery corrections; retain exact original table values and provenance.",
       "affected_ids": [
         "AG-CORR-T2-W04-05-TABLE-TEXT",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W06-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week Six teaches agricultural ecology, ecosystem components and interactions in mono-cropping, mixed cropping and mixed farming (344-395), but package lesson rows and importer-confirmed parsed-row identity are absent. COV-AG-T2-W06-AGRICULTURAL-ECOLOGY is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T2-W06-AGRICULTURAL-ECOLOGY; do not invent a source lesson ID or duplicate teaching.",
+      "affected_ids": [
+        "COV-AG-T2-W06-AGRICULTURAL-ECOLOGY",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W06-INTERACTIONS",
+      "kind": "CONTENT",
+      "detail": "The source explains interactions in mono-cropping, mixed cropping and mixed farming (384-395), but general evaluation 402 asks about fish ponds and theory 418 asks about fish ponds and forest/savannah. These interaction settings are not taught in the week.",
+      "required_action": "Author AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS with sourced, age-appropriate examples of ecosystem interactions in fish ponds and forest/savannah, clearly distinguished as supplement content, with complete keyed practice.",
+      "affected_ids": [
+        "COV-AG-T2-W06-INTERACTIONS",
+        "AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W06-POLYGASTRIC",
+      "kind": "FACT",
+      "detail": "Weekend MCQ 408 asks which farm animal is not polygastric and offers cattle, goat, rabbit and sheep. The source lists these animals as herbivores/primary consumers at block 370 but does not teach polygastric vs monogastric digestion.",
+      "required_action": "Verify the classification of the listed animals using authoritative animal-science references and recommend whether the MCQ needs a supporting lesson or clearer wording.",
+      "affected_ids": [
+        "AG-FACT-T2-W06-POLYGASTRIC-ITEM",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W06-TERMINOLOGY",
+      "kind": "CONTENT",
+      "detail": "Week Six blocks 368 and 370 use 'Autotrophism' and 'Heterotrophism' as names for groups of organisms; the definitions describe autotrophs and heterotrophs. The terminology may conflate organisms with modes of nutrition.",
+      "required_action": "Verify the precise terms against authoritative ecology sources and bind any delivery correction for the headings/definitions, preserving the original source text.",
+      "affected_ids": [
+        "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
         "SS1-SRC-956594d97094"
       ],
       "blocks_delivery": true

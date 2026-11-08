@@ -39,23 +39,24 @@
     "AG-WK-T1-W10 (2026-11-08) indexed First Term Week 10: crop classification by life cycle, morphology and uses is source-taught. Seven-difference monocot/dicot theory exceeds the three source contrasts; biennial definition at block 878 is defective and examples need fact-check. Five biotic-factor revision item cross-maps to Week 9 blocks 805-824.",
     "AG-WK-T2-W01 (2026-11-08) indexed Second Term Week One: scheme item is Revision of Last Term Work, but source has only placeholder bullets for objective/theory answers and no questions or answers. Revision remains UNRESOLVED pending exact prior-term papers and approved answer key; no answers invented.",
     "AG-WK-T2-W02-03 (2026-11-08) indexed combined Second Term Weeks 2-3: pre-planting, planting and post-planting operations and the practical school-farm demonstration are source-taught. Green-manure timing differs between teaching and MCQ; fertilizer-production claim and minor wording defects recorded for evidence-based correction. No numerical seed rates or fertilizer/herbicide rates added.",
-    "AG-WK-T2-W04-05 (2026-11-08) indexed combined Second Term Weeks 4-5: three detailed 17-row crop tables (maize/rice, cowpea/groundnut, yam/cassava); seed rates, spacing, climate and maturity figures retained exactly as written. Nutritional values cross-map to First Term Week 10. Staking/training explanations and mulching MCQ ambiguity remain follow-ups; no rates/doses/handling instructions added."
+    "AG-WK-T2-W04-05 (2026-11-08) indexed combined Second Term Weeks 4-5: three detailed 17-row crop tables (maize/rice, cowpea/groundnut, yam/cassava); seed rates, spacing, climate and maturity figures retained exactly as written. Nutritional values cross-map to First Term Week 10. Staking/training explanations and mulching MCQ ambiguity remain follow-ups; no rates/doses/handling instructions added.",
+    "AG-WK-T2-W06 (2026-11-08) indexed Second Term Week Six: agricultural ecology, biotic/abiotic components and interactions in mono-cropping, mixed cropping and mixed farming are taught. Fish-pond and forest/savannah interaction questions exceed teaching; polygastric MCQ and autotrophism/heterotrophism terminology require follow-up."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 16,
+    "FACTUAL_DEPENDENCY": 17,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 19,
-    "CORRECTION_BINDING": 3
+    "LESSON": 20,
+    "CORRECTION_BINDING": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 24,
-    "PENDING": 86,
+    "IMPLEMENTED_TESTING_DEFERRED": 25,
+    "PENDING": 88,
     "BLOCKED": 2
   },
   "items": [
@@ -1191,8 +1192,8 @@
         "AG-INV-T2",
         "AG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): label block 337 text \"WEEK SIX    DATE……………\" (sha256 0cc991fdd5c3a5ca82a15a545e653aa6f77ec340a7bb71f6569342cff59117b1); blocks 337-420; range sha256 8e54b81a1ac02ed85c99e0746d481317ad31d9191f6ecdab2bcaeb687cd97ce5. Topic: Agricultural Ecology. Meaning of agricultural ecology (344), components of farm ecosystem (361), interaction among components in farm settings (383), General Evaluation (397), Reading Assignment (404), Weekend Assignment (407-420, theory from 416). Block 402 asks about interaction in mixed farming, mixed cropping and another setting; check it against block 383. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-676; block 677 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Second Term member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 and Week Six range blocks 337-420 SHA-256 8e54b81a1ac02ed85c99e0746d481317ad31d9191f6ecdab2bcaeb687cd97ce5. Scheme item 6 (block10) maps to Agricultural Ecology: definition 345; autecology 350; synecology 352; ecosystem 354; biotic/abiotic components 361-376; interactions in mono-cropping 384-387, mixed cropping 388-391 and mixed farming 392-395. Evaluations 356-359,378-381 and general 397-402 reviewed. Fish-pond interaction in 402 and fish-pond/forest-savannah in theory 418 are not taught (fish pond appears only as a synecology example at 352); added bounded lesson. MCQ 408 asks polygastric classification not taught; fact dependency added. MCQs 410-414 supported by definitions/components/interactions. Source uses 'Autotrophism' and 'Heterotrophism' as group names at 368/370; terminology needs verification. Reading assignment 404 recorded but not checked. Added one PARTIAL and one UNRESOLVED coverage row, four open items, and follow-ups AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS, AG-FACT-T2-W06-POLYGASTRIC-ITEM and AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY. Full report AG-WK-T2-W06.md. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -4209,6 +4210,114 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T2-W04-05: tables contain anomalous strings and joined names; no correction is assumed.",
       "completion_condition": "A correction-binding record cites verified evidence for each proposed correction; original source bytes and figures remain unchanged."
+    },
+    {
+      "id": "AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "Week Six blocks 383-395; general evaluation 402; theory 418",
+      "objective": "Teach interactions among biotic and abiotic components in fish-pond and forest/savannah ecosystems, complementing the source's mono-cropping, mixed-cropping and mixed-farming examples. Use accurate ecological sources, label new examples as supplement content, and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T2-W06.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T2",
+        "AG-WK-T2-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T2-W06: assessment asks for fish-pond and forest/savannah interactions, but source teaches only mono-cropping, mixed cropping and mixed farming.",
+      "completion_condition": "A clearly labelled supplement explains both missing settings with reliable provenance, complete keyed practice and criterion-level marks; PENDING approval."
+    },
+    {
+      "id": "AG-FACT-T2-W06-POLYGASTRIC-ITEM",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "Week Six weekend assignment block 408; primary-consumer examples block 370",
+      "objective": "Verify the classification of cattle, goat, rabbit and sheep as polygastric/monogastric animals and whether weekend MCQ 408 has one defensible answer. Use authoritative animal-science references and recommend retention or correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T2-W06.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T2-W06-POLYGASTRIC-ITEM.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T2",
+        "AG-WK-T2-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T2-W06: block 408 asks for polygastric classification not taught in the source.",
+      "completion_condition": "A sourced note verifies animal classifications and recommends retaining or correcting the item."
+    },
+    {
+      "id": "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "Week Six blocks 368 and 370",
+      "objective": "Verify the ecological terminology 'Autotrophism' and 'Heterotrophism' as used to label groups of organisms, distinguish autotrophs/heterotrophs from autotrophy/heterotrophy, and bind delivery corrections only if authoritative sources support them. Preserve original source bytes.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T2-W06.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T2",
+        "AG-WK-T2-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T2-W06: source headings may conflate organism categories with modes of nutrition.",
+      "completion_condition": "A sourced correction-binding record supports each proposed term and preserves original wording."
     }
   ],
   "review": {
@@ -4224,7 +4333,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T2-W06",
     "AG-WK-T2-W07",
     "AG-WK-T2-W08",
     "AG-WK-T2-W09",
@@ -4287,9 +4395,11 @@
     "AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION",
     "AG-FACT-T2-W02-03-GREEN-MANURE-ITEM",
     "AG-FACT-T2-W04-05-MULCHING-MCQ",
+    "AG-FACT-T2-W06-POLYGASTRIC-ITEM",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-CORR-T2-W02-03-SOURCE-TERMS",
     "AG-CORR-T2-W04-05-TABLE-TEXT",
+    "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
     "AG-LES-T1-W02-AGRO-INDUSTRIES",
@@ -4306,6 +4416,7 @@
     "AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS",
     "AG-LES-T1-W10-MONOCOT-DICOT-TABLE",
     "AG-LES-T2-W04-05-YAM-PRACTICES",
+    "AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS",
     "AG-TEST-PACKAGE"
   ]
 }
