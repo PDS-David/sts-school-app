@@ -53,6 +53,39 @@ jobs:
           sudo apt-get install -y libreoffice-writer
           mkdir -p /tmp/cc-extract/pdf
           libreoffice --headless --convert-to pdf --outdir /tmp/cc-extract/pdf /tmp/cc-extract/term2.doc /tmp/cc-extract/term3.doc
+      - name: Extract and verify the original embedded tablecloth photograph
+        run: |
+          python -m pip install --quiet olefile Pillow
+          python <<'PY'
+          import hashlib
+          from io import BytesIO
+          from pathlib import Path
+          import olefile
+          from PIL import Image
+          doc = '/tmp/cc-extract/term3.doc'
+          ole = olefile.OleFileIO(doc)
+          data = ole.openstream('Data').read()
+          stream_hash = hashlib.sha256(data).hexdigest()
+          expected_stream = '7a64c327035440c83ebc4161eeb45986692650cc3247a002ab17b171b71da991'
+          assert len(data) == 379993 and stream_hash == expected_stream, (len(data), stream_hash)
+          start = 261
+          assert data[start:start+2] == b'\\xff\\xd8'
+          end = data.find(b'\\xff\\xd9', start)
+          assert end > start
+          jpeg = data[start:end+2]
+          image_hash = hashlib.sha256(jpeg).hexdigest()
+          expected_image = 'd48e6dcd9d9ba066355b9f0fc8d16f75f29d284a02a7cfabbb720acae67ea728'
+          assert image_hash == expected_image, image_hash
+          image = Image.open(BytesIO(jpeg))
+          image.verify()
+          image = Image.open(BytesIO(jpeg))
+          assert image.size == (1102, 748), image.size
+          Path('/tmp/cc-extract/tablecloth-source.jpg').write_bytes(jpeg)
+          with open('/tmp/cc-extract/verification.txt', 'a') as f:
+              f.write(f'Data_stream_sha256={stream_hash}\\n')
+              f.write(f'tablecloth_jpeg_sha256={image_hash}\\n')
+              f.write(f'tablecloth_dimensions={image.size[0]}x{image.size[1]}\\n')
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: catering-craft-private-source-extract
@@ -60,6 +93,7 @@ jobs:
             /tmp/cc-extract/verification.txt
             /tmp/cc-extract/term2.txt
             /tmp/cc-extract/term3.txt
+            /tmp/cc-extract/tablecloth-source.jpg
             /tmp/cc-extract/pdf/*.pdf
           retention-days: 1
           if-no-files-found: error
