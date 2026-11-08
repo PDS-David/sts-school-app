@@ -3659,12 +3659,13 @@
     {
       "id": "BIOLOGY-T3-W01-MICROBE-FACTS",
       "kind": "FACT",
-      "detail": "The Leeuwenhoek history statement (38), microbial classification/claims (40-54), air-culture wording (73-74), normal flora/antibiotic statement (76), disease examples (43-49) and vector/disease table (84) need authoritative review. The table prints 'Vibro cholera' and links it to housefly/cholera and typhoid.",
-      "required_action": "Verify historical, microbiological and disease/vector claims against authoritative primary sources; record exact citations and keep corrected supplemental text distinct from the original source. Do not turn this indexing task into a practical culturing protocol.",
+      "detail": "The Leeuwenhoek history statement (38), microbial classification/claims (40-54), air-culture wording (73-74), normal flora/antibiotic statement (76), disease examples (43-49) and vector/disease table (84) need authoritative review. The table prints 'Vibro cholera' and links it to housefly/cholera and typhoid. The vector/carrier table at block 84 is a native 5-row × 3-column table; flattened extraction does not preserve row/cell associations. It prints the source spelling 'Vibro cholera' and links housefly to cholera and typhoid. These pairings are preserved as source claims, not endorsed; any delivery table must restore semantic rows after authoritative review.",
+      "required_action": "Verify historical, microbiological and disease/vector claims against authoritative primary sources; record exact citations and keep corrected supplemental text distinct from the original source. Do not turn this indexing task into a practical culturing protocol. Include disease/vector table row-by-row in the authoritative review; retain the source spelling and mapping as source evidence, record any corrections separately, and require a semantic three-column table for delivery.",
       "affected_ids": [
         "COV-BIO-T3-W01-MICROORGANISMS",
         "COV-BIO-T3-W01-IDENTIFICATION-CARRIERS",
-        "COV-BIO-T3-W01-ASSESSMENT"
+        "COV-BIO-T3-W01-ASSESSMENT",
+        "BIO-VIS-T3-TBL-VECTORS"
       ],
       "blocks_delivery": true
     },
