@@ -2986,6 +2986,18 @@
         "SS1-SRC-7aa642b0085b"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W04-05-CEREALS-TABLE-STRUCTURE",
+      "kind": "CONTENT",
+      "detail": "The original Second Term cereals table at block 286 is a 17-row, three-column Word table: a blank S/N header, Maize and Rice columns, and sixteen attribute rows. The Word structure preserves each crop/value pairing, but the concatenated plain-text block removes cell separators and makes attribute/value boundaries ambiguous.",
+      "required_action": "When the owner-authorised importer/lesson mapping stage binds the original Weeks Four–Five lesson, preserve the Maize and Rice columns and all sixteen attribute rows as a structured table or explicit paired list. Retain every numeric value, unit, range, date and spelling exactly as printed; do not normalize or correct figures in this visual task. Do not rely on concatenated plain text or create a duplicate supplement for already-taught content. If the frozen importer/schema cannot preserve the table, request a versioned foundation change.",
+      "affected_ids": [
+        "COV-AG-T2-W04-05-SELECTED-CROPS",
+        "AG-VIS-T2-TBL-CEREALS",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
