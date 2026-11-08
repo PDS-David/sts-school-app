@@ -216,7 +216,7 @@ test('Owner-confirmed second-term duplicate is excluded by matching parsed teach
     assert.equal(c.source_id, 'SS1-SRC-97c1db5b1eb0', 'the registered T2 source is only the term-bucket key');
     assert.equal(c.status, 'IMPLEMENTED_EQUIVALENT');
     assert.equal(c.lesson_ids.length, 1);
-    assert.match(c.lesson_ids[0], /^SUP-SS1-BOOKKEEPING-T2-W\\d{2}$/);
+    assert.match(c.lesson_ids[0], /^SUP-SS1-BOOKKEEPING-T2-W\d{2}$/);
     assert.match(c.objective_locator, /not the duplicate source body/);
     assert.match(c.evidence[0].explanation, /solely the assigned second-term manifest bucket/);
   }
@@ -289,12 +289,12 @@ test('Owner-approved first-term delivery corrections bind each exact original bo
 test('First-term extension lessons populate Weeks 5-10 without claiming recovered source pages', () => {
   const p = packageSchema.parse(raw);
   const expected = new Map([
-    ['SUP-SS1-BOOKKEEPING-T1-W05-DOUBLE-COLUMN-LAYOUT', '92a8db103cc7fcc8ced28a9c822b2edcf3e0a88e31affc5ba5a4e9b596ddc52b'],
-    ['SUP-SS1-BOOKKEEPING-T1-W06-DOUBLE-COLUMN-PREPARATION', 'a3861e6190af106480cebfaadc57ba16b097ea4e620c5507c6599bfa98b35537'],
-    ['SUP-SS1-BOOKKEEPING-T1-W07-CONTRA-PRACTICE', '0c6a283cb79ea1b6d57b4a809b265da22019dd6579b06867442236035bf1e613'],
-    ['SUP-SS1-BOOKKEEPING-T1-W08-DOUBLE-ENTRY-FOUNDATION', 'c60d15c908b507cfd8d9db7cdfb47b77fbfc2622e5731fb8701e7f88a474c09c'],
-    ['SUP-SS1-BOOKKEEPING-T1-W09-DEBIT-CREDIT-IDENTIFICATION', '9e1e346c3dd71117667d43adb0d5a72ce552474010076917a62d06a3284496b0'],
-    ['SUP-SS1-BOOKKEEPING-T1-W10-CASHBOOK-TO-LEDGER', '0050d6d44ee44d7439a95cb3e57e9ce38550aef84c45723dcfa373cb8a1c9ea9'],
+    ['SUP-SS1-BOOKKEEPING-T1-W05-DOUBLE-COLUMN-LAYOUT', '2e7da7cc0c764fc75adf97957211d7936ba19a4c8b8574c4ff3c06fb7e49ccc9'],
+    ['SUP-SS1-BOOKKEEPING-T1-W06-DOUBLE-COLUMN-PREPARATION', '3344375aa2da1567815adb31ba818ead1a432298fa0d32b71332dfc850f78bab'],
+    ['SUP-SS1-BOOKKEEPING-T1-W07-CONTRA-PRACTICE', '2e02958366bc070ac053d3bd8cd6ef6e04f75d93fd44cd6175c65fad1a04b177'],
+    ['SUP-SS1-BOOKKEEPING-T1-W08-DOUBLE-ENTRY-FOUNDATION', 'e83139ef64dacf1408c4e3b4a4ee1e623865a0be918eb5f7ce6232197fc9b26c'],
+    ['SUP-SS1-BOOKKEEPING-T1-W09-DEBIT-CREDIT-IDENTIFICATION', '8f26052d3b161ffe71f34906e83f354962c1b7ee4f194a92e70124b4a1d8d91a'],
+    ['SUP-SS1-BOOKKEEPING-T1-W10-CASHBOOK-TO-LEDGER', '633a1ec5d574e2702a6c5476a1563a4648f42bb79b241a2307ee24545d629e05'],
   ]);
   for (const [id, bodyHash] of expected) {
     const lesson = p.lessons.find(x => x.id === id);
