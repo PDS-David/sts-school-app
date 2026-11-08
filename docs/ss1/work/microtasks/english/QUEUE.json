@@ -142,7 +142,10 @@
     "ENG-FACT-W09-EXTERNAL-MATERIALS (2026-11-08): Source archive reinspection confirms Effective English Unit 3 page 54 is not present in the supplied English member. The remaining Week 9 VR05 assignment is coupled to the unresolved Christian-centred versus multi-faith scope decision. User's source-fidelity instruction requires exact source terms and no topic substitution or rewriting. Marked BLOCKED pending teacher scope decision and authorised page/edition or explicit acceptance of a labelled equivalent.",
     "EXECUTION DIRECTIVE (owner-approved, 2026-11-08): Maintain uninterrupted delivery. If a required external resource is unavailable, use a credible close-equivalent online resource or create a clearly labelled original resource; never represent substitute/generated material as an original prescribed extract. Continue independent tasks in parallel and do not block the queue on a single missing input. Make reasonable curriculum decisions from available evidence; escalate only genuinely essential teacher decisions, once, while continuing all unaffected work. Prioritise implementation speed, incremental testing, and verified completion; avoid repeated questions and repeated audits. This directive supersedes any queue note that treats an absent attachment as a reason to halt all work.",
     "ENG-LES-T1-W09-RELIGION-VOCAB (2026-11-08): Added SUP-SS1-ENGLISH-RELIGION-VOCAB-T1-W09 as an original, neutral and inclusive equivalent. Defined the source's seven glossed words, thirteen unglossed terms and weekend vocabulary; explicitly identified Christian-specific terminology; added examples and a 29-mark keyed exercise with marking guide. Bound VR01-VR04 as IMPLEMENTED_EQUIVALENT and resolved the content gap. Source wording remains unchanged; content approval PENDING and verification DEFERRED.",
-    "ENG-LES-T1-W11-JUDICIARY-VOCAB (2026-11-08): Added SUP-SS1-ENGLISH-JUDICIARY-VOCAB-T1-W11 with original SS1-level court roles, participants, legal processes and vocabulary; clear distinctions, neutral examples and 22-mark keyed practice. Bound ENGLISH-T1-W11-VO01 as IMPLEMENTED_EQUIVALENT and resolved the vocabulary gap. The source had no prescribed word list; no such list is claimed. Content approval PENDING; verification DEFERRED."
+    "ENG-LES-T1-W11-JUDICIARY-VOCAB (2026-11-08): Added SUP-SS1-ENGLISH-JUDICIARY-VOCAB-T1-W11 with original SS1-level court roles, participants, legal processes and vocabulary; clear distinctions, neutral examples and 22-mark keyed practice. Bound ENGLISH-T1-W11-VO01 as IMPLEMENTED_EQUIVALENT and resolved the vocabulary gap. The source had no prescribed word list; no such list is claimed. Content approval PENDING; verification DEFERRED.",
+    "ENG-LES-T2-W06-WORD-ASSIGNMENT (2026-11-08): Added SUP-SS1-ENGLISH-RELIGION-IPA-T2-W06. Interpreted 'transcribe' as phonemic transcription in the English pronunciation context; used the package's established broad British English model, stated it explicitly, and acknowledged accent variants. Four transcriptions and stress positions have a keyed 14-mark exercise. AS01 is IMPLEMENTED_EQUIVALENT; no source pronunciation model was claimed.",
+    "ENG-LES-T2-W09-ASSIGNMENT-RUBRIC (2026-11-08): Added SUP-SS1-ENGLISH-ESSAY-ASSIGNMENT-PLANS-T2-W09 with original plans for both supplied titles and a common 30-mark rubric. No choice rule, length or time was invented; the teacher sets those administration details. AS01 is IMPLEMENTED_EQUIVALENT.",
+    "ENG-LES-T2-W10-REVISION (2026-11-08): Added SUP-SS1-ENGLISH-REVISION-T2-W10, an original cumulative 40-mark review of available taught Second Term Weeks 1-9, with a new passage, keyed answers and marking guide. The source's general revision heading does not specify scope or test format; the supplement states its scope and is not represented as recovered source material. RV01 is IMPLEMENTED_EQUIVALENT."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -155,8 +158,8 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 228,
-    "PENDING": 5,
+    "IMPLEMENTED_TESTING_DEFERRED": 231,
+    "PENDING": 2,
     "BLOCKED": 9
   },
   "items": [
@@ -6400,8 +6403,8 @@
       "depends_on": [
         "ENG-WK-T2-W06"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by ENG-WK-T2-W06 on 2026-11-07; not implemented. Open item ENGLISH-T2-W06-ASSIGNMENT-GAP.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json: SUP-SS1-ENGLISH-RELIGION-IPA-T2-W06. Four broad British English IPA transcriptions with stress marks and a keyed 14-mark exercise. The accent model is explicit; variants are acknowledged. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "AS01 has evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -6624,8 +6627,8 @@
       "depends_on": [
         "ENG-WK-T2-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by ENG-WK-T2-W09 on 2026-11-07; not implemented. Open item ENGLISH-T2-W09-ASSIGNMENT-RUBRIC.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json: SUP-SS1-ENGLISH-ESSAY-ASSIGNMENT-PLANS-T2-W09. Original paragraph plans for both supplied essay titles and a common 30-mark rubric. The source choice rule, length and timing remain unspecified and are not invented. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "AS01 has evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -6657,8 +6660,8 @@
       "depends_on": [
         "ENG-WK-T2-W10"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by ENG-WK-T2-W10 on 2026-11-07; not implemented. Open item ENGLISH-T2-W10-REVISION-SCOPE.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json: SUP-SS1-ENGLISH-REVISION-T2-W10. Original cumulative 40-mark revision of available taught Second Term Weeks 1-9, with original passage, keyed responses and marking guide; not represented as source-authored revision. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "RV01 has evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -7734,9 +7737,6 @@
   },
   "next_runnable": [
     "ENG-LES-T2-W05-TOPIC-SCOPE",
-    "ENG-LES-T2-W06-TOPIC-SCOPE",
-    "ENG-LES-T2-W06-WORD-ASSIGNMENT",
-    "ENG-LES-T2-W09-ASSIGNMENT-RUBRIC",
-    "ENG-LES-T2-W10-REVISION"
+    "ENG-LES-T2-W06-TOPIC-SCOPE"
   ]
 }
