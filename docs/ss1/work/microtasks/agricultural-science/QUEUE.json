@@ -25,7 +25,8 @@
     "AG-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, marker, week-indexing and visual items; the 3rd Term inventory remains unread. No lesson, coverage entry, rule, correction or asset was written.",
     "AG-WK-T1-W09 (2026-11-03) indexed Week 9 at objective level: scheme entry 9 taught in blocks 721-843; farmstead (785-786) and forestry (793-801, 855) untaught anywhere in the term; two bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written.",
     "AG-WK-T1-W01 (2026-11-06) indexed Week 1 at objective level: scheme entry 1 mapped to blocks 53-107 as three SUPPORTED rows against the reproduced generic parsed-row id; agronomy, crop pathology and entomology (block 77) are never defined and the source has no answer key, so two UNRESOLVED rows and two bounded lessons were appended. The agro-based/agro-allied items at blocks 95, 112, 118 and 135 depend on Week 6. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written.",
-    "AG-INV-T3 (2026-11-08) inventoried the attached 3rd Term Agricultural Science DOCX after verifying its exact member SHA-256 against SOURCE_ASSIGNMENTS.csv. Ten teaching-week bodies (WEEK ONE–WEEK TEN) were found; scheme items 11 Revision and 12 Examination have no instructional bodies. Preamble, practical project, four tables, 18 embedded body image groups, respiration equations, inline Office Math, parser-rule findings and pig/cattle chemical/dose content were recorded. No package lesson, coverage, source rule, correction or asset was written; 37 bounded indexing/marker/visual tasks were appended. Composite ZIP hash and importer/rendering remain unverified/deferred."
+    "AG-INV-T3 (2026-11-08) inventoried the attached 3rd Term Agricultural Science DOCX after verifying its exact member SHA-256 against SOURCE_ASSIGNMENTS.csv. Ten teaching-week bodies (WEEK ONE–WEEK TEN) were found; scheme items 11 Revision and 12 Examination have no instructional bodies. Preamble, practical project, four tables, 18 embedded body image groups, respiration equations, inline Office Math, parser-rule findings and pig/cattle chemical/dose content were recorded. No package lesson, coverage, source rule, correction or asset was written; 37 bounded indexing/marker/visual tasks were appended. Composite ZIP hash and importer/rendering remain unverified/deferred.",
+    "AG-PRE-T1 (2026-11-08) classified First Term preamble blocks 0-44: cover/branding, generic term heading, subject/class metadata, scheme structure/items 1-12, references and blank blocks. Reused existing alias and SCHEME_ONLY marker rules/coverage; scheme objectives 1-10 remain delegated to weekly indexing. No package content, rules, coverage, corrections or assets changed. Testing deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -39,8 +40,8 @@
     "LESSON": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 10,
-    "PENDING": 68,
+    "IMPLEMENTED_TESTING_DEFERRED": 11,
+    "PENDING": 67,
     "BLOCKED": 2
   },
   "items": [
@@ -340,8 +341,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): blocks 0-44, range sha256 6c16cc92e1f72d3f0deaa85356717c814d7044ca83597343d2b50b2a1f533e50; scheme heading block 11 'WEEK  TOPIC'; scheme items blocks 12-23 are one Word auto-numbered list (numId 1, level 0) so the week numbers 1-12 are implicit and absent from the extracted text; four reference books (blocks 26-29). Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/agricultural-science/AG-PRE-T1.md; blocks 0-44 classified from AG-INV-T1; preamble range SHA-256 6c16cc92e1f72d3f0deaa85356717c814d7044ca83597343d2b50b2a1f533e50. Existing source_alias and two SCHEME_ONLY marker rules/coverage rows reused; scheme items 1-10 delegated to weekly indexing. No package content/rule/coverage/asset changes. Testing deferred by owner.",
       "completion_condition": "Every non-week block hash-accounted and mapped or recorded as an explicit open item; no coverage, rule or lesson invented by this item beyond what it names."
     },
     {
@@ -3064,7 +3065,6 @@
     }
   },
   "next_runnable": [
-    "AG-PRE-T1",
     "AG-PRE-T2",
     "AG-PRE-T3",
     "AG-WK-T1-W02",
