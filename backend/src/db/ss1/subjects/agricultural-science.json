@@ -335,6 +335,72 @@
           "explanation": "The original source body is present and verified, but the package currently has no lesson records and the importer/parsed-row mapping has not been run. PARTIAL means source-supported but not yet mapped to a deliverable lesson row; no source lesson ID or supplement ID is guessed."
         }
       ]
+    },
+    {
+      "id": "COV-AG-T1-W03-PROBLEMS",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Scheme entry 3: Problems of Agricultural Development in Nigeria and their Possible Solutions",
+      "objective_locator": "SS1-SRC-7aa642b0085b, word/document.xml direct w:body block 14 (0-based); Week 3 label block 186 and topic block 188",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 3 blocks 193-287; numbered headings at 193, 198, 203, 210, 219, 225, 232, 241, 245, 250, 257, 266, 272, 277 and 282",
+          "explanation": "The body enumerates fifteen problems: inadequate land/land tenure; inadequate basic/social amenities; poor farmer finances; high-interest loans/credit; farmer illiteracy; transport; storage/processing; marketing; pests/diseases; poor agricultural inputs; unfavourable climate; crude tools; inadequate extension workers; inconsistent government policies; and natural hazards/environmental degradation."
+        },
+        {
+          "locator": "Week 3 solution blocks 195-196, 200-201, 205-208, 212, 222-223, 227-230, 234-237, 243, 247-248, 252-253, 259-261, 268-270, 274-275 and 284-287",
+          "explanation": "Each listed problem has at least one proposed solution; the high-interest-credit problem at 210-212 explicitly refers back to the poor-financial-status solutions at 205-208. One storage/processing solution sentence at block 235 is malformed and cannot be safely reconstructed from its wording; this is separately recorded."
+        },
+        {
+          "locator": "Week 3 evaluation blocks 214-217, 238-239, 263-264 and 291-292; general evaluation/theory blocks 294-299 and 311-313",
+          "explanation": "The staged evaluations ask for solutions to the corresponding problems; the general evaluation/theory ask for five problems and two solutions each, extension-agent definition/roles, four natural-hazard solutions and five agricultural inputs. Most are supported by the numbered teaching; the broad extension-roles question exceeds the one role stated in block 273."
+        },
+        {
+          "locator": "Week 3 range blocks 186-326; SHA-256 fbc4d190de76b9f916b8349eb1e2b34992b3a9f1839aad4aeb175ccc37ecfefb",
+          "explanation": "The source teaching is present, but package lessons are still empty and no importer/parsed-row identity has been confirmed. PARTIAL is a delivery-mapping limitation, not an absence of source teaching."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T1-W03-EXTENSION-ROLES",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Extension agents: their roles in agricultural development, beyond the single teaching role of teaching farmers improved methods",
+      "objective_locator": "Week 3 general evaluation block 297 (sha256 5e0b71a696771a1bfc8c5d3bd972c6534773a6a56e63444d74e2baab0c6cf218)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 3 block 273 (sha256 8d43a0afc134afb021143d0d9e009e9b5276113559a5136cbf0d5d3ee8b0a93a)",
+          "explanation": "The only explicit role stated is teaching farmers improved methods of farming."
+        },
+        {
+          "locator": "Week 3 blocks 274-275",
+          "explanation": "These blocks discuss training, employment and incentives for extension workers, not a broader list of their agricultural-development roles."
+        },
+        {
+          "locator": "Whole First Term source search for 'extension agent' and 'extension workers'",
+          "explanation": "The document contains the phrase in Week 3 only; no further role list is provided. The general-evaluation question asks learners to discuss plural roles."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T1-W03-INPUT-TERMINOLOGY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Assessment terminology: identify herbicides as weed-control chemicals and distinguish related agricultural-input terms used in the Week 3 weekend assignment",
+      "objective_locator": "Week 3 weekend assignment block 309 (sha256 373bd5e2b5f2d226e094530e3d94b8323d0af6e923dc9bb77d5f47d917300e89)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 3 blocks 204 and 251; Week 4 block 396; Week 6 block 498",
+          "explanation": "Herbicides are named among agricultural inputs or agro-chemical products, but none of these blocks defines their function. Block 309 asks what chemical is used to destroy weeds; no definition or answer key is supplied."
+        },
+        {
+          "locator": "Whole First Term source search for 'herbicide', 'weedicide' and 'insecticide'",
+          "explanation": "The document lists herbicides in several places but does not explain the distinctions between the terms in the Week 3 question's options."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -453,6 +519,63 @@
       "required_action": "Research authoritative Nigerian agricultural-export evidence and determine whether the item has a defensible answer for the source's context; if not, record a source-backed correction or mark the question unresolved. Do not infer the answer from omission alone.",
       "affected_ids": [
         "AG-FACT-T1-W02-EXPORT-ITEM",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W03-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 3's scheme objective is taught in the source as fifteen numbered agricultural-development problems and their solutions (blocks 193-287), but the subject package has no lessons and no importer-confirmed parsed-row ID. COV-AG-T1-W03-PROBLEMS is PARTIAL only for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the exact parsed original row and bind COV-AG-T1-W03-PROBLEMS to it; do not guess an original lesson ID or create duplicate teaching for the source-supported objective.",
+      "affected_ids": [
+        "COV-AG-T1-W03-PROBLEMS",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W03-EXTENSION-ROLES",
+      "kind": "CONTENT",
+      "detail": "The Week 3 general evaluation block 297 asks learners to discuss the roles of agricultural extension in development. The only role explicitly taught is that extension agents teach farmers improved methods (block 273); blocks 274-275 discuss recruitment/training/incentives rather than a broader role set. COV-AG-T1-W03-EXTENSION-ROLES is UNRESOLVED.",
+      "required_action": "Author AG-LES-T1-W03-EXTENSION-ROLES as a clearly labelled supplement with reliable source provenance, examples and complete keyed practice; do not attribute unsupported roles to the original source.",
+      "affected_ids": [
+        "COV-AG-T1-W03-EXTENSION-ROLES",
+        "AG-LES-T1-W03-EXTENSION-ROLES",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W03-INPUT-TERMINOLOGY",
+      "kind": "CONTENT",
+      "detail": "Week 3 weekend assignment block 309 asks which chemical destroys weeds. Herbicide is named only as an input at blocks 204, 251, 396 and 498; no block defines it or distinguishes it from pesticide, weedicide or insecticide. COV-AG-T1-W03-INPUT-TERMINOLOGY is UNRESOLVED. No doses or application instructions occur in this source.",
+      "required_action": "Author AG-LES-T1-W03-INPUT-TERMINOLOGY as a bounded terminology supplement with reliable references and safe, non-operational definitions; do not add doses, rates, mixing or handling directions.",
+      "affected_ids": [
+        "COV-AG-T1-W03-INPUT-TERMINOLOGY",
+        "AG-LES-T1-W03-INPUT-TERMINOLOGY",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W03-CREDIT-OPTIONS",
+      "kind": "FACT",
+      "detail": "Week 3 weekend assignment block 310 asks where farmers can collect credit facilities and lists commercial banks, agricultural banks, thrift and savings societies, and mortgage. The source mentions commercial/agricultural bank loans (block 207) but does not teach thrift/savings societies or explain why mortgage is the exception.",
+      "required_action": "Verify the options against authoritative Nigerian agricultural-finance sources and determine whether the item has a defensible answer; do not rely on intuition alone or infer a key from the options.",
+      "affected_ids": [
+        "AG-FACT-T1-W03-CREDIT-OPTIONS",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W03-STORAGE-SOLUTION",
+      "kind": "CONTENT",
+      "detail": "Week 3 storage/processing solution block 235 reads '(b) Government should such as millers and threshers should be made available to farmers at subsidized rate.' The intended missing phrase or subject is not recoverable from the source wording and no alternate source has been verified.",
+      "required_action": "Investigate whether the exact intended statement can be recovered from a verified duplicate/parallel source. If not, preserve the original wording and leave the proposed solution unresolved; do not silently repair or invent missing words.",
+      "affected_ids": [
+        "AG-CORR-T1-W03-STORAGE-SOLUTION",
         "SS1-SRC-7aa642b0085b"
       ],
       "blocks_delivery": true
