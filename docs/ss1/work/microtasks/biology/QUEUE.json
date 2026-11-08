@@ -334,8 +334,8 @@
         "BIO-SRC-T2",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/biology.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Test source written at tests/ss1/biology.package.test.mts following the French package test pattern. It validates schema parsing, exact Biology source-to-SOURCE_ASSIGNMENTS.csv identity for all three terms, and conditional guards for any rules, lessons, corrections or assets present. Per owner instruction, the test file was not executed.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -2221,8 +2221,8 @@
         "BIO-INV-T2",
         "BIO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T2): block 827 holds a drawing of 10 shapes and 18 text boxes; its extracted text is HAWKS, LIZARDS, GRASSHOPPERS, GRASSES, the numbers 25, 12, 4 and a 'Decreasing number of ogranisms' (sic) caption, and the whole text appears twice, which looks like duplicated alternate-content fallback and may double text in a parser. Order and relative size are carried by the shapes.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Disposition report BIO-VIS-T2-SHP-PYRAMID.md (2026-11-08): source block 827 contains a 10-shape/18-text-box pyramid drawing. Extracted labels and numbers are recorded, but plain-text extraction duplicates the text and loses the shape geometry that establishes vertical order and relative widths. No level-to-number pairing or ordered list is inferred. The source drawing is preserved as source evidence; a follow-up remains blocked pending visual reinspection of the original .doc drawing.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -5774,6 +5774,40 @@
       "status": "PENDING",
       "implementation_reference": "Appended after the food-web figure disposition (2026-11-08). The source figure is absent from text extraction, its reuse rights are not recorded, and its 'Poducer' typo requires a delivery-only correction note. The redraw must not invent ambiguous arrow links.",
       "completion_condition": "A legible project-authored food web uses the visible labels, corrects 'Poducer' to 'Producer' with a note, preserves only verified arrow connections, is registered under backend/src/db/ss1/assets/biology/ with schema-compliant metadata/provenance, and leaves the source image untouched."
+    },
+    {
+      "id": "BIO-VIS-T2-SHP-PYRAMID-ORDER",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 9 pyramid of numbers, block 827; original shape drawing (10 shapes, 18 text boxes)",
+      "objective": "Reinspect the original source drawing at full resolution and map each organism label and population number to its correct pyramid level and shape width. Record the top-to-bottom order, exact number-to-level pairing, and caption. Do not infer layout from duplicated text extraction.",
+      "required_files": [
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T2-SHP-PYRAMID.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T2-SHP-PYRAMID-ORDER.md"
+      ],
+      "depends_on": [
+        "BIO-VIS-T2-SHP-PYRAMID",
+        "BIO-SRC-T2"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked until the original .doc is available for full-resolution visual inspection. Current inventory confirms labels and numbers but does not preserve their spatial pairing.",
+      "completion_condition": "A visual inspection report records every pyramid level top-to-bottom, its organism label(s), exact number, relative width and caption; the resulting semantic order can then be restated without guessing."
     }
   ],
   "review": {
