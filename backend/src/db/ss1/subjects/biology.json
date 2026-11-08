@@ -1763,6 +1763,126 @@
           "explanation": "Several association examples/claims and the mismatched commensalism option require approved-reference/teacher review before a keyed assessment is created."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T3-W01-MICROORGANISMS",
+      "source_id": "SS1-SRC-78059230037f",
+      "objective": "3rd Term Week 1 scheme: Micro-organisms Around Us — description and groups",
+      "objective_locator": "Scheme row 1; label block 25 (sha256 95035b774fa79cba584a3293bfc6dcb0df22dc8e14bf9b934f8172bff079eb35); teaching blocks 35-55 (range sha256 4206aca8082e734de04e2c8f5e595afe39d3dc65c49dff0482dede38b3a17bb1)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 35-40",
+          "explanation": "Defines microorganisms/microbes, describes their occurrence and introduces groups including viruses, bacteria, protists, fungi, algae and cyanobacteria. The heading at block 35 is printed 'DESCRIPTION AND GROUS OF MICROORGANISMS'; source spelling is preserved."
+        },
+        {
+          "locator": "blocks 41-49",
+          "explanation": "Describes bacterial characteristics and shapes (cocci, streptococci, staphylococci, diplococci, bacilli, spirilla, spirochaetes and vibrios), with source-stated disease examples."
+        },
+        {
+          "locator": "blocks 50-51",
+          "explanation": "Describes viruses, their size range, DNA or RNA and protein coat, and contrasts their state outside living organisms."
+        },
+        {
+          "locator": "blocks 52-54",
+          "explanation": "Describes protists, fungi and algae and gives examples and habitats."
+        },
+        {
+          "locator": "block 56; image at block 55",
+          "explanation": "A bacterial-shapes figure is embedded at block 55 (649×599 PNG, SHA-256 3150bccfa985db5e26f851cec90b8d66b442a1db104c514d70c342f697d613ba); its visual preservation is assigned to BIO-VIS-T3-W01-BACTERIA-SHAPES."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No Biology lesson is registered for microorganism groups; source-only teaching is not deliverable."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T3-W01-CULTURING",
+      "source_id": "SS1-SRC-78059230037f",
+      "objective": "3rd Term Week 1: concept of culturing — culture medium, culture, pure/axenic and mixed culture, agar",
+      "objective_locator": "Heading block 62; teaching blocks 62-66 (range sha256 8f333361f40dbac6f1ec5b0eeeab49a55e50411b9bd879b8b15f59b20aa78ecb)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 63-66",
+          "explanation": "Explains that microbes may be cultivated under laboratory conditions, defines culture medium and culture, distinguishes pure/axenic from mixed cultures, and identifies agar as a solidifying agent extracted from red algae. The source gives no detailed culture protocol, quantities, temperatures or times."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No approved lesson or laboratory safety resource is registered. The source-only culturing description is not an approved practical protocol."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T3-W01-IDENTIFICATION-CARRIERS",
+      "source_id": "SS1-SRC-78059230037f",
+      "objective": "3rd Term Week 1: identification of microorganisms and carriers/vectors",
+      "objective_locator": "Identification heading block 71; teaching blocks 71-77 (range sha256 0d187efe6259fc28da34184c71437cc632aea73182a02cf7320756e386210681); carrier heading block 82; teaching blocks 82-85 (range sha256 4725209b740418c025559827ba681be7bee0bf5b43b66fd354ac7c6fe7120637)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 71-77",
+          "explanation": "Lists identification approaches (microscopes, stains, colony types, food and oxygen requirements), mentions culture plates and high-level sterilisation of Petri dishes, and describes routes by which pathogens enter the body. Block 73 gives no time, temperature, quantities or detailed procedure."
+        },
+        {
+          "locator": "blocks 82-83",
+          "explanation": "Defines carriers as living or non-living and distinguishes mechanical from biological transmission by animal vectors."
+        },
+        {
+          "locator": "block 84 table (5 rows × 3 columns; text hash 41b3dd72df3e9f92f0505586554f78cb7cd5de26a9842043b4da31eddc74a4a0)",
+          "explanation": "Lists Anopheles/Plasmodium/malaria, tsetse fly/Trypanosome/sleeping sickness, housefly/'Vibro cholera'/cholera and typhoid, and Aedes mosquito/virus/yellow fever. The source's 'Vibro cholera' spelling and disease mapping are preserved pending authoritative review. Table preservation is assigned to BIO-VIS-T3-W01-VECTOR-TABLE."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for identification/carriers; source-only content is not deliverable."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T3-W01-ASSESSMENT",
+      "source_id": "SS1-SRC-78059230037f",
+      "objective": "3rd Term Week 1 evaluation, general evaluation, weekend assignment and theory",
+      "objective_locator": "Evaluation blocks 58-60, 67-69, 78-80, 86-89; general evaluation 91-95; reading 96; weekend assignment 97-102; theory 103-105",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "evaluation blocks 58-60 (range sha256 591b07ad9d1b56a4c4c704f601044b66456b29054f34f5c4cd782f3ad6f85843)",
+          "explanation": "Microorganism definition and groups are taught at 36-54."
+        },
+        {
+          "locator": "evaluation blocks 67-69 (range sha256 9e7e5ca5802de624485423cdc6eafeb44aebb8deb6a9708ca53e9ca24674e2ef)",
+          "explanation": "Culture medium and pure/axenic versus mixed cultures are taught at 63-65."
+        },
+        {
+          "locator": "evaluation blocks 78-80 (range sha256 3bb00f4638df8af1ee9f64748230db9e6f6b56933e59fb9da08f7b5376de9816)",
+          "explanation": "Soil/sewage microbe examples and pathogen entry routes are listed at 75-77."
+        },
+        {
+          "locator": "evaluation blocks 86-89 (range sha256 2d603809182546aff0e0693efcb754f84d0d9747ef943cd667a8f633f763f4a8)",
+          "explanation": "Vector definition and mechanical/biological transmission are described at 83. No answer key is supplied."
+        },
+        {
+          "locator": "general evaluation blocks 91-95 (range sha256 1c02212f7a3248ff9b12ec01d7515e80a70044ad5b9de83aa475bf5938a30467)",
+          "explanation": "Microorganism examples, agar, transmission routes and vector/disease pairs are asked. Some disease/vector spellings and mappings need authoritative review; no key is supplied."
+        },
+        {
+          "locator": "reading assignment block 96",
+          "explanation": "College Biology, chapter 21, pages 465-484. The cited book is not in the archive and was not opened."
+        },
+        {
+          "locator": "weekend assignment blocks 97-102 (range sha256 3170cc1353e07abb5cdb8f2b0a8292dae83e6c9635c095b0210c6cb269435ead)",
+          "explanation": "Streptococci chains (98), Penicillium not being a protozoan (100) and Plasmodium not being a fungus (102) are supported by the teaching. Q99 asks why viruses are considered living and offers 'possess transmittable characters'; the source describes viral structure and dependence on living cells but does not teach this rationale. Q101's culture definition is supported by block 64. No answer key is supplied."
+        },
+        {
+          "locator": "theory blocks 103-105 (range sha256 413b4ac0b74c638fad4e09bd77089444ce61ad952566059c29bc8948a17ca2bb)",
+          "explanation": "Pathogens/vectors definitions are supported by blocks 76-83 and virus structure by block 51. No marking guide is supplied."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -2555,6 +2675,51 @@
       "required_action": "A Biology teacher should approve keyed responses and marking, with Q952's intended association and answer option clarified.",
       "affected_ids": [
         "COV-BIO-T2-W10-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W01-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 1 microorganism groups, culturing, identification and carriers are described in the source, but the Biology package has no registered lessons.",
+      "required_action": "Author and bind approved lesson content, retaining original source wording and separating any verified supplements.",
+      "affected_ids": [
+        "COV-BIO-T3-W01-MICROORGANISMS",
+        "COV-BIO-T3-W01-CULTURING",
+        "COV-BIO-T3-W01-IDENTIFICATION-CARRIERS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W01-CULTURE-SAFETY",
+      "kind": "OWNER_ACTION",
+      "detail": "The source mentions culturing microorganisms and sterilising Petri dishes by heating in a pressure cooker, autoclave or oven (block 73), but provides no detailed approved laboratory SOP, time/temperature, quantities or safety controls. The source includes pathogens and unknown environmental microbes.",
+      "required_action": "Obtain a teacher/qualified-lab-approved safety SOP before any practical lesson. Do not infer or publish operational culturing/sterilisation steps, parameters, reagent lists or home-culturing instructions from this source.",
+      "affected_ids": [
+        "COV-BIO-T3-W01-CULTURING",
+        "COV-BIO-T3-W01-IDENTIFICATION-CARRIERS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W01-MICROBE-FACTS",
+      "kind": "FACT",
+      "detail": "The Leeuwenhoek history statement (38), microbial classification/claims (40-54), air-culture wording (73-74), normal flora/antibiotic statement (76), disease examples (43-49) and vector/disease table (84) need authoritative review. The table prints 'Vibro cholera' and links it to housefly/cholera and typhoid.",
+      "required_action": "Verify historical, microbiological and disease/vector claims against authoritative primary sources; record exact citations and keep corrected supplemental text distinct from the original source. Do not turn this indexing task into a practical culturing protocol.",
+      "affected_ids": [
+        "COV-BIO-T3-W01-MICROORGANISMS",
+        "COV-BIO-T3-W01-IDENTIFICATION-CARRIERS",
+        "COV-BIO-T3-W01-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W01-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "Week 1 evaluation, general evaluation, weekend assignment and theory questions have no answer key. Weekend Q99's virus-living rationale is not established by the source.",
+      "required_action": "A Biology teacher should approve keyed responses and marking after factual review, particularly Q99 and the vector/disease table.",
+      "affected_ids": [
+        "COV-BIO-T3-W01-ASSESSMENT"
       ],
       "blocks_delivery": true
     }
