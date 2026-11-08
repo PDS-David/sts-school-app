@@ -75,7 +75,8 @@
     "AG-VIS-T3-W04-PIG-DIGESTION (2026-11-08): image8.jpeg at block 417 is a legible labelled generic monogastric digestive tract, not demonstrably pig-specific. No credit/licence is supplied; delivery reuse is blocked pending rights clearance or a rights-cleared replacement.",
     "AG-VIS-T3-W04-POULTRY-DIGESTION (2026-11-08): image9.jpeg at block 425 is a labelled poultry digestive-system diagram matching heading 424 and text 426-428. Labels are mostly readable though some crowded; no credit/licence is supplied, so delivery reuse is blocked pending rights clearance or a rights-cleared replacement.",
     "AG-VIS-T3-W04-MALE-REPRODUCTION (2026-11-08): block 487 contains a photographed textbook page (image10) and a cleaner labelled male reproductive-system schematic (image11), plus hdphoto1.wdp as an effect layer. The photographed page is not suitable as a standalone asset; neither image has a visible reuse licence or source citation. Reuse is blocked pending rights clearance or a rights-cleared replacement.",
-    "AG-VIS-T3-W04-FEMALE-REPRODUCTION-A (2026-11-08): image12.jpeg at block 493 is a small labelled female reproductive-tract schematic (fallopian tube, ovary, uterus, cervix, vagina); it does not label vulva/labia mentioned in block 490. No credit/licence is supplied; reuse is blocked pending rights clearance or a rights-cleared replacement."
+    "AG-VIS-T3-W04-FEMALE-REPRODUCTION-A (2026-11-08): image12.jpeg at block 493 is a small labelled female reproductive-tract schematic (fallopian tube, ovary, uterus, cervix, vagina); it does not label vulva/labia mentioned in block 490. No credit/licence is supplied; reuse is blocked pending rights clearance or a rights-cleared replacement.",
+    "AG-VIS-T3-W04-FEMALE-REPRODUCTION-B (2026-11-08): image13.jpeg at block 494 is a photographed textbook page with a female reproductive-system diagram and text; hdphoto2.wdp is its alternate/effect layer, not a separate figure. No visible source citation/licence; reuse is blocked pending rights clearance or a rights-cleared replacement."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -90,8 +91,8 @@
     "CORRECTION_BINDING": 12
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 60,
-    "PENDING": 89,
+    "IMPLEMENTED_TESTING_DEFERRED": 61,
+    "PENDING": 88,
     "BLOCKED": 2
   },
   "items": [
@@ -2641,8 +2642,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a, image13.jpeg SHA-256 c33604505a72870f329ca74dea5faeea1a421d4bb794d915d6cc89c3978eee96 (101,540 bytes; 750×1,000), and hdphoto2.wdp SHA-256 8ed46166179ef62e3209445f407491dd0aa99e284a853d2d4c963ecf2595cb11 (173,752 bytes). At body block 494, rId24 -> image13.jpeg and rId25 is an a14:imgLayer -> hdphoto2.wdp, an alternate/effect layer rather than an independent figure. Image13 is a photograph of a textbook page: female reproductive-system heading/text, a labelled diagram and further prose, with part of an adjacent pink page visible; page is cropped, and some surrounding text is not suitable as a standalone asset. Diagram labels include right/left kidney, ureter, ovary, funnel, fallopian tube, left uterus, vagina, bladder, vestibule, Cowper's gland, perineal gland and vulva. Caption at block 495 is 'The female reproductive system'. No visible author/publisher credit or identifiable book citation; no reuse licence. Prefer separate rights-cleared diagram, not photographed page. Added open item AGRICULTURAL-SCIENCE-T3-W04-FEMALE-REPRODUCTION-B-RIGHTS. No derivative created; importer/rendering/device checks not run.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5681,7 +5682,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W04-FEMALE-REPRODUCTION-B",
     "AG-VIS-T3-W04-TBL-DIGESTION",
     "AG-VIS-T3-W05-RESPIRATORY",
     "AG-VIS-T3-W05-FISH-GILLS",
