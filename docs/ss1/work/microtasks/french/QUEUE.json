@@ -21,7 +21,8 @@
     "No lesson-writing item exists: repository evidence names no specific uncovered objective (the T2 future tense is already supplied by SUP-SS1-FRENCH-FUTURE-T2). Lesson items may be added only after week indexing names one.",
     "Open items FRENCH-UNCLEAR-OCCUPATIONS (FACT), FRENCH-EXAM-AUDIO (OWNER_ACTION) and FRENCH-AUTHORING-FINISH (CONTENT) are preserved unchanged in french.json; they map to FR-FACT-OCCUPATIONS, FR-FACT-EXAM-AUDIO-REQUIREMENTS -> FR-ASSET-EXAM-AUDIO-ACQUISITION -> FR-ASSET-EXAM-AUDIO-INSTALL, and FR-SCOPE-AUTHORING-FINISH.",
     "Execute one queue item per worker. A source-reading item needs the attachment in required_attachments (archive SSS 1-20260507T072431Z-3-001.zip, member and member hash given). Registration of sources is complete; do not repeat it.",
-    "FR-LES-T1-W03-SELF-ESSAY (2026-11-06): the Week 3 written self-presentation supplement is authored. New lesson SUP-SS1-FRENCH-SELF-ESSAY-T1 (34 marks, body_sha256 5eff5383f0b4…) is bound additively to coverage FRENCH-T1-W03-OBJ-2, now IMPLEMENTED_EQUIVALENT, beside the unchanged SUP-SS1-FRENCH-GREETINGS-T1. It covers all eight prompted fields including the state, language, domicile and favourite dish or colour, with a fictional model paragraph, a keyed form-choice exercise, a guided eight-sentence exercise and a 20-mark writing task whose rubric sums; no exercise asks for a private home address. The Week 3 greeting row, its PARTIAL status and its scope open item are untouched, so the week is not claimed complete. Open item ESSAY-SCOPE is closed; the two readings of Votre etat are now an explicit owner decision in FRENCH-T1-W03-ETAT-READING. Approval stays PENDING and verification DEFERRED."
+    "FR-LES-T1-W03-SELF-ESSAY (2026-11-06): the Week 3 written self-presentation supplement is authored. New lesson SUP-SS1-FRENCH-SELF-ESSAY-T1 (34 marks, body_sha256 5eff5383f0b4…) is bound additively to coverage FRENCH-T1-W03-OBJ-2, now IMPLEMENTED_EQUIVALENT, beside the unchanged SUP-SS1-FRENCH-GREETINGS-T1. It covers all eight prompted fields including the state, language, domicile and favourite dish or colour, with a fictional model paragraph, a keyed form-choice exercise, a guided eight-sentence exercise and a 20-mark writing task whose rubric sums; no exercise asks for a private home address. The Week 3 greeting row, its PARTIAL status and its scope open item are untouched, so the week is not claimed complete. Open item ESSAY-SCOPE is closed; the two readings of Votre etat are now an explicit owner decision in FRENCH-T1-W03-ETAT-READING. Approval stays PENDING and verification DEFERRED.",
+    "2026-11-08: FR-LES-T1-W01-BENEFITS implemented as SUP-SS1-FRENCH-BENEFITS-T1. Original replacement covers the identifiable scientific, technological and political benefits objective; source truncation is preserved as provenance and no missing source wording is invented. Six answered exercises total 17 marks. Content approval PENDING; verification DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -37,8 +38,8 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 71,
-    "PENDING": 40,
+    "IMPLEMENTED_TESTING_DEFERRED": 72,
+    "PENDING": 39,
     "BLOCKED": 5
   },
   "items": [
@@ -3014,9 +3015,9 @@
         "FR-WK-T1-W01",
         "FR-FACT-T1-W01-POLICY"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by FR-WK-T1-W01; see open item FRENCH-T1-W01-UNCOVERED-CONTENT. Not started.",
-      "completion_condition": "Supplement exists with provenance, or the objective is left UNRESOLVED with the owner decision recorded."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as SUP-SS1-FRENCH-BENEFITS-T1 in backend/src/db/ss1/subjects/french.json. Covers scientific research access/exchange, French-language technical and ICT resources, and ECOWAS regional political/diplomatic communication. Includes original explanations, French model sentences, dialogue, six answered exercises (17 marks), and provenance URLs accessed 2026-11-08. The original source phrase is cut off; the authorised replacement covers only the identifiable scientific, technological and political objective and does not claim to recover the missing words. Content approval remains PENDING; verification DEFERRED.",
+      "completion_condition": "Original supplement exists, has a matching objective-level coverage entry, accurate answers/marking and factual provenance. Formal approval and runtime verification remain separate."
     },
     {
       "id": "FR-LES-T1-W02-ANGLOPHONE",
