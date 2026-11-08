@@ -1307,6 +1307,84 @@
           "explanation": "No answer key or marking guide accompanies the evaluation, weekend assignment or theory items."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T2-W06-ECOLOGY",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 6: Basic ecological concepts — definition/branches and ecological terms",
+      "objective_locator": "SS1-SRC-eb6e9665f42c Week 6 label block 481 (sha256 f0edcbda6aafa4c18d5105756f809a9eb17f927397ee0853793fd82c04d4acc0); teaching blocks 489-529 (range sha256 ac74c94135b847bcd714bdce63346c71f14680baac00ee02ea9e5a8cc2ebefc5)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 489-498 (range sha256 6c24b7e04a9d965893503b0b3f2ceb21bbf435552bd4984e9e32c915ff9c8caf)",
+          "explanation": "Defines ecology, gives its practical study aims and distinguishes autecology and synecology."
+        },
+        {
+          "locator": "blocks 504-528 (range sha256 3ec5d455f47d79afcbc184220cb2bab1cf6f52542b777572860e6ac4082be40b)",
+          "explanation": "Defines environment, biosphere/ecosphere, lithosphere, hydrosphere, atmosphere, habitat (including aquatic, terrestrial and arboreal subdivisions), ecological niche, population, community, ecosystem and biome. Biome appears here as a brief definition even though the scheme assigns biomes to Week 7; no full Week 7 biome coverage is claimed from this single definition."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for the Week 6 ecological concepts. Source-only teaching is not deliverable; PARTIAL remains until approved lesson content is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W06-ECOSYSTEM-COMPONENTS",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 6: Components of an ecosystem — abiotic and biotic",
+      "objective_locator": "SS1-SRC-eb6e9665f42c blocks 534-548 (range sha256 4215a767fc6eb343bb1f0d41a8b2640a42265404db8785905f46ee79059a785f)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 534-540",
+          "explanation": "Introduces abiotic components and gives categories/examples including organic/inorganic substances and climatic/edaphic factors."
+        },
+        {
+          "locator": "blocks 542-548",
+          "explanation": "Defines biotic components and describes producers, consumers and decomposers and their stated roles/interactions."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for ecosystem components; PARTIAL remains pending approved lesson content."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W06-ASSESSMENT",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 6 evaluation, revision, weekend assignment and theory",
+      "objective_locator": "converted DOCX blocks 500-502, 530-532, 549-556, 558-559, 561-566 and 568-570",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "evaluation blocks 500-502 and 530-532",
+          "explanation": "Questions on ecology, branches, community, population, ecosystem and biosphere are supported by the definitions and branches in blocks 489-529."
+        },
+        {
+          "locator": "general evaluation blocks 549-556",
+          "explanation": "Questions on ecosphere, habitat/niche, habitat subdivisions, population/community and ecosystem components are supported by the corresponding definitions and components sections. The biome comparison relies on the brief definition at block 527, although the scheme assigns biomes to Week 7."
+        },
+        {
+          "locator": "reading assignment blocks 558-559",
+          "explanation": "College Biology, chapter 23, pages 496-499. The cited book itself is not part of this source archive."
+        },
+        {
+          "locator": "weekend assignment blocks 561-566",
+          "explanation": "Questions on terrestrial habitat, biotic factors, population, ecosystem and atmospheric composition are related to the teaching at blocks 506-513 and 514-547."
+        },
+        {
+          "locator": "theory blocks 568-570",
+          "explanation": "Definitions of biotic community, habitat and ecosystem and notes on the three ecosphere portions are supported by blocks 508-513 and 514-526."
+        },
+        {
+          "locator": "whole Week 6 evaluation and assignment range",
+          "explanation": "No answer key or marking guide accompanies the evaluation, weekend assignment or theory items."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -1907,6 +1985,48 @@
       "affected_ids": [
         "COV-BIO-T2-W05-ASSESSMENT",
         "COV-BIO-T2-W05-FOOD-TESTS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W06-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 6 basic ecological concepts and ecosystem components are described in the source, but the Biology package has no registered lessons.",
+      "required_action": "Author and bind an approved lesson for ecology, ecological terms and abiotic/biotic ecosystem components, keeping source text separate from supplements.",
+      "affected_ids": [
+        "COV-BIO-T2-W06-ECOLOGY",
+        "COV-BIO-T2-W06-ECOSYSTEM-COMPONENTS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W06-BIOMES-SCOPE",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 6 body gives a brief definition of Biomes at block 527, while the task inventory says the scheme assigns biomes to Week 7. The Week 6 content list also includes Biome.",
+      "required_action": "Compare the Week 7 body with this brief Week 6 introduction and confirm whether block 527 is an early definition/revision or a scope misplacement. Do not duplicate full biome teaching in Week 6 without approval.",
+      "affected_ids": [
+        "COV-BIO-T2-W06-ECOLOGY"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "BIOLOGY-T2-W06-ENVIRONMENT-FACTS",
+      "kind": "FACT",
+      "detail": "The biosphere/ecosphere section gives surface-coverage proportions and atmospheric gas percentages at blocks 511-513. These are time-sensitive/general scientific figures that should be checked before they are used in a current lesson.",
+      "required_action": "Verify the figures against an authoritative current environmental/science source, record precise citations, and keep any updated figures clearly labelled as supplemental rather than replacing the original source.",
+      "affected_ids": [
+        "COV-BIO-T2-W06-ECOLOGY",
+        "COV-BIO-T2-W06-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W06-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 6 evaluation, weekend assignment and theory questions have no supplied answer key or marking guide.",
+      "required_action": "A Biology teacher should approve keyed responses and a marking guide before delivery.",
+      "affected_ids": [
+        "COV-BIO-T2-W06-ASSESSMENT"
       ],
       "blocks_delivery": true
     }
