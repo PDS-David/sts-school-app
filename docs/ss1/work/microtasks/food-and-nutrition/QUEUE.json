@@ -27,7 +27,8 @@
     "FN-INV-T1 appended the 1st Term inventory items (20) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 20 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. The scheme has thirteen rows but only eleven teaching bodies; rows 12 Revision and 13 Examination have no body and are SCHEME_ONLY markers (FN-MARK-T1-REVEXAM). The document has no practical, equipment, hygiene, allergy, burns/fire or chemical content, and only three assessment lines (FN-INV-T1.md). Nothing was run (tests, typechecks, importer, DB, device).",
     "FN-INV-T2 appended the 2nd Term inventory items (17) and is IMPLEMENTED_TESTING_DEFERRED. All 17 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. The body has ten teaching weeks; the scheme's Revision (11) and Examination (12) have no body and the closing line reads 'Week 12 & 13' (FN-MARK-T2-REVEXAM). One real table, no drawings or media. No practical observation, treatment or dose was recorded (FN-INV-T2.md). Nothing was run (tests, typechecks, importer, DB, device).",
     "2026-11-07 FN-WK-T1-W01: indexed Week 1 lines 107-153 of the 1st Term source into 7 coverage entries (6 PARTIAL, 1 UNRESOLVED) and 5 open items (3 blocking), and appended FN-FACT-T1-W01-TEACHER-DECISIONS (BLOCKED) plus three lesson tasks. Week 1 has no assessment of its own; nothing is approved, verified or deliverable. Week 1 is not complete.",
-    "2026-11-08 FN-INV-T3: appended the 3rd Term inventory items (14) and set FN-INV-T3 to IMPLEMENTED_TESTING_DEFERRED. All 14 new items are PENDING because no coverage, lesson, preservation record or factual correction has been written. The body has nine labelled weeks (Week 6 and Week 9 are heading-only practicals) and a combined closing marker 'WEEK 10 & 11' / 'REVISIONS AND EXAMS'; the scheme's row 10 'Meat cookery' has no body. The document has no table, drawing or media, so no visual-disposition item was added. Nothing is approved, verified or deployed."
+    "2026-11-08 FN-INV-T3: appended the 3rd Term inventory items (14) and set FN-INV-T3 to IMPLEMENTED_TESTING_DEFERRED. All 14 new items are PENDING because no coverage, lesson, preservation record or factual correction has been written. The body has nine labelled weeks (Week 6 and Week 9 are heading-only practicals) and a combined closing marker 'WEEK 10 & 11' / 'REVISIONS AND EXAMS'; the scheme's row 10 'Meat cookery' has no body. The document has no table, drawing or media, so no visual-disposition item was added. Nothing is approved, verified or deployed.",
+    "2026-11-08 FN-PRE-T1: indexed the 1st Term opening (title and thirteen-row scheme table, lines 1-99) as scheme-only marker material: rule SS1-SRC-de2cdd0b85f6-R002 and coverage COV-FN-T1-TITLE. No row is claimed as teaching coverage; no lesson was written. Nothing is approved, verified or deployed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -42,8 +43,8 @@
     "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 7,
-    "PENDING": 54,
+    "IMPLEMENTED_TESTING_DEFERRED": 8,
+    "PENDING": 53,
     "BLOCKED": 2
   },
   "items": [
@@ -342,8 +343,8 @@
         "FN-INV-T1",
         "FN-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-08 A4: implemented from the verified 1st Term original (member 'SSS 1/1st Term SS1_/F _ N.docx', SHA-256 398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7, verified from the composite archive docs/ss1/sources/SSS1-original.zip, SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); mammoth 1.12.2 extractRawText (private) gives 21,131 characters and 865 lines, and lines 1-99 hash to f2306a69a9573116b0c42b9323a24e0f7a8a4dc02d49e116d2628b2505bd2068 as the queue states. Added to backend/src/db/ss1/subjects/food-and-nutrition.json: rule SS1-SRC-de2cdd0b85f6-R002 (classify_marker SCHEME_ONLY, anchor 'SCHEME OF WORK FOR ALPHA TERM', once, offset 0, outside every parsed body; it shares its anchor with the source_alias rule R001, as in two other packages) and MARKER coverage COV-FN-T1-TITLE (target R002) with hashes for the title, the header, all thirteen rows and the pre-body slice (offset 1200, 9fcede9636bf8f2bd0821ac54bc68d13cef91e9a99bae75d640318c7864a8611, computed by slicing, not by the importer). Rows 1-11 map by number to FN-WK-T1-W01..W11, rows 12-13 to FN-MARK-T1-REVEXAM and the drawn table to FN-VIS-T1-SCHEME-TABLE; no row is claimed as teaching coverage and no lesson, correction or asset was written. Record: docs/ss1/work/microtasks/food-and-nutrition/FN-PRE-T1.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "The scheme is represented under the existing schema (or recorded as needing no rule beyond the week split) with all thirteen rows and their multi-line cells preserved verbatim; the bare row numbers are not parsed as headings; no lesson is created from a scheme row; no approval or verification is invented."
     },
     {
@@ -2374,7 +2375,6 @@
   },
   "next_runnable": [
     "FN-TEST-PACKAGE",
-    "FN-PRE-T1",
     "FN-WK-T1-W02",
     "FN-WK-T1-W03",
     "FN-WK-T1-W04",
