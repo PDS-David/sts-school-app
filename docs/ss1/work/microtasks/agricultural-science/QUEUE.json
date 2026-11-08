@@ -59,7 +59,8 @@
     "AG-MARK-T3-REVISION (2026-11-08): scheme block 14 '11Revision ' is a SCHEME_ONLY revision marker. The source has ten teaching-week bodies only and no Week 11 revision lesson, worksheet or marking scheme.",
     "AG-MARK-T3-EXAM (2026-11-08): scheme block 15 '12Examination' is a SCHEME_ONLY examination marker. Rule R003 and MARKER coverage COV-AG-T3-EXAMINATION-SCHEME are already present. No Week 12 body, exam paper or marking scheme exists.",
     "AG-VIS-T1-TBL-W02 (2026-11-08): source Word table 160 has 12 paired contrasts in two columns. Plain-text block extraction concatenates cells and loses pairing; future lesson binding must preserve a structured table/paired list. No duplicate supplement or source edit.",
-    "AG-VIS-T1-TBL-W06 (2026-11-08): source Word table 486 has fourteen agro-industry/raw-material pairs in three columns. Plain-text block extraction concatenates cells and loses pair boundaries; future lesson binding must preserve the structure. No duplicate supplement or source edit."
+    "AG-VIS-T1-TBL-W06 (2026-11-08): source Word table 486 has fourteen agro-industry/raw-material pairs in three columns. Plain-text block extraction concatenates cells and loses pair boundaries; future lesson binding must preserve the structure. No duplicate supplement or source edit.",
+    "AG-VIS-T1-BRANDING (2026-11-08): both embedded images are tutor branding/vision material, not agricultural teaching figures. Exclude from delivered lessons and do not republish contact details. No image files committed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -74,8 +75,8 @@
     "CORRECTION_BINDING": 11
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 44,
-    "PENDING": 104,
+    "IMPLEMENTED_TESTING_DEFERRED": 45,
+    "PENDING": 103,
     "BLOCKED": 2
   },
   "items": [
@@ -945,8 +946,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1), viewed directly: media/image1.jpeg (3306x2515, sha256 b334a0e127cb7f94bf10dd46672a8545fe303971ba10d0dc9a50600962ddea9a) is a branding/vision-statement cover page for a tutoring business; media/image2.jpeg (949x359, sha256 b9a670e77d35617fedda9696cd2068b55a2a0185ccac52c9b778496c6bf44045) is the same brand banner used in the page header. Neither contains agricultural teaching content. The drawing in block 4 also carries one empty text box. The document body has no equation objects, no OLE objects and no other drawings.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact First Term member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. Inspected media/image1.jpeg (3306x2515; 870389 bytes; SHA-256 b334a0e127cb7f94bf10dd46672a8545fe303971ba10d0dc9a50600962ddea9a), embedded in the cover material at body blocks 2/4, and media/image2.jpeg (949x359; 106630 bytes; SHA-256 b9a670e77d35617fedda9696cd2068b55a2a0185ccac52c9b778496c6bf44045), used in header1.xml. Both are tutor-brand/vision-statement material, not agricultural teaching figures. The cover drawing also contains an empty text box. Both images are excluded from package assets/learner lessons; contact details and promotional material are not republished. No source bytes or image files committed; importer and app rendering not run.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -5623,7 +5624,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T1-BRANDING",
     "AG-VIS-T2-TBL-CEREALS",
     "AG-VIS-T2-TBL-LEGUMES",
     "AG-VIS-T2-TBL-ROOTS",
