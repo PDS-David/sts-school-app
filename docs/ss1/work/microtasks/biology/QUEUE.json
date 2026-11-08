@@ -70,7 +70,8 @@
     "BIO-VIS-T1-MITOSIS (2026-11-08) inspected all four original hand-drawn figures and matched them to the written stage descriptions: interphase/prophase, metaphase, anaphase and telophase/cytokinesis. Labels are raster-only and do not survive text extraction. No source image is registered as an app asset because rights are unrecorded; a project-authored four-panel redraw was appended and the Week 10 lesson now depends on it. Testing remains deferred.",
     "BIO-VIS-T1-HORMONE-TABLE (2026-11-08) inspected the four header line shapes and seven tab-aligned rows at blocks 1042-1049, including the private rendered PDF page 43. The three columns are clear in the original rendering but collapse in plain-text extraction; a semantic three-column table is required. The seven source associations were flagged for a separate authoritative Biology fact review. No image asset or redraw is needed; original text remains unchanged and no medication guidance is added. Testing remains deferred.",
     "BIO-VIS-T1-MOVEMENT-TABLE (2026-11-08) inspected the three line shapes and seven tab-aligned rows at blocks 1083-1092 in private rendered PDF page 45. The three columns are clear in the original rendering but collapse in text extraction; the Hydra mechanism wraps across blocks 1088-1089. A semantic three-column table is required in the Week 10 lesson; no asset/redraw is needed. The source's 'hoping' spelling is preserved for separate correction handling. Testing remains deferred.",
-    "BIO-VIS-T1-TBL-CROP-ROTATION (2026-11-08) confirmed block 514 is a native 6×6 Word table, rendered across PDF pages 18-19. Cell boundaries exist in DOCX but flattened text loses plot/year pairing; any text-based supplement must restate the semantic table. No image asset/redraw is needed. Farming-systems placement remains an owner decision; no Week 3 scheme scope was inferred. Testing remains deferred."
+    "BIO-VIS-T1-TBL-CROP-ROTATION (2026-11-08) confirmed block 514 is a native 6×6 Word table, rendered across PDF pages 18-19. Cell boundaries exist in DOCX but flattened text loses plot/year pairing; any text-based supplement must restate the semantic table. No image asset/redraw is needed. Farming-systems placement remains an owner decision; no Week 3 scheme scope was inferred. Testing remains deferred.",
+    "BIO-VIS-T1-TBL-MINERALS-VITAMINS (2026-11-08) confirmed the mineral and vitamin lists are native Word tables (11×4 and 10×4). Their cell structure survives in DOCX/PDF but not flattened text. A semantic four-column table is required in the lesson; no asset/redraw is needed. Source function/deficiency statements were recorded for the existing authoritative Biology fact task; no health advice or source corrections were added. Testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -86,8 +87,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 53,
-    "PENDING": 95,
+    "IMPLEMENTED_TESTING_DEFERRED": 54,
+    "PENDING": 94,
     "BLOCKED": 11
   },
   "items": [
@@ -1375,8 +1376,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): two w:tbl objects; block 881 under 'MINERAL SALT' (block 879), block 888 under 'VITAMINS' (block 883). Hashes: 881 06eed3e685ee6092d944997a20cdb2036a9cccfc26ddd455e013b5d9cde7cf2f; 888 67f3d30a41c694ce09a608aca73c0a40794efbe105d7e8e63a67ab9ce8046ab4. Deficiency symptoms are health statements; later work needs authoritative sources and must keep source wording distinct from verified fact.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and assigned DOCX member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. The mineral-salt table at block 881 is a native 11×4 w:tbl (SHA-256 06eed3e685ee6092d944997a20cdb2036a9cccfc26ddd455e013b5d9cde7cf2f); the vitamin table at block 888 is a native 10×4 w:tbl (SHA-256 67f3d30a41c694ce09a608aca73c0a40794efbe105d7e8e63a67ab9ce8046ab4). Original DOCX cell boundaries are intact and rendered PDF pages 33-36 show both tables; flattened text extraction concatenates cells and loses row/column pairing. A semantic four-column table is required in the delivery lesson; no image asset or redraw is needed. Source rows and health/function statements are recorded in package evidence. The existing BIO-FACT-T1-W07-FOOD-CLAIMS task and package open item now include all mineral/vitamin table claims for authoritative Biology review. No claims are validated or presented as medical advice, and no source wording is changed. No app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
     },
     {
@@ -3443,7 +3444,7 @@
       "source_id": "SS1-SRC-422e0e6ddde9",
       "term": "1st Term",
       "week_or_locator": "Week 7, blocks 835-925",
-      "objective": "Verify the source's food-substance and enzyme claims against approved Biology references before authoring a corrected lesson: monosaccharide formula (block 841), sucrose formation wording (844), lipid formula (871), and amylase statements (916-917). Preserve the original wording and record exact supporting references.",
+      "objective": "Verify the source's food-substance and enzyme claims against approved Biology references before authoring a corrected lesson: monosaccharide formula (block 841), sucrose formation wording (844), lipid formula (871), amylase statements (916-917), and the functions/deficiency statements in the mineral-salt table (block 881) and vitamin table (block 888). Record exact supporting references and evidence-based corrections for the delivery supplement. Preserve all original wording and keep health-related claims within school Biology context, not medical advice.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
         "docs/ss1/contracts/CONTRACT.md",
@@ -3452,7 +3453,8 @@
         "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
         "backend/src/db/ss1/subjects/biology.json",
         "docs/ss1/work/microtasks/biology/QUEUE.json",
-        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-TBL-MINERALS-VITAMINS.md"
       ],
       "required_attachments": [
         {
@@ -3468,7 +3470,8 @@
         "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W07-FOOD-CLAIMS.md"
       ],
       "depends_on": [
-        "BIO-WK-T1-W07"
+        "BIO-WK-T1-W07",
+        "BIO-VIS-T1-TBL-MINERALS-VITAMINS"
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T1-W07; see the Week 7 objective index for exact source locators."
@@ -3507,7 +3510,8 @@
       "depends_on": [
         "BIO-WK-T1-W07",
         "BIO-FACT-T1-W07-FOOD-CLAIMS",
-        "BIO-VIS-T1-PROTEIN-BREAKDOWN"
+        "BIO-VIS-T1-PROTEIN-BREAKDOWN",
+        "BIO-VIS-T1-TBL-MINERALS-VITAMINS"
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T1-W07; see the Week 7 objective index for exact source locators."
@@ -5531,7 +5535,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
     "BIO-VIS-T1-TBL-ENZYMES",
     "BIO-VIS-T2-TBL-VITAMINS",
     "BIO-VIS-T2-TBL-INSTRUMENTS",
