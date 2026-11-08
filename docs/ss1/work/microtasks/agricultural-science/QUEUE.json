@@ -37,23 +37,24 @@
     "AG-WK-T1-W07 (2026-11-08) indexed First Term Week 7: land definition, agricultural/non-agricultural uses and land-availability factors are source-taught. Four game reserves supplied for five-item questions; socio-economic factors, land-mobility wording, game-reserve use MCQ and labour-factor MCQ need bounded follow-up.",
     "AG-WK-T1-W08 (2026-11-08) indexed First Term Week 8: source teaches five land-tenure systems but not the agricultural laws/reforms named in the scheme heading. Land Use Act references in Weeks 3/7 require legal verification; questions on most common tenure system are not answered in source. Evaluation heading 643 is empty; reading assignment points back to Week4 government roles.",
     "AG-WK-T1-W10 (2026-11-08) indexed First Term Week 10: crop classification by life cycle, morphology and uses is source-taught. Seven-difference monocot/dicot theory exceeds the three source contrasts; biennial definition at block 878 is defective and examples need fact-check. Five biotic-factor revision item cross-maps to Week 9 blocks 805-824.",
-    "AG-WK-T2-W01 (2026-11-08) indexed Second Term Week One: scheme item is Revision of Last Term Work, but source has only placeholder bullets for objective/theory answers and no questions or answers. Revision remains UNRESOLVED pending exact prior-term papers and approved answer key; no answers invented."
+    "AG-WK-T2-W01 (2026-11-08) indexed Second Term Week One: scheme item is Revision of Last Term Work, but source has only placeholder bullets for objective/theory answers and no questions or answers. Revision remains UNRESOLVED pending exact prior-term papers and approved answer key; no answers invented.",
+    "AG-WK-T2-W02-03 (2026-11-08) indexed combined Second Term Weeks 2-3: pre-planting, planting and post-planting operations and the practical school-farm demonstration are source-taught. Green-manure timing differs between teaching and MCQ; fertilizer-production claim and minor wording defects recorded for evidence-based correction. No numerical seed rates or fertilizer/herbicide rates added."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 14,
+    "FACTUAL_DEPENDENCY": 15,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
     "LESSON": 18,
-    "CORRECTION_BINDING": 1
+    "CORRECTION_BINDING": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 22,
-    "PENDING": 83,
+    "IMPLEMENTED_TESTING_DEFERRED": 23,
+    "PENDING": 84,
     "BLOCKED": 2
   },
   "items": [
@@ -1113,8 +1114,8 @@
         "AG-INV-T2",
         "AG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): label block 31 text \"WEEK TWO AND THREEDATE: __________\" (sha256 01121871f3f6eccc5c172fdec68054baec6b5ea77543c053a9dd300f9e753591); blocks 31-278; range sha256 e251c8cbae1ddbd96d258e22b897e588dc6cd69adcde2c84b21212db14ed0d72. Topic: Cultural Practices: Pre-planting, Planting and Post-Planting Operations. One label for two scheme weeks (2 and 3). Sub-topics: pre-planting (blocks 41-73), planting operations incl. distance, date, seed rate, nursery (74-134), post-planting (135-231), General Evaluation/Revision Questions (232-234), field work (236-237), weekend assignment (239-278, theory from 272). Contains PRACTICAL DEMONSTRATION (blocks 68-73: clear and till the school farm with cutlass, layout, ten maize ridges) and FIELD WORK ON LAND PREPARATION (236-237). Block 186 carries a caution about inorganic fertilizer burning plants; block 205 mentions herbicide spraying without any rate. No doses are given. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-676; block 677 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Second Term member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 and combined Weeks 2-3 range blocks 31-278 SHA-256 e251c8cbae1ddbd96d258e22b897e588dc6cd69adcde2c84b21212db14ed0d72. Scheme item 2-3 maps to cultural practices: pre-planting (38-73), planting (74-134) and post-planting/post-harvest (135-231). Practical demonstration blocks 68-73 and field work 236-237 preserved. Evaluations 61-66,128-133,222-230; general evaluation 232-234; MCQ 239-270; theory 272-275 reviewed. The green-manure timing at 175 ('just before flowering') differs from MCQ 268 ('as soon as it flowers'). Block 180 says inorganic fertilizers are usually prepared on the farm, requiring verification. Block 39 says 'post-posting operations' vs heading 135 'post-planting'; MCQ 254 says 'plating space'. No numerical crop-specific spacing/seed-rate figures are supplied; none invented. Fertilizer caution at 186 preserved; herbicide mention at 205 has no rate; no rates/doses/handling instructions invented. Added PARTIAL coverage, open items and bounded follow-ups AG-FACT-T2-W02-03-GREEN-MANURE-ITEM and AG-CORR-T2-W02-03-SOURCE-TERMS. Full assessment analysis: AG-WK-T2-W02-03.md. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -4028,6 +4029,77 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T1-W10: block 878 says 'within as year' and the examples require verification.",
       "completion_condition": "A sourced note verifies the definition/examples and recommends a precise correction or records unresolved classifications."
+    },
+    {
+      "id": "AG-FACT-T2-W02-03-GREEN-MANURE-ITEM",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "Second Term blocks 175 and 268",
+      "objective": "Verify the difference between the source's 'just before flowering' green-manure timing (block 175) and weekend MCQ 268's 'as soon as it flowers'. Use authoritative agronomy references and recommend a precise correction or unresolved disposition.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T2-W02-03.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T2-W02-03-GREEN-MANURE-ITEM.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T2",
+        "AG-WK-T2-W02-03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T2-W02-03: block 175 and MCQ 268 specify different green-manure timings.",
+      "completion_condition": "A sourced note verifies the agronomic timing and recommends a precise correction or records unresolved conflict."
+    },
+    {
+      "id": "AG-CORR-T2-W02-03-SOURCE-TERMS",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "Second Term block 39; fertilizer statement block 180; weekend MCQ block 254",
+      "objective": "Verify and bind delivery-only corrections for 'post-posting operations' at block 39 (cross-checked with heading 135), 'plating space' at MCQ 254, and the claim that inorganic fertilizers are usually prepared on the farm at block 180. Correct only when supported by source context and authoritative evidence; preserve source bytes and record provenance.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T2-W02-03.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-CORR-T2-W02-03-SOURCE-TERMS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T2",
+        "AG-WK-T2-W02-03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T2-W02-03: repeated topic wording and fertilizer-manufacture claim need evidence-based correction review.",
+      "completion_condition": "A correction-binding record cites each changed span and source; only verified corrections are proposed; original source bytes remain unchanged."
     }
   ],
   "review": {
@@ -4043,7 +4115,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T2-W02-03",
     "AG-WK-T2-W04-05",
     "AG-WK-T2-W06",
     "AG-WK-T2-W07",
@@ -4106,7 +4177,9 @@
     "AG-FACT-T1-W08-PROMINENT-TENURE",
     "AG-FACT-T1-W08-LAND-USE-ACT",
     "AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION",
+    "AG-FACT-T2-W02-03-GREEN-MANURE-ITEM",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
+    "AG-CORR-T2-W02-03-SOURCE-TERMS",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
     "AG-LES-T1-W02-AGRO-INDUSTRIES",

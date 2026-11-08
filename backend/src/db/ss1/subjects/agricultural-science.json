@@ -791,6 +791,36 @@
           "explanation": "The scheme names Revision of Last Term Work, but the material needed to deliver it is absent from the Week One source."
         }
       ]
+    },
+    {
+      "id": "COV-AG-T2-W02-03-CULTURAL-PRACTICES",
+      "source_id": "SS1-SRC-956594d97094",
+      "objective": "Scheme items 2-3: Cultural Practices — Pre-planting, Planting and Post-Planting Operations",
+      "objective_locator": "Second Term scheme block 8; combined Weeks Two and Three label block 31; topic block 32",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Second Term source blocks 38-73; practical demonstration 68-73",
+          "explanation": "The source defines cultural practices and pre-planting operations (clearing, stumping, layout, land preparation/tillage, ploughing, harrowing and ridging), with a practical school-farm demonstration to clear/till, lay out and make ten maize ridges."
+        },
+        {
+          "locator": "Blocks 74-134; planting operations 80; germination 82-90; sowing methods 92-100; planting considerations 102-115; nursery 117-126",
+          "explanation": "Planting, germination, in-situ/nursery methods, drilling/broadcasting/dibbling, spacing/time/depth/number of seeds/viability, and nursery purposes are taught."
+        },
+        {
+          "locator": "Blocks 135-231; post-planting 139-150; thinning 152-156; supplying 158-162; irrigation 164-168; manure/fertilizer 170-195; mulching 197-203; weeding 205-207; harvesting 209-212; processing 214-217; storage 219-220",
+          "explanation": "The source covers the main post-planting and post-harvest operations, with definitions, advantages, examples and storage methods."
+        },
+        {
+          "locator": "Evaluations 61-66, 128-133, 222-230; general evaluation 232-234; practical fieldwork 236-237; weekend assignment 239-270; theory 272-275",
+          "explanation": "The assessments and practical tasks largely map to the taught operations. The green-manure timing in MCQ 268 differs from source block 175; several minor text defects and a fertilizer-manufacture statement need review. No crop-specific numerical spacing or seed-rate figures are supplied."
+        },
+        {
+          "locator": "Weeks Two and Three range blocks 31-278; SHA-256 e251c8cbae1ddbd96d258e22b897e588dc6cd69adcde2c84b21212db14ed0d72",
+          "explanation": "Source teaching exists, but package lesson rows and importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -1275,6 +1305,39 @@
       "required_action": "Obtain the exact First Term objective and theory revision papers (or teacher-approved question set) and approved answer key/marking guide before authoring or validating the revision lesson. Until supplied, keep COV-AG-T2-W01-REVISION UNRESOLVED and do not invent answers.",
       "affected_ids": [
         "COV-AG-T2-W01-REVISION",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W02-03-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "The combined Weeks Two and Three source teaches pre-planting, planting and post-planting operations and includes a practical demonstration, but the package has no lesson rows and no importer-confirmed parsed-row ID. COV-AG-T2-W02-03-CULTURAL-PRACTICES is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T2-W02-03-CULTURAL-PRACTICES; preserve the practical demonstration and fieldwork requirements as distinct learning activities.",
+      "affected_ids": [
+        "COV-AG-T2-W02-03-CULTURAL-PRACTICES",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W02-03-GREEN-MANURE",
+      "kind": "FACT",
+      "detail": "Source block 175 says green manure crops are ploughed into the soil just before flowering; weekend MCQ 268 says 'as soon as it flowers'. The two timings differ.",
+      "required_action": "Verify the intended green-manure timing against authoritative agronomy sources and recommend whether the MCQ or source wording requires correction; do not silently change either.",
+      "affected_ids": [
+        "AG-FACT-T2-W02-03-GREEN-MANURE-ITEM",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W02-03-SOURCE-TERMS",
+      "kind": "CONTENT",
+      "detail": "Source block 39 says 'post-posting operations' although the heading at 135 and scheme topic use 'post-planting'; MCQ 254 says 'plating space'. Block 180 also says inorganic fertilizers are 'usually prepared in the farm', a potentially inaccurate description of manufactured fertilizer.",
+      "required_action": "Verify the fertilizer-production statement against authoritative fertilizer references and bind only evidence-supported delivery corrections for the wording at blocks 39, 180 and MCQ 254; preserve original source bytes and show corrections separately.",
+      "affected_ids": [
+        "AG-CORR-T2-W02-03-SOURCE-TERMS",
         "SS1-SRC-956594d97094"
       ],
       "blocks_delivery": true
