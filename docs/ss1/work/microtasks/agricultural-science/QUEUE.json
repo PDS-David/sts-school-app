@@ -50,23 +50,24 @@
     "AG-WK-T3-W04 (2026-11-08) indexed the digestive, circulatory and reproductive systems; table 431 and six embedded diagrams were inspected. Assessment gaps (liver enzymes, similarities, blood constituent and sphincters) and digestive/reproductive factual claims are routed for bounded follow-up.",
     "AG-WK-T3-W05 (2026-11-08) indexed the respiratory and nervous systems. The three text-based respiration equations were preserved verbatim; respiratory mechanics, reflex action, neuron detail and named-animal breathing are under-taught. Equations/fermentation and airway/gill claims are routed for verification.",
     "AG-WK-T3-W06 (2026-11-08) indexed reproductive cycles, mating/AI, fertilization, implantation, gestation, parturition, lactation and colostrum. Gestation table contains concatenated paired entries; embryo development and lamb positioning questions exceed teaching and require veterinary-reviewed non-procedural supplement; species timings and lactation/colostrum claims require fact-check.",
-    "AG-WK-T3-W07 (2026-11-08) indexed poultry egg formation and reproductive hormones. The poultry reproductive-system heading has figures but no explanatory prose; hormone assignments and egg-formation timings are routed for verification."
+    "AG-WK-T3-W07 (2026-11-08) indexed poultry egg formation and reproductive hormones. The poultry reproductive-system heading has figures but no explanatory prose; hormone assignments and egg-formation timings are routed for verification.",
+    "AG-WK-T3-W08 (2026-11-08) indexed environmental physiology across rainfall, wind, temperature, relative humidity and light, plus effects on growth, milk and egg production. Humidity measurement, a second airborne-disease example and immunity are under-taught; regional claims and milk spoilage threshold require fact-checking."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 31,
+    "FACTUAL_DEPENDENCY": 32,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 26,
+    "LESSON": 27,
     "CORRECTION_BINDING": 10
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 35,
-    "PENDING": 104,
+    "IMPLEMENTED_TESTING_DEFERRED": 36,
+    "PENDING": 105,
     "BLOCKED": 2
   },
   "items": [
@@ -2084,8 +2085,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Third Term member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a and Week Eight label block 855 SHA-256 af0f60bc43d333ec85dbc163a1cccce62b4089fe90a5f15dbbbc0dac060b870e, range blocks 855-981 SHA-256 106414bcb63f69eb63b0840d79249be625382f1fa47fa83ef14e0203109a4ba7. Scheme item 8 maps to environmental physiology definition 861, climate 863-864, rainfall 866-876, wind 878-887, temperature 889-906, relative humidity 908-919, light 921-931, growth 933-947, milk production 949-950 and egg production 952-953. Evaluations 955-959; general 960-962; reading 964-966; weekend 968-975; theory 977-979 reviewed. Only tuberculosis is named as airborne disease at 879, while evaluation 958 asks for two. Humidity instrument is not taught (weekend 969); immunity is not explained (972); regional ranking Q971 and equatorial-rainforest cattle production Q974 are not established. Tsetse flies are mentioned in relation to rainfall at 867 and growth at 936, but no explicit rainforest/cattle-production rationale. Milk spoilage >37°C at 950 and wind/tuberculosis/tsetse claims require verification. No tables or figures in blocks 855-981. Added one PARTIAL and one UNRESOLVED coverage row, three open items and two bounded follow-ups AG-LES-T3-W08-ENVIRONMENTAL-MEASURES and AG-FACT-T3-W08-REGIONAL-CLIMATE. Full report AG-WK-T3-W08.md. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
     },
     {
@@ -5248,6 +5249,78 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T3-W07: egg formation stage timings in block 795 require independent verification.",
       "completion_condition": "A sourced note verifies the sequence and approximate timing ranges and recommends qualified wording."
+    },
+    {
+      "id": "AG-LES-T3-W08-ENVIRONMENTAL-MEASURES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Eight evaluation 958; weekend assignment 969-972; climate sections 863-919",
+      "objective": "Author a bounded supplement covering a reliable instrument for measuring relative humidity, a second verified airborne disease relevant to farm animals, and the role of immunity in disease resistance. Use authoritative senior-secondary biology/veterinary references, distinguish this supplement from source teaching, and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W08.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T3-W08-ENVIRONMENTAL-MEASURES.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W08: evaluation 958 and weekend 969/972 ask for content not taught in the week body.",
+      "completion_condition": "A sourced supplement teaches humidity measurement, two disease examples and immunity with keyed practice/provenance and PENDING approval."
+    },
+    {
+      "id": "AG-FACT-T3-W08-REGIONAL-CLIMATE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Eight claims 867,879,950-953; weekend MCQs 971 and 974",
+      "objective": "Verify rainfall/tsetse and wind/tuberculosis claims; milk spoilage above 37°C; climate effects on milk/egg production; the greatest climate factor affecting animal production in Nigeria; and the equatorial-rainforest cattle-production rationale.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W08.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W08-REGIONAL-CLIMATE.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W08: several climate and regional-production claims need authoritative verification.",
+      "completion_condition": "A sourced note verifies each claim and identifies defensible answers or wording changes."
     }
   ],
   "review": {
@@ -5263,7 +5336,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T3-W08",
     "AG-WK-T3-W09",
     "AG-WK-T3-W10",
     "AG-MARK-T2-REVISION",
@@ -5330,6 +5402,7 @@
     "AG-FACT-T3-W06-LACTATION-COLOSTRUM",
     "AG-FACT-T3-W07-HORMONES",
     "AG-FACT-T3-W07-EGG-FORMATION",
+    "AG-FACT-T3-W08-REGIONAL-CLIMATE",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-CORR-T2-W02-03-SOURCE-TERMS",
     "AG-CORR-T2-W04-05-TABLE-TEXT",
@@ -5363,6 +5436,7 @@
     "AG-LES-T3-W05-RESPIRATION-NERVOUS-GAPS",
     "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION",
     "AG-LES-T3-W07-POULTRY-REPRO-SYSTEM",
+    "AG-LES-T3-W08-ENVIRONMENTAL-MEASURES",
     "AG-TEST-PACKAGE"
   ]
 }

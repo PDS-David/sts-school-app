@@ -1501,6 +1501,70 @@
           "explanation": "No prose description follows the poultry reproductive-system heading; evaluation 823 asks learners to describe the system. Images alone do not provide a complete written explanation."
         }
       ]
+    },
+    {
+      "id": "COV-AG-T3-W08-ENVIRONMENTAL-PHYSIOLOGY",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Environmental physiology: definition, climate factors, their effects on farm animals and controls",
+      "objective_locator": "Third Term scheme block 12; Week Eight label 855; topic 856; content outline 858–859",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Definition and climate 861–864",
+          "explanation": "Defines environmental physiology as environmental effects on farm-animal growth/performance and climate as atmospheric conditions over time, listing rainfall, wind, temperature, humidity and sunlight."
+        },
+        {
+          "locator": "Rainfall/effects/control 866–876; wind/effects/control 878–887",
+          "explanation": "Lists rainfall and wind effects and building/shelter controls. Only tuberculosis is named as a wind-spread airborne disease."
+        },
+        {
+          "locator": "Temperature/effects/control 889–906",
+          "explanation": "Lists effects on intake, spermatogenesis/libido, heat stress, mortality, water intake, incubation, egg yield/storage/hatching and building controls."
+        },
+        {
+          "locator": "Relative humidity/effects/control 908–919; light/effects/control 921–931",
+          "explanation": "Describes humidity effects on incubation, stress, water loss, disease, mould and chilling, with ventilation/water controls; describes light effects on laying, feeding, activity and eye stress."
+        },
+        {
+          "locator": "Growth/milk/egg production 933–953",
+          "explanation": "Summarises climate effects on growth, milk yield/spoilage and egg shelf life/hatchability/quantity."
+        },
+        {
+          "locator": "Evaluations 955–959; general 960–962; weekend 968–975; theory 977–979",
+          "explanation": "Most effects/controls map to the body. Instruments, a second airborne-disease example, relative importance of climate factors in Nigeria and the regional cattle-production explanation are not fully taught."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-W08-ENVIRONMENTAL-ASSESSMENT-GAPS",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Assessment scope not explicitly taught: humidity instrument, two airborne-disease examples, immunity as a disease-protective factor, climate-factor ranking in Nigeria and equatorial-rainforest cattle-production rationale",
+      "objective_locator": "Evaluation 958; weekend assignment 969–975",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Evaluation 958; wind 879",
+          "explanation": "Only tuberculosis is named as an airborne disease; the question asks for two."
+        },
+        {
+          "locator": "Weekend 969–970; humidity 908–919",
+          "explanation": "Humidity is described, but no measuring instrument is named."
+        },
+        {
+          "locator": "Weekend 971; climate factors 863–864",
+          "explanation": "The source lists climate factors but does not rank which has the greatest effect on animal production in Nigeria."
+        },
+        {
+          "locator": "Weekend 972; disease effects 867,879,912–914",
+          "explanation": "Several disease-predisposing conditions are mentioned, but immunity is not defined or compared."
+        },
+        {
+          "locator": "Weekend 974–975; rainfall 867 and growth 935–937",
+          "explanation": "The source mentions tsetse flies and rainfall, but does not explicitly connect equatorial rainforest ecology to cattle production."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -2529,6 +2593,41 @@
       "required_action": "Verify the stages and approximate durations against authoritative poultry-science sources; clarify that timings may vary and recommend accurate qualified wording.",
       "affected_ids": [
         "AG-FACT-T3-W07-EGG-FORMATION",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W08-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week Eight teaches environmental physiology, five climate factors, controls and effects on growth/milk/egg production (861-953), but package lesson rows and importer-confirmed parsed-row identity are absent. COV-AG-T3-W08-ENVIRONMENTAL-PHYSIOLOGY is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T3-W08-ENVIRONMENTAL-PHYSIOLOGY; preserve all source controls and effects as source statements.",
+      "affected_ids": [
+        "COV-AG-T3-W08-ENVIRONMENTAL-PHYSIOLOGY",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W08-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "Evaluation 958 requests two airborne diseases but only tuberculosis is named (879); weekend Q969 asks for a humidity-measuring instrument absent from the body; Q972 invokes immunity without teaching it. Q971 and Q974 require regional/comparative claims not established by the source.",
+      "required_action": "Author AG-LES-T3-W08-ENVIRONMENTAL-MEASURES for verified humidity measurement and disease/immunity concepts, and fact-check the regional climate/cattle-production questions before binding answers.",
+      "affected_ids": [
+        "COV-AG-T3-W08-ENVIRONMENTAL-ASSESSMENT-GAPS",
+        "AG-LES-T3-W08-ENVIRONMENTAL-MEASURES",
+        "AG-FACT-T3-W08-REGIONAL-CLIMATE",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W08-CLIMATE-CLAIMS",
+      "kind": "FACT",
+      "detail": "Claims include wind spreading tuberculosis (879), high rainfall increasing tsetse flies (867), milk spoiling above 37°C (950), and broad climate effects on dairy/egg production (950-953). Weekend questions 971/974 ask for regional ranking and equatorial-rainforest cattle-production reasons not established by the text.",
+      "required_action": "Verify disease transmission, tsetse ecology, milk safety/temperature and production effects against authoritative veterinary/agricultural sources; substantiate or qualify the Nigeria climate-factor ranking and equatorial-rainforest cattle-production explanation.",
+      "affected_ids": [
+        "AG-FACT-T3-W08-REGIONAL-CLIMATE",
         "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true
