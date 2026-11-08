@@ -395,6 +395,10 @@
         {
           "locator": "Week 2 generic parsed row: label block 42 to the stranded ASSIGNMENT heading at block 122 (parsed body sha256 6f2bd20850d12e8d95dde39942900335096dd5ff5510b2bb3e90023e2ef2d982; original lesson id SS1-SRC-422e0e6ddde9:BODY:6f2bd20850d12e8d95dde39942900335096dd5ff5510b2bb3e90023e2ef2d982)",
           "explanation": "Id reproduced, not importer-generated: the original was read with mammoth 1.12.2 (lockfile version) and the importer's WEEK_MARKER/parseTopics expression copied verbatim into a private scratch script. That parse yields 28 rows, not ten: the ten scheme lines each start a row, and the combined assignment label WEEK ONE AND TWO (block 123) starts its own row, so Week 2's row stops at block 122. The id must be confirmed against identified_rows of the first reviewed plan; the importer, compiler and database were not run."
+        },
+        {
+          "locator": "Original source block 109; embedded media/image1.jpeg; 239×211 pixels; 6,519 bytes; SHA-256 0f9ab7f639c112ac4eaae536b9e477a1d0dc982094895f59c21a08e435df3600; private rendered source PDF page 4",
+          "explanation": "The image labels Eyepiece, Arm, Objective lenses, 100x objective, Stage controls, Coarse focus, Fine focus, Mechanical Stage, Disc diaphragm and Illuminator. The written list at blocks 92-106 instead names ocular x10, body tube, revolving nosepiece, objectives x4/x10/x40 (x40 called the highest), coarse/fine focus knobs, arm, stage/clips/hole, condenser, mirror and base. The image's 100x objective conflicts with the text's stated x40 maximum; the additional stage/illumination terms are not reconciled by the source. The figure is absent from plain-text parsed content. Its small original dimensions reduce legibility. No asset has been added because source-image reuse permission is not recorded."
         }
       ]
     },
@@ -2853,14 +2857,17 @@
     {
       "id": "BIOLOGY-T1-W02-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 2's scheme entry, the plant/animal differences and the written microscope parts are taught in blocks 45-106 and mapped to the reproduced generic parsed-row id SS1-SRC-422e0e6ddde9:BODY:6f2bd20850d12e8d95dde39942900335096dd5ff5510b2bb3e90023e2ef2d982. Two gaps remain: the labelled microscope diagram (image at block 109) is not carried by the parsed text and has no asset (COV-BIO-T1-W02-MICROSCOPE, PARTIAL), and the combined assignment (blocks 122-132) has no key, its question 1 precedes the Week 3 ranks, and questions 2 and 4 rest on an unstated fact and on an option the source's own movement teaching also supports (COV-BIO-T1-W02-ASSESSMENT, UNRESOLVED).",
-      "required_action": "Close BIO-VIS-T1-MICROSCOPE for the diagram; author BIO-LES-T1-W01-ASSESSMENT, which already owns the combined assignment, recording the basis for each answer after BIO-FACT-T1-W02-WORDING settles questions 2 and 4. Do not infer a key and do not rewrite the source questions.",
+      "detail": "Week 2's scheme entry, the plant/animal differences and written microscope parts are taught in blocks 45-106 and mapped to the reproduced generic parsed-row id SS1-SRC-422e0e6ddde9:BODY:6f2bd20850d12e8d95dde39942900335096dd5ff5510b2bb3e90023e2ef2d982. The microscope image at block 109 is not carried by parsed text. Its labels include a 100x objective while the written list (blocks 95-97) calls x40 the highest objective; other diagram terms (mechanical stage, disc diaphragm, illuminator) are not reconciled with the text's clips/hole, condenser and mirror. The 239x211 original is small and source-image reuse permission is not recorded. The diagram disposition is complete; a new project-authored redraw must wait for BIOLOGY-T1-W02-MICROSCOPE-LABELS. The combined assignment (blocks 122-132) still has no key, question 1 precedes the Week 3 ranks, and questions 2 and 4 rest on an unstated fact and on an option the source's own movement teaching also supports.",
+      "required_action": "A qualified Biology teacher resolves the 100x-versus-40x objective discrepancy and confirms the intended names/labels for the stage and illumination components with an authoritative reference. Then complete BIO-VIS-T1-W02-MICROSCOPE-REDRAW using only verified labels and a new project-authored drawing; do not commit or reuse the original image without recorded rights. Separately, author BIO-LES-T1-W01-ASSESSMENT after BIO-FACT-T1-W02-WORDING settles questions 2 and 4. Do not infer an answer key or rewrite source questions.",
       "affected_ids": [
         "COV-BIO-T1-W02-MICROSCOPE",
         "COV-BIO-T1-W02-ASSESSMENT",
         "BIO-VIS-T1-MICROSCOPE",
         "BIO-LES-T1-W01-ASSESSMENT",
-        "BIO-FACT-T1-W02-WORDING"
+        "BIO-FACT-T1-W02-WORDING",
+        "BIOLOGY-T1-W02-MICROSCOPE-LABELS",
+        "BIO-FACT-T1-W02-MICROSCOPE-LABELS",
+        "BIO-VIS-T1-W02-MICROSCOPE-REDRAW"
       ],
       "blocks_delivery": true
     },
@@ -3914,6 +3921,19 @@
         "COV-BIO-T1-W03-PESTS",
         "COV-BIO-T1-W03-AGRICULTURAL-DISEASES",
         "COV-BIO-T1-W03-PEST-DISEASE-CONTROL"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W02-MICROSCOPE-LABELS",
+      "kind": "FACT",
+      "detail": "The source's microscope diagram at block 109 labels a '100x objective', while the written parts list at blocks 95-97 names 4x, 10x and 40x objectives and calls 40x the highest magnification. The figure also labels 'Mechanical Stage', 'Disc diaphragm' and 'Illuminator', while the written list describes stage/clips/hole, condenser and mirror. The source does not explain whether the image depicts a different microscope configuration or contains mismatched labels. The original image is only 239x211 and its reuse rights are not recorded.",
+      "required_action": "A qualified Biology teacher must decide the intended objective set and the correct labels for the stage and illumination components, citing the Biology text/model used for the course. Do not assume 100x is an error or silently change x40 to x100. After this decision, author a new project-owned diagram using only approved labels; do not reuse the original pixels without recorded permission.",
+      "affected_ids": [
+        "COV-BIO-T1-W02-MICROSCOPE",
+        "BIO-VIS-T1-MICROSCOPE",
+        "BIO-VIS-T1-W02-MICROSCOPE-REDRAW",
+        "SS1-SRC-422e0e6ddde9"
       ],
       "blocks_delivery": true
     }
