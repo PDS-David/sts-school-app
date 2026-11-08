@@ -1,6 +1,6 @@
 # Bookkeeping — consolidated owner and subject-expert decisions
 
-Status: **Updated 8 November 2026. Second-term source disposition is resolved. First-term source replacement approval and final content approval remain open.**
+Status: **Updated 8 November 2026. Second-term source disposition and first-term Week 1–4 delivery replacement approval are resolved. Final content approval and technical verification remain open.**
 
 ## Decisions already given by the owner
 
@@ -20,13 +20,19 @@ Status: **Updated 8 November 2026. Second-term source disposition is resolved. F
 - All original source documents and defective figures remain preserved; no source document has been edited.
 - Static integrity checks recomputed the body hashes and practice mark totals for the 15 affected lessons and checked their coverage links. Automated tests, schema execution, typecheck, importer/compiler, database, device and delivery verification remain deferred and unrun.
 
-## One consolidated first-term delivery decision requested
+## First-term delivery replacement — owner approved 8 November 2026
 
-The original first-term Weeks 1–4 contain material defects and missing solutions. To avoid teaching defective examples, the package now has separately labelled, fully authored replacement teaching and practice. The original source remains unchanged and its defects remain documented.
+The owner approved the recommendation: **use the project-authored Week 1–4 supplements as the teaching versions in delivery**, while retaining the original source documents unchanged for audit/history and retaining every original defect note.
 
-**Recommended decision:** approve using the project-authored Week 1–4 supplements as the teaching versions in delivery, while retaining the original source documents for audit/history and retaining all defect notes. This does **not** mean the original figures have been corrected, does not approve any guessed replacement value, and does not mark the lessons technically verified.
+Four exact delivery-correction links are now registered in `bookkeeping.json`, each binding the parsed original lesson identity and body SHA-256 to its project-authored replacement:
+- Week 1 → `SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK`
+- Week 2 → `SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK`
+- Week 3 → `SUP-SS1-BOOKKEEPING-T1-W03-CONTRA`
+- Week 4 → `SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY` (with the separate authored posting exercise retained as supporting practice).
 
-This approval would allow the project to mark the corresponding source-defect items nonblocking for delivery and create explicit delivery-correction links from the original source lesson identities to the project-authored replacements. If not approved, keep those source items blocking and do not present the defective source bodies as corrected.
+All Week 1–4 source-defect and missing-content items are now nonblocking **for delivery only**, with the approval recorded against each item. The original source figures, wording and omissions have not been edited or silently corrected. In particular, no missing figure has been guessed and the source's N20 motor-van figure is not represented as resolved.
+
+This approval does **not** constitute teacher/subject-expert content approval, technical verification, or a claim that the original source is correct. Authored lessons remain `content_approval=PENDING` and `verification=DEFERRED`; package status remains `PENDING`. The separate term-scope item `BOOKKEEPING-T1-SCHEME-VS-BODY` and source-heading alias reviews are not covered by this decision.
 
 ### Specific boundaries preserved in the replacement lessons
 
