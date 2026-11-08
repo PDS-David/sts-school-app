@@ -69,9 +69,16 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
         if (rule.op !== 'exclude_duplicate') throw new Error('unreachable');
         const target = p.sources.find(t => t.source_id === rule.target_source_id);
         const targetInput = inputMap.get(rule.target_source_id);
-        must(target && targetInput && target.source_id !== s.source_id && target.sha256 === rule.target_sha256 && target.sha256 === s.sha256 && target.term === s.term && targetInput.text === input.text, `duplicate proof ${rule.id}`);
+        must(target && targetInput && target.source_id !== s.source_id && target.sha256 === rule.target_sha256, `duplicate target identity ${rule.id}`);
+        const targetRules = p.source_rules.filter(candidate => candidate.source_id === target.source_id);
+        const targetText = applyRules(targetInput, targetRules);
+        const duplicateRows = parse(text);
+        const targetRows = parse(targetText);
+        const sameTeaching = duplicateRows.length > 0 && duplicateRows.length === targetRows.length &&
+          duplicateRows.every((row, index) => row.weekLabel === targetRows[index].weekLabel && row.title === targetRows[index].title && row.body === targetRows[index].body);
+        must(sameTeaching, `duplicate teaching proof ${rule.id}`);
         must(!p.source_rules.some(r => r.source_id === target.source_id && r.op === 'exclude_duplicate'), `duplicate chain/cycle ${rule.id}`);
-        plan.dispositions.push({ id: s.source_id, status: 'PROVEN_DUPLICATE', detail: target.source_id }); continue;
+        plan.dispositions.push({ id: s.source_id, status: 'PROVEN_DUPLICATE', detail: `${target.source_id}: parsed teaching bodies match; source metadata may differ` }); continue;
       }
       const topics = parse(text);
       const firstBody = topics[0]?.body;
