@@ -53,7 +53,8 @@
     "AG-WK-T3-W07 (2026-11-08) indexed poultry egg formation and reproductive hormones. The poultry reproductive-system heading has figures but no explanatory prose; hormone assignments and egg-formation timings are routed for verification.",
     "AG-WK-T3-W08 (2026-11-08) indexed environmental physiology across rainfall, wind, temperature, relative humidity and light, plus effects on growth, milk and egg production. Humidity measurement, a second airborne-disease example and immunity are under-taught; regional claims and milk spoilage threshold require fact-checking.",
     "AG-WK-T3-W09 (2026-11-08) indexed pig management. Terms, breeds, characteristics, systems, housing, feeding, hygiene, breeding-to-finishing, parasites and diseases are source-taught. Weekend MCQ 'sty' and the requested second intensive-system disadvantage are not taught; source chemical/veterinary statements are routed for safety/factual review. Pig diagram at block 1006 remains for its separate visual task.",
-    "AG-WK-T3-W10 (2026-11-08) indexed cattle management. Breeds, terms, characteristics, rearing systems, feeding, management stages and parasites/diseases are source-taught. Theory 1253 asks for a tattooing definition not supplied; 'Rational grazing' vs 'rotational grazing' and 'pig houses' in cattle mange section are flagged. Veterinary/chemical statements including a printed 10 mg/kg/8-week TB drug regimen are preserved as source statements and routed for safety/factual review, not endorsed."
+    "AG-WK-T3-W10 (2026-11-08) indexed cattle management. Breeds, terms, characteristics, rearing systems, feeding, management stages and parasites/diseases are source-taught. Theory 1253 asks for a tattooing definition not supplied; 'Rational grazing' vs 'rotational grazing' and 'pig houses' in cattle mange section are flagged. Veterinary/chemical statements including a printed 10 mg/kg/8-week TB drug regimen are preserved as source statements and routed for safety/factual review, not endorsed.",
+    "AG-MARK-T2-REVISION (2026-11-08): scheme block 14 'Revision.' and terminal Week Ten label plus 'REVISION' blocks 675-676 are SCHEME_ONLY markers, not lessons. No Week Ten body, revision worksheet or marking scheme exists. The in-body 'GENERAL EVALUATION/REVISION QUESTIONS' at block 232 remains teaching-week assessment material."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -68,8 +69,8 @@
     "CORRECTION_BINDING": 11
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 38,
-    "PENDING": 110,
+    "IMPLEMENTED_TESTING_DEFERRED": 39,
+    "PENDING": 109,
     "BLOCKED": 2
   },
   "items": [
@@ -1015,8 +1016,8 @@
         "AG-INV-T2",
         "AG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): label block 675 text \"WEEK TENDATE: ……………\" (sha256 31939d9c0dafc228d9c0b276ea88670bd77d9b9b536acd3a1b7c3ff5df797a92); block 676 text 'REVISION' (sha256 b7d6d78d896c296b9c65f6edafe294742fb55a648a75adc39ae2248918a4dba8) is the last text block, followed only by w:sectPr (677). Block 14 text 'Revision.'. Per-week 'GENERAL EVALUATION/REVISION QUESTIONS' (block 232) sits inside Weeks 2-3 and is not a marker. Importer behaviour not run (testing deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08. Exact source member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 verified. Scheme block 14 'Revision.' SHA-256 067123e0afb74e0255aa210d2d56577c04613c68ae2b1d2cd4c3bf2845cf6103 and terminal Week Ten label+REVISION blocks 675-676 (label SHA-256 31939d9c0dafc228d9c0b276ea88670bd77d9b9b536acd3a1b7c3ff5df797a92; range SHA-256 6d1209926076460d476c866e9e81b211418f8a1df5bd3238b5f7d132fc598717) classified as SCHEME_ONLY markers, not lessons. The document has no Week Ten teaching body, revision worksheet or marking scheme; the last text block is REVISION followed by section properties. Per-week GENERAL EVALUATION/REVISION QUESTIONS at block 232 remains within Weeks 2-3 and is not a marker. Added rules R002/R003 and MARKER coverage entries COV-AG-T2-REVISION-SCHEME and COV-AG-T2-REVISION-W10. No source bytes, lesson bodies, other marker classifications, corrections or assets changed. Importer/compiler/tests not run; testing remains deferred.",
       "completion_condition": "Markers classified with locators and an explicit statement that no instructional body exists; nothing invented."
     },
     {
@@ -5617,7 +5618,6 @@
     }
   },
   "next_runnable": [
-    "AG-MARK-T2-REVISION",
     "AG-MARK-T2-EXAM",
     "AG-MARK-T3-REVISION",
     "AG-MARK-T3-EXAM",

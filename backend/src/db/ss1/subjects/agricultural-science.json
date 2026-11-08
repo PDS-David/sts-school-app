@@ -110,6 +110,30 @@
         "explanation": "The existing AG-INV-T1 source inspection identifies this as scheme item 12, a scheme-only examination marker. The document has ten teaching weeks only (WEEK 1–10); there is no WEEK 12 label/body, examination paper or marking scheme. This is a classification only; no examination content is invented. The compiler/importer uniqueness and parsing checks remain deferred."
       },
       "kind": "SCHEME_ONLY"
+    },
+    {
+      "id": "SS1-SRC-956594d97094-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-956594d97094",
+      "source_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042",
+      "anchor": "Revision.",
+      "evidence": {
+        "locator": "SS1-SRC-956594d97094: word/document.xml direct w:body block 14 (0-based); exact text hash 067123e0afb74e0255aa210d2d56577c04613c68ae2b1d2cd4c3bf2845cf6103",
+        "explanation": "Scheme block 14 is the exact scheme entry 'Revision.'; it is a revision marker, not instructional text. The source contains a separate Week 1 placeholder and no revision worksheet or marking scheme for this scheme marker."
+      },
+      "kind": "SCHEME_ONLY"
+    },
+    {
+      "id": "SS1-SRC-956594d97094-R003",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-956594d97094",
+      "source_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042",
+      "anchor": "WEEK TENDATE: ……………\nREVISION",
+      "evidence": {
+        "locator": "SS1-SRC-956594d97094: word/document.xml direct w:body blocks 675-676 (0-based); label hash 31939d9c0dafc228d9c0b276ea88670bd77d9b9b536acd3a1b7c3ff5df797a92; range hash 6d1209926076460d476c866e9e81b211418f8a1df5bd3238b5f7d132fc598717",
+        "explanation": "The final source label is 'WEEK TENDATE: ……………' followed only by the word 'REVISION'; the next body child is section properties. This is a terminal revision marker with no instructional body, worksheet or marking scheme; classify it outside parsed teaching rows and do not invent content."
+      },
+      "kind": "SCHEME_ONLY"
     }
   ],
   "lessons": [],
@@ -1683,6 +1707,38 @@
         {
           "locator": "Mange section 1210",
           "explanation": "The cattle mange paragraph says to maintain hygiene and sanitation in 'pig houses', a likely cross-topic copy error that requires source/teacher confirmation."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T2-REVISION-SCHEME",
+      "source_id": "SS1-SRC-956594d97094",
+      "objective": "Scheme-only revision marker",
+      "objective_locator": "Second Term scheme block 14, exact text 'Revision.'",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-956594d97094-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "Scheme block 14; text SHA-256 067123e0afb74e0255aa210d2d56577c04613c68ae2b1d2cd4c3bf2845cf6103",
+          "explanation": "Classified as SCHEME_ONLY marker; no lesson, revision worksheet or marking scheme is present for this entry."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T2-REVISION-W10",
+      "source_id": "SS1-SRC-956594d97094",
+      "objective": "Terminal Week Ten revision marker, not a teaching-week body",
+      "objective_locator": "Week Ten label block 675 and 'REVISION' block 676",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-956594d97094-R003"
+      ],
+      "evidence": [
+        {
+          "locator": "Blocks 675-676; range SHA-256 6d1209926076460d476c866e9e81b211418f8a1df5bd3238b5f7d132fc598717",
+          "explanation": "The terminal label is followed only by 'REVISION'; no further instructional blocks, worksheet or marking scheme exist. Classified SCHEME_ONLY rather than a lesson."
         }
       ]
     }
