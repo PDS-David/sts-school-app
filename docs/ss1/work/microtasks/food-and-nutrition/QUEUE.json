@@ -26,23 +26,24 @@
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "FN-INV-T1 appended the 1st Term inventory items (20) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 20 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. The scheme has thirteen rows but only eleven teaching bodies; rows 12 Revision and 13 Examination have no body and are SCHEME_ONLY markers (FN-MARK-T1-REVEXAM). The document has no practical, equipment, hygiene, allergy, burns/fire or chemical content, and only three assessment lines (FN-INV-T1.md). Nothing was run (tests, typechecks, importer, DB, device).",
     "FN-INV-T2 appended the 2nd Term inventory items (17) and is IMPLEMENTED_TESTING_DEFERRED. All 17 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. The body has ten teaching weeks; the scheme's Revision (11) and Examination (12) have no body and the closing line reads 'Week 12 & 13' (FN-MARK-T2-REVEXAM). One real table, no drawings or media. No practical observation, treatment or dose was recorded (FN-INV-T2.md). Nothing was run (tests, typechecks, importer, DB, device).",
-    "2026-11-07 FN-WK-T1-W01: indexed Week 1 lines 107-153 of the 1st Term source into 7 coverage entries (6 PARTIAL, 1 UNRESOLVED) and 5 open items (3 blocking), and appended FN-FACT-T1-W01-TEACHER-DECISIONS (BLOCKED) plus three lesson tasks. Week 1 has no assessment of its own; nothing is approved, verified or deliverable. Week 1 is not complete."
+    "2026-11-07 FN-WK-T1-W01: indexed Week 1 lines 107-153 of the 1st Term source into 7 coverage entries (6 PARTIAL, 1 UNRESOLVED) and 5 open items (3 blocking), and appended FN-FACT-T1-W01-TEACHER-DECISIONS (BLOCKED) plus three lesson tasks. Week 1 has no assessment of its own; nothing is approved, verified or deliverable. Week 1 is not complete.",
+    "2026-11-08 FN-INV-T3: appended the 3rd Term inventory items (14) and set FN-INV-T3 to IMPLEMENTED_TESTING_DEFERRED. All 14 new items are PENDING because no coverage, lesson, preservation record or factual correction has been written. The body has nine labelled weeks (Week 6 and Week 9 are heading-only practicals) and a combined closing marker 'WEEK 10 & 11' / 'REVISIONS AND EXAMS'; the scheme's row 10 'Meat cookery' has no body. The document has no table, drawing or media, so no visual-disposition item was added. Nothing is approved, verified or deployed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 4,
-    "SOURCE_PREAMBLE_INDEXING": 2,
-    "SOURCE_WEEK_INDEXING": 21,
-    "SOURCE_MARKER_DISPOSITION": 2,
+    "FACTUAL_DEPENDENCY": 5,
+    "SOURCE_PREAMBLE_INDEXING": 3,
+    "SOURCE_WEEK_INDEXING": 30,
+    "SOURCE_MARKER_DISPOSITION": 3,
     "VISUAL_DISPOSITION": 4,
-    "SOURCE_PRESERVATION": 6,
+    "SOURCE_PRESERVATION": 8,
     "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 6,
-    "PENDING": 41,
+    "IMPLEMENTED_TESTING_DEFERRED": 7,
+    "PENDING": 54,
     "BLOCKED": 2
   },
   "items": [
@@ -249,8 +250,8 @@
       "depends_on": [
         "FN-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-08 A4: 3rd Term inventory written to docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md from the original 'FOOD _ NUTRITION.docx' (member SHA-256 13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee, verified from the composite archive docs/ss1/sources/SSS1-original.zip, SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e). 287 body blocks, no table, drawing, picture, equation or media part; nine labelled teaching weeks (two of them, Week 6 and Week 9, heading-only practicals) and one combined closing marker 'WEEK 10 & 11' / 'REVISIONS AND EXAMS'; scheme of twelve typed rows whose row 10 'Meat cookery' has no body. Appended 14 PENDING items: FN-PRE-T3, FN-WK-T3-W01..W09, FN-MARK-T3-REVEXAM, FN-PRES-T3-COOKING-PROCESSES, FN-PRES-T3-SOURCE-WORDING, FN-FACT-T3-FOOD-HYGIENE-COOKING. No visual-disposition item was added because the document has nothing to dispose of. No lesson, coverage entry, rule, correction or asset written; package stays PENDING; not approved or verified.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -1834,6 +1835,529 @@
       "status": "PENDING",
       "implementation_reference": "Not authored. Required by FN-WK-T1-W01 (2026-11-07): see the open items named in the completion condition.",
       "completion_condition": "A practice set in food-and-nutrition.json assesses the Week 1 objectives with truthful provenance, a key whose marks add up and exact locators for any source-printed question, and leaves COV-FN-T1-W01-ASSESSMENT UNRESOLVED until the key is authorised. Testing deferred by owner."
+    },
+    {
+      "id": "FN-PRE-T3",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-136db891415d",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 0-24 (cover line 'OMEGA TERM E – NOTE FOR SS1 FOODS AND NUTRITION' at block 0; 'Scheme of work' at block 2; column line 'Weeks ... topics' at block 3; twelve typed-number scheme rows in blocks 4-22), SHA-256 a92ddfac5b7ba203c4687c33483862986f63262549354c3009718fcc953a0bdf",
+      "objective": "Index the unlabelled opening of the 3rd Term Food and Nutrition source (blocks 0-24, body SHA-256 a92ddfac5b7ba203c4687c33483862986f63262549354c3009718fcc953a0bdf; label block 2 SHA-256 b3ead3269caf9f2e281130d7956be785e5d8e4af46af9e8deb940c035f496389) and implement what the existing schema supports. The opening is a one-line cover (block 0 'OMEGA TERM E – NOTE FOR SS1 FOODS AND NUTRITION', the registered header text; block 1 is empty), the title 'Scheme of work' (block 2), the column line 'Weeks ... topics' (block 3) and a scheme written as plain paragraphs, not a table: the week numbers are typed text ('1. Revision/ food hygiene' at block 4, then '2.' at 6, '3.' at 9, '4.' at 11, '5.' at 14, '6.' at 16, '7.' at 17, '8.' at 18, '9.' at 19, '10. Meat cookery...' at 20, '11. Revision.' at 21 and '12. Examination.' at 22). Rows 1, 2, 3, 4 and 5 carry unnumbered continuation lines (blocks 5, 7-8, 10, 12-13 and 15). Compare the scheme with the body: rows 1-9 correspond to the nine labelled weeks (row 6 and row 9 are practicals), but row 10 'Meat cookery- types of meat from different animals, nutritive value of meats, methods of cooking meat' (block 20) has no body at all, and rows 11 and 12 (Revision, Examination) are matched in the body only by the combined marker 'WEEK 10 & 11' / 'REVISIONS AND EXAMS' (blocks 278-279): record both mismatches for FN-MARK-T3-REVEXAM and as a precise open item. Row 1 promises 'food laws regulatory bodies e.g. NAFDAC, SON' (block 5) and row 7 promises 'preparatory and serving of vegetables' (block 17), neither of which has body teaching (see FN-WK-T3-W01 and FN-WK-T3-W07). Row 5 contains a stray '\\\\' in ' - Importance \\\\, nutritive value' (block 15) and row 3 has '(b) Frying' with no '(a)' (block 10): preserve both as printed. Treat the typed numbers as scheme text, not headings, and never split or import a scheme row as a lesson. Do not edit the scheme wording or spelling. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+          "member_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-PRE-T3.md"
+      ],
+      "depends_on": [
+        "FN-INV-T3",
+        "FN-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md.",
+      "completion_condition": "The scheme is represented under the existing schema (or recorded as needing no rule beyond the week split) with all rows and continuation lines preserved verbatim; typed row numbers are not parsed as headings; no lesson is created from a scheme row; the Meat cookery row with no body and the Revision/Examination mismatch are precise open items; nothing is invented."
+    },
+    {
+      "id": "FN-WK-T3-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-136db891415d",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 25-63 (marker 'WEEK 1', topic 'FOOD HYGIENE'), SHA-256 469b7e933b3ba10277c81376fee946421e9ed4831725802c6286a6ee3800282a",
+      "objective": "Index Week 1 of the 3rd Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (blocks 25-63, body SHA-256 469b7e933b3ba10277c81376fee946421e9ed4831725802c6286a6ee3800282a; label block 25 SHA-256 db9663597ad9f735559d0ad53f51577cebc05c7a5b5cf8cd4cf010989d7064c1): the marker 'WEEK 1:  ' (block 25, two trailing spaces) and topic 'FOOD HYGIENE' (26); the definition of food hygiene (27); causes of spoilage (28-33: micro organisms, food enzymes and chemical reactions listed at 29-31, explained at 32-33); seven rules for food hygiene (34-41); food borne diseases (42-49: the two kinds listed at 44-45, food poisoning defined at 46 with 'e.g. salmonella', food infection defined at 47 with 'e.g. staphylococcus, clostridium botulin', a paragraph at 48 that names salmonella again as the organism of food infections, adds lead, mercury and cobalt and says the hospital should be consulted in severe cases, and a one-line symptoms statement at 49 that ends 'may result to death'); the food sanitation law (50-57: definition and a statement about a Nigerian federal decree at 51, 'The laws includes:' at 52, and five statements at 53-57 of which 54-55 are continuation fragments of 53); two evaluation questions (58-59) and an assignment on the functions of NAFDAC and the Standard Organisation of Nigeria (60). Observations to record as precise open items, never fixed here: the scheme row 'Revision/ food hygiene' promises a revision that the week does not contain; NAFDAC and SON appear only in the assignment (60) and no body text gives their functions; salmonella is the example of food poisoning at 46 but of food infection at 48 (internal inconsistency, record as printed); 'clostridium botulin' is printed as an example of food infection at 47; the symptoms line (49) gives no treatment and none may be added; the Nigerian decree at 51 is named by no title, date or number. The food-poisoning, infection, chemical-contaminant and hospital statements (46-49) go to FN-FACT-T3-FOOD-HYGIENE-COOKING; the printed defects ('presence of presence', 'botulin', 'includes') go to FN-PRES-T3-SOURCE-WORDING. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+          "member_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T3-W01.md"
+      ],
+      "depends_on": [
+        "FN-INV-T3",
+        "FN-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md.",
+      "completion_condition": "Week 1 coverage exists for hygiene definition, spoilage causes, rules, food borne diseases, sanitation law and assessment with exact locators; the missing revision, the NAFDAC/SON content and the internal salmonella inconsistency are precise open items plus small lesson tasks; nothing is invented."
+    },
+    {
+      "id": "FN-WK-T3-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-136db891415d",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 64-98 (marker 'WEEK 2', topic 'METHODS OF COOKING'), SHA-256 1e29724ec5072e1fd016410cd63ecb21fd7962076063d333ba205d8b99bb9cb3",
+      "objective": "Index Week 2 of the 3rd Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (blocks 64-98, body SHA-256 1e29724ec5072e1fd016410cd63ecb21fd7962076063d333ba205d8b99bb9cb3; label block 64 SHA-256 8a30551c32ee055e0588e4af87bb92441907271c30bb2674fca5cf6be168df2d): the marker 'WEEK 2: ' (block 64, one trailing space) and topic 'METHODS OF COOKING' (65); the definition of cooking (66); seven reasons for cooking food (67-74); heat transfer by conduction, convection and radiation (75-78); the split into moist and dry methods (79-87: boiling, stewing, steaming and braising listed at 80-83, roasting, baking and grilling listed at 85-87 under 'Dry cooking includes:'); definitions of boiling (88, with the boiling point printed '(1000C)' where the final zero is a superscript run), three types of boiling (89-92), stewing (93) and steaming (94); two evaluation lines (95-96, the second reading 'State 5 reasons for coking food.') and an assignment on the advantages and disadvantages of the moist heat method (97). Observations to record as precise open items, never fixed here: braising is listed (83) but never defined; the scheme promises 'definitions, advantages and disadvantages' but no advantage or disadvantage is taught (they appear only in assignment 97, unanswered); block 79 mentions 'fat frying method' as a third category that Week 3 develops; the radiation line (78) names grilling and baking as examples. Statements on heat transfer (76-78) and the boiling point (88) go to FN-FACT-T3-FOOD-HYGIENE-COOKING; 'coking', the superscript temperature and similar defects go to FN-PRES-T3-SOURCE-WORDING; the definitions and the three types of boiling are cooking processes for FN-PRES-T3-COOKING-PROCESSES. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+          "member_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T3-W02.md"
+      ],
+      "depends_on": [
+        "FN-INV-T3",
+        "FN-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md.",
+      "completion_condition": "Week 2 coverage exists for the reasons, heat transfer, moist/dry classification and the three defined methods with exact locators; braising's missing definition and the unsupported advantages/disadvantages assignment are precise open items plus small lesson tasks; nothing is invented."
+    },
+    {
+      "id": "FN-WK-T3-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-136db891415d",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 99-126 (marker 'WEEK 3', topic 'COOKING METHODS CONTD.' on the same paragraph), SHA-256 dda11ffbc4e731b11e5edaba60d4323799f419ea808a9c82bb9cf73a74d8b722",
+      "objective": "Index Week 3 of the 3rd Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (blocks 99-126, body SHA-256 dda11ffbc4e731b11e5edaba60d4323799f419ea808a9c82bb9cf73a74d8b722; label block 99 SHA-256 941ca995c1ec445bb832d9fa6b57bfbfa514d6f15245baee01727d3420d239dc): the marker and topic in one paragraph, 'WEEK 3:  COOKING METHODS CONTD.' (block 99); 'DRY HEAT METHOD' (100); definitions of baking (101), grilling (102) and roasting with three variants (103-106); a definition of frying (107, which reads 'coking food in hot oil'); four types of frying listed at 109-112 (French/ deep, Shallow fat, Dry fat and 'Sautéing fat frying') and defined at 113-116 (the last as 'SAUTEEING'); six rules for deep fat frying (117-123, including 'Do not fill the fryer more than half way with oil' at 119 and 'allow the oil to cool before straining it' at 123); an evaluation line (124) and an assignment (125) followed by an orphan numbered line '2. State the advantages and disadvantages of frying.' (126) that sits directly before the Week 4 marker. Observations to record as precise open items, never fixed here: the scheme promises advantages and disadvantages of dry heat methods and of frying (block 10 reads '(b) Frying- ... advantages and disadvantages') but none is taught, they appear only in 125-126; block 126 belongs to Week 3 by position but its '2.' numbering has no '1.' partner other than 125; block 122 is a garbled rule ('Do not over heat the pan with the food as this would considerably lower the temperature before putting food in'); the spelling of sautéing differs between 112 and 116; no frying temperature, oil type or quantity is printed and none may be added. The frying rules (117-123) are safety-relevant and go to FN-FACT-T3-FOOD-HYGIENE-COOKING without any added numbers; the definitions and rules are cooking processes for FN-PRES-T3-COOKING-PROCESSES. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+          "member_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T3-W03.md"
+      ],
+      "depends_on": [
+        "FN-INV-T3",
+        "FN-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md.",
+      "completion_condition": "Week 3 coverage exists for the dry heat methods, the four types of frying and the deep-fat rules with exact locators; the missing advantages and disadvantages, the orphan numbered line and the garbled rule are precise open items plus small lesson tasks; nothing is invented."
+    },
+    {
+      "id": "FN-WK-T3-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-136db891415d",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 127-150 (marker 'WEEK 4', topic 'FOOD STUDY' / 'CEREALS/ GRAINS'), SHA-256 a0396bc0bfb95755074d4d2126c68d1d8c42bc3721428de2915039985904216c",
+      "objective": "Index Week 4 of the 3rd Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (blocks 127-150, body SHA-256 a0396bc0bfb95755074d4d2126c68d1d8c42bc3721428de2915039985904216c; label block 127 SHA-256 158d19e73fee4c85dacfc71092e2c843c984ebbdc733902e7149b475e8b51988): the marker 'WEEK 4: ' (block 127, one trailing space), the topic 'FOOD STUDY' (128) and the sub-heading 'CEREALS/ GRAINS' (129); the definition and examples of cereals (130); nutritive value (131: carbohydrate 'seventy to eighty' with no unit printed, refined versus whole grain); preparation of cereals (132-135: milling, guinea corn, millet, rice and wheat, and the extraction rate); low and high extraction rate flour (136-137); uses of flour in baking (138); parboiling of rice (139-140); methods of cooking cereals (141-146: five lines); two evaluation lines (147-148, the second lettered 'B.') and an assignment to draw and label the structure of a typical cereal (149). Observations to record as precise open items, never fixed here: the assignment (149) needs a figure the source does not contain (the file has no drawing or media part); the evaluation's second line is lettered 'B.' with no 'A.' partner (147 is unlettered); the nutritive-value statements (131, 136-137, 140) and the milling description (133-134) go to FN-FACT-T3-FOOD-HYGIENE-COOKING; the scheme row's 'processing' and 'cooking methods' are covered only by 133-146. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+          "member_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T3-W04.md"
+      ],
+      "depends_on": [
+        "FN-INV-T3",
+        "FN-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md.",
+      "completion_condition": "Week 4 coverage exists for cereals, milling, extraction rate, parboiling and cooking methods with exact locators; the unsupported drawing assignment and the unlettered evaluation pair are precise open items plus small lesson tasks; nothing is invented."
+    },
+    {
+      "id": "FN-WK-T3-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-136db891415d",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 151-186 (marker 'WEEK 5', topic 'LEGUMES/ PULSES'), SHA-256 ed78860ddc87a5e2deafa924c299837f31daa466bd3e712b82a57ec8d91027d5",
+      "objective": "Index Week 5 of the 3rd Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (blocks 151-186, body SHA-256 ed78860ddc87a5e2deafa924c299837f31daa466bd3e712b82a57ec8d91027d5; label block 151 SHA-256 a2a62efa0faa958c207f3388e42aeed6b9f492b85e593c8238c4d497f48ad2a3): the marker 'WEEK 5: ' (block 151, one trailing space) and topic 'LEGUMES/ PULSES' (152); the definition and two groups, pulses and oil seeds (153-156, groups typed '1. Pulses.' and '2. Oil seed.' at 154-155); protein, vitamins and minerals and a statement that legumes 'should be well cooked to remove anti-nutritional factor' (157); two near-empty blocks (158 whitespace only, 159 empty); factors to consider when purchasing legumes (160-163); 'TYPES OF BEANS' (164-168: lima beans, soya beans, green peas, lentils); methods of cooking legumes (170-175: boiling, roasting, steaming, stewing, frying); dishes made from legumes (176-181, a single sub-label 'BEANS;' with Ekuru, Ofuloju, Igbalo/Jogi and Moi-Moi); an evaluation question on the nutritive value of legumes (183) and an assignment to draw and label the structure of a typical legume (184). Observations to record as precise open items, never fixed here: the scheme promises 'Importance, nutritive value, cooking methods and dishes made from legumes' (block 15) but there is no importance section and the only nutritive-value text is block 157, which speaks of protein, vitamins and mineral elements in general terms; the heading says 'TYPES OF BEANS' yet lists green peas and lentils; the dishes list covers beans only although the heading says legumes; the assignment (184) needs a figure the source does not contain; groundnut and oil seeds are named at 156 and 171-174 without any teaching of their own. The cooking and anti-nutritional statement (157) goes to FN-FACT-T3-FOOD-HYGIENE-COOKING; the cooking-method list is a process for FN-PRES-T3-COOKING-PROCESSES. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+          "member_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T3-W05.md"
+      ],
+      "depends_on": [
+        "FN-INV-T3",
+        "FN-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md.",
+      "completion_condition": "Week 5 coverage exists for legume groups, purchasing factors, types, cooking methods and dishes with exact locators; the missing importance and nutritive-value teaching, the type-heading mismatch and the unsupported drawing assignment are precise open items plus small lesson tasks; nothing is invented."
+    },
+    {
+      "id": "FN-WK-T3-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-136db891415d",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 187-192 (marker 'WEEK 6', practical heading only), SHA-256 2f6da2f4f8efd6ec6bf8ca9d183592853444ee461f8eb268e7c1305d8d3609c3",
+      "objective": "Index Week 6 of the 3rd Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (blocks 187-192, body SHA-256 2f6da2f4f8efd6ec6bf8ca9d183592853444ee461f8eb268e7c1305d8d3609c3; label block 187 SHA-256 ea8185ea349241ba2bae6171c243e142665662fa446d963fbcbef51cb68a6c56): the marker 'WEEK 6:' (block 187) and a two-paragraph heading, ' PRACTICAL ON COOKING METHODS: CEREALS' (188) and '  AND LEGUMES.' (189), followed by three empty blocks (190-192). The week contains no teaching text, no recipe, no equipment list, no steps, no assessment and no rubric. The scheme row 'Practicals on cooking methods, cereals and legumes.' (block 16) matches the heading only. Record as precise open items that the practical content, recipes, equipment, safety arrangements and assessment are unspecified in the source; the source supplies nothing to index beyond the heading, so the coverage entry is a heading-only entry with the exact locator and an UNRESOLVED status, and no lesson may be written from a heading alone. Do not record a classroom practical observation that was not made, do not invent a practical procedure, quantities or marking scheme, and do not prescribe any cooking or safety step. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+          "member_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T3-W06.md"
+      ],
+      "depends_on": [
+        "FN-INV-T3",
+        "FN-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md.",
+      "completion_condition": "Week 6 has a heading-only coverage entry with exact locators and precise open items for every missing practical element; no practical, recipe or rubric is invented and no observation is recorded."
+    },
+    {
+      "id": "FN-WK-T3-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-136db891415d",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 193-225 (marker and topic in one paragraph, 'WEEK 7; VEGETABLES.'), SHA-256 7e3db01a1632b24fcbb879485208859bbdb00676b9278ac4b7a2a1dfe99e7755",
+      "objective": "Index Week 7 of the 3rd Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (blocks 193-225, body SHA-256 7e3db01a1632b24fcbb879485208859bbdb00676b9278ac4b7a2a1dfe99e7755; label block 193 SHA-256 965b5282342b4fa78c725f733b6b5d34c9f871a8d9a1d92e71bceb9ef902b40d): the marker and topic in one paragraph with a semicolon, 'WEEK 7; VEGETABLES.' (block 193); the definition and perishability of vegetables (194); five classes (195-200: roots or tubers, green leafy, bulbs, pulses and legumes, miscellaneous, typed '1.'-'5.' with examples, where carrots appear at 196 and 198 and lettuce at 197 and 200); nutritive value, sources of minerals and nutritive components (201-213: protein at 206, carbohydrate 207-209, mineral salts 210, vitamins 211-212, water 213); factors when choosing leafy vegetables (214-219, the heading split over 214-215, four factors); effects of heat on leafy vegetables (220-222, two points); an evaluation question (223) and an assignment on differences between fruits and vegetables (224). Observations to record as precise open items, never fixed here: the scheme row (block 17) promises 'preparatory and serving of vegetables' and the body has neither; the same vegetable is classified under two classes (carrots, lettuce) as printed; block 206 reads 'second hand protein'; block 211 is garbled ('Vitamins is present in tomatoes...'); the assignment (224) needs fruit content that only appears in Week 8. The vitamin, mineral and heat-effect statements (202-213, 220-222) go to FN-FACT-T3-FOOD-HYGIENE-COOKING; the defects go to FN-PRES-T3-SOURCE-WORDING. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+          "member_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T3-W07.md"
+      ],
+      "depends_on": [
+        "FN-INV-T3",
+        "FN-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md.",
+      "completion_condition": "Week 7 coverage exists for vegetable classification, nutritive value, choosing factors and heat effects with exact locators; the missing preparation and serving teaching, the double classifications and the cross-week assignment are precise open items plus small lesson tasks; nothing is invented."
+    },
+    {
+      "id": "FN-WK-T3-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-136db891415d",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 226-273 (marker 'WEEK 8', topic 'FRUITS.'), SHA-256 0c43c02ec311d4462f0da94250433a32719b0b6deda4face2fdddd8fb4c466b5",
+      "objective": "Index Week 8 of the 3rd Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (blocks 226-273, body SHA-256 0c43c02ec311d4462f0da94250433a32719b0b6deda4face2fdddd8fb4c466b5; label block 226 SHA-256 b1145cc14714ec30cdc2fd5d7b9524b48651f932c7d2f3c8891b2c505da83707): the marker 'WEEK 8:' (block 226) and topic ' FRUITS.' (227); definition and the fresh and dry groups (228-230); fresh fruit classes (231-234: soft, hard and citrus, where pineapple and watermelon are listed under citrus and mangoes under hard fruits) and dry fruits (235); nutritive value (236-242: acids and vitamins, sugar, cellulose and starch, indigestible cellulose as a mild laxative, five named acids); factors when choosing fruits (243-248, including seasonality at 248); methods of serving fruits (249-251); five effects of heat on fruits (252-257, including loss of vitamin C at 253); methods of preparing fruits (258-266: raw 259-260, cooked 261-262, stewing 263-264, baking 265-266); two evaluation lines (267-268) and an assignment to list local fruits and their seasons (269); blocks 270-273 are empty. Observations to record as precise open items, never fixed here: blocks 250, 262 and 264 are garbled ('Unripe fruits are fruits with hard seeds may be cooked', 'Examples of Green Apple; they are cooked to improve starch content', and a stewing sentence that breaks off mid-clause); the classification examples at 232-234 are the source's and need the fact item; the assignment (269) is local-knowledge work the source does not answer. The nutritive, classification, heat-effect and osmosis statements go to FN-FACT-T3-FOOD-HYGIENE-COOKING; the preparation methods are processes for FN-PRES-T3-COOKING-PROCESSES; the garbled blocks go to FN-PRES-T3-SOURCE-WORDING. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+          "member_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T3-W08.md"
+      ],
+      "depends_on": [
+        "FN-INV-T3",
+        "FN-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md.",
+      "completion_condition": "Week 8 coverage exists for fruit classes, nutritive value, choosing, serving, heat effects and preparation with exact locators; the garbled passages and the unanswered local-knowledge assignment are precise open items plus small lesson tasks; nothing is invented."
+    },
+    {
+      "id": "FN-WK-T3-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-136db891415d",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 274-277 (marker 'WEEK 9', practical heading only), SHA-256 c6fdf7c8a72776abfb7e9407d2727394d28e4cfffa7a183fe6f3d5840c3f2110",
+      "objective": "Index Week 9 of the 3rd Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (blocks 274-277, body SHA-256 c6fdf7c8a72776abfb7e9407d2727394d28e4cfffa7a183fe6f3d5840c3f2110; label block 274 SHA-256 cc3f538c73c6ea5fe63470d216e1d860a9e45489d6c165abc2139b037b4a0713): the marker 'WEEK 9:' (block 274) and the single heading ' PRACTICALS ON FRUITS AND VEGETABLES.' (275), followed by two empty blocks (276-277). The week contains no teaching text, no recipe, no equipment list, no steps, no assessment and no rubric. The scheme row 'Practicals on fruits and vegetables' (block 19) matches the heading only. Record as precise open items that the practical content, recipes, equipment, safety arrangements and assessment are unspecified in the source; the coverage entry is heading-only with the exact locator and an UNRESOLVED status, and no lesson may be written from a heading alone. Do not record a classroom practical observation that was not made, do not invent a practical procedure, quantities or marking scheme, and do not prescribe any preparation or safety step. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+          "member_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T3-W09.md"
+      ],
+      "depends_on": [
+        "FN-INV-T3",
+        "FN-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md.",
+      "completion_condition": "Week 9 has a heading-only coverage entry with exact locators and precise open items for every missing practical element; no practical, recipe or rubric is invented and no observation is recorded."
+    },
+    {
+      "id": "FN-MARK-T3-REVEXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-136db891415d",
+      "term": "3rd Term",
+      "week_or_locator": "scheme rows '11. Revision.' (block 21) and '12. Examination.' (block 22), the unmatched scheme row 10 'Meat cookery' (block 20), and the closing marker 'WEEK 10 & 11' / 'REVISIONS AND EXAMS' (blocks 278-279; blocks 278-285 SHA-256 eed08fce5dacd1c808c2f9ffe949fcc5d99c82eb49b585b397e2491a024241c7; blocks 280-285 are empty)",
+      "objective": "Dispose of the revision and examination markers in the 3rd Term Food and Nutrition source. The body ends with a combined marker 'WEEK 10 & 11' (block 278, SHA-256 1b46514956e765e50a8476ec11e7d4fa41da08c3c55eabaf046dfa4a1a33f986) and the single line 'REVISIONS AND EXAMS' (block 279, SHA-256 02e021f78e7c8b0894969ccb3b8c0315f4f915e1cc9b5b0187c11a245c665fdc); blocks 280-285 are empty paragraphs (285 holds two spaces) and block 286 is the section properties. The scheme lists Meat cookery as row 10 (block 20), Revision as row 11 (block 21) and Examination as row 12 (block 22); the body has no meat-cookery week, so the body's 'WEEK 10 & 11' corresponds to scheme rows 11 and 12, not rows 10 and 11. Record this mismatch exactly as printed and record that the Meat cookery row has no body (precise open item, no content to be invented from outside knowledge). Classify the closing marker under the existing schema as a marker (SCHEME_ONLY or the nearest supported disposition) with a rule anchored on text that occurs exactly once, and prove the anchor is not matched inside any parsed week body or in scheme rows 1-10; note that a plain `WEEK\\s*\\d+` split would read 'WEEK 10 & 11' as an ordinary Week 10 with a one-line body, so the rule must classify it by body (no teaching content) rather than by the heading word. The anchor must not swallow the Week 9 heading or the Week 8 assignment (269). If a later version supplied a revision or examination body, it would have to be classified by body, not by heading; record that rule. Do not create a lesson, an answer key or an assessment from these lines, and do not invent a revision document or a meat-cookery week. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+          "member_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-MARK-T3-REVEXAM.md"
+      ],
+      "depends_on": [
+        "FN-INV-T3",
+        "FN-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md.",
+      "completion_condition": "The closing marker and both scheme rows are classified under the existing schema with a unique anchor and a check that no week body contains it; the week-number mismatch and the missing Meat cookery body are recorded; no lesson or answer is created; the by-body rule is recorded."
+    },
+    {
+      "id": "FN-PRES-T3-COOKING-PROCESSES",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-136db891415d",
+      "term": "3rd Term",
+      "week_or_locator": "whole 3rd Term document; processes at blocks 66-94 (cooking, heat transfer, moist methods), 101-123 (dry heat, frying and deep-fat rules), 130-146 (milling, extraction rate, parboiling, cereal cooking), 170-181 (legume cooking and dishes), 249-266 (serving and preparing fruits)",
+      "objective": "Preserve the food preparation processes of the 3rd Term Food and Nutrition source exactly as printed, separately from any corrected or enriched procedure: the reasons for cooking (68-74), the heat-transfer definitions (76-78), the definitions of boiling with its three types, stewing and steaming (88-94), baking, grilling and roasting (101-106), the four frying types and the deep-fat frying rules (109-123), milling, extraction rate and parboiling (133-140), the cereal and legume cooking-method lists (142-146, 171-175), the dishes list (178-181) and the fruit serving, raw, cooked, stewing and baking passages (250-266). Record each as a source-order, block-numbered list with its original line breaks and typed or automatic numbering (blocks with automatic list numbering that a plain text extraction does not print: 29-31, 35-41, 44-45, 53-57, 68-74, 76-78, 80-83, 85-87, 90-92, 96, 104-106, 109-116, 118-123, 142-146, 161-163, 177, 213, 244-248, 259, 261, 263, 265). The source contains no quantities, temperatures, times or equipment lists for any process and none may be added; no nutrition table, equipment illustration or practical rubric exists in this document (no w:tbl, w:drawing, w:pict or media part), so none is preserved here. Do not improve, reorder or complete any process; a corrected form may sit beside the printed form but never replace it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+          "member_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-PRES-T3-COOKING-PROCESSES.md"
+      ],
+      "depends_on": [
+        "FN-INV-T3",
+        "FN-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md.",
+      "completion_condition": "Each process is recorded verbatim with block numbers and list numbering, with a statement that the source supplies no quantities, temperatures or rubrics; nothing is completed, corrected or merged."
+    },
+    {
+      "id": "FN-PRES-T3-SOURCE-WORDING",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-136db891415d",
+      "term": "3rd Term",
+      "week_or_locator": "whole 3rd Term document; key defects at blocks 15, 47, 48, 52, 54-55, 60, 88, 96, 107, 112, 116, 122, 126, 131, 148, 164-168, 193, 202, 206, 211, 242, 250, 262, 264, 278",
+      "objective": "Preserve the source wording of the 3rd Term Food and Nutrition document separately from any corrected prose. Record at least: the stray '\\\\' in ' - Importance \\\\, nutritive value' (15); 'clostridium botulin' (47); 'the presence of presence of poisonous chemicals' (48); 'The laws includes:' (52) and the continuation fragments ' If it is unfit for human consumption.' (54) and 'If it consists of whole or in part...' (55) printed as separate lines; 'standard organization of Nigeria' (60); the boiling point '(1000C)' whose last zero is a superscript run (88); 'coking' (96, 107); 'Sautéing' (112) against 'SAUTEEING' (116); the garbled 'Do not over heat the pan with the food as this would considerably lower the temperature before putting food in' (122); the orphan '2. State the advantages and disadvantages of frying.' (126); the unit-less 'seventy to eighty' (131); the evaluation lettered 'B.' with no 'A.' (148); 'TYPES OF BEANS' over green peas and lentils (164-168); the marker with a semicolon 'WEEK 7; VEGETABLES.' (193) and the combined 'WEEK 10 & 11' (278); 'defication' (202); 'second hand protein' (206); 'vary quantities' and 'Vitamins is present in tomatoes' (211); 'TATARIC' (242); 'Unripe fruits are fruits with hard seeds may be cooked' (250); 'Examples of Green Apple; they are cooked to improve starch content' (262); and the stewing sentence 'During, cooking but if the sugar concentration is absolute...' (264). The label trailing spaces ('WEEK 1:  ' with two, 'WEEK 2: ', 'WEEK 4: ' and 'WEEK 5: ' with one) and the whitespace-only block 158 are also preserved as printed. A corrected form may sit beside the printed form but never replace it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+          "member_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-PRES-T3-SOURCE-WORDING.md"
+      ],
+      "depends_on": [
+        "FN-INV-T3",
+        "FN-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md.",
+      "completion_condition": "The listed defects are recorded verbatim with block numbers and each is marked as printed versus any later correction; no correction is applied."
+    },
+    {
+      "id": "FN-FACT-T3-FOOD-HYGIENE-COOKING",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-136db891415d",
+      "term": "3rd Term",
+      "week_or_locator": "whole 3rd Term document: hygiene, disease, contaminant, heat-transfer, frying, cereal, legume, vegetable and fruit statements at blocks 28-33, 46-49, 51-57, 76-78, 88, 117-123, 131-140, 157, 202-213, 220-222, 237-242, 248, 252-257, 262-264",
+      "objective": "Verify the safety-relevant and nutrition claims of the 3rd Term Food and Nutrition source against authoritative primary sources before a lesson adopts them, keep the source wording distinct from the corrected fact, and do not prescribe treatment or doses. At least: the definitions of food poisoning and food infection and the examples given for each (46-47: salmonella under poisoning, 'staphylococcus, clostridium botulin' under infection, and salmonella again as the infection organism at 48); the chemical contaminants lead, mercury and cobalt (48); the statement that the hospital should be consulted in severe cases and the symptoms line ending 'may result to death' (48-49): a lesson must not add treatment steps; the Nigerian decree and the five sanitation-law statements (51-57); the heat-transfer definitions, especially radiation as 'transfer of heat in an enclosed medium in an enclosed space' (76-78); the boiling point and simmering description (88); the deep-fat frying rules (117-123: filling the fryer no more than half way, lowering food gently, letting the oil cool before straining): no temperature, quantity or fire-response step may be added; carbohydrate content 'seventy to eighty' and the refined-versus-whole statement (131); the milling, brown rice and polished rice statements (134), the extraction-rate descriptions (136-137) and the parboiling and vitamin B statements (139-140); the statement that legumes 'should be well cooked to remove anti-nutritional factor' (157); the vitamin, carotene and mineral claims for vegetables (202-213) and the heat effects on leafy vegetables (220-222); the fruit classification examples (232-235), the acids and vitamins (237-242), seasonality (248), the heat effects including loss of vitamin C (252-257) and the osmosis and apple-cooking statements (262-264). Record the source's wording, the authoritative source consulted and the corrected or confirmed statement as separate fields. No dose, quantity or treatment may be added by this item, and no classroom practical observation may be recorded. Owner approval of any correction remains a separate stage.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+          "member_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-FACT-T3-FOOD-HYGIENE-COOKING.md"
+      ],
+      "depends_on": [
+        "FN-INV-T3",
+        "FN-SRC-T3",
+        "FN-WK-T3-W01",
+        "FN-WK-T3-W02",
+        "FN-WK-T3-W03",
+        "FN-WK-T3-W04",
+        "FN-WK-T3-W05",
+        "FN-WK-T3-W07",
+        "FN-WK-T3-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md.",
+      "completion_condition": "Each listed claim has the source wording, an authoritative primary source and a separately recorded corrected or confirmed statement, or an explicit open item; no treatment, dose or observation is invented; owner approval stays PENDING."
     }
   ],
   "review": {
@@ -1849,7 +2373,7 @@
     }
   },
   "next_runnable": [
-    "FN-INV-T3",
+    "FN-TEST-PACKAGE",
     "FN-PRE-T1",
     "FN-WK-T1-W02",
     "FN-WK-T1-W03",
@@ -1885,6 +2409,19 @@
     "FN-PRES-T2-FOOD-TESTS",
     "FN-PRES-T2-SOURCE-WORDING",
     "FN-LES-T1-W01-DEFINITIONS",
-    "FN-LES-T1-W01-IMPORTANCE-FACTORS"
+    "FN-LES-T1-W01-IMPORTANCE-FACTORS",
+    "FN-PRE-T3",
+    "FN-WK-T3-W01",
+    "FN-WK-T3-W02",
+    "FN-WK-T3-W03",
+    "FN-WK-T3-W04",
+    "FN-WK-T3-W05",
+    "FN-WK-T3-W06",
+    "FN-WK-T3-W07",
+    "FN-WK-T3-W08",
+    "FN-WK-T3-W09",
+    "FN-MARK-T3-REVEXAM",
+    "FN-PRES-T3-COOKING-PROCESSES",
+    "FN-PRES-T3-SOURCE-WORDING"
   ]
 }
