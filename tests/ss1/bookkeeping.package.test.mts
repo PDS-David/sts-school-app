@@ -206,7 +206,18 @@ test('Owner-confirmed second-term duplicate is excluded by matching parsed teach
   assert.equal(r.target_source_id, 'SS1-SRC-62b02f2adcb3');
   assert.equal(r.target_sha256, '9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0');
   assert.match(r.evidence.explanation, /Owner confirmed/);
-  assert.equal(p.coverage.some(c => c.id.startsWith('COV-BK-T2-')), false);
+  const reconstructed = p.coverage.filter(c => c.id.startsWith('COV-BK-T2-RECON-'));
+  assert.equal(reconstructed.length, 10, 'each reconstructed Bookkeeping week has its own coverage record');
+  for (const c of reconstructed) {
+    assert.equal(c.source_id, 'SS1-SRC-97c1db5b1eb0', 'the registered T2 source is only the term-bucket key');
+    assert.equal(c.status, 'IMPLEMENTED_EQUIVALENT');
+    assert.equal(c.lesson_ids.length, 1);
+    assert.match(c.lesson_ids[0], /^SUP-SS1-BOOKKEEPING-T2-W\\d{2}$/);
+    assert.match(c.objective_locator, /not the duplicate source body/);
+    assert.match(c.evidence[0].explanation, /solely the assigned second-term manifest bucket/);
+  }
+  assert.equal(p.coverage.some(c => /^COV-BK-T2-(?:REVISION|EXAM|WEEK)/.test(c.id)), false,
+    'do not index copied duplicate-source markers or weeks');
   assert.equal(p.open_items.find(x => x.id === 'BOOKKEEPING-T2-TEXT-MATCHES-T1')?.blocks_delivery, false);
 });
 
