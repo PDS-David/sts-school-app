@@ -206,17 +206,29 @@ test('Owner-confirmed second-term duplicate is excluded by matching parsed teach
   assert.equal(r.target_source_id, 'SS1-SRC-62b02f2adcb3');
   assert.equal(r.target_sha256, '9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0');
   assert.match(r.evidence.explanation, /Owner confirmed/);
-  assert.equal(p.coverage.some(c => c.id.startsWith('COV-BK-T2-')), false);
+  const reconstructed = p.coverage.filter(c => c.id.startsWith('COV-BK-T2-RECON-'));
+  assert.equal(reconstructed.length, 10, 'each reconstructed Bookkeeping week has its own coverage record');
+  for (const c of reconstructed) {
+    assert.equal(c.source_id, 'SS1-SRC-97c1db5b1eb0', 'the registered T2 source is only the term-bucket key');
+    assert.equal(c.status, 'IMPLEMENTED_EQUIVALENT');
+    assert.equal(c.lesson_ids.length, 1);
+    assert.match(c.lesson_ids[0], /^SUP-SS1-BOOKKEEPING-T2-W\\d{2}$/);
+    assert.match(c.objective_locator, /not the duplicate source body/);
+    assert.match(c.evidence[0].explanation, /solely the assigned second-term manifest bucket/);
+  }
+  assert.equal(p.coverage.some(c => /^COV-BK-T2-(?:REVISION|EXAM|WEEK)/.test(c.id)), false,
+    'do not index copied duplicate-source markers or weeks');
   assert.equal(p.open_items.find(x => x.id === 'BOOKKEEPING-T2-TEXT-MATCHES-T1')?.blocks_delivery, false);
 });
 
 test('First-term equivalent cash-book and double-entry supplements are complete', () => {
   const p = packageSchema.parse(raw);
   const expected = new Map([
-    ['SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK', ['eae5a86d4a609bfe49c6490aff0a3582ed3d190f8aaf9dcae90bce2fb8791bf9', 'COV-BK-T1-W01-SCHEME-2']],
-    ['SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK', ['083e63ed7a625b60aecc4edaa31bc2d1d32c10a203ea254f1f1d4f2359131c4d', 'COV-BK-T1-W02-DIFF']],
-    ['SUP-SS1-BOOKKEEPING-T1-W03-CONTRA', ['e000b25f034fe99b15eace1e4f370614d99c7b6becdbe9086357b4fafe06171d', 'COV-BK-T1-W03-EXPLAIN']],
-    ['SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY', ['1bdc49589f3a82bee5b18febfe95f27ea2f7129ae523ab16767b4c47d3f3c1dd', 'COV-BK-T1-W04-LEDGER-FORMAT']],
+    ['SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK', ['8c5586d7cb7c9c15bf5580386cd2643366f2de529433c024d79ab429221e22ef', 'COV-BK-T1-W01-SCHEME-2']],
+    ['SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK', ['6c057d9a40e6647be00242b5c05778e0ecae097e2b43b87de80071956ce31553', 'COV-BK-T1-W02-DIFF']],
+    ['SUP-SS1-BOOKKEEPING-T1-W03-CONTRA', ['a672eb81e9cac6761f5f706457a86ecfb260c81b78c37c4d8ac6aafbe3bc7624', 'COV-BK-T1-W03-EXPLAIN']],
+    ['SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY', ['60ca9dffe017121d24e1f82ffe67f4bfa2c13952edc2af8a5371fd05db1bcee0', 'COV-BK-T1-W04-LEDGER-FORMAT']],
+    ['SUP-SS1-BOOKKEEPING-T1-W04-POSTING', ['549804b2fb559513bdf2a560961f57e81a2277e38ab8a0c5fac2b7a3c770e1e5', 'COV-BK-T1-W04-POSTING-REPLACEMENT']],
   ]);
   for (const [id, [hash, coverageId]] of expected) {
     const lesson = p.lessons.find(x => x.id === id);
