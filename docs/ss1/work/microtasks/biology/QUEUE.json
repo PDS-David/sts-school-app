@@ -68,7 +68,8 @@
     "BIO-VIS-T1-NUTRIENT-CYCLES (2026-11-08) inspected the two hand-drawn diagrams at blocks 795 and 821. Labels and paths were transcribed; the carbon diagram's Animals→Plants arrow conflicts with written block 785, and the water diagram omits the underground-water route and uses 'transpiration' where the prose prints 'transportation'. No nitrogen cycle diagram or teaching text exists in Week 6; sulphur is named but not taught. No source images are registered as assets because rights are unrecorded. A structured carbon/water lesson was appended; no separate asset/redraw is required. The existing assessment task now depends on this lesson. Testing remains deferred.",
     "BIO-VIS-T1-PROTEIN-BREAKDOWN (2026-11-08) verified the three right-pointing connectors at block 859 and compared the sequence with the source enzyme table at block 920. The order is confirmed; only singular/plural wording differs ('Peptone' in the diagram, 'peptones' in the enzyme table). No asset/redraw is needed; the existing Week 7 nutrition lesson now includes the structured sequence. Testing remains deferred.",
     "BIO-VIS-T1-MITOSIS (2026-11-08) inspected all four original hand-drawn figures and matched them to the written stage descriptions: interphase/prophase, metaphase, anaphase and telophase/cytokinesis. Labels are raster-only and do not survive text extraction. No source image is registered as an app asset because rights are unrecorded; a project-authored four-panel redraw was appended and the Week 10 lesson now depends on it. Testing remains deferred.",
-    "BIO-VIS-T1-HORMONE-TABLE (2026-11-08) inspected the four header line shapes and seven tab-aligned rows at blocks 1042-1049, including the private rendered PDF page 43. The three columns are clear in the original rendering but collapse in plain-text extraction; a semantic three-column table is required. The seven source associations were flagged for a separate authoritative Biology fact review. No image asset or redraw is needed; original text remains unchanged and no medication guidance is added. Testing remains deferred."
+    "BIO-VIS-T1-HORMONE-TABLE (2026-11-08) inspected the four header line shapes and seven tab-aligned rows at blocks 1042-1049, including the private rendered PDF page 43. The three columns are clear in the original rendering but collapse in plain-text extraction; a semantic three-column table is required. The seven source associations were flagged for a separate authoritative Biology fact review. No image asset or redraw is needed; original text remains unchanged and no medication guidance is added. Testing remains deferred.",
+    "BIO-VIS-T1-MOVEMENT-TABLE (2026-11-08) inspected the three line shapes and seven tab-aligned rows at blocks 1083-1092 in private rendered PDF page 45. The three columns are clear in the original rendering but collapse in text extraction; the Hydra mechanism wraps across blocks 1088-1089. A semantic three-column table is required in the Week 10 lesson; no asset/redraw is needed. The source's 'hoping' spelling is preserved for separate correction handling. Testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -84,8 +85,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 51,
-    "PENDING": 97,
+    "IMPLEMENTED_TESTING_DEFERRED": 52,
+    "PENDING": 96,
     "BLOCKED": 11
   },
   "items": [
@@ -1297,8 +1298,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): block 1084 extracts as 'OrganismsOrganelles for movementMechanism of movement'; rows run Amoeba to Toads and frogs (1085-1092) with one row wrapped across blocks 1088-1089. Not a w:tbl.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and assigned DOCX member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Direct blocks 1083-1092 have range SHA-256 4c3d3265041083334ff125615b9605b4e5018cf17fc93418c58b182d1f8ff991. Three native line shapes form two vertical separators and one horizontal header rule; the three headings are ordinary text and blocks 1085-1092 contain seven tab-aligned rows, not a Word table. Private rendered PDF page 45 shows the intended three-column table, but text extraction collapses the headers and row fields and omits the lines, so column pairings do not survive reliably. The seven source rows are recorded in package evidence. The Hydra mechanism wraps across blocks 1088-1089. The source spells 'hoping' in that row; no correction is made here. Disposition: a semantic three-column table is required in the Week 10 delivery lesson; no separate image asset or redraw is needed. The existing BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT task now depends on this disposition. No source bytes changed; no app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
     },
     {
@@ -3600,7 +3601,8 @@
         "docs/ss1/work/microtasks/biology/BIO-INV-T1.md",
         "docs/ss1/work/microtasks/biology/BIO-VIS-T1-W10-MITOSIS-REDRAW.md",
         "docs/ss1/work/microtasks/biology/BIO-VIS-T1-HORMONE-TABLE.md",
-        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W10-ANIMAL-HORMONES.md"
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W10-ANIMAL-HORMONES.md",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-MOVEMENT-TABLE.md"
       ],
       "required_attachments": [
         {
@@ -3619,7 +3621,8 @@
         "BIO-WK-T1-W10",
         "BIO-VIS-T1-W10-MITOSIS-REDRAW",
         "BIO-VIS-T1-HORMONE-TABLE",
-        "BIO-FACT-T1-W10-ANIMAL-HORMONES"
+        "BIO-FACT-T1-W10-ANIMAL-HORMONES",
+        "BIO-VIS-T1-MOVEMENT-TABLE"
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T1-W10; see the Week 10 objective index for exact source locators."
@@ -5527,7 +5530,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T1-MOVEMENT-TABLE",
     "BIO-VIS-T1-TBL-CROP-ROTATION",
     "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
     "BIO-VIS-T1-TBL-ENZYMES",
