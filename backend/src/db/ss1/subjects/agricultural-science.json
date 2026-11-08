@@ -1435,6 +1435,72 @@
           "explanation": "The theory asks for the right positioning of a lamb before expulsion, but the teaching section does not describe fetal presentation or position. Any supplement must remain educational and non-procedural, with veterinary review."
         }
       ]
+    },
+    {
+      "id": "COV-AG-T3-W07-EGG-FORMATION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Poultry egg formation: ovulation, fertilization, albumen/chalaza, shell membranes, shell formation and laying",
+      "objective_locator": "Third Term scheme block 11 (combined weeks 6–7); Week Seven label 788; topic 789; egg formation 794",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Egg formation process 794–795",
+          "explanation": "Describes ovulation from ovary into infundibulum; fertilization in infundibulum; albumen/chalaza in magnum; shell membranes in isthmus; shell/calcium carbonate in uterus; passage through vagina and cloaca."
+        },
+        {
+          "locator": "Timed stages in block 795",
+          "explanation": "Source gives infundibulum 15 minutes, magnum 3 hours, isthmus 1 hour 15 minutes, uterus 18–21 hours, vagina 1–15 minutes and total nearly 26 hours; timings require independent verification."
+        },
+        {
+          "locator": "Figures at blocks 803–804 and 819",
+          "explanation": "Embedded images include a bird embryo/egg section, poultry internal organs, egg structure, female poultry reproductive tract and male/female reproductive-excretory systems."
+        },
+        {
+          "locator": "Evaluation 821–823; general evaluation 830–837; weekend 846; theory 851",
+          "explanation": "Egg-formation sequence and organ functions are assessed; the diagrams support a labelled egg drawing. A full poultry reproductive-system description is not provided in prose."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-W07-HORMONES",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Male and female reproductive hormones: sites of secretion and functions",
+      "objective_locator": "Week Seven content outline 792; section 825; table 828",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Hormone definition 825–827",
+          "explanation": "Defines hormones as organic chemical substances produced by endocrine glands that influence growth, development and metabolic activities."
+        },
+        {
+          "locator": "Hormone table 828; table cell-text SHA-256 23d71c760fadf5dd5905d5e23e91a46de2c4e0c34845c5c57892c337d20b5cb9",
+          "explanation": "Table lists testosterone/androgen, oestrogen, progesterone, oxytocin, relaxin, FSH and LH, with sex, secretion site and functions. Several sex/site/function assignments require verification."
+        },
+        {
+          "locator": "General evaluation 830–831; weekend 845 and 848; theory 852",
+          "explanation": "Questions ask for hormone names/functions and sites; MCQs test female hormones and uterine contraction. Table provides the intended source answers, subject to factual review."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-W07-POULTRY-REPRODUCTIVE-SYSTEM",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Describe the reproductive system of poultry birds",
+      "objective_locator": "Week Seven heading 820; evaluation 823",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Heading 820; figures 803–804 and 819",
+          "explanation": "A poultry reproductive-system heading and related figures are present, including female poultry tract and male/female reproductive-excretory diagrams."
+        },
+        {
+          "locator": "Blocks 820–823",
+          "explanation": "No prose description follows the poultry reproductive-system heading; evaluation 823 asks learners to describe the system. Images alone do not provide a complete written explanation."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -2417,6 +2483,52 @@
       "required_action": "Verify lactation physiology, colostrum immunoglobulins/terminology, milk-composition comparisons and the distinction between laying and hatching. Recommend safe educational wording; do not provide oxytocin doses or injection instructions.",
       "affected_ids": [
         "AG-FACT-T3-W06-LACTATION-COLOSTRUM",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W07-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week Seven teaches poultry egg formation (794-795) and lists reproductive hormones (825-828), but package lesson rows and importer-confirmed parsed-row identity are absent. The egg-formation and hormone coverage entries are PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind the Week Seven egg-formation and hormone coverage entries; preserve the hormone table and embedded figures.",
+      "affected_ids": [
+        "COV-AG-T3-W07-EGG-FORMATION",
+        "COV-AG-T3-W07-HORMONES",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W07-POULTRY-REPRODUCTIVE-SYSTEM",
+      "kind": "CONTENT",
+      "detail": "The source has a 'REPRODUCTIVE SYSTEM OF POULTRY BIRDS' heading at 820 and diagrams at 803-804/819, but no explanatory prose under the heading. Evaluation 823 asks learners to describe the poultry reproductive system.",
+      "required_action": "Author AG-LES-T3-W07-POULTRY-REPRO-SYSTEM with a verified explanation of male and female poultry reproductive structures and functions, explicitly tied to the existing figures; include keyed practice.",
+      "affected_ids": [
+        "COV-AG-T3-W07-POULTRY-REPRODUCTIVE-SYSTEM",
+        "AG-LES-T3-W07-POULTRY-REPRO-SYSTEM",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W07-HORMONE-ACCURACY",
+      "kind": "FACT",
+      "detail": "Hormone table 828 assigns FSH/LH only to females, lists relaxin secretion at the pituitary, and says oxytocin aids sperm transportation in the vagina. Sex/site/function assignments require verification against authoritative animal physiology references.",
+      "required_action": "Verify each hormone's species-specific site and function; check male FSH/LH roles, relaxin source and the oxytocin/sperm-transport statement. Recommend exact corrections without altering the source table.",
+      "affected_ids": [
+        "AG-FACT-T3-W07-HORMONES",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W07-EGG-TIMINGS",
+      "kind": "FACT",
+      "detail": "Egg-formation durations and stages in block 795 are given as fixed timings (infundibulum 15 min, magnum 3 h, isthmus 1 h 15 min, uterus 18–21 h, vagina 1–15 min, total nearly 26 h). Verify these approximate timings and anatomical descriptions before presenting them as universal.",
+      "required_action": "Verify the stages and approximate durations against authoritative poultry-science sources; clarify that timings may vary and recommend accurate qualified wording.",
+      "affected_ids": [
+        "AG-FACT-T3-W07-EGG-FORMATION",
         "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true

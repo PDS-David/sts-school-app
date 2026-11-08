@@ -49,23 +49,24 @@
     "AG-WK-T3-W03 (2026-11-08) indexed Third Term Week Three: definition/objectives, advantages, disadvantages, limitations and prospects are taught. Definition's inclusion of farm inputs, claim that few crops can be mechanized and labour exception MCQ require factual review; tillage-order item cross-maps to Second Term Weeks 2-3.",
     "AG-WK-T3-W04 (2026-11-08) indexed the digestive, circulatory and reproductive systems; table 431 and six embedded diagrams were inspected. Assessment gaps (liver enzymes, similarities, blood constituent and sphincters) and digestive/reproductive factual claims are routed for bounded follow-up.",
     "AG-WK-T3-W05 (2026-11-08) indexed the respiratory and nervous systems. The three text-based respiration equations were preserved verbatim; respiratory mechanics, reflex action, neuron detail and named-animal breathing are under-taught. Equations/fermentation and airway/gill claims are routed for verification.",
-    "AG-WK-T3-W06 (2026-11-08) indexed reproductive cycles, mating/AI, fertilization, implantation, gestation, parturition, lactation and colostrum. Gestation table contains concatenated paired entries; embryo development and lamb positioning questions exceed teaching and require veterinary-reviewed non-procedural supplement; species timings and lactation/colostrum claims require fact-check."
+    "AG-WK-T3-W06 (2026-11-08) indexed reproductive cycles, mating/AI, fertilization, implantation, gestation, parturition, lactation and colostrum. Gestation table contains concatenated paired entries; embryo development and lamb positioning questions exceed teaching and require veterinary-reviewed non-procedural supplement; species timings and lactation/colostrum claims require fact-check.",
+    "AG-WK-T3-W07 (2026-11-08) indexed poultry egg formation and reproductive hormones. The poultry reproductive-system heading has figures but no explanatory prose; hormone assignments and egg-formation timings are routed for verification."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 29,
+    "FACTUAL_DEPENDENCY": 31,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 25,
+    "LESSON": 26,
     "CORRECTION_BINDING": 10
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 34,
-    "PENDING": 102,
+    "IMPLEMENTED_TESTING_DEFERRED": 35,
+    "PENDING": 104,
     "BLOCKED": 2
   },
   "items": [
@@ -2045,8 +2046,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Third Term member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a and Week Seven label block 788 SHA-256 4a723109953b31906cbe40ce93fd8a4f440295167adea8b71e78dda0d7f59808, range blocks 788-854 SHA-256 7e69c5c03f6c38dd97d0bd0e33c58f1772d980a4853bc595d28894e331b6abbc. Egg formation 794-795: ovary/ovulation, infundibulum/fertilization, magnum/albumen+chalaza, isthmus/shell membranes, uterus/shell calcium carbonate, vagina/cloaca; stage times preserved as printed. Poultry reproductive-system heading 820 and evaluation 823: no explanatory prose follows the heading, though figures exist at 803-804 and 819. Hormone definition 825-827 and table 828 list seven hormones and sites/functions. Evaluations 821-823; general 830-837; reading 838-840; weekend 843-848; theory 850-852 reviewed. MCQ 847's turkey/oviparity cross-maps to Week Four block 482. Inspected five embedded images: bird embryo/egg (803), poultry internal organs (803), scanned egg structure (804), poultry oviduct/egg formation (804), and male/female reproductive-excretory systems (819). Table 828 cell-text SHA-256 23d71c760fadf5dd5905d5e23e91a46de2c4e0c34845c5c57892c337d20b5cb9. Hormone table assignments (FSH/LH sex, relaxin source, oxytocin and sperm transport) and egg-formation timings need verification. Added two PARTIAL and one UNRESOLVED coverage entries, four open items and three follow-ups AG-LES-T3-W07-POULTRY-REPRO-SYSTEM, AG-FACT-T3-W07-HORMONES and AG-FACT-T3-W07-EGG-FORMATION. Full report AG-WK-T3-W07.md. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
     },
     {
@@ -5141,6 +5142,112 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T3-W06: oxytocin, milk-composition, colostrum and poultry terminology require independent verification.",
       "completion_condition": "A sourced note verifies each claim and recommends safe educational wording without treatment instructions."
+    },
+    {
+      "id": "AG-LES-T3-W07-POULTRY-REPRO-SYSTEM",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Seven poultry reproductive-system heading 820 and figures 803-804/819; evaluation 823",
+      "objective": "Author a bounded Week Seven supplement explaining the male and female reproductive systems of poultry birds and the functions of the labelled structures in the existing source diagrams. Use authoritative poultry-science references, keep source figures distinct from supplement text, and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W07.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T3-W07-POULTRY-REPRO-SYSTEM.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W07: evaluation 823 asks for a description, but no prose appears after heading 820.",
+      "completion_condition": "A verified supplement describes male/female poultry reproductive structures and functions, references the source figures, includes keyed practice/provenance and remains PENDING approval."
+    },
+    {
+      "id": "AG-FACT-T3-W07-HORMONES",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Seven hormone table 828",
+      "objective": "Verify the sex, secretion site and functions for testosterone/androgen, oestrogen, progesterone, oxytocin, relaxin, FSH and LH; especially male FSH/LH roles, relaxin source and oxytocin's claimed role in sperm transportation.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W07.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W07-HORMONES.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W07: table 828's sex/site/function assignments require authoritative physiology review.",
+      "completion_condition": "A sourced note verifies each table row and recommends exact corrections where needed."
+    },
+    {
+      "id": "AG-FACT-T3-W07-EGG-FORMATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Seven egg formation block 795 and figures 803-804",
+      "objective": "Verify the anatomical stages and approximate durations for poultry egg formation (infundibulum, magnum, isthmus, uterus/shell gland, vagina and cloaca) and qualify the stated near-26-hour total.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W07.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W07-EGG-FORMATION.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W07: egg formation stage timings in block 795 require independent verification.",
+      "completion_condition": "A sourced note verifies the sequence and approximate timing ranges and recommends qualified wording."
     }
   ],
   "review": {
@@ -5156,7 +5263,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T3-W07",
     "AG-WK-T3-W08",
     "AG-WK-T3-W09",
     "AG-WK-T3-W10",
@@ -5222,6 +5328,8 @@
     "AG-FACT-T3-W05-RESPIRATION-ACCURACY",
     "AG-FACT-T3-W06-REPRO-TIMINGS",
     "AG-FACT-T3-W06-LACTATION-COLOSTRUM",
+    "AG-FACT-T3-W07-HORMONES",
+    "AG-FACT-T3-W07-EGG-FORMATION",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-CORR-T2-W02-03-SOURCE-TERMS",
     "AG-CORR-T2-W04-05-TABLE-TEXT",
@@ -5254,6 +5362,7 @@
     "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS",
     "AG-LES-T3-W05-RESPIRATION-NERVOUS-GAPS",
     "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION",
+    "AG-LES-T3-W07-POULTRY-REPRO-SYSTEM",
     "AG-TEST-PACKAGE"
   ]
 }
