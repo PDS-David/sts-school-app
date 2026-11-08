@@ -45,14 +45,14 @@ This approval does **not** constitute teacher/subject-expert content approval, t
 
 The Week 4 source cites an external textbook page that was not supplied. No passage has been copied. A complete original practice replacement is present in `BK-LES-T1-W04-POSTING.md`. This follows the owner's standing instruction to self-generate a suitable resource where an external resource is unavailable. No further textbook upload is required.
 
-## Subject-heading aliases
+## Subject-heading aliases — owner-confirmed 8 November 2026
 
-The three source documents use variant headings:
+The owner confirmed the canonical subject identity is **Bookkeeping**, distinct from Financial Accounting. The three observed source headings are accepted as metadata aliases for the registered Bookkeeping sources:
 - First term: “SUBJECT: BOOK-KEEPING” / “CLASS: SS 1”
 - Second term: “SUBJECT: BOOK-KEEPING” / “CLASS: SS 1”
 - Third term: “SS 1 OMEGA TERM BOOK- KEEPING”
 
-The package keeps the observed headings and canonical subject name separately. Formal alias approval remains a metadata/owner review item; it must not be confused with teacher approval of lesson content.
+The package records the owner confirmation on each `source_alias` rule and closes the corresponding alias open items. This is a subject-identity/metadata decision only; it is not teacher approval of lesson content or technical verification.
 
 ## Standing handling rule for analogous source defects
 
@@ -64,8 +64,9 @@ All authored lessons remain `content_approval=PENDING` and `verification=DEFERRE
 
 ## Remaining source dispositions
 
-- The erroneous second-term source and its repeated week/marker tasks remain quarantined as forensic evidence; they are not outstanding requests for the owner to supply a file.
-- First-term source defects remain recorded and blocking until the consolidated replacement-delivery decision above is made.
+- The erroneous second-term source and its repeated week/marker tasks remain quarantined as forensic evidence; the old T2 week-indexing and marker tasks are superseded and must not be executed against the duplicate as valid curriculum.
+- First-term source defects remain recorded unchanged. The four first-term defect-decision tasks are superseded for delivery by the owner-approved independent W01-W04 replacement lessons; no original source figure or wording has been corrected or guessed.
+- The only unresolved first-term scope question is `BOOKKEEPING-T1-SCHEME-VS-BODY`: the source has four labelled week bodies and no Week 5-12 body despite twelve numbered scheme entries. The owner must confirm whether another assigned source contains Weeks 5-12 or whether the four-week body is the complete first-term source scope. Do not invent weeks or assume scope.
 - No source correction, missing figure, external textbook content or expert decision is invented.
 
 ## Queue references
@@ -74,3 +75,8 @@ All authored lessons remain `content_approval=PENDING` and `verification=DEFERRE
 - First-term source decisions: `BK-FACT-T1-W01-DEFECTS`, `BK-FACT-T1-W02-DEFECTS`, `BK-FACT-T1-W03-DEFECTS`, `BK-FACT-T1-W04-BRIEF`.
 - Package content approval: `BK-FACT-CONTENT-APPROVAL`.
 - Source-heading aliases: pending metadata owner review.
+
+
+## Queue reconciliation — 8 November 2026
+
+The four first-term factual-decision queue items (`BK-FACT-T1-W01-DEFECTS` through W04) are now `IMPLEMENTED_TESTING_DEFERRED`, because their original prerequisite decisions were superseded by the owner's approval to use the independently authored W01-W04 delivery replacements. This does not assert that every original-source defect was corrected. The queue now records 82 `IMPLEMENTED_TESTING_DEFERRED` items and 7 `BLOCKED` items. The remaining blocked items comprise the content-approval/verification gate and superseded second-term source-indexing/marker tasks retained as forensic history; there are no pending runnable items.
