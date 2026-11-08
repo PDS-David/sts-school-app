@@ -34,23 +34,24 @@
     "AG-WK-T1-W04 (2026-11-08) indexed First Term Week 4: scheme entry 4 covers government roles (335-381) and NGO roles (386-399). Six NGO roles and seven research institutes are listed. Follow-ups record mixed-geography NGO examples, absent programme objectives and unresolved weekend assessment items; no external answers were invented.",
     "AG-WK-T1-W05 (2026-11-08) indexed First Term Week 5: scheme entry 5 maps to eleven science-and-technology roles (426-436). Assessment gaps for technology definition, five improved systems and five storage facilities, plus a genetics terminology MCQ fact-check, were appended. Agro-chemical names preserved without invented doses or handling instructions.",
     "AG-WK-T1-W06 (2026-11-08) indexed First Term Week 6: definition, 14-row industry/raw-material table and ten agriculture-industry relationships are source-taught. Cereal questions cross-map to Week 10 block 893; agro-chemical list supported across Weeks 5-6. Storage-structure/produce pairings and incubator MCQ classification remain follow-ups; table visual disposition remains separate.",
-    "AG-WK-T1-W07 (2026-11-08) indexed First Term Week 7: land definition, agricultural/non-agricultural uses and land-availability factors are source-taught. Four game reserves supplied for five-item questions; socio-economic factors, land-mobility wording, game-reserve use MCQ and labour-factor MCQ need bounded follow-up."
+    "AG-WK-T1-W07 (2026-11-08) indexed First Term Week 7: land definition, agricultural/non-agricultural uses and land-availability factors are source-taught. Four game reserves supplied for five-item questions; socio-economic factors, land-mobility wording, game-reserve use MCQ and labour-factor MCQ need bounded follow-up.",
+    "AG-WK-T1-W08 (2026-11-08) indexed First Term Week 8: source teaches five land-tenure systems but not the agricultural laws/reforms named in the scheme heading. Land Use Act references in Weeks 3/7 require legal verification; questions on most common tenure system are not answered in source. Evaluation heading 643 is empty; reading assignment points back to Week4 government roles."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 11,
+    "FACTUAL_DEPENDENCY": 13,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 16,
+    "LESSON": 17,
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 19,
-    "PENDING": 81,
+    "IMPLEMENTED_TESTING_DEFERRED": 20,
+    "PENDING": 83,
     "BLOCKED": 2
   },
   "items": [
@@ -730,8 +731,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): label block 618 text \"WEEK 8                                                                                                DATE ………………………………\" (sha256 fd2ec2c6ab406ac79c707a303a8c4e5ffabdbad7d4e5b49c395e6664b6c8809d); blocks 618-720; range sha256 5b0cac0de95cf5e17ccd5c4c5544da456300a217f35414511af3ee3525a70d14. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme topic: Agricultural Laws and Reforms. Body headings found are land ownership/tenure only: communal, inheritance, lease hold, free gift, state/government ownership (blocks 622-695) with advantages/disadvantages. No separate heading for agricultural laws or reforms was found in the body; the Land Use Act of 1978 appears in Weeks 3 and 7 (blocks 195, 583). Block 643 'EVALUATION' is followed by empty blocks 644-645 (heading with no question). Reading assignment (block 705) points to Roles of Government (a Week 4 topic). Weekend MCQ (707-712), Theory (713-716); blank blocks 717-720.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, First Term member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526 and Week 8 range blocks 618-720 SHA-256 5b0cac0de95cf5e17ccd5c4c5544da456300a217f35414511af3ee3525a70d14. Scheme entry 8 (block 19) is titled Agricultural Laws and Reforms, but Week 8 body (620-716) teaches land tenure only: definition 626; five types (communal 628-641, inheritance 646-656, leasehold 662-673, free gift 675-682, state/government 684-692) and advantages/disadvantages. No agricultural law/reform section is taught. Land Use Act 1978 is mentioned in Week 3 block 195 and Week 7 block 583; the latter says it prevents individuals from owning land, which requires legal verification. Evaluation heading 643 has no question; blocks 644-645 empty. Questions 658-659, 698-700, 702, 708, 711-712 and theory 714-716 are supported by land-tenure teaching. Questions 701/710 ask for the most common tenure system, not stated. Weekend 709 cross-week supported by Week 7 factors. Reading assignment 705 points to Week4 government roles, not Week8 land tenure. Added one PARTIAL and two UNRESOLVED coverage entries, four open items, and bounded tasks AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS, AG-FACT-T1-W08-PROMINENT-TENURE and AG-FACT-T1-W08-LAND-USE-ACT. Full scope report AG-WK-T1-W08.md. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -3846,6 +3847,114 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T1-W07: source and assessment wording conflict or require factual confirmation.",
       "completion_condition": "A sourced note establishes the factual issue and recommends a precise disposition; source bytes remain unchanged."
+    },
+    {
+      "id": "AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 8 topic block 620; body blocks 622-695; cross-week Land Use Act references at Week 3 block 195 and Week 7 block 583",
+      "objective": "Teach the agricultural laws and reforms relevant to the scheme objective, including an accurate, age-appropriate account of the Nigerian Land Use Act 1978 and its effects on landholding, agricultural access and tenure. Use the statute and authoritative Nigerian sources; distinguish source wording from verified supplement content and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W08.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W08: Week 8 body is land tenure only; the Land Use Act is only briefly mentioned in Weeks 3 and 7.",
+      "completion_condition": "A clearly labelled, legally accurate, source-backed supplement teaches the agricultural-law/reform objective with complete keyed practice and criterion-level marks, truthful provenance and PENDING approval."
+    },
+    {
+      "id": "AG-FACT-T1-W08-PROMINENT-TENURE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 8 general evaluation 701 and weekend assignment 710",
+      "objective": "Verify which land-tenure system is most common/prominent in Nigeria in the context intended by the source, with reliable evidence and clear date/definition; recommend whether the assessment items are defensible.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W08.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W08-PROMINENT-TENURE.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W08: the source explains five tenure types but does not identify prevalence.",
+      "completion_condition": "A sourced note establishes the relevant prevalence claim and recommends retention or correction of the two items."
+    },
+    {
+      "id": "AG-FACT-T1-W08-LAND-USE-ACT",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 3 block 195; Week 7 block 583; Week 8 topic block 620",
+      "objective": "Verify the Land Use Act 1978's actual provisions and effect on landholding/rights against the statute and authoritative Nigerian legal sources; assess the source's claim that it prevents individuals from owning land and recommend precise correction if needed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W08.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W08-LAND-USE-ACT.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W08: source's Land Use Act references are brief and may be legally oversimplified.",
+      "completion_condition": "A statute-backed note verifies the legal claim and provides a precise correction/recommendation or records an unresolved issue."
     }
   ],
   "review": {
@@ -3861,7 +3970,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T1-W08",
     "AG-WK-T1-W10",
     "AG-WK-T2-W01",
     "AG-WK-T2-W02-03",
@@ -3924,6 +4032,8 @@
     "AG-FACT-T1-W07-LAND-MOBILITY",
     "AG-FACT-T1-W07-GAME-RESERVE-USE",
     "AG-FACT-T1-W07-LABOUR-FACTOR",
+    "AG-FACT-T1-W08-PROMINENT-TENURE",
+    "AG-FACT-T1-W08-LAND-USE-ACT",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
@@ -3938,6 +4048,7 @@
     "AG-LES-T1-W06-STORAGE-STRUCTURES",
     "AG-LES-T1-W07-GAME-RESERVES",
     "AG-LES-T1-W07-SOCIOECONOMIC-FACTORS",
+    "AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS",
     "AG-TEST-PACKAGE"
   ]
 }

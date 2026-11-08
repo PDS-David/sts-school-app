@@ -663,6 +663,64 @@
         }
       ],
       "source_id": "SS1-SRC-7aa642b0085b"
+    },
+    {
+      "id": "COV-AG-T1-W08-LAND-TENURE",
+      "objective": "Scheme entry 8: Agricultural Laws and Reforms — land-tenure systems",
+      "objective_locator": "scheme block 19; Week 8 label 618; topic 620; land tenure section 622-695",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 8 blocks 623-626; land-tenure definition 626",
+          "explanation": "The source explains individual/family and communal ownership and defines land tenure as systems of land ownership/acquisition and rights/relationships for control and use of land."
+        },
+        {
+          "locator": "Week 8 blocks 627-695; communal 628-641; inheritance 646-656; leasehold 662-673; free gift 675-682; state/government ownership 684-692; conclusion 695",
+          "explanation": "Five tenure types and their advantages/disadvantages are taught."
+        },
+        {
+          "locator": "Week 8 evaluations 643-659; general evaluation 697-702; weekend assignment 707-712; theory 713-716",
+          "explanation": "Most tenure-definition/type/advantage questions are supported. Prominence of a tenure type in Nigeria is not stated; the agricultural-laws/reforms portion of the topic is not developed in this week."
+        }
+      ],
+      "source_id": "SS1-SRC-7aa642b0085b"
+    },
+    {
+      "id": "COV-AG-T1-W08-AGRICULTURAL-LAWS",
+      "objective": "Scheme entry 8: Agricultural Laws and Reforms — relevant agricultural law/reform content",
+      "objective_locator": "scheme block 19; Week 8 topic 620; cross-week Land Use Act references at Week 3 block 195 and Week 7 block 583",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 8 blocks 620-716",
+          "explanation": "The entire body is land tenure; it contains no dedicated agricultural-law or reform section."
+        },
+        {
+          "locator": "Week 3 block 195; Week 7 block 583",
+          "explanation": "The Land Use Act/decree of 1978 is mentioned in passing, but neither location explains its provisions, reform context or practical implications. Week 7's statement that the decree prevents individuals from owning land is an unverified simplification."
+        }
+      ],
+      "source_id": "SS1-SRC-7aa642b0085b"
+    },
+    {
+      "id": "COV-AG-T1-W08-PROMINENT-TENURE",
+      "objective": "Assessment scope: identify the commonest/most prominent land-tenure system in Nigeria and explain why",
+      "objective_locator": "Week 8 general evaluation block 701 and weekend assignment block 710",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 8 blocks 628-695",
+          "explanation": "The source explains five systems but does not identify which is most common/prominent in Nigeria."
+        },
+        {
+          "locator": "Week 8 blocks 701 and 710",
+          "explanation": "Both assessment items ask for the most prominent/commonest tenure system, a fact not supplied in the teaching text."
+        }
+      ],
+      "source_id": "SS1-SRC-7aa642b0085b"
     }
   ],
   "open_items": [
@@ -1056,6 +1114,52 @@
       "required_action": "Verify the intended answer using authoritative land-use/agricultural-economics sources and recommend a correction if the source scope is incomplete.",
       "affected_ids": [
         "AG-FACT-T1-W07-LABOUR-FACTOR",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W08-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 8 teaches five land-tenure systems and their advantages/disadvantages (blocks 623-695), but the package has no lessons and no importer-confirmed parsed-row ID. COV-AG-T1-W08-LAND-TENURE is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T1-W08-LAND-TENURE; do not invent a source lesson ID or duplicate source teaching.",
+      "affected_ids": [
+        "COV-AG-T1-W08-LAND-TENURE",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W08-AGRICULTURAL-LAWS",
+      "kind": "CONTENT",
+      "detail": "Although the scheme heading is Agricultural Laws and Reforms, Week 8 blocks 620-716 teach land tenure only. The Land Use Act/decree of 1978 appears only as a passing reference at Week 3 block 195 and Week 7 block 583, with no explanation of its provisions or reforms.",
+      "required_action": "Author AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS using authoritative Nigerian legal and agricultural-policy sources; distinguish actual statutory provisions/reforms from the source's brief references.",
+      "affected_ids": [
+        "COV-AG-T1-W08-AGRICULTURAL-LAWS",
+        "AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W08-PROMINENT-TENURE",
+      "kind": "FACT",
+      "detail": "General evaluation 701 and weekend assignment 710 ask which land-tenure system is most prominent/commonest in Nigeria, but the source explains five systems without identifying prevalence.",
+      "required_action": "Verify the prevalence claim using authoritative Nigerian land-tenure evidence and record the context/date/definition; do not infer the answer from the source's order or list.",
+      "affected_ids": [
+        "COV-AG-T1-W08-PROMINENT-TENURE",
+        "AG-FACT-T1-W08-PROMINENT-TENURE",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W08-LAND-USE-ACT",
+      "kind": "FACT",
+      "detail": "Week 3 block 195 says 'Reviewing and enforcing the land use act of 1978'; Week 7 block 583 says land-use decree 1978 prevents individuals from owning land. Week 8 is titled Agricultural Laws and Reforms but does not explain the Act. The Week 7 statement may be legally oversimplified or misleading.",
+      "required_action": "Verify the Land Use Act 1978 and its effect on landholding/rights against the actual statute and authoritative Nigerian legal sources; recommend a precise correction to any inaccurate statement without silently changing source text.",
+      "affected_ids": [
+        "AG-FACT-T1-W08-LAND-USE-ACT",
         "SS1-SRC-7aa642b0085b"
       ],
       "blocks_delivery": true
