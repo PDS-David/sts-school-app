@@ -124,7 +124,10 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
   for (const p of packages) {
     unique(p.coverage.map(c => c.id), 'coverage IDs');
     if (!p.coverage.length) plan.blockers.push(`NO_COVERAGE:${p.subject_slug}`);
-    for (const source of p.sources) if (!p.coverage.some(c => c.source_id === source.source_id)) plan.blockers.push(`SOURCE_WITHOUT_COVERAGE:${source.source_id}`);
+    for (const source of p.sources) {
+      const excluded = p.source_rules.some(rule => rule.source_id === source.source_id && rule.op === 'exclude_duplicate');
+      if (!excluded && !p.coverage.some(c => c.source_id === source.source_id)) plan.blockers.push(`SOURCE_WITHOUT_COVERAGE:${source.source_id}`);
+    }
     for (const c of p.coverage) {
       must(p.sources.some(s => s.source_id === c.source_id), `coverage source ${c.id}`);
       for (const id of c.lesson_ids) {
