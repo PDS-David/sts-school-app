@@ -145,7 +145,9 @@
     "ENG-LES-T1-W11-JUDICIARY-VOCAB (2026-11-08): Added SUP-SS1-ENGLISH-JUDICIARY-VOCAB-T1-W11 with original SS1-level court roles, participants, legal processes and vocabulary; clear distinctions, neutral examples and 22-mark keyed practice. Bound ENGLISH-T1-W11-VO01 as IMPLEMENTED_EQUIVALENT and resolved the vocabulary gap. The source had no prescribed word list; no such list is claimed. Content approval PENDING; verification DEFERRED.",
     "ENG-LES-T2-W06-WORD-ASSIGNMENT (2026-11-08): Added SUP-SS1-ENGLISH-RELIGION-IPA-T2-W06. Interpreted 'transcribe' as phonemic transcription in the English pronunciation context; used the package's established broad British English model, stated it explicitly, and acknowledged accent variants. Four transcriptions and stress positions have a keyed 14-mark exercise. AS01 is IMPLEMENTED_EQUIVALENT; no source pronunciation model was claimed.",
     "ENG-LES-T2-W09-ASSIGNMENT-RUBRIC (2026-11-08): Added SUP-SS1-ENGLISH-ESSAY-ASSIGNMENT-PLANS-T2-W09 with original plans for both supplied titles and a common 30-mark rubric. No choice rule, length or time was invented; the teacher sets those administration details. AS01 is IMPLEMENTED_EQUIVALENT.",
-    "ENG-LES-T2-W10-REVISION (2026-11-08): Added SUP-SS1-ENGLISH-REVISION-T2-W10, an original cumulative 40-mark review of available taught Second Term Weeks 1-9, with a new passage, keyed answers and marking guide. The source's general revision heading does not specify scope or test format; the supplement states its scope and is not represented as recovered source material. RV01 is IMPLEMENTED_EQUIVALENT."
+    "ENG-LES-T2-W10-REVISION (2026-11-08): Added SUP-SS1-ENGLISH-REVISION-T2-W10, an original cumulative 40-mark review of available taught Second Term Weeks 1-9, with a new passage, keyed answers and marking guide. The source's general revision heading does not specify scope or test format; the supplement states its scope and is not represented as recovered source material. RV01 is IMPLEMENTED_EQUIVALENT.",
+    "ENG-LES-T2-W05-TOPIC-SCOPE (2026-11-08): Added SUP-SS1-ENGLISH-STEEL-DEVELOPMENT-T2-W05, an original teacher-read listening script and factual writing/report lesson using the recognisable steel-development topic in the garbled source heading. The scheme's scanning objective is covered by the existing scanning lesson. Basic process facts are paraphrased from the American Iron and Steel Institute and worldsteel; script and exercises are original. The garbled source title is preserved, not silently corrected. TP01 is IMPLEMENTED_EQUIVALENT.",
+    "ENG-LES-T2-W06-TOPIC-SCOPE (2026-11-08): Confirmed and bound the two substantiated strands: photography and religion. Coverage TP01 remains PARTIAL because the source also mentions sexuality without giving a word list or objective detail. No age-sensitive content was guessed. This residual teacher decision is non-blocking; the two evidenced strands are delivered."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -158,8 +160,8 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 231,
-    "PENDING": 2,
+    "IMPLEMENTED_TESTING_DEFERRED": 233,
+    "PENDING": 0,
     "BLOCKED": 9
   },
   "items": [
@@ -6271,8 +6273,8 @@
       "depends_on": [
         "ENG-WK-T2-W05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by ENG-WK-T2-W05 on 2026-11-07; not implemented. Open item ENGLISH-T2-W05-TOPIC-SCOPE.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json: SUP-SS1-ENGLISH-STEEL-DEVELOPMENT-T2-W05 plus SUP-SS1-ENGLISH-SCANNING-COMPREHENSION-T2-W05. Original listening script, teacher-read activity, steel-production vocabulary, report task and 25-mark keyed exercise added. Facts paraphrased from American Iron and Steel Institute and worldsteel; exact garbled source title retained, not silently repaired. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "TP01 has evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -6304,8 +6306,8 @@
       "depends_on": [
         "ENG-WK-T2-W06"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by ENG-WK-T2-W06 on 2026-11-07; not implemented. Open item ENGLISH-T2-W06-TOPIC-SCOPE.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Known photography and religion strands already delivered by SUP-SS1-ENGLISH-PHOTOGRAPHY-VOCAB-T2-W06 and SUP-SS1-ENGLISH-RELIGION-VOCAB-T2-W06 with keyed practice. Coverage ENGLISH-T2-W06-TP01 remains PARTIAL because the source also mentions sexuality but supplies no vocabulary list or objectives; no age-sensitive content was guessed. The residual scope decision is non-blocking and can be addressed later if the teacher confirms it. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "TP01 has evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -7735,8 +7737,5 @@
     "queue_metadata_review_master": "d01704cd15aa69241a8775c5e072fd2297b1d71b",
     "queue_metadata_review_note": "Three visual-disposition tasks and multiple original keyed equivalent lessons implemented; Week 11 external materials now has two of three reading assignments covered, with LT08 held for owner scope/material clarification. Source renders remain private; approval and verification gates unchanged."
   },
-  "next_runnable": [
-    "ENG-LES-T2-W05-TOPIC-SCOPE",
-    "ENG-LES-T2-W06-TOPIC-SCOPE"
-  ]
+  "next_runnable": []
 }
