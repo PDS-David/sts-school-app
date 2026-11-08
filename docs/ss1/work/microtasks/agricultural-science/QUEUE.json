@@ -71,7 +71,8 @@
     "AG-VIS-T3-W02-SOLAR (2026-11-08): image3.png is a legible rooftop photovoltaic-panel image matching the solar-power text/caption, but not farm-specific. Photographer/agency credit is visible; reuse rights are not supplied. Do not republish unless licensed.",
     "AG-VIS-T3-W02-WIND (2026-11-08): inspected image4.png at Week Two block 194. It is a recognizable water-pumping windmill photo, relevant to the caption at 192 and wind-power section; credit Guy R. Higbee/Photo Researchers, Inc. is visible but no reuse licence is supplied. Delivery reuse is blocked pending rights clearance or a separately sourced rights-cleared replacement.",
     "AG-VIS-T3-W02-ELECTRIC-WATER (2026-11-08): block 211 has two visuals only—generator-room photo image5 and hydroelectric-dam diagram image6. Both carry third-party credits and no source reuse licence. Image6 has unkeyed numeric callouts 1-6. Correction follow-up AG-CORR-T3-W02-WDP-LOCATORS records that WDP layers are actually in Week Four groups at blocks 487 and 494, not block 211.",
-    "AG-VIS-T3-W04-RUMINANT-DIGESTION (2026-11-08): image7.png at block 395 is a readable labelled cattle digestive-tract diagram supporting the four-compartment text at 391-396. No credit/licence is supplied; reuse is blocked pending permission or a separately sourced rights-cleared diagram."
+    "AG-VIS-T3-W04-RUMINANT-DIGESTION (2026-11-08): image7.png at block 395 is a readable labelled cattle digestive-tract diagram supporting the four-compartment text at 391-396. No credit/licence is supplied; reuse is blocked pending permission or a separately sourced rights-cleared diagram.",
+    "AG-VIS-T3-W04-PIG-DIGESTION (2026-11-08): image8.jpeg at block 417 is a legible labelled generic monogastric digestive tract, not demonstrably pig-specific. No credit/licence is supplied; delivery reuse is blocked pending rights clearance or a rights-cleared replacement."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -86,8 +87,8 @@
     "CORRECTION_BINDING": 12
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 56,
-    "PENDING": 93,
+    "IMPLEMENTED_TESTING_DEFERRED": 57,
+    "PENDING": 92,
     "BLOCKED": 2
   },
   "items": [
@@ -2485,8 +2486,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a, and image8.jpeg SHA-256 51eb3f69cbe56f2bcd8bf5fc6ee2e28a667d2c9445a13f6279a06aa68bdecc2d (63,422 bytes; 747×555 JPEG). Relationship rId14 targets media/image8.jpeg at document.xml body block 417. The diagram labels oesophagus, stomach, pyloric sphincter, liver, gall bladder, bile duct, pancreas, small intestine, colon, caecum, rectum and anus; labels/leader lines are readable. It is a generic monogastric digestive tract; it has no pig silhouette or species label. The surrounding non-ruminant teaching at blocks 402-418 names pigs and poultry but does not identify the diagram as pig-specific. No visible credit or licence is supplied; JPEG metadata only shows JFIF/DPI technical fields. Do not reuse without rights clearance; if unavailable, use a rights-cleared generic monogastric diagram. Added open item AGRICULTURAL-SCIENCE-T3-W04-PIG-DIGESTION-RIGHTS. No derivative created. Importer/rendering/device checks not run.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5677,7 +5678,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W04-PIG-DIGESTION",
     "AG-VIS-T3-W04-POULTRY-DIGESTION",
     "AG-VIS-T3-W04-MALE-REPRODUCTION",
     "AG-VIS-T3-W04-FEMALE-REPRODUCTION-A",
