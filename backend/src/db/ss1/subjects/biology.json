@@ -787,6 +787,10 @@
         {
           "locator": "Week 10 mitosis figures: block 997 image8.jpeg 1270×378 SHA-256 70ad9bf4b5a5f11ad5e618fe604bc9bc1acc7facda628741a8a2058587deeb49; block 1006 image9.jpeg 1094×546 SHA-256 1856557c993326c599280e472b5578aee6ec8bad90b1e749d438ff697b6792aa; block 1015 image10.jpeg 1043×555 SHA-256 2b026f3701d6b6fb880410646a205a319041b21791124755f919495766017500; block 1021 image11.jpeg 1144×193 SHA-256 1333f9277cf8581d6e74ad31e0a3ba5c8aa8bb96c6d17b10fa043313dcc883ce",
           "explanation": "Four hand-drawn raster figures match the written mitosis stages. Image8 (block 997) contains two drawings labelled 'Interphase' and 'prophase', matching the descriptions at blocks 994-996. Image9 (block 1006) labels 'spindle fibre', 'centromere on equator of the spindle' and 'chromatid'; it matches the metaphase text at block 1005. Image10 (block 1015) labels 'daughter chromatids move apart'; it matches the anaphase description at block 1014. Image11 (block 1021) has no text labels but depicts the cell constricting and separating into two daughter cells, matching the telophase/cytokinesis text at blocks 1020-1021. All labels are embedded in raster images and do not survive plain-text extraction. The original images are not registered or committed as assets because reuse rights are not recorded. A project-authored four-panel redraw is appropriate for clear, accessible delivery; it must be based on the written stage descriptions and not copy the original pixels. No source wording or artwork was changed."
+        },
+        {
+          "locator": "Week 10 animal-hormone table blocks 1042-1049; range SHA-256 65bdc53c31c3e6e7123a436a9521db533b980db705d9cf9ba4d6abbaefe1e080",
+          "explanation": "The rendered PDF page 43 shows a three-column table with headings GLANDS, SITE and HORMONE and seven rows. Block 1042 contains four native line shapes (three vertical separators and one horizontal header rule) plus concatenated heading text; blocks 1043-1049 are tab-aligned text, not a Word table. Plain-text extraction collapses the headings and row fields, so the three-column pairings do not survive reliably. Exact source rows: Pituitary gland | base of head | Pituitrin; Thyroid gland | Neck | Thyroxine; Parathyroid | Neck | Parathormone; Pancreas | Loop of duodenum | Insulin; Adrenal gland | Top of each kidney | Adrenaline; Testes | Testes | Testosterone; Ovaries | Ovaries | Progesterone. A semantic three-column table is required in the delivery lesson. The names and gland/site associations are source claims, not validated medical guidance; they are flagged for authoritative Biology review. No separate asset or redraw is needed."
         }
       ]
     },
@@ -3095,14 +3099,17 @@
     {
       "id": "BIOLOGY-T1-W10-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 10 covers growth, mitosis, growth regulation, irritability, movement and cyclosis, but the Biology package has no lessons or registered teaching rows. The four source mitosis figures (blocks 997, 1006, 1015 and 1021) match the written descriptions of interphase/prophase, metaphase, anaphase and telophase/cytokinesis, but their handwritten labels are embedded in raster images and do not survive text extraction. The original figures are not app assets because reuse rights are not recorded; a project-authored four-panel redraw is required for accessible delivery.",
-      "required_action": "Complete BIO-VIS-T1-W10-MITOSIS-REDRAW as a project-authored four-panel illustration, then author and bind an approved equivalent Week 10 lesson using the redraw and the written stage descriptions. Keep source wording distinct from the supplement; do not copy the original image pixels.",
+      "detail": "Week 10 covers growth, mitosis, growth regulation, irritability, movement and cyclosis, but the Biology package has no lessons or registered teaching rows. The four source mitosis figures (blocks 997, 1006, 1015 and 1021) match the written stages but their labels are raster-only; a project-authored redraw is queued. The animal-hormone table at blocks 1042-1049 is a three-column tab-aligned list, not a Word table; extraction collapses its columns. The seven hormone names and gland/site associations require authoritative Biology review before delivery.",
+      "required_action": "Complete BIO-VIS-T1-W10-MITOSIS-REDRAW; author and bind an approved equivalent Week 10 lesson using the redraw and the written stage descriptions. Restate the animal-hormone list as a semantic three-column table only after BIO-FACT-T1-W10-ANIMAL-HORMONES has verified its names and gland/site associations. Keep source wording distinct from the supplement.",
       "affected_ids": [
         "COV-BIO-T1-W10-GROWTH",
         "COV-BIO-T1-W10-IRRITABILITY",
         "COV-BIO-T1-W10-MOVEMENT",
         "BIO-VIS-T1-MITOSIS",
-        "BIO-VIS-T1-W10-MITOSIS-REDRAW"
+        "BIO-VIS-T1-W10-MITOSIS-REDRAW",
+        "BIO-VIS-T1-HORMONE-TABLE",
+        "BIO-FACT-T1-W10-ANIMAL-HORMONES",
+        "BIOLOGY-T1-W10-HORMONE-FACTS"
       ],
       "blocks_delivery": true
     },
@@ -3991,6 +3998,19 @@
         "BIO-VIS-T1-PEST-LIFECYCLES",
         "BIO-FACT-T1-W03-YAM-BEETLE-CYCLE-LABELS",
         "BIO-VIS-T1-W03-YAM-BEETLE-CYCLE-REDRAW"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W10-HORMONE-FACTS",
+      "kind": "FACT",
+      "detail": "The animal-hormone table at blocks 1042-1049 lists seven gland/site/hormone associations (including the printed term 'Pituitrin') but the source provides no supporting references. These names and associations require authoritative Biology review before they are taught as factual claims. The table is not a Word table; its columns are held together by line shapes and tabs.",
+      "required_action": "Verify each of the seven gland/site/hormone associations and the exact terminology against an approved Biology textbook or curriculum reference. Record precise citations and any evidence-based corrections for the delivery supplement. Do not provide medication instructions, doses or treatment advice; keep the task within curriculum terminology and preserve the original table unchanged.",
+      "affected_ids": [
+        "COV-BIO-T1-W10-GROWTH",
+        "BIO-VIS-T1-HORMONE-TABLE",
+        "BIO-FACT-T1-W10-ANIMAL-HORMONES",
+        "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT"
       ],
       "blocks_delivery": true
     }
