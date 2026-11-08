@@ -72,7 +72,8 @@
     "BIO-VIS-T1-MOVEMENT-TABLE (2026-11-08) inspected the three line shapes and seven tab-aligned rows at blocks 1083-1092 in private rendered PDF page 45. The three columns are clear in the original rendering but collapse in text extraction; the Hydra mechanism wraps across blocks 1088-1089. A semantic three-column table is required in the Week 10 lesson; no asset/redraw is needed. The source's 'hoping' spelling is preserved for separate correction handling. Testing remains deferred.",
     "BIO-VIS-T1-TBL-CROP-ROTATION (2026-11-08) confirmed block 514 is a native 6×6 Word table, rendered across PDF pages 18-19. Cell boundaries exist in DOCX but flattened text loses plot/year pairing; any text-based supplement must restate the semantic table. No image asset/redraw is needed. Farming-systems placement remains an owner decision; no Week 3 scheme scope was inferred. Testing remains deferred.",
     "BIO-VIS-T1-TBL-MINERALS-VITAMINS (2026-11-08) confirmed the mineral and vitamin lists are native Word tables (11×4 and 10×4). Their cell structure survives in DOCX/PDF but not flattened text. A semantic four-column table is required in the lesson; no asset/redraw is needed. Source function/deficiency statements were recorded for the existing authoritative Biology fact task; no health advice or source corrections were added. Testing remains deferred.",
-    "BIO-VIS-T1-TBL-ENZYMES (2026-11-08) confirmed block 920 is a native 8×5 Word table spanning rendered PDF pages 37-38. Cell boundaries are preserved in DOCX/PDF but lost in flattened text; a semantic five-column table is required. The source's enzyme names, sources, locations, substrates and products were added to the existing authoritative Biology fact task. No asset/redraw or source correction is needed. Testing remains deferred."
+    "BIO-VIS-T1-TBL-ENZYMES (2026-11-08) confirmed block 920 is a native 8×5 Word table spanning rendered PDF pages 37-38. Cell boundaries are preserved in DOCX/PDF but lost in flattened text; a semantic five-column table is required. The source's enzyme names, sources, locations, substrates and products were added to the existing authoritative Biology fact task. No asset/redraw or source correction is needed. Testing remains deferred.",
+    "BIO-VIS-T2-TBL-VITAMINS (2026-11-08) verified the exact second-term source member and inspected the native 10×4 Word table at block 399, rendered on PDF page 14. Original cell boundaries are intact; flattened text loses row/column pairing. A semantic four-column table is required in the delivery lesson; no image asset/redraw is needed. The source's health/deficiency claims were added to the existing authoritative Biology fact task; no medical advice or source corrections were added. Testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -88,8 +89,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 55,
-    "PENDING": 93,
+    "IMPLEMENTED_TESTING_DEFERRED": 56,
+    "PENDING": 92,
     "BLOCKED": 11
   },
   "items": [
@@ -1909,8 +1910,8 @@
         "BIO-INV-T2",
         "BIO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T2): block 399 is a w:tbl of 10 rows and 4 columns (blank/vitamin column, SOURCE, FUNCTION, DEFICIENCY SYMPTOMS), starting with Vitamin A. Examples of its health content: night blindness, reduced resistance to disease (vitamin A); beri-beri (vitamin B1). Extractor output was not generated (importer deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact source member SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44. The private LibreOffice conversion to DOCX was used only for structural inspection; no converted file was committed. Direct block 399 is a native 10×4 w:tbl with flattened text SHA-256 c8cfb5d9b0aa6fb9534d61ffd694ba04095ebdb4fddb7cf003a3741376f4f54c. The original DOCX table retains its cells; the rendered source PDF page 14 shows the four columns, while flattened text extraction concatenates the cells and loses pairings. Nine vitamin rows are recorded in the package evidence with their source, function and deficiency statements. Disposition: restate as a semantic four-column table in the delivery lesson; no image asset or redraw is needed. The existing BIO-FACT-T2-W05-HEALTH-CLAIMS task and package open item now cover the table's claims. No claim is validated or presented as medical advice; no source wording changed. No app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -4042,7 +4043,7 @@
       "source_id": "SS1-SRC-eb6e9665f42c",
       "term": "2nd Term",
       "week_or_locator": "Week 5, blocks 326-480",
-      "objective": "Verify the Week 5 source's health/deficiency claims at blocks 399, 426, 461-462 and 474 against authoritative health/Biology references. Record exact citations and distinguish any corrected supplemental wording from the source. Do not present source statements as medical advice.",
+      "objective": "Verify the Week 5 source's health/deficiency claims at blocks 399, 426, 461-462 and 474 against authoritative Biology references. For the native vitamin table at block 399, check all nine vitamin rows' source, function and deficiency statements; record exact citations and distinguish any corrected supplemental wording from the source. Also verify the protein-deficiency statement and the mineral/vitamin deficiency questions. Do not present source statements as medical advice.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
         "docs/ss1/contracts/CONTRACT.md",
@@ -4051,7 +4052,8 @@
         "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
         "backend/src/db/ss1/subjects/biology.json",
         "docs/ss1/work/microtasks/biology/QUEUE.json",
-        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T2-TBL-VITAMINS.md"
       ],
       "required_attachments": [
         {
@@ -4067,7 +4069,8 @@
         "docs/ss1/work/microtasks/biology/BIO-FACT-T2-W05-HEALTH-CLAIMS.md"
       ],
       "depends_on": [
-        "BIO-WK-T2-W05"
+        "BIO-WK-T2-W05",
+        "BIO-VIS-T2-TBL-VITAMINS"
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T2-W05; see the Week 5 index for exact source locators and delivery gates."
@@ -4114,7 +4117,7 @@
       "source_id": "SS1-SRC-eb6e9665f42c",
       "term": "2nd Term",
       "week_or_locator": "Week 5, blocks 326-480",
-      "objective": "Author a clearly labelled supplemental lesson for animal nutrition, food-substance groups, balanced diet and digestive enzymes. Preserve original source wording separately; include health/deficiency claims only after BIO-FACT-T2-W05-HEALTH-CLAIMS has verified them. Do not add food-test practical instructions; keep block 477 gated on the approved teacher resource.",
+      "objective": "Author a clearly labelled supplemental lesson for animal nutrition, food-substance groups, balanced diet and digestive enzymes. Restate the Week 5 vitamin table as a semantic four-column table, and include health/deficiency claims only after BIO-FACT-T2-W05-HEALTH-CLAIMS has verified them. Preserve original source wording separately. Do not add food-test practical instructions; keep block 477 gated on the approved teacher resource.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
         "docs/ss1/contracts/CONTRACT.md",
@@ -4123,7 +4126,8 @@
         "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
         "backend/src/db/ss1/subjects/biology.json",
         "docs/ss1/work/microtasks/biology/QUEUE.json",
-        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T2-TBL-VITAMINS.md"
       ],
       "required_attachments": [
         {
@@ -4140,7 +4144,8 @@
       ],
       "depends_on": [
         "BIO-WK-T2-W05",
-        "BIO-FACT-T2-W05-HEALTH-CLAIMS"
+        "BIO-FACT-T2-W05-HEALTH-CLAIMS",
+        "BIO-VIS-T2-TBL-VITAMINS"
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T2-W05; see the Week 5 index for exact source locators and delivery gates."
@@ -5540,7 +5545,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T2-TBL-VITAMINS",
     "BIO-VIS-T2-TBL-INSTRUMENTS",
     "BIO-VIS-T2-FIG-PARAMECIUM",
     "BIO-VIS-T2-FIG-SPIROGYRA",
