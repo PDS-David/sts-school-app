@@ -49,8 +49,6 @@ test('Every registered Literature rule has a unique ID and binds to its register
     assert.equal(r.source_sha256, s.sha256);
   }
   assert.deepEqual([...ids].sort(), [
-    'SS1-SRC-1728961e97b5-R001',
-    'SS1-SRC-2422e423a240-R001',
     'SS1-SRC-470d43e54e5b-R001',
     'SS1-SRC-470d43e54e5b-R002',
     'SS1-SRC-470d43e54e5b-R003',
@@ -62,6 +60,32 @@ test('Every registered Literature rule has a unique ID and binds to its register
     'SS1-SRC-470d43e54e5b-R009',
     'SS1-SRC-470d43e54e5b-R010',
     'SS1-SRC-470d43e54e5b-R011',
+    'SS1-SRC-1728961e97b5-R001',
+    'SS1-SRC-1728961e97b5-R002',
+    'SS1-SRC-1728961e97b5-R003',
+    'SS1-SRC-1728961e97b5-R004',
+    'SS1-SRC-1728961e97b5-R005',
+    'SS1-SRC-1728961e97b5-R006',
+    'SS1-SRC-1728961e97b5-R007',
+    'SS1-SRC-1728961e97b5-R008',
+    'SS1-SRC-1728961e97b5-R009',
+    'SS1-SRC-1728961e97b5-R010',
+    'SS1-SRC-1728961e97b5-R011',
+    'SS1-SRC-1728961e97b5-R012',
+    'SS1-SRC-1728961e97b5-R013',
+    'SS1-SRC-2422e423a240-R001',
+    'SS1-SRC-2422e423a240-R002',
+    'SS1-SRC-2422e423a240-R003',
+    'SS1-SRC-2422e423a240-R004',
+    'SS1-SRC-2422e423a240-R005',
+    'SS1-SRC-2422e423a240-R006',
+    'SS1-SRC-2422e423a240-R007',
+    'SS1-SRC-2422e423a240-R008',
+    'SS1-SRC-2422e423a240-R009',
+    'SS1-SRC-2422e423a240-R010',
+    'SS1-SRC-2422e423a240-R011',
+    'SS1-SRC-2422e423a240-R012',
+    'SS1-SRC-2422e423a240-R013',
   ].sort());
 });
 
@@ -70,7 +94,7 @@ test('Literature source aliases remain pending owner decisions and markers remai
   const aliases = p.source_rules.filter(r => r.op === 'source_alias');
   const markers = p.source_rules.filter(r => r.op === 'classify_marker');
   assert.equal(aliases.length, 3);
-  assert.equal(markers.length, 10);
+  assert.equal(markers.length, 34);
   for (const r of aliases) {
     const s = p.sources.find(s => s.source_id === r.source_id)!;
     assert.equal(r.canonical_subject, p.canonical_subject);
