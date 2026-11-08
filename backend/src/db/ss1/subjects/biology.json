@@ -593,6 +593,64 @@
           "explanation": "The assignment requests five conditions necessary for photosynthesis. The reviewed teaching text explicitly names light/sunlight, chlorophyll, water and carbon (IV) oxide; it does not identify a fifth condition or present a five-item list. The missing item is not guessed."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T1-W07-SCHEME-7",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Scheme entry 7: Nutrition in Animals",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 8 (sha256 d0bd685e636204acea325dde295cd9b42df7e4b91ac23cfb319c33fc2b0c109d); Week 7 label block 835 (sha256 5d222602d23f6b6f007aa6721de2a971a44013ddf864d5b98d8b6d25dcaeace1); body blocks 835-925 (range sha256 d447b3593efc132f6eed1264640b15969a8a5712d3111a4e0470d6c8adb553a6)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 836-902 (range sha256 bc8819630019a8f76af63df674753745f6712a09ea487ef7e2433bd6be524fc1)",
+          "explanation": "Introduces food substances and describes carbohydrate, protein, fats/oils, mineral salts, vitamins, water and roughage, their stated roles and sources, and balanced diet. The mineral and vitamin tables at blocks 881 and 888 are separately assigned to BIO-VIS-T1-TBL-MINERALS-VITAMINS; their layout and individual health claims are not reworked in this index."
+        },
+        {
+          "locator": "blocks 903-918 (range sha256 dbb965901e04fc5f82b2b635b17ff1da929d6d690f5e9dc8af395404168a285e); enzyme table block 920 (sha256 6f1f3aa0be2c83dbe5ab075287d7994531bb425eefddaeb4153965510841bed5)",
+          "explanation": "Defines digestive enzymes, lists characteristics and describes proteases, amylase and lipases. The protein-breakdown flow at block 859 is assigned to BIO-VIS-T1-PROTEIN-BREAKDOWN; the enzyme table at block 920 is assigned to BIO-VIS-T1-TBL-ENZYMES."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer/compiler not run",
+          "explanation": "The source teaches the scheme objective, but the package has no lessons. Source-only teaching is not deliverable; PARTIAL remains until a lesson or approved equivalent is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W07-ENZYMES",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Digestive enzymes: definition, characteristics, classes and stated functions",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 blocks 903-920 (range sha256 4165132912c236e1d99513b354b101ed76152674328de29c423c320169f7b588)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 903-913 (range sha256 dbb965901e04fc5f82b2b635b17ff1da929d6d690f5e9dc8af395404168a285e)",
+          "explanation": "Defines enzymes as organic catalysts and lists characteristics including specificity, small required quantity, temperature range, reversibility, production by glands and inhibition. Source wording is retained pending factual review."
+        },
+        {
+          "locator": "blocks 914-920; table block 920 (sha256 6f1f3aa0be2c83dbe5ab075287d7994531bb425eefddaeb4153965510841bed5)",
+          "explanation": "Names proteases, amylase and lipases and gives an enzyme/source/location/substrate/product table. Table pairing is owned by BIO-VIS-T1-TBL-ENZYMES; factual claims in the text and table require the appended fact-check task."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson or keyed practice is registered for this objective. PARTIAL: source teaching exists but is not yet deliverable."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W07-ASSIGNMENT",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 7 assignment: define enzyme and state five characteristics",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 assignment block 921 (sha256 ab04ccc137d58ef30f41dbd29a7ca11eb5e87fb3def8b238329b3ab6efdd68d3); WEEK SEVEN block 922 (sha256 4a723109953b31906cbe40ce93fd8a4f440295167adea8b71e78dda0d7f59808); questions blocks 923-924 (range sha256 bf5db9fa7dcd0cf4453dce77dd29c1e868ea6c90e8981dbd415420a181598d1b)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "questions blocks 923-924; teaching blocks 903-913",
+          "explanation": "The source defines digestive enzymes at block 903 and lists more than five characteristics at blocks 904-913, so the two question prompts are covered by the source text. No answer key, model response or marking guide accompanies the assignment."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -857,6 +915,38 @@
       "required_action": "Check both printed equations against an approved Biology reference and bind any delivery correction only after the source and corrected form are evidenced.",
       "affected_ids": [
         "COV-BIO-T1-W05-SCHEME-5"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W07-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 7 Nutrition in Animals and digestive enzymes are described in the source, but the Biology package has no lessons or registered teaching rows.",
+      "required_action": "Author and bind an approved equivalent lesson for the animal-nutrition and digestive-enzyme objectives, retaining source wording separately from any corrected supplement.",
+      "affected_ids": [
+        "COV-BIO-T1-W07-SCHEME-7",
+        "COV-BIO-T1-W07-ENZYMES"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W07-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 7 assignment asks learners to define an enzyme and state five characteristics. The source teaching supports both prompts, but no answer key or marking guide is supplied.",
+      "required_action": "A Biology teacher should approve the keyed response and marking guide before the assignment is delivered. Do not invent a source answer key.",
+      "affected_ids": [
+        "COV-BIO-T1-W07-ASSIGNMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W07-FOOD-CLAIMS",
+      "kind": "FACT",
+      "detail": "Several printed food-substance and enzyme claims need authoritative review before a corrected lesson is authored, including the monosaccharide formula at block 841, the sucrose formation wording at 844, the lipid formula at 871, and the amylase statements at 916-917. The source is preserved unchanged.",
+      "required_action": "Verify each cited statement against an approved Biology reference, record the exact supporting reference, and bind only evidence-based delivery corrections. Keep original wording visible as source text.",
+      "affected_ids": [
+        "COV-BIO-T1-W07-SCHEME-7",
+        "COV-BIO-T1-W07-ENZYMES"
       ],
       "blocks_delivery": true
     }
