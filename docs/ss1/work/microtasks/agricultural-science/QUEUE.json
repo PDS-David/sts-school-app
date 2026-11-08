@@ -42,7 +42,8 @@
     "AG-WK-T2-W04-05 (2026-11-08) indexed combined Second Term Weeks 4-5: three detailed 17-row crop tables (maize/rice, cowpea/groundnut, yam/cassava); seed rates, spacing, climate and maturity figures retained exactly as written. Nutritional values cross-map to First Term Week 10. Staking/training explanations and mulching MCQ ambiguity remain follow-ups; no rates/doses/handling instructions added.",
     "AG-WK-T2-W06 (2026-11-08) indexed Second Term Week Six: agricultural ecology, biotic/abiotic components and interactions in mono-cropping, mixed cropping and mixed farming are taught. Fish-pond and forest/savannah interaction questions exceed teaching; polygastric MCQ and autotrophism/heterotrophism terminology require follow-up.",
     "AG-WK-T2-W07 (2026-11-08) indexed Second Term Week Seven: rock definition, igneous/sedimentary/metamorphic formation, examples, parent-rock relationships and characteristics. Scientific generalisations about crystallinity/fossils, 'peak' at block 458 and mica MCQ option require verification.",
-    "AG-WK-T2-W08 (2026-11-08) indexed Second Term Week Eight: physical, chemical and biological rock-weathering processes are source-taught. General evaluation's five soil-formation factors cross-map to Week Nine block 609. Evaluation wording 'rock formation' in blocks 568/573 is inconsistent with the taught topic and is routed for correction verification."
+    "AG-WK-T2-W08 (2026-11-08) indexed Second Term Week Eight: physical, chemical and biological rock-weathering processes are source-taught. General evaluation's five soil-formation factors cross-map to Week Nine block 609. Evaluation wording 'rock formation' in blocks 568/573 is inconsistent with the taught topic and is routed for correction verification.",
+    "AG-WK-T2-W09 (2026-11-08) indexed Second Term Week Nine: the five soil-formation factors are explicitly listed and described; Week Eight's five-factor question cross-maps here. Two likely wording defects ('sloppy area', 'rock formation' within soil formation) are routed for correction verification."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -54,10 +55,10 @@
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
     "LESSON": 20,
-    "CORRECTION_BINDING": 6
+    "CORRECTION_BINDING": 7
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 27,
+    "IMPLEMENTED_TESTING_DEFERRED": 28,
     "PENDING": 90,
     "BLOCKED": 2
   },
@@ -1308,8 +1309,8 @@
         "AG-INV-T2",
         "AG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): label block 599 text \"WEEK NINEDATE: ……………………..\" (sha256 6da53770c7591dca1f306e5079aa5d61a4949ab93e170abf64976f7e0caaff72); blocks 599-674; range sha256 bc1d1321d855bd1376adc8b8d0f08f6c5dbd9b31eae703f1358a34060ae8ba81. Topic: Factors of Soil Formation. Factors of soil formation (608): climate (611), parent material (622), topography (626), biotic factors (633), time (645), General Evaluation (648), Book Review (655), Reading Assignment (658), Weekend Assignment (661-674, theory from 670). Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-676; block 677 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Second Term member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 and Week Nine range blocks 599-674 SHA-256 bc1d1321d855bd1376adc8b8d0f08f6c5dbd9b31eae703f1358a34060ae8ba81. Scheme item 9 (block13) maps to five factors at 608-609: climate, parent materials, topography, biotic factors and time. Each is described at 611-616,622-623,626-627,633-639 and 645-646. Evaluations 618-620,629-631,641-643; general 648-653; weekend 661-668; theory 670-672 reviewed. Week Eight general evaluation Q5 at block576 cross-maps to this five-factor list. Climate elements at 612 include sunlight, temperature, wind, relative humidity, rainfall and pressure; biotic examples include termites, earthworms, crickets, human tillage, plant roots and leaf/bacteria decomposition. Block 627 says 'sloppy area'; block 634 says organisms play a role in 'rock formation' in a soil-formation section; correction binding task appended. Reading assignment 658-659 and book review 655-656 recorded but not checked. Added one PARTIAL coverage entry, two open items and bounded task AG-CORR-T2-W09-SOIL-TERMS. Full report AG-WK-T2-W09.md. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -4461,6 +4462,43 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T2-W08: evaluation wording says rock formation although the taught topic is rock weathering.",
       "completion_condition": "A correction-binding record verifies the intended wording and cites source evidence; original source remains unchanged."
+    },
+    {
+      "id": "AG-CORR-T2-W09-SOIL-TERMS",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "Week Nine blocks 627 and 634",
+      "objective": "Verify 'sloppy area' at block 627 and 'rock formation' at block 634 against a verified parallel copy or teacher-approved original. Bind delivery-only corrections to 'sloping area' and 'soil formation' only if confirmed; preserve original bytes.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T2-W09.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-CORR-T2-W09-SOIL-TERMS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T2",
+        "AG-WK-T2-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T2-W09: wording at blocks 627/634 appears inconsistent with the soil-formation topic.",
+      "completion_condition": "A correction-binding record cites verified evidence for each correction and preserves original wording."
     }
   ],
   "review": {
@@ -4476,7 +4514,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T2-W09",
     "AG-WK-T3-W01",
     "AG-WK-T3-W02",
     "AG-WK-T3-W03",
@@ -4545,6 +4582,7 @@
     "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
     "AG-CORR-T2-W07-PEAT-TYPO",
     "AG-CORR-T2-W08-QUESTION-WORDING",
+    "AG-CORR-T2-W09-SOIL-TERMS",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
     "AG-LES-T1-W02-AGRO-INDUSTRIES",
