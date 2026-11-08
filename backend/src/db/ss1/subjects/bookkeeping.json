@@ -2671,14 +2671,14 @@
     },
     {
       "id": "BOOKKEEPING-T2-TEXT-MATCHES-T1",
-      "kind": "OWNER_ACTION",
-      "detail": "Apart from its first line ('SIGMA TERM' instead of 'FIRST TERM') and a line break around 'TOPIC', the extracted text of the 2nd Term source (SS1-SRC-97c1db5b1eb0) is identical to that of the 1st Term source (SS1-SRC-62b02f2adcb3): the same scheme of work and the same body text, beginning with revision, single and double column cash book and contra entry. Compared on whitespace-trimmed mammoth raw text only. This may mean the 2nd Term file is a copy of the 1st Term file rather than its own 2nd Term teaching, but that is not established here and no duplicate coverage is linked.",
-      "required_action": "Owner confirms whether this file is the intended 2nd Term Bookkeeping document or supplies the correct one. Indexing (BK-INV-T2) and any duplicate-coverage linking must wait for that answer.",
+      "kind": "SOURCE_DISPOSITION",
+      "detail": "OWNER CONFIRMED (2026-11-08): the 2nd Term document should not have been identical to the 1st Term document, and no other 2nd Term resource is currently available. The registered member is treated as an erroneous duplicate; preserve it as source evidence, do not use its copied scheme/body as 2nd Term teaching, and proceed with the separately labelled project-authored reconstruction in docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md.",
+      "required_action": "No further source decision required to proceed. Keep original source registered and unchanged; exclude its duplicate teaching from 2nd Term coverage. Reconstructed teaching remains provisional for curriculum-owner/teacher review.",
       "affected_ids": [
         "SS1-SRC-97c1db5b1eb0",
         "SS1-SRC-62b02f2adcb3"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-ALIAS-APPROVAL-T3",
