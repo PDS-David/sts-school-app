@@ -23144,6 +23144,121 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-ENGLISH-AUDIO-PRONUNCIATION-MODEL-T1",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "English Language",
+      "title": "Synthetic British English pronunciation model: listening contrasts and stress",
+      "objectives": [
+        "Listen to a consistent British English model for selected vowel, consonant and stress contrasts.",
+        "Distinguish /ɪ/ from /iː/, /θ/ from /ð/, and /eɪ/ from /aɪ/.",
+        "Recognise the noun/verb stress contrast in record.",
+        "Explain why a model recording does not replace oral observation."
+      ],
+      "body": "This original audio-model lesson is paired with the registered MP3 asset backend/src/db/ss1/assets/english/ss1-english-pronunciation-model-en-gb.mp3. It is a synthetic British English reference produced with eSpeak 1.48.15, voice en-gb. It demonstrates selected contrasts for listening practice; it is not a human recording, a full pronunciation course or a substitute for a teacher's oral assessment.\n\nTranscript: \"Listen. Ship, sheep. Thin, then. Day, my. Record, reCORD.\"\n\nListen once without reading the transcript. Listen again and follow the words. In ship/sheep, the vowel contrast is /ɪ/ versus /iː/. In thin/then, the initial consonant contrast is voiceless /θ/ versus voiced /ð/. In day/my, the diphthongs are /eɪ/ and /aɪ/. In the standard British English noun/verb pair, record as a noun has first-syllable stress (/ˈrekɔːd/), while record as a verb has second-syllable stress (/rɪˈkɔːd/).\n\nThe audio is a short model for listening discrimination. A learner's ability to repeat or produce the sounds must be observed separately by a teacher. A written answer or successful playback does not certify spoken pronunciation.",
+      "body_sha256": "81f81706168400468b7ef1c95358c34ae8609eb38b49bbeb3e319a559e430350",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Listen to ship and sheep. Identify the vowel phonemes in each word.",
+          "answer": "ship /ɪ/; sheep /iː/.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "ship /ɪ/",
+              "marks": 1
+            },
+            {
+              "criterion": "sheep /iː/",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Listen to thin and then. Identify the initial consonant phonemes and state which is voiced.",
+          "answer": "thin begins /θ/ (voiceless); then begins /ð/ (voiced).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct phonemes",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct voicing",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Identify the diphthong in day and in my.",
+          "answer": "day /eɪ/; my /aɪ/.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "day /eɪ/",
+              "marks": 1
+            },
+            {
+              "criterion": "my /aɪ/",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "State the stress difference between record as a noun and record as a verb in the model.",
+          "answer": "The noun has first-syllable stress /ˈrekɔːd/; the verb has second-syllable stress /rɪˈkɔːd/.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Noun first-syllable stress",
+              "marks": 1
+            },
+            {
+              "criterion": "Verb second-syllable stress",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Why does hearing the model not prove that a learner can pronounce the sounds correctly?",
+          "answer": "Playback tests listening exposure only; a teacher must separately observe and assess the learner's spoken production.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Distinguishes listening from speaking",
+              "marks": 1
+            },
+            {
+              "criterion": "Requires teacher oral observation",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "total_marks": 10,
+      "provenance": [
+        {
+          "title": "eSpeak speech synthesis output",
+          "locator": "Original transcript synthesized with eSpeak 1.48.15, voice en-gb, 16 kHz mono MP3 at 8 kbps, duration 6.048 seconds; generated 2026-11-08.",
+          "url": "https://sourceforge.net/p/espeak/discussion/538920/thread/c6944a60/",
+          "rights": "The eSpeak maintainer Jonathan Duddington stated that the GPL licence does not apply to generated speech output and that generated WAV files may be used freely. Audio is newly generated from the original script.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Original project-generated audio; eSpeak speech synthesizer (Jonathan Duddington)"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -23573,7 +23688,34 @@
       }
     }
   ],
-  "assets": [],
+  "assets": [
+    {
+      "id": "ASSET-SS1-ENGLISH-PRONUNCIATION-MODEL-ENGB",
+      "lesson_id": "SUP-SS1-ENGLISH-AUDIO-PRONUNCIATION-MODEL-T1",
+      "path": "backend/src/db/ss1/assets/english/ss1-english-pronunciation-model-en-gb.mp3",
+      "sha256": "1c31a9b0ed6204799e22f4f195d8ffbb515a99f98bf611ea27917bef78d9baa0",
+      "bytes": 6272,
+      "media_type": "audio/mpeg",
+      "alt": "Six-second synthetic British English pronunciation sample: ship/sheep, thin/then, day/my, and record as noun versus verb.",
+      "order": 1,
+      "source_locator": "Original spoken script: Listen. Ship, sheep. Thin, then. Day, my. Record, reCORD. eSpeak 1.48.15 voice en-gb, 16 kHz mono MP3, 8 kbps, 6.048 seconds.",
+      "provenance": {
+        "title": "eSpeak speech synthesis output",
+        "locator": "Original script synthesized with eSpeak 1.48.15 voice en-gb; generated 2026-11-08.",
+        "url": "https://sourceforge.net/p/espeak/discussion/538920/thread/c6944a60/",
+        "rights": "The eSpeak maintainer stated that the GPL does not apply to generated speech output and that generated WAV files may be used freely. This is newly generated speech.",
+        "reuse_status": "PERMITTED",
+        "attribution": "Original project-generated audio; eSpeak speech synthesizer (Jonathan Duddington)"
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    }
+  ],
   "coverage": [
     {
       "id": "ENGLISH-BODY-001",
@@ -38091,14 +38233,14 @@
     {
       "id": "ENGLISH-ORAL-OBSERVATION",
       "kind": "VERIFICATION",
-      "detail": "Written phonetic lessons and keyed symbol exercises do not establish listening discrimination or spoken performance. No authorised audio recording/model with a documented permission basis is registered. The asset-acquisition request is tracked separately as ENGLISH-AUTHORISED-AUDIO-MODEL.",
-      "required_action": "Keep oral observation DEFERRED. After an authorised model is supplied and registered, a teacher must conduct and record later listening/speaking observation for the phonetics and stress objectives; written responses alone cannot mark pronunciation VERIFIED.",
+      "detail": "An original synthetic British English audio model is now registered for selected listening contrasts and word stress. It supports exposure and listening discrimination but does not establish learner spoken performance. Oral observation remains a separate teacher verification step.",
+      "required_action": "Keep oral observation DEFERRED until a teacher records learner listening/speaking performance for the relevant phonetics and stress objectives. Do not mark pronunciation VERIFIED from written responses or audio playback alone.",
       "affected_ids": [
         "SUP-SS1-ENGLISH-PHONETICS-T1",
         "SUP-SS1-ENGLISH-PHONETICS-T3",
         "SUP-SS1-ENGLISH-STRESS-T3"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "ENGLISH-T1-W01-WORD-CLASS-REPLACEMENT-SCOPE",
@@ -38949,14 +39091,14 @@
     {
       "id": "ENGLISH-AUTHORISED-AUDIO-MODEL",
       "kind": "PERMISSION",
-      "detail": "No concrete authorised audio file or accessible recording is registered for the English phonetics/stress lessons. Existing chart/app references do not themselves establish permission to use a recording as a lesson asset.",
-      "required_action": "Owner to supply an audio/mpeg or audio/wav file (or an accessible recording with a downloadable/registrable file), identify creator/provider and exact recording, state the licence or written permission and permitted educational uses, identify the accent/model, and map which phonetics/stress objectives it supports. Only then register the exact bytes, SHA256, byte count, alt text, provenance and lesson_id binding. Do not create a placeholder asset.",
+      "detail": "Resolved 2026-11-08. Registered original synthetic British English pronunciation model ASSET-SS1-ENGLISH-PRONUNCIATION-MODEL-ENGB at backend/src/db/ss1/assets/english/ss1-english-pronunciation-model-en-gb.mp3 (audio/mpeg; 6,272 bytes; SHA-256 1c31a9b0ed6204799e22f4f195d8ffbb515a99f98bf611ea27917bef78d9baa0). It is bound to SUP-SS1-ENGLISH-AUDIO-PRONUNCIATION-MODEL-T1 and supports selected /ɪ/-/iː/, /θ/-/ð/, /eɪ/-/aɪ/ and noun/verb stress contrasts. The script is original and eSpeak maintainer guidance confirms generated speech output may be used freely.",
+      "required_action": "Audio model registered with exact bytes, SHA-256, media type, alt text, provenance, lesson binding and transcript. Keep teacher oral observation separately DEFERRED; the synthetic model is not evidence of learner speaking proficiency.",
       "affected_ids": [
         "SUP-SS1-ENGLISH-PHONETICS-T1",
         "SUP-SS1-ENGLISH-PHONETICS-T3",
         "SUP-SS1-ENGLISH-STRESS-T3"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "ENGLISH-CONTENT-APPROVAL",
