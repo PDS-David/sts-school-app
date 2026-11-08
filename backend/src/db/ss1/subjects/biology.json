@@ -419,6 +419,70 @@
           "explanation": "The label WEEK ONE AND TWO matches the importer's week marker, so the combined assignment is its own generic row. It is the same block range as COV-BIO-T1-W01-ASSESSMENT; the keyed supplement BIO-LES-T1-W01-ASSESSMENT already exists to disposition the block once, so no duplicate task is created here."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T1-W03-SCHEME-3",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Scheme entry 3: Classification of Living things",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 4 (sha256 90846288953e56236069142972ddfd5b1db1e76a5d61e83007ecc1f7af34b813); Week 3 label block 133 (sha256 9a970d2a5cd0bee91213221e6275188baf1dd13c1f90530302e9dbc234cf3b51); Week 3 body blocks 133-644 (range sha256 0103345f39d4a3f64705635245f85b0bbbc69edfea60ec9d843c00cf6d88e227)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 135-136 (range sha256 aff7c5f5ded5c02c6e33c568433d5e8fc862c1b7d8a067a4e9409912b522ad85); diagram blocks 137-155 (range sha256 e04ec56a91a301393fc767f2e14780206239d6d75237930d6a15675be39927e9)",
+          "explanation": "The source defines classification/taxonomy, names Carolus Linnaeus, sets out the hierarchy Kingdom → Phylum/Division → Class → Order → Family → Genus (printed 'Genius' in the diagram) → Species, and describes species as populations able to interbreed and produce fertile offspring. The diagram uses six native drawing/VML pairs for the ranks through Family and Genus; Species is plain text at block 155. The spelling and visual disposition are retained for the separate BIO-VIS-T1-CLASS-HIERARCHY task."
+        },
+        {
+          "locator": "blocks 156-187 (range sha256 4ae26237ab8b58d672c6972327a754d675c730bda928530e248cd9239167f314)",
+          "explanation": "The source names five kingdoms (Monera, Protoctista, Fungi, Plantae and Animalia) and gives characteristics/examples for Monera, Protoctista and Fungi, followed by the opening Plantae characteristics. The visible body continues the Plantae description in the next range."
+        },
+        {
+          "locator": "blocks 188-244 (range sha256 57754fb1ec68a46283f047acc1faf10b98f61c340039093b7fef012a551bd2a6)",
+          "explanation": "The source classifies Plantae into Thallophyta, Bryophyta, Pteridophyta and Spermatophyta; divides Spermatophyta into Gymnospermatophyta and Angiospermatophyta; and divides angiosperms into monocotyledons and dicotyledons. Blocks 235-244 present the monocot/dicot comparison with two header shapes and tab-aligned text; its preservation is separately assigned to BIO-VIS-T1-MONOCOT-DICOT."
+        },
+        {
+          "locator": "blocks 248-264 (plant agricultural classification range sha256 185d27a29ebf4ff3cd03f05cfc3d057dd43b331988ef6e2ecc11d69f68cc7329; life-cycle range sha256 c60226a5c1f630812011f9f380017a36c1d37e7fba0b19c0089ca1aac1cab3df)",
+          "explanation": "The source groups plants by agricultural product/use (including cereals, legumes, root crops, vegetables, fruits, cash crops, oil plants, fibre crops, beverages/drugs, quinine and spices) and by life cycle (annual, biennial and perennial). These are treated as plant-classification subtopics in the Week 3 body."
+        },
+        {
+          "locator": "blocks 268-447 (range sha256 4119a2d6174be6b4fb7246d3b940e57241a5479d956c821110a32fd295bdfafd)",
+          "explanation": "The source gives Animalia characteristics, distinguishes invertebrates and vertebrates, describes body symmetry/design/cavity, lists invertebrate phyla and their characteristics, then identifies five vertebrate classes (Pisces, Amphibia, Reptilia, Aves and Mammalia) and gives class-level characteristics. The body teaches the scheme's classification objective across plant and animal groups."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; no parsed row or importer/compiler result was run",
+          "explanation": "The objective is taught in the original source, but no Biology lesson exists in the package. Source-only teaching is not deliverable; PARTIAL remains until a lesson or approved equivalent is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W03-ASSESSMENT",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 3 assignment: questions 1-7 on animal and plant classification",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 assignment heading block 631 (sha256 ab04ccc137d58ef30f41dbd29a7ca11eb5e87fb3def8b238329b3ab6efdd68d3); WEEK THREE label block 632 (sha256 9a970d2a5cd0bee91213221e6275188baf1dd13c1f90530302e9dbc234cf3b51); questions blocks 634-642 (range sha256 fb122edb7c09f528334ee873e83b2ac6f8719f3c81019268f4c553e86d1de363)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "question blocks 634-639; relevant teaching blocks 268-447",
+          "explanation": "Q1 asks for an odd one out among bat, shark, rat and whale. Shark is identified as a cartilaginous fish (block 391), but the source does not identify bat, rat or whale as examples of Mammalia; the question's intended grouping is not fully supported by this source alone. Q2 names angiosperms and gymnosperms and offers 'spermatophyte'; blocks 216-232 place both divisions under Spermatophyta, although the question calls them a 'class' while the source calls them divisions. Q3's mammal-hair option is supported by block 437. Q4 asks which feature insects and millipedes do not share; the source lists arthropod segmentation, exoskeleton and jointed appendages at 355-363 but does not discuss compound eyes, so it does not establish the requested exception."
+        },
+        {
+          "locator": "question block 640; fish characteristics blocks 388-400",
+          "explanation": "Q5 asks the learner to make a labelled lateral-view drawing of a fish. The source describes fish features (scales, fins, gills, swim bladder, lateral line and streamlined form) but contains no fish drawing or labelled reference figure in this assignment range. The question is an instruction to draw, not a supplied source diagram."
+        },
+        {
+          "locator": "question block 641; Pisces blocks 388-400; Mammalia blocks 433-446",
+          "explanation": "Q6 asks for five structural differences between Pisces and Mammalia. The source supplies separate class descriptions and characteristics for both groups, so the comparison is supported by the written source."
+        },
+        {
+          "locator": "question block 642; comparison blocks 235-244",
+          "explanation": "Q7 asks for five differences between 'monocotyledons and cotyledons plant'. The preceding source comparison is explicitly headed Monocotyledoneae/Dicotyledoneae and supplies multiple differences, but the assignment's second term is incomplete as printed. The table's visual/tabular pairing is separately assigned to BIO-VIS-T1-MONOCOT-DICOT."
+        },
+        {
+          "locator": "whole source member; no answer-key block in the Week 3 range",
+          "explanation": "No answer key or marking guide is supplied for questions 1-7. The assignment is therefore not keyed for delivery; no answers or marks are invented here."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -602,6 +666,26 @@
         "COV-BIO-T1-W02-PLANT-ANIMAL",
         "COV-BIO-T1-W02-MICROSCOPE",
         "BIO-PRE-T1"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W03-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "The 1st Term Week 3 scheme objective is taught across source blocks 133-447, but the Biology package has no lessons and no source row has been imported. The source-only classification content is not deliverable.",
+      "required_action": "Author and bind a lesson or approved equivalent for the Week 3 classification objective, preserving source provenance and keeping any corrections distinct from original wording.",
+      "affected_ids": [
+        "COV-BIO-T1-W03-SCHEME-3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W03-ASSESSMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 3 assignment at blocks 631-642 has no answer key. Q1's mammal examples and Q4's compound-eye exception are not established by the source; Q5 asks for a fish drawing but supplies no fish figure; Q2 calls the plant groups a class where the source describes them as divisions; Q7 prints 'cotyledons plant' without 'dicotyledons'.",
+      "required_action": "A Biology subject expert/teacher must confirm the intended wording and approved answer/marking guide for Q1-Q7, especially the unsupported Q1/Q4 items and drawing expectations in Q5. Do not invent a key from the source.",
+      "affected_ids": [
+        "COV-BIO-T1-W03-ASSESSMENT"
       ],
       "blocks_delivery": true
     }
