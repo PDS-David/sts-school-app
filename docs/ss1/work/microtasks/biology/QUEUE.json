@@ -53,7 +53,8 @@
     "BIO-WK-T3-W03 (2026-11-08) indexed the STI definition/table and HIV/AIDS section, plus every evaluation/general/weekend/theory prompt. The body label says WEEK SEVEN although this is scheme row 3; another WEEK SEVEN label occurs at block 474. HIV is expanded inconsistently in table/body, and health claims require authoritative review. Existing visual task owns the STI table; a factual review, label-scope task and age-appropriate lesson task were appended. No answer key or medical advice was created.",
     "BIO-WK-T3-W04 (2026-11-08) indexed microbial control, vector control, good-health maintenance and health organizations. WHO dates conflict and the antiseptic/disinfectant wording needs review. The malaria life cycle, quarantine, pasteurisation definition, fungistat/fungicide terms and black-fly/tsetse/rodent controls are not fully taught. No chemical concentrations or pesticide steps were inferred; a fact task and bounded lesson tasks were appended.",
     "BIO-WK-T3-W05 (2026-11-08) indexed plant taxonomy, agricultural crop groups, life-cycle/size classes and ecological effects of farming practices. The A-I botanical chart remains with a new visual task. Crop rotation, bush clearing, shifting cultivation and monocropping are asked but not taught. Taxonomy/crop/soil/fertilizer/pesticide claims require authoritative review; no pesticide instructions or answer key were invented.",
-    "BIO-WK-T3-W06-W07 (2026-11-08) indexed scheme rows 6 and 7 separately within the combined WEEK SIX& SEVEN section. Crop pests/life cycles, animal parasites, crop/livestock disease tables and general effects/control were reviewed. Existing visual tasks own both lifecycle figures and all four tables. Source pesticide/fumigant products and concentration are not reproduced as instructions; chemical-safety review is blocked pending qualified approval. Roundworm/liver-fluke life cycles and five fungal-disease examples are missing from the source. No answer key was invented."
+    "BIO-WK-T3-W06-W07 (2026-11-08) indexed scheme rows 6 and 7 separately within the combined WEEK SIX& SEVEN section. Crop pests/life cycles, animal parasites, crop/livestock disease tables and general effects/control were reviewed. Existing visual tasks own both lifecycle figures and all four tables. Source pesticide/fumigant products and concentration are not reproduced as instructions; chemical-safety review is blocked pending qualified approval. Roundworm/liver-fluke life cycles and five fungal-disease examples are missing from the source. No answer key was invented.",
+    "BIO-WK-T3-W08 (2026-11-08) indexed government roles, food-production factors, crop-improvement methods, food-shortage/population effects, preservation and food-storage effects. The label says WEEK THREE although this is scheme row 8. Food-science claims (including pasteurisation, irradiation and unspecified chemicals) need authoritative review; no parameters or chemical instructions are repeated. Silos/barns and the Africa-wide 'biggest factor' ranking are not supported by the teaching body. No answer key was invented."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -69,8 +70,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 36,
-    "PENDING": 101,
+    "IMPLEMENTED_TESTING_DEFERRED": 37,
+    "PENDING": 104,
     "BLOCKED": 8
   },
   "items": [
@@ -2776,8 +2777,8 @@
         "BIO-INV-T3",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T3): label block 669 text \"WEEK THREE                     DATE ………….              \" (sha256 e791c34f727e46a2b601cf2875bfca87b52f862637654cb7b21421d66efc6976); blocks 669-801; range sha256 b72e95dd984d339182364ed02c5ec739cc9db1bce9cd30c048158ad88a940491. Label says THREE but the topic FOOD PRODUCTION AND STORAGE (672) is scheme row 8 (the last section). Content: introduction (684), role of government (690-702), environmental factors (703-709), ways of improving food production (710-721), effects of food shortage on population size (722-730), methods of food preservation (735-768: smoking 746, pasteurisation at 72 degrees C for about 10 minutes at 755, 'harmless chemicals' at 761-762), effects of food storage on population (769-774), evaluation items (731, 748, 764, 775), reading assignment (782), Weekend Assignment (783-793, theory 794-797). There is no General Evaluation heading. Blocks 798-801 are empty. Food-science statements need authoritative checking. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T3-W08.md; verified the native DOCX member hash and exact label/range hashes. Indexed government roles, biotic/abiotic factors, crop-improvement methods, food-shortage effects, preservation methods and food-storage effects. The label says WEEK THREE although the topic is scheme row 8. The source's pasteurisation time/temperature, irradiation, smoking and unspecified chemical-preservative claims need food-safety review; no parameters or chemical instructions are repeated. The Africa-wide 'biggest factor' question is unsupported, and silos/barns are not taught. No answer key exists; tests remain deferred.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -5021,6 +5022,100 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T3-W06-W07; the source contains fewer than five clearly identified fungal disease examples."
+    },
+    {
+      "id": "BIO-FACT-T3-W08-FOOD-SCIENCE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 8 preservation blocks 735-762",
+      "objective": "Verify the source's food-preservation claims for salting, drying, smoking, refrigeration/freezing, pasteurisation, canning/bottling, irradiation and chemical preservatives against authoritative food-safety sources. Resolve the specific pasteurisation parameter claim and the irradiation/UV and 'harmless chemicals' wording. Keep corrections separate from source text; do not provide chemical additives, doses, irradiation parameters or home-preservation procedures.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W08.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T3-W08-FOOD-SCIENCE.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W08; food-preservation claims need authoritative food-safety review."
+    },
+    {
+      "id": "BIO-FACT-T3-W08-POPULATION-FOOD",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 8 food-shortage/population blocks 722-729; question 792",
+      "objective": "Verify the source's food-shortage/population relationship and the effects listed (competition, emigration, mortality and the printed cannibalism claim), and assess the unsupported ranking question about the biggest food-production factor in Africa. Use approved ecology/agricultural sources and avoid broad unsupported regional generalisations.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W08.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T3-W08-POPULATION-FOOD.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W08; population/food-supply claims and Africa-wide ranking need source review."
+    },
+    {
+      "id": "BIO-LES-T3-W08-FOOD-PRODUCTION-STORAGE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 8 blocks 684-780",
+      "objective": "Author a clearly labelled lesson on government roles, environmental factors, crop-improvement methods, food shortage/storage effects and food-preservation principles. Use the two factual-review tasks for verified content. Keep preservation material non-operational; do not include chemical recipes, additives, doses or home food-processing parameters. Include complete keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W08.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W08-FOOD-PRODUCTION-STORAGE.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W08",
+        "BIO-FACT-T3-W08-FOOD-SCIENCE",
+        "BIO-FACT-T3-W08-POPULATION-FOOD"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W08; no registered lesson exists for the scheme objective."
+    },
+    {
+      "id": "BIO-LES-T3-W08-STORAGE-STRUCTURES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Weekend assignment block 790",
+      "objective": "Add a clearly labelled supplemental note on storage structures such as silos and barns, which are used as options in the weekend question but are not described in the Week 8 body. Use approved agricultural references and keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W08.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W08-STORAGE-STRUCTURES.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W08; silos and barns appear in the assessment but not the teaching body."
     }
   ],
   "review": {
@@ -5063,7 +5158,6 @@
     "BIO-VIS-T2-FIG-FOODWEB",
     "BIO-VIS-T2-SHP-FOODCHAINS",
     "BIO-VIS-T2-SHP-PYRAMID",
-    "BIO-WK-T3-W08",
     "BIO-VIS-T3-TBL-VECTORS",
     "BIO-VIS-T3-TBL-DISEASES",
     "BIO-VIS-T3-TBL-STI",
@@ -5111,6 +5205,9 @@
     "BIO-FACT-T3-W04-HEALTH-CLAIMS",
     "BIO-VIS-T3-W05-PLANT-CLASSIFICATION",
     "BIO-FACT-T3-W05-AGRICULTURE-CLAIMS",
-    "BIO-FACT-T3-W06-W07-PEST-DISEASES"
+    "BIO-FACT-T3-W06-W07-PEST-DISEASES",
+    "BIO-FACT-T3-W08-FOOD-SCIENCE",
+    "BIO-FACT-T3-W08-POPULATION-FOOD",
+    "BIO-LES-T3-W08-STORAGE-STRUCTURES"
   ]
 }
