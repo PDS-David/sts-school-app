@@ -3852,13 +3852,14 @@
     {
       "id": "BIOLOGY-T3-W05-AGRICULTURE-FACTS",
       "kind": "FACT",
-      "detail": "Botanical rank terminology at 344, crop examples/nutritional statements at 370-380, life-cycle examples at 387-389 and soil/fertilizer/pesticide claims at 401-445 need authoritative review.",
-      "required_action": "Verify botanical taxonomy, crop examples, life-cycle classifications and soil/agricultural impact claims against approved botanical/agricultural references. Keep corrections distinct from source text; do not add pesticide concentrations or application instructions.",
+      "detail": "Botanical rank terminology at block 344, the native botanical-classification chart and its A-I labels/relationships at blocks 345-358, crop examples/nutritional statements at 370-380, life-cycle examples at 387-389 and soil/fertilizer/pesticide claims at 401-445 need authoritative review.",
+      "required_action": "Verify botanical rank terminology and the source chart's A-I plant-group labels and hierarchy against approved botanical references; also verify crop examples, life-cycle classifications and soil/agricultural impact claims against authoritative botanical/agricultural sources. Keep corrections distinct from source text; do not add pesticide concentrations or application instructions.",
       "affected_ids": [
         "COV-BIO-T3-W05-BOTANICAL-CLASSIFICATION",
         "COV-BIO-T3-W05-AGRICULTURAL-CLASSIFICATION",
         "COV-BIO-T3-W05-LIFE-CYCLE-SIZE",
-        "COV-BIO-T3-W05-AGRICULTURAL-EFFECTS"
+        "COV-BIO-T3-W05-AGRICULTURAL-EFFECTS",
+        "BIO-VIS-T3-SHP-PLANT-CLASS-CHART"
       ],
       "blocks_delivery": true
     },
@@ -4150,6 +4151,41 @@
       "affected_ids": [
         "COV-BIO-T3-W07-ANIMAL-PESTS-DISEASES",
         "BIO-VIS-T3-TBL-LIVESTOCK-DISEASES"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W01-BACTERIA-FIGURE",
+      "kind": "CONTENT",
+      "detail": "The image-only bacteria-shapes figure at source block 55 contains four labelled panels and 22 visible label strings, but the block has no text runs and plain-text extraction loses the figure and its group structure. No corresponding 3rd Term asset is registered in the package. The visible classifications have not been fact-verified.",
+      "required_action": "After BIO-FACT-T3-W01-MICROBE-CLAIMS verifies the source-visible labels, create a project-authored accessible diagram using only labels that remain supported. Do not reuse source pixels or reproduce the source layout. Bind the new asset to the actual Week 1 lesson and register its own hash, alt text, source locator and project-created provenance. Record any correction separately from the original wording.",
+      "affected_ids": [
+        "BIO-VIS-T3-FIG-BACTERIA-SHAPES",
+        "BIO-FACT-T3-W01-MICROBE-CLAIMS",
+        "COV-BIO-T3-W01-MICROORGANISMS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W06-GRASSHOPPER-IMAGE-RIGHTS",
+      "kind": "PERMISSION",
+      "detail": "The third-term grasshopper life-cycle raster at source block 515 visibly carries the footer 'education.com Copyright © 2011-2012 by Education.com' and 'More worksheets at www.education.com/worksheets'. The source document records no licence or permission for reuse.",
+      "required_action": "Before using the original raster or reproducing protected visual expression, record permission/licensing evidence from the rights holder. If permission is unavailable or not sought, do not use the source image bytes or copy its composition; use a genuinely project-authored alternative based on independently verified biological facts and the curriculum text.",
+      "affected_ids": [
+        "BIO-VIS-T3-FIG-GRASSHOPPER",
+        "COV-BIO-T3-W06-PLANT-PESTS-DISEASES"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W06-MEALYBUG-FIGURE",
+      "kind": "CONTENT",
+      "detail": "The image-only mealybug life-cycle figure at source block 545 is absent from plain-text extraction. The heading at block 543 names 'The Life Cycle of Cassava Mealy bug', but the small raster captions include an uncertain spelling/numbering ('Instar symphs 1' in the inventory) and do not provide a fully reliable, text-accessible stage sequence. No 3rd Term asset or lesson is registered.",
+      "required_action": "After BIO-FACT-T3-W06-W07-PEST-DISEASES verifies the cassava mealybug stages and sequence, re-inspect the original raster to confirm any low-resolution caption that can be read; preserve uncertain source spellings rather than silently correcting them. Create a project-authored accessible figure from only supported labels/facts, without reusing source pixels or copying its layout, and bind/register it to the actual Week 6 lesson with hash, alt text, locator and project-created provenance.",
+      "affected_ids": [
+        "BIO-VIS-T3-FIG-MEALYBUG",
+        "BIO-FACT-T3-W06-W07-PEST-DISEASES",
+        "COV-BIO-T3-W06-PLANT-PESTS-DISEASES"
       ],
       "blocks_delivery": true
     }
