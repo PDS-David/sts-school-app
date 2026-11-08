@@ -10,7 +10,7 @@ import { applyRules } from '../../backend/src/db/ss1/compiler.ts';
 const raw = JSON.parse(readFileSync(new URL('../../backend/src/db/ss1/subjects/bookkeeping.json', import.meta.url), 'utf8'));
 const manifest = [
   { source_id: 'SS1-SRC-62b02f2adcb3', sha256: '9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0', archive_member: 'SSS 1/1st Term SS1_/book keeping.docx', term: '1st Term' },
-  { source_id: 'SS1-SRC-97c1db5b1eb0', sha256: 'c8c75f55e327d7d3e6ece8b0b8a2a5b8', archive_member: 'SSS 1/2nd Term SS1_/Book keeping.docx', term: '2nd Term' },
+  { source_id: 'SS1-SRC-97c1db5b1eb0', sha256: 'c8c75f55e327d7d3e6ece4b3caca2ea841d3d3a45d324ceb221843c265157af3', archive_member: 'SSS 1/2nd Term SS1_/Book keeping.docx', term: '2nd Term' },
   { source_id: 'SS1-SRC-97f226215927', sha256: '343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d', archive_member: 'SSS 1/3rd Term SS1_/BOOK KEEPING_.docx', term: '3rd Term' },
 ];
 const hash = (s: string) => createHash('sha256').update(s).digest('hex');
