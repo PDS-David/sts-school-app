@@ -1127,6 +1127,10 @@
         {
           "locator": "Verified second-term source member SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc (SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44); block 221 media/image3.png 249×202, SHA-256 3de65c95417cb4e08f088a61d83bdcccecc3bf43d7f9fa6363309eeffecfcdda",
           "explanation": "The labelled cockroach life-cycle figure at block 221 is a raster image with no text in its source block, so it is absent from plain-text extraction. Visible labels are Egg Case, Nymph (two distinct nymph stages) and Adult. Four arrows form a clockwise cycle: Egg Case → first Nymph → second Nymph → Adult → Egg Case. This matches the written cockroach reproduction/development description at blocks 216-220, which mentions the egg case, nymph stages, moulting and adult. The original image is not registered or committed as an app asset because reuse rights are not recorded. A project-authored redraw is appropriate; it must use only the visible labels and source-described stage sequence, without copying the original pixels."
+        },
+        {
+          "locator": "Verified second-term source member SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc (SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44); block 228 media/image4.jpeg 360×301, SHA-256 36800c3e4cc266c08cb750716c511265dab33609c20a466c9562a49a4ab008aa",
+          "explanation": "The labelled housefly life-cycle figure at block 228 is a raster image with no text in its source block, so it is absent from plain-text extraction. Visible labels are Egg, Embryo stage, Adult stage, Immature stage, Adult, Larva, Pupa and METAMORPHOSIS. The arrows form a clockwise loop: Egg → Larva → Pupa → Adult → Egg. The written description at blocks 222-227 describes the egg, larval/maggot stage, puparium and emerging adult, supporting the main stage sequence; the image also includes the additional group labels Embryo stage, Immature stage and Adult stage. The original image is not registered or committed as an app asset because reuse rights are not recorded. A project-authored redraw is appropriate; it must use only the visible labels and source-described sequence, without copying the original pixels."
         }
       ]
     },
@@ -3275,8 +3279,8 @@
     {
       "id": "BIOLOGY-T2-W03-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 3 reproduction in Amoeba, Paramecium, Spirogyra and invertebrates is present in the source, but the Biology package has no registered lessons. The Paramecium and Spirogyra conjugation diagrams at blocks 185 and 201 are labelled raster images absent from text extraction; project-authored redraws are queued. The cockroach life-cycle figure at block 221 is also a raster image absent from text extraction; it shows Egg Case, two Nymph stages and Adult in a clockwise cycle, matching the written description at blocks 216-220. A project-authored redraw is queued because original-image reuse rights are not recorded.",
-      "required_action": "Complete the project-authored redraw tasks BIO-VIS-T2-W03-PARAMECIUM-REDRAW, BIO-VIS-T2-W03-SPIROGYRA-REDRAW and BIO-VIS-T2-W03-COCKROACH-REDRAW, plus the remaining assigned visual tasks, then author and bind the approved Week 3 reproduction lesson. Preserve original source figures unchanged; use only labels visible in each source and do not copy their pixels.",
+      "detail": "Week 3 reproduction in Amoeba, Paramecium, Spirogyra and invertebrates is present in the source, but the Biology package has no registered lessons. The Paramecium and Spirogyra conjugation diagrams at blocks 185 and 201 and the cockroach life-cycle figure at block 221 are labelled raster images absent from text extraction; project-authored redraws are queued. The housefly life-cycle figure at block 228 is also absent from text extraction; it shows Egg, Embryo stage, Adult stage, Immature stage, Adult, Larva, Pupa and METAMORPHOSIS in a clockwise Egg → Larva → Pupa → Adult loop, matching the written description at blocks 222-227. A project-authored redraw is queued because original-image reuse rights are not recorded.",
+      "required_action": "Complete the project-authored redraw tasks BIO-VIS-T2-W03-PARAMECIUM-REDRAW, BIO-VIS-T2-W03-SPIROGYRA-REDRAW, BIO-VIS-T2-W03-COCKROACH-REDRAW and BIO-VIS-T2-W03-HOUSEFLY-REDRAW, plus the other assigned visual tasks, then author and bind the approved Week 3 reproduction lesson. Preserve original source figures unchanged; use only labels visible in each source and do not copy their pixels.",
       "affected_ids": [
         "COV-BIO-T2-W03-UNICELLULAR-REPRODUCTION",
         "COV-BIO-T2-W03-INVERTEBRATE-REPRODUCTION",
@@ -3285,7 +3289,9 @@
         "BIO-VIS-T2-FIG-SPIROGYRA",
         "BIO-VIS-T2-W03-SPIROGYRA-REDRAW",
         "BIO-VIS-T2-FIG-COCKROACH",
-        "BIO-VIS-T2-W03-COCKROACH-REDRAW"
+        "BIO-VIS-T2-W03-COCKROACH-REDRAW",
+        "BIO-VIS-T2-FIG-HOUSEFLY",
+        "BIO-VIS-T2-W03-HOUSEFLY-REDRAW"
       ],
       "blocks_delivery": true
     },
