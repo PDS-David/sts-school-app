@@ -52,7 +52,8 @@
     "BIO-WK-T3-W02 (2026-11-08) indexed microbial growth, beneficial/harmful effects and the disease table. Growth phases are named but not defined; general microbial control and nitrogen/carbon-cycle organisms are asked but not taught. The 21×5 disease table has eight external symptom-guide links that were not treated as primary sources; disease claims need authoritative review. Existing visual task owns the table. No medical advice, practical protocol or answer key was invented.",
     "BIO-WK-T3-W03 (2026-11-08) indexed the STI definition/table and HIV/AIDS section, plus every evaluation/general/weekend/theory prompt. The body label says WEEK SEVEN although this is scheme row 3; another WEEK SEVEN label occurs at block 474. HIV is expanded inconsistently in table/body, and health claims require authoritative review. Existing visual task owns the STI table; a factual review, label-scope task and age-appropriate lesson task were appended. No answer key or medical advice was created.",
     "BIO-WK-T3-W04 (2026-11-08) indexed microbial control, vector control, good-health maintenance and health organizations. WHO dates conflict and the antiseptic/disinfectant wording needs review. The malaria life cycle, quarantine, pasteurisation definition, fungistat/fungicide terms and black-fly/tsetse/rodent controls are not fully taught. No chemical concentrations or pesticide steps were inferred; a fact task and bounded lesson tasks were appended.",
-    "BIO-WK-T3-W05 (2026-11-08) indexed plant taxonomy, agricultural crop groups, life-cycle/size classes and ecological effects of farming practices. The A-I botanical chart remains with a new visual task. Crop rotation, bush clearing, shifting cultivation and monocropping are asked but not taught. Taxonomy/crop/soil/fertilizer/pesticide claims require authoritative review; no pesticide instructions or answer key were invented."
+    "BIO-WK-T3-W05 (2026-11-08) indexed plant taxonomy, agricultural crop groups, life-cycle/size classes and ecological effects of farming practices. The A-I botanical chart remains with a new visual task. Crop rotation, bush clearing, shifting cultivation and monocropping are asked but not taught. Taxonomy/crop/soil/fertilizer/pesticide claims require authoritative review; no pesticide instructions or answer key were invented.",
+    "BIO-WK-T3-W06-W07 (2026-11-08) indexed scheme rows 6 and 7 separately within the combined WEEK SIX& SEVEN section. Crop pests/life cycles, animal parasites, crop/livestock disease tables and general effects/control were reviewed. Existing visual tasks own both lifecycle figures and all four tables. Source pesticide/fumigant products and concentration are not reproduced as instructions; chemical-safety review is blocked pending qualified approval. Roundworm/liver-fluke life cycles and five fungal-disease examples are missing from the source. No answer key was invented."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -68,9 +69,9 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 35,
-    "PENDING": 97,
-    "BLOCKED": 7
+    "IMPLEMENTED_TESTING_DEFERRED": 36,
+    "PENDING": 101,
+    "BLOCKED": 8
   },
   "items": [
     {
@@ -2737,8 +2738,8 @@
         "BIO-INV-T3",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T3): label block 474 text \"WEEK SIX& SEVEN\" (sha256 8c37b1a31117541cb5c6ff0f2bf356b03f859edb820de4b7a003e9af74b88ce2); blocks 474-668; range sha256 7bac1633f75a0650a074e59d61e47c14f6d4e4ce76bc22f5c2c63e299264fc1d. One section covers two scheme rows. Topic PEST AND DISEASES OF CROPS AND LIVESTOCK (475); definition and types of pest (490-494), groups of insect crop pests (495-506), life cycles of selected pests (507-578: grasshopper 508-524 with figure at 515, cassava mealybug 529-553 with figure at 545, bean weevil 554-560, cocoa capsid 561-570, yam beetle 571-578; control with 0.1% ultracide at 538), pest summary table (584), livestock pests and parasites (591-596; table 595), economic importance (597-605), diseases (610-627: crop-disease table 614, livestock-disease table 621), general effects (628-636), general control (637-642), General Evaluation (643), Weekend Assignment (652-660, theory 661-667). Scheme blocks 10 and 11 (rows 6 and 7) must each get their own objective entries. Pesticide names and concentrations in 538 and 584 need authoritative checking. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T3-W06-W07.md; verified the native DOCX member and combined WEEK SIX& SEVEN label/range hashes. Indexed plant pests (groups, grasshopper/mealybug/bean-weevil/capsid/yam-beetle life histories, crop pest summary, crop diseases), animal parasites/pests, livestock diseases, economic effects and general control. Existing figure/table visual tasks own both lifecycle figures and all four summary/disease tables. Source includes named pesticide/fumigant products and a concentration; none are repeated as instructions. Roundworm/liver-fluke life cycles and five fungal disease examples are asked but not fully taught. Disease and chemical-control claims require authoritative review; no answer key exists.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -4876,6 +4877,150 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T3-W05; these farming practices are asked in assessment but absent from the teaching body."
+    },
+    {
+      "id": "BIO-FACT-T3-W06-W07-PEST-DISEASES",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Combined Weeks 6-7 blocks 490-668; tables 584, 595, 614, 621",
+      "objective": "Verify crop/livestock pest and disease names, scientific names, causative agents, effects, symptoms and control claims against authoritative plant-pathology/veterinary references. Record precise citations and separate corrections from source text. Chemical pesticide/fumigant controls require qualified safety review; do not publish concentrations, doses, product-selection or fumigation instructions.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W06-W07.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T3-W06-W07-PEST-DISEASES.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W06-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W06-W07; plant/veterinary disease claims require authoritative review."
+    },
+    {
+      "id": "BIO-FACT-T3-W06-W07-CHEMICAL-SAFETY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Pesticide/fumigant controls at blocks 527, 538, 559, 569, 578, 584, 595, 614 and 621",
+      "objective": "Obtain qualified agricultural-extension/teacher safety approval for any future discussion of the source's chemical pest/disease controls. The source includes named products and a concentration, but this task must not reproduce or operationalise them. Do not create pesticide application, mixing, dosing, fumigation or handling instructions.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W06-W07.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T3-W06-W07-CHEMICAL-SAFETY.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W06-W07"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked pending qualified agricultural-extension/teacher safety approval; no chemical-use procedure is inferred."
+    },
+    {
+      "id": "BIO-LES-T3-W06-PLANT-PESTS-DISEASES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Scheme row 6; blocks 490-589 and 610-618",
+      "objective": "Author a clearly labelled lesson on crop pests, selected pest life cycles, effects/control and crop diseases using BIO-FACT-T3-W06-W07-PEST-DISEASES. Preserve source figures/tables through existing visual tasks. Keep chemical-control content non-operational and omit pesticide concentrations/application instructions.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W06-W07.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W06-PLANT-PESTS-DISEASES.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W06-W07",
+        "BIO-FACT-T3-W06-W07-PEST-DISEASES",
+        "BIO-FACT-T3-W06-W07-CHEMICAL-SAFETY"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W06-W07; no registered lesson exists for scheme row 6."
+    },
+    {
+      "id": "BIO-LES-T3-W07-ANIMAL-PESTS-DISEASES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Scheme row 7; blocks 591-605 and 620-626",
+      "objective": "Author a clearly labelled lesson on livestock parasites/pests, economic effects and livestock diseases using BIO-FACT-T3-W06-W07-PEST-DISEASES. Preserve source tables through existing visual tasks and keep any treatment/control guidance non-operational unless approved by qualified veterinary authorities.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W06-W07.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W07-ANIMAL-PESTS-DISEASES.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W06-W07",
+        "BIO-FACT-T3-W06-W07-PEST-DISEASES",
+        "BIO-FACT-T3-W06-W07-CHEMICAL-SAFETY"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W06-W07; no registered lesson exists for scheme row 7."
+    },
+    {
+      "id": "BIO-LES-T3-W06-W07-PARASITE-LIFECYCLES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Evaluation block 607",
+      "objective": "Author clearly labelled supplemental lessons describing the life cycles of roundworm and liver fluke, which are requested at block 607 but not fully taught in the assigned section. Use approved veterinary/Biology references and include keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W06-W07.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W06-W07-PARASITE-LIFECYCLES.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W06-W07",
+        "BIO-FACT-T3-W06-W07-PEST-DISEASES"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W06-W07; complete roundworm/liver-fluke life cycles are not supplied in the source."
+    },
+    {
+      "id": "BIO-LES-T3-W06-W07-FUNGAL-DISEASES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "General evaluation block 646",
+      "objective": "Author a clearly labelled supplemental lesson listing and explaining five fungal diseases of plants/animals, which the general evaluation asks for but the source provides fewer than five examples for. Use approved plant-pathology/veterinary references and include keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W06-W07.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W06-W07-FUNGAL-DISEASES.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W06-W07",
+        "BIO-FACT-T3-W06-W07-PEST-DISEASES"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W06-W07; the source contains fewer than five clearly identified fungal disease examples."
     }
   ],
   "review": {
@@ -4918,7 +5063,6 @@
     "BIO-VIS-T2-FIG-FOODWEB",
     "BIO-VIS-T2-SHP-FOODCHAINS",
     "BIO-VIS-T2-SHP-PYRAMID",
-    "BIO-WK-T3-W06-W07",
     "BIO-WK-T3-W08",
     "BIO-VIS-T3-TBL-VECTORS",
     "BIO-VIS-T3-TBL-DISEASES",
@@ -4966,6 +5110,7 @@
     "BIO-SCOPE-T3-W03-LABEL-ALIGNMENT",
     "BIO-FACT-T3-W04-HEALTH-CLAIMS",
     "BIO-VIS-T3-W05-PLANT-CLASSIFICATION",
-    "BIO-FACT-T3-W05-AGRICULTURE-CLAIMS"
+    "BIO-FACT-T3-W05-AGRICULTURE-CLAIMS",
+    "BIO-FACT-T3-W06-W07-PEST-DISEASES"
   ]
 }
