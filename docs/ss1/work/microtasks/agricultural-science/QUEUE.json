@@ -30,23 +30,24 @@
     "AG-PRE-T2 (2026-11-08) classified Second Term preamble blocks 0-23: generic term heading, subject/class metadata, scheme header and rows, revision/examination markers, references and blank blocks. Scheme objectives delegated to weekly indexing; marker decisions delegated to AG-MARK-T2. No package content, rules, coverage, corrections or assets changed. Testing deferred.",
     "AG-PRE-T3 (2026-11-08) classified Third Term preamble blocks 0-25: generic heading, subject/class metadata, scheme header and rows 1-12, references and blank blocks. Scheme items 1-10 delegated to weekly indexing; revision/examination items 11-12 delegated to marker tasks. Existing source alias reused. No package content, rules, coverage, corrections or assets changed. Testing deferred.",
     "AG-WK-T1-W02 (2026-11-08) indexed First Term Week 2: scheme entry 2 is source-taught (blocks 149, 152, comparison table 160), but delivery mapping remains PARTIAL pending importer/parsed-row verification; ten-tool/ten-machine and five agro-based-industry assessment gaps and the unresolved foreign-exchange exception item were split into bounded lesson/fact tasks. Composite archive, member and Week 2 range hashes were independently verified. No lesson, source byte, rule, correction or asset was written.",
-    "AG-WK-T1-W03 (2026-11-08) indexed First Term Week 3: scheme entry 3 maps to fifteen problem/solution pairs in blocks 193-287. Cross-week crop rotation item is supported by Week 6 block 436. Extension roles, herbicide terminology, credit-source options and malformed storage solution were separately recorded as follow-up gaps; no unsafe chemical directions were added."
+    "AG-WK-T1-W03 (2026-11-08) indexed First Term Week 3: scheme entry 3 maps to fifteen problem/solution pairs in blocks 193-287. Cross-week crop rotation item is supported by Week 6 block 436. Extension roles, herbicide terminology, credit-source options and malformed storage solution were separately recorded as follow-up gaps; no unsafe chemical directions were added.",
+    "AG-WK-T1-W04 (2026-11-08) indexed First Term Week 4: scheme entry 4 covers government roles (335-381) and NGO roles (386-399). Six NGO roles and seven research institutes are listed. Follow-ups record mixed-geography NGO examples, absent programme objectives and unresolved weekend assessment items; no external answers were invented."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 4,
+    "FACTUAL_DEPENDENCY": 6,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 8,
+    "LESSON": 10,
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 15,
-    "PENDING": 70,
+    "IMPLEMENTED_TESTING_DEFERRED": 16,
+    "PENDING": 73,
     "BLOCKED": 2
   },
   "items": [
@@ -574,8 +575,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): label block 327 text \"WEEK 4                                                                                                  DATE ………………………………\" (sha256 229efc755c549882fb696c614c2eea52c0f6ede90cf8d89b08907c57d1011de1); blocks 327-420; range sha256 e7b9099d4ca963ad728a67b5fb866a6ad2f39d637861800077bc6ffce58fcf8f. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme topic: Roles of Government and Non-governmental Organization in Agricultural Development. Topic text spans two paragraphs (blocks 328-329). Government roles 1-9 (335-381) include a research-institute list (375-381); NGO roles (386-402); General Evaluation (404-408); Reading (409-411); Weekend MCQ (412-417) and Theory (418-420). Weekend MCQ 2 (block 414) asks about pest-control methods; the Week 4 teaching text mentions pests only via plant quarantine (block 371).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, First Term member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526 and Week 4 range blocks 327-420 SHA-256 e7b9099d4ca963ad728a67b5fb866a6ad2f39d637861800077bc6ffce58fcf8f. Scheme entry 4 (scheme block 15) maps to government roles at 335-381 and NGO roles at 386-399. Government teaching covers policies/goals, programmes/planning, inputs, amenities, storage/processing, extension, education, quarantine and research; seven institutes listed. NGO teaching gives six roles: research, finance, inputs, extension, rural development, irrigation/drainage. Both source-taught core areas remain PARTIAL pending importer/parsed-row mapping. NGO examples at 387-392 include Ghana/Gambia labels and do not establish five Nigeria-specific examples. Theory 420 asks for programme objectives not supplied by the list at 351; weekend Q1 at 413 asks Farm Settlement Scheme's purpose not taught; Q2 at 414 has no clear source-derived key; Q5 at 417 does not explain the NGO classification. Added coverage and bounded follow-ups AG-LES-T1-W04-NGO-EXAMPLES, AG-LES-T1-W04-PROGRAMME-OBJECTIVES, AG-FACT-T1-W04-PEST-CONTROL-ITEM and AG-FACT-T1-W04-NGO-STATUS. Full assessment analysis: AG-WK-T1-W04.md. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -3308,6 +3309,148 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T1-W03 (2026-11-08): the original sentence at block 235 is syntactically incomplete; no replacement wording is assumed.",
       "completion_condition": "A verified source permits a precise correction binding, or the record explains why no correction is supportable; original bytes remain unchanged and no missing phrase is invented."
+    },
+    {
+      "id": "AG-LES-T1-W04-NGO-EXAMPLES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 4 blocks 387-392; evaluation 402 and 406",
+      "objective": "Teach five accurately sourced NGOs operating in or contributing to agricultural development in Nigeria. Distinguish the supplement from the original mixed-geography list, explain each organisation's relevant agricultural role, and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W04.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W04-NGO-EXAMPLES.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W04: original list includes explicitly Ghanaian and Gambian examples and does not establish five Nigeria-specific examples.",
+      "completion_condition": "A labelled supplement provides five authoritative Nigeria-relevant NGO examples, roles, complete keyed practice, criterion-level marks, truthful provenance and PENDING approval."
+    },
+    {
+      "id": "AG-LES-T1-W04-PROGRAMME-OBJECTIVES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 4 programme list block 351; theory block 420; weekend assignment block 413",
+      "objective": "Teach at least five named Nigerian agricultural programmes and two verified major objectives for each, using authoritative programme records. Resolve the Farm Settlement Scheme question. Distinguish programme-specific objectives from broad policy goals and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W04.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W04-PROGRAMME-OBJECTIVES.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W04: block 420 asks for programme objectives but block 351 only lists programmes; block 413 asks the Farm Settlement Scheme's purpose without teaching it.",
+      "completion_condition": "A source-backed supplement provides five or more programmes and two verified objectives each, resolves the Farm Settlement item, and includes keyed practice and truthful provenance."
+    },
+    {
+      "id": "AG-FACT-T1-W04-PEST-CONTROL-ITEM",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 4 block 414; quarantine block 371; crop rotation block 436",
+      "objective": "Verify whether Week 4 weekend Q2 has one defensible answer. Check quarantine, crop rotation, fumigation and mulching in authoritative agricultural references and recommend retention, correction or withdrawal.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W04.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W04-PEST-CONTROL-ITEM.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W04: block 414's options are not all supported as pest-control methods by the source.",
+      "completion_condition": "A sourced note determines whether the item has a unique answer and recommends correction/withdrawal if needed."
+    },
+    {
+      "id": "AG-FACT-T1-W04-NGO-STATUS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 4 block 417; NGO examples blocks 387-392",
+      "objective": "Verify the classification of Agricultural Development Authority in Week 4 weekend Q5 and the NGO status of the other listed options. Use authoritative Nigerian records and recommend whether the question should be retained or corrected.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W04.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W04-NGO-STATUS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W04: block 417 classifies Agricultural Development Authority as the exception but gives no explanation.",
+      "completion_condition": "A sourced note verifies classifications and recommends retaining/correcting the question."
     }
   ],
   "review": {
@@ -3323,7 +3466,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T1-W04",
     "AG-WK-T1-W05",
     "AG-WK-T1-W06",
     "AG-WK-T1-W07",
@@ -3383,12 +3525,16 @@
     "AG-VIS-T3-W10-MATH-OBJECT",
     "AG-FACT-T1-W02-EXPORT-ITEM",
     "AG-FACT-T1-W03-CREDIT-OPTIONS",
+    "AG-FACT-T1-W04-PEST-CONTROL-ITEM",
+    "AG-FACT-T1-W04-NGO-STATUS",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
     "AG-LES-T1-W02-AGRO-INDUSTRIES",
     "AG-LES-T1-W03-EXTENSION-ROLES",
     "AG-LES-T1-W03-INPUT-TERMINOLOGY",
+    "AG-LES-T1-W04-NGO-EXAMPLES",
+    "AG-LES-T1-W04-PROGRAMME-OBJECTIVES",
     "AG-TEST-PACKAGE"
   ]
 }
