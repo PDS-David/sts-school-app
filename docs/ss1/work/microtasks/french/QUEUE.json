@@ -27,19 +27,20 @@
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 28,
     "SOURCE_PREAMBLE_INDEXING": 3,
-    "LESSON": 36,
+    "LESSON": 37,
     "CORRECTION_BINDING": 28,
     "FACTUAL_DEPENDENCY": 7,
     "ASSET": 2,
     "VISUAL_DISPOSITION": 5,
     "TEST": 2,
     "SCOPE_DECOMPOSITION": 1,
-    "OWNER_DECISION": 1
+    "OWNER_DECISION": 1,
+    "VISUAL": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 71,
+    "IMPLEMENTED_TESTING_DEFERRED": 72,
     "PENDING": 40,
-    "BLOCKED": 5
+    "BLOCKED": 6
   },
   "items": [
     {
@@ -283,8 +284,8 @@
       "depends_on": [
         "FR-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Existing row-level coverage FRENCH-BODY-005 (status IMPLEMENTED_EQUIVALENT) -> SUP-SS1-FRENCH-ACCENTS-T1; correction SS1-02-french-COR-005 binds body 0804618bce823ed65d2b4c6420c0faa465e4d031e1885e512f6e0469a7f80157 to the same replacement. Row-level association only; the coverage entry itself states it is not exhaustive scheme-objective certification. No objective-level entry exists yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed 2026-11-08 using source notes from the prior Task02 extraction (not freshly re-extracted in this session). Source SS1-SRC-945dfb24eaf6; member SHA-256 2bedee524a17700d40d81dc1df8d10f529b49d4a918f38a83914ce7b0c43e864; row body hash 0804618bce823ed65d2b4c6420c0faa465e4d031e1885e512f6e0469a7f80157. Added five objective-level entries: written diacritics (IMPLEMENTED_EQUIVALENT), accent meaning (PARTIAL), oral observation (PARTIAL), punctuation (IMPLEMENTED_EQUIVALENT), visual diacritic accounting (IMPLEMENTED_EQUIVALENT). Written replacement SUP-SS1-FRENCH-ACCENTS-T1 covers Unicode diacritics and punctuation. The source notes identify accent drawings at paragraphs 234,244,250–255,257,264 and readable page9 inspection; punctuation drawing p278 remains visually unresolved. Oral objective has open item and separate pending task FR-LES-T1-W05-ORAL-ACCENT-OBSERVATION. Correction SS1-02-french-COR-005 now explicitly states its limited written scope. No lesson authored in this indexing task. Approval PENDING; verification DEFERRED; tests not run.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing, a separate small PENDING queue item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -3437,10 +3438,75 @@
       "implementation_reference": "Raised by FR-LES-T1-W03-GREETING-SET on 2026-11-07; not implemented.",
       "completion_condition": "Exact owner decision recorded for every ambiguous row; coverage re-evaluated without invented intention.",
       "required_attachments": []
+    },
+    {
+      "id": "FR-LES-T1-W05-ORAL-ACCENT-OBSERVATION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "term": "1st Term",
+      "week_or_locator": "Week 5; source row body hash 0804618bce823ed65d2b4c6420c0faa465e4d031e1885e512f6e0469a7f80157",
+      "objective": "Create a small oral lesson/activity for recognizing and pronouncing French accents/diacritics, separate from written spelling coverage. Include teacher model, learner repetition, listening/discrimination and a separate oral observation checklist. No audio asset is supplied; do not claim learner pronunciation is tested by written exercises.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/FRENCH_SOURCE_NOTES.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/FRENCH Ss1.docx",
+          "member_sha256": "2bedee524a17700d40d81dc1df8d10f529b49d4a918f38a83914ce7b0c43e864"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "docs/ss1/work/microtasks/french/FR-LES-T1-W05-ORAL-ACCENT-OBSERVATION.md"
+      ],
+      "depends_on": [
+        "FR-WK-T1-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created because the existing written accent replacement does not assess the source's oral objective. The task must keep oral observation distinct from written spelling; no audio asset is available.",
+      "completion_condition": "An original teacher-led oral lesson/activity with correct modelled examples, learner repetition, listening/discrimination prompts, an observation checklist, source provenance, and PENDING approval/DEFERRED verification."
+    },
+    {
+      "id": "FR-VIS-T1-W05-PUNCTUATION-DRAWING",
+      "kind": "VISUAL",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "term": "1st Term",
+      "week_or_locator": "Week 5 source drawing at document.xml paragraph 278",
+      "objective": "Inspect and disposition the punctuation drawing at paragraph 278 against the Unicode punctuation taught in SUP-SS1-FRENCH-ACCENTS-T1.",
+      "required_files": [
+        "docs/ss1/work/SS1-02/FRENCH_SOURCE_NOTES.md",
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/FRENCH Ss1.docx",
+          "member_sha256": "2bedee524a17700d40d81dc1df8d10f529b49d4a918f38a83914ce7b0c43e864"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "docs/ss1/work/microtasks/french/FR-VIS-T1-W05-PUNCTUATION-DRAWING.md"
+      ],
+      "depends_on": [
+        "FR-WK-T1-W05"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: FRENCH_SOURCE_NOTES.md identifies a drawing at document.xml paragraph 278 but does not provide a readable visual disposition. Original member bytes/render are not accessible in this execution session. Do not infer its content from the replacement punctuation list.",
+      "completion_condition": "Inspect the original rendered paragraph at readable resolution; record the exact punctuation mark, compare with Unicode replacement, and close only with visual evidence."
     }
   ],
   "review": {
-    "date": "2026-10-27",
+    "date": "2026-11-08",
     "reviewed_master_sha": "dd739bba4101c0b1e2f5924863deaaa0b38c27c7",
     "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
     "source_archive": {
@@ -3449,10 +3515,11 @@
       "manifest_matches": 3,
       "mismatches": 0,
       "availability": "User attachment; not committed to Git. Attach this archive (or the exact member) to source-reading workers."
-    }
+    },
+    "notes": "FR-WK-T1-W05 objective-level index completed. Written Unicode accent/punctuation coverage separated from the source's oral objective. Oral lesson task created; punctuation drawing p278 remains a blocked visual disposition. Original source was previously read per FRENCH_SOURCE_NOTES; not freshly extracted in this session."
   },
   "next_runnable": [
-    "FR-WK-T1-W05",
+    "FR-LES-T1-W05-ORAL-ACCENT-OBSERVATION",
     "FR-WK-T1-W06",
     "FR-WK-T1-W07",
     "FR-WK-T1-W08",
@@ -3488,5 +3555,6 @@
     "FR-VIS-T2-OMML",
     "FR-LES-T1-W01-BENEFITS",
     "FR-FACT-T1-W02-HEADS-OF-STATE"
-  ]
+  ],
+  "total": 118
 }
