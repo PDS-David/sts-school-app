@@ -2665,6 +2665,10 @@
         {
           "locator": "scheme row 3 and Week 3 body",
           "explanation": "The farming-systems section is within the Week 3 body but is not named by scheme row 3; its placement requires owner confirmation."
+        },
+        {
+          "locator": "Native Word table block 514; table SHA-256 aca001d2dd2f691dc1db5f67f795517f7bf451c66; 6 rows × 6 columns; private rendered source PDF pages 18-19",
+          "explanation": "Block 514 is a real w:tbl with six rows and six cells per row; cell boundaries are preserved in the original DOCX. The rendered table begins on PDF page 18 and its final (5th Year) row continues on page 19. Flattened plain-text extraction concatenates the cells and loses plot/year pairing, so the six-column relationship does not survive reliably in text-only delivery. Exact source cells: header ['', '1st plot', '2nd plot', '3rd plot', '4th plot', '5th plot']; 1st Year ['Maize','Cassava','Fallow','Groundnut','Yam']; 2nd Year ['Cassava','Fallow','Groundnut','Yam','Maize']; 3rd Year ['Fallow','Groundnut','Yam','Maize','Cassava']; 4th Year ['Groundnut','Yam','Maize','Cassava','Fallow']; 5th Year ['Yam','Maize','Cassava','Fallow','Groundnut']. A semantic table is required in any text-based supplement. No separate image asset or redraw is needed because the source is already a native Word table. The farming-systems section remains unlisted in the Week 3 scheme; its placement is still an owner decision. No source wording or cell order was changed."
         }
       ]
     },
@@ -3938,10 +3942,11 @@
     {
       "id": "BIOLOGY-T1-W03-FARMING-SYSTEMS-PLACEMENT",
       "kind": "OWNER_ACTION",
-      "detail": "The heading 'Effects of Different Kind of Farming on Ecological System' at block 502 covers crop rotation, mixed farming/cropping, continuous cropping, monoculture and shifting cultivation, but no scheme line names these objectives.",
-      "required_action": "Confirm whether these farming-system topics belong in Week 3, another scheme week or supplemental material. Preserve the source blocks and crop-rotation table until approval.",
+      "detail": "The heading 'Effects of Different Kind of Farming on Ecological System' at block 502 covers crop rotation, mixed farming/cropping, continuous cropping, monoculture and shifting cultivation, but no scheme line names these objectives. The crop-rotation schedule at block 514 is a native 6×6 Word table; its cells are clear in the original DOCX/PDF but flatten into one text string, losing plot/year pairings. The table disposition is complete; preserve the original table and restate it semantically in any approved supplement.",
+      "required_action": "Confirm whether these farming-system topics belong in Week 3, another scheme week or supplemental material. Preserve the source blocks and native crop-rotation table until approval; if a text-based supplement is authorized, reproduce the six-column table with the exact source cell values and no inferred corrections.",
       "affected_ids": [
-        "COV-BIO-T1-W03-FARMING-SYSTEMS"
+        "COV-BIO-T1-W03-FARMING-SYSTEMS",
+        "BIO-VIS-T1-TBL-CROP-ROTATION"
       ],
       "blocks_delivery": false
     },
