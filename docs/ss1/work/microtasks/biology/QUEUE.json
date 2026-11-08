@@ -50,7 +50,8 @@
     "BIO-WK-T2-W10 (2026-11-08) indexed six biological association types and all evaluation/revision/weekend/theory prompts. The scheme/topic says Ecological Management but the body covers associations only; a scope-decomposition task was appended. Revision questions 944-946 refer to first-term growth hormones/mitosis. Weekend Q952 omits commensalism from the options and Q953 asks about ticks not taught in the body. No answer key was invented.",
     "BIO-WK-T3-W01 (2026-11-08) indexed microorganism groups, culture concepts, identification and carriers. The source mentions Petri-dish sterilisation but gives no parameters or safety SOP; practical culturing remains blocked pending qualified approval, and no operational instructions were inferred. Existing bacteria-figure and vector-table visual tasks own the two visuals; history/disease/vector claims have a factual-review task. No answer key was invented.",
     "BIO-WK-T3-W02 (2026-11-08) indexed microbial growth, beneficial/harmful effects and the disease table. Growth phases are named but not defined; general microbial control and nitrogen/carbon-cycle organisms are asked but not taught. The 21×5 disease table has eight external symptom-guide links that were not treated as primary sources; disease claims need authoritative review. Existing visual task owns the table. No medical advice, practical protocol or answer key was invented.",
-    "BIO-WK-T3-W03 (2026-11-08) indexed the STI definition/table and HIV/AIDS section, plus every evaluation/general/weekend/theory prompt. The body label says WEEK SEVEN although this is scheme row 3; another WEEK SEVEN label occurs at block 474. HIV is expanded inconsistently in table/body, and health claims require authoritative review. Existing visual task owns the STI table; a factual review, label-scope task and age-appropriate lesson task were appended. No answer key or medical advice was created."
+    "BIO-WK-T3-W03 (2026-11-08) indexed the STI definition/table and HIV/AIDS section, plus every evaluation/general/weekend/theory prompt. The body label says WEEK SEVEN although this is scheme row 3; another WEEK SEVEN label occurs at block 474. HIV is expanded inconsistently in table/body, and health claims require authoritative review. Existing visual task owns the STI table; a factual review, label-scope task and age-appropriate lesson task were appended. No answer key or medical advice was created.",
+    "BIO-WK-T3-W04 (2026-11-08) indexed microbial control, vector control, good-health maintenance and health organizations. WHO dates conflict and the antiseptic/disinfectant wording needs review. The malaria life cycle, quarantine, pasteurisation definition, fungistat/fungicide terms and black-fly/tsetse/rodent controls are not fully taught. No chemical concentrations or pesticide steps were inferred; a fact task and bounded lesson tasks were appended."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -66,8 +67,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 33,
-    "PENDING": 90,
+    "IMPLEMENTED_TESTING_DEFERRED": 34,
+    "PENDING": 94,
     "BLOCKED": 7
   },
   "items": [
@@ -2659,8 +2660,8 @@
         "BIO-INV-T3",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T3): label block 216 text \"                                                 WEEK FOUR                             DATE …………………………\" (sha256 c9fad62e4fc82300a6da196d52f9c65bd950f3027a4c048c9d904b11a9f9d933); blocks 216-326; range sha256 40674987f567df1a082f175d4af63e68ec164781c64998a8f91235a2bbf06e80. Topic TOWARDS BETTER HEALTH (218); control of harmful micro-organisms (225-236: antibiotics and antiseptics named at 229-230), vectors and ways of controlling them (241-258: mosquitoes 243, houseflies 252), maintenance of good health (263-268), roles of health organisations (273-303: WHO 279-287, UNICEF 288-294, International Red Cross 295-301, UNESCO 302-303), General Evaluation (308), Weekend Assignment (315-320, theory 321-325). Block 280 says WHO was established in 1964 and became operational in 1948 (internally inconsistent). Headings 'EVALUTION' (237) and 'MAINTAINANCE' (263) keep source spelling. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T3-W04.md; verified the native DOCX member and exact Week 4 label/range hashes. Indexed control of harmful microorganisms, vector control, maintenance of good health and health-organization roles, and reviewed all evaluation/general/weekend/theory items. WHO dates at block 280 conflict (1964/1948); the antiseptic/disinfectant distinction at 231 needs review. The malaria life cycle, quarantine, pasteurisation definition, fungistat/fungicide terms and controls for black fly/tsetse/rodents are not fully taught. No chemical concentrations or pesticide procedures were inferred; no answer key exists.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -4661,6 +4662,125 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T3-W03; no STI/HIV lesson is registered in biology.json."
+    },
+    {
+      "id": "BIO-FACT-T3-W04-HEALTH-CLAIMS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4 blocks 226-236, 242-268 and 279-303",
+      "objective": "Verify public-health, chemical-safety, vector-control, water/refuse/sewage and health-organization claims against authoritative primary sources. Resolve WHO establishment/operational dates (block 280) and the source's antiseptic/disinfectant description (block 231). Preserve original source wording and keep corrections separate; do not invent pesticide concentrations, chemical doses or application procedures.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W04.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T3-W04-HEALTH-CLAIMS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W04; health/chemical and organization-history claims require authoritative review."
+    },
+    {
+      "id": "BIO-LES-T3-W04-HEALTH",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4 blocks 225-306",
+      "objective": "Author a clearly labelled, source-distinct lesson covering microbial control, vectors, maintenance of good health and health organizations. Use BIO-FACT-T3-W04-HEALTH-CLAIMS for reviewed content. Keep the treatment age-appropriate and educational; do not include chemical concentrations, pesticide doses, or operational application instructions. Include complete keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W04.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W04-HEALTH.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W04",
+        "BIO-FACT-T3-W04-HEALTH-CLAIMS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W04; no lesson is registered for this scheme objective."
+    },
+    {
+      "id": "BIO-LES-T3-W04-PLASMODIUM-LIFECYCLE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4 evaluation block 306",
+      "objective": "Author a clearly labelled supplemental educational lesson on the Plasmodium life cycle, which the Week 4 evaluation asks for but the body does not teach. Use current authoritative public-health/biology sources, age-appropriate language and complete keyed practice; do not give personal medical advice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W04.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W04-PLASMODIUM-LIFECYCLE.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W04",
+        "BIO-FACT-T3-W04-HEALTH-CLAIMS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W04; no Plasmodium life-cycle teaching appears in this week."
+    },
+    {
+      "id": "BIO-LES-T3-W04-MISSING-TERMS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4 general evaluation 311-312 and weekend assignment 319",
+      "objective": "Author a clearly labelled supplement defining pasteurisation, quarantine, fungistat and fungicide, which are asked about but not adequately defined in the Week 4 body. Use approved references and complete keyed practice. Do not provide chemical-use instructions or doses.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W04.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W04-MISSING-TERMS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W04",
+        "BIO-FACT-T3-W04-HEALTH-CLAIMS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W04; these terms are named in questions but not taught in the body."
+    },
+    {
+      "id": "BIO-LES-T3-W04-OTHER-VECTORS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4 vector evaluation block 260",
+      "objective": "Author a clearly labelled supplement on the requested black-fly, tsetse-fly and rodent control topics using approved public-health sources. Keep the content educational and non-operational; do not provide pesticide concentrations, doses or application steps.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W04.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W04-OTHER-VECTORS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W04",
+        "BIO-FACT-T3-W04-HEALTH-CLAIMS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W04; the source teaches mosquito/housefly control but not the other groups asked in evaluation."
     }
   ],
   "review": {
@@ -4703,7 +4823,6 @@
     "BIO-VIS-T2-FIG-FOODWEB",
     "BIO-VIS-T2-SHP-FOODCHAINS",
     "BIO-VIS-T2-SHP-PYRAMID",
-    "BIO-WK-T3-W04",
     "BIO-WK-T3-W05",
     "BIO-WK-T3-W06-W07",
     "BIO-WK-T3-W08",
@@ -4750,6 +4869,7 @@
     "BIO-LES-T3-W02-MICROBIAL-CONTROL",
     "BIO-LES-T3-W02-NITROGEN-CARBON-CYCLES",
     "BIO-FACT-T3-W03-STI-CLAIMS",
-    "BIO-SCOPE-T3-W03-LABEL-ALIGNMENT"
+    "BIO-SCOPE-T3-W03-LABEL-ALIGNMENT",
+    "BIO-FACT-T3-W04-HEALTH-CLAIMS"
   ]
 }
