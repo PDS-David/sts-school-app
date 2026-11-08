@@ -893,6 +893,98 @@
           "explanation": "No answer key or marking guide accompanies the evaluation, weekend assignment or theory questions."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T2-W02-SEXUAL-REPRODUCTION",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 2 scheme: Sexual Reproduction — conjugation and fusion of gametes",
+      "objective_locator": "SS1-SRC-eb6e9665f42c scheme row block 8 (sha256 fa8257ee8564e29a540ff34a3d7dd83188da93b9a753ce51a9799df9843c8ea0); Week 2 label block 92 (sha256 fdeecaa4bc5e4727501357833e68fa6e6193db9c231ff17723dde4b3f5756a38); body blocks 92-159 (range sha256 10e481daa51fd5e6585f55855601248966ec640b9e7a832e20ff0979de7f98c6)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 100-103 (range sha256 b8a550d1c4d8bfc8f074b52119fca1194b4665e1af591986ce75d916daadd8d4)",
+          "explanation": "Introduces conjugation and fusion of gametes, describes conjugation in selected unicellular organisms and gives a general account of gamete formation and fertilization. The evaluation asks for spermatogenesis and oogenesis, but those terms are not defined in the body."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for sexual reproduction. Source-only teaching is not deliverable; PARTIAL remains until an approved lesson or equivalent is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W02-MEIOSIS",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 2: meiosis, its stages and stated importance",
+      "objective_locator": "SS1-SRC-eb6e9665f42c blocks 109-129 (range sha256 aced3521a461e545c8f8585eb5e89d978ad176f488be9278a315ff0b7a8f68bb)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 109-122",
+          "explanation": "Defines meiosis as a reduction division, describes two successive divisions and names/describes stages of the first and second meiotic divisions. Crossing over is mentioned at block 116."
+        },
+        {
+          "locator": "blocks 124-129",
+          "explanation": "Lists formation of spermatozoa, ova, pollen grains and ovules as outcomes associated with meiosis."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for meiosis. Source-only teaching is not deliverable; PARTIAL remains until an approved lesson or equivalent is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W02-EXCRETION",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 2 scheme: Excretory Organelles in Living Cells",
+      "objective_locator": "SS1-SRC-eb6e9665f42c scheme row block 8 (sha256 fa8257ee8564e29a540ff34a3d7dd83188da93b9a753ce51a9799df9843c8ea0); content-list entry block 99 (sha256 2d17c0444a8bb80aa0d2c11b40c4f727bb5a2ed8834bd327a6338a71c15cbfd5)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 99 only; questions blocks 141 and 151",
+          "explanation": "The content list contains the single word 'Excretion' at block 99. No excretion or excretory-organelle teaching body appears within Week 2 blocks 92-159. The week includes questions about excretory products and an excretory structure in amphibians, but no teaching that supports them."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "The scheme objective is not taught in this Week 2 body and no lesson is registered. UNRESOLVED: an approved excretion lesson and keyed assessment are required."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W02-ASSESSMENT",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 2 evaluation, revision, weekend assignment and theory",
+      "objective_locator": "converted DOCX blocks 105-107, 131-133, 135-141, 143-144, 146-151 and 153-157",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "evaluation blocks 105-107",
+          "explanation": "Conjugation in Spirogyra is supported by block 102. The request to define spermatogenesis and oogenesis is not answered in the body, which mentions gametogenesis generally but does not define either term."
+        },
+        {
+          "locator": "evaluation blocks 131-133",
+          "explanation": "Crossing over is described at block 116. The request for four life processes involving meiosis is not clearly supported by the list of four reproductive products at blocks 124-129."
+        },
+        {
+          "locator": "general evaluation blocks 135-141",
+          "explanation": "The source defines meiosis and describes conjugation in selected organisms, but does not teach conjugation in Mucor or sexual reproduction in Hydra; the question about structures where meiosis occurs is not answered with named structures. The request for five excretory products has no supporting Week 2 teaching."
+        },
+        {
+          "locator": "weekend assignment blocks 146-151",
+          "explanation": "The chromosome-number and timing questions are supported by the meiosis description at block 110 and gamete/fertilization account at 103. The centrosome/spindle-origin question is not taught. The excretory-structure question is not supported by any Week 2 teaching."
+        },
+        {
+          "locator": "theory blocks 153-157",
+          "explanation": "The source provides some mitosis/meiosis contrasts at block 110 and describes meiosis stages at 115-122, but does not present a complete five-point comparison. The sexual/asexual comparison is supported by Week 1 blocks 43-44. The phases of meiosis are described in Week 2."
+        },
+        {
+          "locator": "whole Week 2 evaluation and assignment range",
+          "explanation": "No answer key or marking guide accompanies the evaluation, revision, weekend assignment or theory questions."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -1303,6 +1395,59 @@
       "required_action": "A Biology teacher should approve a complete answer/marking guide after the artificial-propagation, asexual-advantages and factual-review dependencies are resolved.",
       "affected_ids": [
         "COV-BIO-T2-W01-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W02-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 2 sexual reproduction and meiosis are described in the source, but the Biology package has no registered lessons.",
+      "required_action": "Author and bind approved lessons for sexual reproduction, gametogenesis and meiosis, keeping source wording distinct from supplemental explanation.",
+      "affected_ids": [
+        "COV-BIO-T2-W02-SEXUAL-REPRODUCTION",
+        "COV-BIO-T2-W02-MEIOSIS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W02-EXCRETION",
+      "kind": "CONTENT",
+      "detail": "The Week 2 scheme row names Excretory Organelles in Living Cells, but the body contains only an 'Excretion' content-list entry at block 99 and no teaching body.",
+      "required_action": "Author a clearly labelled supplemental lesson on excretion, excretory products and excretory structures/organelles using approved Biology references, and bind it to the Week 2 scheme objective.",
+      "affected_ids": [
+        "COV-BIO-T2-W02-EXCRETION"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W02-GAMETOGENESIS",
+      "kind": "CONTENT",
+      "detail": "Evaluation block 107 asks learners to define spermatogenesis and oogenesis, but the Week 2 body mentions gametogenesis without defining either term.",
+      "required_action": "Include accurate definitions and the relevant process context in an approved supplemental lesson with source provenance; do not present the definitions as if they were printed in the original.",
+      "affected_ids": [
+        "COV-BIO-T2-W02-SEXUAL-REPRODUCTION",
+        "COV-BIO-T2-W02-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W02-REVISION-FACTS",
+      "kind": "FACT",
+      "detail": "Several revision prompts are not supported by the Week 2 body: conjugation in Mucor, sexual reproduction in Hydra, sites/structures where meiosis occurs, four life processes involving meiosis, spindle origin, and excretory products/structures.",
+      "required_action": "Verify each prompt against approved Biology references and record exact evidence and intended terminology before authoring answers or corrections. Do not guess answers.",
+      "affected_ids": [
+        "COV-BIO-T2-W02-ASSESSMENT",
+        "COV-BIO-T2-W02-EXCRETION"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W02-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 2 evaluation, revision, weekend assignment and theory questions have no answer key or marking guide; several prompts need supplemental teaching or factual review.",
+      "required_action": "A Biology teacher should approve a complete answer/marking guide after the missing excretion and gametogenesis teaching and factual dependencies are resolved.",
+      "affected_ids": [
+        "COV-BIO-T2-W02-ASSESSMENT"
       ],
       "blocks_delivery": true
     }
