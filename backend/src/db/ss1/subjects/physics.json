@@ -2410,6 +2410,121 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Physics",
+      "title": "Reading a micrometer screw gauge",
+      "objectives": [
+        "Identify the main parts of a micrometer screw gauge and state what it measures.",
+        "Define pitch and calculate the least count from pitch and circular-scale divisions.",
+        "Find an observed reading by adding the main-scale reading to the circular-scale reading multiplied by the least count.",
+        "Identify zero error and calculate the corrected reading using the signed zero error.",
+        "Express a micrometer reading consistently in millimetres and centimetres."
+      ],
+      "body": "MICROMETER SCREW GAUGE: HOW TO READ IT\n\nA micrometer screw gauge measures very small external dimensions, such as the diameter of a thin wire or the thickness of a sheet. The Week Two source names these uses and gives a reading increment of 0.01 mm, but it does not state a complete reading rule. This supplement supplies that rule. It is not a transcription of the source, and no value is taken from the uninspected Fig. 3.4.\n\n1. Main parts\n- Frame: supports the instrument.\n- Anvil: the fixed measuring face.\n- Spindle: the moving measuring face.\n- Sleeve or barrel: carries the main (linear) scale and its reference line.\n- Thimble: carries the circular scale and turns the screw.\n- Ratchet stop: helps apply gentle, repeatable pressure.\n- Lock: holds the spindle in position when a reading is being recorded.\n\n2. Pitch and least count\nThe pitch is the distance the spindle advances during one complete turn of the thimble. The least count (LC) is the distance represented by one division on the circular scale:\n\nLC = pitch ÷ number of circular-scale divisions.\n\nFor example, if the pitch is 0.5 mm and the circular scale has 50 equal divisions:\n\nLC = 0.5 mm ÷ 50 = 0.01 mm.\n\nDo not assume every instrument has the same pitch or number of divisions. Read the instrument's stated scale and calculate its least count.\n\n3. Taking an observed reading\n1. Check that the measuring faces are clean.\n2. Close the anvil and spindle gently with the ratchet. Check whether the zero marks coincide; if not, determine the zero error.\n3. Place the object between the faces and turn the ratchet until it grips gently. Do not force the thimble tight.\n4. Read the last main-scale mark visible before the thimble edge. This is the main-scale reading (MSR).\n5. Read the circular-scale division that coincides with the sleeve's reference line. Multiply that division by the least count to obtain the circular-scale reading.\n6. Add the two parts:\n\nObserved reading = MSR + (circular-scale division × LC).\n\n4. Zero error and correction\nZero error is the reading shown when the measuring faces are fully closed. If the instrument reads zero when closed, its zero error is zero. If it does not, record the error with its sign.\n\nCorrect reading = observed reading − zero error.\n\nTherefore:\n- A positive zero error is subtracted from the observed reading.\n- A negative zero error is also subtracted as a signed number, so its magnitude is added.\n\nAlways write the sign. Do not treat a negative zero error as positive.\n\n5. Worked example (new example; not read from the source figure)\nA micrometer has a pitch of 0.5 mm and 50 circular divisions. The main scale reading is 12.50 mm and the 34th circular division coincides with the reference line. There is no zero error.\n\nLC = 0.5 ÷ 50 = 0.01 mm.\nCircular-scale reading = 34 × 0.01 = 0.34 mm.\nObserved reading = 12.50 + 0.34 = 12.84 mm.\nCorrect reading = 12.84 − 0 = 12.84 mm.\nSince 10 mm = 1 cm, 12.84 mm = 1.284 cm.\n\nThe millimetre and centimetre readings agree.\n\n6. Common errors to avoid\n- Do not confuse pitch with least count.\n- Do not multiply the main-scale reading by the least count.\n- Do not read a circular division that does not meet the reference line.\n- Do not forget zero correction.\n- Do not over-tighten the object; use the ratchet.\n- Keep units with every measurement.\n\nPractice\nShow the least-count calculation and the reading steps. The marks below are authored practice marks, not marks printed in the school source.",
+      "body_sha256": "aafd144fd1c33862a408ed422ed60087232984ab2750a3ec4dc27a4088636853",
+      "practice": [
+        {
+          "id": "MICROMETER-Q1",
+          "question": "A screw gauge has a pitch of 0.5 mm and 50 divisions on its circular scale. The main-scale reading is 6.50 mm and the 32nd circular division coincides with the reference line. Find the least count and the observed reading. There is no zero error.",
+          "answer": "LC = 0.5/50 = 0.01 mm. Circular reading = 32 × 0.01 = 0.32 mm. Observed reading = 6.50 + 0.32 = 6.82 mm.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct least count: 0.01 mm",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct observed reading: 6.82 mm",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MICROMETER-Q2",
+          "question": "A micrometer gives an observed reading of 8.27 mm. Its zero error is +0.03 mm. Find the corrected reading.",
+          "answer": "Corrected reading = observed reading − zero error = 8.27 − (+0.03) = 8.24 mm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "States the correction rule: subtract the signed zero error",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes 8.27 − 0.03",
+              "marks": 1
+            },
+            {
+              "criterion": "Corrected reading: 8.24 mm",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MICROMETER-Q3",
+          "question": "The main-scale reading is 4.50 mm and the circular scale reading is 18 divisions. The least count is 0.01 mm and the zero error is −0.02 mm. Calculate the corrected reading.",
+          "answer": "Observed reading = 4.50 + (18 × 0.01) = 4.68 mm. Corrected reading = 4.68 − (−0.02) = 4.70 mm.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct observed reading: 4.68 mm",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly adds the negative zero correction to obtain 4.70 mm",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MICROMETER-Q4",
+          "question": "Convert a corrected micrometer reading of 4.70 mm to centimetres.",
+          "answer": "4.70 mm ÷ 10 = 0.470 cm.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct conversion: 0.470 cm",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source note SS1-SRC-5c0149cda71d — Physics, 1st Term, Week 2",
+          "locator": "Registered source member SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc; source member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206. Existing repository evidence: PHYS-WK-T1-W02.md; micrometer use/least-count statement at word-extractor lines 214–215 and incomplete worked example at lines 271–285. Prior source/member verification is reused; the binary archive was not rehashed in this run. No figure value was read or inferred.",
+          "url": null,
+          "rights": "Newly authored explanation and practice. The school source's topic and objective are used as curriculum scope; no source exercise, figure or third-party passage is copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics; original Week 2 supplement, content approval pending."
+        },
+        {
+          "title": "eLearn Pakistan, Physics IX, Unit 1: Physical Quantities and Measurement",
+          "locator": "Section 'Working of a Screw Gauge' explains checking zero error, reading main and circular scales and applying signed correction; accessed 2026-11-08.",
+          "url": "https://www.elearn.gov.pk/onlinepdf/physics/9physics/pdfEng/chapter1.pdf",
+          "rights": "Used to corroborate standard measurement procedure and terminology only; no wording, figure or exercise copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "eLearn Pakistan, Physics IX, Unit 1, Physical Quantities and Measurement."
+        },
+        {
+          "title": "St Joseph Institute, Physics Laboratory Manual",
+          "locator": "Experiment 2: pitch, least count and zero-error correction for a screw gauge; accessed 2026-11-08.",
+          "url": "https://www.stjosephinstitute.in/ss-physics/312labmanualnew.pdf",
+          "rights": "Used to corroborate the definitions of pitch, least count and zero error; no wording or figure copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "St Joseph Institute, Physics Laboratory Manual, Experiment 2."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -2893,7 +3008,8 @@
       "objective_locator": "word-extractor 1.0.4 getBody() lines 211-215; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e",
+        "SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING"
       ],
       "evidence": [
         {
@@ -2941,8 +3057,10 @@
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Reading a micrometer screw gauge: Example 3.2 (Fig. 3.4); the week gives no reading rule for this instrument",
       "objective_locator": "word-extractor 1.0.4 getBody() lines 271-285; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING"
+      ],
       "evidence": [
         {
           "locator": "heading line 271 SHA-256 cbdc60edd77a8186edbf1294a7f6645cedd1735b8d2cf831c5711712abd57b23; question line 272 SHA-256 1ad740915b16e27c8e6053e97409dd4de7d13ff985ef23e862b78e0886bb16e0; caption line 280 SHA-256 0114114b80c8e4174307ceb5a23c8fd84fe44f8ed899a7683765cc0c6f5562f9; solution lines 281-285 SHA-256 ecc3e71c5fd5e17dc7b1082689814704506424d6f5c23b13dadd0866abc8b5d0; lines 282-285 SHA-256 f691bc07ff6dee0be717f6a7e1b0505325ecf7fdaa29df7bf2e4ee84c2c0408e; whole example lines 271-285 SHA-256 e256cf3113fef995c699b95729e79ada010c489569deffcfc04a3c2adfcc24c9",
@@ -2951,6 +3069,10 @@
         {
           "locator": "drawn-object anchors counted as in COV-PHYS-T1-W02-OBJ-6: line 273 has 1 anchor; no 0x01 anchor in lines 194-340",
           "explanation": "A single drawn object stands for the missing micrometer picture. The text-box stream of the member (482 characters, SHA-256 833455d3cd0fab9f56afa131825c27440b6226116db389bf8b0a983234ecf623, also recorded by PHYS-WK-T1-W01) holds short labels such as 4cm, 5cm, 15mm and the letters A and B that are consistent with measuring-instrument drawings, but getBody() gives no anchor-to-label mapping, so no label is attributed to this figure."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING; body sections 2–5; practice MICROMETER-Q1–MICROMETER-Q4",
+          "explanation": "The supplement supplies the missing reading rule, least-count calculation, main-scale plus circular-scale method, signed zero-error correction and a new internally consistent worked example (12.84 mm = 1.284 cm). It deliberately does not interpret Fig. 3.4. Four keyed practice items cover zero and non-zero positive/negative zero errors and unit conversion; marking criteria sum to each item's declared marks. The original source's erroneous printed conversion remains unaltered and must be excluded from delivery by the separate correction-binding task."
         }
       ]
     },
@@ -4681,8 +4803,8 @@
     {
       "id": "PHYSICS-T1-W02-MICROMETER",
       "kind": "CONTENT",
-      "detail": "The week teaches how to read a vernier calliper in words (line 248, SHA-256 65a0425edf3f070343ba3122217bfe3925e45e7160f1753589742362907cf7e0) but gives no rule for reading a micrometer screw gauge; the only procedure is the working in Example 3.2 (lines 282-285, SHA-256 f691bc07ff6dee0be717f6a7e1b0505325ecf7fdaa29df7bf2e4ee84c2c0408e), which adds 17.00 and 0.11 and then prints '17.1mm   or 1.711cm', two values that disagree by a factor of ten in the last place. Zero error is not taught for either instrument.",
-      "required_action": "Author one bounded supplement (PHYS-LES-T1-W02-MICROMETER-READING) with the reading rule and a consistent worked example, labelled as a supplement; the correction of Example 3.2 is bound by PHYS-COR-T1-W02-BINDING.",
+      "detail": "The Week 2 source names the micrometer screw gauge, its uses and a 0.01 mm reading increment, but does not state a complete reading rule. Its Example 3.2 adds 17.00 mm and 0.11 mm (=17.11 mm) but prints inconsistent final conversions ('17.1 mm' and '1.711 cm'). A new authored supplement now teaches pitch, least count, main- and circular-scale readings, signed zero-error correction and a consistent independent worked example. It does not read or reconstruct the uninspected Fig. 3.4 and does not alter the source row.",
+      "required_action": "Lesson authored as PHYS-LES-T1-W02-MICROMETER-READING. Complete PHYS-COR-T1-W02-BINDING to bind the original Week 2 row to the supplement and prevent the source's inconsistent Example 3.2 answer from being delivered as correct. Figure inspection remains with PHYS-VIS-T1; no figure-derived value is claimed.",
       "affected_ids": [
         "COV-PHYS-T1-W02-OBJ-4",
         "COV-PHYS-T1-W02-OBJ-7",
