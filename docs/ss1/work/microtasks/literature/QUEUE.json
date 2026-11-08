@@ -35,10 +35,10 @@
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 3,
     "SOURCE_WEEK_INDEXING": 27,
-    "LESSON": 1
+    "LESSON": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 11,
+    "IMPLEMENTED_TESTING_DEFERRED": 12,
     "BLOCKED": 2,
     "PENDING": 31
   },
@@ -500,8 +500,8 @@
         "LIT-INV-T1",
         "LIT-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 107-181, block SHA-256 1e5bf5325a56d432b9630af84b6608064fdfe291b17eeb1bf837e339fdec00b2; label `WEEK 2` 107, heading `GENRE OF LITERATURE – PROSE, POETRY AND DRAMA` 111, sections `What is Prose?` 117, `Characteristics of Prose` 123, `The Elements of Prose Fiction` 139, `Type of Prose` 157; marker `Class Work` 173 with questions 175-181. Findings recorded by LIT-INV-T1 that this item must settle: scheme row 9 promises drama, prose and poetry but this week teaches prose only (poetry at 381, drama at 475), so the gap is recorded rather than invented; the five novel types (159-167) carry garbled titles and author names and dates needing bibliographic confirmation (keep the source wording separate from any corrected form); 113 uses `genie` and `muter`. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed 2026-11-08: source SS1-SRC-470d43e54e5b, member SHA-256 732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea; Week Two body lines107–181, block SHA-256 1e5bf5325a56d432b9630af84b6608064fdfe291b17eeb1bf837e339fdec00b2. Added objective-level coverage for three genres (PARTIAL, because this span teaches prose only), prose definition, five characteristics, seven prose-fiction elements, five novel types, three classwork questions (PARTIAL pending keyed follow-up), and source terminology “genie”/“muter” (preserved separately from corrected “genre”/“writer”). Bibliographic forms of the five novel types and examples were checked against catalog/library/university references and documented separately in LIT-WK-T1-W02.md; original source wording is not overwritten. Added open items for scheme/body scope and classwork keys, plus separate lesson task LIT-LES-T1-W02-PROSE. Poetry and drama are not invented here; source locates them later at lines381 and475. No set text invented. Approval PENDING; verification DEFERRED; tests not run.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
     },
     {
@@ -1636,10 +1636,43 @@
       "status": "BLOCKED",
       "implementation_reference": "Blocked on an owner or foundation-maintainer decision; see open item LITERATURE-T1-MARKER-VOCABULARY. Indexing of exercises is not blocked.",
       "completion_condition": "A recorded decision (change requested with reference, or accepted as unclassified body text) is cited here; no schema file is edited by this package."
+    },
+    {
+      "id": "LIT-LES-T1-W02-PROSE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 2 body lines 107–181; prose definition, characteristics, elements of prose fiction and five novel types",
+      "objective": "Create a small original SS1 lesson covering prose definition, characteristics, seven elements of prose fiction, five novel types and keyed answers to the three source classwork questions. Preserve source wording separately from verified bibliographic corrections; do not invent a prescribed text or teach poetry/drama in this week.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+          "member_sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-LES-T1-W02-PROSE.md"
+      ],
+      "depends_on": [
+        "LIT-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created as the separate lesson task required by LIT-WK-T1-W02. Do not claim completion until the package lesson, keyed practice, bibliographic provenance and delivery correction binding are present.",
+      "completion_condition": "One original SS1 prose lesson with correct definition, five source characteristics, seven prose-fiction elements, five verified novel types, keyed classwork answers/marking, source-vs-corrected bibliography table, provenance and PENDING approval/DEFERRED verification. Poetry/drama scope mismatch remains separately recorded; no prescribed literary text is invented."
     }
   ],
   "review": {
-    "date": "2026-10-29",
+    "date": "2026-11-08",
     "reviewed_master_sha": "4159336c7068d2235209221f5f14adc4986acec5",
     "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
     "source_archive": {
@@ -1648,10 +1681,11 @@
       "manifest_matches": 3,
       "mismatches": 0,
       "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
-    }
+    },
+    "notes": "LIT-WK-T1-W02 objective-level index completed. Five novel types bibliographically checked and source-vs-corrected forms recorded. Poetry/drama scheme/body mismatch and missing classwork keys remain explicitly open; separate prose lesson task created."
   },
   "next_runnable": [
-    "LIT-WK-T1-W02",
+    "LIT-LES-T1-W02-PROSE",
     "LIT-WK-T1-W03",
     "LIT-WK-T1-W04",
     "LIT-WK-T1-W05-W06",
@@ -1682,5 +1716,6 @@
     "LIT-WK-T3-W07",
     "LIT-WK-T3-W08",
     "LIT-WK-T3-W09"
-  ]
+  ],
+  "total": 45
 }
