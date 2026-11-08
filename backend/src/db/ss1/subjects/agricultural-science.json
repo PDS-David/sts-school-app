@@ -965,6 +965,58 @@
         }
       ],
       "source_id": "SS1-SRC-956594d97094"
+    },
+    {
+      "id": "COV-AG-T2-W08-ROCK-WEATHERING",
+      "source_id": "SS1-SRC-956594d97094",
+      "objective": "Scheme item 8: Rock Weathering and Process of Rock Weathering",
+      "objective_locator": "Second Term scheme block 12; Week Eight label block 517; topic block 518",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week Eight blocks 523-530; definition 524-525; processes 527-530",
+          "explanation": "The source defines rock weathering as disintegration of rocks into smaller particles to form soil and lists physical, chemical and biological processes."
+        },
+        {
+          "locator": "Physical weathering blocks 533-539; chemical weathering 547-553; biological weathering 559-564",
+          "explanation": "The source teaches five physical agents, five chemical agents/processes and biological weathering by soil organisms, animals, plant roots and human tillage."
+        },
+        {
+          "locator": "Evaluations 541-545,555-557,566-569; general evaluation 571-576; weekend 584-591; theory 593-596",
+          "explanation": "Most questions are supported. The 'five factors of soil formation' question at 576 is cross-week supported by Week Nine block 609. Questions 568 and 573 say 'rock formation' where the lesson topic and body are rock weathering; wording needs correction review."
+        },
+        {
+          "locator": "Week Eight range blocks 517-598; SHA-256 aa24be430015e9cf92fe0e3b82b9ddffd52a5c59998ae69cb3962bd75c9f9f7e",
+          "explanation": "Source teaching exists, but package lesson rows and importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T2-W09-SOIL-FORMATION",
+      "source_id": "SS1-SRC-956594d97094",
+      "objective": "Scheme item 9: Factors of Soil Formation",
+      "objective_locator": "Second Term scheme block 13; Week Nine label block 599; topic 600",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week Nine blocks 608-609; five factors listed",
+          "explanation": "The source explicitly lists climate, parent materials, topography, biotic factors (living organisms) and time as the five factors controlling soil formation."
+        },
+        {
+          "locator": "Climate 611-616; parent material 622-623; topography 626-627; biotic factors 633-639; time 645-646",
+          "explanation": "Each of the five factors is described with mechanisms and examples."
+        },
+        {
+          "locator": "Evaluations 618-620,629-631,641-643; general evaluation 648-653; weekend 661-668; theory 670-672",
+          "explanation": "All listed questions map to the taught factors. Week Eight general-evaluation question 576 cross-maps to this explicit five-factor list."
+        },
+        {
+          "locator": "Week Nine range blocks 599-674; SHA-256 bc1d1321d855bd1376adc8b8d0f08f6c5dbd9b31eae703f1358a34060ae8ba81",
+          "explanation": "Source teaching exists, but package lesson rows and importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -1617,6 +1669,50 @@
       "required_action": "Verify mica's geological classification and whether the question has one defensible answer; recommend adding a brief supporting note or correcting the item.",
       "affected_ids": [
         "AG-FACT-T2-W07-MICA-MCQ",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W08-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week Eight teaches rock weathering, its physical, chemical and biological processes and agents (523-564), but package lesson rows and importer-confirmed parsed-row identity are absent. COV-AG-T2-W08-ROCK-WEATHERING is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T2-W08-ROCK-WEATHERING; do not invent a lesson ID or duplicate source teaching.",
+      "affected_ids": [
+        "COV-AG-T2-W08-ROCK-WEATHERING",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W08-QUESTION-WORDING",
+      "kind": "CONTENT",
+      "detail": "Week Eight is titled Rock Weathering and the body teaches processes of rock weathering (523-564), but evaluation block 568 and general evaluation block 573 ask for 'processes of rock formation'. This wording may misstate the taught topic.",
+      "required_action": "Verify the intended wording against the scheme/topic and teacher-approved source. If confirmed as a typo, bind a delivery-only correction from 'rock formation' to 'rock weathering' for blocks 568 and 573; preserve original source bytes.",
+      "affected_ids": [
+        "AG-CORR-T2-W08-QUESTION-WORDING",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W09-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week Nine explicitly lists and describes the five factors of soil formation (608-646), but package lesson rows and importer-confirmed parsed-row identity are absent. COV-AG-T2-W09-SOIL-FORMATION is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T2-W09-SOIL-FORMATION; do not invent a lesson ID or duplicate source teaching.",
+      "affected_ids": [
+        "COV-AG-T2-W09-SOIL-FORMATION",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W09-SOIL-TERMS",
+      "kind": "CONTENT",
+      "detail": "Block 634 says the action of organisms plays an active part in 'rock formation' although the section is about soil formation; block 627 uses 'sloppy area' where the context appears to describe a sloping area. Both require evidence-based correction review.",
+      "required_action": "Verify both strings against a parallel source or teacher-approved original and bind delivery-only corrections if confirmed; preserve original source bytes.",
+      "affected_ids": [
+        "AG-CORR-T2-W09-SOIL-TERMS",
         "SS1-SRC-956594d97094"
       ],
       "blocks_delivery": true
