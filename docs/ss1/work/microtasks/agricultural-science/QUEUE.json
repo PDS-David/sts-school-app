@@ -32,23 +32,24 @@
     "AG-WK-T1-W02 (2026-11-08) indexed First Term Week 2: scheme entry 2 is source-taught (blocks 149, 152, comparison table 160), but delivery mapping remains PARTIAL pending importer/parsed-row verification; ten-tool/ten-machine and five agro-based-industry assessment gaps and the unresolved foreign-exchange exception item were split into bounded lesson/fact tasks. Composite archive, member and Week 2 range hashes were independently verified. No lesson, source byte, rule, correction or asset was written.",
     "AG-WK-T1-W03 (2026-11-08) indexed First Term Week 3: scheme entry 3 maps to fifteen problem/solution pairs in blocks 193-287. Cross-week crop rotation item is supported by Week 6 block 436. Extension roles, herbicide terminology, credit-source options and malformed storage solution were separately recorded as follow-up gaps; no unsafe chemical directions were added.",
     "AG-WK-T1-W04 (2026-11-08) indexed First Term Week 4: scheme entry 4 covers government roles (335-381) and NGO roles (386-399). Six NGO roles and seven research institutes are listed. Follow-ups record mixed-geography NGO examples, absent programme objectives and unresolved weekend assessment items; no external answers were invented.",
-    "AG-WK-T1-W05 (2026-11-08) indexed First Term Week 5: scheme entry 5 maps to eleven science-and-technology roles (426-436). Assessment gaps for technology definition, five improved systems and five storage facilities, plus a genetics terminology MCQ fact-check, were appended. Agro-chemical names preserved without invented doses or handling instructions."
+    "AG-WK-T1-W05 (2026-11-08) indexed First Term Week 5: scheme entry 5 maps to eleven science-and-technology roles (426-436). Assessment gaps for technology definition, five improved systems and five storage facilities, plus a genetics terminology MCQ fact-check, were appended. Agro-chemical names preserved without invented doses or handling instructions.",
+    "AG-WK-T1-W06 (2026-11-08) indexed First Term Week 6: definition, 14-row industry/raw-material table and ten agriculture-industry relationships are source-taught. Cereal questions cross-map to Week 10 block 893; agro-chemical list supported across Weeks 5-6. Storage-structure/produce pairings and incubator MCQ classification remain follow-ups; table visual disposition remains separate."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 7,
+    "FACTUAL_DEPENDENCY": 8,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 13,
+    "LESSON": 14,
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 17,
-    "PENDING": 76,
+    "IMPLEMENTED_TESTING_DEFERRED": 18,
+    "PENDING": 77,
     "BLOCKED": 2
   },
   "items": [
@@ -652,8 +653,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): label block 473 text \"WEEK 6                                                                                                 DATE ………………………………\" (sha256 5056bc5e7bd4597466f4482b114a23c6bb8c36ef953fed94e1a8dc08bc9a2bf5); blocks 473-533; range sha256 19248abe8aded1d7f739cf4d6f75759c8eb099022e21e45614135bc4815d36c5. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme topic: Agro-Allied Industries and Relationship between Agriculture and Industry (block 475 spells 'IDUSTRIES'). One 15-row (header plus 14 data rows), 3-column table (block 486: S/N, Agro-based Industries, Raw Materials Used; 14 data rows) - see AG-VIS-T1-TBL-W06. Ten relationship bullets (493-502). Evaluation 3 and General Evaluation 3 (blocks 490, 511) ask for five cereals, which the document teaches only in Week 10 (block 893); General Evaluation 6 (block 515) revisits Week 5.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, First Term member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526 and Week 6 range blocks 473-533 SHA-256 19248abe8aded1d7f739cf4d6f75759c8eb099022e21e45614135bc4815d36c5. Scheme entry 6 maps to definition block 482, 14-row table 486 and ten relationships 493-502. Industry/raw-material questions are supported; ten relationships support the relationship questions. Five cereal examples are cross-week supported by Week 10 block 893; five agro-chemical examples appear across Weeks 5-6. Storage structure questions (506, 513-514, 531) are not fully taught: block 499 is generic; Week 3 block 234 names silos/cribs/cold rooms but gives no produce pairings or industry-origin binding. Weekend Q1 519 asks about an incubator, not classified in source. MCQs 520-525 are supported by the raw-material table and storage/processing distinction; grinder is named as processing equipment at 500. The comparison table at 486 remains under separate visual task AG-VIS-T1-TBL-W06. Source typos 'IDUSTRIES' (475) and 'INDUSRIES' (481) preserved. Added PARTIAL/UNRESOLVED coverage and bounded follow-ups AG-LES-T1-W06-STORAGE-STRUCTURES and AG-FACT-T1-W06-INCUBATOR-ITEM. Reading reference 517 recorded but not checked. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -3597,6 +3598,77 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T1-W05: block 429 says genetics and breeding, while block 454 offers genetic engineering; source does not resolve the equivalence.",
       "completion_condition": "A sourced note establishes whether the MCQ is accurate and recommends a precise disposition."
+    },
+    {
+      "id": "AG-LES-T1-W06-STORAGE-STRUCTURES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 6 blocks 499, 506, 513-514 and 531; Week 3 block 234",
+      "objective": "Teach at least three accurate agricultural storage structures, identify the produce stored in each and explain their role in agricultural supply chains. Use authoritative sources, distinguish the supplement from the original source's general statement about industry-provided storage, and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W06.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W06-STORAGE-STRUCTURES.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W06: source names silos/cribs/cold rooms and generic industry-provided storage but does not pair structures with produce stored.",
+      "completion_condition": "A clearly labelled supplement teaches at least three structures and produce pairings, includes complete keyed practice and criterion-level marks, truthful provenance and PENDING approval."
+    },
+    {
+      "id": "AG-FACT-T1-W06-INCUBATOR-ITEM",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 6 weekend assignment block 519",
+      "objective": "Verify whether an incubator should be classified as a farm machine in the context of the Week 6 MCQ and whether the item has one defensible answer. Use authoritative agricultural-engineering references and recommend retention or correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W06.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W06-INCUBATOR-ITEM.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W06: block 519 offers incubator as an exception but the source does not define/classify incubators.",
+      "completion_condition": "A sourced note establishes the item's defensibility and recommends retaining or correcting it."
     }
   ],
   "review": {
@@ -3612,7 +3684,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T1-W06",
     "AG-WK-T1-W07",
     "AG-WK-T1-W08",
     "AG-WK-T1-W10",
@@ -3673,6 +3744,7 @@
     "AG-FACT-T1-W04-PEST-CONTROL-ITEM",
     "AG-FACT-T1-W04-NGO-STATUS",
     "AG-FACT-T1-W05-GENETICS-ITEM",
+    "AG-FACT-T1-W06-INCUBATOR-ITEM",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
@@ -3684,6 +3756,7 @@
     "AG-LES-T1-W05-TECHNOLOGY-DEFINITION",
     "AG-LES-T1-W05-FARM-MANAGEMENT",
     "AG-LES-T1-W05-STORAGE-FACILITIES",
+    "AG-LES-T1-W06-STORAGE-STRUCTURES",
     "AG-TEST-PACKAGE"
   ]
 }

@@ -561,6 +561,50 @@
           "explanation": "Fewer than five distinct storage examples are taught."
         }
       ]
+    },
+    {
+      "id": "COV-AG-T1-W06-AGRO-INDUSTRIES",
+      "objective": "Scheme entry 6: Agro-Allied Industry and Relationship between Agriculture and Industry",
+      "objective_locator": "scheme block 17; Week 6 blocks 473-533",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 6 blocks 481-486; definition 482; 15-row table 486",
+          "explanation": "The source defines agro-allied/agro-based industries as industries dependent on agricultural raw materials and gives 14 industry/raw-material examples."
+        },
+        {
+          "locator": "Week 6 blocks 491-502; ten relationships at 493-502",
+          "explanation": "The source describes ten relationships: market, food, raw materials, labour, essential goods, agro-chemicals, storage, processing, tools/machinery and industrial-sector development."
+        },
+        {
+          "locator": "Evaluations 487-490, 503-506; general evaluation 508-515; theory 528-531",
+          "explanation": "Definitions, industry/raw-material examples and relationships are supported. Cereals are taught at Week 10 block 893; agro-chemical examples are supported across Weeks 5-6. Storage structures and produce stored are not fully taught."
+        },
+        {
+          "locator": "Week 6 range 473-533; SHA-256 19248abe8aded1d7f739cf4d6f75759c8eb099022e21e45614135bc4815d36c5",
+          "explanation": "Source teaching exists, but package lesson rows and importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ],
+      "source_id": "SS1-SRC-7aa642b0085b"
+    },
+    {
+      "id": "COV-AG-T1-W06-STORAGE-STRUCTURES",
+      "objective": "Assessment scope: agricultural storage structures produced by industry and the produce stored in them",
+      "objective_locator": "Week 6 blocks 506, 513-514 and 531",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 6 block 499; Week 3 block 234",
+          "explanation": "The source says industries provide storage facilities and elsewhere names silos, cribs and cold rooms, but does not identify produce stored in each or link these structures to industry production."
+        },
+        {
+          "locator": "Week 6 blocks 513-514 and 531",
+          "explanation": "The general evaluation and theory ask learners to name three structures and state the produce stored in them; those pairings are not taught."
+        }
+      ],
+      "source_id": "SS1-SRC-7aa642b0085b"
     }
   ],
   "open_items": [
@@ -852,6 +896,40 @@
       "required_action": "Verify the MCQ against authoritative genetics references and recommend retention, correction or withdrawal.",
       "affected_ids": [
         "AG-FACT-T1-W05-GENETICS-ITEM",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W06-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 6 teaches the scheme topic through the agro-based-industry definition (482), 14-row table (486) and ten agriculture-industry relationships (493-502), but the package has no lesson rows and no importer-confirmed parsed-row ID. COV-AG-T1-W06-AGRO-INDUSTRIES is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T1-W06-AGRO-INDUSTRIES; do not invent a source lesson ID or duplicate the original teaching.",
+      "affected_ids": [
+        "COV-AG-T1-W06-AGRO-INDUSTRIES",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W06-STORAGE-STRUCTURES",
+      "kind": "CONTENT",
+      "detail": "Week 6 general evaluation 513-514 and theory 531 ask for three storage structures produced by industry and the produce stored in each. Week 6 block 499 says industries provide storage facilities but does not name structures or map produce to them; Week 3 block 234 names silos, cribs and cold rooms but does not give produce pairings or industry-origin evidence. COV-AG-T1-W06-STORAGE-STRUCTURES is UNRESOLVED.",
+      "required_action": "Author AG-LES-T1-W06-STORAGE-STRUCTURES with at least three verified storage structures, produce stored in each and sourced explanation of industry provision; clearly distinguish supplement content from the original source.",
+      "affected_ids": [
+        "COV-AG-T1-W06-STORAGE-STRUCTURES",
+        "AG-LES-T1-W06-STORAGE-STRUCTURES",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W06-INCUBATOR-ITEM",
+      "kind": "FACT",
+      "detail": "Weekend Q1 block 519 asks which option is not a farm machine: planter, incubator, sowing machine or plough. The source gives no definition or classification of an incubator.",
+      "required_action": "Verify the classification of incubators and the question's category boundary against authoritative agricultural-engineering references; recommend a precise correction if needed.",
+      "affected_ids": [
+        "AG-FACT-T1-W06-INCUBATOR-ITEM",
         "SS1-SRC-7aa642b0085b"
       ],
       "blocks_delivery": true
