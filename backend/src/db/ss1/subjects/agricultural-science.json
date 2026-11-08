@@ -1265,6 +1265,80 @@
           "explanation": "The question asks learners to define sphincters, but the teaching range contains no definition or explanation of sphincters."
         }
       ]
+    },
+    {
+      "id": "COV-AG-T3-W05-RESPIRATORY-SYSTEM",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Respiratory system: respiration, aerobic/anaerobic respiration, respiratory organs, breathing, fish gills and importance",
+      "objective_locator": "Third Term scheme block 10 (combined weeks 4–5); Week Five label 524; topic 525; content outline 527",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Respiratory-system definition 530–531; equations 532–533; types and equations 534–541",
+          "explanation": "Defines respiratory system/respiration, distinguishes aerobic and anaerobic respiration and prints three text-based equations. Formula strings are preserved verbatim in the report; their formatting and scientific accuracy need verification."
+        },
+        {
+          "locator": "Respiratory organs and airways 543–548; image at 547 (word/media/image14.jpeg)",
+          "explanation": "Describes lungs and land-animal airways from nostrils through pharynx/larynx, trachea, bronchi, bronchioles and alveoli; an image captioned as goat respiratory system is embedded."
+        },
+        {
+          "locator": "Breathing 549–550; fish gills 552; figure group at 554 (image15.jpeg and image16.jpeg)",
+          "explanation": "Defines inhalation/exhalation and describes gill filaments, rakers, arches and operculum; two fish-gill images are embedded. Detailed mechanics of breathing are not supplied."
+        },
+        {
+          "locator": "Importance 560–564; evaluations 556–559,566–571",
+          "explanation": "Lists oxygen supply, heat-load reduction, carbon-dioxide removal and gaseous exchange; assessments ask breathing mechanics, respiration types, fish respiration, equations and named-animal respiration."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-W05-NERVOUS-SYSTEM",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Nervous system: stimulus/response, central and peripheral nervous systems and their functions",
+      "objective_locator": "Week Five content outline 528; section 577",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Nervous system definition and stimulus/response 577–578",
+          "explanation": "Defines nervous system, stimulus and response."
+        },
+        {
+          "locator": "Central nervous system 579–580; peripheral nervous system 581",
+          "explanation": "Identifies brain/spinal cord as CNS and cranial/spinal nerves as PNS, with brief functions."
+        },
+        {
+          "locator": "General evaluation 584–586; weekend 598–601; theory 603–604",
+          "explanation": "Assesses nervous-system notes, CNS/PNS distinction, stimulus, neuron and reflex action. The source does not teach reflex action or give examples; the structural/functional-unit statement is also not explicit."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-W05-UNTAUGHT-ASSESSMENT-ITEMS",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Assessment scope not adequately taught: mechanics of breathing, named-animal respiration details, neuron as structural/functional unit and reflex action with examples",
+      "objective_locator": "Evaluations 557 and 571; weekend 600–601; theory 604",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Breathing 549–550; evaluation 557",
+          "explanation": "The source defines inhalation and exhalation as inward/outward air movement but does not describe the diaphragm, ribs or pressure changes needed to explain the mechanics."
+        },
+        {
+          "locator": "Respiratory organs 543–552; evaluation 571",
+          "explanation": "The source names lungs in land animals and gills in aquatic animals but does not give a full process of respiration in a named animal."
+        },
+        {
+          "locator": "Nervous system 577–581; weekend 600–601",
+          "explanation": "Neurons are mentioned, but the source does not identify the neuron as the structural and functional unit or describe its structure."
+        },
+        {
+          "locator": "Theory 603–604",
+          "explanation": "The question asks for a simple reflex action and four examples; neither reflex arc nor examples are taught in the Week Five body."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -2165,6 +2239,41 @@
       "required_action": "Verify male and female reproductive anatomy and terminology against authoritative farm-animal veterinary references; distinguish species-specific structures and recommend precise non-procedural corrections.",
       "affected_ids": [
         "AG-FACT-T3-W04-REPRODUCTIVE-ACCURACY",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W05-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week Five teaches respiratory-system content (530-564) and the nervous system (577-581), but package lesson rows and importer-confirmed parsed-row identity are absent. The two topic coverage entries are PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind the respiratory and nervous-system coverage entries; preserve the three displayed respiration equations and the embedded figures.",
+      "affected_ids": [
+        "COV-AG-T3-W05-RESPIRATORY-SYSTEM",
+        "COV-AG-T3-W05-NERVOUS-SYSTEM",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W05-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "The source defines inhalation/exhalation but does not teach their mechanics (evaluation 557), gives no complete respiration process in a named animal (571), mentions neurons without teaching their structural/functional-unit role (600-601), and does not teach reflex action or examples (604).",
+      "required_action": "Author AG-LES-T3-W05-RESPIRATION-NERVOUS-GAPS with verified senior-secondary biology content for breathing mechanics, a named animal's respiration, neuron structure/function and simple reflex actions with examples; include complete keyed practice.",
+      "affected_ids": [
+        "COV-AG-T3-W05-UNTAUGHT-ASSESSMENT-ITEMS",
+        "AG-LES-T3-W05-RESPIRATION-NERVOUS-GAPS",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W05-RESPIRATION-ACCURACY",
+      "kind": "FACT",
+      "detail": "The source's three respiration equations at 532, 537 and 540 have ambiguous/missing reaction arrows and coefficient formatting; anaerobic respiration is equated with ethanol fermentation (539-541) in a farm-animal lesson. The bronchioles description at 546 and gill-raker/operculum functions at 552/597 also require verification.",
+      "required_action": "Verify equations and their formatting, distinguish animal anaerobic respiration from alcoholic fermentation, and check airway/gill anatomy and MCQ 597 against authoritative biology references. Preserve the original displayed equations and record any delivery-only correction separately.",
+      "affected_ids": [
+        "AG-FACT-T3-W05-RESPIRATION-ACCURACY",
         "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true
