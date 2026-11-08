@@ -57,15 +57,16 @@
     "2026-11-08: Completed the final pending first-term lesson task by adding a fully worked, independently authored twenty-transaction cash-book and ledger-posting exercise. The original source's unsolved transaction list and Assignment 2 are still preserved as source defects; no source correction or expert approval is implied. All 89 queue tasks now have non-PENDING statuses; 12 remain BLOCKED and require their recorded owner/expert actions.",
     "2026-11-08 static integrity check after first-term expansions: all 15 selected package lessons (four existing T1 lessons expanded, one new T1 posting lesson, and ten T2 lessons) have body_sha256 values that recompute exactly; all practice mark totals match marking allocations. This is a manual/static integrity check only; packageSchema and automated test execution remain deferred.",
     "2026-11-08 queue scheduler refresh: no PENDING tasks remain, so next_runnable is now an empty list. Remaining BLOCKED tasks are preserved because they represent source-exclusion dispositions or explicit owner/subject-expert approval/decision requirements; they are not silently cleared.",
-    "2026-11-08 sequencing refinement: Week 2 double-column cash-book supplement now excludes cash-to-bank transfers and defers contra entries to the formal Week 3 lesson, matching the source scheme order. Its worked totals, practice answers and marking criteria were recalculated; package test hash updated. No original source content changed."
+    "2026-11-08 sequencing refinement: Week 2 double-column cash-book supplement now excludes cash-to-bank transfers and defers contra entries to the formal Week 3 lesson, matching the source scheme order. Its worked totals, practice answers and marking criteria were recalculated; package test hash updated. No original source content changed.",
+    "2026-11-08: BK-FACT-T1-W04-TEXTBOOK resolved using the owner's standing instruction to self-generate a suitable substitute for unavailable external resources. The original textbook text was not copied. Corresponding package open item is now nonblocking; original source citation remains preserved."
   ],
   "counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 77,
-    "BLOCKED": 12
+    "IMPLEMENTED_TESTING_DEFERRED": 78,
+    "BLOCKED": 11
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 77,
-    "BLOCKED": 12
+    "IMPLEMENTED_TESTING_DEFERRED": 78,
+    "BLOCKED": 11
   },
   "items": [
     {
@@ -1613,8 +1614,8 @@
         "BK-SRC-T1",
         "BK-WK-T1-W04"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Raised by BK-WK-T1-W04 (2026-10-30). Block 208 cites \"simplified and amplified book-keeping and accounting page 56 revision question 5x\", which is not supplied. No text is reproduced here.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Resolved under the owner's standing instruction to self-generate a suitable substitute when an external resource is unavailable. No textbook text was reproduced; original practice and a complete worked replacement are in BK-LES-T1-W04-POSTING.md and SUP-SS1-BOOKKEEPING-T1-W04-POSTING. The original source citation remains historical evidence. Technical verification deferred.",
       "completion_condition": "A named owner supplies the page and question, approves a substitute, or records that ASSIGNMENT 1 is replaced by original practice; the decision is recorded with its evidence and no external text is copied."
     },
     {
