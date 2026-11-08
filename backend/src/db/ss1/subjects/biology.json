@@ -531,6 +531,68 @@
           "explanation": "No answer key or marking guide accompanies the practice questions. The heading is 'Questions to practice', not an ASSIGNMENT heading; the source contains no second WEEK FOUR label in this range."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T1-W05-SCHEME-5",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Scheme entry 5: Plant Nutrition",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 6 (sha256 a7311d7898eea52bee2c7fd42c342dbcfcff6915e60599cf3cf37e3ef116ea53); Week 5 label block 679 (sha256 8ee47ba1948276278acd4756c10e25cf6739d5687371d857fd9be652bde6a506); body blocks 679-780 (range sha256 4686f3b47c869d4b3359ada8483a6d7324db6f10dbf211eed9346ed7dd28b8f4)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 680-708 (range sha256 d40f453a5c9ce31f5d5178e3fa4709cd287d60cb0b63dc4a5862b389d44ef1b7)",
+          "explanation": "The source defines photosynthetic/holophytic nutrition, gives a photosynthesis equation at block 683, describes light and dark reaction stages at 685-701, discusses the simple sugar product at 702 and lists importance at 704-708. The drawn light/dark reaction scheme and equations are separately assigned to BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME. The two printed equations at blocks 683 and 700 differ in their displayed products and require factual review before any delivery correction; source wording is not changed here."
+        },
+        {
+          "locator": "blocks 710-713 (range sha256 cbd5cdda7738a833e35fdf510f4a96617edcec7aebe93444bba215bb0ef39020)",
+          "explanation": "Introduces chemosynthetic nutrition and gives a sulphur-bacteria example with an equation. The example is indexed as source content only; the equation is not corrected or expanded here."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer/compiler not run",
+          "explanation": "The source teaches photosynthetic and chemosynthetic nutrition, but the package has no lessons. Source-only teaching is not deliverable; PARTIAL remains until a lesson or approved equivalent is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W05-PRACTICALS",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Experiments to test for photosynthesis (Experiments I-V)",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 heading block 714 (sha256 22f6a093fae4ce9bda53afea8d2b39a41bd74b3c69eae8cd77db2efffbfa1aba); experiment headings blocks 715, 727, 741, 748 and 760; combined range blocks 714-765 (sha256 0cfbbff13910a5c49a63bff22fb10b7b220fb9aacef0d2e0680e7e625dca43e8)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 714-765; experiment headings 715, 727, 741, 748, 760",
+          "explanation": "The source contains five practical investigations with aims relating to starch in a leaf, the need for sunlight, carbon dioxide and chlorophyll, and oxygen as a by-product. The detailed methods and chemical-handling instructions are not reproduced in this index. Experiment I has no figure; the figures associated with Experiments II-V are owned by BIO-VIS-T1-EXPERIMENT-FIGURES."
+        },
+        {
+          "locator": "blocks 714-765; text search for safety precautions and supervision terms",
+          "explanation": "No separate safety-precautions or teacher-supervision section was found in this range. The practicals cannot be treated as ready for student delivery on this indexing evidence; a teacher-approved safety review is required before practical delivery."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; no practical delivery record",
+          "explanation": "No lesson or practical delivery asset is registered in the package. PARTIAL: practical content exists in the source but is not approved or verified for delivery."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W05-ASSIGNMENT",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 5 assignment: photosynthesis definition, light reaction, process in green plants and five conditions",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 assignment block 773 (sha256 ab04ccc137d58ef30f41dbd29a7ca11eb5e87fb3def8b238329b3ab6efdd68d3); WEEK FIVE label block 774 (sha256 700c30e110b71fbdb4d6aaa0ea0a922cb9d63b799643acd01e32055226c62598); questions blocks 775-778 (range sha256 6ab2fade68e864264d45056a7a32514ecb3fc62cb282d7b5ca8392aad859f0a2)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "question blocks 775-777; teaching blocks 682-702",
+          "explanation": "The definition is introduced at block 682, the light reaction is described at 685-697, and the overall process is described through the dark reaction at 698-702. The assignment has no supplied answer key or marking guide."
+        },
+        {
+          "locator": "question block 778; blocks 682-708",
+          "explanation": "The assignment requests five conditions necessary for photosynthesis. The reviewed teaching text explicitly names light/sunlight, chlorophyll, water and carbon (IV) oxide; it does not identify a fifth condition or present a five-item list. The missing item is not guessed."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -754,6 +816,47 @@
       "required_action": "A Biology teacher should confirm the intended cross-week practice scope and supply an approved answer/marking guide, including expected treatment of the partially supported Amoeba comparison and object-grouping question. Do not invent answers.",
       "affected_ids": [
         "COV-BIO-T1-W04-PRACTICE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W05-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 5 Plant Nutrition and the five practical investigations are present in the original source, but the Biology package has no lessons or registered practical delivery assets.",
+      "required_action": "Author and bind a lesson or approved equivalent for photosynthetic and chemosynthetic nutrition. Keep the original source separate from any corrected or supplemental teaching.",
+      "affected_ids": [
+        "COV-BIO-T1-W05-SCHEME-5",
+        "COV-BIO-T1-W05-PRACTICALS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W05-PRACTICAL-SAFETY",
+      "kind": "OWNER_ACTION",
+      "detail": "The source includes five practical investigations and detailed chemical-handling methods, but the reviewed range contains no separate safety precautions or teacher-supervision section. The methods are deliberately not reproduced in this indexing record.",
+      "required_action": "A qualified Biology teacher/safety lead must provide an approved risk assessment, safe supervised delivery plan or approved alternative before any of these practicals are used with students. No practical method is cleared for student use by this index.",
+      "affected_ids": [
+        "COV-BIO-T1-W05-PRACTICALS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W05-ASSIGNMENT",
+      "kind": "FACT",
+      "detail": "The Week 5 assignment asks for five conditions necessary for photosynthesis, while the source text explicitly names only light/sunlight, chlorophyll, water and carbon (IV) oxide. No answer key is supplied.",
+      "required_action": "Verify the expected fifth condition and complete marking guide against an approved Biology reference; record the reference and keep any supplement distinct from source text.",
+      "affected_ids": [
+        "COV-BIO-T1-W05-ASSIGNMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W05-EQUATIONS",
+      "kind": "FACT",
+      "detail": "The photosynthesis equation at block 683 and the simplified equation at block 700 display different product expressions. The source's wording and symbols have not been altered.",
+      "required_action": "Check both printed equations against an approved Biology reference and bind any delivery correction only after the source and corrected form are evidenced.",
+      "affected_ids": [
+        "COV-BIO-T1-W05-SCHEME-5"
       ],
       "blocks_delivery": true
     }
