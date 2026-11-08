@@ -67,6 +67,7 @@ import WordExtractor from 'word-extractor';
 import { createHash } from 'node:crypto';
 import { assertJss3SupplementCorpus, buildJss3SupplementRows, JSS3_SUPPLEMENTS, supplementBodyHash } from './jss3Supplements.js';
 import { applyJss3MathsSlipCorrections } from './jss3MathsSlipCorrections.js';
+import { isSchemeWorkWeekHeader } from './ss1/topicParserRules.js';
 import { isJss3EquationSource, recoverEquationsInDocx } from './jss3EquationRecovery.js';
 import {
   applyPrimarySourceTextResolution,
@@ -333,7 +334,7 @@ interface ParsedTopic {
 const BARE_NUMBER_LINE = /^[ \t]*(\d{1,2}(?:\s*(?:&|and|,|-)\s*\d{1,2})?)[ \t]*$/gim;
 
 function parseTopics(text: string): ParsedTopic[] {
-  const rawMatches = [...text.matchAll(WEEK_MARKER)];
+  const rawMatches = [...text.matchAll(WEEK_MARKER)].filter(m => !isSchemeWorkWeekHeader(text, m.index!, m[0]));
   // Some valid lesson notes repeat the same marker back-to-back (for
   // example "WEEK 6" immediately followed by "Week: Six"). Collapse only
   // equivalent adjacent markers with no intervening content. Different
