@@ -256,39 +256,16 @@
       }
     },
     {
-      "id": "RULE-BK-T2-REVISION-1",
-      "op": "classify_marker",
+      "id": "RULE-BK-T2-EXCLUDE-DUPLICATE",
+      "op": "exclude_duplicate",
       "source_id": "SS1-SRC-97c1db5b1eb0",
       "source_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3",
-      "anchor": "1.\tRevision.",
-      "kind": "SCHEME_ONLY",
+      "anchor": "SIGMA TERM",
+      "target_source_id": "SS1-SRC-62b02f2adcb3",
+      "target_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0",
       "evidence": {
-        "locator": "BK-INV-T2 scheme block 4; SHA-256 7a903777d5427675bcd33f525cb7d451e982d9676d19f0ecfc983fc71f97813c",
-        "explanation": "This exact revision/examination heading is in the scheme preamble before the first teaching-week body. No corresponding revision worksheet or examination material is supplied. SCHEME_ONLY preserves the marker without deleting a lesson body."
-      }
-    },
-    {
-      "id": "RULE-BK-T2-REVISION-11",
-      "op": "classify_marker",
-      "source_id": "SS1-SRC-97c1db5b1eb0",
-      "source_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3",
-      "anchor": "11.\tRevision.",
-      "kind": "SCHEME_ONLY",
-      "evidence": {
-        "locator": "BK-INV-T2 scheme block 29; SHA-256 2a63828deabed8b07ba2aee44c8aec95f42a1c3e56a3d147aaf004f5ca697fc9",
-        "explanation": "This exact revision/examination heading is in the scheme preamble before the first teaching-week body. No corresponding revision worksheet or examination material is supplied. SCHEME_ONLY preserves the marker without deleting a lesson body."
-      }
-    },
-    {
-      "id": "RULE-BK-T2-EXAM-12",
-      "op": "classify_marker",
-      "source_id": "SS1-SRC-97c1db5b1eb0",
-      "source_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3",
-      "anchor": "12.\tExamination",
-      "kind": "SCHEME_ONLY",
-      "evidence": {
-        "locator": "BK-INV-T2 scheme block 30; SHA-256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9",
-        "explanation": "This exact revision/examination heading is in the scheme preamble before the first teaching-week body. No corresponding revision worksheet or examination material is supplied. SCHEME_ONLY preserves the marker without deleting a lesson body."
+        "locator": "BK-INV-T2.md: owner disposition and comparison of all four parsed week ranges/body hashes; the only differences are the term-heading metadata and a split scheme-header line",
+        "explanation": "Owner confirmed the second-term document should not duplicate first-term content. The registered member is retained as evidence, but its four teaching bodies are byte-for-byte identical at parsed-week level to the first-term bodies. Exclude this duplicate source from generated teaching rows; build second-term content independently under BK-T2-RECONSTRUCTION-PLAN.md."
       }
     }
   ],
@@ -2596,54 +2573,6 @@
           "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
         }
       ]
-    },
-    {
-      "id": "COV-BK-T2-REVISION-1",
-      "source_id": "SS1-SRC-97c1db5b1eb0",
-      "objective": "Scheme marker 1.\tRevision.; no corresponding instructional or assessment body is supplied.",
-      "objective_locator": "BK-INV-T2 scheme block 4; SHA-256 7a903777d5427675bcd33f525cb7d451e982d9676d19f0ecfc983fc71f97813c",
-      "status": "MARKER",
-      "lesson_ids": [
-        "RULE-BK-T2-REVISION-1"
-      ],
-      "evidence": [
-        {
-          "locator": "BK-INV-T2 scheme block 4; SHA-256 7a903777d5427675bcd33f525cb7d451e982d9676d19f0ecfc983fc71f97813c",
-          "explanation": "Preamble marker only; no revision or examination material is present in the source body."
-        }
-      ]
-    },
-    {
-      "id": "COV-BK-T2-REVISION-11",
-      "source_id": "SS1-SRC-97c1db5b1eb0",
-      "objective": "Scheme marker 11.\tRevision.; no corresponding instructional or assessment body is supplied.",
-      "objective_locator": "BK-INV-T2 scheme block 29; SHA-256 2a63828deabed8b07ba2aee44c8aec95f42a1c3e56a3d147aaf004f5ca697fc9",
-      "status": "MARKER",
-      "lesson_ids": [
-        "RULE-BK-T2-REVISION-11"
-      ],
-      "evidence": [
-        {
-          "locator": "BK-INV-T2 scheme block 29; SHA-256 2a63828deabed8b07ba2aee44c8aec95f42a1c3e56a3d147aaf004f5ca697fc9",
-          "explanation": "Preamble marker only; no revision or examination material is present in the source body."
-        }
-      ]
-    },
-    {
-      "id": "COV-BK-T2-EXAM-12",
-      "source_id": "SS1-SRC-97c1db5b1eb0",
-      "objective": "Scheme marker 12.\tExamination; no corresponding instructional or assessment body is supplied.",
-      "objective_locator": "BK-INV-T2 scheme block 30; SHA-256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9",
-      "status": "MARKER",
-      "lesson_ids": [
-        "RULE-BK-T2-EXAM-12"
-      ],
-      "evidence": [
-        {
-          "locator": "BK-INV-T2 scheme block 30; SHA-256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9",
-          "explanation": "Preamble marker only; no revision or examination material is present in the source body."
-        }
-      ]
     }
   ],
   "open_items": [
@@ -2671,7 +2600,7 @@
     },
     {
       "id": "BOOKKEEPING-T2-TEXT-MATCHES-T1",
-      "kind": "SOURCE_DISPOSITION",
+      "kind": "OWNER_ACTION",
       "detail": "OWNER CONFIRMED (2026-11-08): the 2nd Term document should not have been identical to the 1st Term document, and no other 2nd Term resource is currently available. The registered member is treated as an erroneous duplicate; preserve it as source evidence, do not use its copied scheme/body as 2nd Term teaching, and proceed with the separately labelled project-authored reconstruction in docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md.",
       "required_action": "No further source decision required to proceed. Keep original source registered and unchanged; exclude its duplicate teaching from 2nd Term coverage. Reconstructed teaching remains provisional for curriculum-owner/teacher review.",
       "affected_ids": [
