@@ -2962,6 +2962,18 @@
         "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W02-TABLE-STRUCTURE",
+      "kind": "CONTENT",
+      "detail": "The original Week Two comparison table at block 160 is a 13-row, two-column Word table with twelve paired contrasts. The original DOCX preserves cell boundaries, but concatenated plain-text block extraction removes the cell separators (for example, the end of the subsistence statement runs directly into 'Products are principally for sale'). A plain-text rendering is therefore not a reliable paired comparison.",
+      "required_action": "When the owner-authorised importer/lesson mapping stage binds the original Week Two row, preserve all twelve comparisons as a two-column Markdown table or explicit paired list using the original cell text verbatim. Do not rely on concatenated plain text and do not create a duplicate supplemental lesson for content already taught. If the frozen importer/schema cannot preserve the structure, request a versioned foundation change; do not alter the source.",
+      "affected_ids": [
+        "COV-AG-T1-W02-TYPES",
+        "AG-VIS-T1-TBL-W02",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
