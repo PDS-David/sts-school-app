@@ -2843,8 +2843,8 @@
         "BIO-INV-T3",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T3): block 84 is a w:tbl of 5 x 3 (columns: Vector or Carrier; Micro-organisms; Disease caused). Extractor output was not generated (importer deferred). Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Disposition report BIO-VIS-T3-TBL-VECTORS.md (2026-11-08): block 84 is a native 5-row × 3-column table. Plain-text concatenation does not preserve row/cell associations, so a semantic table supplement is required. The source pairings and 'Vibro cholera' spelling are recorded without correction; the disease/vector claims remain under BIOLOGY-T3-W01-MICROBE-FACTS for authoritative review.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
