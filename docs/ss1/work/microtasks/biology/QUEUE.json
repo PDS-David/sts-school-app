@@ -43,7 +43,8 @@
     "BIO-WK-T2-W03 (2026-11-08) indexed reproduction in Amoeba, Paramecium, Spirogyra, earthworm, cockroach, housefly and snail, including every evaluation and assignment. Tapeworm reproduction appears in questions but is not taught in the week; the later tapeworm mention is parasitism. Advantages/disadvantages of sexual reproduction are also not taught. A factual scope check and two bounded lesson tasks were appended; no answer key was invented.",
     "BIO-WK-T2-W04 (2026-11-08) indexed irritability, response types, movement, cyclosis and movement organelles. The Amoeba structure is not identified; a klinostat appears only in a question; geotropism questions have no supplied practical description/key. A factual check and bounded supplemental lesson were appended; no answer key was invented.",
     "BIO-WK-T2-W05 (2026-11-08) indexed animal nutrition, food-substance groups, balanced diet, digestive enzymes and all assessment items. Health/deficiency claims are held for authoritative review. Theory block 477 asks for food tests but the week provides no test teaching or approved practical source; no reagent names or procedures were added. A health-claim fact task and animal-nutrition lesson were appended; the food-test resource dependency is blocked pending qualified teacher approval.",
-    "BIO-WK-T2-W06 (2026-11-08) indexed ecology, branches, ecological terms and ecosystem components, plus all evaluation and assignment items. Biomes is briefly defined in Week 6 although the scheme assigns it to Week 7; a cross-week scope task was appended. Earth-surface and atmospheric-composition figures were held for authoritative review. No answer key is present; testing remains deferred."
+    "BIO-WK-T2-W06 (2026-11-08) indexed ecology, branches, ecological terms and ecosystem components, plus all evaluation and assignment items. Biomes is briefly defined in Week 6 although the scheme assigns it to Week 7; a cross-week scope task was appended. Earth-surface and atmospheric-composition figures were held for authoritative review. No answer key is present; testing remains deferred.",
+    "BIO-WK-T2-W07 (2026-11-08) indexed Nigerian local and world biomes and reviewed all questions. The source's 3000 m body threshold conflicts with the weekend option's 300 m; the question also places a tundra description under montane vegetation. Nigerian distribution and climate figures were recorded for authoritative review. A geography fact task and bounded biome lesson task were appended; no answer key was invented."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -59,8 +60,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 26,
-    "PENDING": 79,
+    "IMPLEMENTED_TESTING_DEFERRED": 27,
+    "PENDING": 80,
     "BLOCKED": 6
   },
   "items": [
@@ -1728,8 +1729,8 @@
         "BIO-INV-T2",
         "BIO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T2): label block 573 text \"WEEK SEVEN                                                                                                      DATE ………………………\" (sha256 9ef1976a2740902b4c16b8a4bea9380d82b9c37ec0f0131070e64422406b377a); blocks 573-682; range sha256 4155e2974b956ebf6188034c0aed85b6fdf780872f806fe3479c737903de4fc5. Topic: Biomes. Biomes (579), local biomes (586: mangrove swamps 591, tropical rain forest 593, savanna 603), world biomes (620: temperate forests 622, coniferous forests 626, temperate shrubland 633, temperate grassland 637, a second SAVANNA heading 641, desert 645, tundra 649, mountane vegetation 653), General Evaluation/Revisional Questions (658), Reading Assignment (666), Weekend Assignment (669-682, theory from 678). Regional statements (for example block 608 naming Kano, Borno, Sokoto, Niger and Bauchi; block 656 giving 3000 m) are geographic facts that need authoritative checking. Locator rule: converted copy (LibreOffice 24.2.7.2, headless --convert-to docx of the hash-verified .doc): word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-961; block 962 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T2-W07.md; verified the assigned legacy DOC member hash against the archive and manifest; private DOCX conversion reproduced the exact Week 7 label and range hashes. Indexed the biome definition, determining factors, Nigerian local biomes and world biomes, and reviewed every evaluation/revision/weekend/theory prompt. The Week 6 early biome definition is distinguished from this Week 7 full topic. Source-stated Nigerian regional/climate figures need authoritative review; question 676 conflicts with body block 656 (300 m vs 3000 m) and places a tundra descriptor under montane vegetation. No answer key exists. No extract or converted file committed; tests remain deferred.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -4205,6 +4206,55 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T2-W06; see the Week 6 index for exact source locators."
+    },
+    {
+      "id": "BIO-FACT-T2-W07-GEOGRAPHY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 7 blocks 592, 594, 601, 604-611 and 656; question 676",
+      "objective": "Verify Nigerian local-biome distributions and source-stated latitude, rainfall, temperature and Afro-alpine altitude claims against authoritative Nigerian/scientific references. Resolve the source-internal 3000 m (body block 656) versus 300 m (weekend option block 676) conflict and the tundra descriptor appearing in the montane question. Preserve the original wording and keep corrections separate.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T2-W07.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T2-W07-GEOGRAPHY.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W07. Required to verify regional and climate facts before any correction or keyed answer is authored."
+    },
+    {
+      "id": "BIO-LES-T2-W07-BIOMES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 7 blocks 579-656",
+      "objective": "Author a clearly labelled supplemental lesson for biome definition, determining factors, Nigerian local biomes and world biomes. Use BIO-FACT-T2-W07-GEOGRAPHY for reviewed regional/climate facts; preserve the original source separately, cite approved references, and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T2-W07.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T2-W07-BIOMES.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W07",
+        "BIO-FACT-T2-W07-GEOGRAPHY"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W07; no supplemental biome lesson is registered in biology.json."
     }
   ],
   "review": {
@@ -4238,7 +4288,6 @@
     "BIO-VIS-T1-TBL-CROP-ROTATION",
     "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
     "BIO-VIS-T1-TBL-ENZYMES",
-    "BIO-WK-T2-W07",
     "BIO-WK-T2-W08",
     "BIO-WK-T2-W09",
     "BIO-WK-T2-W10",
@@ -4287,6 +4336,8 @@
     "BIO-LES-T2-W03-SEXUAL-ADVANTAGES",
     "BIO-FACT-T2-W04-KLINOSTAT",
     "BIO-FACT-T2-W05-HEALTH-CLAIMS",
-    "BIO-FACT-T2-W06-ENVIRONMENT-FACTS"
+    "BIO-FACT-T2-W06-ENVIRONMENT-FACTS",
+    "BIO-SCOPE-T2-W06-BIOMES",
+    "BIO-FACT-T2-W07-GEOGRAPHY"
   ]
 }
