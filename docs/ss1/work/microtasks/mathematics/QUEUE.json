@@ -25,7 +25,8 @@
     "MATH-PRE-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5) completed the 1st Term preamble inventory. mathematics.json now has 10 source_rules (added RULE-MATH-T1-TITLE and RULE-MATH-T1-REFERENCES; re-anchored RULE-MATH-T1-SCHEME-EXAM) and 36 coverage entries (added COV-MATH-T1-TITLE and COV-MATH-T1-REFERENCES; updated COV-MATH-T1-EXAM). Note 1 is the queue-generation snapshot. Per-block hashes and the auto-numbering finding are in docs/ss1/work/microtasks/mathematics/MATH-PRE-T1.md. Nothing was run; testing remains deferred.",
     "MATH-LES-T1-W01-VOCABULARY (2026-11-06): Week 1 vocabulary closed. Body section 4 of SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS defines simplify and evaluate in the school’s own wording (lines 105 and 107) and section 1 now carries line 103 with its two mixed-number counter-examples restored from the OMML, so COV-MATH-T1-W01-OBJ-4 is IMPLEMENTED_EQUIVALENT and the lesson is bound to it. New body_sha256 2ce49d2c33afaae0c6b4d71d219c3f73e024e194bac51c4ee3926bbccf205dec (the earlier lesson item MATH-LES-T1-W01-DIVISIBILITY-INTEGERS still records 03206bf6b426ad0c316aa1e3ad653bcbd296e56750eeec7f7b81d0915a5d2ef2, the digest as of its own run - a point-in-time reference, not an error). OI-MATH-T1-W01-ASSESSMENT-GAPS is narrowed to the eight uncarried ASSESSMENT items and still blocks; MATH-LES-T1-W01-ASSESSMENT-PRACTICE is now dependency-satisfied, so it replaces this item in runnable_now. COV-MATH-T1-R00’s bounding entry was dated for the same reason. Nothing was approved, verified or run: approval PENDING, verification DEFERRED, Week 1 not complete. next_runnable is unchanged.",
     "MATH-WK-T1-W02 (2026-11-07) indexed Week 2 at objective level: 7 coverage entries (6 PARTIAL, 1 UNRESOLVED, none SUPPORTED), a source answer defect (1011.01 base two printed as 11 3/4, correct 11 1/4), the row-level COV-MATH-T1-R01 note corrected, 3 open items, one lesson item and one correction-binding item appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, lesson, correction, asset or shared file was written.",
-    "MATH-LES-T1-W02-NUMBER-BASES (2026-11-07) authored the Week 2 replacement lesson (SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES) and keyed all 20 exercise items; seven W02 coverage entries now IMPLEMENTED_EQUIVALENT; MATH-COR-T1-W02-NUMBER-BASES is now dependency-satisfied and replaces it in runnable_now. Teacher confirmations remain open. Not approved, not verified."
+    "MATH-LES-T1-W02-NUMBER-BASES (2026-11-07) authored the Week 2 replacement lesson (SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES) and keyed all 20 exercise items; seven W02 coverage entries now IMPLEMENTED_EQUIVALENT; MATH-COR-T1-W02-NUMBER-BASES is now dependency-satisfied and replaces it in runnable_now. Teacher confirmations remain open. Not approved, not verified.",
+    "MATH-LES-T1-W01-ASSESSMENT-PRACTICE (2026-11-08): implemented on ss1/self-implementation-20261108. Added eight separately keyed items M1W1-Q4–Q11 for the previously uncarried products (2,184×11; 217×405), subtractions (23 from 36; 94 from 104) and divisions (336÷4; 1,848÷12; (−18)÷(−3); −25÷4). Answers: 24,024; 87,885; 13; 10; 84; 154; 6; −6.25 (or −25/4). Each carries one mark and a matching criterion. Added worked explanations to section 5; recomputed body SHA-256 9b75756dad026ddf8d903a5cc69292bf0782088597d63387ffc8962001114195. COV-MATH-T1-W01-OBJ-8 now IMPLEMENTED_EQUIVALENT; OI-MATH-T1-W01-ASSESSMENT-GAPS no longer blocks as an authoring gap. OI-MATH-005 still requires teacher content approval. No source row changed. Testing remains deferred by owner; source evidence is inherited from the existing repository record and was not independently reverified from the unavailable binary archive in this run."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -45,9 +46,9 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 51,
-    "PENDING": 39,
-    "BLOCKED": 9
+    "IMPLEMENTED_TESTING_DEFERRED": 52,
+    "PENDING": 38,
+    "BLOCKED": 10
   },
   "total": 99,
   "items": [
@@ -1628,8 +1629,8 @@
         "MATH-WK-T1-W01",
         "MATH-LES-T1-W01-VOCABULARY"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by MATH-WK-T1-W01 on 2026-11-05 from origin/master cc6cf68. COV-MATH-T1-W01-OBJ-8 is PARTIAL and OI-MATH-T1-W01-ASSESSMENT-GAPS blocks delivery. The row's twelve assessment items sit in four blocks - products 165-167 (SHA-256 efe3833aeee18e639b1a459b10d342886e8074f19fe12199d0a90e1644b33b1c), subtraction 169-171 (a22a28d518bdedfcaf3b132333a090d9816705f5b0e43d724601065f714ac4a5), division 173-175 (1f952230d4949d275ab6ea168238d31f0b2ba230ad30500173edb7907af542f7) and the two OMML fraction items 177-181 (ff87ed9be1b85dd0003773fe04f55c80a4febc1ad7f84b437215b11aac731d69, where line 179 extracts to the empty string and line 181 to '       b.  '). The supplement carries 4 of 12 (M1W1-Q2(c)/(d), M1W1-Q3(b)/(c)). Eight are carried nowhere: 2184x11 and 217x405 (line 167), 23 from 36 and 94 from 104 (line 171), and 336÷4, 1848÷12, (-18)÷(-3), -25÷4 (line 175, division sign survives extraction). Reviewer values recorded for sizing only in COV-MATH-T1-W01-OBJ-8: 24024, 87885, 13, 10, 84, 154, 6, -6.25. Depends on MATH-LES-T1-W01-VOCABULARY because both edit the same lesson body; start from its delivered body_sha256. Deliverable: practice items for the eight, each with answer and marking criteria whose sum equals the declared marks under the schema. Do not copy the printed source items into the package as an answer key and do not record teacher-approved marks - none exists (OI-MATH-005).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented on 2026-11-08 in SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS. Added M1W1-Q4–M1W1-Q11, eight independently keyed items (two products, two subtractions, four divisions), each with one mark and a single criterion whose marks sum to the item total. Added section 5 worked examples and practice directions. Updated lesson body_sha256 to 9b75756dad026ddf8d903a5cc69292bf0782088597d63387ffc8962001114195. COV-MATH-T1-W01-OBJ-8 is IMPLEMENTED_EQUIVALENT and bound to the supplement; OI-MATH-T1-W01-ASSESSMENT-GAPS is closed as an authoring gap. OI-MATH-005 content approval remains open. No source row changed. Testing remains deferred by owner; this turn did not access the binary archive or rerun the original DOCX render, so source verification relies on the previously recorded repository evidence.",
       "completion_condition": "Every item in parsed row 0 lines 163-181 is either taught by the bound supplement with its own answer and marking criteria or accounted for by a further bounded task; COV-MATH-T1-W01-OBJ-8 leaves PARTIAL, OI-MATH-T1-W01-ASSESSMENT-GAPS is narrowed or closed with evidence, and the lesson body hash and marking arithmetic are recomputed. Approval and verification stay PENDING/DEFERRED."
     },
     {
@@ -3273,7 +3274,6 @@
     "MATH-WK-T3-W09",
     "MATH-WK-T3-W10",
     "MATH-WK-T3-W11",
-    "MATH-LES-T1-W01-ASSESSMENT-PRACTICE",
     "MATH-FACT-LOG-TABLES",
     "MATH-VIS-T1",
     "MATH-VIS-T2",
@@ -3310,7 +3310,6 @@
     "MATH-WK-T3-W09",
     "MATH-WK-T3-W10",
     "MATH-WK-T3-W11",
-    "MATH-LES-T1-W01-ASSESSMENT-PRACTICE",
     "MATH-FACT-LOG-TABLES",
     "MATH-VIS-T1",
     "MATH-VIS-T2",
