@@ -57,7 +57,7 @@
       },
       "observed_subject": "SUBJECT: BOOK-KEEPING\t\t\t\tCLASS: SS 1  TOPIC",
       "canonical_subject": "Bookkeeping",
-      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+      "approval_reference": "OWNER CONFIRMED 2026-11-08: the canonical subject identity is Bookkeeping (distinct from Financial Accounting). The observed source heading is accepted as a metadata alias for this registered Bookkeeping source. This approves subject identity/alias only; it is not teacher approval of lesson content or technical verification."
     },
     {
       "id": "SS1-SRC-97c1db5b1eb0-R001",
@@ -71,7 +71,7 @@
       },
       "observed_subject": "SUBJECT: BOOK-KEEPING\t\t\t\tCLASS: SS 1",
       "canonical_subject": "Bookkeeping",
-      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+      "approval_reference": "OWNER CONFIRMED 2026-11-08: the canonical subject identity is Bookkeeping (distinct from Financial Accounting). The observed source heading is accepted as a metadata alias for this registered Bookkeeping source. This approves subject identity/alias only; it is not teacher approval of lesson content or technical verification."
     },
     {
       "id": "SS1-SRC-97f226215927-R001",
@@ -85,7 +85,7 @@
       },
       "observed_subject": "SS 1 OMEGA TERM BOOK- KEEPING",
       "canonical_subject": "Bookkeeping",
-      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+      "approval_reference": "OWNER CONFIRMED 2026-11-08: the canonical subject identity is Bookkeeping (distinct from Financial Accounting). The observed source heading is accepted as a metadata alias for this registered Bookkeeping source. This approves subject identity/alias only; it is not teacher approval of lesson content or technical verification."
     },
     {
       "id": "RULE-BK-T1-REVISION-1",
@@ -3828,19 +3828,19 @@
     {
       "id": "BOOKKEEPING-ALIAS-APPROVAL",
       "kind": "OWNER_ACTION",
-      "detail": "The 1st Term source subject line is 'SUBJECT: BOOK-KEEPING' with 'CLASS: SS 1'. It differs from the canonical subject name 'Bookkeeping' by label, hyphen and class text, so the contract requires a source_alias declaration; rule SS1-SRC-62b02f2adcb3-R001 carries approval_reference PENDING-OWNER.",
-      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "detail": "The 1st Term source subject line is 'SUBJECT: BOOK-KEEPING' with 'CLASS: SS 1'. It differs from the canonical subject name 'Bookkeeping' by label, hyphen and class text, so the contract requires a source_alias declaration; rule SS1-SRC-62b02f2adcb3-R001 carries approval_reference PENDING-OWNER. OWNER CONFIRMATION RECORDED (2026-11-08): canonical subject identity Bookkeeping is confirmed; this source heading is accepted as its metadata alias.",
+      "required_action": "Resolved by owner confirmation dated 2026-11-08: accept the observed source heading as a metadata alias for canonical subject Bookkeeping. This is not teacher/content approval or technical verification.",
       "affected_ids": [
         "SS1-SRC-62b02f2adcb3-R001",
         "SS1-SRC-62b02f2adcb3"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-ALIAS-APPROVAL-T2",
       "kind": "OWNER_ACTION",
-      "detail": "The 2nd Term source subject line is 'SUBJECT: BOOK-KEEPING' with 'CLASS: SS 1'. It differs from the canonical subject name 'Bookkeeping' by label, hyphen and class text, so the contract requires a source_alias declaration; rule SS1-SRC-97c1db5b1eb0-R001 carries approval_reference PENDING-OWNER.",
-      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "detail": "The 2nd Term source subject line is 'SUBJECT: BOOK-KEEPING' with 'CLASS: SS 1'. It differs from the canonical subject name 'Bookkeeping' by label, hyphen and class text, so the contract requires a source_alias declaration; rule SS1-SRC-97c1db5b1eb0-R001 carries approval_reference PENDING-OWNER. OWNER CONFIRMATION RECORDED (2026-11-08): canonical subject identity Bookkeeping is confirmed; this source heading is accepted as its metadata alias.",
+      "required_action": "Resolved by owner confirmation dated 2026-11-08: accept the observed source heading as a metadata alias for canonical subject Bookkeeping. This is not teacher/content approval or technical verification.",
       "affected_ids": [
         "SS1-SRC-97c1db5b1eb0-R001",
         "SS1-SRC-97c1db5b1eb0"
@@ -3861,13 +3861,13 @@
     {
       "id": "BOOKKEEPING-ALIAS-APPROVAL-T3",
       "kind": "OWNER_ACTION",
-      "detail": "The 3rd Term source's opening heading is 'SS 1 OMEGA TERM BOOK- KEEPING' (class, term label and subject on one line; no 'SUBJECT:' label), not the canonical name 'Bookkeeping'. The source_alias rule SS1-SRC-97f226215927-R001 declares it with approval_reference PENDING-OWNER. The subject is read from the heading and confirmed by the scheme of work and body.",
-      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "detail": "The 3rd Term source's opening heading is 'SS 1 OMEGA TERM BOOK- KEEPING' (class, term label and subject on one line; no 'SUBJECT:' label), not the canonical name 'Bookkeeping'. The source_alias rule SS1-SRC-97f226215927-R001 declares it with approval_reference PENDING-OWNER. The subject is read from the heading and confirmed by the scheme of work and body. OWNER CONFIRMATION RECORDED (2026-11-08): canonical subject identity Bookkeeping is confirmed; this source heading is accepted as its metadata alias.",
+      "required_action": "Resolved by owner confirmation dated 2026-11-08: accept the observed source heading as a metadata alias for canonical subject Bookkeeping. This is not teacher/content approval or technical verification.",
       "affected_ids": [
         "SS1-SRC-97f226215927-R001",
         "SS1-SRC-97f226215927"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W02-DIFFERENCE-MISSING",
