@@ -122,9 +122,604 @@
         "locator": "BK-INV-T1.md: scheme preamble block 29; block SHA-256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9; exact anchor occurs once in the importer text view",
         "explanation": "The exact scheme entry is a examination marker in the preamble before the first week label (block 30). It has no instructional body; SCHEME_ONLY classifies preamble material outside parsed rows and does not discard a lesson body."
       }
+    },
+    {
+      "id": "RULE-BK-T3-REVISION-1",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "1                 Revision",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "BK-INV-T3 scheme preamble block 5; block SHA-256 001512a6ddbf840fdbd3388e661b790495094a020e23a723cbd9cf14eeaa0204",
+        "explanation": "The exact scheme entry is in the preamble before the first teaching content at block 44. It has no corresponding revision or examination body. SCHEME_ONLY records the preamble marker without deleting or inventing instructional content."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-REVISION-11",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "11       revision",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "BK-INV-T3 scheme preamble block 40; block SHA-256 b6d1ba5101b51df16c679e834778c5122b62ba0722f8b3685cd0d92892466166",
+        "explanation": "The exact scheme entry is in the preamble before the first teaching content at block 44. It has no corresponding revision or examination body. SCHEME_ONLY records the preamble marker without deleting or inventing instructional content."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-EXAM-12",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "12    exam",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "BK-INV-T3 scheme preamble block 41; block SHA-256 96bdf60333eb1cb78ace49a418eb4ba0f4fffec531a07fece7da63eecacba7be",
+        "explanation": "The exact scheme entry is in the preamble before the first teaching content at block 44. It has no corresponding revision or examination body. SCHEME_ONLY records the preamble marker without deleting or inventing instructional content."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-W02",
+      "op": "split_before",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "                                PETTY CASH BOOK",
+      "week_label": "2",
+      "evidence": {
+        "locator": "BK-INV-T3 body block 44; block SHA-256 4054da3ba8c1d7045a068566dd77b319115f937e3135bef41a298607a91c012c",
+        "explanation": "The exact source heading begins a distinct body section: Petty cash book section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-W03",
+      "op": "split_before",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "TRIAL BALANCE AND CORRECTION OF ERRORS",
+      "week_label": "3",
+      "evidence": {
+        "locator": "BK-INV-T3 body block 85; block SHA-256 8c19e1d9dd6141bbe93558d21ffe9635b434611712f1ebd7d6c06f3a376f2f98",
+        "explanation": "The exact source heading begins a distinct body section: Trial balance section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-W04",
+      "op": "split_before",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "RULES OF TRIAL BALANCE ",
+      "week_label": "4",
+      "evidence": {
+        "locator": "BK-INV-T3 body block 151; block SHA-256 43b8ea00301edfc2f3848ff0137216ce3c241aa988d6d3362d3dd0ec2a560872",
+        "explanation": "The exact source heading begins a distinct body section: Trial balance rules section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-W05",
+      "op": "split_before",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "TRIAL BALANCE ERRORS OR UNDISCLOSED ERRORS",
+      "week_label": "5",
+      "evidence": {
+        "locator": "BK-INV-T3 body block 261; block SHA-256 60721c55664d642425b78d1455b09ec59af43074c25b4b8a7aca92552b61b8cc",
+        "explanation": "The exact source heading begins a distinct body section: Error types section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-W06",
+      "op": "split_before",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "ERRORS THAT WILL AFFECT THE AGREEMNENT OF THE TRIAL BALANCE",
+      "week_label": "6",
+      "evidence": {
+        "locator": "BK-INV-T3 body block 308; block SHA-256 b43da5fee87442c76288f78c5ecd3e869d03b38fc6b7ef7e51b389dd1bf5f1c8",
+        "explanation": "The exact source heading begins a distinct body section: Suspense-account section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-W07",
+      "op": "split_before",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "                            TRADING PROFIT AND LOSS ACCOUNT AND BALANCE SHEET(FINAL ACCOUNT)",
+      "week_label": "7",
+      "evidence": {
+        "locator": "BK-INV-T3 body block 394; block SHA-256 9f3317d425f3d368c5231025ad1db3516181ca9466776c9d31025a12dfb1efe6",
+        "explanation": "The exact source heading begins a distinct body section: Combined final-accounts definitions section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-W08",
+      "op": "split_before",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "                PREPARATION OF FINAL ACCOUNT OF A SOLE TRADER",
+      "week_label": "8",
+      "evidence": {
+        "locator": "BK-INV-T3 body block 418; block SHA-256 801013faff2e7f3cc7d2dce3d60ea091dad989851e0ce302be51ee787eb9482c",
+        "explanation": "The exact source heading begins a distinct body section: Final-account preparation steps section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-W10",
+      "op": "split_before",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "LAYOUT OF BALANCE SHEET",
+      "week_label": "10",
+      "evidence": {
+        "locator": "BK-INV-T3 body block 426; block SHA-256 5874fd1a407d5b622f216e680c7495938aae82fe183c7e9cb755ab7cd83b298d",
+        "explanation": "The exact source heading begins a distinct body section: Balance-sheet layout section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
+      }
     }
   ],
-  "lessons": [],
+  "lessons": [
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Bookkeeping",
+      "title": "Errors that do not affect the agreement of a trial balance",
+      "objectives": [
+        "Explain why some accounting errors do not cause a trial balance disagreement.",
+        "Identify complete omission, error of original entry, error of commission, error of principle, compensating errors and complete reversal as errors that may leave trial-balance totals equal.",
+        "Distinguish errors that do not affect agreement from one-sided or wrong-side errors that may cause disagreement."
+      ],
+      "body": "Project-authored equivalent lesson — errors that do not affect the agreement of a trial balance\n\nA trial balance agrees when the total debit balances equal the total credit balances. Agreement is a useful arithmetic check, but it does not prove that every transaction has been recorded in the correct account or that every account is correct.\n\nErrors that do not affect agreement\n1. Error of complete omission: a transaction is left out of both the debit and credit entries. Neither side receives the amount, so the two totals remain equal.\n2. Error of original entry: the wrong amount is entered on both sides. For example, a purchase of 450 is entered as 405 in both Purchases and the supplier account. The entries still agree, although both are wrong.\n3. Error of commission: the correct amount is posted to the wrong personal account on the correct side. For example, a credit sale to Ada is posted to Bisi's account instead. Equal debit and credit entries remain.\n4. Error of principle: an item is posted to the wrong class of account, while equal debit and credit amounts are still recorded. For example, equipment bought for business use is debited to Purchases instead of Equipment.\n5. Compensating errors: two or more independent errors offset one another by equal amounts on opposite sides of the trial balance. The totals may agree even though the accounts are wrong.\n6. Complete reversal: the correct amount is entered, but the debit and credit accounts are reversed. Both totals still contain the same amount.\n\nErrors that can make the trial balance disagree include a one-sided omission, posting an amount to the wrong side, entering different amounts on the debit and credit sides, or incorrectly adding a ledger balance or trial-balance column.\n\nA suspense account may be opened temporarily for the difference while errors causing disagreement are investigated. It is not a permanent account and it is not the correction for every error. Errors that do not affect agreement still need correction even though the trial balance totals match.\n\nWorked classification\n- A transaction of 600 is omitted from both accounts: complete omission; trial balance still agrees.\n- A sale of 780 is entered as 870 on both sides: error of original entry; trial balance still agrees.\n- Rent of 250 is posted only to Rent Expense and not to Cash: one-sided omission; trial balance may disagree.\n- A 900 debit is posted as a 90 credit: wrong amount and wrong side; trial balance disagrees.\n\nAlways identify the original transaction, determine which account and side should contain it, compare that with what was actually posted, and then prepare a correction. Do not decide whether an error affects agreement from its name alone; inspect the actual entries.",
+      "body_sha256": "bc61f8ae5e06f2d19a34a33434c34e526db9c3ecd4e9a07266b02e399691e16e",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Classify each case as an error that normally does not affect trial-balance agreement or one that may cause disagreement: (a) a transaction omitted from both accounts; (b) the wrong amount entered on both sides; (c) rent entered in the cash account but omitted from the rent account; (d) a debit entry posted to the credit side.",
+          "answer": "(a) Does not affect agreement — complete omission. (b) Does not affect agreement — error of original entry. (c) May cause disagreement — one-sided omission. (d) May cause disagreement — wrong-side posting.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Correct classification of (a)",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct classification of (b)",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct classification of (c)",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct classification of (d)",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Why does an agreeing trial balance not prove that all accounting records are correct?",
+          "answer": "Some errors affect both debit and credit entries equally or leave both entries omitted, so the totals can agree even though transactions or accounts are wrong.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that equal debit/credit errors or complete omissions can remain",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains that accounts may still be wrong despite agreement",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Authored for SS1 Bookkeeping 3rd Term from scheme objectives and gaps recorded in BK-INV-T3.md; no third-party passage or image reproduced.",
+          "url": null,
+          "rights": "Original explanatory prose, worked examples and practice questions created for this project. No external text is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T3-W07-TRADING",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Bookkeeping",
+      "title": "Trading account, cost of goods sold and gross profit",
+      "objectives": [
+        "Explain the purpose of a trading account.",
+        "Calculate net sales, net purchases, cost of goods available for sale and cost of goods sold.",
+        "Determine gross profit or gross loss from net sales and cost of goods sold."
+      ],
+      "body": "Project-authored equivalent lesson — trading account, cost of goods sold and gross profit\n\nA trading account is prepared to determine the gross profit or gross loss from buying and selling goods during an accounting period. It compares net sales with the cost of the goods sold.\n\nKey terms and calculations\n- Net sales = Sales − Returns inwards.\n- Net purchases = Purchases − Returns outwards.\n- Cost of goods available for sale = Opening stock + Net purchases + Carriage inwards.\n- Cost of goods sold = Cost of goods available for sale − Closing stock.\n- Gross profit = Net sales − Cost of goods sold. If cost of goods sold is greater than net sales, the result is a gross loss.\n\nOpening stock is the goods held at the beginning of the period. Closing stock is the goods remaining unsold at the end. Returns inwards are goods customers return to the business; returns outwards are goods the business returns to suppliers. Carriage inwards is the cost of bringing purchased goods into the business and is included in the cost of goods. Carriage outwards is delivery to customers and is treated as an expense in the profit and loss account, not as carriage inwards.\n\nWorked example — all figures are fictional practice amounts\nSales 100,000; returns inwards 4,000; opening stock 20,000; purchases 80,000; returns outwards 5,000; carriage inwards 3,000; closing stock 18,000.\n1. Net sales = 100,000 − 4,000 = 96,000.\n2. Net purchases = 80,000 − 5,000 = 75,000.\n3. Cost of goods available = 20,000 + 75,000 + 3,000 = 98,000.\n4. Cost of goods sold = 98,000 − 18,000 = 80,000.\n5. Gross profit = 96,000 − 80,000 = 16,000.\n\nThe gross profit is calculated before deducting operating expenses such as salaries, rent, telephone and carriage outwards. Those expenses are considered in the profit and loss account.\n\nCheck your work by keeping each item in the correct category: returns inwards reduce sales; returns outwards reduce purchases; carriage inwards increases the cost of goods; closing stock is deducted to find cost of goods sold.",
+      "body_sha256": "03c907cc07de181c42d175a50e8ff6dca00789b947a780e106708dd893888786",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Using the worked example, calculate (a) net sales, (b) net purchases, (c) cost of goods available for sale, (d) cost of goods sold and (e) gross profit.",
+          "answer": "(a) 96,000. (b) 75,000. (c) 98,000. (d) 80,000. (e) 16,000.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Net sales = 100,000 − 4,000 = 96,000",
+              "marks": 1
+            },
+            {
+              "criterion": "Net purchases = 80,000 − 5,000 = 75,000",
+              "marks": 1
+            },
+            {
+              "criterion": "Goods available = 20,000 + 75,000 + 3,000 = 98,000",
+              "marks": 1
+            },
+            {
+              "criterion": "Cost of goods sold = 98,000 − 18,000 = 80,000",
+              "marks": 1
+            },
+            {
+              "criterion": "Gross profit = 96,000 − 80,000 = 16,000",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "State one difference between carriage inwards and carriage outwards.",
+          "answer": "Carriage inwards is the cost of bringing purchased goods into the business and is included in the cost of goods; carriage outwards is the cost of delivering goods to customers and is treated as an expense.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct meaning/treatment of carriage inwards",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct meaning/treatment of carriage outwards",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Authored for SS1 Bookkeeping 3rd Term from scheme objectives and gaps recorded in BK-INV-T3.md; no third-party passage or image reproduced.",
+          "url": null,
+          "rights": "Original explanatory prose, worked examples and practice questions created for this project. No external text is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T3-W08-PREP",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Bookkeeping",
+      "title": "Preparing a simple trading account",
+      "objectives": [
+        "Prepare a simple trading account in a debit-and-credit format.",
+        "Calculate net sales, net purchases, cost of goods sold and gross profit within the account.",
+        "Distinguish carriage inwards from carriage outwards."
+      ],
+      "body": "Project-authored equivalent lesson — preparing a simple trading account\n\nA trading account brings together the sales and the cost of goods sold for one accounting period. It is prepared after the relevant ledger balances have been extracted. The purpose is to calculate gross profit or gross loss.\n\nSteps\n1. Enter sales on the credit side and deduct returns inwards to obtain net sales.\n2. Enter opening stock, purchases and carriage inwards on the debit side.\n3. Deduct returns outwards from purchases to obtain net purchases.\n4. Add opening stock, net purchases and carriage inwards to obtain the cost of goods available for sale.\n5. Enter closing stock on the credit side and deduct it from the cost of goods available to obtain cost of goods sold.\n6. Compare net sales with cost of goods sold. The difference is gross profit or gross loss.\n\nWorked trading account — fictional practice amounts\nFor the period:\n- Sales 100,000; returns inwards 4,000.\n- Opening stock 20,000; purchases 80,000; returns outwards 5,000.\n- Carriage inwards 3,000; closing stock 18,000.\n\nTrading Account for the period\n\nDebit side:\n- Opening stock: 20,000\n- Purchases: 80,000\n- Less returns outwards: (5,000)\n- Net purchases: 75,000\n- Carriage inwards: 3,000\n- Cost of goods available for sale: 98,000\n- Less closing stock: (18,000)\n- Cost of goods sold: 80,000\n- Gross profit: 16,000\n- Debit total: 114,000\n\nCredit side:\n- Sales: 100,000\n- Less returns inwards: (4,000)\n- Net sales: 96,000\n- Closing stock: 18,000\n- Credit total: 114,000\n\nThe two sides agree at 114,000. Gross profit is the balancing figure on the debit side because net sales exceed cost of goods sold by 16,000. In a gross-loss case, the balancing figure would be placed on the credit side.\n\nDo not deduct carriage outwards in the trading account. It is a selling/distribution expense and belongs in the profit and loss account. Figures in this worked example are newly authored practice amounts, not amounts from the original third-term source.",
+      "body_sha256": "df5b68dea2fb111be4d3543447185e484ed7ad7db0d9073cb2d7dd9df572732d",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Prepare the trading-account calculations from: sales 100,000; returns inwards 4,000; opening stock 20,000; purchases 80,000; returns outwards 5,000; carriage inwards 3,000; closing stock 18,000. Show net sales, net purchases, cost of goods sold and gross profit.",
+          "answer": "Net sales 96,000; net purchases 75,000; cost of goods available 98,000; cost of goods sold 80,000; gross profit 16,000. Trading-account debit and credit totals are both 114,000.",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "Net sales correctly calculated",
+              "marks": 1
+            },
+            {
+              "criterion": "Net purchases correctly calculated",
+              "marks": 1
+            },
+            {
+              "criterion": "Cost of goods available correctly calculated",
+              "marks": 1
+            },
+            {
+              "criterion": "Cost of goods sold correctly calculated",
+              "marks": 1
+            },
+            {
+              "criterion": "Gross profit correctly calculated",
+              "marks": 1
+            },
+            {
+              "criterion": "Shows equal trading-account totals of 114,000",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Should carriage outwards be included with carriage inwards in the trading account? Give a reason.",
+          "answer": "No. Carriage outwards is the cost of delivering goods to customers and is treated as a selling/distribution expense in the profit and loss account. Carriage inwards is included in the cost of goods purchased.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States no and classifies carriage outwards as an expense",
+              "marks": 1
+            },
+            {
+              "criterion": "Distinguishes it from carriage inwards",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Authored for SS1 Bookkeeping 3rd Term from scheme objectives and gaps recorded in BK-INV-T3.md; no third-party passage or image reproduced.",
+          "url": null,
+          "rights": "Original explanatory prose, worked examples and practice questions created for this project. No external text is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T3-W09-PNL",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Bookkeeping",
+      "title": "Preparing a profit and loss account",
+      "objectives": [
+        "Explain the purpose of a profit and loss account.",
+        "Calculate net sales and net profit from given figures.",
+        "Prepare a simple profit and loss account using gross profit, other income and expenses."
+      ],
+      "body": "Project-authored equivalent lesson — profit and loss account, net sales and net profit\n\nThe profit and loss account is prepared after the trading account. It uses gross profit (or gross loss), adds other income and deducts the expenses of running the business to determine net profit or net loss for the period.\n\nNet sales\nNet sales = Sales − Returns inwards. Returns inwards are deducted because they reduce the value of goods retained by customers. Do not deduct returns outwards from sales; returns outwards reduce purchases in the trading account.\n\nNet profit\nNet profit = Gross profit + Other income − Expenses. If expenses and other charges are greater than gross profit plus other income, the result is a net loss.\n\nTypical other income may include commission received, rent received or discount received. Expenses may include salaries, rent, telephone, insurance, discount allowed and carriage outwards. Classify each item according to its nature and the accounting period.\n\nWorked example — fictional practice amounts\nTrading account gross profit: 16,000.\nOther income: commission received 2,000.\nExpenses: salaries 6,000; rent 2,500; carriage outwards 1,000; telephone 500; discount allowed 500.\nTotal expenses = 6,000 + 2,500 + 1,000 + 500 + 500 = 10,500.\nTotal income available = 16,000 + 2,000 = 18,000.\nNet profit = 18,000 − 10,500 = 7,500.\n\nProfit and Loss Account for the period\nCredit side: Gross profit b/d 16,000; commission received 2,000; total 18,000.\nDebit side: Salaries 6,000; rent 2,500; carriage outwards 1,000; telephone 500; discount allowed 500; net profit 7,500; total 18,000.\n\nThe account balances because net profit is the balancing figure added to the debit side. Net profit is then added to the owner's capital in the balance sheet; drawings are deducted from capital.\n\nPreparation rules\n1. Start with gross profit brought down from the trading account.\n2. Add other income earned during the period.\n3. List and total the expenses relating to the period.\n4. Deduct total expenses from gross profit plus other income.\n5. Show net profit as the balancing figure, or net loss if expenses are greater.\n6. Transfer net profit or net loss to the capital section of the balance sheet.\n\nThe example is original practice material and is not reproduced from the source document.",
+      "body_sha256": "289fc07daf4c232339d96f3b252244d5e9ade7d87804142969af526be5a0b45c",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Sales are 100,000 and returns inwards are 4,000. Gross profit is 16,000, other income is 2,000 and expenses total 10,500. Calculate net sales and net profit.",
+          "answer": "Net sales = 100,000 − 4,000 = 96,000. Net profit = 16,000 + 2,000 − 10,500 = 7,500.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Net sales formula",
+              "marks": 1
+            },
+            {
+              "criterion": "Net sales result 96,000",
+              "marks": 1
+            },
+            {
+              "criterion": "Adds gross profit and other income",
+              "marks": 1
+            },
+            {
+              "criterion": "Subtracts expenses",
+              "marks": 1
+            },
+            {
+              "criterion": "Net profit result 7,500",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "State three main steps in preparing a profit and loss account.",
+          "answer": "Bring down gross profit; add other income; deduct the period's expenses to determine net profit or net loss.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Brings down gross profit",
+              "marks": 1
+            },
+            {
+              "criterion": "Adds other income",
+              "marks": 1
+            },
+            {
+              "criterion": "Deducts expenses and determines net result",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Authored for SS1 Bookkeeping 3rd Term from scheme objectives and gaps recorded in BK-INV-T3.md; no third-party passage or image reproduced.",
+          "url": null,
+          "rights": "Original explanatory prose, worked examples and practice questions created for this project. No external text is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T3-W10-USERS",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Bookkeeping",
+      "title": "Users of a balance sheet",
+      "objectives": [
+        "Identify internal and external users of a balance sheet.",
+        "Explain the type of financial-position information different users may seek.",
+        "Distinguish a balance sheet from an income statement."
+      ],
+      "body": "Project-authored equivalent lesson — users of a balance sheet\n\nA balance sheet shows the financial position of a business at a particular date. It summarises assets, liabilities and the owner's capital. Different people use this information to make decisions.\n\nInternal users\n- Owner: reviews the resources invested in the business, amounts owed and the owner's remaining interest.\n- Managers: assess liquidity, working capital, asset use and whether the business can meet its obligations.\n\nExternal users\n- Banks and other lenders: consider assets, liabilities and liquidity when deciding whether to lend and what terms may be appropriate.\n- Suppliers who give credit: assess whether the business is likely to pay amounts due.\n- Investors or potential investors: consider the resources and obligations of the business alongside other financial information before deciding whether to invest.\n- Employees and their representatives: may consider the stability and resources of the organisation when discussing employment and future prospects.\n- Tax and regulatory authorities: use financial records as part of their statutory oversight and compliance work; the balance sheet alone is not a complete tax computation.\n\nA balance sheet is prepared at a date, not for a whole period. It is not the same as a profit and loss account, which reports income and expenses over a period. Users should not rely on one statement alone: they may also need the income statement, cash-flow information, accounting policies and explanatory notes.\n\nExample: a supplier considering whether to allow a business 30 days' credit may examine current assets and current liabilities to understand short-term liquidity. A lender considering a long-term loan may examine the asset base and existing liabilities. These are examples of how users may apply the information, not guarantees of a decision.",
+      "body_sha256": "63adfa99cf4b7629b85b9eec3c07e9ac48693f579d798543301db56fc7a94a3a",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Name four users of a balance sheet and state one reason each may use it.",
+          "answer": "Owner: assess the owner's interest; manager: assess liquidity and resources; lender: assess ability to repay; supplier: assess ability to pay trade debts. Other valid users include investors, employees and regulators.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Names a valid user",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives a relevant reason for that user",
+              "marks": 1
+            },
+            {
+              "criterion": "Names a second valid user",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives a relevant reason for the second user",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "State one difference between a balance sheet and a profit and loss account.",
+          "answer": "A balance sheet shows assets, liabilities and capital at a particular date; a profit and loss account reports income and expenses over an accounting period.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Balance sheet is at a particular date",
+              "marks": 1
+            },
+            {
+              "criterion": "Profit and loss account covers a period",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Authored for SS1 Bookkeeping 3rd Term from scheme objectives and gaps recorded in BK-INV-T3.md; no third-party passage or image reproduced.",
+          "url": null,
+          "rights": "Original explanatory prose, worked examples and practice questions created for this project. No external text is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Bookkeeping",
+      "title": "Preparing a simple balance sheet: Bose Adetoro Enterprises",
+      "objectives": [
+        "Prepare a simple sole-trader balance sheet by grouping fixed assets, current assets, liabilities and capital.",
+        "Calculate closing capital from opening capital, net profit and drawings.",
+        "Check that total assets equal total capital and liabilities."
+      ],
+      "body": "Project-authored worked equivalent — preparing a simple balance sheet\n\nA balance sheet lists the assets and liabilities of a business at a particular date and shows the owner's capital. A simple sole-trader balance sheet can be prepared by grouping fixed assets, current assets, liabilities and capital.\n\nCapital calculation\nClosing capital = Opening capital + Net profit − Drawings. A net loss is deducted instead of added. Drawings are amounts or goods taken by the owner for private use; they are not a business expense.\n\nWorked solution to the source assignment — source figures preserved\nThe third-term source gives these figures for Bose Adetoro Enterprises:\n- Capital 335,955\n- Drawings 110,420\n- Cash at bank 129,000\n- Debtors 112,300\n- Creditors 301,065\n- Land and building 150,000\n- Furniture 140,000\n- Machinery 160,000\n- Closing stock 121,560\n- Net profit for the year 286,260\n\nThe source heading states 31 December 1983, but the final instruction says 31 December 1883. The year is therefore shown as “[year to confirm]” and is not silently corrected.\n\nBose Adetoro Enterprises\nBalance Sheet as at 31 December [year to confirm]\n\nCapital and liabilities\n- Opening capital: 335,955\n- Add net profit: 286,260\n- Subtotal: 622,215\n- Less drawings: 110,420\n- Closing capital: 511,795\n- Creditors: 301,065\n- Total capital and liabilities: 812,860\n\nAssets\nFixed assets:\n- Land and building: 150,000\n- Furniture: 140,000\n- Machinery: 160,000\n- Total fixed assets: 450,000\n\nCurrent assets:\n- Closing stock: 121,560\n- Debtors: 112,300\n- Cash at bank: 129,000\n- Total current assets: 362,860\n\nTotal assets: 450,000 + 362,860 = 812,860.\n\nCheck: total assets 812,860 = closing capital 511,795 + creditors 301,065 = total capital and liabilities 812,860. The balance sheet agrees.\n\nThis worked answer uses only the figures printed in the source assignment. The calculation and layout are newly authored; the conflicting source year remains explicitly unresolved.",
+      "body_sha256": "ba3101b1a53027a2ffa747c6827c3b61ab0c846e99a8ee6bc8eadb41e7b82118",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Using the Bose Adetoro Enterprises figures, calculate closing capital and total assets.",
+          "answer": "Closing capital = 335,955 + 286,260 − 110,420 = 511,795. Total assets = land/building 150,000 + furniture 140,000 + machinery 160,000 + closing stock 121,560 + debtors 112,300 + bank 129,000 = 812,860.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Adds opening capital and net profit",
+              "marks": 1
+            },
+            {
+              "criterion": "Deducts drawings and obtains closing capital 511,795",
+              "marks": 1
+            },
+            {
+              "criterion": "Totals fixed assets 450,000",
+              "marks": 1
+            },
+            {
+              "criterion": "Totals current assets 362,860",
+              "marks": 1
+            },
+            {
+              "criterion": "Total assets 812,860",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Show the balance-sheet check using creditors of 301,065.",
+          "answer": "Closing capital 511,795 + creditors 301,065 = total capital and liabilities 812,860, equal to total assets 812,860.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct capital plus creditors total",
+              "marks": 1
+            },
+            {
+              "criterion": "States that it equals total assets",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Authored for SS1 Bookkeeping 3rd Term from scheme objectives and gaps recorded in BK-INV-T3.md; no third-party passage or image reproduced.",
+          "url": null,
+          "rights": "Original explanatory prose, worked examples and practice questions created for this project. No external text is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    }
+  ],
   "delivery_corrections": [],
   "assets": [],
   "coverage": [
@@ -865,6 +1460,462 @@
         {
           "locator": "Scheme preamble block 29; first week marker is block 30",
           "explanation": "The scheme line is a marker only. The source contains no examination paper, questions, answers, marks or duration after this line; no instructional content is invented."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-REVISION-1",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Scheme marker: 1                 Revision; no corresponding instructional or assessment body is supplied.",
+      "objective_locator": "BK-INV-T3 scheme preamble block 5; block SHA-256 001512a6ddbf840fdbd3388e661b790495094a020e23a723cbd9cf14eeaa0204",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T3-REVISION-1"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3 scheme preamble block 5; block SHA-256 001512a6ddbf840fdbd3388e661b790495094a020e23a723cbd9cf14eeaa0204",
+          "explanation": "The marker is a manually typed scheme entry in the preamble; no revision worksheet or examination material is supplied in the source body."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-REVISION-11",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Scheme marker: 11       revision; no corresponding instructional or assessment body is supplied.",
+      "objective_locator": "BK-INV-T3 scheme preamble block 40; block SHA-256 b6d1ba5101b51df16c679e834778c5122b62ba0722f8b3685cd0d92892466166",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T3-REVISION-11"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3 scheme preamble block 40; block SHA-256 b6d1ba5101b51df16c679e834778c5122b62ba0722f8b3685cd0d92892466166",
+          "explanation": "The marker is a manually typed scheme entry in the preamble; no revision worksheet or examination material is supplied in the source body."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-EXAM-12",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Scheme marker: 12    exam; no corresponding instructional or assessment body is supplied.",
+      "objective_locator": "BK-INV-T3 scheme preamble block 41; block SHA-256 96bdf60333eb1cb78ace49a418eb4ba0f4fffec531a07fece7da63eecacba7be",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T3-EXAM-12"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3 scheme preamble block 41; block SHA-256 96bdf60333eb1cb78ace49a418eb4ba0f4fffec531a07fece7da63eecacba7be",
+          "explanation": "The marker is a manually typed scheme entry in the preamble; no revision worksheet or examination material is supplied in the source body."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W02-MEANING",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Meaning of petty cash book",
+      "objective_locator": "BK-INV-T3 scheme Week 2, scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
+          "explanation": "Blocks 45–47 define the imprest system and petty cash book as a book of original/prime entry for small disbursements. Preserve the source's wording and examples; the section does not provide a complete lesson package."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W02-COLUMNS",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Classification of columns",
+      "objective_locator": "BK-INV-T3 scheme Week 2, scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
+          "explanation": "Blocks 53–55 describe the receipt side and wider credit-side analysis columns; block 63 lists receipt, date, details, voucher number, total and expense analysis headings. Column semantics and the printed layout require visual disposition."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W02-POSTING",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Posting of transaction",
+      "objective_locator": "BK-INV-T3 scheme Week 2, scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
+          "explanation": "Blocks 56–61 describe crediting petty cash with payments, transferring analysis totals to nominal ledgers and reimbursement. No complete posting demonstration to nominal ledger is supplied."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W03-MEANING",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Meaning of trial balance",
+      "objective_locator": "BK-INV-T3 scheme Week 3, scheme blocks 10–13; body blocks 85–150 and 166–259",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 10–13; body blocks 85–150 and 166–259",
+          "explanation": "Block 87 defines a trial balance as a statement of ledger balances in double-entry form used to test arithmetical accuracy. No explicit week label or complete lesson package."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W03-FUNCTIONS",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Functions of trial balance",
+      "objective_locator": "BK-INV-T3 scheme Week 3, scheme blocks 10–13; body blocks 85–150 and 166–259",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 10–13; body blocks 85–150 and 166–259",
+          "explanation": "Blocks 147–150 list three purposes: comprehensive account list, arithmetical accuracy check and data for final accounts. Source wording is preserved."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W03-EXTRACTION",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Extraction of balance from ledger to trial balance",
+      "objective_locator": "BK-INV-T3 scheme Week 3, scheme blocks 10–13; body blocks 85–150 and 166–259",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 10–13; body blocks 85–150 and 166–259",
+          "explanation": "Blocks 166–175 describe ledger balancing; blocks 180–254 show Mr Odili's transactions, cash and ledger accounts and a trial balance. Printed trial balance totals are inconsistent (debit 10,000, credit 1,000); preserve for arithmetic review."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W04-RULES",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Rules for posting balances from ledger to trial balance",
+      "objective_locator": "BK-INV-T3 scheme Week 4, scheme blocks 14–16; body blocks 151–175 and 180–254",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 14–16; body blocks 151–175 and 180–254",
+          "explanation": "Blocks 151–164 contain a visual classification diagram naming credit liabilities, credit income/gain, debit expenses and debit assets. The diagram's spatial mapping requires separate visual disposition; the source does not give a full written set of transfer rules."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W04-PREPARATION",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Preparation of trial balance",
+      "objective_locator": "BK-INV-T3 scheme Week 4, scheme blocks 14–16; body blocks 151–175 and 180–254",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 14–16; body blocks 151–175 and 180–254",
+          "explanation": "Blocks 166–175 give ledger balancing steps and blocks 180–254 contain a worked cash/ledger/trial balance illustration. The printed trial balance shows debit 10,000 and credit 1,000, so the worked answer does not reconcile as printed."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W05-MEANING",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Meaning of errors",
+      "objective_locator": "BK-INV-T3 scheme Week 5, scheme blocks 17–21; body blocks 261–307 and 308–314",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 17–21; body blocks 261–307 and 308–314",
+          "explanation": "Blocks 261–267 introduce errors through six named categories and brief definitions/examples; no separate general definition is provided."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W05-TYPES",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Types of errors",
+      "objective_locator": "BK-INV-T3 scheme Week 5, scheme blocks 17–21; body blocks 261–307 and 308–314",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 17–21; body blocks 261–307 and 308–314",
+          "explanation": "Blocks 262–267 list errors of original entry, omission, commission, principle, compensating errors and complete reversal, with short descriptions."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W05-AFFECT",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Errors affecting trial balance",
+      "objective_locator": "BK-INV-T3 scheme Week 5, scheme blocks 17–21; body blocks 261–307 and 308–314",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 17–21; body blocks 261–307 and 308–314",
+          "explanation": "Blocks 308–314 list one-sided omission, misposting of figures, errors in transfer of subsidiary-book totals, two entries on the same side, and under/overcasting as errors affecting agreement. The source does not map every earlier error type to this classification."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W05-NOT-AFFECT",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Errors that do not affect trial balance",
+      "objective_locator": "BK-INV-T3 scheme Week 5, scheme blocks 17–21; body blocks 261–307 and 308–314",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 17–21; body blocks 261–307 and 308–314",
+          "explanation": "The scheme explicitly requires this category (block 21), but the source body does not provide a distinct list or explanation of errors that do not affect agreement. The earlier six error types are not explicitly classified by effect."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W06-SUSPENSE",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Correction of errors through the use of suspense account",
+      "objective_locator": "BK-INV-T3 scheme Week 6, scheme blocks 22–23; body blocks 308–392; range hash 3ff8ce00524df2d8e0822ee1c5867eb859ec9c1447c0835915a3bd363a9c4b5c",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 22–23; body blocks 308–392; range hash 3ff8ce00524df2d8e0822ee1c5867eb859ec9c1447c0835915a3bd363a9c4b5c",
+          "explanation": "Blocks 308–388 cover errors affecting agreement, correction procedures, examples, journal entries and a suspense account. The printed suspense-account debit items total 950 while the credit items total 1,400, despite 1,400 being printed on both sides; detailed worked-material review is required."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W07-DEFINITION",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Definition of trading account",
+      "objective_locator": "BK-INV-T3 scheme Week 7, scheme blocks 24–27; body blocks 394–417",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W07-TRADING"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 24–27; body blocks 394–417",
+          "explanation": "Block 402 defines trading account and gross profit. No standalone trading account layout or solved example is present."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W07-TRADING in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W07-COGS",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Description of cost of goods sold",
+      "objective_locator": "BK-INV-T3 scheme Week 7, scheme blocks 24–27; body blocks 394–417",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W07-TRADING"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 24–27; body blocks 394–417",
+          "explanation": "Blocks 410–413 define cost of goods available for sale and cost of goods sold, including the subtraction of closing stock. No complete numerical illustration is supplied."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W07-TRADING in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W07-GROSS",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Determining gross profit",
+      "objective_locator": "BK-INV-T3 scheme Week 7, scheme blocks 24–27; body blocks 394–417",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W07-TRADING"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 24–27; body blocks 394–417",
+          "explanation": "Block 416 defines gross profit as profit on sales before expenses. The source does not provide a complete trading-account calculation demonstrating the amount."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W07-TRADING in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W08-PREPARATION",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Preparation of a simple trading account",
+      "objective_locator": "BK-INV-T3 scheme Week 8, scheme blocks 28–29; body blocks 418–423",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W08-PREP"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 28–29; body blocks 418–423",
+          "explanation": "The scheme requires preparation of a simple trading account (block 29). Blocks 418–423 give general steps for final accounts but the source supplies no trading-account layout, figures or worked preparation."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W08-PREP in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W09-PURPOSE",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Purpose of profit and loss account",
+      "objective_locator": "BK-INV-T3 scheme Week 9, scheme blocks 30–33; body blocks 401–423",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W09-PNL"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 30–33; body blocks 401–423",
+          "explanation": "Block 403 says the account discloses net profit or net loss and expenses are deducted from gross profit; it does not separately enumerate the purpose."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W09-PNL in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W09-NET-SALES-NET-PROFIT",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Determining net sales and net profit",
+      "objective_locator": "BK-INV-T3 scheme Week 9, scheme blocks 30–33; body blocks 401–423",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W09-PNL"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 30–33; body blocks 401–423",
+          "explanation": "The source defines net profit at block 417 but gives no net-sales computation or worked net-profit calculation."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W09-PNL in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W09-RULES",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Rules for preparing profit and loss account",
+      "objective_locator": "BK-INV-T3 scheme Week 9, scheme blocks 30–33; body blocks 401–423",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W09-PNL"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 30–33; body blocks 401–423",
+          "explanation": "Block 422 says expenses in the trial balance are deducted from gross profit to arrive at net profit/loss. No distinct P&L format or complete rule sequence is supplied."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W09-PNL in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W10-EXPLAIN",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Explain balance sheet",
+      "objective_locator": "BK-INV-T3 scheme Week 10, scheme blocks 34–38; body blocks 404, 426–468",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 34–38; body blocks 404, 426–468",
+          "explanation": "Block 404 defines a balance sheet as a list of assets and liabilities at a particular date. No lesson package is yet authored."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W10-CONTENT",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Balance sheet content",
+      "objective_locator": "BK-INV-T3 scheme Week 10, scheme blocks 34–38; body blocks 404, 426–468",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 34–38; body blocks 404, 426–468",
+          "explanation": "Blocks 426–452 show a balance sheet layout with capital, long-term/current liabilities, fixed assets, investment and current assets. VML/tab geometry requires visual disposition."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W10-USERS",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Users of balance sheet",
+      "objective_locator": "BK-INV-T3 scheme Week 10, scheme blocks 34–38; body blocks 404, 426–468",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W10-USERS"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 34–38; body blocks 404, 426–468",
+          "explanation": "The scheme explicitly includes 'Users of balance sheet' at block 37, but no identifiable explanation of user groups or their uses appears in the body."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W10-USERS in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W10-PREPARATION",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Preparation of simple balance sheet",
+      "objective_locator": "BK-INV-T3 scheme Week 10, scheme blocks 34–38; body blocks 404, 426–468",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 34–38; body blocks 404, 426–468",
+          "explanation": "Blocks 426–452 show a blank/template balance-sheet layout; blocks 457–468 provide an assignment but no worked answer. The assignment date conflicts: 31 Dec. 1983 in block 457 and 31 Dec. 1883 in block 468."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
         }
       ]
     }
