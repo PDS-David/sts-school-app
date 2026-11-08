@@ -28,22 +28,23 @@
     "AG-INV-T3 (2026-11-08) inventoried the attached 3rd Term Agricultural Science DOCX after verifying its exact member SHA-256 against SOURCE_ASSIGNMENTS.csv. Ten teaching-week bodies (WEEK ONE–WEEK TEN) were found; scheme items 11 Revision and 12 Examination have no instructional bodies. Preamble, practical project, four tables, 18 embedded body image groups, respiration equations, inline Office Math, parser-rule findings and pig/cattle chemical/dose content were recorded. No package lesson, coverage, source rule, correction or asset was written; 37 bounded indexing/marker/visual tasks were appended. Composite ZIP hash and importer/rendering remain unverified/deferred.",
     "AG-PRE-T1 (2026-11-08) classified First Term preamble blocks 0-44: cover/branding, generic term heading, subject/class metadata, scheme structure/items 1-12, references and blank blocks. Reused existing alias and SCHEME_ONLY marker rules/coverage; scheme objectives 1-10 remain delegated to weekly indexing. No package content, rules, coverage, corrections or assets changed. Testing deferred.",
     "AG-PRE-T2 (2026-11-08) classified Second Term preamble blocks 0-23: generic term heading, subject/class metadata, scheme header and rows, revision/examination markers, references and blank blocks. Scheme objectives delegated to weekly indexing; marker decisions delegated to AG-MARK-T2. No package content, rules, coverage, corrections or assets changed. Testing deferred.",
-    "AG-PRE-T3 (2026-11-08) classified Third Term preamble blocks 0-25: generic heading, subject/class metadata, scheme header and rows 1-12, references and blank blocks. Scheme items 1-10 delegated to weekly indexing; revision/examination items 11-12 delegated to marker tasks. Existing source alias reused. No package content, rules, coverage, corrections or assets changed. Testing deferred."
+    "AG-PRE-T3 (2026-11-08) classified Third Term preamble blocks 0-25: generic heading, subject/class metadata, scheme header and rows 1-12, references and blank blocks. Scheme items 1-10 delegated to weekly indexing; revision/examination items 11-12 delegated to marker tasks. Existing source alias reused. No package content, rules, coverage, corrections or assets changed. Testing deferred.",
+    "AG-WK-T1-W02 (2026-11-08) indexed First Term Week 2: scheme entry 2 is source-taught (blocks 149, 152, comparison table 160), but delivery mapping remains PARTIAL pending importer/parsed-row verification; ten-tool/ten-machine and five agro-based-industry assessment gaps and the unresolved foreign-exchange exception item were split into bounded lesson/fact tasks. Composite archive, member and Week 2 range hashes were independently verified. No lesson, source byte, rule, correction or asset was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 2,
+    "FACTUAL_DEPENDENCY": 3,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 4
+    "LESSON": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 13,
-    "PENDING": 65,
+    "IMPLEMENTED_TESTING_DEFERRED": 14,
+    "PENDING": 67,
     "BLOCKED": 2
   },
   "items": [
@@ -495,8 +496,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): label block 143 text \"WEEK 2DATE………………………………………….\" (sha256 4ac4fdcd85db205e1136ac8685fad67e0f12d08c1c63428703752d584060662b); blocks 143-185; range sha256 0675d4a5ba07886d9387b83c5394bbc786dc6eff52c20e43ce3420cc99895ceb. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme topic: Types of Agriculture: Subsistence and Commercial Agriculture. Label block is 'WEEK 2DATE...' with no space between the number and DATE. One 13-row (header plus 12 numbered contrast rows), 2-column comparison table (block 160, header SUBSISTENCE AGRICULTURE | COMMERCIAL AGRICULTURE) - see AG-VIS-T1-TBL-W02. Evaluation 3-4 (blocks 156-157) ask for ten simple tools and ten complex machines; the teaching text names only a few (blocks 149, 152).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying the composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. Re-derived the Week 2 block range 143-185 hash 0675d4a5ba07886d9387b83c5394bbc786dc6eff52c20e43ce3420cc99895ceb from word/document.xml direct w:body blocks. Scheme entry 2 (scheme block 13) is taught by the definitions at blocks 149 and 152 and the 12-row comparison table at block 160. Definitions/differences questions are supported. Evaluation 3-4 (156-157) ask for ten tools/machines but the source names only three simple tools and four machines; cross-week assessment asks for five agro-based industries and raw materials (168,181), while Week 1 block 103 names only three broad industry categories; Weekend Q4 (178) cannot be keyed by inferring from omission in Week 1 export list block 104. Coverage COV-AG-T1-W02-TYPES is PARTIAL solely because no importer/parsed-row mapping has been run and the package has no lesson rows. Added precise open items and bounded follow-ups AG-LES-T1-W02-TOOLS-MACHINES, AG-LES-T1-W02-AGRO-INDUSTRIES and AG-FACT-T1-W02-EXPORT-ITEM. Full assessment-by-assessment findings: AG-WK-T1-W02.md. No source bytes, rules, corrections, assets or lesson bodies changed. No importer, typecheck, DB, device or tests run; testing remains deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -3052,6 +3053,114 @@
       "status": "PENDING",
       "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-FACT-T1-W02-EXPORT-ITEM",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 2 Weekend Assignment Q4, block 178; Week 1 source list block 104",
+      "objective": "Verify whether the Week 2 Weekend Assignment Q4 has a defensible answer in its Nigerian agricultural-export context. The source lists cocoa, coffee, groundnut, cotton, palm produce and timber at Week 1 block 104 but offers yam as an option at Week 2 block 178. Use authoritative evidence appropriate to the source's context; distinguish omission from proof of non-export and recommend whether to retain, correct or withdraw the item. No teacher decision is presumed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W02-EXPORT-ITEM.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W02 (2026-11-08): block 178's options include yam, but block 104's export list does not; omission alone is not a sufficient key.",
+      "completion_condition": "A sourced evidence record determines whether the item is factually defensible, and gives a precise correction/recommendation or leaves it explicitly unresolved; no unsupported answer is added."
+    },
+    {
+      "id": "AG-LES-T1-W02-TOOLS-MACHINES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 2, evaluation blocks 156-157; teaching blocks 149 and 152",
+      "objective": "Author a bounded Week 2 assessment supplement that provides at least ten accurate examples of simple farm tools used in subsistence agriculture and ten examples of complex farm machines used in commercial agriculture. Distinguish tools from machines, use age-appropriate descriptions and examples, and include practice with complete answers and criterion-level marking. Label it as an assessment supplement, not as original source text or a new scheme objective.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W02-TOOLS-MACHINES.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W02 (2026-11-08): evaluation blocks 156-157 ask for ten simple tools and ten complex machines; source teaching names only three and four examples respectively. No list is invented in the indexing record.",
+      "completion_condition": "A bounded supplement lesson teaches at least ten examples in each category, includes complete keyed practice with criterion-level marks, truthful provenance and PENDING content approval, and is linked to a distinct assessment-coverage record; no original source text is changed."
+    },
+    {
+      "id": "AG-LES-T1-W02-AGRO-INDUSTRIES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 2 cross-week revision assessment blocks 168 and 181; First Term Week 1 block 103",
+      "objective": "Author a bounded assessment supplement that teaches five distinct agro-based industries and their agricultural raw materials, because Week 2's general evaluation and theory ask for five while the First Term source's Week 1 teaching names only textile, beverage and tyre/foam industries. Label it as cross-week revision support, not a new Week 2 scheme objective; distinguish agro-based from agro-allied industries and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W02-AGRO-INDUSTRIES.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W02 (2026-11-08): cross-week questions at blocks 168 and 181 require five agro-based industries and raw materials; Week 1 block 103 supplies fewer distinct categories.",
+      "completion_condition": "A bounded cross-week supplement teaches five distinct agro-based industries and their raw materials, distinguishes agro-based from agro-allied industries, includes complete keyed practice and criterion-level marks, truthful provenance and PENDING content approval; no original source text is changed."
     }
   ],
   "review": {
@@ -3067,7 +3176,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T1-W02",
     "AG-WK-T1-W03",
     "AG-WK-T1-W04",
     "AG-WK-T1-W05",
@@ -3127,7 +3235,10 @@
     "AG-VIS-T3-W09-PIG-ANATOMY",
     "AG-VIS-T3-W10-CATTLE-ANATOMY",
     "AG-VIS-T3-W10-MATH-OBJECT",
+    "AG-FACT-T1-W02-EXPORT-ITEM",
     "AG-LES-T1-W01-CROP-ASPECTS",
+    "AG-LES-T1-W02-TOOLS-MACHINES",
+    "AG-LES-T1-W02-AGRO-INDUSTRIES",
     "AG-TEST-PACKAGE"
   ]
 }
