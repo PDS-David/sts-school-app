@@ -563,6 +563,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer/compiler not run",
           "explanation": "The source teaches photosynthetic and chemosynthetic nutrition, but the package has no lessons. Source-only teaching is not deliverable; PARTIAL remains until a lesson or approved equivalent is authored and bound."
+        },
+        {
+          "locator": "Week 5 equation/arrow drawings blocks 683-713; range SHA-256 65bb7aef6366c230e1611ae9b329687be42c88f18581720a97889ede3c4a2aeb; rendered source PDF pages 25-26",
+          "explanation": "The 13 DrawingML shapes and 13 VML fallbacks are straight-connector arrows only; there are no text boxes or embedded raster figures. Formula text and labels are ordinary paragraph text and survive extraction, but arrow direction/association is lost. Private rendering shows: block 683, 6CO2 + 6H2O → C6H12O6 + 6CO2, with 'Sunlight energy' above and 'Chlorophyll' below the arrow; block 687 sunlight points down to block 688 chlorophyll, then to the light-reaction scheme; block 689 shows 2H2O → 2OH- + 2H+ and ADP + PI → ATP, with downward label arrows to Water, hydroxyl and hydrogen; block 693 shows 2H+ + 2e- → 2H; block 695 shows 2H + NADP → NADPH2; block 697 prints 4OH → 2H2O + O2 (no negative charge is visible in the printed equation); block 700 shows CO2 + 2H2O → (CH2O) + H2O + O2, with light/chlorophyll labels and sugar/water/oxygen annotations; block 713 shows 2H2S + O2 → S + 2H2O + Chemical energy. Equation defects are retained, not corrected: block 683 repeats CO2 on the product side despite block 682 calling oxygen a by-product; block 697 does not display the hydroxyl charge in the printed equation; block 700 differs from block 683; and block 713 gives no coefficient before S. These require the existing equation fact review. No separate image asset or redraw is needed; a structured formula-and-arrow presentation in the delivery lesson can preserve flow. No source bytes changed."
         }
       ]
     },
@@ -2987,10 +2991,11 @@
     {
       "id": "BIOLOGY-T1-W05-EQUATIONS",
       "kind": "FACT",
-      "detail": "The photosynthesis equation at block 683 and the simplified equation at block 700 display different product expressions. The source's wording and symbols have not been altered.",
-      "required_action": "Check both printed equations against an approved Biology reference and bind any delivery correction only after the source and corrected form are evidenced.",
+      "detail": "The photosynthesis overall equation at block 683 repeats CO2 on the product side while the adjacent prose says oxygen is a by-product. The light-reaction scheme at blocks 689, 693, 695 and 697 shows water splitting, ADP + PI to ATP, hydrogen formation, NADP reduction and hydroxyl breakdown; block 697 prints 4OH without a visible negative charge. The simplified equation at block 700 differs from block 683. The chemosynthesis equation at block 713 prints 2H2S + O2 → S + 2H2O + Chemical energy without a coefficient before S. Original equations remain unchanged pending authoritative review.",
+      "required_action": "Verify the exact printed forms at blocks 683, 689, 693, 695, 697, 700 and 713 against an approved Biology reference, including the product side of block 683, hydroxyl charge/stoichiometry at block 697, the difference between blocks 683 and 700, and the sulfur coefficient in block 713. Record the reference and corrected forms before binding any delivery correction. Do not edit the original source.",
       "affected_ids": [
-        "COV-BIO-T1-W05-SCHEME-5"
+        "COV-BIO-T1-W05-SCHEME-5",
+        "BIO-FACT-T1-W05-EQUATIONS"
       ],
       "blocks_delivery": true
     },
