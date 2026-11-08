@@ -137,7 +137,8 @@
     "2026-11-07 scope tracker update: removed 5 restored body rows from ENGLISH-REPLACEMENT-SCOPE-RECONCILIATION; 17 partial rows remain. No unresolved row was upgraded.",
     "ENG-LES-T3-W09-ANTONYMS-SCOPE (2026-11-07): User's 'Go on. Complete this' after the specific recommendation is recorded as approval for contextual counterpart treatment of 'nearly opposite'. Added ten-pair matching and keyed explanation/application practice; ANT03/SO03/BODY-083 resolved. Queue counters reconciled.",
     "ENG-FACT-W04-UNIFIED-TEST (2026-11-07): At the owner's instruction, authored SUP-SS1-ENGLISH-W04-UNIFIED-TEST as an original 50-mark classroom assessment with a recommended 75-minute duration, defined Week 4 scope, original drama extract, candidate paper, answer key, marking guide and teacher-administered dictation. Bound UT01 as IMPLEMENTED_EQUIVALENT and closed ENGLISH-T1-W04-UNIFIED-TEST. This is not represented as a recovered external or textbook examination. Content approval remains PENDING; verification/testing remains DEFERRED. Next runnable task advances to ENG-FACT-W08-EXTERNAL-MATERIALS.",
-    "ENG-LES-T1-W08-CONSONANTS (2026-11-08): Original Week 8 consonant-application lesson authored and bound to ENGLISH-T1-W08-CS01 as IMPLEMENTED_EQUIVALENT. It extends the Week 7 24-phoneme inventory through sound/letter distinction, phoneme position, voicing contrasts, minimal pairs and clusters; it does not invent additional phonemes. Five keyed practice items total 40 marks and marking allocations were checked. The consonant scope open item was closed. Content approval remains PENDING; formal verification, audio and oral assessment remain DEFERRED."
+    "ENG-LES-T1-W08-CONSONANTS (2026-11-08): Original Week 8 consonant-application lesson authored and bound to ENGLISH-T1-W08-CS01 as IMPLEMENTED_EQUIVALENT. It extends the Week 7 24-phoneme inventory through sound/letter distinction, phoneme position, voicing contrasts, minimal pairs and clusters; it does not invent additional phonemes. Five keyed practice items total 40 marks and marking allocations were checked. The consonant scope open item was closed. Content approval remains PENDING; formal verification, audio and oral assessment remain DEFERRED.",
+    "ENG-FACT-W08-EXTERNAL-MATERIALS (2026-11-08): Re-verified the source archive SHA-256 and first-term English member SHA-256, converted the original DOC to DOCX/PDF and visually inspected Week 8 page 30. The source provides only a five-sentence 'THE JEWS' synopsis and a page-61 question pointer; it does not contain the passage, questions or answers. The owner’s prior exact-wording/no-substitute instruction governs, so CO01/CO02 remain UNRESOLVED and this task is BLOCKED pending the authorised textbook pages and bibliographic details. Existing equivalents for CO03, AJ07 and ES05 remain unchanged."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -151,8 +152,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 226,
-    "PENDING": 9,
-    "BLOCKED": 7
+    "PENDING": 8,
+    "BLOCKED": 8
   },
   "items": [
     {
@@ -5136,9 +5137,9 @@
       "depends_on": [
         "ENG-WK-T1-W08"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Partial implementation 2026-11-07: SUP-SS1-ENGLISH-READING-ASSIGNMENTS-T1-W08 supplies original keyed equivalents for CO03 (Effective English Unit 3 page 54), AJ07 (Countdown in English page 209) and ES05 (Countdown page 28). The source's “The Jews” passage and page-61 comprehension questions remain unresolved pending teacher decision on topic suitability; the source summary's religious/historical claims are not independently verified and are not repeated. No named textbook pages are claimed as inspected. Package commit 5400b2e6c191a9b42821541c06dd53d647be692e.",
-      "completion_condition": "Owner supplies authorised material with edition, or records acceptance of equivalent activities; the open item and coverage entries are updated accordingly.",
+      "status": "BLOCKED",
+      "implementation_reference": "Partial implementation remains: SUP-SS1-ENGLISH-READING-ASSIGNMENTS-T1-W08 supplies original keyed equivalents for CO03 (Effective English Unit 3 page 54), AJ07 (Countdown in English page 209) and ES05 (Countdown page 28). Source reinspection 2026-11-08 verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and first-term English member SHA-256 4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef. The rendered Week 8 body contains only a five-sentence synopsis under 'THE JEWS' and a pointer to page-61 questions; neither the original passage nor questions/answers are in the archive. The owner previously required exact passage wording and prohibited substitutes, paraphrases or invented text. CO01/CO02 remain unresolved; this task is BLOCKED pending the authorised pages and correct title/author/edition. No textbook page is claimed to have been inspected.",
+      "completion_condition": "Owner supplies the authorised exact passage and page-61 questions with correct title/author/edition; only then may CO01/CO02 be taught and keyed. No substitute, paraphrase or invented material.",
       "required_attachments": []
     },
     {
@@ -7728,7 +7729,6 @@
     "queue_metadata_review_note": "Three visual-disposition tasks and multiple original keyed equivalent lessons implemented; Week 11 external materials now has two of three reading assignments covered, with LT08 held for owner scope/material clarification. Source renders remain private; approval and verification gates unchanged."
   },
   "next_runnable": [
-    "ENG-FACT-W08-EXTERNAL-MATERIALS",
     "ENG-FACT-W09-EXTERNAL-MATERIALS",
     "ENG-LES-T1-W09-RELIGION-VOCAB",
     "ENG-LES-T1-W11-JUDICIARY-VOCAB",
