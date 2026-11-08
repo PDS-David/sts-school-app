@@ -43,23 +43,24 @@
     "AG-WK-T2-W06 (2026-11-08) indexed Second Term Week Six: agricultural ecology, biotic/abiotic components and interactions in mono-cropping, mixed cropping and mixed farming are taught. Fish-pond and forest/savannah interaction questions exceed teaching; polygastric MCQ and autotrophism/heterotrophism terminology require follow-up.",
     "AG-WK-T2-W07 (2026-11-08) indexed Second Term Week Seven: rock definition, igneous/sedimentary/metamorphic formation, examples, parent-rock relationships and characteristics. Scientific generalisations about crystallinity/fossils, 'peak' at block 458 and mica MCQ option require verification.",
     "AG-WK-T2-W08 (2026-11-08) indexed Second Term Week Eight: physical, chemical and biological rock-weathering processes are source-taught. General evaluation's five soil-formation factors cross-map to Week Nine block 609. Evaluation wording 'rock formation' in blocks 568/573 is inconsistent with the taught topic and is routed for correction verification.",
-    "AG-WK-T2-W09 (2026-11-08) indexed Second Term Week Nine: the five soil-formation factors are explicitly listed and described; Week Eight's five-factor question cross-maps here. Two likely wording defects ('sloppy area', 'rock formation' within soil formation) are routed for correction verification."
+    "AG-WK-T2-W09 (2026-11-08) indexed Second Term Week Nine: the five soil-formation factors are explicitly listed and described; Week Eight's five-factor question cross-maps here. Two likely wording defects ('sloppy area', 'rock formation' within soil formation) are routed for correction verification.",
+    "AG-WK-T3-W01 (2026-11-08) indexed Third Term Week One: 30 tools listed, only five described, six maintenance practices; drawing-book project preserved. Seven post-planting tools not mapped; Hand Towel/Hand trowel mismatch and emasculator wording require follow-up."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 19,
+    "FACTUAL_DEPENDENCY": 20,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 20,
-    "CORRECTION_BINDING": 7
+    "LESSON": 21,
+    "CORRECTION_BINDING": 8
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 28,
-    "PENDING": 90,
+    "IMPLEMENTED_TESTING_DEFERRED": 29,
+    "PENDING": 92,
     "BLOCKED": 2
   },
   "items": [
@@ -1811,8 +1812,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Third Term member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a and Week One label block 26 SHA-256 635789fb4e63974d59acfd3667c0b0fb9a4b935d51684c017ac9879e598deb6b, range 26-75 SHA-256 fd12c22ae7e30ab3b7903457502daa6125da806655322eab6090e7f4e0e819d7. Scheme Week 1 simple farm tools. Source lists 30 tools at 36; describes only five at 41-45; gives six general maintenance practices at 49-54. Project 38 requires drawings and notes for all 30 tools, uses and maintenance. Evaluation 57 asks seven post-planting tools, not mapped. Evaluation 58 supported by 49-54. Weekend 64 cutlass/weeding and 65 garden fork/digging supported; 67 prints 'Hand Towel' vs list 'Hand trowel'; 68 sickle/rice harvesting not explicitly described; 69 oiling metal parts stated but rust prevention rationale not explicit. Theory 72 supported by cutlass, spade/shovel, garden fork; theory 73 supported by secateurs. Emasculator wording at 45 'rushing their spermatid cord' needs veterinary verification; no procedure added. Added three coverage entries, five open items and follow-ups AG-LES-T3-W01-TOOL-REFERENCE, AG-CORR-T3-W01-TOOL-NAMES and AG-FACT-T3-W01-EMASCULATOR. Reading assignment 61 recorded but not checked. Full report AG-WK-T3-W01.md. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
     },
     {
@@ -4499,6 +4500,113 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T2-W09: wording at blocks 627/634 appears inconsistent with the soil-formation topic.",
       "completion_condition": "A correction-binding record cites verified evidence for each correction and preserves original wording."
+    },
+    {
+      "id": "AG-LES-T3-W01-TOOL-REFERENCE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week One blocks 35-54; project 38; evaluation 57",
+      "objective": "Prepare a verified reference for all 30 farm tools listed at block 36: descriptions, functions/uses, maintenance, and a justified mapping of at least seven tools to post-planting activities. Support the project requiring drawings of all 30 tools and short notes. Preserve the five source descriptions and six general maintenance points; clearly label supplement content and provide keyed practice/rubric.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T3-W01-TOOL-REFERENCE.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W01: 30 tools listed but only five described; post-planting tool list absent.",
+      "completion_condition": "A clearly labelled supplement covers all 30 tools, functions/uses, maintenance, seven post-planting tools and drawing-book project; includes provenance, keyed practice/rubric and PENDING approval."
+    },
+    {
+      "id": "AG-CORR-T3-W01-TOOL-NAMES",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week One list block 36 and weekend MCQ block 67",
+      "objective": "Verify 'Hand Towel' in MCQ 67 against the listed tool 'Hand trowel' at block 36 and teacher-approved original; bind a delivery-only correction if confirmed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-CORR-T3-W01-TOOL-NAMES.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W01: MCQ 67 prints 'Hand Towel' while list contains 'Hand trowel'.",
+      "completion_condition": "Correction-binding record cites approved source and proposes only a verified delivery correction."
+    },
+    {
+      "id": "AG-FACT-T3-W01-EMASCULATOR",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week One emasculator description block 45",
+      "objective": "Verify emasculator purpose and correct anatomical terminology. Recommend a safe, non-procedural definition; do not supply castration instructions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W01-EMASCULATOR.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W01: phrase 'rushing their spermatid cord' at block 45 needs veterinary terminology verification.",
+      "completion_condition": "Sourced note supplies a safe non-procedural wording recommendation."
     }
   ],
   "review": {
@@ -4514,7 +4622,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T3-W01",
     "AG-WK-T3-W02",
     "AG-WK-T3-W03",
     "AG-WK-T3-W04",
@@ -4576,6 +4683,7 @@
     "AG-FACT-T2-W06-POLYGASTRIC-ITEM",
     "AG-FACT-T2-W07-ROCK-CHARACTERISTICS",
     "AG-FACT-T2-W07-MICA-MCQ",
+    "AG-FACT-T3-W01-EMASCULATOR",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-CORR-T2-W02-03-SOURCE-TERMS",
     "AG-CORR-T2-W04-05-TABLE-TEXT",
@@ -4583,6 +4691,7 @@
     "AG-CORR-T2-W07-PEAT-TYPO",
     "AG-CORR-T2-W08-QUESTION-WORDING",
     "AG-CORR-T2-W09-SOIL-TERMS",
+    "AG-CORR-T3-W01-TOOL-NAMES",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
     "AG-LES-T1-W02-AGRO-INDUSTRIES",
@@ -4600,6 +4709,7 @@
     "AG-LES-T1-W10-MONOCOT-DICOT-TABLE",
     "AG-LES-T2-W04-05-YAM-PRACTICES",
     "AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS",
+    "AG-LES-T3-W01-TOOL-REFERENCE",
     "AG-TEST-PACKAGE"
   ]
 }

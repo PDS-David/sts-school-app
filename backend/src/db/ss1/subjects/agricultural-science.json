@@ -1017,6 +1017,76 @@
           "explanation": "Source teaching exists, but package lesson rows and importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
         }
       ]
+    },
+    {
+      "id": "COV-AG-T3-W01-SIMPLE-TOOLS",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Scheme Week 1: Simple farm tools — examples, descriptions/functions and maintenance",
+      "objective_locator": "Third Term scheme block 7; Week One label block 26; topic block 27",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Blocks 29-36; list 36",
+          "explanation": "Thirty farm tools are listed."
+        },
+        {
+          "locator": "Blocks 40-45",
+          "explanation": "Only five selected tools are described: cutlass, spade/shovel, garden fork, secateurs and emasculator."
+        },
+        {
+          "locator": "Blocks 47-54",
+          "explanation": "Six general maintenance practices are supplied."
+        },
+        {
+          "locator": "Project 38; evaluation 56-58; weekend 63-69; theory 71-73",
+          "explanation": "The project asks for drawings and notes for all 30 tools; only five are described. Evaluation 57 asks for seven post-planting tools not mapped in teaching. Theory 72 is supported by cutlass, spade/shovel and garden fork; theory 73 by secateurs."
+        },
+        {
+          "locator": "Week One blocks 26-75; SHA-256 fd12c22ae7e30ab3b7903457502daa6125da806655322eab6090e7f4e0e819d7",
+          "explanation": "Source teaching exists, but package lesson rows and importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-W01-TOOL-REFERENCE",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Practical/project scope: draw, describe, state uses and maintenance for all 30 listed farm tools",
+      "objective_locator": "Project block 38; list block 36",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Block 36",
+          "explanation": "Thirty tools are listed."
+        },
+        {
+          "locator": "Blocks 40-45",
+          "explanation": "Only five selected tools receive descriptions/functions; remaining 25 are not described."
+        },
+        {
+          "locator": "Block 38; maintenance 47-54",
+          "explanation": "The project asks for drawings and short notes on all 30 tools, their maintenance and uses; general maintenance is provided but tool-specific descriptions/uses are incomplete."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-W01-POST-PLANTING-TOOLS",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Assessment scope: name seven farm tools used for post-planting activities",
+      "objective_locator": "Evaluation block 57",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Blocks 35-45",
+          "explanation": "The source lists tools and describes five selected tools, but does not classify seven tools by post-planting operations."
+        },
+        {
+          "locator": "Evaluation block 57",
+          "explanation": "The question asks for seven post-planting tools; no list or mapping is taught."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -1714,6 +1784,63 @@
       "affected_ids": [
         "AG-CORR-T2-W09-SOIL-TERMS",
         "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W01-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week One lists 30 tools, describes five selected tools and gives six general maintenance practices (35-54), but package lesson rows and importer-confirmed parsed-row identity are absent. COV-AG-T3-W01-SIMPLE-TOOLS is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T3-W01-SIMPLE-TOOLS; preserve the practical drawing/project requirement.",
+      "affected_ids": [
+        "COV-AG-T3-W01-SIMPLE-TOOLS",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W01-TOOL-REFERENCE",
+      "kind": "CONTENT",
+      "detail": "Project 38 asks learners to draw and describe all 30 tools, state uses and maintenance; blocks 40-45 describe only five selected tools. The remaining 25 descriptions/functions are not supplied.",
+      "required_action": "Author AG-LES-T3-W01-TOOL-REFERENCE with verified descriptions, uses and maintenance for all 30 tools, retaining the six source maintenance points and supporting the drawing-book project.",
+      "affected_ids": [
+        "COV-AG-T3-W01-TOOL-REFERENCE",
+        "AG-LES-T3-W01-TOOL-REFERENCE",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W01-POST-PLANTING-TOOLS",
+      "kind": "CONTENT",
+      "detail": "Evaluation 57 asks learners to list seven tools used for post-planting activities, but the source does not map its tool list to post-planting operations.",
+      "required_action": "In AG-LES-T3-W01-TOOL-REFERENCE, identify and justify at least seven appropriate post-planting tools from the source list and include complete keyed practice.",
+      "affected_ids": [
+        "COV-AG-T3-W01-POST-PLANTING-TOOLS",
+        "AG-LES-T3-W01-TOOL-REFERENCE",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W01-TOOL-NAMES",
+      "kind": "CONTENT",
+      "detail": "Weekend MCQ 67 prints 'Hand Towel' while the tool list at 36 contains 'Hand trowel'.",
+      "required_action": "Verify the option against the source and teacher-approved original, then bind a delivery-only correction if confirmed; preserve source bytes.",
+      "affected_ids": [
+        "AG-CORR-T3-W01-TOOL-NAMES",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W01-EMASCULATOR",
+      "kind": "FACT",
+      "detail": "Description 45 says an emasculator castrates male animals by 'rushing their spermatid cord'. The terminology appears inaccurate.",
+      "required_action": "Verify purpose/anatomical terminology against authoritative veterinary references and recommend safe, non-procedural wording; do not add castration instructions.",
+      "affected_ids": [
+        "AG-FACT-T3-W01-EMASCULATOR",
+        "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true
     }
