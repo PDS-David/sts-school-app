@@ -1583,6 +1583,96 @@
           "explanation": "The hydrometer is paired with 'Light intensity in water' in the original table. This factual pairing must be checked before a keyed answer or lesson is authored; no correction is invented."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T2-W09-FUNCTIONING-ECOSYSTEM",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 9 scheme: Functioning Ecosystem — feeding relationships, trophic levels, food chains and food webs",
+      "objective_locator": "Scheme row block 15; Week 9 label block 760 (sha256 8463ecbb13aae7cdf80da8d86383b5e1793633e42e7825b4d212dd6086e8d51b); body blocks 760-886 (range sha256 964d88105674fb67420e6f884b9fb9a83d674397489b937de8457b6d8eca9ab8)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 769-774 (range sha256 541e9c3b974113bd26373dc9fc71ccbbe3232e4a30a02dde839a67a97352f04f)",
+          "explanation": "Describes feeding relationships among producers, consumers and decomposers, with terrestrial and aquatic examples. The source claims consumers have a better chance of survival than other groups at block 774; this claim is not endorsed and is flagged for factual review."
+        },
+        {
+          "locator": "blocks 780-790 (range sha256 09d49114cc9613363f4fd4ba88234bf8a72104ae58bb59e4ea9c759049794f36)",
+          "explanation": "Describes trophic levels and the transfer of energy along a feeding pathway, beginning with producers and proceeding through primary/secondary consumers and decomposers."
+        },
+        {
+          "locator": "blocks 796-817 (range sha256 f359e6dc3bb0d67c1975045aa5c110af7887a1c64c56719e58493477ce16ca47)",
+          "explanation": "Defines food chains and food webs, gives terrestrial and aquatic examples and explains that a food web contains interrelated food chains. The food-chain shapes remain with BIO-VIS-T2-SHP-FOODCHAINS; the embedded food-web image at block 818 remains with BIO-VIS-T2-FIG-FOODWEB."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for the functioning-ecosystem objective; source-only content is not deliverable."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W09-ENERGY-FLOW",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 9: energy flow, ecological pyramids, energy loss and laws of thermodynamics",
+      "objective_locator": "Blocks 823-863 (range sha256 2d85b? source ranges recorded below)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 823-838 (range sha256 437d69b055198e0e6723db5a24d393726db0877071edb289638972faead60508)",
+          "explanation": "Defines ecological pyramids and describes pyramids of number, energy and biomass. The pyramid-of-number drawing is assigned to BIO-VIS-T2-SHP-PYRAMID; text is duplicated by the source text-box extraction."
+        },
+        {
+          "locator": "blocks 840-841 (range sha256 85048c9198bfe3b5475cc3a8a8185bda84896e86072406aa720ec94c86b24217)",
+          "explanation": "Describes energy loss during transfer between organisms and states that 1-10% of solar energy may be available to photosynthetic producers."
+        },
+        {
+          "locator": "blocks 847-863 (range sha256 962c133b89bddb33efce31ffac5cdaff7f04c59512415575cc54fa5b562e18be)",
+          "explanation": "States the first and second laws of thermodynamics and applies them to food chains, ecological pyramids and energy flow. The source's wording and examples are retained; no external physics/biology correction is made here."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for energy flow or ecological pyramids; PARTIAL remains until approved lesson content is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W09-ASSESSMENT",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 9 evaluation, revision, weekend assignment and theory",
+      "objective_locator": "Evaluation blocks 776-778, 792-794, 819-821, 843-845, 865-867; general evaluation 869-872; reading 874-875; weekend assignment 877-882; theory 884-886",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "evaluation blocks 776-778, 792-794, 819-821 (ranges sha256 362324da8dcbfc77a31a749008a5e0995becbbd0161b84620a2dec1da80c3215, 6dd51470b2d96163f42171ce7aa81ad7841efb9c6afc2a4cd0b5d1513b2da8aa, b5473227ba1a0264799afa32ced73cda3a8a7655311e69478748088d4189fcab)",
+          "explanation": "Questions on terrestrial/aquatic autotrophs, heterotrophs and decomposers, feeding pathways, trophic levels, food chains and drawing a four-level chain are supported by blocks 769-817."
+        },
+        {
+          "locator": "evaluation blocks 843-845 and 865-867 (ranges sha256 55f939f4161e3aa0ba9a3cfb904af2977df96da7241522d006564bf6034f5e87 and 9ac0bd7e0c86ac59dcf5b2526da92de09f18df4a16293437aef8ab423db02146)",
+          "explanation": "Pyramid types and the first/second laws are described in blocks 823-863. Similarities between number and energy pyramids are not explicitly listed as a comparison."
+        },
+        {
+          "locator": "general evaluation blocks 869-872 (range sha256 b18419f472593c4e3099ff17139d48c98d9531ba0d69632fb7a0e1d8b411c407)",
+          "explanation": "Food-chain definition and producer/consumer/decomposer roles are supported. Drawing a four-level marine chain is consistent with the examples, but part B refers to a chain 'drawn in 3C', an unclear reference not identified in this week."
+        },
+        {
+          "locator": "reading assignment blocks 874-875",
+          "explanation": "College Biology, chapter 23, pages 544-551. The cited book is not part of the archive and was not opened."
+        },
+        {
+          "locator": "weekend assignment blocks 877-882 (range sha256 f1e8cbf4c44f38bcd76926c59f6b634582c4a5440f0ab34ebe43d3c930488111)",
+          "explanation": "Sun as ultimate energy source (878), 1-10% solar energy (880), thermodynamics terminology (881) and the first law (882) are supported by blocks 840-855. The 'usable form of energy in animals' item (879) offers ATP, but ATP is not named in this Week 9 body. No key is supplied."
+        },
+        {
+          "locator": "theory blocks 884-886 (range sha256 c3a38e1814e26f542e6c60fbc12a19a72d19c1550265f752e7f8eba4545f3c85)",
+          "explanation": "The first and second laws are stated in blocks 849-850; food-chain and food-web concepts are described in 796-817. No answer key or marking guide is supplied."
+        },
+        {
+          "locator": "blocks 774, 817, 849-863 and weekend question 879",
+          "explanation": "The source's consumer-survival assertion, thermodynamics applications and ATP answer option need authoritative review before use in a current lesson or keyed assessment."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -2291,6 +2381,39 @@
       "required_action": "A Biology teacher should approve complete keyed responses and marking after the hydrometer pairing and missing overpopulation teaching are resolved.",
       "affected_ids": [
         "COV-BIO-T2-W08-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W09-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 9 feeding relationships, trophic levels, food chains/webs, energy flow and thermodynamics are present in the source, but the Biology package has no registered lessons.",
+      "required_action": "Author and bind approved lessons for functioning ecosystems, energy flow and ecological pyramids, preserving source content and the assigned visual assets.",
+      "affected_ids": [
+        "COV-BIO-T2-W09-FUNCTIONING-ECOSYSTEM",
+        "COV-BIO-T2-W09-ENERGY-FLOW"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W09-ENERGY-FACTS",
+      "kind": "FACT",
+      "detail": "The source asserts consumers have a better chance of survival at blocks 774 and 817, applies thermodynamic laws to energy transfer at 849-863, and the weekend assignment asks for the usable energy form in animals (879) with ATP as an option, although ATP is not taught in this week.",
+      "required_action": "Verify the consumer-survival claim, energy-flow/thermodynamics wording and ATP terminology against approved Biology/physics references; record precise citations and separate corrected supplement text from the original.",
+      "affected_ids": [
+        "COV-BIO-T2-W09-FUNCTIONING-ECOSYSTEM",
+        "COV-BIO-T2-W09-ENERGY-FLOW",
+        "COV-BIO-T2-W09-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W09-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "Week 9 evaluation, general evaluation, weekend assignment and theory have no answer key or marking guide. General evaluation block 872 refers to a food chain 'drawn in 3C', which is not clearly identified in this week's source.",
+      "required_action": "A Biology teacher should approve a complete answer/marking guide and clarify the '3C' reference before delivery.",
+      "affected_ids": [
+        "COV-BIO-T2-W09-ASSESSMENT"
       ],
       "blocks_delivery": true
     }
