@@ -59,7 +59,8 @@
     "BIO-SEC-T1-AGRI-ECOLOGY (2026-11-08) indexed the unlisted agricultural-activity section (448-501) and farming-systems section (502-547). Both are within the Week 3 body but are not named by scheme row 3. The crop-rotation table at block 514 is recorded as 6×6. Owner placement and agricultural fact review remain open; source text was not moved and no chemical-use directions were added.",
     "BIO-SEC-T1-PESTS-DISEASES (2026-11-08) indexed unlisted crop/animal pest groups and life histories (550-604), agricultural disease groups (605-610), effects (611-619) and controls (620-629). Both lifecycle diagrams remain with the existing visual task. These sections are within Week 3 but not named by scheme row 3. Owner placement and veterinary fact review remain open; no chemical or treatment instructions were added.",
     "BIO-VIS-T1-PLANT-ANIMAL-HDR (2026-11-08) inspected the verified source and private rendered page: blocks 69-70 contain only a vertical divider and horizontal rule; the Plants/Animals labels and ten comparison pairs are text, not a Word table. Rendered layout is clear, but text extraction depends on whitespace and cannot guarantee paired columns. No asset/redraw is needed; a semantic two-column supplement is required and was appended as BIO-LES-T1-W02-PLANT-ANIMAL-TABLE, gated on the existing BIO-FACT-T1-W02-WORDING expert decision. No source content was changed; testing remains deferred.",
-    "BIO-VIS-T1-MICROSCOPE (2026-11-08) inspected the hash-verified source image at full enlarged resolution and in a private rendered page. The diagram labels ten parts, including a 100x objective; the written list states x4/x10/x40 and calls x40 the highest, and uses different stage/illumination terms. The original 239x211 image is not copied because reuse permission is unrecorded. A teacher fact gate BIO-FACT-T1-W02-MICROSCOPE-LABELS and a dependent project-redraw task BIO-VIS-T1-W02-MICROSCOPE-REDRAW were appended. No label was silently corrected; testing remains deferred."
+    "BIO-VIS-T1-MICROSCOPE (2026-11-08) inspected the hash-verified source image at full enlarged resolution and in a private rendered page. The diagram labels ten parts, including a 100x objective; the written list states x4/x10/x40 and calls x40 the highest, and uses different stage/illumination terms. The original 239x211 image is not copied because reuse permission is unrecorded. A teacher fact gate BIO-FACT-T1-W02-MICROSCOPE-LABELS and a dependent project-redraw task BIO-VIS-T1-W02-MICROSCOPE-REDRAW were appended. No label was silently corrected; testing remains deferred.",
+    "BIO-VIS-T1-CLASS-HIERARCHY (2026-11-08) inspected all six native downward connector shapes and the seven text labels across rendered PDF pages 4-5. Text labels survive extraction; arrows do not, but block 136 states the sequence in prose. The source repeatedly prints 'Genius'/'genius' for Genus. No asset/redraw is needed; a semantic ordered sequence and corrected delivery spelling were assigned to BIO-LES-T1-W03-CLASSIFICATION. Original source remains unchanged; testing deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -71,11 +72,11 @@
     "SOURCE_SECTION_INDEXING": 3,
     "VISUAL_DISPOSITION": 37,
     "SOURCE_MARKER_DISPOSITION": 1,
-    "LESSON": 19,
+    "LESSON": 20,
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 42,
+    "IMPLEMENTED_TESTING_DEFERRED": 43,
     "PENDING": 101,
     "BLOCKED": 9
   },
@@ -946,8 +947,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): shape texts at blocks 137 'Kingdom', 140 'Phylum or Division', 143 'Class', 146 'Order', 149 'Family', 152 'Genius'; block 155 'Species' is a normal paragraph. Intervening blocks 138-139, 141-142, 144-145, 147-148, 150-151, 153-154 are empty.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and assigned DOCX member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Direct w:body blocks 137-155 have range SHA-256 e04ec56a91a301393fc767f2e14780206239d6d75237930d6a15675be39927e9. Labels are ordinary text runs and survive plain-text extraction: Kingdom (137), Phylum or Division (140), Class (143), Order (146), Family (149), Genius (152), Species (155). Six native straightConnector1 shapes in blocks 137, 140, 143, 146, 149 and 152 each carry a triangle at the tail end and render as downward arrows; plain-text extraction omits those arrows. The visual order is Kingdom → Phylum/Division → Class → Order → Family → Genius → Species and spans rendered PDF pages 4-5. Source prose block 136 (SHA-256 a018fe50087dde8c17c5bd502f6ebae306ad9ecd3ee1f828ab9026d123662087) independently states the hierarchy in sequence but repeats 'genius' where the taxonomic rank is Genus. Disposition: no separate asset/redraw is needed; a semantic ordered sequence in the supplemental lesson preserves the relationship. Correct 'Genius' to 'Genus' only in the delivery supplement; preserve all original source text and shapes unchanged. A bounded lesson task was appended. No parsed lesson ID or delivery_correction binding is inferred; no app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
     },
     {
@@ -5233,6 +5234,45 @@
       "status": "PENDING",
       "implementation_reference": "Appended after the microscope disposition (2026-11-08). This task is not runnable until BIO-FACT-T1-W02-MICROSCOPE-LABELS is IMPLEMENTED_TESTING_DEFERRED; no redraw or asset is created with unverified labels.",
       "completion_condition": "A legible original project-authored microscope diagram uses only teacher-approved labels, is stored under backend/src/db/ss1/assets/biology/, has complete schema-compliant asset metadata and provenance, and leaves the source image untouched."
+    },
+    {
+      "id": "BIO-LES-T1-W03-CLASSIFICATION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 3, blocks 133-447; taxonomy definition and hierarchy blocks 135-155; rank diagram blocks 137-155",
+      "objective": "Author a clearly labelled supplemental lesson for classification of living things. Preserve the hierarchy as a semantic ordered sequence: Kingdom → Phylum/Division → Class → Order → Family → Genus → Species. Use the correct taxonomic spelling 'Genus' in the delivery supplement while retaining the source's 'Genius'/'genius' wording unchanged in the original. Cover the source's classification framework and include complete keyed practice with criterion-level marking. Cite the source provenance and any authoritative reference actually used for the corrected term; do not invent an original parsed lesson ID or delivery-correction binding before importer identification.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W03.md",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-CLASS-HIERARCHY.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T1-W03-CLASSIFICATION.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W03",
+        "BIO-VIS-T1-CLASS-HIERARCHY"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended after the hierarchy disposition (2026-11-08): the source prose and diagram both use 'genius' for the rank Genus; the lesson must correct the delivery spelling without altering source text. No separate image asset is needed because an ordered text hierarchy preserves the rank sequence.",
+      "completion_condition": "A clearly labelled supplemental lesson teaches the Week 3 classification objective, preserves the rank order as semantic text, uses 'Genus' correctly in delivery, cites actual provenance, includes complete keyed practice and binds to COV-BIO-T1-W03-SCHEME-3. Original source bytes remain unchanged."
     }
   ],
   "review": {
@@ -5248,7 +5288,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T1-CLASS-HIERARCHY",
     "BIO-VIS-T1-MONOCOT-DICOT",
     "BIO-VIS-T1-PEST-LIFECYCLES",
     "BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME",
@@ -5320,6 +5359,7 @@
     "BIO-LES-T3-W02-MICROBIAL-CONTROL",
     "BIO-LES-T3-W02-NITROGEN-CARBON-CYCLES",
     "BIO-LES-T3-W08-STORAGE-STRUCTURES",
+    "BIO-LES-T1-W03-CLASSIFICATION",
     "BIO-TEST-PACKAGE"
   ]
 }
