@@ -90,13 +90,14 @@
     "BIO-VIS-T1-W03-RHINO-BEETLE-CYCLE-REDRAW (2026-11-09) inspected the original hash-verified DOCX and a private render of page 22/46. Block 593's lower VML loop supports Egg→Larvae→Pupa→Adults→Egg; the separate nymph-bearing fragment above belongs to blocks 582-590. The redraw remains BLOCKED because the Week 3 pest-section placement owner action is unresolved and the package has no valid lesson_id for asset registration. No asset or invented ID was committed.",
     "BIO-FACT-T1-W05-CONDITIONS (2026-11-09) resolved the fifth-condition question for Week 5 assignment 1(d). Source blocks 682-708 name only light/sunlight, chlorophyll, water and carbon(IV) oxide; assignment block 778 asks for five. WJEC Blended Learning and NOUN Access Biology support suitable temperature for enzyme-controlled reactions as the fifth supplemental answer. OpenStax confirms the four source inputs/chlorophyll role; Monash confirms temperature as a rate factor. Updated BIOLOGY-T1-W05-ASSIGNMENT; original source unchanged and full marking guide/lesson remain open. Testing and student-facing approval remain deferred.",
     "BIO-FACT-T1-W05-EQUATIONS (2026-11-09) reviewed the photosynthesis portion only: blocks 683, 689, 693, 695, 697 and 700 were compared with OpenStax Biology 2e sections 8.1 and 8.2. Block 683's product side should release oxygen; block 700 is a balanced generic carbohydrate-unit representation; the source's intermediate notation at 689/693/695/697 is distinguished from modern photosystem/electron-carrier notation. The separate block 713 chemosynthesis equation was not reviewed or corrected here because it involves a hazardous chemical reaction; a separate BLOCKED qualified-teacher review item was added. Original source unchanged; no practical guidance; tests/importer/display remain deferred.",
-    "BIO-FACT-T1-W07-FOOD-CLAIMS (2026-11-09) verified carbohydrate/lipid formulas, mineral/vitamin functions and deficiency claims, and digestive-enzyme actions. Source member hash 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. External evidence: OpenStax Biology 2e/A&P 2e, PubChem, NIH ODS, MedlinePlus, PubMed sulfur amino-acid review, IUBMB chymosin nomenclature, and Gut/PMC intestinal-peptidase reviews. Corrected facts are for a separate supplement; original source remains unchanged. Week 7 lesson and keyed practice remain to be authored; testing and student-facing approval deferred."
+    "BIO-FACT-T1-W07-FOOD-CLAIMS (2026-11-09) verified carbohydrate/lipid formulas, mineral/vitamin functions and deficiency claims, and digestive-enzyme actions. Source member hash 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. External evidence: OpenStax Biology 2e/A&P 2e, PubChem, NIH ODS, MedlinePlus, PubMed sulfur amino-acid review, IUBMB chymosin nomenclature, and Gut/PMC intestinal-peptidase reviews. Corrected facts are for a separate supplement; original source remains unchanged. Week 7 lesson and keyed practice remain to be authored; testing and student-facing approval deferred.",
+    "BIO-FACT-T2-W01-REVISION-FACTS (2026-11-09) verified the Week 1 revision prompts at converted DOCX blocks 76, 85 and 87. CBSE/NCERT support Amoeba sporulation as encystation followed by multiple fission. OpenStax and a peer-reviewed study confirm Paramecium synkaryon divides three times to eight nuclei during sexual conjugation, so the source's 'asexual' label is wrong. The perennating-organ item remains ambiguous; a separate BLOCKED teacher-decision task was added because references differ on whether suckers are perennating organs. Source unchanged; no answer key/lesson authored."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 33,
+    "FACTUAL_DEPENDENCY": 34,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 27,
     "SOURCE_SECTION_INDEXING": 3,
@@ -106,9 +107,9 @@
     "SCOPE_DECOMPOSITION": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 80,
-    "BLOCKED": 14,
-    "PENDING": 73
+    "IMPLEMENTED_TESTING_DEFERRED": 81,
+    "BLOCKED": 15,
+    "PENDING": 72
   },
   "items": [
     {
@@ -3761,8 +3762,8 @@
         "BIO-WK-T2-W01",
         "BIO-WK-T2-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T2-W01; exact locators and scope findings are recorded in the Week 1 index."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Report BIO-FACT-T2-W01-REVISION-FACTS.md (2026-11-09): verified archive SHA 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact .doc member SHA 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44; inspected converted DOCX blocks 76,85,87. CBSE/NCERT sources support Amoeba sporulation as encystation followed by multiple fission. OpenStax and a peer-reviewed Paramecium study confirm the synkaryon divides three times to eight products during sexual conjugation; source question incorrectly labels this asexual. Block87 remains ambiguous because school/university references differ on perennating classification; a separate BLOCKED teacher-decision item was added. Source unchanged; no answer key or lesson created; tests/importer/display not run."
     },
     {
       "id": "BIO-LES-T2-W02-SEXUAL-REPRODUCTION-MEIOSIS",
@@ -5856,6 +5857,44 @@
       "status": "BLOCKED",
       "implementation_reference": "BLOCKED 2026-11-09: this source equation is not reviewed or corrected here because it involves a hazardous chemical reaction. A qualified Biology teacher must review it against an approved reference. No practical handling/preparation/use guidance is to be added.",
       "completion_condition": "A qualified Biology teacher records an approved reference and an evidence-based decision on whether a separate delivery correction is appropriate; source text remains unchanged and no practical chemical-handling instructions are added."
+    },
+    {
+      "id": "BIO-FACT-T2-W01-PERENNATING-ORGAN-CHOICE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 1, converted DOCX block 87",
+      "objective": "Resolve the perennating-organ multiple-choice item (Rhizome, Sucker, Bulbil, Bulb). The source lists all four as vegetative-propagation structures but does not state which are perennating. References differ on whether suckers are included. The teacher must select the approved definition/reference or revise the question to ensure one unambiguous answer; do not guess.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T2-W01-PERENNATING-ORGAN-CHOICE.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W01",
+        "BIO-WK-T2-W02"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "BLOCKED 2026-11-09: source block 57 defines perennating organs functionally but does not classify the four block 87 options. One school Biology reference includes suckers among perennating organs; another distinguishes perennating storage organs from vegetative propagation structures and uses a narrower list. No unique answer can be safely keyed without the teacher's chosen reference/definition.",
+      "completion_condition": "Teacher records the approved reference and definition or revises the options so exactly one answer is supported; record evidence and preserve the original source wording."
     }
   ],
   "review": {
@@ -5878,7 +5917,6 @@
     "BIO-VIS-T2-W03-COCKROACH-REDRAW",
     "BIO-VIS-T2-W03-HOUSEFLY-REDRAW",
     "BIO-VIS-T2-W09-FOODWEB-REDRAW",
-    "BIO-FACT-T2-W01-REVISION-FACTS",
     "BIO-FACT-T2-W02-REVISION-FACTS",
     "BIO-FACT-T2-W03-TAPEWORM-SCOPE",
     "BIO-FACT-T2-W04-KLINOSTAT",
