@@ -101,3 +101,8 @@ Technical testing remains separate: automated package tests, typecheck, importer
 - Proceed with project-authored reconstruction: **authorised by owner**.
 - Subject identity: **Bookkeeping; Financial Accounting references explicitly excluded**.
 - Proposed week-by-week scope: **project recommendation; teacher review pending**.
+
+
+## Owner clarification on term duration
+
+The owner has clarified that ten weeks is a minimum, not a fixed maximum. This reconstruction already schedules twelve weeks: teaching Weeks 1–10, revision Week 11 and examination Week 12. Retain all twelve in the term sequence. The ten authored teaching lessons are not the whole term schedule; revision and examination are separate scheduled weeks. Do not shorten the term to ten weeks.
