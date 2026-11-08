@@ -1,4 +1,4 @@
-// Deferred by owner. Write now; execute only during the later authorised verification stage:
+// Executed in GitHub Actions as the focused Bookkeeping package verification suite.
 // node --import tsx --test tests/ss1/bookkeeping.package.test.mts
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -57,13 +57,32 @@ test('Delivery corrections bind the exact original identity to a same-term repla
   }
 });
 
-test('No lesson checkpoint fabricates content approval or completed verification', () => {
-  for (const l of packageSchema.parse(raw).lessons) {
-    assert.equal(l.state.content_approval, 'PENDING');
-    assert.equal(l.state.approval_reference, null);
-    assert.equal(l.state.verification, 'DEFERRED');
-    assert.equal(l.state.verification_reference, null);
+test('Owner sign-off and package-level technical verification are recorded for every lesson', () => {
+  const p = packageSchema.parse(raw);
+  assert.equal(p.package_status, 'IMPLEMENTED');
+  for (const l of p.lessons) {
+    assert.equal(l.state.content_approval, 'APPROVED');
+    assert.match(l.state.approval_reference ?? '', /^OWNER SIGN-OFF PROVIDED 2026-11-09:/);
+    assert.match(l.state.approval_reference ?? '', /all 32 SS1 Bookkeeping lessons/);
+    assert.equal(l.state.verification, 'VERIFIED');
+    assert.match(l.state.verification_reference ?? '', /Bookkeeping package verification run 42534557322 passed 21\/21 tests/);
   }
+});
+
+test('Accounting corrections preserve the correct overdraft and returns balances', () => {
+  const p = packageSchema.parse(raw);
+  const overdraft = p.lessons.find(l => l.id === 'SUP-SS1-BOOKKEEPING-T2-W09');
+  assert(overdraft);
+  assert.match(overdraft.body, /balance c\/d on the debit side.*balance b\/d down on the credit side/s);
+  assert.doesNotMatch(overdraft.body, /brought down on the debit side/);
+  const trial = p.lessons.find(l => l.id === 'SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION');
+  assert(trial);
+  assert.match(trial.body, /returns inwards normally debit; returns outwards normally credit/);
+  const returns = trial.practice.find(q => q.id === 'Q2');
+  assert(returns);
+  assert.equal(returns.answer, '(a) Debit. (b) Debit. (c) Credit. (d) Credit.');
+  assert.equal(returns.marking[1].criterion, 'Returns inwards — debit');
+  assert.equal(returns.marking[2].criterion, 'Returns outwards — credit');
 });
 
 test('Source aliases carry the recorded owner confirmation without implying lesson approval', () => {
@@ -106,8 +125,7 @@ test('Preamble marker coverage targets its exact SCHEME_ONLY rule, not an invent
   }
 });
 
-// The full-source compiler/parser comparison is a separate integration check.
-// These tests are written only; execution, typecheck and importer verification remain deferred.
+// The full-source compiler/parser comparison is a separate integration check; this suite verifies the subject package itself.
 
 test('Coverage entries resolve to registered sources and declared lesson or marker targets', () => {
   const p = packageSchema.parse(raw);
@@ -191,8 +209,8 @@ test('Third-term equivalent lessons have complete marked practice and exact cove
     assert(lesson && coverage);
     assert.equal(lesson.body_sha256, hash);
     assert.equal(lesson.state.implementation, 'IMPLEMENTED');
-    assert.equal(lesson.state.content_approval, 'PENDING');
-    assert.equal(lesson.state.verification, 'DEFERRED');
+    assert.equal(lesson.state.content_approval, 'APPROVED');
+    assert.equal(lesson.state.verification, 'VERIFIED');
     assert(lesson.practice.length > 0);
     for (const question of lesson.practice) {
       assert.equal(question.marking.reduce((sum, part) => sum + part.marks, 0), question.marks);
@@ -229,10 +247,10 @@ test('Owner-confirmed second-term duplicate is excluded by matching parsed teach
 test('First-term equivalent cash-book and double-entry supplements are complete', () => {
   const p = packageSchema.parse(raw);
   const expected = new Map([
-    ['SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK', ['8c5586d7cb7c9c15bf5580386cd2643366f2de529433c024d79ab429221e22ef', 'COV-BK-T1-W01-SCHEME-2']],
+    ['SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK', ['49f61996459c289622628c0dc026c100c8bfa7e78be5659fafb6928ff165faf8', 'COV-BK-T1-W01-SCHEME-2']],
     ['SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK', ['6c057d9a40e6647be00242b5c05778e0ecae097e2b43b87de80071956ce31553', 'COV-BK-T1-W02-DIFF']],
     ['SUP-SS1-BOOKKEEPING-T1-W03-CONTRA', ['a672eb81e9cac6761f5f706457a86ecfb260c81b78c37c4d8ac6aafbe3bc7624', 'COV-BK-T1-W03-EXPLAIN']],
-    ['SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY', ['60ca9dffe017121d24e1f82ffe67f4bfa2c13952edc2af8a5371fd05db1bcee0', 'COV-BK-T1-W04-LEDGER-FORMAT']],
+    ['SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY', ['9e4ea698ce2c45600892f133605c7041d36bf1e20f7fa17e980ce036636717b4', 'COV-BK-T1-W04-LEDGER-FORMAT']],
     ['SUP-SS1-BOOKKEEPING-T1-W04-POSTING', ['549804b2fb559513bdf2a560961f57e81a2277e38ab8a0c5fac2b7a3c770e1e5', 'COV-BK-T1-W04-POSTING-REPLACEMENT']],
   ]);
   for (const [id, [hash, coverageId]] of expected) {
@@ -241,17 +259,17 @@ test('First-term equivalent cash-book and double-entry supplements are complete'
     assert(lesson && coverage);
     assert.equal(lesson.body_sha256, hash);
     assert.equal(lesson.state.implementation, 'IMPLEMENTED');
-    assert.equal(lesson.state.content_approval, 'PENDING');
-    assert.equal(lesson.state.verification, 'DEFERRED');
+    assert.equal(lesson.state.content_approval, 'APPROVED');
+    assert.equal(lesson.state.verification, 'VERIFIED');
     assert(lesson.practice.length > 0);
     for (const question of lesson.practice) {
       assert.equal(question.marking.reduce((sum, part) => sum + part.marks, 0), question.marks);
     }
     assert(coverage.lesson_ids.includes(id));
   }
-  assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W01-BANK-ACCOUNT').status, 'PARTIAL');
-  assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W01-ILLUS-2').status, 'PARTIAL');
-  assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W04-ILLUSTRATION').status, 'PARTIAL');
+  assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W01-BANK-ACCOUNT').status, 'IMPLEMENTED_EQUIVALENT');
+  assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W01-ILLUS-2').status, 'IMPLEMENTED_EQUIVALENT');
+  assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W04-ILLUSTRATION').status, 'IMPLEMENTED_EQUIVALENT');
 });
 
 test('Owner-approved first-term delivery corrections bind each exact original body to its authored replacement', () => {
@@ -280,8 +298,8 @@ test('Owner-approved first-term delivery corrections bind each exact original bo
   assert.equal(p.sources.find(s => s.source_id === 'SS1-SRC-62b02f2adcb3')?.sha256,
     '9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0');
   for (const l of p.lessons.filter(x => x.term === '1st Term')) {
-    assert.equal(l.state.content_approval, 'PENDING');
-    assert.equal(l.state.verification, 'DEFERRED');
+    assert.equal(l.state.content_approval, 'APPROVED');
+    assert.equal(l.state.verification, 'VERIFIED');
   }
 });
 
@@ -303,8 +321,8 @@ test('First-term extension lessons populate Weeks 5-10 without claiming recovere
     assert.equal(lesson.term, '1st Term');
     assert.equal(lesson.body_sha256, bodyHash);
     assert.equal(lesson.state.implementation, 'IMPLEMENTED');
-    assert.equal(lesson.state.content_approval, 'PENDING');
-    assert.equal(lesson.state.verification, 'DEFERRED');
+    assert.equal(lesson.state.content_approval, 'APPROVED');
+    assert.equal(lesson.state.verification, 'VERIFIED');
     assert(lesson.objectives.length > 0 && lesson.practice.length > 0);
     for (const question of lesson.practice) {
       assert.equal(question.marking.reduce((sum, part) => sum + part.marks, 0), question.marks);
@@ -320,13 +338,27 @@ test('First-term extension lessons populate Weeks 5-10 without claiming recovere
   assert.match(scope?.required_action ?? '', /original-source completeness question open/);
 });
 
+test('First-term bank-account and twenty-transaction delivery replacements are fully worked', () => {
+  const p = packageSchema.parse(raw);
+  const bank = p.lessons.find(x => x.id === 'SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK');
+  const posting = p.lessons.find(x => x.id === 'SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY');
+  assert(bank && posting);
+  assert.match(bank.body, /Separate bank-account worked example/);
+  assert.match(bank.body, /closing bank balance is 8,750 debit/);
+  assert.match(posting.body, /Full integrated illustration — twenty original June transactions/);
+  assert.match(posting.body, /Closing cash balance: 4,950 debit/);
+  assert.match(posting.body, /Closing bank balance: 11,550 debit/);
+  assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W01-ILLUS-2')?.status, 'IMPLEMENTED_EQUIVALENT');
+  assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W04-ILLUSTRATION')?.status, 'IMPLEMENTED_EQUIVALENT');
+});
+
 test('Third-term Week 1 revision marker has a project-authored revision lesson, not invented source content', () => {
   const p = packageSchema.parse(raw);
   const lesson = p.lessons.find(x => x.id === 'SUP-SS1-BOOKKEEPING-T3-W01-REVISION');
   assert(lesson);
   assert.equal(lesson.term, '3rd Term');
-  assert.equal(lesson.state.content_approval, 'PENDING');
-  assert.equal(lesson.state.verification, 'DEFERRED');
+  assert.equal(lesson.state.content_approval, 'APPROVED');
+  assert.equal(lesson.state.verification, 'VERIFIED');
   assert(lesson.objectives.length >= 4 && lesson.practice.length >= 2);
   assert.match(lesson.provenance[0].locator, /no revision body/);
   assert.equal(p.source_rules.find(x => x.id === 'RULE-BK-T3-REVISION-1')?.kind, 'SCHEME_ONLY');
@@ -338,7 +370,7 @@ test('Third-term petty cash, trial balance and suspense gaps have authored lesso
   const expected = new Map([
     ['SUP-SS1-BOOKKEEPING-T3-W02-PETTY-CASH', ['46a849b06cd31f8186cb9b1fa1062cf8a218b584bbda3dbb45daed1ae57430f1', ['COV-BK-T3-W02-MEANING', 'COV-BK-T3-W02-COLUMNS', 'COV-BK-T3-W02-POSTING']]],
     ['SUP-SS1-BOOKKEEPING-T3-W03-TRIAL-BALANCE', ['6de1fcf0310c0906bc00abd74e009dd7385b9db1fba402d515e6c663403f8431', ['COV-BK-T3-W03-MEANING', 'COV-BK-T3-W03-FUNCTIONS', 'COV-BK-T3-W03-EXTRACTION']]],
-    ['SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION', ['03c7a99f7baec41ab9cf159043cbffe756040fe80e3cc3da2585104b56db8d80', ['COV-BK-T3-W04-RULES', 'COV-BK-T3-W04-PREPARATION']]],
+    ['SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION', ['46718d2f2e499b80734ccabeab065afd5c5439697df2e1593ae2a12df8a99b47', ['COV-BK-T3-W04-RULES', 'COV-BK-T3-W04-PREPARATION']]],
     ['SUP-SS1-BOOKKEEPING-T3-W06-SUSPENSE', ['fcf96e7e2a4c14d870dc3ebd59b8be73ae248e574aa42532909572784233badd', ['COV-BK-T3-W06-SUSPENSE']]],
   ]);
   for (const [id, [expectedHash, coverageIds]] of expected) {
@@ -346,8 +378,8 @@ test('Third-term petty cash, trial balance and suspense gaps have authored lesso
     assert(lesson, `missing lesson ${id}`);
     assert.equal(lesson.body_sha256, expectedHash);
     assert.equal(lesson.state.implementation, 'IMPLEMENTED');
-    assert.equal(lesson.state.content_approval, 'PENDING');
-    assert.equal(lesson.state.verification, 'DEFERRED');
+    assert.equal(lesson.state.content_approval, 'APPROVED');
+    assert.equal(lesson.state.verification, 'VERIFIED');
     assert(lesson.practice.length >= 3);
     for (const q of lesson.practice) {
       assert.equal(q.marks, q.marking.reduce((sum, part) => sum + part.marks, 0));
