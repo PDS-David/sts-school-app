@@ -1,9 +1,9 @@
 name: SS1 source member inspection (temporary)
 
 on:
-  push:
+  pull_request:
     branches:
-      - agent/ss1-source-inspection
+      - master
     paths:
       - .github/workflows/ss1-source-inspection.yml
 
@@ -43,10 +43,7 @@ jobs:
           archive = repo / "docs/ss1/sources/SSS1-original.zip"
           registry_path = repo / "backend/src/db/ss1/sourceRegistry.json"
           expected_archive_sha = "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e"
-          assigned = {
-              "french", "yoruba", "literature", "mathematics",
-              "further-mathematics", "physics", "technical-drawing"
-          }
+          assigned = {"english"}
           scratch = Path(os.environ["RUNNER_TEMP"]) / "ss1-source-inspection"
           raw_root = scratch / "raw"
           parsed_root = scratch / "parsed"
