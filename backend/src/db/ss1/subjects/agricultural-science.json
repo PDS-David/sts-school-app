@@ -3010,6 +3010,18 @@
         "SS1-SRC-956594d97094"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W04-05-ROOTS-TABLE-STRUCTURE",
+      "kind": "CONTENT",
+      "detail": "The original Second Term roots/tubers table at block 309 is a 17-row, three-column Word table: blank S/N header, Yam and Cassava columns, and sixteen attribute rows. The Word structure preserves each crop/attribute/value pairing, but concatenated plain-text extraction removes cell separators. The Cassava Seed rate cell is blank in the source; this absence is itself source information and must not be filled by inference.",
+      "required_action": "When the owner-authorised importer/lesson mapping stage binds the original Weeks Four–Five lesson, preserve the Yam and Cassava columns and all sixteen attribute rows as a structured table or explicit paired list. Preserve the blank Cassava seed-rate cell as blank/not supplied; retain every other printed figure, unit, range, date, name and spelling exactly. Do not rely on concatenated plain text or create a duplicate supplement for already-taught content. If the frozen importer/schema cannot preserve the structure, request a versioned foundation change.",
+      "affected_ids": [
+        "COV-AG-T2-W04-05-SELECTED-CROPS",
+        "AG-VIS-T2-TBL-ROOTS",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
     }
   ]
 }

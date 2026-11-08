@@ -62,7 +62,8 @@
     "AG-VIS-T1-TBL-W06 (2026-11-08): source Word table 486 has fourteen agro-industry/raw-material pairs in three columns. Plain-text block extraction concatenates cells and loses pair boundaries; future lesson binding must preserve the structure. No duplicate supplement or source edit.",
     "AG-VIS-T1-BRANDING (2026-11-08): both embedded images are tutor branding/vision material, not agricultural teaching figures. Exclude from delivered lessons and do not republish contact details. No image files committed.",
     "AG-VIS-T2-TBL-CEREALS (2026-11-08): source table 286 is a 17x3 Maize/Rice comparison. Plain-text extraction concatenates cells and loses pairings. Preserve all sixteen attributes and every printed figure verbatim in a structured table/paired list; no duplicate supplement or source change.",
-    "AG-VIS-T2-TBL-LEGUMES (2026-11-08): source table 298 is a 17x3 Cowpea/Groundnut comparison. Plain-text extraction concatenates cells and loses pairings. Preserve all sixteen attributes and every printed figure/spelling verbatim in a structured table/paired list; no duplicate supplement or source change."
+    "AG-VIS-T2-TBL-LEGUMES (2026-11-08): source table 298 is a 17x3 Cowpea/Groundnut comparison. Plain-text extraction concatenates cells and loses pairings. Preserve all sixteen attributes and every printed figure/spelling verbatim in a structured table/paired list; no duplicate supplement or source change.",
+    "AG-VIS-T2-TBL-ROOTS (2026-11-08): source table 309 is a 17x3 Yam/Cassava comparison. Plain-text extraction concatenates cells and loses pairings. Preserve all sixteen attributes and printed figures verbatim; the Cassava seed-rate cell is blank and must remain not supplied. No duplicate supplement or source change."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -77,8 +78,8 @@
     "CORRECTION_BINDING": 11
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 47,
-    "PENDING": 101,
+    "IMPLEMENTED_TESTING_DEFERRED": 48,
+    "PENDING": 100,
     "BLOCKED": 2
   },
   "items": [
@@ -1442,8 +1443,8 @@
         "AG-INV-T2",
         "AG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): block 309 is a w:tbl of 17 rows and 3 columns: an empty header cell then two crop names, followed by 16 attribute rows (Description, Varieties / cultivar, Land preparation, Climatic requirement, Soil requirement, Method of propagation, Planting date, Planting, Seed rate, Spacing, Cultural practices, Maturity period, Harvesting, Processing, Uses, Storage). The table holds agronomic figures (seed rates per hectare, spacings, temperature and rainfall ranges, maturity periods); they are source facts to preserve, and later items must not add rates the table lacks. Extractor output for this table was not generated (importer deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Second Term member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042. Original Word table block 309 is 17 rows x 3 columns (blank S/N header, Yam and Cassava columns, sixteen attribute rows); block text SHA-256 b35aa8b43354f8934274af4ad2fadcafd68aceb8c9de6e6ce890f60e1de98575. Plain-text extraction concatenates cells and loses crop/attribute/value pairing. Cassava Seed rate cell is empty in the source; this is not to be inferred or filled. All other printed figures, units, dates and spellings must remain verbatim. Added blocking open item for structured table preservation and explicit blank-cell retention; no duplicate supplement or source edit. Importer and app rendering not run.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -5626,7 +5627,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T2-TBL-ROOTS",
     "AG-VIS-T2-BRANDING",
     "AG-VIS-T3-W01-TBL-TOOLS",
     "AG-VIS-T3-W02-DRAUGHT-ANIMALS",
