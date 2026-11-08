@@ -96,7 +96,7 @@ test('Preamble marker coverage targets its exact SCHEME_ONLY rule, not an invent
     assert(c && r);
     assert.equal(c.status, 'MARKER');
     assert.deepEqual(c.lesson_ids, [ruleId]);
-    assert.equal(r.op, 'classify_marker');
+    if (r.op !== 'classify_marker') assert.fail('marker target must be a classify_marker rule');
     assert.equal(r.kind, 'SCHEME_ONLY');
   }
 });
