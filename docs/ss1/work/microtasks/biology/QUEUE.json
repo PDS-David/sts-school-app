@@ -65,7 +65,8 @@
     "BIO-VIS-T1-PEST-LIFECYCLES (2026-11-08) inspected the 15 text boxes and nine DrawingML/VML drawings across blocks 582-593 and rendered PDF pages 21-22. The first nymph-bearing figure's labels conflict with the yam-beetle prose and its stage sequence cannot be safely assigned; a teacher identity gate and dependent redraw task were added. The second figure under the rhinoceros-beetle heading has Egg, Larvae, Pupa and Adults with a clear directed loop; a separate project-authored redraw task was appended. Source drawings are not copied, and no chemical-control instructions are reproduced. Testing remains deferred.",
     "BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME (2026-11-08) inspected all 13 arrow connectors and their text at blocks 683-713 in rendered PDF pages 25-26. Formula text survives extraction but arrow flow does not. The source equations at blocks 683, 697, 700 and 713 contain unresolved differences/defects; no correction was made. The existing BIO-FACT-T1-W05-EQUATIONS task now covers the complete set. No separate asset is needed; a structured equation/arrow presentation is sufficient. Testing remains deferred.",
     "BIO-VIS-T1-EXPERIMENT-FIGURES (2026-11-08) verified that Experiment I has no figure and inspected the four source drawings for Experiments II-V. Handwritten labels were transcribed into package evidence; they do not survive plain-text extraction. No original raster assets were committed because reuse rights are unrecorded. The existing practical safety gate remains blocking; no practical instructions or quantities were added. Testing remains deferred.",
-    "BIO-VIS-T1-NUTRIENT-CYCLES (2026-11-08) inspected the two hand-drawn diagrams at blocks 795 and 821. Labels and paths were transcribed; the carbon diagram's Animals→Plants arrow conflicts with written block 785, and the water diagram omits the underground-water route and uses 'transpiration' where the prose prints 'transportation'. No nitrogen cycle diagram or teaching text exists in Week 6; sulphur is named but not taught. No source images are registered as assets because rights are unrecorded. A structured carbon/water lesson was appended; no separate asset/redraw is required. The existing assessment task now depends on this lesson. Testing remains deferred."
+    "BIO-VIS-T1-NUTRIENT-CYCLES (2026-11-08) inspected the two hand-drawn diagrams at blocks 795 and 821. Labels and paths were transcribed; the carbon diagram's Animals→Plants arrow conflicts with written block 785, and the water diagram omits the underground-water route and uses 'transpiration' where the prose prints 'transportation'. No nitrogen cycle diagram or teaching text exists in Week 6; sulphur is named but not taught. No source images are registered as assets because rights are unrecorded. A structured carbon/water lesson was appended; no separate asset/redraw is required. The existing assessment task now depends on this lesson. Testing remains deferred.",
+    "BIO-VIS-T1-PROTEIN-BREAKDOWN (2026-11-08) verified the three right-pointing connectors at block 859 and compared the sequence with the source enzyme table at block 920. The order is confirmed; only singular/plural wording differs ('Peptone' in the diagram, 'peptones' in the enzyme table). No asset/redraw is needed; the existing Week 7 nutrition lesson now includes the structured sequence. Testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -81,8 +82,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 48,
-    "PENDING": 98,
+    "IMPLEMENTED_TESTING_DEFERRED": 49,
+    "PENDING": 97,
     "BLOCKED": 11
   },
   "items": [
@@ -1180,8 +1181,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): block 859 extracts as 'Protein  Peptone  Polypeptide  Amino acid' from three shapes; the order as extracted lists peptone before polypeptide. Not rendered here. Heading context: block 857 'PROTEIN'.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and assigned DOCX member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Direct source block 859 SHA-256 c9f67eb9e6d356a565d4a2440a0a5fee8a1c3bb853cfc4c4782abfc6c0a0f954a. It contains three native straightConnector1 arrows, each with a triangle at the tail end, connecting the text labels Protein → Peptone → Polypeptide → Amino acid from left to right. The labels are ordinary text and retain their order in extraction; the arrow direction is omitted. Private rendered PDF page 33 confirms the rightward sequence. The source enzyme table at block 920 (SHA-256 6f1f3aa0be2c83dbe5ab075287d7994531bb425eefddaeb4153965510841bed5) independently supports the order: pepsin converts protein to peptones; trypsin converts proteins/peptones to polypeptide; erepsin converts polypeptide to amino acid. The diagram uses singular 'Peptone' while the table uses plural 'peptones'; the delivery supplement should use the table's plural form while leaving the original diagram unchanged. No separate asset/redraw is needed; a structured text sequence with arrows is sufficient. The existing BIO-LES-T1-W07-ANIMAL-NUTRITION task now includes this sequence and depends on this disposition. No source bytes changed; no app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
     },
     {
@@ -3474,7 +3475,7 @@
       "source_id": "SS1-SRC-422e0e6ddde9",
       "term": "1st Term",
       "week_or_locator": "Week 7, blocks 835-925",
-      "objective": "Author a clearly labelled supplemental lesson for animal nutrition and digestive enzymes, covering the six food-substance groups, balanced diet, enzyme characteristics and classes. Use approved references for facts flagged by BIO-FACT-T1-W07-FOOD-CLAIMS, distinguish supplements from original source text, and include complete keyed practice.",
+      "objective": "Author a clearly labelled supplemental lesson for animal nutrition and digestive enzymes, covering the six food-substance groups, balanced diet, enzyme characteristics and classes. Include the source-supported protein-breakdown sequence Protein → Peptones → Polypeptide → Amino acid, using the plural form supported by the enzyme table at block 920 while retaining the diagram's original singular wording unchanged. Use approved references for facts flagged by BIO-FACT-T1-W07-FOOD-CLAIMS, distinguish supplements from original source text, and include complete keyed practice.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
         "docs/ss1/contracts/CONTRACT.md",
@@ -3483,7 +3484,8 @@
         "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
         "backend/src/db/ss1/subjects/biology.json",
         "docs/ss1/work/microtasks/biology/QUEUE.json",
-        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-PROTEIN-BREAKDOWN.md"
       ],
       "required_attachments": [
         {
@@ -3500,7 +3502,8 @@
       ],
       "depends_on": [
         "BIO-WK-T1-W07",
-        "BIO-FACT-T1-W07-FOOD-CLAIMS"
+        "BIO-FACT-T1-W07-FOOD-CLAIMS",
+        "BIO-VIS-T1-PROTEIN-BREAKDOWN"
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T1-W07; see the Week 7 objective index for exact source locators."
@@ -5444,7 +5447,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T1-PROTEIN-BREAKDOWN",
     "BIO-VIS-T1-MITOSIS",
     "BIO-VIS-T1-HORMONE-TABLE",
     "BIO-VIS-T1-MOVEMENT-TABLE",
