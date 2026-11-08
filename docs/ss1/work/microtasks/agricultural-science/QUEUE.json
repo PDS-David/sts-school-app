@@ -31,23 +31,24 @@
     "AG-PRE-T3 (2026-11-08) classified Third Term preamble blocks 0-25: generic heading, subject/class metadata, scheme header and rows 1-12, references and blank blocks. Scheme items 1-10 delegated to weekly indexing; revision/examination items 11-12 delegated to marker tasks. Existing source alias reused. No package content, rules, coverage, corrections or assets changed. Testing deferred.",
     "AG-WK-T1-W02 (2026-11-08) indexed First Term Week 2: scheme entry 2 is source-taught (blocks 149, 152, comparison table 160), but delivery mapping remains PARTIAL pending importer/parsed-row verification; ten-tool/ten-machine and five agro-based-industry assessment gaps and the unresolved foreign-exchange exception item were split into bounded lesson/fact tasks. Composite archive, member and Week 2 range hashes were independently verified. No lesson, source byte, rule, correction or asset was written.",
     "AG-WK-T1-W03 (2026-11-08) indexed First Term Week 3: scheme entry 3 maps to fifteen problem/solution pairs in blocks 193-287. Cross-week crop rotation item is supported by Week 6 block 436. Extension roles, herbicide terminology, credit-source options and malformed storage solution were separately recorded as follow-up gaps; no unsafe chemical directions were added.",
-    "AG-WK-T1-W04 (2026-11-08) indexed First Term Week 4: scheme entry 4 covers government roles (335-381) and NGO roles (386-399). Six NGO roles and seven research institutes are listed. Follow-ups record mixed-geography NGO examples, absent programme objectives and unresolved weekend assessment items; no external answers were invented."
+    "AG-WK-T1-W04 (2026-11-08) indexed First Term Week 4: scheme entry 4 covers government roles (335-381) and NGO roles (386-399). Six NGO roles and seven research institutes are listed. Follow-ups record mixed-geography NGO examples, absent programme objectives and unresolved weekend assessment items; no external answers were invented.",
+    "AG-WK-T1-W05 (2026-11-08) indexed First Term Week 5: scheme entry 5 maps to eleven science-and-technology roles (426-436). Assessment gaps for technology definition, five improved systems and five storage facilities, plus a genetics terminology MCQ fact-check, were appended. Agro-chemical names preserved without invented doses or handling instructions."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 6,
+    "FACTUAL_DEPENDENCY": 7,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 10,
+    "LESSON": 13,
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 16,
-    "PENDING": 73,
+    "IMPLEMENTED_TESTING_DEFERRED": 17,
+    "PENDING": 76,
     "BLOCKED": 2
   },
   "items": [
@@ -613,8 +614,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): label block 421 text \"WEEK 5                                                                                                  DATE ………………………………\" (sha256 ac5436a3583cf2ab3d3d597e97625e07f68566a4532919e95abcc7c8fda31847); blocks 421-472; range sha256 0b511ea943b8ca423eb1fc0e16807edaedf56048210b5e6a9638ecd6fe745819. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme topic: Roles of Science and Technology in Agricultural Development. Eleven role bullets (blocks 426-436) cover machinery, agro-climatology, pests and disease control by chemicals (block 428), crop/animal improvement, soil fertility, storage, transport, conservation, surveying, farm systems. No doses, rates or handling instructions are given. Evaluation (439-441), General Evaluation (443-448), Reading (449-451), Weekend MCQ (452-457) and Theory (458-460); blank blocks 461-472.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying the composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, First Term member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526 and Week 5 range blocks 421-472 SHA-256 0b511ea943b8ca423eb1fc0e16807edaedf56048210b5e6a9638ecd6fe745819. Scheme entry 5 maps to eleven roles at 426-436: machinery, agro-climatology, pest/disease control, crop/animal improvement, soil fertility, animal health, storage/processing, transport, soil/water conservation, land surveying and improved agricultural systems. The ten-role/discussion evaluations are supported; crop/animal improvement and agro-climatology questions are supported. General evaluation asks for a technology definition (not supplied), five improved systems (source gives three) and five storage facilities (source gives two, plus cribs in Week 3; millers/shellers are processing equipment). Weekend Q1's bush-fallowing option is not taught; Q2's 'genetic engineering' wording differs from 'genetics and breeding'; Q3 is supported by surveying block 435 and soil testing block 430; Q4 by conservation block 434; Q5 by storage block 432. Added three UNRESOLVED coverage rows, five open items and follow-ups AG-LES-T1-W05-TECHNOLOGY-DEFINITION, AG-LES-T1-W05-FARM-MANAGEMENT, AG-LES-T1-W05-STORAGE-FACILITIES and AG-FACT-T1-W05-GENETICS-ITEM. Reading assignment 449-451 recorded but not checked. Pesticides/fungicides/nematicides/fumigants named at 428; no doses or handling directions added. Full assessment analysis: AG-WK-T1-W05.md. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -3451,6 +3452,151 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T1-W04: block 417 classifies Agricultural Development Authority as the exception but gives no explanation.",
       "completion_condition": "A sourced note verifies classifications and recommends retaining/correcting the question."
+    },
+    {
+      "id": "AG-LES-T1-W05-TECHNOLOGY-DEFINITION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 5 general evaluation block 444",
+      "objective": "Teach an age-appropriate definition of technology in an agricultural context, distinguishing science from technology where useful. Clearly label it as a supplement, use reliable sources, and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W05.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W05-TECHNOLOGY-DEFINITION.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W05: the source does not supply the full material requested by this assessment.",
+      "completion_condition": "A clearly labelled source-backed supplement teaches the requested material, includes complete keyed practice and criterion-level marks, truthful provenance and PENDING approval; original source bytes remain unchanged."
+    },
+    {
+      "id": "AG-LES-T1-W05-FARM-MANAGEMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 5 block 436; general evaluation 446; weekend assignment 453",
+      "objective": "Teach at least five verified improved farm-management systems, including crop rotation, mixed farming and rotational grazing. Clarify the distinction from bush fallowing; label additions as supplement content and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W05.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W05-FARM-MANAGEMENT.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W05: the source does not supply the full material requested by this assessment.",
+      "completion_condition": "A clearly labelled source-backed supplement teaches the requested material, includes complete keyed practice and criterion-level marks, truthful provenance and PENDING approval; original source bytes remain unchanged."
+    },
+    {
+      "id": "AG-LES-T1-W05-STORAGE-FACILITIES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 5 block 432; Week 3 block 234; general evaluation 447",
+      "objective": "Teach at least five accurate examples of modern agricultural storage facilities, distinguishing storage facilities from processing equipment such as millers and shellers. Label the lesson as an assessment supplement and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W05.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W05-STORAGE-FACILITIES.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W05: the source does not supply the full material requested by this assessment.",
+      "completion_condition": "A clearly labelled source-backed supplement teaches the requested material, includes complete keyed practice and criterion-level marks, truthful provenance and PENDING approval; original source bytes remain unchanged."
+    },
+    {
+      "id": "AG-FACT-T1-W05-GENETICS-ITEM",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 5 block 429 and weekend assignment block 454",
+      "objective": "Verify whether the weekend MCQ's 'Genetic engineering' option accurately represents the source's genetics-and-breeding teaching on crop/animal improvement. Use authoritative references and recommend retaining, correcting or withdrawing the item.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W05.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W05-GENETICS-ITEM.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W05: block 429 says genetics and breeding, while block 454 offers genetic engineering; source does not resolve the equivalence.",
+      "completion_condition": "A sourced note establishes whether the MCQ is accurate and recommends a precise disposition."
     }
   ],
   "review": {
@@ -3466,7 +3612,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T1-W05",
     "AG-WK-T1-W06",
     "AG-WK-T1-W07",
     "AG-WK-T1-W08",
@@ -3527,6 +3672,7 @@
     "AG-FACT-T1-W03-CREDIT-OPTIONS",
     "AG-FACT-T1-W04-PEST-CONTROL-ITEM",
     "AG-FACT-T1-W04-NGO-STATUS",
+    "AG-FACT-T1-W05-GENETICS-ITEM",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
@@ -3535,6 +3681,9 @@
     "AG-LES-T1-W03-INPUT-TERMINOLOGY",
     "AG-LES-T1-W04-NGO-EXAMPLES",
     "AG-LES-T1-W04-PROGRAMME-OBJECTIVES",
+    "AG-LES-T1-W05-TECHNOLOGY-DEFINITION",
+    "AG-LES-T1-W05-FARM-MANAGEMENT",
+    "AG-LES-T1-W05-STORAGE-FACILITIES",
     "AG-TEST-PACKAGE"
   ]
 }

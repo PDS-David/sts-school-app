@@ -485,6 +485,82 @@
         }
       ],
       "source_id": "SS1-SRC-7aa642b0085b"
+    },
+    {
+      "id": "COV-AG-T1-W05-SCIENCE-TECH",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Roles of Science and Technology in Agricultural Development",
+      "objective_locator": "Week 5 blocks 421-472; scheme entry 5 at scheme block 16",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 5 blocks 425-436; eleven role paragraphs 426-436",
+          "explanation": "The source gives eleven roles: machinery, agro-climatology, pest/disease control, crop/animal improvement, soil fertility, animal health, storage/processing, transport, soil/water conservation, surveying and improved agricultural systems."
+        },
+        {
+          "locator": "Evaluations 439-448 and theory 458-460",
+          "explanation": "The ten-role, discussion, crop/animal improvement and agro-climatology questions are supported. Technology definition, five improved systems and five storage facilities are not fully taught; follow-ups are recorded."
+        },
+        {
+          "locator": "Week 5 range 421-472; SHA-256 0b511ea943b8ca423eb1fc0e16807edaedf56048210b5e6a9638ecd6fe745819",
+          "explanation": "Source teaching exists, but package lesson rows and importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T1-W05-TECHNOLOGY-DEFINITION",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Definition of technology",
+      "objective_locator": "Week 5 blocks 421-472; scheme entry 5 at scheme block 16",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 5 block 444; source blocks 425-436",
+          "explanation": "The general evaluation asks 'What is technology?' but the source introduces science and technology and lists roles without defining technology."
+        },
+        {
+          "locator": "Whole First Term source search for 'technology'",
+          "explanation": "No definition is supplied elsewhere in the source."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T1-W05-FARM-MANAGEMENT",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Five improved farm-management systems",
+      "objective_locator": "Week 5 blocks 421-472; scheme entry 5 at scheme block 16",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 5 block 436",
+          "explanation": "The only explicit examples are crop rotation, mixed farming and rotational grazing; the question asks for five."
+        },
+        {
+          "locator": "Week 5 block 453 and whole First Term search",
+          "explanation": "Bush fallowing appears only as an MCQ option; no other improved-system examples are taught."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T1-W05-STORAGE-FACILITIES",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Five modern storage facilities",
+      "objective_locator": "Week 5 blocks 421-472; scheme entry 5 at scheme block 16",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 5 block 432; Week 3 block 234",
+          "explanation": "Week 5 names silos and cold rooms; Week 3 additionally names cribs. Millers and shellers are processing equipment, not storage facilities."
+        },
+        {
+          "locator": "Whole First Term source search",
+          "explanation": "Fewer than five distinct storage examples are taught."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -718,6 +794,64 @@
       "required_action": "Verify the Nigerian status of Agricultural Development Authority and the listed organisations against authoritative records; recommend a sourced correction if needed.",
       "affected_ids": [
         "AG-FACT-T1-W04-NGO-STATUS",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W05-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "The Week 5 scheme objective is taught through eleven science-and-technology roles at 425-436, but the package has no lesson records and no importer-confirmed parsed-row ID. COV-AG-T1-W05-SCIENCE-TECH is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T1-W05-SCIENCE-TECH; do not invent an ID or duplicate source teaching.",
+      "affected_ids": [
+        "COV-AG-T1-W05-SCIENCE-TECH",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W05-TECHNOLOGY-DEFINITION",
+      "kind": "CONTENT",
+      "detail": "General evaluation 444 asks for a definition of technology, but the source gives none. COV-AG-T1-W05-TECHNOLOGY-DEFINITION is UNRESOLVED.",
+      "required_action": "Author AG-LES-T1-W05-TECHNOLOGY-DEFINITION as a clearly labelled source-backed supplement with examples and complete keyed practice.",
+      "affected_ids": [
+        "COV-AG-T1-W05-TECHNOLOGY-DEFINITION",
+        "AG-LES-T1-W05-TECHNOLOGY-DEFINITION",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W05-FARM-MANAGEMENT",
+      "kind": "CONTENT",
+      "detail": "General evaluation 446 asks for five improved farm-management systems; block 436 gives three. Weekend Q1 453 includes bush fallowing without teaching/classifying it.",
+      "required_action": "Author AG-LES-T1-W05-FARM-MANAGEMENT with at least five verified systems and explain the bush-fallowing distinction.",
+      "affected_ids": [
+        "COV-AG-T1-W05-FARM-MANAGEMENT",
+        "AG-LES-T1-W05-FARM-MANAGEMENT",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W05-STORAGE-FACILITIES",
+      "kind": "CONTENT",
+      "detail": "General evaluation 447 asks for five modern storage facilities. Blocks 432 and 234 provide silos, cold rooms and cribs; millers/shellers are processing equipment, not storage facilities.",
+      "required_action": "Author AG-LES-T1-W05-STORAGE-FACILITIES with at least five reliable storage examples, distinguishing storage from processing equipment.",
+      "affected_ids": [
+        "COV-AG-T1-W05-STORAGE-FACILITIES",
+        "AG-LES-T1-W05-STORAGE-FACILITIES",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W05-GENETICS-ITEM",
+      "kind": "FACT",
+      "detail": "Weekend Q2 454 offers 'Genetic engineering', while source 429 says 'genetics and breeding'; the source does not equate these terms.",
+      "required_action": "Verify the MCQ against authoritative genetics references and recommend retention, correction or withdrawal.",
+      "affected_ids": [
+        "AG-FACT-T1-W05-GENETICS-ITEM",
         "SS1-SRC-7aa642b0085b"
       ],
       "blocks_delivery": true
