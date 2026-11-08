@@ -1679,6 +1679,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
           "explanation": "No lesson is registered for the functioning-ecosystem objective; source-only content is not deliverable."
+        },
+        {
+          "locator": "Verified second-term source member SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc (SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44); block 818 media/image5.jpeg 444×318, SHA-256 50311108eb6f166b8be28eb7b6a4bbeac8bbf1c0c76acaafe2884e81988ee563",
+          "explanation": "The forest food-web figure at block 818 is a raster image with no text in its source block, so it is absent from plain-text extraction. Visible labels: Green Plant; Poducer (source spelling); Mouse; Rabbit; Goat; Owl; Wild Cat; Jackal; Snake; Lion; Kite; caption 'Food Web in a Forest'. Orange arrows connect the plant and animal nodes into a food web; arrows are drawn from the plant toward herbivore nodes and onward between animal nodes and predators. Several crossing links are difficult to assign confidently at the source image's resolution; any redraw must trace only clearly visible arrow endpoints and must not invent links. The label 'Poducer' is a source spelling error; any delivery restatement or project-authored redraw must show 'Producer' and include a correction note that the original image spells it 'Poducer'. The original source image is not registered or committed as an app asset because reuse rights are not recorded. A project-authored redraw is appropriate; it must preserve only the visible labels and verified arrow network without copying original pixels."
         }
       ]
     },
@@ -3539,11 +3543,14 @@
     {
       "id": "BIOLOGY-T2-W09-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 9 feeding relationships, trophic levels, food chains/webs, energy flow and thermodynamics are present in the source, but the Biology package has no registered lessons.",
-      "required_action": "Author and bind approved lessons for functioning ecosystems, energy flow and ecological pyramids, preserving source content and the assigned visual assets.",
+      "detail": "Week 9 feeding relationships, trophic levels, food chains/webs, energy flow and thermodynamics are present in the source, but the Biology package has no registered lessons. The forest food-web figure at block 818 is a labelled raster image absent from plain-text extraction; its labels are Green Plant, Poducer, Mouse, Rabbit, Goat, Owl, Wild Cat, Jackal, Snake, Lion and Kite. The source typo 'Poducer' must be corrected to 'Producer' with a correction note in any delivery restatement. The original image is not an app asset because reuse rights are not recorded; a project-authored redraw is queued.",
+      "required_action": "Complete the food-web redraw and the separate food-chain shape disposition, then author and bind the functioning-ecosystem lesson. In the redraw/restatement, use 'Producer' and note that the original image spells it 'Poducer'; preserve the original source image unchanged. Keep the consumer-survival and energy-flow claims under BIO-FACT-T2-W09-ENERGY-CLAIMS.",
       "affected_ids": [
         "COV-BIO-T2-W09-FUNCTIONING-ECOSYSTEM",
-        "COV-BIO-T2-W09-ENERGY-FLOW"
+        "COV-BIO-T2-W09-ENERGY-FLOW",
+        "BIO-VIS-T2-FIG-FOODWEB",
+        "BIO-VIS-T2-W09-FOODWEB-REDRAW",
+        "BIOLOGY-T2-W09-FOODWEB-SPELLING"
       ],
       "blocks_delivery": true
     },
@@ -4077,6 +4084,19 @@
         "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W09-FOODWEB-SPELLING",
+      "kind": "CONTENT",
+      "detail": "The food-web figure at block 818 labels the plant as 'Poducer'. This is a spelling error in the original image; the source image must remain unchanged.",
+      "required_action": "If the food web is described or redrawn for delivery, use 'Producer' and include a brief correction note stating that the original source figure spells the word 'Poducer'. Do not alter the original image or silently claim the source spelling is correct.",
+      "affected_ids": [
+        "COV-BIO-T2-W09-FUNCTIONING-ECOSYSTEM",
+        "BIO-VIS-T2-FIG-FOODWEB",
+        "BIO-VIS-T2-W09-FOODWEB-REDRAW",
+        "BIO-LES-T2-W09-FUNCTIONING-ECOSYSTEM"
+      ],
+      "blocks_delivery": false
     }
   ]
 }
