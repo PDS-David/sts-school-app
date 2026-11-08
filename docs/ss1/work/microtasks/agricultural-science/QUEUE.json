@@ -51,23 +51,24 @@
     "AG-WK-T3-W05 (2026-11-08) indexed the respiratory and nervous systems. The three text-based respiration equations were preserved verbatim; respiratory mechanics, reflex action, neuron detail and named-animal breathing are under-taught. Equations/fermentation and airway/gill claims are routed for verification.",
     "AG-WK-T3-W06 (2026-11-08) indexed reproductive cycles, mating/AI, fertilization, implantation, gestation, parturition, lactation and colostrum. Gestation table contains concatenated paired entries; embryo development and lamb positioning questions exceed teaching and require veterinary-reviewed non-procedural supplement; species timings and lactation/colostrum claims require fact-check.",
     "AG-WK-T3-W07 (2026-11-08) indexed poultry egg formation and reproductive hormones. The poultry reproductive-system heading has figures but no explanatory prose; hormone assignments and egg-formation timings are routed for verification.",
-    "AG-WK-T3-W08 (2026-11-08) indexed environmental physiology across rainfall, wind, temperature, relative humidity and light, plus effects on growth, milk and egg production. Humidity measurement, a second airborne-disease example and immunity are under-taught; regional claims and milk spoilage threshold require fact-checking."
+    "AG-WK-T3-W08 (2026-11-08) indexed environmental physiology across rainfall, wind, temperature, relative humidity and light, plus effects on growth, milk and egg production. Humidity measurement, a second airborne-disease example and immunity are under-taught; regional claims and milk spoilage threshold require fact-checking.",
+    "AG-WK-T3-W09 (2026-11-08) indexed pig management. Terms, breeds, characteristics, systems, housing, feeding, hygiene, breeding-to-finishing, parasites and diseases are source-taught. Weekend MCQ 'sty' and the requested second intensive-system disadvantage are not taught; source chemical/veterinary statements are routed for safety/factual review. Pig diagram at block 1006 remains for its separate visual task."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 32,
+    "FACTUAL_DEPENDENCY": 34,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 27,
+    "LESSON": 28,
     "CORRECTION_BINDING": 10
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 36,
-    "PENDING": 105,
+    "IMPLEMENTED_TESTING_DEFERRED": 37,
+    "PENDING": 107,
     "BLOCKED": 2
   },
   "items": [
@@ -2123,8 +2124,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Scheme item 9-10 is combined at block 13; Week Nine label 982 SHA-256 e38b03944a5cbe25a9e8b633065edd7490e9360c352bcb33ba8e6926594b756f; range blocks 982-1123 SHA-256 5a6918c499185465ecb30f240112f9c39c3697e7ba6fed967255d8154efdc0e4. Terms 994-1000; breeds 1002-1004; characteristics 1008-1016; systems 1023-1032; housing 1038-1039; feeding 1041-1042; hygiene 1044-1049; breeding-to-farrowing 1058-1060; birth-to-weaning 1062-1065; weaning-to-finishing 1067-1070; parasites/diseases 1072-1093. Assessments 1018-1021, 1034-1036, 1051-1053, 1095-1097, general 1099-1106, reading 1108-1110, weekend 1112-1119, theory 1120-1121 reviewed. Source supports most content; however MCQ 1115's 'sty' is not taught (body says pens) and questions 1096/1121 request two intensive-system disadvantages although only capital intensity is stated. Extensive system advantages/disadvantages are covered. Pig anatomy image at 1006 noted; visual disposition is separate. Veterinary/chemical statements at 1064,1080-1093 require safety/factual review; no handling/PPE instructions are supplied. Added PARTIAL pig-management coverage, UNRESOLVED assessment-gap coverage, three open items and two fact tasks plus one dependent lesson task. Full report AG-WK-T3-W09.md. No source bytes, lesson bodies, rules, corrections or assets changed. Importer/tests/typecheck/DB/device checks not run; testing remains deferred.",
       "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
     },
     {
@@ -5321,6 +5322,125 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T3-W08: several climate and regional-production claims need authoritative verification.",
       "completion_condition": "A sourced note verifies each claim and identifies defensible answers or wording changes."
+    },
+    {
+      "id": "AG-FACT-T3-W09-PIG-SAFETY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Nine blocks 1064, 1080, 1082, 1085-1093",
+      "objective": "Verify the source's pig parasite/disease and treatment statements: iron 'dextian' injection (1064); pesticide/insecticide for external parasites and listed internal parasites (1080-1082); African swine fever transmission and 10% caustic-soda/empty-pen claim (1085-1087); penicillin for swine erysipelas (1089-1090); glucose injection for hypoglycaemia (1092-1093). Assess factual accuracy and chemical/veterinary safety before any learner-facing use. Do not invent doses or handling instructions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W09.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W09-PIG-SAFETY.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W09: source chemical/veterinary statements and safety gaps are identified at blocks 1064, 1080-1093; no dose or PPE instructions are supplied.",
+      "completion_condition": "A factual/safety review cites authoritative veterinary/public-health evidence and gives a safe learner-facing disposition while preserving source bytes and without inventing doses or handling procedures."
+    },
+    {
+      "id": "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Nine housing 1038-1039, intensive system 1031-1032, evaluation 1096, weekend 1115 and theory 1121",
+      "objective": "Verify the correct educational term for a pig house (the source body says pigs are housed in pens but the weekend MCQ asks for 'sty') and identify whether a second disadvantage of intensive pig rearing is supported by authoritative livestock references or a subject-expert decision. Also check the source spelling 'Fatheners' (998) against 'fatteners' (1042, 1068) before any delivery correction. Do not infer answers or change source wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W09.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W09: MCQ term 'sty' absent from the body; only one intensive-system disadvantage is stated; 'Fatheners' differs from later 'fatteners'.",
+      "completion_condition": "A decision-backed scope review identifies verified terminology and the supported intensive-system limitation(s), then states whether an assessment supplement or delivery-only correction is justified. No answer is invented."
+    },
+    {
+      "id": "AG-LES-T3-W09-PIG-ASSESSMENT-SUPPLEMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Nine assessment gaps at evaluation 1096, weekend assignment 1115 and theory 1121",
+      "objective": "If and only if AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE supplies a verified decision, author a bounded Week Nine assessment supplement that teaches pig-house terminology and the intensive-rearing limitations needed by the source questions. Distinguish supplement content from the original lesson, include complete keyed practice and criterion-level marking, and use no unsupported disadvantages or inferred answer.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W09.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T3-W09-PIG-ASSESSMENT-SUPPLEMENT.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W09",
+        "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W09: COV-AG-T3-W09-ASSESSMENT-GAPS is UNRESOLVED; lesson must await the factual scope decision.",
+      "completion_condition": "A PENDING-approval lesson is authored only from the recorded fact decision, has complete keyed practice and criterion-level marking, a verified body_sha256 and provenance, and is bound to the unresolved coverage row. No source bytes, compiler or shared schema is changed."
     }
   ],
   "review": {
@@ -5336,7 +5456,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T3-W09",
     "AG-WK-T3-W10",
     "AG-MARK-T2-REVISION",
     "AG-MARK-T2-EXAM",
@@ -5403,6 +5522,8 @@
     "AG-FACT-T3-W07-HORMONES",
     "AG-FACT-T3-W07-EGG-FORMATION",
     "AG-FACT-T3-W08-REGIONAL-CLIMATE",
+    "AG-FACT-T3-W09-PIG-SAFETY",
+    "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-CORR-T2-W02-03-SOURCE-TERMS",
     "AG-CORR-T2-W04-05-TABLE-TEXT",

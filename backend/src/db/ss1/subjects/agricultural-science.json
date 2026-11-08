@@ -1565,6 +1565,66 @@
           "explanation": "The source mentions tsetse flies and rainfall, but does not explicitly connect equatorial rainforest ecology to cattle production."
         }
       ]
+    },
+    {
+      "id": "COV-AG-T3-W09-PIG-MANAGEMENT",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Livestock management (pigs): terms, breeds, characteristics, rearing systems, housing, feeding, hygiene, breeding-to-finishing management, parasites and diseases",
+      "objective_locator": "Third Term scheme block 13 (combined Weeks 9-10); Week Nine label 982; topic 983; content outline 984-991",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Pig definition and terms 992, 994-1000",
+          "explanation": "Pig classification and meat purpose are stated; terms include boar, sow, piglet, barrow, pork, in-sow, dry sow, 'fatheners' (source spelling), farrowing, lard and gilt."
+        },
+        {
+          "locator": "Breeds 1002-1004; characteristics 1008-1016",
+          "explanation": "The source lists Hampshire, Yorkshire/Largewhite, Poland China, Landrace, Berkshire, Large Black, West African Dwarf and Duroc; it describes gestation, litter size, dressing percentage, feed conversion, maturity, polyoestrus and salvage value."
+        },
+        {
+          "locator": "Rearing systems 1023-1032; housing 1038-1039",
+          "explanation": "Extensive, semi-intensive and intensive systems are described, along with pig-pen siting, floor, roof, drainage, ventilation and trough/bath provisions."
+        },
+        {
+          "locator": "Feeding 1041-1042; health/hygiene 1044-1049",
+          "explanation": "Balanced diets, flushing, laxative diet, creep feed, weaner/fattener mash and pen/trough cleaning, disinfection, deworming and vaccination are covered."
+        },
+        {
+          "locator": "Management 1055-1070",
+          "explanation": "Breeding-to-farrowing, birth-to-weaning and weaning-to-finishing stages are described, including age, mating, farrowing-house transfer, piglet care, source-stated injections, castration, identification, weaning and market weight."
+        },
+        {
+          "locator": "Parasites/diseases 1072-1093",
+          "explanation": "External/internal parasites, African swine fever, swine erysipelas and hypoglycaemia are described. Chemical and veterinary-treatment statements are preserved as source content and require safety/factual review."
+        },
+        {
+          "locator": "Week Nine range blocks 982-1123; SHA-256 5a6918c499185465ecb30f240112f9c39c3697e7ba6fed967255d8154efdc0e4",
+          "explanation": "All main scheme subtopics are present, but package lesson rows/importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-W09-ASSESSMENT-GAPS",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Assessment gaps: pig-house term 'sty' and a second disadvantage of intensive pig rearing",
+      "objective_locator": "Weekend assignment 1115; evaluation 1096; theory 1121",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Housing 1038-1039; weekend assignment 1115",
+          "explanation": "The body says pigs are housed in pens but does not teach the term 'sty' requested by the MCQ."
+        },
+        {
+          "locator": "Intensive system 1031-1032; evaluation 1096; theory 1121",
+          "explanation": "The source explicitly states that the intensive system is capital intensive, but does not identify a second disadvantage although both assessment prompts request two."
+        },
+        {
+          "locator": "Extensive system 1024-1025; intensive system 1031-1032",
+          "explanation": "Extensive-system advantages/disadvantages and intensive-system protection from weather, provision of inputs and high growth are stated; the second intensive-system disadvantage is not taught."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -2628,6 +2688,41 @@
       "required_action": "Verify disease transmission, tsetse ecology, milk safety/temperature and production effects against authoritative veterinary/agricultural sources; substantiate or qualify the Nigeria climate-factor ranking and equatorial-rainforest cattle-production explanation.",
       "affected_ids": [
         "AG-FACT-T3-W08-REGIONAL-CLIMATE",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W09-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week Nine teaches the pig-management content in blocks 992-1093, but package lesson rows and importer-confirmed parsed-row identity are absent. COV-AG-T3-W09-PIG-MANAGEMENT is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T3-W09-PIG-MANAGEMENT; do not invent a lesson ID or duplicate source teaching.",
+      "affected_ids": [
+        "COV-AG-T3-W09-PIG-MANAGEMENT",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W09-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "Weekend assignment 1115 asks for the term 'sty', which is not taught (the body says pigs are housed in pens at 1039). Evaluation 1096 and theory 1121 ask for two intensive-system disadvantages, but the body states only that the system is capital intensive (1032).",
+      "required_action": "Verify the pig-house terminology and a second intensive-system limitation against an authoritative agricultural/livestock source or subject-expert decision. Then author a clearly labelled assessment supplement with complete keyed practice; do not infer an answer or add unsupported content.",
+      "affected_ids": [
+        "COV-AG-T3-W09-ASSESSMENT-GAPS",
+        "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE",
+        "AG-LES-T3-W09-PIG-ASSESSMENT-SUPPLEMENT",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W09-VETERINARY-CHEMICAL-SAFETY",
+      "kind": "FACT",
+      "detail": "Week Nine includes veterinary/chemical statements: iron 'dextian' injection at 2-3 days and again 2-3 weeks later (1064); pesticide spraying or insecticide dipping for external parasites (1080); 10% caustic soda disinfection and two-month vacancy after African swine fever (1087); penicillin for swine erysipelas (1090); glucose injection for hypoglycaemia (1093). No handling/PPE instructions are supplied; the source statements are not validated veterinary directions.",
+      "required_action": "Verify disease/transmission and treatment claims, product names, concentration and safety implications against authoritative veterinary/public-health references. Record only qualified educational disposition; do not invent doses, PPE, mixing, application, injection or disinfection procedures and do not endorse source instructions.",
+      "affected_ids": [
+        "AG-FACT-T3-W09-PIG-SAFETY",
         "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true
