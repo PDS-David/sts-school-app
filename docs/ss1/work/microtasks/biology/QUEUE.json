@@ -31,7 +31,8 @@
     "BIO-PRE-T2 (2026-11-08) accounted for every block 0-28 of the 2nd Term original (generic header, subject line, eleven auto-numbered scheme rows, eight references, blanks) and recorded that the scheme week numbers come from list numbering and agree with the ten TOPIC lines. No package, rule, coverage, lesson, correction or asset was written.",
     "BIO-MARK-T2-REVEXAM (2026-11-08) classified the 2nd Term scheme row 'Revision and Examination' (block 17) as a preamble scheme-only marker with no instructional body (no week 11 or 12, no worksheet, paper or marking scheme), recorded the in-body evaluation headings that are not markers, and noted that block 940's revision questions are off-topic for Week 10. No package, rule, coverage, lesson, correction or asset was written.",
     "BIO-PRE-T3 (2026-11-08) accounted for every block 0-24 of the 3rd Term original (generic header, subject line, eight auto-numbered scheme rows, eight references, blanks) and recorded that the list numbers disagree with two section labels while rows 6 and 7 share one topic line. No package, rule, coverage, lesson, correction or asset was written.",
-    "BIO-WK-T1-W03 (2026-11-08) indexed the Week 3 classification objective and assessed all seven assignment questions against the source. The source archive and assigned first-term member hashes were verified. The unlisted 'Relevance of Biology to Agriculture' section at blocks 265-267 was split into BIO-SEC-T1-RELEVANCE; blocks 448-549 and 550-629 remain with their existing section tasks. No lesson, answer key, correction, rule or asset was written; testing remains deferred."
+    "BIO-WK-T1-W03 (2026-11-08) indexed the Week 3 classification objective and assessed all seven assignment questions against the source. The source archive and assigned first-term member hashes were verified. The unlisted 'Relevance of Biology to Agriculture' section at blocks 265-267 was split into BIO-SEC-T1-RELEVANCE; blocks 448-549 and 550-629 remain with their existing section tasks. No lesson, answer key, correction, rule or asset was written; testing remains deferred.",
+    "BIO-WK-T1-W04 (2026-11-08) indexed the Organization of life scheme objective (blocks 647-664) and reviewed all 'Questions to practice' (blocks 666-677). The practice mixes Week 4 organization content with Week 3 symmetry/body-layer, monocot/dicot and animal-group material; no key is present. No practical work or safety instructions were found. No lesson or answer key was authored; testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -46,8 +47,8 @@
     "LESSON": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 14,
-    "PENDING": 67,
+    "IMPLEMENTED_TESTING_DEFERRED": 15,
+    "PENDING": 66,
     "BLOCKED": 4
   },
   "items": [
@@ -499,8 +500,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): label block 645 \"WEEK FOUR\" (sha256 3c43507c7d6178122a308f5e7ede8deda1dd2dfab7a0beebb4601d6d26ea10c2); blocks 645-678; range sha256 25c2f1150d9175195b12b81080a2660f1dded05b377e67460248afc6d4cb14af. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 5): 'Week 4 -        Organization of life'. Body blocks 646-664 (levels of organization, advantages and disadvantages of complexity). There is no ASSIGNMENT heading or second WEEK FOUR label; a 'Questions to practice' block (666-677) follows and mixes organization-of-life items with Week 3 items (monocot/dicot differences block 675, animal group features block 677).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T1-W04.md; re-verified the source member SHA-256 against the composite archive and manifest. Re-derived Week 4 label block 645 and blocks 645-678 range hash; indexed the scheme objective against blocks 647-664. Reviewed all 'Questions to practice' blocks 666-677: Q1b is supported, Q1c/Q1d are only partly supported, Q1a and Q2 draw on Week 3 material, and no key is supplied. No experiment, practical, apparatus, procedure or safety instructions occur in the range. Added PARTIAL scheme coverage and UNRESOLVED practice coverage with two blocking open items. No lesson, key or correction invented; testing remains deferred.",
       "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -3265,7 +3266,6 @@
   },
   "next_runnable": [
     "BIO-TEST-PACKAGE",
-    "BIO-WK-T1-W04",
     "BIO-WK-T1-W05",
     "BIO-WK-T1-W07",
     "BIO-WK-T1-W08",
