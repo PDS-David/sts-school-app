@@ -637,6 +637,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer/compiler not run",
           "explanation": "The source teaches the scheme objective, but the package has no lessons. Source-only teaching is not deliverable; PARTIAL remains until a lesson or approved equivalent is authored and bound."
+        },
+        {
+          "locator": "Week 7 native Word tables: mineral salts block 881 (11×4, SHA-256 06eed3e685ee6092d944997a20cdb2036a9cccfc26ddd455e013b5d9cde7cf2f); vitamins block 888 (10×4, SHA-256 67f3d30a41c694ce09a608aca73c0a40794efbe105d7e8e63a67ab9ce8046ab4); rendered PDF pages 33-36",
+          "explanation": "Both are native w:tbl objects with intact cell boundaries in the original DOCX; the rendered PDF pages 33-36 show the row/column structure. Flattened plain-text extraction concatenates cells and loses the source/function/deficiency pairings. A semantic four-column table is required in the delivery lesson; no image asset or redraw is needed. The mineral table lists calcium, phosphorus, magnesium (source spelling 'MAGNESSIUM'), potassium, sulphur, sodium & chlorine, iron, iodine, manganese (source spelling 'MARGANESE') and copper. Its source deficiency claims include rickets, osteomalacia, tooth decay, nervous disorder, muscle paralysis, poor growth, dehydration, muscle cramp, anaemia and goitre; the manganese row has no deficiency entry. The vitamin table lists A, B1, B2, B3, B12, C, D, E and K. Its source deficiency claims include night blindness, reduced resistance to disease, slow growth, dermatitis, pellagra, pernicious anaemia, scurvy (with bleeding gums/poor wound healing/low resistance), rickets, osteomalacia, reproductive failure/sterility/premature abortion and haemorrhage. These are source claims for authoritative Biology review, not medical advice. The source wording, spellings and claims remain unchanged pending review."
         }
       ]
     },
@@ -3033,13 +3037,15 @@
     {
       "id": "BIOLOGY-T1-W07-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 7 Nutrition in Animals and digestive enzymes are described in the source, but the Biology package has no lessons or registered teaching rows. The protein breakdown flow at block 859 reads Protein → Peptone → Polypeptide → Amino acid; the source enzyme table at block 920 confirms the progression through pepsin, trypsin and erepsin. The arrowheads are visual-only, but the stage labels retain their order in text. The diagram uses singular 'Peptone' while the enzyme table uses plural 'peptones'. The supplement should use the table's plural form and preserve original source wording unchanged.",
-      "required_action": "Author and bind BIO-LES-T1-W07-ANIMAL-NUTRITION for animal nutrition and digestive enzymes, including the protein-breakdown sequence Protein → Peptones → Polypeptide → Amino acid as confirmed by the source enzyme table. Use approved references for claims already assigned to BIO-FACT-T1-W07-FOOD-CLAIMS; distinguish delivery wording from the original source and include complete keyed practice.",
+      "detail": "Week 7 Nutrition in Animals and digestive enzymes are described in the source, but the Biology package has no lessons or registered teaching rows. The mineral and vitamin tables at blocks 881 and 888 are native Word tables whose cells flatten in text extraction; the delivery lesson must restate them as semantic four-column tables. Their function/deficiency claims are under BIO-FACT-T1-W07-FOOD-CLAIMS. The protein-breakdown flow at block 859 is also dispositioned and matches the enzyme table at block 920.",
+      "required_action": "Author and bind BIO-LES-T1-W07-ANIMAL-NUTRITION after BIO-FACT-T1-W07-FOOD-CLAIMS has verified the food-substance, mineral/vitamin and enzyme claims. Restate the mineral and vitamin tables with their exact row/column pairings, include the source-supported protein-breakdown sequence, and keep all health-related statements distinct from medical advice.",
       "affected_ids": [
         "COV-BIO-T1-W07-SCHEME-7",
         "COV-BIO-T1-W07-ENZYMES",
         "BIO-VIS-T1-PROTEIN-BREAKDOWN",
-        "BIO-LES-T1-W07-ANIMAL-NUTRITION"
+        "BIO-LES-T1-W07-ANIMAL-NUTRITION",
+        "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
+        "BIO-FACT-T1-W07-FOOD-CLAIMS"
       ],
       "blocks_delivery": true
     },
@@ -3056,11 +3062,14 @@
     {
       "id": "BIOLOGY-T1-W07-FOOD-CLAIMS",
       "kind": "FACT",
-      "detail": "Several printed food-substance and enzyme claims need authoritative review before a corrected lesson is authored, including the monosaccharide formula at block 841, the sucrose formation wording at 844, the lipid formula at 871, and the amylase statements at 916-917. The source is preserved unchanged.",
-      "required_action": "Verify each cited statement against an approved Biology reference, record the exact supporting reference, and bind only evidence-based delivery corrections. Keep original wording visible as source text.",
+      "detail": "The Week 7 food-substance and enzyme material contains unverified factual claims: monosaccharide formula at block 841, sucrose formation wording at 844, lipid formula at 871, amylase statements at 916-917, and the mineral/vitamin tables at blocks 881 and 888. The tables include source claims about functions and deficiency symptoms (including rickets, osteomalacia, anaemia, goitre, pellagra, scurvy, reproductive failure and haemorrhage). These are curriculum statements requiring authoritative Biology review, not medical advice. The original source remains unchanged.",
+      "required_action": "Verify the formula, biochemical and enzyme claims at blocks 841, 844, 871 and 916-917, and each mineral/vitamin table function and deficiency claim at blocks 881 and 888, against approved Biology references. Record precise citations and evidence-based corrections for the delivery supplement. Keep source wording separate and do not present the table as medical advice or treatment guidance.",
       "affected_ids": [
         "COV-BIO-T1-W07-SCHEME-7",
-        "COV-BIO-T1-W07-ENZYMES"
+        "COV-BIO-T1-W07-ENZYMES",
+        "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
+        "BIO-FACT-T1-W07-FOOD-CLAIMS",
+        "BIO-LES-T1-W07-ANIMAL-NUTRITION"
       ],
       "blocks_delivery": true
     },
