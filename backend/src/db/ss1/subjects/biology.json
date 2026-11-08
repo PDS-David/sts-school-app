@@ -483,6 +483,54 @@
           "explanation": "No answer key or marking guide is supplied for questions 1-7. The assignment is therefore not keyed for delivery; no answers or marks are invented here."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T1-W04-SCHEME-4",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Scheme entry 4: Organization of life",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 5 (sha256 588337efbfccb7f5e67be12cba53b91278499230039352f1cede4071495f58ce); Week 4 label block 645 (sha256 3c43507c7d6178122a308f5e7ede8deda1dd2dfab7a0beebb4601d6d26ea10c2); body blocks 645-678 (range sha256 25c2f1150d9175195b12b81080a2660f1dded05b377e67460248afc6d4cb14af)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 647-652 (range sha256 43a6e485c33da9b84e3648d78c83dd178b6222fc7e12de385ab317e0849af4b3)",
+          "explanation": "Defines organization of life and describes four levels: cell, tissue, organ and system. Examples include unicellular organisms, Hydra, blood/xylem/phloem and other tissues, roots/stems/leaves and body organs, and the digestive system. The source states Hydra is the only organism at tissue level; that wording is retained as printed."
+        },
+        {
+          "locator": "blocks 653-660 (range sha256 5f0c56b1cfe75d6e659cf230cc3667148f419a040d4bde33397ccd20fbba95b5)",
+          "explanation": "Describes increasing complexity from unicellular to multicellular organisms and lists five advantages: cell specialization, division for efficient exploitation of the environment, adaptation, increased size, and continuation of other activities during reproduction in complex organisms."
+        },
+        {
+          "locator": "blocks 661-664 (range sha256 9d64a3d718c75f0a78ac372ecfcac61bcd35455a10cd087fca6cc979c76032a2)",
+          "explanation": "Lists three disadvantages: cells depend on one another, area-to-volume diminishes, and ability to regenerate decreases in higher organisms."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer/compiler not run",
+          "explanation": "The source teaches the scheme objective, but no Biology lesson exists in the package. Source-only teaching is not deliverable; PARTIAL remains until a lesson or approved equivalent is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W04-PRACTICE",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 4 'Questions to practice' (questions 1a-1d and 2a-2b)",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 heading block 666 (sha256 9689251847fd27a4aee49b7174f92260568da624e03c94fd34fbb7d47d0150ac); practice questions blocks 667-677 (range sha256 18a886e69a3282f7510b9aa2ec7bc0ac23926b54dcb9923f767c4a40722099e9)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 667-674; Week 4 teaching blocks 649-664; Week 3 body blocks 282-290 and 302-312",
+          "explanation": "Q1a compares Hydra and mammals by level of organization, body symmetry and number of body layers. Level of organization is introduced in Week 4; symmetry and germ-layer teaching occurs in the preceding Week 3 source (body symmetry blocks 282-285; diploblastic/triploblastic blocks 289-290; Hydra body layers block 308). Q1b asks for four advantages of complexity, supported by Week 4 blocks 655-660. Q1c asks learners to relate higher-animal and Amoeba functions: Week 4 names unicellular Amoeba and structures such as pseudopodia, cilia, flagella and vacuole at 649 and specialized tissues/organs/systems at 654, but does not fully compare their functions. Q1d asks learners to group examples by level; the source defines the four levels and gives some examples at 649-652, but does not explicitly classify every listed object."
+        },
+        {
+          "locator": "blocks 675-677; Week 3 body blocks 235-244 and 302-446",
+          "explanation": "Q2a asks for monocotyledon/dicotyledon differences already taught at Week 3 blocks 235-244. Q2b asks for features of Coelenterata, Amphibia, fishes, reptiles, birds and mammals already described in Week 3 blocks 302-446. These are cross-week practice/revision items, not new Week 4 teaching."
+        },
+        {
+          "locator": "whole Week 4 practice range blocks 666-677",
+          "explanation": "No answer key or marking guide accompanies the practice questions. The heading is 'Questions to practice', not an ASSIGNMENT heading; the source contains no second WEEK FOUR label in this range."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -686,6 +734,26 @@
       "required_action": "A Biology subject expert/teacher must confirm the intended wording and approved answer/marking guide for Q1-Q7, especially the unsupported Q1/Q4 items and drawing expectations in Q5. Do not invent a key from the source.",
       "affected_ids": [
         "COV-BIO-T1-W03-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W04-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "The Week 4 scheme objective is taught in source blocks 647-664, but the Biology package has no lessons and no source row has been imported. Source-only teaching is not deliverable.",
+      "required_action": "Author and bind a lesson or approved equivalent for organization of life, the four levels of organization, complexity, and its stated advantages/disadvantages; preserve source wording and provenance.",
+      "affected_ids": [
+        "COV-BIO-T1-W04-SCHEME-4"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W04-PRACTICE",
+      "kind": "OWNER_ACTION",
+      "detail": "The 'Questions to practice' at blocks 666-677 have no key. Q1c/Q1d are only partly supported by the Week 4 text; Q1a and Q2 deliberately draw on Week 3 content; no answer/marking guide is supplied.",
+      "required_action": "A Biology teacher should confirm the intended cross-week practice scope and supply an approved answer/marking guide, including expected treatment of the partially supported Amoeba comparison and object-grouping question. Do not invent answers.",
+      "affected_ids": [
+        "COV-BIO-T1-W04-PRACTICE"
       ],
       "blocks_delivery": true
     }
