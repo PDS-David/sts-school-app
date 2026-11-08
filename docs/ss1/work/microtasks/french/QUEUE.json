@@ -21,7 +21,9 @@
     "No lesson-writing item exists: repository evidence names no specific uncovered objective (the T2 future tense is already supplied by SUP-SS1-FRENCH-FUTURE-T2). Lesson items may be added only after week indexing names one.",
     "Open items FRENCH-UNCLEAR-OCCUPATIONS (FACT), FRENCH-EXAM-AUDIO (OWNER_ACTION) and FRENCH-AUTHORING-FINISH (CONTENT) are preserved unchanged in french.json; they map to FR-FACT-OCCUPATIONS, FR-FACT-EXAM-AUDIO-REQUIREMENTS -> FR-ASSET-EXAM-AUDIO-ACQUISITION -> FR-ASSET-EXAM-AUDIO-INSTALL, and FR-SCOPE-AUTHORING-FINISH.",
     "Execute one queue item per worker. A source-reading item needs the attachment in required_attachments (archive SSS 1-20260507T072431Z-3-001.zip, member and member hash given). Registration of sources is complete; do not repeat it.",
-    "FR-LES-T1-W03-SELF-ESSAY (2026-11-06): the Week 3 written self-presentation supplement is authored. New lesson SUP-SS1-FRENCH-SELF-ESSAY-T1 (34 marks, body_sha256 5eff5383f0b4…) is bound additively to coverage FRENCH-T1-W03-OBJ-2, now IMPLEMENTED_EQUIVALENT, beside the unchanged SUP-SS1-FRENCH-GREETINGS-T1. It covers all eight prompted fields including the state, language, domicile and favourite dish or colour, with a fictional model paragraph, a keyed form-choice exercise, a guided eight-sentence exercise and a 20-mark writing task whose rubric sums; no exercise asks for a private home address. The Week 3 greeting row, its PARTIAL status and its scope open item are untouched, so the week is not claimed complete. Open item ESSAY-SCOPE is closed; the two readings of Votre etat are now an explicit owner decision in FRENCH-T1-W03-ETAT-READING. Approval stays PENDING and verification DEFERRED."
+    "FR-LES-T1-W03-SELF-ESSAY (2026-11-06): the Week 3 written self-presentation supplement is authored. New lesson SUP-SS1-FRENCH-SELF-ESSAY-T1 (34 marks, body_sha256 5eff5383f0b4…) is bound additively to coverage FRENCH-T1-W03-OBJ-2, now IMPLEMENTED_EQUIVALENT, beside the unchanged SUP-SS1-FRENCH-GREETINGS-T1. It covers all eight prompted fields including the state, language, domicile and favourite dish or colour, with a fictional model paragraph, a keyed form-choice exercise, a guided eight-sentence exercise and a 20-mark writing task whose rubric sums; no exercise asks for a private home address. The Week 3 greeting row, its PARTIAL status and its scope open item are untouched, so the week is not claimed complete. Open item ESSAY-SCOPE is closed; the two readings of Votre etat are now an explicit owner decision in FRENCH-T1-W03-ETAT-READING. Approval stays PENDING and verification DEFERRED.",
+    "2026-11-08: FR-LES-T1-W01-BENEFITS implemented as SUP-SS1-FRENCH-BENEFITS-T1. Original replacement covers the identifiable scientific, technological and political benefits objective; source truncation is preserved as provenance and no missing source wording is invented. Six answered exercises total 17 marks. Content approval PENDING; verification DEFERRED.",
+    "2026-11-08: FR-WK-T2-W08 expanded. Imparfait supplement now includes complete être forms, six person/number endings, additional uses, negative forms, passé composé contrast and keyed paragraph practice (21 marks). Added FRENCH-T2-W08-OBJ-1; source scheme Week 7/body Week 8 mapping preserved. Approval PENDING; verification DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -38,8 +40,8 @@
     "VISUAL": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 73,
-    "PENDING": 39,
+    "IMPLEMENTED_TESTING_DEFERRED": 75,
+    "PENDING": 37,
     "BLOCKED": 6
   },
   "items": [
@@ -728,9 +730,9 @@
       "depends_on": [
         "FR-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Existing row-level coverage FRENCH-BODY-017 (status IMPLEMENTED_EQUIVALENT) -> SUP-SS1-FRENCH-IMPARFAIT-T2; correction SS1-02-french-COR-017 binds body d2b9e605d53f507253d68e74c899340b1f62d5f7a5bdf1e2c4fce69fb7debd1a to the same replacement. Row-level association only; the coverage entry itself states it is not exhaustive scheme-objective certification. No objective-level entry exists yet.",
-      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing, a separate small PENDING queue item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented and expanded SUP-SS1-FRENCH-IMPARFAIT-T2 in backend/src/db/ss1/subjects/french.json. Now covers regular nous-stem formation, all six person/number endings, irregular être (ét-), common uses (habit, description, age/time, weather, background), negation, worked examples, dialogue, paragraph model and six keyed exercises (21 marks). Added objective-level coverage FRENCH-T2-W08-OBJ-1. The opening scheme's Week 7 imperfect remains explicitly mapped to body Week 8; source numbering is unchanged. Content approval PENDING; verification DEFERRED.",
+      "completion_condition": "Objective-level coverage and a usable complete lesson with worked formation, contexts, answers and transparent marking exist. Approval and runtime verification remain separate."
     },
     {
       "id": "FR-WK-T2-W09",
@@ -2999,7 +3001,7 @@
       "source_id": "SS1-SRC-945dfb24eaf6",
       "term": "1st Term",
       "week_or_locator": "Week 1 child 19 (objective FRENCH-T1-W01-OBJ-5)",
-      "objective": "Author a small supplement on the benefits of French in the scientific, technological and political fields named in the source, only from sourced facts; the cut-off source text must be confirmed or supplied by the owner or teacher first, and nothing may be invented.",
+      "objective": "Create a clearly labelled original SS1-level equivalent for the three identifiable fields named before the source sentence cuts off: scientific, technological and political benefits. Do not infer or claim to recover the missing continuation.",
       "required_files": [
         "docs/ss1/work/microtasks/french/QUEUE.json",
         "backend/src/db/ss1/subjects/french.json",
@@ -3015,9 +3017,9 @@
         "FR-WK-T1-W01",
         "FR-FACT-T1-W01-POLICY"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by FR-WK-T1-W01; see open item FRENCH-T1-W01-UNCOVERED-CONTENT. Not started.",
-      "completion_condition": "Supplement exists with provenance, or the objective is left UNRESOLVED with the owner decision recorded."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as SUP-SS1-FRENCH-BENEFITS-T1 in backend/src/db/ss1/subjects/french.json. Covers scientific research access/exchange, French-language technical and ICT resources, and ECOWAS regional political/diplomatic communication. Includes original explanations, French model sentences, dialogue, six answered exercises (17 marks), and provenance URLs accessed 2026-11-08. The original source phrase is cut off; the authorised replacement covers only the identifiable scientific, technological and political objective and does not claim to recover the missing words. Content approval remains PENDING; verification DEFERRED.",
+      "completion_condition": "An original supplement covers the three identifiable fields with factual provenance, model French sentences and keyed marking; the source truncation is preserved as a limitation, not reconstructed. Content approval remains PENDING and verification DEFERRED."
     },
     {
       "id": "FR-LES-T1-W02-ANGLOPHONE",
@@ -3530,7 +3532,6 @@
     "FR-WK-T2-W05",
     "FR-WK-T2-W06",
     "FR-WK-T2-W07",
-    "FR-WK-T2-W08",
     "FR-WK-T2-W09",
     "FR-WK-T3-W01",
     "FR-WK-T3-W02",
@@ -3552,7 +3553,6 @@
     "FR-VIS-T1-ACCENT-DRAWINGS",
     "FR-VIS-T1-PUNCTUATION-ROUTINE",
     "FR-VIS-T2-OMML",
-    "FR-LES-T1-W01-BENEFITS",
     "FR-FACT-T1-W02-HEADS-OF-STATE"
   ],
   "total": 118
