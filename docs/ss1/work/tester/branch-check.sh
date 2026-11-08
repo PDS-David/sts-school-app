@@ -30,13 +30,23 @@ out=$(git diff --name-only "$base" "$ref" | grep -v -E "^(backend/src/db/ss1/sub
 [ -n "$out" ] && { echo "$out" | sed 's/^/    /'; echo "  (review: items normally write only the subject package, its queue and its item notes)"; } || echo "    none"
 run_inv() { (cd "$1" && timeout 200 node --import tsx --test tests/ss1/_invariants.test.mts 2>&1 | grep -E '^\s+[a-z0-9-]+: ' | sed 's/^ *//' | grep -v -E '^(location|actual|expected|code|stack|name|operator|generatedMessage|failureType|duration_ms|type|error|exitCode|signal): |violation\(s\)' | sort -u); }
 run_schema() { (cd "$1" && timeout 120 node --import tsx "$ROOT/docs/ss1/work/tester/schema-check.mts" "$1" 2>&1 | grep -E '^\s+[a-z_.0-9]+ \[id=' | sed 's/^ *//' | sort -u); }
-run_inv "$tmp/ma" > "$tmp/inv.ma"; run_inv "$tmp/br" > "$tmp/inv.br"
+# A branch cut before tests/ss1/_invariants.test.mts existed cannot be judged: "0 violations" would be a false green.
+if [ ! -f "$tmp/br/tests/ss1/_invariants.test.mts" ]; then
+  inv_ok=0
+  echo "- invariant violations: NOT CHECKED (branch has no tests/ss1/_invariants.test.mts; rebase on origin/master and re-run). Not a pass."
+  : > "$tmp/inv.ma"; : > "$tmp/inv.br"; rc=1
+else
+  inv_ok=1
+  run_inv "$tmp/ma" > "$tmp/inv.ma"; run_inv "$tmp/br" > "$tmp/inv.br"
+fi
 new=$(comm -13 "$tmp/inv.ma" "$tmp/inv.br"); fixed=$(comm -23 "$tmp/inv.ma" "$tmp/inv.br")
+if [ "$inv_ok" = 1 ]; then
 echo "- invariant violations: master $(wc -l < "$tmp/inv.ma"), branch $(wc -l < "$tmp/inv.br")"
 if [ -n "$new" ]; then echo "  NEW on the branch:"; echo "$new" | head -40 | sed 's/^/    /'; rc=1; else echo "  none new"; fi
 [ -n "$fixed" ] && echo "  fixed by the branch: $(echo "$fixed" | wc -l)"
+fi
 if [ $skip_tsc -eq 0 ]; then
   if (cd "$tmp/br/backend" && timeout 250 npx tsc --noEmit >"$tmp/tsc.log" 2>&1); then echo "- backend typecheck: pass"; else echo "- backend typecheck: FAIL"; head -5 "$tmp/tsc.log" | sed 's/^/    /'; rc=1; fi
 fi
-echo "- verdict: $([ $rc -eq 0 ] && echo 'NO NEW DEFECTS (advisory: safe to merge from the tester side)' || echo 'DEFECTS OR CONFLICTS FOUND (see above)')"
+echo "- verdict: $([ $rc -eq 0 ] && echo 'NO NEW DEFECTS (advisory: safe to merge from the tester side)' || echo 'DEFECTS, CONFLICTS OR UNCHECKED ITEMS FOUND (see above)')"
 exit $rc
