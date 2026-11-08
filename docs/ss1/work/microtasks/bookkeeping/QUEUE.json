@@ -60,15 +60,17 @@
     "2026-11-08 sequencing refinement: Week 2 double-column cash-book supplement now excludes cash-to-bank transfers and defers contra entries to the formal Week 3 lesson, matching the source scheme order. Its worked totals, practice answers and marking criteria were recalculated; package test hash updated. No original source content changed.",
     "2026-11-08: BK-FACT-T1-W04-TEXTBOOK resolved using the owner's standing instruction to self-generate a suitable substitute for unavailable external resources. The original textbook text was not copied. Corresponding package open item is now nonblocking; original source citation remains preserved.",
     "2026-11-08 hash-integrity correction: an earlier ad hoc SHA-256 helper used the wrong round-constant derivation. All affected lesson body_sha256 values and matching test expectations have now been recomputed using the correct SHA-256 algorithm, validated against the standard 'abc' test vector. A fresh static pass across all 21 package lessons confirms every body hash, every practice marking total, unique lesson IDs and all coverage links match. This does not constitute test-suite execution.",
-    "OWNER APPROVAL (2026-11-08): project-authored first-term Week 1-4 supplements are approved as delivery teaching versions. bookkeeping.json now contains four exact delivery_corrections linking the original parsed source-body identities to W01 cash book, W02 double-column cash book, W03 contra and W04 double-entry replacements. All BOOKKEEPING-T1-W01-* through W04-* defect/missing-content open items are nonblocking for delivery only. Original source files and defect evidence remain unchanged; no missing figure is guessed. This is not teacher content approval or technical verification: lesson approval remains PENDING, verification DEFERRED, package status PENDING. Automated tests remain unrun under the existing owner deferral."
+    "OWNER APPROVAL (2026-11-08): project-authored first-term Week 1-4 supplements are approved as delivery teaching versions. bookkeeping.json now contains four exact delivery_corrections linking the original parsed source-body identities to W01 cash book, W02 double-column cash book, W03 contra and W04 double-entry replacements. All BOOKKEEPING-T1-W01-* through W04-* defect/missing-content open items are nonblocking for delivery only. Original source files and defect evidence remain unchanged; no missing figure is guessed. This is not teacher content approval or technical verification: lesson approval remains PENDING, verification DEFERRED, package status PENDING. Automated tests remain unrun under the existing owner deferral.",
+    "OWNER CONFIRMATION 2026-11-08: canonical subject identity Bookkeeping is confirmed; all three observed source-heading variants are accepted as metadata aliases. The package records the approval reference; this is not lesson content approval or technical verification.",
+    "OWNER APPROVAL 2026-11-08: the four first-term source-defect decision tasks are superseded for delivery by the approved independent W01-W04 teaching replacements. Their source evidence remains unchanged. They are recorded IMPLEMENTED_TESTING_DEFERRED, not verified; teacher content approval and technical checks remain separate."
   ],
   "counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 78,
-    "BLOCKED": 11
+    "IMPLEMENTED_TESTING_DEFERRED": 82,
+    "BLOCKED": 7
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 78,
-    "BLOCKED": 11
+    "IMPLEMENTED_TESTING_DEFERRED": 82,
+    "BLOCKED": 7
   },
   "items": [
     {
@@ -1356,8 +1358,8 @@
         "BK-SRC-T1",
         "BK-WK-T1-W02"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Raised by BK-WK-T1-W02 (2026-10-30): the seven defects in BOOKKEEPING-T1-W02-SOURCE-DEFECTS with their block locators; whether the April 4 and April 29 transfers are contra entries before the scheme's entry 8 (BOOKKEEPING-T1-W02-CONTRA-SEQUENCING); and whether the '19x9' placeholder year is retained or replaced by a dated example (BK-PRES-T1-CURRENCY). No correction is invented here.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Superseded for delivery by OWNER APPROVAL 2026-11-08: the independently authored T1 W02 replacement is the delivery teaching version; original source defects, placeholder year and contra sequencing evidence remain unchanged and preserved. No original-source correction is claimed. Content approval and technical verification remain separate and deferred.",
       "completion_condition": "Every numbered defect and both open decisions are resolved by a named expert decision recorded with evidence and locators; the two Week 2 lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
     },
     {
@@ -1577,8 +1579,8 @@
         "BK-SRC-T1",
         "BK-WK-T1-W04"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Raised by BK-WK-T1-W04 (2026-10-30). Eleven defects listed in BOOKKEEPING-T1-W04-SOURCE-DEFECTS; figure checks in BOOKKEEPING-T1-W04-FIGURE-CHECKS. No correction is invented here.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Superseded for delivery by OWNER APPROVAL 2026-11-08: the independently authored T1 W04 double-entry lesson and separate fully worked posting exercise are the delivery teaching versions; original source defects and figure checks remain unchanged and preserved. No missing figure is guessed. Content approval and technical verification remain separate and deferred.",
       "completion_condition": "Every numbered defect and both figure checks are resolved by a named expert decision recorded with evidence and block locators; the two Week 4 lessons may then bind to that decision; no correction is invented and no lesson is authored here."
     },
     {
@@ -1706,8 +1708,8 @@
         "BK-SRC-T1",
         "BK-WK-T1-W01"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Raised by BK-WK-T1-W01 (2026-10-30): fourteen defects in blocks 30-86, including Illustration 1 printing 115 for 155 and 750 for 700, and Illustration 2 repeating Illustration 1 credit entries, omitting the June 9 cheque and printing a false 3,180 equality. No correction is authored in BK-WK-T1-W01.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Superseded for delivery by OWNER APPROVAL 2026-11-08: the independently authored T1 W01 replacement is the delivery teaching version; original source defects and figures remain unchanged and preserved. No missing figure is guessed. This task no longer blocks authoring/delivery; content approval and technical verification remain separate and deferred.",
       "completion_condition": "Each defect in BOOKKEEPING-T1-W01-SOURCE-DEFECTS and each figure in BOOKKEEPING-T1-W01-FIGURE-CHECKS is answered with the treatment to be used, recorded with a reference; the answer is binding on BK-LES-T1-W01-CASH-BOOK and on any later presentation of the two illustrations."
     },
     {
@@ -1796,8 +1798,8 @@
         "BK-SRC-T1",
         "BK-WK-T1-W03"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Raised by BK-WK-T1-W03 (2026-10-30): thirteen defects in blocks 109-157, including the identical side definition at 113, the payment-into-bank-only definition at 112, the underived N710 against a N300 balance at 119-120, the two tables with no total or balance at 122 and 135, and 22 empty blocks with no exercise. No correction is authored in BK-WK-T1-W03.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Superseded for delivery by OWNER APPROVAL 2026-11-08: the independently authored T1 W03 replacement is the delivery teaching version; original source definition, figures and defect evidence remain unchanged and preserved. No original-source correction is claimed. Content approval and technical verification remain separate and deferred.",
       "completion_condition": "Each defect in BOOKKEEPING-T1-W03-SOURCE-DEFECTS, the definition in BOOKKEEPING-T1-W03-CONCEPT-ERROR and each figure in BOOKKEEPING-T1-W03-FIGURE-CHECKS is answered with the treatment to be used, recorded with a reference, together with the opening balances the lesson may assume and the sequencing decision; the answer is binding on BK-LES-T1-W03-CONTRA and on any later presentation of the two examples."
     },
     {
