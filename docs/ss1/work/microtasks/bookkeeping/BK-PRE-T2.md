@@ -26,3 +26,7 @@ The four parsed week ranges and parsed week-body hashes match the First Term sou
 
 ## Boundary
 No lesson or duplicate coverage is created. The two revision markers and examination marker are handled by the separate marker dispositions. No importer or compiler execution is claimed.
+
+
+## Owner disposition (2026-11-08)
+The owner confirms the registered 2nd Term file should not have been identical to the 1st Term file and no replacement source is available now. The repeated scheme and teaching body are treated as an erroneous duplicate. Preserve this preamble as source evidence only; do not use its repeated scheme entries as the actual 2nd Term scheme or link them to 2nd Term lesson coverage. The project-authored reconstruction is specified in `BK-T2-RECONSTRUCTION-PLAN.md` and remains distinguishable from recovered source content.
