@@ -91,7 +91,8 @@
     "AG-VIS-T3-W10-MATH-OBJECT (2026-11-09): zero-based block 1165 contains one semantic inline OMML fraction m:f (1/2) in the cattle gestation statement 275-283 days (9 1/2 months). w:t-only extraction drops the fraction and returns 9 months; rendered source page 38 shows the stacked fraction. No image/derivative needed. Added a delivery-verification blocker to preserve the OMML fraction; importer/rendering not run.",
     "AG-FACT-T1-W02-EXPORT-ITEM (2026-11-09): source blocks 104/178 verified. Yam is exported from Nigeria, though in small quantities: JICA's 2024 Nigeria agriculture report says yam exports are few and identifies Nigerian pounded-yam-flour exporters to UK/Netherlands/US; NEPC's 2024 article directly discusses yam exports and export rejects; FMINO/NEPC's 2026 report records Yam Export Clusters. Thus 'yam' is not a defensible 'except' answer. Recommend withdraw as an export-status question or rewrite to ask what is not named in the Week 1 list. No teacher decision presumed; package open item remains unchanged pending owner decision.",
     "AG-FACT-T1-W03-CREDIT-OPTIONS (2026-11-09): verified blocks 207/310. CBN ACGSF supports deposit money banks/microfinance banks lending to farmers; BOA mandate includes agricultural credit; CBN Briefs says Cooperative Thrift and Credit Societies provide credit/funds mobilisation in Nigeria; CBN PMB guidelines restrict primary mortgage banks to mortgage finance and prohibit consumer/commercial loans. CBN CACS also permits land charges as collateral, so 'mortgage' is ambiguous as written. Likely intended exception is a primary mortgage bank; recommend correct option D wording and option C terminology. No answer key/teacher decision presumed.",
-    "AG-FACT-T1-W04-PEST-CONTROL-ITEM (2026-11-09): verified blocks 371/414/436. IPPC/FAO defines plant quarantine as preventing introduction/spread of quarantine pests; FAO IPM supports crop rotation for pest/disease suppression; FAO fumigation manual identifies fumigation as pest control; UC IPM documents reflective mulch reducing aphids, leafhoppers, thrips and whiteflies. All four options are valid in specific contexts; no unique 'not a method' answer. Recommend withdraw or rewrite with a specific pest/mechanism. No answer key/teacher decision presumed."
+    "AG-FACT-T1-W04-PEST-CONTROL-ITEM (2026-11-09): verified blocks 371/414/436. IPPC/FAO defines plant quarantine as preventing introduction/spread of quarantine pests; FAO IPM supports crop rotation for pest/disease suppression; FAO fumigation manual identifies fumigation as pest control; UC IPM documents reflective mulch reducing aphids, leafhoppers, thrips and whiteflies. All four options are valid in specific contexts; no unique 'not a method' answer. Recommend withdraw or rewrite with a specific pest/mechanism. No answer key/teacher decision presumed.",
+    "AG-FACT-T1-W04-NGO-STATUS (2026-11-09): source blocks 387-392/417 verified. The Hunger Project is an NGO; IITA is a private autonomous nonprofit institute; Nigerian state Agricultural Development Authorities are government agencies; WARDA/AfricaRice is an intergovernmental association, not NGO; FAO is a UN specialized agency, not NGO; CRS is a nonprofit NGO. Thus Q5 has at least two exceptions (C and D) and the generic authority name is under-specified. Recommend correcting option D/source classifications or withdrawing; no answer key/teacher decision presumed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -106,8 +107,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 76,
-    "PENDING": 76,
+    "IMPLEMENTED_TESTING_DEFERRED": 77,
+    "PENDING": 75,
     "BLOCKED": 2
   },
   "items": [
@@ -3508,8 +3509,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W04: block 417 classifies Agricultural Development Authority as the exception but gives no explanation.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from synchronized master 8114b2c3ab30a56e0357184aeb4376d7f6dceb9a. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact First Term DOCX member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. Inspected NGO examples in source blocks 387-392 and Weekend Assignment Q5 block 417. UN Civil Society database classifies The Hunger Project as an NGO; IITA's audited financial statement describes it as a private, autonomous, not-for-profit institute chartered under Nigerian law; Lagos State Ministry of Agriculture lists an Agricultural Development Authority programme manager and references LSADA, while Kaduna State Ministry identifies KADA as a state parastatal under the Ministry. AfricaRice's official profile states that it is an intergovernmental association of African member countries, established as the West Africa Rice Development Association (WARDA) by 11 African countries and renamed AfricaRice in 2009. Thus option C (if it means a state Agricultural Development Authority) is governmental, but option D (WARDA/AfricaRice) is also intergovernmental, not NGO. The source's examples also misclassify FAO, a specialized UN agency, as an NGO; it gives the official name as Food and Agriculture Organization, not Food and Agricultural Organization. Catholic Relief Services' own 2025 RFP describes CRS as an international not-for-profit NGO. The current single-answer question therefore has at least two defensible exceptions (C and D); the generic name 'Agricultural Development Authority' is also under-specified. Recommendation: correct the question by specifying the exact state authority and replacing WARDA/AfricaRice with a verified NGO if C is intended as the exception; correct the lesson list to classify FAO and WARDA/AfricaRice as intergovernmental organizations and IITA as an autonomous non-profit research institute. Otherwise withdraw the item. No teacher/owner decision or answer key change presumed. No importer/tests run; testing remains deferred.",
       "completion_condition": "A sourced note verifies classifications and recommends retaining/correcting the question."
     },
     {
@@ -5820,7 +5821,6 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T1-W04-NGO-STATUS",
     "AG-FACT-T1-W05-GENETICS-ITEM",
     "AG-FACT-T1-W06-INCUBATOR-ITEM",
     "AG-FACT-T1-W07-LAND-MOBILITY",
