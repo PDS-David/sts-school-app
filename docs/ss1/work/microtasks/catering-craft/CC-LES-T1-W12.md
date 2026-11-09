@@ -1,11 +1,7 @@
-# CC-LES-T1-W12 — external-source project-authored supplement
+# CC-LES-T1-W12 — Revision
 
-Package lesson: SUP-SS1-CC-T1-W12-EXAMINATION
-Body SHA-256: f483f037477fc1f80068bf7af75b6325b6596c0b378183847be2dbdcf9ddc316
-Term: First Term; class SS 1; subject Catering Craft.
+Package lesson: SUP-SS1-CC-T1-W12-REVISION
+Body SHA-256: 0f9c207e8ad8a38f3b539711585ed7b8812d00189c8de929ac7538e3c0d49f9d
+Source locator: Lagos State Unified Scheme reproduction, First Term Week Twelve revision marker.
 
-Basis: public First Term scheme marker/topic sequence. No source ID or archive member is asserted; this is an independently authored supplement pending formal source registration/foundation approval.
-
-Includes a 40-mark examination, answer key and marking guide; no examination is claimed to have been administered.
-
-Content approval PENDING; verification DEFERRED.
+The revision checklist now covers all ten teaching weeks and includes a sanitation practical review. Content approval PENDING; verification DEFERRED.
