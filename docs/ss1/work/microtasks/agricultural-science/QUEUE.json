@@ -94,7 +94,8 @@
     "AG-FACT-T1-W04-PEST-CONTROL-ITEM (2026-11-09): verified blocks 371/414/436. IPPC/FAO defines plant quarantine as preventing introduction/spread of quarantine pests; FAO IPM supports crop rotation for pest/disease suppression; FAO fumigation manual identifies fumigation as pest control; UC IPM documents reflective mulch reducing aphids, leafhoppers, thrips and whiteflies. All four options are valid in specific contexts; no unique 'not a method' answer. Recommend withdraw or rewrite with a specific pest/mechanism. No answer key/teacher decision presumed.",
     "AG-FACT-T1-W04-NGO-STATUS (2026-11-09): source blocks 387-392/417 verified. The Hunger Project is an NGO; IITA is a private autonomous nonprofit institute; Nigerian state Agricultural Development Authorities are government agencies; WARDA/AfricaRice is an intergovernmental association, not NGO; FAO is a UN specialized agency, not NGO; CRS is a nonprofit NGO. Thus Q5 has at least two exceptions (C and D) and the generic authority name is under-specified. Recommend correcting option D/source classifications or withdrawing; no answer key/teacher decision presumed.",
     "AG-FACT-T1-W05-GENETICS-ITEM (2026-11-09): verified source blocks 429/454. FDA distinguishes traditional selective/crossbreeding from genetic engineering (gene transfer) and says they may be combined; FAO identifies gene editing for new plant varieties/animal breeds and conventional animal breeding by selection. 'Genetic engineering' is a valid specific technique but not synonymous with the source's broader 'genetics and breeding'. Recommend clarifying stem or aligning option to source; no key/teacher decision presumed.",
-    "AG-FACT-T1-W06-INCUBATOR-ITEM (2026-11-09): source Q1 block 519 verified. Nigerian National e-Agriculture Portal lists incubators under farm machines; FAO WCA classification lists incubators as livestock machinery and ploughs/planters/seed drills as crop machinery/equipment; UNSD CPC/HS classifies poultry incubators as agricultural machinery. Incubator is not a defensible 'not a farm machine' answer under broad scope; field-vs-livestock scope and machine-vs-implement distinctions make the stem ambiguous. Recommend specify 'poultry/livestock machine vs crop-field machine' or withdraw; no key/teacher decision presumed."
+    "AG-FACT-T1-W06-INCUBATOR-ITEM (2026-11-09): source Q1 block 519 verified. Nigerian National e-Agriculture Portal lists incubators under farm machines; FAO WCA classification lists incubators as livestock machinery and ploughs/planters/seed drills as crop machinery/equipment; UNSD CPC/HS classifies poultry incubators as agricultural machinery. Incubator is not a defensible 'not a farm machine' answer under broad scope; field-vs-livestock scope and machine-vs-implement distinctions make the stem ambiguous. Recommend specify 'poultry/livestock machine vs crop-field machine' or withdraw; no key/teacher decision presumed.",
+    "AG-FACT-T1-W07-LAND-MOBILITY (2026-11-09): block 549's 'Land is mobile' contradicts its gloss that land cannot be moved. NOUN AEA 308 says land is immobile/fixed at a location; WAEC 2017 calls land geographically immobile; Cambridge distinguishes geographical immobility from occupational mobility. Recommend correcting to 'geographically immobile'; source bytes remain unchanged."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -109,8 +110,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 79,
-    "PENDING": 73,
+    "IMPLEMENTED_TESTING_DEFERRED": 80,
+    "PENDING": 72,
     "BLOCKED": 2
   },
   "items": [
@@ -3835,8 +3836,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W07: source and assessment wording conflict or require factual confirmation.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from synchronized master 8114b2c3ab30a56e0357184aeb4376d7f6dceb9a. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact First Term DOCX member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. Inspected Week 7 block 549: 'Land is mobile i.e. cannot be moved from a place of plenty to a place of scarcity.' The adjective 'mobile' directly contradicts its explanation. National Open University of Nigeria AEA 308 Principles of Farm Management says land is 'passive and immobile', fixed at a location and cannot be moved; WAEC's 2017 Economics examiner report lists land as 'geographically immobile'; Cambridge IGCSE Economics distinguishes land's geographical immobility (a plot cannot be moved between locations) from its occupational mobility (land may be changed from farming to housing or other uses). The source's gloss describes geographical immobility, not mobility. Precise correction: replace 'mobile' with 'geographically immobile' (or 'immobile'); optionally add that land can be occupationally mobile between uses. No source bytes changed. No teacher decision is needed for the factual correction, but no in-source correction was applied because allowed write paths exclude source/package. No importer/tests run; testing remains deferred.",
       "completion_condition": "A sourced note establishes the factual issue and recommends a precise disposition; source bytes remain unchanged."
     },
     {
@@ -5823,7 +5824,6 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T1-W07-LAND-MOBILITY",
     "AG-FACT-T1-W07-GAME-RESERVE-USE",
     "AG-FACT-T1-W07-LABOUR-FACTOR",
     "AG-FACT-T1-W08-PROMINENT-TENURE",
