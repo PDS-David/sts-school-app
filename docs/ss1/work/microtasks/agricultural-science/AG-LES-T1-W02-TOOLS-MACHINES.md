@@ -12,7 +12,7 @@ Status: **IMPLEMENTED — TESTING DEFERRED BY OWNER. Content approval remains PE
 - Source member SHA-256: `df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526`
 - Original teaching locators: blocks 149 and 152.
 - Original assessment locators: blocks 156-157.
-- Supplement body SHA-256 (UTF-8): `7fb7278c4bcf17be3ebe6190b2877590927f1bd962876e83205989d9588aaece`
+- Supplement body SHA-256 (UTF-8): `2210eed5c7a43f412ea27901281023468fc8021608d957cd70c137195245dd7e`
 
 ## Lesson body
 
@@ -40,27 +40,35 @@ Examples and uses:
 13. Secateurs or pruning shears: cut small stems and branches when pruning.
 14. Hand cultivator: loosens the surface soil and removes weeds in garden plots.
 
-## 2. Complex Farm Machines and Tractor-Operated Implements
+## 2. Complex Farm Machines
 
-A complex farm machine is mechanised equipment powered by an engine, electricity or hydraulic power. Some machines move under their own power; others are attached to or drawn by a tractor. They can perform larger or heavier jobs more quickly than hand tools and are commonly used in commercial farming.
+A complex farm machine is mechanised equipment powered by an engine, electricity or hydraulic power. It can perform larger or heavier jobs more quickly than a hand tool and is commonly used in commercial farming. Some machines move under their own power; others are powered by a tractor or another machine.
 
-Examples and uses:
+Ten examples and uses:
 1. Tractor: supplies power for pulling or pushing farm implements and for hauling trailers or materials.
 2. Bulldozer: clears land, pushes vegetation and helps level ground.
-3. Harvester: gathers mature crops over large areas more quickly than manual harvesting.
-4. Power tiller: an engine-powered machine used for soil cultivation and other field operations on farms.
-5. Tractor-drawn disc plough: performs primary tillage by cutting and turning the soil.
-6. Tractor-mounted disc harrow: breaks soil clods and prepares the seedbed during primary or secondary tillage.
-7. Seed-cum-fertilizer drill: places seeds and fertilizer in prepared rows during sowing.
-8. Self-propelled power weeder: removes weeds and performs inter-row cultivation in row crops.
-9. Power-tiller-mounted orchard sprayer: applies spray to foliage in orchard crops.
-10. High-capacity multicrop thresher: separates grain from harvested crop heads or stalks and helps clean the grain.
-11. Power-operated coconut dehusker: removes the outer husk from coconuts.
-12. Tractor-operated post-hole digger: digs holes for planting tree seedlings.
+3. Mechanical planter: places seeds in prepared soil at suitable depth and spacing.
+4. Harvester: gathers mature crops over large areas more quickly than manual harvesting.
+5. Power tiller: an engine-powered machine used for soil cultivation and other field operations on farms.
+6. Self-propelled power weeder: removes weeds and performs inter-row cultivation in row crops.
+7. Power-operated knapsack sprayer: applies liquid sprays to crops; powered versions use an engine or electric motor.
+8. High-capacity multicrop thresher: separates grain from harvested crop heads or stalks and helps clean the grain.
+9. Power-operated coconut dehusker: removes the outer husk from coconuts.
+10. Irrigation pump unit: pumps water from a source to fields or an irrigation system.
 
-**Machine and implement distinction:** A tractor is a self-propelled machine. Items such as a disc plough, disc harrow, seed-cum-fertilizer drill and post-hole digger are tractor-operated implements or machines; they depend on the tractor for power and are not self-propelled. Farm-mechanisation lessons often teach them together because they form part of the machinery system.
+## 3. Tractor-Operated Implements
 
-## 3. Main Differences
+Some mechanised farm equipment is an implement rather than a self-propelled machine. It is attached to or drawn by a tractor or power tiller, which supplies the power. Examples include:
+- Tractor-drawn disc plough: cuts and turns soil during primary tillage.
+- Tractor-mounted disc harrow: breaks soil clods and prepares a seedbed.
+- Seed-cum-fertilizer drill: places seed and fertilizer in prepared rows.
+- Tractor-drawn ridger: forms furrows and ridges for row crops.
+- Tractor-operated post-hole digger: digs holes for planting tree seedlings.
+- Power-tiller-mounted orchard sprayer: applies spray to foliage in orchard crops.
+
+A tractor is a self-propelled machine; a disc plough or seed drill is an implement powered or drawn by the tractor. Farm-mechanisation lessons often teach them together because they form part of the machinery system.
+
+## 4. Main Differences
 
 - Power: a simple tool is operated mainly by human effort; a complex machine uses an engine, electricity, hydraulic power or a tractor.
 - Scale: simple tools are suited to small jobs and plots; machines can handle larger areas, heavier loads or repeated operations.
@@ -91,9 +99,9 @@ These are common patterns, not absolute rules. A smallholder may hire a tractor,
 
 ### P2 — Ten complex farm machines and uses (20 marks)
 
-**Question:** List ten complex farm machines or tractor-operated implements used in commercial agriculture and state one use of each.
+**Question:** List ten complex farm machines used in commercial agriculture and state one use of each.
 
-**Answer:** 1. Tractor — Supplies power for pulling or pushing farm implements and hauling trailers or materials. 2. Bulldozer — Clears land, pushes vegetation and helps level ground. 3. Harvester — Gathers mature crops over large areas more quickly than manual harvesting. 4. Power tiller — Uses an engine for soil cultivation and other field operations. 5. Tractor-drawn disc plough — Performs primary tillage by cutting and turning the soil. 6. Tractor-mounted disc harrow — Breaks soil clods and prepares the seedbed during primary or secondary tillage. 7. Seed-cum-fertilizer drill — Places seeds and fertilizer in prepared rows during sowing. 8. Self-propelled power weeder — Removes weeds and performs inter-row cultivation in row crops. 9. Power-tiller-mounted orchard sprayer — Applies spray to foliage in orchard crops. 10. High-capacity multicrop thresher — Separates grain from harvested crop heads or stalks and helps clean the grain.
+**Answer:** 1. Tractor — Supplies power for pulling or pushing farm implements and for hauling trailers or materials. 2. Bulldozer — Clears land, pushes vegetation and helps level ground. 3. Mechanical planter — Places seeds in prepared soil at suitable depth and spacing. 4. Harvester — Gathers mature crops over large areas more quickly than manual harvesting. 5. Power tiller — Uses an engine for soil cultivation and other field operations. 6. Self-propelled power weeder — Removes weeds and performs inter-row cultivation in row crops. 7. Power-operated knapsack sprayer — Applies liquid sprays to crops; powered versions use an engine or electric motor. 8. High-capacity multicrop thresher — Separates grain from harvested crop heads or stalks and helps clean the grain. 9. Power-operated coconut dehusker — Removes the outer husk from coconuts. 10. Irrigation pump unit — Pumps water from a source to fields or an irrigation system.
 
 **Marking:** 2 marks per item: 1 for naming the machine/implement and 1 for its correct use. The ten item criteria are:
 - 2 marks — Names Tractor and gives its correct use.
@@ -123,7 +131,7 @@ These are common patterns, not absolute rules. A smallholder may hire a tractor,
 
 **Question:** Classify each item as a simple farm tool or a complex farm machine/tractor-operated implement: cutlass, hand trowel, wheelbarrow, tractor, seed-cum-fertilizer drill and multicrop thresher.
 
-**Answer:** Cutlass — simple tool; hand trowel — simple tool; wheelbarrow — simple tool; tractor — complex machine; seed-cum-fertilizer drill — tractor-operated implement/complex farm machinery; multicrop thresher — powered farm machine.
+**Answer:** Cutlass — simple tool; hand trowel — simple tool; wheelbarrow — simple tool; tractor — complex machine; power-operated knapsack sprayer — complex machine; multicrop thresher — complex machine.
 
 **Marking:**
 - 1 mark — Classifies cutlass as a simple tool.
@@ -171,6 +179,6 @@ The Week 2 assessment-gap open item is updated: the tools/machines example gap i
 - Updated the existing assessment-gap open item to retain only the agro-based-industry task.
 - Computed body SHA-256 over the exact UTF-8 body stored in the package.
 - Checked marking sums: P1 20/20, P2 20/20, P3 8/8, P4 6/6 (total 54 marks).
-- Confirmed at least ten examples in each category and clear distinction between hand tools, powered machines and tractor-operated implements.
+- Confirmed fourteen simple hand tools and ten complex farm machines, with tractor-operated implements separately identified; classification and uses are distinguished.
 - Content approval is PENDING; verification is DEFERRED. No source bytes, original lesson text, core scheme coverage, corrections or assets were changed.
 - Did not run importer, compiler, tests, TypeScript, database, learner rendering or device checks.
