@@ -1,7 +1,9 @@
-# CC-LES-T1-W09 — First aid and fire control
+# CC-LES-T1-W09 — First Term project-authored supplement
 
 Package lesson: SUP-SS1-CC-T1-W09-FIRST-AID-FIRE
-Body SHA-256: 62d72c3d08fb91704e521fb61f1ad9fe17415958fb6e76a7c2d77e5b42892430
-Source locator: Lagos State Unified Scheme reproduction, First Term Week Nine (first aid, first-aid box, fire control and equipment).
+Body SHA-256: 17d0e651a4f6ffd1f6c56a85d5635f79cc7e32be2b7a8434a507ba6843bcd450
+Source locator: public reproduction of the Lagos State Ministry of Education Unified Scheme of Work, First Term Week 9.
 
-Fire response is qualified: never use water on cooking oil, electrical or flammable-liquid fires; soap is not a fire-fighting agent; use suitable equipment only if trained. Content approval PENDING; verification DEFERRED.
+First aid, first-aid kit, burns/cuts/collapse and fire triangle. Corrected fire guidance: never use water on oil/grease, electrical or flammable-liquid fires; soap is not a fire-fighting agent. No certification or practical performance is claimed.
+
+Independently authored; no registered First Term source ID is asserted. Content approval PENDING; verification DEFERRED.
