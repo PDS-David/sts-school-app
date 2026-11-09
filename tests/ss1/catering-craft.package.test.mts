@@ -81,6 +81,10 @@ test('Owner approval is recorded without claiming later verification', () => {
     assert(replacement, c.id);
     assert.equal(c.source_sha256, source.sha256);
     assert.equal(c.source_lesson_id, `${c.source_id}:BODY:${c.body_sha256}`);
+    if (c.id === 'CC-CORR-T2-W06-FRYING') {
+      assert.equal(c.source_lesson_id, 'SS1-SRC-f433169ca25c:BODY:fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de');
+      assert.equal(c.replacement_id, 'SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES');
+    }
     assert.equal(replacement.term, source.term);
   }
 });
