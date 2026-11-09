@@ -131,8 +131,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 108,
-    "BLOCKED": 5,
-    "PENDING": 41
+    "BLOCKED": 6,
+    "PENDING": 40
   },
   "items": [
     {
@@ -4390,8 +4390,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W06"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W06: source headings may conflate organism categories with modes of nutrition.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042. Recomputed source block hashes 366 a3df9be988ad1f9219daddccaa057acff69739d033323b3f3b1cc1563dae63f3; 368 569b77efdc680a8ef604bacf699fae0da797cc83593aebda0ac7b55279bf03c8; 370 09b29fe0eda9de5f2a8e864b6dd10d418cd3ad0797bbf64f1ba5ff444ca6dfe8. OpenStax Biology, Georgia Tech Organismal Biology, USDA NAL Thesaurus and NLM MeSH confirm that autotrophs/heterotrophs are organisms, while autotrophy/heterotrophy are nutritional modes. Source definitions describe organism groups, so headings should be 'Autotrophs' and 'Heterotrophs'. Also flagged block 368's conflation of photosynthesis (light energy) and chemosynthesis (chemical energy). BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery corrections can be bound. Updated existing package open item; no delivery_corrections or source changes.",
       "completion_condition": "A sourced correction-binding record supports each proposed term and preserves original wording."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
     "AG-CORR-T2-W07-PEAT-TYPO",
     "AG-CORR-T2-W08-QUESTION-WORDING",
     "AG-CORR-T2-W09-SOIL-TERMS",
