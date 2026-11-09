@@ -45,8 +45,7 @@
     "FACT_CORRECTION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 96,
-    "BLOCKED": 1
+    "IMPLEMENTED_TESTING_DEFERRED": 97
   },
   "items": [
     {
@@ -3006,9 +3005,9 @@
         "docs/ss1/work/microtasks/catering-craft/CC-CORR-T2-W06-FRYING-CLASSIFICATION.md"
       ],
       "depends_on": [],
-      "status": "BLOCKED",
-      "implementation_reference": "Owner authorised the narrow importer/source parse. The archive is stored in Git as a 35,828,550-byte binary ZIP, but the available GitHub connector returns no bytes for binary ZIPs and this execution environment cannot resolve github.com; no exact parser-trimmed body ID was derived and no importer run is claimed. Replacement lesson remains ready; exact source binding is blocked.",
-      "completion_condition": "Make the exact docs/ss1/sources/SSS1-original.zip bytes (SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e) available to the execution environment, run the scoped existing source parser only, derive originalLessonId(source_id, parsed Week Six body), and add the exact delivery correction."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Exact parser identity verified by authorised GitHub Actions run 42547557010, artifact 13643689148. Archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and member SHA-256 fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59 passed. word-extractor 1.0.4 getBody() + repository parseTopics produced WEEK SIX / COOKING OF FOODS, 4,453 characters, body SHA-256 fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de; source lesson ID SS1-SRC-f433169ca25c:BODY:fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de. Delivery correction CC-CORR-T2-W06-FRYING binds it to SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES.",
+      "completion_condition": "Exact original parsed lesson ID/body hash is bound to the same-term corrected replacement lesson; original source bytes and hash remain unchanged."
     },
     {
       "id": "CC-SOURCE-T1-EXTERNAL-SCHEME",
@@ -3044,7 +3043,18 @@
     "source_archive": {
       "filename": "SSS1-original.zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-      "availability": "Stored as a binary ZIP in the repository; GitHub file connector returned empty content and no copy was found in connected Library, so it could not be staged into this execution environment."
+      "availability": "Verified in authorised GitHub Actions run 42547557010; archive and member hashes passed, only the registered Second Term Catering Craft member was extracted to runner scratch, exact WordExtractor + repository parser identity was captured, and no source body was uploaded.",
+      "parser_run": {
+        "workflow_run_id": 42547557010,
+        "artifact_id": 13643689148,
+        "source_id": "SS1-SRC-f433169ca25c",
+        "week_label": "WEEK SIX",
+        "title": "COOKING OF FOODS",
+        "body_characters": 4453,
+        "body_sha256": "fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de",
+        "source_lesson_id": "SS1-SRC-f433169ca25c:BODY:fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de",
+        "result": "success"
+      }
     }
   },
   "next_runnable": []
