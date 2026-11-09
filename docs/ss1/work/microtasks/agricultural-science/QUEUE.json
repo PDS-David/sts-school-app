@@ -131,8 +131,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 108,
-    "BLOCKED": 3,
-    "PENDING": 43
+    "BLOCKED": 4,
+    "PENDING": 42
   },
   "items": [
     {
@@ -4174,8 +4174,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W02-03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W02-03: repeated topic wording and fertilizer-manufacture claim need evidence-based correction review.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042. Recomputed block hashes: 39 c5309b3fd481bbed308bc62b30194078783fe4fa18b96cb75bb6829518bbdc98; 180 e2adf9c1bb9560701f9850324e18755cdc4271e4aaf068d7029a9085dcc30983; 254 a18f28553ddea84238affe7f3e7d78edcda5b25da97e43750c04146fc45695ba; heading 135 a9bf905d1a60432c16024a5ffcfb46600da1712f58c23aadf4ce1868a61bf975; MCQ 255 f810910012f99800692b11c3fa194f4b9f243cda7f31deb4a5c7f8fc335f7896. Verified 'post-posting' -> 'post-planting' and 'plating space' -> 'planting space' from same-source context. Verified inorganic fertilizers are industrially manufactured, not usually prepared on-farm, against FEPSAN, FUNAAB Soil Fertility and Plant Nutrition lecture notes and FAO WCA 2020. Recommended fertilizer correction: 'Inorganic (chemical or mineral) fertilizers are manufactured industrially from inorganic materials. They may be supplied in liquid or solid forms such as powders, granules, pellets or crystals.' The source corrections are supported. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery correction can be bound yet. Updated existing package open item; did not fabricate IDs or add delivery_corrections. Original source bytes unchanged.",
       "completion_condition": "A correction-binding record cites each changed span and source; only verified corrections are proposed; original source bytes remain unchanged."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-CORR-T2-W02-03-SOURCE-TERMS",
     "AG-CORR-T2-W04-05-TABLE-TEXT",
     "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
     "AG-CORR-T2-W07-PEAT-TYPO",
