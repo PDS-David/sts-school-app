@@ -101,7 +101,21 @@
     "AG-FACT-T1-W08-PROMINENT-TENURE (2026-11-09): source blocks 626/628/701/710 verified. NBS GHS-Panel Wave4 (2018/19) shows family inheritance as the most common plot-acquisition mode (62.7% male-managed, 63.4% female-managed); Wave5 (2023/24) confirms (64.9%, 59.7%). Land Use Act 1978 distinguishes statutory/customary rights of occupancy and regulates devolution on death by customary law. Inheritance is a mode of acquisition, not a standalone statutory tenure system. Recommend rewording to distinguish acquisition mode from legal framework; answer A only for the acquisition-method MCQ.",
     "AG-FACT-T1-W08-LAND-USE-ACT (2026-11-09): verified source blocks 195/583 against the 1978 Land Use Decree/Act and Nigerian Supreme Court decisions. Act vests radical title in State Governor but grants statutory/customary rights of occupancy to persons; landholding rights continue subject to consent/approval for alienation and customary devolution on death. 'Prevents individuals from owning land' is overbroad; updated package blocker with precise correction requirement; source unchanged.",
     "AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION (2026-11-09): verified blocks 878/922. Biennials require two growing seasons; FAO EcoCrop identifies onion/carrot as biennial, cassava/ginger as perennial (often grown annually), Capsicum annuum as annual, cotton usually grown as annual, cowpea annual; CGIAR says yams are perennial vines mainly treated as annuals in cultivation. Source's biennial list is inaccurate; Q2 pepper exception is species/context dependent and has no unique answer. Recommend correction/rewrite; no key/teacher decision presumed.",
-    "AG-FACT-T2-W02-03-GREEN-MANURE-ITEM (2026-11-09): verified blocks 175/268. Missouri Extension recommends just before full flowering for maximum N; Alberta Agriculture recommends full bloom; WSU recommends late-vegetative/early-flowering; FAO guidance includes mid-flowering/grain-filling depending objective. Source 'just before flowering' and MCQ 'as soon as it flowers' are close/compatible within early-to-full bloom window, not a material contradiction. Keep answer C green manuring; harmonize timing to at/just before full bloom before seed set, with species/objective caveat."
+    "AG-FACT-T2-W02-03-GREEN-MANURE-ITEM (2026-11-09): verified blocks 175/268. Missouri Extension recommends just before full flowering for maximum N; Alberta Agriculture recommends full bloom; WSU recommends late-vegetative/early-flowering; FAO guidance includes mid-flowering/grain-filling depending objective. Source 'just before flowering' and MCQ 'as soon as it flowers' are close/compatible within early-to-full bloom window, not a material contradiction. Keep answer C green manuring; harmonize timing to at/just before full bloom before seed set, with species/objective caveat.",
+    "AG-TEST-PACKAGE (2026-11-09): authored tests/ss1/agricultural-science.package.test.mts using the French package test as the pattern. The test parses the strict package schema, compares all three registered term sources one-to-one against the worker-C SOURCE_ASSIGNMENTS.csv rows (including exact SHA-256/member/term), checks every current rule's registered source/hash and pending source-alias owner blockers, includes lesson hash/practice/approval/verification guards for lessons as they are added, and probes applyRules rejection of wrong source hashes, missing anchors and ambiguous anchors. The package currently has 10 rules, no lessons, no corrections and no assets; lesson guards are therefore currently vacuous. Test file written but NOT RUN, as required by owner; full compiler/parser, asset/correction and delivery integration checks remain deferred.",
+    "AG-FACT-T2-W04-05-MULCHING-MCQ (2026-11-09): source block 328 options A/B/C/D checked against blocks 197-203 and IITA yam guidance plus Nigerian yam-mulch field studies. A (temperature reduction) and B (moisture conservation) supported; C is a real but material/pest-specific benefit (dry grass protecting exposed tubers from rodents; selected botanicals reducing yam-beetle damage); D (prevent yam rot) is not a general mulching benefit. Likely key D only after C is narrowed to dry-grass protection against rodents; withdraw unchanged item if it cannot be edited. No answer key or source changed.",
+    "AG-FACT-T2-W06-POLYGASTRIC-ITEM (2026-11-09): block 408/409 checked against University of Alaska Fairbanks Extension and Merck Veterinary Manual/University of Illinois Vet Med. Cattle, goats, sheep are ruminants with four-compartment stomachs; rabbit is a monogastric hindgut fermenter. Unique key C rabbit; retain, optionally replace 'polygastric' with 'ruminant with a four-compartment stomach'. The classification is not taught in this Second Term source (block 370 only lists primary consumers), so note separate weekly teaching-alignment concern; no source/key change.",
+    "AG-FACT-T2-W07-ROCK-CHARACTERISTICS (2026-11-09): characteristic blocks 443-448, 461-465 and 481-485 checked against USGS/NPS/BGS and introductory geology sources. Clear errors: sedimentary rocks are not always non-crystalline (462); metamorphic rocks are not non-crystalline (483). Igneous rocks can form layered lava flows/layered intrusions (445); sedimentary rocks often but not always show bedding (461), may contain fossils (463), and can be erosion-resistant (464). Metamorphic foliation differs from sedimentary strata (481); fossils may rarely survive low-grade metamorphism (485). Other claims require qualified, material-dependent wording. Recommended delivery-only corrections; no source edits.",
+    "AG-FACT-T2-W07-MICA-MCQ (2026-11-09): MCQ 505–506 compared with source examples 457–459 and USGS/BGS/ODNR classification. Mica is a mineral group, not a rock; sandstone and limestone are sedimentary rocks; source block 459 uses dolomite as a sedimentary rock example. Intended key A mica. Since dolomite is also a mineral name, recommend change option D to 'dolostone (dolomite rock)' and add a brief mineral-vs-rock note; no source or key changed.",
+    "AG-FACT-T3-W01-EMASCULATOR (2026-11-09): block 45 wording checked against University of Kentucky Animal & Food Sciences Extension, UF College of Veterinary Medicine and ICAR-IVRI veterinary anatomy. Emasculator crushes and cuts the spermatic cord; 'spermatid cord' is incorrect, and 'rushing' should be replaced with the high-level crush-and-cut function. Recommended non-procedural learner definition only; no castration instructions or source correction applied.",
+    "AG-FACT-T3-W02-DRYING-POWER (2026-11-09): MCQ blocks 264-265 compared with FAO grain-drying guidance and a 2022 survey across five Ghanaian maize regions. Open sun drying predominates (Table 6 73.3-100% across five regions; solar dryer use 0-6.3%; mechanical 0%). FAO identifies sun drying as the most common method in tropical developing countries; wind/airflow assists moisture removal. Answer B sun. Recommend clarify stem to 'Which natural energy source is most commonly used for traditional grain drying in West Africa?'; no source/key change applied.",
+    "AG-FACT-T3-W03-MECHANIZATION-DEFINITION (2026-11-09): block 289 compared with FAO 2013 Sub-Saharan Africa mechanization strategy and FAO 2006 farm-power report. Mechanization is tools, implements and powered machinery using human, animal or motor power; seed, fertilizer and insecticides are separate farm inputs, though planters/spreaders/sprayers apply them. Recommended a precise learner definition; no source correction applied.",
+    "AG-FACT-T3-W03-CROP-MECHANIZATION (2026-11-09): blocks 315 and 363 checked against FAO mechanization framework and IITA ProPAS cassava planter/harvester technology. Mechanization spans many crop groups and operations; cassava is directly mechanized in planting/harvesting, so 'very few crops like maize/rice' is an overgeneralization. MCQ 363's 'best' is undefined and cassava/maize both have mechanized operations; specify crop group or operation before keying. No source/key change applied.",
+    "AG-FACT-T3-W03-LABOUR-MCQ (2026-11-09): block 360 compared with source blocks 310 and 321-328 plus FAO 2006/2013 mechanization guidance. Labour displacement is a disadvantage/consequence; labour shortage/availability and cost can constrain production and influence mechanization adoption. Printed option 'Labor' is ambiguous. Recommend change D to 'labour displacement/unemployment' to make D the exception, or withdraw unchanged item; no key/source change applied.",
+    "AG-FACT-T3-W04-DIGESTIVE-ACCURACY (2026-11-09): blocks 404-416 and comparison table 431 reviewed against OpenStax, UMN College of Veterinary Medicine, Merck Vet Manual and FAO. Block 410 is wrong: trypsinogen is an inactive pancreatic zymogen activated by enteropeptidase to trypsin; trypsin digests proteins/peptides. Bile emulsifies fats but is not an enzyme; 'chyle' at block 411 should be 'chyme'. Chymosin/rennin and salivary amylase require species/age qualification. Table 431 overgeneralizes fibre/bacterial digestion and protein synthesis; horses/rabbits are hindgut fermenters and all animals synthesize body proteins. Added species-qualified corrections; no source change applied.",
+    "AG-FACT-T3-W04-REPRODUCTIVE-ACCURACY (2026-11-09): blocks 482, 485, 486 and 492 compared with UMN CVM Large Animal Anatomy, Merck Vet Manual, Oregon State Extension, comparative veterinary anatomy and genetics glossaries. Vas deferens leads from epididymis to pelvic urethra; sperm mature/store in epididymis; uterus masculinus is a Müllerian remnant, not sperm duct/storage. Cowper's/bulbourethral (male) and Bartholin's/greater vestibular (female) are homologous, distinct structures. Vagina length varies by species (cow 25–30cm; ewe 10–14cm; sow 10–15cm; mare 20–35cm). 'Sex-inhibited characters' is not standard; use secondary sex characteristics or sex-limited/sex-influenced depending context. No source correction applied.",
+    "AG-FACT-T3-W05-RESPIRATION-ACCURACY (2026-11-09): blocks 532-541, 546, 552 and 597 compared with Monash/OpenStax, Merck Vet Manual, WA DPIRD and University of Hawai'i. Aerobic equation normalized; block 540 ethanol/CO2 is yeast alcoholic fermentation, not animal-muscle anaerobic respiration (lactate). Bronchioles branch from bronchi; epiglottis guards laryngeal inlet. Gill rakers filter food/particles; operculum covers/protects gills and assists water pumping in bony fish. MCQ 597 answer D raker is defensible as closest analogue. No source correction applied.",
+    "AG-FACT-T3-W06-REPRO-TIMINGS (2026-11-09): blocks 609-647 and table 724 checked against Merck Vet Manual, Virginia Tech/Cooperative Extension, FAO, Arizona/MS State and Oklahoma State Extension. Key corrections: cycle onset-to-onset; puberty differs from first breeding age; rabbit induced ovulator/no conventional estrous cycle (~10-12h after mating); cow ovulates 10-12h after end of estrus, ewe near end, sow ~40h after onset, goat timing varies; heat ranges require species qualification; block647 confuses heat and oestrus; hen 21 days is incubation, not gestation. Gestation values broadly plausible but variable. No source values/key changed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -116,9 +130,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 86,
-    "PENDING": 66,
-    "BLOCKED": 2
+    "IMPLEMENTED_TESTING_DEFERRED": 100,
+    "BLOCKED": 2,
+    "PENDING": 52
   },
   "items": [
     {
@@ -354,8 +368,8 @@
         "AG-SRC-T2",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/agricultural-science.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Wrote tests/ss1/agricultural-science.package.test.mts following tests/ss1/french.package.test.mts. Covers strict schema parse; exactly one registered source for each Agricultural Science manifest assignment across all three terms; exact source IDs, hashes, archive members and terms; rule-to-source hash binding and blocking pending owner alias references; lesson approval/verification reference, body hash and marking-integrity guards (no lessons exist yet, so those loops are presently vacuous and will apply as lesson items add content); and negative applyRules probes for wrong hashes, missing anchors and ambiguous anchors. Full-source compiler/parser comparison, asset validation, corrections and learner delivery remain later integration checks. Written, NOT RUN; testing remains deferred by owner.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -4231,8 +4245,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W04-05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W04-05: block 328 includes benefits not stated in mulching teaching and may have more than one unsupported option.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Second Term DOCX member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042; inspected blocks 197-203 and 328 and recomputed their range/block hashes. Agronomy review supports A (temperature reduction) and B (moisture conservation); C is conditionally true for specific mulch materials (IITA dry grass protects exposed tubers from rodents; a Delta State field trial found selected botanical mulches reduce yam beetle damage); D (yam rot prevention) is not an established general mulching benefit. Likely intended exception D, but printed C is overbroad; recommended revise C to specify dry-grass protection of exposed tubers from rodents and retain D as unique exception, or withdraw unchanged item. No answer key or source correction applied. Evidence note added; tests/importer/learner delivery not run.",
       "completion_condition": "A sourced note establishes a unique answer or recommends a precise correction/withdrawal."
     },
     {
@@ -4339,8 +4353,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W06"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W06: block 408 asks for polygastric classification not taught in the source.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Second Term DOCX member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042; inspected blocks 370, 408 and 409 and recomputed hashes. University of Alaska Fairbanks Extension identifies cattle, goats and sheep as ruminants with one four-compartment stomach; Merck Veterinary Manual and University of Illinois Vet Med identify rabbits as nonruminant monogastric hindgut fermenters. Unique answer: C rabbit. Recommended retaining the key, with optional stem precision ('not a ruminant with a four-compartment stomach'). Whole-source search confirms this classification is not taught in the Second Term document, so weekly assessment alignment remains a separate scope concern. No source/key change; evidence note added; testing/delivery checks deferred.",
       "completion_condition": "A sourced note verifies animal classifications and recommends retaining or correcting the item."
     },
     {
@@ -4410,8 +4424,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W07: rock characteristics contain broad claims requiring scientific verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Second Term DOCX member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042; inspected characteristic blocks 443-448, 461-465 and 481-485 and recomputed range hashes. USGS/NPS/BGS sources confirm key defects: sedimentary rocks can be crystalline; metamorphic rocks are commonly recrystallized; igneous rocks can form stacked lava-flow layers; sedimentary rocks can be erosion-resistant; and fossils are typically sedimentary but can rarely survive low-grade metamorphism. Other properties require qualified language (glassy texture, crystals, permeability, foliation, fossil occurrence, hardness and erosion resistance). Added precise proposed wording; no source or delivery correction applied.",
       "completion_condition": "A sourced note verifies each characteristic and recommends precise corrections or qualified wording."
     },
     {
@@ -4480,8 +4494,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W07: mica appears in MCQ 505 but is not classified in the lesson.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Second Term DOCX member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042; inspected blocks 457-459 and 505-506 and recomputed hashes. USGS classifies mica as a mineral group, not a rock; sandstone and limestone are sedimentary rocks; the source itself lists dolomite as a chemical sedimentary rock. BGS/ODNR distinguish dolomite mineral from dolostone/dolomite rock, so D is ambiguous outside source convention. Intended key A mica; recommend rename D to dolostone (dolomite rock) and add a short mineral-versus-rock teaching note. No source/key change applied.",
       "completion_condition": "A sourced note verifies mica's classification and recommends retention or correction."
     },
     {
@@ -4662,8 +4676,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W01: phrase 'rushing their spermatid cord' at block 45 needs veterinary terminology verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a; inspected block 45 and recomputed hash. University of Kentucky Animal & Food Sciences Extension confirms an emasculator crushes and cuts the spermatic cord simultaneously to minimize blood loss; UF Veterinary Medicine and ICAR-IVRI anatomy sources confirm the correct structure is the spermatic cord, not 'spermatid cord'. Recommended safe, non-procedural definition; no castration instructions or source correction applied.",
       "completion_condition": "Sourced note supplies a safe non-procedural wording recommendation."
     },
     {
@@ -4733,8 +4747,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W02: source lists solar and wind drying but does not state regional prevalence.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a; inspected blocks 173, 197, 264-265 and recomputed hashes. FAO guidance says sun drying remains the most common grain-drying method in tropical developing countries; a 2022 survey across five Ghanaian regions found sun drying predominant in all five (Table 6: 73.3-100%; solar drying 0-6.3%; mechanical drying 0%). The article prose conflicts with its table on the 93% threshold; table values were used. Answer B sun. Recommended stem clarification; no source/key change applied.",
       "completion_condition": "A sourced note verifies the regional claim and recommends retaining or correcting MCQ 264."
     },
     {
@@ -4839,8 +4853,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W03: definition 289 may conflate mechanization with agricultural inputs.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a; inspected block 289 and recomputed hash. FAO's 2013 Sub-Saharan Africa mechanization strategy defines mechanization as tools, implements and powered machinery using manual, animal or motor power, and explicitly distinguishes it from seed/fertilizer inputs; its section 3.2 describes mechanization used together with improved seeds and fertilizers. The source incorrectly includes insecticides, improved seeds and fertilizer as components of mechanization. Recommended a precise definition separating equipment from inputs; no source correction applied.",
       "completion_condition": "A sourced note verifies the conceptual boundary and recommends precise learner-facing wording."
     },
     {
@@ -4873,8 +4887,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W03: block 315 makes a broad claim about crops that can be mechanized.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a; inspected blocks 315 and 363 and recomputed hashes. FAO's current framework covers mechanization across land preparation, planting, crop protection, harvesting and postharvest operations; IITA documents commercially available cassava planters and harvesters, disproving the broad claim that only very few crops can be mechanized. Recommended crop/operation/farm-size-qualified wording. MCQ 363's 'best' is undefined; maize and cassava both have documented mechanized operations, so revise the stem to specify a crop group or operation. No source/key change applied.",
       "completion_condition": "A sourced note verifies the claim and recommends a precise correction/qualification."
     },
     {
@@ -4907,8 +4921,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W03: MCQ 360's labour option is not resolved by the source's labour-displacement statement.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a; inspected blocks 310, 321-328 and 360. FAO sources distinguish labour displacement (a consequence/disadvantage) from labour shortage/availability (a production constraint and determinant of mechanization); labour cost/scarcity can make mechanization economically viable, while abundant low-cost labour may reduce incentives. Printed option D 'Labor' is ambiguous. Recommended revise it to 'labour displacement/unemployment' and retain as exception, or withdraw unchanged item; no key/source change applied.",
       "completion_condition": "A sourced note resolves the intended answer and recommends a precise item correction/clarification."
     },
     {
@@ -4979,8 +4993,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W04: several digestive-enzyme and comparative physiology claims need independent verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a; inspected blocks 404-416 and table 431 and recomputed hashes. Trypsinogen is an inactive pancreatic zymogen activated by enteropeptidase to trypsin; source block 410 reverses this. Bile emulsifies fats but is not an enzyme; adjacent 'chyle' should be 'chyme'. Chymosin/rennin is age/species-specific; salivary amylase varies by species. Table 431 overgeneralizes fibre digestion, bacterial digestion, feed and protein synthesis; horses/rabbits are hindgut fermenters, while ruminants rely on foregut microbes and microbial protein. Added sourced, species-qualified correction recommendations; no source correction applied.",
       "completion_condition": "A sourced note verifies enzyme names/actions and qualifies the comparison-table claims."
     },
     {
@@ -5013,8 +5027,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W04: male/female reproductive anatomy and gland terminology at 482-492 need specialist verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a; inspected blocks 482, 485, 486 and 492 and recomputed hashes. Veterinary references confirm sperm mature/store in epididymis and vas deferens leads to pelvic urethra; uterus masculinus is a remnant of paramesonephric ducts. Cowper's/bulbourethral glands are male and Bartholin's/greater vestibular glands female homologues, not synonyms. Vagina length is species-specific (cow 25–30cm, ewe 10–14cm, sow 10–15cm, mare 20–35cm). 'Sex-inhibited characters' is not a standard current genetics category; recommend secondary sex characteristics or sex-limited/sex-influenced as context requires. No source/delivery correction applied.",
       "completion_condition": "A sourced note verifies each named anatomical relationship and proposes species-appropriate wording."
     },
     {
@@ -5085,8 +5099,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W05: equation formatting/fermentation context and airway/gill descriptions need independent verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a; inspected blocks 532-541, 546, 552 and 597 and recomputed hashes. Aerobic equation normalized to glucose + 6O2 -> 6CO2 + 6H2O + ATP energy. Source's ethanol + CO2 equation is yeast alcoholic fermentation, not animal muscle anaerobic respiration (lactate + net 2 ATP). Bronchioles branch from bronchi, not directly from nose/mouth; gill rakers filter particles, while operculum covers/protects gills and assists ventilation in bony fish. MCQ 597 has defensible answer D raker as closest functional analogue to epiglottis. No source correction applied.",
       "completion_condition": "A sourced note verifies each equation and anatomy claim and recommends accurate delivery wording."
     },
     {
@@ -5157,8 +5171,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W06"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W06: species timing/gestation values require veterinary validation and table-layout clarification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified archive/member hashes; inspected blocks 609-647 and table 724 and recomputed hashes. Merck/Virginia Tech/FAO/extension sources confirm rabbit is an induced ovulator without a conventional estrous cycle; cycle is onset-to-onset; ovulation times require reference points; puberty differs from first breeding; cow/ewe/sow/goat values need species ranges; mare/cow/goat/sheep/pig/rabbit gestation values are approximate, while hen 21 days is incubation, not gestation. Added sourced timing table and corrections; no source correction applied.",
       "completion_condition": "A sourced table verifies each value, its measurement basis and species variation; original source remains unchanged."
     },
     {
@@ -5830,46 +5844,12 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T2-W04-05-MULCHING-MCQ",
-    "AG-FACT-T2-W06-POLYGASTRIC-ITEM",
-    "AG-FACT-T2-W07-ROCK-CHARACTERISTICS",
-    "AG-FACT-T2-W07-MICA-MCQ",
-    "AG-FACT-T3-W01-EMASCULATOR",
-    "AG-FACT-T3-W02-DRYING-POWER",
-    "AG-FACT-T3-W03-MECHANIZATION-DEFINITION",
-    "AG-FACT-T3-W03-CROP-MECHANIZATION",
-    "AG-FACT-T3-W03-LABOUR-MCQ",
-    "AG-FACT-T3-W04-DIGESTIVE-ACCURACY",
-    "AG-FACT-T3-W04-REPRODUCTIVE-ACCURACY",
-    "AG-FACT-T3-W05-RESPIRATION-ACCURACY",
-    "AG-FACT-T3-W06-REPRO-TIMINGS",
-    "AG-FACT-T3-W06-LACTATION-COLOSTRUM",
-    "AG-FACT-T3-W07-HORMONES",
-    "AG-FACT-T3-W07-EGG-FORMATION",
-    "AG-FACT-T3-W08-REGIONAL-CLIMATE",
-    "AG-FACT-T3-W09-PIG-SAFETY",
-    "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE",
-    "AG-FACT-T3-W10-CATTLE-SAFETY",
-    "AG-FACT-T3-W10-CATTLE-TERMS",
-    "AG-CORR-T1-W03-STORAGE-SOLUTION",
-    "AG-CORR-T2-W02-03-SOURCE-TERMS",
-    "AG-CORR-T2-W04-05-TABLE-TEXT",
-    "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
-    "AG-CORR-T2-W07-PEAT-TYPO",
-    "AG-CORR-T2-W08-QUESTION-WORDING",
-    "AG-CORR-T2-W09-SOIL-TERMS",
-    "AG-CORR-T3-W01-TOOL-NAMES",
-    "AG-CORR-T3-W02-WATER-POWER",
-    "AG-CORR-T3-W02-POWER-TEXT",
-    "AG-CORR-T3-W02-WDP-LOCATORS",
-    "AG-CORR-T3-W04-TBL-DIGESTION-HASH",
-    "AG-CORR-T3-W05-RESPIRATION-EQUATION-LOCATORS",
-    "AG-CORR-T3-W06-TBL-GESTATION-HASH",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
     "AG-LES-T1-W02-AGRO-INDUSTRIES",
     "AG-LES-T1-W03-EXTENSION-ROLES",
     "AG-LES-T1-W03-INPUT-TERMINOLOGY",
+    "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-LES-T1-W04-NGO-EXAMPLES",
     "AG-LES-T1-W04-PROGRAMME-OBJECTIVES",
     "AG-LES-T1-W05-TECHNOLOGY-DEFINITION",
@@ -5880,15 +5860,35 @@
     "AG-LES-T1-W07-SOCIOECONOMIC-FACTORS",
     "AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS",
     "AG-LES-T1-W10-MONOCOT-DICOT-TABLE",
+    "AG-CORR-T2-W02-03-SOURCE-TERMS",
     "AG-LES-T2-W04-05-YAM-PRACTICES",
+    "AG-CORR-T2-W04-05-TABLE-TEXT",
     "AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS",
+    "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
+    "AG-CORR-T2-W07-PEAT-TYPO",
+    "AG-CORR-T2-W08-QUESTION-WORDING",
+    "AG-CORR-T2-W09-SOIL-TERMS",
     "AG-LES-T3-W01-TOOL-REFERENCE",
+    "AG-CORR-T3-W01-TOOL-NAMES",
     "AG-LES-T3-W02-FARM-POWER-OPERATIONS",
+    "AG-CORR-T3-W02-WATER-POWER",
+    "AG-CORR-T3-W02-POWER-TEXT",
     "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS",
     "AG-LES-T3-W05-RESPIRATION-NERVOUS-GAPS",
     "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION",
+    "AG-FACT-T3-W06-LACTATION-COLOSTRUM",
     "AG-LES-T3-W07-POULTRY-REPRO-SYSTEM",
+    "AG-FACT-T3-W07-HORMONES",
+    "AG-FACT-T3-W07-EGG-FORMATION",
     "AG-LES-T3-W08-ENVIRONMENTAL-MEASURES",
-    "AG-TEST-PACKAGE"
+    "AG-FACT-T3-W08-REGIONAL-CLIMATE",
+    "AG-FACT-T3-W09-PIG-SAFETY",
+    "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE",
+    "AG-FACT-T3-W10-CATTLE-SAFETY",
+    "AG-FACT-T3-W10-CATTLE-TERMS",
+    "AG-CORR-T3-W02-WDP-LOCATORS",
+    "AG-CORR-T3-W04-TBL-DIGESTION-HASH",
+    "AG-CORR-T3-W05-RESPIRATION-EQUATION-LOCATORS",
+    "AG-CORR-T3-W06-TBL-GESTATION-HASH"
   ]
 }
