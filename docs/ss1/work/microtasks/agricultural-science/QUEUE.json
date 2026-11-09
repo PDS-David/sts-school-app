@@ -130,9 +130,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 100,
+    "IMPLEMENTED_TESTING_DEFERRED": 101,
     "BLOCKED": 2,
-    "PENDING": 52
+    "PENDING": 51
   },
   "items": [
     {
@@ -5277,8 +5277,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W07: table 828's sex/site/function assignments require authoritative physiology review.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09 from master f51616309aafe542edd89e41072b70c3b92b995e. Reused the previously verified archive/member SHA-256 and block-828 table transcription from AG-INV-T3/AG-WK-T3-W07/AG-VIS-T3-W07-TBL-HORMONES. Reviewed all seven rows against the peer-reviewed Merck Veterinary Manual (2025), FUNAAB animal-reproduction lecture, University of Mosul veterinary lecture (2024), and peer-reviewed relaxin/oxytocin literature. Findings: testosterone/testicular association is sound but spermatogenesis also depends on FSH; oestrogen does not itself produce ova through oogenesis; progesterone prepares/maintains endometrium and pregnancy with species-dependent CL/placental sources; oxytocin is synthesized in hypothalamus and released from posterior pituitary, with established parturition/milk-ejection roles but no established general sperm-transport function; relaxin source is species-dependent (not pituitary) and pelvic-ligament softening is supported; FSH and LH act in both sexes, including Sertoli-cell/spermatogenesis and Leydig-cell/testosterone roles in males. Added AG-FACT-T3-W07-HORMONES.md with row-by-row findings, precise recommended wording and opened references. No source, package, correction binding, asset or approval changed. Tests/importer/typecheck/DB/rendering/CI not run; testing deferred; hormone-table reuse rights remain blocked.",
       "completion_condition": "A sourced note verifies each table row and recommends exact corrections where needed."
     },
     {
@@ -5844,12 +5844,32 @@
     }
   },
   "next_runnable": [
+    "AG-FACT-T3-W06-LACTATION-COLOSTRUM",
+    "AG-FACT-T3-W07-EGG-FORMATION",
+    "AG-FACT-T3-W08-REGIONAL-CLIMATE",
+    "AG-FACT-T3-W09-PIG-SAFETY",
+    "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE",
+    "AG-FACT-T3-W10-CATTLE-SAFETY",
+    "AG-FACT-T3-W10-CATTLE-TERMS",
+    "AG-CORR-T1-W03-STORAGE-SOLUTION",
+    "AG-CORR-T2-W02-03-SOURCE-TERMS",
+    "AG-CORR-T2-W04-05-TABLE-TEXT",
+    "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
+    "AG-CORR-T2-W07-PEAT-TYPO",
+    "AG-CORR-T2-W08-QUESTION-WORDING",
+    "AG-CORR-T2-W09-SOIL-TERMS",
+    "AG-CORR-T3-W01-TOOL-NAMES",
+    "AG-CORR-T3-W02-WATER-POWER",
+    "AG-CORR-T3-W02-POWER-TEXT",
+    "AG-CORR-T3-W02-WDP-LOCATORS",
+    "AG-CORR-T3-W04-TBL-DIGESTION-HASH",
+    "AG-CORR-T3-W05-RESPIRATION-EQUATION-LOCATORS",
+    "AG-CORR-T3-W06-TBL-GESTATION-HASH",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
     "AG-LES-T1-W02-AGRO-INDUSTRIES",
     "AG-LES-T1-W03-EXTENSION-ROLES",
     "AG-LES-T1-W03-INPUT-TERMINOLOGY",
-    "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-LES-T1-W04-NGO-EXAMPLES",
     "AG-LES-T1-W04-PROGRAMME-OBJECTIVES",
     "AG-LES-T1-W05-TECHNOLOGY-DEFINITION",
@@ -5860,35 +5880,14 @@
     "AG-LES-T1-W07-SOCIOECONOMIC-FACTORS",
     "AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS",
     "AG-LES-T1-W10-MONOCOT-DICOT-TABLE",
-    "AG-CORR-T2-W02-03-SOURCE-TERMS",
     "AG-LES-T2-W04-05-YAM-PRACTICES",
-    "AG-CORR-T2-W04-05-TABLE-TEXT",
     "AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS",
-    "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
-    "AG-CORR-T2-W07-PEAT-TYPO",
-    "AG-CORR-T2-W08-QUESTION-WORDING",
-    "AG-CORR-T2-W09-SOIL-TERMS",
     "AG-LES-T3-W01-TOOL-REFERENCE",
-    "AG-CORR-T3-W01-TOOL-NAMES",
     "AG-LES-T3-W02-FARM-POWER-OPERATIONS",
-    "AG-CORR-T3-W02-WATER-POWER",
-    "AG-CORR-T3-W02-POWER-TEXT",
     "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS",
     "AG-LES-T3-W05-RESPIRATION-NERVOUS-GAPS",
     "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION",
-    "AG-FACT-T3-W06-LACTATION-COLOSTRUM",
     "AG-LES-T3-W07-POULTRY-REPRO-SYSTEM",
-    "AG-FACT-T3-W07-HORMONES",
-    "AG-FACT-T3-W07-EGG-FORMATION",
-    "AG-LES-T3-W08-ENVIRONMENTAL-MEASURES",
-    "AG-FACT-T3-W08-REGIONAL-CLIMATE",
-    "AG-FACT-T3-W09-PIG-SAFETY",
-    "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE",
-    "AG-FACT-T3-W10-CATTLE-SAFETY",
-    "AG-FACT-T3-W10-CATTLE-TERMS",
-    "AG-CORR-T3-W02-WDP-LOCATORS",
-    "AG-CORR-T3-W04-TBL-DIGESTION-HASH",
-    "AG-CORR-T3-W05-RESPIRATION-EQUATION-LOCATORS",
-    "AG-CORR-T3-W06-TBL-GESTATION-HASH"
+    "AG-LES-T3-W08-ENVIRONMENTAL-MEASURES"
   ]
 }
