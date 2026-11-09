@@ -1,7 +1,9 @@
-# CC-LES-T1-W12 — Revision
+# CC-LES-T1-W12 — First Term project-authored supplement
 
 Package lesson: SUP-SS1-CC-T1-W12-REVISION
-Body SHA-256: 0f9c207e8ad8a38f3b539711585ed7b8812d00189c8de929ac7538e3c0d49f9d
-Source locator: Lagos State Unified Scheme reproduction, First Term Week Twelve revision marker.
+Body SHA-256: 25d33dfd09cda9e3a2c5654204c0bac590def3002dff57a530d33c0473e37064
+Source locator: public reproduction of the Lagos State Ministry of Education Unified Scheme of Work, First Term Week 12.
 
-The revision checklist now covers all ten teaching weeks and includes a sanitation practical review. Content approval PENDING; verification DEFERRED.
+Revision checklist and practical review covering all ten First Term teaching weeks, plus a sanitation practical review. No classroom assessment is claimed.
+
+Independently authored; no registered First Term source ID is asserted. Content approval PENDING; verification DEFERRED.
