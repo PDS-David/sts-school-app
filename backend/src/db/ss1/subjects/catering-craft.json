@@ -4310,7 +4310,21 @@
       "body_sha256": "3d1a054d50b14a509128fee18fa54b5d8dd889ae717bb16c55d6359710e8ad87"
     }
   ],
-  "delivery_corrections": [],
+  "delivery_corrections": [
+    {
+      "id": "CC-CORR-T2-W06-FRYING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "source_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59",
+      "source_lesson_id": "SS1-SRC-f433169ca25c:BODY:fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de",
+      "body_sha256": "fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de",
+      "replacement_id": "SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES",
+      "reason": "The original Week Six source incorrectly classifies frying as a moist-heat method. The corrected project-authored equivalent teaches frying as a hot-fat method and keeps the source wording unchanged.",
+      "evidence": {
+        "locator": "CC-IDX-T2-W06.md, source Week Six lines 845–927; classification at line 900. Exact parser identity produced by authorised GitHub Actions run 42547557010 (workflow artifact 13643689148).",
+        "explanation": "Verified the full original archive SHA-256 and the registered Second Term member SHA-256, extracted only that member, ran word-extractor 1.0.4 getBody() and the repository's exact ingestTopics.ts parseTopics function. The single parsed Week Six block is titled COOKING OF FOODS, 4,453 characters, body SHA-256 fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de; the deterministic source lesson ID is therefore exact. The parser-generated hash happens to match the week-range index hash, now independently confirmed."
+      }
+    }
+  ],
   "assets": [],
   "coverage": [
     {
@@ -4456,20 +4470,8 @@
       ],
       "evidence": [
         {
-          "locator": "word-extractor 1.0.4 getBody() line 13; WEEK label line 845, TOPIC line 846, CONTENT list lines 847-849",
-          "explanation": "Scheme row 6 maps to the 06th labelled week by position and its CONTENT list. Scheme row 6 says 'Principle of Cooking Methods'; body topic is 'COOKING OF FOODS'. In the methods list (895–904), frying is placed under the 'Moist-heat method' alongside boiling, poaching, steaming and stewing. That classification needs factual review; a separate queue item is added. No lesson or correction is made in this index."
-        },
-        {
-          "locator": "source lines 845-927; section index in docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W06.md",
-          "explanation": "The source sections and assessment blocks are indexed. PARTIAL, not SUPPORTED: no deliverable lesson exists, no answer key or marking is supplied, and the source has no lesson IDs bound because the importer has not been run."
-        },
-        {
-          "locator": "Project-authored lesson SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES; body SHA-256 840fcc00106bb1d241604fc183a08ef76fdec3dd1fd49ef290d7e90c4c3d33ff",
-          "explanation": "Complete independently authored teaching, answered practice and marking guide cover the indexed scheme objectives. Unverified local-language plant names are excluded; food additives are taught only under applicable regulation; frying is correctly classified as cooking in fat/dry heat. Approval PENDING; verification DEFERRED."
-        },
-        {
-          "locator": "SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES; CC-FACT-T2-COOKING-METHOD-CLASSIFICATION.md; CC-IDX-T2-W06.md",
-          "explanation": "A corrected replacement lesson and factual evidence are authored. The original source delivery correction remains blocked until the approved importer supplies the exact parsed source lesson identity/body hash."
+          "locator": "SS1-SRC-f433169ca25c:BODY:fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de; SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES; CC-CORR-T2-W06-FRYING",
+          "explanation": "The original Week Six parsed source body is exactly hash-bound and its incorrect frying classification is corrected by the authored equivalent lesson. The source wording remains unchanged; the compiler correction record replaces the inaccurate row for delivery."
         }
       ]
     },
@@ -5147,13 +5149,13 @@
     {
       "id": "CC-T2-FRYING-METHOD-CLASSIFICATION",
       "kind": "FACT",
-      "detail": "The source's Week Six body incorrectly places frying under the moist-heat heading. The project-authored replacement lesson SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES correctly teaches frying as a hot-fat method, and factual evidence is recorded. However, the exact original parsed lesson ID/body hash has not been established by the approved importer. The index note provides the exact week-range hash, but the importer trims parsed blocks; do not substitute a range hash or guessed lesson ID for the exact parsed identity. The original source row therefore remains uncorrected for delivery until the importer supplies its exact identity. Owner has authorised the narrowly scoped importer/source parse. The registered original archive is present in the repository at docs/ss1/sources/SSS1-original.zip (35,828,550 bytes), but the available GitHub file connector returns no content for binary ZIPs and the execution container cannot reach github.com; the source archive is not present in the user's connected Library. Consequently the importer has not been run and no exact parser-trimmed body/lesson ID can be derived in this session. The replacement lesson and factual correction remain in place; original source identity is not guessed.",
-      "required_action": "Obtain the exact SSS1-original.zip bytes in the execution environment (or the exact .doc member) and run the existing SS1 source parse only; compute originalLessonId(source_id, parsedWeekSixBody), then add the correction binding to SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES. Do not use the range hash or a guessed body hash.",
+      "detail": "The source's Week Six body incorrectly places frying under the moist-heat heading. The project-authored replacement lesson SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES correctly teaches frying as a hot-fat method, and factual evidence is recorded. However, the exact original parsed lesson ID/body hash has not been established by the approved importer. The index note provides the exact week-range hash, but the importer trims parsed blocks; do not substitute a range hash or guessed lesson ID for the exact parsed identity. The original source row therefore remains uncorrected for delivery until the importer supplies its exact identity. Owner has authorised the narrowly scoped importer/source parse. The registered original archive is present in the repository at docs/ss1/sources/SSS1-original.zip (35,828,550 bytes), but the available GitHub file connector returns no content for binary ZIPs and the execution container cannot reach github.com; the source archive is not present in the user's connected Library. Consequently the importer has not been run and no exact parser-trimmed body/lesson ID can be derived in this session. The replacement lesson and factual correction remain in place; original source identity is not guessed. Resolution: the exact parser-trimmed Week Six body identity is now confirmed by authorised source-inspection run 42547557010. The original archive and registered member hashes passed; WordExtractor 1.0.4 plus the repository's parseTopics function produced body SHA-256 fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de and lesson ID SS1-SRC-f433169ca25c:BODY:fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de. Delivery correction CC-CORR-T2-W06-FRYING now binds the original row to SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES. The original source document is unchanged.",
+      "required_action": "No further source-identity or correction-binding action is required. Preserve the original source body and the corrected replacement lesson; later verification remains subject to the normal testing/teacher evidence stage.",
       "affected_ids": [
         "CC-IDX-T2-W06",
         "CC-FACT-T2-COOKING-METHOD-CLASSIFICATION"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "CC-T2-LOCAL-MEASUREMENT-CONVERSIONS",
