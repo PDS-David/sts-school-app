@@ -65,7 +65,7 @@ test('Alias rules bind the exact heading and record explicit owner approval', ()
   assert(pending && !pending.blocks_delivery);
 });
 
-test('No lesson, correction or asset fabricates approval or verification', () => {
+test('Owner approval is recorded without claiming later verification', () => {
   const p = packageSchema.parse(raw);
   for (const x of [...p.lessons.map(l => l.state), ...p.assets.map(a => a.state)]) {
     assert.equal(x.content_approval, 'APPROVED');
