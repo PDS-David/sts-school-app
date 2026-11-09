@@ -2564,8 +2564,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W01-TOOL-NAMES",
       "kind": "CONTENT",
-      "detail": "Weekend MCQ 67 prints 'Hand Towel' while the tool list at 36 contains 'Hand trowel'.",
-      "required_action": "Verify the option against the source and teacher-approved original, then bind a delivery-only correction if confirmed; preserve source bytes.",
+      "detail": "Weekend MCQ block 67 asks which tool is used for transplanting seedlings but prints 'Hand Towel'. The same source's tool list at block 36 contains 'Hand trowel' as a farm tool. University of Minnesota and University of Maryland Extension references confirm hand trowels are used for planting/transplanting seedlings. The intended option is 'C. Hand Trowel'. Parallel copies reproduce the typo, so the source's own list is the direct evidence. Block 66 also uses 'Hand towel' as a distractor in another MCQ; leave that occurrence unchanged under this task.",
+      "required_action": "When an original Week One lesson and its body_sha256 exist and a same-subject/same-term replacement lesson is authored, bind the correction at MCQ block 67 from 'Hand Towel' to 'Hand Trowel' using exact source ID/hash and lesson IDs/hashes. Do not alter block 66 or invent lesson IDs/body hashes; do not edit the archived source.",
       "affected_ids": [
         "AG-CORR-T3-W01-TOOL-NAMES",
         "SS1-SRC-458a07f7ea5a"
