@@ -39,10 +39,10 @@
     "SOURCE_MARKER_DISPOSITION": 3,
     "VISUAL_DISPOSITION": 7,
     "SOURCE_PRESERVATION": 6,
-    "LESSON_AUTHORING": 7
+    "LESSON_AUTHORING": 10
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 63,
+    "IMPLEMENTED_TESTING_DEFERRED": 66,
     "BLOCKED": 1
   },
   "items": [
@@ -2282,6 +2282,82 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Package lesson SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES; body SHA-256 840fcc00106bb1d241604fc183a08ef76fdec3dd1fd49ef290d7e90c4c3d33ff; answered practice and 20-mark guide recorded. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Complete source-aligned teaching, answered practice and marking guide; factual errors are corrected or excluded; no unsupported source claims are taught; approval and verification are not fabricated."
+    },
+    {
+      "id": "CC-LES-T2-W07",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SEVEN lines 930–1053",
+      "objective": "Methods of Cooking: Boiling, Poaching and Steaming",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T2-W07.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T2-W07"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T2-W07-BOILING-POACHING-STEAMING; body SHA-256 bb5fc69d3550b5bcdb60735bff075ce6a210452f15263b31e51a3919fb4f5910; four answered practice items and 20-mark guide. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; safe method classification; no unsupported or unsafe source claims; approval and verification remain explicit."
+    },
+    {
+      "id": "CC-LES-T2-W08",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK EIGHT lines 1056–1194",
+      "objective": "Methods of Cooking: Stewing and Frying",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T2-W08.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T2-W08",
+        "CC-FACT-T2-FRYING-HEAT-FIRE-BURNS"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T2-W08-STEWING-FRYING; body SHA-256 0d681b5f64e39ea5eb55e9e46357fc87a1dc22166d39d02c7f46facbd606a48a; four answered practice items and 20-mark guide. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; safe method classification; no unsupported or unsafe source claims; approval and verification remain explicit."
+    },
+    {
+      "id": "CC-LES-T2-W09",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK NINE lines 1197–1298",
+      "objective": "Methods of Cooking: Baking, Roasting and Grilling",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T2-W09.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T2-W09"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T2-W09-BAKING-ROASTING-GRILLING; body SHA-256 9143beb192b95c364c1e4e84ed34b54318478366bd5984664528a371b0374125; four answered practice items and 20-mark guide. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; safe method classification; no unsupported or unsafe source claims; approval and verification remain explicit."
     }
   ],
   "review": {
