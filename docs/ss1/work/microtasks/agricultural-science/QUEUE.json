@@ -89,7 +89,8 @@
     "AG-VIS-T3-W09-PIG-ANATOMY (2026-11-09): zero-based block 1006 is one pig side-profile body-parts diagram (image22, 393×248) on source page 33 between pig breeds and characteristics. All 28 visible labels and male-specific sheath marker recorded; image is small/soft at native resolution and embedded description is only a local path. No rights evidence; no copying/derivative; reuse blocked pending permission or rights-cleared higher-resolution replacement.",
     "AG-VIS-T3-W10-CATTLE-ANATOMY (2026-11-09): zero-based block 1155 is one cow side-profile external-anatomy diagram (image23, 408×256) on source page 38. All 26 visible labels recorded; udder/teat make it a female-cow view; 'Mammery Veins' spelling retained as source. Original is low-resolution and embedded description is only a local path. No rights evidence; reuse/derivative blocked pending permission or rights-cleared higher-resolution replacement.",
     "AG-VIS-T3-W10-MATH-OBJECT (2026-11-09): zero-based block 1165 contains one semantic inline OMML fraction m:f (1/2) in the cattle gestation statement 275-283 days (9 1/2 months). w:t-only extraction drops the fraction and returns 9 months; rendered source page 38 shows the stacked fraction. No image/derivative needed. Added a delivery-verification blocker to preserve the OMML fraction; importer/rendering not run.",
-    "AG-FACT-T1-W02-EXPORT-ITEM (2026-11-09): source blocks 104/178 verified. Yam is exported from Nigeria, though in small quantities: JICA's 2024 Nigeria agriculture report says yam exports are few and identifies Nigerian pounded-yam-flour exporters to UK/Netherlands/US; NEPC's 2024 article directly discusses yam exports and export rejects; FMINO/NEPC's 2026 report records Yam Export Clusters. Thus 'yam' is not a defensible 'except' answer. Recommend withdraw as an export-status question or rewrite to ask what is not named in the Week 1 list. No teacher decision presumed; package open item remains unchanged pending owner decision."
+    "AG-FACT-T1-W02-EXPORT-ITEM (2026-11-09): source blocks 104/178 verified. Yam is exported from Nigeria, though in small quantities: JICA's 2024 Nigeria agriculture report says yam exports are few and identifies Nigerian pounded-yam-flour exporters to UK/Netherlands/US; NEPC's 2024 article directly discusses yam exports and export rejects; FMINO/NEPC's 2026 report records Yam Export Clusters. Thus 'yam' is not a defensible 'except' answer. Recommend withdraw as an export-status question or rewrite to ask what is not named in the Week 1 list. No teacher decision presumed; package open item remains unchanged pending owner decision.",
+    "AG-FACT-T1-W03-CREDIT-OPTIONS (2026-11-09): verified blocks 207/310. CBN ACGSF supports deposit money banks/microfinance banks lending to farmers; BOA mandate includes agricultural credit; CBN Briefs says Cooperative Thrift and Credit Societies provide credit/funds mobilisation in Nigeria; CBN PMB guidelines restrict primary mortgage banks to mortgage finance and prohibit consumer/commercial loans. CBN CACS also permits land charges as collateral, so 'mortgage' is ambiguous as written. Likely intended exception is a primary mortgage bank; recommend correct option D wording and option C terminology. No answer key/teacher decision presumed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -104,8 +105,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 74,
-    "PENDING": 78,
+    "IMPLEMENTED_TESTING_DEFERRED": 75,
+    "PENDING": 77,
     "BLOCKED": 2
   },
   "items": [
@@ -3327,8 +3328,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W03 (2026-11-08): block 310 lists commercial/agricultural banks, thrift/savings societies and mortgage; source block 207 mentions only commercial/agricultural banks.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from synchronized master 8114b2c3ab30a56e0357184aeb4376d7f6dceb9a. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact First Term DOCX member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. Inspected source Week 3 bank-loan paragraph block 207 and Weekend Assignment Q5 block 310. CBN ACGSF page identifies Deposit Money Banks and CBN-regulated microfinance banks as participating institutions and says the scheme encourages banks to lend to farmers (official CBN page). Bank of Agriculture's mandate explicitly includes provision of credit to support agricultural value-chain activities (official BOA website). CBN Briefs 2004-2005 states that Cooperative Thrift and Credit Societies are a source for funds mobilisation and participatory credit administration in Nigeria and have played a significant role in the rural economy (lines 1159-1161). CBN's final 2011 Revised Guidelines for Primary Mortgage Banks define PMB business and prohibit PMBs from granting consumer or commercial loans (lines 212-250); this supports mortgage banks as the exception for ordinary agricultural production credit. Important distinction: 'mortgage' itself is not a lender/institution, and CBN's 2010 CACS guidelines permit a charge on land as collateral for agricultural loans (lines 185-193). Therefore the likely intended exception is a primary mortgage bank, but option D is imprecisely worded and is not parallel with the other institutions. Recommendation: correct the option to 'primary mortgage bank' and use 'cooperative thrift and credit society' for C; do not key the current bare word 'mortgage' without clarifying the intended institution. No teacher decision or answer key change presumed. No importer/tests run; testing remains deferred.",
       "completion_condition": "A sourced evidence note establishes the item’s defensibility and gives a precise recommendation; no unsupported key is added."
     },
     {
@@ -5818,7 +5819,6 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T1-W03-CREDIT-OPTIONS",
     "AG-FACT-T1-W04-PEST-CONTROL-ITEM",
     "AG-FACT-T1-W04-NGO-STATUS",
     "AG-FACT-T1-W05-GENETICS-ITEM",
