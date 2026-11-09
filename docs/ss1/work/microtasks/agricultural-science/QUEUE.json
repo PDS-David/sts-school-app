@@ -130,9 +130,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 102,
+    "IMPLEMENTED_TESTING_DEFERRED": 103,
     "BLOCKED": 2,
-    "PENDING": 50
+    "PENDING": 49
   },
   "items": [
     {
@@ -5311,8 +5311,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W07: egg formation stage timings in block 795 require independent verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09 after verifying branch was current with master (base f51616309aafe542edd89e41072b70c3b92b995e; ahead4/behind0). Reused the verified archive/member SHA-256 and Week Seven block/figure locators from AG-WK-T3-W07. Compared the source's hen egg-formation stages against University of Kentucky Extension/Poultry Extension, Penn State Extension, the Queensland Department of Primary Industries & Fisheries/DSM egg-quality handbook, Washington State University 4-H poultry leader guide, and a peer-reviewed poultry-production review; checked species variation against a guinea-fowl study. Confirmed sequence/functions; infundibulum ~15–17 min, magnum ~3 h, isthmus ~75 min, shell gland typically ~20–21 h, vagina brief (seconds to <1 min); ~25–26 h total is valid as an approximate laying-hen cycle, not a fixed all-poultry value. Recommended qualifying shell-gland duration (source lower bound 18 h not standard) and shortening the 1–15 min vagina range. No source bytes, figures, lesson content, correction binding, assets or shared code changed. Tests/importer/typecheck/DB/rendering/CI not run; testing deferred.",
       "completion_condition": "A sourced note verifies the sequence and approximate timing ranges and recommends qualified wording."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T3-W07-EGG-FORMATION",
     "AG-FACT-T3-W08-REGIONAL-CLIMATE",
     "AG-FACT-T3-W09-PIG-SAFETY",
     "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE",
