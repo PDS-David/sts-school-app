@@ -41,7 +41,7 @@ Scheme mapping: item 1 = Week 1; 2 = Week 2; 3 = Week 3; item 4–5 = Weeks 4–
 
 ## Visual and structured-content inventory
 
-The DOCX has four body tables, 18 body image groups containing 23 linked raster media files, two alternate WDP image-effect layers associated with one group, three text-based respiration equations, and one inline Office Math object. The two WDP files are alternate/effect layers referenced by the same drawing group as image5/image6, not independent teaching figures. Visuals were viewed in a private contact sheet; no source media was committed.
+The DOCX has four body tables, 18 body image groups containing 23 linked raster media files, two alternate WDP image-effect layers associated with two separate Week Four image groups (blocks 487 and 494), three text-based respiration equations, and one inline Office Math object. The two WDP files are alternate/effect layers in the Week Four drawing groups at blocks 487 and 494, respectively; they are not independent teaching figures. Visuals were viewed in a private contact sheet; no source media was committed.
 
 | Week | Locator | Structure / content |
 |---|---|---|
@@ -50,14 +50,14 @@ The DOCX has four body tables, 18 body image groups containing 23 linked raster 
 | 2 | image block 128 | Tractor / mechanical power (`image2.png`) |
 | 2 | image block 167 | Solar panels (`image3.png`) |
 | 2 | image block 194 | Windmill (`image4.png`) |
-| 2 | image block 211 | Two-image group: electricity generation and hydroelectric dam (`image5.png`, `image6.png`; alternate WDP layers) |
+| 2 | image block 211 | Two-image group: electricity generation and hydroelectric dam (`image5.png`, `image6.png`); no WDP effect layer is attached to this block |
 | 4 | image block 395 | Ruminant/cattle digestive tract (`image7.png`) |
 | 4 | image block 417 | Pig digestive system (`image8.jpeg`) |
 | 4 | image block 425 | Poultry digestive system (`image9.jpeg`) |
 | 4 | table block 431 | 7 x 3 monogastric/polygastric comparison; SHA-256 `0ca145261c566e4b6fdfaa02c15d7b741be36a751106f10076b43b37d4bf9fd2` |
-| 4 | image block 487 | Two-image male reproductive-system group (`image10.jpeg`, `image11.jpeg`) |
+| 4 | image block 487 | Two-image male reproductive-system group (`image10.jpeg`, `image11.jpeg`; alternate/effect layer `hdphoto1.wdp`) |
 | 4 | image block 493 | Female reproductive-system diagram (`image12.jpeg`) |
-| 4 | image block 494 | Second female reproductive-system image / photographed page (`image13.jpeg`) |
+| 4 | image block 494 | Second female reproductive-system image / photographed page (`image13.jpeg`; alternate/effect layer `hdphoto2.wdp`) |
 | 5 | image block 547 | Respiratory tract/lungs diagram (`image14.jpeg`) |
 | 5 | image block 554 | Two fish-gill diagrams (`image15.jpeg`, `image16.jpeg`) |
 | 5 | blocks 530, 535, 538 | Three text-based respiration equations (general, aerobic and anaerobic); not image assets or Office Math objects |
@@ -70,7 +70,13 @@ The DOCX has four body tables, 18 body image groups containing 23 linked raster 
 | 10 | image block 1155 | Cattle external anatomy/body-parts diagram (`image23.jpeg`) |
 | 10 | inline Office Math block 1165 | Inline mathematical object embedded in the cattle gestation-characteristics sentence; preserve its exact numeric statement and determine whether it is semantic math or formatted text during visual disposition |
 
-The image relationship map shows 23 linked raster media files in the body; image groups may contain more than one image. The two WDP media files are referenced as alternate image-effect layers. The body also contains 42 DrawingML drawing elements and 16 VML pict elements; the separate visual items above are anchored to the 18 image-bearing body paragraphs and the four actual tables. No OLE object was found.
+**WDP image-effect-layer mapping (reverified from original DOCX XML):**
+- `word/document.xml` direct-body block 211 — C14N XML SHA-256 `eb7fa7f9efaa71470249fb6c5e4b8f6f95517db2a656f26f0bfdc277bf3e8027`; `rId11 → media/image5.png`, `rId12 → media/image6.png`; no `a14:imgLayer` is present.
+- Block 487 — C14N XML SHA-256 `83769c0683fdbafe2907881e8038e6317812f2d873a017da30b66f6459749081`; `rId16 → media/image10.jpeg`, `rId22 → media/image11.jpeg`, `a14:imgLayer rId21 → media/hdphoto1.wdp`.
+- Block 494 — C14N XML SHA-256 `bc1c82e7330ecd257d1353d95e0d7f3654ba4aa4e9a61ce3c77a6cf42c403790`; `rId24 → media/image13.jpeg`, `a14:imgLayer rId25 → media/hdphoto2.wdp`.
+- The WDP relationships are alternate/effect layers inside their respective Week Four drawing groups, not independent teaching figures. No separate WDP visual records are created.
+
+The image relationship map shows 23 linked raster media files in the body; image groups may contain more than one image. The two WDP media files are referenced as alternate image-effect layers at Week Four blocks 487 (`hdphoto1.wdp`) and 494 (`hdphoto2.wdp`), not at Week Two block 211. The body also contains 42 DrawingML drawing elements and 16 VML pict elements; the separate visual items above are anchored to the 18 image-bearing body paragraphs and the four actual tables. No OLE object was found.
 
 ## Practical work and chemical / dosage cautions for later indexing
 
