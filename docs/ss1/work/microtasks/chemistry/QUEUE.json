@@ -48,8 +48,8 @@
     "LESSON": 7
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 15,
-    "PENDING": 103,
+    "IMPLEMENTED_TESTING_DEFERRED": 22,
+    "PENDING": 96,
     "BLOCKED": 1
   },
   "items": [
@@ -370,8 +370,8 @@
         "CHEM-INV-T1A",
         "CHEM-INV-T1B"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Two 1st Term files are assigned: SS1-SRC-58b4a44c3afa (2187976 bytes, sha256 07053f977dcbef91ee05d74a2e4dab9c3fa921cbb3792dc8698287a55197bb3a) and SS1-SRC-84df18289b7a (1656948 bytes, sha256 0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a). Hashes and sizes differ. Worker C requires comparing their content, hash and roles before treating either as a duplicate. No comparison exists in the repository.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "CHEM-CMP-T1.md compares source/member/text hashes, source roles, schemes and each indexed week section. It records topic overlaps without claiming exact duplicate teaching where no line-level text proof exists; both sources remain registered.",
       "completion_condition": "A comparison record exists with a per-section disposition citing exact locators in both files, and any later indexing or lesson items it implies are appended with real dependencies. Neither source is discarded; no lesson or rule is written."
     },
     {
@@ -401,8 +401,8 @@
         "CHEM-SRC-T2",
         "CHEM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/chemistry.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "tests/ss1/chemistry.package.test.mts drafted only: schema parse, four manifest/source matches, distinct first-term originals, alias approval guards, coverage reference integrity and no fabricated approval/verification. Not run per owner deferral.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -848,8 +848,8 @@
         "CHEM-INV-T1A",
         "CHEM-SRC-T1A"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CHEM-INV-T1A (see CHEM-INV-T1A.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "CHEM-MARK-T1A-REVEXAM.md documents scheme-only markers and the two-row-to-one-WEEK-TEN mapping; package now has exact source-bound classify_marker rules and MARKER coverage entries, no lessons.",
       "completion_condition": "Markers classified with exact locators and an explicit statement that no revision note, examination paper or marking scheme exists in the source; the scheme/body row-count difference is recorded, nothing invented."
     },
     {
@@ -883,8 +883,8 @@
         "CHEM-INV-T1A",
         "CHEM-SRC-T1A"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CHEM-INV-T1A (see CHEM-INV-T1A.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T1A-W02-APPARATUS.md records source evidence and the no-derivative disposition; original bytes are preserved and no unlicensed or AI-generated image is deployed.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -918,8 +918,8 @@
         "CHEM-INV-T1A",
         "CHEM-SRC-T1A"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CHEM-INV-T1A (see CHEM-INV-T1A.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T1A-W06-MEDIA.md records the source evidence and no-derivative disposition; original bytes remain preserved.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -953,8 +953,8 @@
         "CHEM-INV-T1A",
         "CHEM-SRC-T1A"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CHEM-INV-T1A (see CHEM-INV-T1A.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T1A-W09-ISOTOPE.md records the source evidence and no-derivative disposition; original bytes remain preserved.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -988,8 +988,8 @@
         "CHEM-INV-T1A",
         "CHEM-SRC-T1A"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CHEM-INV-T1A (see CHEM-INV-T1A.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T1A-W10-ORBITAL-SHAPES.md records the source evidence and no-derivative disposition; original bytes remain preserved.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
