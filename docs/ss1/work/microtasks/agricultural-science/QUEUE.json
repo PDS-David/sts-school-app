@@ -131,8 +131,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 108,
-    "BLOCKED": 11,
-    "PENDING": 35
+    "BLOCKED": 12,
+    "PENDING": 34
   },
   "items": [
     {
@@ -4819,8 +4819,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W02: 'bullyolked' and 'accusation' appear to be text errors.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed source member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a and block hashes 107 bd33c0597ced9c82966cb08843c45a934b49f665708cc7d9d1e16d8e1627b883; 138 81e76adb4141613aebccd848329d131f52d39d72a9a794b38096ea628369b9fe. Lessonnotes.ng Week Two SS1 Agricultural Science parallel note uses the exact intended phrases 'Pair of working bullocks yoked together' and 'High capital investment is involved in the acquisition of machinery'. Recommended corrections: block 107 'bullyolked'→'bullocks yoked'; block 138 'accusation of machineries'→'acquisition of machinery'. Other copies reproduce the corrupted forms and were not used as correction evidence. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery corrections can be bound yet. Updated existing package open item AGRICULTURAL-SCIENCE-T3-W02-TEXT; no delivery_corrections or source changes.",
       "completion_condition": "A correction-binding record cites verified source evidence and preserves original wording."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-CORR-T3-W02-POWER-TEXT",
     "AG-CORR-T3-W10-CATTLE-TERMS",
     "AG-CORR-T3-W02-WDP-LOCATORS",
     "AG-CORR-T3-W04-TBL-DIGESTION-HASH",
