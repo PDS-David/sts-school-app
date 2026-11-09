@@ -1,9 +1,7 @@
-# CC-LES-T1-W05 — external-source project-authored lesson
+# CC-LES-T1-W05 — Functions of catering establishments and hotel rating
 
-Package lesson: SUP-SS1-CC-T1-W05-CULINARY-TERMS
-Body SHA-256: 1b3cc2d24adfce1a1c58802bae15e5433e83677a723f476989b64d5001f7ca89
-Term: First Term; class SS 1; subject Catering Craft.
+Package lesson: SUP-SS1-CC-T1-W05-ESTABLISHMENT-FUNCTIONS-HOTEL-RATING
+Body SHA-256: cc85e96b064899db5a5bb61dca560e98dea0f5f6c56c2badd7fa6186e93345c2
+Source locator: Lagos State Unified Scheme reproduction, First Term Week Five (functions of catering establishments; hotel rating).
 
-Basis: public First Term scheme topic sequence. No source ID or archive member is asserted; this is an independently authored supplement pending formal source registration/foundation approval.
-
-Four answered practice items carry five marks each; practical marking guide totals 20. Content approval PENDING; verification DEFERRED.
+This independently authored lesson distinguishes hotel classification from rating, uses NTDA accreditation context and qualifies star systems as authority-specific. It includes four answered practice questions and a 20-mark guide. Content approval PENDING; verification DEFERRED.
