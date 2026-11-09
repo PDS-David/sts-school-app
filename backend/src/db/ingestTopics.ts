@@ -61,6 +61,7 @@ import { writeFileSync as writeSs1Plan } from 'node:fs';
 
 import { readFileSync, readdirSync, statSync } from 'fs';
 import path from 'path';
+import { pathToFileURL } from 'node:url';
 import mammoth from 'mammoth';
 // @ts-ignore — word-extractor ships no types
 import WordExtractor from 'word-extractor';
@@ -317,7 +318,7 @@ const WEEK_MARKER = new RegExp(
   'gim',
 );
 
-interface ParsedTopic {
+export interface ParsedTopic {
   weekLabel: string;
   title: string;
   body: string;
@@ -333,7 +334,7 @@ interface ParsedTopic {
 // nothing else on that line.
 const BARE_NUMBER_LINE = /^[ \t]*(\d{1,2}(?:\s*(?:&|and|,|-)\s*\d{1,2})?)[ \t]*$/gim;
 
-function parseTopics(text: string): ParsedTopic[] {
+export function parseTopics(text: string): ParsedTopic[] {
   const rawMatches = [...text.matchAll(WEEK_MARKER)].filter(m => !isSchemeWorkWeekHeader(text, m.index!, m[0]));
   // Some valid lesson notes repeat the same marker back-to-back (for
   // example "WEEK 6" immediately followed by "Week: Six"). Collapse only
@@ -1221,4 +1222,8 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   }
 }
 
-main().catch(e => { console.error('AUDIT/IMPORT BLOCKED:', e); process.exitCode = 1; });
+// Keep the parser importable for the explicitly scoped source-identity inspection.
+// The CLI remains unchanged when this file is invoked directly.
+if (process.argv[1] && pathToFileURL(path.resolve(process.argv[1])).href === import.meta.url) {
+  main().catch(e => { console.error('AUDIT/IMPORT BLOCKED:', e); process.exitCode = 1; });
+}
