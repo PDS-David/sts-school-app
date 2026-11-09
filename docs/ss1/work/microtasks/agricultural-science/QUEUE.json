@@ -130,9 +130,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 109,
+    "IMPLEMENTED_TESTING_DEFERRED": 110,
     "BLOCKED": 13,
-    "PENDING": 32
+    "PENDING": 31
   },
   "items": [
     {
@@ -5744,8 +5744,8 @@
         "AG-SRC-T3",
         "AG-VIS-T3-W04-TBL-DIGESTION"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-VIS-T3-W04-TBL-DIGESTION after direct XML extraction: recorded table hash does not match the documented concatenated-cell-text method; recomputed value is 0dcf9de2367de925c039cd05c16545e6b1bc036861c56d2220bbe8ad34d33b86.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Reverified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and Third Term member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Re-extracted native Word table at direct-body block 431; confirmed 7 rows × 3 columns, 21 cells and 452 concatenated characters. Canonical method: iterate w:tr then w:tc in document order; concatenate each cell's w:t run text; concatenate all 21 cell strings with no separators or normalization; UTF-8 encode; SHA-256. Recomputed hash 0dcf9de2367de925c039cd05c16545e6b1bc036861c56d2220bbe8ad34d33b86, replacing the non-reproducible 0ca145... value. Cell text, blank cells, order and table structure unchanged. Updated only AG-INV-T3.md table row; no package or source changes. Testing remains deferred.",
       "completion_condition": "Independently reproduce the canonical table hash from the verified source DOCX, correct AG-INV-T3.md with exact method and hash, and confirm table dimensions/content remain unchanged."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-CORR-T3-W04-TBL-DIGESTION-HASH",
     "AG-CORR-T3-W05-RESPIRATION-EQUATION-LOCATORS",
     "AG-CORR-T3-W06-TBL-GESTATION-HASH",
     "AG-LES-T1-W01-CROP-ASPECTS",
