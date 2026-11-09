@@ -83,7 +83,8 @@
     "AG-VIS-T3-W05-RESPIRATION-EQUATIONS (2026-11-08): equation paragraphs are 532, 537 and 540, not the task's original 530, 535 and 538; associated word labels are 533, 538 and 541. Chemical numerals use run-level subscripts, but no reaction arrows or Office Math objects are present; word-label runs are superscripted. Existing factual open item AGRICULTURAL-SCIENCE-T3-W05-RESPIRATION-ACCURACY remains the verification gate. Locator correction task AG-CORR-T3-W05-RESPIRATION-EQUATION-LOCATORS appended.",
     "AG-VIS-T3-W06-TBL-GESTATION (2026-11-08): block 724 is a native 6×3 Word table. Horse/Cattle, Mare/Cow, 336 days/283 days and Rabbit/Chicken, Doe/Hen, 31days/21 days are separate paragraphs in corresponding cells. Preserve pair alignment. Recorded table hash does not match concatenated cell-text hash; AG-CORR-T3-W06-TBL-GESTATION-HASH appended.",
     "AG-VIS-T3-W07-BIRD-EMBRYO-ORGANS (2026-11-08): block 803 holds image17 bird embryo (visible iStock watermark) and image18 poultry internal organs. The embryo image is contextual but not used by the source egg-formation prose; the internal-organs figure includes ovary/oviduct but is not a focused reproductive diagram. Neither has reuse rights evidence; delivery reuse is blocked pending clearance or a rights-cleared replacement.",
-    "AG-VIS-T3-W07-REPRODUCTIVE-TRACT (2026-11-09): block 804 contains a photographed fertile-egg page (image19) plus a female poultry reproductive-tract diagram (image20); both inspected and hashes verified. Useful labels/content recorded, but no licence/credit; reuse blocked pending rights or separately sourced rights-cleared substitutes."
+    "AG-VIS-T3-W07-REPRODUCTIVE-TRACT (2026-11-09): block 804 contains a photographed fertile-egg page (image19) plus a female poultry reproductive-tract diagram (image20); both inspected and hashes verified. Useful labels/content recorded, but no licence/credit; reuse blocked pending rights or separately sourced rights-cleared substitutes.",
+    "AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS (2026-11-09): block 819 is one combined male/female poultry reproductive-and-excretory diagram (image21, 350×373); label/content and Week Four mammalian-figure distinction recorded. No rights evidence; reuse/derivative blocked pending permission or separately sourced rights-cleared replacement."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -98,8 +99,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 68,
-    "PENDING": 84,
+    "IMPLEMENTED_TESTING_DEFERRED": 69,
+    "PENDING": 83,
     "BLOCKED": 2
   },
   "items": [
@@ -2953,8 +2954,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from master e84d5c359d2795fb9234b0b719008da02bfd794b. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Inspected word/document.xml direct-body block 819: one DrawingML image relationship rId33 -> word/media/image21.jpeg; media SHA-256 1a40750113dcfd8ffe5e079ac35715a932bfe1a786de90b55c1a4d54598a7644, 27,439 bytes, 350x373 pixels. Nearby block 820 is the heading 'REPRODUCTIVE SYSTEM OF POULTRY BIRDS'; blocks 821-823 include evaluation prompts, including a request to describe the poultry reproductive system. The monochrome diagram is titled 'Reproductive & Excretory Systems' and combines male and female poultry anatomy. Visible labels include male-side testis, vas deferens, intestine and cloaca; kidney and ureter; and female-side eggs in oviduct, oviduct, uterus, rudimentary right oviduct and cloaca. The image is small/low-resolution; central anatomy is discernible, but edge labels are clipped or crowded (left-side testis/vas deferens/intestine/cloaca and right-side oviduct). Week Four is distinct: blocks 487, 493 and 494 contain mammalian reproductive figures (two male-system images and two female-system images, including a photographed page); block 819 is a combined poultry male/female reproductive-and-excretory diagram, not a duplicate of those figures. JPEG metadata contains JFIF technical fields only and no EXIF; no author/publisher credit, copyright notice or reuse licence is visible in the image or supplied DOCX. No source media copied, altered, traced or bound as a learner-facing asset. Reuse and derivatives remain blocked pending written permission/licence; if needed for delivery, source a separate rights-cleared poultry male/female reproductive-and-excretory diagram preserving the named labels. No importer, learner rendering, app/device display or tests run; testing remains deferred.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5812,7 +5813,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS",
     "AG-VIS-T3-W07-TBL-HORMONES",
     "AG-VIS-T3-W09-PIG-ANATOMY",
     "AG-VIS-T3-W10-CATTLE-ANATOMY",
