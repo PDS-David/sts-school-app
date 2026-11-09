@@ -88,7 +88,8 @@
     "AG-VIS-T3-W07-TBL-HORMONES (2026-11-09): zero-based block 828 is a native 8×4 Word table, legible and intact on source page 28; no merged cells or embedded media. Each of seven hormone rows retains its sex/site/functions mapping and multiple function paragraphs. The recorded table text digest dc4ce1cf… was not reproduced by direct w:t concatenation (computed 23d71c76…); archive/member hashes match and the discrepancy is documented in the task note. No reuse licence/permission; verbatim learner delivery blocked. Existing hormone factual-accuracy blocker remains.",
     "AG-VIS-T3-W09-PIG-ANATOMY (2026-11-09): zero-based block 1006 is one pig side-profile body-parts diagram (image22, 393×248) on source page 33 between pig breeds and characteristics. All 28 visible labels and male-specific sheath marker recorded; image is small/soft at native resolution and embedded description is only a local path. No rights evidence; no copying/derivative; reuse blocked pending permission or rights-cleared higher-resolution replacement.",
     "AG-VIS-T3-W10-CATTLE-ANATOMY (2026-11-09): zero-based block 1155 is one cow side-profile external-anatomy diagram (image23, 408×256) on source page 38. All 26 visible labels recorded; udder/teat make it a female-cow view; 'Mammery Veins' spelling retained as source. Original is low-resolution and embedded description is only a local path. No rights evidence; reuse/derivative blocked pending permission or rights-cleared higher-resolution replacement.",
-    "AG-VIS-T3-W10-MATH-OBJECT (2026-11-09): zero-based block 1165 contains one semantic inline OMML fraction m:f (1/2) in the cattle gestation statement 275-283 days (9 1/2 months). w:t-only extraction drops the fraction and returns 9 months; rendered source page 38 shows the stacked fraction. No image/derivative needed. Added a delivery-verification blocker to preserve the OMML fraction; importer/rendering not run."
+    "AG-VIS-T3-W10-MATH-OBJECT (2026-11-09): zero-based block 1165 contains one semantic inline OMML fraction m:f (1/2) in the cattle gestation statement 275-283 days (9 1/2 months). w:t-only extraction drops the fraction and returns 9 months; rendered source page 38 shows the stacked fraction. No image/derivative needed. Added a delivery-verification blocker to preserve the OMML fraction; importer/rendering not run.",
+    "AG-FACT-T1-W02-EXPORT-ITEM (2026-11-09): source blocks 104/178 verified. Yam is exported from Nigeria, though in small quantities: JICA's 2024 Nigeria agriculture report says yam exports are few and identifies Nigerian pounded-yam-flour exporters to UK/Netherlands/US; NEPC's 2024 article directly discusses yam exports and export rejects; FMINO/NEPC's 2026 report records Yam Export Clusters. Thus 'yam' is not a defensible 'except' answer. Recommend withdraw as an export-status question or rewrite to ask what is not named in the Week 1 list. No teacher decision presumed; package open item remains unchanged pending owner decision."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -103,8 +104,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 73,
-    "PENDING": 79,
+    "IMPLEMENTED_TESTING_DEFERRED": 74,
+    "PENDING": 78,
     "BLOCKED": 2
   },
   "items": [
@@ -3144,8 +3145,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W02 (2026-11-08): block 178's options include yam, but block 104's export list does not; omission alone is not a sufficient key.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from synchronized branch (master base a8265c474a0e455ada7f58cbd0828bb423a5fd70). Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact First Term DOCX member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. Original DOCX core metadata dates the file 2018-09-26 (created) and 2019-09-06 (modified). Inspected source Week 1 block 104 (lists cocoa, coffee, groundnut, cotton, palm produce and timber as exports) and Week 2 Weekend Assignment Q4 block 178 (asks which is not a source of foreign-exchange earnings; options cotton, yam, cocoa, palm produce). The question's implied key, yam, is not defensible: the JICA April 2024 Nigeria agriculture-sector report's Yam trade section says Nigerian yam exports exist, albeit few; it states that OFI Foods and Olu-Olu Foods export pounded yam flour to the UK, Netherlands and US, and its yam value-chain figure includes export flows. The Nigerian Export Promotion Council's 13 June 2024 article expressly discusses yam exports and shipment rejections while discussing non-oil exports and foreign-exchange generation. The Federal Ministry of Information's 21 July 2026 report says NEPC established Yam Export Clusters in Benue. UNSD HS 071430 explicitly classifies yams (Dioscorea spp.) as a traded commodity. This establishes that yam can earn foreign exchange through exports, even if the volume is small; omission from block 104 is not proof of non-export. Recommendation: withdraw Q4 as currently worded if it tests actual export status; if the intended objective is recall of the source list, rewrite it as 'Which option is not named in the Week 1 list of agricultural exports?' with yam as the answer. If retaining a factual export-status question, specify a reporting period and use official trade data to establish an unambiguous non-export option. No teacher/owner decision is presumed. The package's existing AGRICULTURAL-SCIENCE-T1-W02-EXPORT-FACT open item remains unchanged because this task's allowed write paths exclude the package; it remains a decision gate. No export-value figure was selected because the task only needs to establish export status and available secondary aggregations are inconsistent. No importer/tests run; testing remains deferred.",
       "completion_condition": "A sourced evidence record determines whether the item is factually defensible, and gives a precise correction/recommendation or leaves it explicitly unresolved; no unsupported answer is added."
     },
     {
@@ -5817,7 +5818,6 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T1-W02-EXPORT-ITEM",
     "AG-FACT-T1-W03-CREDIT-OPTIONS",
     "AG-FACT-T1-W04-PEST-CONTROL-ITEM",
     "AG-FACT-T1-W04-NGO-STATUS",
