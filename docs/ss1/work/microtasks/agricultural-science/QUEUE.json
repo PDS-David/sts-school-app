@@ -131,8 +131,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 108,
-    "BLOCKED": 8,
-    "PENDING": 38
+    "BLOCKED": 9,
+    "PENDING": 37
   },
   "items": [
     {
@@ -4568,8 +4568,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W09: wording at blocks 627/634 appears inconsistent with the soil-formation topic.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed source member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 and block hashes 627 3d91f52ce2449d5253343e08e4ceb31844f8236355b3e3bd9dad1e3e2f913e21; 634 6965631ca49413d3db774a21c7da54b4e3b57f6663cb4a91aade6a746d73cfa1; headings/examples 626,633,635,638,639 also verified. Topography context (flat land vs slope, bottom of slope) plus soil-erosion references support 'sloppy area'→'sloping area'. The biotic-factors heading and following examples (mixing soil, root weathering, humus formation), plus FAO/NOU/University of Minnesota soil science sources, support 'rock formation'→'soil formation'. Parallel Ecolebooks/Lessonnotes.ng copies reproduce the same errors and are not independent correction authority. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery corrections can be bound yet. Updated existing package open item; no delivery_corrections or source changes.",
       "completion_condition": "A correction-binding record cites verified evidence for each correction and preserves original wording."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-CORR-T2-W09-SOIL-TERMS",
     "AG-CORR-T3-W01-TOOL-NAMES",
     "AG-CORR-T3-W02-WATER-POWER",
     "AG-CORR-T3-W02-POWER-TEXT",
