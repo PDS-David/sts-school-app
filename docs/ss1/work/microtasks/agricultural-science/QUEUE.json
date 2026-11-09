@@ -84,7 +84,12 @@
     "AG-VIS-T3-W06-TBL-GESTATION (2026-11-08): block 724 is a native 6×3 Word table. Horse/Cattle, Mare/Cow, 336 days/283 days and Rabbit/Chicken, Doe/Hen, 31days/21 days are separate paragraphs in corresponding cells. Preserve pair alignment. Recorded table hash does not match concatenated cell-text hash; AG-CORR-T3-W06-TBL-GESTATION-HASH appended.",
     "AG-VIS-T3-W07-BIRD-EMBRYO-ORGANS (2026-11-08): block 803 holds image17 bird embryo (visible iStock watermark) and image18 poultry internal organs. The embryo image is contextual but not used by the source egg-formation prose; the internal-organs figure includes ovary/oviduct but is not a focused reproductive diagram. Neither has reuse rights evidence; delivery reuse is blocked pending clearance or a rights-cleared replacement.",
     "AG-VIS-T3-W07-REPRODUCTIVE-TRACT (2026-11-09): block 804 contains a photographed fertile-egg page (image19) plus a female poultry reproductive-tract diagram (image20); both inspected and hashes verified. Useful labels/content recorded, but no licence/credit; reuse blocked pending rights or separately sourced rights-cleared substitutes.",
-    "AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS (2026-11-09): block 819 is one combined male/female poultry reproductive-and-excretory diagram (image21, 350×373); label/content and Week Four mammalian-figure distinction recorded. No rights evidence; reuse/derivative blocked pending permission or separately sourced rights-cleared replacement."
+    "AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS (2026-11-09): block 819 is one combined male/female poultry reproductive-and-excretory diagram (image21, 350×373); label/content and Week Four mammalian-figure distinction recorded. No rights evidence; reuse/derivative blocked pending permission or separately sourced rights-cleared replacement.",
+    "AG-VIS-T3-W07-TBL-HORMONES (2026-11-09): zero-based block 828 is a native 8×4 Word table, legible and intact on source page 28; no merged cells or embedded media. Each of seven hormone rows retains its sex/site/functions mapping and multiple function paragraphs. The recorded table text digest dc4ce1cf… was not reproduced by direct w:t concatenation (computed 23d71c76…); archive/member hashes match and the discrepancy is documented in the task note. No reuse licence/permission; verbatim learner delivery blocked. Existing hormone factual-accuracy blocker remains.",
+    "AG-VIS-T3-W09-PIG-ANATOMY (2026-11-09): zero-based block 1006 is one pig side-profile body-parts diagram (image22, 393×248) on source page 33 between pig breeds and characteristics. All 28 visible labels and male-specific sheath marker recorded; image is small/soft at native resolution and embedded description is only a local path. No rights evidence; no copying/derivative; reuse blocked pending permission or rights-cleared higher-resolution replacement.",
+    "AG-VIS-T3-W10-CATTLE-ANATOMY (2026-11-09): zero-based block 1155 is one cow side-profile external-anatomy diagram (image23, 408×256) on source page 38. All 26 visible labels recorded; udder/teat make it a female-cow view; 'Mammery Veins' spelling retained as source. Original is low-resolution and embedded description is only a local path. No rights evidence; reuse/derivative blocked pending permission or rights-cleared higher-resolution replacement.",
+    "AG-VIS-T3-W10-MATH-OBJECT (2026-11-09): zero-based block 1165 contains one semantic inline OMML fraction m:f (1/2) in the cattle gestation statement 275-283 days (9 1/2 months). w:t-only extraction drops the fraction and returns 9 months; rendered source page 38 shows the stacked fraction. No image/derivative needed. Added a delivery-verification blocker to preserve the OMML fraction; importer/rendering not run.",
+    "AG-FACT-T1-W02-EXPORT-ITEM (2026-11-09): source blocks 104/178 verified. Yam is exported from Nigeria, though in small quantities: JICA's 2024 Nigeria agriculture report says yam exports are few and identifies Nigerian pounded-yam-flour exporters to UK/Netherlands/US; NEPC's 2024 article directly discusses yam exports and export rejects; FMINO/NEPC's 2026 report records Yam Export Clusters. Thus 'yam' is not a defensible 'except' answer. Recommend withdraw as an export-status question or rewrite to ask what is not named in the Week 1 list. No teacher decision presumed; package open item remains unchanged pending owner decision."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -99,8 +104,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 69,
-    "PENDING": 83,
+    "IMPLEMENTED_TESTING_DEFERRED": 74,
+    "PENDING": 78,
     "BLOCKED": 2
   },
   "items": [
@@ -2992,8 +2997,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from master 7a42d78319230dc7cc74617b6706905e17a69324. Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Inspected word/document.xml zero-based direct-body block 828: one native Word table, 8 rows × 4 columns, no merged cells, no embedded drawings/media; each hormone row retains its SEX, SITE OF SECRETION and FUNCTIONS cells. Source table is rendered legibly and intact on page 28 of the source document; header 'SITE OF SECRETION' wraps to two lines, longer functions wrap within the wide fourth column, and multiple functions remain separate paragraphs in the same cell. All seven source rows (testosterone/androgen, oestrogen, progesterone, oxytocin, relaxin, follicle stimulating hormone (FSH), luteinizing hormone) and their source claims were inspected; preserve them as source claims only, not validated physiology. Existing AGRICULTURAL-SCIENCE-T3-W07-HORMONE-ACCURACY remains the fact-check gate. The inventory/task-recorded table text digest dc4ce1cf72d8b6490cf5260a040f348e35fad1b3ab6e6b80b884f0326fe1a3e was not reproduced by direct concatenation of the 1,148 XML w:t characters (computed SHA-256 23d71c760fadf5dd5905d5e23e91a46de2c4e0c34845c5c57892c337d20b5cb9); this is recorded as a locator-metadata discrepancy, not a source-member integrity failure. The original archive/member hashes match. Document core metadata names AKANDE ANTHONY as creator but has no rights statement; no licence or reuse permission is present. No copied table/derivative or learner-facing asset was created. A rights blocker is recorded; if permission is unavailable, author an independently sourced, rights-cleared equivalent table after factual review. No importer, app/device rendering or tests run; testing remains deferred.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -3030,8 +3035,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from synchronized master a8265c474a0e455ada7f58cbd0828bb423a5fd70 (branch also carries the prior AG-VIS-T3-W07-TBL-HORMONES commit). Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Inspected word/document.xml zero-based direct-body block 1006: DrawingML relationship rId34 -> word/media/image22.jpeg; image SHA-256 ce90a5c50968040e25a8bd9915a86bb72f56fedc9f96715c901a6787f515f649, 19,478 bytes, 393x248 pixels. A single pig side-profile diagram appears on source page 33 between the pig-breeds list and 'CHARACTERISTICS OF PIGS'; no caption/title is provided. All 28 visible labels were transcribed: crops, shoulder, back, loin, rump, tail, ham, side, neck, poll, ear, snout, nostrils, jowls, cheek, foreflank, knee, foreleg, fetlock, pastern, coffin, sheath (male), belly, rear flank, stifle, hock, cannon and dewclaw. The image is legible when enlarged but small/soft at its native 393x248 resolution; several fine leader lines and labels are crowded. DrawingML description is only a local Windows path/filename, not meaningful alt text or attribution. JPEG contains JFIF technical metadata only, no EXIF; no author/publisher credit, copyright notice or reuse licence is visible. Source document metadata creator is AKANDE ANTHONY, with no rights statement. The male-specific 'sheath (♂)' label and the full label terminology are recorded as source claims, not independently validated anatomy. No original media was copied, cropped, traced or redrawn. Reuse and derivative creation remain blocked pending permission; if unavailable, use a separately sourced rights-cleared, higher-resolution pig external-anatomy diagram with all 28 labels, legible leader lines and meaningful alt text. No importer, learner rendering, app/device display or tests run; testing remains deferred.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -3068,8 +3073,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from branch synchronized with master a8265c474a0e455ada7f58cbd0828bb423a5fd70. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Inspected word/document.xml zero-based direct-body block 1155: DrawingML relationship rId35 -> word/media/image23.jpeg; image SHA-256 f5cb01d75a53b0103bff75364c5e11fc839fb532bd6d93e8126f4a5395ef735d, 26,565 bytes, 408x256 pixels. One cow side-profile diagram appears on source page 38 after the cattle-management terms and before the evaluation/characteristics material. It includes 26 visible labels: Tail Setting, Hook Bone, Back, Withers, Neck, Horn, Forehead, Face, Nostril, Muzzle, Jaw, Throat, Shoulder, Brisket, Crops, Heart Girth, Loin, Thurl, Pin Bones, Tail, Rear Flank, Rear Udder, Mammery Veins, Fore Udder, Teat and Chest Floor. Udder/teat labels make this a female-cow view; it is not a male/female comparative chart. The diagram is legible on the rendered source page but the 408x256 original is low-resolution; head labels are close together and the leader lines are crowded. The label is printed 'Mammery Veins' (not silently corrected); a rights-cleared replacement should verify/correct this likely spelling error. DrawingML description is only a local Windows path ending 'cowanat.jpg', not meaningful alt text or attribution. JPEG contains JFIF technical metadata only; no EXIF rights metadata. No author/publisher credit, copyright notice or reuse licence is visible; DOCX creator metadata does not establish permission. No original media was copied, cropped, traced or redrawn. Reuse and derivative creation remain blocked pending permission; if unavailable, source a separately rights-cleared, higher-resolution cow external-anatomy diagram preserving all 26 labels and clear leader lines, with meaningful alt text. No importer, learner rendering, app/device display or tests run; testing remains deferred.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -3106,8 +3111,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from branch synchronized with master a8265c474a0e455ada7f58cbd0828bb423a5fd70. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Inspected word/document.xml zero-based direct-body block 1165: the cattle-characteristics paragraph contains one inline OMML m:oMath with m:f, numerator m:num=1 and denominator m:den=2. It is a semantic fraction, not merely a styled text run. Surrounding w:t runs contain 'They have a gestation period of about 275-283 days (9' and ' months).' so w:t-only/plain-text extraction loses the fraction and incorrectly yields '9 months'. The rendered source page 38 visibly displays the stacked 1/2 in '9 1/2 months'. Preserve the source numeric statement as '275-283 days (9 1/2 months)' or equivalent semantic fraction; do not reduce it to 9 months or alter the 275-283 day range. No image/media/relationship or separate visual asset is involved; no derivative or separate asset is needed. This task does not fact-check the gestation range; the existing Week Six reproduction-timings blocker remains separate and does not validate this sentence. Added a verification blocker requiring importer/renderer confirmation that the OMML fraction survives extraction and delivery. No importer, learner rendering, app/device display or tests run; testing remains deferred.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -3140,8 +3145,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W02 (2026-11-08): block 178's options include yam, but block 104's export list does not; omission alone is not a sufficient key.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from synchronized branch (master base a8265c474a0e455ada7f58cbd0828bb423a5fd70). Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact First Term DOCX member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. Original DOCX core metadata dates the file 2018-09-26 (created) and 2019-09-06 (modified). Inspected source Week 1 block 104 (lists cocoa, coffee, groundnut, cotton, palm produce and timber as exports) and Week 2 Weekend Assignment Q4 block 178 (asks which is not a source of foreign-exchange earnings; options cotton, yam, cocoa, palm produce). The question's implied key, yam, is not defensible: the JICA April 2024 Nigeria agriculture-sector report's Yam trade section says Nigerian yam exports exist, albeit few; it states that OFI Foods and Olu-Olu Foods export pounded yam flour to the UK, Netherlands and US, and its yam value-chain figure includes export flows. The Nigerian Export Promotion Council's 13 June 2024 article expressly discusses yam exports and shipment rejections while discussing non-oil exports and foreign-exchange generation. The Federal Ministry of Information's 21 July 2026 report says NEPC established Yam Export Clusters in Benue. UNSD HS 071430 explicitly classifies yams (Dioscorea spp.) as a traded commodity. This establishes that yam can earn foreign exchange through exports, even if the volume is small; omission from block 104 is not proof of non-export. Recommendation: withdraw Q4 as currently worded if it tests actual export status; if the intended objective is recall of the source list, rewrite it as 'Which option is not named in the Week 1 list of agricultural exports?' with yam as the answer. If retaining a factual export-status question, specify a reporting period and use official trade data to establish an unambiguous non-export option. No teacher/owner decision is presumed. The package's existing AGRICULTURAL-SCIENCE-T1-W02-EXPORT-FACT open item remains unchanged because this task's allowed write paths exclude the package; it remains a decision gate. No export-value figure was selected because the task only needs to establish export status and available secondary aggregations are inconsistent. No importer/tests run; testing remains deferred.",
       "completion_condition": "A sourced evidence record determines whether the item is factually defensible, and gives a precise correction/recommendation or leaves it explicitly unresolved; no unsupported answer is added."
     },
     {
@@ -5813,11 +5818,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W07-TBL-HORMONES",
-    "AG-VIS-T3-W09-PIG-ANATOMY",
-    "AG-VIS-T3-W10-CATTLE-ANATOMY",
-    "AG-VIS-T3-W10-MATH-OBJECT",
-    "AG-FACT-T1-W02-EXPORT-ITEM",
     "AG-FACT-T1-W03-CREDIT-OPTIONS",
     "AG-FACT-T1-W04-PEST-CONTROL-ITEM",
     "AG-FACT-T1-W04-NGO-STATUS",

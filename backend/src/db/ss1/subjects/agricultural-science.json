@@ -3200,6 +3200,54 @@
         "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W07-HORMONE-TABLE-RIGHTS",
+      "kind": "PERMISSION",
+      "detail": "Third Term Week Seven block 828 is a native 8×4 reproductive-hormone table. The DOCX core metadata names a creator but contains no rights statement, and the source page/table contains no visible licence, attribution terms or reuse permission. The table is structured text rather than an image; its row/column relationships and seven hormone rows can be inspected, but permission to reproduce the table's wording and arrangement in learner delivery is not established. A separate existing fact blocker also flags hormone-site/sex/function claims for review.",
+      "required_action": "Do not reproduce the source table verbatim in learner-facing material unless written permission or a licence is obtained. If permission is unavailable, create an independently authored semantic table from authoritative, rights-cleared animal-physiology sources after resolving AGRICULTURAL-SCIENCE-T3-W07-HORMONE-ACCURACY. Preserve one hormone per row and the distinct hormone, sex, secretion-site and functions columns; do not treat the source claims as validated facts.",
+      "affected_ids": [
+        "AG-VIS-T3-W07-TBL-HORMONES",
+        "AGRICULTURAL-SCIENCE-T3-W07-HORMONE-ACCURACY",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W09-PIG-ANATOMY-RIGHTS",
+      "kind": "PERMISSION",
+      "detail": "Third Term Week Nine block 1006 contains image22.jpeg, a 393×248 pig side-profile body-parts diagram with 28 labels. It appears between the pig-breeds list and characteristics section, but has no caption, visible author/publisher credit, copyright notice or reuse licence. The embedded DrawingML description is only a local Windows path/filename; JPEG metadata contains JFIF technical fields but no EXIF. The document creator metadata does not establish reuse permission. The image is useful as an anatomy reference, but it is low-resolution and its label terminology has not been independently fact-checked.",
+      "required_action": "Do not copy image22.jpeg into learner-facing material or create a derivative from it unless written permission or a licence is obtained. If permission is unavailable, source a separately rights-cleared, higher-resolution pig external-anatomy diagram with legible leader lines and all 28 source labels: crops, shoulder, back, loin, rump, tail, ham, side, neck, poll, ear, snout, nostrils, jowls, cheek, foreflank, knee, foreleg, fetlock, pastern, coffin, sheath (male), belly, rear flank, stifle, hock, cannon and dewclaw. Validate the species-specific terminology before teaching it, and provide meaningful alt text. Keep the original source bytes private and unchanged.",
+      "affected_ids": [
+        "AG-VIS-T3-W09-PIG-ANATOMY",
+        "COV-AG-T3-W09-PIG-MANAGEMENT",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W10-CATTLE-ANATOMY-RIGHTS",
+      "kind": "PERMISSION",
+      "detail": "Third Term Week Ten block 1155 contains image23.jpeg, a 408×256 cow side-profile external-anatomy diagram with 26 labels. The image has no visible author/publisher credit, copyright notice or reuse licence. The embedded DrawingML description is only a local Windows path ending 'cowanat.jpg'; JPEG metadata contains JFIF technical fields but no EXIF. The DOCX creator metadata does not establish reuse permission. The image is useful for cattle-management teaching, but low-resolution; it shows a female cow (udder/teat labels), and the source label 'Mammery Veins' appears misspelled.",
+      "required_action": "Do not copy image23.jpeg into learner-facing material or create a derivative from it unless written permission or a licence is obtained. If permission is unavailable, source a separately rights-cleared, higher-resolution cow external-anatomy diagram with all 26 labels and legible leader lines: Tail Setting, Hook Bone, Back, Withers, Neck, Horn, Forehead, Face, Nostril, Muzzle, Jaw, Throat, Shoulder, Brisket, Crops, Heart Girth, Loin, Thurl, Pin Bones, Tail, Rear Flank, Rear Udder, Mammary Veins (verify the source spelling 'Mammery'), Fore Udder, Teat and Chest Floor. Preserve that the figure is a female-cow view, not a sex-neutral or male/female comparison, and provide meaningful alt text. Keep the original source bytes private and unchanged.",
+      "affected_ids": [
+        "AG-VIS-T3-W10-CATTLE-ANATOMY",
+        "COV-AG-T3-W10-CATTLE-MANAGEMENT",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W10-GESTATION-FRACTION-PRESERVATION",
+      "kind": "VERIFICATION",
+      "detail": "Third Term Week Ten block 1165 contains a semantic inline Office Math fraction (m:oMath/m:f, numerator 1, denominator 2) inside the cattle gestation statement '275-283 days (9 1/2 months)'. The surrounding w:t runs omit the fraction; w:t-only extraction yields '9 months'. The rendered source page visibly shows the stacked 1/2. If the importer or delivery renderer reads only text runs, the fraction will be lost and the numeric statement changed.",
+      "required_action": "At the authorised importer/plan and delivery-verification stage, confirm that the inline OMML fraction is preserved as a semantic fraction or faithfully serialized as '1/2'/'½'. If the current parser cannot preserve OMML, record and implement an approved source-scoped representation/foundation change before delivery. Preserve the full statement '275-283 days (9 1/2 months)' exactly in value; never drop the fraction or change the day range. Do not claim this was tested in the current task.",
+      "affected_ids": [
+        "AG-VIS-T3-W10-MATH-OBJECT",
+        "COV-AG-T3-W10-CATTLE-MANAGEMENT",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
