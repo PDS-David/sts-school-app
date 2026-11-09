@@ -1,9 +1,7 @@
-# CC-LES-T1-W02 — external-source project-authored lesson
+# CC-LES-T1-W02 — First Term project-authored supplement
 
 Package lesson: SUP-SS1-CC-T1-W02-HOSPITALITY-INDUSTRY
 Body SHA-256: b28486fe226004281cf0d04482b878bff8c99dc6b8905dd382b15b7eb06cb19e
-Term: First Term; class SS 1; subject Catering Craft.
+Source locator: public reproduction of the Lagos State Ministry of Education Unified Scheme of Work, First Term Week 2.
 
-Basis: the publicly available Lagos State Unified Scheme reproduction and the First Term S1 Catering Craft Practices scheme. No source ID or archive member is asserted; this lesson is an independently authored supplement pending formal source registration/foundation approval.
-
-Four answered practice items carry five marks each; practical marking guide totals 20. Content approval PENDING; verification DEFERRED.
+This lesson is independently authored and aligned to the public scheme topic. No source archive member or registered First Term source ID is asserted. Four answered practice items and a 20-mark guide are included. Content approval PENDING; verification DEFERRED.
