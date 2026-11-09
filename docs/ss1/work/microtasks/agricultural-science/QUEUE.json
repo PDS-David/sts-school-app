@@ -93,7 +93,8 @@
     "AG-FACT-T1-W03-CREDIT-OPTIONS (2026-11-09): verified blocks 207/310. CBN ACGSF supports deposit money banks/microfinance banks lending to farmers; BOA mandate includes agricultural credit; CBN Briefs says Cooperative Thrift and Credit Societies provide credit/funds mobilisation in Nigeria; CBN PMB guidelines restrict primary mortgage banks to mortgage finance and prohibit consumer/commercial loans. CBN CACS also permits land charges as collateral, so 'mortgage' is ambiguous as written. Likely intended exception is a primary mortgage bank; recommend correct option D wording and option C terminology. No answer key/teacher decision presumed.",
     "AG-FACT-T1-W04-PEST-CONTROL-ITEM (2026-11-09): verified blocks 371/414/436. IPPC/FAO defines plant quarantine as preventing introduction/spread of quarantine pests; FAO IPM supports crop rotation for pest/disease suppression; FAO fumigation manual identifies fumigation as pest control; UC IPM documents reflective mulch reducing aphids, leafhoppers, thrips and whiteflies. All four options are valid in specific contexts; no unique 'not a method' answer. Recommend withdraw or rewrite with a specific pest/mechanism. No answer key/teacher decision presumed.",
     "AG-FACT-T1-W04-NGO-STATUS (2026-11-09): source blocks 387-392/417 verified. The Hunger Project is an NGO; IITA is a private autonomous nonprofit institute; Nigerian state Agricultural Development Authorities are government agencies; WARDA/AfricaRice is an intergovernmental association, not NGO; FAO is a UN specialized agency, not NGO; CRS is a nonprofit NGO. Thus Q5 has at least two exceptions (C and D) and the generic authority name is under-specified. Recommend correcting option D/source classifications or withdrawing; no answer key/teacher decision presumed.",
-    "AG-FACT-T1-W05-GENETICS-ITEM (2026-11-09): verified source blocks 429/454. FDA distinguishes traditional selective/crossbreeding from genetic engineering (gene transfer) and says they may be combined; FAO identifies gene editing for new plant varieties/animal breeds and conventional animal breeding by selection. 'Genetic engineering' is a valid specific technique but not synonymous with the source's broader 'genetics and breeding'. Recommend clarifying stem or aligning option to source; no key/teacher decision presumed."
+    "AG-FACT-T1-W05-GENETICS-ITEM (2026-11-09): verified source blocks 429/454. FDA distinguishes traditional selective/crossbreeding from genetic engineering (gene transfer) and says they may be combined; FAO identifies gene editing for new plant varieties/animal breeds and conventional animal breeding by selection. 'Genetic engineering' is a valid specific technique but not synonymous with the source's broader 'genetics and breeding'. Recommend clarifying stem or aligning option to source; no key/teacher decision presumed.",
+    "AG-FACT-T1-W06-INCUBATOR-ITEM (2026-11-09): source Q1 block 519 verified. Nigerian National e-Agriculture Portal lists incubators under farm machines; FAO WCA classification lists incubators as livestock machinery and ploughs/planters/seed drills as crop machinery/equipment; UNSD CPC/HS classifies poultry incubators as agricultural machinery. Incubator is not a defensible 'not a farm machine' answer under broad scope; field-vs-livestock scope and machine-vs-implement distinctions make the stem ambiguous. Recommend specify 'poultry/livestock machine vs crop-field machine' or withdraw; no key/teacher decision presumed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -108,8 +109,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 78,
-    "PENDING": 74,
+    "IMPLEMENTED_TESTING_DEFERRED": 79,
+    "PENDING": 73,
     "BLOCKED": 2
   },
   "items": [
@@ -3726,8 +3727,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W06"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W06: block 519 offers incubator as an exception but the source does not define/classify incubators.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from synchronized master 8114b2c3ab30a56e0357184aeb4376d7f6dceb9a. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact First Term DOCX member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. Inspected Week Six Weekend Assignment Q1 block 519: 'Which of these is not a farm machine? A. planter B. incubator C. sowing machine D. plough'. Nigeria's Federal Ministry of Agriculture/NITDA National e-Agriculture Portal's SS1 'Farm Machinery and Implements' lesson explicitly lists incubators under farm machines, while listing ploughs and planters under tractor-coupled implements. FAO's World Census of Agriculture classification defines a broad machinery/equipment scope for agricultural production and lists ploughs, planters and seed/fertilizer drills under crop machinery/equipment and incubators under livestock machinery/equipment. UNSD CPC 44193 classifies poultry incubators/brooders under agricultural/forestry machinery; HS 8436 explicitly includes poultry incubators and brooders in agricultural/poultry-keeping machinery. Therefore incubator is a farm/livestock machine, not a valid 'not a farm machine' answer under broad farm machinery/equipment classification. Under narrower field-crop vs livestock classification it is different from planter/plough/sowing machine, but the stem does not specify that scope; under strict machine-vs-implement distinctions, planter and plough may themselves be implements. No unique exception is defensible. Recommendation: correct the stem to ask 'Which is a poultry/livestock machine rather than a crop-field machine?' (incubator) or withdraw/rewrite the current item with explicit classification criteria. No answer key/teacher decision presumed. No importer/tests run; testing remains deferred.",
       "completion_condition": "A sourced note establishes the item's defensibility and recommends retaining or correcting it."
     },
     {
@@ -5822,7 +5823,6 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T1-W06-INCUBATOR-ITEM",
     "AG-FACT-T1-W07-LAND-MOBILITY",
     "AG-FACT-T1-W07-GAME-RESERVE-USE",
     "AG-FACT-T1-W07-LABOUR-FACTOR",
