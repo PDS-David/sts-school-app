@@ -3,13 +3,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { createHash } from 'node:crypto';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import { applyRules } from '../../backend/src/db/ss1/compiler.ts';
 
 const raw = JSON.parse(readFileSync(new URL('../../backend/src/db/ss1/subjects/chemistry.json', import.meta.url), 'utf8'));
 const manifestText = readFileSync(new URL('../../docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv', import.meta.url), 'utf8');
-const sha256 = (value: string) => createHash('sha256').update(value).digest('hex');
 
 // The assigned chemistry rows contain no quoted commas; preserve the exact member path and hash fields.
 const manifestRows = manifestText.trim().split(/\r?\n/).slice(1).map(line => line.split(','));
@@ -56,7 +54,8 @@ test('Source aliases preserve exact observed anchors and remain explicitly owner
   const p = packageSchema.parse(raw);
   const aliasRules = p.source_rules.filter(rule => rule.op === 'source_alias');
   assert.equal(aliasRules.length, 4);
-  for (const rule of aliasRules) {
+  for (const rule of p.source_rules) {
+    if (rule.op !== 'source_alias') continue;
     const source = p.sources.find(s => s.source_id === rule.source_id);
     assert(source);
     assert.equal(rule.source_sha256, source.sha256);
