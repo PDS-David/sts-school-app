@@ -40,10 +40,11 @@
     "VISUAL_DISPOSITION": 7,
     "SOURCE_PRESERVATION": 6,
     "LESSON_AUTHORING": 20,
-    "SUPPLEMENTAL_ASSESSMENT": 4
+    "SUPPLEMENTAL_ASSESSMENT": 4,
+    "SUPPLEMENTAL_CURRICULUM": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 80,
+    "IMPLEMENTED_TESTING_DEFERRED": 83,
     "BLOCKED": 1
   },
   "items": [
@@ -2685,6 +2686,72 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Supplement SUP-SS1-CC-T3-W12-EXAMINATION; body SHA-256 30c6a207a22e65188d108c2602e69668861502a4f8978f12c907177631ecd08b; 40-mark paper, answer key and marking guide.",
       "completion_condition": "Supply project-authored examination paper, complete answer key and marking guide; preserve original marker and do not claim administration."
+    },
+    {
+      "id": "CC-LES-T1-W01",
+      "kind": "SUPPLEMENTAL_CURRICULUM",
+      "source_id": null,
+      "term": "1st Term",
+      "week_or_locator": "External scheme Week One: Introduction to Catering Craft",
+      "objective": "Introduction to Catering Craft: Origin, Development and Careers",
+      "required_files": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T1-W01.md"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored First Term supplement SUP-SS1-CC-T1-W01-ORIGIN-CAREERS; body SHA-256 6cf1112405d09e44349b57169af2e9026d0ea6175ed7198c0e1e0980bc245117; external topic sequence only; no registered source ID asserted.",
+      "completion_condition": "Provide independently authored First Term content with answers and marking guide; keep missing source registration/foundation approval as an explicit blocker."
+    },
+    {
+      "id": "CC-LES-T1-W02",
+      "kind": "SUPPLEMENTAL_CURRICULUM",
+      "source_id": null,
+      "term": "1st Term",
+      "week_or_locator": "External scheme Weeks Two and Three: Hospitality Industry in Catering",
+      "objective": "Hospitality Industry in Catering: Meaning, Scope and Relationship",
+      "required_files": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T1-W02.md"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored First Term supplement SUP-SS1-CC-T1-W02-HOSPITALITY-INDUSTRY; body SHA-256 b28486fe226004281cf0d04482b878bff8c99dc6b8905dd382b15b7eb06cb19e; external topic sequence only; no registered source ID asserted.",
+      "completion_condition": "Provide independently authored First Term content with answers and marking guide; keep missing source registration/foundation approval as an explicit blocker."
+    },
+    {
+      "id": "CC-LES-T1-W03",
+      "kind": "SUPPLEMENTAL_CURRICULUM",
+      "source_id": null,
+      "term": "1st Term",
+      "week_or_locator": "External scheme Week Three: Components, Importance and Characteristics",
+      "objective": "Components, Importance and Characteristics of the Hospitality Industry",
+      "required_files": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T1-W03.md"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored First Term supplement SUP-SS1-CC-T1-W03-COMPONENTS-IMPORTANCE; body SHA-256 5e7b4a8e3f612ad1bda3d58c1723cc88ecb68ccc5a711c88fc51747ee09bdc6e; external topic sequence only; no registered source ID asserted.",
+      "completion_condition": "Provide independently authored First Term content with answers and marking guide; keep missing source registration/foundation approval as an explicit blocker."
     }
   ],
   "review": {
