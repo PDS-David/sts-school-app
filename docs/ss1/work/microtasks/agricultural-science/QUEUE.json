@@ -131,8 +131,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 108,
-    "BLOCKED": 4,
-    "PENDING": 42
+    "BLOCKED": 5,
+    "PENDING": 41
   },
   "items": [
     {
@@ -4282,8 +4282,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W04-05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W04-05: tables contain anomalous strings and joined names; no correction is assumed.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Independently re-extracted source member and verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042, and table-block hashes 286 e85f47c0bf2bab22cd9534ddf5368d4d76f9ccbcf75c9930c4ca8b5f47b4394e; 298 87186ec68d7711e5caba1564d1775c94d59235baff5757eda7bcae6d97cb0cf0; 309 b35aa8b43354f8934274af4ad2fadcafd68aceb8c9de6e6ce890f60e1de98575. Word XML shows superscript zero is degree marker; normalized display can show 26°C–30°C and 20°C without changing any numeric figure. Verified 'per boiling'→'parboiling' using FAO and NAERLS; '2/3 0f'→'2/3 of'; '30cmwithin row'→'30 cm within row'; joined botanical names and malformed yam list using Kew POWO. 'Dried loamy soil' has no direct parallel evidence; cassava sweet/bitter name assignment conflicts with NOU/University of Melbourne and Kew taxonomy; both left unresolved. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery corrections can be bound. Updated existing package open item; no delivery_corrections records or source changes. All numbers/ranges/units/dates/seed rates/spacing/maturity values preserved.",
       "completion_condition": "A correction-binding record cites verified evidence for each proposed correction; original source bytes and figures remain unchanged."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-CORR-T2-W04-05-TABLE-TEXT",
     "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
     "AG-CORR-T2-W07-PEAT-TYPO",
     "AG-CORR-T2-W08-QUESTION-WORDING",
