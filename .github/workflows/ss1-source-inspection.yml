@@ -1,17 +1,19 @@
-name: SS1 source member inspection (temporary)
+name: Catering Craft Week Six source identity (temporary)
 
 on:
   push:
     branches:
-      - agent/ss1-source-inspection
+      - agent/catering-craft-approval-foundation-20261109
     paths:
       - .github/workflows/ss1-source-inspection.yml
+      - backend/src/db/ingestTopics.ts
+      - scripts/ss1/inspect_catering_week6.mts
 
 permissions:
   contents: read
 
 jobs:
-  inspect-assigned-source-members:
+  inspect-week-six:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -20,191 +22,65 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
-          python-version: "3.12"
+          node-version: "24.19.0"
 
-      - name: Install document readers
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends libreoffice-writer
-          python -m pip install --disable-pip-version-check python-docx lxml
+      - name: Install backend parser dependencies without changing lockfiles
+        working-directory: backend
+        run: npm install --ignore-scripts --no-package-lock --no-audit --no-fund
 
-      - name: Verify archive and extract only assigned SS1 members to runner scratch
+      - name: Verify archive and extract only the registered Second Term source member
         shell: bash
         run: |
-          python - <<'PY'
-          import hashlib, json, os, shutil, subprocess, zipfile
+          python3 - <<'PY'
+          import hashlib, json, os, zipfile
           from pathlib import Path, PurePosixPath
-          from lxml import etree
 
-          repo = Path(os.environ["GITHUB_WORKSPACE"])
-          archive = repo / "docs/ss1/sources/SSS1-original.zip"
-          registry_path = repo / "backend/src/db/ss1/sourceRegistry.json"
-          expected_archive_sha = "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e"
-          assigned = {"english"}
-          scratch = Path(os.environ["RUNNER_TEMP"]) / "ss1-source-inspection"
-          raw_root = scratch / "raw"
-          parsed_root = scratch / "parsed"
-          raw_root.mkdir(parents=True, exist_ok=True)
-          parsed_root.mkdir(parents=True, exist_ok=True)
-
-          def sha256(data):
-              return hashlib.sha256(data).hexdigest()
-
-          archive_bytes = archive.read_bytes()
-          actual_archive_sha = sha256(archive_bytes)
-          if actual_archive_sha != expected_archive_sha:
-              raise SystemExit(f"ARCHIVE_HASH_MISMATCH expected={expected_archive_sha} actual={actual_archive_sha}")
-
-          registry = json.loads(registry_path.read_text(encoding="utf-8"))
-          records = [r for r in registry if r.get("assigned_subject_slug") in assigned]
-          if not records:
-              raise SystemExit("No source registry entries found for assigned subjects")
-
-          ns = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
-          manifest = {
-              "archive_path": "docs/ss1/sources/SSS1-original.zip",
-              "expected_archive_sha256": expected_archive_sha,
-              "actual_archive_sha256": actual_archive_sha,
-              "assigned_subjects": sorted(assigned),
-              "source_members": [],
-              "limitations": [
-                  "DOC files are converted to DOCX for structured extraction; raw originals are retained alongside conversions.",
-                  "Parsed structure is an aid, not a substitute for visually inspecting original tables, drawings, underlining and equations."
-              ]
-          }
-
+          root = Path(os.environ["GITHUB_WORKSPACE"])
+          archive = root / "docs/ss1/sources/SSS1-original.zip"
+          registry = json.loads((root / "backend/src/db/ss1/sourceRegistry.json").read_text(encoding="utf-8"))
+          source_id = "SS1-SRC-f433169ca25c"
+          records = [r for r in registry if r["source_id"] == source_id]
+          if len(records) != 1:
+              raise SystemExit(f"Expected one registry row for {source_id}; found {len(records)}")
+          record = records[0]
+          archive_sha = "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e"
+          actual_archive_sha = hashlib.sha256(archive.read_bytes()).hexdigest()
+          if actual_archive_sha != archive_sha:
+              raise SystemExit(f"ARCHIVE_HASH_MISMATCH expected={archive_sha} actual={actual_archive_sha}")
+          member = record["archive_member"]
+          posix = PurePosixPath(member)
+          if posix.is_absolute() or ".." in posix.parts or "\\\\" in member:
+              raise SystemExit(f"UNSAFE_MEMBER_PATH {member}")
           with zipfile.ZipFile(archive) as zf:
-              names = set(zf.namelist())
-              for record in records:
-                  member = record["archive_member"]
-                  expected_member_sha = record["sha256"]
-                  expected_bytes = int(record["bytes"])
-                  if member not in names:
-                      raise SystemExit(f"MISSING_MEMBER {member}")
-                  data = zf.read(member)
-                  actual_member_sha = sha256(data)
-                  if actual_member_sha != expected_member_sha:
-                      raise SystemExit(f"MEMBER_HASH_MISMATCH {member} expected={expected_member_sha} actual={actual_member_sha}")
-                  if len(data) != expected_bytes:
-                      raise SystemExit(f"MEMBER_SIZE_MISMATCH {member} expected={expected_bytes} actual={len(data)}")
-
-                  rel = PurePosixPath(member)
-                  if rel.is_absolute() or ".." in rel.parts:
-                      raise SystemExit(f"UNSAFE_MEMBER_PATH {member}")
-                  subject_dir = raw_root / record["assigned_subject_slug"] / record["term_from_folder"].replace(" ", "_")
-                  subject_dir.mkdir(parents=True, exist_ok=True)
-                  raw_path = subject_dir / rel.name
-                  raw_path.write_bytes(data)
-
-                  source_out = parsed_root / record["source_id"]
-                  source_out.mkdir(parents=True, exist_ok=True)
-                  parse_path = raw_path
-                  converted_path = None
-                  if raw_path.suffix.lower() == ".doc":
-                      conv_dir = source_out / "converted"
-                      conv_dir.mkdir(exist_ok=True)
-                      result = subprocess.run(
-                          ["soffice", "--headless", "--convert-to", "docx", "--outdir", str(conv_dir), str(raw_path)],
-                          capture_output=True, text=True
-                      )
-                      candidate = conv_dir / (raw_path.stem + ".docx")
-                      if result.returncode != 0 or not candidate.exists():
-                          raise SystemExit(f"DOC_CONVERSION_FAILED {member}: {result.stderr[-1500:]}")
-                      parse_path = candidate
-                      converted_path = str(candidate.relative_to(scratch))
-
-                  with zipfile.ZipFile(parse_path) as docx_zip:
-                      xml = etree.fromstring(docx_zip.read("word/document.xml"))
-                      body = xml.find(".//w:body", namespaces=ns)
-                      children = []
-                      for index, child in enumerate(list(body)):
-                          tag = etree.QName(child).localname
-                          text = "".join(child.xpath(".//w:t/text()", namespaces=ns))
-                          children.append({
-                              "body_child_index": index,
-                              "element": tag,
-                              "text": text,
-                              "paragraph_count": len(child.xpath(".//w:p", namespaces=ns)),
-                              "table_row_count": len(child.xpath(".//w:tr", namespaces=ns)),
-                              "table_cell_count": len(child.xpath(".//w:tc", namespaces=ns)),
-                              "drawing_count": len(child.xpath(".//w:drawing", namespaces=ns)),
-                              "legacy_picture_count": len(child.xpath(".//w:pict", namespaces=ns)),
-                              "object_count": len(child.xpath(".//w:object", namespaces=ns)),
-                              "deleted_text_count": len(child.xpath(".//w:delText", namespaces=ns))
-                          })
-                      docx_images = []
-                      for info in docx_zip.infolist():
-                          if info.filename.startswith("word/media/"):
-                              target = source_out / "media" / Path(info.filename).name
-                              target.parent.mkdir(exist_ok=True)
-                              target.write_bytes(docx_zip.read(info.filename))
-                              docx_images.append(str(target.relative_to(scratch)))
-
-                  text_dump = []
-                  for item in children:
-                      text_dump.append(
-                          f"BODY CHILD {item['body_child_index']} [{item['element']}] "
-                          f"paragraphs={item['paragraph_count']} rows={item['table_row_count']} "
-                          f"cells={item['table_cell_count']} drawings={item['drawing_count']} "
-                          f"pict={item['legacy_picture_count']} objects={item['object_count']}\n"
-                          f"{item['text']}\n"
-                      )
-                  (source_out / "body_children.txt").write_text("\n".join(text_dump), encoding="utf-8")
-                  (source_out / "body_children.json").write_text(
-                      json.dumps(children, ensure_ascii=False, indent=2), encoding="utf-8"
-                  )
-                  entry = {
-                      "source_id": record["source_id"],
-                      "subject": record["assigned_subject_slug"],
-                      "term": record["term_from_folder"],
-                      "archive_member": member,
-                      "expected_sha256": expected_member_sha,
-                      "actual_sha256": actual_member_sha,
-                      "bytes": len(data),
-                      "raw_path": str(raw_path.relative_to(scratch)),
-                      "parsed_from": str(parse_path.relative_to(scratch)),
-                      "converted_path": converted_path,
-                      "body_child_count": len(children),
-                      "image_files": docx_images,
-                      "structure_counts": {
-                          "tables": sum(x["table_row_count"] > 0 for x in children),
-                          "table_rows": sum(x["table_row_count"] for x in children),
-                          "drawings": sum(x["drawing_count"] for x in children),
-                          "legacy_pictures": sum(x["legacy_picture_count"] for x in children),
-                          "objects": sum(x["object_count"] for x in children)
-                      }
-                  }
-                  (source_out / "manifest.json").write_text(
-                      json.dumps(entry, ensure_ascii=False, indent=2), encoding="utf-8"
-                  )
-                  manifest["source_members"].append(entry)
-
-          manifest["verified_member_count"] = len(manifest["source_members"])
-          manifest["source_ids_by_subject"] = {}
-          for entry in manifest["source_members"]:
-              manifest["source_ids_by_subject"].setdefault(entry["subject"], []).append(entry["source_id"])
-          (scratch / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
-          (scratch / "README.txt").write_text(
-              "Temporary SS1 source inspection artifact. Contains only the assigned source members, "
-              "their SHA-256 verification results, raw originals, and structured XML text/locator aids. "
-              "Do not commit these files. Artifact retention is one day.\n",
-              encoding="utf-8"
-          )
-          print(json.dumps({
-              "archive_sha256": actual_archive_sha,
-              "verified_member_count": len(records),
-              "subject_counts": manifest["source_ids_by_subject"],
-              "scratch_artifact": str(scratch)
-          }, ensure_ascii=False))
+              info = zf.getinfo(member)
+              if info.file_size != int(record["bytes"]):
+                  raise SystemExit(f"MEMBER_SIZE_MISMATCH expected={record['bytes']} actual={info.file_size}")
+              data = zf.read(member)
+          actual_member_sha = hashlib.sha256(data).hexdigest()
+          if actual_member_sha != record["sha256"]:
+              raise SystemExit(f"MEMBER_HASH_MISMATCH expected={record['sha256']} actual={actual_member_sha}")
+          target = Path(os.environ["RUNNER_TEMP"]) / "catering-craft-week-six-source.doc"
+          with target.open("xb") as f:
+              f.write(data)
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as env:
+              env.write(f"SS1_CATERING_SOURCE_FILE={target}\\n")
+          print(json.dumps({"archive_sha256": actual_archive_sha, "source_id": source_id, "member": member, "member_sha256": actual_member_sha, "bytes": len(data)}))
           PY
 
-      - name: Upload temporary source inspection artifact
+      - name: Run the existing WordExtractor and topic parser for Week Six only
+        working-directory: backend
+        env:
+          SS1_CATERING_SOURCE_FILE: ${{ runner.temp }}/catering-craft-week-six-source.doc
+          SS1_CATERING_IDENTITY_OUTPUT: ${{ runner.temp }}/catering-craft-week-six-identity.json
+        run: node --import tsx ../scripts/ss1/inspect_catering_week6.mts
+
+      - name: Upload exact parser identity (no source body)
         uses: actions/upload-artifact@v4
         with:
-          name: ss1-source-inspection
-          path: ${{ runner.temp }}/ss1-source-inspection/
+          name: catering-craft-week-six-identity
+          path: ${{ runner.temp }}/catering-craft-week-six-identity.json
           retention-days: 1
           if-no-files-found: error
