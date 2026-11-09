@@ -131,8 +131,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 108,
-    "BLOCKED": 12,
-    "PENDING": 34
+    "BLOCKED": 13,
+    "PENDING": 33
   },
   "items": [
     {
@@ -5621,8 +5621,8 @@
         "AG-WK-T3-W10",
         "AG-FACT-T3-W10-CATTLE-TERMS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W10: two likely source wording issues require verified decision before any delivery replacement.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed source member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a and block-1210 SHA-256 b70c0f1cbd0f4a64c2b7e8f4f19f7cdbbb4c1b0db3cce3b7e6b4d02a3a9e6a01. Cattle-mange context and Merck Veterinary Manual support delivery correction 'pig houses'→'cattle housing'. The related 'rational grazing' term at block1188 is valid, not a typo; keep it and address the Week Ten rotational-grazing assessment mismatch in a lesson supplement. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery correction can be bound yet. Added package open item AGRICULTURAL-SCIENCE-T3-W10-CATTLE-TERMS; no delivery_corrections or source changes.",
       "completion_condition": "Only corrections supported by a recorded fact decision are bound, with exact source locators, replacement text and provenance; source bytes remain unchanged."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-CORR-T3-W10-CATTLE-TERMS",
     "AG-CORR-T3-W02-WDP-LOCATORS",
     "AG-CORR-T3-W04-TBL-DIGESTION-HASH",
     "AG-CORR-T3-W05-RESPIRATION-EQUATION-LOCATORS",
