@@ -39,10 +39,10 @@
     "SOURCE_MARKER_DISPOSITION": 3,
     "VISUAL_DISPOSITION": 7,
     "SOURCE_PRESERVATION": 6,
-    "LESSON_AUTHORING": 10
+    "LESSON_AUTHORING": 11
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 66,
+    "IMPLEMENTED_TESTING_DEFERRED": 67,
     "BLOCKED": 1
   },
   "items": [
@@ -2358,6 +2358,32 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Package lesson SUP-SS1-CC-T2-W09-BAKING-ROASTING-GRILLING; body SHA-256 9143beb192b95c364c1e4e84ed34b54318478366bd5984664528a371b0374125; four answered practice items and 20-mark guide. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; safe method classification; no unsupported or unsafe source claims; approval and verification remain explicit."
+    },
+    {
+      "id": "CC-LES-T2-W10",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN lines 1301–1398",
+      "objective": "Standard and Local Measuring Equipment",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T2-W10.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T2-W10",
+        "CC-FACT-T2-MEASURING-CONVERSION-FIGURES"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T2-W10-MEASURING-EQUIPMENT; body SHA-256 d3db015a17e576f5bc12fc10459b16f5dbb65cd0f16baef712880cfc14cc3bec; answered practice and 20-mark guide. Ambiguous local measures excluded. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; only exact metric conversions and explicitly calibrated containers; no unverified local conversion taught."
     }
   ],
   "review": {
