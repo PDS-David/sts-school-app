@@ -130,9 +130,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 112,
+    "IMPLEMENTED_TESTING_DEFERRED": 113,
     "BLOCKED": 13,
-    "PENDING": 29
+    "PENDING": 28
   },
   "items": [
     {
@@ -1691,8 +1691,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by AG-WK-T1-W01 (2026-11-06): block 77 lists the three aspects, blocks 93, 122 and 129-132 ask for them, and no block among the 933 defines any of them; COV-AG-T1-W01-CROP-SCIENCE-ASPECTS is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W01-COVERAGE is open. AG-WK-T1-W01 authors no definition.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented SUP-SS1-AGRICULTURAL-SCIENCE-T1-W01-CROP-ASPECTS in the subject package; body SHA-256 e6663ff30d107e7bc92967d630e8707fbb4ed38f449dab7d132042691342281b. Supplement defines agronomy, crop pathology and entomology; explicitly teaches crop pathology as plant/crop diseases only and veterinary pathology as animal diseases. Provenance: USDA NAL NALT, APS, ESA and ACVP; original prose, no copied text/assets. Three practice questions have complete answers and marking sums P1=6, P2=4, P3=2 (total 12). COV-AG-T1-W01-CROP-SCIENCE-ASPECTS updated to IMPLEMENTED_EQUIVALENT with lesson_id and evidence. Updated Week 1 coverage open item to retain only assessment-key and original-row-ID gaps; updated fact-check open item to resolve item4 and retain items1-3,5. Lesson content approval PENDING; verification DEFERRED. No source bytes, corrections or assets changed; tests remain deferred.",
       "completion_condition": "A lesson in agricultural-science.json teaches the three definitions, labels itself a Week 1 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-AG-T1-W01-CROP-SCIENCE-ASPECTS then cites it with evidence; no source byte, correction or shared file is edited."
     },
     {
@@ -5844,7 +5844,7 @@
     }
   },
   "next_runnable": [
-    "AG-LES-T1-W01-CROP-ASPECTS",
+    "AG-LES-T1-W01-KEYED-PRACTICE",
     "AG-LES-T1-W02-TOOLS-MACHINES",
     "AG-LES-T1-W02-AGRO-INDUSTRIES",
     "AG-LES-T1-W03-EXTENSION-ROLES",
