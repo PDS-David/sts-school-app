@@ -98,7 +98,8 @@
     "AG-FACT-T1-W07-LAND-MOBILITY (2026-11-09): block 549's 'Land is mobile' contradicts its gloss that land cannot be moved. NOUN AEA 308 says land is immobile/fixed at a location; WAEC 2017 calls land geographically immobile; Cambridge distinguishes geographical immobility from occupational mobility. Recommend correcting to 'geographically immobile'; source bytes remain unchanged.",
     "AG-FACT-T1-W07-GAME-RESERVE-USE (2026-11-09): verified blocks 558/561/608. FAO/UN define agricultural land as arable land, permanent crops and permanent meadows/pastures; UN ISIC classifies nature reserves/wildlife preservation separately; Nigeria National Park Service describes parks as protected areas for wildlife/ecosystem conservation. Thus game reserve is the likely exception (A), while pasture, horticulture and arable crops are agricultural uses. Source's wildlife-conservation grouping and normative stem need clarification; recommend retain with rewording/reclassification, no key decision presumed.",
     "AG-FACT-T1-W07-LABOUR-FACTOR (2026-11-09): verified blocks 579/581/585/609. FAO AGRIS-indexed Lagos study identifies labour availability as a determinant of urban agricultural site selection; FAO farming-systems text says land farmed can depend on household labour force and that labour may constrain expansion in West Africa. Labour influences agricultural land use even though the source list omits it. Q5 has no valid factual 'not influenced' option; rewrite as a source-list recall item if Labour is intended. No key/teacher decision presumed.",
-    "AG-FACT-T1-W08-PROMINENT-TENURE (2026-11-09): source blocks 626/628/701/710 verified. NBS GHS-Panel Wave4 (2018/19) shows family inheritance as the most common plot-acquisition mode (62.7% male-managed, 63.4% female-managed); Wave5 (2023/24) confirms (64.9%, 59.7%). Land Use Act 1978 distinguishes statutory/customary rights of occupancy and regulates devolution on death by customary law. Inheritance is a mode of acquisition, not a standalone statutory tenure system. Recommend rewording to distinguish acquisition mode from legal framework; answer A only for the acquisition-method MCQ."
+    "AG-FACT-T1-W08-PROMINENT-TENURE (2026-11-09): source blocks 626/628/701/710 verified. NBS GHS-Panel Wave4 (2018/19) shows family inheritance as the most common plot-acquisition mode (62.7% male-managed, 63.4% female-managed); Wave5 (2023/24) confirms (64.9%, 59.7%). Land Use Act 1978 distinguishes statutory/customary rights of occupancy and regulates devolution on death by customary law. Inheritance is a mode of acquisition, not a standalone statutory tenure system. Recommend rewording to distinguish acquisition mode from legal framework; answer A only for the acquisition-method MCQ.",
+    "AG-FACT-T1-W08-LAND-USE-ACT (2026-11-09): verified source blocks 195/583 against the 1978 Land Use Decree/Act and Nigerian Supreme Court decisions. Act vests radical title in State Governor but grants statutory/customary rights of occupancy to persons; landholding rights continue subject to consent/approval for alienation and customary devolution on death. 'Prevents individuals from owning land' is overbroad; updated package blocker with precise correction requirement; source unchanged."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -113,8 +114,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 83,
-    "PENDING": 69,
+    "IMPLEMENTED_TESTING_DEFERRED": 84,
+    "PENDING": 68,
     "BLOCKED": 2
   },
   "items": [
@@ -4015,8 +4016,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W08"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W08: source's Land Use Act references are brief and may be legally oversimplified.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from synchronized master 8114b2c3ab30a56e0357184aeb4376d7f6dceb9a. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact First Term DOCX member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. Inspected Week 3 block 195 ('Reviewing and enforcing the land use act of 1978') and Week 7 block 583 ('Government laws on land use of decree 1978 prevent individuals from owning land'). The official Gazette text (Decree No. 6 of 1978, now the Land Use Act) provides: s.1 vests land in each State in the Governor to hold in trust; s.2 divides management between Governor (urban) and local government (other land); s.5 authorises statutory rights of occupancy to any person; s.6 authorises customary rights of occupancy to any person/organisation for agricultural, residential and grazing purposes; ss.21–22 regulate assignment, mortgage, transfer of possession and sublease by approval/consent; s.24 provides for devolution of rights on death under customary law; ss.34/36 preserve pre-existing rights as deemed occupancy rights. Supreme Court of Nigeria in Ogunleye v Oni [1990] NGSC 40 recognised that pre-Act holders/occupiers under customary tenure continue to hold and enjoy rights as if customary rights of occupancy had been granted; Abioye v Yakubu [1991] NGSC 2 addressed whether the Act abolished customary land rights and recognised the continued relevance of customary interests subject to the Act. Legal conclusion: the Act removes radical/absolute freehold title from private persons and vests it in the State Governor as trustee, but does not prevent individuals, families or communities from holding statutory or customary rights of occupancy. The source's blanket wording is misleading; replace it with a precise distinction between absolute title and rights of occupancy. Updated the existing package open item detail/required_action to record the statutory finding and correction requirement; it remains blocking pending approved correction and the missing Week 8 law lesson. No source text was changed. No importer/tests run; testing remains deferred.",
       "completion_condition": "A statute-backed note verifies the legal claim and provides a precise correction/recommendation or records an unresolved issue."
     },
     {
@@ -5827,7 +5828,6 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T1-W08-LAND-USE-ACT",
     "AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION",
     "AG-FACT-T2-W02-03-GREEN-MANURE-ITEM",
     "AG-FACT-T2-W04-05-MULCHING-MCQ",
