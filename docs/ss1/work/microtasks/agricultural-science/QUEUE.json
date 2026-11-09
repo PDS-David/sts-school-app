@@ -86,7 +86,8 @@
     "AG-VIS-T3-W07-REPRODUCTIVE-TRACT (2026-11-09): block 804 contains a photographed fertile-egg page (image19) plus a female poultry reproductive-tract diagram (image20); both inspected and hashes verified. Useful labels/content recorded, but no licence/credit; reuse blocked pending rights or separately sourced rights-cleared substitutes.",
     "AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS (2026-11-09): block 819 is one combined male/female poultry reproductive-and-excretory diagram (image21, 350×373); label/content and Week Four mammalian-figure distinction recorded. No rights evidence; reuse/derivative blocked pending permission or separately sourced rights-cleared replacement.",
     "AG-VIS-T3-W07-TBL-HORMONES (2026-11-09): zero-based block 828 is a native 8×4 Word table, legible and intact on source page 28; no merged cells or embedded media. Each of seven hormone rows retains its sex/site/functions mapping and multiple function paragraphs. The recorded table text digest dc4ce1cf… was not reproduced by direct w:t concatenation (computed 23d71c76…); archive/member hashes match and the discrepancy is documented in the task note. No reuse licence/permission; verbatim learner delivery blocked. Existing hormone factual-accuracy blocker remains.",
-    "AG-VIS-T3-W09-PIG-ANATOMY (2026-11-09): zero-based block 1006 is one pig side-profile body-parts diagram (image22, 393×248) on source page 33 between pig breeds and characteristics. All 28 visible labels and male-specific sheath marker recorded; image is small/soft at native resolution and embedded description is only a local path. No rights evidence; no copying/derivative; reuse blocked pending permission or rights-cleared higher-resolution replacement."
+    "AG-VIS-T3-W09-PIG-ANATOMY (2026-11-09): zero-based block 1006 is one pig side-profile body-parts diagram (image22, 393×248) on source page 33 between pig breeds and characteristics. All 28 visible labels and male-specific sheath marker recorded; image is small/soft at native resolution and embedded description is only a local path. No rights evidence; no copying/derivative; reuse blocked pending permission or rights-cleared higher-resolution replacement.",
+    "AG-VIS-T3-W10-CATTLE-ANATOMY (2026-11-09): zero-based block 1155 is one cow side-profile external-anatomy diagram (image23, 408×256) on source page 38. All 26 visible labels recorded; udder/teat make it a female-cow view; 'Mammery Veins' spelling retained as source. Original is low-resolution and embedded description is only a local path. No rights evidence; reuse/derivative blocked pending permission or rights-cleared higher-resolution replacement."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -101,8 +102,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 71,
-    "PENDING": 81,
+    "IMPLEMENTED_TESTING_DEFERRED": 72,
+    "PENDING": 80,
     "BLOCKED": 2
   },
   "items": [
@@ -3070,8 +3071,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from branch synchronized with master a8265c474a0e455ada7f58cbd0828bb423a5fd70. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Inspected word/document.xml zero-based direct-body block 1155: DrawingML relationship rId35 -> word/media/image23.jpeg; image SHA-256 f5cb01d75a53b0103bff75364c5e11fc839fb532bd6d93e8126f4a5395ef735d, 26,565 bytes, 408x256 pixels. One cow side-profile diagram appears on source page 38 after the cattle-management terms and before the evaluation/characteristics material. It includes 26 visible labels: Tail Setting, Hook Bone, Back, Withers, Neck, Horn, Forehead, Face, Nostril, Muzzle, Jaw, Throat, Shoulder, Brisket, Crops, Heart Girth, Loin, Thurl, Pin Bones, Tail, Rear Flank, Rear Udder, Mammery Veins, Fore Udder, Teat and Chest Floor. Udder/teat labels make this a female-cow view; it is not a male/female comparative chart. The diagram is legible on the rendered source page but the 408x256 original is low-resolution; head labels are close together and the leader lines are crowded. The label is printed 'Mammery Veins' (not silently corrected); a rights-cleared replacement should verify/correct this likely spelling error. DrawingML description is only a local Windows path ending 'cowanat.jpg', not meaningful alt text or attribution. JPEG contains JFIF technical metadata only; no EXIF rights metadata. No author/publisher credit, copyright notice or reuse licence is visible; DOCX creator metadata does not establish permission. No original media was copied, cropped, traced or redrawn. Reuse and derivative creation remain blocked pending permission; if unavailable, source a separately rights-cleared, higher-resolution cow external-anatomy diagram preserving all 26 labels and clear leader lines, with meaningful alt text. No importer, learner rendering, app/device display or tests run; testing remains deferred.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5815,7 +5816,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W10-CATTLE-ANATOMY",
     "AG-VIS-T3-W10-MATH-OBJECT",
     "AG-FACT-T1-W02-EXPORT-ITEM",
     "AG-FACT-T1-W03-CREDIT-OPTIONS",
