@@ -180,3 +180,12 @@ recorded in the PR; WORKER_START.json does not embed its own commit hash.
 
 Full synthetic JSON example: `scripts/ss1/fixtures/synthetic-package.json`. It is
 PENDING/DRAFT and deliberately cannot produce an executable curriculum plan.
+
+
+## Version 2 — externally published scheme sources (additive)
+
+Schema version `ss1-subject-v2` is an additive, strict extension of v1. Existing v1 packages remain valid and retain the exact archive-manifest contract. A v2 package may add `external_sources[]` for a published curriculum scheme that is not a member of the original archive. This does **not** add a fictitious row to `SOURCE_ASSIGNMENTS.csv` or `sourceRegistry.json`, and external sources are never staged or parsed as original Word documents.
+
+Each external scheme source requires a stable `SS1-EXT-...` ID, SHA-256 of the exact UTF-8 `content` field, class, term, canonical subject, title, public URL, evidence locator/explanation, rights note and attribution. The compiler verifies the content hash and scope. Coverage may point to either a manifest-backed archive source or a v2 external scheme source. External scheme coverage must be `IMPLEMENTED_EQUIVALENT`, must include the exact objective text in the hash-bound external source record, and must point to a project-authored lesson supplement. It cannot claim `SUPPORTED` original source rows, and cannot create delivery-correction bindings. This keeps external scheme alignment auditable without confusing it with the original archive.
+
+The first implementation is the SS1 First Term Catering and Craft Practice scheme reproduced from the Lagos State Ministry of Education Unified Scheme of Work at https://syllabus.ng/ss1-scheme-of-work/catering-and-craft/. Its external source ID and content digest are stored in the Catering Craft v2 package. The original 61-member archive and 61-row assignment manifest remain unchanged.
