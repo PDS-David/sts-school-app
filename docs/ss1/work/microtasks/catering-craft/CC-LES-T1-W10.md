@@ -1,11 +1,7 @@
-# CC-LES-T1-W10 — external-source project-authored supplement
+# CC-LES-T1-W10 — Sanitation theory
 
-Package lesson: SUP-SS1-CC-T1-W10-DEMONSTRATION
-Body SHA-256: aa23fbbd8cf83654b3dc767ba5e3d99229b31e35067d93826990e28f2dda6b93
-Term: First Term; class SS 1; subject Catering Craft.
+Package lesson: SUP-SS1-CC-T1-W10-SANITATION
+Body SHA-256: 7129b921021c3d70d64d92d6957a84e9c347dfdb911afeafbeba7a22aa27ecce
+Source locator: Lagos State Unified Scheme reproduction, First Term Week Ten (meaning, aims and types of sanitation).
 
-Basis: public First Term scheme marker/topic sequence. No source ID or archive member is asserted; this is an independently authored supplement pending formal source registration/foundation approval.
-
-Includes a 30-mark supervised demonstration practical and 10-mark review; no practical performance is claimed.
-
-Content approval PENDING; verification DEFERRED.
+The lesson includes sanitation aims and working categories, cleaning/sanitising procedure, water, waste and pest controls. Content approval PENDING; verification DEFERRED.
