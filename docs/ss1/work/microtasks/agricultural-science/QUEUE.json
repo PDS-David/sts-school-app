@@ -112,7 +112,8 @@
     "AG-FACT-T3-W03-MECHANIZATION-DEFINITION (2026-11-09): block 289 compared with FAO 2013 Sub-Saharan Africa mechanization strategy and FAO 2006 farm-power report. Mechanization is tools, implements and powered machinery using human, animal or motor power; seed, fertilizer and insecticides are separate farm inputs, though planters/spreaders/sprayers apply them. Recommended a precise learner definition; no source correction applied.",
     "AG-FACT-T3-W03-CROP-MECHANIZATION (2026-11-09): blocks 315 and 363 checked against FAO mechanization framework and IITA ProPAS cassava planter/harvester technology. Mechanization spans many crop groups and operations; cassava is directly mechanized in planting/harvesting, so 'very few crops like maize/rice' is an overgeneralization. MCQ 363's 'best' is undefined and cassava/maize both have mechanized operations; specify crop group or operation before keying. No source/key change applied.",
     "AG-FACT-T3-W03-LABOUR-MCQ (2026-11-09): block 360 compared with source blocks 310 and 321-328 plus FAO 2006/2013 mechanization guidance. Labour displacement is a disadvantage/consequence; labour shortage/availability and cost can constrain production and influence mechanization adoption. Printed option 'Labor' is ambiguous. Recommend change D to 'labour displacement/unemployment' to make D the exception, or withdraw unchanged item; no key/source change applied.",
-    "AG-FACT-T3-W04-DIGESTIVE-ACCURACY (2026-11-09): blocks 404-416 and comparison table 431 reviewed against OpenStax, UMN College of Veterinary Medicine, Merck Vet Manual and FAO. Block 410 is wrong: trypsinogen is an inactive pancreatic zymogen activated by enteropeptidase to trypsin; trypsin digests proteins/peptides. Bile emulsifies fats but is not an enzyme; 'chyle' at block 411 should be 'chyme'. Chymosin/rennin and salivary amylase require species/age qualification. Table 431 overgeneralizes fibre/bacterial digestion and protein synthesis; horses/rabbits are hindgut fermenters and all animals synthesize body proteins. Added species-qualified corrections; no source change applied."
+    "AG-FACT-T3-W04-DIGESTIVE-ACCURACY (2026-11-09): blocks 404-416 and comparison table 431 reviewed against OpenStax, UMN College of Veterinary Medicine, Merck Vet Manual and FAO. Block 410 is wrong: trypsinogen is an inactive pancreatic zymogen activated by enteropeptidase to trypsin; trypsin digests proteins/peptides. Bile emulsifies fats but is not an enzyme; 'chyle' at block 411 should be 'chyme'. Chymosin/rennin and salivary amylase require species/age qualification. Table 431 overgeneralizes fibre/bacterial digestion and protein synthesis; horses/rabbits are hindgut fermenters and all animals synthesize body proteins. Added species-qualified corrections; no source change applied.",
+    "AG-FACT-T3-W04-REPRODUCTIVE-ACCURACY (2026-11-09): blocks 482, 485, 486 and 492 compared with UMN CVM Large Animal Anatomy, Merck Vet Manual, Oregon State Extension, comparative veterinary anatomy and genetics glossaries. Vas deferens leads from epididymis to pelvic urethra; sperm mature/store in epididymis; uterus masculinus is a Müllerian remnant, not sperm duct/storage. Cowper's/bulbourethral (male) and Bartholin's/greater vestibular (female) are homologous, distinct structures. Vagina length varies by species (cow 25–30cm; ewe 10–14cm; sow 10–15cm; mare 20–35cm). 'Sex-inhibited characters' is not standard; use secondary sex characteristics or sex-limited/sex-influenced depending context. No source correction applied."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -127,9 +128,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 97,
+    "IMPLEMENTED_TESTING_DEFERRED": 98,
     "BLOCKED": 2,
-    "PENDING": 55
+    "PENDING": 54
   },
   "items": [
     {
@@ -5024,8 +5025,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W04: male/female reproductive anatomy and gland terminology at 482-492 need specialist verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a; inspected blocks 482, 485, 486 and 492 and recomputed hashes. Veterinary references confirm sperm mature/store in epididymis and vas deferens leads to pelvic urethra; uterus masculinus is a remnant of paramesonephric ducts. Cowper's/bulbourethral glands are male and Bartholin's/greater vestibular glands female homologues, not synonyms. Vagina length is species-specific (cow 25–30cm, ewe 10–14cm, sow 10–15cm, mare 20–35cm). 'Sex-inhibited characters' is not a standard current genetics category; recommend secondary sex characteristics or sex-limited/sex-influenced as context requires. No source/delivery correction applied.",
       "completion_condition": "A sourced note verifies each named anatomical relationship and proposes species-appropriate wording."
     },
     {
@@ -5871,7 +5872,6 @@
     "AG-CORR-T3-W02-WATER-POWER",
     "AG-CORR-T3-W02-POWER-TEXT",
     "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS",
-    "AG-FACT-T3-W04-REPRODUCTIVE-ACCURACY",
     "AG-LES-T3-W05-RESPIRATION-NERVOUS-GAPS",
     "AG-FACT-T3-W05-RESPIRATION-ACCURACY",
     "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION",
