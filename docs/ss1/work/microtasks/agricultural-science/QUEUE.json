@@ -130,9 +130,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 111,
+    "IMPLEMENTED_TESTING_DEFERRED": 112,
     "BLOCKED": 13,
-    "PENDING": 30
+    "PENDING": 29
   },
   "items": [
     {
@@ -5826,8 +5826,8 @@
         "AG-SRC-T3",
         "AG-VIS-T3-W06-TBL-GESTATION"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-VIS-T3-W06-TBL-GESTATION: recorded table hash does not match direct concatenated cell text; recomputed value is 7b1f4bfc31fe563d88fe519302d11e61eb59129a4ad39d3f8dcde1c48207ac0c.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Reverified archive/member hashes and native Word table at direct-body block 724. Re-extracted 6 rows × 3 columns (18 cells), 148 concatenated Unicode characters. Canonical method: iterate w:tr then w:tc in document order; concatenate each cell's w:t text across its paragraphs; concatenate all 18 cell strings with no separators or normalization; UTF-8 encode; SHA-256. Recomputed hash 7b1f4bfc31fe563d88fe519302d11e61eb59129a4ad39d3f8dcde1c48207ac0c, replacing non-reproducible 2a4920ab... Verified Horse/Cattle, Mare/Cow, 336 days/283 days and Rabbit/Chicken, Doe/Hen, 31days/21 days are paired separate paragraphs within cells in single rows; no table content, row/column structure or paragraph boundaries changed. Updated only AG-INV-T3.md table hash/method and paragraph-pairing note. No package or source changes. Testing remains deferred.",
       "completion_condition": "Independently reproduce the canonical table hash from the verified source DOCX, correct AG-INV-T3.md with exact method and hash, and confirm all six rows and paired-cell paragraph boundaries remain unchanged."
     }
   ],
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-CORR-T3-W06-TBL-GESTATION-HASH",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
     "AG-LES-T1-W02-AGRO-INDUSTRIES",
