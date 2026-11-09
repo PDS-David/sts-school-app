@@ -105,7 +105,8 @@
     "AG-TEST-PACKAGE (2026-11-09): authored tests/ss1/agricultural-science.package.test.mts using the French package test as the pattern. The test parses the strict package schema, compares all three registered term sources one-to-one against the worker-C SOURCE_ASSIGNMENTS.csv rows (including exact SHA-256/member/term), checks every current rule's registered source/hash and pending source-alias owner blockers, includes lesson hash/practice/approval/verification guards for lessons as they are added, and probes applyRules rejection of wrong source hashes, missing anchors and ambiguous anchors. The package currently has 10 rules, no lessons, no corrections and no assets; lesson guards are therefore currently vacuous. Test file written but NOT RUN, as required by owner; full compiler/parser, asset/correction and delivery integration checks remain deferred.",
     "AG-FACT-T2-W04-05-MULCHING-MCQ (2026-11-09): source block 328 options A/B/C/D checked against blocks 197-203 and IITA yam guidance plus Nigerian yam-mulch field studies. A (temperature reduction) and B (moisture conservation) supported; C is a real but material/pest-specific benefit (dry grass protecting exposed tubers from rodents; selected botanicals reducing yam-beetle damage); D (prevent yam rot) is not a general mulching benefit. Likely key D only after C is narrowed to dry-grass protection against rodents; withdraw unchanged item if it cannot be edited. No answer key or source changed.",
     "AG-FACT-T2-W06-POLYGASTRIC-ITEM (2026-11-09): block 408/409 checked against University of Alaska Fairbanks Extension and Merck Veterinary Manual/University of Illinois Vet Med. Cattle, goats, sheep are ruminants with four-compartment stomachs; rabbit is a monogastric hindgut fermenter. Unique key C rabbit; retain, optionally replace 'polygastric' with 'ruminant with a four-compartment stomach'. The classification is not taught in this Second Term source (block 370 only lists primary consumers), so note separate weekly teaching-alignment concern; no source/key change.",
-    "AG-FACT-T2-W07-ROCK-CHARACTERISTICS (2026-11-09): characteristic blocks 443-448, 461-465 and 481-485 checked against USGS/NPS/BGS and introductory geology sources. Clear errors: sedimentary rocks are not always non-crystalline (462); metamorphic rocks are not non-crystalline (483). Igneous rocks can form layered lava flows/layered intrusions (445); sedimentary rocks often but not always show bedding (461), may contain fossils (463), and can be erosion-resistant (464). Metamorphic foliation differs from sedimentary strata (481); fossils may rarely survive low-grade metamorphism (485). Other claims require qualified, material-dependent wording. Recommended delivery-only corrections; no source edits."
+    "AG-FACT-T2-W07-ROCK-CHARACTERISTICS (2026-11-09): characteristic blocks 443-448, 461-465 and 481-485 checked against USGS/NPS/BGS and introductory geology sources. Clear errors: sedimentary rocks are not always non-crystalline (462); metamorphic rocks are not non-crystalline (483). Igneous rocks can form layered lava flows/layered intrusions (445); sedimentary rocks often but not always show bedding (461), may contain fossils (463), and can be erosion-resistant (464). Metamorphic foliation differs from sedimentary strata (481); fossils may rarely survive low-grade metamorphism (485). Other claims require qualified, material-dependent wording. Recommended delivery-only corrections; no source edits.",
+    "AG-FACT-T2-W07-MICA-MCQ (2026-11-09): MCQ 505–506 compared with source examples 457–459 and USGS/BGS/ODNR classification. Mica is a mineral group, not a rock; sandstone and limestone are sedimentary rocks; source block 459 uses dolomite as a sedimentary rock example. Intended key A mica. Since dolomite is also a mineral name, recommend change option D to 'dolostone (dolomite rock)' and add a brief mineral-vs-rock note; no source or key changed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -120,9 +121,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 90,
+    "IMPLEMENTED_TESTING_DEFERRED": 91,
     "BLOCKED": 2,
-    "PENDING": 62
+    "PENDING": 61
   },
   "items": [
     {
@@ -4484,8 +4485,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W07: mica appears in MCQ 505 but is not classified in the lesson.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Second Term DOCX member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042; inspected blocks 457-459 and 505-506 and recomputed hashes. USGS classifies mica as a mineral group, not a rock; sandstone and limestone are sedimentary rocks; the source itself lists dolomite as a chemical sedimentary rock. BGS/ODNR distinguish dolomite mineral from dolostone/dolomite rock, so D is ambiguous outside source convention. Intended key A mica; recommend rename D to dolostone (dolomite rock) and add a short mineral-versus-rock teaching note. No source/key change applied.",
       "completion_condition": "A sourced note verifies mica's classification and recommends retention or correction."
     },
     {
@@ -5856,7 +5857,6 @@
     "AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS",
     "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
     "AG-CORR-T2-W07-PEAT-TYPO",
-    "AG-FACT-T2-W07-MICA-MCQ",
     "AG-CORR-T2-W08-QUESTION-WORDING",
     "AG-CORR-T2-W09-SOIL-TERMS",
     "AG-LES-T3-W01-TOOL-REFERENCE",
