@@ -1,21 +1,20 @@
-# CC-CORR-T2-W06-FRYING-CLASSIFICATION — correction prepared, binding blocked
+# CC-CORR-T2-W06-FRYING-CLASSIFICATION — correction prepared, exact binding still blocked
 
 ## Known source and issue
 - Registered source ID: SS1-SRC-f433169ca25c.
 - Original source member SHA-256: fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59.
-- Source locator: CC-IDX-T2-W06.md, getBody lines 845–927; the source observation is at line 900.
-- Source issue: the original Week Six text places frying under “Moist-heat method”.
-- Correct replacement lesson: SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES.
-- Correct teaching: frying uses hot fat/oil; it is not moist-heat cooking.
+- Source locator: CC-IDX-T2-W06.md, getBody lines 845–927; source observation at line 900.
+- Exact issue: original Week Six text places frying under the moist-heat heading.
+- Correct replacement: SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES, which teaches frying as a hot-fat method.
 
-## Why no delivery correction record is currently present
-The repository contract requires the exact importer-parsed body and the deterministic original lesson identity derived from it. The index note records the exact week-range hash, but the importer trims parsed blocks. The importer was not run, and the exact parsed body hash/lesson ID has not been confirmed. A week-range hash must not be substituted for the importer-generated parsed-body hash without proof.
+## Owner authorisation and execution result
+The owner authorised the narrowly scoped source-importer run on 2026-11-09. The original archive exists in the repository at `docs/ss1/sources/SSS1-original.zip` (35,828,550 bytes; SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e). The connected GitHub file action reports no bytes for this binary ZIP; the execution container cannot resolve github.com, and the archive is not present in the connected Library. The importer therefore has not been run in this session. No parsed body, body hash or original lesson ID is fabricated.
 
-## Resolution status
-- Factual research and corrected replacement lesson: implemented.
-- Original source file: preserved unchanged.
-- `delivery_corrections[]` binding: BLOCKED pending owner-authorised importer/source parsing.
-- Tests/importer/database/device verification: remain deferred; no run is claimed.
+## Status
+- Factual finding and replacement lesson: implemented.
+- Owner approval for the replacement lesson: recorded.
+- Exact delivery-correction binding: BLOCKED pending source bytes and the parser's exact output.
+- Tests, full typechecks, database/device verification and deployment: not run; remain deferred.
 
 ## Required next step
-After owner authorises the deferred importer/source parse, capture the exact parsed Week Six body, compute the original lesson ID using the repository's `originalLessonId(source_id, body)` function, and add the delivery correction pointing to SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES. Do not invent or infer the identity.
+Make the exact archive bytes (or exact source .doc member) available to the execution environment. Run only the existing source extraction/parser for SS1-SRC-f433169ca25c; capture the Week Six parsed body including its WEEK heading and parser trimming; compute `originalLessonId(source_id, body)`; then add the delivery correction with the exact `source_lesson_id` and `body_sha256` pointing to SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES. Do not substitute the week-range hash.
