@@ -41,11 +41,12 @@
     "SOURCE_PRESERVATION": 6,
     "LESSON_AUTHORING": 20,
     "SUPPLEMENTAL_ASSESSMENT": 8,
-    "SUPPLEMENTAL_CURRICULUM": 10
+    "SUPPLEMENTAL_CURRICULUM": 10,
+    "FACT_CORRECTION": 1
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 94,
-    "BLOCKED": 1
+    "BLOCKED": 2
   },
   "items": [
     {
@@ -2984,6 +2985,30 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Project-authored supplement SUP-SS1-CC-T1-W13-EXAMINATION; body SHA-256 6b15b628fd13257ea9a87dcdb9a43dfa7221c7cf826c0afc97101c06ef9711cc; aligned to public Lagos First Term scheme; no registered source ID asserted.",
       "completion_condition": "Provide independently authored First Term content with answered practice and marking guide; preserve formal source-registration/foundation approval as a separate gate."
+    },
+    {
+      "id": "CC-CORR-T2-W06-FRYING",
+      "kind": "FACT_CORRECTION",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "Week Six source body lines 845–927; frying classification at line 900",
+      "objective": "Bind corrected frying classification to exact importer-parsed source lesson identity",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/sources/SSS1-original.zip",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "backend/src/db/ss1/ingestTopics.ts"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-CORR-T2-W06-FRYING-CLASSIFICATION.md"
+      ],
+      "depends_on": [],
+      "status": "BLOCKED",
+      "implementation_reference": "Replacement lesson and factual evidence exist. Exact parser-trimmed body hash/original lesson ID not established; do not substitute the index range hash.",
+      "completion_condition": "After owner authorises importer/source parsing, capture exact parsed body, derive originalLessonId(source_id, body), and add the delivery correction pointing to SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES."
     }
   ],
   "review": {
