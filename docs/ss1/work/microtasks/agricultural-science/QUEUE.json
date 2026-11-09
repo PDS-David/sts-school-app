@@ -85,7 +85,8 @@
     "AG-VIS-T3-W07-BIRD-EMBRYO-ORGANS (2026-11-08): block 803 holds image17 bird embryo (visible iStock watermark) and image18 poultry internal organs. The embryo image is contextual but not used by the source egg-formation prose; the internal-organs figure includes ovary/oviduct but is not a focused reproductive diagram. Neither has reuse rights evidence; delivery reuse is blocked pending clearance or a rights-cleared replacement.",
     "AG-VIS-T3-W07-REPRODUCTIVE-TRACT (2026-11-09): block 804 contains a photographed fertile-egg page (image19) plus a female poultry reproductive-tract diagram (image20); both inspected and hashes verified. Useful labels/content recorded, but no licence/credit; reuse blocked pending rights or separately sourced rights-cleared substitutes.",
     "AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS (2026-11-09): block 819 is one combined male/female poultry reproductive-and-excretory diagram (image21, 350×373); label/content and Week Four mammalian-figure distinction recorded. No rights evidence; reuse/derivative blocked pending permission or separately sourced rights-cleared replacement.",
-    "AG-VIS-T3-W07-TBL-HORMONES (2026-11-09): zero-based block 828 is a native 8×4 Word table, legible and intact on source page 28; no merged cells or embedded media. Each of seven hormone rows retains its sex/site/functions mapping and multiple function paragraphs. The recorded table text digest dc4ce1cf… was not reproduced by direct w:t concatenation (computed 23d71c76…); archive/member hashes match and the discrepancy is documented in the task note. No reuse licence/permission; verbatim learner delivery blocked. Existing hormone factual-accuracy blocker remains."
+    "AG-VIS-T3-W07-TBL-HORMONES (2026-11-09): zero-based block 828 is a native 8×4 Word table, legible and intact on source page 28; no merged cells or embedded media. Each of seven hormone rows retains its sex/site/functions mapping and multiple function paragraphs. The recorded table text digest dc4ce1cf… was not reproduced by direct w:t concatenation (computed 23d71c76…); archive/member hashes match and the discrepancy is documented in the task note. No reuse licence/permission; verbatim learner delivery blocked. Existing hormone factual-accuracy blocker remains.",
+    "AG-VIS-T3-W09-PIG-ANATOMY (2026-11-09): zero-based block 1006 is one pig side-profile body-parts diagram (image22, 393×248) on source page 33 between pig breeds and characteristics. All 28 visible labels and male-specific sheath marker recorded; image is small/soft at native resolution and embedded description is only a local path. No rights evidence; no copying/derivative; reuse blocked pending permission or rights-cleared higher-resolution replacement."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -100,8 +101,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 70,
-    "PENDING": 82,
+    "IMPLEMENTED_TESTING_DEFERRED": 71,
+    "PENDING": 81,
     "BLOCKED": 2
   },
   "items": [
@@ -3031,8 +3032,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from synchronized master a8265c474a0e455ada7f58cbd0828bb423a5fd70 (branch also carries the prior AG-VIS-T3-W07-TBL-HORMONES commit). Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Inspected word/document.xml zero-based direct-body block 1006: DrawingML relationship rId34 -> word/media/image22.jpeg; image SHA-256 ce90a5c50968040e25a8bd9915a86bb72f56fedc9f96715c901a6787f515f649, 19,478 bytes, 393x248 pixels. A single pig side-profile diagram appears on source page 33 between the pig-breeds list and 'CHARACTERISTICS OF PIGS'; no caption/title is provided. All 28 visible labels were transcribed: crops, shoulder, back, loin, rump, tail, ham, side, neck, poll, ear, snout, nostrils, jowls, cheek, foreflank, knee, foreleg, fetlock, pastern, coffin, sheath (male), belly, rear flank, stifle, hock, cannon and dewclaw. The image is legible when enlarged but small/soft at its native 393x248 resolution; several fine leader lines and labels are crowded. DrawingML description is only a local Windows path/filename, not meaningful alt text or attribution. JPEG contains JFIF technical metadata only, no EXIF; no author/publisher credit, copyright notice or reuse licence is visible. Source document metadata creator is AKANDE ANTHONY, with no rights statement. The male-specific 'sheath (♂)' label and the full label terminology are recorded as source claims, not independently validated anatomy. No original media was copied, cropped, traced or redrawn. Reuse and derivative creation remain blocked pending permission; if unavailable, use a separately sourced rights-cleared, higher-resolution pig external-anatomy diagram with all 28 labels, legible leader lines and meaningful alt text. No importer, learner rendering, app/device display or tests run; testing remains deferred.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5814,7 +5815,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W09-PIG-ANATOMY",
     "AG-VIS-T3-W10-CATTLE-ANATOMY",
     "AG-VIS-T3-W10-MATH-OBJECT",
     "AG-FACT-T1-W02-EXPORT-ITEM",
