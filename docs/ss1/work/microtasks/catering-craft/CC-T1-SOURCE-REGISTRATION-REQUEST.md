@@ -50,3 +50,12 @@ Do not edit the shared manifest, invent a source ID, or mark First Term source c
 - Owner/foundation approval: required.
 - Lesson content approval: pending.
 - Tests/importer/database/device verification: deferred by owner.
+
+
+## Resolution — foundation v2 implemented
+
+Owner authorised the First Term foundation change and confirmed both source aliases and all 38 authored records on 2026-11-09. Foundation schema v2 now permits a separate, hash-bound external scheme record for a published scheme that is not an archive member. The First Term Lagos State scheme is registered in the Catering Craft package as `SS1-EXT-CC-T1-LAGOS-UNIFIED-SCHEME-2026`, SHA-256 `57f54695976579ed57624321efb65d156f4fac193141d85875c5e26357e014a0`, URL https://syllabus.ng/ss1-scheme-of-work/catering-and-craft/. All thirteen calendar weeks have authored equivalent coverage entries with exact week locators and objectives drawn from the hash-bound record. The original 61-member archive and `SOURCE_ASSIGNMENTS.csv` remain unchanged; no archive member or source hash was invented.
+
+The owner approved all 38 authored records. Their content approval references are recorded; provenance is marked permitted only for factual/topic reference use where no protected text, table, figure or image is reproduced. Verification remains deferred. The separate Second Term frying correction still needs the exact parser-trimmed original source identity. That narrow importer run is authorised but could not be executed because the binary archive bytes are not available to the current execution environment.
+
+**Status:** First Term source registration/foundation request RESOLVED by v2 external-source support. Original archive source registration remains exactly as in the manifest.

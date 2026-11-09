@@ -30,7 +30,7 @@
     "CC-LES-T3-W10-DEMONSTRATION authored a clearly labelled project-authored equivalent lesson for the source's Week Ten topic-only marker. It includes objectives, equipment, safe table-laying procedure, practical activity, review questions and a 20-mark rubric. Content approval and verification remain pending; no observed classroom practical is claimed."
   ],
   "counts": {
-    "SOURCE_REGISTRATION": 2,
+    "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 2,
     "TEST": 1,
     "FACTUAL_DEPENDENCY": 14,
@@ -45,8 +45,7 @@
     "FACT_CORRECTION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 94,
-    "BLOCKED": 2
+    "IMPLEMENTED_TESTING_DEFERRED": 97
   },
   "items": [
     {
@@ -235,9 +234,9 @@
         "CC-INV-T3",
         "CC-TEST-PACKAGE"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Package contains 38 authored lesson/assessment records: 14 First Term entries aligned to the 13-week Lagos scheme (10 teaching weeks plus mid-term/revision/exam and practical supplement), 12 Second Term and 12 Third Term entries. Twenty registered Second/Third Term teaching-week coverage entries are IMPLEMENTED_EQUIVALENT; First Term remains unregistered pending foundation approval. Owner content approval PENDING.",
-      "completion_condition": "Owner reviews and explicitly approves or rejects authored content and alias mappings; First Term source registration/foundation approval and testing/verification remain separate gates."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Owner explicitly approved all 38 authored lesson/assessment records in chat on 2026-11-09. Every lesson state now records APPROVED with that owner approval reference; verification remains DEFERRED.",
+      "completion_condition": "Owner approval of all 38 authored records is recorded in each lesson state. Keep verification deferred until evidence from actual teaching/practical/examination activity exists."
     },
     {
       "id": "CC-IDX-T2-W01",
@@ -3006,21 +3005,56 @@
         "docs/ss1/work/microtasks/catering-craft/CC-CORR-T2-W06-FRYING-CLASSIFICATION.md"
       ],
       "depends_on": [],
-      "status": "BLOCKED",
-      "implementation_reference": "Replacement lesson and factual evidence exist. Exact parser-trimmed body hash/original lesson ID not established; do not substitute the index range hash.",
-      "completion_condition": "After owner authorises importer/source parsing, capture exact parsed body, derive originalLessonId(source_id, body), and add the delivery correction pointing to SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Exact parser identity verified by authorised GitHub Actions run 42547557010, artifact 13643689148. Archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and member SHA-256 fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59 passed. word-extractor 1.0.4 getBody() + repository parseTopics produced WEEK SIX / COOKING OF FOODS, 4,453 characters, body SHA-256 fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de; source lesson ID SS1-SRC-f433169ca25c:BODY:fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de. Delivery correction CC-CORR-T2-W06-FRYING binds it to SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES.",
+      "completion_condition": "Exact original parsed lesson ID/body hash is bound to the same-term corrected replacement lesson; original source bytes and hash remain unchanged."
+    },
+    {
+      "id": "CC-SOURCE-T1-EXTERNAL-SCHEME",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-EXT-CC-T1-LAGOS-UNIFIED-SCHEME-2026",
+      "term": "1st Term",
+      "week_or_locator": "https://syllabus.ng/ss1-scheme-of-work/catering-and-craft/, page lines 106–207",
+      "objective": "Register the 13-week First Term Catering and Craft Practice scheme as a hash-bound external scheme source without fabricating an archive member",
+      "required_files": [
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/contracts/CONTRACT.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Schema v2 and compiler now accept external scheme records with exact UTF-8 content hash, source URL, provenance and evidence. Registered SS1-EXT-CC-T1-LAGOS-UNIFIED-SCHEME-2026 (57f54695976579ed57624321efb65d156f4fac193141d85875c5e26357e014a0); 13 First Term coverage entries point to the 13 authored weekly supplements. The 61-member archive manifest and source registry remain unchanged.",
+      "completion_condition": "Schema v2 accepts the external scheme source only when its exact content SHA-256 and scope are valid; all thirteen calendar weeks map to authored equivalent lessons."
     }
   ],
   "review": {
-    "date": "2026-10-27",
-    "reviewed_master_sha": "f9e9e9e0263b6823508fd74f5049e84979164ecf",
-    "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
+    "date": "2026-11-09",
+    "reviewed_master_sha": "51a93ad98db283bb26a0981730fe870c65532ba6",
+    "scope": "Owner-approved source aliases and 38 authored lessons; implemented schema v2 external scheme registration and all 13 First Term coverage mappings. Structural checks only. Exact Week Six source parser run remains blocked by unavailable binary archive bytes; tests, full typechecks, DB/device and deployment remain deferred.",
     "source_archive": {
-      "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
+      "filename": "SSS1-original.zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-      "manifest_matches": 2,
-      "mismatches": 0,
-      "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
+      "availability": "Verified in authorised GitHub Actions run 42547557010; archive and member hashes passed, only the registered Second Term Catering Craft member was extracted to runner scratch, exact WordExtractor + repository parser identity was captured, and no source body was uploaded.",
+      "parser_run": {
+        "workflow_run_id": 42547557010,
+        "artifact_id": 13643689148,
+        "source_id": "SS1-SRC-f433169ca25c",
+        "week_label": "WEEK SIX",
+        "title": "COOKING OF FOODS",
+        "body_characters": 4453,
+        "body_sha256": "fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de",
+        "source_lesson_id": "SS1-SRC-f433169ca25c:BODY:fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de",
+        "result": "success"
+      }
     }
   },
   "next_runnable": []
