@@ -39,11 +39,10 @@
     "SOURCE_MARKER_DISPOSITION": 3,
     "VISUAL_DISPOSITION": 7,
     "SOURCE_PRESERVATION": 6,
-    "LESSON_AUTHORING": 1
+    "LESSON_AUTHORING": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 57,
-    "PENDING": 0,
+    "IMPLEMENTED_TESTING_DEFERRED": 60,
     "BLOCKED": 1
   },
   "items": [
@@ -2100,6 +2099,111 @@
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Project-authored equivalent lesson SUP-SS1-CC-T3-W10-TABLE-LAYING authored in package and CC-LES-T3-W10-DEMONSTRATION.md. Source Week Ten has only a topic heading; lesson includes objectives, equipment, safe procedure, practical activity and 20-mark rubric. Content approval and verification remain pending; no classroom demonstration claimed."
+    },
+    {
+      "id": "CC-LES-T2-W01",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE lines 26-223",
+      "objective": "Food Commodities: Meat, Poultry and Game",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T2-W01.md"
+      ],
+      "depends_on": [
+        [
+          "CC-IDX-T2-W01",
+          "CC-FACT-T2-MEAT-POULTRY-FISH-EGG-HYGIENE",
+          "CC-FACT-T2-GAME-CLASSIFICATION-STORAGE"
+        ],
+        [
+          "CC-IDX-T2-W02",
+          "CC-FACT-T2-MEAT-POULTRY-FISH-EGG-HYGIENE",
+          "CC-FACT-T2-FISH-EGG-CLASSIFICATION-FIGURES"
+        ],
+        "CC-IDX-T2-W03"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T2-W01-MEAT-POULTRY; body SHA-256 47c020abae6886ce7f226bf2439e6a25b88c58bbcb6d821d25ed400bfebde890; complete answered practice and 20-mark guide recorded in package and lesson note. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Original lesson body is preserved; equivalent teaching covers the scheme objectives; all practice has complete answers and mark breakdowns; factual uncertainties are corrected or explicitly excluded; no approval or practical observation is invented."
+    },
+    {
+      "id": "CC-LES-T2-W02",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TWO lines 226-381",
+      "objective": "Food Commodities: Eggs and Fish",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T2-W02.md"
+      ],
+      "depends_on": [
+        [
+          "CC-IDX-T2-W01",
+          "CC-FACT-T2-MEAT-POULTRY-FISH-EGG-HYGIENE",
+          "CC-FACT-T2-GAME-CLASSIFICATION-STORAGE"
+        ],
+        [
+          "CC-IDX-T2-W02",
+          "CC-FACT-T2-MEAT-POULTRY-FISH-EGG-HYGIENE",
+          "CC-FACT-T2-FISH-EGG-CLASSIFICATION-FIGURES"
+        ],
+        "CC-FACT-T2-MILK-HEAT-STORAGE"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T2-W02-EGGS-FISH; body SHA-256 e2cdaa8971699650b63e4bfe87517a67351270f7f54c8c08abdf4a4359246c42; complete answered practice and 20-mark guide recorded in package and lesson note. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Original lesson body is preserved; equivalent teaching covers the scheme objectives; all practice has complete answers and mark breakdowns; factual uncertainties are corrected or explicitly excluded; no approval or practical observation is invented."
+    },
+    {
+      "id": "CC-LES-T2-W03",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK THREE lines 384-613",
+      "objective": "Food Commodities: Milk, Vegetables and Fruits",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T2-W03.md"
+      ],
+      "depends_on": [
+        [
+          "CC-IDX-T2-W01",
+          "CC-FACT-T2-MEAT-POULTRY-FISH-EGG-HYGIENE",
+          "CC-FACT-T2-GAME-CLASSIFICATION-STORAGE"
+        ],
+        [
+          "CC-IDX-T2-W02",
+          "CC-FACT-T2-MEAT-POULTRY-FISH-EGG-HYGIENE",
+          "CC-FACT-T2-FISH-EGG-CLASSIFICATION-FIGURES"
+        ],
+        null
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T2-W03-MILK-VEGETABLES-FRUITS; body SHA-256 96fff35e6f1d4658b34c3ccf933ad023bb9c060f4ef97c02070d1352853a28ad; complete answered practice and 20-mark guide recorded in package and lesson note. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Original lesson body is preserved; equivalent teaching covers the scheme objectives; all practice has complete answers and mark breakdowns; factual uncertainties are corrected or explicitly excluded; no approval or practical observation is invented."
     }
   ],
   "review": {
@@ -2114,10 +2218,5 @@
       "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
     }
   },
-  "next_runnable": [
-    "CC-FACT-T2-MEAT-POULTRY-FISH-EGG-HYGIENE",
-    "CC-FACT-T2-GAME-CLASSIFICATION-STORAGE",
-    "CC-FACT-T2-FISH-EGG-CLASSIFICATION-FIGURES",
-    "CC-LES-T3-W10-DEMONSTRATION"
-  ]
+  "next_runnable": []
 }
