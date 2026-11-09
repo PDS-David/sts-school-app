@@ -40,11 +40,11 @@
     "VISUAL_DISPOSITION": 7,
     "SOURCE_PRESERVATION": 6,
     "LESSON_AUTHORING": 20,
-    "SUPPLEMENTAL_ASSESSMENT": 4,
-    "SUPPLEMENTAL_CURRICULUM": 12
+    "SUPPLEMENTAL_ASSESSMENT": 8,
+    "SUPPLEMENTAL_CURRICULUM": 10
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 92,
+    "IMPLEMENTED_TESTING_DEFERRED": 94,
     "BLOCKED": 1
   },
   "items": [
@@ -235,8 +235,8 @@
         "CC-TEST-PACKAGE"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "Content package now contains 36 project-authored lessons/assessment supplements across all three terms; 20 registered Second/Third Term teaching-week coverage entries are IMPLEMENTED_EQUIVALENT, First Term has 10 independently authored teaching-week supplements pending source registration, six revision/exam/practical supplements are included, and one exact delivery correction is recorded. Owner content approval remains PENDING.",
-      "completion_condition": "Owner reviews and explicitly approves or rejects the project-authored lesson content and alias mappings; First Term source registration/foundation approval and testing/verification remain separate gates."
+      "implementation_reference": "Package contains 38 authored lesson/assessment records: 14 First Term entries aligned to the 13-week Lagos scheme (10 teaching weeks plus mid-term/revision/exam and practical supplement), 12 Second Term and 12 Third Term entries. Twenty registered Second/Third Term teaching-week coverage entries are IMPLEMENTED_EQUIVALENT; First Term remains unregistered pending foundation approval. Owner content approval PENDING.",
+      "completion_condition": "Owner reviews and explicitly approves or rejects authored content and alias mappings; First Term source registration/foundation approval and testing/verification remain separate gates."
     },
     {
       "id": "CC-IDX-T2-W01",
@@ -2780,7 +2780,28 @@
       "kind": "SUPPLEMENTAL_CURRICULUM",
       "source_id": null,
       "term": "1st Term",
-      "week_or_locator": "External scheme Week Five: Culinary Terms",
+      "week_or_locator": "Week Five: functions of catering establishments and hotel rating",
+      "objective": "Functions of Catering Establishments and Hotel Rating",
+      "required_files": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored supplement SUP-SS1-CC-T1-W05-ESTABLISHMENT-FUNCTIONS-HOTEL-RATING; body SHA-256 77f295bafe78b018a644bf14902dd01e559c820b25d5ecb95c7fa04206bc6c3f; aligned to public Lagos First Term scheme; no registered source ID asserted.",
+      "completion_condition": "Provide independently authored First Term content with answered practice and marking guide; preserve formal source-registration/foundation approval as a separate gate."
+    },
+    {
+      "id": "CC-LES-T1-W06",
+      "kind": "SUPPLEMENTAL_CURRICULUM",
+      "source_id": null,
+      "term": "1st Term",
+      "week_or_locator": "Week Six: culinary terms and French menu",
       "objective": "Culinary Terms and a Simple Menu in French",
       "required_files": [
         "backend/src/db/ss1/subjects/catering-craft.json",
@@ -2789,20 +2810,40 @@
       "required_attachments": [],
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/catering-craft.json",
-        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
-        "docs/ss1/work/microtasks/catering-craft/CC-LES-T1-W05.md"
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
       ],
       "depends_on": [],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Project-authored First Term supplement SUP-SS1-CC-T1-W05-CULINARY-TERMS; body SHA-256 1b3cc2d24adfce1a1c58802bae15e5433e83677a723f476989b64d5001f7ca89; external topic sequence only; no registered source ID asserted.",
-      "completion_condition": "Provide independently authored First Term content with answered practice and marking guide; preserve missing source registration/foundation approval as an explicit blocker."
+      "implementation_reference": "Project-authored supplement SUP-SS1-CC-T1-W06-CULINARY-TERMS; body SHA-256 1b3cc2d24adfce1a1c58802bae15e5433e83677a723f476989b64d5001f7ca89; aligned to public Lagos First Term scheme; no registered source ID asserted.",
+      "completion_condition": "Provide independently authored First Term content with answered practice and marking guide; preserve formal source-registration/foundation approval as a separate gate."
     },
     {
-      "id": "CC-LES-T1-W06",
+      "id": "CC-LES-T1-W07",
+      "kind": "SUPPLEMENTAL_ASSESSMENT",
+      "source_id": null,
+      "term": "1st Term",
+      "week_or_locator": "Week Seven: mid-term test/open day/holiday",
+      "objective": "Mid-Term Test — First Term Catering Craft",
+      "required_files": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored supplement SUP-SS1-CC-T1-W07-MIDTERM-TEST; body SHA-256 3d1a054d50b14a509128fee18fa54b5d8dd889ae717bb16c55d6359710e8ad87; aligned to public Lagos First Term scheme; no registered source ID asserted.",
+      "completion_condition": "Provide independently authored First Term content with answered practice and marking guide; preserve formal source-registration/foundation approval as a separate gate."
+    },
+    {
+      "id": "CC-LES-T1-W08",
       "kind": "SUPPLEMENTAL_CURRICULUM",
       "source_id": null,
       "term": "1st Term",
-      "week_or_locator": "External scheme Week Six: Safety Precautions",
+      "week_or_locator": "Week Eight: kitchen safety",
       "objective": "Safety Precautions in Catering and Kitchen Operations",
       "required_files": [
         "backend/src/db/ss1/subjects/catering-craft.json",
@@ -2811,65 +2852,20 @@
       "required_attachments": [],
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/catering-craft.json",
-        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
-        "docs/ss1/work/microtasks/catering-craft/CC-LES-T1-W06.md"
-      ],
-      "depends_on": [],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Project-authored First Term supplement SUP-SS1-CC-T1-W06-KITCHEN-SAFETY; body SHA-256 3d65e762b20004651d0a2367a09cbccc4cedefded2635fb7190dc838e109c94d; external topic sequence only; no registered source ID asserted.",
-      "completion_condition": "Provide independently authored First Term content with answered practice and marking guide; preserve missing source registration/foundation approval as an explicit blocker."
-    },
-    {
-      "id": "CC-LES-T1-W07",
-      "kind": "SUPPLEMENTAL_CURRICULUM",
-      "source_id": null,
-      "term": "1st Term",
-      "week_or_locator": "External scheme Week Seven: First Aid and Fire Fighting Equipment",
-      "objective": "First Aid and Fire-Fighting Equipment in Catering",
-      "required_files": [
-        "backend/src/db/ss1/subjects/catering-craft.json",
         "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
       ],
-      "required_attachments": [],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/catering-craft.json",
-        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
-        "docs/ss1/work/microtasks/catering-craft/CC-LES-T1-W07.md"
-      ],
       "depends_on": [],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Project-authored First Term supplement SUP-SS1-CC-T1-W07-FIRST-AID-FIRE; body SHA-256 62d72c3d08fb91704e521fb61f1ad9fe17415958fb6e76a7c2d77e5b42892430; external topic sequence only; no registered source ID asserted.",
-      "completion_condition": "Provide independently authored First Term content with answered practice and marking guide; preserve missing source registration/foundation approval as an explicit blocker."
-    },
-    {
-      "id": "CC-LES-T1-W08",
-      "kind": "SUPPLEMENTAL_CURRICULUM",
-      "source_id": null,
-      "term": "1st Term",
-      "week_or_locator": "External scheme Week Eight: Sanitation and Hygiene",
-      "objective": "Sanitation in Catering: Cleaning, Sanitising and Waste Management",
-      "required_files": [
-        "backend/src/db/ss1/subjects/catering-craft.json",
-        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
-      ],
-      "required_attachments": [],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/catering-craft.json",
-        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
-        "docs/ss1/work/microtasks/catering-craft/CC-LES-T1-W08.md"
-      ],
-      "depends_on": [],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Project-authored First Term supplement SUP-SS1-CC-T1-W08-SANITATION; body SHA-256 fa70c7ea29de081f8b8c220e0800084f773babe541984fd1787123bdb6ff5f0a; external topic sequence only; no registered source ID asserted.",
-      "completion_condition": "Provide independently authored First Term content with answered practice and marking guide; preserve missing source registration/foundation approval as an explicit blocker."
+      "implementation_reference": "Project-authored supplement SUP-SS1-CC-T1-W08-KITCHEN-SAFETY; body SHA-256 3d65e762b20004651d0a2367a09cbccc4cedefded2635fb7190dc838e109c94d; aligned to public Lagos First Term scheme; no registered source ID asserted.",
+      "completion_condition": "Provide independently authored First Term content with answered practice and marking guide; preserve formal source-registration/foundation approval as a separate gate."
     },
     {
       "id": "CC-LES-T1-W09",
       "kind": "SUPPLEMENTAL_CURRICULUM",
       "source_id": null,
       "term": "1st Term",
-      "week_or_locator": "External scheme Week Nine: Sanitation and Hygiene continuation",
-      "objective": "Personal Hygiene and Food Hygiene in Catering",
+      "week_or_locator": "Week Nine: first aid and fire control",
+      "objective": "First Aid and Fire Control in Catering",
       "required_files": [
         "backend/src/db/ss1/subjects/catering-craft.json",
         "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
@@ -2877,21 +2873,20 @@
       "required_attachments": [],
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/catering-craft.json",
-        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
-        "docs/ss1/work/microtasks/catering-craft/CC-LES-T1-W09.md"
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
       ],
       "depends_on": [],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Project-authored First Term supplement SUP-SS1-CC-T1-W09-PERSONAL-FOOD-HYGIENE; body SHA-256 ccf3aac28c3cf60afb0c27ec025cfc4324585d81bad98c29e60bd9380cf982c6; external topic sequence only; no registered source ID asserted.",
-      "completion_condition": "Provide independently authored First Term content with answered practice and marking guide; preserve missing source registration/foundation approval as an explicit blocker."
+      "implementation_reference": "Project-authored supplement SUP-SS1-CC-T1-W09-FIRST-AID-FIRE; body SHA-256 17d0e651a4f6ffd1f6c56a85d5635f79cc7e32be2b7a8434a507ba6843bcd450; aligned to public Lagos First Term scheme; no registered source ID asserted.",
+      "completion_condition": "Provide independently authored First Term content with answered practice and marking guide; preserve formal source-registration/foundation approval as a separate gate."
     },
     {
       "id": "CC-LES-T1-W10",
       "kind": "SUPPLEMENTAL_CURRICULUM",
       "source_id": null,
       "term": "1st Term",
-      "week_or_locator": "External scheme Week Ten: Demonstration Practical",
-      "objective": "Demonstration Practical: Kitchen Hygiene and Simple Food Preparation",
+      "week_or_locator": "Week Ten: sanitation theory",
+      "objective": "Sanitation in Catering: Aims, Types, Cleaning and Waste Management",
       "required_files": [
         "backend/src/db/ss1/subjects/catering-craft.json",
         "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
@@ -2899,20 +2894,61 @@
       "required_attachments": [],
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/catering-craft.json",
-        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
-        "docs/ss1/work/microtasks/catering-craft/CC-LES-T1-W10.md"
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
       ],
       "depends_on": [],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Project-authored First Term supplement SUP-SS1-CC-T1-W10-DEMONSTRATION; body SHA-256 aa23fbbd8cf83654b3dc767ba5e3d99229b31e35067d93826990e28f2dda6b93; external topic sequence only; no registered source ID asserted.",
-      "completion_condition": "Provide project-authored practical/revision/examination materials with answers and rubrics; preserve missing source registration/foundation approval as an explicit blocker."
+      "implementation_reference": "Project-authored supplement SUP-SS1-CC-T1-W10-SANITATION; body SHA-256 e624746926c0524a8cf174105ff01261ca709018e81a01d5e96906e3d8a08274; aligned to public Lagos First Term scheme; no registered source ID asserted.",
+      "completion_condition": "Provide independently authored First Term content with answered practice and marking guide; preserve formal source-registration/foundation approval as a separate gate."
+    },
+    {
+      "id": "CC-LES-T1-W10-PRACTICAL",
+      "kind": "SUPPLEMENTAL_ASSESSMENT",
+      "source_id": null,
+      "term": "1st Term",
+      "week_or_locator": "Week Ten: sanitation practical supplement",
+      "objective": "Sanitation Demonstration Practical: Cleaning and Sanitising Food-Contact Surfaces",
+      "required_files": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored supplement SUP-SS1-CC-T1-W10-DEMONSTRATION; body SHA-256 4f7559f24f2cb38b1417bc698cc04ab3e2ba456e2ef1d852db9d9ce6b137b356; aligned to public Lagos First Term scheme; no registered source ID asserted.",
+      "completion_condition": "Provide independently authored First Term content with answered practice and marking guide; preserve formal source-registration/foundation approval as a separate gate."
     },
     {
       "id": "CC-LES-T1-W11",
       "kind": "SUPPLEMENTAL_CURRICULUM",
       "source_id": null,
       "term": "1st Term",
-      "week_or_locator": "External scheme Week Eleven: Revision",
+      "week_or_locator": "Week Eleven: hygiene",
+      "objective": "Hygiene in Catering: Personal Hygiene, Food Contamination and Food Poisoning",
+      "required_files": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored supplement SUP-SS1-CC-T1-W11-PERSONAL-FOOD-HYGIENE; body SHA-256 1775ae2c24ef872e8c9b77d36085474521b6c2275f330375b5d52d362c2288d0; aligned to public Lagos First Term scheme; no registered source ID asserted.",
+      "completion_condition": "Provide independently authored First Term content with answered practice and marking guide; preserve formal source-registration/foundation approval as a separate gate."
+    },
+    {
+      "id": "CC-LES-T1-W12",
+      "kind": "SUPPLEMENTAL_ASSESSMENT",
+      "source_id": null,
+      "term": "1st Term",
+      "week_or_locator": "Week Twelve: revision",
       "objective": "First Term Revision and Practical Review",
       "required_files": [
         "backend/src/db/ss1/subjects/catering-craft.json",
@@ -2921,20 +2957,19 @@
       "required_attachments": [],
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/catering-craft.json",
-        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
-        "docs/ss1/work/microtasks/catering-craft/CC-LES-T1-W11.md"
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
       ],
       "depends_on": [],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Project-authored First Term supplement SUP-SS1-CC-T1-W11-REVISION; body SHA-256 f7e857484b545b10a5089a4de1fc022f7eeec8e774fe0856540285670a121713; external topic sequence only; no registered source ID asserted.",
-      "completion_condition": "Provide project-authored practical/revision/examination materials with answers and rubrics; preserve missing source registration/foundation approval as an explicit blocker."
+      "implementation_reference": "Project-authored supplement SUP-SS1-CC-T1-W12-REVISION; body SHA-256 25d33dfd09cda9e3a2c5654204c0bac590def3002dff57a530d33c0473e37064; aligned to public Lagos First Term scheme; no registered source ID asserted.",
+      "completion_condition": "Provide independently authored First Term content with answered practice and marking guide; preserve formal source-registration/foundation approval as a separate gate."
     },
     {
-      "id": "CC-LES-T1-W12",
-      "kind": "SUPPLEMENTAL_CURRICULUM",
+      "id": "CC-LES-T1-W13",
+      "kind": "SUPPLEMENTAL_ASSESSMENT",
       "source_id": null,
       "term": "1st Term",
-      "week_or_locator": "External scheme Week Twelve: Examination",
+      "week_or_locator": "Week Thirteen: examination",
       "objective": "First Term Examination — Catering Craft",
       "required_files": [
         "backend/src/db/ss1/subjects/catering-craft.json",
@@ -2943,13 +2978,12 @@
       "required_attachments": [],
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/catering-craft.json",
-        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
-        "docs/ss1/work/microtasks/catering-craft/CC-LES-T1-W12.md"
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
       ],
       "depends_on": [],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Project-authored First Term supplement SUP-SS1-CC-T1-W12-EXAMINATION; body SHA-256 f483f037477fc1f80068bf7af75b6325b6596c0b378183847be2dbdcf9ddc316; external topic sequence only; no registered source ID asserted.",
-      "completion_condition": "Provide project-authored practical/revision/examination materials with answers and rubrics; preserve missing source registration/foundation approval as an explicit blocker."
+      "implementation_reference": "Project-authored supplement SUP-SS1-CC-T1-W13-EXAMINATION; body SHA-256 6b15b628fd13257ea9a87dcdb9a43dfa7221c7cf826c0afc97101c06ef9711cc; aligned to public Lagos First Term scheme; no registered source ID asserted.",
+      "completion_condition": "Provide independently authored First Term content with answered practice and marking guide; preserve formal source-registration/foundation approval as a separate gate."
     }
   ],
   "review": {
