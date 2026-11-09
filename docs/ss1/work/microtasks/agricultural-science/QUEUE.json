@@ -103,7 +103,8 @@
     "AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION (2026-11-09): verified blocks 878/922. Biennials require two growing seasons; FAO EcoCrop identifies onion/carrot as biennial, cassava/ginger as perennial (often grown annually), Capsicum annuum as annual, cotton usually grown as annual, cowpea annual; CGIAR says yams are perennial vines mainly treated as annuals in cultivation. Source's biennial list is inaccurate; Q2 pepper exception is species/context dependent and has no unique answer. Recommend correction/rewrite; no key/teacher decision presumed.",
     "AG-FACT-T2-W02-03-GREEN-MANURE-ITEM (2026-11-09): verified blocks 175/268. Missouri Extension recommends just before full flowering for maximum N; Alberta Agriculture recommends full bloom; WSU recommends late-vegetative/early-flowering; FAO guidance includes mid-flowering/grain-filling depending objective. Source 'just before flowering' and MCQ 'as soon as it flowers' are close/compatible within early-to-full bloom window, not a material contradiction. Keep answer C green manuring; harmonize timing to at/just before full bloom before seed set, with species/objective caveat.",
     "AG-TEST-PACKAGE (2026-11-09): authored tests/ss1/agricultural-science.package.test.mts using the French package test as the pattern. The test parses the strict package schema, compares all three registered term sources one-to-one against the worker-C SOURCE_ASSIGNMENTS.csv rows (including exact SHA-256/member/term), checks every current rule's registered source/hash and pending source-alias owner blockers, includes lesson hash/practice/approval/verification guards for lessons as they are added, and probes applyRules rejection of wrong source hashes, missing anchors and ambiguous anchors. The package currently has 10 rules, no lessons, no corrections and no assets; lesson guards are therefore currently vacuous. Test file written but NOT RUN, as required by owner; full compiler/parser, asset/correction and delivery integration checks remain deferred.",
-    "AG-FACT-T2-W04-05-MULCHING-MCQ (2026-11-09): source block 328 options A/B/C/D checked against blocks 197-203 and IITA yam guidance plus Nigerian yam-mulch field studies. A (temperature reduction) and B (moisture conservation) supported; C is a real but material/pest-specific benefit (dry grass protecting exposed tubers from rodents; selected botanicals reducing yam-beetle damage); D (prevent yam rot) is not a general mulching benefit. Likely key D only after C is narrowed to dry-grass protection against rodents; withdraw unchanged item if it cannot be edited. No answer key or source changed."
+    "AG-FACT-T2-W04-05-MULCHING-MCQ (2026-11-09): source block 328 options A/B/C/D checked against blocks 197-203 and IITA yam guidance plus Nigerian yam-mulch field studies. A (temperature reduction) and B (moisture conservation) supported; C is a real but material/pest-specific benefit (dry grass protecting exposed tubers from rodents; selected botanicals reducing yam-beetle damage); D (prevent yam rot) is not a general mulching benefit. Likely key D only after C is narrowed to dry-grass protection against rodents; withdraw unchanged item if it cannot be edited. No answer key or source changed.",
+    "AG-FACT-T2-W06-POLYGASTRIC-ITEM (2026-11-09): block 408/409 checked against University of Alaska Fairbanks Extension and Merck Veterinary Manual/University of Illinois Vet Med. Cattle, goats, sheep are ruminants with four-compartment stomachs; rabbit is a monogastric hindgut fermenter. Unique key C rabbit; retain, optionally replace 'polygastric' with 'ruminant with a four-compartment stomach'. The classification is not taught in this Second Term source (block 370 only lists primary consumers), so note separate weekly teaching-alignment concern; no source/key change."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -118,9 +119,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 88,
+    "IMPLEMENTED_TESTING_DEFERRED": 89,
     "BLOCKED": 2,
-    "PENDING": 64
+    "PENDING": 63
   },
   "items": [
     {
@@ -4341,8 +4342,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W06"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W06: block 408 asks for polygastric classification not taught in the source.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Second Term DOCX member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042; inspected blocks 370, 408 and 409 and recomputed hashes. University of Alaska Fairbanks Extension identifies cattle, goats and sheep as ruminants with one four-compartment stomach; Merck Veterinary Manual and University of Illinois Vet Med identify rabbits as nonruminant monogastric hindgut fermenters. Unique answer: C rabbit. Recommended retaining the key, with optional stem precision ('not a ruminant with a four-compartment stomach'). Whole-source search confirms this classification is not taught in the Second Term document, so weekly assessment alignment remains a separate scope concern. No source/key change; evidence note added; testing/delivery checks deferred.",
       "completion_condition": "A sourced note verifies animal classifications and recommends retaining or correcting the item."
     },
     {
@@ -5852,7 +5853,6 @@
     "AG-LES-T2-W04-05-YAM-PRACTICES",
     "AG-CORR-T2-W04-05-TABLE-TEXT",
     "AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS",
-    "AG-FACT-T2-W06-POLYGASTRIC-ITEM",
     "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
     "AG-FACT-T2-W07-ROCK-CHARACTERISTICS",
     "AG-CORR-T2-W07-PEAT-TYPO",
