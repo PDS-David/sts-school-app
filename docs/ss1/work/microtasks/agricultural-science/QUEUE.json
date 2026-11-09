@@ -95,7 +95,8 @@
     "AG-FACT-T1-W04-NGO-STATUS (2026-11-09): source blocks 387-392/417 verified. The Hunger Project is an NGO; IITA is a private autonomous nonprofit institute; Nigerian state Agricultural Development Authorities are government agencies; WARDA/AfricaRice is an intergovernmental association, not NGO; FAO is a UN specialized agency, not NGO; CRS is a nonprofit NGO. Thus Q5 has at least two exceptions (C and D) and the generic authority name is under-specified. Recommend correcting option D/source classifications or withdrawing; no answer key/teacher decision presumed.",
     "AG-FACT-T1-W05-GENETICS-ITEM (2026-11-09): verified source blocks 429/454. FDA distinguishes traditional selective/crossbreeding from genetic engineering (gene transfer) and says they may be combined; FAO identifies gene editing for new plant varieties/animal breeds and conventional animal breeding by selection. 'Genetic engineering' is a valid specific technique but not synonymous with the source's broader 'genetics and breeding'. Recommend clarifying stem or aligning option to source; no key/teacher decision presumed.",
     "AG-FACT-T1-W06-INCUBATOR-ITEM (2026-11-09): source Q1 block 519 verified. Nigerian National e-Agriculture Portal lists incubators under farm machines; FAO WCA classification lists incubators as livestock machinery and ploughs/planters/seed drills as crop machinery/equipment; UNSD CPC/HS classifies poultry incubators as agricultural machinery. Incubator is not a defensible 'not a farm machine' answer under broad scope; field-vs-livestock scope and machine-vs-implement distinctions make the stem ambiguous. Recommend specify 'poultry/livestock machine vs crop-field machine' or withdraw; no key/teacher decision presumed.",
-    "AG-FACT-T1-W07-LAND-MOBILITY (2026-11-09): block 549's 'Land is mobile' contradicts its gloss that land cannot be moved. NOUN AEA 308 says land is immobile/fixed at a location; WAEC 2017 calls land geographically immobile; Cambridge distinguishes geographical immobility from occupational mobility. Recommend correcting to 'geographically immobile'; source bytes remain unchanged."
+    "AG-FACT-T1-W07-LAND-MOBILITY (2026-11-09): block 549's 'Land is mobile' contradicts its gloss that land cannot be moved. NOUN AEA 308 says land is immobile/fixed at a location; WAEC 2017 calls land geographically immobile; Cambridge distinguishes geographical immobility from occupational mobility. Recommend correcting to 'geographically immobile'; source bytes remain unchanged.",
+    "AG-FACT-T1-W07-GAME-RESERVE-USE (2026-11-09): verified blocks 558/561/608. FAO/UN define agricultural land as arable land, permanent crops and permanent meadows/pastures; UN ISIC classifies nature reserves/wildlife preservation separately; Nigeria National Park Service describes parks as protected areas for wildlife/ecosystem conservation. Thus game reserve is the likely exception (A), while pasture, horticulture and arable crops are agricultural uses. Source's wildlife-conservation grouping and normative stem need clarification; recommend retain with rewording/reclassification, no key decision presumed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -110,8 +111,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 80,
-    "PENDING": 72,
+    "IMPLEMENTED_TESTING_DEFERRED": 81,
+    "PENDING": 71,
     "BLOCKED": 2
   },
   "items": [
@@ -3870,8 +3871,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W07: source and assessment wording conflict or require factual confirmation.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from synchronized master 8114b2c3ab30a56e0357184aeb4376d7f6dceb9a. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact First Term DOCX member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. Inspected Week Seven blocks 558, 561 and Weekend Assignment Q4 block 608. Source lists wildlife conservation among agricultural uses but also says land not suitable for farming may be used for game reserves. FAO's agricultural census glossary defines agricultural land as arable land, permanent crops and permanent meadows/pastures; UNdata uses the same definition. UN Statistics Division ISIC Rev.5 classifies operation of nature reserves, wildlife preservation and safari parks under nature-reserve activities, separate from agricultural land protection. Nigeria National Park Service defines national parks as protected areas and states their objectives are wildlife conservation and protection of ecosystems. Thus pasture, horticultural/permanent crops and arable crops are agricultural land uses; game reserves are conservation/protected-area uses, not agricultural land under the formal classification. Q4's likely answer A is defensible, but source block 558's grouping of wildlife conservation under agricultural uses is inconsistent and the stem 'should not be used' is normative. Recommendation: retain answer A but rewrite the stem as a classification question and reclassify game reserves/wildlife conservation under conservation/protected land use. No teacher decision or answer key change presumed. No importer/tests run; testing remains deferred.",
       "completion_condition": "A sourced note establishes the factual issue and recommends a precise disposition; source bytes remain unchanged."
     },
     {
@@ -5824,7 +5825,6 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T1-W07-GAME-RESERVE-USE",
     "AG-FACT-T1-W07-LABOUR-FACTOR",
     "AG-FACT-T1-W08-PROMINENT-TENURE",
     "AG-FACT-T1-W08-LAND-USE-ACT",
