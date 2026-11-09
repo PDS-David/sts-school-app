@@ -100,7 +100,8 @@
     "AG-FACT-T1-W07-LABOUR-FACTOR (2026-11-09): verified blocks 579/581/585/609. FAO AGRIS-indexed Lagos study identifies labour availability as a determinant of urban agricultural site selection; FAO farming-systems text says land farmed can depend on household labour force and that labour may constrain expansion in West Africa. Labour influences agricultural land use even though the source list omits it. Q5 has no valid factual 'not influenced' option; rewrite as a source-list recall item if Labour is intended. No key/teacher decision presumed.",
     "AG-FACT-T1-W08-PROMINENT-TENURE (2026-11-09): source blocks 626/628/701/710 verified. NBS GHS-Panel Wave4 (2018/19) shows family inheritance as the most common plot-acquisition mode (62.7% male-managed, 63.4% female-managed); Wave5 (2023/24) confirms (64.9%, 59.7%). Land Use Act 1978 distinguishes statutory/customary rights of occupancy and regulates devolution on death by customary law. Inheritance is a mode of acquisition, not a standalone statutory tenure system. Recommend rewording to distinguish acquisition mode from legal framework; answer A only for the acquisition-method MCQ.",
     "AG-FACT-T1-W08-LAND-USE-ACT (2026-11-09): verified source blocks 195/583 against the 1978 Land Use Decree/Act and Nigerian Supreme Court decisions. Act vests radical title in State Governor but grants statutory/customary rights of occupancy to persons; landholding rights continue subject to consent/approval for alienation and customary devolution on death. 'Prevents individuals from owning land' is overbroad; updated package blocker with precise correction requirement; source unchanged.",
-    "AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION (2026-11-09): verified blocks 878/922. Biennials require two growing seasons; FAO EcoCrop identifies onion/carrot as biennial, cassava/ginger as perennial (often grown annually), Capsicum annuum as annual, cotton usually grown as annual, cowpea annual; CGIAR says yams are perennial vines mainly treated as annuals in cultivation. Source's biennial list is inaccurate; Q2 pepper exception is species/context dependent and has no unique answer. Recommend correction/rewrite; no key/teacher decision presumed."
+    "AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION (2026-11-09): verified blocks 878/922. Biennials require two growing seasons; FAO EcoCrop identifies onion/carrot as biennial, cassava/ginger as perennial (often grown annually), Capsicum annuum as annual, cotton usually grown as annual, cowpea annual; CGIAR says yams are perennial vines mainly treated as annuals in cultivation. Source's biennial list is inaccurate; Q2 pepper exception is species/context dependent and has no unique answer. Recommend correction/rewrite; no key/teacher decision presumed.",
+    "AG-FACT-T2-W02-03-GREEN-MANURE-ITEM (2026-11-09): verified blocks 175/268. Missouri Extension recommends just before full flowering for maximum N; Alberta Agriculture recommends full bloom; WSU recommends late-vegetative/early-flowering; FAO guidance includes mid-flowering/grain-filling depending objective. Source 'just before flowering' and MCQ 'as soon as it flowers' are close/compatible within early-to-full bloom window, not a material contradiction. Keep answer C green manuring; harmonize timing to at/just before full bloom before seed set, with species/objective caveat."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -115,8 +116,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 85,
-    "PENDING": 67,
+    "IMPLEMENTED_TESTING_DEFERRED": 86,
+    "PENDING": 66,
     "BLOCKED": 2
   },
   "items": [
@@ -4122,8 +4123,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W02-03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W02-03: block 175 and MCQ 268 specify different green-manure timings.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from synchronized master 8114b2c3ab30a56e0357184aeb4376d7f6dceb9a. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Second Term DOCX member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042. Inspected source block 175 ('just before flowering it is ploughed into the top soil') and weekend MCQ 268 ('as soon as it flowers'). Agronomy references recommend incorporation across the late-vegetative to early/full-flowering window, before seed set, with exact stage dependent on crop, biomass and objective: Missouri Extension recommends just before full flowering for maximum nitrogen content; Alberta Agriculture recommends full bloom to maximize top growth/N fixation while avoiding tough material after bloom; WSU Extension describes late-vegetative/early-flowering as the nitrogen-supply 'sweet spot'; FAO technical guidance describes mid-flowering or grain-filling for maximum nitrogen contribution/biomass in some systems. Thus the source and MCQ timings are close and can be reconciled; neither is categorically wrong, but 'as soon as it flowers' is less precise. The MCQ concept answer remains C, green manuring. Recommendation: harmonize both statements to 'incorporate at or just before full bloom/early flowering, before seed formation, when adequate biomass has developed; adjust for species and whether the objective is nitrogen or organic matter.' No answer key/teacher decision presumed. No importer/tests run; testing remains deferred.",
       "completion_condition": "A sourced note verifies the agronomic timing and recommends a precise correction or records unresolved conflict."
     },
     {
@@ -5829,7 +5830,6 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T2-W02-03-GREEN-MANURE-ITEM",
     "AG-FACT-T2-W04-05-MULCHING-MCQ",
     "AG-FACT-T2-W06-POLYGASTRIC-ITEM",
     "AG-FACT-T2-W07-ROCK-CHARACTERISTICS",
