@@ -131,8 +131,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 108,
-    "BLOCKED": 2,
-    "PENDING": 44
+    "BLOCKED": 3,
+    "PENDING": 43
   },
   "items": [
     {
@@ -3390,8 +3390,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W03 (2026-11-08): the original sentence at block 235 is syntactically incomplete; no replacement wording is assumed.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526, and block-235 SHA-256 ee1402a5ed7bfb9f2941dcfdcf12c2c57e6c4babcf4fa0e6ca1121ba6734bfbd. Verified corrected parallel wording in Lessonnotes.com SS1 First Term Agricultural Science Week 2 and Lessonnotes.ng SS1 Agric Science, plus internal corroboration in original blocks 432/500. Candidate replacement: 'Government should make processing machines such as millers and threshers available to farmers at a subsidised rate.' The source text is recoverable, not unresolved. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery correction can be bound without an original lesson and replacement lesson. Updated the existing package open item with exact gate; did not fabricate IDs or add a delivery_corrections record. Original source bytes unchanged.",
       "completion_condition": "A verified source permits a precise correction binding, or the record explains why no correction is supportable; original bytes remain unchanged and no missing phrase is invented."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-CORR-T2-W02-03-SOURCE-TERMS",
     "AG-CORR-T2-W04-05-TABLE-TEXT",
     "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
