@@ -99,7 +99,8 @@
     "AG-FACT-T1-W07-GAME-RESERVE-USE (2026-11-09): verified blocks 558/561/608. FAO/UN define agricultural land as arable land, permanent crops and permanent meadows/pastures; UN ISIC classifies nature reserves/wildlife preservation separately; Nigeria National Park Service describes parks as protected areas for wildlife/ecosystem conservation. Thus game reserve is the likely exception (A), while pasture, horticulture and arable crops are agricultural uses. Source's wildlife-conservation grouping and normative stem need clarification; recommend retain with rewording/reclassification, no key decision presumed.",
     "AG-FACT-T1-W07-LABOUR-FACTOR (2026-11-09): verified blocks 579/581/585/609. FAO AGRIS-indexed Lagos study identifies labour availability as a determinant of urban agricultural site selection; FAO farming-systems text says land farmed can depend on household labour force and that labour may constrain expansion in West Africa. Labour influences agricultural land use even though the source list omits it. Q5 has no valid factual 'not influenced' option; rewrite as a source-list recall item if Labour is intended. No key/teacher decision presumed.",
     "AG-FACT-T1-W08-PROMINENT-TENURE (2026-11-09): source blocks 626/628/701/710 verified. NBS GHS-Panel Wave4 (2018/19) shows family inheritance as the most common plot-acquisition mode (62.7% male-managed, 63.4% female-managed); Wave5 (2023/24) confirms (64.9%, 59.7%). Land Use Act 1978 distinguishes statutory/customary rights of occupancy and regulates devolution on death by customary law. Inheritance is a mode of acquisition, not a standalone statutory tenure system. Recommend rewording to distinguish acquisition mode from legal framework; answer A only for the acquisition-method MCQ.",
-    "AG-FACT-T1-W08-LAND-USE-ACT (2026-11-09): verified source blocks 195/583 against the 1978 Land Use Decree/Act and Nigerian Supreme Court decisions. Act vests radical title in State Governor but grants statutory/customary rights of occupancy to persons; landholding rights continue subject to consent/approval for alienation and customary devolution on death. 'Prevents individuals from owning land' is overbroad; updated package blocker with precise correction requirement; source unchanged."
+    "AG-FACT-T1-W08-LAND-USE-ACT (2026-11-09): verified source blocks 195/583 against the 1978 Land Use Decree/Act and Nigerian Supreme Court decisions. Act vests radical title in State Governor but grants statutory/customary rights of occupancy to persons; landholding rights continue subject to consent/approval for alienation and customary devolution on death. 'Prevents individuals from owning land' is overbroad; updated package blocker with precise correction requirement; source unchanged.",
+    "AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION (2026-11-09): verified blocks 878/922. Biennials require two growing seasons; FAO EcoCrop identifies onion/carrot as biennial, cassava/ginger as perennial (often grown annually), Capsicum annuum as annual, cotton usually grown as annual, cowpea annual; CGIAR says yams are perennial vines mainly treated as annuals in cultivation. Source's biennial list is inaccurate; Q2 pepper exception is species/context dependent and has no unique answer. Recommend correction/rewrite; no key/teacher decision presumed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -114,8 +115,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 84,
-    "PENDING": 68,
+    "IMPLEMENTED_TESTING_DEFERRED": 85,
+    "PENDING": 67,
     "BLOCKED": 2
   },
   "items": [
@@ -4087,8 +4088,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W10"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W10: block 878 says 'within as year' and the examples require verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from synchronized master 8114b2c3ab30a56e0357184aeb4376d7f6dceb9a. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact First Term DOCX member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. Inspected Week 10 block 878 (definition and examples of biennials) and Weekend Assignment Q2 block 922 (annual-crop exception options cotton, cowpea, yam, pepper). A biennial plant requires two growing seasons to complete its biological life cycle; vegetative growth typically occurs in the first season and flowering/seed production in the second. FAO EcoCrop classifies onion (Allium cepa) and carrot (Daucus carota) as biennial; onions are normally grown as annuals for bulbs and require two seasons to produce seed, and carrots normally grown as annuals for roots but may flower in the second year. FAO EcoCrop classifies cassava as a short-lived perennial (6-24 months), ginger as perennial usually grown as annual, Capsicum annuum as annual, cotton as annual/perennial but usually cultivated as annual, and cowpea as annual. CGIAR Genebanks says yams are annual or perennial vines but are mainly treated as annuals in cultivation. Thus the source's biennial examples (cassava, pepper, onions, carrot, ginger) are inaccurate except onion and carrot; pepper is not generally biennial. Q2's 'pepper' is species-ambiguous; if Capsicum, it is annual/usually cultivated as annual; if black pepper (Piper nigrum), it is perennial. Under production-cycle usage cotton/cowpea/yam/Capsicum pepper may all be grown as annual crops; under botanical lifespan, several vary by species and environment. There is no unique defensible exception. Recommendation: correct definition and examples, specify pepper species and whether classification is biological lifespan or cultivation cycle, and withdraw/rewrite Q2. No answer key/teacher decision presumed. No importer/tests run; testing remains deferred.",
       "completion_condition": "A sourced note verifies the definition/examples and recommends a precise correction or records unresolved classifications."
     },
     {
@@ -5828,7 +5829,6 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION",
     "AG-FACT-T2-W02-03-GREEN-MANURE-ITEM",
     "AG-FACT-T2-W04-05-MULCHING-MCQ",
     "AG-FACT-T2-W06-POLYGASTRIC-ITEM",
