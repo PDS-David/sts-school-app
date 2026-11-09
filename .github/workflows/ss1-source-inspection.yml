@@ -52,7 +52,7 @@ jobs:
               raise SystemExit(f"ARCHIVE_HASH_MISMATCH expected={archive_sha} actual={actual_archive_sha}")
           member = record["archive_member"]
           posix = PurePosixPath(member)
-          if posix.is_absolute() or ".." in posix.parts or "\\\\" in member:
+          if posix.is_absolute() or ".." in posix.parts or "\\" in member:
               raise SystemExit(f"UNSAFE_MEMBER_PATH {member}")
           with zipfile.ZipFile(archive) as zf:
               info = zf.getinfo(member)
