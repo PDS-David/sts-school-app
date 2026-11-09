@@ -39,11 +39,11 @@
     "SOURCE_MARKER_DISPOSITION": 3,
     "VISUAL_DISPOSITION": 7,
     "SOURCE_PRESERVATION": 6,
-    "LESSON_AUTHORING": 11,
+    "LESSON_AUTHORING": 14,
     "SUPPLEMENTAL_ASSESSMENT": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 69,
+    "IMPLEMENTED_TESTING_DEFERRED": 72,
     "BLOCKED": 1
   },
   "items": [
@@ -2433,6 +2433,81 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Supplement SUP-SS1-CC-T2-W12-EXAMINATION; body SHA-256 bba8ad3a8b55dd6b3cbf688748175eb450a0c27ed755688ed45c08b19cdca2dc; 40-mark paper, answer key and marking guide.",
       "completion_condition": "Supply project-authored examination paper, answer key and marking guide without claiming that an exam was administered."
+    },
+    {
+      "id": "CC-LES-T3-W01",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK ONE lines 25–146",
+      "objective": "Food and Beverage Personnel: Restaurant Roles and Functions",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T3-W01.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T3-W01"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T3-W01-RESTAURANT-PERSONNEL; body SHA-256 2ec533abd813d6f424131635f22b618fcf824eff6af69a97f54b65e6c62d6da4; four answered practice items and 20-mark guide. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; role distinctions and safety boundaries are accurate; approval and verification remain explicit."
+    },
+    {
+      "id": "CC-LES-T3-W02",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK TWO lines 149–246",
+      "objective": "Food and Beverage Personnel: Bar and Banquet Teams",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T3-W02.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T3-W02"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T3-W02-BAR-BANQUETS; body SHA-256 ef1fed71a06d9f2d3830d2ec22fe54ed9f909d2a186a364394ba5fca7088d467; four answered practice items and 20-mark guide. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; role distinctions and safety boundaries are accurate; approval and verification remain explicit."
+    },
+    {
+      "id": "CC-LES-T3-W03",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK THREE lines 249–329",
+      "objective": "Kitchen Staff and the Kitchen Brigade",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T3-W03.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T3-W03"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T3-W03-KITCHEN-STAFF; body SHA-256 d8b5a63ff657c92a1bc9539f5f863139f0d3c84ef22b53ed837c4c6b7d11e59c; four answered practice items and 20-mark guide. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; role distinctions and safety boundaries are accurate; approval and verification remain explicit."
     }
   ],
   "review": {
