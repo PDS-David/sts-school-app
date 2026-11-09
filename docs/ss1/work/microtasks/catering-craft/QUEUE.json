@@ -39,11 +39,11 @@
     "SOURCE_MARKER_DISPOSITION": 3,
     "VISUAL_DISPOSITION": 7,
     "SOURCE_PRESERVATION": 6,
-    "LESSON_AUTHORING": 14,
+    "LESSON_AUTHORING": 17,
     "SUPPLEMENTAL_ASSESSMENT": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 72,
+    "IMPLEMENTED_TESTING_DEFERRED": 75,
     "BLOCKED": 1
   },
   "items": [
@@ -2508,6 +2508,82 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Package lesson SUP-SS1-CC-T3-W03-KITCHEN-STAFF; body SHA-256 d8b5a63ff657c92a1bc9539f5f863139f0d3c84ef22b53ed837c4c6b7d11e59c; four answered practice items and 20-mark guide. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; role distinctions and safety boundaries are accurate; approval and verification remain explicit."
+    },
+    {
+      "id": "CC-LES-T3-W04",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK FOUR lines 332–485",
+      "objective": "Housekeeping Personnel, Bed Linen, Bed Making and Receptionists",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T3-W04.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T3-W04"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T3-W04-HOUSEKEEPING-RECEPTION; body SHA-256 76f6d553972b87c93562c814b57b9f96eb386f7da88cbb7adde3081a8966a72d; answered practice and 20-mark guide. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; source-specific safety claims corrected or qualified; no unsupported practical is claimed."
+    },
+    {
+      "id": "CC-LES-T3-W05",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK FIVE lines 490–597",
+      "objective": "Food Service: Table Service and Gueridon Service",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T3-W05.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T3-W05",
+        "CC-FACT-T3-HOT-PLATE-GUERIDON"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T3-W05-TABLE-SERVICE; body SHA-256 80450835e5847fa19584eb894149526a71cc8c9597c25e49af85a7d983710a4d; answered practice and 20-mark guide. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; source-specific safety claims corrected or qualified; no unsupported practical is claimed."
+    },
+    {
+      "id": "CC-LES-T3-W06",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK SIX lines 600–690",
+      "objective": "Types of Food Service: Self-Service and Single-Point Service",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T3-W06.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T3-W06"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T3-W06-SELF-SERVICE; body SHA-256 3b13a22ea5f5d33e54ddd3db3a6fffb9913f7a9ab6a70abae2a0bcdb11418c79; answered practice and 20-mark guide. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; source-specific safety claims corrected or qualified; no unsupported practical is claimed."
     }
   ],
   "review": {
