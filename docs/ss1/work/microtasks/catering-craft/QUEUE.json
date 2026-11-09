@@ -39,11 +39,11 @@
     "SOURCE_MARKER_DISPOSITION": 3,
     "VISUAL_DISPOSITION": 7,
     "SOURCE_PRESERVATION": 6,
-    "LESSON_AUTHORING": 17,
+    "LESSON_AUTHORING": 20,
     "SUPPLEMENTAL_ASSESSMENT": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 75,
+    "IMPLEMENTED_TESTING_DEFERRED": 78,
     "BLOCKED": 1
   },
   "items": [
@@ -2584,6 +2584,84 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Package lesson SUP-SS1-CC-T3-W06-SELF-SERVICE; body SHA-256 3b13a22ea5f5d33e54ddd3db3a6fffb9913f7a9ab6a70abae2a0bcdb11418c79; answered practice and 20-mark guide. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; source-specific safety claims corrected or qualified; no unsupported practical is claimed."
+    },
+    {
+      "id": "CC-LES-T3-W07",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK SEVEN lines 691–740",
+      "objective": "Specialized (In-Situ) Service and Banquet Service",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T3-W07.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T3-W07"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T3-W07-SPECIALIZED-BANQUET; body SHA-256 0bfa1e96f684757345fd7bfa3381ca915a6ac0c3fb14152db54cce558360e8cf; answered practice and 20-mark guide. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; visual rights are respected; dimensions and hygiene claims are factually qualified."
+    },
+    {
+      "id": "CC-LES-T3-W08",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK EIGHT lines 743–852",
+      "objective": "Table Laying and Table Setting",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T3-W08.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T3-W08",
+        "CC-VIS-T3-W08-IMG1"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T3-W08-TABLE-LAYING-SETTING; body SHA-256 60b15405996c93a95740df9843304f3249bd2f0176cceb2ff08c323b9fe5d50a; answered practice and 20-mark guide. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; visual rights are respected; dimensions and hygiene claims are factually qualified."
+    },
+    {
+      "id": "CC-LES-T3-W09",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK NINE lines 855–931",
+      "objective": "Types of Table Cover: A La Carte, Basic Lay-Up and Table d’Hôte",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T3-W09.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T3-W09",
+        "CC-FACT-T3-COVER-DIMENSIONS",
+        "CC-FACT-T3-HYGIENE-TEMPERATURE-CLAIMS"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T3-W09-TYPES-OF-COVER; body SHA-256 1a9b9f560da9c6ff473a934528ee7f9c750f655d36f907adcf63101b2fab7242; answered practice and 20-mark guide. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; visual rights are respected; dimensions and hygiene claims are factually qualified."
     }
   ],
   "review": {
