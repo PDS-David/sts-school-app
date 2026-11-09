@@ -131,8 +131,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 108,
-    "BLOCKED": 10,
-    "PENDING": 36
+    "BLOCKED": 11,
+    "PENDING": 35
   },
   "items": [
     {
@@ -4783,8 +4783,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W02: source definition of hydropower conflicts with some listed 'uses'.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed source member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a and block hashes 210 bc0b3a4f75f1ea335842fd1136a761fa1eadb89f6cbde6e943c17831b7001d53; 216 a9636ba676632ee2214db71281ef7640902fb7b65746b8a4b4dda9c0030e6dd4; 217 79d838dcd1280648f23c822852f38a9416875c21bd6a8130500d735b6dafe738; 218 2a8d421a528bc483078a11c9438ac34a761ce328efa782436d5048030ab6a46b; 219 b455245adadf8f72ba6dd5015d3e2452e70685b263919eee420011f2177b23b8; 220 1181e494f656ccc4fe3b053f246a334bce596b0026491b764acd85ab711e79b8. EIA/DOE define hydropower as moving-water energy captured by turbines/generators; block 210 definition and block 216 match. Blocks 217–220 describe waterway transport, water for produce processing, crop germination/growth and photosynthesis, not hydropower. Recommended delivery reclassification preserves wording and moves 217–220 to 'Other uses/importance of water in agriculture'. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery correction/reclassification can be bound yet. Updated existing package open item; no delivery_corrections or source changes.",
       "completion_condition": "A sourced correction-binding record precisely distinguishes hydropower from water as a resource and preserves original source wording."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-CORR-T3-W02-WATER-POWER",
     "AG-CORR-T3-W02-POWER-TEXT",
     "AG-CORR-T3-W10-CATTLE-TERMS",
     "AG-CORR-T3-W02-WDP-LOCATORS",
