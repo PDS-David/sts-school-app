@@ -61,7 +61,7 @@ The DOCX has four body tables, 18 body image groups containing 23 linked raster 
 | 5 | image block 547 | Respiratory tract/lungs diagram (`image14.jpeg`) |
 | 5 | image block 554 | Two fish-gill diagrams (`image15.jpeg`, `image16.jpeg`) |
 | 5 | Equation paragraphs 532, 537, 540; word-label paragraphs 533, 538, 541 | Three text-based respiration equations; chemical-formula digits are run-level subscripts, associated labels are superscript, and no Office Math object occurs in these six paragraphs |
-| 6 | table block 724 | 6 x 3 species/female-name/gestation-period table; SHA-256 `2a4920ab1813f229acf23091705f2ae7378471933fbf2d7e93c5a86e062d1925` |
+| 6 | table block 724 | 6 x 3 species/female-name/gestation-period table (18 cells); SHA-256 of row-major concatenated cell text, UTF-8, no separators or normalization: `7b1f4bfc31fe563d88fe519302d11e61eb59129a4ad39d3f8dcde1c48207ac0c` |
 | 7 | image block 803 | Bird embryo and poultry internal-organs image pair (`image17.jpeg`, `image18.jpeg`) |
 | 7 | image block 804 | Photographed reproductive-system page and female reproductive tract (`image19.jpeg`, `image20.jpeg`) |
 | 7 | image block 819 | Male/female reproductive-system diagram (`image21.jpeg`) |
@@ -77,6 +77,8 @@ The DOCX has four body tables, 18 body image groups containing 23 linked raster 
 - The WDP relationships are alternate/effect layers inside their respective Week Four drawing groups, not independent teaching figures. No separate WDP visual records are created.
 
 The image relationship map shows 23 linked raster media files in the body; image groups may contain more than one image. The two WDP media files are referenced as alternate image-effect layers at Week Four blocks 487 (`hdphoto1.wdp`) and 494 (`hdphoto2.wdp`), not at Week Two block 211. The body also contains 42 DrawingML drawing elements and 16 VML pict elements; the separate visual items above are anchored to the 18 image-bearing body paragraphs and the four actual tables. No OLE object was found.
+
+**Week Six gestation table structure (block 724):** 6 rows × 3 columns. Hash method is SHA-256 of all 18 cells' `w:t` text concatenated row-major, across each cell's paragraphs, UTF-8, no separators or normalization. The Horse/Cattle, Mare/Cow and 336 days/283 days values are two separate paragraphs inside their corresponding cells in one row; Rabbit/Chicken, Doe/Hen and 31days/21 days are likewise paired paragraphs in one row. Preserve these paragraph boundaries and cell alignments; do not split the paired entries into separate rows or alter any species, female name or gestation period. Canonical table-text SHA-256: `7b1f4bfc31fe563d88fe519302d11e61eb59129a4ad39d3f8dcde1c48207ac0c`.
 
 **Week Five respiration equation/label locators and hashes (reverified from original DOCX XML):**
 - General equation, block 532 — SHA-256 `afcc926b0937742f62643dfaf20d388c097d6af220e16cd420eb1a95314732f6`; word-label paragraph 533 — `055c66c3e56aa9803e63c128451475fe22ec1910d46ef46d2a470b0993cb7896`.
