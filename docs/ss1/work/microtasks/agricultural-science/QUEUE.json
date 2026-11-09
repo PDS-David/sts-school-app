@@ -84,7 +84,8 @@
     "AG-VIS-T3-W06-TBL-GESTATION (2026-11-08): block 724 is a native 6×3 Word table. Horse/Cattle, Mare/Cow, 336 days/283 days and Rabbit/Chicken, Doe/Hen, 31days/21 days are separate paragraphs in corresponding cells. Preserve pair alignment. Recorded table hash does not match concatenated cell-text hash; AG-CORR-T3-W06-TBL-GESTATION-HASH appended.",
     "AG-VIS-T3-W07-BIRD-EMBRYO-ORGANS (2026-11-08): block 803 holds image17 bird embryo (visible iStock watermark) and image18 poultry internal organs. The embryo image is contextual but not used by the source egg-formation prose; the internal-organs figure includes ovary/oviduct but is not a focused reproductive diagram. Neither has reuse rights evidence; delivery reuse is blocked pending clearance or a rights-cleared replacement.",
     "AG-VIS-T3-W07-REPRODUCTIVE-TRACT (2026-11-09): block 804 contains a photographed fertile-egg page (image19) plus a female poultry reproductive-tract diagram (image20); both inspected and hashes verified. Useful labels/content recorded, but no licence/credit; reuse blocked pending rights or separately sourced rights-cleared substitutes.",
-    "AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS (2026-11-09): block 819 is one combined male/female poultry reproductive-and-excretory diagram (image21, 350×373); label/content and Week Four mammalian-figure distinction recorded. No rights evidence; reuse/derivative blocked pending permission or separately sourced rights-cleared replacement."
+    "AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS (2026-11-09): block 819 is one combined male/female poultry reproductive-and-excretory diagram (image21, 350×373); label/content and Week Four mammalian-figure distinction recorded. No rights evidence; reuse/derivative blocked pending permission or separately sourced rights-cleared replacement.",
+    "AG-VIS-T3-W07-TBL-HORMONES (2026-11-09): zero-based block 828 is a native 8×4 Word table, legible and intact on source page 28; no merged cells or embedded media. Each of seven hormone rows retains its sex/site/functions mapping and multiple function paragraphs. The recorded table text digest dc4ce1cf… was not reproduced by direct w:t concatenation (computed 23d71c76…); archive/member hashes match and the discrepancy is documented in the task note. No reuse licence/permission; verbatim learner delivery blocked. Existing hormone factual-accuracy blocker remains."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -99,8 +100,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 69,
-    "PENDING": 83,
+    "IMPLEMENTED_TESTING_DEFERRED": 70,
+    "PENDING": 82,
     "BLOCKED": 2
   },
   "items": [
@@ -2992,8 +2993,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from master 7a42d78319230dc7cc74617b6706905e17a69324. Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Inspected word/document.xml zero-based direct-body block 828: one native Word table, 8 rows × 4 columns, no merged cells, no embedded drawings/media; each hormone row retains its SEX, SITE OF SECRETION and FUNCTIONS cells. Source table is rendered legibly and intact on page 28 of the source document; header 'SITE OF SECRETION' wraps to two lines, longer functions wrap within the wide fourth column, and multiple functions remain separate paragraphs in the same cell. All seven source rows (testosterone/androgen, oestrogen, progesterone, oxytocin, relaxin, follicle stimulating hormone (FSH), luteinizing hormone) and their source claims were inspected; preserve them as source claims only, not validated physiology. Existing AGRICULTURAL-SCIENCE-T3-W07-HORMONE-ACCURACY remains the fact-check gate. The inventory/task-recorded table text digest dc4ce1cf72d8b6490cf5260a040f348e35fad1b3ab6e6b80b884f0326fe1a3e was not reproduced by direct concatenation of the 1,148 XML w:t characters (computed SHA-256 23d71c760fadf5dd5905d5e23e91a46de2c4e0c34845c5c57892c337d20b5cb9); this is recorded as a locator-metadata discrepancy, not a source-member integrity failure. The original archive/member hashes match. Document core metadata names AKANDE ANTHONY as creator but has no rights statement; no licence or reuse permission is present. No copied table/derivative or learner-facing asset was created. A rights blocker is recorded; if permission is unavailable, author an independently sourced, rights-cleared equivalent table after factual review. No importer, app/device rendering or tests run; testing remains deferred.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5813,7 +5814,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W07-TBL-HORMONES",
     "AG-VIS-T3-W09-PIG-ANATOMY",
     "AG-VIS-T3-W10-CATTLE-ANATOMY",
     "AG-VIS-T3-W10-MATH-OBJECT",
