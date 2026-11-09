@@ -1,7 +1,9 @@
-# CC-LES-T1-W11 — Hygiene
+# CC-LES-T1-W11 — First Term project-authored supplement
 
 Package lesson: SUP-SS1-CC-T1-W11-PERSONAL-FOOD-HYGIENE
-Body SHA-256: 3f05f36d3855713388f925b34b36ea57114dbdf89a8dc4a823fc3251d6882832
-Source locator: Lagos State Unified Scheme reproduction, First Term Week Eleven (meaning/types of hygiene, food contamination and food poisoning).
+Body SHA-256: 1775ae2c24ef872e8c9b77d36085474521b6c2275f330375b5d52d362c2288d0
+Source locator: public reproduction of the Lagos State Ministry of Education Unified Scheme of Work, First Term Week 11.
 
-The lesson distinguishes contamination from food poisoning and covers personal, food, equipment, water and environmental hygiene. Content approval PENDING; verification DEFERRED.
+Personal, food, equipment, water and environmental hygiene; food contamination versus food poisoning; handwashing and cross-contamination prevention. Includes answered practice and a 20-mark guide.
+
+Independently authored; no registered First Term source ID is asserted. Content approval PENDING; verification DEFERRED.
