@@ -1000,6 +1000,39 @@
         "SS1-SRC-28ed32f52548-R001"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "CHEM-T1A-W06-UNLICENSED-STOCK-MEDIA",
+      "kind": "PERMISSION",
+      "detail": "Five Week Six stock photographs/clip-art carry Encarta/Microsoft credit strips and no reuse licence is evidenced; two captions do not accurately describe the depicted process.",
+      "required_action": "Omit these assets from delivery. If visuals are required later, use separately licensed or original accurate method diagrams; never crop credits as a workaround.",
+      "affected_ids": [
+        "COV-CHEM-T1A-W06-SOLID-LIQUID",
+        "COV-CHEM-T1A-W06-EVAPORATION-CRYSTALLIZATION",
+        "COV-CHEM-T1A-W06-DISTILLATION",
+        "COV-CHEM-T1A-W06-CHROMATOGRAPHY"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "CHEM-T1A-W09-ISOTOPE-IMAGE-MISMATCH",
+      "kind": "PERMISSION",
+      "detail": "Week Nine isotope image depicts carbon-12/13/14 but the adjacent text example is chlorine-35/37; it also carries an Encarta/Microsoft credit strip with no reuse licence evidenced.",
+      "required_action": "Omit the stock image from delivery. If a visual is needed, obtain an original/licensed isotope diagram that matches the example and clearly identify its independent provenance.",
+      "affected_ids": [
+        "COV-CHEM-T1A-W09-ISOTOPES"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "CHEM-T1A-W10-ORBITAL-SHAPES-MISSING",
+      "kind": "CONTENT",
+      "detail": "Week Ten text promises s, px, py and pz orbital-shape diagrams, but all eight embedded images are 1x1 spacer PNGs; the diagrams are absent.",
+      "required_action": "Supply four reviewed, scientifically accurate orbital diagrams from a licensed authoritative source or a reviewed original visual task. Do not invent or deploy an AI replacement.",
+      "affected_ids": [
+        "COV-CHEM-T1A-W10-ORBITALS"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
