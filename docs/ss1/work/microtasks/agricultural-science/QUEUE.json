@@ -130,9 +130,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 117,
+    "IMPLEMENTED_TESTING_DEFERRED": 118,
     "BLOCKED": 13,
-    "PENDING": 24
+    "PENDING": 23
   },
   "items": [
     {
@@ -3319,8 +3319,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W03 (2026-11-08): block 309 asks for a weed-killing chemical but the source only lists herbicides as an input without defining the term.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented SUP-SS1-AGRICULTURAL-SCIENCE-T1-W03-INPUT-TERMINOLOGY; body SHA-256 b7db34071c27c5e1c8e1b22ec6c735a3e70d5f28f2a4b0ab28c98e8cf7e6e3e1. Defines pesticide, herbicide, weedicide and insecticide; distinguishes fungicide and rodenticide. Confirms block309 MCQ options A (herbicide) and C (weedicide) are synonymous and both must be accepted unless a future version removes one duplicate. Safe terminology only; no rates, doses, mixing, application, storage or handling instructions. Sources: FAO Pesticide Registration Toolkit, US EPA Types of Pesticide Ingredients, SGRRU Weed Management Practical Manual. Practice marking sums P1=8, P2=4, P3=4 (total16). Updated COV-AG-T1-W03-INPUT-TERMINOLOGY to IMPLEMENTED_EQUIVALENT; retained a VERIFICATION open item for authorised assessment handling of duplicate options. Content approval PENDING; verification DEFERRED. No source bytes, corrections or assets changed; tests deferred.",
       "completion_condition": "A safe, non-operational, source-backed terminology supplement includes complete keyed practice and criterion-level marks, truthful provenance and PENDING content approval; no doses or handling instructions are added."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-LES-T1-W03-INPUT-TERMINOLOGY",
     "AG-LES-T1-W04-NGO-EXAMPLES",
     "AG-LES-T1-W04-PROGRAMME-OBJECTIVES",
     "AG-LES-T1-W05-TECHNOLOGY-DEFINITION",
