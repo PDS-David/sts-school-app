@@ -130,9 +130,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 113,
+    "IMPLEMENTED_TESTING_DEFERRED": 114,
     "BLOCKED": 13,
-    "PENDING": 28
+    "PENDING": 27
   },
   "items": [
     {
@@ -1731,8 +1731,8 @@
         "AG-WK-T1-W01",
         "AG-LES-T1-W01-CROP-ASPECTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by AG-WK-T1-W01 (2026-11-06): no answer key or marking guide exists anywhere in the 1st Term document; COV-AG-T1-W01-ASSESSMENT-KEYS is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W01-COVERAGE is open. AG-WK-T1-W01 authors no answer.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented SUP-SS1-AGRICULTURAL-SCIENCE-T1-W01-KEYED-PRACTICE in subject package; body SHA-256 ed53ccb98ed28f6d66269dd2bf2d33fa4e6977ea244db56428f90fadc2a4cfce. Complete keyed practice for all Week 1 evaluation, general evaluation, weekend MCQ and theory items; marks/criterion sums P1=18, P2=20, P3=51, P4=5, P5=12, P6=20. Uses Week 1 taught blocks and crop-science supplement; Week 6 blocks 481-486 cited only for industry questions. Q4 MCQ uses Food as a reasoned sample choice; source does not state a ranking. Notes agro-allied/agro-based terminology inconsistency and source Latin spelling discrepancy; no source correction. COV-AG-T1-W01-ASSESSMENT-KEYS updated to IMPLEMENTED_EQUIVALENT. Week1 coverage open item now VERIFICATION only for original parsed row ID; fact-check item4 resolved, items1-3,5 remain. Lesson approval PENDING; verification DEFERRED. No source bytes, corrections or assets changed; tests deferred.",
       "completion_condition": "A lesson in agricultural-science.json provides complete answers and marking that sums exactly for the listed Week 1 items, labels itself a Week 1 keyed-practice supplement, has body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-AG-T1-W01-ASSESSMENT-KEYS then cites it with evidence; no answer is inferred outside taught text and no source byte, correction or shared file is edited."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-LES-T1-W01-KEYED-PRACTICE",
     "AG-LES-T1-W02-TOOLS-MACHINES",
     "AG-LES-T1-W02-AGRO-INDUSTRIES",
     "AG-LES-T1-W03-EXTENSION-ROLES",
