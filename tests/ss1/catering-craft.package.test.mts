@@ -25,6 +25,7 @@ const aliasRules = (p: SubjectPackage): Extract<SourceRule, { op: 'source_alias'
 test('Catering Craft accounts for two archive documents plus a separately hash-bound First Term scheme source', () => {
   const p = packageSchema.parse(raw);
   assert.equal(p.schema_version, 'ss1-subject-v2');
+  assert('external_sources' in p);
   assert.equal(p.subject_slug, 'catering-craft');
   assert.equal(p.canonical_subject, 'Catering Craft');
   assert.equal(assigned.length, 2);
@@ -134,6 +135,7 @@ test('Alias rule guards reject wrong-source hashes and ambiguous or missing anch
 
 test('First Term external scheme covers all thirteen calendar weeks without inventing an archive member', () => {
   const p = packageSchema.parse(raw);
+  assert('external_sources' in p);
   const ext = p.external_sources[0];
   const coverage = p.coverage.filter(c => c.source_id === ext.source_id);
   assert.equal(coverage.length, 13);
