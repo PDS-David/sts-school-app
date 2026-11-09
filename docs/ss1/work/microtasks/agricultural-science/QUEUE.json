@@ -130,9 +130,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 101,
+    "IMPLEMENTED_TESTING_DEFERRED": 102,
     "BLOCKED": 2,
-    "PENDING": 51
+    "PENDING": 50
   },
   "items": [
     {
@@ -5205,8 +5205,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W06"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W06: oxytocin, milk-composition, colostrum and poultry terminology require independent verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09 after confirming branch was fast-forwarded to current master f51616309aafe542edd89e41072b70c3b92b995e. Reused the previously verified archive/member SHA-256 and Week Six block locators from AG-WK-T3-W06. Reviewed claims against Merck Veterinary Manual (major hormones; young dairy calf colostrum), peer-reviewed domestic-animal oxytocin and bovine-colostrum immune-component reviews, FAO milk composition, EFSA milk-composition assessment, Mississippi State University Extension, Cornell College of Veterinary Medicine, CBSE Animal Nutrition and Reproduction handbook, and Virginia Tech poultry hatching material. Findings: oxytocin mediates milk ejection, not milk synthesis (prolactin is the production hormone); goat milk is not universally best/richest and composition varies, with FAO describing it as broadly similar to cow milk; colostrum provides antibodies/immunoglobulins and innate immune components, so 'antibiotic' is not a synonym for antibodies; parturition is uterine expulsion of fetus in mammals, whereas poultry chicks hatch from eggs. No veterinary doses, injection instructions, treatment protocols, source bytes, package content, correction bindings or assets changed. Tests/importer/typecheck/DB/rendering/CI not run; testing deferred.",
       "completion_condition": "A sourced note verifies each claim and recommends safe educational wording without treatment instructions."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T3-W06-LACTATION-COLOSTRUM",
     "AG-FACT-T3-W07-EGG-FORMATION",
     "AG-FACT-T3-W08-REGIONAL-CLIMATE",
     "AG-FACT-T3-W09-PIG-SAFETY",
