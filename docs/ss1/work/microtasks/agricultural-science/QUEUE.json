@@ -130,9 +130,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 110,
+    "IMPLEMENTED_TESTING_DEFERRED": 111,
     "BLOCKED": 13,
-    "PENDING": 31
+    "PENDING": 30
   },
   "items": [
     {
@@ -5785,8 +5785,8 @@
         "AG-SRC-T3",
         "AG-VIS-T3-W05-RESPIRATION-EQUATIONS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-VIS-T3-W05-RESPIRATION-EQUATIONS after XML inspection: actual equation blocks are 532, 537, 540; old locator 530, 535, 538 refers to heading/prose/label.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Reverified archive/member hashes and direct-body blocks 530–541. Correct equation paragraphs are 532 (text SHA-256 afcc926b0937742f62643dfaf20d388c097d6af220e16cd420eb1a95314732f6), 537 (c17645e396c8d15a624516565074d3250fcbfc6f58777a740cb06e3fce2074f5), 540 (1c18292c9659a843e71343a1d6c465386dc08e19b83651ab70470b074e845e25); associated label paragraphs are 533 (055c66c3e56aa9803e63c128451475fe22ec1910d46ef46d2a470b0993cb7896), 538 (acbe3519428365d4967baf94a9323887afe469109f0758d428c98cbadfcbf036), 541 (400a62fbb1d3786226c64996f593459e8eb6e5dc577af2d7ef957fef2c3cc178). Inspected run-level w:vertAlign: formula digits are subscript, coefficients baseline, associated label lines superscript; all six paragraphs contain tabs and no m:oMath/m:oMathPara. The only document Office Math object is unrelated block1165. Updated only equation locators and structure description in AG-INV-T3.md; preserved source equation strings exactly and added no reaction arrows. No source/package changes. Tests deferred.",
       "completion_condition": "Re-verify source hashes and direct-body positions; correct AG-INV-T3.md equation/label locators and describe run-level formatting accurately without adding reaction arrows or changing source wording."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-CORR-T3-W05-RESPIRATION-EQUATION-LOCATORS",
     "AG-CORR-T3-W06-TBL-GESTATION-HASH",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
