@@ -130,9 +130,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 103,
+    "IMPLEMENTED_TESTING_DEFERRED": 104,
     "BLOCKED": 2,
-    "PENDING": 49
+    "PENDING": 48
   },
   "items": [
     {
@@ -5383,8 +5383,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W08"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W08: several climate and regional-production claims need authoritative verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09 after confirming branch was current with master (base f51616309aafe542edd89e41072b70c3b92b995e; ahead6/behind0). Reused the verified archive/member SHA-256 and Week Eight locators from AG-WK-T3-W08. Reviewed the rainfall/tsetse, wind/TB, milk spoilage, dairy and poultry production, Nigeria-wide climate-factor ranking and rainforest cattle-rationale claims against FAO tsetse ecology/West Africa livestock materials, FAO milk preservation guidance, FAO livestock-climate review, Federal Ministry of Agriculture and Rural Development Nigeria 2022 trypanosomosis strategy, Merck Veterinary Manual TB overview, Nigerian studies on cattle climatic performance/rainfall/livestock output, a 2024 Nigerian climate-change review, dairy-cow heat-stress meta-analysis and poultry heat-stress literature. Findings: rainfall supports tsetse habitat indirectly via vegetation/humidity but does not alone cause tsetse; TB is transmitted mainly by inhaling infectious droplets/aerosols, with air movement affecting dispersion but wind not a standalone cause; no fixed 37°C milk-spoilage threshold exists (15–40°C is an unfavourable warm range and prompt cooling near 4°C is recommended); heat stress can reduce dairy feed intake/milk yield and layer feed intake/egg production/egg quality; no universal national 'greatest climate factor' can be ranked without specifying species/outcome/region (rainfall is important for forage/water, temperature+humidity for direct heat stress); tsetse/trypanosomosis is a major historical constraint in humid forest areas but cattle production is not impossible. No veterinary drug instructions, source bytes, lesson/package content, corrections or assets changed. Tests/importer/typecheck/DB/rendering/CI not run; testing deferred.",
       "completion_condition": "A sourced note verifies each claim and identifies defensible answers or wording changes."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T3-W08-REGIONAL-CLIMATE",
     "AG-FACT-T3-W09-PIG-SAFETY",
     "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE",
     "AG-FACT-T3-W10-CATTLE-SAFETY",
