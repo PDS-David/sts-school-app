@@ -39,10 +39,10 @@
     "SOURCE_MARKER_DISPOSITION": 3,
     "VISUAL_DISPOSITION": 7,
     "SOURCE_PRESERVATION": 6,
-    "LESSON_AUTHORING": 4
+    "LESSON_AUTHORING": 7
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 60,
+    "IMPLEMENTED_TESTING_DEFERRED": 63,
     "BLOCKED": 1
   },
   "items": [
@@ -2204,6 +2204,84 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Package lesson SUP-SS1-CC-T2-W03-MILK-VEGETABLES-FRUITS; body SHA-256 96fff35e6f1d4658b34c3ccf933ad023bb9c060f4ef97c02070d1352853a28ad; complete answered practice and 20-mark guide recorded in package and lesson note. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Original lesson body is preserved; equivalent teaching covers the scheme objectives; all practice has complete answers and mark breakdowns; factual uncertainties are corrected or explicitly excluded; no approval or practical observation is invented."
+    },
+    {
+      "id": "CC-LES-T2-W04",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR lines 616–763",
+      "objective": "Food Commodities: Cereals, Pulses, Nuts, Herbs and Flavourings",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T2-W04.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T2-W04",
+        "CC-FACT-T2-ADDITIVES-COLOURINGS",
+        "CC-FACT-T2-MULTILINGUAL-PLANT-NAMES"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T2-W04-CEREALS-PULSES; body SHA-256 c67baec405031b335413e0d71d55ed1a0cb982b16309142affd0bc687741ea75; answered practice and 20-mark guide recorded. Content approval PENDING; verification DEFERRED.",
+      "completion_condition": "Complete source-aligned teaching, answered practice and marking guide; factual errors are corrected or excluded; no unsupported source claims are taught; approval and verification are not fabricated."
+    },
+    {
+      "id": "CC-LES-T2-W05",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FIVE lines 765–842",
+      "objective": "Flour Cookery: Flour Types, Raising Agents and Mixtures",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T2-W05.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T2-W05"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T2-W05-FLOUR-COOKERY; body SHA-256 48048192e8433f86cf6e4a11170246f1b2f7231534e559bf3993594a9e904ec2; answered practice and 20-mark guide recorded. Content approval PENDING; verification DEFERRED.",
+      "completion_condition": "Complete source-aligned teaching, answered practice and marking guide; factual errors are corrected or excluded; no unsupported source claims are taught; approval and verification are not fabricated."
+    },
+    {
+      "id": "CC-LES-T2-W06",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX lines 845–927",
+      "objective": "Principles of Cooking Methods",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T2-W06.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T2-W06",
+        "CC-FACT-T2-COOKING-METHOD-CLASSIFICATION"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package lesson SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES; body SHA-256 840fcc00106bb1d241604fc183a08ef76fdec3dd1fd49ef290d7e90c4c3d33ff; answered practice and 20-mark guide recorded. Content approval PENDING; verification DEFERRED.",
+      "completion_condition": "Complete source-aligned teaching, answered practice and marking guide; factual errors are corrected or excluded; no unsupported source claims are taught; approval and verification are not fabricated."
     }
   ],
   "review": {
