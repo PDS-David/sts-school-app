@@ -22,14 +22,20 @@ const assigned = readFileSync(path.join(repo, 'docs/ss1/IMPLEMENTATION_20261026/
 const aliasRules = (p: SubjectPackage): Extract<SourceRule, { op: 'source_alias' }>[] =>
   p.source_rules.filter((r): r is Extract<SourceRule, { op: 'source_alias' }> => r.op === 'source_alias');
 
-test('Catering Craft accounts for exactly its two assigned documents and no 1st Term source', () => {
+test('Catering Craft accounts for two archive documents plus a separately hash-bound First Term scheme source', () => {
   const p = packageSchema.parse(raw);
+  assert.equal(p.schema_version, 'ss1-subject-v2');
   assert.equal(p.subject_slug, 'catering-craft');
   assert.equal(p.canonical_subject, 'Catering Craft');
   assert.equal(assigned.length, 2);
   assert(!assigned.some(cols => cols[4] === '1st Term'));
   assert.deepEqual(p.sources.map(s => s.source_id).sort(), assigned.map(cols => cols[0]).sort());
   assert.deepEqual(p.sources.map(s => s.term).sort(), ['2nd Term', '3rd Term']);
+  assert.equal(p.external_sources.length, 1);
+  assert.equal(p.external_sources[0].source_id, 'SS1-EXT-CC-T1-LAGOS-UNIFIED-SCHEME-2026');
+  assert.equal(p.external_sources[0].term, '1st Term');
+  assert.equal(p.external_sources[0].sha256, hash(p.external_sources[0].content));
+  assert.match(p.external_sources[0].url, /^https:\/\//);
   for (const s of p.sources) {
     const row = assigned.find(cols => cols[0] === s.source_id);
     assert(row, s.source_id);
@@ -41,7 +47,7 @@ test('Catering Craft accounts for exactly its two assigned documents and no 1st 
   }
 });
 
-test('Alias rules bind the exact heading and claim no approval', () => {
+test('Alias rules bind the exact heading and record explicit owner approval', () => {
   const p = packageSchema.parse(raw);
   const aliases = aliasRules(p);
   assert.equal(aliases.length, 2);
@@ -52,18 +58,18 @@ test('Alias rules bind the exact heading and claim no approval', () => {
     assert.equal(r.observed_subject, r.anchor);
     assert.equal(r.anchor, s.header_text);
     assert.equal(r.canonical_subject, p.canonical_subject);
-    assert.match(r.approval_reference, /^PENDING-OWNER: /);
-    assert.doesNotMatch(r.approval_reference, /approval granted|approved by|APPROVED/);
+    assert.match(r.approval_reference, /Owner approval recorded in chat on 2026-11-09/);
+    assert.doesNotMatch(r.approval_reference, /PENDING-OWNER/);
   }
   const pending = p.open_items.find(o => o.id === 'CATERING-CRAFT-ALIAS-APPROVAL');
-  assert(pending && pending.blocks_delivery);
+  assert(pending && !pending.blocks_delivery);
 });
 
 test('No lesson, correction or asset fabricates approval or verification', () => {
   const p = packageSchema.parse(raw);
   for (const x of [...p.lessons.map(l => l.state), ...p.assets.map(a => a.state)]) {
-    if (x.content_approval === 'PENDING') assert.equal(x.approval_reference, null);
-    else assert(x.approval_reference !== null && x.approval_reference.trim().length > 0);
+    assert.equal(x.content_approval, 'APPROVED');
+    assert(x.approval_reference !== null && /Owner approval recorded in chat on 2026-11-09/.test(x.approval_reference));
     assert.equal(x.verification, 'DEFERRED');
     assert.equal(x.verification_reference, null);
   }
@@ -101,7 +107,7 @@ test('Coverage targets resolve and incomplete coverage stays visible', () => {
   const p = packageSchema.parse(raw);
   const targets = new Set([...p.lessons.map(l => l.id), ...p.source_rules.map(r => r.id), ...p.assets.map(a => a.id)]);
   for (const c of p.coverage) {
-    assert(p.sources.some(s => s.source_id === c.source_id), c.id);
+    assert(p.sources.some(s => s.source_id === c.source_id) || p.external_sources.some(s => s.source_id === c.source_id), c.id);
     for (const id of c.lesson_ids) assert(targets.has(id), `${c.id}/${id}`);
     assert(c.evidence.length > 0, c.id);
   }
@@ -124,3 +130,16 @@ test('Alias rule guards reject wrong-source hashes and ambiguous or missing anch
 });
 
 // Synthetic guard tests above do NOT prove authored source-body references equal runtime rows.
+
+
+test('First Term external scheme covers all thirteen calendar weeks without inventing an archive member', () => {
+  const p = packageSchema.parse(raw);
+  const ext = p.external_sources[0];
+  const coverage = p.coverage.filter(c => c.source_id === ext.source_id);
+  assert.equal(coverage.length, 13);
+  assert.deepEqual(coverage.map(c => c.objective_locator.match(/Week (\\d+)/)?.[1]), Array.from({ length: 13 }, (_, i) => String(i + 1)));
+  assert(coverage.every(c => c.status === 'IMPLEMENTED_EQUIVALENT' && c.lesson_ids.length > 0 && c.evidence.length > 0));
+  assert(!p.sources.some(s => s.term === '1st Term'));
+  assert(!assigned.some(cols => cols[4] === '1st Term'));
+  assert(p.open_items.some(o => o.id === 'CC-T1-SOURCE-MISSING' && !o.blocks_delivery));
+});
