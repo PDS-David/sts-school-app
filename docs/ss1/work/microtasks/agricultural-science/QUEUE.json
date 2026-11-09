@@ -113,7 +113,8 @@
     "AG-FACT-T3-W03-CROP-MECHANIZATION (2026-11-09): blocks 315 and 363 checked against FAO mechanization framework and IITA ProPAS cassava planter/harvester technology. Mechanization spans many crop groups and operations; cassava is directly mechanized in planting/harvesting, so 'very few crops like maize/rice' is an overgeneralization. MCQ 363's 'best' is undefined and cassava/maize both have mechanized operations; specify crop group or operation before keying. No source/key change applied.",
     "AG-FACT-T3-W03-LABOUR-MCQ (2026-11-09): block 360 compared with source blocks 310 and 321-328 plus FAO 2006/2013 mechanization guidance. Labour displacement is a disadvantage/consequence; labour shortage/availability and cost can constrain production and influence mechanization adoption. Printed option 'Labor' is ambiguous. Recommend change D to 'labour displacement/unemployment' to make D the exception, or withdraw unchanged item; no key/source change applied.",
     "AG-FACT-T3-W04-DIGESTIVE-ACCURACY (2026-11-09): blocks 404-416 and comparison table 431 reviewed against OpenStax, UMN College of Veterinary Medicine, Merck Vet Manual and FAO. Block 410 is wrong: trypsinogen is an inactive pancreatic zymogen activated by enteropeptidase to trypsin; trypsin digests proteins/peptides. Bile emulsifies fats but is not an enzyme; 'chyle' at block 411 should be 'chyme'. Chymosin/rennin and salivary amylase require species/age qualification. Table 431 overgeneralizes fibre/bacterial digestion and protein synthesis; horses/rabbits are hindgut fermenters and all animals synthesize body proteins. Added species-qualified corrections; no source change applied.",
-    "AG-FACT-T3-W04-REPRODUCTIVE-ACCURACY (2026-11-09): blocks 482, 485, 486 and 492 compared with UMN CVM Large Animal Anatomy, Merck Vet Manual, Oregon State Extension, comparative veterinary anatomy and genetics glossaries. Vas deferens leads from epididymis to pelvic urethra; sperm mature/store in epididymis; uterus masculinus is a Müllerian remnant, not sperm duct/storage. Cowper's/bulbourethral (male) and Bartholin's/greater vestibular (female) are homologous, distinct structures. Vagina length varies by species (cow 25–30cm; ewe 10–14cm; sow 10–15cm; mare 20–35cm). 'Sex-inhibited characters' is not standard; use secondary sex characteristics or sex-limited/sex-influenced depending context. No source correction applied."
+    "AG-FACT-T3-W04-REPRODUCTIVE-ACCURACY (2026-11-09): blocks 482, 485, 486 and 492 compared with UMN CVM Large Animal Anatomy, Merck Vet Manual, Oregon State Extension, comparative veterinary anatomy and genetics glossaries. Vas deferens leads from epididymis to pelvic urethra; sperm mature/store in epididymis; uterus masculinus is a Müllerian remnant, not sperm duct/storage. Cowper's/bulbourethral (male) and Bartholin's/greater vestibular (female) are homologous, distinct structures. Vagina length varies by species (cow 25–30cm; ewe 10–14cm; sow 10–15cm; mare 20–35cm). 'Sex-inhibited characters' is not standard; use secondary sex characteristics or sex-limited/sex-influenced depending context. No source correction applied.",
+    "AG-FACT-T3-W05-RESPIRATION-ACCURACY (2026-11-09): blocks 532-541, 546, 552 and 597 compared with Monash/OpenStax, Merck Vet Manual, WA DPIRD and University of Hawai'i. Aerobic equation normalized; block 540 ethanol/CO2 is yeast alcoholic fermentation, not animal-muscle anaerobic respiration (lactate). Bronchioles branch from bronchi; epiglottis guards laryngeal inlet. Gill rakers filter food/particles; operculum covers/protects gills and assists water pumping in bony fish. MCQ 597 answer D raker is defensible as closest analogue. No source correction applied."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -128,9 +129,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 98,
+    "IMPLEMENTED_TESTING_DEFERRED": 99,
     "BLOCKED": 2,
-    "PENDING": 54
+    "PENDING": 53
   },
   "items": [
     {
@@ -5097,8 +5098,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W05: equation formatting/fermentation context and airway/gill descriptions need independent verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a; inspected blocks 532-541, 546, 552 and 597 and recomputed hashes. Aerobic equation normalized to glucose + 6O2 -> 6CO2 + 6H2O + ATP energy. Source's ethanol + CO2 equation is yeast alcoholic fermentation, not animal muscle anaerobic respiration (lactate + net 2 ATP). Bronchioles branch from bronchi, not directly from nose/mouth; gill rakers filter particles, while operculum covers/protects gills and assists ventilation in bony fish. MCQ 597 has defensible answer D raker as closest functional analogue to epiglottis. No source correction applied.",
       "completion_condition": "A sourced note verifies each equation and anatomy claim and recommends accurate delivery wording."
     },
     {
@@ -5873,7 +5874,6 @@
     "AG-CORR-T3-W02-POWER-TEXT",
     "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS",
     "AG-LES-T3-W05-RESPIRATION-NERVOUS-GAPS",
-    "AG-FACT-T3-W05-RESPIRATION-ACCURACY",
     "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION",
     "AG-FACT-T3-W06-REPRO-TIMINGS",
     "AG-FACT-T3-W06-LACTATION-COLOSTRUM",
