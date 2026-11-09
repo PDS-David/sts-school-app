@@ -130,9 +130,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 104,
+    "IMPLEMENTED_TESTING_DEFERRED": 105,
     "BLOCKED": 2,
-    "PENDING": 48
+    "PENDING": 47
   },
   "items": [
     {
@@ -5422,8 +5422,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W09: source chemical/veterinary statements and safety gaps are identified at blocks 1064, 1080-1093; no dose or PPE instructions are supplied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09 after confirming branch was fast-forwarded to current master f51616309aafe542edd89e41072b70c3b92b995e (ahead8/behind0). Reused verified archive/member SHA-256 and Week Nine block locators from AG-INV-T3/AG-WK-T3-W09. Reviewed against Merck Veterinary Manual (pig iron nutrition/toxicosis, lice, mange, gastrointestinal helminths, swine erysipelas), Kansas State University Swine Nutrition Guide, WOAH ASF guidance, FAO ASF contingency plans, ATSDR/CDC sodium-hydroxide hazard information, and a 2023 veterinary study of piglet hypoglycaemia glucose-administration routes. Findings: 'dextian' is a misspelling of iron dextran; early piglet iron supplementation is common but a repeat schedule is not universal and excess iron can cause toxicosis; external lice/mange require pig-approved ectoparasiticides/acaricides while internal helminths require anthelmintics (the exact block-1082 species list was not reproduced in the inventory and is not claimed to have been individually validated); ASF spreads by infected pigs, contaminated feed/materials/fomites and, where present, Ornithodoros soft ticks; 10% caustic soda is not supported as a universal instruction and NaOH is highly corrosive; the two-month period in older FAO guidance relates to disease-free resumption of trade, not a universal pen-vacancy rule; penicillin is a commonly recommended veterinary treatment for swine erysipelas; glucose may be used for piglet hypoglycaemia but injection is clinical and route-specific. No doses, injection routes, chemical concentrations for use, mixing/application instructions, contact times or PPE instructions supplied. No source bytes, package lesson content, corrections or assets changed. Tests/importer/typecheck/DB/rendering/CI not run; testing deferred.",
       "completion_condition": "A factual/safety review cites authoritative veterinary/public-health evidence and gives a safe learner-facing disposition while preserving source bytes and without inventing doses or handling procedures."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T3-W09-PIG-SAFETY",
     "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE",
     "AG-FACT-T3-W10-CATTLE-SAFETY",
     "AG-FACT-T3-W10-CATTLE-TERMS",
