@@ -2620,8 +2620,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W02-WATER-POWER",
       "kind": "FACT",
-      "detail": "The section defines water power as energy from flowing water used to drive hydro-electric turbines (209-210), but then lists transportation of farm goods, seed germination and photosynthesis as uses (217-220). These appear to conflate hydropower with water as a resource/transport medium.",
-      "required_action": "Verify the distinctions and recommend precise delivery corrections or reclassification for blocks 217-220; preserve original source text and do not silently relabel water use as water power.",
+      "detail": "Week Two water-power definition at block 210 is energy from flowing water driving turbines in hydroelectric stations; block 216 correctly describes flowing water turning turbines/wheels to generate electricity. Blocks 217–220 are not hydropower: (217) waterways as a transport medium for farm goods; (218) water as a produce-processing/hygiene resource; (219) water needed for seed germination and crop growth; (220) water as a reactant in photosynthesis. EIA/DOE define hydropower as energy captured from moving water through turbines/generators; FAO crop-water guidance and WHO food-processing guidance support the other roles. Recommended reclassification: retain wording but move blocks 217–220 to 'Other uses/importance of water in agriculture'.",
+      "required_action": "When an original Week Two lesson and its body_sha256 exist and a same-subject/same-term replacement lesson is authored, bind the reclassification using exact source ID/hash and lesson IDs/hashes. Keep block 216 under hydropower; move blocks 217–220 under other water-resource uses. Do not invent lesson IDs/body hashes or edit the archived source.",
       "affected_ids": [
         "AG-CORR-T3-W02-WATER-POWER",
         "SS1-SRC-458a07f7ea5a"
