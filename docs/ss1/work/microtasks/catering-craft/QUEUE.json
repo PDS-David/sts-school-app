@@ -40,10 +40,10 @@
     "VISUAL_DISPOSITION": 7,
     "SOURCE_PRESERVATION": 6,
     "LESSON_AUTHORING": 20,
-    "SUPPLEMENTAL_ASSESSMENT": 2
+    "SUPPLEMENTAL_ASSESSMENT": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 78,
+    "IMPLEMENTED_TESTING_DEFERRED": 80,
     "BLOCKED": 1
   },
   "items": [
@@ -2662,6 +2662,54 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Package lesson SUP-SS1-CC-T3-W09-TYPES-OF-COVER; body SHA-256 1a9b9f560da9c6ff473a934528ee7f9c750f655d36f907adcf63101b2fab7242; answered practice and 20-mark guide. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; visual rights are respected; dimensions and hygiene claims are factually qualified."
+    },
+    {
+      "id": "CC-LES-T3-W11",
+      "kind": "SUPPLEMENTAL_ASSESSMENT",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "Combined WEEK ELEVEN AND TWELVE marker lines 938–939",
+      "objective": "Project-authored Week Eleven revision and practical review",
+      "required_files": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T3-W11.md"
+      ],
+      "depends_on": [
+        "CC-MARK-T3-REVEXAM"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Supplement SUP-SS1-CC-T3-W11-REVISION; body SHA-256 330ea46010d2b06cd90bd702025fa06018412df72f7a1ffc3e6c281696251640; revision checklist, 30-mark practical rubric and 10-mark test.",
+      "completion_condition": "Supply project-authored revision and practical-review material with complete answers and marking; preserve original marker and do not claim observed performance."
+    },
+    {
+      "id": "CC-LES-T3-W12",
+      "kind": "SUPPLEMENTAL_ASSESSMENT",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "Combined WEEK ELEVEN AND TWELVE marker lines 938–939",
+      "objective": "Project-authored Week Twelve examination and marking guide",
+      "required_files": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T3-W12.md"
+      ],
+      "depends_on": [
+        "CC-MARK-T3-REVEXAM"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Supplement SUP-SS1-CC-T3-W12-EXAMINATION; body SHA-256 30c6a207a22e65188d108c2602e69668861502a4f8978f12c907177631ecd08b; 40-mark paper, answer key and marking guide.",
+      "completion_condition": "Supply project-authored examination paper, complete answer key and marking guide; preserve original marker and do not claim administration."
     }
   ],
   "review": {
