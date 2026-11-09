@@ -54,7 +54,7 @@ The DOCX has four body tables, 18 body image groups containing 23 linked raster 
 | 4 | image block 395 | Ruminant/cattle digestive tract (`image7.png`) |
 | 4 | image block 417 | Pig digestive system (`image8.jpeg`) |
 | 4 | image block 425 | Poultry digestive system (`image9.jpeg`) |
-| 4 | table block 431 | 7 x 3 monogastric/polygastric comparison; SHA-256 `0ca145261c566e4b6fdfaa02c15d7b741be36a751106f10076b43b37d4bf9fd2` |
+| 4 | table block 431 | 7 x 3 monogastric/polygastric comparison (21 cells); SHA-256 of row-major concatenated cell text, UTF-8, no separators or normalization: `0dcf9de2367de925c039cd05c16545e6b1bc036861c56d2220bbe8ad34d33b86` |
 | 4 | image block 487 | Two-image male reproductive-system group (`image10.jpeg`, `image11.jpeg`; alternate/effect layer `hdphoto1.wdp`) |
 | 4 | image block 493 | Female reproductive-system diagram (`image12.jpeg`) |
 | 4 | image block 494 | Second female reproductive-system image / photographed page (`image13.jpeg`; alternate/effect layer `hdphoto2.wdp`) |
