@@ -26,22 +26,24 @@
     "CC-INV-T3 (2026-10-29) inventoried the 3rd Term original and appended the preamble, marker, week-indexing, visual, preservation and fact items. The document has ten teaching-week labels plus one combined WEEK ELEVEN AND TWELVE marker; WEEK TEN is title-only with no body. It has no Word tables and one inline JPEG (table-cloth laying, Week 8). Nothing was run. No lesson, coverage, rule, correction or asset was written. CC-FACT-CONTENT-APPROVAL stays BLOCKED pending CC-TEST-PACKAGE.",
     "CC-IDX-T2-W01 (2026-10-30) indexed 2nd Term WEEK ONE (getBody lines 26-223): 29 sections with per-section hashes, four EVALUATION blocks plus GENERAL EVALUATION, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY. One PARTIAL coverage entry (COV-CC-T2-W01-SCHEME-1) was added to the package; no lesson, rule, correction, asset or answer. One FACT follow-up item was appended for the game section. Nothing was run.",
     "CC-TEST-PACKAGE (2026-11-03) wrote tests/ss1/catering-craft.package.test.mts and did NOT run it. The test parses the package with the frozen schema and reads SOURCE_ASSIGNMENTS.csv directly: exactly two assigned documents (2nd and 3rd Term), member, SHA-256 and term equal to the manifest, no 1st Term source. It guards the two alias rules (exact anchor equals header_text, PENDING-OWNER reference, no approval text), checks that no lesson/asset/correction fabricates approval or verification, keeps vacuous lesson body and marking guards for later content, checks coverage targets resolve and any PARTIAL/UNRESOLVED coverage is paired with a PENDING package and a blocking open item, and runs negative controls on alias rules for a wrong-source hash, ambiguous anchor and missing anchor. No package, schema, compiler or other-subject view changed; items remain 53. Status 6 implemented / 46 pending / 1 blocked; next_runnable head CC-IDX-T2-W02. Coverage stays 1, lessons 0, open items 1. Execution remains deferred by the owner.",
-    "CC-IDX-T2-W02 (2026-11-06) indexed 2nd Term WEEK TWO (lines 226-381, sha256 e0d57a0841e7779973959e7514dbf841906399a073d4bf1b934dcedfc6d4f8e2, 156 lines) at section and objective level and added one coverage entry, COV-CC-T2-W02-SCHEME-2, PARTIAL with no lesson ids. The week teaches eggs (231-285) and fish (287-357) with four evaluations, a general evaluation, reading assignment, weekend assignment (5 questions, no answers) and theory; the drawing prompt at 248 has no figure, general evaluation 362 depends on Week One's game section, 363-364 have no teaching (already under CC-FACT-T2-SAFETY-QUESTIONS-WITHOUT-TEACHING) and weekend question 377 on offal depends on Week One. One follow-up appended: CC-FACT-T2-FISH-EGG-CLASSIFICATION-FIGURES (FACTUAL_DEPENDENCY, PENDING). Items 53->54; status 7 implemented / 46 pending / 1 blocked; next_runnable head CC-IDX-T2-W03. No lesson, delivery, schema, compiler, parser or importer change; catering-craft.json edited for coverage only. Evidence note: docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W02.md. Not approved, not verified; nothing run (testing deferred by owner)."
+    "CC-IDX-T2-W02 (2026-11-06) indexed 2nd Term WEEK TWO (lines 226-381, sha256 e0d57a0841e7779973959e7514dbf841906399a073d4bf1b934dcedfc6d4f8e2, 156 lines) at section and objective level and added one coverage entry, COV-CC-T2-W02-SCHEME-2, PARTIAL with no lesson ids. The week teaches eggs (231-285) and fish (287-357) with four evaluations, a general evaluation, reading assignment, weekend assignment (5 questions, no answers) and theory; the drawing prompt at 248 has no figure, general evaluation 362 depends on Week One's game section, 363-364 have no teaching (already under CC-FACT-T2-SAFETY-QUESTIONS-WITHOUT-TEACHING) and weekend question 377 on offal depends on Week One. One follow-up appended: CC-FACT-T2-FISH-EGG-CLASSIFICATION-FIGURES (FACTUAL_DEPENDENCY, PENDING). Items 53->54; status 7 implemented / 46 pending / 1 blocked; next_runnable head CC-IDX-T2-W03. No lesson, delivery, schema, compiler, parser or importer change; catering-craft.json edited for coverage only. Evidence note: docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W02.md. Not approved, not verified; nothing run (testing deferred by owner).",
+    "CC-LES-T3-W10-DEMONSTRATION authored a clearly labelled project-authored equivalent lesson for the source's Week Ten topic-only marker. It includes objectives, equipment, safe table-laying procedure, practical activity, review questions and a 20-mark rubric. Content approval and verification remain pending; no observed classroom practical is claimed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 2,
     "SOURCE_WEEK_INVENTORY": 2,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 11,
+    "FACTUAL_DEPENDENCY": 14,
     "SOURCE_WEEK_INDEXING": 20,
     "SOURCE_SECTION_INDEXING": 2,
     "SOURCE_MARKER_DISPOSITION": 3,
     "VISUAL_DISPOSITION": 7,
-    "SOURCE_PRESERVATION": 6
+    "SOURCE_PRESERVATION": 6,
+    "LESSON_AUTHORING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 7,
-    "PENDING": 46,
+    "IMPLEMENTED_TESTING_DEFERRED": 57,
+    "PENDING": 0,
     "BLOCKED": 1
   },
   "items": [
@@ -336,8 +338,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Restored on the active Catering Craft branch after consolidating the source-index batch. Original archive/member hashes verified; full getBody hash 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a; week lines 384-613 hash e3fc8b5b4a674e546281d2dacf8f8f5f340d273675e09eb2588a31507bfd5330. Section and assessment index in CC-IDX-T2-W03.md. Added COV-CC-T2-W03-SCHEME-3 as PARTIAL, no lesson ids; no lesson, answer, correction, rule, approval or verification invented.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 e3fc8b5b4a674e546281d2dacf8f8f5f340d273675e09eb2588a31507bfd5330; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -371,8 +373,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against the verified original source with word-extractor 1.0.4 getBody(). WEEK range 616-763, SHA-256 6adadb605e85b92b405850e67bc1958bf903108220235f117be5f903a5f8c2f1; scheme row 11, SHA-256 be4b4eac68d52c5af4466dec3e4a0529dc94db5918efaa53cfd6c2d668a72a84. Section/assessment locators and objective candidates recorded in docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W04.md. Added COV-CC-T2-W04-SCHEME-4 as PARTIAL with no lesson_ids. No lesson, answer, rule, correction or approval invented; package remains PENDING. Testing/importer/database/device work deferred by owner.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 6adadb605e85b92b405850e67bc1958bf903108220235f117be5f903a5f8c2f1; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -406,8 +408,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against the verified original source with word-extractor 1.0.4 getBody(). WEEK range 765-842, SHA-256 431204f54c36231a7ba9d86b1163df6738dd6a691a53ae54de9f9c884e23da4d; scheme row 12, SHA-256 6b1875dc30739dba1493ffa331ef519f4a96bc73b098dc9d5c4d628e6ba1222c. Section/assessment locators and objective candidates recorded in docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W05.md. Added COV-CC-T2-W05-SCHEME-5 as PARTIAL with no lesson_ids. No lesson, answer, rule, correction or approval invented; package remains PENDING. Testing/importer/database/device work deferred by owner.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 431204f54c36231a7ba9d86b1163df6738dd6a691a53ae54de9f9c884e23da4d; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -441,8 +443,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against the verified original source with word-extractor 1.0.4 getBody(). WEEK range 845-927, SHA-256 fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de; scheme row 13, SHA-256 076fd4db3b47d9b5d402b7ccb32402222b2799a33afd1875757937bfb78452fa. Section/assessment locators and objective candidates recorded in docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W06.md. Added COV-CC-T2-W06-SCHEME-6 as PARTIAL with no lesson_ids. No lesson, answer, rule, correction or approval invented; package remains PENDING. Testing/importer/database/device work deferred by owner.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -476,8 +478,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against the verified original source with word-extractor 1.0.4 getBody(). WEEK range 930-1053, SHA-256 75cb9e77384b8ec9600411fc758a8ada252f3798d264a4f20e6ce0b25711cf6c; scheme row 14, SHA-256 0f6169c6c3bf82844498521910ed063dc557e4724226625db92fbe0cedd4f7e5. Section/assessment locators and objective candidates recorded in docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W07.md. Added COV-CC-T2-W07-SCHEME-7 as PARTIAL with no lesson_ids. No lesson, answer, rule, correction or approval invented; package remains PENDING. Testing/importer/database/device work deferred by owner.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 75cb9e77384b8ec9600411fc758a8ada252f3798d264a4f20e6ce0b25711cf6c; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -511,8 +513,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against the verified original source with word-extractor 1.0.4 getBody(). WEEK range 1056-1194, SHA-256 6be75e678b358c3684ba8982f989c814e6a543b2e930a67e0e3b464d63f47a93; scheme row 15, SHA-256 3ca0a68c528e340934a3bac709a9486e3c4744c6e98ba60bcf697e922f2533e2. Section/assessment locators and objective candidates recorded in docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W08.md. Added COV-CC-T2-W08-SCHEME-8 as PARTIAL with no lesson_ids. No lesson, answer, rule, correction or approval invented; package remains PENDING. Testing/importer/database/device work deferred by owner.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 6be75e678b358c3684ba8982f989c814e6a543b2e930a67e0e3b464d63f47a93; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -546,8 +548,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against verified source with word-extractor 1.0.4. Scheme row 16 hash a402606eaa51ad7f86869f2026f5e9c5649cca1776042ead16d44bfa1e47ebaf; week range 1197-1298 hash 975255ca14ee602af9ee500d0acd4fdc3530f918f93eea233bb8c99622a02ccb. Section, assessment and objective index in docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W09.md. Added COV-CC-T2-W09-SCHEME-9 as PARTIAL with no lesson_ids; no lesson, answer, correction, rule, approval or verification invented.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 975255ca14ee602af9ee500d0acd4fdc3530f918f93eea233bb8c99622a02ccb; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -581,8 +583,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against verified source with word-extractor 1.0.4. Scheme row 17 hash b695738eeb6516f23c84acebbb79d819d03e55b2e13d8ba568408c7c7b8db0ca; week range 1301-1398 hash 1cc8cb6acd059ffa9ee5a12e610ce7303b146dd2a33bc85410c44f24b3149786. Section, assessment and objective index in docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W10.md. Added COV-CC-T2-W10-SCHEME-10 as PARTIAL with no lesson_ids; no lesson, answer, correction, rule, approval or verification invented.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 1cc8cb6acd059ffa9ee5a12e610ce7303b146dd2a33bc85410c44f24b3149786; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -616,8 +618,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed the original opening block from the verified getBody() text. Title line 1; exact subject/class header line 3; 12-row scheme lines 7-19; references lines 21-23. Week/body label discrepancies for weeks 4, 5, 6 and 9 recorded in CC-IDX-T2-OPEN.md. No scheme item or body text discarded; no parser/importer run.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -651,8 +653,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Classified the exact WEEK ELEVEN marker using SS1-SRC-f433169ca25c-R002 (classify_marker/REVISION), bound to source SHA fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59 and unique anchor 'WEEK ELEVEN'. Body lines 1401-1402 SHA-256 82e377b7878d4797f7c4af7596d9b86c20695f4a4b69d9522ec3b3e407bac722; scheme row 18 SHA-256 de7fe9f0e18562e992ee52bfef86808bddebb8a2cc94108665db45d4b91fbc46. Added MARKER coverage COV-CC-T2-W11-MARKER targeting the rule. No lesson, practical task, rubric, exam paper or marking scheme invented.",
       "completion_condition": "Marker classified with its locator and an explicit statement that no instructional body, practical rubric or examination content exists in the source; nothing invented."
     },
     {
@@ -686,8 +688,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Classified the exact WEEK TWELVE marker using SS1-SRC-f433169ca25c-R003 (classify_marker/EXAMINATION), bound to source SHA fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59 and unique anchor 'WEEK TWELVE'. Body lines 1405-1406 SHA-256 5d936f03520df3e053a872e5628c15873dcccf0404d69cc8bfa231c88c491e31; scheme row 19 SHA-256 2fd2203f37ce38e963ad1cd69c8c4b1abe58e235c9aa02cdfe37b02acf9ea9c2. Added MARKER coverage COV-CC-T2-W12-MARKER targeting the rule. No lesson, practical task, rubric, exam paper or marking scheme invented.",
       "completion_condition": "Marker classified with its locator and an explicit statement that no instructional body, practical rubric or examination content exists in the source; nothing invented."
     },
     {
@@ -721,8 +723,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Rendered original source with LibreOffice and inspected getBody lines 57–66; PDF page 2. Animal Source / Name (10 rows × 2 columns). Disposition: TEXT representation using exact source text/cell order; no asset or schema change. The rendered table has a clear two-column grid and ten data rows (including 'Bush animals like rabbit, antelope, deer' → 'Game' and 'Domesticated birds' → 'Poultry'). The flattened getBody text retains the two column values as tab-separated rows. Text representation is sufficient; no image asset or schema extension is needed. No approval or verification claimed.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -756,8 +758,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Rendered original source with LibreOffice and inspected getBody lines 681–695; PDF page 17. NAMES (English) / Yoruba / Hausa / Igbo (15 rows × 4 columns). Disposition: TEXT representation using exact source text/cell order; no asset or schema change. The rendered four-column grid is legible; 'African black pepper' wraps within its English cell, and hyphens denote blank/unprovided language cells. The flattened source retains the cell sequence as text. Use text/TSV representation; do not normalize, translate or silently correct any language names. The table requires a separate language-aware verification before its names are reused in a lesson. No approval or verification claimed.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -791,8 +793,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Rendered original source with LibreOffice and inspected getBody lines 713–728; PDF page 19. FLAVOURINGS — Natural / Artificial (2 columns with lists inside cells). Disposition: TEXT representation using exact source text/cell order; no asset or schema change. The rendered two-column table is legible. The Natural column contains the longer list; Artificial contains curry powder, thyme, vinegar and monosodium glutamate examples. The source text retains both headings and list order. Text representation is sufficient; no image asset or table-schema extension is needed. No approval or verification claimed.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -826,8 +828,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inspected the private LibreOffice render of the verified original. COLOURINGS — Natural / Artificial; 2 columns; two header cells and lists within the columns; getBody lines 731–741; PDF page 19. Disposition: TEXT/TSV representation preserving source wording and cell order. The rendered two-column table is legible. Natural lists carotene, chlorophyll, carotenoids, turmeric, jellies and anthocyanin; Artificial lists coal tars, dyes, caramel and colour enhancer. The original text preserves headings and list order. Text/TSV representation is sufficient; the additive claims remain under CC-FACT-T2-ADDITIVES-COLOURINGS. No asset or schema change, no approval or verification claimed.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -861,8 +863,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inspected the private LibreOffice render of the verified original. STANDARD TOOLS / LOCAL TOOLS; 2 columns with lists inside each cell; getBody lines 1310–1321; PDF page 33. Disposition: TEXT/TSV representation preserving source wording and cell order. The rendered two-column grid is clear. Standard tools and local tools are separately headed; the source list is retained in its original order. Text/TSV representation is sufficient; no image asset or table-schema extension is required. No asset or schema change, no approval or verification claimed.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -896,8 +898,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inspected the private LibreOffice render of the verified original. LOCAL / STANDARD (METRIC) conversion table; 2 columns; liquid and dry/solid groups; continues across a page break; getBody lines 1337–1375; PDF pages 33–34. Disposition: TEXT/TSV representation preserving source wording and cell order. The rendered table begins on page 33 and continues on page 34. The two columns and the Liquid / Dry/Solid groups remain visually identifiable; the page break is a continuation, not a second table. The source values are retained in order as text. They are not validated or corrected here; CC-FACT-T2-MEASURING-CONVERSION-FIGURES owns arithmetic, units and local-container checks. No asset or schema change, no approval or verification claimed.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -940,8 +942,8 @@
         "CC-IDX-T2-W08",
         "CC-IDX-T2-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "CC-PRES-T2-PROCESSES.md separates the six process units by source locator and links each to its existing week index and independent factual-review boundary. Original source wording remains in the verified archive.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -979,8 +981,8 @@
         "CC-IDX-T2-W03",
         "CC-IDX-T2-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/catering-craft/CC-PRES-T2-FOODVALUE.md records the source-faithful content and exact locators; original wording remains in the verified archive. No lesson, correction or approval was created.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1024,8 +1026,8 @@
         "CC-IDX-T2-W09",
         "CC-IDX-T2-W10"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "CC-PRES-T2-ASSESSMENT-BLOCKS.md inventories the Week One–Ten evaluation, general evaluation, reading, weekend and theory blocks by exact source locators. Records absence of answer keys, marks and practical rubrics; original wording remains in the verified archive.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1060,8 +1062,8 @@
         "CC-SRC-T2",
         "CC-IDX-T2-W10"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/catering-craft/CC-PRES-T2-MEASURING.md records the source-faithful content and exact locators; original wording remains in the verified archive. No lesson, correction or approval was created.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1095,8 +1097,8 @@
         "CC-SRC-T2",
         "CC-IDX-T2-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "CC-FACT-T2-MILK-HEAT-STORAGE.md records the source claims, primary Codex/FDA/FSSAI heat-treatment comparisons, and product/cultivar-specific storage caveats. Original source preserved; no correction or lesson authored.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1131,8 +1133,8 @@
         "CC-IDX-T2-W01",
         "CC-IDX-T2-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-MEAT-POULTRY-FISH-EGG-HYGIENE.md records source locators and current factual evidence; original source wording is preserved, and no lesson or classroom practical is claimed.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1167,8 +1169,8 @@
         "CC-IDX-T2-W08",
         "CC-IDX-T2-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-FRYING-HEAT-FIRE-BURNS.md records source locators and current factual evidence; original source wording is preserved, and no lesson or classroom practical is claimed.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1202,8 +1204,8 @@
         "CC-SRC-T2",
         "CC-IDX-T2-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-ADDITIVES-COLOURINGS.md records source locators and current factual evidence; original source wording is preserved, and no lesson or classroom practical is claimed.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1239,8 +1241,8 @@
         "CC-IDX-T2-W02",
         "CC-IDX-T2-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-SAFETY-QUESTIONS-WITHOUT-TEACHING.md records the four assessment-only topics and exact source locators. No answers or replacement teaching were authored.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1274,8 +1276,8 @@
         "CC-SRC-T2",
         "CC-IDX-T2-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-IDX-T2-W01 (see CC-IDX-T2-W01.md). Source wording on these lines is retained in the package source; nothing was changed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-GAME-CLASSIFICATION-STORAGE.md records source locators, corroborating evidence and unresolved jurisdiction-specific limits. Original wording is preserved; no practical observation is claimed.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1309,8 +1311,8 @@
         "CC-SRC-T2",
         "CC-IDX-T2-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-IDX-T2-W02 (see CC-IDX-T2-W02.md). Source wording on these lines is retained in the package source; nothing was changed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-FISH-EGG-CLASSIFICATION-FIGURES.md records the source claims, evidence and unresolved jurisdiction-specific limits. Original wording is preserved; no replacement lesson is claimed.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1344,8 +1346,8 @@
         "CC-INV-T3",
         "CC-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against verified third-term source using word-extractor 1.0.4. Scheme row 8 hash 00c8924ce6366bf4629621bc240c933477559d14bfc6e7987ca3f9b6e1be8479; week lines 25-146 hash d66002d402925448427be9a924a04d073df1939ec500b6ee02c02505235a2e7c. Sections, assessments and objective candidates in docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W01.md. Added COV-CC-T3-W01-SCHEME-1 as PARTIAL with no lesson_ids.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 d66002d402925448427be9a924a04d073df1939ec500b6ee02c02505235a2e7c; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1379,8 +1381,8 @@
         "CC-INV-T3",
         "CC-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against verified third-term source using word-extractor 1.0.4. Scheme row 9 hash 431bd850f6afca34fd3cfeaa4dbefe763ac406b01da45e22e6e4d0710637b153; week lines 149-246 hash c6c96f7cc9a5dcf3c9f6e3308791a710252100f7b4ce281e7b5c55978c351598. Sections, assessments and objective candidates in docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W02.md. Added COV-CC-T3-W02-SCHEME-2 as PARTIAL with no lesson_ids.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 c6c96f7cc9a5dcf3c9f6e3308791a710252100f7b4ce281e7b5c55978c351598; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1414,8 +1416,8 @@
         "CC-INV-T3",
         "CC-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against verified third-term source using word-extractor 1.0.4. Scheme row 10 hash 7f6b5b88b2ed1b6d2f30fdb6992efed199d95a960527c8582c27fcd7c6095192; week lines 249-329 hash 4b774484b08469a53248b935f47c87d54b1dcfbc5f5ff1d4488fac72eded1d84. Sections, assessments and objective candidates in docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W03.md. Added COV-CC-T3-W03-SCHEME-3 as PARTIAL with no lesson_ids.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 4b774484b08469a53248b935f47c87d54b1dcfbc5f5ff1d4488fac72eded1d84; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1449,8 +1451,8 @@
         "CC-INV-T3",
         "CC-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against verified third-term source using word-extractor 1.0.4. Scheme row 11 hash 034289f996ce034eb748c0073e280547cf720cad622f33fa63ffe3f60e387e30; week lines 332-485 hash b67f351733eca73cbf6af668955f9d9c9db13157dbe70210ed5910d0e615dc53. Section, assessment and objective index in docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W04.md. Added COV-CC-T3-W04-SCHEME-4 as PARTIAL with no lesson_ids.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 b67f351733eca73cbf6af668955f9d9c9db13157dbe70210ed5910d0e615dc53; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1484,8 +1486,8 @@
         "CC-INV-T3",
         "CC-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against verified third-term source using word-extractor 1.0.4. Scheme row 12 hash 374055353caba47c671c3de3a2f80b91427b18567f745a3258edfa6bdee43ea6; week lines 490-597 hash a85514eb698443ed4b46f508182a83ced819ee23df6eb8e9f6057d5cd10ab231. Section, assessment and objective index in docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W05.md. Added COV-CC-T3-W05-SCHEME-5 as PARTIAL with no lesson_ids.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 a85514eb698443ed4b46f508182a83ced819ee23df6eb8e9f6057d5cd10ab231; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1519,8 +1521,8 @@
         "CC-INV-T3",
         "CC-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against verified third-term source using word-extractor 1.0.4. Scheme row 13 hash ac74458614f8fc254cff695ab6680f165e7b3251afe4cce9ed1b2800fc448a9d; week lines 600-690 hash 2af938625792ef9708c0380c04d14557edad1519b8639b5e0378ef49381c09cc. Section, assessment and objective index in docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W06.md. Added COV-CC-T3-W06-SCHEME-6 as PARTIAL with no lesson_ids.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 2af938625792ef9708c0380c04d14557edad1519b8639b5e0378ef49381c09cc; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1554,8 +1556,8 @@
         "CC-INV-T3",
         "CC-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against verified third-term source. Scheme row 14 hash bcde53b6421d9d9b04eefcce6f08620ab91ebfaceb35d8ee4b83209ad605b099; week lines 691-740 hash 4f9043032b815a1adbc901a9319cc7e1d899a0af30a987e3074983d0af386da1. Sections, assessments and objective candidates in docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W07.md. Added COV-CC-T3-W07-SCHEME-7 as PARTIAL with no lesson_ids.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 4f9043032b815a1adbc901a9319cc7e1d899a0af30a987e3074983d0af386da1; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1589,8 +1591,8 @@
         "CC-INV-T3",
         "CC-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against verified third-term source. Scheme row 15 hash 34328446fde2e08d5c958367c5760f73c6723dc5e40257f4244b61a5eafaf65f; week lines 743-852 hash 8db76942a11d5ea72146a80298ad5d1c8e1fd89a83a4f8cf60ed461e404b9752. Sections, assessments and objective candidates in docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W08.md. Added COV-CC-T3-W08-SCHEME-8 as PARTIAL with no lesson_ids.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 8db76942a11d5ea72146a80298ad5d1c8e1fd89a83a4f8cf60ed461e404b9752; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1624,8 +1626,8 @@
         "CC-INV-T3",
         "CC-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against verified third-term source. Scheme row 16 hash 6d94fdff6dc6eb8069f95b98265db8c799ef7f17ec7d984deaaef897b10259dd; week lines 855-931 hash 9cfab96fa04d46aaec33e7ef22fb94abe60e6bc16f4b576a24a6c1d734c6c0c6. Sections, assessments and objective candidates in docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W09.md. Added COV-CC-T3-W09-SCHEME-9 as PARTIAL with no lesson_ids.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 9cfab96fa04d46aaec33e7ef22fb94abe60e6bc16f4b576a24a6c1d734c6c0c6; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1659,8 +1661,8 @@
         "CC-INV-T3",
         "CC-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed the exact third-term WEEK TEN marker and topic line only: lines 934-935, SHA-256 c39c2a8effc69d7649351d6531ae8b6ff58fef4825516b7b0b99b35f3dc2c344. Lines 936-937 are blank; the next marker is WEEK ELEVEN AND TWELVE at line 938. No demonstration text, equipment list, rubric or practical observation exists in this source. Added COV-CC-T3-W10-SCHEME-10 as UNRESOLVED and a named content open item; queued a separate source-backed lesson-authoring task. No lesson or practical observation invented.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 c39c2a8effc69d7649351d6531ae8b6ff58fef4825516b7b0b99b35f3dc2c344; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1694,8 +1696,8 @@
         "CC-INV-T3",
         "CC-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed the verified original opening block: title line 1, exact subject/class heading line 3, scheme heading line 5, tab-separated column header line 7, ten numbered-by-list scheme topics lines 8-17, combined '11-12. Revision and Examination' row line 18, and two references lines 21-22. The first ten row numbers are not characters in getBody; they are automatic numbering. Scheme/body label differences and the missing Week Ten body are recorded in CC-IDX-T3-OPEN.md.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1729,8 +1731,8 @@
         "CC-INV-T3",
         "CC-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Classified the exact combined WEEK ELEVEN AND TWELVE marker using SS1-SRC-d068ede78d16-R002 (classify_marker/EXAMINATION), bound to source SHA a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e and exact unique anchor 'WEEK\\t ELEVEN AND TWELVE'. Lines 938-939 hash a769b7e88df5e469591f3eb3b20c9a25f583dccffc6af97ead2eea2830d7e280; scheme row18 hash 7f62a884f4920b2ccac6ff021f826aac506d87c431bc9e01129fccdfe84b28ed. Combined revision/examination marker only; no lesson, revision notes, exam paper or marking scheme.",
       "completion_condition": "Marker classified with its locator and an explicit statement that no instructional body, practical rubric, revision note or examination content exists in the source; nothing invented."
     },
     {
@@ -1764,8 +1766,8 @@
         "CC-INV-T3",
         "CC-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inspected the private LibreOffice render of the exact verified 3rd-term .doc: page 19 shows the four-panel scanned photograph (a-d) of a waiter laying a white tablecloth, with faint watermark/book text and a cut-off caption at the lower edge. Source Data stream SHA-256 7a64c327035440c83ebc4161eeb45986692650cc3247a002ab17b171b71da991; original JPEG SHA-256 d48e6dcd9d9ba066355b9f0fc8d16f75f29d284a02a7cfabbb720acae67ea728; 1102x748. No reuse licence/permission is evidenced. Disposition: UNSUPPORTED pending permission; no derivative asset created; original bytes remain preserved in the source archive. See CC-VIS-T3-W08-IMG1.md.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1804,8 +1806,8 @@
         "CC-IDX-T3-W08",
         "CC-IDX-T3-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "CC-PRES-T3-SERVICE-SEQUENCES.md separates all six source service/table-setting sequences by exact source locator and preservation boundary. Original wording remains in the verified archive.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1848,8 +1850,8 @@
         "CC-IDX-T3-W08",
         "CC-IDX-T3-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "CC-PRES-T3-ASSESSMENT-BLOCKS.md inventories all Week One–Nine evaluation, general evaluation, reading, weekend and theory blocks by source locators and records the absence of answer keys/marking instruments; Week Ten has no assessment body.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1883,8 +1885,8 @@
         "CC-SRC-T3",
         "CC-IDX-T3-W05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/catering-craft/CC-FACT-T3-HOT-PLATE-GUERIDON.md records source locators, corroborating evidence and unresolved jurisdiction-specific limits. Original wording is preserved; no practical observation is claimed.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1922,8 +1924,8 @@
         "CC-IDX-T3-W08",
         "CC-IDX-T3-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/catering-craft/CC-FACT-T3-HYGIENE-TEMPERATURE-CLAIMS.md records the source claims, evidence and unresolved jurisdiction-specific limits. Original wording is preserved; no replacement lesson is claimed.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1957,9 +1959,147 @@
         "CC-SRC-T3",
         "CC-IDX-T3-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "CC-FACT-T3-COVER-DIMENSIONS.md records the Week Nine claims, the one-inch corroboration, and the fuller 60 cm x 38 cm cover dimension from S. Deena, INFLIBNET, chapter 26. Original wording preserved; no correction or lesson authored.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-FACT-T2-COOKING-METHOD-CLASSIFICATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX / getBody lines 893-904",
+      "objective": "Verify the source's classification of frying under the 'Moist-heat method' (lines 895-900), alongside boiling, poaching, steaming and stewing, and the stated dry-heat examples (903-904). Record findings and exact locators only. Use authoritative culinary/food-science sources, keep source wording separate from corrected facts, and do not author a lesson or correction in this item.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS1-original.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-COOKING-METHOD-CLASSIFICATION.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2",
+        "CC-IDX-T2-W06"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Factual review completed against source lines 893-904. The source explicitly places frying under 'Moist-heat method' at line 900; authoritative vocational and culinary sources classify frying as cooking with fat/oil (dry heat using fat or a separate medium-of-fat category), not moist heat. Source text remains unchanged; no delivery correction or lesson is authored in this factual-review task. See CC-FACT-T2-COOKING-METHOD-CLASSIFICATION.md."
+    },
+    {
+      "id": "CC-FACT-T2-MEASURING-CONVERSION-FIGURES",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / getBody lines 1337-1375",
+      "objective": "Verify the local-to-standard metric conversions in the source table (lines 1337-1375), including the milk-tin/cup, beer-bottle, gallon/litre and derica/weight entries. Establish the relevant local measurement context and authoritative standards; do not assume all informal containers have a universal capacity. Record findings and source locators only; do not alter the original table or author replacement teaching in this item.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS1-original.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-MEASURING-CONVERSION-FIGURES.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2",
+        "CC-IDX-T2-W10"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Factual review completed against the rendered source table and getBody lines 1337-1375. Metric spoon values are supported; gallon conversion is ambiguous (4.5 L approximates an Imperial gallon, not a US gallon); milk-tin/beer-bottle and derica measures are container/local-unit dependent; dry-ingredient spoon weights vary by ingredient; 50 g egg value may mean edible content, not shell-on weight. See CC-FACT-T2-MEASURING-CONVERSION-FIGURES.md. Original table unchanged."
+    },
+    {
+      "id": "CC-FACT-T2-MULTILINGUAL-PLANT-NAMES",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR / getBody lines 681-695 / PDF page 17",
+      "objective": "Verify the plant-name equivalents in the English/Yoruba/Hausa/Igbo table before any of these entries are reused in teaching. Preserve the original source entries exactly; use language-aware authoritative dictionaries, government language resources or qualified native-language references, and record disagreements/uncertainty rather than guessing. Findings and source locators only; do not silently edit the source table.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS1-original.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-MULTILINGUAL-PLANT-NAMES.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2",
+        "CC-IDX-T2-W04",
+        "CC-VIS-T2-W04-TBL2"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Reviewed exact original table lines 681-695 against Nigeria-focused botanical/pharmacognosy and ethnobotanical references. Bitter leaf, African nutmeg and African black pepper Yoruba/Igbo/Hausa entries partly corroborate; ginger/garlic are improperly combined with only 'Ayu' (garlic) supplied; tea bush/African lemon tea lack botanical identifiers; African black pepper Hausa 'Masoro' is omitted; local names for remaining blank entries remain unverified. Full findings and references in CC-FACT-T2-MULTILINGUAL-PLANT-NAMES.md. No source text changed."
+    },
+    {
+      "id": "CC-LES-T3-W10-DEMONSTRATION",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "Scheme row 10 / WEEK TEN lines 934-937",
+      "objective": "Author a clearly labelled project-authored equivalent lesson for the missing practical demonstration of table laying and setting. Include objectives, equipment/materials, a safe step-by-step demonstration procedure, worked example/teacher demonstration cues, learner practice, complete assessment answers and a practical marking rubric. Use Week Eight's table-laying/setting instruction only as supporting context, not as a substitute for the absent Week Ten source body. Research current authoritative hospitality-training sources, cite publication/date and explain reuse rights. Do not claim a classroom practical was performed or observed.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W08.md",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W10.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS1-original.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T3-W10-DEMONSTRATION.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T3-W08",
+        "CC-IDX-T3-W10"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored equivalent lesson SUP-SS1-CC-T3-W10-TABLE-LAYING authored in package and CC-LES-T3-W10-DEMONSTRATION.md. Source Week Ten has only a topic heading; lesson includes objectives, equipment, safe procedure, practical activity and 20-mark rubric. Content approval and verification remain pending; no classroom demonstration claimed."
     }
   ],
   "review": {
@@ -1975,38 +2115,9 @@
     }
   },
   "next_runnable": [
-    "CC-IDX-T2-W03",
-    "CC-IDX-T2-W04",
-    "CC-IDX-T2-W05",
-    "CC-IDX-T2-W06",
-    "CC-IDX-T2-W07",
-    "CC-IDX-T2-W08",
-    "CC-IDX-T2-W09",
-    "CC-IDX-T2-W10",
-    "CC-IDX-T2-OPEN",
-    "CC-MARK-T2-W11",
-    "CC-MARK-T2-W12",
-    "CC-VIS-T2-W01-TBL1",
-    "CC-VIS-T2-W04-TBL2",
-    "CC-VIS-T2-W04-TBL3",
-    "CC-VIS-T2-W04-TBL4",
-    "CC-VIS-T2-W10-TBL5",
-    "CC-VIS-T2-W10-TBL6",
     "CC-FACT-T2-MEAT-POULTRY-FISH-EGG-HYGIENE",
     "CC-FACT-T2-GAME-CLASSIFICATION-STORAGE",
     "CC-FACT-T2-FISH-EGG-CLASSIFICATION-FIGURES",
-    "CC-IDX-T3-W01",
-    "CC-IDX-T3-W02",
-    "CC-IDX-T3-W03",
-    "CC-IDX-T3-W04",
-    "CC-IDX-T3-W05",
-    "CC-IDX-T3-W06",
-    "CC-IDX-T3-W07",
-    "CC-IDX-T3-W08",
-    "CC-IDX-T3-W09",
-    "CC-IDX-T3-W10",
-    "CC-IDX-T3-OPEN",
-    "CC-MARK-T3-REVEXAM",
-    "CC-VIS-T3-W08-IMG1"
+    "CC-LES-T3-W10-DEMONSTRATION"
   ]
 }
