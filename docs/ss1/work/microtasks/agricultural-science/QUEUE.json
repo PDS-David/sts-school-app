@@ -131,8 +131,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 108,
-    "BLOCKED": 9,
-    "PENDING": 37
+    "BLOCKED": 10,
+    "PENDING": 36
   },
   "items": [
     {
@@ -4642,8 +4642,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W01: MCQ 67 prints 'Hand Towel' while list contains 'Hand trowel'.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a and block hashes 36 28bfedef98dd4d82e8b4f6500a7edc48557034eae883aac5b663e5e0c054736f; 67 4ba8749f05ebe9a294043f9dd791b2f18140e3bec811d9ebf19c4387388a9745. The source's tool list at block 36 contains 'Hand trowel'; MCQ block 67 asks for the tool used for transplanting seedlings and says 'Hand Towel'. University of Minnesota and University of Maryland Extension confirm hand trowels are used for transplanting. Recommended correction at block 67 is 'C. Hand Trowel'. Parallel copies reproduce the typo; block 66 'Hand towel' remains an intentional distractor and is not changed. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery correction can be bound yet. Updated existing package open item; no delivery_corrections or source changes.",
       "completion_condition": "Correction-binding record cites approved source and proposes only a verified delivery correction."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-CORR-T3-W01-TOOL-NAMES",
     "AG-CORR-T3-W02-WATER-POWER",
     "AG-CORR-T3-W02-POWER-TEXT",
     "AG-CORR-T3-W10-CATTLE-TERMS",
