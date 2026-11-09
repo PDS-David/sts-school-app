@@ -237,7 +237,7 @@
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Owner explicitly approved all 38 authored lesson/assessment records in chat on 2026-11-09. Every lesson state now records APPROVED with that owner approval reference; verification remains DEFERRED.",
-      "completion_condition": "Owner reviews and explicitly approves or rejects authored content and alias mappings; First Term source registration/foundation approval and testing/verification remain separate gates."
+      "completion_condition": "Owner approval of all 38 authored records is recorded in each lesson state. Keep verification deferred until evidence from actual teaching/practical/examination activity exists."
     },
     {
       "id": "CC-IDX-T2-W01",
@@ -3034,19 +3034,17 @@
       "depends_on": [],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Schema v2 and compiler now accept external scheme records with exact UTF-8 content hash, source URL, provenance and evidence. Registered SS1-EXT-CC-T1-LAGOS-UNIFIED-SCHEME-2026 (57f54695976579ed57624321efb65d156f4fac193141d85875c5e26357e014a0); 13 First Term coverage entries point to the 13 authored weekly supplements. The 61-member archive manifest and source registry remain unchanged.",
-      "completion_condition": "A v2 external scheme record is hash-validated and all thirteen calendar weeks map to authored equivalent lessons."
+      "completion_condition": "Schema v2 accepts the external scheme source only when its exact content SHA-256 and scope are valid; all thirteen calendar weeks map to authored equivalent lessons."
     }
   ],
   "review": {
-    "date": "2026-10-27",
-    "reviewed_master_sha": "f9e9e9e0263b6823508fd74f5049e84979164ecf",
-    "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
+    "date": "2026-11-09",
+    "reviewed_master_sha": "51a93ad98db283bb26a0981730fe870c65532ba6",
+    "scope": "Owner-approved source aliases and 38 authored lessons; implemented schema v2 external scheme registration and all 13 First Term coverage mappings. Structural checks only. Exact Week Six source parser run remains blocked by unavailable binary archive bytes; tests, full typechecks, DB/device and deployment remain deferred.",
     "source_archive": {
-      "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
+      "filename": "SSS1-original.zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-      "manifest_matches": 2,
-      "mismatches": 0,
-      "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
+      "availability": "Stored as a binary ZIP in the repository; GitHub file connector returned empty content and no copy was found in connected Library, so it could not be staged into this execution environment."
     }
   },
   "next_runnable": []
