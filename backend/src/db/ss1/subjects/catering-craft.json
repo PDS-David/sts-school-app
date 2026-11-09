@@ -2813,7 +2813,21 @@
       }
     }
   ],
-  "delivery_corrections": [],
+  "delivery_corrections": [
+    {
+      "id": "CC-CORR-T2-W06-FRYING-CLASSIFICATION",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "source_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59",
+      "source_lesson_id": "SS1-SRC-f433169ca25c:BODY:fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de",
+      "body_sha256": "fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de",
+      "replacement_id": "SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES",
+      "reason": "The original Week Six body places frying under the moist-heat heading. Frying uses hot fat/oil and is classified as dry heat using fat or as a separate medium-of-fat method; it is not moist heat. The project-authored replacement lesson teaches the correct classification and includes safe hot-oil handling.",
+      "evidence": {
+        "locator": "CC-IDX-T2-W06.md: Week Six exact getBody lines 845–927 and source observation at lines 893–904; CC-FACT-T2-COOKING-METHOD-CLASSIFICATION.md documents exact erroneous line 900. Parsed body hash is the exact week-range hash recorded by the source index; source body includes the WEEK SIX heading.",
+        "explanation": "CBSE Academic Food Production XI, U.S. Army Culinary Arts coursebook and Workforce LibreTexts/Chef John Folse Culinary Institute independently classify frying under hot fat/dry heat rather than moist heat. The source is preserved unchanged; the delivery compiler must substitute the independently authored replacement lesson."
+      }
+    }
+  ],
   "assets": [],
   "coverage": [
     {
@@ -2969,6 +2983,10 @@
         {
           "locator": "Project-authored lesson SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES; body SHA-256 840fcc00106bb1d241604fc183a08ef76fdec3dd1fd49ef290d7e90c4c3d33ff",
           "explanation": "Complete independently authored teaching, answered practice and marking guide cover the indexed scheme objectives. Unverified local-language plant names are excluded; food additives are taught only under applicable regulation; frying is correctly classified as cooking in fat/dry heat. Approval PENDING; verification DEFERRED."
+        },
+        {
+          "locator": "delivery_corrections[CC-CORR-T2-W06-FRYING-CLASSIFICATION] → SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES; source lesson SS1-SRC-f433169ca25c:BODY:fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de; body SHA-256 fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de",
+          "explanation": "The incorrect source classification is explicitly corrected for delivery; the original source remains preserved unchanged."
         }
       ]
     },
@@ -3437,13 +3455,13 @@
     {
       "id": "CC-T2-FRYING-METHOD-CLASSIFICATION",
       "kind": "FACT",
-      "detail": "The source's Week Six methods list places frying under 'Moist-heat method' at getBody line 900. Authoritative culinary classifications describe frying as cooking in fat/oil (dry heat using fat or a separate medium-of-fat category), not moist heat.",
-      "required_action": "When authoring/revising Week Six teaching, preserve the source wording in provenance but teach the correct classification and record an explicit delivery correction; do not edit the original source file.",
+      "detail": "The source's Week Six methods list places frying under 'Moist-heat method' at getBody line 900. Authoritative culinary classifications describe frying as cooking in fat/oil (dry heat using fat or a separate medium-of-fat category), not moist heat. Resolution: an exact delivery correction now binds the original Week Six source body to replacement lesson SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES using the indexed source ID, source SHA-256 and exact Week Six body hash. The source file remains unchanged; the delivery compiler must substitute the corrected lesson.",
+      "required_action": "No further content action; confirm the correction is consumed by the real importer/compiler during the separately authorised verification run.",
       "affected_ids": [
         "CC-IDX-T2-W06",
         "CC-FACT-T2-COOKING-METHOD-CLASSIFICATION"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "CC-T2-LOCAL-MEASUREMENT-CONVERSIONS",
