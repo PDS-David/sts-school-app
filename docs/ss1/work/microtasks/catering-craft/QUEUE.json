@@ -39,10 +39,11 @@
     "SOURCE_MARKER_DISPOSITION": 3,
     "VISUAL_DISPOSITION": 7,
     "SOURCE_PRESERVATION": 6,
-    "LESSON_AUTHORING": 11
+    "LESSON_AUTHORING": 11,
+    "SUPPLEMENTAL_ASSESSMENT": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 67,
+    "IMPLEMENTED_TESTING_DEFERRED": 69,
     "BLOCKED": 1
   },
   "items": [
@@ -2384,6 +2385,54 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Package lesson SUP-SS1-CC-T2-W10-MEASURING-EQUIPMENT; body SHA-256 d3db015a17e576f5bc12fc10459b16f5dbb65cd0f16baef712880cfc14cc3bec; answered practice and 20-mark guide. Ambiguous local measures excluded. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Complete source-aligned lesson, answered practice and marking guide; only exact metric conversions and explicitly calibrated containers; no unverified local conversion taught."
+    },
+    {
+      "id": "CC-LES-T2-W11",
+      "kind": "SUPPLEMENTAL_ASSESSMENT",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ELEVEN marker lines 1401–1402",
+      "objective": "Project-authored practical revision and integrated assessment",
+      "required_files": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T2-W11.md"
+      ],
+      "depends_on": [
+        "CC-MARK-T2-W11"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Supplement SUP-SS1-CC-T2-W11-PRACTICAL-REVISION; body SHA-256 b5162eebca230aa5d48111308f91018b5bd17668347ad6ecc8110500d3cf25a7; 30-mark practical rubric and 10-mark revision test.",
+      "completion_condition": "Supply project-authored practical/revision content and rubric without claiming recovered source content or observed performance."
+    },
+    {
+      "id": "CC-LES-T2-W12",
+      "kind": "SUPPLEMENTAL_ASSESSMENT",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TWELVE marker lines 1405–1406",
+      "objective": "Project-authored end-of-term examination and marking guide",
+      "required_files": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T2-W12.md"
+      ],
+      "depends_on": [
+        "CC-MARK-T2-W12"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Supplement SUP-SS1-CC-T2-W12-EXAMINATION; body SHA-256 bba8ad3a8b55dd6b3cbf688748175eb450a0c27ed755688ed45c08b19cdca2dc; 40-mark paper, answer key and marking guide.",
+      "completion_condition": "Supply project-authored examination paper, answer key and marking guide without claiming that an exam was administered."
     }
   ],
   "review": {
