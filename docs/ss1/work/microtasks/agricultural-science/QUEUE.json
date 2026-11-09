@@ -131,8 +131,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 108,
-    "BLOCKED": 6,
-    "PENDING": 40
+    "BLOCKED": 7,
+    "PENDING": 39
   },
   "items": [
     {
@@ -4460,8 +4460,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W07: block 458's 'peak' term appears anomalous; correction awaits evidence.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed source member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 and block-458 SHA-256 a2b6fc4e91f20afe96d2b2439ddb7904a271c5deb876ebbd3409307496946681. USGS Coal: A Complex Natural Resource and USGS coal-rank guidance establish peat as the precursor to lignite/coal; Cambridge's carbonaceous sedimentary rocks chapter and Geoscience Handbook list peat among carbonaceous organic deposits. 'Peak' is not a geological example here; recommended delivery correction is 'peat'. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery correction can be bound yet. Updated existing package open item; no delivery_corrections or source changes.",
       "completion_condition": "A correction-binding record cites verified evidence and preserves the source wording."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-CORR-T2-W07-PEAT-TYPO",
     "AG-CORR-T2-W08-QUESTION-WORDING",
     "AG-CORR-T2-W09-SOIL-TERMS",
     "AG-CORR-T3-W01-TOOL-NAMES",
