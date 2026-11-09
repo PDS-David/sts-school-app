@@ -103,17 +103,17 @@ These are common patterns, not absolute rules. A smallholder may hire a tractor,
 
 **Answer:** 1. Tractor — Supplies power for pulling or pushing farm implements and for hauling trailers or materials. 2. Bulldozer — Clears land, pushes vegetation and helps level ground. 3. Mechanical planter — Places seeds in prepared soil at suitable depth and spacing. 4. Harvester — Gathers mature crops over large areas more quickly than manual harvesting. 5. Power tiller — Uses an engine for soil cultivation and other field operations. 6. Self-propelled power weeder — Removes weeds and performs inter-row cultivation in row crops. 7. Power-operated knapsack sprayer — Applies liquid sprays to crops; powered versions use an engine or electric motor. 8. High-capacity multicrop thresher — Separates grain from harvested crop heads or stalks and helps clean the grain. 9. Power-operated coconut dehusker — Removes the outer husk from coconuts. 10. Irrigation pump unit — Pumps water from a source to fields or an irrigation system.
 
-**Marking:** 2 marks per item: 1 for naming the machine/implement and 1 for its correct use. The ten item criteria are:
+**Marking:** 2 marks per item: 1 for naming the machine and 1 for its correct use. The ten item criteria are:
 - 2 marks — Names Tractor and gives its correct use.
 - 2 marks — Names Bulldozer and gives its correct use.
+- 2 marks — Names Mechanical planter and gives its correct use.
 - 2 marks — Names Harvester and gives its correct use.
 - 2 marks — Names Power tiller and gives its correct use.
-- 2 marks — Names Tractor-drawn disc plough and gives its correct use.
-- 2 marks — Names Tractor-mounted disc harrow and gives its correct use.
-- 2 marks — Names Seed-cum-fertilizer drill and gives its correct use.
 - 2 marks — Names Self-propelled power weeder and gives its correct use.
-- 2 marks — Names Power-tiller-mounted orchard sprayer and gives its correct use.
+- 2 marks — Names Power-operated knapsack sprayer and gives its correct use.
 - 2 marks — Names High-capacity multicrop thresher and gives its correct use.
+- 2 marks — Names Power-operated coconut dehusker and gives its correct use.
+- 2 marks — Names Irrigation pump unit and gives its correct use.
 
 ### P3 — Differences between tools and machines (8 marks)
 
@@ -129,7 +129,7 @@ These are common patterns, not absolute rules. A smallholder may hire a tractor,
 
 ### P4 — Classification (6 marks)
 
-**Question:** Classify each item as a simple farm tool or a complex farm machine/tractor-operated implement: cutlass, hand trowel, wheelbarrow, tractor, seed-cum-fertilizer drill and multicrop thresher.
+**Question:** Classify each item as a simple farm tool or a complex farm machine: cutlass, hand trowel, wheelbarrow, tractor, power-operated knapsack sprayer and multicrop thresher.
 
 **Answer:** Cutlass — simple tool; hand trowel — simple tool; wheelbarrow — simple tool; tractor — complex machine; power-operated knapsack sprayer — complex machine; multicrop thresher — complex machine.
 
@@ -138,8 +138,8 @@ These are common patterns, not absolute rules. A smallholder may hire a tractor,
 - 1 mark — Classifies hand trowel as a simple tool.
 - 1 mark — Classifies wheelbarrow as a simple tool.
 - 1 mark — Classifies tractor as a complex machine.
-- 1 mark — Classifies seed-cum-fertilizer drill as tractor-operated machinery/implement.
-- 1 mark — Classifies multicrop thresher as a powered farm machine.
+- 1 mark — Classifies power-operated knapsack sprayer as a complex machine.
+- 1 mark — Classifies multicrop thresher as a complex machine.
 
 **Total available: 54 marks.** Each question's marking criteria sum exactly to its stated marks.
 
