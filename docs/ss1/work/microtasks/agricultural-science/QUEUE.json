@@ -130,9 +130,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 108,
+    "IMPLEMENTED_TESTING_DEFERRED": 109,
     "BLOCKED": 13,
-    "PENDING": 33
+    "PENDING": 32
   },
   "items": [
     {
@@ -5703,8 +5703,8 @@
         "AG-SRC-T3",
         "AG-VIS-T3-W02-ELECTRIC-WATER"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-VIS-T3-W02-ELECTRIC-WATER after XML inspection: WDP layers are not attached to block 211; hdphoto1.wdp is at block 487 with image10/image11, and hdphoto2.wdp is at block 494 with image13.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Reverified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and Third Term member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a against SOURCE_ASSIGNMENTS.csv. Inspected word/document.xml direct-body blocks and word/_rels/document.xml.rels. Block 211 C14N SHA-256 eb7fa7f9efaa71470249fb6c5e4b8f6f95517db2a656f26f0bfdc277bf3e8027 contains only rId11→image5.png and rId12→image6.png, no a14:imgLayer. Block 487 C14N SHA-256 83769c0683fdbafe2907881e8038e6317812f2d873a017da30b66f6459749081 contains image10.jpeg/image11.jpeg and a14:imgLayer rId21→hdphoto1.wdp. Block 494 C14N SHA-256 bc1c82e7330ecd257d1353d95e0d7f3654ba4aa4e9a61ce3c77a6cf42c403790 contains image13.jpeg and a14:imgLayer rId25→hdphoto2.wdp. Rehashed both WDP media files. Updated only the WDP associations in AG-INV-T3.md; no independent WDP visual rows or package assets created. Existing AG-VIS note already had the correct mapping and was not changed. Tests remain deferred.",
       "completion_condition": "Re-verify archive/member hashes and XML relationships; correct only the WDP associations in AG-INV-T3.md with exact body-block locators and hashes. Do not alter source bytes or create independent visual records for WDP layers."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-CORR-T3-W02-WDP-LOCATORS",
     "AG-CORR-T3-W04-TBL-DIGESTION-HASH",
     "AG-CORR-T3-W05-RESPIRATION-EQUATION-LOCATORS",
     "AG-CORR-T3-W06-TBL-GESTATION-HASH",
