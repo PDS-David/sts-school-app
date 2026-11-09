@@ -3248,6 +3248,18 @@
         "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W10-CATTLE-TERMS",
+      "kind": "CONTENT",
+      "detail": "Week Ten cattle-mange block 1210 incorrectly refers to 'pig houses' in a paragraph about cattle mange. Recommended delivery correction: 'maintain proper hygiene and sanitation in cattle housing.' The surrounding passage concerns cattle and Merck Veterinary Manual confirms mange mite spread through contact/contaminated cattle environments. The related 'rational grazing' term at block 1188 is valid and must not be corrected; the rotational-grazing assessment mismatch requires a lesson supplement.",
+      "required_action": "When an original Week Ten lesson and its body_sha256 exist and a same-subject/same-term replacement lesson is authored, bind block 1210 'pig houses'→'cattle housing' using exact source ID/hash and lesson IDs/hashes. Do not change 'rational grazing' or invent lesson IDs/body hashes; do not edit the archived source.",
+      "affected_ids": [
+        "AG-CORR-T3-W10-CATTLE-TERMS",
+        "AG-FACT-T3-W10-CATTLE-TERMS",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
