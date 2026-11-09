@@ -130,9 +130,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 106,
+    "IMPLEMENTED_TESTING_DEFERRED": 107,
     "BLOCKED": 2,
-    "PENDING": 46
+    "PENDING": 45
   },
   "items": [
     {
@@ -5541,8 +5541,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W10"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W10: caustic soda, insecticides, ivermectin/ivomec and an isonicotinic-hydrazide-like drug/dose are stated at blocks 1203, 1210-1212 and 1221-1222.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09 after confirming branch was current with master f51616309aafe542edd89e41072b70c3b92b995e (ahead12/behind0). Reused verified source archive/member identity and Week Ten block locators from AG-INV-T3/AG-WK-T3-W10. Reviewed caustic-paste disbudding against Cornell FARM v4.0 and Ontario government guidance; cattle mange/ivermectin against Merck Veterinary Manual; Ivomec identity against manufacturer and official DailyMed label; HCH/lindane status against Stockholm Convention; bovine TB control against USDA APHIS and WOAH 2024 guidance. Findings: caustic paste can be used for disbudding very young calves in some systems, but source's generic caustic-soda instruction is unsafe and disbudding differs from dehorning; 'invermectin' is misspelled ivermectin and Ivomec is its brand, not a separate drug; ivermectin applicability depends on mite species, formulation and local label; 'diazuntol' not verified, 'malathione' likely malathion, benzyl benzoate lacks verified current cattle-product context, BHC/HCH/lindane is obsolete/POP-listed; 'isonicotinichydracide' likely means isoniazid, but bovine TB is not routinely treated in livestock under official control guidance, so source's regimen must not be endorsed. No doses, schedules, concentrations for use, mixing/application/injection procedures, contact times or PPE supplied. No source bytes, package content, corrections or assets changed. Tests/importer/typecheck/DB/rendering/CI not run; testing deferred.",
       "completion_condition": "A factual/safety review cites authoritative veterinary/public-health evidence and gives a safe learner-facing disposition while preserving source bytes and without inventing procedures."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T3-W10-CATTLE-SAFETY",
     "AG-FACT-T3-W10-CATTLE-TERMS",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-CORR-T2-W02-03-SOURCE-TERMS",
