@@ -82,7 +82,8 @@
     "AG-VIS-T3-W05-FISH-GILLS (2026-11-08): block 554 contains two legible fish-gill diagrams: image15 labels arch/filaments/rakers; image16 is a multi-panel bony-fish gill figure with additional lamellae/capillary/blood-supply labels. No reuse licence or rights attribution is supplied; reuse is blocked pending clearance or rights-cleared replacements.",
     "AG-VIS-T3-W05-RESPIRATION-EQUATIONS (2026-11-08): equation paragraphs are 532, 537 and 540, not the task's original 530, 535 and 538; associated word labels are 533, 538 and 541. Chemical numerals use run-level subscripts, but no reaction arrows or Office Math objects are present; word-label runs are superscripted. Existing factual open item AGRICULTURAL-SCIENCE-T3-W05-RESPIRATION-ACCURACY remains the verification gate. Locator correction task AG-CORR-T3-W05-RESPIRATION-EQUATION-LOCATORS appended.",
     "AG-VIS-T3-W06-TBL-GESTATION (2026-11-08): block 724 is a native 6×3 Word table. Horse/Cattle, Mare/Cow, 336 days/283 days and Rabbit/Chicken, Doe/Hen, 31days/21 days are separate paragraphs in corresponding cells. Preserve pair alignment. Recorded table hash does not match concatenated cell-text hash; AG-CORR-T3-W06-TBL-GESTATION-HASH appended.",
-    "AG-VIS-T3-W07-BIRD-EMBRYO-ORGANS (2026-11-08): block 803 holds image17 bird embryo (visible iStock watermark) and image18 poultry internal organs. The embryo image is contextual but not used by the source egg-formation prose; the internal-organs figure includes ovary/oviduct but is not a focused reproductive diagram. Neither has reuse rights evidence; delivery reuse is blocked pending clearance or a rights-cleared replacement."
+    "AG-VIS-T3-W07-BIRD-EMBRYO-ORGANS (2026-11-08): block 803 holds image17 bird embryo (visible iStock watermark) and image18 poultry internal organs. The embryo image is contextual but not used by the source egg-formation prose; the internal-organs figure includes ovary/oviduct but is not a focused reproductive diagram. Neither has reuse rights evidence; delivery reuse is blocked pending clearance or a rights-cleared replacement.",
+    "AG-VIS-T3-W07-REPRODUCTIVE-TRACT (2026-11-09): block 804 contains a photographed fertile-egg page (image19) plus a female poultry reproductive-tract diagram (image20); both inspected and hashes verified. Useful labels/content recorded, but no licence/credit; reuse blocked pending rights or separately sourced rights-cleared substitutes."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -97,8 +98,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 67,
-    "PENDING": 85,
+    "IMPLEMENTED_TESTING_DEFERRED": 68,
+    "PENDING": 84,
     "BLOCKED": 2
   },
   "items": [
@@ -2914,8 +2915,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6f35c27935999e12a. Extracted and hashed block-804 media: image19.jpeg 2,999,309 bytes, 2448×3264, SHA-256 3608f505f1cfbc5fe16573174586c8173a491714e2cb52a37ee2e3ad5b237c72; image20.jpeg 45,714 bytes, 592×793, SHA-256 c229d0efd92b90136ad54f51a108179b8c95982fe880c08ce5c9979d728de951. In word/document.xml direct-body block 804, VML rId31 maps to image19.jpeg and DrawingML rId32 maps to image20.jpeg. image19 is a photographed page headed 'Structure of a Fertile Egg', not a reproductive-tract diagram: visible page text describes egg shape (oval/oblong) and brown/white colour differences; the figure labels shell, double membrane, air space, yolk, albumen, germinal disc (embryo) and chalaza. It is a perspective-distorted, low-contrast page photograph with adjacent-page material at right; labels remain readable on close inspection. image20 is a clear labelled poultry female reproductive tract: ovary, immature ova, mature ovum at ovulation, infundibulum, oviduct, magnum, isthmus, uterus, vagina, cloaca, large intestine and vent. Its labels/leader lines are legible at native size. The source prose at blocks 794-795 explains egg-formation stages and mentions yolk, albumen, chalaza, shell membranes and shell, but does not state the egg-shape/colour text or identify all diagram labels (e.g. air space, germinal disc, large intestine and vent). Neither image has a visible author/publisher credit or licence. image19 EXIF records camera model Infinix X559C and date 2019-04-08 only; image20 has no EXIF. The local filename embedded in image20's description is not attribution. No reuse permission established: added blocking open item AGRICULTURAL-SCIENCE-T3-W07-REPRODUCTIVE-TRACT-RIGHTS. Do not copy or derive either image for delivery without permission; use separately sourced rights-cleared substitutes if the visual functions are required. No media or asset row created. No app/device display verification claimed.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5811,7 +5812,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W07-REPRODUCTIVE-TRACT",
     "AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS",
     "AG-VIS-T3-W07-TBL-HORMONES",
     "AG-VIS-T3-W09-PIG-ANATOMY",
