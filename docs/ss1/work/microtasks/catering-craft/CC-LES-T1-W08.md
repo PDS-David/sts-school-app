@@ -1,9 +1,7 @@
-# CC-LES-T1-W08 — external-source project-authored lesson
+# CC-LES-T1-W08 — Kitchen safety
 
-Package lesson: SUP-SS1-CC-T1-W08-SANITATION
-Body SHA-256: fa70c7ea29de081f8b8c220e0800084f773babe541984fd1787123bdb6ff5f0a
-Term: First Term; class SS 1; subject Catering Craft.
+Package lesson: SUP-SS1-CC-T1-W08-KITCHEN-SAFETY
+Body SHA-256: 3d65e762b20004651d0a2367a09cbccc4cedefded2635fb7190dc838e109c94d
+Source locator: Lagos State Unified Scheme reproduction, First Term Week Eight (safety precautions in the kitchen).
 
-Basis: public First Term scheme topic sequence. No source ID or archive member is asserted; this is an independently authored supplement pending formal source registration/foundation approval.
-
-Four answered practice items carry five marks each; practical marking guide totals 20. Content approval PENDING; verification DEFERRED.
+The lesson includes hazards, accident prevention, safe procedures and a 20-mark guide. Content approval PENDING; verification DEFERRED.
