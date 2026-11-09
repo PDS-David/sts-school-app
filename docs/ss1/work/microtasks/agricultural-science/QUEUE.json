@@ -108,7 +108,8 @@
     "AG-FACT-T2-W07-ROCK-CHARACTERISTICS (2026-11-09): characteristic blocks 443-448, 461-465 and 481-485 checked against USGS/NPS/BGS and introductory geology sources. Clear errors: sedimentary rocks are not always non-crystalline (462); metamorphic rocks are not non-crystalline (483). Igneous rocks can form layered lava flows/layered intrusions (445); sedimentary rocks often but not always show bedding (461), may contain fossils (463), and can be erosion-resistant (464). Metamorphic foliation differs from sedimentary strata (481); fossils may rarely survive low-grade metamorphism (485). Other claims require qualified, material-dependent wording. Recommended delivery-only corrections; no source edits.",
     "AG-FACT-T2-W07-MICA-MCQ (2026-11-09): MCQ 505–506 compared with source examples 457–459 and USGS/BGS/ODNR classification. Mica is a mineral group, not a rock; sandstone and limestone are sedimentary rocks; source block 459 uses dolomite as a sedimentary rock example. Intended key A mica. Since dolomite is also a mineral name, recommend change option D to 'dolostone (dolomite rock)' and add a brief mineral-vs-rock note; no source or key changed.",
     "AG-FACT-T3-W01-EMASCULATOR (2026-11-09): block 45 wording checked against University of Kentucky Animal & Food Sciences Extension, UF College of Veterinary Medicine and ICAR-IVRI veterinary anatomy. Emasculator crushes and cuts the spermatic cord; 'spermatid cord' is incorrect, and 'rushing' should be replaced with the high-level crush-and-cut function. Recommended non-procedural learner definition only; no castration instructions or source correction applied.",
-    "AG-FACT-T3-W02-DRYING-POWER (2026-11-09): MCQ blocks 264-265 compared with FAO grain-drying guidance and a 2022 survey across five Ghanaian maize regions. Open sun drying predominates (Table 6 73.3-100% across five regions; solar dryer use 0-6.3%; mechanical 0%). FAO identifies sun drying as the most common method in tropical developing countries; wind/airflow assists moisture removal. Answer B sun. Recommend clarify stem to 'Which natural energy source is most commonly used for traditional grain drying in West Africa?'; no source/key change applied."
+    "AG-FACT-T3-W02-DRYING-POWER (2026-11-09): MCQ blocks 264-265 compared with FAO grain-drying guidance and a 2022 survey across five Ghanaian maize regions. Open sun drying predominates (Table 6 73.3-100% across five regions; solar dryer use 0-6.3%; mechanical 0%). FAO identifies sun drying as the most common method in tropical developing countries; wind/airflow assists moisture removal. Answer B sun. Recommend clarify stem to 'Which natural energy source is most commonly used for traditional grain drying in West Africa?'; no source/key change applied.",
+    "AG-FACT-T3-W03-MECHANIZATION-DEFINITION (2026-11-09): block 289 compared with FAO 2013 Sub-Saharan Africa mechanization strategy and FAO 2006 farm-power report. Mechanization is tools, implements and powered machinery using human, animal or motor power; seed, fertilizer and insecticides are separate farm inputs, though planters/spreaders/sprayers apply them. Recommended a precise learner definition; no source correction applied."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -123,9 +124,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 93,
+    "IMPLEMENTED_TESTING_DEFERRED": 94,
     "BLOCKED": 2,
-    "PENDING": 59
+    "PENDING": 58
   },
   "items": [
     {
@@ -4846,8 +4847,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W03: definition 289 may conflate mechanization with agricultural inputs.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a; inspected block 289 and recomputed hash. FAO's 2013 Sub-Saharan Africa mechanization strategy defines mechanization as tools, implements and powered machinery using manual, animal or motor power, and explicitly distinguishes it from seed/fertilizer inputs; its section 3.2 describes mechanization used together with improved seeds and fertilizers. The source incorrectly includes insecticides, improved seeds and fertilizer as components of mechanization. Recommended a precise definition separating equipment from inputs; no source correction applied.",
       "completion_condition": "A sourced note verifies the conceptual boundary and recommends precise learner-facing wording."
     },
     {
@@ -5866,7 +5867,6 @@
     "AG-LES-T3-W02-FARM-POWER-OPERATIONS",
     "AG-CORR-T3-W02-WATER-POWER",
     "AG-CORR-T3-W02-POWER-TEXT",
-    "AG-FACT-T3-W03-MECHANIZATION-DEFINITION",
     "AG-FACT-T3-W03-CROP-MECHANIZATION",
     "AG-FACT-T3-W03-LABOUR-MCQ",
     "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS",
