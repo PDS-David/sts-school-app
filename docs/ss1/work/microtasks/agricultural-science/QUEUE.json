@@ -109,7 +109,8 @@
     "AG-FACT-T2-W07-MICA-MCQ (2026-11-09): MCQ 505–506 compared with source examples 457–459 and USGS/BGS/ODNR classification. Mica is a mineral group, not a rock; sandstone and limestone are sedimentary rocks; source block 459 uses dolomite as a sedimentary rock example. Intended key A mica. Since dolomite is also a mineral name, recommend change option D to 'dolostone (dolomite rock)' and add a brief mineral-vs-rock note; no source or key changed.",
     "AG-FACT-T3-W01-EMASCULATOR (2026-11-09): block 45 wording checked against University of Kentucky Animal & Food Sciences Extension, UF College of Veterinary Medicine and ICAR-IVRI veterinary anatomy. Emasculator crushes and cuts the spermatic cord; 'spermatid cord' is incorrect, and 'rushing' should be replaced with the high-level crush-and-cut function. Recommended non-procedural learner definition only; no castration instructions or source correction applied.",
     "AG-FACT-T3-W02-DRYING-POWER (2026-11-09): MCQ blocks 264-265 compared with FAO grain-drying guidance and a 2022 survey across five Ghanaian maize regions. Open sun drying predominates (Table 6 73.3-100% across five regions; solar dryer use 0-6.3%; mechanical 0%). FAO identifies sun drying as the most common method in tropical developing countries; wind/airflow assists moisture removal. Answer B sun. Recommend clarify stem to 'Which natural energy source is most commonly used for traditional grain drying in West Africa?'; no source/key change applied.",
-    "AG-FACT-T3-W03-MECHANIZATION-DEFINITION (2026-11-09): block 289 compared with FAO 2013 Sub-Saharan Africa mechanization strategy and FAO 2006 farm-power report. Mechanization is tools, implements and powered machinery using human, animal or motor power; seed, fertilizer and insecticides are separate farm inputs, though planters/spreaders/sprayers apply them. Recommended a precise learner definition; no source correction applied."
+    "AG-FACT-T3-W03-MECHANIZATION-DEFINITION (2026-11-09): block 289 compared with FAO 2013 Sub-Saharan Africa mechanization strategy and FAO 2006 farm-power report. Mechanization is tools, implements and powered machinery using human, animal or motor power; seed, fertilizer and insecticides are separate farm inputs, though planters/spreaders/sprayers apply them. Recommended a precise learner definition; no source correction applied.",
+    "AG-FACT-T3-W03-CROP-MECHANIZATION (2026-11-09): blocks 315 and 363 checked against FAO mechanization framework and IITA ProPAS cassava planter/harvester technology. Mechanization spans many crop groups and operations; cassava is directly mechanized in planting/harvesting, so 'very few crops like maize/rice' is an overgeneralization. MCQ 363's 'best' is undefined and cassava/maize both have mechanized operations; specify crop group or operation before keying. No source/key change applied."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -124,9 +125,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 94,
+    "IMPLEMENTED_TESTING_DEFERRED": 95,
     "BLOCKED": 2,
-    "PENDING": 58
+    "PENDING": 57
   },
   "items": [
     {
@@ -4881,8 +4882,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W03: block 315 makes a broad claim about crops that can be mechanized.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a; inspected blocks 315 and 363 and recomputed hashes. FAO's current framework covers mechanization across land preparation, planting, crop protection, harvesting and postharvest operations; IITA documents commercially available cassava planters and harvesters, disproving the broad claim that only very few crops can be mechanized. Recommended crop/operation/farm-size-qualified wording. MCQ 363's 'best' is undefined; maize and cassava both have documented mechanized operations, so revise the stem to specify a crop group or operation. No source/key change applied.",
       "completion_condition": "A sourced note verifies the claim and recommends a precise correction/qualification."
     },
     {
@@ -5867,7 +5868,6 @@
     "AG-LES-T3-W02-FARM-POWER-OPERATIONS",
     "AG-CORR-T3-W02-WATER-POWER",
     "AG-CORR-T3-W02-POWER-TEXT",
-    "AG-FACT-T3-W03-CROP-MECHANIZATION",
     "AG-FACT-T3-W03-LABOUR-MCQ",
     "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS",
     "AG-FACT-T3-W04-DIGESTIVE-ACCURACY",
