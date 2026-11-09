@@ -130,9 +130,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 107,
+    "IMPLEMENTED_TESTING_DEFERRED": 108,
     "BLOCKED": 2,
-    "PENDING": 45
+    "PENDING": 44
   },
   "items": [
     {
@@ -5580,8 +5580,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W10"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W10: tattooing is assessed but not defined; 'Rational grazing'/'rotational grazing' and 'pig houses' in the cattle mange section require verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09 after confirming branch was current with master f51616309aafe542edd89e41072b70c3b92b995e (ahead14/behind0). Reused verified source archive/member identity and Week Ten locators from AG-INV-T3/AG-WK-T3-W10. Mississippi State University Extension confirms cattle ear tattooing is a permanent identification method used for registration/records; FUNAAB APH509 Beef Animal Production lecture notes explicitly define rational grazing as an elaboration of rotational grazing associated with André Voisin, while University of Maine and UGA/Clemson Extension define rotational/management-intensive grazing as paddock rotation with rest/recovery and list rational grazing among related terms. Merck Veterinary Manual confirms cattle mange mites can spread through direct contact and contaminated environments/housing. Decisions: add a concise tattooing definition to the dependent supplement; keep 'rational grazing' (not a typo) and teach both rational and rotational grazing with their relationship; correct 'pig houses' to 'cattle housing' in the delivery layer only. No source bytes or lesson bodies changed.",
       "completion_condition": "A sourced decision is recorded for each issue, distinguishing factual correction from supplement content; original bytes remain unchanged."
     },
     {
@@ -5844,7 +5844,6 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T3-W10-CATTLE-TERMS",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-CORR-T2-W02-03-SOURCE-TERMS",
     "AG-CORR-T2-W04-05-TABLE-TEXT",
@@ -5855,6 +5854,7 @@
     "AG-CORR-T3-W01-TOOL-NAMES",
     "AG-CORR-T3-W02-WATER-POWER",
     "AG-CORR-T3-W02-POWER-TEXT",
+    "AG-CORR-T3-W10-CATTLE-TERMS",
     "AG-CORR-T3-W02-WDP-LOCATORS",
     "AG-CORR-T3-W04-TBL-DIGESTION-HASH",
     "AG-CORR-T3-W05-RESPIRATION-EQUATION-LOCATORS",
@@ -5883,6 +5883,7 @@
     "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION",
     "AG-LES-T3-W07-POULTRY-REPRO-SYSTEM",
     "AG-LES-T3-W08-ENVIRONMENTAL-MEASURES",
-    "AG-LES-T3-W09-PIG-ASSESSMENT-SUPPLEMENT"
+    "AG-LES-T3-W09-PIG-ASSESSMENT-SUPPLEMENT",
+    "AG-LES-T3-W10-CATTLE-TATTOOING"
   ]
 }
