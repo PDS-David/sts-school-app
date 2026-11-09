@@ -101,7 +101,8 @@
     "AG-FACT-T1-W08-PROMINENT-TENURE (2026-11-09): source blocks 626/628/701/710 verified. NBS GHS-Panel Wave4 (2018/19) shows family inheritance as the most common plot-acquisition mode (62.7% male-managed, 63.4% female-managed); Wave5 (2023/24) confirms (64.9%, 59.7%). Land Use Act 1978 distinguishes statutory/customary rights of occupancy and regulates devolution on death by customary law. Inheritance is a mode of acquisition, not a standalone statutory tenure system. Recommend rewording to distinguish acquisition mode from legal framework; answer A only for the acquisition-method MCQ.",
     "AG-FACT-T1-W08-LAND-USE-ACT (2026-11-09): verified source blocks 195/583 against the 1978 Land Use Decree/Act and Nigerian Supreme Court decisions. Act vests radical title in State Governor but grants statutory/customary rights of occupancy to persons; landholding rights continue subject to consent/approval for alienation and customary devolution on death. 'Prevents individuals from owning land' is overbroad; updated package blocker with precise correction requirement; source unchanged.",
     "AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION (2026-11-09): verified blocks 878/922. Biennials require two growing seasons; FAO EcoCrop identifies onion/carrot as biennial, cassava/ginger as perennial (often grown annually), Capsicum annuum as annual, cotton usually grown as annual, cowpea annual; CGIAR says yams are perennial vines mainly treated as annuals in cultivation. Source's biennial list is inaccurate; Q2 pepper exception is species/context dependent and has no unique answer. Recommend correction/rewrite; no key/teacher decision presumed.",
-    "AG-FACT-T2-W02-03-GREEN-MANURE-ITEM (2026-11-09): verified blocks 175/268. Missouri Extension recommends just before full flowering for maximum N; Alberta Agriculture recommends full bloom; WSU recommends late-vegetative/early-flowering; FAO guidance includes mid-flowering/grain-filling depending objective. Source 'just before flowering' and MCQ 'as soon as it flowers' are close/compatible within early-to-full bloom window, not a material contradiction. Keep answer C green manuring; harmonize timing to at/just before full bloom before seed set, with species/objective caveat."
+    "AG-FACT-T2-W02-03-GREEN-MANURE-ITEM (2026-11-09): verified blocks 175/268. Missouri Extension recommends just before full flowering for maximum N; Alberta Agriculture recommends full bloom; WSU recommends late-vegetative/early-flowering; FAO guidance includes mid-flowering/grain-filling depending objective. Source 'just before flowering' and MCQ 'as soon as it flowers' are close/compatible within early-to-full bloom window, not a material contradiction. Keep answer C green manuring; harmonize timing to at/just before full bloom before seed set, with species/objective caveat.",
+    "AG-TEST-PACKAGE (2026-11-09): authored tests/ss1/agricultural-science.package.test.mts using the French package test as the pattern. The test parses the strict package schema, compares all three registered term sources one-to-one against the worker-C SOURCE_ASSIGNMENTS.csv rows (including exact SHA-256/member/term), checks every current rule's registered source/hash and pending source-alias owner blockers, includes lesson hash/practice/approval/verification guards for lessons as they are added, and probes applyRules rejection of wrong source hashes, missing anchors and ambiguous anchors. The package currently has 10 rules, no lessons, no corrections and no assets; lesson guards are therefore currently vacuous. Test file written but NOT RUN, as required by owner; full compiler/parser, asset/correction and delivery integration checks remain deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -116,9 +117,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 86,
-    "PENDING": 66,
-    "BLOCKED": 2
+    "IMPLEMENTED_TESTING_DEFERRED": 87,
+    "BLOCKED": 2,
+    "PENDING": 65
   },
   "items": [
     {
@@ -354,8 +355,8 @@
         "AG-SRC-T2",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/agricultural-science.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Wrote tests/ss1/agricultural-science.package.test.mts following tests/ss1/french.package.test.mts. Covers strict schema parse; exactly one registered source for each Agricultural Science manifest assignment across all three terms; exact source IDs, hashes, archive members and terms; rule-to-source hash binding and blocking pending owner alias references; lesson approval/verification reference, body hash and marking-integrity guards (no lessons exist yet, so those loops are presently vacuous and will apply as lesson items add content); and negative applyRules probes for wrong hashes, missing anchors and ambiguous anchors. Full-source compiler/parser comparison, asset validation, corrections and learner delivery remain later integration checks. Written, NOT RUN; testing remains deferred by owner.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
