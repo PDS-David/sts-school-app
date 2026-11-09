@@ -87,7 +87,8 @@
     "AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS (2026-11-09): block 819 is one combined male/female poultry reproductive-and-excretory diagram (image21, 350×373); label/content and Week Four mammalian-figure distinction recorded. No rights evidence; reuse/derivative blocked pending permission or separately sourced rights-cleared replacement.",
     "AG-VIS-T3-W07-TBL-HORMONES (2026-11-09): zero-based block 828 is a native 8×4 Word table, legible and intact on source page 28; no merged cells or embedded media. Each of seven hormone rows retains its sex/site/functions mapping and multiple function paragraphs. The recorded table text digest dc4ce1cf… was not reproduced by direct w:t concatenation (computed 23d71c76…); archive/member hashes match and the discrepancy is documented in the task note. No reuse licence/permission; verbatim learner delivery blocked. Existing hormone factual-accuracy blocker remains.",
     "AG-VIS-T3-W09-PIG-ANATOMY (2026-11-09): zero-based block 1006 is one pig side-profile body-parts diagram (image22, 393×248) on source page 33 between pig breeds and characteristics. All 28 visible labels and male-specific sheath marker recorded; image is small/soft at native resolution and embedded description is only a local path. No rights evidence; no copying/derivative; reuse blocked pending permission or rights-cleared higher-resolution replacement.",
-    "AG-VIS-T3-W10-CATTLE-ANATOMY (2026-11-09): zero-based block 1155 is one cow side-profile external-anatomy diagram (image23, 408×256) on source page 38. All 26 visible labels recorded; udder/teat make it a female-cow view; 'Mammery Veins' spelling retained as source. Original is low-resolution and embedded description is only a local path. No rights evidence; reuse/derivative blocked pending permission or rights-cleared higher-resolution replacement."
+    "AG-VIS-T3-W10-CATTLE-ANATOMY (2026-11-09): zero-based block 1155 is one cow side-profile external-anatomy diagram (image23, 408×256) on source page 38. All 26 visible labels recorded; udder/teat make it a female-cow view; 'Mammery Veins' spelling retained as source. Original is low-resolution and embedded description is only a local path. No rights evidence; reuse/derivative blocked pending permission or rights-cleared higher-resolution replacement.",
+    "AG-VIS-T3-W10-MATH-OBJECT (2026-11-09): zero-based block 1165 contains one semantic inline OMML fraction m:f (1/2) in the cattle gestation statement 275-283 days (9 1/2 months). w:t-only extraction drops the fraction and returns 9 months; rendered source page 38 shows the stacked fraction. No image/derivative needed. Added a delivery-verification blocker to preserve the OMML fraction; importer/rendering not run."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -102,8 +103,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 72,
-    "PENDING": 80,
+    "IMPLEMENTED_TESTING_DEFERRED": 73,
+    "PENDING": 79,
     "BLOCKED": 2
   },
   "items": [
@@ -3109,8 +3110,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from branch synchronized with master a8265c474a0e455ada7f58cbd0828bb423a5fd70. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Inspected word/document.xml zero-based direct-body block 1165: the cattle-characteristics paragraph contains one inline OMML m:oMath with m:f, numerator m:num=1 and denominator m:den=2. It is a semantic fraction, not merely a styled text run. Surrounding w:t runs contain 'They have a gestation period of about 275-283 days (9' and ' months).' so w:t-only/plain-text extraction loses the fraction and incorrectly yields '9 months'. The rendered source page 38 visibly displays the stacked 1/2 in '9 1/2 months'. Preserve the source numeric statement as '275-283 days (9 1/2 months)' or equivalent semantic fraction; do not reduce it to 9 months or alter the 275-283 day range. No image/media/relationship or separate visual asset is involved; no derivative or separate asset is needed. This task does not fact-check the gestation range; the existing Week Six reproduction-timings blocker remains separate and does not validate this sentence. Added a verification blocker requiring importer/renderer confirmation that the OMML fraction survives extraction and delivery. No importer, learner rendering, app/device display or tests run; testing remains deferred.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5816,7 +5817,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W10-MATH-OBJECT",
     "AG-FACT-T1-W02-EXPORT-ITEM",
     "AG-FACT-T1-W03-CREDIT-OPTIONS",
     "AG-FACT-T1-W04-PEST-CONTROL-ITEM",

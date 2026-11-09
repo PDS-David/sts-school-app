@@ -3236,6 +3236,18 @@
         "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W10-GESTATION-FRACTION-PRESERVATION",
+      "kind": "VERIFICATION",
+      "detail": "Third Term Week Ten block 1165 contains a semantic inline Office Math fraction (m:oMath/m:f, numerator 1, denominator 2) inside the cattle gestation statement '275-283 days (9 1/2 months)'. The surrounding w:t runs omit the fraction; w:t-only extraction yields '9 months'. The rendered source page visibly shows the stacked 1/2. If the importer or delivery renderer reads only text runs, the fraction will be lost and the numeric statement changed.",
+      "required_action": "At the authorised importer/plan and delivery-verification stage, confirm that the inline OMML fraction is preserved as a semantic fraction or faithfully serialized as '1/2'/'½'. If the current parser cannot preserve OMML, record and implement an approved source-scoped representation/foundation change before delivery. Preserve the full statement '275-283 days (9 1/2 months)' exactly in value; never drop the fraction or change the day range. Do not claim this was tested in the current task.",
+      "affected_ids": [
+        "AG-VIS-T3-W10-MATH-OBJECT",
+        "COV-AG-T3-W10-CATTLE-MANAGEMENT",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
