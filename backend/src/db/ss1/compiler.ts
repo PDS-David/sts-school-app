@@ -49,7 +49,7 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
     if (p.package_status === 'PENDING') plan.blockers.push(`PENDING_PACKAGE:${p.subject_slug}`);
     const externalSources = 'external_sources' in p ? p.external_sources : [];
     unique([...p.sources.map(s => s.source_id), ...externalSources.map(s => s.source_id)], 'package source IDs'); unique(p.source_rules.map(r => r.id), 'rule IDs');
-    for (const s of externalSources) must(s.class_name === 'SS 1' && s.term === '1st Term' && s.canonical_subject === p.canonical_subject && sha256(s.content) === s.sha256, `external scheme source identity/hash ${s.source_id}`);
+    for (const s of externalSources) must(s.class_name === 'SS 1' && s.canonical_subject === p.canonical_subject && sha256(s.content) === s.sha256, `external scheme source identity/hash ${s.source_id}`);
     const expected = registry.filter(r => r.assigned_subject_slug === p.subject_slug);
     for (const r of expected) if (!p.sources.some(s => s.source_id === r.source_id)) plan.blockers.push(`UNACCOUNTED_SOURCE:${r.source_id}`);
     for (const source of externalSources) if (!p.coverage.some(c => c.source_id === source.source_id)) plan.blockers.push(`EXTERNAL_SOURCE_WITHOUT_COVERAGE:${source.source_id}`);
@@ -135,7 +135,7 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
       const externalSource = externalSources.find(s => s.source_id === c.source_id);
       must(p.sources.some(s => s.source_id === c.source_id) || !!externalSource, `coverage source ${c.id}`);
       if (externalSource) {
-        must(externalSource.term === '1st Term' && externalSource.class_name === 'SS 1' && externalSource.canonical_subject === p.canonical_subject, `external coverage source scope ${c.id}`);
+        must(externalSource.class_name === 'SS 1' && externalSource.canonical_subject === p.canonical_subject, `external coverage source scope ${c.id}`);
         must(externalSource.content.includes(c.objective), `external coverage objective absent from source record ${c.id}`);
         must(c.status === 'IMPLEMENTED_EQUIVALENT', `external scheme coverage must map to authored equivalent ${c.id}`);
       }
