@@ -90,7 +90,8 @@
     "AG-VIS-T3-W10-CATTLE-ANATOMY (2026-11-09): zero-based block 1155 is one cow side-profile external-anatomy diagram (image23, 408×256) on source page 38. All 26 visible labels recorded; udder/teat make it a female-cow view; 'Mammery Veins' spelling retained as source. Original is low-resolution and embedded description is only a local path. No rights evidence; reuse/derivative blocked pending permission or rights-cleared higher-resolution replacement.",
     "AG-VIS-T3-W10-MATH-OBJECT (2026-11-09): zero-based block 1165 contains one semantic inline OMML fraction m:f (1/2) in the cattle gestation statement 275-283 days (9 1/2 months). w:t-only extraction drops the fraction and returns 9 months; rendered source page 38 shows the stacked fraction. No image/derivative needed. Added a delivery-verification blocker to preserve the OMML fraction; importer/rendering not run.",
     "AG-FACT-T1-W02-EXPORT-ITEM (2026-11-09): source blocks 104/178 verified. Yam is exported from Nigeria, though in small quantities: JICA's 2024 Nigeria agriculture report says yam exports are few and identifies Nigerian pounded-yam-flour exporters to UK/Netherlands/US; NEPC's 2024 article directly discusses yam exports and export rejects; FMINO/NEPC's 2026 report records Yam Export Clusters. Thus 'yam' is not a defensible 'except' answer. Recommend withdraw as an export-status question or rewrite to ask what is not named in the Week 1 list. No teacher decision presumed; package open item remains unchanged pending owner decision.",
-    "AG-FACT-T1-W03-CREDIT-OPTIONS (2026-11-09): verified blocks 207/310. CBN ACGSF supports deposit money banks/microfinance banks lending to farmers; BOA mandate includes agricultural credit; CBN Briefs says Cooperative Thrift and Credit Societies provide credit/funds mobilisation in Nigeria; CBN PMB guidelines restrict primary mortgage banks to mortgage finance and prohibit consumer/commercial loans. CBN CACS also permits land charges as collateral, so 'mortgage' is ambiguous as written. Likely intended exception is a primary mortgage bank; recommend correct option D wording and option C terminology. No answer key/teacher decision presumed."
+    "AG-FACT-T1-W03-CREDIT-OPTIONS (2026-11-09): verified blocks 207/310. CBN ACGSF supports deposit money banks/microfinance banks lending to farmers; BOA mandate includes agricultural credit; CBN Briefs says Cooperative Thrift and Credit Societies provide credit/funds mobilisation in Nigeria; CBN PMB guidelines restrict primary mortgage banks to mortgage finance and prohibit consumer/commercial loans. CBN CACS also permits land charges as collateral, so 'mortgage' is ambiguous as written. Likely intended exception is a primary mortgage bank; recommend correct option D wording and option C terminology. No answer key/teacher decision presumed.",
+    "AG-FACT-T1-W04-PEST-CONTROL-ITEM (2026-11-09): verified blocks 371/414/436. IPPC/FAO defines plant quarantine as preventing introduction/spread of quarantine pests; FAO IPM supports crop rotation for pest/disease suppression; FAO fumigation manual identifies fumigation as pest control; UC IPM documents reflective mulch reducing aphids, leafhoppers, thrips and whiteflies. All four options are valid in specific contexts; no unique 'not a method' answer. Recommend withdraw or rewrite with a specific pest/mechanism. No answer key/teacher decision presumed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -105,8 +106,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 75,
-    "PENDING": 77,
+    "IMPLEMENTED_TESTING_DEFERRED": 76,
+    "PENDING": 76,
     "BLOCKED": 2
   },
   "items": [
@@ -3473,8 +3474,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W04: block 414's options are not all supported as pest-control methods by the source.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-09 from synchronized master 8114b2c3ab30a56e0357184aeb4376d7f6dceb9a. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact First Term DOCX member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. Inspected source Week 4 quarantine statement block 371, Weekend Q2 block 414 and Week 6 crop-rotation statement block 436. IPPC/FAO ISPM 5 defines plant quarantine as activities to prevent introduction/spread of quarantine pests; FAO IPM identifies crop rotation as a cultural measure reducing pest/disease pressure and breaking infection chains; FAO's Manual of Fumigation for Insect Control says fumigation is used to prevent/control insect infestations and remains valuable in pest-control operations; UC IPM documents reflective mulch reducing colonisation by aphids, leafhoppers, thrips and whiteflies. All four options can therefore function as pest-management/control measures in defined contexts. Their scope differs: quarantine is regulatory prevention, crop rotation is cultural control for particular pests/pathogens, fumigation is chemical control especially in stored products, and reflective mulching is physical/cultural control for certain flying insects. Generic mulch is not universally pest-controlling and may be unsuitable for some pests, but that does not make mulching categorically not a pest-control method. The stem is overbroad and has no unique defensible 'not' answer. Recommendation: withdraw the current Q2 or rewrite it around a specific pest, crop, and control mechanism; e.g. ask which measure prevents introduction/spread of regulated plant pests, for which quarantine is the answer. No teacher decision or answer key change presumed. No importer/tests run; testing remains deferred.",
       "completion_condition": "A sourced note determines whether the item has a unique answer and recommends correction/withdrawal if needed."
     },
     {
@@ -5819,7 +5820,6 @@
     }
   },
   "next_runnable": [
-    "AG-FACT-T1-W04-PEST-CONTROL-ITEM",
     "AG-FACT-T1-W04-NGO-STATUS",
     "AG-FACT-T1-W05-GENETICS-ITEM",
     "AG-FACT-T1-W06-INCUBATOR-ITEM",
