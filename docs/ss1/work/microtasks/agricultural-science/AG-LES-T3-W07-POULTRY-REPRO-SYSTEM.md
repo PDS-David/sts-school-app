@@ -242,6 +242,14 @@ The source figures at blocks 803–804 and 819 have no established reuse licence
 - Queue task marked IMPLEMENTED_TESTING_DEFERRED; counts and next_runnable recomputed.
 - Package and lesson approval PENDING; verification DEFERRED.
 
+## Original replacement assets
+
+Two original, independently authored SVG diagrams are now registered to this lesson:
+- `AG-ART-T3-W07-MALE-POULTRY-SYSTEM-01` — `backend/src/db/ss1/assets/agricultural-science/t3-w07-male-poultry-reproductive-system.svg`; 3,729 bytes; SHA-256 `961f6b32b459f050538b3e59f4926d629392b746e0e9c582b127ca5034422220`.
+- `AG-ART-T3-W07-FEMALE-POULTRY-SYSTEM-01` — `backend/src/db/ss1/assets/agricultural-science/t3-w07-female-poultry-reproductive-system.svg`; 4,674 bytes; SHA-256 `289ea0d5395c22bce081acff1734e796de50a24194f07b0723a6cadd9cc72d8c`.
+
+The male diagram distinguishes testes/vas deferens/cloacal papillae from kidneys, ureters and intestine. The female diagram shows the functional left ovary/oviduct, rudimentary right side and nearby urinary/digestive structures. Neither is copied or derived from unlicensed source image21. Both assets remain PENDING approval and DEFERRED verification; the original image must be excluded from learner delivery.
+
 ## Static validation
 
 - Package and queue JSON parse after serialization.
