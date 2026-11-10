@@ -88,6 +88,8 @@ jobs:
             replacementTerm: replacement?.term ?? null,
             originalTerm: bkSource.term,
             termsMatch: Boolean(replacement && replacement.term === bkSource.term),
+            rules: bkPackage.source_rules.filter(r => r.source_id === bkSource.source_id).map(r => ({ id: r.id, op: r.op })),
+            parsedRowsAfterRules: bkRows.map(row => ({ weekLabel: row.weekLabel, title: row.title, id: originalLessonId(bkSource.source_id, row.body) })),
           }));
           NODE
       - name: Compile every registered SS1 subject in plan-only mode
