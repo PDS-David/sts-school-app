@@ -55,7 +55,7 @@ marker_rules = [
 ]
 identified_rows = plan.get("identified_rows", [])
 for rule in marker_rules:
-    normalize_line = lambda value: " ".join(value.replace("\\u00a0", " ").split())
+    normalize_line = lambda value: " ".join(value.split())
     matches = [
         row for row in identified_rows
         if row.get("source_id") == rule["source_id"]
