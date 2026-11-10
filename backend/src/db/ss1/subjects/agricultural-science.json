@@ -8232,6 +8232,7 @@
       "objective_locator": "SS1-SRC-7aa642b0085b scheme block 20 (sha256 1e4075c136a07535f22ac8963cc4d9f183203098cff2e00a4995e097e233eace); Week 9 label block 721 (sha256 e49a67c5f9ee04d211c522971f42cfc83eaf339ea51894512b072dbb1082f102); Week 9 body blocks 721-843 (range sha256 833dd27676e7de0cb43acff696f032a35ab5bed08277f1a81eb18cee0a5a1a74)",
       "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
+        "SS1-SRC-7aa642b0085b:BODY:e09cfcf9d560ec4b441526635970e83b8beddb0b9c7b38e33232df037351c064",
         "SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-ENVIRONMENTAL-FACTORS"
       ],
       "evidence": [
@@ -8256,8 +8257,8 @@
           "explanation": "An original learner-facing lesson covers the source's three groups (climatic, biotic and edaphic), the named factors and their agricultural effects. Atmospheric pressure is included because the source lists it but does not explain it; this is explicitly identified as an explanatory addition. Content approval remains PENDING and importer/student delivery verification remains DEFERRED."
         },
         {
-          "locator": "Original First Term Week 9 source teaching blocks 721–843; learner-facing equivalent SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-ENVIRONMENTAL-FACTORS.",
-          "explanation": "The source content was reviewed against the original DOCX. The repository compiler's plan-only audit did not resolve the separately recorded parsed-body hash as an identified lesson row, so this coverage record maps the objective to the complete authored equivalent only. The original source remains unchanged and is still ingested as part of the source document; this avoids claiming an unverified parsed-row identity."
+          "locator": "Week 9 source blocks 721–843; exact importer-parsed body SHA-256 e09cfcf9d560ec4b441526635970e83b8beddb0b9c7b38e33232df037351c064; authored equivalent SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-ENVIRONMENTAL-FACTORS.",
+          "explanation": "The exact body identity was confirmed by running the repository's own Mammoth 1.12.2 extraction and parseTopics implementation against the hash-verified original DOCX. The source row and authored equivalent both map to this scheme objective; the supplement adds the missing explanation of atmospheric pressure."
         }
       ]
     },
