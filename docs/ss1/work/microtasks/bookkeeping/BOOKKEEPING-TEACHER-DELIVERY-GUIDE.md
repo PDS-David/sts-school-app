@@ -3,7 +3,7 @@
 **Package:** `backend/src/db/ss1/subjects/bookkeeping.json`  
 **Class:** SS 1  
 **Schedule:** Three terms, twelve scheduled weeks per term  
-**Status:** 32 approved project/original-source lessons; revision and examination resources indexed separately.
+**Status:** 32 approved lesson records; revision and examination resources indexed separately.
 
 ## How to use this guide
 
@@ -17,7 +17,7 @@ The package's practice answers and marking allocations are part of the teacher-f
 
 ## 1st Term
 
-### Additional lesson — Single-column cash book: receipts, payments and balancing
+### Week 1 — Single-column cash book: receipts, payments and balancing
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK`  
 **Objectives:**
@@ -29,7 +29,7 @@ The package's practice answers and marking allocations are part of the teacher-f
 
 **Practice:** 4 item(s); 23 total practice marks.
 
-### Additional lesson — Double-column cash book: cash, bank and balancing
+### Week 2 — Double-column cash book: cash, bank and balancing
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK`  
 **Objectives:**
@@ -40,7 +40,7 @@ The package's practice answers and marking allocations are part of the teacher-f
 
 **Practice:** 3 item(s); 14 total practice marks.
 
-### Additional lesson — Contra entries in the double-column cash book
+### Week 3 — Contra entries in the double-column cash book
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T1-W03-CONTRA`  
 **Objectives:**
@@ -51,7 +51,7 @@ The package's practice answers and marking allocations are part of the teacher-f
 
 **Practice:** 3 item(s); 12 total practice marks.
 
-### Additional lesson — Double entry and posting from the cash book to the ledger
+### Week 4 — Double entry and posting from the cash book to the ledger
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY`  
 **Objectives:**
@@ -62,7 +62,7 @@ The package's practice answers and marking allocations are part of the teacher-f
 
 **Practice:** 6 item(s); 34 total practice marks.
 
-### Additional lesson — Posting from a double-column cash book to ledger accounts: complete worked practice
+### Week 4 — Posting from a double-column cash book to ledger accounts: complete worked practice
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T1-W04-POSTING`  
 **Objectives:**
@@ -73,7 +73,7 @@ The package's practice answers and marking allocations are part of the teacher-f
 
 **Practice:** 4 item(s); 18 total practice marks.
 
-### Additional lesson — Double-column cash book: layout, cash and bank columns
+### Week 5 — Double-column cash book: layout, cash and bank columns
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T1-W05-DOUBLE-COLUMN-LAYOUT`  
 **Objectives:**
@@ -84,7 +84,7 @@ The package's practice answers and marking allocations are part of the teacher-f
 
 **Practice:** 2 item(s); 9 total practice marks.
 
-### Additional lesson — Preparing and balancing a double-column cash book
+### Week 6 — Preparing and balancing a double-column cash book
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T1-W06-DOUBLE-COLUMN-PREPARATION`  
 **Objectives:**
@@ -95,7 +95,7 @@ The package's practice answers and marking allocations are part of the teacher-f
 
 **Practice:** 1 item(s); 6 total practice marks.
 
-### Additional lesson — Contra entries: identifying and recording transfers between cash and bank
+### Week 7 — Contra entries: identifying and recording transfers between cash and bank
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T1-W07-CONTRA-PRACTICE`  
 **Objectives:**
@@ -106,7 +106,7 @@ The package's practice answers and marking allocations are part of the teacher-f
 
 **Practice:** 1 item(s); 4 total practice marks.
 
-### Additional lesson — Principle of double entry: meaning and dual effect
+### Week 8 — Principle of double entry: meaning and dual effect
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T1-W08-DOUBLE-ENTRY-FOUNDATION`  
 **Objectives:**
@@ -117,7 +117,7 @@ The package's practice answers and marking allocations are part of the teacher-f
 
 **Practice:** 1 item(s); 4 total practice marks.
 
-### Additional lesson — Identifying accounts to debit and credit in business transactions
+### Week 9 — Identifying accounts to debit and credit in business transactions
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T1-W09-DEBIT-CREDIT-IDENTIFICATION`  
 **Objectives:**
@@ -128,7 +128,7 @@ The package's practice answers and marking allocations are part of the teacher-f
 
 **Practice:** 1 item(s); 4 total practice marks.
 
-### Additional lesson — Posting from the cash book to ledger accounts: integrated practice
+### Week 10 — Posting from the cash book to ledger accounts: integrated practice
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T1-W10-CASHBOOK-TO-LEDGER`  
 **Objectives:**
@@ -149,7 +149,7 @@ Use [ASSESSMENT-T1-W12-EXAM.md](./ASSESSMENT-T1-W12-EXAM.md). This is a project-
 
 ## 2nd Term
 
-### Additional lesson — Books of original entry: purpose and overview
+### Week 1 — Books of original entry: purpose and overview
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T2-W01`  
 **Objectives:**
@@ -159,7 +159,7 @@ Use [ASSESSMENT-T1-W12-EXAM.md](./ASSESSMENT-T1-W12-EXAM.md). This is a project-
 
 **Practice:** 2 item(s); 7 total practice marks.
 
-### Additional lesson — The general journal (journal proper)
+### Week 2 — The general journal (journal proper)
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T2-W02`  
 **Objectives:**
@@ -169,7 +169,7 @@ Use [ASSESSMENT-T1-W12-EXAM.md](./ASSESSMENT-T1-W12-EXAM.md). This is a project-
 
 **Practice:** 2 item(s); 10 total practice marks.
 
-### Additional lesson — Sales day book and purchases day book
+### Week 3 — Sales day book and purchases day book
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T2-W03`  
 **Objectives:**
@@ -179,7 +179,7 @@ Use [ASSESSMENT-T1-W12-EXAM.md](./ASSESSMENT-T1-W12-EXAM.md). This is a project-
 
 **Practice:** 2 item(s); 8 total practice marks.
 
-### Additional lesson — Returns inwards and returns outwards books
+### Week 4 — Returns inwards and returns outwards books
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T2-W04`  
 **Objectives:**
@@ -189,7 +189,7 @@ Use [ASSESSMENT-T1-W12-EXAM.md](./ASSESSMENT-T1-W12-EXAM.md). This is a project-
 
 **Practice:** 2 item(s); 8 total practice marks.
 
-### Additional lesson — Ledger classification and account relationships
+### Week 5 — Ledger classification and account relationships
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T2-W05`  
 **Objectives:**
@@ -199,7 +199,7 @@ Use [ASSESSMENT-T1-W12-EXAM.md](./ASSESSMENT-T1-W12-EXAM.md). This is a project-
 
 **Practice:** 2 item(s); 8 total practice marks.
 
-### Additional lesson — Posting from subsidiary books to ledger accounts
+### Week 6 — Posting from subsidiary books to ledger accounts
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T2-W06`  
 **Objectives:**
@@ -209,7 +209,7 @@ Use [ASSESSMENT-T1-W12-EXAM.md](./ASSESSMENT-T1-W12-EXAM.md). This is a project-
 
 **Practice:** 2 item(s); 7 total practice marks.
 
-### Additional lesson — Trade discount and cash discount
+### Week 7 — Trade discount and cash discount
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T2-W07`  
 **Objectives:**
@@ -219,7 +219,7 @@ Use [ASSESSMENT-T1-W12-EXAM.md](./ASSESSMENT-T1-W12-EXAM.md). This is a project-
 
 **Practice:** 2 item(s); 8 total practice marks.
 
-### Additional lesson — Three-column cash book: layout and entries
+### Week 8 — Three-column cash book: layout and entries
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T2-W08`  
 **Objectives:**
@@ -229,7 +229,7 @@ Use [ASSESSMENT-T1-W12-EXAM.md](./ASSESSMENT-T1-W12-EXAM.md). This is a project-
 
 **Practice:** 2 item(s); 8 total practice marks.
 
-### Additional lesson — Three-column cash book: balancing and integrated practice
+### Week 9 — Three-column cash book: balancing and integrated practice
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T2-W09`  
 **Objectives:**
@@ -239,7 +239,7 @@ Use [ASSESSMENT-T1-W12-EXAM.md](./ASSESSMENT-T1-W12-EXAM.md). This is a project-
 
 **Practice:** 2 item(s); 8 total practice marks.
 
-### Additional lesson — Bank reconciliation statement
+### Week 10 — Bank reconciliation statement
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T2-W10`  
 **Objectives:**
@@ -259,7 +259,7 @@ Use [ASSESSMENT-T2-W12-EXAM.md](./ASSESSMENT-T2-W12-EXAM.md). This is a project-
 
 ## 3rd Term
 
-### Additional lesson — Revision: cash book, double entry and ledger foundations
+### Week 1 — Revision: cash book, double entry and ledger foundations
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T3-W01-REVISION`  
 **Objectives:**
@@ -271,7 +271,7 @@ Use [ASSESSMENT-T2-W12-EXAM.md](./ASSESSMENT-T2-W12-EXAM.md). This is a project-
 
 **Practice:** 2 item(s); 10 total practice marks.
 
-### Additional lesson — Petty cash book: imprest system, columns and posting
+### Week 2 — Petty cash book: imprest system, columns and posting
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T3-W02-PETTY-CASH`  
 **Objectives:**
@@ -281,7 +281,7 @@ Use [ASSESSMENT-T2-W12-EXAM.md](./ASSESSMENT-T2-W12-EXAM.md). This is a project-
 
 **Practice:** 3 item(s); 10 total practice marks.
 
-### Additional lesson — Trial balance: meaning, purpose and limitations
+### Week 3 — Trial balance: meaning, purpose and limitations
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T3-W03-TRIAL-BALANCE`  
 **Objectives:**
@@ -291,7 +291,7 @@ Use [ASSESSMENT-T2-W12-EXAM.md](./ASSESSMENT-T2-W12-EXAM.md). This is a project-
 
 **Practice:** 3 item(s); 11 total practice marks.
 
-### Additional lesson — Rules for extracting ledger balances and preparing a trial balance
+### Week 4 — Rules for extracting ledger balances and preparing a trial balance
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION`  
 **Objectives:**
@@ -301,7 +301,7 @@ Use [ASSESSMENT-T2-W12-EXAM.md](./ASSESSMENT-T2-W12-EXAM.md). This is a project-
 
 **Practice:** 3 item(s); 13 total practice marks.
 
-### Additional lesson — Errors that do not affect the agreement of a trial balance
+### Week 5 — Errors that do not affect the agreement of a trial balance
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT`  
 **Objectives:**
@@ -311,7 +311,7 @@ Use [ASSESSMENT-T2-W12-EXAM.md](./ASSESSMENT-T2-W12-EXAM.md). This is a project-
 
 **Practice:** 2 item(s); 6 total practice marks.
 
-### Additional lesson — Correction of errors affecting agreement using a suspense account
+### Week 6 — Correction of errors affecting agreement using a suspense account
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T3-W06-SUSPENSE`  
 **Objectives:**
@@ -321,7 +321,7 @@ Use [ASSESSMENT-T2-W12-EXAM.md](./ASSESSMENT-T2-W12-EXAM.md). This is a project-
 
 **Practice:** 4 item(s); 10 total practice marks.
 
-### Additional lesson — Trading account, cost of goods sold and gross profit
+### Week 7 — Trading account, cost of goods sold and gross profit
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T3-W07-TRADING`  
 **Objectives:**
@@ -331,7 +331,7 @@ Use [ASSESSMENT-T2-W12-EXAM.md](./ASSESSMENT-T2-W12-EXAM.md). This is a project-
 
 **Practice:** 2 item(s); 7 total practice marks.
 
-### Additional lesson — Preparing a simple trading account
+### Week 8 — Preparing a simple trading account
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T3-W08-PREP`  
 **Objectives:**
@@ -341,7 +341,7 @@ Use [ASSESSMENT-T2-W12-EXAM.md](./ASSESSMENT-T2-W12-EXAM.md). This is a project-
 
 **Practice:** 2 item(s); 8 total practice marks.
 
-### Additional lesson — Preparing a profit and loss account
+### Week 9 — Preparing a profit and loss account
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T3-W09-PNL`  
 **Objectives:**
@@ -351,7 +351,7 @@ Use [ASSESSMENT-T2-W12-EXAM.md](./ASSESSMENT-T2-W12-EXAM.md). This is a project-
 
 **Practice:** 2 item(s); 8 total practice marks.
 
-### Additional lesson — Preparing a simple balance sheet: Bose Adetoro Enterprises
+### Week 10 — Preparing a simple balance sheet: Bose Adetoro Enterprises
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET`  
 **Objectives:**
@@ -361,7 +361,7 @@ Use [ASSESSMENT-T2-W12-EXAM.md](./ASSESSMENT-T2-W12-EXAM.md). This is a project-
 
 **Practice:** 2 item(s); 7 total practice marks.
 
-### Additional lesson — Users of a balance sheet
+### Week 10 — Users of a balance sheet
 
 **Lesson ID:** `SUP-SS1-BOOKKEEPING-T3-W10-USERS`  
 **Objectives:**
