@@ -144,7 +144,8 @@
     "2026-11-10: Added original rights-cleared SVG replacements for the Week 7 poultry reproductive-tract and fertile-egg visuals; registered both against the egg-formation supplement. Original unlicensed source images remain excluded pending importer/learner-route verification.",
     "2026-11-10: Added original male and female poultry reproductive-system SVGs as replacements for the unlicensed low-resolution combined source image21. Both are registered to the existing poultry reproductive-system lesson; original image exclusion and learner-route delivery remain to be verified.",
     "2026-11-10: Added AG-LES-T3-W02-HUMAN-ANIMAL-WATER-BIOGAS. Together with the existing farm-power operations lesson, all eight source categories are now covered by learner-facing package lessons. COV-AG-T3-W02-FARM-POWER is IMPLEMENTED_EQUIVALENT; importer mapping and several source-specific fact/rights issues remain open.",
-    "2026-11-10: Added original eight-source farm-power infographic and linked it to the human/animal/water/biogas supplement. Updated the five Week Two visual disposition records; unlicensed original images remain excluded pending importer/learner-route verification."
+    "2026-11-10: Added original eight-source farm-power infographic and linked it to the human/animal/water/biogas supplement. Updated the five Week Two visual disposition records; unlicensed original images remain excluded pending importer/learner-route verification.",
+    "2026-11-10: PR #468 CI run 42797644614 executed the subject-package validation loop before stopping in the unrelated Bookkeeping regression RULE-BK-T3-W02 (shared compiler.ts: anchor must start at a line boundary). No Agricultural Science-specific failure was reported; later PostgreSQL/route test groups were skipped by the shared static-step failure. Do not change shared compiler code under the Agricultural Science package scope."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
