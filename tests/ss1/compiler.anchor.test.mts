@@ -185,3 +185,11 @@ test('Literature term-two and term-three scheme anchors bind the separate week a
     }
   }
 });
+
+test('Yoruba second-term Week 11 revision scheme row is classified as scheme-only', () => {
+  const yoruba = loadPackages().find(item => item.subject_slug === 'yoruba');
+  assert(yoruba, 'Yoruba package is missing');
+  const rule = yoruba.source_rules.find(item => item.id === 'SS1-SRC-ec4a5095420d-R002');
+  assert(rule && rule.op === 'classify_marker');
+  assert.equal(rule.kind, 'SCHEME_ONLY');
+});
