@@ -241,3 +241,18 @@ test('A standalone Week 8 scheme marker is not confused with the longer teaching
     text: sourceText,
   }, [rule]), sourceText);
 });
+
+
+test('Every one-line English scheme marker explicitly uses whole-line matching', () => {
+  const p = packageSchema.parse(raw);
+  const singleLine = p.source_rules.filter(rule =>
+    rule.op === 'classify_marker' && !/[\\r\\n]/u.test(rule.anchor)
+  );
+  const multiLine = p.source_rules.filter(rule =>
+    rule.op === 'classify_marker' && /[\\r\\n]/u.test(rule.anchor)
+  );
+  assert.equal(singleLine.length, 23);
+  assert.equal(multiLine.length, 9);
+  assert(singleLine.every(rule => rule.match_mode === 'WHOLE_LINE'));
+  assert(multiLine.every(rule => rule.match_mode !== 'WHOLE_LINE'));
+});
