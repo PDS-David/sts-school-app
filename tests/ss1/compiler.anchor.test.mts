@@ -70,3 +70,24 @@ test('Chemistry and Literature terminal scheme markers use whole-line matching',
     item.op === 'classify_marker' && item.kind === 'SCHEME_ONLY' && item.match_mode === 'WHOLE_LINE'
   ));
 });
+
+test('English first-term revision scheme marker includes its row number in whole-line matching', () => {
+  const english = loadPackages().find(item => item.subject_slug === 'english');
+  assert(english, 'English package is missing');
+  const rule = english.source_rules.find(item => item.id === 'SS1-SRC-a00657d42196-R028');
+  assert(rule && rule.op === 'classify_marker');
+  assert.equal(rule.match_mode, 'WHOLE_LINE');
+  assert.match(rule.anchor, /^1 General Revision of Last Term's Examination;/);
+  for (const [id, row] of [
+    ['SS1-SRC-a00657d42196-R029', 2],
+    ['SS1-SRC-a00657d42196-R030', 3],
+    ['SS1-SRC-a00657d42196-R031', 4],
+    ['SS1-SRC-a00657d42196-R032', 5],
+    ['SS1-SRC-a00657d42196-R033', 6],
+  ] as const) {
+    const marker = english.source_rules.find(item => item.id === id);
+    assert(marker && marker.op === 'classify_marker');
+    assert.equal(marker.match_mode, 'WHOLE_LINE');
+    assert.ok(marker.anchor.startsWith(`${row} `));
+  }
+});
