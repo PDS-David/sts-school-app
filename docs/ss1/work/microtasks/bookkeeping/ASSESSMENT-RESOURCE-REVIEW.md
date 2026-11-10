@@ -54,6 +54,7 @@ The answer-key calculations shown above reconcile. Automated regression also che
 - PR #439 merged the assessment resources and assessment regression suite into `master`.
 - PR #441 merged the assessment regression suite into the main `JSS3 implementation and asset checks` workflow.
 - Main workflow run [42783833613](https://github.com/PDS-David/sts-school-app/actions/runs/42783833613) completed successfully on PR #441 head `b2ae64664910104c554c383ba2104e0c5c7f1453`.
+- PR #444 added complete-package baseline assertions and per-paper section-total checks. Dedicated Bookkeeping run [42785278714](https://github.com/PDS-David/sts-school-app/actions/runs/42785278714) and main workflow run [42785279054](https://github.com/PDS-David/sts-school-app/actions/runs/42785279054) both passed on head `82b00440ad0e7b760531274910526277f36d0c47`. PR #444 merged to `master` as `f887ff21fe4d5b70a04cf8547909d7991f8b89a9`; post-merge main workflow run [42785541578](https://github.com/PDS-David/sts-school-app/actions/runs/42785541578) also passed on that exact commit.
 - The workflow ran Bookkeeping package and assessment tests alongside backend/mobile TypeScript checks, static regressions and configured PostgreSQL/asset integration tests.
 
 ## Remaining release gates
@@ -63,5 +64,9 @@ The answer-key calculations shown above reconcile. Automated regression also che
 3. **Database integration/release:** the importer currently rejects `--ss1-reviewed --yes` by design. Keep that guard. Complete plan review, snapshot compatibility and authenticated retrieval tests against disposable PostgreSQL before designing an explicitly approved release path.
 4. **Student-device and end-to-end delivery:** verify lesson listing, objectives, practice questions, answer/marking visibility, progress persistence and offline/low-bandwidth behaviour with synthetic student/teacher accounts on supported devices.
 5. **Source provenance:** first-term source has four teaching-week bodies despite a twelve-week scheme; second-term source duplicates first-term teaching and remains excluded from reconstruction; third-term source has no Week 1 revision body. Authored replacements fill delivery slots but do not erase these facts.
+
+## Package-loader compatibility
+
+PR #450 fixed strict-schema compatibility in the SS1 registry loader and corrected the Technical Drawing Week 5 scheme-only marker classification. A new regression confirms that all 21 registered SS1 subject packages load and validate. Dedicated Bookkeeping run [42786574009](https://github.com/PDS-David/sts-school-app/actions/runs/42786574009), main PR workflow [42786573539](https://github.com/PDS-David/sts-school-app/actions/runs/42786573539), and post-merge main workflow [42786779861](https://github.com/PDS-David/sts-school-app/actions/runs/42786779861) all passed. PR #450 merged as `17750b8d8746e69828d674c55ad12660f3bf32ff`.
 
 No production database was modified and no original DOC/DOCX source was altered.

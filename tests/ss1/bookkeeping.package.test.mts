@@ -7,6 +7,7 @@ import { createHash } from 'node:crypto';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import { applyRules, compilePackages } from '../../backend/src/db/ss1/compiler.ts';
 import { isSchemeWorkWeekHeader } from '../../backend/src/db/ss1/topicParserRules.ts';
+import { loadPackages } from '../../backend/src/db/ss1/loader.ts';
 
 const raw = JSON.parse(readFileSync(new URL('../../backend/src/db/ss1/subjects/bookkeeping.json', import.meta.url), 'utf8'));
 const manifest = [
@@ -487,4 +488,13 @@ test('Complete Bookkeeping delivery baseline remains present and internally appr
   assert(p.lessons.every(l => l.state.implementation === 'IMPLEMENTED'));
   assert(p.lessons.every(l => l.state.content_approval === 'APPROVED'));
   assert(p.lessons.every(l => l.state.verification === 'VERIFIED'));
+});
+
+
+test('SS1 package loader can validate every registered subject package', () => {
+  const packages = loadPackages();
+  const slugs = packages.map(p => p.subject_slug);
+  assert(slugs.includes('bookkeeping'));
+  assert.equal(new Set(slugs).size, slugs.length);
+  assert.equal(slugs.length, 21);
 });
