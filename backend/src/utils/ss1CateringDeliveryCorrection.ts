@@ -144,7 +144,8 @@ export async function retireStaleSs1Cache(query: Ss1Query, topicId: unknown, del
      ),
      closed AS (
        UPDATE assessments a SET status='closed', content_fingerprint=$8
-       WHERE a.id IN (SELECT id FROM stale) AND a.school_code=$4 AND a.class_name=$5 AND a.status<>'closed'
+       WHERE a.id IN (SELECT id FROM stale) AND a.school_code=$4 AND a.class_name=$5
+         AND (a.status<>'closed' OR a.content_fingerprint IS DISTINCT FROM $8)
        RETURNING a.id
      ),
      upd AS (
