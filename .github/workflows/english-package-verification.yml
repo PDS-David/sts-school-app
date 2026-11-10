@@ -55,6 +55,20 @@ jobs:
           python scripts/ss1/filter_english_sources.py \
             --root "$RUNNER_TEMP/ss1-staged" \
             --output "$RUNNER_TEMP/ss1-english-staged"
+      - name: Diagnose exact English term-two revision scheme line
+        run: |
+          python - <<'PY'
+          import zipfile, xml.etree.ElementTree as ET
+          from pathlib import Path
+          doc = Path(r"$RUNNER_TEMP/ss1-english-staged/SSS 1/2nd Term SS1_/ENGLISH.docx")
+          with zipfile.ZipFile(doc) as z:
+              root = ET.fromstring(z.read("word/document.xml"))
+          ns = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
+          for i, p in enumerate(root.findall(".//w:p", ns), 1):
+              s = "".join(n.text or "" for n in p.findall(".//w:t", ns))
+              if "GENERAL REVISION" in s.upper() or "WEEK 10" in s.upper():
+                  print(f"DOCX paragraph {i}: {s!r}")
+          PY
       - name: Run the real SS1 parser/compiler in plan-only mode
         shell: bash
         run: |
