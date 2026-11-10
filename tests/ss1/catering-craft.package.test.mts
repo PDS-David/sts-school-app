@@ -143,9 +143,25 @@ test('First Term external scheme covers all thirteen calendar weeks without inve
   const ext = p.external_sources[0];
   const coverage = p.coverage.filter(c => c.source_id === ext.source_id);
   assert.equal(coverage.length, 13);
-  assert.deepEqual(coverage.map(c => c.objective_locator.match(/Week (\\d+)/)?.[1]), Array.from({ length: 13 }, (_, i) => String(i + 1)));
+  assert.deepEqual(coverage.map(c => c.objective_locator.match(/Week (\d+)/)?.[1]), Array.from({ length: 13 }, (_, i) => String(i + 1)));
   assert(coverage.every(c => c.status === 'IMPLEMENTED_EQUIVALENT' && c.lesson_ids.length > 0 && c.evidence.length > 0));
   assert(!p.sources.some(s => s.term === '1st Term'));
   assert(!assigned.some(cols => cols[4] === '1st Term'));
   assert(p.open_items.some(o => o.id === 'CC-T1-SOURCE-MISSING' && !o.blocks_delivery));
+});
+
+test('Catering Craft package has complete authored term coverage with no delivery blockers', () => {
+  const p = packageSchema.parse(raw);
+  assert.equal(p.package_status, 'IMPLEMENTED');
+  assert.equal(p.lessons.length, 38);
+  assert.equal(p.coverage.length, 36);
+  assert(p.coverage.every(c => ['IMPLEMENTED_EQUIVALENT', 'MARKER'].includes(c.status)));
+  assert(p.coverage.every(c => c.evidence.length > 0));
+  assert(!p.open_items.some(item => item.blocks_delivery));
+  assert.equal(p.assets.length, 0);
+  assert(p.lessons.every(lesson =>
+    lesson.state.content_approval === 'APPROVED' &&
+    lesson.state.implementation === 'IMPLEMENTED' &&
+    lesson.state.verification === 'DEFERRED'
+  ));
 });
