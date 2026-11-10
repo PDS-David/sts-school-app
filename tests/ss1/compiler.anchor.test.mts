@@ -110,12 +110,12 @@ test('English second-term scheme-only revision marker is disambiguated from its 
   assert.equal(rule.kind, 'SCHEME_ONLY');
   assert.equal(rule.match_mode, undefined);
   assert.ok(rule.anchor.startsWith('WEEK 9:  COMPOSITION'));
-  assert.ok(rule.anchor.includes('\\nWEEK 10:  GENERAL REVISION CLASS [GRC]'));
+  assert.ok(rule.anchor.includes('\nWEEK 10:  GENERAL REVISION CLASS [GRC]'));
   const input = {
     source_id: rule.source_id,
     sha256: rule.source_sha256,
     filePath: 'SSS 1/2nd Term SS1_/ENGLISH.docx',
-    text: rule.anchor + '\\n\\nWEEK 1 SS1\\nTOPIC: AFFIX\\nWEEK 10: GENERAL REVISION CLASS [GRC]',
+    text: rule.anchor + '\n\nWEEK 1 SS1\nTOPIC: AFFIX\nWEEK 10: GENERAL REVISION CLASS [GRC]',
   };
   assert.equal(applyRules(input, [rule]), input.text);
 });
