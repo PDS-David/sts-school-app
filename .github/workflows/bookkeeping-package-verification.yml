@@ -9,6 +9,10 @@ on:
       - "backend/src/db/ss1/compiler.ts"
       - "backend/src/db/ss1/topicParserRules.ts"
       - "tests/ss1/bookkeeping.package.test.mts"
+      - "tests/ss1/bookkeeping.assessment.test.mts"
+      - "docs/ss1/work/microtasks/bookkeeping/ASSESSMENT-*.md"
+      - "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      - "docs/ss1/work/microtasks/bookkeeping/BK-OWNER-DECISIONS.md"
       - ".github/workflows/bookkeeping-package-verification.yml"
 
 permissions:
@@ -29,4 +33,4 @@ jobs:
       - name: Install locked dependencies
         run: npm ci --ignore-scripts
       - name: Verify Bookkeeping package
-        run: node --import tsx --test tests/ss1/bookkeeping.package.test.mts
+        run: node --import tsx --test tests/ss1/bookkeeping.package.test.mts tests/ss1/bookkeeping.assessment.test.mts
