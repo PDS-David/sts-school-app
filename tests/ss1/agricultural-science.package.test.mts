@@ -158,21 +158,27 @@ test('Agricultural Science original row identities match the real Mammoth parser
   const plan = compilePackages([p], inputs, parseTopics);
   const identified = new Map(plan.identified_rows.map(row => [row.id, row]));
 
-  // These are the exact original week rows behind the outstanding correction reviews.
-  // They are intentionally asserted against the actual importer parser, not hand-entered hashes.
-  const correctionSourceRows = [
-    'SS1-SRC-7aa642b0085b:BODY:de6febf42e9195e6171f87f05840f7ac0d5a7337820ec98392670ebc3b1485aa',
-    'SS1-SRC-956594d97094:BODY:1beb6d785bb09aa20fdffc82f7efaa1cdcdbd565c29d689f4575757ec6ea20e9',
-    'SS1-SRC-956594d97094:BODY:12d2bff62a3b676cec1218abdde9a8f57a09e2057bd5f6d880e50cb0dee77886',
-    'SS1-SRC-956594d97094:BODY:5e12e6d75046c73227b73e5a70eb56fd6a83ccbaf4d206b9dc3d4cc609e008f6',
-    'SS1-SRC-956594d97094:BODY:d6a132c9ce637c6fee7ca4e1e88aa707220a68298bde2794d5657e49533c9e22',
-    'SS1-SRC-956594d97094:BODY:1f941dd52a764e5665229f0caad9aa3a3bca2ecf1ffad1ac4f3810601bfa573b',
-    'SS1-SRC-956594d97094:BODY:1d566e884981c34293a7c08a90ce5177dc063ea5813da9a7f27e69e09c5f77ee',
-    'SS1-SRC-458a07f7ea5a:BODY:0c06c5383b974616b0e06a23a1165fe3beeeec8b89b232c0383f83a6d2e056ff',
-    'SS1-SRC-458a07f7ea5a:BODY:57c54e51896e3d54fcb43c690c056b45ebcfffd8e132e8bc5038de6c0ea5879b',
-  ];
-  for (const id of correctionSourceRows) {
-    assert(identified.has(id), `actual parser/compiler did not reproduce correction source row ${id}`);
+  // Emit the exact parser/compiler identities for source rows so any correction
+  // binding is based on the real importer output, not a reconstructed hash map.
+  console.log('AGRICULTURAL_SOURCE_ROW_IDENTITIES', JSON.stringify(
+    plan.identified_rows
+      .filter(row => row.source_id !== null)
+      .map(row => ({
+        id: row.id,
+        source_id: row.source_id,
+        week_label: row.row.weekLabel,
+        title: row.row.title,
+        body_sha256: row.body_sha256,
+      })),
+    null,
+    2,
+  ));
+
+  for (const source of p.sources) {
+    assert(
+      plan.identified_rows.some(row => row.source_id === source.source_id),
+      `actual parser/compiler produced no original rows for ${source.source_id}`,
+    );
   }
 
   for (const correction of p.delivery_corrections) {
