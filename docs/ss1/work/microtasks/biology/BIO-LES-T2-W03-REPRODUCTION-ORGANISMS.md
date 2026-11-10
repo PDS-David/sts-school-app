@@ -138,3 +138,37 @@ A cockroach nymph is not a larva, and a cockroach does not have a pupal stage.
 - OpenStax, *Biology 2e*, §13.3, “The Animal Body: Basic Form and Function”: https://openstax.org/books/biology-2e/pages/13-3-the-animal-body-basic-form-and-function
 
 OpenStax Biology 2e is licensed CC BY 4.0. This lesson is independently written and does not reproduce source paragraphs or figures.
+
+
+---
+
+## Implementation audit — 2026-11-10
+
+Status: **IMPLEMENTED — TESTING DEFERRED; CONTENT APPROVAL PENDING.**
+
+### Source identity
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member: `SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc`; SHA-256: `41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44`.
+- Week 3 label block 160; body blocks 160–261; topic block 161. Archive and member hashes were verified in the current work session. No source bytes were committed.
+
+### Registered implementation
+- Stable lesson ID: `SUP-SS1-BIOLOGY-T2-W03-REPRODUCTION-ORGANISMS`.
+- Lesson body SHA-256 after reference enrichment: `eff690a558866ca7e641f31f92d026098b4fe0699746455feb86d4e748779195`.
+- Five objectives cover Amoeba, Paramecium, Spirogyra, earthworm, cockroach, housefly and land snail.
+- Ten keyed practice questions; 19 marks total; criterion-level marking is supplied.
+- Four project-authored SVGs are registered to this exact lesson ID: Paramecium conjugation (2,411 bytes; `2b2c1ca1b49587792f58e3fed6b9dd57651f242ec38bac280b9fa85c4a13eddd`); Spirogyra conjugation (2,872 bytes; `5fed32775ed70697e5a2efc12aa6600ab77963c56666ccd61fb7513e1dc3aca9`); cockroach life cycle (1,797 bytes; `f3025ff54e7d68c9870ad83a26fa65536631b33eaea9628e093ac16ee0bdbb02`); housefly life cycle (2,054 bytes; `e4507767a788c3f4e950a39274e4d3d8760ec8c704801d4c71109adc439acf33`). Original source pixels are not reused.
+- Further-reading and provenance entries were strengthened with OpenStax Biology 2e, University of Florida IFAS Extension, University of California Statewide IPM Program and NIOS Biology references. Factual content is independently paraphrased; no third-party paragraphs or figures are copied.
+
+### Scope and assessment limits
+The tapeworm fact review confirms accurate cestode reproductive biology but does not establish tapeworm reproduction as Week 3 teaching: it is absent from the Week 3 scheme and body. Tapeworm is therefore excluded from this lesson. Its assessment prompt remains a teacher/owner decision. The printed internal-fertilisation MCQ has two defensible exceptions (earthworm and toad). Other unresolved assessment items include Mucor/Hydra conjugation and the unsupported five-part earthworm-structure prompt. The Week 3 assessment coverage remains PARTIAL and is not cleared by this lesson. The separate sexual-reproduction advantages/disadvantages supplement already exists.
+
+### Package and queue reconciliation
+- Removed obsolete “no lesson rows” evidence from the two Week 3 organism coverage entries.
+- Confirmed both organism coverage entries point to the stable lesson.
+- Set `COV-BIO-T2-W03-ASSESSMENT` to PARTIAL and retained teacher/owner blockers.
+- Removed the stale open item claiming the sexual-advantages supplement was missing.
+- Updated the asset-binding open item to reflect that all four Week 3 diagrams are registered; remaining T1 and Week 9 visuals still need exact lesson bindings.
+- Queue task `BIO-LES-T2-W03-REPRODUCTION-ORGANISMS` is now IMPLEMENTED_TESTING_DEFERRED. Queue counts: 124 IMPLEMENTED_TESTING_DEFERRED, 17 BLOCKED, 27 PENDING.
+
+### Verification boundary
+Source hashes, package JSON parsing, lesson identity/body hash, practice count/marks, asset metadata, coverage and open-item consistency were inspected. Zod/schema execution, importer/compiler, TypeScript checks, database rehearsal, production import and device testing were not run; owner-deferred verification remains in force. Content approval is PENDING and verification is DEFERRED.
