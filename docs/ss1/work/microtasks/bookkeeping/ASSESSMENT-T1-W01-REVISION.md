@@ -5,7 +5,7 @@
 **Term slot:** First Term, Week 1 (revision)  
 **Suggested duration:** 60 minutes  
 **Total:** 40 marks  
-**Provenance:** Newly authored revision material. It is not recovered from, or a correction to, the original DOCX.
+**Provenance:** Newly authored, project-authored revision material. It is not recovered from, or a correction to, the original DOCX.
 
 ## Learning coverage
 
