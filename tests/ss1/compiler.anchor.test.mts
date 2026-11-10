@@ -91,3 +91,108 @@ test('English first-term revision scheme marker includes its row number in whole
     assert.ok(marker.anchor.startsWith(`${row} `));
   }
 });
+
+test('English first-term scheme row 7 includes its row number in whole-line matching', () => {
+  const english = loadPackages().find(item => item.subject_slug === 'english');
+  assert(english, 'English package is missing');
+  const rule = english.source_rules.find(item => item.id === 'SS1-SRC-a00657d42196-R034');
+  assert(rule && rule.op === 'classify_marker');
+  assert.equal(rule.kind, 'SCHEME_ONLY');
+  assert.equal(rule.match_mode, 'WHOLE_LINE');
+  assert.ok(rule.anchor.startsWith('7 Structures: Learning about Noun Clause;'));
+});
+
+test('English second-term scheme-only revision marker is disambiguated from its body heading by scheme context', () => {
+  const english = loadPackages().find(item => item.subject_slug === 'english');
+  assert(english, 'English package is missing');
+  const rule = english.source_rules.find(item => item.id === 'SS1-SRC-d8bd8f85fd73-R012');
+  assert(rule && rule.op === 'classify_marker');
+  assert.equal(rule.kind, 'SCHEME_ONLY');
+  assert.equal(rule.match_mode, undefined);
+  assert.ok(rule.anchor.startsWith('WEEK 9:  COMPOSITION'));
+  assert.ok(rule.anchor.includes('\nWEEK 10:  GENERAL REVISION CLASS [GRC]'));
+  const input = {
+    source_id: rule.source_id,
+    sha256: rule.source_sha256,
+    filePath: 'SSS 1/2nd Term SS1_/ENGLISH.docx',
+    text: rule.anchor + '\n\nWEEK 1 SS1\nTOPIC: AFFIX\nWEEK 10: GENERAL REVISION CLASS [GRC]',
+  };
+  assert.equal(applyRules(input, [rule]), input.text);
+});
+
+test('English third-term Week 6 essay split includes its distinctive story-writing prompt', () => {
+  const english = loadPackages().find(item => item.subject_slug === 'english');
+  assert(english, 'English package is missing');
+  const rule = english.source_rules.find(item => item.id === 'SS1-SRC-50fa9b1eb2fd-R011');
+  assert(rule && rule.op === 'split_before');
+  assert.equal(rule.week_label, '6');
+  assert.ok(rule.anchor.includes("A story which illustrates the saying - \"It is a man's World\""));
+  const input = {
+    source_id: rule.source_id,
+    sha256: rule.source_sha256,
+    filePath: 'SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc',
+    text: rule.anchor + '\n\nC. Essay Writing : Argumentative \nContent: Explanation',
+  };
+  assert.match(applyRules(input, [rule]), /^WEEK 6\n/);
+});
+
+test('English third-term multi-strand scheme markers use substring matching, not whole-line matching', () => {
+  const english = loadPackages().find(item => item.subject_slug === 'english');
+  assert(english, 'English package is missing');
+  const cases = [
+    ['SS1-SRC-50fa9b1eb2fd-R030', ' Vocabulary Development: Words associated with journalism and advertising.'],
+    ['SS1-SRC-50fa9b1eb2fd-R031', ' Speech work: contrasting /i/ and /i:/.'],
+    ['SS1-SRC-50fa9b1eb2fd-R032', ' Vocabulary Development: Words associated with Building.'],
+  ] as const;
+  for (const [id, suffix] of cases) {
+    const rule = english.source_rules.find(item => item.id === id);
+    assert(rule && rule.op === 'classify_marker');
+    assert.equal(rule.kind, 'SCHEME_ONLY');
+    assert.equal(rule.match_mode, undefined);
+    const input = {
+      source_id: rule.source_id,
+      sha256: rule.source_sha256,
+      text: rule.anchor + suffix,
+    };
+    assert.equal(applyRules(input, [rule]), input.text);
+  }
+});
+
+test('Literature term-two and term-three scheme anchors bind the separate week and topic cells', () => {
+  const literature = loadPackages().find(item => item.subject_slug === 'literature');
+  assert(literature, 'Literature package is missing');
+  const expected = [
+    '1\n\n AFRICAN DRAMA : INRODUCTION TO HARVEST OF CORRUPTION',
+    '2\n\nTHE BLOOD OF A STRANGER',
+    '3\n\nAFRICAN POETRY : PIANO AND DRUMS',
+    '4\n\nTHE DINING TABLE',
+    '5\n\nTHE ANVIL AND THE HAMMER',
+    '6\n\nNON AFRICAN DRAMA : OTHELLO',
+    '7\n\nSHE STOOPS TO CONQUER BY OLIVER GOLDSMITH',
+    '8\n\nNON AFRICAN POETRY : PULLEY',
+    '9.\n\nTHE SCHOOL BOY BY WILLIAM BLAKE',
+  ];
+  for (const source of ['SS1-SRC-1728961e97b5', 'SS1-SRC-2422e423a240']) {
+    for (let index = 0; index < expected.length; index++) {
+      const id = source + '-R' + String(index + 3).padStart(3, '0');
+      const rule = literature.source_rules.find(item => item.id === id);
+      assert(rule && rule.op === 'classify_marker');
+      assert.equal(rule.kind, 'SCHEME_ONLY');
+      assert.equal(rule.anchor, expected[index]);
+      assert.equal(rule.match_mode, undefined);
+      const input = { source_id: rule.source_id, sha256: rule.source_sha256, text: rule.anchor };
+      assert.equal(applyRules(input, [rule]), input.text);
+    }
+  }
+});
+
+test('Yoruba second-term Week 11 revision scheme row is classified as scheme-only', () => {
+  const yoruba = loadPackages().find(item => item.subject_slug === 'yoruba');
+  assert(yoruba, 'Yoruba package is missing');
+  const rule = yoruba.source_rules.find(item => item.id === 'SS1-SRC-ec4a5095420d-R002');
+  assert(rule && rule.op === 'classify_marker');
+  assert.equal(rule.kind, 'SCHEME_ONLY');
+  const exam = yoruba.source_rules.find(item => item.id === 'SS1-SRC-ec4a5095420d-R003');
+  assert(exam && exam.op === 'classify_marker');
+  assert.equal(exam.kind, 'SCHEME_ONLY');
+});

@@ -1,0 +1,66 @@
+name: SS1 cross-subject package audit
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "backend/src/db/ss1/subjects/**"
+      - "backend/src/db/ss1/sourceRegistry.json"
+      - "backend/src/db/ss1/compiler.ts"
+      - "backend/src/db/ss1/subjectPackageSchema.ts"
+      - "backend/src/db/ss1/loader.ts"
+      - "backend/src/db/ss1/topicParserRules.ts"
+      - "backend/src/db/ingestTopics.ts"
+      - "docs/ss1/sources/**"
+      - "scripts/ss1/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/ss1-cross-subject-package-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  cross-subject-audit:
+    name: All registered SS1 subjects — source anchors and compiler
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify and stage the complete SS1 source archive
+        run: |
+          python scripts/ss1/prepare_sources.py \
+            --archive docs/ss1/sources/SSS1-original.zip \
+            --output "$RUNNER_TEMP/ss1-staged"
+      - name: Compile every registered SS1 subject in plan-only mode
+        run: |
+          python scripts/ss1/build_subject_packages.py \
+            --root "$RUNNER_TEMP/ss1-staged" \
+            --output "$RUNNER_TEMP/ss1-cross-subject-plan.json"
+      - name: Report subject coverage and remaining owner gates
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          plan_path = Path(os.environ["RUNNER_TEMP"]) / "ss1-cross-subject-plan.json"
+          plan = json.loads(plan_path.read_text(encoding="utf-8"))
+          print(json.dumps({
+              "version": plan.get("version"),
+              "compiled_rows": len(plan.get("rows", [])),
+              "identified_rows": len(plan.get("identified_rows", [])),
+              "dispositions": len(plan.get("dispositions", [])),
+              "blockers": plan.get("blockers", []),
+              "ready": plan.get("ready"),
+          }, indent=2))
+          PY

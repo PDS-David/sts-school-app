@@ -597,13 +597,12 @@
       "op": "classify_marker",
       "source_id": "SS1-SRC-d8bd8f85fd73",
       "source_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966",
-      "anchor": "WEEK 10:  GENERAL REVISION CLASS [GRC]",
+      "anchor": "WEEK 9:  COMPOSITION –MORE ON ESSAY TYPES\nWEEK 10:  GENERAL REVISION CLASS [GRC]",
       "kind": "SCHEME_ONLY",
       "evidence": {
-        "locator": "mammoth 1.13.0 extractRawText, scheme-of-work row 10, line 23 (before the first WEEK 1 SS1 heading)",
-        "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text, in the one-line parsed row ENGLISH-BODY-047 only). Metadata only, not teaching; no source text removed. The anchor is the whole line with its internal spacing and punctuation kept exactly; trailing whitespace is omitted because the parser trims the row body. This one-line scheme marker is matched as a complete line after whitespace normalization, not as a substring of a longer teaching heading."
-      },
-      "match_mode": "WHOLE_LINE"
+        "locator": "SS1-SRC-d8bd8f85fd73: second-term source, consecutive scheme paragraphs 11-12; WEEK 9 composition row immediately precedes the WEEK 10 revision row",
+        "explanation": "The text WEEK 10: GENERAL REVISION CLASS [GRC] appears twice: once in the scheme and once as a later teaching-body heading. A standalone whole-line anchor is therefore ambiguous. The anchor includes the immediately preceding WEEK 9 composition scheme row, which uniquely identifies the scheme-only occurrence without treating the later body heading as a revision lesson."
+      }
     },
     {
       "id": "SS1-SRC-50fa9b1eb2fd-R001",
@@ -732,10 +731,10 @@
       "op": "split_before",
       "source_id": "SS1-SRC-50fa9b1eb2fd",
       "source_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
-      "anchor": "C.  Essay Writing ",
+      "anchor": "C.  Essay Writing \nA story which illustrates the saying - \"It is a man's World\"",
       "evidence": {
-        "locator": "SS1-SRC-50fa9b1eb2fd: exact mammoth/word-extractor text anchor",
-        "explanation": "Structural boundary or source metadata only; original text is retained."
+        "locator": "SS1-SRC-50fa9b1eb2fd: third-term Week 6 essay-writing heading and its immediately following descriptive-essay prompt",
+        "explanation": "The short heading 'C. Essay Writing' is also used by the Week 10 argumentative-essay section. The anchor therefore includes the distinctive immediately following Week 6 prompt, 'A story which illustrates the saying - It is a man's World', so the split is bound to the descriptive/story-writing section and cannot match the Week 10 argumentative section."
       },
       "week_label": "6"
     },
@@ -924,11 +923,11 @@
       "op": "classify_marker",
       "source_id": "SS1-SRC-a00657d42196",
       "source_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef",
-      "anchor": "Structures: Learning about Noun Clause; Vocabulary Development: Transportation- Aviation, Rail, Road and Maritime.",
+      "anchor": "7 Structures: Learning about Noun Clause; Vocabulary Development: Transportation- Aviation, Rail, Road and Maritime.",
       "kind": "SCHEME_ONLY",
       "evidence": {
-        "locator": "word-extractor 1.0.4 getBody(), scheme row 7",
-        "explanation": "Unique scheme-row anchor; metadata only, not teaching; no source text removed. This one-line scheme marker is matched as a complete line after whitespace normalization, not as a substring of a longer teaching heading."
+        "locator": "SS1-SRC-a00657d42196: preamble scheme-of-work table, complete extracted row 7, including its leading row number",
+        "explanation": "The complete extracted scheme row begins with row number '7', followed by the marker text. WHOLE_LINE matching normalizes whitespace; the registered anchor includes the leading row number. The marker is matched as the complete line, not as a substring of a teaching heading. Classification discards no source text."
       },
       "match_mode": "WHOLE_LINE"
     },
@@ -1028,9 +1027,8 @@
       "kind": "SCHEME_ONLY",
       "evidence": {
         "locator": "Original DOCX scheme-of-work table, table 0, data row 9 (zero-based row index 9), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
-        "explanation": "Unique first-topic anchor for the ninth scheme data row. The original DOCX row contains four Week 9 strands: identifying statutory topic/theme/key sentences, journalism/advertising vocabulary, antonyms (including nearly opposite meanings), and informal-letter writing. The row is preamble scheme metadata, not a parsed teaching body; SCHEME_ONLY records structure and does not claim all strands were taught. Source wording is retained. This one-line scheme marker is matched as a complete line after whitespace normalization, not as a substring of a longer teaching heading."
-      },
-      "match_mode": "WHOLE_LINE"
+        "explanation": "First strand within the multi-strand Week 9 scheme row. The source line continues with Vocabulary Development, Structure and Informal Letter Writing; this anchor identifies the strand by substring, not as a complete line."
+      }
     },
     {
       "id": "SS1-SRC-50fa9b1eb2fd-R031",
@@ -1041,9 +1039,8 @@
       "kind": "SCHEME_ONLY",
       "evidence": {
         "locator": "Original DOCX scheme-of-work table, table 0, data row 10 (zero-based row index 10), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
-        "explanation": "Unique first-topic anchor for the tenth scheme data row. The original DOCX row contains four Week 10 strands: comprehension/speaking skills, the /ɪ/–/iː/ contrast, argumentative writing on indiscipline and pronoun reference to the three persons. It is preamble scheme metadata, not a parsed teaching body; SCHEME_ONLY records structure and does not claim every strand was taught. Source wording is retained. This one-line scheme marker is matched as a complete line after whitespace normalization, not as a substring of a longer teaching heading."
-      },
-      "match_mode": "WHOLE_LINE"
+        "explanation": "First strand within the multi-strand Week 10 scheme row. The source line continues with Speech Work and Essay Writing; this anchor identifies the strand by substring, not as a complete line."
+      }
     },
     {
       "id": "SS1-SRC-50fa9b1eb2fd-R032",
@@ -1054,9 +1051,8 @@
       "kind": "SCHEME_ONLY",
       "evidence": {
         "locator": "Original DOCX scheme-of-work table, table 0, data row 11 (zero-based row index 11), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
-        "explanation": "Unique first-topic anchor for the eleventh scheme data row. The original DOCX row contains three Week 11 strands: summary writing to a word limit, building vocabulary and nearest-meaning synonyms. It is preamble scheme metadata, not a parsed teaching body; SCHEME_ONLY records structure and does not claim every strand was taught. Source wording is retained. This one-line scheme marker is matched as a complete line after whitespace normalization, not as a substring of a longer teaching heading."
-      },
-      "match_mode": "WHOLE_LINE"
+        "explanation": "First strand within the multi-strand Week 11 scheme row. The source line continues with Vocabulary Development and Structure; this anchor identifies the strand by substring, not as a complete line."
+      }
     }
   ],
   "lessons": [
