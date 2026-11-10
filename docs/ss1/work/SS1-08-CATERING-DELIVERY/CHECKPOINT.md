@@ -5,7 +5,7 @@ Status: **IMPLEMENTED — TESTING DEFERRED BY OWNER** (scoped subject adapter; n
 - Repository: `PDS-David/sts-school-app`
 - Base: `b00788a3426e3ecd32174e8edecd176899501de1`
 - Branch: `ss1/SS1-08-20261110-catering-delivery`
-- Implementation code commit before handoff documents: `d0852aff68ea238fa6d22a78ed904d11156515fe`
+- Latest implementation commit before this checkpoint update: `ca017b7659a608ac1cd88daa8af421c80da42751`
 - Subject: SS 1 / Catering Craft / secondary school scope
 - Package source: `backend/src/db/ss1/subjects/catering-craft.json` (existing master package; unchanged in this branch)
 
@@ -27,7 +27,7 @@ Status: **IMPLEMENTED — TESTING DEFERRED BY OWNER** (scoped subject adapter; n
    - Fails closed by withholding the matching source topic when its stored body differs.
    - Creates correction fingerprints for generated assessments.
    - Retires stale linked assessment/cache in a single scoped SQL statement, locking only the exact SS1 Catering Craft topic row; learner submissions and topic completions are not deleted.
-   - Hides stale linked assessments and rejects stale assessment question/submit access.
+   - Hides stale linked assessments and rejects stale assessment question/submit access.\n   - Writes a persistent withdrawal tombstone on the assessment fingerprint so it remains hidden after the topic link is cleared.
 
 2. Updated `backend/src/routes/learning.ts`.
    - Applies safe SS1 topic projection in topic list and topic update responses.
