@@ -118,7 +118,8 @@
     "AG-FACT-T3-W06-REPRO-TIMINGS (2026-11-09): blocks 609-647 and table 724 checked against Merck Vet Manual, Virginia Tech/Cooperative Extension, FAO, Arizona/MS State and Oklahoma State Extension. Key corrections: cycle onset-to-onset; puberty differs from first breeding age; rabbit induced ovulator/no conventional estrous cycle (~10-12h after mating); cow ovulates 10-12h after end of estrus, ewe near end, sow ~40h after onset, goat timing varies; heat ranges require species qualification; block647 confuses heat and oestrus; hen 21 days is incubation, not gestation. Gestation values broadly plausible but variable. No source values/key changed.",
     "AG-LES-T1-W06-STORAGE-STRUCTURES (2026-11-10): authored original Week 6 supplement pairing six storage structures with produce, explaining supply-chain functions and industry/public-private provision. Coverage moved to IMPLEMENTED_EQUIVALENT; corresponding content blocker removed. Practice marking totals 32/32. Source archive/member integrity reused from verified AG-INV-T1/AG-WK-T1-W06 evidence. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T1-W07-GAME-RESERVES (2026-11-10): authored a source-backed supplement teaching five Nigerian game reserves and locations; verified the source's four examples and documented the Kainji/Borgu/Zugurma history while preserving original spellings in provenance. Coverage moved to IMPLEMENTED_EQUIVALENT; resolved reserve-count CONTENT item removed. Practice marking totals 28/28. Approval PENDING; verification/testing DEFERRED.",
-    "AG-LES-T1-W07-SOCIOECONOMIC-FACTORS (2026-11-10): authored original Week 7 supplement teaching five sourced socio-economic factors and distinguishing them from physical factors and from the source's single explicitly labelled factor. Coverage moved to IMPLEMENTED_EQUIVALENT; resolved CONTENT blocker removed. Practice marking totals 26/26. Approval PENDING; verification/testing DEFERRED."
+    "AG-LES-T1-W07-SOCIOECONOMIC-FACTORS (2026-11-10): authored original Week 7 supplement teaching five sourced socio-economic factors and distinguishing them from physical factors and from the source's single explicitly labelled factor. Coverage moved to IMPLEMENTED_EQUIVALENT; resolved CONTENT blocker removed. Practice marking totals 26/26. Approval PENDING; verification/testing DEFERRED.",
+    "AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS (2026-11-10): authored a statute-backed Week 8 supplement explaining Land Use Act 1978 rights of occupancy and effects on land access/tenure, plus NALDA, River Basin Development Authorities, ACGSF and NAIC instruments. Coverage COV-AG-T1-W08-AGRICULTURAL-LAWS moved to IMPLEMENTED_EQUIVALENT; only the agricultural-laws CONTENT open item removed. Separate source correction workflow item LAND-USE-ACT remains open; original source bytes unchanged. Practice marking totals 30/30. Approval PENDING; verification/testing DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -133,9 +134,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 126,
+    "IMPLEMENTED_TESTING_DEFERRED": 127,
     "BLOCKED": 13,
-    "PENDING": 15
+    "PENDING": 14
   },
   "items": [
     {
@@ -3964,8 +3965,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W08"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W08: Week 8 body is land tenure only; the Land Use Act is only briefly mentioned in Weeks 3 and 7.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-10 from master a5d6d8a7b5bdc1a2a2ec7bccfaba5e9e19aff2e0. Added SUP-SS1-AGRICULTURAL-SCIENCE-T1-W08-AGRICULTURAL-LAWS-REFORMS; lesson body SHA-256 b857a3c4fe429d74fbe02f2e5921fa3c072d45a3c3fecd89eef24f351a19c071. Teaches the Land Use Act 1978 (Decree No.6) accurately, including ss.1–2, 5–6, 21–22, 24 and 28; explains that the Act vests radical title in the Governor but preserves statutory/customary rights of occupancy for persons, families and organisations. It corrects the overbroad source claim in the supplement only; the original source text is unchanged and the separate correction workflow item remains open. Also teaches NALDA Act 1992 No.92, River Basin Development Authorities Decree No.25 of 1976, ACGSF Decree No.20 of 1977 and NAIC Act No.37 of 1993, distinguishing laws from authorities/schemes. Sources: Official Gazette Land Use Decree; Supreme Court cases Ogunleye v Oni and Abioye v Yakubu; FAOLEX NALDA Act; CBN ACGSF; NAIC Act/functions; Lower Benue River Basin Development Authority. Source archive/member hashes reused from verified AG-INV-T1/AG-WK-T1-W08; no source bytes changed. Practice marking checked: P1 10/10, P2 8/8, P3 4/4, P4 8/8 (30 total). Package/queue JSON, unique lesson IDs, coverage reference and marking sums checked. Subject tests/importer/compiler/TypeScript not run under owner testing deferral. Approval remains PENDING; verification DEFERRED.",
       "completion_condition": "A clearly labelled, legally accurate, source-backed supplement teaches the agricultural-law/reform objective with complete keyed practice and criterion-level marks, truthful provenance and PENDING approval."
     },
     {
@@ -5847,7 +5848,6 @@
     }
   },
   "next_runnable": [
-    "AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS",
     "AG-LES-T1-W10-MONOCOT-DICOT-TABLE",
     "AG-LES-T2-W04-05-YAM-PRACTICES",
     "AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS",
