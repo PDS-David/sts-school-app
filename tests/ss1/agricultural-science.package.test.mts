@@ -157,6 +157,41 @@ test('Agricultural Science original row identities match the real Mammoth parser
 
   const plan = compilePackages([p], inputs, parseTopics);
   const identified = new Map(plan.identified_rows.map(row => [row.id, row]));
+  const expectedOriginalRowIds = [
+    'SS1-SRC-7aa642b0085b:BODY:eb23c6d757163ec4e7bfce9f79ede198e00e4437be3317ac9781b3e9dec6c2b9',
+    'SS1-SRC-7aa642b0085b:BODY:94ffd0f85730fc3f1804f07342e16b1da91dd1323231b7fb6e41b11b96f8cf35',
+    'SS1-SRC-7aa642b0085b:BODY:de6febf42e9195e6171f87f05840f7ac0d5a7337820ec98392670ebc3b1485aa',
+    'SS1-SRC-7aa642b0085b:BODY:0c1b6e6e543aa10d8aaeb5963231c20ff8e3c3a58be635e0071c1dbc052eb244',
+    'SS1-SRC-7aa642b0085b:BODY:6388d1c618d180353e769423def1f31de4b76cf5b07fd218d957f0d807c9bedc',
+    'SS1-SRC-7aa642b0085b:BODY:599c15d5fc22a602566d6336b315c0b49710b870d1be5090881a6820f144adbb',
+    'SS1-SRC-7aa642b0085b:BODY:43f4fb240312605deaf233087f1673161e8070b3db0e801fcf2f5d99846df7cb',
+    'SS1-SRC-7aa642b0085b:BODY:bcd8c0ecc2862267e6f54895abbff1a39a16ded4137d630c3c931d13b1c6910a',
+    'SS1-SRC-7aa642b0085b:BODY:e09cfcf9d560ec4b441526635970e83b8beddb0b9c7b38e33232df037351c064',
+    'SS1-SRC-7aa642b0085b:BODY:007f80ec64ec9dafb7a327359ba0ada8605d18109b826ab6ed39e1fe86fcc658',
+    'SS1-SRC-956594d97094:BODY:3d8958e8d868273f4f1ee87c24a7096de404fb15a6eeb93197f05299ff37e7c0',
+    'SS1-SRC-956594d97094:BODY:9b05ec628817f7406a90c51277a6e8fe5c6318c250a89cd9a819d6c529b29797',
+    'SS1-SRC-956594d97094:BODY:12d2bff62a3b676cec1218abdde9a8f57a09e2057bd5f6d880e50cb0dee77886',
+    'SS1-SRC-956594d97094:BODY:5e12e6d75046c73227b73e5a70eb56fd6a83ccbaf4d206b9dc3d4cc609e008f6',
+    'SS1-SRC-956594d97094:BODY:d6a132c9ce637c6fee7ca4e1e88aa707220a68298bde2794d5657e49533c9e22',
+    'SS1-SRC-956594d97094:BODY:1f941dd52a764e5665229f0caad9aa3a3bca2ecf1ffad1ac4f3810601bfa573b',
+    'SS1-SRC-956594d97094:BODY:1d566e884981c34293a7c08a90ce5177dc063ea5813da9a7f27e69e09c5f77ee',
+    'SS1-SRC-956594d97094:BODY:a729dbf0c8f75421a7983e1a36a0c72ccb9378dd4ac4f25148f4d0c2dd30d36c',
+    'SS1-SRC-458a07f7ea5a:BODY:0c06c5383b974616b0e06a23a1165fe3beeeec8b89b232c0383f83a6d2e056ff',
+    'SS1-SRC-458a07f7ea5a:BODY:57c54e51896e3d54fcb43c690c056b45ebcfffd8e132e8bc5038de6c0ea5879b',
+    'SS1-SRC-458a07f7ea5a:BODY:926ec9d0dd8bfdeebfd345eb9bd0f034b7d4ae770706b3345351f3d28294cc32',
+    'SS1-SRC-458a07f7ea5a:BODY:4929a8943042eca1d591fc065d91d0ab52c0d08b429501ed8a70f94582daf9c9',
+    'SS1-SRC-458a07f7ea5a:BODY:8637bc0cb41adbde83ca0d9a532217d60ec206a8cff04e088fb2f14d7854f394',
+    'SS1-SRC-458a07f7ea5a:BODY:32a9361d7a977244ca32d9f64c9279aef6edec9ca35ca915dd87ff11f8030daa',
+    'SS1-SRC-458a07f7ea5a:BODY:15f96ac5ec76ec2f957b90b0f4ecfb688cf23f30a8999cd0fe80383d2eb108bf',
+    'SS1-SRC-458a07f7ea5a:BODY:791302b51e960fafa427a66d0b1ce1f662567b3bb9bb9c374531d39c2ed1e5de',
+    'SS1-SRC-458a07f7ea5a:BODY:b431485e025fd5054046a9041249f1b34a5042973238fbf2b652cbf27fbf4ef7',
+    'SS1-SRC-458a07f7ea5a:BODY:705e543e7a04a9a5058603f332ba4a44c4e81c4f6ab98b0571e6edcde4efb31b',
+  ].sort();
+  assert.deepEqual(
+    plan.identified_rows.filter(row => row.source_id !== null).map(row => row.id).sort(),
+    expectedOriginalRowIds,
+    'all 30 original lesson IDs must match the hash-pinned source archive and actual parser',
+  );
 
   // Emit the exact parser/compiler identities for source rows so any correction
   // binding is based on the real importer output, not a reconstructed hash map.
