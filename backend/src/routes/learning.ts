@@ -8,6 +8,7 @@ import type { AuthUser } from '../types/index.js';
 import { attributionsForTopic, publicAttribution } from '../db/jss3Attributions.js';
 import { resolveSequenceGroup } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
+import { resolveSs1Delivery, safeSs1Topic, retireStaleSs1Cache, ss1AssessmentDeliverable, ss1WithdrawnAssessmentIds } from '../utils/ss1CateringDeliveryCorrection.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
 // Read per request (value is constant in a running server) so tests can exercise PIN on and off in one process.
@@ -160,7 +161,7 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
 
   const { rows: rawRows } = await query(sql, params);
   // JSS3 delivery correction: audited-unsafe original text/cached summary is never returned (see utils/jss3DeliveryCorrection.ts).
-  const rows = rawRows.map((r: any) => safeJss3Topic(r));
+  const rows = rawRows.map((r: any) => safeSs1Topic(safeJss3Topic(r)));
 
   // For a student, also report whether they've completed each topic, and
   // whether it's currently locked. Locking (see schema.sql's "Term-PIN
@@ -377,7 +378,7 @@ router.put('/topics/:id', requirePerm('topics.write'), async (req, res) => {
   const { rows: full } = await query(
     'SELECT t.*, sub.name AS subject_name FROM topics t LEFT JOIN subjects sub ON sub.id=t.subject_id WHERE t.id=$1', [req.params.id],
   );
-  const { subject_name: _subjectName, ...safe } = safeJss3Topic(full[0] ?? rows[0]);
+  const { subject_name: _subjectName, ...safe } = safeSs1Topic(safeJss3Topic(full[0] ?? rows[0]));
   return res.json({ topic: safe });
 });
 
@@ -465,7 +466,20 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
         delivery_correction: { id: delivery.correctionId, status: 'withheld' }, note: 'This topic is temporarily unavailable pending review.' });
     }
   }
-  const groundingSource: string | null = delivery?.kind === 'corrected' ? delivery.text : topic.source_reference;
+  const ss1Delivery = resolveSs1Delivery(topic);
+  if (ss1Delivery) {
+    await retireStaleSs1Cache(query, topic.id, ss1Delivery);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    topic.summary = ss1Delivery.text;
+    if (ss1Delivery.kind === 'withheld') {
+      return res.json({ ok: true, summary: ss1Delivery.text, summary_is_fallback: false, practice_questions: [], assessment_status: null,
+        delivery_correction: { id: ss1Delivery.correctionId, status: 'withheld', provenance: 'withheld pending source review' },
+        note: 'This Catering Craft topic is temporarily unavailable while its source is checked.' });
+    }
+  }
+  const groundingSource: string | null = ss1Delivery?.kind === 'corrected' ? ss1Delivery.text
+    : delivery?.kind === 'corrected' ? delivery.text : topic.source_reference;
 
   await query(
     `INSERT INTO topic_completions(topic_id, student_id) VALUES($1,$2)
@@ -569,7 +583,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
           `INSERT INTO assessments(school_code,subject_id,class_name,term_id,title,total_marks,status,created_by,content_fingerprint)
            VALUES($1,$2,$3,$4,$5,$6,'open',NULL,$7) RETURNING id`,
           [topic.school_code, topic.subject_id, topic.class_name, topic.term_id,
-           `${topic.title} — Topic Assessment`, questionIds.length, delivery?.kind === 'corrected' ? delivery.fingerprint : null],
+           `${topic.title} — Topic Assessment`, questionIds.length, ss1Delivery?.kind === 'corrected' ? ss1Delivery.fingerprint : delivery?.kind === 'corrected' ? delivery.fingerprint : null],
         );
         const assessmentId = aRows[0].id;
 
@@ -601,7 +615,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
     ok: true,
     summary,
     summary_is_fallback,
-    delivery_correction: delivery ? { id: delivery.correctionId, status: delivery.kind, provenance: 'corrected/equivalent teaching' } : undefined,
+    delivery_correction: ss1Delivery ? { id: ss1Delivery.correctionId, status: ss1Delivery.kind, provenance: ss1Delivery.kind === 'corrected' ? 'approved project-authored correction' : 'withheld pending source review' } : delivery ? { id: delivery.correctionId, status: delivery.kind, provenance: 'corrected/equivalent teaching' } : undefined,
     practice_questions,
     assessment_status,
     note: assessment_status === 'open'
@@ -857,7 +871,10 @@ router.get('/assessments', requirePerm('assessments.read'), async (req, res) => 
   const { rows } = await query(sql, params);
   if (viewerClasses) {
     // Students/parents never see a topic assessment built from since-corrected teaching (admins keep the audit view).
-    const gone = await withdrawnAssessmentIds(query, rows.filter((r: any) => r.status === 'open').map((r: any) => r.id));
+    const openIds = rows.filter((r: any) => r.status === 'open').map((r: any) => r.id);
+    const jss3Gone = await withdrawnAssessmentIds(query, openIds);
+    const ss1Gone = await ss1WithdrawnAssessmentIds(query, openIds);
+    const gone = new Set([...jss3Gone, ...ss1Gone]);
     if (gone.size) return res.json({ assessments: rows.filter((r: any) => !gone.has(r.id)) });
   }
   return res.json({ assessments: rows });
@@ -996,6 +1013,8 @@ router.get('/assessments/:id/questions', async (req, res) => {
     }
     const deliverable = await assessmentDeliverable(query, assessment.id);
     if (!deliverable.ok) return res.status(403).json({ error: deliverable.reason });
+    const ss1Deliverable = await ss1AssessmentDeliverable(query, assessment.id);
+    if (!ss1Deliverable.ok) return res.status(403).json({ error: ss1Deliverable.reason });
   } else if (user.role !== 'admin') {
     // Teachers never get here: creating, viewing, or opening the questions of
     // an assessment is Brainee/admin territory on this platform, not a
@@ -1076,6 +1095,8 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
   }
   const deliverable = await assessmentDeliverable(query, req.params.id);
   if (!deliverable.ok) return res.status(403).json({ error: deliverable.reason });
+  const ss1Deliverable = await ss1AssessmentDeliverable(query, req.params.id);
+  if (!ss1Deliverable.ok) return res.status(403).json({ error: ss1Deliverable.reason });
 
   // Auto-mark MCQs; hand essay answers to Brainee (this is the STS Virtual
   // School's own AI grading path — see submission_answers in schema.sql.
