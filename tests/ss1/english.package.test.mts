@@ -145,7 +145,7 @@ test('English source registration matches the exact three assigned archive membe
   const assigned = readFileSync(
     new URL('../../docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv', import.meta.url),
     'utf8',
-  ).split(/\\r?\\n/)
+  ).split(/\r?\n/)
     .filter(line => line.length > 0)
     .slice(1)
     .map(line => line.split(','))
