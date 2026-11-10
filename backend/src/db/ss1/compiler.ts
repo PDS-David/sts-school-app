@@ -11,11 +11,18 @@ export interface IdentifiedRow { id: string; source_id: string | null; body_sha2
 export interface Plan { version: 'ss1-plan-v1'; rows: Row[]; identified_rows: IdentifiedRow[]; dispositions: { id: string; status: string; detail: string }[]; assets: SubjectPackage['assets']; corrections: SubjectPackage['delivery_corrections']; blockers: string[]; ready: boolean }
 function must(ok: unknown, message: string): asserts ok { if (!ok) throw new Error(`SS1: ${message}`); }
 function unique(values: string[], label: string) { must(new Set(values).size === values.length, `duplicate ${label}`); }
-function once(body: string, anchor: string): { index: number; length: number } {
+function once(body: string, anchor: string, wholeLine = false): { index: number; length: number } {
   // DOCX extraction can flatten paragraph breaks into spaces or tabs.
   // Match exact words and punctuation while treating whitespace runs equivalently.
   const parts = anchor.trim().split(/\s+/u).map(part => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
   must(parts.length > 0, 'empty source anchor');
+  if (wholeLine) {
+    must(!/[\r\n]/u.test(anchor), 'scheme marker anchor must be one line');
+    const linePattern = new RegExp('^[\\t \\u00a0]*' + parts.join('[\\t \\u00a0]+') + '[\\t \\u00a0\\r]*$', 'gmu');
+    const lineMatches = [...body.matchAll(linePattern)];
+    must(lineMatches.length === 1, 'scheme marker line missing or ambiguous: ' + anchor.slice(0, 80));
+    return { index: lineMatches[0].index!, length: lineMatches[0][0].length };
+  }
   const pattern = new RegExp(parts.join('\\s+'), 'gu');
   const matches = [...body.matchAll(pattern)];
   must(matches.length === 1, 'anchor missing or ambiguous: ' + anchor.slice(0, 80));
@@ -27,7 +34,7 @@ export function applyRules(input: SourceInput, rules: SourceRule[]): string {
   let text = input.text;
   for (const r of rules) {
     must(r.source_id === input.source_id && r.source_sha256 === input.sha256, `rule ${r.id} source mismatch`);
-    once(input.text, r.anchor);
+    once(input.text, r.anchor, r.op === 'classify_marker');
     if (r.op === 'split_before' || r.op === 'attach_stranded_label') {
       must(/^(?:[0-9]{1,2})(?:\s*(?:-|&|and)\s*[0-9]{1,2})?$/.test(r.week_label), `rule ${r.id}: numeric week label required`);
       const anchorMatch = once(text, r.anchor);
@@ -100,7 +107,9 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
       if (!topics.length) plan.blockers.push(`NO_PARSED_LESSONS:${s.source_id}`);
       const markerRules = rules.filter(r => r.op === 'classify_marker');
       for (const rule of markerRules) {
-        const matches = topics.filter(t => t.body.includes(rule.anchor));
+        const normalizeMarkerLine = (value: string) => value.replace(/[\\t \\u00a0]+/gu, ' ').trim();
+        const markerAnchor = normalizeMarkerLine(rule.anchor);
+        const matches = topics.filter(t => t.body.split(/\\r?\\n/u).some(line => normalizeMarkerLine(line) === markerAnchor));
         if (rule.op === 'classify_marker' && rule.kind === 'SCHEME_ONLY' && matches.length === 0) {
           plan.dispositions.push({ id: rule.id, status: 'SCHEME_ONLY', detail: rule.evidence.locator });
         } else must(matches.length === 1, `marker ${rule.id} must bind exactly one parsed row`);
