@@ -126,7 +126,8 @@
     "AG-LES-T3-W01-TOOL-REFERENCE (2026-11-10): authored the complete 30-tool reference with descriptions, uses, maintenance, nine justified post-planting mappings, safe-handling guidance, drawing-book project and practical observation record. Added 30 original SVG illustrations, each registered with hash, bytes, alt text and provenance. Source list and source bytes unchanged. Digger and manure drag drawings are generic because source gives no local design; emasculator guidance is non-procedural. Practice marking totals 45/45. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T3-W02-FARM-POWER-OPERATIONS (2026-11-10): authored original supplement explicitly mapping mechanical, electrical, wind and solar power to at least two farm operations each, with equipment, energy-transfer explanations, limitations, safety and 40-mark keyed practice. COV-AG-T3-W02-OPERATIONS moved to IMPLEMENTED_EQUIVALENT. West African grain-drying prevalence fact, water-power reclassification, source text corrections and third-party source-image rights remain separate open items. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS (2026-11-10): authored verified supplement for liver bile vs enzymes, mono-/polygastric similarities, blood composition/water and digestive sphincters; six keyed questions and 40-mark criterion rubric. COV-AG-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS moved to IMPLEMENTED_EQUIVALENT. Digestive/reproductive factual accuracy and third-party figure permissions remain separate open items. Approval PENDING; verification/testing DEFERRED.",
-    "AG-LES-T3-W05-RESPIRATION-NERVOUS-GAPS (2026-11-10): authored supplement for breathing mechanics, complete respiration in cattle, neuron structure/function and reflex arc with four animal reflex examples; seven keyed questions, 40 marks. Assessment-gap coverage moved to IMPLEMENTED_EQUIVALENT. Source equations, respiratory/gill figure permissions and separate factual accuracy review remain open. Approval PENDING; verification/testing DEFERRED."
+    "AG-LES-T3-W05-RESPIRATION-NERVOUS-GAPS (2026-11-10): authored supplement for breathing mechanics, complete respiration in cattle, neuron structure/function and reflex arc with four animal reflex examples; seven keyed questions, 40 marks. Assessment-gap coverage moved to IMPLEMENTED_EQUIVALENT. Source equations, respiratory/gill figure permissions and separate factual accuracy review remain open. Approval PENDING; verification/testing DEFERRED.",
+    "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION (2026-11-10): authored veterinary-source-grounded, non-procedural sheep embryo-development and normal lamb-presentation supplement with seven keyed questions (40 marks). Content coverage implemented; independent named veterinary reviewer sign-off remains a release gate and open owner action. Approval PENDING; verification/testing DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -141,9 +142,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 134,
+    "IMPLEMENTED_TESTING_DEFERRED": 135,
     "BLOCKED": 13,
-    "PENDING": 7
+    "PENDING": 6
   },
   "items": [
     {
@@ -5148,8 +5149,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W06"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W06: theory 784-785 asks for embryo development and lamb positioning that are not taught in the week body.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-10 on branch agent/agricultural-science from eec365242253ce1266597cccfd76486586ac4427. Added SUP-SS1-AGRICULTURAL-SCIENCE-T3-W06-EMBRYO-LAMB-PRESENTATION; body SHA-256 320b561e74215d93570f973d1e30bc921dcf885150dd3b7577311e2765cbbb5e. Covers fertilisation/zygote, cleavage, morula, blastocyst, hatching, sheep conceptus elongation, superficial attachment/implantation, embryonic germ layers, foetal membranes, cotyledonary placenta and foetal growth. Defines presentation/position/posture separately and describes common normal lamb arrangement as anterior longitudinal, dorsosacral, with head/neck and both forelimbs extended. Strictly educational/non-procedural: no repositioning, extraction, delivery assistance or treatment instructions. Seven keyed questions with criterion-level marking, 40 marks. References include University of Florida College of Veterinary Medicine Drost ovine reproduction guide, 2024 peer-reviewed sheep embryo development review, Spencer et al. sheep implantation review and veterinary lambing review. COV-AG-T3-W06-UNTAUGHT-EMBRYO-AND-LAMB moved to IMPLEMENTED_EQUIVALENT and linked. Open item retained as OWNER_ACTION pending independent named veterinary sign-off; task implementation is complete but not learner-release approved. Package/lesson approval PENDING; verification/testing DEFERRED. JSON, body hash and marking sums checked; no tests, TypeScript, importer/compiler, DB or runtime checks run under owner deferral.",
       "completion_condition": "A veterinary-reviewed supplement covers embryo development and normal fetal presentation in non-procedural terms, with keyed practice, provenance and PENDING approval."
     },
     {
@@ -5855,7 +5856,6 @@
     }
   },
   "next_runnable": [
-    "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION",
     "AG-LES-T3-W07-POULTRY-REPRO-SYSTEM",
     "AG-LES-T3-W08-ENVIRONMENTAL-MEASURES",
     "AG-LES-T3-W09-PIG-ASSESSMENT-SUPPLEMENT",
