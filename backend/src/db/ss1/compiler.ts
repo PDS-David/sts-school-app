@@ -11,22 +11,18 @@ export interface IdentifiedRow { id: string; source_id: string | null; body_sha2
 export interface Plan { version: 'ss1-plan-v1'; rows: Row[]; identified_rows: IdentifiedRow[]; dispositions: { id: string; status: string; detail: string }[]; assets: SubjectPackage['assets']; corrections: SubjectPackage['delivery_corrections']; blockers: string[]; ready: boolean }
 function must(ok: unknown, message: string): asserts ok { if (!ok) throw new Error(`SS1: ${message}`); }
 function unique(values: string[], label: string) { must(new Set(values).size === values.length, `duplicate ${label}`); }
+const escapeRegex = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 function once(body: string, anchor: string) {
-  // DOCX text extractors can flatten a paragraph break into spaces or tabs.
-  // Keep the anchor text exact, but treat runs of whitespace as equivalent.
-  // Leading/trailing anchor whitespace is not part of the match; callers that need
-  // the start of the line use lineStart().
-  const parts = anchor.trim().split(/\s+/u).map(part => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-  const pattern = new RegExp(parts.join('\\s+'), 'gu');
+  // DOCX text extractors can flatten a paragraph break into spaces or tabs, so internal
+  // whitespace runs are equivalent. Leading/trailing anchor whitespace is significant
+  // (it is what makes indented headings unique) and is matched literally.
+  const lead = anchor.match(/^\s*/u)![0];
+  const trail = anchor.length > lead.length ? anchor.match(/\s*$/u)![0] : '';
+  const core = anchor.slice(lead.length, anchor.length - trail.length);
+  const pattern = new RegExp(escapeRegex(lead) + core.split(/\s+/u).map(escapeRegex).join('\\s+') + escapeRegex(trail), 'gu');
   const matches = [...body.matchAll(pattern)];
   must(matches.length === 1, `anchor missing or ambiguous: ${anchor.slice(0, 80)}`);
   return matches[0].index!;
-}
-/** Start of the line containing index i, when only spaces/tabs precede i on that line; otherwise -1. */
-function lineStart(text: string, i: number): number {
-  let j = i;
-  while (j > 0 && (text[j - 1] === ' ' || text[j - 1] === '\t')) j--;
-  return j === 0 || text[j - 1] === '\n' ? j : -1;
 }
 export const originalLessonId = (sourceId: string, body: string) => `${sourceId}:BODY:${sha256(body)}`;
 /** Structural insertions only. No instructional character is deleted or rewritten. */
@@ -37,9 +33,8 @@ export function applyRules(input: SourceInput, rules: SourceRule[]): string {
     once(input.text, r.anchor);
     if (r.op === 'split_before' || r.op === 'attach_stranded_label') {
       must(/^(?:[0-9]{1,2})(?:\s*(?:-|&|and)\s*[0-9]{1,2})?$/.test(r.week_label), `rule ${r.id}: numeric week label required`);
-      const matchAt = once(text, r.anchor);
-      const i = lineStart(text, matchAt);
-      must(i >= 0, `rule ${r.id}: anchor must start at a line boundary`);
+      const i = once(text, r.anchor);
+      must(i === 0 || text[i - 1] === '\n', `rule ${r.id}: anchor must start at a line boundary`);
       if (r.op === 'attach_stranded_label') {
         const next = once(text, r.following_anchor);
         must(next >= i + r.anchor.length && text.slice(i + r.anchor.length, next).trim() === '', `rule ${r.id}: label must immediately precede following anchor`);
