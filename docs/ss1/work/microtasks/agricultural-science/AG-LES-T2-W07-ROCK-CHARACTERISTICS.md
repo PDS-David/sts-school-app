@@ -32,7 +32,7 @@ The lesson:
 
 Exact UTF-8 body SHA-256: `b1b07aea3b73cecac7672def0870e2b5fe207ddc0dad572b92dc57d09e103f86`.
 
-Practice marking totals: P1 6/6, P2 6/6, P3 6/6, P4 4/4, P5 4/4 (22? No: total available across the five items is 26 marks). Each criterion total equals its question's declared marks.
+Practice marking totals: P1 6/6, P2 6/6, P3 6/6, P4 4/4 and P5 4/4 (26 marks total). Each criterion total equals its question's declared marks.
 
 ## Coverage and release state
 
