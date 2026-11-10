@@ -125,6 +125,7 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
   const byId = new Map(plan.identified_rows.map(r => [r.id, r]));
   const corrected = new Set<string>();
   for (const p of packages) {
+    const externalSources = 'external_sources' in p ? p.external_sources : [];
     unique(p.coverage.map(c => c.id), 'coverage IDs');
     if (!p.coverage.length) plan.blockers.push(`NO_COVERAGE:${p.subject_slug}`);
     for (const source of p.sources) {
