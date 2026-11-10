@@ -32,6 +32,13 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. The two original images were inspected
 - **Derivative:** no crop, trace, redraw or derivative was created. A derivative of either unlicensed source would not resolve the rights issue.
 - If these visual functions are required for delivery and permission is unavailable, use separately sourced rights-cleared replacements: (1) a fertile-egg cross-section with all seven source labels above, and (2) a poultry female reproductive-tract diagram retaining all named structures and leader-line relationships. The egg-shape/colour text may be taught as text only if separately authorised and factually reviewed; do not reproduce the photographed page.
 
+## Original replacement assets now authored
+Two new, independently authored SVGs are registered in `agricultural-science.json` and linked to the egg-formation supplement:
+- `AG-ART-T3-W07-EGG-OVIDUCT-01` — `backend/src/db/ss1/assets/agricultural-science/t3-w07-poultry-oviduct.svg`; 5,234 bytes; SHA-256 `7be214d007222c078c4fc6045daa8e1d7579d58760ca8d57b47520474a05e1e7`.
+- `AG-ART-T3-W07-EGG-CROSS-SECTION-01` — `backend/src/db/ss1/assets/agricultural-science/t3-w07-fertile-egg-cross-section.svg`; 3,771 bytes; SHA-256 `6bfcac621530933704137dadbcb79d3bd2b8f90c9863c4d0c7ce6de85cd5b4d1`.
+
+Both are original vector artwork, not copies, traces or derivatives of image19/image20. Asset approval remains PENDING and verification DEFERRED. The original unlicensed images must be excluded from learner delivery; the importer/learner route has not yet been verified.
+
 ## Changes and validation
 - Added blocking open item `AGRICULTURAL-SCIENCE-T3-W07-REPRODUCTIVE-TRACT-RIGHTS`, identifying both images and the exact rights gap.
 - Marked `AG-VIS-T3-W07-REPRODUCTIVE-TRACT` `IMPLEMENTED_TESTING_DEFERRED`; recomputed queue counts, status counts and `next_runnable`.
