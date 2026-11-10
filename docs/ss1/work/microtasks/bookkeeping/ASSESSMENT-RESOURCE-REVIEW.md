@@ -54,7 +54,7 @@ The answer-key calculations shown above reconcile. Automated regression also che
 - PR #439 merged the assessment resources and assessment regression suite into `master`.
 - PR #441 merged the assessment regression suite into the main `JSS3 implementation and asset checks` workflow.
 - Main workflow run [42783833613](https://github.com/PDS-David/sts-school-app/actions/runs/42783833613) completed successfully on PR #441 head `b2ae64664910104c554c383ba2104e0c5c7f1453`.
-- PR #444 added complete-package baseline assertions and per-paper section-total checks. Dedicated Bookkeeping run [42785278714](https://github.com/PDS-David/sts-school-app/actions/runs/42785278714) and main workflow run [42785279054](https://github.com/PDS-David/sts-school-app/actions/runs/42785279054) both passed on head `82b00440ad0e7b760531274910526277f36d0c47`. PR #444 merged to `master` as `f887ff21fe4d5b70a04cf8547909d7991f8b89a9`.
+- PR #444 added complete-package baseline assertions and per-paper section-total checks. Dedicated Bookkeeping run [42785278714](https://github.com/PDS-David/sts-school-app/actions/runs/42785278714) and main workflow run [42785279054](https://github.com/PDS-David/sts-school-app/actions/runs/42785279054) both passed on head `82b00440ad0e7b760531274910526277f36d0c47`. PR #444 merged to `master` as `f887ff21fe4d5b70a04cf8547909d7991f8b89a9`; post-merge main workflow run [42785541578](https://github.com/PDS-David/sts-school-app/actions/runs/42785541578) also passed on that exact commit.
 - The workflow ran Bookkeeping package and assessment tests alongside backend/mobile TypeScript checks, static regressions and configured PostgreSQL/asset integration tests.
 
 ## Remaining release gates
