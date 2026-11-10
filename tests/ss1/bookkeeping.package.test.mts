@@ -6,7 +6,6 @@ import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import { applyRules, compilePackages } from '../../backend/src/db/ss1/compiler.ts';
-import { loadPackages } from '../../backend/src/db/ss1/loader.ts';
 import { isSchemeWorkWeekHeader } from '../../backend/src/db/ss1/topicParserRules.ts';
 
 const raw = JSON.parse(readFileSync(new URL('../../backend/src/db/ss1/subjects/bookkeeping.json', import.meta.url), 'utf8'));
@@ -471,9 +470,8 @@ test('Bookkeeping source rules compile the scheme preamble as markers, not a Wee
 
 
 test('Complete Bookkeeping delivery baseline remains present and internally approved', () => {
-  const packages = loadPackages();
-  const p = packages.find(x => x.subject_slug === 'bookkeeping');
-  assert(p, 'Bookkeeping package must be registered and loadable');
+  const p = packageSchema.parse(raw);
+  assert.equal(p.subject_slug, 'bookkeeping');
   assert.equal(p.package_status, 'IMPLEMENTED');
   assert.equal(p.lessons.length, 32);
   assert.deepEqual(
