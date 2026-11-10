@@ -58,21 +58,21 @@ def normalize_line(value):
     return " ".join(value.split())
 
 for rule in marker_rules:
-    anchor = rule["anchor"]
-    if "\n" in anchor or "\r" in anchor:
+    anchor = normalize_line(rule["anchor"])
+    if rule.get("match_mode") == "WHOLE_LINE":
         matches = [
             row for row in identified_rows
             if row.get("source_id") == rule["source_id"]
-            and normalize_line(anchor) in normalize_line(row.get("row", {}).get("sourceReference", ""))
+            and any(
+                normalize_line(line) == anchor
+                for line in row.get("row", {}).get("sourceReference", "").splitlines()
+            )
         ]
     else:
         matches = [
             row for row in identified_rows
             if row.get("source_id") == rule["source_id"]
-            and any(
-                normalize_line(line) == normalize_line(anchor)
-                for line in row.get("row", {}).get("sourceReference", "").splitlines()
-            )
+            and anchor in normalize_line(row.get("row", {}).get("sourceReference", ""))
         ]
     assert len(matches) <= 1, f"scheme-only marker matched multiple parsed rows: {rule['id']}"
     if matches:
