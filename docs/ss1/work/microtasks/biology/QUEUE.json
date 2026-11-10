@@ -122,7 +122,8 @@
     "2026-11-10 final pass: Added Second Term Week 3 reproduction, Week 5 animal nutrition and Week 8 population/ecological-instruments student supplements with keyed assessments. Week 3 tapeworm question ambiguity and Week 5 original assessment approval remain flagged.",
     "2026-11-10 final pass: Added separate Week 6/7 supplementary lessons for Fasciola/tsetse/tick life cycles and fungal/fungal-like crop diseases. Distinguishes oomycetes from true fungi and excludes pesticide/veterinary treatment instructions.",
     "2026-11-10 final pass: Added Week 6 sulphur cycle supplement using OpenStax Biology 2e and Microbiology references; the source names sulphur but does not teach its cycle. Added a separate Week 6 keyed assessment supplement for carbon, water and sulphur cycles; original misplaced Week 7 questions are not reused.",
-    "2026-11-10 final pass: Added Week 1 Biology and Scientific Inquiry supplement. It teaches the actual Week 1 body, supplements the source's undefined process terms from OpenStax, corrects the theory-to-law misconception, and explicitly preserves the Week 1 scheme/body mismatch for teacher review."
+    "2026-11-10 final pass: Added Week 1 Biology and Scientific Inquiry supplement. It teaches the actual Week 1 body, supplements the source's undefined process terms from OpenStax, corrects the theory-to-law misconception, and explicitly preserves the Week 1 scheme/body mismatch for teacher review.",
+    "2026-11-10 final pass: Added separate keyed Week 1 Biology/inquiry practice assessment (20 marks). It does not attempt to key the original combined Week 1/2 assignment; the original ambiguity and misplaced content remain recorded for teacher review."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -140,9 +141,9 @@
     "IMPLEMENTED_TESTING_DEFERRED": null
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 149,
+    "IMPLEMENTED_TESTING_DEFERRED": 150,
     "BLOCKED": 16,
-    "PENDING": 3
+    "PENDING": 2
   },
   "items": [
     {
@@ -2470,9 +2471,10 @@
         "BIO-WK-T1-W02",
         "BIO-FACT-T1-W01-SCOPE"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Not authored. Required by BIO-WK-T1-W01 (2026-11-05): COV-BIO-T1-W01-ASSESSMENT is UNRESOLVED and BIOLOGY-T1-W01-ASSESSMENT-MISPLACED is open, with no answer key anywhere for the five questions (lessons[] length 0). It also depends on BIO-WK-T1-W02 so that the single combined Weeks 1-2 assignment block is dispositioned once rather than authored twice.",
-      "completion_condition": "A lesson in biology.json supplies Week 1 practice on Biology and inquiry with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; it records the basis for any answer to the source's own questions, reproduces no wording it is correcting, and no schema, compiler or shared file is edited."
+      "completion_condition": "A lesson in biology.json supplies Week 1 practice on Biology and inquiry with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; it records the basis for any answer to the source's own questions, reproduces no wording it is correcting, and no schema, compiler or shared file is edited.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T1-W01-ASSESSMENT.md"
     },
     {
       "id": "BIO-FACT-T1-W01-SCOPE",
