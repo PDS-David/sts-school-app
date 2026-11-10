@@ -2,7 +2,7 @@
 
 <badge> DRAFT — NOT AN EXPERT SIGN-OFF </badge>
 
-**Status:** Evidence gathered; decision remains BLOCKED pending approval by a qualified Agricultural Science teacher/lecturer or forestry/agricultural engineering specialist. This is an AI-authored evidence brief, not a claim of human expert review.
+**Status:** Evidence gathered; decision remains BLOCKED pending approval by a qualified Agricultural Science teacher/lecturer or forestry/agricultural engineering specialist. This is an AI-authored evidence brief, not a claim of human expert review. Two draft learner-facing supplements have since been added to the subject package, but they remain unapproved and must not be treated as expert-cleared content.
 
 ## Source identity and assessment scope
 
@@ -170,4 +170,4 @@ Please confirm or amend the following before lessons are authored:
 8. Afforestation/reforestation: approve the FAO distinction.
 9. Primary forest product: select whether the school answer should be limited to direct/raw outputs or should include FAO's first-stage processed products.
 
-**No Week 9 farmstead or forestry lesson has been authored.** The queue item remains BLOCKED until a qualified subject expert approves these decisions. The original source text is not changed by this evidence brief.
+**Draft implementation status (10 November 2026):** The package now contains `SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-FARMSTEAD` and `SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-FORESTRY`, each with keyed practice, provenance and `content_approval: PENDING`. These are bounded drafts based on the evidence brief, not approved teaching material. The queue tasks remain BLOCKED because the required qualified expert decision has not been supplied; do not change their approval state or publish them as expert-cleared. The original source text is unchanged.
