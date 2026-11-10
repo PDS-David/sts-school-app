@@ -234,7 +234,7 @@ test('A standalone Week 8 scheme marker is not confused with the longer teaching
   const p = packageSchema.parse(raw);
   const rule = p.source_rules.find(candidate => candidate.id === 'SS1-SRC-d8bd8f85fd73-R010');
   assert(rule);
-  const sourceText = rule.anchor + '\\n' + rule.anchor.trim() + ' –WORDS THAT ARE OPPOSITE IN MEANING';
+  const sourceText = rule.anchor + '\n' + rule.anchor.trim() + ' –WORDS THAT ARE OPPOSITE IN MEANING';
   assert.equal(applyRules({
     source_id: rule.source_id,
     sha256: rule.source_sha256,
