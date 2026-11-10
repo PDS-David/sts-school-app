@@ -871,7 +871,7 @@ router.get('/assessments', requirePerm('assessments.read'), async (req, res) => 
   const { rows } = await query(sql, params);
   if (viewerClasses) {
     // Students/parents never see a topic assessment built from since-corrected teaching (admins keep the audit view).
-    const openIds = rows.filter((r: any) => r.status === 'open').map((r: any) => r.id);
+    const openIds = rows.map((r: any) => r.id);
     const jss3Gone = await withdrawnAssessmentIds(query, openIds);
     const ss1Gone = await ss1WithdrawnAssessmentIds(query, openIds);
     const gone = new Set([...jss3Gone, ...ss1Gone]);
@@ -1348,6 +1348,18 @@ router.get('/submissions/:id/answers', async (req, res) => {
     if (!pw.length) return res.status(403).json({ error: 'Not your ward' });
   } else {
     return res.status(403).json({ error: 'Not authorized' });
+  }
+
+  // A previously submitted SS1 Catering Craft assessment may be withdrawn after a source correction.
+  // Preserve the submission rows, but do not expose question/answer content to students or parents
+  // once its linked assessment is no longer deliverable.
+  if (user.role === 'student' || user.role === 'parent') {
+    const { rows: assessmentRows } = await query('SELECT assessment_id FROM submissions WHERE id=$1', [req.params.id]);
+    const assessmentId = assessmentRows[0]?.assessment_id;
+    if (assessmentId) {
+      const ss1Deliverable = await ss1AssessmentDeliverable(query, assessmentId);
+      if (!ss1Deliverable.ok) return res.status(410).json({ error: ss1Deliverable.reason });
+    }
   }
 
   const { rows: answers } = await query(
