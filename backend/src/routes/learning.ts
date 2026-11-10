@@ -1354,8 +1354,7 @@ router.get('/submissions/:id/answers', async (req, res) => {
   // Preserve the submission rows, but do not expose question/answer content to students or parents
   // once its linked assessment is no longer deliverable.
   if (user.role === 'student' || user.role === 'parent') {
-    const { rows: assessmentRows } = await query('SELECT assessment_id FROM submissions WHERE id=$1', [req.params.id]);
-    const assessmentId = assessmentRows[0]?.assessment_id;
+    const assessmentId = submission.assessment_id;
     if (assessmentId) {
       const ss1Deliverable = await ss1AssessmentDeliverable(query, assessmentId);
       if (!ss1Deliverable.ok) return res.status(410).json({ error: ss1Deliverable.reason });
