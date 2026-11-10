@@ -1,0 +1,48 @@
+{
+  "task": "SS1-08 scoped Catering Craft learner-delivery adapter",
+  "status": "IMPLEMENTED_TESTING_DEFERRED",
+  "repository": "PDS-David/sts-school-app",
+  "base_sha": "b00788a3426e3ecd32174e8edecd176899501de1",
+  "branch": "ss1/SS1-08-20261110-catering-delivery",
+  "owned_paths": [
+    "backend/src/utils/ss1CateringDeliveryCorrection.ts",
+    "backend/src/routes/learning.ts",
+    "tests/ss1/catering-craft.delivery.test.mts",
+    "docs/ss1/work/SS1-08-CATERING-DELIVERY/CHECKPOINT.md",
+    "docs/ss1/work/SS1-08-CATERING-DELIVERY/HANDOFF.json"
+  ],
+  "subject_package": "backend/src/db/ss1/subjects/catering-craft.json",
+  "package_sha": "2614be9149989b5dff92c3c66f3a5a554608bfca",
+  "source_archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+  "lesson_records": 38,
+  "coverage_records": 36,
+  "delivery_corrections": 1,
+  "registered_assets": 0,
+  "implemented_behaviour": [
+    "Strictly scoped SS1 Catering Craft source correction resolver",
+    "Exact original parsed-body SHA-256 match and fail-closed mismatch handling",
+    "Scoped stale summary and generated-assessment retirement",
+    "Safe topic list and update projection",
+    "Corrected content used for completion, summary, practice and generated assessment grounding",
+    "Correction fingerprint stored on generated assessments",
+    "Stale assessments filtered from learner assessment lists and denied at question/submit routes",
+    "Learner/parent answer details blocked for withdrawn linked assessments without deleting submissions or completions",
+    "Persistent assessment withdrawal tombstones so assessments remain hidden after their topic link is cleared"
+  ],
+  "deferred_tests": [
+    "node --import tsx --test tests/ss1/catering-craft.package.test.mts",
+    "node --import tsx --test tests/ss1/catering-craft.delivery.test.mts",
+    "Full integrated SS1 source/importer/runtime/DB/asset/regression/device acceptance"
+  ],
+  "not_claimed": [
+    "Tests passed",
+    "TypeScript check passed",
+    "Importer plan ready",
+    "Production import completed",
+    "Teacher practical verification",
+    "Full SS1-08 completion",
+    "Deployment"
+  ],
+  "next_dependency": "Complete global SS1-08 integration across all registered subject packages and 61 source dispositions, then owner-authorised SS1-09 verification/release.",
+  "integration_snapshot_sha": "dd23304b3e003c601d95dedd671fbff9e8b95d8c"
+}

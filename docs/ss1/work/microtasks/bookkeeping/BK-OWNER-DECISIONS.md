@@ -1,6 +1,6 @@
 # Bookkeeping — consolidated owner and subject-expert decisions
 
-Status: **Updated 8 November 2026. Second-term source disposition and first-term Week 1–4 delivery replacement approval are resolved. Final content approval and technical verification remain open.**
+Status: **Updated 10 November 2026. Owner approval and package-level verification are recorded for all 32 lessons; assessment closeout resources are added. Wider source-importer, database, device and end-to-end delivery acceptance remain open.**
 
 ## Decisions already given by the owner
 
@@ -122,3 +122,52 @@ The full configured GitHub Actions workflow passed in run 42527347154 (run 1332)
 The original third-term DOCX was recovered and its SHA256 independently matched the registry. A structural audit confirmed the scheme-of-work's standalone WEEK heading and the exact source split/marker anchors. A parser guard was added so the table header is not mistaken for a Week 1 lesson; full-source Mammoth/buildFromFiles compiler execution is still deferred.
 
 This is technical validation of the configured checks, not formal content approval. All authored lessons remain content_approval=PENDING. Full-source parser/compiler/importer, device and delivery verification remain deferred. The queue records 93 IMPLEMENTED_TESTING_DEFERRED items and 7 BLOCKED items; the owner/teacher content-approval gate remains open.
+
+
+## Reconciliation and assessment closeout — 10 November 2026
+
+The current package state supersedes the older pending-approval statements above. The package now records owner sign-off dated 2026-11-09 for all 32 authored lessons and records package-level verification for all 32 lessons. The Bookkeeping-specific GitHub Actions package verification run 42534557322 passed 21/21 tests on commit `eb2de863f6cc7ff50a2775d6a48081e8268df43c`. The stale queue task `BK-FACT-CONTENT-APPROVAL` is therefore reclassified from BLOCKED to IMPLEMENTED_TESTING_DEFERRED. This does not convert package-level verification into full-source parser/compiler, production importer/database, device or end-to-end student delivery acceptance.
+
+Seven additional project-authored assessment resources have been added:
+
+| Term | Scheme slot | Resource |
+|---|---|---|
+| First | Week 1 revision | `ASSESSMENT-T1-W01-REVISION.md` |
+| First | Week 11 revision | `ASSESSMENT-T1-W11-REVISION.md` |
+| First | Week 12 examination | `ASSESSMENT-T1-W12-EXAM.md` |
+| Second | Week 11 revision | `ASSESSMENT-T2-W11-REVISION.md` |
+| Second | Week 12 examination | `ASSESSMENT-T2-W12-EXAM.md` |
+| Third | Week 11 revision | `ASSESSMENT-T3-W11-REVISION.md` |
+| Third | Week 12 examination | `ASSESSMENT-T3-W12-EXAM.md` |
+
+Third-term Week 1 revision already exists as `SUP-SS1-BOOKKEEPING-T3-W01-REVISION` in the package. The seven new resources are original project-authored worksheets/papers with answer keys and marking guides. They are not represented as recovered original school materials. Their calculations and marking totals are recorded in `ASSESSMENT-RESOURCE-REVIEW.md`.
+
+All three terms retain their twelve-week structure. The second-term programme remains explicitly a project-authored reconstruction because the supplied second-term document duplicates first-term teaching. The first-term source's missing Week 5–12 bodies remain a provenance gap even though the delivery sequence has project-authored teaching extensions.
+
+The current package inventory is 32 lessons (11 first term, 10 second term, 11 third term), 81 coverage rows (75 IMPLEMENTED_EQUIVALENT and 6 MARKER), 18 source rules, 3 registered sources and 28 package open items. Original source documents and source-defect evidence remain unchanged.
+
+
+## Final automated closeout evidence — 10 November 2026
+
+PR #441 integrated the Bookkeeping assessment regression into the main CI workflow. PR #444 then added a full package-baseline regression and checks that each of the seven project-authored assessment papers has section marks that sum to its declared total.
+
+Both checks passed on PR #444 head `82b00440ad0e7b760531274910526277f36d0c47`:
+- Dedicated Bookkeeping package verification: run [42785278714](https://github.com/PDS-David/sts-school-app/actions/runs/42785278714) — success.
+- Main repository verification: run [42785279054](https://github.com/PDS-David/sts-school-app/actions/runs/42785279054) — success, including typechecks, static regressions, configured PostgreSQL/asset integration, authenticated retrieval, sequencing and disposable staging-admin tests.
+
+PR #444 was squash-merged to `master` as `f887ff21fe4d5b70a04cf8547909d7991f8b89a9`. The post-merge main workflow run [42785541578](https://github.com/PDS-David/sts-school-app/actions/runs/42785541578) also passed on that exact master commit.
+
+The package and assessment materials are therefore covered by the repository's configured automated checks. This still does not certify the original-source full parser/compiler run, production SS1 database import, teacher moderation, or student-device/end-to-end delivery. The importer safety guard remains in place; no production data was written during this closeout.
+
+
+## SS1 package-loader compatibility fix — 10 November 2026
+
+While preparing the full-source acceptance path, a direct `loadPackages()` test exposed strict-schema mismatches in existing SS1 subject packages. The loader rejected an `objective_scope_audit` evidence extension, provenance entries with omitted URLs, existing `VISUAL`/null open-item kinds, and a Technical Drawing Week 5 marker whose evidence identified it as scheme-only but whose rule omitted `kind`.
+
+PR #450 corrected those compatibility issues and added a regression that loads all 21 registered SS1 subject packages, including Bookkeeping:
+- Dedicated Bookkeeping verification [42786574009](https://github.com/PDS-David/sts-school-app/actions/runs/42786574009): passed.
+- Main repository verification [42786573539](https://github.com/PDS-David/sts-school-app/actions/runs/42786573539): passed.
+- PR #450 merged as `17750b8d8746e69828d674c55ad12660f3bf32ff`.
+- Post-merge main verification [42786779861](https://github.com/PDS-David/sts-school-app/actions/runs/42786779861): passed on that exact master commit.
+
+The SS1 package registry can now be loaded and schema-validated across all 21 subjects. This removes a code-level blocker to the future source-build step. It does not run the original Bookkeeping DOC/DOCX extraction because the registered source archive is not present in the repository or accessible conversation files. The SS1 importer remains plan-only; no production database write was made.
