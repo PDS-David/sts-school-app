@@ -53,10 +53,22 @@ marker_rules = [
     rule for rule in package["source_rules"]
     if rule["op"] == "classify_marker" and rule["kind"] == "SCHEME_ONLY"
 ]
+identified_rows = plan.get("identified_rows", [])
 for rule in marker_rules:
-    assert dispositions.get(rule["id"]) == "SCHEME_ONLY", (
-        f"scheme-only marker was not preserved: {rule['id']}"
-    )
+    matches = [
+        row for row in identified_rows
+        if row.get("source_id") == rule["source_id"]
+        and rule["anchor"] in row.get("row", {}).get("sourceReference", "")
+    ]
+    assert len(matches) <= 1, f"scheme-only marker matched multiple parsed rows: {rule['id']}"
+    if matches:
+        assert dispositions.get(matches[0]["id"]) == "SCHEME_ONLY", (
+            f"parsed scheme-only row was not classified: {rule['id']}"
+        )
+    else:
+        assert dispositions.get(rule["id"]) == "SCHEME_ONLY", (
+            f"unparsed scheme-only marker was not preserved: {rule['id']}"
+        )
 
 supplements = [
     row for row in rows
