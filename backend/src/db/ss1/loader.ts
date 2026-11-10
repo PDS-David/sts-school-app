@@ -4,20 +4,23 @@ import { fileURLToPath } from 'node:url';
 import { packageSchema } from './subjectPackageSchema.js';
 import { compilePackages, registeredSubjects, registry, sha256, type ParsedTopic, type SourceInput } from './compiler.js';
 const moduleDir = path.dirname(fileURLToPath(import.meta.url));
-export function loadPackages(directory = path.join(moduleDir, 'subjects')) {
-  const files = existsSync(directory) ? readdirSync(directory).filter(f => f.endsWith('.json')).sort() : [];
-  for (const f of files) if (!registeredSubjects.includes(f.slice(0, -5))) throw new Error(`SS1 unregistered package file ${f}`);
+export function loadPackages(directory = path.join(moduleDir, 'subjects'), subjectSlug?: string) {
+  const allFiles = existsSync(directory) ? readdirSync(directory).filter(f => f.endsWith('.json')).sort() : [];
+  for (const f of allFiles) if (!registeredSubjects.includes(f.slice(0, -5))) throw new Error(`SS1 unregistered package file ${f}`);
+  const files = subjectSlug ? allFiles.filter(f => f === `${subjectSlug}.json`) : allFiles;
+  if (subjectSlug && files.length !== 1) throw new Error(`SS1 subject-only package not found: ${subjectSlug}`);
   return files.map(f => {
     const p = packageSchema.parse(JSON.parse(readFileSync(path.join(directory, f), 'utf8')));
     if (`${p.subject_slug}.json` !== f) throw new Error(`SS1 package filename/slug mismatch ${f}`);
     return p;
   });
 }
-export async function buildFromFiles(root: string, files: string[], extract: (file: string) => Promise<string>, parse: (text: string) => ParsedTopic[]) {
-  const packages = loadPackages();
+export async function buildFromFiles(root: string, files: string[], extract: (file: string) => Promise<string>, parse: (text: string) => ParsedTopic[], subjectSlug?: string) {
+  const packages = loadPackages(undefined, subjectSlug);
   const inputs: SourceInput[] = [];
   const owned = new Set<string>();
-  for (const source of registry) {
+  const selectedSources = subjectSlug ? registry.filter(source => source.assigned_subject_slug === subjectSlug) : registry;
+  for (const source of selectedSources) {
     // Root is the NEW_DIR produced by prepare_sources.py, preserving archive member paths.
     const file = path.resolve(root, source.archive_member);
     if (!files.some(f => path.resolve(f) === file)) continue;
