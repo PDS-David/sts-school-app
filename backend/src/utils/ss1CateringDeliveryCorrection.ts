@@ -185,8 +185,8 @@ export async function ss1WithdrawnAssessmentIds(query: Ss1Query, assessmentIds: 
   const withdrawn = new Set<unknown>();
   if (!assessmentIds.length) return withdrawn;
   const { rows: markedRows } = await query(
-    'SELECT id FROM assessments WHERE id=ANY($1) AND content_fingerprint LIKE $2',
-    [assessmentIds, `${SS1_CATERING_WITHDRAWN_FINGERPRINT_PREFIX}%`],
+    'SELECT id FROM assessments WHERE id=ANY($1) AND left(content_fingerprint, length($2))=$2',
+    [assessmentIds, SS1_CATERING_WITHDRAWN_FINGERPRINT_PREFIX],
   );
   for (const row of markedRows) withdrawn.add(row.id);
   const { rows } = await query(`${LINKED_SQL} WHERE t.generated_assessment_id = ANY($1)`, [assessmentIds]);
