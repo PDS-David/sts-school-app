@@ -120,7 +120,8 @@
     "2026-11-10 final pass: Added SS1 Biology Week 9 Functioning Ecosystems student supplement; verified the source pyramid ordering from the original rendering report and corrected the universal consumer-survival claim in supplemental teaching. Source assessment gaps remain unapproved.",
     "2026-11-10 final pass: Added Third Term Weeks 5, 6/7 and 8 student supplements, covering crop classification/agriculture, plant/livestock pests and diseases, IPM, food production, preservation and storage. Chemical/pesticide use remains non-operational and safety-qualified.",
     "2026-11-10 final pass: Added Second Term Week 3 reproduction, Week 5 animal nutrition and Week 8 population/ecological-instruments student supplements with keyed assessments. Week 3 tapeworm question ambiguity and Week 5 original assessment approval remain flagged.",
-    "2026-11-10 final pass: Added separate Week 6/7 supplementary lessons for Fasciola/tsetse/tick life cycles and fungal/fungal-like crop diseases. Distinguishes oomycetes from true fungi and excludes pesticide/veterinary treatment instructions."
+    "2026-11-10 final pass: Added separate Week 6/7 supplementary lessons for Fasciola/tsetse/tick life cycles and fungal/fungal-like crop diseases. Distinguishes oomycetes from true fungi and excludes pesticide/veterinary treatment instructions.",
+    "2026-11-10 final pass: Added Week 6 sulphur cycle supplement using OpenStax Biology 2e and Microbiology references; the source names sulphur but does not teach its cycle. Added a separate Week 6 keyed assessment supplement for carbon, water and sulphur cycles; original misplaced Week 7 questions are not reused."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -138,9 +139,9 @@
     "IMPLEMENTED_TESTING_DEFERRED": null
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 145,
+    "IMPLEMENTED_TESTING_DEFERRED": 147,
     "BLOCKED": 16,
-    "PENDING": 7
+    "PENDING": 5
   },
   "items": [
     {
@@ -2303,9 +2304,10 @@
         "BIO-WK-T1-W06",
         "BIO-FACT-T1-W06-SCOPE"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Not authored. Required by BIO-WK-T1-W06 (2026-11-03): block 783 names sulphur among the circulating nutrients, while no block in Week 6 or elsewhere teaches a sulphur cycle; COV-BIO-T1-W06-SULPHUR is UNRESOLVED and BIOLOGY-T1-W06-COVERAGE is open. BIO-WK-T1-W06 authors no cycle text.",
-      "completion_condition": "A lesson in biology.json teaches the sulphur cycle content cleared by BIO-FACT-T1-W06-SCOPE, labels itself a Week 6 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented, no answer key is inferred, and no schema, compiler or shared file is edited."
+      "completion_condition": "A lesson in biology.json teaches the sulphur cycle content cleared by BIO-FACT-T1-W06-SCOPE, labels itself a Week 6 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented, no answer key is inferred, and no schema, compiler or shared file is edited.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T1-W06-SULPHUR.md"
     },
     {
       "id": "BIO-LES-T1-W06-ASSESSMENT",
@@ -2345,9 +2347,10 @@
         "BIO-LES-T1-W06-CARBON-WATER",
         "BIO-VIS-T1-NUTRIENT-CYCLES"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Not authored. Required by BIO-WK-T1-W06 (2026-11-03): blocks 828-833 ask about carbohydrates, proteins, lipids and enzymes, taught at Week 7 blocks 837-909; no Week 6 question exists. BIOLOGY-T1-W06-ASSIGNMENT-MISPLACED is open. BIO-WK-T1-W06 authors no assessment and infers no answer key.",
-      "completion_condition": "A lesson in biology.json supplies Week 6 practice on nutrient cycling with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; it does not reproduce the Week 7 questions or infer their key, and no schema, compiler or shared file is edited."
+      "completion_condition": "A lesson in biology.json supplies Week 6 practice on nutrient cycling with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; it does not reproduce the Week 7 questions or infer their key, and no schema, compiler or shared file is edited.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T1-W06-ASSESSMENT.md"
     },
     {
       "id": "BIO-FACT-T1-W06-SCOPE",
