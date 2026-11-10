@@ -127,7 +127,8 @@
     "AG-LES-T3-W02-FARM-POWER-OPERATIONS (2026-11-10): authored original supplement explicitly mapping mechanical, electrical, wind and solar power to at least two farm operations each, with equipment, energy-transfer explanations, limitations, safety and 40-mark keyed practice. COV-AG-T3-W02-OPERATIONS moved to IMPLEMENTED_EQUIVALENT. West African grain-drying prevalence fact, water-power reclassification, source text corrections and third-party source-image rights remain separate open items. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS (2026-11-10): authored verified supplement for liver bile vs enzymes, mono-/polygastric similarities, blood composition/water and digestive sphincters; six keyed questions and 40-mark criterion rubric. COV-AG-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS moved to IMPLEMENTED_EQUIVALENT. Digestive/reproductive factual accuracy and third-party figure permissions remain separate open items. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T3-W05-RESPIRATION-NERVOUS-GAPS (2026-11-10): authored supplement for breathing mechanics, complete respiration in cattle, neuron structure/function and reflex arc with four animal reflex examples; seven keyed questions, 40 marks. Assessment-gap coverage moved to IMPLEMENTED_EQUIVALENT. Source equations, respiratory/gill figure permissions and separate factual accuracy review remain open. Approval PENDING; verification/testing DEFERRED.",
-    "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION (2026-11-10): authored veterinary-source-grounded, non-procedural sheep embryo-development and normal lamb-presentation supplement with seven keyed questions (40 marks). Content coverage implemented; independent named veterinary reviewer sign-off remains a release gate and open owner action. Approval PENDING; verification/testing DEFERRED."
+    "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION (2026-11-10): authored veterinary-source-grounded, non-procedural sheep embryo-development and normal lamb-presentation supplement with seven keyed questions (40 marks). Content coverage implemented; independent named veterinary reviewer sign-off remains a release gate and open owner action. Approval PENDING; verification/testing DEFERRED.",
+    "AG-LES-T3-W07-POULTRY-REPRO-SYSTEM (2026-11-10): authored complete original prose for male/female poultry reproductive systems, source diagram labels and oviduct functions; seven keyed questions, 40 marks. No unlicensed source images or hormone table reused. Poultry reproductive-system content coverage implemented; source image rights and egg/hormone fact checks remain open. Approval PENDING; verification/testing DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -142,9 +143,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 135,
+    "IMPLEMENTED_TESTING_DEFERRED": 136,
     "BLOCKED": 13,
-    "PENDING": 6
+    "PENDING": 5
   },
   "items": [
     {
@@ -5255,8 +5256,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W07: evaluation 823 asks for a description, but no prose appears after heading 820.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-10 on branch agent/agricultural-science from 05d0329f5ef9f445c277769f2a3c05360778301f. Added SUP-SS1-AGRICULTURAL-SCIENCE-T3-W07-POULTRY-REPRO-SYSTEM; body SHA-256 7b18ff3186cb79f1b7663470c90d9956d898edfab224a8d57d15937a0a83561c. Provides original prose for male and female domestic chicken reproductive systems and functions of source diagram labels: testes, vas deferens, ovary, eggs/oviduct, cloaca, rudimentary right oviduct, kidney, ureter and intestine. Adds detailed functions of infundibulum, magnum, isthmus, uterus/shell gland, vagina and vent; distinguishes reproductive from adjacent urinary/digestive structures; explains species variation (e.g. chicken vs waterfowl) and fertilised vs unfertilised eggs. Seven keyed questions with criterion-level rubrics, 40 marks. Sources: University of Kentucky Cooperative Extension, Mississippi State University Extension, Penn State Extension and peer-reviewed poultry reproduction review. COV-AG-T3-W07-POULTRY-REPRODUCTIVE-SYSTEM moved to IMPLEMENTED_EQUIVALENT; egg-formation row linked but remains PARTIAL due timing fact review and importer mapping. Removed only resolved reproductive-system CONTENT blocker. No source figures or hormone table copied; all original image-rights and hormone/egg timing accuracy blockers remain open. Package/lesson approval PENDING; verification/testing DEFERRED. JSON, body hash and marks checked; no tests, TypeScript, importer/compiler, DB or runtime checks run under owner deferral.",
       "completion_condition": "A verified supplement describes male/female poultry reproductive structures and functions, references the source figures, includes keyed practice/provenance and remains PENDING approval."
     },
     {
@@ -5856,7 +5857,6 @@
     }
   },
   "next_runnable": [
-    "AG-LES-T3-W07-POULTRY-REPRO-SYSTEM",
     "AG-LES-T3-W08-ENVIRONMENTAL-MEASURES",
     "AG-LES-T3-W09-PIG-ASSESSMENT-SUPPLEMENT",
     "AG-LES-T3-W10-CATTLE-TATTOOING"
