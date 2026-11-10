@@ -67,15 +67,15 @@
     "OWNER CLARIFICATION 2026-11-08: each term was expected to contain at least ten weeks. Third-term scheme has a Week 1 revision marker followed by nine teaching-topic weeks (Weeks 2-10); the source contains no revision body. A project-authored Week 1 revision lesson has been added using first-term Bookkeeping foundations; the original source marker remains SCHEME_ONLY.",
     "2026-11-08 master reconciliation audit: refreshed the review pointer to current master commit 288965f793e217dbc076eb4f51246a85033034c8 and recorded the existing package path and blob SHA. Current inventory: 32 implemented lessons (11/10/11 across terms), 81 coverage rows (72 IMPLEMENTED_EQUIVALENT, 3 PARTIAL, 6 MARKER), 18 source rules, 3 sources and 27 package open items. All 32 lessons remain approval PENDING and verification DEFERRED; package remains PENDING. Historical generated_from.master_sha and original task description are retained as provenance; generated_from.package now points to the package that was subsequently created. This inventory refresh does not execute the deferred tests or importer and does not imply content approval.",
     "2026-11-08 follow-up audit: reclassified six stale second-term tasks as IMPLEMENTED_TESTING_DEFERRED with explicit supersession references: the four week-indexing tasks and the two marker tasks (BK-MARK-T2-REVISION, BK-MARK-T2-EXAM). The owner-confirmed source disposition excludes duplicate second-term teaching from coverage, and the separate reconstructed T2 W01-W10 lesson sequence carries the intended programme. No second-term marker rules or MARKER coverage rows were added; an earlier attempt to classify the Week 1/11 revision and Week 12 examination markers was reverted because it contradicted that decision and the package test. Original source remains registered and unchanged. Technical verification and formal content approval remain separate and outstanding.",
-    "2026-11-08 static consistency check after the marker revert: package JSON parsed; 32 lesson IDs, 18 source-rule IDs and 81 coverage IDs; package blob matches master. This is a read-only structural check, not execution of the owner-deferred package test suite, full-source compiler, importer or delivery checks."
+    "2026-11-08 static consistency check after the marker revert: package JSON parsed; 32 lesson IDs, 18 source-rule IDs and 81 coverage IDs; package blob matches master. This is a read-only structural check, not execution of the owner-deferred package test suite, full-source compiler, importer or delivery checks.",
+    "2026-11-10 closeout branch reconciliation: all 32 lesson states in bookkeeping.json now record APPROVED owner sign-off (2026-11-09) and VERIFIED package-level verification (run 42534557322, 21/21). The old BK-FACT-CONTENT-APPROVAL BLOCKED status was stale and is reclassified IMPLEMENTED_TESTING_DEFERRED; wider parser/compiler/importer/database/device acceptance remains explicitly outstanding.",
+    "2026-11-10 assessment closeout: seven new project-authored term-specific revision/examination Markdown resources were added on work/bookkeeping-closeout-20261110. They are recorded as IMPLEMENTED_TESTING_DEFERRED pending branch CI and final review. T3 Week 1 revision is already covered by the existing authored lesson. Original DOCX source material is not altered and no missing source worksheet/exam is claimed as recovered."
   ],
   "counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 99,
-    "BLOCKED": 1
+    "IMPLEMENTED_TESTING_DEFERRED": 107
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 99,
-    "BLOCKED": 1
+    "IMPLEMENTED_TESTING_DEFERRED": 107
   },
   "items": [
     {
@@ -336,8 +336,8 @@
         "BK-INV-T3",
         "BK-TEST-PACKAGE"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Package and authored lessons now exist in bookkeeping.json. All authored lessons remain content_approval=PENDING and verification=DEFERRED; package_status=PENDING. Owner must review the authored lessons and record an approval reference or request changes. Technical verification is a separate later task; no approval or verification is presumed. Consolidated decision sheet: BK-OWNER-DECISIONS.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Owner sign-off is recorded in bookkeeping.json for all 32 lessons (OWNER SIGN-OFF PROVIDED 2026-11-09); all 32 lesson states are APPROVED and VERIFIED. Bookkeeping package workflow run 42534557322 passed 21/21 tests. This resolves the stale approval gate. Wider full-source parser/compiler, importer/database, device and end-to-end delivery acceptance remain separate and are not claimed.",
       "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
     },
     {
@@ -3555,14 +3555,175 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Project-authored lesson SUP-SS1-BOOKKEEPING-T3-W06-SUSPENSE added to bookkeeping.json with exact SHA-256, original examples, three/four marked practice questions and source provenance. Linked coverage records are IMPLEMENTED_EQUIVALENT. content_approval=PENDING and verification=DEFERRED.",
       "completion_condition": "Lesson body, objectives, marked practice, provenance and coverage links are recorded; technical tests and curriculum content approval remain separate gates."
+    },
+    {
+      "id": "BK-ASSESS-T1-W01-REVISION",
+      "kind": "ASSESSMENT_RESOURCE",
+      "source_id": null,
+      "term": "1st Term",
+      "week_or_locator": "Week 1 revision",
+      "objective": "Provide a project-authored week 1 revision resource for SS1 Bookkeeping, with student questions, answer key and marking guide.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/bookkeeping/ASSESSMENT-T1-W01-REVISION.md",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-TEST-PACKAGE"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Created ASSESSMENT-T1-W01-REVISION.md on work/bookkeeping-closeout-20261110. Project-authored assessment material; answer key and marking guide included. This does not claim recovery of missing source worksheets or examination papers. Markdown resource review is recorded in ASSESSMENT-RESOURCE-REVIEW.md.",
+      "completion_condition": "A term-specific revision/examination resource exists with clear scope, questions, answer key and marking allocations; source provenance is explicit; arithmetic and answer-key checks are recorded."
+    },
+    {
+      "id": "BK-ASSESS-T1-W11-REVISION",
+      "kind": "ASSESSMENT_RESOURCE",
+      "source_id": null,
+      "term": "1st Term",
+      "week_or_locator": "Week 11 revision",
+      "objective": "Provide a project-authored week 11 revision resource for SS1 Bookkeeping, with student questions, answer key and marking guide.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/bookkeeping/ASSESSMENT-T1-W11-REVISION.md",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-TEST-PACKAGE"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Created ASSESSMENT-T1-W11-REVISION.md on work/bookkeeping-closeout-20261110. Project-authored assessment material; answer key and marking guide included. This does not claim recovery of missing source worksheets or examination papers. Markdown resource review is recorded in ASSESSMENT-RESOURCE-REVIEW.md.",
+      "completion_condition": "A term-specific revision/examination resource exists with clear scope, questions, answer key and marking allocations; source provenance is explicit; arithmetic and answer-key checks are recorded."
+    },
+    {
+      "id": "BK-ASSESS-T1-W12-EXAM",
+      "kind": "ASSESSMENT_RESOURCE",
+      "source_id": null,
+      "term": "1st Term",
+      "week_or_locator": "Week 12 examination",
+      "objective": "Provide a project-authored week 12 examination resource for SS1 Bookkeeping, with student questions, answer key and marking guide.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/bookkeeping/ASSESSMENT-T1-W12-EXAM.md",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-TEST-PACKAGE"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Created ASSESSMENT-T1-W12-EXAM.md on work/bookkeeping-closeout-20261110. Project-authored assessment material; answer key and marking guide included. This does not claim recovery of missing source worksheets or examination papers. Markdown resource review is recorded in ASSESSMENT-RESOURCE-REVIEW.md.",
+      "completion_condition": "A term-specific revision/examination resource exists with clear scope, questions, answer key and marking allocations; source provenance is explicit; arithmetic and answer-key checks are recorded."
+    },
+    {
+      "id": "BK-ASSESS-T2-W11-REVISION",
+      "kind": "ASSESSMENT_RESOURCE",
+      "source_id": null,
+      "term": "2nd Term",
+      "week_or_locator": "Week 11 revision",
+      "objective": "Provide a project-authored week 11 revision resource for SS1 Bookkeeping, with student questions, answer key and marking guide.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/bookkeeping/ASSESSMENT-T2-W11-REVISION.md",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-TEST-PACKAGE"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Created ASSESSMENT-T2-W11-REVISION.md on work/bookkeeping-closeout-20261110. Project-authored assessment material; answer key and marking guide included. This does not claim recovery of missing source worksheets or examination papers. Markdown resource review is recorded in ASSESSMENT-RESOURCE-REVIEW.md.",
+      "completion_condition": "A term-specific revision/examination resource exists with clear scope, questions, answer key and marking allocations; source provenance is explicit; arithmetic and answer-key checks are recorded."
+    },
+    {
+      "id": "BK-ASSESS-T2-W12-EXAM",
+      "kind": "ASSESSMENT_RESOURCE",
+      "source_id": null,
+      "term": "2nd Term",
+      "week_or_locator": "Week 12 examination",
+      "objective": "Provide a project-authored week 12 examination resource for SS1 Bookkeeping, with student questions, answer key and marking guide.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/bookkeeping/ASSESSMENT-T2-W12-EXAM.md",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-TEST-PACKAGE"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Created ASSESSMENT-T2-W12-EXAM.md on work/bookkeeping-closeout-20261110. Project-authored assessment material; answer key and marking guide included. This does not claim recovery of missing source worksheets or examination papers. Markdown resource review is recorded in ASSESSMENT-RESOURCE-REVIEW.md.",
+      "completion_condition": "A term-specific revision/examination resource exists with clear scope, questions, answer key and marking allocations; source provenance is explicit; arithmetic and answer-key checks are recorded."
+    },
+    {
+      "id": "BK-ASSESS-T3-W11-REVISION",
+      "kind": "ASSESSMENT_RESOURCE",
+      "source_id": null,
+      "term": "3rd Term",
+      "week_or_locator": "Week 11 revision",
+      "objective": "Provide a project-authored week 11 revision resource for SS1 Bookkeeping, with student questions, answer key and marking guide.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/bookkeeping/ASSESSMENT-T3-W11-REVISION.md",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-TEST-PACKAGE"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Created ASSESSMENT-T3-W11-REVISION.md on work/bookkeeping-closeout-20261110. Project-authored assessment material; answer key and marking guide included. This does not claim recovery of missing source worksheets or examination papers. Markdown resource review is recorded in ASSESSMENT-RESOURCE-REVIEW.md.",
+      "completion_condition": "A term-specific revision/examination resource exists with clear scope, questions, answer key and marking allocations; source provenance is explicit; arithmetic and answer-key checks are recorded."
+    },
+    {
+      "id": "BK-ASSESS-T3-W12-EXAM",
+      "kind": "ASSESSMENT_RESOURCE",
+      "source_id": null,
+      "term": "3rd Term",
+      "week_or_locator": "Week 12 examination",
+      "objective": "Provide a project-authored week 12 examination resource for SS1 Bookkeeping, with student questions, answer key and marking guide.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/bookkeeping/ASSESSMENT-T3-W12-EXAM.md",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-TEST-PACKAGE"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Created ASSESSMENT-T3-W12-EXAM.md on work/bookkeeping-closeout-20261110. Project-authored assessment material; answer key and marking guide included. This does not claim recovery of missing source worksheets or examination papers. Markdown resource review is recorded in ASSESSMENT-RESOURCE-REVIEW.md.",
+      "completion_condition": "A term-specific revision/examination resource exists with clear scope, questions, answer key and marking allocations; source provenance is explicit; arithmetic and answer-key checks are recorded."
     }
   ],
   "review": {
-    "date": "2026-11-08",
-    "reviewed_commit": "69d1d8a1c2d679b4b4f20f6ac635b21c0e25b4b3",
+    "date": "2026-11-10",
+    "reviewed_commit": "ba27223c384fecf4b3be3c46a3ec4cb303da2b4",
     "package_path": "backend/src/db/ss1/subjects/bookkeeping.json",
-    "package_blob_sha": "4525523907073a39b4d63110d1202b75e9e940f5",
-    "scope": "Current package and queue audit: 32 implemented lessons (11 first term, 10 second term, 11 third term); 81 coverage rows (72 IMPLEMENTED_EQUIVALENT, 3 PARTIAL, 6 MARKER); 18 source rules; 3 registered sources; 27 package open items. Second-term schedule markers (Weeks 1 and 11 revision, Week 12 examination) are not indexed, per the owner-confirmed duplicate-source disposition. Six stale second-term source-indexing and marker tasks are superseded by that disposition. All 32 lessons remain content_approval=PENDING and verification=DEFERRED; package_status=PENDING. Full-source compiler/importer/database/device checks and formal teacher/curriculum-owner approval remain outstanding."
+    "package_blob_sha": "6390e7cd1db96ffade626a1e9f4572e6abb3a469",
+    "scope": "Reconciled against current Bookkeeping package: 32 implemented lessons (11/10/11 by term); 81 coverage rows (75 IMPLEMENTED_EQUIVALENT, 6 MARKER); 18 source rules; 3 registered sources; 28 package open items. All 32 lessons are content_approval=APPROVED and verification=VERIFIED, with owner sign-off dated 2026-11-09 and package verification run 42534557322 (21/21). The sole BLOCKED approval queue task is now reclassified as IMPLEMENTED_TESTING_DEFERRED. Seven project-authored term-specific revision/exam resources were added (T1 Week 1 revision, Week 11 revision and Week 12 exam; T2 Week 11 revision and Week 12 exam; T3 Week 11 revision and Week 12 exam). T3 Week 1 revision is already represented by SUP-SS1-BOOKKEEPING-T3-W01-REVISION. Source gaps and original DOCX files remain preserved. Full-source parser/compiler execution, production importer/database delivery, device acceptance and end-to-end student delivery remain outside the package-level test evidence and are still outstanding."
   },
   "next_runnable": []
 }
