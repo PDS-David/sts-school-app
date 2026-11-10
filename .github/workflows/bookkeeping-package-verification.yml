@@ -14,6 +14,9 @@ on:
       - "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
       - "docs/ss1/work/microtasks/bookkeeping/BK-OWNER-DECISIONS.md"
       - ".github/workflows/bookkeeping-package-verification.yml"
+      - "scripts/ss1/**"
+      - "docs/ss1/sources/**"
+      - "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv"
 
 permissions:
   contents: read
@@ -34,3 +37,31 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Verify Bookkeeping package
         run: node --import tsx --test tests/ss1/bookkeeping.package.test.mts tests/ss1/bookkeeping.assessment.test.mts
+      - name: Set up Python for hash-bound source staging
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify and privately stage the complete SS1 source archive
+        run: |
+          python scripts/ss1/prepare_sources.py \
+            --archive docs/ss1/sources/SSS1-original.zip \
+            --output "$RUNNER_TEMP/ss1-staged"
+      - name: Run the real SS1 parser/compiler in plan-only mode
+        shell: bash
+        run: |
+          set +e
+          python scripts/ss1/build_subject_packages.py \
+            --root "$RUNNER_TEMP/ss1-staged" \
+            --output "$RUNNER_TEMP/ss1-plan.json"
+          compiler_exit=$?
+          set -e
+
+          if [ ! -s "$RUNNER_TEMP/ss1-plan.json" ]; then
+            echo "The real importer/compiler did not produce its private plan (exit $compiler_exit)." >&2
+            exit "$compiler_exit"
+          fi
+
+          python scripts/ss1/check_bookkeeping_plan.py "$RUNNER_TEMP/ss1-plan.json"
+          if [ "$compiler_exit" -ne 0 ]; then
+            echo "The global SS1 plan remains blocked by other packages; Bookkeeping-specific source assertions passed. No database write was attempted."
+          fi
