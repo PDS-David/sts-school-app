@@ -123,7 +123,8 @@
     "AG-LES-T1-W10-MONOCOT-DICOT-TABLE (2026-11-10): authored a seven-row comparison table retaining the source's three taught contrasts and adding stem vascular bundles, flower parts, pollen apertures and secondary growth. Qualified exceptions; included examples, classification practice and criterion-level marking (28 marks). Coverage moved to IMPLEMENTED_EQUIVALENT; resolved seven-difference CONTENT item removed. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T2-W04-05-YAM-PRACTICES (2026-11-10): authored original IITA-backed supplement explaining yam staking and vine training, materials, timing, methods, benefits and agroecological variation. Cross-references original mulching instruction at blocks 197–203; the separate MULCHING-MCQ fact issue remains open. Coverage moved to IMPLEMENTED_EQUIVALENT; staking/training CONTENT item removed. Practice marking totals 24/24. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS (2026-11-10): authored original supplement for fish-pond and forest/savanna ecosystem interactions, using FAO, NAERLS, UF IFAS, SANBI and peer-reviewed sources. Coverage moved to IMPLEMENTED_EQUIVALENT; resolved interactions CONTENT item removed. Existing mono-/mixed-cropping and mixed-farming source teaching remains unchanged. Practice marking totals 28/28. Approval PENDING; verification/testing DEFERRED.",
-    "AG-LES-T3-W01-TOOL-REFERENCE (2026-11-10): authored the complete 30-tool reference with descriptions, uses, maintenance, nine justified post-planting mappings, safe-handling guidance, drawing-book project and practical observation record. Added 30 original SVG illustrations, each registered with hash, bytes, alt text and provenance. Source list and source bytes unchanged. Digger and manure drag drawings are generic because source gives no local design; emasculator guidance is non-procedural. Practice marking totals 45/45. Approval PENDING; verification/testing DEFERRED."
+    "AG-LES-T3-W01-TOOL-REFERENCE (2026-11-10): authored the complete 30-tool reference with descriptions, uses, maintenance, nine justified post-planting mappings, safe-handling guidance, drawing-book project and practical observation record. Added 30 original SVG illustrations, each registered with hash, bytes, alt text and provenance. Source list and source bytes unchanged. Digger and manure drag drawings are generic because source gives no local design; emasculator guidance is non-procedural. Practice marking totals 45/45. Approval PENDING; verification/testing DEFERRED.",
+    "AG-LES-T3-W02-FARM-POWER-OPERATIONS (2026-11-10): authored original supplement explicitly mapping mechanical, electrical, wind and solar power to at least two farm operations each, with equipment, energy-transfer explanations, limitations, safety and 40-mark keyed practice. COV-AG-T3-W02-OPERATIONS moved to IMPLEMENTED_EQUIVALENT. West African grain-drying prevalence fact, water-power reclassification, source text corrections and third-party source-image rights remain separate open items. Approval PENDING; verification/testing DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -138,9 +139,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 131,
+    "IMPLEMENTED_TESTING_DEFERRED": 132,
     "BLOCKED": 13,
-    "PENDING": 10
+    "PENDING": 9
   },
   "items": [
     {
@@ -4721,8 +4722,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W02: theory 275 asks for two operations per source; examples are incomplete/unclear.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-10 on branch agent/agricultural-science from 19131dffe5dbe51d0dc3ac4fc204605e35577df5. Added lesson SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-FARM-POWER-OPERATIONS with body SHA-256 736fc9c1efb6f3de13d921aba8df5aa6b61263de247ec7809129488bf87762bf. Provides explicit source→machine/equipment→operation mapping with at least two verified operations each for mechanical, electrical, wind and solar power; retains original source examples while clearly labelling added examples. Distinguishes tractor/engine mechanical power, electric pumps and milking/brooder/processing equipment, windpumps and windmill grain milling, solar PV irrigation pumps and solar-thermal crop dryers. Includes source-selection factors, practical limitations, electrical/machinery/wind/solar safety, distinction between hydropower and water as an agricultural resource, and explicit warning not to guess the unresolved West African grain-drying prevalence MCQ. Sources include NAERLS, NBTE Nigeria, National Geographic Education, World Bank, FAO Nigeria, NSPRI and Sokoto Energy Research Centre. Adds eight keyed questions with criterion-level rubrics, 40 marks total. Moves COV-AG-T3-W02-OPERATIONS to IMPLEMENTED_EQUIVALENT and removes only its resolved CONTENT blocker. Main week coverage remains PARTIAL due missing importer-confirmed original row. Package/lesson approval PENDING; verification/testing DEFERRED. JSON parsing, body SHA-256 and assessment mark sums checked. No tests, TypeScript, importer/compiler, database or runtime checks run under owner deferral.",
       "completion_condition": "A clearly labelled supplement gives two or more accurate operations for each source, cites sources and includes keyed practice/criterion-level marks; PENDING approval."
     },
     {
@@ -5852,7 +5853,6 @@
     }
   },
   "next_runnable": [
-    "AG-LES-T3-W02-FARM-POWER-OPERATIONS",
     "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS",
     "AG-LES-T3-W05-RESPIRATION-NERVOUS-GAPS",
     "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION",
