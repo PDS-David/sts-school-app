@@ -1,5 +1,4 @@
-// Drafted for the owner-authorised verification stage. DO NOT RUN in this implementation checkpoint.
-// Run only when authorised:
+// Executed by the SS1 English package verification workflow.
 // node --import tsx --test tests/ss1/english.package.test.mts
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -138,4 +137,84 @@ test('Regression examples retain the corrected English sound, rhyme and stress d
   assert(consonants.split('\n').some(line => line.startsWith('| /ʒ/ |') && line.includes('| voiced |')));
   assert(stress.includes('not a rule for every two-syllable word'));
   assert(stress.includes('Consent does not automatically shift'));
+});
+
+
+test('English source registration matches the exact three assigned archive members', () => {
+  const p = packageSchema.parse(raw);
+  const assigned = readFileSync(
+    new URL('../../docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv', import.meta.url),
+    'utf8',
+  ).split(/\\r?\\n/)
+    .filter(line => line.length > 0)
+    .slice(1)
+    .map(line => line.split(','))
+    .filter(columns => columns[5] === 'english')
+    .map(columns => ({
+      source_id: columns[0],
+      archive_member: columns[1],
+      sha256: columns[2],
+      term: columns[4],
+    }))
+    .sort((a, b) => a.source_id.localeCompare(b.source_id));
+  const actual = p.sources.map(source => ({
+    source_id: source.source_id,
+    archive_member: source.archive_member,
+    sha256: source.sha256,
+    term: source.term,
+  })).sort((a, b) => a.source_id.localeCompare(b.source_id));
+  assert.equal(assigned.length, 3);
+  assert.deepEqual(actual, assigned);
+});
+
+test('Every coverage entry resolves to a real source and target; equivalent coverage has an authored lesson', () => {
+  const p = packageSchema.parse(raw);
+  const sourceIds = new Set(p.sources.map(source => source.source_id));
+  const lessonIds = new Set(p.lessons.map(lesson => lesson.id));
+  const ruleIds = new Set(p.source_rules.map(rule => rule.id));
+  const correctionIds = new Set(p.delivery_corrections.map(correction => correction.id));
+  for (const coverage of p.coverage) {
+    assert(sourceIds.has(coverage.source_id), 'unknown source: ' + coverage.id);
+    assert(coverage.evidence.length > 0, 'missing evidence: ' + coverage.id);
+    for (const target of coverage.lesson_ids) {
+      const sourceBody = target.startsWith(coverage.source_id + ':BODY:');
+      const marker = coverage.status === 'MARKER' && ruleIds.has(target);
+      assert(
+        lessonIds.has(target) || sourceBody || correctionIds.has(target) || marker,
+        'unresolved target: ' + coverage.id + '/' + target,
+      );
+    }
+    if (coverage.status === 'IMPLEMENTED_EQUIVALENT') {
+      assert(
+        coverage.lesson_ids.some(target => lessonIds.has(target)),
+        'implemented-equivalent coverage lacks an authored lesson: ' + coverage.id,
+      );
+    }
+    if (coverage.status === 'PARTIAL' || coverage.status === 'UNRESOLVED') {
+      assert(
+        p.open_items.some(item => item.affected_ids.includes(coverage.id)),
+        'incomplete coverage lacks an explicit open item: ' + coverage.id,
+      );
+    }
+    if (coverage.status === 'MARKER') {
+      assert(
+        coverage.lesson_ids.every(target => p.source_rules.some(rule =>
+          rule.id === target && rule.source_id === coverage.source_id &&
+          rule.op === 'classify_marker' && rule.kind === 'SCHEME_ONLY')),
+        'marker coverage must target a same-source SCHEME_ONLY rule: ' + coverage.id,
+      );
+    }
+  }
+});
+
+test('Previously incomplete composite topics now bind their complete same-term supplements', () => {
+  const p = packageSchema.parse(raw);
+  const adverbs = p.coverage.find(coverage => coverage.id === 'ENGLISH-T2-W07-TP01');
+  const story = p.coverage.find(coverage => coverage.id === 'ENGLISH-T3-W06-SO03');
+  assert(adverbs && story);
+  assert.equal(adverbs.status, 'IMPLEMENTED_EQUIVALENT');
+  assert(adverbs.lesson_ids.includes('SUP-SS1-ENGLISH-PRESENT-TENSE-T2-W07'));
+  assert(adverbs.lesson_ids.includes('SUP-SS1-ENGLISH-ADVERBS-FEATURES-T2-W07'));
+  assert.equal(story.status, 'IMPLEMENTED_EQUIVALENT');
+  assert(story.lesson_ids.includes('SUP-SS1-ENGLISH-STORY-WRITING-T3-W06'));
 });
