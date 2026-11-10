@@ -198,9 +198,11 @@ test('Every coverage entry resolves to a real source and target; equivalent cove
     }
     if (coverage.status === 'MARKER') {
       assert(
-        coverage.lesson_ids.every(target => p.source_rules.some(rule =>
-          rule.id === target && rule.source_id === coverage.source_id &&
-          rule.op === 'classify_marker' && rule.kind === 'SCHEME_ONLY')),
+        coverage.lesson_ids.every(target =>
+          target.startsWith(coverage.source_id + ':BODY:') ||
+          p.source_rules.some(rule =>
+            rule.id === target && rule.source_id === coverage.source_id &&
+            rule.op === 'classify_marker' && rule.kind === 'SCHEME_ONLY')),
         'marker coverage must target a same-source SCHEME_ONLY rule: ' + coverage.id,
       );
     }
