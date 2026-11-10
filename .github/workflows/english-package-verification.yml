@@ -62,7 +62,7 @@ jobs:
           import path from 'node:path';
           const file = path.join(process.env.RUNNER_TEMP, 'ss1-english-staged', 'SSS 1', '2nd Term SS1_', 'ENGLISH.docx');
           const { value } = await mammoth.extractRawText({ path: file });
-          const lines = value.split(/\\r?\\n/u);
+          const lines = value.split(/\r?\n/u);
           const hits = lines.map((line, index) => ({ line, index })).filter(x => /ANTONYM|WEEK 8/i.test(x.line));
           for (const hit of hits) {
             console.log('ENGLISH_SOURCE_LINE=' + JSON.stringify({ before: lines[hit.index - 1], line: hit.line, after: lines[hit.index + 1] }));
