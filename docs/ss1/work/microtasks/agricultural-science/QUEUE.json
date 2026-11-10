@@ -136,7 +136,8 @@
     "2026-11-10: Reconciled AG-LES-T1-W09-FARMSTEAD and AG-LES-T1-W09-FORESTRY queue status with the existing package draft records. Both draft lessons exist, but the required qualified subject-expert decision in AG-FACT-T1-W09-SCOPE remains absent; tasks are BLOCKED, not complete or approved. Updated the evidence brief to distinguish drafts from expert-cleared teaching.",
     "2026-11-10: Corrected ten package open-item descriptions (T1 Weeks 2-8 and 10; T2 Weeks 2-3 and 4-5) that incorrectly said the package contained no lessons. The actual blocker is the missing importer-confirmed identity of the original parsed source row; existing supplements are separate and do not identify or replace those original rows. Coverage statuses remain PARTIAL and delivery remains blocked until the authorised importer/plan evidence is available.",
     "2026-11-10: Added AG-LES-T2-W07-ROCK-CHARACTERISTICS. The new clarification lesson is mapped to COV-AG-T2-W07-ROCK-FACTUAL-ACCURACY. It addresses source overgeneralizations without editing the original DOCX; qualified content approval and importer-bound delivery correction remain open.",
-    "2026-11-10: Added AG-LES-T1-W08-TENURE-CLARIFICATION. The lesson separates land-tenure arrangements from modes of plot acquisition and uses NBS GHS-Panel Wave 4/5 evidence for family inheritance. Coverage is IMPLEMENTED_EQUIVALENT; expert approval and importer-bound delivery correction remain open."
+    "2026-11-10: Added AG-LES-T1-W08-TENURE-CLARIFICATION. The lesson separates land-tenure arrangements from modes of plot acquisition and uses NBS GHS-Panel Wave 4/5 evidence for family inheritance. Coverage is IMPLEMENTED_EQUIVALENT; expert approval and importer-bound delivery correction remain open.",
+    "2026-11-10: Added AG-LES-T3-W07-HORMONES. The independent semantic table and lesson cover the seven hormone entries after the sourced fact review. Hormone coverage is IMPLEMENTED_EQUIVALENT; expert approval, source-table rights/delivery disposition and importer row identity remain open."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -147,11 +148,11 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 31,
+    "LESSON": 32,
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 141,
+    "IMPLEMENTED_TESTING_DEFERRED": 142,
     "BLOCKED": 15
   },
   "items": [
@@ -5925,6 +5926,45 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Added SUP-SS1-AGRICULTURAL-SCIENCE-T1-W08-TENURE-CLARIFICATION to the subject package. body_sha256 9b6d3fe9a911342f6ea3ae64c34a06b286a8f4d861afbaaae818dec80e0c10ce. Five practice items have exact criterion totals (4, 6, 4, 4, 4). COV-AG-T1-W08-PROMINENT-TENURE is IMPLEMENTED_EQUIVALENT and maps to this lesson. The original DOCX is unchanged. Lesson content approval remains PENDING and verification DEFERRED; qualified review and importer-bound delivery correction remain outstanding.",
       "completion_condition": "A PENDING-approval lesson distinguishes legal land tenure from plot-acquisition modes, explains the sourced Land Use Act framework and survey context without overclaiming, has verified body_sha256, provenance and keyed practice with exact marking totals, and is mapped to the unresolved assessment coverage row. Original source bytes remain unchanged; no expert approval or delivery verification is fabricated."
+    },
+    {
+      "id": "AG-LES-T3-W07-HORMONES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Third Term Week Seven hormone definition blocks 825–827 and native source table block 828; factual review AG-FACT-T3-W07-HORMONES",
+      "objective": "Author an independently written, rights-cleared learner lesson and semantic table explaining the sources and roles of testosterone, oestrogens, progesterone, oxytocin, relaxin, FSH and LH. Correct the source's sex/site/function errors, explain FSH/LH roles in both sexes, distinguish oxytocin synthesis from posterior-pituitary release, and qualify species-dependent hormone sources. Do not reproduce the source table's wording or arrangement; include complete keyed practice.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W07.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W07-HORMONES.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W07-TBL-HORMONES.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T3-W07-HORMONES.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W07",
+        "AG-FACT-T3-W07-HORMONES"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added SUP-SS1-AGRICULTURAL-SCIENCE-T3-W07-HORMONES to the subject package. body_sha256 fd97dcc09473d5444a9792cd2cf82352a3fc9b2660b1826edc240e2d4173ecf6. Five practice items have exact criterion totals (6, 4, 4, 4, 4). COV-AG-T3-W07-HORMONES is IMPLEMENTED_EQUIVALENT and maps to this lesson. The independent semantic table is authored from Merck Veterinary Manual, FUNAAB and veterinary references; original source table wording/arrangement are not reproduced. Content approval remains PENDING, verification DEFERRED, and the original source table's delivery-row rights disposition remains open.",
+      "completion_condition": "A PENDING-approval independent lesson accurately explains all seven hormones, male/female FSH/LH roles and species-dependent sites/functions; includes keyed practice with exact marking totals, verified body hash and provenance; and is mapped to hormone coverage. The original source table is not reproduced; no expert approval or delivery verification is fabricated."
     }
   ],
   "review": {
