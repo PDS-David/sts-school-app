@@ -6898,6 +6898,58 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "AG-ART-T3-W07-EGG-OVIDUCT-01",
+      "lesson_id": "SUP-SS1-AGRICULTURAL-SCIENCE-T3-W07-EGG-FORMATION",
+      "path": "backend/src/db/ss1/assets/agricultural-science/t3-w07-poultry-oviduct.svg",
+      "sha256": "7be214d007222c078c4fc6045daa8e1d7579d58760ca8d57b47520474a05e1e7",
+      "bytes": 5234,
+      "media_type": "image/svg+xml",
+      "alt": "Original labelled schematic of a laying hen's ovary, oviduct, infundibulum, magnum, isthmus, uterus or shell gland, vagina, cloaca and vent; arrows show egg movement. Not to scale.",
+      "order": 1,
+      "source_locator": "Original replacement figure for Third Term Week 7 egg-formation teaching; authored for this package, not copied or traced from source image19.jpeg or image20.jpeg.",
+      "provenance": {
+        "title": "Original SVG: female reproductive tract of a laying hen",
+        "locator": "backend/src/db/ss1/assets/agricultural-science/t3-w07-poultry-oviduct.svg",
+        "url": null,
+        "rights": "Original vector schematic authored for this repository. No source image, textbook page, diagram, tracing or third-party artwork was copied.",
+        "reuse_status": "PERMITTED",
+        "attribution": "Original artwork created for PDS-David/sts-school-app by the assigned AI implementation agent."
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "AG-ART-T3-W07-EGG-CROSS-SECTION-01",
+      "lesson_id": "SUP-SS1-AGRICULTURAL-SCIENCE-T3-W07-EGG-FORMATION",
+      "path": "backend/src/db/ss1/assets/agricultural-science/t3-w07-fertile-egg-cross-section.svg",
+      "sha256": "6bfcac621530933704137dadbcb79d3bd2b8f90c9863c4d0c7ce6de85cd5b4d1",
+      "bytes": 3771,
+      "media_type": "image/svg+xml",
+      "alt": "Original simplified cross-section of a fertile hen's egg labelled shell, double shell membranes, air cell, albumen, yolk, germinal disc and chalaza. Not to scale.",
+      "order": 2,
+      "source_locator": "Original replacement figure for Third Term Week 7 egg anatomy context; authored for this package, not copied or traced from source image19.jpeg.",
+      "provenance": {
+        "title": "Original SVG: cross-section of a fertile hen's egg",
+        "locator": "backend/src/db/ss1/assets/agricultural-science/t3-w07-fertile-egg-cross-section.svg",
+        "url": null,
+        "rights": "Original vector schematic authored for this repository. No source image, photographed textbook page, diagram, tracing or third-party artwork was copied.",
+        "reuse_status": "PERMITTED",
+        "attribution": "Original artwork created for PDS-David/sts-school-app by the assigned AI implementation agent."
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "coverage": [
@@ -9988,8 +10040,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W07-REPRODUCTIVE-TRACT-RIGHTS",
       "kind": "CONTENT",
-      "detail": "Week Seven block 804 contains image19.jpeg (2,999,309 bytes; 2448×3264), a photographed textbook page headed “Structure of a Fertile Egg”, and image20.jpeg (45,714 bytes; 592×793), a labelled poultry female reproductive-tract diagram. Neither image has a visible author/publisher credit or reuse licence in the DOCX. image19 EXIF records a 2019 Infinix camera capture, not authorship or rights; image20 has no EXIF rights metadata. The image20 embedded description is only a local filename. Both source visuals contain useful teaching information, but permission is not established.",
-      "required_action": "Do not copy either original image or make a derivative from it for learner delivery unless written permission or a licence is obtained. If permission is unavailable, obtain separately sourced rights-cleared replacements: (1) a fertile-egg cross-section with legible labels for shell, double membrane, air space, yolk, albumen, germinal disc and chalaza, and (2) a poultry female reproductive-tract diagram with the ovary, oviduct, infundibulum, magnum, isthmus, uterus, vagina, cloaca and vent labelled. Preserve original source bytes privately and do not treat the camera metadata or local filename as a rights grant.",
+      "detail": "The original block-804 images image19.jpeg (photographed textbook page) and image20.jpeg (female reproductive-tract diagram) have no established reuse licence and remain excluded from reuse. Two original, independently authored replacement SVGs are now registered as assets for SUP-SS1-AGRICULTURAL-SCIENCE-T3-W07-EGG-FORMATION: AG-ART-T3-W07-EGG-OVIDUCT-01 (oviduct sequence and labels) and AG-ART-T3-W07-EGG-CROSS-SECTION-01 (egg anatomy labels). Neither is copied, traced or derived from the unlicensed source images. The replacement assets have content_approval PENDING and verification DEFERRED. The original rights gap is addressed only if the authorised importer/compiler and learner route deliver these replacements while excluding image19/image20.",
+      "required_action": "At the authorised importer/compiler stage, confirm that the two original SVG assets are delivered with the egg-formation lesson and that the unlicensed source images image19.jpeg/image20.jpeg are excluded from learner output. Obtain qualified subject review of labels and rendering; record approval/verification only from genuine evidence. Do not copy or derive from the original unlicensed images.",
       "affected_ids": [
         "AG-VIS-T3-W07-REPRODUCTIVE-TRACT",
         "SS1-SRC-458a07f7ea5a"
