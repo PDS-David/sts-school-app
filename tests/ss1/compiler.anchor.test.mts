@@ -157,3 +157,31 @@ test('English third-term multi-strand scheme markers use substring matching, not
     assert.equal(applyRules(input, [rule]), input.text);
   }
 });
+
+test('Literature term-two and term-three scheme anchors match the exact topics-cell text', () => {
+  const literature = loadPackages().find(item => item.subject_slug === 'literature');
+  assert(literature, 'Literature package is missing');
+  const expected = [
+    ' AFRICAN DRAMA : INRODUCTION TO HARVEST OF CORRUPTION',
+    'THE BLOOD OF A STRANGER',
+    'AFRICAN POETRY : PIANO AND DRUMS',
+    'THE DINING TABLE',
+    'THE ANVIL AND THE HAMMER',
+    'NON AFRICAN DRAMA : OTHELLO',
+    'SHE STOOPS TO CONQUER BY OLIVER GOLDSMITH',
+    'NON AFRICAN POETRY : PULLEY',
+    'THE SCHOOL BOY BY WILLIAM BLAKE',
+  ];
+  for (const source of ['SS1-SRC-1728961e97b5', 'SS1-SRC-2422e423a240']) {
+    for (let index = 0; index < expected.length; index++) {
+      const id = source + '-R' + String(index + 3).padStart(3, '0');
+      const rule = literature.source_rules.find(item => item.id === id);
+      assert(rule && rule.op === 'classify_marker');
+      assert.equal(rule.kind, 'SCHEME_ONLY');
+      assert.equal(rule.anchor, expected[index]);
+      assert.equal(rule.match_mode, undefined);
+      const input = { source_id: rule.source_id, sha256: rule.source_sha256, text: rule.anchor };
+      assert.equal(applyRules(input, [rule]), input.text);
+    }
+  }
+});
