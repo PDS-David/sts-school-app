@@ -142,7 +142,8 @@
     "2026-11-10: Added AG-FACT-T1-W01-FACT-CHECKS evidence note. The Latin etymology is resolved; the recreation/tourism claim is qualified; agro-based/agro-allied and crop-pathology explanations already exist in learner supplements. Expert review of the recreation wording and exact textbook page verification remain open.",
     "2026-11-10: Reconciled stale blocked-task implementation references with the live package. There are now 35 authored lessons, so the old statements that the package has zero lessons/no lessons are false. Correction-binding tasks remain blocked for the actual reason: no authorised importer/plan result has confirmed the original parsed row ID/body hash and valid replacement binding. Content approval remains pending because no qualified approval references exist.",
     "2026-11-10: Added original rights-cleared SVG replacements for the Week 7 poultry reproductive-tract and fertile-egg visuals; registered both against the egg-formation supplement. Original unlicensed source images remain excluded pending importer/learner-route verification.",
-    "2026-11-10: Added original male and female poultry reproductive-system SVGs as replacements for the unlicensed low-resolution combined source image21. Both are registered to the existing poultry reproductive-system lesson; original image exclusion and learner-route delivery remain to be verified."
+    "2026-11-10: Added original male and female poultry reproductive-system SVGs as replacements for the unlicensed low-resolution combined source image21. Both are registered to the existing poultry reproductive-system lesson; original image exclusion and learner-route delivery remain to be verified.",
+    "2026-11-10: Added AG-LES-T3-W02-HUMAN-ANIMAL-WATER-BIOGAS. Together with the existing farm-power operations lesson, all eight source categories are now covered by learner-facing package lessons. COV-AG-T3-W02-FARM-POWER is IMPLEMENTED_EQUIVALENT; importer mapping and several source-specific fact/rights issues remain open."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -153,11 +154,11 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 33,
+    "LESSON": 34,
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 144,
+    "IMPLEMENTED_TESTING_DEFERRED": 145,
     "BLOCKED": 15
   },
   "items": [
@@ -6043,6 +6044,44 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Added AG-FACT-T1-W01-FACT-CHECKS.md. Verified archive/member hashes and exact source block hashes. Etymology (Latin ager/agri + cultura) is resolved; game-reserve/horse-sport wording is qualified with Nigeria National Park Service/FAO evidence; agro-based/agro-allied and crop-pathology scope are already clarified by existing lessons. Textbook page references remain unverified; no source or delivery correction was changed.",
       "completion_condition": "Evidence note records exact source locators and reliable sources, distinguishes resolved facts from reviewer decisions and unavailable book references, and preserves source bytes. No unsupported answer key or correction binding is invented."
+    },
+    {
+      "id": "AG-LES-T3-W02-HUMAN-ANIMAL-WATER-BIOGAS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Third Term Week Two human power blocks 87–100; animal traction blocks 106–124; water power blocks 209–227; biogas blocks 233–248.",
+      "objective": "Complete the eight-source farm-power scheme by authoring a separately sourced lesson for human power, animal traction, hydropower and biogas. Explain advantages, limitations, farm operations, animal welfare, hydropower conversion and anaerobic digestion; distinguish hydropower from other agricultural uses of water. Preserve source bytes and include keyed practice with exact criterion totals.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W02.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T3-W02-FARM-POWER-OPERATIONS.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T3-W02-HUMAN-ANIMAL-WATER-BIOGAS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W02",
+        "AG-FACT-T3-W02-WATER-POWER"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-HUMAN-ANIMAL-WATER-BIOGAS; body_sha256 944bf6f5f0d5b0aebbfe5975384cc322e8aebe9b26e280ada79bdb9676294b24. Five practice items have exact criterion totals (6,6,6,6,8). Together with SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-FARM-POWER-OPERATIONS, all eight scheme sources are covered. COV-AG-T3-W02-FARM-POWER is IMPLEMENTED_EQUIVALENT and maps to both lessons. Hydropower is distinguished from other water-resource uses. Content approval remains PENDING and verification DEFERRED; importer row identity and original source typo/reclassification corrections remain open.",
+      "completion_condition": "A PENDING-approval lesson covers human, animal, water and biogas power with accurate operations, advantages, limitations, safety and keyed practice; it completes the eight-source scheme when combined with the existing mechanical/electrical/wind/solar lesson; hashes/provenance/mark totals are valid; original source bytes remain unchanged."
     }
   ],
   "review": {
