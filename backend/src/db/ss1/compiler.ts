@@ -106,10 +106,10 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
       if (firstBody && text.indexOf(firstBody) > 0) plan.dispositions.push({ id: `${s.source_id}:PREAMBLE`, status: 'PREAMBLE_REQUIRES_COVERAGE', detail: sha256(text.slice(0, text.indexOf(firstBody))) });
       if (!topics.length) plan.blockers.push(`NO_PARSED_LESSONS:${s.source_id}`);
       const markerRules = rules.filter(r => r.op === 'classify_marker');
-      const normalizeMarkerLine = (value: string) => value.replace(/[\\t \\u00a0]+/gu, ' ').trim();
+      const normalizeMarkerLine = (value: string) => value.replace(/[\t \u00a0]+/gu, ' ').trim();
       for (const rule of markerRules) {
         const markerAnchor = normalizeMarkerLine(rule.anchor);
-        const matches = topics.filter(t => t.body.split(/\\r?\\n/u).some(line => normalizeMarkerLine(line) === markerAnchor));
+        const matches = topics.filter(t => t.body.split(/\r?\n/u).some(line => normalizeMarkerLine(line) === markerAnchor));
         if (rule.op === 'classify_marker' && rule.kind === 'SCHEME_ONLY' && matches.length === 0) {
           plan.dispositions.push({ id: rule.id, status: 'SCHEME_ONLY', detail: rule.evidence.locator });
         } else must(matches.length === 1, `marker ${rule.id} must bind exactly one parsed row`);
