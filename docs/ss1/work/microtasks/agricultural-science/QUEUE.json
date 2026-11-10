@@ -130,9 +130,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 100,
-    "BLOCKED": 2,
-    "PENDING": 52
+    "IMPLEMENTED_TESTING_DEFERRED": 123,
+    "BLOCKED": 13,
+    "PENDING": 18
   },
   "items": [
     {
@@ -1691,8 +1691,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by AG-WK-T1-W01 (2026-11-06): block 77 lists the three aspects, blocks 93, 122 and 129-132 ask for them, and no block among the 933 defines any of them; COV-AG-T1-W01-CROP-SCIENCE-ASPECTS is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W01-COVERAGE is open. AG-WK-T1-W01 authors no definition.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented SUP-SS1-AGRICULTURAL-SCIENCE-T1-W01-CROP-ASPECTS in the subject package; body SHA-256 e6663ff30d107e7bc92967d630e8707fbb4ed38f449dab7d132042691342281b. Supplement defines agronomy, crop pathology and entomology; explicitly teaches crop pathology as plant/crop diseases only and veterinary pathology as animal diseases. Provenance: USDA NAL NALT, APS, ESA and ACVP; original prose, no copied text/assets. Three practice questions have complete answers and marking sums P1=6, P2=4, P3=2 (total 12). COV-AG-T1-W01-CROP-SCIENCE-ASPECTS updated to IMPLEMENTED_EQUIVALENT with lesson_id and evidence. Updated Week 1 coverage open item to retain only assessment-key and original-row-ID gaps; updated fact-check open item to resolve item4 and retain items1-3,5. Lesson content approval PENDING; verification DEFERRED. No source bytes, corrections or assets changed; tests remain deferred.",
       "completion_condition": "A lesson in agricultural-science.json teaches the three definitions, labels itself a Week 1 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-AG-T1-W01-CROP-SCIENCE-ASPECTS then cites it with evidence; no source byte, correction or shared file is edited."
     },
     {
@@ -1731,8 +1731,8 @@
         "AG-WK-T1-W01",
         "AG-LES-T1-W01-CROP-ASPECTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by AG-WK-T1-W01 (2026-11-06): no answer key or marking guide exists anywhere in the 1st Term document; COV-AG-T1-W01-ASSESSMENT-KEYS is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W01-COVERAGE is open. AG-WK-T1-W01 authors no answer.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented SUP-SS1-AGRICULTURAL-SCIENCE-T1-W01-KEYED-PRACTICE in subject package; body SHA-256 ed53ccb98ed28f6d66269dd2bf2d33fa4e6977ea244db56428f90fadc2a4cfce. Complete keyed practice for all Week 1 evaluation, general evaluation, weekend MCQ and theory items; marks/criterion sums P1=18, P2=20, P3=51, P4=5, P5=12, P6=20. Uses Week 1 taught blocks and crop-science supplement; Week 6 blocks 481-486 cited only for industry questions. Q4 MCQ uses Food as a reasoned sample choice; source does not state a ranking. Notes agro-allied/agro-based terminology inconsistency and source Latin spelling discrepancy; no source correction. COV-AG-T1-W01-ASSESSMENT-KEYS updated to IMPLEMENTED_EQUIVALENT. Week1 coverage open item now VERIFICATION only for original parsed row ID; fact-check item4 resolved, items1-3,5 remain. Lesson approval PENDING; verification DEFERRED. No source bytes, corrections or assets changed; tests deferred.",
       "completion_condition": "A lesson in agricultural-science.json provides complete answers and marking that sums exactly for the listed Week 1 items, labels itself a Week 1 keyed-practice supplement, has body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-AG-T1-W01-ASSESSMENT-KEYS then cites it with evidence; no answer is inferred outside taught text and no source byte, correction or shared file is edited."
     },
     {
@@ -3208,8 +3208,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W02 (2026-11-08): evaluation blocks 156-157 ask for ten simple tools and ten complex machines; source teaching names only three and four examples respectively. No list is invented in the indexing record.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented SUP-SS1-AGRICULTURAL-SCIENCE-T1-W02-TOOLS-MACHINES in subject package; revised body SHA-256 2210eed5c7a43f412ea27901281023468fc8021608d957cd70c137195245dd7e. Body lists 14 simple hand tools and ten complex powered farm machines, with tractor-operated implements separately identified (disc plough, disc harrow, seed-cum-fertilizer drill, ridger, post-hole digger and orchard sprayer). Practice marking sums P1=20, P2=20, P3=8, P4=6 (total 54). Provenance includes Ghana Ministry of Education Agricultural Science Teacher Manual (2024), TNAU Agritech machinery pages, FAO agricultural hand-tools guidance, Illinois Extension and original source. Added distinct assessment coverage row COV-AG-T1-W02-TOOLS-MACHINES (IMPLEMENTED_EQUIVALENT), explicitly not a new scheme objective; core COV-AG-T1-W02-TYPES unchanged. Updated assessment-gap open item to retain only AG-LES-T1-W02-AGRO-INDUSTRIES. Content approval PENDING; verification DEFERRED. No source bytes, corrections or assets changed; tests deferred.",
       "completion_condition": "A bounded supplement lesson teaches at least ten examples in each category, includes complete keyed practice with criterion-level marks, truthful provenance and PENDING content approval, and is linked to a distinct assessment-coverage record; no original source text is changed."
     },
     {
@@ -3245,8 +3245,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W02 (2026-11-08): cross-week questions at blocks 168 and 181 require five agro-based industries and raw materials; Week 1 block 103 supplies fewer distinct categories.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented SUP-SS1-AGRICULTURAL-SCIENCE-T1-W02-AGRO-INDUSTRIES; body SHA-256 afa0fb5fcec5db39bbff3fe27ccbb700802a836840d1a54e7040eaf3b0b69fa0. Cross-week revision supplement teaches ten agro-based industry/raw-material examples, distinguishes agro-based processing from agro-allied input-supply/support industries, and records the source's Week 6 terminology conflation. Uses Week 1 blocks103/105, Week2 blocks168/181, Week6 blocks481-486, Federal Ministry of Education Inspire lesson, FAO Nigeria agribusiness linkages and FAO agroprocessing/agro-industries definitions, Nigeria Embassy and Bank of Industry sources. Practice marking sums P1=12, P2=7, P3=6, P4=8 (total33). Added distinct assessment coverage COV-AG-T1-W02-AGRO-INDUSTRIES (IMPLEMENTED_EQUIVALENT); not a new scheme objective. Removed resolved AGRICULTURAL-SCIENCE-T1-W02-ASSESSMENT-GAPS open item. Content approval PENDING; verification DEFERRED. No source bytes, core scheme coverage, corrections or assets changed; tests deferred.",
       "completion_condition": "A bounded cross-week supplement teaches five distinct agro-based industries and their raw materials, distinguishes agro-based from agro-allied industries, includes complete keyed practice and criterion-level marks, truthful provenance and PENDING content approval; no original source text is changed."
     },
     {
@@ -3282,8 +3282,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W03 (2026-11-08): block 297 asks for plural roles but block 273 gives only teaching improved farming methods.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented SUP-SS1-AGRICULTURAL-SCIENCE-T1-W03-EXTENSION-ROLES; body SHA-256 404d26b6de085b0a4e985ae7a186084c682c28ee16bce847ffef409e35b3da6e. Supplement defines agricultural extension and teaches eight roles beyond source block273: teaching/training, demonstrations, research dissemination, advisory/problem-solving, two-way research-farmer linkage, market/service linkage, sustainability/climate resilience and digital information. Sources: NAERLS mandate, IAR Agricultural Extension Unit, FMAFS NEEP release (2025), IFPRI and FAO. Practice marking sums P1=2, P2=6, P3=4, P4=4 (total16). Updated COV-AG-T1-W03-EXTENSION-ROLES to IMPLEMENTED_EQUIVALENT; removed resolved open item. Core COV-AG-T1-W03-PROBLEMS unchanged. Content approval PENDING; verification DEFERRED. No source bytes, corrections or assets changed; tests deferred.",
       "completion_condition": "A clearly labelled source-backed supplement teaches extension roles with complete keyed practice and criterion-level marks, truthful provenance and PENDING content approval; the source body remains unchanged."
     },
     {
@@ -3319,8 +3319,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W03 (2026-11-08): block 309 asks for a weed-killing chemical but the source only lists herbicides as an input without defining the term.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented SUP-SS1-AGRICULTURAL-SCIENCE-T1-W03-INPUT-TERMINOLOGY; body SHA-256 b7db34071c27c5e1c8e1b22ec6c735a3e70d5f28f2a4b0ab28c98e8cf7e6e3e1. Defines pesticide, herbicide, weedicide and insecticide; distinguishes fungicide and rodenticide. Confirms block309 MCQ options A (herbicide) and C (weedicide) are synonymous and both must be accepted unless a future version removes one duplicate. Safe terminology only; no rates, doses, mixing, application, storage or handling instructions. Sources: FAO Pesticide Registration Toolkit, US EPA Types of Pesticide Ingredients, SGRRU Weed Management Practical Manual. Practice marking sums P1=8, P2=4, P3=4 (total16). Updated COV-AG-T1-W03-INPUT-TERMINOLOGY to IMPLEMENTED_EQUIVALENT; retained a VERIFICATION open item for authorised assessment handling of duplicate options. Content approval PENDING; verification DEFERRED. No source bytes, corrections or assets changed; tests deferred.",
       "completion_condition": "A safe, non-operational, source-backed terminology supplement includes complete keyed practice and criterion-level marks, truthful provenance and PENDING content approval; no doses or handling instructions are added."
     },
     {
@@ -3390,8 +3390,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W03 (2026-11-08): the original sentence at block 235 is syntactically incomplete; no replacement wording is assumed.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526, and block-235 SHA-256 ee1402a5ed7bfb9f2941dcfdcf12c2c57e6c4babcf4fa0e6ca1121ba6734bfbd. Verified corrected parallel wording in Lessonnotes.com SS1 First Term Agricultural Science Week 2 and Lessonnotes.ng SS1 Agric Science, plus internal corroboration in original blocks 432/500. Candidate replacement: 'Government should make processing machines such as millers and threshers available to farmers at a subsidised rate.' The source text is recoverable, not unresolved. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery correction can be bound without an original lesson and replacement lesson. Updated the existing package open item with exact gate; did not fabricate IDs or add a delivery_corrections record. Original source bytes unchanged.",
       "completion_condition": "A verified source permits a precise correction binding, or the record explains why no correction is supportable; original bytes remain unchanged and no missing phrase is invented."
     },
     {
@@ -3427,8 +3427,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W04: original list includes explicitly Ghanaian and Gambian examples and does not establish five Nigeria-specific examples.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented SUP-SS1-AGRICULTURAL-SCIENCE-T1-W04-NGO-EXAMPLES; body SHA-256 1db1c98588d9911fa5416e999d0a3760b4d38af5fcb55845d02bd922a4af1a92. Supplement adds five Nigeria-relevant organisations with verified agricultural roles: Sasakawa Africa Association (SAA-Nigeria), Heifer International Nigeria, TechnoServe Nigeria, Catholic Relief Services (CRS) Nigeria and Women Farmers Advancement Network (WOFAN). Evidence from official country pages and institutional records (SAA, Heifer, TechnoServe, CRS, NiMet, Mastercard Foundation). Original mixed-geography source list at blocks387-392 remains unchanged. Practice marking sums P1=10, P2=5, P3=4 (total19). Updated COV-AG-T1-W04-NGO-EXAMPLES to IMPLEMENTED_EQUIVALENT and removed the resolved NGO-examples open item. Core NGO roles coverage unchanged. Content approval PENDING; verification DEFERRED. No source bytes, corrections or assets changed; tests deferred.",
       "completion_condition": "A labelled supplement provides five authoritative Nigeria-relevant NGO examples, roles, complete keyed practice, criterion-level marks, truthful provenance and PENDING approval."
     },
     {
@@ -3464,8 +3464,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W04: block 420 asks for programme objectives but block 351 only lists programmes; block 413 asks the Farm Settlement Scheme's purpose without teaching it.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented SUP-SS1-AGRICULTURAL-SCIENCE-T1-W04-PROGRAMME-OBJECTIVES; body SHA-256 23ae40e669a925d5d17a441bf813d6d5c16f1cdaae9eb9b80dc05b29e2458b7d. Five named Nigerian programmes/schemes with two verified objectives each: historical Farm Settlement Scheme, ADPs, RBDAs, NAIS/NAIC Agricultural Insurance Scheme, and ACGSF. Sources: 1965 Western Region Ministry of Agriculture archival article, 1971 Olatunbosun appraisal, FCT ADP, Lower Benue RBDA, NAIC Act and CBN ACGSF. Correct answer to source block413 is B Farm Settlement Scheme. Explicitly distinguishes programme-specific objectives from broad policy goals. Practice marking sums P1=15, P2=3, P3=4 (total22). Updated COV-AG-T1-W04-PROGRAMME-OBJECTIVES to IMPLEMENTED_EQUIVALENT and removed resolved open item. Content approval PENDING; verification DEFERRED. No source bytes, corrections or assets changed; tests deferred.",
       "completion_condition": "A source-backed supplement provides five or more programmes and two verified objectives each, resolves the Farm Settlement item, and includes keyed practice and truthful provenance."
     },
     {
@@ -3569,8 +3569,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W05: the source does not supply the full material requested by this assessment.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented SUP-SS1-AGRICULTURAL-SCIENCE-T1-W05-TECHNOLOGY-DEFINITION; body SHA-256 abb01c06ab15f79adeee78d2e2646e0aa880a8fff35766ad921921d98c27791d. Defines technology and agricultural technology, distinguishes science from technology, and explains material vs knowledge-based technologies with examples. Sources: FAO Chapter 19 (Agricultural technology: Some basic concepts) and UNESCO Science and Technology. Practice marking sums P1=4, P2=4, P3=6, P4=8 (total22). Updated COV-AG-T1-W05-TECHNOLOGY-DEFINITION to IMPLEMENTED_EQUIVALENT and removed its open item. Core COV-AG-T1-W05-SCIENCE-TECH remains PARTIAL for separate delivery-mapping limitation. Content approval PENDING; verification DEFERRED. No source bytes, corrections or assets changed; tests deferred.",
       "completion_condition": "A clearly labelled source-backed supplement teaches the requested material, includes complete keyed practice and criterion-level marks, truthful provenance and PENDING approval; original source bytes remain unchanged."
     },
     {
@@ -3606,8 +3606,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W05: the source does not supply the full material requested by this assessment.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented SUP-SS1-AGRICULTURAL-SCIENCE-T1-W05-FARM-MANAGEMENT; body SHA-256 b17bd2874060d50f41b4ec8ff3cd5595545934c4369a2b07269de1a4ccfcd401. Six systems taught: crop rotation, mixed farming, rotational grazing, intercropping, agroforestry and conservation agriculture. Bush fallowing defined as a fallow/shifting-cultivation system and distinguished from crop rotation and rotational grazing. Sources: USDA NRCS crop rotation and rotational grazing, FAO mixed crop-livestock, agroforestry, conservation agriculture and land-cover references. Practice marking sums P1=6, P2=12, P3=4, P4=5 (total27). Updated COV-AG-T1-W05-FARM-MANAGEMENT to IMPLEMENTED_EQUIVALENT and removed its open item. Content approval PENDING; verification DEFERRED. No source bytes, corrections or assets changed; tests deferred.",
       "completion_condition": "A clearly labelled source-backed supplement teaches the requested material, includes complete keyed practice and criterion-level marks, truthful provenance and PENDING approval; original source bytes remain unchanged."
     },
     {
@@ -3643,8 +3643,8 @@
         "AG-SRC-T1",
         "AG-WK-T1-W05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T1-W05: the source does not supply the full material requested by this assessment.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented SUP-SS1-AGRICULTURAL-SCIENCE-T1-W05-STORAGE-FACILITIES; body SHA-256 5a887a729224f008f14bdc9caddbd6084ef20ad8d06356752d080e59e6a780a8. Nine modern storage examples: grain/strategic silos, community warehouses, cold rooms, improved ventilated cribs, diffuse-light stores, improved yam barns, cassava warehouses, hermetic silos/drums and evaporative-cooling stores. Distinguishes storage from processing equipment: millers, shellers and dryers. Sources: Nigerian Stored Products Research Institute post-harvest technologies and FMINO 2025 Postharvest Systems Transformation Program. Practice marking sums P1=10, P2=6, P3=4 (total20). Updated COV-AG-T1-W05-STORAGE-FACILITIES to IMPLEMENTED_EQUIVALENT; retained a VERIFICATION open item for the original block432 misclassification of millers/shellers. Content approval PENDING; verification DEFERRED. No source bytes, corrections or assets changed; tests deferred.",
       "completion_condition": "A clearly labelled source-backed supplement teaches the requested material, includes complete keyed practice and criterion-level marks, truthful provenance and PENDING approval; original source bytes remain unchanged."
     },
     {
@@ -4174,8 +4174,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W02-03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W02-03: repeated topic wording and fertilizer-manufacture claim need evidence-based correction review.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042. Recomputed block hashes: 39 c5309b3fd481bbed308bc62b30194078783fe4fa18b96cb75bb6829518bbdc98; 180 e2adf9c1bb9560701f9850324e18755cdc4271e4aaf068d7029a9085dcc30983; 254 a18f28553ddea84238affe7f3e7d78edcda5b25da97e43750c04146fc45695ba; heading 135 a9bf905d1a60432c16024a5ffcfb46600da1712f58c23aadf4ce1868a61bf975; MCQ 255 f810910012f99800692b11c3fa194f4b9f243cda7f31deb4a5c7f8fc335f7896. Verified 'post-posting' -> 'post-planting' and 'plating space' -> 'planting space' from same-source context. Verified inorganic fertilizers are industrially manufactured, not usually prepared on-farm, against FEPSAN, FUNAAB Soil Fertility and Plant Nutrition lecture notes and FAO WCA 2020. Recommended fertilizer correction: 'Inorganic (chemical or mineral) fertilizers are manufactured industrially from inorganic materials. They may be supplied in liquid or solid forms such as powders, granules, pellets or crystals.' The source corrections are supported. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery correction can be bound yet. Updated existing package open item; did not fabricate IDs or add delivery_corrections. Original source bytes unchanged.",
       "completion_condition": "A correction-binding record cites each changed span and source; only verified corrections are proposed; original source bytes remain unchanged."
     },
     {
@@ -4282,8 +4282,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W04-05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W04-05: tables contain anomalous strings and joined names; no correction is assumed.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Independently re-extracted source member and verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042, and table-block hashes 286 e85f47c0bf2bab22cd9534ddf5368d4d76f9ccbcf75c9930c4ca8b5f47b4394e; 298 87186ec68d7711e5caba1564d1775c94d59235baff5757eda7bcae6d97cb0cf0; 309 b35aa8b43354f8934274af4ad2fadcafd68aceb8c9de6e6ce890f60e1de98575. Word XML shows superscript zero is degree marker; normalized display can show 26°C–30°C and 20°C without changing any numeric figure. Verified 'per boiling'→'parboiling' using FAO and NAERLS; '2/3 0f'→'2/3 of'; '30cmwithin row'→'30 cm within row'; joined botanical names and malformed yam list using Kew POWO. 'Dried loamy soil' has no direct parallel evidence; cassava sweet/bitter name assignment conflicts with NOU/University of Melbourne and Kew taxonomy; both left unresolved. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery corrections can be bound. Updated existing package open item; no delivery_corrections records or source changes. All numbers/ranges/units/dates/seed rates/spacing/maturity values preserved.",
       "completion_condition": "A correction-binding record cites verified evidence for each proposed correction; original source bytes and figures remain unchanged."
     },
     {
@@ -4390,8 +4390,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W06"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W06: source headings may conflate organism categories with modes of nutrition.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042. Recomputed source block hashes 366 a3df9be988ad1f9219daddccaa057acff69739d033323b3f3b1cc1563dae63f3; 368 569b77efdc680a8ef604bacf699fae0da797cc83593aebda0ac7b55279bf03c8; 370 09b29fe0eda9de5f2a8e864b6dd10d418cd3ad0797bbf64f1ba5ff444ca6dfe8. OpenStax Biology, Georgia Tech Organismal Biology, USDA NAL Thesaurus and NLM MeSH confirm that autotrophs/heterotrophs are organisms, while autotrophy/heterotrophy are nutritional modes. Source definitions describe organism groups, so headings should be 'Autotrophs' and 'Heterotrophs'. Also flagged block 368's conflation of photosynthesis (light energy) and chemosynthesis (chemical energy). BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery corrections can be bound. Updated existing package open item; no delivery_corrections or source changes.",
       "completion_condition": "A sourced correction-binding record supports each proposed term and preserves original wording."
     },
     {
@@ -4460,8 +4460,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W07: block 458's 'peak' term appears anomalous; correction awaits evidence.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed source member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 and block-458 SHA-256 a2b6fc4e91f20afe96d2b2439ddb7904a271c5deb876ebbd3409307496946681. USGS Coal: A Complex Natural Resource and USGS coal-rank guidance establish peat as the precursor to lignite/coal; Cambridge's carbonaceous sedimentary rocks chapter and Geoscience Handbook list peat among carbonaceous organic deposits. 'Peak' is not a geological example here; recommended delivery correction is 'peat'. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery correction can be bound yet. Updated existing package open item; no delivery_corrections or source changes.",
       "completion_condition": "A correction-binding record cites verified evidence and preserves the source wording."
     },
     {
@@ -4531,8 +4531,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W08"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W08: evaluation wording says rock formation although the taught topic is rock weathering.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 and block hashes: scheme 12 74b333be9d324f105edec4322c750ad1245abe57d9f5480257ef73fda17c9bb3; topic 518 9c94d3b2a51b6b8b34c75e8dc64989735a65279246d40964f74ca27aa122e6ba; teaching heading 527 26ac0721ccf0bccf628473e0ce6291cd0524c3d87db452748a5702b22177239c; assessment blocks 568 and 573 both 76a611669bbbdbecf253d84c312d7b03e74e36d27a18907ccc5c07247e97e3bd. The source's Week Eight scheme/topic/teaching content establishes that the two questions should say 'processes of rock weathering', not 'rock formation'; Week Seven separately teaches rock formation and types. Parallel Ecolebooks/Edudelight copies reproduce the carry-over; a Scribd copy has one weathering variant but repeats the error in general evaluation. Recommended delivery correction at both blocks is 'What are the processes of rock weathering?' BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery correction can be bound yet. Updated existing package open item; no delivery_corrections or source changes.",
       "completion_condition": "A correction-binding record verifies the intended wording and cites source evidence; original source remains unchanged."
     },
     {
@@ -4568,8 +4568,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W09: wording at blocks 627/634 appears inconsistent with the soil-formation topic.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed source member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 and block hashes 627 3d91f52ce2449d5253343e08e4ceb31844f8236355b3e3bd9dad1e3e2f913e21; 634 6965631ca49413d3db774a21c7da54b4e3b57f6663cb4a91aade6a746d73cfa1; headings/examples 626,633,635,638,639 also verified. Topography context (flat land vs slope, bottom of slope) plus soil-erosion references support 'sloppy area'→'sloping area'. The biotic-factors heading and following examples (mixing soil, root weathering, humus formation), plus FAO/NOU/University of Minnesota soil science sources, support 'rock formation'→'soil formation'. Parallel Ecolebooks/Lessonnotes.ng copies reproduce the same errors and are not independent correction authority. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery corrections can be bound yet. Updated existing package open item; no delivery_corrections or source changes.",
       "completion_condition": "A correction-binding record cites verified evidence for each correction and preserves original wording."
     },
     {
@@ -4642,8 +4642,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W01: MCQ 67 prints 'Hand Towel' while list contains 'Hand trowel'.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a and block hashes 36 28bfedef98dd4d82e8b4f6500a7edc48557034eae883aac5b663e5e0c054736f; 67 4ba8749f05ebe9a294043f9dd791b2f18140e3bec811d9ebf19c4387388a9745. The source's tool list at block 36 contains 'Hand trowel'; MCQ block 67 asks for the tool used for transplanting seedlings and says 'Hand Towel'. University of Minnesota and University of Maryland Extension confirm hand trowels are used for transplanting. Recommended correction at block 67 is 'C. Hand Trowel'. Parallel copies reproduce the typo; block 66 'Hand towel' remains an intentional distractor and is not changed. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery correction can be bound yet. Updated existing package open item; no delivery_corrections or source changes.",
       "completion_condition": "Correction-binding record cites approved source and proposes only a verified delivery correction."
     },
     {
@@ -4783,8 +4783,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W02: source definition of hydropower conflicts with some listed 'uses'.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed source member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a and block hashes 210 bc0b3a4f75f1ea335842fd1136a761fa1eadb89f6cbde6e943c17831b7001d53; 216 a9636ba676632ee2214db71281ef7640902fb7b65746b8a4b4dda9c0030e6dd4; 217 79d838dcd1280648f23c822852f38a9416875c21bd6a8130500d735b6dafe738; 218 2a8d421a528bc483078a11c9438ac34a761ce328efa782436d5048030ab6a46b; 219 b455245adadf8f72ba6dd5015d3e2452e70685b263919eee420011f2177b23b8; 220 1181e494f656ccc4fe3b053f246a334bce596b0026491b764acd85ab711e79b8. EIA/DOE define hydropower as moving-water energy captured by turbines/generators; block 210 definition and block 216 match. Blocks 217–220 describe waterway transport, water for produce processing, crop germination/growth and photosynthesis, not hydropower. Recommended delivery reclassification preserves wording and moves 217–220 to 'Other uses/importance of water in agriculture'. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery correction/reclassification can be bound yet. Updated existing package open item; no delivery_corrections or source changes.",
       "completion_condition": "A sourced correction-binding record precisely distinguishes hydropower from water as a resource and preserves original source wording."
     },
     {
@@ -4819,8 +4819,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W02: 'bullyolked' and 'accusation' appear to be text errors.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed source member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a and block hashes 107 bd33c0597ced9c82966cb08843c45a934b49f665708cc7d9d1e16d8e1627b883; 138 81e76adb4141613aebccd848329d131f52d39d72a9a794b38096ea628369b9fe. Lessonnotes.ng Week Two SS1 Agricultural Science parallel note uses the exact intended phrases 'Pair of working bullocks yoked together' and 'High capital investment is involved in the acquisition of machinery'. Recommended corrections: block 107 'bullyolked'→'bullocks yoked'; block 138 'accusation of machineries'→'acquisition of machinery'. Other copies reproduce the corrupted forms and were not used as correction evidence. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery corrections can be bound yet. Updated existing package open item AGRICULTURAL-SCIENCE-T3-W02-TEXT; no delivery_corrections or source changes.",
       "completion_condition": "A correction-binding record cites verified source evidence and preserves original wording."
     },
     {
@@ -5205,8 +5205,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W06"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W06: oxytocin, milk-composition, colostrum and poultry terminology require independent verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09 after confirming branch was fast-forwarded to current master f51616309aafe542edd89e41072b70c3b92b995e. Reused the previously verified archive/member SHA-256 and Week Six block locators from AG-WK-T3-W06. Reviewed claims against Merck Veterinary Manual (major hormones; young dairy calf colostrum), peer-reviewed domestic-animal oxytocin and bovine-colostrum immune-component reviews, FAO milk composition, EFSA milk-composition assessment, Mississippi State University Extension, Cornell College of Veterinary Medicine, CBSE Animal Nutrition and Reproduction handbook, and Virginia Tech poultry hatching material. Findings: oxytocin mediates milk ejection, not milk synthesis (prolactin is the production hormone); goat milk is not universally best/richest and composition varies, with FAO describing it as broadly similar to cow milk; colostrum provides antibodies/immunoglobulins and innate immune components, so 'antibiotic' is not a synonym for antibodies; parturition is uterine expulsion of fetus in mammals, whereas poultry chicks hatch from eggs. No veterinary doses, injection instructions, treatment protocols, source bytes, package content, correction bindings or assets changed. Tests/importer/typecheck/DB/rendering/CI not run; testing deferred.",
       "completion_condition": "A sourced note verifies each claim and recommends safe educational wording without treatment instructions."
     },
     {
@@ -5277,8 +5277,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W07: table 828's sex/site/function assignments require authoritative physiology review.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09 from master f51616309aafe542edd89e41072b70c3b92b995e. Reused the previously verified archive/member SHA-256 and block-828 table transcription from AG-INV-T3/AG-WK-T3-W07/AG-VIS-T3-W07-TBL-HORMONES. Reviewed all seven rows against the peer-reviewed Merck Veterinary Manual (2025), FUNAAB animal-reproduction lecture, University of Mosul veterinary lecture (2024), and peer-reviewed relaxin/oxytocin literature. Findings: testosterone/testicular association is sound but spermatogenesis also depends on FSH; oestrogen does not itself produce ova through oogenesis; progesterone prepares/maintains endometrium and pregnancy with species-dependent CL/placental sources; oxytocin is synthesized in hypothalamus and released from posterior pituitary, with established parturition/milk-ejection roles but no established general sperm-transport function; relaxin source is species-dependent (not pituitary) and pelvic-ligament softening is supported; FSH and LH act in both sexes, including Sertoli-cell/spermatogenesis and Leydig-cell/testosterone roles in males. Added AG-FACT-T3-W07-HORMONES.md with row-by-row findings, precise recommended wording and opened references. No source, package, correction binding, asset or approval changed. Tests/importer/typecheck/DB/rendering/CI not run; testing deferred; hormone-table reuse rights remain blocked.",
       "completion_condition": "A sourced note verifies each table row and recommends exact corrections where needed."
     },
     {
@@ -5311,8 +5311,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W07: egg formation stage timings in block 795 require independent verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09 after verifying branch was current with master (base f51616309aafe542edd89e41072b70c3b92b995e; ahead4/behind0). Reused the verified archive/member SHA-256 and Week Seven block/figure locators from AG-WK-T3-W07. Compared the source's hen egg-formation stages against University of Kentucky Extension/Poultry Extension, Penn State Extension, the Queensland Department of Primary Industries & Fisheries/DSM egg-quality handbook, Washington State University 4-H poultry leader guide, and a peer-reviewed poultry-production review; checked species variation against a guinea-fowl study. Confirmed sequence/functions; infundibulum ~15–17 min, magnum ~3 h, isthmus ~75 min, shell gland typically ~20–21 h, vagina brief (seconds to <1 min); ~25–26 h total is valid as an approximate laying-hen cycle, not a fixed all-poultry value. Recommended qualifying shell-gland duration (source lower bound 18 h not standard) and shortening the 1–15 min vagina range. No source bytes, figures, lesson content, correction binding, assets or shared code changed. Tests/importer/typecheck/DB/rendering/CI not run; testing deferred.",
       "completion_condition": "A sourced note verifies the sequence and approximate timing ranges and recommends qualified wording."
     },
     {
@@ -5383,8 +5383,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W08"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W08: several climate and regional-production claims need authoritative verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09 after confirming branch was current with master (base f51616309aafe542edd89e41072b70c3b92b995e; ahead6/behind0). Reused the verified archive/member SHA-256 and Week Eight locators from AG-WK-T3-W08. Reviewed the rainfall/tsetse, wind/TB, milk spoilage, dairy and poultry production, Nigeria-wide climate-factor ranking and rainforest cattle-rationale claims against FAO tsetse ecology/West Africa livestock materials, FAO milk preservation guidance, FAO livestock-climate review, Federal Ministry of Agriculture and Rural Development Nigeria 2022 trypanosomosis strategy, Merck Veterinary Manual TB overview, Nigerian studies on cattle climatic performance/rainfall/livestock output, a 2024 Nigerian climate-change review, dairy-cow heat-stress meta-analysis and poultry heat-stress literature. Findings: rainfall supports tsetse habitat indirectly via vegetation/humidity but does not alone cause tsetse; TB is transmitted mainly by inhaling infectious droplets/aerosols, with air movement affecting dispersion but wind not a standalone cause; no fixed 37°C milk-spoilage threshold exists (15–40°C is an unfavourable warm range and prompt cooling near 4°C is recommended); heat stress can reduce dairy feed intake/milk yield and layer feed intake/egg production/egg quality; no universal national 'greatest climate factor' can be ranked without specifying species/outcome/region (rainfall is important for forage/water, temperature+humidity for direct heat stress); tsetse/trypanosomosis is a major historical constraint in humid forest areas but cattle production is not impossible. No veterinary drug instructions, source bytes, lesson/package content, corrections or assets changed. Tests/importer/typecheck/DB/rendering/CI not run; testing deferred.",
       "completion_condition": "A sourced note verifies each claim and identifies defensible answers or wording changes."
     },
     {
@@ -5422,8 +5422,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W09: source chemical/veterinary statements and safety gaps are identified at blocks 1064, 1080-1093; no dose or PPE instructions are supplied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09 after confirming branch was fast-forwarded to current master f51616309aafe542edd89e41072b70c3b92b995e (ahead8/behind0). Reused verified archive/member SHA-256 and Week Nine block locators from AG-INV-T3/AG-WK-T3-W09. Reviewed against Merck Veterinary Manual (pig iron nutrition/toxicosis, lice, mange, gastrointestinal helminths, swine erysipelas), Kansas State University Swine Nutrition Guide, WOAH ASF guidance, FAO ASF contingency plans, ATSDR/CDC sodium-hydroxide hazard information, and a 2023 veterinary study of piglet hypoglycaemia glucose-administration routes. Findings: 'dextian' is a misspelling of iron dextran; early piglet iron supplementation is common but a repeat schedule is not universal and excess iron can cause toxicosis; external lice/mange require pig-approved ectoparasiticides/acaricides while internal helminths require anthelmintics (the exact block-1082 species list was not reproduced in the inventory and is not claimed to have been individually validated); ASF spreads by infected pigs, contaminated feed/materials/fomites and, where present, Ornithodoros soft ticks; 10% caustic soda is not supported as a universal instruction and NaOH is highly corrosive; the two-month period in older FAO guidance relates to disease-free resumption of trade, not a universal pen-vacancy rule; penicillin is a commonly recommended veterinary treatment for swine erysipelas; glucose may be used for piglet hypoglycaemia but injection is clinical and route-specific. No doses, injection routes, chemical concentrations for use, mixing/application instructions, contact times or PPE instructions supplied. No source bytes, package lesson content, corrections or assets changed. Tests/importer/typecheck/DB/rendering/CI not run; testing deferred.",
       "completion_condition": "A factual/safety review cites authoritative veterinary/public-health evidence and gives a safe learner-facing disposition while preserving source bytes and without inventing doses or handling procedures."
     },
     {
@@ -5461,8 +5461,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W09: MCQ term 'sty' absent from the body; only one intensive-system disadvantage is stated; 'Fatheners' differs from later 'fatteners'.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09 after confirming branch was current with master f51616309aafe542edd89e41072b70c3b92b995e (ahead10/behind0). Reused verified source archive/member identity and Week Nine locators from AG-INV-T3/AG-WK-T3-W09. Cambridge English Dictionary confirms pigsty/sty is an enclosed area for pigs; 'pen' is also a valid generic term, so the weekend MCQ answer is factually correct but the term is absent from the lesson body. FUNAAB Pig Production Training Manual supports intensified disease problems and greater disease-control demands as a distinct second disadvantage of intensive confinement; ACIAR pig-production report supports high cost and high management-skill requirements. FAO AGROVOC and KTBL livestock glossary confirm 'fatteners'/'fattener' as the correct livestock term; the same source uses 'fatteners' at blocks 1042 and 1068. Decision: add a short assessment supplement for sty vocabulary and the qualified disease-control disadvantage; make a delivery-only spelling correction for 'Fatheners' to 'fatteners'. No source bytes or lesson content changed.",
       "completion_condition": "A decision-backed scope review identifies verified terminology and the supported intensive-system limitation(s), then states whether an assessment supplement or delivery-only correction is justified. No answer is invented."
     },
     {
@@ -5541,8 +5541,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W10"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W10: caustic soda, insecticides, ivermectin/ivomec and an isonicotinic-hydrazide-like drug/dose are stated at blocks 1203, 1210-1212 and 1221-1222.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09 after confirming branch was current with master f51616309aafe542edd89e41072b70c3b92b995e (ahead12/behind0). Reused verified source archive/member identity and Week Ten block locators from AG-INV-T3/AG-WK-T3-W10. Reviewed caustic-paste disbudding against Cornell FARM v4.0 and Ontario government guidance; cattle mange/ivermectin against Merck Veterinary Manual; Ivomec identity against manufacturer and official DailyMed label; HCH/lindane status against Stockholm Convention; bovine TB control against USDA APHIS and WOAH 2024 guidance. Findings: caustic paste can be used for disbudding very young calves in some systems, but source's generic caustic-soda instruction is unsafe and disbudding differs from dehorning; 'invermectin' is misspelled ivermectin and Ivomec is its brand, not a separate drug; ivermectin applicability depends on mite species, formulation and local label; 'diazuntol' not verified, 'malathione' likely malathion, benzyl benzoate lacks verified current cattle-product context, BHC/HCH/lindane is obsolete/POP-listed; 'isonicotinichydracide' likely means isoniazid, but bovine TB is not routinely treated in livestock under official control guidance, so source's regimen must not be endorsed. No doses, schedules, concentrations for use, mixing/application/injection procedures, contact times or PPE supplied. No source bytes, package content, corrections or assets changed. Tests/importer/typecheck/DB/rendering/CI not run; testing deferred.",
       "completion_condition": "A factual/safety review cites authoritative veterinary/public-health evidence and gives a safe learner-facing disposition while preserving source bytes and without inventing procedures."
     },
     {
@@ -5580,8 +5580,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W10"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W10: tattooing is assessed but not defined; 'Rational grazing'/'rotational grazing' and 'pig houses' in the cattle mange section require verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09 after confirming branch was current with master f51616309aafe542edd89e41072b70c3b92b995e (ahead14/behind0). Reused verified source archive/member identity and Week Ten locators from AG-INV-T3/AG-WK-T3-W10. Mississippi State University Extension confirms cattle ear tattooing is a permanent identification method used for registration/records; FUNAAB APH509 Beef Animal Production lecture notes explicitly define rational grazing as an elaboration of rotational grazing associated with André Voisin, while University of Maine and UGA/Clemson Extension define rotational/management-intensive grazing as paddock rotation with rest/recovery and list rational grazing among related terms. Merck Veterinary Manual confirms cattle mange mites can spread through direct contact and contaminated environments/housing. Decisions: add a concise tattooing definition to the dependent supplement; keep 'rational grazing' (not a typo) and teach both rational and rotational grazing with their relationship; correct 'pig houses' to 'cattle housing' in the delivery layer only. No source bytes or lesson bodies changed.",
       "completion_condition": "A sourced decision is recorded for each issue, distinguishing factual correction from supplement content; original bytes remain unchanged."
     },
     {
@@ -5621,8 +5621,8 @@
         "AG-WK-T3-W10",
         "AG-FACT-T3-W10-CATTLE-TERMS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W10: two likely source wording issues require verified decision before any delivery replacement.",
+      "status": "BLOCKED",
+      "implementation_reference": "Investigated 2026-11-09. Recomputed source member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a and block-1210 SHA-256 b70c0f1cbd0f4a64c2b7e8f4f19f7cdbbb4c1b0db3cce3b7e6b4d02a3a9e6a01. Cattle-mange context and Merck Veterinary Manual support delivery correction 'pig houses'→'cattle housing'. The related 'rational grazing' term at block1188 is valid, not a typo; keep it and address the Week Ten rotational-grazing assessment mismatch in a lesson supplement. BLOCKED only because package has zero lessons and correctionSchema requires source_lesson_id, body_sha256 and replacement_id; no valid delivery correction can be bound yet. Added package open item AGRICULTURAL-SCIENCE-T3-W10-CATTLE-TERMS; no delivery_corrections or source changes.",
       "completion_condition": "Only corrections supported by a recorded fact decision are bound, with exact source locators, replacement text and provenance; source bytes remain unchanged."
     },
     {
@@ -5703,8 +5703,8 @@
         "AG-SRC-T3",
         "AG-VIS-T3-W02-ELECTRIC-WATER"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-VIS-T3-W02-ELECTRIC-WATER after XML inspection: WDP layers are not attached to block 211; hdphoto1.wdp is at block 487 with image10/image11, and hdphoto2.wdp is at block 494 with image13.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Reverified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and Third Term member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a against SOURCE_ASSIGNMENTS.csv. Inspected word/document.xml direct-body blocks and word/_rels/document.xml.rels. Block 211 C14N SHA-256 eb7fa7f9efaa71470249fb6c5e4b8f6f95517db2a656f26f0bfdc277bf3e8027 contains only rId11→image5.png and rId12→image6.png, no a14:imgLayer. Block 487 C14N SHA-256 83769c0683fdbafe2907881e8038e6317812f2d873a017da30b66f6459749081 contains image10.jpeg/image11.jpeg and a14:imgLayer rId21→hdphoto1.wdp. Block 494 C14N SHA-256 bc1c82e7330ecd257d1353d95e0d7f3654ba4aa4e9a61ce3c77a6cf42c403790 contains image13.jpeg and a14:imgLayer rId25→hdphoto2.wdp. Rehashed both WDP media files. Updated only the WDP associations in AG-INV-T3.md; no independent WDP visual rows or package assets created. Existing AG-VIS note already had the correct mapping and was not changed. Tests remain deferred.",
       "completion_condition": "Re-verify archive/member hashes and XML relationships; correct only the WDP associations in AG-INV-T3.md with exact body-block locators and hashes. Do not alter source bytes or create independent visual records for WDP layers."
     },
     {
@@ -5744,8 +5744,8 @@
         "AG-SRC-T3",
         "AG-VIS-T3-W04-TBL-DIGESTION"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-VIS-T3-W04-TBL-DIGESTION after direct XML extraction: recorded table hash does not match the documented concatenated-cell-text method; recomputed value is 0dcf9de2367de925c039cd05c16545e6b1bc036861c56d2220bbe8ad34d33b86.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Reverified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and Third Term member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Re-extracted native Word table at direct-body block 431; confirmed 7 rows × 3 columns, 21 cells and 452 concatenated characters. Canonical method: iterate w:tr then w:tc in document order; concatenate each cell's w:t run text; concatenate all 21 cell strings with no separators or normalization; UTF-8 encode; SHA-256. Recomputed hash 0dcf9de2367de925c039cd05c16545e6b1bc036861c56d2220bbe8ad34d33b86, replacing the non-reproducible 0ca145... value. Cell text, blank cells, order and table structure unchanged. Updated only AG-INV-T3.md table row; no package or source changes. Testing remains deferred.",
       "completion_condition": "Independently reproduce the canonical table hash from the verified source DOCX, correct AG-INV-T3.md with exact method and hash, and confirm table dimensions/content remain unchanged."
     },
     {
@@ -5785,8 +5785,8 @@
         "AG-SRC-T3",
         "AG-VIS-T3-W05-RESPIRATION-EQUATIONS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-VIS-T3-W05-RESPIRATION-EQUATIONS after XML inspection: actual equation blocks are 532, 537, 540; old locator 530, 535, 538 refers to heading/prose/label.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Reverified archive/member hashes and direct-body blocks 530–541. Correct equation paragraphs are 532 (text SHA-256 afcc926b0937742f62643dfaf20d388c097d6af220e16cd420eb1a95314732f6), 537 (c17645e396c8d15a624516565074d3250fcbfc6f58777a740cb06e3fce2074f5), 540 (1c18292c9659a843e71343a1d6c465386dc08e19b83651ab70470b074e845e25); associated label paragraphs are 533 (055c66c3e56aa9803e63c128451475fe22ec1910d46ef46d2a470b0993cb7896), 538 (acbe3519428365d4967baf94a9323887afe469109f0758d428c98cbadfcbf036), 541 (400a62fbb1d3786226c64996f593459e8eb6e5dc577af2d7ef957fef2c3cc178). Inspected run-level w:vertAlign: formula digits are subscript, coefficients baseline, associated label lines superscript; all six paragraphs contain tabs and no m:oMath/m:oMathPara. The only document Office Math object is unrelated block1165. Updated only equation locators and structure description in AG-INV-T3.md; preserved source equation strings exactly and added no reaction arrows. No source/package changes. Tests deferred.",
       "completion_condition": "Re-verify source hashes and direct-body positions; correct AG-INV-T3.md equation/label locators and describe run-level formatting accurately without adding reaction arrows or changing source wording."
     },
     {
@@ -5826,8 +5826,8 @@
         "AG-SRC-T3",
         "AG-VIS-T3-W06-TBL-GESTATION"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-VIS-T3-W06-TBL-GESTATION: recorded table hash does not match direct concatenated cell text; recomputed value is 7b1f4bfc31fe563d88fe519302d11e61eb59129a4ad39d3f8dcde1c48207ac0c.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-09. Reverified archive/member hashes and native Word table at direct-body block 724. Re-extracted 6 rows × 3 columns (18 cells), 148 concatenated Unicode characters. Canonical method: iterate w:tr then w:tc in document order; concatenate each cell's w:t text across its paragraphs; concatenate all 18 cell strings with no separators or normalization; UTF-8 encode; SHA-256. Recomputed hash 7b1f4bfc31fe563d88fe519302d11e61eb59129a4ad39d3f8dcde1c48207ac0c, replacing non-reproducible 2a4920ab... Verified Horse/Cattle, Mare/Cow, 336 days/283 days and Rabbit/Chicken, Doe/Hen, 31days/21 days are paired separate paragraphs within cells in single rows; no table content, row/column structure or paragraph boundaries changed. Updated only AG-INV-T3.md table hash/method and paragraph-pairing note. No package or source changes. Testing remains deferred.",
       "completion_condition": "Independently reproduce the canonical table hash from the verified source DOCX, correct AG-INV-T3.md with exact method and hash, and confirm all six rows and paired-cell paragraph boundaries remain unchanged."
     }
   ],
@@ -5844,51 +5844,21 @@
     }
   },
   "next_runnable": [
-    "AG-LES-T1-W01-CROP-ASPECTS",
-    "AG-LES-T1-W02-TOOLS-MACHINES",
-    "AG-LES-T1-W02-AGRO-INDUSTRIES",
-    "AG-LES-T1-W03-EXTENSION-ROLES",
-    "AG-LES-T1-W03-INPUT-TERMINOLOGY",
-    "AG-CORR-T1-W03-STORAGE-SOLUTION",
-    "AG-LES-T1-W04-NGO-EXAMPLES",
-    "AG-LES-T1-W04-PROGRAMME-OBJECTIVES",
-    "AG-LES-T1-W05-TECHNOLOGY-DEFINITION",
-    "AG-LES-T1-W05-FARM-MANAGEMENT",
-    "AG-LES-T1-W05-STORAGE-FACILITIES",
     "AG-LES-T1-W06-STORAGE-STRUCTURES",
     "AG-LES-T1-W07-GAME-RESERVES",
     "AG-LES-T1-W07-SOCIOECONOMIC-FACTORS",
     "AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS",
     "AG-LES-T1-W10-MONOCOT-DICOT-TABLE",
-    "AG-CORR-T2-W02-03-SOURCE-TERMS",
     "AG-LES-T2-W04-05-YAM-PRACTICES",
-    "AG-CORR-T2-W04-05-TABLE-TEXT",
     "AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS",
-    "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
-    "AG-CORR-T2-W07-PEAT-TYPO",
-    "AG-CORR-T2-W08-QUESTION-WORDING",
-    "AG-CORR-T2-W09-SOIL-TERMS",
     "AG-LES-T3-W01-TOOL-REFERENCE",
-    "AG-CORR-T3-W01-TOOL-NAMES",
     "AG-LES-T3-W02-FARM-POWER-OPERATIONS",
-    "AG-CORR-T3-W02-WATER-POWER",
-    "AG-CORR-T3-W02-POWER-TEXT",
     "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS",
     "AG-LES-T3-W05-RESPIRATION-NERVOUS-GAPS",
     "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION",
-    "AG-FACT-T3-W06-LACTATION-COLOSTRUM",
     "AG-LES-T3-W07-POULTRY-REPRO-SYSTEM",
-    "AG-FACT-T3-W07-HORMONES",
-    "AG-FACT-T3-W07-EGG-FORMATION",
     "AG-LES-T3-W08-ENVIRONMENTAL-MEASURES",
-    "AG-FACT-T3-W08-REGIONAL-CLIMATE",
-    "AG-FACT-T3-W09-PIG-SAFETY",
-    "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE",
-    "AG-FACT-T3-W10-CATTLE-SAFETY",
-    "AG-FACT-T3-W10-CATTLE-TERMS",
-    "AG-CORR-T3-W02-WDP-LOCATORS",
-    "AG-CORR-T3-W04-TBL-DIGESTION-HASH",
-    "AG-CORR-T3-W05-RESPIRATION-EQUATION-LOCATORS",
-    "AG-CORR-T3-W06-TBL-GESTATION-HASH"
+    "AG-LES-T3-W09-PIG-ASSESSMENT-SUPPLEMENT",
+    "AG-LES-T3-W10-CATTLE-TATTOOING"
   ]
 }

@@ -41,7 +41,7 @@ Scheme mapping: item 1 = Week 1; 2 = Week 2; 3 = Week 3; item 4–5 = Weeks 4–
 
 ## Visual and structured-content inventory
 
-The DOCX has four body tables, 18 body image groups containing 23 linked raster media files, two alternate WDP image-effect layers associated with one group, three text-based respiration equations, and one inline Office Math object. The two WDP files are alternate/effect layers referenced by the same drawing group as image5/image6, not independent teaching figures. Visuals were viewed in a private contact sheet; no source media was committed.
+The DOCX has four body tables, 18 body image groups containing 23 linked raster media files, two alternate WDP image-effect layers associated with two separate Week Four image groups (blocks 487 and 494), three text-based respiration equations, and one inline Office Math object. The two WDP files are alternate/effect layers in the Week Four drawing groups at blocks 487 and 494, respectively; they are not independent teaching figures. Visuals were viewed in a private contact sheet; no source media was committed.
 
 | Week | Locator | Structure / content |
 |---|---|---|
@@ -50,18 +50,18 @@ The DOCX has four body tables, 18 body image groups containing 23 linked raster 
 | 2 | image block 128 | Tractor / mechanical power (`image2.png`) |
 | 2 | image block 167 | Solar panels (`image3.png`) |
 | 2 | image block 194 | Windmill (`image4.png`) |
-| 2 | image block 211 | Two-image group: electricity generation and hydroelectric dam (`image5.png`, `image6.png`; alternate WDP layers) |
+| 2 | image block 211 | Two-image group: electricity generation and hydroelectric dam (`image5.png`, `image6.png`); no WDP effect layer is attached to this block |
 | 4 | image block 395 | Ruminant/cattle digestive tract (`image7.png`) |
 | 4 | image block 417 | Pig digestive system (`image8.jpeg`) |
 | 4 | image block 425 | Poultry digestive system (`image9.jpeg`) |
-| 4 | table block 431 | 7 x 3 monogastric/polygastric comparison; SHA-256 `0ca145261c566e4b6fdfaa02c15d7b741be36a751106f10076b43b37d4bf9fd2` |
-| 4 | image block 487 | Two-image male reproductive-system group (`image10.jpeg`, `image11.jpeg`) |
+| 4 | table block 431 | 7 x 3 monogastric/polygastric comparison (21 cells); SHA-256 of row-major concatenated cell text, UTF-8, no separators or normalization: `0dcf9de2367de925c039cd05c16545e6b1bc036861c56d2220bbe8ad34d33b86` |
+| 4 | image block 487 | Two-image male reproductive-system group (`image10.jpeg`, `image11.jpeg`; alternate/effect layer `hdphoto1.wdp`) |
 | 4 | image block 493 | Female reproductive-system diagram (`image12.jpeg`) |
-| 4 | image block 494 | Second female reproductive-system image / photographed page (`image13.jpeg`) |
+| 4 | image block 494 | Second female reproductive-system image / photographed page (`image13.jpeg`; alternate/effect layer `hdphoto2.wdp`) |
 | 5 | image block 547 | Respiratory tract/lungs diagram (`image14.jpeg`) |
 | 5 | image block 554 | Two fish-gill diagrams (`image15.jpeg`, `image16.jpeg`) |
-| 5 | blocks 530, 535, 538 | Three text-based respiration equations (general, aerobic and anaerobic); not image assets or Office Math objects |
-| 6 | table block 724 | 6 x 3 species/female-name/gestation-period table; SHA-256 `2a4920ab1813f229acf23091705f2ae7378471933fbf2d7e93c5a86e062d1925` |
+| 5 | Equation paragraphs 532, 537, 540; word-label paragraphs 533, 538, 541 | Three text-based respiration equations; chemical-formula digits are run-level subscripts, associated labels are superscript, and no Office Math object occurs in these six paragraphs |
+| 6 | table block 724 | 6 x 3 species/female-name/gestation-period table (18 cells); SHA-256 of row-major concatenated cell text, UTF-8, no separators or normalization: `7b1f4bfc31fe563d88fe519302d11e61eb59129a4ad39d3f8dcde1c48207ac0c` |
 | 7 | image block 803 | Bird embryo and poultry internal-organs image pair (`image17.jpeg`, `image18.jpeg`) |
 | 7 | image block 804 | Photographed reproductive-system page and female reproductive tract (`image19.jpeg`, `image20.jpeg`) |
 | 7 | image block 819 | Male/female reproductive-system diagram (`image21.jpeg`) |
@@ -70,7 +70,22 @@ The DOCX has four body tables, 18 body image groups containing 23 linked raster 
 | 10 | image block 1155 | Cattle external anatomy/body-parts diagram (`image23.jpeg`) |
 | 10 | inline Office Math block 1165 | Inline mathematical object embedded in the cattle gestation-characteristics sentence; preserve its exact numeric statement and determine whether it is semantic math or formatted text during visual disposition |
 
-The image relationship map shows 23 linked raster media files in the body; image groups may contain more than one image. The two WDP media files are referenced as alternate image-effect layers. The body also contains 42 DrawingML drawing elements and 16 VML pict elements; the separate visual items above are anchored to the 18 image-bearing body paragraphs and the four actual tables. No OLE object was found.
+**WDP image-effect-layer mapping (reverified from original DOCX XML):**
+- `word/document.xml` direct-body block 211 — C14N XML SHA-256 `eb7fa7f9efaa71470249fb6c5e4b8f6f95517db2a656f26f0bfdc277bf3e8027`; `rId11 → media/image5.png`, `rId12 → media/image6.png`; no `a14:imgLayer` is present.
+- Block 487 — C14N XML SHA-256 `83769c0683fdbafe2907881e8038e6317812f2d873a017da30b66f6459749081`; `rId16 → media/image10.jpeg`, `rId22 → media/image11.jpeg`, `a14:imgLayer rId21 → media/hdphoto1.wdp`.
+- Block 494 — C14N XML SHA-256 `bc1c82e7330ecd257d1353d95e0d7f3654ba4aa4e9a61ce3c77a6cf42c403790`; `rId24 → media/image13.jpeg`, `a14:imgLayer rId25 → media/hdphoto2.wdp`.
+- The WDP relationships are alternate/effect layers inside their respective Week Four drawing groups, not independent teaching figures. No separate WDP visual records are created.
+
+The image relationship map shows 23 linked raster media files in the body; image groups may contain more than one image. The two WDP media files are referenced as alternate image-effect layers at Week Four blocks 487 (`hdphoto1.wdp`) and 494 (`hdphoto2.wdp`), not at Week Two block 211. The body also contains 42 DrawingML drawing elements and 16 VML pict elements; the separate visual items above are anchored to the 18 image-bearing body paragraphs and the four actual tables. No OLE object was found.
+
+**Week Six gestation table structure (block 724):** 6 rows × 3 columns. Hash method is SHA-256 of all 18 cells' `w:t` text concatenated row-major, across each cell's paragraphs, UTF-8, no separators or normalization. The Horse/Cattle, Mare/Cow and 336 days/283 days values are two separate paragraphs inside their corresponding cells in one row; Rabbit/Chicken, Doe/Hen and 31days/21 days are likewise paired paragraphs in one row. Preserve these paragraph boundaries and cell alignments; do not split the paired entries into separate rows or alter any species, female name or gestation period. Canonical table-text SHA-256: `7b1f4bfc31fe563d88fe519302d11e61eb59129a4ad39d3f8dcde1c48207ac0c`.
+
+**Week Five respiration equation/label locators and hashes (reverified from original DOCX XML):**
+- General equation, block 532 — SHA-256 `afcc926b0937742f62643dfaf20d388c097d6af220e16cd420eb1a95314732f6`; word-label paragraph 533 — `055c66c3e56aa9803e63c128451475fe22ec1910d46ef46d2a470b0993cb7896`.
+- Aerobic equation, block 537 — SHA-256 `c17645e396c8d15a624516565074d3250fcbfc6f58777a740cb06e3fce2074f5`; word-label paragraph 538 — `acbe3519428365d4967baf94a9323887afe469109f0758d428c98cbadfcbf036`.
+- Anaerobic equation, block 540 — SHA-256 `1c18292c9659a843e71343a1d6c465386dc08e19b83651ab70470b074e845e25`; word-label paragraph 541 — `400a62fbb1d3786226c64996f593459e8eb6e5dc577af2d7ef957fef2c3cc178`.
+- Formula numerals use run-level `w:vertAlign val="subscript"`; coefficients remain baseline. Label paragraphs use run-level superscript formatting and tabs for alignment. No `m:oMath` occurs in these six paragraphs; the document's one separate Office Math object is at block 1165.
+- Preserve the three source equation strings verbatim. No missing reaction arrow, separator, coefficient or formula character is supplied by this locator task.
 
 ## Practical work and chemical / dosage cautions for later indexing
 
