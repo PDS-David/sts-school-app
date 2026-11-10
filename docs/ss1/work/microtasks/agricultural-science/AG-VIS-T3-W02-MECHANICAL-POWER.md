@@ -13,6 +13,10 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. Source image inspected; original media
 - **Reuse decision:** do not copy the original into delivered lessons or package assets unless its licence or written permission is obtained and attribution requirements are met. If the learning objective requires an agricultural tractor, source a clearly agricultural, rights-cleared tractor/implement image with provenance and credit.
 - No source image is committed, modified or transformed.
 
+## Original rights-cleared replacement overview
+
+An original eight-panel SVG is now registered as `AG-ART-T3-W02-FARM-POWER-SOURCES-01` for `SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-HUMAN-ANIMAL-WATER-BIOGAS`: `backend/src/db/ss1/assets/agricultural-science/t3-w02-eight-farm-power-sources.svg`; 8,924 bytes; SHA-256 `0f0fd56ae248279292364256c810cd54fd9198634733bef4d5768e705fee455d`. It is original vector artwork showing human, animal, mechanical, electrical, solar, wind, water and biogas power. It is not copied, traced or derived from any source image. The original unlicensed image in this task remains excluded from learner delivery; importer/learner-route replacement delivery is not yet verified. Asset approval remains PENDING and verification DEFERRED.
+
 ## Changes and validation
 - Added open item `AGRICULTURAL-SCIENCE-T3-W02-MECHANICAL-POWER-IMAGE` as a delivery blocker pending rights clearance and accurate scope/label decision.
 - Marked `AG-VIS-T3-W02-MECHANICAL-POWER` `IMPLEMENTED_TESTING_DEFERRED`; recomputed queue counts and `next_runnable`.
