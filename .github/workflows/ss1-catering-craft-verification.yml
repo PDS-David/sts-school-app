@@ -1,0 +1,35 @@
+name: SS1 Catering Craft verification
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "backend/src/db/ss1/**"
+      - "backend/src/utils/ss1CateringDeliveryCorrection.ts"
+      - "backend/src/routes/learning.ts"
+      - "backend/package.json"
+      - "tests/ss1/catering-craft.*.mts"
+      - ".github/workflows/ss1-catering-craft-verification.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  catering-craft:
+    name: Validate SS1 Catering Craft package and delivery adapter
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm install --no-audit --no-fund
+      - name: Run package, correction, and structural validation
+        working-directory: backend
+        run: npm run test:ss1:catering

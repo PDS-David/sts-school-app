@@ -9,7 +9,7 @@ const SCHOOL_CODE = 'secondary';
 const CLASS_NAME = 'SS 1';
 const SUBJECT_NAME = 'Catering Craft';
 const hash = (value: string) => createHash('sha256').update(value, 'utf8').digest('hex');
-const norm = (value: unknown) => String(value ?? '').replace(/\\s+/g, ' ').trim().toLocaleLowerCase('en');
+const norm = (value: unknown) => String(value ?? '').replace(/\s+/g, ' ').trim().toLocaleLowerCase('en');
 
 export interface Ss1DeliveryTopic {
   id?: unknown;

@@ -16,6 +16,10 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. Source image inspected. The original m
 - **Reuse decision:** do not copy the original into learner-facing lessons or package assets unless a licence or written permission is obtained and attribution conditions are met. If permission is unavailable and a windmill visual is required, use a separate rights-cleared image of a water-pumping windmill with documented provenance and credit.
 - **Structure/derivative decision:** preserve the existing sequence—caption paragraph (block 192), blank paragraph (193), image paragraph (194), then “ADVANTAGES OF WIND POWER” (195). Keep the credit visible. No crop, redraw, derivative, new asset or source edit is needed for this disposition; a derivative would not resolve the rights question.
 
+## Original rights-cleared replacement overview
+
+An original eight-panel SVG is now registered as `AG-ART-T3-W02-FARM-POWER-SOURCES-01` for `SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-HUMAN-ANIMAL-WATER-BIOGAS`: `backend/src/db/ss1/assets/agricultural-science/t3-w02-eight-farm-power-sources.svg`; 8,380 bytes; SHA-256 `3099c916de9659c3e4336bd9b5d58ff44de2d6cc4f328c105d062b3fc05343a4`. It is original vector artwork showing human, animal, mechanical, electrical, solar, wind, water and biogas power. It is not copied, traced or derived from any source image. The original unlicensed image in this task remains excluded from learner delivery; importer/learner-route replacement delivery is not yet verified. Asset approval remains PENDING and verification DEFERRED.
+
 ## Changes and validation
 - Added open item `AGRICULTURAL-SCIENCE-T3-W02-WIND-RIGHTS` as a delivery blocker pending rights clearance or a separately sourced rights-cleared replacement.
 - Marked `AG-VIS-T3-W02-WIND` `IMPLEMENTED_TESTING_DEFERRED`; recomputed queue `counts`, `status_counts` and `next_runnable`.

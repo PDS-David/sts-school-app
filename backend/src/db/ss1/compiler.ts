@@ -11,19 +11,25 @@ export interface IdentifiedRow { id: string; source_id: string | null; body_sha2
 export interface Plan { version: 'ss1-plan-v1'; rows: Row[]; identified_rows: IdentifiedRow[]; dispositions: { id: string; status: string; detail: string }[]; assets: SubjectPackage['assets']; corrections: SubjectPackage['delivery_corrections']; blockers: string[]; ready: boolean }
 function must(ok: unknown, message: string): asserts ok { if (!ok) throw new Error(`SS1: ${message}`); }
 function unique(values: string[], label: string) { must(new Set(values).size === values.length, `duplicate ${label}`); }
+const escapeRegex = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 function once(body: string, anchor: string, wholeLine = false): { index: number; length: number } {
-  // DOCX extraction can flatten paragraph breaks into spaces or tabs.
-  // Match exact words and punctuation while treating whitespace runs equivalently.
-  const parts = anchor.trim().split(/\s+/u).map(part => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-  must(parts.length > 0, 'empty source anchor');
   if (wholeLine) {
+    // Scheme-marker lines: a single line, tolerant of flattened internal whitespace and edge whitespace.
     must(!/[\r\n]/u.test(anchor), 'scheme marker anchor must be one line');
+    const parts = anchor.trim().split(/\s+/u).map(escapeRegex);
+    must(parts.length > 0 && parts[0] !== '', 'empty source anchor');
     const linePattern = new RegExp('^[\\t \\u00a0]*' + parts.join('[\\t \\u00a0]+') + '[\\t \\u00a0\\r]*$', 'gmu');
     const lineMatches = [...body.matchAll(linePattern)];
     must(lineMatches.length === 1, 'scheme marker line missing or ambiguous: ' + anchor.slice(0, 80));
     return { index: lineMatches[0].index!, length: lineMatches[0][0].length };
   }
-  const pattern = new RegExp(parts.join('\\s+'), 'gu');
+  // DOCX text extractors can flatten a paragraph break into spaces or tabs, so internal
+  // whitespace runs are equivalent. Leading/trailing anchor whitespace is significant
+  // (it is what makes indented headings unique) and is matched literally.
+  const lead = anchor.match(/^\s*/u)![0];
+  const trail = anchor.length > lead.length ? anchor.match(/\s*$/u)![0] : '';
+  const core = anchor.slice(lead.length, anchor.length - trail.length);
+  const pattern = new RegExp(escapeRegex(lead) + core.split(/\s+/u).map(escapeRegex).join('\\s+') + escapeRegex(trail), 'gu');
   const matches = [...body.matchAll(pattern)];
   must(matches.length === 1, 'anchor missing or ambiguous: ' + anchor.slice(0, 80));
   return { index: matches[0].index!, length: matches[0][0].length };
