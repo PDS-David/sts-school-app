@@ -34,7 +34,7 @@ export function applyRules(input: SourceInput, rules: SourceRule[]): string {
   let text = input.text;
   for (const r of rules) {
     must(r.source_id === input.source_id && r.source_sha256 === input.sha256, `rule ${r.id} source mismatch`);
-    once(input.text, r.anchor, r.op === 'classify_marker' && !/[\r\n]/u.test(r.anchor));
+    once(input.text, r.anchor, r.op === 'classify_marker' && r.match_mode === 'WHOLE_LINE');
     if (r.op === 'split_before' || r.op === 'attach_stranded_label') {
       must(/^(?:[0-9]{1,2})(?:\s*(?:-|&|and)\s*[0-9]{1,2})?$/.test(r.week_label), `rule ${r.id}: numeric week label required`);
       const anchorMatch = once(text, r.anchor);
@@ -108,13 +108,15 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
       const markerRules = rules.filter(r => r.op === 'classify_marker');
       const normalizeMarkerLine = (value: string) => value.replace(/[\t \u00a0]+/gu, ' ').trim();
       const normalizeMarkerText = (value: string) => value.replace(/\s+/gu, ' ').trim();
-      const markerMatches = (body: string, anchor: string) => {
-        if (/[\r\n]/u.test(anchor)) return normalizeMarkerText(body).includes(normalizeMarkerText(anchor));
-        const markerAnchor = normalizeMarkerLine(anchor);
-        return body.split(/\r?\n/u).some(line => normalizeMarkerLine(line) === markerAnchor);
+      const markerMatches = (body: string, rule: { anchor: string; match_mode?: 'SUBSTRING' | 'WHOLE_LINE' }) => {
+        if (rule.match_mode === 'WHOLE_LINE') {
+          const markerAnchor = normalizeMarkerLine(rule.anchor);
+          return body.split(/\r?\n/u).some(line => normalizeMarkerLine(line) === markerAnchor);
+        }
+        return normalizeMarkerText(body).includes(normalizeMarkerText(rule.anchor));
       };
       for (const rule of markerRules) {
-        const matches = topics.filter(t => markerMatches(t.body, rule.anchor));
+        const matches = topics.filter(t => markerMatches(t.body, rule));
         if (rule.op === 'classify_marker' && rule.kind === 'SCHEME_ONLY' && matches.length === 0) {
           plan.dispositions.push({ id: rule.id, status: 'SCHEME_ONLY', detail: rule.evidence.locator });
         } else must(matches.length === 1, 'marker ' + rule.id + ' must bind exactly one parsed row');
@@ -122,7 +124,7 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
       for (const t of topics) {
         must(t.title.trim() && t.title !== '(untitled)' && t.body.trim(), `empty lesson ${s.source_id}`);
         const id = originalLessonId(s.source_id, t.body);
-        const markers = markerRules.filter(r => markerMatches(t.body, r.anchor));
+        const markers = markerRules.filter(r => markerMatches(t.body, r));
         must(markers.length <= 1, `ambiguous marker ${id}`);
         plan.dispositions.push({ id, status: markers.length ? (markers[0] as Extract<SourceRule, {op:'classify_marker'}>).kind : 'ORIGINAL', detail: s.archive_member });
         // Marker bodies are retained; classification is not authority to discard instructional lines.
