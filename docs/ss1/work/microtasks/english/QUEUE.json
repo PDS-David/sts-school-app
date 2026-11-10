@@ -161,7 +161,8 @@
     "2026-11-08 no-hindrance gate reconciliation: all non-approval open items are retained for audit but marked blocks_delivery=false. Their residual scope/editorial/teacher choices remain explicit and non-blocking. Only ENGLISH-CONTENT-APPROVAL remains delivery-blocking.",
     "2026-11-08 Week 9 formal/informal conversation objective FC01 is now IMPLEMENTED_EQUIVALENT by SUP-SS1-ENGLISH-FORMAL-INFORMAL-CONVERSATION-T1-W09. All Week 9 objective entries are IMPLEMENTED_EQUIVALENT; scheme marker remains a marker.",
     "2026-11-08 Week 2 external reading and Week 7 COR-021 scope items were reconciled against existing original equivalents: all six T2 Week 2 objectives are IMPLEMENTED_EQUIVALENT; all T3 Week 7 sentence structure objectives ST01-ST07 and SO03 are IMPLEMENTED_EQUIVALENT. ENGLISH-BODY-076 restored to IMPLEMENTED_EQUIVALENT; COR-021 scope open item removed.",
-    "2026-11-10 English coverage reconciliation: completed same-term bindings for T2 W07 parent-topic coverage TP01 and T3 W06 story-writing scheme objective SO03. Re-rated 54 previously PARTIAL body-level rows whose exact indexed objective sets are fully IMPLEMENTED_EQUIVALENT/SUPPORTED, binding supporting authored lesson IDs; repaired ENGLISH-BODY-036's prior validator defect (implemented row without a supplement target). ENGLISH-SCHEME-OBJECTIVE-REVIEW was closed; ENGLISH-REPLACEMENT-SCOPE-RECONCILIATION was narrowed to ENGLISH-BODY-048 only. Remaining objective-level gaps are T2 W01 malformed prefix assignment, T2 W06 unsupported sexuality scope, T3 W01 additional dictionary sense/passage context, and T3 W03 culturally specific bride-price term. Content approval remains the only delivery-blocking owner gate; formal verification remains separate."
+    "2026-11-10 English coverage reconciliation: completed same-term bindings for T2 W07 parent-topic coverage TP01 and T3 W06 story-writing scheme objective SO03. Re-rated 54 previously PARTIAL body-level rows whose exact indexed objective sets are fully IMPLEMENTED_EQUIVALENT/SUPPORTED, binding supporting authored lesson IDs; repaired ENGLISH-BODY-036's prior validator defect (implemented row without a supplement target). ENGLISH-SCHEME-OBJECTIVE-REVIEW was closed; ENGLISH-REPLACEMENT-SCOPE-RECONCILIATION was narrowed to ENGLISH-BODY-048 only. Remaining objective-level gaps are T2 W01 malformed prefix assignment, T2 W06 unsupported sexuality scope, T3 W01 additional dictionary sense/passage context, and T3 W03 culturally specific bride-price term. Content approval remains the only delivery-blocking owner gate; formal verification remains separate.",
+    "2026-11-10 CI finding: English workflow 42799726945 failed only in source-rule test 5 (8/9 passed). Root cause was shared compiler once() helper's double-escaped whitespace regex and an overly strict indentation boundary check. The Bookkeeping workflow independently reproduced the same shared defect (tests 25 and 28), confirming this is not English-specific. Fixed the shared helper with exact punctuation escaping, whitespace-run matching, match-span tracking and line-start insertion preserving original indentation. Re-run all affected CI suites before marking verification complete."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -3933,8 +3934,8 @@
         "ENG-SRC-T3"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Drafted in tests/ss1/english.package.test.mts: frozen schema, canonical English Language identity, all three source terms and SS 1 assertions. Not run; owner-authorised verification deferred.",
-      "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage.",
+      "implementation_reference": "Focused tests and CI workflow are implemented. First run 42799726945: 8/9 English tests passed; the rule-guard test exposed a shared compiler defect in once(): whitespace matching was double-escaped and line-boundary checks rejected indented anchors. Fixed in backend/src/db/ss1/compiler.ts by restoring correct regex whitespace/token escaping, returning actual match spans, and inserting labels at the true line start while preserving original indentation. The follow-up PR reruns the English, Bookkeeping and global SS1 checks; no pass is claimed until CI completes.",
+      "completion_condition": "The follow-up CI run passes the English focused tests, package/asset validator and real parser/compiler plan-only assertions. The global compiler anchor regression must also pass in Bookkeeping and shared SS1 tests. Explicit owner approval/coverage gates remain visible; no database write is attempted.",
       "required_attachments": []
     },
     {
@@ -3961,8 +3962,8 @@
         "ENG-LES-WORD-CLASSES-T1"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Drafted in tests/ss1/english.package.test.mts: exact UTF-8 body hashes, unique lesson/practice IDs, required objectives/provenance/answers and exact marking totals. Not run; owner-authorised verification deferred.",
-      "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage.",
+      "implementation_reference": "Focused tests and CI workflow are implemented. First run 42799726945: 8/9 English tests passed; the rule-guard test exposed a shared compiler defect in once(): whitespace matching was double-escaped and line-boundary checks rejected indented anchors. Fixed in backend/src/db/ss1/compiler.ts by restoring correct regex whitespace/token escaping, returning actual match spans, and inserting labels at the true line start while preserving original indentation. The follow-up PR reruns the English, Bookkeeping and global SS1 checks; no pass is claimed until CI completes.",
+      "completion_condition": "The follow-up CI run passes the English focused tests, package/asset validator and real parser/compiler plan-only assertions. The global compiler anchor regression must also pass in Bookkeeping and shared SS1 tests. Explicit owner approval/coverage gates remain visible; no database write is attempted.",
       "required_attachments": []
     },
     {
@@ -4012,8 +4013,8 @@
         "ENG-COR-024"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Drafted in tests/ss1/english.package.test.mts and statically reconciled against the live package: 24 correction records, 24 unique source/body targets, source SHA matches, exact source_lesson_id/body_sha256 binding, and same-term replacement for every record. All 24 bindings pass this read-only audit. Test file was not executed; owner-authorised test execution remains deferred.",
-      "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage.",
+      "implementation_reference": "Focused tests and CI workflow are implemented. First run 42799726945: 8/9 English tests passed; the rule-guard test exposed a shared compiler defect in once(): whitespace matching was double-escaped and line-boundary checks rejected indented anchors. Fixed in backend/src/db/ss1/compiler.ts by restoring correct regex whitespace/token escaping, returning actual match spans, and inserting labels at the true line start while preserving original indentation. The follow-up PR reruns the English, Bookkeeping and global SS1 checks; no pass is claimed until CI completes.",
+      "completion_condition": "The follow-up CI run passes the English focused tests, package/asset validator and real parser/compiler plan-only assertions. The global compiler anchor regression must also pass in Bookkeeping and shared SS1 tests. Explicit owner approval/coverage gates remain visible; no database write is attempted.",
       "required_attachments": []
     },
     {
@@ -4039,8 +4040,8 @@
         "ENG-SRC-T3"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Drafted in tests/ss1/english.package.test.mts: package remains PENDING; lesson/asset approvals are not fabricated and verification stays DEFERRED. Not run.",
-      "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage.",
+      "implementation_reference": "Focused tests and CI workflow are implemented. First run 42799726945: 8/9 English tests passed; the rule-guard test exposed a shared compiler defect in once(): whitespace matching was double-escaped and line-boundary checks rejected indented anchors. Fixed in backend/src/db/ss1/compiler.ts by restoring correct regex whitespace/token escaping, returning actual match spans, and inserting labels at the true line start while preserving original indentation. The follow-up PR reruns the English, Bookkeeping and global SS1 checks; no pass is claimed until CI completes.",
+      "completion_condition": "The follow-up CI run passes the English focused tests, package/asset validator and real parser/compiler plan-only assertions. The global compiler anchor regression must also pass in Bookkeeping and shared SS1 tests. Explicit owner approval/coverage gates remain visible; no database write is attempted.",
       "required_attachments": []
     },
     {
@@ -4066,8 +4067,8 @@
         "ENG-SRC-T3"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Drafted in tests/ss1/english.package.test.mts: every rule is probed for wrong source hash, missing/repeated anchors and exact preservation apart from declared WEEK insertions. Synthetic guard tests only; not run and not a full-source parser comparison.",
-      "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage.",
+      "implementation_reference": "Focused tests and CI workflow are implemented. First run 42799726945: 8/9 English tests passed; the rule-guard test exposed a shared compiler defect in once(): whitespace matching was double-escaped and line-boundary checks rejected indented anchors. Fixed in backend/src/db/ss1/compiler.ts by restoring correct regex whitespace/token escaping, returning actual match spans, and inserting labels at the true line start while preserving original indentation. The follow-up PR reruns the English, Bookkeeping and global SS1 checks; no pass is claimed until CI completes.",
+      "completion_condition": "The follow-up CI run passes the English focused tests, package/asset validator and real parser/compiler plan-only assertions. The global compiler anchor regression must also pass in Bookkeeping and shared SS1 tests. Explicit owner approval/coverage gates remain visible; no database write is attempted.",
       "required_attachments": []
     },
     {
@@ -4094,8 +4095,8 @@
         "ENG-LES-WORD-CLASSES-T1"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Drafted in tests/ss1/english.package.test.mts: /dʒ/ not /dz/, ride/site non-rhyme, /ʃ/ vs /ʒ/ voicing, chief/thief /iː/ and noun/verb stress exception. Not run.",
-      "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage.",
+      "implementation_reference": "Focused tests and CI workflow are implemented. First run 42799726945: 8/9 English tests passed; the rule-guard test exposed a shared compiler defect in once(): whitespace matching was double-escaped and line-boundary checks rejected indented anchors. Fixed in backend/src/db/ss1/compiler.ts by restoring correct regex whitespace/token escaping, returning actual match spans, and inserting labels at the true line start while preserving original indentation. The follow-up PR reruns the English, Bookkeeping and global SS1 checks; no pass is claimed until CI completes.",
+      "completion_condition": "The follow-up CI run passes the English focused tests, package/asset validator and real parser/compiler plan-only assertions. The global compiler anchor regression must also pass in Bookkeeping and shared SS1 tests. Explicit owner approval/coverage gates remain visible; no database write is attempted.",
       "required_attachments": []
     },
     {
