@@ -53,3 +53,20 @@ test('Chemistry terminal revision and examination entries are scheme-only marker
   assert.equal(markers.length, 2);
   assert(markers.every(item => item.op === 'classify_marker' && item.kind === 'SCHEME_ONLY'));
 });
+
+test('Chemistry and Literature terminal scheme markers use whole-line matching', () => {
+  const chemistry = loadPackages().find(item => item.subject_slug === 'chemistry');
+  const literature = loadPackages().find(item => item.subject_slug === 'literature');
+  assert(chemistry && literature);
+  const chemistryMarkers = chemistry.source_rules.filter(item =>
+    item.id === 'SS1-SRC-58b4a44c3afa-R002' || item.id === 'SS1-SRC-58b4a44c3afa-R003'
+  );
+  const literatureMarkers = literature.source_rules.filter(item =>
+    item.op === 'classify_marker' && ['REVISION', 'EXAMINATION'].includes(item.anchor.trim().toUpperCase())
+  );
+  assert.equal(chemistryMarkers.length, 2);
+  assert.equal(literatureMarkers.length, 4);
+  assert([...chemistryMarkers, ...literatureMarkers].every(item =>
+    item.op === 'classify_marker' && item.kind === 'SCHEME_ONLY' && item.match_mode === 'WHOLE_LINE'
+  ));
+});
