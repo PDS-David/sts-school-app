@@ -145,3 +145,16 @@ Third-term Week 1 revision already exists as `SUP-SS1-BOOKKEEPING-T3-W01-REVISIO
 All three terms retain their twelve-week structure. The second-term programme remains explicitly a project-authored reconstruction because the supplied second-term document duplicates first-term teaching. The first-term source's missing Week 5–12 bodies remain a provenance gap even though the delivery sequence has project-authored teaching extensions.
 
 The current package inventory is 32 lessons (11 first term, 10 second term, 11 third term), 81 coverage rows (75 IMPLEMENTED_EQUIVALENT and 6 MARKER), 18 source rules, 3 registered sources and 28 package open items. Original source documents and source-defect evidence remain unchanged.
+
+
+## Final automated closeout evidence — 10 November 2026
+
+PR #441 integrated the Bookkeeping assessment regression into the main CI workflow. PR #444 then added a full package-baseline regression and checks that each of the seven project-authored assessment papers has section marks that sum to its declared total.
+
+Both checks passed on PR #444 head `82b00440ad0e7b760531274910526277f36d0c47`:
+- Dedicated Bookkeeping package verification: run [42785278714](https://github.com/PDS-David/sts-school-app/actions/runs/42785278714) — success.
+- Main repository verification: run [42785279054](https://github.com/PDS-David/sts-school-app/actions/runs/42785279054) — success, including typechecks, static regressions, configured PostgreSQL/asset integration, authenticated retrieval, sequencing and disposable staging-admin tests.
+
+PR #444 was squash-merged to `master` as `f887ff21fe4d5b70a04cf8547909d7991f8b89a9`.
+
+The package and assessment materials are therefore covered by the repository's configured automated checks. This still does not certify the original-source full parser/compiler run, production SS1 database import, teacher moderation, or student-device/end-to-end delivery. The importer safety guard remains in place; no production data was written during this closeout.
