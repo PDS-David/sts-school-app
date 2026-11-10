@@ -9,7 +9,7 @@ Status: **IMPLEMENTED — TESTING DEFERRED. Content approval remains PENDING; ve
 - Class: SS 1; Term: 1st Term; Subject: Agricultural Science
 - Source ID: `SS1-SRC-7aa642b0085b`
 - Exact source member: `SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx`
-- Source member SHA-256: `df1b516cdd8855d069a329d7a7d0d0d3612dd10d254c53af9cb93a56526`
+- Source member SHA-256: `df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526`
 - Composite archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`
 - Existing source verification evidence: `AG-INV-T1.md` and `AG-WK-T1-W06.md`; hashes were verified in those records and reused here. The source archive and original DOCX were not re-extracted in this task.
 
