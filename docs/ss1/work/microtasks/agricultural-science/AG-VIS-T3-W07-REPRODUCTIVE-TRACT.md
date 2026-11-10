@@ -46,3 +46,7 @@ Both are original vector artwork, not copies, traces or derivatives of image19/i
 - Parsed package/queue JSON; checked unique IDs and confirmed every PARTIAL/UNRESOLVED coverage row has an open-item reference.
 - Importer, learner rendering and app/device display **not run**; testing remains deferred.
 - No source bytes, media, asset rows, lessons, shared schema/compiler, other subject or delivery assets changed.
+
+
+## Asset integrity correction (2026-11-10)
+The committed original SVG files are the authoritative artwork: their oviduct regions/egg-flow labels and egg cross-section structures agree with the lesson's descriptions, and their provenance identifies them as original repository artwork with reuse status `PERMITTED`. The earlier declared byte counts and SHA-256 values were stale metadata. The actual committed files are 4,965 bytes (`6a77e539204e845ca67f244b68fb1db9d4cc5c765b79e579b5e5bf2e31fb7759`) and 3,550 bytes (`a2106024242f8c37532cc95a014281663927ea098755f5251862a5f277e54cc2`), respectively. The SVG files and lesson body were not changed.

@@ -258,3 +258,7 @@ The male diagram distinguishes testes/vas deferens/cloacal papillae from kidneys
 - Marking totals: Q1 8/8; Q2 6/6; Q3 8/8; Q4 6/6; Q5 4/4; Q6 4/4; Q7 4/4 (40 total).
 - Subject tests, TypeScript, importer/compiler, database and learner runtime checks were not run; testing is deferred by owner.
 - No original source image, table, text or other subject file was changed or reproduced.
+
+
+## Asset integrity correction (2026-11-10)
+The committed original SVG files are the authoritative artwork: the male diagram distinguishes testes, vas deferens and cloacal papillae from associated urinary/digestive structures; the female diagram shows the functional left ovary/oviduct, rudimentary right side and associated structures described in the lesson. Their provenance identifies them as original repository artwork with reuse status `PERMITTED`. The earlier declared byte counts and SHA-256 values were stale metadata. The actual committed files are 3,615 bytes (`082ac39e27af9b0c1fdc61a3732a43cf08bc1a92acb66f106df78938fb4132c5`) and 4,446 bytes (`b1f51df2dc342fc0f885ad87b28402450f8859aff831b34625a390a24b7f1c87`), respectively. The SVG files and lesson body were not changed.
