@@ -158,3 +158,16 @@ Both checks passed on PR #444 head `82b00440ad0e7b760531274910526277f36d0c47`:
 PR #444 was squash-merged to `master` as `f887ff21fe4d5b70a04cf8547909d7991f8b89a9`. The post-merge main workflow run [42785541578](https://github.com/PDS-David/sts-school-app/actions/runs/42785541578) also passed on that exact master commit.
 
 The package and assessment materials are therefore covered by the repository's configured automated checks. This still does not certify the original-source full parser/compiler run, production SS1 database import, teacher moderation, or student-device/end-to-end delivery. The importer safety guard remains in place; no production data was written during this closeout.
+
+
+## SS1 package-loader compatibility fix — 10 November 2026
+
+While preparing the full-source acceptance path, a direct `loadPackages()` test exposed strict-schema mismatches in existing SS1 subject packages. The loader rejected an `objective_scope_audit` evidence extension, provenance entries with omitted URLs, existing `VISUAL`/null open-item kinds, and a Technical Drawing Week 5 marker whose evidence identified it as scheme-only but whose rule omitted `kind`.
+
+PR #450 corrected those compatibility issues and added a regression that loads all 21 registered SS1 subject packages, including Bookkeeping:
+- Dedicated Bookkeeping verification [42786574009](https://github.com/PDS-David/sts-school-app/actions/runs/42786574009): passed.
+- Main repository verification [42786573539](https://github.com/PDS-David/sts-school-app/actions/runs/42786573539): passed.
+- PR #450 merged as `17750b8d8746e69828d674c55ad12660f3bf32ff`.
+- Post-merge main verification [42786779861](https://github.com/PDS-David/sts-school-app/actions/runs/42786779861): passed on that exact master commit.
+
+The SS1 package registry can now be loaded and schema-validated across all 21 subjects. This removes a code-level blocker to the future source-build step. It does not run the original Bookkeeping DOC/DOCX extraction because the registered source archive is not present in the repository or accessible conversation files. The SS1 importer remains plan-only; no production database write was made.
