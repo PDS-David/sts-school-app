@@ -4,6 +4,16 @@ import registryData from './sourceRegistry.json' with { type: 'json' };
 export const registry = registryData;
 export const registeredSubjects = [...new Set(registry.map(s => s.assigned_subject_slug))].sort();
 export const sha256 = (s: string | Uint8Array): string => createHash('sha256').update(s).digest('hex');
+/**
+ * Subject package IDs may use either the full canonical slug or its
+ * deterministic initials (for example, catering-craft -> CC). Both forms
+ * remain bound to the package subject; arbitrary abbreviations are rejected.
+ */
+export function isSubjectLessonId(id: string, subjectSlug: string): boolean {
+  const parts = subjectSlug.toUpperCase().split('-');
+  const prefixes = new Set([parts.join('-'), parts.map(part => part[0]).join('')]);
+  return [...prefixes].some(prefix => id.startsWith(`SUP-SS1-${prefix}-`));
+}
 export interface ParsedTopic { weekLabel: string; title: string; body: string }
 export interface SourceInput { source_id: string; sha256: string; filePath: string; text: string }
 export interface Row { filePath: string; className: string; termLabel: string; subjectName: string; weekLabel: string; orderIndex: number; title: string; sourceReference: string }
@@ -123,9 +133,14 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
       };
       for (const rule of markerRules) {
         const matches = topics.filter(t => markerMatches(t.body, rule));
-        if (rule.op === 'classify_marker' && rule.kind === 'SCHEME_ONLY' && matches.length === 0) {
+        if (rule.op === 'classify_marker' && rule.kind === 'SCHEME_ONLY') {
+          // Coverage targets the source-rule identity, whether the marker is
+          // represented by a parsed row or is only present in the scheme.
+          must(matches.length <= 1, 'marker ' + rule.id + ' must bind at most one parsed row');
           plan.dispositions.push({ id: rule.id, status: 'SCHEME_ONLY', detail: rule.evidence.locator });
-        } else must(matches.length === 1, 'marker ' + rule.id + ' must bind exactly one parsed row');
+        } else {
+          must(matches.length === 1, 'marker ' + rule.id + ' must bind exactly one parsed row');
+        }
       }
       for (const t of topics) {
         must(t.title.trim() && t.title !== '(untitled)' && t.body.trim(), `empty lesson ${s.source_id}`);
@@ -139,7 +154,7 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
     }
     for (const r of p.source_rules) must(p.sources.some(s => s.source_id === r.source_id), `orphan rule ${r.id}`);
     for (const l of p.lessons) {
-      must(l.id.startsWith(`SUP-SS1-${p.subject_slug.toUpperCase()}-`) && l.subject === p.canonical_subject && l.body_sha256 === sha256(l.body), `lesson identity/hash ${l.id}`);
+      must(isSubjectLessonId(l.id, p.subject_slug) && l.subject === p.canonical_subject && l.body_sha256 === sha256(l.body), `lesson identity/hash ${l.id}`);
       unique(l.practice.map(q => q.id), `practice IDs ${l.id}`);
       for (const q of l.practice) must(q.marks === q.marking.reduce((n, m) => n + m.marks, 0), `mark total ${l.id}/${q.id}`);
       if (l.state.implementation !== 'IMPLEMENTED' || l.state.content_approval !== 'APPROVED' || !l.state.approval_reference || l.provenance.some(s => s.reuse_status !== 'PERMITTED')) plan.blockers.push(`LESSON_NOT_APPROVED:${l.id}`);
