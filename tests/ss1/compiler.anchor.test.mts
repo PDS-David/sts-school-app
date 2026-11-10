@@ -158,19 +158,19 @@ test('English third-term multi-strand scheme markers use substring matching, not
   }
 });
 
-test('Literature term-two and term-three scheme anchors match the exact topics-cell text', () => {
+test('Literature term-two and term-three scheme anchors bind the separate week and topic cells', () => {
   const literature = loadPackages().find(item => item.subject_slug === 'literature');
   assert(literature, 'Literature package is missing');
   const expected = [
-    ' AFRICAN DRAMA : INRODUCTION TO HARVEST OF CORRUPTION',
-    'THE BLOOD OF A STRANGER',
-    'AFRICAN POETRY : PIANO AND DRUMS',
-    'THE DINING TABLE',
-    'THE ANVIL AND THE HAMMER',
-    'NON AFRICAN DRAMA : OTHELLO',
-    'SHE STOOPS TO CONQUER BY OLIVER GOLDSMITH',
-    'NON AFRICAN POETRY : PULLEY',
-    'THE SCHOOL BOY BY WILLIAM BLAKE',
+    '1\n\n AFRICAN DRAMA : INRODUCTION TO HARVEST OF CORRUPTION',
+    '2\n\nTHE BLOOD OF A STRANGER',
+    '3\n\nAFRICAN POETRY : PIANO AND DRUMS',
+    '4\n\nTHE DINING TABLE',
+    '5\n\nTHE ANVIL AND THE HAMMER',
+    '6\n\nNON AFRICAN DRAMA : OTHELLO',
+    '7\n\nSHE STOOPS TO CONQUER BY OLIVER GOLDSMITH',
+    '8\n\nNON AFRICAN POETRY : PULLEY',
+    '9.\n\nTHE SCHOOL BOY BY WILLIAM BLAKE',
   ];
   for (const source of ['SS1-SRC-1728961e97b5', 'SS1-SRC-2422e423a240']) {
     for (let index = 0; index < expected.length; index++) {
