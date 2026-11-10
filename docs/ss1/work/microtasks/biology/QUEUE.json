@@ -123,15 +123,15 @@
     "SOURCE_SECTION_INDEXING": 3,
     "VISUAL_DISPOSITION": 47,
     "SOURCE_MARKER_DISPOSITION": 1,
-    "LESSON": 44,
+    "LESSON": 43,
     "SCOPE_DECOMPOSITION": 3,
     "PENDING": null,
     "IMPLEMENTED_TESTING_DEFERRED": null
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 122,
+    "IMPLEMENTED_TESTING_DEFERRED": 121,
     "BLOCKED": 16,
-    "PENDING": 30
+    "PENDING": 31
   },
   "items": [
     {
@@ -3974,7 +3974,7 @@
         "BIO-VIS-T2-W03-HOUSEFLY-REDRAW"
       ],
       "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T2-W03; exact source locators and scope findings are recorded in the Week 3 index."
+      "implementation_reference": "Core lesson text and four diagrams are authored and committed in this branch, but this task is not complete: BIO-FACT-T2-W03-TAPEWORM-SCOPE remains a required dependency. The lesson deliberately omits tapeworm because its inclusion in Week 3 has not been approved. The four visual subtasks are independently implemented; finish this lesson task only after the scope dependency is resolved and any required tapeworm content is handled."
     },
     {
       "id": "BIO-LES-T2-W03-SEXUAL-ADVANTAGES",
@@ -5917,43 +5917,6 @@
       "status": "BLOCKED",
       "implementation_reference": "BLOCKED 2026-11-09: source block 57 defines perennating organs functionally but does not classify the four block 87 options. One school Biology reference includes suckers among perennating organs; another distinguishes perennating storage organs from vegetative propagation structures and uses a narrower list. No unique answer can be safely keyed without the teacher's chosen reference/definition.",
       "completion_condition": "Teacher records the approved reference and definition or revises the options so exactly one answer is supported; record evidence and preserve the original source wording."
-    },
-    {
-      "id": "BIO-LES-T2-W03-REPRODUCTION-ORGANISMS",
-      "kind": "LESSON",
-      "source_id": "SS1-SRC-eb6e9665f42c",
-      "term": "2nd Term",
-      "week_or_locator": "Week 3, blocks 160–235; source objectives COV-BIO-T2-W03-UNICELLULAR-REPRODUCTION and COV-BIO-T2-W03-INVERTEBRATE-REPRODUCTION",
-      "objective": "Author a source-distinct student lesson for reproduction in Amoeba, Paramecium, Spirogyra, earthworm, cockroach, housefly and snail, with the four assigned redraws and keyed practice.",
-      "required_files": [
-        "backend/src/db/ss1/subjects/biology.json",
-        "docs/ss1/work/microtasks/biology/QUEUE.json",
-        "docs/ss1/work/microtasks/biology/BIO-LES-T2-W03-REPRODUCTION-ORGANISMS.md",
-        "backend/src/db/ss1/assets/biology/"
-      ],
-      "required_attachments": [
-        {
-          "archive": "SSS 1-20260507T072431Z-3-001.zip",
-          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
-          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
-        }
-      ],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/biology.json",
-        "docs/ss1/work/microtasks/biology/QUEUE.json",
-        "docs/ss1/work/microtasks/biology/BIO-LES-T2-W03-REPRODUCTION-ORGANISMS.md",
-        "backend/src/db/ss1/assets/biology/"
-      ],
-      "depends_on": [
-        "BIO-WK-T2-W03",
-        "BIO-VIS-T2-W03-PARAMECIUM-REDRAW",
-        "BIO-VIS-T2-W03-SPIROGYRA-REDRAW",
-        "BIO-VIS-T2-W03-COCKROACH-REDRAW",
-        "BIO-VIS-T2-W03-HOUSEFLY-REDRAW"
-      ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Implemented in SUP-SS1-BIOLOGY-T2-W03-REPRODUCTION-ORGANISMS; ten keyed questions (19 marks); four SVG assets registered with exact hashes and provenance. Source member SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44. Teacher content approval pending; testing deferred."
     }
   ],
   "review": {
