@@ -134,13 +134,15 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
       for (const rule of markerRules) {
         const matches = topics.filter(t => markerMatches(t.body, rule));
         if (rule.op === 'classify_marker' && rule.kind === 'SCHEME_ONLY') {
-          // Coverage targets the source-rule identity, whether the marker is
-          // represented by a parsed row or is only present in the scheme.
+          // A scheme-only marker may have no parsed teaching row, but if one
+          // exists it must be unique. Revision/examination markers must bind
+          // exactly one parsed row. All three kinds are addressable by their
+          // source-rule identity in coverage.
           must(matches.length <= 1, 'marker ' + rule.id + ' must bind at most one parsed row');
-          plan.dispositions.push({ id: rule.id, status: 'SCHEME_ONLY', detail: rule.evidence.locator });
         } else {
           must(matches.length === 1, 'marker ' + rule.id + ' must bind exactly one parsed row');
         }
+        plan.dispositions.push({ id: rule.id, status: rule.kind, detail: rule.evidence.locator });
       }
       for (const t of topics) {
         must(t.title.trim() && t.title !== '(untitled)' && t.body.trim(), `empty lesson ${s.source_id}`);
