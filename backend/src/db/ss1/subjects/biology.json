@@ -2903,6 +2903,81 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-BIOLOGY-T2-W09-FOODWEB-DIAGRAM",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Biology",
+      "title": "Week 9 Visual Lesson: Reading a Forest Food Web",
+      "objectives": [
+        "Interpret the forest food-web diagram by identifying its producer, consumers and the direction of the arrows."
+      ],
+      "body": "An ecosystem includes organisms and their environment. Organisms may be linked by feeding relationships. A food chain shows one feeding pathway; a food web brings several linked pathways together.\n\nIn this diagram, Green Plant is the producer. The animals shown are consumers. Follow an arrow from its starting organism to the arrowhead: the arrow points from the food source to the organism that eats it. The diagram is a selective redraw of clearly traceable links in the source figure; it is not a claim that every possible forest feeding link is shown.\n\nThe source figure prints “Poducer”. This new diagram uses the correct spelling “Producer”; the original source image is unchanged.\n\nUse the diagram to trace one route at a time. Where lines crossed in the original and their endpoints could not be established confidently, the redraw leaves those links out.\n",
+      "body_sha256": "a97dac2068e0e936ddbf0c137e2395fbd8fe10d7d088baf3025e3f68e5c93118",
+      "practice": [
+        {
+          "id": "BIO-T2-W09-FOODWEB-Q01",
+          "question": "Which organism is labelled as the producer?",
+          "answer": "Green Plant.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Identifies Green Plant as the producer.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BIO-T2-W09-FOODWEB-Q02",
+          "question": "What does an arrow show in this food-web diagram?",
+          "answer": "It points from the food source to the consumer that eats it.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that the arrow begins at the food source.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that the arrowhead points to the consumer.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BIO-T2-W09-FOODWEB-Q03",
+          "question": "Name two feeding links shown in the diagram.",
+          "answer": "Any two of: Green Plant → Rabbit; Green Plant → Goat; Mouse → Rabbit; Rabbit → Owl; Rabbit → Wild Cat; Rabbit → Jackal; Goat → Jackal; Goat → Lion; Jackal → Lion; Wild Cat → Lion; Mouse → Owl; Mouse → Snake; Snake → Kite.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Gives one feeding link shown in the diagram.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives a second distinct feeding link shown in the diagram.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Project-authored Week 9 visual lesson: Reading a Forest Food Web",
+          "locator": "SS1-SRC-eb6e9665f42c, 2nd Term Week 9, block 818; source member SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44",
+          "url": null,
+          "rights": "Original teaching text written for this project. It uses the source figure only as a factual/structural reference; no source text or image pixels are copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Original supplementary lesson created for the SS1 Biology learning package."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [],
@@ -3000,6 +3075,32 @@
         "locator": "SS1-SRC-eb6e9665f42c block 228, source media/image4.jpeg; source member SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44",
         "url": null,
         "rights": "Project-authored semantic redraw based on visible source labels and source-described sequence. No original source pixels, image files or traced artwork are reused.",
+        "reuse_status": "PERMITTED",
+        "attribution": "Original diagram created for the SS1 Biology learning package."
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "BIO-ASSET-T2-W09-FOODWEB",
+      "lesson_id": "SUP-SS1-BIOLOGY-T2-W09-FOODWEB-DIAGRAM",
+      "path": "backend/src/db/ss1/assets/biology/forest-food-web.svg",
+      "sha256": "2fb67b3f44c87fa9268503d219bfe9301e00fce6d9255fc87a84eee3edd23b55",
+      "bytes": 3996,
+      "media_type": "image/svg+xml",
+      "alt": "Project-authored forest food web. Green Plant is the producer; arrows show clearly traceable feeding links from food sources to consumers among Mouse, Rabbit, Goat, Owl, Wild Cat, Jackal, Snake, Lion and Kite. Ambiguous crossing links are omitted.",
+      "order": 0,
+      "source_locator": "SS1-SRC-eb6e9665f42c, 2nd Term Week 9, block 818 (source media/image5.jpeg, 444×318); source member SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44",
+      "provenance": {
+        "title": "Project-authored redraw: forest-food-web.svg",
+        "locator": "SS1-SRC-eb6e9665f42c, 2nd Term Week 9, block 818; source image SHA-256 50311108eb6f166b8be28eb7b6a4bbeac8bbf1c0c76acaafe2884e81988ee563",
+        "url": null,
+        "rights": "New vector diagram authored independently from the source pixels. No original raster, traced artwork or copied illustration is included. Only labels and feeding connections confidently traceable from the source are represented.",
         "reuse_status": "PERMITTED",
         "attribution": "Original diagram created for the SS1 Biology learning package."
       },
@@ -7272,8 +7373,8 @@
     {
       "id": "BIOLOGY-ASSET-LESSON-ID-BINDING",
       "kind": "CONTENT",
-      "detail": "The Biology package currently has no registered lesson rows, and no exact parser-generated source lesson IDs are recorded for asset attachment. The SS1 compiler validates that every asset.lesson_id resolves to an identified original source lesson or an authored supplement. The owner has deferred importer/compiler execution, and project instructions prohibit inventing source lesson IDs. Consequently, project-authored visual assets cannot yet be registered safely; unregistered orphan files must not be committed.",
-      "required_action": "After the owner permits the parser/importer to identify exact original lesson IDs, or an approved supplement lesson is authored with a stable ID, bind each visual asset to that exact lesson_id and register its exact bytes/hash, alt text, source locator and project-created provenance. Do not guess IDs, register assets against coverage IDs, or commit unregistered asset files.",
+      "detail": "The Week 9 food-web asset now binds to the authored Week 9 visual lesson SUP-SS1-BIOLOGY-T2-W09-FOODWEB-DIAGRAM. Other listed visual tasks still lack parser-confirmed original lesson IDs or authored supplement bindings; those assets must not be registered until their exact lesson targets exist.",
+      "required_action": "For the remaining affected visual tasks, wait until the importer identifies exact original lesson IDs or an approved supplement is authored with a stable ID. Bind each asset to that exact lesson_id and register exact bytes/hash, alt text, source locator and project-created provenance. Do not guess IDs or register assets against coverage IDs.",
       "affected_ids": [
         "BIO-VIS-T1-W03-RHINO-BEETLE-CYCLE-REDRAW",
         "BIO-VIS-T1-W10-MITOSIS-REDRAW",
@@ -7281,7 +7382,6 @@
         "BIO-VIS-T2-W03-SPIROGYRA-REDRAW",
         "BIO-VIS-T2-W03-COCKROACH-REDRAW",
         "BIO-VIS-T2-W03-HOUSEFLY-REDRAW",
-        "BIO-VIS-T2-W09-FOODWEB-REDRAW",
         "BIO-VIS-T1-W02-MICROSCOPE-REDRAW"
       ],
       "blocks_delivery": true
