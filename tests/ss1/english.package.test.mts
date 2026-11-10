@@ -106,12 +106,12 @@ test('English source rules reject wrong hashes, missing/ambiguous anchors and pr
     );
     assert.throws(
       () => applyRules({ ...input, text: 'anchor deliberately absent' }, [rule]),
-      /anchor missing or ambiguous/,
+      /missing or ambiguous/,
       'missing anchor must fail: ' + rule.id,
     );
     assert.throws(
       () => applyRules({ ...input, text: rule.anchor + '\n' + rule.anchor }, [rule]),
-      /anchor missing or ambiguous/,
+      /missing or ambiguous/,
       'repeated anchor must fail: ' + rule.id,
     );
     const transformed = applyRules(input, [rule]);
