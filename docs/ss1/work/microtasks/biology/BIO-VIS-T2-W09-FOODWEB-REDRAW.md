@@ -16,8 +16,8 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. The asset and package metadata are aut
 - Asset ID: `BIO-ASSET-T2-W09-FOODWEB`
 - Lesson ID: `SUP-SS1-BIOLOGY-T2-W09-FOODWEB-DIAGRAM`
 - Media type: `image/svg+xml`
-- Bytes: **3996**
-- SHA-256 (computed from final SVG bytes): `2fb67b3f44c87fa9268503d219bfe9301e00fce6d9255fc87a84eee3edd23b55`
+- Bytes: **3597**
+- SHA-256 (computed from final SVG bytes): `4b17ba6e25544d48a9dc0995606c67f33493c34f8fb764a27db5974f871ea57c`
 - Alt text is registered in `biology.json`; provenance records independent project authorship and no reuse of source pixels.
 
 A concise Week 9 visual lesson is registered as the asset's actual lesson target. It teaches the arrow direction, identifies Green Plant as the producer, includes keyed practice and explicitly records the source spelling correction. It remains content-approval pending and verification deferred. This visual lesson does **not** complete the separate `BIO-LES-T2-W09-FUNCTIONING-ECOSYSTEM` task, which remains pending for the broader functioning-ecosystem lesson.
