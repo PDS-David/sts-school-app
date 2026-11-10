@@ -20,6 +20,10 @@ Added lesson:
 
 Title: **Egg formation in the laying hen: stages and approximate timings (Week 7 clarification supplement)**
 
+The lesson is accompanied by two original rights-cleared SVG assets registered in the package:
+- `AG-ART-T3-W07-EGG-OVIDUCT-01` — labelled ovary, oviduct, infundibulum, magnum, isthmus, uterus/shell gland, vagina, cloaca and vent; arrows show egg movement.
+- `AG-ART-T3-W07-EGG-CROSS-SECTION-01` — labelled shell, double shell membranes, air cell, albumen, yolk, germinal disc and chalaza.
+
 The lesson:
 - explains the ovary/ovulation distinction and the sequence of the five main oviduct regions;
 - describes fertilisation in the infundibulum when viable sperm are present;
