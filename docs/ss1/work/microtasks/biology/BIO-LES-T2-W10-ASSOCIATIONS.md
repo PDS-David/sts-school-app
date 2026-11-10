@@ -4,7 +4,7 @@ Status: IMPLEMENTED_TESTING_DEFERRED. Content approval remains PENDING; runtime 
 
 - Source: SS1-SRC-eb6e9665f42c; Week 10 association teaching blocks 892–938; source member SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44.
 - Factual review: BIO-FACT-T2-W10-ASSOCIATIONS.md. Definitions and examples are qualified where interactions vary by species/context. Modern symbiosis terminology is distinguished from the narrower school usage.
-- Added SUP-SS1-BIOLOGY-T2-W10-ASSOCIATIONS; body SHA-256 e77383a2c0f5d1ba539904851aef41d5349e074d4536326a44e8f4486fa61a1b.
+- Added SUP-SS1-BIOLOGY-T2-W10-ASSOCIATIONS; body SHA-256 64861abe50c013e7f0ced8a6f1f13a5dac062b032ba1a216752b19df0b2ab478.
 - Includes six association types, interaction signs, examples, misconceptions and original keyed practice (25 marks).
 - COV-BIO-T2-W10-ASSOCIATIONS now links to the lesson as IMPLEMENTED_EQUIVALENT.
 - The source's Q952 is ambiguous and lacks commensalism in the options; it is flagged, not assigned a fabricated key. Q953's tick example is clarified in supplementary teaching. The source's original evaluation/revision/weekend/theory still lacks a teacher-approved key.
