@@ -14,7 +14,7 @@ function unique(values: string[], label: string) { must(new Set(values).size ===
 function once(body: string, anchor: string) {
   // DOCX text extractors can flatten a paragraph break into spaces or tabs.
   // Keep the anchor text exact, but treat runs of whitespace as equivalent.
-  const parts = anchor.trim().split(/\s+/u).map(part => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  const parts = anchor.trim().split(/\s+/u).map(part => [...part].map(char => '\\^$.*+?()[]{}|'.includes(char) ? '\\' + char : char).join(''));
   const pattern = new RegExp(parts.join('\\s+'), 'gu');
   const matches = [...body.matchAll(pattern)];
   must(matches.length === 1, `anchor missing or ambiguous: ${anchor.slice(0, 80)}`);
