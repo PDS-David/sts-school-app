@@ -94,7 +94,8 @@
     "BIO-FACT-T2-W01-REVISION-FACTS (2026-11-09) verified the Week 1 revision prompts at converted DOCX blocks 76, 85 and 87. CBSE/NCERT support Amoeba sporulation as encystation followed by multiple fission. OpenStax and a peer-reviewed study confirm Paramecium synkaryon divides three times to eight nuclei during sexual conjugation, so the source's 'asexual' label is wrong. The perennating-organ item remains ambiguous; a separate BLOCKED teacher-decision task was added because references differ on whether suckers are perennating organs. Source unchanged; no answer key/lesson authored.",
     "BIO-VIS-T1-W10-MITOSIS-REDRAW (2026-11-09) reused the verified four-stage source disposition: Interphase/Prophase, Metaphase, Anaphase and Telophase/Cytokinesis. The project-authored asset is BLOCKED because the package has no lesson rows or verified parser-generated lesson_id; compiler.ts requires asset.lesson_id to resolve. Importer execution is owner-deferred; no ID is invented and no orphan asset is committed. Added shared gate BIOLOGY-ASSET-LESSON-ID-BINDING.",
     "BIO-LES-T1-W08-MODE-OF-NUTRITION (2026-11-10) authored a source-separated SS1 supplement covering autotrophic/heterotrophic, holozoic, saprotrophic, parasitic, mutualistic, commensal, carnivorous-plant, filter-feeding and fluid-feeding nutrition. Added seven keyed practice questions (26 marks) with criterion-level marking and five references. Updated Week 8 scheme coverage to IMPLEMENTED_EQUIVALENT; original assignment remains UNRESOLVED until a Biology teacher approves the draft key. Content approval is PENDING and verification DEFERRED. Source document is not modified; no assets were required. Tests/importer/compiler/DB/device checks remain deferred by owner.",
-    "BIO-LES-T1-W09-ECOLOGY (2026-11-10) authored a source-separated supplement covering ecology, autecology, synecology, habitat, environment, ecosystem, community, biome, biosphere/ecosphere, lithosphere, hydrosphere, atmosphere, niche, population and biotic/abiotic components. Added eight keyed practice questions (32 marks). Scheme coverage is IMPLEMENTED_EQUIVALENT. The original assignment's 'three components' wording remains ambiguous (two ecosystem components vs three functional groups within the biotic component); teacher decision remains open and no original-assignment key is invented. Content approval=PENDING; verification=DEFERRED. Source unchanged; no assets needed; tests/importer/compiler/DB/device checks remain deferred."
+    "BIO-LES-T1-W09-ECOLOGY (2026-11-10) authored a source-separated supplement covering ecology, autecology, synecology, habitat, environment, ecosystem, community, biome, biosphere/ecosphere, lithosphere, hydrosphere, atmosphere, niche, population and biotic/abiotic components. Added eight keyed practice questions (32 marks). Scheme coverage is IMPLEMENTED_EQUIVALENT. The original assignment's 'three components' wording remains ambiguous (two ecosystem components vs three functional groups within the biotic component); teacher decision remains open and no original-assignment key is invented. Content approval=PENDING; verification=DEFERRED. Source unchanged; no assets needed; tests/importer/compiler/DB/device checks remain deferred.",
+    "BIO-LES-T2-W01-ARTIFICIAL-PROPAGATION (2026-11-10) authored a source-separated supplement for the five artificial vegetative propagation methods listed at converted DOCX block 65. The lesson distinguishes cutting, simple layering, marcotting/air layering, budding and grafting; defines stock, scion and cambium; includes comparison, worked identification and a 24-mark fully keyed practice set. Added an IMPLEMENTED_EQUIVALENT sub-objective coverage row; broader Week 1 asexual-forms and assessment coverage remain PARTIAL/UNRESOLVED. Content approval remains pending and verification deferred; no tests/importer/compiler/database/device checks were run."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -107,12 +108,14 @@
     "VISUAL_DISPOSITION": 47,
     "SOURCE_MARKER_DISPOSITION": 1,
     "LESSON": 43,
-    "SCOPE_DECOMPOSITION": 3
+    "SCOPE_DECOMPOSITION": 3,
+    "PENDING": null,
+    "IMPLEMENTED_TESTING_DEFERRED": null
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 83,
+    "IMPLEMENTED_TESTING_DEFERRED": 84,
     "BLOCKED": 16,
-    "PENDING": 69
+    "PENDING": 68
   },
   "items": [
     {
@@ -3692,7 +3695,7 @@
       "depends_on": [
         "BIO-WK-T2-W01"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Appended by BIO-WK-T2-W01; exact locators and scope findings are recorded in the Week 1 index."
     },
     {
@@ -5915,7 +5918,6 @@
   "next_runnable": [
     "BIO-LES-T1-W05-CONDITIONS",
     "BIO-LES-T1-W07-ANIMAL-NUTRITION",
-    "BIO-LES-T2-W01-ARTIFICIAL-PROPAGATION",
     "BIO-LES-T2-W01-ASEXUAL-ADVANTAGES",
     "BIO-LES-T2-W02-SEXUAL-REPRODUCTION-MEIOSIS",
     "BIO-LES-T2-W02-EXCRETION",
