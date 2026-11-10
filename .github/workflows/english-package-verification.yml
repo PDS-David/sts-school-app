@@ -59,7 +59,8 @@ jobs:
           set +e
           python scripts/ss1/build_subject_packages.py \
             --root "$RUNNER_TEMP/ss1-english-staged" \
-            --output "$RUNNER_TEMP/ss1-plan.json"
+            --output "$RUNNER_TEMP/ss1-plan.json" \
+            --subject-slug english
           compiler_exit=$?
           set -e
 
