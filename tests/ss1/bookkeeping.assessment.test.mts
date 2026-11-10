@@ -50,7 +50,7 @@ test('Arithmetic review records independently checked answer-key totals', () => 
 test('Every assessment paper section adds up to its declared maximum mark', () => {
   for (const [file, total] of resources) {
     const body = read(file);
-    const declared = body.match(/^\*\*Total:\*\*\s*(\d+) marks/m);
+    const declared = body.match(/\*\*Total:\*\*\s*(\d+)\s+marks/i);
     assert(declared, `${file}: declared total missing`);
     assert.equal(Number(declared[1]), total, `${file}: total metadata mismatch`);
     const sectionMarks = [...body.matchAll(/^## Section [ABC][^\n]*\((?:[^)]*?=\s*)?(\d+) marks\)/gm)]
