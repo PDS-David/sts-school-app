@@ -128,7 +128,7 @@ print(json.dumps({
     "scheme_only_markers": len(marker_rules),
     "project_authored_supplements": len(supplements),
     "english_specific_blockers": len(english_blockers),
-    "expected_owner_gates_only": True,
+    "english_specific_blockers_match_expected": True,
     "overall_plan_ready": bool(plan.get("ready")),
     "overall_plan_blocker_count": len(plan.get("blockers", [])),
 }, indent=2))
