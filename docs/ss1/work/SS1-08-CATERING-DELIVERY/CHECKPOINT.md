@@ -5,7 +5,7 @@ Status: **IMPLEMENTED — TESTING DEFERRED BY OWNER** (scoped subject adapter; n
 - Repository: `PDS-David/sts-school-app`
 - Base: `b00788a3426e3ecd32174e8edecd176899501de1`
 - Branch: `ss1/SS1-08-20261110-catering-delivery`
-- Latest branch commit at checkpoint: `d0852aff68ea238fa6d22a78ed904d11156515fe`
+- Implementation code commit before handoff documents: `d0852aff68ea238fa6d22a78ed904d11156515fe`
 - Subject: SS 1 / Catering Craft / secondary school scope
 - Package source: `backend/src/db/ss1/subjects/catering-craft.json` (existing master package; unchanged in this branch)
 
