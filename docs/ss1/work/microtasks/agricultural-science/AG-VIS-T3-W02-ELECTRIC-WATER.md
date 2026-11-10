@@ -23,6 +23,10 @@ The task locator says `hdphoto1.wdp` and `hdphoto2.wdp` are alternate layers in 
 - These are alternate/effect layers in the Week Four reproductive-system groups, not additional independent figures and not part of this Week Two group.
 - Appended `AG-CORR-T3-W02-WDP-LOCATORS` to correct the inventory; no inventory file was edited in this task because it is outside this item's allowed paths.
 
+## Original rights-cleared replacement overview
+
+An original eight-panel SVG is now registered as `AG-ART-T3-W02-FARM-POWER-SOURCES-01` for `SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-HUMAN-ANIMAL-WATER-BIOGAS`: `backend/src/db/ss1/assets/agricultural-science/t3-w02-eight-farm-power-sources.svg`; 8,380 bytes; SHA-256 `3099c916de9659c3e4336bd9b5d58ff44de2d6cc4f328c105d062b3fc05343a4`. It is original vector artwork showing human, animal, mechanical, electrical, solar, wind, water and biogas power. It is not copied, traced or derived from any source image. The original unlicensed image in this task remains excluded from learner delivery; importer/learner-route replacement delivery is not yet verified. Asset approval remains PENDING and verification DEFERRED.
+
 ## Changes and validation
 - Added open item `AGRICULTURAL-SCIENCE-T3-W02-ELECTRIC-WATER-RIGHTS` as a delivery blocker pending rights clearance or rights-cleared replacements.
 - Marked `AG-VIS-T3-W02-ELECTRIC-WATER` `IMPLEMENTED_TESTING_DEFERRED`; appended the bounded inventory-correction task; recomputed queue counts and `next_runnable`.

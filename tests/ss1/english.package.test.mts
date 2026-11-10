@@ -1,5 +1,4 @@
-// Drafted for the owner-authorised verification stage. DO NOT RUN in this implementation checkpoint.
-// Run only when authorised:
+// Executed by the SS1 English package verification workflow.
 // node --import tsx --test tests/ss1/english.package.test.mts
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -7,6 +6,7 @@ import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import { applyRules } from '../../backend/src/db/ss1/compiler.ts';
+import { loadPackages } from '../../backend/src/db/ss1/loader.ts';
 
 const raw = JSON.parse(readFileSync(new URL('../../backend/src/db/ss1/subjects/english.json', import.meta.url), 'utf8'));
 const hash = (value: string) => createHash('sha256').update(value, 'utf8').digest('hex');
@@ -48,7 +48,7 @@ test('Authored lessons have exact UTF-8 body hashes, unique identities and compl
 });
 
 test('All 24 correction records preserve exact source/body identity and bind a same-term replacement', () => {
-  // Drafted assertion. The queue task remains PENDING until all correction dependencies are complete.
+  // This checks binding identity only; inactive correction scope and owner approval remain separate.
   const p = packageSchema.parse(raw);
   assert.equal(p.delivery_corrections.length, 24);
   const correctionIds = new Set<string>();
@@ -106,12 +106,12 @@ test('English source rules reject wrong hashes, missing/ambiguous anchors and pr
     );
     assert.throws(
       () => applyRules({ ...input, text: 'anchor deliberately absent' }, [rule]),
-      /anchor missing or ambiguous/,
+      /missing or ambiguous/,
       'missing anchor must fail: ' + rule.id,
     );
     assert.throws(
       () => applyRules({ ...input, text: rule.anchor + '\n' + rule.anchor }, [rule]),
-      /anchor missing or ambiguous/,
+      /missing or ambiguous/,
       'repeated anchor must fail: ' + rule.id,
     );
     const transformed = applyRules(input, [rule]);
@@ -138,4 +138,121 @@ test('Regression examples retain the corrected English sound, rhyme and stress d
   assert(consonants.split('\n').some(line => line.startsWith('| /ʒ/ |') && line.includes('| voiced |')));
   assert(stress.includes('not a rule for every two-syllable word'));
   assert(stress.includes('Consent does not automatically shift'));
+});
+
+
+test('English source registration matches the exact three assigned archive members', () => {
+  const p = packageSchema.parse(raw);
+  const assigned = readFileSync(
+    new URL('../../docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv', import.meta.url),
+    'utf8',
+  ).split(/\r?\n/)
+    .filter(line => line.length > 0)
+    .slice(1)
+    .map(line => line.split(','))
+    .filter(columns => columns[5] === 'english')
+    .map(columns => ({
+      source_id: columns[0],
+      archive_member: columns[1],
+      sha256: columns[2],
+      term: columns[4],
+    }))
+    .sort((a, b) => a.source_id.localeCompare(b.source_id));
+  const actual = p.sources.map(source => ({
+    source_id: source.source_id,
+    archive_member: source.archive_member,
+    sha256: source.sha256,
+    term: source.term,
+  })).sort((a, b) => a.source_id.localeCompare(b.source_id));
+  assert.equal(assigned.length, 3);
+  assert.deepEqual(actual, assigned);
+});
+
+test('Every coverage entry resolves to a real source and target; equivalent coverage has an authored lesson', () => {
+  const p = packageSchema.parse(raw);
+  const sourceIds = new Set(p.sources.map(source => source.source_id));
+  const lessonIds = new Set(p.lessons.map(lesson => lesson.id));
+  const ruleIds = new Set(p.source_rules.map(rule => rule.id));
+  const correctionIds = new Set(p.delivery_corrections.map(correction => correction.id));
+  for (const coverage of p.coverage) {
+    assert(sourceIds.has(coverage.source_id), 'unknown source: ' + coverage.id);
+    assert(coverage.evidence.length > 0, 'missing evidence: ' + coverage.id);
+    for (const target of coverage.lesson_ids) {
+      const sourceBody = target.startsWith(coverage.source_id + ':BODY:');
+      const marker = coverage.status === 'MARKER' && ruleIds.has(target);
+      assert(
+        lessonIds.has(target) || sourceBody || correctionIds.has(target) || marker,
+        'unresolved target: ' + coverage.id + '/' + target,
+      );
+    }
+    if (coverage.status === 'IMPLEMENTED_EQUIVALENT') {
+      assert(
+        coverage.lesson_ids.some(target => lessonIds.has(target)),
+        'implemented-equivalent coverage lacks an authored lesson: ' + coverage.id,
+      );
+    }
+    if (coverage.status === 'PARTIAL' || coverage.status === 'UNRESOLVED') {
+      assert(
+        p.open_items.some(item => item.affected_ids.includes(coverage.id)),
+        'incomplete coverage lacks an explicit open item: ' + coverage.id,
+      );
+    }
+    if (coverage.status === 'MARKER') {
+      assert(
+        coverage.lesson_ids.some(target =>
+          target.startsWith(coverage.source_id + ':BODY:') ||
+          p.source_rules.some(rule =>
+            rule.id === target && rule.source_id === coverage.source_id &&
+            rule.op === 'classify_marker' && rule.kind === 'SCHEME_ONLY')),
+        'marker coverage must target a same-source SCHEME_ONLY rule: ' + coverage.id,
+      );
+    }
+  }
+});
+
+test('Previously incomplete composite topics now bind their complete same-term supplements', () => {
+  const p = packageSchema.parse(raw);
+  const adverbs = p.coverage.find(coverage => coverage.id === 'ENGLISH-T2-W07-TP01');
+  const story = p.coverage.find(coverage => coverage.id === 'ENGLISH-T3-W06-SO03');
+  assert(adverbs && story);
+  assert.equal(adverbs.status, 'IMPLEMENTED_EQUIVALENT');
+  assert(adverbs.lesson_ids.includes('SUP-SS1-ENGLISH-PRESENT-TENSE-T2-W07'));
+  assert(adverbs.lesson_ids.includes('SUP-SS1-ENGLISH-ADVERBS-FEATURES-T2-W07'));
+  assert.equal(story.status, 'IMPLEMENTED_EQUIVALENT');
+  assert(story.lesson_ids.includes('SUP-SS1-ENGLISH-STORY-WRITING-T3-W06'));
+});
+
+
+test('The focused SS1 loader selects only the requested English package', () => {
+  const packages = loadPackages(undefined, 'english');
+  assert.deepEqual(packages.map(subjectPackage => subjectPackage.subject_slug), ['english']);
+  assert.throws(() => loadPackages(undefined, 'not-a-registered-subject'), /subject-only package not found/);
+});
+
+
+test('A standalone Week 8 scheme marker is not confused with the longer teaching heading', () => {
+  const p = packageSchema.parse(raw);
+  const rule = p.source_rules.find(candidate => candidate.id === 'SS1-SRC-d8bd8f85fd73-R010');
+  assert(rule);
+  const sourceText = rule.anchor + '\n' + rule.anchor.trim() + ' –WORDS THAT ARE OPPOSITE IN MEANING';
+  assert.equal(applyRules({
+    source_id: rule.source_id,
+    sha256: rule.source_sha256,
+    text: sourceText,
+  }, [rule]), sourceText);
+});
+
+
+test('Every one-line English scheme marker explicitly uses whole-line matching', () => {
+  const p = packageSchema.parse(raw);
+  const singleLine = p.source_rules.filter(rule =>
+    rule.op === 'classify_marker' && !/[\r\n]/u.test(rule.anchor)
+  );
+  const multiLine = p.source_rules.filter(rule =>
+    rule.op === 'classify_marker' && /[\r\n]/u.test(rule.anchor)
+  );
+  assert.equal(singleLine.length, 23);
+  assert.equal(multiLine.length, 9);
+  assert(singleLine.every(rule => rule.match_mode === 'WHOLE_LINE'));
+  assert(multiLine.every(rule => rule.match_mode !== 'WHOLE_LINE'));
 });

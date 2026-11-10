@@ -437,17 +437,19 @@ function parseArgs(argv: string[]) {
   const rootIdx = argv.indexOf('--root');
   const scIdx = argv.indexOf('--school-code');
   const termIdx = argv.indexOf('--default-term');
+  const subjectIdx = argv.indexOf('--ss1-subject-slug');
   const root = rootIdx >= 0 ? argv[rootIdx + 1] : undefined;
   const schoolCode = scIdx >= 0 ? argv[scIdx + 1] : undefined;
   const defaultTerm = termIdx >= 0 ? argv[termIdx + 1] : undefined;
-  return { root, schoolCode, yes, defaultTerm };
+  const ss1SubjectSlug = subjectIdx >= 0 ? argv[subjectIdx + 1] : undefined;
+  return { root, schoolCode, yes, defaultTerm, ss1SubjectSlug };
 }
 
 async function main() {
-  const { root, schoolCode, yes, defaultTerm } = parseArgs(process.argv.slice(2));
+  const { root, schoolCode, yes, defaultTerm, ss1SubjectSlug } = parseArgs(process.argv.slice(2));
   if (!root || !schoolCode || !['primary', 'secondary'].includes(schoolCode)) {
     console.log(`Usage:
-  npx tsx src/db/ingestTopics.ts --root <path> --school-code primary|secondary [--default-term "1st Term"] [--jss3-supplements] [--yes]
+  npx tsx src/db/ingestTopics.ts --root <path> --school-code primary|secondary [--default-term "1st Term"] [--ss1-reviewed --ss1-plan <output> [--ss1-subject-slug <slug>]] [--jss3-supplements] [--yes]
 
 --default-term is used ONLY for files whose path gives no term clue at all
 (e.g. a standalone file not organized into a "1st/2nd/3rd Term" folder) —
@@ -469,6 +471,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   const ss1PlanIndex = process.argv.indexOf('--ss1-plan');
   const ss1PlanPath = ss1PlanIndex >= 0 ? process.argv[ss1PlanIndex + 1] : undefined;
   if (ss1PlanIndex >= 0 && (!ss1Reviewed || !ss1PlanPath || ss1PlanPath.startsWith('--'))) throw new Error('--ss1-plan requires --ss1-reviewed and a new output filename');
+  if (ss1SubjectSlug && (!ss1Reviewed || !/^[a-z0-9-]+$/.test(ss1SubjectSlug))) throw new Error('--ss1-subject-slug requires --ss1-reviewed and a valid package slug');
   if (ss1Reviewed && (schoolCode !== 'secondary' || yes)) throw new Error('SS1 reviewed foundation is plan-only. Runtime integration and later verification must precede database release.');
 
   const unsupported: string[] = [];
@@ -508,7 +511,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
 
   const ss1Owned = new Set<string>();
   if (ss1Reviewed) {
-    const { plan, owned } = await buildSs1FromFiles(root, allFiles, extractText, parseTopics);
+    const { plan, owned } = await buildSs1FromFiles(root, allFiles, extractText, parseTopics, ss1SubjectSlug);
     for (const file of owned) ss1Owned.add(file);
     // A partial plan is evidence only, never an executable row collection.
     if (ss1PlanPath) writeSs1Plan(ss1PlanPath, JSON.stringify(plan, null, 2) + '\n', { flag: 'wx', mode: 0o600 });

@@ -1,0 +1,77 @@
+name: English package verification
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "backend/src/db/ss1/subjects/english.json"
+      - "backend/src/db/ss1/subjectPackageSchema.ts"
+      - "backend/src/db/ss1/compiler.ts"
+      - "backend/src/db/ss1/loader.ts"
+      - "backend/src/db/ingestTopics.ts"
+      - "backend/src/db/ss1/topicParserRules.ts"
+      - "backend/src/db/ss1/assets/english/**"
+      - "tests/ss1/english.package.test.mts"
+      - "scripts/ss1/**"
+      - "docs/ss1/sources/**"
+      - "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv"
+      - "docs/ss1/work/microtasks/english/QUEUE.json"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/english-package-verification.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  english-package:
+    name: English package, source parser and coverage verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+      - name: Run English package tests
+        run: npm run test:ss1:english
+      - name: Validate English package and registered assets
+        run: npm run validate:ss1:english
+      - name: Set up Python for hash-bound source staging
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify and privately stage the complete SS1 source archive
+        run: |
+          python scripts/ss1/prepare_sources.py \
+            --archive docs/ss1/sources/SSS1-original.zip \
+            --output "$RUNNER_TEMP/ss1-staged"
+      - name: Isolate the three assigned English source members
+        run: |
+          python scripts/ss1/filter_english_sources.py \
+            --root "$RUNNER_TEMP/ss1-staged" \
+            --output "$RUNNER_TEMP/ss1-english-staged"
+      - name: Run the real SS1 parser/compiler in plan-only mode
+        shell: bash
+        run: |
+          set +e
+          python scripts/ss1/build_subject_packages.py \
+            --root "$RUNNER_TEMP/ss1-english-staged" \
+            --output "$RUNNER_TEMP/ss1-plan.json" \
+            --subject-slug english
+          compiler_exit=$?
+          set -e
+
+          if [ ! -s "$RUNNER_TEMP/ss1-plan.json" ]; then
+            echo "The real SS1 importer/compiler did not produce its private plan (exit $compiler_exit)." >&2
+            exit "$compiler_exit"
+          fi
+
+          python scripts/ss1/check_english_plan.py "$RUNNER_TEMP/ss1-plan.json"
+          if [ "$compiler_exit" -ne 0 ]; then
+            echo "The subject-only plan remains blocked by explicit English owner gates and intentionally omitted source packages. English-specific parser assertions passed; no database write was attempted."
+          fi

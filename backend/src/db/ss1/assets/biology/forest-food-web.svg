@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Food Web in a Forest</title>
+  <desc id="desc">A project-authored forest food web. Green Plant is the producer. Arrows point from a food source to the organism that eats it. Clearly traceable source relationships are shown; uncertain crossing links are omitted and documented separately.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .title{font:700 42px Arial,sans-serif;fill:#172554}
+      .subtitle{font:22px Arial,sans-serif;fill:#475569}
+      .node{stroke:#334155;stroke-width:3;rx:22;ry:22}
+      .label{font:700 27px Arial,sans-serif;fill:#172033;text-anchor:middle}
+      .small{font:20px Arial,sans-serif;fill:#334155;text-anchor:middle}
+      .edge{fill:none;stroke:#475569;stroke-width:5;stroke-linecap:round;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1600" height="1100" fill="#ffffff"/>
+  <text x="800" y="65" class="title" text-anchor="middle">Food Web in a Forest</text>
+  <text x="800" y="105" class="subtitle" text-anchor="middle">Arrows point from the food source to the consumer</text>
+  <g class="edge">
+    <path d="M300 465 C365 465 395 405 455 405"/>
+    <path d="M300 520 C365 625 390 735 455 760"/>
+    <path d="M565 245 C565 300 565 335 565 355"/>
+    <path d="M675 385 C760 310 785 245 825 220"/>
+    <path d="M675 420 C735 420 765 420 825 420"/>
+    <path d="M675 465 C750 555 770 660 825 700"/>
+    <path d="M675 760 C745 755 775 725 825 710"/>
+    <path d="M675 735 C900 560 1050 260 1225 270"/>
+    <path d="M1045 690 C1115 565 1150 360 1225 300"/>
+    <path d="M1045 420 C1130 390 1175 330 1225 305"/>
+    <path d="M675 225 C760 180 780 175 825 185"/>
+    <path d="M620 270 C735 650 760 865 825 910"/>
+    <path d="M1045 910 C1120 910 1175 900 1225 890"/>
+  </g>
+  <g>
+    <rect class="node" x="70" y="410" width="230" height="150" fill="#dcfce7"/>
+    <text class="label" x="185" y="475">Green Plant</text>
+    <text class="small" x="185" y="515">Producer</text>
+    <rect class="node" x="455" y="155" width="220" height="115" fill="#f1f5f9"/>
+    <text class="label" x="565" y="225">Mouse</text>
+    <rect class="node" x="455" y="355" width="220" height="115" fill="#fef3c7"/>
+    <text class="label" x="565" y="425">Rabbit</text>
+    <rect class="node" x="455" y="705" width="220" height="115" fill="#fef3c7"/>
+    <text class="label" x="565" y="775">Goat</text>
+    <rect class="node" x="825" y="130" width="220" height="115" fill="#e0f2fe"/>
+    <text class="label" x="935" y="200">Owl</text>
+    <rect class="node" x="825" y="365" width="220" height="115" fill="#e0f2fe"/>
+    <text class="label" x="935" y="435">Wild Cat</text>
+    <rect class="node" x="825" y="650" width="220" height="115" fill="#e0f2fe"/>
+    <text class="label" x="935" y="720">Jackal</text>
+    <rect class="node" x="825" y="855" width="220" height="115" fill="#dcfce7"/>
+    <text class="label" x="935" y="925">Snake</text>
+    <rect class="node" x="1225" y="220" width="270" height="115" fill="#fee2e2"/>
+    <text class="label" x="1360" y="290">Lion</text>
+    <rect class="node" x="1225" y="835" width="270" height="115" fill="#f1f5f9"/>
+    <text class="label" x="1360" y="905">Kite</text>
+  </g>
+  <text x="800" y="1045" class="subtitle" text-anchor="middle">SS1 Biology • Week 9 • Project-authored learning diagram</text>
+</svg>

@@ -30,6 +30,14 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. The original poultry diagram was inspe
 - **Derivative:** no crop, trace, redraw or derivative was created. A derivative of an unlicensed source would not resolve the rights issue.
 - If the visual is required for delivery and permission is unavailable, use a separately sourced rights-cleared poultry male/female reproductive-and-excretory diagram with legible labels for testis, vas deferens, intestine, cloaca, kidney, ureter, oviduct, rudimentary right oviduct and uterus. Preserve the male/female distinction and all leader-line relationships.
 
+## Original replacement assets now authored
+
+Two independently authored SVGs are registered to the poultry reproductive-system supplement:
+- `AG-ART-T3-W07-MALE-POULTRY-SYSTEM-01` — `backend/src/db/ss1/assets/agricultural-science/t3-w07-male-poultry-reproductive-system.svg`; 3,615 bytes; SHA-256 `082ac39e27af9b0c1fdc61a3732a43cf08bc1a92acb66f106df78938fb4132c5`.
+- `AG-ART-T3-W07-FEMALE-POULTRY-SYSTEM-01` — `backend/src/db/ss1/assets/agricultural-science/t3-w07-female-poultry-reproductive-system.svg`; 4,446 bytes; SHA-256 `b1f51df2dc342fc0f885ad87b28402450f8859aff831b34625a390a24b7f1c87`.
+
+Both are original SVG artwork, not copies, traces or derivatives of image21. The original unlicensed image remains excluded pending importer/learner-route verification. Asset approval remains PENDING and verification DEFERRED.
+
 ## Changes and validation
 - Added blocking open item `AGRICULTURAL-SCIENCE-T3-W07-MALE-FEMALE-SYSTEMS-RIGHTS` with the precise rights gap and replacement requirement.
 - Marked `AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS` `IMPLEMENTED_TESTING_DEFERRED`; recomputed queue kind counts, status counts and `next_runnable` from all items, with the documented kind priority.
@@ -37,3 +45,7 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. The original poultry diagram was inspe
 - Inspected Week Four blocks 487, 493 and 494 to distinguish the mammalian figures from the poultry diagram.
 - Parsed package/queue JSON and confirmed untouched-file JSON serialisation is byte-stable before edits. Importer, learner rendering, app/device display and tests **not run**; testing remains deferred.
 - No source bytes, media, asset rows, lessons, shared schema/compiler, other subject or delivery assets changed.
+
+
+## Asset integrity correction (2026-11-10)
+The committed original SVG files are the authoritative artwork: the male diagram distinguishes reproductive structures from urinary/digestive structures, and the female diagram shows the functional left reproductive tract and rudimentary right side. Their provenance identifies them as original repository artwork with reuse status `PERMITTED`. The earlier declared byte counts and SHA-256 values were stale metadata. The actual committed files are 3,615 bytes (`082ac39e27af9b0c1fdc61a3732a43cf08bc1a92acb66f106df78938fb4132c5`) and 4,446 bytes (`b1f51df2dc342fc0f885ad87b28402450f8859aff831b34625a390a24b7f1c87`), respectively. The SVG files and lesson body were not changed.

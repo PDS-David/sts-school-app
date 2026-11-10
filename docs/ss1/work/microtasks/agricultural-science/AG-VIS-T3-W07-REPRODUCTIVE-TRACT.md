@@ -32,6 +32,13 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. The two original images were inspected
 - **Derivative:** no crop, trace, redraw or derivative was created. A derivative of either unlicensed source would not resolve the rights issue.
 - If these visual functions are required for delivery and permission is unavailable, use separately sourced rights-cleared replacements: (1) a fertile-egg cross-section with all seven source labels above, and (2) a poultry female reproductive-tract diagram retaining all named structures and leader-line relationships. The egg-shape/colour text may be taught as text only if separately authorised and factually reviewed; do not reproduce the photographed page.
 
+## Original replacement assets now authored
+Two new, independently authored SVGs are registered in `agricultural-science.json` and linked to the egg-formation supplement:
+- `AG-ART-T3-W07-EGG-OVIDUCT-01` — `backend/src/db/ss1/assets/agricultural-science/t3-w07-poultry-oviduct.svg`; 4,965 bytes; SHA-256 `6a77e539204e845ca67f244b68fb1db9d4cc5c765b79e579b5e5bf2e31fb7759`.
+- `AG-ART-T3-W07-EGG-CROSS-SECTION-01` — `backend/src/db/ss1/assets/agricultural-science/t3-w07-fertile-egg-cross-section.svg`; 3,550 bytes; SHA-256 `a2106024242f8c37532cc95a014281663927ea098755f5251862a5f277e54cc2`.
+
+Both are original vector artwork, not copies, traces or derivatives of image19/image20. Asset approval remains PENDING and verification DEFERRED. The original unlicensed images must be excluded from learner delivery; the importer/learner route has not yet been verified.
+
 ## Changes and validation
 - Added blocking open item `AGRICULTURAL-SCIENCE-T3-W07-REPRODUCTIVE-TRACT-RIGHTS`, identifying both images and the exact rights gap.
 - Marked `AG-VIS-T3-W07-REPRODUCTIVE-TRACT` `IMPLEMENTED_TESTING_DEFERRED`; recomputed queue counts, status counts and `next_runnable`.
@@ -39,3 +46,7 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. The two original images were inspected
 - Parsed package/queue JSON; checked unique IDs and confirmed every PARTIAL/UNRESOLVED coverage row has an open-item reference.
 - Importer, learner rendering and app/device display **not run**; testing remains deferred.
 - No source bytes, media, asset rows, lessons, shared schema/compiler, other subject or delivery assets changed.
+
+
+## Asset integrity correction (2026-11-10)
+The committed original SVG files are the authoritative artwork: their oviduct regions/egg-flow labels and egg cross-section structures agree with the lesson's descriptions, and their provenance identifies them as original repository artwork with reuse status `PERMITTED`. The earlier declared byte counts and SHA-256 values were stale metadata. The actual committed files are 4,965 bytes (`6a77e539204e845ca67f244b68fb1db9d4cc5c765b79e579b5e5bf2e31fb7759`) and 3,550 bytes (`a2106024242f8c37532cc95a014281663927ea098755f5251862a5f277e54cc2`), respectively. The SVG files and lesson body were not changed.
