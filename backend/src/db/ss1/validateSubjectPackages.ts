@@ -16,9 +16,11 @@ function sha256(value: string): string {
 }
 
 async function main() {
+  const selectedSlug = process.argv[2];
   const files = (await readdir(subjectsDir, { withFileTypes: true }))
     .filter(entry => entry.isFile() && entry.name.endsWith('.json'))
     .map(entry => entry.name)
+    .filter(file => !selectedSlug || path.basename(file, '.json') === selectedSlug)
     .sort();
 
   assert(files.length > 0, `No subject package JSON files found in ${subjectsDir}`);
