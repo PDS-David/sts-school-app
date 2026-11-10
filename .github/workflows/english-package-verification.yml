@@ -58,9 +58,9 @@ jobs:
       - name: Diagnose exact English term-two revision scheme line
         run: |
           python - <<'PY'
-          import zipfile, xml.etree.ElementTree as ET
+          import os, zipfile, xml.etree.ElementTree as ET
           from pathlib import Path
-          doc = Path(r"$RUNNER_TEMP/ss1-english-staged/SSS 1/2nd Term SS1_/ENGLISH.docx")
+          doc = Path(os.environ["RUNNER_TEMP"]) / "ss1-english-staged" / "SSS 1" / "2nd Term SS1_" / "ENGLISH.docx"
           with zipfile.ZipFile(doc) as z:
               root = ET.fromstring(z.read("word/document.xml"))
           ns = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
