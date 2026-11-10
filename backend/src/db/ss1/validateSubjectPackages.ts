@@ -79,10 +79,10 @@ async function main() {
     });
   }
 
-  process.stdout.write(`${JSON.stringify({ valid: true, packages: summaries }, null, 2)}\\n`);
+  process.stdout.write(`${JSON.stringify({ valid: true, packages: summaries }, null, 2)}\n`);
 }
 
 main().catch(error => {
-  process.stderr.write(`SS1 package validation failed: ${error instanceof Error ? error.message : String(error)}\\n`);
+  process.stderr.write(`SS1 package validation failed: ${error instanceof Error ? error.message : String(error)}\n`);
   process.exitCode = 1;
 });
