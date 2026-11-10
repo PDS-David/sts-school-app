@@ -220,3 +220,10 @@ test('Previously incomplete composite topics now bind their complete same-term s
   assert.equal(story.status, 'IMPLEMENTED_EQUIVALENT');
   assert(story.lesson_ids.includes('SUP-SS1-ENGLISH-STORY-WRITING-T3-W06'));
 });
+
+
+test('The focused SS1 loader selects only the requested English package', () => {
+  const packages = loadPackages(undefined, 'english');
+  assert.deepEqual(packages.map(subjectPackage => subjectPackage.subject_slug), ['english']);
+  assert.throws(() => loadPackages(undefined, 'not-a-registered-subject'), /subject-only package not found/);
+});
