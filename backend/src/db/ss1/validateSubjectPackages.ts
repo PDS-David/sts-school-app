@@ -31,10 +31,13 @@ async function main() {
     const subject = packageSchema.parse(raw);
     const lessonIds = subject.lessons.map(lesson => lesson.id);
     const ruleIds = subject.source_rules.map(rule => rule.id);
+    const assetIds = subject.assets.map(asset => asset.id);
     const sourceIds = [...subject.sources.map(source => source.source_id), ...('external_sources' in subject ? subject.external_sources.map(source => source.source_id) : [])];
+    const repoRoot = path.resolve(here, '../../../..');
 
     assert(new Set(lessonIds).size === lessonIds.length, `${file}: duplicate lesson IDs`);
     assert(new Set(ruleIds).size === ruleIds.length, `${file}: duplicate source-rule IDs`);
+    assert(new Set(assetIds).size === assetIds.length, `${file}: duplicate asset IDs`);
 
     for (const lesson of subject.lessons) {
       assert(lesson.body_sha256 === sha256(lesson.body), `${file}: body hash mismatch for ${lesson.id}`);
@@ -45,6 +48,15 @@ async function main() {
         const markingTotal = question.marking.reduce((total, criterion) => total + criterion.marks, 0);
         assert(question.marks === markingTotal, `${file}: marking total mismatch in ${lesson.id}/${question.id}`);
       }
+    }
+
+    for (const asset of subject.assets) {
+      assert(lessonIds.includes(asset.lesson_id), `${file}: asset ${asset.id} references missing lesson ${asset.lesson_id}`);
+      const assetPath = path.resolve(repoRoot, asset.path);
+      assert(assetPath.startsWith(`${repoRoot}${path.sep}`), `${file}: asset path escapes repository root: ${asset.path}`);
+      const bytes = await readFile(assetPath);
+      assert(bytes.byteLength === asset.bytes, `${file}: asset byte-count mismatch for ${asset.id}`);
+      assert(createHash('sha256').update(bytes).digest('hex') === asset.sha256, `${file}: asset hash mismatch for ${asset.id}`);
     }
 
     for (const coverage of subject.coverage) {
