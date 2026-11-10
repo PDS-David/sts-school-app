@@ -1,17 +1,25 @@
-name: Catering Craft Week Six source identity (temporary)
+name: SS1 Catering Craft source and package verification
 
 on:
   push:
     branches:
-      - agent/ss1-source-inspection
+      - ss1/catering-craft-verification-gate-2026-11-10
     paths:
       - .github/workflows/ss1-source-inspection.yml
+      - backend/src/db/ss1/subjects/catering-craft.json
+      - backend/src/db/ss1/sourceRegistry.json
+      - backend/src/db/ss1/compiler.ts
+      - backend/src/db/ingestTopics.ts
+      - scripts/ss1/verify_catering_package_sources.mts
+      - tests/ss1/catering-craft.*.mts
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  inspect-week-six:
+  verify-catering-craft:
+    name: Verify source members, package compilation, and correction binding
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -29,7 +37,7 @@ jobs:
         working-directory: backend
         run: npm install --ignore-scripts --no-package-lock --no-audit --no-fund
 
-      - name: Verify archive and extract only the registered Second Term source member
+      - name: Verify original archive and extract only the two registered Catering Craft source members
         shell: bash
         run: |
           python3 - <<'PY'
@@ -38,45 +46,49 @@ jobs:
 
           root = Path(os.environ["GITHUB_WORKSPACE"])
           archive = root / "docs/ss1/sources/SSS1-original.zip"
+          package = json.loads((root / "backend/src/db/ss1/subjects/catering-craft.json").read_text(encoding="utf-8"))
           registry = json.loads((root / "backend/src/db/ss1/sourceRegistry.json").read_text(encoding="utf-8"))
-          source_id = "SS1-SRC-f433169ca25c"
-          records = [r for r in registry if r["source_id"] == source_id]
-          if len(records) != 1:
-              raise SystemExit(f"Expected one registry row for {source_id}; found {len(records)}")
-          record = records[0]
           expected_archive_sha = "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e"
           actual_archive_sha = hashlib.sha256(archive.read_bytes()).hexdigest()
           if actual_archive_sha != expected_archive_sha:
               raise SystemExit(f"ARCHIVE_HASH_MISMATCH expected={expected_archive_sha} actual={actual_archive_sha}")
-          member = record["archive_member"]
-          rel = PurePosixPath(member)
-          if rel.is_absolute() or ".." in rel.parts or "\\" in member:
-              raise SystemExit(f"UNSAFE_MEMBER_PATH {member}")
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "catering-craft-source-members"
+          output.mkdir(mode=0o700, parents=True, exist_ok=False)
+          registry_by_id = {row["source_id"]: row for row in registry}
+          verified = []
           with zipfile.ZipFile(archive) as zf:
-              info = zf.getinfo(member)
-              if info.file_size != int(record["bytes"]):
-                  raise SystemExit(f"MEMBER_SIZE_MISMATCH expected={record['bytes']} actual={info.file_size}")
-              data = zf.read(member)
-          actual_member_sha = hashlib.sha256(data).hexdigest()
-          if actual_member_sha != record["sha256"]:
-              raise SystemExit(f"MEMBER_HASH_MISMATCH expected={record['sha256']} actual={actual_member_sha}")
-          target = Path(os.environ["RUNNER_TEMP"]) / "catering-craft-week-six-source.doc"
-          with target.open("xb") as handle:
-              handle.write(data)
-          print(json.dumps({"archive_sha256": actual_archive_sha, "source_id": source_id, "member": member, "member_sha256": actual_member_sha, "bytes": len(data)}))
+              for source in package["sources"]:
+                  record = registry_by_id.get(source["source_id"])
+                  if not record:
+                      raise SystemExit(f"MISSING_REGISTRY_SOURCE {source['source_id']}")
+                  if record["sha256"] != source["sha256"] or record["archive_member"] != source["archive_member"]:
+                      raise SystemExit(f"PACKAGE_REGISTRY_MISMATCH {source['source_id']}")
+                  member = source["archive_member"]
+                  rel = PurePosixPath(member)
+                  if rel.is_absolute() or ".." in rel.parts or "\\" in member:
+                      raise SystemExit(f"UNSAFE_MEMBER_PATH {member}")
+                  info = zf.getinfo(member)
+                  if info.file_size != int(record["bytes"]):
+                      raise SystemExit(f"MEMBER_SIZE_MISMATCH {member}")
+                  data = zf.read(member)
+                  actual_member_sha = hashlib.sha256(data).hexdigest()
+                  if actual_member_sha != source["sha256"]:
+                      raise SystemExit(f"MEMBER_HASH_MISMATCH {member}")
+                  target = output / f"{source['source_id']}.doc"
+                  with target.open("xb") as handle:
+                      handle.write(data)
+                  verified.append({"source_id": source["source_id"], "bytes": len(data), "sha256": actual_member_sha})
+          print(json.dumps({"archive_sha256": actual_archive_sha, "verified_members": verified}, indent=2))
           PY
 
-      - name: Run the existing WordExtractor and topic parser for Week Six only
+      - name: Compile the complete Catering Craft source package with the production parser
         working-directory: backend
         env:
-          SS1_CATERING_SOURCE_FILE: ${{ runner.temp }}/catering-craft-week-six-source.doc
-          SS1_CATERING_IDENTITY_OUTPUT: ${{ runner.temp }}/catering-craft-week-six-identity.json
-        run: node --import tsx ../scripts/ss1/inspect_catering_week6.mts
+          SS1_CATERING_T2_FILE: ${{ runner.temp }}/catering-craft-source-members/SS1-SRC-f433169ca25c.doc
+          SS1_CATERING_T3_FILE: ${{ runner.temp }}/catering-craft-source-members/SS1-SRC-d068ede78d16.doc
+        run: node --import tsx ../scripts/ss1/verify_catering_package_sources.mts
 
-      - name: Upload exact parser identity (no source body)
-        uses: actions/upload-artifact@v4
-        with:
-          name: catering-craft-week-six-identity
-          path: ${{ runner.temp }}/catering-craft-week-six-identity.json
-          retention-days: 1
-          if-no-files-found: error
+      - name: Run package, delivery-correction, and structural tests
+        working-directory: backend
+        run: npm run test:ss1:catering
