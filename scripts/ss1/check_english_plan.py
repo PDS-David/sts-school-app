@@ -54,16 +54,26 @@ marker_rules = [
     if rule["op"] == "classify_marker" and rule["kind"] == "SCHEME_ONLY"
 ]
 identified_rows = plan.get("identified_rows", [])
+def normalize_line(value):
+    return " ".join(value.split())
+
 for rule in marker_rules:
-    normalize_line = lambda value: " ".join(value.split())
-    matches = [
-        row for row in identified_rows
-        if row.get("source_id") == rule["source_id"]
-        and any(
-            normalize_line(line) == normalize_line(rule["anchor"])
-            for line in row.get("row", {}).get("sourceReference", "").splitlines()
-        )
-    ]
+    anchor = rule["anchor"]
+    if "\n" in anchor or "\r" in anchor:
+        matches = [
+            row for row in identified_rows
+            if row.get("source_id") == rule["source_id"]
+            and normalize_line(anchor) in normalize_line(row.get("row", {}).get("sourceReference", ""))
+        ]
+    else:
+        matches = [
+            row for row in identified_rows
+            if row.get("source_id") == rule["source_id"]
+            and any(
+                normalize_line(line) == normalize_line(anchor)
+                for line in row.get("row", {}).get("sourceReference", "").splitlines()
+            )
+        ]
     assert len(matches) <= 1, f"scheme-only marker matched multiple parsed rows: {rule['id']}"
     if matches:
         assert dispositions.get(matches[0]["id"]) == "SCHEME_ONLY", (
