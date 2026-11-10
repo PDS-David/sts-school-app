@@ -110,7 +110,8 @@
     "2026-11-10: completed T3 Week 2 disease-table fact review. Counted 20 source rows, not 21. The report corrects causative agents, terminology, routes and prevention, and distinguishes symptoms/syndromes from diseases. Clinical treatment instructions are not authored.",
     "2026-11-10: completed T3 Week 4 health claims review. Corrected WHO history, antiseptic/disinfectant distinction, alum/water treatment, refuse/sewage, vector control and health-organization roles. No chemical doses or application instructions supplied.",
     "2026-11-10: inspected T3 Week 5 botanical classification VML. All A-I labels match adjacent explanatory key; original VML retained unchanged. Found 9 v:shape elements across five paragraphs, not 5 shape elements as the queue brief stated. No app asset registered pending faithful rendering/export.",
-    "2026-11-10: completed T3 Week 5 agriculture claims, T3 Weeks 6–7 crop/livestock pest and disease claims, T3 Week 8 food-preservation science, and T3 Week 8 food-shortage/population fact reviews. Added T3 Week 8 silos/barns supplemental lesson with 10-mark key. No pesticide, fumigant, chemical-additive, food-processing or irradiation parameters supplied."
+    "2026-11-10: completed T3 Week 5 agriculture claims, T3 Weeks 6–7 crop/livestock pest and disease claims, T3 Week 8 food-preservation science, and T3 Week 8 food-shortage/population fact reviews. Added T3 Week 8 silos/barns supplemental lesson with 10-mark key. No pesticide, fumigant, chemical-additive, food-processing or irradiation parameters supplied.",
+    "Second-Term Week 3 reproduction supplement authored and four project-authored SVGs registered. Lesson covers Amoeba, Paramecium, Spirogyra, earthworm, cockroach, housefly and snail; ten keyed questions total 19 marks. Four redraws preserve source labels/sequence without copying image pixels. Coverage objectives for unicellular and invertebrate reproduction now IMPLEMENTED_EQUIVALENT. Tapeworm scope and assessment key remain teacher blockers; content approval pending; testing deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -128,9 +129,9 @@
     "IMPLEMENTED_TESTING_DEFERRED": null
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 117,
+    "IMPLEMENTED_TESTING_DEFERRED": 121,
     "BLOCKED": 16,
-    "PENDING": 35
+    "PENDING": 31
   },
   "items": [
     {
@@ -3973,7 +3974,7 @@
         "BIO-VIS-T2-W03-HOUSEFLY-REDRAW"
       ],
       "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T2-W03; exact source locators and scope findings are recorded in the Week 3 index."
+      "implementation_reference": "Core lesson text and four diagrams are authored and committed in this branch, but this task is not complete: BIO-FACT-T2-W03-TAPEWORM-SCOPE remains a required dependency. The lesson deliberately omits tapeworm because its inclusion in Week 3 has not been approved. The four visual subtasks are independently implemented; finish this lesson task only after the scope dependency is resolved and any required tapeworm content is handled."
     },
     {
       "id": "BIO-LES-T2-W03-SEXUAL-ADVANTAGES",
@@ -5659,8 +5660,8 @@
         "BIO-WK-T2-W03",
         "BIO-VIS-T2-FIG-PARAMECIUM"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended after the Paramecium figure disposition (2026-11-08). The source figure is absent from text extraction and its reuse rights are not recorded; a project-authored redraw will preserve the visible labels and arrows without copying pixels.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Paramecium conjugation redraw registered as BIO-ASSET-T2-W03-PARAMECIUM, path backend/src/db/ss1/assets/biology/paramecium-conjugation.svg; SHA-256 2b2c1ca1b49587792f58e3fed6b9dd57651f242ec38bac280b9fa85c4a13eddd; 2411 bytes. Labels and circular sequence preserved; original pixels not reused.",
       "completion_condition": "A legible original diagram preserves the source's visible labels and circular arrow sequence, is registered under backend/src/db/ss1/assets/biology/ with schema-compliant metadata and provenance, and leaves the source image untouched."
     },
     {
@@ -5695,8 +5696,8 @@
         "BIO-WK-T2-W03",
         "BIO-VIS-T2-FIG-SPIROGYRA"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended after the Spirogyra figure disposition (2026-11-08). The source figure is absent from text extraction and its reuse rights are not recorded; a project-authored redraw will preserve the visible labels and three-panel sequence without copying pixels.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Spirogyra conjugation redraw registered as BIO-ASSET-T2-W03-SPIROGYRA, path backend/src/db/ss1/assets/biology/spirogyra-conjugation.svg; SHA-256 5fed32775ed70697e5a2efc12aa6600ab77963c56666ccd61fb7513e1dc3aca9; 2872 bytes. A/B/C progression and source labels preserved; original pixels not reused.",
       "completion_condition": "A legible original diagram preserves the source's visible labels and A/B/C progression, is registered under backend/src/db/ss1/assets/biology/ with schema-compliant metadata and provenance, and leaves the source image untouched."
     },
     {
@@ -5731,8 +5732,8 @@
         "BIO-WK-T2-W03",
         "BIO-VIS-T2-FIG-COCKROACH"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended after the cockroach figure disposition (2026-11-08). The source figure is absent from text extraction and its reuse rights are not recorded; a project-authored redraw will preserve the four visible labels/stages and arrow loop without copying pixels.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Cockroach life-cycle redraw registered as BIO-ASSET-T2-W03-COCKROACH, path backend/src/db/ss1/assets/biology/cockroach-life-cycle.svg; SHA-256 f3025ff54e7d68c9870ad83a26fa65536631b33eaea9628e093ac16ee0bdbb02; 1797 bytes. Egg Case → Nymph → Nymph → Adult cycle; original pixels not reused.",
       "completion_condition": "A legible original diagram preserves the Egg Case → Nymph → Nymph → Adult cycle, is registered under backend/src/db/ss1/assets/biology/ with schema-compliant metadata and provenance, and leaves the source image untouched."
     },
     {
@@ -5767,8 +5768,8 @@
         "BIO-WK-T2-W03",
         "BIO-VIS-T2-FIG-HOUSEFLY"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended after the housefly figure disposition (2026-11-08). The source figure is absent from text extraction and its reuse rights are not recorded; a project-authored redraw will preserve the visible labels and cycle without copying pixels.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Housefly life-cycle redraw registered as BIO-ASSET-T2-W03-HOUSEFLY, path backend/src/db/ss1/assets/biology/housefly-life-cycle.svg; SHA-256 e4507767a788c3f4e950a39274e4d3d8760ec8c704801d4c71109adc439acf33; 2054 bytes. Egg → Larva → Pupa → Adult loop and visible stage labels; original pixels not reused.",
       "completion_condition": "A legible original diagram preserves the Egg → Larva → Pupa → Adult loop and the source's group labels, is registered under backend/src/db/ss1/assets/biology/ with schema-compliant metadata and provenance, and leaves the source image untouched."
     },
     {
@@ -5934,10 +5935,6 @@
     "BIO-SCOPE-T2-W10-MANAGEMENT",
     "BIO-LES-T1-W06-CARBON-WATER",
     "BIO-FACT-T1-W10-ANIMAL-HORMONES",
-    "BIO-VIS-T2-W03-PARAMECIUM-REDRAW",
-    "BIO-VIS-T2-W03-SPIROGYRA-REDRAW",
-    "BIO-VIS-T2-W03-COCKROACH-REDRAW",
-    "BIO-VIS-T2-W03-HOUSEFLY-REDRAW",
     "BIO-VIS-T2-W09-FOODWEB-REDRAW"
   ]
 }
