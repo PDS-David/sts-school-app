@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { applyRules } from '../../backend/src/db/ss1/compiler.js';
+import { applyRules, isSubjectLessonId } from '../../backend/src/db/ss1/compiler.js';
 import { loadPackages } from '../../backend/src/db/ss1/loader.js';
 
 const agriculture = loadPackages().find(item => item.subject_slug === 'agricultural-science');
@@ -35,4 +35,11 @@ test('source anchors still reject missing and ambiguous matches', () => {
     () => applyRules({ ...base, text: marker.anchor + '\n' + marker.anchor }, [marker]),
     /anchor missing or ambiguous/,
   );
+});
+
+test('subject lesson IDs accept only the full slug or deterministic subject initials', () => {
+  assert.equal(isSubjectLessonId('SUP-SS1-CC-T3-W10-TABLE-LAYING', 'catering-craft'), true);
+  assert.equal(isSubjectLessonId('SUP-SS1-CATERING-CRAFT-T3-W10-TABLE-LAYING', 'catering-craft'), true);
+  assert.equal(isSubjectLessonId('SUP-SS1-C-T3-W10-TABLE-LAYING', 'catering-craft'), false);
+  assert.equal(isSubjectLessonId('SUP-SS1-FOOD-T1-W01-INTRO', 'food-and-nutrition'), false);
 });
