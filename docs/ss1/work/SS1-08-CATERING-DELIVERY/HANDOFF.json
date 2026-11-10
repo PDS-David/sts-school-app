@@ -26,7 +26,8 @@
     "Corrected content used for completion, summary, practice and generated assessment grounding",
     "Correction fingerprint stored on generated assessments",
     "Stale assessments filtered from learner assessment lists and denied at question/submit routes",
-    "Learner/parent answer details blocked for withdrawn linked assessments without deleting submissions or completions"
+    "Learner/parent answer details blocked for withdrawn linked assessments without deleting submissions or completions",
+    "Persistent assessment withdrawal tombstones so assessments remain hidden after their topic link is cleared"
   ],
   "deferred_tests": [
     "node --import tsx --test tests/ss1/catering-craft.package.test.mts",
@@ -43,5 +44,5 @@
     "Deployment"
   ],
   "next_dependency": "Complete global SS1-08 integration across all registered subject packages and 61 source dispositions, then owner-authorised SS1-09 verification/release.",
-  "implementation_commit_sha": "d0852aff68ea238fa6d22a78ed904d11156515fe"
+  "implementation_commit_sha": "ca017b7659a608ac1cd88daa8af421c80da42751"
 }
