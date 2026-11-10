@@ -8753,8 +8753,8 @@
     {
       "id": "BIOLOGY-T1-W01-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 1 has no deliverable teaching. Nine coverage entries were indexed for blocks 13-41 and the combined assignment: COV-BIO-T1-W01-BIOLOGY-SCIENCE, -BRANCHES, -INQUIRY, -PROCESS-ORDER, -PROCESS-STEPS and -THEORY-LAW are PARTIAL (taught in the source, but the package has no lesson and no parsed row for the week and the importer has not been run), and COV-BIO-T1-W01-SCHEME-1, -PROCESS-GAP and -ASSESSMENT are UNRESOLVED (the scheme's Week 1 objective is not taught in Week 1; four of the steps the week lists are never defined; the first assessment sets no question on the week's own teaching). The appended supplement BIO-LES-T1-W01-BIOLOGY-AND-INQUIRY is gated on BIO-FACT-T1-W01-SCOPE because the missing steps and the untaught scheme objective cannot be filled from the source.",
-      "required_action": "Run the normal import/parse step for the 1st Term source, then author and approve a Week 1 lesson carrying the teaching that is actually at blocks 15-40. Before that, record in BIO-FACT-T1-W01-SCOPE whether the living-things teaching at blocks 45-87 is re-scoped to Week 1 or stays in Week 2. Do not move source blocks, do not write lesson content the source does not supply, and do not invent the experiment quantities or safety instructions the week lacks.",
+      "detail": "Week 1 now has registered student lessons for Biology and Scientific Inquiry plus a separate keyed practice assessment. The source scheme says 'Recognizing Living Things' while the Week 1 body says 'Biology and Inquiry'; the matching living/non-living content appears in Week 2. The mismatch is preserved, not silently resolved.",
+      "required_action": "Teacher/owner to confirm whether the Week 1 scheme topic should be re-scoped to Week 2 or the body sequence otherwise corrected. The Week 1 body lesson itself is now available.",
       "affected_ids": [
         "COV-BIO-T1-W01-SCHEME-1",
         "COV-BIO-T1-W01-BIOLOGY-SCIENCE",
@@ -8815,13 +8815,13 @@
     {
       "id": "BIOLOGY-T1-W01-THEORY-LAW-FACT",
       "kind": "FACT",
-      "detail": "Block 40 (sha256 50188a7f28f8dcac90ac3da602d1a481fe920f8ec95855ccf27036acf7a71689) teaches that 'By the time the theory is extensively tested and proven to be true, it becomes a LAW OR PRINCIPLE', and block 38 that a hypothesis confirmed by repeated experiment 'becomes a THEORY'. Whether that escalation is what the approved curriculum requires is a factual question the source cannot settle: the words theory, law and hypothesis occur in this document only at blocks 27, 30, 31, 38 and 40, there is no other passage to check against, and the repository holds no approved curriculum reference for Biology. No authority is invented here.",
-      "required_action": "Obtain the curriculum or textbook reference (with edition and page) that the teacher actually uses, and record the decision in BIO-FACT-T1-W01-SCOPE, before any Week 1 lesson states the theory/law relationship. Until then the source wording stays recorded as wording and is not delivered as fact.",
+      "detail": "The source's theory-to-law progression is corrected in SUP-SS1-BIOLOGY-T1-W01-BIOLOGY-AND-INQUIRY using OpenStax: theories explain patterns; laws describe regular relationships; one does not automatically become the other.",
+      "required_action": "Review the supplemental correction and approve content; no source bytes were altered.",
       "affected_ids": [
         "COV-BIO-T1-W01-THEORY-LAW",
         "BIO-FACT-T1-W01-SCOPE"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BIOLOGY-T1-W02-COVERAGE",
