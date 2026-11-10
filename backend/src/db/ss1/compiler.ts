@@ -12,7 +12,17 @@ export interface Plan { version: 'ss1-plan-v1'; rows: Row[]; identified_rows: Id
 function must(ok: unknown, message: string): asserts ok { if (!ok) throw new Error(`SS1: ${message}`); }
 function unique(values: string[], label: string) { must(new Set(values).size === values.length, `duplicate ${label}`); }
 const escapeRegex = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-function once(body: string, anchor: string) {
+function once(body: string, anchor: string, wholeLine = false): { index: number; length: number } {
+  if (wholeLine) {
+    // Scheme-marker lines: a single line, tolerant of flattened internal whitespace and edge whitespace.
+    must(!/[\r\n]/u.test(anchor), 'scheme marker anchor must be one line');
+    const parts = anchor.trim().split(/\s+/u).map(escapeRegex);
+    must(parts.length > 0 && parts[0] !== '', 'empty source anchor');
+    const linePattern = new RegExp('^[\\t \\u00a0]*' + parts.join('[\\t \\u00a0]+') + '[\\t \\u00a0\\r]*$', 'gmu');
+    const lineMatches = [...body.matchAll(linePattern)];
+    must(lineMatches.length === 1, 'scheme marker line missing or ambiguous: ' + anchor.slice(0, 80));
+    return { index: lineMatches[0].index!, length: lineMatches[0][0].length };
+  }
   // DOCX text extractors can flatten a paragraph break into spaces or tabs, so internal
   // whitespace runs are equivalent. Leading/trailing anchor whitespace is significant
   // (it is what makes indented headings unique) and is matched literally.
@@ -21,8 +31,8 @@ function once(body: string, anchor: string) {
   const core = anchor.slice(lead.length, anchor.length - trail.length);
   const pattern = new RegExp(escapeRegex(lead) + core.split(/\s+/u).map(escapeRegex).join('\\s+') + escapeRegex(trail), 'gu');
   const matches = [...body.matchAll(pattern)];
-  must(matches.length === 1, `anchor missing or ambiguous: ${anchor.slice(0, 80)}`);
-  return matches[0].index!;
+  must(matches.length === 1, 'anchor missing or ambiguous: ' + anchor.slice(0, 80));
+  return { index: matches[0].index!, length: matches[0][0].length };
 }
 export const originalLessonId = (sourceId: string, body: string) => `${sourceId}:BODY:${sha256(body)}`;
 /** Structural insertions only. No instructional character is deleted or rewritten. */
@@ -30,16 +40,18 @@ export function applyRules(input: SourceInput, rules: SourceRule[]): string {
   let text = input.text;
   for (const r of rules) {
     must(r.source_id === input.source_id && r.source_sha256 === input.sha256, `rule ${r.id} source mismatch`);
-    once(input.text, r.anchor);
+    once(input.text, r.anchor, r.op === 'classify_marker' && r.match_mode === 'WHOLE_LINE');
     if (r.op === 'split_before' || r.op === 'attach_stranded_label') {
       must(/^(?:[0-9]{1,2})(?:\s*(?:-|&|and)\s*[0-9]{1,2})?$/.test(r.week_label), `rule ${r.id}: numeric week label required`);
-      const i = once(text, r.anchor);
-      must(i === 0 || text[i - 1] === '\n', `rule ${r.id}: anchor must start at a line boundary`);
+      const anchorMatch = once(text, r.anchor);
+      const i = anchorMatch.index;
+      const lineStart = text.lastIndexOf('\n', i - 1) + 1;
+      must(text.slice(lineStart, i).trim() === '', 'rule ' + r.id + ': anchor must start at a line boundary');
       if (r.op === 'attach_stranded_label') {
         const next = once(text, r.following_anchor);
-        must(next >= i + r.anchor.length && text.slice(i + r.anchor.length, next).trim() === '', `rule ${r.id}: label must immediately precede following anchor`);
+        must(next.index >= i + anchorMatch.length && text.slice(i + anchorMatch.length, next.index).trim() === '', 'rule ' + r.id + ': label must immediately precede following anchor');
       }
-      text = text.slice(0, i) + `WEEK ${r.week_label}\n` + text.slice(i);
+      text = text.slice(0, lineStart) + 'WEEK ' + r.week_label + '\n' + text.slice(lineStart);
     }
   }
   return text;
@@ -100,16 +112,25 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
       if (firstBody && text.indexOf(firstBody) > 0) plan.dispositions.push({ id: `${s.source_id}:PREAMBLE`, status: 'PREAMBLE_REQUIRES_COVERAGE', detail: sha256(text.slice(0, text.indexOf(firstBody))) });
       if (!topics.length) plan.blockers.push(`NO_PARSED_LESSONS:${s.source_id}`);
       const markerRules = rules.filter(r => r.op === 'classify_marker');
+      const normalizeMarkerLine = (value: string) => value.replace(/[\t \u00a0]+/gu, ' ').trim();
+      const normalizeMarkerText = (value: string) => value.replace(/\s+/gu, ' ').trim();
+      const markerMatches = (body: string, rule: { anchor: string; match_mode?: 'SUBSTRING' | 'WHOLE_LINE' }) => {
+        if (rule.match_mode === 'WHOLE_LINE') {
+          const markerAnchor = normalizeMarkerLine(rule.anchor);
+          return body.split(/\r?\n/u).some(line => normalizeMarkerLine(line) === markerAnchor);
+        }
+        return normalizeMarkerText(body).includes(normalizeMarkerText(rule.anchor));
+      };
       for (const rule of markerRules) {
-        const matches = topics.filter(t => t.body.includes(rule.anchor));
+        const matches = topics.filter(t => markerMatches(t.body, rule));
         if (rule.op === 'classify_marker' && rule.kind === 'SCHEME_ONLY' && matches.length === 0) {
           plan.dispositions.push({ id: rule.id, status: 'SCHEME_ONLY', detail: rule.evidence.locator });
-        } else must(matches.length === 1, `marker ${rule.id} must bind exactly one parsed row`);
+        } else must(matches.length === 1, 'marker ' + rule.id + ' must bind exactly one parsed row');
       }
       for (const t of topics) {
         must(t.title.trim() && t.title !== '(untitled)' && t.body.trim(), `empty lesson ${s.source_id}`);
         const id = originalLessonId(s.source_id, t.body);
-        const markers = markerRules.filter(r => t.body.includes(r.anchor));
+        const markers = markerRules.filter(r => markerMatches(t.body, r));
         must(markers.length <= 1, `ambiguous marker ${id}`);
         plan.dispositions.push({ id, status: markers.length ? (markers[0] as Extract<SourceRule, {op:'classify_marker'}>).kind : 'ORIGINAL', detail: s.archive_member });
         // Marker bodies are retained; classification is not authority to discard instructional lines.

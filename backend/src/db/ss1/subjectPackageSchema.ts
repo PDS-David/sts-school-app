@@ -14,7 +14,7 @@ const ruleBase = { id: text, source_id: text, source_sha256: digest, anchor: tex
 export const ruleSchema = z.discriminatedUnion('op', [
   z.object({ ...ruleBase, op: z.literal('split_before'), week_label: text }).strict(),
   z.object({ ...ruleBase, op: z.literal('attach_stranded_label'), week_label: text, following_anchor: text }).strict(),
-  z.object({ ...ruleBase, op: z.literal('classify_marker'), kind: z.enum(['REVISION', 'EXAMINATION', 'SCHEME_ONLY']) }).strict(),
+  z.object({ ...ruleBase, op: z.literal('classify_marker'), kind: z.enum(['REVISION', 'EXAMINATION', 'SCHEME_ONLY']), match_mode: z.enum(['SUBSTRING', 'WHOLE_LINE']).optional() }).strict(),
   z.object({ ...ruleBase, op: z.literal('source_alias'), observed_subject: text, canonical_subject: text, approval_reference: text }).strict(),
   z.object({ ...ruleBase, op: z.literal('exclude_duplicate'), target_source_id: text, target_sha256: digest }).strict(),
 ]);

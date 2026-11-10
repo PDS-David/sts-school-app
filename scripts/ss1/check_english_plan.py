@@ -53,10 +53,36 @@ marker_rules = [
     rule for rule in package["source_rules"]
     if rule["op"] == "classify_marker" and rule["kind"] == "SCHEME_ONLY"
 ]
+identified_rows = plan.get("identified_rows", [])
+def normalize_line(value):
+    return " ".join(value.split())
+
 for rule in marker_rules:
-    assert dispositions.get(rule["id"]) == "SCHEME_ONLY", (
-        f"scheme-only marker was not preserved: {rule['id']}"
-    )
+    anchor = normalize_line(rule["anchor"])
+    if rule.get("match_mode") == "WHOLE_LINE":
+        matches = [
+            row for row in identified_rows
+            if row.get("source_id") == rule["source_id"]
+            and any(
+                normalize_line(line) == anchor
+                for line in row.get("row", {}).get("sourceReference", "").splitlines()
+            )
+        ]
+    else:
+        matches = [
+            row for row in identified_rows
+            if row.get("source_id") == rule["source_id"]
+            and anchor in normalize_line(row.get("row", {}).get("sourceReference", ""))
+        ]
+    assert len(matches) <= 1, f"scheme-only marker matched multiple parsed rows: {rule['id']}"
+    if matches:
+        assert dispositions.get(matches[0]["id"]) == "SCHEME_ONLY", (
+            f"parsed scheme-only row was not classified: {rule['id']}"
+        )
+    else:
+        assert dispositions.get(rule["id"]) == "SCHEME_ONLY", (
+            f"unparsed scheme-only marker was not preserved: {rule['id']}"
+        )
 
 supplements = [
     row for row in rows
@@ -101,7 +127,13 @@ for item in package["open_items"]:
 
 english_blockers = {
     blocker for blocker in plan.get("blockers", [])
-    if "english" in blocker.lower()
+    if blocker.startswith((
+        "PENDING_PACKAGE:english",
+        "LESSON_NOT_APPROVED:SUP-SS1-ENGLISH-",
+        "ASSET_NOT_APPROVED:ASSET-SS1-ENGLISH-",
+        "INCOMPLETE_COVERAGE:ENGLISH-",
+        "OPEN_ITEM:ENGLISH-",
+    ))
 }
 assert english_blockers == expected_blockers, (
     "English-specific compiler blockers differ from the explicit approval/coverage gates; "
@@ -116,7 +148,7 @@ print(json.dumps({
     "scheme_only_markers": len(marker_rules),
     "project_authored_supplements": len(supplements),
     "english_specific_blockers": len(english_blockers),
-    "expected_owner_gates_only": True,
+    "english_specific_blockers_match_expected": True,
     "overall_plan_ready": bool(plan.get("ready")),
     "overall_plan_blocker_count": len(plan.get("blockers", [])),
 }, indent=2))

@@ -6,6 +6,7 @@ import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import { applyRules } from '../../backend/src/db/ss1/compiler.ts';
+import { loadPackages } from '../../backend/src/db/ss1/loader.ts';
 
 const raw = JSON.parse(readFileSync(new URL('../../backend/src/db/ss1/subjects/english.json', import.meta.url), 'utf8'));
 const hash = (value: string) => createHash('sha256').update(value, 'utf8').digest('hex');
@@ -105,12 +106,12 @@ test('English source rules reject wrong hashes, missing/ambiguous anchors and pr
     );
     assert.throws(
       () => applyRules({ ...input, text: 'anchor deliberately absent' }, [rule]),
-      /anchor missing or ambiguous/,
+      /missing or ambiguous/,
       'missing anchor must fail: ' + rule.id,
     );
     assert.throws(
       () => applyRules({ ...input, text: rule.anchor + '\n' + rule.anchor }, [rule]),
-      /anchor missing or ambiguous/,
+      /missing or ambiguous/,
       'repeated anchor must fail: ' + rule.id,
     );
     const transformed = applyRules(input, [rule]);
@@ -219,4 +220,39 @@ test('Previously incomplete composite topics now bind their complete same-term s
   assert(adverbs.lesson_ids.includes('SUP-SS1-ENGLISH-ADVERBS-FEATURES-T2-W07'));
   assert.equal(story.status, 'IMPLEMENTED_EQUIVALENT');
   assert(story.lesson_ids.includes('SUP-SS1-ENGLISH-STORY-WRITING-T3-W06'));
+});
+
+
+test('The focused SS1 loader selects only the requested English package', () => {
+  const packages = loadPackages(undefined, 'english');
+  assert.deepEqual(packages.map(subjectPackage => subjectPackage.subject_slug), ['english']);
+  assert.throws(() => loadPackages(undefined, 'not-a-registered-subject'), /subject-only package not found/);
+});
+
+
+test('A standalone Week 8 scheme marker is not confused with the longer teaching heading', () => {
+  const p = packageSchema.parse(raw);
+  const rule = p.source_rules.find(candidate => candidate.id === 'SS1-SRC-d8bd8f85fd73-R010');
+  assert(rule);
+  const sourceText = rule.anchor + '\n' + rule.anchor.trim() + ' –WORDS THAT ARE OPPOSITE IN MEANING';
+  assert.equal(applyRules({
+    source_id: rule.source_id,
+    sha256: rule.source_sha256,
+    text: sourceText,
+  }, [rule]), sourceText);
+});
+
+
+test('Every one-line English scheme marker explicitly uses whole-line matching', () => {
+  const p = packageSchema.parse(raw);
+  const singleLine = p.source_rules.filter(rule =>
+    rule.op === 'classify_marker' && !/[\r\n]/u.test(rule.anchor)
+  );
+  const multiLine = p.source_rules.filter(rule =>
+    rule.op === 'classify_marker' && /[\r\n]/u.test(rule.anchor)
+  );
+  assert.equal(singleLine.length, 23);
+  assert.equal(multiLine.length, 9);
+  assert(singleLine.every(rule => rule.match_mode === 'WHOLE_LINE'));
+  assert(multiLine.every(rule => rule.match_mode !== 'WHOLE_LINE'));
 });
