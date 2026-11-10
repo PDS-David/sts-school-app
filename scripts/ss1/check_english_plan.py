@@ -55,10 +55,14 @@ marker_rules = [
 ]
 identified_rows = plan.get("identified_rows", [])
 for rule in marker_rules:
+    normalize_line = lambda value: " ".join(value.replace("\\u00a0", " ").split())
     matches = [
         row for row in identified_rows
         if row.get("source_id") == rule["source_id"]
-        and rule["anchor"] in row.get("row", {}).get("sourceReference", "")
+        and any(
+            normalize_line(line) == normalize_line(rule["anchor"])
+            for line in row.get("row", {}).get("sourceReference", "").splitlines()
+        )
     ]
     assert len(matches) <= 1, f"scheme-only marker matched multiple parsed rows: {rule['id']}"
     if matches:
