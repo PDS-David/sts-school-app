@@ -1,6 +1,6 @@
 # Bookkeeping — consolidated owner and subject-expert decisions
 
-Status: **Updated 8 November 2026. Second-term source disposition and first-term Week 1–4 delivery replacement approval are resolved. Final content approval and technical verification remain open.**
+Status: **Updated 10 November 2026. Owner approval and package-level verification are recorded for all 32 lessons; assessment closeout resources are added. Wider source-importer, database, device and end-to-end delivery acceptance remain open.**
 
 ## Decisions already given by the owner
 
