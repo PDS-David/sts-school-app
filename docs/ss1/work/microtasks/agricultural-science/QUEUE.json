@@ -147,7 +147,8 @@
     "2026-11-10: Added original eight-source farm-power infographic and linked it to the human/animal/water/biogas supplement. Updated the five Week Two visual disposition records; unlicensed original images remain excluded pending importer/learner-route verification.",
     "2026-11-10: PR #468 CI run 42797644614 executed the subject-package validation loop before stopping in the unrelated Bookkeeping regression RULE-BK-T3-W02 (shared compiler.ts: anchor must start at a line boundary). No Agricultural Science-specific failure was reported; later PostgreSQL/route test groups were skipped by the shared static-step failure. Do not change shared compiler code under the Agricultural Science package scope.",
     "AG-asset-integrity correction (2026-11-10): the four committed original SVGs were confirmed as the intended learner diagrams by their structure/labels, matching lesson explanations and original-artwork PERMITTED provenance. Their committed bytes were authoritative; stale package and documentation metadata were rebound without editing SVG artwork or lesson bodies. Actual UTF-8 bytes/SHA-256: AG-ART-T3-W07-EGG-OVIDUCT-01 4,965 / 6a77e539204e845ca67f244b68fb1db9d4cc5c765b79e579b5e5bf2e31fb7759; AG-ART-T3-W07-EGG-CROSS-SECTION-01 3,550 / a2106024242f8c37532cc95a014281663927ea098755f5251862a5f277e54cc2; AG-ART-T3-W07-MALE-POULTRY-SYSTEM-01 3,615 / 082ac39e27af9b0c1fdc61a3732a43cf08bc1a92acb66f106df78938fb4132c5; AG-ART-T3-W07-FEMALE-POULTRY-SYSTEM-01 4,446 / b1f51df2dc342fc0f885ad87b28402450f8859aff831b34625a390a24b7f1c87. No SVG or lesson content changed.",
-    "2026-11-10: Reproduced all 28 original teaching-row IDs from the exact source DOCX members using Mammoth 1.12.2 extraction behavior and ingestTopics.ts parser logic; First-Term Week One hash cross-check matches. Added original revision practice, regional-climate extension, and safe complete pig/cattle replacement lessons with delivery corrections. Runtime verification remains deferred."
+    "2026-11-10: Reproduced all 28 original teaching-row IDs from the exact source DOCX members using Mammoth 1.12.2 extraction behavior and ingestTopics.ts parser logic; First-Term Week One hash cross-check matches. Added original revision practice, regional-climate extension, and safe complete pig/cattle replacement lessons with delivery corrections. Runtime verification remains deferred.",
+    "2026-11-10: Added original Weeks Four/Five animal-systems visual atlas and five independent SVG diagrams; unlicensed embedded DOCX images remain excluded pending learner-route verification."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -158,11 +159,11 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 38,
+    "LESSON": 39,
     "CORRECTION_BINDING": 16
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 151,
+    "IMPLEMENTED_TESTING_DEFERRED": 152,
     "BLOCKED": 14
   },
   "items": [
@@ -6256,12 +6257,45 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Implemented as CORR-AG-T3-W09-PIG-SAFE-REPLACEMENT, bound to original row SS1-SRC-458a07f7ea5a:BODY:b431485e025fd5054046a9041249f1b34a5042973238fbf2b652cbf27fbf4ef7 and replacement SUP-SS1-AGRICULTURAL-SCIENCE-T3-W09-PIG-MANAGEMENT-REPLACEMENT. Runtime application remains unverified.",
       "completion_condition": "Correction record binds the exact source member, original row ID and body hash to a complete same-term replacement lesson; original source bytes remain unchanged."
+    },
+    {
+      "id": "AG-LES-T3-W04-W05-ANIMAL-SYSTEMS-ATLAS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Third Term Weeks Four and Five",
+      "objective": "Create an original visual atlas with independently authored, rights-cleared diagrams for ruminant/monogastric/poultry digestion, mammalian male/female reproduction, mammalian respiration, fish gills and external pig/cattle anatomy; exclude unlicensed source images.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "backend/src/db/ss1/assets/agricultural-science/",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json"
+      ],
+      "depends_on": [
+        "AG-WK-T3-W04",
+        "AG-WK-T3-W05"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as SUP-SS1-AGRICULTURAL-SCIENCE-T3-W04-W05-ANIMAL-SYSTEMS-ATLAS with five original SVG assets: digestive-system comparison, mammalian reproductive systems, respiratory comparison, pig external anatomy and cattle external anatomy. Original unlicensed source images remain excluded; runtime display is deferred.",
+      "completion_condition": "Original learner-facing visual atlas and original SVG assets are registered with correct byte/hash metadata, alt text, lesson links and permitted provenance. Verify student route separately."
     }
   ],
   "review": {
     "date": "2026-11-10",
     "reviewed_master_sha": "28cbdbf14aaadcb72f7172a42661f2c0f4b72029",
-    "scope": "Source archive and all three Agricultural Science member hashes verified. All 28 parsed teaching-row identities deterministically reproduced; original lesson IDs are bound to curriculum coverage. Added original revision practice, regional climate extension and safe pig/cattle replacement lessons. Importer/compiler, database, tests and authenticated learner delivery remain deferred.",
+    "scope": "Source archive and all three Agricultural Science member hashes verified. All 28 parsed teaching-row identities deterministically reproduced; original lesson IDs are bound to curriculum coverage. Added original revision practice, regional climate extension and safe pig/cattle replacement lessons. Importer/compiler, database, tests and authenticated learner delivery remain deferred. Visual atlas with five original SVG assets added; asset registration is implemented but runtime rendering remains deferred.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
