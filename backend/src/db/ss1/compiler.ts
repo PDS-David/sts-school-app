@@ -189,7 +189,11 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
         must(c.status === 'IMPLEMENTED_EQUIVALENT', `external scheme coverage must map to authored equivalent ${c.id}`);
       }
       for (const id of c.lesson_ids) {
-        const marker = c.status === 'MARKER' && p.source_rules.some(r => r.id === id && r.source_id === c.source_id && r.op === 'classify_marker' && r.kind === 'SCHEME_ONLY') && plan.dispositions.some(d => d.id === id && d.status === 'SCHEME_ONLY');
+        const markerRule = p.source_rules.find(r => r.id === id && r.source_id === c.source_id && r.op === 'classify_marker');
+        const marker = c.status === 'MARKER'
+          && markerRule?.op === 'classify_marker'
+          && ['REVISION', 'EXAMINATION', 'SCHEME_ONLY'].includes(markerRule.kind)
+          && plan.dispositions.some(d => d.id === id && d.status === markerRule.kind);
         must(marker || (byId.has(id) && byId.get(id)!.row.subjectName === p.canonical_subject), `coverage target ${c.id}/${id}`);
       }
       if (c.status === 'PARTIAL' || c.status === 'UNRESOLVED') plan.blockers.push(`INCOMPLETE_COVERAGE:${c.id}`);
