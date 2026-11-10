@@ -43,6 +43,30 @@ jobs:
           python scripts/ss1/prepare_sources.py \
             --archive docs/ss1/sources/SSS1-original.zip \
             --output "$RUNNER_TEMP/ss1-staged"
+      - name: Diagnose Agricultural Science parsed source identities
+        run: |
+          node --import tsx --input-type=module <<'NODE'
+          import path from 'node:path';
+          import { createHash } from 'node:crypto';
+          import mammoth from 'mammoth';
+          import { parseTopics } from './backend/src/db/ingestTopics.ts';
+          const root = path.join(process.env.RUNNER_TEMP, 'ss1-staged');
+          const sources = [
+            'SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx',
+            'SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx',
+            'SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx',
+          ];
+          for (const member of sources) {
+            const file = path.join(root, ...member.split('/'));
+            const text = (await mammoth.extractRawText({ path: file })).value;
+            const rows = parseTopics(text);
+            console.log('AGRICULTURAL_SOURCE', member);
+            for (const row of rows) {
+              const body_sha256 = createHash('sha256').update(row.body, 'utf8').digest('hex');
+              console.log(JSON.stringify({ weekLabel: row.weekLabel, title: row.title, body_sha256, body_chars: row.body.length }));
+            }
+          }
+          NODE
       - name: Compile every registered SS1 subject in plan-only mode
         run: |
           python scripts/ss1/build_subject_packages.py \
