@@ -397,4 +397,4 @@ Use [ASSESSMENT-T3-W12-EXAM.md](./ASSESSMENT-T3-W12-EXAM.md). This is a project-
 
 ## Release boundary
 
-The package and assessment regressions pass CI. This guide does not certify full-source DOC/DOCX parser execution, production database import, teacher moderation, or actual student-device/end-to-end delivery. Keep the SS1 importer in plan-only mode until those separate gates are passed.
+The package and assessment regressions pass CI, and the SS1 loader now validates all 21 registered subject packages (PR #450). This guide does not certify extraction/compilation of the original Bookkeeping DOC/DOCX source archive, production database import, teacher moderation, or actual student-device/end-to-end delivery. Keep the SS1 importer in plan-only mode until those separate gates are passed.

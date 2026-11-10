@@ -66,7 +66,8 @@ async function main() {
         const lessonExists = lessonIds.includes(lessonId);
         const markerExists = coverage.status === 'MARKER' && ruleIds.includes(lessonId);
         const originalExists = sourceIds.some(sourceId => lessonId.startsWith(`${sourceId}:BODY:`));
-        assert(lessonExists || markerExists || originalExists, `${file}: unresolved coverage target ${coverage.id} -> ${lessonId}`);
+        const correctionExists = subject.delivery_corrections.some(correction => correction.id === lessonId);
+        assert(lessonExists || markerExists || originalExists || correctionExists, `${file}: unresolved coverage target ${coverage.id} -> ${lessonId}`);
       }
       if (coverage.status === 'IMPLEMENTED_EQUIVALENT') {
         assert(coverage.lesson_ids.some(id => lessonIds.includes(id)), `${file}: equivalent coverage has no supplement: ${coverage.id}`);
