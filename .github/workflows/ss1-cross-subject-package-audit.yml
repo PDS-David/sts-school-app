@@ -67,6 +67,27 @@ jobs:
               console.log(JSON.stringify({ weekLabel: row.weekLabel, title: row.title, body_sha256, body_chars: row.body.length }));
             }
           }
+          const bkPath = 'SSS 1/1st Term SS1_/book keeping.docx';
+          const bkFile = path.join(root, ...bkPath.split('/'));
+          const bkText = (await mammoth.extractRawText({ path: bkFile })).value;
+          const bkPackage = JSON.parse(readFileSync('backend/src/db/ss1/subjects/bookkeeping.json', 'utf8'));
+          const { applyRules, originalLessonId } = await import('./backend/src/db/ss1/compiler.ts');
+          const bkSource = bkPackage.sources.find(s => s.source_id === 'SS1-SRC-62b02f2adcb3');
+          const bkCorrection = bkPackage.delivery_corrections.find(c => c.id === 'CORR-BK-T1-W04');
+          const correctedText = applyRules({ source_id: bkSource.source_id, sha256: bkSource.sha256, filePath: bkFile, text: bkText }, bkPackage.source_rules.filter(r => r.source_id === bkSource.source_id));
+          const bkRows = parseTopics(correctedText);
+          const original = bkRows.find(row => originalLessonId(bkSource.source_id, row.body) === bkCorrection.source_lesson_id);
+          const replacement = bkPackage.lessons.find(l => l.id === bkCorrection.replacement_id);
+          console.log('BOOKKEEPING_CORRECTION_DIAGNOSTIC', JSON.stringify({
+            sourceHashMatches: bkSource.sha256 === bkCorrection.source_sha256,
+            originalFound: Boolean(original),
+            actualOriginalId: original ? originalLessonId(bkSource.source_id, original.body) : null,
+            bodyHashMatches: original ? createHash('sha256').update(original.body, 'utf8').digest('hex') === bkCorrection.body_sha256 : false,
+            replacementFound: Boolean(replacement),
+            replacementTerm: replacement?.term ?? null,
+            originalTerm: bkSource.term,
+            termsMatch: Boolean(replacement && replacement.term === bkSource.term),
+          }));
           NODE
       - name: Compile every registered SS1 subject in plan-only mode
         run: |
