@@ -228,3 +228,16 @@ test('The focused SS1 loader selects only the requested English package', () => 
   assert.deepEqual(packages.map(subjectPackage => subjectPackage.subject_slug), ['english']);
   assert.throws(() => loadPackages(undefined, 'not-a-registered-subject'), /subject-only package not found/);
 });
+
+
+test('A standalone Week 8 scheme marker is not confused with the longer teaching heading', () => {
+  const p = packageSchema.parse(raw);
+  const rule = p.source_rules.find(candidate => candidate.id === 'SS1-SRC-d8bd8f85fd73-R010');
+  assert(rule);
+  const sourceText = rule.anchor + '\\n' + rule.anchor.trim() + ' –WORDS THAT ARE OPPOSITE IN MEANING';
+  assert.equal(applyRules({
+    source_id: rule.source_id,
+    sha256: rule.source_sha256,
+    text: sourceText,
+  }, [rule]), sourceText);
+});
