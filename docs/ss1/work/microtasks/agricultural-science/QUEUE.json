@@ -130,7 +130,8 @@
     "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION (2026-11-10): authored veterinary-source-grounded, non-procedural sheep embryo-development and normal lamb-presentation supplement with seven keyed questions (40 marks). Content coverage implemented; independent named veterinary reviewer sign-off remains a release gate and open owner action. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T3-W07-POULTRY-REPRO-SYSTEM (2026-11-10): authored complete original prose for male/female poultry reproductive systems, source diagram labels and oviduct functions; seven keyed questions, 40 marks. No unlicensed source images or hormone table reused. Poultry reproductive-system content coverage implemented; source image rights and egg/hormone fact checks remain open. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T3-W08-ENVIRONMENTAL-MEASURES (2026-11-10): authored sourced supplement for relative-humidity instruments, CBPP as second livestock airborne disease and innate/adaptive immunity, with 40-mark keyed practice. Three of five assessment gaps resolved; Nigeria climate ranking and equatorial-rainforest cattle-production explanation remain unverified, so assessment coverage remains PARTIAL and open. Source wording on wind/TB remains unchanged pending correction binding. Approval PENDING; verification/testing DEFERRED.",
-    "AG-LES-T3-W09-PIG-ASSESSMENT-SUPPLEMENT (2026-11-10): authored supplement from verified AG-FACT decision for sty/pigsty/pen, two intensive-system disadvantages and fatteners terminology; six keyed questions, 30 marks. Assessment-gap coverage implemented. Original spelling not corrected pending delivery correction binding; veterinary/chemical safety and pig anatomy image rights remain separate blockers. Approval PENDING; verification/testing DEFERRED."
+    "AG-LES-T3-W09-PIG-ASSESSMENT-SUPPLEMENT (2026-11-10): authored supplement from verified AG-FACT decision for sty/pigsty/pen, two intensive-system disadvantages and fatteners terminology; six keyed questions, 30 marks. Assessment-gap coverage implemented. Original spelling not corrected pending delivery correction binding; veterinary/chemical safety and pig anatomy image rights remain separate blockers. Approval PENDING; verification/testing DEFERRED.",
+    "AG-LES-T3-W10-CATTLE-TATTOOING (2026-11-10): authored supplement from AG-FACT-T3-W10-CATTLE-TERMS for cattle tattooing, zero-grazing, rotational grazing and rational grazing; seven keyed questions, 40 marks. Assessment coverage remains PARTIAL until the verified cattle-housing correction is bound to an original source lesson row. Source wording unchanged; veterinary/chemical safety, cattle diagram rights and OMML gestation preservation remain open. Approval PENDING; verification/testing DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -145,9 +146,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 138,
+    "IMPLEMENTED_TESTING_DEFERRED": 139,
     "BLOCKED": 13,
-    "PENDING": 3
+    "PENDING": 2
   },
   "items": [
     {
@@ -5677,8 +5678,8 @@
         "AG-WK-T3-W10",
         "AG-FACT-T3-W10-CATTLE-TERMS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W10: tattooing is assessed in theory 1253 but is only named, not defined, at 1203.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-10 on branch agent/agricultural-science from 9a45dd15ce150d3551ae3d018c3a533fd23900be. Added SUP-SS1-AGRICULTURAL-SCIENCE-T3-W10-CATTLE-TATTOOING; body SHA-256 4ec23cb713998760f88409fee79fc3bd565fd5bf77685a9778bf22684435488d. Used completed AG-FACT-T3-W10-CATTLE-TERMS decision: tattooing is permanent animal identification, commonly by letters/numbers and ink inside the ear, used for registration/records; rational grazing is a valid term and in the cited FUNAAB Nigerian teaching reference is a planned elaboration of rotational grazing; zero-grazing means cut-and-carry forage to housed cattle; rotational grazing means paddock rotation with rest/recovery. Seven keyed questions with criterion-level marking, 40 marks. COV-AG-T3-W10-ASSESSMENT-GAPS remains PARTIAL and links this supplement because the separate delivery correction 'pig houses'→'cattle housing' is verified but cannot be bound without importer-confirmed source lesson row/body hash. Original source unchanged. Veterinary/chemical safety, anatomy-image rights and gestation OMML preservation remain separate blockers. Package/lesson approval PENDING; verification/testing DEFERRED. JSON, body hash, fact decision and marks checked; no tests, TypeScript, importer/compiler, DB or runtime checks run under owner deferral.",
       "completion_condition": "A PENDING-approval lesson is authored only from recorded factual decision, with complete keyed practice, criterion-level marking, body_sha256 and provenance; COV-AG-T3-W10-ASSESSMENT-GAPS is updated to reference it."
     },
     {
@@ -5858,7 +5859,5 @@
       "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
     }
   },
-  "next_runnable": [
-    "AG-LES-T3-W10-CATTLE-TATTOOING"
-  ]
+  "next_runnable": []
 }
