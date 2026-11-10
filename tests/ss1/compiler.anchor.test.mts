@@ -43,3 +43,51 @@ test('subject lesson IDs accept only the full slug or deterministic subject init
   assert.equal(isSubjectLessonId('SUP-SS1-C-T3-W10-TABLE-LAYING', 'catering-craft'), false);
   assert.equal(isSubjectLessonId('SUP-SS1-FOOD-T1-W01-INTRO', 'food-and-nutrition'), false);
 });
+
+test('Chemistry terminal revision and examination entries are scheme-only markers', () => {
+  const chemistry = loadPackages().find(item => item.subject_slug === 'chemistry');
+  assert(chemistry, 'Chemistry package is missing');
+  const markers = chemistry.source_rules.filter(item =>
+    item.id === 'SS1-SRC-58b4a44c3afa-R002' || item.id === 'SS1-SRC-58b4a44c3afa-R003'
+  );
+  assert.equal(markers.length, 2);
+  assert(markers.every(item => item.op === 'classify_marker' && item.kind === 'SCHEME_ONLY'));
+});
+
+test('Chemistry and Literature terminal scheme markers use whole-line matching', () => {
+  const chemistry = loadPackages().find(item => item.subject_slug === 'chemistry');
+  const literature = loadPackages().find(item => item.subject_slug === 'literature');
+  assert(chemistry && literature);
+  const chemistryMarkers = chemistry.source_rules.filter(item =>
+    item.id === 'SS1-SRC-58b4a44c3afa-R002' || item.id === 'SS1-SRC-58b4a44c3afa-R003'
+  );
+  const literatureMarkers = literature.source_rules.filter(item =>
+    item.op === 'classify_marker' && ['REVISION', 'EXAMINATION'].includes(item.anchor.trim().toUpperCase())
+  );
+  assert.equal(chemistryMarkers.length, 2);
+  assert.equal(literatureMarkers.length, 4);
+  assert([...chemistryMarkers, ...literatureMarkers].every(item =>
+    item.op === 'classify_marker' && item.kind === 'SCHEME_ONLY' && item.match_mode === 'WHOLE_LINE'
+  ));
+});
+
+test('English first-term revision scheme marker includes its row number in whole-line matching', () => {
+  const english = loadPackages().find(item => item.subject_slug === 'english');
+  assert(english, 'English package is missing');
+  const rule = english.source_rules.find(item => item.id === 'SS1-SRC-a00657d42196-R028');
+  assert(rule && rule.op === 'classify_marker');
+  assert.equal(rule.match_mode, 'WHOLE_LINE');
+  assert.match(rule.anchor, /^1 General Revision of Last Term's Examination;/);
+  for (const [id, row] of [
+    ['SS1-SRC-a00657d42196-R029', 2],
+    ['SS1-SRC-a00657d42196-R030', 3],
+    ['SS1-SRC-a00657d42196-R031', 4],
+    ['SS1-SRC-a00657d42196-R032', 5],
+    ['SS1-SRC-a00657d42196-R033', 6],
+  ] as const) {
+    const marker = english.source_rules.find(item => item.id === id);
+    assert(marker && marker.op === 'classify_marker');
+    assert.equal(marker.match_mode, 'WHOLE_LINE');
+    assert.ok(marker.anchor.startsWith(`${row} `));
+  }
+});
