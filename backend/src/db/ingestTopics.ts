@@ -449,7 +449,7 @@ async function main() {
   const { root, schoolCode, yes, defaultTerm, ss1SubjectSlug } = parseArgs(process.argv.slice(2));
   if (!root || !schoolCode || !['primary', 'secondary'].includes(schoolCode)) {
     console.log(`Usage:
-  npx tsx src/db/ingestTopics.ts --root <path> --school-code primary|secondary [--default-term "1st Term"] [--jss3-supplements] [--yes]
+  npx tsx src/db/ingestTopics.ts --root <path> --school-code primary|secondary [--default-term "1st Term"] [--ss1-reviewed --ss1-plan <output> [--ss1-subject-slug <slug>]] [--jss3-supplements] [--yes]
 
 --default-term is used ONLY for files whose path gives no term clue at all
 (e.g. a standalone file not organized into a "1st/2nd/3rd Term" folder) —
