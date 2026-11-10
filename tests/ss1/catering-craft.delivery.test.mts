@@ -5,7 +5,6 @@ import packageData from '../../backend/src/db/ss1/subjects/catering-craft.json' 
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import {
   createSs1DeliveryResolver,
-  resolveSs1Delivery,
   safeSs1Topic,
   retireStaleSs1Cache,
   ss1AssessmentDeliverable,
