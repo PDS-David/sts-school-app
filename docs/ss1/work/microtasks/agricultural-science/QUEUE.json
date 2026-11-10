@@ -124,7 +124,8 @@
     "AG-LES-T2-W04-05-YAM-PRACTICES (2026-11-10): authored original IITA-backed supplement explaining yam staking and vine training, materials, timing, methods, benefits and agroecological variation. Cross-references original mulching instruction at blocks 197–203; the separate MULCHING-MCQ fact issue remains open. Coverage moved to IMPLEMENTED_EQUIVALENT; staking/training CONTENT item removed. Practice marking totals 24/24. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS (2026-11-10): authored original supplement for fish-pond and forest/savanna ecosystem interactions, using FAO, NAERLS, UF IFAS, SANBI and peer-reviewed sources. Coverage moved to IMPLEMENTED_EQUIVALENT; resolved interactions CONTENT item removed. Existing mono-/mixed-cropping and mixed-farming source teaching remains unchanged. Practice marking totals 28/28. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T3-W01-TOOL-REFERENCE (2026-11-10): authored the complete 30-tool reference with descriptions, uses, maintenance, nine justified post-planting mappings, safe-handling guidance, drawing-book project and practical observation record. Added 30 original SVG illustrations, each registered with hash, bytes, alt text and provenance. Source list and source bytes unchanged. Digger and manure drag drawings are generic because source gives no local design; emasculator guidance is non-procedural. Practice marking totals 45/45. Approval PENDING; verification/testing DEFERRED.",
-    "AG-LES-T3-W02-FARM-POWER-OPERATIONS (2026-11-10): authored original supplement explicitly mapping mechanical, electrical, wind and solar power to at least two farm operations each, with equipment, energy-transfer explanations, limitations, safety and 40-mark keyed practice. COV-AG-T3-W02-OPERATIONS moved to IMPLEMENTED_EQUIVALENT. West African grain-drying prevalence fact, water-power reclassification, source text corrections and third-party source-image rights remain separate open items. Approval PENDING; verification/testing DEFERRED."
+    "AG-LES-T3-W02-FARM-POWER-OPERATIONS (2026-11-10): authored original supplement explicitly mapping mechanical, electrical, wind and solar power to at least two farm operations each, with equipment, energy-transfer explanations, limitations, safety and 40-mark keyed practice. COV-AG-T3-W02-OPERATIONS moved to IMPLEMENTED_EQUIVALENT. West African grain-drying prevalence fact, water-power reclassification, source text corrections and third-party source-image rights remain separate open items. Approval PENDING; verification/testing DEFERRED.",
+    "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS (2026-11-10): authored verified supplement for liver bile vs enzymes, mono-/polygastric similarities, blood composition/water and digestive sphincters; six keyed questions and 40-mark criterion rubric. COV-AG-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS moved to IMPLEMENTED_EQUIVALENT. Digestive/reproductive factual accuracy and third-party figure permissions remain separate open items. Approval PENDING; verification/testing DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -139,9 +140,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 132,
+    "IMPLEMENTED_TESTING_DEFERRED": 133,
     "BLOCKED": 13,
-    "PENDING": 9
+    "PENDING": 8
   },
   "items": [
     {
@@ -4968,8 +4969,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W04: questions 422, 502, 516 and 521 include content not fully explained in the Week Four teaching blocks.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-10 on branch agent/agricultural-science from 06dbd91e74044142025d316666995dd25e412d75. Added SUP-SS1-AGRICULTURAL-SCIENCE-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS; body SHA-256 fcaf1321c9c2211eea644f411f376df566769536a40689992d4974bcb57f8da5. Addresses all four gaps at source locators 422, 502, 516 and 521: liver-produced bile is not an enzyme and emulsifies fat; accurate shared processes in mono-/polygastric digestion with species-specific microbial fermentation; blood plasma and formed elements with careful plasma-water vs whole-blood/species qualification; definition and functions of digestive sphincters. Six keyed questions with criterion-level marking, 40 marks total. Uses Merck Veterinary Manual, OpenStax, University of Minnesota, Mississippi State University Extension and NOUN sources. Coverage COV-AG-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS moved to IMPLEMENTED_EQUIVALENT; other digestive/circulatory rows remain PARTIAL because importer-confirmed source lesson identity is absent. Removed only resolved assessment-gap CONTENT blocker. Existing digestive/reproductive accuracy and source-image rights items remain open; no unverified source corrections or images copied. Package/lesson approval PENDING; verification/testing DEFERRED. JSON parsing, body hash and marking sums checked; no tests, TypeScript, importer/compiler, database or runtime checks run under owner deferral.",
       "completion_condition": "A verified supplement addresses all four assessment gaps with complete practice/marking, provenance and PENDING approval; original source remains unchanged."
     },
     {
@@ -5853,7 +5854,6 @@
     }
   },
   "next_runnable": [
-    "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS",
     "AG-LES-T3-W05-RESPIRATION-NERVOUS-GAPS",
     "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION",
     "AG-LES-T3-W07-POULTRY-REPRO-SYSTEM",
