@@ -118,7 +118,8 @@
     "2026-11-10: Added source-distinct Week 6 ecology and Week 7 biomes supplements with keyed 20-mark practice; five coverage records now bind to the lessons. Original source assessment coverage remains unresolved because no answer keys are supplied. Approval remains pending; runtime verification deferred.",
     "2026-11-10 final pass: Added independently authored SS1 Biology Week 10 association lesson and separate scheme-topic ecological-management supplement. The source scheme/body mismatch and unkeyed source assessment remain visible for teacher approval; no approval or verification is fabricated.",
     "2026-11-10 final pass: Added SS1 Biology Week 9 Functioning Ecosystems student supplement; verified the source pyramid ordering from the original rendering report and corrected the universal consumer-survival claim in supplemental teaching. Source assessment gaps remain unapproved.",
-    "2026-11-10 final pass: Added Third Term Weeks 5, 6/7 and 8 student supplements, covering crop classification/agriculture, plant/livestock pests and diseases, IPM, food production, preservation and storage. Chemical/pesticide use remains non-operational and safety-qualified."
+    "2026-11-10 final pass: Added Third Term Weeks 5, 6/7 and 8 student supplements, covering crop classification/agriculture, plant/livestock pests and diseases, IPM, food production, preservation and storage. Chemical/pesticide use remains non-operational and safety-qualified.",
+    "2026-11-10 final pass: Added Second Term Week 3 reproduction, Week 5 animal nutrition and Week 8 population/ecological-instruments student supplements with keyed assessments. Week 3 tapeworm question ambiguity and Week 5 original assessment approval remain flagged."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -136,9 +137,9 @@
     "IMPLEMENTED_TESTING_DEFERRED": null
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 140,
+    "IMPLEMENTED_TESTING_DEFERRED": 143,
     "BLOCKED": 16,
-    "PENDING": 12
+    "PENDING": 9
   },
   "items": [
     {
@@ -3980,8 +3981,9 @@
         "BIO-VIS-T2-W03-COCKROACH-REDRAW",
         "BIO-VIS-T2-W03-HOUSEFLY-REDRAW"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Core lesson text and four diagrams are authored and committed in this branch, but this task is not complete: BIO-FACT-T2-W03-TAPEWORM-SCOPE remains a required dependency. The lesson deliberately omits tapeworm because its inclusion in Week 3 has not been approved. The four visual subtasks are independently implemented; finish this lesson task only after the scope dependency is resolved and any required tapeworm content is handled."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Core lesson text and four diagrams are authored and committed in this branch, but this task is not complete: BIO-FACT-T2-W03-TAPEWORM-SCOPE remains a required dependency. The lesson deliberately omits tapeworm because its inclusion in Week 3 has not been approved. The four visual subtasks are independently implemented; finish this lesson task only after the scope dependency is resolved and any required tapeworm content is handled.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T2-W03-REPRODUCTION-ORGANISMS.md"
     },
     {
       "id": "BIO-LES-T2-W03-SEXUAL-ADVANTAGES",
@@ -4202,8 +4204,9 @@
         "BIO-FACT-T2-W05-HEALTH-CLAIMS",
         "BIO-VIS-T2-TBL-VITAMINS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T2-W05; see the Week 5 index for exact source locators and delivery gates."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T2-W05; see the Week 5 index for exact source locators and delivery gates.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T2-W05-ANIMAL-NUTRITION.md"
     },
     {
       "id": "BIO-FACT-T2-W06-ENVIRONMENT-FACTS",
@@ -5649,9 +5652,10 @@
         "BIO-VIS-T2-TBL-INSTRUMENTS",
         "BIO-FACT-T2-W08-INSTRUMENTS"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Appended after the native-table disposition (2026-11-08). The table's cell boundaries survive in DOCX but not flattened text; row b remains under fact review.",
-      "completion_condition": "A source-distinct lesson teaches ecological measurement and includes all eleven instrument/use pairs in a semantic three-column table, preserves source wording, includes complete keyed practice, and binds to COV-BIO-T2-W08-ECOLOGICAL-INSTRUMENTS after the hydrometer pairing is verified."
+      "completion_condition": "A source-distinct lesson teaches ecological measurement and includes all eleven instrument/use pairs in a semantic three-column table, preserves source wording, includes complete keyed practice, and binds to COV-BIO-T2-W08-ECOLOGICAL-INSTRUMENTS after the hydrometer pairing is verified.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T2-W08-ECOLOGICAL-INSTRUMENTS.md"
     },
     {
       "id": "BIO-VIS-T2-W03-PARAMECIUM-REDRAW",
