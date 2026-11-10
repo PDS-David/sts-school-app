@@ -134,7 +134,8 @@
     "AG-LES-T3-W10-CATTLE-TATTOOING (2026-11-10): authored supplement from AG-FACT-T3-W10-CATTLE-TERMS for cattle tattooing, zero-grazing, rotational grazing and rational grazing; seven keyed questions, 40 marks. Assessment coverage remains PARTIAL until the verified cattle-housing correction is bound to an original source lesson row. Source wording unchanged; veterinary/chemical safety, cattle diagram rights and OMML gestation preservation remain open. Approval PENDING; verification/testing DEFERRED.",
     "AG-FACT-T1-W09-SCOPE (2026-11-10): prepared AG-FACT-T1-W09-SCOPE.md as an AI evidence brief with authoritative Nigerian, FAO and university references. Explicitly not a human subject-expert decision; task remains BLOCKED. Do not author farmstead/forestry lessons until qualified reviewer approves the nine decisions, especially five farmstead principles and primary forest product definition.",
     "2026-11-10: Reconciled AG-LES-T1-W09-FARMSTEAD and AG-LES-T1-W09-FORESTRY queue status with the existing package draft records. Both draft lessons exist, but the required qualified subject-expert decision in AG-FACT-T1-W09-SCOPE remains absent; tasks are BLOCKED, not complete or approved. Updated the evidence brief to distinguish drafts from expert-cleared teaching.",
-    "2026-11-10: Corrected ten package open-item descriptions (T1 Weeks 2-8 and 10; T2 Weeks 2-3 and 4-5) that incorrectly said the package contained no lessons. The actual blocker is the missing importer-confirmed identity of the original parsed source row; existing supplements are separate and do not identify or replace those original rows. Coverage statuses remain PARTIAL and delivery remains blocked until the authorised importer/plan evidence is available."
+    "2026-11-10: Corrected ten package open-item descriptions (T1 Weeks 2-8 and 10; T2 Weeks 2-3 and 4-5) that incorrectly said the package contained no lessons. The actual blocker is the missing importer-confirmed identity of the original parsed source row; existing supplements are separate and do not identify or replace those original rows. Coverage statuses remain PARTIAL and delivery remains blocked until the authorised importer/plan evidence is available.",
+    "2026-11-10: Added AG-LES-T2-W07-ROCK-CHARACTERISTICS. The new clarification lesson is mapped to COV-AG-T2-W07-ROCK-FACTUAL-ACCURACY. It addresses source overgeneralizations without editing the original DOCX; qualified content approval and importer-bound delivery correction remain open."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -145,11 +146,11 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 29,
+    "LESSON": 30,
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 139,
+    "IMPLEMENTED_TESTING_DEFERRED": 140,
     "BLOCKED": 15
   },
   "items": [
@@ -5847,6 +5848,44 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Completed 2026-11-09. Reverified archive/member hashes and native Word table at direct-body block 724. Re-extracted 6 rows × 3 columns (18 cells), 148 concatenated Unicode characters. Canonical method: iterate w:tr then w:tc in document order; concatenate each cell's w:t text across its paragraphs; concatenate all 18 cell strings with no separators or normalization; UTF-8 encode; SHA-256. Recomputed hash 7b1f4bfc31fe563d88fe519302d11e61eb59129a4ad39d3f8dcde1c48207ac0c, replacing non-reproducible 2a4920ab... Verified Horse/Cattle, Mare/Cow, 336 days/283 days and Rabbit/Chicken, Doe/Hen, 31days/21 days are paired separate paragraphs within cells in single rows; no table content, row/column structure or paragraph boundaries changed. Updated only AG-INV-T3.md table hash/method and paragraph-pairing note. No package or source changes. Testing remains deferred.",
       "completion_condition": "Independently reproduce the canonical table hash from the verified source DOCX, correct AG-INV-T3.md with exact method and hash, and confirm all six rows and paired-cell paragraph boundaries remain unchanged."
+    },
+    {
+      "id": "AG-LES-T2-W07-ROCK-CHARACTERISTICS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "Second Term Week Seven characteristic blocks 443–448, 461–465 and 481–485; factual review AG-FACT-T2-W07-ROCK-CHARACTERISTICS; coverage COV-AG-T2-W07-ROCK-FACTUAL-ACCURACY",
+      "objective": "Author a bounded scientific-clarification supplement for overgeneralised rock characteristics. Explain the valid patterns and exceptions for crystallinity, layering, fossils, hardness and erosion resistance across igneous, sedimentary and metamorphic rocks. Preserve original source wording, distinguish a mineral from a rock (mica/dolostone), and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T2.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T2-W07.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T2-W07-ROCK-CHARACTERISTICS.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T2-W07-ROCK-CHARACTERISTICS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T2",
+        "AG-WK-T2-W07",
+        "AG-FACT-T2-W07-ROCK-CHARACTERISTICS"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added SUP-SS1-AGRICULTURAL-SCIENCE-T2-W07-ROCK-CHARACTERISTICS to the subject package. body_sha256 b1b07aea3b73cecac7672def0870e2b5fe207ddc0dad572b92dc57d09e103f86. Five practice items have exact criterion totals (6, 6, 6, 4, 4). COV-AG-T2-W07-ROCK-FACTUAL-ACCURACY is IMPLEMENTED_EQUIVALENT and maps to this lesson. The original DOCX is unchanged. Lesson content approval remains PENDING and verification DEFERRED; expert review and importer-confirmed original row identity remain required.",
+      "completion_condition": "A PENDING-approval clarification lesson explains scientifically accurate patterns and exceptions, has verified body_sha256, provenance, and keyed practice with exact marking totals, and is mapped to the factual-accuracy coverage row. Original source bytes remain unchanged; no expert approval or delivery verification is fabricated."
     }
   ],
   "review": {
