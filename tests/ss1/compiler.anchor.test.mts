@@ -91,3 +91,13 @@ test('English first-term revision scheme marker includes its row number in whole
     assert.ok(marker.anchor.startsWith(`${row} `));
   }
 });
+
+test('English first-term scheme row 7 includes its row number in whole-line matching', () => {
+  const english = loadPackages().find(item => item.subject_slug === 'english');
+  assert(english, 'English package is missing');
+  const rule = english.source_rules.find(item => item.id === 'SS1-SRC-a00657d42196-R034');
+  assert(rule && rule.op === 'classify_marker');
+  assert.equal(rule.kind, 'SCHEME_ONLY');
+  assert.equal(rule.match_mode, 'WHOLE_LINE');
+  assert.ok(rule.anchor.startsWith('7 Structures: Learning about Noun Clause;'));
+});
