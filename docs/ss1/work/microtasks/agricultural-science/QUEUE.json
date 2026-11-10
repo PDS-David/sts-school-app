@@ -138,13 +138,14 @@
     "2026-11-10: Added AG-LES-T2-W07-ROCK-CHARACTERISTICS. The new clarification lesson is mapped to COV-AG-T2-W07-ROCK-FACTUAL-ACCURACY. It addresses source overgeneralizations without editing the original DOCX; qualified content approval and importer-bound delivery correction remain open.",
     "2026-11-10: Added AG-LES-T1-W08-TENURE-CLARIFICATION. The lesson separates land-tenure arrangements from modes of plot acquisition and uses NBS GHS-Panel Wave 4/5 evidence for family inheritance. Coverage is IMPLEMENTED_EQUIVALENT; expert approval and importer-bound delivery correction remain open.",
     "2026-11-10: Added AG-LES-T3-W07-HORMONES. The independent semantic table and lesson cover the seven hormone entries after the sourced fact review. Hormone coverage is IMPLEMENTED_EQUIVALENT; expert approval, source-table rights/delivery disposition and importer row identity remain open.",
-    "2026-11-10: Added AG-LES-T3-W07-EGG-FORMATION. The independent lesson corrects the timing emphasis using hen-specific reference values and explicitly qualifies species variation. Egg-formation coverage is IMPLEMENTED_EQUIVALENT; expert approval and importer-bound row mapping remain open."
+    "2026-11-10: Added AG-LES-T3-W07-EGG-FORMATION. The independent lesson corrects the timing emphasis using hen-specific reference values and explicitly qualifies species variation. Egg-formation coverage is IMPLEMENTED_EQUIVALENT; expert approval and importer-bound row mapping remain open.",
+    "2026-11-10: Added AG-FACT-T1-W01-FACT-CHECKS evidence note. The Latin etymology is resolved; the recreation/tourism claim is qualified; agro-based/agro-allied and crop-pathology explanations already exist in learner supplements. Expert review of the recreation wording and exact textbook page verification remain open."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 36,
+    "FACTUAL_DEPENDENCY": 37,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
@@ -153,7 +154,7 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 143,
+    "IMPLEMENTED_TESTING_DEFERRED": 144,
     "BLOCKED": 15
   },
   "items": [
@@ -6004,6 +6005,41 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Added SUP-SS1-AGRICULTURAL-SCIENCE-T3-W07-EGG-FORMATION to the subject package. body_sha256 c0887ed449d5390ee0bffb1f7d555930154058b39b4bfefd4d837df0f7a49a8c. Five practice items have exact criterion totals (10, 6, 4, 4, 2). COV-AG-T3-W07-EGG-FORMATION is IMPLEMENTED_EQUIVALENT and maps to this lesson. The lesson teaches approximate laying-hen timings from university-extension and peer-reviewed sources; it does not reproduce source figures. Content approval remains PENDING and verification DEFERRED; expert review and importer-bound delivery correction remain open.",
       "completion_condition": "A PENDING-approval lesson accurately explains the laying-hen egg-formation sequence, qualified approximate stage durations and species limitations; includes verified body hash, provenance and keyed practice with exact marking totals; and is mapped to egg-formation coverage. Original source bytes and figures remain unchanged; no expert approval or delivery verification is fabricated."
+    },
+    {
+      "id": "AG-FACT-T1-W01-FACT-CHECKS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 1 blocks 58, 103, 105, 107, 127, 131–132; source inventory AG-INV-T1 and week index AG-WK-T1-W01",
+      "objective": "Verify the Week 1 etymology, recreation/tourism claim, agro-based/agro-allied terminology and crop-pathology scope; document any textbook page-reference limitation without inventing a citation.",
+      "required_files": [
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W01.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W01-CROP-ASPECTS.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W02-AGRO-INDUSTRIES.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W01-FACT-CHECKS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W01"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added AG-FACT-T1-W01-FACT-CHECKS.md. Verified archive/member hashes and exact source block hashes. Etymology (Latin ager/agri + cultura) is resolved; game-reserve/horse-sport wording is qualified with Nigeria National Park Service/FAO evidence; agro-based/agro-allied and crop-pathology scope are already clarified by existing lessons. Textbook page references remain unverified; no source or delivery correction was changed.",
+      "completion_condition": "Evidence note records exact source locators and reliable sources, distinguishes resolved facts from reviewer decisions and unavailable book references, and preserves source bytes. No unsupported answer key or correction binding is invented."
     }
   ],
   "review": {
