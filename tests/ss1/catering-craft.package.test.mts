@@ -143,7 +143,7 @@ test('First Term external scheme covers all thirteen calendar weeks without inve
   const ext = p.external_sources[0];
   const coverage = p.coverage.filter(c => c.source_id === ext.source_id);
   assert.equal(coverage.length, 13);
-  assert.deepEqual(coverage.map(c => c.objective_locator.match(/Week (\\d+)/)?.[1]), Array.from({ length: 13 }, (_, i) => String(i + 1)));
+  assert.deepEqual(coverage.map(c => c.objective_locator.match(/Week (\d+)/)?.[1]), Array.from({ length: 13 }, (_, i) => String(i + 1)));
   assert(coverage.every(c => c.status === 'IMPLEMENTED_EQUIVALENT' && c.lesson_ids.length > 0 && c.evidence.length > 0));
   assert(!p.sources.some(s => s.term === '1st Term'));
   assert(!assigned.some(cols => cols[4] === '1st Term'));
