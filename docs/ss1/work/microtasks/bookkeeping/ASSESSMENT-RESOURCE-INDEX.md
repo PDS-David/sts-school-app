@@ -1,6 +1,6 @@
 # SS1 Bookkeeping — revision and examination resource index
 
-This index lists project-authored resources added to complete the scheduled revision/examination slots. They supplement the subject package; they are not recovered original DOCX pages.
+This index lists project-authored resources added to complete the scheduled revision/examination slots. They supplement the subject package; they are not recovered original DOCX pages. For the complete week-by-week lesson order and objectives, see [BOOKKEEPING-TEACHER-DELIVERY-GUIDE.md](./BOOKKEEPING-TEACHER-DELIVERY-GUIDE.md).
 
 | Term | Scheme week | Resource | Assessment scope |
 |---|---:|---|---|
