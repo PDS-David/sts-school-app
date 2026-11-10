@@ -122,3 +122,26 @@ The full configured GitHub Actions workflow passed in run 42527347154 (run 1332)
 The original third-term DOCX was recovered and its SHA256 independently matched the registry. A structural audit confirmed the scheme-of-work's standalone WEEK heading and the exact source split/marker anchors. A parser guard was added so the table header is not mistaken for a Week 1 lesson; full-source Mammoth/buildFromFiles compiler execution is still deferred.
 
 This is technical validation of the configured checks, not formal content approval. All authored lessons remain content_approval=PENDING. Full-source parser/compiler/importer, device and delivery verification remain deferred. The queue records 93 IMPLEMENTED_TESTING_DEFERRED items and 7 BLOCKED items; the owner/teacher content-approval gate remains open.
+
+
+## Reconciliation and assessment closeout — 10 November 2026
+
+The current package state supersedes the older pending-approval statements above. The package now records owner sign-off dated 2026-11-09 for all 32 authored lessons and records package-level verification for all 32 lessons. The Bookkeeping-specific GitHub Actions package verification run 42534557322 passed 21/21 tests on commit `eb2de863f6cc7ff50a2775d6a48081e8268df43c`. The stale queue task `BK-FACT-CONTENT-APPROVAL` is therefore reclassified from BLOCKED to IMPLEMENTED_TESTING_DEFERRED. This does not convert package-level verification into full-source parser/compiler, production importer/database, device or end-to-end student delivery acceptance.
+
+Seven additional project-authored assessment resources have been added:
+
+| Term | Scheme slot | Resource |
+|---|---|---|
+| First | Week 1 revision | `ASSESSMENT-T1-W01-REVISION.md` |
+| First | Week 11 revision | `ASSESSMENT-T1-W11-REVISION.md` |
+| First | Week 12 examination | `ASSESSMENT-T1-W12-EXAM.md` |
+| Second | Week 11 revision | `ASSESSMENT-T2-W11-REVISION.md` |
+| Second | Week 12 examination | `ASSESSMENT-T2-W12-EXAM.md` |
+| Third | Week 11 revision | `ASSESSMENT-T3-W11-REVISION.md` |
+| Third | Week 12 examination | `ASSESSMENT-T3-W12-EXAM.md` |
+
+Third-term Week 1 revision already exists as `SUP-SS1-BOOKKEEPING-T3-W01-REVISION` in the package. The seven new resources are original project-authored worksheets/papers with answer keys and marking guides. They are not represented as recovered original school materials. Their calculations and marking totals are recorded in `ASSESSMENT-RESOURCE-REVIEW.md`.
+
+All three terms retain their twelve-week structure. The second-term programme remains explicitly a project-authored reconstruction because the supplied second-term document duplicates first-term teaching. The first-term source's missing Week 5–12 bodies remain a provenance gap even though the delivery sequence has project-authored teaching extensions.
+
+The current package inventory is 32 lessons (11 first term, 10 second term, 11 third term), 81 coverage rows (75 IMPLEMENTED_EQUIVALENT and 6 MARKER), 18 source rules, 3 registered sources and 28 package open items. Original source documents and source-defect evidence remain unchanged.
