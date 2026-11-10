@@ -25,6 +25,7 @@ export interface Ss1DeliveryTopic {
 }
 export interface Ss1DeliveryResolution {
   source: 'ss1';
+  termLabel: string;
   kind: 'corrected' | 'withheld';
   correctionId: string;
   text: string;
@@ -89,13 +90,13 @@ export function createSs1DeliveryResolver(input: SubjectPackage) {
       const replacement = built.get(correction.id)!;
       if (currentHash === correction.body_sha256) {
         return {
-          source: 'ss1', kind: 'corrected', correctionId: correction.id,
+          source: 'ss1', termLabel: source.term, kind: 'corrected', correctionId: correction.id,
           text: replacement.text, fingerprint: replacement.fingerprint,
           sourceHash: correction.body_sha256, replacementLessonIds: replacement.replacementLessonIds,
         };
       }
       return {
-        source: 'ss1', kind: 'withheld', correctionId: correction.id,
+        source: 'ss1', termLabel: source.term, kind: 'withheld', correctionId: correction.id,
         text: `${SS1_CATERING_WITHHELD_MARKER} ${correction.id}\nThis topic is temporarily unavailable because its stored source does not match the reviewed lesson fingerprint. Ask your teacher while the source is checked.`,
         fingerprint: hash(`withheld:${correction.id}`), sourceHash: correction.body_sha256,
         replacementLessonIds: [], reason: 'Stored source fingerprint differs from the reviewed source lesson',
@@ -153,7 +154,7 @@ export async function retireStaleSs1Cache(query: Ss1Query, topicId: unknown, del
        RETURNING id
      )
      SELECT (SELECT count(*) FROM upd) AS retired, (SELECT count(*) FROM closed) AS closed_assessments`,
-    [topicId, delivery.text, fingerprint, SCHOOL_CODE, CLASS_NAME, SUBJECT_NAME, delivery.kind === 'corrected' ? '2nd Term' : '2nd Term'],
+    [topicId, delivery.text, fingerprint, SCHOOL_CODE, CLASS_NAME, SUBJECT_NAME, delivery.termLabel],
   );
   return { retired: Number(rows[0]?.retired ?? 0) > 0, closedAssessments: Number(rows[0]?.closed_assessments ?? 0) };
 }
