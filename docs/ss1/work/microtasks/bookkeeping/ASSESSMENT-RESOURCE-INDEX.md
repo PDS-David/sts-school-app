@@ -23,4 +23,4 @@ This index lists project-authored resources added to complete the scheduled revi
 
 ## Remaining acceptance boundary
 
-Package-level tests and lesson-state verification are recorded in `bookkeeping.json`. These new Markdown resources still require the branch's automated checks and human teacher review. Full-source parser/compiler, production importer/database, device and end-to-end student delivery acceptance remain separate gates.
+Package-level tests and lesson-state verification are recorded in `bookkeeping.json`. The assessment regression suite is merged into the main CI workflow; run 42783833613 passed. The suite checks resource presence, provenance, answer keys, section totals and arithmetic review values. Teacher moderation, original-source full parser/compiler execution, safe importer/database release, and student-device/end-to-end delivery acceptance remain separate gates. See `ASSESSMENT-RESOURCE-REVIEW.md` for evidence and prerequisites.
