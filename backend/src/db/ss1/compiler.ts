@@ -11,14 +11,15 @@ export interface IdentifiedRow { id: string; source_id: string | null; body_sha2
 export interface Plan { version: 'ss1-plan-v1'; rows: Row[]; identified_rows: IdentifiedRow[]; dispositions: { id: string; status: string; detail: string }[]; assets: SubjectPackage['assets']; corrections: SubjectPackage['delivery_corrections']; blockers: string[]; ready: boolean }
 function must(ok: unknown, message: string): asserts ok { if (!ok) throw new Error(`SS1: ${message}`); }
 function unique(values: string[], label: string) { must(new Set(values).size === values.length, `duplicate ${label}`); }
-function once(body: string, anchor: string) {
-  // DOCX text extractors can flatten a paragraph break into spaces or tabs.
-  // Keep the anchor text exact, but treat runs of whitespace as equivalent.
-  const parts = anchor.trim().split(/\\s+/u).map(part => part.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&'));
-  const pattern = new RegExp(parts.join('\\\\s+'), 'gu');
+function once(body: string, anchor: string): { index: number; length: number } {
+  // DOCX extraction can flatten paragraph breaks into spaces or tabs.
+  // Match exact words and punctuation while treating whitespace runs equivalently.
+  const parts = anchor.trim().split(/\s+/u).map(part => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  must(parts.length > 0, 'empty source anchor');
+  const pattern = new RegExp(parts.join('\\s+'), 'gu');
   const matches = [...body.matchAll(pattern)];
-  must(matches.length === 1, `anchor missing or ambiguous: ${anchor.slice(0, 80)}`);
-  return matches[0].index!;
+  must(matches.length === 1, 'anchor missing or ambiguous: ' + anchor.slice(0, 80));
+  return { index: matches[0].index!, length: matches[0][0].length };
 }
 export const originalLessonId = (sourceId: string, body: string) => `${sourceId}:BODY:${sha256(body)}`;
 /** Structural insertions only. No instructional character is deleted or rewritten. */
@@ -29,13 +30,15 @@ export function applyRules(input: SourceInput, rules: SourceRule[]): string {
     once(input.text, r.anchor);
     if (r.op === 'split_before' || r.op === 'attach_stranded_label') {
       must(/^(?:[0-9]{1,2})(?:\s*(?:-|&|and)\s*[0-9]{1,2})?$/.test(r.week_label), `rule ${r.id}: numeric week label required`);
-      const i = once(text, r.anchor);
-      must(i === 0 || text[i - 1] === '\n', `rule ${r.id}: anchor must start at a line boundary`);
+      const anchorMatch = once(text, r.anchor);
+      const i = anchorMatch.index;
+      const lineStart = text.lastIndexOf('\n', i - 1) + 1;
+      must(text.slice(lineStart, i).trim() === '', 'rule ' + r.id + ': anchor must start at a line boundary');
       if (r.op === 'attach_stranded_label') {
         const next = once(text, r.following_anchor);
-        must(next >= i + r.anchor.length && text.slice(i + r.anchor.length, next).trim() === '', `rule ${r.id}: label must immediately precede following anchor`);
+        must(next.index >= i + anchorMatch.length && text.slice(i + anchorMatch.length, next.index).trim() === '', 'rule ' + r.id + ': label must immediately precede following anchor');
       }
-      text = text.slice(0, i) + `WEEK ${r.week_label}\n` + text.slice(i);
+      text = text.slice(0, lineStart) + 'WEEK ' + r.week_label + '\n' + text.slice(lineStart);
     }
   }
   return text;
