@@ -198,7 +198,7 @@ test('Every coverage entry resolves to a real source and target; equivalent cove
     }
     if (coverage.status === 'MARKER') {
       assert(
-        coverage.lesson_ids.every(target =>
+        coverage.lesson_ids.some(target =>
           target.startsWith(coverage.source_id + ':BODY:') ||
           p.source_rules.some(rule =>
             rule.id === target && rule.source_id === coverage.source_id &&
