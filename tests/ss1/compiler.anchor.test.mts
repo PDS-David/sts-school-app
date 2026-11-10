@@ -102,16 +102,6 @@ test('English first-term scheme row 7 includes its row number in whole-line matc
   assert.ok(rule.anchor.startsWith('7 Structures: Learning about Noun Clause;'));
 });
 
-test('English second-term revision scheme row 10 includes its row number in whole-line matching', () => {
-  const english = loadPackages().find(item => item.subject_slug === 'english');
-  assert(english, 'English package is missing');
-  const rule = english.source_rules.find(item => item.id === 'SS1-SRC-d8bd8f85fd73-R012');
-  assert(rule && rule.op === 'classify_marker');
-  assert.equal(rule.kind, 'SCHEME_ONLY');
-  assert.equal(rule.match_mode, 'WHOLE_LINE');
-  assert.ok(rule.anchor.startsWith('10 WEEK 10:'));
-});
-
 test('English second-term scheme-only revision marker is disambiguated from its body heading by scheme context', () => {
   const english = loadPackages().find(item => item.subject_slug === 'english');
   assert(english, 'English package is missing');
@@ -119,7 +109,8 @@ test('English second-term scheme-only revision marker is disambiguated from its 
   assert(rule && rule.op === 'classify_marker');
   assert.equal(rule.kind, 'SCHEME_ONLY');
   assert.equal(rule.match_mode, undefined);
-  assert.match(rule.anchor, /^WEEK 9:.*\\nWEEK 10:  GENERAL REVISION CLASS \\[GRC\\]$/);
+  assert.ok(rule.anchor.startsWith('WEEK 9:  COMPOSITION'));
+  assert.ok(rule.anchor.includes('\\nWEEK 10:  GENERAL REVISION CLASS [GRC]'));
   const input = {
     source_id: rule.source_id,
     sha256: rule.source_sha256,
