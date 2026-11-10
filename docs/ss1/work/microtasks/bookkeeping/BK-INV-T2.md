@@ -65,3 +65,7 @@ JSON parse of QUEUE.json; unique IDs; all `depends_on` and `next_runnable` refer
 
 ## Remaining
 `BOOKKEEPING-ALIAS-APPROVAL*` and `BOOKKEEPING-T2-TEXT-MATCHES-T1` remain owner actions; the new `BK-*-T2` items should wait for the latter. Next eligible per the queue: `BK-WK-T1-W02` (no worked solution and an untaught objective); next unread inventory is `BK-INV-T3`. Not executed here. This does not claim the subject or class complete.
+
+
+## Owner disposition (2026-11-08)
+The owner has confirmed that this document should not have been identical to the 1st Term source and that no other 2nd Term resource is currently available. The byte-identical teaching body is therefore treated as an **erroneous duplicate**, not as valid evidence of 2nd Term teaching. The original member, source ID, member hash and all findings above remain preserved unchanged. Do not index its four copied weeks as 2nd Term lessons and do not link their coverage. A separate project-authored curriculum is being reconstructed under `BK-T2-RECONSTRUCTION-PLAN.md`; it is not represented as the missing original.

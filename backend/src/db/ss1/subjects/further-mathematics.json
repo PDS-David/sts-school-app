@@ -1402,6 +1402,19 @@
         "locator": "Further Mathematics 3rd term; parsed row 5 (\"Straight line\")",
         "explanation": "Original row text is retained unchanged in provenance; the replacement is delivered instead (runtime wiring by SS1-08)."
       }
+    },
+    {
+      "id": "CORR-FURTHER-MATHEMATICS-T1-W02-EQUATIONS",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "source_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145",
+      "source_lesson_id": "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c",
+      "body_sha256": "5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c",
+      "replacement_id": "SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS",
+      "reason": "The original Week Two row is not safe for direct delivery: the equal-base rule is unqualified and its converse is false; superscripts and two Microsoft Equation objects are lost by text extraction; several evaluation/weekend/theory questions are unanswered; the quadratic branch rejections are only embedded equation objects; and one evaluation item reaches 2^x = 3, which requires logarithms beyond the equal-base method. The replacement is the single delivery equivalent for both the linear-form and quadratic-form objectives.",
+      "evidence": {
+        "locator": "Further Mathematics 1st Term, parsed row 1 (WEEK TWO), getBody() lines 173–287; coverage COV-FM-T1-W02-OBJ-1 and COV-FM-T1-W02-OBJ-2; replacement SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS.",
+        "explanation": "The replacement covers both indexed objectives and has been checked against the source row and the recorded defect/assessment registers. It states the equal-base conditions a > 0 and a ≠ 1, removes the false converse, writes indices explicitly, restores the missing quadratic example, gives both rejected branches in words, answers the previously unanswered linear and quadratic assessment items, and adds the logarithm step needed to finish 2^x = 3. All nine practice items have complete answers and marking totals (38 marks). This correction binds the original row to one replacement for delivery only. The original source row is retained unchanged. OI-FM-T1-W02-FACT-DEFECTS and OI-FM-T1-W02-ASSESSMENT-GAPS remain OPEN; FM-FACT-T1-W02-EQ-OBJECTS remains pending; the teacher decision on whether the logarithm step belongs in Week Two remains open. Content approval is PENDING and verification is DEFERRED; this binding does not constitute approval or acceptance."
+      }
     }
   ],
   "assets": [
@@ -1549,6 +1562,10 @@
         {
           "locator": "SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS: body sections 1, 2 and 3 (the qualified rule, worked examples a)-e), the three Evaluation items) plus the linear weekend items and practice Q1, Q2, Q3, Q8; lesson body_sha256 fe5e13bd865d5efba54ae554d2f6cf70224451b0e2f6491cf39af78e21e64ce9",
           "explanation": "Ported and corrected on 2026-11-06 by FM-PORT-D3-L002. The PR71 candidate read at b5ced7ebb0efe22df2351baa140266fbf40cbf41 (blob 2a5849ac9566caebd8051af526e492d983f3a3ee) was checked against this row and against OI-FM-T1-W02-FACT-DEFECTS: its arithmetic is right, but it omits the row quadratic example b) 5^(2x) + 4 × 5^(x+1) - 125 = 0, answers 25^x = 625 instead of the row 25^(5x) = 625, never sets 10^x = 1/100000, states no condition on the base, writes its indices with unicode superscripts, marks in free text with no integer marks, and cites two preface pages. Only one replacement is added, and it is rewritten in master field names. The objective is now reached at objective level, not by word overlap: the lesson states the equal-base rule with its conditions (a > 0, a not 1) and drops the row false converse; it works the five linear examples a) x = -3, b) x = -3, c) x = -4, d) x = 3, e) x = 2/7 (block b33800c01a6ba53698fc66e086079f2c51e1d578e32f30658367c6c2f34f13b3) with every index written as a caret so nothing depends on the lost superscripts; it answers the three unanswered Evaluation items (block ff933853a3dd0677d4cfda7fac1b5cc98275b3238b04b3c87f8f428cbc41549e) as x = -3, x = 2/5 and x = -5; and it works the linear Weekend items 1, 2 and 5 (x = -3 option (a), x = 2 option (c), x = 6 option (b)) whose options the row leaves unkeyed. Practice Q1, Q2, Q3 and Q8 are original linear-form equations - none is a printed source item - worth 13 marks with complete answers and criterion marks that sum, and Q8 tests the direction of the rule and its conditions. Every value quoted here was recomputed on 2026-11-06. Not certified: content approval stays PENDING with no approval reference, verification stays DEFERRED, and the row is still not bound to this replacement (FM-COR-T1-W02)."
+        },
+        {
+          "locator": "delivery_corrections[id=CORR-FURTHER-MATHEMATICS-T1-W02-EQUATIONS]",
+          "explanation": "The original row is bound to one replacement for delivery. This binding does not close source-specific open items or approval/verification gates."
         }
       ]
     },
@@ -1594,6 +1611,10 @@
         {
           "locator": "SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS: body section 8, the changed sentences in section 5 (Evaluation a) and section 7, and practice Q9; lesson body_sha256 fe5e13bd865d5efba54ae554d2f6cf70224451b0e2f6491cf39af78e21e64ce9",
           "explanation": "Added 2026-11-06 by FM-LES-T1-W02-EQUATIONS. The previous entry's statement that the lesson does not teach the logarithm step is superseded. Quadratic Evaluation item (a) (getBody() lines 268-269, block 1885c441af3fc49d2d24c083beb0b9917f076858a71cad96e238cf195b32cc4b) reduces to (y - 3)(6y + 13) = 0, rejects y = -13/6 in words and stops at 2^x = 3. The lesson now finishes it: section 8 explains a logarithm as the undoing of a power (log_b(k) = y means b^y = k), states that only a positive number has a real logarithm (the same fact as the rejection rule), takes the logarithm of both sides, uses the power rule and gets x = log(3) ÷ log(2), about 1.584963 (recomputed with base 10 and with natural logarithms), with a second worked example 5^x = 40 and the warnings that log(3) ÷ log(2) is neither log(3 ÷ 2) nor log(3) - log(2). Practice Q9 (original; 5 marks, criterion marks sum) sets 3^(2x) - 4(3^x) - 21 = 0: substitution, factorising (y - 7)(y + 3), rejecting y = -3 in words, then 3^x = 7 finished as x = log(7) ÷ log(3), about 1.771. The step is checked against OpenStax College Algebra 2e section 6.6 (provenance). Practice now totals 9 items and 38 marks. Only the single step is taught; scheme week 3 (Logarithms) is not covered and is not claimed. Whether the school wants this step inside Week 2 is a teacher decision (defect 8 stays open). Content approval PENDING, verification DEFERRED."
+        },
+        {
+          "locator": "delivery_corrections[id=CORR-FURTHER-MATHEMATICS-T1-W02-EQUATIONS]",
+          "explanation": "The original row is bound to one replacement for delivery. This binding does not close source-specific open items or approval/verification gates."
         }
       ]
     },

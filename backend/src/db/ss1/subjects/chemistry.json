@@ -113,6 +113,30 @@
       "observed_subject": "SUBJECT: CHEMISTRY\tCLASS: SS 1",
       "canonical_subject": "Chemistry",
       "approval_reference": "PENDING-OWNER: observed heading includes subject/class labels; no approval invented"
+    },
+    {
+      "id": "SS1-SRC-58b4a44c3afa-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "source_sha256": "07053f977dcbef91ee05d74a2e4dab9c3fa921cbb3792dc8698287a55197bb3a",
+      "anchor": "REVISION",
+      "evidence": {
+        "locator": "mammoth 1.12.2 extractRawText lines 69-69; scheme row 12",
+        "explanation": "The word occurs only as a scheme row; the source has no Week Eleven or later body, revision notes or associated teaching passage. Classify as a scheme marker, not a lesson."
+      },
+      "kind": "REVISION"
+    },
+    {
+      "id": "SS1-SRC-58b4a44c3afa-R003",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "source_sha256": "07053f977dcbef91ee05d74a2e4dab9c3fa921cbb3792dc8698287a55197bb3a",
+      "anchor": "EXAMINATION",
+      "evidence": {
+        "locator": "mammoth 1.12.2 extractRawText lines 71-71; scheme row 13",
+        "explanation": "The word occurs only as a scheme row; no examination paper, marking scheme or body marker exists. Classify as a scheme marker, not a lesson."
+      },
+      "kind": "EXAMINATION"
     }
   ],
   "lessons": [],
@@ -234,6 +258,702 @@
           "explanation": "The CONTENT list promises an apparatus topic and the theory block asks for it, but Week One has no section on it. CHEM-INV-T1A records apparatus and uses in Week Two (lines 265-327), which is a different week and is indexed by CHEM-IDX-T1A-W02 and CHEM-FACT-T1A-SAFETY. This entry is UNRESOLVED for Week One only: it claims no coverage from Week Two and does not move the question between weeks."
         }
       ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W02-SCHEME-2",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Scheme week 2: LABORATORY FAMILIARIZATION",
+      "objective_locator": "opening scheme list line 49 (SHA-256 b19f8a782a3f5ad75ba5a0d2b64dc465abdc0b023b1f1ddc716276f9910e5dea); body WEEK TWO source lines 246-415 (SHA-256 3064d93fa4b6050c3522c4be0fa06690cb505b4666a7508d80bcf2cd862e5d05)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "mammoth 1.12.2 extractRawText line 49; WEEK TWO label line 247, TOPIC line 249 and CONTENT lines 251-257",
+          "explanation": "Scheme row 2 reads 'LABORATORY FAMILIARIZATION' and matches the week topic line 'TOPIC: LABORATORY FAMILIARIZATION' once the 'TOPIC: ' prefix is removed, so the mapping is by title as well as by position. Week Two is the second of ten body markers (CHEM-INV-T1A). The scheme row carries no sub-items, so the objectives below come from the week's own headings and CONTENT list."
+        },
+        {
+          "locator": "source lines 247-411; section index in docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1A-W02.md",
+          "explanation": "The body has thirteen indexed sections (label, topic, CONTENT list, definition of laboratory, laboratory apparatus, apparatus and their uses, evaluation, identification exercise, safety rules, general evaluation, reading, weekend and theory blocks). The DOCX XML for the week holds one 606x600 JPEG (image43.jpg), nine 1x1 PNG spacer parts, nine floating text boxes (the A-I labels), 55 automatically numbered or bulleted paragraphs, no table, no equation and no hyperlink; every one of the 203 vertAlign runs is baseline. The drawing and labels are dispositioned by CHEM-VIS-T1A-W02-APPARATUS, not here. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W02-DEFINITION",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Definition of laboratory and of laboratory apparatus",
+      "objective_locator": "body lines 259-267 (definition section 259-261 SHA-256 aa93c82bcdfe6549bb2b378b66e8248394273b371b6bd592fdc14624f58e7b34; apparatus section 265-269 SHA-256 e6b2706c99d5689dd71835091ed85381904de27cf71945ec4114066991f3e65d); questions 333 and 403; CONTENT lines 253 and 255",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 259-261 ('DEFINITION OF LABORATORY' and one sentence at 261) and lines 265-267 ('LABORATORY APPARATUS' and one sentence at 267)",
+          "explanation": "One sentence defines a laboratory (a room or building equipped for scientific experimentation or research, with equipment and apparatus) and one sentence defines laboratory apparatus (tools or equipment used by scientists in the laboratory). Evaluation question 333 asks for both definitions and theory question 403 asks for the first. The CONTENT list spells the heading 'DEFINTION OF LABORATORY' at line 253 and 'DEFINITION OF LABORATORY' at line 259; both are recorded as written. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W02-APPARATUS-USES",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Common laboratory apparatus, their descriptions and uses",
+      "objective_locator": "body lines 265-325 (apparatus section 265-269 SHA-256 e6b2706c99d5689dd71835091ed85381904de27cf71945ec4114066991f3e65d; apparatus and uses section 273-325 SHA-256 5757db26fa9fc22942856b11b5a157f4ab5e79c38a97136edd899073cdf01f76); questions 331, 379, 389-395, 409 and 411; CONTENT line 255",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 269 (list of apparatus names) and lines 273-325 (25 automatically numbered entries, each a name with a description and a use)",
+          "explanation": "Line 269 is one sentence of thirty comma-separated segments ending 'etc.'; two segments run two names together without a comma as written ('funnel (plastic or glass) thistle funnel' and 'Woulff’s bottle tripod stand'), so it names thirty-two apparatus. Lines 275-325 give 25 entries: 'EVAPORATING DISH:' at 275 with its text at 277, then 24 entries that each hold the name, a description and a use in one paragraph (279-325). Names at 269 with no entry of their own: brush, thistle funnel, tripod stand, Bunsen burner, beehive shelf, delivery tube, deflagrating spoon, u-tube, thermometer, wash bottle, chemical balance and reagent bottle; 'pipette' has only the dropping-pipette entry at 301, 'clamp' appears only inside 307 and 'reflux-condenser' only as 'refluxing' inside 319. Entries not named at 269: evaporating dish, crucible, standard volumetric flask, distillation flask, bell jar, measuring cylinder, Kipps apparatus and centrifuge. Spellings differ as written: 'desiccated' (269) and 'DESSICATOR' (309), 'wire gauze' (269) and 'WIRE GUAZE' (315). The week's questions point at this section: 331 (ten apparatus and their uses), 379 (five named apparatus), weekend 389, 391, 393 and 395, and theory 409 and 411. The uses and descriptions are unverified; verification belongs to CHEM-FACT-T1A-SAFETY (uses) and CHEM-FACT-T1A-W02-STATEMENTS (names and descriptions). Week One's COV-CHEM-T1A-W01-APPARATUS stays UNRESOLVED for Week One and is not changed. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        },
+        {
+          "locator": "lines 331, 379, 389-395 and 409-411 against lines 275-325",
+          "explanation": "Every apparatus named by questions 379, 389-395, 409 and 411 has its own entry in 275-325 (evaporating dish 275, retort stand 307, measuring cylinder 311, conical flask 287, fume cupboard 293, gas jar 299, Woulff’s bottle 285, separating funnel 325, condenser 319) except 379(b) pipette; weekend question 5 (line 397) is outside that range and also has no matching entry. Those two are recorded as COV-CHEM-T1A-W02-APPARATUS-GAPS. This locator list is not an answer key and no answer is written here."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W02-IDENTIFICATION",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Identification of laboratory apparatus and set-up labeled A-I",
+      "objective_locator": "body lines 337-341 (section 337-339 SHA-256 18dff616d338009fc710d798038e1e834109766b66efe247cf6b6c5ce827613f; line 341 is whitespace-only, 65 spaces); image43.jpg (JPEG SHA-256 bb2d3e6c33f4f32bc13ba7563d35c8fd01410a9b476b64b4ad65eeea9d3572b3)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 339 ('Identify the laboratory apparatuses and laboratory set-up labeled A-I below:') and the drawing anchor paragraph at line 341",
+          "explanation": "The exercise asks the learner to identify apparatus labeled A-I, but in the extracted text the drawing paragraph (line 341) is whitespace only and no label letter appears. In the DOCX XML the nine floating text boxes carry c, B, A, I, G, H, F, E, D in that document order (the first is a lowercase 'c'), and the labels are not part of the 606x600 JPEG. The source supplies no answer key, no marks and no statement of which drawing each letter marks. Nothing is read into the picture here; the disposition of the drawing and labels is the open item CHEM-VIS-T1A-W02-APPARATUS (PENDING)."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W02-SAFETY",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Laboratory safety rules",
+      "objective_locator": "body lines 345-371 (SHA-256 ed78a788a9770d9a3643d5598bf5fe5f848d61fae462efab816765127117a2f2); questions 377 and 405; CONTENT line 257",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 345-371: heading at 345 and thirteen automatically numbered rules (347-371)",
+          "explanation": "The block lists thirteen rules without any explanation. Line 363 names the fire extinguisher, eye wash station, first aid kit and safety shower only as places to learn; the block contains no first-aid instruction, no chemical name or concentration and no emergency procedure. Line 361 uses curly quotation marks around 'horse play' and line 365 begins 'Reports all accidents'; both are recorded as written. General evaluation question 377 asks for ten measures (the block supplies thirteen) and theory question 405 asks for five. The statements are unverified; verification belongs to CHEM-FACT-T1A-SAFETY. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W02-APPARATUS-GAPS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Apparatus the week asks about but never describes: pipette and coloured reagent bottles",
+      "objective_locator": "general evaluation question 379(b) (line 379); weekend question 5 (line 397); no teaching text in lines 247-411",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 379 ('State the uses of: (a) Evaporating dish (b) Pipette (c) Retort stand (d) Measuring cylinder (e) Conical flask'), line 397 (weekend question 5) and lines 269 and 301",
+          "explanation": "No entry in 273-325 is headed 'Pipette'; 'pipette' appears at 269 and the nearest text is the 'DROPPING BOTTLE OR DROPPING PIPETTE' entry at 301. Weekend question 5 (line 397) asks about coloured reagent bottles; 'reagent bottle' appears only in the list at 269 and no sentence in the week describes coloured bottles or what they store. Both gaps are recorded as written and nothing is invented. The gap becomes the bounded lesson item CHEM-LES-T1A-W02-APPARATUS-GAPS."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W03-SCHEME-3",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Scheme week 3: NATURE OF MATTER",
+      "objective_locator": "opening scheme list line 51 (SHA-256 d4cf8d8b4456294e61bf6f9ac21405f7855f92c767710e4e595b11cc25bba12c); body WEEK THREE source lines 416-607 (SHA-256 7dac5adad12109abcc1f79c7f76006f9f6195bcc548ce4bf4c72e4ea1e57ebc2)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "mammoth 1.12.2 extractRawText line 51; WEEK THREE label line 417, TOPIC line 419 and CONTENT lines 421-427",
+          "explanation": "Scheme row 3 reads 'NATURE OF MATTER' and matches the week topic line 'TOPIC: NATURE OF MATTER' once the 'TOPIC: ' prefix is removed, so the mapping is by title as well as by position. Week Three is the third of ten body markers (CHEM-INV-T1A). The scheme row carries no sub-items, so the objectives below come from the week's own headings and CONTENT list."
+        },
+        {
+          "locator": "source lines 417-603; section index in docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1A-W03.md",
+          "explanation": "The body has nineteen indexed sections (label, topic, CONTENT list, nature of matter, solid, liquid and gaseous states, three evaluations, a states comparison, types of changes, physical change, chemical change, a changes comparison, general evaluation and revision, reading, weekend and theory blocks). The DOCX XML for the week holds eleven 1x1 PNG spacer parts, no text box, no Word table, no equation and no hyperlink; every one of the 178 vertAlign runs is baseline; 31 paragraphs carry automatic numbering or bullets. The two comparison tables are tab-separated paragraph text. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W03-STATES",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Nature of matter and the three states of matter",
+      "objective_locator": "body lines 431-455 (NATURE OF MATTER 431-435 SHA-256 a7bc6bee22293ae3dfb963c4424237817b25b932d612765257e03a749d2a6020; SOLID STATE 439-443 SHA-256 c9dd8238929cae413e16d543645ca55012ba11ccd4af0e4bebb570400de38c74; LIQUID STATE 447-449 SHA-256 d4f9efa8e4d1bbb898e258bb16283f20861f53de4cbccb67dfb56ee6b25bfe8c; GASEOUS STATE 453-455 SHA-256 586a1f7961d3634bb08c7c634c906157c8b80b9275b13610181096abcc785745); questions 461, 463, 491 and 585",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 433-435 (definition of matter, three states, basis of the difference), 441-443, 449 and 455",
+          "explanation": "One definition sentence, one sentence on the three states and one on particle movement; then two sentences for solids, one paragraph for liquids and one for gases. Evaluation questions 461, 463 and 491 ask for the definition and the states; weekend question 585 concerns the states. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W03-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W03-COMPARISON-STATES",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Comparison between solid, liquid and gas",
+      "objective_locator": "body lines 467-485 (SHA-256 330e564a2a9bef8973728d1b9fdcd557b7917c8985a494b23f6f6fd96d11cebc); questions 493, 585 and 593",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 469-485: tab-separated header row (469) and six typed points (471-485, point 6 wraps over 481-485)",
+          "explanation": "The comparison is paragraph text separated by tabs, not a Word table (checked in the DOCX XML); the point numbers 1-6 are typed into the text. Points 1-6 compare mass, density, shape, volume, compressibility and particle movement. Evaluation question 493 asks for a comparison in terms of density and compressibility. The gas column reads 'No volume' (477) while the gas paragraph reads 'no definite shape and volume' (455); both are recorded as written. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W03-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W03-PHYSICAL-CHANGE",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Types of change and physical change",
+      "objective_locator": "body lines 497-513 (TYPES OF CHANGES 497-499 SHA-256 78d669471f642b982decc07296ed43b6ee2f411d7e1f60a461c150106e3761f2; PHYSICAL CHANGE 503-513 SHA-256 4d8e251af4d78c3ecc650f1938817ef7ecca8e8ceb72b45dc00fd39ad3af3118); questions 519, 521, 603 and weekend 583, 587",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 499-513: one introductory paragraph, a definition (505) and four examples (507-513)",
+          "explanation": "The week names two types of change, physical and chemical (499), defines a physical change (505) and lists four examples (507-513), with the example at 509 listing several state changes in one line. Evaluation questions 519 and 521 and theory question 603 ask for the definition and examples; weekend questions 583 and 587 concern kinds of change. Line 509 reads 'liquefaction of gases to solids' as written. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W03-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W03-CHEMICAL-CHANGE",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Chemical change",
+      "objective_locator": "body lines 525-541 (SHA-256 67737e5f7247117a9ea0e78f2c6301124fd4b490b4f9755bef4de30fd1339f59); questions 567, 569 and weekend 583, 591",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 527-541: a definition (527), a lead-in (529) and six examples (531-541)",
+          "explanation": "One definition sentence and six examples. General evaluation questions 567 and 569 ask for the definition and two examples; weekend questions 583 and 591 concern which changes make new substances. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W03-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W03-COMPARISON-CHANGES",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Comparison between physical and chemical changes",
+      "objective_locator": "body lines 545-561 (SHA-256 7095733ce51553f9d321edc64b60465049ce082948cf33f70c80f9fc63db008e); questions 571 and 601",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 547-561: tab-separated header row (547) and four typed points (549-561; points 2-4 wrap over two lines each, the last over 559-561)",
+          "explanation": "The comparison is paragraph text separated by tabs, not a Word table. Points 1-4 compare reversibility, new substances, energy change and mass. General evaluation question 571 asks for three differences and theory question 601 asks for two; the block supplies four. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W03-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W03-REVISION-APPARATUS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Function of the Bunsen burner (revision question on laboratory apparatus)",
+      "objective_locator": "general evaluation/revision question 573(c) (line 573); no teaching text for it in lines 416-607 or in Week Two lines 273-325",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 573 ('State the function of the following laboratory apparatuses: a) Fume cupboard b) Burette (c) Bunsen burner') against Week Two lines 269 and 273-325",
+          "explanation": "The revision question sends the learner back to Week Two apparatus. Week Two has entries for the fume cupboard (293) and the burette (305) but no entry for the Bunsen burner, which Week Two names only in the list at line 269 (COV-CHEM-T1A-W02-APPARATUS-USES). Nothing in Week Three describes it either. No coverage is claimed for the fume cupboard or the burette here; they are Week Two's. The gap becomes the bounded lesson item CHEM-LES-T1A-W03-BUNSEN-BURNER."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W04-SCHEME-4",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Scheme week 4: ELEMENTS & SYMBOLS, VALENCY",
+      "objective_locator": "opening scheme list line 53 (SHA-256 a1cb7406976849488f3621a6448ddd1d1a354062f4573fdf5667b8316296e183); body WEEK FOUR source lines 608-867 (SHA-256 4aea3a2b6e25c43d020c89763df5216007c01031981f9040d4373a57b580dd9c)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "mammoth 1.12.2 extractRawText line 53; WEEK FOUR label line 609, TOPIC line 611 and CONTENT lines 613-619",
+          "explanation": "Scheme row 4 reads 'ELEMENTS & SYMBOLS, VALENCY' and the week topic line reads 'TOPIC:  ELEMENTS, SYMBOLS & VALENCY' (two spaces after the colon). The two differ in word order and punctuation but name the same three subjects, and row 4 is the fourth scheme row for the fourth body marker (CHEM-INV-T1A), so the mapping is by position and by the shared words. The scheme row carries no sub-items, so the objectives below come from the week's own headings and CONTENT list."
+        },
+        {
+          "locator": "source lines 609-863; section index in docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1A-W04.md",
+          "explanation": "The body has fifteen indexed sections (label, topic, CONTENT list, elements and symbols, symbols of elements, two evaluations, classification, metals versus non-metals, valency, radicals, general evaluation and revision, reading, weekend and theory blocks). The DOCX XML for the week holds fifteen 1x1 PNG spacer parts, no text box, no Word table, no equation and no hyperlink. The element, valency and radical tables are tab-separated paragraph text. Twenty-three subscript or superscript runs sit in the radical formulae and are flattened in the extracted text. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W04-ELEMENTS-SYMBOLS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Elements and the three ways symbols are derived",
+      "objective_locator": "body lines 621-695 (ELEMENTS AND SYMBOLS 621-623 SHA-256 8de03cd3f31bbd864f4410e721e26badc6e4633184615b519e2530b5d2b0d00e; SYMBOLS OF ELEMENTS 627-695 SHA-256 25f65075e9c281876847981b627ab2eb0bd3b44f00b234a3e351787570506d14); questions 701, 703, 841 and 855",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 623 (definition) and 629-695 (three derivations and 26 element-symbol rows)",
+          "explanation": "One definition sentence gives what an element is and that over one hundred are known. Three derivations follow: the first letter (8 elements, 631-649), a capital plus one small letter (9, 651-671) and Latin names (9, 675-695), each with a tab-separated list. Evaluation questions 701 and 703 and theory question 855 ask about the count, symbols and the definition; weekend question 841 concerns a symbol. Spellings and symbols are recorded as written: 'Bramine' (657), 'Berylium' (665), 'Hydragyrium' (679) and the symbol 'L' for lithium (671). The statements are unverified; later verification belongs to CHEM-FACT-T1A-W04-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W04-SYMBOLS-GAPS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Symbols the questions ask for but the tables do not give",
+      "objective_locator": "evaluation question 703 (silicon, line 703) and theory question 1(b) (manganese, caesium, cobalt, lines 857-859); no matching row in lines 633-695",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 703 and 857-859 against the symbol lists at 633-649, 653-671 and 677-695",
+          "explanation": "Question 703 lists nine elements; eight of them (iodine, fluorine, sulphur, silver, iron, copper, potassium, sodium) have a row in the symbol lists, but silicon has none (it appears only in the metalloid sentence at 715, without a symbol). Theory question 857-859 asks for the symbols of manganese, caesium and cobalt, none of which appears anywhere in the week. Both gaps are recorded as written and nothing is invented. The gap becomes the bounded lesson item CHEM-LES-T1A-W04-SYMBOLS-VALENCY-GAPS."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W04-CLASSIFICATION",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Classification of elements: metals, non-metals and metalloids",
+      "objective_locator": "body lines 707-737 (CLASSIFICATION OF ELEMENTS 707-715 SHA-256 f8030a8c5d990e5584d3b9a403b97898a84eaee8ccb386fa0ea53e87256d406f; THE DIFFERENCES BETWEEN METALS AND NON-METALS 719-737 SHA-256 a3cea309a01d5e6723d7fdcd1cd86d3614dfadf01c5984ecb231dce92028aaa1); questions 743, 745, 839, 847, 861 and 863",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 709-715 and 721-737",
+          "explanation": "Elements are classified into metals and non-metals (709) with example lists (711, 713) and metalloids with two examples (715). A tab-separated comparison gives five typed points and a density row without a typed number (735-737). Evaluation question 743 and theory question 861 ask about metalloids; questions 745 and 863 ask for two differences; weekend questions 839 and 847 concern a metalloid and a liquid metal. Line 721 and line 789 use an en dash ('Non – metals', 'non – metal'); line 863 reads 'non-metal'. All are recorded as written. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W04-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W04-VALENCY",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Valency: definition, dependence on structure and the valency table",
+      "objective_locator": "body lines 749-789 (SHA-256 988a3c2792442031190e31a62fccc3e089d8aa19276f98e6c5168da93fb0fe06); questions 823(i), 825(c), 837 and 843",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 751-789: two definitions (751), dependence on structure (753), a 12-row table (759-783) and two explanatory paragraphs (787, 789)",
+          "explanation": "Valency is defined as combining power and as the number of hydrogen atoms that combine with or replace one atom. The table gives element, symbol and valency for aluminium, argon, calcium, chlorine, sulphur, sodium, magnesium, copper, carbon, barium, silver and iron; sulphur reads '-2, -4 or -6' (769) and carbon '-2 or -4' (777) as written. The explanatory paragraphs tie sign to gaining or losing electrons and call valency oxidation number or state. General evaluation questions 823(i) and 825(c) and weekend questions 837 and 843 concern this section. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W04-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W04-VALENCY-GAPS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Valencies the questions ask for but the table does not give",
+      "objective_locator": "general evaluation question 825(a) oxygen and 825(b) potassium (line 825) and weekend question 1 (line 837); no matching row in lines 759-783",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 825 and 837 against the valency table at 759-783",
+          "explanation": "Question 825 asks for the valency of oxygen, potassium, sulphur, SO4 2- and NH4+. Sulphur has a row (769) and the two radicals have rows (813, 803), but oxygen and potassium have no valency row, and weekend question 837 also concerns oxygen's combining power. No sentence in the week states either valency. Both gaps are recorded as written and nothing is invented. The gap becomes the bounded lesson item CHEM-LES-T1A-W04-SYMBOLS-VALENCY-GAPS."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W04-RADICALS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Radicals, acid radicals and the radical table",
+      "objective_locator": "body lines 793-815 (SHA-256 44b7d09383808966785de7b1cfb25e510c16f0453ce62f44347b3ae44d4eef03); questions 823(ii) and 825(d)(e); CHEM-PRES-T1A-FORMULAE",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 795-815: definition (795), valency of a radical (797) and a 7-row table (803-815)",
+          "explanation": "A radical is defined as a charged group of atoms that acts as a single unit; acid radicals are negatively charged groups with three examples at 795. The table lists ammonium, hydroxide, trioxonitrate(V), dioxonitrate(III), trioxocarbonate(IV), tetraoxosulphate(VI) and hydrogen trioxocarbonate with formula and valency. In the extracted text the formulae are flattened and the digit zero stands where the letter O belongs: '0H-' (805), 'N03-' (807), 'N02-' (809), 'C032-' (811), 'S042-' (813), 'HC03-' (815), and the same in 795 and 825; the DOCX XML shows the digits following the symbols as subscripts and the charges as superscripts (11 subscript and 12 superscript runs in total). Nothing is corrected here; the formatted-run preservation belongs to CHEM-PRES-T1A-FORMULAE and the wording to CHEM-FACT-T1A-W04-STATEMENTS. Line 817 is whitespace only (a tab and a space). The statements are unverified; later verification belongs to CHEM-FACT-T1A-W04-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W05-SCHEME-5",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Scheme week 5: COMPOUNDS AND MIXTURES",
+      "objective_locator": "opening scheme list line 55 (SHA-256 be2dc61771dfc361f0c67e14b0eb33c4c57105e462bf5c0f7c898a2e045e8500); body WEEK FIVE source lines 868-1115 (SHA-256 0928fd18ab69956502440832da5e87685c9c54ffc584ef53a8763eb6dccfb31d)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "mammoth 1.12.2 extractRawText line 55; WEEK FIVE label line 869, TOPIC line 871 and CONTENT lines 873-881",
+          "explanation": "Scheme row 5 reads 'COMPOUNDS AND MIXTURES' (with a trailing space) and matches the week topic line 'TOPIC: COMPOUNDS AND MIXTURES' once the 'TOPIC: ' prefix is removed, so the mapping is by title as well as by position. Week Five is the fifth of ten body markers (CHEM-INV-T1A). The scheme row carries no sub-items, so the objectives below come from the week's own headings and CONTENT list."
+        },
+        {
+          "locator": "source lines 869-1111; section index in docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1A-W05.md",
+          "explanation": "The body has sixteen indexed sections (label, topic, CONTENT list, compound, properties, three evaluations, formulae of compounds, writing formulae from valencies, mixtures, differences, reading, general evaluation, weekend and theory blocks). The DOCX XML for the week holds eight 1x1 PNG spacer parts, no text box, no Word table, no equation and no hyperlink. The compound, formula, worked-example, mixture and difference tables are tab-separated paragraph text. Twenty-five subscript and four superscript runs sit in formulae and are flattened in the extracted text. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W05-COMPOUND",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Compound: definition and examples",
+      "objective_locator": "body lines 883-899 (SHA-256 34a1b028fc3dc9ac82ece008daccca3d9ebbe8c94a056df1dcae195c276be5c8); questions 919, 921 and weekend 1087",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 885-899: a definition (885), a lead-in (887) and a 5-row table (889-899)",
+          "explanation": "A compound is defined as a substance of two or more chemically combined elements formed by a chemical change. The table lists water, sand, limestone, common salt and ethanol with their constituent elements and no formulae. Evaluation questions 919 and 921 ask for the definition and three examples; weekend question 1087 concerns which substance is a compound. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W05-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W05-PROPERTIES",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Properties of a compound",
+      "objective_locator": "body lines 903-913 (SHA-256 6d04cb5511c71b001940a9b615aa8e35b52e7fc4db89a3748e4ef57ed0f58ce9); questions 993 and weekend 1093",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 905-913: five automatically numbered statements",
+          "explanation": "The statements give different properties from the elements, formation often needing a large amount of heat, no separation by physical means, a fixed ratio by mass and homogeneity. Evaluation question 993 asks for three properties; weekend question 1093 concerns homogeneity. The heading 'PROPERTIES OF A COMPOUND' is not in the CONTENT list (873-881). The statements are unverified; later verification belongs to CHEM-FACT-T1A-W05-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W05-FORMULAE",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Formulae of compounds: notation and examples",
+      "objective_locator": "body lines 923-949 (SHA-256 3a4d69295cdbdf8e8f37d0118a9550929b9c9b3dc9c50cf8bc4fec33f1d31ab4); questions 1061 and weekend 1089; CHEM-PRES-T1A-FORMULAE",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 925-949: molecule notation (925), three formula statements (927-931) and a 6-row table (937-949)",
+          "explanation": "The section says a number after the symbol is a subscript, gives the molecular formula conventions and tabulates hydrochloric acid, water, ammonia, carbon(IV) oxide, lead II chloride and calcium trioxonitrate(V) with formulae. In the extracted text the formulae are flattened and the digit zero stands where the letter O belongs in '02' (925), 'H20' (941) and 'C02' (945), while 'Ca(NO3)2' (949) uses the letter. Evaluation question 1061 asks for five compounds and formulae; weekend question 1089 concerns the formula of ammonia. Nothing is corrected here; formatted-run preservation belongs to CHEM-PRES-T1A-FORMULAE. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W05-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W05-FORMULA-WRITING",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Writing a formula from valencies: four rules and two worked examples",
+      "objective_locator": "body lines 953-985 (SHA-256 0a06cd2e7c6e482fcd526067e87d4406757391974d2bd9730215640a4e598438); questions 991, 1079 and theory 1105-1111",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 955-985: lead-in (955), four rules (957-963) and two worked examples (969-975, 979-985)",
+          "explanation": "The four rules are write the symbols, write the valencies, exchange them and write the formula. The worked examples build sodium tetraoxosulphate(VI) (rows 'Rule 1', 'Rule 2 & 3', 'Rule 4') and calcium chloride. In the first example 'S04' (971) and 'Na2S04' (975) use the digit zero as typed. Evaluation question 991, general evaluation question 1079 and theory question 1105-1111 ask the learner to write formulae. The valencies these need come partly from Week Four's tables (see COV-CHEM-T1A-W05-FORMULA-GAPS for what is missing); no coverage is claimed for them here. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W05-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W05-FORMULA-GAPS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Valencies and formulae the questions need but Weeks Four and Five do not give",
+      "objective_locator": "evaluation question 991(i) and theory question 2(b)(i) (lines 991, 1107); theory question 2(b)(iii) (line 1111); weekend question 1091 (line 1091); no matching row in Week Four lines 759-815 or Week Five lines 868-1115",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 991, 1107, 1111 and 1091 against Week Four valency and radical tables (761-783, 803-815) and Week Five lines 889-949",
+          "explanation": "Three needs have no supporting text. First, 'tetraoxosulphate(vi) acid' (991, 1107) needs hydrogen's valency, but hydrogen appears in the valency sense only as the reference atom in the definition at Week Four line 751 and has no valency row in 761-783. Second, 'Sodium tetraoxophosphate' (1111) needs the tetraoxophosphate radical, which is not in the radical table 803-815 or anywhere in Weeks Four and Five. Third, weekend question 1091 concerns the formula of sand; the week lists sand only as 'silicon, oxygen' (893) and gives neither silicon's valency nor the formula. Other formula questions are supported by Week Four rows (for example sodium 771, magnesium 773, chloride 767, hydroxide 805, trioxocarbonate(IV) 811, tetraoxosulphate(VI) 813, ammonium 803) and the missing oxygen and potassium valencies asked at 1077 are already recorded in COV-CHEM-T1A-W04-VALENCY-GAPS. All gaps are recorded as written and nothing is invented. The gap becomes the bounded lesson item CHEM-LES-T1A-W05-FORMULA-GAPS."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W05-MIXTURES",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Mixtures: definition and examples",
+      "objective_locator": "body lines 997-1021 (SHA-256 b10f1109f4f0974ed8dacbf323b53f436dd8d85fb2b46400d3e42bf32d46e960); questions 1063, 1085 and theory 1099(ii)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 999-1021: a definition (999), a lead-in (1001) and an 8-row table (1005-1021)",
+          "explanation": "A mixture is defined as two or more constituents that can easily be separated by physical methods. The table lists air, soil, urine, palm wine, Coca-cola, milk, sea water and brass with constituents; 'CO2' at 1015 uses the letter O and 'alkanol' is written at 1013. Evaluation question 1063, weekend question 1085 and theory question 1099 ask about mixtures. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W05-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W05-DIFFERENCES",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Differences between mixtures and compounds",
+      "objective_locator": "body lines 1027-1055 (SHA-256 8535e239c195df7407f2cec8ec444ad3d6d71d1eadbeb29eb4af01a347a06893); questions 1065, 1093 and theory 1103",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 1029-1055: a two-column header (1029) and four typed points wrapped over short lines",
+          "explanation": "The comparison is tab-separated paragraph text, not a Word table (checked in the DOCX XML). Points 1-4 compare homogeneity, separation by physical means, ratio of constituents and properties. Evaluation question 1065 and theory question 1103 each ask for four differences, which the block supplies. The text carries a line-break hyphen ('repre- / sented', 1045-1047) and lower-case 'means', 'Formula.' at 1039 and 1049 as written. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W05-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W06-SCHEME-6",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Scheme week 6: STANDARD SEPARATION TECHNIQUES FOR MIXTURES",
+      "objective_locator": "opening scheme list line 57 (SHA-256 10acd10633df313f9e98a7ca57630d7709d4abdfbc6217b1937db53da9dd7ff2); body WEEK SIX source lines 1116-1335 (SHA-256 e5e147ad7fb2954b63f69d8c7c37c4e3d507cbdef6108d0c82ffec3c87bab478)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "mammoth 1.12.2 extractRawText line 57; WEEK SIX label line 1117, TOPIC line 1119 and CONTENT lines 1121-1123",
+          "explanation": "Scheme row 6 reads 'STANDARD SEPARATION TECHNIQUES FOR MIXTURES'; the week topic line reads 'TOPIC: STANDARD SEPARATION TECHNIQUES' and omits 'FOR MIXTURES'. The CONTENT list has one entry. The mapping is by position and by the shared title; Week Six is the sixth of ten body markers (CHEM-INV-T1A). The scheme row carries no sub-items, so the objectives below come from the week's own headings."
+        },
+        {
+          "locator": "source lines 1117-1331; section index in docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1A-W06.md",
+          "explanation": "The body has twenty-five indexed sections (label, topic, CONTENT list, introduction, fourteen technique sections, criteria for purity, two evaluations, general evaluation, reading, weekend and theory blocks). The DOCX XML for the week holds five embedded raster pictures (none a 1x1 spacer), two 1x1 Word tables each holding one narrative paragraph, no text box, no equation and no hyperlink, and seven subscript or superscript runs. The pictures are dispositioned by CHEM-VIS-T1A-W06-MEDIA, not here. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W06-SOLID-LIQUID",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Importance of separation; filtration, centrifugation and decantation",
+      "objective_locator": "body lines 1127-1151 (introduction 1127-1129 SHA-256 374dec5239ca77623fa0301937e230cae32625b32beeb0c6086eec1639a7cc96; FILTRATION 1133-1135 SHA-256 91a91049efe67ae21dd1d05655890f61e8a3ce8c0f966290e490813ae2990774; CENTRIFUGATION 1139-1145 SHA-256 f5594c86eaf29904ad31e0ee56b00a57fe8b0677333cc7ba1e60e871a5cf57b0; DECANTATION 1149-1151 SHA-256 fb9fbd019d45f00228b0dac376201aa95a15724bea46af53ba04f6201f6128f5); questions 1189, 1329 and weekend 1323",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 1129-1151: introduction (1129) and one paragraph for each of the three techniques",
+          "explanation": "The introduction gives why mixtures are separated and names the techniques as one run-on sentence; it writes 'fractional precipitation' where the body has 'PRECIPITATION' (1197) and does not name fractional crystallization. Each technique has one paragraph with an example or use. Evaluation question 1189 asks for the three techniques; theory question 1329 and weekend question 1323 concern them. The centrifugation caption at 1141 sits before a picture on line 1143 (image27.png). The statements are unverified; later verification belongs to CHEM-FACT-T1A-W06-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W06-EVAPORATION-CRYSTALLIZATION",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Evaporation, crystallization and fractional crystallization",
+      "objective_locator": "body lines 1155-1183 (EVAPORATION 1155-1165 SHA-256 446e6b0d32a11077b6e43e135e1de1f0c24efc800f4fe6efab303f6d17e6e9f9; CRYSTALLIZATION 1169-1177 SHA-256 1d45ce7d1e9f3ef9914dc616a18a7876d013d601e5d8f6e39d8f13d6c7874415; FRACTIONAL CRYSTALLIZATION 1181-1183 SHA-256 9f1cc187868965bad4a9f29ab4f3f22516932878e95d6cc5c13cce28611795f4); questions 1191, 1329 and weekend 1323",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 1157-1183",
+          "explanation": "Evaporation has a definition and a salt example (1157), a caption and picture (1159, 1161) and a 1x1 table cell holding a paragraph about salt production (1163), then an industrial use (1165). Crystallization has a method (1171), two ways to induce crystals (1173, 1175) and uses (1177). Fractional crystallization has one paragraph (1183). Evaluation question 1191 asks how to obtain pure copper(II) tetraoxosulphate(VI) crystals from solution and theory question 1329 asks for evaporation. The passage at 1163 is in a different voice from its neighbours; its source is not established here and nothing was checked. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W06-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W06-PRECIPITATION-SUBLIMATION",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Precipitation and sublimation",
+      "objective_locator": "body lines 1197-1205 (PRECIPITATION 1197-1199 SHA-256 e052a535327dde628ffa7cdca4661eb27bdfe96d5e286ef859fcd60f2446340e; SUBLIMATION 1203-1205 SHA-256 b80a87a80478cbc04b5d472d90e3075ed557994ddc803dd574358bfee624e7cf); questions 1231, 1233, 1295 and weekend 1317",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 1199 and 1205",
+          "explanation": "Precipitation is explained by one paragraph with an iron(II) sulphate and ethanol example, written 'FeS04' with the digit zero as typed (the 4 is a subscript run). Sublimation is defined as change from solid to gas directly on heating, with iodine and ammonium chloride as examples. Evaluation question 2 (1229-1233) asks for both; general evaluation question 1295 and weekend question 1317 concern sublimation. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W06-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W06-DISTILLATION",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Distillation and fractional distillation",
+      "objective_locator": "body lines 1211-1221 (DISTILLATION 1211-1215 SHA-256 739b4d7a3a5e3a0a64c1c067c6b8a9606adfc2c4f60ad18ebe84917029b12370; FRACTIONAL DISTILLATION 1219-1221 SHA-256 7ef9660fcd3ad666a6a8c0b66fbc84bb77ed5a6ae76401e6ddb4aaa1dec77372); questions 1227, 1329 and weekend 1311-1315",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 1215 and 1221",
+          "explanation": "Distillation has one paragraph (solvent recovery, distillate, uses) and fractional distillation has one paragraph (miscible liquids, boiling points, fractionating column, uses). Line 1221 reads '(less than 100oC' with the 'o' as a superscript run and no closing bracket, and ends with uses including 'benzene and methyl benzene'. Evaluation question 1227 asks for the major difference in apparatus and in mixtures; theory question 1329 and weekend questions 1311-1315 concern them. The distillation picture sits on line 1213 (image58.png). The statements are unverified; later verification belongs to CHEM-FACT-T1A-W06-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W06-FUNNEL-SIEVING-MAGNETIC",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Separating funnel, sieving and magnetic separation",
+      "objective_locator": "body lines 1237-1251 (SEPARATING FUNNEL 1237-1239 SHA-256 57563b14de3ddd95c427605f331a8915d2b05b10c7a36e96fb4c4f48002896fa; SIEVING 1243-1245 SHA-256 1f01d8ead6d0b02757ef3d01b52dbe363531d25f58debc8cc6a59cb078ac8807; MAGNETIC SEPARATION 1249-1251 SHA-256 118b2847a4be42925f2cdc07f23ee3a6ab6076cdfd7e39104f3f23d8bef107ed); questions 1293, 1297 and weekend 1311-1313",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 1239, 1245 and 1251",
+          "explanation": "One paragraph each, with a use or example (water and kerosene; gold and diamond mines and garri; iron filings and sulphur). General evaluation questions 1293 and 1297 and weekend question 1311-1313 concern them. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W06-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W06-CHROMATOGRAPHY",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Chromatography: principle, types, paper method and uses",
+      "objective_locator": "body lines 1255-1279 (SHA-256 5c82b945cb9e1aa837e86460901e71651af3370ce30b0471cb837544a1c6ded4); questions 1293 and weekend 1319-1321",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 1257-1279",
+          "explanation": "A one-sentence principle (1257), a picture on line 1259 (image53.png), a 1x1 table cell with a paragraph on liquid chromatography (1261), four named types (1267-1273), a paper-chromatography method with ink or dye (1275) and uses (1279). The passage at 1261 is in a different voice from its neighbours; its source is not established here and nothing was checked. General evaluation question 1293 and weekend question 1319-1321 concern this section. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W06-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W06-PURITY",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Criteria for purity",
+      "objective_locator": "body lines 1283-1287 (SHA-256 f82ccb239ddfd238197b8f794563339375204d784db54efbf71792e0653b3227); questions 1299 and 1331",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 1285-1287",
+          "explanation": "Two statements: fixed melting and boiling points that change with impurities (1285) and one spot on a paper chromatogram (1287). Questions 1299 and 1331 both ask for two criteria. The statements are unverified; later verification belongs to CHEM-FACT-T1A-W06-STATEMENTS. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W06-SOLUBILITY-GAPS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Solubility facts the questions need for lead(II) chloride and sodium chloride",
+      "objective_locator": "evaluation question 1193 (PbCl2 and NaCl) and general evaluation question 1295 (NaCl, PbCl2 and NH4Cl); no solubility statement for either salt in lines 1116-1335",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 1193 and 1295 against lines 1157, 1171-1183, 1199 and 1205",
+          "explanation": "Both questions ask how to separate mixtures that contain PbCl2 and NaCl. The week teaches the techniques generally (crystallization, fractional crystallization on different solubilities at different temperatures at 1183, filtration at 1135, and sublimation of ammonium chloride at 1205) but never states how PbCl2 or NaCl dissolves in cold or hot water, which is what such an answer depends on. No sentence supplies it. The gap is recorded as written and nothing is invented. The gap becomes the bounded lesson item CHEM-LES-T1A-W06-SOLUBILITY-GAPS."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W07-SCHEME-7",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Scheme week 7: PARTICULATE NATURE OF MATTER",
+      "objective_locator": "opening scheme list line 59 (SHA-256 8f2fa36614f875d3da9acb00756c8b62ea0f1c251ddcd137dedf347e922b70f2); body WEEK SEVEN source lines 1336-1489 (SHA-256 8afae8fe7429d6acf133b984dc4a283f6eb0c848477350e2c19cff942ebfb66d)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "mammoth 1.12.2 extractRawText line 59; WEEK SEVEN label line 1337, TOPIC line 1339 and CONTENT lines 1341-1349",
+          "explanation": "Scheme row 7 reads 'PARTICULATE NATURE OF MATTER' (line 59, set with leading spaces) and the week topic line reads 'TOPIC: PARTICULATE NATURE OF MATTER', the same title. The CONTENT list has four bullet entries: ATOMS AND MOLECULES, IONS, DALTON’S ATOMIC THEORY and 'MODIFICATIONS OF DALTONS ATOMIC THEORY' (written without an apostrophe at line 1349, kept as written). The mapping is by position and by the shared title; Week Seven is the seventh of ten body markers (CHEM-INV-T1A). The scheme row carries no sub-items, so the objectives below come from the week's own headings."
+        },
+        {
+          "locator": "source lines 1337-1485; section index in docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1A-W07.md",
+          "explanation": "The body has twelve indexed sections (label and topic, CONTENT list, ATOMS AND MOLECULES, two EVALUATION blocks, IONS, DALTON’S ATOMIC THEORY, MODIFICATIONS OF DALTON’S ATOMIC THEORY, GENERAL EVALUATION/REVISION, reading, weekend and theory blocks) holding 67 non-blank lines, every one inside a section. The DOCX XML for the week (body children 668-744) holds no embedded picture, no drawing or text box, no Word table, no equation and no hyperlink, and twenty subscript or superscript runs (charges and formula digits on lines 1393, 1395, 1397 and 1403, and three superscript zeros on line 1443). Nothing was rendered. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W07-ATOMS-MOLECULES",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Atoms, molecules and atomicity: atom, molecule, atomicity, monatomic, diatomic and triatomic, with hydrogen, oxygen, nitrogen, neon, helium and argon as examples",
+      "objective_locator": "source lines 1351-1377 (SHA-256 179ce9a912d2915db8530d4efb677cdd3d7d208d0be3ce27ae99985ff6032d8c); EVALUATION lines 1381-1385 (SHA-256 8016f250691492b77f05aed2a18006f8a2ad05790875a17ef3c89bc7e0f93163)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 1353-1361 and the example table 1365-1377",
+          "explanation": "Line 1353 says matter is made of discrete particles (atoms, molecules, ions); 1355 defines an atom, 1357 a molecule, 1359 atomicity, and 1361 names monatomic, diatomic and triatomic. The table lists hydrogen, oxygen and nitrogen as Diatomic and neon, helium and argon as Monoatomic; no triatomic example is given. The text spells 'monatomic' at 1361 and 'Monoatomic' in the table; both kept as written. Table cells are separated by runs of tabs, and the oxygen row at 1369 has spaces after the tabs."
+        },
+        {
+          "locator": "EVALUATION lines 1381-1385 against lines 1355 and 1365-1371",
+          "explanation": "Question 1383 'Define an atom.' has its definition at 1355. Question 1385 'Give two examples of diatomic molecules.' has its examples at 1367-1371. The questions carry no answers or marks in the source. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W07-IONS-RADICALS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Ions, radicals, acid radicals, cations and anions",
+      "objective_locator": "source lines 1389-1397 (SHA-256 fc637bf97ad22aaf2b5d55fa739b69e89734bc056f83ae347e574bd2e118cc32); EVALUATION lines 1399-1403 (SHA-256 9bd2bfb11f4a6eed143ac429b1ca125432914bdd24fa55f1ad0728599d834e67)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 1391-1397",
+          "explanation": "Line 1391 defines an ion as an atom or group of atoms carrying an electric charge and calls such groups radicals; 1393 defines an acid radical (examples typed 'S042-' and 'N03-', with the digit zero for the letter O); 1395 gives cations with examples Ca2+, Na+ and NH4+; 1397 gives anions with examples typed 'C032-', 'S042-', Cl- and OH-, and its 'e.g..' has a doubled full stop. The charge and subscript digits are formatted runs that the extraction flattened (4 runs on 1393, 4 on 1395, 6 on 1397); they are recorded as written here and preserved by CHEM-PRES-T1A-FORMULAE."
+        },
+        {
+          "locator": "EVALUATION lines 1399-1403 against lines 1391-1397",
+          "explanation": "Question 1401 'What are ions?' is answered by the definition at 1391. Question 1403 asks for the cation and anion in (I) H2S04, (ii) NaCl and (iii) FeS04 (typed '(I)' with a capital I and the digit zero in S04); part (ii) rests on Na+ at 1395 and Cl- at 1397. Parts (i) and (iii) depend on facts the source does not state: see COV-CHEM-T1A-W07-ION-GAPS. No answers or marks in the source. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W07-DALTON-THEORY",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Dalton’s atomic theory and its modifications",
+      "objective_locator": "source lines 1407-1419 (SHA-256 9a6b1c7a447d6e247f22efec5ce68b4e5abfe79e7c07d13479e636fe148c7206); MODIFICATIONS lines 1423-1435 (SHA-256 0845da383ec8832d69a9a99230ab2fab49a2bc5b9bc76fae37e849101d7c73a9); GENERAL EVALUATION lines 1439-1449 (SHA-256 59314646e85e810735c6eb5ad75aad9f876d5961f9ca8ca5c4c5e37e6b347bc8)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 1409-1419",
+          "explanation": "Line 1409 introduces John Dalton as a British physicist and chemist and gives the year 1808; lines 1411-1419 list five numbered statements of the theory (indivisible atoms; atoms neither created nor destroyed in a chemical reaction; atoms of one element alike and different from those of other elements; combination in simple whole-number ratios; chemical change as combination or separation of atoms). The heading at 1407 has a right single quotation mark (U+2019) before 'S'. The wording is kept as written, including 'exactly alike in aspect' at 1415."
+        },
+        {
+          "locator": "lines 1425-1435 and general evaluation question 1441",
+          "explanation": "Line 1425 says the theory cannot hold in its entirety; lines 1427-1433 comment, in four lower-roman items, on statements one to four (protons, electrons and neutrons; nuclear reactions; isotopes, with chlorine as the example; very large organic molecules). The sentence in the fourth item runs on from 1433 to 1435 across a blank line. No comment is made on the fifth statement. Question 1441 'State the modifications of the Dalton’s atomic theory.' is supplied by 1425-1435. No answers or marks in the source. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W07-ASSESSMENT-LINKS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Revision, weekend and theory questions whose content is taught elsewhere in this week or in other weeks",
+      "objective_locator": "GENERAL EVALUATION lines 1439-1449 (SHA-256 59314646e85e810735c6eb5ad75aad9f876d5961f9ca8ca5c4c5e37e6b347bc8); WEEKEND lines 1459-1475 (SHA-256 5e91f1e50a0740dd2519ba27e6a66212f4deb421e191c2898df6ffa519e8bde0); THEORY lines 1479-1485 (SHA-256 f7b2339cc55f783800dd6d247b35814a22245894f5d876ea82e9433b6bbb1736); READING lines 1453-1455 (SHA-256 b6bb7c0bd25072a55239b445dd638c849d4561cde28f1a1b05e84204472fc83f)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 1443-1449 against Week Six lines 1219-1223 and 1249-1253",
+          "explanation": "Question 1443 gives three liquids with boiling points typed '560C', '780C' and '1000C' (the zeros are superscript runs) and 1445-1449 ask for the separation method, the first liquid to distil over with an explanation, and an industrial process that uses fractional distillation. Week Six teaches fractional distillation on boiling points and lists crude oil, liquid air, spirits and benzene with methyl benzene as uses (1221), which covers 1445 and 1449. The 'first liquid' question (1447) is recorded as COV-CHEM-T1A-W07-DISTILLATION-ORDER-GAP."
+        },
+        {
+          "locator": "weekend lines 1461-1475 against lines 1355, 1359-1361, 1373, 1413, 1427-1429, Week Four lines 723 and 847-849 and Week Six lines 1249-1251 and 1297",
+          "explanation": "Five multiple-choice questions: the constituents of the atom (1461-1463; protons, electron and neutrons are named at 1427); a statement about the atom (1465; see 1355, 1413 and 1427-1429); a liquid at room temperature (1467-1469; Week Four says metals are solids 'except mercury' at 723 and asks the same question at 847-849, but does not state mercury's state in so many words); separating iron filings and sulphur (1471-1473; magnetic separation at Week Six 1249-1251, and Week Six asks the same question at 1297); the atomicity of neon (1475; 1359-1361 and the table row at 1373). Option letters are split across blank lines at 1463, 1469 and 1473."
+        },
+        {
+          "locator": "theory lines 1481-1485 and reading assignment line 1455",
+          "explanation": "Theory: 1481 asks for two postulates (1411-1419); 1483 asks to differentiate an atom from a molecule (1355-1357); 1485 asks how an atom becomes an ion, which is recorded as part of COV-CHEM-T1A-W07-ION-GAPS. The reading assignment at 1455 cites 'New School Chemistry for SSS by O.Y Ababio. Pg 25-26', a textbook reference whose text is not supplied. No answers or marks anywhere in the source. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W07-ION-GAPS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Ion facts the questions need: the cation present in H2S04, which iron cation FeS04 contains, and how an atom becomes an ion",
+      "objective_locator": "evaluation question 1403 parts (i) and (iii) and theory question 1485; no statement in Weeks One to Seven (lines 1-1489); Week Eight, a later week, is recorded in the evidence",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 1403 and 1393-1397 against Week Four lines 751-789 and 815",
+          "explanation": "Part (i) asks for the cation in H2S04, but no line in Weeks One to Seven writes the hydrogen ion or gives hydrogen a charge: the valency table (761-783) has no hydrogen row and 815 lists only the hydrogen trioxocarbonate radical. Part (iii) asks for the cation in FeS04; line 783 gives iron as '+2 or +3' and no sentence in Weeks One to Seven says which iron cation FeS04 contains. Week Eight, a later week, names 'Iron (ii)' compounds at 1565 and 1629 and discusses hydrogen ions in names at 1613-1615; that is recorded here and not used to fill the gap. The gap is recorded as written and nothing is invented."
+        },
+        {
+          "locator": "line 1485 against lines 1391 and 787",
+          "explanation": "Question 1485 asks 'How will an atom become an ion?'. Line 1391 defines an ion as a charged atom or group, and Week Four line 787 says an element that gains electrons takes a negative valency and one that loses them a positive valency, but no sentence says that an atom becomes an ion by gaining or losing electrons. The pieces sit in separate places and nothing links them. The gap becomes the bounded lesson item CHEM-LES-T1A-W07-ION-DISTILLATION-GAPS."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W07-DISTILLATION-ORDER-GAP",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Which of three liquids distils first, and why (general evaluation question 1447)",
+      "objective_locator": "general evaluation questions 1443-1447; no statement about the order in which liquids distil in lines 1-1489",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 1443-1447 against Week Six lines 1211-1221 and 1315",
+          "explanation": "Question 1447 asks the learner to name the first liquid to distil over and explain. Week Six says fractional distillation separates miscible liquids 'based on their boiling points' (1221) and that distillation vapourises a liquid and condenses the vapour (1215), and 1315 offers 'liquids with differing boiling points' as a multiple-choice option, but no sentence in Weeks One to Seven states that the liquid with the lowest boiling point vaporises and distils first. The boiling points are given in the question itself (1443). The gap is recorded as written and nothing is invented. It becomes the bounded lesson item CHEM-LES-T1A-W07-ION-DISTILLATION-GAPS."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-REVISION-MARKER",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Scheme marker only: REVISION",
+      "objective_locator": "mammoth lines 69-69; source scheme row 12",
+      "status": "MARKER",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "CHEM-INV-T1A.md, opening/scheme inventory lines 69-71",
+          "explanation": "REVISION appears only in the scheme. No revision body or Week Eleven exists; preserve as a marker, not teaching."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-EXAMINATION-MARKER",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Scheme marker only: EXAMINATION",
+      "objective_locator": "mammoth lines 71-71; source scheme row 13",
+      "status": "MARKER",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "CHEM-INV-T1A.md, opening/scheme inventory lines 69-71",
+          "explanation": "EXAMINATION appears only in the scheme. No examination paper, marking scheme or body exists; preserve as a marker, not teaching."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -278,6 +998,39 @@
       "affected_ids": [
         "SS1-SRC-28ed32f52548",
         "SS1-SRC-28ed32f52548-R001"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "CHEM-T1A-W06-UNLICENSED-STOCK-MEDIA",
+      "kind": "PERMISSION",
+      "detail": "Five Week Six stock photographs/clip-art carry Encarta/Microsoft credit strips and no reuse licence is evidenced; two captions do not accurately describe the depicted process.",
+      "required_action": "Omit these assets from delivery. If visuals are required later, use separately licensed or original accurate method diagrams; never crop credits as a workaround.",
+      "affected_ids": [
+        "COV-CHEM-T1A-W06-SOLID-LIQUID",
+        "COV-CHEM-T1A-W06-EVAPORATION-CRYSTALLIZATION",
+        "COV-CHEM-T1A-W06-DISTILLATION",
+        "COV-CHEM-T1A-W06-CHROMATOGRAPHY"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "CHEM-T1A-W09-ISOTOPE-IMAGE-MISMATCH",
+      "kind": "PERMISSION",
+      "detail": "Week Nine isotope image depicts carbon-12/13/14 but the adjacent text example is chlorine-35/37; it also carries an Encarta/Microsoft credit strip with no reuse licence evidenced.",
+      "required_action": "Omit the stock image from delivery. If a visual is needed, obtain an original/licensed isotope diagram that matches the example and clearly identify its independent provenance.",
+      "affected_ids": [
+        "COV-CHEM-T1A-W09-ISOTOPES"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "CHEM-T1A-W10-ORBITAL-SHAPES-MISSING",
+      "kind": "CONTENT",
+      "detail": "Week Ten text promises s, px, py and pz orbital-shape diagrams, but all eight embedded images are 1x1 spacer PNGs; the diagrams are absent.",
+      "required_action": "Supply four reviewed, scientifically accurate orbital diagrams from a licensed authoritative source or a reviewed original visual task. Do not invent or deploy an AI replacement.",
+      "affected_ids": [
+        "COV-CHEM-T1A-W10-ORBITALS"
       ],
       "blocks_delivery": true
     }

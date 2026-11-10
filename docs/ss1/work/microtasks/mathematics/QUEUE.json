@@ -25,11 +25,13 @@
     "MATH-PRE-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5) completed the 1st Term preamble inventory. mathematics.json now has 10 source_rules (added RULE-MATH-T1-TITLE and RULE-MATH-T1-REFERENCES; re-anchored RULE-MATH-T1-SCHEME-EXAM) and 36 coverage entries (added COV-MATH-T1-TITLE and COV-MATH-T1-REFERENCES; updated COV-MATH-T1-EXAM). Note 1 is the queue-generation snapshot. Per-block hashes and the auto-numbering finding are in docs/ss1/work/microtasks/mathematics/MATH-PRE-T1.md. Nothing was run; testing remains deferred.",
     "MATH-LES-T1-W01-VOCABULARY (2026-11-06): Week 1 vocabulary closed. Body section 4 of SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS defines simplify and evaluate in the school’s own wording (lines 105 and 107) and section 1 now carries line 103 with its two mixed-number counter-examples restored from the OMML, so COV-MATH-T1-W01-OBJ-4 is IMPLEMENTED_EQUIVALENT and the lesson is bound to it. New body_sha256 2ce49d2c33afaae0c6b4d71d219c3f73e024e194bac51c4ee3926bbccf205dec (the earlier lesson item MATH-LES-T1-W01-DIVISIBILITY-INTEGERS still records 03206bf6b426ad0c316aa1e3ad653bcbd296e56750eeec7f7b81d0915a5d2ef2, the digest as of its own run - a point-in-time reference, not an error). OI-MATH-T1-W01-ASSESSMENT-GAPS is narrowed to the eight uncarried ASSESSMENT items and still blocks; MATH-LES-T1-W01-ASSESSMENT-PRACTICE is now dependency-satisfied, so it replaces this item in runnable_now. COV-MATH-T1-R00’s bounding entry was dated for the same reason. Nothing was approved, verified or run: approval PENDING, verification DEFERRED, Week 1 not complete. next_runnable is unchanged.",
     "MATH-WK-T1-W02 (2026-11-07) indexed Week 2 at objective level: 7 coverage entries (6 PARTIAL, 1 UNRESOLVED, none SUPPORTED), a source answer defect (1011.01 base two printed as 11 3/4, correct 11 1/4), the row-level COV-MATH-T1-R01 note corrected, 3 open items, one lesson item and one correction-binding item appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, lesson, correction, asset or shared file was written.",
-    "MATH-LES-T1-W02-NUMBER-BASES (2026-11-07) authored the Week 2 replacement lesson (SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES) and keyed all 20 exercise items; seven W02 coverage entries now IMPLEMENTED_EQUIVALENT; MATH-COR-T1-W02-NUMBER-BASES is now dependency-satisfied and replaces it in runnable_now. Teacher confirmations remain open. Not approved, not verified."
+    "MATH-LES-T1-W02-NUMBER-BASES (2026-11-07) authored the Week 2 replacement lesson (SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES) and keyed all 20 exercise items; seven W02 coverage entries now IMPLEMENTED_EQUIVALENT; MATH-COR-T1-W02-NUMBER-BASES is now dependency-satisfied and replaces it in runnable_now. Teacher confirmations remain open. Not approved, not verified.",
+    "MATH-LES-T1-W01-ASSESSMENT-PRACTICE (2026-11-08): implemented on ss1/self-implementation-20261108. Added eight separately keyed items M1W1-Q4–Q11 for the previously uncarried products (2,184×11; 217×405), subtractions (23 from 36; 94 from 104) and divisions (336÷4; 1,848÷12; (−18)÷(−3); −25÷4). Answers: 24,024; 87,885; 13; 10; 84; 154; 6; −6.25 (or −25/4). Each carries one mark and a matching criterion. Added worked explanations to section 5; recomputed body SHA-256 9b75756dad026ddf8d903a5cc69292bf0782088597d63387ffc8962001114195. COV-MATH-T1-W01-OBJ-8 now IMPLEMENTED_EQUIVALENT; OI-MATH-T1-W01-ASSESSMENT-GAPS no longer blocks as an authoring gap. OI-MATH-005 still requires teacher content approval. No source row changed. Testing remains deferred by owner; source evidence is inherited from the existing repository record and was not independently reverified from the unavailable binary archive in this run.",
+    "Queue reconciliation 2026-11-08: removed 19 stale runnable_now references whose items were already IMPLEMENTED_TESTING_DEFERRED (including the completed MATH-COR-T1-W02-NUMBER-BASES and earlier D2 port/comparison items). No task status or package content was changed by this reconciliation."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
-    "FACTUAL_DEPENDENCY": 6,
+    "FACTUAL_DEPENDENCY": 7,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 32,
     "LESSON": 11,
@@ -45,11 +47,11 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 25,
-    "PENDING": 65,
-    "BLOCKED": 9
+    "IMPLEMENTED_TESTING_DEFERRED": 52,
+    "PENDING": 38,
+    "BLOCKED": 10
   },
-  "total": 99,
+  "total": 100,
   "items": [
     {
       "id": "MATH-SRC-T1",
@@ -428,8 +430,8 @@
         "MATH-SRC-T1",
         "MATH-FACT-HEADER-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 2 (source label 'WEEK 3', title \"RULES OF BASE NUMBER\", 2682 characters, body sha256 afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. Existing coverage COV-MATH-T1-R02 status IMPLEMENTED_EQUIVALENT: row-level only, not objective-level proof. Existing replacement SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS and correction CORR-MATHEMATICS-T1-W03-BASE-OPERATIONS (implemented, approval PENDING, verification DEFERRED); its reason cites specific source defects but whole-row objective scope has NOT been reviewed. Equation-aware extraction recovered about 86 more characters than the plain extractor (SS1-03 author evidence), so the delivered original text loses notation (OI-MATH-001).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: completed objective-level review of parsed row 2 (WEEK 3, RULES OF BASE NUMBER; 2,682 characters; body SHA-256 afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7). Replacement SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS updated to body SHA-256 6f81f256bda8030d04111f3a70ba16f85083c4ce71d3929b03a3cd573a5fe4f3, five objectives and six keyed practice items. Confirmed coverage of valid digits, addition, subtraction, multiplication, division, unknown base, binary letter/yes-no coding. Mapped source examples: 174₈+233₈, 2311₄−213₄ (corrected to 2032₄), 214₅×23₅, 104_x=68 (reject negative base); source assessment maps to Q1–Q6, including 4103₆=2112₆+x, 614₈−506₈, 123_y=83, 1101₂×10₂ and I LOVE MATHEMATICS. Division was added because source rule lists it but initial replacement omitted it. Public close-equivalent source page lines 127–163 used for corroboration, not claimed identical to archive. External MAN textbook assignment pointer retained; original equivalent practice supplied, exact textbook items not reproduced. OI-MATH-001 remains open for equation-aware extraction; content approval PENDING, verification DEFERRED; tests not run.",
       "completion_condition": "Each scheme objective listed with a reproducible locator and a status; defects, lost notation and figures noted; any uncovered objective becomes an appended bounded task (lesson, correction or asset) rather than a note."
     },
     {
@@ -466,8 +468,8 @@
         "MATH-SRC-T1",
         "MATH-FACT-HEADER-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 3 (source label 'WEEK 4', title \"MODULAR ARITHMETIC\", 2579 characters, body sha256 6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. Existing coverage COV-MATH-T1-R03 status IMPLEMENTED_EQUIVALENT: row-level only, not objective-level proof. Existing replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC and correction CORR-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC (implemented, approval PENDING, verification DEFERRED); its reason cites specific source defects but whole-row objective scope has NOT been reviewed. Equation-aware extraction recovered about 5 more characters than the plain extractor (SS1-03 author evidence), so the delivered original text loses notation (OI-MATH-001).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: reviewed parsed row 3 (MODULAR ARITHMETIC; body SHA-256 6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308). Updated replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC to body SHA-256 f938a84696cb71b367c0eac0fc1a491ecc313ceb99cd0f00c3efbccacae1ff49, six objectives and nine keyed practice questions. Added explicit modular subtraction, addition/subtraction/multiplication tables, market-day cycle, and complete mod-6 multiplication table. Mapped all close-equivalent assignment items to Q4–Q9. Retained source corrections: modulus need not exceed reduced number; 16×7=112 not117; 2x+3≡1 mod6 has x=2 and5. Official FME Inspire lesson and public Week4 notes used for scope corroboration only, not asserted identical to archive. Original DOCX table/notation inspection remains under OI-MATH-001; approval PENDING, verification DEFERRED, tests not run.",
       "completion_condition": "Each scheme objective listed with a reproducible locator and a status; defects, lost notation and figures noted; any uncovered objective becomes an appended bounded task (lesson, correction or asset) rather than a note."
     },
     {
@@ -504,8 +506,8 @@
         "MATH-SRC-T1",
         "MATH-FACT-HEADER-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 4 (source label 'WEEK 5', title \"STANDARD FORM AND APPROXIMATION\", 3151 characters, body sha256 6e1b2a32216d22ca137412f198d8c9df38606143f3c1dc4c09b2bbe7bec24acf) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. Existing coverage COV-MATH-T1-R04 status IMPLEMENTED_EQUIVALENT: row-level only, not objective-level proof. Existing replacement SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM and correction CORR-MATHEMATICS-T1-W05-STANDARD-FORM (implemented, approval PENDING, verification DEFERRED); its reason cites specific source defects but whole-row objective scope has NOT been reviewed. Equation-aware extraction recovered about 235 more characters than the plain extractor (SS1-03 author evidence), so the delivered original text loses notation (OI-MATH-001).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: reviewed parsed row 4 (STANDARD FORM AND APPROXIMATION; 3,151 characters; body SHA-256 6e1b2a32216d22ca137412f198d8c9df38606143f3c1dc4c09b2bbe7bec24acf). Expanded replacement SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM to body SHA-256 94344dac24315eded0e5fa74d59e08377fc8489627e91bb61091a189b862c492, five objectives and 11 keyed practice items. Objective mapping now covers standard/ordinary conversions, negative powers, all four standard-form operations, place-value rounding, significant figures, decimal places and bounds of accuracy. Mapped Week Five source examples/evaluation/weekend/theory from public close-equivalent PDF pages 16–20 (lines 1216–1420) to lesson sections and Q1–Q11. Corrected source defects: 1≤a<10; subtraction 0.00004807; 4517 nearest thousand 5000; 0.0089 to3dp 0.009. Public copy not asserted byte-identical to archive. External NGM SSS1 pages6–7 reading assignment retained; exact textbook exercises not reproduced. OI-MATH-001 remains open for source equation extraction; approval PENDING, verification DEFERRED, tests not run.",
       "completion_condition": "Each scheme objective listed with a reproducible locator and a status; defects, lost notation and figures noted; any uncovered objective becomes an appended bounded task (lesson, correction or asset) rather than a note."
     },
     {
@@ -542,8 +544,8 @@
         "MATH-SRC-T1",
         "MATH-FACT-HEADER-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 5 (source label 'WEEK 6', title \"INDICES\", 868 characters, body sha256 222c8e646d2cf0325c980bac9b4b8e76b9b22aea908263b3011377f446c9423c) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. Existing coverage COV-MATH-T1-R05 status IMPLEMENTED_EQUIVALENT: row-level only, not objective-level proof. Existing replacement SUP-SS1-MATHEMATICS-T1-W06-INDICES and correction CORR-MATHEMATICS-T1-W06-INDICES (implemented, approval PENDING, verification DEFERRED); its reason cites specific source defects but whole-row objective scope has NOT been reviewed. Equation-aware extraction recovered about 534 more characters than the plain extractor (SS1-03 author evidence), so the delivered original text loses notation (OI-MATH-001).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: objective-level review completed for parsed row 5 (WEEK 6, INDICES; 868 characters; body SHA-256 222c8e646d2cf0325c980bac9b4b8e76b9b22aea908263b3011377f446c9423c). Expanded replacement SUP-SS1-MATHEMATICS-T1-W06-INDICES to body SHA-256 9bb60355e6afa0fea23688a8901d174a987f899f7f71c2d0154d9f39a95ea1e0, three scheme objectives and 13 keyed practice questions. Added a dedicated equation-solving section and mapped clear source worked examples/assessments: 2^(r−3)=1/8; 5x=40x^(−1/2); 4^(c−1)=64; 9^(x−1)=27^(x+1); 2^(n−1)=16; y^(−2)=9; √(2s)=9; 2x³=54; fractional-index products. Public close-equivalent PDF lines 1424–1637 used for scope/exercise inventory, not asserted identical to archive. Ambiguous equations 5^(p−3)=8×5^(−2), 9^(2x+1)=81^(x−2) and one compound quotient are recorded in MATH-T1-W06-AMBIGUOUS-EQUATION-NOTATION; no guessing. OI-MATH-001 remains open; approval PENDING, verification DEFERRED, tests not run.",
       "completion_condition": "Each scheme objective listed with a reproducible locator and a status; defects, lost notation and figures noted; any uncovered objective becomes an appended bounded task (lesson, correction or asset) rather than a note."
     },
     {
@@ -1628,8 +1630,8 @@
         "MATH-WK-T1-W01",
         "MATH-LES-T1-W01-VOCABULARY"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by MATH-WK-T1-W01 on 2026-11-05 from origin/master cc6cf68. COV-MATH-T1-W01-OBJ-8 is PARTIAL and OI-MATH-T1-W01-ASSESSMENT-GAPS blocks delivery. The row's twelve assessment items sit in four blocks - products 165-167 (SHA-256 efe3833aeee18e639b1a459b10d342886e8074f19fe12199d0a90e1644b33b1c), subtraction 169-171 (a22a28d518bdedfcaf3b132333a090d9816705f5b0e43d724601065f714ac4a5), division 173-175 (1f952230d4949d275ab6ea168238d31f0b2ba230ad30500173edb7907af542f7) and the two OMML fraction items 177-181 (ff87ed9be1b85dd0003773fe04f55c80a4febc1ad7f84b437215b11aac731d69, where line 179 extracts to the empty string and line 181 to '       b.  '). The supplement carries 4 of 12 (M1W1-Q2(c)/(d), M1W1-Q3(b)/(c)). Eight are carried nowhere: 2184x11 and 217x405 (line 167), 23 from 36 and 94 from 104 (line 171), and 336÷4, 1848÷12, (-18)÷(-3), -25÷4 (line 175, division sign survives extraction). Reviewer values recorded for sizing only in COV-MATH-T1-W01-OBJ-8: 24024, 87885, 13, 10, 84, 154, 6, -6.25. Depends on MATH-LES-T1-W01-VOCABULARY because both edit the same lesson body; start from its delivered body_sha256. Deliverable: practice items for the eight, each with answer and marking criteria whose sum equals the declared marks under the schema. Do not copy the printed source items into the package as an answer key and do not record teacher-approved marks - none exists (OI-MATH-005).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented on 2026-11-08 in SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS. Added M1W1-Q4–M1W1-Q11, eight independently keyed items (two products, two subtractions, four divisions), each with one mark and a single criterion whose marks sum to the item total. Added section 5 worked examples and practice directions. Updated lesson body_sha256 to 9b75756dad026ddf8d903a5cc69292bf0782088597d63387ffc8962001114195. COV-MATH-T1-W01-OBJ-8 is IMPLEMENTED_EQUIVALENT and bound to the supplement; OI-MATH-T1-W01-ASSESSMENT-GAPS is closed as an authoring gap. OI-MATH-005 content approval remains open. No source row changed. Testing remains deferred by owner; this turn did not access the binary archive or rerun the original DOCX render, so source verification relies on the previously recorded repository evidence.",
       "completion_condition": "Every item in parsed row 0 lines 163-181 is either taught by the bound supplement with its own answer and marking criteria or accounted for by a further bounded task; COV-MATH-T1-W01-OBJ-8 leaves PARTIAL, OI-MATH-T1-W01-ASSESSMENT-GAPS is narrowed or closed with evidence, and the lesson body hash and marking arithmetic are recomputed. Approval and verification stay PENDING/DEFERRED."
     },
     {
@@ -1654,7 +1656,7 @@
         "MATH-SRC-T1"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "mathematics.json lessons[id=SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS] body_sha256=9782d282a763a2d9507ed5356b035e026d889982c5f505fd2cff49415c5301b2; 3 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}. Referenced by coverage COV-MATH-T1-R02; bound by CORR-MATHEMATICS-T1-W03-BASE-OPERATIONS. Implemented code, not verified; whole-row scope review pending in MATH-WK-T1-W03.",
+      "implementation_reference": "Implemented 2026-11-08: package lesson SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS body SHA-256 6f81f256bda8030d04111f3a70ba16f85083c4ce71d3929b03a3cd573a5fe4f3; five objectives, six practice items and full marking. Scope review completed against Week 3 source page and archive row identity. Added same-base division method/example, binary yes/no bit, and keyed exercises for 1101₂×10₂ and 1320₄÷2₄. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Implemented in the package. Delivery stays blocked: content approval PENDING with no approval_reference and verification DEFERRED; neither is to be invented."
     },
     {
@@ -1679,7 +1681,7 @@
         "MATH-SRC-T1"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "mathematics.json lessons[id=SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC] body_sha256=0ed48fe41aba6d8684b87418468375fd012e725d8e0ac0f1b72d178e7854f7b5; 3 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}. Referenced by coverage COV-MATH-T1-R03; bound by CORR-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC. Implemented code, not verified; whole-row scope review pending in MATH-WK-T1-W04.",
+      "implementation_reference": "Implemented 2026-11-08: replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC body SHA-256 f938a84696cb71b367c0eac0fc1a491ecc313ceb99cd0f00c3efbccacae1ff49; six objectives, nine practice items and 28 total marks (existing 13 plus new 12); all marking guides total correctly. Added subtraction examples, operation tables, cyclic applications and source-assignment equivalents. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Implemented in the package. Delivery stays blocked: content approval PENDING with no approval_reference and verification DEFERRED; neither is to be invented."
     },
     {
@@ -1704,7 +1706,7 @@
         "MATH-SRC-T1"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "mathematics.json lessons[id=SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM] body_sha256=91ff1d9f686a94b883f4bde90649ca47b4ce3fad4401b680a6e519fee95052a6; 3 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}. Referenced by coverage COV-MATH-T1-R04; bound by CORR-MATHEMATICS-T1-W05-STANDARD-FORM. Implemented code, not verified; whole-row scope review pending in MATH-WK-T1-W05.",
+      "implementation_reference": "Expanded SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM (body SHA-256 94344dac24315eded0e5fa74d59e08377fc8489627e91bb61091a189b862c492) to five objectives and 11 keyed practice items. Added standard-to-ordinary conversions, decimal fractions, approximation examples, significant figures, decimal places, bounds and practical thickness calculation. All marking totals checked; approval PENDING, verification DEFERRED.",
       "completion_condition": "Implemented in the package. Delivery stays blocked: content approval PENDING with no approval_reference and verification DEFERRED; neither is to be invented."
     },
     {
@@ -1729,7 +1731,7 @@
         "MATH-SRC-T1"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "mathematics.json lessons[id=SUP-SS1-MATHEMATICS-T1-W06-INDICES] body_sha256=536e4fb821bf48ea2ec5002ee9f29c8b492e87d3e13d65c7571c0f93c6b01874; 3 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}. Referenced by coverage COV-MATH-T1-R05; bound by CORR-MATHEMATICS-T1-W06-INDICES. Implemented code, not verified; whole-row scope review pending in MATH-WK-T1-W06.",
+      "implementation_reference": "Expanded SUP-SS1-MATHEMATICS-T1-W06-INDICES (body SHA-256 9bb60355e6afa0fea23688a8901d174a987f899f7f71c2d0154d9f39a95ea1e0) to three explicit scheme objectives, 16 worked examples (including source equation types), and 13 keyed practice items. Added equation-solving section for same-base, variable-base and fractional-power equations. Marking totals checked; approval PENDING, verification DEFERRED.",
       "completion_condition": "Implemented in the package. Delivery stays blocked: content approval PENDING with no approval_reference and verification DEFERRED; neither is to be invented."
     },
     {
@@ -1806,7 +1808,7 @@
         "MATH-WK-T1-W03"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "mathematics.json delivery_corrections[id=CORR-MATHEMATICS-T1-W03-BASE-OPERATIONS] source_lesson_id=SS1-SRC-0c9004137f95:BODY:afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7 body_sha256=afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7 replacement_id=SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS. Stated defects: Source solves 104 in base x = 68 as x = ±8 (a base cannot be negative) and gives 2311₄−213₄ as 2033₄ (correct 2032₄). The binding exists as code; its objective-scope review is NOT done (see MATH-WK-T1-W03). Do not activate delivery until that review closes.",
+      "implementation_reference": "mathematics.json delivery_corrections[id=CORR-MATHEMATICS-T1-W03-BASE-OPERATIONS] binds source row SS1-SRC-0c9004137f95:BODY:afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7 (body SHA-256 afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7) to SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS (body SHA-256 6f81f256bda8030d04111f3a70ba16f85083c4ce71d3929b03a3cd573a5fe4f3). Objective review found and filled missing division coverage; source arithmetic defects remain corrected (unknown base negative root rejected; 2311₄−213₄ = 2032₄). Assessment mapping recorded in MATH-WK-T1-W03.md.",
       "completion_condition": "Binding implemented (done). This item reopens only if the week review finds a defect that needs the binding changed, in which case record it here."
     },
     {
@@ -1832,7 +1834,7 @@
         "MATH-WK-T1-W04"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "mathematics.json delivery_corrections[id=CORR-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC] source_lesson_id=SS1-SRC-0c9004137f95:BODY:6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308 body_sha256=6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308 replacement_id=SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC. Stated defects: Source states the modulus must exceed the number reduced (false), gives 16×7=117 (correct 112) and lists only x=2 for 2x+3≡1 (mod 6) (x=2 and x=5). The binding exists as code; its objective-scope review is NOT done (see MATH-WK-T1-W04). Do not activate delivery until that review closes.",
+      "implementation_reference": "mathematics.json delivery_corrections[id=CORR-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC] retains source row SS1-SRC-0c9004137f95:BODY:6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308 (body SHA-256 6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308) and replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC (body SHA-256 f938a84696cb71b367c0eac0fc1a491ecc313ceb99cd0f00c3efbccacae1ff49). Corrected modulus rule, 16×7 arithmetic and multiple modular equation solutions; added objective-level operation/table/application coverage and exercise mapping.",
       "completion_condition": "Binding implemented (done). This item reopens only if the week review finds a defect that needs the binding changed, in which case record it here."
     },
     {
@@ -1858,7 +1860,7 @@
         "MATH-WK-T1-W05"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "mathematics.json delivery_corrections[id=CORR-MATHEMATICS-T1-W05-STANDARD-FORM] source_lesson_id=SS1-SRC-0c9004137f95:BODY:6e1b2a32216d22ca137412f198d8c9df38606143f3c1dc4c09b2bbe7bec24acf body_sha256=6e1b2a32216d22ca137412f198d8c9df38606143f3c1dc4c09b2bbe7bec24acf replacement_id=SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM. Stated defects: Source defines the leading factor as between 1 and 9 (must be 1 ≤ a < 10), contains an inconsistent subtraction result (0.00004803 then 4.807×10⁻⁵) and its exercises lose all exponents in delivered text. The binding exists as code; its objective-scope review is NOT done (see MATH-WK-T1-W05). Do not activate delivery until that review closes.",
+      "implementation_reference": "delivery_corrections[id=CORR-MATHEMATICS-T1-W05-STANDARD-FORM] binds source SS1-SRC-0c9004137f95:BODY:6e1b2a32216d22ca137412f198d8c9df38606143f3c1dc4c09b2bbe7bec24acf (body SHA-256 6e1b2a32216d22ca137412f198d8c9df38606143f3c1dc4c09b2bbe7bec24acf) to SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM (body SHA-256 94344dac24315eded0e5fa74d59e08377fc8489627e91bb61091a189b862c492). Correction evidence now includes all Week Five objectives and exercise mapping, including standard/ordinary conversions, approximation, sig figs, decimal places and bounds; source defects are explicitly corrected.",
       "completion_condition": "Binding implemented (done). This item reopens only if the week review finds a defect that needs the binding changed, in which case record it here."
     },
     {
@@ -1884,7 +1886,7 @@
         "MATH-WK-T1-W06"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "mathematics.json delivery_corrections[id=CORR-MATHEMATICS-T1-W06-INDICES] source_lesson_id=SS1-SRC-0c9004137f95:BODY:222c8e646d2cf0325c980bac9b4b8e76b9b22aea908263b3011377f446c9423c body_sha256=222c8e646d2cf0325c980bac9b4b8e76b9b22aea908263b3011377f446c9423c replacement_id=SUP-SS1-MATHEMATICS-T1-W06-INDICES. Stated defects: Delivered text contains no laws of indices at all (every equation is dropped by the plain extractor); the row cannot teach its objective. The binding exists as code; its objective-scope review is NOT done (see MATH-WK-T1-W06). Do not activate delivery until that review closes.",
+      "implementation_reference": "delivery_corrections[id=CORR-MATHEMATICS-T1-W06-INDICES] binds source SS1-SRC-0c9004137f95:BODY:222c8e646d2cf0325c980bac9b4b8e76b9b22aea908263b3011377f446c9423c (body SHA-256 222c8e646d2cf0325c980bac9b4b8e76b9b22aea908263b3011377f446c9423c) to SUP-SS1-MATHEMATICS-T1-W06-INDICES (body SHA-256 9bb60355e6afa0fea23688a8901d174a987f899f7f71c2d0154d9f39a95ea1e0). Objective-level scope review is complete for laws, negative/fractional indices and solving equations; source exercise mapping and unresolved equation notation are recorded in MATH-WK-T1-W06.md.",
       "completion_condition": "Binding implemented (done). This item reopens only if the week review finds a defect that needs the binding changed, in which case record it here."
     },
     {
@@ -2444,8 +2446,8 @@
         "MATH-SRC-T2",
         "MATH-FACT-HEADER-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Lesson id SUP-SS1-MATHS-001, body 2040 characters, content_hash b2847fbb6c280b25504de68406dd637565881f97633c21b3feea5ec64936cfb8, covers #71 objectives ['MATHS-2-001'] = source week label(s) ['WEEK ONE']; practice items 5. #71 schema fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped, not copied. Static check: master has no 2nd Term lessons, so there is no lesson-level overlap; mapping of coverage is handled by MATH-PORT-D2-COV-T2.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, source package blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8, prior lesson SUP-SS1-MATHS-001; new master lesson SUP-SS1-MATHEMATICS-T2-W01-QUADRATIC-EQUATIONS; body_sha256=6c8ae42d69870ab98e1213b42cb6a3e059d904f4da8b0eb65b9a05ea40ec9c6b; source_id=SS1-SRC-b802686e83d2; source member=SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx; registered source SHA-256=9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368; source week(s)=WEEK ONE. Mapped term_label→term, prompt→question, marking string→explicit criterion with 15 total practice marks; master state content_approval=PENDING/verification=DEFERRED. Manual mathematics review of formulas, worked examples and practice answers completed; automated tests deferred. Coverage is deliberately unchanged for the separate MATH-PORT-D2-COV tasks.",
       "completion_condition": "Lesson present in master's package, valid under master's schema by static reading, state content_approval PENDING/verification DEFERRED, branch blob and lesson id cited in provenance; coverage not changed here. Not claimed implemented until merged to master."
     },
     {
@@ -2471,8 +2473,8 @@
         "MATH-SRC-T2",
         "MATH-FACT-HEADER-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Lesson id SUP-SS1-MATHS-002, body 1478 characters, content_hash 71f500f4dbbdac612e9e8657a330295830c1022367e5998a63ae1391fa47d83c, covers #71 objectives ['MATHS-2-002'] = source week label(s) ['WEEK TWO']; practice items 5. #71 schema fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped, not copied. Static check: master has no 2nd Term lessons, so there is no lesson-level overlap; mapping of coverage is handled by MATH-PORT-D2-COV-T2.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, source package blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8, prior lesson SUP-SS1-MATHS-002; new master lesson SUP-SS1-MATHEMATICS-T2-W02-QUADRATIC-FORMULA-DISCRIMINANT; body_sha256=737cb525fa7a64a26c3b37c96247914ff95c6a3e2a0c89ac221062f1299ab91b; source_id=SS1-SRC-b802686e83d2; source member=SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx; registered source SHA-256=9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368; source week(s)=WEEK TWO. Mapped term_label→term, prompt→question, marking string→explicit criterion with 16 total practice marks; master state content_approval=PENDING/verification=DEFERRED. Manual mathematics review of formulas, worked examples and practice answers completed; automated tests deferred. Coverage is deliberately unchanged for the separate MATH-PORT-D2-COV tasks.",
       "completion_condition": "Lesson present in master's package, valid under master's schema by static reading, state content_approval PENDING/verification DEFERRED, branch blob and lesson id cited in provenance; coverage not changed here. Not claimed implemented until merged to master."
     },
     {
@@ -2498,8 +2500,8 @@
         "MATH-SRC-T2",
         "MATH-FACT-HEADER-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Lesson id SUP-SS1-MATHS-003, body 1982 characters, content_hash a1d4ef263b2e77e184f76d28c7e7e8c0ea9ccb87711b4a50a3139f9663af3457, covers #71 objectives ['MATHS-2-003'] = source week label(s) ['WEEK THREE']; practice items 5. #71 schema fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped, not copied. Static check: master has no 2nd Term lessons, so there is no lesson-level overlap; mapping of coverage is handled by MATH-PORT-D2-COV-T2.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, source package blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8, prior lesson SUP-SS1-MATHS-003; new master lesson SUP-SS1-MATHEMATICS-T2-W03-QUADRATIC-GRAPHS; body_sha256=1aeb8b32c5ba626f640a259d0e08596cfd3977e5342809d101a27d91ccbe69d1; source_id=SS1-SRC-b802686e83d2; source member=SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx; registered source SHA-256=9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368; source week(s)=WEEK THREE. Mapped term_label→term, prompt→question, marking string→explicit criterion with 22 total practice marks; master state content_approval=PENDING/verification=DEFERRED. Manual mathematics review of formulas, worked examples and practice answers completed; automated tests deferred. Coverage is deliberately unchanged for the separate MATH-PORT-D2-COV tasks.",
       "completion_condition": "Lesson present in master's package, valid under master's schema by static reading, state content_approval PENDING/verification DEFERRED, branch blob and lesson id cited in provenance; coverage not changed here. Not claimed implemented until merged to master."
     },
     {
@@ -2525,8 +2527,8 @@
         "MATH-SRC-T2",
         "MATH-FACT-HEADER-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Lesson id SUP-SS1-MATHS-004, body 1630 characters, content_hash 5bd36f146bb0b5ca283d33c28b92a3ddad954361ed050bf4dd7107aa0400b1f6, covers #71 objectives ['MATHS-2-005'] = source week label(s) ['WEEK FIVE']; practice items 4. #71 schema fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped, not copied. Static check: master has no 2nd Term lessons, so there is no lesson-level overlap; mapping of coverage is handled by MATH-PORT-D2-COV-T2.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, source package blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8, prior lesson SUP-SS1-MATHS-004; new master lesson SUP-SS1-MATHEMATICS-T2-W05-VENN-DIAGRAMS; body_sha256=e441d48df75b448fa2102e8273b9bbb63ab8228e69bf9f080bab0ad8b667c84d; source_id=SS1-SRC-b802686e83d2; source member=SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx; registered source SHA-256=9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368; source week(s)=WEEK FIVE. Mapped term_label→term, prompt→question, marking string→explicit criterion with 13 total practice marks; master state content_approval=PENDING/verification=DEFERRED. Manual mathematics review of formulas, worked examples and practice answers completed; automated tests deferred. Coverage is deliberately unchanged for the separate MATH-PORT-D2-COV tasks.",
       "completion_condition": "Lesson present in master's package, valid under master's schema by static reading, state content_approval PENDING/verification DEFERRED, branch blob and lesson id cited in provenance; coverage not changed here. Not claimed implemented until merged to master."
     },
     {
@@ -2552,8 +2554,8 @@
         "MATH-SRC-T2",
         "MATH-FACT-HEADER-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Lesson id SUP-SS1-MATHS-005, body 1510 characters, content_hash bfb92d6e9f0cd88a411a309801526bf1152a79c6bfbce5bb64b155371a884b62, covers #71 objectives ['MATHS-2-007'] = source week label(s) ['WEEK SEVEN']; practice items 5. #71 schema fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped, not copied. Static check: master has no 2nd Term lessons, so there is no lesson-level overlap; mapping of coverage is handled by MATH-PORT-D2-COV-T2.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, source package blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8, prior lesson SUP-SS1-MATHS-005; new master lesson SUP-SS1-MATHEMATICS-T2-W07-TRIGONOMETRIC-RATIOS; body_sha256=088181e008302facf518ded5efd249b07f17a7310a3a00475eb54c0f2d483fec; source_id=SS1-SRC-b802686e83d2; source member=SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx; registered source SHA-256=9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368; source week(s)=WEEK SEVEN. Mapped term_label→term, prompt→question, marking string→explicit criterion with 14 total practice marks; master state content_approval=PENDING/verification=DEFERRED. Manual mathematics review of formulas, worked examples and practice answers completed; automated tests deferred. Coverage is deliberately unchanged for the separate MATH-PORT-D2-COV tasks.",
       "completion_condition": "Lesson present in master's package, valid under master's schema by static reading, state content_approval PENDING/verification DEFERRED, branch blob and lesson id cited in provenance; coverage not changed here. Not claimed implemented until merged to master."
     },
     {
@@ -2579,8 +2581,8 @@
         "MATH-SRC-T2",
         "MATH-FACT-HEADER-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Lesson id SUP-SS1-MATHS-006, body 1393 characters, content_hash fb6157d761b144f34f2ae282e41c535d9a6a89ebd58f92f2181ee597edf3e465, covers #71 objectives ['MATHS-2-008'] = source week label(s) ['WEEK EIGHT']; practice items 5. #71 schema fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped, not copied. Static check: master has no 2nd Term lessons, so there is no lesson-level overlap; mapping of coverage is handled by MATH-PORT-D2-COV-T2.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, source package blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8, prior lesson SUP-SS1-MATHS-006; new master lesson SUP-SS1-MATHEMATICS-T2-W08-APPLICATIONS-OF-TRIGONOMETRY; body_sha256=44d9d5f5d1437d6b013886120afaca04eccb54baeb3d8fe78a06381ee3536d4d; source_id=SS1-SRC-b802686e83d2; source member=SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx; registered source SHA-256=9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368; source week(s)=WEEK EIGHT. Mapped term_label→term, prompt→question, marking string→explicit criterion with 12 total practice marks; master state content_approval=PENDING/verification=DEFERRED. Manual mathematics review of formulas, worked examples and practice answers completed; automated tests deferred. Coverage is deliberately unchanged for the separate MATH-PORT-D2-COV tasks.",
       "completion_condition": "Lesson present in master's package, valid under master's schema by static reading, state content_approval PENDING/verification DEFERRED, branch blob and lesson id cited in provenance; coverage not changed here. Not claimed implemented until merged to master."
     },
     {
@@ -2606,8 +2608,8 @@
         "MATH-SRC-T2",
         "MATH-FACT-HEADER-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Lesson id SUP-SS1-MATHS-007, body 1061 characters, content_hash 2c7e7c1f2114fd866f9e3550658573820d091f4562ed0640e921dbb1f89aff11, covers #71 objectives ['MATHS-2-009'] = source week label(s) ['WEEK NINE']; practice items 5. #71 schema fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped, not copied. Static check: master has no 2nd Term lessons, so there is no lesson-level overlap; mapping of coverage is handled by MATH-PORT-D2-COV-T2.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, source package blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8, prior lesson SUP-SS1-MATHS-007; new master lesson SUP-SS1-MATHEMATICS-T2-W09-CIRCLES; body_sha256=18d3d57cdc2a343569d4747a488aed0700a41df496924c9bc1d2b78d10534572; source_id=SS1-SRC-b802686e83d2; source member=SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx; registered source SHA-256=9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368; source week(s)=WEEK NINE. Mapped term_label→term, prompt→question, marking string→explicit criterion with 11 total practice marks; master state content_approval=PENDING/verification=DEFERRED. Manual mathematics review of formulas, worked examples and practice answers completed; automated tests deferred. Coverage is deliberately unchanged for the separate MATH-PORT-D2-COV tasks.",
       "completion_condition": "Lesson present in master's package, valid under master's schema by static reading, state content_approval PENDING/verification DEFERRED, branch blob and lesson id cited in provenance; coverage not changed here. Not claimed implemented until merged to master."
     },
     {
@@ -2633,8 +2635,8 @@
         "MATH-SRC-T2",
         "MATH-FACT-HEADER-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Lesson id SUP-SS1-MATHS-008, body 1139 characters, content_hash abf0c6ec8d8eaefa99a1abfc0485de59964434abc1838b3aa3a76e8f258d21a7, covers #71 objectives ['MATHS-2-010'] = source week label(s) ['WEEK TEN']; practice items 5. #71 schema fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped, not copied. Static check: master has no 2nd Term lessons, so there is no lesson-level overlap; mapping of coverage is handled by MATH-PORT-D2-COV-T2.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, source package blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8, prior lesson SUP-SS1-MATHS-008; new master lesson SUP-SS1-MATHEMATICS-T2-W10-LOGIC; body_sha256=33160efa0e174cf3cdec27b2834bfdae0f3cdbc04312973a391bf8f6759083b8; source_id=SS1-SRC-b802686e83d2; source member=SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx; registered source SHA-256=9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368; source week(s)=WEEK TEN. Mapped term_label→term, prompt→question, marking string→explicit criterion with 9 total practice marks; master state content_approval=PENDING/verification=DEFERRED. Manual mathematics review of formulas, worked examples and practice answers completed; automated tests deferred. Coverage is deliberately unchanged for the separate MATH-PORT-D2-COV tasks.",
       "completion_condition": "Lesson present in master's package, valid under master's schema by static reading, state content_approval PENDING/verification DEFERRED, branch blob and lesson id cited in provenance; coverage not changed here. Not claimed implemented until merged to master."
     },
     {
@@ -2660,8 +2662,8 @@
         "MATH-SRC-T3",
         "MATH-FACT-HEADER-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Lesson id SUP-SS1-MATHS-009, body 1412 characters, content_hash 63b702e095bfdda22a3ad072d198d98bf575e1c1e628cd86ccb61ab92b08c7bf, covers #71 objectives ['MATHS-3-001'] = source week label(s) ['WEEK ONE']; practice items 5. #71 schema fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped, not copied. Static check: master has no 3rd Term lessons, so there is no lesson-level overlap; mapping of coverage is handled by MATH-PORT-D2-COV-T3.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, source package blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8, prior lesson SUP-SS1-MATHS-009; new master lesson SUP-SS1-MATHEMATICS-T3-W01-MENSURATION-SOLIDS; body_sha256=bac8e88e2333105d652bbeed3543ab62a64ecdf4bce8a129749807659f949cea; source_id=SS1-SRC-ca00ca94afb9; source member=SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx; registered source SHA-256=9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2; source week(s)=WEEK ONE. Mapped term_label→term, prompt→question, marking string→explicit criterion with 13 total practice marks; master state content_approval=PENDING/verification=DEFERRED. Manual mathematics review of formulas, worked examples and practice answers completed; automated tests deferred. Coverage is deliberately unchanged for the separate MATH-PORT-D2-COV tasks.",
       "completion_condition": "Lesson present in master's package, valid under master's schema by static reading, state content_approval PENDING/verification DEFERRED, branch blob and lesson id cited in provenance; coverage not changed here. Not claimed implemented until merged to master."
     },
     {
@@ -2687,8 +2689,8 @@
         "MATH-SRC-T3",
         "MATH-FACT-HEADER-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Lesson id SUP-SS1-MATHS-010, body 1319 characters, content_hash 3fb53dec38253b9bf8c9717bb446200bbc8fd6dd5c480d9e4b52c5fd09c9abd2, covers #71 objectives ['MATHS-3-002'] = source week label(s) ['WEEK TWO']; practice items 4. #71 schema fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped, not copied. Static check: master has no 3rd Term lessons, so there is no lesson-level overlap; mapping of coverage is handled by MATH-PORT-D2-COV-T3.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, source package blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8, prior lesson SUP-SS1-MATHS-010; new master lesson SUP-SS1-MATHEMATICS-T3-W02-FRUSTUMS-TRIANGLE-ANGLES; body_sha256=1e21d67660ac3c66b0f7c1515a414e9bd6d0f0189d58a1b82c77627a34e76dbf; source_id=SS1-SRC-ca00ca94afb9; source member=SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx; registered source SHA-256=9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2; source week(s)=WEEK TWO. Mapped term_label→term, prompt→question, marking string→explicit criterion with 11 total practice marks; master state content_approval=PENDING/verification=DEFERRED. Manual mathematics review of formulas, worked examples and practice answers completed; automated tests deferred. Coverage is deliberately unchanged for the separate MATH-PORT-D2-COV tasks.",
       "completion_condition": "Lesson present in master's package, valid under master's schema by static reading, state content_approval PENDING/verification DEFERRED, branch blob and lesson id cited in provenance; coverage not changed here. Not claimed implemented until merged to master."
     },
     {
@@ -2714,8 +2716,8 @@
         "MATH-SRC-T3",
         "MATH-FACT-HEADER-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Lesson id SUP-SS1-MATHS-011, body 1888 characters, content_hash 90b51d08b2629ba26e7e0ded47833c3b3f5d3da78995cb0c752c9a6a4d5a106c, covers #71 objectives ['MATHS-3-003', 'MATHS-3-004'] = source week label(s) ['WEEK THREE', 'WEEK FOUR']; practice items 4. #71 schema fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped, not copied. Static check: master has no 3rd Term lessons, so there is no lesson-level overlap; mapping of coverage is handled by MATH-PORT-D2-COV-T3.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, source package blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8, prior lesson SUP-SS1-MATHS-011; new master lesson SUP-SS1-MATHEMATICS-T3-W03-W04-GEOMETRICAL-CONSTRUCTIONS; body_sha256=4025814cbda25e80d26d7d88fb3dcc8e5a078a077cb9d578aa648d83e3c28d6c; source_id=SS1-SRC-ca00ca94afb9; source member=SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx; registered source SHA-256=9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2; source week(s)=WEEK THREE. Mapped term_label→term, prompt→question, marking string→explicit criterion with 14 total practice marks; master state content_approval=PENDING/verification=DEFERRED. Manual mathematics review of formulas, worked examples and practice answers completed; automated tests deferred. Coverage is deliberately unchanged for the separate MATH-PORT-D2-COV tasks.",
       "completion_condition": "Lesson present in master's package, valid under master's schema by static reading, state content_approval PENDING/verification DEFERRED, branch blob and lesson id cited in provenance; coverage not changed here. Not claimed implemented until merged to master."
     },
     {
@@ -2741,8 +2743,8 @@
         "MATH-SRC-T3",
         "MATH-FACT-HEADER-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Lesson id SUP-SS1-MATHS-012, body 1571 characters, content_hash bf90107960590299b24bdc2856cd53a214852995db0960217c2c2dc1f4c2356f, covers #71 objectives ['MATHS-3-005'] = source week label(s) ['WEEK 5']; practice items 4. #71 schema fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped, not copied. Static check: master has no 3rd Term lessons, so there is no lesson-level overlap; mapping of coverage is handled by MATH-PORT-D2-COV-T3.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, source package blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8, prior lesson SUP-SS1-MATHS-012; new master lesson SUP-SS1-MATHEMATICS-T3-W05-DEDUCTIVE-PROOFS; body_sha256=bb2b0a0b4a08717ffc2ed6feec695a01f88d98c58691859c07feba384a842202; source_id=SS1-SRC-ca00ca94afb9; source member=SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx; registered source SHA-256=9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2; source week(s)=WEEK 5. Mapped term_label→term, prompt→question, marking string→explicit criterion with 13 total practice marks; master state content_approval=PENDING/verification=DEFERRED. Manual mathematics review of formulas, worked examples and practice answers completed; automated tests deferred. Coverage is deliberately unchanged for the separate MATH-PORT-D2-COV tasks.",
       "completion_condition": "Lesson present in master's package, valid under master's schema by static reading, state content_approval PENDING/verification DEFERRED, branch blob and lesson id cited in provenance; coverage not changed here. Not claimed implemented until merged to master."
     },
     {
@@ -2768,8 +2770,8 @@
         "MATH-SRC-T3",
         "MATH-FACT-HEADER-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Lesson id SUP-SS1-MATHS-013, body 1312 characters, content_hash 97ab6066b7288eff4ae42f09e3d27e62a2d594b734db0117cd4df8bbbb62ed2d, covers #71 objectives ['MATHS-3-006'] = source week label(s) ['WEEK 6']; practice items 4. #71 schema fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped, not copied. Static check: master has no 3rd Term lessons, so there is no lesson-level overlap; mapping of coverage is handled by MATH-PORT-D2-COV-T3.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, source package blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8, prior lesson SUP-SS1-MATHS-013; new master lesson SUP-SS1-MATHEMATICS-T3-W06-STATISTICS-UNGROUPED-DATA; body_sha256=3f53eb3a73c743e377be1dfe4d16aa80a6ac4728790caa5979e461897706f254; source_id=SS1-SRC-ca00ca94afb9; source member=SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx; registered source SHA-256=9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2; source week(s)=WEEK 6. Mapped term_label→term, prompt→question, marking string→explicit criterion with 11 total practice marks; master state content_approval=PENDING/verification=DEFERRED. Manual mathematics review of formulas, worked examples and practice answers completed; automated tests deferred. Coverage is deliberately unchanged for the separate MATH-PORT-D2-COV tasks.",
       "completion_condition": "Lesson present in master's package, valid under master's schema by static reading, state content_approval PENDING/verification DEFERRED, branch blob and lesson id cited in provenance; coverage not changed here. Not claimed implemented until merged to master."
     },
     {
@@ -2795,8 +2797,8 @@
         "MATH-SRC-T3",
         "MATH-FACT-HEADER-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Lesson id SUP-SS1-MATHS-014, body 1288 characters, content_hash 770e111b53ee43712c06ec95ea8444b9488db35cc2f94b8e56492b8efeeb5871, covers #71 objectives ['MATHS-3-008', 'MATHS-3-009'] = source week label(s) ['WEEK 8', 'WEEK NINE']; practice items 4. #71 schema fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped, not copied. Static check: master has no 3rd Term lessons, so there is no lesson-level overlap; mapping of coverage is handled by MATH-PORT-D2-COV-T3.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, source package blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8, prior lesson SUP-SS1-MATHS-014; new master lesson SUP-SS1-MATHEMATICS-T3-W08-GROUPED-DATA; body_sha256=13e555e156251c4d65b93df73c128b9187474556d651cf5b90786f56cd766a48; source_id=SS1-SRC-ca00ca94afb9; source member=SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx; registered source SHA-256=9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2; source week(s)=WEEK 8. Mapped term_label→term, prompt→question, marking string→explicit criterion with 13 total practice marks; master state content_approval=PENDING/verification=DEFERRED. Manual mathematics review of formulas, worked examples and practice answers completed; automated tests deferred. Coverage is deliberately unchanged for the separate MATH-PORT-D2-COV tasks.",
       "completion_condition": "Lesson present in master's package, valid under master's schema by static reading, state content_approval PENDING/verification DEFERRED, branch blob and lesson id cited in provenance; coverage not changed here. Not claimed implemented until merged to master."
     },
     {
@@ -2822,8 +2824,8 @@
         "MATH-SRC-T3",
         "MATH-FACT-HEADER-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Lesson id SUP-SS1-MATHS-015, body 1299 characters, content_hash 45f81d87d8f928d3a875e5c458813ffb7ab09eb2b360d764864695ea6b094144, covers #71 objectives ['MATHS-3-010'] = source week label(s) ['WEEK TEN']; practice items 4. #71 schema fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped, not copied. Static check: master has no 3rd Term lessons, so there is no lesson-level overlap; mapping of coverage is handled by MATH-PORT-D2-COV-T3.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, source package blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8, prior lesson SUP-SS1-MATHS-015; new master lesson SUP-SS1-MATHEMATICS-T3-W10-STATISTICAL-GRAPHS; body_sha256=1c80b87a0415252514f5c0bb3f3778076d9dc66ed6c269646072563a00151740; source_id=SS1-SRC-ca00ca94afb9; source member=SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx; registered source SHA-256=9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2; source week(s)=WEEK TEN. Mapped term_label→term, prompt→question, marking string→explicit criterion with 9 total practice marks; master state content_approval=PENDING/verification=DEFERRED. Manual mathematics review of formulas, worked examples and practice answers completed; automated tests deferred. Coverage is deliberately unchanged for the separate MATH-PORT-D2-COV tasks.",
       "completion_condition": "Lesson present in master's package, valid under master's schema by static reading, state content_approval PENDING/verification DEFERRED, branch blob and lesson id cited in provenance; coverage not changed here. Not claimed implemented until merged to master."
     },
     {
@@ -2849,8 +2851,8 @@
         "MATH-SRC-T3",
         "MATH-FACT-HEADER-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Lesson id SUP-SS1-MATHS-016, body 1024 characters, content_hash 46c30d8b3de492e99890529979bcfce7e9232aaba1bee54b06b6d71b73fca3b1, covers #71 objectives ['MATHS-3-011'] = source week label(s) ['WEEK ELEVEN']; practice items 3. #71 schema fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped, not copied. Static check: master has no 3rd Term lessons, so there is no lesson-level overlap; mapping of coverage is handled by MATH-PORT-D2-COV-T3.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, source package blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8, prior lesson SUP-SS1-MATHS-016; new master lesson SUP-SS1-MATHEMATICS-T3-W11-STANDARD-DEVIATION; body_sha256=4343e2909e1401f41b10448092a7844f03e45472e82f30fa6197c01653996d96; source_id=SS1-SRC-ca00ca94afb9; source member=SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx; registered source SHA-256=9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2; source week(s)=WEEK ELEVEN. Mapped term_label→term, prompt→question, marking string→explicit criterion with 10 total practice marks; master state content_approval=PENDING/verification=DEFERRED. Manual mathematics review of formulas, worked examples and practice answers completed; automated tests deferred. Coverage is deliberately unchanged for the separate MATH-PORT-D2-COV tasks.",
       "completion_condition": "Lesson present in master's package, valid under master's schema by static reading, state content_approval PENDING/verification DEFERRED, branch blob and lesson id cited in provenance; coverage not changed here. Not claimed implemented until merged to master."
     },
     {
@@ -2880,8 +2882,8 @@
         "MATH-PORT-D2-T2-L007",
         "MATH-PORT-D2-T2-L008"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). #71 coverage has 22 entries (objective ids MATHS-2-001..010, MATHS-3-001..012) mostly IMPLEMENTED_EQUIVALENT and uses an objective-level vocabulary master lacks (e.g. SUPPORTED for MATHS-2-004 Idea of Sets, which has no #71 lesson). Master has 34 entries: 22 PARTIAL, 6 IMPLEMENTED_EQUIVALENT, 5 MARKER, 1 UNRESOLVED.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared all 10 #71 second-term objective records (MATHS-2-001..010) with master COV-MATH-T2 rows. Ported lessons justify IMPLEMENTED_EQUIVALENT for R00, R01, R02, R04, R06, R07, R08 and R09, with the corresponding master lesson IDs appended. MATHS-2-004 (Idea of Sets) is only SUPPORTED in #71 and has no supplement; master R03 therefore remains PARTIAL and receives no lesson ID. MATHS-2-006 maps to the existing revision marker R05, which remains MARKER. The separate reference-list marker COV-MATH-T2-REFERENCES remains MARKER. No status upgraded without a ported lesson.",
       "completion_condition": "Each master entry for the term compared with its #71 counterpart; differences applied or recorded; nothing upgraded without a ported lesson."
     },
     {
@@ -2911,8 +2913,8 @@
         "MATH-PORT-D2-T3-L015",
         "MATH-PORT-D2-T3-L016"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). #71 coverage has 22 entries (objective ids MATHS-2-001..010, MATHS-3-001..012) mostly IMPLEMENTED_EQUIVALENT and uses an objective-level vocabulary master lacks (e.g. SUPPORTED for MATHS-2-004 Idea of Sets, which has no #71 lesson). Master has 34 entries: 22 PARTIAL, 6 IMPLEMENTED_EQUIVALENT, 5 MARKER, 1 UNRESOLVED.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared all 12 #71 third-term objective records (MATHS-3-001..012) with master COV-MATH-T3 rows. Ported lessons justify IMPLEMENTED_EQUIVALENT for R00, R01, R04, R05, R07, R08, R09 and R10. Lesson SUP-SS1-MATHEMATICS-T3-W03-W04-GEOMETRICAL-CONSTRUCTIONS is linked to R02 and R03 as partial coverage only: it does not fully cover general triangle constructions and the source's 57½° item remains unresolved; both rows remain PARTIAL. MATHS-3-007 maps to the existing revision marker R06 (MARKER); MATHS-3-012 maps to COV-MATH-T3-EXAM (UNRESOLVED). No status upgraded without a ported lesson.",
       "completion_condition": "Each master entry for the term compared with its #71 counterpart; differences applied or recorded; nothing upgraded without a ported lesson."
     },
     {
@@ -2935,8 +2937,8 @@
         "MATH-SRC-T2",
         "MATH-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Both rules classify marker-only rows (64 and 16 characters). Master already has equivalent REVISION rules; this is a comparison, not a port of schema fields.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared PR #71 marker rules MATHS-R01/R02 with master rules RULE-MATH-T2-W06-REVISION and RULE-MATH-T3-W07-REVISION. Both use classify_marker and the same revision-marker classification. PR #71 anchors are abbreviated ('Review of the first half'; 'REVISION'); master anchors are more specific ('Review of the first half term’s work and periodic test'; 'WEEK 7\\n\\nREVISION') and match the indexed source rows. No master rule change was warranted.",
       "completion_condition": "Difference or equivalence recorded; master rule changed only if a concrete defect is found."
     },
     {
@@ -3030,8 +3032,8 @@
         "MATH-PORT-D2-T3-L015",
         "MATH-PORT-D2-T3-L016"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). OI-MATHS-005 says references were taken from search listings and not opened; lessons are worker-authored.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Carried all 32 distinct lesson-level citations from the 16 PR #71 Mathematics lessons into master provenance. 6 unique URLs were retained with page-not-opened, topic-alignment-unverified and page-level-rights-unverified wording; reuse_status=PENDING. Added OI-MATH-T2-T3-REFERENCE-URLS for the required integrator URL check and teacher content review. No third-party wording was copied; no citation is claimed as verified.",
       "completion_condition": "Provenance on each ported lesson carries the references with the unverified status stated."
     },
     {
@@ -3053,8 +3055,8 @@
       "depends_on": [
         "MATH-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only versions: b5ced7ebb0efe22df2351baa140266fbf40cbf41:docs/ss1/work/SS1-03/CHECKPOINT.md blob f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c; HANDOFF.json blob f3ee7c4559931744ab679bc6f8975fd7091c0710. Master has its own versions at the same paths. Not otherwise compared.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared PR #71 checkpoint blob f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c and HANDOFF blob f3ee7c4559931744ab679bc6f8975fd7091c0710 against master SS1-03 notes. The branch-only Math claim (16 T2/T3 lessons and 2 marker rules) is now routed to and implemented by MATH-PORT-D2-T2-L001..L008, MATH-PORT-D2-T3-L009..L016, MATH-PORT-D2-COV-T2/T3 and MATH-PORT-D2-RULES on this work branch. Branch claim that T1 source is unresolved due manifest mismatch is stale: master has the registered T1 source and T1 replacement lessons, including Week 2; OI-MATH-001 remains for notation/extraction. Branch approval wording 'NOT_REQUESTED' is stale; master package states content_approval=PENDING. Testing-deferred claim is already in master. No master checkpoint or handoff files overwritten.",
       "completion_condition": "Branch-only facts listed with exact blob and line locators, each routed to a queue item or recorded as already covered."
     },
     {
@@ -3185,13 +3187,45 @@
         "MATH-SRC-T1",
         "MATH-WK-T1-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not bound. No delivery_corrections entry exists for parsed row 1 on master; the only base-number supplement (SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS) is bound to parsed row 2 and covers none of the Week 2 exercises.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added CORR-MATHEMATICS-T1-W02-NUMBER-BASES binding parsed row 1 (source_id SS1-SRC-0c9004137f95; source SHA-256 d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb; body SHA-256 67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e) to SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES (body SHA-256 70b38e8812081ad677d210c6c99ea6dc2452c2c7ab556ff85f4a79e4b9202b66). Reviewed COV-MATH-T1-W02-OBJ-1..3 and the three assessment blocks: all source objectives are preserved and all 20 source exercise items are keyed in the replacement. Existing OI-MATH-001 and T1-W02 fact/notation/assessment open items remain intact; no source bytes changed. Approval remains PENDING; verification/testing deferred.",
       "completion_condition": "The binding exists, resolves to one supplement of the same subject and term, and the W02 coverage entries and OI-MATH-001 affected_ids still resolve; no source byte is edited."
+    },
+    {
+      "id": "MATH-FACT-T1-W06-AMBIGUOUS-EQUATIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 6 parsed row 5, INDICES",
+      "objective": "Recover exact superscripts, fraction bars and grouping for the ambiguous Week Six source equations: 5^(p−3)=8×5^(−2), the equation printed as 9^(2x+1)=81^(x−2), and one compound quotient/simplification.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/mathematics.json",
+        "docs/ss1/work/microtasks/mathematics/QUEUE.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/MATHss1.docx",
+          "member_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/mathematics.json",
+        "docs/ss1/work/microtasks/mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/mathematics/MATH-FACT-T1-W06-AMBIGUOUS-EQUATIONS.md"
+      ],
+      "depends_on": [
+        "MATH-WK-T1-W06"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: the original DOCX equation objects are not accessible in this execution session and the public close-equivalent PDF text extraction loses superscripts/fraction bars. The replacement supplies clearly labelled equivalent practice; no original equation is guessed. OI-MATH-001 remains open.",
+      "completion_condition": "Inspect the original DOCX equation objects and record exact operands, exponents, fractions and grouping; resolve or formally retain each source question as unavailable without guessing."
     }
   ],
   "review": {
-    "date": "2026-10-29",
+    "date": "2026-11-08",
     "reviewed_master_sha": "4159336c7068d2235209221f5f14adc4986acec5",
     "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
     "source_archive": {
@@ -3210,17 +3244,11 @@
       "tests_blob": "b22b9a654595f704cad77bd011bcb57886de6425",
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
-    }
+    },
+    "notes": "MATH-WK-T1-W06 objective-level scope review completed; replacement expanded to include equation solving and source-equivalent assessment. Ambiguous equation notation is recorded as a blocked factual dependency; OI-MATH-001 remains open; tests deferred."
   },
   "next_runnable": [
-    "MATH-PRE-T3"
-  ],
-  "runnable_now": [
     "MATH-PRE-T3",
-    "MATH-WK-T1-W03",
-    "MATH-WK-T1-W04",
-    "MATH-WK-T1-W05",
-    "MATH-WK-T1-W06",
     "MATH-WK-T1-W07",
     "MATH-WK-T1-W08",
     "MATH-WK-T1-W09",
@@ -3247,32 +3275,48 @@
     "MATH-WK-T3-W09",
     "MATH-WK-T3-W10",
     "MATH-WK-T3-W11",
-    "MATH-LES-T1-W01-ASSESSMENT-PRACTICE",
     "MATH-FACT-LOG-TABLES",
     "MATH-VIS-T1",
     "MATH-VIS-T2",
     "MATH-VIS-T3",
     "MATH-VIS-T3-OLE",
     "MATH-FACT-ADVERT-T2",
-    "MATH-FACT-ADVERT-T3",
-    "MATH-PORT-D2-T2-L001",
-    "MATH-PORT-D2-T2-L002",
-    "MATH-PORT-D2-T2-L003",
-    "MATH-PORT-D2-T2-L004",
-    "MATH-PORT-D2-T2-L005",
-    "MATH-PORT-D2-T2-L006",
-    "MATH-PORT-D2-T2-L007",
-    "MATH-PORT-D2-T2-L008",
-    "MATH-PORT-D2-T3-L009",
-    "MATH-PORT-D2-T3-L010",
-    "MATH-PORT-D2-T3-L011",
-    "MATH-PORT-D2-T3-L012",
-    "MATH-PORT-D2-T3-L013",
-    "MATH-PORT-D2-T3-L014",
-    "MATH-PORT-D2-T3-L015",
-    "MATH-PORT-D2-T3-L016",
-    "MATH-PORT-D2-RULES",
-    "MATH-CMP-D4-NOTES",
-    "MATH-COR-T1-W02-NUMBER-BASES"
+    "MATH-FACT-ADVERT-T3"
+  ],
+  "runnable_now": [
+    "MATH-PRE-T3",
+    "MATH-WK-T1-W07",
+    "MATH-WK-T1-W08",
+    "MATH-WK-T1-W09",
+    "MATH-WK-T1-W10",
+    "MATH-WK-T1-W11",
+    "MATH-WK-T2-W01",
+    "MATH-WK-T2-W02",
+    "MATH-WK-T2-W03",
+    "MATH-WK-T2-W04",
+    "MATH-WK-T2-W05",
+    "MATH-WK-T2-W06",
+    "MATH-WK-T2-W07",
+    "MATH-WK-T2-W08",
+    "MATH-WK-T2-W09",
+    "MATH-WK-T2-W10",
+    "MATH-WK-T3-W01",
+    "MATH-WK-T3-W02",
+    "MATH-WK-T3-W03",
+    "MATH-WK-T3-W04",
+    "MATH-WK-T3-W05",
+    "MATH-WK-T3-W06",
+    "MATH-WK-T3-W07",
+    "MATH-WK-T3-W08",
+    "MATH-WK-T3-W09",
+    "MATH-WK-T3-W10",
+    "MATH-WK-T3-W11",
+    "MATH-FACT-LOG-TABLES",
+    "MATH-VIS-T1",
+    "MATH-VIS-T2",
+    "MATH-VIS-T3",
+    "MATH-VIS-T3-OLE",
+    "MATH-FACT-ADVERT-T2",
+    "MATH-FACT-ADVERT-T3"
   ]
 }

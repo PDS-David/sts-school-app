@@ -72,6 +72,18 @@
       "observed_subject": "OMEGA TERM E – NOTE FOR SS1 FOODS AND NUTRITION",
       "canonical_subject": "Food and Nutrition",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its header; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-de2cdd0b85f6-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "source_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7",
+      "anchor": "SCHEME OF WORK FOR ALPHA TERM",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "FN-PRE-T1: mammoth 1.12.2 extractRawText lines 1-99 of the verified member (title at line 1, 'WEEK / TOPIC' header at line 3, thirteen scheme rows at lines 5-99); line 1 SHA-256 2991c622bbcd21d6e87ad06c23348ecb7ee7efb9f0c4b10cc52c6446e0b01d61; line 3 SHA-256 2618267ace358ea7494aa3851cd01ee5593163eeb345aaec3937869baef5be59; lines 5-99 SHA-256 c150d17cbdb5b70064b173226ab49dcd34fff4dcd7f0078c31f3ce4e573db26c; lines 1-99 SHA-256 f2306a69a9573116b0c42b9323a24e0f7a8a4dc02d49e116d2628b2505bd2068",
+        "explanation": "Marks the title and scheme-of-work table as scheme-only material outside every parsed body: the anchor occurs exactly once in the extracted text (offset 0, line start) and the first parsed body label 'WEEK 1' is at line 107, so the anchor is not inside any body and nothing is discarded. The same text is also the anchor of the source_alias rule SS1-SRC-de2cdd0b85f6-R001, which declares metadata only. Uniqueness and line-start were checked on private mammoth 1.12.2 output, not by running the importer (deferred)."
+      }
     }
   ],
   "lessons": [],
@@ -245,6 +257,26 @@
         {
           "locator": "line 185 SHA-256 8eee0f0136f411fa247c88fa5902952dd5024d2cffcf2b371f6695848de8501a",
           "explanation": "Exact wording: 'Evaluation: mention the importance of human nutrition.' It is printed at the end of the Week 2 block (lines 155-185) but asks for the importance of human nutrition, which is the Week 1 block at lines 119-135. It is recorded here as a cross-reference only; the Week 2 block, including this line, is indexed by FN-WK-T1-W02. No key, model answer or marks exist, and the eight points at 121-135 do not say how many the question expects."
+        }
+      ]
+    },
+    {
+      "id": "COV-FN-T1-TITLE",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "objective": "Document title and the thirteen-row scheme of work table for the 1st Term Food and Nutrition source; marker material with no teaching objective of its own",
+      "objective_locator": "lines 1-99 of mammoth.extractRawText 1.12.2 (title line 1, 'WEEK / TOPIC' header line 3, scheme rows lines 5-99)",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-de2cdd0b85f6-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "line 1 'SCHEME OF WORK FOR ALPHA TERM' SHA-256 2991c622bbcd21d6e87ad06c23348ecb7ee7efb9f0c4b10cc52c6446e0b01d61; line 3 'WEEK' / 'TOPIC' header SHA-256 2618267ace358ea7494aa3851cd01ee5593163eeb345aaec3937869baef5be59; lines 1-99 SHA-256 f2306a69a9573116b0c42b9323a24e0f7a8a4dc02d49e116d2628b2505bd2068; text before the first parsed body label 'WEEK 1' (line 107, offset 1200, computed by slicing) SHA-256 9fcede9636bf8f2bd0821ac54bc68d13cef91e9a99bae75d640318c7864a8611",
+          "explanation": "The only text before the first parsed body is the title, the table header and the thirteen scheme rows, followed by empty lines 100-106. The title does not name the subject, class or term (see the header evidence on the source); it is registered metadata and is classified scheme-only by SS1-SRC-de2cdd0b85f6-R002, so no lesson ID is invented."
+        },
+        {
+          "locator": "scheme rows by number cell and topic cell lines: row 1 lines 5-7 SHA-256 e2e7f2edc36afade01d863e15337ac1ebf2ac09cf4dd88d6b9d45442c68888bd; row 2 lines 9-11 SHA-256 ef7251a846b7299aa9a7534c44daeae4b18834e24d1a7755e42fc87da5421d21; row 3 lines 13-15 SHA-256 2cd339c99b144b9ee72a969887fc700c4a8fcd7f24c7b68ab95af78031e73d8e; row 4 lines 17-27 SHA-256 9fa8e66d78e4b328b6a66392462be7ab65b1518771093db3126f8b03464d438f; row 5 lines 29-37 SHA-256 8b1483d91e11b4442d0f7d178d96726260d3bc28259e2db18c8f13edd338143a; row 6 lines 39-49 SHA-256 1b92a0b54ccffc653f67b9b9a3e968550a488fdb7d436e4461a6933a62bf11a8; row 7 lines 51-61 SHA-256 850d84b1f9d0df792b6377c85d0864f27ad8cfb4d71db672c2739370c36a8f19; row 8 lines 63-71 SHA-256 d0767441d5185384464fced6204f999a41e8b7e66c963089c021556b9f7e112b; row 9 lines 73-77 SHA-256 eb7efbaa3cffddf0a90babf4a29b0e2d8842b63f9d8eaab3c6acd399081396d8; row 10 lines 79-85 SHA-256 f1c96a76c6a0da8bd186e78026b5b51aa2fb3189b3da7fe3fdd0742e9ce91d1a; row 11 lines 87-91 SHA-256 43f47bd2cafaf0e8ad518ec566a074e7fdb588172599ffa133f752cf2f5e041e; row 12 lines 93-95 SHA-256 29ec4f6c34ccf9416c84625df1583c686f69ba2052df90a5db74e32672dd4ce8; row 13 lines 97-99 SHA-256 9e052307abd704eef9e44954f17c970962ad3963d89597e0e2c6d9c3e8392541",
+          "explanation": "Each row's number is a table cell flattened onto its own line and is not a heading; the topic cell and its sub-bullets follow on separate lines. Mapping: rows 1-11 correspond by number and order to the bodies 'WEEK 1' to 'WEEK 11' (FN-WK-T1-W01..W11; row 1 is already covered by COV-FN-T1-W01-SCHEME-1, which stays PARTIAL, and rows 2-11 are covered by their own week items when those are indexed); rows 12 'Revision' and 13 'Examination' have no body and belong to FN-MARK-T1-REVEXAM; the drawn table is FN-VIS-T1-SCHEME-TABLE. Row-level teaching coverage is not claimed here; the scheme promises more than the bodies deliver (for example deficiency symptoms for carbohydrates, fats and oils, vitamins and minerals), and each gap is recorded by the week item that reads the body."
         }
       ]
     }

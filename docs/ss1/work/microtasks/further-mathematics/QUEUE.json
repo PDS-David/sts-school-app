@@ -34,7 +34,7 @@
     "SOURCE_WEEK_INDEXING": 26,
     "LESSON": 8,
     "CORRECTION_BINDING": 8,
-    "FACTUAL_DEPENDENCY": 11,
+    "FACTUAL_DEPENDENCY": 12,
     "ASSET": 1,
     "VISUAL_DISPOSITION": 8,
     "SCOPE_DECOMPOSITION": 2,
@@ -43,9 +43,9 @@
     "SOURCE_SECTION_INDEXING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 26,
-    "PENDING": 56,
-    "BLOCKED": 7
+    "IMPLEMENTED_TESTING_DEFERRED": 29,
+    "BLOCKED": 8,
+    "PENDING": 53
   },
   "items": [
     {
@@ -358,8 +358,8 @@
         "FM-WK-T1-W02",
         "FM-LES-T1-W02-EQUATIONS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by FM-WK-T1-W02. No delivery_corrections entry exists for the 1st Term; the row id and body hash are both 5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c (the row id is SS1-SRC-e9efc9a976ed:BODY:<that hash>). Not started.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added delivery_corrections[id=CORR-FURTHER-MATHEMATICS-T1-W02-EQUATIONS] in backend/src/db/ss1/subjects/further-mathematics.json. Exact source id SS1-SRC-e9efc9a976ed; source SHA-256 995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145; source lesson/body id SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c; body SHA-256 5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c; single replacement SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS. Scope reviewed against COV-FM-T1-W02-OBJ-1 and OBJ-2. Binding reason and evidence recorded. Original row retained unchanged. OI-FM-T1-W02-FACT-DEFECTS and OI-FM-T1-W02-ASSESSMENT-GAPS remain OPEN; FM-FACT-T1-W02-EQ-OBJECTS remains pending; teacher decision about including the logarithm step in Week Two remains open. Content approval PENDING; verification DEFERRED; no tests run.",
       "completion_condition": "delivery_corrections entry added with exact source id, source SHA-256, source lesson id, body hash, replacement id, reason and evidence; no whole-row correction is activated while teaching scope is unresolved."
     },
     {
@@ -388,8 +388,8 @@
       "depends_on": [
         "FM-WK-T1-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Defects 5 and 7 and the object census of OI-FM-T1-W02-FACT-DEFECTS / OI-FM-T1-W02-NOTATION-LOSS, recorded by FM-WK-T1-W02. That item attempted an inflate of the compressed tail of the 41-byte stream and did not decode the payload; the MTEF grammar and the owner's reading are both outside it. It does not block drafting the replacement, which must state the rejection reason in words rather than reproduce the object.",
+      "status": "BLOCKED",
+      "implementation_reference": "Left unresolved 2026-11-08 as explicitly permitted by the task completion condition. The exact original legacy .doc bytes and ObjectPool/ObjLocation FSPA table are not accessible in this execution session, so the two 41-byte Equation Native MTEF streams cannot be decoded and anchor-to-object mapping cannot be established. The public close-equivalent PDF does not prove the exact embedded object contents or anchor mapping. No owner/teacher reading of the original page has been supplied. The replacement already states the mathematical rejection reasons in words, so this blocker does not prevent drafting; however OI-FM-T1-W02-NOTATION-LOSS and OI-FM-T1-W02-FACT-DEFECTS remain open and block delivery acceptance. Original source row remains unchanged.",
       "completion_condition": "The displayed content of the two objects is recorded with its method (decoded bytes or owner statement), or the item is left unresolved with the reason; no lesson is authored here and the source row is not edited."
     },
     {
@@ -2787,8 +2787,8 @@
         "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D4-NOTES.md"
       ],
       "depends_on": [],
-      "status": "PENDING",
-      "implementation_reference": "PR71 holds its own docs/ss1/work/SS1-03/CHECKPOINT.md and HANDOFF.json (different content from master's files of the same name). Open-item text present on PR71: OI-FMATHS-004 (Week 6 repeats Week 5), -005 (3p miscalculation, already corrected on master), -007 (unchecked OpenStax references), -008 (figures not extracted).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared PR #71 Further Mathematics checkpoint/handoff and package findings against master. OI-FMATHS-001→OI-FM-001; OI-FMATHS-002→OI-FM-002/OI-FM-003; OI-FMATHS-003→RULE-FM-T2-SCHEME-EXAM plus new teacher-decision task FM-FACT-T2-W11-W12-REVISION-PLAN; OI-FMATHS-004→OI-FM-003 and FM-FACT-T3-W06-REPEATS-W05; OI-FMATHS-005 is corrected in master T3-W06 vector-operations lesson (3p=6i-9j and 3p-2q=-19j); OI-FMATHS-007 old branch references were not carried into master (T1-W01 replacement cites verified OpenStax section 8.3; T3-W08 master lesson uses school source only); OI-FMATHS-008→OI-FM-001/OI-FM-003 and existing FM-VIS tasks. Branch FMATHS-R01/R02 map to master revision rules; FMATHS-R03 maps to FM-FACT-T1-W04-STRANDED-LABEL. Branch lesson gaps are already represented by FM-PORT-D3-L003..L014. No source audit repeated.",
       "completion_condition": "Branch-only facts listed with their PR71 path/blob; each is mapped to an existing queue item or to a new small PENDING item appended here. No file is copied wholesale."
     },
     {
@@ -2811,8 +2811,8 @@
       "depends_on": [
         "FM-TEST-PACKAGE-EXISTING"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PR71 file has 4 tests written against PR71's schema (parseSubjectPackage, lessonContentHash, validatePackageStatic) and cannot be ported verbatim; master has a different 11-test file. Neither has been run. Rewriting or running tests is deferred by the owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Read PR #71 test file blob b88d3d64b8311d4bab759997b686a7a3cb25d072 and master test file blob dd9c8e9dcbfb430d88ccd4e455bcb2a1739926f1; static reading only. Branch guards: package parse, lesson content hash, explicit validatePackageStatic, and a blocking third-term-gap open item. Master tests have equivalents for packageSchema.parse, sha256(body) vs body_sha256, and the invariant that PARTIAL/UNRESOLVED coverage requires a PENDING package and blocking open item; master tests are broader (source manifest, lesson completeness, approvals, assets, anchors, source hash rejection, subject/class and plan blockers). No direct validatePackageStatic invocation exists in the master test file; route this single gap to FM-TEST-FULL-SOURCE-REGRESSION. No test was written or run.",
       "completion_condition": "Gap list recorded. Any resulting test change is added to FM-TEST-FULL-SOURCE-REGRESSION; no test is written or run here."
     },
     {
@@ -2861,7 +2861,7 @@
         "FM-PORT-D4-TEST-COMPARE"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "Testing is deferred by the owner until SS1-09 and is not authorised in this stage. Nothing here may be marked complete.",
+      "implementation_reference": "Testing is deferred by the owner until SS1-09 and is not authorised in this stage. Nothing here may be marked complete. Branch comparison added: master package test file does not directly invoke validatePackageStatic; add a static-validator check in this task if the supported validator remains part of the contract. Existing schema, source-manifest, lesson completeness and blocking-open-item tests are not a substitute for that exact call.",
       "completion_condition": "Tests written and executed in the authorised verification stage with results recorded."
     },
     {
@@ -2899,10 +2899,35 @@
       "status": "PENDING",
       "implementation_reference": "Inventory (FM-INV-T3): block 443 text 'PERIOD 3' (sha256 ced01b423102c586b9ed9d23acb24d2d75d6a46ca97170a24a5d9123447edd34); block 444 'Topic: Equation of a straight line' (sha256 5f1ea5453107309c00bcd0f8e3bd3116c488bf924350d6eb72bf377fd898a92b); blocks 443-473 range sha256 bc586a6d016376bb45a0097567d73f1f20a741dca876c37996a4925968b22ec9; 442 and 474-476 empty; the only PERIOD marker in the document. SS1-03 parsed_rows row 5 (WEEK 8, 3455 characters) is the unit that may or may not include this section; not checked here. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-476; block 477 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
       "completion_condition": "Section objectives listed with block locators and a status; coverage reach against FM-LES-T3-W08 recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "FM-FACT-T2-W11-W12-REVISION-PLAN",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Weeks 11-12 (revision and examination entries in the scheme table)",
+      "objective": "Teacher decision required: confirm whether Week 11 has a substantive revision plan or is a revision-only marker, and whether Week 12 is examination-only. If a revision plan exists, identify/supply it so it can be indexed; if the weeks are scheme-only, retain the marker rules and do not invent lessons or objectives.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PRE-T2.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised from PR #71 open item OI-FMATHS-003. Master RULE-FM-T2-SCHEME-EXAM currently records the scheme-only Week 11 revision and Week 12 examination rows; no separate revision plan or teaching body is present in the indexed source.",
+      "completion_condition": "Record the teacher's answer. If a revision plan is supplied, index its source and add bounded objective/lesson tasks. If the weeks are revision/examination-only, retain scheme-only markers and record the decision; do not create invented lessons."
     }
   ],
   "review": {
-    "date": "2026-10-27",
+    "date": "2026-11-08",
     "reviewed_master_sha": "8fb376f413cf70403d161439800738677bbc396a",
     "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
     "source_archive": {
@@ -2923,9 +2948,48 @@
         "tests/ss1/further-mathematics.test.mts (blob b88d3d64b8311d4bab759997b686a7a3cb25d072)"
       ],
       "disposition": "Preserve; do not merge #71 or copy its schema. Ports are bounded items FM-PORT-D3-* and FM-PORT-D4-*."
-    }
+    },
+    "notes": "FM-FACT-T1-W02-EQ-OBJECTS explicitly left unresolved with reason under its completion condition; source member bytes and ObjectLocation FSPA table are unavailable. Replacement explains the negative branches; original source remains unchanged."
   },
   "next_runnable": [
-    "FM-SEC-T3-W08-PERIOD3"
-  ]
+    "FM-WK-T1-W03",
+    "FM-WK-T1-W04",
+    "FM-WK-T1-W05",
+    "FM-WK-T1-W06",
+    "FM-WK-T1-W07",
+    "FM-WK-T1-W08",
+    "FM-WK-T1-W09",
+    "FM-WK-T1-W10",
+    "FM-WK-T2-W01",
+    "FM-WK-T2-W02",
+    "FM-WK-T2-W03",
+    "FM-WK-T2-W04",
+    "FM-WK-T2-W05",
+    "FM-WK-T2-W06",
+    "FM-WK-T2-W07",
+    "FM-WK-T2-W08",
+    "FM-WK-T2-W09",
+    "FM-WK-T2-W10",
+    "FM-WK-T3-W02",
+    "FM-WK-T3-W03",
+    "FM-WK-T3-W04",
+    "FM-WK-T3-W05",
+    "FM-WK-T3-W06",
+    "FM-WK-T3-W08",
+    "FM-VIS-T1-W05-VENN",
+    "FM-VIS-T2-W05-W07-MAPPING",
+    "FM-VIS-T3-W03-GRAPHS",
+    "FM-VIS-T3-VECTOR-FIGURES",
+    "FM-VIS-T3-LINE-FIGURES",
+    "FM-VIS-T1-BRANDING",
+    "FM-VIS-T2-BRANDING",
+    "FM-VIS-T3-BRANDING",
+    "FM-COR-T1-W01",
+    "FM-FACT-T3-W06-REPEATS-W05",
+    "FM-FACT-EQUATION-LOSS-T1",
+    "FM-FACT-EQUATION-LOSS-T2",
+    "FM-SEC-T3-W08-PERIOD3",
+    "FM-FACT-T2-W11-W12-REVISION-PLAN"
+  ],
+  "total": 90
 }

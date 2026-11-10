@@ -28,23 +28,25 @@
     "ECON-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, marker, week-indexing, visual, preservation and factual items; the 3rd Term inventory (ECON-INV-T3) remains unread. No lesson, coverage entry, rule, correction or asset was written.",
     "ECON-WK-T1-W01 (2026-11-05) indexed Week One lines 44-116 of the 1st Term source into 12 coverage entries (5 PARTIAL, 7 UNRESOLVED, none SUPPORTED) and 10 open items, and appended ECON-FACT-T1-W01-TEACHER-DECISIONS plus five lesson tasks; no lesson, correction, asset, rule or parser change was written and the source wording is unmodified.",
     "2026-11-06 ECON-LES-T1-W01-WHY-STUDY: lesson SUP-SS1-ECONOMICS-T1-W01-WHY-STUDY authored in economics.json (body SHA-256 57d1e48f9976c6b8b52e330a25dc90f887b146879f8ebee38122672bf7cf6254, 4 practice items / 27 marks) and COV-ECON-T1-W01-WHY-STUDY upgraded PARTIAL -> SUPPORTED with only the lesson id bound. The model answer and its marks are proposals: Week 1 prints no key, so the printed assessment blocks stay UNRESOLVED, the line 95 attribution question stays unanswered, and ECONOMICS-T1-W01-COVERAGE and ECONOMICS-T1-W01-PARSED-ROW-MISSING remain open and blocking respectively non-blocking. Week 1 is not complete.",
-    "2026-11-07 ECON-WK-T1-W02: indexed Week Two lines 117-169 of the 1st Term source into 12 coverage entries (5 PARTIAL, 7 UNRESOLVED) and 9 open items (6 blocking), and appended ECON-FACT-T1-W02-TEACHER-DECISIONS (BLOCKED) plus four lesson tasks. Nothing is approved, verified or deliverable; no key exists in the source for any of the 16 questions; the art option, behavioural science, economic rent and the economic units are not taught in the source. Week 2 is not complete."
+    "2026-11-07 ECON-WK-T1-W02: indexed Week Two lines 117-169 of the 1st Term source into 12 coverage entries (5 PARTIAL, 7 UNRESOLVED) and 9 open items (6 blocking), and appended ECON-FACT-T1-W02-TEACHER-DECISIONS (BLOCKED) plus four lesson tasks. Nothing is approved, verified or deliverable; no key exists in the source for any of the 16 questions; the art option, behavioural science, economic rent and the economic units are not taught in the source. Week 2 is not complete.",
+    "2026-11-08 ECON-INV-T3 (A3): inventoried the 3rd Term original (legacy .doc; ten labelled weeks WEEK ONE to WEEK TEN, a thirteen-row scheme whose revision and examination rows have no body) and appended 26 items: ECON-PRE-T3, ECON-WK-T3-W01 to W10, ECON-MARK-T3-REVEXAM, ten ECON-VIS-T3-* visual items, ECON-PRES-T3-SOURCE-WORDING, ECON-PRES-T3-CALCULATIONS, ECON-FACT-T3-LAW-AND-DATA and ECON-FACT-T3-CALCULATION-VERIFY. Table, drawing and header-image counts describe a LibreOffice conversion, not the original binary. Nothing is approved, verified or deliverable; no key exists in the source; no lesson, coverage entry, rule, correction or asset was written.",
+    "2026-11-08 ECON-PRE-T1 (A3): classified the 1st Term opening block as scheme-only (rules -R002 title/scheme heading lines 18-24 and -R003 reference list lines 38-41, with MARKER coverage COV-ECON-T1-TITLE and COV-ECON-T1-REFERENCES) and recorded the scheme-to-body mapping; lines 25-36 are twelve lines carrying thirteen week numbers; rows 11 and 12 & 13 remain with ECON-MARK-T1-REVEXAM. Nothing approved, verified or deliverable; no lesson or week coverage written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 7,
-    "SOURCE_PREAMBLE_INDEXING": 2,
-    "SOURCE_WEEK_INDEXING": 21,
-    "SOURCE_MARKER_DISPOSITION": 2,
-    "VISUAL_DISPOSITION": 10,
-    "SOURCE_PRESERVATION": 4,
+    "FACTUAL_DEPENDENCY": 9,
+    "SOURCE_PREAMBLE_INDEXING": 3,
+    "SOURCE_WEEK_INDEXING": 31,
+    "SOURCE_MARKER_DISPOSITION": 3,
+    "VISUAL_DISPOSITION": 20,
+    "SOURCE_PRESERVATION": 6,
     "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 8,
-    "PENDING": 51,
+    "IMPLEMENTED_TESTING_DEFERRED": 10,
+    "PENDING": 75,
     "BLOCKED": 3
   },
   "items": [
@@ -251,8 +253,8 @@
       "depends_on": [
         "ECON-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 (agent A3) from the 3rd Term original (member 'SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc', 360,448 bytes, SHA-256 9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d) extracted from docs/ss1/sources/SSS1-original.zip; both the archive hash (024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e) and the member hash were checked this session. Legacy Word binary read with word-extractor 1.0.4 getBody(): 1,261 lines split on \\n (1,028 non-blank; last non-blank line 1260), body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227. Unlabelled opening, scheme (thirteen rows) and reference book lines 1-81 (sha256 57d904e4fea5404b54c2f075954cc00359a53d010abdb84551d3b32dc6803476); ten labelled week bodies: W1 82-181 566e3c27...; W2 184-288 e3371864...; W3 291-391 67eb7d76...; W4 393-545 db8640cb...; W5 548-665 47671baf...; W6 668-799 f4ce8f49...; W7 802-939 e9bc6650...; W8 942-1056 d092b410...; W9 1059-1176 5d1388ef...; W10 1179-1260 6e0d6c0a.... Scheme rows 11 'Revision' and 12-13 'Examination' have no body, and row 1's 'Revision of  Second Term Unified Examination' has no body section. Review blocks (GENERAL REVISION, GENRAL EVALUATION, GENERAL EVALUATION QUESTIONS) hold review questions on other topics and no teaching. No answer key anywhere; the Week 7 equilibrium example is the only worked solution. On a LibreOffice 24.2.7.2 conversion (describes the conversion, not the original binary): 2 real tables (both Week 6), 82 drawing anchors (Weeks 1, 5, 6, 7), 8 text boxes, 1 header image (non-teaching tutoring-brand banner; not committed, contact details not recorded). Header text 'MR OSHO/SS1/ECONOMICS/3RD TERM'. Appended 26 PENDING items: ECON-PRE-T3, ECON-WK-T3-W01 to W10, ECON-MARK-T3-REVEXAM, ECON-VIS-T3-W01-CHAIN-DIAGRAM, ECON-VIS-T3-W01-CHANNEL-OPTIONS, ECON-VIS-T3-W05-DEMAND-SCHEDULE, ECON-VIS-T3-W05-DEMAND-CURVE, ECON-VIS-T3-W06-SUPPLY-TABLES, ECON-VIS-T3-W06-SUPPLY-CURVE, ECON-VIS-T3-W06-LABOUR-SUPPLY-CURVE, ECON-VIS-T3-W07-COMBINED-SCHEDULE, ECON-VIS-T3-W07-EQUILIBRIUM-GRAPH, ECON-VIS-T3-HEADER-MEDIA, ECON-PRES-T3-SOURCE-WORDING, ECON-PRES-T3-CALCULATIONS, ECON-FACT-T3-LAW-AND-DATA, ECON-FACT-T3-CALCULATION-VERIFY. Parser findings only: a rule keyed on a bare 'WEEK' prefix would also split at the scheme header and at every 'WEEKEND ASSIGNMENT' line; review headings are not markers. Record: docs/ss1/work/microtasks/economics/ECON-INV-T3.md. Inventory only; no lesson, coverage, rule, correction or asset written; not approved or verified.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -343,8 +345,8 @@
         "ECON-INV-T1",
         "ECON-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (opening 1-43, scheme rows 25-36, references 38-41).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 (agent A3) from the verified 1st Term original (member 'SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc', 1,264,128 bytes, SHA-256 8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc) extracted from docs/ss1/sources/SSS1-original.zip (archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e checked this session); word-extractor 1.0.4 getBody() text sha256 026eeec9b2b8a68bba6bed3719a921e08030d56b2bb4cfdafd40352133e5037e, 1,060 lines. Added to backend/src/db/ss1/subjects/economics.json: source rules SS1-SRC-2ab0c50bcab6-R002 (classify_marker SCHEME_ONLY, title/subject/scheme heading, lines 18-24, block sha256 8de89c4335f671cb5200d758745472a34f45ad219fd18da9c440e054fb1eb7f4) and SS1-SRC-2ab0c50bcab6-R003 (classify_marker SCHEME_ONLY, reference list, lines 38-41, block sha256 8f7569b944d06de85311a8bb2e3b7e11ea589cab05fbe38df8286d816ad23f60), and MARKER coverage entries COV-ECON-T1-TITLE (targets R002; also maps scheme lines 25-36 to the ten parsed bodies) and COV-ECON-T1-REFERENCES (targets R003). The text before the first parsed body label (lines 1-43, offset 757) hashes to 02206a3b8b2495e54ea6d712b40eb8e873228ac2feda19e35a02adad4538d521 as the compiler's PREAMBLE_REQUIRES_COVERAGE detail, computed by slicing; lines 1-43 sha256 619fc6e5db6827df8bd4ce0289b0b59be7b207c8daa798c1f42fdd2fb9fb8a9b. Findings: lines 25-36 are twelve lines carrying thirteen week numbers; scheme rows 1-6 carry no printed number, rows 7-13 do; rows 11 and 12 & 13 have no body (left to ECON-MARK-T1-REVEXAM); row 4 names the individual, firms and the government while the Week Four topic line names the individual only. No lesson, week coverage, rows 11-13 rule, correction or asset written; the existing alias rule -R001 and its pending owner confirmation are unchanged. Record: docs/ss1/work/microtasks/economics/ECON-PRE-T1.md. Inventory-level classification only; not approved or verified.",
       "completion_condition": "Identity, scheme rows and the three references are represented under the existing schema with exact provenance; rows 11-13 are left to the marker item; no lesson or coverage entry is invented from a scheme heading. Testing deferred by owner."
     },
     {
@@ -2341,6 +2343,1013 @@
       "status": "PENDING",
       "implementation_reference": "Not authored. Required by ECON-WK-T1-W02 (2026-11-07): see the open items listed in the completion condition.",
       "completion_condition": "A lesson or practice set in economics.json keys every Week 2 question with marks that add up and exact source locators, resolves the repeated questions by citing the owner decision, and leaves the assessment coverage entries UNRESOLVED until a key exists for each block. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-PRE-T3",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "opening lines 1-81 (range sha256 57d904e4fea5404b54c2f075954cc00359a53d010abdb84551d3b32dc6803476); scheme lines 5-74 (sha256 0ec59fd5ce45e4039beb6b59cc166e0541ed1409e376d674f860282349a7c3ff); reference book lines 76-79 (sha256 dc2c24448ed4eacb2bdd80dcc7831cb101b96e054bdc7ac3b699cf3512d653e2)",
+      "objective": "Index the unlabelled opening and the scheme of work as what they are, not as teaching weeks: the note title (1), the subject/class line (3), 'SCHEME OF WORK' (5), the tab header 'WEEK\\tTOPICS' (7), the thirteen scheme rows (8-74) and the 'REFERENCE BOOK' list (76-79, singular heading, three unnumbered entries). Map scheme rows 1-10 to body Weeks One to Ten (ECON-WK-T3-W01 to W10), noting that row 5 'CONCEPT OF DEMAND AND SUPPLY' is split across body Weeks Five and Six, and record that scheme rows 11 and 12-13 have no body (disposed by ECON-MARK-T3-REVEXAM). Record each scheme-versus-body difference as read, without correcting it. Do not treat a one-line scheme heading as evidence that its topic was taught. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-PRE-T3.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): lines 1-81. Scheme row start lines: 1 (8, 'Revision of  Second Term Unified Examination', then 'DISTRIBUTIVE TRADE' at 9), 2 (15 MIDDLEMEN), 3 (20 MONEY), 4 (26 FINANCIAL INSTITUTIONS), 5 (37 CONCEPT OF DEMAND AND SUPPLY, DEMAND at 38), 6 (44 SUPPLY), 7 (50 EQUILIBRIUM PRICE/PRICE DETERMINATION), 8 (57 THE NATURE OF THE NIGERIAN ECONOMY), 9 (62 AGRICULTURE), 10 (69 MINING), 11 (73 Revision), 12-13 (74 Examination). Subject/class line: 'SUBJECT:  ECONOMICS' + tabs + 'CLASS:  SSS 1'. Reference entries 77-79: Femi Longe, J.V. Anyaele, R.A.I. Anyanwuocha. Differences read: scheme row 7 names Price System and a Qd = Qs calculation (body 874 and the worked equation 844-862 inside Week Seven); scheme row 9 names Contributions to the Economy and four agricultural policies (OFN, RBOA, NAFPP, Green Revolution) that no body heading covers; scheme row 3 lists definition, barter, kinds, characteristics and functions in a different order from the body CONTENT list (294-298). Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Lines 1-81 mapped or classified with locators; scheme rows and their body counterparts recorded as read; the missing revision/examination bodies and the unmatched scheme topics recorded; nothing invented."
+    },
+    {
+      "id": "ECON-WK-T3-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 1 (lines 82-181; label line 82 'WEEK ONE'; topic line 83 'DISTRIBUTIVE TRADE'; range sha256 566e3c27ac7ce9a2fb564f742f11b539d589ac3aeeb0a2d00b3d149b2d1b373e)",
+      "objective": "Index 3rd Term Economics Week 1 at objective level: list each scheme objective for the week, bind it to exact source lines (locators from ECON-INV-T3) and to any supplement, and confirm scope against every EVALUATION, GENERAL EVALUATION/REVISION, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY block inside lines 82-181, treating each question set as assessment, not as teaching. A review heading cannot erase teaching and cannot create it. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. No answer key exists in the source: do not supply one. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T3-W01.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): label line 82, lines 82-181, range sha256 566e3c27ac7ce9a2fb564f742f11b539d589ac3aeeb0a2d00b3d149b2d1b373e. CONTENT list 84-88 (Definition of Distributive Trade; Process of Distribution; Wholesalers; Retailers). Teaching: distributive trade 90-91; distribution chain diagram line 93 (3 drawn anchors, text fragments only); process of distribution 95-101 (EVALUATION 102); the wholesaler 106, functions to the producer 109, to the retailer 119 (EVALUATION 126); the retailer 129, functions 140 (EVALUATION 151). READING ASSIGNMENT 155. GENERAL REVISION 160 (joint stock company, partnership, government participation, shares and debentures, shareholder: topics from other terms or weeks, no teaching text). WEEKEND ASSIGNMENT 167 with objective items and four drawn channel options at 174-177 (15 anchors); THEORY 179-181. No key. Scheme row 1 also names 'Revision of  Second Term Unified Examination', which has no body. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Each objective listed with a line locator and a status; observed defects and cross-week or cross-term misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T3-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2 (lines 184-288; label line 184 'WEEK TWO'; topic line 185 'THE MIDDLEMEN'; range sha256 e337186444224f9d45ecbcbaabc1478866fbc8850596caa18d4d2e3c70d1f757)",
+      "objective": "Index 3rd Term Economics Week 2 at objective level: list each scheme objective for the week, bind it to exact source lines (locators from ECON-INV-T3) and to any supplement, and confirm scope against every EVALUATION, GENERAL EVALUATION/REVISION, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY block inside lines 184-288, treating each question set as assessment, not as teaching. A review heading cannot erase teaching and cannot create it. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. No answer key exists in the source: do not supply one. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T3-W02.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): label line 184, lines 184-288, range sha256 e337186444224f9d45ecbcbaabc1478866fbc8850596caa18d4d2e3c70d1f757. CONTENT list 186-192 (Middleman; Elimination of the Middle man; By- Passing the Middleman; Efficient Ways ... in West Africa; Problems ... in West Africa; Roles of Government Agencies in Product Distribution). Teaching: the middlemen 194; argument for survival 197; argument against 200 (EVALUATION 211); reasons for by-passing 215; problems of distributing and marketing in West Africa 226; efficient ways 237; roles of government 249 (price stabilisation and inflation statement at 256) (EVALUATION 261). READING ASSIGNMENT 265. GENERAL REVISION 270 (co-operative society, opportunity cost, middlemen problems, agricultural systems: not Week Two topics). WEEKEND ASSIGNMENT 277; THEORY 286-288. No key. Scheme row 2 says Nigeria for the problems topic; the body headings say West Africa. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Each objective listed with a line locator and a status; observed defects and cross-week or cross-term misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T3-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 3 (lines 291-391; label line 291 'WEEK THREE'; topic line 292 'TOPIC: MONEY '; range sha256 67eb7d76c30f90418740537824ba4a6a2cdb5a9b49ccca181b4eed23c9e81de3)",
+      "objective": "Index 3rd Term Economics Week 3 at objective level: list each scheme objective for the week, bind it to exact source lines (locators from ECON-INV-T3) and to any supplement, and confirm scope against every EVALUATION, GENERAL EVALUATION/REVISION, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY block inside lines 291-391, treating each question set as assessment, not as teaching. A review heading cannot erase teaching and cannot create it. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. No answer key exists in the source: do not supply one. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T3-W03.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): label line 291, lines 291-391, range sha256 67eb7d76c30f90418740537824ba4a6a2cdb5a9b49ccca181b4eed23c9e81de3. Topic line 292 has the prefix 'TOPIC: ' and a trailing space (no other week). CONTENT list 293-298 (Trade by Barter; Definition of Money and its Origin; Qualities / Characteristics; Functions; Kinds/ Types). Teaching: trade by barter 300 and its problems 305 (EVALUATION 316); definition 320; origin and historical development 323; characteristics 330 (EVALUATION 342); functions 346; kinds of money 354 (plastic money 364) (EVALUATION 365). READING ASSIGNMENT 369. 'GENRAL EVALUATION' 374. WEEKEND ASSIGNMENT 381; THEORY 388-391. No key. Scheme row 3 lists these topics in a different order. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Each objective listed with a line locator and a status; observed defects and cross-week or cross-term misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T3-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4 (lines 393-545; label line 393 'WEEK FOUR'; topic line 394 'FINANCIAL INSTITUTIONS'; range sha256 db8640cbb06d445aefe8b6582a64b55dd9861b0ed1c9e061ec3c462b6e8a6663)",
+      "objective": "Index 3rd Term Economics Week 4 at objective level: list each scheme objective for the week, bind it to exact source lines (locators from ECON-INV-T3) and to any supplement, and confirm scope against every EVALUATION, GENERAL EVALUATION/REVISION, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY block inside lines 393-545, treating each question set as assessment, not as teaching. A review heading cannot erase teaching and cannot create it. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. No answer key exists in the source: do not supply one. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T3-W04.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): label line 393, lines 393-545, range sha256 db8640cbb06d445aefe8b6582a64b55dd9861b0ed1c9e061ec3c462b6e8a6663. CONTENT list 395-402 (seven numbered items on financial institutions and commercial banks) and a second CONTENT list at 464 for the central bank. Teaching: financial institutions 404; types 407; commercial bank 412 ('CAMD (1990)' at 419) (EVALUATION 437); creation of credit 441; limitations 450-451 (EVALUATION QUESTIONS 459); the central bank 463, definition 471, characteristics 474 ('Act of Parliament' at 476), functions 483 (EVALUATION 496); monetary policy 500 with instruments 508-516 (cash and liquidity ratio at 447-454 and 510; 91-day Treasury bills example at 516) (EVALUATION 518). READING ASSIGNMENT 522. 'GENRAL EVALUATION' 525. WEEKEND ASSIGNMENT 532; THEORY 543-545. No key. No table or drawing. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Each objective listed with a line locator and a status; observed defects and cross-week or cross-term misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T3-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 5 (lines 548-665; label line 548 'WEEK FIVE'; topic line 549 'CONCEPT OF DEMAND'; range sha256 47671baf3fc0c1e6d8f215aa6dfa9bdbe828d734eda1d129b96a3de246822489)",
+      "objective": "Index 3rd Term Economics Week 5 at objective level: list each scheme objective for the week, bind it to exact source lines (locators from ECON-INV-T3) and to any supplement, and confirm scope against every EVALUATION, GENERAL EVALUATION/REVISION, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY block inside lines 548-665, treating each question set as assessment, not as teaching. A review heading cannot erase teaching and cannot create it. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. No answer key exists in the source: do not supply one. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T3-W05.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): label line 548, lines 548-665, range sha256 47671baf3fc0c1e6d8f215aa6dfa9bdbe828d734eda1d129b96a3de246822489. CONTENT list 550-555 (Definition of Demand; Law of Demand; Demand Schedule and Demand Curve; Factors Affecting the Demand for a Commodity; Exceptional or Abnormal Demand). Teaching: definition 557; law of demand 564; demand schedule 567 (tab-aligned schedule 572-579, 5 drawn anchors at 572-573); demand curve 583 (graph 585-603, 28 anchors and 6 text boxes in the week) (EVALUATION 606); types of demand 610 (composite demand 615); factors 619; exception to the law 633 (EVALUATION 640). READING ASSIGNMENT 644. GENERAL EVALUATION QUESTIONS 648. 'WEEKEND  ASSIGNMENT' (two spaces) 655; THEORY 663-665. No key. Scheme row 5 pairs demand and supply; the body splits them. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Each objective listed with a line locator and a status; observed defects and cross-week or cross-term misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T3-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 6 (lines 668-799; label line 668 'WEEK SIX'; topic line 669 'CONCEPT OF SUPPLY'; range sha256 f4ce8f497477f0dea6e3a09a72dc76737ad26e5fe58cdcc15701c618dfc851c7)",
+      "objective": "Index 3rd Term Economics Week 6 at objective level: list each scheme objective for the week, bind it to exact source lines (locators from ECON-INV-T3) and to any supplement, and confirm scope against every EVALUATION, GENERAL EVALUATION/REVISION, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY block inside lines 668-799, treating each question set as assessment, not as teaching. A review heading cannot erase teaching and cannot create it. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. No answer key exists in the source: do not supply one. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T3-W06.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): label line 668, lines 668-799, range sha256 f4ce8f497477f0dea6e3a09a72dc76737ad26e5fe58cdcc15701c618dfc851c7. CONTENT list 670-676 (Definition of Supply; Law of Supply; Supply Schedule and Curve; Types of Supply; Factors Affecting Supply; Exceptional or Abnormal Supply). Teaching: 'DEFINITON OF SUPPLY' 678; law of supply 681 (EVALUATION 684); supply schedule 688 with two real tables (individual 694-701, market 704-711); supply curve 713 (graph 715-728); types 731 (composite supply 736) (EVALUATION 738); factors 742; 'EXCEPTION TO THE LAW OF SUPPL' 752 with a labour supply curve 756-765 (EVALUATION 772). 22 drawn anchors in the week. READING ASSIGNMENT 776. GENERAL EVALUATION QUESTIONS 780. 'WEEKEND ASSIGNEMENT' 787; THEORY 797-799. No key. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Each objective listed with a line locator and a status; observed defects and cross-week or cross-term misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T3-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 7 (lines 802-939; label line 802 'WEEK SEVEN'; topic line 803 'PRICE DETERMINATION IN A FREE MARKET ECONOMY'; range sha256 e9bc66501cacc7cc77f9c48962c8fe848d424bc71ae6d46707884018453ad4be)",
+      "objective": "Index 3rd Term Economics Week 7 at objective level: list each scheme objective for the week, bind it to exact source lines (locators from ECON-INV-T3) and to any supplement, and confirm scope against every EVALUATION, GENERAL EVALUATION/REVISION, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY block inside lines 802-939, treating each question set as assessment, not as teaching. A review heading cannot erase teaching and cannot create it. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. No answer key exists in the source: do not supply one. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T3-W07.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): label line 802, lines 802-939, range sha256 e9bc66501cacc7cc77f9c48962c8fe848d424bc71ae6d46707884018453ad4be. CONTENT list 804-808 (Free Market Economy; Determination of Price in a Free Market; Equilibrium Point, Equilibrium Price and Equilibrium Quantity; Derivation of Equilibrium Price and Quantity from Demand and Supply Functions). Teaching: free market economy 810; determination of prices 813 with a combined demand and supply schedule 815-822 and a graph 826-834 (14 anchors, 2 text boxes); equilibrium point 839; worked example 844-862 (Qd = 42-2p, Qs = 12+4p); EVALUATION 864 and 'EVALUATION QUESTION' 868; price system or price mechanism 874 (meaning of a price 880, functions 886) (EVALUATION 893); factors that determine price 897; price fixing methods 906 (EVALUATION 913). READING ASSIGNMENT 917. GENERAL EVALUATION QUESTIONS 921. WEEKEND ASSIGNMENT 928; THEORY 935-939. No key beyond the worked example. Content list numbering mixes 'i.', 'ii.', 'iii' and 'iv'. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Each objective listed with a line locator and a status; observed defects and cross-week or cross-term misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T3-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 8 (lines 942-1056; label line 942 'WEEK EIGHT'; topic line 943 'THE NATURE OF THE NIGERIAN ECONOMY'; range sha256 d092b410aeda7c75198da0c4f24a11fd3b474e849caf1b299a20f800d7489277)",
+      "objective": "Index 3rd Term Economics Week 8 at objective level: list each scheme objective for the week, bind it to exact source lines (locators from ECON-INV-T3) and to any supplement, and confirm scope against every EVALUATION, GENERAL EVALUATION/REVISION, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY block inside lines 942-1056, treating each question set as assessment, not as teaching. A review heading cannot erase teaching and cannot create it. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. No answer key exists in the source: do not supply one. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T3-W08.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): label line 942, lines 942-1056, range sha256 d092b410aeda7c75198da0c4f24a11fd3b474e849caf1b299a20f800d7489277. CONTENT list 944-948 (General Overview; Nature and Structure of Industries; Contributions of Primary, Secondary and Tertiary Sectors; Economic Activities of the Six Geo-Political Zones). Teaching: nature of the Nigerian economy 950 (EVALUATION 975); general overview 979 with economic history statements 984-990 (EVALUATION 992); nature and structure of industries 996 (EVALUATION 1004); contributions of the three sectors 1008 (EVALUATION 1013); the six geo-political zones 1017 (attribution at 1018, zone and state lists 1026-1031) (EVALUATION 1032). READING ASSIGNMENT 1036. GENERAL REVISION 1039. WEEKEND ASSIGNMENT 1046 (dated statements at 1050-1052); THEORY 1054-1056. No key. No table or drawing. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Each objective listed with a line locator and a status; observed defects and cross-week or cross-term misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T3-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 9 (lines 1059-1176; label line 1059 'WEEK NINE'; topic line 1060 'AGRICULTURE'; range sha256 5d1388ef2f95034f579c91ad89ccfe66bb7afaf73f2be3ffac26676b028eadd0)",
+      "objective": "Index 3rd Term Economics Week 9 at objective level: list each scheme objective for the week, bind it to exact source lines (locators from ECON-INV-T3) and to any supplement, and confirm scope against every EVALUATION, GENERAL EVALUATION/REVISION, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY block inside lines 1059-1176, treating each question set as assessment, not as teaching. A review heading cannot erase teaching and cannot create it. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. No answer key exists in the source: do not supply one. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T3-W09.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): label line 1059, lines 1059-1176, range sha256 5d1388ef2f95034f579c91ad89ccfe66bb7afaf73f2be3ffac26676b028eadd0. CONTENT list 1061-1067 (Meaning; Components/Structure; System; Importance; Problems; Solutions). Teaching: meaning 1069; 'CONPONENTS OF AGRICULTURE:' 1071 (live stock 1078, forestry 1081, crop production 1084, fishing 1089) (EVALUATION 1092); system of agriculture 1096 (EVALUATION 1115); importance of agriculture in West Africa 1119; problems 1127; solutions 1139 (EVALUATION 1151). READING ASSIGNMENT 1155. GENERAL EVALUATION QUESTIONS 1159. WEEKEND ASSIGNMENT 1166; THEORY 1174-1176. No key. The scheme names Contributions to the Economy and four Nigerian agricultural policies (OFN, RBOA, NAFPP, Green Revolution); no body heading covers the policies. No table or drawing. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Each objective listed with a line locator and a status; observed defects and cross-week or cross-term misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T3-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 10 (lines 1179-1260; label line 1179 'WEEK TEN'; topic line 1180 'MINING'; range sha256 6e0d6c0a5a8ee3697d6dcbf3551ce141359731ff9654d807df405480d15c9ef5)",
+      "objective": "Index 3rd Term Economics Week 10 at objective level: list each scheme objective for the week, bind it to exact source lines (locators from ECON-INV-T3) and to any supplement, and confirm scope against every EVALUATION, GENERAL EVALUATION/REVISION, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY block inside lines 1179-1260, treating each question set as assessment, not as teaching. A review heading cannot erase teaching and cannot create it. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. No answer key exists in the source: do not supply one. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T3-W10.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): label line 1179, lines 1179-1260, range sha256 6e0d6c0a5a8ee3697d6dcbf3551ce141359731ff9654d807df405480d15c9ef5. CONTENT list 1181-1184 (Meaning of Mining; Components of the Nigeria Mining Industry; Minerals (Types, Uses and Locations)). Teaching: 'DEFINITION OF MININIG' 1186; components 1189 (iron and steel 1193, limestone cement 1195, 'Ishagamu') (EVALUATION 1199); types of mineral and their uses 1203 (EVALUATION 1214); importance of minerals to Nigeria 1218; problems facing mining 1229 (EVALUATION 1236). READING ASSIGNMENT 1240. GENERAL EVALUATION 1243 (questions 1244-1248 on limited liability company, statutory corporation, economies of scale, features of a table, joint stock company: not mining). WEEKEND ASSIGNMENT 1250 (iron ore locations at 1255); THEORY 1258-1260, the last non-blank line. No key. No table or drawing. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Each objective listed with a line locator and a status; observed defects and cross-week or cross-term misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-MARK-T3-REVEXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "scheme lines 73 'Revision' and 74 'Examination' (rows 11 and 12-13, no body), scheme line 8 'Revision of  Second Term Unified Examination' (row 1), and in-body review blocks 160, 270, 1039, 374, 525, 648, 780, 921, 1159, 1243",
+      "objective": "Disposition the revision and examination markers. Classify scheme rows 11 and 12-13 (lines 73-74) as calendar markers, not teaching weeks: no empty lesson, coverage row or asset may be created, and the parser finding (classify_marker) is recorded, not implemented as a rule. Record that the document has no Week 11, 12 or 13 body, no revision worksheet and no examination paper, and that scheme row 1's 'Revision of  Second Term Unified Examination' (line 8) has no body. Classify the in-body review blocks by body: GENERAL REVISION (160, 270, 1039), 'GENRAL EVALUATION' (374, 525), GENERAL EVALUATION QUESTIONS (648, 780, 921, 1159) and GENERAL EVALUATION (1243) hold review questions on other topics and no teaching text, so they are assessment inside teaching weeks, not markers and not revision weeks. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-MARK-T3-REVEXAM.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): the last non-blank body line is 1260 (Week Ten theory question); no text follows it. Review block questions are on topics from other terms or later weeks (joint stock company, partnership, co-operative society, opportunity cost, public corporation, census, limited liability company, statutory corporation, economies of scale). Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Markers classified with locators and an explicit statement that no instructional body exists for them; review blocks classified by body; nothing invented."
+    },
+    {
+      "id": "ECON-VIS-T3-W01-CHAIN-DIAGRAM",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 1 line 93 (3 drawing anchors in the conversion): 'Manufacturer /Producer', 'Wholesaler', 'Retailer', 'Final consumer'",
+      "objective": "Give a visual disposition to the distribution chain diagram that follows the definition of distributive trade (line 93), drawn with shapes between four tab-separated stage names. Record whether the extracted text keeps any of the meaning, whether a supplement must describe the object in words, and what is left as a gap. Do not invent values, points or labels the source does not show; keep source text verbatim. Nothing is rendered or approved by this item unless a fresh private inspection is recorded.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T3-W01-CHAIN-DIAGRAM.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3",
+        "ECON-WK-T3-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): the stage names survive as one tab-separated text line; the arrows are drawn shapes (3 anchors); no picture. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "ECON-VIS-T3-W01-CHANNEL-OPTIONS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 1 weekend-assignment question lines 173-177: question line 173 and four drawn options 174-177 (15 drawing anchors in the conversion)",
+      "objective": "Give a visual disposition to the four drawn channel-of-distribution options in the weekend-assignment question 'Which of the following is the normal channel by which goods reach consumers?'. The option stages are text fragments with drawn arrows (4, 4, 4 and 3 anchors); the four sequences differ in order and in whether agents or sales representatives appear. The source has no key: the disposition must not mark an option correct. Record whether the extracted text keeps any of the meaning, whether a supplement must describe the object in words, and what is left as a gap. Do not invent values, points or labels the source does not show; keep source text verbatim. Nothing is rendered or approved by this item unless a fresh private inspection is recorded.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T3-W01-CHANNEL-OPTIONS.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3",
+        "ECON-WK-T3-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): lines 174-177 read 'Producers Wholesaler Agents Retailer consumers', 'Producers Wholesaler Retailers Agents Consumers', 'Producer Wholesalers sales representative Retailers consumers' and 'Producers Wholesalers Retailer Consumers' (tab spacing as in the source); the option letters are not in the text. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "ECON-VIS-T3-W05-DEMAND-SCHEDULE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 5 lines 567-581: intro line 571, tab-aligned schedule 572-579 (header 572 'Price (N) / Quantity Demanded (Tin)' and seven price rows 573-579 from 35/9 to 5/27), follow-up sentences 580-581, 5 drawing anchors at 572-573",
+      "objective": "Give a visual disposition to Mr. Tunde's milk demand schedule: a tab-aligned schedule whose header and first row carry drawn shapes (rules or cell borders) in the conversion, not a real table object. Record the seven price and quantity pairs as they read, whether the tab alignment keeps the columns in plain text, and that the schedule needs a faithful table form in any lesson. Record whether the extracted text keeps any of the meaning, whether a supplement must describe the object in words, and what is left as a gap. Do not invent values, points or labels the source does not show; keep source text verbatim. Nothing is rendered or approved by this item unless a fresh private inspection is recorded.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T3-W05-DEMAND-SCHEDULE.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3",
+        "ECON-WK-T3-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): no w:tbl in this week; the rows are plain lines with tabs and padding spaces; the currency sign is the Naira symbol in the header and absent in the rows. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "ECON-VIS-T3-W05-DEMAND-CURVE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 5 lines 583-604 (heading 'DEMAND CURVE' 583, intro 584, axis fragments 585-603, closing sentence 604); the week holds 28 drawing anchors and 6 text boxes in all",
+      "objective": "Give a visual disposition to the demand curve drawn from the schedule: loose axis fragments in the text ('Price', 35, 30, 25, 20, 15, 5, 'D' twice, 'O 9 12 15 18 21 24 27', 'Quantity Demanded') around drawn shapes and two text boxes holding '10'. Record that the curve's geometry is not in the text and whether the curve can only be described in words from the schedule. Record whether the extracted text keeps any of the meaning, whether a supplement must describe the object in words, and what is left as a gap. Do not invent values, points or labels the source does not show; keep source text verbatim. Nothing is rendered or approved by this item unless a fresh private inspection is recorded.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T3-W05-DEMAND-CURVE.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3",
+        "ECON-WK-T3-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): the price labels in the text run 35, 30, 25, 20, 15 and then 5 (no 10); two text boxes hold '10'; the quantity labels are on one line (602) and 'Quantity Demanded' is at 603. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "ECON-VIS-T3-W06-SUPPLY-TABLES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 6 lines 693-712: individual supply schedule intro 693 and table 694-701 (6 rows); market supply schedule intro 703 and table 704-711 (7 rows); two real w:tbl objects in the conversion (13 rows, 47 cells in the document)",
+      "objective": "Give a visual disposition to the two supply tables: the individual schedule (price per bag against quantity supplied, five price rows) and the market schedule (price against three named suppliers and a market total, five price rows). Record how the extractor flattens them to tab-separated lines, that the market table's two header rows read across lines 704-706, and that table structure must be preserved in any delivered form. Record whether the extracted text keeps any of the meaning, whether a supplement must describe the object in words, and what is left as a gap. Do not invent values, points or labels the source does not show; keep source text verbatim. Nothing is rendered or approved by this item unless a fresh private inspection is recorded.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T3-W06-SUPPLY-TABLES.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3",
+        "ECON-WK-T3-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): these are the only real table objects in the document; the table arithmetic was not checked in the inventory (ECON-FACT-T3-CALCULATION-VERIFY owns that). Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "ECON-VIS-T3-W06-SUPPLY-CURVE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 6 lines 713-730 (heading 'SUPPLY CURVE' 713, intro 714, graph text 715-728, closing sentence 729); the week holds 22 drawing anchors across 715-765",
+      "objective": "Give a visual disposition to the supply curve drawn from the schedule: axis fragments in the text ('Price', 80, 60, 40, 20, 's' at both ends) around drawn shapes. Record that the geometry is not in the text and which labels survive. Record whether the extracted text keeps any of the meaning, whether a supplement must describe the object in words, and what is left as a gap. Do not invent values, points or labels the source does not show; keep source text verbatim. Nothing is rendered or approved by this item unless a fresh private inspection is recorded.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T3-W06-SUPPLY-CURVE.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3",
+        "ECON-WK-T3-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): the split of the 22 anchors between this curve and the labour supply curve (756-765) was not determined. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "ECON-VIS-T3-W06-LABOUR-SUPPLY-CURVE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 6 lines 756-765 ('Abnormal supply curve (Labour)' 756, axis fragments 'Wage Rate' and 'O      Labour Supplied', 's' labels)",
+      "objective": "Give a visual disposition to the abnormal (labour) supply curve under 'EXCEPTION TO THE LAW OF SUPPL': a drawn curve with the labels 'Wage Rate' and 'Labour Supplied'. Record that the shape the text claims for it (reverse of the basic law) is not recoverable from the extracted labels, and that no points may be invented. Record whether the extracted text keeps any of the meaning, whether a supplement must describe the object in words, and what is left as a gap. Do not invent values, points or labels the source does not show; keep source text verbatim. Nothing is rendered or approved by this item unless a fresh private inspection is recorded.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T3-W06-LABOUR-SUPPLY-CURVE.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3",
+        "ECON-WK-T3-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): the causes of abnormal supply follow at 766-770 as plain text. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "ECON-VIS-T3-W07-COMBINED-SCHEDULE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 7 lines 814-823: intro 814, tab-aligned schedule 815-822 (header 'Price N / Quantity Demanded (Units) / Quantity Supplied (Units)' and seven rows, prices 7 down to 1)",
+      "objective": "Give a visual disposition to the combined demand and supply schedule: seven price rows with demand and supply quantities in tab-separated columns (not a table object). Record how the columns read in plain text and that the following graph (ECON-VIS-T3-W07-EQUILIBRIUM-GRAPH) and the equilibrium statements at 837 and 842 read from this schedule. Record whether the extracted text keeps any of the meaning, whether a supplement must describe the object in words, and what is left as a gap. Do not invent values, points or labels the source does not show; keep source text verbatim. Nothing is rendered or approved by this item unless a fresh private inspection is recorded.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T3-W07-COMBINED-SCHEDULE.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3",
+        "ECON-WK-T3-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): one row has a trailing space (822); the schedule is the basis of the 'N4, 400 units' equilibrium statement; nothing was checked. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "ECON-VIS-T3-W07-EQUILIBRIUM-GRAPH",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Week 7 lines 825-835 (graph text 826-834, 14 drawing anchors and 2 text boxes in the week; labels 'Price', 'D', 'S', 'Excess Supply', 'N6', 'N4', 'e', 'N2', 'Excess Demand', '200', '400', '700', 'Quantity Demanded')",
+      "objective": "Give a visual disposition to the equilibrium graph drawn from the combined schedule: price and quantity labels and curve letters scattered around drawn shapes. Record that the intersection point 'e' and the shortage and surplus regions are only labelled, that the label values must be compared with the schedule at 815-822 by the later correction work, and that nothing is interpreted here. Record whether the extracted text keeps any of the meaning, whether a supplement must describe the object in words, and what is left as a gap. Do not invent values, points or labels the source does not show; keep source text verbatim. Nothing is rendered or approved by this item unless a fresh private inspection is recorded.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T3-W07-EQUILIBRIUM-GRAPH.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3",
+        "ECON-WK-T3-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): the text below the graph (837) states the equilibrium at N4 and 400 units. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "ECON-VIS-T3-HEADER-MEDIA",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "page header: one JPEG, 949 x 359, 106,941 bytes in the conversion (sha256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14, byte identity with the original stream not established), plus header text 'MR OSHO/SS1/ECONOMICS/3RD TERM' and a page field",
+      "objective": "Disposition the header banner as non-teaching branded media: a tutoring-brand logo and name banner with contact details, not course content. Record that it must not be committed, rendered into a lesson or reproduced, that its contact details are not repeated in any record, and that no ASSET item is created for it. Record the header text as source provenance only. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T3-HEADER-MEDIA.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): the image was viewed privately in scratch only; nothing from it is committed. The extractor header text reads 'MR OSHO/SS1/ECONOMICS/3RD TERM' + tab + 'Page 1'. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Banner classified as non-teaching media with the exclusion recorded; no render or copy committed; no asset created."
+    },
+    {
+      "id": "ECON-PRES-T3-SOURCE-WORDING",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "verbatim wording and defects: lines 292, 374, 525, 655, 678, 752, 787, 1071, 1186, 1195, 1244, 1255 and the scheme header line 7",
+      "objective": "Preserve the source's own wording, including its defects, as source-faithful text distinct from any later correction: 'GENRAL EVALUATION' (374, 525), 'WEEKEND  ASSIGNMENT' with two spaces (655), 'DEFINITON OF SUPPLY' (678), 'EXCEPTION TO THE LAW OF SUPPL' truncated (752), 'WEEKEND ASSIGNEMENT' (787), 'CONPONENTS OF AGRICULTURE:' (1071), 'DEFINITION OF MININIG' (1186), 'Ishagamu' (1195, 1255), 'compay' in 'limited liability compay' (1244), the 'TOPIC: MONEY ' label with prefix and trailing space (292), the 'REFERENCE BOOK' singular heading (76) and the mixed content-list numbering in Week Seven (805-808). Lesson authors may quote the original and flag a defect, but may not silently normalise it or present a corrected wording as the author's. No source page or private render is committed. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-PRES-T3-SOURCE-WORDING.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): the defect strings were read directly from the extractor text at the lines given. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Every listed defect is recorded under the existing schema with exact lines; corrections stay separate from the preserved original wording."
+    },
+    {
+      "id": "ECON-PRES-T3-CALCULATIONS",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "calculations and schedules: Week 5 lines 572-581, Week 6 lines 694-711, Week 7 lines 815-822 and the worked example 844-862",
+      "objective": "Preserve the source's own calculations, schedules and number layout as source-faithful text distinct from any later correction: the Week 7 worked example (heading 844, Qd = 42-2p and Qs = 12+4p, the stepwise solution, 'Equilibrium  price = N5' at 855, 'Equilibrium Quantity = 32units' at 862) with its spacing and unit spelling, and the demand, supply and combined schedules with their tab-aligned or tabular layout and currency notation. Record that the worked example is the only solution in the document and that no assessment question has a key. Do not recompute or correct here; corrections belong to ECON-FACT-T3-CALCULATION-VERIFY and must stay separate from the preserved text. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-PRES-T3-CALCULATIONS.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3",
+        "ECON-WK-T3-W05",
+        "ECON-WK-T3-W06",
+        "ECON-WK-T3-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): the Week 7 example runs 844-862 with 'Solution', 'At equilibrium price' and 'Qd = Qs'; the schedules are tab-aligned text except the two Week 6 tables. Locator method: 1-based line numbers over word-extractor 1.0.4 getBody() of the verified member (1,261 lines when split on \\n; line 1261 empty; last non-blank line 1260; body text sha256 d4547424e85f495ce5d31a3f3cf198d21e31b63e35c0628f5536f0c8a5986227); a range runs from its label line to the last non-blank line before the next label; range sha256 is over the lines first..last inclusive joined with \\n (UTF-8, no normalisation). Table, drawing and text-box counts come from a LibreOffice 24.2.7.2 conversion to .docx in scratch (82 drawing anchors, 8 text boxes, 2 tables, 1 header image) and describe the conversion, not the original binary; nothing was rendered or interpreted.",
+      "completion_condition": "Each calculation and schedule recorded verbatim with locators under the existing schema; layout noted; corrections stay separate from the preserved original text."
+    },
+    {
+      "id": "ECON-FACT-T3-LAW-AND-DATA",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "Nigerian institutions, laws, policies and dated statements: lines 249-260, 364, 419, 447-454, 476, 502-516, 984-993, 1018-1031, 1050-1052, 1193-1195, 1203-1217, 1255-1256 and the unread statement-level content of Weeks 9 and 10",
+      "objective": "Verify later, with dated authoritative sources, the statements that tie curriculum concepts to Nigerian law, institutions and examples before a lesson presents them as current: the government agencies and price stabilisation (249-260), plastic money (364), the 'CAMD (1990)' reference (419), the central bank's legal basis (476), the cash and liquidity ratio, bank rate, special deposit and funding instruments and the 91-day Treasury bills example (447-454, 502-516), the economic history and policy statements about 1970, 1981 and 1986 (984-993, 1050-1051), the six geo-political zones with their attribution, 1997 date and zone and state lists (1018-1031, 1052), and the iron and steel, cement and mineral locations (1193-1195, 1203-1217, 1255-1256). Present each as a dated illustration or cite the primary law or data with its effective date; keep the source's original wording distinct from any corrected fact; do not treat Economics statements as Commerce or Financial Accounting law. Record nothing as verified until the evidence exists. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-FACT-T3-LAW-AND-DATA.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3",
+        "ECON-WK-T3-W02",
+        "ECON-WK-T3-W03",
+        "ECON-WK-T3-W04",
+        "ECON-WK-T3-W08",
+        "ECON-WK-T3-W09",
+        "ECON-WK-T3-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): statements flagged from reading only; none was checked against any external source in this item. The Week 9 policies (OFN, RBOA, NAFPP, Green Revolution) are named only in the scheme (line 68).",
+      "completion_condition": "Each date-sensitive or legal statement is either given a dated authoritative citation or explicitly framed as a dated illustration kept distinct from the source's wording, with no invented verification."
+    },
+    {
+      "id": "ECON-FACT-T3-CALCULATION-VERIFY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "term": "3rd Term",
+      "week_or_locator": "worked calculation lines 844-862 (Week 7) and schedule arithmetic: Week 5 lines 572-581, Week 6 lines 694-711, Week 7 lines 815-822",
+      "objective": "Recheck every worked example and schedule with a recorded derivation: the Week 7 equilibrium example (Qd = 42-2p, Qs = 12+4p), the individual and market supply tables (including the market totals), the demand schedule pairs, and the combined schedule against the equilibrium statements at 837 and 842 and the graph labels at 826-834. Separate correct values from the preserved source text; adopt no answer unverified; supply no key for any assessment question. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+          "member_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-FACT-T3-CALCULATION-VERIFY.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T3",
+        "ECON-SRC-T3",
+        "ECON-WK-T3-W05",
+        "ECON-WK-T3-W06",
+        "ECON-WK-T3-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T3): the arithmetic was not rechecked in the inventory.",
+      "completion_condition": "Every worked example is rechecked with a recorded derivation; correct values are separated from the preserved source text; no answer is adopted unverified. Testing deferred by owner."
     }
   ],
   "review": {
@@ -2356,8 +3365,7 @@
     }
   },
   "next_runnable": [
-    "ECON-INV-T3",
-    "ECON-PRE-T1",
+    "ECON-TEST-PACKAGE",
     "ECON-WK-T1-W03",
     "ECON-WK-T1-W04",
     "ECON-WK-T1-W05",
@@ -2392,6 +3400,20 @@
     "ECON-PRE-T2",
     "ECON-MARK-T2-REVEXAM",
     "ECON-PRES-T2-SOURCE-WORDING",
-    "ECON-LES-T1-W02-CAREER-PROSPECT"
+    "ECON-LES-T1-W02-CAREER-PROSPECT",
+    "ECON-PRE-T3",
+    "ECON-WK-T3-W01",
+    "ECON-WK-T3-W02",
+    "ECON-WK-T3-W03",
+    "ECON-WK-T3-W04",
+    "ECON-WK-T3-W05",
+    "ECON-WK-T3-W06",
+    "ECON-WK-T3-W07",
+    "ECON-WK-T3-W08",
+    "ECON-WK-T3-W09",
+    "ECON-WK-T3-W10",
+    "ECON-MARK-T3-REVEXAM",
+    "ECON-VIS-T3-HEADER-MEDIA",
+    "ECON-PRES-T3-SOURCE-WORDING"
   ]
 }

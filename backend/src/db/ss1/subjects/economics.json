@@ -60,6 +60,30 @@
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     },
     {
+      "id": "SS1-SRC-2ab0c50bcab6-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "source_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc",
+      "anchor": "FIRST TERM E-LEARNING NOTE",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "ECON-PRE-T1: word-extractor 1.0.4 getBody() lines 18-24 ('FIRST TERM E-LEARNING NOTE', blank, the SUBJECT/CLASS line, blank, 'SCHEME', blank, 'WEEK<TAB>TOPIC ' with one trailing space). Hash of line 18 a85bde6fd6d2022b18ecfd09c17b8f7561ddecd2bfc198ba2c0bbdccb98ccb29; line 20 fa487c23f4fed8db1f00e1a89a47bf5229726026f32f15a4ecee9659d4aeaef7; line 22 3bcf428c8e53cab52ae6a9e570ce3b1f15a19c3d842ec482e866c4e76e0dc843; line 24 0a7bcefdb62032fcabc408940fc69708f54b2d2b8d2daa70f3af30be038a450e; block lines 18-24 8de89c4335f671cb5200d758745472a34f45ad219fd18da9c440e054fb1eb7f4 (lines joined with \\n, edge blank lines trimmed, UTF-8, no trailing newline). The anchor occurs exactly once in the extracted text and matches no parsed row (checked by applying the importer's WEEK_MARKER pattern to the extract; the importer itself was not run).",
+        "explanation": "Document title, subject/class line and scheme-table heading. None carries a teaching objective, so the block is a marker. The scheme lines that follow (25-36) are per-week scheme text and are mapped in COV-ECON-T1-TITLE; rows 11 and 12 & 13 (lines 35-36) have no teaching body and belong to ECON-MARK-T1-REVEXAM. The reference list is classified by SS1-SRC-2ab0c50bcab6-R003. The subject/class line (line 20) stays the registered header_text and the anchor of the existing alias rule SS1-SRC-2ab0c50bcab6-R001, whose owner confirmation is still pending. Source text is retained unchanged."
+      }
+    },
+    {
+      "id": "SS1-SRC-2ab0c50bcab6-R003",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "source_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc",
+      "anchor": "REFERENCE BOOKS\nAmplified and Simplified Economics for Senior Secondary School by Femi Longe  \nComprehensive Economics for Senior Secondary School by J.V. Anyaele\nFundamentals of Economics for SSS By. R.A.I. Anyanwuocha",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "ECON-PRE-T1: word-extractor getBody() lines 38-41 ('REFERENCE BOOKS', then three titles; line 39 ends with two trailing spaces, included verbatim in the anchor). Hash of line 38 9bd03b2bc99e78b4e6c9c3d91f75e59e63d583a765f288217d2a417daa68caae; line 39 f64e42292aa63a1c8021446003886b9c82a9740cc51170e547598f8d9e7ada9c; line 40 66dfe6e5c42179bc50d813364340e509ec3a6ef4ca180655ccf531bf550214f4; line 41 c2e819b6a5f846a1a42bd79828fc684824ff1138a0afc544a4b3c6ddca76a3ac; block lines 38-41 8f7569b944d06de85311a8bb2e3b7e11ea589cab05fbe38df8286d816ad23f60. The 219-character anchor occurs exactly once in the extracted text and matches no parsed row (checked by applying the importer's WEEK_MARKER pattern to the extract; the importer itself was not run).",
+        "explanation": "Reference-book list printed directly after the scheme of work; scheme-only text with no teaching content. Titles verbatim: \"Amplified and Simplified Economics for Senior Secondary School by Femi Longe\"; \"Comprehensive Economics for Senior Secondary School by J.V. Anyaele\"; \"Fundamentals of Economics for SSS By. R.A.I. Anyanwuocha\". No edition, publisher or year is stated in the source and none is added. The three entries are unnumbered. The authors' names also recur inside the week bodies (Longe on 10 lines, Anyaele on 1, Anyanwuocha on 2); those lines belong to the week items, not to this classification."
+      }
+    },
+    {
       "id": "SS1-SRC-03d0cac39679-R001",
       "op": "source_alias",
       "source_id": "SS1-SRC-03d0cac39679",
@@ -234,6 +258,42 @@
   "delivery_corrections": [],
   "assets": [],
   "coverage": [
+    {
+      "id": "COV-ECON-T1-TITLE",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "Document title, subject/class line and scheme heading; no teaching objective",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 18-24; the scheme lines 25-36 that follow are mapped in the second evidence entry",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-2ab0c50bcab6-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "line 18 (title) SHA-256 a85bde6fd6d2022b18ecfd09c17b8f7561ddecd2bfc198ba2c0bbdccb98ccb29; line 20 (SUBJECT/CLASS line) SHA-256 fa487c23f4fed8db1f00e1a89a47bf5229726026f32f15a4ecee9659d4aeaef7; line 22 ('SCHEME') SHA-256 3bcf428c8e53cab52ae6a9e570ce3b1f15a19c3d842ec482e866c4e76e0dc843; line 24 ('WEEK<TAB>TOPIC ' with one trailing space) SHA-256 0a7bcefdb62032fcabc408940fc69708f54b2d2b8d2daa70f3af30be038a450e; lines 18-24 SHA-256 8de89c4335f671cb5200d758745472a34f45ad219fd18da9c440e054fb1eb7f4; whole opening block lines 1-43 SHA-256 619fc6e5db6827df8bd4ce0289b0b59be7b207c8daa798c1f42fdd2fb9fb8a9b; text before the first parsed body label 'WEEK ONE' (line 44, offset 757) SHA-256 02206a3b8b2495e54ea6d712b40eb8e873228ac2feda19e35a02adad4538d521",
+          "explanation": "Title, subject/class line and scheme heading. Lines 1-17 are blank except line 3, a lone tab, and lines 37, 42 and 43 are blank separators. The scheme header at line 24 is not read as a week marker by the importer's WEEK_MARKER pattern (that pattern needs a digit or a number word after 'week'), so the parsed bodies begin at line 44. The last hash above is the exact value the compiler's PREAMBLE_REQUIRES_COVERAGE detail will hold for text.slice(0, index of the first parsed body), computed here by slicing the extract; the importer was not run. The registered header_text is line 20 and is the anchor of the existing alias rule SS1-SRC-2ab0c50bcab6-R001."
+        },
+        {
+          "locator": "scheme lines 25-36 SHA-256 c89bc5024417b437280cf2a534aecf0ce5975865620c3a00ae747237cfae1116 (lines 24-36 with the header 0f6909d39c1b1a1488935604f59ace2b45823507d9d95d0786428aa5f6d5a03f); per-line SHA-256: line 25 e811a525b79a7903f2d0737fb7a1805b26f22afc701b88ef9172d3806bddb78a; line 26 ecdc1ba4b1e9b6b47cd65abab598132f35c55339f9827136c2504dcb85c8083c; line 27 406edde4a273ff0af00c0135ad94681a7874b88f5f4f23f41b9c8aebb5492afe; line 28 57434201fe14cacb2aa52c759239e8803047ae84659c0aeefc4978b63b7261b1; line 29 692439e2f674e373b72da542d8202f861809d94b910ff68242ac7cbd9f83c5ff; line 30 35ed60144d63885e510df1d0bffa3856a6b67d41e132834e81b99847e50c5364; line 31 5c30f9566ba667f8c61a23e4cc0bdaf1961bb49a6d69d1817fe15a350ed29462; line 32 0f5b4f0c138244adf7ab5717adca8f9c3f91f48a0a20ecca1f0bc4cd66e3c453; line 33 ee7504a4b064cf9dd9fabeb37c8820b881bcff356e4254f27a9042c51b98dacd; line 34 02eb68647d16894993addf04791c28870b7aa3df02ed1f852f4cf6bb692b7918; line 35 d673ac0d09177a92ac329bad6d88442368522b61c2dd9e0d620570f66c434fc7; line 36 f0d3d25c7129aee0e275a82702154515638082512e2d9020c587a114ab9716eb",
+          "explanation": "Scheme-to-body mapping, recorded as read. Rows 1-10 (lines 25-34) map by order to the ten parsed bodies, whose marker lines are One 44, Two 117, Three 172, Four 250, Five 302, Six 372, Seven 618, Eight 800, Nine 899, Ten 985 (ECON-WK-T1-W01 to W10); each row's own coverage belongs to its week item (rows 1 and 2 already have COV-ECON-T1-W01-SCHEME-1 and COV-ECON-T1-W02-SCHEME-2). Rows 1-6 (lines 25-30) print no week number; rows 7-13 print one ('7.   ', '8    ', '9.   ', '10. ', '11. ', '12 & 13. '), so the mapping of rows 1-6 rests on order alone and the numbering is not inferred. Lines 25-36 are twelve lines that carry thirteen week numbers, because line 36 combines weeks 12 and 13; earlier records that say 'thirteen rows' count week numbers, not lines. Row 11 (line 35, 'Revision.') and row 12 & 13 (line 36, 'Examination.') have no body and are left to ECON-MARK-T1-REVEXAM. Row 4 (line 28) names the individual, firms and the government while the Week Four topic line (251) reads 'Importance of opportunity cost to individual'; recorded, not corrected. No lesson or coverage entry is created from a scheme heading."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-REFERENCES",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "Reference-book list printed after the 1st Term scheme of work",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 38-41",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-2ab0c50bcab6-R003"
+      ],
+      "evidence": [
+        {
+          "locator": "lines 38-41; SHA-256 8f7569b944d06de85311a8bb2e3b7e11ea589cab05fbe38df8286d816ad23f60",
+          "explanation": "Heading \"REFERENCE BOOKS\" (line 38) and three unnumbered titles (lines 39-41): \"Amplified and Simplified Economics for Senior Secondary School by Femi Longe\", \"Comprehensive Economics for Senior Secondary School by J.V. Anyaele\" and \"Fundamentals of Economics for SSS By. R.A.I. Anyanwuocha\". The anchor includes line 39's two trailing spaces and occurs once. Scheme-only text; no teaching content. No edition, publisher or year is stated in the source or invented here."
+        }
+      ]
+    },
     {
       "id": "COV-ECON-T1-W01-SCHEME-1",
       "source_id": "SS1-SRC-2ab0c50bcab6",

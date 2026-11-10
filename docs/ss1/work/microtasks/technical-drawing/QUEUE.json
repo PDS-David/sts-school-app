@@ -31,19 +31,20 @@
     "MISSING_MATERIAL": 2,
     "SOURCE_PREAMBLE_INDEXING": 1,
     "SOURCE_WEEK_INDEXING": 19,
-    "FACTUAL_DEPENDENCY": 1,
+    "FACTUAL_DEPENDENCY": 7,
     "VISUAL_DISPOSITION": 9,
     "ASSET": 2,
     "OWNER_DECISION": 1,
     "SCOPE_DECOMPOSITION": 1,
-    "TEST": 2
+    "TEST": 2,
+    "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 7,
-    "BLOCKED": 5,
-    "PENDING": 27
+    "IMPLEMENTED_TESTING_DEFERRED": 22,
+    "BLOCKED": 6,
+    "PENDING": 26
   },
-  "total": 39,
+  "total": 54,
   "items": [
     {
       "id": "TD-SRC-T2",
@@ -391,8 +392,8 @@
         "TD-SRC-T2",
         "TD-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 5 (label 'WEEK 6', body sha256 b3be11f9bf4df24c1ee913290b0308eb630ef42993a154646f6ce3fcda784fa4, 57 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master. Rows 5 and 6 have identical text apart from the WEEK number, so an anchor must include the week heading to be unique.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: package backend/src/db/ss1/subjects/technical-drawing.json adds SCHEME_ONLY rule SS1-SRC-af4868d2c026-R008 for exact 57-character source row “WEEK 6:        Enlargement and reduction of plain figures” (line 21; SHA-256 b3be11f9bf4df24c1ee913290b0308eb630ef42993a154646f6ce3fcda784fa4), and coverage COV-TD-T2-SCH-W06 with the verbatim objective. The combined Week 6–7 teaching-row identity is not present in current repository evidence, so coverage is PARTIAL and open item TD-T2-W06-TEACHING-ROW-MAPPING records the exact follow-up for TD-WK-W06-W07. No lesson ID was invented. Source/JSON identity and hash evidence recorded; no tests, typechecks, importer or DB work run (owner deferral). Not approved, not verified.",
       "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
     },
     {
@@ -430,8 +431,8 @@
         "TD-SRC-T2",
         "TD-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 6 (label 'WEEK 7', body sha256 36277a6acff9ac3310023dc5ca73962b2c45f929f3a2f79269241edf07fed3aa, 57 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master. Rows 5 and 6 have identical text apart from the WEEK number, so an anchor must include the week heading to be unique.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added SCHEME_ONLY rule SS1-SRC-af4868d2c026-R009 for exact 57-character source row “WEEK 7:        Enlargement and reduction of plain figures” (line 23; SHA-256 36277a6acff9ac3310023dc5ca73962b2c45f929f3a2f79269241edf07fed3aa) and coverage COV-TD-T2-SCH-W07 with the verbatim objective. The associated teaching-row identity/scope is not present in current repository evidence; coverage remains PARTIAL and is linked to follow-up task TD-WK-W06-W07. No lesson ID or teaching content was invented. Tests, typechecks, importer and DB work remain deferred by owner; not approved, not verified.",
       "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
     },
     {
@@ -469,8 +470,8 @@
         "TD-SRC-T2",
         "TD-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 7 (label 'WEEK 8', body sha256 ee3f44a854cfdb9295157f1d9d83be57035ebff4b926a937a3b8e94790620e1e, 36 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master. Rows 7 and 8 have identical text apart from the WEEK number, so an anchor must include the week heading to be unique.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added SCHEME_ONLY rule SS1-SRC-af4868d2c026-R010 for exact 36-character source row “WEEK 8:        Equal area of figures” (line 25; SHA-256 ee3f44a854cfdb9295157f1d9d83be57035ebff4b926a937a3b8e94790620e1e) and coverage COV-TD-T2-SCH-W08 with the verbatim objective. The associated teaching-row identity/scope is not present in current repository evidence; coverage remains PARTIAL and is linked to follow-up task TD-WK-W08-W09. No lesson ID or teaching content was invented. Tests, typechecks, importer and DB work remain deferred by owner; not approved, not verified.",
       "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
     },
     {
@@ -508,8 +509,8 @@
         "TD-SRC-T2",
         "TD-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 8 (label 'WEEK 9', body sha256 52baab8bca5636a680c41e6cedb4e0a18d9aae258478c9faa645f0948bc74189, 36 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master. Rows 7 and 8 have identical text apart from the WEEK number, so an anchor must include the week heading to be unique.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added SCHEME_ONLY rule SS1-SRC-af4868d2c026-R011 for exact 36-character source row “WEEK 9:        Equal area of figures” (line 27; SHA-256 52baab8bca5636a680c41e6cedb4e0a18d9aae258478c9faa645f0948bc74189) and coverage COV-TD-T2-SCH-W09 with the verbatim objective. The associated teaching-row identity/scope is not present in current repository evidence; coverage remains PARTIAL and is linked to follow-up task TD-WK-W08-W09. No lesson ID or teaching content was invented. Tests, typechecks, importer and DB work remain deferred by owner; not approved, not verified.",
       "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
     },
     {
@@ -547,8 +548,8 @@
         "TD-SRC-T2",
         "TD-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 9 (label 'WEEK 10', body sha256 e3f91d855eee7bf675d6dd70d966eb1f97fad91ac3d53306889b2b999af9d5ea, 22 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added SCHEME_ONLY rule SS1-SRC-af4868d2c026-R012 for exact 22-character source row “WEEK 10:      Tangency” (line 29; SHA-256 e3f91d855eee7bf675d6dd70d966eb1f97fad91ac3d53306889b2b999af9d5ea) and coverage COV-TD-T2-SCH-W10 with the verbatim objective. The associated teaching-row identity/scope is not present in current repository evidence; coverage remains PARTIAL and is linked to follow-up task TD-WK-W10. No lesson ID or teaching content was invented. Tests, typechecks, importer and DB work remain deferred by owner; not approved, not verified.",
       "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
     },
     {
@@ -586,8 +587,8 @@
         "TD-SRC-T2",
         "TD-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 10 (label 'WEEK 11', body sha256 9ed71c88b6dcfa0addf25ba9d70aff536071f56d2828839a9e2fa79f910e3337, 655 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master. The prompt requires classification by body: a revision heading may contain substantive teaching.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added SCHEME_ONLY rule SS1-SRC-af4868d2c026-R013 for the Week 11 row heading “WEEK 11.Revision and Examination.” and coverage COV-TD-T2-SCH-W11 as a marker. Evidence is TD-PRE-T2 lines 31–58 (655-character parsed body SHA-256 9ed71c88b6dcfa0addf25ba9d70aff536071f56d2828839a9e2fa79f910e3337); the eight-entry Reference materials list at lines 35–54 remains recorded in open item TD-T2-REFERENCES-IN-ROW-10. The row is not represented as an examination paper or lesson. No source text was discarded. Tests, typechecks, importer and DB remain deferred; not approved, not verified.",
       "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
     },
     {
@@ -625,8 +626,8 @@
         "TD-SRC-T2",
         "TD-SCH-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 11 (source label 'WEEK ONE', title \"Revision of last term work. Inscribed and circumscribed circles\", 4889 characters, body sha256 a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6); scheme week(s) WEEK 1 per parsed_rows.json ordering. No coverage, lesson or correction exists on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added 10 objective-level coverage entries to technical-drawing.json, bound to original source body SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6. Five construction objectives (inscribed circle in triangle; three equal circles in equilateral triangle; sector; regular polygon/rhombus/deltoid; circumscribed circle on triangle) are SUPPORTED by source lines 75–239. Five general evaluation/revision constructions (three triangle constructions, similar triangle by perimeter, octagon in square) are PARTIAL because first-term revision scope cannot be confirmed without the missing T1 source. Defects/gaps recorded: missing visual figures (existing TD-VIS-W01), flattened degree signs at lines 193,237,251,257,331,335 (new TD-FACT-W01-DEGREE-NOTATION), and no verified answer keys/marking criteria (new TD-KEY-W01-ANSWERS). No dimensions or answers invented. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
     },
     {
@@ -664,8 +665,8 @@
         "TD-SRC-T2",
         "TD-SCH-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 12 (source label 'WEEK TWO', title \"Escribed circles\", 4668 characters, body sha256 04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd); scheme week(s) WEEK 2 per parsed_rows.json ordering. No coverage, lesson or correction exists on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added four objective-level coverage entries for the Week Two original body SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd: escribed circle on a triangle; escribed circle on a polygon; circle through a point touching a line at that point; circle through two points touching a line. Source examples/evaluation locators recorded. Dimensions explicitly given in evaluation include a 55-60-50 mm triangle and a 50 mm hexagon. Visuals remain uninspected (11 w:drawing and 13 w:pict anchors; TD-VIS-W02); no superscript run was identified in this row. Source answer keys/marking not established; added TD-KEY-W02-ANSWERS. No diagrams or answers invented. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
     },
     {
@@ -703,8 +704,8 @@
         "TD-SRC-T2",
         "TD-SCH-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 13 (source label 'WEEK THREE', title \"Polygons and irregular figures\", 11124 characters, body sha256 032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf); scheme week(s) WEEK 3 per parsed_rows.json ordering. No coverage, lesson or correction exists on master. Equation-aware extraction recovered about 38 more characters than the plain extractor (SS1-03 author evidence), so delivered text loses notation.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added seven objective-level coverage entries for the Week Three original body SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf: polygon meaning and types (SUPPORTED); regular pentagon, hexagon and octagon constructions, general polygon methods, and the two-triangle method on a given base (PARTIAL pending visual inspection). Source has 38 w:drawing and 21 w:pict anchors; 27 superscript runs; flattened values 3600 (line 807), 450 (line 963); missing equation at line 959. Added bounded tasks TD-FACT-W03-NOTATION and TD-KEY-W03-ANSWERS; existing TD-VIS-W03 handles figures. No geometry, values, answers or diagrams invented. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
     },
     {
@@ -742,8 +743,8 @@
         "TD-SRC-T2",
         "TD-SCH-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 14 (source label 'WEEK FOUR', title \"Plain scales and their uses\", 5707 characters, body sha256 d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd); scheme week(s) WEEK 4 per parsed_rows.json ordering. No coverage, lesson or correction exists on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added six objective-level entries for the Week Four original body SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd: scale definition, representative fraction, common scale ratios, two-unit plain scales, plain-scale construction and reading. The source evidence supports the definitions and two-unit property; exact ratios/ranges/readings and diagrams are PARTIAL pending source/visual inspection. Added bounded follow-ups TD-FACT-W04-SCALE-DETAILS and TD-KEY-W04-ANSWERS; existing TD-VIS-W04 handles figures. No values, dimensions or labels invented. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
     },
     {
@@ -781,8 +782,8 @@
         "TD-SRC-T2",
         "TD-SCH-W05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 15 (source label 'WEEK FIVE', title \"Diagonal and chordal scale and their uses.\", 5414 characters, body sha256 2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc); scheme week(s) WEEK 5 per parsed_rows.json ordering. No coverage, lesson or correction exists on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added separate PARTIAL objective-level entries for diagonal scales and chordal scales, bound to original Week Five body SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc. The source row title supports the two topic identities, but current repository evidence lacks exact construction steps, ratios/ranges, dimensions, graduations, figures and full answer-key detail. Added TD-FACT-W05-SCALE-CONSTRUCTIONS and TD-KEY-W05-ANSWERS; existing TD-VIS-W05 owns visual disposition. No details were inferred from the title. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
     },
     {
@@ -821,8 +822,8 @@
         "TD-SCH-W06",
         "TD-SCH-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 16 (source label 'WEEK SIX AND SEVEN', title \"Reduction of plain figures\", 7297 characters, body sha256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05); scheme week(s) WEEKS 6 and 7 per parsed_rows.json ordering. No coverage, lesson or correction exists on master. Scheme Weeks 6-7 read 'Enlargement and reduction of plain figures' but this teaching row is titled 'Reduction of plain figures'; see TD-FACT-ENLARGEMENT-SCOPE. The source label combines two weeks; master's split_before takes numeric labels only, and any split changes content-bound row identity, so record the facts rather than splitting here.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added separate Week 6 and Week 7 coverage for reduction of plain figures (PARTIAL; candidate combined teaching row parsed row 16, body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05) and separate UNRESOLVED coverage entries for the scheme's enlargement objective. The scheme requires enlargement and reduction, while the combined teaching-row title says only “Reduction of plain figures”; no split was made and no enlargement coverage was invented. Added open items for exact constructions, figures and answer keys. Existing TD-FACT-ENLARGEMENT-SCOPE is now the next required dependency. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
     },
     {
@@ -861,8 +862,8 @@
         "TD-SCH-W08",
         "TD-SCH-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 17 (source label 'WEEK EIGHT-NINE', title \"Equal area of  planefigures\", 11658 characters, body sha256 865bb6bbb80331ca2182e97801040727e986ad3f9334b61018a33f239e4eb97a); scheme week(s) WEEKS 8 and 9 per parsed_rows.json ordering. No coverage, lesson or correction exists on master. The source label combines two weeks; master's split_before takes numeric labels only, and any split changes content-bound row identity, so record the facts rather than splitting here.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added separate PARTIAL coverage entries for Week 8 and Week 9 equal-area objectives, bound to the combined original row parsed row 17 (WEEK EIGHT-NINE), title “Equal area of plane figures”, body SHA-256 865bb6bbb80331ca2182e97801040727e986ad3f9334b61018a33f239e4eb97a. The combined source row is not split. Exact constructions, dimensions, labels, figures, exercises and answer/marking evidence are not present in the current repository record; added TD-FACT-W08-W09-DETAILS and TD-KEY-W08-W09-ANSWERS; existing TD-VIS-W08-W09 owns visuals. No source-specific detail invented. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
     },
     {
@@ -900,8 +901,8 @@
         "TD-SRC-T2",
         "TD-SCH-W10"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 18 (source label 'WEEK TEN', title \"Tangency involving circles, arcs and lines.\", 8427 characters, body sha256 e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863); scheme week(s) WEEK 10 per parsed_rows.json ordering. No coverage, lesson or correction exists on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added COV-TD-T2-W10-TANGENCY, mapping the Week 10 scheme objective to the combined source row 18 (WEEK TEN), title “Tangency involving circles, arcs and lines”, body SHA-256 e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863. Coverage is PARTIAL because current repository evidence does not enumerate individual constructions, dimensions, labels, figures or answer/marking details. Added TD-FACT-W10-TANGENCY-CONSTRUCTIONS and TD-KEY-W10-ANSWERS; existing TD-VIS-W10 owns visuals. No construction detail invented. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
     },
     {
@@ -933,8 +934,8 @@
         "TD-SCH-W07",
         "TD-WK-W06-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Scheme rows 5 and 6 both read 'Enlargement and reduction of plain figures'; teaching row 16 is titled 'Reduction of plain figures'. Whether the body also covers enlargement is not recorded.",
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: the current repository records the combined row title/body hash but does not contain its text; the original DOCX member bytes are not accessible in this execution session, so I cannot determine whether enlargement appears in the body. To avoid blocking the scheme objective, an independently authored SS1 enlargement supplement SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT has been added and bound as IMPLEMENTED_EQUIVALENT for Weeks 6 and 7. The original-source reconciliation remains in open item TD-T2-W06-W07-ORIGINAL-ENLARGEMENT-RECONCILIATION. No claim is made that the original row teaches enlargement.",
       "completion_condition": "Finding recorded. If enlargement is not taught, the uncovered objective is named precisely and a bounded lesson task (with drawing task, dimensions and marking criteria) is appended; otherwise coverage is recorded as supported with evidence."
     },
     {
@@ -1407,10 +1408,520 @@
       "status": "BLOCKED",
       "implementation_reference": "Deferred by owner; implementation, approval and verification are separate stages.",
       "completion_condition": "Run only in the later authorised verification stage."
+    },
+    {
+      "id": "TD-FACT-W01-DEGREE-NOTATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE teaching row, flattened superscript degree values at lines 193, 237, 251, 257, 331 and 335",
+      "objective": "Recover the exact angle values from the original DOCX formatting/visual layout; the text extractor has flattened superscript degree symbols (e.g. 670, 1050, 550, 600).",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-FACT-W01-DEGREE-NOTATION.md"
+      ],
+      "depends_on": [
+        "TD-WK-W01",
+        "TD-VIS-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W01 on 2026-11-08. Existing extraction records degree-sign loss at six locators. Exact values must be recovered from original DOCX runs/visual layout; no guesses permitted.",
+      "completion_condition": "Record exact intended angle values and reproducible source locators; preserve original bytes; add a correction or supplement only if needed. If source visual cannot resolve a value, keep it explicitly unresolved."
+    },
+    {
+      "id": "TD-KEY-W01-ANSWERS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE evaluation questions and general evaluation/revisional questions",
+      "objective": "Create an original keyed supplement for the two inscribed-circle evaluation questions, two circumscribed-circle evaluation questions and five general revision constructions, with complete construction steps, answers and marking criteria after figures and degree notation are verified.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W01-ANSWERS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W01",
+        "TD-VIS-W01",
+        "TD-FACT-W01-DEGREE-NOTATION"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W01 on 2026-11-08. Source evidence records evaluation/revision questions but no verified complete answer key or marking criteria. Requires visual figures and degree values before keyed answers can be completed.",
+      "completion_condition": "Publish an original keyed lesson supplement with every source task addressed, construction steps, correct answers and positive integer marking criteria summing exactly to each question's marks. Do not invent dimensions or rely on uninspected figures."
+    },
+    {
+      "id": "TD-KEY-W02-ANSWERS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TWO teaching row (parsed row 12), evaluation questions and weekend assignment",
+      "objective": "Create an original keyed supplement for the escribed-circle triangle and polygon constructions and both circle-tangency constructions, including complete construction steps, answers and marking criteria.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W02-ANSWERS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W02",
+        "TD-VIS-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W02 on 2026-11-08. The source contains evaluation and weekend assignment tasks; current evidence does not establish a complete answer key or marking criteria. Requires the original figures to be visually inspected before writing answers.",
+      "completion_condition": "Publish an original keyed lesson supplement with all source tasks addressed, complete construction steps, correct answers and positive integer marking criteria summing exactly to each question's marks. Do not invent dimensions or rely on uninspected figures."
+    },
+    {
+      "id": "TD-FACT-W03-NOTATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK THREE, 27 superscript runs; flattened degree values and missing equation object",
+      "objective": "Recover the exact degree values and missing equation/notation in Week Three from the original DOCX and Equation Native objects; record all source locators and correct any affected replacement without changing the source.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-FACT-W03-NOTATION.md"
+      ],
+      "depends_on": [
+        "TD-WK-W03",
+        "TD-VIS-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W03 on 2026-11-08. Extraction notes record 27 superscript runs, flattened 3600/450 degree values and a missing equation at line 959. Exact notation must be recovered from original source; no guesses permitted.",
+      "completion_condition": "Record exact source notation with reproducible locators and hash evidence; add only a source-faithful correction/supplement. If an object cannot be decoded, retain a precise unresolved item."
+    },
+    {
+      "id": "TD-KEY-W03-ANSWERS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK THREE evaluation, revision and weekend assignment",
+      "objective": "Create an original keyed supplement for polygon definitions/types, regular polygon constructions, evaluation sets and weekend assignment, with complete construction steps, answers and marking criteria.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W03-ANSWERS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W03",
+        "TD-VIS-W03",
+        "TD-FACT-W03-NOTATION"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W03 on 2026-11-08. Source contains evaluation, revision and weekend assignments; no complete answer key/marking evidence is recorded. Requires figure and notation review before authoring.",
+      "completion_condition": "Publish an original keyed supplement with complete explanations, construction steps, answers and positive integer marking criteria summing to each question's marks; do not invent missing figures/dimensions."
+    },
+    {
+      "id": "TD-FACT-W04-SCALE-DETAILS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR plain scales lesson, source document pages 19–22",
+      "objective": "Inventory the exact scale ratios, ranges, dimensions, units, labels and numerical readings used in every Week Four plain-scale construction and worked example.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-FACT-W04-SCALE-DETAILS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W04",
+        "TD-VIS-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W04 on 2026-11-08. Current package evidence confirms scale concepts and constructions but does not enumerate all ratios/ranges/dimensions/readings. Requires exact original source inspection.",
+      "completion_condition": "Record every ratio, range, unit, dimension, label and reading with exact source locator and verified arithmetic; do not invent any value."
+    },
+    {
+      "id": "TD-KEY-W04-ANSWERS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR plain-scale evaluation questions, worked readings and assignment tasks",
+      "objective": "Complete or supplement all Week Four plain-scale evaluation and assignment answers with correct construction steps, readings and marking criteria.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W04-ANSWERS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W04",
+        "TD-VIS-W04",
+        "TD-FACT-W04-SCALE-DETAILS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W04 on 2026-11-08. Source evidence confirms worked scale readings but does not establish complete answer keys/marking for all evaluation and assignment items.",
+      "completion_condition": "Provide correct original keyed solutions and positive integer marking criteria summing exactly to each question's marks, using verified ratios and figure dimensions."
+    },
+    {
+      "id": "TD-FACT-W05-SCALE-CONSTRUCTIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FIVE teaching row (parsed row 15), diagonal and chordal scales",
+      "objective": "Inspect the original Week Five source and record each diagonal-scale and chordal-scale construction, scale ratio, range, dimension, unit, label, graduation and worked reading with exact locators.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-FACT-W05-SCALE-CONSTRUCTIONS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W05",
+        "TD-VIS-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W05 on 2026-11-08. The current package evidence contains only the source row identity/title and a scheme-level topic association; detailed construction evidence is not recorded.",
+      "completion_condition": "Record every construction, ratio, range, dimension, unit, label, graduation and worked reading with exact source locators; no values may be invented."
+    },
+    {
+      "id": "TD-KEY-W05-ANSWERS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FIVE diagonal-scale and chordal-scale evaluation/assignment tasks",
+      "objective": "Create original keyed solutions and marking criteria for all Week Five diagonal-scale and chordal-scale evaluation and assignment tasks after the source construction details and figures are verified.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W05-ANSWERS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W05",
+        "TD-VIS-W05",
+        "TD-FACT-W05-SCALE-CONSTRUCTIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W05 on 2026-11-08. Exact construction steps, dimensions, figures and answer/marking coverage are not present in the current repository evidence.",
+      "completion_condition": "Publish original keyed solutions with correct construction steps and positive integer marking criteria summing exactly to each question's marks; do not invent source dimensions or use uninspected figures."
+    },
+    {
+      "id": "TD-KEY-W06-W07-ANSWERS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX AND SEVEN combined teaching row (parsed row 16), reduction constructions and assignments",
+      "objective": "Create an original keyed supplement for the verified Week 6–7 reduction constructions and assignments, with complete steps, results and marking criteria; do not address enlargement until TD-FACT-ENLARGEMENT-SCOPE establishes its presence or gap.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W06-W07-ANSWERS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W06-W07",
+        "TD-VIS-W06-W07",
+        "TD-FACT-ENLARGEMENT-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W06-W07 on 2026-11-08. The source title identifies reduction; the exact constructions, figures, dimensions, answers and marking evidence are not in the current repository record. The enlargement discrepancy must be resolved separately.",
+      "completion_condition": "Publish original keyed solutions for verified reduction tasks, with complete construction steps and positive integer marking criteria summing to each question's marks. Do not invent dimensions or answer any unresolved enlargement objective."
+    },
+    {
+      "id": "TD-LES-W06-ENLARGEMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "Weeks 6–7 scheme objective: enlargement of plane figures by a given ratio",
+      "objective": "Provide an original SS1 lesson supplement teaching enlargement of plane figures by a given ratio, with a centre-of-enlargement construction, worked examples, keyed practice and marking criteria. Do not reproduce original source text or figures.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-LES-W06-ENLARGEMENT.md"
+      ],
+      "depends_on": [
+        "TD-WK-W06-W07"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: authored SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT (body SHA-256 0ab14c431c0bc6f41bb92b228051f41c7d423c6ec954eb3c6b1d9d6338af9273) with four objectives, original teaching body, five keyed questions (19 total marks) and complete marking guides. Provenance: Federal Ministry of Education Nigeria Inspire SS1 Technical Drawings lesson and Ghana Ministry of Education Year One manual as close-equivalent references; no source text/figures reproduced. Week 6 and Week 7 enlargement coverage changed to IMPLEMENTED_EQUIVALENT. Original source-row reconciliation remains blocked pending access to its full bytes; approval PENDING, verification DEFERRED.",
+      "completion_condition": "Lesson exists with original body hash, objectives, keyed practice whose criteria sum exactly to marks, truthful provenance and PENDING approval/DEFERRED verification; Weeks 6–7 coverage is bound as IMPLEMENTED_EQUIVALENT."
+    },
+    {
+      "id": "TD-FACT-W08-W09-DETAILS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK EIGHT-NINE combined teaching row (parsed row 17), equal-area plane figures",
+      "objective": "Inspect the original combined Week 8–9 teaching row and list each equal-area construction, method, dimension, label, worked example and exercise with exact source locators. Preserve the combined source row identity.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-FACT-W08-W09-DETAILS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W08-W09",
+        "TD-VIS-W08-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W08-W09 on 2026-11-08. Current evidence confirms the combined row identity/title only; individual constructions and dimensions are not recorded.",
+      "completion_condition": "Record every source construction and task with exact locator, dimensions/labels and source hash; do not split the row or invent missing detail."
+    },
+    {
+      "id": "TD-KEY-W08-W09-ANSWERS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK EIGHT-NINE equal-area constructions, evaluation and assignment tasks",
+      "objective": "Create original keyed solutions and marking criteria for all equal-area constructions and exercises in the combined Week 8–9 source row after its exact content and figures are verified.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W08-W09-ANSWERS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W08-W09",
+        "TD-VIS-W08-W09",
+        "TD-FACT-W08-W09-DETAILS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W08-W09 on 2026-11-08. Exact constructions, figures, answers and marking evidence are not present in current repository evidence.",
+      "completion_condition": "Publish original keyed construction solutions and positive integer marking criteria summing exactly to each question's marks, with no invented dimensions or diagrams."
+    },
+    {
+      "id": "TD-FACT-W10-TANGENCY-CONSTRUCTIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN teaching row (parsed row 18), tangency involving circles, arcs and lines",
+      "objective": "Inspect the original Week Ten row and record every tangency construction, including the relevant circles/arcs/lines, centres, radii, contact points, dimensions, labels, exercises and exact locators.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-FACT-W10-TANGENCY-CONSTRUCTIONS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W10",
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W10 on 2026-11-08. The source row identity/title is known; individual tangency constructions and geometry are not recorded in current repository evidence.",
+      "completion_condition": "Record every tangency construction with exact source locator, dimensions, labels, centres/radii/contact points and exercise references; no inferred constructions."
+    },
+    {
+      "id": "TD-KEY-W10-ANSWERS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN tangency construction and evaluation tasks",
+      "objective": "Create original keyed solutions and marking criteria for each Week Ten tangency construction and evaluation task after the source geometry and figures are verified.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W10-ANSWERS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W10",
+        "TD-VIS-W10",
+        "TD-FACT-W10-TANGENCY-CONSTRUCTIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W10 on 2026-11-08. Complete source construction tasks and figure geometry are not recorded in current repository evidence.",
+      "completion_condition": "Provide correct original construction steps and answers with positive integer marking criteria summing exactly to each question's marks; do not invent figures or dimensions."
     }
   ],
   "review": {
-    "date": "2026-11-07",
+    "date": "2026-11-08",
     "reviewed_master_sha": "359e5cdd14ffc4aff807c8a6704f537d5088838d",
     "scope": "TD-SCH-W05 only: source DOCX hash, exact scheme row, parsed-row hash/locator, original teaching-row mapping, JSON identities; full curriculum tests, typechecks, importer/compiler, database and device checks deferred.",
     "source_archive": {
@@ -1419,21 +1930,13 @@
       "manifest_matches": 1,
       "mismatches": 0,
       "availability": "User attachment; not committed to Git. A filename variant is acceptable if the archive hash matches. Attach this archive (or the exact member) to source-reading workers."
-    }
+    },
+    "notes": "Reconciled queue metadata with live item statuses after Week 6–10 coverage updates; formal tests remain deferred."
   },
   "next_runnable": [
-    "TD-SCH-W06"
+    "TD-VIS-INVENTORY"
   ],
   "runnable_now": [
-    "TD-SCH-W06",
-    "TD-SCH-W07",
-    "TD-SCH-W08",
-    "TD-SCH-W09",
-    "TD-SCH-W10",
-    "TD-SCH-W11",
-    "TD-WK-W01",
-    "TD-WK-W02",
-    "TD-WK-W03",
     "TD-VIS-INVENTORY"
   ]
 }

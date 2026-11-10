@@ -25,7 +25,9 @@
     "PHYS-PRE-T2 (2026-10-30, master e60b1fe) completed the 2nd Term preamble inventory. physics.json now has 7 source_rules (added SS1-SRC-2c924c964660-R002 and -R003, both SCHEME_ONLY) and 4 coverage entries (added COV-PHYS-T2-TITLE and COV-PHYS-T2-REFERENCES, both MARKER). The 2nd Term scheme has ten rows and ten parsed bodies; no revision or examination row exists. Evidence: PHYS-PRE-T2.md.",
     "PHYS-WK-T1-W01 (2026-11-05, base a665934) indexed 1st Term WEEK ONE at objective level against the PHYS-PRE-T1 line-digest method: the meaning of Physics and its branches, fundamental and derived quantities and units, the two comparison tables, dimensions, the force dimensional analysis and the reading assignment are taught at objective level but recorded PARTIAL (8 entries) because no lesson exists; laboratory familiarisation (the scheme's second clause at line 24), the dimensional analyses of density, velocity and acceleration (empty operands at lines 133-134, 137 and 141 with no equation object anywhere in the file, 76 embedded PNGs), both EVALUATION blocks, the WEEKEND ASSIGNMENT and the THEORY block are UNRESOLVED (6 entries). Three bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written.",
     "PHYS-WK-T1-W02 (2026-11-07, base 882224048a1628d1d9fd03e6ee79ff6ead148622) indexed 1st Term WEEK TWO (parsed row 1, body lines 194-340) at objective level against the same line-digest method: the techniques paragraph, the metre rule and tape rule, callipers, the vernier callipers and micrometer screw gauge, the vernier reading rule, time, mass, weight with the mass-versus-weight table and W=mg, volume and the reading assignment are taught at objective level but recorded PARTIAL (10 entries) because no lesson exists; Example 3.1, Example 3.2 and the four assessment blocks are UNRESOLVED (6 entries) because their figures are absent from the extract, the micrometer reading rule is never stated, Example 3.2 prints 17.1mm for a 17.11 mm sum, and no answer key exists. The 98 'undefined' words of theory item 5 are an extractor artefact of U+001F characters, not source text. physics.json now has 34 coverage entries and 20 open items. Five bounded tasks were appended (three lessons, one correction binding, one blocked expert-decision item). Nothing was run; testing remains deferred. Evidence: PHYS-WK-T1-W02.md.",
-    "PHYS-PRE-T3 (2026-11-07, base 679ab8b4edf311c2c376d978f220a75071792cdf) inventoried the 3rd Term text outside the parsed rows: lines 1-14 only (title, scheme heading, 12 scheme rows; no reference list). Scheme weeks 11 (Revision) and 12 (Examination) have no parsed row or body. Finding for PHYS-FACT-T3-W05-SCHEME-MISMATCH: the Week 5 TOPIC spans two lines, and the importer title keeps only the first ('MATTER, ATOMIC STRUCTURE, STATES OF MATTER,'); the second line reads 'DIFFUSION, OSMOSIS, BROWNIAN MOTION' and the body does contain a 'Diffusion and Osmosis' section with a 'Diffusion:' definition, a rate-of-diffusion list, Graham's law and an 'Osmosis:' definition, so the earlier 'body has no diffusion/osmosis' reading is a title-truncation artefact, to be confirmed by that item."
+    "PHYS-PRE-T3 (2026-11-07, base 679ab8b4edf311c2c376d978f220a75071792cdf) inventoried the 3rd Term text outside the parsed rows: lines 1-14 only (title, scheme heading, 12 scheme rows; no reference list). Scheme weeks 11 (Revision) and 12 (Examination) have no parsed row or body. Finding for PHYS-FACT-T3-W05-SCHEME-MISMATCH: the Week 5 TOPIC spans two lines, and the importer title keeps only the first ('MATTER, ATOMIC STRUCTURE, STATES OF MATTER,'); the second line reads 'DIFFUSION, OSMOSIS, BROWNIAN MOTION' and the body does contain a 'Diffusion and Osmosis' section with a 'Diffusion:' definition, a rate-of-diffusion list, Graham's law and an 'Osmosis:' definition, so the earlier 'body has no diffusion/osmosis' reading is a title-truncation artefact, to be confirmed by that item.",
+    "PHYS-LES-T1-W02-MICROMETER-READING (2026-11-08): authored SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING. Adds pitch/least-count calculation, main and circular scale reading, signed zero-error correction and an independent example (12.84 mm = 1.284 cm). Four keyed items total 8 marks; every marking array sums to its item total. COV-PHYS-T1-W02-OBJ-7 is IMPLEMENTED_EQUIVALENT; OBJ-4 now references the lesson but stays PARTIAL for the wider vernier/micrometer objective. The open item PHYSICS-T1-W02-MICROMETER remains blocking until PHYS-COR-T1-W02-BINDING binds the original row and corrects its inconsistent printed example. Fig. 3.4 was not inspected or used. Source/member verification is reused from the existing PHYS-WK-T1-W02 record, not repeated in this run. Testing deferred by owner.",
+    "PHYS-PORT-D1-COV-T1 (2026-11-08): compared all eleven PR #71 first-term coverage rows against master. None copied because master already has finer objective-level entries; W1/W2 contain PARTIAL/UNRESOLVED objectives, W3-W10 have more granular coverage and retain their own reconciliation/section-boundary gaps, and W11 remains unresolved. No status upgraded and no duplicate coverage added. Full disposition in PHYS-PORT-D1-COV-T1.md. Original binary member not rehashed/rendered in this run; existing master source evidence reused. Testing deferred by owner."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -34,21 +36,21 @@
     "SOURCE_WEEK_INDEXING": 29,
     "SOURCE_RULE": 2,
     "OWNER_DECISION": 2,
-    "FACTUAL_DEPENDENCY": 6,
+    "FACTUAL_DEPENDENCY": 13,
     "VISUAL_DISPOSITION": 3,
     "BRANCH_PORT": 13,
     "BRANCH_COMPARISON": 2,
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
-    "LESSON": 6,
+    "LESSON": 13,
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 8,
-    "BLOCKED": 9,
-    "PENDING": 58
+    "IMPLEMENTED_TESTING_DEFERRED": 34,
+    "BLOCKED": 16,
+    "PENDING": 39
   },
-  "total": 75,
+  "total": 89,
   "items": [
     {
       "id": "PHYS-SRC-T1",
@@ -385,8 +387,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 2 (source label 'WEEK THREE', title \"MOTION IN NATURE\", 9433 characters, body sha256 7f54acc3468f0acb9971e038a65be77f6caf86500123c105baedd2434ac9de21) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added four scheme-level coverage entries (motion/types; force/contact and field forces; circular motion/centripetal acceleration and force; centrifugal effect) bound to original authored supplement SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR (body SHA-256 b0e2b2953896b5c0e4313dff5de256250dfecfb14aa6c21877725ce06af1eb03). The original parsed row 2 title/body identity is recorded, but its full .doc bytes/text are not accessible in this execution session; source-row reconciliation remains open and no original-row subtopics, equations, figures or assessment details are claimed. Supplement has six keyed practice questions with marking totals checked. External provenance: Federal Ministry of Education Nigeria Inspire SS1 Motion/Causes of Motion and OpenStax University Physics Vol 1 §6.3; no source wording or figures copied. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -422,8 +424,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 3 (source label 'WEEK FOUR', title \"FRICTION\", 4976 characters, body sha256 4bdf68054b2e399aa989b7e0c1cea9cd16a3cadb4723c2f0cf0a67d56571e299) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added four scheme-level coverage entries for friction definition, types, advantages/disadvantages/control, and a simple investigation, bound to original authored supplement SUP-SS1-PHYSICS-T1-W04-FRICTION (body SHA-256 e6d0cbd6e92fc580d2282579b42a17a3eb531a4507cee240c2017d45d973a9e1). The original parsed row 3 title/body identity is recorded, but full .doc bytes/text are not accessible in this session; original-row reconciliation remains open and no original-specific formula, figure or assessment detail is claimed. Supplement has six keyed questions with marking totals checked. Official Federal Ministry of Education Nigeria Inspire lessons “Motion” and “Causes of Motion” corroborate SS1 friction scope; no source wording/figures copied. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -459,8 +461,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 4 (source label 'WEEK FIVE AND SIX', title \"VECTOR & SCALAR QUANTITY, DISTANCE/DISPLACEMENT, SPEED/VELOCITY, ACCELERATION, DISTANCE/DISPLACEMENT -TIME GRA\", 15574 characters, body sha256 593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence). The importer reads this as ONE row although the scheme names two weeks; PR #71 split it (PHYS-R01) with an operation master does not have. See PHYS-PORT-D1-RULE-SPLIT.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added seven scheme-level objective entries for scalars/vectors, distance/displacement, speed/velocity, acceleration/retardation, distance/displacement-time graphs, speed/velocity-time graphs and uniformly accelerated motion equations; all are covered by original supplement SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS (body SHA-256 4ec24ac8c5e80147fbfd7467c5f46f555d75af9cf1094f008351a9d84fa67f7d) with seven keyed questions and exact marking totals. Original parsed row 4 remains one content-bound WEEK FIVE AND SIX row. A public close-equivalent PDF shows Week Five motion content at lines 434–611 and a second WEEK SIX Density & Relative Density section starting at line 612; however the repo separately registers row 5 as WEEK SEVEN Density & Relative Density, so original source boundary/version mismatch remains PARTIAL and is not split. Original figures and assessments are not claimed verified. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -496,8 +498,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 5 (source label 'WEEK SEVEN', title \"DENSITY & RELATIVE DENSITY\", 4116 characters, body sha256 bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added six scheme-level objective entries for density, density determination, relative density, density-bottle methods for solids/liquids and hydrometer use, bound to original supplement SUP-SS1-PHYSICS-T1-W06-DENSITY (body SHA-256 7dfffa79e04c62a6d0c1b8be46a7bbe43f78de5c348f4d1a96580973b141e799) with seven keyed questions and exact marking totals. The repo source row is parsed row 5 labelled WEEK SEVEN, while the public close-equivalent PDF labels the density section WEEK SIX at lines 612–620; the PDF is not verified identical to the archive. Original-row week label, formula/figure/assessment reconciliation remains open; no source-row change is made. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -533,8 +535,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 6 (source label 'WEEK 8', title \"PRESSURE , ARCHIMEDES' PRINCIPLES, UPTHRUST & LAWS OF FLOATATION\", 7363 characters, body sha256 e37e6cc1fe1a5a80189cad8ce314aaeb88aa0b3b2cff9a8cbaf7f624388a75c0) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added six scheme-level coverage entries for pressure, hydrostatic pressure, Archimedes' principle, upthrust/apparent weight, relative density via Archimedes, and laws of floatation; bound to original supplement SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION (body SHA-256 7b4b16a79cf33c1cffd824c88a3c438503a4985c51eda4c674b9f521673b8ca6) with seven keyed questions and exact marking totals. The repository registers parsed row 6 as WEEK 8; public close-equivalent PDF labels the topic WEEK SEVEN, so original-row label reconciliation remains open. Original figures and assessments are not claimed verified. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -570,8 +572,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 7 (source label 'WEEK 9', title \"WORK, ENERGY AND POWER\", 5904 characters, body sha256 d82793066a786ab56fa399f91e274913a72c8e8bef287701de133822d30e413b) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added six scheme-level coverage entries for work done, energy forms/transformation, kinetic energy, gravitational potential energy, conservation of energy and power; bound to original supplement SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER (body SHA-256 b38750633dffd1a48c0361321b21b8de6a44dcc9212dd767afe98f29f6548daf) with eight keyed questions and exact marking totals. The repository registers parsed row 7 as WEEK 9, while the public close-equivalent PDF labels the topic WEEK EIGHT; original-row label reconciliation remains open. Original exercises/answers and figures are not claimed verified. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -607,8 +609,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 8 (source label 'WEEK TEN', title \"VISCOSITY\", 4556 characters, body sha256 101cab19611133e22a4717f2a65ae284763a0bd45f43b99dd046c9837c6a790e) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added five scheme-level coverage entries for viscosity definition, dynamic-viscosity coefficient/unit, factors, fluid drag/terminal velocity and applications; bound to original supplement SUP-SS1-PHYSICS-T1-W09-VISCOSITY (body SHA-256 e7ed9d6aa7d1af1f5dde0b5d2bf4a5dc315d627b93881173037d4850b78d0e4e) with seven keyed questions and exact marking totals. Official FME Inspire SS1 lesson “Fluids at rest and in motion” corroborates viscosity scope. Original row content/figures/assessment are not claimed verified. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -644,8 +646,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 0 (source label 'WEEK ONE', title \"Heat Energy, Concept of Heat and Temperature and Effects of Heat\", 2685 characters, body sha256 d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed and completed 2026-11-08. The prior implementation_reference was stale: master already contained SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE and row-level COV-PHYS-T2-W01-OBJ-1 from PR #71. Exact source row is parsed row 0 WEEK ONE, source SS1-SRC-2c924c964660, body id SS1-SRC-2c924c964660:BODY:d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c, body SHA-256 d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c, 2,685 characters; archive member SHA-256 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7. Expanded the existing lesson to six objectives, corrected heat/internal-energy terminology, added uses of heat, separated thermionic from photoelectric emission, corrected the heat-extraction/freezing misconception, and keyed source evaluation/weekend items Q06–Q12. Added eight objective-level coverage entries and correction CORR-PHYSICS-T2-W01-HEAT-ENERGY. One source MCQ wording ambiguity about contraction is recorded as a non-blocking open item. Official FME Inspire and close-equivalent week-one references used; no third-party text copied. Approval PENDING, verification DEFERRED, tests not run.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -681,8 +683,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 1 (source label 'WEEK TWO', title \"Thermometer and Its Type. Evaporation and Boiling\", 4744 characters, body sha256 37902c962443675e3f808e940475f47a69fe6f6823f3332964cb53d7aa3dfe46) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: created SUP-SS1-PHYSICS-T2-W02-THERMOMETERS-EVAPORATION, body SHA-256 9abfc4d9cc4eca3fda047aef831a682f316cbbdda540c3f95ec44728ab31ed02; seven objectives, 13 keyed practice questions (34 marks). Source SS1-SRC-2c924c964660, parsed row1 WEEK TWO, source body id SS1-SRC-2c924c964660:BODY:37902c962443675e3f808e940475f47a69fe6f6823f3332964cb53d7aa3dfe46, body SHA-256 37902c962443675e3f808e940475f47a69fe6f6823f3332964cb53d7aa3dfe46, member SHA-256 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7. Covers five thermometer types and thermometric properties, mercury/alcohol, water unsuitability, clinical thermometer, evaporation/boiling, fixed points, scale calculations and absolute zero. Corrected resistance thermometer spelling and mercury freezing point (−38.8°C). Added correction CORR-PHYSICS-T2-W02-THERMOMETERS-EVAPORATION and 11 objective-level coverage entries. Source boiling MCQ ambiguity recorded as non-blocking open item; Q13 supplies a clearer equivalent. Public close-equivalent PDF and NIST/NSTA/WAEC references used; no third-party wording copied. Approval PENDING; verification DEFERRED; tests not run.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1702,8 +1704,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Lesson SUP-SS1-PHYS-001, body 1608 characters, content_hash 2db3b0e1f7498ccc8032cf5f54513b93efc885f56ea9ef6e5b8e5f9f4f24e835, covers #71 objective(s) ['PHYS-2-001'] = source week label(s) ['WEEK ONE'] (PHYS-WK-T2-W01); 5 practice items. #71 fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped to master's schema. Master has no Physics lessons, so there is no overlap; it cites no external reference (OI-PHYS-005).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, package blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3, prior lesson SUP-SS1-PHYS-001; new master lesson SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE; body_sha256=24167948bee741f50af06bc436550767937b9066f80e4017da5480bfe0d2a3cb; source_id=SS1-SRC-2c924c964660; source member=SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc; registered source SHA-256=3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; source week(s)=WEEK ONE. Mapped term_label to term, prompt to question, marking string to explicit criterion with 13 practice marks. Manually reviewed Physics definitions, formulas, units, worked calculations and answers; automated tests deferred. No external references were cited in #71; source/member verification reused, not rehashed.",
       "completion_condition": "Lesson present in master's package, schema-valid by static reading, state content_approval PENDING / verification DEFERRED, branch blob and lesson id cited in provenance. Coverage and correction bindings are not changed here. Not counted implemented until merged to master."
     },
     {
@@ -1728,8 +1730,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Lesson SUP-SS1-PHYS-002, body 1480 characters, content_hash bd3743eb0445118d1e05daac203794ecb7089b5cfdbb0de12efe65b79320519a, covers #71 objective(s) ['PHYS-2-003'] = source week label(s) ['WEEK THREE'] (PHYS-WK-T2-W03); 5 practice items. #71 fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped to master's schema. Master has no Physics lessons, so there is no overlap; it cites no external reference (OI-PHYS-005).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, package blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3, prior lesson SUP-SS1-PHYS-002; new master lesson SUP-SS1-PHYSICS-T2-W03-THERMAL-EXPANSION-SOLIDS; body_sha256=88cfeff88c02e4658e1acea61b637a094cdde380e2f3c8b628dc123ca74b581f; source_id=SS1-SRC-2c924c964660; source member=SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc; registered source SHA-256=3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; source week(s)=WEEK THREE. Mapped term_label to term, prompt to question, marking string to explicit criterion with 11 practice marks. Manually reviewed Physics definitions, formulas, units, worked calculations and answers; automated tests deferred. No external references were cited in #71; source/member verification reused, not rehashed.",
       "completion_condition": "Lesson present in master's package, schema-valid by static reading, state content_approval PENDING / verification DEFERRED, branch blob and lesson id cited in provenance. Coverage and correction bindings are not changed here. Not counted implemented until merged to master."
     },
     {
@@ -1754,8 +1756,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Lesson SUP-SS1-PHYS-003, body 1431 characters, content_hash 1ba98b7a689a9e166a6d5ddcd0e4ce3609e7914a64b213aee32a7df467104e31, covers #71 objective(s) ['PHYS-3-004'] = source week label(s) ['WEEK 4'] (PHYS-WK-T3-W04); 5 practice items. #71 fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped to master's schema. Master has no Physics lessons, so there is no overlap; it cites no external reference (OI-PHYS-005).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, package blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3, prior lesson SUP-SS1-PHYS-003; new master lesson SUP-SS1-PHYSICS-T3-W04-FUSE; body_sha256=593c7108aafd96b01ad1cc64800174e5ff8649b0cd1c3f8aa9b9a6996e09c2c3; source_id=SS1-SRC-bed91bb4ef0e; source member=SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc; registered source SHA-256=bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; source week(s)=WEEK 4. Mapped term_label to term, prompt to question, marking string to explicit criterion with 10 practice marks. Manually reviewed Physics definitions, formulas, units, worked calculations and answers; automated tests deferred. No external references were cited in #71; source/member verification reused, not rehashed.",
       "completion_condition": "Lesson present in master's package, schema-valid by static reading, state content_approval PENDING / verification DEFERRED, branch blob and lesson id cited in provenance. Coverage and correction bindings are not changed here. Not counted implemented until merged to master."
     },
     {
@@ -1780,8 +1782,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Lesson SUP-SS1-PHYS-004, body 1382 characters, content_hash 27bd5e5637c7f327d9826c22fd2fd026a7913b6741a30e623ae66c6b0c1360fc, covers #71 objective(s) ['PHYS-3-007'] = source week label(s) ['WEEK 7'] (PHYS-WK-T3-W07); 5 practice items. #71 fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped to master's schema. Master has no Physics lessons, so there is no overlap; it cites no external reference (OI-PHYS-005).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, package blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3, prior lesson SUP-SS1-PHYS-004; new master lesson SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION; body_sha256=dff2a30f8eaba1e1a787f7e4b9474f77e93fa5cc4e835bd85c115244af9237ee; source_id=SS1-SRC-bed91bb4ef0e; source member=SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc; registered source SHA-256=bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; source week(s)=WEEK 7. Mapped term_label to term, prompt to question, marking string to explicit criterion with 14 practice marks. Manually reviewed Physics definitions, formulas, units, worked calculations and answers; automated tests deferred. No external references were cited in #71; source/member verification reused, not rehashed.",
       "completion_condition": "Lesson present in master's package, schema-valid by static reading, state content_approval PENDING / verification DEFERRED, branch blob and lesson id cited in provenance. Coverage and correction bindings are not changed here. Not counted implemented until merged to master."
     },
     {
@@ -1806,8 +1808,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Lesson SUP-SS1-PHYS-005, body 1482 characters, content_hash 8e21fd930d96e4596434ef3495253ecbb59c3a19b49cf8e87bf80b7e057ee99c, covers #71 objective(s) ['PHYS-3-008'] = source week label(s) ['WEEK 8'] (PHYS-WK-T3-W08); 5 practice items. #71 fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped to master's schema. Master has no Physics lessons, so there is no overlap; it cites no external reference (OI-PHYS-005).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, package blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3, prior lesson SUP-SS1-PHYS-005; new master lesson SUP-SS1-PHYSICS-T3-W08-CAPILLARITY; body_sha256=6a5ec1d95882abba426c4bab25a1a191f88e10383e211c648547e5227c64c562; source_id=SS1-SRC-bed91bb4ef0e; source member=SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc; registered source SHA-256=bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; source week(s)=WEEK 8. Mapped term_label to term, prompt to question, marking string to explicit criterion with 12 practice marks. Manually reviewed Physics definitions, formulas, units, worked calculations and answers; automated tests deferred. No external references were cited in #71; source/member verification reused, not rehashed.",
       "completion_condition": "Lesson present in master's package, schema-valid by static reading, state content_approval PENDING / verification DEFERRED, branch blob and lesson id cited in provenance. Coverage and correction bindings are not changed here. Not counted implemented until merged to master."
     },
     {
@@ -1831,8 +1833,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Entries use #71's vocabulary (objective_id, scheme_locator, open_item_ids). Branch statuses: SUPPORTED for most rows, IMPLEMENTED_EQUIVALENT only where a branch lesson exists, UNRESOLVED for revision weeks.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared all eleven PR #71 first-term coverage rows against the current master package on 2026-11-08. Report: docs/ss1/work/microtasks/physics/PHYS-PORT-D1-COV-T1.md. None copied: master already has granular week/objective entries; W1/W2 have partial/unresolved objectives, W3-W10 have finer linked objective entries with separate partial reconciliation/section-boundary issues, and W11 remains unresolved (OI-PHYS-003). No branch SUPPORTED status was adopted and no coverage was upgraded. Existing source/member evidence records were reused; the binary source was not rehashed or rendered again in this run. Testing deferred by owner.",
       "completion_condition": "Each entry compared; carried over, revised or dropped with a reason; nothing upgraded above what the master week item supports."
     },
     {
@@ -1858,8 +1860,8 @@
         "PHYS-PORT-D1-T2-L001",
         "PHYS-PORT-D1-T2-L002"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Entries use #71's vocabulary (objective_id, scheme_locator, open_item_ids). Branch statuses: SUPPORTED for most rows, IMPLEMENTED_EQUIVALENT only where a branch lesson exists, UNRESOLVED for revision weeks.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared all 10 PR #71 second-term objective entries with master. Only PHYS-2-001 (Week One heat/temperature) and PHYS-2-003 (Week Three expansion of solids) have ported equivalent lessons; added COV-PHYS-T2-W01-OBJ-1 and COV-PHYS-T2-W03-OBJ-1 with their master lesson IDs. The remaining eight SUPPORTED judgments were not copied because they have no ported lesson and the master source-week indexing tasks PHYS-WK-T2-W01/W03 and others remain pending. Existing title/reference markers remain unchanged.",
       "completion_condition": "Each entry compared; carried over, revised or dropped with a reason; nothing upgraded above what the master week item supports."
     },
     {
@@ -1886,8 +1888,8 @@
         "PHYS-PORT-D1-T3-L004",
         "PHYS-PORT-D1-T3-L005"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Entries use #71's vocabulary (objective_id, scheme_locator, open_item_ids). Branch statuses: SUPPORTED for most rows, IMPLEMENTED_EQUIVALENT only where a branch lesson exists, UNRESOLVED for revision weeks.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared all 11 PR #71 third-term objective entries with master. Only PHYS-3-004 (Week 4 fuse), PHYS-3-007 (Week 7 surface tension) and PHYS-3-008 (Week 8 capillarity) have ported equivalent lessons; added COV-PHYS-T3-W04-OBJ-1, COV-PHYS-T3-W07-OBJ-1 and COV-PHYS-T3-W08-OBJ-1 with their master lesson IDs. The remaining SUPPORTED judgments were not copied because they have no ported lesson and source-week indexing is still pending. PHYS-3-011 maps to existing COV-PHYS-T3-SCHEME-REVISION-EXAM marker; no lesson was invented for revision/examination weeks.",
       "completion_condition": "Each entry compared; carried over, revised or dropped with a reason; nothing upgraded above what the master week item supports."
     },
     {
@@ -2061,8 +2063,8 @@
         "docs/ss1/work/microtasks/physics/PHYS-CMP-D4-NOTES.md"
       ],
       "depends_on": [],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only: b5ced7ebb0efe22df2351baa140266fbf40cbf41:docs/ss1/work/SS1-03/CHECKPOINT.md blob f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c and HANDOFF.json blob f3ee7c4559931744ab679bc6f8975fd7091c0710 (shared with the Mathematics comparison). The #71 checkpoint reports Physics IMPLEMENTED - TESTING DEFERRED (NOT COMPLETE) with 5 lessons and PHYS-R01; master's says NOT STARTED.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared PR #71 checkpoint blob f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c line 9 and HANDOFF blob f3ee7c4559931744ab679bc6f8975fd7091c0710 lines 55-68 with master checkpoint blob 3fc668a75bab4ce097022e4b5e28a1f3440dbb71 line 36 and master handoff blob 1d9838eb33a3f0e26ec712f6aff08f71cc3597e5 line 8. Branch's 5-lesson claim is now ported on this work branch via PHYS-PORT-D1-T2-L001/L002 and T3-L003/L004/L005, with coverage PHYS-PORT-D1-COV-T2/T3; master checkpoint's NOT STARTED statement is stale but not overwritten. PHYS-R01 split is routed to PHYS-PORT-D1-RULE-SPLIT. OI-PHYS-001/004 map to PHYS-VIS-T1/T2/T3 and extraction-strategy/T1 notation open items; OI-PHYS-002 maps to four PHYS-PORT-D1-FACT tasks; OI-PHYS-003 maps to PHYS-OWNER-REVISION-PLAN and revision marker rules; OI-PHYS-005 maps to PHYS-APPROVAL-CONTENT and new PHYSICS-T2-T3-LESSON-REVIEW.",
       "completion_condition": "Branch-only facts listed with blob and line locators, each routed to a queue item or recorded as already covered."
     },
     {
@@ -2414,8 +2416,8 @@
         "PHYS-SRC-T1",
         "PHYS-WK-T1-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W02 (2026-11-07): COV-PHYS-T1-W02-OBJ-7 is UNRESOLVED and PHYSICS-T1-W02-MICROMETER blocks delivery. The rule and the consistent worked example are routine physics and need no expert decision; the figure and any extraction rendering stay with PHYS-VIS-T1 and PHYS-OWNER-EXTRACTION-STRATEGY.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 as SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING. The supplement teaches the purpose and parts of a micrometer screw gauge; pitch and least count (LC = pitch / circular divisions); main-scale plus circular-scale reading; signed zero-error correction (correct = observed − zero error); and unit conversion. It includes an independent worked example (12.84 mm = 1.284 cm) and four keyed practice items, 8 marks total, with criteria summing to each declared mark. COV-PHYS-T1-W02-OBJ-7 is IMPLEMENTED_EQUIVALENT and bound to the supplement; OBJ-4 now references the supplement but remains PARTIAL for the wider vernier/micrometer objective. PHYSICS-T1-W02-MICROMETER remains open pending PHYS-COR-T1-W02-BINDING; source figure Fig. 3.4 was not inspected or used. Prior source/member verification from PHYS-WK-T1-W02.md is reused; binary bytes were not rehashed in this run. No tests run; testing deferred by owner.",
       "completion_condition": "A lesson in physics.json carries objectives, a body whose body_sha256 is the SHA-256 of its UTF-8 body, complete practice answers and marking that sums exactly, a provenance that says it is an authored supplement and not the source, state content_approval PENDING and verification DEFERRED; the coverage entry it targets is updated by stable ID only after a reviewer confirms objective-level teaching; no schema, compiler, rule, asset or shared file is edited."
     },
     {
@@ -2580,10 +2582,465 @@
       "status": "PENDING",
       "implementation_reference": "Not authored. Required by PHYS-WK-T1-W02 (2026-11-07): open items PHYSICS-T1-W02-EXTRACTION-ARTEFACT and PHYSICS-T1-W02-FACT-DEFECTS. Waits for the supplements and the expert decisions; no replacement exists to bind yet.",
       "completion_condition": "delivery_corrections[] has one entry with this source id, source sha256, source_lesson_id SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e, body_sha256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e and a replacement_id that resolves to an existing supplement of the same subject and term; the reason and evidence name each defect; no schema, compiler or other subject is edited."
+    },
+    {
+      "id": "PHYS-LES-T1-W03-MOTION-CIRCULAR",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK THREE scheme row 3: Motion in Nature, Force, Circular Motion, Centripetal and Centrifugal Forces",
+      "objective": "Create an original SS1 supplement covering motion types, force/contact and field forces, circular motion, centripetal acceleration/force and the centrifugal effect, with worked examples and keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W03-MOTION-CIRCULAR.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W03"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: lesson SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR (body SHA-256 b0e2b2953896b5c0e4313dff5de256250dfecfb14aa6c21877725ce06af1eb03) contains five objectives, an original teaching body and six keyed questions with exact marking totals. Scope corroborated by Federal Ministry of Education Nigeria Inspire SS1 lessons and OpenStax University Physics Volume 1 §6.3. No external wording, figures or exercises copied. Approval PENDING, verification DEFERRED.",
+      "completion_condition": "Lesson contains objectives, body hash, worked examples, keyed practice with marking totals, accurate formulae/units, provenance and PENDING approval/DEFERRED verification."
+    },
+    {
+      "id": "PHYS-FACT-T1-W03-SOURCE-RECONCILIATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK THREE parsed row 2, title MOTION IN NATURE, 9,433-character body SHA-256 7f54acc3468f0acb9971e038a65be77f6caf86500123c105baedd2434ac9de21",
+      "objective": "Inspect the original legacy .doc row and reconcile its actual subtopics, formulae, units, diagrams, evaluation and assignment items against the Week Three scheme and the new original supplement.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T1-W03-SOURCE-RECONCILIATION.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W03"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: only the original member's hash and parsed row identity/title are available in this execution session; the legacy .doc bytes/text are not accessible. The scheme objectives are covered by the independent supplement, but original-row reconciliation cannot be claimed.",
+      "completion_condition": "Inspect the original row and record exact subtopics, locators, formulas, units, figures, exercises and answer/marking evidence; reconcile the new supplement and original source without inventing content."
+    },
+    {
+      "id": "PHYS-LES-T1-W04-FRICTION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK FOUR scheme row 4: Friction",
+      "objective": "Create an original SS1 lesson on friction covering its definition, types, effects, advantages/disadvantages, methods of increasing/reducing it and a safe simple investigation, with keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W04-FRICTION.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W04"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: authored SUP-SS1-PHYSICS-T1-W04-FRICTION (body SHA-256 e6d0cbd6e92fc580d2282579b42a17a3eb531a4507cee240c2017d45d973a9e1) with five objectives, six keyed questions and complete marking criteria. Official Federal Ministry of Education Nigeria Inspire SS1 Physics lessons “Motion” and “Causes of Motion” used as scope corroboration; no wording, diagrams or exercises copied. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Lesson has objective-aligned original content, safe activity, accurate friction concepts, keyed practice with exact marking totals, provenance and PENDING approval/DEFERRED verification."
+    },
+    {
+      "id": "PHYS-FACT-T1-W04-SOURCE-RECONCILIATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK FOUR parsed row 3, title FRICTION, 4,976-character body SHA-256 4bdf68054b2e399aa989b7e0c1cea9cd16a3cadb4723c2f0cf0a67d56571e299",
+      "objective": "Inspect the original legacy .doc row and reconcile its actual friction subtopics, formulae, units, diagrams, evaluation and assignment items against the Week Four scheme and the new original supplement.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T1-W04-SOURCE-RECONCILIATION.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W04"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: only the original member hash and parsed row identity/title are available; the legacy .doc bytes/text are not accessible in this session. The scheme topic is covered by an independent supplement, but original-row reconciliation cannot be claimed.",
+      "completion_condition": "Inspect the original row and record exact subtopics, locators, formulae, units, figures, exercises and answer/marking evidence; reconcile the supplement without inventing source content."
+    },
+    {
+      "id": "PHYS-LES-T1-W05-W06-MOTION-GRAPHS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK FIVE AND SIX combined parsed row 4; scalar/vector quantities, linear motion, graphs and uniformly accelerated motion",
+      "objective": "Create an original SS1 supplement for scalar/vector quantities, distance/displacement, speed/velocity, acceleration/retardation, distance/displacement-time graphs, speed/velocity-time graphs and the four equations of uniformly accelerated motion, with worked examples and keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W05-W06-MOTION-GRAPHS.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W05-W06"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: authored SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS (body SHA-256 4ec24ac8c5e80147fbfd7467c5f46f555d75af9cf1094f008351a9d84fa67f7d) with six objectives, worked examples, seven keyed practice questions and 25 total marks; marking criteria totals checked. Provenance includes FME Inspire Scalars and Vectors, FME Inspire Speed and Velocity, eLearn acceleration outcomes and a public close-equivalent PDF. No source wording, figures or exercises copied. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Lesson has objective-aligned original content, correct units/formulae/graph interpretations, worked examples, keyed practice with exact marking totals, provenance and PENDING approval/DEFERRED verification."
+    },
+    {
+      "id": "PHYS-FACT-T1-W05-W06-SOURCE-RECONCILIATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK FIVE AND SIX parsed row 4, 15,574 characters, body SHA-256 593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d",
+      "objective": "Inspect the original archive member and determine the exact boundary between the two teaching sections, reconcile the apparent Week Six density section with parsed row 5 Week Seven density, and map all original formulas, units, graphs, classwork, assignments and answer/marking evidence.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T1-W05-W06-SOURCE-RECONCILIATION.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W05-W06"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: the current execution session cannot access the original legacy .doc bytes/text. A public close-equivalent PDF shows a second section beginning at line 612, but it is not verified byte-identical and conflicts with the repository's parsed row 5 label/title. The scheme objectives are covered by an original supplement, but exact source boundary and source-row reconciliation cannot be claimed.",
+      "completion_condition": "Inspect original DOC and record exact section boundaries, row mapping, formulas, units, figures, assignments and answer/marking coverage; reconcile source version differences without splitting/merging rows absent source evidence."
+    },
+    {
+      "id": "PHYS-LES-T1-W06-DENSITY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK SEVEN parsed row 5: Density & Relative Density",
+      "objective": "Create an original SS1 lesson covering density, relative density, volume determination, density-bottle methods for solids/liquids and hydrometer use, with worked examples and keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W06-DENSITY.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W06"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: authored SUP-SS1-PHYSICS-T1-W06-DENSITY (body SHA-256 7dfffa79e04c62a6d0c1b8be46a7bbe43f78de5c348f4d1a96580973b141e799) with five objectives, three worked examples, seven keyed questions and 22 total marks; marking totals checked. Provenance includes a public close-equivalent SS1 Physics lesson note and the NERDC SSS1 curriculum portal; no external wording, diagrams or exercises copied. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Lesson has accurate density/RD formulae and units, safe measurement methods, worked examples, keyed practice with exact marking totals, provenance and PENDING approval/DEFERRED verification."
+    },
+    {
+      "id": "PHYS-FACT-T1-W06-SOURCE-RECONCILIATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK SEVEN parsed row 5, 4,116 characters, body SHA-256 bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242",
+      "objective": "Inspect the original archive member and reconcile the original density/relative-density row label, full content, figures, formulae, classwork, assignment and answer/marking evidence with the public close-equivalent copy and the combined Week Five/Six row.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T1-W06-SOURCE-RECONCILIATION.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W06"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: the original legacy .doc bytes/text are not accessible in this execution session. The public close-equivalent PDF shows a Week Six density section, while the repository registers the row as Week Seven. The scheme topic is covered by an independent supplement, but original-row label/content reconciliation cannot be claimed.",
+      "completion_condition": "Inspect original row and verify exact week label, subtopics, formulae/units, figures, exercises and answer/marking coverage; reconcile public-copy discrepancy without altering source data absent evidence."
+    },
+    {
+      "id": "PHYS-LES-T1-W07-PRESSURE-FLOATATION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 8 parsed row 6: Pressure, Archimedes' principle, upthrust and laws of floatation",
+      "objective": "Create an original SS1 lesson covering pressure, hydrostatic pressure, Archimedes' principle, upthrust, relative density by apparent weight and laws of floatation, with worked examples and keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W07-PRESSURE-FLOATATION.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W07"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: authored SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION (body SHA-256 7b4b16a79cf33c1cffd824c88a3c438503a4985c51eda4c674b9f521673b8ca6) with five objectives, four worked examples, seven keyed questions and 18 total marks; marking totals checked. Provenance includes a public close-equivalent SS1 Physics lesson note and a Ministry of Education-hosted senior-secondary Physics textbook; no source wording/figures copied. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Lesson has correct pressure/upthrust/floatation formulae and units, worked examples, keyed practice with exact marking totals, provenance and PENDING approval/DEFERRED verification."
+    },
+    {
+      "id": "PHYS-FACT-T1-W07-SOURCE-RECONCILIATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 8 parsed row 6, 7,363 characters, body SHA-256 e37e6cc1fe1a5a80189cad8ce314aaeb88aa0b3b2cff9a8cbaf7f624388a75c0",
+      "objective": "Inspect the original archive member and reconcile the repository's WEEK 8 row label with the public close-equivalent PDF's WEEK SEVEN label; verify exact pressure/Archimedes content, figures, exercises and answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T1-W07-SOURCE-RECONCILIATION.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W07"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: original legacy .doc bytes/text are not accessible in this execution session. Public close-equivalent PDF has a different week label; supplement covers the scheme topic but original row reconciliation cannot be claimed.",
+      "completion_condition": "Inspect original row and record exact week label, subtopics, formulae, units, figures, exercises and answer/marking coverage; reconcile without changing source data absent evidence."
+    },
+    {
+      "id": "PHYS-LES-T1-W08-WORK-ENERGY-POWER",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 9 parsed row 7: Work, Energy and Power",
+      "objective": "Create an original SS1 lesson on work done, energy forms, kinetic and gravitational potential energy, conservation of energy and power, with worked examples and keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W08-WORK-ENERGY-POWER.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W08"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: authored SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER (body SHA-256 b38750633dffd1a48c0361321b21b8de6a44dcc9212dd767afe98f29f6548daf) with five objectives, three worked examples, eight keyed questions and 21 total marks; marking totals checked. Provenance includes Federal Ministry of Education Nigeria Inspire SS1 Work, Energy and Power lesson and a public close-equivalent PDF; no source wording, figures or exercises copied. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Lesson has accurate work/energy/power formulae and units, worked examples, energy transformations, keyed practice with exact marking totals, provenance and PENDING approval/DEFERRED verification."
+    },
+    {
+      "id": "PHYS-FACT-T1-W08-SOURCE-RECONCILIATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 9 parsed row 7, 5,904 characters, body SHA-256 d82793066a786ab56fa399f91e274913a72c8e8bef287701de133822d30e413b",
+      "objective": "Inspect the original archive member and reconcile the repository's WEEK 9 label with the public close-equivalent PDF's WEEK EIGHT label; verify exact work/energy/power content, equations, examples, figures, exercises and answer/marking evidence.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T1-W08-SOURCE-RECONCILIATION.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W08"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: original legacy .doc bytes/text are not accessible in this execution session. Public close-equivalent PDF has a different week label; supplement covers the scheme topic but original row reconciliation cannot be claimed.",
+      "completion_condition": "Inspect original row and record exact week label, subtopics, equations/units, figures, examples, exercises and answer/marking coverage; reconcile without changing source data absent evidence."
+    },
+    {
+      "id": "PHYS-LES-T1-W09-VISCOSITY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK TEN parsed row 8: Viscosity",
+      "objective": "Create an original SS1 lesson on viscosity, fluid drag, terminal velocity, applications and a simple fair comparison investigation, with keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W09-VISCOSITY.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W09"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: authored SUP-SS1-PHYSICS-T1-W09-VISCOSITY (body SHA-256 e7ed9d6aa7d1af1f5dde0b5d2bf4a5dc315d627b93881173037d4850b78d0e4e) with five objectives, seven keyed questions and 17 total marks; marking totals checked. Provenance includes Federal Ministry of Education Nigeria Inspire SS1 “Fluids at rest and in motion” and a public close-equivalent lesson note; no external wording/figures/exercises copied. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Lesson has accurate viscosity/drag concepts, terminal-velocity force balance, safe investigation, keyed practice with exact marking totals, provenance and PENDING approval/DEFERRED verification."
+    },
+    {
+      "id": "PHYS-FACT-T1-W09-SOURCE-RECONCILIATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK TEN parsed row 8, 4,556 characters, body SHA-256 101cab19611133e22a4717f2a65ae284763a0bd45f43b99dd046c9837c6a790e",
+      "objective": "Inspect the original archive member and reconcile the exact Viscosity content, coefficient formula/units, temperature effects, terminal velocity, figures, exercises and answer/marking evidence against the new supplement.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T1-W09-SOURCE-RECONCILIATION.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W09"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: original legacy .doc bytes/text are not accessible in this execution session. The scheme topic is covered by an original supplement, but exact original-row content and assessment cannot be reconciled.",
+      "completion_condition": "Inspect original row and record exact viscosity subtopics, formulae/units, figures, applications, assignments and answer/marking coverage; reconcile the supplement without inventing source content."
     }
   ],
   "review": {
-    "date": "2026-11-07",
+    "date": "2026-11-08",
     "reviewed_master_sha": "679ab8b4edf311c2c376d978f220a75071792cdf",
     "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
     "source_archive": {
@@ -2602,24 +3059,43 @@
       "tests_blob": "29f970835849cf756c585330b80f39866d35aa69",
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
-    }
+    },
+    "notes": "PHYS-WK-T2-W02 lesson authored and objective-indexed; correction binding recorded. Mercury freezing point corrected using NIST; source boiling MCQ ambiguity retained as non-blocking. Tests deferred."
   },
   "next_runnable": [
+    "PHYS-WK-T2-W03",
+    "PHYS-WK-T2-W04",
+    "PHYS-WK-T2-W05",
+    "PHYS-WK-T2-W06",
+    "PHYS-WK-T2-W07",
+    "PHYS-WK-T2-W08",
+    "PHYS-WK-T2-W09",
+    "PHYS-WK-T2-W10",
+    "PHYS-WK-T3-W01",
+    "PHYS-WK-T3-W02",
+    "PHYS-WK-T3-W03",
+    "PHYS-WK-T3-W04",
+    "PHYS-WK-T3-W05",
+    "PHYS-WK-T3-W06",
+    "PHYS-WK-T3-W07",
+    "PHYS-WK-T3-W08",
+    "PHYS-WK-T3-W09",
+    "PHYS-WK-T3-W10",
     "PHYS-RULE-T1-REVISION-SCHEME",
+    "PHYS-RULE-T3-REVISION-EXAM",
+    "PHYS-FACT-T3-FUSE-RATING",
+    "PHYS-FACT-T3-W04-ASSIGNMENT",
+    "PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA",
+    "PHYS-VIS-T1",
+    "PHYS-VIS-T2",
+    "PHYS-VIS-T3",
+    "PHYS-PORT-D1-RULE-SPLIT",
+    "PHYS-PORT-D1-FACT-T1-W05",
+    "PHYS-PORT-D1-FACT-T2-W01",
     "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
-    "PHYS-LES-T1-W02-MICROMETER-READING",
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T1-W03",
-    "PHYS-WK-T1-W04",
-    "PHYS-WK-T1-W05-W06",
-    "PHYS-WK-T1-W06",
-    "PHYS-WK-T1-W07",
-    "PHYS-WK-T1-W08",
-    "PHYS-WK-T1-W09",
-    "PHYS-WK-T2-W01",
-    "PHYS-WK-T2-W02",
     "PHYS-WK-T2-W03",
     "PHYS-WK-T2-W04",
     "PHYS-WK-T2-W05",
@@ -2650,10 +3126,8 @@
     "PHYS-PORT-D1-T3-L003",
     "PHYS-PORT-D1-T3-L004",
     "PHYS-PORT-D1-T3-L005",
-    "PHYS-PORT-D1-COV-T1",
     "PHYS-CMP-D4-NOTES",
     "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
-    "PHYS-LES-T1-W02-MICROMETER-READING",
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ]
 }

@@ -47,9 +47,12 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
   for (const p of packages) {
     must(registeredSubjects.includes(p.subject_slug), `unregistered subject ${p.subject_slug}`);
     if (p.package_status === 'PENDING') plan.blockers.push(`PENDING_PACKAGE:${p.subject_slug}`);
-    unique(p.sources.map(s => s.source_id), 'package sources'); unique(p.source_rules.map(r => r.id), 'rule IDs');
+    const externalSources = 'external_sources' in p ? p.external_sources : [];
+    unique([...p.sources.map(s => s.source_id), ...externalSources.map(s => s.source_id)], 'package source IDs'); unique(p.source_rules.map(r => r.id), 'rule IDs');
+    for (const s of externalSources) must(s.class_name === 'SS 1' && s.canonical_subject === p.canonical_subject && sha256(s.content) === s.sha256, `external scheme source identity/hash ${s.source_id}`);
     const expected = registry.filter(r => r.assigned_subject_slug === p.subject_slug);
     for (const r of expected) if (!p.sources.some(s => s.source_id === r.source_id)) plan.blockers.push(`UNACCOUNTED_SOURCE:${r.source_id}`);
+    for (const source of externalSources) if (!p.coverage.some(c => c.source_id === source.source_id)) plan.blockers.push(`EXTERNAL_SOURCE_WITHOUT_COVERAGE:${source.source_id}`);
     for (const s of p.sources) {
       const r = expected.find(r => r.source_id === s.source_id);
       must(r && r.sha256 === s.sha256 && r.archive_member === s.archive_member && r.term_from_folder === s.term && s.canonical_subject === p.canonical_subject, `manifest mismatch ${s.source_id}`);
@@ -69,9 +72,16 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
         if (rule.op !== 'exclude_duplicate') throw new Error('unreachable');
         const target = p.sources.find(t => t.source_id === rule.target_source_id);
         const targetInput = inputMap.get(rule.target_source_id);
-        must(target && targetInput && target.source_id !== s.source_id && target.sha256 === rule.target_sha256 && target.sha256 === s.sha256 && target.term === s.term && targetInput.text === input.text, `duplicate proof ${rule.id}`);
+        must(target && targetInput && target.source_id !== s.source_id && target.sha256 === rule.target_sha256, `duplicate target identity ${rule.id}`);
+        const targetRules = p.source_rules.filter(candidate => candidate.source_id === target.source_id);
+        const targetText = applyRules(targetInput, targetRules);
+        const duplicateRows = parse(text);
+        const targetRows = parse(targetText);
+        const sameTeaching = duplicateRows.length > 0 && duplicateRows.length === targetRows.length &&
+          duplicateRows.every((row, index) => row.weekLabel === targetRows[index].weekLabel && row.title === targetRows[index].title && row.body === targetRows[index].body);
+        must(sameTeaching, `duplicate teaching proof ${rule.id}`);
         must(!p.source_rules.some(r => r.source_id === target.source_id && r.op === 'exclude_duplicate'), `duplicate chain/cycle ${rule.id}`);
-        plan.dispositions.push({ id: s.source_id, status: 'PROVEN_DUPLICATE', detail: target.source_id }); continue;
+        plan.dispositions.push({ id: s.source_id, status: 'PROVEN_DUPLICATE', detail: `${target.source_id}: parsed teaching bodies match; source metadata may differ` }); continue;
       }
       const topics = parse(text);
       const firstBody = topics[0]?.body;
@@ -115,11 +125,21 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
   const byId = new Map(plan.identified_rows.map(r => [r.id, r]));
   const corrected = new Set<string>();
   for (const p of packages) {
+    const externalSources = 'external_sources' in p ? p.external_sources : [];
     unique(p.coverage.map(c => c.id), 'coverage IDs');
     if (!p.coverage.length) plan.blockers.push(`NO_COVERAGE:${p.subject_slug}`);
-    for (const source of p.sources) if (!p.coverage.some(c => c.source_id === source.source_id)) plan.blockers.push(`SOURCE_WITHOUT_COVERAGE:${source.source_id}`);
+    for (const source of p.sources) {
+      const excluded = p.source_rules.some(rule => rule.source_id === source.source_id && rule.op === 'exclude_duplicate');
+      if (!excluded && !p.coverage.some(c => c.source_id === source.source_id)) plan.blockers.push(`SOURCE_WITHOUT_COVERAGE:${source.source_id}`);
+    }
     for (const c of p.coverage) {
-      must(p.sources.some(s => s.source_id === c.source_id), `coverage source ${c.id}`);
+      const externalSource = externalSources.find(s => s.source_id === c.source_id);
+      must(p.sources.some(s => s.source_id === c.source_id) || !!externalSource, `coverage source ${c.id}`);
+      if (externalSource) {
+        must(externalSource.class_name === 'SS 1' && externalSource.canonical_subject === p.canonical_subject, `external coverage source scope ${c.id}`);
+        must(externalSource.content.includes(c.objective), `external coverage objective absent from source record ${c.id}`);
+        must(c.status === 'IMPLEMENTED_EQUIVALENT', `external scheme coverage must map to authored equivalent ${c.id}`);
+      }
       for (const id of c.lesson_ids) {
         const marker = c.status === 'MARKER' && p.source_rules.some(r => r.id === id && r.source_id === c.source_id && r.op === 'classify_marker' && r.kind === 'SCHEME_ONLY') && plan.dispositions.some(d => d.id === id && d.status === 'SCHEME_ONLY');
         must(marker || (byId.has(id) && byId.get(id)!.row.subjectName === p.canonical_subject), `coverage target ${c.id}/${id}`);

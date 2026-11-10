@@ -78,3 +78,8 @@ Per-week sections:
 
 ## Remaining
 Alias approval open items (`BOOKKEEPING-ALIAS-APPROVAL*`) and `BOOKKEEPING-T2-TEXT-MATCHES-T1` remain owner actions. BK-INV-T2 should wait for that answer; BK-INV-T3 is unread. Next eligible: `BK-WK-T1-W02` (no worked solution and an untaught objective), then `BK-WK-T1-W04`, `BK-WK-T1-W01`, `BK-WK-T1-W03`, then the preamble, marker, visual and preservation items, which share one package file and should run sequentially. This does not claim the subject or class complete.
+
+
+## Term-duration reconciliation — owner clarification (8 November 2026)
+
+The scheme preamble contains twelve scheduled entries: Week 1 revision, nine topic entries in Weeks 2–10, Week 11 revision and Week 12 examination. The document body contains only four labelled teaching sections, so the body labels cannot be treated as the complete term schedule. Project-authored W05–W10 extensions provide additional topic teaching, but their implementation IDs are not the official scheme week numbering. Preserve the twelve-week scheme sequence and record the mapping gap; do not compress it into ten weeks or claim the missing original pages were recovered.

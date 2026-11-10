@@ -26,22 +26,23 @@
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "FA-INV-T1 appended the 1st Term inventory items (20) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 20 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten in seven labelled sections, from the document itself (FA-INV-T1.md); no revision or examination section exists, so no marker item was created. The document SHA-256 was verified in this run from the composite archive; nothing was run (tests, typechecks, importer, DB, device).",
     "FA-INV-T2 appended the 2nd Term inventory items (18) and is IMPLEMENTED_TESTING_DEFERRED. Counts reflect items, not content completeness: the new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. The week count is ten in five labelled sections (WEEK ONE, WEEK TWO - THREE, WEEK FOUR, WEEK FIVE – SIX, WEEK SEVEN – TEN), from the document itself (FA-INV-T2.md); there is no revision or examination section, so no marker item was created. The document ends with a questions-1-to-5 prompt whose questions are absent. The document SHA-256 was verified in this run from the supplied 2nd Term zip; the composite archive hash was not checked; nothing was run (tests, typechecks, importer, DB, device).",
-    "2026-11-07 FA-WK-T1-W01: indexed Week One lines 65-263 of the 1st Term source into 11 coverage entries (6 PARTIAL, 5 UNRESOLVED) and 8 open items (6 blocking), and appended FA-FACT-T1-W01-TEACHER-DECISIONS (BLOCKED) plus six lesson tasks. Nothing is approved, verified or deliverable; the source prints no key for any of the 12 questions and does not teach the duties of an accountant. Week 1 is not complete."
+    "2026-11-07 FA-WK-T1-W01: indexed Week One lines 65-263 of the 1st Term source into 11 coverage entries (6 PARTIAL, 5 UNRESOLVED) and 8 open items (6 blocking), and appended FA-FACT-T1-W01-TEACHER-DECISIONS (BLOCKED) plus six lesson tasks. Nothing is approved, verified or deliverable; the source prints no key for any of the 12 questions and does not teach the duties of an accountant. Week 1 is not complete.",
+    "2026-11-08 FA-INV-T3: appended the 3rd Term inventory items (18) and set FA-INV-T3 to IMPLEMENTED_TESTING_DEFERRED. All 18 new items are PENDING because no coverage, lesson, disposition, preservation record or factual check has been written. The body has seven week labels covering ten weeks, no table or equation, one header picture (a third-party tutor letterhead, a provenance question for the owner) and no revision or examination marker, so no marker item was added. No answer key is printed for any question. Nothing is approved, verified or deployed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 8,
-    "SOURCE_PREAMBLE_INDEXING": 2,
-    "SOURCE_WEEK_INDEXING": 12,
-    "VISUAL_DISPOSITION": 12,
-    "SOURCE_PRESERVATION": 6,
+    "FACTUAL_DEPENDENCY": 11,
+    "SOURCE_PREAMBLE_INDEXING": 3,
+    "SOURCE_WEEK_INDEXING": 19,
+    "VISUAL_DISPOSITION": 16,
+    "SOURCE_PRESERVATION": 9,
     "LESSON": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 6,
-    "PENDING": 45,
+    "IMPLEMENTED_TESTING_DEFERRED": 7,
+    "PENDING": 62,
     "BLOCKED": 2
   },
   "items": [
@@ -248,8 +249,8 @@
       "depends_on": [
         "FA-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-08 A4: 3rd Term inventory written to docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md from the original '3RD TERM S1 FINANCIAL ACCOUNT.docx' (member SHA-256 943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170, verified from the composite archive docs/ss1/sources/SSS1-original.zip, SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e). 766 body blocks, no table, no drawing or equation in the body, one header picture (a third-party tutor letterhead) and a footer attribution; seven week labels covering ten weeks ('WEEK ONE', 'WEEK  2', 'WEEK  3 – 4', 'WEEK  5  -  6', 'WEEK 7 – 8', 'WEEK 9', 'WEEK 10'); a scheme of seven unnumbered rows; no revision or examination marker and no answer key. Appended 18 PENDING items: FA-PRE-T3, FA-WK-T3-W01/W02/W03-W04/W05-W06/W07-W08/W09/W10, four FA-VIS-T3 items, FA-PRES-T3-COLUMNS/CURRENCY/SOURCE-WORDING and FA-FACT-T3-DATED-REFERENCES/ARITHMETIC/SCHEME-COVERAGE. No lesson, coverage entry, rule, correction or asset written; package stays PENDING; not approved or verified.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -1988,6 +1989,687 @@
       "status": "PENDING",
       "implementation_reference": "Not authored. Required by FA-WK-T1-W01 (2026-11-07): see the open items named in the completion condition.",
       "completion_condition": "A practice set in financial-accounting.json keys every Week 1 question with marks that add up and exact source locators, and leaves the assessment coverage entries UNRESOLVED until a key exists for each block. Testing deferred by owner."
+    },
+    {
+      "id": "FA-PRE-T3",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 0-13 (cover 'THIRD TERM E-LEARNING NOTE' (block 0), subject/class line (2), 'SCHEME OF WORK' (4), column line 'WEEKTOPIC' (6), seven unnumbered topic rows (7-13)), SHA-256 cc251773880399cd4fa0adc4bd3fbdb5c8ba08dece3d4471bf4f87fceaa9f0c8",
+      "objective": "Index the unlabelled opening of the 3rd Term Financial Accounting source (blocks 0-13, body SHA-256 cc251773880399cd4fa0adc4bd3fbdb5c8ba08dece3d4471bf4f87fceaa9f0c8; label block 4 SHA-256 8104f5ba0f84b6d0bd6c7197460d87d05b526578cebae1ae784ad29a8b48f15e) and implement what the existing schema supports. Block 0 is the title 'THIRD TERM E-LEARNING NOTE' (the registered header evidence), block 2 reads 'SUBJECT:FINANCIAL ACCOUNTINGCLASS: SS1' in plain extraction because the words are separated by tab characters, block 4 is 'SCHEME OF WORK' and block 6 'WEEKTOPIC' (two tab-separated column labels). The scheme is plain paragraphs, not a table: seven topic rows (7 'The Bank Account and its operations', 8 and 9 'Bank Reconciliation Statement', 10 and 11 'Final Accounts of a Sole Trader', 12 'The Balance Sheet', 13 'Opening Entries and Recording of Subsequent Financial Transactions'). The rows carry no week numbers in the text: they are automatic list items (rows 7-12 use one numbering list, row 13 another), so the printed numbering is not recoverable from plain extraction and must not be guessed. Compare with the body, which has seven week labels covering ten weeks ('WEEK ONE', 'WEEK  2', 'WEEK  3 – 4', 'WEEK  5  -  6', 'WEEK 7 – 8', 'WEEK 9', 'WEEK 10'): the seven rows and seven labels line up in order (the two Bank Reconciliation rows with Weeks 2 and 3-4, the two Final Accounts rows with Weeks 5-6 and 7-8), but the scheme assigns no weeks, so this mapping is an inference to be recorded as such. Row 13 promises 'Recording of Subsequent Financial Transactions' and the body only mentions it (see FA-WK-T3-W10). The document has no revision or examination marker anywhere. Treat scheme rows as scheme text, not headings, and never split or import a scheme row as a lesson. Do not edit the scheme wording or spelling. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer or answer key. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, classify a heading by its body, and do not merge Financial Accounting into Bookkeeping where they overlap.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-PRE-T3.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "The scheme is represented under the existing schema (or recorded as needing no rule beyond the week split) with all rows preserved verbatim; no week numbers are invented for the rows; the row-to-week alignment is recorded as an inference; no lesson is created from a scheme row."
+    },
+    {
+      "id": "FA-WK-T3-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 14-88 (label 'WEEK ONE', topic 'THE BANK ACCOUNT AND ITS OPERATIONS'), SHA-256 048d390607b229cf4a8a851d2816580e3e2452065341651fce1eb964c833561d",
+      "objective": "Index Week One of the 3rd Term Financial Accounting source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (blocks 14-88, body SHA-256 048d390607b229cf4a8a851d2816580e3e2452065341651fce1eb964c833561d; label block 14 SHA-256 635789fb4e63974d59acfd3667c0b0fb9a4b935d51684c017ac9879e598deb6b): the label 'WEEK ONE' (block 14, spelled out) and the topic line 'TOPIC :  THE BANK ACCOUNT AND ITS OPERATIONS' (15); a CONTENTS list of five headings (16-21); a definition of a bank (22); four account types named but not described (23-27: current, savings, fixed deposit, foreign currency domiciliary); eight benefits of operating a bank account (28-36); treatment of bank overdrafts (38-39); evaluation questions (40-42: three features of each account type at 41, 'What is a Cash Book' at 42); dishonoured cheques and thirteen reasons a bank may dishonour a cheque (43-58, including post-dated at 49, stale at 51 and notice of death, insanity or bankruptcy at 58); evaluation (59-61: parties to a cheque, five Cash Book source documents); two reading-assignment lines naming textbook page ranges (62-64); five general evaluation questions (66-71); a weekend assignment of five multiple-choice questions with options but no printed answers (72-77); two theory questions (79-81); blocks 82-88 are empty. Observations to record as precise open items, never fixed here: the account types are only named, yet block 41 asks for three features of each and block 69 asks for four differences between a current and a savings account; the differences between a bank overdraft and a bank loan (68) and the services a bank provides (80) are not taught; the parties to a cheque (60) are not taught; blocks 42, 61 and 73-77 (Cash Book, source documents, books of original entry, ledgers, journals) belong to other topics; the contents heading wording differs from the body headings (21 against 45, 18 against 28); no answer key is printed for the weekend questions and none may be written. The reading assignments cite two textbooks by title and page range (63-64); they were not opened and no content from them may be claimed. The six-month stale-cheque rule (51), the dishonour reasons (46-58) and the overdraft treatment (39) go to FA-FACT-T3-DATED-REFERENCES. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer or answer key. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, classify a heading by its body, and do not merge Financial Accounting into Bookkeeping where they overlap.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-WK-T3-W01.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "Week One coverage exists for the bank, account types, benefits, overdraft, dishonoured cheques and assessment with exact locators; the untaught items asked in the assessment, the off-topic questions and the missing answer key are precise open items plus small lesson tasks; nothing is invented."
+    },
+    {
+      "id": "FA-WK-T3-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 89-212 (label 'WEEK  2' with a Date placeholder, topic 'BANK RECONCILIATION STATEMENT'), SHA-256 7b04052dd148c3fe7e63d79067b76ec969ab59c15cbc3cc1e79c4f6dd4499fd4",
+      "objective": "Index Week 2 of the 3rd Term Financial Accounting source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (blocks 89-212, body SHA-256 7b04052dd148c3fe7e63d79067b76ec969ab59c15cbc3cc1e79c4f6dd4499fd4; label block 89 SHA-256 6063e3a49ade1b8ff7572510b84e134d8a422521e69877d72a090db7efe6d501): the label 'WEEK  2' followed by a long run of spaces and a 'Date' placeholder of dots in the same paragraph (block 89) and the topic line (90); contents (91-97); definitions of the Cash Book (98-99), the Bank Statement (100-101) and its format (102-116: a tab-aligned statement for a named bank branch, an account holder, an account number and a period in November 2017, with Date, Details, Debit, Credit and Balance columns and eight dated lines; the plain extraction glues adjacent amounts, for example in block 111); five uses of a bank statement (118-123); the bank reconciliation statement (124-125); items causing disagreement, grouped A (in the Cash Book but not in the Bank Statement, 128-131) and B (in the Bank Statement but not in the Cash Book, 132-141); evaluation (142-144); twelve explained items (146-189), each defined and, for most, given the side where it appears and its effect on the balances (unpresented cheques, uncredited cheques, bank charges, dividends, standing orders, credit transfers, direct debits, dishonoured cheques, interest received, interest on overdraft), while errors in the Cash Book (154-155) and errors in the Bank Statement (188-189) have a definition only; evaluation (190-192); reading assignment (193-195); general evaluation (196-201); weekend assignment of five multiple-choice questions with no printed answers (202-207); theory (208-210); blocks 211-212 are empty. Observations to record as precise open items, never fixed here: the account number printed at block 105 is a personal or sample identifier and must not be copied into any lesson or record; the debit/credit-side and effect statements for each reconciling item (148-187) are the source's and go to the fact item for checking; the general evaluation (200-201) repeats Week One topics; the Date placeholder is not content. The numbers in the sample statement are consistent (see FA-FACT-T3-ARITHMETIC). Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer or answer key. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, classify a heading by its body, and do not merge Financial Accounting into Bookkeeping where they overlap.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-WK-T3-W02.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "Week 2 coverage exists for the Cash Book, Bank Statement format and uses, the reconciliation statement and each reconciling item with exact locators; the Date placeholder, the sample account number and the repeated Week One questions are precise open items plus small lesson tasks; nothing is invented."
+    },
+    {
+      "id": "FA-WK-T3-W03-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 213-346 (label 'WEEK  3 – 4' (no Date placeholder), topic 'BANK RECONCILIATION STATEMENT' again), SHA-256 c99c0a1d73a068bfb4052241395e0237b6d1c7bba5d95e83a55587338212dd37",
+      "objective": "Index Weeks 3-4 of the 3rd Term Financial Accounting source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (blocks 213-346, body SHA-256 c99c0a1d73a068bfb4052241395e0237b6d1c7bba5d95e83a55587338212dd37; label block 213 SHA-256 8e80a76c447f2bc985993985a5c556ccf689abea312c351aa00c7ff96cd863ef): the combined label 'WEEK  3 – 4' (block 213, en dash) and the topic line 'TOPIC : BANK RECONCILIATION STATEMENT' (214), the same topic as Week 2; contents (215-218, naming 'WORKING EXERCISES' at 217); introductory text (220-222); the three stages of preparing a reconciliation (224-241: Step 1 compare the entries at 225 with three empty blocks after it, Step 2 update the Cash Book at 229-233, Step 3 prepare the statement at 234-241) and a statement that the reconciliation is not part of the double entry (242); evaluation (243-245); blocks 246-250 are empty; one worked illustration for a named enterprise for September 2017 (251-301: the Bank Account at 253-261, the Bank Statement at 262-275, the requirement at 276-278, the Adjusted Cash Book at 282-288 and the Bank Reconciliation Statement at 290-301, all tab-aligned); advantages, purpose and uses of reconciliation (304-318: control points at 316-318); evaluation (319-321); reading assignment (322-324) that repeats the page ranges of Week 2; five general evaluation questions (325-330) that are not about reconciliation (ledger accounts with credit balances, reasons for keeping records, books of account, Cash Book features, trade against cash discounts); a weekend assignment (331-342: one stand-alone question, a data block at 333-338 serving two questions, and two further questions, with no printed answers); theory (343-345). Observations to record as precise open items, never fixed here: the contents promise 'working exercises' but only the one illustration exists; Step 1 (225) has no worked detail; the general evaluation (326-330) is off-topic; the weekend data block (335-338) does not say which side of the Cash Book the 18,000 balance is on; the illustration's reasoning and totals go to FA-FACT-T3-ARITHMETIC and its layouts to FA-VIS-T3-W02-W04-BANK-LAYOUTS. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer or answer key. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, classify a heading by its body, and do not merge Financial Accounting into Bookkeeping where they overlap.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-WK-T3-W03-W04.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "Weeks 3-4 coverage exists for the three reconciliation stages, the worked illustration, the purposes and the assessment with exact locators; the missing working exercises, the thin Step 1, the off-topic questions and the unspecified balance side are precise open items plus small lesson tasks; nothing is invented."
+    },
+    {
+      "id": "FA-WK-T3-W05-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 347-499 (label 'WEEK  5  -  6' with a Date placeholder, topic 'FINAL ACCOUNTS OF A SOLE TRADER'), SHA-256 545f6c0307d38abff3153186f91d67a20379330ce7ef1dd3474eaa3d5f8cf17f",
+      "objective": "Index Weeks 5-6 of the 3rd Term Financial Accounting source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (blocks 347-499, body SHA-256 545f6c0307d38abff3153186f91d67a20379330ce7ef1dd3474eaa3d5f8cf17f; label block 347 SHA-256 65d32574230587931e7be986fe36bfee3233c81d37b4711d38b9fc8bbfbdff0b): the combined label 'WEEK  5  -  6' (block 347, hyphen, with a Date placeholder) and the topic line (348); contents (349-352); the three final accounts named (353-356); the Trading Account (357-368: purpose and definitions of gross profit, cost of goods sold, net purchases, net sales and carriage inwards at 358-364, heading and horizontal format at 366-368, a vertical format at 369); one illustration for a named enterprise for 2017 with fourteen listed balances (370-388) answered in the horizontal format (390-403) and the vertical format (406-423); evaluation (425-427); the Profit and Loss Account (429-434: purpose, the net profit formula at 431, transfer to the Capital Account at 434) with a horizontal answer (436-448) and a vertical answer (450-465); evaluation (466-468); reading assignment (469-471); five general evaluation questions (472-477) that are about the Cash Book, the imprest system, records and the General Journal; a weekend assignment (478-494: a stand-alone question, a data block at 480-490 and four questions at 491-494, with no printed answers); theory (496-499). Observations to record as precise open items, never fixed here: the topic line repeats in Weeks 7-8; the general evaluation (473-476) is not about final accounts; the vertical statements put sub-totals in unlabelled blocks (412, 417, 419, 420, 422 and 456) whose meaning depends on position, and block 412 prints '47.680' with a full stop where the neighbouring figures use a comma; the weekend question 5 appears to offer no option equal to the figure derived from the data (see FA-FACT-T3-ARITHMETIC); the treatment of carriage inwards and carriage outwards (363, 479, 486-487) is the source's and goes to the fact item for checking. Layouts go to FA-VIS-T3-W05-W08-FINAL-ACCOUNTS. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer or answer key. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, classify a heading by its body, and do not merge Financial Accounting into Bookkeeping where they overlap.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-WK-T3-W05-W06.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "Weeks 5-6 coverage exists for the Trading Account, the Profit and Loss Account, both illustrations in both formats and the assessment with exact locators; the off-topic questions and the apparent weekend-question mismatch are precise open items plus small lesson tasks; nothing is invented."
+    },
+    {
+      "id": "FA-WK-T3-W07-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 500-595 (label 'WEEK 7 – 8 Date' on one line, topic 'FINAL ACCOUNTS OF A SOLE TRADER' again), SHA-256 39719100a1f5ef780a863b1482e645f082d03fc8db0e5ff69ba344d9e515ea7d",
+      "objective": "Index Weeks 7-8 of the 3rd Term Financial Accounting source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (blocks 500-595, body SHA-256 39719100a1f5ef780a863b1482e645f082d03fc8db0e5ff69ba344d9e515ea7d; label block 500 SHA-256 6af5a54fbb72679b6331f1a2b1f60386f079f2d3bb0290e27c18434f663c5c8b): the combined label 'WEEK 7 – 8 Date……' on one line (block 500, en dash) and the topic line (501), the same topic as Weeks 5-6, then 'CONTENT :' (502) and two contents lines (503-504); explanatory text that the Trading Account and the Profit and Loss Account are combined and that the combined account and the Balance Sheet are the financial statements (505-509); one illustration from a trial balance for a named trader for 2015 (510-543: a Dr/Cr trial balance of 24 lines at 512-540 and an additional stock figure at 541-542) answered in a combined horizontal Trading, Profit and Loss Account (545-568) and a note that not all trial balance items are used (570); evaluation (571-574); reading assignment (576-578); general evaluation that is only textbook exercise and question references (581-584); a weekend assignment of five multiple-choice questions with no printed answers (585-590); theory (591-593); blocks 594-595 are empty. Observations to record as precise open items, never fixed here: the general evaluation (582-584) cites exercises that are not in the document and cannot be answered from it; the body has no vertical format for this combined account although Weeks 5-6 teach one; the trial balance is the source for Week 9 as well (see FA-WK-T3-W09), so its figures must be preserved exactly; the sample trial balance, worked answer and multiple-choice questions go to FA-FACT-T3-ARITHMETIC; the layouts go to FA-VIS-T3-W05-W08-FINAL-ACCOUNTS. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer or answer key. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, classify a heading by its body, and do not merge Financial Accounting into Bookkeeping where they overlap.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-WK-T3-W07-W08.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "Weeks 7-8 coverage exists for the combined statement, the trial-balance illustration and its answer, and the assessment with exact locators; the unanswerable textbook references and the missing vertical format are precise open items plus small lesson tasks; nothing is invented."
+    },
+    {
+      "id": "FA-WK-T3-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 596-715 (label 'WEEK 9' with a Date placeholder, topic 'BALANCE SHEET'), SHA-256 e7fdaadf892dfb991d3a7db16b81e5ca435dfb70e241481beb17db4ed4a9583a",
+      "objective": "Index Week 9 of the 3rd Term Financial Accounting source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (blocks 596-715, body SHA-256 e7fdaadf892dfb991d3a7db16b81e5ca435dfb70e241481beb17db4ed4a9583a; label block 596 SHA-256 c42cd26107ea2d55568f399bce5d3912e89933a7248e3043085e1371a018f4c3): the label 'WEEK 9' with a long run of spaces and a Date placeholder (block 596) and the topic line 'TOPIC :  BALANCE SHEET' (597); contents (598-601); the meaning of the Balance Sheet and that it is not part of the double entry system (603-605); its layout (607-614: five groups at 609-613); a horizontal Balance Sheet for the 2015 trader of Weeks 7-8 (614-629); notes on fixed-asset and current-asset ordering and the capital reconciliation (631-645); evaluation that is textbook exercise references (646-648); definitions of assets, fixed assets, current assets, liabilities, current liabilities and long-term liabilities (649-655); the two formats and the same Balance Sheet in vertical form (657-694: 'Financed by' section at 684, notes at 691-694); evaluation and reading assignment (695-700); general evaluation of textbook references (701-703); a weekend assignment of five multiple-choice questions with no printed answers (704-709); theory (710-714). Observations to record as precise open items, never fixed here: capital is listed as a Balance Sheet group (613) and in the theory question (714, where '(d)' is printed twice) but is not defined in 649-655; the ordering statements for fixed assets (633, 'order of permanence') and current assets (639, 'reverse order of realisability') are the source's and go to the fact item for checking; the evaluation and general-evaluation lines (647-648, 696-697, 702-703) cite exercises that are not in the document; the weekend questions include debentures (706) which the body does not teach. The worked Balance Sheet reconciles to the Week 7-8 answer (see FA-FACT-T3-ARITHMETIC); layouts go to FA-VIS-T3-W09-W10-BALANCE-SHEET-JOURNAL. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer or answer key. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, classify a heading by its body, and do not merge Financial Accounting into Bookkeeping where they overlap.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-WK-T3-W09.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "Week 9 coverage exists for the meaning, layout, definitions, both formats and the assessment with exact locators; the undefined capital, the untaught debentures question and the unanswerable textbook references are precise open items plus small lesson tasks; nothing is invented."
+    },
+    {
+      "id": "FA-WK-T3-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 716-764 (label 'WEEK 10' with leading spaces and a Date placeholder, topic 'OPENING ENTRIES'), SHA-256 951433388803f794c16cb146c1829626271c1b30bbb89235e84203f8d73dd863",
+      "objective": "Index Week 10 of the 3rd Term Financial Accounting source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (blocks 716-764, body SHA-256 951433388803f794c16cb146c1829626271c1b30bbb89235e84203f8d73dd863; label block 716 SHA-256 89e8c120d5810b1e98129fb7a5e01812cb343ccc8da9016513b566261779b75e): the label 'WEEK 10' preceded by twelve spaces with a Date placeholder (block 716) and the topic line 'TOPIC :    OPENING ENTRIES' (717); contents (718-720: opening journal entries at 719, 'Recording of subsequent financial transactions' at 720); the opening entries explained (722-724); one illustration for a named trader on 1 July 2017 (725-727) answered in a General Journal with a ledger-folio column (730-741, twelve lines, total 137,000); text on posting the entries to the ledger and starting subsequent transactions (742-744); evaluation and reading assignment (746-750) that are textbook exercise and page references; general evaluation (751-753) of textbook references; a weekend assignment of five multiple-choice questions with no printed answers (755-760); theory (761-764). Observations to record as precise open items, never fixed here: the scheme row and the contents line promise 'Recording of subsequent financial transactions' but the body only states it in block 744 and gives no example; the scheme row wording is 'Opening Entries and Recording of Subsequent Financial Transactions' while the topic line says only 'OPENING ENTRIES'; the theory uses three names for the same book (the 'Journal Proper' at 762, the 'Principal Journal' at 763 and the General Journal at 730) and block 764, a trial balance against a balance sheet, is not about opening entries; the evaluation and general evaluation cite exercises that are not in the document; block 764 is the last non-empty block and there is no revision or examination marker after it. The illustration's totals go to FA-FACT-T3-ARITHMETIC; the layout goes to FA-VIS-T3-W09-W10-BALANCE-SHEET-JOURNAL. Record exact wording and block numbers; every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer or answer key. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, classify a heading by its body, and do not merge Financial Accounting into Bookkeeping where they overlap.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-WK-T3-W10.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "Week 10 coverage exists for the opening entries, the illustration and the assessment with exact locators; the missing subsequent-transactions example, the naming inconsistency and the off-topic theory question are precise open items plus small lesson tasks; nothing is invented."
+    },
+    {
+      "id": "FA-VIS-T3-HEADER-IMAGE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "word/header1.xml image word/media/image1.jpeg (949 x 359 pixels, SHA-256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14); footer text 'MR OSHO/3RD TERM/ACCOUNTS/SS1' plus a page number field; neither is in the body blocks",
+      "objective": "Dispose of the only embedded picture in the 3rd Term Financial Accounting source and its footer. The header part holds no text and one inline picture (`image1.jpeg`, 106,941 bytes, 949 x 359 pixels, SHA-256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14) that repeats on every page; the footer reads 'MR OSHO/3RD TERM/ACCOUNTS/SS1' followed by a page number. From a fresh private inspection the picture is a third-party branded letterhead for a private tutoring business: a green circle with a graduation cap and books, the business name, a tagline, a list of roles, a telephone number and an email address. It carries no accounting content. Record that it must not be reproduced, rendered into any lesson or committed; that the telephone number and email address are personal contact details and are not copied into any record; and that the branding indicates the note is the work of an external tutor, which is a provenance and rights question for the owner (who may use the note, and whether the tutor's name must be credited or removed), recorded as a precise open item and not decided here. A needed figure would be a separate ASSET item; none is needed. The body has no `w:drawing`, `w:pict`, `w:object`, equation, footnote, endnote or text box.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-VIS-T3-HEADER-IMAGE.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "The header picture and the footer are recorded with hash, size and a disposition (not reproduced, no content value); the personal contact details are not copied; the provenance and rights question is a precise open item; no asset is created."
+    },
+    {
+      "id": "FA-VIS-T3-W02-W04-BANK-LAYOUTS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "tab-aligned statements and accounts at blocks 102-116 (sample bank statement), 253-261 (Bank Account), 262-275 (Bank Statement), 282-288 (Adjusted Cash Book), 290-301 (Bank Reconciliation Statement), 333-338 (weekend data block)",
+      "objective": "Dispose of the ledger and statement layouts in Weeks 2 to 4 of the 3rd Term Financial Accounting source. There is no table or drawing: each layout is a run of paragraphs aligned with tab characters and spaces, so a plain extraction loses the columns and glues amounts (block 111 reads '3,00021,000cr'; block 255 reads 'Sep  5Cheque'); only 17 blocks contain tab characters, the rest are aligned with runs of spaces. Layouts: the sample bank statement with Date, Details, Debit, Credit and Balance columns and 'cr' balances (102-116); the two-sided Bank Account with Dr and Cr sides and 'Balance b/d' and 'Balance c/d' (253-261, totals 7,320 on both sides); the Bank Statement with Debit, Credit and Balance columns (262-275); the two-sided Adjusted Cash Book (282-288); the vertical Bank Reconciliation Statement with an 'Add' and a 'Less' group and sub-totals (290-301); and the weekend data block (333-338). Decide under the existing schema how a later lesson preserves each as a two-sided account or a column statement (not a prose list), keeping side, column and sub-total positions, and record the cell text read from each paragraph's runs and tab stops. Do not reflow an account into prose, drop a side, merge the two sides, or correct a figure here.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-VIS-T3-W02-W04-BANK-LAYOUTS.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "Each layout is recorded with its columns, sides, sub-totals and exact cell text and a disposition that keeps the side and column pairing; the glued-amount extraction hazard is recorded; nothing is reflowed or corrected."
+    },
+    {
+      "id": "FA-VIS-T3-W05-W08-FINAL-ACCOUNTS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "tab-aligned accounts at blocks 372-386 (balances), 391-403 and 407-423 (Trading Account, horizontal and vertical), 437-448 and 451-465 (Profit and Loss Account), 481-490 (weekend data), 512-540 (trial balance), 545-568 (combined account)",
+      "objective": "Dispose of the final-accounts layouts in Weeks 5 to 8 of the 3rd Term Financial Accounting source. As with the bank layouts there is no table: the list of balances (372-386), the horizontal Trading Account with a Dr side and a Cr side (391-403), the vertical Trading Account with a single amount column and inner and outer columns (407-423), the horizontal and vertical Profit and Loss Account (437-448, 451-465), the trial balance with Dr and Cr columns (512-540, totals printed at 540) and the combined horizontal Trading, Profit and Loss Account (545-568) are tab- and space-aligned paragraphs. Plain extraction keeps each label with its amount but leaves the sub-totals in unlabelled blocks (for example 412, 417, 419, 420, 422, 456 and 667-689) whose meaning comes only from position and column, and block 412 prints '47.680' with a full stop; cells must be rebuilt from runs, spaces and tab stops before any text match. Record the column structure (including the inner column used for sub-totals), the side of every line and exact cell text, and decide under the existing schema how a later lesson preserves both formats as statements rather than lists. Do not reflow, merge sides or correct a figure here.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-VIS-T3-W05-W08-FINAL-ACCOUNTS.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "Each layout is recorded with its columns, sides, inner sub-total column and exact cell text and a disposition that keeps the pairing; the extraction hazards are recorded; nothing is reflowed or corrected."
+    },
+    {
+      "id": "FA-VIS-T3-W09-W10-BALANCE-SHEET-JOURNAL",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "tab-aligned statements at blocks 615-629 (horizontal Balance Sheet), 660-689 (vertical Balance Sheet) and 730-741 (General Journal with folio column)",
+      "objective": "Dispose of the Balance Sheet and Journal layouts in Weeks 9 and 10 of the 3rd Term Financial Accounting source. The horizontal Balance Sheet puts the capital and liabilities side by side with the assets in one set of paragraphs (615-629: left and right groups share lines, so plain extraction interleaves them), the vertical Balance Sheet is a column statement with a 'Financed by' section (660-689) and the General Journal has Date, Details, folio (CB, GL, SL, PL), debit and credit columns with a narration line and totals (730-741). Record the column and side structure, the line pairing between the two sides of the horizontal Balance Sheet, the folio codes, the narration line and exact cell text, and decide under the existing schema how a later lesson preserves each as a statement or journal (not a prose list), keeping the debit/credit columns and the narration. Do not reflow, merge sides or correct a figure here.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-VIS-T3-W09-W10-BALANCE-SHEET-JOURNAL.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "Each layout is recorded with its columns, sides, folio codes, narration and exact cell text and a disposition that keeps the pairing; the interleaving hazard is recorded; nothing is reflowed or corrected."
+    },
+    {
+      "id": "FA-PRES-T3-COLUMNS",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "whole 3rd Term document; account and statement layouts at blocks 102-116, 253-301, 333-338, 372-423, 437-465, 481-490, 512-568, 615-629, 660-689, 730-741",
+      "objective": "Preserve the debit/credit column conventions of the 3rd Term Financial Accounting source exactly as printed, separately from any reformatted layout. Record: the column labels (`Date`, `Details`, `Debit`, `Credit`, `Balance` in the bank statements at 107 and 263; `N` and `N` side labels in the Bank Account and Adjusted Cash Book; `Dr` and `Cr` over the trial balance at 514; the folio codes CB, GL, SL and PL in the journal); the side words `Balance b/d`, `Balance c/d`, `Balance b/f`, `Gross Profit c/d` and `Gross Profit b/d`; the 'cr' suffix on bank balances (109-116); the `Add:` and `Less:` lines and the inner and outer amount columns of the vertical statements; the `Financed by:` section (684); the printed totals (for example 7,320 at 261, 5,780 at 288, 203,960 at 540, 71,260 at 629 and 137,000 at 741). The pairing of each amount with its label is lost in plain extraction, so each pairing must be rebuilt from runs and tab stops and shown beside the printed text. No lesson may reflow an account into prose, drop a side or reorder lines.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-PRES-T3-COLUMNS.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "The column labels, side words, suffixes, sub-total columns and printed totals are recorded verbatim with block numbers; nothing is reflowed, reordered or corrected."
+    },
+    {
+      "id": "FA-PRES-T3-CURRENCY",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "whole 3rd Term document; currency, date and number forms at blocks 105-116, 203, 412, 253-275, 333-341, 373-387, 481-494, 512-540, 726-741",
+      "objective": "Preserve the currency, date and number forms of the 3rd Term Financial Accounting source exactly as printed: the naira is written as a plain capital `N` (the column heading `N` at 108, `N18,000` at 203, `N 2,700` at 542, `N9,500` at 387, `N(59,000 + 12,260)` at 644), amounts use comma thousands without decimals, the bank statement uses a `cr` suffix (`28,000cr` at 109), dates appear as `1st November, 2017`, `30th September, 2017`, `31st December, 2015` and `1st July, 2017` and as the month abbreviation `Nov`, `Sep`, `Jul` with typed day numbers and the ditto mark `‘’` standing for a repeated month (256-275), the stock date `Stock (01/01/2015)` appears in a label (536), some amounts are glued to labels or to each other in plain extraction (`Purchases168,000` at 482, `3,00021,000cr` at 111), and one amount uses a full stop where the others use a comma (`47.680` at 412, for 47,680). Record each form with its block so that a later lesson keeps `N`, the ditto marks and the date wording and does not silently change them to another currency symbol or date style.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-PRES-T3-CURRENCY.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "Each currency, date and number form is recorded verbatim with block numbers and the glued-amount hazard is noted; no symbol, date or amount is changed."
+    },
+    {
+      "id": "FA-PRES-T3-SOURCE-WORDING",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "whole 3rd Term document; key defects at blocks 6, 21 and 45, 31, 412, 63-64, 89, 179, 213, 255, 311, 347, 482, 500, 536, 584, 647, 654, 696, 702, 714, 762-763",
+      "objective": "Preserve the source wording of the 3rd Term Financial Accounting document separately from any corrected prose. Record at least: the tab-joined 'WEEKTOPIC' (6) and the subject line read as 'SUBJECT:FINANCIAL ACCOUNTINGCLASS: SS1' (2); the label forms 'WEEK ONE' (14), 'WEEK  2' (89), 'WEEK  3 – 4' (213), 'WEEK  5  -  6' (347), 'WEEK 7 – 8' (500), 'WEEK 9' (596) and 'WEEK 10' with leading spaces (716), each followed by a Date placeholder of dots where one exists; the contents wording 'REASONS WHY A BANK MAY DISHONOUR A CUSTOMER’S CHEQUES' (21) against the body wording 'REASONS WHY BANKS MAY DISHONOUR CHEQUES' (45); 'jewellery    etc.' (31); the two textbook citations with page ranges (63-64, 194-195, 323-324, 470-471, 577-578, 699-700, 749-750), which are cited as printed and were not opened; 'higherthan' (179); 'Sep  5Cheque' (255); a leading space before ' It assists in discovering fraud and embezzlement' (311); '47.680' with a full stop instead of a comma (412); 'Purchases168,000' (482); 'Stock (01/01/2015) 4,000' (536); the evaluation lines that are only exercise references such as 'Question 4 Page 187' (584) and 'Exercise 1 & 2' (647); 'amountsowed' (654); 'Exercise 6 and 7X' (696); 'Aand' in 'Exercise 8.4, 8.5Aand 8.6A' (702); '(d) long - term liabilities (d) capital' with the letter (d) twice (714); and 'Journal Proper' (762) and 'Principal Journal' (763) for the General Journal (730). A corrected form may sit beside the printed form but never replace it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-PRES-T3-SOURCE-WORDING.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "The listed defects are recorded verbatim with block numbers and each is marked as printed versus any later correction; no correction is applied."
+    },
+    {
+      "id": "FA-FACT-T3-DATED-REFERENCES",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "whole 3rd Term document: dated and institutional references at blocks 27, 39, 49-58, 103-106, 252-278, 371-388, 511-543, 726, 63-64 and the footer",
+      "objective": "Record and date every dated figure, rate, institution or rule in the 3rd Term Financial Accounting source and verify each against a primary source before a lesson adopts it, keeping the source wording distinct from the corrected fact. At least: the stale-cheque rule 'the date on the cheque is more than six months before the date it was presented' (51, repeated at 313) and the other dishonour reasons (46-58) for Nigerian banking practice at the stated date; the account types including the foreign currency domiciliary account (27); the overdraft treatment (39); the named bank, branch and statement period in November 2017 (103-106) and the account holder and account number at block 105 (the number is an identifier and is not to be copied); the 2017, 2015 and September 2017 sample periods (252-278, 371-388, 511-543, 726); and the two textbooks cited by title and page range (63-64 and the other reading assignments), which were not opened: record the citations as printed, claim no content from them. The footer 'MR OSHO/3RD TERM/ACCOUNTS/SS1' and the header branding are provenance, not facts. Each fact gets a date, a primary source and a separately recorded corrected or confirmed statement, or an explicit open item. No figure may be invented and the owner's approval stays PENDING.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-FACT-T3-DATED-REFERENCES.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3",
+        "FA-WK-T3-W01",
+        "FA-WK-T3-W02",
+        "FA-WK-T3-W03-W04",
+        "FA-WK-T3-W05-W06",
+        "FA-WK-T3-W07-W08",
+        "FA-WK-T3-W09",
+        "FA-WK-T3-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "Each listed reference has the source wording, a date, an authoritative primary source and a separately recorded corrected or confirmed statement, or an explicit open item; no identifier is copied; owner approval stays PENDING."
+    },
+    {
+      "id": "FA-FACT-T3-ARITHMETIC",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "whole 3rd Term document: worked answers and questions at blocks 102-116, 252-301, 332-342, 371-423, 431-465, 479-494, 511-568, 586-590, 614-645, 657-694, 705-709, 726-741, 756-760",
+      "objective": "Check by reading, and without inventing any answer, every worked answer and every multiple-choice question that carries figures in the 3rd Term Financial Accounting source. A preliminary recomputation made while writing the inventory found the printed arithmetic of the worked answers internally consistent: the sample bank statement running balance (107-116, from 28,000cr to 39,800cr); the September 2017 Bank Account (7,320 on both sides), Bank Statement (6,085 closing), Adjusted Cash Book (5,115 balance carried down, 5,780 totals) and Bank Reconciliation Statement (5,115 + 1,485 - 515 = 6,085); the Trading Account (cost of goods sold 16,278, gross profit 31,402) and Profit and Loss Account (net profit 25,836, totals 31,902) of the first enterprise; the 2015 trial balance (203,960 on both sides), combined account (gross profit 64,700, net profit 8,760, totals 124,000 and 67,040) and Balance Sheet (capital 57,840, totals 71,260 and the 59,000 and 12,260 asset sub-totals); and the opening Journal (assets 137,000 against liabilities 27,000 and capital 110,000, totals 137,000). That recomputation is not a verification: each figure must be re-derived at indexing time and the working shown. Questions to read carefully: the weekend questions on a Cash Book balance of 18,000 with dishonoured cheques of 1,200, bank charges of 300 and unpresented cheques of 2,400 (333-340), where the side of the opening balance is not stated; the question on an overdraft of 190,000 and a 400,000 payment (341); and the Weeks 5-6 weekend questions on the data at 480-490 (491-494), where the gross profit, net profit and cost of goods sold derived from the data appear among the options but, by this preliminary recomputation, no option equals the cost of goods available for sale at 494 (185,100): record that as a precise open item for the lesson task, never correct the question. No answer key is printed anywhere in the document and none may be written without the owner's decision; a worked answer may be derived only as a clearly labelled original. Do not change any printed figure.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-FACT-T3-ARITHMETIC.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3",
+        "FA-WK-T3-W02",
+        "FA-WK-T3-W03-W04",
+        "FA-WK-T3-W05-W06",
+        "FA-WK-T3-W07-W08",
+        "FA-WK-T3-W09",
+        "FA-WK-T3-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "Each worked answer and figure-bearing question is recorded with block numbers and an independently re-derived result shown as working; the weekend-question open items are precise; no answer key or correction is invented; owner approval stays PENDING."
+    },
+    {
+      "id": "FA-FACT-T3-SCHEME-COVERAGE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "term": "3rd Term",
+      "week_or_locator": "scheme rows at blocks 7-13 against the seven week labels at 14, 89, 213, 347, 500, 596 and 716 and the assessment blocks of each week",
+      "objective": "Record exactly how the 3rd Term Financial Accounting scheme of work (seven unnumbered rows, blocks 7-13) maps to the body (seven week labels covering ten weeks) and which scheme and assessment promises the body does not deliver, without importing a scheme row as a lesson. At least: the row-to-week alignment is an inference (the scheme gives no week numbers); the two 'Bank Reconciliation Statement' rows against 'WEEK  2' and 'WEEK  3 – 4' share a topic line and overlap in content; the two 'Final Accounts of a Sole Trader' rows against 'WEEK  5  -  6' and 'WEEK 7 – 8' share a topic line and the second adds only the combined account; 'Recording of Subsequent Financial Transactions' (13, 720) has no worked content; assessment items that ask for content the body does not teach (features of account types, bank overdraft against bank loan, services of a bank, parties to a cheque, features of a cheque, capital); general-evaluation and weekend questions drawn from other topics (42, 61, 73-77, 200-201, 326-330, 473-477, 706, 764); and evaluation lines that are only references to textbook exercises (581-584, 646-648, 695-697, 701-703, 747, 751-753). Each is a precise open item for the matching week; none is resolved here, no content is invented and no teacher or owner decision is assumed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-FACT-T3-SCHEME-COVERAGE.md"
+      ],
+      "depends_on": [
+        "FA-INV-T3",
+        "FA-SRC-T3",
+        "FA-PRE-T3",
+        "FA-WK-T3-W01",
+        "FA-WK-T3-W02",
+        "FA-WK-T3-W03-W04",
+        "FA-WK-T3-W05-W06",
+        "FA-WK-T3-W07-W08",
+        "FA-WK-T3-W09",
+        "FA-WK-T3-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
+      "completion_condition": "The alignment inference, each undelivered promise and each off-topic or unanswerable assessment item is recorded with block numbers; nothing is invented or decided."
     }
   ],
   "review": {
@@ -2003,7 +2685,7 @@
     }
   },
   "next_runnable": [
-    "FA-INV-T3",
+    "FA-TEST-PACKAGE",
     "FA-PRE-T1",
     "FA-WK-T1-W02",
     "FA-WK-T1-W03",
@@ -2038,6 +2720,21 @@
     "FA-PRES-T2-SOURCE-WORDING",
     "FA-LES-T1-W01-DEFINITIONS-DIFFERENCES",
     "FA-LES-T1-W01-USERS",
-    "FA-LES-T1-W01-IMPORTANCE"
+    "FA-LES-T1-W01-IMPORTANCE",
+    "FA-PRE-T3",
+    "FA-WK-T3-W01",
+    "FA-WK-T3-W02",
+    "FA-WK-T3-W03-W04",
+    "FA-WK-T3-W05-W06",
+    "FA-WK-T3-W07-W08",
+    "FA-WK-T3-W09",
+    "FA-WK-T3-W10",
+    "FA-VIS-T3-HEADER-IMAGE",
+    "FA-VIS-T3-W02-W04-BANK-LAYOUTS",
+    "FA-VIS-T3-W05-W08-FINAL-ACCOUNTS",
+    "FA-VIS-T3-W09-W10-BALANCE-SHEET-JOURNAL",
+    "FA-PRES-T3-COLUMNS",
+    "FA-PRES-T3-CURRENCY",
+    "FA-PRES-T3-SOURCE-WORDING"
   ]
 }
