@@ -45,3 +45,18 @@ test('Arithmetic review records independently checked answer-key totals', () => 
     '₦82,000', '₦38,000', '₦95,000',
   ]) assert(review.includes(expected), `review missing checked value ${expected}`);
 });
+
+
+test('Every assessment paper section adds up to its declared maximum mark', () => {
+  for (const [file, total] of resources) {
+    const body = read(file);
+    const declared = body.match(/^\*\*Total:\*\*\s*(\d+) marks/m);
+    assert(declared, `${file}: declared total missing`);
+    assert.equal(Number(declared[1]), total, `${file}: total metadata mismatch`);
+    const sectionMarks = [...body.matchAll(/^## Section [ABC][^\n]*\((?:[^)]*?=\s*)?(\d+) marks\)/gm)]
+      .map(match => Number(match[1]));
+    assert.equal(sectionMarks.length, 3, `${file}: expected three marked sections`);
+    assert.equal(sectionMarks.reduce((sum, marks) => sum + marks, 0), total,
+      `${file}: section totals do not equal the declared paper total`);
+  }
+});
