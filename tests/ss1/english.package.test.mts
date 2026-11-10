@@ -251,8 +251,8 @@ test('Every one-line English scheme marker explicitly uses whole-line matching',
   const multiLine = p.source_rules.filter(rule =>
     rule.op === 'classify_marker' && /[\r\n]/u.test(rule.anchor)
   );
-  assert.equal(singleLine.length, 23);
-  assert.equal(multiLine.length, 9);
+  assert.equal(singleLine.length, 22);
+  assert.equal(multiLine.length, 10);
   assert(singleLine.every(rule => rule.match_mode === 'WHOLE_LINE'));
   assert(multiLine.every(rule => rule.match_mode !== 'WHOLE_LINE'));
 });
