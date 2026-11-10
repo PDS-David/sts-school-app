@@ -1,0 +1,45 @@
+name: SS1 Agricultural Science verification
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "backend/src/db/ss1/**"
+      - "backend/package.json"
+      - "backend/package-lock.json"
+      - "tests/ss1/agricultural-science.*.mts"
+      - ".github/workflows/ss1-agricultural-science-verification.yml"
+  push:
+    branches: [master]
+    paths:
+      - "backend/src/db/ss1/**"
+      - "backend/package.json"
+      - "backend/package-lock.json"
+      - "tests/ss1/agricultural-science.*.mts"
+      - ".github/workflows/ss1-agricultural-science-verification.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  agricultural-science:
+    name: Validate SS1 Agricultural Science package
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm install --no-audit --no-fund
+      - name: Run Agricultural Science package tests (lesson body hashes, approvals, assets)
+        working-directory: backend
+        run: node --import tsx --test ../tests/ss1/agricultural-science.package.test.mts
+      - name: Run the SS1 package integrity validator for Agricultural Science only
+        working-directory: backend
+        run: node --import tsx src/db/ss1/validateSubjectPackages.ts agricultural-science
