@@ -70,10 +70,12 @@ The teaching body separates combined scheme ranges into individual labelled week
 
 ## Current package status at source review
 
-The package now contains **33 authored lesson records**: the earlier assessment and topic supplements, the distinct First Term Week 9 farmstead and forestry drafts, the Week 9 environmental-factors core lesson, and two later clarification lessons:
+The package now contains **35 authored lesson records**: the earlier assessment and topic supplements, the distinct First Term Week 9 farmstead and forestry drafts, the Week 9 environmental-factors core lesson, and four later clarification lessons:
 - `SUP-SS1-AGRICULTURAL-SCIENCE-T1-W08-TENURE-CLARIFICATION` distinguishes land-tenure arrangements from modes of plot acquisition and explains the NBS evidence for inheritance.
 - `SUP-SS1-AGRICULTURAL-SCIENCE-T2-W07-ROCK-CHARACTERISTICS` corrects overgeneralised rock characteristics with sourced scientific qualifications.
+- `SUP-SS1-AGRICULTURAL-SCIENCE-T3-W07-HORMONES` provides an independently authored hormone table and explains corrected male/female hormone roles.
+- `SUP-SS1-AGRICULTURAL-SCIENCE-T3-W07-EGG-FORMATION` explains the laying-hen oviduct sequence and qualified stage timings.
 
-Both clarification lessons are mapped to their coverage rows and include keyed practice and provenance. They remain `content_approval: PENDING` and `verification: DEFERRED`; they are drafts, not expert-approved material. The Week 9 farmstead and forestry lessons also remain blocked pending qualified expert decisions.
+All four clarification lessons are mapped to their coverage rows and include keyed practice and provenance. They remain `content_approval: PENDING` and `verification: DEFERRED`; they are drafts, not expert-approved material. The Week 9 farmstead and forestry lessons also remain blocked pending qualified expert decisions.
 
 This crosswalk does not certify completeness. The package has partial coverage, one unresolved coverage row for missing Second Term Week 1 revision materials, pending owner alias decisions, pending content approvals, deferred verification and blocking open items. The importer/compiler, database import, student-facing authenticated retrieval, mobile/browser rendering and expert review remain release gates.
