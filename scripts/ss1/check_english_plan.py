@@ -113,7 +113,13 @@ for item in package["open_items"]:
 
 english_blockers = {
     blocker for blocker in plan.get("blockers", [])
-    if "english" in blocker.lower()
+    if blocker.startswith((
+        "PENDING_PACKAGE:english",
+        "LESSON_NOT_APPROVED:SUP-SS1-ENGLISH-",
+        "ASSET_NOT_APPROVED:ASSET-SS1-ENGLISH-",
+        "INCOMPLETE_COVERAGE:ENGLISH-",
+        "OPEN_ITEM:ENGLISH-",
+    ))
 }
 assert english_blockers == expected_blockers, (
     "English-specific compiler blockers differ from the explicit approval/coverage gates; "
