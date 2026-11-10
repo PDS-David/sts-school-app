@@ -14,8 +14,17 @@ function unique(values: string[], label: string) { must(new Set(values).size ===
 function once(body: string, anchor: string) {
   // DOCX text extractors can flatten a paragraph break into spaces or tabs.
   // Keep the anchor text exact, but treat runs of whitespace as equivalent.
+  const parts = anchor.trim().split(/\s+/u).map(part => part.replace(/[|\\{}()[\]^$+*?.-]/g, '\\function once(body: string, anchor: string) {
+  // DOCX text extractors can flatten a paragraph break into spaces or tabs.
+  // Keep the anchor text exact, but treat runs of whitespace as equivalent.
   const parts = anchor.trim().split(/\\s+/u).map(part => part.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\function once(body: string, anchor: string) { const i = body.indexOf(anchor); must(i >= 0 && body.indexOf(anchor, i + 1) < 0, `anchor missing or ambiguous: ${anchor.slice(0, 80)}`); return i; }'));
   const pattern = new RegExp(parts.join('\\\\s+'), 'gu');
+  const matches = [...body.matchAll(pattern)];
+  must(matches.length === 1, `anchor missing or ambiguous: ${anchor.slice(0, 80)}`);
+  return matches[0].index!;
+}
+'));
+  const pattern = new RegExp(parts.join('\\s+'), 'gu');
   const matches = [...body.matchAll(pattern)];
   must(matches.length === 1, `anchor missing or ambiguous: ${anchor.slice(0, 80)}`);
   return matches[0].index!;
