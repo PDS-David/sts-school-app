@@ -16,6 +16,8 @@ Added lesson:
 
 `SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-HUMAN-ANIMAL-WATER-BIOGAS`
 
+The lesson is accompanied by original asset `AG-ART-T3-W02-FARM-POWER-SOURCES-01` (`backend/src/db/ss1/assets/agricultural-science/t3-w02-eight-farm-power-sources.svg`; 8,924 bytes; SHA-256 `0f0fd56ae248279292364256c810cd54fd9198634733bef4d5768e705fee455d`). This original eight-panel infographic depicts all eight power sources and typical farm uses. It is not copied or traced from the unlicensed source images.
+
 The lesson covers:
 - human power: manual operations, advantages, drudgery and worker safety;
 - animal traction: oxen/bullocks, donkeys, camels and horses; ploughing, harrowing, ridging and transport; animal welfare and disease/environment constraints;
