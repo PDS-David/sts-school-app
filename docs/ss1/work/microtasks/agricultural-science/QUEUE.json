@@ -121,7 +121,8 @@
     "AG-LES-T1-W07-SOCIOECONOMIC-FACTORS (2026-11-10): authored original Week 7 supplement teaching five sourced socio-economic factors and distinguishing them from physical factors and from the source's single explicitly labelled factor. Coverage moved to IMPLEMENTED_EQUIVALENT; resolved CONTENT blocker removed. Practice marking totals 26/26. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS (2026-11-10): authored a statute-backed Week 8 supplement explaining Land Use Act 1978 rights of occupancy and effects on land access/tenure, plus NALDA, River Basin Development Authorities, ACGSF and NAIC instruments. Coverage COV-AG-T1-W08-AGRICULTURAL-LAWS moved to IMPLEMENTED_EQUIVALENT; only the agricultural-laws CONTENT open item removed. Separate source correction workflow item LAND-USE-ACT remains open; original source bytes unchanged. Practice marking totals 30/30. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T1-W10-MONOCOT-DICOT-TABLE (2026-11-10): authored a seven-row comparison table retaining the source's three taught contrasts and adding stem vascular bundles, flower parts, pollen apertures and secondary growth. Qualified exceptions; included examples, classification practice and criterion-level marking (28 marks). Coverage moved to IMPLEMENTED_EQUIVALENT; resolved seven-difference CONTENT item removed. Approval PENDING; verification/testing DEFERRED.",
-    "AG-LES-T2-W04-05-YAM-PRACTICES (2026-11-10): authored original IITA-backed supplement explaining yam staking and vine training, materials, timing, methods, benefits and agroecological variation. Cross-references original mulching instruction at blocks 197–203; the separate MULCHING-MCQ fact issue remains open. Coverage moved to IMPLEMENTED_EQUIVALENT; staking/training CONTENT item removed. Practice marking totals 24/24. Approval PENDING; verification/testing DEFERRED."
+    "AG-LES-T2-W04-05-YAM-PRACTICES (2026-11-10): authored original IITA-backed supplement explaining yam staking and vine training, materials, timing, methods, benefits and agroecological variation. Cross-references original mulching instruction at blocks 197–203; the separate MULCHING-MCQ fact issue remains open. Coverage moved to IMPLEMENTED_EQUIVALENT; staking/training CONTENT item removed. Practice marking totals 24/24. Approval PENDING; verification/testing DEFERRED.",
+    "AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS (2026-11-10): authored original supplement for fish-pond and forest/savanna ecosystem interactions, using FAO, NAERLS, UF IFAS, SANBI and peer-reviewed sources. Coverage moved to IMPLEMENTED_EQUIVALENT; resolved interactions CONTENT item removed. Existing mono-/mixed-cropping and mixed-farming source teaching remains unchanged. Practice marking totals 28/28. Approval PENDING; verification/testing DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -136,9 +137,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 129,
+    "IMPLEMENTED_TESTING_DEFERRED": 130,
     "BLOCKED": 13,
-    "PENDING": 12
+    "PENDING": 11
   },
   "items": [
     {
@@ -4325,8 +4326,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W06"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T2-W06: assessment asks for fish-pond and forest/savannah interactions, but source teaches only mono-cropping, mixed cropping and mixed farming.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-10 from master ac0303ac5d35454c6b2feb4f0ea591fe3d15a899. Added SUP-SS1-AGRICULTURAL-SCIENCE-T2-W06-ECOSYSTEM-INTERACTIONS; lesson body SHA-256 3422ceef8fe35cb3d3a3dea150d6e9ecaf8ca18bcd74f7ce58688eb1b754faac. Adds the assessment-missing fish-pond and forest/savanna interactions: pond producers/consumers/decomposers, food webs, photosynthesis/respiration and dissolved oxygen; forest competition, pollination, seed dispersal, decomposition and agroforestry; savanna grass/tree, grazing/browsing, fire, rainfall and nutrient cycling. Sources: FAO pond polyculture manual; Nigeria NAERLS fish-culture water-quality manual; UF IFAS dissolved oxygen; FAO forest/agroforestry and savanna guidance; SANBI savanna guidelines; 2024 Ecology Letters African savanna study. Original source content on monocropping/mixed cropping/mixed farming remains unchanged. Source archive/member hashes reused from verified AG-INV-T2/AG-WK-T2-W06. Practice marking checked: P1 4/4, P2 8/8, P3 6/6, P4 6/6, P5 4/4 (28 total). Package/queue JSON, unique lesson IDs, coverage reference and marking sums checked. Subject tests/importer/compiler/TypeScript not run under owner testing deferral. Approval remains PENDING; verification DEFERRED.",
       "completion_condition": "A clearly labelled supplement explains both missing settings with reliable provenance, complete keyed practice and criterion-level marks; PENDING approval."
     },
     {
@@ -5850,7 +5851,6 @@
     }
   },
   "next_runnable": [
-    "AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS",
     "AG-LES-T3-W01-TOOL-REFERENCE",
     "AG-LES-T3-W02-FARM-POWER-OPERATIONS",
     "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS",
