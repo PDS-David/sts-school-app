@@ -55,20 +55,6 @@ jobs:
           python scripts/ss1/filter_english_sources.py \
             --root "$RUNNER_TEMP/ss1-staged" \
             --output "$RUNNER_TEMP/ss1-english-staged"
-      - name: Inspect the extracted English antonym heading only
-        run: |
-          node --input-type=module <<'NODE'
-          import mammoth from 'mammoth';
-          import path from 'node:path';
-          const file = path.join(process.env.RUNNER_TEMP, 'ss1-english-staged', 'SSS 1', '2nd Term SS1_', 'ENGLISH.docx');
-          const { value } = await mammoth.extractRawText({ path: file });
-          const lines = value.split(/\r?\n/u);
-          const hits = lines.map((line, index) => ({ line, index })).filter(x => /ANTONYM|WEEK 8/i.test(x.line));
-          for (const hit of hits) {
-            console.log('ENGLISH_SOURCE_LINE=' + JSON.stringify({ before: lines[hit.index - 1], line: hit.line, after: lines[hit.index + 1] }));
-          }
-          if (!hits.length) console.log('ENGLISH_SOURCE_LINE=NONE');
-          NODE
       - name: Run the real SS1 parser/compiler in plan-only mode
         shell: bash
         run: |
