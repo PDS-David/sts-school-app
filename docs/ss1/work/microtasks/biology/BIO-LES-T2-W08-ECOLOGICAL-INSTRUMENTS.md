@@ -13,7 +13,7 @@ Status: **IMPLEMENTED — TESTING DEFERRED; CONTENT APPROVAL PENDING.**
 ## Registered lesson
 - Lesson ID: `SUP-SS1-BIOLOGY-T2-W08-ECOLOGICAL-INSTRUMENTS`
 - Lesson title: Supplementary Lesson: Measuring Ecological Factors
-- Lesson body SHA-256: `d684d54c49b20595220084bb54a5b4cfd7d7d44af0e4fed847541a4965250b58`
+- Lesson body SHA-256: `c882d2990a744277e9330d3a5a04065c190cbc4f6225926a2ffb129cb5e4eb00`
 - Six objectives explain ecological measurement, source instruments, common measurement functions, the hydrometer error, pH/colorimeter/Secchi distinctions and the sweep-net limitation.
 - Ten keyed practice questions with criterion-level marking; total **14 marks**.
 - No image asset is required. The native 12×3 source table is restated as a semantic three-column table (letter, instrument, source-stated use).

@@ -13,7 +13,7 @@ Status: **IMPLEMENTED — TESTING DEFERRED; CONTENT APPROVAL PENDING.**
 ## Registered lesson
 - Lesson ID: `SUP-SS1-BIOLOGY-T2-W06-ECOLOGY`
 - Lesson title: Supplementary Lesson: Basic Ecological Concepts
-- Lesson body SHA-256: `fb4437099b76e8566d7039010b014d469db69564c0735adfe0a5e7c23884dc80`
+- Lesson body SHA-256: `f131e5523cacaab75ebfa6d0e3fae1469ff6063bdc046a2500b0d5e38ff11c6e`
 - Six objectives cover ecology, autecology/synecology, environment and Earth-system spheres, habitat/niche/population/community/ecosystem/biome, habitat subdivisions and ecosystem components.
 - Ten keyed practice questions with criterion-level marking; total **24 marks**.
 - No new diagram or image asset is required.

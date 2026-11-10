@@ -13,7 +13,7 @@ Status: **IMPLEMENTED — TESTING DEFERRED; CONTENT APPROVAL PENDING.**
 ## Registered lesson
 - Lesson ID: `SUP-SS1-BIOLOGY-T2-W10-ASSOCIATIONS`
 - Lesson title: Supplementary Lesson: Types of Biological Associations
-- Lesson body SHA-256: `4fe36bfb5f03afb9710249d176ae1cd7e2c114e77f3801fd317a73326c54a3d2`
+- Lesson body SHA-256: `d8367dc7e4ff2ad64f12aab42c5c90da920c4a625747e6c78ac5131e5174c7ca`
 - Six objectives cover all six association types, interaction signs, verified examples, modern symbiosis terminology and parasitism/predation distinction.
 - Ten keyed practice questions with criterion-level marking; total **21 marks**.
 - No diagram or image asset is required.
