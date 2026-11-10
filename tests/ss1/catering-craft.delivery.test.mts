@@ -71,13 +71,15 @@ test('Stale cache retirement is transactionally scoped to secondary SS 1 Caterin
   assert.equal(calls.length, 1);
   assert.match(calls[0].sql, /s\.name=\$6 AND t\.term_label=\$7/);
   assert.match(calls[0].sql, /FOR UPDATE OF t/);
-  assert.deepEqual(calls[0].params.slice(3), ['secondary', 'SS 1', 'Catering Craft', '2nd Term']);
+  assert.deepEqual(calls[0].params.slice(3, 7), ['secondary', 'SS 1', 'Catering Craft', '2nd Term']);
+  assert.match(String(calls[0].params[7]), /^SS1_CC_WITHDRAWN:/);
 });
 
 test('Assessment access is denied and stale linked assessment retired when source is mismatched', async () => {
   const calls: string[] = [];
   const query = async (sql: string) => {
     calls.push(sql);
+    if (sql.includes('SELECT content_fingerprint FROM assessments')) return { rows: [{ content_fingerprint: null }] };
     if (sql.includes('SELECT t.id, t.school_code')) return { rows: [{ ...topic, source_reference: 'altered after review', assessment_id: 'assessment-41', content_fingerprint: null }] };
     return { rows: [{ retired: 1, closed_assessments: 1 }] };
   };
@@ -88,9 +90,11 @@ test('Assessment access is denied and stale linked assessment retired when sourc
 });
 
 test('Assessment list hides only stale SS1 Catering Craft assessment IDs', async () => {
-  const query = async (sql: string) => sql.includes('SELECT t.id, t.school_code')
-    ? { rows: [{ ...topic, source_reference: 'altered after review', assessment_id: 'assessment-41', content_fingerprint: null }] }
-    : { rows: [{ retired: 1, closed_assessments: 1 }] };
+  const query = async (sql: string) => {
+    if (sql.includes('SELECT id FROM assessments')) return { rows: [] };
+    if (sql.includes('SELECT t.id, t.school_code')) return { rows: [{ ...topic, source_reference: 'altered after review', assessment_id: 'assessment-41', content_fingerprint: null }] };
+    return { rows: [{ retired: 1, closed_assessments: 1 }] };
+  };
   const ids = await ss1WithdrawnAssessmentIds(query, ['assessment-41', 'unrelated']);
   assert.deepEqual([...ids], ['assessment-41']);
 });
