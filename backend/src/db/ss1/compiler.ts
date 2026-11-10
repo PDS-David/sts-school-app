@@ -11,11 +11,15 @@ export interface IdentifiedRow { id: string; source_id: string | null; body_sha2
 export interface Plan { version: 'ss1-plan-v1'; rows: Row[]; identified_rows: IdentifiedRow[]; dispositions: { id: string; status: string; detail: string }[]; assets: SubjectPackage['assets']; corrections: SubjectPackage['delivery_corrections']; blockers: string[]; ready: boolean }
 function must(ok: unknown, message: string): asserts ok { if (!ok) throw new Error(`SS1: ${message}`); }
 function unique(values: string[], label: string) { must(new Set(values).size === values.length, `duplicate ${label}`); }
+const escapeRegex = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 function once(body: string, anchor: string) {
-  // DOCX text extractors can flatten a paragraph break into spaces or tabs.
-  // Keep the anchor text exact, but treat runs of whitespace as equivalent.
-  const parts = anchor.trim().split(/\\s+/u).map(part => part.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&'));
-  const pattern = new RegExp(parts.join('\\\\s+'), 'gu');
+  // DOCX text extractors can flatten a paragraph break into spaces or tabs, so internal
+  // whitespace runs are equivalent. Leading/trailing anchor whitespace is significant
+  // (it is what makes indented headings unique) and is matched literally.
+  const lead = anchor.match(/^\s*/u)![0];
+  const trail = anchor.length > lead.length ? anchor.match(/\s*$/u)![0] : '';
+  const core = anchor.slice(lead.length, anchor.length - trail.length);
+  const pattern = new RegExp(escapeRegex(lead) + core.split(/\s+/u).map(escapeRegex).join('\\s+') + escapeRegex(trail), 'gu');
   const matches = [...body.matchAll(pattern)];
   must(matches.length === 1, `anchor missing or ambiguous: ${anchor.slice(0, 80)}`);
   return matches[0].index!;
