@@ -562,7 +562,7 @@
       "kind": "SCHEME_ONLY",
       "evidence": {
         "locator": "mammoth 1.13.0 extractRawText, scheme-of-work row 8, line 19 (before the first WEEK 1 SS1 heading)",
-        "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text, in the one-line parsed row ENGLISH-BODY-045 only). Metadata only, not teaching; no source text removed. The anchor is the whole line with its internal spacing and punctuation kept exactly; trailing whitespace is omitted because the parser trims the row body."
+        "explanation": "Unique whole-line scheme-row anchor: the trimmed line 'WEEK 8: ANTONYMS' occurs once in the unmodified extracted text. A later teaching heading begins with the same phrase but continues with the lesson title, so it is not the scheme marker. Matching is line-exact after whitespace normalization. Metadata only, not teaching; no source text removed."
       }
     },
     {
