@@ -47,7 +47,7 @@ test('Authored lessons have exact UTF-8 body hashes, unique identities and compl
 });
 
 test('All 24 correction records preserve exact source/body identity and bind a same-term replacement', () => {
-  // Drafted assertion. The queue task remains PENDING until all correction dependencies are complete.
+  // This checks binding identity only; inactive correction scope and owner approval remain separate.
   const p = packageSchema.parse(raw);
   assert.equal(p.delivery_corrections.length, 24);
   const correctionIds = new Set<string>();
