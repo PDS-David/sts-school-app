@@ -34,8 +34,8 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. The two original images were inspected
 
 ## Original replacement assets now authored
 Two new, independently authored SVGs are registered in `agricultural-science.json` and linked to the egg-formation supplement:
-- `AG-ART-T3-W07-EGG-OVIDUCT-01` — `backend/src/db/ss1/assets/agricultural-science/t3-w07-poultry-oviduct.svg`; 5,234 bytes; SHA-256 `7be214d007222c078c4fc6045daa8e1d7579d58760ca8d57b47520474a05e1e7`.
-- `AG-ART-T3-W07-EGG-CROSS-SECTION-01` — `backend/src/db/ss1/assets/agricultural-science/t3-w07-fertile-egg-cross-section.svg`; 3,771 bytes; SHA-256 `6bfcac621530933704137dadbcb79d3bd2b8f90c9863c4d0c7ce6de85cd5b4d1`.
+- `AG-ART-T3-W07-EGG-OVIDUCT-01` — `backend/src/db/ss1/assets/agricultural-science/t3-w07-poultry-oviduct.svg`; 4,965 bytes; SHA-256 `6a77e539204e845ca67f244b68fb1db9d4cc5c765b79e579b5e5bf2e31fb7759`.
+- `AG-ART-T3-W07-EGG-CROSS-SECTION-01` — `backend/src/db/ss1/assets/agricultural-science/t3-w07-fertile-egg-cross-section.svg`; 3,550 bytes; SHA-256 `a2106024242f8c37532cc95a014281663927ea098755f5251862a5f277e54cc2`.
 
 Both are original vector artwork, not copies, traces or derivatives of image19/image20. Asset approval remains PENDING and verification DEFERRED. The original unlicensed images must be excluded from learner delivery; the importer/learner route has not yet been verified.
 

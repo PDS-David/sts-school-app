@@ -33,8 +33,8 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. The original poultry diagram was inspe
 ## Original replacement assets now authored
 
 Two independently authored SVGs are registered to the poultry reproductive-system supplement:
-- `AG-ART-T3-W07-MALE-POULTRY-SYSTEM-01` — `backend/src/db/ss1/assets/agricultural-science/t3-w07-male-poultry-reproductive-system.svg`; 3,729 bytes; SHA-256 `961f6b32b459f050538b3e59f4926d629392b746e0e9c582b127ca5034422220`.
-- `AG-ART-T3-W07-FEMALE-POULTRY-SYSTEM-01` — `backend/src/db/ss1/assets/agricultural-science/t3-w07-female-poultry-reproductive-system.svg`; 4,674 bytes; SHA-256 `289ea0d5395c22bce081acff1734e796de50a24194f07b0723a6cadd9cc72d8c`.
+- `AG-ART-T3-W07-MALE-POULTRY-SYSTEM-01` — `backend/src/db/ss1/assets/agricultural-science/t3-w07-male-poultry-reproductive-system.svg`; 3,615 bytes; SHA-256 `082ac39e27af9b0c1fdc61a3732a43cf08bc1a92acb66f106df78938fb4132c5`.
+- `AG-ART-T3-W07-FEMALE-POULTRY-SYSTEM-01` — `backend/src/db/ss1/assets/agricultural-science/t3-w07-female-poultry-reproductive-system.svg`; 4,446 bytes; SHA-256 `b1f51df2dc342fc0f885ad87b28402450f8859aff831b34625a390a24b7f1c87`.
 
 Both are original SVG artwork, not copies, traces or derivatives of image21. The original unlicensed image remains excluded pending importer/learner-route verification. Asset approval remains PENDING and verification DEFERRED.
 
