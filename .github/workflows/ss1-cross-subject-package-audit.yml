@@ -47,6 +47,7 @@ jobs:
         run: |
           node --import tsx --input-type=module <<'NODE'
           import path from 'node:path';
+          import { readFileSync } from 'node:fs';
           import { createHash } from 'node:crypto';
           import mammoth from 'mammoth';
           import { parseTopics } from './backend/src/db/ingestTopics.ts';
