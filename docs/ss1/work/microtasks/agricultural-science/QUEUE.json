@@ -132,7 +132,8 @@
     "AG-LES-T3-W08-ENVIRONMENTAL-MEASURES (2026-11-10): authored sourced supplement for relative-humidity instruments, CBPP as second livestock airborne disease and innate/adaptive immunity, with 40-mark keyed practice. Three of five assessment gaps resolved; Nigeria climate ranking and equatorial-rainforest cattle-production explanation remain unverified, so assessment coverage remains PARTIAL and open. Source wording on wind/TB remains unchanged pending correction binding. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T3-W09-PIG-ASSESSMENT-SUPPLEMENT (2026-11-10): authored supplement from verified AG-FACT decision for sty/pigsty/pen, two intensive-system disadvantages and fatteners terminology; six keyed questions, 30 marks. Assessment-gap coverage implemented. Original spelling not corrected pending delivery correction binding; veterinary/chemical safety and pig anatomy image rights remain separate blockers. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T3-W10-CATTLE-TATTOOING (2026-11-10): authored supplement from AG-FACT-T3-W10-CATTLE-TERMS for cattle tattooing, zero-grazing, rotational grazing and rational grazing; seven keyed questions, 40 marks. Assessment coverage remains PARTIAL until the verified cattle-housing correction is bound to an original source lesson row. Source wording unchanged; veterinary/chemical safety, cattle diagram rights and OMML gestation preservation remain open. Approval PENDING; verification/testing DEFERRED.",
-    "AG-FACT-T1-W09-SCOPE (2026-11-10): prepared AG-FACT-T1-W09-SCOPE.md as an AI evidence brief with authoritative Nigerian, FAO and university references. Explicitly not a human subject-expert decision; task remains BLOCKED. Do not author farmstead/forestry lessons until qualified reviewer approves the nine decisions, especially five farmstead principles and primary forest product definition."
+    "AG-FACT-T1-W09-SCOPE (2026-11-10): prepared AG-FACT-T1-W09-SCOPE.md as an AI evidence brief with authoritative Nigerian, FAO and university references. Explicitly not a human subject-expert decision; task remains BLOCKED. Do not author farmstead/forestry lessons until qualified reviewer approves the nine decisions, especially five farmstead principles and primary forest product definition.",
+    "2026-11-10: Reconciled AG-LES-T1-W09-FARMSTEAD and AG-LES-T1-W09-FORESTRY queue status with the existing package draft records. Both draft lessons exist, but the required qualified subject-expert decision in AG-FACT-T1-W09-SCOPE remains absent; tasks are BLOCKED, not complete or approved. Updated the evidence brief to distinguish drafts from expert-cleared teaching."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -148,8 +149,7 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 139,
-    "BLOCKED": 13,
-    "PENDING": 2
+    "BLOCKED": 15
   },
   "items": [
     {
@@ -1590,8 +1590,8 @@
         "AG-WK-T1-W09",
         "AG-FACT-T1-W09-SCOPE"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by AG-WK-T1-W09 (2026-11-03): blocks 785-786 ask the two questions and 'farmstead' occurs nowhere else among the 933 blocks; COV-AG-T1-W09-FARMSTEAD is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W09-COVERAGE is open. AG-WK-T1-W09 authors no farmstead text.",
+      "status": "BLOCKED",
+      "implementation_reference": "A bounded draft lesson is now present in backend/src/db/ss1/subjects/agricultural-science.json as SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-FARMSTEAD. It includes learner-facing teaching, keyed practice, provenance and content_approval PENDING. However, AG-FACT-T1-W09-SCOPE is an AI-authored evidence brief, not a qualified expert decision. The task's expert-clearance prerequisite is therefore unmet; this remains a draft and is BLOCKED pending the named reviewer decision. No approval or verification is claimed.",
       "completion_condition": "A lesson in agricultural-science.json teaches the farm/farmstead distinction and the layout principles cleared by AG-FACT-T1-W09-SCOPE, labels itself a Week 9 evaluation supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented, no answer key is inferred, and no schema, compiler or shared file is edited."
     },
     {
@@ -1630,8 +1630,8 @@
         "AG-WK-T1-W09",
         "AG-FACT-T1-W09-SCOPE"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by AG-WK-T1-W09 (2026-11-03): blocks 793-801 and 855 assess forestry, while the only teaching mention in the document is the one-sentence Week 7 definition at block 560; COV-AG-T1-W09-FORESTRY is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W09-COVERAGE is open. AG-WK-T1-W09 authors no forestry text.",
+      "status": "BLOCKED",
+      "implementation_reference": "A bounded draft lesson is now present in backend/src/db/ss1/subjects/agricultural-science.json as SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-FORESTRY. It includes learner-facing teaching, keyed practice, provenance and content_approval PENDING. However, AG-FACT-T1-W09-SCOPE is an AI-authored evidence brief, not a qualified expert decision. The task's expert-clearance prerequisite is therefore unmet; this remains a draft and is BLOCKED pending the named reviewer decision. No approval or verification is claimed.",
       "completion_condition": "A lesson in agricultural-science.json teaches the forestry cluster cleared by AG-FACT-T1-W09-SCOPE, labels itself a Week 9 assessment supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented, no answer key is inferred, and no schema, compiler or shared file is edited."
     },
     {
