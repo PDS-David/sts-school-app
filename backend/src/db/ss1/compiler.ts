@@ -117,7 +117,7 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
       for (const t of topics) {
         must(t.title.trim() && t.title !== '(untitled)' && t.body.trim(), `empty lesson ${s.source_id}`);
         const id = originalLessonId(s.source_id, t.body);
-        const markers = markerRules.filter(r => t.body.split(/\\r?\\n/u).some(line => normalizeMarkerLine(line) === normalizeMarkerLine(r.anchor)));
+        const markers = markerRules.filter(r => t.body.split(/\r?\n/u).some(line => normalizeMarkerLine(line) === normalizeMarkerLine(r.anchor)));
         must(markers.length <= 1, `ambiguous marker ${id}`);
         plan.dispositions.push({ id, status: markers.length ? (markers[0] as Extract<SourceRule, {op:'classify_marker'}>).kind : 'ORIGINAL', detail: s.archive_member });
         // Marker bodies are retained; classification is not authority to discard instructional lines.
