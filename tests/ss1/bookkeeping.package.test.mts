@@ -6,6 +6,7 @@ import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import { applyRules, compilePackages } from '../../backend/src/db/ss1/compiler.ts';
+import { loadPackages } from '../../backend/src/db/ss1/loader.ts';
 import { isSchemeWorkWeekHeader } from '../../backend/src/db/ss1/topicParserRules.ts';
 
 const raw = JSON.parse(readFileSync(new URL('../../backend/src/db/ss1/subjects/bookkeeping.json', import.meta.url), 'utf8'));
@@ -466,4 +467,26 @@ test('Bookkeeping source rules compile the scheme preamble as markers, not a Wee
   for (const rule of markerRules) {
     assert(plan.dispositions.some(d => d.id === rule.id && d.status === 'SCHEME_ONLY'));
   }
+});
+
+
+test('Complete Bookkeeping delivery baseline remains present and internally approved', () => {
+  const packages = loadPackages();
+  const p = packages.find(x => x.subject_slug === 'bookkeeping');
+  assert(p, 'Bookkeeping package must be registered and loadable');
+  assert.equal(p.package_status, 'IMPLEMENTED');
+  assert.equal(p.lessons.length, 32);
+  assert.deepEqual(
+    ['1st Term', '2nd Term', '3rd Term'].map(term => p.lessons.filter(l => l.term === term).length),
+    [11, 10, 11],
+  );
+  assert.equal(p.lessons.reduce((n, l) => n + l.objectives.length, 0), 110);
+  assert.equal(p.lessons.reduce((n, l) => n + l.practice.length, 0), 75);
+  assert.equal(p.coverage.length, 81);
+  assert.equal(p.coverage.filter(c => c.status === 'IMPLEMENTED_EQUIVALENT').length, 75);
+  assert.equal(p.coverage.filter(c => c.status === 'MARKER').length, 6);
+  assert.equal(p.open_items.filter(item => item.blocks_delivery).length, 0);
+  assert(p.lessons.every(l => l.state.implementation === 'IMPLEMENTED'));
+  assert(p.lessons.every(l => l.state.content_approval === 'APPROVED'));
+  assert(p.lessons.every(l => l.state.verification === 'VERIFIED'));
 });
