@@ -115,7 +115,13 @@
     "2026-11-10: implemented T1 Week 6 carbon and water cycles supplement. Uses written source sequence rather than conflicting Animals→Plants diagram arrow; includes ocean-atmosphere exchange, groundwater flow and correct transpiration terminology. Sulphur/nitrogen and misfiled Week 7 assignment remain separate owner/teacher decisions.",
     "2026-11-10: completed T1 Week 10 animal hormone fact review. Seven gland/site/hormone pairings verified; Pituitrin, pancreas location and incomplete ovarian/pituitary hormone lists corrected in a separate report only.",
     "BIO-VIS-T2-W09-FOODWEB-REDRAW (2026-11-10) created a project-authored SVG, a dedicated Week 9 visual lesson target and registered asset metadata; source raster unchanged, thirteen confidently traceable arrows retained and ambiguous crossings omitted. The missing BIO-VIS-T2-FIG-FOODWEB.md disposition report was restored. Content approval remains pending; tests, importer/compiler and app/device checks remain deferred/not run.",
-    "2026-11-10: Added source-distinct Week 6 ecology and Week 7 biomes supplements with keyed 20-mark practice; five coverage records now bind to the lessons. Original source assessment coverage remains unresolved because no answer keys are supplied. Approval remains pending; runtime verification deferred."
+    "2026-11-10: Added source-distinct Week 6 ecology and Week 7 biomes supplements with keyed 20-mark practice; five coverage records now bind to the lessons. Original source assessment coverage remains unresolved because no answer keys are supplied. Approval remains pending; runtime verification deferred.",
+    "2026-11-10 final pass: Added independently authored SS1 Biology Week 10 association lesson and separate scheme-topic ecological-management supplement. The source scheme/body mismatch and unkeyed source assessment remain visible for teacher approval; no approval or verification is fabricated.",
+    "2026-11-10 final pass: Added SS1 Biology Week 9 Functioning Ecosystems student supplement; verified the source pyramid ordering from the original rendering report and corrected the universal consumer-survival claim in supplemental teaching. Source assessment gaps remain unapproved.",
+    "2026-11-10 final pass: Added Third Term Weeks 5, 6/7 and 8 student supplements, covering crop classification/agriculture, plant/livestock pests and diseases, IPM, food production, preservation and storage. Chemical/pesticide use remains non-operational and safety-qualified.",
+    "2026-11-10 final pass: Added Second Term Week 3 reproduction, Week 5 animal nutrition and Week 8 population/ecological-instruments student supplements with keyed assessments. Week 3 tapeworm question ambiguity and Week 5 original assessment approval remain flagged.",
+    "2026-11-10 final pass: Added separate Week 6/7 supplementary lessons for Fasciola/tsetse/tick life cycles and fungal/fungal-like crop diseases. Distinguishes oomycetes from true fungi and excludes pesticide/veterinary treatment instructions.",
+    "2026-11-10 final pass: Added Week 6 sulphur cycle supplement using OpenStax Biology 2e and Microbiology references; the source names sulphur but does not teach its cycle. Added a separate Week 6 keyed assessment supplement for carbon, water and sulphur cycles; original misplaced Week 7 questions are not reused."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -133,9 +139,9 @@
     "IMPLEMENTED_TESTING_DEFERRED": null
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 126,
+    "IMPLEMENTED_TESTING_DEFERRED": 148,
     "BLOCKED": 16,
-    "PENDING": 26
+    "PENDING": 4
   },
   "items": [
     {
@@ -2298,9 +2304,10 @@
         "BIO-WK-T1-W06",
         "BIO-FACT-T1-W06-SCOPE"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Not authored. Required by BIO-WK-T1-W06 (2026-11-03): block 783 names sulphur among the circulating nutrients, while no block in Week 6 or elsewhere teaches a sulphur cycle; COV-BIO-T1-W06-SULPHUR is UNRESOLVED and BIOLOGY-T1-W06-COVERAGE is open. BIO-WK-T1-W06 authors no cycle text.",
-      "completion_condition": "A lesson in biology.json teaches the sulphur cycle content cleared by BIO-FACT-T1-W06-SCOPE, labels itself a Week 6 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented, no answer key is inferred, and no schema, compiler or shared file is edited."
+      "completion_condition": "A lesson in biology.json teaches the sulphur cycle content cleared by BIO-FACT-T1-W06-SCOPE, labels itself a Week 6 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented, no answer key is inferred, and no schema, compiler or shared file is edited.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T1-W06-SULPHUR.md"
     },
     {
       "id": "BIO-LES-T1-W06-ASSESSMENT",
@@ -2340,9 +2347,10 @@
         "BIO-LES-T1-W06-CARBON-WATER",
         "BIO-VIS-T1-NUTRIENT-CYCLES"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Not authored. Required by BIO-WK-T1-W06 (2026-11-03): blocks 828-833 ask about carbohydrates, proteins, lipids and enzymes, taught at Week 7 blocks 837-909; no Week 6 question exists. BIOLOGY-T1-W06-ASSIGNMENT-MISPLACED is open. BIO-WK-T1-W06 authors no assessment and infers no answer key.",
-      "completion_condition": "A lesson in biology.json supplies Week 6 practice on nutrient cycling with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; it does not reproduce the Week 7 questions or infer their key, and no schema, compiler or shared file is edited."
+      "completion_condition": "A lesson in biology.json supplies Week 6 practice on nutrient cycling with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; it does not reproduce the Week 7 questions or infer their key, and no schema, compiler or shared file is edited.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T1-W06-ASSESSMENT.md"
     },
     {
       "id": "BIO-FACT-T1-W06-SCOPE",
@@ -3679,8 +3687,9 @@
         "BIO-FACT-T1-W10-ANIMAL-HORMONES",
         "BIO-VIS-T1-MOVEMENT-TABLE"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T1-W10; see the Week 10 objective index for exact source locators."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T1-W10; see the Week 10 objective index for exact source locators.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT.md"
     },
     {
       "id": "BIO-LES-T2-W01-ARTIFICIAL-PROPAGATION",
@@ -3977,8 +3986,9 @@
         "BIO-VIS-T2-W03-COCKROACH-REDRAW",
         "BIO-VIS-T2-W03-HOUSEFLY-REDRAW"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Core lesson text and four diagrams are authored and committed in this branch, but this task is not complete: BIO-FACT-T2-W03-TAPEWORM-SCOPE remains a required dependency. The lesson deliberately omits tapeworm because its inclusion in Week 3 has not been approved. The four visual subtasks are independently implemented; finish this lesson task only after the scope dependency is resolved and any required tapeworm content is handled."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Core lesson text and four diagrams are authored and committed in this branch, but this task is not complete: BIO-FACT-T2-W03-TAPEWORM-SCOPE remains a required dependency. The lesson deliberately omits tapeworm because its inclusion in Week 3 has not been approved. The four visual subtasks are independently implemented; finish this lesson task only after the scope dependency is resolved and any required tapeworm content is handled.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T2-W03-REPRODUCTION-ORGANISMS.md"
     },
     {
       "id": "BIO-LES-T2-W03-SEXUAL-ADVANTAGES",
@@ -4199,8 +4209,9 @@
         "BIO-FACT-T2-W05-HEALTH-CLAIMS",
         "BIO-VIS-T2-TBL-VITAMINS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T2-W05; see the Week 5 index for exact source locators and delivery gates."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T2-W05; see the Week 5 index for exact source locators and delivery gates.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T2-W05-ANIMAL-NUTRITION.md"
     },
     {
       "id": "BIO-FACT-T2-W06-ENVIRONMENT-FACTS",
@@ -4463,8 +4474,9 @@
         "BIO-VIS-T2-W09-FOODWEB-REDRAW",
         "BIO-VIS-T2-SHP-FOODCHAINS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T2-W09; biology.json has no registered lesson for this scheme objective."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T2-W09; biology.json has no registered lesson for this scheme objective.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T2-W09-FUNCTIONING-ECOSYSTEM.md"
     },
     {
       "id": "BIO-FACT-T2-W10-ASSOCIATIONS",
@@ -4511,8 +4523,9 @@
       "depends_on": [
         "BIO-WK-T2-W10"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T2-W10; ecological-management content is absent from the assigned source body."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T2-W10; ecological-management content is absent from the assigned source body.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-SCOPE-T2-W10-MANAGEMENT.md"
     },
     {
       "id": "BIO-LES-T2-W10-ASSOCIATIONS",
@@ -4535,8 +4548,9 @@
         "BIO-WK-T2-W10",
         "BIO-FACT-T2-W10-ASSOCIATIONS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T2-W10; no registered Biology lesson covers these association types."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T2-W10; no registered Biology lesson covers these association types.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T2-W10-ASSOCIATIONS.md"
     },
     {
       "id": "BIO-FACT-T3-W01-MICROBE-CLAIMS",
@@ -4606,8 +4620,9 @@
         "BIO-FACT-T3-W01-MICROBE-CLAIMS",
         "BIO-FACT-T3-W01-LAB-SAFETY"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T3-W01; no registered lesson exists, and practical scope remains blocked pending approved safety review."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T3-W01; no registered lesson exists, and practical scope remains blocked pending approved safety review.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T3-W01-MICROORGANISMS.md"
     },
     {
       "id": "BIO-FACT-T3-W02-DISEASES",
@@ -4768,8 +4783,9 @@
         "BIO-WK-T3-W03",
         "BIO-FACT-T3-W03-STI-CLAIMS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T3-W03; no STI/HIV lesson is registered in biology.json."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T3-W03; no STI/HIV lesson is registered in biology.json.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T3-W03-STI.md"
     },
     {
       "id": "BIO-FACT-T3-W04-HEALTH-CLAIMS",
@@ -4815,8 +4831,9 @@
         "BIO-WK-T3-W04",
         "BIO-FACT-T3-W04-HEALTH-CLAIMS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T3-W04; no lesson is registered for this scheme objective."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T3-W04; no lesson is registered for this scheme objective.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T3-W04-HEALTH.md"
     },
     {
       "id": "BIO-LES-T3-W04-PLASMODIUM-LIFECYCLE",
@@ -4839,8 +4856,9 @@
         "BIO-WK-T3-W04",
         "BIO-FACT-T3-W04-HEALTH-CLAIMS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T3-W04; no Plasmodium life-cycle teaching appears in this week."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T3-W04; no Plasmodium life-cycle teaching appears in this week.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T3-W04-PLASMODIUM-LIFECYCLE.md"
     },
     {
       "id": "BIO-LES-T3-W04-MISSING-TERMS",
@@ -4863,8 +4881,9 @@
         "BIO-WK-T3-W04",
         "BIO-FACT-T3-W04-HEALTH-CLAIMS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T3-W04; these terms are named in questions but not taught in the body."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T3-W04; these terms are named in questions but not taught in the body.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T3-W04-MISSING-TERMS.md"
     },
     {
       "id": "BIO-LES-T3-W04-OTHER-VECTORS",
@@ -4887,8 +4906,9 @@
         "BIO-WK-T3-W04",
         "BIO-FACT-T3-W04-HEALTH-CLAIMS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T3-W04; the source teaches mosquito/housefly control but not the other groups asked in evaluation."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T3-W04; the source teaches mosquito/housefly control but not the other groups asked in evaluation.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T3-W04-OTHER-VECTORS.md"
     },
     {
       "id": "BIO-VIS-T3-W05-PLANT-CLASSIFICATION",
@@ -4957,8 +4977,9 @@
         "BIO-WK-T3-W05",
         "BIO-FACT-T3-W05-AGRICULTURE-CLAIMS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T3-W05; no registered lesson exists for this scheme objective."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T3-W05; no registered lesson exists for this scheme objective.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T3-W05-PLANTS-AGRICULTURE.md"
     },
     {
       "id": "BIO-LES-T3-W05-SUSTAINABLE-PRACTICES",
@@ -4981,8 +5002,9 @@
         "BIO-WK-T3-W05",
         "BIO-FACT-T3-W05-AGRICULTURE-CLAIMS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T3-W05; these farming practices are asked in assessment but absent from the teaching body."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T3-W05; these farming practices are asked in assessment but absent from the teaching body.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T3-W05-SUSTAINABLE-PRACTICES.md"
     },
     {
       "id": "BIO-FACT-T3-W06-W07-PEST-DISEASES",
@@ -5052,8 +5074,9 @@
         "BIO-FACT-T3-W06-W07-PEST-DISEASES",
         "BIO-FACT-T3-W06-W07-CHEMICAL-SAFETY"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T3-W06-W07; no registered lesson exists for scheme row 6."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T3-W06-W07; no registered lesson exists for scheme row 6.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T3-W06-PLANT-PESTS-DISEASES.md"
     },
     {
       "id": "BIO-LES-T3-W07-ANIMAL-PESTS-DISEASES",
@@ -5077,8 +5100,9 @@
         "BIO-FACT-T3-W06-W07-PEST-DISEASES",
         "BIO-FACT-T3-W06-W07-CHEMICAL-SAFETY"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T3-W06-W07; no registered lesson exists for scheme row 7."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T3-W06-W07; no registered lesson exists for scheme row 7.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T3-W07-ANIMAL-PESTS-DISEASES.md"
     },
     {
       "id": "BIO-LES-T3-W06-W07-PARASITE-LIFECYCLES",
@@ -5101,8 +5125,9 @@
         "BIO-WK-T3-W06-W07",
         "BIO-FACT-T3-W06-W07-PEST-DISEASES"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T3-W06-W07; complete roundworm/liver-fluke life cycles are not supplied in the source."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T3-W06-W07; complete roundworm/liver-fluke life cycles are not supplied in the source.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T3-W06-W07-PARASITE-LIFECYCLES.md"
     },
     {
       "id": "BIO-LES-T3-W06-W07-FUNGAL-DISEASES",
@@ -5125,8 +5150,9 @@
         "BIO-WK-T3-W06-W07",
         "BIO-FACT-T3-W06-W07-PEST-DISEASES"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T3-W06-W07; the source contains fewer than five clearly identified fungal disease examples."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T3-W06-W07; the source contains fewer than five clearly identified fungal disease examples.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T3-W06-W07-FUNGAL-DISEASES.md"
     },
     {
       "id": "BIO-FACT-T3-W08-FOOD-SCIENCE",
@@ -5196,8 +5222,9 @@
         "BIO-FACT-T3-W08-FOOD-SCIENCE",
         "BIO-FACT-T3-W08-POPULATION-FOOD"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T3-W08; no registered lesson exists for the scheme objective."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Appended by BIO-WK-T3-W08; no registered lesson exists for the scheme objective.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T3-W08-FOOD-PRODUCTION-STORAGE.md"
     },
     {
       "id": "BIO-LES-T3-W08-STORAGE-STRUCTURES",
@@ -5630,9 +5657,10 @@
         "BIO-VIS-T2-TBL-INSTRUMENTS",
         "BIO-FACT-T2-W08-INSTRUMENTS"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Appended after the native-table disposition (2026-11-08). The table's cell boundaries survive in DOCX but not flattened text; row b remains under fact review.",
-      "completion_condition": "A source-distinct lesson teaches ecological measurement and includes all eleven instrument/use pairs in a semantic three-column table, preserves source wording, includes complete keyed practice, and binds to COV-BIO-T2-W08-ECOLOGICAL-INSTRUMENTS after the hydrometer pairing is verified."
+      "completion_condition": "A source-distinct lesson teaches ecological measurement and includes all eleven instrument/use pairs in a semantic three-column table, preserves source wording, includes complete keyed practice, and binds to COV-BIO-T2-W08-ECOLOGICAL-INSTRUMENTS after the hydrometer pairing is verified.",
+      "report": "docs/ss1/work/microtasks/biology/BIO-LES-T2-W08-ECOLOGICAL-INSTRUMENTS.md"
     },
     {
       "id": "BIO-VIS-T2-W03-PARAMECIUM-REDRAW",
@@ -5937,8 +5965,5 @@
       "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
     }
   },
-  "next_runnable": [
-    "BIO-SCOPE-T2-W10-MANAGEMENT",
-    "BIO-LES-T2-W10-ASSOCIATIONS"
-  ]
+  "next_runnable": []
 }
