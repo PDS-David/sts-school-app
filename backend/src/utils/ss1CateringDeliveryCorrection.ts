@@ -4,6 +4,7 @@ import { packageSchema, type SubjectPackage } from '../db/ss1/subjectPackageSche
 
 export const SS1_CATERING_CORRECTION_MARKER = '[SS1 CATERING CRAFT DELIVERY CORRECTION]';
 export const SS1_CATERING_WITHHELD_MARKER = '[SS1 CATERING CRAFT TOPIC WITHHELD]';
+export const SS1_CATERING_WITHDRAWN_FINGERPRINT_PREFIX = 'SS1_CC_WITHDRAWN:';
 const SCHOOL_CODE = 'secondary';
 const CLASS_NAME = 'SS 1';
 const SUBJECT_NAME = 'Catering Craft';
@@ -142,7 +143,7 @@ export async function retireStaleSs1Cache(query: Ss1Query, topicId: unknown, del
        WHERE a.school_code=$4 AND a.class_name=$5 AND a.content_fingerprint IS DISTINCT FROM $3
      ),
      closed AS (
-       UPDATE assessments a SET status='closed'
+       UPDATE assessments a SET status='closed', content_fingerprint=$8
        WHERE a.id IN (SELECT id FROM stale) AND a.school_code=$4 AND a.class_name=$5 AND a.status<>'closed'
        RETURNING a.id
      ),
@@ -154,7 +155,7 @@ export async function retireStaleSs1Cache(query: Ss1Query, topicId: unknown, del
        RETURNING id
      )
      SELECT (SELECT count(*) FROM upd) AS retired, (SELECT count(*) FROM closed) AS closed_assessments`,
-    [topicId, delivery.text, fingerprint, SCHOOL_CODE, CLASS_NAME, SUBJECT_NAME, delivery.termLabel],
+    [topicId, delivery.text, fingerprint, SCHOOL_CODE, CLASS_NAME, SUBJECT_NAME, delivery.termLabel, `${SS1_CATERING_WITHDRAWN_FINGERPRINT_PREFIX}${delivery.correctionId}`],
   );
   return { retired: Number(rows[0]?.retired ?? 0) > 0, closedAssessments: Number(rows[0]?.closed_assessments ?? 0) };
 }
@@ -164,6 +165,10 @@ const LINKED_SQL = `SELECT t.id, t.school_code, t.class_name, t.term_label, t.ti
   FROM topics t JOIN subjects sub ON sub.id=t.subject_id JOIN assessments a ON a.id=t.generated_assessment_id`;
 
 export async function ss1AssessmentDeliverable(query: Ss1Query, assessmentId: unknown) {
+  const { rows: markerRows } = await query('SELECT content_fingerprint FROM assessments WHERE id=$1', [assessmentId]);
+  if (String(markerRows[0]?.content_fingerprint ?? '').startsWith(SS1_CATERING_WITHDRAWN_FINGERPRINT_PREFIX)) {
+    return { ok: false as const, reason: 'This Catering Craft assessment has been withdrawn because its source lesson was corrected or withheld.' };
+  }
   const { rows } = await query(`${LINKED_SQL} WHERE t.generated_assessment_id=$1`, [assessmentId]);
   for (const row of rows) {
     const delivery = resolveSs1Delivery(row);
@@ -178,6 +183,11 @@ export async function ss1AssessmentDeliverable(query: Ss1Query, assessmentId: un
 export async function ss1WithdrawnAssessmentIds(query: Ss1Query, assessmentIds: unknown[]) {
   const withdrawn = new Set<unknown>();
   if (!assessmentIds.length) return withdrawn;
+  const { rows: markedRows } = await query(
+    'SELECT id FROM assessments WHERE id=ANY($1) AND content_fingerprint LIKE $2',
+    [assessmentIds, `${SS1_CATERING_WITHDRAWN_FINGERPRINT_PREFIX}%`],
+  );
+  for (const row of markedRows) withdrawn.add(row.id);
   const { rows } = await query(`${LINKED_SQL} WHERE t.generated_assessment_id = ANY($1)`, [assessmentIds]);
   for (const row of rows) {
     const delivery = resolveSs1Delivery(row);
