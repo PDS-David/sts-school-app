@@ -7180,6 +7180,19 @@
         "locator": "Third-Term Week Ten blocks 1124–1254; treatment claims at 1203, 1210–1212 and 1221–1222; gestation fraction at 1165; AG-FACT-T3-W10-CATTLE-SAFETY.md and AG-FACT-T3-W10-CATTLE-TERMS.md",
         "explanation": "The evidence review cites Cornell University, Ontario Ministry of Agriculture, Merck Veterinary Manual, USDA APHIS, WOAH and the Stockholm Convention. The replacement includes no drug dose, injection route, caustic chemical application or dehorning procedure."
       }
+    },
+    {
+      "id": "CORR-AG-T3-W01-TOOL-NAMES",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "source_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a",
+      "source_lesson_id": "SS1-SRC-458a07f7ea5a:BODY:0c06c5383b974616b0e06a23a1165fe3beeeec8b89b232c0383f83a6d2e056ff",
+      "body_sha256": "0c06c5383b974616b0e06a23a1165fe3beeeec8b89b232c0383f83a6d2e056ff",
+      "replacement_id": "SUP-SS1-AGRICULTURAL-SCIENCE-T3-W01-TOOL-REFERENCE",
+      "reason": "Replace the complete Week One source lesson in learner delivery with the authored illustrated reference to all 30 listed farm tools, including descriptions, appropriate uses, tool-specific care, safety guidance and a drawing-book project. The replacement corrects the Week One MCQ at source block 67 from “Hand Towel” to “Hand Trowel”; the source's own tool list at block 36 already names Hand trowel. The original DOCX remains unchanged.",
+      "evidence": {
+        "locator": "Verified Third-Term source member blocks 26–75; tool list block 36; MCQ block 67; source member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a; importer-parsed Week One body SHA-256 0c06c5383b974616b0e06a23a1165fe3beeeec8b89b232c0383f83a6d2e056ff",
+        "explanation": "The actual repository Mammoth 1.12.2 extraction and parseTopics implementation emitted this exact Week One source identity. The same source lists a hand trowel at block 36. The replacement lesson covers all 30 tools and adds an original illustrated learner reference, maintenance, safe use and assessed drawing practice. University of Minnesota and University of Maryland Extension sources support the hand-trowel transplanting use. No source bytes are edited."
+      }
     }
   ],
   "assets": [
@@ -11154,17 +11167,6 @@
       "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T3-W01-SIMPLE-TOOLS",
-        "SS1-SRC-458a07f7ea5a"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "AGRICULTURAL-SCIENCE-T3-W01-TOOL-NAMES",
-      "kind": "CONTENT",
-      "detail": "Weekend MCQ block 67 asks which tool is used for transplanting seedlings but prints 'Hand Towel'. The same source's tool list at block 36 contains 'Hand trowel' as a farm tool. University of Minnesota and University of Maryland Extension references confirm hand trowels are used for planting/transplanting seedlings. The intended option is 'C. Hand Trowel'. Parallel copies reproduce the typo, so the source's own list is the direct evidence. Block 66 also uses 'Hand towel' as a distractor in another MCQ; leave that occurrence unchanged under this task.",
-      "required_action": "When an original Week One lesson and its body_sha256 exist and a same-subject/same-term replacement lesson is authored, bind the correction at MCQ block 67 from 'Hand Towel' to 'Hand Trowel' using exact source ID/hash and lesson IDs/hashes. Do not alter block 66 or invent lesson IDs/body hashes; do not edit the archived source.",
-      "affected_ids": [
-        "AG-CORR-T3-W01-TOOL-NAMES",
         "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true
