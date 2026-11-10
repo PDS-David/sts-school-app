@@ -9,6 +9,7 @@ import {
   retireStaleSs1Cache,
   ss1AssessmentDeliverable,
   ss1WithdrawnAssessmentIds,
+  SS1_CATERING_WITHDRAWN_FINGERPRINT_PREFIX,
 } from '../../backend/src/utils/ss1CateringDeliveryCorrection.ts';
 
 const p = packageSchema.parse(packageData);
@@ -97,4 +98,28 @@ test('Assessment list hides only stale SS1 Catering Craft assessment IDs', async
   };
   const ids = await ss1WithdrawnAssessmentIds(query, ['assessment-41', 'unrelated']);
   assert.deepEqual([...ids], ['assessment-41']);
+});
+
+test('Withdrawal tombstone keeps an assessment hidden after its topic link is cleared', async () => {
+  const query = async (sql: string) => {
+    if (sql.includes('SELECT id FROM assessments')) return { rows: [{ id: 'assessment-41' }] };
+    return { rows: [] };
+  };
+  const ids = await ss1WithdrawnAssessmentIds(query, ['assessment-41']);
+  assert.deepEqual([...ids], ['assessment-41']);
+  assert.match(SS1_CATERING_WITHDRAWN_FINGERPRINT_PREFIX, /^SS1_CC_WITHDRAWN:/);
+});
+
+test('Assessment ID remains non-deliverable after topic unlink through withdrawal tombstone', async () => {
+  let linkedLookupCalled = false;
+  const query = async (sql: string) => {
+    if (sql.includes('SELECT content_fingerprint FROM assessments')) {
+      return { rows: [{ content_fingerprint: `${SS1_CATERING_WITHDRAWN_FINGERPRINT_PREFIX}CC-CORR-T2-W06-FRYING` }] };
+    }
+    if (sql.includes('SELECT t.id, t.school_code')) linkedLookupCalled = true;
+    return { rows: [] };
+  };
+  const result = await ss1AssessmentDeliverable(query, 'assessment-41');
+  assert.equal(result.ok, false);
+  assert.equal(linkedLookupCalled, false);
 });
