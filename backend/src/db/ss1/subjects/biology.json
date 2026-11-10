@@ -5194,7 +5194,8 @@
       "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 7 (sha256 c2c9d6de15c9e85f2424f85a328436ae6ff161dbde8bde99962005840f02280e); Week 6 label block 781 (sha256 03792d537a25eed5326e922c8a90f71cfb1c9739ed47959db18710e2aa49a653); Week 6 body blocks 781-825 (range sha256 3628d37fa086d39c4c9c1c53a1a57fa732421e4004120ad02114f65ba3d79975)",
       "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SUP-SS1-BIOLOGY-T1-W06-CARBON-WATER"
+        "SUP-SS1-BIOLOGY-T1-W06-CARBON-WATER",
+        "SUP-SS1-BIOLOGY-T1-W06-SULPHUR"
       ],
       "evidence": [
         {
@@ -5220,6 +5221,10 @@
         {
           "locator": "SUP-SS1-BIOLOGY-T1-W06-CARBON-WATER; source carbon blocks 784–803; water blocks 804–825; body SHA-256 7fe974129c0866a93d2e587bebb5493cf7681ea423d1e5c33b09f04d84219d29",
           "explanation": "A source-distinct lesson teaches the two cycles actually present in Week 6, follows the written text rather than the conflicting carbon diagram arrow, includes ocean-atmosphere exchange, corrects the delivery term to transpiration and adds the groundwater route described in the prose. Complete 20-mark keyed practice included. No sulphur/nitrogen cycle or misplaced Week 7 assessment has been added."
+        },
+        {
+          "locator": "SUP-SS1-BIOLOGY-T1-W06-SULPHUR; SUP-SS1-BIOLOGY-T1-W06-NUTRIENT-CYCLE-ASSESSMENT",
+          "explanation": "The original carbon and water lesson is supplemented with an explicitly separate sulphur-cycle lesson because the source definition names sulphur without teaching it. A new keyed Week 6 assessment tests nutrient cycling, not the source's misplaced Week 7 food/enzyme questions."
         }
       ]
     },
@@ -8230,8 +8235,8 @@
     {
       "id": "BIOLOGY-T1-W06-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 6's scheme entry 6 is taught in the source but is not deliverable: the package has no lesson and no parsed row for the week and the importer has not been run, so COV-BIO-T1-W06-SCHEME-6 is PARTIAL. The carbon and water cycle sketches at blocks 795 and 821 contain handwritten labels that do not survive text extraction. The carbon diagram has a central Animals→Plants arrow that conflicts with block 785's Plants→Animals explanation and an unclear sea-to-plants path, while the prose describes sea-atmosphere exchange. The water diagram labels 'transpiration' but the prose at blocks 804/806 prints 'transportation'; its underground-water route is not drawn. No nitrogen cycle diagram or text exists in Week 6. The week's definition (block 783) names carbon, sulphur and water, but only carbon (784-795) and water (804-819) are taught; COV-BIO-T1-W06-SULPHUR remains UNRESOLVED.",
-      "required_action": "Author BIO-LES-T1-W06-CARBON-WATER as a clearly labelled supplement for the two source-taught cycles, using structured flow sequences based on the written explanations (not the conflicting carbon arrow), using 'transpiration' in the delivery replacement while retaining the source's 'transportation' wording unchanged, and including the underground-water route described in the prose. Do not add a nitrogen or sulphur cycle unless BIO-FACT-T1-W06-SCOPE clears it. Then author the keyed assessment supplement after the scope decision; keep the sulphur supplement gated on the same decision. Do not invent a parsed lesson ID or delivery-correction binding before importer identification.",
+      "detail": "Week 6 now has registered student supplements for the source-taught carbon/water cycles and the sulphur cycle named but not taught in the source definition. A separate keyed nutrient-cycle assessment is also registered. The original source's conflicting carbon diagram arrow, missing groundwater path, 'transportation' typo and absence of nitrogen remain documented; the delivery lessons use the written explanation and correct terminology. The original source is unchanged.",
+      "required_action": "Review the Week 6 supplements and confirm whether the syllabus expects any further nutrient cycles. The sulphur lesson is independently sourced and labelled supplemental; no nitrogen cycle is added because neither the Week 6 body nor scheme names it. Confirm final content approval and visual treatment.",
       "affected_ids": [
         "COV-BIO-T1-W06-SCHEME-6",
         "COV-BIO-T1-W06-SULPHUR",
@@ -8245,8 +8250,8 @@
     {
       "id": "BIOLOGY-T1-W06-ASSIGNMENT-MISPLACED",
       "kind": "CONTENT",
-      "detail": "Week 6's assignment (blocks 826-833) asks for the constituent elements, food sources and functions of carbohydrate, protein and lipid (828-831) and for the definition and characteristics of an enzyme (832-833). None of that is Week 6 content: food substances are taught in Week 7 from block 837 and enzymes from block 903, where the characteristics are listed at 905-909. Week 6 therefore ends with no question on nutrient cycling at all, and its only assessment tests the following week's material. The misplacement is recorded, not corrected in the source. The bounded supplement BIO-LES-T1-W06-ASSESSMENT is appended to supply keyed Week 6 practice.",
-      "required_action": "Record the disposition of the misplaced assignment in BIO-FACT-T1-W06-SCOPE (withdraw it from Week 6, re-scope it, or replace it), then author the Week 6 assessment supplement. Do not move or rewrite source text and do not infer an answer key for the Week 7 questions from Week 6.",
+      "detail": "The original Week 6 assignment still tests Week 7 food substances and enzymes and remains unchanged. A separate keyed Week 6 nutrient-cycle assessment is now registered as SUP-SS1-BIOLOGY-T1-W06-NUTRIENT-CYCLE-ASSESSMENT; it does not reuse or infer answers for the misplaced Week 7 questions.",
+      "required_action": "Teacher/owner to decide whether the original Week 6 assignment is withdrawn, moved to Week 7 or retained as cumulative revision. The new Week 6 practice assessment is ready for review.",
       "affected_ids": [
         "SS1-SRC-422e0e6ddde9",
         "BIO-LES-T1-W06-ASSESSMENT",
@@ -8257,8 +8262,8 @@
     {
       "id": "BIOLOGY-T1-W06-SOURCE-DEFECTS",
       "kind": "CONTENT",
-      "detail": "Week 6 wording defects, retained uncorrected: (1) block 783 calls carbon, sulphur and water 'certain nutrient' in the singular and treats water, a compound, as a nutrient example; (2) block 788 prints 'C02' with a zero; (3) block 793 reads 'carbon in item'; (4) blocks 805 and 807 print 'transportation' where transpiration is meant; (5) block 805 reads 'form underground water empties into the oceans' and its condensation sentence repeats 'when' and lacks a main clause; (6) block 792 reads 'made up of carbon component'; (7) block 828 says 'two function' for two functions; (8) block 833 labels the second enzyme question 'b' with no 'a'. No source byte is corrected here.",
-      "required_action": "Record one disposition per numbered defect in BIO-FACT-T1-W06-SCOPE; the authored supplements must not copy the faulty wording. Source text stays unchanged.",
+      "detail": "Source defects remain unchanged in the original document. The delivery supplements use corrected terms and explanations (including CO2, transpiration, clear water-cycle sequence and accurate wording) without altering the source bytes.",
+      "required_action": "Teacher to review the corrected supplemental presentation and approve the disposition of the original source wording; no source text has been silently changed.",
       "affected_ids": [
         "COV-BIO-T1-W06-SCHEME-6",
         "BIO-FACT-T1-W06-SCOPE"
