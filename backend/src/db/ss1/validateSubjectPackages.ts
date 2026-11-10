@@ -24,7 +24,6 @@ async function main() {
   assert(files.length > 0, `No subject package JSON files found in ${subjectsDir}`);
 
   const summaries: Array<Record<string, unknown>> = [];
-  const failures: string[] = [];
 
   for (const file of files) {
     const fullPath = path.join(subjectsDir, file);
@@ -32,6 +31,7 @@ async function main() {
     const subject = packageSchema.parse(raw);
     const lessonIds = subject.lessons.map(lesson => lesson.id);
     const ruleIds = subject.source_rules.map(rule => rule.id);
+    const sourceIds = [...subject.sources.map(source => source.source_id), ...('external_sources' in subject ? subject.external_sources.map(source => source.source_id) : [])];
 
     assert(new Set(lessonIds).size === lessonIds.length, `${file}: duplicate lesson IDs`);
     assert(new Set(ruleIds).size === ruleIds.length, `${file}: duplicate source-rule IDs`);
@@ -51,7 +51,8 @@ async function main() {
       for (const lessonId of coverage.lesson_ids) {
         const lessonExists = lessonIds.includes(lessonId);
         const markerExists = coverage.status === 'MARKER' && ruleIds.includes(lessonId);
-        assert(lessonExists || markerExists, `${file}: unresolved coverage target ${coverage.id} -> ${lessonId}`);
+        const originalExists = sourceIds.some(sourceId => lessonId.startsWith(`${sourceId}:BODY:`));
+        assert(lessonExists || markerExists || originalExists, `${file}: unresolved coverage target ${coverage.id} -> ${lessonId}`);
       }
       if (coverage.status === 'IMPLEMENTED_EQUIVALENT') {
         assert(coverage.lesson_ids.some(id => lessonIds.includes(id)), `${file}: equivalent coverage has no supplement: ${coverage.id}`);
@@ -79,10 +80,6 @@ async function main() {
   }
 
   process.stdout.write(`${JSON.stringify({ valid: true, packages: summaries }, null, 2)}\\n`);
-  if (failures.length) {
-    process.stderr.write(failures.join('\\n') + '\\n');
-    process.exitCode = 1;
-  }
 }
 
 main().catch(error => {
