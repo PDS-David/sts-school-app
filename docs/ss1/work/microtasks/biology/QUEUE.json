@@ -92,7 +92,8 @@
     "BIO-FACT-T1-W05-EQUATIONS (2026-11-09) reviewed the photosynthesis portion only: blocks 683, 689, 693, 695, 697 and 700 were compared with OpenStax Biology 2e sections 8.1 and 8.2. Block 683's product side should release oxygen; block 700 is a balanced generic carbohydrate-unit representation; the source's intermediate notation at 689/693/695/697 is distinguished from modern photosystem/electron-carrier notation. The separate block 713 chemosynthesis equation was not reviewed or corrected here because it involves a hazardous chemical reaction; a separate BLOCKED qualified-teacher review item was added. Original source unchanged; no practical guidance; tests/importer/display remain deferred.",
     "BIO-FACT-T1-W07-FOOD-CLAIMS (2026-11-09) verified carbohydrate/lipid formulas, mineral/vitamin functions and deficiency claims, and digestive-enzyme actions. Source member hash 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. External evidence: OpenStax Biology 2e/A&P 2e, PubChem, NIH ODS, MedlinePlus, PubMed sulfur amino-acid review, IUBMB chymosin nomenclature, and Gut/PMC intestinal-peptidase reviews. Corrected facts are for a separate supplement; original source remains unchanged. Week 7 lesson and keyed practice remain to be authored; testing and student-facing approval deferred.",
     "BIO-FACT-T2-W01-REVISION-FACTS (2026-11-09) verified the Week 1 revision prompts at converted DOCX blocks 76, 85 and 87. CBSE/NCERT support Amoeba sporulation as encystation followed by multiple fission. OpenStax and a peer-reviewed study confirm Paramecium synkaryon divides three times to eight nuclei during sexual conjugation, so the source's 'asexual' label is wrong. The perennating-organ item remains ambiguous; a separate BLOCKED teacher-decision task was added because references differ on whether suckers are perennating organs. Source unchanged; no answer key/lesson authored.",
-    "BIO-VIS-T1-W10-MITOSIS-REDRAW (2026-11-09) reused the verified four-stage source disposition: Interphase/Prophase, Metaphase, Anaphase and Telophase/Cytokinesis. The project-authored asset is BLOCKED because the package has no lesson rows or verified parser-generated lesson_id; compiler.ts requires asset.lesson_id to resolve. Importer execution is owner-deferred; no ID is invented and no orphan asset is committed. Added shared gate BIOLOGY-ASSET-LESSON-ID-BINDING."
+    "BIO-VIS-T1-W10-MITOSIS-REDRAW (2026-11-09) reused the verified four-stage source disposition: Interphase/Prophase, Metaphase, Anaphase and Telophase/Cytokinesis. The project-authored asset is BLOCKED because the package has no lesson rows or verified parser-generated lesson_id; compiler.ts requires asset.lesson_id to resolve. Importer execution is owner-deferred; no ID is invented and no orphan asset is committed. Added shared gate BIOLOGY-ASSET-LESSON-ID-BINDING.",
+    "BIO-LES-T1-W08-MODE-OF-NUTRITION (2026-11-10) authored a source-separated SS1 supplement covering autotrophic/heterotrophic, holozoic, saprotrophic, parasitic, mutualistic, commensal, carnivorous-plant, filter-feeding and fluid-feeding nutrition. Added seven keyed practice questions (26 marks) with criterion-level marking and five references. Updated Week 8 scheme coverage to IMPLEMENTED_EQUIVALENT; original assignment remains UNRESOLVED until a Biology teacher approves the draft key. Content approval is PENDING and verification DEFERRED. Source document is not modified; no assets were required. Tests/importer/compiler/DB/device checks remain deferred by owner."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -108,9 +109,9 @@
     "SCOPE_DECOMPOSITION": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 81,
+    "IMPLEMENTED_TESTING_DEFERRED": 82,
     "BLOCKED": 16,
-    "PENDING": 71
+    "PENDING": 70
   },
   "items": [
     {
@@ -3574,8 +3575,8 @@
       "depends_on": [
         "BIO-WK-T1-W08"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T1-W08; see the Week 8 objective index for exact source locators."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored and bound lesson SUP-SS1-BIOLOGY-T1-W08-MODE-OF-NUTRITION in backend/src/db/ss1/subjects/biology.json; body SHA-256 593e95f6b4c63aaf78680f352a3e1bb9368f032cc97cf8d610db386da95a61bb. Covers all Week 8 modes, distinguishes broad nutrition types from feeding mechanisms and symbiosis from mutualism, includes seven keyed questions (26 marks) and five cited references. Source note is unchanged. Scheme coverage is IMPLEMENTED_EQUIVALENT; assignment coverage remains UNRESOLVED pending teacher approval. Lesson content_approval=PENDING, implementation=IMPLEMENTED, verification=DEFERRED. No test, importer, database or app/device check was run."
     },
     {
       "id": "BIO-LES-T1-W09-ECOLOGY",
@@ -5911,48 +5912,47 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T3-W05-PLANT-CLASSIFICATION",
-    "BIO-VIS-T2-W03-PARAMECIUM-REDRAW",
-    "BIO-VIS-T2-W03-SPIROGYRA-REDRAW",
-    "BIO-VIS-T2-W03-COCKROACH-REDRAW",
-    "BIO-VIS-T2-W03-HOUSEFLY-REDRAW",
-    "BIO-VIS-T2-W09-FOODWEB-REDRAW",
-    "BIO-FACT-T2-W02-REVISION-FACTS",
-    "BIO-FACT-T2-W03-TAPEWORM-SCOPE",
-    "BIO-FACT-T2-W04-KLINOSTAT",
-    "BIO-FACT-T2-W05-HEALTH-CLAIMS",
-    "BIO-FACT-T2-W06-ENVIRONMENT-FACTS",
-    "BIO-FACT-T2-W07-GEOGRAPHY",
-    "BIO-FACT-T2-W08-INSTRUMENTS",
-    "BIO-FACT-T2-W09-ENERGY-CLAIMS",
-    "BIO-FACT-T2-W10-ASSOCIATIONS",
-    "BIO-FACT-T3-W01-MICROBE-CLAIMS",
-    "BIO-FACT-T3-W02-DISEASES",
-    "BIO-FACT-T3-W03-STI-CLAIMS",
-    "BIO-FACT-T3-W04-HEALTH-CLAIMS",
-    "BIO-FACT-T3-W05-AGRICULTURE-CLAIMS",
-    "BIO-FACT-T3-W06-W07-PEST-DISEASES",
-    "BIO-FACT-T3-W08-FOOD-SCIENCE",
-    "BIO-FACT-T3-W08-POPULATION-FOOD",
-    "BIO-FACT-T1-W10-ANIMAL-HORMONES",
-    "BIO-SCOPE-T2-W06-BIOMES",
-    "BIO-SCOPE-T2-W10-MANAGEMENT",
-    "BIO-SCOPE-T3-W03-LABEL-ALIGNMENT",
     "BIO-LES-T1-W05-CONDITIONS",
     "BIO-LES-T1-W07-ANIMAL-NUTRITION",
-    "BIO-LES-T1-W08-MODE-OF-NUTRITION",
     "BIO-LES-T1-W09-ECOLOGY",
     "BIO-LES-T2-W01-ARTIFICIAL-PROPAGATION",
     "BIO-LES-T2-W01-ASEXUAL-ADVANTAGES",
     "BIO-LES-T2-W02-SEXUAL-REPRODUCTION-MEIOSIS",
     "BIO-LES-T2-W02-EXCRETION",
+    "BIO-FACT-T2-W02-REVISION-FACTS",
+    "BIO-FACT-T2-W03-TAPEWORM-SCOPE",
     "BIO-LES-T2-W03-SEXUAL-ADVANTAGES",
+    "BIO-FACT-T2-W04-KLINOSTAT",
+    "BIO-FACT-T2-W05-HEALTH-CLAIMS",
+    "BIO-FACT-T2-W06-ENVIRONMENT-FACTS",
+    "BIO-SCOPE-T2-W06-BIOMES",
+    "BIO-FACT-T2-W07-GEOGRAPHY",
+    "BIO-FACT-T2-W08-INSTRUMENTS",
     "BIO-LES-T2-W08-OVERPOPULATION",
+    "BIO-FACT-T2-W09-ENERGY-CLAIMS",
+    "BIO-FACT-T2-W10-ASSOCIATIONS",
+    "BIO-SCOPE-T2-W10-MANAGEMENT",
+    "BIO-FACT-T3-W01-MICROBE-CLAIMS",
+    "BIO-FACT-T3-W02-DISEASES",
     "BIO-LES-T3-W02-GROWTH-PHASES",
     "BIO-LES-T3-W02-MICROBIAL-CONTROL",
     "BIO-LES-T3-W02-NITROGEN-CARBON-CYCLES",
+    "BIO-FACT-T3-W03-STI-CLAIMS",
+    "BIO-SCOPE-T3-W03-LABEL-ALIGNMENT",
+    "BIO-FACT-T3-W04-HEALTH-CLAIMS",
+    "BIO-VIS-T3-W05-PLANT-CLASSIFICATION",
+    "BIO-FACT-T3-W05-AGRICULTURE-CLAIMS",
+    "BIO-FACT-T3-W06-W07-PEST-DISEASES",
+    "BIO-FACT-T3-W08-FOOD-SCIENCE",
+    "BIO-FACT-T3-W08-POPULATION-FOOD",
     "BIO-LES-T3-W08-STORAGE-STRUCTURES",
     "BIO-LES-T1-W03-CLASSIFICATION",
-    "BIO-LES-T1-W06-CARBON-WATER"
+    "BIO-LES-T1-W06-CARBON-WATER",
+    "BIO-FACT-T1-W10-ANIMAL-HORMONES",
+    "BIO-VIS-T2-W03-PARAMECIUM-REDRAW",
+    "BIO-VIS-T2-W03-SPIROGYRA-REDRAW",
+    "BIO-VIS-T2-W03-COCKROACH-REDRAW",
+    "BIO-VIS-T2-W03-HOUSEFLY-REDRAW",
+    "BIO-VIS-T2-W09-FOODWEB-REDRAW"
   ]
 }
