@@ -134,13 +134,15 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
       for (const rule of markerRules) {
         const matches = topics.filter(t => markerMatches(t.body, rule));
         if (rule.op === 'classify_marker' && rule.kind === 'SCHEME_ONLY') {
-          // Coverage targets the source-rule identity, whether the marker is
-          // represented by a parsed row or is only present in the scheme.
+          // A scheme-only marker may have no parsed teaching row, but if one
+          // exists it must be unique. Revision/examination markers must bind
+          // exactly one parsed row. All three kinds are addressable by their
+          // source-rule identity in coverage.
           must(matches.length <= 1, 'marker ' + rule.id + ' must bind at most one parsed row');
-          plan.dispositions.push({ id: rule.id, status: 'SCHEME_ONLY', detail: rule.evidence.locator });
         } else {
           must(matches.length === 1, 'marker ' + rule.id + ' must bind exactly one parsed row');
         }
+        plan.dispositions.push({ id: rule.id, status: rule.kind, detail: rule.evidence.locator });
       }
       for (const t of topics) {
         must(t.title.trim() && t.title !== '(untitled)' && t.body.trim(), `empty lesson ${s.source_id}`);
@@ -189,7 +191,11 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
         must(c.status === 'IMPLEMENTED_EQUIVALENT', `external scheme coverage must map to authored equivalent ${c.id}`);
       }
       for (const id of c.lesson_ids) {
-        const marker = c.status === 'MARKER' && p.source_rules.some(r => r.id === id && r.source_id === c.source_id && r.op === 'classify_marker' && r.kind === 'SCHEME_ONLY') && plan.dispositions.some(d => d.id === id && d.status === 'SCHEME_ONLY');
+        const markerRule = p.source_rules.find(r => r.id === id && r.source_id === c.source_id && r.op === 'classify_marker');
+        const marker = c.status === 'MARKER'
+          && markerRule?.op === 'classify_marker'
+          && ['REVISION', 'EXAMINATION', 'SCHEME_ONLY'].includes(markerRule.kind)
+          && plan.dispositions.some(d => d.id === id && d.status === markerRule.kind);
         must(marker || (byId.has(id) && byId.get(id)!.row.subjectName === p.canonical_subject), `coverage target ${c.id}/${id}`);
       }
       if (c.status === 'PARTIAL' || c.status === 'UNRESOLVED') plan.blockers.push(`INCOMPLETE_COVERAGE:${c.id}`);
