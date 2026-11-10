@@ -192,4 +192,7 @@ test('Yoruba second-term Week 11 revision scheme row is classified as scheme-onl
   const rule = yoruba.source_rules.find(item => item.id === 'SS1-SRC-ec4a5095420d-R002');
   assert(rule && rule.op === 'classify_marker');
   assert.equal(rule.kind, 'SCHEME_ONLY');
+  const exam = yoruba.source_rules.find(item => item.id === 'SS1-SRC-ec4a5095420d-R003');
+  assert(exam && exam.op === 'classify_marker');
+  assert.equal(exam.kind, 'SCHEME_ONLY');
 });
