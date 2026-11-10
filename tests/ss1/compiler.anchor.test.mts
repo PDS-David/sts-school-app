@@ -43,3 +43,12 @@ test('subject lesson IDs accept only the full slug or deterministic subject init
   assert.equal(isSubjectLessonId('SUP-SS1-C-T3-W10-TABLE-LAYING', 'catering-craft'), false);
   assert.equal(isSubjectLessonId('SUP-SS1-FOOD-T1-W01-INTRO', 'food-and-nutrition'), false);
 });
+
+test('English first-term revision scheme marker includes its row number in whole-line matching', () => {
+  const english = loadPackages().find(item => item.subject_slug === 'english');
+  assert(english, 'English package is missing');
+  const rule = english.source_rules.find(item => item.id === 'SS1-SRC-a00657d42196-R028');
+  assert(rule && rule.op === 'classify_marker');
+  assert.equal(rule.match_mode, 'WHOLE_LINE');
+  assert.match(rule.anchor, /^1 General Revision of Last Term's Examination;/);
+});
