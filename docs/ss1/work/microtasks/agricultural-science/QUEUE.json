@@ -146,7 +146,8 @@
     "2026-11-10: Added AG-LES-T3-W02-HUMAN-ANIMAL-WATER-BIOGAS. Together with the existing farm-power operations lesson, all eight source categories are now covered by learner-facing package lessons. COV-AG-T3-W02-FARM-POWER is IMPLEMENTED_EQUIVALENT; importer mapping and several source-specific fact/rights issues remain open.",
     "2026-11-10: Added original eight-source farm-power infographic and linked it to the human/animal/water/biogas supplement. Updated the five Week Two visual disposition records; unlicensed original images remain excluded pending importer/learner-route verification.",
     "2026-11-10: PR #468 CI run 42797644614 executed the subject-package validation loop before stopping in the unrelated Bookkeeping regression RULE-BK-T3-W02 (shared compiler.ts: anchor must start at a line boundary). No Agricultural Science-specific failure was reported; later PostgreSQL/route test groups were skipped by the shared static-step failure. Do not change shared compiler code under the Agricultural Science package scope.",
-    "AG-asset-integrity correction (2026-11-10): the four committed original SVGs were confirmed as the intended learner diagrams by their structure/labels, matching lesson explanations and original-artwork PERMITTED provenance. Their committed bytes were authoritative; stale package and documentation metadata were rebound without editing SVG artwork or lesson bodies. Actual UTF-8 bytes/SHA-256: AG-ART-T3-W07-EGG-OVIDUCT-01 4,965 / 6a77e539204e845ca67f244b68fb1db9d4cc5c765b79e579b5e5bf2e31fb7759; AG-ART-T3-W07-EGG-CROSS-SECTION-01 3,550 / a2106024242f8c37532cc95a014281663927ea098755f5251862a5f277e54cc2; AG-ART-T3-W07-MALE-POULTRY-SYSTEM-01 3,615 / 082ac39e27af9b0c1fdc61a3732a43cf08bc1a92acb66f106df78938fb4132c5; AG-ART-T3-W07-FEMALE-POULTRY-SYSTEM-01 4,446 / b1f51df2dc342fc0f885ad87b28402450f8859aff831b34625a390a24b7f1c87. No SVG or lesson content changed."
+    "AG-asset-integrity correction (2026-11-10): the four committed original SVGs were confirmed as the intended learner diagrams by their structure/labels, matching lesson explanations and original-artwork PERMITTED provenance. Their committed bytes were authoritative; stale package and documentation metadata were rebound without editing SVG artwork or lesson bodies. Actual UTF-8 bytes/SHA-256: AG-ART-T3-W07-EGG-OVIDUCT-01 4,965 / 6a77e539204e845ca67f244b68fb1db9d4cc5c765b79e579b5e5bf2e31fb7759; AG-ART-T3-W07-EGG-CROSS-SECTION-01 3,550 / a2106024242f8c37532cc95a014281663927ea098755f5251862a5f277e54cc2; AG-ART-T3-W07-MALE-POULTRY-SYSTEM-01 3,615 / 082ac39e27af9b0c1fdc61a3732a43cf08bc1a92acb66f106df78938fb4132c5; AG-ART-T3-W07-FEMALE-POULTRY-SYSTEM-01 4,446 / b1f51df2dc342fc0f885ad87b28402450f8859aff831b34625a390a24b7f1c87. No SVG or lesson content changed.",
+    "2026-11-10: Reproduced all 28 original teaching-row IDs from the exact source DOCX members using Mammoth 1.12.2 extraction behavior and ingestTopics.ts parser logic; First-Term Week One hash cross-check matches. Added original revision practice, regional-climate extension, and safe complete pig/cattle replacement lessons with delivery corrections. Runtime verification remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -157,12 +158,12 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 34,
-    "CORRECTION_BINDING": 15
+    "LESSON": 38,
+    "CORRECTION_BINDING": 16
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 145,
-    "BLOCKED": 15
+    "IMPLEMENTED_TESTING_DEFERRED": 151,
+    "BLOCKED": 14
   },
   "items": [
     {
@@ -5651,8 +5652,8 @@
         "AG-WK-T3-W10",
         "AG-FACT-T3-W10-CATTLE-TERMS"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "The package now contains 36 authored learner-facing lesson records, but no authorised importer/plan result has confirmed the exact original parsed source row identity for this correction. The correction contract requires a source_lesson_id, the exact original body_sha256 and a valid replacement_id; a supplement lesson ID is not a substitute for the original source row. The evidence-backed candidate correction remains recorded below. No delivery_corrections record was fabricated or bound; original source bytes remain unchanged. Investigated 2026-11-09. Recomputed source member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a and block-1210 SHA-256 b70c0f1cbd0f4a64c2b7e8f4f19f7cdbbb4c1b0db3cce3b7e6b4d02a3a9e6a01. Cattle-mange context and Merck Veterinary Manual support delivery correction 'pig houses'→'cattle housing'. The related 'rational grazing' term at block1188 is valid, not a typo; keep it and address the Week Ten rotational-grazing assessment mismatch in a lesson supplement. The correction remains BLOCKED pending importer-confirmed original source row identity and an approved replacement binding. Added package open item AGRICULTURAL-SCIENCE-T3-W10-CATTLE-TERMS; no delivery_corrections or source changes.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as CORR-AG-T3-W10-CATTLE-SAFE-REPLACEMENT, replacing the complete original Week Ten body with SUP-SS1-AGRICULTURAL-SCIENCE-T3-W10-CATTLE-MANAGEMENT-REPLACEMENT. The replacement corrects 'pig houses' to 'cattle housing', preserves 275–283 days (9½ months), teaches tattooing and both grazing terms, and excludes unsafe/unverified treatment instructions. Runtime application remains unverified.",
       "completion_condition": "Only corrections supported by a recorded fact decision are bound, with exact source locators, replacement text and provenance; source bytes remain unchanged."
     },
     {
@@ -6085,12 +6086,182 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Added SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-HUMAN-ANIMAL-WATER-BIOGAS; body_sha256 944bf6f5f0d5b0aebbfe5975384cc322e8aebe9b26e280ada79bdb9676294b24. Five practice items have exact criterion totals (6,6,6,6,8). Together with SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-FARM-POWER-OPERATIONS, all eight scheme sources are covered. COV-AG-T3-W02-FARM-POWER is IMPLEMENTED_EQUIVALENT and maps to both lessons. Hydropower is distinguished from other water-resource uses. Content approval remains PENDING and verification DEFERRED; importer row identity and original source typo/reclassification corrections remain open.",
       "completion_condition": "A PENDING-approval lesson covers human, animal, water and biogas power with accurate operations, advantages, limitations, safety and keyed practice; it completes the eight-source scheme when combined with the existing mechanical/electrical/wind/solar lesson; hashes/provenance/mark totals are valid; original source bytes remain unchanged."
+    },
+    {
+      "id": "AG-LES-T2-W01-REVISION-PRACTICE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "Author an original, clearly labelled First-Term revision practice set because the supplied Week One source contains placeholders but no actual revision paper or key",
+      "objective": "Author an original, clearly labelled First-Term revision practice set because the supplied Week One source contains placeholders but no actual revision paper or key. Include model answers and criterion-level marking; do not claim to recover the official paper.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json"
+      ],
+      "depends_on": [
+        "AG-SRC-T2",
+        "AG-WK-T2-W01"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as SUP-SS1-AGRICULTURAL-SCIENCE-T2-W01-REVISION-PRACTICE; 13 original questions with complete answers and criterion-level marking.",
+      "completion_condition": "Complete original learner-facing lesson with curriculum coverage, accurate explanations, complete keyed practice, criterion-level marking, body hash and source-backed provenance. Preserve original source bytes. Formal approval and runtime verification remain separate."
+    },
+    {
+      "id": "AG-LES-T3-W08-REGIONAL-CLIMATE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Extend the existing Week Eight environmental-physiology lesson to answer regional climate-factor and humid-rainforest cattle-production assessment prompts with authoritative Nigeria/West Africa evidence",
+      "objective": "Extend the existing Week Eight environmental-physiology lesson to answer regional climate-factor and humid-rainforest cattle-production assessment prompts with authoritative Nigeria/West Africa evidence.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json"
+      ],
+      "depends_on": [
+        "AG-FACT-T3-W08-REGIONAL-CLIMATE",
+        "AG-WK-T3-W08"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Extended SUP-SS1-AGRICULTURAL-SCIENCE-T3-W08-ENVIRONMENTAL-MEASURES; added regional-climate explanation and two keyed questions.",
+      "completion_condition": "Complete original learner-facing lesson with curriculum coverage, accurate explanations, complete keyed practice, criterion-level marking, body hash and source-backed provenance. Preserve original source bytes. Formal approval and runtime verification remain separate."
+    },
+    {
+      "id": "AG-LES-T3-W09-PIG-MANAGEMENT-REPLACEMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Write a complete, safe learner-facing replacement for Week Nine pig management, retaining all core objectives while excluding unsafe/unverified drug doses, injection instructions, generic pesticide use and corrosive-disinfectant procedures",
+      "objective": "Write a complete, safe learner-facing replacement for Week Nine pig management, retaining all core objectives while excluding unsafe/unverified drug doses, injection instructions, generic pesticide use and corrosive-disinfectant procedures.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json"
+      ],
+      "depends_on": [
+        "AG-FACT-T3-W09-PIG-SAFETY",
+        "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE",
+        "AG-WK-T3-W09"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as SUP-SS1-AGRICULTURAL-SCIENCE-T3-W09-PIG-MANAGEMENT-REPLACEMENT; complete replacement lesson and CORR-AG-T3-W09-PIG-SAFE-REPLACEMENT bound to original row SS1-SRC-458a07f7ea5a:BODY:b431485e025fd5054046a9041249f1b34a5042973238fbf2b652cbf27fbf4ef7.",
+      "completion_condition": "Complete original learner-facing lesson with curriculum coverage, accurate explanations, complete keyed practice, criterion-level marking, body hash and source-backed provenance. Preserve original source bytes. Formal approval and runtime verification remain separate."
+    },
+    {
+      "id": "AG-LES-T3-W10-CATTLE-MANAGEMENT-REPLACEMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Write a complete, safe learner-facing replacement for Week Ten cattle management, retaining core objectives while excluding unendorsed drug doses and unsafe chemical procedures; correct cattle-housing wording and preserve the gestation fraction",
+      "objective": "Write a complete, safe learner-facing replacement for Week Ten cattle management, retaining core objectives while excluding unendorsed drug doses and unsafe chemical procedures; correct cattle-housing wording and preserve the gestation fraction.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json"
+      ],
+      "depends_on": [
+        "AG-FACT-T3-W10-CATTLE-SAFETY",
+        "AG-FACT-T3-W10-CATTLE-TERMS",
+        "AG-WK-T3-W10"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as SUP-SS1-AGRICULTURAL-SCIENCE-T3-W10-CATTLE-MANAGEMENT-REPLACEMENT; complete replacement lesson and CORR-AG-T3-W10-CATTLE-SAFE-REPLACEMENT bound to original row SS1-SRC-458a07f7ea5a:BODY:705e543e7a04a9a5058603f332ba4a44c4e81c4f6ab98b0571e6edcde4efb31b.",
+      "completion_condition": "Complete original learner-facing lesson with curriculum coverage, accurate explanations, complete keyed practice, criterion-level marking, body hash and source-backed provenance. Preserve original source bytes. Formal approval and runtime verification remain separate."
+    },
+    {
+      "id": "AG-CORR-T3-W09-PIG-SAFE-REPLACEMENT",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Third Term Week Nine, blocks 982–1123",
+      "objective": "Bind the complete safe pig-management replacement to the exact original Week Nine row, excluding unverified veterinary doses, injection directions, pesticide application and caustic-soda disinfection instructions.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json"
+      ],
+      "depends_on": [
+        "AG-LES-T3-W09-PIG-MANAGEMENT-REPLACEMENT"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as CORR-AG-T3-W09-PIG-SAFE-REPLACEMENT, bound to original row SS1-SRC-458a07f7ea5a:BODY:b431485e025fd5054046a9041249f1b34a5042973238fbf2b652cbf27fbf4ef7 and replacement SUP-SS1-AGRICULTURAL-SCIENCE-T3-W09-PIG-MANAGEMENT-REPLACEMENT. Runtime application remains unverified.",
+      "completion_condition": "Correction record binds the exact source member, original row ID and body hash to a complete same-term replacement lesson; original source bytes remain unchanged."
     }
   ],
   "review": {
     "date": "2026-11-10",
-    "reviewed_master_sha": "e682258fc43ab7ac84308604176d5d78616be04f",
-    "scope": "Original source identity and curriculum alignment checked against all three SS1 Agricultural Science term documents in the composite archive. Composite archive and all three member SHA-256 values independently verified. Source inventory and weekly topic sequence cross-checked against DOCX XML. Importer/compiler, database and authenticated device delivery remain deferred.",
+    "reviewed_master_sha": "28cbdbf14aaadcb72f7172a42661f2c0f4b72029",
+    "scope": "Source archive and all three Agricultural Science member hashes verified. All 28 parsed teaching-row identities deterministically reproduced; original lesson IDs are bound to curriculum coverage. Added original revision practice, regional climate extension and safe pig/cattle replacement lessons. Importer/compiler, database, tests and authenticated learner delivery remain deferred.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
