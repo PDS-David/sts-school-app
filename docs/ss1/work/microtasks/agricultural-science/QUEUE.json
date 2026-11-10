@@ -128,7 +128,8 @@
     "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS (2026-11-10): authored verified supplement for liver bile vs enzymes, mono-/polygastric similarities, blood composition/water and digestive sphincters; six keyed questions and 40-mark criterion rubric. COV-AG-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS moved to IMPLEMENTED_EQUIVALENT. Digestive/reproductive factual accuracy and third-party figure permissions remain separate open items. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T3-W05-RESPIRATION-NERVOUS-GAPS (2026-11-10): authored supplement for breathing mechanics, complete respiration in cattle, neuron structure/function and reflex arc with four animal reflex examples; seven keyed questions, 40 marks. Assessment-gap coverage moved to IMPLEMENTED_EQUIVALENT. Source equations, respiratory/gill figure permissions and separate factual accuracy review remain open. Approval PENDING; verification/testing DEFERRED.",
     "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION (2026-11-10): authored veterinary-source-grounded, non-procedural sheep embryo-development and normal lamb-presentation supplement with seven keyed questions (40 marks). Content coverage implemented; independent named veterinary reviewer sign-off remains a release gate and open owner action. Approval PENDING; verification/testing DEFERRED.",
-    "AG-LES-T3-W07-POULTRY-REPRO-SYSTEM (2026-11-10): authored complete original prose for male/female poultry reproductive systems, source diagram labels and oviduct functions; seven keyed questions, 40 marks. No unlicensed source images or hormone table reused. Poultry reproductive-system content coverage implemented; source image rights and egg/hormone fact checks remain open. Approval PENDING; verification/testing DEFERRED."
+    "AG-LES-T3-W07-POULTRY-REPRO-SYSTEM (2026-11-10): authored complete original prose for male/female poultry reproductive systems, source diagram labels and oviduct functions; seven keyed questions, 40 marks. No unlicensed source images or hormone table reused. Poultry reproductive-system content coverage implemented; source image rights and egg/hormone fact checks remain open. Approval PENDING; verification/testing DEFERRED.",
+    "AG-LES-T3-W08-ENVIRONMENTAL-MEASURES (2026-11-10): authored sourced supplement for relative-humidity instruments, CBPP as second livestock airborne disease and innate/adaptive immunity, with 40-mark keyed practice. Three of five assessment gaps resolved; Nigeria climate ranking and equatorial-rainforest cattle-production explanation remain unverified, so assessment coverage remains PARTIAL and open. Source wording on wind/TB remains unchanged pending correction binding. Approval PENDING; verification/testing DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -143,9 +144,9 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 136,
+    "IMPLEMENTED_TESTING_DEFERRED": 137,
     "BLOCKED": 13,
-    "PENDING": 5
+    "PENDING": 4
   },
   "items": [
     {
@@ -5362,8 +5363,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W08"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W08: evaluation 958 and weekend 969/972 ask for content not taught in the week body.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-10 on branch agent/agricultural-science from e7535a1d3d32fa2a8020c6971575bee06bf15f45. Added SUP-SS1-AGRICULTURAL-SCIENCE-T3-W08-ENVIRONMENTAL-MEASURES; body SHA-256 c9dd4fbf8846ffedc41d220c8615bbfc9602f83c5355ed24670a405815a0cd0c. Teaches relative humidity and hygrometer types; explains wet/dry bulb psychrometer and digital sensor; provides two verified livestock airborne respiratory disease examples (bovine TB and CBPP) with causative organisms, inhalation transmission and key differences; explains innate/adaptive immunity, active/passive immunity, vaccination and memory, plus disease-resistance factors and biosecurity. Sources: WMO Guide to Instruments and Methods of Observation 2023, WOAH mammalian TB and CBPP disease pages (TB reviewed Aug 2026), and veterinary peer-reviewed Merck Manual immune system reviews. Seven keyed questions with criterion-level marking, 40 marks. COV-AG-T3-W08-ENVIRONMENTAL-ASSESSMENT-GAPS remains PARTIAL and links the supplement because the two regional questions (Nigeria climate-factor ranking; equatorial-rainforest cattle production) remain unverified. Assessment open item updated rather than removed; separate source climate-claims review remains open. Supplement clarifies infectious droplets/aerosols, not ordinary wind, as the transmission route; original source bytes unchanged. Package/lesson approval PENDING; verification/testing DEFERRED. JSON, body hash and marks checked; no tests, TypeScript, importer/compiler, database or runtime checks run under owner deferral.",
       "completion_condition": "A sourced supplement teaches humidity measurement, two disease examples and immunity with keyed practice/provenance and PENDING approval."
     },
     {
@@ -5857,7 +5858,6 @@
     }
   },
   "next_runnable": [
-    "AG-LES-T3-W08-ENVIRONMENTAL-MEASURES",
     "AG-LES-T3-W09-PIG-ASSESSMENT-SUPPLEMENT",
     "AG-LES-T3-W10-CATTLE-TATTOOING"
   ]
