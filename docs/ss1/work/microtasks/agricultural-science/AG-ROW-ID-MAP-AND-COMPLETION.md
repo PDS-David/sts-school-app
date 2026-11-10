@@ -20,9 +20,11 @@ Cross-check: First-Term Week One body SHA-256 reproduced as `eb23c6d757163ec4e7b
 
 **Verification boundary:** this is deterministic authoring-stage identity reproduction. The importer/compiler plan, database import and authenticated learner delivery were not executed. These IDs must not be described as importer-run or student-delivery verified until that phase.
 
-## Parsed original teaching rows
+## Parsed week rows and marker classification
 
-| Term/week | Parsed source heading | Original lesson ID |
+The Second-Term Week Ten row is classified by source rule R003 as a `SCHEME_ONLY` revision marker, not an instructional lesson. The other listed week rows are teaching rows or the Second-Term Week One revision activity.
+
+| Term/week | Topic label | Original lesson ID |
 | T1W1 | Week 1 — Introduction to Agriculture | `SS1-SRC-7aa642b0085b:BODY:eb23c6d757163ec4e7bfce9f79ede198e00e4437be3317ac9781b3e9dec6c2b9` |
 | T1W2 | Week 2 — Types of Agriculture | `SS1-SRC-7aa642b0085b:BODY:94ffd0f85730fc3f1804f07342e16b1da91dd1323231b7fb6e41b11b96f8cf35` |
 | T1W3 | Week 3 — Agricultural Development in Nigeria | `SS1-SRC-7aa642b0085b:BODY:de6febf42e9195e6171f87f05840f7ac0d5a7337820ec98392670ebc3b1485aa` |
@@ -71,3 +73,7 @@ Original DOCX bytes and source wording remain unchanged. These correction record
 No test suite, TypeScript check, importer/compiler plan, database rehearsal, mobile/web learner-view check or production import was run in this authoring stage. Formal subject-expert/owner approval remains pending; package status therefore remains `PENDING`. Remaining permission and verification items are retained in the package.
 
 Remaining PARTIAL/UNRESOLVED coverage after this implementation: none.
+
+## Visual assets added
+
+An original animal-systems visual atlas is now registered as `SUP-SS1-AGRICULTURAL-SCIENCE-T3-W04-W05-ANIMAL-SYSTEMS-ATLAS`. Five independently authored SVGs cover comparative digestive systems, mammalian male/female reproductive pathways, mammalian respiration/fish gills, pig external anatomy and cattle external anatomy. Unlicensed source images are not reused. Asset registration and provenance are implemented; actual learner-route display, file-integrity execution and content approval remain deferred.
