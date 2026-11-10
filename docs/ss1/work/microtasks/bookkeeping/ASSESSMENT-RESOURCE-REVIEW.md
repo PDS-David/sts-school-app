@@ -1,7 +1,7 @@
 # SS1 Bookkeeping — assessment resource review
 
 **Date:** 10 November 2026  
-**Branch:** `work/bookkeeping-closeout-20261110`  
+**Merged to:** `master` via PR #439; assessment CI extended by merged PR #441  
 **Scope:** Seven new project-authored revision/examination resources.
 
 ## Resource inventory
@@ -37,7 +37,7 @@ All seven new resources contain question papers/worksheets, answer keys and mark
 | T3 W12 exam | Net profit: 72,000 − (20,000 + 9,000 + 4,000 + 3,000) + 2,000 | ₦38,000 |
 | T3 W12 exam | Capital: 145,000 − 50,000 | ₦95,000 |
 
-The answer-key calculations shown above reconcile. The review is an arithmetic/content spot-check, not a substitute for running repository CI or teacher moderation.
+The answer-key calculations shown above reconcile. Automated regression also checks that each paper's three section totals equal its declared maximum. This does not replace teacher moderation.
 
 ## Marking and presentation checks
 
@@ -49,8 +49,19 @@ The answer-key calculations shown above reconcile. The review is an arithmetic/c
 - Bank reconciliation questions state whether the starting balance is favourable and identify the direction of timing adjustments.
 - All money amounts are expressed in naira.
 
-## Outstanding checks
+## Automated verification completed
 
-1. Run the repository workflow against this branch and fix any failures caused by these changes.
-2. Teacher/curriculum reviewer should moderate wording, difficulty and alignment before classroom use.
-3. Full-source parser/compiler, production importer/database, device and end-to-end student delivery acceptance remain unverified by this change.
+- PR #439 merged the assessment resources and assessment regression suite into `master`.
+- PR #441 merged the assessment regression suite into the main `JSS3 implementation and asset checks` workflow.
+- Main workflow run [42783833613](https://github.com/PDS-David/sts-school-app/actions/runs/42783833613) completed successfully on PR #441 head `b2ae64664910104c554c383ba2104e0c5c7f1453`.
+- The workflow ran Bookkeeping package and assessment tests alongside backend/mobile TypeScript checks, static regressions and configured PostgreSQL/asset integration tests.
+
+## Remaining release gates
+
+1. **Teacher moderation:** a Bookkeeping teacher/curriculum reviewer must approve terminology, level, balance, exam fairness and answer-key presentation before classroom use.
+2. **Original-source full parser/compiler:** stage the exact original composite archive (SHA-256 `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`). Verify all three registered DOC/DOCX member hashes and sizes, run Mammoth/WordExtractor extraction, apply source rules, parse lessons and review the generated plan. The archive is not present in the repository's `curriculum-assets` tree.
+3. **Database integration/release:** the importer currently rejects `--ss1-reviewed --yes` by design. Keep that guard. Complete plan review, snapshot compatibility and authenticated retrieval tests against disposable PostgreSQL before designing an explicitly approved release path.
+4. **Student-device and end-to-end delivery:** verify lesson listing, objectives, practice questions, answer/marking visibility, progress persistence and offline/low-bandwidth behaviour with synthetic student/teacher accounts on supported devices.
+5. **Source provenance:** first-term source has four teaching-week bodies despite a twelve-week scheme; second-term source duplicates first-term teaching and remains excluded from reconstruction; third-term source has no Week 1 revision body. Authored replacements fill delivery slots but do not erase these facts.
+
+No production database was modified and no original DOC/DOCX source was altered.
