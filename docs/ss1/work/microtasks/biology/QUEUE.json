@@ -132,8 +132,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 123,
-    "BLOCKED": 16,
-    "PENDING": 29
+    "BLOCKED": 17,
+    "PENDING": 28
   },
   "items": [
     {
@@ -5806,8 +5806,8 @@
         "BIO-WK-T2-W09",
         "BIO-VIS-T2-FIG-FOODWEB"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended after the food-web figure disposition (2026-11-08). The source figure is absent from text extraction, its reuse rights are not recorded, and its 'Poducer' typo requires a delivery-only correction note. The redraw must not invent ambiguous arrow links.",
+      "status": "BLOCKED",
+      "implementation_reference": "Source archive and member SHA-256 verified; original Week 9 food-web image at block 818 inspected at full resolution. The source audit is documented in BIO-VIS-T2-W09-FOODWEB-REDRAW.md, including thirteen confidently traced directed links, labels and the Producer spelling correction. Asset generation/registration is intentionally blocked: biology.json has no lesson rows and the compiler contract requires an exact parser-generated or authored lesson_id. BIOLOGY-ASSET-LESSON-ID-BINDING prohibits guessing an ID or committing an unregistered asset. Resume after a valid lesson binding exists; do not treat the visual redraw as delivered.",
       "completion_condition": "A legible project-authored food web uses the visible labels, corrects 'Poducer' to 'Producer' with a note, preserves only verified arrow connections, is registered under backend/src/db/ss1/assets/biology/ with schema-compliant metadata/provenance, and leaves the source image untouched."
     },
     {
@@ -5934,7 +5934,6 @@
     }
   },
   "next_runnable": [
-    "BIO-SCOPE-T2-W10-MANAGEMENT",
-    "BIO-VIS-T2-W09-FOODWEB-REDRAW"
+    "BIO-SCOPE-T2-W10-MANAGEMENT"
   ]
 }
