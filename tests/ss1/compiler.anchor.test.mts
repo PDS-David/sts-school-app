@@ -119,3 +119,19 @@ test('English second-term scheme-only revision marker is disambiguated from its 
   };
   assert.equal(applyRules(input, [rule]), input.text);
 });
+
+test('English third-term Week 6 essay split includes its distinctive story-writing prompt', () => {
+  const english = loadPackages().find(item => item.subject_slug === 'english');
+  assert(english, 'English package is missing');
+  const rule = english.source_rules.find(item => item.id === 'SS1-SRC-50fa9b1eb2fd-R011');
+  assert(rule && rule.op === 'split_before');
+  assert.equal(rule.week_label, '6');
+  assert.ok(rule.anchor.includes("A story which illustrates the saying - \"It is a man's World\""));
+  const input = {
+    source_id: rule.source_id,
+    sha256: rule.source_sha256,
+    filePath: 'SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc',
+    text: rule.anchor + '\n\nC. Essay Writing : Argumentative \nContent: Explanation',
+  };
+  assert.match(applyRules(input, [rule]), /^WEEK 6\n/);
+});

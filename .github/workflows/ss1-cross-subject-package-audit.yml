@@ -43,20 +43,6 @@ jobs:
           python scripts/ss1/prepare_sources.py \
             --archive docs/ss1/sources/SSS1-original.zip \
             --output "$RUNNER_TEMP/ss1-staged"
-      - name: Diagnose English third-term essay split anchors
-        run: |
-          node --input-type=module <<'NODE'
-          import path from 'node:path';
-          import WordExtractor from 'word-extractor';
-          const file = path.join(process.env.RUNNER_TEMP, 'ss1-staged', 'SSS 1', '3rd Term SS1_', '3RD TERM S1 ENGLISH LANGUAGE.doc');
-          const doc = await new WordExtractor().extract(file);
-          const lines = doc.getBody().split(/\\r?\\n/);
-          for (let i = 0; i < lines.length; i++) {
-            if (/essay writing/i.test(lines[i])) {
-              console.log('DOC line ' + (i + 1) + ': ' + JSON.stringify(lines.slice(Math.max(0, i - 1), Math.min(lines.length, i + 2))));
-            }
-          }
-          NODE
       - name: Compile every registered SS1 subject in plan-only mode
         run: |
           python scripts/ss1/build_subject_packages.py \
