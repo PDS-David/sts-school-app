@@ -496,5 +496,5 @@ test('SS1 package loader can validate every registered subject package', () => {
   const slugs = packages.map(p => p.subject_slug);
   assert(slugs.includes('bookkeeping'));
   assert.equal(new Set(slugs).size, slugs.length);
-  assert.equal(slugs.length, 20);
+  assert.equal(slugs.length, 21);
 });
