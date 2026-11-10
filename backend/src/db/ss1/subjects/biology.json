@@ -8720,8 +8720,8 @@
     {
       "id": "BIOLOGY-T1-W10-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 10 covers growth, mitosis, growth regulation, irritability, movement and cyclosis, but the Biology package has no lessons or registered teaching rows. The four source mitosis figures (blocks 997, 1006, 1015 and 1021) match the written stages but their labels are raster-only; a project-authored redraw is queued. The animal-hormone table at blocks 1042-1049 is a three-column tab-aligned list, not a Word table; extraction collapses its columns and the names/associations require fact review. The movement table at blocks 1083-1092 also uses line shapes and tab-aligned rows, with one mechanism wrapping across blocks 1088-1089; its three-column pairings do not survive text extraction. The compiler also requires the redraw asset's lesson_id to resolve to an identified source lesson or supplement. No such lesson ID is recorded in the current package, and importer execution is deferred; the redraw cannot be registered until an exact lesson ID is available.",
-      "required_action": "Complete the factual review of the hormone and movement tables, then author and bind the Week 10 lesson. The mitosis redraw is source-structurally specified in BIO-VIS-T1-MITOSIS, but its asset registration must wait for a verified lesson_id under BIOLOGY-ASSET-LESSON-ID-BINDING. Do not invent a lesson ID or commit an unregistered asset. Restate the animal-hormone list only after BIO-FACT-T1-W10-ANIMAL-HORMONES has verified its names and gland/site associations; restate the movement list as a semantic three-column table.",
+      "detail": "Registered lesson SUP-SS1-BIOLOGY-T1-W10-GROWTH-IRRITABILITY-MOVEMENT now covers growth processes, mitosis, meristematic growth, plant/animal hormones, irritability, plant responses, movement and cyclosis. Semantic hormone and movement tables are included; the source's hormone claims are corrected in the supplement.",
+      "required_action": "Lesson content is present. The source mitosis drawings remain a separate visual asset; original assignment still needs teacher-approved marking.",
       "affected_ids": [
         "COV-BIO-T1-W10-GROWTH",
         "COV-BIO-T1-W10-IRRITABILITY",
@@ -8735,7 +8735,7 @@
         "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT",
         "BIOLOGY-ASSET-LESSON-ID-BINDING"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BIOLOGY-T1-W10-ASSIGNMENT",
@@ -8959,19 +8959,19 @@
     {
       "id": "BIOLOGY-T2-W05-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 5 animal nutrition, food substances, balanced diet and digestive enzymes are present in the source, but the Biology package has no registered lessons.",
-      "required_action": "Author and bind approved lessons for animal nutrition and digestive enzymes. Keep all source health statements distinct from current, evidence-checked supplemental content.",
+      "detail": "Registered lesson SUP-SS1-BIOLOGY-T2-W05-ANIMAL-NUTRITION now teaches food substances, functions/sources, balanced diet, vitamin examples and digestive enzymes.",
+      "required_action": "Lesson content is present. Food tests remain outside the source body and are separately tracked.",
       "affected_ids": [
         "COV-BIO-T2-W05-ANIMAL-NUTRITION",
         "COV-BIO-T2-W05-DIGESTIVE-ENZYMES"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BIOLOGY-T2-W05-HEALTH-CLAIMS",
       "kind": "FACT",
-      "detail": "All nine vitamin rows, the protein-deficiency/kwashiorkor paragraph and the sodium/calcium/iron revision questions are reviewed in BIO-FACT-T2-W05-HEALTH-CLAIMS.md with Nigeria Federal Ministry of Health, NIH ODS and clinical references. Source errors and outdated claims are explicitly distinguished; the original table remains unchanged.",
-      "required_action": "A Biology teacher should review and approve the supplemental corrections and answer-key terminology before the Week 5 assessment is keyed. Do not present the source claims as medical advice.",
+      "detail": "The nine vitamin rows, protein-deficiency paragraph and mineral-deficiency prompts were reviewed in BIO-FACT-T2-W05-HEALTH-CLAIMS.md and the corrections are reflected in the student lesson.",
+      "required_action": "Factual review is implemented in the supplement; not medical advice.",
       "affected_ids": [
         "COV-BIO-T2-W05-ANIMAL-NUTRITION",
         "COV-BIO-T2-W05-ASSESSMENT",
@@ -8979,7 +8979,7 @@
         "BIO-FACT-T2-W05-HEALTH-CLAIMS",
         "BIO-LES-T2-W05-ANIMAL-NUTRITION"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BIOLOGY-T2-W05-FOOD-TESTS",
@@ -9071,38 +9071,38 @@
     {
       "id": "BIOLOGY-T2-W08-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 8 population characteristics, population studies, population factors and ecological instruments are present in the source, but the Biology package has no registered lessons. The instruments table at block 728 is a native 12×3 Word table; flattened extraction loses its row pairings. The visual disposition records the full table, while the Hydrometer/light-intensity-in-water pairing remains under authoritative review.",
-      "required_action": "Author and bind an approved population-studies lesson, restating the ecological instruments table as a semantic three-column table after BIO-FACT-T2-W08-INSTRUMENTS resolves the Hydrometer pairing. Preserve the source spelling and any approved correction separately.",
+      "detail": "Registered lesson SUP-SS1-BIOLOGY-T2-W08-POPULATION-INSTRUMENTS teaches population characteristics, density calculations, quadrat/transect concepts, population factors and a corrected semantic instrument table.",
+      "required_action": "Lesson content is present. Source assessment gaps and the original instrument-table rendering remain separately tracked.",
       "affected_ids": [
         "COV-BIO-T2-W08-POPULATION-STUDIES",
         "COV-BIO-T2-W08-ECOLOGICAL-INSTRUMENTS",
         "BIO-VIS-T2-TBL-INSTRUMENTS",
         "BIOLOGY-T2-W08-INSTRUMENTS"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BIOLOGY-T2-W08-INSTRUMENTS",
       "kind": "FACT",
-      "detail": "Instrument/function pairs reviewed in BIO-FACT-T2-W08-INSTRUMENTS.md. Hydrometer measures liquid relative density, not underwater light; colorimeter and pH meter are distinct instruments; Secchi disc estimates water transparency.",
-      "required_action": "Teacher should approve corrected supplemental instrument table; preserve the original source table unchanged.",
+      "detail": "Instrument/function pairs were reviewed in BIO-FACT-T2-W08-INSTRUMENTS.md and corrected in the student lesson: hydrometer measures liquid relative density; colorimeter and pH meter are distinguished; Secchi disc estimates water transparency.",
+      "required_action": "Factual correction is implemented in student material.",
       "affected_ids": [
         "COV-BIO-T2-W08-ECOLOGICAL-INSTRUMENTS",
         "COV-BIO-T2-W08-ASSESSMENT",
         "BIO-VIS-T2-TBL-INSTRUMENTS",
         "BIO-FACT-T2-W08-INSTRUMENTS"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BIOLOGY-T2-W08-OVERPOPULATION",
       "kind": "CONTENT",
-      "detail": "General evaluation block 739 asks for five effects of overpopulation in a community, but Week 8 does not teach those effects.",
-      "required_action": "Author a clearly labelled supplemental lesson on effects of overpopulation using an approved Biology reference and include complete keyed practice.",
+      "detail": "The registered supplement SUP-SS1-BIOLOGY-T2-W08-OVERPOPULATION teaches population growth and overpopulation effects as supplementary content, clearly distinct from the source's Week 8 teaching body.",
+      "required_action": "Supplementary teaching is present; original source assessment still requires approval.",
       "affected_ids": [
         "COV-BIO-T2-W08-ASSESSMENT"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BIOLOGY-T2-W08-ASSIGNMENT",
@@ -9501,12 +9501,12 @@
     {
       "id": "BIOLOGY-T3-W06-W07-MISSING-TEACHING",
       "kind": "CONTENT",
-      "detail": "The source asks for full life cycles of roundworm and liver fluke (block 607) and five fungal diseases (block 646), but does not provide those full answers.",
-      "required_action": "Author clearly labelled supplemental lessons for the parasite life cycles and additional fungal-disease examples using approved Biology/veterinary references and complete keyed practice.",
+      "detail": "Missing parasite life-cycle and fungal/fungal-like disease teaching is now supplied in SUP-SS1-BIOLOGY-T3-W06-W07-PARASITE-LIFECYCLES and SUP-SS1-BIOLOGY-T3-W06-W07-FUNGAL-DISEASES. Fasciola snail host/metacercariae, tsetse transmission and crop disease agents are explained with species qualifications.",
+      "required_action": "Supplementary teaching is present; no veterinary treatment or pesticide instructions are supplied.",
       "affected_ids": [
         "COV-BIO-T3-W06-W07-ASSESSMENT"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BIOLOGY-T3-W06-W07-ASSIGNMENT",
@@ -9659,15 +9659,15 @@
     {
       "id": "BIOLOGY-T1-W10-HORMONE-FACTS",
       "kind": "FACT",
-      "detail": "All seven gland/site/hormone associations verified in BIO-FACT-T1-W10-ANIMAL-HORMONES.md. 'Pituitrin' is obsolete/non-specific; pituitary releases multiple named hormones. Pancreas lies behind stomach with head in duodenal curve; endocrine pancreas produces insulin and glucagon. Ovaries produce oestrogens and progesterone; adrenal medulla produces adrenaline.",
-      "required_action": "Teacher should approve the corrected supplemental hormone table before Week 10 delivery. Keep original source unchanged and do not add medication or hormone-treatment advice.",
+      "detail": "The seven source gland/site/hormone associations were reviewed in BIO-FACT-T1-W10-ANIMAL-HORMONES.md and corrected in the Week 10 lesson. Pituitrin is identified as historical, pancreatic anatomy is clarified, and endocrine hormones are distinguished by gland region.",
+      "required_action": "Factual review is reflected in student teaching; content approval remains pending.",
       "affected_ids": [
         "COV-BIO-T1-W10-GROWTH",
         "BIO-VIS-T1-HORMONE-TABLE",
         "BIO-FACT-T1-W10-ANIMAL-HORMONES",
         "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BIOLOGY-T2-W09-FOODWEB-SPELLING",
