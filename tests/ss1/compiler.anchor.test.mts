@@ -135,3 +135,25 @@ test('English third-term Week 6 essay split includes its distinctive story-writi
   };
   assert.match(applyRules(input, [rule]), /^WEEK 6\n/);
 });
+
+test('English third-term multi-strand scheme markers use substring matching, not whole-line matching', () => {
+  const english = loadPackages().find(item => item.subject_slug === 'english');
+  assert(english, 'English package is missing');
+  const cases = [
+    ['SS1-SRC-50fa9b1eb2fd-R030', ' Vocabulary Development: Words associated with journalism and advertising.'],
+    ['SS1-SRC-50fa9b1eb2fd-R031', ' Speech work: contrasting /i/ and /i:/.'],
+    ['SS1-SRC-50fa9b1eb2fd-R032', ' Vocabulary Development: Words associated with Building.'],
+  ] as const;
+  for (const [id, suffix] of cases) {
+    const rule = english.source_rules.find(item => item.id === id);
+    assert(rule && rule.op === 'classify_marker');
+    assert.equal(rule.kind, 'SCHEME_ONLY');
+    assert.equal(rule.match_mode, undefined);
+    const input = {
+      source_id: rule.source_id,
+      sha256: rule.source_sha256,
+      text: rule.anchor + suffix,
+    };
+    assert.equal(applyRules(input, [rule]), input.text);
+  }
+});
