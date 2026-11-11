@@ -150,7 +150,8 @@
     "2026-11-10: Reproduced all 28 original teaching-row IDs from the exact source DOCX members using Mammoth 1.12.2 extraction behavior and ingestTopics.ts parser logic; First-Term Week One hash cross-check matches. Added original revision practice, regional-climate extension, and safe complete pig/cattle replacement lessons with delivery corrections. Runtime verification remains deferred.",
     "2026-11-10: Added original Weeks Four/Five animal-systems visual atlas and five independent SVG diagrams; unlicensed embedded DOCX images remain excluded pending learner-route verification.",
     "OWNER DEC-AL-AG-2026-11-11: repository owner explicitly approved all three exact term-heading aliases on 2026-11-11. Applied approval reference docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-AL-20261111.md#DEC-AL-AG-2026-11-11 to source rules SS1-SRC-7aa642b0085b-R001, SS1-SRC-956594d97094-R001 and SS1-SRC-458a07f7ea5a-R001; closed only the three matching alias OWNER_ACTION open items. This is source identity approval only, not lesson content approval, factual approval, verification or student-release authorization.",
-    "2026-11-11 verification reconciliation after PR #545 merge (3cd7dd0398da923ceee1654d2d3fa2175a762c58): dedicated Agricultural Science verification run 42993422155 passed all four suites — package 8/8, asset plan 4/4, SVG safety/ingestion 5/5, authenticated asset-route/mobile-renderer 13/13 (30 passed, zero failed). Asset-plan rebuild verified all 40 assets against exact compiler rows and correctly withheld CSV emission because approvals remain pending. Subject validator returned valid:true for 47 lessons and 77 coverage records, but package status remains PENDING with 90 blocking open items and all 47 lessons unapproved or unverified. Repository-wide integrity run 42993422330 passed backend/mobile TypeScript, JSON parsing, SVG safety, stored hashes/byte counts and all-subject package validation. These results supersede the earlier note that the Agricultural Science tests were deferred; they do not clear subject-expert decisions, content approval, lesson verification, production import or release gates."
+    "2026-11-11 verification reconciliation after PR #545 merge (3cd7dd0398da923ceee1654d2d3fa2175a762c58): dedicated Agricultural Science verification run 42993422155 passed all four suites — package 8/8, asset plan 4/4, SVG safety/ingestion 5/5, authenticated asset-route/mobile-renderer 13/13 (30 passed, zero failed). Asset-plan rebuild verified all 40 assets against exact compiler rows and correctly withheld CSV emission because approvals remain pending. Subject validator returned valid:true for 47 lessons and 77 coverage records, but package status remains PENDING with 90 blocking open items and all 47 lessons unapproved or unverified. Repository-wide integrity run 42993422330 passed backend/mobile TypeScript, JSON parsing, SVG safety, stored hashes/byte counts and all-subject package validation. These results supersede the earlier note that the Agricultural Science tests were deferred; they do not clear subject-expert decisions, content approval, lesson verification, production import or release gates.",
+    "2026-11-11 OWNER DEC-AG-W09-2026-11-11: repository owner explicitly approved the nine numbered recommendations in the Week 9 farmstead/forestry evidence brief. Decision recorded in OWNER-DEC-W09-20261111.md. Applied its approval reference to the two corresponding supplement lessons; both now have content_approval APPROVED, implementation IMPLEMENTED and verification DEFERRED. Updated Week 9 coverage evidence to reflect the approved supplements. This is project-owner approval, not independent credentialed subject-expert sign-off. Residual Week 9 items remain unresolved: compost (854), mulching (857), reading (851), pressure (731), and remaining wording/formatting defects. Package remains PENDING; no source bytes changed and no student-release/verification claim is made."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -165,8 +166,8 @@
     "CORRECTION_BINDING": 16
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 162,
-    "BLOCKED": 4
+    "IMPLEMENTED_TESTING_DEFERRED": 164,
+    "BLOCKED": 2
   },
   "items": [
     {
@@ -428,7 +429,7 @@
         "AG-TEST-PACKAGE"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "The Agricultural Science package now contains 46 authored lesson records across First, Second and Third Terms and 11 source-hash-bound delivery correction records. All lesson content_approval states remain PENDING and verification states remain DEFERRED; no qualified reviewer approval references or authorised verification evidence have been supplied. The source-row corrections are guarded by the learner-delivery adapter and remain withheld until the package and replacement lessons pass approval and verification. This task remains BLOCKED pending genuine subject-expert/owner approval and later verification. Package/CI success is not approval.",
+      "implementation_reference": "Repository owner approval is now recorded for the nine First-Term Week Nine recommendations, and the farmstead/forestry supplements have APPROVED content_approval with an explicit decision reference. This does not approve the remaining Agricultural Science lesson content: other lesson approvals and verification references remain pending/deferred, as do the residual Week Nine issues and package-wide release gates. This package-level task remains BLOCKED; do not infer global approval from the two Week Nine decisions.",
       "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
     },
     {
@@ -1607,9 +1608,9 @@
         "AG-WK-T1-W09",
         "AG-FACT-T1-W09-SCOPE"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "A bounded draft lesson is now present in backend/src/db/ss1/subjects/agricultural-science.json as SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-FARMSTEAD. It includes learner-facing teaching, keyed practice, provenance and content_approval PENDING. However, AG-FACT-T1-W09-SCOPE is an AI-authored evidence brief, not a qualified expert decision. The task's expert-clearance prerequisite is therefore unmet; this remains a draft and is BLOCKED pending the named reviewer decision. No approval or verification is claimed.",
-      "completion_condition": "A lesson in agricultural-science.json teaches the farm/farmstead distinction and the layout principles cleared by AG-FACT-T1-W09-SCOPE, labels itself a Week 9 evaluation supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented, no answer key is inferred, and no schema, compiler or shared file is edited."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The bounded supplement is implemented and its content approval was explicitly granted by the repository owner on 2026-11-11 for the nine recommendations in AG-FACT-T1-W09-SCOPE.md. Approval evidence: docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-W09-20261111.md#DEC-AG-W09-2026-11-11. The lesson's package state is content_approval APPROVED, implementation IMPLEMENTED, verification DEFERRED. This is owner approval, not a claim of independent credentialed subject-expert review. Compiler/importer comparison, delivery binding, hash/marking checks and authenticated learner-device verification remain deferred; do not mark VERIFIED or student-ready until those checks pass.",
+      "completion_condition": "The approved supplement is present with complete keyed practice, criterion-level marking totals, exact body hash and provenance; owner approval is recorded by approval_reference. Keep verification DEFERRED until the authorised compiler/importer and authenticated learner-delivery checks are performed and evidenced."
     },
     {
       "id": "AG-LES-T1-W09-FORESTRY",
@@ -1647,9 +1648,9 @@
         "AG-WK-T1-W09",
         "AG-FACT-T1-W09-SCOPE"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "A bounded draft lesson is now present in backend/src/db/ss1/subjects/agricultural-science.json as SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-FORESTRY. It includes learner-facing teaching, keyed practice, provenance and content_approval PENDING. However, AG-FACT-T1-W09-SCOPE is an AI-authored evidence brief, not a qualified expert decision. The task's expert-clearance prerequisite is therefore unmet; this remains a draft and is BLOCKED pending the named reviewer decision. No approval or verification is claimed.",
-      "completion_condition": "A lesson in agricultural-science.json teaches the forestry cluster cleared by AG-FACT-T1-W09-SCOPE, labels itself a Week 9 assessment supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented, no answer key is inferred, and no schema, compiler or shared file is edited."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The bounded supplement is implemented and its content approval was explicitly granted by the repository owner on 2026-11-11 for the nine recommendations in AG-FACT-T1-W09-SCOPE.md. Approval evidence: docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-W09-20261111.md#DEC-AG-W09-2026-11-11. The lesson's package state is content_approval APPROVED, implementation IMPLEMENTED, verification DEFERRED. This is owner approval, not a claim of independent credentialed subject-expert review. Compiler/importer comparison, delivery binding, hash/marking checks and authenticated learner-device verification remain deferred; do not mark VERIFIED or student-ready until those checks pass.",
+      "completion_condition": "The approved supplement is present with complete keyed practice, criterion-level marking totals, exact body hash and provenance; owner approval is recorded by approval_reference. Keep verification DEFERRED until the authorised compiler/importer and authenticated learner-delivery checks are performed and evidenced."
     },
     {
       "id": "AG-FACT-T1-W09-SCOPE",
@@ -1687,8 +1688,8 @@
         "AG-WK-T1-W09"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "An AI-authored evidence brief exists at AG-FACT-T1-W09-SCOPE.md, and two bounded draft lessons now exist in the subject package (farmstead and forestry). The brief is not a qualified subject-expert decision; both lesson states remain content_approval PENDING and the tasks remain BLOCKED pending a qualified reviewer decision on the nine listed scope questions. No approval or verification is claimed.",
-      "completion_condition": "Every numbered item has a named expert decision recorded with evidence and locators; the two lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
+      "implementation_reference": "The repository owner approved all nine numbered recommendations in AG-FACT-T1-W09-SCOPE.md on 2026-11-11. The decisions are recorded in docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-W09-20261111.md#DEC-AG-W09-2026-11-11; the two farmstead/forestry supplements now carry content_approval APPROVED. This task remains BLOCKED only for the separate unresolved Week 9 items not included in those nine approvals: compost (block 854), mulching (block 857), misdirected reading (block 851), whether pressure at block 731 is to be taught, and remaining wording/formatting defects. This owner decision is not represented as independent credentialed subject-expert sign-off. Original source bytes remain unchanged.",
+      "completion_condition": "The nine recommendations are recorded as owner-approved and both supplement approval references are applied. Separately decide compost (854), mulching (857), reading (851), pressure (731) and remaining wording/formatting defects; preserve the original source and do not infer an answer key. Only then close this factual-dependency task."
     },
     {
       "id": "AG-LES-T1-W01-CROP-ASPECTS",
