@@ -23502,7 +23502,7 @@
       "provenance": [
         {
           "title": "eSpeak speech synthesis output",
-          "locator": "Original transcript synthesized with eSpeak 1.48.15, voice en-gb, 16 kHz mono MP3 at 8 kbps, duration 6.048 seconds; generated 2026-11-08.",
+          "locator": "Original transcript synthesized with eSpeak 1.48.15, voice en-gb, 16 kHz mono MP3 at 8 kbps, duration 7.092 seconds; regenerated 2026-11-11.",
           "url": "https://sourceforge.net/p/espeak/discussion/538920/thread/c6944a60/",
           "rights": "The eSpeak maintainer Jonathan Duddington stated that the GPL licence does not apply to generated speech output and that generated WAV files may be used freely. Audio is newly generated from the original script.",
           "reuse_status": "PERMITTED",
@@ -24334,15 +24334,15 @@
       "id": "ASSET-SS1-ENGLISH-PRONUNCIATION-MODEL-ENGB",
       "lesson_id": "SUP-SS1-ENGLISH-AUDIO-PRONUNCIATION-MODEL-T1",
       "path": "backend/src/db/ss1/assets/english/ss1-english-pronunciation-model-en-gb.mp3",
-      "sha256": "d3f0b49f42b1bac3355228683e46b621bad904bb7287024aee33427836069aaa",
-      "bytes": 1988,
+      "sha256": "47511ff6000a7f35581cc0dcc8b6eebeeb93e07ef9ebd9827df7a616248d8787",
+      "bytes": 7316,
       "media_type": "audio/mpeg",
-      "alt": "Two-second synthetic British English pronunciation sample: ship/sheep, thin/then, and day/my.",
+      "alt": "Synthetic British English listening model with deliberate pauses: ship/sheep, thin/then, and day/my.",
       "order": 1,
-      "source_locator": "Original spoken script: Ship, sheep. Thin, then. Day, my. Synthesized with eSpeak 1.48.15 voice en-gb, 16 kHz mono MP3 at 8 kbps, duration 1.764 seconds.",
+      "source_locator": "Original spoken script: Ship. Sheep. Thin. Then. Day. My. Synthesized with eSpeak 1.48.15 voice en-gb, 16 kHz mono MP3 at 8 kbps, duration 7.092 seconds.",
       "provenance": {
         "title": "eSpeak speech synthesis output",
-        "locator": "Original script synthesized with eSpeak 1.48.15 voice en-gb; generated 2026-11-08.",
+        "locator": "Original script synthesized with eSpeak 1.48.15 voice en-gb; 16 kHz mono MP3 at 8 kbps, duration 7.092 seconds; regenerated 2026-11-11.",
         "url": "https://sourceforge.net/p/espeak/discussion/538920/thread/c6944a60/",
         "rights": "The eSpeak maintainer stated that the GPL does not apply to generated speech output and that generated WAV files may be used freely. This is newly generated speech.",
         "reuse_status": "PERMITTED",
@@ -39968,7 +39968,7 @@
     {
       "id": "ENGLISH-AUTHORISED-AUDIO-MODEL",
       "kind": "PERMISSION",
-      "detail": "Resolved 2026-11-08. Registered original synthetic British English pronunciation model ASSET-SS1-ENGLISH-PRONUNCIATION-MODEL-ENGB at backend/src/db/ss1/assets/english/ss1-english-pronunciation-model-en-gb.mp3 (audio/mpeg; 1,988 bytes; SHA-256 d3f0b49f42b1bac3355228683e46b621bad904bb7287024aee33427836069aaa). It is bound to SUP-SS1-ENGLISH-AUDIO-PRONUNCIATION-MODEL-T1 and supports selected /ɪ/-/iː/, /θ/-/ð/ and /eɪ/-/aɪ/ contrasts. The script is original and eSpeak maintainer guidance confirms generated speech output may be used freely.",
+      "detail": "Resolved 2026-11-08 and refreshed 2026-11-11. Registered original synthetic British English pronunciation model ASSET-SS1-ENGLISH-PRONUNCIATION-MODEL-ENGB at backend/src/db/ss1/assets/english/ss1-english-pronunciation-model-en-gb.mp3 (audio/mpeg; 7,316 bytes; SHA-256 47511ff6000a7f35581cc0dcc8b6eebeeb93e07ef9ebd9827df7a616248d8787; duration 7.092 seconds). The same approved transcript is now spoken more slowly with deliberate pauses. It remains bound to SUP-SS1-ENGLISH-AUDIO-PRONUNCIATION-MODEL-T1 and supports selected /ɪ/-/iː/, /θ/-/ð/ and /eɪ/-/aɪ/ contrasts. eSpeak 1.48.15 generated speech from the original script; generated output reuse is permitted. Teacher oral observation remains separate and deferred.",
       "required_action": "Audio model registered with exact bytes, SHA-256, media type, alt text, provenance, lesson binding and transcript. Keep teacher oral observation separately DEFERRED; the synthetic model is not evidence of learner speaking proficiency.",
       "affected_ids": [
         "SUP-SS1-ENGLISH-PHONETICS-T1",
