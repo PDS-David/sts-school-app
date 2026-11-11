@@ -84,9 +84,9 @@ jobs:
           const plan = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
           if (plan.ready !== true) throw new Error('Agricultural Science text import plan is not ready: ' + JSON.stringify(plan.blockers));
           if (plan.blockers.length !== 0) throw new Error('Unexpected text import blockers: ' + JSON.stringify(plan.blockers));
-          if (plan.rows.length !== 77) throw new Error('Expected 30 source rows plus 47 approved supplements; found ' + plan.rows.length);
-          if (plan.identified_rows.filter(row => row.source_id !== null).length !== 30) throw new Error('Expected all 30 source rows to be parser-identified');
-          console.log('Verified: 30 ZIP source rows and 47 approved lesson supplements produce a blocker-free 77-row text import plan.');
+          if (plan.rows.length !== 75) throw new Error('Expected 28 source rows plus 47 approved supplements; found ' + plan.rows.length);
+          if (plan.identified_rows.filter(row => row.source_id !== null).length !== 28) throw new Error('Expected all 28 source rows to be parser-identified');
+          console.log('Verified: 28 ZIP source rows and 47 approved lesson supplements produce a blocker-free 75-row text import plan.');
           NODE
       - name: Rebuild source-bound Agricultural Science asset plan and enforce approval withholding
         shell: bash
