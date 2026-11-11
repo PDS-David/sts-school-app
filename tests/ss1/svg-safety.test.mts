@@ -40,10 +40,10 @@ test('rejects active content, external references and malformed input', () => {
   assert.equal(isSafeSvg(Buffer.from([0xff, 0xfe, 0x00])), false, 'invalid utf-8');
 });
 
-// Known offenders awaiting an owner decision: this diagram uses <style>, which isSafeSvg rejects by
-// design (SVG is rendered as native vector primitives). Inline its styling or consciously allow <style>.
-// Fixing an entry never fails CI (remove it from this list when you do); only a NEW unsafe SVG fails.
-const KNOWN_REJECTED = ['biology/forest-food-web.svg'];
+// Known offenders awaiting an owner decision (diagrams isSafeSvg rejects). Every committed SVG currently
+// passes the constrained style allowlist, so nothing is pinned. Fixing an entry never fails CI (remove it
+// from this list when you do); only a NEW unsafe SVG fails.
+const KNOWN_REJECTED: string[] = [];
 
 test('committed SS1 SVG assets pass the safety filter (except the known set)', () => {
   const root = path.resolve(here, '../../backend/src/db/ss1/assets');
