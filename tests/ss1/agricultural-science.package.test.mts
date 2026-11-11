@@ -157,8 +157,8 @@ test('Agricultural Science source-rule guards reject wrong hashes and missing or
   }
 });
 
-// This CI test executes the real parser/compiler in a source-only plan. Full learner-route delivery,
-// database rehearsal, asset rendering, subject-expert approval and release verification remain separate.
+// This CI test executes the real parser/compiler in a source-only plan. Authenticated production-route smoke tests,
+// database rehearsal and visual asset rendering remain separate from source and lesson-package verification.
 
 
 test('Agricultural Science original row identities match the real Mammoth parser and SS1 compiler', async () => {
@@ -440,30 +440,44 @@ test('Agricultural Science correction adapter is wired through learner topic and
 });
 
 
-test('Owner approval is recorded for all lessons and rights-permitted assets without fabricating verification', () => {
+test('Owner source verification and CI evidence are recorded separately from asset rendering', () => {
   const p = packageSchema.parse(raw);
   const decisionPath = 'docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-AGRICULTURAL-SCIENCE-CONTENT-20261111.md';
+  const sourceVerificationPath = 'docs/ss1/work/microtasks/agricultural-science/OWNER-SOURCE-VERIFICATION-20261111.md';
   const decision = readFileSync(new URL('../../' + decisionPath, import.meta.url), 'utf8');
+  const sourceVerification = readFileSync(new URL('../../' + sourceVerificationPath, import.meta.url), 'utf8');
   assert.match(decision, /DEC-AG-SS1-MILESTONE-2026-11-11/);
   assert.match(decision, /Owner content approval is granted for all 47 authored lessons and all 40 registered assets/);
-  assert.equal(p.package_status, 'PENDING', 'owner approval alone must not release the subject package');
+  assert.match(sourceVerification, /Verification is confirmed for all in the ZIP file used for this work/);
+  assert.match(sourceVerification, /Mammoth 1\.12\.2/);
+  assert.match(sourceVerification, /all 47 authored lesson body hashes/);
+  assert.equal(p.package_status, 'PENDING', 'package-level release checks remain separate');
   assert.equal(p.lessons.length, 47);
   assert.equal(p.assets.length, 40);
   for (const lesson of p.lessons) {
     assert.equal(lesson.state.content_approval, 'APPROVED', `owner approval required: ${lesson.id}`);
     assert(lesson.state.approval_reference, `approval reference required: ${lesson.id}`);
-    if (lesson.state.approval_reference.includes('OWNER-DEC-AGRICULTURAL-SCIENCE-CONTENT-20261111.md')) {
-      assert.equal(lesson.state.approval_reference, decisionPath + '#DEC-AG-SS1-MILESTONE-2026-11-11');
-    } else {
-      assert.match(lesson.state.approval_reference, /OWNER-DEC-W09-20261111\.md#DEC-AG-W09-2026-11-11/);
-    }
-    assert.notEqual(lesson.state.verification, 'VERIFIED', `owner approval must not fabricate verification: ${lesson.id}`);
+    assert.equal(lesson.state.verification, 'VERIFIED', `source and package verification required: ${lesson.id}`);
+    assert.equal(lesson.state.verification_reference, sourceVerificationPath + '#owner-confirmation-and-ci-evidence');
   }
   for (const asset of p.assets) {
     assert.equal(asset.state.content_approval, 'APPROVED', `owner approval required: ${asset.id}`);
     assert.equal(asset.state.approval_reference, decisionPath + '#DEC-AG-SS1-MILESTONE-2026-11-11');
     assert.equal(asset.provenance.reuse_status, 'PERMITTED', `rights provenance must remain permitted: ${asset.id}`);
-    assert.notEqual(asset.state.verification, 'VERIFIED', `owner approval must not fabricate asset verification: ${asset.id}`);
+    assert.equal(asset.state.verification, 'DEFERRED', `visual rendering verification must remain outstanding: ${asset.id}`);
+  }
+  const visualOnlyChecks = p.open_items.filter(item =>
+    item.kind === 'VERIFICATION' && item.affected_ids.some(id => id.startsWith('AG-VIS-')));
+  assert.equal(visualOnlyChecks.length, 20);
+  assert(visualOnlyChecks.every(item => !item.blocks_delivery),
+    'asset-only visual checks must not suppress otherwise verified lesson text');
+  for (const id of [
+    'AGRICULTURAL-SCIENCE-T2-W07-PEAT-TYPO',
+    'AGRICULTURAL-SCIENCE-T3-W01-TOOL-NAMES',
+    'AGRICULTURAL-SCIENCE-T3-W02-TEXT',
+  ]) {
+    assert.equal(p.open_items.find(item => item.id === id)?.blocks_delivery, false,
+      `approved and verified replacement must not remain blocked by stale content status: ${id}`);
   }
   const veterinaryGate = p.open_items.find(item => item.id === 'AGRICULTURAL-SCIENCE-T3-W06-EMBRYO-LAMB');
   assert(veterinaryGate?.blocks_delivery, 'independent veterinary review must remain a delivery gate');
