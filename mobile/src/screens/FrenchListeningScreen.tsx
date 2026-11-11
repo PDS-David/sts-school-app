@@ -39,13 +39,13 @@ export default function FrenchListeningScreen({ navigation }: any) {
   const standardStatus = useAudioPlayerStatus(standardPlayer);
   const slowStatus = useAudioPlayerStatus(slowPlayer);
   const recordedAudioPlaying = standardStatus.playing || slowStatus.playing;
-  const activeRecordingStatus = activeRecording === 'slow' ? slowStatus : standardStatus;
   const [voices, setVoices] = useState<Array<{ identifier: string; name: string; language: string }>>([]);
   const [currentLine, setCurrentLine] = useState(-1);
   const [speaking, setSpeaking] = useState(false);
   const [showTranslations, setShowTranslations] = useState(false);
   const [speechRate, setSpeechRate] = useState(0.82);
   const [activeRecording, setActiveRecording] = useState<'standard' | 'slow'>('standard');
+  const activeRecordingStatus = activeRecording === 'slow' ? slowStatus : standardStatus;
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
   const [quizSubmitted, setQuizSubmitted] = useState(false);
 
