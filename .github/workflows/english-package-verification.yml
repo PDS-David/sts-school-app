@@ -14,6 +14,8 @@ on:
       - "tests/ss1/english.package.test.mts"
       - "tests/ss1/english.delivery.test.mts"
       - "backend/src/utils/ss1EnglishDeliveryCorrection.ts"
+      - "backend/src/db/attachTopicAssets.ts"
+      - "tests/topic-assets-svg.test.mts"
       - "scripts/ss1/**"
       - "docs/ss1/sources/**"
       - "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv"
@@ -39,6 +41,8 @@ jobs:
           cache: npm
       - name: Install locked dependencies
         run: npm ci --ignore-scripts
+      - name: Run SVG asset safety tests
+        run: node --import tsx --test tests/topic-assets-svg.test.mts
       - name: Run SS1 foundation tests
         run: node --import tsx --test scripts/ss1/foundation.test.mts
       - name: Run SS1 Python unit tests
