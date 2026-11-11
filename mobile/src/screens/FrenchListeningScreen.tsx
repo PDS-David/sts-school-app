@@ -128,7 +128,7 @@ export default function FrenchListeningScreen({ navigation }: any) {
           </View>
         ))}
       </Card>
-      <Btn label="Back to French topics" onPress={() => navigation.goBack()} variant="outline" style={{ marginTop: Spacing.md }} />
+      <Btn label="Return to lesson" onPress={() => navigation.goBack()} variant="outline" style={{ marginTop: Spacing.md }} />
     </ScrollView>
   );
 }
