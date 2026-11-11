@@ -55,7 +55,7 @@ for (const correction of subject.delivery_corrections) {
     subject_name: 'French',
     term_label: original.row.termLabel,
     title: original.row.title,
-    source_file: path.basename(original.row.filePath),
+    source_file: path.basename(subject.sources.find(source => source.source_id === correction.source_id)!.archive_member),
     source_reference: original.row.sourceReference,
   });
   if (!delivered || delivered.correctionId !== correction.id || delivered.replacementLessonIds[0] !== correction.replacement_id) {
