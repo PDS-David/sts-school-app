@@ -157,6 +157,7 @@ test('Student and parent topic responses hide compiled English answer keys while
   const student = safeEnglishSupplementTopic(topic, 'student');
   const parent = safeEnglishSupplementTopic(topic, 'parent');
   const teacher = safeEnglishSupplementTopic(topic, 'teacher');
+  const studentViaTopicAdapter = safeEnglishTopic(topic, 'student');
   for (const learner of [student, parent]) {
     assert.doesNotMatch(String(learner.source_reference), /Answer:/i);
     assert.doesNotMatch(String(learner.source_reference), /marking guide/i);
@@ -164,6 +165,8 @@ test('Student and parent topic responses hide compiled English answer keys while
     assert.match(String(learner.source_reference), /PRACTICE/);
     assert.equal(learner.generated_assessment_id, 903);
   }
+  assert.doesNotMatch(String(studentViaTopicAdapter.source_reference), /Answer:/i);
+  assert.doesNotMatch(String(studentViaTopicAdapter.summary), /marking guide/i);
   assert.equal(teacher.source_reference, fullAuthoringText);
   assert.equal(teacher.summary, fullAuthoringText);
   assert.equal(safeEnglishSupplementTopic(topic, 'admin').source_reference, fullAuthoringText);
