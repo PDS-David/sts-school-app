@@ -56,3 +56,8 @@ These strings are copied as they appear in the tables; no correction or unit con
 - Parsed package/queue JSON; checked unique IDs and open-item links for PARTIAL/UNRESOLVED coverage.
 - Importer, tests, TypeScript, DB and device checks **not run**; testing remains deferred by owner.
 - No source bytes, lesson bodies, rules, corrections, assets, shared code or other subjects modified.
+
+
+## Implementation follow-up (2026-11-11)
+
+The source row `SS1-SRC-956594d97094:BODY:12d2bff62a3b676cec1218abdde9a8f57a09e2057bd5f6d880e50cb0dee77886` is now bound by `CORR-AG-T2-W04-05-SELECTED-CROPS-REPLACEMENT` to `SUP-SS1-AGRICULTURAL-SCIENCE-T2-W04-05-SELECTED-CROPS`. The replacement contains the three 17×3 source tables and preserves all numeric figures, units, dates, seed rates, spacing and maturity values. Evidence-backed textual corrections are made; unresolved cassava soil/taxonomy and storage terms remain flagged. The new lesson covers all six crops, groundnut pegging, yam staking/training, mulching and cassava processing safety. Coverage remains PARTIAL and the table anomaly/structure open items remain blocking pending subject-expert confirmation. Content approval and learner verification remain pending.
