@@ -7964,6 +7964,365 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "Energy stored in elastic materials: wire energy, energy density and restrained thermal force",
+      "objectives": [
+        "Derive and use U = ½Fe and U = ½ke² for elastic springs.",
+        "Derive and use U = EAe²/(2L) for a uniform elastic wire.",
+        "Define elastic strain-energy density and use u = ½σε.",
+        "Derive and apply F = EAαΔT for a bar whose thermal movement is fully restrained.",
+        "Distinguish ductile and brittle materials."
+      ],
+      "body": "ENERGY STORED IN ELASTIC MATERIALS\n\n1. Elastic energy\nWhen a spring or wire is stretched or compressed within its elastic range, work is done on it. The work is stored as elastic potential energy and can be released when the force is removed.\nFor a spring obeying Hooke's law, force rises from zero to F as extension increases from zero to e. The average force is F/2, so:\nU = ½Fe.\nSince F = ke:\nU = ½ke².\nU is measured in joules (J).\n\n2. Energy stored in a stretched wire\nFor a uniform wire of original length L, cross-sectional area A, Young's modulus E and extension e:\nYoung's modulus E = FL/(Ae)\nTherefore F = EAe/L.\nElastic energy stored:\nU = ½Fe\nU = ½(EAe/L)e\nU = EAe²/(2L).\nThis assumes the wire remains within its elastic range and behaves linearly.\n\n3. Energy stored per unit volume\nThe volume of the wire is AL. Divide the stored energy by this volume:\nu = U/(AL) = ½(EAe²/L)/(AL)\nu = ½E(e/L)².\nSince tensile stress σ = F/A and tensile strain ε = e/L:\nu = ½σε.\nThe unit is J m⁻³, which is equivalent to pascal (Pa). This is the elastic strain-energy density.\n\nWorked example 1 — energy in a wire\nA steel wire has length 10 m, cross-sectional area 2 × 10⁻⁶ m² and extension 1 mm. Young's modulus is 2 × 10¹¹ Pa. Find the energy stored.\nConvert extension: e = 0.001 m.\nU = EAe²/(2L)\n= (2 × 10¹¹)(2 × 10⁻⁶)(0.001)²/(2 × 10)\n= 0.020 J.\n\nWorked example 2 — energy in a spring\nA spring has stiffness 100 N m⁻¹ and is compressed by 0.015 m.\nU = ½ke² = 0.5 × 100 × 0.015² = 0.01125 J.\n\n4. Force in a bar prevented from contracting\nSuppose a straight bar is heated and then its ends are fixed so it cannot expand freely, or it is heated and then prevented from contracting as it cools. A thermal strain would occur if the bar were free to change length. If movement is prevented, a stress and force develop.\nFor a bar with Young's modulus E, cross-sectional area A, linear expansivity α and temperature change magnitude ΔT:\nThermal strain = αΔT.\nStress = EαΔT.\nForce:\nF = stress × area = EAαΔT.\nThis relation assumes a uniform bar, linear elastic behaviour, uniform temperature change and complete restraint of the relevant thermal movement. Real structures may have more complex restraints and stresses.\n\nWorked example 3 — restrained thermal contraction\nA steel rod has cross-sectional area 2 cm². It is heated to 100 °C and then prevented from contracting as it cools to 10 °C. Take α = 12 × 10⁻⁶ K⁻¹ and E = 2 × 10¹¹ Pa. Find the force.\nA = 2 cm² = 2 × 10⁻⁴ m².\nΔT = 100 − 10 = 90 K.\nF = EAαΔT\n= (2 × 10¹¹)(2 × 10⁻⁴)(12 × 10⁻⁶)(90)\n= 43,200 N = 4.32 × 10⁴ N.\n\n5. Ductile and brittle materials\nDuctile materials can undergo considerable plastic deformation (permanent extension) before breaking. Examples include copper, lead and mild steel under suitable conditions.\nBrittle materials fracture with little plastic deformation after the elastic range. Examples include glass and many ceramics.\nSome metals and alloys do not show a sharply defined yield point. Their transition from elastic to plastic behaviour may be gradual.\n\n6. Solving elastic-energy problems\n- Identify whether the object is a spring or a wire/bar.\n- For a Hookean spring, use U = ½ke² or U = ½Fe.\n- For a wire with E, A, L and e, use U = EAe²/(2L).\n- For energy per unit volume, use u = ½σε.\n- For a fully restrained thermal change, use F = EAαΔT.\n- Convert all lengths, areas and temperature changes to SI units before substitution.\n- Check that the material remains in its elastic range for the elastic-energy formulae.\n\nCOMMON ERRORS\n- Elastic energy is not F × e when the force rises from zero to F; the average force is F/2.\n- Use extension in metres, not millimetres.\n- Convert cm² to m² carefully: 1 cm² = 10⁻⁴ m².\n- Energy is measured in joules; energy density is measured in J m⁻³.\n- The thermal-restraint force formula requires movement to be prevented; a freely expanding bar does not develop this same thermal force.\n- Use the temperature difference, not the absolute temperature, in αΔT.\n\nSUMMARY\nU = ½Fe = ½ke² for a Hookean spring.\nU = EAe²/(2L) for a linearly elastic wire.\nEnergy density u = ½σε.\nFor a fully restrained thermal change, F = EAαΔT.\nDuctile materials deform plastically more before fracture than brittle materials.",
+      "body_sha256": "27fd9e09c3ead0398dd34e4833c4d7b303c8174b7e79408d126a1b1188479824",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "What is elastic potential energy?",
+          "answer": "It is energy stored in a material when it is stretched or compressed within its elastic range; it can be released when the deforming force is removed.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies energy stored by elastic deformation.",
+              "marks": 1
+            },
+            {
+              "criterion": "States it can be released on unloading/recovery.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Write two formulae for the energy stored in a Hookean spring.",
+          "answer": "U = ½Fe and U = ½ke².",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Writes U = ½Fe.",
+              "marks": 1
+            },
+            {
+              "criterion": "Writes U = ½ke².",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "A spring of stiffness 100 N m⁻¹ is compressed by 0.015 m. Calculate the energy stored.",
+          "answer": "U = ½ke² = 0.5 × 100 × 0.015² = 0.01125 J.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses U = ½ke².",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes values correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 0.01125 J.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Write the formula for energy stored in a uniform elastic wire in terms of E, A, e and L.",
+          "answer": "U = EAe²/(2L).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Writes the correct expression.",
+              "marks": 1
+            },
+            {
+              "criterion": "Includes the factor 1/2 and correct variables.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "A steel wire has length 10 m, area 2 × 10⁻⁶ m² and extension 1 mm. Young's modulus is 2 × 10¹¹ Pa. Calculate the energy stored.",
+          "answer": "e = 0.001 m. U = EAe²/(2L) = (2 × 10¹¹)(2 × 10⁻⁶)(0.001)²/(20) = 0.020 J.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Converts 1 mm to 0.001 m.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses U = EAe²/(2L).",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes values correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 0.020 J.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q06",
+          "question": "What is elastic strain-energy density?",
+          "answer": "It is elastic energy stored per unit volume of a material.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies stored elastic energy.",
+              "marks": 1
+            },
+            {
+              "criterion": "States per unit volume.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q07",
+          "question": "Write the formula for elastic energy per unit volume in terms of tensile stress and strain.",
+          "answer": "u = ½ × stress × strain = ½σε.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Writes the one-half factor.",
+              "marks": 1
+            },
+            {
+              "criterion": "Writes stress × strain.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q08",
+          "question": "Derive the expression F = EAαΔT for a bar whose thermal movement is completely prevented.",
+          "answer": "Free thermal strain would be αΔT. Stress = E × strain = EαΔT. Force = stress × area = EAαΔT.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Identifies thermal strain αΔT.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses stress = E × strain.",
+              "marks": 1
+            },
+            {
+              "criterion": "Multiplies stress by area to obtain F = EAαΔT.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q09",
+          "question": "A steel rod has area 2 cm² and is cooled from 100 °C to 10 °C while prevented from contracting. Given α = 12 × 10⁻⁶ K⁻¹ and E = 2 × 10¹¹ Pa, find the force magnitude.",
+          "answer": "A = 2 × 10⁻⁴ m²; ΔT = 90 K. F = EAαΔT = (2 × 10¹¹)(2 × 10⁻⁴)(12 × 10⁻⁶)(90) = 43,200 N.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Converts area to 2 × 10⁻⁴ m².",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds ΔT = 90 K.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses F = EAαΔT.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 43,200 N.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "Distinguish between ductile and brittle materials.",
+          "answer": "Ductile materials undergo considerable plastic deformation before breaking. Brittle materials fracture with little plastic deformation after the elastic range.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correctly describes ductile behaviour.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly describes brittle behaviour.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "State the SI unit of elastic energy and of energy density.",
+          "answer": "Energy: joule (J). Energy density: joule per cubic metre (J m⁻³), equivalent to pascal (Pa).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Joule (J).",
+              "marks": 1
+            },
+            {
+              "criterion": "J m⁻³ or Pa.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "A steel wire has length 4 m, area 3 × 10⁻⁶ m² and extension 1 mm. Young's modulus is 2 × 10¹¹ Pa. Find the energy stored.",
+          "answer": "e = 0.001 m. U = EAe²/(2L) = (2 × 10¹¹)(3 × 10⁻⁶)(10⁻⁶)/(8) = 0.075 J.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Converts extension to 0.001 m.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses the wire-energy formula.",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes values correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 0.075 J.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q13",
+          "question": "A spring has length 25 cm under a 5 N load and 30 cm under a 10 N load. Find its length under a 3 N load, assuming Hooke's law.",
+          "answer": "k = (10 − 5)/(0.30 − 0.25) = 100 N/m. Natural length = 0.25 − 5/100 = 0.20 m. At 3 N, extension = 3/100 = 0.03 m. Length = 0.23 m = 23 cm.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Finds k = 100 N/m.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds natural length = 20 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds extension at 3 N = 3 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives final length 23 cm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q14",
+          "question": "What is the effect on a bar if it is heated and then prevented from expanding, or cooled and prevented from contracting?",
+          "answer": "A thermal strain would occur if it were free to move. Restraint produces stress and a force in the bar.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Mentions prevented thermal movement.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that stress/force develops.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q15",
+          "question": "Elastic energy stored in a spring is calculated using (A) Fe (B) ½Fe (C) F/e (D) F²e.",
+          "answer": "B. ½Fe.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q16",
+          "question": "The energy stored per unit volume of an elastic material is (A) stress × strain (B) ½ × stress × strain (C) stress/strain (D) strain/stress.",
+          "answer": "B. ½ × stress × strain.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q17",
+          "question": "A substance that undergoes considerable permanent extension before breaking is described as (A) brittle (B) ductile (C) rigid (D) perfectly elastic.",
+          "answer": "B. Ductile.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q18",
+          "question": "Why must the material remain within its elastic limit when calculating recoverable elastic energy using U = ½Fe?",
+          "answer": "The formula assumes a linear elastic force-extension relationship and that the deformation is recoverable. Beyond the elastic limit, permanent deformation occurs and the relation may not apply.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Mentions linear elastic/proportional behaviour.",
+              "marks": 1
+            },
+            {
+              "criterion": "Mentions permanent deformation or non-recoverable work beyond the elastic limit.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Sow the Seed Schools SS1 Physics Third Term scheme",
+          "locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 9 WEEK 10; body ID SS1-SRC-bed91bb4ef0e:BODY:90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3 (2,827 characters; source member SHA-256 bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688). Original body text was not independently retrieved in this execution.",
+          "url": null,
+          "rights": "Scheme used to establish subject/week scope; lesson independently authored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics scheme."
+        },
+        {
+          "title": "SchoolGist — Physics SSS 1 Third Term, Week Ten",
+          "locator": "PDF lines 660–713: force in a bar, energy stored in a wire, energy per unit volume, ductile/brittle substances, classwork and assignment.",
+          "url": "https://schoolgist.ng/storage/postFiles/SS1-Physics-3rd-Term-Lesson-Note-pdf.pdf",
+          "rights": "Used to corroborate scope and common calculation types; replacement lesson and questions independently authored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "SchoolGist, Physics SSS 1 Third Term, Week Ten, accessed 2026-11-11."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -11478,6 +11837,106 @@
         {
           "locator": "SchoolGist, Physics SSS 1 Third Term PDF, Week Nine, lines 582–659.",
           "explanation": "Close-equivalent comparison includes Hooke's law, stress/strain, Young's modulus and source assessment. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W10-OBJ-1",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Elastic energy stored in a spring and the relation U = ½Fe = ½ke².",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 9 WEEK 10; body SS1-SRC-bed91bb4ef0e:BODY:90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3 (2,827 characters; SHA-256 90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3). Scheme topic: energy in elastic materials.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY; body SHA-256 27fd9e09c3ead0398dd34e4833c4d7b303c8174b7e79408d126a1b1188479824; practice Q01–Q18.",
+          "explanation": "Authored supplement covers wire energy, energy density, restrained thermal force and material behaviour with worked examples and keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Third Term PDF, Week Ten, lines 660–713.",
+          "explanation": "Close-equivalent comparison includes the scheme topic, formulas, classwork and assignment. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W10-OBJ-2",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Energy stored in a stretched wire: U = EAe²/(2L).",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 9 WEEK 10; body SS1-SRC-bed91bb4ef0e:BODY:90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3 (2,827 characters; SHA-256 90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3). Scheme topic: energy in elastic materials.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY; body SHA-256 27fd9e09c3ead0398dd34e4833c4d7b303c8174b7e79408d126a1b1188479824; practice Q01–Q18.",
+          "explanation": "Authored supplement covers wire energy, energy density, restrained thermal force and material behaviour with worked examples and keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Third Term PDF, Week Ten, lines 660–713.",
+          "explanation": "Close-equivalent comparison includes the scheme topic, formulas, classwork and assignment. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W10-OBJ-3",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Elastic energy per unit volume: u = ½ × stress × strain.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 9 WEEK 10; body SS1-SRC-bed91bb4ef0e:BODY:90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3 (2,827 characters; SHA-256 90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3). Scheme topic: energy in elastic materials.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY; body SHA-256 27fd9e09c3ead0398dd34e4833c4d7b303c8174b7e79408d126a1b1188479824; practice Q01–Q18.",
+          "explanation": "Authored supplement covers wire energy, energy density, restrained thermal force and material behaviour with worked examples and keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Third Term PDF, Week Ten, lines 660–713.",
+          "explanation": "Close-equivalent comparison includes the scheme topic, formulas, classwork and assignment. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W10-OBJ-4",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Force developed in a bar whose thermal expansion or contraction is fully restrained: F = EAαΔT.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 9 WEEK 10; body SS1-SRC-bed91bb4ef0e:BODY:90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3 (2,827 characters; SHA-256 90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3). Scheme topic: energy in elastic materials.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY; body SHA-256 27fd9e09c3ead0398dd34e4833c4d7b303c8174b7e79408d126a1b1188479824; practice Q01–Q18.",
+          "explanation": "Authored supplement covers wire energy, energy density, restrained thermal force and material behaviour with worked examples and keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Third Term PDF, Week Ten, lines 660–713.",
+          "explanation": "Close-equivalent comparison includes the scheme topic, formulas, classwork and assignment. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W10-OBJ-5",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Ductile and brittle material behaviour.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 9 WEEK 10; body SS1-SRC-bed91bb4ef0e:BODY:90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3 (2,827 characters; SHA-256 90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3). Scheme topic: energy in elastic materials.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY; body SHA-256 27fd9e09c3ead0398dd34e4833c4d7b303c8174b7e79408d126a1b1188479824; practice Q01–Q18.",
+          "explanation": "Authored supplement covers wire energy, energy density, restrained thermal force and material behaviour with worked examples and keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Third Term PDF, Week Ten, lines 660–713.",
+          "explanation": "Close-equivalent comparison includes the scheme topic, formulas, classwork and assignment. It is not asserted to be the registered original .doc."
         }
       ]
     }
