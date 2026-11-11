@@ -61,6 +61,8 @@ test('Unapproved package is withheld even when the exact source fingerprint matc
   assert.equal(safe.source_reference, null);
   assert.equal(safe.generated_assessment_id, null);
   assert.match(String(safe.summary), /WITHHELD/);
+  assert(String(safe.summary).includes('\nThe English Language package is not yet approved for delivery.'));
+  assert(!String(safe.summary).includes('\\n'));
 });
 
 test('Approved and verified fixture delivers replacement without exposing answer keys', () => {
