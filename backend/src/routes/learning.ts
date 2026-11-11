@@ -10,7 +10,7 @@ import { resolveSequenceGroup } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
 import { resolveSs1Delivery, safeSs1Topic, retireStaleSs1Cache, ss1AssessmentDeliverable, ss1WithdrawnAssessmentIds } from '../utils/ss1CateringDeliveryCorrection.js';
 import { resolveSs1FrenchDelivery, retireStaleSs1FrenchCache } from '../utils/ss1FrenchDeliveryCorrection.js';
-import { resolveAgriculturalScienceDelivery, resolveAgriculturalScienceSupplement, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, retireStaleAgriculturalScienceSupplementCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
+import { resolveAgriculturalScienceDelivery, resolveAgriculturalScienceSupplement, resolveAgriculturalScienceSourceProjection, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, retireStaleAgriculturalScienceSupplementCache, retireStaleAgriculturalScienceSourceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
@@ -524,6 +524,18 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
         note: 'This Agricultural Science topic is temporarily unavailable pending subject approval and verification.' });
     }
   }
+  const agriculturalScienceSourceProjection = resolveAgriculturalScienceSourceProjection(topic);
+  if (agriculturalScienceSourceProjection) {
+    await retireStaleAgriculturalScienceSourceCache(query, topic.id, agriculturalScienceSourceProjection);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    if (agriculturalScienceSourceProjection.kind === 'withheld') {
+      return res.json({ ok: true, summary: agriculturalScienceSourceProjection.text, summary_is_fallback: false,
+        practice_questions: [], assessment_status: null,
+        delivery_correction: { id: agriculturalScienceSourceProjection.sourceLessonId, status: 'withheld' },
+        note: 'This Agricultural Science source row contains no learner-safe teaching material.' });
+    }
+  }
   const englishDelivery = resolveEnglishDelivery(topic);
   if (englishDelivery) {
     await retireStaleEnglishCache(query, topic.id, englishDelivery);
@@ -549,7 +561,8 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   topic.summary = learnerTopic.summary;
 
   const groundingSource: string | null = englishDelivery?.kind === 'corrected' ? englishDelivery.text
-    : agriculturalScienceDelivery?.kind === 'corrected' ? agriculturalScienceDelivery.text
+    : agriculturalScienceDelivery?.kind === 'corrected' || agriculturalScienceSupplement?.kind === 'supplement' || agriculturalScienceSourceProjection
+      ? (typeof topic.source_reference === 'string' ? topic.source_reference : null)
     : ss1Delivery?.kind === 'corrected' ? ss1Delivery.text
     : delivery?.kind === 'corrected' ? delivery.text
     : typeof topic.source_reference === 'string' ? topic.source_reference : null;
@@ -656,7 +669,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
           `INSERT INTO assessments(school_code,subject_id,class_name,term_id,title,total_marks,status,created_by,content_fingerprint)
            VALUES($1,$2,$3,$4,$5,$6,'open',NULL,$7) RETURNING id`,
           [topic.school_code, topic.subject_id, topic.class_name, topic.term_id,
-           `${topic.title} — Topic Assessment`, questionIds.length, ss1Delivery?.kind === 'corrected' ? ss1Delivery.fingerprint : agriculturalScienceSupplement?.kind === 'supplement' ? agriculturalScienceSupplement.fingerprint : delivery?.kind === 'corrected' ? delivery.fingerprint : null],
+           `${topic.title} — Topic Assessment`, questionIds.length, ss1Delivery?.kind === 'corrected' ? ss1Delivery.fingerprint : agriculturalScienceSupplement?.kind === 'supplement' ? agriculturalScienceSupplement.fingerprint : agriculturalScienceSourceProjection && agriculturalScienceSourceProjection.kind !== 'withheld' ? agriculturalScienceSourceProjection.fingerprint : delivery?.kind === 'corrected' ? delivery.fingerprint : null],
         );
         const assessmentId = aRows[0].id;
 
