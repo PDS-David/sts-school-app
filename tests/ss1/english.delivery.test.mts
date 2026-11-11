@@ -99,7 +99,7 @@ test('Stale cache retirement is scoped to secondary SS 1 English Language and ex
 test('Assessment access and assessment lists reject withdrawn English source content', async () => {
   const query = async (sql: string, params: unknown[] = []) => {
     if (sql.includes('SELECT content_fingerprint FROM assessments')) return { rows: [{ content_fingerprint: null }] };
-    if (sql.includes('SELECT id FROM assessments')) return { rows: [{ id: 902 }] };
+    if (sql.includes('SELECT id FROM assessments')) return { rows: [] };
     if (sql.includes('SELECT t.id, t.school_code')) return { rows: [{ ...fixtureTopic, source_reference: 'changed', assessment_id: 902, content_fingerprint: null }] };
     return { rows: [{ retired: 1, closed_assessments: 1 }] };
   };
