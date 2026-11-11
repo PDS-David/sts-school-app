@@ -67,6 +67,11 @@ test('All 24 correction records preserve exact source/body identity and bind a s
     assert.equal(replacement.term, source.term, 'cross-term replacement: ' + correction.id);
     assert.equal(replacement.subject, p.canonical_subject);
     assert.equal(replacement.class_name, 'SS 1');
+    // Owner approval is not technical verification: a corrected lesson must stay
+    // withheld until its own authorised verification evidence is recorded.
+    assert.equal(replacement.state.content_approval, 'APPROVED', correction.id);
+    assert.equal(replacement.state.verification, 'DEFERRED', correction.id);
+    assert.equal(replacement.state.verification_reference, null, correction.id);
   }
 });
 
