@@ -13946,6 +13946,29 @@
         "SUP-SS1-PHYSICS-T3-W05-PARTICLE-NATURE-MATTER"
       ],
       "blocks_delivery": false
+    },
+    {
+      "id": "PHYSICS-T1-W05-W06-SPLIT-IDENTITY",
+      "kind": "CONTENT",
+      "detail": "The earlier branch proposed splitting the combined parsed row WEEK FIVE AND SIX before the GRAPHS heading. The current schema's split_before operation can express a numeric Week 6 boundary, but applying it would change the content-bound parsed-row identities and hashes for the combined row and require re-binding all affected coverage and any correction targets. The current supplement SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS covers the scheme's motion and graph objectives without requiring a parser split. The old branch's proposed anchor was 'GRAPHS\\nThe motion of an object is best represented'; its uniqueness has not been independently rechecked against the original member in this execution.",
+      "required_action": "Do not apply the split rule solely to make source row numbering resemble the scheme. If a split is later required, verify the anchor against the hash-matching original member, compute the resulting row identities, rebind coverage and correction references, and obtain a reviewed migration plan before any import. Keep the current combined-row identity until then.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d",
+        "PHYS-WK-T1-W05-W06",
+        "SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYSICS-T1-W05-W06-FORMULA-FORMATTING",
+      "kind": "FACT",
+      "detail": "A prior branch reported the Week Five equation S = (v + u)t over 2 as an incorrect or fraction-lost formula. The extracted expression explicitly says 'over 2' and is mathematically equivalent to S = 1/2(u + v)t, the displacement from average velocity multiplied by time for uniformly accelerated motion. No mathematical error is established by the extracted wording. The original equation's visual fraction layout has not been inspected in the archive member, so this is a presentation/extraction question, not a confirmed physics error.",
+      "required_action": "Retain the correct formula in the authored motion lesson. During PHYS-VIS-T1, inspect the original equation/figure if a visual fidelity decision is needed; do not create a factual correction for an expression that is already mathematically equivalent.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d",
+        "SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS"
+      ],
+      "blocks_delivery": false
     }
   ]
 }
