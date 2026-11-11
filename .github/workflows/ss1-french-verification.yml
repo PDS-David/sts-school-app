@@ -5,6 +5,12 @@ on:
     branches: [master]
     paths:
       - "backend/src/db/ss1/subjects/french.json"
+      - "mobile/src/screens/FrenchListeningScreen.tsx"
+      - "mobile/src/screens/SubjectTopicsScreen.tsx"
+      - "mobile/src/screens/TopicDetailScreen.tsx"
+      - "mobile/src/navigation/StudentTabs.tsx"
+      - "mobile/package.json"
+      - "tests/student-launch.static.test.cjs"
       - "backend/src/db/ss1/sourceRegistry.json"
       - "backend/src/db/ss1/compiler.ts"
       - "backend/src/db/ss1/subjectPackageSchema.ts"
@@ -121,3 +127,7 @@ jobs:
       - name: Run French package tests and structural validation
         working-directory: backend
         run: npm run test:ss1:french
+
+      - name: Verify student app French audio routing and playback integration
+        working-directory: .
+        run: node --test tests/student-launch.static.test.cjs
