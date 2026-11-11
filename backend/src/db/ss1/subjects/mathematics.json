@@ -202,10 +202,10 @@
       "source_sha256": "9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2",
       "anchor": "12. Revision/Examination",
       "kind": "SCHEME_ONLY",
-      "match_mode": "WHOLE_LINE",
+      "match_mode": "SUBSTRING",
       "evidence": {
         "locator": "3rd-term source scheme, line 53, item 12",
-        "explanation": "This is the scheme's revision/examination marker, not an instructional lesson. It is classified as scheme-only so it is not presented as missing teaching content."
+        "explanation": "This is the scheme's revision/examination marker, not an instructional lesson. It is classified as scheme-only so it is not presented as missing teaching content. The compiler now matches this unique scheme marker as a substring because the DOCX/Mammoth flattened text does not preserve it as a standalone line; uniqueness is still enforced against the full source text."
       }
     }
   ],
