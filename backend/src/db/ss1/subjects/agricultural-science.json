@@ -5204,8 +5204,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-W09-20261111.md#DEC-AG-W09-2026-11-11",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -5372,8 +5372,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-W09-20261111.md#DEC-AG-W09-2026-11-11",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -9493,11 +9493,11 @@
         },
         {
           "locator": "whole-document text search; Week 7 uses of land blocks 554-565 (range sha256 a0404cdc0a76bc8d42ea7de094e4b2aa1d7651cebebe6af7f6fac66b70e19346)",
-          "explanation": "The string 'farmstead' occurs only at blocks 785 and 786 among all 933 blocks; it appears in no scheme line and in no teaching paragraph. Week 7's uses of land (554-565) covers crop production, grazing, fishery, forestry and wildlife conservation, not the farm/farmstead distinction or farmstead layout. Asked, never taught: UNRESOLVED. The bounded supplement AG-LES-T1-W09-FARMSTEAD is appended."
+          "explanation": "The string 'farmstead' occurs only at blocks 785 and 786 among all 933 blocks; it appears in no teaching paragraph. Week 7's uses of land does not cover the farm/farmstead distinction or farmstead layout. The approved original supplement now supplies the missing teaching without altering the source."
         },
         {
           "locator": "SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-FARMSTEAD in backend/src/db/ss1/subjects/agricultural-science.json; authored supplement body SHA-256 cd95fa8be4a35a8373eb26b15a83cca0b1235424a6a89a1dc413061881c0453f",
-          "explanation": "An original learner-facing supplement has been authored to cover the source assessment gap. Content approval remains PENDING and verification remains DEFERRED; this mapping does not imply teacher sign-off or importer verification."
+          "explanation": "The bounded supplement SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-FARMSTEAD supplies the assessment-gap teaching and practice. The repository owner approved the farmstead definition and five grouped layout principles on 2026-11-11; see docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-W09-20261111.md#DEC-AG-W09-2026-11-11. Lesson content approval is APPROVED. Compiler/importer and authenticated learner-delivery verification remain DEFERRED."
         }
       ]
     },
@@ -9517,11 +9517,11 @@
         },
         {
           "locator": "whole-document text search; Week 7 block 560 (sha256 57fda2632ce1f81206132ce90dbbe2772e5a8c7d4dd2c223698e61fb74482958)",
-          "explanation": "The only teaching mention of forestry is block 560, in Week 7's uses of land, and it gives one sentence on managing forest land and its resources. It names no taungya, forest regulation, afforestation or reforestation. The string 'taungya' occurs only at block 794; 'afforestation', 'reforestation' and 'forest regulation' only at block 801; 'selective' only at block 801. Week 9's body never mentions forestry. Asked, never taught: UNRESOLVED. The bounded supplement AG-LES-T1-W09-FORESTRY is appended."
+          "explanation": "The only original teaching mention is the one-sentence Week 7 definition; the assessed Week 9 forestry cluster is otherwise not taught in the source. The bounded supplement supplies the forest uses, forestry-department functions, taungya, regulation, selective exploitation, afforestation/reforestation and primary forest-product distinctions."
         },
         {
           "locator": "SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-FORESTRY in backend/src/db/ss1/subjects/agricultural-science.json; authored supplement body SHA-256 2df2eb83528db74d0f1bca301df46238781f029141ea8e463a9bfaeb1c97c1e0",
-          "explanation": "An original learner-facing supplement has been authored to cover the source assessment gap. Content approval remains PENDING and verification remains DEFERRED; this mapping does not imply teacher sign-off or importer verification."
+          "explanation": "The bounded supplement SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-FORESTRY supplies the assessment-gap teaching and complete practice. The repository owner approved the eight forestry-related recommendations on 2026-11-11, including the raw/direct SS1 interpretation of primary forest products; see docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-W09-20261111.md#DEC-AG-W09-2026-11-11. Lesson content approval is APPROVED. Compiler/importer and authenticated learner-delivery verification remain DEFERRED."
         }
       ]
     },
@@ -11867,8 +11867,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T1-W09-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Week Nine environmental factors, farmstead and forestry now have learner-facing lessons and exact original Week Nine identity where the source teaches the objective. Farmstead/forestry remain supplements because the source does not teach them. Formal approval and authenticated delivery remain release blockers.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Week Nine environmental factors, farmstead and forestry now have learner-facing lessons and exact original Week Nine identity where the source teaches the objective. The farmstead and forestry supplements have recorded repository-owner content approval. Compiler-plan comparison, delivery-correction confirmation, hash/marking checks and authenticated student-view verification remain deferred and block delivery.",
+      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the approved supplement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T1-W09-SCHEME-9",
         "COV-AG-T1-W09-FARMSTEAD",
@@ -11883,8 +11883,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T1-W09-ASSESSMENT-SCOPE",
       "kind": "CONTENT",
-      "detail": "The AI-authored evidence brief and two bounded original lessons are now available. They are explicitly not a subject-expert decision. A qualified Agricultural Science/forestry reviewer must approve or amend the five grouped farmstead-planning principles, forestry scope and the school-level interpretation of primary forest product before these lessons can be approved for learner release.",
-      "required_action": "Obtain and record qualified subject-expert review against the decisions in AG-FACT-T1-W09-SCOPE.md; then update content_approval and approval_reference only from the genuine review record.",
+      "detail": "The repository owner approved all nine numbered recommendations in AG-FACT-T1-W09-SCOPE.md on 2026-11-11; the two Week 9 supplements now carry APPROVED content_approval and cite OWNER-DEC-W09-20261111.md. Separate Week 9 issues remain unresolved: compost (block 854), mulching (block 857), the misdirected reading at block 851, whether pressure listed at block 731 is to be taught, and the remaining source wording/formatting defects. The owner approval does not decide these items or constitute independent credentialed subject-expert sign-off.",
+      "required_action": "Retain the nine approved recommendations and their approval reference. Obtain separate decisions for compost (854), mulching (857), reading (851), pressure (731) and remaining wording/formatting defects before closing this residual Week 9 scope task. Keep the original source unchanged; do not infer an assessment answer key.",
       "affected_ids": [
         "SS1-SRC-7aa642b0085b",
         "AG-FACT-T1-W09-SCOPE"
