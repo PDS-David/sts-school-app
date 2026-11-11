@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import packageData from '../../backend/src/db/ss1/subjects/mathematics.json' with { type: 'json' };
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
-import { createSs1MathematicsDeliveryResolver, mathematicsAssetDeliverable, retireStaleSs1MathematicsCache } from '../../backend/src/utils/ss1MathematicsDeliveryCorrection.ts';
+import { createSs1MathematicsDeliveryResolver, mathematicsAssetDeliverable, mathematicsAssetsForTopic, mathematicsAssetFilePath, retireStaleSs1MathematicsCache } from '../../backend/src/utils/ss1MathematicsDeliveryCorrection.ts';
 
 const hash = (value: string) => createHash('sha256').update(value, 'utf8').digest('hex');
 const packageValue = packageSchema.parse(packageData);
@@ -100,11 +100,10 @@ test('Mathematics replacement is shown only after exact source, scoped blockers,
   assert.deepEqual(result?.replacementLessonIds, [lesson.id]);
 });
 
-test('Mathematics assets remain hidden until their SVG verification and exact source attachment are recorded', () => {
+test('verified Mathematics package assets are served only to their exact source topic', () => {
   const asset = packageValue.assets[0];
   const lesson = packageValue.lessons.find(item => item.id === asset.lesson_id)!;
   const [memberAndOrder, title] = asset.source_locator.split(' — ');
-  const member = memberAndOrder.split(', order_index ')[0];
   const order = Number(memberAndOrder.split(', order_index ')[1]);
   const source = packageValue.sources.find(item => item.term === lesson.term)!;
   const topic = {
@@ -112,7 +111,17 @@ test('Mathematics assets remain hidden until their SVG verification and exact so
     term_label: lesson.term, source_file: source.archive_member.split('/').at(-1),
     title, order_index: order,
   };
-  assert.equal(mathematicsAssetDeliverable(topic as any, { asset_key: asset.id, sha256: asset.sha256, mime: asset.media_type }), false);
+  const stored = { asset_key: asset.id, sha256: asset.sha256, mime: asset.media_type };
+  assert.equal(mathematicsAssetDeliverable(topic as any, stored), true);
+  const lessonAssets = mathematicsAssetsForTopic(topic as any, 321);
+  assert.equal(lessonAssets.length, 2);
+  assert.equal(lessonAssets[0].url, '/learning/topics/321/assets/MATH-T1-W08-LOG-TABLE-1');
+  assert.equal(mathematicsAssetFilePath(asset.id), asset.path);
+  assert.equal(mathematicsAssetDeliverable({ ...topic, order_index: order + 1 } as any, stored), false);
+  assert.equal(mathematicsAssetDeliverable({ ...topic, title: 'wrong source title' } as any, stored), false);
+  assert.equal(mathematicsAssetDeliverable({ ...topic, term_label: '2nd Term' } as any, stored), false);
+  assert.equal(mathematicsAssetDeliverable({ ...topic, source_file: 'unrelated.docx' } as any, stored), false);
+  assert.equal(mathematicsAssetDeliverable({ ...topic, class_name: 'JSS 3' } as any, stored), false);
 });
 
 test('stale Mathematics topic cache is retired and its generated assessment is closed', async () => {
