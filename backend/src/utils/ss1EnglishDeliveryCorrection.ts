@@ -10,8 +10,8 @@ const SCHOOL_CODE = 'secondary';
 const CLASS_NAME = 'SS 1';
 const SUBJECT_NAME = 'English Language';
 const hash = (value: string) => createHash('sha256').update(value, 'utf8').digest('hex');
-const norm = (value: unknown) => String(value ?? '').replace(/\\s+/g, ' ').trim().toLocaleLowerCase('en');
-const basename = (value: unknown) => String(value ?? '').split(/[\\\\/]/).pop() ?? '';
+const norm = (value: unknown) => String(value ?? '').replace(/\s+/g, ' ').trim().toLocaleLowerCase('en');
+const basename = (value: unknown) => String(value ?? '').split(/[\\/]/).pop() ?? '';
 
 export interface EnglishDeliveryTopic {
   id?: unknown;
