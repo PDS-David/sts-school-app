@@ -61,3 +61,11 @@ test('committed SS1 SVG assets pass the safety filter (except the pinned known s
   const rejected = files.filter(f => !isSafeSvg(readFileSync(f))).map(f => path.relative(root, f).split(path.sep).join('/')).sort();
   assert.deepEqual(rejected, KNOWN_REJECTED);
 });
+
+test('mobile renderer uses the same unsafe-content pattern as the backend filter', () => {
+  const pattern = (text: string) => text.match(/\/(<!DOCTYPE\|<!ENTITY[^\n]*?)\/i\.test\(/)?.[1];
+  const backend = pattern(readFileSync(path.resolve(here, '../../backend/src/db/attachTopicAssets.ts'), 'utf8'));
+  const mobile = pattern(readFileSync(path.resolve(here, '../../mobile/src/screens/TopicDetailScreen.tsx'), 'utf8'));
+  assert.ok(backend && mobile, 'pattern found in both files');
+  assert.equal(mobile, backend);
+});
