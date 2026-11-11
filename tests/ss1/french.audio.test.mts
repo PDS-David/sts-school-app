@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { readFileSync, statSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import {
   FRENCH_DIALOGUE,
   FRENCH_LISTENING_QUESTIONS,
