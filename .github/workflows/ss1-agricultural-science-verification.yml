@@ -24,6 +24,16 @@ on:
     branches: [master]
     paths:
       - "backend/src/db/ss1/**"
+      - "backend/src/db/attachTopicAssets.ts"
+      - "backend/src/routes/learning.ts"
+      - "backend/src/utils/ss1AgriculturalScienceDeliveryCorrection.ts"
+      - "mobile/src/screens/TopicDetailScreen.tsx"
+      - "mobile/src/api/lessonAssets.ts"
+      - "mobile/package.json"
+      - "scripts/ss1/build_asset_plan.mjs"
+      - "scripts/ss1/build_agricultural_science_asset_plan.mts"
+      - "tests/topic-assets.static.test.cjs"
+      - "tests/topic-assets-svg.test.mts"
       - "backend/package.json"
       - "package-lock.json"
       - "package.json"
