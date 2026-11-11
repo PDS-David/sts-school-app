@@ -2712,6 +2712,289 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Thermal expansivity: linear, area, volume, liquids and anomalous expansion of water",
+      "objectives": [
+        "Define linear, area and volume expansivity and state their SI units.",
+        "Use the equations for linear, area and volume expansion in calculations.",
+        "Explain the approximate relationships β ≈ 2α and γ ≈ 3α for small expansion of isotropic solids.",
+        "Distinguish real and apparent expansivity of a liquid and calculate container expansivity.",
+        "Explain the anomalous expansion of water between 0 °C and 4 °C and its importance."
+      ],
+      "body": "THERMAL EXPANSIVITY: LINEAR, AREA AND VOLUME\n\n1. Meaning of thermal expansivity\nThermal expansion is the increase in a material's dimensions when its temperature rises. Thermal expansivity (coefficient of expansion) measures the fractional increase in a dimension per unit rise in temperature. The SI unit of each coefficient is kelvin⁻¹ (K⁻¹). A temperature rise of 1 °C has the same size as a rise of 1 K, so coefficients may also be expressed per °C.\n\nUse ΔT = T₂ − T₁. A temperature difference is used in the equations; do not substitute an absolute Celsius or Kelvin reading for ΔT.\n\n2. Linear expansivity (α)\nLinear expansivity describes the fractional increase in length per unit original length for each unit temperature rise:\nα = ΔL / (L₀ΔT)\nTherefore:\nΔL = αL₀ΔT\nL = L₀ + ΔL = L₀(1 + αΔT)\nwhere L₀ is original length, L is final length and ΔL is the increase in length. α is measured in K⁻¹.\n\nWorked example 1\nA brass rod is 2.00 m long. Its linear expansivity is 18 × 10⁻⁶ K⁻¹. Find its final length after a temperature rise of 100 K.\nΔL = αL₀ΔT\n= 18 × 10⁻⁶ × 2.00 × 100\n= 0.0036 m.\nFinal length = 2.00 + 0.0036 = 2.0036 m.\n\n3. Area (superficial) expansivity (β)\nArea expansivity describes the fractional increase in surface area per unit original area per unit temperature rise:\nβ = ΔA / (A₀ΔT)\nΔA = βA₀ΔT\nA = A₀(1 + βΔT)\nFor a uniform (isotropic) solid and a small temperature change, β ≈ 2α. This is because both length dimensions expand. The approximation ignores the very small product term (αΔT)².\n\nWorked example 2\nA metal plate has an original area of 0.50 m². Its area expansivity is 2.4 × 10⁻⁵ K⁻¹ and its temperature rises by 50 K.\nΔA = βA₀ΔT\n= 2.4 × 10⁻⁵ × 0.50 × 50\n= 0.00060 m².\nFinal area = 0.50060 m².\n\n4. Volume (cubical) expansivity (γ)\nVolume expansivity describes the fractional increase in volume per unit original volume per unit temperature rise:\nγ = ΔV / (V₀ΔT)\nΔV = γV₀ΔT\nV = V₀(1 + γΔT)\nFor a uniform isotropic solid and a small temperature change, γ ≈ 3α. Thus the approximate relationship for such solids is α : β : γ = 1 : 2 : 3. Do not apply this ratio blindly to every material or to liquids.\n\nWorked example 3\nA solid block has volume 1.50 × 10⁻³ m³. Its volume expansivity is 3.6 × 10⁻⁵ K⁻¹. Find the increase in volume for a temperature rise of 40 K.\nΔV = γV₀ΔT\n= 3.6 × 10⁻⁵ × 1.50 × 10⁻³ × 40\n= 2.16 × 10⁻⁶ m³.\n\n5. Expansion of liquids: real and apparent\nA liquid is normally heated in a container, and the container also expands. The liquid's actual increase in volume is called its real (or absolute) expansion. The increase observed relative to the expanding container is its apparent expansion.\nFor small temperature changes:\nγᵣ = γₐ + γ꜀\nwhere γᵣ is the real expansivity of the liquid, γₐ is its apparent expansivity, and γ꜀ is the cubical expansivity of the container.\nTherefore:\nγ꜀ = γᵣ − γₐ.\nThe apparent expansion is smaller than the real expansion when the container also expands. Use the same temperature interval and reference volume when comparing the coefficients.\n\nWorked example 4\nA liquid has real expansivity 3.0 × 10⁻⁴ K⁻¹ and apparent expansivity 2.8 × 10⁻⁴ K⁻¹ in a container. Find the container's cubical expansivity.\nγ꜀ = γᵣ − γₐ\n= (3.0 − 2.8) × 10⁻⁴\n= 0.2 × 10⁻⁴ = 2.0 × 10⁻⁵ K⁻¹.\n\n6. Anomalous expansion of water\nMost liquids expand when heated and contract when cooled. Water behaves unusually between 0 °C and 4 °C:\n- When water is heated from 0 °C to 4 °C, it contracts and its density increases.\n- At about 4 °C, water has its maximum density (approximately 1,000 kg m⁻³ at standard atmospheric pressure).\n- When water is heated above 4 °C, it expands normally.\n- When water cools from 4 °C towards 0 °C, it expands. On freezing, it expands further, so ice is less dense than liquid water and floats.\nThis behaviour helps lakes and ponds freeze from the surface rather than becoming solid ice from the bottom upward.\n\n7. How to solve expansivity questions\n1. Write down the quantity being asked for: ΔL, ΔA, ΔV, a coefficient or a final dimension.\n2. Record the original dimension and the temperature change ΔT.\n3. Choose the matching equation: α for length, β for area, γ for volume.\n4. Convert all dimensions to consistent units before substituting.\n5. Keep the coefficient in K⁻¹ and the temperature change in K or °C.\n6. Give the final answer with the correct unit and sensible significant figures.\n\nCOMMON ERRORS TO AVOID\n- Using the final temperature instead of the temperature change.\n- Forgetting to add the increase to the original length/area/volume when the question asks for the final dimension.\n- Confusing α, β and γ or omitting K⁻¹.\n- Treating β = 2α and γ = 3α as exact for large expansions or all materials.\n- Saying water expands normally throughout 0–4 °C; in this interval it contracts when heated.\n- Confusing real expansion of a liquid with apparent expansion measured in an expanding vessel.\n\nSUMMARY\nα = ΔL/(L₀ΔT); β = ΔA/(A₀ΔT); γ = ΔV/(V₀ΔT).\nFor small expansions of isotropic solids: β ≈ 2α and γ ≈ 3α.\nFor a liquid in an expanding container: γᵣ = γₐ + γ꜀.\nWater has maximum density near 4 °C and expands anomalously between 0 °C and 4 °C.",
+      "body_sha256": "b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Define linear expansivity and state its SI unit.",
+          "answer": "Linear expansivity is the fractional increase in length per unit original length per unit temperature rise. Its SI unit is K⁻¹.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Gives the fractional increase in length per unit original length per degree.",
+              "marks": 1
+            },
+            {
+              "criterion": "States K⁻¹.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Write the equations for change in length and final length of a uniformly heated rod.",
+          "answer": "ΔL = αL₀ΔT and L = L₀(1 + αΔT).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct change-in-length equation.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct final-length equation.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "A brass rod is 2.00 m long, α = 18 × 10⁻⁶ K⁻¹ and its temperature rises by 100 K. Find its final length.",
+          "answer": "ΔL = 18 × 10⁻⁶ × 2.00 × 100 = 0.0036 m. Final length = 2.0036 m.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses ΔL = αL₀ΔT.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates ΔL = 0.0036 m.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives final length 2.0036 m.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Define area expansivity and state its approximate relationship with linear expansivity for an isotropic solid.",
+          "answer": "Area expansivity is the fractional increase in area per unit original area per unit temperature rise. For small expansion, β ≈ 2α.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct definition.",
+              "marks": 1
+            },
+            {
+              "criterion": "States β ≈ 2α.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "A plate has area 0.50 m², β = 2.4 × 10⁻⁵ K⁻¹ and is heated by 50 K. Calculate its increase in area.",
+          "answer": "ΔA = βA₀ΔT = 2.4 × 10⁻⁵ × 0.50 × 50 = 0.00060 m².",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Writes ΔA = βA₀ΔT.",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes values correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 0.00060 m².",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q06",
+          "question": "State the approximate relationship between the volume and linear expansivities of an isotropic solid for small expansion.",
+          "answer": "γ ≈ 3α.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "States γ ≈ 3α.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q07",
+          "question": "A solid has V₀ = 1.50 × 10⁻³ m³, γ = 3.6 × 10⁻⁵ K⁻¹ and ΔT = 40 K. Find the increase in volume.",
+          "answer": "ΔV = γV₀ΔT = 3.6 × 10⁻⁵ × 1.50 × 10⁻³ × 40 = 2.16 × 10⁻⁶ m³.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Writes ΔV = γV₀ΔT.",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 2.16 × 10⁻⁶ m³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q08",
+          "question": "Distinguish between real and apparent expansion of a liquid.",
+          "answer": "Real expansion is the actual increase in the liquid's volume. Apparent expansion is the increase observed relative to the container, which also expands when heated.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correctly defines real expansion.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly defines apparent expansion and mentions container expansion.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q09",
+          "question": "A liquid has real expansivity 3.0 × 10⁻⁴ K⁻¹ and apparent expansivity 2.8 × 10⁻⁴ K⁻¹. Calculate the container's cubical expansivity.",
+          "answer": "γ꜀ = γᵣ − γₐ = (3.0 − 2.8) × 10⁻⁴ = 2.0 × 10⁻⁵ K⁻¹.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses γᵣ = γₐ + γ꜀ or rearranges correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subtracts the values correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 2.0 × 10⁻⁵ K⁻¹.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "Explain the anomalous expansion of water between 0 °C and 4 °C.",
+          "answer": "When water is heated from 0 °C to 4 °C it contracts and becomes denser. At about 4 °C it has maximum density. Above 4 °C it expands normally.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "States that water contracts when heated from 0 °C to 4 °C.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that density is maximum at about 4 °C.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that above 4 °C it expands normally.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "At approximately what temperature does pure water have its maximum density at normal atmospheric pressure?",
+          "answer": "Approximately 4 °C.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "States approximately 4 °C.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "For a small temperature rise in an isotropic solid, what is the approximate ratio α : β : γ?",
+          "answer": "1 : 2 : 3.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Gives 1 : 2 : 3.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q13",
+          "question": "When water is heated from 1 °C to 3 °C, what happens to its volume? (A) It increases (B) It decreases (C) It remains constant (D) It becomes zero.",
+          "answer": "B. It decreases because water contracts as it is heated within the 0–4 °C interval.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q14",
+          "question": "Why does ice float on liquid water, and why is this important for ponds?",
+          "answer": "Water expands on freezing, making ice less dense than liquid water, so it floats. A surface layer of ice can insulate the water below, allowing aquatic life to survive in colder conditions.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "States that water expands on freezing.",
+              "marks": 1
+            },
+            {
+              "criterion": "Connects expansion with lower density and floating.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains surface freezing/insulation of water below.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Sow the Seed Schools SS1 Physics Second Term scheme",
+          "locator": "Registered source SS1-SRC-2c924c964660; parsed row 3 WEEK FOUR; body ID SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c (4,238 characters; source member SHA-256 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7). Original body text was not available in this execution.",
+          "url": null,
+          "rights": "Scheme used to establish subject and week scope; lesson independently authored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics scheme."
+        },
+        {
+          "title": "SchoolGist — Physics SSS 1 Second Term (public close-equivalent lesson note)",
+          "locator": "PDF, Week Four, lines 297–414: linear, area and volume expansivity, anomalous expansion of water, real/apparent expansion, examples and assignments. Used only as a close-equivalent scope comparison, not as the registered original .doc.",
+          "url": "https://schoolgist.ng/storage/postFiles/SS1-Physics-2nd-Term-Lesson-Note-pdf.pdf",
+          "rights": "Used to corroborate scope and common exercise types only. No wording or questions copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "SchoolGist, Physics SSS 1 Second Term, Week Four, accessed 2026-11-11."
+        },
+        {
+          "title": "Headteacher.ng — Thermal expansivity lesson note for SS1",
+          "locator": "Independent scope corroboration for linear, area and volume expansivity, coefficients and calculations.",
+          "url": "https://www.headteacher.ng/thermal-expansivity-linear-area-volume-cubic-expansivity-problems-for-sss-1/?discussion=1",
+          "rights": "Used for factual cross-checking only; no wording or exercises copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Headteacher.ng, Thermal Expansivity for SSS 1, accessed 2026-11-11."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -4790,6 +5073,106 @@
         {
           "locator": "Public close-equivalent Week Two PDF lines 109–233 and NIST/NSTA references.",
           "explanation": "Used to corroborate topic and assessment scope and correct scientific facts; not asserted identical to archive DOCX."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W04-OBJ-1",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Linear expansivity: definition, coefficient, formula and calculation.",
+      "objective_locator": "Registered source SS1-SRC-2c924c964660; parsed row 3 WEEK FOUR; body SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c (4,238 characters; SHA-256 91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c). The scheme topic is Expansivity: linear, area, volume, anomalous expansion of water, real and apparent expansivity.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY; body SHA-256 b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b; practice Q01–Q14.",
+          "explanation": "Authored supplement teaches this objective with definitions, equations, worked examples, units and keyed practice. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Four, lines 297–414.",
+          "explanation": "Close-equivalent source comparison includes linear, area, volume, real/apparent expansivity and anomalous expansion of water. It is not represented as the registered original source body."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W04-OBJ-2",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Area expansivity: definition, coefficient, formula and relation to linear expansivity.",
+      "objective_locator": "Registered source SS1-SRC-2c924c964660; parsed row 3 WEEK FOUR; body SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c (4,238 characters; SHA-256 91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c). The scheme topic is Expansivity: linear, area, volume, anomalous expansion of water, real and apparent expansivity.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY; body SHA-256 b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b; practice Q01–Q14.",
+          "explanation": "Authored supplement teaches this objective with definitions, equations, worked examples, units and keyed practice. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Four, lines 297–414.",
+          "explanation": "Close-equivalent source comparison includes linear, area, volume, real/apparent expansivity and anomalous expansion of water. It is not represented as the registered original source body."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W04-OBJ-3",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Volume expansivity: definition, coefficient, formula and relation to linear expansivity.",
+      "objective_locator": "Registered source SS1-SRC-2c924c964660; parsed row 3 WEEK FOUR; body SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c (4,238 characters; SHA-256 91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c). The scheme topic is Expansivity: linear, area, volume, anomalous expansion of water, real and apparent expansivity.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY; body SHA-256 b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b; practice Q01–Q14.",
+          "explanation": "Authored supplement teaches this objective with definitions, equations, worked examples, units and keyed practice. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Four, lines 297–414.",
+          "explanation": "Close-equivalent source comparison includes linear, area, volume, real/apparent expansivity and anomalous expansion of water. It is not represented as the registered original source body."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W04-OBJ-4",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Anomalous expansion of water between 0 °C and 4 °C.",
+      "objective_locator": "Registered source SS1-SRC-2c924c964660; parsed row 3 WEEK FOUR; body SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c (4,238 characters; SHA-256 91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c). The scheme topic is Expansivity: linear, area, volume, anomalous expansion of water, real and apparent expansivity.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY; body SHA-256 b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b; practice Q01–Q14.",
+          "explanation": "Authored supplement teaches this objective with definitions, equations, worked examples, units and keyed practice. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Four, lines 297–414.",
+          "explanation": "Close-equivalent source comparison includes linear, area, volume, real/apparent expansivity and anomalous expansion of water. It is not represented as the registered original source body."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W04-OBJ-5",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Real and apparent expansivity of liquids and the expansion of the containing vessel.",
+      "objective_locator": "Registered source SS1-SRC-2c924c964660; parsed row 3 WEEK FOUR; body SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c (4,238 characters; SHA-256 91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c). The scheme topic is Expansivity: linear, area, volume, anomalous expansion of water, real and apparent expansivity.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY; body SHA-256 b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b; practice Q01–Q14.",
+          "explanation": "Authored supplement teaches this objective with definitions, equations, worked examples, units and keyed practice. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Four, lines 297–414.",
+          "explanation": "Close-equivalent source comparison includes linear, area, volume, real/apparent expansivity and anomalous expansion of water. It is not represented as the registered original source body."
         }
       ]
     }
