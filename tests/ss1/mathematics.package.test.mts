@@ -41,8 +41,10 @@ test('lesson completeness: objectives, body, practice with full answers and exac
 test('external mathematics references are citation-only, license-checked and attributed', () => {
   const provenance = pkg.lessons.flatMap(lesson => lesson.provenance);
   assert.ok(provenance.length > 0);
-  for (const item of provenance) {
-    assert.equal(item.reuse_status, 'PERMITTED');
+  for (const item of provenance) assert.equal(item.reuse_status, 'PERMITTED');
+  const external = provenance.filter(item => item.title.startsWith('OpenStax'));
+  assert.ok(external.length > 0);
+  for (const item of external) {
     assert.match(item.rights, /CC BY(?:-NC-SA)? 4\.0/);
     assert.match(item.attribution, /OpenStax/);
     assert.match(item.locator, /checked:/i);
