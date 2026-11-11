@@ -39,7 +39,8 @@
     "PHYS-WK-T2-W10 (2026-11-11): authored SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT (5,079-char body; 18 keyed questions; 40 marks) and added five objective-level coverage entries. SchoolGist PDF Week Ten lines 732-835 used only as close-equivalent scope comparison. Original .doc body/diagrams not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T2-W10.md; queue item BLOCKED.",
     "PHYS-WK-T3-W01 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS (6,167-char body; 18 keyed questions; 39 marks) and added five objective-level coverage entries. EduPodia/Ecolebooks public notes used only as close-equivalent comparisons. Original .doc body/circuit diagram not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W01.md; queue item BLOCKED.",
     "PHYS-WK-T3-W02 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL (4,455-char body; 18 keyed questions; 38 marks) and added five objective-level coverage entries. SchoolGist/Ecolebooks close-equivalent notes used only for scope corroboration. Original .doc body/diagrams not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W02.md; queue item BLOCKED.",
-    "PHYS-WK-T3-W03 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER (4,065-char body; 18 keyed questions; 40 marks) and added five objective-level coverage entries. SchoolGist/Ecolebooks close-equivalent notes used only for scope corroboration. Original .doc body/figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W03.md; queue item BLOCKED."
+    "PHYS-WK-T3-W03 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER (4,065-char body; 18 keyed questions; 40 marks) and added five objective-level coverage entries. SchoolGist/Ecolebooks close-equivalent notes used only for scope corroboration. Original .doc body/figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W03.md; queue item BLOCKED.",
+    "PHYS-WK-T3-W04 + PHYS-FACT-T3-FUSE-RATING + PHYS-FACT-T3-W04-ASSIGNMENT + PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA (2026-11-11): implemented source indexing, correction and assessment disposition. See the four task notes in docs/ss1/work/microtasks/physics/. Source PDF line locators and prior original-source checkpoint are recorded; lesson content approval remains pending and testing deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -58,9 +59,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 34,
+    "IMPLEMENTED_TESTING_DEFERRED": 38,
     "BLOCKED": 26,
-    "PENDING": 29
+    "PENDING": 25
   },
   "total": 89,
   "items": [
@@ -1139,8 +1140,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 3 (source label 'WEEK 4', title \"SAFETY DEVICE - FUSE\", 2393 characters, body sha256 87346147325e174b318300a5d1ac5312cd14784201b272138575665519d50d1b) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed the Week Four scheme objective, source row identity/hash, fuse definitions/types, fault-detection tests and source assessment blocks. Expanded SUP-SS1-PHYSICS-T3-W04-FUSE with 21 keyed questions (41 marks), including source assessment answer keys. Evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W04.md. Prior SS1-03 checkpoint confirms the original .doc was read and reports the current-rating and 'merger tester' defects; SchoolGist PDF lines 296-346 provides reproducible line-level corroboration. The unrelated tuning-fork question is recorded in non-blocking package open item PHYSICS-T3-W04-UNRELATED-QUESTION. Lesson approval PENDING; verification DEFERRED.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1479,8 +1480,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "docs/ss1/work/SS1-03/CHECKPOINT.md section 3 (Physics): read so far 3rd term Weeks 1-4 only; defects found, not authored. Reported: the rating is defined as the MINIMUM current (it is the maximum carried indefinitely) and a 'merger tester' appears (megger). Not yet checked in this queue. PR #71 lesson SUP-SS1-PHYS-003 (branch-only) addresses the fuse topic.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Confirmed and corrected the current-rating definition and Megger terminology. Evidence: docs/ss1/work/microtasks/physics/PHYS-FACT-T3-FUSE-RATING.md; CHECKPOINT.md section 3 records the original .doc defect; SchoolGist PDF Week Four lines 310-316 and 324-329 gives reproducible close-equivalent wording. Lesson now distinguishes current rating (maximum continuous current under specified conditions), fusing current (minimum melting current), fusing factor and Megger (insulation-resistance tester).",
       "completion_condition": "Verbatim short quotes and locators recorded, defect confirmed or refuted, and a correction or lesson task appended if confirmed."
     },
     {
@@ -1510,8 +1511,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "docs/ss1/work/SS1-03/CHECKPOINT.md section 3 (Physics): read so far 3rd term Weeks 1-4 only; defects found, not authored. Reported: Week 4 assignment contains unrelated circular-motion items.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Located the unrelated tuning-fork question in Week Four Assignment Section A Q4 (SchoolGist PDF line 342). It is not a fuse objective and is excluded from the authored fuse assessment; a non-blocking package open item records that no destination topic is guessed. Evidence: docs/ss1/work/microtasks/physics/PHYS-FACT-T3-W04-ASSIGNMENT.md.",
       "completion_condition": "Each unrelated item located and quoted briefly; recorded for the delivery-correction decision."
     },
     {
@@ -1541,8 +1542,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "docs/ss1/work/SS1-03/CHECKPOINT.md section 3 (Physics): read so far 3rd term Weeks 1-4 only; defects found, not authored. Reported formula defect; the row where it occurs is not recorded in the repository.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Confirmed the unbracketed expression at Week One PDF lines 106-107 and the prior source checkpoint. Correct relation is I = E/(R + r), with terminal V = IR = E − Ir. The authored Week One lesson uses the corrected expression. Evidence: docs/ss1/work/microtasks/physics/PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA.md.",
       "completion_condition": "Row and wording recorded; classified as source defect or extraction loss."
     },
     {
@@ -3072,10 +3073,9 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "Second Term Weeks 3–10 and Third Term Weeks 1–3 student lessons authored. Original .doc source reconciliation remains blocked. PR #578 has dedicated Physics CI queued."
+    "notes": "Weeks 3–10 T2, T3 Weeks 1–4, and source corrections authored. T3W4 source indexing and three factual dependencies implemented with source line evidence. PR #578 contains all changes; CI/test execution pending."
   },
   "next_runnable": [
-    "PHYS-WK-T3-W04",
     "PHYS-WK-T3-W05",
     "PHYS-WK-T3-W06",
     "PHYS-WK-T3-W07",
@@ -3084,9 +3084,6 @@
     "PHYS-WK-T3-W10",
     "PHYS-RULE-T1-REVISION-SCHEME",
     "PHYS-RULE-T3-REVISION-EXAM",
-    "PHYS-FACT-T3-FUSE-RATING",
-    "PHYS-FACT-T3-W04-ASSIGNMENT",
-    "PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA",
     "PHYS-VIS-T1",
     "PHYS-VIS-T2",
     "PHYS-VIS-T3",
@@ -3098,7 +3095,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T3-W04",
     "PHYS-WK-T3-W05",
     "PHYS-WK-T3-W06",
     "PHYS-WK-T3-W07",
@@ -3107,9 +3103,6 @@
     "PHYS-WK-T3-W10",
     "PHYS-RULE-T1-REVISION-SCHEME",
     "PHYS-RULE-T3-REVISION-EXAM",
-    "PHYS-FACT-T3-FUSE-RATING",
-    "PHYS-FACT-T3-W04-ASSIGNMENT",
-    "PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA",
     "PHYS-VIS-T1",
     "PHYS-VIS-T2",
     "PHYS-VIS-T3",
