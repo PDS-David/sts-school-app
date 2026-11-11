@@ -94,7 +94,7 @@ Clear expressions now taught in SUP-SS1-FRENCH-COURTESY-CELEBRATIONS-T1. Intende
 - Source-row identities and 28 correction bindings are traceable.
 - Current objective coverage statuses and replacement lesson references are indexed.
 - The linked practice counts can be computed from the currently authored lessons.
-- The ten `PARTIAL` coverage records and seven delivery-blocking open items remain visible; none is silently upgraded.
+- The twelve `PARTIAL` coverage records and nine delivery-blocking open items remain visible; none is silently upgraded.
 
 ## What remains before authoring can be called complete
 
