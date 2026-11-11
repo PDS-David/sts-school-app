@@ -1,5 +1,4 @@
-// Deferred by owner. Run only during the later authorised verification stage:
-// node --import tsx --test tests/ss1/french.package.test.mts
+// Automated French package regression suite; run through npm run test:ss1:french.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -67,6 +66,14 @@ test('Regression examples preserve accents, the missing alphabet letter and futu
   assert.match(byId.get('SUP-SS1-FRENCH-ACCENTS-T1')!.body, /Noël/);
   assert.match(byId.get('SUP-SS1-FRENCH-FUTURE-T2')!.body, /nous parlerons/);
   assert.match(byId.get('SUP-SS1-FRENCH-SOUNDS-T2')!.body, /\/ɲ\//);
+  assert.match(byId.get('SUP-SS1-FRENCH-SOUNDS-T2')!.body, /\/ŋ\//);
+  assert.match(byId.get('SUP-SS1-FRENCH-ACCENTS-T1')!.body, /h muet/);
+  assert.match(byId.get('SUP-SS1-FRENCH-ACCENTS-T1')!.body, /h aspiré/);
+  assert.match(byId.get('SUP-SS1-FRENCH-PROFESSIONS-T1')!.body, /computateur/);
+  assert.match(byId.get('SUP-SS1-FRENCH-PROFESSIONS-T1')!.body, /couteur/);
+  assert.match(byId.get('SUP-SS1-FRENCH-OPINION-T1')!.body, /L’argent fait-il le bonheur/);
+  assert.match(byId.get('SUP-SS1-FRENCH-ENVIRONMENT-T1')!.body, /réfrigérateur/);
+  assert.match(byId.get('SUP-SS1-FRENCH-PREFERENCES-T1')!.body, /nous goûtons/);
   assert.match(byId.get('SUP-SS1-FRENCH-COUNTRIES-T1')!.body, /Burundi — Gitega/);
 });
 // The full-source compiler/parser comparison is a separate required integration check.
@@ -113,6 +120,15 @@ test('Third-Term revision and examination markers have original supplements and 
   assert.equal(markers.length, 2);
   assert(markers.every(c => c.status === 'MARKER'));
   assert(markers.every(c => c.lesson_ids.every(id => p.source_rules.some(rule => rule.id === id && rule.kind === 'SCHEME_ONLY'))));
+});
+test('Scheme-only markers are explicit and unresolved source rows remain partial', () => {
+  const p = packageSchema.parse(raw);
+  assert.equal(p.source_rules.find(r => r.id === 'SS1-SRC-8a2ec1fe30e3-R002')?.kind, 'SCHEME_ONLY');
+  assert.equal(p.source_rules.find(r => r.id === 'SS1-SRC-8a2ec1fe30e3-R003')?.kind, 'SCHEME_ONLY');
+  assert.equal(p.coverage.find(c => c.id === 'FRENCH-BODY-006')?.status, 'PARTIAL');
+  assert.equal(p.coverage.find(c => c.id === 'FRENCH-BODY-019')?.status, 'PARTIAL');
+  assert(p.open_items.some(item => item.id === 'FRENCH-UNCLEAR-OCCUPATIONS' && item.blocks_delivery));
+  assert(p.open_items.some(item => item.id === 'FRENCH-EXAM-AUDIO' && item.blocks_delivery));
 });
 test('Package does not claim completion, approval, or verification prematurely', () => {
   const p = packageSchema.parse(raw);
