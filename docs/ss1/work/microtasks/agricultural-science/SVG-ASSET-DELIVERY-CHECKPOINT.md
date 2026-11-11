@@ -19,8 +19,7 @@ Base: `c25c40cd89420d98a990b5ab41beb79873c5e756` (master at branch creation). Br
 The current package is pending, so the command above must produce a blocker report and no CSV. After all package/lesson/asset approvals and verification references are genuinely recorded, review the generated manifest in dry-run mode first:
 
 ```powershell
-cd backend
-npx tsx src/db/attachTopicAssets.ts --manifest <private-output>\agricultural-science-ss-1-3rd-term-assets.csv --assets .. --subject "Agricultural Science" --class-name "SS 1" --term-label "3rd Term" --dry-run
+npx tsx backend/src/db/attachTopicAssets.ts --manifest <absolute-private-output>\agricultural-science-ss-1-3rd-term-assets.csv --assets . --subject "Agricultural Science" --class-name "SS 1" --term-label "3rd Term" --dry-run
 ```
 
 Only a separately authorised operator may repeat with `--apply` after reviewing the exact topic mapping and database target.
