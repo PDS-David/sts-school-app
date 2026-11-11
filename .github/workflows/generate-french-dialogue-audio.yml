@@ -48,7 +48,22 @@ jobs:
           git add mobile/assets/french/SS1_French_Dialogue_standard.mp3 mobile/assets/french/SS1_French_Dialogue_slow.mp3
           if git diff --cached --quiet; then
             echo "Generated assets are unchanged."
-          else
-            git commit -m "chore(french): add generated listening dialogue audio"
-            git push origin HEAD:master
+            exit 0
           fi
+
+          git commit -m "chore(french): add generated listening dialogue audio"
+
+          # Master may move while the TTS model is downloading and rendering.
+          # Rebase the asset-only commit onto the newest master before pushing.
+          for attempt in 1 2 3; do
+            git fetch origin master
+            git rebase origin/master
+            if git push origin HEAD:master; then
+              exit 0
+            fi
+            echo "Push raced with another master update (attempt $attempt); retrying."
+            sleep 2
+          done
+
+          echo "Could not push generated French audio after three retries."
+          exit 1
