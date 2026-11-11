@@ -40,15 +40,11 @@ test('rejects active content, external references and malformed input', () => {
   assert.equal(isSafeSvg(Buffer.from([0xff, 0xfe, 0x00])), false, 'invalid utf-8');
 });
 
-// Owner decision pending: these committed diagrams use <style>, which isSafeSvg rejects by design
-// (SVG is rendered as native vector primitives). Either inline their styling or consciously allow
-// <style>. Until then they are pinned here so that any NEW unsafe SVG still fails CI.
+// Committed diagrams that isSafeSvg still rejects. The Agricultural Science diagrams that use simple
+// class-only <style> blocks are now accepted through the constrained style allowlist, so they are no
+// longer pinned. Pinning the rest means any NEW unsafe SVG still fails CI; shrink this list as each
+// remaining diagram is fixed.
 const KNOWN_REJECTED = [
-  'agricultural-science/t3-w02-eight-farm-power-sources.svg',
-  'agricultural-science/t3-w07-female-poultry-reproductive-system.svg',
-  'agricultural-science/t3-w07-fertile-egg-cross-section.svg',
-  'agricultural-science/t3-w07-male-poultry-reproductive-system.svg',
-  'agricultural-science/t3-w07-poultry-oviduct.svg',
   'biology/forest-food-web.svg',
 ];
 
