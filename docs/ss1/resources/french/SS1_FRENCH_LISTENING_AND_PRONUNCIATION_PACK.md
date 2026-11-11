@@ -29,7 +29,7 @@ These are supplementary learning resources, not official WAEC/NECO recordings an
 **Level:** SS1 beginner  
 **Skills:** Listening for gist and detail, polite requests, school vocabulary, numbers/time references and turn-taking  
 **Voices:** Two (Ada and the librarian)  
-**Suggested duration:** 1.5–2 minutes at a clear beginner pace
+**Suggested duration:** 40–60 seconds at a clear beginner pace
 
 ### Teacher/recording script
 

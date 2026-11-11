@@ -32,3 +32,12 @@ Status: **IMPLEMENTED_TESTING_DEFERRED** (implemented; not approved, not verifie
 ## Remaining
 - Dated primary sources for OBJ-1 to OBJ-3 (FR-FACT-T1-W01-POLICY); lessons for OBJ-4 and OBJ-5; owner/teacher decision on the cut-off sentence.
 - `next_runnable` holds one item (queue convention); 39 PENDING items currently have satisfied dependencies. Same-file edits should run sequentially: next in order is `FR-WK-T1-W02`.
+
+
+## Current-state supersession note — 11 November 2026
+
+This file preserves the original Week 1 indexing session as a historical record. Its status table above is superseded by the current package and `CORRECTION-OBJECTIVE-EXERCISE-RECONCILIATION-2026-11-11.md`.
+
+Current package coverage: `FRENCH-T1-W01-OBJ-1`, `OBJ-2` and `OBJ-3` remain `PARTIAL` because the superlative, current legal-status and adoption-motive claims are not evidenced or teacher-excluded. `OBJ-4` is now `IMPLEMENTED_EQUIVALENT` through `SUP-SS1-FRENCH-NEIGHBOURS-T1`; `OBJ-5` is now `IMPLEMENTED_EQUIVALENT` through `SUP-SS1-FRENCH-BENEFITS-T1`. The original Week 1 row contains no source exercise; practice questions in the replacement are newly authored.
+
+Do not use the older table above as the current coverage state. Package approval remains `PENDING`; learner verification remains `DEFERRED`.
