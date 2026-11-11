@@ -9,6 +9,7 @@
     "build": "tsc -p tsconfig.json",
     "db:bootstrap": "node --import tsx src/db/bootstrap.ts",
     "db:create-staging-admin": "node --import tsx src/db/createStagingAdmin.ts",
+    "db:create-first-admin": "node --import tsx src/db/createFirstAdmin.ts",
     "db:migrate": "tsx src/db/migrate.ts",
     "db:seed": "tsx src/db/seed.ts",
     "db:curriculum-audit": "node --import tsx src/db/ingestTopics.ts",
