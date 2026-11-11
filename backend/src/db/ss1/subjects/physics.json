@@ -8323,6 +8323,394 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Physics",
+      "title": "Introduction to Physics, physical quantities, SI units and dimensional analysis",
+      "objectives": [
+        "Define Physics and identify major branches and applications.",
+        "Define physical quantities and distinguish fundamental from derived quantities.",
+        "List the seven SI base quantities and units.",
+        "Identify units and dimensions of common derived quantities.",
+        "Use M, L and T to derive dimensions of density, velocity, acceleration, force and pressure.",
+        "Use dimensional analysis to check equations and state its limitations."
+      ],
+      "body": "INTRODUCTION TO PHYSICS, PHYSICAL QUANTITIES, SI UNITS AND DIMENSIONS\n\n1. What is Physics?\nPhysics is the branch of science that studies matter, energy, motion, forces and the interactions that explain natural events. It uses observation, measurement, experiments, mathematical relationships and models to describe and predict how the physical world behaves.\nPhysics is important in engineering, transport, electricity generation, communication, medicine, construction, manufacturing and agriculture.\n\n2. Branches of Physics\n- Mechanics: motion, forces, equilibrium and energy.\n- Heat and thermodynamics: temperature, heat transfer and thermal behaviour.\n- Optics: light, mirrors, lenses and optical instruments.\n- Acoustics/wave physics: sound and other wave phenomena.\n- Electricity and magnetism: electric charges, current, fields and magnetic effects.\n- Atomic and nuclear physics: atoms, nuclei, radioactivity and nuclear processes.\n- Electronics: the control and use of electrical signals and devices.\nThese branches overlap. For example, medical imaging uses ideas from waves, electricity, magnetism and modern physics.\n\n3. Physical quantities and measurement\nA physical quantity is a property that can be measured and expressed as a number together with a unit.\nA measurement is incomplete if the unit is omitted. For example, writing 5 for a length is incomplete; 5 m identifies both the numerical value and the unit.\nPhysical quantities are commonly classified as:\n- Fundamental (base) quantities: quantities selected as independent starting points in a system of units.\n- Derived quantities: quantities defined by mathematical combinations of base quantities.\n\n4. The seven SI base quantities and units\n1. Length — metre (m)\n2. Mass — kilogram (kg)\n3. Time — second (s)\n4. Electric current — ampere (A)\n5. Thermodynamic temperature — kelvin (K)\n6. Amount of substance — mole (mol)\n7. Luminous intensity — candela (cd)\nThe SI system uses these seven base quantities to define many derived quantities. Do not confuse a unit symbol with the name of the quantity.\n\n5. Derived quantities, units and dimensions\nA derived quantity is expressed using one or more base quantities.\nExamples:\n- Area = length × length; unit m²; dimension [L²].\n- Volume = length × length × length; unit m³; dimension [L³].\n- Speed/velocity = distance ÷ time; unit m s⁻¹; dimension [L T⁻¹].\n- Acceleration = change in velocity ÷ time; unit m s⁻²; dimension [L T⁻²].\n- Density = mass ÷ volume; unit kg m⁻³; dimension [M L⁻³].\n- Force = mass × acceleration; unit newton (N) = kg m s⁻²; dimension [M L T⁻²].\n- Pressure = force ÷ area; unit pascal (Pa) = N m⁻²; dimension [M L⁻¹ T⁻²].\n- Work/energy = force × distance; unit joule (J) = N m; dimension [M L² T⁻²].\n- Power = work ÷ time; unit watt (W) = J s⁻¹; dimension [M L² T⁻³].\n\n6. What are dimensions?\nDimensions describe how a physical quantity depends on base quantities, independent of the units chosen.\nIn mechanics, the common base dimensions are:\n- Mass: [M]\n- Length: [L]\n- Time: [T]\nOther base dimensions include electric current [I] and thermodynamic temperature [Θ].\nFor example, velocity has dimension [L T⁻¹], whether it is measured in m/s, km/h or another consistent unit. Its unit changes, but its dimension does not.\n\n7. Dimensional analysis\nDimensional analysis expresses a quantity in terms of base dimensions and can be used to:\n- find the dimensions of a derived quantity;\n- check whether the two sides of an equation are dimensionally consistent;\n- help identify a missing or incorrect power of a base quantity.\nIt cannot by itself determine a dimensionless numerical constant or prove that a dimensionally consistent equation is physically correct.\n\nWorked example 1 — density\nDensity = mass/volume.\nDimension of mass = [M]; dimension of volume = [L³].\nTherefore dimension of density = [M]/[L³] = [M L⁻³].\nIts SI unit is kg m⁻³.\n\nWorked example 2 — velocity and acceleration\nVelocity = distance/time.\nDimension = [L]/[T] = [L T⁻¹].\nAcceleration = change in velocity/time.\nDimension = [L T⁻¹]/[T] = [L T⁻²].\n\nWorked example 3 — force\nForce = mass × acceleration.\nDimension = [M] × [L T⁻²] = [M L T⁻²].\nIts SI unit is kg m s⁻², called the newton (N).\n\n8. Checking an equation dimensionally\nFor a physically meaningful equation, every term being added or equated must have compatible dimensions.\nExample: s = ut + ½at².\n- s has dimension [L].\n- ut has [L T⁻¹] × [T] = [L].\n- at² has [L T⁻²] × [T²] = [L].\nBoth terms on the right have dimension [L], matching the left side.\nThis check supports dimensional consistency; it does not prove that the equation is correct in every physical situation.\n\nCOMMON ERRORS\n- A physical quantity needs both a number and a unit.\n- Mass is a base quantity; weight is a force and is derived.\n- Unit symbols are case-sensitive: metre m, kilogram kg, second s, ampere A, kelvin K, mole mol, candela cd.\n- Dimensions are not the same as units: velocity has dimension [L T⁻¹] but may be measured in m/s or km/h.\n- Density has dimension [M L⁻³], not [M L³].\n- Acceleration has dimension [L T⁻²].\n- Dimensional consistency is a necessary check, not a complete proof of an equation.\n\nSUMMARY\nPhysics studies matter, energy, motion and their interactions. A physical quantity is written as a number and a unit. The SI system has seven base quantities. Derived quantities are combinations of base quantities. Dimensions express those combinations using symbols such as M, L and T. Dimensional analysis helps derive dimensions and check equations.",
+      "body_sha256": "408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Define Physics.",
+          "answer": "Physics is the branch of science that studies matter, energy, motion, forces and their interactions.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that it is a branch of science.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies matter/energy/motion/forces or interactions as its subject.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Name four branches of Physics.",
+          "answer": "Any four: mechanics, heat/thermodynamics, optics, acoustics/waves, electricity and magnetism, atomic/nuclear physics, electronics.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "One correct branch.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second correct branch.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third correct branch.",
+              "marks": 1
+            },
+            {
+              "criterion": "Fourth correct branch.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "What is a physical quantity?",
+          "answer": "A property that can be measured and expressed as a number together with a unit.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that it is measurable.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that it is expressed as a number and unit.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Distinguish between fundamental and derived physical quantities.",
+          "answer": "Fundamental quantities are independent base quantities. Derived quantities are defined by mathematical combinations of base quantities.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correctly defines fundamental quantities.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly defines derived quantities.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "List the seven SI base quantities and their units.",
+          "answer": "Length—metre (m); mass—kilogram (kg); time—second (s); electric current—ampere (A); thermodynamic temperature—kelvin (K); amount of substance—mole (mol); luminous intensity—candela (cd).",
+          "marks": 7,
+          "marking": [
+            {
+              "criterion": "Any seven correctly paired quantity and unit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly pairs another base quantity and unit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly pairs another base quantity and unit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly pairs another base quantity and unit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly pairs another base quantity and unit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly pairs another base quantity and unit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly pairs another base quantity and unit.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q06",
+          "question": "Give the SI units of area, volume, velocity and acceleration.",
+          "answer": "Area: m²; volume: m³; velocity: m s⁻¹; acceleration: m s⁻².",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Area m².",
+              "marks": 1
+            },
+            {
+              "criterion": "Volume m³.",
+              "marks": 1
+            },
+            {
+              "criterion": "Velocity m s⁻¹.",
+              "marks": 1
+            },
+            {
+              "criterion": "Acceleration m s⁻².",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q07",
+          "question": "What are dimensions of a physical quantity?",
+          "answer": "Dimensions express how the quantity depends on base quantities such as mass, length and time, independently of the chosen units.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States dependence on base quantities.",
+              "marks": 1
+            },
+            {
+              "criterion": "States independence from the particular units used.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q08",
+          "question": "Find the dimensional formula of density.",
+          "answer": "Density = mass/volume = [M]/[L³] = [M L⁻³].",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses mass divided by volume.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives [M L⁻³].",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q09",
+          "question": "Find the dimensions of velocity and acceleration.",
+          "answer": "Velocity = [L T⁻¹]. Acceleration = [L T⁻²].",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Velocity formula/dimension.",
+              "marks": 1
+            },
+            {
+              "criterion": "Acceleration as velocity per time.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives both correct dimensions.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "Find the dimensional formula of force.",
+          "answer": "F = ma. Dimension = [M] × [L T⁻²] = [M L T⁻²].",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses F = ma.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives [M L T⁻²].",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "Find the dimensional formula of pressure.",
+          "answer": "Pressure = force/area = [M L T⁻²]/[L²] = [M L⁻¹ T⁻²].",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses force divided by area.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives [M L⁻¹ T⁻²].",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "State two uses of dimensional analysis.",
+          "answer": "It can find dimensions of derived quantities and check dimensional consistency of equations; it can help detect incorrect powers of base quantities.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "One valid use.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second valid use.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q13",
+          "question": "Check dimensionally whether s = ut + ½at² is consistent.",
+          "answer": "s has [L]. ut has [L T⁻¹][T] = [L]. at² has [L T⁻²][T²] = [L]. All terms have dimension [L], so the equation is dimensionally consistent.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Identifies dimension of s as [L].",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds ut has [L].",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds at² has [L] and concludes consistency.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q14",
+          "question": "Distinguish between a unit and a dimension using velocity as an example.",
+          "answer": "A unit is the standard used to measure a quantity; velocity may have unit m/s or km/h. Its dimension is [L T⁻¹] regardless of the unit chosen.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Explains what a unit is or gives m/s and km/h.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives the dimension [L T⁻¹].",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q15",
+          "question": "Why is mass a fundamental quantity but weight a derived quantity?",
+          "answer": "Mass is one of the SI base quantities. Weight is a force given by W = mg, so it is derived from mass and acceleration.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies mass as a base quantity.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains weight as mg and derived from other quantities.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q16",
+          "question": "Convert 72 km/h to m/s.",
+          "answer": "72 × 1,000/3,600 = 20 m/s.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses the correct conversion factor.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 20 m/s.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q17",
+          "question": "Which is an SI base quantity? (A) force (B) density (C) electric current (D) pressure.",
+          "answer": "C. Electric current.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects C.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q18",
+          "question": "The dimension of acceleration is (A) [LT⁻¹] (B) [LT⁻²] (C) [MLT⁻²] (D) [ML⁻³].",
+          "answer": "B. [L T⁻²].",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q19",
+          "question": "The dimensional formula of density is (A) [ML³] (B) [M L⁻³] (C) [M L⁻¹] (D) [L³M⁻¹].",
+          "answer": "B. [M L⁻³].",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q20",
+          "question": "State one limitation of dimensional analysis.",
+          "answer": "It cannot determine dimensionless numerical constants and cannot prove that a dimensionally consistent equation is physically correct.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Mentions inability to determine a dimensionless constant.",
+              "marks": 1
+            },
+            {
+              "criterion": "Mentions that dimensional consistency does not prove physical correctness.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Sow the Seed Schools SS1 Physics First Term source",
+          "locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 0 WEEK ONE; body ID SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc (8,760 characters; SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc). Original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206. The source teaches Physics, branches, base/derived quantities, dimensions and force dimensional analysis. It does not teach the laboratory familiarisation clause or the scientific method.",
+          "url": null,
+          "rights": "Source used for scope and locators; supplement independently authored and extends missing dimensional working.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics First Term source."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -8423,10 +8811,10 @@
       "id": "COV-PHYS-T1-W01-OBJ-1",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Introduction to Physics: the meaning of Physics and its branches (scheme Week 1, first clause of line 24)",
-      "objective_locator": "word-extractor 1.0.4 getBody() scheme line 24; parsed body lines 41-191 (edge blank lines 192-193 trimmed)",
-      "status": "PARTIAL",
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 0 WEEK ONE; body SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc (8,760 characters; SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc).",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc"
+        "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS"
       ],
       "evidence": [
         {
@@ -8444,6 +8832,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/physics.json lessons[] length 0; importer not run",
           "explanation": "No lesson exists for this objective and the importer has not been run, so the source teaching has nothing to deliver. PARTIAL: taught in the source at objective level, not deliverable."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; body SHA-256 408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26; practice Q01–Q20.",
+          "explanation": "Student supplement covers the source-taught objective and supplies explicit derivations where the extracted source leaves formula operands blank. Laboratory familiarisation, scientific-method assessment and other source gaps remain separate unresolved items."
         }
       ]
     },
@@ -8477,10 +8869,10 @@
       "id": "COV-PHYS-T1-W01-OBJ-3",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Fundamental quantities and fundamental units: the definitions and the seven SI fundamental quantities with their units (Week 1 outline line 45)",
-      "objective_locator": "word-extractor 1.0.4 getBody() lines 65-91",
-      "status": "PARTIAL",
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 0 WEEK ONE; body SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc (8,760 characters; SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc).",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc"
+        "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS"
       ],
       "evidence": [
         {
@@ -8498,6 +8890,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/physics.json lessons[] length 0; importer not run",
           "explanation": "No lesson exists for this objective and the importer has not been run, so the source teaching has nothing to deliver. PARTIAL: taught in the source at objective level, not deliverable."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; body SHA-256 408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26; practice Q01–Q20.",
+          "explanation": "Student supplement covers the source-taught objective and supplies explicit derivations where the extracted source leaves formula operands blank. Laboratory familiarisation, scientific-method assessment and other source gaps remain separate unresolved items."
         }
       ]
     },
@@ -8505,10 +8901,10 @@
       "id": "COV-PHYS-T1-W01-OBJ-4",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Derived quantities and derived units: how they are formed and the six tabulated examples (Week 1 outline line 45)",
-      "objective_locator": "word-extractor 1.0.4 getBody() lines 93-105",
-      "status": "PARTIAL",
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 0 WEEK ONE; body SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc (8,760 characters; SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc).",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc"
+        "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS"
       ],
       "evidence": [
         {
@@ -8522,6 +8918,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/physics.json lessons[] length 0; importer not run",
           "explanation": "No lesson exists for this objective and the importer has not been run, so the source teaching has nothing to deliver. PARTIAL: taught in the source at objective level, not deliverable."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; body SHA-256 408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26; practice Q01–Q20.",
+          "explanation": "Student supplement covers the source-taught objective and supplies explicit derivations where the extracted source leaves formula operands blank. Laboratory familiarisation, scientific-method assessment and other source gaps remain separate unresolved items."
         }
       ]
     },
@@ -8529,10 +8929,10 @@
       "id": "COV-PHYS-T1-W01-OBJ-5",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Differences between fundamental and derived units, and between fundamental and derived quantities",
-      "objective_locator": "word-extractor 1.0.4 getBody() lines 107-121",
-      "status": "PARTIAL",
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 0 WEEK ONE; body SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc (8,760 characters; SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc).",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc"
+        "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS"
       ],
       "evidence": [
         {
@@ -8546,6 +8946,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/physics.json lessons[] length 0; importer not run",
           "explanation": "No lesson exists for this objective and the importer has not been run, so the source teaching has nothing to deliver. PARTIAL: taught in the source at objective level, not deliverable."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; body SHA-256 408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26; practice Q01–Q20.",
+          "explanation": "Student supplement covers the source-taught objective and supplies explicit derivations where the extracted source leaves formula operands blank. Laboratory familiarisation, scientific-method assessment and other source gaps remain separate unresolved items."
         }
       ]
     },
@@ -8553,10 +8957,10 @@
       "id": "COV-PHYS-T1-W01-OBJ-6",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Dimensions of physical quantities: the definition of a dimension and the M, L and T assignments",
-      "objective_locator": "word-extractor 1.0.4 getBody() lines 123-129",
-      "status": "PARTIAL",
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 0 WEEK ONE; body SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc (8,760 characters; SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc).",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc"
+        "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS"
       ],
       "evidence": [
         {
@@ -8570,6 +8974,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/physics.json lessons[] length 0; importer not run",
           "explanation": "No lesson exists for this objective and the importer has not been run, so the source teaching has nothing to deliver. PARTIAL: taught in the source at objective level, not deliverable."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; body SHA-256 408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26; practice Q01–Q20.",
+          "explanation": "Student supplement covers the source-taught objective and supplies explicit derivations where the extracted source leaves formula operands blank. Laboratory familiarisation, scientific-method assessment and other source gaps remain separate unresolved items."
         }
       ]
     },
@@ -8577,9 +8985,11 @@
       "id": "COV-PHYS-T1-W01-OBJ-7",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Dimensional analysis of density, velocity and acceleration (the week's 'DIMENSION ANALYSIS OF SOME PHYSICAL QUANTITIES')",
-      "objective_locator": "word-extractor 1.0.4 getBody() lines 131-141",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 0 WEEK ONE; body SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc (8,760 characters; SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc).",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS"
+      ],
       "evidence": [
         {
           "locator": "heading line 131 SHA-256 750150956658094ac4bfe07c1030779495f817d60cd1ad02a026a8ca5a1a727c; density block lines 132-134 SHA-256 0800008143ad95620af8e5f949a2493a8786aa0d47f8a68875ed28fbe824fb19; density definition line 132 SHA-256 6742522233933a5c23c47c7a167c2300f460029f6600c3422310f6418f52950b; the equation line line 133 SHA-256 34a75ea9ad17b9920de0eaddc65f6dffdaf2ddd68140f42b38bcdae08039b29e; the continuation line line 134 SHA-256 6fca6169bbaa4c0d047a1cbe63d82e29685a0121ddfdd68f72ec2d990ac2f47c",
@@ -8596,6 +9006,10 @@
         {
           "locator": "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS (PENDING), PHYSICS-T1-W01-DIMENSIONAL-GAPS, PHYS-VIS-T1 (PENDING) and PHYS-OWNER-EXTRACTION-STRATEGY (BLOCKED)",
           "explanation": "The gap becomes a bounded supplement task. The term-wide figure inventory and the extraction-strategy decision stay with their existing owners; no dimensional equation is invented and presented as source teaching."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; body SHA-256 408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26; practice Q01–Q20.",
+          "explanation": "Student supplement covers the source-taught objective and supplies explicit derivations where the extracted source leaves formula operands blank. Laboratory familiarisation, scientific-method assessment and other source gaps remain separate unresolved items."
         }
       ]
     },
@@ -8603,10 +9017,10 @@
       "id": "COV-PHYS-T1-W01-OBJ-8",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Dimensional analysis of force: the working from mass times acceleration to MLT-2",
-      "objective_locator": "word-extractor 1.0.4 getBody() lines 143-147",
-      "status": "PARTIAL",
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 0 WEEK ONE; body SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc (8,760 characters; SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc).",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc"
+        "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS"
       ],
       "evidence": [
         {
@@ -8616,6 +9030,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/physics.json lessons[] length 0; importer not run",
           "explanation": "No lesson exists for this objective and the importer has not been run, so the source teaching has nothing to deliver. PARTIAL: taught in the source at objective level, not deliverable."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; body SHA-256 408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26; practice Q01–Q20.",
+          "explanation": "Student supplement covers the source-taught objective and supplies explicit derivations where the extracted source leaves formula operands blank. Laboratory familiarisation, scientific-method assessment and other source gaps remain separate unresolved items."
         }
       ]
     },
@@ -8623,10 +9041,10 @@
       "id": "COV-PHYS-T1-W01-OBJ-9",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Table 2.3: units and dimensions of six physical quantities",
-      "objective_locator": "word-extractor 1.0.4 getBody() lines 149-158",
-      "status": "PARTIAL",
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 0 WEEK ONE; body SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc (8,760 characters; SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc).",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc"
+        "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS"
       ],
       "evidence": [
         {
@@ -8640,6 +9058,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/physics.json lessons[] length 0; importer not run",
           "explanation": "No lesson exists for this objective and the importer has not been run, so the source teaching has nothing to deliver. PARTIAL: taught in the source at objective level, not deliverable."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; body SHA-256 408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26; practice Q01–Q20.",
+          "explanation": "Student supplement covers the source-taught objective and supplies explicit derivations where the extracted source leaves formula operands blank. Laboratory familiarisation, scientific-method assessment and other source gaps remain separate unresolved items."
         }
       ]
     },
