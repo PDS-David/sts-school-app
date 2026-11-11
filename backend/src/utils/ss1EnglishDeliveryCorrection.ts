@@ -148,7 +148,7 @@ export function createEnglishDeliveryResolver(input: SubjectPackage) {
         return {
           source: 'ss1-english', termLabel: source.term, kind: 'withheld',
           correctionId: correction.id,
-          text: `${SS1_ENGLISH_WITHHELD_MARKER} ${correction.id}\\n${gate} The original source row is not shown until the replacement is approved and verified.`,
+          text: `${SS1_ENGLISH_WITHHELD_MARKER} ${correction.id}\n${gate} The original source row is not shown until the replacement is approved and verified.`,
           fingerprint: hash(`withheld:approval-gate:${correction.id}:${gate}`),
           sourceHash: correction.body_sha256, replacementLessonIds: [], reason: gate,
         };
