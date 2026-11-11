@@ -27,7 +27,8 @@
     "PHYS-WK-T1-W02 (2026-11-07, base 882224048a1628d1d9fd03e6ee79ff6ead148622) indexed 1st Term WEEK TWO (parsed row 1, body lines 194-340) at objective level against the same line-digest method: the techniques paragraph, the metre rule and tape rule, callipers, the vernier callipers and micrometer screw gauge, the vernier reading rule, time, mass, weight with the mass-versus-weight table and W=mg, volume and the reading assignment are taught at objective level but recorded PARTIAL (10 entries) because no lesson exists; Example 3.1, Example 3.2 and the four assessment blocks are UNRESOLVED (6 entries) because their figures are absent from the extract, the micrometer reading rule is never stated, Example 3.2 prints 17.1mm for a 17.11 mm sum, and no answer key exists. The 98 'undefined' words of theory item 5 are an extractor artefact of U+001F characters, not source text. physics.json now has 34 coverage entries and 20 open items. Five bounded tasks were appended (three lessons, one correction binding, one blocked expert-decision item). Nothing was run; testing remains deferred. Evidence: PHYS-WK-T1-W02.md.",
     "PHYS-PRE-T3 (2026-11-07, base 679ab8b4edf311c2c376d978f220a75071792cdf) inventoried the 3rd Term text outside the parsed rows: lines 1-14 only (title, scheme heading, 12 scheme rows; no reference list). Scheme weeks 11 (Revision) and 12 (Examination) have no parsed row or body. Finding for PHYS-FACT-T3-W05-SCHEME-MISMATCH: the Week 5 TOPIC spans two lines, and the importer title keeps only the first ('MATTER, ATOMIC STRUCTURE, STATES OF MATTER,'); the second line reads 'DIFFUSION, OSMOSIS, BROWNIAN MOTION' and the body does contain a 'Diffusion and Osmosis' section with a 'Diffusion:' definition, a rate-of-diffusion list, Graham's law and an 'Osmosis:' definition, so the earlier 'body has no diffusion/osmosis' reading is a title-truncation artefact, to be confirmed by that item.",
     "PHYS-LES-T1-W02-MICROMETER-READING (2026-11-08): authored SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING. Adds pitch/least-count calculation, main and circular scale reading, signed zero-error correction and an independent example (12.84 mm = 1.284 cm). Four keyed items total 8 marks; every marking array sums to its item total. COV-PHYS-T1-W02-OBJ-7 is IMPLEMENTED_EQUIVALENT; OBJ-4 now references the lesson but stays PARTIAL for the wider vernier/micrometer objective. The open item PHYSICS-T1-W02-MICROMETER remains blocking until PHYS-COR-T1-W02-BINDING binds the original row and corrects its inconsistent printed example. Fig. 3.4 was not inspected or used. Source/member verification is reused from the existing PHYS-WK-T1-W02 record, not repeated in this run. Testing deferred by owner.",
-    "PHYS-PORT-D1-COV-T1 (2026-11-08): compared all eleven PR #71 first-term coverage rows against master. None copied because master already has finer objective-level entries; W1/W2 contain PARTIAL/UNRESOLVED objectives, W3-W10 have more granular coverage and retain their own reconciliation/section-boundary gaps, and W11 remains unresolved. No status upgraded and no duplicate coverage added. Full disposition in PHYS-PORT-D1-COV-T1.md. Original binary member not rehashed/rendered in this run; existing master source evidence reused. Testing deferred by owner."
+    "PHYS-PORT-D1-COV-T1 (2026-11-08): compared all eleven PR #71 first-term coverage rows against master. None copied because master already has finer objective-level entries; W1/W2 contain PARTIAL/UNRESOLVED objectives, W3-W10 have more granular coverage and retain their own reconciliation/section-boundary gaps, and W11 remains unresolved. No status upgraded and no duplicate coverage added. Full disposition in PHYS-PORT-D1-COV-T1.md. Original binary member not rehashed/rendered in this run; existing master source evidence reused. Testing deferred by owner.",
+    "PHYS-TEST-PACKAGE-NEW (2026-11-11): owner explicitly authorised completion of the Physics job and its verification work. Added tests/ss1/physics.package.test.mts on branch agent/physics-package-regression-20261111. It checks the three manifest source identities, schema/package identity, lesson hashes/objectives/practice marking, coverage target/source references, source-rule hash/anchor guards, delivery correction and asset/open-item references, and queue dependencies/counts. Test has not yet run; queue item remains PENDING until CI execution. No content approval or verification state was fabricated."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -47,8 +48,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 34,
-    "BLOCKED": 16,
-    "PENDING": 39
+    "BLOCKED": 15,
+    "PENDING": 40
   },
   "total": 89,
   "items": [
@@ -2155,8 +2156,8 @@
       "kind": "TEST",
       "source_id": null,
       "term": null,
-      "week_or_locator": "tests/ss1/physics.package.test.mts (does not exist on master)",
-      "objective": "Deferred: add a package test for Physics modelled on tests/ss1/mathematics.package.test.mts, only in the authorised testing stage.",
+      "week_or_locator": "tests/ss1/physics.package.test.mts (authored on agent/physics-package-regression-20261111; awaiting CI execution)",
+      "objective": "Add and execute a package test for Physics modelled on the other SS1 subject package tests, during the owner-authorised verification stage.",
       "required_files": [
         "tests/ss1/mathematics.package.test.mts",
         "backend/src/db/ss1/subjects/physics.json"
@@ -2170,9 +2171,9 @@
         "PHYS-SRC-T2",
         "PHYS-SRC-T3"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "No Physics test exists on master. Testing is deferred by owner until the verification stage (SS1-09); nothing is run or written by this queue.",
-      "completion_condition": "Written and run only in the authorised later stage."
+      "status": "PENDING",
+      "implementation_reference": "A Physics package regression test has been authored on branch agent/physics-package-regression-20261111. It checks source manifest identity, all three term registrations, package schema, lesson body hashes and marking totals, coverage/source references, source-rule guards, corrections/assets/open-item references and queue consistency. It has not yet been executed; status remains PENDING until a CI or authorised test run passes.",
+      "completion_condition": "The package test is committed, executed in the repository's supported test environment, and all failures are fixed without weakening the assertions or claiming unrun source/device acceptance."
     },
     {
       "id": "PHYS-CMP-D4-TESTS",
@@ -3040,9 +3041,9 @@
     }
   ],
   "review": {
-    "date": "2026-11-08",
-    "reviewed_master_sha": "679ab8b4edf311c2c376d978f220a75071792cdf",
-    "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
+    "date": "2026-11-11",
+    "reviewed_master_sha": "efc39c6288719026da5fc6e34ac12411669fa2bc",
+    "scope": "Physics package regression test authored; execution pending CI. Content approval, source-dependent full compiler parity, database and device acceptance remain separate.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
@@ -3092,6 +3093,7 @@
     "PHYS-PORT-D1-RULE-SPLIT",
     "PHYS-PORT-D1-FACT-T1-W05",
     "PHYS-PORT-D1-FACT-T2-W01",
+    "PHYS-TEST-PACKAGE-NEW",
     "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
@@ -3115,18 +3117,17 @@
     "PHYS-WK-T3-W09",
     "PHYS-WK-T3-W10",
     "PHYS-RULE-T1-REVISION-SCHEME",
+    "PHYS-RULE-T3-REVISION-EXAM",
     "PHYS-FACT-T3-FUSE-RATING",
     "PHYS-FACT-T3-W04-ASSIGNMENT",
     "PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA",
     "PHYS-VIS-T1",
     "PHYS-VIS-T2",
     "PHYS-VIS-T3",
-    "PHYS-PORT-D1-T2-L001",
-    "PHYS-PORT-D1-T2-L002",
-    "PHYS-PORT-D1-T3-L003",
-    "PHYS-PORT-D1-T3-L004",
-    "PHYS-PORT-D1-T3-L005",
-    "PHYS-CMP-D4-NOTES",
+    "PHYS-PORT-D1-RULE-SPLIT",
+    "PHYS-PORT-D1-FACT-T1-W05",
+    "PHYS-PORT-D1-FACT-T2-W01",
+    "PHYS-TEST-PACKAGE-NEW",
     "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ]
