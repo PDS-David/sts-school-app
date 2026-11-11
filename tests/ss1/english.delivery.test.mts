@@ -40,7 +40,7 @@ function approvedFixture() {
   return packageSchema.parse(value);
 }
 
-test('English resolver is isolated by school, class, subject, term, source file and exact title', () => {
+test('English resolver is isolated by school, class, subject, term and source file; changed text requires the exact source title', () => {
   const resolver = createEnglishDeliveryResolver(fixture);
   const matched = resolver(fixtureTopic);
   assert.equal(matched?.kind, 'withheld');
@@ -50,7 +50,7 @@ test('English resolver is isolated by school, class, subject, term, source file 
   assert.equal(resolver({ ...fixtureTopic, subject_name: 'Literature' }), null);
   assert.equal(resolver({ ...fixtureTopic, term_label: '3rd Term' }), null);
   assert.equal(resolver({ ...fixtureTopic, source_file: 'other.docx' }), null);
-  assert.equal(resolver({ ...fixtureTopic, title: 'A different lesson' }), null);
+  assert.equal(resolver({ ...fixtureTopic, title: 'A different lesson', source_reference: 'changed source text' }), null);
 });
 
 test('Owner-approved package remains withheld until authorised verification is complete', () => {

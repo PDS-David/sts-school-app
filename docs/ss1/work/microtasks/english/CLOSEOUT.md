@@ -4,51 +4,65 @@ Date: 2026-11-11
 Repository: `PDS-David/sts-school-app`  
 Scope: English Language, SS1, all three instructional terms.
 
-> **Current status: CONTENT APPROVED; VERIFICATION PENDING; NOT RELEASED.** The repository owner explicitly instructed “All lessons approved.” This instruction is recorded individually against all 149 lessons. The package is now `IMPLEMENTED`; all lesson verification fields remain `DEFERRED`.
+> **Current status: 152 lessons implemented; 149 owner-approved; 3 new supplements awaiting owner approval; technical verification and release remain pending.** The 149 previously approved lessons and their approval references are preserved. Three new lessons were added specifically to close the eight previously PARTIAL coverage rows; they are deliberately `PENDING` approval rather than receiving invented approval references.
 
 ## Current authoritative state
 
 - Package: `backend/src/db/ss1/subjects/english.json`; schema: `ss1-subject-v1`; package status: `IMPLEMENTED`.
-- Authored lessons: 149; content approval: `APPROVED` for all 149; unique approval references recorded in `OWNER_APPROVAL_20261111.md`.
-- Implementation: `IMPLEMENTED` for all 149; verification: `DEFERRED` for all 149; no verification references have been fabricated.
-- Blocking package open items: 0. Remaining open items: 67, all non-blocking source-scope/review follow-ups.
-- Objective coverage: 616 `IMPLEMENTED_EQUIVALENT`, 12 `SUPPORTED`, 32 `MARKER`, 8 `PARTIAL`, 0 `UNRESOLVED` (668 total).
-- Registered assets: 1; all registered provenance entries used by authored lessons are marked `PERMITTED`. Asset verification and oral observation remain separate from content approval.
-- Delivery corrections: 24. They remain subject to the existing correction-scope and verification safeguards; approval does not activate a correction by itself.
+- Lessons: 152 total; 149 `APPROVED`, 3 `PENDING`; all 152 have implementation `IMPLEMENTED` and verification `DEFERRED`.
+- Coverage: 668 entries; 624 `IMPLEMENTED_EQUIVALENT`, 12 `SUPPORTED`, 32 `MARKER`, 0 `PARTIAL`, 0 `UNRESOLVED`.
+- The eight former PARTIAL rows are now complete: `ENGLISH-BODY-048`, `ENGLISH-T2-W01-AS01`, `ENGLISH-BODY-054`, `ENGLISH-T2-W06-TP01`, `ENGLISH-BODY-059`, `ENGLISH-T3-W01-CM05`, `ENGLISH-BODY-068`, and `ENGLISH-T3-W03-FR03`.
+- Remaining open items: 61, all non-blocking. The five issue records directly attached to the completed gaps, plus the redundant affix-fragment follow-up, have been reconciled/closed.
+- Registered assets: 1; asset verification remains separate from content approval.
+- Delivery corrections: 24. They remain subject to existing correction-scope and verification safeguards; no correction was activated by this work.
+
+## New gap-filling lessons
+
+1. `SUP-SS1-ENGLISH-SEXUALITY-VOCAB-T2-W06` — neutral, age-appropriate sexuality vocabulary, including sex/gender distinctions, puberty, reproduction, consent, privacy and boundaries.
+2. `SUP-SS1-ENGLISH-CONTEXTUAL-SEX-LEAVE-T3-W01` — the separate dictionary sense of `sex`, the form/category sense, and the contextual meanings of `leave`.
+3. `SUP-SS1-ENGLISH-FAMILY-ASSESSMENT-T3-W03` — a keyed five-item equivalent gap-fill and explicit five-option nuclear-family question.
+
+All three are original teaching materials with project-authored provenance and valid body hashes. They are `IMPLEMENTED`, but remain `PENDING` content approval. In particular:
+- `mat` and `ploy` are not silently changed to guessed prefixes; learners are taught why those strings are not prefixes as written.
+- The missing textbook passage and original assessment options/answer key are not claimed to have been recovered or reproduced.
+- `suitor`/ `fiancé` do not encode whether a bride price has been paid; the new assessment states that limitation rather than inventing a local customary term.
+
+## BODY-047 / PR #487 workflow correction
+
+The original PR #487 compiler failure was confirmed in workflow run [42902961315](https://github.com/PDS-David/sts-school-app/actions/runs/42902961315): `marker classification required ENGLISH-BODY-047`.
+
+The Week 10 scheme-only rule `SS1-SRC-d8bd8f85fd73-R012` deliberately uses the preceding Week 9 scheme row as context because the Week 10 wording appears twice in the source. That two-row anchor does not match one individual parsed teaching body. The compiler therefore emits the valid `SCHEME_ONLY` disposition under the rule ID. Coverage must target that rule ID, not the duplicate original body ID. `ENGLISH-BODY-047.lesson_ids` now contains only `SS1-SRC-d8bd8f85fd73-R012`. The package regression test explicitly locks this mapping.
 
 ## Owner approval evidence
 
-See [OWNER_APPROVAL_20261111.md](OWNER_APPROVAL_20261111.md). The file records the exact owner instruction, date, every lesson ID, and a unique reference matching the package's `state.approval_reference`. This is an owner attestation; it is not represented as an independent review performed by the assistant.
-
-The blocking `ENGLISH-CONTENT-APPROVAL` package item has been removed. Queue task `ENG-FACT-CONTENT-APPROVAL` is recorded complete with testing still deferred.
+See [OWNER_APPROVAL_20261111.md](OWNER_APPROVAL_20261111.md). It records the original owner instruction and the 149 lesson IDs/references that were approved. It does not claim approval for the three new supplements.
 
 ## Verification and release
 
-Content approval is complete, but it is not the same as technical verification or production release.
+Fresh workflow run [42990588253](https://github.com/PDS-David/sts-school-app/actions/runs/42990588253) completed successfully on 2026-11-11:
 
-### Automated checks observed (2026-11-11)
+- English package tests: **16/16 passed**, including the eight-row closure and BODY-047 rule-identity regression.
+- SS1 foundation tests: **8/8 passed**.
+- Python SS1 tests: **2/2 passed**.
+- Backend TypeScript no-emit check: **passed**.
+- English learner-delivery regression tests: **8/8 passed**.
+- English package/asset validation: **passed**.
+- All three registered English source members: **hash-verified and privately staged**.
+- The actual SS1 parser/compiler and `check_english_plan.py`: **PASS**; 89 original English source rows and 152 supplements were accounted for; all 32 scheme-only markers were preserved.
 
-On validation branch `ss1/ag-science-svg-runtime-20261111`, workflow run [42985921808](https://github.com/PDS-David/sts-school-app/actions/runs/42985921808) recorded:
+The plan-only report correctly retains four English-specific approval blockers: the three new supplements awaiting owner approval and the existing pronunciation asset awaiting its separate approval. These are expected governance gates, not parser failures. The overall plan remains not ready because other SS1 subject packages are intentionally omitted and the English approval/asset gates remain open. No database write was attempted.
 
-- SS1 foundation tests: **PASS, 8/8**.
-- SS1 Python unit tests: **PASS, 2/2**.
-- Backend TypeScript no-emit check: **PASS on that branch**, which contains the SVG regular-expression syntax correction; that shared-code correction is not yet confirmed on `master`.
-- English package tests: **PASS, 13/13**, including all 149 owner approval references, exact lesson body hashes, marking totals, source registration, correction identity and coverage bindings.
-- English learner-delivery regression tests: **7/8 PASS; 1 FAIL**. The failing assertion expected the obsolete “not yet approved” reason. The current delivery adapter correctly returns “not completed its authorised verification” because the owner approval is now recorded and verification remains deferred. The stale assertion was corrected in master commit `8e399cfa7286f29dc8f9eba985d61c5d87e8d530`; a fresh successful end-to-end run on master is still required.
+A separate repository-wide integrity workflow currently has an unrelated SVG asset expectation mismatch (five Agricultural Science SVGs are absent from the current tracked tree); this does not fail the English package workflow or BODY-047 check.
 
-The earlier English verification run 145 passed the source archive staging, English-only source isolation and plan-only SS1 compiler checks. Those checks predate the approval update and should be rerun on the final merged commit.
-
-### Still required before student release
-
-- Rerun the English delivery regression suite after correcting the stale assertion.
-- Rerun package validation, source archive/member hashes, source preparation and plan-only compiler on the final merged commit.
-- Full SS1 all-subject foundation/integrity checks on the final merged commit.
+Still required before student release:
+- Owner review/approval of the three new supplements.
+- Fresh successful CI on the merged commit, including the BODY-047 real compiler/plan check.
 - Database preservation capture and transaction rehearsal against the designated snapshot.
 - Production runtime, correction/cache/asset sanitisation and MIME checks.
 - Student-device acceptance and deployment/release confirmation.
-- Oral listening/speaking observation, which requires an authorised audio model and real teacher observation; written content approval cannot substitute for it.
+- Oral listening/speaking observation with an authorised audio model and teacher observation.
 
-The existing delivery guard correctly withholds corrected English content while lesson verification remains `DEFERRED`. Do not set verification to `VERIFIED`, claim student delivery, or claim deployment until the corresponding checks have passed.
+Do not set verification to `VERIFIED`, claim student delivery, or claim deployment until the corresponding evidence exists.
 
 ---
 

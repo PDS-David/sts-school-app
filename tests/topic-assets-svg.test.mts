@@ -5,9 +5,10 @@ import { isSafeSvg, prepareAssets } from '../backend/src/db/attachTopicAssets.ts
 const svg = (source: string) => Buffer.from(source, 'utf8');
 
 test('SVG safety accepts simple SVG and an optional standard XML declaration', () => {
-  assert.equal(isSafeSvg(svg('<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0"/></svg>')), true);
-  assert.equal(isSafeSvg(svg('<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg"></svg>')), true);
-  assert.equal(isSafeSvg(Buffer.concat([Buffer.from([0xef, 0xbb, 0xbf]), svg('<svg></svg>')])), true);
+  const vb = 'viewBox="0 0 100 50"';
+  assert.equal(isSafeSvg(svg(`<svg xmlns="http://www.w3.org/2000/svg" ${vb}><path d="M0 0"/></svg>`)), true);
+  assert.equal(isSafeSvg(svg(`<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" ${vb}></svg>`)), true);
+  assert.equal(isSafeSvg(Buffer.concat([Buffer.from([0xef, 0xbb, 0xbf]), svg(`<svg ${vb}></svg>`)])), true);
 });
 
 test('SVG safety rejects malformed documents and active or externally referenced content', () => {
