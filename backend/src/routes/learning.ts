@@ -361,22 +361,6 @@ router.get('/topics/:topicId/assets/:assetKey', requirePerm('topics.read'), asyn
   return res.end(bytes);
 });
 
-router.get('/mathematics-assets/:assetKey', requirePerm('topics.read'), async (req, res) => {
-  const asset = mathematicsAssetBytes(String(req.params.assetKey ?? ''));
-  if (!asset) return res.status(404).json({ error: 'Asset not found' });
-  const etag = `"${asset.sha256}"`;
-  res.setHeader('ETag', etag);
-  res.setHeader('Cache-Control', 'private, max-age=86400');
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  if (String(req.headers['if-none-match'] ?? '').split(',').map(value => value.trim().replace(/^W\\//, '')).includes(etag)) {
-    return res.status(304).end();
-  }
-  res.setHeader('Content-Type', asset.mime);
-  res.setHeader('Content-Length', String(asset.bytes.length));
-  if (asset.mime === 'image/svg+xml') res.setHeader('Content-Security-Policy', "default-src 'none'; sandbox");
-  return res.end(asset.bytes);
-});
-
 router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
   const assetId = Number(req.params.id);
   if (!Number.isInteger(assetId) || assetId <= 0) return res.status(400).json({ error: 'Invalid asset id' });
