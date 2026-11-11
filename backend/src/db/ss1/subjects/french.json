@@ -86,6 +86,30 @@
       "observed_subject": "SCHEME OF WORK FOR FRENCH ",
       "canonical_subject": "French",
       "approval_reference": "SS1-02 assigned-subject mapping supported by this source heading; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-8a2ec1fe30e3-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-8a2ec1fe30e3",
+      "source_sha256": "7841df887cbd175e69ecbbf28896a324443467c82c35a4754fe169f50f09537d",
+      "anchor": "La Revision",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "Original T3 DOCX direct-body child 16; scheme row 11; page 1. The body parser begins at WEEK ONE, so this marker is in the scheme preamble.",
+        "explanation": "The source scheme names a revision week but supplies no separate revision lesson, revision notes or revision paper. A project-authored revision checklist and practice are supplied as a separate supplement; the source row remains a scheme-only marker."
+      }
+    },
+    {
+      "id": "SS1-SRC-8a2ec1fe30e3-R003",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-8a2ec1fe30e3",
+      "source_sha256": "7841df887cbd175e69ecbbf28896a324443467c82c35a4754fe169f50f09537d",
+      "anchor": "L’examen.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "Original T3 DOCX direct-body child 17; scheme row 12; page 1. The body parser begins at WEEK ONE, so this marker is in the scheme preamble.",
+        "explanation": "The source scheme names an examination week but supplies no examination paper or marking scheme. A project-authored 40-mark assessment with answer key and item-level marking is supplied separately; the source row remains a scheme-only marker."
+      }
     }
   ],
   "lessons": [
@@ -4738,6 +4762,506 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-FRENCH-REVISION-T3",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "French",
+      "title": "Révision générale du troisième trimestre",
+      "objectives": [
+        "Review the ten instructional topics in the Third-Term scheme.",
+        "Prepare written reading, grammar and vocabulary skills.",
+        "Identify oral tasks that still require teacher observation."
+      ],
+      "body": "Newly authored scheme supplement / Révision de fin de trimestre.\n\nThis is a guided revision lesson for the ten instructional weeks in the Third-Term source. It is not an examination result or a claim that oral performance has already been observed.\n\nRevision checklist:\n1. Read a short dialogue aloud with clear turn-taking; identify who speaks, where the conversation happens and the main request. The original source mentions a WAEC/NECO cassette or CD, but no recording was supplied. Use the original printed dialogue for reading practice until the teacher approves or supplies a permitted recording.\n2. Compare life in the past and today. Recognise autrefois, avant, hier, aujourd’hui and maintenant; distinguish a past description from a completed event and a present fact.\n3. Express satisfaction and regret: Je suis content(e), Je suis satisfait(e), C’est dommage, C’était mieux, C’est triste.\n4. Express positive and negative feelings politely: Je suis ravi(e), Je suis triste, Cela m’inquiète, Ce n’est pas facile.\n5. Express tastes: aimer, adorer, détester, préférer; give a reason.\n6. Give an opinion and talk about the future: À mon avis, Je pense que, Je crois que, je vais + infinitif, and the simple future forms studied in class.\n7. Read and respond to a short text. Identify the main idea and answer who, what, where, when and why questions.\n8. Review nouns, gender, number, definite and indefinite articles, adjective agreement and present-tense verbs.\n9. Review direct and indirect object pronouns and the change from direct to indirect speech.\n10. Explain vocabulary using a simple definition or paraphrase. Use respectful language for disability and health.\n\nStudy method: read each model aloud, cover the answer, attempt the exercise, then check the answer key. Keep written work and oral observation separate.",
+      "body_sha256": "e7d6fd5a55d0b137923b8512be8acda1618db8e334ad3b7ccc184c8f22e3bbe5",
+      "practice": [
+        {
+          "id": "R1",
+          "question": "Write one expression of satisfaction and one expression of regret.",
+          "answer": "Je suis content(e). / C’est dommage. Other correct examples accepted.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "One correct satisfaction expression",
+              "marks": 2
+            },
+            {
+              "criterion": "One correct regret expression",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "R2",
+          "question": "Change « Aujourd’hui, je vais à l’école » into a sentence about the past using hier and the passé composé.",
+          "answer": "Hier, je suis allé(e) à l’école.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Correct time reference hier",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct être auxiliary and agreement",
+              "marks": 2
+            },
+            {
+              "criterion": "Correct past participle",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "R3",
+          "question": "Replace the direct object in « Je regarde le film » with a direct object pronoun.",
+          "answer": "Je le regarde.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Correct pronoun le",
+              "marks": 2
+            },
+            {
+              "criterion": "Pronoun placed before the conjugated verb",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "R4",
+          "question": "Change « Amina dit : “Je suis contente.” » into indirect speech.",
+          "answer": "Amina dit qu’elle est contente.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "que/qu’ link",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct subject change",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct verb and adjective agreement",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "R5",
+          "question": "Write a short opinion about one change in daily life. Include an opinion phrase, a comparison and one reason.",
+          "answer": "Example: À mon avis, les téléphones facilitent la communication aujourd’hui. Autrefois, on écrivait davantage de lettres. Je préfère les messages parce qu’ils sont rapides. Other coherent answers accepted.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Opinion phrase",
+              "marks": 1
+            },
+            {
+              "criterion": "Past/present comparison",
+              "marks": 1
+            },
+            {
+              "criterion": "Relevant reason",
+              "marks": 1
+            },
+            {
+              "criterion": "Coherent French",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original SS1 French end-of-term revision and assessment materials",
+          "locator": "Project-authored revision and examination supplements aligned to the 3rd Term French scheme-of-work rows 11 and 12; not a reproduction of a WAEC or NECO examination.",
+          "rights": "Original questions, explanations, answer keys and marking guide authored for this project; no third-party exam questions or recording reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Original project-authored educational material"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-FRENCH-EXAM-T3",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "French",
+      "title": "Évaluation de fin de troisième trimestre",
+      "objectives": [
+        "Assess reading comprehension and vocabulary.",
+        "Assess grammar, pronouns, articles, adjective agreement and indirect speech.",
+        "Assess written comparison, opinion and future expression."
+      ],
+      "body": "Newly authored assessment / Évaluation de fin de troisième trimestre.\n\nSS 1 French — 40 marks — Suggested time: 60 minutes.\nThis is an original school assessment aligned to the Third-Term scheme. It is not an official WAEC or NECO paper and does not include or claim to reproduce their cassette/CD material.\n\nInstructions: Answer all 24 questions. Section A contains 20 multiple-choice questions (1 mark each). Section B contains four structured questions (5 marks each). Total: 40 marks. Use clear French where a written response is required.\n\nSection A assesses dialogue comprehension, past/present comparison, satisfaction and regret, feelings, tastes and preferences, opinions and future plans, articles and contractions, direct and indirect object pronouns, indirect speech, vocabulary and adjective agreement.\n\nSection B assesses reading comprehension, comparison of life in the past and today, an opinion/future paragraph, and grammar in context. The answer key and item-by-item marking criteria are attached to each question in the practice record.\n\nAdministration note: The reading dialogue is printed in this assessment. Oral listening and pronunciation must be observed separately by the teacher; this written paper cannot certify oral performance.",
+      "body_sha256": "61a0d43f55b8386ef04990885c2a71f20e24b7d67b598e5ddf9abcbc9e8546f6",
+      "practice": [
+        {
+          "id": "MCQ1",
+          "question": "A doctor asks « Qu’est-ce que tu as ? ». The best reply is: A. J’ai mal à la tête. B. Je préfère le thé. C. Il est directeur. D. C’est dommage.",
+          "answer": "A. J’ai mal à la tête.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ2",
+          "question": "Which word means « nowadays »? A. autrefois B. aujourd’hui C. demain D. hier",
+          "answer": "B. aujourd’hui",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ3",
+          "question": "Which expression shows satisfaction? A. C’est dommage. B. Je suis content(e). C. C’est terrible. D. Je regrette.",
+          "answer": "B. Je suis content(e).",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ4",
+          "question": "Which expression most clearly shows regret? A. C’est dommage. B. C’est super. C. C’est magnifique. D. Bravo.",
+          "answer": "A. C’est dommage.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ5",
+          "question": "Complete: Je ___ la musique. A. aime B. aimes C. aimons D. aimez",
+          "answer": "A. aime",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ6",
+          "question": "Choose the correct comparison: A. Je préfère le thé que le café. B. Je préfère le thé au café. C. Je préfère de thé café. D. Je préfère thé le café.",
+          "answer": "B. Je préfère le thé au café.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ7",
+          "question": "Which phrase introduces an opinion? A. À mon avis B. À côté de C. Il y a D. Au revoir",
+          "answer": "A. À mon avis",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ8",
+          "question": "Complete the near future: Nous ___ visiter le musée. A. allons B. sommes C. avons D. faisons",
+          "answer": "A. allons",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ9",
+          "question": "Choose the masculine singular definite article: A. la B. les C. le D. des",
+          "answer": "C. le",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ10",
+          "question": "Choose the feminine singular definite article: A. la B. le C. les D. un",
+          "answer": "A. la",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ11",
+          "question": "Choose the plural definite article: A. l’ B. les C. le D. une",
+          "answer": "B. les",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ12",
+          "question": "Before a vowel or silent h, le/la usually become: A. au B. du C. l’ D. aux",
+          "answer": "C. l’",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ13",
+          "question": "Complete: Je vais ___ marché. A. à le B. au C. aux D. de la",
+          "answer": "B. au",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ14",
+          "question": "Complete: Nous parlons ___ élèves. A. au B. à la C. aux D. du",
+          "answer": "C. aux",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ15",
+          "question": "Complete: Je viens ___ marché. A. du B. au C. aux D. de les",
+          "answer": "A. du",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ16",
+          "question": "Replace « le livre »: « Je lis le livre. » A. Je lui lis. B. Je le lis. C. Je les lis. D. Je la lis.",
+          "answer": "B. Je le lis.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ17",
+          "question": "Which indirect object pronoun can mean « to him/to her »? A. lui B. les C. la D. le",
+          "answer": "A. lui",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ18",
+          "question": "Choose the correct indirect speech: Paul dit : « Je suis prêt. » A. Paul dit que je suis prêt. B. Paul dit qu’il est prêt. C. Paul dit il prêt. D. Paul dit de prêt.",
+          "answer": "B. Paul dit qu’il est prêt.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ19",
+          "question": "A person whose spouse has died is called: A. un étudiant B. un veuf / une veuve C. un gourmand D. un directeur",
+          "answer": "B. un veuf / une veuve",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ20",
+          "question": "Choose the correct adjective agreement: A. une voiture blanc B. une voiture blanche C. un voiture blanche D. des voiture blanche",
+          "answer": "B. une voiture blanche",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "S1",
+          "question": "Read: « Bonjour, docteur. J’ai mal au ventre depuis hier. — Qu’avez-vous mangé ? — J’ai mangé du riz et du poulet. — Reposez-vous et buvez de l’eau. » Answer: (a) Who is speaking to the doctor? (b) What is the problem? (c) Since when? (d) What did the patient eat? (e) Give one piece of advice from the doctor.",
+          "answer": "(a) A patient. (b) The patient has a stomach ache. (c) Since yesterday. (d) Rice and chicken. (e) Rest / drink water.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Patient identified",
+              "marks": 1
+            },
+            {
+              "criterion": "Stomach ache identified",
+              "marks": 1
+            },
+            {
+              "criterion": "Depuis hier",
+              "marks": 1
+            },
+            {
+              "criterion": "Rice and chicken",
+              "marks": 1
+            },
+            {
+              "criterion": "One correct piece of advice",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "question": "Write five sentences comparing life autrefois and aujourd’hui. Use at least one imperfect-tense form and one present-tense form.",
+          "answer": "Example: Autrefois, les familles écrivaient des lettres. Aujourd’hui, elles envoient des messages. Les transports étaient plus lents. Maintenant, certains trajets sont plus rapides. La communication est plus facile dans beaucoup de situations. Other accurate comparisons accepted.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Five relevant sentences",
+              "marks": 2
+            },
+            {
+              "criterion": "Correct imperfect form",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct present form",
+              "marks": 1
+            },
+            {
+              "criterion": "Clear comparison",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "S3",
+          "question": "Write a short paragraph of five sentences: express an opinion about one modern change and describe one future plan. Use an opinion phrase and either je vais + infinitif or a correct simple-future form.",
+          "answer": "Example: À mon avis, Internet facilite les études. Je peux chercher des informations rapidement. Cependant, il faut vérifier les sources. L’année prochaine, je vais apprendre davantage de français. Je travaillerai régulièrement. Other coherent answers accepted.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Opinion phrase and relevant view",
+              "marks": 1
+            },
+            {
+              "criterion": "Reason or explanation",
+              "marks": 1
+            },
+            {
+              "criterion": "Future plan with correct structure",
+              "marks": 2
+            },
+            {
+              "criterion": "Coherent French",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "S4",
+          "question": "(a) Replace « les exercices » in « Je termine les exercices » with a direct object pronoun. (b) Replace « à Marie » in « Je parle à Marie » with an indirect object pronoun. (c) Change « Paul dit : “Je viendrai demain.” » into indirect speech. (d) Give one sentence with a correctly agreed adjective.",
+          "answer": "(a) Je les termine. (b) Je lui parle. (c) Paul dit qu’il viendra le lendemain. (d) Example: une maison blanche.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Je les termine",
+              "marks": 1
+            },
+            {
+              "criterion": "Je lui parle",
+              "marks": 1
+            },
+            {
+              "criterion": "Indirect speech with qu’il viendra le lendemain",
+              "marks": 2
+            },
+            {
+              "criterion": "Correct adjective agreement",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original SS1 French end-of-term revision and assessment materials",
+          "locator": "Project-authored revision and examination supplements aligned to the 3rd Term French scheme-of-work rows 11 and 12; not a reproduction of a WAEC or NECO examination.",
+          "rights": "Original questions, explanations, answer keys and marking guide authored for this project; no third-party exam questions or recording reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Original project-authored educational material"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -6146,6 +6670,46 @@
         {
           "locator": "SUP-SS1-FRENCH-OPINION-T1; original lesson body hash 4834006db06ce3477a1aab210817272d7ffe88e7e200f64f0c9250413968019d",
           "explanation": "Original lesson supplies opinion questions, agreement/disagreement expressions, parce que/car/à cause de, a balanced model argument and marked practice. Daily-routine content remains in SUP-SS1-FRENCH-ROUTINE-T1."
+        }
+      ]
+    },
+    {
+      "id": "FRENCH-T3-REVISION-MARKER",
+      "source_id": "SS1-SRC-8a2ec1fe30e3",
+      "objective": "Scheme row 11: La Revision",
+      "objective_locator": "Original T3 DOCX direct-body child 16, page 1; source SHA-256 7841df887cbd175e69ecbbf28896a324443467c82c35a4754fe169f50f09537d",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-8a2ec1fe30e3-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "Source marker rule SS1-SRC-8a2ec1fe30e3-R002",
+          "explanation": "The scheme contains a revision marker, not a source-authored lesson."
+        },
+        {
+          "locator": "SUP-SS1-FRENCH-REVISION-T3; body SHA-256 e7d6fd5a55d0b137923b8512be8acda1618db8e334ad3b7ccc184c8f22e3bbe5",
+          "explanation": "Original project-authored revision checklist and 20-mark guided practice cover the ten instructional topics. It does not claim oral performance has been observed."
+        }
+      ]
+    },
+    {
+      "id": "FRENCH-T3-EXAMINATION-MARKER",
+      "source_id": "SS1-SRC-8a2ec1fe30e3",
+      "objective": "Scheme row 12: L’examen",
+      "objective_locator": "Original T3 DOCX direct-body child 17, page 1; source SHA-256 7841df887cbd175e69ecbbf28896a324443467c82c35a4754fe169f50f09537d",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-8a2ec1fe30e3-R003"
+      ],
+      "evidence": [
+        {
+          "locator": "Source marker rule SS1-SRC-8a2ec1fe30e3-R003",
+          "explanation": "The source contains an examination marker but no original paper or marking scheme."
+        },
+        {
+          "locator": "SUP-SS1-FRENCH-EXAM-T3; body SHA-256 61a0d43f55b8386ef04990885c2a71f20e24b7d67b598e5ddf9abcbc9e8546f6",
+          "explanation": "An original 40-mark end-of-term assessment with 20 MCQs, four structured questions, answer key and item-level marking is supplied. It is not represented as an official WAEC/NECO paper."
         }
       ]
     }
