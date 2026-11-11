@@ -1,4 +1,5 @@
 import { buildFromFiles as buildSs1FromFiles } from './ss1/loader.js';
+import { registry as ss1SourceRegistry } from './ss1/compiler.js';
 import { writeFileSync as writeSs1Plan } from 'node:fs';
 // Ingests the school's curriculum source documents (schemes of work + lesson
 // notes) into the `topics` table's evergreen curriculum-ingestion columns
@@ -467,12 +468,18 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     return;
   }
 
-  const ss1Reviewed = process.argv.includes('--ss1-reviewed');
+  export function isRegisteredOtherSs1Source(fileIdentity: string, subjectSlug: string) {
+  return ss1SourceRegistry.some(source =>
+    source.archive_member === fileIdentity && source.assigned_subject_slug !== subjectSlug);
+}
+
+const ss1Reviewed = process.argv.includes('--ss1-reviewed');
   const ss1PlanIndex = process.argv.indexOf('--ss1-plan');
   const ss1PlanPath = ss1PlanIndex >= 0 ? process.argv[ss1PlanIndex + 1] : undefined;
   if (ss1PlanIndex >= 0 && (!ss1Reviewed || !ss1PlanPath || ss1PlanPath.startsWith('--'))) throw new Error('--ss1-plan requires --ss1-reviewed and a new output filename');
   if (ss1SubjectSlug && (!ss1Reviewed || !/^[a-z0-9-]+$/.test(ss1SubjectSlug))) throw new Error('--ss1-subject-slug requires --ss1-reviewed and a valid package slug');
-  if (ss1Reviewed && (schoolCode !== 'secondary' || yes)) throw new Error('SS1 reviewed foundation is plan-only. Runtime integration and later verification must precede database release.');
+  if (ss1Reviewed && schoolCode !== 'secondary') throw new Error('SS1 reviewed packages require --school-code secondary.');
+  if (ss1Reviewed && yes && !ss1PlanPath) throw new Error('SS1 reviewed import requires --ss1-plan <new-output-file> so the exact release plan is preserved before database writes.');
 
   const unsupported: string[] = [];
   const errors: Array<{ file: string; error: string }> = [];
@@ -515,16 +522,22 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     for (const file of owned) ss1Owned.add(file);
     // A partial plan is evidence only, never an executable row collection.
     if (ss1PlanPath) writeSs1Plan(ss1PlanPath, JSON.stringify(plan, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
-    console.log(`SS1 reviewed packages: ${plan.ready ? 'READY FOR LATER VERIFICATION' : 'BLOCKED/PENDING'}; candidate rows ${plan.rows.length}`);
+    console.log(`SS1 reviewed packages: ${plan.ready ? (yes ? 'READY FOR IMPORT' : 'READY FOR IMPORT DRY-RUN') : 'BLOCKED/PENDING'}; candidate rows ${plan.rows.length}`);
     for (const blocker of plan.blockers) errors.push({ file: 'SS1 packages', error: blocker });
     if (plan.ready) { rows.push(...plan.rows); for (const file of owned) parsedFiles.add(sourceIdentity(file)); }
   }
 
   for (const filePath of allFiles) {
     if (ss1Owned.has(path.resolve(filePath))) continue;
+    if (ss1Reviewed && ss1SubjectSlug && !inferClassNames(filePath)?.includes('SS 1')) {
+      continue; // A subject-scoped SS1 import never imports Primary/JSS or unrelated documents from the archive.
+    }
     if (inferClassNames(filePath)?.includes('SS 1')) {
+      if (ss1Reviewed && ss1SubjectSlug && isRegisteredOtherSs1Source(sourceIdentity(filePath), ss1SubjectSlug)) {
+        continue; // Subject-scoped reviewed import intentionally excludes other registered SS1 subjects.
+      }
       if (ss1Reviewed) { errors.push({ file: sourceIdentity(filePath), error: 'SS1 source not matched to authoritative staging manifest' }); continue; }
-      if (yes) throw new Error('SS1 generic import cannot write: use reviewed packages and complete the later integration/release stage');
+      if (yes) throw new Error('SS1 generic import cannot write: use reviewed packages and their verified release plan');
     }
 
     try {

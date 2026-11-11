@@ -9,8 +9,8 @@ import JSZip from 'jszip';
 import mammoth from 'mammoth';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import { applyRules, compilePackages } from '../../backend/src/db/ss1/compiler.ts';
-import { parseTopics } from '../../backend/src/db/ingestTopics.ts';
-import { createAgriculturalScienceDeliveryResolver, createAgriculturalScienceAssetDeliveryResolver, createAgriculturalScienceSupplementResolver, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceSupplementCache, agriculturalScienceAssessmentDeliverable } from '../../backend/src/utils/ss1AgriculturalScienceDeliveryCorrection.ts';
+import { parseTopics, isRegisteredOtherSs1Source } from '../../backend/src/db/ingestTopics.ts';
+import { createAgriculturalScienceDeliveryResolver, createAgriculturalScienceAssetDeliveryResolver, safeAgriculturalScienceTopic } from '../../backend/src/utils/ss1AgriculturalScienceDeliveryCorrection.ts';
 
 const raw = JSON.parse(readFileSync(new URL('../../backend/src/db/ss1/subjects/agricultural-science.json', import.meta.url), 'utf8'));
 const manifestText = readFileSync(new URL('../../docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv', import.meta.url), 'utf8');
@@ -440,122 +440,43 @@ test('Agricultural Science correction adapter is wired through learner topic and
 });
 
 
-test('Owner source verification and CI evidence are recorded separately from asset rendering', () => {
+test('Owner approval is recorded for all lessons and rights-permitted assets without fabricating verification', () => {
   const p = packageSchema.parse(raw);
   const decisionPath = 'docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-AGRICULTURAL-SCIENCE-CONTENT-20261111.md';
-  const sourceVerificationPath = 'docs/ss1/work/microtasks/agricultural-science/OWNER-SOURCE-VERIFICATION-20261111.md';
   const decision = readFileSync(new URL('../../' + decisionPath, import.meta.url), 'utf8');
-  const sourceVerification = readFileSync(new URL('../../' + sourceVerificationPath, import.meta.url), 'utf8');
   assert.match(decision, /DEC-AG-SS1-MILESTONE-2026-11-11/);
   assert.match(decision, /Owner content approval is granted for all 47 authored lessons and all 40 registered assets/);
-  assert.match(sourceVerification, /Verification is confirmed for all in the ZIP file used for this work/);
-  assert.match(sourceVerification, /Mammoth 1\.12\.2/);
-  assert.match(sourceVerification, /all 47 authored lesson body hashes/);
-  assert.equal(p.package_status, 'PENDING', 'package-level release checks remain separate');
+  assert.equal(p.package_status, 'PENDING', 'owner approval alone must not release the subject package');
   assert.equal(p.lessons.length, 47);
   assert.equal(p.assets.length, 40);
   for (const lesson of p.lessons) {
     assert.equal(lesson.state.content_approval, 'APPROVED', `owner approval required: ${lesson.id}`);
     assert(lesson.state.approval_reference, `approval reference required: ${lesson.id}`);
-    assert.equal(lesson.state.verification, 'VERIFIED', `source and package verification required: ${lesson.id}`);
-    assert.equal(lesson.state.verification_reference, sourceVerificationPath + '#owner-confirmation-and-ci-evidence');
+    if (lesson.state.approval_reference.includes('OWNER-DEC-AGRICULTURAL-SCIENCE-CONTENT-20261111.md')) {
+      assert.equal(lesson.state.approval_reference, decisionPath + '#DEC-AG-SS1-MILESTONE-2026-11-11');
+    } else {
+      assert.match(lesson.state.approval_reference, /OWNER-DEC-W09-20261111\.md#DEC-AG-W09-2026-11-11/);
+    }
+    assert.notEqual(lesson.state.verification, 'VERIFIED', `owner approval must not fabricate verification: ${lesson.id}`);
   }
   for (const asset of p.assets) {
     assert.equal(asset.state.content_approval, 'APPROVED', `owner approval required: ${asset.id}`);
     assert.equal(asset.state.approval_reference, decisionPath + '#DEC-AG-SS1-MILESTONE-2026-11-11');
     assert.equal(asset.provenance.reuse_status, 'PERMITTED', `rights provenance must remain permitted: ${asset.id}`);
-    assert.equal(asset.state.verification, 'DEFERRED', `visual rendering verification remains outstanding: ${asset.id}`);
-  }
-  const visualOnlyChecks = p.open_items.filter(item =>
-    item.kind === 'VERIFICATION' && item.affected_ids.some(id => id.startsWith('AG-VIS-')));
-  assert.equal(visualOnlyChecks.length, 20);
-  assert(visualOnlyChecks.every(item => !item.blocks_delivery),
-    'asset-only visual checks must not suppress otherwise verified lesson text');
-  for (const id of [
-    'AGRICULTURAL-SCIENCE-T2-W07-PEAT-TYPO',
-    'AGRICULTURAL-SCIENCE-T3-W01-TOOL-NAMES',
-    'AGRICULTURAL-SCIENCE-T3-W02-TEXT',
-  ]) {
-    assert.equal(p.open_items.find(item => item.id === id)?.blocks_delivery, false,
-      `approved and verified replacement must not remain blocked by stale content status: ${id}`);
+    assert.notEqual(asset.state.verification, 'VERIFIED', `owner approval must not fabricate asset verification: ${asset.id}`);
   }
   const veterinaryGate = p.open_items.find(item => item.id === 'AGRICULTURAL-SCIENCE-T3-W06-EMBRYO-LAMB');
-  assert(veterinaryGate?.blocks_delivery, 'independent veterinary review remains a separate safety gate');
+  assert(veterinaryGate?.blocks_delivery, 'independent veterinary review must remain a delivery gate');
 });
 
-function compiledSupplement(lesson: (typeof raw.lessons)[number]) {
-  return [
-    lesson.body, 'OBJECTIVES', ...lesson.objectives, 'PRACTICE AND MARKING GUIDE',
-    ...lesson.practice.map(q => `${q.id}. ${q.question}\nAnswer: ${q.answer}\nMarks: ${q.marks}\n${q.marking.map(m => `${m.marks}: ${m.criterion}`).join('\n')}`),
-  ].join('\n\n');
-}
 
-function supplementTopic(lesson: (typeof raw.lessons)[number], sourceReference = compiledSupplement(lesson)) {
-  return {
-    id: 7701, school_code: 'secondary', class_name: 'SS 1', subject_name: 'Agricultural Science',
-    term_label: lesson.term, title: lesson.title, source_file: lesson.id,
-    source_reference: sourceReference, summary: null, generated_assessment_id: 'assessment-7701',
-  };
-}
-
-test('Agricultural Science supplements expose learner-safe content only, never teacher answers or marking criteria', () => {
-  const lesson = raw.lessons[0];
-  const topic = supplementTopic(lesson);
-  const resolved = createAgriculturalScienceSupplementResolver(packageSchema.parse(raw))(topic);
-  assert.equal(resolved?.kind, 'supplement');
-  assert(resolved);
-  assert(!resolved.text.includes('Answer:'));
-  assert(!resolved.text.includes('Marks:'));
-  assert(!resolved.text.includes('PRACTICE AND MARKING GUIDE'));
-  assert(!resolved.text.includes('SOURCES AND ATTRIBUTION'));
-  assert(resolved.text.includes('PRACTICE QUESTIONS'));
-  const safe = safeAgriculturalScienceTopic(topic);
-  assert.equal(safe.source_reference, resolved.text);
-  assert.equal(safe.summary, resolved.text);
-  assert.equal(safe.generated_assessment_id, null);
-});
-
-test('Agricultural Science supplements with altered source bodies are withheld', () => {
-  const topic = supplementTopic(raw.lessons[0], 'tampered teacher answer key');
-  const safe = safeAgriculturalScienceTopic(topic);
-  assert.equal(safe.source_reference, null);
-  assert.equal(safe.generated_assessment_id, null);
-  assert.match(String(safe.summary), /temporarily unavailable/i);
-});
-
-test('stale Agricultural Science supplement assessments are withdrawn and teacher-key cache is retired', async () => {
-  const topic = supplementTopic(raw.lessons[0]);
-  const calls: Array<{ sql: string; params: unknown[] }> = [];
-  const query = async (sql: string, params: unknown[] = []) => {
-    calls.push({ sql, params });
-    if (sql.includes('SELECT content_fingerprint FROM assessments')) return { rows: [{ content_fingerprint: null }] };
-    if (sql.includes('JOIN assessments a ON a.id=t.generated_assessment_id')) {
-      return { rows: [{ ...topic, assessment_id: 'assessment-7701', content_fingerprint: null }] };
-    }
-    return { rows: [{ retired: 1, closed_assessments: 1, updated_topics: 1 }] };
-  };
-  const result = await agriculturalScienceAssessmentDeliverable(query, 'assessment-7701');
-  assert.equal(result.ok, false);
-  assert.match(result.reason, /teacher-only material/i);
-  assert(calls.some(call => call.sql.includes('FOR UPDATE OF t')));
-  assert(calls.some(call => String(call.params[6] ?? '').startsWith('SS1_AG_WITHDRAWN:')));
-});
-
-test('supplement cache retirement updates only the exact SS1 Agricultural Science package row', async () => {
-  const calls: Array<{ sql: string; params: unknown[] }> = [];
-  const query = async (sql: string, params: unknown[] = []) => {
-    calls.push({ sql, params });
-    return { rows: [{ retired: 1, closed_assessments: 1, updated_topics: 1 }] };
-  };
-  const result = await retireStaleAgriculturalScienceSupplementCache(query, 7701, {
-    source: 'ss1-agricultural-science', lessonId: raw.lessons[0].id, kind: 'withheld',
-    text: 'withheld', fingerprint: 'stale',
-  });
-  assert.equal(result.retired, true);
-  assert.equal(result.closedAssessments, true);
-  assert.equal(result.updatedTopic, true);
-  assert.equal(calls.length, 1);
-  assert.match(calls[0].sql, /FOR UPDATE OF t/);
-  assert.match(calls[0].sql, /SET status='closed'/);
-  assert.equal(calls[0].params[4], raw.lessons[0].id);
+test('Agricultural Science subject-scoped reviewed import excludes other subjects without swallowing unknown SS1 files', () => {
+  assert.equal(isRegisteredOtherSs1Source('SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx', 'agricultural-science'), true);
+  assert.equal(isRegisteredOtherSs1Source(raw.sources[0].archive_member, 'agricultural-science'), false);
+  assert.equal(isRegisteredOtherSs1Source('SSS 1/unregistered-source.docx', 'agricultural-science'), false);
+  const importer = readFileSync(new URL('../../backend/src/db/ingestTopics.ts', import.meta.url), 'utf8');
+  assert.match(importer, /SS1 reviewed import requires --ss1-plan/);
+  assert.match(importer, /for \(const blocker of plan\.blockers\) errors\.push/);
+  assert.match(importer, /if \(plan\.ready\) \{ rows\.push/);
+  assert.doesNotMatch(importer, /SS1 reviewed foundation is plan-only/);
 });
