@@ -31,11 +31,11 @@ test('French listening grading handles perfect, zero, partial and invalid submis
   const perfect = Object.fromEntries(FRENCH_LISTENING_QUESTIONS.map((question, index) => [index, question.answer]));
   assert.deepEqual(gradeFrenchListeningAnswers(perfect), { answered: 10, total: 10, score: 10, complete: true });
 
-  const wrong = Object.fromEntries(FRENCH_LISTENING_QUESTIONS.map((_, index) => [index, 0]));
+  const wrong = Object.fromEntries(FRENCH_LISTENING_QUESTIONS.map((question, index) => [index, (question.answer + 1) % 3]));
   const zeroOrPartial = gradeFrenchListeningAnswers(wrong);
   assert.equal(zeroOrPartial.answered, 10);
   assert.equal(zeroOrPartial.complete, true);
-  assert.equal(zeroOrPartial.score, FRENCH_LISTENING_QUESTIONS.filter(question => question.answer === 0).length);
+  assert.equal(zeroOrPartial.score, 0);
 
   assert.deepEqual(gradeFrenchListeningAnswers({ 0: FRENCH_LISTENING_QUESTIONS[0].answer }), {
     answered: 1, total: 10, score: 1, complete: false,
