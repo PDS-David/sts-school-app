@@ -62,7 +62,7 @@
     "SOURCE_RULE": 2,
     "OWNER_DECISION": 2,
     "FACTUAL_DEPENDENCY": 13,
-    "VISUAL_DISPOSITION": 3,
+    "VISUAL_DISPOSITION": 13,
     "BRANCH_PORT": 13,
     "BRANCH_COMPARISON": 2,
     "SCOPE_DECOMPOSITION": 1,
@@ -71,9 +71,9 @@
     "CORRECTION_BINDING": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 62,
-    "BLOCKED": 30,
-    "PENDING": 1
+    "IMPLEMENTED_TESTING_DEFERRED": 65,
+    "BLOCKED": 27,
+    "PENDING": 11
   },
   "total": 90,
   "items": [
@@ -1617,8 +1617,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Ten original SVG teaching aids have been authored and registered in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-VIS-NEW-ASSETS-20261111.md. The source's embedded legacy .doc figures were not available in the text extraction, so exhaustive figure inventory and one-for-one source disposition cannot be claimed. Package open item PHYSICS-SOURCE-VISUAL-INVENTORY blocks delivery until original rendered pages/figures are inspected.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Rendered and inventoried all source PDF pages; page/week/figure clusters, raster image counts, vector drawing disposition, branding and follow-up tasks are documented in PHYS-VIS-T1.md. Original source bytes and tutor branding were not copied.",
       "completion_condition": "Inventory complete with locators; follow-up tasks appended; any branding or rights concern raised as an open item without copying contact details into Git."
     },
     {
@@ -1648,8 +1648,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Ten original SVG teaching aids have been authored and registered in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-VIS-NEW-ASSETS-20261111.md. The source's embedded legacy .doc figures were not available in the text extraction, so exhaustive figure inventory and one-for-one source disposition cannot be claimed. Package open item PHYSICS-SOURCE-VISUAL-INVENTORY blocks delivery until original rendered pages/figures are inspected.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Rendered and inventoried all source PDF pages; page/week/figure clusters, raster image counts, vector drawing disposition, branding and follow-up tasks are documented in PHYS-VIS-T2.md. Original source bytes and tutor branding were not copied.",
       "completion_condition": "Inventory complete with locators; follow-up tasks appended; any branding or rights concern raised as an open item without copying contact details into Git."
     },
     {
@@ -1679,8 +1679,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Ten original SVG teaching aids have been authored and registered in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-VIS-NEW-ASSETS-20261111.md. The source's embedded legacy .doc figures were not available in the text extraction, so exhaustive figure inventory and one-for-one source disposition cannot be claimed. Package open item PHYSICS-SOURCE-VISUAL-INVENTORY blocks delivery until original rendered pages/figures are inspected.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Rendered and inventoried all source PDF pages; page/week/figure clusters, raster image counts, vector drawing disposition, branding and follow-up tasks are documented in PHYS-VIS-T3.md. Original source bytes and tutor branding were not copied.",
       "completion_condition": "Inventory complete with locators; follow-up tasks appended; any branding or rights concern raised as an open item without copying contact details into Git."
     },
     {
@@ -3154,12 +3154,212 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "CORR-PHYSICS-T1-W01-CONSOLIDATED binds the exact source row to SUP-SS1-PHYSICS-T1-W01-CONSOLIDATED. Evidence: PHYS-COR-T1-W01-BINDING.md.",
       "completion_condition": "One exact delivery_corrections[] entry binds the original Week One body hash to an existing complete replacement lesson; all original teaching objectives, assessment and reading marker are preserved or explicitly dispositioned; defects and approval status are documented."
+    },
+    {
+      "id": "PHYS-VIS-T1-MOTION-FRICTION",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "PDF pages 10–15; Weeks Three/Four",
+      "objective": "Create original motion/circular-motion and friction diagrams; do not copy source artwork or tutor branding.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "Visual inventory evidence: PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Original equivalents are required; source images are not copied.",
+      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
+    },
+    {
+      "id": "PHYS-VIS-T1-GRAPHS-VECTORS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "PDF pages 16–24; Weeks Five/Six",
+      "objective": "Create original vector, distance/displacement-time and speed/velocity-time graph diagrams, including labelled axes and gradients.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "Visual inventory evidence: PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Original equivalents are required; source images are not copied.",
+      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
+    },
+    {
+      "id": "PHYS-VIS-T1-DENSITY-PRESSURE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "PDF pages 25–29; Weeks Seven/Eight",
+      "objective": "Create original density/relative-density, pressure, upthrust, Archimedes and floatation diagrams.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "Visual inventory evidence: PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Original equivalents are required; source images are not copied.",
+      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
+    },
+    {
+      "id": "PHYS-VIS-T1-WORK-VISCOSITY",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "PDF pages 30–35; Weeks Nine/Ten",
+      "objective": "Create original work/energy/power and viscosity/terminal-velocity diagrams.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "Visual inventory evidence: PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Original equivalents are required; source images are not copied.",
+      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
+    },
+    {
+      "id": "PHYS-VIS-T2-THERMOMETRY",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "PDF pages 3–7",
+      "objective": "Create original thermometer, fixed-point and temperature-scale diagrams.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "Visual inventory evidence: PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Original equivalents are required; source images are not copied.",
+      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
+    },
+    {
+      "id": "PHYS-VIS-T2-HEAT-TRANSFER",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "PDF pages 11–13",
+      "objective": "Create original conduction, convection and radiation diagrams; supplement the existing vacuum-flask SVG.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "Visual inventory evidence: PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Original equivalents are required; source images are not copied.",
+      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
+    },
+    {
+      "id": "PHYS-VIS-T2-ELECTROSTATICS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "PDF pages 14–18",
+      "objective": "Create original charging-by-friction/contact/induction diagrams; reuse existing electroscope/field-pattern SVGs where appropriate.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "Visual inventory evidence: PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Original equivalents are required; source images are not copied.",
+      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
+    },
+    {
+      "id": "PHYS-VIS-T2-GRAVITATION",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "PDF pages 19–24",
+      "objective": "Create original gravitational field-line and potential diagrams.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "Visual inventory evidence: PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Original equivalents are required; source images are not copied.",
+      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
+    },
+    {
+      "id": "PHYS-VIS-T3-CIRCUITS-RESISTORS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "PDF pages 2–5",
+      "objective": "Create original circuit-symbol, simple-circuit and series/parallel resistor/cell network diagrams.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "Visual inventory evidence: PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Original equivalents are required; source images are not copied.",
+      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
+    },
+    {
+      "id": "PHYS-VIS-T3-ATOMIC-DIFFUSION",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "PDF pages 8–10",
+      "objective": "Create original atomic-structure, diffusion, osmosis and Brownian-motion diagrams.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "Visual inventory evidence: PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Original equivalents are required; source images are not copied.",
+      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
     }
   ],
   "review": {
     "date": "2026-11-11",
     "reviewed_master_sha": "2240fe9289f9017c805a2544eeecabcd2bd71e4a",
-    "scope": "Rendered all three hash-verified Physics source documents to PDF. Corrected Week Two measurement row and bound it; confirmed and bound Second Term Week Four expansivity notation error and Third Term Week Ten thermal-expansivity formula error; recovered Week Two SI-units question from PDF rendering and adopted dual text/render extraction policy.",
+    "scope": "All three original Physics term documents have now been rendered and visually inventoried. Source image counts, page/week clusters, branding and figure disposition are recorded; follow-up original diagram tasks have been appended. Correction bindings now replace known defective source rows.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
@@ -3179,6 +3379,28 @@
     },
     "notes": "Week Five scheme mismatch resolved: diffusion and osmosis are taught in body; Brownian-motion treatment is shallow and has a non-blocking open item. Visual-source inventory still blocks full delivery."
   },
-  "next_runnable": [],
-  "runnable_now": []
+  "next_runnable": [
+    "PHYS-VIS-T1-MOTION-FRICTION",
+    "PHYS-VIS-T1-GRAPHS-VECTORS",
+    "PHYS-VIS-T1-DENSITY-PRESSURE",
+    "PHYS-VIS-T1-WORK-VISCOSITY",
+    "PHYS-VIS-T2-THERMOMETRY",
+    "PHYS-VIS-T2-HEAT-TRANSFER",
+    "PHYS-VIS-T2-ELECTROSTATICS",
+    "PHYS-VIS-T2-GRAVITATION",
+    "PHYS-VIS-T3-CIRCUITS-RESISTORS",
+    "PHYS-VIS-T3-ATOMIC-DIFFUSION"
+  ],
+  "runnable_now": [
+    "PHYS-VIS-T1-MOTION-FRICTION",
+    "PHYS-VIS-T1-GRAPHS-VECTORS",
+    "PHYS-VIS-T1-DENSITY-PRESSURE",
+    "PHYS-VIS-T1-WORK-VISCOSITY",
+    "PHYS-VIS-T2-THERMOMETRY",
+    "PHYS-VIS-T2-HEAT-TRANSFER",
+    "PHYS-VIS-T2-ELECTROSTATICS",
+    "PHYS-VIS-T2-GRAVITATION",
+    "PHYS-VIS-T3-CIRCUITS-RESISTORS",
+    "PHYS-VIS-T3-ATOMIC-DIFFUSION"
+  ]
 }
