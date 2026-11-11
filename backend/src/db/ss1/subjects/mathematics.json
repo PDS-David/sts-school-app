@@ -194,6 +194,19 @@
         "locator": "row 6 (WEEK 7)",
         "explanation": "Revision row; body retained."
       }
+    },
+    {
+      "id": "MATH-T3-EXAM-SCHEME-ONLY",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "source_sha256": "9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2",
+      "anchor": "12. Revision/Examination",
+      "kind": "SCHEME_ONLY",
+      "match_mode": "WHOLE_LINE",
+      "evidence": {
+        "locator": "3rd-term source scheme, line 53, item 12",
+        "explanation": "This is the scheme's revision/examination marker, not an instructional lesson. It is classified as scheme-only so it is not presented as missing teaching content."
+      }
     }
   ],
   "lessons": [
@@ -2851,8 +2864,8 @@
         "Prove that the angles of a triangle sum to 180°.",
         "State and use the exterior angle theorem."
       ],
-      "body": "FRUSTUM. A frustum is a cone or pyramid with its top cut off by a plane parallel to the base. Method 1: volume of the large solid minus volume of the small solid removed (similar solids: lengths in ratio k, volumes in ratio k³). Method 2 (formulas):\nFrustum of a cone (radii R and r, height h): V = ⅓πh(R² + Rr + r²).\nFrustum of a pyramid (base areas A₁ and A₂, height h): V = ⅓h(A₁ + √(A₁A₂) + A₂).\nExample 1. Cone frustum R = 6 cm, r = 3 cm, h = 4 cm: V = ⅓ × π × 4 × (36 + 18 + 9) = 84π = 263.9 cm³.\nExample 2. Square-based pyramid frustum with bases 6 cm and 3 cm sides, h = 4 cm: A₁ = 36, A₂ = 9, √(A₁A₂) = 18; V = ⅓ × 4 × 63 = 84 cm³.\n\nANGLE SUM OF A TRIANGLE. Given triangle ABC, draw a line through A parallel to BC. The angle between this line and AB equals angle B (alternate angles); the angle between it and AC equals angle C (alternate angles). These two angles and angle A lie on a straight line, so they add up to 180°. Hence A + B + C = 180°.\n\nEXTERIOR ANGLE THEOREM. If side BC is extended to D, the exterior angle ACD = 180° – C = A + B. The exterior angle equals the sum of the two interior opposite angles.\nExample 3. Triangle angles 50° and 60°: the third angle is 70°; the exterior angle at the 70° vertex is 110° = 50° + 60°.\nExample 4. Angles x, 2x, 3x: 6x = 180°, x = 30°; angles 30°, 60°, 90°.",
-      "body_sha256": "1e21d67660ac3c66b0f7c1515a414e9bd6d0f0189d58a1b82c77627a34e76dbf",
+      "body": "FRUSTUM. A frustum is a cone or pyramid with its top cut off by a plane parallel to the base. Method 1: volume of the large solid minus volume of the small solid removed (similar solids: lengths in ratio k, volumes in ratio k³). Method 2 (formulas):\nFrustum of a cone (radii R and r, height h): V = ⅓πh(R² + Rr + r²).\nFrustum of a pyramid (base areas A₁ and A₂, height h): V = ⅓h(A₁ + √(A₁A₂) + A₂).\nExample 1. Cone frustum R = 6 cm, r = 3 cm, h = 4 cm: V = ⅓ × π × 4 × (36 + 18 + 9) = 84π = 263.9 cm³.\nExample 2. Square-based pyramid frustum with bases 6 cm and 3 cm sides, h = 4 cm: A₁ = 36, A₂ = 9, √(A₁A₂) = 18; V = ⅓ × 4 × 63 = 84 cm³.\n\nANGLE SUM OF A TRIANGLE. Given triangle ABC, draw a line through A parallel to BC. The angle between this line and AB equals angle B (alternate angles); the angle between it and AC equals angle C (alternate angles). These two angles and angle A lie on a straight line, so they add up to 180°. Hence A + B + C = 180°.\n\nEXTERIOR ANGLE THEOREM. If side BC is extended to D, the exterior angle ACD = 180° – C = A + B. The exterior angle equals the sum of the two interior opposite angles.\nExample 3. Triangle angles 50° and 60°: the third angle is 70°; the exterior angle at the 70° vertex is 110° = 50° + 60°.\nExample 4. Angles x, 2x, 3x: 6x = 180°, x = 30°; angles 30°, 60°, 90°.\n\nSOURCE EQUATION RECOVERY — FRUSTUM EXAMPLE (3rd-term source, page 16)\nA large cone has volume 5 litres = 5000 ml. The small cone removed is similar to the large cone. The source gives 3h = H and 3r = R, so h = H/3 and r = R/3.\nVolume of large cone = (1/3)πR²H = 5000 ml, hence πR²H = 15000 ml.\nVolume of small cone = (1/3)πr²h = (1/3)π(R/3)²(H/3) = πR²H/81 = 15000/81 = 5000/27 ml.\nVolume of frustum = 5000 − 5000/27 = 130000/27 = 4814.8148... ml ≈ 4814.8 ml (about 4815 ml).\nThis recovers the source's embedded equation objects as visible on the rendered source page. The embedded controls were not executed.\n",
+      "body_sha256": "5e8c9c9bebfb93ced43e7b3cf9339e544f3af1e49b552c11aca64b164d972861",
       "practice": [
         {
           "id": "Q01",
@@ -4214,6 +4227,201 @@
       "evidence": {
         "locator": "3rd Term source row SS1-SRC-ca00ca94afb9:BODY:6e8fa7df3a37b7b6f4a11fe0e7908ed63fa230526f68b321bfd2f2c3bfe03ebf",
         "explanation": "The source row remains unchanged as provenance; the supplement is the intended corrected teaching sequence. Owner/teacher approval and live compiler verification remain separate gates."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T2-2-00",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "source_sha256": "9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368",
+      "source_lesson_id": "SS1-SRC-b802686e83d2:BODY:d2440053f789bcf88e5559706a07d733447fd52c65e94a3eb01e4ea4789c30a1",
+      "body_sha256": "d2440053f789bcf88e5559706a07d733447fd52c65e94a3eb01e4ea4789c30a1",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T2-W01-QUADRATIC-EQUATIONS",
+      "reason": "The mapped supplement is the student-facing corrected lesson for this source week; the original source row remains preserved as provenance. The generic extractor loses mathematical notation in the affected source file.",
+      "evidence": {
+        "locator": "2nd Term source row SS1-SRC-b802686e83d2:BODY:d2440053f789bcf88e5559706a07d733447fd52c65e94a3eb01e4ea4789c30a1",
+        "explanation": "Coverage COV-MATH-T2-R00 maps this source row to SUP-SS1-MATHEMATICS-T2-W01-QUADRATIC-EQUATIONS. The replacement has objectives, a lesson body, keyed practice, answers and criterion marks. Teacher approval and compiler verification remain separate gates."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T2-2-01",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "source_sha256": "9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368",
+      "source_lesson_id": "SS1-SRC-b802686e83d2:BODY:890e05d9a42ee7fecf2a868aea1a1d41eea9d63e60fd54788a9fb5070188c346",
+      "body_sha256": "890e05d9a42ee7fecf2a868aea1a1d41eea9d63e60fd54788a9fb5070188c346",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T2-W02-QUADRATIC-FORMULA-DISCRIMINANT",
+      "reason": "The mapped supplement is the student-facing corrected lesson for this source week; the original source row remains preserved as provenance. The generic extractor loses mathematical notation in the affected source file.",
+      "evidence": {
+        "locator": "2nd Term source row SS1-SRC-b802686e83d2:BODY:890e05d9a42ee7fecf2a868aea1a1d41eea9d63e60fd54788a9fb5070188c346",
+        "explanation": "Coverage COV-MATH-T2-R01 maps this source row to SUP-SS1-MATHEMATICS-T2-W02-QUADRATIC-FORMULA-DISCRIMINANT. The replacement has objectives, a lesson body, keyed practice, answers and criterion marks. Teacher approval and compiler verification remain separate gates."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T2-2-02",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "source_sha256": "9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368",
+      "source_lesson_id": "SS1-SRC-b802686e83d2:BODY:01edf4857460b435c9bd947057228f6b8224b7325d2251a93791c75391116b1e",
+      "body_sha256": "01edf4857460b435c9bd947057228f6b8224b7325d2251a93791c75391116b1e",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T2-W03-QUADRATIC-GRAPHS",
+      "reason": "The mapped supplement is the student-facing corrected lesson for this source week; the original source row remains preserved as provenance. The generic extractor loses mathematical notation in the affected source file.",
+      "evidence": {
+        "locator": "2nd Term source row SS1-SRC-b802686e83d2:BODY:01edf4857460b435c9bd947057228f6b8224b7325d2251a93791c75391116b1e",
+        "explanation": "Coverage COV-MATH-T2-R02 maps this source row to SUP-SS1-MATHEMATICS-T2-W03-QUADRATIC-GRAPHS. The replacement has objectives, a lesson body, keyed practice, answers and criterion marks. Teacher approval and compiler verification remain separate gates."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T2-2-04",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "source_sha256": "9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368",
+      "source_lesson_id": "SS1-SRC-b802686e83d2:BODY:01e53b03fac6a4ee1bf2c1fb22b687c81fa33337830021e3c81f1c5b916b35c1",
+      "body_sha256": "01e53b03fac6a4ee1bf2c1fb22b687c81fa33337830021e3c81f1c5b916b35c1",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T2-W05-VENN-DIAGRAMS",
+      "reason": "The mapped supplement is the student-facing corrected lesson for this source week; the original source row remains preserved as provenance. The generic extractor loses mathematical notation in the affected source file.",
+      "evidence": {
+        "locator": "2nd Term source row SS1-SRC-b802686e83d2:BODY:01e53b03fac6a4ee1bf2c1fb22b687c81fa33337830021e3c81f1c5b916b35c1",
+        "explanation": "Coverage COV-MATH-T2-R04 maps this source row to SUP-SS1-MATHEMATICS-T2-W05-VENN-DIAGRAMS. The replacement has objectives, a lesson body, keyed practice, answers and criterion marks. Teacher approval and compiler verification remain separate gates."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T2-2-06",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "source_sha256": "9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368",
+      "source_lesson_id": "SS1-SRC-b802686e83d2:BODY:be330ef013d323aed5a10818b2becac26f77a10d4c64dccbcda7bd309c70c27b",
+      "body_sha256": "be330ef013d323aed5a10818b2becac26f77a10d4c64dccbcda7bd309c70c27b",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T2-W07-TRIGONOMETRIC-RATIOS",
+      "reason": "The mapped supplement is the student-facing corrected lesson for this source week; the original source row remains preserved as provenance. The generic extractor loses mathematical notation in the affected source file.",
+      "evidence": {
+        "locator": "2nd Term source row SS1-SRC-b802686e83d2:BODY:be330ef013d323aed5a10818b2becac26f77a10d4c64dccbcda7bd309c70c27b",
+        "explanation": "Coverage COV-MATH-T2-R06 maps this source row to SUP-SS1-MATHEMATICS-T2-W07-TRIGONOMETRIC-RATIOS. The replacement has objectives, a lesson body, keyed practice, answers and criterion marks. Teacher approval and compiler verification remain separate gates."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T2-2-07",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "source_sha256": "9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368",
+      "source_lesson_id": "SS1-SRC-b802686e83d2:BODY:6eba4b01b95dde6d0988fc68113d0978f881ddd574c192632b891c2a85535ac2",
+      "body_sha256": "6eba4b01b95dde6d0988fc68113d0978f881ddd574c192632b891c2a85535ac2",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T2-W08-APPLICATIONS-OF-TRIGONOMETRY",
+      "reason": "The mapped supplement is the student-facing corrected lesson for this source week; the original source row remains preserved as provenance. The generic extractor loses mathematical notation in the affected source file.",
+      "evidence": {
+        "locator": "2nd Term source row SS1-SRC-b802686e83d2:BODY:6eba4b01b95dde6d0988fc68113d0978f881ddd574c192632b891c2a85535ac2",
+        "explanation": "Coverage COV-MATH-T2-R07 maps this source row to SUP-SS1-MATHEMATICS-T2-W08-APPLICATIONS-OF-TRIGONOMETRY. The replacement has objectives, a lesson body, keyed practice, answers and criterion marks. Teacher approval and compiler verification remain separate gates."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T2-2-08",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "source_sha256": "9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368",
+      "source_lesson_id": "SS1-SRC-b802686e83d2:BODY:1bd0d798258f4f7ced3f5d7cb81bf52f3dbbb2b021e3a9bb1a915c97fa7586eb",
+      "body_sha256": "1bd0d798258f4f7ced3f5d7cb81bf52f3dbbb2b021e3a9bb1a915c97fa7586eb",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T2-W09-CIRCLES",
+      "reason": "The mapped supplement is the student-facing corrected lesson for this source week; the original source row remains preserved as provenance. The generic extractor loses mathematical notation in the affected source file.",
+      "evidence": {
+        "locator": "2nd Term source row SS1-SRC-b802686e83d2:BODY:1bd0d798258f4f7ced3f5d7cb81bf52f3dbbb2b021e3a9bb1a915c97fa7586eb",
+        "explanation": "Coverage COV-MATH-T2-R08 maps this source row to SUP-SS1-MATHEMATICS-T2-W09-CIRCLES. The replacement has objectives, a lesson body, keyed practice, answers and criterion marks. Teacher approval and compiler verification remain separate gates."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T2-2-09",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "source_sha256": "9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368",
+      "source_lesson_id": "SS1-SRC-b802686e83d2:BODY:606ae363396d2637fb43e7650242ff1ac348b4f0b8c81f2f515125969e6390c1",
+      "body_sha256": "606ae363396d2637fb43e7650242ff1ac348b4f0b8c81f2f515125969e6390c1",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T2-W10-LOGIC",
+      "reason": "The mapped supplement is the student-facing corrected lesson for this source week; the original source row remains preserved as provenance. The generic extractor loses mathematical notation in the affected source file.",
+      "evidence": {
+        "locator": "2nd Term source row SS1-SRC-b802686e83d2:BODY:606ae363396d2637fb43e7650242ff1ac348b4f0b8c81f2f515125969e6390c1",
+        "explanation": "Coverage COV-MATH-T2-R09 maps this source row to SUP-SS1-MATHEMATICS-T2-W10-LOGIC. The replacement has objectives, a lesson body, keyed practice, answers and criterion marks. Teacher approval and compiler verification remain separate gates."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T3-3-00",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "source_sha256": "9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2",
+      "source_lesson_id": "SS1-SRC-ca00ca94afb9:BODY:467b2e3bca5157dd13ce1e584650997cd5c1cbde97e3cd0be71fbf40e0c882b4",
+      "body_sha256": "467b2e3bca5157dd13ce1e584650997cd5c1cbde97e3cd0be71fbf40e0c882b4",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T3-W01-MENSURATION-SOLIDS",
+      "reason": "The mapped supplement is the student-facing corrected lesson for this source week; the original source row remains preserved as provenance. The generic extractor loses mathematical notation in the affected source file.",
+      "evidence": {
+        "locator": "3rd Term source row SS1-SRC-ca00ca94afb9:BODY:467b2e3bca5157dd13ce1e584650997cd5c1cbde97e3cd0be71fbf40e0c882b4",
+        "explanation": "Coverage COV-MATH-T3-R00 maps this source row to SUP-SS1-MATHEMATICS-T3-W01-MENSURATION-SOLIDS. The replacement has objectives, a lesson body, keyed practice, answers and criterion marks. Teacher approval and compiler verification remain separate gates."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T3-3-01",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "source_sha256": "9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2",
+      "source_lesson_id": "SS1-SRC-ca00ca94afb9:BODY:6c1435556d83024c537489d1c57474903c784a7a810deae2763a97e234866b53",
+      "body_sha256": "6c1435556d83024c537489d1c57474903c784a7a810deae2763a97e234866b53",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T3-W02-FRUSTUMS-TRIANGLE-ANGLES",
+      "reason": "The mapped supplement is the student-facing corrected lesson for this source week; the original source row remains preserved as provenance. The generic extractor loses mathematical notation in the affected source file.",
+      "evidence": {
+        "locator": "3rd Term source row SS1-SRC-ca00ca94afb9:BODY:6c1435556d83024c537489d1c57474903c784a7a810deae2763a97e234866b53",
+        "explanation": "Coverage COV-MATH-T3-R01 maps this source row to SUP-SS1-MATHEMATICS-T3-W02-FRUSTUMS-TRIANGLE-ANGLES. The replacement has objectives, a lesson body, keyed practice, answers and criterion marks. Teacher approval and compiler verification remain separate gates."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T3-3-04",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "source_sha256": "9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2",
+      "source_lesson_id": "SS1-SRC-ca00ca94afb9:BODY:b4c9c1684f4fbbd0fc847bc76796b15bf320b7e1e34ba2ad9d65b2edf4a1db9b",
+      "body_sha256": "b4c9c1684f4fbbd0fc847bc76796b15bf320b7e1e34ba2ad9d65b2edf4a1db9b",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T3-W05-DEDUCTIVE-PROOFS",
+      "reason": "The mapped supplement is the student-facing corrected lesson for this source week; the original source row remains preserved as provenance. The generic extractor loses mathematical notation in the affected source file.",
+      "evidence": {
+        "locator": "3rd Term source row SS1-SRC-ca00ca94afb9:BODY:b4c9c1684f4fbbd0fc847bc76796b15bf320b7e1e34ba2ad9d65b2edf4a1db9b",
+        "explanation": "Coverage COV-MATH-T3-R04 maps this source row to SUP-SS1-MATHEMATICS-T3-W05-DEDUCTIVE-PROOFS. The replacement has objectives, a lesson body, keyed practice, answers and criterion marks. Teacher approval and compiler verification remain separate gates."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T3-3-05",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "source_sha256": "9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2",
+      "source_lesson_id": "SS1-SRC-ca00ca94afb9:BODY:bc592b28a6f14efc1350d1c82252443557fc6e116f789147b107c70a2d4315a6",
+      "body_sha256": "bc592b28a6f14efc1350d1c82252443557fc6e116f789147b107c70a2d4315a6",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T3-W06-STATISTICS-UNGROUPED-DATA",
+      "reason": "The mapped supplement is the student-facing corrected lesson for this source week; the original source row remains preserved as provenance. The generic extractor loses mathematical notation in the affected source file.",
+      "evidence": {
+        "locator": "3rd Term source row SS1-SRC-ca00ca94afb9:BODY:bc592b28a6f14efc1350d1c82252443557fc6e116f789147b107c70a2d4315a6",
+        "explanation": "Coverage COV-MATH-T3-R05 maps this source row to SUP-SS1-MATHEMATICS-T3-W06-STATISTICS-UNGROUPED-DATA. The replacement has objectives, a lesson body, keyed practice, answers and criterion marks. Teacher approval and compiler verification remain separate gates."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T3-3-07",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "source_sha256": "9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2",
+      "source_lesson_id": "SS1-SRC-ca00ca94afb9:BODY:9fcb6ed4875cb91e2e49002de00a776b513cf9e0c0bf3e931dd5c6c41a76d2f8",
+      "body_sha256": "9fcb6ed4875cb91e2e49002de00a776b513cf9e0c0bf3e931dd5c6c41a76d2f8",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T3-W08-GROUPED-DATA",
+      "reason": "The mapped supplement is the student-facing corrected lesson for this source week; the original source row remains preserved as provenance. The generic extractor loses mathematical notation in the affected source file.",
+      "evidence": {
+        "locator": "3rd Term source row SS1-SRC-ca00ca94afb9:BODY:9fcb6ed4875cb91e2e49002de00a776b513cf9e0c0bf3e931dd5c6c41a76d2f8",
+        "explanation": "Coverage COV-MATH-T3-R07 maps this source row to SUP-SS1-MATHEMATICS-T3-W08-GROUPED-DATA. The replacement has objectives, a lesson body, keyed practice, answers and criterion marks. Teacher approval and compiler verification remain separate gates."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T3-3-09",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "source_sha256": "9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2",
+      "source_lesson_id": "SS1-SRC-ca00ca94afb9:BODY:949ec967282cf592bef63ddfab25f50289ce37e04d3f367dbd4f0ca4b0ae8e92",
+      "body_sha256": "949ec967282cf592bef63ddfab25f50289ce37e04d3f367dbd4f0ca4b0ae8e92",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T3-W10-STATISTICAL-GRAPHS",
+      "reason": "The mapped supplement is the student-facing corrected lesson for this source week; the original source row remains preserved as provenance. The generic extractor loses mathematical notation in the affected source file.",
+      "evidence": {
+        "locator": "3rd Term source row SS1-SRC-ca00ca94afb9:BODY:949ec967282cf592bef63ddfab25f50289ce37e04d3f367dbd4f0ca4b0ae8e92",
+        "explanation": "Coverage COV-MATH-T3-R09 maps this source row to SUP-SS1-MATHEMATICS-T3-W10-STATISTICAL-GRAPHS. The replacement has objectives, a lesson body, keyed practice, answers and criterion marks. Teacher approval and compiler verification remain separate gates."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T3-3-10",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "source_sha256": "9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2",
+      "source_lesson_id": "SS1-SRC-ca00ca94afb9:BODY:d79a5d282ea90131ab9c94d115af2caa9f3a6021a4fdfeb9d80e1eba989e590e",
+      "body_sha256": "d79a5d282ea90131ab9c94d115af2caa9f3a6021a4fdfeb9d80e1eba989e590e",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T3-W11-STANDARD-DEVIATION",
+      "reason": "The mapped supplement is the student-facing corrected lesson for this source week; the original source row remains preserved as provenance. The generic extractor loses mathematical notation in the affected source file.",
+      "evidence": {
+        "locator": "3rd Term source row SS1-SRC-ca00ca94afb9:BODY:d79a5d282ea90131ab9c94d115af2caa9f3a6021a4fdfeb9d80e1eba989e590e",
+        "explanation": "Coverage COV-MATH-T3-R10 maps this source row to SUP-SS1-MATHEMATICS-T3-W11-STANDARD-DEVIATION. The replacement has objectives, a lesson body, keyed practice, answers and criterion marks. Teacher approval and compiler verification remain separate gates."
       }
     }
   ],
@@ -5824,66 +6032,22 @@
     {
       "id": "OI-MATH-001",
       "kind": "OWNER_ACTION",
-      "detail": "The importer reads .docx with plain mammoth text extraction. Word equations (OMML) and superscript/subscript runs are dropped. Counts in these sources: 1st term 333 equations; 2nd term 62 equations, 510 superscript runs; 3rd term 53 equations, 504 superscript runs and 13 embedded WMF equation objects. Delivered original rows therefore show e.g. \"ax2\" for ax² and empty formulae.",
-      "required_action": "SS1-01/SS1-08 owner: decide between (a) an SS1 equation-aware extractor (OMML→text plus superscript/subscript mapping, as already done for JSS3 in jss3EquationRecovery.ts; this changes the content-bound row IDs and needs a reviewed migration) or (b) replacement lessons for every affected row. Until then every unreplaced Mathematics row listed in affected_ids is delivered with lost notation.",
+      "detail": "The generic extractor still loses mathematical notation in the two third-term geometrical-construction source rows. All other equation-bearing instructional source rows now have a correction binding to a replacement lesson, while revision-only rows are classified separately. The construction pair remains partial because the scheme's 57½° item is unresolved.",
+      "required_action": "Teacher to confirm the source's 57½° construction item. Until confirmed, retain the two original rows and do not claim the construction unit is fully equivalent.",
       "affected_ids": [
-        "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e",
-        "SS1-SRC-0c9004137f95:BODY:937a1e6ee37a38c9836b7952746edf31c8722f74f1cc4ef07fa58bb5eaa66dd9",
-        "SS1-SRC-0c9004137f95:BODY:9845ee9c306e6b421fa832fe26090238b8b6095e7d03e6673869dd8611b3e439",
-        "SS1-SRC-0c9004137f95:BODY:9c052fdda3bb80b2f01bbd76bdae8800596d1a518a4042281ccf9f46227dc85c",
-        "SS1-SRC-0c9004137f95:BODY:02958063f6c5c33c3a2d25f2685177164a617fb9254e9d3477f6d10421ac62cd",
-        "SS1-SRC-b802686e83d2:BODY:d2440053f789bcf88e5559706a07d733447fd52c65e94a3eb01e4ea4789c30a1",
-        "SS1-SRC-b802686e83d2:BODY:890e05d9a42ee7fecf2a868aea1a1d41eea9d63e60fd54788a9fb5070188c346",
-        "SS1-SRC-b802686e83d2:BODY:01edf4857460b435c9bd947057228f6b8224b7325d2251a93791c75391116b1e",
-        "SS1-SRC-b802686e83d2:BODY:9772dd71184f9931abd054784823b48e2d671fe8207283f62f329f48e763decc",
-        "SS1-SRC-b802686e83d2:BODY:01e53b03fac6a4ee1bf2c1fb22b687c81fa33337830021e3c81f1c5b916b35c1",
-        "SS1-SRC-b802686e83d2:BODY:53e9baa06bb4e4dfcba2a7a83089eae3f3933ab0a42ba120352aa27419737047",
-        "SS1-SRC-b802686e83d2:BODY:be330ef013d323aed5a10818b2becac26f77a10d4c64dccbcda7bd309c70c27b",
-        "SS1-SRC-b802686e83d2:BODY:6eba4b01b95dde6d0988fc68113d0978f881ddd574c192632b891c2a85535ac2",
-        "SS1-SRC-b802686e83d2:BODY:1bd0d798258f4f7ced3f5d7cb81bf52f3dbbb2b021e3a9bb1a915c97fa7586eb",
-        "SS1-SRC-b802686e83d2:BODY:606ae363396d2637fb43e7650242ff1ac348b4f0b8c81f2f515125969e6390c1",
-        "SS1-SRC-ca00ca94afb9:BODY:467b2e3bca5157dd13ce1e584650997cd5c1cbde97e3cd0be71fbf40e0c882b4",
-        "SS1-SRC-ca00ca94afb9:BODY:6c1435556d83024c537489d1c57474903c784a7a810deae2763a97e234866b53",
         "SS1-SRC-ca00ca94afb9:BODY:705eba8a05d0b5437b4c5cb82fc64113b0275da93475b8c03d730aa7200bf922",
-        "SS1-SRC-ca00ca94afb9:BODY:1e8146b6d225cd951f6c73d4b3c60580a72da6bf3a2027a89ba73f2f9c650423",
-        "SS1-SRC-ca00ca94afb9:BODY:b4c9c1684f4fbbd0fc847bc76796b15bf320b7e1e34ba2ad9d65b2edf4a1db9b",
-        "SS1-SRC-ca00ca94afb9:BODY:bc592b28a6f14efc1350d1c82252443557fc6e116f789147b107c70a2d4315a6",
-        "SS1-SRC-ca00ca94afb9:BODY:e36c3dbaa9c53f6f5a9d69971d977738b93e7fdd8310805e721dacb57d1b8b87",
-        "SS1-SRC-ca00ca94afb9:BODY:9fcb6ed4875cb91e2e49002de00a776b513cf9e0c0bf3e931dd5c6c41a76d2f8",
-        "SS1-SRC-ca00ca94afb9:BODY:6e8fa7df3a37b7b6f4a11fe0e7908ed63fa230526f68b321bfd2f2c3bfe03ebf",
-        "SS1-SRC-ca00ca94afb9:BODY:949ec967282cf592bef63ddfab25f50289ce37e04d3f367dbd4f0ca4b0ae8e92",
-        "SS1-SRC-ca00ca94afb9:BODY:d79a5d282ea90131ab9c94d115af2caa9f3a6021a4fdfeb9d80e1eba989e590e"
+        "SS1-SRC-ca00ca94afb9:BODY:1e8146b6d225cd951f6c73d4b3c60580a72da6bf3a2027a89ba73f2f9c650423"
       ],
       "blocks_delivery": true
     },
     {
       "id": "OI-MATH-002",
       "kind": "CONTENT",
-      "detail": "2nd-term (10 rows) and 3rd-term (11 rows) bodies and 1st-term weeks 8 and 9 (week 2 was reviewed by MATH-WK-T1-W02 on 2026-11-07: see OI-MATH-T1-W02-FACT-DEFECTS) have not been reviewed in full for factual accuracy, worked-example arithmetic, or alignment with the scheme objective in this stage; no replacement lessons exist for them.",
+      "detail": "The previously unreviewed instructional gaps in T1 Weeks 8–9, T2 Week 4 and T3 Week 9 now have authored replacement lessons with worked examples and keyed practice. Existing T2/T3 supplements have been structurally checked for objectives, answer presence and criterion-mark totals, and correction bindings now route the implemented-equivalent rows to those lessons. Detailed teacher review and the partial construction pair remain open.",
       "required_action": "Review each row against its scheme objective, recompute worked examples, and author replacement lessons (explanation, worked steps, practice with answers and marks) where defects or lost notation are found.",
       "affected_ids": [
-        "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e",
-        "SS1-SRC-0c9004137f95:BODY:9845ee9c306e6b421fa832fe26090238b8b6095e7d03e6673869dd8611b3e439",
-        "SS1-SRC-0c9004137f95:BODY:9c052fdda3bb80b2f01bbd76bdae8800596d1a518a4042281ccf9f46227dc85c",
-        "SS1-SRC-b802686e83d2:BODY:d2440053f789bcf88e5559706a07d733447fd52c65e94a3eb01e4ea4789c30a1",
-        "SS1-SRC-b802686e83d2:BODY:890e05d9a42ee7fecf2a868aea1a1d41eea9d63e60fd54788a9fb5070188c346",
-        "SS1-SRC-b802686e83d2:BODY:01edf4857460b435c9bd947057228f6b8224b7325d2251a93791c75391116b1e",
-        "SS1-SRC-b802686e83d2:BODY:9772dd71184f9931abd054784823b48e2d671fe8207283f62f329f48e763decc",
-        "SS1-SRC-b802686e83d2:BODY:01e53b03fac6a4ee1bf2c1fb22b687c81fa33337830021e3c81f1c5b916b35c1",
-        "SS1-SRC-b802686e83d2:BODY:be330ef013d323aed5a10818b2becac26f77a10d4c64dccbcda7bd309c70c27b",
-        "SS1-SRC-b802686e83d2:BODY:6eba4b01b95dde6d0988fc68113d0978f881ddd574c192632b891c2a85535ac2",
-        "SS1-SRC-b802686e83d2:BODY:1bd0d798258f4f7ced3f5d7cb81bf52f3dbbb2b021e3a9bb1a915c97fa7586eb",
-        "SS1-SRC-b802686e83d2:BODY:606ae363396d2637fb43e7650242ff1ac348b4f0b8c81f2f515125969e6390c1",
-        "SS1-SRC-ca00ca94afb9:BODY:467b2e3bca5157dd13ce1e584650997cd5c1cbde97e3cd0be71fbf40e0c882b4",
-        "SS1-SRC-ca00ca94afb9:BODY:6c1435556d83024c537489d1c57474903c784a7a810deae2763a97e234866b53",
         "SS1-SRC-ca00ca94afb9:BODY:705eba8a05d0b5437b4c5cb82fc64113b0275da93475b8c03d730aa7200bf922",
-        "SS1-SRC-ca00ca94afb9:BODY:1e8146b6d225cd951f6c73d4b3c60580a72da6bf3a2027a89ba73f2f9c650423",
-        "SS1-SRC-ca00ca94afb9:BODY:b4c9c1684f4fbbd0fc847bc76796b15bf320b7e1e34ba2ad9d65b2edf4a1db9b",
-        "SS1-SRC-ca00ca94afb9:BODY:bc592b28a6f14efc1350d1c82252443557fc6e116f789147b107c70a2d4315a6",
-        "SS1-SRC-ca00ca94afb9:BODY:9fcb6ed4875cb91e2e49002de00a776b513cf9e0c0bf3e931dd5c6c41a76d2f8",
-        "SS1-SRC-ca00ca94afb9:BODY:6e8fa7df3a37b7b6f4a11fe0e7908ed63fa230526f68b321bfd2f2c3bfe03ebf",
-        "SS1-SRC-ca00ca94afb9:BODY:949ec967282cf592bef63ddfab25f50289ce37e04d3f367dbd4f0ca4b0ae8e92",
-        "SS1-SRC-ca00ca94afb9:BODY:d79a5d282ea90131ab9c94d115af2caa9f3a6021a4fdfeb9d80e1eba989e590e"
+        "SS1-SRC-ca00ca94afb9:BODY:1e8146b6d225cd951f6c73d4b3c60580a72da6bf3a2027a89ba73f2f9c650423"
       ],
       "blocks_delivery": true
     },
@@ -5901,8 +6065,8 @@
     {
       "id": "OI-MATH-004",
       "kind": "CONTENT",
-      "detail": "3rd-term source embeds 13 OLE/WMF equation objects (word/embeddings/oleObject1-13.bin with image1-10.wmf) that neither the plain extractor nor OMML recovery reads. Their formulae are not yet transcribed. Embedded controls were not executed.",
-      "required_action": "Render the WMF files (not executed as macros) and transcribe each formula into the matching replacement lesson.",
+      "detail": "All 13 OLE/WMF equation objects in the third-term source were located in the Week 2 frustum worked example and visually recovered from the rendered original document (page 16). The replacement lesson now transcribes the complete calculation: V_big=(1/3)πR²H=5000 ml; h=H/3 and r=R/3; V_small=πR²H/81=15000/81=5000/27 ml; V_frustum=5000−5000/27=130000/27=4814.8 ml. No embedded controls or macros were executed.",
+      "required_action": "Retain the rendered-source evidence and run the compiler/package checks to verify the corrected lesson and its delivery binding.",
       "affected_ids": [
         "SS1-SRC-ca00ca94afb9:BODY:467b2e3bca5157dd13ce1e584650997cd5c1cbde97e3cd0be71fbf40e0c882b4",
         "SS1-SRC-ca00ca94afb9:BODY:6c1435556d83024c537489d1c57474903c784a7a810deae2763a97e234866b53",
@@ -5916,7 +6080,7 @@
         "SS1-SRC-ca00ca94afb9:BODY:949ec967282cf592bef63ddfab25f50289ce37e04d3f367dbd4f0ca4b0ae8e92",
         "SS1-SRC-ca00ca94afb9:BODY:d79a5d282ea90131ab9c94d115af2caa9f3a6021a4fdfeb9d80e1eba989e590e"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "OI-MATH-005",
@@ -5925,23 +6089,44 @@
       "required_action": "Owner/teacher to review, then record approval_reference per lesson; alias approval_reference to be replaced with the owner confirmation.",
       "affected_ids": [
         "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
+        "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES",
         "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS",
         "SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
         "SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM",
         "SUP-SS1-MATHEMATICS-T1-W06-INDICES",
-        "SUP-SS1-MATHEMATICS-T1-W10-EQUATIONS-VARIATION"
+        "SUP-SS1-MATHEMATICS-T1-W10-EQUATIONS-VARIATION",
+        "SUP-SS1-MATHEMATICS-T2-W01-QUADRATIC-EQUATIONS",
+        "SUP-SS1-MATHEMATICS-T2-W02-QUADRATIC-FORMULA-DISCRIMINANT",
+        "SUP-SS1-MATHEMATICS-T2-W03-QUADRATIC-GRAPHS",
+        "SUP-SS1-MATHEMATICS-T2-W05-VENN-DIAGRAMS",
+        "SUP-SS1-MATHEMATICS-T2-W07-TRIGONOMETRIC-RATIOS",
+        "SUP-SS1-MATHEMATICS-T2-W08-APPLICATIONS-OF-TRIGONOMETRY",
+        "SUP-SS1-MATHEMATICS-T2-W09-CIRCLES",
+        "SUP-SS1-MATHEMATICS-T2-W10-LOGIC",
+        "SUP-SS1-MATHEMATICS-T3-W01-MENSURATION-SOLIDS",
+        "SUP-SS1-MATHEMATICS-T3-W02-FRUSTUMS-TRIANGLE-ANGLES",
+        "SUP-SS1-MATHEMATICS-T3-W03-W04-GEOMETRICAL-CONSTRUCTIONS",
+        "SUP-SS1-MATHEMATICS-T3-W05-DEDUCTIVE-PROOFS",
+        "SUP-SS1-MATHEMATICS-T3-W06-STATISTICS-UNGROUPED-DATA",
+        "SUP-SS1-MATHEMATICS-T3-W08-GROUPED-DATA",
+        "SUP-SS1-MATHEMATICS-T3-W10-STATISTICAL-GRAPHS",
+        "SUP-SS1-MATHEMATICS-T3-W11-STANDARD-DEVIATION",
+        "SUP-SS1-MATHEMATICS-T1-W08-LOGARITHMS",
+        "SUP-SS1-MATHEMATICS-T1-W09-LOG-POWERS",
+        "SUP-SS1-MATHEMATICS-T2-W04-SETS",
+        "SUP-SS1-MATHEMATICS-T3-W09-GROUPED-DATA-MEASURES"
       ],
       "blocks_delivery": true
     },
     {
       "id": "OI-MATH-006",
       "kind": "CONTENT",
-      "detail": "3rd-term scheme item \"Revision/Examination\" and its reference-book lines are not bound to a classification rule (anchor ambiguity); examination content is not source teaching.",
-      "required_action": "Add a SCHEME_ONLY rule with a unique anchor in a reviewed revision, or confirm no mapping is needed.",
+      "detail": "Resolved: the third-term source scheme's item 12, 'Revision/Examination', is classified as SCHEME_ONLY by MATH-T3-EXAM-SCHEME-ONLY. The reference-book lines remain bibliographic information, not lesson content.",
+      "required_action": "Keep the SCHEME_ONLY classification and verify it in the compiler plan.",
       "affected_ids": [
         "COV-MATH-T3-EXAM"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "OI-MATH-007",
