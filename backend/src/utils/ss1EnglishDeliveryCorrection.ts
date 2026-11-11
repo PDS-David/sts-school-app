@@ -127,7 +127,9 @@ export function createEnglishDeliveryResolver(input: SubjectPackage) {
       const currentHash = hash(typeof topic.source_reference === 'string' ? topic.source_reference : '');
       // Exact content identity is strongest. If the stored text has changed,
       // the exact source heading still identifies the row that must be withheld.
-      if (currentHash !== correction.body_sha256 && norm(topic.title) !== norm(sourceTitle(correction))) continue;
+      // A matching body hash does not authorise substituting a different
+      // lesson title. Both source identity and exact title must match.
+      if (norm(topic.title) !== norm(sourceTitle(correction))) continue;
       const replacement = built.get(correction.id)!;
       if (currentHash !== correction.body_sha256) {
         return {
