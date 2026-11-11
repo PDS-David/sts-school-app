@@ -43,7 +43,7 @@ test('external mathematics references are citation-only, license-checked and att
   assert.ok(provenance.length > 0);
   for (const item of provenance) {
     assert.equal(item.reuse_status, 'PERMITTED');
-    assert.match(item.rights, /CC BY(?:-NC-SA)? 4\\.0/);
+    assert.match(item.rights, /CC BY(?:-NC-SA)? 4\.0/);
     assert.match(item.attribution, /OpenStax/);
     assert.match(item.locator, /checked:/i);
     assert.match(item.locator, /no .* (?:reproduced|copied)/i);
