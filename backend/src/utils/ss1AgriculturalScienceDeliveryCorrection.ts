@@ -16,6 +16,7 @@ const norm = (value: unknown) => String(value ?? '').replace(/\s+/g, ' ').trim()
 // authoritative; the title prevents a correction from matching another week
 // in the same term/source document before the body fingerprint is checked.
 const SOURCE_TITLES: Record<string, string> = {
+  'CORR-AG-T3-W01-TOOL-NAMES-REPLACEMENT': 'SIMPLE FARM TOOLS',
   'CORR-AG-T3-W02-POWER-WATER-REPLACEMENT': 'FARM POWER',
   'CORR-AG-T3-W09-PIG-SAFE-REPLACEMENT': 'LIVESTOCK MANAGEMENT',
   'CORR-AG-T3-W10-CATTLE-SAFE-REPLACEMENT': 'LIVESTOCK MANAGEMENT II',
