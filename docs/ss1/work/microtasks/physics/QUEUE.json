@@ -43,7 +43,8 @@
     "PHYS-WK-T3-W04 + PHYS-FACT-T3-FUSE-RATING + PHYS-FACT-T3-W04-ASSIGNMENT + PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA (2026-11-11): implemented source indexing, correction and assessment disposition. See the four task notes in docs/ss1/work/microtasks/physics/. Source PDF line locators and prior original-source checkpoint are recorded; lesson content approval remains pending and testing deferred.",
     "PHYS-TEST-PACKAGE-NEW (2026-11-11): completed and executed. Dedicated workflow run 43012753944 succeeded: 7 tests, 7 pass, 0 fail; registered SS1 package validator passed. Test file tests/ss1/physics.package.test.mts and workflow .github/workflows/ss1-physics-verification.yml. Does not certify source-importer, DB or device delivery.",
     "PHYS-WK-T3-W05 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W05-PARTICLE-NATURE-MATTER (6,664-char body; 20 keyed questions; 43 marks) and added five objective-level coverage entries. SchoolGist PDF Week Five lines 348-432 used only as close-equivalent scope comparison. Original .doc body/figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W05.md; queue item BLOCKED.",
-    "PHYS-WK-T3-W06 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W06-CRYSTAL-STRUCTURE (4,818-char body; 20 keyed questions; 46 marks) and added five objective-level coverage entries. SchoolGist PDF Week Six lines 439-503 used as close-equivalent text evidence. Reversed crystalline/amorphous table and unit-cell/lattice conflation corrected. Original .doc body not independently retrievable; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W06.md; queue item BLOCKED."
+    "PHYS-WK-T3-W06 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W06-CRYSTAL-STRUCTURE (4,818-char body; 20 keyed questions; 46 marks) and added five objective-level coverage entries. SchoolGist PDF Week Six lines 439-503 used as close-equivalent text evidence. Reversed crystalline/amorphous table and unit-cell/lattice conflation corrected. Original .doc body not independently retrievable; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W06.md; queue item BLOCKED.",
+    "PHYS-WK-T3-W07 (2026-11-11): expanded surface tension lesson to 4,300 chars and 18 keyed questions (35 marks), added four objective-level coverage entries, and bound coverage to parsed row 6 ID/hash. Evidence PHYS-WK-T3-W07.md; source body not independently retrievable, so task BLOCKED pending original .doc reconciliation."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -63,8 +64,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 39,
-    "BLOCKED": 28,
-    "PENDING": 22
+    "BLOCKED": 29,
+    "PENDING": 21
   },
   "total": 89,
   "items": [
@@ -1254,8 +1255,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 6 (source label 'WEEK 7', title \"SURFACE TENSION\", 1521 characters, body sha256 88bbd1cbf2f1650d37f077e8bf47577ac77d6d7f1e7299b5d45a8b2b3cca0e6e) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Expanded SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION to 4,300 characters and 18 fully answered questions (35 marks); updated COV-PHYS-T3-W07-OBJ-1 and added four objective-level coverage entries. Exact registered source row ID/hash are bound; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W07.md. SchoolGist PDF Week Seven lines 506-552 used as close-equivalent scope corroboration. Original .doc body was not independently retrievable, so exact source reconciliation remains open; content approval PENDING, verification DEFERRED.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -3057,7 +3058,7 @@
   ],
   "review": {
     "date": "2026-11-11",
-    "reviewed_master_sha": "dbc499c1b6da785c6df80dacc0b80c5ba8fa3067",
+    "reviewed_master_sha": "a42744f4337a3868c4e2d2d1393d8627d20a2088",
     "scope": "Physics package regression test authored; execution pending CI. Content approval, source-dependent full compiler parity, database and device acceptance remain separate.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
@@ -3076,10 +3077,9 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "Physics package has 26 lessons and 162 coverage rows. Weeks T2 W3–W10 and T3 W1–W6 now have authored supplements; exact original source reconciliation and visuals remain. PR #578 includes 7/7 passing Physics regression test."
+    "notes": "Physics package has 27 lessons and 166 coverage rows. T2 W3–10, T3 W1–7 authored/expanded; 7/7 Physics regression tests previously passed. Remaining T3 W8–10 and visual/source reconciliation continue."
   },
   "next_runnable": [
-    "PHYS-WK-T3-W07",
     "PHYS-WK-T3-W08",
     "PHYS-WK-T3-W09",
     "PHYS-WK-T3-W10",
@@ -3095,7 +3095,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T3-W07",
     "PHYS-WK-T3-W08",
     "PHYS-WK-T3-W09",
     "PHYS-WK-T3-W10",
