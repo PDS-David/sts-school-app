@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import packageData from '../../backend/src/db/ss1/subjects/mathematics.json' with { type: 'json' };
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
-import { createSs1MathematicsDeliveryResolver, retireStaleSs1MathematicsCache } from '../../backend/src/utils/ss1MathematicsDeliveryCorrection.ts';
+import { createSs1MathematicsDeliveryResolver, safeSs1MathematicsTopic, retireStaleSs1MathematicsCache } from '../../backend/src/utils/ss1MathematicsDeliveryCorrection.ts';
 
 const hash = (value: string) => createHash('sha256').update(value, 'utf8').digest('hex');
 const packageValue = packageSchema.parse(packageData);
@@ -75,6 +75,16 @@ test('Mathematics delivery is restricted to SS 1 secondary Mathematics and exact
     assert.equal(result?.correctionId, correction.id);
     assert.match(result?.text ?? '', /source fingerprint/i);
   }
+});
+
+test('Mathematics topic list/detail projection withholds unapproved source text and stale assessments', () => {
+  const correction = packageValue.delivery_corrections[0];
+  const raw = topicFor(correction, { summary: 'stale source summary', generated_assessment_id: 'stale-assessment' });
+  const safe = safeSs1MathematicsTopic(raw as any) as any;
+  assert.equal(safe.source_reference, null);
+  assert.equal(safe.generated_assessment_id, null);
+  assert.equal(safe.delivery_correction.status, 'withheld');
+  assert.match(safe.summary, /SS1 MATHEMATICS TOPIC WITHHELD/);
 });
 
 test('Mathematics replacement is shown only after source, scoped blockers, approval and verification pass', () => {
