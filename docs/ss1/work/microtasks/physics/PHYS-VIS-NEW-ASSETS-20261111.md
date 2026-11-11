@@ -22,3 +22,10 @@ Each asset has an SVG path, byte count, SHA-256, alt text, provenance, lesson as
 The legacy source is a .doc file and the prior source extractor exposes text but not its embedded drawings. The original figures were not inspected in this execution. These new SVGs improve student explanation and accessibility but do not establish that every original source visual has been recovered, replaced one-for-one or safely omitted.
 
 The source-visual inventory tasks `PHYS-VIS-T1`, `PHYS-VIS-T2` and `PHYS-VIS-T3` therefore remain blocked pending access to the original rendered source pages/figures. Do not claim source-visual completeness from these replacements alone.
+
+
+## Rendered-source audit update (2026-11-11)
+
+The three original term documents have now been rendered from their hash-verified archive members and visually inventoried. The inventory notes are PHYS-VIS-T1.md (35 pages), PHYS-VIS-T2.md (24 pages) and PHYS-VIS-T3.md (14 pages). T1's original .doc binary contains 76 PNGs and 4 JPEG streams; its rendered PDF has 52 raster image objects plus vector figures. T2's rendered PDF has 30 raster image objects plus vector figures. T3 has zero raster image objects; its figures are vector drawings. The PDF raster counts are not interchangeable with source binary image counts.
+
+Four additional original assets have been added since the original ten: three replacement Week Two measurement figures and the anomalous-water graph. These are original diagrams, not recovered source art. Follow-up visual tasks are now explicit in the queue for every remaining figure cluster. Tutor branding/contact details are not copied.
