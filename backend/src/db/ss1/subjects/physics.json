@@ -16696,8 +16696,8 @@
     {
       "id": "PHYSICS-SOURCE-VISUAL-INVENTORY",
       "kind": "VISUAL",
-      "detail": "Ten original SVG teaching aids have been authored and registered, but the original legacy .doc embedded figures for First, Second and Third Term have not been inspected/rendered in this execution. The parsed text extraction does not expose embedded drawings, so it is not yet known whether each source figure is instructional, duplicated, corrupted or essential.",
-      "required_action": "Obtain the original Physics .doc files or rendered pages, inventory every figure with exact source locators, compare against the ten authored SVGs, then record each as recovered, replaced by a verified equivalent, intentionally omitted with reason, or still blocked. Do not claim source-visual completeness until the inventory is exhaustive.",
+      "detail": "The original First, Second and Third Term .doc members have been hash-verified, rendered to 35-, 24- and 14-page PDFs, and visually inventoried. Page/week/figure clusters, raster counts and vector drawings, tutor branding, existing SVG equivalents and missing visual clusters are documented in PHYS-VIS-T1.md, PHYS-VIS-T2.md and PHYS-VIS-T3.md. Ten bounded original-diagram follow-up tasks are appended; source art and tutor contact details are not copied.",
+      "required_action": "Complete the ten bounded original-diagram follow-up tasks. The inventory itself is complete; missing visual equivalents are tracked in separate blocking open items.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d",
         "SS1-SRC-2c924c964660",
@@ -16712,7 +16712,7 @@
         "SUP-SS1-PHYSICS-T3-W08-CAPILLARITY",
         "SUP-SS1-PHYSICS-T3-W09-ELASTICITY"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "PHYSICS-T3-W05-BROWNIAN-SOURCE-DEPTH",
@@ -16781,6 +16781,36 @@
         "SUP-SS1-PHYSICS-T1-W02-CONSOLIDATED"
       ],
       "blocks_delivery": false
+    },
+    {
+      "id": "PHYSICS-T1-VISUAL-REPRODUCTION",
+      "kind": "VISUAL",
+      "detail": "The First Term source visual inventory is complete, but Weeks Three–Ten still contain motion/circular-motion, friction, vector/graph, density, pressure/floatation, work/energy and viscosity diagrams without registered original equivalents. The source art remains in the original archive and is not copied into the package.",
+      "required_action": "Complete PHYS-VIS-T1-MOTION-FRICTION, PHYS-VIS-T1-GRAPHS-VECTORS, PHYS-VIS-T1-DENSITY-PRESSURE and PHYS-VIS-T1-WORK-VISCOSITY; attach accurate original SVGs to the relevant lessons.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "PHYSICS-T2-VISUAL-REPRODUCTION",
+      "kind": "VISUAL",
+      "detail": "The Second Term source visual inventory is complete. Existing assets cover thermal expansion, anomalous water, a vacuum flask, electroscope and electric-field patterns, but thermometry, full heat-transfer, charging-method and gravitation figure clusters still need original equivalents.",
+      "required_action": "Complete PHYS-VIS-T2-THERMOMETRY, PHYS-VIS-T2-HEAT-TRANSFER, PHYS-VIS-T2-ELECTROSTATICS and PHYS-VIS-T2-GRAVITATION.",
+      "affected_ids": [
+        "SS1-SRC-2c924c964660"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "PHYSICS-T3-VISUAL-REPRODUCTION",
+      "kind": "VISUAL",
+      "detail": "The Third Term source visual inventory is complete. Existing assets cover fuse, crystal structure, surface tension, capillarity and elasticity; circuit symbols, circuit/resistor networks and atomic-structure/diffusion/osmosis figures still need original equivalents.",
+      "required_action": "Complete PHYS-VIS-T3-CIRCUITS-RESISTORS and PHYS-VIS-T3-ATOMIC-DIFFUSION.",
+      "affected_ids": [
+        "SS1-SRC-bed91bb4ef0e"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
