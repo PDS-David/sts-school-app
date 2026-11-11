@@ -5369,6 +5369,354 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "Resistors and cells connected in series and parallel",
+      "objectives": [
+        "Distinguish series and parallel resistor arrangements.",
+        "State and apply the equivalent-resistance formulae for series and parallel networks.",
+        "Explain current and potential-difference behaviour in series and parallel circuits.",
+        "Describe cells connected in series-aiding and parallel and calculate their equivalent emf.",
+        "Calculate current, terminal voltage and lost voltage when internal resistance is included.",
+        "Define conductance and relate it to resistance."
+      ],
+      "body": "RESISTORS AND CELLS IN SERIES AND PARALLEL\n\n1. What is a resistor?\nA resistor is a circuit component that opposes the flow of electric current. Its resistance is measured in ohms (Ω). Resistors can be connected in series, in parallel, or in a combination of both.\n\n2. Resistors connected in series\nResistors are in series when they are connected end-to-end so that there is only one path for current.\nFor resistors R₁, R₂, ...:\nRₜ = R₁ + R₂ + R₃ + ...\nProperties:\n- The same current passes through every resistor: Iₜ = I₁ = I₂ = ...\n- The supply potential difference is shared between them: Vₜ = V₁ + V₂ + ...\n- The equivalent resistance is the sum of the individual resistances.\n- The equivalent resistance is greater than any one of the individual resistances.\n- If the same current passes through each resistor, the total power is the sum of the power dissipated by the resistors.\n\nWorked example 1\nThree resistors of 2 Ω, 3 Ω and 5 Ω are connected in series.\nRₜ = 2 + 3 + 5 = 10 Ω.\n\n3. Resistors connected in parallel\nResistors are in parallel when their ends are connected to the same two nodes, giving separate branches for current.\nFor resistors R₁, R₂, ...:\n1/Rₜ = 1/R₁ + 1/R₂ + 1/R₃ + ...\nProperties:\n- The potential difference across each branch is the same: Vₜ = V₁ = V₂ = ...\n- The total current is the sum of branch currents: Iₜ = I₁ + I₂ + ...\n- The equivalent resistance is less than the smallest branch resistance.\n- Adding another branch provides another path and reduces the equivalent resistance.\n\nWorked example 2\nThree resistors of 2 Ω, 3 Ω and 5 Ω are connected in parallel.\n1/Rₜ = 1/2 + 1/3 + 1/5\n= 15/30 + 10/30 + 6/30 = 31/30.\nRₜ = 30/31 Ω ≈ 0.968 Ω.\n\nWorked example 3\nTwo 1 Ω resistors are connected in parallel with a 2 Ω resistor.\n1/Rₜ = 1/1 + 1/1 + 1/2 = 2.5.\nRₜ = 1/2.5 = 0.4 Ω.\nCheck: the equivalent resistance is less than the smallest branch resistance (1 Ω).\n\n4. Cells connected in series\nCells are connected in series when the positive terminal of one is joined to the negative terminal of the next so that their emfs act in the same direction (series-aiding).\nFor n identical cells each of emf E:\nEₜ = nE.\nFor cells of different emfs connected in series-aiding:\nEₜ = E₁ + E₂ + ...\nTheir internal resistances also add in series.\nIf a cell is reversed, its emf opposes the others and the net emf is the algebraic sum, not the simple total.\n\nWorked example 4\nFour identical cells, each of emf 2 V, are connected in series-aiding.\nEₜ = 4 × 2 = 8 V.\n\n5. Cells connected in parallel\nIdentical cells connected positive-to-positive and negative-to-negative have the same equivalent emf as one cell:\nEₜ = E.\nThe combination can supply current for longer or share the load between cells; for identical cells with internal resistance r, the effective internal resistance is reduced (ideal matched cells in parallel give r/n).\nDo not connect cells of unequal emf directly in parallel without suitable circuit design, because circulating currents may flow and damage the cells.\n\nWorked example 5\nFour identical 2 V cells are connected in parallel.\nTheir equivalent emf is 2 V, not 8 V.\n\n6. Solving mixed questions\nFirst identify whether the resistors/cells are in series or parallel. For a resistor network, reduce one simple series or parallel group at a time. For cells, check whether the emfs aid or oppose one another. Then use Ohm's law and the internal-resistance relation where required:\nI = ε/(R + r)\nVterminal = IR = ε − Ir.\n\n7. Conductance\nConductance measures how easily current flows and is the reciprocal of resistance:\nG = 1/R.\nIts SI unit is the siemens (S). For resistors in parallel, conductances add:\nGₜ = G₁ + G₂ + ...\nThis is equivalent to adding reciprocal resistances.\n\nCOMMON ERRORS\n- Series resistors have the same current, not the same voltage.\n- Parallel resistors have the same voltage across each branch, not necessarily the same current.\n- The reciprocal formula is used for parallel resistance, not series resistance.\n- Equivalent resistance in parallel is less than the smallest branch resistance.\n- Identical cells in parallel have the same emf as one cell; their emfs do not add.\n- Cells in series add their emfs only when connected in the aiding direction.\n\nSUMMARY\nSeries resistors: Rₜ = R₁ + R₂ + ... and current is the same.\nParallel resistors: 1/Rₜ = 1/R₁ + 1/R₂ + ... and voltage is the same.\nIdentical aiding cells in series: Eₜ = nE.\nIdentical cells in parallel: Eₜ = E.\nConductance G = 1/R.",
+      "body_sha256": "2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "What is a resistor?",
+          "answer": "A resistor is a circuit component that opposes the flow of electric current.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "States that it opposes/limits current.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "What is meant by connecting resistors in series?",
+          "answer": "They are connected end-to-end so that there is only one path for current through all the resistors.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States end-to-end connection.",
+              "marks": 1
+            },
+            {
+              "criterion": "States there is one current path.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "State two properties of resistors connected in series.",
+          "answer": "The same current flows through each resistor; the supply p.d. is shared and the individual p.d.s add to the total; equivalent resistance is the sum of the resistances. Any two.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "One correct series property.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second correct series property.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Three resistors of 2 Ω, 3 Ω and 5 Ω are connected in series. Find the equivalent resistance.",
+          "answer": "Rₜ = 2 + 3 + 5 = 10 Ω.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses Rₜ = R₁ + R₂ + R₃.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 10 Ω.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "What is meant by connecting resistors in parallel?",
+          "answer": "They are connected across the same two nodes, providing separate branches/paths for current.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that both ends connect to the same two nodes.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that separate current branches are formed.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q06",
+          "question": "Calculate the equivalent resistance of 2 Ω, 3 Ω and 5 Ω resistors connected in parallel.",
+          "answer": "1/Rₜ = 1/2 + 1/3 + 1/5 = 31/30. Therefore Rₜ = 30/31 Ω ≈ 0.968 Ω.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Writes reciprocal-resistance formula.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates the sum as 31/30.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 30/31 Ω or 0.968 Ω.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q07",
+          "question": "State two properties of resistors connected in parallel.",
+          "answer": "The p.d. across each branch is the same; total current is the sum of branch currents; equivalent resistance is less than the smallest branch resistance. Any two.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "One correct parallel property.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second correct parallel property.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q08",
+          "question": "Four identical cells each have an emf of 2 V. Find their total emf when connected in series-aiding.",
+          "answer": "Eₜ = 4 × 2 = 8 V.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses Eₜ = nE.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 8 V.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q09",
+          "question": "Four identical 2 V cells are connected in parallel. What is their equivalent emf?",
+          "answer": "2 V. Identical cells in parallel have the same emf as one cell.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Gives 2 V.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains that parallel identical cells do not add their emfs.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "Why must cells of unequal emf not be connected directly in parallel without suitable design?",
+          "answer": "A potential difference between the cells can drive circulating current from one cell into another, causing heating, damage or unsafe operation.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Mentions circulating current due to unequal emf.",
+              "marks": 1
+            },
+            {
+              "criterion": "Mentions risk of heating/damage.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "A 15 V battery with internal resistance 5 Ω is connected to an external resistor of 20 Ω. Calculate the circuit current.",
+          "answer": "I = ε/(R + r) = 15/(20 + 5) = 15/25 = 0.6 A.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses I = ε/(R + r).",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes total resistance 25 Ω.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 0.6 A.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "Using the circuit in Q11, calculate the terminal voltage and lost voltage.",
+          "answer": "Terminal voltage V = IR = 0.6 × 20 = 12 V. Lost voltage = Ir = 0.6 × 5 = 3 V. Check: 12 + 3 = 15 V.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Calculates terminal voltage 12 V.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates lost voltage 3 V.",
+              "marks": 1
+            },
+            {
+              "criterion": "Checks that terminal plus lost voltage equals emf.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q13",
+          "question": "Define conductance and state its SI unit.",
+          "answer": "Conductance is the reciprocal of resistance, G = 1/R. Its SI unit is the siemens (S).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States G = 1/R or reciprocal of resistance.",
+              "marks": 1
+            },
+            {
+              "criterion": "States siemens (S).",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q14",
+          "question": "Which statement is correct for resistors in parallel? (A) Same current flows through all (B) Same p.d. is across each branch (C) Total resistance is the sum of all resistances (D) There is only one current path.",
+          "answer": "B. The same potential difference is across each branch.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q15",
+          "question": "Calculate the equivalent resistance of 2 Ω, 2 Ω and 1 Ω resistors when connected in series.",
+          "answer": "Rₜ = 2 + 2 + 1 = 5 Ω.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses the series sum.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 5 Ω.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q16",
+          "question": "Calculate the equivalent resistance of 2 Ω, 2 Ω and 1 Ω resistors when connected in parallel.",
+          "answer": "1/Rₜ = 1/2 + 1/2 + 1 = 2. Therefore Rₜ = 0.5 Ω.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses reciprocal formula.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 1/Rₜ = 2.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 0.5 Ω.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q17",
+          "question": "A 2 kΩ resistor carries a current of 1 mA. Calculate the potential difference across it.",
+          "answer": "V = IR = 0.001 A × 2000 Ω = 2 V.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Converts 1 mA to 0.001 A or uses consistent units.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 2 V.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q18",
+          "question": "A charge of 8 C passes through a wire in 2 s. Calculate the current.",
+          "answer": "I = Q/t = 8/2 = 4 A.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses I = Q/t.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 4 A.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Sow the Seed Schools SS1 Physics Third Term scheme",
+          "locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 1 WEEK 2; body ID SS1-SRC-bed91bb4ef0e:BODY:6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7 (2,728 characters; source member SHA-256 bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688). Original body text was not available in this execution.",
+          "url": null,
+          "rights": "Scheme used to establish subject/week scope; lesson independently authored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics scheme."
+        },
+        {
+          "title": "SchoolGist — Physics SSS 1 Third Term (public close-equivalent lesson note)",
+          "locator": "Week Two: resistor and cell arrangements, series/parallel formulae, worked examples, current, terminal voltage and lost voltage.",
+          "url": "https://schoolgist.ng/storage/postFiles/SS1-Physics-3rd-Term-Lesson-Note-pdf.pdf",
+          "rights": "Used to corroborate scope and assessment categories only; no wording or questions copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "SchoolGist, Physics SSS 1 Third Term, Week Two, accessed 2026-11-11."
+        },
+        {
+          "title": "Ecolebooks Nigeria — Week 2 and 3 SS1 Third Term Physics Notes",
+          "locator": "Week Two section: resistor/cell arrangements, examples, evaluation and weekend assignment.",
+          "url": "https://ecolebooks.com/nigeria/posts/week-2-and-3-ss1-third-term-physics-notes/",
+          "rights": "Used to corroborate scope and common exercise categories only; no wording or questions copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Ecolebooks Nigeria, Week 2 and 3 SS1 Third Term Physics Notes, accessed 2026-11-11."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -8227,6 +8575,106 @@
         {
           "locator": "EduPodia, Third Term SS1 Physics PDF, Week One, lines 45–93.",
           "explanation": "Close-equivalent comparison includes circuit components, quantities and Ohm's law. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W02-OBJ-1",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Resistors connected in series: same current and additive resistance/potential differences.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 1 WEEK 2; body SS1-SRC-bed91bb4ef0e:BODY:6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7 (2,728 characters; SHA-256 6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7). Scheme topic: resistors and cells connected in series and parallel.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL; body SHA-256 2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141; practice Q01–Q18.",
+          "explanation": "Authored supplement covers series/parallel resistors, cells, calculations, conductance and internal resistance with a keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist and Ecolebooks SS1 Third Term Week Two close-equivalent notes.",
+          "explanation": "Independent comparison supports the mapped topic scope and common calculation types; neither is asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W02-OBJ-2",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Resistors connected in parallel: same branch potential difference and additive branch currents.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 1 WEEK 2; body SS1-SRC-bed91bb4ef0e:BODY:6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7 (2,728 characters; SHA-256 6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7). Scheme topic: resistors and cells connected in series and parallel.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL; body SHA-256 2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141; practice Q01–Q18.",
+          "explanation": "Authored supplement covers series/parallel resistors, cells, calculations, conductance and internal resistance with a keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist and Ecolebooks SS1 Third Term Week Two close-equivalent notes.",
+          "explanation": "Independent comparison supports the mapped topic scope and common calculation types; neither is asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W02-OBJ-3",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Equivalent resistance calculations for series and parallel resistor networks.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 1 WEEK 2; body SS1-SRC-bed91bb4ef0e:BODY:6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7 (2,728 characters; SHA-256 6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7). Scheme topic: resistors and cells connected in series and parallel.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL; body SHA-256 2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141; practice Q01–Q18.",
+          "explanation": "Authored supplement covers series/parallel resistors, cells, calculations, conductance and internal resistance with a keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist and Ecolebooks SS1 Third Term Week Two close-equivalent notes.",
+          "explanation": "Independent comparison supports the mapped topic scope and common calculation types; neither is asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W02-OBJ-4",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Cells connected in series-aiding and parallel and their equivalent emf.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 1 WEEK 2; body SS1-SRC-bed91bb4ef0e:BODY:6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7 (2,728 characters; SHA-256 6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7). Scheme topic: resistors and cells connected in series and parallel.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL; body SHA-256 2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141; practice Q01–Q18.",
+          "explanation": "Authored supplement covers series/parallel resistors, cells, calculations, conductance and internal resistance with a keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist and Ecolebooks SS1 Third Term Week Two close-equivalent notes.",
+          "explanation": "Independent comparison supports the mapped topic scope and common calculation types; neither is asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W02-OBJ-5",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Circuit calculations involving internal resistance, terminal voltage, lost voltage and conductance.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 1 WEEK 2; body SS1-SRC-bed91bb4ef0e:BODY:6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7 (2,728 characters; SHA-256 6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7). Scheme topic: resistors and cells connected in series and parallel.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL; body SHA-256 2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141; practice Q01–Q18.",
+          "explanation": "Authored supplement covers series/parallel resistors, cells, calculations, conductance and internal resistance with a keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist and Ecolebooks SS1 Third Term Week Two close-equivalent notes.",
+          "explanation": "Independent comparison supports the mapped topic scope and common calculation types; neither is asserted to be the registered original .doc."
         }
       ]
     }
