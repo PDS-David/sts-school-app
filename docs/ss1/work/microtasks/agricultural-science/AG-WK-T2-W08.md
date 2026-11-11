@@ -37,3 +37,8 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. Source indexing only; no unverified co
 - Parsed package/queue JSON; checked unique IDs and the PARTIAL coverage's open-item link.
 - Importer, tests, TypeScript, DB and device checks **not run**; testing remains deferred by owner.
 - No source bytes, lesson bodies, rules, corrections, assets, shared code or other subjects modified.
+
+
+## Implementation follow-up (2026-11-11)
+
+The source row `SS1-SRC-956594d97094:BODY:1f941dd52a764e5665229f0caad9aa3a3bca2ecf1ffad1ac4f3810601bfa573b` is now bound by `CORR-AG-T2-W08-QUESTION-WORDING-REPLACEMENT` to `SUP-SS1-AGRICULTURAL-SCIENCE-T2-W08-ROCK-WEATHERING`. The replacement teaches physical, chemical and biological weathering and distinguishes weathering from erosion and rock formation. The source assessment wording is corrected. Coverage is IMPLEMENTED_EQUIVALENT; content approval and learner verification remain pending.

@@ -39,3 +39,8 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. Source indexing only; scientific corre
 - Parsed package/queue JSON; checked unique IDs and open-item links for PARTIAL/UNRESOLVED coverage.
 - Importer, tests, TypeScript, DB and device checks **not run**; testing remains deferred by owner.
 - No source bytes, lesson bodies, rules, corrections, assets, shared code or other subjects modified.
+
+
+## Implementation follow-up (2026-11-11)
+
+The original Week Seven row `SS1-SRC-956594d97094:BODY:d6a132c9ce637c6fee7ca4e1e88aa707220a68298bde2794d5657e49533c9e22` is now bound by `CORR-AG-T2-W07-PEAT-TYPO-REPLACEMENT` to `SUP-SS1-AGRICULTURAL-SCIENCE-T2-W07-ROCK-CHARACTERISTICS`. The replacement covers the complete rock-formation/types topic, clarifies the source's “peak” typo as peat and explains peat's organic-rich, generally unlithified status and coalification role. It also teaches the mineral-versus-rock distinction (mica/dolostone) in keyed practice. Coverage is IMPLEMENTED_EQUIVALENT; factual-review and approval gates remain as recorded, and learner delivery remains withheld pending approval/verification.

@@ -9,6 +9,7 @@ import { attributionsForTopic, publicAttribution } from '../db/jss3Attributions.
 import { resolveSequenceGroup } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
 import { resolveSs1Delivery, safeSs1Topic, retireStaleSs1Cache, ss1AssessmentDeliverable, ss1WithdrawnAssessmentIds } from '../utils/ss1CateringDeliveryCorrection.js';
+import { resolveAgriculturalScienceDelivery, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
 // Read per request (value is constant in a running server) so tests can exercise PIN on and off in one process.
@@ -160,8 +161,8 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
   sql += " ORDER BY COALESCE((to_jsonb(t)->>'sequence_rank')::numeric, t.order_index) NULLS LAST, t.order_index NULLS LAST, t.created_at DESC";
 
   const { rows: rawRows } = await query(sql, params);
-  // JSS3 delivery correction: audited-unsafe original text/cached summary is never returned (see utils/jss3DeliveryCorrection.ts).
-  const rows = rawRows.map((r: any) => safeSs1Topic(safeJss3Topic(r)));
+  // JSS3 and SS1 subject-specific delivery corrections: audited source text and stale summaries are never returned.
+  const rows = rawRows.map((r: any) => safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(r))));
 
   // For a student, also report whether they've completed each topic, and
   // whether it's currently locked. Locking (see schema.sql's "Term-PIN
@@ -373,12 +374,12 @@ router.put('/topics/:id', requirePerm('topics.write'), async (req, res) => {
      WHERE id=$6 RETURNING *`,
     [title, description, subject_id, class_name, term_id, req.params.id],
   );
-  // Same delivery guard as the list/detail paths: an edited JSS3 row must not hand back stale, withheld or
+  // Same delivery guard as the list/detail paths: an edited JSS3 or SS1 corrected row must not hand back stale, withheld or
   // audited-original text (or a stale assessment link). The stored row itself is not touched here.
   const { rows: full } = await query(
     'SELECT t.*, sub.name AS subject_name FROM topics t LEFT JOIN subjects sub ON sub.id=t.subject_id WHERE t.id=$1', [req.params.id],
   );
-  const { subject_name: _subjectName, ...safe } = safeSs1Topic(safeJss3Topic(full[0] ?? rows[0]));
+  const { subject_name: _subjectName, ...safe } = safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(full[0] ?? rows[0])));
   return res.json({ topic: safe });
 });
 
@@ -452,7 +453,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
     }
   }
 
-  // JSS3 delivery correction (after access/lock checks, so correction never widens access). A topic whose original
+  // Subject-specific delivery correction (after access/lock checks, so correction never widens access). A topic whose original
   // text is audited as unsafe is taught from the corrected lessons only; if its stored source changed unreviewed it
   // is withheld. Stale cached summary/assessment built from the original text is retired atomically first.
   const delivery = resolveDelivery(topic);
@@ -478,7 +479,20 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
         note: 'This Catering Craft topic is temporarily unavailable while its source is checked.' });
     }
   }
-  const groundingSource: string | null = ss1Delivery?.kind === 'corrected' ? ss1Delivery.text
+  const agriculturalScienceDelivery = resolveAgriculturalScienceDelivery(topic);
+  if (agriculturalScienceDelivery) {
+    await retireStaleAgriculturalScienceCache(query, topic.id, agriculturalScienceDelivery);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    topic.summary = agriculturalScienceDelivery.text;
+    if (agriculturalScienceDelivery.kind === 'withheld') {
+      return res.json({ ok: true, summary: agriculturalScienceDelivery.text, summary_is_fallback: false, practice_questions: [], assessment_status: null,
+        delivery_correction: { id: agriculturalScienceDelivery.correctionId, status: 'withheld', provenance: 'withheld pending subject approval/verification' },
+        note: 'This Agricultural Science topic is temporarily unavailable pending subject approval and verification.' });
+    }
+  }
+  const groundingSource: string | null = agriculturalScienceDelivery?.kind === 'corrected' ? agriculturalScienceDelivery.text
+    : ss1Delivery?.kind === 'corrected' ? ss1Delivery.text
     : delivery?.kind === 'corrected' ? delivery.text : topic.source_reference;
 
   await query(
@@ -874,7 +888,8 @@ router.get('/assessments', requirePerm('assessments.read'), async (req, res) => 
     const openIds = rows.map((r: any) => r.id);
     const jss3Gone = await withdrawnAssessmentIds(query, openIds);
     const ss1Gone = await ss1WithdrawnAssessmentIds(query, openIds);
-    const gone = new Set([...jss3Gone, ...ss1Gone]);
+    const agriculturalScienceGone = await agriculturalScienceWithdrawnAssessmentIds(query, openIds);
+    const gone = new Set([...jss3Gone, ...ss1Gone, ...agriculturalScienceGone]);
     if (gone.size) return res.json({ assessments: rows.filter((r: any) => !gone.has(r.id)) });
   }
   return res.json({ assessments: rows });
@@ -1015,6 +1030,8 @@ router.get('/assessments/:id/questions', async (req, res) => {
     if (!deliverable.ok) return res.status(403).json({ error: deliverable.reason });
     const ss1Deliverable = await ss1AssessmentDeliverable(query, assessment.id);
     if (!ss1Deliverable.ok) return res.status(403).json({ error: ss1Deliverable.reason });
+    const agriculturalScienceDeliverable = await agriculturalScienceAssessmentDeliverable(query, assessment.id);
+    if (!agriculturalScienceDeliverable.ok) return res.status(403).json({ error: agriculturalScienceDeliverable.reason });
   } else if (user.role !== 'admin') {
     // Teachers never get here: creating, viewing, or opening the questions of
     // an assessment is Brainee/admin territory on this platform, not a
@@ -1097,6 +1114,8 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
   if (!deliverable.ok) return res.status(403).json({ error: deliverable.reason });
   const ss1Deliverable = await ss1AssessmentDeliverable(query, req.params.id);
   if (!ss1Deliverable.ok) return res.status(403).json({ error: ss1Deliverable.reason });
+  const agriculturalScienceDeliverable = await agriculturalScienceAssessmentDeliverable(query, req.params.id);
+  if (!agriculturalScienceDeliverable.ok) return res.status(403).json({ error: agriculturalScienceDeliverable.reason });
 
   // Auto-mark MCQs; hand essay answers to Brainee (this is the STS Virtual
   // School's own AI grading path — see submission_answers in schema.sql.
@@ -1350,7 +1369,7 @@ router.get('/submissions/:id/answers', async (req, res) => {
     return res.status(403).json({ error: 'Not authorized' });
   }
 
-  // A previously submitted SS1 Catering Craft assessment may be withdrawn after a source correction.
+  // A previously submitted SS1 Catering Craft or Agricultural Science assessment may be withdrawn after a source correction.
   // Preserve the submission rows, but do not expose question/answer content to students or parents
   // once its linked assessment is no longer deliverable.
   if (user.role === 'student' || user.role === 'parent') {
@@ -1358,6 +1377,8 @@ router.get('/submissions/:id/answers', async (req, res) => {
     if (assessmentId) {
       const ss1Deliverable = await ss1AssessmentDeliverable(query, assessmentId);
       if (!ss1Deliverable.ok) return res.status(410).json({ error: ss1Deliverable.reason });
+      const agriculturalScienceDeliverable = await agriculturalScienceAssessmentDeliverable(query, assessmentId);
+      if (!agriculturalScienceDeliverable.ok) return res.status(410).json({ error: agriculturalScienceDeliverable.reason });
     }
   }
 

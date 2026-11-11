@@ -39,3 +39,8 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. Source indexing only; no unverified ec
 - Parsed package/queue JSON; checked unique IDs and open-item links for PARTIAL/UNRESOLVED coverage.
 - Importer, tests, TypeScript, DB and device checks **not run**; testing remains deferred by owner.
 - No source bytes, lesson bodies, rules, corrections, assets, shared code or other subjects modified.
+
+
+## Implementation follow-up (2026-11-11)
+
+The original row `SS1-SRC-956594d97094:BODY:5e12e6d75046c73227b73e5a70eb56fd6a83ccbaf4d206b9dc3d4cc609e008f6` is now bound by `CORR-AG-T2-W06-AGRICULTURAL-ECOLOGY-REPLACEMENT` to the complete lesson `SUP-SS1-AGRICULTURAL-SCIENCE-T2-W06-AGRICULTURAL-ECOLOGY`. It teaches ecology, autecology/synecology, ecosystems, biotic/abiotic components, autotrophs/heterotrophs, food webs, cropping systems, fish ponds, forests and savannas. It clarifies that rabbit is a hindgut fermenter, not a polygastric ruminant. The focused ecosystem-interactions supplement remains. Coverage is IMPLEMENTED_EQUIVALENT; approval and verification remain pending.

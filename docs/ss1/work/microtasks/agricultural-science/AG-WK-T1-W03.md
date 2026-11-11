@@ -57,3 +57,8 @@ Pests and diseases are described at blocks 245–248; pesticides/agro-chemicals 
 - Parsed JSON and checked unique IDs, references, and that each PARTIAL/UNRESOLVED coverage entry has an open item.
 - Importer, tests, TypeScript, DB and device checks **not run**; testing remains deferred by owner.
 - No original source text, parsing rules, corrections, assets, lesson bodies, shared code or other subjects were modified.
+
+
+## Implementation follow-up (2026-11-11)
+
+The Week Three source row is now bound to `SUP-SS1-AGRICULTURAL-SCIENCE-T1-W03-AGRICULTURAL-DEVELOPMENT` by `CORR-AG-T1-W03-STORAGE-REPLACEMENT` using the actual parser/compiler row ID `SS1-SRC-7aa642b0085b:BODY:de6febf42e9195e6171f87f05840f7ac0d5a7337820ec98392670ebc3b1485aa`. The new lesson covers the source's agricultural-development constraints and solutions and replaces the malformed storage statement with the evidence-backed processing-machinery wording. It also corrects the overstatement that no storage facilities exist: facilities exist, but access, capacity, condition and cold-chain services remain inadequate or uneven. The existing extension-role and input-terminology supplements remain linked. Coverage is now IMPLEMENTED_EQUIVALENT. The separate credit-options item remains under review; the replacement lesson and package remain PENDING approval / DEFERRED verification.
