@@ -125,6 +125,14 @@ Run the repository's documented validation commands and relevant subject-specifi
 
 If a test cannot run, report the exact reason and classify the result as not tested—not passed. Distinguish clearly between **implemented**, **source verified**, **tested**, **teacher-approved**, and **accepted**. These statuses are not interchangeable.
 
+## 8a. Before every push (mandatory)
+
+1. `git fetch origin && git merge origin/master` — resolve conflicts in JSON files by merging per item (lessons, coverage, queue items), never by taking one whole side without comparing.
+2. After editing any lesson `body` or asset file, run `npm run ss1:refresh-hashes`. Never compute `body_sha256`, `sha256` or `bytes` by hand.
+3. Run `npm run validate:ss1` (all subject packages) plus the tests for the subject you changed.
+4. Coverage status rules: `IMPLEMENTED_EQUIVALENT` needs a supplement lesson in the package; a coverage entry that cites only an original source body is `SUPPORTED`.
+5. Do not push or open a PR until steps 1–3 pass. The `SS1 package integrity gate` runs the same checks on every PR and on master; a red gate must be fixed, not merged over.
+
 ## 9. Required final report
 
 Provide a concise but complete evidence-based report containing:

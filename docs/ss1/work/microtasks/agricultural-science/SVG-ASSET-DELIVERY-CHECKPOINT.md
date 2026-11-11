@@ -1,9 +1,9 @@
 # Agricultural Science SVG asset delivery — implementation checkpoint
 
-Base: `172861b4c93dc15f35a785ada9a7a1dd427da1c6` (master at branch creation). Branch: `ss1/ag-science-asset-gate-svg-20261111`.
+Base: `45551d903647c80b6e2a2b6798fa741d650f1bc0` (master at branch creation). Branch: `ss1/ag-science-asset-gate-svg-20261111`.
 
 ## Implemented in this batch
-- SVG ingestion validates strict UTF-8, document size, root element, responsive viewBox, and rejects active content, event handlers, inline styles, DTDs and external references. Existing PNG/JPEG/GIF signature checks remain.
+- SVG ingestion validates strict UTF-8, document size, root element and positive responsive viewBox. It rejects active content, event handlers, inline style attributes, DTDs and external references. Simple class-only `<style>` blocks are accepted only with an allowlist of presentation properties (`font`, `fill`, `stroke`, `marker-end`, `rx`, `ry`, `text-anchor`) and local marker references; arbitrary selectors, CSS rules and external URLs are rejected. Existing PNG/JPEG/GIF signature checks remain.
 - Authenticated asset delivery retains existing topic visibility checks and sandbox CSP. Agricultural Science assets are rechecked against the exact corrected lesson, package/lesson/asset approval and verification references, provenance rights, and package SHA-256/MIME at both metadata and byte endpoints. Direct asset-ID requests cannot bypass withholding.
 - Mobile lesson detail fetches SVG bytes with the same Bearer token and renders them with `react-native-svg` native primitives. Existing raster image handling, labels, captions, attributions, retry and wide-image behaviour are retained.
 - Added `scripts/ss1/build_asset_plan.mjs`: joins real compiler `identified_rows` to package lesson/asset IDs; checks file bytes, hashes, MIME and safe SVG content; requires package implementation, lesson+asset approval and verification references, and permitted provenance; emits the existing attachment CSV only when all gates pass. It writes a private JSON report when blocked.
