@@ -1,5 +1,6 @@
-// Subject-specific CI guard. This checks package structure and the real source parser/compiler identities.
-// It does not certify teacher approval, learner-route delivery, database import or release readiness.
+// Subject-specific CI guard. This checks package structure, real source parser/compiler identities,
+// and the correction adapter's fail-closed approval/fingerprint logic. It does not certify authenticated route behavior,
+// teacher approval, database import or release readiness.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
