@@ -45,7 +45,8 @@
     "PHYS-WK-T3-W05 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W05-PARTICLE-NATURE-MATTER (6,664-char body; 20 keyed questions; 43 marks) and added five objective-level coverage entries. SchoolGist PDF Week Five lines 348-432 used only as close-equivalent scope comparison. Original .doc body/figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W05.md; queue item BLOCKED.",
     "PHYS-WK-T3-W06 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W06-CRYSTAL-STRUCTURE (4,818-char body; 20 keyed questions; 46 marks) and added five objective-level coverage entries. SchoolGist PDF Week Six lines 439-503 used as close-equivalent text evidence. Reversed crystalline/amorphous table and unit-cell/lattice conflation corrected. Original .doc body not independently retrievable; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W06.md; queue item BLOCKED.",
     "PHYS-WK-T3-W07 (2026-11-11): expanded surface tension lesson to 4,300 chars and 18 keyed questions (35 marks), added four objective-level coverage entries, and bound coverage to parsed row 6 ID/hash. Evidence PHYS-WK-T3-W07.md; source body not independently retrievable, so task BLOCKED pending original .doc reconciliation.",
-    "PHYS-WK-T3-W08 (2026-11-11): expanded SUP-SS1-PHYSICS-T3-W08-CAPILLARITY (4,391-char body; 16 keyed questions; 34 marks) and added three objective-level coverage entries. SchoolGist PDF Week Eight lines 554-580 used as close-equivalent scope comparison. Original .doc body not independently retrievable; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W08.md; queue item BLOCKED."
+    "PHYS-WK-T3-W08 (2026-11-11): expanded SUP-SS1-PHYSICS-T3-W08-CAPILLARITY (4,391-char body; 16 keyed questions; 34 marks) and added three objective-level coverage entries. SchoolGist PDF Week Eight lines 554-580 used as close-equivalent scope comparison. Original .doc body not independently retrievable; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W08.md; queue item BLOCKED.",
+    "PHYS-WK-T3-W09/W10 (2026-11-11): authored elasticity (20 questions) and elastic energy (18 questions/43 marks), each with five objective-level coverage entries. Source body identities/hashes are bound; SchoolGist PDF lines 582-713 used only as close-equivalent corroboration. Exact original .doc rows remain to reconcile. Evidence notes PHYS-WK-T3-W09.md and PHYS-WK-T3-W10.md."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -65,8 +66,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 39,
-    "BLOCKED": 30,
-    "PENDING": 20
+    "BLOCKED": 32,
+    "PENDING": 18
   },
   "total": 89,
   "items": [
@@ -1330,8 +1331,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 8 (source label 'WEEK 9', title \"ELASTICITY\", 2852 characters, body sha256 00bec4c93f9e7c392d9821e900a76bf47c14c8e0e124eab51cc24783ecded0b6) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W09-ELASTICITY (20 answered questions) and five objective-level coverage entries in physics.json. Evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W09.md. Parsed row 8 identity/hash bound; SchoolGist PDF Week Nine lines 582-659 used as close-equivalent scope evidence. Original .doc body not independently retrieved; exact source reconciliation remains open. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1367,8 +1368,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 9 (source label 'WEEK 10', title \"ENERGY STORED IN AN ELASTIC MATERIAL\", 2827 characters, body sha256 90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY (18 answered questions; 43 marks) and five objective-level coverage entries in physics.json. Evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W10.md. Parsed row 9 identity/hash bound; SchoolGist PDF Week Ten lines 660-713 used as close-equivalent scope evidence. Original .doc body not independently retrieved; exact source reconciliation remains open. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -3078,11 +3079,9 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "Physics package has 27 lessons and 169 coverage rows. Second Term Weeks 3–10 and Third Term Weeks 1–8 have authored/expanded lessons; exact original source reconciliation and visuals remain. Dedicated Physics tests previously passed 7/7."
+    "notes": "Physics package now has 29 lessons and 184 coverage rows. All ten Second Term weeks have student supplements; Third Term Weeks 1–10 now have authored/expanded lessons. Original-source reconciliation, visual assets, owner approvals and final acceptance remain."
   },
   "next_runnable": [
-    "PHYS-WK-T3-W09",
-    "PHYS-WK-T3-W10",
     "PHYS-RULE-T1-REVISION-SCHEME",
     "PHYS-RULE-T3-REVISION-EXAM",
     "PHYS-VIS-T1",
@@ -3095,8 +3094,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T3-W09",
-    "PHYS-WK-T3-W10",
     "PHYS-RULE-T1-REVISION-SCHEME",
     "PHYS-RULE-T3-REVISION-EXAM",
     "PHYS-VIS-T1",
