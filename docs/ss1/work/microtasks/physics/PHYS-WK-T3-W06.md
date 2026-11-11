@@ -8,9 +8,9 @@ Status: **BLOCKED — exact original source-row reconciliation incomplete**. The
 - Archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc`
 - Registered member SHA-256: `bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688`
 - Parsed row: index 5, `WEEK 6`
-- Parsed body ID: `SS1-SRC-bed91bb4ef0e:BODY:c5c1fa1d21a31a2a62baf13c2c8d61d60c99cccb5b5d1e0f13c36a23e7fca1ad`
+- Parsed body ID: `SS1-SRC-bed91bb4ef0e:BODY:c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5`
 - Parsed body length: 4,124 characters
-- Parsed body SHA-256: `c5c1fa1d21a31a2a62baf13c2c8d61d60c99cccb5b5d1e0f13c36a23e7fca1ad`
+- Parsed body SHA-256: `c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5`
 
 ## Student supplement authored
 
