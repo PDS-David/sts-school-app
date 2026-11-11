@@ -44,3 +44,10 @@ The 73 Word drawing occurrences and 73 fallback pict representations are alterna
 ## Verification boundary
 
 No new lesson authored in this indexing task. Objective mapping and existing replacement association are recorded. Tests, app display and learner oral performance are not verified. Approval remains PENDING; verification remains DEFERRED.
+
+
+## Current-state supersession note — 11 November 2026
+
+The original paragraph 278 punctuation drawing is now accounted for by `VISUAL_DISPOSITION.md`: it labels punctuation signs, and the replacement presents those signs as accessible text with a sentence example. No separate image asset is required. The earlier statement that no readable visual disposition existed is superseded.
+
+The oral-accent content now has the separate authored supplement `SUP-SS1-FRENCH-ORAL-ACCENTS-T1`; the package records the oral-practice coverage as `IMPLEMENTED_EQUIVALENT`. This is authored instructional coverage, not evidence that a learner has completed an oral performance observation. The body-level `FRENCH-BODY-005` remains `PARTIAL`, and lesson approval/verification remain pending/deferred.
