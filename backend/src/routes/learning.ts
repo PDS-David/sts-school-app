@@ -10,7 +10,7 @@ import { resolveSequenceGroup } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
 import { resolveSs1Delivery, safeSs1Topic, retireStaleSs1Cache, ss1AssessmentDeliverable, ss1WithdrawnAssessmentIds } from '../utils/ss1CateringDeliveryCorrection.js';
 import { resolveAgriculturalScienceDelivery, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
-import { resolveEnglishDelivery, safeEnglishTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
+import { resolveEnglishDelivery, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
 // Read per request (value is constant in a running server) so tests can exercise PIN on and off in one process.
@@ -163,7 +163,7 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
 
   const { rows: rawRows } = await query(sql, params);
   // JSS3 and SS1 subject-specific delivery corrections: audited source text and stale summaries are never returned.
-  const rows = rawRows.map((r: any) => safeEnglishTopic(safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(r)))));
+  const rows = rawRows.map((r: any) => safeEnglishTopic(safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(r))), user.role));
 
   // For a student, also report whether they've completed each topic, and
   // whether it's currently locked. Locking (see schema.sql's "Term-PIN
@@ -512,10 +512,17 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
         note: 'This English Language topic is temporarily unavailable pending subject approval and verification.' });
     }
   }
+  // A compiled English supplement stores teacher marking keys in source_reference.
+  // Sanitize the student copy before using it as AI grounding or fallback text.
+  const learnerTopic = safeEnglishSupplementTopic(topic, user.role);
+  topic.source_reference = learnerTopic.source_reference;
+  topic.summary = learnerTopic.summary;
+
   const groundingSource: string | null = englishDelivery?.kind === 'corrected' ? englishDelivery.text
     : agriculturalScienceDelivery?.kind === 'corrected' ? agriculturalScienceDelivery.text
     : ss1Delivery?.kind === 'corrected' ? ss1Delivery.text
-    : delivery?.kind === 'corrected' ? delivery.text : topic.source_reference;
+    : delivery?.kind === 'corrected' ? delivery.text
+    : typeof topic.source_reference === 'string' ? topic.source_reference : null;
 
   await query(
     `INSERT INTO topic_completions(topic_id, student_id) VALUES($1,$2)
