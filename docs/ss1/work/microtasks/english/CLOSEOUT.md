@@ -24,16 +24,29 @@ The blocking `ENGLISH-CONTENT-APPROVAL` package item has been removed. Queue tas
 
 ## Verification and release
 
-Content approval is complete, but it is not the same as technical verification or production release. The following must remain outstanding until actual evidence is produced:
+Content approval is complete, but it is not the same as technical verification or production release.
 
-- English package and delivery regression tests after the approval-state update.
-- Full SS1 foundation tests and Python unit tests.
-- Backend TypeScript no-emit check.
-- Source archive/member hash verification, source preparation and plan-only compiler/importer run.
+### Automated checks observed (2026-11-11)
+
+On validation branch `ss1/ag-science-svg-runtime-20261111`, workflow run [42985921808](https://github.com/PDS-David/sts-school-app/actions/runs/42985921808) recorded:
+
+- SS1 foundation tests: **PASS, 8/8**.
+- SS1 Python unit tests: **PASS, 2/2**.
+- Backend TypeScript no-emit check: **PASS on that branch**, which contains the SVG regular-expression syntax correction; that shared-code correction is not yet confirmed on `master`.
+- English package tests: **PASS, 13/13**, including all 149 owner approval references, exact lesson body hashes, marking totals, source registration, correction identity and coverage bindings.
+- English learner-delivery regression tests: **7/8 PASS; 1 FAIL**. The failing assertion still expects the obsolete “not yet approved” reason. The current delivery adapter correctly returns “not completed its authorised verification” because the owner approval is now recorded and verification remains deferred. This is a stale test expectation, not evidence that the guard is bypassed.
+
+The earlier English verification run 145 passed the source archive staging, English-only source isolation and plan-only SS1 compiler checks. Those checks predate the approval update and should be rerun on the final merged commit.
+
+### Still required before student release
+
+- Rerun the English delivery regression suite after correcting the stale assertion.
+- Rerun package validation, source archive/member hashes, source preparation and plan-only compiler on the final merged commit.
+- Full SS1 all-subject foundation/integrity checks on the final merged commit.
 - Database preservation capture and transaction rehearsal against the designated snapshot.
 - Production runtime, correction/cache/asset sanitisation and MIME checks.
 - Student-device acceptance and deployment/release confirmation.
-- Oral listening/speaking observation, which requires a real authorised model and teacher observation; written content approval cannot substitute for it.
+- Oral listening/speaking observation, which requires an authorised audio model and real teacher observation; written content approval cannot substitute for it.
 
 The existing delivery guard correctly withholds corrected English content while lesson verification remains `DEFERRED`. Do not set verification to `VERIFIED`, claim student delivery, or claim deployment until the corresponding checks have passed.
 
