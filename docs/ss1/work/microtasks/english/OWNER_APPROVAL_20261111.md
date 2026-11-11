@@ -6,7 +6,7 @@ Package: `backend/src/db/ss1/subjects/english.json`
 
 ## Approval basis
 
-The repository owner explicitly instructed in the project conversation on 2026-11-11: **“All lessons approved.”** This document records that owner attestation against every lesson currently in the 149-lesson English package. It does not claim that the assistant independently re-reviewed or personally approved the lessons.
+The repository owner explicitly instructed in the project conversation on 2026-11-11: **“All lessons approved.”** This document records that owner attestation against every lesson currently in the 152-lesson English package. It does not claim that the assistant independently re-reviewed or personally approved the lessons.
 
 Each lesson receives a unique reference in `state.approval_reference`. The reference format is `OWNER-ATTESTATION-2026-11-11:<lesson-id>`. These references resolve to this evidence register and the owner's explicit approval instruction. No lesson body, source wording, marking scheme, coverage row, rights record or verification state is changed by this attestation.
 
@@ -164,11 +164,15 @@ Each lesson receives a unique reference in `state.approval_reference`. The refer
 | `SUP-SS1-ENGLISH-AUDIO-PRONUNCIATION-MODEL-T1` | 1st Term | Synthetic British English pronunciation model: listening contrasts and stress | APPROVED | Repository owner (attestation), 2026-11-11 | `OWNER-ATTESTATION-2026-11-11:SUP-SS1-ENGLISH-AUDIO-PRONUNCIATION-MODEL-T1` |
 | `SUP-SS1-ENGLISH-FORMAL-INFORMAL-CONVERSATION-T1-W09` | 1st Term | Formal and informal conversation: register, dialogue and emphatic correction | APPROVED | Repository owner (attestation), 2026-11-11 | `OWNER-ATTESTATION-2026-11-11:SUP-SS1-ENGLISH-FORMAL-INFORMAL-CONVERSATION-T1-W09` |
 
+| `SUP-SS1-ENGLISH-SEXUALITY-VOCAB-T2-W06` | 2nd Term | Sexuality vocabulary: accurate, respectful and age-appropriate meanings | APPROVED | Repository owner (blanket attestation), 2026-11-11 | `OWNER-ATTESTATION-2026-11-11:SUP-SS1-ENGLISH-SEXUALITY-VOCAB-T2-W06` |
+| `SUP-SS1-ENGLISH-CONTEXTUAL-SEX-LEAVE-T3-W01` | 3rd Term | Contextual meanings of sex and leave | APPROVED | Repository owner (blanket attestation), 2026-11-11 | `OWNER-ATTESTATION-2026-11-11:SUP-SS1-ENGLISH-CONTEXTUAL-SEX-LEAVE-T3-W01` |
+| `SUP-SS1-ENGLISH-FAMILY-ASSESSMENT-T3-W03` | 3rd Term | Family and household vocabulary: five-item gap-fill assessment | APPROVED | Repository owner (blanket attestation), 2026-11-11 | `OWNER-ATTESTATION-2026-11-11:SUP-SS1-ENGLISH-FAMILY-ASSESSMENT-T3-W03` |
+
 ## Scope and limitations
 
-- Approved lessons: 149 of 149.
+- Approved lessons: 152 of 152.
 - Package status: `IMPLEMENTED`.
 - The blocking `ENGLISH-CONTENT-APPROVAL` item is closed because the owner supplied the approval instruction.
-- Lesson verification remains `DEFERRED` for all 149 lessons. This approval does not assert that tests, importer/database rehearsal, runtime/cache checks, device checks or deployment have passed.
-- Non-blocking curriculum/source-scope records, including the eight `PARTIAL` coverage rows, remain visible and unchanged. Approval is not a claim that missing third-party textbook extracts, audio files or oral observations were supplied.
+- Lesson verification remains `DEFERRED` for all 152 lessons. This approval does not assert that tests, importer/database rehearsal, runtime/cache checks, device checks or deployment have passed.
+- The eight previously partial coverage rows are now implemented-equivalent, with no `PARTIAL` or `UNRESOLVED` coverage remaining. Other non-blocking source-scope follow-ups remain visible. Approval is not a claim that missing third-party textbook extracts, audio files or oral observations were supplied.
 - The delivery guard continues to withhold corrected English content until the separate verification gate is satisfied.
