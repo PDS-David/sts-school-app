@@ -155,20 +155,21 @@ jobs:
           const fs = require('node:fs');
           const path = require('node:path');
           const root = process.argv[2];
-          const files = [];
-          const visit = dir => {
-            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-              const full = path.join(dir, entry.name);
-              if (entry.isDirectory()) visit(full);
-              else files.push(full);
-            }
-          };
-          visit(root);
-          const mp3 = files.filter(file => file.toLowerCase().endsWith('.mp3'));
+          const metadata = JSON.parse(fs.readFileSync(path.join(root, 'metadata.json'), 'utf8'));
+          const assets = metadata.fileMetadata?.android?.assets ?? [];
+          const mp3 = assets.filter(asset =>
+            String(asset.ext ?? '').replace(/^\\./, '').toLowerCase() === 'mp3' ||
+            String(asset.path ?? '').toLowerCase().endsWith('.mp3')
+          );
           if (mp3.length !== 2) {
-            throw new Error(`Expected exactly two bundled French MP3 files, found ${mp3.length}: ${mp3.join(', ')}`);
+            throw new Error(`Expected exactly two French MP3 assets in Android export metadata, found ${mp3.length}`);
           }
-          console.log('Verified bundled French MP3 assets:', mp3.map(file => path.relative(root, file)));
+          for (const asset of mp3) {
+            if (!Array.isArray(asset.fileSizes) || !asset.fileSizes.some(size => size > 10_000)) {
+              throw new Error(`Bundled French MP3 is missing or unexpectedly small: ${asset.path}`);
+            }
+          }
+          console.log('Verified two bundled French MP3 assets:', mp3.map(asset => asset.path));
           NODE
 
       - name: Verify student app French audio routing and playback integration
