@@ -257,7 +257,7 @@ test('Agricultural Science original row identities match the real Mammoth parser
 });
 
 
-test('Agricultural Science learner delivery withholds corrected source rows until scoped week and lesson gates pass', async () => {
+test('Agricultural Science corrected source rows deliver only after scoped week and lesson gates pass', async () => {
   const p = packageSchema.parse(raw);
   const archiveBytes = readFileSync(new URL('../../docs/ss1/sources/SSS1-original.zip', import.meta.url));
   const archive = await JSZip.loadAsync(archiveBytes);
@@ -305,13 +305,31 @@ test('Agricultural Science learner delivery withholds corrected source rows unti
       generated_assessment_id: 'stale-assessment',
     };
 
-    const pending = resolver(topic);
-    assert.equal(pending?.kind, 'withheld', 'pending subject package/lesson must never expose original source text');
-    assert.match(pending?.text ?? '', /withheld/i);
+    const delivered = resolver(topic);
+    assert.equal(delivered?.kind, 'corrected', 'owner-approved and verified lesson should replace the source row');
     const safe = safeAgriculturalScienceTopic(topic);
-    assert.equal(safe.source_reference, null);
+    assert.equal((safe.delivery_correction as any).status, 'corrected');
+    assert(safe.source_reference, 'learner-safe replacement text must be available');
+    assert(!safe.source_reference.includes('Answer:'), 'teacher answers must not reach learners');
+    assert(!safe.source_reference.includes('Marks:'), 'marking criteria must not reach learners');
     assert.equal(safe.generated_assessment_id, null);
-    assert.match(String(safe.summary), /withheld/i);
+
+    const blockedFixture = JSON.parse(JSON.stringify(p));
+    const match = correction.id.match(/^CORR-AG-(T[123])-W([0-9]{2}(?:-[0-9]{2})?)-/)!;
+    const weekPrefix = `AGRICULTURAL-SCIENCE-${match[1]}-W${match[2]}-`;
+    blockedFixture.open_items.push({
+      id: `${weekPrefix}TEST-WEEK-BLOCKER`, kind: 'VERIFICATION', blocks_delivery: true,
+      affected_ids: [correction.source_lesson_id], detail: 'test-only scoped blocker', required_action: 'test only',
+    });
+    assert.equal(createAgriculturalScienceDeliveryResolver(blockedFixture)(topic)?.kind, 'withheld',
+      'a blocker in the corrected lesson week must still withhold delivery');
+
+    const unverifiedFixture = JSON.parse(JSON.stringify(p));
+    const unverifiedLesson = unverifiedFixture.lessons.find((item: any) => item.id === correction.replacement_id);
+    unverifiedLesson.state.verification = 'DEFERRED';
+    unverifiedLesson.state.verification_reference = null;
+    assert.equal(createAgriculturalScienceDeliveryResolver(unverifiedFixture)(topic)?.kind, 'withheld',
+      'a deferred replacement lesson must remain withheld');
 
     assert.equal(resolver({ ...topic, class_name: 'SS 2' }), null, 'correction must not cross class boundaries');
     assert.equal(resolver({ ...topic, school_code: 'primary' }), null, 'correction must not cross school scope');
@@ -388,8 +406,17 @@ test('Agricultural Science corrected weeks are independently deliverable when un
     const match = correction.id.match(/^CORR-AG-(T[123])-W([0-9]{2}(?:-[0-9]{2})?)-/);
     assert(match, `correction must carry a bounded term/week identity: ${correction.id}`);
     const prefix = `AGRICULTURAL-SCIENCE-${match[1]}-W${match[2]}-`;
+    const weekBlocker = {
+      id: `${prefix}TEST-WEEK-BLOCKER`, kind: 'VERIFICATION', blocks_delivery: true,
+      affected_ids: [correction.source_lesson_id], detail: 'test-only scoped blocker', required_action: 'test only',
+    };
+    const unrelatedBlocker = {
+      id: 'AGRICULTURAL-SCIENCE-T1-W99-TEST-UNRELATED-BLOCKER', kind: 'VERIFICATION',
+      blocks_delivery: true, affected_ids: ['unrelated'], detail: 'test-only unrelated blocker', required_action: 'test only',
+    };
+    fixture.open_items.push(weekBlocker, unrelatedBlocker);
     const weekBlockers = fixture.open_items.filter((item: any) => item.blocks_delivery && item.id.startsWith(prefix));
-    assert(weekBlockers.length > 0, `test fixture must contain blockers for ${correction.id}`);
+    assert.equal(weekBlockers.length, 1, `test fixture must contain a scoped blocker for ${correction.id}`);
     fixture.open_items = fixture.open_items.map((item: any) =>
       item.id.startsWith(prefix) ? { ...item, blocks_delivery: false } : item
     );
@@ -412,7 +439,7 @@ test('Agricultural Science corrected weeks are independently deliverable when un
     const resolved = createAgriculturalScienceDeliveryResolver(fixture)(topic);
     assert.equal(resolved?.kind, 'corrected', `cleared week should deliver independently: ${correction.id}; got ${resolved?.reason ?? 'no resolution'}`);
     const packageStatusChanged = JSON.parse(JSON.stringify(fixture));
-    packageStatusChanged.package_status = 'IMPLEMENTED';
+    packageStatusChanged.package_status = 'PENDING';
     const statusChangedDelivery = createAgriculturalScienceDeliveryResolver(packageStatusChanged)(topic);
     assert.equal(statusChangedDelivery?.fingerprint, resolved?.fingerprint,
       `unrelated package status must not invalidate the same corrected lesson: ${correction.id}`);
