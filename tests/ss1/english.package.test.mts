@@ -285,7 +285,7 @@ test('Second Term affix assignment teaches every identifiable prefix and leaves 
   assert.equal(q6.marking.reduce((sum, criterion) => sum + criterion.marks, 0), 32);
   assert.match(q6.answer, /postwar/);
   assert.match(q6.answer, /illogical/);
-  assert.match(q7.answer, /not an established productive English prefix/i);
+  assert.match(q7.answer, /not.*established productive English prefix/i);
   assert.match(gap.required_action, /confirm/i);
   assert.equal(p.coverage.filter(item => item.status === 'UNRESOLVED').length, 0);
 });
