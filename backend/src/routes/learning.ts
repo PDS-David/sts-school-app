@@ -10,6 +10,7 @@ import { resolveSequenceGroup } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
 import { resolveSs1Delivery, safeSs1Topic, retireStaleSs1Cache, ss1AssessmentDeliverable, ss1WithdrawnAssessmentIds } from '../utils/ss1CateringDeliveryCorrection.js';
 import { resolveSs1FrenchDelivery, retireStaleSs1FrenchCache } from '../utils/ss1FrenchDeliveryCorrection.js';
+import { resolveSs1MathematicsDelivery, retireStaleSs1MathematicsCache } from '../utils/ss1MathematicsDeliveryCorrection.js';
 import { resolveAgriculturalScienceDelivery, resolveAgriculturalScienceSupplement, resolveAgriculturalScienceSourceProjection, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, retireStaleAgriculturalScienceSupplementCache, retireStaleAgriculturalScienceSourceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
 
@@ -499,6 +500,23 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
     const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
     topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
     topic.summary = frenchDelivery.text;
+  }
+
+  // SS1 Mathematics corrections are bound to the exact source row fingerprint,
+  // term, class, subject and source file. A changed source row or incomplete
+  // approval/verification is withheld rather than passed to Brainee as lesson text.
+  const mathematicsDelivery = resolveSs1MathematicsDelivery(topic);
+  if (mathematicsDelivery) {
+    await retireStaleSs1MathematicsCache(query, topic.id, mathematicsDelivery);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    topic.summary = mathematicsDelivery.text;
+    if (mathematicsDelivery.kind === 'withheld') {
+      return res.json({ ok: true, summary: mathematicsDelivery.text, summary_is_fallback: false,
+        practice_questions: [], assessment_status: null,
+        delivery_correction: { id: mathematicsDelivery.correctionId, status: 'withheld', provenance: 'withheld pending exact source, approval and verification' },
+        note: 'This Mathematics topic is temporarily unavailable pending source and lesson verification.' });
+    }
   }
   const agriculturalScienceSupplement = resolveAgriculturalScienceSupplement(topic);
   if (agriculturalScienceSupplement) {
