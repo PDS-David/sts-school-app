@@ -1,62 +1,53 @@
-# PHYS-WK-T2-W04 — Second Term Week Four: expansivity
+# PHYS-WK-T2-W04 — source indexing and defect record
 
-Status: **BLOCKED — original source-row inspection incomplete**. A full student supplement and keyed practice have been authored and linked to the parsed row. The source-indexing task is not complete until the original registered .doc body and its figures are inspected.
+Status: `IMPLEMENTED_TESTING_DEFERRED`.
 
-## Registered source identity
+## Source identity and extraction
 
-- Source ID: `SS1-SRC-2c924c964660`
-- Archive member: `SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc`
-- Registered member SHA-256: `3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7`
-- Parsed row: index 3, `WEEK FOUR`
-- Parsed body ID: `SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c`
-- Parsed body length: 4,238 characters
-- Parsed body SHA-256: `91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c`
+- Source: `SS1-SRC-2c924c964660`, Second Term member `SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7`.
+- Parsed row: `WEEK FOUR`, row index 3, 4,238 characters.
+- Body ID/SHA-256: `SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c`.
+- The original archive and member hashes were rechecked by `scripts/ss1/prepare_sources.py` in the Physics CI source-inspection step. The source text below is from `word-extractor 1.0.4 getBody()`; embedded figures were not rendered.
 
-The source scheme's Week Four topic is expansivity: linear, area and volume expansion, anomalous expansion of water, and real/apparent expansion. The original body text is not included in parsed_rows.json; only the parsed body identity, title, length and hash are available here.
+## Scheme objective mapping
 
-## Student supplement authored
+The scheme topic is “Expansivity and Its Application - Linear, Area and Volume. Anomalous Expansion of Water. Real and Apparent Expansivity”. The five objective-level coverage entries `COV-PHYS-T2-W04-OBJ-1..5` all map to `SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY` as `IMPLEMENTED_EQUIVALENT`:
 
-- Lesson ID: `SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY`
-- Body SHA-256: `b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b`
-- Body length: 5,141 characters
-- Practice: 20 fully answered questions, 49 marks, all marking rubrics checked against their question totals.
+1. Linear expansivity: definition, coefficient, formula and calculation.
+2. Area expansivity: definition, coefficient, formula and approximate relation to linear expansivity.
+3. Volume/cubical expansivity: definition, coefficient, formula and approximate relation to linear expansivity.
+4. Anomalous expansion of water between 0 °C and 4 °C.
+5. Real and apparent expansion of liquids, including expansion of the container.
 
-It teaches:
-1. Linear expansivity: `α = ΔL/(L₀ΔT)`, change and final length.
-2. Area expansivity: `β = ΔA/(A₀ΔT)`, with `β ≈ 2α` for small expansion of isotropic solids.
-3. Volume expansivity: `γ = ΔV/(V₀ΔT)`, with `γ ≈ 3α` for small expansion of isotropic solids.
-4. Real and apparent expansion of liquids: `γᵣ = γₐ + γ꜀`.
-5. Anomalous expansion of water: contraction on heating from 0 °C to 4 °C, maximum density near 4 °C, normal expansion above 4 °C.
-6. Worked examples, unit handling, common errors and a complete assessment key.
+## Original source evidence
 
-Coverage entries added:
-- `COV-PHYS-T2-W04-OBJ-1` — linear expansivity.
-- `COV-PHYS-T2-W04-OBJ-2` — area expansivity.
-- `COV-PHYS-T2-W04-OBJ-3` — volume expansivity.
-- `COV-PHYS-T2-W04-OBJ-4` — anomalous expansion of water.
-- `COV-PHYS-T2-W04-OBJ-5` — real/apparent expansivity.
+The source Week Four body begins at extracted line 232.
 
-All five are `IMPLEMENTED_EQUIVALENT` because the authored supplement teaches the mapped objectives. This is not a claim of teacher approval or verification.
+- Lines 235–238 list linear, area, cubic expansivity and anomalous behaviour of water.
+- Line 240 defines linear expansivity and explicitly identifies the coefficient as `α`, with unit K⁻¹ or per °C.
+- Lines 242–245 contain the linear-expansivity fraction and its denominator (“unit length × temperature change”).
+- Lines 249–253 define Δθ, use α and give `L₂ − L₁ = αL₁Δθ`.
+- **Lines 254–255 use `X` where `α` is required**: `L₂ = L₁ + X L₁ Δθ` and `L₂ = L₁(1 + X Δθ)`. This is a source notation defect in the extracted text, not a valid alternative coefficient. The immediately preceding lines use α.
+- Lines 258–262 give the brass-rod calculation; the worked substitution again prints `X` in one line.
+- Lines 267–276 cover area expansivity, β and the approximation β ≈ 2α.
+- Lines 280–283 give a second linear-expansion exercise.
+- Lines 284–290 introduce volume/cubical expansivity, but use `Y` rather than the standard symbol γ and leave the stated α:β:Y ratio incomplete.
+- Lines 292–295 distinguish real and apparent cubic expansivity of a liquid.
+- Lines 298–299 explain anomalous expansion of water from 0 °C to 4 °C.
+- Line 302 asks for a diagram of anomalous expansion; the source figure has not been inspected.
+- Line 303 asks for an experiment to determine apparent cubical expansivity.
+- Lines 309–320 contain MCQs and calculations: anomalous water, SI unit, β from α, linear expansivity, mercury cubical expansivity and volume change of a heated iron cube.
+- The extracted forms `00C`, `40C`, `600C`, `1000C` and `900C` use a zero where the degree symbol is expected. Context identifies these as 0 °C, 4 °C, 60 °C, 100 °C and 90 °C; this interpretation is recorded as extraction normalization, not a change to the source bytes.
+- The source gives no answer key or marks for these questions.
 
-## Close-equivalent source comparison (not the registered original)
+## Package changes and remaining gaps
 
-SchoolGist, *Physics SSS 1 Second Term*, Week Four, PDF lines 297–414, covers linear, area and volume expansivity, the approximate coefficient relationships, real/apparent liquid expansivity, anomalous expansion of water, worked examples, classwork and assignments.
+The existing lesson was strengthened with an explicit notation correction and keyed practice for the source's area-expansivity MCQ, SI unit MCQ, anomalous-water MCQ, linear-expansion calculation, mercury calculation, iron-cube volume calculation and apparent-expansivity experiment.
 
-The close-equivalent PDF also contains a wording/notation defect at line 317: it labels θ₁ as an original length, where it should identify the initial temperature. The replacement uses consistent symbols and definitions. This defect is reported only against the close-equivalent PDF; it is **not** attributed to the registered original .doc without inspection.
+The confirmed `X`-for-`α` and `Y`-for-`γ` defects are recorded as blocking open item `PHYSICS-T2-W04-SOURCE-NOTATION-DEFECTS`. The source diagram remains with the global visual inventory item `PHYSICS-SOURCE-VISUAL-INVENTORY`; no diagram has been recreated or claimed as original. A reviewed delivery correction is still needed before the original row can be suppressed.
 
-Reference: https://schoolgist.ng/storage/postFiles/SS1-Physics-2nd-Term-Lesson-Note-pdf.pdf
+## Validation boundary
 
-## Remaining source-dependent work
-
-1. Inspect the original registered member or a verified extraction of parsed row 3.
-2. Compare every original objective, example, formula, unit, classwork, assignment and theory question against the supplement.
-3. Inspect figures/embedded objects and record their disposition under `PHYS-VIS-T2`.
-4. Confirm which source-specific assessment items are identical to the close-equivalent PDF before claiming an exact source answer key.
-5. Then mark the source-indexing queue item `IMPLEMENTED_TESTING_DEFERRED`.
-
-## Checks performed
-
-- Lesson body SHA-256 recorded.
-- All 20 question marking totals checked: 49 marks in total.
-- Lesson content approval remains `PENDING`; verification remains `DEFERRED`.
-- No importer, database or device test is claimed.
+Static source-text review, row identity/hash comparison, authored lesson/body-hash update and marking arithmetic only. Automatic Physics package CI may run. No manual test suite, compiler plan, importer, database, migration or device check was executed. Content approval remains PENDING and formal verification DEFERRED.
