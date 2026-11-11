@@ -15,7 +15,7 @@ Status: **BLOCKED — exact original source-row reconciliation incomplete**. The
 ## Student supplement expanded
 
 - Lesson ID: `SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION`
-- Body SHA-256: `7b203b077dd1ca73f44651eb6b0bd00888a4f64a54f2c51d12d48d287345f38d`
+- Body SHA-256: `cbb21e1a2eb54400aae19cee6e690715ed48c02b24050031e31fc4a40a3d69b2`
 - Body length: 4,300 characters
 - Practice: 18 fully answered questions, 35 marks; all marking rubrics checked.
 
