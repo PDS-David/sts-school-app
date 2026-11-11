@@ -84,7 +84,7 @@ test('original source ZIP passes the real Mathematics parser/compiler and every 
     assert(pkg.lessons.some(lesson => lesson.id === correction.replacement_id), `missing replacement: ${correction.id}`);
   }
   for (const coverage of pkg.coverage) for (const id of coverage.lesson_ids) {
-    assert(identified.has(id) || pkg.source_rules.some(rule => rule.id === id) || pkg.lessons.some(lesson => lesson.id === id),
+    assert(identified.has(id) || pkg.source_rules.some(rule => rule.id === id) || pkg.lessons.some(lesson => lesson.id === id) || pkg.delivery_corrections.some(correction => correction.id === id),
       `unresolved coverage target: ${coverage.id} -> ${id}`);
   }
   assert.equal(inputs.length, 3);
