@@ -38,6 +38,27 @@ jobs:
           cache: npm
       - name: Install locked dependencies
         run: npm ci --ignore-scripts
+      - name: Render original Physics sources for visual audit
+        run: |
+          python scripts/ss1/prepare_sources.py --archive docs/ss1/sources/SSS1-original.zip --output "$RUNNER_TEMP/physics-source"
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libreoffice-writer poppler-utils
+          mkdir -p "$RUNNER_TEMP/physics-render"
+          STAGE="$RUNNER_TEMP/physics-source"
+          OUT="$RUNNER_TEMP/physics-render"
+          libreoffice -env:UserInstallation=file:///tmp/lo-physics-profile --headless --convert-to pdf --outdir "$OUT" "$STAGE/SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc"
+          libreoffice -env:UserInstallation=file:///tmp/lo-physics-profile --headless --convert-to pdf --outdir "$OUT" "$STAGE/SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc"
+          libreoffice -env:UserInstallation=file:///tmp/lo-physics-profile --headless --convert-to pdf --outdir "$OUT" "$STAGE/SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc"
+          for pdf in "$OUT"/*.pdf; do
+            pdftotext -layout "$pdf" "${pdf%.pdf}.txt"
+            pdfinfo "$pdf" | grep -E '^(Pages|Page size|File size):'
+          done
+      - name: Upload rendered Physics source evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: physics-source-renders
+          path: ${{ runner.temp }}/physics-render/
+          retention-days: 1
       - name: Validate all registered SS1 subject packages
         run: node --import tsx backend/src/db/ss1/validateSubjectPackages.ts
       - name: Run Physics package regression tests
