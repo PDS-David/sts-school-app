@@ -39,28 +39,30 @@ See [OWNER_APPROVAL_20261111.md](OWNER_APPROVAL_20261111.md). It records the own
 
 ## Verification and release
 
-Fresh workflow run [42990588253](https://github.com/PDS-David/sts-school-app/actions/runs/42990588253) completed successfully on 2026-11-11:
+Fresh workflow run [42999900568](https://github.com/PDS-David/sts-school-app/actions/runs/42999900568) completed successfully on 2026-11-11 against the PR #562 head immediately before merge (merged commit `aeafd1aed991ff11f69a98bb6e436a638a7e9613`):
 
-- English package tests: **16/16 passed**, including the eight-row closure and BODY-047 rule-identity regression.
+- English package tests: **16/16 passed**, including the eight-row closure, BODY-047 rule-identity regression and subject-only compiler-scope regression.
 - SS1 foundation tests: **8/8 passed**.
 - Python SS1 tests: **2/2 passed**.
 - Backend TypeScript no-emit check: **passed**.
-- English learner-delivery regression tests: **8/8 passed**.
+- English learner-delivery regression tests: **9/9 passed**, including student/parent answer-key redaction.
 - English package/asset validation: **passed**.
 - All three registered English source members: **hash-verified and privately staged**.
 - The actual SS1 parser/compiler and `check_english_plan.py`: **PASS**; 89 original English source rows and 152 supplements were accounted for; all 32 scheme-only markers were preserved.
 
-The plan-only report previously retained four English-specific approval blockers: the three new supplements and the pronunciation asset. The three lesson approval blockers are now closed by the owner's blanket approval attestation; the pronunciation asset remains separately pending and is not covered by lesson approval. The overall plan remains not ready because other SS1 subject packages are intentionally omitted and the English pronunciation-asset approval/verification gate remains open. No database write was attempted.
+The English-only compiler scope was corrected in PR #562 (merged as `aeafd1aed991ff11f69a98bb6e436a638a7e9613`). A selected-subject build now checks only the selected package; the default whole-school build still requires every registered subject package. The real English-only plan now has exactly **one** English blocker: `ASSET_NOT_APPROVED:ASSET-SS1-ENGLISH-PRONUNCIATION-MODEL-ENGB`. The other SS1 packages no longer block an English-only plan. The 152 lessons are owner-approved, but all 152 still have `verification=DEFERRED`; this is reported separately and is not silently promoted by CI. No database write was attempted.
 
-A separate repository-wide integrity workflow currently has an unrelated SVG asset expectation mismatch (five Agricultural Science SVGs are absent from the current tracked tree); this does not fail the English package workflow or BODY-047 check.
+PR #559 (merged as `7382f51feb2ad86f36151d04fa9d9a0c1f1f4951`) adds a regression guard that keeps all 24 correction replacements withheld until their own authorised verification exists. PR #561 (merged as `eff3ba83fa3615d8b90c1b42597a03bac719c723`) prevents student/parent API responses and study-summary fallbacks from exposing teacher answer keys or marking criteria in compiled English supplements. Both changes passed their English and repository integrity workflows.
+
+An earlier repository-wide run reported an Agricultural Science SVG expectation mismatch, outside the English package. The latest SS1 package-integrity gate [42999900647](https://github.com/PDS-David/sts-school-app/actions/runs/42999900647) passed all of its defined checks; that result does not certify Agricultural Science asset completeness.
 
 Still required before student release:
-- Separate owner approval and verification of the pronunciation asset.
-- Fresh successful CI on the merged commit, including the BODY-047 real compiler/plan check.
-- Database preservation capture and transaction rehearsal against the designated snapshot.
+- Owner approval of the registered synthetic British English pronunciation asset (its rights/provenance are documented, but its separate content approval is still PENDING).
+- Authorised verification of the lessons/corrections; all 152 lesson verification states remain DEFERRED. CI proves package/compiler correctness, not classroom delivery or learner speaking proficiency.
+- Database preservation capture and transaction rehearsal against the designated snapshot, followed by the authorised English-only import.
 - Production runtime, correction/cache/asset sanitisation and MIME checks.
 - Student-device acceptance and deployment/release confirmation.
-- Oral listening/speaking observation with an authorised audio model and teacher observation.
+- Teacher oral listening/speaking observation using the registered model and a recorded learner performance.
 
 Do not set verification to `VERIFIED`, claim student delivery, or claim deployment until the corresponding evidence exists.
 
