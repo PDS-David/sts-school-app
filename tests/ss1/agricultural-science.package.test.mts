@@ -309,10 +309,10 @@ test('Agricultural Science learner delivery withholds corrected source rows unti
 
 test('Agricultural Science correction adapter is wired through learner topic and assessment routes', () => {
   const route = readFileSync(new URL('../../backend/src/routes/learning.ts', import.meta.url), 'utf8');
-  assert.match(route, /safeAgriculturalScienceTopic\\(safeSs1Topic\\(safeJss3Topic\\(r\\)\\)\\)/);
-  assert.match(route, /safeAgriculturalScienceTopic\\(safeSs1Topic\\(safeJss3Topic\\(full\\[0\\] \\?\\? rows\\[0\\]\\)\\)\\)/);
-  assert.match(route, /resolveAgriculturalScienceDelivery\\(topic\\)/);
-  assert.match(route, /retireStaleAgriculturalScienceCache\\(query, topic\\.id, agriculturalScienceDelivery\\)/);
-  assert.match(route, /agriculturalScienceWithdrawnAssessmentIds\\(query, openIds\\)/);
-  assert.equal((route.match(/agriculturalScienceAssessmentDeliverable\\(query,/g) ?? []).length, 3);
+  assert.ok(route.includes('safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(r)))'));
+  assert.ok(route.includes('safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(full[0] ?? rows[0])))'));
+  assert.ok(route.includes('resolveAgriculturalScienceDelivery(topic)'));
+  assert.ok(route.includes('retireStaleAgriculturalScienceCache(query, topic.id, agriculturalScienceDelivery)'));
+  assert.ok(route.includes('agriculturalScienceWithdrawnAssessmentIds(query, openIds)'));
+  assert.equal(route.split('agriculturalScienceAssessmentDeliverable(query,').length - 1, 3);
 });
