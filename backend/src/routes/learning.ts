@@ -279,6 +279,7 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
        FROM topics t LEFT JOIN subjects s ON s.id=t.subject_id WHERE t.id=$1 AND t.school_code=$2${scope}`, params,
   );
   if (!visible[0]) return res.json({ assets: [], attributions: [] });
+
   // Metadata only — `bytes` is never selected here.
   const { rows: storedAssets } = await query(
     `SELECT id, asset_key, kind, mime, sha256, caption, alt_text, sort_order
