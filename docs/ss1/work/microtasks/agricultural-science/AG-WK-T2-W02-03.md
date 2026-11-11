@@ -39,3 +39,8 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. Source indexing only; no crop-specific
 - Parsed package/queue JSON; checked unique IDs and the PARTIAL coverage's open-item link.
 - Importer, tests, TypeScript, DB and device checks **not run**; testing remains deferred by owner.
 - No source bytes, lesson bodies, rules, corrections, assets, shared code or other subjects modified.
+
+
+## Implementation follow-up (2026-11-11)
+
+The exact source row `SS1-SRC-956594d97094:BODY:9b05ec628817f7406a90c51277a6e8fe5c6318c250a89cd9a819d6c529b29797` is now bound by `CORR-AG-T2-W02-03-CULTURAL-PRACTICES-REPLACEMENT` to the complete replacement lesson `SUP-SS1-AGRICULTURAL-SCIENCE-T2-W02-03-CULTURAL-PRACTICES`. It covers pre-planting, planting, post-planting, harvest and post-harvest operations; corrects “post-posting” and “plating space”; distinguishes manufactured mineral fertilisers from on-farm organic manures; and reconciles green-manure timing as species-dependent, commonly at/near early flowering or full bloom before seed set. Coverage is IMPLEMENTED_EQUIVALENT. Content approval and learner-route verification remain pending.
