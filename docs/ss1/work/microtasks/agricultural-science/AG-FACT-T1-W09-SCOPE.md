@@ -1,4 +1,4 @@
-# AG-FACT-T1-W09-SCOPE — Evidence Brief for Qualified Subject-Expert Decision
+# AG-FACT-T1-W09-SCOPE — Evidence Brief and Owner-Approved Decisions
 
 <badge> OWNER APPROVED — NINE RECOMMENDATIONS </badge>
 
@@ -167,7 +167,7 @@ The repository owner explicitly approved all nine recommendations below on 2026-
 8. **APPROVED:** FAO distinction between afforestation and reforestation.
 9. **APPROVED:** For the short SS1 answer, use direct/raw forest outputs, while noting that FAO's statistical classification can include some first-stage processed products.
 
-**Draft implementation status (10 November 2026):** The package now contains `SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-FARMSTEAD` and `SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-FORESTRY`, each with keyed practice, provenance and `content_approval: PENDING`. These are bounded drafts based on the evidence brief, not approved teaching material. The queue tasks remain BLOCKED because the required qualified expert decision has not been supplied; do not change their approval state or publish them as expert-cleared. The original source text is unchanged.
+**Implementation and approval status (11 November 2026):** The package contains `SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-FARMSTEAD` and `SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-FORESTRY`, each with keyed practice and provenance. The repository owner approved the nine recommendations in this brief; both supplements now have `content_approval: APPROVED` with approval reference `OWNER-DEC-W09-20261111.md#DEC-AG-W09-2026-11-11`. Their verification remains `DEFERRED`. This is project-owner approval, not independent credentialed subject-expert sign-off. The separate Week 9 issues listed in section F remain open, and the original source text is unchanged.
 
 
 ## F. Remaining Week 9 issues outside the nine approvals
