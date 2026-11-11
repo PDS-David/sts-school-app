@@ -27,7 +27,8 @@
     "CC-IDX-T2-W01 (2026-10-30) indexed 2nd Term WEEK ONE (getBody lines 26-223): 29 sections with per-section hashes, four EVALUATION blocks plus GENERAL EVALUATION, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY. One PARTIAL coverage entry (COV-CC-T2-W01-SCHEME-1) was added to the package; no lesson, rule, correction, asset or answer. One FACT follow-up item was appended for the game section. Nothing was run.",
     "CC-TEST-PACKAGE (2026-11-03) wrote tests/ss1/catering-craft.package.test.mts and did NOT run it. The test parses the package with the frozen schema and reads SOURCE_ASSIGNMENTS.csv directly: exactly two assigned documents (2nd and 3rd Term), member, SHA-256 and term equal to the manifest, no 1st Term source. It guards the two alias rules (exact anchor equals header_text, PENDING-OWNER reference, no approval text), checks that no lesson/asset/correction fabricates approval or verification, keeps vacuous lesson body and marking guards for later content, checks coverage targets resolve and any PARTIAL/UNRESOLVED coverage is paired with a PENDING package and a blocking open item, and runs negative controls on alias rules for a wrong-source hash, ambiguous anchor and missing anchor. No package, schema, compiler or other-subject view changed; items remain 53. Status 6 implemented / 46 pending / 1 blocked; next_runnable head CC-IDX-T2-W02. Coverage stays 1, lessons 0, open items 1. Execution remains deferred by the owner.",
     "CC-IDX-T2-W02 (2026-11-06) indexed 2nd Term WEEK TWO (lines 226-381, sha256 e0d57a0841e7779973959e7514dbf841906399a073d4bf1b934dcedfc6d4f8e2, 156 lines) at section and objective level and added one coverage entry, COV-CC-T2-W02-SCHEME-2, PARTIAL with no lesson ids. The week teaches eggs (231-285) and fish (287-357) with four evaluations, a general evaluation, reading assignment, weekend assignment (5 questions, no answers) and theory; the drawing prompt at 248 has no figure, general evaluation 362 depends on Week One's game section, 363-364 have no teaching (already under CC-FACT-T2-SAFETY-QUESTIONS-WITHOUT-TEACHING) and weekend question 377 on offal depends on Week One. One follow-up appended: CC-FACT-T2-FISH-EGG-CLASSIFICATION-FIGURES (FACTUAL_DEPENDENCY, PENDING). Items 53->54; status 7 implemented / 46 pending / 1 blocked; next_runnable head CC-IDX-T2-W03. No lesson, delivery, schema, compiler, parser or importer change; catering-craft.json edited for coverage only. Evidence note: docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W02.md. Not approved, not verified; nothing run (testing deferred by owner).",
-    "CC-LES-T3-W10-DEMONSTRATION authored a clearly labelled project-authored equivalent lesson for the source's Week Ten topic-only marker. It includes objectives, equipment, safe table-laying procedure, practical activity, review questions and a 20-mark rubric. Content approval and verification remain pending; no observed classroom practical is claimed."
+    "CC-LES-T3-W10-DEMONSTRATION authored a clearly labelled project-authored equivalent lesson for the source's Week Ten topic-only marker. It includes objectives, equipment, safe table-laying procedure, practical activity, review questions and a 20-mark rubric. Content approval and verification remain pending; no observed classroom practical is claimed.",
+    "2026-11-11 verification reconciliation: the 2026-11-03 CC-TEST-PACKAGE note that tests had not yet been run is historical and is superseded by successful GitHub Actions run 42930815522. The dedicated SS1 Catering Craft verification workflow executed npm run test:ss1:catering: 16 tests passed, 0 failed, 0 skipped; validateSubjectPackages returned valid:true (38 lessons, 36 coverage records, zero blocked open items). The earlier authorised parser run 42547557010 also succeeded and captured the exact Week Six source identity/body hash. This confirms automated package and delivery verification. It does not change any of the 38 lesson-level verification fields from DEFERRED and does not claim teacher practical observation, production database import, learner-device verification or release certification."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -211,8 +212,8 @@
         "CC-SRC-T3"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "tests/ss1/catering-craft.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run). | Written (CC-TEST-PACKAGE, 2026-11-03; the package now exists at backend/src/db/ss1/subjects/catering-craft.json, PENDING with two sources): tests/ss1/catering-craft.package.test.mts created following tests/ss1/french.package.test.mts. It covers schema parse; exactly the two assigned documents read from SOURCE_ASSIGNMENTS.csv with matching archive member, SHA-256 and term and no 1st Term source; the two source_alias rules binding each exact header and carrying PENDING-OWNER references; no fabricated lesson, correction or asset approval or verification; lesson body and marking guards that stay vacuous while the package has no lessons; coverage target resolution and PARTIAL/UNRESOLVED visibility; and alias negative controls for a wrong-source hash, an ambiguous anchor and a missing anchor. NOT RUN (testing deferred by owner).",
-      "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
+      "implementation_reference": "tests/ss1/catering-craft.package.test.mts was written and committed. Initial authoring note on 2026-11-03 correctly recorded that execution was then deferred. Subsequent authorised verification is now complete: GitHub Actions run 42930815522 (PR #494 merge ref 2e2ed35d1a73a5e62ae1bd645687337658f413aa), workflow 'SS1 Catering Craft verification', executed npm run test:ss1:catering; 16/16 tests passed, 0 failed, 0 skipped. The package validator returned valid:true for 38 lessons, 36 coverage records and zero blocked open items. This is automated package/delivery verification; all 38 lesson-level verification states remain DEFERRED.",
+      "completion_condition": "Test code is written and committed, and the authorised automated package/delivery verification has run successfully (run 42930815522; 16 passed, 0 failed; validator valid:true). Preserve lesson-level verification as DEFERRED until actual teacher/classroom evidence exists."
     },
     {
       "id": "CC-FACT-CONTENT-APPROVAL",
@@ -3039,7 +3040,7 @@
   "review": {
     "date": "2026-11-09",
     "reviewed_master_sha": "51a93ad98db283bb26a0981730fe870c65532ba6",
-    "scope": "Owner-approved source aliases and 38 authored lessons; implemented schema v2 external scheme registration and all 13 First Term coverage mappings. Structural checks only. Exact Week Six source parser run remains blocked by unavailable binary archive bytes; tests, full typechecks, DB/device and deployment remain deferred.",
+    "scope": "Owner-approved source aliases and 38 authored lessons; schema v2 external scheme registration and all 13 First Term coverage mappings are implemented. The exact Second Term Week Six source identity was subsequently verified by the authorised parser run recorded below. Automated Catering Craft package and delivery verification was subsequently completed successfully: run 42930815522 executed npm run test:ss1:catering with 16/16 tests passing and package validator valid:true (38 lessons, 36 coverage records, zero blocked open items). This is automated package/delivery verification only. All 38 lesson-level verification states remain DEFERRED; no classroom practical observation, teacher sign-off, production database import, authenticated learner-device check or release certification is claimed.",
     "source_archive": {
       "filename": "SSS1-original.zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
@@ -3055,6 +3056,30 @@
         "source_lesson_id": "SS1-SRC-f433169ca25c:BODY:fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de",
         "result": "success"
       }
+    },
+    "automated_verification": {
+      "recorded_at": "2026-11-11",
+      "workflow": "SS1 Catering Craft verification",
+      "workflow_run_id": 42930815522,
+      "pull_request": 494,
+      "tested_merge_ref_sha": "2e2ed35d1a73a5e62ae1bd645687337658f413aa",
+      "job": "Validate SS1 Catering Craft package and delivery adapter",
+      "command": "npm run test:ss1:catering",
+      "result": "success",
+      "tests": {
+        "passed": 16,
+        "failed": 0,
+        "skipped": 0
+      },
+      "package_validation": {
+        "valid": true,
+        "package_status": "IMPLEMENTED",
+        "lessons": 38,
+        "coverage_records": 36,
+        "blocked_open_items": 0,
+        "lessons_with_deferred_verification": 38
+      },
+      "scope_note": "Confirms automated package schema/content guards, delivery-correction tests and package integrity validation. It does not certify classroom practical performance, teacher observation, production database import, authenticated learner-device delivery or release readiness."
     }
   },
   "next_runnable": []
