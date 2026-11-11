@@ -10,7 +10,7 @@ import { resolveSequenceGroup } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
 import { resolveSs1Delivery, safeSs1Topic, retireStaleSs1Cache, ss1AssessmentDeliverable, ss1WithdrawnAssessmentIds } from '../utils/ss1CateringDeliveryCorrection.js';
 import { resolveSs1FrenchDelivery, retireStaleSs1FrenchCache } from '../utils/ss1FrenchDeliveryCorrection.js';
-import { resolveSs1MathematicsDelivery, safeSs1MathematicsTopic, retireStaleSs1MathematicsCache } from '../utils/ss1MathematicsDeliveryCorrection.js';
+import { resolveSs1MathematicsDelivery, safeSs1MathematicsTopic, mathematicsAssetDeliverable, retireStaleSs1MathematicsCache } from '../utils/ss1MathematicsDeliveryCorrection.js';
 import { resolveAgriculturalScienceDelivery, resolveAgriculturalScienceSupplement, resolveAgriculturalScienceSourceProjection, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, retireStaleAgriculturalScienceSupplementCache, retireStaleAgriculturalScienceSourceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
 
@@ -290,7 +290,9 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
   );
   const rows = visible[0].school_code === 'secondary' && visible[0].class_name === 'SS 1' && visible[0].subject_name === 'Agricultural Science'
     ? storedAssets.filter((asset: any) => agriculturalScienceAssetDeliverable(visible[0], asset))
-    : storedAssets;
+    : visible[0].school_code === 'secondary' && visible[0].class_name === 'SS 1' && visible[0].subject_name === 'Mathematics'
+      ? storedAssets.filter((asset: any) => mathematicsAssetDeliverable(visible[0], asset))
+      : storedAssets;
   // Licence/credit records for third-party material in this lesson (jss3Attributions.ts): delivered with the lesson,
   // matched by exact identity. A requested cover/logo is reported displayed only if a displayed asset with that key exists.
   const boundKeys = new Set<string>(rows.map((r: any) => r.asset_key));
@@ -324,6 +326,8 @@ router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
   if (!meta[0]) return res.status(404).json({ error: 'Asset not found' });
   if (meta[0].school_code === 'secondary' && meta[0].class_name === 'SS 1' && meta[0].subject_name === 'Agricultural Science' &&
       !agriculturalScienceAssetDeliverable(meta[0], meta[0])) return res.status(404).json({ error: 'Asset not found' });
+  if (meta[0].school_code === 'secondary' && meta[0].class_name === 'SS 1' && meta[0].subject_name === 'Mathematics' &&
+      !mathematicsAssetDeliverable(meta[0], meta[0])) return res.status(404).json({ error: 'Asset not found' });
 
   const etag = `"${meta[0].sha256}"`;
   res.setHeader('ETag', etag);
