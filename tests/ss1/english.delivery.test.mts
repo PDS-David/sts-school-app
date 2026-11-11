@@ -40,7 +40,7 @@ function approvedFixture() {
   return packageSchema.parse(value);
 }
 
-test('English resolver is isolated by school, class, subject, term, source file and exact title', () => {
+test('English resolver is isolated by school, class, subject, term and source file; changed text requires the exact source title', () => {
   const resolver = createEnglishDeliveryResolver(fixture);
   assert.equal(resolver(fixtureTopic)?.kind, 'withheld');
   assert.equal(resolver({ ...fixtureTopic, school_code: 'primary' }), null);
@@ -48,7 +48,7 @@ test('English resolver is isolated by school, class, subject, term, source file 
   assert.equal(resolver({ ...fixtureTopic, subject_name: 'Literature' }), null);
   assert.equal(resolver({ ...fixtureTopic, term_label: '3rd Term' }), null);
   assert.equal(resolver({ ...fixtureTopic, source_file: 'other.docx' }), null);
-  assert.equal(resolver({ ...fixtureTopic, title: 'A different lesson' }), null);
+  assert.equal(resolver({ ...fixtureTopic, title: 'A different lesson', source_reference: 'changed source text' }), null);
 });
 
 test('Unapproved package is withheld even when the exact source fingerprint matches', () => {
