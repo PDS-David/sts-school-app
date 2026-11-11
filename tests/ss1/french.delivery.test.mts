@@ -51,7 +51,7 @@ test('French delivery resolver positively selects the exact registered source, t
   assert.equal(result.correctionId, correction.id);
   assert.equal(result.sourceHash, bodyHash);
   assert.deepEqual(result.replacementLessonIds, [correction.replacement_id]);
-  assert.match(result.text, /APPROVED FRENCH DELIVERY CORRECTION/i);
+  assert.match(result.text, /SS1 FRENCH DELIVERY CORRECTION/i);
   assert.equal(resolve({ ...topic, term_label: '3rd Term' }), null);
   assert.equal(resolve({ ...topic, source_file: 'another-subject.docx' }), null);
 });
