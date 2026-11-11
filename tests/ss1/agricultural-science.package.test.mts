@@ -360,6 +360,12 @@ test('Agricultural Science correction adapter is wired through learner topic and
   assert.ok(route.includes('resolveAgriculturalScienceDelivery(topic)'));
   assert.ok(route.includes('agriculturalScienceAssetDeliverable(visible[0], asset)'));
   assert.ok(route.includes('agriculturalScienceAssetDeliverable(meta[0], meta[0])'));
+  const assetPlanWrapper = readFileSync(new URL('../../scripts/ss1/build_agricultural_science_asset_plan.mts', import.meta.url), 'utf8');
+  assert.ok(assetPlanWrapper.includes('STAGING.json'));
+  assert.ok(assetPlanWrapper.includes('stageManifest.archive_sha256'));
+  assert.ok(assetPlanWrapper.includes('buildFromFiles'));
+  assert.ok(assetPlanWrapper.includes('writeAssetPlanArtifacts'));
+  assert.ok(!assetPlanWrapper.includes('source.bytes'));
   assert.ok(route.includes('retireStaleAgriculturalScienceCache(query, topic.id, agriculturalScienceDelivery)'));
   assert.ok(route.includes('agriculturalScienceWithdrawnAssessmentIds(query, openIds)'));
   assert.equal(route.split('agriculturalScienceAssessmentDeliverable(query,').length - 1, 3);
