@@ -9,6 +9,12 @@ Base: `45551d903647c80b6e2a2b6798fa741d650f1bc0` (master at branch creation). Br
 - Added `scripts/ss1/build_asset_plan.mjs` and `scripts/ss1/build_agricultural_science_asset_plan.mts`: the wrapper consumes the private source stage created by `prepare_sources.py`, verifies the registered archive hash and exact source member hashes, runs the real SS1 loader/compiler, maps compiler topic rows to package lesson/asset IDs, and emits the existing attachment CSV only when package, lesson, asset, provenance, hash, MIME and safety gates pass. It writes a private blocker report and no CSV while pending.
 - Added regression tests for SVG ingestion, asset-to-topic identity, approval gating and learner-route integration.
 
+## Review aids
+
+- `LESSON-APPROVAL-REGISTER.md` lists all 47 lessons, body hashes, linked assets and per-lesson review decisions.
+- `ASSET-APPROVAL-REGISTER.md` lists all 40 SVGs, file hashes, alt text, provenance/rights, current state and per-asset review decisions.
+- Neither register implies approval. Both must be completed by qualified reviewers before delivery.
+
 ## Explicit gates
 - No manual test suite, TypeScript check, importer rehearsal, database write or device check was run. The SS1-08 owner instruction defers test execution until implementation is complete. Regression tests have been added for the later verification stage.
 - All 40 Agricultural Science SVG assets remain content-approval PENDING and verification DEFERRED. The manifest generator therefore remains BLOCKED and emits no attachable CSV until qualified review and verification evidence are recorded.
