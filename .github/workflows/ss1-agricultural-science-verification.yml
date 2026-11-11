@@ -4,7 +4,20 @@ on:
   pull_request:
     branches: [master]
     paths:
+      - "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv"
+      - "docs/ss1/sources/SSS1-original.zip"
+      - "scripts/ss1/prepare_sources.py"
       - "backend/src/db/ss1/**"
+      - "backend/src/db/attachTopicAssets.ts"
+      - "backend/src/routes/learning.ts"
+      - "backend/src/utils/ss1AgriculturalScienceDeliveryCorrection.ts"
+      - "mobile/src/screens/TopicDetailScreen.tsx"
+      - "mobile/src/api/lessonAssets.ts"
+      - "mobile/package.json"
+      - "scripts/ss1/build_asset_plan.mjs"
+      - "scripts/ss1/build_agricultural_science_asset_plan.mts"
+      - "tests/topic-assets.static.test.cjs"
+      - "tests/topic-assets-svg.test.mts"
       - "backend/package.json"
       - "package-lock.json"
       - "package.json"
@@ -13,7 +26,20 @@ on:
   push:
     branches: [master]
     paths:
+      - "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv"
+      - "docs/ss1/sources/SSS1-original.zip"
+      - "scripts/ss1/prepare_sources.py"
       - "backend/src/db/ss1/**"
+      - "backend/src/db/attachTopicAssets.ts"
+      - "backend/src/routes/learning.ts"
+      - "backend/src/utils/ss1AgriculturalScienceDeliveryCorrection.ts"
+      - "mobile/src/screens/TopicDetailScreen.tsx"
+      - "mobile/src/api/lessonAssets.ts"
+      - "mobile/package.json"
+      - "scripts/ss1/build_asset_plan.mjs"
+      - "scripts/ss1/build_agricultural_science_asset_plan.mts"
+      - "tests/topic-assets.static.test.cjs"
+      - "tests/topic-assets-svg.test.mts"
       - "backend/package.json"
       - "package-lock.json"
       - "package.json"
@@ -42,5 +68,39 @@ jobs:
         run: npm ci --workspace=backend --include-workspace-root=false --no-audit --no-fund
       - name: Run Agricultural Science package tests (lesson body hashes, approvals, assets)
         run: node --import tsx --test tests/ss1/agricultural-science.package.test.mts
+      - name: Run Agricultural Science asset-plan tests
+        run: node --import tsx --test tests/ss1/agricultural-science.asset-plan.test.mts
+      - name: Rebuild source-bound Agricultural Science asset plan and enforce approval withholding
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp -d)"
+          stage="$tmp/stage"
+          out="$tmp/output"
+          python scripts/ss1/prepare_sources.py --archive docs/ss1/sources/SSS1-original.zip --output "$stage"
+          set +e
+          node --import tsx scripts/ss1/build_agricultural_science_asset_plan.mts --staged-root "$stage" --out-dir "$out" >"$tmp/build.log" 2>&1
+          result=$?
+          set -e
+          cat "$tmp/build.log"
+          test "$result" -eq 2
+          node --input-type=module - "$out/agricultural-science-asset-plan.json" <<'NODE'
+          import fs from 'node:fs';
+          const report = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
+          if (report.ready !== false) throw new Error('Pending package unexpectedly produced a ready asset plan');
+          if (report.records.length !== 40) throw new Error('Expected all 40 package assets to map to compiler rows; found ' + report.records.length);
+          if (!report.blockers.includes('PACKAGE_NOT_IMPLEMENTED:agricultural-science')) throw new Error('Package approval gate was not enforced');
+          if (!report.blockers.some(item => item.startsWith('LESSON_CONTENT_NOT_APPROVED:'))) throw new Error('Lesson approval gate was not enforced');
+          if (!report.blockers.some(item => item.startsWith('ASSET_CONTENT_NOT_APPROVED:'))) throw new Error('Asset approval gate was not enforced');
+          console.log('Verified: all 40 assets map to exact compiler rows; pending approvals block CSV emission.');
+          NODE
+          if find "$out" -type f -name '*.csv' -print -quit | grep -q .; then
+            echo 'Unexpected attachable CSV emitted while approvals are pending.' >&2
+            exit 1
+          fi
+      - name: Run safe SVG ingestion tests
+        run: node --import tsx --test tests/topic-assets-svg.test.mts
+      - name: Run authenticated asset-route and native mobile-renderer contracts
+        run: node --test tests/topic-assets.static.test.cjs
       - name: Run the SS1 package integrity validator for Agricultural Science only
         run: node --import tsx backend/src/db/ss1/validateSubjectPackages.ts agricultural-science
