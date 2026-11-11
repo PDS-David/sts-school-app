@@ -116,3 +116,13 @@ test('Withdrawal tombstone remains effective after the topic link is cleared', a
   const result = await englishAssessmentDeliverable(query, 902);
   assert.equal(result.ok, false);
 });
+test('Approved learner lesson uses readable line breaks and keeps answer keys out of student notes', () => {
+  const hit = createEnglishDeliveryResolver(approvedFixture())(fixtureTopic);
+  assert.equal(hit?.kind, 'corrected');
+  const text = hit?.text ?? '';
+  assert(text.includes('\nLEARNING OBJECTIVES\n'));
+  assert(text.includes('\nSOURCES AND ATTRIBUTION\n'));
+  assert(text.includes('\nRights: '));
+  assert.doesNotMatch(text, /Answer:/);
+  assert.doesNotMatch(text, /marking guide/i);
+});
