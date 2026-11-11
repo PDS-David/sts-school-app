@@ -144,9 +144,10 @@ export function isSafeSvg(bytes: Buffer): boolean {
   if (bytes.length === 0 || bytes.length > 1_000_000) return false;
   let source: string;
   try { source = new TextDecoder('utf-8', { fatal: true }).decode(bytes); } catch { return false; }
-  source = source.replace(/^\\uFEFF/, '').trim();
-  if (!/^(?:<\\?xml\\s+version=["']1\\.[01]["'][^?]*\\?>\\s*)?<svg\\b[\\s\\S]*<\\/svg>$/i.test(source)) return false;
-  if (/<!DOCTYPE|<!ENTITY|<\\s*(?:script|foreignObject|iframe|object|embed|image|audio|video|style)\\b|<\\?xml-stylesheet|\\bon[a-z][\\w:-]*\\s*=|\\b(?:href|src)\\s*=|javascript:|data:|@import|url\\(\\s*(?!["']?#)/i.test(source)) return false;
+  source = source.replace(/^\uFEFF/, '').trim();
+  if (!/^(?:<\?xml\s+version=["']1\.[01]["'][^?]*\?>\s*)?<svg\b[\s\S]*<\/svg>$/i.test(source)) return false;
+  if (!/\bviewBox=["']\s*[0-9.+-]+[,\s]+[0-9.+-]+[,\s]+[0-9.+-]+[,\s]+[0-9.+-]+\s*["']/i.test(source)) return false;
+  if (/<!DOCTYPE|<!ENTITY|<\s*(?:script|foreignObject|iframe|object|embed|image|audio|video|style)\b|<\?xml-stylesheet|\bon[a-z][\w:-]*\s*=|\b(?:href|src|style)\s*=|javascript:|data:|@import|url\(\s*(?!["']?#)/i.test(source)) return false;
   return true;
 }
 
