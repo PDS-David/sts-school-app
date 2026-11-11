@@ -167,7 +167,8 @@ export function mathematicsAssetDeliverable(topic: Ss1MathematicsTopic, storedAs
   if (!source || path.basename(source.archive_member) !== path.basename(String(topic.source_file ?? ''))) return false;
   const expectedTitle = asset.source_locator.split(' — ').at(-1)?.trim() ?? '';
   const orderMatch = asset.source_locator.match(/order_index\s+(\d+)/i);
-  return Boolean(orderMatch) && Number(topic.order_index) === Number(orderMatch[1]) && norm(topic.title) === norm(expectedTitle);
+  if (!orderMatch) return false;
+  return Number(topic.order_index) === Number(orderMatch[1]) && norm(topic.title) === norm(expectedTitle);
 }
 
 /** Prevent raw Mathematics source rows (including unresolved weeks) from leaking into student topic lists/details. */
