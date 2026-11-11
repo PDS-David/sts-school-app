@@ -9,7 +9,7 @@ import { attributionsForTopic, publicAttribution } from '../db/jss3Attributions.
 import { resolveSequenceGroup } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
 import { resolveSs1Delivery, safeSs1Topic, retireStaleSs1Cache, ss1AssessmentDeliverable, ss1WithdrawnAssessmentIds } from '../utils/ss1CateringDeliveryCorrection.js';
-import { resolveAgriculturalScienceDelivery, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
+import { resolveAgriculturalScienceDelivery, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
@@ -273,19 +273,22 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
   // gives for a topic outside the viewer's classes.
   if (scope === null) return res.json({ assets: [], attributions: [] });
   const { rows: visible } = await query(
-    `SELECT t.id, t.title, t.term_label, t.class_name, s.name AS subject_name
+    `SELECT t.id, t.school_code, t.title, t.term_label, t.class_name, t.source_file, t.source_reference, s.name AS subject_name
        FROM topics t LEFT JOIN subjects s ON s.id=t.subject_id WHERE t.id=$1 AND t.school_code=$2${scope}`, params,
   );
   if (!visible[0]) return res.json({ assets: [], attributions: [] });
 
   // Metadata only — `bytes` is never selected here.
-  const { rows } = await query(
+  const { rows: storedAssets } = await query(
     `SELECT id, asset_key, kind, mime, sha256, caption, alt_text, sort_order
        FROM topic_assets
       WHERE topic_id=$1 AND displayed=true
       ORDER BY sort_order, id`,
     [topicId],
   );
+  const rows = visible[0].school_code === 'secondary' && visible[0].class_name === 'SS 1' && visible[0].subject_name === 'Agricultural Science'
+    ? storedAssets.filter((asset: any) => agriculturalScienceAssetDeliverable(visible[0], asset))
+    : storedAssets;
   // Licence/credit records for third-party material in this lesson (jss3Attributions.ts): delivered with the lesson,
   // matched by exact identity. A requested cover/logo is reported displayed only if a displayed asset with that key exists.
   const boundKeys = new Set<string>(rows.map((r: any) => r.asset_key));
@@ -308,13 +311,17 @@ router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
   if (scope === null) return res.status(404).json({ error: 'Asset not found' });
   // Scope + metadata first (no bytes), so a 304 never reads the image.
   const { rows: meta } = await query(
-    `SELECT a.mime, a.sha256
+    `SELECT a.mime, a.sha256, a.asset_key, t.id AS topic_id, t.school_code, t.class_name, t.term_label, t.title,
+            t.source_file, t.source_reference, s.name AS subject_name
        FROM topic_assets a
        JOIN topics t ON t.id=a.topic_id
+       LEFT JOIN subjects s ON s.id=t.subject_id
       WHERE a.id=$1 AND a.displayed=true AND t.school_code=$2${scope}`,
     params,
   );
   if (!meta[0]) return res.status(404).json({ error: 'Asset not found' });
+  if (meta[0].school_code === 'secondary' && meta[0].class_name === 'SS 1' && meta[0].subject_name === 'Agricultural Science' &&
+      !agriculturalScienceAssetDeliverable(meta[0], meta[0])) return res.status(404).json({ error: 'Asset not found' });
 
   const etag = `"${meta[0].sha256}"`;
   res.setHeader('ETag', etag);
