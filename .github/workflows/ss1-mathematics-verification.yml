@@ -5,6 +5,8 @@ on:
     branches: [master]
     paths:
       - "backend/src/db/ss1/subjects/mathematics.json"
+      - "backend/src/db/ss1/assets/mathematics/**"
+      - "docs/ss1/resources/mathematics-assets-*.csv"
       - "backend/src/routes/learning.ts"
       - "backend/src/utils/ss1MathematicsDeliveryCorrection.ts"
       - "backend/src/db/ss1/subjectPackageSchema.ts"
