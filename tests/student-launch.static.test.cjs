@@ -61,3 +61,20 @@ test('French listening activity speaks the lesson dialogue and provides transcri
   assert.match(screen, /Compréhension orale/);
   assert.match(pkg, /"expo-speech": "~56\.0\.3"/);
 });
+
+test('French listening screen plays the two committed offline dialogue recordings', () => {
+  const screen = read('mobile/src/screens/FrenchListeningScreen.tsx');
+  const pkg = read('mobile/package.json');
+  assert.match(screen, /from 'expo-audio'/);
+  assert.match(screen, /useAudioPlayer\(STANDARD_AUDIO\)/);
+  assert.match(screen, /useAudioPlayer\(SLOW_AUDIO\)/);
+  assert.match(screen, /SS1_French_Dialogue_standard\.mp3/);
+  assert.match(screen, /SS1_French_Dialogue_slow\.mp3/);
+  assert.match(pkg, /"expo-audio": "~56\.0\.13"/);
+  for (const asset of [
+    'mobile/assets/french/SS1_French_Dialogue_standard.mp3',
+    'mobile/assets/french/SS1_French_Dialogue_slow.mp3',
+  ]) {
+    assert.ok(fs.statSync(path.join(root, asset)).size > 10000, asset + ' must be a real audio asset');
+  }
+});
