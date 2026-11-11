@@ -71,3 +71,43 @@ test('Regression examples preserve accents, the missing alphabet letter and futu
 });
 // The full-source compiler/parser comparison is a separate required integration check.
 // Synthetic guard tests above do NOT prove authored source-body references equal runtime rows.
+
+test('Coverage references resolve and every partial item remains explicitly blocking', () => {
+  const p = packageSchema.parse(raw);
+  const lessonIds = new Set(p.lessons.map(l => l.id));
+  const sourceIds = new Set(p.sources.map(s => s.source_id));
+  const ruleIds = new Set(p.source_rules.map(r => r.id));
+  assert.equal(p.lessons.length, 37);
+  assert.equal(p.coverage.length, 52);
+  for (const c of p.coverage) {
+    assert(sourceIds.has(c.source_id), `unknown source in ${c.id}`);
+    assert(c.evidence.length > 0, `missing evidence in ${c.id}`);
+    for (const id of c.lesson_ids) {
+      assert(
+        lessonIds.has(id) || ruleIds.has(id) || [...sourceIds].some(sourceId => id.startsWith(sourceId + ':BODY:')),
+        `unresolved coverage target ${c.id} -> ${id}`
+      );
+    }
+    if (c.status === 'IMPLEMENTED_EQUIVALENT') {
+      assert(c.lesson_ids.some(id => lessonIds.has(id)), `equivalent without a lesson: ${c.id}`);
+    }
+  }
+  const blocking = p.open_items.filter(item => item.blocks_delivery);
+  assert(blocking.length > 0, 'French must not be declared complete while delivery blockers remain');
+  for (const c of p.coverage.filter(item => item.status === 'PARTIAL' || item.status === 'UNRESOLVED')) {
+    assert(blocking.some(item => item.affected_ids.includes(c.id) || item.affected_ids.includes(c.objective_locator)), `partial coverage lacks a delivery blocker: ${c.id}`);
+  }
+});
+test('Package does not claim completion, approval, or verification prematurely', () => {
+  const p = packageSchema.parse(raw);
+  assert.equal(p.package_status, 'PENDING');
+  for (const l of p.lessons) {
+    assert.equal(l.state.content_approval, 'PENDING');
+    assert.equal(l.state.approval_reference, null);
+    assert.equal(l.state.implementation, 'IMPLEMENTED');
+    assert.equal(l.state.verification, 'DEFERRED');
+    assert.equal(l.state.verification_reference, null);
+  }
+  assert(p.open_items.some(item => item.blocks_delivery));
+  assert.equal(p.assets.length, 0);
+});
