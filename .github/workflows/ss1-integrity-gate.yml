@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   integrity:
-    name: Integrity (hashes, JSON, conflict markers, all subject packages)
+    name: Integrity (lockfile, types, hashes, JSON, conflict markers, packages)
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -41,6 +41,12 @@ jobs:
           for b in bad: print(f"::error::{b}")
           sys.exit(1 if bad else 0)
           PY
+      - name: TypeScript typecheck (backend and mobile)
+        run: |
+          ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
+          ./node_modules/.bin/tsc --noEmit -p mobile/tsconfig.json
+      - name: SVG safety filter tests
+        run: node --import tsx --test tests/ss1/svg-safety.test.mts
       - name: Stored hashes and byte counts match content
         run: node --import tsx backend/src/db/ss1/refreshIntegrityHashes.ts --check
       - name: Validate every subject package
