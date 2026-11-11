@@ -9,6 +9,7 @@ import { attributionsForTopic, publicAttribution } from '../db/jss3Attributions.
 import { resolveSequenceGroup } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
 import { resolveSs1Delivery, safeSs1Topic, retireStaleSs1Cache, ss1AssessmentDeliverable, ss1WithdrawnAssessmentIds } from '../utils/ss1CateringDeliveryCorrection.js';
+import { resolveSs1FrenchDelivery, retireStaleSs1FrenchCache } from '../utils/ss1FrenchDeliveryCorrection.js';
 import { resolveAgriculturalScienceDelivery, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
 
@@ -487,6 +488,17 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
         delivery_correction: { id: ss1Delivery.correctionId, status: 'withheld', provenance: 'withheld pending source review' },
         note: 'This Catering Craft topic is temporarily unavailable while its source is checked.' });
     }
+  }
+
+  // SS1 French source corrections are served from the approved lesson package.
+  // The resolver only replaces an exact source-body fingerprint for this
+  // class/subject/term/file, so unrelated French topics are left untouched.
+  const frenchDelivery = resolveSs1FrenchDelivery(topic);
+  if (frenchDelivery) {
+    await retireStaleSs1FrenchCache(query, topic.id, frenchDelivery);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    topic.summary = frenchDelivery.text;
   }
   const agriculturalScienceDelivery = resolveAgriculturalScienceDelivery(topic);
   if (agriculturalScienceDelivery) {
