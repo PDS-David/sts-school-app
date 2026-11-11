@@ -40,9 +40,9 @@
     "VISUAL": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 92,
+    "IMPLEMENTED_TESTING_DEFERRED": 93,
     "PENDING": 23,
-    "BLOCKED": 7
+    "BLOCKED": 6
   },
   "items": [
     {
@@ -3217,8 +3217,8 @@
         "FR-SCOPE-AUTHORING-FINISH"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "package_status PENDING; all 27 lessons content_approval PENDING, verification DEFERRED, no approval_reference.",
-      "completion_condition": "Approval references and later verification evidence exist; none is fabricated here."
+      "implementation_reference": "Subject package remains PENDING; all 40 authored lessons have content_approval PENDING, approval_reference null, verification DEFERRED and verification_reference null. No owner approval is fabricated.",
+      "completion_condition": "Owner/teacher reviews and explicitly approves the 40 authored lessons; then separate verification is completed. This is an owner action, not an authoring task."
     },
     {
       "id": "FR-SCOPE-AUTHORING-FINISH",
@@ -3502,9 +3502,9 @@
       "depends_on": [
         "FR-WK-T1-W05"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Blocked 2026-11-08: FRENCH_SOURCE_NOTES.md identifies a drawing at document.xml paragraph 278 but does not provide a readable visual disposition. Original member bytes/render are not accessible in this execution session. Do not infer its content from the replacement punctuation list.",
-      "completion_condition": "Inspect the original rendered paragraph at readable resolution; record the exact punctuation mark, compare with Unicode replacement, and close only with visual evidence."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Original DOCX object enumerated at direct-body child 277; rendered source page 10 visually inspected. It labels punctuation signs and adds no diagram beyond the Unicode punctuation characters. SUP-SS1-FRENCH-ACCENTS-T1 includes the marks and a question example. See docs/ss1/work/microtasks/french/VISUAL_DISPOSITION.md.",
+      "completion_condition": "Visual content is dispositioned and represented as accessible Unicode text; no image asset is required."
     },
     {
       "id": "FR-OWNER-T1-W06-OCCUPATIONS",
