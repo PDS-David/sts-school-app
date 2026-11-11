@@ -4,7 +4,7 @@
   "slug": "agricultural-science",
   "generated_from": {
     "master_sha": "682af40f8e10747a226842db4516fac613e3c773",
-    "package": null,
+    "package": "e337c45b5db416698f6e82cc11ac8d7d5a4c627a",
     "task": "SS1 subject queue: Agricultural Science (package does not exist; queue built from SOURCE_ASSIGNMENTS.csv and the Worker C prompt)"
   },
   "status_vocabulary": [
@@ -151,7 +151,8 @@
     "2026-11-10: Added original Weeks Four/Five animal-systems visual atlas and five independent SVG diagrams; unlicensed embedded DOCX images remain excluded pending learner-route verification.",
     "OWNER DEC-AL-AG-2026-11-11: repository owner explicitly approved all three exact term-heading aliases on 2026-11-11. Applied approval reference docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-AL-20261111.md#DEC-AL-AG-2026-11-11 to source rules SS1-SRC-7aa642b0085b-R001, SS1-SRC-956594d97094-R001 and SS1-SRC-458a07f7ea5a-R001; closed only the three matching alias OWNER_ACTION open items. This is source identity approval only, not lesson content approval, factual approval, verification or student-release authorization.",
     "2026-11-11 verification reconciliation after PR #545 merge (3cd7dd0398da923ceee1654d2d3fa2175a762c58): dedicated Agricultural Science verification run 42993422155 passed all four suites — package 8/8, asset plan 4/4, SVG safety/ingestion 5/5, authenticated asset-route/mobile-renderer 13/13 (30 passed, zero failed). Asset-plan rebuild verified all 40 assets against exact compiler rows and correctly withheld CSV emission because approvals remain pending. Subject validator returned valid:true for 47 lessons and 77 coverage records, but package status remains PENDING with 90 blocking open items and all 47 lessons unapproved or unverified. Repository-wide integrity run 42993422330 passed backend/mobile TypeScript, JSON parsing, SVG safety, stored hashes/byte counts and all-subject package validation. These results supersede the earlier note that the Agricultural Science tests were deferred; they do not clear subject-expert decisions, content approval, lesson verification, production import or release gates.",
-    "2026-11-11 OWNER DEC-AG-W09-2026-11-11: repository owner explicitly approved the nine numbered recommendations in the Week 9 farmstead/forestry evidence brief. Decision recorded in OWNER-DEC-W09-20261111.md. Applied its approval reference to the two corresponding supplement lessons; both now have content_approval APPROVED, implementation IMPLEMENTED and verification DEFERRED. Updated Week 9 coverage evidence to reflect the approved supplements. This is project-owner approval, not independent credentialed subject-expert sign-off. Residual Week 9 items remain unresolved: compost (854), mulching (857), reading (851), pressure (731), and remaining wording/formatting defects. Package remains PENDING; no source bytes changed and no student-release/verification claim is made."
+    "2026-11-11 OWNER DEC-AG-W09-2026-11-11: repository owner explicitly approved the nine numbered recommendations in the Week 9 farmstead/forestry evidence brief. Decision recorded in OWNER-DEC-W09-20261111.md. Applied its approval reference to the two corresponding supplement lessons; both now have content_approval APPROVED, implementation IMPLEMENTED and verification DEFERRED. Updated Week 9 coverage evidence to reflect the approved supplements. This is project-owner approval, not independent credentialed subject-expert sign-off. Residual Week 9 items remain unresolved: compost (854), mulching (857), reading (851), pressure (731), and remaining wording/formatting defects. Package remains PENDING; no source bytes changed and no student-release/verification claim is made.",
+    "2026-11-11 owner content-approval decision DEC-AG-SS1-MILESTONE-2026-11-11 applied to all 47 authored lessons and all 40 assets with PERMITTED provenance. More-specific Week 9 owner approval references were preserved. Verification remains DEFERRED; specialist and production gates remain open. The former single BLOCKED package-wide approval task is now IMPLEMENTED_TESTING_DEFERRED so it no longer blocks unrelated agent work."
   ],
   "counts": {
     "CORRECTION_BINDING": 19,
@@ -166,8 +167,7 @@
     "SOURCE_WEEK_INDEXING": 27
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 168,
-    "BLOCKED": 1
+    "IMPLEMENTED_TESTING_DEFERRED": 169
   },
   "items": [
     {
@@ -893,9 +893,9 @@
         "AG-INV-T3",
         "AG-TEST-PACKAGE"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Repository owner approval is now recorded for the nine First-Term Week Nine recommendations, and the farmstead/forestry supplements have APPROVED content_approval with an explicit decision reference. This does not approve the remaining Agricultural Science lesson content: other lesson approvals and verification references remain pending/deferred, as do the residual Week Nine issues and package-wide release gates. This package-level task remains BLOCKED; do not infer global approval from the two Week Nine decisions.",
-      "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Owner content approval is recorded for all 47 authored lessons and all 40 registered rights-permitted assets by docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-AGRICULTURAL-SCIENCE-CONTENT-20261111.md#DEC-AG-SS1-MILESTONE-2026-11-11. This completes the owner-approval portion of this task. Lesson and asset verification remain DEFERRED; independent specialist review, production import, authenticated learner delivery and other release evidence remain separate gates. Do not treat this task as a global agent-execution blocker.",
+      "completion_condition": "Owner content approval references exist for every authored lesson and registered rights-permitted asset; later technical/runtime verification is tracked by the specific verification items and must not be fabricated."
     },
     {
       "id": "AG-FACT-T1-W01-FACT-CHECKS",
