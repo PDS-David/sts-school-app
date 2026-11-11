@@ -158,6 +158,18 @@
         "explanation": "Scheme rows for weeks 11 (Revision) and 12 (Examination). Neither has a parsed row or a teaching body: the document has exactly ten WEEK markers (WEEK 1 to WEEK 10) and no text after the last body. The rows are accounted as scheme-only; no revision or examination lesson is invented."
       },
       "kind": "SCHEME_ONLY"
+    },
+    {
+      "id": "SS1-SRC-5c0149cda71d-R004",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "source_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206",
+      "anchor": "11.  Revision",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "PHYS-PRE-T1 word-extractor 1.0.4 getBody() line 34; exact line SHA-256 8f045eb8ee1a46d1552147f1ca773c0cd6726709ab0ca6a309507c58072b6ef4; anchor occurs once in pre-body scheme lines 24–34 and matches no parsed body.",
+        "explanation": "Scheme week 11 is labelled Revision but has no parsed row and no teaching body. It is accounted as a scheme-only marker; no revision lesson or lesson objectives are invented. Any SS1 revision plan is a separate teacher/owner decision."
+      }
     }
   ],
   "lessons": [
@@ -13101,6 +13113,22 @@
         {
           "locator": "SchoolGist, Physics SSS 1 Third Term PDF, Week Ten, lines 660–713.",
           "explanation": "Close-equivalent comparison includes the scheme topic, formulas, classwork and assignment. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-REVISION-SCHEME",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Scheme week 11 (Revision): no parsed teaching body exists.",
+      "objective_locator": "PHYS-PRE-T1 word-extractor 1.0.4 getBody() line 34; anchor 11.  Revision; SHA-256 8f045eb8ee1a46d1552147f1ca773c0cd6726709ab0ca6a309507c58072b6ef4.",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-5c0149cda71d-R004"
+      ],
+      "evidence": [
+        {
+          "locator": "PHYS-PRE-T1: line 34, scheme row 11; no parsed WEEK body follows this scheme row.",
+          "explanation": "Revision is a scheme-only marker, not a teaching lesson. It is preserved and mapped without inventing a revision programme."
         }
       ]
     }
