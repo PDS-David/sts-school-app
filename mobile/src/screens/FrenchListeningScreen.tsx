@@ -7,27 +7,20 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 
 type DialogueLine = { speaker: 'Ada' | 'Le bibliothécaire'; text: string; translation: string };
 const DIALOGUE: DialogueLine[] = [
-  { speaker: 'Ada', text: 'Bonjour, monsieur. Je cherche un livre pour mon cours de français.', translation: 'Good morning, sir. I am looking for a book for my French class.' },
-  { speaker: 'Le bibliothécaire', text: 'Bonjour, Ada. Quel genre de livre cherchez-vous ?', translation: 'Good morning, Ada. What kind of book are you looking for?' },
-  { speaker: 'Ada', text: 'Je voudrais un livre avec des histoires courtes, s’il vous plaît.', translation: 'I would like a book with short stories, please.' },
-  { speaker: 'Le bibliothécaire', text: 'Très bien. Les livres de français sont sur la deuxième étagère, à gauche.', translation: 'Very good. The French books are on the second shelf, on the left.' },
+  { speaker: 'Ada', text: 'Bonjour, monsieur. Je cherche un livre sur les animaux.', translation: 'Good morning, sir. I am looking for a book about animals.' },
+  { speaker: 'Le bibliothécaire', text: 'Bonjour. Regardez la deuxième étagère, à gauche.', translation: 'Good morning. Look at the second shelf, on the left.' },
   { speaker: 'Ada', text: 'Merci. Est-ce que je peux emprunter ce livre ?', translation: 'Thank you. Can I borrow this book?' },
-  { speaker: 'Le bibliothécaire', text: 'Oui, bien sûr. Avez-vous votre carte de bibliothèque ?', translation: 'Yes, of course. Do you have your library card?' },
-  { speaker: 'Ada', text: 'Oui, la voici.', translation: 'Yes, here it is.' },
-  { speaker: 'Le bibliothécaire', text: 'Merci. Vous devez rendre le livre vendredi prochain.', translation: 'Thank you. You must return the book next Friday.' },
-  { speaker: 'Ada', text: 'Vendredi prochain ? D’accord. Est-ce que la bibliothèque ouvre à huit heures demain ?', translation: 'Next Friday? All right. Does the library open at eight o’clock tomorrow?' },
-  { speaker: 'Le bibliothécaire', text: 'Oui. Elle ouvre à huit heures et ferme à quatre heures.', translation: 'Yes. It opens at eight o’clock and closes at four o’clock.' },
-  { speaker: 'Ada', text: 'Parfait. Merci beaucoup, monsieur. Au revoir.', translation: 'Perfect. Thank you very much, sir. Goodbye.' },
-  { speaker: 'Le bibliothécaire', text: 'Au revoir, Ada. Bonne journée !', translation: 'Goodbye, Ada. Have a good day!' },
+  { speaker: 'Le bibliothécaire', text: 'Oui. Avez-vous votre carte ?', translation: 'Yes. Do you have your card?' },
+  { speaker: 'Ada', text: 'Oui, la voici. Quand dois-je rendre le livre ?', translation: 'Yes, here it is. When must I return the book?' },
+  { speaker: 'Le bibliothécaire', text: 'Vendredi prochain.', translation: 'Next Friday.' },
+  { speaker: 'Ada', text: 'Très bien. Merci et au revoir.', translation: 'Very good. Thank you and goodbye.' },
+  { speaker: 'Le bibliothécaire', text: 'Au revoir.', translation: 'Goodbye.' },
 ];
 const QUESTIONS = [
-  { q: 'Où se passe la conversation ?', a: 'À la bibliothèque.' },
-  { q: 'Que cherche Ada ?', a: 'Un livre pour son cours de français.' },
-  { q: 'Quel genre de livre veut-elle ?', a: 'Un livre avec des histoires courtes.' },
-  { q: 'Où sont les livres de français ?', a: 'Sur la deuxième étagère, à gauche.' },
+  { q: 'Quel livre cherche Ada ?', a: 'Un livre sur les animaux.' },
+  { q: 'Où doit-elle regarder ?', a: 'La deuxième étagère, à gauche.' },
   { q: 'Quand doit-elle rendre le livre ?', a: 'Vendredi prochain.' },
-  { q: 'À quelle heure la bibliothèque ouvre-t-elle ?', a: 'À huit heures.' },
-  { q: 'À quelle heure ferme-t-elle ?', a: 'À quatre heures.' },
+  { q: 'Écrivez une demande polie pour emprunter un livre.', a: 'Est-ce que je peux emprunter ce livre, s’il vous plaît ?' },
 ];
 
 export default function FrenchListeningScreen({ navigation }: any) {
