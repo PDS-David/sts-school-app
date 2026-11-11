@@ -6,7 +6,7 @@ import path from 'node:path';
 import { tmpdir } from 'node:os';
 import { buildAssetPlan, writeAssetPlanArtifacts } from '../../scripts/ss1/build_asset_plan.mjs';
 
-const validSvg = Buffer.from('<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" width="100" height="50" viewBox="0 0 100 50"><path d="M0 0 L100 50" stroke="#000"/></svg>');
+const validSvg = Buffer.from('<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" width="100" height="50" viewBox="0 0 100 50"><style>.label{font:700 18px Arial,sans-serif;fill:#18324b}</style><path d="M0 0 L100 50" stroke="#000"/></svg>');
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 
 function fixture(approval = 'APPROVED') {
