@@ -8,6 +8,8 @@
 
 > This is a review aid, not an approval. No teacher or subject-expert approval is implied. Each lesson must be reviewed against its full body, original source, assessment marking guide, provenance, and any linked assets/corrections in the pinned package. Record decisions only from a real named reviewer.
 
+> **Status update — 11 November 2026:** This register was generated before the repository owner's milestone decision. Owner content approval is now recorded for all 47 lessons under [DEC-AG-SS1-MILESTONE-2026-11-11](OWNER-DEC-AGRICULTURAL-SCIENCE-CONTENT-20261111.md#DEC-AG-SS1-MILESTONE-2026-11-11). The two Week 9 lessons retain their more-specific owner decision. This is project-owner content approval, not independent subject-expert sign-off. All 47 lesson verification states remain `DEFERRED`; do not use this approval update as evidence of technical, production or classroom verification.
+
 ## Batch summary
 - **1st Term:** 23 lessons; 90 practice questions; 657 total practice marks.
 - **2nd Term:** 9 lessons; 58 practice questions; 280 total practice marks.

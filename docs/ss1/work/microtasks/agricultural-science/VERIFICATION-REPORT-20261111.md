@@ -49,3 +49,8 @@ The Agricultural Science workflow executed:
 ## Correct interpretation
 
 The package's structural, parser/compiler, hash, marking and static delivery-integrity checks are now evidenced as passing. This is a material technical milestone, but it is **not** a student-ready certification. The remaining blockers are intentionally retained so the fail-closed learner adapter cannot expose unapproved or unverified corrected content.
+
+
+## Owner approval addendum — 11 November 2026
+
+After this report was generated, the repository owner recorded milestone content approval for all 47 authored lessons and all 40 assets with `PERMITTED` provenance. See [owner decision](OWNER-DEC-AGRICULTURAL-SCIENCE-CONTENT-20261111.md#DEC-AG-SS1-MILESTONE-2026-11-11). This closes the owner content-approval portion only. It does not close the 56 verification, 26 factual-review or 8 content/structure blockers reported above; lesson and asset verification remain deferred, and the package remains `PENDING`. Independent veterinary review, production import, authenticated learner delivery and visual device acceptance remain outstanding.
