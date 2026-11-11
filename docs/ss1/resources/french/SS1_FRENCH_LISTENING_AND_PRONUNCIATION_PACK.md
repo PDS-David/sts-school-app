@@ -29,7 +29,7 @@ These are supplementary learning resources, not official WAEC/NECO recordings an
 **Level:** SS1 beginner  
 **Skills:** Listening for gist and detail, polite requests, school vocabulary, numbers/time references and turn-taking  
 **Voices:** Two (Ada and the librarian)  
-**Suggested duration:** 40–60 seconds at a clear beginner pace
+**Suggested duration:** one short beginner dialogue; use the standard or slow bundled recording
 
 ### Teacher/recording script
 
@@ -68,29 +68,29 @@ These are supplementary learning resources, not official WAEC/NECO recordings an
 
 ### Listening questions — 10 marks
 
-1. What is Ada looking for? (1)
-2. What is the book about? (1)
-3. Where should Ada look? (1)
-4. Which shelf should she use? (1)
-5. Is the shelf on the left or right? (1)
-6. What does Ada ask permission to do? (1)
-7. What does the librarian ask her to show? (1)
-8. When must Ada return the book? (1)
-9. Give one polite expression used by Ada. (1)
-10. How does the conversation end? (1)
+1. Quel livre cherche Ada ?
+2. Où doit-elle regarder ?
+3. Que demande Ada au bibliothécaire ?
+4. Que demande le bibliothécaire à Ada ?
+5. Que montre Ada ?
+6. Quand doit-elle rendre le livre ?
+7. Combien de personnes parlent dans le dialogue ?
+8. Qui indique où se trouve le livre ?
+9. Donnez une expression de politesse utilisée par Ada.
+10. Quelle expression termine la conversation ?
 
 ### Answer key
 
-1. A book.
-2. Animals.
-3. On the shelves.
-4. The second shelf.
-5. On the left.
-6. She asks to borrow the book.
-7. Her library card.
-8. Next Friday.
-9. « Merci » or « Très bien » in context; « s’il vous plaît » is not in this version of the dialogue.
-10. Ada says goodbye and the librarian replies « Au revoir ».
+1. Un livre sur les animaux.
+2. Sur la deuxième étagère, à gauche.
+3. Elle demande si elle peut emprunter le livre.
+4. Il lui demande si elle a sa carte.
+5. Sa carte.
+6. Vendredi prochain.
+7. Deux personnes : Ada et le bibliothécaire.
+8. Le bibliothécaire.
+9. « Merci ».
+10. « Au revoir ».
 
 ### Teacher administration
 
@@ -151,3 +151,19 @@ This pack supplements `SUP-SS1-FRENCH-DIALOGUE-T3` and the Third-Term revision m
 - Learn French with Natives, *First Steps in French*: https://www.learnfrenchwithnatives.com/learn/beginner-french/first-steps-in-french/
 - Copycat Cafe, *Free Audio Course*: https://copycatcafe.com/free-audio-course
 - Copycat Cafe, *Are you Martin?*: https://copycatcafe.com/french-audio-course/episode-2
+
+
+## 6. Bundled app recordings (offline playback)
+
+The two original dialogue recordings are now generated and committed as mobile app assets:
+
+- `mobile/assets/french/SS1_French_Dialogue_standard.mp3` — standard pace.
+- `mobile/assets/french/SS1_French_Dialogue_slow.mp3` — slower practice pace.
+
+The student listening screen loads both files locally through Expo Audio. Playback does not require a network connection once the app build containing these assets is installed. Students can choose either recording, stop playback, use the transcript/translation and complete the ten-mark comprehension quiz. Individual line replay and the full-dialogue device-speech fallback remain available.
+
+### Synthetic voice disclosure and attribution
+
+The recordings use the two-speaker `fr_FR-upmc-medium` Piper voice model: speaker 0 (Jessica) voices Ada; speaker 1 (Pierre) voices the librarian. The voice dataset is UPMC / MaryTTS UPMC Pierre data, licensed CC BY-SA 4.0. Attribution and model links are recorded in `mobile/assets/french/README.md`.
+
+These are synthetic recordings of original classroom dialogue. They are not human/native-speaker recordings, are not official WAEC/NECO audio, and do not replace a teacher's assessment of student pronunciation.

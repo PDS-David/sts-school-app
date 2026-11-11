@@ -7165,8 +7165,8 @@
     {
       "id": "FRENCH-EXAM-AUDIO",
       "kind": "OWNER_ACTION",
-      "detail": "The source Week 1 says 'Reference a une cassette' and 'Reference a une C.D selon WAEC ET NECO' but names no exam year, session, paper, track, publisher, title or rights holder. The student app now routes the Third-Term dialogue lesson into an in-app spoken listening activity using device French text-to-speech. The spoken dialogue is an original curriculum equivalent, not a WAEC/NECO recording or a stored MP3/WAV file.",
-      "required_action": "The app now provides spoken playback for the original dialogue. Owner/teacher must still approve this as the classroom equivalent and explicitly accept omission of the unidentified official recording, or supply the exact exam-board recording identity and a permitted audio file/licence (exam board, year/session, paper/track, language and rights). Do not label device-generated speech as official WAEC/NECO audio.",
+      "detail": "The source Week 1 says 'Reference a une cassette' and 'Reference a une C.D selon WAEC ET NECO' but names no exam year, session, paper, track, publisher, title or rights holder. Two original synthetic MP3s are committed under mobile/assets/french (standard and slow), and the FrenchListeningScreen plays them offline through Expo Audio. The UPMC Piper two-speaker voice model is attributed under CC BY-SA 4.0. These are original classroom equivalents, not WAEC/NECO recordings or human/native-speaker recordings.",
+      "required_action": "Owner/teacher must approve the original recorded dialogue as the classroom listening equivalent and explicitly accept omission of the unidentified official recording, or supply the exact exam-board recording identity and a permitted audio file/licence (exam board, year/session, paper/track, language and rights). Do not label the synthetic MP3s as official WAEC/NECO audio.",
       "affected_ids": [
         "SS1-SRC-8a2ec1fe30e3",
         "SUP-SS1-FRENCH-DIALOGUE-T3"
