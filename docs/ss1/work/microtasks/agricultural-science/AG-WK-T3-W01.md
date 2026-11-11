@@ -41,3 +41,8 @@ Only five selected tools have descriptions/functions: cutlass; spade and shovel;
 - Parsed package/queue JSON; checked unique IDs and open-item links for PARTIAL/UNRESOLVED coverage.
 - Importer, tests, TypeScript, DB and device checks **not run**; testing remains deferred by owner.
 - No source bytes, lesson bodies, rules, corrections, assets, shared code or other subjects modified.
+
+
+## Implementation follow-up (2026-11-11)
+
+The exact Week One source row `SS1-SRC-458a07f7ea5a:BODY:0c06c5383b974616b0e06a23a1165fe3beeeec8b89b232c0383f83a6d2e056ff` is now bound by `CORR-AG-T3-W01-TOOL-NAMES-REPLACEMENT` to `SUP-SS1-AGRICULTURAL-SCIENCE-T3-W01-TOOL-REFERENCE`. The replacement includes all 30 tool references, 30 original SVGs, selected tool descriptions, post-planting operations, maintenance and safety. It preserves the original “Hand towel” distractor at block 66 and corrects block 67 to “Hand Trowel” for transplanting. The lesson remains PENDING approval and DEFERRED verification; learner delivery is withheld until release gates pass.
