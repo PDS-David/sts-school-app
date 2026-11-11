@@ -39,3 +39,25 @@ test('unknown question types are rejected before marking', () => {
   assert.match(s, /\['mcq', 'essay'\]\.includes\(q\.type\)/);
   assert.match(s, /status\(422\)/);
 });
+
+test('SS1 French dialogue topic routes through its lesson into the listening activity', () => {
+  const topics = read('mobile/src/screens/SubjectTopicsScreen.tsx');
+  const detail = read('mobile/src/screens/TopicDetailScreen.tsx');
+  assert.match(topics, /openListening: String\(subjectName\)\.toLowerCase\(\)\.includes\('french'\)/);
+  assert.match(topics, /\/dialo\(\?:gue\|que\)\/i\.test/);
+  assert.match(detail, /if \(openListening && !routedToListening\.current\)/);
+  assert.match(detail, /navigation\.navigate\('FrenchListening'/);
+});
+test('French listening activity speaks the lesson dialogue and provides transcript and comprehension', () => {
+  const screen = read('mobile/src/screens/FrenchListeningScreen.tsx');
+  const pkg = read('mobile/package.json');
+  assert.match(screen, /Speech\.speak\(/);
+  assert.match(screen, /language: 'fr-FR'/);
+  assert.match(screen, /Speech\.getAvailableVoicesAsync\(\)/);
+  assert.match(screen, /Speech\.stop\(\)/);
+  assert.match(screen, /const DIALOGUE/);
+  assert.match(screen, /const QUESTIONS/);
+  assert.match(screen, /Dialogue transcript/);
+  assert.match(screen, /Compréhension orale/);
+  assert.match(pkg, /"expo-speech": "~56\.0\.3"/);
+});

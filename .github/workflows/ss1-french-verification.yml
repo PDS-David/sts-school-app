@@ -1,0 +1,141 @@
+name: SS1 French source, package, hash and regression verification
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "backend/src/db/ss1/subjects/french.json"
+      - "mobile/src/screens/FrenchListeningScreen.tsx"
+      - "mobile/src/screens/SubjectTopicsScreen.tsx"
+      - "mobile/src/screens/TopicDetailScreen.tsx"
+      - "mobile/src/navigation/StudentTabs.tsx"
+      - "mobile/package.json"
+      - "tests/student-launch.static.test.cjs"
+      - "backend/src/db/ss1/sourceRegistry.json"
+      - "backend/src/db/ss1/compiler.ts"
+      - "backend/src/db/ss1/subjectPackageSchema.ts"
+      - "backend/src/db/ingestTopics.ts"
+      - "backend/package.json"
+      - "scripts/ss1/verify_french_package_sources.mts"
+      - "tests/ss1/french.package.test.mts"
+      - ".github/workflows/ss1-french-verification.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  french:
+    name: Verify SS1 French sources, coverage package, and correction bindings
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install backend parser dependencies without changing lockfiles
+        working-directory: backend
+        run: npm install --ignore-scripts --no-package-lock --no-audit --no-fund
+
+      - name: Verify source archive and extract only the three registered French source members
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, zipfile
+          from pathlib import Path, PurePosixPath
+
+          root = Path(os.environ["GITHUB_WORKSPACE"])
+          archive = root / "docs/ss1/sources/SSS1-original.zip"
+          package = json.loads((root / "backend/src/db/ss1/subjects/french.json").read_text(encoding="utf-8"))
+          registry = json.loads((root / "backend/src/db/ss1/sourceRegistry.json").read_text(encoding="utf-8"))
+          expected_archive_sha = "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e"
+          actual_archive_sha = hashlib.sha256(archive.read_bytes()).hexdigest()
+          if actual_archive_sha != expected_archive_sha:
+              raise SystemExit(f"ARCHIVE_HASH_MISMATCH expected={expected_archive_sha} actual={actual_archive_sha}")
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "french-source-members"
+          output.mkdir(mode=0o700, parents=True, exist_ok=False)
+          registry_by_id = {row["source_id"]: row for row in registry}
+          verified = []
+          with zipfile.ZipFile(archive) as zf:
+              for source in package["sources"]:
+                  record = registry_by_id.get(source["source_id"])
+                  if not record:
+                      raise SystemExit(f"MISSING_REGISTRY_SOURCE {source['source_id']}")
+                  if record["sha256"] != source["sha256"] or record["archive_member"] != source["archive_member"]:
+                      raise SystemExit(f"PACKAGE_REGISTRY_MISMATCH {source['source_id']}")
+                  member = source["archive_member"]
+                  rel = PurePosixPath(member)
+                  if rel.is_absolute() or ".." in rel.parts or "\\" in member:
+                      raise SystemExit(f"UNSAFE_MEMBER_PATH {member}")
+                  info = zf.getinfo(member)
+                  if info.file_size != int(record["bytes"]):
+                      raise SystemExit(f"MEMBER_SIZE_MISMATCH {member}")
+                  data = zf.read(member)
+                  actual_member_sha = hashlib.sha256(data).hexdigest()
+                  if actual_member_sha != source["sha256"]:
+                      raise SystemExit(f"MEMBER_HASH_MISMATCH {member}")
+                  target = output / f"{source['source_id']}.docx"
+                  with target.open("xb") as handle:
+                      handle.write(data)
+                  verified.append({"source_id": source["source_id"], "bytes": len(data), "sha256": actual_member_sha})
+          print(json.dumps({"archive_sha256": actual_archive_sha, "verified_members": verified}, indent=2))
+          PY
+
+      - name: Upload hash-verified source members for detailed curriculum inspection
+        uses: actions/upload-artifact@v4
+        with:
+          name: ss1-french-source-members
+          path: |
+            ${{ runner.temp }}/french-source-members/*.docx
+            backend/src/db/ss1/subjects/french.json
+          retention-days: 1
+          if-no-files-found: error
+
+      - name: Print canonical authored-body hashes for review
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          p = json.loads(Path("backend/src/db/ss1/subjects/french.json").read_text(encoding="utf-8"))
+          mismatches = []
+          for lesson in p["lessons"]:
+              actual = hashlib.sha256(lesson["body"].encode("utf-8")).hexdigest()
+              if actual != lesson["body_sha256"]:
+                  mismatches.append({"lesson_id": lesson["id"], "expected": lesson["body_sha256"], "actual": actual})
+          if mismatches:
+              raise SystemExit("AUTHORED_BODY_HASH_MISMATCH " + json.dumps(mismatches))
+          print(json.dumps({"verified_authored_body_hashes": len(p["lessons"])}, indent=2))
+          PY
+
+      - name: Compile all French source documents with the production parser
+        working-directory: backend
+        env:
+          SS1_FRENCH_T1_FILE: ${{ runner.temp }}/french-source-members/SS1-SRC-945dfb24eaf6.docx
+          SS1_FRENCH_T2_FILE: ${{ runner.temp }}/french-source-members/SS1-SRC-b6245ffb69e5.docx
+          SS1_FRENCH_T3_FILE: ${{ runner.temp }}/french-source-members/SS1-SRC-8a2ec1fe30e3.docx
+        run: node --import tsx ../scripts/ss1/verify_french_package_sources.mts
+
+      - name: Run French package tests and structural validation
+        working-directory: backend
+        run: npm run test:ss1:french
+
+      - name: Install student app dependencies for TypeScript validation
+        working-directory: mobile
+        run: npm install --ignore-scripts --no-package-lock --no-audit --no-fund
+
+      - name: Type-check the student mobile app
+        working-directory: mobile
+        run: npx tsc --noEmit
+
+      - name: Verify student app French audio routing and playback integration
+        working-directory: .
+        run: node --test tests/student-launch.static.test.cjs
