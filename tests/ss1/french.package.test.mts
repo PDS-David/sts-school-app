@@ -30,6 +30,23 @@ test('Authored bodies have exact hashes and complete marking totals', () => {
     }
   }
 });
+test('French package keeps the approved lesson, practice and assessment inventory stable', () => {
+  const p = packageSchema.parse(raw);
+  assert.equal(p.lessons.length, 40);
+  assert.deepEqual(
+    ['1st Term', '2nd Term', '3rd Term'].map(term => p.lessons.filter(lesson => lesson.term === term).length),
+    [20, 9, 11],
+  );
+  assert.equal(p.lessons.reduce((count, lesson) => count + lesson.practice.length, 0), 218);
+  assert.equal(p.lessons.reduce((count, lesson) => count + lesson.practice.reduce((sum, question) => sum + question.marks, 0), 0), 715);
+  assert.equal(p.delivery_corrections.length, 28);
+  assert.equal(new Set(p.delivery_corrections.map(correction => correction.id)).size, 28);
+  assert.equal(p.coverage.length, 55);
+  assert.equal(p.coverage.filter(item => item.status === 'IMPLEMENTED_EQUIVALENT').length, 53);
+  assert.equal(p.coverage.filter(item => item.status === 'MARKER').length, 2);
+  assert.equal(p.open_items.length, 10);
+  assert(p.open_items.every(item => item.blocks_delivery === false));
+});
 test('Corrections bind a same-term replacement and preserve original identity hashes', () => {
   const p = packageSchema.parse(raw);
   for (const c of p.delivery_corrections) {
