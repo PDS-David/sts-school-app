@@ -176,3 +176,18 @@ Each lesson receives a unique reference in `state.approval_reference`. The refer
 - Lesson verification remains `DEFERRED` for all 152 lessons. This approval does not assert that tests, importer/database rehearsal, runtime/cache checks, device checks or deployment have passed.
 - The eight previously partial coverage rows are now implemented-equivalent, with no `PARTIAL` or `UNRESOLVED` coverage remaining. Other non-blocking source-scope follow-ups remain visible. Approval is not a claim that missing third-party textbook extracts, audio files or oral observations were supplied.
 - The delivery guard continues to withhold corrected English content until the separate verification gate is satisfied.
+
+
+## Pronunciation audio candidate approval
+
+The repository owner explicitly approved the longer British English pronunciation candidate in the project conversation on 2026-11-11 (“okay. Approved.”), following presentation of the candidate for student use.
+
+- Candidate: `SS1-English-Pronunciation-Model-British.mp3`
+- Script: “Ship. Sheep. Thin. Then. Day. My.”
+- Synthesis: eSpeak 1.48.15, `en-gb`, 16 kHz mono MP3, 8 kbps.
+- Duration: 7.092 seconds.
+- File size: 7,316 bytes.
+- SHA-256: `47511ff6000a7f35581cc0dcc8b6eebeeb93e07ef9ebd9827df7a616248d8787`
+- Approval: owner-approved for student-use candidate, 2026-11-11.
+
+**Important implementation boundary:** this approval applies to the exact candidate identified by the SHA-256 above. The registered package asset still points to the older 1,988-byte recording (SHA-256 `d3f0b49f42b1bac3355228683e46b621bad904bb7287024aee33427836069aaa`) and remains `content_approval=PENDING` until the approved candidate bytes are committed at the registered asset path and the package metadata is updated and validated. Do not transfer this approval to the older recording. Teacher oral observation and learner speaking verification remain separate and deferred.
