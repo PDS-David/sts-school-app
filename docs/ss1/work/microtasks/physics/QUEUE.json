@@ -28,7 +28,8 @@
     "PHYS-PRE-T3 (2026-11-07, base 679ab8b4edf311c2c376d978f220a75071792cdf) inventoried the 3rd Term text outside the parsed rows: lines 1-14 only (title, scheme heading, 12 scheme rows; no reference list). Scheme weeks 11 (Revision) and 12 (Examination) have no parsed row or body. Finding for PHYS-FACT-T3-W05-SCHEME-MISMATCH: the Week 5 TOPIC spans two lines, and the importer title keeps only the first ('MATTER, ATOMIC STRUCTURE, STATES OF MATTER,'); the second line reads 'DIFFUSION, OSMOSIS, BROWNIAN MOTION' and the body does contain a 'Diffusion and Osmosis' section with a 'Diffusion:' definition, a rate-of-diffusion list, Graham's law and an 'Osmosis:' definition, so the earlier 'body has no diffusion/osmosis' reading is a title-truncation artefact, to be confirmed by that item.",
     "PHYS-LES-T1-W02-MICROMETER-READING (2026-11-08): authored SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING. Adds pitch/least-count calculation, main and circular scale reading, signed zero-error correction and an independent example (12.84 mm = 1.284 cm). Four keyed items total 8 marks; every marking array sums to its item total. COV-PHYS-T1-W02-OBJ-7 is IMPLEMENTED_EQUIVALENT; OBJ-4 now references the lesson but stays PARTIAL for the wider vernier/micrometer objective. The open item PHYSICS-T1-W02-MICROMETER remains blocking until PHYS-COR-T1-W02-BINDING binds the original row and corrects its inconsistent printed example. Fig. 3.4 was not inspected or used. Source/member verification is reused from the existing PHYS-WK-T1-W02 record, not repeated in this run. Testing deferred by owner.",
     "PHYS-PORT-D1-COV-T1 (2026-11-08): compared all eleven PR #71 first-term coverage rows against master. None copied because master already has finer objective-level entries; W1/W2 contain PARTIAL/UNRESOLVED objectives, W3-W10 have more granular coverage and retain their own reconciliation/section-boundary gaps, and W11 remains unresolved. No status upgraded and no duplicate coverage added. Full disposition in PHYS-PORT-D1-COV-T1.md. Original binary member not rehashed/rendered in this run; existing master source evidence reused. Testing deferred by owner.",
-    "PHYS-TEST-PACKAGE-NEW (2026-11-11): owner explicitly authorised completion of the Physics job and its verification work. Added tests/ss1/physics.package.test.mts on branch agent/physics-package-regression-20261111. It checks the three manifest source identities, schema/package identity, lesson hashes/objectives/practice marking, coverage target/source references, source-rule hash/anchor guards, delivery correction and asset/open-item references, and queue dependencies/counts. Test has not yet run; queue item remains PENDING until CI execution. No content approval or verification state was fabricated."
+    "PHYS-TEST-PACKAGE-NEW (2026-11-11): owner explicitly authorised completion of the Physics job and its verification work. Added tests/ss1/physics.package.test.mts on branch agent/physics-package-regression-20261111. It checks the three manifest source identities, schema/package identity, lesson hashes/objectives/practice marking, coverage target/source references, source-rule hash/anchor guards, delivery correction and asset/open-item references, and queue dependencies/counts. Test has not yet run; queue item remains PENDING until CI execution. No content approval or verification state was fabricated.",
+    "PHYS-WK-T2-W03 (2026-11-11): expanded SUP-SS1-PHYSICS-T2-W03-THERMAL-EXPANSION-SOLIDS to 4,919 characters and 13 fully keyed questions (31 marks); updated COV-PHYS-T2-W03-OBJ-1 to the exact parsed row 2 body ID/hash. SchoolGist Week Three PDF lines 234-296 used only as a close-equivalent scope/assessment comparison. The original .doc row body itself was not accessible in this execution (parsed_rows.json contains only metadata), so exact source examples, assignments, formula/notation defects and figures remain unverified. Evidence PHYS-WK-T2-W03.md; queue item BLOCKED, not falsely completed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -48,8 +49,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 34,
-    "BLOCKED": 15,
-    "PENDING": 40
+    "BLOCKED": 16,
+    "PENDING": 39
   },
   "total": 89,
   "items": [
@@ -721,8 +722,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 2 (source label 'WEEK THREE', title \"Expansion of Solid, Effect and Applications of Expansion\", 2792 characters, body sha256 35319222af7c43db21bfd51b1f897b2b74d81ebe320d3b8f97de427db549e303) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Scheme-level coverage mapped to parsed row 2 and the authored supplement was expanded in backend/src/db/ss1/subjects/physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W03.md. The exact registered original .doc body text was not retrievable in this execution (parsed_rows.json exposes only row title/length/hash), so exact source examples, assessment blocks, formula/notation defects and figures cannot be reconciled. A public close-equivalent PDF was used only for scope corroboration, not treated as the original. Keep blocked until the registered original member or a verified row extraction is inspected.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -3042,7 +3043,7 @@
   ],
   "review": {
     "date": "2026-11-11",
-    "reviewed_master_sha": "efc39c6288719026da5fc6e34ac12411669fa2bc",
+    "reviewed_master_sha": "dbc499c1b6da785c6df80dacc0b80c5ba8fa3067",
     "scope": "Physics package regression test authored; execution pending CI. Content approval, source-dependent full compiler parity, database and device acceptance remain separate.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
@@ -3061,10 +3062,9 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "PHYS-WK-T2-W02 lesson authored and objective-indexed; correction binding recorded. Mercury freezing point corrected using NIST; source boiling MCQ ambiguity retained as non-blocking. Tests deferred."
+    "notes": "Physics Week Three lesson expanded; source indexing remains blocked pending exact registered original row text and visual inventory. Regression test PR #574 merged; CI pending."
   },
   "next_runnable": [
-    "PHYS-WK-T2-W03",
     "PHYS-WK-T2-W04",
     "PHYS-WK-T2-W05",
     "PHYS-WK-T2-W06",
@@ -3098,7 +3098,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T2-W03",
     "PHYS-WK-T2-W04",
     "PHYS-WK-T2-W05",
     "PHYS-WK-T2-W06",
