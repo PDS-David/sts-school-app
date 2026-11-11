@@ -250,6 +250,7 @@ test('Agricultural Science learner delivery withholds corrected source rows unti
   const resolver = createAgriculturalScienceDeliveryResolver(p);
   const sourceTitles: Record<string, string> = {
     'CORR-AG-T3-W01-TOOL-NAMES-REPLACEMENT': 'SIMPLE FARM TOOLS',
+    'CORR-AG-T2-W07-PEAT-TYPO-REPLACEMENT': 'ROCK FORMATION AND TYPES',
     'CORR-AG-T3-W02-POWER-WATER-REPLACEMENT': 'FARM POWER',
     'CORR-AG-T3-W09-PIG-SAFE-REPLACEMENT': 'LIVESTOCK MANAGEMENT',
     'CORR-AG-T3-W10-CATTLE-SAFE-REPLACEMENT': 'LIVESTOCK MANAGEMENT II',
