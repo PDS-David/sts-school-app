@@ -71,9 +71,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 45,
+    "IMPLEMENTED_TESTING_DEFERRED": 48,
     "BLOCKED": 35,
-    "PENDING": 10
+    "PENDING": 7
   },
   "total": 90,
   "items": [
@@ -1947,8 +1947,8 @@
       "depends_on": [
         "PHYS-WK-T1-W05-W06"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Rule PHYS-R01 uses split_before_anchor with new_title, absent from master (reconciliation section 2). The contract warns that changed segmentation needs newly reviewed mappings and can cause a stored-snapshot mismatch.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The disposition is recorded in PHYS-PORT-D1-RULE-SPLIT.md. No parser split is applied: the existing combined source row is retained because the split would change content-bound row identity and require a reviewed coverage/compatibility migration. The limitation and its affected IDs are recorded in package open item PHYSICS-T1-W05-W06-SPLIT-IDENTITY.",
       "completion_condition": "Port recorded with an anchor shown unique in the source, or the limitation and its identity impact recorded as an open item. No importer or compiler run."
     },
     {
@@ -1977,8 +1977,8 @@
       "depends_on": [
         "PHYS-WK-T1-W05-W06"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). OI-PHYS-002 (OTHER, OPEN), reported from extracted text only. Not on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The extracted expression 'S = (v+u)t over 2' is mathematically equivalent to S = ((u+v)/2)t; the claimed physics error is not confirmed. The remaining fraction-layout question is recorded as non-blocking package item PHYSICS-T1-W05-W06-FORMULA-FORMATTING. Evidence: PHYS-PORT-D1-FACT-T1-W05.md.",
       "completion_condition": "Defect confirmed or refuted with locator; if the rendered source shows no defect it is recorded as extraction loss."
     },
     {
@@ -2007,8 +2007,8 @@
       "depends_on": [
         "PHYS-WK-T2-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). OI-PHYS-002 (OTHER, OPEN), reported from extracted text only. Not on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Confirmed from the prior source-row audit and already corrected by exact delivery binding CORR-PHYSICS-T2-W01-HEAT-ENERGY to SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE. Evidence: PHYS-PORT-D1-FACT-T2-W01.md.",
       "completion_condition": "Defect confirmed or refuted with locator; if the rendered source shows no defect it is recorded as extraction loss."
     },
     {
@@ -3091,7 +3091,7 @@
   "review": {
     "date": "2026-11-11",
     "reviewed_master_sha": "2240fe9289f9017c805a2544eeecabcd2bd71e4a",
-    "scope": "Physics agent work reconciled onto current master; corrected the Vernier SVG SHA-256 against the exact 1,384-byte asset. Subject approval remains pending; verification and student delivery acceptance are separate.",
+    "scope": "Physics lesson and source reconciliation work reconciled with current master; all ten SVG asset hashes/byte counts corrected; three branch-reconciliation tasks completed with source/identity limitations preserved. Subject approval and delivery acceptance remain pending.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
@@ -3111,14 +3111,6 @@
     },
     "notes": "Week Five scheme mismatch resolved: diffusion and osmosis are taught in body; Brownian-motion treatment is shallow and has a non-blocking open item. Visual-source inventory still blocks full delivery."
   },
-  "next_runnable": [
-    "PHYS-PORT-D1-RULE-SPLIT",
-    "PHYS-PORT-D1-FACT-T1-W05",
-    "PHYS-PORT-D1-FACT-T2-W01"
-  ],
-  "runnable_now": [
-    "PHYS-PORT-D1-RULE-SPLIT",
-    "PHYS-PORT-D1-FACT-T1-W05",
-    "PHYS-PORT-D1-FACT-T2-W01"
-  ]
+  "next_runnable": [],
+  "runnable_now": []
 }
