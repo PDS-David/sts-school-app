@@ -166,8 +166,7 @@
     "SOURCE_WEEK_INDEXING": 27
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 165,
-    "PENDING": 3,
+    "IMPLEMENTED_TESTING_DEFERRED": 168,
     "BLOCKED": 1
   },
   "items": [
@@ -237,8 +236,8 @@
         "AG-FACT-T1-W09-SCOPE",
         "AG-LES-T1-W09-FORESTRY"
       ],
-      "status": "PENDING",
-      "implementation_reference": null,
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented through CORR-AG-T1-W09-ENVIRONMENTAL-FACTORS-REPLACEMENT in backend/src/db/ss1/subjects/agricultural-science.json, bound to original row SS1-SRC-7aa642b0085b:BODY:e09cfcf9d560ec4b441526635970e83b8beddb0b9c7b38e33232df037351c064 and the verified First-Term source member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. The replacement includes atmospheric pressure, the correct Week 9 reading, excludes unsupported compost/mulching assessment prompts, and replaces malformed source formatting/wording without modifying original source bytes. Compiler-plan and authenticated learner-delivery verification remain DEFERRED.",
       "completion_condition": "Option boundaries render correctly in learner delivery; question wording and original answer key are preserved; exact row/hash binding and import tests pass."
     },
     {
@@ -270,8 +269,8 @@
         "AG-FACT-T1-W09-SCOPE",
         "AG-WK-T1-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": null,
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented through CORR-AG-T1-W09-ENVIRONMENTAL-FACTORS-REPLACEMENT in backend/src/db/ss1/subjects/agricultural-science.json, bound to original row SS1-SRC-7aa642b0085b:BODY:e09cfcf9d560ec4b441526635970e83b8beddb0b9c7b38e33232df037351c064 and the verified First-Term source member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. The replacement includes atmospheric pressure, the correct Week 9 reading, excludes unsupported compost/mulching assessment prompts, and replaces malformed source formatting/wording without modifying original source bytes. Compiler-plan and authenticated learner-delivery verification remain DEFERRED.",
       "completion_condition": "Both unsupported assessment prompts are suppressed only in the learner-delivery replacement with explicit source locators and reasons; no answer key is fabricated; original source bytes remain unchanged; importer binding is tested."
     },
     {
@@ -303,8 +302,8 @@
         "AG-FACT-T1-W09-SCOPE",
         "AG-WK-T1-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": null,
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented through CORR-AG-T1-W09-ENVIRONMENTAL-FACTORS-REPLACEMENT in backend/src/db/ss1/subjects/agricultural-science.json, bound to original row SS1-SRC-7aa642b0085b:BODY:e09cfcf9d560ec4b441526635970e83b8beddb0b9c7b38e33232df037351c064 and the verified First-Term source member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. The replacement includes atmospheric pressure, the correct Week 9 reading, excludes unsupported compost/mulching assessment prompts, and replaces malformed source formatting/wording without modifying original source bytes. Compiler-plan and authenticated learner-delivery verification remain DEFERRED.",
       "completion_condition": "All corrections are bound to exact original source rows and hashes; atmospheric pressure is explicitly taught at SS1 level; reading reference matches Week 9; source archive/member hashes and original answer key remain unchanged; compiler/importer delivery binding is tested."
     },
     {
@@ -6467,9 +6466,5 @@
       "boundary": "These are successful automated CI and structural-integrity checks. They do not constitute owner/teacher content approval, subject-expert decisions, lesson-level verification, classroom practical sign-off, production database import, authenticated learner-device verification or student-release authorization."
     }
   },
-  "next_runnable": [
-    "AG-CORR-T1-W09-ASSESSMENT-FORMAT",
-    "AG-CORR-T1-W09-OUT-OF-SCOPE-ITEMS",
-    "AG-CORR-T1-W09-READING-AND-CLIMATE-DELIVERY"
-  ]
+  "next_runnable": []
 }
