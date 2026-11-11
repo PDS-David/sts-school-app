@@ -16,6 +16,7 @@ const norm = (value: unknown) => String(value ?? '').replace(/\s+/g, ' ').trim()
 // authoritative; the title prevents a correction from matching another week
 // in the same term/source document before the body fingerprint is checked.
 const SOURCE_TITLES: Record<string, string> = {
+  'CORR-AG-T1-W09-ENVIRONMENTAL-FACTORS-REPLACEMENT': 'ENVIRONMENTAL FACTORS AFFECTING AGRICULTURAL PRODUCTION (CROPAND ANIMAL DISTRIBUTION AND PRODUCTION)',
   'CORR-AG-T3-W01-TOOL-NAMES-REPLACEMENT': 'SIMPLE FARM TOOLS',
   'CORR-AG-T2-W07-PEAT-TYPO-REPLACEMENT': 'ROCK FORMATION AND TYPES',
   'CORR-AG-T2-W08-QUESTION-WORDING-REPLACEMENT': 'ROCK WEATHERING',
