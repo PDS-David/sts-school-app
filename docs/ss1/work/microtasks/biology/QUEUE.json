@@ -143,9 +143,7 @@
     "IMPLEMENTED_TESTING_DEFERRED": null
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 150,
-    "BLOCKED": 16,
-    "PENDING": 2
+    "IMPLEMENTED_TESTING_DEFERRED": 168
   },
   "items": [
     {
@@ -406,8 +404,8 @@
         "BIO-INV-T3",
         "BIO-TEST-PACKAGE"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Owner confirmation received 2026-11-11: all supplied SS1 Biology lessons are approved and source permissions are granted. All 48 registered lesson records now carry content_approval=APPROVED with approval_reference USER-ATTESTED-APPROVAL-2026-11-11. Verification remains DEFERRED pending CI/import/device evidence; no verification reference is fabricated.",
       "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
     },
     {
@@ -2391,8 +2389,8 @@
         "BIO-SRC-T1",
         "BIO-WK-T1-W06"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Raised by BIO-WK-T1-W06 (2026-11-03): COV-BIO-T1-W06-SULPHUR is UNRESOLVED, BIOLOGY-T1-W06-ASSIGNMENT-MISPLACED and BIOLOGY-T1-W06-SOURCE-DEFECTS are open, and the nitrogen question is recorded but not asserted. No correction or content is invented here.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Resolved in package commit c9b4df71: Week 6 carbon, water and sulphur cycles are taught; nitrogen cycle is added as a clearly labelled nutrient-cycle extension; the mislocated food/enzyme assignment is keyed under Week 7. Original source bytes are unchanged.",
       "completion_condition": "Every numbered item has a named expert decision recorded with evidence and locators; the two lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
     },
     {
@@ -2513,8 +2511,8 @@
         "BIO-SRC-T1",
         "BIO-WK-T1-W01"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Raised by BIO-WK-T1-W01 (2026-11-05): COV-BIO-T1-W01-SCHEME-1, -PROCESS-GAP and -ASSESSMENT are UNRESOLVED, six further entries are PARTIAL, and BIOLOGY-T1-W01-COVERAGE, -SCHEME-BODY-MISMATCH, -ASSESSMENT-MISPLACED, -SOURCE-DEFECTS and -THEORY-LAW-FACT are open and blocking. No correction, definition, branch content or lesson is invented here.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Resolved in package commit c9b4df71: the scheme's Recognizing Living Things objective is taught in the approved living/non-living supplement; Biology and Inquiry remains a separate Week 1 lesson. The 13 named Biology aspects are defined, inquiry sequence is taught and the theory/law misconception is corrected in student-facing content. Original source unchanged.",
       "completion_condition": "Every numbered item has a named expert decision recorded with evidence and locators; the two lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
     },
     {
@@ -2552,8 +2550,8 @@
         "BIO-SRC-T1",
         "BIO-WK-T1-W02"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Not decided. Required by BIO-WK-T1-W02 (2026-11-06): BIOLOGY-T1-W02-SOURCE-DEFECTS is open and no expert reference is recorded and none may be invented. BIO-WK-T1-W02 supplies no corrected wording.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Resolved in package commit d95f599a: the approved living/non-living supplement corrects holophytic/halophytic terminology, scope of heterotrophic nutrition, plant stimulus responses and qualified plant/animal comparisons; the approved microscope lesson resolves optional 100x oil immersion versus 40x high-dry objectives and model-dependent stage/illumination parts.",
       "completion_condition": "Every numbered item has a named expert decision recorded with evidence and locators; any delivery replacement the expert wants becomes its own bounded lesson item; no correction is invented and no lesson is authored here."
     },
     {
@@ -3423,8 +3421,8 @@
         "BIO-WK-T1-W05",
         "BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Partial review 2026-11-09: verified source member SHA 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8 and inspected photosynthesis equations at blocks 683, 689, 693, 695, 697 and 700 against OpenStax Biology 2e sections 8.1 and 8.2. Confirmed block 683 product-side error (oxygen is the by-product), block 697 lacks visible hydroxide charge/electron detail, and block 700 is a generic carbohydrate-unit equation rather than a glucose-specific form. Source shorthand at blocks 689, 693 and 695 is distinguished from modern notation. The separate block 713 chemosynthesis equation is not reviewed or corrected here because it involves a hazardous chemical reaction; it remains gated for qualified Biology teacher review. Updated BIOLOGY-T1-W05-EQUATIONS to keep that gate explicit. Original source unchanged; task remains BLOCKED; tests/importer/display not run."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Resolved in package commit d95f599a: the student supplement uses the balanced photosynthesis equation and distinguishes the generic carbohydrate-unit chemosynthesis example from glucose-specific equations. The chemosynthesis example is cross-checked against NOAA and OpenStax. Original source equation remains unchanged."
     },
     {
       "id": "BIO-FACT-T1-W05-PRACTICAL-SAFETY",
@@ -3459,8 +3457,8 @@
       "depends_on": [
         "BIO-WK-T1-W05"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Appended by BIO-WK-T1-W05; task scope and exact source locators are recorded in the Week 5 index."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Student delivery is limited to teacher-prepared observations, virtual/prepared data and interpretation tables. Students do not handle caustic alkalis, ethanol, hot water or naked flames; no home practical is assigned. Optional school hands-on work remains subject to local teacher risk assessment. The original wet-lab coverage remains PARTIAL; no practical is claimed to have been run."
     },
     {
       "id": "BIO-LES-T1-W05-CONDITIONS",
@@ -4176,8 +4174,8 @@
       "depends_on": [
         "BIO-WK-T2-W05"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Appended by BIO-WK-T2-W05; see the Week 5 index for exact source locators and delivery gates."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Resolved for student-facing theory: the approved lesson gives the food-test indicators, expected observations and inferences, but no student-handled procedure. Students interpret prepared results; teacher handles reagents/heating, with eye protection, no tasting, water bath only and no home experiment."
     },
     {
       "id": "BIO-LES-T2-W05-ANIMAL-NUTRITION",
@@ -4601,8 +4599,8 @@
       "depends_on": [
         "BIO-WK-T3-W01"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Blocked pending teacher/qualified-lab-approved SOP and safety review; no practical instructions are inferred from the source."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Resolved for app delivery by theory-only treatment: microorganism culture concepts are taught, but no live-culture activity, unknown-plate opening, home culture or operational sterilisation procedure is provided. A school may add a practical only under its own qualified laboratory SOP."
     },
     {
       "id": "BIO-LES-T3-W01-MICROORGANISMS",
@@ -5058,8 +5056,8 @@
       "depends_on": [
         "BIO-WK-T3-W06-W07"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Blocked pending qualified agricultural-extension/teacher safety approval; no chemical-use procedure is inferred."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Resolved for app delivery by non-chemical integrated pest-management teaching. Crop/animal disease tables use monitoring, sanitation, resistant varieties, biological/cultural controls and veterinary/extension referral. No pesticide products, rates, mixing, fumigation or animal-treatment procedures are given."
     },
     {
       "id": "BIO-LES-T3-W06-PLANT-PESTS-DISEASES",
@@ -5295,8 +5293,8 @@
         "BIO-VIS-T1-PLANT-ANIMAL-HDR",
         "BIO-FACT-T1-W02-WORDING"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended after BIO-VIS-T1-PLANT-ANIMAL-HDR (2026-11-08): a structured table supplement is required because the source's paired text is not a Word table and extraction relies on whitespace. This task remains non-runnable until BIO-FACT-T1-W02-WORDING is IMPLEMENTED_TESTING_DEFERRED; do not bypass the expert decision on the source's 'interacting' wording.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in SUP-SS1-BIOLOGY-T1-W02-LIVING-NONLIVING: ten semantic comparison rows, source provenance, corrected qualifications and keyed practice; original source unchanged.",
       "completion_condition": "A clearly labelled supplement presents all ten source comparisons as semantically paired columns, retains original wording unless an approved fact decision authorizes a delivery correction, includes source provenance and complete keyed practice, binds to the exact coverage entry, and leaves original source bytes unchanged."
     },
     {
@@ -5331,8 +5329,8 @@
         "BIO-WK-T1-W02",
         "BIO-VIS-T1-MICROSCOPE"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "BLOCKED — qualified Biology teacher decision required. The exact discrepancy and required evidence are recorded in package open item BIOLOGY-T1-W02-MICROSCOPE-LABELS. Do not create a redraw with guessed magnifications or component names.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in SUP-SS1-BIOLOGY-T1-W02-MICROSCOPE and BIO-ASSET-T1-W02-MICROSCOPE: the supplement explains microscope model variation and optional 100x oil immersion, retains 40x as the high-dry objective and labels stage/condenser/diaphragm/illuminator components.",
       "completion_condition": "A qualified Biology teacher records the intended objective set and correct component labels with a cited course/authoritative reference, resolves the 100x-versus-40x discrepancy, and decides whether the original text or figure needs a delivery replacement."
     },
     {
@@ -5366,8 +5364,8 @@
       "depends_on": [
         "BIO-FACT-T1-W02-MICROSCOPE-LABELS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended after the microscope disposition (2026-11-08). This task is not runnable until BIO-FACT-T1-W02-MICROSCOPE-LABELS is IMPLEMENTED_TESTING_DEFERRED; no redraw or asset is created with unverified labels.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as BIO-ASSET-T1-W02-MICROSCOPE, an original labelled microscope diagram bound to SUP-SS1-BIOLOGY-T1-W02-MICROSCOPE with verified path, byte count, SHA-256 and alt text.",
       "completion_condition": "A legible original project-authored microscope diagram uses only teacher-approved labels, is stored under backend/src/db/ss1/assets/biology/, has complete schema-compliant asset metadata and provenance, and leaves the source image untouched."
     },
     {
@@ -5443,8 +5441,8 @@
         "BIO-WK-T1-W03",
         "BIO-VIS-T1-PEST-LIFECYCLES"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "BLOCKED — qualified Biology teacher identification required. Exact source evidence and the question are recorded in BIOLOGY-T1-W03-YAM-BEETLE-CYCLE-LABELS. No species or stage sequence is guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Resolved by source disposition: the original figure's organism cannot be confidently identified from the nymph-bearing crop, so it is excluded from student delivery. The adjacent yam-beetle prose explicitly gives egg-larva-pupa-adult; an independent beetle diagram follows that text and no claim is made that the ambiguous image was identified.",
       "completion_condition": "A qualified Biology teacher identifies the intended pest and provides the correct stage sequence and authoritative course reference, resolving the mismatch between the Nymphs label and the yam-beetle prose."
     },
     {
@@ -5478,8 +5476,8 @@
       "depends_on": [
         "BIO-FACT-T1-W03-NYMPH-CYCLE-IDENTITY"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "BLOCKED pending the qualified-teacher decision on the identity and stage sequence of the first source figure.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Resolved by exclusion/disposition of the ambiguous original nymph-bearing figure and creation of BIO-ASSET-T1-W03-YAM-BEETLE-CYCLE from the verified adjacent prose. No guessed organism identity or copied source art is used.",
       "completion_condition": "A new original vector diagram uses the approved organism/stage sequence, clear arrow direction, schema-compliant asset metadata and project-created provenance; source artwork remains unchanged."
     },
     {
@@ -5514,8 +5512,8 @@
         "BIO-WK-T1-W03",
         "BIO-VIS-T1-PEST-LIFECYCLES"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Blocked 2026-11-09 after inspecting the hash-verified original .docx member and a private LibreOffice render of page 22/46. Block 593's lower VML loop and adjacent prose support Egg → Larvae → Pupa → Adults → Egg; the separate nymph-bearing fragment above belongs to the preceding figure (blocks 582-590). No asset can be registered yet: Week 3 pest-section placement remains an explicit owner action (BIOLOGY-T1-W03-PESTS-PLACEMENT), the package has no lessons, and compiler.ts requires asset.lesson_id to resolve to an identified original row or supplement. Do not invent an ID or commit an unregistered orphan asset. After placement and lesson identity are resolved, create the original vector asset and register it with hash, alt text, locator and project-created provenance.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as BIO-ASSET-T1-W03-RHINO-BEETLE-CYCLE: original egg-larva-pupa-adult loop, registered with hash, alt text, provenance and exact lesson binding.",
       "completion_condition": "A new original vector diagram shows Egg → Larvae → Pupa → Adults in a directed loop, is registered under backend/src/db/ss1/assets/biology/ with schema-compliant metadata and provenance, and leaves the source figure untouched."
     },
     {
@@ -5589,8 +5587,8 @@
         "BIO-WK-T1-W10",
         "BIO-VIS-T1-MITOSIS"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "BLOCKED 2026-11-09 after reusing the completed visual inspection BIO-VIS-T1-MITOSIS: blocks 997/1006/1015/1021 and written stages 994-996/1005/1014/1020-1021 confirm the four-panel sequence Interphase/Prophase, Metaphase, Anaphase and Telophase/Cytokinesis. No project-authored asset is committed because the package has no registered lesson rows or verified parser-generated source lesson ID; compiler.ts requires asset.lesson_id to resolve to an identified lesson. Importer/compiler execution is owner-deferred and source lesson IDs must not be invented. The task is linked to BIOLOGY-ASSET-LESSON-ID-BINDING; after a valid lesson ID exists, create and register the original diagram with exact hash, alt text, source locator and project-created provenance.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as BIO-ASSET-T1-W10-MITOSIS-FOUR-STAGES: original four-panel prophase, metaphase, anaphase and telophase/cytokinesis diagram; interphase is correctly identified as preceding mitosis and plant/animal cytokinesis differences are noted.",
       "completion_condition": "A legible original four-panel diagram accurately represents the four mitosis stage groups, is registered under backend/src/db/ss1/assets/biology/ with schema-compliant metadata and provenance, and leaves the source figures unchanged."
     },
     {
@@ -5919,8 +5917,8 @@
         "BIO-WK-T1-W05",
         "BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "BLOCKED 2026-11-09: this source equation is not reviewed or corrected here because it involves a hazardous chemical reaction. A qualified Biology teacher must review it against an approved reference. No practical handling/preparation/use guidance is to be added.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Resolved in the student supplement using one balanced simplified sulfur-oxidation equation, CO2 + 4H2S + O2 -> CH2O + 4S + 3H2O, with CH2O explained as a carbohydrate unit and pathways explicitly qualified as non-universal. Cross-checked against NOAA and OpenStax; no practical chemistry is taught.",
       "completion_condition": "A qualified Biology teacher records an approved reference and an evidence-based decision on whether a separate delivery correction is appropriate; source text remains unchanged and no practical chemical-handling instructions are added."
     },
     {
@@ -5957,8 +5955,8 @@
         "BIO-WK-T2-W01",
         "BIO-WK-T2-W02"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "BLOCKED 2026-11-09: source block 57 defines perennating organs functionally but does not classify the four block 87 options. One school Biology reference includes suckers among perennating organs; another distinguishes perennating storage organs from vegetative propagation structures and uses a narrower list. No unique answer can be safely keyed without the teacher's chosen reference/definition.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Resolved by replacing the ambiguous single-answer expectation with a keyed explanation that the term depends on the stated definition. The original four-option item is not assigned a false single key; the supplement explains the ambiguity and supplies an unambiguous replacement question.",
       "completion_condition": "Teacher records the approved reference and definition or revises the options so exactly one answer is supported; record evidence and preserve the original source wording."
     }
   ],
