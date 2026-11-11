@@ -163,8 +163,8 @@
     "CORRECTION_BINDING": 16
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 155,
-    "BLOCKED": 11
+    "IMPLEMENTED_TESTING_DEFERRED": 156,
+    "BLOCKED": 10
   },
   "items": [
     {
@@ -4457,7 +4457,7 @@
         "AG-WK-T2-W07"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Second Term DOCX member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042; inspected characteristic blocks 443-448, 461-465 and 481-485 and recomputed range hashes. USGS/NPS/BGS sources confirm key defects: sedimentary rocks can be crystalline; metamorphic rocks are commonly recrystallized; igneous rocks can form stacked lava-flow layers; sedimentary rocks can be erosion-resistant; and fossils are typically sedimentary but can rarely survive low-grade metamorphism. Other properties require qualified language (glassy texture, crystals, permeability, foliation, fossil occurrence, hardness and erosion resistance). Added precise proposed wording; no source or delivery correction applied.",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Second Term DOCX member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042; inspected characteristic blocks 443-448, 461-465 and 481-485 and recomputed range hashes. USGS/NPS/BGS sources confirm key defects: sedimentary rocks can be crystalline; metamorphic rocks are commonly recrystallized; igneous rocks can form stacked lava-flow layers; sedimentary rocks can be erosion-resistant; and fossils are typically sedimentary but can rarely survive low-grade metamorphism. Other properties require qualified language (glassy texture, crystals, permeability, foliation, fossil occurrence, hardness and erosion resistance). Added precise proposed wording; no source or delivery correction applied. The correction binding for the source's 'peak' typo is now implemented through CORR-AG-T2-W07-PEAT-TYPO-REPLACEMENT; the authored lesson clarifies peat's unlithified status.",
       "completion_condition": "A sourced note verifies each characteristic and recommends precise corrections or qualified wording."
     },
     {
@@ -4492,8 +4492,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W07"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "The package now contains 36 authored learner-facing lesson records, but no authorised importer/plan result has confirmed the exact original parsed source row identity for this correction. The correction contract requires a source_lesson_id, the exact original body_sha256 and a valid replacement_id; a supplement lesson ID is not a substitute for the original source row. The evidence-backed candidate correction remains recorded below. No delivery_corrections record was fabricated or bound; original source bytes remain unchanged. Investigated 2026-11-09. Recomputed source member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 and block-458 SHA-256 a2b6fc4e91f20afe96d2b2439ddb7904a271c5deb876ebbd3409307496946681. USGS Coal: A Complex Natural Resource and USGS coal-rank guidance establish peat as the precursor to lignite/coal; Cambridge's carbonaceous sedimentary rocks chapter and Geoscience Handbook list peat among carbonaceous organic deposits. 'Peak' is not a geological example here; recommended delivery correction is 'peat'. The correction remains BLOCKED pending importer-confirmed original source row identity and an approved replacement binding. Updated existing package open item; no delivery_corrections or source changes.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The actual parser/compiler row is confirmed by CI: SS1-SRC-956594d97094:BODY:d6a132c9ce637c6fee7ca4e1e88aa707220a68298bde2794d5657e49533c9e22. Added CORR-AG-T2-W07-PEAT-TYPO-REPLACEMENT, binding that row/hash to SUP-SS1-AGRICULTURAL-SCIENCE-T2-W07-ROCK-CHARACTERISTICS. The replacement lesson now corrects 'peak' to 'peat' and explains peat as an organic-rich, generally unlithified deposit and precursor to coal, supported by USGS and British Geological Survey references. The source DOCX remains unchanged. The replacement lesson is PENDING content approval and DEFERRED verification; learner delivery is withheld until the package/lesson approval gate passes.",
       "completion_condition": "A correction-binding record cites verified evidence and preserves the source wording."
     },
     {
