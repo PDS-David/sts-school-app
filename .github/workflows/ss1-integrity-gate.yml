@@ -1,0 +1,53 @@
+name: SS1 package integrity gate
+# Deliberately NOT path-filtered: runs on every PR and every push to master, so a
+# change anywhere cannot leave the SS1 packages inconsistent without turning this red.
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ss1-integrity-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  integrity:
+    name: Integrity (lockfile, types, hashes, JSON, conflict markers, packages)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+      - name: No leftover merge-conflict markers
+        run: |
+          if git grep -nE '^(<<<<<<< |>>>>>>> )' -- backend docs scripts tests .github ':!*.zip'; then
+            echo "::error::Unresolved merge-conflict markers found (listed above)"; exit 1
+          fi
+      - name: Tracked JSON files parse
+        run: |
+          python3 - <<'PY'
+          import json, subprocess, sys
+          bad = []
+          for f in subprocess.check_output(["git", "ls-files", "backend/src/db/ss1/**/*.json", "docs/ss1/**/*.json"], text=True).split():
+              try: json.load(open(f, encoding="utf-8"))
+              except Exception as e: bad.append(f"{f}: {e}")
+          for b in bad: print(f"::error::{b}")
+          sys.exit(1 if bad else 0)
+          PY
+      - name: TypeScript typecheck (backend and mobile)
+        run: |
+          ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
+          ./node_modules/.bin/tsc --noEmit -p mobile/tsconfig.json
+      - name: SVG safety filter tests
+        run: node --import tsx --test tests/ss1/svg-safety.test.mts
+      - name: Stored hashes and byte counts match content
+        run: node --import tsx backend/src/db/ss1/refreshIntegrityHashes.ts --check
+      - name: Validate every subject package
+        run: node --import tsx backend/src/db/ss1/validateSubjectPackages.ts

@@ -11,6 +11,8 @@
     "mobile:android": "cd mobile && npm run android",
     "install:all": "cd backend && npm install && cd ../mobile && npm install",
     "test:ss1:english": "node --import tsx --test tests/ss1/english.package.test.mts",
+    "validate:ss1": "node --import tsx backend/src/db/ss1/validateSubjectPackages.ts",
+    "ss1:refresh-hashes": "node --import tsx backend/src/db/ss1/refreshIntegrityHashes.ts",
     "validate:ss1:english": "node --import tsx backend/src/db/ss1/validateSubjectPackages.ts english"
   },
   "workspaces": [
