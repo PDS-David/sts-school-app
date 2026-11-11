@@ -137,7 +137,6 @@ jobs:
         working-directory: backend
         run: |
           npm run test:ss1:french
-          node --import tsx --test ../tests/ss1/french.runtime.test.mts
           npm run build
 
       - name: Install student app dependencies for TypeScript validation
