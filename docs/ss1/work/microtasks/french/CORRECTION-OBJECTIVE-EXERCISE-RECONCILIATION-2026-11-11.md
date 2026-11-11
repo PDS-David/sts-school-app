@@ -8,7 +8,7 @@
 
 - 28 correction bindings are present and each maps a registered source body hash to an authored replacement lesson.
 - 40 authored lessons/supplements are present (20 1st Term, 9 2nd Term, 11 3rd Term).
-- 55 coverage records: 42 marked `IMPLEMENTED_EQUIVALENT`, 11 marked `PARTIAL`, and 2 scheme markers.
+- 55 coverage records: 41 marked `IMPLEMENTED_EQUIVALENT`, 12 marked `PARTIAL`, and 2 scheme markers.
 - All 40 lesson states remain `content_approval=PENDING` and `verification=DEFERRED`; package status remains `PENDING`.
 - This reconciliation confirms traceability and the currently recorded objective statuses. It does **not** convert `IMPLEMENTED_EQUIVALENT` into proof that every individual source exercise has a keyed replacement or that every learner objective has been taught and assessed.
 
@@ -26,7 +26,7 @@
 | 8 | `FRENCH-BODY-008` / `SS1-02-french-COR-008`<br>SS1-SRC-945dfb24eaf6: Etre capable de dire ce que l’on fait habituellement. | `SUP-SS1-FRENCH-ROUTINE-T1` | IMPLEMENTED_EQUIVALENT | 9 across 2 linked lessons | Mapped — verify exercise-by-exercise; not approved |
 | 9 | `FRENCH-BODY-009` / `SS1-02-french-COR-009`<br>SS1-SRC-945dfb24eaf6: Exprimer ses gouts et ses preferences. | `SUP-SS1-FRENCH-PREFERENCES-T1` | IMPLEMENTED_EQUIVALENT | 5 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
 | 10 | `FRENCH-BODY-010` / `SS1-02-french-COR-010`<br>SS1-SRC-b6245ffb69e5: L’ORAL IMPORTANCE DES ACCENTS FRANÇAIS TELS QUE ACCENT | `SUP-SS1-FRENCH-ACCENTS-T2` | IMPLEMENTED_EQUIVALENT | 3 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
-| 11 | `FRENCH-BODY-011` / `SS1-02-french-COR-011`<br>SS1-SRC-b6245ffb69e5: Revision des alphabets francaise | `SUP-SS1-FRENCH-ALPHABET-T2` | IMPLEMENTED_EQUIVALENT | 4 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
+| 11 | `FRENCH-BODY-011` / `SS1-02-french-COR-011`<br>SS1-SRC-b6245ffb69e5: Revision des alphabets francaise | `SUP-SS1-FRENCH-ALPHABET-T2` | PARTIAL | 4 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
 | 12 | `FRENCH-BODY-012` / `SS1-02-french-COR-012`<br>SS1-SRC-b6245ffb69e5: D’indtifier des consonnes francais | `SUP-SS1-FRENCH-SOUNDS-T2` | IMPLEMENTED_EQUIVALENT | 6 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
 | 13 | `FRENCH-BODY-013` / `SS1-02-french-COR-013`<br>SS1-SRC-b6245ffb69e5: Les voyelles orales composees (compound oral) | `SUP-SS1-FRENCH-SOUNDS-T2` | IMPLEMENTED_EQUIVALENT | 6 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
 | 14 | `FRENCH-BODY-014` / `SS1-02-french-COR-014`<br>SS1-SRC-b6245ffb69e5: Culture et civilisation en Frnace | `SUP-SS1-FRENCH-CULTURE-T2` | IMPLEMENTED_EQUIVALENT | 4 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
@@ -87,14 +87,14 @@ Clear expressions now taught in SUP-SS1-FRENCH-COURTESY-CELEBRATIONS-T1. Intende
 
 1. Historical Week 1–4 indexing notes were not synchronized with the current package. For example, `FR-WK-T1-W01.md` still describes OBJ-4/OBJ-5 as unresolved and refers to supplements that have since been authored; the current package marks the neighbour and benefits objectives `IMPLEMENTED_EQUIVALENT`. `FR-WK-T1-W02.md` still says both DEVOIR exercises lack counterparts, while current coverage links the Anglophone supplement and demonym supplement. `FR-WK-T1-W03.md` predates the completed eight-field self-presentation supplement and still reports that objective as partial. `FR-WK-T1-W04.md` still lists three authoring tasks as outstanding even though the corresponding être, avoir and four-stem composition supplements now exist. These historical task notes must be refreshed or explicitly marked superseded before they are used as current audit evidence.
 2. **Resolved in this reconciliation branch:** correction `SS1-02-french-COR-005` and the Week 5 indexing note are being aligned with `VISUAL_DISPOSITION.md`: the inspected punctuation drawing is represented by accessible text and needs no separate image asset. This does not close the separate learner oral-performance/approval gate.
-3. The `QUEUE.json` header says its snapshot was generated from `dd739bba...` and its introductory notes describe an older package state (27 lessons, 29 coverage records, 3 open items), whereas current `master` contains 40 lessons, 55 coverage records and 8 open items. The queue must be regenerated/reconciled against current master before it is used to schedule remaining work.
+3. The `QUEUE.json` header says its snapshot was generated from `dd739bba...` and its introductory notes describe an older package state (27 lessons, 29 coverage records, 3 open items), whereas current `master` contains 40 lessons, 55 coverage records and 10 open items (9 delivery-blocking). The queue must be regenerated/reconciled against current master before it is used to schedule remaining work.
 
 ## What is actually closed by this reconciliation
 
 - Source-row identities and 28 correction bindings are traceable.
 - Current objective coverage statuses and replacement lesson references are indexed.
 - The linked practice counts can be computed from the currently authored lessons.
-- The ten `PARTIAL` coverage records and seven delivery-blocking open items remain visible; none is silently upgraded.
+- The twelve `PARTIAL` coverage records and nine delivery-blocking open items remain visible; none is silently upgraded.
 
 ## What remains before authoring can be called complete
 
@@ -142,6 +142,16 @@ The non-blocking item FRENCH-T1-W01-NEIGHBOURS-LANGUAGE-STATUS was removed from 
 
 ## Replacement-side objective/practice alignment — 11 November 2026
 
-The new `OBJECTIVE-PRACTICE-ALIGNMENT-2026-11-11.md` inventory maps all 40 authored lessons' objectives to question IDs. It does not claim source-exercise equivalence. It records two fixes discovered in the scan: the complete 26-letter alphabet sequence (Alphabet Q4) and irregular simple-future forms of être, avoir, faire, aller, pouvoir and vouloir (Future Q4). The oral-accent objective `FR-COV-T1-W05-ORAL-OBSERVATION` is now PARTIAL, not IMPLEMENTED_EQUIVALENT: a teacher checklist exists, but no real learner oral performance has been observed.
+The new `OBJECTIVE-PRACTICE-ALIGNMENT-2026-11-11.md` inventory maps all 40 authored lessons' objectives to question IDs. It does not claim source-exercise equivalence. It records two fixes discovered in the scan: the complete 26-letter alphabet sequence (Alphabet Q4) and irregular simple-future forms of être, avoir, faire, aller, pouvoir and vouloir (Future Q4). The oral-accent objective `FR-COV-T1-W05-ORAL-OBSERVATION` and the alphabet recitation objective `FRENCH-BODY-011` are now PARTIAL: teacher tasks exist, but no real learner oral performance has been observed. Both have separate blocking observation items.
 
-Current package totals: 40 lessons; 191 practice items; 557 practice marks. Coverage: 42 IMPLEMENTED_EQUIVALENT, 11 PARTIAL, 2 scheme markers. All 40 lessons remain content_approval=PENDING and verification=DEFERRED.
+Current package totals: 40 lessons; 191 practice items; 557 practice marks. Coverage: 41 IMPLEMENTED_EQUIVALENT, 12 PARTIAL, 2 scheme markers. All 40 lessons remain content_approval=PENDING and verification=DEFERRED.
+
+
+## Live learner-observation gates
+
+Two explicit oral criteria remain open: (1) the five-prompt accent/diacritic pronunciation activity, scored with its 10-point teacher checklist; and (2) recitation of all twenty-six French letter names. The corresponding package items are `FRENCH-ORAL-ACCENT-OBSERVATION` and `FRENCH-ALPHABET-RECITATION-OBSERVATION`. Neither can be completed by static tests, written answers, or synthetic audio; a teacher must observe actual learners and record dated evidence.
+
+
+## Current oral-verification status
+
+`FRENCH-BODY-011` is now PARTIAL because the written A–Z sequence does not demonstrate oral recitation of the French letter names. `FR-COV-T1-W05-ORAL-OBSERVATION` remains PARTIAL because no learner's accent/diacritic pronunciation has been observed. The two new blocking items require dated teacher observation records. Current total: 10 open items, 9 delivery-blocking.
