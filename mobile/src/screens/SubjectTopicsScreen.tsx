@@ -76,7 +76,7 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
               disabled={locked}
               onPress={() => navigation.navigate('TopicDetail', {
                 topic: item,
-                openListening: String(subjectName).toLowerCase().includes('french') && item.title === 'Lire et jouer un dialogue',
+                openListening: String(subjectName).toLowerCase().includes('french') && /dialo(?:gue|que)/i.test(String(item.title ?? '')),
               })}
             >
               <View style={[styles.rowIcon, locked && { backgroundColor: Colors.textSub + '18' }]}>
