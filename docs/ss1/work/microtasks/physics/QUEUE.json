@@ -42,7 +42,8 @@
     "PHYS-WK-T3-W03 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER (4,065-char body; 18 keyed questions; 40 marks) and added five objective-level coverage entries. SchoolGist/Ecolebooks close-equivalent notes used only for scope corroboration. Original .doc body/figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W03.md; queue item BLOCKED.",
     "PHYS-WK-T3-W04 + PHYS-FACT-T3-FUSE-RATING + PHYS-FACT-T3-W04-ASSIGNMENT + PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA (2026-11-11): implemented source indexing, correction and assessment disposition. See the four task notes in docs/ss1/work/microtasks/physics/. Source PDF line locators and prior original-source checkpoint are recorded; lesson content approval remains pending and testing deferred.",
     "PHYS-TEST-PACKAGE-NEW (2026-11-11): completed and executed. Dedicated workflow run 43012753944 succeeded: 7 tests, 7 pass, 0 fail; registered SS1 package validator passed. Test file tests/ss1/physics.package.test.mts and workflow .github/workflows/ss1-physics-verification.yml. Does not certify source-importer, DB or device delivery.",
-    "PHYS-WK-T3-W05 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W05-PARTICLE-NATURE-MATTER (6,664-char body; 20 keyed questions; 43 marks) and added five objective-level coverage entries. SchoolGist PDF Week Five lines 348-432 used only as close-equivalent scope comparison. Original .doc body/figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W05.md; queue item BLOCKED."
+    "PHYS-WK-T3-W05 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W05-PARTICLE-NATURE-MATTER (6,664-char body; 20 keyed questions; 43 marks) and added five objective-level coverage entries. SchoolGist PDF Week Five lines 348-432 used only as close-equivalent scope comparison. Original .doc body/figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W05.md; queue item BLOCKED.",
+    "PHYS-WK-T3-W06 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W06-CRYSTAL-STRUCTURE (4,818-char body; 20 keyed questions; 46 marks) and added five objective-level coverage entries. SchoolGist PDF Week Six lines 439-503 used as close-equivalent text evidence. Reversed crystalline/amorphous table and unit-cell/lattice conflation corrected. Original .doc body not independently retrievable; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W06.md; queue item BLOCKED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -62,8 +63,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 39,
-    "BLOCKED": 27,
-    "PENDING": 23
+    "BLOCKED": 28,
+    "PENDING": 22
   },
   "total": 89,
   "items": [
@@ -1216,8 +1217,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 5 (source label 'WEEK 6', title \"CRYSTAL STRUCTURE OF MATTER- AMORPHOUS AND\", 4124 characters, body sha256 c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W06-CRYSTAL-STRUCTURE and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W06.md. Parsed row 5 identity/hash are bound; SchoolGist PDF Week Six lines 439-503 used as close-equivalent text evidence. The original .doc body was not independently retrievable in this execution, so exact source-row reconciliation remains open. The reversed crystalline/amorphous table and unit-cell/lattice terminology were corrected in the student supplement.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -3075,10 +3076,9 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "Physics package has 25 lessons and 157 coverage rows. Week Five Third Term lesson authored; original source-row and visuals remain to reconcile. PR #578 test suite 7/7 passed; package validation passed."
+    "notes": "Physics package has 26 lessons and 162 coverage rows. Weeks T2 W3–W10 and T3 W1–W6 now have authored supplements; exact original source reconciliation and visuals remain. PR #578 includes 7/7 passing Physics regression test."
   },
   "next_runnable": [
-    "PHYS-WK-T3-W06",
     "PHYS-WK-T3-W07",
     "PHYS-WK-T3-W08",
     "PHYS-WK-T3-W09",
@@ -3095,7 +3095,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T3-W06",
     "PHYS-WK-T3-W07",
     "PHYS-WK-T3-W08",
     "PHYS-WK-T3-W09",
