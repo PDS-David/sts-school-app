@@ -34,7 +34,7 @@ On validation branch `ss1/ag-science-svg-runtime-20261111`, workflow run [429859
 - SS1 Python unit tests: **PASS, 2/2**.
 - Backend TypeScript no-emit check: **PASS on that branch**, which contains the SVG regular-expression syntax correction; that shared-code correction is not yet confirmed on `master`.
 - English package tests: **PASS, 13/13**, including all 149 owner approval references, exact lesson body hashes, marking totals, source registration, correction identity and coverage bindings.
-- English learner-delivery regression tests: **7/8 PASS; 1 FAIL**. The failing assertion still expects the obsolete “not yet approved” reason. The current delivery adapter correctly returns “not completed its authorised verification” because the owner approval is now recorded and verification remains deferred. This is a stale test expectation, not evidence that the guard is bypassed.
+- English learner-delivery regression tests: **7/8 PASS; 1 FAIL**. The failing assertion expected the obsolete “not yet approved” reason. The current delivery adapter correctly returns “not completed its authorised verification” because the owner approval is now recorded and verification remains deferred. The stale assertion was corrected in master commit `8e399cfa7286f29dc8f9eba985d61c5d87e8d530`; a fresh successful end-to-end run on master is still required.
 
 The earlier English verification run 145 passed the source archive staging, English-only source isolation and plan-only SS1 compiler checks. Those checks predate the approval update and should be rerun on the final merged commit.
 
