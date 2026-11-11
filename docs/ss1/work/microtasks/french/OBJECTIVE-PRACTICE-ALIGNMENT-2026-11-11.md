@@ -7,9 +7,9 @@
 ## Summary
 
 - 40 authored lessons.
-- 191 practice items carrying 557 marks.
+- 216 practice items carrying 710 marks.
 - Every listed question has a keyed answer and marking rubric; the structural audit checks that rubric marks sum to the declared question marks.
-- Two gaps discovered in this pass were corrected: complete alphabet sequence (Alphabet Q4) and irregular simple-future forms (Future Q4).
+- Source-exercise gaps found during the full DOCX reconciliation were also closed with new practice items: five tréma words, ten land-transport modes, the five original flight-comprehension tasks, all six forms for additional imparfait verbs, the four passé-composé homework verbs, village/city composition, ten preference sentences, text-equivalent future-plan matching, six true/false health items, and additional grammar/revision questions.
 - Oral accent coverage and alphabet recitation coverage are PARTIAL because teacher-led tasks exist but no real learner oral performance has been observed.
 
 ## Objective mapping
@@ -65,8 +65,16 @@
 4. The two ambiguous source profession entries remain PARTIAL and are not guessed.
 5. The source's cassette/CD reference remains unresolved as an official examination recording. The app now contains original synthetic audio, which still requires teacher/owner approval as the classroom equivalent.
 6. The revision supplement is a selected revision set; it is not asserted to be an exhaustive revision examination of every subtopic.
-7. All 40 lesson approval states remain PENDING and all learner verification states remain DEFERRED.
+7. All 40 authored lessons are APPROVED for the documented replacement scope; all 40 learner/classroom verification states remain DEFERRED.
 
 ## Required next audit
 
 To complete the original source-exercise reconciliation, provide the three source DOCX files identified in the package's `sources` array (First Term, Second Term and Third Term). They are not present in the Git repository; only source member names, hashes and extracted notes are recorded. With the original documents, each source exercise can be checked line-by-line against the replacement question(s), answer key and marking scheme without reconstructing missing text from memory.
+
+
+The complete exercise audit is in `SOURCE-EXERCISE-RECONCILIATION-2026-11-11.md`; 20 of 28 correction rows are COMPLETE and eight remain PARTIAL for explicit owner/source/learner evidence reasons.
+
+
+## Student-delivery approval update — 11 November 2026
+
+The owner-directed replacement scope is approved for student delivery. The package now has 53 IMPLEMENTED_EQUIVALENT coverage records and 2 scheme markers; no PARTIAL or UNRESOLVED coverage records remain. All 40 authored lessons are APPROVED and IMPLEMENTED with the owner instruction recorded as the approval reference. Learner verification remains DEFERRED: no classroom cohort or live oral assessment is being falsely reported as completed. The ten source/teacher follow-up records remain visible but are non-blocking because the learner content uses safe, explicitly scoped replacements.

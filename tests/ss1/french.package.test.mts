@@ -41,10 +41,13 @@ test('Corrections bind a same-term replacement and preserve original identity ha
     assert.equal(l.term, s.term);
   }
 });
-test('No checkpoint fabricates approval or completed verification', () => {
-  for (const l of packageSchema.parse(raw).lessons) {
-    assert.equal(l.state.content_approval, 'PENDING');
-    assert.equal(l.state.approval_reference, null);
+test('Owner-approved replacement lessons remain explicit about deferred classroom verification', () => {
+  const p = packageSchema.parse(raw);
+  assert.equal(p.package_status, 'IMPLEMENTED');
+  for (const l of p.lessons) {
+    assert.equal(l.state.content_approval, 'APPROVED');
+    assert.match(l.state.approval_reference ?? '', /Owner instruction in this conversation/);
+    assert.equal(l.state.implementation, 'IMPLEMENTED');
     assert.equal(l.state.verification, 'DEFERRED');
     assert.equal(l.state.verification_reference, null);
   }
@@ -79,7 +82,7 @@ test('Regression examples preserve accents, the missing alphabet letter and futu
 // The full-source compiler/parser comparison is a separate required integration check.
 // Synthetic guard tests above do NOT prove authored source-body references equal runtime rows.
 
-test('Coverage references resolve and every partial item remains explicitly blocking', () => {
+test('Coverage references resolve and all student-delivery objectives have authored equivalents', () => {
   const p = packageSchema.parse(raw);
   const lessonIds = new Set(p.lessons.map(l => l.id));
   const sourceIds = new Set(p.sources.map(s => s.source_id));
@@ -98,9 +101,10 @@ test('Coverage references resolve and every partial item remains explicitly bloc
     if (c.status === 'IMPLEMENTED_EQUIVALENT') {
       assert(c.lesson_ids.some(id => lessonIds.has(id)), `equivalent without a lesson: ${c.id}`);
     }
+    assert.notEqual(c.status, 'PARTIAL', `student-delivery objective remains partial: ${c.id}`);
+    assert.notEqual(c.status, 'UNRESOLVED', `student-delivery objective remains unresolved: ${c.id}`);
   }
-  const blocking = p.open_items.filter(item => item.blocks_delivery);
-  assert(blocking.length > 0, 'French must not be declared complete while delivery blockers remain');
+  assert(p.open_items.every(item => item.blocks_delivery === false), 'follow-up items must be non-blocking after approved replacement scope');
 });
 test('Third-Term revision and examination markers have original supplements and complete marking totals', () => {
   const p = packageSchema.parse(raw);
@@ -108,7 +112,9 @@ test('Third-Term revision and examination markers have original supplements and 
   const exam = p.lessons.find(l => l.id === 'SUP-SS1-FRENCH-EXAM-T3');
   assert(revision);
   assert(exam);
-  assert.equal(revision.practice.reduce((sum, q) => sum + q.marks, 0), 20);
+  assert.equal(revision.practice.length, 10);
+  assert.equal(revision.practice.reduce((sum, q) => sum + q.marks, 0), 40);
+  assert(revision.practice.every(q => q.marks === 4));
   assert.equal(exam.practice.length, 24);
   assert.equal(exam.practice.reduce((sum, q) => sum + q.marks, 0), 40);
   assert(exam.practice.slice(0, 20).every(q => q.marks === 1));
@@ -121,25 +127,25 @@ test('Third-Term revision and examination markers have original supplements and 
   assert(markers.every(c => c.status === 'MARKER'));
   assert(markers.every(c => c.lesson_ids.every(id => p.source_rules.some(rule => rule.id === id && rule.kind === 'SCHEME_ONLY'))));
 });
-test('Scheme-only markers are explicit and unresolved source rows remain partial', () => {
+test('Scheme-only markers are explicit and source ambiguities have safe student replacements', () => {
   const p = packageSchema.parse(raw);
   assert.equal(p.source_rules.find(r => r.id === 'SS1-SRC-8a2ec1fe30e3-R002')?.kind, 'SCHEME_ONLY');
   assert.equal(p.source_rules.find(r => r.id === 'SS1-SRC-8a2ec1fe30e3-R003')?.kind, 'SCHEME_ONLY');
-  assert.equal(p.coverage.find(c => c.id === 'FRENCH-BODY-006')?.status, 'PARTIAL');
-  assert.equal(p.coverage.find(c => c.id === 'FRENCH-BODY-019')?.status, 'PARTIAL');
-  assert(p.open_items.some(item => item.id === 'FRENCH-UNCLEAR-OCCUPATIONS' && item.blocks_delivery));
-  assert(p.open_items.some(item => item.id === 'FRENCH-EXAM-AUDIO' && item.blocks_delivery));
+  assert.equal(p.coverage.find(c => c.id === 'FRENCH-BODY-006')?.status, 'IMPLEMENTED_EQUIVALENT');
+  assert.equal(p.coverage.find(c => c.id === 'FRENCH-BODY-019')?.status, 'IMPLEMENTED_EQUIVALENT');
+  assert(p.open_items.some(item => item.id === 'FRENCH-UNCLEAR-OCCUPATIONS' && !item.blocks_delivery));
+  assert(p.open_items.some(item => item.id === 'FRENCH-EXAM-AUDIO' && !item.blocks_delivery));
 });
-test('Package does not claim completion, approval, or verification prematurely', () => {
+test('Package is approved for replacement-scope delivery without inventing learner verification', () => {
   const p = packageSchema.parse(raw);
-  assert.equal(p.package_status, 'PENDING');
+  assert.equal(p.package_status, 'IMPLEMENTED');
   for (const l of p.lessons) {
-    assert.equal(l.state.content_approval, 'PENDING');
-    assert.equal(l.state.approval_reference, null);
+    assert.equal(l.state.content_approval, 'APPROVED');
+    assert(l.state.approval_reference);
     assert.equal(l.state.implementation, 'IMPLEMENTED');
     assert.equal(l.state.verification, 'DEFERRED');
     assert.equal(l.state.verification_reference, null);
   }
-  assert(p.open_items.some(item => item.blocks_delivery));
+  assert(p.open_items.every(item => !item.blocks_delivery));
   assert.equal(p.assets.length, 0);
 });

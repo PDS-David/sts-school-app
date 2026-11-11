@@ -48,6 +48,17 @@ test('SS1 French dialogue topic routes through its lesson into the listening act
   assert.match(detail, /if \(openListening && !routedToListening\.current\)/);
   assert.match(detail, /navigation\.navigate\('FrenchListening'/);
 });
+test('SS1 French approved replacement lessons are delivered through the student lesson route', () => {
+  const route = read('backend/src/routes/learning.ts');
+  const adapter = read('backend/src/utils/ss1FrenchDeliveryCorrection.ts');
+  assert.match(route, /resolveSs1FrenchDelivery\(topic\)/);
+  assert.match(route, /retireStaleSs1FrenchCache\(query, topic\.id, frenchDelivery\)/);
+  assert.match(adapter, /package_status !== 'IMPLEMENTED'/);
+  assert.match(adapter, /content_approval !== 'APPROVED'/);
+  assert.match(adapter, /sourceHash !== replacement\.sourceHash/);
+  assert.match(adapter, /PRACTICE QUESTIONS AND MARKING GUIDE/);
+});
+
 test('French listening activity speaks the lesson dialogue and provides transcript and comprehension', () => {
   const screen = read('mobile/src/screens/FrenchListeningScreen.tsx');
   const pkg = read('mobile/package.json');

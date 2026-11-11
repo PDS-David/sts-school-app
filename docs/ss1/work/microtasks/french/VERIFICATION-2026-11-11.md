@@ -61,3 +61,21 @@ The full alphabet sequence is now tested in writing, but the source objective in
 - GitHub Actions mobile TypeScript, static/focused regressions, live PostgreSQL/asset tests and the integration verification job passed for the French audio player branch.
 - The dedicated Android production-build workflow successfully completed `npm ci` and `npx expo export --platform android`; Metro confirmed that the local MP3 assets bundle correctly.
 - The EAS production build did not start because the repository secret `EXPO_TOKEN` is not configured. Add an Expo access token as the GitHub Actions secret `EXPO_TOKEN`, then rerun **Build SS1 French mobile listening release**. No APK/AAB or student rollout is claimed until that build succeeds.
+
+
+## Full original-source exercise audit
+
+The First-, Second- and Third-Term French DOCX members were extracted from the repository source archive through the hash-verifying GitHub Actions artifact. All 28 source correction bindings now have per-exercise mappings and verdicts in `SOURCE-EXERCISE-RECONCILIATION-2026-11-11.md`. The replacement practice set has been expanded to cover the original homework/exercise types, including tréma words, ten land-transport modes, the five flight comprehension tasks, imparfait and passé-composé conjugation homework, village/city composition, ten preference sentences, text-equivalent image matching, true/false health comprehension and grammar/revision questions. The source's page 63–64 reference remains open because the textbook identity/pages are not supplied.
+
+Current package totals: 40 lessons, 216 questions, 710 marks; coverage 40 implemented-equivalent, 13 partial, 2 scheme markers; 10 open items, 9 blocking.
+
+
+## Student-delivery completion update — 11 November 2026
+
+- The replacement package is now marked IMPLEMENTED.
+- All 40 lessons are APPROVED for the owner-directed replacement scope; verification remains DEFERRED for all 40 because no classroom cohort results have been recorded.
+- Coverage is 53 IMPLEMENTED_EQUIVALENT and 2 scheme markers; there are no PARTIAL/UNRESOLVED coverage records and no delivery-blocking open items.
+- Practice has expanded to 218 items carrying 715 marks.
+- A French student-delivery adapter now renders each approved replacement lesson into the lesson route. The source verifier compiles the three original DOCX sources and checks all 28 correction rows resolve to the exact replacement lesson by source fingerprint.
+- The app contains offline standard/slow dialogue MP3s, transcript, translation reveal, line practice and ten comprehension questions. The mobile Metro export passed.
+- The Android production build remains blocked only by missing GitHub Actions secret EXPO_TOKEN; no Android binary or store release is claimed.

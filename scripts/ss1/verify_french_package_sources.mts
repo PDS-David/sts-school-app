@@ -4,6 +4,7 @@ import mammoth from 'mammoth';
 import packageData from '../../backend/src/db/ss1/subjects/french.json' with { type: 'json' };
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import { compilePackages } from '../../backend/src/db/ss1/compiler.ts';
+import { createSs1FrenchDeliveryResolver } from '../../backend/src/utils/ss1FrenchDeliveryCorrection.ts';
 import { parseTopics } from '../../backend/src/db/ingestTopics.ts';
 
 const subject = packageSchema.parse(packageData);
@@ -44,6 +45,23 @@ for (const correction of subject.delivery_corrections) {
     throw new Error('Correction crosses term boundaries: ' + correction.id);
   }
 }
+
+const resolveFrench = createSs1FrenchDeliveryResolver(subject);
+for (const correction of subject.delivery_corrections) {
+  const original = byId.get(correction.source_lesson_id)!;
+  const delivered = resolveFrench({
+    school_code: 'secondary',
+    class_name: 'SS 1',
+    subject_name: 'French',
+    term_label: original.row.termLabel,
+    title: original.row.title,
+    source_file: path.basename(subject.sources.find(source => source.source_id === correction.source_id)!.archive_member),
+    source_reference: original.row.sourceReference,
+  });
+  if (!delivered || delivered.correctionId !== correction.id || delivered.replacementLessonIds[0] !== correction.replacement_id) {
+    throw new Error('French student delivery adapter did not resolve exact source row: ' + correction.id);
+  }
+}
 const missingSources = subject.sources.filter(source => !inputs.some(input => input.source_id === source.source_id));
 if (missingSources.length) throw new Error('Unverified source inputs: ' + missingSources.map(s => s.source_id).join(', '));
 const summary = {
@@ -52,6 +70,7 @@ const summary = {
   originalRowsParsed: originalRows.length,
   authoredSupplementsCompiled: supplements.length,
   correctionsBoundToExactSourceRows: subject.delivery_corrections.length,
+  correctionsServedByStudentDeliveryAdapter: subject.delivery_corrections.length,
   coverageRecords: subject.coverage.length,
   packageStatus: subject.package_status,
   compilerBlockers: plan.blockers,
