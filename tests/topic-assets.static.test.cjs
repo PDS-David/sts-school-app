@@ -158,3 +158,12 @@ test('Agricultural Science asset metadata is withheld until its exact lesson and
   assert.match(body, /school_code === 'secondary'/);
   assert.match(body, /class_name === 'SS 1'/);
 });
+
+test('mobile renders authenticated SVG bytes with the native SVG renderer and rejects unsafe XML', () => {
+  const mobile = read('mobile/src/screens/TopicDetailScreen.tsx');
+  assert.match(mobile, /import \\{ SvgXml \\} from 'react-native-svg'/);
+  assert.match(mobile, /Authorization: `Bearer \\${token\\}`/);
+  assert.match(mobile, /contentType !== 'image\\/svg\\+xml'/);
+  assert.match(mobile, /(?:href|src|style)\\s\\*=/);
+  assert.match(mobile, /<SvgXml xml=\\{svgXml\\}/);
+});
