@@ -1,0 +1,44 @@
+name: SS1 Physics package verification
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "backend/src/db/ss1/subjects/physics.json"
+      - "tests/ss1/physics.package.test.mts"
+      - "docs/ss1/work/microtasks/physics/QUEUE.json"
+      - ".github/workflows/ss1-physics-verification.yml"
+  push:
+    branches: [master]
+    paths:
+      - "backend/src/db/ss1/subjects/physics.json"
+      - "tests/ss1/physics.package.test.mts"
+      - "docs/ss1/work/microtasks/physics/QUEUE.json"
+      - ".github/workflows/ss1-physics-verification.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ss1-physics-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  physics-package:
+    name: Physics package schema, content and regression tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.19.0"
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+      - name: Validate all registered SS1 subject packages
+        run: node --import tsx backend/src/db/ss1/validateSubjectPackages.ts
+      - name: Run Physics package regression tests
+        run: node --import tsx --test tests/ss1/physics.package.test.mts
