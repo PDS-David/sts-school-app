@@ -31,7 +31,7 @@ const safeSvg = (bytes) => {
   catch { return false; }
   return /^(?:<\?xml\s+version=["']1\.[01]["'][^?]*\?>\s*)?<svg\b[\s\S]*<\/svg>$/i.test(xml)
     && !/<!DOCTYPE|<!ENTITY|<\s*(?:script|foreignObject|iframe|object|embed|image|audio|video|style)\b|<\?xml-stylesheet|\bon[a-z][\w:-]*\s*=|\b(?:href|src|style)\s*=|javascript:|data:|@import|url\(\s*(?!["']?#)/i.test(xml)
-    && /\bviewBox=["']\s*[0-9.+-]+[,\s]+[0-9.+-]+[,\s]+[0-9.+-]+[,\s]+[0-9.+-]+\s*["']/i.test(xml);
+    && (() => { const viewBox = xml.match(/\bviewBox=["']\s*([0-9.+-]+)[,\s]+([0-9.+-]+)[,\s]+([0-9.+-]+)[,\s]+([0-9.+-]+)\s*["']/i); return !!viewBox && Number.isFinite(Number(viewBox[3])) && Number.isFinite(Number(viewBox[4])) && Number(viewBox[3]) > 0 && Number(viewBox[4]) > 0; })();
 };
 const detectMime = (bytes) => {
   if (bytes.length > 8 && bytes.subarray(0, 8).equals(Buffer.from([0x89,0x50,0x4e,0x47,0x0d,0x0a,0x1a,0x0a]))) return 'image/png';
