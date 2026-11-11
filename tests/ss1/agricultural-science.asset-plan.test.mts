@@ -1,10 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { tmpdir } from 'node:os';
-import { buildAssetPlan } from '../../scripts/ss1/build_asset_plan.mjs';
+import { buildAssetPlan, writeAssetPlanArtifacts } from '../../scripts/ss1/build_asset_plan.mjs';
 
 const validSvg = Buffer.from('<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" width="100" height="50" viewBox="0 0 100 50"><path d="M0 0 L100 50" stroke="#000"/></svg>');
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -42,6 +42,22 @@ test('pending content approval blocks attachment manifest generation', () => {
     assert.equal(result.ready, false);
     assert.ok(result.blockers.includes('LESSON_CONTENT_NOT_APPROVED:AG-ASSET-1'));
     assert.ok(result.blockers.includes('ASSET_CONTENT_NOT_APPROVED:AG-ASSET-1'));
+  } finally { rmSync(f.root, { recursive: true, force: true }); }
+});
+
+test('blocked plans write a private blocker report and never emit an attachment CSV', () => {
+  const f = fixture('PENDING');
+  try {
+    const result = buildAssetPlan({ compilerPlan: f.compilerPlan, subjectPackage: f.subjectPackage, repoRoot: f.root });
+    const outDir = path.join(f.root, 'private-output');
+    const output = writeAssetPlanArtifacts({ result, subjectPackage: f.subjectPackage, outDir });
+    assert.equal(output.ready, false);
+    assert.deepEqual(output.manifestPaths, []);
+    const files = readdirSync(outDir);
+    assert.deepEqual(files, ['agricultural-science-asset-plan.json']);
+    const report = JSON.parse(readFileSync(path.join(outDir, files[0]), 'utf8'));
+    assert.equal(report.ready, false);
+    assert.ok(report.blockers.includes('LESSON_CONTENT_NOT_APPROVED:AG-ASSET-1'));
   } finally { rmSync(f.root, { recursive: true, force: true }); }
 });
 
