@@ -466,6 +466,19 @@ test('Owner source verification and CI evidence are recorded separately from ass
     assert.equal(asset.provenance.reuse_status, 'PERMITTED', `rights provenance must remain permitted: ${asset.id}`);
     assert.equal(asset.state.verification, 'DEFERRED', `visual rendering verification must remain outstanding: ${asset.id}`);
   }
+  const visualOnlyChecks = p.open_items.filter(item =>
+    item.kind === 'VERIFICATION' && item.affected_ids.some(id => id.startsWith('AG-VIS-')));
+  assert.equal(visualOnlyChecks.length, 20);
+  assert(visualOnlyChecks.every(item => !item.blocks_delivery),
+    'asset-only visual checks must not suppress otherwise verified lesson text');
+  for (const id of [
+    'AGRICULTURAL-SCIENCE-T2-W07-PEAT-TYPO',
+    'AGRICULTURAL-SCIENCE-T3-W01-TOOL-NAMES',
+    'AGRICULTURAL-SCIENCE-T3-W02-TEXT',
+  ]) {
+    assert.equal(p.open_items.find(item => item.id === id)?.blocks_delivery, false,
+      `approved and verified replacement must not remain blocked by stale content status: ${id}`);
+  }
   const veterinaryGate = p.open_items.find(item => item.id === 'AGRICULTURAL-SCIENCE-T3-W06-EMBRYO-LAMB');
   assert(veterinaryGate?.blocks_delivery, 'independent veterinary review must remain a delivery gate');
 });
