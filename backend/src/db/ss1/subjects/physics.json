@@ -714,72 +714,271 @@
       "class_name": "SS 1",
       "term": "3rd Term",
       "subject": "Physics",
-      "title": "The fuse: ratings, fusing factor and choosing a fuse",
+      "title": "The fuse: purpose, rating, fusing current, fusing factor and fault testing",
       "objectives": [
-        "Define a fuse, current rating, fusing current and fusing factor.",
-        "Choose a suitable fuse for an appliance.",
-        "List types of fuse and ways of detecting faults."
+        "Define a fuse and fuse element and explain how a fuse protects a circuit.",
+        "Distinguish current rating, fusing current and fusing factor and calculate fusing factor.",
+        "Calculate appliance current and choose a suitable fuse rating using equipment/wiring requirements.",
+        "Identify rewirable, cartridge and high breaking capacity fuses.",
+        "Identify continuity, insulation-resistance, polarity and earth-loop tests and state their purposes.",
+        "Apply basic fuse and electrical testing safety rules."
       ],
-      "body": "A FUSE is a safety device placed in an electric circuit. It contains a thin wire (the fuse element) that heats up and melts when too much current flows, opening the circuit and protecting the appliance and wiring from damage or fire. A fuse is always fitted in the LIVE wire.\n\nTERMS. Current rating: the largest current the fuse can carry continuously without melting. Fusing current: the smallest current that will melt the element. Fusing factor = fusing current ÷ current rating (always more than 1).\nExample 1. A fuse has a rating of 10 A and a fusing current of 15 A: fusing factor = 15 ÷ 10 = 1.5.\n\nCHOOSING A FUSE. Find the normal working current I = P ÷ V and choose the fuse whose rating is just above it.\nExample 2. A 1.5 kW electric iron works from a 240 V supply. I = 1500 ÷ 240 = 6.25 A. Available ratings: 3 A, 5 A, 10 A, 13 A. The 3 A and 5 A fuses are too low and would blow; choose the 10 A fuse.\nExample 3. A 60 W lamp on 240 V draws 60 ÷ 240 = 0.25 A, so a 3 A fuse is suitable.\n\nTYPES. Rewirable fuse (element can be replaced), cartridge fuse (sealed glass or ceramic tube), high breaking-capacity fuse (for large fault currents).\nDETECTING FAULTS in a circuit. Continuity tester (is the circuit complete?), insulation-resistance tester (is there leakage through insulation?), polarity test with a test lamp or bell (is the switch in the live wire?), earth-loop impedance tester (is the earth connection good?).",
-      "body_sha256": "593c7108aafd96b01ad1cc64800174e5ff8649b0cd1c3f8aa9b9a6996e09c2c3",
+      "body": "THE FUSE: PURPOSE, RATING, FUSING CURRENT AND FAULT TESTING\n\n1. What is a fuse?\nA fuse is an overcurrent protective device. It contains a fuse element designed to melt when excessive current flows for long enough, opening the circuit and reducing the risk of overheating, fire and damage to wiring or equipment.\nA fuse is connected in series with the circuit and, in a typical single-phase appliance circuit, is placed in the live conductor so that blowing the fuse disconnects the appliance from the live supply. A fuse is not a substitute for safe wiring, earthing or other protective devices.\n\n2. Fuse element\nThe fuse element is the part designed to melt. It is made from a material and cross-section selected so that heating caused by current will melt it under specified overcurrent conditions. When the element melts, the conducting path opens and current stops.\n\n3. Important terms\nCurrent rating (rated current): the current a fuse is designed to carry continuously under its specified conditions without operating.\nFusing current: the minimum current that causes the fuse element to melt and open the circuit under the stated test conditions.\nFusing factor:\nFusing factor = fusing current / current rating.\nIt is greater than 1 because the fuse must carry its rated current without melting. The exact fusing factor is not one universal constant; it depends on the fuse type, construction, material, rating and operating conditions.\n\nWorked example 1\nA fuse has a current rating of 5 A and a fusing current of 8 A. Find its fusing factor.\nFusing factor = 8/5 = 1.6.\n\n4. Choosing a fuse for an appliance\nFor a simple resistive appliance with known rated power P and supply voltage V:\nI = P/V.\nChoose a fuse rating that is suitable for the appliance, wiring and manufacturer's instructions and is just above the normal operating current, allowing for appropriate starting/inrush current where relevant. Do not choose a fuse with a rating below the normal current because it may operate unnecessarily. Do not choose an excessively high rating because it may fail to protect the wiring/appliance.\nThe nearest suitable standard fuse is not automatically the next number in a list; use the ratings specified for the equipment and the applicable wiring standard.\n\nWorked example 2\nAn electric iron is rated 1.5 kW at 240 V.\nP = 1,500 W.\nI = P/V = 1,500/240 = 6.25 A.\nIf the suitable available fuse ratings are 3 A, 5 A, 10 A and 13 A, the 10 A fuse is the first listed rating above the normal current and is the appropriate choice from those options, subject to the appliance manufacturer's instructions.\n\nWorked example 3\nA 60 W lamp operates at 240 V.\nI = P/V = 60/240 = 0.25 A.\nA 3 A fuse is suitable from the listed standard choices, provided it matches the appliance and cord requirements.\n\n5. Types of fuse\n- Rewirable (semi-enclosed) fuse: a replaceable fuse wire is fitted in a carrier. It must be replaced with the correct specified fuse wire, not a random strand of metal.\n- Cartridge fuse: the fuse element is enclosed in a glass or ceramic cartridge. The complete cartridge is replaced after it operates.\n- High breaking capacity (HBC/HRC) fuse: designed to interrupt large fault currents safely within its rated breaking capacity.\nOther specialised types include thermal fuses and automotive blade fuses. The correct type depends on the circuit and equipment.\n\n6. Detecting faults in an electrical circuit\n- Continuity tester: checks whether a conductor or circuit path is complete. Isolate the circuit before a continuity test.\n- Insulation-resistance tester (often called a Megger): checks insulation resistance between conductors or between a conductor and earth. The circuit must be isolated and equipment handled by a competent person.\n- Polarity tester/test lamp: helps check that live, neutral and switching connections are correctly identified. Use an approved tester and safe procedure.\n- Earth-loop impedance tester: measures the impedance of the earth-fault loop to help determine whether protective devices can disconnect a fault safely.\nA multimeter may also test continuity or resistance on an isolated circuit. Never perform resistance/continuity tests on a live circuit.\n\n7. Safety rules\n- Never bypass a fuse or replace it with copper wire, foil or another improvised conductor.\n- Never increase the fuse rating just because the fuse keeps blowing. Find and correct the fault or overload.\n- Use the fuse type and rating specified by the appliance manufacturer and the relevant wiring standard.\n- Isolate the supply before replacing a fuse or testing continuity/resistance.\n- Do not open or repair mains equipment unless trained and authorised. Seek a qualified electrician for domestic wiring faults.\n\nCOMMON ERRORS\n- Current rating and fusing current are not the same quantity.\n- Fusing factor is fusing current divided by current rating, not the reverse.\n- A fuse element is the part that melts; the fuse is the complete protective device.\n- The correct fuse is not simply the largest available rating.\n- A continuity tester does not prove that insulation is safe.\n- A fuse reduces overcurrent risk; it does not make touching live parts safe.\n\nSUMMARY\nA fuse opens a circuit when excessive current melts its element. Fusing factor = fusing current/current rating and is greater than 1. Calculate normal appliance current with I = P/V, then select the specified suitable fuse rating. Continuity, insulation-resistance, polarity and earth-loop tests detect different electrical faults.",
+      "body_sha256": "6843edf84e9873f307485a878d188ee82c1c5e5361dc53250fcc5322e9b2db06",
       "practice": [
         {
           "id": "Q01",
-          "question": "Define fusing factor and calculate it for a fuse rated 5 A that blows at 8 A.",
-          "answer": "Fusing current ÷ current rating = 8 ÷ 5 = 1.6.",
+          "question": "Define a fuse and state its main function.",
+          "answer": "A fuse is an overcurrent protective device containing an element that melts when excessive current flows, opening the circuit to reduce overheating, fire and equipment damage.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "1 mark definition, 1 mark answer.",
-              "marks": 2
+              "criterion": "Defines a fuse as an overcurrent protective device.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that it melts/opens the circuit to protect wiring or equipment.",
+              "marks": 1
             }
           ]
         },
         {
           "id": "Q02",
-          "question": "A 2.4 kW heater works from 240 V. Calculate the working current and suggest a fuse from 5 A, 10 A, 13 A, 30 A.",
-          "answer": "I = 2400 ÷ 240 = 10 A; choose 13 A (a 10 A fuse has no margin).",
-          "marks": 2,
+          "question": "What is a fuse element?",
+          "answer": "It is the part of a fuse designed to melt when excessive current flows, thereby opening the circuit.",
+          "marks": 1,
           "marking": [
             {
-              "criterion": "1 mark current, 1 mark choice with reason.",
-              "marks": 2
+              "criterion": "Identifies the part designed to melt and open the circuit.",
+              "marks": 1
             }
           ]
         },
         {
           "id": "Q03",
-          "question": "Why is a fuse placed in the live wire?",
-          "answer": "So that the appliance is disconnected from the live supply when the fuse blows.",
-          "marks": 1,
+          "question": "Define the current rating of a fuse.",
+          "answer": "It is the current the fuse is designed to carry continuously under specified conditions without operating.",
+          "marks": 2,
           "marking": [
             {
-              "criterion": "1 mark.",
+              "criterion": "States that it is the designed continuous current.",
+              "marks": 1
+            },
+            {
+              "criterion": "Mentions that it does not operate under specified conditions at that rating.",
               "marks": 1
             }
           ]
         },
         {
           "id": "Q04",
-          "question": "List three types of fuse.",
-          "answer": "Rewirable, cartridge, high breaking-capacity.",
-          "marks": 3,
+          "question": "Define the fusing current of a fuse.",
+          "answer": "It is the minimum current that causes the fuse element to melt and open the circuit under stated test conditions.",
+          "marks": 2,
           "marking": [
             {
-              "criterion": "1 mark each.",
-              "marks": 3
+              "criterion": "States minimum current.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that it melts/opens the fuse element.",
+              "marks": 1
             }
           ]
         },
         {
           "id": "Q05",
-          "question": "Name two instruments used to test a fuse or check the continuity of its circuit.",
-          "answer": "A continuity tester and a Megger (insulation-resistance tester).",
+          "question": "A fuse has a current rating of 5 A and a fusing current of 8 A. Calculate its fusing factor.",
+          "answer": "Fusing factor = fusing current/current rating = 8/5 = 1.6.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "1 mark for each suitable instrument.",
-              "marks": 2
+              "criterion": "Uses the correct ratio.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 1.6.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q06",
+          "question": "An electric iron is rated 1.5 kW at 240 V. Calculate its normal operating current.",
+          "answer": "P = 1,500 W. I = P/V = 1,500/240 = 6.25 A.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Converts 1.5 kW to 1,500 W.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses I = P/V.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 6.25 A.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q07",
+          "question": "For the iron in Q06, choose a suitable fuse from 3 A, 5 A, 10 A and 13 A, assuming the manufacturer permits these choices.",
+          "answer": "10 A, because it is the first listed rating above the normal current of 6.25 A. The appliance instructions and wiring rating must still be followed.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Chooses 10 A.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains that it is above 6.25 A and suitable for the equipment/wiring.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q08",
+          "question": "List three types of fuse.",
+          "answer": "Rewirable fuse, cartridge fuse and high breaking capacity (HBC/HRC) fuse.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Rewirable fuse.",
+              "marks": 1
+            },
+            {
+              "criterion": "Cartridge fuse.",
+              "marks": 1
+            },
+            {
+              "criterion": "HBC/HRC fuse.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q09",
+          "question": "What is the purpose of a high breaking capacity fuse?",
+          "answer": "It is designed to interrupt large fault currents safely within its rated breaking capacity.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Mentions large fault currents.",
+              "marks": 1
+            },
+            {
+              "criterion": "Mentions safe interruption within rated breaking capacity.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "Name four instruments or tests used to detect faults in electrical circuits and state what each checks.",
+          "answer": "Continuity tester—checks circuit continuity; insulation-resistance tester/Megger—checks insulation resistance; polarity tester/test lamp—checks correct polarity/connections; earth-loop impedance tester—checks earth-fault loop impedance.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "One correct instrument and function.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second correct instrument and function.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third correct instrument and function.",
+              "marks": 1
+            },
+            {
+              "criterion": "Fourth correct instrument and function.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "Distinguish between a continuity test and an insulation-resistance test.",
+          "answer": "A continuity test checks whether a conducting path is complete. An insulation-resistance test checks whether insulation sufficiently resists unwanted current leakage between conductors or to earth.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correctly describes continuity testing.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly describes insulation-resistance testing.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "Why is a fuse normally placed in the live conductor of an appliance circuit?",
+          "answer": "When the fuse melts, it disconnects the appliance from the live supply. If it were only in the neutral conductor, parts of the appliance could remain connected to live potential.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that blowing it disconnects the live supply.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains the danger if only neutral is disconnected.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q13",
+          "question": "Why should a person not replace a fuse that keeps blowing with a fuse of a much higher rating?",
+          "answer": "A higher-rated fuse may allow excessive current to continue, overheating the wiring or appliance and creating a fire risk. The cause of the fault or overload must be found.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that excessive current may continue.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains overheating/fire risk and need to find fault.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q14",
+          "question": "A fuse is a protective device designed to (A) melt when excessive current flows (B) increase voltage (C) store charge (D) reduce frequency.",
+          "answer": "A. Melt when excessive current flows.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects A.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q15",
+          "question": "The part of a fuse designed to melt is called the (A) fuse case (B) fuse element (C) switch (D) resistor.",
+          "answer": "B. Fuse element.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q16",
+          "question": "Which of the following is NOT a type of fuse? (A) rewirable (B) cartridge (C) high breaking capacity (D) Megger.",
+          "answer": "D. A Megger is an insulation-resistance tester, not a fuse.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects D.",
+              "marks": 1
             }
           ]
         }
@@ -800,6 +999,22 @@
           "rights": "Existing project-authored lesson content reused and adapted within the same repository; the branch cited no external reference for these five lessons.",
           "reuse_status": "PERMITTED",
           "attribution": "Previous SS1 Physics authoring work in PDS-David/sts-school-app, PR #71."
+        },
+        {
+          "title": "SchoolGist — Physics SSS 1 Third Term, Week Four",
+          "locator": "Week Four section: fuse, fuse element, current rating, fusing current, fusing factor, fuse types and fault-detection instruments. Used as a close-equivalent scope comparison, not as the registered original .doc.",
+          "url": "https://schoolgist.ng/storage/postFiles/SS1-Physics-3rd-Term-Lesson-Note-pdf.pdf",
+          "rights": "Used to corroborate topic scope and definitions only; lesson and questions independently authored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "SchoolGist, Physics SSS 1 Third Term, Week Four, accessed 2026-11-11."
+        },
+        {
+          "title": "Ecolebooks Nigeria — Week 4 and 5 SS1 Third Term Physics Notes",
+          "locator": "Week Four section: definitions, types of fuse, fault-detection instruments and evaluation questions.",
+          "url": "https://ecolebooks.com/nigeria/posts/week-4-and-5-ss1-third-term-physics-notes/",
+          "rights": "Used to corroborate scope and common exercise categories only; no wording or questions copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Ecolebooks Nigeria, Week 4 and 5 SS1 Third Term Physics Notes, accessed 2026-11-11."
         }
       ],
       "state": {
@@ -6850,8 +7065,8 @@
     {
       "id": "COV-PHYS-T3-W04-OBJ-1",
       "source_id": "SS1-SRC-bed91bb4ef0e",
-      "objective": "Safety device: the fuse",
-      "objective_locator": "PR #71 objective-level locator WEEK 4; master source-week indexing task remains pending and will add the exact parsed-row locator.",
+      "objective": "Fuse as an overcurrent protective device: fuse element, current rating, fusing current, fusing factor, types and fault-detection tests.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 3 WEEK 4; body ID SS1-SRC-bed91bb4ef0e:BODY:87346147325e174b318300a5d1ac5312cd14784201b272138575665519d50d1b (2,393 characters; SHA-256 87346147325e174b318300a5d1ac5312cd14784201b272138575665519d50d1b).",
       "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
         "SUP-SS1-PHYSICS-T3-W04-FUSE"
@@ -6864,6 +7079,10 @@
         {
           "locator": "Master lesson SUP-SS1-PHYSICS-T3-W04-FUSE.",
           "explanation": "The authored lesson supplies teaching for this objective. No other objective in the week is inferred from this single lesson; source-week indexing remains a separate pending task."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W04-FUSE; updated body SHA-256 6843edf84e9873f307485a878d188ee82c1c5e5361dc53250fcc5322e9b2db06; practice Q01–Q16.",
+          "explanation": "Expanded authored supplement covers fuse function, element, rating, fusing current, fusing factor, safe selection, fuse types, fault tests and safety. It does not claim approval or verification."
         }
       ]
     },
