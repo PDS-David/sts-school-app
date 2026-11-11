@@ -5017,6 +5017,358 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "DC electric circuits: components, electrical quantities and Ohm's law",
+      "objectives": [
+        "Define a DC electric circuit and distinguish open, closed and short circuits.",
+        "Classify conductors, insulators and semiconductors.",
+        "Identify common DC circuit components and state their functions.",
+        "Define current, potential difference, emf, resistance and internal resistance.",
+        "State Ohm's law and use V = IR in calculations.",
+        "Describe and interpret an experiment for verifying Ohm's law."
+      ],
+      "body": "DIRECT-CURRENT ELECTRIC CIRCUITS\n\n1. What is an electric circuit?\nAn electric circuit is a complete conducting path through which electric charge can flow. A simple direct-current (DC) circuit may contain a cell or battery, connecting wires, a switch, a resistor or lamp, and measuring instruments.\n- A closed circuit provides a complete path, so current can flow.\n- An open circuit has a break in the path, so a steady current cannot flow.\n- A short circuit is an unintended very low-resistance path. It can produce a dangerously large current and overheating.\n\n2. Materials in an electric circuit\n- Conductors allow electric charge to move through them readily. Examples include copper, aluminium, graphite and suitable electrolyte solutions.\n- Insulators strongly oppose charge movement. Examples include dry plastic, rubber, glass and dry wood.\n- Semiconductors have electrical properties between good conductors and insulators. Silicon and germanium are examples; their conductivity can be controlled by doping, temperature or light.\nDo not say that insulators contain no electrons. They contain charged particles, but charges are not free to move through them as readily as in conductors.\n\n3. Components and their functions\n- Cell: supplies electrical energy and maintains a potential difference.\n- Battery: two or more cells connected together (in everyday use, the word may also mean a single packaged source).\n- Switch/key: opens or closes the circuit.\n- Connecting wires: provide conducting paths between components.\n- Resistor: limits current and produces a potential difference.\n- Rheostat/variable resistor: allows resistance to be adjusted to vary current.\n- Ammeter: measures current; it is connected in series with the component being measured. An ideal ammeter has very low resistance.\n- Voltmeter: measures potential difference between two points; it is connected in parallel across the component. An ideal voltmeter has very high resistance.\n- Fuse: a safety device that melts and opens the circuit if current becomes excessive; detailed fuse operation is covered in Third Term Week Four.\n\n4. Important electrical quantities\nElectric current (I) is the rate of flow of charge:\nI = Q/t; therefore Q = It.\nCurrent is measured in amperes (A), charge in coulombs (C) and time in seconds (s).\n\nPotential difference (V) between two points is the energy transferred per unit charge:\nV = W/Q; therefore W = QV.\nIt is measured in volts (V), where 1 V = 1 J C⁻¹.\n\nElectromotive force (emf, ε) is the energy supplied per unit charge by a source:\nε = W/Q.\nIt is measured in volts. It is not a mechanical force measured in newtons.\n\nResistance (R) is the ratio of potential difference across a component to the current through it:\nR = V/I.\nIts unit is the ohm (Ω). Resistance describes opposition to current.\n\nInternal resistance (r) is the resistance within a real cell/source. When a cell supplies current I to an external resistance R:\nε = I(R + r)\nand terminal potential difference V = IR = ε − Ir.\nThe brackets matter: the total circuit resistance is R + r.\n\n5. Ohm's law\nOhm's law states that, for a metallic conductor kept at constant temperature and under unchanged physical conditions, the current through it is directly proportional to the potential difference across it:\nV ∝ I, so V = IR.\nThe resistance R is constant for an ohmic conductor under those conditions. A component that does not maintain a straight-line V–I relationship is non-ohmic over that range.\n\nWorked example 1\nA resistor has a potential difference of 12 V across it and a current of 3 A through it. Find its resistance.\nR = V/I = 12/3 = 4 Ω.\n\nWorked example 2\nA current of 0.5 A flows for 2 minutes. Find the charge transferred.\nConvert time: 2 min = 120 s.\nQ = It = 0.5 × 120 = 60 C.\n\n6. Verifying Ohm's law experimentally\nAim: To test whether a chosen metallic conductor obeys Ohm's law.\n\nApparatus: DC cell/battery, key/switch, ammeter, voltmeter, rheostat, test resistor or resistance wire, connecting leads.\n\nConnections:\n- Connect the cell, key, ammeter, rheostat and test resistor in series.\n- Connect the voltmeter in parallel across the test resistor.\n- Observe correct meter polarity for the DC source.\n\nMethod:\n1. Close the key and use the rheostat to set a small current.\n2. Record the ammeter reading I and voltmeter reading V.\n3. Adjust the rheostat to obtain several different current values; record the corresponding V values.\n4. Open the key between readings when necessary to limit heating. Keep the conductor's temperature as constant as practicable.\n5. Calculate V/I for each reading or plot V on the vertical axis against I on the horizontal axis.\n\nObservation and conclusion:\nFor an ohmic conductor at constant temperature, V/I is approximately constant. The V–I graph is a straight line through the origin. Its gradient ΔV/ΔI is the resistance R.\nIf the graph curves or the ratio changes significantly, the conductor is not obeying Ohm's law over that range or its temperature/conditions have changed.\n\n7. Practical precautions\n- Use an ammeter in series and a voltmeter in parallel.\n- Never connect an ammeter directly across a cell; its low resistance may cause a very large current.\n- Start with the rheostat at high resistance to limit the initial current.\n- Check connections before closing the key.\n- Avoid overheating the test wire because resistance may change with temperature.\n- Use suitable low-voltage equipment and do not work on household mains circuits.\n\nCOMMON ERRORS\n- A circuit must be closed for sustained current through the external path.\n- An ammeter is connected in series; a voltmeter is connected in parallel.\n- Ohm's law requires constant temperature and other physical conditions.\n- The gradient of a V-versus-I graph is R; the gradient of an I-versus-V graph is 1/R.\n- For a cell with internal resistance, ε = I(R + r), not an unbracketed expression that leaves the denominator ambiguous.\n\nSUMMARY\nA DC circuit is a complete path for current. I = Q/t, V = W/Q, R = V/I and, for an ohmic conductor at constant temperature, V = IR. Verify Ohm's law by measuring V and I while varying the current and checking that V/I is constant.",
+      "body_sha256": "4a611b9dbc48d8c38db2d88940bdc00037d200ca86ca6578c064f2107e78f25c",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Define an electric circuit.",
+          "answer": "An electric circuit is a complete conducting path through which electric charge can flow.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that it is a conducting path.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that the path is complete for current flow.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Distinguish between an open circuit and a closed circuit.",
+          "answer": "A closed circuit has a complete path and allows current to flow. An open circuit has a break in the path and prevents steady current flow.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correctly describes a closed circuit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly describes an open circuit.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "Classify copper, rubber and silicon as conductor, insulator or semiconductor.",
+          "answer": "Copper: conductor; rubber: insulator; silicon: semiconductor.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Copper — conductor.",
+              "marks": 1
+            },
+            {
+              "criterion": "Rubber — insulator.",
+              "marks": 1
+            },
+            {
+              "criterion": "Silicon — semiconductor.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "State the functions of four of these circuit components: cell, switch, resistor, rheostat, ammeter and voltmeter.",
+          "answer": "Cell supplies electrical energy/potential difference; switch opens or closes circuit; resistor limits current; rheostat varies resistance/current; ammeter measures current; voltmeter measures p.d. Any four.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "One correct component function.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second correct component function.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third correct component function.",
+              "marks": 1
+            },
+            {
+              "criterion": "Fourth correct component function.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "How should an ammeter and a voltmeter be connected when measuring a resistor?",
+          "answer": "The ammeter is connected in series with the resistor. The voltmeter is connected in parallel across the resistor.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Ammeter in series.",
+              "marks": 1
+            },
+            {
+              "criterion": "Voltmeter in parallel.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q06",
+          "question": "Why should an ammeter not be connected directly across a cell?",
+          "answer": "An ammeter has very low resistance. Connecting it directly across a cell can cause a very large current, overheating and damage.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Mentions very low ammeter resistance.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains risk of large current/overheating/damage.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q07",
+          "question": "A charge of 30 C passes through a circuit in 10 s. Calculate the current.",
+          "answer": "I = Q/t = 30/10 = 3 A.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses I = Q/t.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 3 A.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q08",
+          "question": "A potential difference of 12 V transfers 5 C of charge. Calculate the energy transferred.",
+          "answer": "W = QV = 5 × 12 = 60 J.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses W = QV.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 60 J.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q09",
+          "question": "A resistor has 12 V across it and a current of 3 A. Calculate its resistance.",
+          "answer": "R = V/I = 12/3 = 4 Ω.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses R = V/I.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 4 Ω.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "State Ohm's law.",
+          "answer": "For a metallic conductor kept at constant temperature and under unchanged physical conditions, the current is directly proportional to the potential difference across it.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States direct proportionality of current and p.d.",
+              "marks": 1
+            },
+            {
+              "criterion": "Includes constant temperature/physical conditions.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "Write the equation relating emf, external resistance R, internal resistance r and current I for a real cell supplying current.",
+          "answer": "ε = I(R + r).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Includes emf ε and current I.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly includes total resistance (R + r) in brackets.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "Describe an experiment to verify Ohm's law.",
+          "answer": "Connect a cell, key, ammeter, rheostat and test resistor in series. Connect a voltmeter in parallel across the resistor. Vary the rheostat, record several pairs of I and V readings while keeping temperature as constant as possible, then check whether V/I is constant or plot V against I.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Correct series circuit including ammeter and test resistor.",
+              "marks": 1
+            },
+            {
+              "criterion": "Voltmeter connected in parallel.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses rheostat to vary current and records paired readings.",
+              "marks": 1
+            },
+            {
+              "criterion": "Keeps temperature/conditions constant.",
+              "marks": 1
+            },
+            {
+              "criterion": "Checks constant V/I or straight-line V–I graph through origin.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q13",
+          "question": "What does the gradient of a graph of V (vertical axis) against I (horizontal axis) represent for an ohmic resistor?",
+          "answer": "The resistance R, because gradient = ΔV/ΔI.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies resistance.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives ΔV/ΔI.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q14",
+          "question": "State three precautions when verifying Ohm's law.",
+          "answer": "Any three: connect ammeter in series; voltmeter in parallel; begin with rheostat at high resistance; avoid heating the wire; check connections before closing the key; use low-voltage equipment.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "One valid precaution.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second valid precaution.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third valid precaution.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q15",
+          "question": "The SI unit of electric current is (A) volt (B) ampere (C) ohm (D) coulomb.",
+          "answer": "B. Ampere.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q16",
+          "question": "The SI unit of electric charge is (A) ampere (B) volt (C) ohm (D) coulomb.",
+          "answer": "D. Coulomb.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects D.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q17",
+          "question": "The SI unit of resistance is (A) ampere (B) volt (C) ohm (D) coulomb.",
+          "answer": "C. Ohm.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects C.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q18",
+          "question": "Which equation expresses Ohm's law? (A) V = IR (B) Q = It (C) W = QV (D) I = Q/t.",
+          "answer": "A. V = IR.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects A.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Sow the Seed Schools SS1 Physics Third Term scheme",
+          "locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 0 WEEK 1; body ID SS1-SRC-bed91bb4ef0e:BODY:9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231 (4,257 characters; source member SHA-256 bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688). Original body text was not available in this execution.",
+          "url": null,
+          "rights": "Scheme used to establish subject/week scope; lesson independently authored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics scheme."
+        },
+        {
+          "title": "EduPodia — Third Term SS1 Physics lesson note (public close-equivalent)",
+          "locator": "PDF, Week One, lines 45–93: electric circuit, conductors/semiconductors/insulators, components, current, p.d., emf, internal resistance and resistance. Used only as close-equivalent scope corroboration.",
+          "url": "https://edupodia.com/wp-content/uploads/2020/12/THIRD-TERM-SS-1-PHYSIC-LESSON-NOTE.pdf",
+          "rights": "Used to corroborate topic scope only; no wording or exercises copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "EduPodia, Third Term SS1 Physics Lesson Note, accessed 2026-11-11."
+        },
+        {
+          "title": "Ecolebooks Nigeria — Week 1 SS1 Third Term Physics Notes",
+          "locator": "Week One section includes Ohm's law verification and assessment; used as secondary scope comparison, not as registered original.",
+          "url": "https://ecolebooks.com/nigeria/posts/week-1-ss1-third-term-physics-notes/",
+          "rights": "Used to corroborate scope and assessment categories only; no wording or exercises copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Ecolebooks Nigeria, Week 1 SS1 Third Term Physics Notes, accessed 2026-11-11."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -7775,6 +8127,106 @@
         {
           "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Ten, lines 732–835.",
           "explanation": "Close-equivalent comparison includes current, charge/time, emf, p.d. and chemical, thermal, mechanical and solar generation. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W01-OBJ-1",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "DC electric circuit: complete path, components and functions.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 0 WEEK 1; body SS1-SRC-bed91bb4ef0e:BODY:9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231 (4,257 characters; SHA-256 9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231). Scheme topic: Electric Circuit (DC).",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS; body SHA-256 4a611b9dbc48d8c38db2d88940bdc00037d200ca86ca6578c064f2107e78f25c; practice Q01–Q18.",
+          "explanation": "Authored supplement teaches the circuit, quantities, components and Ohm's law verification with a complete keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "EduPodia, Third Term SS1 Physics PDF, Week One, lines 45–93.",
+          "explanation": "Close-equivalent comparison includes circuit components, quantities and Ohm's law. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W01-OBJ-2",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Conductors, insulators and semiconductors.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 0 WEEK 1; body SS1-SRC-bed91bb4ef0e:BODY:9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231 (4,257 characters; SHA-256 9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231). Scheme topic: Electric Circuit (DC).",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS; body SHA-256 4a611b9dbc48d8c38db2d88940bdc00037d200ca86ca6578c064f2107e78f25c; practice Q01–Q18.",
+          "explanation": "Authored supplement teaches the circuit, quantities, components and Ohm's law verification with a complete keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "EduPodia, Third Term SS1 Physics PDF, Week One, lines 45–93.",
+          "explanation": "Close-equivalent comparison includes circuit components, quantities and Ohm's law. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W01-OBJ-3",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Current, charge, potential difference, emf, resistance and internal resistance.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 0 WEEK 1; body SS1-SRC-bed91bb4ef0e:BODY:9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231 (4,257 characters; SHA-256 9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231). Scheme topic: Electric Circuit (DC).",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS; body SHA-256 4a611b9dbc48d8c38db2d88940bdc00037d200ca86ca6578c064f2107e78f25c; practice Q01–Q18.",
+          "explanation": "Authored supplement teaches the circuit, quantities, components and Ohm's law verification with a complete keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "EduPodia, Third Term SS1 Physics PDF, Week One, lines 45–93.",
+          "explanation": "Close-equivalent comparison includes circuit components, quantities and Ohm's law. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W01-OBJ-4",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Ohm's law and the relationship V = IR.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 0 WEEK 1; body SS1-SRC-bed91bb4ef0e:BODY:9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231 (4,257 characters; SHA-256 9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231). Scheme topic: Electric Circuit (DC).",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS; body SHA-256 4a611b9dbc48d8c38db2d88940bdc00037d200ca86ca6578c064f2107e78f25c; practice Q01–Q18.",
+          "explanation": "Authored supplement teaches the circuit, quantities, components and Ohm's law verification with a complete keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "EduPodia, Third Term SS1 Physics PDF, Week One, lines 45–93.",
+          "explanation": "Close-equivalent comparison includes circuit components, quantities and Ohm's law. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W01-OBJ-5",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Experimental verification of Ohm's law using meters, rheostat and a V–I graph.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 0 WEEK 1; body SS1-SRC-bed91bb4ef0e:BODY:9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231 (4,257 characters; SHA-256 9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231). Scheme topic: Electric Circuit (DC).",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS; body SHA-256 4a611b9dbc48d8c38db2d88940bdc00037d200ca86ca6578c064f2107e78f25c; practice Q01–Q18.",
+          "explanation": "Authored supplement teaches the circuit, quantities, components and Ohm's law verification with a complete keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "EduPodia, Third Term SS1 Physics PDF, Week One, lines 45–93.",
+          "explanation": "Close-equivalent comparison includes circuit components, quantities and Ohm's law. It is not asserted to be the registered original .doc."
         }
       ]
     }
