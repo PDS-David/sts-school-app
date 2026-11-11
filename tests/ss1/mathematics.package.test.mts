@@ -50,6 +50,7 @@ test('asset bytes, hashes and SVG safety match the registered package metadata',
   assert.equal(pkg.assets.length, 12);
   for (const a of pkg.assets) {
     const bytes = readFileSync(path.join(repo, a.path));
+    console.log('MATHEMATICS_ASSET_HASH', a.id, sha256(bytes), bytes.length);
     assert.equal(bytes.length, a.bytes, a.id);
     assert.equal(sha256(bytes), a.sha256, a.id);
     if (a.media_type === 'image/svg+xml') assert.equal(isSafeSvg(bytes), true, a.id);
