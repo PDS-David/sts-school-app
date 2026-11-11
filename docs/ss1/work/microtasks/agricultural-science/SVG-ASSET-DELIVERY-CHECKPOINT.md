@@ -13,6 +13,7 @@ Base: `45551d903647c80b6e2a2b6798fa741d650f1bc0` (master at branch creation). Br
 
 - `LESSON-APPROVAL-REGISTER.md` lists all 47 lessons, body hashes, linked assets and per-lesson review decisions.
 - `ASSET-APPROVAL-REGISTER.md` lists all 40 SVGs, file hashes, alt text, provenance/rights, current state and per-asset review decisions.
+- `FACT-AND-CONTENT-REVIEW-REGISTER.md` indexes all 31 fact and 14 content issues, distinguishes blocking from non-blocking items, and links the existing evidence notes.
 - Neither register implies approval. Both must be completed by qualified reviewers before delivery.
 
 ## Explicit gates
