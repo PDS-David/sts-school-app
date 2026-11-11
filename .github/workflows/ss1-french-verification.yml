@@ -5,11 +5,14 @@ on:
     branches: [master]
     paths:
       - "backend/src/db/ss1/subjects/french.json"
+      - "backend/src/routes/learning.ts"
+      - "backend/src/utils/ss1FrenchDeliveryCorrection.ts"
       - "mobile/src/screens/FrenchListeningScreen.tsx"
       - "mobile/src/screens/SubjectTopicsScreen.tsx"
       - "mobile/src/screens/TopicDetailScreen.tsx"
       - "mobile/src/navigation/StudentTabs.tsx"
       - "mobile/package.json"
+      - "mobile/assets/french/**"
       - "tests/student-launch.static.test.cjs"
       - "backend/src/db/ss1/sourceRegistry.json"
       - "backend/src/db/ss1/compiler.ts"
@@ -18,6 +21,8 @@ on:
       - "backend/package.json"
       - "scripts/ss1/verify_french_package_sources.mts"
       - "tests/ss1/french.package.test.mts"
+      - "tests/ss1/french.delivery.test.mts"
+      - "tests/ss1/french.runtime.test.mts"
       - ".github/workflows/ss1-french-verification.yml"
   workflow_dispatch:
 
@@ -126,7 +131,9 @@ jobs:
 
       - name: Run French package tests and structural validation
         working-directory: backend
-        run: npm run test:ss1:french
+        run: |
+          npm run test:ss1:french
+          node --import tsx --test ../tests/ss1/french.runtime.test.mts
 
       - name: Install student app dependencies for TypeScript validation
         working-directory: mobile
