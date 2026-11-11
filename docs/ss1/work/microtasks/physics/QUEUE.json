@@ -50,7 +50,8 @@
     "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS (2026-11-11): implemented via SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; 20 questions/48 marks; coverage for source objectives 1 and 3–9. Evidence note created. Laboratory familiarisation and evaluation/assignment gaps remain unresolved.",
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT (2026-11-11): implemented via SUP-SS1-PHYSICS-T1-W02-VOLUME-MEASUREMENT; 18 answered questions/38 marks; OBJ-11 coverage updated. Evidence note created. The source's 1 cm³ accuracy claim is treated as instrument-dependent, with a non-blocking open item.",
     "PHYS-LES-T1-W02-MEASUREMENT-BASICS (2026-11-11): implemented via SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; 20 answered questions/41 marks; coverage OBJ-1–6 and OBJ-8–10 updated. Evidence note created. Source figures and assessment answers remain open.",
-    "PHYS-RULE-T1-REVISION-SCHEME and PHYS-RULE-T3-REVISION-EXAM (2026-11-11): both scheme-only markers are accounted. First Term R004 + COV-PHYS-T1-REVISION-SCHEME added; Third Term R003 + COV-PHYS-T3-SCHEME-REVISION-EXAM already existed from PHYS-PRE-T3. No lesson or revision plan invented."
+    "PHYS-RULE-T1-REVISION-SCHEME and PHYS-RULE-T3-REVISION-EXAM (2026-11-11): both scheme-only markers are accounted. First Term R004 + COV-PHYS-T1-REVISION-SCHEME added; Third Term R003 + COV-PHYS-T3-SCHEME-REVISION-EXAM already existed from PHYS-PRE-T3. No lesson or revision plan invented.",
+    "PHYS-VIS-T1/T2/T3 (2026-11-11): ten original SVGs authored and registered; original embedded legacy .doc figures still not inspectable from text extraction. Evidence PHYS-VIS-NEW-ASSETS-20261111.md; package open item PHYSICS-SOURCE-VISUAL-INVENTORY blocks delivery pending exhaustive rendered-source audit."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -70,8 +71,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 44,
-    "BLOCKED": 32,
-    "PENDING": 14
+    "BLOCKED": 35,
+    "PENDING": 11
   },
   "total": 90,
   "items": [
@@ -1615,8 +1616,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "The repository records no figure count or disposition for Physics. The source is a legacy binary .doc (8479232 bytes, the largest Physics source and likely image-heavy). Branch-only claim (PR #71 OI-PHYS-004): graphs, circuit diagrams, apparatus and field lines are not extracted and none was invented. The checkpoint reports commercial tutor branding in other SS1 sources; its presence in Physics is unverified.",
+      "status": "BLOCKED",
+      "implementation_reference": "Ten original SVG teaching aids have been authored and registered in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-VIS-NEW-ASSETS-20261111.md. The source's embedded legacy .doc figures were not available in the text extraction, so exhaustive figure inventory and one-for-one source disposition cannot be claimed. Package open item PHYSICS-SOURCE-VISUAL-INVENTORY blocks delivery until original rendered pages/figures are inspected.",
       "completion_condition": "Inventory complete with locators; follow-up tasks appended; any branding or rights concern raised as an open item without copying contact details into Git."
     },
     {
@@ -1646,8 +1647,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "The repository records no figure count or disposition for Physics. The source is a legacy binary .doc (466432 bytes). Branch-only claim (PR #71 OI-PHYS-004): graphs, circuit diagrams, apparatus and field lines are not extracted and none was invented. The checkpoint reports commercial tutor branding in other SS1 sources; its presence in Physics is unverified.",
+      "status": "BLOCKED",
+      "implementation_reference": "Ten original SVG teaching aids have been authored and registered in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-VIS-NEW-ASSETS-20261111.md. The source's embedded legacy .doc figures were not available in the text extraction, so exhaustive figure inventory and one-for-one source disposition cannot be claimed. Package open item PHYSICS-SOURCE-VISUAL-INVENTORY blocks delivery until original rendered pages/figures are inspected.",
       "completion_condition": "Inventory complete with locators; follow-up tasks appended; any branding or rights concern raised as an open item without copying contact details into Git."
     },
     {
@@ -1677,8 +1678,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "The repository records no figure count or disposition for Physics. The source is a legacy binary .doc (107008 bytes). Branch-only claim (PR #71 OI-PHYS-004): graphs, circuit diagrams, apparatus and field lines are not extracted and none was invented. The checkpoint reports commercial tutor branding in other SS1 sources; its presence in Physics is unverified.",
+      "status": "BLOCKED",
+      "implementation_reference": "Ten original SVG teaching aids have been authored and registered in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-VIS-NEW-ASSETS-20261111.md. The source's embedded legacy .doc figures were not available in the text extraction, so exhaustive figure inventory and one-for-one source disposition cannot be claimed. Package open item PHYSICS-SOURCE-VISUAL-INVENTORY blocks delivery until original rendered pages/figures are inspected.",
       "completion_condition": "Inventory complete with locators; follow-up tasks appended; any branding or rights concern raised as an open item without copying contact details into Git."
     },
     {
@@ -3107,20 +3108,14 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "All three terms' teaching-week supplements authored/expanded; first and third term revision/examination scheme markers accounted. Remaining queue mainly visuals, factual dependencies, owner decisions, branch reconciliation and source tests."
+    "notes": "Ten original SVG teaching aids registered; exhaustive original .doc figure inventory remains blocking. Package now has 32 lessons and 189 coverage rows; source approvals and verification remain pending/deferred."
   },
   "next_runnable": [
-    "PHYS-VIS-T1",
-    "PHYS-VIS-T2",
-    "PHYS-VIS-T3",
     "PHYS-PORT-D1-RULE-SPLIT",
     "PHYS-PORT-D1-FACT-T1-W05",
     "PHYS-PORT-D1-FACT-T2-W01"
   ],
   "runnable_now": [
-    "PHYS-VIS-T1",
-    "PHYS-VIS-T2",
-    "PHYS-VIS-T3",
     "PHYS-PORT-D1-RULE-SPLIT",
     "PHYS-PORT-D1-FACT-T1-W05",
     "PHYS-PORT-D1-FACT-T2-W01"
