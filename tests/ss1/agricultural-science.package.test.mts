@@ -257,7 +257,7 @@ test('Agricultural Science original row identities match the real Mammoth parser
 });
 
 
-test('Agricultural Science learner delivery withholds corrected source rows until scoped week and lesson gates pass', async () => {
+test('Agricultural Science corrected source rows deliver only after scoped week and lesson gates pass', async () => {
   const p = packageSchema.parse(raw);
   const archiveBytes = readFileSync(new URL('../../docs/ss1/sources/SSS1-original.zip', import.meta.url));
   const archive = await JSZip.loadAsync(archiveBytes);
@@ -305,13 +305,31 @@ test('Agricultural Science learner delivery withholds corrected source rows unti
       generated_assessment_id: 'stale-assessment',
     };
 
-    const pending = resolver(topic);
-    assert.equal(pending?.kind, 'withheld', 'pending subject package/lesson must never expose original source text');
-    assert.match(pending?.text ?? '', /withheld/i);
+    const delivered = resolver(topic);
+    assert.equal(delivered?.kind, 'corrected', 'owner-approved and verified lesson should replace the source row');
     const safe = safeAgriculturalScienceTopic(topic);
-    assert.equal(safe.source_reference, null);
+    assert.equal((safe.delivery_correction as any).status, 'corrected');
+    assert(safe.source_reference, 'learner-safe replacement text must be available');
+    assert(!safe.source_reference.includes('Answer:'), 'teacher answers must not reach learners');
+    assert(!safe.source_reference.includes('Marks:'), 'marking criteria must not reach learners');
     assert.equal(safe.generated_assessment_id, null);
-    assert.match(String(safe.summary), /withheld/i);
+
+    const blockedFixture = JSON.parse(JSON.stringify(p));
+    const match = correction.id.match(/^CORR-AG-(T[123])-W([0-9]{2}(?:-[0-9]{2})?)-/)!;
+    const weekPrefix = `AGRICULTURAL-SCIENCE-${match[1]}-W${match[2]}-`;
+    blockedFixture.open_items.push({
+      id: `${weekPrefix}TEST-WEEK-BLOCKER`, kind: 'VERIFICATION', blocks_delivery: true,
+      affected_ids: [correction.source_lesson_id], detail: 'test-only scoped blocker', required_action: 'test only',
+    });
+    assert.equal(createAgriculturalScienceDeliveryResolver(blockedFixture)(topic)?.kind, 'withheld',
+      'a blocker in the corrected lesson week must still withhold delivery');
+
+    const unverifiedFixture = JSON.parse(JSON.stringify(p));
+    const unverifiedLesson = unverifiedFixture.lessons.find((item: any) => item.id === correction.replacement_id);
+    unverifiedLesson.state.verification = 'DEFERRED';
+    unverifiedLesson.state.verification_reference = null;
+    assert.equal(createAgriculturalScienceDeliveryResolver(unverifiedFixture)(topic)?.kind, 'withheld',
+      'a deferred replacement lesson must remain withheld');
 
     assert.equal(resolver({ ...topic, class_name: 'SS 2' }), null, 'correction must not cross class boundaries');
     assert.equal(resolver({ ...topic, school_code: 'primary' }), null, 'correction must not cross school scope');
@@ -388,8 +406,17 @@ test('Agricultural Science corrected weeks are independently deliverable when un
     const match = correction.id.match(/^CORR-AG-(T[123])-W([0-9]{2}(?:-[0-9]{2})?)-/);
     assert(match, `correction must carry a bounded term/week identity: ${correction.id}`);
     const prefix = `AGRICULTURAL-SCIENCE-${match[1]}-W${match[2]}-`;
+    const weekBlocker = {
+      id: `${prefix}TEST-WEEK-BLOCKER`, kind: 'VERIFICATION', blocks_delivery: true,
+      affected_ids: [correction.source_lesson_id], detail: 'test-only scoped blocker', required_action: 'test only',
+    };
+    const unrelatedBlocker = {
+      id: 'AGRICULTURAL-SCIENCE-T1-W99-TEST-UNRELATED-BLOCKER', kind: 'VERIFICATION',
+      blocks_delivery: true, affected_ids: ['unrelated'], detail: 'test-only unrelated blocker', required_action: 'test only',
+    };
+    fixture.open_items.push(weekBlocker, unrelatedBlocker);
     const weekBlockers = fixture.open_items.filter((item: any) => item.blocks_delivery && item.id.startsWith(prefix));
-    assert(weekBlockers.length > 0, `test fixture must contain blockers for ${correction.id}`);
+    assert.equal(weekBlockers.length, 1, `test fixture must contain a scoped blocker for ${correction.id}`);
     fixture.open_items = fixture.open_items.map((item: any) =>
       item.id.startsWith(prefix) ? { ...item, blocks_delivery: false } : item
     );
@@ -412,7 +439,7 @@ test('Agricultural Science corrected weeks are independently deliverable when un
     const resolved = createAgriculturalScienceDeliveryResolver(fixture)(topic);
     assert.equal(resolved?.kind, 'corrected', `cleared week should deliver independently: ${correction.id}; got ${resolved?.reason ?? 'no resolution'}`);
     const packageStatusChanged = JSON.parse(JSON.stringify(fixture));
-    packageStatusChanged.package_status = 'IMPLEMENTED';
+    packageStatusChanged.package_status = 'PENDING';
     const statusChangedDelivery = createAgriculturalScienceDeliveryResolver(packageStatusChanged)(topic);
     assert.equal(statusChangedDelivery?.fingerprint, resolved?.fingerprint,
       `unrelated package status must not invalidate the same corrected lesson: ${correction.id}`);
@@ -440,25 +467,43 @@ test('Agricultural Science correction adapter is wired through learner topic and
 });
 
 
-test('Owner source verification and CI evidence are recorded separately from asset rendering', () => {
+test('Owner source verification, lesson addendum and asset rendering are recorded separately', () => {
   const p = packageSchema.parse(raw);
   const decisionPath = 'docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-AGRICULTURAL-SCIENCE-CONTENT-20261111.md';
   const sourceVerificationPath = 'docs/ss1/work/microtasks/agricultural-science/OWNER-SOURCE-VERIFICATION-20261111.md';
+  const addendumPath = 'docs/ss1/work/microtasks/agricultural-science/OWNER-VERIFICATION-ADDENDUM-20261111.md';
   const decision = readFileSync(new URL('../../' + decisionPath, import.meta.url), 'utf8');
   const sourceVerification = readFileSync(new URL('../../' + sourceVerificationPath, import.meta.url), 'utf8');
+  const addendum = readFileSync(new URL('../../' + addendumPath, import.meta.url), 'utf8');
   assert.match(decision, /DEC-AG-SS1-MILESTONE-2026-11-11/);
   assert.match(decision, /Owner content approval is granted for all 47 authored lessons and all 40 registered assets/);
   assert.match(sourceVerification, /Verification is confirmed for all in the ZIP file used for this work/);
   assert.match(sourceVerification, /Mammoth 1\.12\.2/);
   assert.match(sourceVerification, /all 47 authored lesson body hashes/);
-  assert.equal(p.package_status, 'PENDING', 'package-level release checks remain separate');
+  assert.match(addendum, /2026-11-11/);
+  assert.match(addendum, /non-procedural/);
+  assert.match(addendum, /Food and Agriculture Organization/);
+  assert.equal(p.package_status, 'IMPLEMENTED');
   assert.equal(p.lessons.length, 47);
   assert.equal(p.assets.length, 40);
+  assert.equal(p.open_items.filter(item => item.blocks_delivery).length, 0);
+  assert.equal(p.coverage.filter(item => item.status === 'PARTIAL').length, 0);
+  const addendumLessons = new Set([
+    'SUP-SS1-AGRICULTURAL-SCIENCE-T1-W01-CROP-ASPECTS',
+    'SUP-SS1-AGRICULTURAL-SCIENCE-T1-W10-MONOCOT-DICOT-TABLE',
+    'SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-FARM-POWER-OPERATIONS',
+    'SUP-SS1-AGRICULTURAL-SCIENCE-T3-W06-EMBRYO-LAMB-PRESENTATION',
+  ]);
   for (const lesson of p.lessons) {
     assert.equal(lesson.state.content_approval, 'APPROVED', `owner approval required: ${lesson.id}`);
     assert(lesson.state.approval_reference, `approval reference required: ${lesson.id}`);
     assert.equal(lesson.state.verification, 'VERIFIED', `source and package verification required: ${lesson.id}`);
-    assert.equal(lesson.state.verification_reference, sourceVerificationPath + '#owner-confirmation-and-ci-evidence');
+    assert.equal(lesson.state.verification_reference,
+      addendumLessons.has(lesson.id) ? addendumPath + '#verified-content-additions' : sourceVerificationPath + '#owner-confirmation-and-ci-evidence');
+  }
+  for (const id of addendumLessons) {
+    const lesson = p.lessons.find(item => item.id === id)!;
+    assert.equal(createHash('sha256').update(lesson.body, 'utf8').digest('hex'), lesson.body_sha256, `body hash must match: ${id}`);
   }
   for (const asset of p.assets) {
     assert.equal(asset.state.content_approval, 'APPROVED', `owner approval required: ${asset.id}`);
@@ -471,16 +516,15 @@ test('Owner source verification and CI evidence are recorded separately from ass
   assert.equal(visualOnlyChecks.length, 20);
   assert(visualOnlyChecks.every(item => !item.blocks_delivery),
     'asset-only visual checks must not suppress otherwise verified lesson text');
-  for (const id of [
-    'AGRICULTURAL-SCIENCE-T2-W07-PEAT-TYPO',
-    'AGRICULTURAL-SCIENCE-T3-W01-TOOL-NAMES',
-    'AGRICULTURAL-SCIENCE-T3-W02-TEXT',
-  ]) {
-    assert.equal(p.open_items.find(item => item.id === id)?.blocks_delivery, false,
-      `approved and verified replacement must not remain blocked by stale content status: ${id}`);
-  }
   const veterinaryGate = p.open_items.find(item => item.id === 'AGRICULTURAL-SCIENCE-T3-W06-EMBRYO-LAMB');
-  assert(veterinaryGate?.blocks_delivery, 'independent veterinary review remains a separate safety gate');
+  assert.equal(veterinaryGate?.blocks_delivery, false);
+  assert.match(veterinaryGate?.detail ?? '', /non-procedural theory/);
+  assert.match(veterinaryGate?.detail ?? '', /does not claim independent veterinary sign-off/);
+  assert(p.coverage.find(item => item.id === 'COV-AG-T1-W01-MEANING')?.lesson_ids.includes('SUP-SS1-AGRICULTURAL-SCIENCE-T1-W01-CROP-ASPECTS'));
+  assert(p.coverage.find(item => item.id === 'COV-AG-T1-W10-CROP-CLASSIFICATION')?.lesson_ids.includes('SUP-SS1-AGRICULTURAL-SCIENCE-T1-W10-MONOCOT-DICOT-TABLE'));
+  assert(p.coverage.find(item => item.id === 'COV-AG-T3-W03-MECHANIZATION')?.lesson_ids.includes('SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-FARM-POWER-OPERATIONS'));
+  assert(p.coverage.find(item => item.id === 'COV-AG-T3-W06-REPRODUCTIVE-CYCLES')?.lesson_ids.includes('SUP-SS1-AGRICULTURAL-SCIENCE-T3-W06-EMBRYO-LAMB-PRESENTATION'));
+  assert(p.coverage.find(item => item.id === 'COV-AG-T3-W06-GESTATION-LACTATION')?.lesson_ids.includes('SUP-SS1-AGRICULTURAL-SCIENCE-T3-W06-EMBRYO-LAMB-PRESENTATION'));
 });
 
 function compiledSupplement(lesson: (typeof raw.lessons)[number]) {
