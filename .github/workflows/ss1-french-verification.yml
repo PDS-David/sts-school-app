@@ -128,6 +128,14 @@ jobs:
         working-directory: backend
         run: npm run test:ss1:french
 
+      - name: Install student app dependencies for TypeScript validation
+        working-directory: mobile
+        run: npm install --ignore-scripts --no-package-lock --no-audit --no-fund
+
+      - name: Type-check the student mobile app
+        working-directory: mobile
+        run: npx tsc --noEmit
+
       - name: Verify student app French audio routing and playback integration
         working-directory: .
         run: node --test tests/student-launch.static.test.cjs
