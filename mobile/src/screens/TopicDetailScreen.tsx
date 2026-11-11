@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, Image, useWindowDimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api, { BASE_URL } from '../api/client';
@@ -64,7 +64,17 @@ function LessonImage({ asset, token, onRetry }: { asset: any; token: string; onR
 // /learning/topics (a normal cached GET), so re-reading an
 // already-completed topic works fully offline from then on.
 export default function TopicDetailScreen({ route, navigation }: any) {
-  const { topic: initialTopic } = route.params as { topic: any };
+  const { topic: initialTopic, openListening } = route.params as { topic: any; openListening?: boolean };
+  const routedToListening = useRef(false);
+
+  // The French dialogue topic opens its listening activity first, then returns
+  // to this lesson so the student can continue with the study notes and practice.
+  useEffect(() => {
+    if (openListening && !routedToListening.current) {
+      routedToListening.current = true;
+      navigation.navigate('FrenchListening', { topic: initialTopic });
+    }
+  }, [openListening, initialTopic, navigation]);
   const [topic, setTopic]           = useState(initialTopic);
   const [loading, setLoading]       = useState(false);
   const [practice, setPractice]     = useState<any[]>([]);
