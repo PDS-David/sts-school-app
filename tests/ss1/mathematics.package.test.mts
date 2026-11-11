@@ -12,6 +12,7 @@ import { fileURLToPath } from 'node:url';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import { compilePackages, applyRules, registry, sha256, originalLessonId } from '../../backend/src/db/ss1/compiler.ts';
 import { parseTopics } from '../../backend/src/db/ingestTopics.ts';
+import { isSafeSvg } from '../../backend/src/db/attachTopicAssets.ts';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(here, '../..');
 const SLUG = 'mathematics';
@@ -45,8 +46,17 @@ test('asset ids/positions unique, paths contained, MIME allowed', () => {
   assert.equal(new Set(pkg.assets.map(a => `${a.lesson_id}:${a.order}`)).size, pkg.assets.length);
   for (const a of pkg.assets) { assert.ok(a.path.startsWith(`backend/src/db/ss1/assets/${SLUG}/`) && !a.path.includes('..')); assert.ok(a.alt.trim().length >= 10, a.id); }
 });
-test('asset bytes and hashes match files on disk', () => {
-  for (const a of pkg.assets) { const bytes = readFileSync(path.join(repo, a.path)); assert.equal(bytes.length, a.bytes, a.id); assert.equal(sha256(bytes), a.sha256, a.id); }
+test('asset bytes, hashes and SVG safety match the registered package metadata', () => {
+  assert.equal(pkg.assets.length, 12);
+  for (const a of pkg.assets) {
+    const bytes = readFileSync(path.join(repo, a.path));
+    assert.equal(bytes.length, a.bytes, a.id);
+    assert.equal(sha256(bytes), a.sha256, a.id);
+    if (a.media_type === 'image/svg+xml') assert.equal(isSafeSvg(bytes), true, a.id);
+    assert.equal(a.state.content_approval, 'APPROVED', a.id);
+    assert.equal(a.state.implementation, 'IMPLEMENTED', a.id);
+    assert.equal(a.state.verification, 'DEFERRED', a.id);
+  }
 });
 test('anchors are exact, bound to one source SHA, and repeated anchors are rejected (negative control)', () => {
   const rule = pkg.source_rules.find(r => r.op === 'split_before' || r.op === 'attach_stranded_label');
@@ -86,6 +96,16 @@ test('original source ZIP passes the real Mathematics parser/compiler and every 
   for (const coverage of pkg.coverage) for (const id of coverage.lesson_ids) {
     assert(identified.has(id) || pkg.source_rules.some(rule => rule.id === id) || pkg.lessons.some(lesson => lesson.id === id) || pkg.delivery_corrections.some(correction => correction.id === id),
       `unresolved coverage target: ${coverage.id} -> ${id}`);
+  }
+  for (const asset of pkg.assets) {
+    const lesson = pkg.lessons.find(item => item.id === asset.lesson_id)!;
+    const [memberAndOrder, title] = asset.source_locator.split(' — ');
+    const member = memberAndOrder.split(', order_index ')[0];
+    const order = Number(memberAndOrder.split(', order_index ')[1]);
+    const sourceRow = plan.identified_rows.find((row: any) =>
+      row.row.filePath === member && row.row.termLabel === lesson.term && row.row.title === title);
+    assert(sourceRow, `asset source row not identified: ${asset.id}`);
+    assert.equal(sourceRow.row.orderIndex, order, `asset topic order mismatch: ${asset.id}`);
   }
   assert.equal(inputs.length, 3);
 });
