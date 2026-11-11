@@ -157,8 +157,8 @@ test('Agricultural Science source-rule guards reject wrong hashes and missing or
   }
 });
 
-// This CI test executes the real parser/compiler in a source-only plan. Full learner-route delivery,
-// database rehearsal, asset rendering, subject-expert approval and release verification remain separate.
+// This CI test executes the real parser/compiler in a source-only plan. Authenticated production-route smoke tests,
+// database rehearsal and visual asset rendering remain separate from source and lesson-package verification.
 
 
 test('Agricultural Science original row identities match the real Mammoth parser and SS1 compiler', async () => {
