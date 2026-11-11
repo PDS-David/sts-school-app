@@ -71,9 +71,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 48,
-    "BLOCKED": 35,
-    "PENDING": 7
+    "IMPLEMENTED_TESTING_DEFERRED": 51,
+    "BLOCKED": 34,
+    "PENDING": 5
   },
   "total": 90,
   "items": [
@@ -782,8 +782,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Authored SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W04.md. Parsed row 3 identity/hash are bound, and the public SchoolGist PDF Week Four (lines 297-414) was used as a close-equivalent scope/assessment comparison. The exact registered .doc body was not retrievable in this execution; therefore original examples, assessment text, formula/notation defects and figures remain unverified. Do not claim source indexing complete until the original member or verified row extraction is inspected.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Original source body was extracted in CI after prepare_sources.py verified the archive and every manifest member hash. Evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W04.md. Parsed row 3 identity SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c; source headings and equations indexed; all five scheme objectives have IMPLEMENTED_EQUIVALENT coverage via SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY. Source X-for-α typo at lines 254–255, Y-for-γ notation and incomplete ratio are recorded as blocking PHYSICS-T2-W04-SOURCE-NOTATION-DEFECTS; source assessments and visual diagrams are identified. Testing/importer/device verification deferred.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -2037,8 +2037,8 @@
       "depends_on": [
         "PHYS-WK-T3-W10"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). OI-PHYS-002 (OTHER, OPEN), reported from extracted text only. Not on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "T3 Week 10 source lines 527–531 show an internally inconsistent extracted fraction: α=e/L×Ө, e=αLӨ, and F=EAαӨ. The consistent intended relation is α=e/(LΔT), giving F=EAαΔT. The final result is correct; original Word rendering is still needed to distinguish source error from extraction loss. Evidence: PHYS-PORT-D1-FACT-T3-W10.md and package open item PHYSICS-T3-W10-FRACTION-FORMATTING.",
       "completion_condition": "Defect confirmed or refuted with locator; if the rendered source shows no defect it is recorded as extraction loss."
     },
     {
@@ -2067,8 +2067,8 @@
       "depends_on": [
         "PHYS-WK-T2-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). OI-PHYS-002 gives no row; the T2 expansivity topic is parsed row 3 ('WEEK FOUR'); T3 Week 10 also has expansion working.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Confirmed source typo: T2 Week Four lines 254–255 print X in the final-length formula where α is required; lines 240, 242 and 253 explicitly define/use α. Lines 285–290 use Y for volume expansivity and leave the ratio incomplete. Precise finding and corrected lesson reference: PHYS-PORT-D1-FACT-EXPANSIVITY.md and package open item PHYSICS-T2-W04-SOURCE-NOTATION-DEFECTS.",
       "completion_condition": "Row located, wording recorded, classified; moved to the right week item if it is in another row."
     },
     {
@@ -3091,7 +3091,7 @@
   "review": {
     "date": "2026-11-11",
     "reviewed_master_sha": "2240fe9289f9017c805a2544eeecabcd2bd71e4a",
-    "scope": "Physics lesson and source reconciliation work reconciled with current master; all ten SVG asset hashes/byte counts corrected; three branch-reconciliation tasks completed with source/identity limitations preserved. Subject approval and delivery acceptance remain pending.",
+    "scope": "Source indexing now includes exact original Week Four and Week Ten equation evidence from hash-verified archive extraction; confirmed X-for-alpha typo, recorded Week Ten fraction-layout ambiguity, corrected all SVG hashes, and preserved approval/visual blockers.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
