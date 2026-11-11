@@ -87,3 +87,12 @@ Status: **IMPLEMENTED_TESTING_DEFERRED** (implemented; not approved, not verifie
 ## Remaining
 - Sourced practice for the untaught greeting categories and for the eight-field self-presentation, with the three unreadable rows recorded as owner decisions.
 - Same-file edits should run sequentially: next in order is `FR-WK-T1-W04`.
+
+
+## Current-state supersession note — 11 November 2026
+
+This file preserves the original Week 3 source inspection. Its earlier claim that the self-presentation objective lacks an essay supplement is superseded.
+
+Current package coverage: `FRENCH-T1-W03-OBJ-2` is now `IMPLEMENTED_EQUIVALENT` through `SUP-SS1-FRENCH-SELF-ESSAY-T1`, which teaches and assesses the eight prompted fields with a fictional model and keyed writing practice. The owner decision `FRENCH-T1-W03-ETAT-READING` remains open but is marked non-blocking: the source's `Votre etat` can mean state of origin or civil/marital status.
+
+`FRENCH-T1-W03-OBJ-1` remains `PARTIAL` because five source expressions remain unclear/incomplete and require intended meanings or teacher-approved replacement/omission. Do not silently repair them. Approval remains `PENDING`; learner verification remains `DEFERRED`.
