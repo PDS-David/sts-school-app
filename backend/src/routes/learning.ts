@@ -330,6 +330,7 @@ router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
   res.setHeader('Content-Type', meta[0].mime);
   res.setHeader('Content-Length', String(buf.length));
   res.setHeader('X-Content-Type-Options', 'nosniff');
+  if (meta[0].mime === 'image/svg+xml') res.setHeader('Content-Security-Policy', "default-src 'none'; sandbox");
   return res.end(buf);
 });
 

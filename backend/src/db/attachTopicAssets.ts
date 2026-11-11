@@ -137,10 +137,24 @@ export function loadManifest(manifestPath: string): ManifestRow[] {
   });
 }
 
+/** SVG is rendered as native vector primitives, never as a browser document.
+ * Reject active content, external references, XML declarations other than the
+ * standard UTF-8 prolog, and oversized documents before they enter topic_assets. */
+export function isSafeSvg(bytes: Buffer): boolean {
+  if (bytes.length === 0 || bytes.length > 1_000_000) return false;
+  let source: string;
+  try { source = new TextDecoder('utf-8', { fatal: true }).decode(bytes); } catch { return false; }
+  source = source.replace(/^\\uFEFF/, '').trim();
+  if (!/^(?:<\\?xml\\s+version=["']1\\.[01]["'][^?]*\\?>\\s*)?<svg\\b[\\s\\S]*<\\/svg>$/i.test(source)) return false;
+  if (/<!DOCTYPE|<!ENTITY|<\\s*(?:script|foreignObject|iframe|object|embed|image|audio|video|style)\\b|<\\?xml-stylesheet|\\bon[a-z][\\w:-]*\\s*=|\\b(?:href|src)\\s*=|javascript:|data:|@import|url\\(\\s*(?!["']?#)/i.test(source)) return false;
+  return true;
+}
+
 const SIGNATURES: Array<{ mime: string; test: (b: Buffer) => boolean }> = [
   { mime: 'image/png', test: (b) => b.length > 8 && b.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])) },
   { mime: 'image/jpeg', test: (b) => b.length > 3 && b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff },
   { mime: 'image/gif', test: (b) => b.length > 6 && ['GIF87a', 'GIF89a'].includes(b.subarray(0, 6).toString('latin1')) },
+  { mime: 'image/svg+xml', test: isSafeSvg },
 ];
 
 /** Reads every file, checks sha256 against the manifest, and sniffs the real
@@ -158,7 +172,7 @@ export function prepareAssets(rows: ManifestRow[], assetsDir: string): PreparedA
       continue;
     }
     const sig = SIGNATURES.find((s) => s.test(bytes));
-    if (!sig) { problems.push(`${r.asset_key}: ${r.file} is not a PNG/JPEG/GIF`); continue; }
+    if (!sig) { problems.push(`${r.asset_key}: ${r.file} is not a supported safe PNG/JPEG/GIF/SVG`); continue; }
     out.push({ ...r, bytes, mime: sig.mime });
   }
   if (problems.length) {
@@ -309,7 +323,7 @@ async function main() {
 
   const rows = loadManifest(manifest);
   const assets = prepareAssets(rows, assetsDir);
-  console.log(`Verified ${assets.length} file(s): sha256 matches manifest, image type confirmed.`);
+  console.log(`Verified ${assets.length} file(s): sha256 matches manifest, image type and SVG safety confirmed.`);
 
   const res = await attachAssets(assets, {
     schoolCode: arg('school-code') ?? 'secondary',

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, Image, useWindowDimensions } from 'react-native';
+import { SvgXml } from 'react-native-svg';
 import { Ionicons } from '@expo/vector-icons';
 import api, { BASE_URL } from '../api/client';
 import { getSecureItem } from '../api/secureTokenStorage';
@@ -21,7 +22,37 @@ function LessonImage({ asset, token, onRetry }: { asset: any; token: string; onR
   const [ratio, setRatio] = useState(4 / 3);
   const [srcWidth, setSrcWidth] = useState(0);
   const [failed, setFailed] = useState(false);
+  const [svgXml, setSvgXml] = useState<string | null>(null);
   const { width: screenWidth } = useWindowDimensions();
+  const isSvg = asset.mime === 'image/svg+xml';
+
+  // SVG bytes are fetched with the same authenticated endpoint as raster images,
+  // then parsed into native SVG primitives. They are never opened in a WebView.
+  useEffect(() => {
+    if (!isSvg) return;
+    let alive = true;
+    setSvgXml(null);
+    setFailed(false);
+    (async () => {
+      const response = await fetch(`${BASE_URL}${asset.url}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!response.ok) throw new Error(`SVG request failed: ${response.status}`);
+      const contentType = (response.headers.get('content-type') ?? '').split(';')[0].trim().toLowerCase();
+      if (contentType !== 'image/svg+xml') throw new Error('Unexpected SVG content type');
+      const xml = await response.text();
+      if (xml.length > 1_000_000 || /<!DOCTYPE|<!ENTITY|<\\s*(?:script|foreignObject|iframe|object|embed|image|audio|video|style)\\b|<\\?xml-stylesheet|\\bon[a-z][\\w:-]*\\s*=|\\b(?:href|src)\\s*=|javascript:|data:|@import|url\\(\\s*(?!["']?#)/i.test(xml)) {
+        throw new Error('Unsafe SVG content');
+      }
+      const viewBox = xml.match(/<svg\\b[^>]*\\bviewBox=["']\\s*([0-9.+-]+)[,\\s]+([0-9.+-]+)[,\\s]+([0-9.+-]+)[,\\s]+([0-9.+-]+)\\s*["']/i);
+      if (!viewBox) throw new Error('SVG viewBox is missing');
+      const [, , , widthText, heightText] = viewBox;
+      const width = Number(widthText), height = Number(heightText);
+      if (!Number.isFinite(width) || !Number.isFinite(height) || width <= 0 || height <= 0) throw new Error('SVG viewBox is invalid');
+      if (alive) { setRatio(width / height); setSrcWidth(width); setSvgXml(xml); }
+    })().catch(() => { if (alive) setFailed(true); });
+    return () => { alive = false; };
+  }, [isSvg, asset.id, asset.url, token]);
   // A wide picture (long music systems) squeezed to a phone width makes staves and
   // labels too small to read. Pictures at least WIDE_PICTURE_PX wide are shown at
   // WIDE_PICTURE_SCALE of their own width inside a sideways scroll, never cropped.
@@ -33,19 +64,23 @@ function LessonImage({ asset, token, onRetry }: { asset: any; token: string; onR
       <Btn label="Retry pictures" onPress={onRetry} />
     </View>;
   }
-  const image = (
-    <Image
-      source={{ uri: `${BASE_URL}${asset.url}`, headers: { Authorization: `Bearer ${token}` } }}
-      style={wide ? { width: wideWidth, aspectRatio: ratio, backgroundColor: '#fff' } : { width: '100%', aspectRatio: ratio, backgroundColor: '#fff' }}
-      resizeMode="contain"
-      accessibilityLabel={lessonImageLabel(asset)}
-      onLoad={(e: any) => {
-        const src = e?.nativeEvent?.source;
-        if (src?.width && src?.height) { setRatio(src.width / src.height); setSrcWidth(src.width); }
-      }}
-      onError={() => setFailed(true)}
-    />
-  );
+  const image = isSvg
+    ? svgXml
+      ? <SvgXml xml={svgXml} width={wide ? wideWidth : '100%'} height={wide ? wideWidth / ratio : screenWidth / ratio} accessibilityLabel={lessonImageLabel(asset)} />
+      : <Text style={styles.assetCaption}>Loading vector illustration…</Text>
+    : (
+      <Image
+        source={{ uri: `${BASE_URL}${asset.url}`, headers: { Authorization: `Bearer ${token}` } }}
+        style={wide ? { width: wideWidth, aspectRatio: ratio, backgroundColor: '#fff' } : { width: '100%', aspectRatio: ratio, backgroundColor: '#fff' }}
+        resizeMode="contain"
+        accessibilityLabel={lessonImageLabel(asset)}
+        onLoad={(e: any) => {
+          const src = e?.nativeEvent?.source;
+          if (src?.width && src?.height) { setRatio(src.width / src.height); setSrcWidth(src.width); }
+        }}
+        onError={() => setFailed(true)}
+      />
+    );
   return (
     <View style={styles.assetWrap}>
       {wide
