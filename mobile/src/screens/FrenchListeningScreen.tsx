@@ -18,9 +18,15 @@ const DIALOGUE: DialogueLine[] = [
 ];
 const QUESTIONS = [
   { q: 'Quel livre cherche Ada ?', a: 'Un livre sur les animaux.' },
-  { q: 'Où doit-elle regarder ?', a: 'La deuxième étagère, à gauche.' },
+  { q: 'Où doit-elle regarder ?', a: 'Sur la deuxième étagère, à gauche.' },
+  { q: 'Que demande Ada au bibliothécaire ?', a: 'Elle demande si elle peut emprunter le livre.' },
+  { q: 'Que demande le bibliothécaire à Ada ?', a: 'Il lui demande si elle a sa carte.' },
+  { q: 'Que montre Ada ?', a: 'Sa carte.' },
   { q: 'Quand doit-elle rendre le livre ?', a: 'Vendredi prochain.' },
-  { q: 'Écrivez une demande polie pour emprunter un livre.', a: 'Est-ce que je peux emprunter ce livre, s’il vous plaît ?' },
+  { q: 'Combien de personnes parlent dans le dialogue ?', a: 'Deux personnes : Ada et le bibliothécaire.' },
+  { q: 'Qui indique où se trouve le livre ?', a: 'Le bibliothécaire.' },
+  { q: 'Donnez une expression de politesse utilisée par Ada.', a: '« Merci ».' },
+  { q: 'Quelle expression termine la conversation ?', a: '« Au revoir ».' },
 ];
 
 export default function FrenchListeningScreen({ navigation }: any) {
@@ -128,7 +134,7 @@ export default function FrenchListeningScreen({ navigation }: any) {
           </View>
         ))}
       </Card>
-      <Btn label="Back to French topics" onPress={() => navigation.goBack()} variant="outline" style={{ marginTop: Spacing.md }} />
+      <Btn label="Return to lesson" onPress={() => navigation.goBack()} variant="outline" style={{ marginTop: Spacing.md }} />
     </ScrollView>
   );
 }
