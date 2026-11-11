@@ -97,8 +97,9 @@ test('key SS1 Mathematics worked calculations are independently recomputed', () 
     return wholeValue + [...fraction].reduce((sum, digit, i) => sum + parseInt(digit, base) / base ** (i + 1), 0);
   };
   const toBase = (value: number, base: number) => {
+    const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let n = value, out = '';
-    while (n > 0) { out = String(n % base) + out; n = Math.floor(n / base); }
+    while (n > 0) { out = digits[n % base] + out; n = Math.floor(n / base); }
     return out || '0';
   };
   assert.equal(baseValue('1011.01', 2), 11.25);
