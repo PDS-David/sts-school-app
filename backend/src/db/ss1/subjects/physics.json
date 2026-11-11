@@ -7585,6 +7585,385 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T3-W09-ELASTICITY",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "Elasticity: Hooke's law, tensile stress, strain and Young's modulus",
+      "objectives": [
+        "Define elasticity and explain Hooke's law within its proportional limit.",
+        "Interpret the force-extension graph and distinguish proportional limit, elastic limit, yield point and breaking point.",
+        "Define tensile stress and strain and state their units.",
+        "Define Young's modulus and calculate it from force, area, extension and original length.",
+        "Calculate elastic energy stored in a spring or wire."
+      ],
+      "body": "ELASTICITY: HOOKE'S LAW, TENSILE STRESS, STRAIN AND YOUNG'S MODULUS\n\n1. What is elasticity?\nElasticity is the property of a material that enables it to regain its original shape and dimensions when a deforming force is removed, provided the material has not been permanently deformed or damaged.\nA force may stretch, compress, bend or twist a material. The change in shape or size is called deformation.\n\n2. Hooke's law\nHooke's law states that, for an elastic material, extension is directly proportional to the applied force provided the limit of proportionality is not exceeded:\nF ∝ e\nF = ke\nwhere F is applied force in newtons (N), e is extension in metres (m), and k is the force constant or stiffness in newtons per metre (N m⁻¹).\nTherefore:\nk = F/e.\nA larger k means a stiffer spring or wire: more force is required for the same extension.\nHooke's law applies only over the linear range. It must not be assumed after the proportional limit is exceeded.\n\nWorked example 1\nA spring extends by 0.04 m when a force of 8 N is applied. Find its force constant.\nk = F/e = 8/0.04 = 200 N m⁻¹.\n\n3. Force-extension graph and elastic behaviour\nFor a typical ductile metal wire or spring:\n- In the initial straight-line region, extension is proportional to force and Hooke's law applies.\n- The proportional limit is the end of the straight-line proportional region.\n- The elastic limit is the greatest deformation from which the material can still return to its original dimensions when the force is removed.\n- Beyond the elastic limit, some permanent (plastic) deformation remains after unloading.\n- The yield point is where a small increase in load can produce a large increase in extension.\n- The breaking point is where the material finally fractures.\nThe exact shape and location of these points depend on the material. A graph should label only the points supported by the given curve.\n\n4. Tensile stress\nTensile stress is the tensile force acting per unit cross-sectional area:\nσ = F/A\nwhere F is force in newtons and A is cross-sectional area in square metres. Its SI unit is N m⁻², called the pascal (Pa).\nFor a circular wire of radius r:\nA = πr².\nUse radius, not diameter, in this formula.\n\n5. Tensile strain\nTensile strain is the extension divided by the original length:\nε = e/L.\nIt is a ratio and has no unit (it is dimensionless). Do not give strain in metres or pascals.\n\n6. Young's modulus\nYoung's modulus (E) is the ratio of tensile stress to tensile strain, provided the material is within its elastic range:\nE = stress/strain\nE = (F/A)/(e/L)\nE = FL/(Ae).\nIts SI unit is pascal (Pa or N m⁻²). A large Young's modulus means the material is stiff: it produces a smaller strain for a given stress.\nDo not confuse Young's modulus E with electromotive force; the meaning depends on the topic.\n\nWorked example 2\nA wire of original length 2.0 m and cross-sectional area 1.0 × 10⁻⁶ m² extends by 1.0 mm under a tensile force of 100 N. Find its stress, strain and Young's modulus.\nConvert extension: e = 1.0 mm = 0.001 m.\nStress = F/A = 100/(1.0 × 10⁻⁶) = 1.0 × 10⁸ Pa.\nStrain = e/L = 0.001/2.0 = 5.0 × 10⁻⁴.\nE = stress/strain = (1.0 × 10⁸)/(5.0 × 10⁻⁴) = 2.0 × 10¹¹ Pa.\n\n7. Energy stored in a spring (extension)\nWhen a spring is stretched gradually from zero force to a final force F, the force increases from 0 to F. The average force is F/2, so the work done and elastic energy stored are:\nU = ½Fe.\nSince F = ke:\nU = ½ke².\nThe unit is joule (J). This formula applies while the spring remains within its elastic range.\n\n8. Solving elasticity questions\n1. Identify whether the question asks for force, extension, stiffness, stress, strain, Young's modulus or stored energy.\n2. Convert all lengths to metres and areas to square metres.\n3. For a circular wire, calculate A = πr².\n4. Use k = F/e for a spring; σ = F/A for stress; ε = e/L for strain; E = σ/ε for Young's modulus.\n5. Check that the material remains in the elastic range if Hooke's law is used.\n6. Give units for quantities that have units; strain has no unit.\n\nCOMMON ERRORS\n- Hooke's law is limited to the proportional region; elastic behaviour and proportionality are related but not identical.\n- Elastic limit is not the same as breaking point.\n- Stress is force per area; strain is extension per original length.\n- Young's modulus is stress divided by strain, not the reverse.\n- Use radius, not diameter, when calculating circular cross-sectional area.\n- Convert millimetres and centimetres to metres before calculating strain or modulus.\n\nSUMMARY\nHooke's law: F = ke within the proportional limit. Stress σ = F/A. Strain ε = e/L. Young's modulus E = σ/ε = FL/(Ae). Elastic energy U = ½Fe = ½ke².",
+      "body_sha256": "7f092c01988fe6ad6b4e0c11dcdd689cbfbc76549262857fdb2b83ff72fda511",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Define elasticity.",
+          "answer": "Elasticity is the property of a material to regain its original shape and dimensions after a deforming force is removed, provided its elastic limit has not been exceeded.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines the ability to regain original shape/size.",
+              "marks": 1
+            },
+            {
+              "criterion": "Mentions removal of force and/or no permanent deformation.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "State Hooke's law.",
+          "answer": "For a material within its proportional limit, extension is directly proportional to the applied force: F ∝ e or F = ke.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States direct proportionality of force and extension.",
+              "marks": 1
+            },
+            {
+              "criterion": "States the proportional/linear limit condition.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "A spring extends by 0.04 m when a force of 8 N is applied. Find its force constant.",
+          "answer": "k = F/e = 8/0.04 = 200 N m⁻¹.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses k = F/e.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 200 N m⁻¹.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Name four important points or regions on a typical force-extension graph for a ductile material and state what happens at each.",
+          "answer": "Proportional limit: end of straight-line relation; elastic limit: greatest deformation with full recovery; yield point: large extension for small extra load; breaking point: material fractures. Maximum load/ultimate tensile strength may also be labelled.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Correct proportional limit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct elastic limit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct yield point.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct breaking point/maximum load.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "Distinguish between proportional limit and elastic limit.",
+          "answer": "The proportional limit is where force and extension stop being directly proportional. The elastic limit is the greatest deformation from which the material can still return to its original dimensions after unloading.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correctly defines proportional limit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly defines elastic limit.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q06",
+          "question": "Define tensile stress and state its SI unit.",
+          "answer": "Tensile stress is tensile force per unit cross-sectional area, σ = F/A. Its SI unit is N m⁻² or pascal (Pa).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines stress as force per area.",
+              "marks": 1
+            },
+            {
+              "criterion": "States N m⁻² or Pa.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q07",
+          "question": "Define tensile strain and state whether it has a unit.",
+          "answer": "Tensile strain is extension divided by original length, ε = e/L. It is dimensionless and has no unit.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines strain as extension/original length.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that it has no unit.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q08",
+          "question": "Define Young's modulus and write its formula.",
+          "answer": "Young's modulus is tensile stress divided by tensile strain: E = σ/ε = FL/(Ae).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines it as stress/strain.",
+              "marks": 1
+            },
+            {
+              "criterion": "Writes a correct formula.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q09",
+          "question": "A wire of length 2.0 m and area 1.0 × 10⁻⁶ m² extends by 1.0 mm under a force of 100 N. Calculate its stress, strain and Young's modulus.",
+          "answer": "e = 0.001 m. Stress = 100/(1.0 × 10⁻⁶) = 1.0 × 10⁸ Pa. Strain = 0.001/2.0 = 5.0 × 10⁻⁴. E = 1.0 × 10⁸/(5.0 × 10⁻⁴) = 2.0 × 10¹¹ Pa.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Converts extension to 0.001 m.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates stress = 1.0 × 10⁸ Pa.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates strain = 5.0 × 10⁻⁴.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses E = stress/strain.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives E = 2.0 × 10¹¹ Pa.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "What is the SI unit of tensile stress?",
+          "answer": "N m⁻² or pascal (Pa).",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "States Pa or N m⁻².",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "Why is tensile strain dimensionless?",
+          "answer": "It is the ratio of extension to original length; both are lengths measured in the same unit, so the units cancel.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies extension/original length ratio.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains cancellation of length units.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "A spring with stiffness 950 N m⁻¹ is extended by 60 mm. Calculate the energy stored, assuming it remains elastic.",
+          "answer": "e = 0.060 m. U = ½ke² = 0.5 × 950 × 0.060² = 1.71 J.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Converts 60 mm to 0.060 m.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses U = ½ke².",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 1.71 J.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q13",
+          "question": "A spring is 25.0 cm long when a 5 N load is attached and 30.0 cm long with a 10 N load. Find its length with a 3 N load, assuming Hooke's law.",
+          "answer": "k = (10 − 5)/(0.30 − 0.25) = 100 N m⁻¹. Natural length = 0.25 − 5/100 = 0.20 m. At 3 N, extension = 3/100 = 0.03 m. Length = 0.23 m = 23.0 cm.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Finds k = 100 N m⁻¹.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds natural length = 20 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds extension at 3 N = 3 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives total length 23 cm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q14",
+          "question": "A wire of length 5 m and radius 0.04 m is extended by 0.24 mm under a force of 80 N. Calculate tensile stress and tensile strain.",
+          "answer": "A = πr² = 3.14 × 0.04² = 0.005024 m². Stress = 80/0.005024 ≈ 1.59 × 10⁴ Pa. Strain = 0.00024/5 = 4.8 × 10⁻⁵.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Calculates cross-sectional area using radius.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates stress ≈ 1.59 × 10⁴ Pa.",
+              "marks": 1
+            },
+            {
+              "criterion": "Converts extension to 0.00024 m.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates strain = 4.8 × 10⁻⁵.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q15",
+          "question": "Young's modulus is the ratio of stress to strain, provided the load does not exceed the (A) breaking point (B) elastic limit (C) yield point (D) stress limit.",
+          "answer": "B. Elastic limit.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q16",
+          "question": "The ratio of tensile stress to tensile strain is known as (A) modulus of rigidity (B) modulus of elasticity (C) Young's modulus (D) shear modulus.",
+          "answer": "C. Young's modulus.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects C.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q17",
+          "question": "The SI unit of tensile stress is (A) N/m (B) N m (C) N/m² (D) m².",
+          "answer": "C. N/m².",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects C.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q18",
+          "question": "Hooke's law states that (A) F ∝ A (B) F ∝ e (C) E ∝ F (D) E ∝ A.",
+          "answer": "B. F ∝ e, within the proportional limit.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q19",
+          "question": "State the formula for the work done in extending a spring from zero extension to e, if the final force is F.",
+          "answer": "U = ½Fe.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Writes U = ½Fe.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q20",
+          "question": "State two conditions/precautions for using Hooke's law in a spring or wire experiment.",
+          "answer": "Do not exceed the proportional/elastic limit; measure extension from the original unloaded length; use small loads and allow oscillations to stop before reading. Any two.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "One valid condition/precaution.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second valid condition/precaution.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Sow the Seed Schools SS1 Physics Third Term scheme",
+          "locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 8 WEEK 9; body ID SS1-SRC-bed91bb4ef0e:BODY:00bec4c93f9e7c392d9821e900a76bf47c14c8e0e124eab51cc24783ecded0b6 (2,852 characters; source member SHA-256 bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688). Original body text was not independently retrieved in this execution.",
+          "url": null,
+          "rights": "Scheme used to establish subject/week scope; lesson independently authored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics scheme."
+        },
+        {
+          "title": "SchoolGist — Physics SSS 1 Third Term, Week Nine",
+          "locator": "PDF lines 582–659: elasticity, Hooke's law, force constant, elastic limit, yield/breaking points, stress, strain, Young's modulus, classwork and assignment.",
+          "url": "https://schoolgist.ng/storage/postFiles/SS1-Physics-3rd-Term-Lesson-Note-pdf.pdf",
+          "rights": "Used to corroborate scope and assessment types; replacement lesson and questions independently authored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "SchoolGist, Physics SSS 1 Third Term, Week Nine, accessed 2026-11-11."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -10999,6 +11378,106 @@
         {
           "locator": "SchoolGist PDF Week Eight lines 554–580.",
           "explanation": "Close-equivalent scope corroboration, not byte-verified as the registered .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W09-OBJ-1",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Elasticity and Hooke's law, including the proportional limit.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 8 WEEK 9; body SS1-SRC-bed91bb4ef0e:BODY:00bec4c93f9e7c392d9821e900a76bf47c14c8e0e124eab51cc24783ecded0b6 (2,852 characters; SHA-256 00bec4c93f9e7c392d9821e900a76bf47c14c8e0e124eab51cc24783ecded0b6). Scheme topic: elasticity, Hooke's law, tensile stress, tensile strain and Young's modulus.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W09-ELASTICITY"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W09-ELASTICITY; body SHA-256 7f092c01988fe6ad6b4e0c11dcdd689cbfbc76549262857fdb2b83ff72fda511; practice Q01–Q20.",
+          "explanation": "Authored supplement covers all mapped objectives with equations, worked examples and keyed practice. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Third Term PDF, Week Nine, lines 582–659.",
+          "explanation": "Close-equivalent comparison includes Hooke's law, stress/strain, Young's modulus and source assessment. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W09-OBJ-2",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Force-extension graph and elastic limit, yield point and breaking point.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 8 WEEK 9; body SS1-SRC-bed91bb4ef0e:BODY:00bec4c93f9e7c392d9821e900a76bf47c14c8e0e124eab51cc24783ecded0b6 (2,852 characters; SHA-256 00bec4c93f9e7c392d9821e900a76bf47c14c8e0e124eab51cc24783ecded0b6). Scheme topic: elasticity, Hooke's law, tensile stress, tensile strain and Young's modulus.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W09-ELASTICITY"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W09-ELASTICITY; body SHA-256 7f092c01988fe6ad6b4e0c11dcdd689cbfbc76549262857fdb2b83ff72fda511; practice Q01–Q20.",
+          "explanation": "Authored supplement covers all mapped objectives with equations, worked examples and keyed practice. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Third Term PDF, Week Nine, lines 582–659.",
+          "explanation": "Close-equivalent comparison includes Hooke's law, stress/strain, Young's modulus and source assessment. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W09-OBJ-3",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Tensile stress, tensile strain and their units.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 8 WEEK 9; body SS1-SRC-bed91bb4ef0e:BODY:00bec4c93f9e7c392d9821e900a76bf47c14c8e0e124eab51cc24783ecded0b6 (2,852 characters; SHA-256 00bec4c93f9e7c392d9821e900a76bf47c14c8e0e124eab51cc24783ecded0b6). Scheme topic: elasticity, Hooke's law, tensile stress, tensile strain and Young's modulus.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W09-ELASTICITY"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W09-ELASTICITY; body SHA-256 7f092c01988fe6ad6b4e0c11dcdd689cbfbc76549262857fdb2b83ff72fda511; practice Q01–Q20.",
+          "explanation": "Authored supplement covers all mapped objectives with equations, worked examples and keyed practice. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Third Term PDF, Week Nine, lines 582–659.",
+          "explanation": "Close-equivalent comparison includes Hooke's law, stress/strain, Young's modulus and source assessment. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W09-OBJ-4",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Young's modulus and calculations using stress, strain, force, area and extension.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 8 WEEK 9; body SS1-SRC-bed91bb4ef0e:BODY:00bec4c93f9e7c392d9821e900a76bf47c14c8e0e124eab51cc24783ecded0b6 (2,852 characters; SHA-256 00bec4c93f9e7c392d9821e900a76bf47c14c8e0e124eab51cc24783ecded0b6). Scheme topic: elasticity, Hooke's law, tensile stress, tensile strain and Young's modulus.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W09-ELASTICITY"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W09-ELASTICITY; body SHA-256 7f092c01988fe6ad6b4e0c11dcdd689cbfbc76549262857fdb2b83ff72fda511; practice Q01–Q20.",
+          "explanation": "Authored supplement covers all mapped objectives with equations, worked examples and keyed practice. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Third Term PDF, Week Nine, lines 582–659.",
+          "explanation": "Close-equivalent comparison includes Hooke's law, stress/strain, Young's modulus and source assessment. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W09-OBJ-5",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Elastic energy stored in a spring/wire and associated calculations.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 8 WEEK 9; body SS1-SRC-bed91bb4ef0e:BODY:00bec4c93f9e7c392d9821e900a76bf47c14c8e0e124eab51cc24783ecded0b6 (2,852 characters; SHA-256 00bec4c93f9e7c392d9821e900a76bf47c14c8e0e124eab51cc24783ecded0b6). Scheme topic: elasticity, Hooke's law, tensile stress, tensile strain and Young's modulus.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W09-ELASTICITY"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W09-ELASTICITY; body SHA-256 7f092c01988fe6ad6b4e0c11dcdd689cbfbc76549262857fdb2b83ff72fda511; practice Q01–Q20.",
+          "explanation": "Authored supplement covers all mapped objectives with equations, worked examples and keyed practice. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Third Term PDF, Week Nine, lines 582–659.",
+          "explanation": "Close-equivalent comparison includes Hooke's law, stress/strain, Young's modulus and source assessment. It is not asserted to be the registered original .doc."
         }
       ]
     }
