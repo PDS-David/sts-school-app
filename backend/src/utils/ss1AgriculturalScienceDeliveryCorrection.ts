@@ -277,7 +277,7 @@ export function createAgriculturalScienceSupplementResolver(input: SubjectPackag
 }
 
 function stripSourceAssessmentSections(source: string) {
-  const heading = /^(?:\\s*#{1,6}\\s*)?(?:\\d+[.)]\\s*)?(?:WEEKEND\\s+ASSIGNMENT|GENERAL\\s+EVALUATION|REVISION\\s+QUESTIONS|OBJECTIVE\\s+QUESTIONS|THEORY\\s+QUESTIONS|PRACTICE\\s+AND\\s+MARKING\\s+GUIDE|EVALUATION|ASSIGNMENT|EXERCISE)\\b[^\\n]*$/im;
+  const heading = /^(?:\s*#{1,6}\s*)?(?:\d+[.)]\s*)?(?:WEEKEND\s+ASSIGNMENT|GENERAL\s+EVALUATION|REVISION\s+QUESTIONS|OBJECTIVE\s+QUESTIONS|THEORY\s+QUESTIONS|PRACTICE\s+AND\s+MARKING\s+GUIDE|EVALUATION|ASSIGNMENT|EXERCISE)\b[^\n]*$/im;
   const match = heading.exec(source);
   return { text: (match ? source.slice(0, match.index) : source).trim(), removed: Boolean(match) };
 }
