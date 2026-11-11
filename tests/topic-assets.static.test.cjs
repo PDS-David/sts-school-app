@@ -89,6 +89,8 @@ test('routes: bytes endpoint scopes like GET /topics, sets Content-Type + ETag, 
   assert.match(body, /Content-Type/);
   assert.match(body, /ETag/);
   assert.match(body, /X-Content-Type-Options', 'nosniff'/);
+  assert.match(body, /Content-Security-Policy/);
+  assert.match(body, /agriculturalScienceAssetDeliverable\(meta\[0\], meta\[0\]\)/);
   assert.match(body, /status\(304\)/);
   // The scope/metadata query must not read the image; bytes come from a second query.
   const firstQuery = body.slice(body.indexOf('SELECT a.mime'), body.indexOf('params,'));
@@ -147,4 +149,12 @@ test('mobile: offline cache module is untouched by this change', () => {
   // Asset metadata rides the existing GET cache; no offline file was edited.
   const s = read('mobile/src/screens/TopicDetailScreen.tsx');
   assert.doesNotMatch(s, /offline\//);
+});
+
+test('Agricultural Science asset metadata is withheld until its exact lesson and asset pass approval gates', () => {
+  const s = read('backend/src/routes/learning.ts');
+  const body = routeBody(s, "router.get('/topics/:id/assets'");
+  assert.match(body, /agriculturalScienceAssetDeliverable\(visible\[0\], asset\)/);
+  assert.match(body, /school_code === 'secondary'/);
+  assert.match(body, /class_name === 'SS 1'/);
 });
