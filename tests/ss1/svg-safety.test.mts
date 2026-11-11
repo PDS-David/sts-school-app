@@ -14,6 +14,7 @@ test('accepts plain SVG, with prolog and with BOM', () => {
   assert.equal(isSafeSvg(svg(`<?xml version="1.0" encoding="UTF-8"?>\n${ok}`)), true);
   assert.equal(isSafeSvg(svg(`﻿${ok}`)), true);
   assert.equal(isSafeSvg(svg(ok.replace('<rect', '<rect fill="url(#g)"'))), true);
+  assert.equal(isSafeSvg(svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><style>.node{rx:22;ry:22;stroke:#334155;stroke-width:3}.label{font:700 18px Arial,sans-serif;fill:#18324b;text-anchor:middle}</style><rect class="node" width="10" height="10"/></svg>')), true);
 });
 
 test('rejects active content, external references and malformed input', () => {
@@ -40,19 +41,10 @@ test('rejects active content, external references and malformed input', () => {
   assert.equal(isSafeSvg(Buffer.from([0xff, 0xfe, 0x00])), false, 'invalid utf-8');
 });
 
-// Owner decision pending: these committed diagrams use <style>, which isSafeSvg rejects by design
-// (SVG is rendered as native vector primitives). Either inline their styling or consciously allow
-// <style>. Until then they are pinned here so that any NEW unsafe SVG still fails CI.
-const KNOWN_REJECTED = [
-  'agricultural-science/t3-w02-eight-farm-power-sources.svg',
-  'agricultural-science/t3-w07-female-poultry-reproductive-system.svg',
-  'agricultural-science/t3-w07-fertile-egg-cross-section.svg',
-  'agricultural-science/t3-w07-male-poultry-reproductive-system.svg',
-  'agricultural-science/t3-w07-poultry-oviduct.svg',
-  'biology/forest-food-web.svg',
-];
+// All committed SS1 SVGs now use the constrained local class-style subset.
+const KNOWN_REJECTED: string[] = [];
 
-test('committed SS1 SVG assets pass the safety filter (except the pinned known set)', () => {
+test('all committed SS1 SVG assets pass the safety filter', () => {
   const root = path.resolve(here, '../../backend/src/db/ss1/assets');
   const files: string[] = [];
   const walk = (d: string) => { for (const e of readdirSync(d)) { const p = path.join(d, e); statSync(p).isDirectory() ? walk(p) : e.endsWith('.svg') && files.push(p); } };
