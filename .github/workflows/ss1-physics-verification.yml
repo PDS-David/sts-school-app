@@ -62,9 +62,11 @@ jobs:
           const w4 = t2.findIndex(x => /^\s*WEEK FOUR\s*$/i.test(x));
           const w4end = t2.findIndex((x,i)=>i>w4 && /^\s*WEEK (FIVE|5)\s*$/i.test(x));
           const w4lines=t2.slice(Math.max(0,w4),w4end>0?w4end:w4+120);
+          print('T2 WEEK FOUR BODY', rows(w4lines,w4+1));
           print('T2 WEEK FOUR EXPANSIVITY MATCHES', w4lines.map((x,i)=>({x,n:w4+i+1})).filter(o=>/expansiv|linear|area|volume|anomalous|α|alpha|\bX\b|\bx\b/i.test(o.x)));
           const w10=t3.findIndex(x => /^\s*WEEK (10|TEN)\s*$/i.test(x));
           const w10lines=t3.slice(Math.max(0,w10),w10+100);
+          print('T3 WEEK TEN BODY', rows(w10lines,w10+1));
           print('T3 WEEK TEN FORMULA MATCHES', w10lines.map((x,i)=>({x,n:w10+i+1})).filter(o=>/F\s*=|EA|α|alpha|[Өθ]|eL/i.test(o.x)));
           NODE
       - name: Validate all registered SS1 subject packages
