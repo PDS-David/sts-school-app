@@ -10,9 +10,13 @@ Generated from the current `master` English package for review; this is a worksh
 - Objective coverage records: 668
 - Assets: 1
 - Delivery corrections: 24
-- Blocking open items: 1
+- Objective coverage: 616 `IMPLEMENTED_EQUIVALENT`, 12 `SUPPORTED`, 32 `MARKER`, 8 `PARTIAL`, 0 `UNRESOLVED`
+- Open items: 68 (1 blocking owner approval; 67 non-blocking review/source-scope items)
+- English package verification: passed (package tests, learner-delivery regression tests, registered-asset validation, source archive staging, English source isolation and plan-only compiler check)
 
 **Do not mark a lesson approved merely because it exists, has practice, or has been committed.** For each lesson, the reviewer must read the complete teaching body, inspect examples and every answer/marking criterion, then record a real decision and auditable reference.
+
+The latest automated English verification passed. This verifies package structure, source hashes, delivery safeguards and plan-only compilation; it does **not** substitute for the 149 individual content approvals or the separate teacher verification gate.
 
 ## Review procedure
 
