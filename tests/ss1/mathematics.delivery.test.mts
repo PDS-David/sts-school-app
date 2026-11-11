@@ -79,6 +79,17 @@ test('Mathematics delivery is restricted to SS 1 secondary Mathematics and exact
   }
 });
 
+test('an owner-approved Mathematics lesson is withheld until SS1-09 verification is recorded', () => {
+  const fixture = JSON.parse(JSON.stringify(packageValue));
+  const correction = fixture.delivery_corrections[0];
+  const lesson = fixture.lessons.find((item: any) => item.id === correction.replacement_id)!;
+  lesson.state.verification = 'DEFERRED';
+  lesson.state.verification_reference = null;
+  const resolver = createSs1MathematicsDeliveryResolver(fixture);
+  const topic = topicFor(correction);
+  assert.equal(resolver(topic)?.kind, 'withheld');
+});
+
 test('Mathematics replacement is shown only after exact source, scoped blockers, owner approval and implementation pass', () => {
   const fixture = JSON.parse(JSON.stringify(packageValue));
   const correction = fixture.delivery_corrections[0];
