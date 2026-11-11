@@ -1114,72 +1114,299 @@
       "class_name": "SS 1",
       "term": "3rd Term",
       "subject": "Physics",
-      "title": "Surface tension: meaning, effects, applications and reduction",
+      "title": "Surface tension: meaning, effects, applications, reduction and simple calculations",
       "objectives": [
-        "Define surface tension and state its unit.",
-        "Explain surface tension using molecular forces.",
-        "Describe effects, applications and ways of reducing surface tension."
+        "Define surface tension and explain its molecular cause.",
+        "Use γ = F/L for one liquid surface and F = 2γL for a two-surface soap film.",
+        "Explain effects such as spherical droplets, water striders, bubbles and a gently placed needle.",
+        "Describe applications and distinguish surface tension from buoyancy and capillarity.",
+        "Explain how temperature and suitable surfactants affect surface tension.",
+        "Solve simple surface-tension calculations with correct units."
       ],
-      "body": "MEANING. Inside a liquid each molecule is pulled equally in all directions by its neighbours. A molecule at the surface has neighbours only below and beside it, so there is a net pull inward. The surface therefore behaves like a stretched elastic skin that tries to have the smallest possible area. SURFACE TENSION γ is the force acting along the surface, at right angles to a line of unit length: γ = F/L. Its unit is newton per metre (N/m). For a soap film on a wire frame the film has two surfaces, so F = 2γL, i.e. γ = F/2L.\nExample 1. A soap film on a frame 5 cm (0.05 m) wide pulls with a force of 2.0 × 10⁻³ N. γ = F/2L = 2.0 × 10⁻³ ÷ (2 × 0.05) = 0.02 N/m.\nExample 2. Water has γ = 0.072 N/m. The pull on 8 cm (0.08 m) of its surface (one surface): F = γL = 0.072 × 0.08 = 5.8 × 10⁻³ N.\n\nEFFECTS. Soap bubbles and small droplets are spherical (a sphere has the smallest area for its volume); water striders walk on water; a clean needle or razor blade placed gently on water floats; mercury spilled on glass forms spherical beads.\nAPPLICATIONS. Waterproofing of cloth (the pores do not wet), blotting paper and wicks, the rise of molten wax up a candle wick.\nREDUCING SURFACE TENSION. Add soap, detergent, alcohol or similar impurities; heat the liquid (γ falls as temperature rises). This is why detergent helps to wash grease off cloth: the liquid spreads and wets better.",
-      "body_sha256": "dff2a30f8eaba1e1a787f7e4b9474f77e93fa5cc4e835bd85c115244af9237ee",
+      "body": "SURFACE TENSION: MEANING, EFFECTS, APPLICATIONS AND REDUCTION\n\n1. What is surface tension?\nSurface tension is the property of a liquid surface that makes it behave as if it were a stretched elastic skin. It arises because molecules at the surface experience an unbalanced inward attraction from neighbouring liquid molecules. The surface tends to reduce its area.\nSurface tension (γ) can be defined as force per unit length acting along the liquid surface and at right angles to a line drawn on that surface:\nγ = F/L\nfor one liquid surface.\nIts SI unit is newton per metre (N m⁻¹). It is also numerically equal to surface energy per unit area (J m⁻²).\n\nImportant distinction for a soap film\nA thin soap film has two surfaces, one on each side. If a movable wire of length L is pulled by the film, both surfaces pull:\nF = 2γL, so γ = F/(2L).\nDo not use the factor 2 for a single free liquid surface.\n\nWorked example\nA soap film has surface tension 0.072 N m⁻¹ and pulls on a movable wire of length 0.05 m. Find the force on the wire.\nF = 2γL = 2 × 0.072 × 0.05 = 0.0072 N.\n\n2. Effects of surface tension\n- Small liquid droplets tend to become nearly spherical because a sphere has the smallest surface area for a given volume.\n- A carefully placed clean needle or razor blade may rest on water if the surface is not broken, even though the metal is denser than water. This is not ordinary buoyancy alone.\n- Some small insects, such as water striders, can stand or move on the water surface without breaking it.\n- Soap bubbles form thin curved films. Surface tension tends to reduce the surface area.\n- Mercury spilled on clean glass forms rounded droplets because cohesion within mercury is strong compared with its adhesion to glass.\n\n3. Applications\n- Detergents and soaps lower water's surface tension, helping water spread over and wet greasy or dirty surfaces.\n- Wetting agents help paints, inks and cleaning solutions spread over surfaces more evenly.\n- Surface tension helps maintain droplets in sprays and some coating processes; the desired surface behaviour depends on the liquid and application.\n- The formation of small droplets and bubbles is important in sprays, foams and some industrial processes.\nNote: the rise of oil in a lamp wick and the rise of water in a narrow tube are primarily examples of capillarity, which is treated in the next lesson. A ship floats mainly because of buoyancy, not surface tension.\n\n4. Reduction of surface tension\n- Increasing temperature generally reduces the surface tension of a liquid.\n- Adding a suitable surfactant, such as soap or detergent, usually lowers the surface tension of water.\n- Some substances such as alcohol or oils can also change/reduce water's surface tension.\n- The effect of an impurity depends on the substance; not every impurity lowers surface tension.\n\n5. Factors affecting surface tension\n- Nature of the liquid: different liquids have different cohesive forces and surface tensions.\n- Temperature: surface tension generally decreases as temperature rises.\n- Dissolved substances/impurities: some increase and others decrease surface tension; surfactants commonly reduce it.\n- Contamination: even a small amount of oil or detergent can change a water surface significantly.\n\n6. Solving simple surface-tension problems\nFor one liquid surface:\nγ = F/L, therefore F = γL.\nFor a soap film with two surfaces:\nγ = F/(2L), therefore F = 2γL.\nCheck whether the question describes one surface or a film with two surfaces. Convert length to metres before substituting.\n\nCOMMON ERRORS\n- Surface tension is not the force that makes a ship float; buoyancy explains that.\n- A needle floating on water is supported by the surface film, provided the surface is not broken.\n- A soap film has two surfaces, so the force on a movable wire is F = 2γL.\n- The capillary rise of liquid in a narrow tube is treated separately as capillarity.\n- Temperature generally lowers surface tension; it does not usually increase it.\n\nSUMMARY\nSurface tension is force per unit length along a liquid surface. It gives the surface a stretched-skin behaviour and tends to reduce surface area. It explains droplets, water-walking insects and a carefully placed needle on water. Soap and detergents reduce surface tension and improve wetting. For a soap film, F = 2γL.",
+      "body_sha256": "7b203b077dd1ca73f44651eb6b0bd00888a4f64a54f2c51d12d48d287345f38d",
       "practice": [
         {
           "id": "Q01",
-          "question": "Define surface tension and give its SI unit.",
-          "answer": "The force per unit length acting along the surface of a liquid; N/m.",
+          "question": "Define surface tension.",
+          "answer": "Surface tension is the property of a liquid surface that makes it behave like a stretched elastic skin; quantitatively it is force per unit length along the surface.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "1 mark each.",
-              "marks": 2
+              "criterion": "Describes the stretched-skin behaviour.",
+              "marks": 1
+            },
+            {
+              "criterion": "Defines it as force per unit length.",
+              "marks": 1
             }
           ]
         },
         {
           "id": "Q02",
-          "question": "Why are small drops of liquid spherical?",
-          "answer": "Surface tension makes the surface contract to the smallest area; a sphere has the least surface for a given volume.",
+          "question": "Explain briefly why a liquid surface has surface tension.",
+          "answer": "Molecules at the surface have fewer neighbouring liquid molecules above them, so cohesive forces are unbalanced and produce a net inward pull. The surface tends to reduce its area.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "1 mark each.",
-              "marks": 2
+              "criterion": "Mentions unbalanced cohesive forces at the surface.",
+              "marks": 1
+            },
+            {
+              "criterion": "Connects the effect with a tendency to reduce surface area.",
+              "marks": 1
             }
           ]
         },
         {
           "id": "Q03",
-          "question": "A soap film on a frame 6 cm wide pulls with a force of 3.0 × 10⁻³ N. Find γ.",
-          "answer": "γ = 3.0 × 10⁻³ ÷ (2 × 0.06) = 0.025 N/m.",
-          "marks": 3,
+          "question": "Write the formula for surface tension for one liquid surface and state its SI unit.",
+          "answer": "γ = F/L. SI unit: N m⁻¹.",
+          "marks": 2,
           "marking": [
             {
-              "criterion": "1 mark formula, 1 mark substitution, 1 mark answer with unit.",
-              "marks": 3
+              "criterion": "Writes γ = F/L.",
+              "marks": 1
+            },
+            {
+              "criterion": "States N m⁻¹.",
+              "marks": 1
             }
           ]
         },
         {
           "id": "Q04",
-          "question": "State three ways of reducing surface tension and two applications.",
-          "answer": "Add soap/detergent, add alcohol, heat; applications: waterproofing, blotting paper, wicks.",
-          "marks": 5,
+          "question": "Why is the force on a movable wire in a soap film given by F = 2γL?",
+          "answer": "A soap film has two surfaces, one on each side of the film. Each surface pulls along the wire, so the total force is 2γL.",
+          "marks": 2,
           "marking": [
             {
-              "criterion": "1 mark each (max 5).",
-              "marks": 5
+              "criterion": "States that a soap film has two surfaces.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains that both surfaces contribute force.",
+              "marks": 1
             }
           ]
         },
         {
           "id": "Q05",
-          "question": "A needle floats on water but sinks when a drop of detergent is added. Explain.",
-          "answer": "Detergent reduces the surface tension, so the surface skin can no longer support the needle's weight.",
+          "question": "A soap film has surface tension 0.072 N m⁻¹ and pulls on a movable wire 0.05 m long. Calculate the force on the wire.",
+          "answer": "F = 2γL = 2 × 0.072 × 0.05 = 0.0072 N.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses F = 2γL for a two-surface film.",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes the values correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 0.0072 N.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q06",
+          "question": "Why do small water droplets tend to be spherical?",
+          "answer": "Surface tension tends to reduce the surface area. A sphere has the smallest surface area for a given volume, so small droplets tend towards a spherical shape.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "1 mark each.",
-              "marks": 2
+              "criterion": "States that surface tension reduces surface area.",
+              "marks": 1
+            },
+            {
+              "criterion": "Connects the minimum-area shape with a sphere.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q07",
+          "question": "Explain why a clean needle may float on the surface of water when placed gently.",
+          "answer": "The water surface film supports the needle through surface tension, provided the surface is not broken. It is not simply ordinary buoyancy.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Mentions support by the surface film/surface tension.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that the surface must not be broken or distinguishes from ordinary buoyancy.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q08",
+          "question": "How can a water strider move on the surface of water?",
+          "answer": "Its legs distribute its weight without breaking the surface film, which is supported by surface tension.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Mentions surface tension supporting the insect without breaking the surface.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q09",
+          "question": "State three ways of reducing the surface tension of water.",
+          "answer": "Raise its temperature; add a suitable surfactant such as soap or detergent; add certain substances such as alcohol that reduce its surface tension.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Increasing temperature.",
+              "marks": 1
+            },
+            {
+              "criterion": "Adding soap/detergent/surfactant.",
+              "marks": 1
+            },
+            {
+              "criterion": "Another suitable reducing substance.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "What is the general effect of increasing the temperature of a liquid on its surface tension?",
+          "answer": "Surface tension generally decreases as temperature increases.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "States that it decreases.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "Explain how detergent helps water clean greasy surfaces.",
+          "answer": "Detergent acts as a surfactant and lowers water's surface tension, allowing water to spread and wet the surface more readily; detergent also helps disperse grease.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies detergent as a surfactant/lowering surface tension.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains improved spreading/wetting or grease removal.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "Distinguish surface tension from capillarity.",
+          "answer": "Surface tension is the force per unit length at a liquid surface. Capillarity is the rise or fall of a liquid in a narrow tube due to surface tension together with adhesive and cohesive effects.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correctly defines surface tension.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly defines capillarity and distinguishes its tube-rise effect.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q13",
+          "question": "Why is the floating of a large ship not mainly an effect of surface tension?",
+          "answer": "A ship floats mainly because of buoyancy: the displaced water provides an upward force balancing the ship's weight.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies buoyancy as the main cause.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains the upward force from displaced water.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q14",
+          "question": "State four factors that can affect surface tension.",
+          "answer": "Nature of the liquid, temperature, dissolved substances/impurities and contamination/surfactants.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "One valid factor.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second valid factor.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third valid factor.",
+              "marks": 1
+            },
+            {
+              "criterion": "Fourth valid factor.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q15",
+          "question": "The property that makes a liquid surface behave like a stretched skin is (A) viscosity (B) surface tension (C) density (D) capillarity.",
+          "answer": "B. Surface tension.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q16",
+          "question": "A steel pin may float on water when placed gently because of (A) capillarity (B) adhesion only (C) surface tension (D) evaporation.",
+          "answer": "C. Surface tension.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects C.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q17",
+          "question": "A liquid surface tends to (A) increase its area as much as possible (B) reduce its surface area (C) become a solid immediately (D) stop all molecular motion.",
+          "answer": "B. Reduce its surface area.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q18",
+          "question": "A clean glass surface is wetted by water more readily than by mercury. Which molecular interaction helps explain the difference?",
+          "answer": "Water has stronger adhesion to clean glass than cohesion within water, while mercury's cohesion is stronger than its adhesion to glass.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States water adhesion to glass is strong relative to water cohesion.",
+              "marks": 1
+            },
+            {
+              "criterion": "States mercury cohesion is stronger than its adhesion to glass.",
+              "marks": 1
             }
           ]
         }
@@ -1187,7 +1414,7 @@
       "provenance": [
         {
           "title": "SS1 Physics 3rd Term scheme",
-          "locator": "Source ID SS1-SRC-bed91bb4ef0e; archive member SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc; registered SHA-256 bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; 107008 bytes; source week locator(s): WEEK 7. Prior source/member verification is reused; the binary archive was not rehashed during this port.",
+          "locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 6 WEEK 7; body ID SS1-SRC-bed91bb4ef0e:BODY:88bbd1cbf2f1650d37f077e8bf47577ac77d6d7f1e7299b5d45a8b2b3cca0e6e; body SHA-256 88bbd1cbf2f1650d37f077e8bf47577ac77d6d7f1e7299b5d45a8b2b3cca0e6e (1,521 characters).",
           "url": null,
           "rights": "Original lesson explanation, examples and practice authored for this school curriculum; no third-party text reproduced.",
           "reuse_status": "PERMITTED",
@@ -1200,6 +1427,14 @@
           "rights": "Existing project-authored lesson content reused and adapted within the same repository; the branch cited no external reference for these five lessons.",
           "reuse_status": "PERMITTED",
           "attribution": "Previous SS1 Physics authoring work in PDS-David/sts-school-app, PR #71."
+        },
+        {
+          "title": "SchoolGist — Physics SSS 1 Third Term, Week Seven",
+          "locator": "PDF lines 506–552: surface tension definition, effects, applications, reduction, classwork and assignment. Used as a close-equivalent scope comparison, not as the registered original .doc.",
+          "url": "https://schoolgist.ng/storage/postFiles/SS1-Physics-3rd-Term-Lesson-Note-pdf.pdf",
+          "rights": "Used to corroborate scope and identify common confusions only; replacement lesson and questions independently authored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "SchoolGist, Physics SSS 1 Third Term, Week Seven, accessed 2026-11-11."
         }
       ],
       "state": {
@@ -7114,7 +7349,7 @@
       "provenance": [
         {
           "title": "Sow the Seed Schools SS1 Physics Third Term scheme",
-          "locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 5 WEEK 6; body ID SS1-SRC-bed91bb4ef0e:BODY:c5c1fa1d21a31a2a62baf13c2c8d61d60c99cccb5b5d1e0f13c36a23e7fca1ad (4,124 characters; source member SHA-256 bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688). Original body text was not available in this execution.",
+          "locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 5 WEEK 6; body ID SS1-SRC-bed91bb4ef0e:BODY:c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5; body SHA-256 c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5 (4,124 characters).",
           "url": null,
           "rights": "Scheme used to establish subject/week scope; lesson independently authored.",
           "reuse_status": "PERMITTED",
@@ -7942,8 +8177,8 @@
     {
       "id": "COV-PHYS-T3-W07-OBJ-1",
       "source_id": "SS1-SRC-bed91bb4ef0e",
-      "objective": "Surface tension",
-      "objective_locator": "PR #71 objective-level locator WEEK 7; master source-week indexing task remains pending and will add the exact parsed-row locator.",
+      "objective": "Surface tension: definition, effects, applications and reduction.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 6 WEEK 7; body ID SS1-SRC-bed91bb4ef0e:BODY:88bbd1cbf2f1650d37f077e8bf47577ac77d6d7f1e7299b5d45a8b2b3cca0e6e (1,521 characters; SHA-256 88bbd1cbf2f1650d37f077e8bf47577ac77d6d7f1e7299b5d45a8b2b3cca0e6e).",
       "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
         "SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION"
@@ -7956,6 +8191,10 @@
         {
           "locator": "Master lesson SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION.",
           "explanation": "The authored lesson supplies teaching for this objective. No other objective in the week is inferred from this single lesson; source-week indexing remains a separate pending task."
+        },
+        {
+          "locator": "Updated SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION; body SHA-256 7b203b077dd1ca73f44651eb6b0bd00888a4f64a54f2c51d12d48d287345f38d; 18 keyed questions.",
+          "explanation": "Expanded lesson now includes the molecular explanation, single-surface versus two-surface formula, corrected applications, reductions and calculations."
         }
       ]
     },
@@ -10309,7 +10548,7 @@
       "id": "COV-PHYS-T3-W06-OBJ-1",
       "source_id": "SS1-SRC-bed91bb4ef0e",
       "objective": "Crystal structure, crystal lattice and unit cell.",
-      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 5 WEEK 6; body SS1-SRC-bed91bb4ef0e:BODY:c5c1fa1d21a31a2a62baf13c2c8d61d60c99cccb5b5d1e0f13c36a23e7fca1ad (4,124 characters; SHA-256 c5c1fa1d21a31a2a62baf13c2c8d61d60c99cccb5b5d1e0f13c36a23e7fca1ad). Scheme topic: crystal structure of matter, amorphous and crystalline substances.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 5 WEEK 6; body SS1-SRC-bed91bb4ef0e:BODY:c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5 (4,124 characters; SHA-256 c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5). Scheme topic: crystal structure of matter, amorphous and crystalline substances.",
       "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
         "SUP-SS1-PHYSICS-T3-W06-CRYSTAL-STRUCTURE"
@@ -10329,7 +10568,7 @@
       "id": "COV-PHYS-T3-W06-OBJ-2",
       "source_id": "SS1-SRC-bed91bb4ef0e",
       "objective": "Crystalline and amorphous solids and their distinguishing properties.",
-      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 5 WEEK 6; body SS1-SRC-bed91bb4ef0e:BODY:c5c1fa1d21a31a2a62baf13c2c8d61d60c99cccb5b5d1e0f13c36a23e7fca1ad (4,124 characters; SHA-256 c5c1fa1d21a31a2a62baf13c2c8d61d60c99cccb5b5d1e0f13c36a23e7fca1ad). Scheme topic: crystal structure of matter, amorphous and crystalline substances.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 5 WEEK 6; body SS1-SRC-bed91bb4ef0e:BODY:c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5 (4,124 characters; SHA-256 c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5). Scheme topic: crystal structure of matter, amorphous and crystalline substances.",
       "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
         "SUP-SS1-PHYSICS-T3-W06-CRYSTAL-STRUCTURE"
@@ -10349,7 +10588,7 @@
       "id": "COV-PHYS-T3-W06-OBJ-3",
       "source_id": "SS1-SRC-bed91bb4ef0e",
       "objective": "Body-centred cubic (BCC), face-centred cubic (FCC) and hexagonal close-packed (HCP) structures.",
-      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 5 WEEK 6; body SS1-SRC-bed91bb4ef0e:BODY:c5c1fa1d21a31a2a62baf13c2c8d61d60c99cccb5b5d1e0f13c36a23e7fca1ad (4,124 characters; SHA-256 c5c1fa1d21a31a2a62baf13c2c8d61d60c99cccb5b5d1e0f13c36a23e7fca1ad). Scheme topic: crystal structure of matter, amorphous and crystalline substances.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 5 WEEK 6; body SS1-SRC-bed91bb4ef0e:BODY:c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5 (4,124 characters; SHA-256 c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5). Scheme topic: crystal structure of matter, amorphous and crystalline substances.",
       "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
         "SUP-SS1-PHYSICS-T3-W06-CRYSTAL-STRUCTURE"
@@ -10369,7 +10608,7 @@
       "id": "COV-PHYS-T3-W06-OBJ-4",
       "source_id": "SS1-SRC-bed91bb4ef0e",
       "objective": "Seven crystal systems and unit-cell geometry.",
-      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 5 WEEK 6; body SS1-SRC-bed91bb4ef0e:BODY:c5c1fa1d21a31a2a62baf13c2c8d61d60c99cccb5b5d1e0f13c36a23e7fca1ad (4,124 characters; SHA-256 c5c1fa1d21a31a2a62baf13c2c8d61d60c99cccb5b5d1e0f13c36a23e7fca1ad). Scheme topic: crystal structure of matter, amorphous and crystalline substances.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 5 WEEK 6; body SS1-SRC-bed91bb4ef0e:BODY:c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5 (4,124 characters; SHA-256 c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5). Scheme topic: crystal structure of matter, amorphous and crystalline substances.",
       "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
         "SUP-SS1-PHYSICS-T3-W06-CRYSTAL-STRUCTURE"
@@ -10389,7 +10628,7 @@
       "id": "COV-PHYS-T3-W06-OBJ-5",
       "source_id": "SS1-SRC-bed91bb4ef0e",
       "objective": "Construction/model representation of BCC, FCC and HCP crystal structures.",
-      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 5 WEEK 6; body SS1-SRC-bed91bb4ef0e:BODY:c5c1fa1d21a31a2a62baf13c2c8d61d60c99cccb5b5d1e0f13c36a23e7fca1ad (4,124 characters; SHA-256 c5c1fa1d21a31a2a62baf13c2c8d61d60c99cccb5b5d1e0f13c36a23e7fca1ad). Scheme topic: crystal structure of matter, amorphous and crystalline substances.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 5 WEEK 6; body SS1-SRC-bed91bb4ef0e:BODY:c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5 (4,124 characters; SHA-256 c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5). Scheme topic: crystal structure of matter, amorphous and crystalline substances.",
       "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
         "SUP-SS1-PHYSICS-T3-W06-CRYSTAL-STRUCTURE"
@@ -10402,6 +10641,86 @@
         {
           "locator": "SchoolGist, Physics SSS 1 Third Term PDF, Week Six, lines 439–503.",
           "explanation": "Close-equivalent comparison supplies the scheme topic, model activity and source comparison. The replacement corrects the source's reversed crystalline/amorphous comparison table and the unit-cell/lattice conflation."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W07-OBJ-2",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Effects of surface tension on droplets, floating small objects and liquid surfaces.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 6 WEEK 7; body ID SS1-SRC-bed91bb4ef0e:BODY:88bbd1cbf2f1650d37f077e8bf47577ac77d6d7f1e7299b5d45a8b2b3cca0e6e (1,521 characters).",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION"
+      ],
+      "evidence": [
+        {
+          "locator": "Updated SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION; body SHA-256 7b203b077dd1ca73f44651eb6b0bd00888a4f64a54f2c51d12d48d287345f38d; 18 keyed questions.",
+          "explanation": "Authored supplement teaches this objective; approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist PDF, Week Seven, lines 506–552.",
+          "explanation": "Close-equivalent source scope corroboration, not byte-verified as the registered .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W07-OBJ-3",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Applications of surface tension in wetting, bubbles, sprays and surface behaviour.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 6 WEEK 7; body ID SS1-SRC-bed91bb4ef0e:BODY:88bbd1cbf2f1650d37f077e8bf47577ac77d6d7f1e7299b5d45a8b2b3cca0e6e (1,521 characters).",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION"
+      ],
+      "evidence": [
+        {
+          "locator": "Updated SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION; body SHA-256 7b203b077dd1ca73f44651eb6b0bd00888a4f64a54f2c51d12d48d287345f38d; 18 keyed questions.",
+          "explanation": "Authored supplement teaches this objective; approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist PDF, Week Seven, lines 506–552.",
+          "explanation": "Close-equivalent source scope corroboration, not byte-verified as the registered .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W07-OBJ-4",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Methods of reducing surface tension, including heating and suitable surfactants.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 6 WEEK 7; body ID SS1-SRC-bed91bb4ef0e:BODY:88bbd1cbf2f1650d37f077e8bf47577ac77d6d7f1e7299b5d45a8b2b3cca0e6e (1,521 characters).",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION"
+      ],
+      "evidence": [
+        {
+          "locator": "Updated SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION; body SHA-256 7b203b077dd1ca73f44651eb6b0bd00888a4f64a54f2c51d12d48d287345f38d; 18 keyed questions.",
+          "explanation": "Authored supplement teaches this objective; approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist PDF, Week Seven, lines 506–552.",
+          "explanation": "Close-equivalent source scope corroboration, not byte-verified as the registered .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W07-OBJ-5",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Simple calculations using surface tension and force on a liquid film.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 6 WEEK 7; body ID SS1-SRC-bed91bb4ef0e:BODY:88bbd1cbf2f1650d37f077e8bf47577ac77d6d7f1e7299b5d45a8b2b3cca0e6e (1,521 characters).",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION"
+      ],
+      "evidence": [
+        {
+          "locator": "Updated SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION; body SHA-256 7b203b077dd1ca73f44651eb6b0bd00888a4f64a54f2c51d12d48d287345f38d; 18 keyed questions.",
+          "explanation": "Authored supplement teaches this objective; approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist PDF, Week Seven, lines 506–552.",
+          "explanation": "Close-equivalent source scope corroboration, not byte-verified as the registered .doc."
         }
       ]
     }
