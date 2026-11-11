@@ -9,6 +9,7 @@ import mammoth from 'mammoth';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import { applyRules, compilePackages } from '../../backend/src/db/ss1/compiler.ts';
 import { parseTopics } from '../../backend/src/db/ingestTopics.ts';
+import { createAgriculturalScienceDeliveryResolver, safeAgriculturalScienceTopic } from '../../backend/src/utils/ss1AgriculturalScienceDeliveryCorrection.ts';
 
 const raw = JSON.parse(readFileSync(new URL('../../backend/src/db/ss1/subjects/agricultural-science.json', import.meta.url), 'utf8'));
 const manifestText = readFileSync(new URL('../../docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv', import.meta.url), 'utf8');
@@ -227,5 +228,77 @@ test('Agricultural Science original row identities match the real Mammoth parser
         assert(identified.has(id), `coverage references an unrecognized original source row: ${coverage.id} -> ${id}`);
       }
     }
+  }
+});
+
+
+test('Agricultural Science learner delivery withholds corrected source rows until package and lesson approval gates pass', async () => {
+  const p = packageSchema.parse(raw);
+  const archiveBytes = readFileSync(new URL('../../docs/ss1/sources/SSS1-original.zip', import.meta.url));
+  const archive = await JSZip.loadAsync(archiveBytes);
+  const inputs = [];
+  for (const source of p.sources) {
+    const member = archive.file(source.archive_member);
+    assert(member, `archive member missing: ${source.archive_member}`);
+    const bytes = await member.async('nodebuffer');
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), source.sha256);
+    const extracted = await mammoth.extractRawText({ buffer: bytes });
+    inputs.push({ source_id: source.source_id, sha256: source.sha256, filePath: source.archive_member, text: extracted.value });
+  }
+  const plan = compilePackages([p], inputs, parseTopics);
+  const resolver = createAgriculturalScienceDeliveryResolver(p);
+  const sourceTitles: Record<string, string> = {
+    'CORR-AG-T3-W02-POWER-WATER-REPLACEMENT': 'FARM POWER',
+    'CORR-AG-T3-W09-PIG-SAFE-REPLACEMENT': 'LIVESTOCK MANAGEMENT',
+    'CORR-AG-T3-W10-CATTLE-SAFE-REPLACEMENT': 'LIVESTOCK MANAGEMENT II',
+  };
+
+  for (const correction of p.delivery_corrections) {
+    const source = p.sources.find(candidate => candidate.source_id === correction.source_id)!;
+    const row = plan.identified_rows.find(candidate => candidate.id === correction.source_lesson_id);
+    assert(row, `correction source row must be found by the real parser: ${correction.id}`);
+    const topic = {
+      id: 900 + p.delivery_corrections.indexOf(correction),
+      school_code: 'secondary',
+      class_name: 'SS 1',
+      subject_name: 'Agricultural Science',
+      term_label: source.term,
+      title: sourceTitles[correction.id],
+      source_file: source.archive_member.split('/').at(-1),
+      source_reference: row.row.sourceReference,
+      summary: 'stale generated summary',
+      generated_assessment_id: 'stale-assessment',
+    };
+
+    const pending = resolver(topic);
+    assert.equal(pending?.kind, 'withheld', 'pending subject package/lesson must never expose original source text');
+    assert.match(pending?.text ?? '', /withheld/i);
+    const safe = safeAgriculturalScienceTopic(topic);
+    assert.equal(safe.source_reference, null);
+    assert.equal(safe.generated_assessment_id, null);
+    assert.match(String(safe.summary), /withheld/i);
+
+    assert.equal(resolver({ ...topic, class_name: 'SS 2' }), null, 'correction must not cross class boundaries');
+    assert.equal(resolver({ ...topic, school_code: 'primary' }), null, 'correction must not cross school scope');
+    assert.equal(resolver({ ...topic, subject_name: 'Catering Craft' }), null, 'correction must not cross subject boundaries');
+    assert.equal(resolver({ ...topic, title: 'UNRELATED WEEK' }), null, 'correction must not match another source row');
+
+    const changedSource = resolver({ ...topic, source_reference: `${topic.source_reference} changed` });
+    assert.equal(changedSource?.kind, 'withheld', 'changed stored source must fail closed');
+    assert.match(changedSource?.reason ?? '', /fingerprint/i);
+
+    // Synthetic test-only approval proves the positive path. These references
+    // are fixtures and do not alter or assert approval of the real package.
+    const approvedFixture = JSON.parse(JSON.stringify(p));
+    approvedFixture.package_status = 'IMPLEMENTED';
+    approvedFixture.open_items = approvedFixture.open_items.map((item: any) => ({ ...item, blocks_delivery: false }));
+    const replacement = approvedFixture.lessons.find((lesson: any) => lesson.id === correction.replacement_id);
+    replacement.state.content_approval = 'APPROVED';
+    replacement.state.approval_reference = 'TEST_ONLY_APPROVAL_FIXTURE';
+    replacement.state.verification = 'VERIFIED';
+    replacement.state.verification_reference = 'TEST_ONLY_VERIFICATION_FIXTURE';
+    const approved = createAgriculturalScienceDeliveryResolver(approvedFixture)(topic);
+    assert.equal(approved?.kind, 'corrected');
+    assert.ok(approved?.text.includes(replacement.title));
   }
 });
