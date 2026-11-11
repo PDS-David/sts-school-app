@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import packageData from '../../backend/src/db/ss1/subjects/english.json' with { type: 'json' };
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import {
-  createEnglishDeliveryResolver, safeEnglishTopic, retireStaleEnglishCache,
+  createEnglishDeliveryResolver, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache,
   englishAssessmentDeliverable, englishWithdrawnAssessmentIds,
   SS1_ENGLISH_WITHDRAWN_FINGERPRINT_PREFIX,
 } from '../../backend/src/utils/ss1EnglishDeliveryCorrection.ts';
@@ -129,4 +129,46 @@ test('Approved learner lesson uses readable line breaks and keeps answer keys ou
   assert(text.includes('\nRights: '));
   assert.doesNotMatch(text, /Answer:/);
   assert.doesNotMatch(text, /marking guide/i);
+});
+
+
+test('Student and parent topic responses hide compiled English answer keys while teachers retain marking access', () => {
+  const supplement = original.lessons.find(entry => entry.practice.length > 0)!;
+  const question = supplement.practice[0];
+  const fullAuthoringText = [
+    supplement.title,
+    supplement.body,
+    'PRACTICE AND MARKING GUIDE',
+    question.question,
+    'Answer: ' + question.answer,
+    'Marking guide: ' + question.marking.map(item => item.criterion).join('; '),
+  ].join('\n');
+  const topic = {
+    school_code: 'secondary',
+    class_name: 'SS 1',
+    subject_name: 'English Language',
+    term_label: supplement.term,
+    title: supplement.title,
+    source_file: '__ss1_supplements__/english/' + supplement.id,
+    source_reference: fullAuthoringText,
+    summary: fullAuthoringText,
+    generated_assessment_id: 903,
+  };
+  const student = safeEnglishSupplementTopic(topic, 'student');
+  const parent = safeEnglishSupplementTopic(topic, 'parent');
+  const teacher = safeEnglishSupplementTopic(topic, 'teacher');
+  const studentViaTopicAdapter = safeEnglishTopic(topic, 'student');
+  for (const learner of [student, parent]) {
+    assert.doesNotMatch(String(learner.source_reference), /Answer:/i);
+    assert.doesNotMatch(String(learner.source_reference), /marking guide/i);
+    assert.doesNotMatch(String(learner.summary), /Answer:/i);
+    assert.match(String(learner.source_reference), /PRACTICE/);
+    assert.equal(learner.generated_assessment_id, 903);
+  }
+  assert.doesNotMatch(String(studentViaTopicAdapter.source_reference), /Answer:/i);
+  assert.doesNotMatch(String(studentViaTopicAdapter.summary), /marking guide/i);
+  assert.equal(teacher.source_reference, fullAuthoringText);
+  assert.equal(teacher.summary, fullAuthoringText);
+  assert.equal(safeEnglishSupplementTopic(topic, 'admin').source_reference, fullAuthoringText);
+  assert.equal(safeEnglishSupplementTopic({ ...topic, source_file: 'unrelated.docx' }, 'student').source_reference, fullAuthoringText);
 });
