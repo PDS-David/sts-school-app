@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { isSafeSvg } from '../backend/src/db/attachTopicAssets.ts';
+import { isSafeSvg, prepareAssets } from '../backend/src/db/attachTopicAssets.ts';
 
 const svg = (source: string) => Buffer.from(source, 'utf8');
 
@@ -32,4 +32,28 @@ test('SVG safety rejects malformed documents and active or externally referenced
 test('SVG safety rejects invalid UTF-8 and documents over the size limit', () => {
   assert.equal(isSafeSvg(Buffer.from([0xc3, 0x28])), false);
   assert.equal(isSafeSvg(Buffer.alloc(1_000_001, 0x20)), false);
+});
+
+test('SVG safety requires a positive viewBox and rejects inline style attributes', () => {
+  assert.equal(isSafeSvg(svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><path d="M0 0"/></svg>')), true);
+  assert.equal(isSafeSvg(svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><style>.label{font:700 18px Arial,sans-serif;fill:#18324b}.flow{marker-end:url(#arrow)}</style><text class="label">Safe</text></svg>')), true);
+  assert.equal(isSafeSvg(svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><style>.label{background-image:url(https://evil.test/x)}</style></svg>')), false);
+  assert.equal(isSafeSvg(svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 1"></svg>')), false);
+  assert.equal(isSafeSvg(svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"><path style="fill:red"/></svg>')), false);
+});
+
+test('safe SVG is accepted by the real topic asset manifest preparation path', async () => {
+  const { createHash } = await import('node:crypto');
+  const { mkdtempSync, writeFileSync, rmSync } = await import('node:fs');
+  const path = await import('node:path');
+  const { tmpdir } = await import('node:os');
+  const root = mkdtempSync(path.join(tmpdir(), 'topic-svg-'));
+  const bytes = svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><path d="M0 0 L100 50"/></svg>');
+  try {
+    writeFileSync(path.join(root, 'figure.svg'), bytes);
+    const sha256 = createHash('sha256').update(bytes).digest('hex');
+    const prepared = prepareAssets([{ asset_key:'svg-1', file:'figure.svg', sha256, order_index:1, caption:null, alt_text:'Figure', kind:'diagram', displayed:true, sort_order:1, expected_title:'Topic' }], root);
+    assert.equal(prepared[0].mime, 'image/svg+xml');
+    assert.deepEqual(prepared[0].bytes, bytes);
+  } finally { rmSync(root, { recursive:true, force:true }); }
 });
