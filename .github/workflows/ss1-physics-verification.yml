@@ -38,37 +38,6 @@ jobs:
           cache: npm
       - name: Install locked dependencies
         run: npm ci --ignore-scripts
-      - name: Inspect source excerpts for unresolved Physics evidence
-        run: |
-          python scripts/ss1/prepare_sources.py --archive docs/ss1/sources/SSS1-original.zip --output "$RUNNER_TEMP/physics-source"
-          PHYSICS_STAGE="$RUNNER_TEMP/physics-source" node --input-type=module <<'NODE'
-          import path from 'node:path';
-          import WordExtractor from 'word-extractor';
-          const root = process.env.PHYSICS_STAGE;
-          const extract = async (member) => {
-            const doc = await new WordExtractor().extract(path.join(root, ...member.split('/')));
-            return doc.getBody().split(/\r?\n/);
-          };
-          const t1 = await extract('SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc');
-          const t2 = await extract('SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc');
-          const t3 = await extract('SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc');
-          const print = (name, rows) => {
-            console.log('\\n===== '+name+' =====');
-            rows.forEach(({n,x}) => console.log(String(n).padStart(4,' ')+': '+x));
-          };
-          const rows=(lines,start)=>lines.map((x,i)=>({n:start+i,x}));
-          print('T1 WEEK ONE ASSESSMENTS', rows(t1.slice(60,63),61).concat(rows(t1.slice(159,191),160)));
-          print('T1 WEEK TWO ASSESSMENTS', rows(t1.slice(220,223),221).concat(rows(t1.slice(286,340),287)));
-          const w4 = t2.findIndex(x => /^\s*WEEK FOUR\s*$/i.test(x));
-          const w4end = t2.findIndex((x,i)=>i>w4 && /^\s*WEEK (FIVE|5)\s*$/i.test(x));
-          const w4lines=t2.slice(Math.max(0,w4),w4end>0?w4end:w4+120);
-          print('T2 WEEK FOUR BODY', rows(w4lines,w4+1));
-          print('T2 WEEK FOUR EXPANSIVITY MATCHES', w4lines.map((x,i)=>({x,n:w4+i+1})).filter(o=>/expansiv|linear|area|volume|anomalous|α|alpha|\bX\b|\bx\b/i.test(o.x)));
-          const w10=t3.findIndex(x => /^\s*WEEK (10|TEN)\s*$/i.test(x));
-          const w10lines=t3.slice(Math.max(0,w10),w10+100);
-          print('T3 WEEK TEN BODY', rows(w10lines,w10+1));
-          print('T3 WEEK TEN FORMULA MATCHES', w10lines.map((x,i)=>({x,n:w10+i+1})).filter(o=>/F\s*=|EA|α|alpha|[Өθ]|eL/i.test(o.x)));
-          NODE
       - name: Validate all registered SS1 subject packages
         run: node --import tsx backend/src/db/ss1/validateSubjectPackages.ts
       - name: Run Physics package regression tests
