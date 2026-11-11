@@ -73,9 +73,27 @@ function renderLesson(lesson: SubjectPackage['lessons'][number]) {
   ].join('\n\n');
 }
 
-function approvalGate(pkg: SubjectPackage, lesson: SubjectPackage['lessons'][number]) {
-  if (pkg.package_status !== 'IMPLEMENTED') return 'The Agricultural Science package is not yet approved for delivery.';
-  if (pkg.open_items.some(item => item.blocks_delivery)) return 'Agricultural Science still has blocking review items.';
+function correctionScopePrefix(correction: SubjectPackage['delivery_corrections'][number]) {
+  const match = correction.id.match(/^CORR-AG-(T[123])-W([0-9]{2}(?:-[0-9]{2})?)-/);
+  if (!match) throw new Error(`Invalid Agricultural Science correction scope: ${correction.id}`);
+  return `AGRICULTURAL-SCIENCE-${match[1]}-W${match[2]}-`;
+}
+
+function blockingItemsForCorrection(pkg: SubjectPackage, correction: SubjectPackage['delivery_corrections'][number]) {
+  const prefix = correctionScopePrefix(correction);
+  return pkg.open_items.filter(item => item.blocks_delivery && item.id.startsWith(prefix));
+}
+
+function approvalGate(
+  pkg: SubjectPackage,
+  lesson: SubjectPackage['lessons'][number],
+  correction: SubjectPackage['delivery_corrections'][number],
+) {
+  // A package-wide PENDING status or a different week's blocker must not suppress
+  // this correction. Delivery is gated by the exact correction's teaching week.
+  if (blockingItemsForCorrection(pkg, correction).length) {
+    return 'This Agricultural Science teaching week still has unresolved delivery-blocking review items.';
+  }
   if (lesson.state.content_approval !== 'APPROVED' || !lesson.state.approval_reference) {
     return 'The replacement lesson is awaiting genuine subject-content approval.';
   }
@@ -117,7 +135,7 @@ export function createAgriculturalScienceDeliveryResolver(input: SubjectPackage)
       source: correction.body_sha256,
       lesson,
       packageStatus: subjectPackage.package_status,
-      blockingItems: subjectPackage.open_items.filter(item => item.blocks_delivery).map(item => item.id).sort(),
+      blockingItems: blockingItemsForCorrection(subjectPackage, correction).map(item => item.id).sort(),
     }));
     built.set(correction.id, { text, fingerprint, replacementLessonIds: [lesson.id] });
   }
@@ -147,7 +165,7 @@ export function createAgriculturalScienceDeliveryResolver(input: SubjectPackage)
         };
       }
 
-      const gate = approvalGate(subjectPackage, lesson);
+      const gate = approvalGate(subjectPackage, lesson, correction);
       if (gate) {
         return {
           source: 'ss1-agricultural-science', termLabel: source.term, kind: 'withheld',
@@ -187,7 +205,8 @@ export function createAgriculturalScienceAssetDeliveryResolver(input: SubjectPac
     const asset = assets.get(String(metadata.asset_key ?? ''));
     if (!asset || asset.sha256 !== metadata.sha256 || asset.media_type !== metadata.mime) return false;
     const lesson = lessons.get(asset.lesson_id);
-    if (!lesson || !delivery.replacementLessonIds.includes(lesson.id) || approvalGate(subjectPackage, lesson)) return false;
+    const correction = subjectPackage.delivery_corrections.find(item => item.id === delivery.correctionId);
+    if (!lesson || !correction || !delivery.replacementLessonIds.includes(lesson.id) || approvalGate(subjectPackage, lesson, correction)) return false;
     if (asset.state.content_approval !== 'APPROVED' || !asset.state.approval_reference ||
         asset.state.implementation !== 'IMPLEMENTED' ||
         asset.state.verification !== 'VERIFIED' || !asset.state.verification_reference ||
