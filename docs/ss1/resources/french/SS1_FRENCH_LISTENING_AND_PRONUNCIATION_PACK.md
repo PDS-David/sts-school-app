@@ -33,29 +33,21 @@ These are supplementary learning resources, not official WAEC/NECO recordings an
 
 ### Teacher/recording script
 
-**Ada :** Bonjour, monsieur. Je cherche un livre pour mon cours de français.
+**Ada :** Bonjour, monsieur. Je cherche un livre sur les animaux.
 
-**Le bibliothécaire :** Bonjour, Ada. Quel genre de livre cherchez-vous ?
-
-**Ada :** Je voudrais un livre avec des histoires courtes, s’il vous plaît.
-
-**Le bibliothécaire :** Très bien. Les livres de français sont sur la deuxième étagère, à gauche.
+**Le bibliothécaire :** Bonjour. Regardez la deuxième étagère, à gauche.
 
 **Ada :** Merci. Est-ce que je peux emprunter ce livre ?
 
-**Le bibliothécaire :** Oui, bien sûr. Avez-vous votre carte de bibliothèque ?
+**Le bibliothécaire :** Oui. Avez-vous votre carte ?
 
-**Ada :** Oui, la voici.
+**Ada :** Oui, la voici. Quand dois-je rendre le livre ?
 
-**Le bibliothécaire :** Merci. Vous devez rendre le livre vendredi prochain.
+**Le bibliothécaire :** Vendredi prochain.
 
-**Ada :** Vendredi prochain ? D’accord. Est-ce que la bibliothèque ouvre à huit heures demain ?
+**Ada :** Très bien. Merci et au revoir.
 
-**Le bibliothécaire :** Oui. Elle ouvre à huit heures et ferme à quatre heures.
-
-**Ada :** Parfait. Merci beaucoup, monsieur. Au revoir.
-
-**Le bibliothécaire :** Au revoir, Ada. Bonne journée !
+**Le bibliothécaire :** Au revoir.
 
 ### Vocabulary support
 
@@ -76,29 +68,29 @@ These are supplementary learning resources, not official WAEC/NECO recordings an
 
 ### Listening questions — 10 marks
 
-1. Où se passe la conversation ? (1)
-2. Que cherche Ada ? (1)
-3. Quel genre de livre veut-elle ? (1)
-4. Où sont les livres de français ? (1)
-5. Que demande Ada au bibliothécaire ? (1)
-6. Quel document présente-t-elle ? (1)
-7. Quand doit-elle rendre le livre ? (1)
-8. À quelle heure la bibliothèque ouvre-t-elle ? (1)
-9. À quelle heure ferme-t-elle ? (1)
-10. Write one polite expression used by Ada. (1)
+1. What is Ada looking for? (1)
+2. What is the book about? (1)
+3. Where should Ada look? (1)
+4. Which shelf should she use? (1)
+5. Is the shelf on the left or right? (1)
+6. What does Ada ask permission to do? (1)
+7. What does the librarian ask her to show? (1)
+8. When must Ada return the book? (1)
+9. Give one polite expression used by Ada. (1)
+10. How does the conversation end? (1)
 
 ### Answer key
 
-1. À la bibliothèque.
-2. Un livre pour son cours de français.
-3. Un livre avec des histoires courtes.
-4. Sur la deuxième étagère, à gauche.
-5. Elle demande si elle peut emprunter le livre.
-6. Sa carte de bibliothèque.
-7. Vendredi prochain.
-8. À huit heures.
-9. À quatre heures.
-10. « S’il vous plaît », « Merci beaucoup » or another correct polite expression from the dialogue.
+1. A book.
+2. Animals.
+3. On the shelves.
+4. The second shelf.
+5. On the left.
+6. She asks to borrow the book.
+7. Her library card.
+8. Next Friday.
+9. « Merci » or « Très bien » in context; « s’il vous plaît » is not in this version of the dialogue.
+10. Ada says goodbye and the librarian replies « Au revoir ».
 
 ### Teacher administration
 
