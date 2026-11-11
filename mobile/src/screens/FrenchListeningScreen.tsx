@@ -39,11 +39,13 @@ export default function FrenchListeningScreen({ navigation }: any) {
   const standardStatus = useAudioPlayerStatus(standardPlayer);
   const slowStatus = useAudioPlayerStatus(slowPlayer);
   const recordedAudioPlaying = standardStatus.playing || slowStatus.playing;
+  const activeRecordingStatus = activeRecording === 'slow' ? slowStatus : standardStatus;
   const [voices, setVoices] = useState<Array<{ identifier: string; name: string; language: string }>>([]);
   const [currentLine, setCurrentLine] = useState(-1);
   const [speaking, setSpeaking] = useState(false);
   const [showTranslations, setShowTranslations] = useState(false);
   const [speechRate, setSpeechRate] = useState(0.82);
+  const [activeRecording, setActiveRecording] = useState<'standard' | 'slow'>('standard');
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
   const [quizSubmitted, setQuizSubmitted] = useState(false);
 
@@ -98,6 +100,7 @@ export default function FrenchListeningScreen({ navigation }: any) {
     const player = mode === 'standard' ? standardPlayer : slowPlayer;
     const otherPlayer = mode === 'standard' ? slowPlayer : standardPlayer;
     const status = mode === 'standard' ? standardStatus : slowStatus;
+    setActiveRecording(mode);
     otherPlayer.pause();
     if (status.playing) {
       player.pause();
@@ -140,7 +143,7 @@ export default function FrenchListeningScreen({ navigation }: any) {
           <Btn label={slowStatus.playing ? 'Pause slow' : 'Play slow recording'} onPress={() => playRecorded('slow')} disabled={!slowStatus.isLoaded} variant="outline" style={{ flex: 1 }} />
         </View>
         <Text style={styles.audioStatus}>
-          {recordedAudioPlaying ? 'Playing recorded French dialogue' : 'Recorded audio ready'} · {formatTime(standardStatus.currentTime || slowStatus.currentTime)} / {formatTime(standardStatus.duration || slowStatus.duration)}
+          {recordedAudioPlaying ? 'Playing recorded French dialogue' : 'Recorded audio ready'} · {formatTime(activeRecordingStatus.currentTime)} / {formatTime(activeRecordingStatus.duration)}
         </Text>
         <Btn label={speaking ? 'Playing device speech…' : 'Play with device speech'} onPress={playAll} disabled={speaking || recordedAudioPlaying} variant="outline" style={{ marginTop: Spacing.md }} />
         <View style={styles.speedRow}>
@@ -166,7 +169,7 @@ export default function FrenchListeningScreen({ navigation }: any) {
           <View key={index} style={[styles.line, currentLine === index && styles.activeLine]}>
             <View style={styles.lineTop}>
               <Text style={styles.speaker}>{line.speaker}</Text>
-              <TouchableOpacity onPress={() => { Speech.stop(); speakLine(index); }} accessibilityRole="button" accessibilityLabel={'Play line ' + (index + 1)}>
+              <TouchableOpacity onPress={() => { stop(); speakLine(index); }} accessibilityRole="button" accessibilityLabel={'Play line ' + (index + 1)}>
                 <Ionicons name="play-circle" size={27} color={Colors.primary} />
               </TouchableOpacity>
             </View>
