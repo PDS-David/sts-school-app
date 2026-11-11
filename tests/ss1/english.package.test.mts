@@ -266,3 +266,27 @@ test('English scheme markers use whole-line matching except multi-strand substri
   assert(multiLine.every(rule => rule.match_mode !== 'WHOLE_LINE'));
   assert(multiStrandSubstring.every(rule => rule.match_mode === undefined));
 });;
+
+test('Second Term affix assignment teaches every identifiable prefix and leaves malformed source fragments explicit', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(item => item.id === 'SUP-SS1-ENGLISH-AFFIXES-ROOTS-T2-W01');
+  const coverage = p.coverage.find(item => item.id === 'ENGLISH-T2-W01-AS01');
+  const gap = p.open_items.find(item => item.id === 'ENGLISH-T2-W01-PREFIX-GAP');
+  assert(lesson && coverage && gap);
+  assert.equal(coverage.status, 'PARTIAL');
+  assert(coverage.lesson_ids.includes(lesson.id));
+  for (const prefix of ['post-', 'pro-', 're-', 'sub-', 'super-', 'tele-', 'tri-', 'trans-', 'uni-', 'dis-', 'in-', 'mis-', 'non-', 'un-', 'im-', 'il-']) {
+    assert(lesson.body.includes(prefix), 'missing prefix teaching: ' + prefix);
+  }
+  const q6 = lesson.practice.find(item => item.id === 'Q6');
+  const q7 = lesson.practice.find(item => item.id === 'Q7');
+  assert(q6 && q7);
+  assert.equal(q6.marks, 32);
+  assert.equal(q6.marking.reduce((sum, criterion) => sum + criterion.marks, 0), 32);
+  assert.match(q6.answer, /postwar/);
+  assert.match(q6.answer, /illogical/);
+  assert.match(q7.answer, /not an established productive English prefix/i);
+  assert.match(gap.required_action, /confirm/i);
+  assert.equal(p.coverage.filter(item => item.status === 'UNRESOLVED').length, 0);
+});
+
