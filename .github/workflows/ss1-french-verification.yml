@@ -87,9 +87,24 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ss1-french-source-members
-          path: ${{ runner.temp }}/french-source-members/*.docx
+          path: |
+            ${{ runner.temp }}/french-source-members/*.docx
+            backend/src/db/ss1/subjects/french.json
           retention-days: 1
           if-no-files-found: error
+
+      - name: Print canonical authored-body hashes for review
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          p = json.loads(Path("backend/src/db/ss1/subjects/french.json").read_text(encoding="utf-8"))
+          for lesson in p["lessons"]:
+              actual = hashlib.sha256(lesson["body"].encode("utf-8")).hexdigest()
+              if actual != lesson["body_sha256"]:
+                  print(json.dumps({"lesson_id": lesson["id"], "expected": lesson["body_sha256"], "actual": actual}))
+          PY
 
       - name: Compile all French source documents with the production parser
         working-directory: backend
