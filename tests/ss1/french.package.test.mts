@@ -77,8 +77,8 @@ test('Coverage references resolve and every partial item remains explicitly bloc
   const lessonIds = new Set(p.lessons.map(l => l.id));
   const sourceIds = new Set(p.sources.map(s => s.source_id));
   const ruleIds = new Set(p.source_rules.map(r => r.id));
-  assert.equal(p.lessons.length, 37);
-  assert.equal(p.coverage.length, 52);
+  assert.equal(p.lessons.length, 40);
+  assert.equal(p.coverage.length, 55);
   for (const c of p.coverage) {
     assert(sourceIds.has(c.source_id), `unknown source in ${c.id}`);
     assert(c.evidence.length > 0, `missing evidence in ${c.id}`);
@@ -94,6 +94,25 @@ test('Coverage references resolve and every partial item remains explicitly bloc
   }
   const blocking = p.open_items.filter(item => item.blocks_delivery);
   assert(blocking.length > 0, 'French must not be declared complete while delivery blockers remain');
+});
+test('Third-Term revision and examination markers have original supplements and complete marking totals', () => {
+  const p = packageSchema.parse(raw);
+  const revision = p.lessons.find(l => l.id === 'SUP-SS1-FRENCH-REVISION-T3');
+  const exam = p.lessons.find(l => l.id === 'SUP-SS1-FRENCH-EXAM-T3');
+  assert(revision);
+  assert(exam);
+  assert.equal(revision.practice.reduce((sum, q) => sum + q.marks, 0), 20);
+  assert.equal(exam.practice.length, 24);
+  assert.equal(exam.practice.reduce((sum, q) => sum + q.marks, 0), 40);
+  assert(exam.practice.slice(0, 20).every(q => q.marks === 1));
+  assert(exam.practice.slice(20).every(q => q.marks === 5));
+  for (const q of [...revision.practice, ...exam.practice]) {
+    assert.equal(q.marking.reduce((sum, m) => sum + m.marks, 0), q.marks, q.id);
+  }
+  const markers = p.coverage.filter(c => c.id === 'FRENCH-T3-REVISION-MARKER' || c.id === 'FRENCH-T3-EXAMINATION-MARKER');
+  assert.equal(markers.length, 2);
+  assert(markers.every(c => c.status === 'MARKER'));
+  assert(markers.every(c => c.lesson_ids.every(id => p.source_rules.some(rule => rule.id === id && rule.kind === 'SCHEME_ONLY'))));
 });
 test('Package does not claim completion, approval, or verification prematurely', () => {
   const p = packageSchema.parse(raw);
