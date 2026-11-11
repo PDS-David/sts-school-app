@@ -73,6 +73,9 @@ function approvalGate(pkg: SubjectPackage, lesson: SubjectPackage['lessons'][num
   if (lesson.state.verification !== 'VERIFIED' || !lesson.state.verification_reference) {
     return 'The replacement lesson has not completed its authorised verification.';
   }
+  if (lesson.provenance.some(source => source.reuse_status !== 'PERMITTED')) {
+    return 'The replacement lesson still has unresolved source-rights permission.';
+  }
   return null;
 }
 
