@@ -1,5 +1,7 @@
 import { createHash } from 'node:crypto';
 import path from 'node:path';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import packageData from '../db/ss1/subjects/mathematics.json' with { type: 'json' };
 import { packageSchema, type SubjectPackage } from '../db/ss1/subjectPackageSchema.js';
 
@@ -195,6 +197,48 @@ export function mathematicsAssetsForTopic(topic: Ss1MathematicsTopic, topicId: n
 /** Resolve only a package-registered asset path; callers still verify its bytes against SHA-256. */
 export function mathematicsAssetFilePath(assetKey: string) {
   return packageValue.assets.find(asset => asset.id === assetKey)?.path ?? null;
+}
+
+const MATHEMATICS_ASSET_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../db/ss1/assets/mathematics');
+
+function topicMatchesMathematicsAsset(topic: Ss1MathematicsTopic, asset: SubjectPackage['assets'][number]) {
+  if (topic.school_code !== SCHOOL_CODE || topic.class_name !== CLASS_NAME ||
+      norm(topic.subject_name) !== norm(SUBJECT_NAME)) return false;
+  const lesson = packageValue.lessons.find(item => item.id === asset.lesson_id);
+  if (!lesson || lesson.term !== topic.term_label) return false;
+  const source = packageValue.sources.find(item => item.term === lesson.term);
+  if (!source || path.basename(source.archive_member) !== path.basename(String(topic.source_file ?? ''))) return false;
+  const [memberAndOrder, title] = asset.source_locator.split(' — ');
+  const orderMatch = memberAndOrder.match(/order_index\s+(\d+)/i);
+  if (!orderMatch) return false;
+  return Number(topic.order_index) === Number(orderMatch[1]) && norm(topic.title) === norm(title);
+}
+
+/** Repository-backed Mathematics diagrams/table pages; no topic_assets DB rows required. */
+export function mathematicsAssetsForTopic(topic: Ss1MathematicsTopic) {
+  return packageValue.assets.filter(asset =>
+    topicMatchesMathematicsAsset(topic, asset) &&
+    asset.state.content_approval === 'APPROVED' &&
+    asset.state.implementation === 'IMPLEMENTED' &&
+    asset.state.verification === 'VERIFIED' &&
+    asset.provenance.reuse_status === 'PERMITTED'
+  ).map(asset => ({
+    id: asset.id, asset_key: asset.id, kind: 'diagram', mime: asset.media_type,
+    sha256: asset.sha256, caption: asset.title, alt_text: asset.alt,
+    sort_order: asset.order, url: `/learning/mathematics-assets/${encodeURIComponent(asset.id)}`,
+  }));
+}
+
+export function mathematicsAssetBytes(assetId: string) {
+  const asset = packageValue.assets.find(item => item.id === assetId);
+  if (!asset || asset.state.content_approval !== 'APPROVED' ||
+      asset.state.implementation !== 'IMPLEMENTED' || asset.state.verification !== 'VERIFIED' ||
+      asset.provenance.reuse_status !== 'PERMITTED') return null;
+  const resolved = path.resolve(MATHEMATICS_ASSET_ROOT, path.basename(asset.path));
+  if (!resolved.startsWith(MATHEMATICS_ASSET_ROOT + path.sep)) return null;
+  const bytes = readFileSync(resolved);
+  if (hash(bytes.toString('utf8')) !== asset.sha256 || bytes.length !== asset.bytes) return null;
+  return { bytes, mime: asset.media_type, sha256: asset.sha256, alt: asset.alt };
 }
 
 /** Prevent raw Mathematics source rows (including unresolved weeks) from leaking into student topic lists/details. */
