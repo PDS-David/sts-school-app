@@ -86,24 +86,48 @@ test('Every registered source identity, SHA-256 and archive member matches SOURC
   }
 });
 
-test('Source rules bind registered source hashes and pending aliases remain visibly blocked', () => {
+test('Source rules bind registered hashes and source aliases require a recorded owner decision', () => {
   const p = packageSchema.parse(raw);
+  const aliasDecisionPath = 'docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-AL-20261111.md#DEC-AL-AG-2026-11-11';
+  const aliasDecision = readFileSync(new URL('../../docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-AL-20261111.md', import.meta.url), 'utf8');
+  const approvedAliasIds = new Set([
+    'SS1-SRC-7aa642b0085b-R001',
+    'SS1-SRC-956594d97094-R001',
+    'SS1-SRC-458a07f7ea5a-R001',
+  ]);
+  const aliases = p.source_rules.filter(rule => rule.op === 'source_alias');
+  assert.equal(aliases.length, 3, 'the three registered term headings each need one explicit alias rule');
   for (const rule of p.source_rules) {
     const source = p.sources.find(candidate => candidate.source_id === rule.source_id);
     assert(source, `rule ${rule.id} must reference a registered source`);
     assert.equal(rule.source_sha256, source.sha256, `rule ${rule.id} must bind the registered source hash`);
     assert(rule.anchor.trim().length > 0);
     if (rule.op === 'source_alias') {
-      assert.match(rule.approval_reference, /^PENDING-OWNER:/, 'a source-heading alias must not invent owner approval');
-      const pendingOwnerAction = p.open_items.find(item =>
-        item.kind === 'OWNER_ACTION' &&
-        item.blocks_delivery &&
-        item.affected_ids.includes(rule.id) &&
-        item.affected_ids.includes(rule.source_id)
-      );
-      assert(pendingOwnerAction, `alias ${rule.id} needs a blocking owner-approval item`);
+      if (approvedAliasIds.has(rule.id)) {
+        assert.equal(rule.approval_reference, aliasDecisionPath, 'approved aliases must cite the exact owner decision record');
+        assert.match(aliasDecision, new RegExp(rule.id));
+        const pendingOwnerAction = p.open_items.find(item =>
+          item.kind === 'OWNER_ACTION' &&
+          item.blocks_delivery &&
+          item.affected_ids.includes(rule.id) &&
+          item.affected_ids.includes(rule.source_id)
+        );
+        assert.equal(pendingOwnerAction, undefined, `approved alias ${rule.id} must not remain an open owner action`);
+      } else {
+        assert.match(rule.approval_reference, /^PENDING-OWNER:/, 'an unapproved source-heading alias must not invent owner approval');
+        const pendingOwnerAction = p.open_items.find(item =>
+          item.kind === 'OWNER_ACTION' &&
+          item.blocks_delivery &&
+          item.affected_ids.includes(rule.id) &&
+          item.affected_ids.includes(rule.source_id)
+        );
+        assert(pendingOwnerAction, `unapproved alias ${rule.id} needs a blocking owner-approval item`);
+      }
     }
   }
+  assert.match(aliasDecision, /FIRST TERM E-LEARNING NOTE/);
+  assert.match(aliasDecision, /SECOND TERM E-LEARNING NOTE/);
+  assert.match(aliasDecision, /THIRD TERM E-LEARNING NOTE/);
 });
 
 test('No lesson claims unreferenced approval or completed verification', () => {
