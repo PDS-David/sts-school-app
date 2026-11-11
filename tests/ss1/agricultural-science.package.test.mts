@@ -273,7 +273,7 @@ test('Agricultural Science learner delivery withholds corrected source rows unti
   const plan = compilePackages([p], inputs, parseTopics);
   const resolver = createAgriculturalScienceDeliveryResolver(p);
   const sourceTitles: Record<string, string> = {
-    'CORR-AG-T1-W09-ENVIRONMENTAL-FACTORS-REPLACEMENT': 'ENVIRONMENTAL FACTORS AFFECTING AGRICULTURAL PRODUCTION',
+    'CORR-AG-T1-W09-ENVIRONMENTAL-FACTORS-REPLACEMENT': 'ENVIRONMENTAL FACTORS AFFECTING AGRICULTURAL PRODUCTION (CROPAND ANIMAL DISTRIBUTION AND PRODUCTION)',
     'CORR-AG-T3-W01-TOOL-NAMES-REPLACEMENT': 'SIMPLE FARM TOOLS',
     'CORR-AG-T2-W07-PEAT-TYPO-REPLACEMENT': 'ROCK FORMATION AND TYPES',
     'CORR-AG-T2-W08-QUESTION-WORDING-REPLACEMENT': 'ROCK WEATHERING',
@@ -291,6 +291,7 @@ test('Agricultural Science learner delivery withholds corrected source rows unti
     const source = p.sources.find(candidate => candidate.source_id === correction.source_id)!;
     const row = plan.identified_rows.find(candidate => candidate.id === correction.source_lesson_id);
     assert(row, `correction source row must be found by the real parser: ${correction.id}`);
+    assert.equal(row.row.title, sourceTitles[correction.id], `correction source title must match the real parser identity: ${correction.id}`);
     const topic = {
       id: 900 + p.delivery_corrections.indexOf(correction),
       school_code: 'secondary',
