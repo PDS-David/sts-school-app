@@ -34,22 +34,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Install backend dependencies
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+      - name: Install locked backend dependencies
         working-directory: backend
-        run: npm install --no-audit --no-fund
-      - name: Diagnose lesson body hashes (temporary)
-        working-directory: backend
-        run: |
-          node --input-type=module <<'NODE'
-          import { readFileSync } from 'node:fs';
-          import { createHash } from 'node:crypto';
-          const pkg = JSON.parse(readFileSync('src/db/ss1/subjects/agricultural-science.json', 'utf8'));
-          const mismatches = pkg.lessons.flatMap(lesson => {
-            const actual = createHash('sha256').update(lesson.body, 'utf8').digest('hex');
-            return actual === lesson.body_sha256 ? [] : [{ id: lesson.id, actual, stored: lesson.body_sha256 }];
-          });
-          console.log('AGRICULTURAL_SCIENCE_BODY_HASH_MISMATCHES', JSON.stringify(mismatches));
-          NODE
+        run: npm ci --no-audit --no-fund
       - name: Run Agricultural Science package tests (lesson body hashes, approvals, assets)
         working-directory: backend
         run: node --import tsx --test ../tests/ss1/agricultural-science.package.test.mts
