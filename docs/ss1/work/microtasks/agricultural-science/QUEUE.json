@@ -163,8 +163,8 @@
     "CORRECTION_BINDING": 16
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 152,
-    "BLOCKED": 14
+    "IMPLEMENTED_TESTING_DEFERRED": 154,
+    "BLOCKED": 12
   },
   "items": [
     {
@@ -4780,7 +4780,7 @@
         "AG-WK-T3-W02"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a; inspected blocks 173, 197, 264-265 and recomputed hashes. FAO guidance says sun drying remains the most common grain-drying method in tropical developing countries; a 2022 survey across five Ghanaian regions found sun drying predominant in all five (Table 6: 73.3-100%; solar drying 0-6.3%; mechanical drying 0%). The article prose conflicts with its table on the 93% threshold; table values were used. Answer B sun. Recommended stem clarification; no source/key change applied.",
+      "implementation_reference": "Completed 2026-11-09. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a; inspected blocks 173, 197, 264-265 and recomputed hashes. FAO guidance says sun drying remains the most common grain-drying method in tropical developing countries; a 2022 survey across five Ghanaian regions found sun drying predominant in all five (Table 6: 73.3-100%; solar drying 0-6.3%; mechanical drying 0%). The article prose conflicts with its table on the 93% threshold; table values were used. Answer B sun. Recommended stem clarification; no source/key change applied. Updated the companion farm-power lesson's Q5 to identify sunlight as the heat source for traditional open-sun drying and distinguish solar-thermal heat from solar-PV pumping. The wording no longer makes an unqualified regional-prevalence claim; source row replacement is bound by CORR-AG-T3-W02-POWER-WATER-REPLACEMENT. Subject approval and learner-route verification remain pending.",
       "completion_condition": "A sourced note verifies the regional claim and recommends retaining or correcting MCQ 264."
     },
     {
@@ -4815,8 +4815,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W02"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "The package now contains 36 authored learner-facing lesson records, but no authorised importer/plan result has confirmed the exact original parsed source row identity for this correction. The correction contract requires a source_lesson_id, the exact original body_sha256 and a valid replacement_id; a supplement lesson ID is not a substitute for the original source row. The evidence-backed candidate correction remains recorded below. No delivery_corrections record was fabricated or bound; original source bytes remain unchanged. Investigated 2026-11-09. Recomputed source member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a and block hashes 210 bc0b3a4f75f1ea335842fd1136a761fa1eadb89f6cbde6e943c17831b7001d53; 216 a9636ba676632ee2214db71281ef7640902fb7b65746b8a4b4dda9c0030e6dd4; 217 79d838dcd1280648f23c822852f38a9416875c21bd6a8130500d735b6dafe738; 218 2a8d421a528bc483078a11c9438ac34a761ce328efa782436d5048030ab6a46b; 219 b455245adadf8f72ba6dd5015d3e2452e70685b263919eee420011f2177b23b8; 220 1181e494f656ccc4fe3b053f246a334bce596b0026491b764acd85ab711e79b8. EIA/DOE define hydropower as moving-water energy captured by turbines/generators; block 210 definition and block 216 match. Blocks 217–220 describe waterway transport, water for produce processing, crop germination/growth and photosynthesis, not hydropower. Recommended delivery reclassification preserves wording and moves 217–220 to 'Other uses/importance of water in agriculture'. The correction remains BLOCKED pending importer-confirmed original source row identity and an approved replacement binding. Updated existing package open item; no delivery_corrections or source changes.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The exact original source row is now confirmed by the repository's actual Mammoth extraction, parseTopics and compilePackages CI test: SS1-SRC-458a07f7ea5a:BODY:57c54e51896e3d54fcb43c690c056b45ebcfffd8e132e8bc5038de6c0ea5879b. Added CORR-AG-T3-W02-POWER-WATER-REPLACEMENT, binding that row/hash to SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-HUMAN-ANIMAL-WATER-BIOGAS. The replacement distinguishes hydropower from other agricultural uses of water; the companion SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-FARM-POWER-OPERATIONS lesson covers the other four sources. Original source bytes remain unchanged. Both replacement lessons remain PENDING content approval and DEFERRED verification; no learner delivery is claimed.",
       "completion_condition": "A sourced correction-binding record precisely distinguishes hydropower from water as a resource and preserves original source wording."
     },
     {
@@ -4851,8 +4851,8 @@
         "AG-SRC-T3",
         "AG-WK-T3-W02"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "The package now contains 36 authored learner-facing lesson records, but no authorised importer/plan result has confirmed the exact original parsed source row identity for this correction. The correction contract requires a source_lesson_id, the exact original body_sha256 and a valid replacement_id; a supplement lesson ID is not a substitute for the original source row. The evidence-backed candidate correction remains recorded below. No delivery_corrections record was fabricated or bound; original source bytes remain unchanged. Investigated 2026-11-09. Recomputed source member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a and block hashes 107 bd33c0597ced9c82966cb08843c45a934b49f665708cc7d9d1e16d8e1627b883; 138 81e76adb4141613aebccd848329d131f52d39d72a9a794b38096ea628369b9fe. Lessonnotes.ng Week Two SS1 Agricultural Science parallel note uses the exact intended phrases 'Pair of working bullocks yoked together' and 'High capital investment is involved in the acquisition of machinery'. Recommended corrections: block 107 'bullyolked'→'bullocks yoked'; block 138 'accusation of machineries'→'acquisition of machinery'. Other copies reproduce the corrupted forms and were not used as correction evidence. The correction remains BLOCKED pending importer-confirmed original source row identity/body hash and an approved replacement binding; the package now contains 36 authored lesson records but no original parsed-row ID has been confirmed. Updated existing package open item AGRICULTURAL-SCIENCE-T3-W02-TEXT; no delivery_corrections or source changes.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The exact original source row is now confirmed by the repository's actual Mammoth extraction, parseTopics and compilePackages CI test: SS1-SRC-458a07f7ea5a:BODY:57c54e51896e3d54fcb43c690c056b45ebcfffd8e132e8bc5038de6c0ea5879b. Added CORR-AG-T3-W02-POWER-WATER-REPLACEMENT, binding that row/hash to SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-HUMAN-ANIMAL-WATER-BIOGAS. The replacement teaches the corrected phrase 'working bullocks yoked together'; the companion farm-power lesson now explains the high capital cost of acquiring machinery. The source row is replaced only in learner delivery; archived source bytes remain unchanged. Replacement approval, verification and runtime delivery remain pending.",
       "completion_condition": "A correction-binding record cites verified source evidence and preserves original wording."
     },
     {
