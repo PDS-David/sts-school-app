@@ -66,8 +66,12 @@ test('French listening activity speaks the lesson dialogue and provides transcri
   assert.match(screen, /language: 'fr-FR'/);
   assert.match(screen, /Speech\.getAvailableVoicesAsync\(\)/);
   assert.match(screen, /Speech\.stop\(\)/);
-  assert.match(screen, /const DIALOGUE/);
-  assert.match(screen, /const QUESTIONS/);
+  const content = read('mobile/src/data/frenchListening.ts');
+  assert.match(screen, /FRENCH_DIALOGUE as DIALOGUE/);
+  assert.match(screen, /FRENCH_LISTENING_QUESTIONS as QUESTIONS/);
+  assert.match(screen, /gradeFrenchListeningAnswers\(selectedAnswers\)/);
+  assert.match(content, /export const FRENCH_DIALOGUE/);
+  assert.match(content, /export const FRENCH_LISTENING_QUESTIONS/);
   assert.match(screen, /Dialogue transcript/);
   assert.match(screen, /Compréhension orale/);
   assert.match(pkg, /"expo-speech": "~56\.0\.3"/);

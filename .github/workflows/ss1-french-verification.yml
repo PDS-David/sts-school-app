@@ -12,7 +12,10 @@ on:
       - "mobile/src/screens/TopicDetailScreen.tsx"
       - "mobile/src/navigation/StudentTabs.tsx"
       - "mobile/package.json"
+      - "mobile/app.json"
+      - "mobile/app.config.js"
       - "mobile/assets/french/**"
+      - "mobile/src/data/frenchListening.ts"
       - "tests/student-launch.static.test.cjs"
       - "backend/src/db/ss1/sourceRegistry.json"
       - "backend/src/db/ss1/compiler.ts"
@@ -23,6 +26,7 @@ on:
       - "tests/ss1/french.package.test.mts"
       - "tests/ss1/french.delivery.test.mts"
       - "tests/ss1/french.runtime.test.mts"
+      - "tests/ss1/french.audio.test.mts"
       - ".github/workflows/ss1-french-verification.yml"
   workflow_dispatch:
 
@@ -133,7 +137,7 @@ jobs:
         working-directory: backend
         run: |
           npm run test:ss1:french
-          node --import tsx --test ../tests/ss1/french.runtime.test.mts
+          npm run build
 
       - name: Install student app dependencies for TypeScript validation
         working-directory: mobile
@@ -142,6 +146,31 @@ jobs:
       - name: Type-check the student mobile app
         working-directory: mobile
         run: npx tsc --noEmit
+
+      - name: Bundle the student app for Android and verify local French audio assets
+        working-directory: mobile
+        run: |
+          npx expo export --platform android --output-dir "$RUNNER_TEMP/french-android-export"
+          node - "$RUNNER_TEMP/french-android-export" <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+          const root = process.argv[2];
+          const metadata = JSON.parse(fs.readFileSync(path.join(root, 'metadata.json'), 'utf8'));
+          const assets = metadata.fileMetadata?.android?.assets ?? [];
+          const mp3 = assets.filter(asset =>
+            String(asset.ext ?? '').replace(/^\\./, '').toLowerCase() === 'mp3' ||
+            String(asset.path ?? '').toLowerCase().endsWith('.mp3')
+          );
+          if (mp3.length !== 2) {
+            throw new Error(`Expected exactly two French MP3 assets in Android export metadata, found ${mp3.length}`);
+          }
+          for (const asset of mp3) {
+            if (!asset.path || !String(asset.ext ?? '').toLowerCase().includes('mp3')) {
+              throw new Error(`Invalid French MP3 metadata entry: ${JSON.stringify(asset)}`);
+            }
+          }
+          console.log('Verified two bundled French MP3 assets:', mp3.map(asset => asset.path));
+          NODE
 
       - name: Verify student app French audio routing and playback integration
         working-directory: .
