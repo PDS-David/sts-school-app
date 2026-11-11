@@ -45,14 +45,16 @@ function renderLesson(lesson: SubjectPackage['lessons'][number]) {
     lesson.title,
     lesson.body,
     'LEARNING OBJECTIVES',
-    ...lesson.objectives.map((objective, index) => `${index + 1}. ${objective}`),
+    ...lesson.objectives.map((objective, index) => \`\${index + 1}. \${objective}\`),
     'PRACTICE — ATTEMPT THESE BEFORE DISCUSSING YOUR ANSWERS',
-    ...lesson.practice.map(question => `${question.id}. ${question.question} (${question.marks} mark(s))`),
+    ...lesson.practice.map(question => \`\${question.id}. \${question.question} (\${question.marks} mark(s))\`),
     'SOURCES AND ATTRIBUTION',
-    ...lesson.provenance.map(source => `${source.title} — ${source.locator}${source.url ? ` — ${source.url}` : ''}\\nRights: ${source.rights}\\nAttribution: ${source.attribution}`),
-  ].join('\\n\\n');
+    ...lesson.provenance.map(source =>
+      source.title + ' — ' + source.locator + (source.url ? ' — ' + source.url : '') +
+      '\nRights: ' + source.rights + '\nAttribution: ' + source.attribution
+    ),
+  ].join('\n\n');
 }
-
 function sourceTitle(correction: SubjectPackage['delivery_corrections'][number]) {
   const separator = correction.evidence.locator.indexOf(':');
   return separator < 0 ? '' : correction.evidence.locator.slice(separator + 1).trim();
@@ -99,7 +101,9 @@ export function createEnglishDeliveryResolver(input: SubjectPackage) {
       throw new Error(`Invalid English correction binding: ${correction.id}`);
     }
     identities.add(identity);
-    const text = `${SS1_ENGLISH_CORRECTION_MARKER} ${correction.id}\\nThe original source row is preserved for audit. Study this independently authored replacement only after the English Language approval and verification gates are satisfied.\\n\\n${renderLesson(lesson)}`;
+    const text = SS1_ENGLISH_CORRECTION_MARKER + ' ' + correction.id +
+      '\nThe original source row is preserved for audit. Study this independently authored replacement only after the English Language approval and verification gates are satisfied.\n\n' +
+      renderLesson(lesson);
     const fingerprint = hash(JSON.stringify({
       id: correction.id,
       source: correction.body_sha256,
@@ -129,7 +133,8 @@ export function createEnglishDeliveryResolver(input: SubjectPackage) {
         return {
           source: 'ss1-english', termLabel: source.term, kind: 'withheld',
           correctionId: correction.id,
-          text: `${SS1_ENGLISH_WITHHELD_MARKER} ${correction.id}\\nThis stored English Language source row differs from the reviewed source fingerprint. It is temporarily unavailable while the source is checked.`,
+          text: SS1_ENGLISH_WITHHELD_MARKER + ' ' + correction.id +
+            '\nThis stored English Language source row differs from the reviewed source fingerprint. It is temporarily unavailable while the source is checked.',
           fingerprint: hash(`withheld:source-mismatch:${correction.id}`),
           sourceHash: correction.body_sha256, replacementLessonIds: [],
           reason: 'Stored source fingerprint differs from the reviewed English lesson',
