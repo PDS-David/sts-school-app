@@ -1,12 +1,12 @@
 # Agricultural Science SVG asset delivery — implementation checkpoint
 
-Base: `45551d903647c80b6e2a2b6798fa741d650f1bc0` (master at branch creation). Branch: `ss1/ag-science-asset-gate-svg-20261111`.
+Base: `45551d903647c80b6e2a2b6798fa741d650f1bc0` (master at branch creation). Branch: `ss1/ag-science-asset-gate-svg-20261111d`.
 
 ## Implemented in this batch
 - SVG ingestion validates strict UTF-8, document size, root element, responsive viewBox, and rejects active content, event handlers, inline styles, DTDs and external references. Existing PNG/JPEG/GIF signature checks remain.
 - Authenticated asset delivery retains existing topic visibility checks and sandbox CSP. Agricultural Science assets are rechecked against the exact corrected lesson, package/lesson/asset approval and verification references, provenance rights, and package SHA-256/MIME at both metadata and byte endpoints. Direct asset-ID requests cannot bypass withholding.
 - Mobile lesson detail fetches SVG bytes with the same Bearer token and renders them with `react-native-svg` native primitives. Existing raster image handling, labels, captions, attributions, retry and wide-image behaviour are retained.
-- Added `scripts/ss1/build_asset_plan.mjs`: joins real compiler `identified_rows` to package lesson/asset IDs; checks file bytes, hashes, MIME and safe SVG content; requires package implementation, lesson+asset approval and verification references, and permitted provenance; emits the existing attachment CSV only when all gates pass. It writes a private JSON report when blocked.
+- Added `scripts/ss1/build_asset_plan.mjs` and `scripts/ss1/build_agricultural_science_asset_plan.mts`: the wrapper consumes the private source stage created by `prepare_sources.py`, verifies the registered archive hash and exact source member hashes, runs the real SS1 loader/compiler, maps compiler topic rows to package lesson/asset IDs, and emits the existing attachment CSV only when package, lesson, asset, provenance, hash, MIME and safety gates pass. It writes a private blocker report and no CSV while pending.
 - Added regression tests for SVG ingestion, asset-to-topic identity, approval gating and learner-route integration.
 
 ## Explicit gates
