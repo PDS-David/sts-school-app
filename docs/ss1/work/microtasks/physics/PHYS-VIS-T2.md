@@ -42,3 +42,8 @@ The source has tutor branding/contact information in its page furniture. No name
 ## Validation boundary
 
 All 24 pages were rendered and reviewed as page images/contact sheets; expansivity pages 8–9 were inspected at higher resolution. Raster-object counts were obtained with `pdfimages -list`; vector shapes are not included in that count. This is a visual inventory, not a claim that every source figure has been recreated. Original source bytes and tutor branding remain untouched. Formal package tests, importer and device verification remain DEFERRED.
+
+
+## Completion update — original equivalents registered
+
+The four bounded visual tasks are now implemented with original SVG assets registered in physics.json: `PHYS-ASSET-T2-THERMOMETRY`, `PHYS-ASSET-T2-HEAT-TRANSFER`, `PHYS-ASSET-T2-ELECTROSTATICS` and `PHYS-ASSET-T2-GRAVITATION`. Together with the earlier thermal-expansion, anomalous-water, vacuum-flask, electroscope and electric-field assets, the inventoried teaching clusters now have original equivalents. These are not copies of source art. Content approval remains PENDING and verification DEFERRED.
