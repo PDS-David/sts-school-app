@@ -3486,8 +3486,8 @@
         "Distinguish real and apparent expansivity of a liquid and calculate container expansivity.",
         "Explain the anomalous expansion of water between 0 °C and 4 °C and its importance."
       ],
-      "body": "THERMAL EXPANSIVITY: LINEAR, AREA AND VOLUME\n\n1. Meaning of thermal expansivity\nThermal expansion is the increase in a material's dimensions when its temperature rises. Thermal expansivity (coefficient of expansion) measures the fractional increase in a dimension per unit rise in temperature. The SI unit of each coefficient is kelvin⁻¹ (K⁻¹). A temperature rise of 1 °C has the same size as a rise of 1 K, so coefficients may also be expressed per °C.\n\nUse ΔT = T₂ − T₁. A temperature difference is used in the equations; do not substitute an absolute Celsius or Kelvin reading for ΔT.\n\n2. Linear expansivity (α)\nLinear expansivity describes the fractional increase in length per unit original length for each unit temperature rise:\nα = ΔL / (L₀ΔT)\nTherefore:\nΔL = αL₀ΔT\nL = L₀ + ΔL = L₀(1 + αΔT)\nwhere L₀ is original length, L is final length and ΔL is the increase in length. α is measured in K⁻¹.\n\nWorked example 1\nA brass rod is 2.00 m long. Its linear expansivity is 18 × 10⁻⁶ K⁻¹. Find its final length after a temperature rise of 100 K.\nΔL = αL₀ΔT\n= 18 × 10⁻⁶ × 2.00 × 100\n= 0.0036 m.\nFinal length = 2.00 + 0.0036 = 2.0036 m.\n\n3. Area (superficial) expansivity (β)\nArea expansivity describes the fractional increase in surface area per unit original area per unit temperature rise:\nβ = ΔA / (A₀ΔT)\nΔA = βA₀ΔT\nA = A₀(1 + βΔT)\nFor a uniform (isotropic) solid and a small temperature change, β ≈ 2α. This is because both length dimensions expand. The approximation ignores the very small product term (αΔT)².\n\nWorked example 2\nA metal plate has an original area of 0.50 m². Its area expansivity is 2.4 × 10⁻⁵ K⁻¹ and its temperature rises by 50 K.\nΔA = βA₀ΔT\n= 2.4 × 10⁻⁵ × 0.50 × 50\n= 0.00060 m².\nFinal area = 0.50060 m².\n\n4. Volume (cubical) expansivity (γ)\nVolume expansivity describes the fractional increase in volume per unit original volume per unit temperature rise:\nγ = ΔV / (V₀ΔT)\nΔV = γV₀ΔT\nV = V₀(1 + γΔT)\nFor a uniform isotropic solid and a small temperature change, γ ≈ 3α. Thus the approximate relationship for such solids is α : β : γ = 1 : 2 : 3. Do not apply this ratio blindly to every material or to liquids.\n\nWorked example 3\nA solid block has volume 1.50 × 10⁻³ m³. Its volume expansivity is 3.6 × 10⁻⁵ K⁻¹. Find the increase in volume for a temperature rise of 40 K.\nΔV = γV₀ΔT\n= 3.6 × 10⁻⁵ × 1.50 × 10⁻³ × 40\n= 2.16 × 10⁻⁶ m³.\n\n5. Expansion of liquids: real and apparent\nA liquid is normally heated in a container, and the container also expands. The liquid's actual increase in volume is called its real (or absolute) expansion. The increase observed relative to the expanding container is its apparent expansion.\nFor small temperature changes:\nγᵣ = γₐ + γ꜀\nwhere γᵣ is the real expansivity of the liquid, γₐ is its apparent expansivity, and γ꜀ is the cubical expansivity of the container.\nTherefore:\nγ꜀ = γᵣ − γₐ.\nThe apparent expansion is smaller than the real expansion when the container also expands. Use the same temperature interval and reference volume when comparing the coefficients.\n\nWorked example 4\nA liquid has real expansivity 3.0 × 10⁻⁴ K⁻¹ and apparent expansivity 2.8 × 10⁻⁴ K⁻¹ in a container. Find the container's cubical expansivity.\nγ꜀ = γᵣ − γₐ\n= (3.0 − 2.8) × 10⁻⁴\n= 0.2 × 10⁻⁴ = 2.0 × 10⁻⁵ K⁻¹.\n\n6. Anomalous expansion of water\nMost liquids expand when heated and contract when cooled. Water behaves unusually between 0 °C and 4 °C:\n- When water is heated from 0 °C to 4 °C, it contracts and its density increases.\n- At about 4 °C, water has its maximum density (approximately 1,000 kg m⁻³ at standard atmospheric pressure).\n- When water is heated above 4 °C, it expands normally.\n- When water cools from 4 °C towards 0 °C, it expands. On freezing, it expands further, so ice is less dense than liquid water and floats.\nThis behaviour helps lakes and ponds freeze from the surface rather than becoming solid ice from the bottom upward.\n\n7. How to solve expansivity questions\n1. Write down the quantity being asked for: ΔL, ΔA, ΔV, a coefficient or a final dimension.\n2. Record the original dimension and the temperature change ΔT.\n3. Choose the matching equation: α for length, β for area, γ for volume.\n4. Convert all dimensions to consistent units before substituting.\n5. Keep the coefficient in K⁻¹ and the temperature change in K or °C.\n6. Give the final answer with the correct unit and sensible significant figures.\n\nCOMMON ERRORS TO AVOID\n- Using the final temperature instead of the temperature change.\n- Forgetting to add the increase to the original length/area/volume when the question asks for the final dimension.\n- Confusing α, β and γ or omitting K⁻¹.\n- Treating β = 2α and γ = 3α as exact for large expansions or all materials.\n- Saying water expands normally throughout 0–4 °C; in this interval it contracts when heated.\n- Confusing real expansion of a liquid with apparent expansion measured in an expanding vessel.\n\nSUMMARY\nα = ΔL/(L₀ΔT); β = ΔA/(A₀ΔT); γ = ΔV/(V₀ΔT).\nFor small expansions of isotropic solids: β ≈ 2α and γ ≈ 3α.\nFor a liquid in an expanding container: γᵣ = γₐ + γ꜀.\nWater has maximum density near 4 °C and expands anomalously between 0 °C and 4 °C.",
-      "body_sha256": "b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b",
+      "body": "THERMAL EXPANSIVITY: LINEAR, AREA AND VOLUME\n\n1. Meaning of thermal expansivity\nThermal expansion is the increase in a material's dimensions when its temperature rises. Thermal expansivity (coefficient of expansion) measures the fractional increase in a dimension per unit rise in temperature. The SI unit of each coefficient is kelvin⁻¹ (K⁻¹). A temperature rise of 1 °C has the same size as a rise of 1 K, so coefficients may also be expressed per °C.\n\nUse ΔT = T₂ − T₁. A temperature difference is used in the equations; do not substitute an absolute Celsius or Kelvin reading for ΔT.\n\n2. Linear expansivity (α)\nLinear expansivity describes the fractional increase in length per unit original length for each unit temperature rise:\nα = ΔL / (L₀ΔT)\nTherefore:\nΔL = αL₀ΔT\nL = L₀ + ΔL = L₀(1 + αΔT)\nwhere L₀ is original length, L is final length and ΔL is the increase in length. α is measured in K⁻¹.\n\nWorked example 1\nA brass rod is 2.00 m long. Its linear expansivity is 18 × 10⁻⁶ K⁻¹. Find its final length after a temperature rise of 100 K.\nΔL = αL₀ΔT\n= 18 × 10⁻⁶ × 2.00 × 100\n= 0.0036 m.\nFinal length = 2.00 + 0.0036 = 2.0036 m.\n\n3. Area (superficial) expansivity (β)\nArea expansivity describes the fractional increase in surface area per unit original area per unit temperature rise:\nβ = ΔA / (A₀ΔT)\nΔA = βA₀ΔT\nA = A₀(1 + βΔT)\nFor a uniform (isotropic) solid and a small temperature change, β ≈ 2α. This is because both length dimensions expand. The approximation ignores the very small product term (αΔT)².\n\nWorked example 2\nA metal plate has an original area of 0.50 m². Its area expansivity is 2.4 × 10⁻⁵ K⁻¹ and its temperature rises by 50 K.\nΔA = βA₀ΔT\n= 2.4 × 10⁻⁵ × 0.50 × 50\n= 0.00060 m².\nFinal area = 0.50060 m².\n\n4. Volume (cubical) expansivity (γ)\nVolume expansivity describes the fractional increase in volume per unit original volume per unit temperature rise:\nγ = ΔV / (V₀ΔT)\nΔV = γV₀ΔT\nV = V₀(1 + γΔT)\nFor a uniform isotropic solid and a small temperature change, γ ≈ 3α. Thus the approximate relationship for such solids is α : β : γ = 1 : 2 : 3. Do not apply this ratio blindly to every material or to liquids.\n\nWorked example 3\nA solid block has volume 1.50 × 10⁻³ m³. Its volume expansivity is 3.6 × 10⁻⁵ K⁻¹. Find the increase in volume for a temperature rise of 40 K.\nΔV = γV₀ΔT\n= 3.6 × 10⁻⁵ × 1.50 × 10⁻³ × 40\n= 2.16 × 10⁻⁶ m³.\n\n5. Expansion of liquids: real and apparent\nA liquid is normally heated in a container, and the container also expands. The liquid's actual increase in volume is called its real (or absolute) expansion. The increase observed relative to the expanding container is its apparent expansion.\nFor small temperature changes:\nγᵣ = γₐ + γ꜀\nwhere γᵣ is the real expansivity of the liquid, γₐ is its apparent expansivity, and γ꜀ is the cubical expansivity of the container.\nTherefore:\nγ꜀ = γᵣ − γₐ.\nThe apparent expansion is smaller than the real expansion when the container also expands. Use the same temperature interval and reference volume when comparing the coefficients.\n\nWorked example 4\nA liquid has real expansivity 3.0 × 10⁻⁴ K⁻¹ and apparent expansivity 2.8 × 10⁻⁴ K⁻¹ in a container. Find the container's cubical expansivity.\nγ꜀ = γᵣ − γₐ\n= (3.0 − 2.8) × 10⁻⁴\n= 0.2 × 10⁻⁴ = 2.0 × 10⁻⁵ K⁻¹.\n\n6. Anomalous expansion of water\nMost liquids expand when heated and contract when cooled. Water behaves unusually between 0 °C and 4 °C:\n- When water is heated from 0 °C to 4 °C, it contracts and its density increases.\n- At about 4 °C, water has its maximum density (approximately 1,000 kg m⁻³ at standard atmospheric pressure).\n- When water is heated above 4 °C, it expands normally.\n- When water cools from 4 °C towards 0 °C, it expands. On freezing, it expands further, so ice is less dense than liquid water and floats.\nThis behaviour helps lakes and ponds freeze from the surface rather than becoming solid ice from the bottom upward.\n\n7. How to solve expansivity questions\n1. Write down the quantity being asked for: ΔL, ΔA, ΔV, a coefficient or a final dimension.\n2. Record the original dimension and the temperature change ΔT.\n3. Choose the matching equation: α for length, β for area, γ for volume.\n4. Convert all dimensions to consistent units before substituting.\n5. Keep the coefficient in K⁻¹ and the temperature change in K or °C.\n6. Give the final answer with the correct unit and sensible significant figures.\n\nCOMMON ERRORS TO AVOID\n- Using the final temperature instead of the temperature change.\n- Forgetting to add the increase to the original length/area/volume when the question asks for the final dimension.\n- Confusing α, β and γ or omitting K⁻¹.\n- Treating β = 2α and γ = 3α as exact for large expansions or all materials.\n- Saying water expands normally throughout 0–4 °C; in this interval it contracts when heated.\n- Confusing real expansion of a liquid with apparent expansion measured in an expanding vessel.\n\nSUMMARY\nα = ΔL/(L₀ΔT); β = ΔA/(A₀ΔT); γ = ΔV/(V₀ΔT).\nFor small expansions of isotropic solids: β ≈ 2α and γ ≈ 3α.\nFor a liquid in an expanding container: γᵣ = γₐ + γ꜀.\nWater has maximum density near 4 °C and expands anomalously between 0 °C and 4 °C.\n\n8. Correct notation when working with expansivity\nUse α for linear expansivity, β for area expansivity and γ for volume (cubical) expansivity. For small temperature changes in an isotropic solid, β ≈ 2α and γ ≈ 3α. In the original Week Four extract, some equations print X where α is required and use Y for the volume coefficient. Treat X as a source notation error, not as a new coefficient; use γ for volume expansivity. Always keep the temperature change ΔT in the denominator of the definition α = ΔL/(L₀ΔT).\n",
+      "body_sha256": "8d4769750d1e9c51789c45fd6c93002211f33d5f1c6f328a996293b467496bf8",
       "practice": [
         {
           "id": "Q01",
@@ -3841,6 +3841,98 @@
             },
             {
               "criterion": "Gives Lₚ : Lq = 1 : 2.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q21",
+          "question": "A cube-shaped iron box has side 2 cm. Its temperature rises by 90 K. If α = 1.25 × 10⁻⁵ K⁻¹, estimate its increase in volume. Use γ ≈ 3α.",
+          "answer": "V₀ = 2³ = 8 cm³. γ ≈ 3 × 1.25 × 10⁻⁵ = 3.75 × 10⁻⁵ K⁻¹. ΔV = γV₀ΔT = 3.75 × 10⁻⁵ × 8 × 90 = 0.027 cm³.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Finds V₀ = 8 cm³.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds γ = 3.75 × 10⁻⁵ K⁻¹.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses ΔV = γV₀ΔT.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 0.027 cm³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q22",
+          "question": "Describe a method for determining the apparent cubical expansivity of a liquid.",
+          "answer": "Place a known initial volume V₀ of liquid in a flask fitted with a narrow capillary. Record the initial temperature and meniscus level. Warm the flask uniformly in a water bath through a measured temperature rise ΔT and allow it to reach thermal equilibrium. Measure the apparent rise in the capillary and convert it to an apparent volume increase ΔVₐ using the capillary calibration. Calculate γₐ = ΔVₐ/(V₀ΔT). The flask also expands, so this is apparent, not real, expansion.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Uses a known liquid volume in a flask with a narrow capillary.",
+              "marks": 1
+            },
+            {
+              "criterion": "Records initial temperature and meniscus level.",
+              "marks": 1
+            },
+            {
+              "criterion": "Raises temperature by a measured ΔT and allows equilibrium.",
+              "marks": 1
+            },
+            {
+              "criterion": "Measures apparent volume increase from the capillary rise.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses γₐ = ΔVₐ/(V₀ΔT).",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q23",
+          "question": "What is the SI unit of linear expansivity?",
+          "answer": "K⁻¹ (per kelvin).",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "States K⁻¹.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q24",
+          "question": "A solid has linear expansivity 1.8 × 10⁻⁶ K⁻¹. Find its approximate area expansivity for small expansion.",
+          "answer": "β ≈ 2α = 2 × 1.8 × 10⁻⁶ = 3.6 × 10⁻⁶ K⁻¹.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses β ≈ 2α.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 3.6 × 10⁻⁶ K⁻¹.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q25",
+          "question": "Water is heated from 1 °C to 3 °C. What happens to its volume? (A) increases (B) decreases (C) remains constant (D) becomes zero.",
+          "answer": "B. It decreases because water contracts as it is heated between 0 °C and 4 °C.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B and gives the anomalous contraction reason.",
               "marks": 1
             }
           ]
@@ -13438,8 +13530,8 @@
     {
       "id": "PHYSICS-T1-W01-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 1 is indexed at objective level but is not deliverable: COV-PHYS-T1-W01-OBJ-1, -3, -4, -5, -6, -8, -9 and -12 are PARTIAL and OBJ-2, -7, -10, -11, -13 and -14 are UNRESOLVED; physics.json still has lessons[] length 0 and the importer has not been run. The original parsed row is bound as the target of every PARTIAL entry so a later plan can identify the exact body.",
-      "required_action": "Run the importer and the compiler plan for this source, then approve or replace the teaching. An indexed week is not a certified or fully taught week.",
+      "detail": "Week 1 now has authored supplements and objective-level coverage rather than an empty lessons[] array. Current coverage status counts: {\"IMPLEMENTED_EQUIVALENT\":8,\"UNRESOLVED\":5,\"PARTIAL\":1}. The dimensional-analysis supplement covers the measurable quantities and dimensional derivations; the remaining unresolved objectives are separately identified in the package. Content approval remains PENDING and formal compiler/importer/device verification remains DEFERRED.",
+      "required_action": "Complete the remaining unresolved Week 1 objectives with bounded supplements and keyed assessment; keep content approval pending until the teacher reviews the actual lessons.",
       "affected_ids": [
         "COV-PHYS-T1-W01-OBJ-1",
         "COV-PHYS-T1-W01-OBJ-2",
@@ -13474,15 +13566,15 @@
     {
       "id": "PHYSICS-T1-W01-DIMENSIONAL-GAPS",
       "kind": "CONTENT",
-      "detail": "Three of the four dimensional analyses the week declares are empty in the body text: line 133 (SHA-256 34a75ea9ad17b9920de0eaddc65f6dffdaf2ddd68140f42b38bcdae08039b29e) ends with an equals sign and whitespace, line 134 (SHA-256 6fca6169bbaa4c0d047a1cbe63d82e29685a0121ddfdd68f72ec2d990ac2f47c) is fifty-four spaces then an equals sign, line 137 reads 'Velocity =   = ' and line 141 reads 'Acceleration =    = '. The member file contains no equation objects (0 Equation class names, 0 MTEF payloads, 0 EQ field instructions) but 76 complete embedded PNG images, so the operands are either blank as authored or inside a picture that getBody() cannot emit, and the importer has no legacy .doc image path at all.",
-      "required_action": "Teacher or PHYS-VIS-T1 establishes whether the missing operands were pictures and what they showed; the bounded supplement PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS then supplies the working. Do not print a dimensional equation and attribute it to these lines.",
+      "detail": "The supplement PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS now teaches the missing dimensional derivations for density, velocity and acceleration with worked examples. The original member contains 76 embedded PNGs and the source equation images have not been rendered, so no claim is made about whether the original blanks were intended picture equations.",
+      "required_action": "Keep the authored derivations as the student-facing explanation. PHYS-VIS-T1 must inspect the embedded PNGs and decide whether any original equation/diagram is recoverable; do not attribute the supplement's equations to the source.",
       "affected_ids": [
         "COV-PHYS-T1-W01-OBJ-7",
         "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
         "PHYS-VIS-T1",
         "PHYS-OWNER-EXTRACTION-STRATEGY"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "PHYSICS-T1-W01-ASSESSMENT-NO-KEY",
@@ -13547,8 +13639,8 @@
     {
       "id": "PHYSICS-T1-W02-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 2 is indexed at objective level but is not deliverable: COV-PHYS-T1-W02-OBJ-1, -2, -3, -4, -5, -8, -9, -10, -11 and -14 are PARTIAL and OBJ-6, -7, -12, -13, -15 and -16 are UNRESOLVED; physics.json still has lessons[] length 0 and the importer has not been run. The original parsed row (body lines 194-340, SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e) is bound as the target of every PARTIAL entry.",
-      "required_action": "Run the importer and the compiler plan for this source, then approve or replace the teaching. An indexed week is not a certified or fully taught week.",
+      "detail": "Week 2 now has three authored supplements (measurement basics, micrometer reading and volume measurement) rather than an empty lessons[] array. Current coverage status counts: {\"IMPLEMENTED_EQUIVALENT\":11,\"UNRESOLVED\":4,\"PARTIAL\":1}. The remaining gaps are source assessment items whose figures are not inspected and the corrupted text-box item; these remain explicitly unresolved. Content approval is PENDING and formal compiler/importer/device verification is DEFERRED.",
+      "required_action": "Finish the text-answerable assessment key, inspect the original figures and resolve the corrupted text-box item; then review the correction binding. Do not treat indexed coverage alone as acceptance.",
       "affected_ids": [
         "COV-PHYS-T1-W02-OBJ-1",
         "COV-PHYS-T1-W02-OBJ-2",
@@ -13601,15 +13693,15 @@
     {
       "id": "PHYSICS-T1-W02-VOLUME-GAP",
       "kind": "CONTENT",
-      "detail": "Measurement of volume is a week outline heading (line 200) but not a scheme word, and its whole teaching is one paragraph (line 245, SHA-256 995a2d06d59fb62f3bc304c4015e9e303a204a566e74ec90de8cb687468d9917) naming the graduated cylinder, the displacement method and the eureka can without describing them. Weekend item 5 (lines 300-301) asks about a burette and a pipette, which occur nowhere else in the 1,288 extracted lines.",
-      "required_action": "Author one bounded supplement (PHYS-LES-T1-W02-VOLUME-MEASUREMENT) covering the graduated cylinder and the displacement method; the teacher decides in PHYS-FACT-T1-W02-SCOPE whether the burette and pipette belong in Week 2.",
+      "detail": "The authored supplement PHYS-LES-T1-W02-VOLUME-MEASUREMENT now teaches graduated-cylinder readings, regular-solid formulae and displacement of irregular solids, and includes a keyed overview of pipette and burette uses. The original source's short paragraph is therefore supplemented; the remaining Week 2 figure and scope questions are tracked separately.",
+      "required_action": "Retain the volume supplement. The remaining visual questions stay with PHYS-VIS-T1; no value is inferred from an uninspected figure.",
       "affected_ids": [
         "COV-PHYS-T1-W02-OBJ-11",
         "COV-PHYS-T1-W02-OBJ-15",
         "PHYS-LES-T1-W02-VOLUME-MEASUREMENT",
         "PHYS-FACT-T1-W02-SCOPE"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "PHYSICS-T1-W02-ASSESSMENT-NO-KEY",
@@ -13969,6 +14061,28 @@
         "SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS"
       ],
       "blocks_delivery": false
+    },
+    {
+      "id": "PHYSICS-T2-W04-SOURCE-NOTATION-DEFECTS",
+      "kind": "FACT",
+      "blocks_delivery": true,
+      "detail": "The original 2nd Term Week Four extract contains source notation defects. Lines 254–255 print 'X' where the linear expansivity coefficient α is required (the preceding lines 240, 242 and 253 explicitly use α); line 285 denotes volume expansivity by Y, and lines 289–290 give Y = 3α but leave the α:β:Y ratio incomplete. Line 245 and lines 251–252 also show flattened fraction/multiplication layout. The authored replacement SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY now teaches α, β and γ correctly and includes an explicit notation correction.",
+      "required_action": "Keep the authored replacement as the student-facing explanation. Before releasing the original Week Four row, bind it to a reviewed replacement/correction so the incorrect X/Y notation is not presented as valid. Inspect the original figure/equation layout as part of PHYS-VIS-T2; do not claim the source file itself has been edited.",
+      "affected_ids": [
+        "SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c",
+        "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY"
+      ]
+    },
+    {
+      "id": "PHYSICS-T3-W10-FRACTION-FORMATTING",
+      "kind": "FACT",
+      "blocks_delivery": false,
+      "detail": "The original 3rd Term Week 10 extract has a flattened expansivity derivation. Lines 527–528 read 'α = change in length/original length × temperature change' and 'α = e/L × Ө', while line 529 states e = αLӨ and lines 530–531 simplify to F = EAαӨ. The consistent intended relation is α = e/(LΔT), hence e = αLΔT and F = EAαΔT. The final force result is correct; the extracted fraction grouping is not. The authored lesson SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY teaches the correct derivation. Without a rendered page, do not claim whether the original Word equation itself was wrong or the fraction layout was lost by extraction.",
+      "required_action": "Retain the correct derivation in the replacement lesson. Inspect the rendered original equation during PHYS-VIS-T3; if its fraction is correct, classify this as extraction loss. Do not create a false physics correction or alter the original source.",
+      "affected_ids": [
+        "SS1-SRC-bed91bb4ef0e:BODY:90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3",
+        "SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY"
+      ]
     }
   ]
 }
