@@ -245,14 +245,25 @@ test('A standalone Week 8 scheme marker is not confused with the longer teaching
 
 test('Every one-line English scheme marker explicitly uses whole-line matching', () => {
   const p = packageSchema.parse(raw);
+  // R030-R032 are third-term multi-strand cells: they anchor on the first strand only and
+  // deliberately use substring matching (asserted in tests/ss1/compiler.anchor.test.mts).
+  const multiStrandSubstring = new Set([
+    'SS1-SRC-50fa9b1eb2fd-R030',
+    'SS1-SRC-50fa9b1eb2fd-R031',
+    'SS1-SRC-50fa9b1eb2fd-R032',
+  ]);
   const singleLine = p.source_rules.filter(rule =>
-    rule.op === 'classify_marker' && !/[\r\n]/u.test(rule.anchor)
+    rule.op === 'classify_marker' && !/[\r\n]/u.test(rule.anchor) && !multiStrandSubstring.has(rule.id)
   );
   const multiLine = p.source_rules.filter(rule =>
     rule.op === 'classify_marker' && /[\r\n]/u.test(rule.anchor)
   );
-  assert.equal(singleLine.length, 22);
+  assert.equal(singleLine.length, 19);
   assert.equal(multiLine.length, 10);
   assert(singleLine.every(rule => rule.match_mode === 'WHOLE_LINE'));
   assert(multiLine.every(rule => rule.match_mode !== 'WHOLE_LINE'));
+  for (const id of multiStrandSubstring) {
+    const rule = p.source_rules.find(item => item.id === id);
+    assert(rule && rule.op === 'classify_marker' && rule.match_mode === undefined);
+  }
 });
