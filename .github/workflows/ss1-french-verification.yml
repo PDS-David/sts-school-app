@@ -83,6 +83,14 @@ jobs:
           print(json.dumps({"archive_sha256": actual_archive_sha, "verified_members": verified}, indent=2))
           PY
 
+      - name: Upload hash-verified source members for detailed curriculum inspection
+        uses: actions/upload-artifact@v4
+        with:
+          name: ss1-french-source-members
+          path: ${{ runner.temp }}/french-source-members/*.docx
+          retention-days: 1
+          if-no-files-found: error
+
       - name: Compile all French source documents with the production parser
         working-directory: backend
         env:
