@@ -70,22 +70,37 @@ test('All 24 correction records preserve exact source/body identity and bind a s
   }
 });
 
-test('All 149 lessons carry the owner attestation; verification remains separate and deferred', () => {
+test('The original 149 lessons retain owner approval; three new gap-filling lessons await approval', () => {
   const p = packageSchema.parse(raw);
   const approvalRegister = readFileSync(
     new URL('../../docs/ss1/work/microtasks/english/OWNER_APPROVAL_20261111.md', import.meta.url),
     'utf8',
   );
+  const newLessonIds = new Set([
+    'SUP-SS1-ENGLISH-SEXUALITY-VOCAB-T2-W06',
+    'SUP-SS1-ENGLISH-CONTEXTUAL-SEX-LEAVE-T3-W01',
+    'SUP-SS1-ENGLISH-FAMILY-ASSESSMENT-T3-W03',
+  ]);
+  const approved = p.lessons.filter(lesson => lesson.state.content_approval === 'APPROVED');
+  const pending = p.lessons.filter(lesson => lesson.state.content_approval === 'PENDING');
   assert.equal(p.package_status, 'IMPLEMENTED');
-  assert.equal(p.lessons.length, 149);
+  assert.equal(p.lessons.length, 152);
+  assert.equal(approved.length, 149);
+  assert.equal(pending.length, 3);
+  assert.deepEqual(new Set(pending.map(lesson => lesson.id)), newLessonIds);
   assert.equal(p.open_items.some(item => item.id === 'ENGLISH-CONTENT-APPROVAL'), false);
   assert.equal(p.open_items.some(item => item.blocks_delivery), false);
-  for (const lesson of p.lessons) {
+  for (const lesson of approved) {
     const reference = 'OWNER-ATTESTATION-2026-11-11:' + lesson.id;
-    assert.equal(lesson.state.content_approval, 'APPROVED', lesson.id);
     assert.equal(lesson.state.approval_reference, reference, lesson.id);
     assert(approvalRegister.includes('`' + lesson.id + '`'));
     assert(approvalRegister.includes('`' + reference + '`'));
+    assert.equal(lesson.state.implementation, 'IMPLEMENTED', lesson.id);
+    assert.equal(lesson.state.verification, 'DEFERRED', lesson.id);
+    assert.equal(lesson.state.verification_reference, null, lesson.id);
+  }
+  for (const lesson of pending) {
+    assert.equal(lesson.state.approval_reference, null, lesson.id);
     assert.equal(lesson.state.implementation, 'IMPLEMENTED', lesson.id);
     assert.equal(lesson.state.verification, 'DEFERRED', lesson.id);
     assert.equal(lesson.state.verification_reference, null, lesson.id);
@@ -281,9 +296,8 @@ test('Second Term affix assignment teaches every identifiable prefix and leaves 
   const p = packageSchema.parse(raw);
   const lesson = p.lessons.find(item => item.id === 'SUP-SS1-ENGLISH-AFFIXES-ROOTS-T2-W01');
   const coverage = p.coverage.find(item => item.id === 'ENGLISH-T2-W01-AS01');
-  const gap = p.open_items.find(item => item.id === 'ENGLISH-T2-W01-PREFIX-GAP');
-  assert(lesson && coverage && gap);
-  assert.equal(coverage.status, 'PARTIAL');
+  assert(lesson && coverage);
+  assert.equal(coverage.status, 'IMPLEMENTED_EQUIVALENT');
   assert(coverage.lesson_ids.includes(lesson.id));
   for (const prefix of ['post-', 'pro-', 're-', 'sub-', 'super-', 'tele-', 'tri-', 'trans-', 'uni-', 'dis-', 'in-', 'mis-', 'non-', 'un-', 'im-', 'il-']) {
     assert(lesson.body.includes(prefix), 'missing prefix teaching: ' + prefix);
@@ -296,7 +310,42 @@ test('Second Term affix assignment teaches every identifiable prefix and leaves 
   assert.match(q6.answer, /postwar/);
   assert.match(q6.answer, /illogical/);
   assert.match(q7.answer, /Neither.*nor.*is an established productive English prefix/i);
-  assert.match(gap.required_action, /confirm/i);
+  assert.match(q7.answer, /Do not replace either fragment with a guessed form/i);
+  assert.equal(p.open_items.some(item => item.id === 'ENGLISH-T2-W01-PREFIX-GAP'), false);
   assert.equal(p.coverage.filter(item => item.status === 'UNRESOLVED').length, 0);
 });
 
+
+test('All eight previously partial coverage rows now resolve to implemented equivalent lessons', () => {
+  const p = packageSchema.parse(raw);
+  const completedIds = [
+    'ENGLISH-BODY-048',
+    'ENGLISH-T2-W01-AS01',
+    'ENGLISH-BODY-054',
+    'ENGLISH-T2-W06-TP01',
+    'ENGLISH-BODY-059',
+    'ENGLISH-T3-W01-CM05',
+    'ENGLISH-BODY-068',
+    'ENGLISH-T3-W03-FR03',
+  ];
+  for (const id of completedIds) {
+    const row = p.coverage.find(item => item.id === id);
+    assert(row, 'missing coverage row: ' + id);
+    assert.equal(row.status, 'IMPLEMENTED_EQUIVALENT', id);
+    assert(row.lesson_ids.some(target => p.lessons.some(lesson => lesson.id === target)), id);
+    assert(row.evidence.length > 0, id);
+  }
+  assert.equal(p.coverage.filter(item => item.status === 'PARTIAL' || item.status === 'UNRESOLVED').length, 0);
+});
+
+test('Second Term Week 10 BODY-047 coverage targets its SCHEME_ONLY rule identity', () => {
+  const p = packageSchema.parse(raw);
+  const row = p.coverage.find(item => item.id === 'ENGLISH-BODY-047');
+  const rule = p.source_rules.find(item => item.id === 'SS1-SRC-d8bd8f85fd73-R012');
+  assert(row && rule && rule.op === 'classify_marker');
+  assert.equal(row.status, 'MARKER');
+  assert.deepEqual(row.lesson_ids, [rule.id]);
+  assert.equal(rule.kind, 'SCHEME_ONLY');
+  assert.match(rule.anchor, /^WEEK 9:/);
+  assert.match(rule.anchor, /WEEK 10:  GENERAL REVISION CLASS \[GRC\]/);
+});
