@@ -1,0 +1,48 @@
+name: SS1 Mathematics verification
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "backend/src/db/ss1/subjects/mathematics.json"
+      - "backend/src/routes/learning.ts"
+      - "backend/src/utils/ss1MathematicsDeliveryCorrection.ts"
+      - "backend/src/db/ss1/subjectPackageSchema.ts"
+      - "backend/package.json"
+      - "tests/ss1/mathematics.*.mts"
+      - ".github/workflows/ss1-mathematics-verification.yml"
+  push:
+    branches: [master]
+    paths:
+      - "backend/src/db/ss1/subjects/mathematics.json"
+      - "backend/src/routes/learning.ts"
+      - "backend/src/utils/ss1MathematicsDeliveryCorrection.ts"
+      - "backend/src/db/ss1/subjectPackageSchema.ts"
+      - "backend/package.json"
+      - "tests/ss1/mathematics.*.mts"
+      - ".github/workflows/ss1-mathematics-verification.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mathematics:
+    name: Validate SS1 Mathematics package and delivery gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Install locked backend dependencies
+        run: npm ci --workspace=backend --include-workspace-root=false --no-audit --no-fund
+      - name: Run Mathematics package and student-delivery tests
+        run: npm run test:ss1:mathematics --workspace=backend
+      - name: Type-check backend
+        run: npm run build --workspace=backend
