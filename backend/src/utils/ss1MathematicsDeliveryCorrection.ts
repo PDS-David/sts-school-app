@@ -38,7 +38,7 @@ const SOURCE_TITLES: Record<string, string> = {
   'CORR-MATHEMATICS-T3-3-07': 'Collection, Tabulation and Presentation of Grouped Data',
   'CORR-MATHEMATICS-T3-W09-GROUPED-DATA': 'Calculation of Range, Median and Mode of Grouped data',
   'CORR-MATHEMATICS-T3-3-09': 'Statistical Graphs',
-  'CORR-MATHEMATICS-T3-3-10': 'Mean Deviation, Variance and standard Deviation of Grouped Data use in solving practical life situations',
+  'CORR-MATHEMATICS-T3-3-10': 'Mean Deviation, Variance and standard Deviation of Grouped Data use in solving practical problems related to real life situations',
   'CORR-MATHEMATICS-T3-W03-TRIANGLE-CONSTRUCTIONS': 'Revision of Construction of Triangle',
   'CORR-MATHEMATICS-T3-W04-GEOMETRICAL-CONSTRUCTIONS': 'CONSTRUCTIONS',
 };
