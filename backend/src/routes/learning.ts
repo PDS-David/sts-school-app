@@ -1,8 +1,4 @@
 import { Router } from 'express';
-import { readFile } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
-import { createHash } from 'node:crypto';
-import path from 'node:path';
 import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scope.js';
@@ -14,7 +10,7 @@ import { resolveSequenceGroup } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
 import { resolveSs1Delivery, safeSs1Topic, retireStaleSs1Cache, ss1AssessmentDeliverable, ss1WithdrawnAssessmentIds } from '../utils/ss1CateringDeliveryCorrection.js';
 import { resolveSs1FrenchDelivery, retireStaleSs1FrenchCache } from '../utils/ss1FrenchDeliveryCorrection.js';
-import { resolveSs1MathematicsDelivery, safeSs1MathematicsTopic, mathematicsAssetDeliverable, mathematicsAssetsForTopic, mathematicsAssetFilePath, retireStaleSs1MathematicsCache } from '../utils/ss1MathematicsDeliveryCorrection.js';
+import { resolveSs1MathematicsDelivery, safeSs1MathematicsTopic, mathematicsAssetDeliverable, mathematicsAssetsForTopic, readMathematicsAsset, retireStaleSs1MathematicsCache } from '../utils/ss1MathematicsDeliveryCorrection.js';
 import { resolveAgriculturalScienceDelivery, resolveAgriculturalScienceSupplement, resolveAgriculturalScienceSourceProjection, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, retireStaleAgriculturalScienceSupplementCache, retireStaleAgriculturalScienceSourceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
 
@@ -283,10 +279,6 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
        FROM topics t LEFT JOIN subjects s ON s.id=t.subject_id WHERE t.id=$1 AND t.school_code=$2${scope}`, params,
   );
   if (!visible[0]) return res.json({ assets: [], attributions: [] });
-  if (visible[0].school_code === 'secondary' && visible[0].class_name === 'SS 1' && visible[0].subject_name === 'Mathematics') {
-    return res.json({ assets: mathematicsAssetsForTopic(visible[0], topicId), attributions: [] });
-  }
-
   // Metadata only — `bytes` is never selected here.
   const { rows: storedAssets } = await query(
     `SELECT id, asset_key, kind, mime, sha256, caption, alt_text, sort_order
@@ -315,10 +307,10 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
   });
 });
 
-router.get('/topics/:topicId/assets/:assetKey', requirePerm('topics.read'), async (req, res) => {
-  const topicId = Number(req.params.topicId);
+router.get('/mathematics-assets/:assetKey', requirePerm('topics.read'), async (req, res) => {
   const assetKey = String(req.params.assetKey ?? '');
-  if (!Number.isInteger(topicId) || topicId <= 0 || !assetKey) return res.status(400).json({ error: 'Invalid Mathematics asset request' });
+  const topicId = Number(req.query.topicId);
+  if (!assetKey || !Number.isInteger(topicId) || topicId <= 0) return res.status(404).json({ error: 'Asset not found' });
   const user = req.user!;
   const { school_code } = req.query as Record<string, string>;
   const sc = (school_code && user.role === 'admin') ? school_code : user.school_code;
@@ -326,7 +318,7 @@ router.get('/topics/:topicId/assets/:assetKey', requirePerm('topics.read'), asyn
   const scope = await topicVisibilitySql(user, params);
   if (scope === null) return res.status(404).json({ error: 'Asset not found' });
   const { rows: visible } = await query(
-    `SELECT t.id, t.school_code, t.class_name, t.term_label, t.title, t.source_file, t.order_index, s.name AS subject_name
+    `SELECT t.id, t.school_code, t.title, t.term_label, t.class_name, t.source_file, t.order_index, s.name AS subject_name
        FROM topics t LEFT JOIN subjects s ON s.id=t.subject_id
       WHERE t.id=$1 AND t.school_code=$2${scope}`,
     params,
@@ -335,30 +327,22 @@ router.get('/topics/:topicId/assets/:assetKey', requirePerm('topics.read'), asyn
   if (!topic || topic.school_code !== 'secondary' || topic.class_name !== 'SS 1' || topic.subject_name !== 'Mathematics') {
     return res.status(404).json({ error: 'Asset not found' });
   }
-  const asset = mathematicsAssetsForTopic(topic, topicId).find((item: any) => item.asset_key === assetKey);
-  const relativePath = mathematicsAssetFilePath(assetKey);
-  if (!asset || !relativePath) return res.status(404).json({ error: 'Asset not found' });
-  const etag = '"' + asset.sha256 + '"';
+  const asset = mathematicsAssetsForTopic(topic).find((item: any) => item.asset_key === assetKey);
+  if (!asset) return res.status(404).json({ error: 'Asset not found' });
+  const file = readMathematicsAsset(assetKey);
+  if (!file) return res.status(404).json({ error: 'Asset not found' });
+  const etag = `"${file.sha256}"`;
   res.setHeader('ETag', etag);
   res.setHeader('Cache-Control', 'private, max-age=86400');
   const inm = String(req.headers['if-none-match'] ?? '');
-  if (inm && inm.split(',').map(value => value.trim().replace(/^W\//, '')).includes(etag)) return res.status(304).end();
-  const candidates = [
-    path.resolve(process.cwd(), relativePath.replace(/^backend\//, '')),
-    path.resolve(process.cwd(), relativePath),
-  ];
-  const filePath = candidates.find(candidate => existsSync(candidate));
-  if (!filePath) return res.status(404).json({ error: 'Asset file not found' });
-  const bytes = await readFile(filePath);
-  const actualSha = createHash('sha256').update(bytes).digest('hex');
-  if (actualSha !== asset.sha256 || bytes.length !== asset.bytes) {
-    return res.status(500).json({ error: 'Mathematics asset integrity check failed' });
+  if (inm && inm.split(',').map(value => value.trim().replace(/^W\\//, '')).includes(etag)) {
+    return res.status(304).end();
   }
-  res.setHeader('Content-Type', asset.mime);
-  res.setHeader('Content-Length', String(bytes.length));
+  res.setHeader('Content-Type', file.mime);
+  res.setHeader('Content-Length', String(file.bytes.length));
   res.setHeader('X-Content-Type-Options', 'nosniff');
-  if (asset.mime === 'image/svg+xml') res.setHeader('Content-Security-Policy', "default-src 'none'; sandbox");
-  return res.end(bytes);
+  if (file.mime === 'image/svg+xml') res.setHeader('Content-Security-Policy', "default-src 'none'; sandbox");
+  return res.end(file.bytes);
 });
 
 router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
