@@ -1,14 +1,14 @@
 # SS1 French — correction-to-objective-and-exercise reconciliation
 
-**Repository baseline:** `master` at `c25c40cd89420d98a990b5ab41beb79873c5e756`  
-**Subject package:** `backend/src/db/ss1/subjects/french.json` (blob `d872c173839daf887f99e9a5012ba7cdfd72847c`)  
+**Repository baseline at this audit:** `master` at `e8fa50915ce7e372f0052d2c1dcf8cc8efb0689d`  
+**Subject package:** `backend/src/db/ss1/subjects/french.json` (current package changes are recorded in the branch under review)  
 **Audit type:** repository-side desk reconciliation; not teacher approval, learner observation, database import or production acceptance.
 
 ## Executive result
 
 - 28 correction bindings are present and each maps a registered source body hash to an authored replacement lesson.
 - 40 authored lessons/supplements are present (20 1st Term, 9 2nd Term, 11 3rd Term).
-- 55 coverage records: 43 marked `IMPLEMENTED_EQUIVALENT`, 10 marked `PARTIAL`, and 2 scheme markers.
+- 55 coverage records: 42 marked `IMPLEMENTED_EQUIVALENT`, 11 marked `PARTIAL`, and 2 scheme markers.
 - All 40 lesson states remain `content_approval=PENDING` and `verification=DEFERRED`; package status remains `PENDING`.
 - This reconciliation confirms traceability and the currently recorded objective statuses. It does **not** convert `IMPLEMENTED_EQUIVALENT` into proof that every individual source exercise has a keyed replacement or that every learner objective has been taught and assessed.
 
@@ -26,7 +26,7 @@
 | 8 | `FRENCH-BODY-008` / `SS1-02-french-COR-008`<br>SS1-SRC-945dfb24eaf6: Etre capable de dire ce que l’on fait habituellement. | `SUP-SS1-FRENCH-ROUTINE-T1` | IMPLEMENTED_EQUIVALENT | 9 across 2 linked lessons | Mapped — verify exercise-by-exercise; not approved |
 | 9 | `FRENCH-BODY-009` / `SS1-02-french-COR-009`<br>SS1-SRC-945dfb24eaf6: Exprimer ses gouts et ses preferences. | `SUP-SS1-FRENCH-PREFERENCES-T1` | IMPLEMENTED_EQUIVALENT | 5 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
 | 10 | `FRENCH-BODY-010` / `SS1-02-french-COR-010`<br>SS1-SRC-b6245ffb69e5: L’ORAL IMPORTANCE DES ACCENTS FRANÇAIS TELS QUE ACCENT | `SUP-SS1-FRENCH-ACCENTS-T2` | IMPLEMENTED_EQUIVALENT | 3 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
-| 11 | `FRENCH-BODY-011` / `SS1-02-french-COR-011`<br>SS1-SRC-b6245ffb69e5: Revision des alphabets francaise | `SUP-SS1-FRENCH-ALPHABET-T2` | IMPLEMENTED_EQUIVALENT | 3 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
+| 11 | `FRENCH-BODY-011` / `SS1-02-french-COR-011`<br>SS1-SRC-b6245ffb69e5: Revision des alphabets francaise | `SUP-SS1-FRENCH-ALPHABET-T2` | IMPLEMENTED_EQUIVALENT | 4 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
 | 12 | `FRENCH-BODY-012` / `SS1-02-french-COR-012`<br>SS1-SRC-b6245ffb69e5: D’indtifier des consonnes francais | `SUP-SS1-FRENCH-SOUNDS-T2` | IMPLEMENTED_EQUIVALENT | 6 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
 | 13 | `FRENCH-BODY-013` / `SS1-02-french-COR-013`<br>SS1-SRC-b6245ffb69e5: Les voyelles orales composees (compound oral) | `SUP-SS1-FRENCH-SOUNDS-T2` | IMPLEMENTED_EQUIVALENT | 6 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
 | 14 | `FRENCH-BODY-014` / `SS1-02-french-COR-014`<br>SS1-SRC-b6245ffb69e5: Culture et civilisation en Frnace | `SUP-SS1-FRENCH-CULTURE-T2` | IMPLEMENTED_EQUIVALENT | 4 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
@@ -55,15 +55,15 @@ The original profession table was inspected in full (rendered source pages 10-12
 
 ### FRENCH-EXAM-AUDIO
 
-The source Week 1 says 'Reference a une cassette' and 'Reference a une C.D selon WAEC ET NECO' but names no exam year, session, paper, track, publisher, title or rights holder. The student app now routes the Third-Term dialogue lesson into an in-app spoken listening activity using device French text-to-speech. The spoken dialogue is an original curriculum equivalent, not a WAEC/NECO recording or a stored MP3/WAV file.
+The source Week 1 says 'Reference a une cassette' and 'Reference a une C.D selon WAEC ET NECO' but names no exam year, session, paper, track, publisher, title or rights holder. The student app now bundles two original synthetic MP3 recordings (standard and slow) and plays them offline through Expo Audio. Device French text-to-speech remains as a line-by-line fallback. The spoken dialogue is an original curriculum equivalent, not a WAEC/NECO recording.
 
-**Required closure:** The app now provides spoken playback for the original dialogue. Owner/teacher must still approve this as the classroom equivalent and explicitly accept omission of the unidentified official recording, or supply the exact exam-board recording identity and a permitted audio file/licence (exam board, year/session, paper/track, language and rights). Do not label device-generated speech as official WAEC/NECO audio.
+**Required closure:** The app now provides two bundled original MP3 recordings for the dialogue, with an offline Expo Audio player. Owner/teacher must still approve this as the classroom equivalent and explicitly accept omission of the unidentified official recording, or supply the exact exam-board recording identity and a permitted audio file/licence (exam board, year/session, paper/track, language and rights). Do not label synthetic speech as official WAEC/NECO audio.
 
 ### FRENCH-AUTHORING-FINISH
 
-The source-objective matrix now maps all 28 parsed source rows and the revision/examination scheme markers; all inspected T1/T2 visual objects have explicit text-equivalent dispositions; the original sources compile against all 40 authored supplements; the French package suite passes 10/10 tests. Remaining authoring closure is no longer a generic visual/test task: it is the still-open whole-block objective/exercise reconciliation for the 28 delivery corrections, with the specific source/owner gaps listed separately.
+The source-objective matrix maps all 28 parsed source rows and the revision/examination scheme markers; inspected T1/T2 visual objects have explicit text-equivalent dispositions; all 40 authored supplements compile; and the replacement-side objective/practice inventory maps each authored objective to question IDs. The original-source exercise-by-exercise comparison remains unverified because the original three DOCX files are not in the repository. Remaining authoring closure is therefore a source-resource blocker plus the specific source/owner gaps listed separately.
 
-**Required closure:** Complete FR-FACT-REPLACEMENT-SCOPE by auditing each of the 28 corrections against the exact parsed source body, all objectives/exercises, the replacement lesson(s), and any required supplemental lesson. Record a per-correction verdict and keep only evidenced residual gaps as PARTIAL/open items. Then close the umbrella; do not approve content or claim runtime delivery as part of this authoring step.
+**Required closure:** Provide the original First-, Second- and Third-Term French DOCX files (or their source archive). They are not present in the repository. Then compare every source exercise/sub-question with the 28 correction bindings, replacement lesson(s), answer key and marking rubric, record a per-exercise verdict, and keep evidenced residual gaps PARTIAL. Do not reconstruct missing source text from memory. Content approval and runtime delivery remain separate gates.
 
 ### FRENCH-T1-W01-FACT-CLAIMS
 
@@ -138,3 +138,10 @@ This is a structural integrity result only. It does not prove that each question
 ### Closure of a non-blocking caution
 
 The non-blocking item FRENCH-T1-W01-NEIGHBOURS-LANGUAGE-STATUS was removed from package open_items because the current neighbour lesson explicitly makes no current legal-language-status claim; it distinguishes French-speaking populations from legal official status. For future current-affairs use, Article 12 of Niger's 2025 Charter of Refoundation identifies Hausa as the national language and English/French as working languages. The official Niger Presidency page publishes the Charter and the Journal officiel copy is linked in QUEUE.json. This does not change the Week 1 learning objective or approval state.
+
+
+## Replacement-side objective/practice alignment — 11 November 2026
+
+The new `OBJECTIVE-PRACTICE-ALIGNMENT-2026-11-11.md` inventory maps all 40 authored lessons' objectives to question IDs. It does not claim source-exercise equivalence. It records two fixes discovered in the scan: the complete 26-letter alphabet sequence (Alphabet Q4) and irregular simple-future forms of être, avoir, faire, aller, pouvoir and vouloir (Future Q4). The oral-accent objective `FR-COV-T1-W05-ORAL-OBSERVATION` is now PARTIAL, not IMPLEMENTED_EQUIVALENT: a teacher checklist exists, but no real learner oral performance has been observed.
+
+Current package totals: 40 lessons; 191 practice items; 557 practice marks. Coverage: 42 IMPLEMENTED_EQUIVALENT, 11 PARTIAL, 2 scheme markers. All 40 lessons remain content_approval=PENDING and verification=DEFERRED.
