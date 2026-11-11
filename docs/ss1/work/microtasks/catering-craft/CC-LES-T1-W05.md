@@ -1,6 +1,6 @@
 # CC-LES-T1-W05 — First Term project-authored supplement
 
-Package lesson: SUP-SS1-CC-T1-W05-ESTABLISHMENT-FUNCTIONS-HOTEL-RATING
+Package lesson: SUP-SS1-CATERING-CRAFT-T1-W05-ESTABLISHMENT-FUNCTIONS-HOTEL-RATING
 Body SHA-256: 77f295bafe78b018a644bf14902dd01e559c820b25d5ecb95c7fa04206bc6c3f
 Source locator: public reproduction of the Lagos State Ministry of Education Unified Scheme of Work, First Term Week 5.
 

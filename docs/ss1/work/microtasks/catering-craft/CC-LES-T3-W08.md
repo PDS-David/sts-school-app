@@ -1,6 +1,6 @@
 # CC-LES-T3-W08 — project-authored equivalent lesson
 
-Package lesson: SUP-SS1-CC-T3-W08-TABLE-LAYING-SETTING
+Package lesson: SUP-SS1-CATERING-CRAFT-T3-W08-TABLE-LAYING-SETTING
 
 Source locator: Third Term Week Eight, getBody lines 743–852. Body SHA-256: 60b15405996c93a95740df9843304f3249bd2f0176cceb2ff08c323b9fe5d50a.
 

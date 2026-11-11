@@ -1,6 +1,6 @@
 # CC-LES-T2-W06 — project-authored equivalent lesson
 
-Package lesson: SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES
+Package lesson: SUP-SS1-CATERING-CRAFT-T2-W06-COOKING-PRINCIPLES
 
 Source locator: Week Six, getBody lines 845–927. Body SHA-256: 840fcc00106bb1d241604fc183a08ef76fdec3dd1fd49ef290d7e90c4c3d33ff.
 

@@ -6,7 +6,7 @@
 - Original source member: `SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc`.
 - Member SHA-256: fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59.
 - Week Six locator: CC-IDX-T2-W06.md, getBody lines 845–927; frying is incorrectly listed under “Moist-heat method” at line 900.
-- Correct replacement: SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES; frying is correctly taught as a hot-fat method.
+- Correct replacement: SUP-SS1-CATERING-CRAFT-T2-W06-COOKING-PRINCIPLES; frying is correctly taught as a hot-fat method.
 
 ## Exact parser identity — verified
 The owner authorised a narrowly scoped source-parser run on 2026-11-09. GitHub Actions workflow run **42547557010** completed successfully. It:
@@ -27,7 +27,7 @@ Verified parser result:
 The parser-generated body hash matches the previously indexed Week Six range hash; this is now independently confirmed rather than assumed.
 
 ## Delivery correction
-Package record `CC-CORR-T2-W06-FRYING` now binds the exact original source lesson ID and body hash to `SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES`. The original source file and source hash remain unchanged. The inaccurate classification is corrected in the delivery replacement.
+Package record `CC-CORR-T2-W06-FRYING` now binds the exact original source lesson ID and body hash to `SUP-SS1-CATERING-CRAFT-T2-W06-COOKING-PRINCIPLES`. The original source file and source hash remain unchanged. The inaccurate classification is corrected in the delivery replacement.
 
 ## Status
 - Source identity: VERIFIED by the scoped parser run.

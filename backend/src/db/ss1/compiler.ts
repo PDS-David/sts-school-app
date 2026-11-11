@@ -11,15 +11,23 @@ export interface IdentifiedRow { id: string; source_id: string | null; body_sha2
 export interface Plan { version: 'ss1-plan-v1'; rows: Row[]; identified_rows: IdentifiedRow[]; dispositions: { id: string; status: string; detail: string }[]; assets: SubjectPackage['assets']; corrections: SubjectPackage['delivery_corrections']; blockers: string[]; ready: boolean }
 function must(ok: unknown, message: string): asserts ok { if (!ok) throw new Error(`SS1: ${message}`); }
 function unique(values: string[], label: string) { must(new Set(values).size === values.length, `duplicate ${label}`); }
-function once(body: string, anchor: string) {
-  // DOCX text extractors can flatten a paragraph break into spaces or tabs.
-  // Keep the anchor text exact, but treat runs of whitespace as equivalent.
-  const parts = anchor.trim().split(/\\s+/u).map(part => part.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&'));
-  const pattern = new RegExp(parts.join('\\\\s+'), 'gu');
-  const matches = [...body.matchAll(pattern)];
-  must(matches.length === 1, `anchor missing or ambiguous: ${anchor.slice(0, 80)}`);
-  return matches[0].index!;
+function onceMatch(body: string, anchor: string) {
+  // 1. Exact text first. This is the behaviour every existing rule was written against, including
+  //    anchors that carry their own indentation, so a rule that matches exactly once never changes.
+  const exact: number[] = [];
+  for (let i = body.indexOf(anchor); i >= 0; i = body.indexOf(anchor, i + 1)) exact.push(i);
+  must(exact.length <= 1, `anchor missing or ambiguous: ${anchor.slice(0, 80)}`);
+  if (exact.length === 1) return { index: exact[0], length: anchor.length };
+  // 2. Only when the exact text is absent: DOCX text extractors can flatten a paragraph break or a tab
+  //    into other whitespace, so each run of whitespace inside the anchor may match any whitespace run.
+  //    Leading indentation stays optional horizontal whitespace so a match can still start a line.
+  const leading = /^[^\S\r\n]/u.test(anchor) ? '[^\\S\\r\\n]*' : '';
+  const parts = anchor.trim().split(/\s+/u).map(part => part.replace(/[.*+?^${}()|[\]\\]/gu, '\\$&'));
+  const flexible = [...body.matchAll(new RegExp(leading + parts.join('\\s+'), 'gu'))];
+  must(flexible.length === 1, `anchor missing or ambiguous: ${anchor.slice(0, 80)}`);
+  return { index: flexible[0].index!, length: flexible[0][0].length };
 }
+function once(body: string, anchor: string) { return onceMatch(body, anchor).index; }
 export const originalLessonId = (sourceId: string, body: string) => `${sourceId}:BODY:${sha256(body)}`;
 /** Structural insertions only. No instructional character is deleted or rewritten. */
 export function applyRules(input: SourceInput, rules: SourceRule[]): string {
@@ -29,11 +37,12 @@ export function applyRules(input: SourceInput, rules: SourceRule[]): string {
     once(input.text, r.anchor);
     if (r.op === 'split_before' || r.op === 'attach_stranded_label') {
       must(/^(?:[0-9]{1,2})(?:\s*(?:-|&|and)\s*[0-9]{1,2})?$/.test(r.week_label), `rule ${r.id}: numeric week label required`);
-      const i = once(text, r.anchor);
+      const hit = onceMatch(text, r.anchor);
+      const i = hit.index;
       must(i === 0 || text[i - 1] === '\n', `rule ${r.id}: anchor must start at a line boundary`);
       if (r.op === 'attach_stranded_label') {
         const next = once(text, r.following_anchor);
-        must(next >= i + r.anchor.length && text.slice(i + r.anchor.length, next).trim() === '', `rule ${r.id}: label must immediately precede following anchor`);
+        must(next >= i + hit.length && text.slice(i + hit.length, next).trim() === '', `rule ${r.id}: label must immediately precede following anchor`);
       }
       text = text.slice(0, i) + `WEEK ${r.week_label}\n` + text.slice(i);
     }

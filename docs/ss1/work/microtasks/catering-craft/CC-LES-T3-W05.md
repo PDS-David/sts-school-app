@@ -1,6 +1,6 @@
 # CC-LES-T3-W05 — project-authored equivalent lesson
 
-Package lesson: SUP-SS1-CC-T3-W05-TABLE-SERVICE
+Package lesson: SUP-SS1-CATERING-CRAFT-T3-W05-TABLE-SERVICE
 
 Source locator: Third Term Week Five, getBody lines 490–597. Body SHA-256: 80450835e5847fa19584eb894149526a71cc8c9597c25e49af85a7d983710a4d.
 

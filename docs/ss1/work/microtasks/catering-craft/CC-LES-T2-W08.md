@@ -1,6 +1,6 @@
 # CC-LES-T2-W08 — project-authored equivalent lesson
 
-Package lesson: SUP-SS1-CC-T2-W08-STEWING-FRYING
+Package lesson: SUP-SS1-CATERING-CRAFT-T2-W08-STEWING-FRYING
 
 Source locator: Second Term Week Eight, getBody lines 1056–1194. Body SHA-256: 0d681b5f64e39ea5eb55e9e46357fc87a1dc22166d39d02c7f46facbd606a48a.
 

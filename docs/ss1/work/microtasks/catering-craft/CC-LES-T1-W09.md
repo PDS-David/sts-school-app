@@ -1,6 +1,6 @@
 # CC-LES-T1-W09 — First Term project-authored supplement
 
-Package lesson: SUP-SS1-CC-T1-W09-FIRST-AID-FIRE
+Package lesson: SUP-SS1-CATERING-CRAFT-T1-W09-FIRST-AID-FIRE
 Body SHA-256: 17d0e651a4f6ffd1f6c56a85d5635f79cc7e32be2b7a8434a507ba6843bcd450
 Source locator: public reproduction of the Lagos State Ministry of Education Unified Scheme of Work, First Term Week 9.
 

@@ -1,6 +1,6 @@
 # CC-LES-T2-W10 — project-authored equivalent lesson
 
-Package lesson: SUP-SS1-CC-T2-W10-MEASURING-EQUIPMENT
+Package lesson: SUP-SS1-CATERING-CRAFT-T2-W10-MEASURING-EQUIPMENT
 
 Source locator: Second Term Week Ten, getBody lines 1301–1398. Body SHA-256: d3db015a17e576f5bc12fc10459b16f5dbb65cd0f16baef712880cfc14cc3bec.
 

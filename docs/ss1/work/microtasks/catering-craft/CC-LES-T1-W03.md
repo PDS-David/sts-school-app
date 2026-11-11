@@ -1,6 +1,6 @@
 # CC-LES-T1-W03 — First Term project-authored supplement
 
-Package lesson: SUP-SS1-CC-T1-W03-COMPONENTS-IMPORTANCE
+Package lesson: SUP-SS1-CATERING-CRAFT-T1-W03-COMPONENTS-IMPORTANCE
 Body SHA-256: 5e7b4a8e3f612ad1bda3d58c1723cc88ecb68ccc5a711c88fc51747ee09bdc6e
 Source locator: public reproduction of the Lagos State Ministry of Education Unified Scheme of Work, First Term Week 3.
 

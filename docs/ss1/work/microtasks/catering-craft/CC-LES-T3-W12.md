@@ -1,6 +1,6 @@
 # CC-LES-T3-W12 — project-authored examination supplement
 
-Package lesson: SUP-SS1-CC-T3-W12-EXAMINATION
+Package lesson: SUP-SS1-CATERING-CRAFT-T3-W12-EXAMINATION
 Body SHA-256: 30c6a207a22e65188d108c2602e69668861502a4f8978f12c907177631ecd08b
 Source marker: combined Week Eleven and Twelve, getBody lines 938–939.
 

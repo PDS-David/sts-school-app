@@ -1,6 +1,6 @@
 # CC-LES-T1-W13 — First Term project-authored supplement
 
-Package lesson: SUP-SS1-CC-T1-W13-EXAMINATION
+Package lesson: SUP-SS1-CATERING-CRAFT-T1-W13-EXAMINATION
 Body SHA-256: 6b15b628fd13257ea9a87dcdb9a43dfa7221c7cf826c0afc97101c06ef9711cc
 Source locator: public Lagos State scheme reproduction, First Term Week Thirteen.
 

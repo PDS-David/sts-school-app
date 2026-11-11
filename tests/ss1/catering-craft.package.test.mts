@@ -83,7 +83,7 @@ test('Owner approval is recorded without claiming later verification', () => {
     assert.equal(c.source_lesson_id, `${c.source_id}:BODY:${c.body_sha256}`);
     if (c.id === 'CC-CORR-T2-W06-FRYING') {
       assert.equal(c.source_lesson_id, 'SS1-SRC-f433169ca25c:BODY:fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de');
-      assert.equal(c.replacement_id, 'SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES');
+      assert.equal(c.replacement_id, 'SUP-SS1-CATERING-CRAFT-T2-W06-COOKING-PRINCIPLES');
     }
     assert.equal(replacement.term, source.term);
   }
@@ -110,10 +110,11 @@ test('Lessons, if any, have exact bodies and complete marking totals', () => {
 
 test('Coverage targets resolve and incomplete coverage stays visible', () => {
   const p = packageSchema.parse(raw);
+  const parsedRowId = /^SS1-SRC-[0-9a-f]{12}:BODY:[0-9a-f]{64}$/;
   const targets = new Set([...p.lessons.map(l => l.id), ...p.source_rules.map(r => r.id), ...p.assets.map(a => a.id)]);
   for (const c of p.coverage) {
     assert(p.sources.some(s => s.source_id === c.source_id) || p.external_sources.some(s => s.source_id === c.source_id), c.id);
-    for (const id of c.lesson_ids) assert(targets.has(id), `${c.id}/${id}`);
+    for (const id of c.lesson_ids) assert(targets.has(id) || (c.status === 'MARKER' && parsedRowId.test(id)), `${c.id}/${id}`);
     assert(c.evidence.length > 0, c.id);
   }
   const incomplete = p.coverage.filter(c => c.status === 'PARTIAL' || c.status === 'UNRESOLVED');
@@ -143,7 +144,7 @@ test('First Term external scheme covers all thirteen calendar weeks without inve
   const ext = p.external_sources[0];
   const coverage = p.coverage.filter(c => c.source_id === ext.source_id);
   assert.equal(coverage.length, 13);
-  assert.deepEqual(coverage.map(c => c.objective_locator.match(/Week (\\d+)/)?.[1]), Array.from({ length: 13 }, (_, i) => String(i + 1)));
+  assert.deepEqual(coverage.map(c => c.objective_locator.match(/Week (\d+)/)?.[1]), Array.from({ length: 13 }, (_, i) => String(i + 1)));
   assert(coverage.every(c => c.status === 'IMPLEMENTED_EQUIVALENT' && c.lesson_ids.length > 0 && c.evidence.length > 0));
   assert(!p.sources.some(s => s.term === '1st Term'));
   assert(!assigned.some(cols => cols[4] === '1st Term'));

@@ -279,7 +279,7 @@ test('Owner-approved first-term delivery corrections bind each exact original bo
     ['CORR-BK-T1-W01', ['e4dbc7a1ff59d4a1fe5da4b9ff975ab60c94df281e8774f5bf2330ddc21d7ccd', 'SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK']],
     ['CORR-BK-T1-W02', ['bb5f26395bbe6ce4bae80f128748821df86b6895d8a4a4e87ead79c6d31f2e4b', 'SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK']],
     ['CORR-BK-T1-W03', ['194de4c5fde3e27a5596871b7a860b26a5456eaedf0d3c24ab31f89e2132eb8a', 'SUP-SS1-BOOKKEEPING-T1-W03-CONTRA']],
-    ['CORR-BK-T1-W04', ['890fb8fac8f6b9b6cf32bfe5fc5a3e21bcd464e447b214ac1a9eb9d7128f8409', 'SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY']],
+    ['CORR-BK-T1-W04', ['890fb8fac8b6f9b6cf32bfe5fc5a3e21bcd464e447b214ac1a9eb9d7128f8409', 'SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY']],
   ]);
   assert.equal(p.delivery_corrections.length, expected.size);
   for (const [id, [bodyHash, replacementId]] of expected) {

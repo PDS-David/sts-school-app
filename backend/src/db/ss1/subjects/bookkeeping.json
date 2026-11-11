@@ -92,11 +92,11 @@
       "op": "classify_marker",
       "source_id": "SS1-SRC-62b02f2adcb3",
       "source_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0",
-      "anchor": "1.\tRevision.",
+      "anchor": "TOPIC\n\n1.\tRevision.",
       "kind": "SCHEME_ONLY",
       "evidence": {
         "locator": "BK-INV-T1.md: scheme preamble block 3; block SHA-256 7a903777d5427675bcd33f525cb7d451e982d9676d19f0ecfc983fc71f97813c; exact anchor occurs once in the importer text view",
-        "explanation": "The exact scheme entry is a revision marker in the preamble before the first week label (block 30). It has no instructional body; SCHEME_ONLY classifies preamble material outside parsed rows and does not discard a lesson body."
+        "explanation": "The exact scheme entry is a revision marker in the preamble before the first week label (block 30). It has no instructional body; SCHEME_ONLY classifies preamble material outside parsed rows and does not discard a lesson body. Anchor correction: '1.\\tRevision.' is also a substring of '11.\\tRevision.', so the anchor now begins with the preceding 'TOPIC' heading and the blank line, which makes it occur once in the extracted text."
       }
     },
     {
@@ -3037,8 +3037,8 @@
       "id": "CORR-BK-T1-W04",
       "source_id": "SS1-SRC-62b02f2adcb3",
       "source_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0",
-      "source_lesson_id": "SS1-SRC-62b02f2adcb3:BODY:890fb8fac8f6b9b6cf32bfe5fc5a3e21bcd464e447b214ac1a9eb9d7128f8409",
-      "body_sha256": "890fb8fac8f6b9b6cf32bfe5fc5a3e21bcd464e447b214ac1a9eb9d7128f8409",
+      "source_lesson_id": "SS1-SRC-62b02f2adcb3:BODY:890fb8fac8b6f9b6cf32bfe5fc5a3e21bcd464e447b214ac1a9eb9d7128f8409",
+      "body_sha256": "890fb8fac8b6f9b6cf32bfe5fc5a3e21bcd464e447b214ac1a9eb9d7128f8409",
       "replacement_id": "SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY",
       "reason": "The project-authored Week 4 double-entry and ledger lesson replaces the defective source teaching for delivery; its separate authored posting exercise supplies fully worked practice. The original N20 figure and source transactions are not claimed corrected.",
       "evidence": {

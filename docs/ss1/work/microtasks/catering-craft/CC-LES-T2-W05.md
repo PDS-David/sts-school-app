@@ -1,6 +1,6 @@
 # CC-LES-T2-W05 — project-authored equivalent lesson
 
-Package lesson: SUP-SS1-CC-T2-W05-FLOUR-COOKERY
+Package lesson: SUP-SS1-CATERING-CRAFT-T2-W05-FLOUR-COOKERY
 
 Source locator: Week Five, getBody lines 765–842. Body SHA-256: 48048192e8433f86cf6e4a11170246f1b2f7231534e559bf3993594a9e904ec2.
 

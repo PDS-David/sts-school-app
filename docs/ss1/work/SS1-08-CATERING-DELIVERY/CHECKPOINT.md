@@ -15,7 +15,7 @@ Status: **IMPLEMENTED — TESTING DEFERRED BY OWNER** (scoped subject adapter; n
 - 36 coverage records across the First, Second and Third Terms.
 - First Term is explicitly linked to a separately hash-bound public Lagos State scheme record, not falsely represented as an archive member.
 - Second and Third Term archive source headings have explicit source alias records.
-- One exact delivery correction binds the Second Term "COOKING OF FOODS" original parser body to `SUP-SS1-CC-T2-W06-COOKING-PRINCIPLES`.
+- One exact delivery correction binds the Second Term "COOKING OF FOODS" original parser body to `SUP-SS1-CATERING-CRAFT-T2-W06-COOKING-PRINCIPLES`.
 - No deployable Catering Craft asset is registered. The Third Term scanned tablecloth image is intentionally excluded because reproduction rights are not established; the text procedure remains available.
 
 ## Implemented in this branch

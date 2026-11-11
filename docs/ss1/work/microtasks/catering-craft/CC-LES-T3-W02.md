@@ -1,6 +1,6 @@
 # CC-LES-T3-W02 — project-authored equivalent lesson
 
-Package lesson: SUP-SS1-CC-T3-W02-BAR-BANQUETS
+Package lesson: SUP-SS1-CATERING-CRAFT-T3-W02-BAR-BANQUETS
 
 Source locator: Third Term Week Two, getBody lines 149–246. Body SHA-256: ef1fed71a06d9f2d3830d2ec22fe54ed9f909d2a186a364394ba5fca7088d467.
 

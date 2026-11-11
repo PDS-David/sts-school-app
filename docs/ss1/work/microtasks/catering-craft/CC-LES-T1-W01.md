@@ -1,6 +1,6 @@
 # CC-LES-T1-W01 — First Term project-authored supplement
 
-Package lesson: SUP-SS1-CC-T1-W01-ORIGIN-CAREERS
+Package lesson: SUP-SS1-CATERING-CRAFT-T1-W01-ORIGIN-CAREERS
 Body SHA-256: 6cf1112405d09e44349b57169af2e9026d0ea6175ed7198c0e1e0980bc245117
 Source locator: public reproduction of the Lagos State Ministry of Education Unified Scheme of Work, First Term Week 1.
 

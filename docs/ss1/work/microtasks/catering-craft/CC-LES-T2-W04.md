@@ -1,6 +1,6 @@
 # CC-LES-T2-W04 — project-authored equivalent lesson
 
-Package lesson: SUP-SS1-CC-T2-W04-CEREALS-PULSES
+Package lesson: SUP-SS1-CATERING-CRAFT-T2-W04-CEREALS-PULSES
 
 Source locator: Week Four, getBody lines 616–763. Body SHA-256: c67baec405031b335413e0d71d55ed1a0cb982b16309142affd0bc687741ea75.
 

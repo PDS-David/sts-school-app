@@ -1,6 +1,6 @@
 # CC-LES-T2-W09 — project-authored equivalent lesson
 
-Package lesson: SUP-SS1-CC-T2-W09-BAKING-ROASTING-GRILLING
+Package lesson: SUP-SS1-CATERING-CRAFT-T2-W09-BAKING-ROASTING-GRILLING
 
 Source locator: Second Term Week Nine, getBody lines 1197–1298. Body SHA-256: 9143beb192b95c364c1e4e84ed34b54318478366bd5984664528a371b0374125.
 

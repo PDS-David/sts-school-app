@@ -1,6 +1,6 @@
 # CC-LES-T1-W06 — First Term project-authored supplement
 
-Package lesson: SUP-SS1-CC-T1-W06-CULINARY-TERMS
+Package lesson: SUP-SS1-CATERING-CRAFT-T1-W06-CULINARY-TERMS
 Body SHA-256: 1b3cc2d24adfce1a1c58802bae15e5433e83677a723f476989b64d5001f7ca89
 Source locator: public reproduction of the Lagos State Ministry of Education Unified Scheme of Work, First Term Week 6.
 

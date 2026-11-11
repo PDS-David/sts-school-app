@@ -119,12 +119,12 @@
       "op": "classify_marker",
       "source_id": "SS1-SRC-58b4a44c3afa",
       "source_sha256": "07053f977dcbef91ee05d74a2e4dab9c3fa921cbb3792dc8698287a55197bb3a",
-      "anchor": "REVISION",
+      "anchor": "THE ATOM\n\n            REVISION",
       "evidence": {
         "locator": "mammoth 1.12.2 extractRawText lines 69-69; scheme row 12",
-        "explanation": "The word occurs only as a scheme row; the source has no Week Eleven or later body, revision notes or associated teaching passage. Classify as a scheme marker, not a lesson."
+        "explanation": "The word occurs only as a scheme row; the source has no Week Eleven or later body, revision notes or associated teaching passage. Classify as a scheme marker, not a lesson. Anchor correction: the bare word REVISION also occurs inside six 'GENERAL EVALUATION/REVISION' headings, so the anchor now begins with the preceding scheme entry 'THE ATOM' and its blank line, which makes it occur once in the extracted text. Kind correction: the rule kind is SCHEME_ONLY, because the compiler binds a REVISION or EXAMINATION kind to exactly one parsed teaching row and this source has none (the parser yields Weeks One to Ten only), which is the situation this evidence describes."
       },
-      "kind": "REVISION"
+      "kind": "SCHEME_ONLY"
     },
     {
       "id": "SS1-SRC-58b4a44c3afa-R003",
@@ -134,9 +134,9 @@
       "anchor": "EXAMINATION",
       "evidence": {
         "locator": "mammoth 1.12.2 extractRawText lines 71-71; scheme row 13",
-        "explanation": "The word occurs only as a scheme row; no examination paper, marking scheme or body marker exists. Classify as a scheme marker, not a lesson."
+        "explanation": "The word occurs only as a scheme row; no examination paper, marking scheme or body marker exists. Classify as a scheme marker, not a lesson. Kind correction: the rule kind is SCHEME_ONLY, because the compiler binds a REVISION or EXAMINATION kind to exactly one parsed teaching row and this source has none (the parser yields Weeks One to Ten only), which is the situation this evidence describes."
       },
-      "kind": "EXAMINATION"
+      "kind": "SCHEME_ONLY"
     }
   ],
   "lessons": [],
@@ -933,11 +933,13 @@
       "objective": "Scheme marker only: REVISION",
       "objective_locator": "mammoth lines 69-69; source scheme row 12",
       "status": "MARKER",
-      "lesson_ids": [],
+      "lesson_ids": [
+        "SS1-SRC-58b4a44c3afa-R002"
+      ],
       "evidence": [
         {
           "locator": "CHEM-INV-T1A.md, opening/scheme inventory lines 69-71",
-          "explanation": "REVISION appears only in the scheme. No revision body or Week Eleven exists; preserve as a marker, not teaching."
+          "explanation": "REVISION appears only in the scheme. No revision body or Week Eleven exists; preserve as a marker, not teaching. Target correction: the coverage target is the SCHEME_ONLY source rule SS1-SRC-58b4a44c3afa-R002 that classifies this marker; a MARKER entry without a target cannot be proven by the compiler."
         }
       ]
     },
@@ -947,11 +949,13 @@
       "objective": "Scheme marker only: EXAMINATION",
       "objective_locator": "mammoth lines 71-71; source scheme row 13",
       "status": "MARKER",
-      "lesson_ids": [],
+      "lesson_ids": [
+        "SS1-SRC-58b4a44c3afa-R003"
+      ],
       "evidence": [
         {
           "locator": "CHEM-INV-T1A.md, opening/scheme inventory lines 69-71",
-          "explanation": "EXAMINATION appears only in the scheme. No examination paper, marking scheme or body exists; preserve as a marker, not teaching."
+          "explanation": "EXAMINATION appears only in the scheme. No examination paper, marking scheme or body exists; preserve as a marker, not teaching. Target correction: the coverage target is the SCHEME_ONLY source rule SS1-SRC-58b4a44c3afa-R003 that classifies this marker; a MARKER entry without a target cannot be proven by the compiler."
         }
       ]
     }

@@ -36,3 +36,50 @@ test('source anchors still reject missing and ambiguous matches', () => {
     /anchor missing or ambiguous/,
   );
 });
+
+const splitRule = (anchor: string) => ({
+  id: 'RULE-ANCHOR-TEST',
+  op: 'split_before' as const,
+  source_id: 'SS1-SRC-ANCHOR-TEST',
+  source_sha256: 'a'.repeat(64),
+  anchor,
+  week_label: '2',
+  evidence: { locator: 'test', explanation: 'test' },
+});
+const anchorInput = (text: string) => ({ source_id: 'SS1-SRC-ANCHOR-TEST', sha256: 'a'.repeat(64), filePath: 'test.docx', text });
+
+test('an indented anchor starts at the beginning of its line and the label goes before the indentation', () => {
+  const rule = splitRule('    PETTY CASH BOOK');
+  assert.equal(
+    applyRules(anchorInput('intro\n    PETTY CASH BOOK\nbody'), [rule as never]),
+    'intro\nWEEK 2\n    PETTY CASH BOOK\nbody',
+  );
+});
+
+test('an indented anchor is still rejected when it does not start a line', () => {
+  const rule = splitRule('    PETTY CASH BOOK');
+  assert.throws(
+    () => applyRules(anchorInput('intro text    PETTY CASH BOOK\nbody'), [rule as never]),
+    /anchor must start at a line boundary/,
+  );
+});
+
+test('runs of whitespace inside an anchor match any whitespace run without changing the text', () => {
+  const rule = splitRule('PETTY  CASH   BOOK');
+  assert.equal(
+    applyRules(anchorInput('intro\nPETTY\tCASH BOOK\nbody'), [rule as never]),
+    'intro\nWEEK 2\nPETTY\tCASH BOOK\nbody',
+  );
+});
+
+test('anchors containing regex metacharacters are matched literally', () => {
+  const rule = splitRule('Cash (Book) [A+B] $5.00?');
+  assert.equal(
+    applyRules(anchorInput('x\nCash (Book) [A+B] $5.00?\ny'), [rule as never]),
+    'x\nWEEK 2\nCash (Book) [A+B] $5.00?\ny',
+  );
+  assert.throws(
+    () => applyRules(anchorInput('x\nCash (Book) [A+B] $5X00?\ny'), [rule as never]),
+    /anchor missing or ambiguous/,
+  );
+});
