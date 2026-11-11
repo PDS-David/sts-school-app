@@ -26,7 +26,7 @@ const csvCell = (value) => {
 };
 const SAFE_SVG_STYLE_PROPERTIES = new Set([
   'font', 'font-family', 'font-size', 'font-weight', 'fill', 'stroke', 'stroke-width',
-  'stroke-linecap', 'stroke-linejoin', 'stroke-dasharray', 'marker-end',
+  'stroke-linecap', 'stroke-linejoin', 'stroke-dasharray', 'marker-end', 'rx', 'ry', 'text-anchor',
 ]);
 
 function hasSafeSvgStyles(source) {

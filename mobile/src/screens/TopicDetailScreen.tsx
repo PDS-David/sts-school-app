@@ -18,7 +18,7 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 // has loaded. Pictures wider than WIDE_PICTURE_PX scroll sideways instead (below). Animated GIFs are passed straight through unchanged.
 const SAFE_SVG_STYLE_PROPERTIES = new Set([
   'font', 'font-family', 'font-size', 'font-weight', 'fill', 'stroke', 'stroke-width',
-  'stroke-linecap', 'stroke-linejoin', 'stroke-dasharray', 'marker-end',
+  'stroke-linecap', 'stroke-linejoin', 'stroke-dasharray', 'marker-end', 'rx', 'ry', 'text-anchor',
 ]);
 
 function hasSafeSvgStyles(source: string): boolean {

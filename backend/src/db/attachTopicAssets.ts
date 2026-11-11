@@ -142,7 +142,7 @@ export function loadManifest(manifestPath: string): ManifestRow[] {
  * standard UTF-8 prolog, and oversized documents before they enter topic_assets. */
 const SAFE_SVG_STYLE_PROPERTIES = new Set([
   'font', 'font-family', 'font-size', 'font-weight', 'fill', 'stroke', 'stroke-width',
-  'stroke-linecap', 'stroke-linejoin', 'stroke-dasharray', 'marker-end',
+  'stroke-linecap', 'stroke-linejoin', 'stroke-dasharray', 'marker-end', 'rx', 'ry', 'text-anchor',
 ]);
 
 function hasSafeSvgStyles(source: string): boolean {
