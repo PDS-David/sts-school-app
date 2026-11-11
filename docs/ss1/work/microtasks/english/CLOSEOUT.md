@@ -39,7 +39,7 @@ See [OWNER_APPROVAL_20261111.md](OWNER_APPROVAL_20261111.md). It records the own
 
 ## Verification and release
 
-Fresh workflow run [42999900568](https://github.com/PDS-David/sts-school-app/actions/runs/42999900568) completed successfully on 2026-11-11 against the PR #562 head immediately before merge (merged commit `aeafd1aed991ff11f69a98bb6e436a638a7e9613):
+Fresh workflow run [42999900568](https://github.com/PDS-David/sts-school-app/actions/runs/42999900568) completed successfully on 2026-11-11 against the PR #562 head immediately before merge (merged commit `aeafd1aed991ff11f69a98bb6e436a638a7e9613`):
 
 - English package tests: **16/16 passed**, including the eight-row closure, BODY-047 rule-identity regression and subject-only compiler-scope regression.
 - SS1 foundation tests: **8/8 passed**.
@@ -54,7 +54,7 @@ The English-only compiler scope was corrected in PR #562 (merged as `aeafd1aed99
 
 PR #559 (merged as `7382f51feb2ad86f36151d04fa9d9a0c1f1f4951`) adds a regression guard that keeps all 24 correction replacements withheld until their own authorised verification exists. PR #561 (merged as `eff3ba83fa3615d8b90c1b42597a03bac719c723`) prevents student/parent API responses and study-summary fallbacks from exposing teacher answer keys or marking criteria in compiled English supplements. Both changes passed their English and repository integrity workflows.
 
-A separate repository-wide integrity workflow currently has an unrelated SVG asset expectation mismatch (five Agricultural Science SVGs are absent from the current tracked tree); this does not fail the English package workflow or BODY-047 check.
+An earlier repository-wide run reported an Agricultural Science SVG expectation mismatch, outside the English package. The latest SS1 package-integrity gate [42999900647](https://github.com/PDS-David/sts-school-app/actions/runs/42999900647) passed all of its defined checks; that result does not certify Agricultural Science asset completeness.
 
 Still required before student release:
 - Owner approval of the registered synthetic British English pronunciation asset (its rights/provenance are documented, but its separate content approval is still PENDING).
