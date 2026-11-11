@@ -578,7 +578,8 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   topic.source_reference = learnerTopic.source_reference;
   topic.summary = learnerTopic.summary;
 
-  const groundingSource: string | null = englishDelivery?.kind === 'corrected' ? englishDelivery.text
+  const groundingSource: string | null = mathematicsDelivery?.kind === 'corrected' ? mathematicsDelivery.text
+    : englishDelivery?.kind === 'corrected' ? englishDelivery.text
     : agriculturalScienceDelivery?.kind === 'corrected' || agriculturalScienceSupplement?.kind === 'supplement' || agriculturalScienceSourceProjection
       ? (typeof topic.source_reference === 'string' ? topic.source_reference : null)
     : ss1Delivery?.kind === 'corrected' ? ss1Delivery.text
@@ -687,7 +688,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
           `INSERT INTO assessments(school_code,subject_id,class_name,term_id,title,total_marks,status,created_by,content_fingerprint)
            VALUES($1,$2,$3,$4,$5,$6,'open',NULL,$7) RETURNING id`,
           [topic.school_code, topic.subject_id, topic.class_name, topic.term_id,
-           `${topic.title} — Topic Assessment`, questionIds.length, ss1Delivery?.kind === 'corrected' ? ss1Delivery.fingerprint : agriculturalScienceSupplement?.kind === 'supplement' ? agriculturalScienceSupplement.fingerprint : agriculturalScienceSourceProjection && agriculturalScienceSourceProjection.kind !== 'withheld' ? agriculturalScienceSourceProjection.fingerprint : delivery?.kind === 'corrected' ? delivery.fingerprint : null],
+           `${topic.title} — Topic Assessment`, questionIds.length, mathematicsDelivery?.kind === 'corrected' ? mathematicsDelivery.fingerprint : ss1Delivery?.kind === 'corrected' ? ss1Delivery.fingerprint : agriculturalScienceSupplement?.kind === 'supplement' ? agriculturalScienceSupplement.fingerprint : agriculturalScienceSourceProjection && agriculturalScienceSourceProjection.kind !== 'withheld' ? agriculturalScienceSourceProjection.fingerprint : delivery?.kind === 'corrected' ? delivery.fingerprint : null],
         );
         const assessmentId = aRows[0].id;
 
