@@ -305,7 +305,7 @@ export function createAgriculturalScienceSourceProjectionResolver(input: Subject
   if (!source) return null;
   const sourceLessonId = `${source.source_id}:BODY:${hash(topic.source_reference)}`;
   const { text: teachingText, removed } = stripSourceAssessmentSections(topic.source_reference);
-  const coverage = subjectPackage.coverage.filter(item => item.lesson_ids.includes(sourceLessonId));
+  const coverage = subjectPackage.coverage.filter(item => item.source_lesson_id === sourceLessonId || item.lesson_ids.includes(sourceLessonId));
   const supplementIds = [...new Set(coverage.flatMap(item => item.lesson_ids)
     .filter(id => id.startsWith('SUP-SS1-AGRICULTURAL-SCIENCE-')))];
   const verifiedSupplements = supplementIds

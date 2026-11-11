@@ -567,7 +567,8 @@ test('Agricultural Science source projection removes source assessment sections 
   const lesson = fixture.lessons.find(item => item.term === source.term)!;
   const sourceReference = 'Teaching material that students need.\n\nWEEKEND ASSIGNMENT\nQ1. Ambiguous source question?\nAnswer: disputed';
   const sourceLessonId = `${source.source_id}:BODY:${hash(sourceReference)}`;
-  fixture.coverage[0].lesson_ids = [sourceLessonId, lesson.id];
+  fixture.coverage[0].source_lesson_id = sourceLessonId;
+  fixture.coverage[0].lesson_ids = [lesson.id];
   const topic = {
     school_code: 'secondary', class_name: 'SS 1', subject_name: 'Agricultural Science',
     term_label: source.term, title: 'Source topic', source_file: source.archive_member.split('/').at(-1),
