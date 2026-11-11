@@ -165,5 +165,7 @@ test('mobile renders authenticated SVG bytes with the native SVG renderer and re
   assert.ok(mobile.includes("headers: { Authorization: `Bearer ${token}` }"));
   assert.match(mobile, /contentType !== 'image\/svg\+xml'/);
   assert.match(mobile, /(?:href|src|style)\s*=/);
+  assert.match(mobile, /hasSafeSvgStyles\(xml\)/);
+  assert.match(mobile, /marker-end/);
   assert.match(mobile, /<SvgXml xml=\{svgXml\}/);
 });
