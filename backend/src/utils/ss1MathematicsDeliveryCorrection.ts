@@ -184,6 +184,7 @@ export function mathematicsAssetsForTopic(topic: Ss1MathematicsTopic, topicId: n
       kind: 'diagram',
       mime: asset.media_type,
       sha256: asset.sha256,
+      bytes: asset.bytes,
       caption: asset.title,
       alt_text: asset.alt,
       sort_order: asset.order,
