@@ -11880,8 +11880,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T1-W09-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Week Nine environmental factors, farmstead and forestry now have learner-facing lessons and exact original Week Nine identity where the source teaches the objective. The farmstead and forestry supplements have recorded repository-owner content approval. Compiler-plan comparison, delivery-correction confirmation, hash/marking checks and authenticated student-view verification remain deferred and block delivery.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the approved supplement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Week Nine environmental factors, farmstead and forestry now have learner-facing lessons and exact original Week Nine identity where the source teaches the objective. The farmstead and forestry supplements have recorded repository-owner content approval. Compiler-plan comparison, delivery-correction confirmation, hash/marking checks and authenticated student-view verification remain deferred and block delivery. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the approved supplement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T1-W09-SCHEME-9",
         "COV-AG-T1-W09-FARMSTEAD",
@@ -11896,7 +11896,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T1-W09-ASSESSMENT-SCOPE",
       "kind": "VERIFICATION",
-      "detail": "The repository owner resolved all residual Week 9 editorial decisions in OWNER-DEC-W09-RESIDUAL-20261111.md. The learner-delivery replacement CORR-AG-T1-W09-ENVIRONMENTAL-FACTORS-REPLACEMENT is registered against the exact original Week 9 parsed row and includes atmospheric pressure, the correct reading reference and omission of unsupported compost/mulching prompts. Farmstead and forestry remain separately authored and approved. Compiler-plan comparison, correction application, body-hash/marking checks and authenticated student-view verification remain outstanding; this open item now tracks verification only.",
+      "detail": "The repository owner resolved all residual Week 9 editorial decisions in OWNER-DEC-W09-RESIDUAL-20261111.md. The learner-delivery replacement CORR-AG-T1-W09-ENVIRONMENTAL-FACTORS-REPLACEMENT is registered against the exact original Week 9 parsed row and includes atmospheric pressure, the correct reading reference and omission of unsupported compost/mulching prompts. Farmstead and forestry remain separately authored and approved. Compiler-plan comparison, correction application, body-hash/marking checks and authenticated student-view verification remain outstanding; this open item now tracks verification only. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Run the authorised compiler/importer and verify the exact Week 9 source row is replaced by SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-ENVIRONMENTAL-FACTORS, while the approved farmstead and forestry supplements are also delivered. Check all lesson body hashes and marking totals, confirm the archived source and answer key remain unchanged, and perform authenticated learner-view checks. Do not claim delivery or release before those checks pass.",
       "affected_ids": [
         "COV-AG-T1-W09-SCHEME-9",
@@ -11912,8 +11912,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T1-W01-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Week One's original row ID is reproduced and matches the recorded Week One body hash. Source-supported objectives and the two supplements are bound. Final plan comparison, asset verification and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Week One's original row ID is reproduced and matches the recorded Week One body hash. Source-supported objectives and the two supplements are bound. Final plan comparison, asset verification and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "SS1-SRC-7aa642b0085b:BODY:eb23c6d757163ec4e7bfce9f79ede198e00e4437be3317ac9781b3e9dec6c2b9",
         "COV-AG-T1-W01-MEANING",
@@ -11937,8 +11937,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T1-W02-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-7aa642b0085b:BODY:94ffd0f85730fc3f1804f07342e16b1da91dd1323231b7fb6e41b11b96f8cf35. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-7aa642b0085b:BODY:94ffd0f85730fc3f1804f07342e16b1da91dd1323231b7fb6e41b11b96f8cf35. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T1-W02-TYPES",
         "SS1-SRC-7aa642b0085b"
@@ -11959,8 +11959,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T1-W03-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-7aa642b0085b:BODY:de6febf42e9195e6171f87f05840f7ac0d5a7337820ec98392670ebc3b1485aa. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-7aa642b0085b:BODY:de6febf42e9195e6171f87f05840f7ac0d5a7337820ec98392670ebc3b1485aa. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T1-W03-PROBLEMS",
         "SS1-SRC-7aa642b0085b"
@@ -11970,7 +11970,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T1-W03-INPUT-TERMINOLOGY",
       "kind": "VERIFICATION",
-      "detail": "Terminology content is addressed by SUP-SS1-AGRICULTURAL-SCIENCE-T1-W03-INPUT-TERMINOLOGY: pesticide is the broad category; herbicide controls weeds; weedicide is a synonym of herbicide; insecticide controls insects. The original weekend MCQ at block 309 offers both A (herbicide) and C (weedicide), so it has two correct synonymous options. Content is no longer missing, but the assessment key/wording still needs an authorised decision.",
+      "detail": "Terminology content is addressed by SUP-SS1-AGRICULTURAL-SCIENCE-T1-W03-INPUT-TERMINOLOGY: pesticide is the broad category; herbicide controls weeds; weedicide is a synonym of herbicide; insecticide controls insects. The original weekend MCQ at block 309 offers both A (herbicide) and C (weedicide), so it has two correct synonymous options. Content is no longer missing, but the assessment key/wording still needs an authorised decision. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "At the authorised assessment approval/revision stage, either accept A and C as equivalent correct answers or replace one duplicate option in a future assessment version. Do not edit the archived source. No pesticide rates, doses, mixing or handling directions are to be added.",
       "affected_ids": [
         "COV-AG-T1-W03-INPUT-TERMINOLOGY",
@@ -12004,8 +12004,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T1-W04-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-7aa642b0085b:BODY:0c1b6e6e543aa10d8aaeb5963231c20ff8e3c3a58be635e0071c1dbc052eb244. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-7aa642b0085b:BODY:0c1b6e6e543aa10d8aaeb5963231c20ff8e3c3a58be635e0071c1dbc052eb244. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T1-W04-GOV-ROLES",
         "COV-AG-T1-W04-NGO-ROLES",
@@ -12038,8 +12038,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T1-W05-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-7aa642b0085b:BODY:6388d1c618d180353e769423def1f31de4b76cf5b07fd218d957f0d807c9bedc. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-7aa642b0085b:BODY:6388d1c618d180353e769423def1f31de4b76cf5b07fd218d957f0d807c9bedc. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T1-W05-SCIENCE-TECH",
         "SS1-SRC-7aa642b0085b"
@@ -12049,8 +12049,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T1-W05-STORAGE-FACILITIES",
       "kind": "VERIFICATION",
-      "detail": "The storage-content gap is addressed by SUP-SS1-AGRICULTURAL-SCIENCE-T1-W05-STORAGE-FACILITIES, which supplies nine storage examples from NSPRI and the Federal Government's 2025 post-harvest programme. The original Week 5 block 432 groups millers and shellers with storage facilities, but these are processing equipment, not storage structures. The supplement makes the technical distinction and preserves the source unchanged.",
-      "required_action": "At authorised assessment approval, do not count millers or shellers as storage facilities; accept actual storage structures such as silos, warehouses, cold rooms, cribs, diffuse-light stores or yam barns. Do not alter the archived source.",
+      "detail": "The storage-content gap is addressed by SUP-SS1-AGRICULTURAL-SCIENCE-T1-W05-STORAGE-FACILITIES, which supplies nine storage examples from NSPRI and the Federal Government's 2025 post-harvest programme. The original Week 5 block 432 groups millers and shellers with storage facilities, but these are processing equipment, not storage structures. The supplement makes the technical distinction and preserves the source unchanged. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "do not count millers or shellers as storage facilities; accept actual storage structures such as silos, warehouses, cold rooms, cribs, diffuse-light stores or yam barns. Do not alter the archived source.",
       "affected_ids": [
         "COV-AG-T1-W05-STORAGE-FACILITIES",
         "SUP-SS1-AGRICULTURAL-SCIENCE-T1-W05-STORAGE-FACILITIES",
@@ -12072,8 +12072,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T1-W06-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-7aa642b0085b:BODY:599c15d5fc22a602566d6336b315c0b49710b870d1be5090881a6820f144adbb. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-7aa642b0085b:BODY:599c15d5fc22a602566d6336b315c0b49710b870d1be5090881a6820f144adbb. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T1-W06-AGRO-INDUSTRIES",
         "SS1-SRC-7aa642b0085b"
@@ -12094,8 +12094,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T1-W07-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-7aa642b0085b:BODY:43f4fb240312605deaf233087f1673161e8070b3db0e801fcf2f5d99846df7cb. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-7aa642b0085b:BODY:43f4fb240312605deaf233087f1673161e8070b3db0e801fcf2f5d99846df7cb. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T1-W07-LAND-USES",
         "SS1-SRC-7aa642b0085b"
@@ -12138,8 +12138,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T1-W08-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-7aa642b0085b:BODY:bcd8c0ecc2862267e6f54895abbff1a39a16ded4137d630c3c931d13b1c6910a. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-7aa642b0085b:BODY:bcd8c0ecc2862267e6f54895abbff1a39a16ded4137d630c3c931d13b1c6910a. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T1-W08-LAND-TENURE",
         "SS1-SRC-7aa642b0085b"
@@ -12172,8 +12172,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T1-W10-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-7aa642b0085b:BODY:007f80ec64ec9dafb7a327359ba0ada8605d18109b826ab6ed39e1fe86fcc658. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-7aa642b0085b:BODY:007f80ec64ec9dafb7a327359ba0ada8605d18109b826ab6ed39e1fe86fcc658. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T1-W10-CROP-CLASSIFICATION",
         "SS1-SRC-7aa642b0085b"
@@ -12194,7 +12194,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T2-W01-REVISION-SOURCE",
       "kind": "VERIFICATION",
-      "detail": "An original First-Term revision practice set with 13 questions, complete model answers and criterion-level marking is linked as an equivalent lesson; it is not represented as the missing official paper. Verify learner delivery and obtain content approval.",
+      "detail": "An original First-Term revision practice set with 13 questions, complete model answers and criterion-level marking is linked as an equivalent lesson; it is not represented as the missing official paper. Verify learner delivery and obtain content approval. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify the relevant supplement/replacement in the authorised compiler plan and authenticated learner route; obtain genuine content approval before release.",
       "affected_ids": [
         "COV-AG-T2-W01-REVISION",
@@ -12205,8 +12205,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T2-W02-03-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-956594d97094:BODY:1beb6d785bb09aa20fdffc82f7efaa1cdcdbd565c29d689f4575757ec6ea20e9. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-956594d97094:BODY:1beb6d785bb09aa20fdffc82f7efaa1cdcdbd565c29d689f4575757ec6ea20e9. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T2-W02-03-CULTURAL-PRACTICES",
         "SS1-SRC-956594d97094"
@@ -12238,8 +12238,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T2-W04-05-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-956594d97094:BODY:12d2bff62a3b676cec1218abdde9a8f57a09e2057bd5f6d880e50cb0dee77886. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-956594d97094:BODY:12d2bff62a3b676cec1218abdde9a8f57a09e2057bd5f6d880e50cb0dee77886. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T2-W04-05-SELECTED-CROPS",
         "SS1-SRC-956594d97094"
@@ -12271,8 +12271,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T2-W06-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-956594d97094:BODY:5e12e6d75046c73227b73e5a70eb56fd6a83ccbaf4d206b9dc3d4cc609e008f6. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-956594d97094:BODY:5e12e6d75046c73227b73e5a70eb56fd6a83ccbaf4d206b9dc3d4cc609e008f6. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T2-W06-AGRICULTURAL-ECOLOGY",
         "SS1-SRC-956594d97094"
@@ -12304,8 +12304,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T2-W07-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-956594d97094:BODY:d6a132c9ce637c6fee7ca4e1e88aa707220a68298bde2794d5657e49533c9e22. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-956594d97094:BODY:d6a132c9ce637c6fee7ca4e1e88aa707220a68298bde2794d5657e49533c9e22. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T2-W07-ROCK-FORMATION",
         "SS1-SRC-956594d97094"
@@ -12349,8 +12349,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T2-W08-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-956594d97094:BODY:1f941dd52a764e5665229f0caad9aa3a3bca2ecf1ffad1ac4f3810601bfa573b. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-956594d97094:BODY:1f941dd52a764e5665229f0caad9aa3a3bca2ecf1ffad1ac4f3810601bfa573b. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T2-W08-ROCK-WEATHERING",
         "SS1-SRC-956594d97094"
@@ -12371,8 +12371,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T2-W09-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-956594d97094:BODY:1d566e884981c34293a7c08a90ce5177dc063ea5813da9a7f27e69e09c5f77ee. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-956594d97094:BODY:1d566e884981c34293a7c08a90ce5177dc063ea5813da9a7f27e69e09c5f77ee. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T2-W09-SOIL-FORMATION",
         "SS1-SRC-956594d97094"
@@ -12393,8 +12393,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W01-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:0c06c5383b974616b0e06a23a1165fe3beeeec8b89b232c0383f83a6d2e056ff. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:0c06c5383b974616b0e06a23a1165fe3beeeec8b89b232c0383f83a6d2e056ff. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T3-W01-SIMPLE-TOOLS",
         "SS1-SRC-458a07f7ea5a"
@@ -12426,8 +12426,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W02-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:57c54e51896e3d54fcb43c690c056b45ebcfffd8e132e8bc5038de6c0ea5879b. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:57c54e51896e3d54fcb43c690c056b45ebcfffd8e132e8bc5038de6c0ea5879b. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T3-W02-FARM-POWER",
         "SS1-SRC-458a07f7ea5a"
@@ -12470,8 +12470,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W03-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:926ec9d0dd8bfdeebfd345eb9bd0f034b7d4ae770706b3345351f3d28294cc32. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:926ec9d0dd8bfdeebfd345eb9bd0f034b7d4ae770706b3345351f3d28294cc32. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T3-W03-MECHANIZATION",
         "SS1-SRC-458a07f7ea5a"
@@ -12514,8 +12514,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W04-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:f5e7e44f6958567c83585854643e2fcfe312cf70b7189a8a45f3c3bf4542dcae. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:f5e7e44f6958567c83585854643e2fcfe312cf70b7189a8a45f3c3bf4542dcae. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T3-W04-DIGESTIVE-SYSTEM",
         "COV-AG-T3-W04-CIRCULATORY-SYSTEM",
@@ -12549,8 +12549,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W05-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:ee2b1a466d20eb2f30bcfe48cf2f8329ba035d2528c6ca91bcce87ac6ea5b8dd. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:ee2b1a466d20eb2f30bcfe48cf2f8329ba035d2528c6ca91bcce87ac6ea5b8dd. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T3-W05-RESPIRATORY-SYSTEM",
         "COV-AG-T3-W05-NERVOUS-SYSTEM",
@@ -12572,8 +12572,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W06-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:32a9361d7a977244ca32d9f64c9279aef6edec9ca35ca915dd87ff11f8030daa. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:32a9361d7a977244ca32d9f64c9279aef6edec9ca35ca915dd87ff11f8030daa. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T3-W06-REPRODUCTIVE-CYCLES",
         "COV-AG-T3-W06-MATING-AND-AI",
@@ -12619,8 +12619,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W07-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:15f96ac5ec76ec2f957b90b0f4ecfb688cf23f30a8999cd0fe80383d2eb108bf. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:15f96ac5ec76ec2f957b90b0f4ecfb688cf23f30a8999cd0fe80383d2eb108bf. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T3-W07-EGG-FORMATION",
         "COV-AG-T3-W07-HORMONES",
@@ -12653,8 +12653,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W08-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:791302b51e960fafa427a66d0b1ce1f662567b3bb9bb9c374531d39c2ed1e5de. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:791302b51e960fafa427a66d0b1ce1f662567b3bb9bb9c374531d39c2ed1e5de. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T3-W08-ENVIRONMENTAL-PHYSIOLOGY",
         "SS1-SRC-458a07f7ea5a"
@@ -12664,7 +12664,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W08-ASSESSMENT-GAPS",
       "kind": "VERIFICATION",
-      "detail": "The regional climate extension now answers the Nigeria climate-factor and humid-rainforest cattle-production prompts with a qualified, sourced explanation; verify learner delivery.",
+      "detail": "The regional climate extension now answers the Nigeria climate-factor and humid-rainforest cattle-production prompts with a qualified, sourced explanation; verify learner delivery. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify the relevant supplement/replacement in the authorised compiler plan and authenticated learner route; obtain genuine content approval before release.",
       "affected_ids": [
         "COV-AG-T3-W08-ENVIRONMENTAL-ASSESSMENT-GAPS",
@@ -12677,7 +12677,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W08-CLIMATE-CLAIMS",
       "kind": "VERIFICATION",
-      "detail": "The Week Eight lesson now explicitly corrects the source's wind/TB, rainfall/tsetse and fixed 37°C milk-spoilage claims, and explains heat stress with regional climate. The source wording remains unchanged; verify the clarification is displayed with the source and obtain subject-expert approval.",
+      "detail": "The Week Eight lesson now explicitly corrects the source's wind/TB, rainfall/tsetse and fixed 37°C milk-spoilage claims, and explains heat stress with regional climate. The source wording remains unchanged; verify the clarification is displayed with the source and obtain subject-expert approval. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify the relevant supplement/replacement in the authorised compiler plan and authenticated learner route; obtain genuine content approval before release.",
       "affected_ids": [
         "AG-FACT-T3-W08-REGIONAL-CLIMATE",
@@ -12688,8 +12688,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W09-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:b431485e025fd5054046a9041249f1b34a5042973238fbf2b652cbf27fbf4ef7. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:b431485e025fd5054046a9041249f1b34a5042973238fbf2b652cbf27fbf4ef7. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T3-W09-PIG-MANAGEMENT",
         "SS1-SRC-458a07f7ea5a"
@@ -12699,7 +12699,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W09-VETERINARY-CHEMICAL-SAFETY",
       "kind": "VERIFICATION",
-      "detail": "The complete Week Nine source lesson is replaced by a safe original learner lesson and a bound delivery correction. Unverified iron injections, pesticide/insecticide application, caustic-soda ASF disinfection, penicillin and glucose-injection instructions are excluded; verify delivery correction.",
+      "detail": "The complete Week Nine source lesson is replaced by a safe original learner lesson and a bound delivery correction. Unverified iron injections, pesticide/insecticide application, caustic-soda ASF disinfection, penicillin and glucose-injection instructions are excluded; verify delivery correction. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify the relevant supplement/replacement in the authorised compiler plan and authenticated learner route; obtain genuine content approval before release.",
       "affected_ids": [
         "AG-FACT-T3-W09-PIG-SAFETY",
@@ -12710,8 +12710,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W10-COVERAGE",
       "kind": "VERIFICATION",
-      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:705e543e7a04a9a5058603f332ba4a44c4e81c4f6ab98b0571e6edcde4efb31b. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred.",
-      "required_action": "At the deferred verification stage, confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
+      "detail": "Coverage is now bound to deterministically reproduced original row SS1-SRC-458a07f7ea5a:BODY:705e543e7a04a9a5058603f332ba4a44c4e81c4f6ab98b0571e6edcde4efb31b. Where an objective needs an authored equivalent, the corresponding package supplement or safe replacement is also linked. Exact archive/member hashes and Mammoth/parser logic were reproduced during authoring; importer/compiler plan and authenticated student delivery remain deferred. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
+      "required_action": "confirm the exact source row and correction identity in the compiler plan, verify that the replacement is the learner-delivered body, validate body/asset hashes and marking totals, and perform authenticated student-view checks. Do not claim these checks before execution.",
       "affected_ids": [
         "COV-AG-T3-W10-CATTLE-MANAGEMENT",
         "SS1-SRC-458a07f7ea5a"
@@ -12721,7 +12721,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W10-ASSESSMENT-GAPS",
       "kind": "VERIFICATION",
-      "detail": "The complete Week Ten replacement defines tattooing, distinguishes zero-, rotational- and rational-grazing, corrects cattle-housing wording and preserves the gestation value; verify delivery correction.",
+      "detail": "The complete Week Ten replacement defines tattooing, distinguishes zero-, rotational- and rational-grazing, corrects cattle-housing wording and preserves the gestation value; verify delivery correction. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify the relevant supplement/replacement in the authorised compiler plan and authenticated learner route; obtain genuine content approval before release.",
       "affected_ids": [
         "COV-AG-T3-W10-ASSESSMENT-GAPS",
@@ -12735,7 +12735,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W10-VETERINARY-CHEMICAL-SAFETY",
       "kind": "VERIFICATION",
-      "detail": "The complete Week Ten source lesson is replaced by a safe original learner lesson and a bound delivery correction. Unendorsed tuberculosis drug dosing, chemical treatment lists and caustic-soda horn treatment are excluded; verify delivery correction.",
+      "detail": "The complete Week Ten source lesson is replaced by a safe original learner lesson and a bound delivery correction. Unendorsed tuberculosis drug dosing, chemical treatment lists and caustic-soda horn treatment are excluded; verify delivery correction. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify the relevant supplement/replacement in the authorised compiler plan and authenticated learner route; obtain genuine content approval before release.",
       "affected_ids": [
         "AG-FACT-T3-W10-CATTLE-SAFETY",
@@ -12782,7 +12782,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W02-DRAUGHT-ANIMALS-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed photograph remains excluded; original farm-power infographic includes an independent animal-traction panel.",
+      "detail": "Original unlicensed photograph remains excluded; original farm-power infographic includes an independent animal-traction panel. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W02-DRAUGHT-ANIMALS",
@@ -12793,7 +12793,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W02-MECHANICAL-POWER-IMAGE",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed motor-grader photograph remains excluded; original farm-power infographic includes an independent agricultural tractor example.",
+      "detail": "Original unlicensed motor-grader photograph remains excluded; original farm-power infographic includes an independent agricultural tractor example. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W02-MECHANICAL-POWER",
@@ -12804,7 +12804,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W02-SOLAR-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed rooftop PV photograph remains excluded; original farm-power infographic includes an independent farm solar-power panel.",
+      "detail": "Original unlicensed rooftop PV photograph remains excluded; original farm-power infographic includes an independent farm solar-power panel. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W02-SOLAR",
@@ -12815,7 +12815,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W02-WIND-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed windmill photograph remains excluded; original farm-power infographic includes an independent windpump panel.",
+      "detail": "Original unlicensed windmill photograph remains excluded; original farm-power infographic includes an independent windpump panel. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W02-WIND",
@@ -12826,7 +12826,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W02-ELECTRIC-WATER-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed generator and dam images remain excluded; original farm-power infographic includes independent electric-pump and hydro-turbine panels.",
+      "detail": "Original unlicensed generator and dam images remain excluded; original farm-power infographic includes independent electric-pump and hydro-turbine panels. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W02-ELECTRIC-WATER",
@@ -12837,7 +12837,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W04-RUMINANT-DIGESTION-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed source diagram remains excluded; original SVG AG-ART-T3-W04-ANIMAL-DIGESTIVE-COMPARISON-01 is linked to the visual atlas.",
+      "detail": "Original unlicensed source diagram remains excluded; original SVG AG-ART-T3-W04-ANIMAL-DIGESTIVE-COMPARISON-01 is linked to the visual atlas. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W04-RUMINANT-DIGESTION",
@@ -12848,7 +12848,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W04-PIG-DIGESTION-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed source diagram remains excluded; original SVG AG-ART-T3-W04-ANIMAL-DIGESTIVE-COMPARISON-01 is linked to the visual atlas.",
+      "detail": "Original unlicensed source diagram remains excluded; original SVG AG-ART-T3-W04-ANIMAL-DIGESTIVE-COMPARISON-01 is linked to the visual atlas. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W04-PIG-DIGESTION",
@@ -12859,7 +12859,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W04-POULTRY-DIGESTION-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed source diagram remains excluded; original SVG AG-ART-T3-W04-ANIMAL-DIGESTIVE-COMPARISON-01 is linked to the visual atlas.",
+      "detail": "Original unlicensed source diagram remains excluded; original SVG AG-ART-T3-W04-ANIMAL-DIGESTIVE-COMPARISON-01 is linked to the visual atlas. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W04-POULTRY-DIGESTION",
@@ -12870,7 +12870,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W04-MALE-REPRODUCTION-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed source image group remains excluded; original SVG AG-ART-T3-W04-MAMMALIAN-REPRODUCTIVE-01 is linked to the visual atlas.",
+      "detail": "Original unlicensed source image group remains excluded; original SVG AG-ART-T3-W04-MAMMALIAN-REPRODUCTIVE-01 is linked to the visual atlas. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W04-MALE-REPRODUCTION",
@@ -12881,7 +12881,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W04-FEMALE-REPRODUCTION-A-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed source diagram remains excluded; original SVG AG-ART-T3-W04-MAMMALIAN-REPRODUCTIVE-01 is linked to the visual atlas.",
+      "detail": "Original unlicensed source diagram remains excluded; original SVG AG-ART-T3-W04-MAMMALIAN-REPRODUCTIVE-01 is linked to the visual atlas. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W04-FEMALE-REPRODUCTION-A",
@@ -12892,7 +12892,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W04-FEMALE-REPRODUCTION-B-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed photographed page remains excluded; original SVG AG-ART-T3-W04-MAMMALIAN-REPRODUCTIVE-01 is linked to the visual atlas.",
+      "detail": "Original unlicensed photographed page remains excluded; original SVG AG-ART-T3-W04-MAMMALIAN-REPRODUCTIVE-01 is linked to the visual atlas. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W04-FEMALE-REPRODUCTION-B",
@@ -12903,7 +12903,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W05-RESPIRATORY-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed source diagram remains excluded; original SVG AG-ART-T3-W05-RESPIRATORY-COMPARISON-01 is linked to the visual atlas.",
+      "detail": "Original unlicensed source diagram remains excluded; original SVG AG-ART-T3-W05-RESPIRATORY-COMPARISON-01 is linked to the visual atlas. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W05-RESPIRATORY",
@@ -12914,7 +12914,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W05-FISH-GILLS-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed source diagrams remain excluded; original SVG AG-ART-T3-W05-RESPIRATORY-COMPARISON-01 is linked to the visual atlas.",
+      "detail": "Original unlicensed source diagrams remain excluded; original SVG AG-ART-T3-W05-RESPIRATORY-COMPARISON-01 is linked to the visual atlas. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W05-FISH-GILLS",
@@ -12925,7 +12925,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W07-BIRD-EMBRYO-ORGANS-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed source images remain excluded; original egg cross-section, oviduct and poultry-system SVGs are registered. Verify learner route displays replacements.",
+      "detail": "Original unlicensed source images remain excluded; original egg cross-section, oviduct and poultry-system SVGs are registered. Verify learner route displays replacements. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W07-BIRD-EMBRYO-ORGANS",
@@ -12936,7 +12936,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W07-REPRODUCTIVE-TRACT-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed textbook page and diagram remain excluded; original oviduct and egg cross-section SVGs are registered.",
+      "detail": "Original unlicensed textbook page and diagram remain excluded; original oviduct and egg cross-section SVGs are registered. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W07-REPRODUCTIVE-TRACT",
@@ -12947,7 +12947,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W07-MALE-FEMALE-SYSTEMS-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed combined diagram remains excluded; original male and female poultry reproductive SVGs are registered.",
+      "detail": "Original unlicensed combined diagram remains excluded; original male and female poultry reproductive SVGs are registered. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS",
@@ -12959,7 +12959,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W07-HORMONE-TABLE-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed Word table remains excluded from reuse; a new semantic hormone table with original wording and structure is included in the learner supplement.",
+      "detail": "Original unlicensed Word table remains excluded from reuse; a new semantic hormone table with original wording and structure is included in the learner supplement. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W07-TBL-HORMONES",
@@ -12971,7 +12971,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W09-PIG-ANATOMY-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed pig image remains excluded; original SVG AG-ART-T3-W09-PIG-EXTERNAL-01 is linked to the complete pig replacement lesson.",
+      "detail": "Original unlicensed pig image remains excluded; original SVG AG-ART-T3-W09-PIG-EXTERNAL-01 is linked to the complete pig replacement lesson. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W09-PIG-ANATOMY",
@@ -12983,7 +12983,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W10-CATTLE-ANATOMY-RIGHTS",
       "kind": "VERIFICATION",
-      "detail": "Original unlicensed cattle image remains excluded; original SVG AG-ART-T3-W10-CATTLE-EXTERNAL-01 is linked to the complete cattle replacement lesson.",
+      "detail": "Original unlicensed cattle image remains excluded; original SVG AG-ART-T3-W10-CATTLE-EXTERNAL-01 is linked to the complete cattle replacement lesson. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify in the authorised compiler plan and authenticated learner route that the original unlicensed source visual is excluded and the linked original SVG is displayed with its alt text. Verify file hash/bytes and obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W10-CATTLE-ANATOMY",
@@ -12995,7 +12995,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W10-GESTATION-FRACTION-PRESERVATION",
       "kind": "VERIFICATION",
-      "detail": "The complete Week Ten replacement explicitly preserves 275–283 days (9½ months), avoiding loss of the OMML half-month fraction during plain-text extraction; verify rendered student content.",
+      "detail": "The complete Week Ten replacement explicitly preserves 275–283 days (9½ months), avoiding loss of the OMML half-month fraction during plain-text extraction; verify rendered student content. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify the relevant supplement/replacement in the authorised compiler plan and authenticated learner route; obtain genuine content approval before release.",
       "affected_ids": [
         "AG-VIS-T3-W10-MATH-OBJECT",
@@ -13007,7 +13007,7 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W10-CATTLE-TERMS",
       "kind": "VERIFICATION",
-      "detail": "The complete Week Ten replacement defines tattooing, teaches grazing terminology and corrects the copied cattle-housing phrase; verify delivery correction.",
+      "detail": "The complete Week Ten replacement defines tattooing, teaches grazing terminology and corrects the copied cattle-housing phrase; verify delivery correction. Technical verification update (11 Nov 2026): PR #557 passed the Agricultural Science package workflow and SS1 integrity gate. The real Mammoth parser/SS1 compiler reproduced all 30 source row identities; all 12 correction bindings, 47 lesson hashes and marking totals, 40 asset byte/hash checks and static delivery-adapter tests passed. See docs/ss1/work/microtasks/agricultural-science/VERIFICATION-REPORT-20261111.md. This does not verify production database import or authenticated learner delivery and does not replace required subject/asset approval.",
       "required_action": "Verify the relevant supplement/replacement in the authorised compiler plan and authenticated learner route; obtain genuine content approval before release.",
       "affected_ids": [
         "AG-CORR-T3-W10-CATTLE-TERMS",
