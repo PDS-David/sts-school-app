@@ -87,7 +87,7 @@ Clear expressions now taught in SUP-SS1-FRENCH-COURTESY-CELEBRATIONS-T1. Intende
 
 1. Historical Week 1–4 indexing notes were not synchronized with the current package. For example, `FR-WK-T1-W01.md` still describes OBJ-4/OBJ-5 as unresolved and refers to supplements that have since been authored; the current package marks the neighbour and benefits objectives `IMPLEMENTED_EQUIVALENT`. `FR-WK-T1-W02.md` still says both DEVOIR exercises lack counterparts, while current coverage links the Anglophone supplement and demonym supplement. `FR-WK-T1-W03.md` predates the completed eight-field self-presentation supplement and still reports that objective as partial. `FR-WK-T1-W04.md` still lists three authoring tasks as outstanding even though the corresponding être, avoir and four-stem composition supplements now exist. These historical task notes must be refreshed or explicitly marked superseded before they are used as current audit evidence.
 2. **Resolved in this reconciliation branch:** correction `SS1-02-french-COR-005` and the Week 5 indexing note are being aligned with `VISUAL_DISPOSITION.md`: the inspected punctuation drawing is represented by accessible text and needs no separate image asset. This does not close the separate learner oral-performance/approval gate.
-3. The `QUEUE.json` header says its snapshot was generated from `dd739bba...` and its introductory notes describe an older package state (27 lessons, 29 coverage records, 3 open items), whereas current `master` contains 40 lessons, 55 coverage records and 9 open items. The queue must be regenerated/reconciled against current master before it is used to schedule remaining work.
+3. The `QUEUE.json` header says its snapshot was generated from `dd739bba...` and its introductory notes describe an older package state (27 lessons, 29 coverage records, 3 open items), whereas current `master` contains 40 lessons, 55 coverage records and 8 open items. The queue must be regenerated/reconciled against current master before it is used to schedule remaining work.
 
 ## What is actually closed by this reconciliation
 
@@ -133,3 +133,8 @@ A static scan of the current branch's French package (blob 6ececab52165434558f4d
 - No structural omissions or mark-sum mismatches were found by this scan.
 
 This is a structural integrity result only. It does not prove that each question assesses the correct source objective, that every original source exercise has a replacement, that a teacher has approved the language/content, or that learners can perform the required oral tasks. The 28-row source exercise reconciliation and teacher review remain open.
+
+
+### Closure of a non-blocking caution
+
+The non-blocking item FRENCH-T1-W01-NEIGHBOURS-LANGUAGE-STATUS was removed from package open_items because the current neighbour lesson explicitly makes no current legal-language-status claim; it distinguishes French-speaking populations from legal official status. For future current-affairs use, Article 12 of Niger's 2025 Charter of Refoundation identifies Hausa as the national language and English/French as working languages. The official Niger Presidency page publishes the Charter and the Journal officiel copy is linked in QUEUE.json. This does not change the Week 1 learning objective or approval state.
