@@ -55,3 +55,8 @@ The source states cattle are reared for meat, milk, hide/skin, manure and draugh
 - Verified archive/member hashes and week label/range hashes; parsed package/queue JSON; checked unique IDs and that every PARTIAL/UNRESOLVED coverage row has an open-item reference.
 - Importer, tests, TypeScript, DB and device checks **not run**; testing remains deferred by owner.
 - No source bytes, lesson bodies, rules, corrections, assets, shared code or other subjects modified.
+
+
+## Implementation follow-up (2026-11-11)
+
+The exact Week Ten source row `SS1-SRC-458a07f7ea5a:BODY:705e543e7a04a9a5058603f332ba4a44c4e81c4f6ab98b0571e6edcde4efb31b` is now bound by `CORR-AG-T3-W10-CATTLE-SAFE-REPLACEMENT` to `SUP-SS1-AGRICULTURAL-SCIENCE-T3-W10-CATTLE-MANAGEMENT-REPLACEMENT`. The replacement teaches cattle housing, feeding, water, hygiene, welfare, biosecurity and veterinary referral without unsafe treatment prescriptions or unverified drug doses. Content approval and verification remain pending.
