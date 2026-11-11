@@ -171,6 +171,31 @@ export function mathematicsAssetDeliverable(topic: Ss1MathematicsTopic, storedAs
   return Number(topic.order_index) === Number(orderMatch[1]) && norm(topic.title) === norm(expectedTitle);
 }
 
+/** Package-backed asset metadata for the student lesson screen; no topic_assets row is required. */
+export function mathematicsAssetsForTopic(topic: Ss1MathematicsTopic, topicId: number) {
+  return packageValue.assets
+    .filter(asset => mathematicsAssetDeliverable(topic, {
+      asset_key: asset.id, sha256: asset.sha256, mime: asset.media_type,
+    }))
+    .sort((a, b) => a.order - b.order)
+    .map(asset => ({
+      id: asset.id,
+      asset_key: asset.id,
+      kind: 'diagram',
+      mime: asset.media_type,
+      sha256: asset.sha256,
+      caption: asset.title,
+      alt_text: asset.alt,
+      sort_order: asset.order,
+      url: `/learning/topics/${topicId}/assets/${encodeURIComponent(asset.id)}`,
+    }));
+}
+
+/** Resolve only a package-registered asset path; callers still verify its bytes against SHA-256. */
+export function mathematicsAssetFilePath(assetKey: string) {
+  return packageValue.assets.find(asset => asset.id === assetKey)?.path ?? null;
+}
+
 /** Prevent raw Mathematics source rows (including unresolved weeks) from leaking into student topic lists/details. */
 export function safeSs1MathematicsTopic<T extends Ss1MathematicsTopic>(topic: T): T {
   if (topic.school_code !== SCHOOL_CODE || topic.class_name !== CLASS_NAME ||
