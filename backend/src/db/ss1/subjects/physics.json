@@ -4668,6 +4668,355 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Production of continuous electric current: chemical, heat, mechanical and solar energy",
+      "objectives": [
+        "Define electric current and use I = Q/t and Q = It.",
+        "Distinguish conventional current from electron flow in a metal conductor.",
+        "Define emf and potential difference and use W = QV.",
+        "Explain how chemical cells produce current.",
+        "Explain thermocouple generation from a temperature difference.",
+        "Explain generator operation by electromagnetic induction and distinguish AC from DC output.",
+        "Explain photovoltaic generation using solar cells."
+      ],
+      "body": "PRODUCTION OF CONTINUOUS ELECTRIC CURRENT\n\n1. What is electric current?\nElectric current is the rate at which electric charge passes a point in a circuit:\nI = Q/t\nwhere I is current in amperes (A), Q is charge in coulombs (C), and t is time in seconds (s).\nRearranging:\nQ = It\nOne ampere means one coulomb of charge passes a point each second. A continuous current requires a complete conducting path and a source that maintains a potential difference.\n\n2. Direction of current and electron flow\nConventional current is defined as the direction positive charge would move in the external circuit: from the positive terminal of a source, through the external circuit, towards its negative terminal.\nIn a metal wire, electrons drift in the opposite direction, from the negative terminal towards the positive terminal. Do not confuse conventional current direction with electron flow direction.\n\n3. Electromotive force (emf)\nThe electromotive force of a source is the energy supplied by the source per unit charge:\nε = W/Q\nwhere W is energy/work in joules and Q is charge in coulombs. The unit is the volt (V), where 1 V = 1 J C⁻¹.\nEmf describes the energy supplied per coulomb by the source. It is not a mechanical force measured in newtons.\n\n4. Potential difference (p.d.)\nPotential difference between two points is the energy transferred (or work done) per unit charge moving between those points:\nV = W/Q\nTherefore:\nW = QV\nThe unit is the volt (V). A source's emf is the energy supplied per coulomb inside the source; the terminal potential difference is the energy transferred per coulomb between its terminals. When a real cell supplies current, its terminal p.d. may be less than its emf because of internal resistance.\n\n5. Ways of producing electrical energy/current\n\nA. Chemical energy — cells and batteries\nA cell converts chemical energy into electrical energy. It has two electrodes and an electrolyte. Chemical reactions at the electrodes maintain a potential difference and drive charge around a complete external circuit.\nA battery is two or more cells connected together (although everyday language sometimes calls a single cell a battery). Primary cells are not designed to be recharged; secondary cells can be recharged using an external source.\nIn a discharging galvanic cell, oxidation occurs at the anode and reduction at the cathode. For a typical galvanic cell, the anode is negative and the cathode is positive. Polarity in an electrolytic cell is different, so do not memorise electrode signs without identifying the cell type.\n\nB. Heat energy — thermocouple\nA thermocouple uses two different conducting materials joined to form two junctions. When the junctions are at different temperatures, a small emf is produced (the Seebeck effect). In a closed circuit, this can drive a current. The output depends on the materials and the temperature difference. Thermocouples are commonly used for temperature measurement; they can also convert a temperature difference into electrical energy.\n\nC. Mechanical energy — generator\nA generator converts mechanical energy into electrical energy by electromagnetic induction. When a coil or conductor moves relative to a magnetic field, an emf is induced. If the circuit is closed, current flows.\nA rotating-coil alternator normally produces alternating current (AC). A DC generator uses a commutator, or an appropriate rectifier is used, to provide direct current (DC). The type of output depends on the machine.\n\nD. Solar energy — photovoltaic cell\nA solar cell converts light energy directly into electrical energy by the photovoltaic effect. When light falls on the semiconductor junction, charge carriers are separated and a potential difference is produced. Connecting a load in a complete circuit allows current to flow. Solar panels combine many solar cells.\n\n6. Compare the four sources\n- Cell: chemical energy → electrical energy.\n- Thermocouple: temperature difference/heat → electrical energy.\n- Generator: mechanical energy → electrical energy by electromagnetic induction.\n- Solar cell: light energy → electrical energy by the photovoltaic effect.\n\n7. Worked examples\nExample 1: A charge of 24 C passes a point in 6 s. Find the current.\nI = Q/t = 24/6 = 4 A.\n\nExample 2: A source transfers 60 J of energy to move 5 C of charge. Find the emf or p.d. represented by this energy transfer.\nV = W/Q = 60/5 = 12 V.\n\nCOMMON ERRORS\n- Current is charge per unit time, not charge multiplied by time.\n- Current is measured in amperes; charge is measured in coulombs.\n- Emf and p.d. are energy per unit charge, not mechanical forces.\n- Conventional current and electron drift in a metal wire have opposite directions.\n- A generator does not always produce DC; an alternator produces AC.\n- A cell requires a complete circuit for sustained current through an external load.\n\nSUMMARY\nI = Q/t and Q = It. Emf and p.d. are energy transferred per coulomb, measured in volts. Electrical current can be produced from chemical, thermal, mechanical and solar energy using cells, thermocouples, generators and photovoltaic cells.",
+      "body_sha256": "ef63b6f4dea9062569b92f78d2e8a245a7c399544ee8e8dd5b898d28ca764b64",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Define electric current and write its formula.",
+          "answer": "Electric current is the rate of flow of electric charge past a point. I = Q/t.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines current as rate of flow of charge.",
+              "marks": 1
+            },
+            {
+              "criterion": "Writes I = Q/t.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "What does a current of 1 ampere mean?",
+          "answer": "A charge of 1 coulomb passes a point in the circuit every second.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States 1 coulomb of charge.",
+              "marks": 1
+            },
+            {
+              "criterion": "States per second.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "A charge of 24 C passes through a wire in 6 s. Calculate the current.",
+          "answer": "I = Q/t = 24/6 = 4 A.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses I = Q/t.",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 4 A.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Distinguish between conventional current direction and electron flow in a metal wire.",
+          "answer": "Conventional current in the external circuit is from positive to negative terminal. Electrons drift from negative to positive terminal, so their direction is opposite.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct conventional current direction.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct electron-flow direction and distinction.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "Define electromotive force (emf), write its equation and state its unit.",
+          "answer": "Emf is energy supplied by a source per unit charge. ε = W/Q. Its unit is the volt (V).",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Defines emf as energy supplied per unit charge.",
+              "marks": 1
+            },
+            {
+              "criterion": "Writes ε = W/Q.",
+              "marks": 1
+            },
+            {
+              "criterion": "States volt (V).",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q06",
+          "question": "Define potential difference and write the equation connecting work, charge and potential difference.",
+          "answer": "Potential difference is work/energy transferred per unit charge between two points. V = W/Q, so W = QV.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct definition.",
+              "marks": 1
+            },
+            {
+              "criterion": "Writes V = W/Q or W = QV.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q07",
+          "question": "Explain how a chemical cell produces electric current.",
+          "answer": "Chemical reactions at two electrodes in an electrolyte maintain a potential difference. When the cell is connected in a complete circuit, charge flows through the external circuit.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Mentions chemical reactions/electrodes.",
+              "marks": 1
+            },
+            {
+              "criterion": "Mentions electrolyte and potential difference.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains current flows in a complete circuit.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q08",
+          "question": "Explain how a thermocouple can produce an electric current.",
+          "answer": "It uses two different conducting materials joined to form two junctions. A temperature difference between the junctions produces an emf (Seebeck effect). In a closed circuit, the emf drives a current.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Mentions two different conductors and junctions.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that a temperature difference produces emf.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that a closed circuit allows current to flow.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q09",
+          "question": "Explain how a generator converts mechanical energy into electrical energy.",
+          "answer": "A coil or conductor moves relative to a magnetic field. Electromagnetic induction produces an emf; if the circuit is closed, current flows.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Describes relative movement of conductor/coil and magnetic field.",
+              "marks": 1
+            },
+            {
+              "criterion": "Mentions induced emf by electromagnetic induction.",
+              "marks": 1
+            },
+            {
+              "criterion": "Connects closed circuit with current flow.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "How does a solar cell produce electrical energy?",
+          "answer": "Light falling on a semiconductor junction produces separated charge carriers and a potential difference by the photovoltaic effect. A connected circuit allows current to flow.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Mentions light/photovoltaic effect.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains charge separation/potential difference and current.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "Match each source with the energy conversion: (a) cell; (b) thermocouple; (c) generator; (d) solar cell.",
+          "answer": "(a) Chemical to electrical; (b) thermal/temperature difference to electrical; (c) mechanical to electrical; (d) light to electrical.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "(a) Chemical to electrical.",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) Thermal to electrical.",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) Mechanical to electrical.",
+              "marks": 1
+            },
+            {
+              "criterion": "(d) Light to electrical.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "Which formula represents current? (A) I = Qt (B) I = Q/t (C) I = t/Q (D) I = Q + t.",
+          "answer": "B. I = Q/t.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q13",
+          "question": "The energy supplied by a source per unit charge is called (A) resistance (B) emf (C) power (D) current.",
+          "answer": "B. Electromotive force (emf).",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q14",
+          "question": "In a thermocouple, increasing the temperature difference between the junctions generally causes the generated emf to (A) increase (B) become zero (C) remain always zero (D) turn into mass.",
+          "answer": "A. Increase, within the operating range of the thermocouple.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects A.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q15",
+          "question": "A cell converts chemical energy into which form of energy?",
+          "answer": "Electrical energy.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Electrical energy.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q16",
+          "question": "A generator converts (A) electrical to mechanical energy (B) mechanical to electrical energy (C) solar to chemical energy (D) heat to sound.",
+          "answer": "B. Mechanical to electrical energy.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q17",
+          "question": "A source transfers 60 J of energy to 5 C of charge. Calculate the emf or potential difference represented by this transfer.",
+          "answer": "V = W/Q = 60/5 = 12 V.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses V = W/Q.",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes 60 J and 5 C.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 12 V.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q18",
+          "question": "State two differences between emf and terminal potential difference when a real cell is supplying current.",
+          "answer": "Emf is the energy supplied per coulomb by the source; terminal p.d. is the energy transferred per coulomb between the terminals to the external circuit. Because of internal resistance, terminal p.d. is usually less than emf while current is being supplied.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Correctly distinguishes emf as energy supplied per coulomb.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly describes terminal p.d. across the terminals/external circuit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Mentions internal resistance and terminal p.d. being less than emf under load.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Sow the Seed Schools SS1 Physics Second Term scheme",
+          "locator": "Registered source SS1-SRC-2c924c964660; parsed row 9 WEEK TEN; body ID SS1-SRC-2c924c964660:BODY:d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6 (3,040 characters; source member SHA-256 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7). Original body text was not available in this execution.",
+          "url": null,
+          "rights": "Scheme used to establish subject/week scope; lesson independently authored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics scheme."
+        },
+        {
+          "title": "SchoolGist — Physics SSS 1 Second Term (public close-equivalent lesson note)",
+          "locator": "PDF, Week Ten, lines 732–835: current, charge/time, emf, p.d., chemical/thermal/mechanical/solar sources, classwork and assignment. Used as a close-equivalent scope comparison, not as the registered original .doc.",
+          "url": "https://schoolgist.ng/storage/postFiles/SS1-Physics-2nd-Term-Lesson-Note-pdf.pdf",
+          "rights": "Used to corroborate scope and exercise categories only; no wording or questions copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "SchoolGist, Physics SSS 1 Second Term, Week Ten, accessed 2026-11-11."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -7326,6 +7675,106 @@
         {
           "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Nine, lines 678–731.",
           "explanation": "Close-equivalent comparison includes electric field, lines of force, field patterns and assessment. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W10-OBJ-1",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Electric current, charge, time and the relationship I = Q/t.",
+      "objective_locator": "Registered source SS1-SRC-2c924c964660; parsed row 9 WEEK TEN; body SS1-SRC-2c924c964660:BODY:d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6 (3,040 characters; SHA-256 d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6). Scheme topic: production of continuous electric current from chemical, heat, mechanical and solar energy.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT; body SHA-256 ef63b6f4dea9062569b92f78d2e8a245a7c399544ee8e8dd5b898d28ca764b64; practice Q01–Q18.",
+          "explanation": "Authored supplement covers the scheme-level objectives with definitions, equations, source comparisons and a keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Ten, lines 732–835.",
+          "explanation": "Close-equivalent comparison includes current, charge/time, emf, p.d. and chemical, thermal, mechanical and solar generation. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W10-OBJ-2",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Electromotive force and potential difference as energy per unit charge.",
+      "objective_locator": "Registered source SS1-SRC-2c924c964660; parsed row 9 WEEK TEN; body SS1-SRC-2c924c964660:BODY:d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6 (3,040 characters; SHA-256 d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6). Scheme topic: production of continuous electric current from chemical, heat, mechanical and solar energy.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT; body SHA-256 ef63b6f4dea9062569b92f78d2e8a245a7c399544ee8e8dd5b898d28ca764b64; practice Q01–Q18.",
+          "explanation": "Authored supplement covers the scheme-level objectives with definitions, equations, source comparisons and a keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Ten, lines 732–835.",
+          "explanation": "Close-equivalent comparison includes current, charge/time, emf, p.d. and chemical, thermal, mechanical and solar generation. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W10-OBJ-3",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Production of electric current from chemical energy using cells.",
+      "objective_locator": "Registered source SS1-SRC-2c924c964660; parsed row 9 WEEK TEN; body SS1-SRC-2c924c964660:BODY:d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6 (3,040 characters; SHA-256 d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6). Scheme topic: production of continuous electric current from chemical, heat, mechanical and solar energy.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT; body SHA-256 ef63b6f4dea9062569b92f78d2e8a245a7c399544ee8e8dd5b898d28ca764b64; practice Q01–Q18.",
+          "explanation": "Authored supplement covers the scheme-level objectives with definitions, equations, source comparisons and a keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Ten, lines 732–835.",
+          "explanation": "Close-equivalent comparison includes current, charge/time, emf, p.d. and chemical, thermal, mechanical and solar generation. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W10-OBJ-4",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Production of electric current from heat and mechanical energy using thermocouples and generators.",
+      "objective_locator": "Registered source SS1-SRC-2c924c964660; parsed row 9 WEEK TEN; body SS1-SRC-2c924c964660:BODY:d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6 (3,040 characters; SHA-256 d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6). Scheme topic: production of continuous electric current from chemical, heat, mechanical and solar energy.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT; body SHA-256 ef63b6f4dea9062569b92f78d2e8a245a7c399544ee8e8dd5b898d28ca764b64; practice Q01–Q18.",
+          "explanation": "Authored supplement covers the scheme-level objectives with definitions, equations, source comparisons and a keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Ten, lines 732–835.",
+          "explanation": "Close-equivalent comparison includes current, charge/time, emf, p.d. and chemical, thermal, mechanical and solar generation. It is not asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W10-OBJ-5",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Production of electric current from solar energy using photovoltaic cells.",
+      "objective_locator": "Registered source SS1-SRC-2c924c964660; parsed row 9 WEEK TEN; body SS1-SRC-2c924c964660:BODY:d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6 (3,040 characters; SHA-256 d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6). Scheme topic: production of continuous electric current from chemical, heat, mechanical and solar energy.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT; body SHA-256 ef63b6f4dea9062569b92f78d2e8a245a7c399544ee8e8dd5b898d28ca764b64; practice Q01–Q18.",
+          "explanation": "Authored supplement covers the scheme-level objectives with definitions, equations, source comparisons and a keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Ten, lines 732–835.",
+          "explanation": "Close-equivalent comparison includes current, charge/time, emf, p.d. and chemical, thermal, mechanical and solar generation. It is not asserted to be the registered original .doc."
         }
       ]
     }
