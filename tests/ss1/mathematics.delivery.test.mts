@@ -90,7 +90,7 @@ test('an owner-approved Mathematics lesson is withheld until SS1-09 verification
   assert.equal(resolver(topic)?.kind, 'withheld');
 });
 
-test('Mathematics replacement is shown only after exact source, scoped blockers, owner approval and implementation pass', () => {
+test('Mathematics replacement is shown only after exact source, scoped blockers, owner approval, implementation and SS1-09 verification pass', () => {
   const fixture = JSON.parse(JSON.stringify(packageValue));
   const correction = fixture.delivery_corrections[0];
   const lesson = fixture.lessons.find((item: any) => item.id === correction.replacement_id);
