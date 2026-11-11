@@ -356,8 +356,33 @@ test('Agricultural Science learner delivery withholds corrected source rows unti
 
 
 
-test('Agricultural Science corrected weeks are independently deliverable when unrelated weeks remain blocked', () => {
+test('Agricultural Science corrected weeks are independently deliverable when unrelated weeks remain blocked', async () => {
   const p = packageSchema.parse(raw);
+  const archiveBytes = readFileSync(new URL('../../docs/ss1/sources/SSS1-original.zip', import.meta.url));
+  const archive = await JSZip.loadAsync(archiveBytes);
+  const inputs = [];
+  for (const source of p.sources) {
+    const member = archive.file(source.archive_member);
+    assert(member);
+    const bytes = await member.async('nodebuffer');
+    const extracted = await mammoth.extractRawText({ buffer: bytes });
+    inputs.push({ source_id: source.source_id, sha256: source.sha256, filePath: source.archive_member, text: extracted.value });
+  }
+  const plan = compilePackages([p], inputs, parseTopics);
+  const sourceTitles: Record<string, string> = {
+    'CORR-AG-T1-W09-ENVIRONMENTAL-FACTORS-REPLACEMENT': 'ENVIRONMENTAL FACTORS AFFECTING AGRICULTURAL PRODUCTION (CROPAND ANIMAL DISTRIBUTION AND PRODUCTION)',
+    'CORR-AG-T3-W01-TOOL-NAMES-REPLACEMENT': 'SIMPLE FARM TOOLS',
+    'CORR-AG-T2-W07-PEAT-TYPO-REPLACEMENT': 'ROCK FORMATION AND TYPES',
+    'CORR-AG-T2-W08-QUESTION-WORDING-REPLACEMENT': 'ROCK WEATHERING',
+    'CORR-AG-T2-W09-SOIL-TERMS-REPLACEMENT': 'FACTORS OF SOIL FORMATION',
+    'CORR-AG-T2-W06-AGRICULTURAL-ECOLOGY-REPLACEMENT': 'AGRICULTURAL ECOLOGY',
+    'CORR-AG-T2-W02-03-CULTURAL-PRACTICES-REPLACEMENT': 'CULTURAL PRACTICES',
+    'CORR-AG-T2-W04-05-SELECTED-CROPS-REPLACEMENT': 'HUSBANDRY AND CULTIVATION OF SOME SELECTED CROPS',
+    'CORR-AG-T1-W03-STORAGE-REPLACEMENT': 'PROBLEMS OF AGRICULTURAL DEVELOPMENT IN NIGERIA AND THEIR POSSIBLE SOLUTIONS',
+    'CORR-AG-T3-W02-POWER-WATER-REPLACEMENT': 'FARM POWER',
+    'CORR-AG-T3-W09-PIG-SAFE-REPLACEMENT': 'LIVESTOCK MANAGEMENT',
+    'CORR-AG-T3-W10-CATTLE-SAFE-REPLACEMENT': 'LIVESTOCK MANAGEMENT II',
+  };
   for (const correction of p.delivery_corrections) {
     const fixture = JSON.parse(JSON.stringify(p));
     const match = correction.id.match(/^CORR-AG-(T[123])-W([0-9]{2}(?:-[0-9]{2})?)-/);
@@ -368,49 +393,26 @@ test('Agricultural Science corrected weeks are independently deliverable when un
     fixture.open_items = fixture.open_items.map((item: any) =>
       item.id.startsWith(prefix) ? { ...item, blocks_delivery: false } : item
     );
-    const replacement = fixture.lessons.find((lesson: any) => lesson.id === correction.replacement_id);
-    replacement.state.verification = 'VERIFIED';
-    replacement.state.verification_reference = 'TEST_ONLY_WEEK_VERIFICATION_FIXTURE';
+    const replacementLesson = fixture.lessons.find((lesson: any) => lesson.id === correction.replacement_id);
+    replacementLesson.state.verification = 'VERIFIED';
+    replacementLesson.state.verification_reference = 'TEST_ONLY_WEEK_VERIFICATION_FIXTURE';
     const source = fixture.sources.find((candidate: any) => candidate.source_id === correction.source_id);
+    const row = plan.identified_rows.find(candidate => candidate.id === correction.source_lesson_id);
+    assert(row, `actual parser must identify source row for ${correction.id}`);
     const topic = {
-      id: 1200 + fixture.delivery_corrections.indexOf(correction),
+      id: 1300 + fixture.delivery_corrections.indexOf(correction),
       school_code: 'secondary',
       class_name: 'SS 1',
       subject_name: 'Agricultural Science',
       term_label: source.term,
-      title: ({
-        'CORR-AG-T1-W09-ENVIRONMENTAL-FACTORS-REPLACEMENT': 'ENVIRONMENTAL FACTORS AFFECTING AGRICULTURAL PRODUCTION (CROPAND ANIMAL DISTRIBUTION AND PRODUCTION)',
-        'CORR-AG-T3-W01-TOOL-NAMES-REPLACEMENT': 'SIMPLE FARM TOOLS',
-        'CORR-AG-T2-W07-PEAT-TYPO-REPLACEMENT': 'ROCK FORMATION AND TYPES',
-        'CORR-AG-T2-W08-QUESTION-WORDING-REPLACEMENT': 'ROCK WEATHERING',
-        'CORR-AG-T2-W09-SOIL-TERMS-REPLACEMENT': 'FACTORS OF SOIL FORMATION',
-        'CORR-AG-T2-W06-AGRICULTURAL-ECOLOGY-REPLACEMENT': 'AGRICULTURAL ECOLOGY',
-        'CORR-AG-T2-W02-03-CULTURAL-PRACTICES-REPLACEMENT': 'CULTURAL PRACTICES',
-        'CORR-AG-T2-W04-05-SELECTED-CROPS-REPLACEMENT': 'HUSBANDRY AND CULTIVATION OF SOME SELECTED CROPS',
-        'CORR-AG-T1-W03-STORAGE-REPLACEMENT': 'PROBLEMS OF AGRICULTURAL DEVELOPMENT IN NIGERIA AND THEIR POSSIBLE SOLUTIONS',
-        'CORR-AG-T3-W02-POWER-WATER-REPLACEMENT': 'FARM POWER',
-        'CORR-AG-T3-W09-PIG-SAFE-REPLACEMENT': 'LIVESTOCK MANAGEMENT',
-        'CORR-AG-T3-W10-CATTLE-SAFE-REPLACEMENT': 'LIVESTOCK MANAGEMENT II',
-      } as Record<string, string>)[correction.id],
+      title: sourceTitles[correction.id],
       source_file: source.archive_member.split('/').at(-1),
-      source_reference: 'fixture-source-body',
+      source_reference: row.row.sourceReference,
     };
-    // The actual resolver's source fingerprint is checked in the parser-backed test above.
-    const resolver = createAgriculturalScienceDeliveryResolver(fixture);
-    const actualSource = p.sources.find(candidate => candidate.source_id === correction.source_id)!;
-    assert.equal(topic.source_file, actualSource.archive_member.split('/').at(-1));
-    assert.equal(fixture.package_status, 'PENDING', 'a different package-wide status must not suppress a cleared week');
+    const resolved = createAgriculturalScienceDeliveryResolver(fixture)(topic);
+    assert.equal(resolved?.kind, 'corrected', `cleared week should deliver independently: ${correction.id}; got ${resolved?.reason ?? 'no resolution'}`);
     assert(fixture.open_items.some((item: any) => item.blocks_delivery && !item.id.startsWith(prefix)),
-      'other weeks must remain blocked in this fixture');
-    // The full parser-backed source row is exercised in the existing test; this assertion
-    // directly verifies the scoped gate through a topic using that source body.
-    const originalLesson = p.lessons.find(lesson => lesson.id === correction.replacement_id)!;
-    assert.equal(originalLesson.state.verification, 'DEFERRED', 'fixture must not mutate production evidence');
-    const sourceRow = p.delivery_corrections.find(item => item.id === correction.id)!;
-    assert(sourceRow.source_lesson_id);
-    // The resolver will return null for a synthetic title/body mismatch only if identity is not bound;
-    // scoped gate behavior is asserted below by checking the exported helper's observable result
-    // with the source reference supplied by the existing parser-backed path.
+      `unrelated week blockers must remain active while ${correction.id} is delivered`);
   }
 });
 
