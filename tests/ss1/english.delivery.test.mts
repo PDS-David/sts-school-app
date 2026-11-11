@@ -142,7 +142,7 @@ test('Student and parent topic responses hide compiled English answer keys while
     question.question,
     'Answer: ' + question.answer,
     'Marking guide: ' + question.marking.map(item => item.criterion).join('; '),
-  ].join('\\n');
+  ].join('\n');
   const topic = {
     school_code: 'secondary',
     class_name: 'SS 1',
