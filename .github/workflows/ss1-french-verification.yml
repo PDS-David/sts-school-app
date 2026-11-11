@@ -149,7 +149,27 @@ jobs:
 
       - name: Bundle the student app for Android and verify local French audio assets
         working-directory: mobile
-        run: npx expo export --platform android --output-dir "$RUNNER_TEMP/french-android-export"
+        run: |
+          npx expo export --platform android --output-dir "$RUNNER_TEMP/french-android-export"
+          node - "$RUNNER_TEMP/french-android-export" <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+          const root = process.argv[2];
+          const files = [];
+          const visit = dir => {
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const full = path.join(dir, entry.name);
+              if (entry.isDirectory()) visit(full);
+              else files.push(full);
+            }
+          };
+          visit(root);
+          const mp3 = files.filter(file => file.toLowerCase().endsWith('.mp3'));
+          if (mp3.length !== 2) {
+            throw new Error(`Expected exactly two bundled French MP3 files, found ${mp3.length}: ${mp3.join(', ')}`);
+          }
+          console.log('Verified bundled French MP3 assets:', mp3.map(file => path.relative(root, file)));
+          NODE
 
       - name: Verify student app French audio routing and playback integration
         working-directory: .
