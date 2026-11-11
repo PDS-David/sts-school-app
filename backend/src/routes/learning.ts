@@ -10,6 +10,7 @@ import { resolveSequenceGroup } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
 import { resolveSs1Delivery, safeSs1Topic, retireStaleSs1Cache, ss1AssessmentDeliverable, ss1WithdrawnAssessmentIds } from '../utils/ss1CateringDeliveryCorrection.js';
 import { resolveAgriculturalScienceDelivery, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
+import { resolveEnglishDelivery, safeEnglishTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
 // Read per request (value is constant in a running server) so tests can exercise PIN on and off in one process.
@@ -162,7 +163,7 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
 
   const { rows: rawRows } = await query(sql, params);
   // JSS3 and SS1 subject-specific delivery corrections: audited source text and stale summaries are never returned.
-  const rows = rawRows.map((r: any) => safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(r))));
+  const rows = rawRows.map((r: any) => safeEnglishTopic(safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(r)))));
 
   // For a student, also report whether they've completed each topic, and
   // whether it's currently locked. Locking (see schema.sql's "Term-PIN
@@ -379,7 +380,7 @@ router.put('/topics/:id', requirePerm('topics.write'), async (req, res) => {
   const { rows: full } = await query(
     'SELECT t.*, sub.name AS subject_name FROM topics t LEFT JOIN subjects sub ON sub.id=t.subject_id WHERE t.id=$1', [req.params.id],
   );
-  const { subject_name: _subjectName, ...safe } = safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(full[0] ?? rows[0])));
+  const { subject_name: _subjectName, ...safe } = safeEnglishTopic(safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(full[0] ?? rows[0]))));
   return res.json({ topic: safe });
 });
 
@@ -491,7 +492,20 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
         note: 'This Agricultural Science topic is temporarily unavailable pending subject approval and verification.' });
     }
   }
-  const groundingSource: string | null = agriculturalScienceDelivery?.kind === 'corrected' ? agriculturalScienceDelivery.text
+  const englishDelivery = resolveEnglishDelivery(topic);
+  if (englishDelivery) {
+    await retireStaleEnglishCache(query, topic.id, englishDelivery);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    topic.summary = englishDelivery.text;
+    if (englishDelivery.kind === 'withheld') {
+      return res.json({ ok: true, summary: englishDelivery.text, summary_is_fallback: false, practice_questions: [], assessment_status: null,
+        delivery_correction: { id: englishDelivery.correctionId, status: 'withheld', provenance: 'withheld pending English approval/verification' },
+        note: 'This English Language topic is temporarily unavailable pending subject approval and verification.' });
+    }
+  }
+  const groundingSource: string | null = englishDelivery?.kind === 'corrected' ? englishDelivery.text
+    : agriculturalScienceDelivery?.kind === 'corrected' ? agriculturalScienceDelivery.text
     : ss1Delivery?.kind === 'corrected' ? ss1Delivery.text
     : delivery?.kind === 'corrected' ? delivery.text : topic.source_reference;
 
@@ -889,7 +903,8 @@ router.get('/assessments', requirePerm('assessments.read'), async (req, res) => 
     const jss3Gone = await withdrawnAssessmentIds(query, openIds);
     const ss1Gone = await ss1WithdrawnAssessmentIds(query, openIds);
     const agriculturalScienceGone = await agriculturalScienceWithdrawnAssessmentIds(query, openIds);
-    const gone = new Set([...jss3Gone, ...ss1Gone, ...agriculturalScienceGone]);
+    const englishGone = await englishWithdrawnAssessmentIds(query, openIds);
+    const gone = new Set([...jss3Gone, ...ss1Gone, ...agriculturalScienceGone, ...englishGone]);
     if (gone.size) return res.json({ assessments: rows.filter((r: any) => !gone.has(r.id)) });
   }
   return res.json({ assessments: rows });
@@ -1032,6 +1047,8 @@ router.get('/assessments/:id/questions', async (req, res) => {
     if (!ss1Deliverable.ok) return res.status(403).json({ error: ss1Deliverable.reason });
     const agriculturalScienceDeliverable = await agriculturalScienceAssessmentDeliverable(query, assessment.id);
     if (!agriculturalScienceDeliverable.ok) return res.status(403).json({ error: agriculturalScienceDeliverable.reason });
+    const englishDeliverable = await englishAssessmentDeliverable(query, assessment.id);
+    if (!englishDeliverable.ok) return res.status(403).json({ error: englishDeliverable.reason });
   } else if (user.role !== 'admin') {
     // Teachers never get here: creating, viewing, or opening the questions of
     // an assessment is Brainee/admin territory on this platform, not a
@@ -1116,6 +1133,8 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
   if (!ss1Deliverable.ok) return res.status(403).json({ error: ss1Deliverable.reason });
   const agriculturalScienceDeliverable = await agriculturalScienceAssessmentDeliverable(query, req.params.id);
   if (!agriculturalScienceDeliverable.ok) return res.status(403).json({ error: agriculturalScienceDeliverable.reason });
+  const englishDeliverable = await englishAssessmentDeliverable(query, req.params.id);
+  if (!englishDeliverable.ok) return res.status(403).json({ error: englishDeliverable.reason });
 
   // Auto-mark MCQs; hand essay answers to Brainee (this is the STS Virtual
   // School's own AI grading path — see submission_answers in schema.sql.
@@ -1379,6 +1398,8 @@ router.get('/submissions/:id/answers', async (req, res) => {
       if (!ss1Deliverable.ok) return res.status(410).json({ error: ss1Deliverable.reason });
       const agriculturalScienceDeliverable = await agriculturalScienceAssessmentDeliverable(query, assessmentId);
       if (!agriculturalScienceDeliverable.ok) return res.status(410).json({ error: agriculturalScienceDeliverable.reason });
+      const englishDeliverable = await englishAssessmentDeliverable(query, assessmentId);
+      if (!englishDeliverable.ok) return res.status(410).json({ error: englishDeliverable.reason });
     }
   }
 
