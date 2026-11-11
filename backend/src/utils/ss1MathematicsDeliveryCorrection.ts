@@ -94,7 +94,7 @@ export function createSs1MathematicsDeliveryResolver(input: SubjectPackage) {
   for (const correction of corrections) {
     const source = sources.get(correction.source_id);
     const lesson = lessons.get(correction.replacement_id);
-    if (!source || !lesson || lesson.term !== source.term || correction.source_sha256 !== source.sha256 ||
+    if (!source || !lesson || !SOURCE_TITLES[correction.id] || lesson.term !== source.term || correction.source_sha256 !== source.sha256 ||
         correction.source_lesson_id !== `${correction.source_id}:BODY:${correction.body_sha256}`) {
       throw new Error(`Invalid SS1 Mathematics correction binding: ${correction.id}`);
     }
@@ -151,6 +151,33 @@ export function createSs1MathematicsDeliveryResolver(input: SubjectPackage) {
 const packageValue = packageSchema.parse(packageData);
 const defaultResolver = createSs1MathematicsDeliveryResolver(packageValue);
 export const resolveSs1MathematicsDelivery = (topic: Ss1MathematicsTopic) => defaultResolver(topic);
+
+/** Prevent raw Mathematics source rows (including unresolved weeks) from leaking into student topic lists/details. */
+export function safeSs1MathematicsTopic<T extends Ss1MathematicsTopic>(topic: T): T {
+  if (topic.school_code !== SCHOOL_CODE || topic.class_name !== CLASS_NAME ||
+      norm(topic.subject_name) !== norm(SUBJECT_NAME)) return topic;
+  const sourceFile = path.basename(String(topic.source_file ?? ''));
+  const source = packageValue.sources.find(item => item.term === topic.term_label &&
+    path.basename(item.archive_member) === sourceFile);
+  if (!source || typeof topic.source_reference !== 'string') return topic;
+  const delivery = defaultResolver(topic);
+  if (delivery?.kind === 'corrected') {
+    return {
+      ...topic, source_reference: delivery.text, summary: delivery.text, generated_assessment_id: null,
+      delivery_correction: { id: delivery.correctionId, status: 'corrected',
+        provenance: 'approved and verified Mathematics replacement lesson' },
+    } as T;
+  }
+  const correctionId = delivery?.correctionId ?? `${source.source_id}:BODY:${hash(topic.source_reference)}`;
+  return {
+    ...topic, source_reference: null,
+    summary: delivery?.text ?? `${SS1_MATHEMATICS_WITHHELD_MARKER} ${correctionId}\nThis Mathematics source row has no approved, verified student replacement yet.`,
+    generated_assessment_id: null,
+    delivery_correction: { id: correctionId, status: 'withheld',
+      provenance: 'withheld pending exact source mapping, approval and verification',
+      reason: delivery?.reason ?? 'No approved replacement is bound to this exact source row' },
+  } as T;
+}
 
 /** Retire cached Brainee summaries/assessments when an exact Mathematics source row is replaced or withheld. */
 export async function retireStaleSs1MathematicsCache(query: Ss1MathematicsQuery, topicId: unknown, delivery: Ss1MathematicsResolution) {
