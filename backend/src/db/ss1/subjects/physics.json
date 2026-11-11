@@ -2960,6 +2960,130 @@
               "marks": 1
             }
           ]
+        },
+        {
+          "id": "Q15",
+          "question": "A metal is 15.01 m long. After its temperature rises by 60 K, its length is 15.05 m. Calculate its linear expansivity.",
+          "answer": "ΔL = 15.05 − 15.01 = 0.04 m. α = ΔL/(L₀ΔT) = 0.04/(15.01 × 60) = 4.44 × 10⁻⁵ K⁻¹ (approximately).",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Finds ΔL = 0.04 m.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses α = ΔL/(L₀ΔT) and substitutes correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives approximately 4.44 × 10⁻⁵ K⁻¹.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q16",
+          "question": "The volume of 10 cm³ of mercury increases by 0.182 cm³ when its temperature rises by 100 K. Calculate its cubical expansivity.",
+          "answer": "γ = ΔV/(V₀ΔT) = 0.182/(10 × 100) = 1.82 × 10⁻⁴ K⁻¹.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses γ = ΔV/(V₀ΔT).",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes 0.182, 10 and 100 correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 1.82 × 10⁻⁴ K⁻¹.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q17",
+          "question": "A metal bar 50 cm long is heated from 15 °C to 85 °C and expands by 0.088 cm. Find its linear expansivity.",
+          "answer": "ΔT = 85 − 15 = 70 K. α = 0.088/(50 × 70) = 2.51 × 10⁻⁵ K⁻¹ (approximately).",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Finds ΔT = 70 K.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses α = ΔL/(L₀ΔT) and substitutes correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives approximately 2.51 × 10⁻⁵ K⁻¹.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q18",
+          "question": "Show that the area expansivity of an isotropic solid is approximately twice its linear expansivity for small expansion.",
+          "answer": "For a rectangular plate, L₂ = L₁(1 + αΔT) and b₂ = b₁(1 + αΔT). Therefore A₂ = A₁(1 + αΔT)² ≈ A₁(1 + 2αΔT), ignoring the small (αΔT)² term. Comparing with A₂ = A₁(1 + βΔT), β ≈ 2α.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Writes the expanded length and breadth relations.",
+              "marks": 1
+            },
+            {
+              "criterion": "Forms A₂ = A₁(1 + αΔT)².",
+              "marks": 1
+            },
+            {
+              "criterion": "Neglects the small squared term for small expansion.",
+              "marks": 1
+            },
+            {
+              "criterion": "Concludes β ≈ 2α.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q19",
+          "question": "A liquid has real expansivity 3.0 × 10⁻⁶ K⁻¹ and apparent expansivity 1.8 × 10⁻⁶ K⁻¹. Find the cubical expansivity of its container.",
+          "answer": "γ꜀ = γᵣ − γₐ = (3.0 − 1.8) × 10⁻⁶ = 1.2 × 10⁻⁶ K⁻¹.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses γᵣ = γₐ + γ꜀.",
+              "marks": 1
+            },
+            {
+              "criterion": "Rearranges and subtracts correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 1.2 × 10⁻⁶ K⁻¹.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q20",
+          "question": "The linear expansivity of metal P is twice that of metal Q. They are heated through the same temperature rise and have equal increases in length. Find the ratio of their original lengths Lₚ : Lq.",
+          "answer": "αₚLₚΔT = αqLqΔT. Since αₚ = 2αq, 2αqLₚ = αqLq, so Lₚ/Lq = 1/2. Ratio = 1 : 2.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Equates αₚLₚΔT and αqLqΔT.",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes αₚ = 2αq and simplifies correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives Lₚ : Lq = 1 : 2.",
+              "marks": 1
+            }
+          ]
         }
       ],
       "provenance": [
