@@ -12,8 +12,8 @@ Status: **IMPLEMENTED — testing deferred; teacher approval pending**.
 
 ## Supplement authored
 - Lesson ID: `SUP-SS1-PHYSICS-T1-W02-VOLUME-MEASUREMENT`
-- Body SHA-256: `b848f82dd68abd1619344dd9d1dd49eeb12adf1ae03e15678fdb0b098c0ff437`
-- Body length: 4,644 characters.
+- Body SHA-256: `89cf46cc386a94ec76e04b2cb7bf5a53de52bf92fcb6088b91f4cc042fb40613`
+- Body length: 4,647 characters.
 - Practice: 18 answered questions, 38 marks; marking totals checked.
 
 It teaches volume units and conversions, formulae for regular solids, displacement for irregular solids, the sinker method for floating objects, graduated-cylinder reading, concave/convex menisci, eye-level reading, parallax, and the uses of pipettes and burettes. It supplements the source's one-sentence volume section with complete student procedures.
