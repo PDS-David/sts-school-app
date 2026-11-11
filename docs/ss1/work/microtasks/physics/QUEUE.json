@@ -40,7 +40,8 @@
     "PHYS-WK-T3-W01 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS (6,167-char body; 18 keyed questions; 39 marks) and added five objective-level coverage entries. EduPodia/Ecolebooks public notes used only as close-equivalent comparisons. Original .doc body/circuit diagram not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W01.md; queue item BLOCKED.",
     "PHYS-WK-T3-W02 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL (4,455-char body; 18 keyed questions; 38 marks) and added five objective-level coverage entries. SchoolGist/Ecolebooks close-equivalent notes used only for scope corroboration. Original .doc body/diagrams not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W02.md; queue item BLOCKED.",
     "PHYS-WK-T3-W03 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER (4,065-char body; 18 keyed questions; 40 marks) and added five objective-level coverage entries. SchoolGist/Ecolebooks close-equivalent notes used only for scope corroboration. Original .doc body/figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W03.md; queue item BLOCKED.",
-    "PHYS-WK-T3-W04 + PHYS-FACT-T3-FUSE-RATING + PHYS-FACT-T3-W04-ASSIGNMENT + PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA (2026-11-11): implemented source indexing, correction and assessment disposition. See the four task notes in docs/ss1/work/microtasks/physics/. Source PDF line locators and prior original-source checkpoint are recorded; lesson content approval remains pending and testing deferred."
+    "PHYS-WK-T3-W04 + PHYS-FACT-T3-FUSE-RATING + PHYS-FACT-T3-W04-ASSIGNMENT + PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA (2026-11-11): implemented source indexing, correction and assessment disposition. See the four task notes in docs/ss1/work/microtasks/physics/. Source PDF line locators and prior original-source checkpoint are recorded; lesson content approval remains pending and testing deferred.",
+    "PHYS-TEST-PACKAGE-NEW (2026-11-11): completed and executed. Dedicated workflow run 43012753944 succeeded: 7 tests, 7 pass, 0 fail; registered SS1 package validator passed. Test file tests/ss1/physics.package.test.mts and workflow .github/workflows/ss1-physics-verification.yml. Does not certify source-importer, DB or device delivery."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -59,9 +60,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 38,
+    "IMPLEMENTED_TESTING_DEFERRED": 39,
     "BLOCKED": 26,
-    "PENDING": 25
+    "PENDING": 24
   },
   "total": 89,
   "items": [
@@ -2183,8 +2184,8 @@
         "PHYS-SRC-T2",
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "A Physics package regression test has been authored on branch agent/physics-package-regression-20261111. It checks source manifest identity, all three term registrations, package schema, lesson body hashes and marking totals, coverage/source references, source-rule guards, corrections/assets/open-item references and queue consistency. It has not yet been executed; status remains PENDING until a CI or authorised test run passes.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Physics package regression test is committed at tests/ss1/physics.package.test.mts and executed by the dedicated workflow .github/workflows/ss1-physics-verification.yml. Run 43012753944 succeeded on commit 2074b18cf0ffe884804f0daf0b7471e09faff715: all 7 Physics regression tests passed; registered SS1 package validation also passed. Run log: https://github.com/PDS-David/sts-school-app/actions/runs/43012753944. This verifies package/schema/hash/marking/reference/queue invariants only; source-importer, database and student-device acceptance remain separate.",
       "completion_condition": "The package test is committed, executed in the repository's supported test environment, and all failures are fixed without weakening the assertions or claiming unrun source/device acceptance."
     },
     {
@@ -3073,7 +3074,7 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "Weeks 3–10 T2, T3 Weeks 1–4, and source corrections authored. T3W4 source indexing and three factual dependencies implemented with source line evidence. PR #578 contains all changes; CI/test execution pending."
+    "notes": "Physics regression workflow passed 7/7; package validation passed. T2 Weeks 3–10 and T3 Weeks 1–4 authored/indexed. Remaining source and visual tasks continue."
   },
   "next_runnable": [
     "PHYS-WK-T3-W05",
@@ -3090,7 +3091,6 @@
     "PHYS-PORT-D1-RULE-SPLIT",
     "PHYS-PORT-D1-FACT-T1-W05",
     "PHYS-PORT-D1-FACT-T2-W01",
-    "PHYS-TEST-PACKAGE-NEW",
     "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
@@ -3109,7 +3109,6 @@
     "PHYS-PORT-D1-RULE-SPLIT",
     "PHYS-PORT-D1-FACT-T1-W05",
     "PHYS-PORT-D1-FACT-T2-W01",
-    "PHYS-TEST-PACKAGE-NEW",
     "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ]
