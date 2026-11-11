@@ -161,7 +161,7 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
   sql += " ORDER BY COALESCE((to_jsonb(t)->>'sequence_rank')::numeric, t.order_index) NULLS LAST, t.order_index NULLS LAST, t.created_at DESC";
 
   const { rows: rawRows } = await query(sql, params);
-  // JSS3 delivery correction: audited-unsafe original text/cached summary is never returned (see utils/jss3DeliveryCorrection.ts).
+  // JSS3 and SS1 subject-specific delivery corrections: audited source text and stale summaries are never returned.
   const rows = rawRows.map((r: any) => safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(r))));
 
   // For a student, also report whether they've completed each topic, and
@@ -374,7 +374,7 @@ router.put('/topics/:id', requirePerm('topics.write'), async (req, res) => {
      WHERE id=$6 RETURNING *`,
     [title, description, subject_id, class_name, term_id, req.params.id],
   );
-  // Same delivery guard as the list/detail paths: an edited JSS3 row must not hand back stale, withheld or
+  // Same delivery guard as the list/detail paths: an edited JSS3 or SS1 corrected row must not hand back stale, withheld or
   // audited-original text (or a stale assessment link). The stored row itself is not touched here.
   const { rows: full } = await query(
     'SELECT t.*, sub.name AS subject_name FROM topics t LEFT JOIN subjects sub ON sub.id=t.subject_id WHERE t.id=$1', [req.params.id],
@@ -453,7 +453,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
     }
   }
 
-  // JSS3 delivery correction (after access/lock checks, so correction never widens access). A topic whose original
+  // Subject-specific delivery correction (after access/lock checks, so correction never widens access). A topic whose original
   // text is audited as unsafe is taught from the corrected lessons only; if its stored source changed unreviewed it
   // is withheld. Stale cached summary/assessment built from the original text is retired atomically first.
   const delivery = resolveDelivery(topic);
@@ -1369,7 +1369,7 @@ router.get('/submissions/:id/answers', async (req, res) => {
     return res.status(403).json({ error: 'Not authorized' });
   }
 
-  // A previously submitted SS1 Catering Craft assessment may be withdrawn after a source correction.
+  // A previously submitted SS1 Catering Craft or Agricultural Science assessment may be withdrawn after a source correction.
   // Preserve the submission rows, but do not expose question/answer content to students or parents
   // once its linked assessment is no longer deliverable.
   if (user.role === 'student' || user.role === 'parent') {
