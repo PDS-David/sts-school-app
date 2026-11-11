@@ -86,7 +86,7 @@ Clear expressions now taught in SUP-SS1-FRENCH-COURTESY-CELEBRATIONS-T1. Intende
 ## Consistency findings requiring correction
 
 1. Historical Week 1–3 indexing notes are not synchronized with the current package. For example, `FR-WK-T1-W01.md` still describes OBJ-4/OBJ-5 as unresolved and refers to supplements that have since been authored; the current package marks the neighbour and benefits objectives `IMPLEMENTED_EQUIVALENT`. `FR-WK-T1-W02.md` still says both DEVOIR exercises lack counterparts, while current coverage links the Anglophone supplement and demonym supplement. `FR-WK-T1-W03.md` predates the completed eight-field self-presentation supplement and still reports that objective as partial. Those historical task notes must be refreshed or explicitly marked superseded before they are used as current audit evidence.
-2. Correction `SS1-02-french-COR-005` contains contradictory visual claims: its evidence says the punctuation drawing remains unresolved, while `VISUAL_DISPOSITION.md` says punctuation is represented in accessible text and no image asset is required. The dedicated Week 5 record `FR-WK-T1-W05.md` still treats the punctuation drawing as open. A single verified disposition must be selected and the three records synchronized.
+2. **Resolved in this reconciliation branch:** correction `SS1-02-french-COR-005` and the Week 5 indexing note are being aligned with `VISUAL_DISPOSITION.md`: the inspected punctuation drawing is represented by accessible text and needs no separate image asset. This does not close the separate learner oral-performance/approval gate.
 3. The `QUEUE.json` header says its snapshot was generated from `dd739bba...` and its introductory notes describe an older package state (27 lessons, 29 coverage records, 3 open items), whereas current `master` contains 40 lessons, 55 coverage records and 8 open items. The queue must be regenerated/reconciled against current master before it is used to schedule remaining work.
 
 ## What is actually closed by this reconciliation
@@ -105,3 +105,8 @@ Clear expressions now taught in SUP-SS1-FRENCH-COURTESY-CELEBRATIONS-T1. Intende
 - Keep content approval, oral learner verification, database delivery, app runtime and production build as separate acceptance gates.
 
 **No lesson approval, learner observation, official exam recording, database write or production release is claimed by this report.**
+
+
+## Follow-up correction in this branch
+
+The Week 5 punctuation-drawing contradiction is corrected in `french.json` and `FR-WK-T1-W05.md`: the visual equivalent is recorded as implemented, while learner oral performance remains unobserved. The Week 1–3 indexing notes now include current-state supersession notes, and `QUEUE.json` carries an explicit stale-snapshot warning. These documentation corrections do not alter lesson approval or verification states.
