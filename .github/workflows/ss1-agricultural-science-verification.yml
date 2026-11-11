@@ -8,6 +8,7 @@ on:
       - "docs/ss1/sources/SSS1-original.zip"
       - "scripts/ss1/prepare_sources.py"
       - "backend/src/db/ss1/**"
+      - "backend/src/db/ingestTopics.ts"
       - "backend/src/db/attachTopicAssets.ts"
       - "backend/src/routes/learning.ts"
       - "backend/src/utils/ss1AgriculturalScienceDeliveryCorrection.ts"
@@ -70,6 +71,23 @@ jobs:
         run: node --import tsx --test tests/ss1/agricultural-science.package.test.mts
       - name: Run Agricultural Science asset-plan tests
         run: node --import tsx --test tests/ss1/agricultural-science.asset-plan.test.mts
+      - name: Verify subject-scoped Agricultural Science text import plan
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp -d)"
+          stage="$tmp/stage"
+          python scripts/ss1/prepare_sources.py --archive docs/ss1/sources/SSS1-original.zip --output "$stage"
+          node --import tsx backend/src/db/ingestTopics.ts --root "$stage" --school-code secondary --ss1-reviewed --ss1-subject-slug agricultural-science --ss1-plan "$tmp/agricultural-science-text-plan.json"
+          node --input-type=module - "$tmp/agricultural-science-text-plan.json" <<'NODE'
+          import fs from 'node:fs';
+          const plan = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
+          if (plan.ready !== true) throw new Error('Agricultural Science text import plan is not ready: ' + JSON.stringify(plan.blockers));
+          if (plan.blockers.length !== 0) throw new Error('Unexpected text import blockers: ' + JSON.stringify(plan.blockers));
+          if (plan.rows.length !== 77) throw new Error('Expected 30 source rows plus 47 approved supplements; found ' + plan.rows.length);
+          if (plan.identified_rows.filter(row => row.source_id !== null).length !== 30) throw new Error('Expected all 30 source rows to be parser-identified');
+          console.log('Verified: 30 ZIP source rows and 47 approved lesson supplements produce a blocker-free 77-row text import plan.');
+          NODE
       - name: Rebuild source-bound Agricultural Science asset plan and enforce approval withholding
         shell: bash
         run: |
@@ -87,14 +105,15 @@ jobs:
           node --input-type=module - "$out/agricultural-science-asset-plan.json" <<'NODE'
           import fs from 'node:fs';
           const report = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
-          if (report.ready !== false) throw new Error('Pending package unexpectedly produced a ready asset plan');
+          if (report.ready !== false) throw new Error('Unverified visual assets unexpectedly produced a ready asset plan');
           if (report.records.length !== 40) throw new Error('Expected all 40 package assets to map to compiler rows; found ' + report.records.length);
-          if (!report.blockers.includes('PACKAGE_NOT_IMPLEMENTED:agricultural-science')) throw new Error('Package approval gate was not enforced');
-          if (!report.blockers.some(item => item.startsWith('ASSET_NOT_VERIFIED:'))) throw new Error('Asset verification gate was not enforced');
-          console.log('Verified: all 40 assets map to exact compiler rows; pending approvals block CSV emission.');
+          if (report.blockers.includes('PACKAGE_NOT_IMPLEMENTED:agricultural-science')) throw new Error('Implemented text package must not be blocked by package status');
+          if (report.blockers.some(item => item.startsWith('LESSON_NOT_VERIFIED:'))) throw new Error('Verified lesson text must not be blocked by lesson verification');
+          if (!report.blockers.some(item => item.startsWith('ASSET_NOT_VERIFIED:'))) throw new Error('Deferred visual assets must remain withheld until visual verification');
+          console.log('Verified: text package is implemented; all 40 visual assets remain separately withheld pending rendering verification.');
           NODE
           if find "$out" -type f -name '*.csv' -print -quit | grep -q .; then
-            echo 'Unexpected attachable CSV emitted while approvals are pending.' >&2
+            echo 'Unexpected attachable CSV emitted while visual asset verification is deferred.' >&2
             exit 1
           fi
       - name: Run safe SVG ingestion tests
