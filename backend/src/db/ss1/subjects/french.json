@@ -6152,7 +6152,7 @@
       "source_id": "SS1-SRC-945dfb24eaf6",
       "objective": "Les professions/métiers",
       "objective_locator": "SS1-SRC-945dfb24eaf6: 6; exact body hash 91a76853d45df767cf3f37ace1a86e11a96ec8f3e451dea204c839a676f99e5a",
-      "status": "IMPLEMENTED_EQUIVALENT",
+      "status": "PARTIAL",
       "lesson_ids": [
         "SUP-SS1-FRENCH-PROFESSIONS-T1"
       ],
@@ -6160,6 +6160,10 @@
         {
           "locator": "SS1-SRC-945dfb24eaf6:BODY:91a76853d45df767cf3f37ace1a86e11a96ec8f3e451dea204c839a676f99e5a",
           "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+        },
+        {
+          "locator": "Original T1 DOCX rendered pages 10-12; table rows 12 and 26; source direct-body children 287-289",
+          "explanation": "The replacement now teaches 44 clear source entries and separates non-profession roles, but source rows 12 'computateur' and 26 'couteur' remain ambiguous after inspection of the full table and rendered pages. They are not silently mapped to guessed occupations. Owner decision remains required."
         }
       ]
     },
@@ -6360,7 +6364,7 @@
       "source_id": "SS1-SRC-8a2ec1fe30e3",
       "objective": "TOPIC: LES PRACTIQUES DE LA LECTURE LE DIALOQUE",
       "objective_locator": "SS1-SRC-8a2ec1fe30e3: ONE; exact body hash f5aa6cfb6bfd21753efee0392f24e1a5c86c658b61a88214e9907c621750bd7e",
-      "status": "IMPLEMENTED_EQUIVALENT",
+      "status": "PARTIAL",
       "lesson_ids": [
         "SUP-SS1-FRENCH-DIALOGUE-T3"
       ],
@@ -6368,6 +6372,10 @@
         {
           "locator": "SS1-SRC-8a2ec1fe30e3:BODY:f5aa6cfb6bfd21753efee0392f24e1a5c86c658b61a88214e9907c621750bd7e",
           "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+        },
+        {
+          "locator": "Original T3 DOCX direct-body children 22-23; source scheme page 1; SUP-SS1-FRENCH-DIALOGUE-T3",
+          "explanation": "An original printed dialogue, reading activity and written comprehension are supplied. The source explicitly requests WAEC/NECO cassette/CD practice; no identified recording or permitted audio asset is present. The audio component remains a delivery blocker."
         }
       ]
     },
@@ -6718,8 +6726,8 @@
     {
       "id": "FRENCH-UNCLEAR-OCCUPATIONS",
       "kind": "FACT",
-      "detail": "First-Term profession table contains computateur and couteur; a specific intended occupation cannot safely be inferred from these spellings. Corrected professional vocabulary is implemented, but these two source intentions remain unresolved.",
-      "required_action": "Supply the intended occupation names or a reliable contextual source.",
+      "detail": "The original profession table was inspected in full (rendered source pages 10-12 and the underlying DOCX table). Row 12 is printed as 'Un computateur / Une computateur'; row 26 as 'Un couteur / Une couteure'. No heading, neighbouring row or example identifies the intended occupations. The replacement teaches 44 clear entries and adds informaticien/informaticienne as a clearly labelled modern computing profession, but does not claim that it is the source meaning. 'Couteur' is not silently changed to couturier.",
+      "required_action": "Owner/teacher must provide the intended occupation for 'couteur' and confirm whether 'computateur' should be replaced by informaticien/informaticienne or omitted as an obsolete/unclear source term. Until then FRENCH-BODY-006 stays PARTIAL.",
       "affected_ids": [
         "SS1-SRC-945dfb24eaf6",
         "SUP-SS1-FRENCH-PROFESSIONS-T1"
@@ -6729,8 +6737,8 @@
     {
       "id": "FRENCH-EXAM-AUDIO",
       "kind": "OWNER_ACTION",
-      "detail": "Third-Term week 1 names WAEC/NECO cassette/CD practice without identifying or supplying a recording. The original dialogue teaches equivalent reading/listening practice but is not that exam recording.",
-      "required_action": "If practice with that exact recording is required, supply its identity and permitted audio; otherwise approve the explicitly original equivalent.",
+      "detail": "The source Week 1 says 'Reference a une cassette' and 'Reference a une C.D selon WAEC ET NECO' but names no exam year, paper, track, publisher, title or language/audio file. The project now supplies an original printed dialogue and listening-by-teacher-read activity; this is not the specified recording.",
+      "required_action": "Either supply the exact recording identity and a permitted audio file/licence (exam board, year/session, paper/track, language and rights), or approve the original printed-dialogue/teacher-read equivalent and omission of the unidentified recording. No audio asset can be acquired or installed from the current source details.",
       "affected_ids": [
         "SS1-SRC-8a2ec1fe30e3",
         "SUP-SS1-FRENCH-DIALOGUE-T3"
@@ -6802,17 +6810,6 @@
       "affected_ids": [
         "FRENCH-T1-W03-OBJ-2",
         "SUP-SS1-FRENCH-SELF-ESSAY-T1"
-      ],
-      "blocks_delivery": false
-    },
-    {
-      "id": "FRENCH-T1-W05-PUNCTUATION-DRAWING-DISPOSITION",
-      "kind": "VISUAL",
-      "detail": "The source notes identify a punctuation drawing at document.xml paragraph 278. The accent drawings on page 9 were inspected, but this punctuation drawing has no recorded readable visual disposition in the current notes.",
-      "required_action": "Inspect the original rendered paragraph/page at readable resolution when the source drawing is accessible; record its exact punctuation mark and whether the Unicode replacement covers it. Do not infer the drawing's content from the extracted text.",
-      "affected_ids": [
-        "SS1-SRC-945dfb24eaf6:BODY:0804618bce823ed65d2b4c6420c0faa465e4d031e1885e512f6e0469a7f80157",
-        "FR-COV-T1-W05-PUNCTUATION"
       ],
       "blocks_delivery": false
     }
