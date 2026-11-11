@@ -26,7 +26,7 @@
 | 8 | `FRENCH-BODY-008` / `SS1-02-french-COR-008`<br>SS1-SRC-945dfb24eaf6: Etre capable de dire ce que l’on fait habituellement. | `SUP-SS1-FRENCH-ROUTINE-T1` | IMPLEMENTED_EQUIVALENT | 9 across 2 linked lessons | Mapped — verify exercise-by-exercise; not approved |
 | 9 | `FRENCH-BODY-009` / `SS1-02-french-COR-009`<br>SS1-SRC-945dfb24eaf6: Exprimer ses gouts et ses preferences. | `SUP-SS1-FRENCH-PREFERENCES-T1` | IMPLEMENTED_EQUIVALENT | 5 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
 | 10 | `FRENCH-BODY-010` / `SS1-02-french-COR-010`<br>SS1-SRC-b6245ffb69e5: L’ORAL IMPORTANCE DES ACCENTS FRANÇAIS TELS QUE ACCENT | `SUP-SS1-FRENCH-ACCENTS-T2` | IMPLEMENTED_EQUIVALENT | 3 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
-| 11 | `FRENCH-BODY-011` / `SS1-02-french-COR-011`<br>SS1-SRC-b6245ffb69e5: Revision des alphabets francaise | `SUP-SS1-FRENCH-ALPHABET-T2` | IMPLEMENTED_EQUIVALENT | 4 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
+| 11 | `FRENCH-BODY-011` / `SS1-02-french-COR-011`<br>SS1-SRC-b6245ffb69e5: Revision des alphabets francaise | `SUP-SS1-FRENCH-ALPHABET-T2` | PARTIAL | 4 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
 | 12 | `FRENCH-BODY-012` / `SS1-02-french-COR-012`<br>SS1-SRC-b6245ffb69e5: D’indtifier des consonnes francais | `SUP-SS1-FRENCH-SOUNDS-T2` | IMPLEMENTED_EQUIVALENT | 6 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
 | 13 | `FRENCH-BODY-013` / `SS1-02-french-COR-013`<br>SS1-SRC-b6245ffb69e5: Les voyelles orales composees (compound oral) | `SUP-SS1-FRENCH-SOUNDS-T2` | IMPLEMENTED_EQUIVALENT | 6 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
 | 14 | `FRENCH-BODY-014` / `SS1-02-french-COR-014`<br>SS1-SRC-b6245ffb69e5: Culture et civilisation en Frnace | `SUP-SS1-FRENCH-CULTURE-T2` | IMPLEMENTED_EQUIVALENT | 4 across 1 linked lessons | Mapped — verify exercise-by-exercise; not approved |
@@ -87,7 +87,7 @@ Clear expressions now taught in SUP-SS1-FRENCH-COURTESY-CELEBRATIONS-T1. Intende
 
 1. Historical Week 1–4 indexing notes were not synchronized with the current package. For example, `FR-WK-T1-W01.md` still describes OBJ-4/OBJ-5 as unresolved and refers to supplements that have since been authored; the current package marks the neighbour and benefits objectives `IMPLEMENTED_EQUIVALENT`. `FR-WK-T1-W02.md` still says both DEVOIR exercises lack counterparts, while current coverage links the Anglophone supplement and demonym supplement. `FR-WK-T1-W03.md` predates the completed eight-field self-presentation supplement and still reports that objective as partial. `FR-WK-T1-W04.md` still lists three authoring tasks as outstanding even though the corresponding être, avoir and four-stem composition supplements now exist. These historical task notes must be refreshed or explicitly marked superseded before they are used as current audit evidence.
 2. **Resolved in this reconciliation branch:** correction `SS1-02-french-COR-005` and the Week 5 indexing note are being aligned with `VISUAL_DISPOSITION.md`: the inspected punctuation drawing is represented by accessible text and needs no separate image asset. This does not close the separate learner oral-performance/approval gate.
-3. The `QUEUE.json` header says its snapshot was generated from `dd739bba...` and its introductory notes describe an older package state (27 lessons, 29 coverage records, 3 open items), whereas current `master` contains 40 lessons, 55 coverage records and 8 open items. The queue must be regenerated/reconciled against current master before it is used to schedule remaining work.
+3. The `QUEUE.json` header says its snapshot was generated from `dd739bba...` and its introductory notes describe an older package state (27 lessons, 29 coverage records, 3 open items), whereas current `master` contains 40 lessons, 55 coverage records and 10 open items (9 delivery-blocking). The queue must be regenerated/reconciled against current master before it is used to schedule remaining work.
 
 ## What is actually closed by this reconciliation
 
@@ -150,3 +150,8 @@ Current package totals: 40 lessons; 191 practice items; 557 practice marks. Cove
 ## Live learner-observation gates
 
 Two explicit oral criteria remain open: (1) the five-prompt accent/diacritic pronunciation activity, scored with its 10-point teacher checklist; and (2) recitation of all twenty-six French letter names. The corresponding package items are `FRENCH-ORAL-ACCENT-OBSERVATION` and `FRENCH-ALPHABET-RECITATION-OBSERVATION`. Neither can be completed by static tests, written answers, or synthetic audio; a teacher must observe actual learners and record dated evidence.
+
+
+## Current oral-verification status
+
+`FRENCH-BODY-011` is now PARTIAL because the written A–Z sequence does not demonstrate oral recitation of the French letter names. `FR-COV-T1-W05-ORAL-OBSERVATION` remains PARTIAL because no learner's accent/diacritic pronunciation has been observed. The two new blocking items require dated teacher observation records. Current total: 10 open items, 9 delivery-blocking.
