@@ -29,20 +29,20 @@
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 28,
     "SOURCE_PREAMBLE_INDEXING": 3,
-    "LESSON": 37,
+    "LESSON": 40,
     "CORRECTION_BINDING": 28,
     "FACTUAL_DEPENDENCY": 7,
     "ASSET": 2,
     "VISUAL_DISPOSITION": 5,
     "TEST": 2,
     "SCOPE_DECOMPOSITION": 1,
-    "OWNER_DECISION": 1,
+    "OWNER_DECISION": 2,
     "VISUAL": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 75,
-    "PENDING": 37,
-    "BLOCKED": 6
+    "IMPLEMENTED_TESTING_DEFERRED": 92,
+    "PENDING": 23,
+    "BLOCKED": 7
   },
   "items": [
     {
@@ -323,9 +323,9 @@
       "depends_on": [
         "FR-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Existing row-level coverage FRENCH-BODY-006 (status IMPLEMENTED_EQUIVALENT) -> SUP-SS1-FRENCH-PROFESSIONS-T1; correction SS1-02-french-COR-006 binds body 91a76853d45df767cf3f37ace1a86e11a96ec8f3e451dea204c839a676f99e5a to the same replacement. Row-level association only; the coverage entry itself states it is not exhaustive scheme-objective certification. No objective-level entry exists yet.",
-      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing, a separate small PENDING queue item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/french/FR-WK-T1-W06.md; SOURCE_OBJECTIVE_MATRIX.md; FRENCH-BODY-006 remains PARTIAL and is tracked by FRENCH-UNCLEAR-OCCUPATIONS plus new owner decision FR-OWNER-T1-W06-OCCUPATIONS.",
+      "completion_condition": "Week indexing and exact source inspection are documented. Do not mark the source table fully covered until owner resolves the two ambiguous rows."
     },
     {
       "id": "FR-WK-T1-W07",
@@ -360,9 +360,9 @@
       "depends_on": [
         "FR-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Existing row-level coverage FRENCH-BODY-007 (status IMPLEMENTED_EQUIVALENT) -> SUP-SS1-FRENCH-ENVIRONMENT-T1; correction SS1-02-french-COR-007 binds body edbdf5de1aa53168fa582dc7b3e6ac67b95a20b8bdf4f0a6c6e138e102fa004d to the same replacement. Row-level association only; the coverage entry itself states it is not exhaustive scheme-objective certification. No objective-level entry exists yet.",
-      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing, a separate small PENDING queue item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/french/FR-WK-T1-W07.md; SOURCE_OBJECTIVE_MATRIX.md; SUP-SS1-FRENCH-ENVIRONMENT-T1.",
+      "completion_condition": "Week objective and source exercise scope are mapped to the expanded environment lesson."
     },
     {
       "id": "FR-WK-T1-W08",
@@ -397,9 +397,9 @@
       "depends_on": [
         "FR-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Existing row-level coverage FRENCH-BODY-008 (status IMPLEMENTED_EQUIVALENT) -> SUP-SS1-FRENCH-ROUTINE-T1; correction SS1-02-french-COR-008 binds body 306691b7485297e6329a9656567bea12b068247d73ef2c0de3af3ce45b1c7c50 to the same replacement. Row-level association only; the coverage entry itself states it is not exhaustive scheme-objective certification. No objective-level entry exists yet.",
-      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing, a separate small PENDING queue item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/french/FR-WK-T1-W08.md; SOURCE_OBJECTIVE_MATRIX.md; SUP-SS1-FRENCH-ROUTINE-T1; SUP-SS1-FRENCH-OPINION-T1; coverage FRENCH-T1-W08-OPINION.",
+      "completion_condition": "Week is split into routine and reasoned-opinion lessons; all source strands have an explicit replacement."
     },
     {
       "id": "FR-WK-T1-W09",
@@ -434,9 +434,9 @@
       "depends_on": [
         "FR-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Existing row-level coverage FRENCH-BODY-009 (status IMPLEMENTED_EQUIVALENT) -> SUP-SS1-FRENCH-PREFERENCES-T1; correction SS1-02-french-COR-009 binds body c9867cd0e79ed5b8ffb6da47d6d3f73357516c5d067d243e3cf008ab318df4b1 to the same replacement. Row-level association only; the coverage entry itself states it is not exhaustive scheme-objective certification. No objective-level entry exists yet.",
-      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing, a separate small PENDING queue item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/french/FR-WK-T1-W09.md; SOURCE_OBJECTIVE_MATRIX.md; SUP-SS1-FRENCH-PREFERENCES-T1.",
+      "completion_condition": "Week verbs and preference exercise are covered by the expanded conjugation and practice set."
     },
     {
       "id": "FR-WK-T2-W01",
@@ -1174,9 +1174,9 @@
       "depends_on": [
         "FR-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "FRENCH_SOURCE_NOTES.md records the orphan fragment 'a silent h.'; whether T1 has any opening text is not recorded in the repository and must be read from the source. french.json has no classify_marker rules for any French source.",
-      "completion_condition": "Every non-week text block is hash-accounted and either mapped to coverage (MARKER with a SCHEME_ONLY rule id where the schema supports it) or recorded as an explicit open item. Per-week scheme rows are handled by the FR-WK items, not here."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/french/FR-PRE-T1.md; final orphan fragment is covered in SUP-SS1-FRENCH-ACCENTS-T1.",
+      "completion_condition": "Opening text, nine week blocks and final silent-h fragment are classified."
     },
     {
       "id": "FR-PRE-T2",
@@ -1211,9 +1211,9 @@
       "depends_on": [
         "FR-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "FRENCH_SOURCE_NOTES.md records an opening scheme and the week 7/9 mismatches. Existing coverage FRENCH-SCHEME-FUTURE (IMPLEMENTED_EQUIVALENT -> SUP-SS1-FRENCH-FUTURE-T2) covers the future-tense objective only. No classify_marker rule exists.",
-      "completion_condition": "Every non-week text block is hash-accounted and either mapped to coverage (MARKER with a SCHEME_ONLY rule id where the schema supports it) or recorded as an explicit open item. Per-week scheme rows are handled by the FR-WK items, not here."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/french/FR-PRE-T2.md; SOURCE_OBJECTIVE_MATRIX.md.",
+      "completion_condition": "All nine scheme objectives are mapped; week 7/8/9 mismatches are preserved and documented."
     },
     {
       "id": "FR-PRE-T3",
@@ -1248,9 +1248,9 @@
       "depends_on": [
         "FR-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "FRENCH_SOURCE_NOTES.md records an opening scheme listing revision/examination. No classify_marker rule exists; which weeks carry those markers is not recorded in the repository.",
-      "completion_condition": "Every non-week text block is hash-accounted and either mapped to coverage (MARKER with a SCHEME_ONLY rule id where the schema supports it) or recorded as an explicit open item. Per-week scheme rows are handled by the FR-WK items, not here."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/french/FR-PRE-T3.md; SOURCE_OBJECTIVE_MATRIX.md; source rules R002/R003; marker coverage FRENCH-T3-REVISION-MARKER/FRENCH-T3-EXAMINATION-MARKER.",
+      "completion_condition": "Ten instructional rows and two scheme-only markers are accounted for; revision and exam supplements are supplied."
     },
     {
       "id": "FR-LES-PURPOSE-T1",
@@ -2685,9 +2685,9 @@
       "depends_on": [
         "FR-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "french.json open_items[id=FRENCH-UNCLEAR-OCCUPATIONS] kind=FACT blocks_delivery=true; affected SS1-SRC-945dfb24eaf6, SUP-SS1-FRENCH-PROFESSIONS-T1. FRENCH_SOURCE_NOTES.md: both strings remain unresolved; the profession table is textual (not an image). Source context has not been recorded as inspected for this purpose.",
-      "completion_condition": "Open item text updated with the exact context evidence; the occupations are either established from the source/primary reference or left unresolved with the specific question. Owner input is requested only if inspection cannot settle it."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Original DOCX rendered pages 10-12 and full table inspection; FR-WK-T1-W06.md; FRENCH-UNCLEAR-OCCUPATIONS.",
+      "completion_condition": "Inspection found no reliable contextual meaning for computateur/couteur. The exact owner decision is recorded; no guessed correction is taught."
     },
     {
       "id": "FR-FACT-EXAM-AUDIO-REQUIREMENTS",
@@ -2717,9 +2717,9 @@
       "depends_on": [
         "FR-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "french.json open_items[id=FRENCH-EXAM-AUDIO] kind=OWNER_ACTION blocks_delivery=true; affected SS1-SRC-8a2ec1fe30e3, SUP-SS1-FRENCH-DIALOGUE-T3. french.json assets is empty. No requirements record exists.",
-      "completion_condition": "A short record states the exact wording, identity fields, format/licence requirements and the two owner options; the open item references it."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/french/EXAM_AUDIO_REQUIREMENTS.md; FRENCH-EXAM-AUDIO.",
+      "completion_condition": "Source wording and minimum acquisition/rights evidence are documented. Acquisition remains blocked pending owner identity/audio or approval of the equivalent."
     },
     {
       "id": "FR-ASSET-EXAM-AUDIO-ACQUISITION",
@@ -2817,9 +2817,9 @@
       "depends_on": [
         "FR-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "FRENCH_SOURCE_NOTES.md lists these locators and says visual dispositions are still required. T1: 73 drawing occurrences with 73 fallback representations, no media images; T2: three OMML objects; T3: no drawings or media. No disposition record exists in the repository.",
-      "completion_condition": "A disposition is recorded for every listed locator, without claiming app/display verification; any gap becomes an open item."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/french/VISUAL_DISPOSITION.md; rendered T1 pages 2-3; source DOCX drawing/pict objects at children 23, 30-46, 52-66, 71-73.",
+      "completion_condition": "Arrow separators only connect country/capital and country/demonym pairs; text/table replacement preserves all information."
     },
     {
       "id": "FR-VIS-T1-AUXILIARY-SEPARATORS",
@@ -2848,9 +2848,9 @@
       "depends_on": [
         "FR-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "FRENCH_SOURCE_NOTES.md lists these locators and says visual dispositions are still required. T1: 73 drawing occurrences with 73 fallback representations, no media images; T2: three OMML objects; T3: no drawings or media. No disposition record exists in the repository.",
-      "completion_condition": "A disposition is recorded for every listed locator, without claiming app/display verification; any gap becomes an open item."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/french/VISUAL_DISPOSITION.md; source DOCX objects at children 149-159, 187, 189-196.",
+      "completion_condition": "Arrows only align French auxiliary forms and English glosses; replacement tables preserve the mapping."
     },
     {
       "id": "FR-VIS-T1-ACCENT-DRAWINGS",
@@ -2879,9 +2879,9 @@
       "depends_on": [
         "FR-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "FRENCH_SOURCE_NOTES.md lists these locators and says visual dispositions are still required. T1: 73 drawing occurrences with 73 fallback representations, no media images; T2: three OMML objects; T3: no drawings or media. No disposition record exists in the repository.",
-      "completion_condition": "A disposition is recorded for every listed locator, without claiming app/display verification; any gap becomes an open item."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/french/VISUAL_DISPOSITION.md; SUP-SS1-FRENCH-ACCENTS-T1.",
+      "completion_condition": "Accent marks are represented as Unicode characters; no standalone image asset is required."
     },
     {
       "id": "FR-VIS-T1-PUNCTUATION-ROUTINE",
@@ -2910,9 +2910,9 @@
       "depends_on": [
         "FR-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "FRENCH_SOURCE_NOTES.md lists these locators and says visual dispositions are still required. T1: 73 drawing occurrences with 73 fallback representations, no media images; T2: three OMML objects; T3: no drawings or media. No disposition record exists in the repository.",
-      "completion_condition": "A disposition is recorded for every listed locator, without claiming app/display verification; any gap becomes an open item."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/french/VISUAL_DISPOSITION.md; SUP-SS1-FRENCH-ACCENTS-T1; SUP-SS1-FRENCH-ROUTINE-T1.",
+      "completion_condition": "Punctuation symbols are listed in text and the brace only groups pronominal verbs; replacements preserve the instructional content."
     },
     {
       "id": "FR-VIS-T2-OMML",
@@ -2941,9 +2941,9 @@
       "depends_on": [
         "FR-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "FRENCH_SOURCE_NOTES.md lists these locators and says visual dispositions are still required. T1: 73 drawing occurrences with 73 fallback representations, no media images; T2: three OMML objects; T3: no drawings or media. No disposition record exists in the repository.",
-      "completion_condition": "A disposition is recorded for every listed locator, without claiming app/display verification; any gap becomes an open item."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/french/VISUAL_DISPOSITION.md; SUP-SS1-FRENCH-SOUNDS-T2; Larousse pronunciation references.",
+      "completion_condition": "All three OMML objects are inspected; /ɲ/ and /ŋ/ are separated and the corrupted vowel glyph is replaced by the five basic vowel letters."
     },
     {
       "id": "FR-FACT-T1-W01-POLICY",
@@ -3505,6 +3505,98 @@
       "status": "BLOCKED",
       "implementation_reference": "Blocked 2026-11-08: FRENCH_SOURCE_NOTES.md identifies a drawing at document.xml paragraph 278 but does not provide a readable visual disposition. Original member bytes/render are not accessible in this execution session. Do not infer its content from the replacement punctuation list.",
       "completion_condition": "Inspect the original rendered paragraph at readable resolution; record the exact punctuation mark, compare with Unicode replacement, and close only with visual evidence."
+    },
+    {
+      "id": "FR-OWNER-T1-W06-OCCUPATIONS",
+      "kind": "OWNER_DECISION",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "term": "1st Term",
+      "week_or_locator": "Week 6 table rows 12 and 26",
+      "objective": "Owner/teacher supplies the intended occupation for 'computateur' and 'couteur', or explicitly approves the project’s labelled replacement/omission.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/FR-WK-T1-W06.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json"
+      ],
+      "depends_on": [
+        "FR-FACT-OCCUPATIONS"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Original table rows and rendered pages 10-12 inspected; context does not resolve either term. FRENCH-BODY-006 remains PARTIAL.",
+      "completion_condition": "Owner confirms the intended occupations or explicitly approves the labelled alternatives/omissions; update lesson, coverage and open item without guessing."
+    },
+    {
+      "id": "FR-LES-T1-W08-OPINION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "term": "1st Term",
+      "week_or_locator": "SUP-SS1-FRENCH-OPINION-T1; Week 8 children 379-405",
+      "objective": "Teach agreement/disagreement, opinion phrases, reasons and the source debate on money/happiness as an original, balanced SS1 lesson.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/FR-WK-T1-W08.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json"
+      ],
+      "depends_on": [
+        "FR-WK-T1-W08"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "SUP-SS1-FRENCH-OPINION-T1; coverage FRENCH-T1-W08-OPINION; marked original practice.",
+      "completion_condition": "Package tests and full source regression pass; teacher content approval remains separate."
+    },
+    {
+      "id": "FR-LES-T3-REVISION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-8a2ec1fe30e3",
+      "term": "3rd Term",
+      "week_or_locator": "Scheme row 11: La Revision",
+      "objective": "Provide a project-authored revision checklist and guided practice for all ten instructional Third-Term topics.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/FR-PRE-T3.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json"
+      ],
+      "depends_on": [
+        "FR-PRE-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "SUP-SS1-FRENCH-REVISION-T3; source rule R002; coverage FRENCH-T3-REVISION-MARKER; 20-mark guided practice.",
+      "completion_condition": "Package tests pass; teacher approval remains separate."
+    },
+    {
+      "id": "FR-LES-T3-EXAM",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-8a2ec1fe30e3",
+      "term": "3rd Term",
+      "week_or_locator": "Scheme row 12: L’examen",
+      "objective": "Provide an original 40-mark end-of-term assessment with answer key and item-level marking, without claiming it is an official WAEC/NECO paper.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/FR-PRE-T3.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json"
+      ],
+      "depends_on": [
+        "FR-PRE-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "SUP-SS1-FRENCH-EXAM-T3; source rule R003; coverage FRENCH-T3-EXAMINATION-MARKER; 24 questions totalling 40 marks.",
+      "completion_condition": "Package tests pass; teacher approval and exam administration are separate."
     }
   ],
   "review": {
@@ -3521,10 +3613,6 @@
     "notes": "Separate oral accent lesson implemented with live teacher model and 10-point oral observation checklist. Oral open item resolved; punctuation drawing p278 remains blocked visual disposition. No audio asset supplied; tests deferred."
   },
   "next_runnable": [
-    "FR-WK-T1-W06",
-    "FR-WK-T1-W07",
-    "FR-WK-T1-W08",
-    "FR-WK-T1-W09",
     "FR-WK-T2-W01",
     "FR-WK-T2-W02",
     "FR-WK-T2-W03",
@@ -3543,17 +3631,7 @@
     "FR-WK-T3-W08",
     "FR-WK-T3-W09",
     "FR-WK-T3-W10",
-    "FR-PRE-T1",
-    "FR-PRE-T2",
-    "FR-PRE-T3",
     "FR-COR-001",
-    "FR-FACT-OCCUPATIONS",
-    "FR-FACT-EXAM-AUDIO-REQUIREMENTS",
-    "FR-VIS-T1-COUNTRY-SEPARATORS",
-    "FR-VIS-T1-AUXILIARY-SEPARATORS",
-    "FR-VIS-T1-ACCENT-DRAWINGS",
-    "FR-VIS-T1-PUNCTUATION-ROUTINE",
-    "FR-VIS-T2-OMML",
     "FR-FACT-T1-W02-HEADS-OF-STATE"
   ],
   "total": 118
