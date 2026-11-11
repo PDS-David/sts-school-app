@@ -104,9 +104,11 @@ test('Every authored Physics lesson has a matching UTF-8 hash, objectives and co
 test('Coverage targets resolve to a lesson or an explicit source rule', () => {
   const lessonIds = new Set(pkg.lessons.map(l => l.id));
   const ruleIds = new Set(pkg.source_rules.map(r => r.id));
+  const sourceIds = new Set(pkg.sources.map(s => s.source_id));
   for (const coverage of pkg.coverage) {
     for (const target of coverage.lesson_ids) {
-      assert(lessonIds.has(target) || ruleIds.has(target), `${coverage.id} -> ${target}`);
+      const bodyRef = /^(SS1-SRC-[0-9a-f]{12}):BODY:([0-9a-f]{64})$/.exec(target);
+      assert(lessonIds.has(target) || ruleIds.has(target) || (!!bodyRef && sourceIds.has(bodyRef[1])), `${coverage.id} -> ${target}`);
     }
   }
 });
@@ -140,7 +142,8 @@ test('Delivery corrections, assets and open-item references remain internally co
     assert(lessonIds.has(asset.lesson_id), asset.id);
     assert(asset.path.startsWith('backend/src/db/ss1/assets/physics/') && !asset.path.includes('..'), asset.id);
   }
-  const known = new Set([...sourceIds, ...lessonIds, ...pkg.coverage.map(c => c.id), ...pkg.source_rules.map(r => r.id), ...pkg.open_items.map(o => o.id), ...assetIds]);
+  const queueIds = new Set(queue.items.map((item: any) => item.id));
+  const known = new Set([...sourceIds, ...lessonIds, ...pkg.coverage.map(c => c.id), ...pkg.source_rules.map(r => r.id), ...pkg.open_items.map(o => o.id), ...assetIds, ...queueIds]);
   for (const item of pkg.open_items) for (const ref of item.affected_ids) {
     const sourceBody = /^SS1-SRC-[0-9a-f]{12}(?::|$)/.test(ref);
     assert(known.has(ref) || sourceBody, `${item.id} -> unresolved ${ref}`);
@@ -158,7 +161,7 @@ test('Physics queue IDs, dependencies, status vocabulary and status counts are c
     acc[item.status] = (acc[item.status] ?? 0) + 1; return acc;
   }, {});
   assert.deepEqual(counts, queue.status_counts);
-  assert.equal(queue.items.length, queue.items.reduce((n: number, item: any) => n + 1, 0));
+
 });
 
 // Source-dependent compiler parity and runtime delivery checks are separate acceptance stages.
