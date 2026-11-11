@@ -53,10 +53,10 @@ test('English resolver is isolated by school, class, subject, term, source file 
   assert.equal(resolver({ ...fixtureTopic, title: 'A different lesson' }), null);
 });
 
-test('Unapproved package is withheld even when the exact source fingerprint matches', () => {
+test('Owner-approved package remains withheld until authorised verification is complete', () => {
   const hit = createEnglishDeliveryResolver(fixture)(fixtureTopic);
   assert.equal(hit?.kind, 'withheld');
-  assert.match(hit?.reason ?? '', /not yet approved/i);
+  assert.match(hit?.reason ?? '', /not completed its authorised verification/i);
   const safe = safeEnglishTopic(fixtureTopic);
   assert.equal(safe.source_reference, null);
   assert.equal(safe.generated_assessment_id, null);
