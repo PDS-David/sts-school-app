@@ -31,7 +31,7 @@ const QUESTIONS = [
 ];
 
 export default function FrenchListeningScreen({ navigation }: any) {
-  const [voices, setVoices] = useState<Speech.Voice[]>([]);
+  const [voices, setVoices] = useState<Array<{ identifier: string; name: string; language: string }>>([]);
   const [currentLine, setCurrentLine] = useState(-1);
   const [speaking, setSpeaking] = useState(false);
   const [showTranslations, setShowTranslations] = useState(false);
