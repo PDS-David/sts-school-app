@@ -10,7 +10,7 @@
 - 191 practice items carrying 557 marks.
 - Every listed question has a keyed answer and marking rubric; the structural audit checks that rubric marks sum to the declared question marks.
 - Two gaps discovered in this pass were corrected: complete alphabet sequence (Alphabet Q4) and irregular simple-future forms (Future Q4).
-- Oral accent coverage is PARTIAL because the teacher-led checklist exists but no real learner oral performance has been observed.
+- Oral accent coverage and alphabet recitation coverage are PARTIAL because teacher-led tasks exist but no real learner oral performance has been observed.
 
 ## Objective mapping
 
@@ -26,7 +26,7 @@
 | `SUP-SS1-FRENCH-ROUTINE-T1` | O1: Q1,Q2,Q5; O2: Q5; O3: Q3,Q4 | Written disagreement is keyed; oral fluency needs teacher observation. |
 | `SUP-SS1-FRENCH-PREFERENCES-T1` | O1: Q4,Q5; O2: Q1,Q2,Q3,Q5; O3: Q4 | Present forms, negation and polite vouloir expression are tested. |
 | `SUP-SS1-FRENCH-ACCENTS-T2` | O1: Q1; O2: Q2,Q3 | Written accent revision; oral production is not inferred. |
-| `SUP-SS1-FRENCH-ALPHABET-T2` | O1: Q1,Q2,Q4; O2: Q2,Q3 | Q4 requires all 26 letters in order; oral recitation still needs teacher observation. |
+| `SUP-SS1-FRENCH-ALPHABET-T2` | O1: Q1,Q2,Q4; O2: Q2,Q3 | Q4 requires all 26 letters in writing; oral recitation still needs teacher observation, so source-row coverage remains PARTIAL. |
 | `SUP-SS1-FRENCH-SOUNDS-T2` | O1: Q1,Q2,Q3,Q4,Q5; O2: Q2; O3: Q6 | IPA sound classes, source-glyph distinction and non-stereotyping are sampled. |
 | `SUP-SS1-FRENCH-CULTURE-T2` | O1: Q3; O2: Q1,Q2,Q4 | School stages, economic sectors and dated fact handling are assessed. |
 | `SUP-SS1-FRENCH-TRANSPORT-T2` | O1: Q1,Q2,Q5; O2: Q2; O3: Q3,Q4 | Mode vocabulary, en/à and directions are sampled. |
@@ -60,7 +60,7 @@
 ## Interpretation and limits
 
 1. A mapping means the question is intended to assess the stated authored objective. It is not independent proof that the objective is pedagogically mastered or that the wording is suitable for every learner.
-2. Written questions do not certify oral performance. In particular, T1 oral accent practice and T2 alphabet pronunciation require teacher observation.
+2. Written questions do not certify oral performance. In particular, T1 oral accent practice and T2 alphabet pronunciation require teacher observation; both now have explicit blocking package items.
 3. The original 15-country Anglophone exercise remains PARTIAL because its criterion is undefined and only three selected examples are currently verified.
 4. The two ambiguous source profession entries remain PARTIAL and are not guessed.
 5. The source's cassette/CD reference remains unresolved as an official examination recording. The app now contains original synthetic audio, which still requires teacher/owner approval as the classroom equivalent.
