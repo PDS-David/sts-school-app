@@ -1,71 +1,46 @@
-# SS1 French — remaining completion gates and owner decisions
+# SS1 French — student delivery and release status
 
 **Status date:** 11 November 2026  
-**Current package:** 40 lessons; 191 practice items; 557 marks.  
-**Coverage:** 41 IMPLEMENTED_EQUIVALENT, 12 PARTIAL, 2 scheme markers.  
-**Open items:** 10 total, 9 delivery-blocking.
+**Package:** 40 authored lessons; 218 practice items; 715 marks.  
+**Coverage:** 53 IMPLEMENTED_EQUIVALENT records; 2 scheme markers; no PARTIAL or UNRESOLVED delivery coverage.  
+**Approvals:** 40/40 lessons approved for the owner-directed replacement scope.  
+**Follow-ups:** 10 recorded, 0 delivery-blocking.  
+**Learner verification:** DEFERRED for all 40 lessons; no classroom cohort observation is claimed.
 
-This register separates work the project team can author and test from decisions or evidence that only the curriculum owner, French teacher, learners or account administrator can supply. No item below is treated as approved by silence.
+## Student-facing curriculum decisions
 
-## Source material and audit status
+1. Unsupported historical/legal superlatives and unverified government motives are omitted. The Week 1 replacement teaches documented Nigerian curriculum and institutional context with dated attribution and clear limits.
+2. The source's 15-country Anglophone classification is not repeated as a legal fact. The replacement teaches a clearly labelled, non-exhaustive set of verified examples and how to verify official-language status.
+3. The bare head-of-state heading is taught as a dated-information task. The country/capital/currency reference remains available; current office-holders must always be dated.
+4. Malformed greeting strings are replaced with conventional French forms. Ambiguous source wording is not guessed.
+5. The two unreadable profession entries are excluded from assessed vocabulary. Students learn the clear profession list and informaticien/informaticienne as a modern term.
+6. The oral-accent and alphabet tasks are included as teacher-led practice. Their presence in the lesson does not claim that a learner has already demonstrated pronunciation or recitation.
+7. The unidentified textbook pages 63–64 are replaced by original, keyed comprehension homework in the flight lesson.
+8. The Third-Term dialogue has two bundled synthetic MP3 recordings (standard and slow), transcript, translations and a ten-question comprehension activity. The recordings are original classroom resources, not official WAEC/NECO audio or human/native-speaker recordings.
 
-The three original DOCX members were extracted from the repository's registered SS1 source archive by the hash-verifying French GitHub Actions workflow. All 28 correction bindings have now been reconciled against the original source exercise instructions. See `SOURCE-EXERCISE-RECONCILIATION-2026-11-11.md`. No additional source upload is needed for that audit.
+## App delivery
 
-## Curriculum-owner decisions
+- The student subject list identifies the SS1 French dialogue lesson and routes it into the French Listening activity.
+- The activity plays the bundled standard/slow MP3 files offline and includes line-by-line device speech as a fallback.
+- The backend now has a French delivery adapter that matches the exact source lesson body fingerprint and serves the approved authored replacement with objectives, full teaching text, keyed practice, marking guide and source attribution.
+- The source-verification workflow checks all 28 correction bindings against extracted source DOCX rows and verifies that each exact row resolves to the corresponding student-delivery lesson.
+- The mobile bundle export has passed. A new Android production binary is still required because Expo Audio is a native dependency.
 
-### 1. First Term Week 1 — historical/legal claims
+## Non-blocking follow-ups
 
-The lesson deliberately avoids asserting that French is currently Nigeria's second official language, the most important foreign language after English, or that it was selected for a specific set of motives. Those claims lack sufficient authenticated primary evidence in the inspected materials.
+The ten open records preserve the original-source uncertainties and classroom checks for future teacher refinement. They no longer block the approved replacement lessons. They must not be represented as resolved source facts:
+- official WAEC/NECO audio identity/rights;
+- the exact intended meanings of malformed source strings;
+- the exact source occupations behind “computateur” and “couteur”;
+- exhaustive Anglophone classification for all 15 source entries;
+- exact scope of the bare heads-of-state heading;
+- the textbook identity/pages 63–64;
+- live oral accent and alphabet observations.
 
-**Recommended safe disposition:** approve omission of those unsupported claims and retain the evidence-backed practical benefits and neighbour-language rationale. Otherwise provide the authenticated primary source and exact passage. Until approved, Week 1 objectives 1–3 remain PARTIAL.
+## Production release requirement
 
-### 2. First Term Week 2 — Anglophone countries
+The Android production workflow already completed dependency installation and Expo/Metro bundle export successfully, including both MP3 assets. EAS build stopped because the GitHub repository secret `EXPO_TOKEN` is not configured. Add that secret in repository Settings → Secrets and variables → Actions, then rerun **Build SS1 French mobile listening release**. The workflow builds but does not submit to Google Play.
 
-The source gives 15 countries but does not define whether *Anglophone* means legal official language, official working language, or broader English use. Current legal evidence contradicts treating every source entry as an English-official country. The replacement currently teaches three verified examples only.
+## Final distinction
 
-**Required decision:** choose the intended criterion and either provide/approve the complete 15-country evidence list under that criterion, or approve narrowing the objective to selected examples. The exhaustive 15-country exercise remains PARTIAL.
-
-### 3. First Term Week 2 — heads of state and currencies
-
-The source ends with bare headings “Chefs d'etats/presidents” and “Mornaies” and gives no country set or list length.
-
-**Required decision:** confirm which countries the head-of-state activity should cover. The currency supplement already provides a country/currency reference for the Francophone country set; confirm whether the bare heading was intended to extend that same set to the Anglophone list. Do not certify an invented scope.
-
-### 4. First Term Week 3 — incomplete expressions and “Votre état”
-
-The source has five incomplete strings: “Bonsoir nuit”, “Bonjour nee”, “Bon paque”, “Bonjour maman, comment?” and “Vous avez bien”. Conventional replacements are taught, but their intended source meanings have not been confirmed. The “Votre état” prompt can mean state of origin or marital status; the replacement teaches both alternatives.
-
-**Required decision:** approve omission/replacement of the five incomplete strings or provide the intended meanings; select whether “Votre état” means state of origin or marital status.
-
-### 5. First Term Week 6 — unclear occupations
-
-The source table contains “computateur” and “couteur” in entries that do not establish the intended professions. The replacement teaches 44 clear entries and separately identifies informaticien/informaticienne as a modern computing profession; it does not silently rewrite the source.
-
-**Recommended safe disposition:** omit the two unclear source rows and retain the clear vocabulary, including the explicitly modern informaticien/informaticienne entry. Otherwise provide the intended occupations. Week 6 remains PARTIAL until approved.
-
-### 6. Third Term Week 1 — official exam-board audio
-
-The source refers to a WAEC/NECO cassette/CD but supplies no year, session, paper, track, title, publisher or rights holder. Two original synthetic recordings of the classroom dialogue are now bundled in the app for offline playback.
-
-**Required decision:** approve the original synthetic dialogue as the classroom listening equivalent and accept omission of the unidentified official recording, or supply the exact rights-cleared WAEC/NECO recording. The generated recordings must never be labelled official exam audio.
-
-## Teacher and learner evidence required
-
-1. **Oral accents:** a French teacher must conduct the five-prompt oral activity and record a dated 10-point observation checklist for real learners.
-2. **Alphabet recitation:** a French teacher must listen to learners recite the 26 French letter names and record a dated result.
-3. **All 40 lessons:** content approval remains PENDING and learner verification remains DEFERRED. Teacher review and classroom evidence are still required before the package can be certified as completed.
-
-## Production-build credential required
-
-The Android production workflow successfully installed locked dependencies and exported the Metro bundle, including both local MP3 assets. The EAS production build stopped because GitHub secret `EXPO_TOKEN` is not configured.
-
-**Required:** add an Expo access token to the repository's GitHub Actions secrets under the name `EXPO_TOKEN`, then rerun **Build SS1 French mobile listening release**. The workflow builds an Android production app but does not submit it to Google Play.
-
-## Completion rule
-
-Do not change the package to COMPLETE until the source exercise audit, owner decisions, live oral observations, all 40 content approvals, staging/database and teacher/student runtime verification, and a successful production mobile build are evidenced. Automated CI passing is necessary but is not curriculum approval or classroom acceptance.
-
-
-## Source audit closure
-
-The original DOCX members were extracted from the repository archive and all 28 correction bindings were reconciled. The umbrella authoring audit is no longer a blocker. Remaining source-related blockers are the undefined Anglophone criterion, unscoped heads-of-state/currency headings, ambiguous greetings and occupation entries, the unidentified textbook pages 63–64, and the unapproved synthetic-vs-official exam-audio disposition.
+The authored replacement curriculum and source-exercise audit are approved and implemented for student delivery. The live classroom observations remain deferred. The app source changes are not yet a released Android binary until the Expo production build succeeds and the build is distributed to students.
