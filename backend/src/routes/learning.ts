@@ -310,6 +310,51 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
   });
 });
 
+router.get('/topics/:topicId/assets/:assetKey', requirePerm('topics.read'), async (req, res) => {
+  const topicId = Number(req.params.topicId);
+  const assetKey = String(req.params.assetKey ?? '');
+  if (!Number.isInteger(topicId) || topicId <= 0 || !assetKey) return res.status(400).json({ error: 'Invalid Mathematics asset request' });
+  const user = req.user!;
+  const { school_code } = req.query as Record<string, string>;
+  const sc = (school_code && user.role === 'admin') ? school_code : user.school_code;
+  const params: unknown[] = [topicId, sc];
+  const scope = await topicVisibilitySql(user, params);
+  if (scope === null) return res.status(404).json({ error: 'Asset not found' });
+  const { rows: visible } = await query(
+    `SELECT t.id, t.school_code, t.class_name, t.term_label, t.title, t.source_file, t.order_index, s.name AS subject_name
+       FROM topics t LEFT JOIN subjects s ON s.id=t.subject_id
+      WHERE t.id=$1 AND t.school_code=$2${scope}`,
+    params,
+  );
+  const topic = visible[0];
+  if (!topic || topic.school_code !== 'secondary' || topic.class_name !== 'SS 1' || topic.subject_name !== 'Mathematics') {
+    return res.status(404).json({ error: 'Asset not found' });
+  }
+  const asset = mathematicsAssetsForTopic(topic, topicId).find((item: any) => item.asset_key === assetKey);
+  const relativePath = mathematicsAssetFilePath(assetKey);
+  if (!asset || !relativePath) return res.status(404).json({ error: 'Asset not found' });
+  const etag = '"' + asset.sha256 + '"';
+  res.setHeader('ETag', etag);
+  res.setHeader('Cache-Control', 'private, max-age=86400');
+  const inm = String(req.headers['if-none-match'] ?? '');
+  if (inm && inm.split(',').map(value => value.trim().replace(/^W\//, '')).includes(etag)) return res.status(304).end();
+  const candidates = [
+    path.resolve(process.cwd(), relativePath.replace(/^backend\//, '')),
+    path.resolve(process.cwd(), relativePath),
+  ];
+  const filePath = candidates.find(candidate => existsSync(candidate));
+  if (!filePath) return res.status(404).json({ error: 'Asset file not found' });
+  const bytes = await readFile(filePath);
+  const actualSha = createHash('sha256').update(bytes).digest('hex');
+  if (actualSha !== asset.sha256 || bytes.length !== asset.bytes) {
+    return res.status(500).json({ error: 'Mathematics asset integrity check failed' });
+  }
+  res.setHeader('Content-Type', asset.mime);
+  res.setHeader('Content-Length', String(bytes.length));
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  if (asset.mime === 'image/svg+xml') res.setHeader('Content-Security-Policy', "default-src 'none'; sandbox");
+  return res.end(bytes);
+});
 router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
   const assetId = Number(req.params.id);
   if (!Number.isInteger(assetId) || assetId <= 0) return res.status(400).json({ error: 'Invalid asset id' });
