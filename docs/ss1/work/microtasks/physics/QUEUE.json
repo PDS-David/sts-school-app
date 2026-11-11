@@ -71,9 +71,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 51,
-    "BLOCKED": 34,
-    "PENDING": 5
+    "IMPLEMENTED_TESTING_DEFERRED": 56,
+    "BLOCKED": 33,
+    "PENDING": 1
   },
   "total": 90,
   "items": [
@@ -2280,8 +2280,8 @@
         "PHYS-WK-T1-W01",
         "PHYS-FACT-T1-W01-SCOPE"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W01 (2026-11-05): COV-PHYS-T1-W01-OBJ-2 is UNRESOLVED and PHYSICS-T1-W01-LABORATORY blocks delivery. The scheme clause is the only evidence that the objective exists.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T1-W01-LABORATORY. Includes instrument identification, common apparatus, safe conduct, emergency reporting and post-practical actions. Local equipment inventory and emergency-equipment locations are explicitly left for the teacher to demonstrate; no school-specific facts are invented. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "A lesson in physics.json teaches the laboratory content the teacher cleared, identifies itself as a Week 1 supplement with the scheme line 24 (sha256 107871e4a26a044a789c101b4fd1778fddfe046ce599b8cdcbee1f19fece62cc) as its provenance objective, carries practice with complete answers and marking that sums exactly, has body_sha256 over the UTF-8 body and PENDING content approval, and adds no apparatus, experiment or safety claim the teacher did not approve; no schema, compiler, rule or shared file is edited."
     },
     {
@@ -2361,8 +2361,8 @@
         "PHYS-WK-T1-W01",
         "PHYS-FACT-T1-W01-SCOPE"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W01 (2026-11-05): COV-PHYS-T1-W01-OBJ-10, -OBJ-11, -OBJ-13 and -OBJ-14 are UNRESOLVED and PHYSICS-T1-W01-ASSESSMENT-NO-KEY blocks delivery. Five of the seven weekend questions and two of the four theory questions turn on quantities Week 1 never teaches ('thrust' at lines 170 and 181 only, 'ohm' at line 175 only, 'tension'/'impulse'/'upthrust' at line 177, 'work' at line 173; 'strain' occurs nowhere in 1,288 lines).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T1-W01-KEY-ASSESSMENT with scientific-method explanation, seven SI base units, classification table, dimension working and keyed evaluation/weekend/theory answers. The defective weekend item 5 is explicitly flagged because A, B and C are all derived; no unique answer is invented. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "A keyed assessment supplement in physics.json answers every item at lines 61-63, 160-163, 168-182 and 184-191 that Week 1 teaches, states the basis for each answer drawn from the taught lines, marks each beyond-syllabus item as pending PHYS-FACT-T1-W01-SCOPE rather than inventing a quantity, has marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no schema, compiler, rule, asset or shared file is edited."
     },
     {
@@ -2401,8 +2401,8 @@
         "PHYS-SRC-T1",
         "PHYS-WK-T1-W01"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Raised by PHYS-WK-T1-W01 (2026-11-05): 6 coverage entries are UNRESOLVED, 8 are PARTIAL, and PHYSICS-T1-W01-LABORATORY, -COVERAGE, -SCIENTIFIC-METHOD, -DIMENSIONAL-GAPS, -ASSESSMENT-NO-KEY and -FACT-DEFECTS are open and blocking while -NOTATION-LOSS and -SOURCE-DEFECTS are open and non-blocking. No lesson, correction, rule, asset or source byte was written and no answer invented.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Owner instruction on 2026-11-11: proceed without further clarification. Scope decision: include a standard scientific-method sequence as a clearly labelled supplement, not as source teaching; include safe generic laboratory familiarization with no school-specific room-layout claims; answer source assessment items with keyed explanations; flag the defective weekend MCQ whose A/B/C options are all derived. Decisions and rationale: PHYS-FACT-T1-W01-SCOPE.md. Teacher content approval remains PENDING.",
       "completion_condition": "Every numbered item has a named expert decision recorded with its evidence and locators; the three lesson items then bind to those decisions; no correction is invented, no lesson authored and no shared file edited here."
     },
     {
@@ -2522,8 +2522,8 @@
         "PHYS-WK-T1-W02",
         "PHYS-FACT-T1-W02-SCOPE"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W02 (2026-11-07): COV-PHYS-T1-W02-OBJ-12, -13, -15 and -16 are UNRESOLVED and PHYSICS-T1-W02-ASSESSMENT-NO-KEY blocks delivery. Waits for PHYS-FACT-T1-W02-SCOPE.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T1-W02-KEY-ASSESSMENT. All text-answerable evaluation, weekend and theory items are keyed with marking breakdowns; ambiguous item 1(d), seven missing figure readings and corrupted theory item 5 are explicitly flagged as unresolved. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "A lesson in physics.json carries objectives, a body whose body_sha256 is the SHA-256 of its UTF-8 body, complete practice answers and marking that sums exactly, a provenance that says it is an authored supplement and not the source, state content_approval PENDING and verification DEFERRED; the coverage entry it targets is updated by stable ID only after a reviewer confirms objective-level teaching; no schema, compiler, rule, asset or shared file is edited."
     },
     {
@@ -2562,8 +2562,8 @@
         "PHYS-SRC-T1",
         "PHYS-WK-T1-W02"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Raised by PHYS-WK-T1-W02 (2026-11-07): PHYSICS-T1-W02-FACT-DEFECTS, -SOURCE-DEFECTS and -EXTRACTION-ARTEFACT hold the evidence. Needs a named subject expert; nothing is decided or invented here.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Owner instruction on 2026-11-11: proceed without further clarification. Scope decision: key all text-answerable questions; use a pipette for a fixed accurately measured small volume and explain the burette distinction; flag 'dimension of a compound' as ambiguous; do not guess figure readings or reconstruct the corrupted 98-control-character item. Decisions and rationale: PHYS-FACT-T1-W02-SCOPE.md. Teacher content approval remains PENDING.",
       "completion_condition": "Every numbered item has a named expert decision recorded with its evidence and locators; the key-assessment lesson and the correction binding then bind to those decisions; no lesson authored and no shared file edited here."
     },
     {
@@ -2604,8 +2604,8 @@
         "PHYS-LES-T1-W02-KEY-ASSESSMENT",
         "PHYS-FACT-T1-W02-SCOPE"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W02 (2026-11-07): open items PHYSICS-T1-W02-EXTRACTION-ARTEFACT and PHYSICS-T1-W02-FACT-DEFECTS. Waits for the supplements and the expert decisions; no replacement exists to bind yet.",
+      "status": "BLOCKED",
+      "implementation_reference": "Not safe to bind the Week Two source row yet. Seven assessment readings depend on original figures that PHYS-VIS-T1 has not inspected, and theory item 5 is corrupted by 98 U+001F control characters. The new measurement and answer-key supplements exist, but a single replacement binding must preserve all source teaching/visual content and suppress the incorrect micrometer example. Keep pending until PHYS-VIS-T1 and extraction strategy resolve these inputs.",
       "completion_condition": "delivery_corrections[] has one entry with this source id, source sha256, source_lesson_id SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e, body_sha256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e and a replacement_id that resolves to an existing supplement of the same subject and term; the reason and evidence name each defect; no schema, compiler or other subject is edited."
     },
     {
@@ -3091,7 +3091,7 @@
   "review": {
     "date": "2026-11-11",
     "reviewed_master_sha": "2240fe9289f9017c805a2544eeecabcd2bd71e4a",
-    "scope": "Source indexing now includes exact original Week Four and Week Ten equation evidence from hash-verified archive extraction; confirmed X-for-alpha typo, recorded Week Ten fraction-layout ambiguity, corrected all SVG hashes, and preserved approval/visual blockers.",
+    "scope": "Physics expanded with First Term laboratory familiarization and keyed assessments; Second Term Week Four source defects indexed; source/visual/correction blockers retained honestly. Content approval and student-delivery acceptance remain pending.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
