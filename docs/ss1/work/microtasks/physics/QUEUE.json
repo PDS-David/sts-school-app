@@ -41,7 +41,8 @@
     "PHYS-WK-T3-W02 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL (4,455-char body; 18 keyed questions; 38 marks) and added five objective-level coverage entries. SchoolGist/Ecolebooks close-equivalent notes used only for scope corroboration. Original .doc body/diagrams not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W02.md; queue item BLOCKED.",
     "PHYS-WK-T3-W03 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER (4,065-char body; 18 keyed questions; 40 marks) and added five objective-level coverage entries. SchoolGist/Ecolebooks close-equivalent notes used only for scope corroboration. Original .doc body/figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W03.md; queue item BLOCKED.",
     "PHYS-WK-T3-W04 + PHYS-FACT-T3-FUSE-RATING + PHYS-FACT-T3-W04-ASSIGNMENT + PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA (2026-11-11): implemented source indexing, correction and assessment disposition. See the four task notes in docs/ss1/work/microtasks/physics/. Source PDF line locators and prior original-source checkpoint are recorded; lesson content approval remains pending and testing deferred.",
-    "PHYS-TEST-PACKAGE-NEW (2026-11-11): completed and executed. Dedicated workflow run 43012753944 succeeded: 7 tests, 7 pass, 0 fail; registered SS1 package validator passed. Test file tests/ss1/physics.package.test.mts and workflow .github/workflows/ss1-physics-verification.yml. Does not certify source-importer, DB or device delivery."
+    "PHYS-TEST-PACKAGE-NEW (2026-11-11): completed and executed. Dedicated workflow run 43012753944 succeeded: 7 tests, 7 pass, 0 fail; registered SS1 package validator passed. Test file tests/ss1/physics.package.test.mts and workflow .github/workflows/ss1-physics-verification.yml. Does not certify source-importer, DB or device delivery.",
+    "PHYS-WK-T3-W05 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W05-PARTICLE-NATURE-MATTER (6,664-char body; 20 keyed questions; 43 marks) and added five objective-level coverage entries. SchoolGist PDF Week Five lines 348-432 used only as close-equivalent scope comparison. Original .doc body/figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W05.md; queue item BLOCKED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -61,8 +62,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 39,
-    "BLOCKED": 26,
-    "PENDING": 24
+    "BLOCKED": 27,
+    "PENDING": 23
   },
   "total": 89,
   "items": [
@@ -1178,8 +1179,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 4 (source label 'WEEK 5', title \"MATTER, ATOMIC STRUCTURE, STATES OF MATTER,\", 4916 characters, body sha256 f59b8928f2e3d005c70de58e2e9ada07cfa1c404e24a7b448478eb65c593569b) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W05-PARTICLE-NATURE-MATTER and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W05.md. Parsed row 4 identity/hash are bound; SchoolGist PDF Week Five (lines 348-432) used only as a close-equivalent scope comparison. Exact registered .doc body and original figures were not retrievable in this execution, so source reconciliation remains incomplete.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -3074,10 +3075,9 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "Physics regression workflow passed 7/7; package validation passed. T2 Weeks 3–10 and T3 Weeks 1–4 authored/indexed. Remaining source and visual tasks continue."
+    "notes": "Physics package has 25 lessons and 157 coverage rows. Week Five Third Term lesson authored; original source-row and visuals remain to reconcile. PR #578 test suite 7/7 passed; package validation passed."
   },
   "next_runnable": [
-    "PHYS-WK-T3-W05",
     "PHYS-WK-T3-W06",
     "PHYS-WK-T3-W07",
     "PHYS-WK-T3-W08",
@@ -3095,7 +3095,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T3-W05",
     "PHYS-WK-T3-W06",
     "PHYS-WK-T3-W07",
     "PHYS-WK-T3-W08",
