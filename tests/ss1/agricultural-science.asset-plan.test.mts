@@ -17,7 +17,7 @@ function fixture(approval = 'APPROVED') {
   const state = { content_approval: approval, approval_reference: approval === 'APPROVED' ? 'review://lesson-1' : null, implementation: 'IMPLEMENTED', verification: 'VERIFIED', verification_reference: 'verification://lesson-1' };
   const lesson = { id: 'SUP-SS1-AG-LESSON-1', class_name: 'SS 1', term: '3rd Term', title: 'Tool Reference', state };
   const asset = { id: 'AG-ASSET-1', lesson_id: lesson.id, path: rel, sha256: hash(validSvg), bytes: validSvg.length, media_type: 'image/svg+xml', alt: 'Agricultural hand tool', order: 1, provenance: { reuse_status: 'PERMITTED' }, state: { ...state } };
-  const compilerPlan = { assets: [{ id: asset.id }], identified_rows: [{ id: lesson.id, row: { className: 'SS 1', subjectName: 'Agricultural Science', termLabel: '3rd Term', orderIndex: 12, title: lesson.title } }] };
+  const compilerPlan = { assets: [{ id: asset.id, sha256: asset.sha256, lesson_id: asset.lesson_id, path: asset.path }], identified_rows: [{ id: lesson.id, row: { className: 'SS 1', subjectName: 'Agricultural Science', termLabel: '3rd Term', orderIndex: 12, title: lesson.title } }] };
   const subjectPackage = { subject_slug: 'agricultural-science', canonical_subject: 'Agricultural Science', package_status: 'IMPLEMENTED', lessons: [lesson], assets: [asset] };
   return { root, compilerPlan, subjectPackage, rel };
 }
@@ -56,6 +56,7 @@ test('asset topic mismatch and untrusted SVG bytes block manifest generation', (
     writeFileSync(path.join(f.root, f.rel), unsafe);
     f.subjectPackage.assets[0].sha256 = hash(unsafe);
     f.subjectPackage.assets[0].bytes = unsafe.length;
+    f.compilerPlan.assets[0].sha256 = hash(unsafe);
     result = buildAssetPlan({ compilerPlan: f.compilerPlan, subjectPackage: f.subjectPackage, repoRoot: f.root });
     assert.ok(result.blockers.includes('ASSET_MIME_OR_SAFETY_MISMATCH:AG-ASSET-1'));
   } finally { rmSync(f.root, { recursive: true, force: true }); }
