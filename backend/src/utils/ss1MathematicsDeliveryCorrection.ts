@@ -152,6 +152,22 @@ const packageValue = packageSchema.parse(packageData);
 const defaultResolver = createSs1MathematicsDeliveryResolver(packageValue);
 export const resolveSs1MathematicsDelivery = (topic: Ss1MathematicsTopic) => defaultResolver(topic);
 
+/** Permit only the exact, approved and verified Mathematics SVG registered in the subject package. */
+export function mathematicsAssetDeliverable(topic: Ss1MathematicsTopic, storedAsset: { asset_key?: unknown; sha256?: unknown; mime?: unknown }) {
+  if (topic.school_code !== SCHOOL_CODE || topic.class_name !== CLASS_NAME ||
+      norm(topic.subject_name) !== norm(SUBJECT_NAME)) return false;
+  const asset = packageValue.assets.find(item => item.id === storedAsset.asset_key);
+  if (!asset || asset.sha256 !== storedAsset.sha256 || asset.media_type !== storedAsset.mime ||
+      asset.state.content_approval !== 'APPROVED' || asset.state.implementation !== 'IMPLEMENTED' ||
+      asset.state.verification !== 'VERIFIED' || asset.provenance.reuse_status !== 'PERMITTED') return false;
+  const lesson = packageValue.lessons.find(item => item.id === asset.lesson_id);
+  if (!lesson || lesson.term !== topic.term_label) return false;
+  const source = packageValue.sources.find(item => item.term === lesson.term);
+  if (!source || path.basename(source.archive_member) !== path.basename(String(topic.source_file ?? ''))) return false;
+  const expectedTitle = asset.source_locator.split(' — ').at(-1)?.trim() ?? '';
+  return norm(topic.title) === norm(expectedTitle);
+}
+
 /** Prevent raw Mathematics source rows (including unresolved weeks) from leaking into student topic lists/details. */
 export function safeSs1MathematicsTopic<T extends Ss1MathematicsTopic>(topic: T): T {
   if (topic.school_code !== SCHOOL_CODE || topic.class_name !== CLASS_NAME ||
