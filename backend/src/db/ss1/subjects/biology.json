@@ -7161,8 +7161,11 @@
       "source_id": "SS1-SRC-eb6e9665f42c",
       "objective": "2nd Term Week 1 scheme: Reproduction — meaning and types",
       "objective_locator": "SS1-SRC-eb6e9665f42c scheme row block 7 (sha256 e9bf035735b23461cca014ea098bd51bec8bb2f004c91907322d42d58291ccdf); Week 1 label block 29 (sha256 c506e8a3b669da9ae7b0f2b13bdffcd32298dd63774feff3bed8091220f56804); body blocks 29-91 (range sha256 a6b8c46dc5d521f9bbfb918a648c44d81ef5d3c3e634f8c8359c38582a2b8447)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BIOLOGY-T2-W01-ASEXUAL-ADVANTAGES",
+        "SUP-SS1-BIOLOGY-T2-W02-SEXUAL-REPRODUCTION-MEIOSIS"
+      ],
       "evidence": [
         {
           "locator": "converted DOCX blocks 38-50 (range sha256 dfd6f43d3c28d0918af78cf1e51155a6d5da4f5c5fa7474826fdf1d9163d9e87)",
@@ -7175,6 +7178,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
           "explanation": "No lesson is registered for this objective. Source-only teaching is not deliverable; PARTIAL remains until an approved lesson or equivalent is authored and bound."
+        },
+        {
+          "locator": "Existing lessons SUP-SS1-BIOLOGY-T2-W01-ASEXUAL-ADVANTAGES and SUP-SS1-BIOLOGY-T2-W02-SEXUAL-REPRODUCTION-MEIOSIS",
+          "explanation": "Together these lessons define asexual and sexual reproduction, explain the two broad types and provide keyed practice; the Week 2 lesson is linked for the detailed sexual-reproduction content explicitly listed in the Week 1 content list."
         }
       ]
     },
@@ -7183,9 +7190,11 @@
       "source_id": "SS1-SRC-eb6e9665f42c",
       "objective": "2nd Term Week 1: forms of asexual reproduction and vegetative propagation",
       "objective_locator": "SS1-SRC-eb6e9665f42c converted DOCX blocks 51-65 (range sha256 983358ae20c07e745c7481e04878e1e338a322d0a2a2aa2d4d406374ea5bd886)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SUP-SS1-BIOLOGY-T2-W01-ARTIFICIAL-PROPAGATION"
+        "SUP-SS1-BIOLOGY-T2-W01-ASEXUAL-ADVANTAGES",
+        "SUP-SS1-BIOLOGY-T2-W01-ARTIFICIAL-PROPAGATION",
+        "SUP-SS1-BIOLOGY-T2-W03-REPRODUCTION-ORGANISMS"
       ],
       "evidence": [
         {
@@ -7203,6 +7212,10 @@
         {
           "locator": "Supplementary lesson SUP-SS1-BIOLOGY-T2-W01-ARTIFICIAL-PROPAGATION",
           "explanation": "The supplement describes all five artificial methods named at source block 65 and provides keyed practice. The wider asexual-forms objective remains PARTIAL because its other source subtopics and source lesson delivery are not all resolved by this lesson."
+        },
+        {
+          "locator": "Existing lessons on asexual reproduction, artificial vegetative propagation and reproduction in selected organisms",
+          "explanation": "The linked lessons collectively teach the major forms named in the source, including binary fission, budding, fragmentation/spore formation and natural/artificial vegetative propagation, with organism examples and keyed practice."
         }
       ]
     },
@@ -8997,8 +9010,12 @@
       "source_id": "SS1-SRC-78059230037f",
       "objective": "Combined Weeks 6-7: general effects and prevention/control of pests and diseases",
       "objective_locator": "General effects blocks 628-636 (range sha256 bd77f2acedb0ab890a1114898689167dd9d65876a0d84772c4eb834fc128f676); general control blocks 637-641",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BIOLOGY-T3-W06-W07-PESTS-DISEASES",
+        "SUP-SS1-BIOLOGY-T3-W06-W07-PARASITE-LIFECYCLES",
+        "SUP-SS1-BIOLOGY-T3-W06-W07-FUNGAL-DISEASES"
+      ],
       "evidence": [
         {
           "locator": "blocks 628-636",
@@ -9011,6 +9028,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
           "explanation": "No registered lesson exists for general pest/disease management."
+        },
+        {
+          "locator": "Existing Third Term Weeks 6-7 pest, parasite-life-cycle and fungal-disease supplements",
+          "explanation": "The registered lessons cover pest/disease effects, selected crop and livestock examples, parasite life cycles, prevention and integrated management. Chemical and veterinary instructions remain excluded pending qualified review."
         }
       ]
     },
@@ -9057,8 +9078,10 @@
       "source_id": "SS1-SRC-78059230037f",
       "objective": "3rd Term scheme row 8: Food Storage and Production — government roles, environmental factors and ways of improving crop production",
       "objective_locator": "Scheme row 8; body label block 669 ('WEEK THREE', sha256 e791c34f727e46a2b601cf2875bfca87b52f862637654cb7b21421d66efc6976); topic block 672; teaching blocks 684-720",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BIOLOGY-T3-W08-FOOD-PRODUCTION-STORAGE"
+      ],
       "evidence": [
         {
           "locator": "blocks 690-701 (range sha256 56bacbe89c95e9aaf5c108630a5fff770fa4e701e224d0f416cd9eecdebd05db)",
@@ -9075,6 +9098,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
           "explanation": "No registered lesson exists for food production; source-only content is not deliverable."
+        },
+        {
+          "locator": "Existing lesson SUP-SS1-BIOLOGY-T3-W08-FOOD-PRODUCTION-STORAGE, sections 1-3",
+          "explanation": "The registered lesson covers environmental factors, government and agricultural support, and ways of improving food production with safe, current wording."
         }
       ]
     },
@@ -9083,8 +9110,11 @@
       "source_id": "SS1-SRC-78059230037f",
       "objective": "3rd Term Week 8: effects of food shortage on population and effects of food storage on population",
       "objective_locator": "Food-shortage heading block 722; teaching blocks 722-729 (range sha256 9dee439ab40540709aa8b9bf35e7f25c404e25677c4fb9108f5cf459f67c2f62); food-storage effects blocks 769-773 (range sha256 bc3fb80f49be690da58bc09e2ba213596376f997535ed0386e6c1df7154d4201)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BIOLOGY-T3-W08-FOOD-PRODUCTION-STORAGE",
+        "SUP-SS1-BIOLOGY-T3-W08-STORAGE-STRUCTURES"
+      ],
       "evidence": [
         {
           "locator": "blocks 722-729",
@@ -9097,6 +9127,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
           "explanation": "No registered lesson exists for food shortage/storage effects."
+        },
+        {
+          "locator": "Existing lessons SUP-SS1-BIOLOGY-T3-W08-FOOD-PRODUCTION-STORAGE and SUP-SS1-BIOLOGY-T3-W08-STORAGE-STRUCTURES",
+          "explanation": "The lessons explain food shortage effects, preservation/storage principles, storage benefits and the purpose of silos and barns; they avoid presenting unsafe or incorrect preservation procedures."
         }
       ]
     },
