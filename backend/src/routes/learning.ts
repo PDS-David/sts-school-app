@@ -390,7 +390,7 @@ router.put('/topics/:id', requirePerm('topics.write'), async (req, res) => {
   const { rows: full } = await query(
     'SELECT t.*, sub.name AS subject_name FROM topics t LEFT JOIN subjects sub ON sub.id=t.subject_id WHERE t.id=$1', [req.params.id],
   );
-  const { subject_name: _subjectName, ...safe } = safeSs1MathematicsTopic(safeEnglishTopic(safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(full[0] ?? rows[0]))), user.role));
+  const { subject_name: _subjectName, ...safe } = safeSs1MathematicsTopic(safeEnglishTopic(safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(full[0] ?? rows[0])))));
   return res.json({ topic: safe });
 });
 
