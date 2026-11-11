@@ -163,8 +163,8 @@
     "CORRECTION_BINDING": 16
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 156,
-    "BLOCKED": 10
+    "IMPLEMENTED_TESTING_DEFERRED": 158,
+    "BLOCKED": 8
   },
   "items": [
     {
@@ -4563,8 +4563,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W08"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "The package now contains 36 authored learner-facing lesson records, but no authorised importer/plan result has confirmed the exact original parsed source row identity for this correction. The correction contract requires a source_lesson_id, the exact original body_sha256 and a valid replacement_id; a supplement lesson ID is not a substitute for the original source row. The evidence-backed candidate correction remains recorded below. No delivery_corrections record was fabricated or bound; original source bytes remain unchanged. Investigated 2026-11-09. Recomputed member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 and block hashes: scheme 12 74b333be9d324f105edec4322c750ad1245abe57d9f5480257ef73fda17c9bb3; topic 518 9c94d3b2a51b6b8b34c75e8dc64989735a65279246d40964f74ca27aa122e6ba; teaching heading 527 26ac0721ccf0bccf628473e0ce6291cd0524c3d87db452748a5702b22177239c; assessment blocks 568 and 573 both 76a611669bbbdbecf253d84c312d7b03e74e36d27a18907ccc5c07247e97e3bd. The source's Week Eight scheme/topic/teaching content establishes that the two questions should say 'processes of rock weathering', not 'rock formation'; Week Seven separately teaches rock formation and types. Parallel Ecolebooks/Edudelight copies reproduce the carry-over; a Scribd copy has one weathering variant but repeats the error in general evaluation. Recommended delivery correction at both blocks is 'What are the processes of rock weathering?' The correction remains BLOCKED pending importer-confirmed original source row identity and an approved replacement binding. Updated existing package open item; no delivery_corrections or source changes.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The actual parser/compiler row is confirmed in CI: SS1-SRC-956594d97094:BODY:1f941dd52a764e5665229f0caad9aa3a3bca2ecf1ffad1ac4f3810601bfa573b. Added CORR-AG-T2-W08-QUESTION-WORDING-REPLACEMENT binding it to SUP-SS1-AGRICULTURAL-SCIENCE-T2-W08-ROCK-WEATHERING. The replacement distinguishes weathering, erosion and rock formation and corrects the source assessment wording. Source bytes unchanged; approval and learner verification remain pending.",
       "completion_condition": "A correction-binding record verifies the intended wording and cites source evidence; original source remains unchanged."
     },
     {
@@ -4600,8 +4600,8 @@
         "AG-SRC-T2",
         "AG-WK-T2-W09"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "The package now contains 36 authored learner-facing lesson records, but no authorised importer/plan result has confirmed the exact original parsed source row identity for this correction. The correction contract requires a source_lesson_id, the exact original body_sha256 and a valid replacement_id; a supplement lesson ID is not a substitute for the original source row. The evidence-backed candidate correction remains recorded below. No delivery_corrections record was fabricated or bound; original source bytes remain unchanged. Investigated 2026-11-09. Recomputed source member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 and block hashes 627 3d91f52ce2449d5253343e08e4ceb31844f8236355b3e3bd9dad1e3e2f913e21; 634 6965631ca49413d3db774a21c7da54b4e3b57f6663cb4a91aade6a746d73cfa1; headings/examples 626,633,635,638,639 also verified. Topography context (flat land vs slope, bottom of slope) plus soil-erosion references support 'sloppy area'→'sloping area'. The biotic-factors heading and following examples (mixing soil, root weathering, humus formation), plus FAO/NOU/University of Minnesota soil science sources, support 'rock formation'→'soil formation'. Parallel Ecolebooks/Lessonnotes.ng copies reproduce the same errors and are not independent correction authority. The correction remains BLOCKED pending importer-confirmed original source row identity/body hash and an approved replacement binding; the package now contains 36 authored lesson records but no original parsed-row ID has been confirmed. Updated existing package open item; no delivery_corrections or source changes.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The actual parser/compiler row is confirmed in CI: SS1-SRC-956594d97094:BODY:1d566e884981c34293a7c08a90ce5177dc063ea5813da9a7f27e69e09c5f77ee. Added CORR-AG-T2-W09-SOIL-TERMS-REPLACEMENT binding it to SUP-SS1-AGRICULTURAL-SCIENCE-T2-W09-SOIL-FORMATION. The replacement corrects “sloppy area” to “sloping area” and “rock formation” to “soil formation”, and teaches all five soil-forming factors. Source bytes unchanged; approval and learner verification remain pending.",
       "completion_condition": "A correction-binding record cites verified evidence for each correction and preserves original wording."
     },
     {
