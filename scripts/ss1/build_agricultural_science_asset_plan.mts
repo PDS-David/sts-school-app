@@ -41,7 +41,7 @@ const subjectPackage = packageSchema.parse(packageData);
 const files = subjectPackage.sources.map(source => path.resolve(root, source.archive_member));
 for (const source of subjectPackage.sources) {
   const staged = stageManifest.sources.find((item: any) => item.archive_member === source.archive_member);
-  if (!staged || staged.sha256 !== source.sha256 || Number(staged.bytes) !== Number(source.bytes)) {
+  if (!staged || staged.sha256 !== source.sha256 || !Number.isSafeInteger(Number(staged.bytes)) || Number(staged.bytes) <= 0) {
     throw new Error(`Staged source manifest does not match package source ${source.source_id}.`);
   }
 }
