@@ -153,7 +153,18 @@
     "2026-11-11 verification reconciliation after PR #545 merge (3cd7dd0398da923ceee1654d2d3fa2175a762c58): dedicated Agricultural Science verification run 42993422155 passed all four suites — package 8/8, asset plan 4/4, SVG safety/ingestion 5/5, authenticated asset-route/mobile-renderer 13/13 (30 passed, zero failed). Asset-plan rebuild verified all 40 assets against exact compiler rows and correctly withheld CSV emission because approvals remain pending. Subject validator returned valid:true for 47 lessons and 77 coverage records, but package status remains PENDING with 90 blocking open items and all 47 lessons unapproved or unverified. Repository-wide integrity run 42993422330 passed backend/mobile TypeScript, JSON parsing, SVG safety, stored hashes/byte counts and all-subject package validation. These results supersede the earlier note that the Agricultural Science tests were deferred; they do not clear subject-expert decisions, content approval, lesson verification, production import or release gates.",
     "2026-11-11 OWNER DEC-AG-W09-2026-11-11: repository owner explicitly approved the nine numbered recommendations in the Week 9 farmstead/forestry evidence brief. Decision recorded in OWNER-DEC-W09-20261111.md. Applied its approval reference to the two corresponding supplement lessons; both now have content_approval APPROVED, implementation IMPLEMENTED and verification DEFERRED. Updated Week 9 coverage evidence to reflect the approved supplements. This is project-owner approval, not independent credentialed subject-expert sign-off. Residual Week 9 items remain unresolved: compost (854), mulching (857), reading (851), pressure (731), and remaining wording/formatting defects. Package remains PENDING; no source bytes changed and no student-release/verification claim is made."
   ],
-  "counts": 169,
+  "counts": {
+    "CORRECTION_BINDING": 19,
+    "FACTUAL_DEPENDENCY": 37,
+    "SOURCE_WEEK_INVENTORY": 3,
+    "LESSON": 39,
+    "SOURCE_MARKER_DISPOSITION": 6,
+    "SOURCE_PREAMBLE_INDEXING": 3,
+    "SOURCE_REGISTRATION": 3,
+    "TEST": 1,
+    "VISUAL_DISPOSITION": 31,
+    "SOURCE_WEEK_INDEXING": 27
+  },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 165,
     "PENDING": 3,
@@ -199,7 +210,7 @@
     },
     {
       "id": "AG-CORR-T1-W09-ASSESSMENT-FORMAT",
-      "kind": "CORRECTION",
+      "kind": "CORRECTION_BINDING",
       "source_id": "SS1-SRC-7aa642b0085b",
       "term": "1st Term",
       "week_or_locator": "Week 9 blocks 796, 853 and 855",
@@ -232,7 +243,7 @@
     },
     {
       "id": "AG-CORR-T1-W09-OUT-OF-SCOPE-ITEMS",
-      "kind": "CORRECTION",
+      "kind": "CORRECTION_BINDING",
       "source_id": "SS1-SRC-7aa642b0085b",
       "term": "1st Term",
       "week_or_locator": "Week 9 blocks 854 and 857",
@@ -265,7 +276,7 @@
     },
     {
       "id": "AG-CORR-T1-W09-READING-AND-CLIMATE-DELIVERY",
-      "kind": "CORRECTION",
+      "kind": "CORRECTION_BINDING",
       "source_id": "SS1-SRC-7aa642b0085b",
       "term": "1st Term",
       "week_or_locator": "Week 9 blocks 723, 731, 750, 779, 788-789 and 850-851",
