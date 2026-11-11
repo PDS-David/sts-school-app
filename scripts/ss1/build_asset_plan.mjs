@@ -109,7 +109,7 @@ function arg(name) {
 export function writeAssetPlanArtifacts({ result, subjectPackage, outDir }) {
   mkdirSync(outDir, { recursive: true, mode: 0o700 });
   const reportPath = path.join(outDir, `${subjectPackage.subject_slug}-asset-plan.json`);
-  writeFileSync(reportPath, JSON.stringify({ subject_slug: subjectPackage.subject_slug, ready: result.ready, blockers: result.blockers, records: result.records }, null, 2) + '\\n', { flag: 'wx', mode: 0o600 });
+  writeFileSync(reportPath, JSON.stringify({ subject_slug: subjectPackage.subject_slug, ready: result.ready, blockers: result.blockers, records: result.records }, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
   if (!result.ready) return { ready: false, reportPath, manifestPaths: [] };
   const manifestPaths = [];
   for (const group of result.groups) {
@@ -118,7 +118,7 @@ export function writeAssetPlanArtifacts({ result, subjectPackage, outDir }) {
     const headers = ['asset_key','file','sha256','order_index','caption','alt_text','kind','displayed','sort_order','expected_title'];
     const lines = [headers.join(','), ...group.rows.map(row => headers.map(header => csvCell(row[header])).join(','))];
     const manifestPath = path.join(outDir, `${slug}-assets.csv`);
-    writeFileSync(manifestPath, lines.join('\\n') + '\\n', { flag: 'wx', mode: 0o600 });
+    writeFileSync(manifestPath, lines.join('\n') + '\n', { flag: 'wx', mode: 0o600 });
     manifestPaths.push(manifestPath);
   }
   return { ready: true, reportPath, manifestPaths };
