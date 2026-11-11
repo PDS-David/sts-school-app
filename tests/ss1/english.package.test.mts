@@ -70,12 +70,22 @@ test('All 24 correction records preserve exact source/body identity and bind a s
   }
 });
 
-test('No lesson or package record fabricates content approval or completed verification', () => {
+test('All 149 lessons carry the owner attestation; verification remains separate and deferred', () => {
   const p = packageSchema.parse(raw);
-  assert.equal(p.package_status, 'PENDING');
+  const approvalRegister = readFileSync(
+    new URL('../../docs/ss1/work/microtasks/english/OWNER_APPROVAL_20261111.md', import.meta.url),
+    'utf8',
+  );
+  assert.equal(p.package_status, 'IMPLEMENTED');
+  assert.equal(p.lessons.length, 149);
+  assert.equal(p.open_items.some(item => item.id === 'ENGLISH-CONTENT-APPROVAL'), false);
+  assert.equal(p.open_items.some(item => item.blocks_delivery), false);
   for (const lesson of p.lessons) {
-    assert.equal(lesson.state.content_approval, 'PENDING', lesson.id);
-    assert.equal(lesson.state.approval_reference, null, lesson.id);
+    const reference = 'OWNER-ATTESTATION-2026-11-11:' + lesson.id;
+    assert.equal(lesson.state.content_approval, 'APPROVED', lesson.id);
+    assert.equal(lesson.state.approval_reference, reference, lesson.id);
+    assert(approvalRegister.includes('`' + lesson.id + '`'));
+    assert(approvalRegister.includes('`' + reference + '`'));
     assert.equal(lesson.state.implementation, 'IMPLEMENTED', lesson.id);
     assert.equal(lesson.state.verification, 'DEFERRED', lesson.id);
     assert.equal(lesson.state.verification_reference, null, lesson.id);
