@@ -1,8 +1,8 @@
 # AG-FACT-T1-W09-SCOPE — Evidence Brief for Qualified Subject-Expert Decision
 
-<badge> DRAFT — NOT AN EXPERT SIGN-OFF </badge>
+<badge> OWNER APPROVED — NINE RECOMMENDATIONS </badge>
 
-**Status:** Evidence gathered; decision remains BLOCKED pending approval by a qualified Agricultural Science teacher/lecturer or forestry/agricultural engineering specialist. This is an AI-authored evidence brief, not a claim of human expert review. Two draft learner-facing supplements have since been added to the subject package, but they remain unapproved and must not be treated as expert-cleared content.
+**Status:** The repository owner approved the nine numbered recommendations in section E on 2026-11-11. The approval is recorded in `OWNER-DEC-W09-20261111.md`. This is project-owner approval, not a claim of independent credentialed subject-expert review. The farmstead and forestry supplements now have `content_approval: APPROVED`; lesson verification remains `DEFERRED`. Separate Week 9 decisions concerning compost, mulching, the misdirected reading, pressure and remaining wording defects are still open.
 
 ## Source identity and assessment scope
 
@@ -34,12 +34,9 @@ There is no universal international list of exactly five farmstead-planning prin
 
 **Why this five-part grouping is recommended:** FAO farm-structures guidance explicitly identifies drainage, slope, vehicle manoeuvring, future expansion, prevailing wind, odour control, orientation, clean water, safety and security. FUNAAB farm-structures teaching material identifies utilities, orientation, expansion and efficient building arrangement. A Nigerian study on farmstead wind direction in Ibadan confirms that prevailing winds affect livestock-unit siting and odour management.
 
-### Expert decision requested
+### Owner decision recorded
 
-Please approve or amend:
-- the farmstead definition above;
-- whether the five grouped principles are appropriate for SS1;
-- whether a sketch/layout should be included in the learner lesson or only assessed separately.
+The repository owner approved the farmstead definition and five grouped principles on 2026-11-11. The approval record is `OWNER-DEC-W09-20261111.md#DEC-AG-W09-2026-11-11`. The lesson retains a learner sketch/layout exercise; no separate graphic asset is represented as having been approved.
 
 ## B. Forestry — recommended school-level decision
 
@@ -156,18 +153,30 @@ For a short SS1 answer, the recommended approach is to define a primary forest p
 11. FAO Global Forest Resources Assessment, Terms and Definitions. https://fra-data.fao.org/definitions/fra/2020/en/tad — afforestation and forest-expansion definitions.
 12. Oyo State Forestry Law, 1984 (No. 13 of 1984), section 29. https://ordinis.ng/law/forestry-law — examples of regulation of forest produce, permits, protected trees, timber marking, sawmills, nurseries, afforestation, fire and forest-reserve management.
 
-## E. Decisions required from a qualified reviewer
+## E. Nine recommendations — owner decision recorded
 
-Please confirm or amend the following before lessons are authored:
+The repository owner explicitly approved all nine recommendations below on 2026-11-11. The exact decisions and their limits are recorded in `OWNER-DEC-W09-20261111.md#DEC-AG-W09-2026-11-11`. This does not claim independent credentialed subject-expert sign-off.
 
-1. Farmstead definition: approve the distinction between the farmstead (built-up home/operating centre) and the whole farm.
-2. Farmstead principles: approve the five grouped principles in section A, or specify the exact five your scheme expects.
-3. Forestry department: approve the eight school-level functions in section B.
-4. Taungya: approve the definition and the two Nigerian variants.
-5. Forest uses: approve the eight categories in section B.
-6. Forest regulation: confirm that the assessment means laws/rules controlling forest resources and harvesting.
-7. Selective exploitation: confirm replacement of the source's “selective exploration” with the correct standard term in the future learner delivery layer.
-8. Afforestation/reforestation: approve the FAO distinction.
-9. Primary forest product: select whether the school answer should be limited to direct/raw outputs or should include FAO's first-stage processed products.
+1. **APPROVED:** Farmstead definition — built-up home/operating centre, distinct from the whole farm.
+2. **APPROVED:** Five grouped farmstead-planning principles in section A.
+3. **APPROVED:** Eight school-level functions of a forestry department.
+4. **APPROVED:** Taungya definition and the two Nigerian variants.
+5. **APPROVED:** Eight forest-use categories in section B.
+6. **APPROVED:** Forest regulation as laws/rules and administrative controls governing forest resources and harvesting.
+7. **APPROVED:** Correct the learner-facing term to selective exploitation/selective felling; retain original source bytes unchanged.
+8. **APPROVED:** FAO distinction between afforestation and reforestation.
+9. **APPROVED:** For the short SS1 answer, use direct/raw forest outputs, while noting that FAO's statistical classification can include some first-stage processed products.
 
 **Draft implementation status (10 November 2026):** The package now contains `SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-FARMSTEAD` and `SUP-SS1-AGRICULTURAL-SCIENCE-T1-W09-FORESTRY`, each with keyed practice, provenance and `content_approval: PENDING`. These are bounded drafts based on the evidence brief, not approved teaching material. The queue tasks remain BLOCKED because the required qualified expert decision has not been supplied; do not change their approval state or publish them as expert-cleared. The original source text is unchanged.
+
+
+## F. Remaining Week 9 issues outside the nine approvals
+
+The following were not among the nine recommendations approved by the repository owner and remain undecided. Do not infer an answer key or change the original source:
+
+- Compost question at block 854 and mulching question at block 857: determine whether they belong to another week/term or should be withdrawn.
+- Reading assignment at block 851: determine the correct reading reference or withdraw the misdirected assignment.
+- Atmospheric pressure listed at block 731: determine whether it is an intended additional climatic factor requiring teaching.
+- Remaining wording/formatting defects at blocks 723, 750, 779, 796, 853 and 855: decide which should be corrected through a source-hash-bound learner-delivery replacement.
+
+These residual items remain tracked in the Agricultural Science queue. The two approved supplements remain unverified until the authorised compiler/importer and authenticated learner-delivery checks are completed.
