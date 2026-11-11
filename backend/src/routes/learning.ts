@@ -10,7 +10,7 @@ import { resolveSequenceGroup } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
 import { resolveSs1Delivery, safeSs1Topic, retireStaleSs1Cache, ss1AssessmentDeliverable, ss1WithdrawnAssessmentIds } from '../utils/ss1CateringDeliveryCorrection.js';
 import { resolveSs1FrenchDelivery, retireStaleSs1FrenchCache } from '../utils/ss1FrenchDeliveryCorrection.js';
-import { resolveAgriculturalScienceDelivery, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
+import { resolveAgriculturalScienceDelivery, resolveAgriculturalScienceSupplement, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, retireStaleAgriculturalScienceSupplementCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
@@ -500,6 +500,18 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
     topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
     topic.summary = frenchDelivery.text;
   }
+  const agriculturalScienceSupplement = resolveAgriculturalScienceSupplement(topic);
+  if (agriculturalScienceSupplement) {
+    await retireStaleAgriculturalScienceSupplementCache(query, topic.id, agriculturalScienceSupplement);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    if (agriculturalScienceSupplement.kind === 'withheld') {
+      return res.json({ ok: true, summary: agriculturalScienceSupplement.text, summary_is_fallback: false,
+        practice_questions: [], assessment_status: null,
+        delivery_correction: { id: agriculturalScienceSupplement.lessonId, status: 'withheld', provenance: 'withheld pending exact package identity and verification' },
+        note: 'This Agricultural Science supplement is temporarily unavailable pending package verification.' });
+    }
+  }
   const agriculturalScienceDelivery = resolveAgriculturalScienceDelivery(topic);
   if (agriculturalScienceDelivery) {
     await retireStaleAgriculturalScienceCache(query, topic.id, agriculturalScienceDelivery);
@@ -524,6 +536,12 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
         note: 'This English Language topic is temporarily unavailable pending subject approval and verification.' });
     }
   }
+  // Agricultural Science compiled supplements contain teacher answer keys. Replace the stored
+  // compiler payload with the exact verified learner projection before any AI grounding or fallback.
+  const agriculturalScienceLearnerTopic = safeAgriculturalScienceTopic(topic);
+  topic.source_reference = agriculturalScienceLearnerTopic.source_reference;
+  topic.summary = agriculturalScienceLearnerTopic.summary;
+
   // A compiled English supplement stores teacher marking keys in source_reference.
   // Sanitize the student copy before using it as AI grounding or fallback text.
   const learnerTopic = safeEnglishSupplementTopic(topic, user.role);
@@ -638,7 +656,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
           `INSERT INTO assessments(school_code,subject_id,class_name,term_id,title,total_marks,status,created_by,content_fingerprint)
            VALUES($1,$2,$3,$4,$5,$6,'open',NULL,$7) RETURNING id`,
           [topic.school_code, topic.subject_id, topic.class_name, topic.term_id,
-           `${topic.title} — Topic Assessment`, questionIds.length, ss1Delivery?.kind === 'corrected' ? ss1Delivery.fingerprint : delivery?.kind === 'corrected' ? delivery.fingerprint : null],
+           `${topic.title} — Topic Assessment`, questionIds.length, ss1Delivery?.kind === 'corrected' ? ss1Delivery.fingerprint : agriculturalScienceSupplement?.kind === 'supplement' ? agriculturalScienceSupplement.fingerprint : delivery?.kind === 'corrected' ? delivery.fingerprint : null],
         );
         const assessmentId = aRows[0].id;
 

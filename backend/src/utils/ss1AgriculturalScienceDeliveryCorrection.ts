@@ -220,19 +220,93 @@ export const resolveAgriculturalScienceDelivery = (topic: AgriculturalScienceDel
 const defaultAssetResolver = createAgriculturalScienceAssetDeliveryResolver(packageValue);
 export const agriculturalScienceAssetDeliverable = (topic: AgriculturalScienceDeliveryTopic, metadata: AgriculturalScienceAssetMetadata) => defaultAssetResolver(topic, metadata);
 
+export interface AgriculturalScienceSupplementResolution {
+  source: 'ss1-agricultural-science';
+  lessonId: string;
+  kind: 'supplement' | 'withheld';
+  text: string;
+  fingerprint: string;
+  reason?: string;
+}
+
+function renderCompiledSupplement(lesson: SubjectPackage['lessons'][number]) {
+  return [
+    lesson.body, 'OBJECTIVES', ...lesson.objectives, 'PRACTICE AND MARKING GUIDE',
+    ...lesson.practice.map(question =>
+      `${question.id}. ${question.question}\nAnswer: ${question.answer}\nMarks: ${question.marks}\n${question.marking.map(mark => `${mark.marks}: ${mark.criterion}`).join('\n')}`,
+    ),
+  ].join('\n\n');
+}
+
+function renderStudentSupplement(lesson: SubjectPackage['lessons'][number]) {
+  return [
+    lesson.title, lesson.body, 'LEARNING OBJECTIVES',
+    ...lesson.objectives.map((objective, index) => `${index + 1}. ${objective}`),
+    'PRACTICE QUESTIONS',
+    ...lesson.practice.map(question => `${question.id}. ${question.question}`),
+  ].join('\n\n');
+}
+
+export function createAgriculturalScienceSupplementResolver(input: SubjectPackage) {
+  const subjectPackage = packageSchema.parse(input);
+  const lessons = new Map(subjectPackage.lessons.map(lesson => [lesson.id, lesson]));
+  return (topic: AgriculturalScienceDeliveryTopic): AgriculturalScienceSupplementResolution | null => {
+    if (topic.school_code !== SCHOOL_CODE || topic.class_name !== CLASS_NAME ||
+        norm(topic.subject_name) !== norm(SUBJECT_NAME)) return null;
+    const sourceFile = String(topic.source_file ?? '').split(/[\\/]/).pop() ?? '';
+    if (!sourceFile.startsWith('SUP-SS1-AGRICULTURAL-SCIENCE-')) return null;
+    const lesson = lessons.get(sourceFile);
+    const withheld = (reason: string): AgriculturalScienceSupplementResolution => ({
+      source: 'ss1-agricultural-science', lessonId: sourceFile, kind: 'withheld',
+      text: `${SS1_AGRICULTURAL_SCIENCE_WITHHELD_MARKER} ${sourceFile}\nThis Agricultural Science supplement is temporarily unavailable because its stored content does not match the approved, verified lesson package.`,
+      fingerprint: hash(`supplement-withheld:${sourceFile}:${reason}`), reason,
+    });
+    if (!lesson) return withheld('Unknown package supplement identity');
+    if (topic.term_label !== lesson.term || norm(topic.title) !== norm(lesson.title)) return withheld('Stored supplement title or term differs from the package');
+    const stored = typeof topic.source_reference === 'string' ? topic.source_reference : '';
+    if (stored !== renderCompiledSupplement(lesson)) return withheld('Stored supplement body differs from the compiled package lesson');
+    if (lesson.state.implementation !== 'IMPLEMENTED' || lesson.state.content_approval !== 'APPROVED' ||
+        !lesson.state.approval_reference || lesson.state.verification !== 'VERIFIED' ||
+        !lesson.state.verification_reference || lesson.provenance.some(source => source.reuse_status !== 'PERMITTED')) {
+      return withheld('Supplement implementation, approval, verification or rights evidence is incomplete');
+    }
+    const text = renderStudentSupplement(lesson);
+    return { source: 'ss1-agricultural-science', lessonId: lesson.id, kind: 'supplement', text,
+      fingerprint: hash(JSON.stringify({ lessonId: lesson.id, bodyHash: lesson.body_sha256, text })) };
+  };
+}
+
+const defaultSupplementResolver = createAgriculturalScienceSupplementResolver(packageValue);
+export const resolveAgriculturalScienceSupplement = (topic: AgriculturalScienceDeliveryTopic) => defaultSupplementResolver(topic);
+
 export function safeAgriculturalScienceTopic<T extends AgriculturalScienceDeliveryTopic>(topic: T): T {
   const delivery = resolveAgriculturalScienceDelivery(topic);
-  if (!delivery) return topic;
+  if (delivery) {
+    return {
+      ...topic,
+      source_reference: delivery.kind === 'corrected' ? delivery.text : null,
+      summary: delivery.text,
+      generated_assessment_id: null,
+      delivery_correction: {
+        id: delivery.correctionId,
+        status: delivery.kind,
+        provenance: delivery.kind === 'corrected' ? 'approved project-authored correction' : 'withheld pending subject approval/verification',
+        reason: delivery.reason,
+      },
+    };
+  }
+  const supplement = resolveAgriculturalScienceSupplement(topic);
+  if (!supplement) return topic;
   return {
     ...topic,
-    source_reference: delivery.kind === 'corrected' ? delivery.text : null,
-    summary: delivery.text,
+    source_reference: supplement.kind === 'supplement' ? supplement.text : null,
+    summary: supplement.text,
     generated_assessment_id: null,
     delivery_correction: {
-      id: delivery.correctionId,
-      status: delivery.kind,
-      provenance: delivery.kind === 'corrected' ? 'approved project-authored correction' : 'withheld pending subject approval/verification',
-      reason: delivery.reason,
+      id: supplement.lessonId,
+      status: supplement.kind === 'supplement' ? 'corrected' : 'withheld',
+      provenance: supplement.kind === 'supplement' ? 'owner-approved verified package supplement; teacher marking material withheld' : 'withheld pending exact package identity and verification',
+      reason: supplement.reason,
     },
   };
 }
@@ -280,6 +354,49 @@ const LINKED_SQL = `SELECT t.id, t.school_code, t.class_name, t.term_label, t.ti
        t.source_reference, sub.name AS subject_name, a.id AS assessment_id, a.content_fingerprint
   FROM topics t JOIN subjects sub ON sub.id=t.subject_id JOIN assessments a ON a.id=t.generated_assessment_id`;
 
+export async function retireStaleAgriculturalScienceSupplementCache(
+  query: AgriculturalScienceQuery,
+  topicId: unknown,
+  supplement: AgriculturalScienceSupplementResolution,
+) {
+  const expectedFingerprint = supplement.kind === 'supplement'
+    ? supplement.fingerprint
+    : `${SS1_AGRICULTURAL_SCIENCE_WITHDRAWN_FINGERPRINT_PREFIX}${supplement.lessonId}`;
+  const { rows } = await query(
+    `WITH target AS MATERIALIZED (
+       SELECT t.id, t.generated_assessment_id
+       FROM topics t JOIN subjects s ON s.id=t.subject_id
+       WHERE t.id=$1 AND t.school_code=$2 AND t.class_name=$3
+         AND s.name=$4 AND t.source_file=$5
+       FOR UPDATE OF t
+     ),
+     stale AS MATERIALIZED (
+       SELECT a.id FROM assessments a JOIN target ON a.id=target.generated_assessment_id
+       WHERE a.content_fingerprint IS DISTINCT FROM $6
+     ),
+     closed AS (
+       UPDATE assessments a SET status='closed', content_fingerprint=$7
+       FROM stale WHERE a.id=stale.id RETURNING a.id
+     ),
+     updated AS (
+       UPDATE topics topic
+       SET summary=$8,
+           generated_assessment_id=CASE WHEN EXISTS (SELECT 1 FROM stale) THEN NULL ELSE topic.generated_assessment_id END
+       FROM target
+       WHERE topic.id=target.id
+       RETURNING topic.id
+     )
+     SELECT (SELECT count(*) FROM stale) AS retired,
+            (SELECT count(*) FROM closed) AS closed_assessments,
+            (SELECT count(*) FROM updated) AS updated_topics`,
+    [topicId, SCHOOL_CODE, CLASS_NAME, SUBJECT_NAME, supplement.lessonId, expectedFingerprint,
+      `${SS1_AGRICULTURAL_SCIENCE_WITHDRAWN_FINGERPRINT_PREFIX}${supplement.lessonId}`, supplement.text],
+  );
+  return { retired: Number(rows[0]?.retired ?? 0) > 0,
+    closedAssessments: Number(rows[0]?.closed_assessments ?? 0) > 0,
+    updatedTopic: Number(rows[0]?.updated_topics ?? 0) > 0 };
+}
+
 export async function agriculturalScienceAssessmentDeliverable(query: AgriculturalScienceQuery, assessmentId: unknown) {
   const { rows: markerRows } = await query('SELECT content_fingerprint FROM assessments WHERE id=$1', [assessmentId]);
   if (String(markerRows[0]?.content_fingerprint ?? '').startsWith(SS1_AGRICULTURAL_SCIENCE_WITHDRAWN_FINGERPRINT_PREFIX)) {
@@ -288,10 +405,17 @@ export async function agriculturalScienceAssessmentDeliverable(query: Agricultur
   const { rows } = await query(`${LINKED_SQL} WHERE t.generated_assessment_id=$1`, [assessmentId]);
   for (const row of rows) {
     const delivery = resolveAgriculturalScienceDelivery(row);
-    if (!delivery) continue;
-    if (delivery.kind === 'corrected' && row.content_fingerprint === delivery.fingerprint) continue;
-    await retireStaleAgriculturalScienceCache(query, row.id, delivery);
-    return { ok: false as const, reason: 'This assessment has been withdrawn because the Agricultural Science source lesson was corrected or withheld.' };
+    if (delivery) {
+      if (delivery.kind === 'corrected' && row.content_fingerprint === delivery.fingerprint) continue;
+      await retireStaleAgriculturalScienceCache(query, row.id, delivery);
+      return { ok: false as const, reason: 'This assessment has been withdrawn because the Agricultural Science source lesson was corrected or withheld.' };
+    }
+    const supplement = resolveAgriculturalScienceSupplement(row);
+    if (supplement) {
+      if (supplement.kind === 'supplement' && row.content_fingerprint === supplement.fingerprint) continue;
+      await retireStaleAgriculturalScienceSupplementCache(query, row.id, supplement);
+      return { ok: false as const, reason: 'This assessment has been withdrawn because its Agricultural Science supplement contains stale or teacher-only material.' };
+    }
   }
   return { ok: true as const };
 }
@@ -307,9 +431,18 @@ export async function agriculturalScienceWithdrawnAssessmentIds(query: Agricultu
   const { rows } = await query(`${LINKED_SQL} WHERE t.generated_assessment_id = ANY($1)`, [assessmentIds]);
   for (const row of rows) {
     const delivery = resolveAgriculturalScienceDelivery(row);
-    if (!delivery || (delivery.kind === 'corrected' && row.content_fingerprint === delivery.fingerprint)) continue;
-    await retireStaleAgriculturalScienceCache(query, row.id, delivery);
-    withdrawn.add(row.assessment_id);
+    if (delivery) {
+      if (delivery.kind === 'corrected' && row.content_fingerprint === delivery.fingerprint) continue;
+      await retireStaleAgriculturalScienceCache(query, row.id, delivery);
+      withdrawn.add(row.assessment_id);
+      continue;
+    }
+    const supplement = resolveAgriculturalScienceSupplement(row);
+    if (supplement) {
+      if (supplement.kind === 'supplement' && row.content_fingerprint === supplement.fingerprint) continue;
+      await retireStaleAgriculturalScienceSupplementCache(query, row.id, supplement);
+      withdrawn.add(row.assessment_id);
+    }
   }
   return withdrawn;
 }
