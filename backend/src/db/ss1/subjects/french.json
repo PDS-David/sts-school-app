@@ -857,30 +857,51 @@
       "subject": "French",
       "title": "Identifier les métiers",
       "objectives": [
-        "Name occupations and describe their work.",
-        "Distinguish profession after être from a noun introduced by c’est."
+        "Name common occupations and form masculine and feminine job titles.",
+        "Use être with a profession and c’est with a noun phrase.",
+        "Identify source entries that are not professions or cannot be interpreted safely."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nAsk Quel est votre métier ? or Que faites-vous dans la vie ? To state an occupation, use être without an article when the profession stands alone: Elle est médecin. Il est boulanger. To identify a person with a noun phrase, use c’est: C’est une médecin. C’est un boulanger.\nExamples: un enseignant / une enseignante teaches; un infirmier / une infirmière cares for patients; un boulanger / une boulangère makes bread; un agriculteur / une agricultrice cultivates land; un vendeur / une vendeuse sells; un conducteur / une conductrice drives; un mécanicien / une mécanicienne repairs machinery; un musicien / une musicienne makes music; un coiffeur / une coiffeuse cuts or styles hair; un acteur / une actrice acts; un cuisinier / une cuisinière cooks; un avocat / une avocate works in law. Médecin and journaliste can be used with un or une.\nJobs are not restricted to one gender. Use the correct article and the person’s chosen professional designation. Regional naming conventions can vary.\nOriginal dialogue: — Que fait ta tante ? — Elle est mécanicienne. Elle répare des voitures. — Et ton oncle ? — Il est infirmier. Il travaille dans un centre de santé.\nDescribe the task as well as naming the job: Le boulanger prépare du pain. La vendeuse vend des fruits. These are example activities, not complete job descriptions.\n\nFurther useful pairs: un comptable / une comptable; un pilote / une pilote; un maçon / une maçonne; un boucher / une bouchère; un banquier / une banquière; un marchand ambulant / une marchande ambulante; un ingénieur / une ingénieure; un homme d’affaires / une femme d’affaires; un dessinateur / une dessinatrice; un chirurgien / une chirurgienne; un secrétaire / une secrétaire; un serveur / une serveuse; un fermier / une fermière; un commerçant / une commerçante; un jardinier / une jardinière; un électricien / une électricienne; un peintre / une peintre; un menuisier / une menuisière; un comédien / une comédienne; un chanteur / une chanteuse; un danseur / une danseuse; un étudiant / une étudiante; un directeur / une directrice; un policier / une policière; un cultivateur / une cultivatrice; un épicier / une épicière; un boutiquier / une boutiquière; un facteur / une factrice. Étudiant names a study role rather than a paid occupation. A title alone does not determine clothes: a fictional description can say Elle porte une blouse blanche, but not that all workers in a profession wear it. Blanc becomes blanche with a feminine noun; noir becomes noire. The unclear source strings computateur and couteur are not silently assigned a profession.",
-      "body_sha256": "01117b7b6e950977422235b303fac7e7449da4c2587c8427f6241ba68b1dfcaa",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nAsk « Quel est votre métier ? » or « Que faites-vous dans la vie ? » To state a profession after être, normally omit the article: Elle est médecin. Il est boulanger. To identify someone with a noun phrase, use c’est: C’est une médecin. C’est un boulanger.\n\nUseful masculine and feminine forms:\n- un professeur / une professeure; un avocat / une avocate; un comptable / une comptable; un pilote / une pilote; un journaliste / une journaliste;\n- un maçon / une maçonne; un boulanger / une boulangère; un boucher / une bouchère; un pêcheur / une pêcheuse; un dactylographe / une dactylographe;\n- un banquier / une banquière; un marchand ambulant / une marchande ambulante; un ingénieur / une ingénieure; un homme d’affaires / une femme d’affaires;\n- un dessinateur / une dessinatrice; un pasteur / une pasteure; un chirurgien / une chirurgienne; un médecin / une médecin; un secrétaire / une secrétaire;\n- un infirmier / une infirmière; un fermier / une fermière; un commerçant / une commerçante; un coiffeur / une coiffeuse; un jardinier / une jardinière;\n- un chauffeur / une chauffeuse; un électricien / une électricienne; un mécanicien / une mécanicienne; un peintre / une peintre; un menuisier / une menuisière;\n- un comédien / une comédienne; un chanteur / une chanteuse; un danseur / une danseuse; un étudiant / une étudiante; un directeur / une directrice;\n- un policier / une policière; un soldat / une soldate; un cultivateur / une cultivatrice; un épicier / une épicière; un boutiquier / une boutiquière; un facteur / une factrice; un docteur / une docteure.\n\nA dactylographe types documents. An informaticien or une informaticienne works in computing; this is a clear modern profession to learn, but it is not asserted to be the exact meaning of the source's unclear word « computateur ». The source also contains « couteur »; its intended occupation cannot be identified reliably from the table, so it is not silently changed to « couturier ». These two source terms remain for teacher confirmation.\n\nThe source table also lists « un garçon » and « un étudiant ». A garçon is a boy, and an étudiant is a student; these are descriptions of people, not occupations by themselves. Keep them separate from métier. Other useful examples: un vendeur / une vendeuse sells goods; un cuisinier / une cuisinière prepares food. A job title does not determine a person's clothing or abilities. Blanc becomes blanche with a feminine noun; noir becomes noire.\n\nModel sentences: Le boulanger prépare du pain. La factrice distribue le courrier. L’infirmière soigne les patients. Le mécanicien répare les voitures. Use these as simple examples, not complete job descriptions.",
+      "body_sha256": "372cbfde1d42cfddefa7e382ecb3bfeefc14dd886c8b2c1caacab4d3d33d2c52",
       "practice": [
         {
           "id": "Q1",
-          "question": "Translate: She is a teacher.",
-          "answer": "Elle est enseignante.",
+          "question": "Translate: She is a teacher. Then identify the form used after être.",
+          "answer": "Elle est professeure. The profession is used without an article after être.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Elle est",
+              "criterion": "Elle est professeure",
               "marks": 1
             },
             {
-              "criterion": "enseignante without an unnecessary article",
+              "criterion": "No article after être",
               "marks": 1
             }
           ]
         },
         {
           "id": "Q2",
+          "question": "Give the feminine forms of boulanger, avocat and directeur.",
+          "answer": "Boulangère, avocate, directrice.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "boulangère",
+              "marks": 1
+            },
+            {
+              "criterion": "avocate",
+              "marks": 1
+            },
+            {
+              "criterion": "directrice",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
           "question": "Complete: C’est __ infirmière. Elle __ dans un centre de santé.",
           "answer": "une ; travaille.",
           "marks": 2,
@@ -896,30 +917,54 @@
           ]
         },
         {
-          "id": "Q3",
-          "question": "Give the feminine forms of vendeur and acteur.",
-          "answer": "vendeuse ; actrice.",
-          "marks": 2,
+          "id": "Q4",
+          "question": "Give the masculine and feminine forms of dactylographe and médecin.",
+          "answer": "Un dactylographe / une dactylographe; un médecin / une médecin (docteure is also acceptable for a female doctor).",
+          "marks": 4,
           "marking": [
             {
-              "criterion": "vendeuse",
+              "criterion": "dactylographe forms",
+              "marks": 2
+            },
+            {
+              "criterion": "médecin forms",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Explain why garçon and étudiant are not job titles by themselves. Give one clear occupation from the lesson.",
+          "answer": "Garçon means boy and étudiant means student; neither names a profession by itself. Example: mécanicien, professeure, factrice.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Correct explanation of garçon",
               "marks": 1
             },
             {
-              "criterion": "actrice",
+              "criterion": "Correct explanation of étudiant",
+              "marks": 1
+            },
+            {
+              "criterion": "One valid occupation",
               "marks": 1
             }
           ]
         },
         {
-          "id": "Q4",
-          "question": "Correct the agreement: Elle porte une blouse blanc.",
-          "answer": "Elle porte une blouse blanche.",
-          "marks": 1,
+          "id": "Q6",
+          "question": "Write two sentences naming different professions and describing what each person does.",
+          "answer": "Example: Le boulanger prépare du pain. La factrice distribue le courrier. Other correct profession/action pairs accepted.",
+          "marks": 4,
           "marking": [
             {
-              "criterion": "blanche agrees with blouse",
-              "marks": 1
+              "criterion": "First correct profession and action",
+              "marks": 2
+            },
+            {
+              "criterion": "Second distinct correct profession and action",
+              "marks": 2
             }
           ]
         }
@@ -949,11 +994,12 @@
       "subject": "French",
       "title": "Décrire l’école, la maison et le quartier",
       "objectives": [
-        "Describe a place using il y a and location phrases.",
-        "Agree descriptive adjectives with nouns."
+        "Describe a neighbourhood, house, school and classroom using place vocabulary.",
+        "Use il y a, location phrases and possessive adjectives correctly.",
+        "Apply gender and number agreement to common colour and descriptive adjectives."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nUseful nouns: une école, une salle de classe, une bibliothèque, une cour, un bureau, un tableau, une table, une chaise, une porte, une fenêtre; une maison, un salon, une chambre, une cuisine, une salle de bains; une rue, un marché, un quartier. Learn the article with the noun.\nIl y a introduces what exists: Il y a une bibliothèque. Il n’y a pas de piscine. Location phrases include près de (near), loin de (far from), devant (in front of), derrière (behind), à côté de (next to), dans (inside) and sur (on).\nOriginal description: Mon école se trouve près du marché. Elle est petite et propre. Dans ma classe, il y a un tableau et des tables. La bibliothèque est à côté du bureau. Devant l’école, il y a une cour. This is a fictional model, not a statement about your school’s facilities.\nAgreement: un petit jardin / une petite maison; des salles propres. Possession: mon quartier, ma maison, mes cahiers. Before a feminine noun beginning with a vowel sound, use mon: mon école. A clear description moves from the whole place to its parts and gives locations the reader can follow.",
-      "body_sha256": "88997e296a09e6c7755ec7cb0abc530064c4ffa800b71e8c748b719769f90349",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nDescribe a place from the whole to its parts. Useful neighbourhood words: un quartier, une rue, une ville, un village, un marché, une école, une pharmacie, un hôpital, un parc, un arrêt de bus, un magasin. Location phrases: à l’est de, près de, loin de, devant, derrière, à côté de, entre, dans and sur.\n\nTypes of home: une maison, un appartement, un immeuble, un bungalow, un duplex. Rooms: le salon, la cuisine, la chambre, la salle de bains, les toilettes. Furniture and objects: un canapé, un fauteuil, une table, une chaise, un lit, une armoire, un bureau, un réfrigérateur, une cuisinière, un lavabo, une douche, un miroir, des rideaux, une porte, une fenêtre. Learn the article with each noun.\n\nColours: blanc/blanche, noir/noire, bleu/bleue, vert/verte, rouge, jaune, gris/grise, marron, violet/violette. Many colour adjectives agree in gender and number; marron and orange are usually invariable when used as colour adjectives. Examples: une porte blanche; des murs bleus; des rideaux verts.\n\nIl y a introduces what exists: Il y a une bibliothèque. Il n’y a pas de piscine. Before a feminine noun beginning with a vowel sound, use mon: mon école. Possession: mon quartier, ma maison, mes cahiers. Agreement: un petit jardin, une petite maison, des salles propres.\n\nOriginal model — Mon école: Mon école se trouve dans mon quartier. C’est une école secondaire. Il y a des salles de classe, une bibliothèque et une cour. Dans ma salle de français, il y a un tableau, des tables et des chaises. Les fenêtres sont grandes. La bibliothèque est à côté du bureau. Devant l’école, il y a une cour. This is a fictional model; learners should not disclose a private home address or personal details.\n\nOther safe writing topics from the source include: mon père, ma mère, mon/ma meilleur(e) ami(e), mon professeur de français, mon professeur principal, le directeur de mon école, ma sœur, mon frère and mon plat favori. Learners may write fictional or general descriptions instead of identifying real family members or staff.",
+      "body_sha256": "a8039e781633ecc920095ea40a1c9e70d45010647f1a7ad6c1cb5683604281f9",
       "practice": [
         {
           "id": "Q1",
@@ -973,9 +1019,9 @@
         },
         {
           "id": "Q2",
-          "question": "Correct: ma école est petit.",
-          "answer": "Mon école est petite.",
-          "marks": 2,
+          "question": "Correct: ma école est petit et les murs sont bleu.",
+          "answer": "Mon école est petite et les murs sont bleus.",
+          "marks": 3,
           "marking": [
             {
               "criterion": "Mon école",
@@ -984,25 +1030,65 @@
             {
               "criterion": "petite",
               "marks": 1
+            },
+            {
+              "criterion": "bleus",
+              "marks": 1
             }
           ]
         },
         {
           "id": "Q3",
-          "question": "Write three linked sentences describing a fictional classroom.",
-          "answer": "Example: Ma classe est grande. Il y a vingt chaises. Le tableau est devant les tables. Accept other coherent fictional descriptions.",
+          "question": "Name four rooms or areas in a home and four pieces of furniture or household objects in French.",
+          "answer": "Rooms: salon, cuisine, chambre, salle de bains, toilettes. Objects: table, chaise, lit, armoire, canapé, réfrigérateur, cuisinière, lavabo, douche, miroir, rideaux. Any eight suitable answers.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Four valid rooms/areas",
+              "marks": 2
+            },
+            {
+              "criterion": "Four valid objects/furnishings",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Write three linked sentences describing a fictional classroom. Include one object, one colour and one location phrase.",
+          "answer": "Example: Ma classe est grande. Il y a un tableau blanc. Les tables sont devant les chaises. Accept other coherent descriptions.",
           "marks": 3,
           "marking": [
             {
-              "criterion": "Coherent opening",
+              "criterion": "Coherent description",
               "marks": 1
             },
             {
-              "criterion": "Correct il y a sentence",
+              "criterion": "Correct object and colour",
               "marks": 1
             },
             {
-              "criterion": "A correctly expressed location",
+              "criterion": "Correct location phrase",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Write a short paragraph of four sentences about a fictional school or neighbourhood. Do not include a private home address.",
+          "answer": "Example: Mon école est dans mon quartier. Il y a une bibliothèque. La cour est devant les classes. Les salles sont propres. Other coherent paragraphs accepted.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Four relevant linked sentences",
+              "marks": 2
+            },
+            {
+              "criterion": "Correct vocabulary and grammar",
+              "marks": 1
+            },
+            {
+              "criterion": "Safe fictional/general details",
               "marks": 1
             }
           ]
@@ -1033,11 +1119,12 @@
       "subject": "French",
       "title": "La journée habituelle et l’accord",
       "objectives": [
-        "Describe a routine with pronominal verbs.",
-        "Agree or disagree politely."
+        "Describe daily and weekend routines with present-tense and pronominal verbs.",
+        "Use sequence and time expressions to organise a short account.",
+        "Agree, disagree and justify an opinion respectfully."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nA routine uses the present tense with time expressions: chaque matin, à six heures, ensuite, après les cours, le soir. Pronominal verbs carry me, te, se, nous, vous, se: je me lève, tu te lèves, il se lève, nous nous levons, vous vous levez, elles se lèvent. Before a vowel, me/te/se become m’/t’/s’: je m’habille.\nOriginal model: Chaque matin, je me réveille à six heures. Je me lave et je m’habille. Je prends mon petit déjeuner. Ensuite, je vais à l’école. Après les cours, je fais mes devoirs. Le soir, je me couche à neuf heures. These are fictional times; a learner may describe a different routine.\nPrendre: je prends, tu prends, il prend, nous prenons, vous prenez, ils prennent. Aller: je vais, tu vas, il va, nous allons, vous allez, ils vont. Faire: je fais, tu fais, il fait, nous faisons, vous faites, ils font.\nAgreement in discussion: Je suis d’accord. Tu as raison. Disagreement: Je ne suis pas d’accord, parce que… or À mon avis… When someone says J’aime lire, Moi aussi agrees. When someone says Je n’aime pas courir, Moi non plus agrees with the negative statement. Respect the person even when your opinion differs.",
-      "body_sha256": "a8f32b76f2f7400e35f0b2548eb80d220c272b1ea25c1056bbf7d81cdfc7d68c",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nA routine uses the present tense with time expressions: chaque matin, à six heures, ensuite, après les cours, le soir, d’habitude, le week-end. Pronominal verbs use me, te, se, nous, vous, se: je me lève, tu te lèves, il se lève, nous nous levons, vous vous levez, elles se lèvent. Before a vowel, me/te/se become m’/t’/s’: je m’habille, tu t’amuses, elle s’endort.\n\nUseful routine verbs: se réveiller, se lever, se laver, se promener, s’habiller, se coucher; prendre le petit déjeuner; aller à l’école; faire ses devoirs; ranger sa chambre; regarder la télévision; lire. Example: Chaque matin, je me réveille à six heures. Je me lave et je m’habille. Je prends mon petit déjeuner. Ensuite, je vais à l’école. Après les cours, je fais mes devoirs. Le soir, je lis et je me couche à neuf heures. These are fictional times; a learner may describe a different routine. Some people pray with their family; others follow different morning routines.\n\nPrendre: je prends, tu prends, il prend, nous prenons, vous prenez, ils prennent. Aller: je vais, tu vas, il va, nous allons, vous allez, ils vont. Faire: je fais, tu fais, il fait, nous faisons, vous faites, ils font.\n\nTo express an opinion: À mon avis…; Je pense que…; Je crois que…; Quant à moi… . Agreement: Je suis d’accord; Tu as raison; C’est vrai. Disagreement: Je ne suis pas d’accord parce que…; Je ne crois pas que… . Give a reason with parce que or car before a clause; use à cause de before a noun phrase.\n\nModel discussion: « L’argent fait-il le bonheur ? » One learner may say that money helps people pay for food, housing, transport and education. Another may say that friendship, health and family support also matter, and money alone does not guarantee happiness. A good answer gives a reason and respects a different opinion; it does not insult people who disagree.\n\nFor a weekend account, use the past or present consistently and connect events: Samedi, je visite ma tante. Ensuite, je joue au football. Dimanche, je lis et je prépare mes devoirs.",
+      "body_sha256": "08159301245c7886ded0ea2aa58fa4616ed7f66ee02cad920599026f377dd66c",
       "practice": [
         {
           "id": "Q1",
@@ -1057,7 +1144,23 @@
         },
         {
           "id": "Q2",
-          "question": "Reply with agreement to Je n’aime pas le bruit.",
+          "question": "Complete: Je __ à six heures et je __ après le petit déjeuner. (se réveiller; s’habiller)",
+          "answer": "Je me réveille à six heures et je m’habille après le petit déjeuner.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "me réveille",
+              "marks": 1
+            },
+            {
+              "criterion": "m’habille",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Reply with agreement to « Je n’aime pas le bruit. »",
           "answer": "Moi non plus.",
           "marks": 1,
           "marking": [
@@ -1068,21 +1171,41 @@
           ]
         },
         {
-          "id": "Q3",
-          "question": "Write a three-event morning routine with sequence words.",
-          "answer": "Example: D’abord, je me lève. Ensuite, je me lave. Enfin, je prends mon petit déjeuner.",
+          "id": "Q4",
+          "question": "Give one respectful disagreement and one reason about the statement « L’argent fait toujours le bonheur. »",
+          "answer": "Je ne suis pas d’accord parce que la santé et l’amitié sont aussi importantes. Other reasoned answers accepted.",
           "marks": 3,
           "marking": [
             {
-              "criterion": "Three logical events",
+              "criterion": "Respectful disagreement",
               "marks": 1
             },
             {
-              "criterion": "Correct pronominal forms",
+              "criterion": "Valid reason introduced by parce que/car",
               "marks": 1
+            },
+            {
+              "criterion": "Coherent explanation",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Write a four-sentence account of a weekend using sequence words.",
+          "answer": "Example: Samedi, je visite ma tante. Ensuite, je joue au football. Dimanche, je lis. Enfin, je prépare mes devoirs. Other coherent accounts accepted.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Four relevant sentences",
+              "marks": 2
             },
             {
               "criterion": "Sequence words",
+              "marks": 1
+            },
+            {
+              "criterion": "Consistent verb use",
               "marks": 1
             }
           ]
@@ -1113,16 +1236,17 @@
       "subject": "French",
       "title": "Goûts, préférences et souhaits",
       "objectives": [
-        "Express likes and dislikes politely.",
-        "Conjugate aimer, préférer and vouloir in short sentences."
+        "Express likes, dislikes, tastes and preferences politely.",
+        "Conjugate aimer, adorer, détester, préférer and goûter in the present tense.",
+        "Use ne…pas and vouloir/je voudrais in short exchanges."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nAimer means to like or love; adorer expresses strong liking; préférer chooses one option over another. Use a definite article for a general category: J’aime la musique. Use an infinitive for an activity: J’aime lire. Negative: Je n’aime pas le bruit. Dislike of an activity is not an insult to people who enjoy it.\nAimer: j’aime, tu aimes, il/elle aime, nous aimons, vous aimez, ils/elles aiment. Préférer: je préfère, tu préfères, il/elle préfère, nous préférons, vous préférez, ils/elles préfèrent. Say Je préfère le thé au café: prefer X to Y uses à; à + le becomes au. With activities: Je préfère lire plutôt que regarder la télévision.\nVouloir expresses wanting: je veux, tu veux, il/elle veut, nous voulons, vous voulez, ils/elles veulent. Je voudrais is a polite request form: Je voudrais de l’eau, s’il vous plaît. Do not replace ils veulent with ils voulent.\nOriginal exchange: — Aimes-tu dessiner ? — Oui, mais je préfère chanter. Et toi ? — J’aime dessiner. Je voudrais apprendre à peindre. Ask and answer without claiming that one taste is universally better.",
-      "body_sha256": "e83e0bde336d1f5cb281c6139458002e2f8defe73e9a5df83f8218da3edf2b2c",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nAimer means to like or love; adorer expresses strong liking; détester expresses dislike; préférer chooses one option over another; goûter means to taste. Use a definite article for a general category: J’aime la musique. Use an infinitive for an activity: J’aime lire. Negative: Je n’aime pas le bruit. Choose neutral topics such as food, music, sport or hobbies; do not turn a preference exercise into an insult about a language, ethnic group or person.\n\nPresent tense:\nAimer: j’aime, tu aimes, il/elle aime, nous aimons, vous aimez, ils/elles aiment.\nAdorer: j’adore, tu adores, il/elle adore, nous adorons, vous adorez, ils/elles adorent.\nDétester: je déteste, tu détestes, il/elle déteste, nous détestons, vous détestez, ils/elles détestent.\nPréférer: je préfère, tu préfères, il/elle préfère, nous préférons, vous préférez, ils/elles préfèrent.\nGoûter: je goûte, tu goûtes, il/elle goûte, nous goûtons, vous goûtez, ils/elles goûtent.\n\nSay « Je préfère le thé au café »: prefer X to Y uses à; à + le becomes au. With activities: Je préfère lire plutôt que regarder la télévision. Use aimer/adorer/détester with a noun or infinitive: J’adore le football; Elle déteste attendre; Nous aimons chanter.\n\nVouloir expresses wanting: je veux, tu veux, il/elle veut, nous voulons, vous voulez, ils/elles veulent. Je voudrais is a polite request: Je voudrais de l’eau, s’il vous plaît. The third-person plural is ils veulent, not « ils voulent ».\n\nOriginal exchange: — Aimes-tu dessiner ? — Oui, mais je préfère chanter. Et toi ? — J’aime dessiner. Je voudrais apprendre à peindre. Ask and answer without claiming that one taste is universally better.",
+      "body_sha256": "e32d03bd94bea43c733f7ab0337b073a0ec64741d6090d6dd460934ad65baed3",
       "practice": [
         {
           "id": "Q1",
           "question": "Complete: Nous __ la musique. (aimer) Vous __ le thé. (préférer)",
-          "answer": "aimons ; préférez.",
+          "answer": "Nous aimons la musique. Vous préférez le thé.",
           "marks": 2,
           "marking": [
             {
@@ -1137,32 +1261,76 @@
         },
         {
           "id": "Q2",
-          "question": "Say politely that you would like some water.",
-          "answer": "Je voudrais de l’eau, s’il vous plaît.",
-          "marks": 2,
+          "question": "Write the nous and ils forms of adorer and détester.",
+          "answer": "Nous adorons / ils adorent; nous détestons / ils détestent.",
+          "marks": 4,
           "marking": [
             {
-              "criterion": "Je voudrais de l’eau",
+              "criterion": "nous adorons",
               "marks": 1
             },
             {
-              "criterion": "Polite expression",
+              "criterion": "ils adorent",
+              "marks": 1
+            },
+            {
+              "criterion": "nous détestons",
+              "marks": 1
+            },
+            {
+              "criterion": "ils détestent",
               "marks": 1
             }
           ]
         },
         {
           "id": "Q3",
-          "question": "Make J’aime courir negative, then state a different preference.",
-          "answer": "Je n’aime pas courir. Je préfère marcher. Other coherent preferences accepted.",
-          "marks": 2,
+          "question": "Complete: Je __ le plat avant de dire s’il me plaît. (goûter)",
+          "answer": "Je goûte le plat.",
+          "marks": 1,
           "marking": [
             {
-              "criterion": "Correct ne…pas",
+              "criterion": "goûte",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Say politely that you would like some water, then make « J’aime courir » negative.",
+          "answer": "Je voudrais de l’eau, s’il vous plaît. Je n’aime pas courir.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Je voudrais de l’eau",
               "marks": 1
             },
             {
-              "criterion": "Correct preference sentence",
+              "criterion": "s’il vous plaît",
+              "marks": 1
+            },
+            {
+              "criterion": "correct ne…pas sentence",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Write five different sentences about likes and preferences using at least three of these verbs: aimer, adorer, détester, préférer, goûter.",
+          "answer": "Example: J’aime la musique. J’adore lire. Je déteste le bruit. Je préfère le thé au café. Je goûte le plat. Other correct sentences accepted.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Five distinct sentences",
+              "marks": 2
+            },
+            {
+              "criterion": "At least three target verbs used correctly",
+              "marks": 2
+            },
+            {
+              "criterion": "Correct agreement/negation or comparison",
               "marks": 1
             }
           ]
@@ -1365,8 +1533,8 @@
         "Distinguish oral, nasal and glide sounds.",
         "Explain cultural diversity without assuming uniform practices."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nLetters and sounds are different. A phonemic symbol appears between slashes. These are reference examples, not English respellings.\nConsonants: /p/ père; /b/ beau; /t/ tout; /d/ deux; /k/ café; /g/ gare; /f/ feu; /v/ vous; /s/ sac; /z/ zéro; /ʃ/ chat; /ʒ/ jour; /m/ mère; /n/ nous; /ɲ/ montagne; /l/ livre; /ʁ/ rue. French r has regional variants; /ʁ/ is the model used here. A letter r is not represented by the /s/ examples soleil and classe.\nOral vowels include /i/ si, /e/ été, /ɛ/ mère, /a/ ami, /ɔ/ porte, /o/ eau, /u/ roue, /y/ rue, /ø/ deux and /œ/ sœur. For /y/, keep the tongue position near /i/ while rounding the lips; contrast tu /ty/ with tout /tu/. /ø/ and /œ/ are rounded front vowels; they are not combinations of two vowel sounds merely because some spellings have several letters.\nNasal examples: /ɑ̃/ sans, /ɛ̃/ pain, /ɔ̃/ bon, /œ̃/ un in varieties that distinguish it from /ɛ̃/. Air flows through the nose during a nasal vowel; do not add a pronounced n automatically. Glides include /j/ in yeux, /w/ in oui and /ɥ/ in huit. Compare /u/ in roue with /w/ in oui.\nUse a reliable audio model with these printed examples; regional sound mergers exist. Oral production requires listening and feedback, not only identifying symbols on a page.\n\nCulture includes learned practices, languages, values, arts and material objects. People learn through social interaction across their lives. Practices vary within a country and change over time; a phonetics exercise does not establish a stereotype about every French speaker.",
-      "body_sha256": "72472f94c9b1afb7ad272d2316e6cd83b6c54f07cb83fbcfa7819de9551feefd",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nLetters and sounds are different. A phonemic symbol appears between slashes. These are reference examples, not English respellings.\nConsonants: /p/ père; /b/ beau; /t/ tout; /d/ deux; /k/ café; /g/ gare; /f/ feu; /v/ vous; /s/ sac; /z/ zéro; /ʃ/ chat; /ʒ/ jour; /m/ mère; /n/ nous; /ɲ/ montagne, peigne; /l/ livre; /ʁ/ rue. The sound /ŋ/ occurs in the borrowed word camping; it is not the same sound as /ɲ/ in peigne. Larousse gives peigne as /pɛɲ/ and camping as /kɑ̃piŋ/. French r has regional variants; /ʁ/ is the model used here. A letter r is not represented by the /s/ examples soleil and classe.\nThe five vowel letters are a, e, i, o and u. Their spoken vowel sounds vary with the word and accent. Examples include /i/ si, /e/ été, /ɛ/ mère, /a/ ami, /ɔ/ porte, /o/ eau, /u/ roue, /y/ rue, /ø/ deux and /œ/ sœur. The source's isolated glyph « ḝ » is not repeated as a French vowel letter; the surrounding list is treated as the five basic vowel letters. For /y/, keep the tongue position near /i/ while rounding the lips; contrast tu /ty/ with tout /tu/. /ø/ and /œ/ are rounded front vowels; they are not combinations of two vowel sounds merely because some spellings have several letters.\nNasal examples: /ɑ̃/ sans, /ɛ̃/ pain, /ɔ̃/ bon, /œ̃/ un in varieties that distinguish it from /ɛ̃/. Air flows through the nose during a nasal vowel; do not add a pronounced n automatically. Glides include /j/ in yeux, /w/ in oui and /ɥ/ in huit. Compare /u/ in roue with /w/ in oui.\nUse a reliable audio model with these printed examples; regional sound mergers exist. Oral production requires listening and feedback, not only identifying symbols on a page.\n\nCulture includes learned practices, languages, values, arts and material objects. People learn through social interaction across their lives. Practices vary within a country and change over time; a phonetics exercise does not establish a stereotype about every French speaker.",
+      "body_sha256": "32baaf6edb03dbd0699ff3b46cab41dba016dbf86c6974eaaf29009a18bd18ee",
       "practice": [
         {
           "id": "Q1",
@@ -1449,6 +1617,14 @@
           "rights": "Original teaching prose/examples authored for this project; no third-party passage or image reproduced.",
           "reuse_status": "PERMITTED",
           "attribution": "University of Texas: Français interactif pronunciation; original reference examples"
+        },
+        {
+          "title": "Larousse French dictionaries: peigne and camping pronunciation",
+          "locator": "Larousse Collège: peigne [pɛɲ]; Larousse French-English: camping [kɑ̃piŋ]; consulted 2026-11-11. Used to separate two different final consonant sounds that the source grouped under one unreadable OMML glyph.",
+          "url": "https://www.larousse.fr/dictionnaires/college/peigne/29949; https://www.larousse.fr/dictionnaires/francais-anglais/camping/12419",
+          "rights": "Original teaching explanation; only short IPA transcriptions are used as factual pronunciation notation; no third-party passage or image reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Larousse: Dictionnaire de français and Dictionnaire français-anglais"
         }
       ],
       "state": {
@@ -4458,6 +4634,110 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-FRENCH-OPINION-T1",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "French",
+      "title": "Exprimer son accord et justifier son opinion",
+      "objectives": [
+        "Ask for and express an opinion.",
+        "Agree or disagree politely and give a reason.",
+        "Use parce que, car and à cause de appropriately."
+      ],
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nAsk « Qu’en penses-tu ? », « À ton avis ? » or « Es-tu d’accord ? » Give an opinion with « À mon avis… », « Je pense que… », « Je crois que… » or « Quant à moi… ».\n\nAgree: « Je suis d’accord. », « Tu as raison. », « C’est vrai. » Disagree respectfully: « Je ne suis pas d’accord. », « Je ne crois pas. », « Je ne pense pas que ce soit juste. » A reason makes an opinion clearer.\n\nUse parce que or car before a clause: « Je préfère marcher parce que c’est bon pour la santé. » Use à cause de before a noun phrase: « Le match est annulé à cause de la pluie. » Do not write « à cause que ».\n\nDiscussion topic from the source: « L’argent fait-il le bonheur ? » Possible position A: money can help people pay for food, housing, transport, books and school fees. Possible position B: money alone does not guarantee health, friendship, safety or happiness. A balanced response can recognise both points. These are discussion arguments, not a single answer every learner must hold.\n\nModel: « À mon avis, l’argent est utile parce qu’il permet de payer les besoins essentiels. Cependant, il ne garantit pas le bonheur. La santé, l’amitié et la famille sont aussi importantes. Je comprends donc les deux points de vue. »\n\nA short argument has four parts: state your opinion; give one reason; give an example; conclude respectfully. Avoid attacking a person or group because they disagree.",
+      "body_sha256": "4834006db06ce3477a1aab210817272d7ffe88e7e200f64f0c9250413968019d",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Write two ways to ask someone for an opinion in French.",
+          "answer": "Qu’en penses-tu ? À ton avis ? Es-tu d’accord ? Any two.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "First correct question",
+              "marks": 1
+            },
+            {
+              "criterion": "Second correct question",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Complete with parce que or à cause de: « Le match est annulé __ la pluie. » « Je préfère lire __ j’apprends de nouveaux mots. »",
+          "answer": "à cause de ; parce que.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "à cause de",
+              "marks": 1
+            },
+            {
+              "criterion": "parce que",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Give one respectful disagreement with the statement « L’argent fait toujours le bonheur. »",
+          "answer": "Je ne suis pas d’accord parce que la santé et l’amitié sont aussi importantes. Other reasoned answers accepted.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Respectful disagreement",
+              "marks": 1
+            },
+            {
+              "criterion": "A relevant reason",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Write a four-sentence opinion about whether money alone makes people happy.",
+          "answer": "Example: À mon avis, l’argent est utile. Il permet de payer les besoins essentiels. Cependant, il ne garantit pas la santé ni l’amitié. Le bonheur dépend de plusieurs choses. Other coherent answers accepted.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Clear opinion",
+              "marks": 1
+            },
+            {
+              "criterion": "Reason",
+              "marks": 1
+            },
+            {
+              "criterion": "Example or contrast",
+              "marks": 1
+            },
+            {
+              "criterion": "Coherent respectful conclusion",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original SS1 French lesson supplement: opinion, agreement, disagreement and reasoned discussion",
+          "locator": "Written to cover First Term Week 8 discussion expressions and the source prompt « L’argent fait le bonheur / ne fait pas le bonheur ».",
+          "rights": "Original teaching prose, examples and exercises authored for this project; no third-party passage, table, image or recording reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Original project-authored educational material"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -5850,6 +6130,22 @@
         {
           "locator": "docs/ss1/work/SS1-02/FRENCH_SOURCE_NOTES.md: Second-Term scheme/body discrepancy",
           "explanation": "The source scheme's Week 7 imperfect is explicitly mapped to body Week 8; body week numbering has not been changed. Exact archive page/object review remains dependent on the source attachment and is not claimed as newly performed in this checkpoint."
+        }
+      ]
+    },
+    {
+      "id": "FRENCH-T1-W08-OPINION",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "objective": "Express agreement/disagreement and justify a simple opinion; discuss whether money makes happiness.",
+      "objective_locator": "SS1-SRC-945dfb24eaf6: parsed Week 8 row; source direct-body children 379-405, exact body hash 306691b7485297e6329a9656567bea12b068247d73ef2c0de3af3ce45b1c7c50",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FRENCH-OPINION-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-FRENCH-OPINION-T1; original lesson body hash 4834006db06ce3477a1aab210817272d7ffe88e7e200f64f0c9250413968019d",
+          "explanation": "Original lesson supplies opinion questions, agreement/disagreement expressions, parce que/car/à cause de, a balanced model argument and marked practice. Daily-routine content remains in SUP-SS1-FRENCH-ROUTINE-T1."
         }
       ]
     }
