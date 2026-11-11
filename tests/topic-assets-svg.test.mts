@@ -29,6 +29,7 @@ test('SVG active content, event handlers, external references, DTDs and missing 
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"><image href="https://example.com/x.png"/></svg>',
     '<!DOCTYPE svg [<!ENTITY x SYSTEM "file:///etc/passwd">]><svg viewBox="0 0 1 1">&x;</svg>',
     '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"></svg>',
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 1"></svg>',
   ];
   for (const value of unsafe) assert.equal(isSafeSvg(Buffer.from(value)), false);
 });
