@@ -86,6 +86,30 @@
       "observed_subject": "SCHEME OF WORK FOR FRENCH ",
       "canonical_subject": "French",
       "approval_reference": "SS1-02 assigned-subject mapping supported by this source heading; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-8a2ec1fe30e3-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-8a2ec1fe30e3",
+      "source_sha256": "7841df887cbd175e69ecbbf28896a324443467c82c35a4754fe169f50f09537d",
+      "anchor": "La Revision",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "Original T3 DOCX direct-body child 16; scheme row 11; page 1. The body parser begins at WEEK ONE, so this marker is in the scheme preamble.",
+        "explanation": "The source scheme names a revision week but supplies no separate revision lesson, revision notes or revision paper. A project-authored revision checklist and practice are supplied as a separate supplement; the source row remains a scheme-only marker."
+      }
+    },
+    {
+      "id": "SS1-SRC-8a2ec1fe30e3-R003",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-8a2ec1fe30e3",
+      "source_sha256": "7841df887cbd175e69ecbbf28896a324443467c82c35a4754fe169f50f09537d",
+      "anchor": "L’examen.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "Original T3 DOCX direct-body child 17; scheme row 12; page 1. The body parser begins at WEEK ONE, so this marker is in the scheme preamble.",
+        "explanation": "The source scheme names an examination week but supplies no examination paper or marking scheme. A project-authored 40-mark assessment with answer key and item-level marking is supplied separately; the source row remains a scheme-only marker."
+      }
     }
   ],
   "lessons": [
@@ -772,8 +796,8 @@
         "Read and type French diacritics as characters rather than detached drawings.",
         "Distinguish accents from punctuation."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nFrench spelling includes signs attached to letters. Accent aigu: é, as in école. Accent grave: è in père, à in à Lagos, ù in où. Accent circonflexe: â in âge, ê in fenêtre, î in île, ô in hôtel, û in sûr. The cédille belongs to ç: garçon, leçon, reçu. It keeps the /s/ sound before a, o or u; it is not needed before e or i. A tréma marks separate vowel reading in examples such as maïs and Noël. These examples are printed as Unicode letters, not blank spaces or a drawing above another letter.\nMeaning matters: a is a form of avoir, while à is a preposition; ou means “or”, while où asks “where”. Accents remain on capitals: École, À demain, Ça va. Learn each word’s correct spelling rather than adding marks at random.\nPunctuation separates ideas: le point (.), la virgule (,), le point d’interrogation (?), le point d’exclamation (!), les deux-points (:), le point-virgule (;), les guillemets (« »). A question such as Où vas-tu ? needs both the accent in où and the final question mark.\nCopy, read, cover and rewrite: école, mère, frère, père, voilà, âge, fenêtre, hôtel, hôpital, être, leçon, garçon, maïs, Noël. A written exercise checks spelling; it does not establish the learner’s pronunciation.",
-      "body_sha256": "50abf37602ce87d5694d6d111e845f7f447c3f14ddece95e2a1846bd6cb879f3",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nFrench spelling includes signs attached to letters. Accent aigu: é, as in école. Accent grave: è in père, à in à Lagos, ù in où. Accent circonflexe: â in âge, ê in fenêtre, î in île, ô in hôtel, û in sûr. The cédille belongs to ç: garçon, leçon, reçu. It keeps the /s/ sound before a, o or u; it is not needed before e or i. A tréma marks separate vowel reading in examples such as maïs and Noël. These examples are printed as Unicode letters, not blank spaces or a drawing above another letter.\nMeaning matters: a is a form of avoir, while à is a preposition; ou means “or”, while où asks “where”. Accents remain on capitals: École, À demain, Ça va. Learn each word’s correct spelling rather than adding marks at random.\nPunctuation separates ideas: le point (.), la virgule (,), le point d’interrogation (?), le point d’exclamation (!), les deux-points (:), le point-virgule (;), les guillemets (« »). A question such as Où vas-tu ? needs both the accent in où and the final question mark.\nCopy, read, cover and rewrite: école, mère, frère, père, voilà, âge, fenêtre, hôtel, hôpital, être, leçon, garçon, maïs, Noël. A written exercise checks spelling; it does not establish the learner’s pronunciation.\n\nPronunciation and the final source note: the isolated fragment “a silent h.” is treated as a reminder about French h. The letter h is not pronounced, but words are traditionally grouped as h muet or h aspiré. H muet allows elision and liaison: l’homme, l’hôtel. H aspiré blocks them: le héros, le haricot. Learn the word with its article; do not pronounce the h itself.\n\nTeacher-led oral practice: the teacher models école, mère, père, maïs, Noël, homme, hôtel, héros and haricot. Learners repeat, then read a short sentence. The teacher observes whether the learner distinguishes the target vowel sounds, keeps the h silent, uses elision correctly and places the question/exclamation intonation. Record oral observation separately from the written spelling score.",
+      "body_sha256": "8cf75d286609f86da5ff97bb25245f789fc074f1c492fe9fde5f7724cda84750",
       "practice": [
         {
           "id": "Q1",
@@ -830,6 +854,30 @@
               "marks": 1
             }
           ]
+        },
+        {
+          "id": "Q4",
+          "question": "Complete with l’ or le: ___ homme; ___ héros; ___ hôtel; ___ haricot.",
+          "answer": "l’homme ; le héros ; l’hôtel ; le haricot.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "l’homme",
+              "marks": 1
+            },
+            {
+              "criterion": "le héros",
+              "marks": 1
+            },
+            {
+              "criterion": "l’hôtel",
+              "marks": 1
+            },
+            {
+              "criterion": "le haricot",
+              "marks": 1
+            }
+          ]
         }
       ],
       "provenance": [
@@ -857,30 +905,51 @@
       "subject": "French",
       "title": "Identifier les métiers",
       "objectives": [
-        "Name occupations and describe their work.",
-        "Distinguish profession after être from a noun introduced by c’est."
+        "Name common occupations and form masculine and feminine job titles.",
+        "Use être with a profession and c’est with a noun phrase.",
+        "Identify source entries that are not professions or cannot be interpreted safely."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nAsk Quel est votre métier ? or Que faites-vous dans la vie ? To state an occupation, use être without an article when the profession stands alone: Elle est médecin. Il est boulanger. To identify a person with a noun phrase, use c’est: C’est une médecin. C’est un boulanger.\nExamples: un enseignant / une enseignante teaches; un infirmier / une infirmière cares for patients; un boulanger / une boulangère makes bread; un agriculteur / une agricultrice cultivates land; un vendeur / une vendeuse sells; un conducteur / une conductrice drives; un mécanicien / une mécanicienne repairs machinery; un musicien / une musicienne makes music; un coiffeur / une coiffeuse cuts or styles hair; un acteur / une actrice acts; un cuisinier / une cuisinière cooks; un avocat / une avocate works in law. Médecin and journaliste can be used with un or une.\nJobs are not restricted to one gender. Use the correct article and the person’s chosen professional designation. Regional naming conventions can vary.\nOriginal dialogue: — Que fait ta tante ? — Elle est mécanicienne. Elle répare des voitures. — Et ton oncle ? — Il est infirmier. Il travaille dans un centre de santé.\nDescribe the task as well as naming the job: Le boulanger prépare du pain. La vendeuse vend des fruits. These are example activities, not complete job descriptions.\n\nFurther useful pairs: un comptable / une comptable; un pilote / une pilote; un maçon / une maçonne; un boucher / une bouchère; un banquier / une banquière; un marchand ambulant / une marchande ambulante; un ingénieur / une ingénieure; un homme d’affaires / une femme d’affaires; un dessinateur / une dessinatrice; un chirurgien / une chirurgienne; un secrétaire / une secrétaire; un serveur / une serveuse; un fermier / une fermière; un commerçant / une commerçante; un jardinier / une jardinière; un électricien / une électricienne; un peintre / une peintre; un menuisier / une menuisière; un comédien / une comédienne; un chanteur / une chanteuse; un danseur / une danseuse; un étudiant / une étudiante; un directeur / une directrice; un policier / une policière; un cultivateur / une cultivatrice; un épicier / une épicière; un boutiquier / une boutiquière; un facteur / une factrice. Étudiant names a study role rather than a paid occupation. A title alone does not determine clothes: a fictional description can say Elle porte une blouse blanche, but not that all workers in a profession wear it. Blanc becomes blanche with a feminine noun; noir becomes noire. The unclear source strings computateur and couteur are not silently assigned a profession.",
-      "body_sha256": "01117b7b6e950977422235b303fac7e7449da4c2587c8427f6241ba68b1dfcaa",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nAsk « Quel est votre métier ? » or « Que faites-vous dans la vie ? » To state a profession after être, normally omit the article: Elle est médecin. Il est boulanger. To identify someone with a noun phrase, use c’est: C’est une médecin. C’est un boulanger.\n\nUseful masculine and feminine forms:\n- un professeur / une professeure; un avocat / une avocate; un comptable / une comptable; un pilote / une pilote; un journaliste / une journaliste;\n- un maçon / une maçonne; un boulanger / une boulangère; un boucher / une bouchère; un pêcheur / une pêcheuse; un dactylographe / une dactylographe;\n- un banquier / une banquière; un marchand ambulant / une marchande ambulante; un ingénieur / une ingénieure; un homme d’affaires / une femme d’affaires;\n- un dessinateur / une dessinatrice; un pasteur / une pasteure; un chirurgien / une chirurgienne; un médecin / une médecin; un secrétaire / une secrétaire;\n- un infirmier / une infirmière; un fermier / une fermière; un commerçant / une commerçante; un coiffeur / une coiffeuse; un jardinier / une jardinière;\n- un chauffeur / une chauffeuse; un électricien / une électricienne; un mécanicien / une mécanicienne; un peintre / une peintre; un menuisier / une menuisière;\n- un comédien / une comédienne; un chanteur / une chanteuse; un danseur / une danseuse; un étudiant / une étudiante; un directeur / une directrice;\n- un policier / une policière; un soldat / une soldate; un cultivateur / une cultivatrice; un épicier / une épicière; un boutiquier / une boutiquière; un facteur / une factrice; un docteur / une docteure.\n\nA dactylographe types documents. An informaticien or une informaticienne works in computing; this is a clear modern profession to learn, but it is not asserted to be the exact meaning of the source's unclear word « computateur ». The source also contains « couteur »; its intended occupation cannot be identified reliably from the table, so it is not silently changed to « couturier ». These two source terms remain for teacher confirmation.\n\nThe source table also lists « un garçon » and « un étudiant ». A garçon is a boy, and an étudiant is a student; these are descriptions of people, not occupations by themselves. Keep them separate from métier. Other useful examples: un vendeur / une vendeuse sells goods; un cuisinier / une cuisinière prepares food. A job title does not determine a person's clothing or abilities. Blanc becomes blanche with a feminine noun; noir becomes noire.\n\nModel sentences: Le boulanger prépare du pain. La factrice distribue le courrier. L’infirmière soigne les patients. Le mécanicien répare les voitures. Use these as simple examples, not complete job descriptions.",
+      "body_sha256": "d2754c7fad36805f2b39ee202a808a835ff290e30192c0559ab2698a69a44452",
       "practice": [
         {
           "id": "Q1",
-          "question": "Translate: She is a teacher.",
-          "answer": "Elle est enseignante.",
+          "question": "Translate: She is a teacher. Then identify the form used after être.",
+          "answer": "Elle est professeure. The profession is used without an article after être.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Elle est",
+              "criterion": "Elle est professeure",
               "marks": 1
             },
             {
-              "criterion": "enseignante without an unnecessary article",
+              "criterion": "No article after être",
               "marks": 1
             }
           ]
         },
         {
           "id": "Q2",
+          "question": "Give the feminine forms of boulanger, avocat and directeur.",
+          "answer": "Boulangère, avocate, directrice.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "boulangère",
+              "marks": 1
+            },
+            {
+              "criterion": "avocate",
+              "marks": 1
+            },
+            {
+              "criterion": "directrice",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
           "question": "Complete: C’est __ infirmière. Elle __ dans un centre de santé.",
           "answer": "une ; travaille.",
           "marks": 2,
@@ -896,30 +965,54 @@
           ]
         },
         {
-          "id": "Q3",
-          "question": "Give the feminine forms of vendeur and acteur.",
-          "answer": "vendeuse ; actrice.",
-          "marks": 2,
+          "id": "Q4",
+          "question": "Give the masculine and feminine forms of dactylographe and médecin.",
+          "answer": "Un dactylographe / une dactylographe; un médecin / une médecin (docteure is also acceptable for a female doctor).",
+          "marks": 4,
           "marking": [
             {
-              "criterion": "vendeuse",
+              "criterion": "dactylographe forms",
+              "marks": 2
+            },
+            {
+              "criterion": "médecin forms",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Explain why garçon and étudiant are not job titles by themselves. Give one clear occupation from the lesson.",
+          "answer": "Garçon means boy and étudiant means student; neither names a profession by itself. Example: mécanicien, professeure, factrice.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Correct explanation of garçon",
               "marks": 1
             },
             {
-              "criterion": "actrice",
+              "criterion": "Correct explanation of étudiant",
+              "marks": 1
+            },
+            {
+              "criterion": "One valid occupation",
               "marks": 1
             }
           ]
         },
         {
-          "id": "Q4",
-          "question": "Correct the agreement: Elle porte une blouse blanc.",
-          "answer": "Elle porte une blouse blanche.",
-          "marks": 1,
+          "id": "Q6",
+          "question": "Write two sentences naming different professions and describing what each person does.",
+          "answer": "Example: Le boulanger prépare du pain. La factrice distribue le courrier. Other correct profession/action pairs accepted.",
+          "marks": 4,
           "marking": [
             {
-              "criterion": "blanche agrees with blouse",
-              "marks": 1
+              "criterion": "First correct profession and action",
+              "marks": 2
+            },
+            {
+              "criterion": "Second distinct correct profession and action",
+              "marks": 2
             }
           ]
         }
@@ -949,11 +1042,12 @@
       "subject": "French",
       "title": "Décrire l’école, la maison et le quartier",
       "objectives": [
-        "Describe a place using il y a and location phrases.",
-        "Agree descriptive adjectives with nouns."
+        "Describe a neighbourhood, house, school and classroom using place vocabulary.",
+        "Use il y a, location phrases and possessive adjectives correctly.",
+        "Apply gender and number agreement to common colour and descriptive adjectives."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nUseful nouns: une école, une salle de classe, une bibliothèque, une cour, un bureau, un tableau, une table, une chaise, une porte, une fenêtre; une maison, un salon, une chambre, une cuisine, une salle de bains; une rue, un marché, un quartier. Learn the article with the noun.\nIl y a introduces what exists: Il y a une bibliothèque. Il n’y a pas de piscine. Location phrases include près de (near), loin de (far from), devant (in front of), derrière (behind), à côté de (next to), dans (inside) and sur (on).\nOriginal description: Mon école se trouve près du marché. Elle est petite et propre. Dans ma classe, il y a un tableau et des tables. La bibliothèque est à côté du bureau. Devant l’école, il y a une cour. This is a fictional model, not a statement about your school’s facilities.\nAgreement: un petit jardin / une petite maison; des salles propres. Possession: mon quartier, ma maison, mes cahiers. Before a feminine noun beginning with a vowel sound, use mon: mon école. A clear description moves from the whole place to its parts and gives locations the reader can follow.",
-      "body_sha256": "88997e296a09e6c7755ec7cb0abc530064c4ffa800b71e8c748b719769f90349",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nDescribe a place from the whole to its parts. Useful neighbourhood words: un quartier, une rue, une ville, un village, un marché, une école, une pharmacie, un hôpital, un parc, un arrêt de bus, un magasin. Location phrases: à l’est de, près de, loin de, devant, derrière, à côté de, entre, dans and sur.\n\nTypes of home: une maison, un appartement, un immeuble, un bungalow, un duplex. Rooms: le salon, la cuisine, la chambre, la salle de bains, les toilettes. Furniture and objects: un canapé, un fauteuil, une table, une chaise, un lit, une armoire, un bureau, un réfrigérateur, une cuisinière, un lavabo, une douche, un miroir, des rideaux, une porte, une fenêtre. Learn the article with each noun.\n\nColours: blanc/blanche, noir/noire, bleu/bleue, vert/verte, rouge, jaune, gris/grise, marron, violet/violette. Many colour adjectives agree in gender and number; marron and orange are usually invariable when used as colour adjectives. Examples: une porte blanche; des murs bleus; des rideaux verts.\n\nIl y a introduces what exists: Il y a une bibliothèque. Il n’y a pas de piscine. Before a feminine noun beginning with a vowel sound, use mon: mon école. Possession: mon quartier, ma maison, mes cahiers. Agreement: un petit jardin, une petite maison, des salles propres.\n\nOriginal model — Mon école: Mon école se trouve dans mon quartier. C’est une école secondaire. Il y a des salles de classe, une bibliothèque et une cour. Dans ma salle de français, il y a un tableau, des tables et des chaises. Les fenêtres sont grandes. La bibliothèque est à côté du bureau. Devant l’école, il y a une cour. This is a fictional model; learners should not disclose a private home address or personal details.\n\nOther safe writing topics from the source include: mon père, ma mère, mon/ma meilleur(e) ami(e), mon professeur de français, mon professeur principal, le directeur de mon école, ma sœur, mon frère and mon plat favori. Learners may write fictional or general descriptions instead of identifying real family members or staff.",
+      "body_sha256": "1236f67fef35b0d411a19d59ba22d2d1c54739defc803e5de5dbb7083ababecf",
       "practice": [
         {
           "id": "Q1",
@@ -973,9 +1067,9 @@
         },
         {
           "id": "Q2",
-          "question": "Correct: ma école est petit.",
-          "answer": "Mon école est petite.",
-          "marks": 2,
+          "question": "Correct: ma école est petit et les murs sont bleu.",
+          "answer": "Mon école est petite et les murs sont bleus.",
+          "marks": 3,
           "marking": [
             {
               "criterion": "Mon école",
@@ -984,25 +1078,65 @@
             {
               "criterion": "petite",
               "marks": 1
+            },
+            {
+              "criterion": "bleus",
+              "marks": 1
             }
           ]
         },
         {
           "id": "Q3",
-          "question": "Write three linked sentences describing a fictional classroom.",
-          "answer": "Example: Ma classe est grande. Il y a vingt chaises. Le tableau est devant les tables. Accept other coherent fictional descriptions.",
+          "question": "Name four rooms or areas in a home and four pieces of furniture or household objects in French.",
+          "answer": "Rooms: salon, cuisine, chambre, salle de bains, toilettes. Objects: table, chaise, lit, armoire, canapé, réfrigérateur, cuisinière, lavabo, douche, miroir, rideaux. Any eight suitable answers.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Four valid rooms/areas",
+              "marks": 2
+            },
+            {
+              "criterion": "Four valid objects/furnishings",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Write three linked sentences describing a fictional classroom. Include one object, one colour and one location phrase.",
+          "answer": "Example: Ma classe est grande. Il y a un tableau blanc. Les tables sont devant les chaises. Accept other coherent descriptions.",
           "marks": 3,
           "marking": [
             {
-              "criterion": "Coherent opening",
+              "criterion": "Coherent description",
               "marks": 1
             },
             {
-              "criterion": "Correct il y a sentence",
+              "criterion": "Correct object and colour",
               "marks": 1
             },
             {
-              "criterion": "A correctly expressed location",
+              "criterion": "Correct location phrase",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Write a short paragraph of four sentences about a fictional school or neighbourhood. Do not include a private home address.",
+          "answer": "Example: Mon école est dans mon quartier. Il y a une bibliothèque. La cour est devant les classes. Les salles sont propres. Other coherent paragraphs accepted.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Four relevant linked sentences",
+              "marks": 2
+            },
+            {
+              "criterion": "Correct vocabulary and grammar",
+              "marks": 1
+            },
+            {
+              "criterion": "Safe fictional/general details",
               "marks": 1
             }
           ]
@@ -1033,11 +1167,12 @@
       "subject": "French",
       "title": "La journée habituelle et l’accord",
       "objectives": [
-        "Describe a routine with pronominal verbs.",
-        "Agree or disagree politely."
+        "Describe daily and weekend routines with present-tense and pronominal verbs.",
+        "Use sequence and time expressions to organise a short account.",
+        "Agree, disagree and justify an opinion respectfully."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nA routine uses the present tense with time expressions: chaque matin, à six heures, ensuite, après les cours, le soir. Pronominal verbs carry me, te, se, nous, vous, se: je me lève, tu te lèves, il se lève, nous nous levons, vous vous levez, elles se lèvent. Before a vowel, me/te/se become m’/t’/s’: je m’habille.\nOriginal model: Chaque matin, je me réveille à six heures. Je me lave et je m’habille. Je prends mon petit déjeuner. Ensuite, je vais à l’école. Après les cours, je fais mes devoirs. Le soir, je me couche à neuf heures. These are fictional times; a learner may describe a different routine.\nPrendre: je prends, tu prends, il prend, nous prenons, vous prenez, ils prennent. Aller: je vais, tu vas, il va, nous allons, vous allez, ils vont. Faire: je fais, tu fais, il fait, nous faisons, vous faites, ils font.\nAgreement in discussion: Je suis d’accord. Tu as raison. Disagreement: Je ne suis pas d’accord, parce que… or À mon avis… When someone says J’aime lire, Moi aussi agrees. When someone says Je n’aime pas courir, Moi non plus agrees with the negative statement. Respect the person even when your opinion differs.",
-      "body_sha256": "a8f32b76f2f7400e35f0b2548eb80d220c272b1ea25c1056bbf7d81cdfc7d68c",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nA routine uses the present tense with time expressions: chaque matin, à six heures, ensuite, après les cours, le soir, d’habitude, le week-end. Pronominal verbs use me, te, se, nous, vous, se: je me lève, tu te lèves, il se lève, nous nous levons, vous vous levez, elles se lèvent. Before a vowel, me/te/se become m’/t’/s’: je m’habille, tu t’amuses, elle s’endort.\n\nUseful routine verbs: se réveiller, se lever, se laver, se promener, s’habiller, se coucher; prendre le petit déjeuner; aller à l’école; faire ses devoirs; ranger sa chambre; regarder la télévision; lire. Example: Chaque matin, je me réveille à six heures. Je me lave et je m’habille. Je prends mon petit déjeuner. Ensuite, je vais à l’école. Après les cours, je fais mes devoirs. Le soir, je lis et je me couche à neuf heures. These are fictional times; a learner may describe a different routine. Some people pray with their family; others follow different morning routines.\n\nPrendre: je prends, tu prends, il prend, nous prenons, vous prenez, ils prennent. Aller: je vais, tu vas, il va, nous allons, vous allez, ils vont. Faire: je fais, tu fais, il fait, nous faisons, vous faites, ils font.\n\nTo express an opinion: À mon avis…; Je pense que…; Je crois que…; Quant à moi… . Agreement: Je suis d’accord; Tu as raison; C’est vrai. Disagreement: Je ne suis pas d’accord parce que…; Je ne crois pas que… . Give a reason with parce que or car before a clause; use à cause de before a noun phrase.\n\nModel discussion: « L’argent fait-il le bonheur ? » One learner may say that money helps people pay for food, housing, transport and education. Another may say that friendship, health and family support also matter, and money alone does not guarantee happiness. A good answer gives a reason and respects a different opinion; it does not insult people who disagree.\n\nFor a weekend account, use the past or present consistently and connect events: Samedi, je visite ma tante. Ensuite, je joue au football. Dimanche, je lis et je prépare mes devoirs.",
+      "body_sha256": "15c727f00482c44765007fc7303b17c871d39d572e25ac2ec8b566b56cc3a11a",
       "practice": [
         {
           "id": "Q1",
@@ -1057,7 +1192,23 @@
         },
         {
           "id": "Q2",
-          "question": "Reply with agreement to Je n’aime pas le bruit.",
+          "question": "Complete: Je __ à six heures et je __ après le petit déjeuner. (se réveiller; s’habiller)",
+          "answer": "Je me réveille à six heures et je m’habille après le petit déjeuner.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "me réveille",
+              "marks": 1
+            },
+            {
+              "criterion": "m’habille",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Reply with agreement to « Je n’aime pas le bruit. »",
           "answer": "Moi non plus.",
           "marks": 1,
           "marking": [
@@ -1068,21 +1219,41 @@
           ]
         },
         {
-          "id": "Q3",
-          "question": "Write a three-event morning routine with sequence words.",
-          "answer": "Example: D’abord, je me lève. Ensuite, je me lave. Enfin, je prends mon petit déjeuner.",
+          "id": "Q4",
+          "question": "Give one respectful disagreement and one reason about the statement « L’argent fait toujours le bonheur. »",
+          "answer": "Je ne suis pas d’accord parce que la santé et l’amitié sont aussi importantes. Other reasoned answers accepted.",
           "marks": 3,
           "marking": [
             {
-              "criterion": "Three logical events",
+              "criterion": "Respectful disagreement",
               "marks": 1
             },
             {
-              "criterion": "Correct pronominal forms",
+              "criterion": "Valid reason introduced by parce que/car",
               "marks": 1
+            },
+            {
+              "criterion": "Coherent explanation",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Write a four-sentence account of a weekend using sequence words.",
+          "answer": "Example: Samedi, je visite ma tante. Ensuite, je joue au football. Dimanche, je lis. Enfin, je prépare mes devoirs. Other coherent accounts accepted.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Four relevant sentences",
+              "marks": 2
             },
             {
               "criterion": "Sequence words",
+              "marks": 1
+            },
+            {
+              "criterion": "Consistent verb use",
               "marks": 1
             }
           ]
@@ -1113,16 +1284,17 @@
       "subject": "French",
       "title": "Goûts, préférences et souhaits",
       "objectives": [
-        "Express likes and dislikes politely.",
-        "Conjugate aimer, préférer and vouloir in short sentences."
+        "Express likes, dislikes, tastes and preferences politely.",
+        "Conjugate aimer, adorer, détester, préférer and goûter in the present tense.",
+        "Use ne…pas and vouloir/je voudrais in short exchanges."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nAimer means to like or love; adorer expresses strong liking; préférer chooses one option over another. Use a definite article for a general category: J’aime la musique. Use an infinitive for an activity: J’aime lire. Negative: Je n’aime pas le bruit. Dislike of an activity is not an insult to people who enjoy it.\nAimer: j’aime, tu aimes, il/elle aime, nous aimons, vous aimez, ils/elles aiment. Préférer: je préfère, tu préfères, il/elle préfère, nous préférons, vous préférez, ils/elles préfèrent. Say Je préfère le thé au café: prefer X to Y uses à; à + le becomes au. With activities: Je préfère lire plutôt que regarder la télévision.\nVouloir expresses wanting: je veux, tu veux, il/elle veut, nous voulons, vous voulez, ils/elles veulent. Je voudrais is a polite request form: Je voudrais de l’eau, s’il vous plaît. Do not replace ils veulent with ils voulent.\nOriginal exchange: — Aimes-tu dessiner ? — Oui, mais je préfère chanter. Et toi ? — J’aime dessiner. Je voudrais apprendre à peindre. Ask and answer without claiming that one taste is universally better.",
-      "body_sha256": "e83e0bde336d1f5cb281c6139458002e2f8defe73e9a5df83f8218da3edf2b2c",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nAimer means to like or love; adorer expresses strong liking; détester expresses dislike; préférer chooses one option over another; goûter means to taste. Use a definite article for a general category: J’aime la musique. Use an infinitive for an activity: J’aime lire. Negative: Je n’aime pas le bruit. Choose neutral topics such as food, music, sport or hobbies; do not turn a preference exercise into an insult about a language, ethnic group or person.\n\nPresent tense:\nAimer: j’aime, tu aimes, il/elle aime, nous aimons, vous aimez, ils/elles aiment.\nAdorer: j’adore, tu adores, il/elle adore, nous adorons, vous adorez, ils/elles adorent.\nDétester: je déteste, tu détestes, il/elle déteste, nous détestons, vous détestez, ils/elles détestent.\nPréférer: je préfère, tu préfères, il/elle préfère, nous préférons, vous préférez, ils/elles préfèrent.\nGoûter: je goûte, tu goûtes, il/elle goûte, nous goûtons, vous goûtez, ils/elles goûtent.\n\nSay « Je préfère le thé au café »: prefer X to Y uses à; à + le becomes au. With activities: Je préfère lire plutôt que regarder la télévision. Use aimer/adorer/détester with a noun or infinitive: J’adore le football; Elle déteste attendre; Nous aimons chanter.\n\nVouloir expresses wanting: je veux, tu veux, il/elle veut, nous voulons, vous voulez, ils/elles veulent. Je voudrais is a polite request: Je voudrais de l’eau, s’il vous plaît. The third-person plural is ils veulent, not « ils voulent ».\n\nOriginal exchange: — Aimes-tu dessiner ? — Oui, mais je préfère chanter. Et toi ? — J’aime dessiner. Je voudrais apprendre à peindre. Ask and answer without claiming that one taste is universally better.",
+      "body_sha256": "4e66ce484f0768dd5e19839612247e1024f94a2c6b9e666c1440b5f75a0c6717",
       "practice": [
         {
           "id": "Q1",
           "question": "Complete: Nous __ la musique. (aimer) Vous __ le thé. (préférer)",
-          "answer": "aimons ; préférez.",
+          "answer": "Nous aimons la musique. Vous préférez le thé.",
           "marks": 2,
           "marking": [
             {
@@ -1137,32 +1309,76 @@
         },
         {
           "id": "Q2",
-          "question": "Say politely that you would like some water.",
-          "answer": "Je voudrais de l’eau, s’il vous plaît.",
-          "marks": 2,
+          "question": "Write the nous and ils forms of adorer and détester.",
+          "answer": "Nous adorons / ils adorent; nous détestons / ils détestent.",
+          "marks": 4,
           "marking": [
             {
-              "criterion": "Je voudrais de l’eau",
+              "criterion": "nous adorons",
               "marks": 1
             },
             {
-              "criterion": "Polite expression",
+              "criterion": "ils adorent",
+              "marks": 1
+            },
+            {
+              "criterion": "nous détestons",
+              "marks": 1
+            },
+            {
+              "criterion": "ils détestent",
               "marks": 1
             }
           ]
         },
         {
           "id": "Q3",
-          "question": "Make J’aime courir negative, then state a different preference.",
-          "answer": "Je n’aime pas courir. Je préfère marcher. Other coherent preferences accepted.",
-          "marks": 2,
+          "question": "Complete: Je __ le plat avant de dire s’il me plaît. (goûter)",
+          "answer": "Je goûte le plat.",
+          "marks": 1,
           "marking": [
             {
-              "criterion": "Correct ne…pas",
+              "criterion": "goûte",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Say politely that you would like some water, then make « J’aime courir » negative.",
+          "answer": "Je voudrais de l’eau, s’il vous plaît. Je n’aime pas courir.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Je voudrais de l’eau",
               "marks": 1
             },
             {
-              "criterion": "Correct preference sentence",
+              "criterion": "s’il vous plaît",
+              "marks": 1
+            },
+            {
+              "criterion": "correct ne…pas sentence",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Write five different sentences about likes and preferences using at least three of these verbs: aimer, adorer, détester, préférer, goûter.",
+          "answer": "Example: J’aime la musique. J’adore lire. Je déteste le bruit. Je préfère le thé au café. Je goûte le plat. Other correct sentences accepted.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Five distinct sentences",
+              "marks": 2
+            },
+            {
+              "criterion": "At least three target verbs used correctly",
+              "marks": 2
+            },
+            {
+              "criterion": "Correct agreement/negation or comparison",
               "marks": 1
             }
           ]
@@ -1361,81 +1577,97 @@
       "subject": "French",
       "title": "Consonnes, voyelles et semi-voyelles",
       "objectives": [
-        "Associate phonemic symbols with appropriate example words.",
-        "Distinguish oral, nasal and glide sounds.",
-        "Explain cultural diversity without assuming uniform practices."
+        "Identify consonant, oral vowel, nasal vowel and semi-vowel sounds using IPA.",
+        "Distinguish the corrupted source glyph from the two separate sounds in peigne and camping.",
+        "Describe culture as learned and varied rather than uniform."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nLetters and sounds are different. A phonemic symbol appears between slashes. These are reference examples, not English respellings.\nConsonants: /p/ père; /b/ beau; /t/ tout; /d/ deux; /k/ café; /g/ gare; /f/ feu; /v/ vous; /s/ sac; /z/ zéro; /ʃ/ chat; /ʒ/ jour; /m/ mère; /n/ nous; /ɲ/ montagne; /l/ livre; /ʁ/ rue. French r has regional variants; /ʁ/ is the model used here. A letter r is not represented by the /s/ examples soleil and classe.\nOral vowels include /i/ si, /e/ été, /ɛ/ mère, /a/ ami, /ɔ/ porte, /o/ eau, /u/ roue, /y/ rue, /ø/ deux and /œ/ sœur. For /y/, keep the tongue position near /i/ while rounding the lips; contrast tu /ty/ with tout /tu/. /ø/ and /œ/ are rounded front vowels; they are not combinations of two vowel sounds merely because some spellings have several letters.\nNasal examples: /ɑ̃/ sans, /ɛ̃/ pain, /ɔ̃/ bon, /œ̃/ un in varieties that distinguish it from /ɛ̃/. Air flows through the nose during a nasal vowel; do not add a pronounced n automatically. Glides include /j/ in yeux, /w/ in oui and /ɥ/ in huit. Compare /u/ in roue with /w/ in oui.\nUse a reliable audio model with these printed examples; regional sound mergers exist. Oral production requires listening and feedback, not only identifying symbols on a page.\n\nCulture includes learned practices, languages, values, arts and material objects. People learn through social interaction across their lives. Practices vary within a country and change over time; a phonetics exercise does not establish a stereotype about every French speaker.",
-      "body_sha256": "72472f94c9b1afb7ad272d2316e6cd83b6c54f07cb83fbcfa7819de9551feefd",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nA phoneme is a speech sound; a letter is a written symbol. The same sound can have different spellings. The IPA uses symbols to represent sounds consistently.\n\nConsonants in the source examples: /p/ père; /b/ beau; /t/ tout; /d/ deux; /k/ café; /g/ gare; /f/ feu; /v/ vous; /s/ sac; /z/ zéro; /ʃ/ chat; /ʒ/ jour; /m/ mère; /n/ nous; /ɲ/ montagne and peigne; /l/ livre; /ʁ/ rue. The letter c can sound /k/ in café and /s/ in ciel. The letter g can sound /g/ in gare and /ʒ/ in gentil.\n\nThe source contains three Office Math glyphs. Its first nasal glyph is /ɲ/, as in Agnès and agneau. Its second glyph is corrupted and groups peigne and camping together; these examples do not have the same final sound. Larousse gives peigne as /pɛɲ/ and camping as /kɑ̃piŋ/. The replacement therefore teaches /ɲ/ for peigne and /ŋ/ for camping separately. The source glyph is not reproduced as if it were a valid IPA symbol.\n\nThe five basic vowel letters are a, e, i, o and u. Spoken oral vowels include /i/ si, /e/ été, /ɛ/ mère, /a/ ami, /ɔ/ porte, /o/ eau, /u/ roue, /y/ rue, /ø/ deux and /œ/ sœur. Nasal vowels include /ɑ̃/ sans, /ɛ̃/ pain, /ɔ̃/ bon and /œ̃/ un; some contemporary accents merge /œ̃/ with /ɛ̃/. Semi-vowels include /j/ yeux, /w/ oui and /ɥ/ huit. The source’s isolated glyph ḝ is not taught as a French vowel letter; it is replaced by the ordinary letter e in the five-letter list.\n\nCulture and civilisation: culture is the set of learned practices, languages, values, arts and ways of life of people and communities. It is learned socially and changes over time. Avoid saying that every person in a country shares one identical culture. Language, food, music, family practices and celebrations can be studied through specific examples rather than stereotypes.\n\nTeacher-led pronunciation practice: the teacher models each word; learners listen, repeat and identify the target sound. Use minimal contrasts such as /s/ sac versus /ʃ/ chat, /ʒ/ jour versus /g/ gare, /ɲ/ peigne versus /ŋ/ camping. A written response does not certify pronunciation; record oral observation separately.",
+      "body_sha256": "431a919e826c0262518d2d94dc883f3db3766e7206a37b5e1c9e86dcf842e5df",
       "practice": [
         {
           "id": "Q1",
-          "question": "Match chat, jour, gare to /g/, /ʃ/, /ʒ/.",
-          "answer": "chat /ʃ/; jour /ʒ/; gare /g/.",
-          "marks": 3,
+          "question": "Identify the initial consonant sound in chat and jour.",
+          "answer": "/ʃ/ in chat; /ʒ/ in jour.",
+          "marks": 2,
           "marking": [
             {
-              "criterion": "chat",
+              "criterion": "/ʃ/",
               "marks": 1
             },
             {
-              "criterion": "jour",
-              "marks": 1
-            },
-            {
-              "criterion": "gare",
+              "criterion": "/ʒ/",
               "marks": 1
             }
           ]
         },
         {
           "id": "Q2",
-          "question": "Classify /y/, /ɑ̃/, /ɥ/ as oral vowel, nasal vowel or glide.",
-          "answer": "/y/ oral vowel; /ɑ̃/ nasal vowel; /ɥ/ glide.",
-          "marks": 3,
+          "question": "Give one word for each sound: /ɲ/ and /ŋ/.",
+          "answer": "/ɲ/: peigne or montagne. /ŋ/: camping.",
+          "marks": 2,
           "marking": [
             {
-              "criterion": "/y/",
+              "criterion": "Correct /ɲ/ example",
               "marks": 1
             },
             {
-              "criterion": "/ɑ̃/",
-              "marks": 1
-            },
-            {
-              "criterion": "/ɥ/",
+              "criterion": "Correct /ŋ/ example",
               "marks": 1
             }
           ]
         },
         {
           "id": "Q3",
-          "question": "What distinguishes tu and tout in the model?",
-          "answer": "tu has /y/, a rounded front vowel; tout has /u/, a rounded back vowel.",
+          "question": "Classify /j/, /w/ and /ɥ/ as consonants, oral vowels or semi-vowels.",
+          "answer": "They are semi-vowels (glides).",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Correct two symbols",
-              "marks": 1
-            },
-            {
-              "criterion": "Different tongue positions",
-              "marks": 1
+              "criterion": "Semi-vowel classification",
+              "marks": 2
             }
           ]
         },
         {
           "id": "Q4",
-          "question": "Does living in the same country imply identical cultural practices? Explain.",
-          "answer": "No. Practices vary between individuals and communities and change over time.",
+          "question": "Write the five basic French vowel letters.",
+          "answer": "a, e, i, o, u.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Rejects uniformity",
+              "criterion": "All five letters in order",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Give two oral vowels and two nasal vowels with one example each.",
+          "answer": "Oral: /i/ si, /e/ été, /ɛ/ mère, /a/ ami, /o/ eau. Nasal: /ɑ̃/ sans, /ɛ̃/ pain, /ɔ̃/ bon, /œ̃/ un. Any two of each.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Two valid oral vowel examples",
+              "marks": 2
+            },
+            {
+              "criterion": "Two valid nasal vowel examples",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Explain culture in one sentence without stereotyping a whole country.",
+          "answer": "Culture includes learned practices, languages, values and ways of life; it varies between communities and changes over time.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Learned practices/languages/values",
               "marks": 1
             },
             {
-              "criterion": "Explains variation",
+              "criterion": "Variation or change",
               "marks": 1
             }
           ]
@@ -1449,6 +1681,14 @@
           "rights": "Original teaching prose/examples authored for this project; no third-party passage or image reproduced.",
           "reuse_status": "PERMITTED",
           "attribution": "University of Texas: Français interactif pronunciation; original reference examples"
+        },
+        {
+          "title": "Larousse French dictionaries: peigne and camping pronunciation",
+          "locator": "Larousse Collège: peigne [pɛɲ]; Larousse French-English: camping [kɑ̃piŋ]; consulted 2026-11-11. Used to separate two different final consonant sounds that the source grouped under one unreadable OMML glyph.",
+          "url": "https://www.larousse.fr/dictionnaires/college/peigne/29949; https://www.larousse.fr/dictionnaires/francais-anglais/camping/12419",
+          "rights": "Original teaching explanation; only short IPA transcriptions are used as factual pronunciation notation; no third-party passage or image reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Larousse: Dictionnaire de français and Dictionnaire français-anglais"
         }
       ],
       "state": {
@@ -1602,11 +1842,12 @@
       "subject": "French",
       "title": "Se déplacer et demander son chemin",
       "objectives": [
-        "Name transport modes.",
-        "Give and follow an unambiguous sequence of directions."
+        "Name common land, water and air transport modes.",
+        "Use the correct prepositions en/à with transport.",
+        "Ask for and give directions from a clearly stated starting point."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nModes of transport: le bus, le train, l’avion, le bateau, la voiture, le vélo, la moto. Say en bus, en train, en avion, en bateau, en voiture; à vélo and à pied. A journey description can state departure, destination, mode and sequence without pretending there is a universal price or duration.\nAsk: Excusez-moi, où est la bibliothèque ? Comment aller au marché ? Directions: allez tout droit (go straight on); tournez à gauche / à droite; traversez la rue (cross the road); continuez jusqu’au pont (continue as far as the bridge). Check traffic and use a safe crossing; classroom instructions are not a substitute for local road safety.\nFictional layout in words: the school gate faces a straight road. The library is the second building on the right; the market is opposite it. From the gate, go straight on and stop at the second building on the right. This reaches the library, not the market.\nOriginal journey: Je pars de la maison à huit heures. Je vais en bus au centre-ville. Ensuite, je marche jusqu’à la bibliothèque. Le soir, je rentre à la maison. Aller and rentrer describe movement; en bus states how. Give instructions from a stated starting point, not from an unstated “here”.",
-      "body_sha256": "eedee7548da001da52fcd0f402f2d9e6069b1fde1efe1599e55a736b18c8fd37",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nTransport vocabulary: le bus, l’autobus, le car, le taxi, la voiture, le camion, le vélo, la bicyclette, la moto, le train, le métro, le tramway, l’avion, l’hélicoptère, le bateau, le navire, le canoë, le ferry. On peut aussi aller à pied. Say en bus, en car, en taxi, en voiture, en camion, en train, en métro, en tramway, en avion, en hélicoptère, en bateau; à vélo, à moto and à pied. Use a transport mode with the correct preposition.\n\nAsk: Excusez-moi, où est la bibliothèque ? Comment aller au marché ? Directions: allez tout droit; tournez à gauche/à droite; traversez la rue; continuez jusqu’au pont; prenez la première rue à gauche. Check traffic and use a safe crossing; classroom instructions are not a substitute for local road safety.\n\nFictional layout in words: the school gate faces a straight road. The library is the second building on the right; the market is opposite it. From the gate, go straight on and stop at the second building on the right. This reaches the library, not the market.\n\nOriginal journey: Je pars de la maison à huit heures. Je vais en bus au centre-ville. Ensuite, je marche jusqu’à la bibliothèque. Le soir, je rentre à la maison. A complete route gives a starting point, a destination, a mode and directions. Give instructions from a stated starting point, not from an unstated “here”.",
+      "body_sha256": "47b0f058f671aab5b825378a54a4f359bbc60b1ba7d36e023d21d0f585ec390e",
       "practice": [
         {
           "id": "Q1",
@@ -1626,6 +1867,30 @@
         },
         {
           "id": "Q2",
+          "question": "Give the correct preposition: ___ avion; ___ vélo; ___ moto; ___ bateau.",
+          "answer": "en avion; à vélo; à moto; en bateau.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "en avion",
+              "marks": 1
+            },
+            {
+              "criterion": "à vélo",
+              "marks": 1
+            },
+            {
+              "criterion": "à moto",
+              "marks": 1
+            },
+            {
+              "criterion": "en bateau",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
           "question": "In the fictional layout, where is the market relative to the library?",
           "answer": "En face de la bibliothèque.",
           "marks": 1,
@@ -1637,8 +1902,8 @@
           ]
         },
         {
-          "id": "Q3",
-          "question": "Give a polite question and two directions to the library in that layout.",
+          "id": "Q4",
+          "question": "Give a polite question and two directions to the library in the fictional layout.",
           "answer": "Excusez-moi, où est la bibliothèque ? Allez tout droit. Arrêtez-vous au deuxième bâtiment à droite.",
           "marks": 3,
           "marking": [
@@ -1652,6 +1917,26 @@
             },
             {
               "criterion": "Second building on right",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Name four different means of transport in French, including one water and one air transport.",
+          "answer": "Example: le train, le vélo, le bateau, l’avion.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Four valid modes",
+              "marks": 2
+            },
+            {
+              "criterion": "At least one water mode",
+              "marks": 1
+            },
+            {
+              "criterion": "At least one air mode",
               "marks": 1
             }
           ]
@@ -1925,30 +2210,39 @@
       "subject": "French",
       "title": "Le passé composé",
       "objectives": [
-        "Form completed past actions with avoir or être.",
-        "Apply subject agreement with aller."
+        "Form the passé composé with avoir and être.",
+        "Conjugate the source verbs and their past participles accurately.",
+        "Apply agreement with être and negation around the auxiliary."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nThe passé composé uses a present auxiliary and a past participle. With parler: j’ai parlé, tu as parlé, il a parlé, nous avons parlé, vous avez parlé, elles ont parlé. Regular -er verbs normally give -é; finir gives fini; vendre gives vendu. Learn irregular forms: faire → fait, prendre → pris, lire → lu, voir → vu, avoir → eu, être → été.\nSome verbs use être: Elle est allée au marché. Ils sont arrivés. With aller, the participle agrees with the subject: il est allé, elle est allée, ils sont allés, elles sont allées. Do not generalise “every movement verb takes être”: voyager takes avoir.\nNegation surrounds the auxiliary: Je n’ai pas fini. Elle n’est pas allée au marché. In the ordinary examples with avoir and no preceding direct object, the participle does not change to match the subject: Elle a parlé; elles ont parlé.\nOriginal account: Hier, nous avons terminé le travail. Ensuite, Ada est rentrée chez elle. Elle a lu une histoire. Each sentence presents a completed action; choose the auxiliary for the verb, not the gender of its subject.",
-      "body_sha256": "f0c8bdc478743d863e06de107e04c11e979836bb4e90d3cd4d83336710c71c4d",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nThe passé composé describes a completed past event. It is formed with the present tense of an auxiliary (avoir or être) and a past participle.\n\nWith avoir:\nparler → j’ai parlé, tu as parlé, il/elle a parlé, nous avons parlé, vous avez parlé, ils/elles ont parlé.\nfinir → j’ai fini; vendre → j’ai vendu; manger → j’ai mangé; donner → j’ai donné; danser → j’ai dansé.\nIrregular participles in the source set: être → été (j’ai été); avoir → eu; faire → fait; prendre → pris; boire → bu; lire → lu. Example: Hier, j’ai lu un livre et j’ai bu de l’eau. Être itself takes avoir in the passé composé: j’ai été, not je suis été.\n\nSome common intransitive movement/change verbs take être: aller → je suis allé(e); arriver → je suis arrivé(e); partir → je suis parti(e); entrer → je suis entré(e); sortir → je suis sorti(e); tomber → je suis tombé(e); rester → je suis resté(e). With être, the past participle agrees with the subject in the simple examples: il est allé, elle est allée, ils sont allés, elles sont allées. Do not generalise that every verb of movement takes être: voyager takes avoir (j’ai voyagé).\n\nWith avoir, the past participle normally does not agree with the subject in the basic examples here: elle a parlé; elles ont parlé. Negation surrounds the auxiliary: Je n’ai pas fini. Elle n’est pas allée au marché. Use a time marker such as hier, samedi dernier or la semaine passée when the context calls for one.\n\nModel paragraph: Samedi, nous avons visité le musée. Nous avons regardé les tableaux. Ensuite, nous sommes allés au marché. J’ai acheté un livre et j’ai pris le bus pour rentrer. These are completed actions in sequence.",
+      "body_sha256": "ea53f4197aac708c4e8dd75c8be18a4b69f5ca196b8d8809a3f8dd8c2c348254",
       "practice": [
         {
           "id": "Q1",
-          "question": "Put in the past: Nous parlons. Vous finissez.",
-          "answer": "Nous avons parlé. Vous avez fini.",
-          "marks": 2,
+          "question": "Put parler into the passé composé for all six subject forms.",
+          "answer": "J’ai parlé; tu as parlé; il/elle a parlé; nous avons parlé; vous avez parlé; ils/elles ont parlé.",
+          "marks": 6,
           "marking": [
             {
-              "criterion": "avons parlé",
-              "marks": 1
-            },
-            {
-              "criterion": "avez fini",
-              "marks": 1
+              "criterion": "Each of the six correct forms",
+              "marks": 6
             }
           ]
         },
         {
           "id": "Q2",
+          "question": "Give the past participles of être, avoir, faire, prendre, boire, lire and finir.",
+          "answer": "été, eu, fait, pris, bu, lu, fini.",
+          "marks": 7,
+          "marking": [
+            {
+              "criterion": "Each correct participle",
+              "marks": 7
+            }
+          ]
+        },
+        {
+          "id": "Q3",
           "question": "Complete for two girls: Elles __ au marché. (aller)",
           "answer": "Elles sont allées au marché.",
           "marks": 2,
@@ -1964,8 +2258,8 @@
           ]
         },
         {
-          "id": "Q3",
-          "question": "Make J’ai vu le film negative.",
+          "id": "Q4",
+          "question": "Make « J’ai vu le film » negative.",
           "answer": "Je n’ai pas vu le film.",
           "marks": 2,
           "marking": [
@@ -1976,6 +2270,42 @@
             {
               "criterion": "vu retained",
               "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Explain why « elles sont allées » has an extra -es but « elles ont parlé » does not in these examples.",
+          "answer": "Aller uses être, so the past participle agrees with the feminine plural subject. Parler uses avoir and there is no preceding direct object, so the participle does not agree with the subject.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Être agreement",
+              "marks": 1
+            },
+            {
+              "criterion": "Feminine plural -es",
+              "marks": 1
+            },
+            {
+              "criterion": "Avoir example no subject agreement",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Write four completed past actions using at least three verbs from the lesson.",
+          "answer": "Example: Hier, j’ai mangé. J’ai lu un livre. J’ai bu de l’eau. Ensuite, je suis rentré(e). Other correct sentences accepted.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Four completed actions",
+              "marks": 2
+            },
+            {
+              "criterion": "Correct auxiliary and participles",
+              "marks": 2
             }
           ]
         }
@@ -2090,35 +2420,40 @@
       "title": "Comparer hier et aujourd’hui",
       "objectives": [
         "Compare a fictional past situation with the present.",
-        "Distinguish a model narrative from national statistics."
+        "Use vocabulary for rural infrastructure, services and development themes.",
+        "Distinguish a model narrative from verified national statistics."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nOriginal fictional passage:\n« Autrefois, notre bibliothèque était petite. Elle avait deux tables. Les élèves attendaient souvent une place. Aujourd’hui, elle est plus grande et elle a six tables. Nous pouvons travailler en petits groupes. Cependant, certains livres sont encore abîmés. Nous souhaitons les remplacer. »\nAutrefois and aujourd’hui contrast times. Était, avait and attendaient describe the past; est, a and pouvons describe now. Plus grande means bigger. Encore means still here; cependant introduces a qualification, so the new situation is not described as perfect.\nTo compare: Avant, il y avait… Maintenant, il y a… C’était… C’est… Express improvement specifically: La salle est plus claire. A change is not automatically good for everyone; give evidence for an opinion.\nThe passage supplies its own invented numbers. They are not statistics about Nigeria or France. When discussing a real country, date and cite changing facts instead of copying old population, employment or economic rankings from an undated note.",
-      "body_sha256": "fb1effc46f6fecfa6fd09ac5ce310b610736b4ed4d6f8a2c78bd54c3ebe3979f",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nOriginal fictional passage:\n« Autrefois, dans un village, la route était étroite et il y avait peu de moyens de transport. Les habitants allaient au marché à pied. L’école avait deux salles de classe. Aujourd’hui, la route est plus large, un pont relie les deux quartiers et un bus passe près du marché. L’école a une bibliothèque. Cependant, certains habitants vivent encore loin du centre de santé et l’approvisionnement en eau reste difficile. »\nAutrefois and aujourd’hui contrast times. Était, avait and allaient describe the past; est, a and passe describe now. Plus large means wider. Cependant introduces a qualification; a change is not automatically good for everyone.\n\nVocabulary from the source theme: une route (road), un pont (bridge), une école (school), un centre de santé (health centre), un hôpital (hospital), l’eau potable (drinking water), l’électricité (electricity), un logement (housing), un marché (market), une coopérative (co-operative), l’agriculture (agriculture), les transports (transport), les communications (communications), les soins de santé (health care). These are categories of infrastructure and services, not a claim that every village has or lacks them.\n\nTo compare: Avant, il y avait… Maintenant, il y a… C’était… C’est… Express improvement specifically: La route est plus sûre. Express a remaining difficulty: Cependant, le centre de santé est loin. Give evidence for an opinion and avoid claiming that a fictional passage describes every Nigerian community.\n\nThe original source mentions government programmes, roads, bridges, schools, water, electricity, housing, health services and rural development. The replacement preserves these themes in a fictional example; it does not repeat unverified current claims about government policy, budgets or nationwide service coverage.\n\nMini writing model: « Dans mon village fictif, il y avait une petite école. Aujourd’hui, l’école a une bibliothèque. Un nouveau pont facilite le déplacement. Cependant, certaines familles ont encore besoin d’eau potable. À mon avis, il faut améliorer les services de santé. »",
+      "body_sha256": "32d8e2f0da0edfbac061224c1c1049ebc36b589abb28262d96377534c2acf3dd",
       "practice": [
         {
           "id": "Q1",
-          "question": "Combien de tables y avait-il autrefois ? Combien y en a-t-il maintenant ?",
-          "answer": "Deux autrefois ; six maintenant.",
-          "marks": 2,
+          "question": "Combien de salles de classe l’école avait-elle autrefois ?",
+          "answer": "Deux salles de classe.",
+          "marks": 1,
           "marking": [
             {
-              "criterion": "Two",
-              "marks": 1
-            },
-            {
-              "criterion": "Six",
+              "criterion": "Two classrooms",
               "marks": 1
             }
           ]
         },
         {
           "id": "Q2",
-          "question": "Find one remaining problem.",
-          "answer": "Certains livres sont encore abîmés.",
-          "marks": 1,
+          "question": "Name two improvements and one remaining difficulty in the fictional passage.",
+          "answer": "Improvements: wider road, bridge, bus, library. Difficulty: some people live far from the health centre or water supply remains difficult.",
+          "marks": 3,
           "marking": [
             {
-              "criterion": "Damaged books",
+              "criterion": "First improvement",
+              "marks": 1
+            },
+            {
+              "criterion": "Second improvement",
+              "marks": 1
+            },
+            {
+              "criterion": "One remaining difficulty",
               "marks": 1
             }
           ]
@@ -2126,7 +2461,7 @@
         {
           "id": "Q3",
           "question": "Write a comparison using avant and maintenant.",
-          "answer": "Example: Avant, la salle était sombre. Maintenant, elle est claire. Accept a coherent original comparison.",
+          "answer": "Example: Avant, la route était étroite. Maintenant, elle est plus large.",
           "marks": 3,
           "marking": [
             {
@@ -2139,6 +2474,34 @@
             },
             {
               "criterion": "Clear contrast",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Translate: The village needs drinking water and electricity.",
+          "answer": "Le village a besoin d’eau potable et d’électricité.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "a besoin d’eau potable",
+              "marks": 1
+            },
+            {
+              "criterion": "et d’électricité",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Give one reason why a comparison passage should not be treated as a national statistic.",
+          "answer": "It is a fictional teaching example and does not provide a dated, representative dataset or source for every community.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Recognises fictional/limited evidence",
               "marks": 1
             }
           ]
@@ -2169,11 +2532,12 @@
       "subject": "French",
       "title": "Satisfaction, regret et sentiments",
       "objectives": [
-        "Express satisfaction, regret and feelings in suitable French.",
+        "Express satisfaction, regret and positive/negative feelings using the source expressions.",
+        "Choose expressions according to context and adjective agreement.",
         "Give a reason without insulting a person or group."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nSatisfaction: Je suis content / contente. Je suis satisfait / satisfaite du résultat. C’est une bonne nouvelle. Regret: Je suis désolé / désolée. Je regrette mon retard. C’est dommage. Choose adjective endings to agree with the speaker; triste and calme have the same singular form for masculine and feminine.\nFeelings can be pleasant, unpleasant or mixed: heureux/heureuse (happy), triste (sad), inquiet/inquiète (worried), déçu/déçue (disappointed), surpris/surprise (surprised), calme (calm). Do not classify triste as a positive feeling or treat every calm person as unhappy. Context supplies the meaning.\nOriginal exchange: — La bibliothèque ouvre plus tôt. — Je suis contente, parce que je peux y lire avant les cours. — Le trajet est plus long pour moi. — C’est dommage. Cherchons une solution.\nGive a reason with parce que: Je suis inquiet parce que mon cahier a disparu. Regret an action without attacking a person: Je regrette mes paroles. Je suis désolé de t’avoir blessé. Apologising does not require a listener to accept an excuse.\nWrite what the speaker actually says; do not infer a whole community’s opinions from one person’s statement.",
-      "body_sha256": "2ecb4af1fd672df1c90927203f951f6a129cc8c63ee8060d7d3ba42ef26cd407",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nSatisfaction: Je suis content / contente. Je suis satisfait / satisfaite du résultat. C’est une bonne nouvelle. Regret: Je suis désolé / désolée. Je regrette mon retard. C’est dommage. Choose adjective endings to agree with the speaker; triste and calme have the same singular form for masculine and feminine.\n\nPositive or approving expressions from the source, with corrected spelling: C’est super ! C’est excellent ! C’est sympa. C’est chouette. C’est formidable. C’est magnifique. Bravo ! Félicitations ! Ça m’intéresse. Ça me fait plaisir. C’est une bonne idée. C’est splendide. Avec plaisir. C’est bien. C’est mieux. « Ce n’est pas du tout mal » is possible but « C’est très bien » is more natural in ordinary praise.\n\nNegative or disapproving expressions: C’est dommage. C’est mauvais. C’est bizarre. C’est difficile. Ce n’est pas facile. C’est laid. C’est sale. C’est long. C’est faible. Use these to describe a situation or result, not to humiliate a person. « Tranquille » and « calme » are usually neutral, not automatically positive or negative. « Difficile » can describe a challenge rather than a bad person.\n\nFeelings: heureux/heureuse (happy), triste (sad), inquiet/inquiète (worried), déçu/déçue (disappointed), surpris/surprise (surprised), calme (calm). Do not classify triste as a positive feeling or treat every calm person as unhappy. Context supplies the meaning.\n\nOriginal exchange: — La bibliothèque ouvre plus tôt. — Je suis contente, parce que je peux y lire avant les cours. — Le trajet est plus long pour moi. — C’est dommage. Cherchons une solution.\n\nGive a reason with parce que: Je suis inquiet parce que mon cahier a disparu. Regret an action without attacking a person: Je regrette mes paroles. Je suis désolé de t’avoir blessé. Apologising does not require a listener to accept an excuse. Write what the speaker actually says; do not infer a whole community’s opinions from one person’s statement.\n\nThe source also asks learners to express satisfaction or regret about change. Original model: « Je suis satisfait(e) des moyens de communication actuels. Le téléphone portable et Internet permettent d’envoyer des messages rapidement. Autrefois, certaines communications prenaient plus de temps. Cependant, l’accès à l’électricité et à Internet n’est pas identique partout. Je regrette les difficultés que cela peut créer. » This is a general classroom comparison, not a measured claim about every community.\n\nSchool and social change vocabulary: respecter (to respect), un enseignant / une enseignante (teacher), un directeur / une directrice (school head), un élève / une élève (learner), être invité(e) (to be invited), être honoré(e) (to feel honoured). A learner can say « Je suis content(e) quand les élèves et les enseignants se respectent. » Describe a particular example; do not claim that all schools or all teachers behave in the same way.",
+      "body_sha256": "c5ccc5a06e92afa6d227859c76f9b9b4f81aa6bf09d78cd0dea8d740bd8cf73e",
       "practice": [
         {
           "id": "Q1",
@@ -2189,16 +2553,16 @@
         },
         {
           "id": "Q2",
-          "question": "Give an appropriate regret expression after arriving late.",
-          "answer": "Je suis désolé/désolée de mon retard. / Je regrette mon retard.",
+          "question": "Give one positive expression and one regret expression from the lesson.",
+          "answer": "C’est magnifique ! / Bravo ! ; C’est dommage. / Je regrette mon retard.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Appropriate regret",
+              "criterion": "Positive expression",
               "marks": 1
             },
             {
-              "criterion": "Correct expression",
+              "criterion": "Regret expression",
               "marks": 1
             }
           ]
@@ -2215,6 +2579,50 @@
             },
             {
               "criterion": "parce que clause",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Classify calme, triste, formidable and difficile as a feeling, positive expression or context-dependent description.",
+          "answer": "Calme: feeling/neutral description; triste: negative feeling; formidable: positive expression; difficile: context-dependent description.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "calme",
+              "marks": 1
+            },
+            {
+              "criterion": "triste",
+              "marks": 1
+            },
+            {
+              "criterion": "formidable",
+              "marks": 1
+            },
+            {
+              "criterion": "difficile",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Write a two-line exchange in which one learner is pleased and the other expresses a concern politely.",
+          "answer": "Example: — Je suis content(e) du résultat ! — C’est bien, mais je suis inquiet/inquiète pour demain. Other respectful exchanges accepted.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Positive expression",
+              "marks": 1
+            },
+            {
+              "criterion": "Concern expression",
+              "marks": 1
+            },
+            {
+              "criterion": "Polite/coherent exchange",
               "marks": 1
             }
           ]
@@ -2245,11 +2653,12 @@
       "subject": "French",
       "title": "Goûts, préférences et souhaits",
       "objectives": [
-        "Express likes and dislikes politely.",
-        "Conjugate aimer, préférer and vouloir in short sentences."
+        "Express likes, dislikes, tastes and preferences politely.",
+        "Conjugate aimer, détester, préférer, goûter and vouloir in the present tense.",
+        "Use ne…pas and the comparison préférer … à … in short exchanges."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nAimer means to like or love; adorer expresses strong liking; préférer chooses one option over another. Use a definite article for a general category: J’aime la musique. Use an infinitive for an activity: J’aime lire. Negative: Je n’aime pas le bruit. Dislike of an activity is not an insult to people who enjoy it.\nAimer: j’aime, tu aimes, il/elle aime, nous aimons, vous aimez, ils/elles aiment. Préférer: je préfère, tu préfères, il/elle préfère, nous préférons, vous préférez, ils/elles préfèrent. Say Je préfère le thé au café: prefer X to Y uses à; à + le becomes au. With activities: Je préfère lire plutôt que regarder la télévision.\nVouloir expresses wanting: je veux, tu veux, il/elle veut, nous voulons, vous voulez, ils/elles veulent. Je voudrais is a polite request form: Je voudrais de l’eau, s’il vous plaît. Do not replace ils veulent with ils voulent.\nOriginal exchange: — Aimes-tu dessiner ? — Oui, mais je préfère chanter. Et toi ? — J’aime dessiner. Je voudrais apprendre à peindre. Ask and answer without claiming that one taste is universally better.",
-      "body_sha256": "e83e0bde336d1f5cb281c6139458002e2f8defe73e9a5df83f8218da3edf2b2c",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nAimer means to like or love; adorer expresses strong liking; détester expresses dislike; préférer chooses one option over another; goûter means to taste. Use a definite article for a general category: J’aime la musique. Use an infinitive for an activity: J’aime lire. Negative: Je n’aime pas le bruit. Choose neutral topics such as food, music, sport or hobbies; do not turn a preference exercise into an insult about a language, ethnic group or person.\n\nPresent tense:\nAimer: j’aime, tu aimes, il/elle aime, nous aimons, vous aimez, ils/elles aiment.\nDétester: je déteste, tu détestes, il/elle déteste, nous détestons, vous détestez, ils/elles détestent.\nPréférer: je préfère, tu préfères, il/elle préfère, nous préférons, vous préférez, ils/elles préfèrent.\nGoûter: je goûte, tu goûtes, il/elle goûte, nous goûtons, vous goûtez, ils/elles goûtent.\nVouloir: je veux, tu veux, il/elle veut, nous voulons, vous voulez, ils/elles veulent. Je voudrais is a polite request: Je voudrais de l’eau, s’il vous plaît.\n\nSay Je préfère le thé au café: prefer X to Y uses à; à + le becomes au. With activities: Je préfère lire plutôt que regarder la télévision. Use goûter with food: Je goûte la soupe. It does not mean “to like”; it means to taste.\n\nOriginal exchange: — Aimes-tu dessiner ? — Oui, mais je préfère chanter. Et toi ? — J’aime dessiner. Je voudrais apprendre à peindre. Other source-style examples: J’adore les livres. Je déteste le bruit. Nous aimons le riz. Elle préfère le poulet. Vous goûtez le repas. Ils n’aiment pas attendre. « Il aime le français » is a statement about one learner, not a claim that everyone must have the same preference.",
+      "body_sha256": "c88a8434d54ce805b327a2fc8af144a9c6723659f9884c7293910231142630f6",
       "practice": [
         {
           "id": "Q1",
@@ -2269,23 +2678,35 @@
         },
         {
           "id": "Q2",
-          "question": "Say politely that you would like some water.",
-          "answer": "Je voudrais de l’eau, s’il vous plaît.",
+          "question": "Write the nous and ils forms of détester.",
+          "answer": "Nous détestons; ils détestent.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Je voudrais de l’eau",
+              "criterion": "détestons",
               "marks": 1
             },
             {
-              "criterion": "Polite expression",
+              "criterion": "détestent",
               "marks": 1
             }
           ]
         },
         {
           "id": "Q3",
-          "question": "Make J’aime courir negative, then state a different preference.",
+          "question": "Complete: Je __ la soupe avant de donner mon avis sur son goût. (goûter)",
+          "answer": "Je goûte la soupe.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "goûte",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Make « J’aime courir » negative, then state a different preference.",
           "answer": "Je n’aime pas courir. Je préfère marcher. Other coherent preferences accepted.",
           "marks": 2,
           "marking": [
@@ -2295,6 +2716,26 @@
             },
             {
               "criterion": "Correct preference sentence",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Write five different sentences about likes and dislikes using aimer, détester, préférer and goûter.",
+          "answer": "Example: J’aime la musique. Je déteste le bruit. Je préfère le thé au café. Je goûte la soupe. Nous aimons lire. Other correct sentences accepted.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Five distinct sentences",
+              "marks": 2
+            },
+            {
+              "criterion": "At least three target verbs used correctly",
+              "marks": 2
+            },
+            {
+              "criterion": "Correct spelling/grammar",
               "marks": 1
             }
           ]
@@ -2326,10 +2767,11 @@
       "title": "Opinion et projets d’avenir",
       "objectives": [
         "Express a reasoned opinion.",
-        "Describe a future study or career plan without treating it as a prediction."
+        "Use futur proche and futur simple to describe possible plans.",
+        "Use respectful discussion and practical next steps."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nOpinion frames: À mon avis… Je pense que… Selon moi… Je suis d’accord, parce que… Je ne suis pas d’accord, car… Give a reason connected to the claim. Distinguish a fact that can be checked from a preference.\nOriginal model: À mon avis, une bibliothèque est utile, parce qu’elle permet de lire et de travailler. Je voudrais devenir journaliste. Cette année, je vais lire régulièrement et écrire de courts articles. Plus tard, j’étudierai la communication. This is one fictional learner’s plan, not a promise of admission or employment.\nJe voudrais expresses a wish politely. Je vais étudier uses futur proche. J’étudierai uses futur simple. After devenir with an unmodified profession, no article is necessary: devenir médecin, devenir enseignante. Explain a practical next step: Pour améliorer mon français, je vais lire chaque jour.\nIn discussion, disagree with the claim rather than demeaning the speaker. A job, family origin or social status does not automatically make an opinion correct. Ask for a reason: Pourquoi penses-tu cela ?",
-      "body_sha256": "8dd7ca4059e9bf01eca8fb3f4ae4e717f5162d0a922f6f9c01ef0ed53734df5e",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nOpinion frames: À mon avis… Je pense que… Selon moi… Je crois que… Quant à moi… Je suis d’accord, parce que… Je ne suis pas d’accord, car… Give a reason connected to the claim. Distinguish a fact that can be checked from a preference.\n\nFuture plans can use futur proche (aller + infinitive): je vais voyager, nous allons étudier, elle va travailler. Futur simple uses an infinitive/future stem and endings -ai, -as, -a, -ons, -ez, -ont: je voyagerai, tu étudieras, il travaillera, nous partirons, vous réussirez, elles seront. Être is irregular: je serai, tu seras, il sera, nous serons, vous serez, ils seront. A plan is not a prediction or a promise of admission or employment.\n\nOriginal model: À mon avis, une bibliothèque est utile, parce qu’elle permet de lire et de travailler. Je voudrais devenir journaliste. Cette année, je vais lire régulièrement et écrire de courts articles. Plus tard, j’étudierai la communication. This is one fictional learner’s plan.\n\nOther possible plans from the source themes:\n- Après mes examens, je vais visiter un musée.\n- Je vais apprendre les techniques du football.\n- Je voudrais faire un stage dans une entreprise.\n- Plus tard, je travaillerai dans la santé.\n- Je vais améliorer mon français en lisant chaque jour.\n- Après le baccalauréat, j’aimerais étudier à l’université.\nThese are sample plans, not claims about a real learner’s travel, admission or career.\n\nAfter devenir with an unmodified profession, no article is necessary: devenir médecin, devenir enseignante. Explain a practical next step: Pour améliorer mon français, je vais lire chaque jour. In discussion, disagree with the claim rather than demeaning the speaker. Ask for a reason: Pourquoi penses-tu cela ?",
+      "body_sha256": "fc0b2b6402b086c69b4cd02e9291fe5809eb0381c53aa7b263ba76364e4acf13",
       "practice": [
         {
           "id": "Q1",
@@ -2374,6 +2816,50 @@
               "marks": 1
             }
           ]
+        },
+        {
+          "id": "Q4",
+          "question": "Conjugate être in the futur simple for je, nous and ils.",
+          "answer": "Je serai; nous serons; ils seront.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "serai",
+              "marks": 1
+            },
+            {
+              "criterion": "serons",
+              "marks": 1
+            },
+            {
+              "criterion": "seront",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Write a four-sentence future plan. Include an opinion phrase, a reason and one futur simple form.",
+          "answer": "Example: À mon avis, le français est utile parce qu’il aide à communiquer. Je vais lire chaque jour. Plus tard, j’étudierai à l’université. Je travaillerai régulièrement. Other coherent plans accepted.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Opinion phrase",
+              "marks": 1
+            },
+            {
+              "criterion": "Reason",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct future form",
+              "marks": 1
+            },
+            {
+              "criterion": "Coherent plan",
+              "marks": 1
+            }
+          ]
         }
       ],
       "provenance": [
@@ -2402,10 +2888,11 @@
       "title": "Dire qu’on ne se sent pas bien",
       "objectives": [
         "Describe a symptom using avoir mal à.",
-        "Ask for help without making a diagnosis."
+        "Ask for help without making a diagnosis.",
+        "Read or listen to a short symptom dialogue and answer only from the stated details."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nThis is a language lesson, not medical advice. Useful expressions: Je ne me sens pas bien. J’ai mal à la tête. J’ai mal au ventre. J’ai mal à l’oreille. J’ai mal aux dents. Use à la with a feminine noun, au with a masculine noun, à l’ before a vowel sound, and aux with a plural noun.\nOriginal dialogue:\nÉlève : Madame, je ne me sens pas bien. J’ai mal à la tête.\nAdulte : Depuis quand ?\nÉlève : Depuis ce matin. Je voudrais demander de l’aide.\nAdulte : D’accord. Nous allons prévenir la personne responsable.\nThe dialogue reports a symptom and arranges help. It does not say what caused the pain or prescribe treatment. Do not infer that someone has eaten too much or invent a remedy from a grammar exercise. Follow the school’s arrangements for seeking adult and professional help.\nPast reporting: Hier, j’avais mal à la tête (background state). J’ai demandé de l’aide (completed action). The expression j’avais uses avoir, not être. Ask a neutral question such as Comment te sens-tu ? rather than asserting an illness.",
-      "body_sha256": "3065292cefe2577a2deb0bbb9460911edcd93d5470cc4cef5ba41fe209305794",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nThis is a language lesson, not medical advice. Useful expressions: Je ne me sens pas bien. J’ai mal à la tête. J’ai mal au ventre. J’ai mal à l’oreille. J’ai mal aux dents. Use à la with a feminine noun, au with a masculine noun, à l’ before a vowel sound, and aux with a plural noun.\nOriginal dialogue:\nÉlève : Madame, je ne me sens pas bien. J’ai mal à la tête.\nAdulte : Depuis quand ?\nÉlève : Depuis ce matin. Je voudrais demander de l’aide.\nAdulte : D’accord. Nous allons prévenir la personne responsable.\nThe dialogue reports a symptom and arranges help. It does not say what caused the pain or prescribe treatment. Do not infer that someone has eaten too much or invent a remedy from a grammar exercise. Follow the school’s arrangements for seeking adult and professional help.\nPast reporting: Hier, j’avais mal à la tête (background state). J’ai demandé de l’aide (completed action). The expression j’avais uses avoir, not être. Ask a neutral question such as Comment te sens-tu ? rather than asserting an illness.\n\nReading and comprehension extension: the source dialogue asks about the previous evening’s meal and symptoms. A learner should answer only from what the text states; a symptom does not prove its cause. Read the dialogue twice, once for the main idea and once to locate details. For a teacher-led oral exercise, the teacher reads the dialogue while learners listen without looking at the text, then answer the same questions. This is a classroom activity, not a supplied exam-board recording.",
+      "body_sha256": "482b43699f3a7b959ce61fcec3064ee627cf79ee8a003980a997f7c0800198a5",
       "practice": [
         {
           "id": "Q1",
@@ -2451,6 +2938,46 @@
           "marking": [
             {
               "criterion": "No diagnosis inferred",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Complete with au, à la, à l’ or aux: mal __ ventre; mal __ tête; mal __ oreille; mal __ yeux.",
+          "answer": "au ventre; à la tête; à l’oreille; aux yeux.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "au ventre",
+              "marks": 1
+            },
+            {
+              "criterion": "à la tête",
+              "marks": 1
+            },
+            {
+              "criterion": "à l’oreille",
+              "marks": 1
+            },
+            {
+              "criterion": "aux yeux",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "According to the original classroom dialogue, what should the learner do if they feel unwell?",
+          "answer": "Tell a responsible adult and ask for help; the dialogue does not diagnose or prescribe treatment.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Tell a responsible adult/ask for help",
+              "marks": 1
+            },
+            {
+              "criterion": "No diagnosis or treatment invented",
               "marks": 1
             }
           ]
@@ -2693,11 +3220,12 @@
       "subject": "French",
       "title": "Expliquer un mot avec respect",
       "objectives": [
-        "Define a word using category and distinguishing detail.",
-        "Use reformulation without stereotypes."
+        "Define words using category and distinguishing detail.",
+        "Use source vocabulary accurately and respectfully.",
+        "Use reformulation and everyday expressions in context."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nA useful definition gives a category and a distinguishing detail: Une bibliothèque est un lieu où l’on peut lire ou emprunter des livres. Un boulanger est une personne qui prépare du pain. C’est-à-dire introduces a reformulation; par exemple introduces an illustration, not a complete definition.\nOriginal examples: Un trajet, c’est le chemin parcouru entre deux lieux. Un piéton, c’est une personne qui se déplace à pied. Une personne bilingue utilise deux langues; the word alone does not tell you their proficiency in every situation. Le mot “calme” peut décrire une personne tranquille ou un lieu sans beaucoup de bruit. Context decides which sense applies.\nUse a dictionary to check spelling, gender and the sense relevant to the sentence. If you meet an unfamiliar word, read the whole sentence, suggest a meaning, then check it. Do not replace a precise definition with a judgement about a nationality, disability or social group. Describe a person respectfully and only mention a personal characteristic when it is relevant.\nEveryday expressions: avoir faim (be hungry), avoir soif (be thirsty), avoir besoin de (need), faire attention (pay attention), prendre rendez-vous (make an appointment). Example: J’ai besoin d’un dictionnaire pour vérifier ce mot.",
-      "body_sha256": "6e56c09577c3d3b94590f189875270cbe85dc33deb385e8a5b5c252fb21e4ce5",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nA useful definition gives a category and a distinguishing detail: Une bibliothèque est un lieu où l’on peut lire ou emprunter des livres. Un boulanger est une personne qui prépare du pain. C’est-à-dire introduces a reformulation; par exemple introduces an illustration, not a complete definition.\n\nVocabulary and respectful descriptions from the source themes:\n- entendre: entendre is to hear. Prefer « une personne sourde » when describing a deaf person; do not use « un sourd » as a label for an individual.\n- voir: voir is to see. Prefer « une personne aveugle » or « une personne malvoyante » when relevant; do not reduce a person to a disability.\n- parler: « une personne qui ne parle pas » is a neutral description when relevant; do not use a disability as an insult.\n- voler: un voleur / une voleuse is a person who steals; use the word in a definition or fictional example, not to accuse someone without evidence.\n- veuf / veuve: a man/woman whose spouse has died.\n- célibataire: a person who is not married; it does not mean lonely.\n- gourmand / gourmande: a person who enjoys food; it does not automatically mean someone eats too much.\n- géant: a giant in a story. For an ordinary person's height, say « une personne très grande ».\n- « pygmée » is not a neutral generic word for a short person; it names peoples and must not be used as a height adjective. Say « une personne de petite taille » if height is relevant.\n- « estropié » is outdated and can be offensive. Use « une personne à mobilité réduite » or a more specific respectful description when relevant.\n- orphelin / orpheline: a child who has lost one or both parents; specify the situation if accuracy matters.\n- riche: a person who has considerable money or resources.\n- en bonne santé: in good health; prendre une douche: to take a shower; faire la cuisine: to cook; avoir faim/soif/sommeil: to be hungry/thirsty/sleepy; être fatigué(e): to be tired.\n- un ami / une amie: a friend; faire le ménage: to do housework; faire des courses: to shop or run errands; ne pas avoir d’appétit: to have no appetite; souffrir: to suffer.\n- un moniteur / une monitrice: a supervisor/instructor; bavard / bavarde: talkative; une équipe: a team; une bijouterie: a jewellery shop; un zoo: a zoo.\n\nOriginal examples: Un trajet, c’est le chemin parcouru entre deux lieux. Un piéton, c’est une personne qui se déplace à pied. Une personne bilingue utilise deux langues; the word alone does not tell you their proficiency in every situation. Context decides which sense applies.\n\nEveryday expressions: avoir besoin de (need), faire attention (pay attention), prendre rendez-vous (make an appointment). Example: J’ai besoin d’un dictionnaire pour vérifier ce mot. Use a dictionary to check spelling, gender and the sense relevant to the sentence. Do not replace a precise definition with a judgement about a nationality, disability or social group.",
+      "body_sha256": "87b22c1faa04505f975553bc500e57973ace1cbe114e32bb0f60c921bed37b39",
       "practice": [
         {
           "id": "Q1",
@@ -2743,6 +3271,38 @@
             },
             {
               "criterion": "Illustration",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Give a respectful French phrase for a person who cannot hear and a person who cannot see.",
+          "answer": "Une personne sourde; une personne aveugle (or une personne malvoyante, depending on context).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Personne sourde",
+              "marks": 1
+            },
+            {
+              "criterion": "Personne aveugle/malvoyante",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Explain why « pygmée » should not be used as a generic word for a short person, and give a neutral alternative.",
+          "answer": "It names peoples and is not a generic height adjective. Use « une personne de petite taille » when relevant.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Explains it is an ethnic term, not a generic height word",
+              "marks": 1
+            },
+            {
+              "criterion": "Neutral alternative",
               "marks": 1
             }
           ]
@@ -3022,8 +3582,8 @@
         "State English’s official-language status in a dated Namibia edition (May 2018) and in official Kenya and South Africa texts, as a non-exhaustive selection, using langue officielle, dont and plural agreement.",
         "Record the article, version and access date needed to check any other country’s official languages."
       ],
-      "body": "Newly authored equivalent / Leçon de remplacement originale.\nThis lesson replaces the Week 2 homework on writing the Anglophone countries of Africa. It does not reuse the original lesson’s list or its grouping, and it does not claim to list every African country where English is official. It teaches three countries as a small, non-exhaustive selection, each checked against a text read on 5 November 2026: the Kenya and South Africa texts are official, and the Namibia text is a dated annotated edition, not a government publication.\nAnglophone describes a person or community that uses English; un pays anglophone is a country described that way. An official language is a different fact: it is a language that a country’s own law names for official use. Official-language status does not mean that everyone in the country speaks that language, and a country can name more than one official language. Always say which text and which date you are relying on.\nUseful words: une langue officielle = an official language (deux langues officielles: the adjective takes the plural); la constitution = the constitution; un article = an article (a numbered section); la loi = the law; dont = including, among which.\nNamibie. The Namibia example is documentary evidence from one dated edition, not a statement of the law today. The edition is The Constitution of the Republic of Namibia (Annotated Edition), second edition, 2018 (reprint, 2021), published by the Konrad-Adenauer-Stiftung, read on the website of the Electoral Commission of Namibia. Its title pages are dated Windhoek, May 2018. Chapter 1, Article 3(1) states that the official language of Namibia is English. This lesson did not check later amendments, and the edition is not a government-published text. Dans l’édition de la Constitution namibienne datée de mai 2018, l’article 3(1) désigne l’anglais comme langue officielle.\nKenya. Article 7(1) of the Constitution of Kenya, as published by the Kenya Law Reform Commission, names Kiswahili as the national language, and Article 7(2) names Kiswahili and English as the official languages. Article 7(3) requires the State to protect the diversity of the country’s languages. The Constitution commenced on 27 August 2010. Le Kenya a deux langues officielles : le swahili et l’anglais.\nAfrique du Sud. Section 6(1) of the Constitution lists English among several official languages. The South African government’s page for the Constitution, read on 5 November 2026, still shows the older list of eleven languages. The Constitution Eighteenth Amendment Act 3 of 2023 (assented to on 19 July 2023; Government Gazette 49041 of 27 July 2023) replaces that subsection with a list that also includes South African Sign Language. The Act’s own page says its commencement is to be proclaimed, and this lesson did not establish a commencement date. English is listed in both versions. L’Afrique du Sud a plusieurs langues officielles, dont l’anglais.\nTo check another country: (1) find its constitution or law on an official government or law-reform website; (2) note the article or section that names the language, and the version or date of the text; (3) record the web address and the date you read it. A list from memory, a summary website, or the languages people are heard speaking in a market is not evidence of legal status.\nUseful questions: Quelle est la langue officielle de la Namibie dans l’édition de mai 2018 ? Quelles sont les langues officielles du Kenya ? Une langue officielle est reconnue par la loi ; une personne anglophone parle anglais.",
-      "body_sha256": "469a249b6596ffdd2b679b17db1551e730d8ff21a5bd05efe4d297facde94611",
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\nThis lesson replaces the Week 2 homework on writing the Anglophone countries of Africa. It does not reuse the original lesson’s list or its grouping, and it does not claim to list every African country where English is official. It teaches three countries as a small, non-exhaustive selection, each checked against a text read on 5 November 2026: the Kenya and South Africa texts are official, and the Namibia text is a dated annotated edition, not a government publication.\nAnglophone describes a person or community that uses English; un pays anglophone is a country described that way. An official language is a different fact: it is a language that a country’s own law names for official use. Official-language status does not mean that everyone in the country speaks that language, and a country can name more than one official language. Always say which text and which date you are relying on.\nUseful words: une langue officielle = an official language (deux langues officielles: the adjective takes the plural); la constitution = the constitution; un article = an article (a numbered section); la loi = the law; dont = including, among which.\nNamibie. The Namibia example is documentary evidence from one dated edition, not a statement of the law today. The edition is The Constitution of the Republic of Namibia (Annotated Edition), second edition, 2018 (reprint, 2021), published by the Konrad-Adenauer-Stiftung, read on the website of the Electoral Commission of Namibia. Its title pages are dated Windhoek, May 2018. Chapter 1, Article 3(1) states that the official language of Namibia is English. This lesson did not check later amendments, and the edition is not a government-published text. Dans l’édition de la Constitution namibienne datée de mai 2018, l’article 3(1) désigne l’anglais comme langue officielle.\nKenya. Article 7(1) of the Constitution of Kenya names Kiswahili as the national language, and Article 7(2) names Kiswahili and English as the official languages. Article 7(3) requires the State to protect the diversity of the country’s languages. The National Council for Law Reporting publishes the Constitution through Kenya Law; the revised 2022 edition was consulted for this lesson. The Constitution commenced on 27 August 2010. Le Kenya a deux langues officielles : le swahili et l’anglais.\nAfrique du Sud. Section 6(1) of the Constitution lists English among several official languages. The Constitution Eighteenth Amendment Act 3 of 2023 (assented to on 19 July 2023; Government Gazette 49041 of 27 July 2023) added South African Sign Language to section 6(1). It commenced on 26 June 2026 under Proclamation 321 of 2026, published in Government Gazette 54901. Proclamation 324 of 2026 (Government Gazette 54933, 2 July 2026) corrected the earlier proclamation’s missing signature details; it did not change the commencement date. South Africa therefore has twelve official languages, including English and South African Sign Language. L’Afrique du Sud compte douze langues officielles, dont l’anglais et la langue des signes sud-africaine.\nTo check another country: (1) find its constitution or law on an official government or law-reform website; (2) note the article or section that names the language, and the version or date of the text; (3) record the web address and the date you read it. A list from memory, a summary website, or the languages people are heard speaking in a market is not evidence of legal status.\nUseful questions: Quelle est la langue officielle de la Namibie dans l’édition de mai 2018 ? Quelles sont les langues officielles du Kenya ? Une langue officielle est reconnue par la loi ; une personne anglophone parle anglais.",
+      "body_sha256": "56498ae56ea72b3d3bb21a7f4fb69bb4ecad0c49fb59e1e5d28859c37247f3bd",
       "practice": [
         {
           "id": "Q1",
@@ -3170,6 +3730,30 @@
           "rights": "Original lesson explanations and exercises; statutory provisions are paraphrased, with no passage, table or image reproduced.",
           "reuse_status": "PERMITTED",
           "attribution": "South African Government: Constitution Eighteenth Amendment Act 3 of 2023 (English / Sesotho) page"
+        },
+        {
+          "title": "Laws of Kenya (Kenya Law), Constitution of Kenya [Rev. 2022]",
+          "locator": "Article 7(1)-(3); revised 2022 edition consulted 2026-11-11. The National Council for Law Reporting states that Laws of Kenya are revised and published with the authority of the Attorney-General. Constitution commencement is 27 August 2010 by promulgation, as shown in the Kenya Law source record.",
+          "url": "https://www.kenyalaw.org/kl/fileadmin/pdfdownloads/TheConstitutionOfKenya.pdf",
+          "rights": "Original lesson explanations and exercises; constitutional provisions paraphrased; no third-party passage, table or image reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "National Council for Law Reporting (Kenya Law): Constitution of Kenya [Rev. 2022]"
+        },
+        {
+          "title": "Proclamation 321 of 2026: Commencement of the Constitution Eighteenth Amendment Act, 2023",
+          "locator": "Government Gazette 54901, 26 June 2026; section 2 commencement date fixed with immediate effect. Cross-checked against the official South African Government notices index and published proclamation record; accessed 2026-11-11.",
+          "url": "https://source.acts.co.za/constitution-of-the-republic-of-south-africa-act-1996/pn321_proclamation_notice_321_.php",
+          "rights": "Original lesson explanation; proclamation details paraphrased; no third-party passage or image reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Republic of South Africa: Proclamation 321 of 2026, Government Gazette 54901"
+        },
+        {
+          "title": "Proclamation 324 of 2026: Commencement of the Constitution Eighteenth Amendment Act, 2023 — Erratum",
+          "locator": "Government Gazette 54933, 2 July 2026; corrects omission of place, time and date of presidential signature in Proclamation 321; commencement remains 26 June 2026. Cross-checked against South African Government notices index; accessed 2026-11-11.",
+          "url": "https://source.acts.co.za/constitution-of-the-republic-of-south-africa-act-1996/pn324_proclamation_notice_324_.php",
+          "rights": "Original lesson explanation; proclamation details paraphrased; no third-party passage or image reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Republic of South Africa: Proclamation 324 of 2026, Government Gazette 54933"
         }
       ],
       "state": {
@@ -4434,6 +5018,610 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-FRENCH-OPINION-T1",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "French",
+      "title": "Exprimer son accord et justifier son opinion",
+      "objectives": [
+        "Ask for and express an opinion.",
+        "Agree or disagree politely and give a reason.",
+        "Use parce que, car and à cause de appropriately."
+      ],
+      "body": "Newly authored equivalent / Leçon de remplacement originale.\n\nAsk « Qu’en penses-tu ? », « À ton avis ? » or « Es-tu d’accord ? » Give an opinion with « À mon avis… », « Je pense que… », « Je crois que… » or « Quant à moi… ».\n\nAgree: « Je suis d’accord. », « Tu as raison. », « C’est vrai. » Disagree respectfully: « Je ne suis pas d’accord. », « Je ne crois pas. », « Je ne pense pas que ce soit juste. » A reason makes an opinion clearer.\n\nUse parce que or car before a clause: « Je préfère marcher parce que c’est bon pour la santé. » Use à cause de before a noun phrase: « Le match est annulé à cause de la pluie. » Do not write « à cause que ».\n\nDiscussion topic from the source: « L’argent fait-il le bonheur ? » Possible position A: money can help people pay for food, housing, transport, books and school fees. Possible position B: money alone does not guarantee health, friendship, safety or happiness. A balanced response can recognise both points. These are discussion arguments, not a single answer every learner must hold.\n\nModel: « À mon avis, l’argent est utile parce qu’il permet de payer les besoins essentiels. Cependant, il ne garantit pas le bonheur. La santé, l’amitié et la famille sont aussi importantes. Je comprends donc les deux points de vue. »\n\nA short argument has four parts: state your opinion; give one reason; give an example; conclude respectfully. Avoid attacking a person or group because they disagree.",
+      "body_sha256": "7a44979fbd63e0407ca239b49b6ad72068ce4cbd6c8d2c66b5d716e6285d651e",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Write two ways to ask someone for an opinion in French.",
+          "answer": "Qu’en penses-tu ? À ton avis ? Es-tu d’accord ? Any two.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "First correct question",
+              "marks": 1
+            },
+            {
+              "criterion": "Second correct question",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Complete with parce que or à cause de: « Le match est annulé __ la pluie. » « Je préfère lire __ j’apprends de nouveaux mots. »",
+          "answer": "à cause de ; parce que.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "à cause de",
+              "marks": 1
+            },
+            {
+              "criterion": "parce que",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Give one respectful disagreement with the statement « L’argent fait toujours le bonheur. »",
+          "answer": "Je ne suis pas d’accord parce que la santé et l’amitié sont aussi importantes. Other reasoned answers accepted.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Respectful disagreement",
+              "marks": 1
+            },
+            {
+              "criterion": "A relevant reason",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Write a four-sentence opinion about whether money alone makes people happy.",
+          "answer": "Example: À mon avis, l’argent est utile. Il permet de payer les besoins essentiels. Cependant, il ne garantit pas la santé ni l’amitié. Le bonheur dépend de plusieurs choses. Other coherent answers accepted.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Clear opinion",
+              "marks": 1
+            },
+            {
+              "criterion": "Reason",
+              "marks": 1
+            },
+            {
+              "criterion": "Example or contrast",
+              "marks": 1
+            },
+            {
+              "criterion": "Coherent respectful conclusion",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original SS1 French lesson supplement: opinion, agreement, disagreement and reasoned discussion",
+          "locator": "Written to cover First Term Week 8 discussion expressions and the source prompt « L’argent fait le bonheur / ne fait pas le bonheur ».",
+          "rights": "Original teaching prose, examples and exercises authored for this project; no third-party passage, table, image or recording reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Original project-authored educational material"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-FRENCH-REVISION-T3",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "French",
+      "title": "Révision générale du troisième trimestre",
+      "objectives": [
+        "Review the ten instructional topics in the Third-Term scheme.",
+        "Prepare written reading, grammar and vocabulary skills.",
+        "Identify oral tasks that still require teacher observation."
+      ],
+      "body": "Newly authored scheme supplement / Révision de fin de trimestre.\n\nThis is a guided revision lesson for the ten instructional weeks in the Third-Term source. It is not an examination result or a claim that oral performance has already been observed.\n\nRevision checklist:\n1. Read a short dialogue aloud with clear turn-taking; identify who speaks, where the conversation happens and the main request. The original source mentions a WAEC/NECO cassette or CD, but no recording was supplied. Use the original printed dialogue for reading practice until the teacher approves or supplies a permitted recording.\n2. Compare life in the past and today. Recognise autrefois, avant, hier, aujourd’hui and maintenant; distinguish a past description from a completed event and a present fact.\n3. Express satisfaction and regret: Je suis content(e), Je suis satisfait(e), C’est dommage, C’était mieux, C’est triste.\n4. Express positive and negative feelings politely: Je suis ravi(e), Je suis triste, Cela m’inquiète, Ce n’est pas facile.\n5. Express tastes: aimer, adorer, détester, préférer; give a reason.\n6. Give an opinion and talk about the future: À mon avis, Je pense que, Je crois que, je vais + infinitif, and the simple future forms studied in class.\n7. Read and respond to a short text. Identify the main idea and answer who, what, where, when and why questions.\n8. Review nouns, gender, number, definite and indefinite articles, adjective agreement and present-tense verbs.\n9. Review direct and indirect object pronouns and the change from direct to indirect speech.\n10. Explain vocabulary using a simple definition or paraphrase. Use respectful language for disability and health.\n\nStudy method: read each model aloud, cover the answer, attempt the exercise, then check the answer key. Keep written work and oral observation separate.",
+      "body_sha256": "513ed21da90356d77df29271cbef3cc44565d6790f2992b9169fcea338563c3d",
+      "practice": [
+        {
+          "id": "R1",
+          "question": "Write one expression of satisfaction and one expression of regret.",
+          "answer": "Je suis content(e). / C’est dommage. Other correct examples accepted.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "One correct satisfaction expression",
+              "marks": 2
+            },
+            {
+              "criterion": "One correct regret expression",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "R2",
+          "question": "Change « Aujourd’hui, je vais à l’école » into a sentence about the past using hier and the passé composé.",
+          "answer": "Hier, je suis allé(e) à l’école.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Correct time reference hier",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct être auxiliary and agreement",
+              "marks": 2
+            },
+            {
+              "criterion": "Correct past participle",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "R3",
+          "question": "Replace the direct object in « Je regarde le film » with a direct object pronoun.",
+          "answer": "Je le regarde.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Correct pronoun le",
+              "marks": 2
+            },
+            {
+              "criterion": "Pronoun placed before the conjugated verb",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "R4",
+          "question": "Change « Amina dit : “Je suis contente.” » into indirect speech.",
+          "answer": "Amina dit qu’elle est contente.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "que/qu’ link",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct subject change",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct verb and adjective agreement",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "R5",
+          "question": "Write a short opinion about one change in daily life. Include an opinion phrase, a comparison and one reason.",
+          "answer": "Example: À mon avis, les téléphones facilitent la communication aujourd’hui. Autrefois, on écrivait davantage de lettres. Je préfère les messages parce qu’ils sont rapides. Other coherent answers accepted.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Opinion phrase",
+              "marks": 1
+            },
+            {
+              "criterion": "Past/present comparison",
+              "marks": 1
+            },
+            {
+              "criterion": "Relevant reason",
+              "marks": 1
+            },
+            {
+              "criterion": "Coherent French",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original SS1 French end-of-term revision and assessment materials",
+          "locator": "Project-authored revision and examination supplements aligned to the 3rd Term French scheme-of-work rows 11 and 12; not a reproduction of a WAEC or NECO examination.",
+          "rights": "Original questions, explanations, answer keys and marking guide authored for this project; no third-party exam questions or recording reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Original project-authored educational material"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-FRENCH-EXAM-T3",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "French",
+      "title": "Évaluation de fin de troisième trimestre",
+      "objectives": [
+        "Assess reading comprehension and vocabulary.",
+        "Assess grammar, pronouns, articles, adjective agreement and indirect speech.",
+        "Assess written comparison, opinion and future expression."
+      ],
+      "body": "Newly authored assessment / Évaluation de fin de troisième trimestre.\n\nSS 1 French — 40 marks — Suggested time: 60 minutes.\nThis is an original school assessment aligned to the Third-Term scheme. It is not an official WAEC or NECO paper and does not include or claim to reproduce their cassette/CD material.\n\nInstructions: Answer all 24 questions. Section A contains 20 multiple-choice questions (1 mark each). Section B contains four structured questions (5 marks each). Total: 40 marks. Use clear French where a written response is required.\n\nSection A assesses dialogue comprehension, past/present comparison, satisfaction and regret, feelings, tastes and preferences, opinions and future plans, articles and contractions, direct and indirect object pronouns, indirect speech, vocabulary and adjective agreement.\n\nSection B assesses reading comprehension, comparison of life in the past and today, an opinion/future paragraph, and grammar in context. The answer key and item-by-item marking criteria are attached to each question in the practice record.\n\nAdministration note: The reading dialogue is printed in this assessment. Oral listening and pronunciation must be observed separately by the teacher; this written paper cannot certify oral performance.",
+      "body_sha256": "b91f2a5d6006016e3a4b0c83d58eee3261168b8e4033d2977016650cd27f0701",
+      "practice": [
+        {
+          "id": "MCQ1",
+          "question": "A doctor asks « Qu’est-ce que tu as ? ». The best reply is: A. J’ai mal à la tête. B. Je préfère le thé. C. Il est directeur. D. C’est dommage.",
+          "answer": "A. J’ai mal à la tête.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ2",
+          "question": "Which word means « nowadays »? A. autrefois B. aujourd’hui C. demain D. hier",
+          "answer": "B. aujourd’hui",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ3",
+          "question": "Which expression shows satisfaction? A. C’est dommage. B. Je suis content(e). C. C’est terrible. D. Je regrette.",
+          "answer": "B. Je suis content(e).",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ4",
+          "question": "Which expression most clearly shows regret? A. C’est dommage. B. C’est super. C. C’est magnifique. D. Bravo.",
+          "answer": "A. C’est dommage.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ5",
+          "question": "Complete: Je ___ la musique. A. aime B. aimes C. aimons D. aimez",
+          "answer": "A. aime",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ6",
+          "question": "Choose the correct comparison: A. Je préfère le thé que le café. B. Je préfère le thé au café. C. Je préfère de thé café. D. Je préfère thé le café.",
+          "answer": "B. Je préfère le thé au café.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ7",
+          "question": "Which phrase introduces an opinion? A. À mon avis B. À côté de C. Il y a D. Au revoir",
+          "answer": "A. À mon avis",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ8",
+          "question": "Complete the near future: Nous ___ visiter le musée. A. allons B. sommes C. avons D. faisons",
+          "answer": "A. allons",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ9",
+          "question": "Choose the masculine singular definite article: A. la B. les C. le D. des",
+          "answer": "C. le",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ10",
+          "question": "Choose the feminine singular definite article: A. la B. le C. les D. un",
+          "answer": "A. la",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ11",
+          "question": "Choose the plural definite article: A. l’ B. les C. le D. une",
+          "answer": "B. les",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ12",
+          "question": "Before a vowel or silent h, le/la usually become: A. au B. du C. l’ D. aux",
+          "answer": "C. l’",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ13",
+          "question": "Complete: Je vais ___ marché. A. à le B. au C. aux D. de la",
+          "answer": "B. au",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ14",
+          "question": "Complete: Nous parlons ___ élèves. A. au B. à la C. aux D. du",
+          "answer": "C. aux",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ15",
+          "question": "Complete: Je viens ___ marché. A. du B. au C. aux D. de les",
+          "answer": "A. du",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ16",
+          "question": "Replace « le livre »: « Je lis le livre. » A. Je lui lis. B. Je le lis. C. Je les lis. D. Je la lis.",
+          "answer": "B. Je le lis.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ17",
+          "question": "Which indirect object pronoun can mean « to him/to her »? A. lui B. les C. la D. le",
+          "answer": "A. lui",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ18",
+          "question": "Choose the correct indirect speech: Paul dit : « Je suis prêt. » A. Paul dit que je suis prêt. B. Paul dit qu’il est prêt. C. Paul dit il prêt. D. Paul dit de prêt.",
+          "answer": "B. Paul dit qu’il est prêt.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ19",
+          "question": "A person whose spouse has died is called: A. un étudiant B. un veuf / une veuve C. un gourmand D. un directeur",
+          "answer": "B. un veuf / une veuve",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MCQ20",
+          "question": "Choose the correct adjective agreement: A. une voiture blanc B. une voiture blanche C. un voiture blanche D. des voiture blanche",
+          "answer": "B. une voiture blanche",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct option",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "S1",
+          "question": "Read: « Bonjour, docteur. J’ai mal au ventre depuis hier. — Qu’avez-vous mangé ? — J’ai mangé du riz et du poulet. — Reposez-vous et buvez de l’eau. » Answer: (a) Who is speaking to the doctor? (b) What is the problem? (c) Since when? (d) What did the patient eat? (e) Give one piece of advice from the doctor.",
+          "answer": "(a) A patient. (b) The patient has a stomach ache. (c) Since yesterday. (d) Rice and chicken. (e) Rest / drink water.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Patient identified",
+              "marks": 1
+            },
+            {
+              "criterion": "Stomach ache identified",
+              "marks": 1
+            },
+            {
+              "criterion": "Depuis hier",
+              "marks": 1
+            },
+            {
+              "criterion": "Rice and chicken",
+              "marks": 1
+            },
+            {
+              "criterion": "One correct piece of advice",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "question": "Write five sentences comparing life autrefois and aujourd’hui. Use at least one imperfect-tense form and one present-tense form.",
+          "answer": "Example: Autrefois, les familles écrivaient des lettres. Aujourd’hui, elles envoient des messages. Les transports étaient plus lents. Maintenant, certains trajets sont plus rapides. La communication est plus facile dans beaucoup de situations. Other accurate comparisons accepted.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Five relevant sentences",
+              "marks": 2
+            },
+            {
+              "criterion": "Correct imperfect form",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct present form",
+              "marks": 1
+            },
+            {
+              "criterion": "Clear comparison",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "S3",
+          "question": "Write a short paragraph of five sentences: express an opinion about one modern change and describe one future plan. Use an opinion phrase and either je vais + infinitif or a correct simple-future form.",
+          "answer": "Example: À mon avis, Internet facilite les études. Je peux chercher des informations rapidement. Cependant, il faut vérifier les sources. L’année prochaine, je vais apprendre davantage de français. Je travaillerai régulièrement. Other coherent answers accepted.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Opinion phrase and relevant view",
+              "marks": 1
+            },
+            {
+              "criterion": "Reason or explanation",
+              "marks": 1
+            },
+            {
+              "criterion": "Future plan with correct structure",
+              "marks": 2
+            },
+            {
+              "criterion": "Coherent French",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "S4",
+          "question": "(a) Replace « les exercices » in « Je termine les exercices » with a direct object pronoun. (b) Replace « à Marie » in « Je parle à Marie » with an indirect object pronoun. (c) Change « Paul dit : “Je viendrai demain.” » into indirect speech. (d) Give one sentence with a correctly agreed adjective.",
+          "answer": "(a) Je les termine. (b) Je lui parle. (c) Paul dit qu’il viendra le lendemain. (d) Example: une maison blanche.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Je les termine",
+              "marks": 1
+            },
+            {
+              "criterion": "Je lui parle",
+              "marks": 1
+            },
+            {
+              "criterion": "Indirect speech with qu’il viendra le lendemain",
+              "marks": 2
+            },
+            {
+              "criterion": "Correct adjective agreement",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original SS1 French end-of-term revision and assessment materials",
+          "locator": "Project-authored revision and examination supplements aligned to the 3rd Term French scheme-of-work rows 11 and 12; not a reproduction of a WAEC or NECO examination.",
+          "rights": "Original questions, explanations, answer keys and marking guide authored for this project; no third-party exam questions or recording reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Original project-authored educational material"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -5324,7 +6512,7 @@
       "source_id": "SS1-SRC-945dfb24eaf6",
       "objective": "Les professions/métiers",
       "objective_locator": "SS1-SRC-945dfb24eaf6: 6; exact body hash 91a76853d45df767cf3f37ace1a86e11a96ec8f3e451dea204c839a676f99e5a",
-      "status": "IMPLEMENTED_EQUIVALENT",
+      "status": "PARTIAL",
       "lesson_ids": [
         "SUP-SS1-FRENCH-PROFESSIONS-T1"
       ],
@@ -5332,6 +6520,10 @@
         {
           "locator": "SS1-SRC-945dfb24eaf6:BODY:91a76853d45df767cf3f37ace1a86e11a96ec8f3e451dea204c839a676f99e5a",
           "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+        },
+        {
+          "locator": "Original T1 DOCX rendered pages 10-12; table rows 12 and 26; source direct-body children 287-289",
+          "explanation": "The replacement now teaches 44 clear source entries and separates non-profession roles, but source rows 12 'computateur' and 26 'couteur' remain ambiguous after inspection of the full table and rendered pages. They are not silently mapped to guessed occupations. Owner decision remains required."
         }
       ]
     },
@@ -5532,7 +6724,7 @@
       "source_id": "SS1-SRC-8a2ec1fe30e3",
       "objective": "TOPIC: LES PRACTIQUES DE LA LECTURE LE DIALOQUE",
       "objective_locator": "SS1-SRC-8a2ec1fe30e3: ONE; exact body hash f5aa6cfb6bfd21753efee0392f24e1a5c86c658b61a88214e9907c621750bd7e",
-      "status": "IMPLEMENTED_EQUIVALENT",
+      "status": "PARTIAL",
       "lesson_ids": [
         "SUP-SS1-FRENCH-DIALOGUE-T3"
       ],
@@ -5540,6 +6732,10 @@
         {
           "locator": "SS1-SRC-8a2ec1fe30e3:BODY:f5aa6cfb6bfd21753efee0392f24e1a5c86c658b61a88214e9907c621750bd7e",
           "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+        },
+        {
+          "locator": "Original T3 DOCX direct-body children 22-23; source scheme page 1; SUP-SS1-FRENCH-DIALOGUE-T3",
+          "explanation": "An original dialogue, in-app device-generated French speech playback, transcript and comprehension activity are supplied. The app does not contain an official WAEC/NECO recording or a downloadable audio file. The requested official recording remains unidentified and requires owner approval of the original equivalent or a rights-cleared source."
         }
       ]
     },
@@ -5828,14 +7024,70 @@
           "explanation": "The source scheme's Week 7 imperfect is explicitly mapped to body Week 8; body week numbering has not been changed. Exact archive page/object review remains dependent on the source attachment and is not claimed as newly performed in this checkpoint."
         }
       ]
+    },
+    {
+      "id": "FRENCH-T1-W08-OPINION",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "objective": "Express agreement/disagreement and justify a simple opinion; discuss whether money makes happiness.",
+      "objective_locator": "SS1-SRC-945dfb24eaf6: parsed Week 8 row; source direct-body children 379-405, exact body hash 306691b7485297e6329a9656567bea12b068247d73ef2c0de3af3ce45b1c7c50",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FRENCH-OPINION-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-FRENCH-OPINION-T1; original lesson body hash 4834006db06ce3477a1aab210817272d7ffe88e7e200f64f0c9250413968019d",
+          "explanation": "Original lesson supplies opinion questions, agreement/disagreement expressions, parce que/car/à cause de, a balanced model argument and marked practice. Daily-routine content remains in SUP-SS1-FRENCH-ROUTINE-T1."
+        }
+      ]
+    },
+    {
+      "id": "FRENCH-T3-REVISION-MARKER",
+      "source_id": "SS1-SRC-8a2ec1fe30e3",
+      "objective": "Scheme row 11: La Revision",
+      "objective_locator": "Original T3 DOCX direct-body child 16, page 1; source SHA-256 7841df887cbd175e69ecbbf28896a324443467c82c35a4754fe169f50f09537d",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-8a2ec1fe30e3-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "Source marker rule SS1-SRC-8a2ec1fe30e3-R002",
+          "explanation": "The scheme contains a revision marker, not a source-authored lesson."
+        },
+        {
+          "locator": "SUP-SS1-FRENCH-REVISION-T3; body SHA-256 e7d6fd5a55d0b137923b8512be8acda1618db8e334ad3b7ccc184c8f22e3bbe5",
+          "explanation": "Original project-authored revision checklist and 20-mark guided practice cover the ten instructional topics. It does not claim oral performance has been observed."
+        }
+      ]
+    },
+    {
+      "id": "FRENCH-T3-EXAMINATION-MARKER",
+      "source_id": "SS1-SRC-8a2ec1fe30e3",
+      "objective": "Scheme row 12: L’examen",
+      "objective_locator": "Original T3 DOCX direct-body child 17, page 1; source SHA-256 7841df887cbd175e69ecbbf28896a324443467c82c35a4754fe169f50f09537d",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-8a2ec1fe30e3-R003"
+      ],
+      "evidence": [
+        {
+          "locator": "Source marker rule SS1-SRC-8a2ec1fe30e3-R003",
+          "explanation": "The source contains an examination marker but no original paper or marking scheme."
+        },
+        {
+          "locator": "SUP-SS1-FRENCH-EXAM-T3; body SHA-256 61a0d43f55b8386ef04990885c2a71f20e24b7d67b598e5ddf9abcbc9e8546f6",
+          "explanation": "An original 40-mark end-of-term assessment with 20 MCQs, four structured questions, answer key and item-level marking is supplied. It is not represented as an official WAEC/NECO paper."
+        }
+      ]
     }
   ],
   "open_items": [
     {
       "id": "FRENCH-UNCLEAR-OCCUPATIONS",
       "kind": "FACT",
-      "detail": "First-Term profession table contains computateur and couteur; a specific intended occupation cannot safely be inferred from these spellings. Corrected professional vocabulary is implemented, but these two source intentions remain unresolved.",
-      "required_action": "Supply the intended occupation names or a reliable contextual source.",
+      "detail": "The original profession table was inspected in full (rendered source pages 10-12 and the underlying DOCX table). Row 12 is printed as 'Un computateur / Une computateur'; row 26 as 'Un couteur / Une couteure'. No heading, neighbouring row or example identifies the intended occupations. The replacement teaches 44 clear entries and adds informaticien/informaticienne as a clearly labelled modern computing profession, but does not claim that it is the source meaning. 'Couteur' is not silently changed to couturier.",
+      "required_action": "Owner/teacher must provide the intended occupation for 'couteur' and confirm whether 'computateur' should be replaced by informaticien/informaticienne or omitted as an obsolete/unclear source term. Until then FRENCH-BODY-006 stays PARTIAL.",
       "affected_ids": [
         "SS1-SRC-945dfb24eaf6",
         "SUP-SS1-FRENCH-PROFESSIONS-T1"
@@ -5845,8 +7097,8 @@
     {
       "id": "FRENCH-EXAM-AUDIO",
       "kind": "OWNER_ACTION",
-      "detail": "Third-Term week 1 names WAEC/NECO cassette/CD practice without identifying or supplying a recording. The original dialogue teaches equivalent reading/listening practice but is not that exam recording.",
-      "required_action": "If practice with that exact recording is required, supply its identity and permitted audio; otherwise approve the explicitly original equivalent.",
+      "detail": "The source Week 1 says 'Reference a une cassette' and 'Reference a une C.D selon WAEC ET NECO' but names no exam year, session, paper, track, publisher, title or rights holder. The student app now routes the Third-Term dialogue lesson into an in-app spoken listening activity using device French text-to-speech. The spoken dialogue is an original curriculum equivalent, not a WAEC/NECO recording or a stored MP3/WAV file.",
+      "required_action": "The app now provides spoken playback for the original dialogue. Owner/teacher must still approve this as the classroom equivalent and explicitly accept omission of the unidentified official recording, or supply the exact exam-board recording identity and a permitted audio file/licence (exam board, year/session, paper/track, language and rights). Do not label device-generated speech as official WAEC/NECO audio.",
       "affected_ids": [
         "SS1-SRC-8a2ec1fe30e3",
         "SUP-SS1-FRENCH-DIALOGUE-T3"
@@ -5856,8 +7108,8 @@
     {
       "id": "FRENCH-AUTHORING-FINISH",
       "kind": "CONTENT",
-      "detail": "This checkpoint does not yet complete detailed source-objective disposition, all visual assets or deferred test files.",
-      "required_action": "Finish objective mapping, inspect the remaining visual pages, write the deferred tests and replace this authoring blocker with precise dispositions.",
+      "detail": "The source-objective matrix now maps all 28 parsed source rows and the revision/examination scheme markers; all inspected T1/T2 visual objects have explicit text-equivalent dispositions; the original sources compile against all 40 authored supplements; the French package suite passes 10/10 tests. Remaining authoring closure is no longer a generic visual/test task: it is the still-open whole-block objective/exercise reconciliation for the 28 delivery corrections, with the specific source/owner gaps listed separately.",
+      "required_action": "Complete FR-FACT-REPLACEMENT-SCOPE by auditing each of the 28 corrections against the exact parsed source body, all objectives/exercises, the replacement lesson(s), and any required supplemental lesson. Record a per-correction verdict and keep only evidenced residual gaps as PARTIAL/open items. Then close the umbrella; do not approve content or claim runtime delivery as part of this authoring step.",
       "affected_ids": [
         "SS1-SRC-945dfb24eaf6",
         "SS1-SRC-b6245ffb69e5",
@@ -5880,13 +7132,13 @@
     {
       "id": "FRENCH-T1-W01-NEIGHBOURS-LANGUAGE-STATUS",
       "kind": "FACT",
-      "detail": "SUP-SS1-FRENCH-NEIGHBOURS-T1 states official-language status for Nigeria's neighbours. Cameroon rests on its constitution text (Article 1(3)); Niger rests on two secondary 2025 reports of the Renaissance Charter; Benin and Chad rest on a secondary 2024 article. Niger's status has changed recently and may change again.",
-      "required_action": "Check Benin, Chad and Niger against their current constitutional or official texts before approval, and recheck all four before any current-affairs question is set. Do not invent an approval or verification reference.",
+      "detail": "The lesson explicitly teaches the difference between French-speaking populations and legal official-language status; it makes no current legal-status claim about Benin, Chad, Niger or Cameroon. Dated constitutional sources have been identified for Benin (2019 revised Constitution, Article 1) and Chad (2023 Constitution, Article 9). Niger's 2025 Charter of Refoundation is linked by the official Presidency, but its Article 12 wording must be checked against the original Gazette/PDF before any status claim is taught. This remaining check is not a blocker for the current geography/communication lesson.",
+      "required_action": "If a future lesson or current-affairs assessment states Niger's current official/working-language status, inspect Article 12 of the official 2025 Charter of Refoundation and cite the exact version/date. Do not add a status claim until then.",
       "affected_ids": [
         "SUP-SS1-FRENCH-NEIGHBOURS-T1",
         "FRENCH-T1-W01-OBJ-4"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "FRENCH-T1-W02-HEADINGS-INTENT",
@@ -5911,17 +7163,6 @@
       "blocks_delivery": true
     },
     {
-      "id": "FRENCH-T1-W02-ANGLOPHONE-SOURCE-CHECKS",
-      "kind": "FACT",
-      "detail": "Source limits in SUP-SS1-FRENCH-ANGLOPHONE-T1: (1) Namibia: RESOLVED for the dated educational example only. The lesson now cites the Konrad-Adenauer-Stiftung annotated edition (second edition, 2018, dated Windhoek May 2018; reprint 2021) hosted by the Electoral Commission of Namibia, Article 3(1). It is not a government-published consolidation; amendments after 2014 were not exhaustively checked and no claim is made about current law; the Second Amendment Act 7 of 2010 was only partly read; (2) South Africa: the government's Act page says the Eighteenth Amendment Act's commencement is to be proclaimed, while the gov.za Constitution page shows the pre-2023 text and a March 2025 gov.za report treats South African Sign Language as listed; no commencement date was established, and the lesson states none; (3) Kenya's commencement date (27 August 2010) came from a search extract of Kenya Law, and amendments after 2010 were not checked. English is named in every text consulted, so the lesson's claims do not depend on these points, but the dating for South Africa and Kenya is incomplete (both OPEN).",
-      "required_action": "Namibia is closed for the dated example only. Still OPEN: South Africa and Kenya — check a dated, amended official copy for each (South African proclamation or Gazette fixing commencement; a dated Kenya Law consolidation) and record version dates. Do not widen the country selection without dated official texts.",
-      "affected_ids": [
-        "SUP-SS1-FRENCH-ANGLOPHONE-T1",
-        "FRENCH-T1-W02-OBJ-2"
-      ],
-      "blocks_delivery": true
-    },
-    {
       "id": "FRENCH-T1-W03-ETAT-READING",
       "kind": "OWNER_ACTION",
       "detail": "The Week 3 prompt Votre etat (child 141) is not explained in the source and has two readings: the state of origin within the Nigerian federation, or l’état civil, marital status. The new supplement teaches both formulas and its practice accepts either answer, so the gap itself no longer blocks delivery, but the course must state which reading it intends before the objective can be certified. A related typographic question is whether the capital in État for the political entity is taught as a rule or only as usual usage.",
@@ -5929,17 +7170,6 @@
       "affected_ids": [
         "FRENCH-T1-W03-OBJ-2",
         "SUP-SS1-FRENCH-SELF-ESSAY-T1"
-      ],
-      "blocks_delivery": false
-    },
-    {
-      "id": "FRENCH-T1-W05-PUNCTUATION-DRAWING-DISPOSITION",
-      "kind": "VISUAL",
-      "detail": "The source notes identify a punctuation drawing at document.xml paragraph 278. The accent drawings on page 9 were inspected, but this punctuation drawing has no recorded readable visual disposition in the current notes.",
-      "required_action": "Inspect the original rendered paragraph/page at readable resolution when the source drawing is accessible; record its exact punctuation mark and whether the Unicode replacement covers it. Do not infer the drawing's content from the extracted text.",
-      "affected_ids": [
-        "SS1-SRC-945dfb24eaf6:BODY:0804618bce823ed65d2b4c6420c0faa465e4d031e1885e512f6e0469a7f80157",
-        "FR-COV-T1-W05-PUNCTUATION"
       ],
       "blocks_delivery": false
     }

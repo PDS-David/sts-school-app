@@ -17,6 +17,7 @@ import ChatThreadScreen from '../screens/chats/ChatThreadScreen';
 import MaterialsScreen from '../screens/MaterialsScreen';
 import SubjectTopicsScreen from '../screens/SubjectTopicsScreen';
 import TopicDetailScreen from '../screens/TopicDetailScreen';
+import FrenchListeningScreen from '../screens/FrenchListeningScreen';
 import TermPinRedeemScreen from '../screens/TermPinRedeemScreen';
 import StudyPlanScreen from '../screens/student/StudyPlanScreen';
 import AssessmentsScreen from '../screens/AssessmentsScreen';
@@ -52,6 +53,7 @@ function LearningStackNavigator() {
     <LearningStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <LearningStack.Screen name="LearningHome" component={StudentLearningScreen} />
       <LearningStack.Screen name="SubjectTopics" component={SubjectTopicsScreen} options={({ route }: any) => ({ headerShown: true, title: route.params?.subjectName ?? 'Topics', ...stackScreenOptions })} />
+      <LearningStack.Screen name="FrenchListening" component={FrenchListeningScreen} options={{ headerShown: true, title: "French Listening", ...stackScreenOptions }} />
       <LearningStack.Screen name="TopicDetail" component={TopicDetailScreen} options={({ route }: any) => ({ headerShown: true, title: route.params?.topic?.title ?? 'Topic', ...stackScreenOptions })} />
       <LearningStack.Screen name="TermPinRedeem" component={TermPinRedeemScreen} options={{ headerShown: true, title: 'Enter Term PIN', ...stackScreenOptions }} />
       <LearningStack.Screen name="StudyPlan" component={StudyPlanScreen} options={{ headerShown: true, title: 'My Study Timetable', ...stackScreenOptions }} />

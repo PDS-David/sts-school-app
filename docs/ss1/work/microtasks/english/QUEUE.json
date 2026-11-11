@@ -3,8 +3,8 @@
   "subject": "English Language",
   "slug": "english",
   "generated_from": {
-    "master_sha": "d60f538df50c4c4f18b4fc330be7a99a06b0afbe",
-    "package_blob_sha": "e97193e5da190210d830decac30ee2d9cf1517ab",
+    "master_sha": "4b3cef513e05f54b403e7e0bed0dc90a800ad49e",
+    "package_blob_sha": "b589fe6aa68cbc20177078cbe82b1f0b78093bed",
     "package": "backend/src/db/ss1/subjects/english.json",
     "task": "SS1-02 English (PR #70 content, merged)"
   },
@@ -168,7 +168,8 @@
     "2026-11-10 subject-scoped loader test follow-up: the first run after adding the focused-loader assertion passed the original 9 English tests but the new tenth test failed because its import was not inserted (the existing compiler import differed from the scripted match). Added the explicit loadPackages import; rerun pending. This was a test wiring issue, not a loader/compiler failure.",
     "2026-11-10 third parser diagnosis: English Week 8 marker anchor 'WEEK 8: ANTONYMS' appears once as a standalone scheme row and again as the prefix of a longer teaching heading. The old substring matcher treated both as marker candidates. Updated applyRules and compilePackages to match classify_marker anchors as exact normalized whole lines (preserving the actual source text), updated the English marker evidence, and added a regression test that distinguishes the standalone scheme row from the longer lesson heading. Updated the real-plan checker to use the same exact-line rule. Temporary diagnostic logging has been removed; rerun pending.",
     "2026-11-10 whole-line marker regression run: the new exact-line marker test passed, as did 10 other tests; the existing generic rule-guard test failed only because it expected the old 'anchor missing or ambiguous' wording while marker anchors now report 'scheme marker line missing or ambiguous'. Broadened the assertion to the stable 'missing or ambiguous' condition; rerun pending. No source content or coverage state changed in this correction.",
-    "2026-11-10 marker-mode refinement: the real parser exposed another single-line marker prefix collision at 'WEEK 10: GENERAL REVISION CLASS [GRC]'. Rather than special-case individual IDs, the source-rule schema now supports explicit SUBSTRING/WHOLE_LINE matching modes. All 23 one-line English scheme markers are marked WHOLE_LINE; the 9 multi-line scheme markers retain SUBSTRING matching. The compiler, real-plan audit and tests use the declared mode. The English Week 8 regression remains covered. Awaiting a fresh CI run."
+    "2026-11-10 marker-mode refinement: the real parser exposed another single-line marker prefix collision at 'WEEK 10: GENERAL REVISION CLASS [GRC]'. Rather than special-case individual IDs, the source-rule schema now supports explicit SUBSTRING/WHOLE_LINE matching modes. All 23 one-line English scheme markers are marked WHOLE_LINE; the 9 multi-line scheme markers retain SUBSTRING matching. The compiler, real-plan audit and tests use the declared mode. The English Week 8 regression remains covered. Awaiting a fresh CI run.",
+    "2026-11-11 OWNER APPROVAL: owner explicitly stated “All lessons approved”. All 149 current English lessons are APPROVED with unique references in OWNER_APPROVAL_20261111.md; the only blocking package item ENGLISH-CONTENT-APPROVAL was removed. Package status is IMPLEMENTED. All 149 verification states remain DEFERRED. The English verification stage is still required before release."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -3766,7 +3767,7 @@
       "kind": "FACTUAL_DEPENDENCY",
       "source_id": null,
       "term": null,
-      "week_or_locator": "package_status PENDING; 16 lessons",
+      "week_or_locator": "149 authored English lessons; owner approval evidence in OWNER_APPROVAL_20261111.md",
       "objective": "Teacher/owner content approval of the authored lessons.",
       "required_files": [
         "backend/src/db/ss1/subjects/english.json",
@@ -3779,9 +3780,9 @@
       "depends_on": [
         "ENG-FACT-REPLACEMENT-SCOPE"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "BLOCKED — owner approval outstanding. Live package now contains 148 lessons; all 148 currently have content_approval=PENDING and approval_reference=null. The complete lesson ID list is in package open_item ENGLISH-CONTENT-APPROVAL. Teacher/owner must review each lesson individually and provide an auditable approval reference or specific revision request. No agent-generated approval.",
-      "completion_condition": "A real approval reference is supplied by the owner for each lesson; it must not be written by an agent.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-11: repository owner explicitly attested “All lessons approved”. All 149 current lesson records now have content_approval=APPROVED and unique OWNER-ATTESTATION-2026-11-11:<lesson-id> references. Evidence: docs/ss1/work/microtasks/english/OWNER_APPROVAL_20261111.md. The blocking ENGLISH-CONTENT-APPROVAL package item is closed. Verification remains DEFERRED for all lessons; no test, importer, DB, runtime, device or deployment pass is implied.",
+      "completion_condition": "Met 2026-11-11: owner approval is recorded against every current lesson ID with a unique, retrievable reference. Keep verification separate.",
       "required_attachments": []
     },
     {

@@ -74,7 +74,10 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
               style={[styles.row, locked && styles.rowLocked]}
               activeOpacity={locked ? 1 : 0.8}
               disabled={locked}
-              onPress={() => navigation.navigate('TopicDetail', { topic: item })}
+              onPress={() => navigation.navigate('TopicDetail', {
+                topic: item,
+                openListening: String(subjectName).toLowerCase().includes('french') && /dialo(?:gue|que)/i.test(String(item.title ?? '')),
+              })}
             >
               <View style={[styles.rowIcon, locked && { backgroundColor: Colors.textSub + '18' }]}>
                 <Ionicons
