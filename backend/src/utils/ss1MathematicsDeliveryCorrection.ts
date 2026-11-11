@@ -12,6 +12,34 @@ const SUBJECT_NAME = 'Mathematics';
 const hash = (value: string) => createHash('sha256').update(value, 'utf8').digest('hex');
 const norm = (value: unknown) => String(value ?? '').replace(/\s+/g, ' ').trim().toLocaleLowerCase('en');
 
+const SOURCE_TITLES: Record<string, string> = {
+  'CORR-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS': 'REVISION AND BASIC OPERATIONS OF INTEGER',
+  'CORR-MATHEMATICS-T1-W02-NUMBER-BASES': 'NUMBER BASES /BASE NUMBER.',
+  'CORR-MATHEMATICS-T1-W03-BASE-OPERATIONS': 'RULES OF BASE NUMBER',
+  'CORR-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC': 'MODULAR ARITHMETIC',
+  'CORR-MATHEMATICS-T1-W05-STANDARD-FORM': 'STANDARD FORM AND APPROXIMATION',
+  'CORR-MATHEMATICS-T1-W06-INDICES': 'INDICES',
+  'CORR-MATHEMATICS-T1-W08-LOGARITHMS': 'LOGARITHMS OF WHOLE NUMBERS',
+  'CORR-MATHEMATICS-T1-W09-LOG-POWERS': 'SQUARES OR POWERS OF NUMBERS IN LOGARITHMS',
+  'CORR-MATHEMATICS-T1-W10-EQUATIONS-VARIATION': 'SIMPLE EQUATION AND VARIATION',
+  'CORR-MATHEMATICS-T2-2-00': 'Quadratic equation by (a) Factorization (b) Completing the square method',
+  'CORR-MATHEMATICS-T2-2-01': 'General form of quadratic equation leading to Formular method',
+  'CORR-MATHEMATICS-T2-2-02': 'Solution of quadratic equation by graphical method.',
+  'CORR-MATHEMATICS-T2-W04-SETS': 'IDEA OF SETS',
+  'CORR-MATHEMATICS-T2-2-04': 'SETS',
+  'CORR-MATHEMATICS-T2-2-06': 'TRIGONOMETRIC RATIOS',
+  'CORR-MATHEMATICS-T2-2-07': 'Application of sine, cosine and tangent, simple problems with respect to right angle triangles.',
+  'CORR-MATHEMATICS-T2-2-08': 'Introduction of circle and its properties',
+  'CORR-MATHEMATICS-T2-2-09': 'LOGIC',
+  'CORR-MATHEMATICS-T3-3-00': 'Mensuration: The concept of B – D a shape cube, cuboids, cylinder, triangular prism, cone, rectangular based pyramid, total surface area of cone, cylinder and their volumes.',
+  'CORR-MATHEMATICS-T3-3-01': '(a) Volumes of frustums of cone, rectangular based pyramid and other pyramids',
+  'CORR-MATHEMATICS-T3-3-04': 'Deductive proof',
+  'CORR-MATHEMATICS-T3-3-05': 'STATISTICS',
+  'CORR-MATHEMATICS-T3-3-07': 'Collection, Tabulation and Presentation of Grouped Data',
+  'CORR-MATHEMATICS-T3-W09-GROUPED-DATA': 'Calculation of Range, Median and Mode of Grouped data',
+  'CORR-MATHEMATICS-T3-3-09': 'Statistical Graphs',
+  'CORR-MATHEMATICS-T3-3-10': 'Mean Deviation, Variance and standard Deviation of Grouped Data use in solving practical problems related to real life situations',
+};
 export interface Ss1MathematicsTopic {
   id?: unknown; school_code?: unknown; class_name?: unknown; subject_name?: unknown;
   term_label?: unknown; title?: unknown; source_file?: unknown; source_reference?: unknown;
@@ -86,7 +114,8 @@ export function createSs1MathematicsDeliveryResolver(input: SubjectPackage) {
 
     for (const correction of corrections) {
       const source = sources.get(correction.source_id)!;
-      if (topic.term_label !== source.term || sourceFile !== path.basename(source.archive_member)) continue;
+      if (topic.term_label !== source.term || sourceFile !== path.basename(source.archive_member) ||
+          norm(topic.title) !== norm(SOURCE_TITLES[correction.id])) continue;
       const replacement = built.get(correction.id)!;
       const currentHash = hash(typeof topic.source_reference === 'string' ? topic.source_reference : '');
       if (currentHash !== correction.body_sha256) {
