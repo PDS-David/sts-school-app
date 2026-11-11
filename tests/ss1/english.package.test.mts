@@ -70,24 +70,18 @@ test('All 24 correction records preserve exact source/body identity and bind a s
   }
 });
 
-test('The original 149 lessons retain owner approval; three new gap-filling lessons await approval', () => {
+test('All 152 English lessons carry the repository owner attestation; verification remains separate and deferred', () => {
   const p = packageSchema.parse(raw);
   const approvalRegister = readFileSync(
     new URL('../../docs/ss1/work/microtasks/english/OWNER_APPROVAL_20261111.md', import.meta.url),
     'utf8',
   );
-  const newLessonIds = new Set([
-    'SUP-SS1-ENGLISH-SEXUALITY-VOCAB-T2-W06',
-    'SUP-SS1-ENGLISH-CONTEXTUAL-SEX-LEAVE-T3-W01',
-    'SUP-SS1-ENGLISH-FAMILY-ASSESSMENT-T3-W03',
-  ]);
   const approved = p.lessons.filter(lesson => lesson.state.content_approval === 'APPROVED');
   const pending = p.lessons.filter(lesson => lesson.state.content_approval === 'PENDING');
   assert.equal(p.package_status, 'IMPLEMENTED');
   assert.equal(p.lessons.length, 152);
-  assert.equal(approved.length, 149);
-  assert.equal(pending.length, 3);
-  assert.deepEqual(new Set(pending.map(lesson => lesson.id)), newLessonIds);
+  assert.equal(approved.length, 152);
+  assert.equal(pending.length, 0);
   assert.equal(p.open_items.some(item => item.id === 'ENGLISH-CONTENT-APPROVAL'), false);
   assert.equal(p.open_items.some(item => item.blocks_delivery), false);
   for (const lesson of approved) {
@@ -95,12 +89,6 @@ test('The original 149 lessons retain owner approval; three new gap-filling less
     assert.equal(lesson.state.approval_reference, reference, lesson.id);
     assert(approvalRegister.includes('`' + lesson.id + '`'));
     assert(approvalRegister.includes('`' + reference + '`'));
-    assert.equal(lesson.state.implementation, 'IMPLEMENTED', lesson.id);
-    assert.equal(lesson.state.verification, 'DEFERRED', lesson.id);
-    assert.equal(lesson.state.verification_reference, null, lesson.id);
-  }
-  for (const lesson of pending) {
-    assert.equal(lesson.state.approval_reference, null, lesson.id);
     assert.equal(lesson.state.implementation, 'IMPLEMENTED', lesson.id);
     assert.equal(lesson.state.verification, 'DEFERRED', lesson.id);
     assert.equal(lesson.state.verification_reference, null, lesson.id);

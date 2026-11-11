@@ -4,12 +4,12 @@ Date: 2026-11-11
 Repository: `PDS-David/sts-school-app`  
 Scope: English Language, SS1, all three instructional terms.
 
-> **Current status: 152 lessons implemented; 149 owner-approved; 3 new supplements awaiting owner approval; technical verification and release remain pending.** The 149 previously approved lessons and their approval references are preserved. Three new lessons were added specifically to close the eight previously PARTIAL coverage rows; they are deliberately `PENDING` approval rather than receiving invented approval references.
+> **Current status: 152 lessons implemented and owner-approved; technical verification and release remain pending.** The original 149 approval references are preserved, and the three gap-filling lessons now have separate references under the same blanket owner attestation.
 
 ## Current authoritative state
 
 - Package: `backend/src/db/ss1/subjects/english.json`; schema: `ss1-subject-v1`; package status: `IMPLEMENTED`.
-- Lessons: 152 total; 149 `APPROVED`, 3 `PENDING`; all 152 have implementation `IMPLEMENTED` and verification `DEFERRED`.
+- Lessons: 152 total; 152 `APPROVED`, 0 `PENDING`; all 152 have implementation `IMPLEMENTED` and verification `DEFERRED`.
 - Coverage: 668 entries; 624 `IMPLEMENTED_EQUIVALENT`, 12 `SUPPORTED`, 32 `MARKER`, 0 `PARTIAL`, 0 `UNRESOLVED`.
 - The eight former PARTIAL rows are now complete: `ENGLISH-BODY-048`, `ENGLISH-T2-W01-AS01`, `ENGLISH-BODY-054`, `ENGLISH-T2-W06-TP01`, `ENGLISH-BODY-059`, `ENGLISH-T3-W01-CM05`, `ENGLISH-BODY-068`, and `ENGLISH-T3-W03-FR03`.
 - Remaining open items: 61, all non-blocking. The five issue records directly attached to the completed gaps, plus the redundant affix-fragment follow-up, have been reconciled/closed.
@@ -22,7 +22,7 @@ Scope: English Language, SS1, all three instructional terms.
 2. `SUP-SS1-ENGLISH-CONTEXTUAL-SEX-LEAVE-T3-W01` — the separate dictionary sense of `sex`, the form/category sense, and the contextual meanings of `leave`.
 3. `SUP-SS1-ENGLISH-FAMILY-ASSESSMENT-T3-W03` — a keyed five-item equivalent gap-fill and explicit five-option nuclear-family question.
 
-All three are original teaching materials with project-authored provenance and valid body hashes. They are `IMPLEMENTED`, but remain `PENDING` content approval. In particular:
+All three are original teaching materials with project-authored provenance and valid body hashes. They are `IMPLEMENTED` and now carry the repository owner's blanket approval attestation dated 2026-11-11. In particular:
 - `mat` and `ploy` are not silently changed to guessed prefixes; learners are taught why those strings are not prefixes as written.
 - The missing textbook passage and original assessment options/answer key are not claimed to have been recovered or reproduced.
 - `suitor`/ `fiancé` do not encode whether a bride price has been paid; the new assessment states that limitation rather than inventing a local customary term.
@@ -35,7 +35,7 @@ The Week 10 scheme-only rule `SS1-SRC-d8bd8f85fd73-R012` deliberately uses the p
 
 ## Owner approval evidence
 
-See [OWNER_APPROVAL_20261111.md](OWNER_APPROVAL_20261111.md). It records the original owner instruction and the 149 lesson IDs/references that were approved. It does not claim approval for the three new supplements.
+See [OWNER_APPROVAL_20261111.md](OWNER_APPROVAL_20261111.md). It records the owner's blanket instruction and individual approval references for all 152 lessons, including the three gap-filling supplements.
 
 ## Verification and release
 
@@ -50,12 +50,12 @@ Fresh workflow run [42990588253](https://github.com/PDS-David/sts-school-app/act
 - All three registered English source members: **hash-verified and privately staged**.
 - The actual SS1 parser/compiler and `check_english_plan.py`: **PASS**; 89 original English source rows and 152 supplements were accounted for; all 32 scheme-only markers were preserved.
 
-The plan-only report correctly retains four English-specific approval blockers: the three new supplements awaiting owner approval and the existing pronunciation asset awaiting its separate approval. These are expected governance gates, not parser failures. The overall plan remains not ready because other SS1 subject packages are intentionally omitted and the English approval/asset gates remain open. No database write was attempted.
+The plan-only report previously retained four English-specific approval blockers: the three new supplements and the pronunciation asset. The three lesson approval blockers are now closed by the owner's blanket approval attestation; the pronunciation asset remains separately pending and is not covered by lesson approval. The overall plan remains not ready because other SS1 subject packages are intentionally omitted and the English pronunciation-asset approval/verification gate remains open. No database write was attempted.
 
 A separate repository-wide integrity workflow currently has an unrelated SVG asset expectation mismatch (five Agricultural Science SVGs are absent from the current tracked tree); this does not fail the English package workflow or BODY-047 check.
 
 Still required before student release:
-- Owner review/approval of the three new supplements.
+- Separate owner approval and verification of the pronunciation asset.
 - Fresh successful CI on the merged commit, including the BODY-047 real compiler/plan check.
 - Database preservation capture and transaction rehearsal against the designated snapshot.
 - Production runtime, correction/cache/asset sanitisation and MIME checks.
