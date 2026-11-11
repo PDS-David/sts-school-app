@@ -1,0 +1,66 @@
+name: SS1 Biology verification
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'backend/src/db/ss1/subjects/biology.json'
+      - 'backend/src/db/ss1/assets/biology/**'
+      - 'backend/src/db/ss1/subjectPackageSchema.ts'
+      - 'backend/src/db/ss1/compiler.ts'
+      - 'backend/src/db/ss1/validateSubjectPackages.ts'
+      - 'tests/ss1/biology.package.test.mts'
+      - 'docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv'
+      - '.github/workflows/ss1-biology.yml'
+      - 'package.json'
+      - 'package-lock.json'
+  pull_request:
+    branches: [master]
+    paths:
+      - 'backend/src/db/ss1/subjects/biology.json'
+      - 'backend/src/db/ss1/assets/biology/**'
+      - 'backend/src/db/ss1/subjectPackageSchema.ts'
+      - 'backend/src/db/ss1/compiler.ts'
+      - 'backend/src/db/ss1/validateSubjectPackages.ts'
+      - 'tests/ss1/biology.package.test.mts'
+      - '.github/workflows/ss1-biology.yml'
+      - 'package.json'
+      - 'package-lock.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    name: Biology package and delivery integrity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+      - name: Backend and mobile TypeScript checks
+        run: |
+          ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
+          ./node_modules/.bin/tsc --noEmit -p mobile/tsconfig.json
+      - name: Biology package tests
+        run: node --import tsx --test tests/ss1/biology.package.test.mts
+      - name: Biology-only package validator
+        run: node --import tsx backend/src/db/ss1/validateSubjectPackages.ts biology
+      - name: Report student-release gates
+        run: |
+          node --input-type=module -e '
+            import fs from "node:fs";
+            const p = JSON.parse(fs.readFileSync("backend/src/db/ss1/subjects/biology.json", "utf8"));
+            const counts = Object.groupBy(p.coverage, x => x.status);
+            const blockers = p.open_items.filter(x => x.blocks_delivery);
+            console.log(JSON.stringify({
+              package_status: p.package_status,
+              lessons: p.lessons.length,
+              coverage: p.coverage.length,
+              coverage_status: Object.fromEntries(Object.entries(counts).map(([k,v]) => [k,v.length])),
+              delivery_blockers: blockers.length,
+              note: "Integrity checks do not constitute owner content approval, teacher review, database import, or runtime/device acceptance."
+            }, null, 2));
+          '
