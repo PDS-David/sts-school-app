@@ -257,7 +257,7 @@ test('Agricultural Science original row identities match the real Mammoth parser
 });
 
 
-test('Agricultural Science learner delivery withholds corrected source rows until package and lesson approval gates pass', async () => {
+test('Agricultural Science learner delivery withholds corrected source rows until scoped week and lesson gates pass', async () => {
   const p = packageSchema.parse(raw);
   const archiveBytes = readFileSync(new URL('../../docs/ss1/sources/SSS1-original.zip', import.meta.url));
   const archive = await JSZip.loadAsync(archiveBytes);
@@ -411,6 +411,11 @@ test('Agricultural Science corrected weeks are independently deliverable when un
     };
     const resolved = createAgriculturalScienceDeliveryResolver(fixture)(topic);
     assert.equal(resolved?.kind, 'corrected', `cleared week should deliver independently: ${correction.id}; got ${resolved?.reason ?? 'no resolution'}`);
+    const packageStatusChanged = JSON.parse(JSON.stringify(fixture));
+    packageStatusChanged.package_status = 'IMPLEMENTED';
+    const statusChangedDelivery = createAgriculturalScienceDeliveryResolver(packageStatusChanged)(topic);
+    assert.equal(statusChangedDelivery?.fingerprint, resolved?.fingerprint,
+      `unrelated package status must not invalidate the same corrected lesson: ${correction.id}`);
     assert(fixture.open_items.some((item: any) => item.blocks_delivery && !item.id.startsWith(prefix)),
       `unrelated week blockers must remain active while ${correction.id} is delivered`);
   }

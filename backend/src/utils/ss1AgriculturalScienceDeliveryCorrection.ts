@@ -134,7 +134,6 @@ export function createAgriculturalScienceDeliveryResolver(input: SubjectPackage)
       id: correction.id,
       source: correction.body_sha256,
       lesson,
-      packageStatus: subjectPackage.package_status,
       blockingItems: blockingItemsForCorrection(subjectPackage, correction).map(item => item.id).sort(),
     }));
     built.set(correction.id, { text, fingerprint, replacementLessonIds: [lesson.id] });
