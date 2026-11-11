@@ -51,7 +51,8 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT (2026-11-11): implemented via SUP-SS1-PHYSICS-T1-W02-VOLUME-MEASUREMENT; 18 answered questions/38 marks; OBJ-11 coverage updated. Evidence note created. The source's 1 cm³ accuracy claim is treated as instrument-dependent, with a non-blocking open item.",
     "PHYS-LES-T1-W02-MEASUREMENT-BASICS (2026-11-11): implemented via SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; 20 answered questions/41 marks; coverage OBJ-1–6 and OBJ-8–10 updated. Evidence note created. Source figures and assessment answers remain open.",
     "PHYS-RULE-T1-REVISION-SCHEME and PHYS-RULE-T3-REVISION-EXAM (2026-11-11): both scheme-only markers are accounted. First Term R004 + COV-PHYS-T1-REVISION-SCHEME added; Third Term R003 + COV-PHYS-T3-SCHEME-REVISION-EXAM already existed from PHYS-PRE-T3. No lesson or revision plan invented.",
-    "PHYS-VIS-T1/T2/T3 (2026-11-11): ten original SVGs authored and registered; original embedded legacy .doc figures still not inspectable from text extraction. Evidence PHYS-VIS-NEW-ASSETS-20261111.md; package open item PHYSICS-SOURCE-VISUAL-INVENTORY blocks delivery pending exhaustive rendered-source audit."
+    "PHYS-VIS-T1/T2/T3 (2026-11-11): ten original SVGs authored and registered; original embedded legacy .doc figures still not inspectable from text extraction. Evidence PHYS-VIS-NEW-ASSETS-20261111.md; package open item PHYSICS-SOURCE-VISUAL-INVENTORY blocks delivery pending exhaustive rendered-source audit.",
+    "PHYS-FACT-T3-W05-SCHEME-MISMATCH (2026-11-11): resolved as a title-truncation artefact. The source body includes Diffusion, Graham's law and Osmosis; Brownian motion is only a heading plus two statements, with the full explanation supplied by the new lesson. Non-blocking open item PHYSICS-T3-W05-BROWNIAN-SOURCE-DEPTH records the source-depth gap."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -70,9 +71,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 44,
+    "IMPLEMENTED_TESTING_DEFERRED": 45,
     "BLOCKED": 35,
-    "PENDING": 11
+    "PENDING": 10
   },
   "total": 90,
   "items": [
@@ -1585,8 +1586,8 @@
         "PHYS-PRE-T3",
         "PHYS-WK-T3-W05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "docs/ss1/work/SS1-03/CHECKPOINT.md section 3 (Physics): read so far 3rd term Weeks 1-4 only; defects found, not authored. Reported: scheme names Diffusion and Osmosis but the Week 5 body is matter/atomic structure/states.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Resolved from the original source preamble/body audit recorded in PHYS-PRE-T3.md (2026-11-07) and close-equivalent SchoolGist PDF Week Five lines 350–413. The scheme TOPIC spans two lines; the importer title keeps only 'MATTER, ATOMIC STRUCTURE, STATES OF MATTER,' while the next line adds 'DIFFUSION, OSMOSIS, BROWNIAN MOTION'. The body does teach diffusion (definition, factors, Graham's law) and osmosis (water movement through a semi-permeable membrane); this is a title-truncation artefact, not a missing diffusion/osmosis lesson. Brownian motion appears only as a heading and two importance statements; package open item PHYSICS-T3-W05-BROWNIAN-SOURCE-DEPTH records the shallow source treatment, while the authored supplement supplies the full definition. No source wording or figure is claimed as byte-identical to the public PDF.",
       "completion_condition": "Search result across the whole document recorded; any uncovered objective named precisely so a bounded lesson task can be appended."
     },
     {
@@ -3108,7 +3109,7 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "Ten original SVG teaching aids registered; exhaustive original .doc figure inventory remains blocking. Package now has 32 lessons and 189 coverage rows; source approvals and verification remain pending/deferred."
+    "notes": "Week Five scheme mismatch resolved: diffusion and osmosis are taught in body; Brownian-motion treatment is shallow and has a non-blocking open item. Visual-source inventory still blocks full delivery."
   },
   "next_runnable": [
     "PHYS-PORT-D1-RULE-SPLIT",
