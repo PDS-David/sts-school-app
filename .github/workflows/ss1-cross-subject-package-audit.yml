@@ -45,9 +45,20 @@ jobs:
             --output "$RUNNER_TEMP/ss1-staged"
       - name: Compile every registered SS1 subject in plan-only mode
         run: |
+          # The importer exits 1 while owner gates / unapproved content remain, but it
+          # still writes the plan first. A crash (compile error) writes no plan: fail then.
+          plan="$RUNNER_TEMP/ss1-cross-subject-plan.json"
+          status=0
           python scripts/ss1/build_subject_packages.py \
             --root "$RUNNER_TEMP/ss1-staged" \
-            --output "$RUNNER_TEMP/ss1-cross-subject-plan.json"
+            --output "$plan" || status=$?
+          if [ ! -s "$plan" ]; then
+            echo "::error::SS1 compile failed before producing a plan (exit $status)"
+            exit 1
+          fi
+          if [ "$status" -ne 0 ]; then
+            echo "::warning::Plan produced; importer reports remaining owner gates (exit $status). See next step."
+          fi
       - name: Report subject coverage and remaining owner gates
         run: |
           python - <<'PY'
@@ -55,12 +66,22 @@ jobs:
           from pathlib import Path
           plan_path = Path(os.environ["RUNNER_TEMP"]) / "ss1-cross-subject-plan.json"
           plan = json.loads(plan_path.read_text(encoding="utf-8"))
+          from collections import Counter
+          blockers = plan.get("blockers", [])
+          by_kind = Counter(b.split(":", 1)[0] for b in blockers)
           print(json.dumps({
               "version": plan.get("version"),
               "compiled_rows": len(plan.get("rows", [])),
               "identified_rows": len(plan.get("identified_rows", [])),
               "dispositions": len(plan.get("dispositions", [])),
-              "blockers": plan.get("blockers", []),
               "ready": plan.get("ready"),
+              "blockers_by_kind": dict(sorted(by_kind.items())),
           }, indent=2))
+          # Owner gates and approval state are reported above, not failures.
+          # Structural problems in the package set are failures.
+          structural = {"MISSING_PACKAGE", "UNACCOUNTED_SOURCE", "EXTERNAL_SOURCE_WITHOUT_COVERAGE", "MISSING_INPUT", "NO_COVERAGE"}
+          bad = [b for b in blockers if b.split(":", 1)[0] in structural]
+          for b in bad:
+              print(f"::error::{b}")
+          raise SystemExit(1 if bad else 0)
           PY
