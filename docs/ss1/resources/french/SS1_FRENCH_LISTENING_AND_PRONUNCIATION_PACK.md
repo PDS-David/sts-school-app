@@ -151,3 +151,19 @@ This pack supplements `SUP-SS1-FRENCH-DIALOGUE-T3` and the Third-Term revision m
 - Learn French with Natives, *First Steps in French*: https://www.learnfrenchwithnatives.com/learn/beginner-french/first-steps-in-french/
 - Copycat Cafe, *Free Audio Course*: https://copycatcafe.com/free-audio-course
 - Copycat Cafe, *Are you Martin?*: https://copycatcafe.com/french-audio-course/episode-2
+
+
+## 6. Bundled app recordings (offline playback)
+
+The two original dialogue recordings are now generated and committed as mobile app assets:
+
+- `mobile/assets/french/SS1_French_Dialogue_standard.mp3` — standard pace.
+- `mobile/assets/french/SS1_French_Dialogue_slow.mp3` — slower practice pace.
+
+The student listening screen loads both files locally through Expo Audio. Playback does not require a network connection once the app build containing these assets is installed. Students can choose either recording, stop playback, use the transcript/translation and complete the ten-mark comprehension quiz. Individual line replay and the full-dialogue device-speech fallback remain available.
+
+### Synthetic voice disclosure and attribution
+
+The recordings use the two-speaker `fr_FR-upmc-medium` Piper voice model: speaker 0 (Jessica) voices Ada; speaker 1 (Pierre) voices the librarian. The voice dataset is UPMC / MaryTTS UPMC Pierre data, licensed CC BY-SA 4.0. Attribution and model links are recorded in `mobile/assets/french/README.md`.
+
+These are synthetic recordings of original classroom dialogue. They are not human/native-speaker recordings, are not official WAEC/NECO audio, and do not replace a teacher's assessment of student pronunciation.
