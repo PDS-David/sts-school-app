@@ -65,3 +65,8 @@ The source lists Hampshire, Yorkshire/Largewhite, Poland China, Landrace, Berksh
 - Verified archive/member hashes and week label/range hashes; parsed package/queue JSON; checked unique IDs and that every PARTIAL/UNRESOLVED coverage row has an open-item reference.
 - Importer, tests, TypeScript, DB and device checks **not run**; testing remains deferred by owner.
 - No source bytes, lesson bodies, rules, corrections, assets, shared code or other subjects modified.
+
+
+## Implementation follow-up (2026-11-11)
+
+The exact Week Nine source row `SS1-SRC-458a07f7ea5a:BODY:b431485e025fd5054046a9041249f1b34a5042973238fbf2b652cbf27fbf4ef7` is now bound by `CORR-AG-T3-W09-PIG-SAFE-REPLACEMENT` to `SUP-SS1-AGRICULTURAL-SCIENCE-T3-W09-PIG-MANAGEMENT-REPLACEMENT`. The replacement removes unsafe or unsupported treatment prescriptions and teaches housing, feeding, hygiene, welfare, biosecurity, observation and veterinary referral at SS1 level. It does not present drug doses or unverified treatment procedures. Content approval and verification remain pending.
