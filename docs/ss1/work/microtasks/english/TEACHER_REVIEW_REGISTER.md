@@ -197,7 +197,7 @@ Approval references must be real evidence references; do not use this worksheet 
 
 ## Outstanding curriculum decisions and limitations
 
-- **T2 Week 1 assignment:** the source asks for examples of prefixes `mat` and `ploy`. These are not accepted as independent productive English prefixes in the current teaching resource. The remaining assignment objective is unresolved. Teacher should either provide the intended corrected forms or explicitly confirm that these two malformed fragments are excluded while the other valid prefix targets are taught.
+- **T2 Week 1 assignment:** the source asks for examples of `mat` and `ploy` as prefixes. Neither is an established productive English prefix. The authored lesson explicitly identifies both malformed fragments rather than teaching them as valid affixes; the package test checks this explanation and confirms there are zero `UNRESOLVED` coverage records. The remaining action is source clarification: the teacher/owner should supply the intended corrected forms or explicitly confirm their exclusion. This is an owner/source decision, not an unresolved coverage row.
 - **T2 Week 6 sexuality vocabulary:** the source heading mentions sexuality but provides no word list or objective detail. The current package teaches the substantiated photography and religion strands and does not invent age-sensitive content. Teacher may supply a precise SS1-appropriate scope if required.
 - **T3 Week 1 reading vocabulary:** the exact source passage needed to validate the original contextual meanings was not supplied. The package uses a labelled original reading equivalent; the additional age-sensitive dictionary sense remains a teacher decision.
 - **T3 Week 3 family vocabulary:** the culturally specific bride-price clue has no reliable universal answer. The package supplies neutral family/household teaching and does not guess a local term.
@@ -205,9 +205,9 @@ Approval references must be real evidence references; do not use this worksheet 
 
 ## Technical and release gates
 
-- Package JSON/schema, body hashes, IDs, references, marks and source-rule guards have existing drafted regression coverage. The English test file has **not** been executed.
-- Full tests, TypeScript checks, importer/database checks, runtime checks, device checks and deployment remain deferred by the project owner. This register does not claim they passed.
-- The SS1 contract explicitly states that package JSON alone does not prove student delivery. Shared runtime integration and the later SS1-08 verification/release process remain separate requirements.
+- **Passed in English verification run 145 (2026-11-11, commit `f02a7623ba75f5b8b2d6faf86b7ccfc3ad321590`):** English package tests; learner-delivery regression tests; registered-asset validation; complete source archive/member hash verification and private staging; English-only source isolation; and the real SS1 parser/compiler in plan-only mode. All workflow steps completed successfully.
+- **Not covered by that run:** the full repository/foundation test suite, Python SS1 unit-test suite, backend TypeScript no-emit check, database import/retrieval or preservation rehearsal, deployed production runtime/cache checks, device acceptance and deployment. These remain separate verification/release gates; no pass is claimed for them.
+- English delivery integration is present in `backend/src/routes/learning.ts`: topic list/detail sanitisation, topic explanation, assessment retrieval/listing and submission access are guarded by the English delivery adapter. The adapter-level learner-delivery regression tests passed. End-to-end acceptance against a designated database snapshot and real student devices remains outstanding.
 - Do not set `package_status` to `IMPLEMENTED`, lesson approval to `APPROVED`, or verification to `VERIFIED` without the corresponding real evidence.
 
 ## Package state at generation
