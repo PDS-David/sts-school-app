@@ -106,6 +106,24 @@ function arg(name) {
   return index >= 0 ? process.argv[index + 1] : undefined;
 }
 
+export function writeAssetPlanArtifacts({ result, subjectPackage, outDir }) {
+  mkdirSync(outDir, { recursive: true, mode: 0o700 });
+  const reportPath = path.join(outDir, `${subjectPackage.subject_slug}-asset-plan.json`);
+  writeFileSync(reportPath, JSON.stringify({ subject_slug: subjectPackage.subject_slug, ready: result.ready, blockers: result.blockers, records: result.records }, null, 2) + '\\n', { flag: 'wx', mode: 0o600 });
+  if (!result.ready) return { ready: false, reportPath, manifestPaths: [] };
+  const manifestPaths = [];
+  for (const group of result.groups) {
+    const [, subject, className, termLabel] = group.identity;
+    const slug = [subject, className, termLabel].join('-').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const headers = ['asset_key','file','sha256','order_index','caption','alt_text','kind','displayed','sort_order','expected_title'];
+    const lines = [headers.join(','), ...group.rows.map(row => headers.map(header => csvCell(row[header])).join(','))];
+    const manifestPath = path.join(outDir, `${slug}-assets.csv`);
+    writeFileSync(manifestPath, lines.join('\\n') + '\\n', { flag: 'wx', mode: 0o600 });
+    manifestPaths.push(manifestPath);
+  }
+  return { ready: true, reportPath, manifestPaths };
+}
+
 async function main() {
   const planPath = arg('plan'), packagePath = arg('package'), outDir = arg('out-dir');
   if (!planPath || !packagePath || !outDir) throw new Error('Required: --plan <compiler-plan.json> --package <subject-package.json> --out-dir <directory> [--repo-root <root>]');
@@ -113,24 +131,14 @@ async function main() {
   const compilerPlan = JSON.parse(readFileSync(path.resolve(planPath), 'utf8'));
   const subjectPackage = JSON.parse(readFileSync(path.resolve(packagePath), 'utf8'));
   const result = buildAssetPlan({ compilerPlan, subjectPackage, repoRoot });
-  mkdirSync(outDir, { recursive: true });
-  const reportPath = path.join(outDir, `${subjectPackage.subject_slug}-asset-plan.json`);
-  writeFileSync(reportPath, JSON.stringify({ subject_slug: subjectPackage.subject_slug, ready: result.ready, blockers: result.blockers, records: result.records }, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
-  if (!result.ready) {
-    console.error(`BLOCKED: no attachment manifests emitted; see ${reportPath}`);
+  const output = writeAssetPlanArtifacts({ result, subjectPackage, outDir });
+  if (!output.ready) {
+    console.error(`BLOCKED: no attachment manifests emitted; see ${output.reportPath}`);
     process.exitCode = 2;
     return;
   }
-  for (const group of result.groups) {
-    const [, subject, className, termLabel] = group.identity;
-    const slug = [subject, className, termLabel].join('-').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    const headers = ['asset_key','file','sha256','order_index','caption','alt_text','kind','displayed','sort_order','expected_title'];
-    const lines = [headers.join(','), ...group.rows.map(row => headers.map(header => csvCell(row[header])).join(','))];
-    const manifestPath = path.join(outDir, `${slug}-assets.csv`);
-    writeFileSync(manifestPath, lines.join('\n') + '\n', { flag: 'wx', mode: 0o600 });
-    console.log(`Wrote ${group.rows.length} approved asset(s): ${manifestPath}`);
-  }
   console.log(`Asset plan ready: ${result.records.length} verified assets across ${result.groups.length} topic group(s).`);
+  for (const manifestPath of output.manifestPaths) console.log(`Wrote manifest: ${manifestPath}`);
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
