@@ -168,9 +168,30 @@ const packageValue = packageSchema.parse(packageData);
 const defaultResolver = createEnglishDeliveryResolver(packageValue);
 export const resolveEnglishDelivery = (topic: EnglishDeliveryTopic) => defaultResolver(topic);
 
-export function safeEnglishTopic<T extends EnglishDeliveryTopic>(topic: T): T {
+const ENGLISH_SUPPLEMENT_PREFIX = '__ss1_supplements__/english/';
+const englishLessons = new Map(packageValue.lessons.map(lesson => [lesson.id, lesson]));
+
+/**
+ * Compiled supplement rows contain teacher marking keys in source_reference.
+ * Keep those keys available to staff, but never return them to students or
+ * parents through topic listing or study-summary generation.
+ */
+export function safeEnglishSupplementTopic<T extends EnglishDeliveryTopic>(topic: T, viewerRole?: string): T {
+  if (viewerRole !== 'student' && viewerRole !== 'parent') return topic;
+  if (topic.school_code !== SCHOOL_CODE || topic.class_name !== CLASS_NAME ||
+      norm(topic.subject_name) !== norm(SUBJECT_NAME)) return topic;
+  const sourceFile = String(topic.source_file ?? '').replace(/\\/g, '/');
+  if (!sourceFile.startsWith(ENGLISH_SUPPLEMENT_PREFIX)) return topic;
+  const lessonId = sourceFile.slice(ENGLISH_SUPPLEMENT_PREFIX.length);
+  const lesson = englishLessons.get(lessonId);
+  if (!lesson || lesson.term !== topic.term_label || norm(lesson.title) !== norm(topic.title)) return topic;
+  const learnerText = renderLesson(lesson);
+  return { ...topic, source_reference: learnerText, summary: learnerText };
+}
+
+export function safeEnglishTopic<T extends EnglishDeliveryTopic>(topic: T, viewerRole?: string): T {
   const delivery = resolveEnglishDelivery(topic);
-  if (!delivery) return topic;
+  if (!delivery) return safeEnglishSupplementTopic(topic, viewerRole);
   return {
     ...topic,
     source_reference: delivery.kind === 'corrected' ? delivery.text : null,
