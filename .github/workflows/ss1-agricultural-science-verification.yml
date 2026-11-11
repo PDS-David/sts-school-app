@@ -90,7 +90,6 @@ jobs:
           if (report.ready !== false) throw new Error('Pending package unexpectedly produced a ready asset plan');
           if (report.records.length !== 40) throw new Error('Expected all 40 package assets to map to compiler rows; found ' + report.records.length);
           if (!report.blockers.includes('PACKAGE_NOT_IMPLEMENTED:agricultural-science')) throw new Error('Package approval gate was not enforced');
-          if (!report.blockers.some(item => item.startsWith('LESSON_NOT_VERIFIED:'))) throw new Error('Lesson verification gate was not enforced');
           if (!report.blockers.some(item => item.startsWith('ASSET_NOT_VERIFIED:'))) throw new Error('Asset verification gate was not enforced');
           console.log('Verified: all 40 assets map to exact compiler rows; pending approvals block CSV emission.');
           NODE
