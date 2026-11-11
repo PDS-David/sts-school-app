@@ -120,3 +120,16 @@ The current package's `FRENCH-T1-W02-OBJ-2` status is corrected to `PARTIAL`. It
 ### Research evidence for the Week 2 Anglophone scope gap
 
 ANGLOPHONE_COUNTRY_SCOPE_RESEARCH.md now records all 15 source countries and the evidence located so far. It distinguishes legal official language from working language and broader English use, documents constitutional counterexamples (Egypt: Arabic; Angola: Portuguese; Libya: Arabic; Ethiopia: Amharic as federal working language), and flags current-text checks for Sudan and Somalia. This research does not yet complete the 15-country exercise or replace the required teacher/owner decision.
+
+
+## Structural assessment-item audit
+
+A static scan of the current branch's French package (blob 6ececab52165434558f4dd09445cd43bb0d16f91) found:
+
+- 40 lessons, each with a non-empty lesson body, objectives, practice items and provenance.
+- 189 practice questions, carrying 549 marks in total.
+- Every question has a non-empty stem, keyed answer and marking rubric.
+- Every rubric's item marks sum to the question's declared marks.
+- No structural omissions or mark-sum mismatches were found by this scan.
+
+This is a structural integrity result only. It does not prove that each question assesses the correct source objective, that every original source exercise has a replacement, that a teacher has approved the language/content, or that learners can perform the required oral tasks. The 28-row source exercise reconciliation and teacher review remain open.
