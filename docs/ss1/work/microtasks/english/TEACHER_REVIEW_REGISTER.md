@@ -213,4 +213,4 @@ Approval references must be real evidence references; do not use this worksheet 
 - Verification states: {"DEFERRED":149}
 - Blocking open items: ENGLISH-CONTENT-APPROVAL
 
-Generated 2026-11-11 from the repository package. Regenerate after any package change; do not treat this snapshot as live state.
+Updated 2026-11-11 after the English affix assignment and learner-delivery implementation. Regenerate after any package change; do not treat this snapshot as live state.
