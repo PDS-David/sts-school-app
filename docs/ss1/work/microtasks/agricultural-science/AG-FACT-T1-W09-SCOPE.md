@@ -172,11 +172,11 @@ The repository owner explicitly approved all nine recommendations below on 2026-
 
 ## F. Remaining Week 9 issues outside the nine approvals
 
-The following were not among the nine recommendations approved by the repository owner and remain undecided. Do not infer an answer key or change the original source:
+The following residual decisions were made by the repository owner on 2026-11-11 and are recorded in `OWNER-DEC-W09-RESIDUAL-20261111.md`. They authorise learner-delivery corrections only; do not alter the original source or answer key:
 
-- Compost question at block 854 and mulching question at block 857: determine whether they belong to another week/term or should be withdrawn.
-- Reading assignment at block 851: determine the correct reading reference or withdraw the misdirected assignment.
-- Atmospheric pressure listed at block 731: determine whether it is an intended additional climatic factor requiring teaching.
-- Remaining wording/formatting defects at blocks 723, 750, 779, 796, 853 and 855: decide which should be corrected through a source-hash-bound learner-delivery replacement.
+- Compost (854) and mulching (857) are excluded from Week 9 learner delivery because they are neither taught in the First-Term source nor Week 9 scheme objectives; they are not reassigned and no answer key is invented.
+- Reading assignment (851) is to be corrected in learner delivery to the Week 9 environmental-factors reference already used at blocks 788–789 (pages 212–216).
+- Atmospheric pressure (731) is to be taught as an additional climate factor because the source explicitly names it.
+- Wording and option-formatting defects at blocks 723, 750, 779, 796, 853 and 855 are to be corrected only in a source-hash-bound learner-delivery replacement. Block 855 remains in scope because the approved forestry supplement now teaches primary forest products.
 
-These residual items remain tracked in the Agricultural Science queue. The two approved supplements remain unverified until the authorised compiler/importer and authenticated learner-delivery checks are completed.
+The follow-on correction tasks remain pending until exact source-row binding, compiler/importer checks and learner-delivery verification are completed. The original source and answer key remain unchanged.
