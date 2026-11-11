@@ -10,7 +10,7 @@ import { resolveSequenceGroup } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
 import { resolveSs1Delivery, safeSs1Topic, retireStaleSs1Cache, ss1AssessmentDeliverable, ss1WithdrawnAssessmentIds } from '../utils/ss1CateringDeliveryCorrection.js';
 import { resolveSs1FrenchDelivery, retireStaleSs1FrenchCache } from '../utils/ss1FrenchDeliveryCorrection.js';
-import { resolveSs1MathematicsDelivery, safeSs1MathematicsTopic, mathematicsAssetDeliverable, retireStaleSs1MathematicsCache } from '../utils/ss1MathematicsDeliveryCorrection.js';
+import { resolveSs1MathematicsDelivery, safeSs1MathematicsTopic, mathematicsAssetDeliverable, mathematicsAssetsForTopic, readMathematicsAsset, retireStaleSs1MathematicsCache } from '../utils/ss1MathematicsDeliveryCorrection.js';
 import { resolveAgriculturalScienceDelivery, resolveAgriculturalScienceSupplement, resolveAgriculturalScienceSourceProjection, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, retireStaleAgriculturalScienceSupplementCache, retireStaleAgriculturalScienceSourceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
 
@@ -275,7 +275,7 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
   // gives for a topic outside the viewer's classes.
   if (scope === null) return res.json({ assets: [], attributions: [] });
   const { rows: visible } = await query(
-    `SELECT t.id, t.school_code, t.title, t.term_label, t.class_name, t.source_file, t.source_reference, s.name AS subject_name
+    `SELECT t.id, t.school_code, t.title, t.term_label, t.class_name, t.source_file, t.source_reference, t.order_index, s.name AS subject_name
        FROM topics t LEFT JOIN subjects s ON s.id=t.subject_id WHERE t.id=$1 AND t.school_code=$2${scope}`, params,
   );
   if (!visible[0]) return res.json({ assets: [], attributions: [] });
@@ -293,14 +293,57 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
     : visible[0].school_code === 'secondary' && visible[0].class_name === 'SS 1' && visible[0].subject_name === 'Mathematics'
       ? storedAssets.filter((asset: any) => mathematicsAssetDeliverable(visible[0], asset))
       : storedAssets;
+  const mathematicsAssets = visible[0].school_code === 'secondary' && visible[0].class_name === 'SS 1' && visible[0].subject_name === 'Mathematics'
+    ? mathematicsAssetsForTopic(visible[0])
+    : [];
+  const deliveredRows = [...rows, ...mathematicsAssets];
+
   // Licence/credit records for third-party material in this lesson (jss3Attributions.ts): delivered with the lesson,
   // matched by exact identity. A requested cover/logo is reported displayed only if a displayed asset with that key exists.
-  const boundKeys = new Set<string>(rows.map((r: any) => r.asset_key));
+  const boundKeys = new Set<string>(deliveredRows.map((r: any) => r.asset_key));
   const attributions = attributionsForTopic(visible[0]).map(a => publicAttribution(a, boundKeys));
   return res.json({
-    assets: rows.map((r: any) => ({ ...r, url: `/learning/assets/${r.id}` })),
+    assets: deliveredRows.map((r: any) => ({ ...r, url: r.url ?? `/learning/assets/${r.id}` })),
     attributions,
   });
+});
+
+router.get('/mathematics-assets/:assetKey', requirePerm('topics.read'), async (req, res) => {
+  const assetKey = String(req.params.assetKey ?? '');
+  const topicId = Number(req.query.topicId);
+  if (!assetKey || !Number.isInteger(topicId) || topicId <= 0) return res.status(404).json({ error: 'Asset not found' });
+  const user = req.user!;
+  const { school_code } = req.query as Record<string, string>;
+  const sc = (school_code && user.role === 'admin') ? school_code : user.school_code;
+  const params: unknown[] = [topicId, sc];
+  const scope = await topicVisibilitySql(user, params);
+  if (scope === null) return res.status(404).json({ error: 'Asset not found' });
+  const { rows: visible } = await query(
+    `SELECT t.id, t.school_code, t.title, t.term_label, t.class_name, t.source_file, t.order_index, s.name AS subject_name
+       FROM topics t LEFT JOIN subjects s ON s.id=t.subject_id
+      WHERE t.id=$1 AND t.school_code=$2${scope}`,
+    params,
+  );
+  const topic = visible[0];
+  if (!topic || topic.school_code !== 'secondary' || topic.class_name !== 'SS 1' || topic.subject_name !== 'Mathematics') {
+    return res.status(404).json({ error: 'Asset not found' });
+  }
+  const asset = mathematicsAssetsForTopic(topic).find((item: any) => item.asset_key === assetKey);
+  if (!asset) return res.status(404).json({ error: 'Asset not found' });
+  const file = readMathematicsAsset(assetKey);
+  if (!file) return res.status(404).json({ error: 'Asset not found' });
+  const etag = `"${file.sha256}"`;
+  res.setHeader('ETag', etag);
+  res.setHeader('Cache-Control', 'private, max-age=86400');
+  const inm = String(req.headers['if-none-match'] ?? '');
+  if (inm && inm.split(',').map(value => value.trim().replace(/^W\//, '')).includes(etag)) {
+    return res.status(304).end();
+  }
+  res.setHeader('Content-Type', file.mime);
+  res.setHeader('Content-Length', String(file.bytes.length));
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  if (file.mime === 'image/svg+xml') res.setHeader('Content-Security-Policy', "default-src 'none'; sandbox");
+  return res.end(file.bytes);
 });
 
 router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
@@ -316,7 +359,7 @@ router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
   // Scope + metadata first (no bytes), so a 304 never reads the image.
   const { rows: meta } = await query(
     `SELECT a.mime, a.sha256, a.asset_key, t.id AS topic_id, t.school_code, t.class_name, t.term_label, t.title,
-            t.source_file, t.source_reference, s.name AS subject_name
+            t.source_file, t.source_reference, t.order_index, s.name AS subject_name
        FROM topic_assets a
        JOIN topics t ON t.id=a.topic_id
        LEFT JOIN subjects s ON s.id=t.subject_id

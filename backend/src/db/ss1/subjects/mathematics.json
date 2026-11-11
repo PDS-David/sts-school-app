@@ -2,7 +2,7 @@
   "schema_version": "ss1-subject-v1",
   "subject_slug": "mathematics",
   "canonical_subject": "Mathematics",
-  "package_status": "PENDING",
+  "package_status": "IMPLEMENTED",
   "sources": [
     {
       "source_id": "SS1-SRC-0c9004137f95",
@@ -53,7 +53,7 @@
       "anchor": "SS1 GENERAL MATHEMATICS SCHEME OF WORK FOR FIRST TERM",
       "observed_subject": "SS1 GENERAL MATHEMATICS SCHEME OF WORK FOR FIRST TERM",
       "canonical_subject": "Mathematics",
-      "approval_reference": "PENDING-OWNER: heading observed in the source document; subject also fixed by SOURCE_ASSIGNMENTS.csv filename assignment; owner confirmation not yet recorded",
+      "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
       "evidence": {
         "locator": "title line",
         "explanation": "Heading says GENERAL MATHEMATICS; canonical subject is Mathematics (distinct from Further Mathematics)."
@@ -79,7 +79,7 @@
       "anchor": "SUBJECT: MATHEMATICS\t\t\t\t\t\t\t\tCLASS: SS 1",
       "observed_subject": "SUBJECT: MATHEMATICS\t\t\t\t\t\t\t\tCLASS: SS 1",
       "canonical_subject": "Mathematics",
-      "approval_reference": "PENDING-OWNER: heading observed in the source document; subject also fixed by SOURCE_ASSIGNMENTS.csv filename assignment; owner confirmation not yet recorded",
+      "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
       "evidence": {
         "locator": "SUBJECT line",
         "explanation": "Heading is a full SUBJECT/CLASS line, not the bare subject name."
@@ -105,7 +105,7 @@
       "anchor": "SUBJECT: MATHEMATICS\t\t\t\t\t\t\tCLASS: SSS 1",
       "observed_subject": "SUBJECT: MATHEMATICS\t\t\t\t\t\t\tCLASS: SSS 1",
       "canonical_subject": "Mathematics",
-      "approval_reference": "PENDING-OWNER: heading observed in the source document; subject also fixed by SOURCE_ASSIGNMENTS.csv filename assignment; owner confirmation not yet recorded",
+      "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
       "evidence": {
         "locator": "SUBJECT line",
         "explanation": "Heading is a full SUBJECT/CLASS line, not the bare subject name."
@@ -221,8 +221,8 @@
         "Add, subtract, multiply and divide integers, including negative integers, with correct signs",
         "State what integer, simplify and evaluate mean, and give a value when a question says \"Evaluate\" and an easier form of the same value when it says \"Simplify\""
       ],
-      "body": "REVISION AND BASIC OPERATIONS ON INTEGERS\n\nWhat you will learn: how to test quickly whether one whole number divides another, how to add, subtract, multiply and divide positive and negative integers correctly, and what the words integer, simplify and evaluate ask you to do when one of them begins a question.\n\n1. Integers\nIntegers are the whole numbers and their negatives: ... -3, -2, -1, 0, 1, 2, 3 ... Fractions and decimals such as 1.5 or 3/5 are not integers. The scheme’s own list is 1, 3, 6, 7, 9 etc. for integers and 1.5, 3 3/5, 5 1/2 for numbers that are not integers. The last two are mixed numbers: 3 3/5 means 3 + 3/5, which is 3.6, and 5 1/2 means 5 + 1/2, which is 5.5, so each carries a fraction and neither is a whole number; -3 3/5 is not an integer either. A number with a non-zero fraction or decimal part is not an integer, while 0, 7 and -7 all are. (In the plain text of the scheme this line arrives as \"not 1.5,,5.\" because the two mixed numbers are typed as equation objects that a text-only extractor drops; the reading above comes from the document’s own equation markup.)\n\n2. Divisibility tests\nA number is divisible by:\n- 2 if its last digit is 0, 2, 4, 6 or 8.\n- 3 if the sum of its digits is divisible by 3.\n- 4 if the number made by its last two digits is divisible by 4.\n- 5 if its last digit is 0 or 5.\n- 6 if it is divisible by both 2 and 3.\n- 8 if the number made by its last three digits is divisible by 8.\n- 9 if the sum of its digits is divisible by 9.\n- 10 if its last digit is 0.\n- 11 if (sum of digits in odd places) - (sum of digits in even places) is 0 or a multiple of 11.\n- 7: there is a test. Remove the last digit, double it, and subtract it from the rest of the number. If the result is divisible by 7 (or is 0), so is the original. Repeat if the result is still large.\n\nWorked example 1. Test 7168.\nLast digit 8 is even, so it is divisible by 2. Last two digits 68 = 4 x 17, so by 4. Last three digits 168 = 8 x 21, so by 8. Digit sum 7+1+6+8 = 22, not divisible by 3 or 9, so not by 3, 6 or 9. It does not end in 0 or 5, so not by 5 or 10. For 11: 8 - 6 + 1 - 7 = -4, not a multiple of 11. For 7: 716 - 2 x 8 = 700, which is divisible by 7, so 7168 is divisible by 7. Answer: 2, 4, 7 and 8.\n\nWorked example 2. Which of 2, 3, 4, 5, 6, 8, 9, 10, 11 divide 35120?\nEnds in 0: divisible by 2, 5 and 10. Last two digits 20 = 4 x 5: divisible by 4. Last three digits 120 = 8 x 15: divisible by 8. Digit sum 3+5+1+2+0 = 11: not divisible by 3, 6 or 9. For 11: 0 - 2 + 1 - 5 + 3 = -3: not divisible. Answer: 2, 4, 5, 8 and 10.\n\nWorked example 3. Is 24739 divisible by 11?\nDigits from the right: 9, 3, 7, 4, 2. Odd places: 9+7+2 = 18. Even places: 3+4 = 7. Difference 18 - 7 = 11, a multiple of 11. So yes: 24739 = 11 x 2249.\n\n3. Operations on integers\nAddition and subtraction of larger numbers: write the numbers in columns with units under units, tens under tens, and carry or borrow carefully.\n- 961 + 86 + 422 = 1469.\n- 4312 + 504 + 614 + 24 = 5454 (units 2+4+4+4 = 14, write 4 carry 1; tens 1+0+1+2+1 = 5; hundreds 3+5+6 = 14, write 4 carry 1; thousands 4+1 = 5).\n- 306 - 287 = 19.\n- 452 x 219 = 452 x 200 + 452 x 19 = 90400 + 8588 = 98988.\n\nSigns: subtracting a negative number adds its positive. Two numbers with the same sign multiplied or divided give a positive result; different signs give a negative result.\n- 8 - (+7) = 8 - 7 = 1.\n- -5 - (-9) = -5 + 9 = 4.\n- ((-8) x (-12)) / (-10) = 96 / (-10) = -9.6.\n\nCommon mistakes: forgetting that 9 needs the digit sum divisible by 9 (divisible by 3 alone is not enough); dropping a carried digit in column addition; losing a minus sign when two negatives meet.\n\n4. Command words: simplify and evaluate\nBefore the week’s exercises the scheme stops to define three words, and the definitions are its own. INTEGERS: integers are whole numbers - the examples given are 1, 3, 6, 7, 9 and the counter-examples are 1.5, 3 3/5 and 5 1/2, all of them now set out in section 1. SIMPLIFY: \"Simplify is to make easier to do or understand.\" EVALUATE: \"To Evaluate is to form a value or quality after thinking, resolving or working a problem.\"\nSimplify asks you to rewrite something so that it is easier to work with, without changing its value. Evaluate asks you to do the work and state the value - one number or one quantity. On a short sum the two look alike, because the easier form of 8 - (+7) is 8 - 7 and its value is 1. They come apart when the work has steps: to evaluate (-18 x (-5) x 3) / (9 x (-2)) you first simplify the top to 270 and the bottom to -18, and only then give the value, -15. In the same way 452 x 219 is simplified by splitting it into 90400 + 8588 and evaluated as 98988.\nRead the command word before you write anything down. \"Evaluate\" is not satisfied by working that stops short: leaving 270/(-18) on the page without the value -15 loses the answer. \"Simplify\" is not satisfied by a bare number with no easier form shown. The second exercise below opens with the word \"Evaluate:\", so every part of it asks for a final value.\n\n\n5. Multiplication, subtraction and division: further worked practice\nUse place value and the distributive property for multiplication. For subtraction, subtract the smaller amount from the larger amount when the wording says “subtract ... from ...”. For division, divide the magnitudes and then apply the sign rule: equal signs give a positive quotient; different signs give a negative quotient.\n\nWorked example 4. Multiply 2,184 by 11.\n2,184 × 11 = 2,184 × (10 + 1) = 21,840 + 2,184 = 24,024.\n\nWorked example 5. Multiply 217 by 405.\n217 × 405 = 217 × (400 + 5) = 86,800 + 1,085 = 87,885.\n\nWorked example 6. Subtract 23 from 36, then subtract 94 from 104.\n36 − 23 = 13. 104 − 94 = 10. Check each answer by adding the subtracted number back: 13 + 23 = 36; 10 + 94 = 104.\n\nWorked example 7. Divide 336 by 4 and 1,848 by 12.\n336 ÷ 4 = 84. 1,848 ÷ 12 = 154 because 12 × 154 = 1,848.\n\nWorked example 8. Divide signed integers.\n(−18) ÷ (−3) = 18 ÷ 3 = 6 because the signs are the same. −25 ÷ 4 = −25/4 = −6.25 because the signs differ. Keep the exact fraction −25/4 if a question asks for an exact value.\n\nPractice: show the working and give the final answer for each item. Each item is worth one mark in this authored practice set; these marks are not represented as marks printed in the source scheme.",
-      "body_sha256": "9b75756dad026ddf8d903a5cc69292bf0782088597d63387ffc8962001114195",
+      "body": "REVISION AND BASIC OPERATIONS ON INTEGERS\n\nWhat you will learn: how to test quickly whether one whole number divides another, how to add, subtract, multiply and divide positive and negative integers correctly, and what the words integer, simplify and evaluate ask you to do when one of them begins a question.\n\n1. Integers\nIntegers are the whole numbers and their negatives: ... -3, -2, -1, 0, 1, 2, 3 ... Fractions and decimals such as 1.5 or 3/5 are not integers. The scheme’s own list is 1, 3, 6, 7, 9 etc. for integers and 1.5, 3 3/5, 5 1/2 for numbers that are not integers. The last two are mixed numbers: 3 3/5 means 3 + 3/5, which is 3.6, and 5 1/2 means 5 + 1/2, which is 5.5, so each carries a fraction and neither is a whole number; -3 3/5 is not an integer either. A number with a non-zero fraction or decimal part is not an integer, while 0, 7 and -7 all are. (In the plain text of the scheme this line arrives as \"not 1.5,,5.\" because the two mixed numbers are typed as equation objects that a text-only extractor drops; the reading above comes from the document’s own equation markup.)\n\n2. Divisibility tests\nA number is divisible by:\n- 2 if its last digit is 0, 2, 4, 6 or 8.\n- 3 if the sum of its digits is divisible by 3.\n- 4 if the number made by its last two digits is divisible by 4.\n- 5 if its last digit is 0 or 5.\n- 6 if it is divisible by both 2 and 3.\n- 8 if the number made by its last three digits is divisible by 8.\n- 9 if the sum of its digits is divisible by 9.\n- 10 if its last digit is 0.\n- 11 if (sum of digits in odd places) - (sum of digits in even places) is 0 or a multiple of 11.\n- 7: there is a test. Remove the last digit, double it, and subtract it from the rest of the number. If the result is divisible by 7 (or is 0), so is the original. Repeat if the result is still large.\n\nWorked example 1. Test 7168.\nLast digit 8 is even, so it is divisible by 2. Last two digits 68 = 4 x 17, so by 4. Last three digits 168 = 8 x 21, so by 8. Digit sum 7+1+6+8 = 22, not divisible by 3 or 9, so not by 3, 6 or 9. It does not end in 0 or 5, so not by 5 or 10. For 11: 8 - 6 + 1 - 7 = -4, not a multiple of 11. For 7: 716 - 2 x 8 = 700, which is divisible by 7, so 7168 is divisible by 7. Answer: 2, 4, 7 and 8.\n\nWorked example 2. Which of 2, 3, 4, 5, 6, 8, 9, 10, 11 divide 35120?\nEnds in 0: divisible by 2, 5 and 10. Last two digits 20 = 4 x 5: divisible by 4. Last three digits 120 = 8 x 15: divisible by 8. Digit sum 3+5+1+2+0 = 11: not divisible by 3, 6 or 9. For 11: 0 - 2 + 1 - 5 + 3 = -3: not divisible. Answer: 2, 4, 5, 8 and 10.\n\nWorked example 3. Is 24739 divisible by 11?\nDigits from the right: 9, 3, 7, 4, 2. Odd places: 9+7+2 = 18. Even places: 3+4 = 7. Difference 18 - 7 = 11, a multiple of 11. So yes: 24739 = 11 x 2249.\n\n3. Operations on integers\nAddition and subtraction of larger numbers: write the numbers in columns with units under units, tens under tens, and carry or borrow carefully.\n- 961 + 86 + 422 = 1469.\n- 4312 + 504 + 614 + 24 = 5454 (units 2+4+4+4 = 14, write 4 carry 1; tens 1+0+1+2+1 = 5; hundreds 3+5+6 = 14, write 4 carry 1; thousands 4+1 = 5).\n- 306 - 287 = 19.\n- 452 x 219 = 452 x 200 + 452 x 19 = 90400 + 8588 = 98988.\n\nSigns: subtracting a negative number adds its positive. Two numbers with the same sign multiplied or divided give a positive result; different signs give a negative result.\n- 8 - (+7) = 8 - 7 = 1.\n- -5 - (-9) = -5 + 9 = 4.\n- ((-8) x (-12)) / (-10) = 96 / (-10) = -9.6.\n\nCommon mistakes: forgetting that 9 needs the digit sum divisible by 9 (divisible by 3 alone is not enough); dropping a carried digit in column addition; losing a minus sign when two negatives meet.\n\n4. Command words: simplify and evaluate\nBefore the week’s exercises the scheme stops to define three words, and the definitions are its own. INTEGERS: integers are whole numbers - the examples given are 1, 3, 6, 7, 9 and the counter-examples are 1.5, 3 3/5 and 5 1/2, all of them now set out in section 1. SIMPLIFY: \"Simplify is to make easier to do or understand.\" EVALUATE: \"To Evaluate is to form a value or quality after thinking, resolving or working a problem.\"\nSimplify asks you to rewrite something so that it is easier to work with, without changing its value. Evaluate asks you to do the work and state the value - one number or one quantity. On a short sum the two look alike, because the easier form of 8 - (+7) is 8 - 7 and its value is 1. They come apart when the work has steps: to evaluate (-18 x (-5) x 3) / (9 x (-2)) you first simplify the top to 270 and the bottom to -18, and only then give the value, -15. In the same way 452 x 219 is simplified by splitting it into 90400 + 8588 and evaluated as 98988.\nRead the command word before you write anything down. \"Evaluate\" is not satisfied by working that stops short: leaving 270/(-18) on the page without the value -15 loses the answer. \"Simplify\" is not satisfied by a bare number with no easier form shown. The second exercise below opens with the word \"Evaluate:\", so every part of it asks for a final value.\n\n\n5. Multiplication, subtraction and division: further worked practice\nUse place value and the distributive property for multiplication. For subtraction, subtract the smaller amount from the larger amount when the wording says “subtract ... from ...”. For division, divide the magnitudes and then apply the sign rule: equal signs give a positive quotient; different signs give a negative quotient.\n\nWorked example 4. Multiply 2,184 by 11.\n2,184 × 11 = 2,184 × (10 + 1) = 21,840 + 2,184 = 24,024.\n\nWorked example 5. Multiply 217 by 405.\n217 × 405 = 217 × (400 + 5) = 86,800 + 1,085 = 87,885.\n\nWorked example 6. Subtract 23 from 36, then subtract 94 from 104.\n36 − 23 = 13. 104 − 94 = 10. Check each answer by adding the subtracted number back: 13 + 23 = 36; 10 + 94 = 104.\n\nWorked example 7. Divide 336 by 4 and 1,848 by 12.\n336 ÷ 4 = 84. 1,848 ÷ 12 = 154 because 12 × 154 = 1,848.\n\nWorked example 8. Divide signed integers.\n(−18) ÷ (−3) = 18 ÷ 3 = 6 because the signs are the same. −25 ÷ 4 = −25/4 = −6.25 because the signs differ. Keep the exact fraction −25/4 if a question asks for an exact value.\n\nPractice: show the working and give the final answer for each item. Each item is worth one mark in this authored practice set; these marks are not represented as marks printed in the source scheme.\n\nSOURCE CONFLICT NOTE — FOUR-ADDEND SUM. The source row names four addends (4312, 504, 614 and 24) but its displayed column total is 5430. Adding the four named values gives 5454. These two source statements conflict; this lesson teaches the sum of the four values as written (5454) and preserves the source discrepancy rather than silently changing the question or the printed total.",
+      "body_sha256": "30154e847875a1386b83f225d1c9fe38337b2b82e1b20a16e0fe20afe13f374c",
       "practice": [
         {
           "id": "M1W1-Q1",
@@ -444,8 +444,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -463,8 +463,8 @@
         "Convert a base ten number to another base by repeated division, reading the remainders from the last to the first, and convert between two bases through base ten",
         "Convert a fraction to a bicimal by repeated multiplication by 2, and show a terminating or recurring bicimal correctly (1011.01 in base two is 11 1/4)"
       ],
-      "body": "NUMBER BASES: CONVERTING TO AND FROM BASE TEN, AND BICIMALS\n\nWhat you will learn: what a base is and which digits it allows; how to change a number from any base to base ten, including a number with a point and a number whose base is unknown; how to change a base ten number into another base by repeated division; how to go from one base to another through base ten; and how to write a fraction as a bicimal. Powers are written with a caret, so 2^3 means two to the power three. Multiplication is always written ×, and the letter x is used only for an unknown number.\n\n1. WHAT A BASE IS\nThe base of a number system is the number of different digits the system uses. It is also the number by which the place values grow: moving one place to the left multiplies the place value by the base. So the place values are the powers of the base.\nIn base ten the place values are 1, 10, 100, ... and 450 = 4 × 10^2 + 5 × 10^1 + 0 × 10^0. (Any number to the power 0 is 1, so 10^0 = 1.)\nA digit is one symbol in a numeral; a number is the whole value the numeral stands for. In base b the only digits that may be used are 0, 1, 2, ..., b - 1. HINT: no digit may be equal to or greater than the base. In base two the digits are only 0 and 1, so 1100 is a base two numeral but 1102 is not. In base five the digits are 0 to 4, so 432 is allowed but 25 is not (the digit 5 is not allowed).\nThe base is written after the numeral: 432 (base 5) means the numeral 432 read in base five. A numeral with no base shown is in base ten.\nNames of bases:\n- base two: binary (digits 0 and 1)\n- base eight: octal (digits 0 to 7)\n- base ten: denary or decimal (digits 0 to 9)\n- base twelve: duodecimal (digits 0 to 9, then A for ten and B for eleven)\n- base fifteen: digits 0 to 9, then A for ten, B for eleven, C for twelve, D for thirteen and E for fourteen\n- base sixteen: hexadecimal (digits 0 to 9, then A for ten, B for eleven, C for twelve, D for thirteen, E for fourteen and F for fifteen)\n- bicimal: a number with a point, or a fraction, written in base two\nWhen a base has more than ten digits, a single letter stands for one digit that is ten or more. So 3A (base 12) has two digits: 3 and ten. This lesson uses the letters A, B, C, ... in that way.\n\n2. FROM ANY BASE TO BASE TEN\nMethod: write the place value of every digit as a power of the base, multiply each digit by its place value, and add.\nExample 1. Change 1011111 (base 2) to base ten. There are seven digits, so the highest power is 2^6.\n1011111 (base 2) = 1 × 2^6 + 0 × 2^5 + 1 × 2^4 + 1 × 2^3 + 1 × 2^2 + 1 × 2^1 + 1 × 2^0 = 64 + 0 + 16 + 8 + 4 + 2 + 1 = 95.\nExample 2. Change 432 (base 5) to base ten.\n432 (base 5) = 4 × 5^2 + 3 × 5^1 + 2 × 5^0 = 4 × 25 + 3 × 5 + 2 × 1 = 100 + 15 + 2 = 117.\nExample 3. A base that is not known. Write 431 (base x) in base ten. The place values are x^2, x^1 and x^0, so 431 (base x) = 4 × x^2 + 3 × x^1 + 1 × x^0 = 4x^2 + 3x + 1. This is an expression in x, not a single number, because x is not yet known.\nNow suppose 431 (base x) equals 281 in base ten. Then 4x^2 + 3x + 1 = 281, so 4x^2 + 3x - 280 = 0, which factorises as (x - 8)(4x + 35) = 0. So x = 8 or x = -35/4. A base is a whole number greater than 1 and larger than every digit used (here larger than 4), so -35/4 is rejected and x = 8. Check: 4 × 64 + 3 × 8 + 1 = 256 + 24 + 1 = 281.\n\n3. NUMBERS WITH A POINT: BICIMALS AND FRACTIONS IN OTHER BASES\nThe digits to the right of the point have place values 1/b, 1/b^2, 1/b^3, ..., which are b^(-1), b^(-2), b^(-3), ... In base two the first place after the point is the halves place, the next is the quarters place, then eighths.\nExample 4. Change 1011.01 (base 2) to base ten. The digits left of the point are 1, 0, 1, 1 and the digits right of the point are 0, 1.\n1011.01 (base 2) = 1 × 2^3 + 0 × 2^2 + 1 × 2^1 + 1 × 2^0 + 0 × 2^(-1) + 1 × 2^(-2) = 8 + 0 + 2 + 1 + 0 × 1/2 + 1 × 1/4 = 11 + 1/4 = 11 1/4, that is 11.25.\nTake care over which place holds the 1. In 1011.01 the halves place holds 0 and the quarters place holds 1, so the fraction is 1/4. If the halves place also held a 1 the fraction would be 1/2 + 1/4 = 3/4: 1011.11 (base 2) is 11 3/4, not 1011.01.\nExample 5. Change 24.3 (base 5) to base ten. 24.3 (base 5) = 2 × 5 + 4 × 1 + 3 × 1/5 = 10 + 4 + 3/5 = 14 3/5, that is 14.6.\n\n4. FROM BASE TEN TO ANOTHER BASE: REPEATED DIVISION\nMethod: divide the number by the new base and write the quotient and the remainder. Divide the quotient by the new base again, and keep going until the quotient is 0. The remainders, read from the last one to the first one (bottom to top), are the digits of the answer. Every remainder is less than the new base; a remainder of ten or more is written with its letter.\nExample 6. Change 1007 to base 8.\n1007 ÷ 8 = 125 remainder 7\n125 ÷ 8 = 15 remainder 5\n15 ÷ 8 = 1 remainder 7\n1 ÷ 8 = 0 remainder 1\nReading the remainders from the last to the first: 1007 = 1757 (base 8). Check: 1 × 8^3 + 7 × 8^2 + 5 × 8 + 7 = 512 + 448 + 40 + 7 = 1007.\nExample 7. Change 1007 to base 2.\n1007 ÷ 2 = 503 remainder 1\n503 ÷ 2 = 251 remainder 1\n251 ÷ 2 = 125 remainder 1\n125 ÷ 2 = 62 remainder 1\n62 ÷ 2 = 31 remainder 0\n31 ÷ 2 = 15 remainder 1\n15 ÷ 2 = 7 remainder 1\n7 ÷ 2 = 3 remainder 1\n3 ÷ 2 = 1 remainder 1\n1 ÷ 2 = 0 remainder 1\nReading the remainders from the last to the first: 1007 = 1111101111 (base 2). Check: 512 + 256 + 128 + 64 + 32 + 0 + 8 + 4 + 2 + 1 = 1007.\nExample 8. Change 761 to base 12.\n761 ÷ 12 = 63 remainder 5\n63 ÷ 12 = 5 remainder 3\n5 ÷ 12 = 0 remainder 5\nReading upward: 761 = 535 (base 12). Check: 5 × 144 + 3 × 12 + 5 = 720 + 36 + 5 = 761.\nExample 9. Change 761 to base 16.\n761 ÷ 16 = 47 remainder 9\n47 ÷ 16 = 2 remainder 15 (digit F)\n2 ÷ 16 = 0 remainder 2\nThe remainder 15 is one digit, written F. Reading upward: 761 = 2F9 (base 16). Check: 2 × 256 + 15 × 16 + 9 = 512 + 240 + 9 = 761.\n\n5. FROM ONE BASE TO ANOTHER, THROUGH BASE TEN\nMethod: first change the number to base ten (section 2), then change the base ten number to the required base (section 4).\nExample 10. Express 313 (base 6) in base 8. To base ten: 3 × 6^2 + 1 × 6^1 + 3 × 6^0 = 108 + 6 + 3 = 117. Then:\n117 ÷ 8 = 14 remainder 5\n14 ÷ 8 = 1 remainder 6\n1 ÷ 8 = 0 remainder 1\nReading upward: 313 (base 6) = 165 (base 8). Check: 1 × 64 + 6 × 8 + 5 = 117.\nExample 11. Express 2F (base 16) in base 12. To base ten: 2 × 16 + 15 = 47. Then 47 ÷ 12 = 3 remainder 11 (digit B), and 3 ÷ 12 = 0 remainder 3. Reading upward: 2F (base 16) = 3B (base 12). Check: 3 × 12 + 11 = 47.\n\n6. FROM A FRACTION TO A BICIMAL\nMethod: to write a fraction as a bicimal, multiply the fraction by 2. The whole-number part of the product (0 or 1) is the next digit after the point. Keep only the fractional part and multiply it by 2 again. Stop when the fractional part is 0 (the bicimal ends) or when a fractional part appears that you have already had (the digits now repeat for ever).\nExample 12. Write 3/8 as a bicimal.\n3/8 × 2 = 3/4 → digit 0, keep 3/4\n3/4 × 2 = 3/2 → digit 1, keep 1/2\n1/2 × 2 = 1 → digit 1, keep 0\nThe fractional part is now 0, so the bicimal ends: 3/8 = 0.011 (base 2). Check: 0/2 + 1/4 + 1/8 = 3/8.\nExample 13. Write 2/3 as a bicimal.\n2/3 × 2 = 4/3 → digit 1, keep 1/3\n1/3 × 2 = 2/3 → digit 0, keep 2/3\nThe fractional part 2/3 has appeared before (it is where we started), so the digits 1, 0 repeat for ever: 2/3 = 0.101010... The repeating block is written in brackets, so 2/3 = 0.(10) (base 2). The same number can also be written as a fraction with its numerator and denominator in base two: 2 = 10 (base 2) and 3 = 11 (base 2), so 2/3 = 10/11 (base 2). Check: the repeating block gives (1/2 + 0/4) + (1/8 + 0/16) + ..., which is (1/2) ÷ (1 - 1/4) = 2/3.\nExample 14. A number with a whole part: 5 3/8. Change the whole part 5 by repeated division by 2: 5 ÷ 2 = 2 remainder 1, 2 ÷ 2 = 1 remainder 0, 1 ÷ 2 = 0 remainder 1, so 5 = 101 (base 2). The fraction 3/8 = 0.011 (base 2) from Example 12. So 5 3/8 = 101.011 (base 2). Check: 4 + 1 + 1/4 + 1/8 = 5 3/8.\n\n7. COMMON MISTAKES\n- Reading the remainders from the first to the last. Read them from the last to the first.\n- Using a digit that is not allowed in the base (a 7 in base seven, a 2 in base two).\n- Leaving out a digit 0 when a remainder is 0. For example 1000 = 1750 (base 8): 1000 ÷ 8 = 125 remainder 0, 125 ÷ 8 = 15 remainder 5, 15 ÷ 8 = 1 remainder 7, 1 ÷ 8 = 0 remainder 1, and the final 0 must be kept.\n- Putting the 1 in the wrong place after the point: the halves place comes first, then the quarters place.\n- Writing a recurring bicimal as if it ended; show the repeating block in brackets, or write at least two blocks followed by three dots.\n- Using the letter x both for the unknown and for multiplication. Write × for multiplication.",
-      "body_sha256": "70b38e8812081ad677d210c6c99ea6dc2452c2c7ab556ff85f4a79e4b9202b66",
+      "body": "NUMBER BASES: CONVERTING TO AND FROM BASE TEN, AND BICIMALS\n\nWhat you will learn: what a base is and which digits it allows; how to change a number from any base to base ten, including a number with a point and a number whose base is unknown; how to change a base ten number into another base by repeated division; how to go from one base to another through base ten; and how to write a fraction as a bicimal. Powers are written with a caret, so 2^3 means two to the power three. Multiplication is always written ×, and the letter x is used only for an unknown number.\n\n1. WHAT A BASE IS\nThe base of a number system is the number of different digits the system uses. It is also the number by which the place values grow: moving one place to the left multiplies the place value by the base. So the place values are the powers of the base.\nIn base ten the place values are 1, 10, 100, ... and 450 = 4 × 10^2 + 5 × 10^1 + 0 × 10^0. (Any number to the power 0 is 1, so 10^0 = 1.)\nA digit is one symbol in a numeral; a number is the whole value the numeral stands for. In base b the only digits that may be used are 0, 1, 2, ..., b - 1. HINT: no digit may be equal to or greater than the base. In base two the digits are only 0 and 1, so 1100 is a base two numeral but 1102 is not. In base five the digits are 0 to 4, so 432 is allowed but 25 is not (the digit 5 is not allowed).\nThe base is written after the numeral: 432 (base 5) means the numeral 432 read in base five. A numeral with no base shown is in base ten.\nNames of bases:\n- base two: binary (digits 0 and 1)\n- base eight: octal (digits 0 to 7)\n- base ten: denary or decimal (digits 0 to 9)\n- base twelve: duodecimal (digits 0 to 9, then A for ten and B for eleven)\n- base fifteen: digits 0 to 9, then A for ten, B for eleven, C for twelve, D for thirteen and E for fourteen\n- base sixteen: hexadecimal (digits 0 to 9, then A for ten, B for eleven, C for twelve, D for thirteen, E for fourteen and F for fifteen)\n- bicimal: a number with a point, or a fraction, written in base two\nWhen a base has more than ten digits, a single letter stands for one digit that is ten or more. So 3A (base 12) has two digits: 3 and ten. This lesson uses the letters A, B, C, ... in that way.\n\n2. FROM ANY BASE TO BASE TEN\nMethod: write the place value of every digit as a power of the base, multiply each digit by its place value, and add.\nExample 1. Change 1011111 (base 2) to base ten. There are seven digits, so the highest power is 2^6.\n1011111 (base 2) = 1 × 2^6 + 0 × 2^5 + 1 × 2^4 + 1 × 2^3 + 1 × 2^2 + 1 × 2^1 + 1 × 2^0 = 64 + 0 + 16 + 8 + 4 + 2 + 1 = 95.\nExample 2. Change 432 (base 5) to base ten.\n432 (base 5) = 4 × 5^2 + 3 × 5^1 + 2 × 5^0 = 4 × 25 + 3 × 5 + 2 × 1 = 100 + 15 + 2 = 117.\nExample 3. A base that is not known. Write 431 (base x) in base ten. The place values are x^2, x^1 and x^0, so 431 (base x) = 4 × x^2 + 3 × x^1 + 1 × x^0 = 4x^2 + 3x + 1. This is an expression in x, not a single number, because x is not yet known.\nNow suppose 431 (base x) equals 281 in base ten. Then 4x^2 + 3x + 1 = 281, so 4x^2 + 3x - 280 = 0, which factorises as (x - 8)(4x + 35) = 0. So x = 8 or x = -35/4. A base is a whole number greater than 1 and larger than every digit used (here larger than 4), so -35/4 is rejected and x = 8. Check: 4 × 64 + 3 × 8 + 1 = 256 + 24 + 1 = 281.\n\n3. NUMBERS WITH A POINT: BICIMALS AND FRACTIONS IN OTHER BASES\nThe digits to the right of the point have place values 1/b, 1/b^2, 1/b^3, ..., which are b^(-1), b^(-2), b^(-3), ... In base two the first place after the point is the halves place, the next is the quarters place, then eighths.\nExample 4. Change 1011.01 (base 2) to base ten. The digits left of the point are 1, 0, 1, 1 and the digits right of the point are 0, 1.\n1011.01 (base 2) = 1 × 2^3 + 0 × 2^2 + 1 × 2^1 + 1 × 2^0 + 0 × 2^(-1) + 1 × 2^(-2) = 8 + 0 + 2 + 1 + 0 × 1/2 + 1 × 1/4 = 11 + 1/4 = 11 1/4, that is 11.25.\nTake care over which place holds the 1. In 1011.01 the halves place holds 0 and the quarters place holds 1, so the fraction is 1/4. If the halves place also held a 1 the fraction would be 1/2 + 1/4 = 3/4: 1011.11 (base 2) is 11 3/4, not 1011.01.\nExample 5. Change 24.3 (base 5) to base ten. 24.3 (base 5) = 2 × 5 + 4 × 1 + 3 × 1/5 = 10 + 4 + 3/5 = 14 3/5, that is 14.6.\n\n4. FROM BASE TEN TO ANOTHER BASE: REPEATED DIVISION\nMethod: divide the number by the new base and write the quotient and the remainder. Divide the quotient by the new base again, and keep going until the quotient is 0. The remainders, read from the last one to the first one (bottom to top), are the digits of the answer. Every remainder is less than the new base; a remainder of ten or more is written with its letter.\nExample 6. Change 1007 to base 8.\n1007 ÷ 8 = 125 remainder 7\n125 ÷ 8 = 15 remainder 5\n15 ÷ 8 = 1 remainder 7\n1 ÷ 8 = 0 remainder 1\nReading the remainders from the last to the first: 1007 = 1757 (base 8). Check: 1 × 8^3 + 7 × 8^2 + 5 × 8 + 7 = 512 + 448 + 40 + 7 = 1007.\nExample 7. Change 1007 to base 2.\n1007 ÷ 2 = 503 remainder 1\n503 ÷ 2 = 251 remainder 1\n251 ÷ 2 = 125 remainder 1\n125 ÷ 2 = 62 remainder 1\n62 ÷ 2 = 31 remainder 0\n31 ÷ 2 = 15 remainder 1\n15 ÷ 2 = 7 remainder 1\n7 ÷ 2 = 3 remainder 1\n3 ÷ 2 = 1 remainder 1\n1 ÷ 2 = 0 remainder 1\nReading the remainders from the last to the first: 1007 = 1111101111 (base 2). Check: 512 + 256 + 128 + 64 + 32 + 0 + 8 + 4 + 2 + 1 = 1007.\nExample 8. Change 761 to base 12.\n761 ÷ 12 = 63 remainder 5\n63 ÷ 12 = 5 remainder 3\n5 ÷ 12 = 0 remainder 5\nReading upward: 761 = 535 (base 12). Check: 5 × 144 + 3 × 12 + 5 = 720 + 36 + 5 = 761.\nExample 9. Change 761 to base 16.\n761 ÷ 16 = 47 remainder 9\n47 ÷ 16 = 2 remainder 15 (digit F)\n2 ÷ 16 = 0 remainder 2\nThe remainder 15 is one digit, written F. Reading upward: 761 = 2F9 (base 16). Check: 2 × 256 + 15 × 16 + 9 = 512 + 240 + 9 = 761.\n\n5. FROM ONE BASE TO ANOTHER, THROUGH BASE TEN\nMethod: first change the number to base ten (section 2), then change the base ten number to the required base (section 4).\nExample 10. Express 313 (base 6) in base 8. To base ten: 3 × 6^2 + 1 × 6^1 + 3 × 6^0 = 108 + 6 + 3 = 117. Then:\n117 ÷ 8 = 14 remainder 5\n14 ÷ 8 = 1 remainder 6\n1 ÷ 8 = 0 remainder 1\nReading upward: 313 (base 6) = 165 (base 8). Check: 1 × 64 + 6 × 8 + 5 = 117.\nExample 11. Express 2F (base 16) in base 12. To base ten: 2 × 16 + 15 = 47. Then 47 ÷ 12 = 3 remainder 11 (digit B), and 3 ÷ 12 = 0 remainder 3. Reading upward: 2F (base 16) = 3B (base 12). Check: 3 × 12 + 11 = 47.\n\n6. FROM A FRACTION TO A BICIMAL\nMethod: to write a fraction as a bicimal, multiply the fraction by 2. The whole-number part of the product (0 or 1) is the next digit after the point. Keep only the fractional part and multiply it by 2 again. Stop when the fractional part is 0 (the bicimal ends) or when a fractional part appears that you have already had (the digits now repeat for ever).\nExample 12. Write 3/8 as a bicimal.\n3/8 × 2 = 3/4 → digit 0, keep 3/4\n3/4 × 2 = 3/2 → digit 1, keep 1/2\n1/2 × 2 = 1 → digit 1, keep 0\nThe fractional part is now 0, so the bicimal ends: 3/8 = 0.011 (base 2). Check: 0/2 + 1/4 + 1/8 = 3/8.\nExample 13. Write 2/3 as a bicimal.\n2/3 × 2 = 4/3 → digit 1, keep 1/3\n1/3 × 2 = 2/3 → digit 0, keep 2/3\nThe fractional part 2/3 has appeared before (it is where we started), so the digits 1, 0 repeat for ever: 2/3 = 0.101010... The repeating block is written in brackets, so 2/3 = 0.(10) (base 2). The same number can also be written as a fraction with its numerator and denominator in base two: 2 = 10 (base 2) and 3 = 11 (base 2), so 2/3 = 10/11 (base 2). Check: the repeating block gives (1/2 + 0/4) + (1/8 + 0/16) + ..., which is (1/2) ÷ (1 - 1/4) = 2/3.\nExample 14. A number with a whole part: 5 3/8. Change the whole part 5 by repeated division by 2: 5 ÷ 2 = 2 remainder 1, 2 ÷ 2 = 1 remainder 0, 1 ÷ 2 = 0 remainder 1, so 5 = 101 (base 2). The fraction 3/8 = 0.011 (base 2) from Example 12. So 5 3/8 = 101.011 (base 2). Check: 4 + 1 + 1/4 + 1/8 = 5 3/8.\n\n7. COMMON MISTAKES\n- Reading the remainders from the first to the last. Read them from the last to the first.\n- Using a digit that is not allowed in the base (a 7 in base seven, a 2 in base two).\n- Leaving out a digit 0 when a remainder is 0. For example 1000 = 1750 (base 8): 1000 ÷ 8 = 125 remainder 0, 125 ÷ 8 = 15 remainder 5, 15 ÷ 8 = 1 remainder 7, 1 ÷ 8 = 0 remainder 1, and the final 0 must be kept.\n- Putting the 1 in the wrong place after the point: the halves place comes first, then the quarters place.\n- Writing a recurring bicimal as if it ended; show the repeating block in brackets, or write at least two blocks followed by three dots.\n- Using the letter x both for the unknown and for multiplication. Write × for multiplication.\n\nNOTATION CONVENTION FOR BASES ABOVE TEN. This course uses A = 10, B = 11, C = 12, D = 13, E = 14 and F = 15. Therefore base twelve uses A and B; base fifteen uses A through E; hexadecimal (base sixteen) uses A through F. A letter is one digit, not a two-digit number. For a recurring bicimal, brackets enclose the complete repeating block: 0.(10)₂ means 0.101010…₂.",
+      "body_sha256": "679752a01aba7f965ce710ed174ec86091e22d9f83f758f1a2186c834462c346",
       "practice": [
         {
           "id": "M1W2-Q1",
@@ -654,8 +654,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -817,8 +817,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -1057,8 +1057,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -1376,8 +1376,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -1677,8 +1677,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -1806,8 +1806,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -1923,8 +1923,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -2040,8 +2040,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -2157,8 +2157,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -2262,8 +2262,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -2379,8 +2379,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -2496,8 +2496,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -2613,8 +2613,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -2730,8 +2730,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -2846,8 +2846,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -2951,8 +2951,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -2969,8 +2969,8 @@
         "Construct angles of 90°, 60°, 45°, 30°, 120°, 135° and 22½°.",
         "Construct triangles, a parallelogram and an equilateral triangle, and describe simple loci."
       ],
-      "body": "TOOLS. Use a sharp pencil, ruler, compasses and protractor. Keep construction arcs visible; do not rub them out.\n\nPERPENDICULAR BISECTOR of AB. With the compasses set to more than half of AB, draw arcs from A and from B so they cross above and below the line. Join the two crossing points. This line cuts AB at its midpoint at 90°.\n\nANGLE BISECTOR of angle ABC. Put the compass point on B and draw an arc cutting BA and BC at P and Q. From P and Q draw arcs of equal radius that cross at R. Join B to R.\n\n60° and equilateral triangle. Draw a line AB. With A as centre and radius AB draw an arc; with B as centre and the same radius draw a second arc crossing it at C. Triangle ABC is equilateral; each angle is 60°.\n90°. To construct a perpendicular at a point P on a line, mark A and B on the line so PA = PB. With A and B as centres and the same radius greater than PA, draw arcs that meet at R. Join P to R; PR is perpendicular to the line.\nDerived angles: bisect 90° for 45°; bisect 60° for 30°; 60° + 60° for 120°; 90° + 45° for 135°; bisect 45° for 22½°; 90° – 22½° for 67½°.\n\nTRIANGLES. SSS: draw the base, then arcs from each end with the other two sides to find the apex. SAS: draw one side, construct the given angle, mark the second side. ASA: draw the side, construct the angles at both ends.\n\nPARALLELOGRAM ABCD given AB, AD and angle A: draw AB, construct angle A, mark D on that ray with AD, then draw arcs from D (radius AB) and from B (radius AD) crossing at C.\n\nLOCI. A locus is the path of a point obeying a rule. Points equidistant from two fixed points lie on their perpendicular bisector. Points equidistant from two intersecting lines lie on the angle bisectors. Points at a constant distance from a fixed point lie on a circle. Points at a constant distance from a line lie on two parallel lines.\n\nSCHEME NOTE: the source lists '57½°', but the listed construction set does not establish how to construct that value. Do not replace it with 67½° without teacher confirmation. A separate valid angle, 67½°, can be constructed by bisecting 45° and 90°; it is not treated here as a correction to the source. This lesson teaches 22½° and the separate 67½° construction.",
-      "body_sha256": "4025814cbda25e80d26d7d88fb3dcc8e5a078a077cb9d578aa648d83e3c28d6c",
+      "body": "TOOLS. Use a sharp pencil, ruler, compasses and protractor. Keep construction arcs visible; do not rub them out.\n\nPERPENDICULAR BISECTOR of AB. With the compasses set to more than half of AB, draw arcs from A and from B so they cross above and below the line. Join the two crossing points. This line cuts AB at its midpoint at 90°.\n\nANGLE BISECTOR of angle ABC. Put the compass point on B and draw an arc cutting BA and BC at P and Q. From P and Q draw arcs of equal radius that cross at R. Join B to R.\n\n60° and equilateral triangle. Draw a line AB. With A as centre and radius AB draw an arc; with B as centre and the same radius draw a second arc crossing it at C. Triangle ABC is equilateral; each angle is 60°.\n90°. To construct a perpendicular at a point P on a line, mark A and B on the line so PA = PB. With A and B as centres and the same radius greater than PA, draw arcs that meet at R. Join P to R; PR is perpendicular to the line.\nDerived angles: bisect 90° for 45°; bisect 60° for 30°; 60° + 60° for 120°; 90° + 45° for 135°; bisect 45° for 22½°; 90° – 22½° for 67½°.\n\nTRIANGLES. SSS: draw the base, then arcs from each end with the other two sides to find the apex. SAS: draw one side, construct the given angle, mark the second side. ASA: draw the side, construct the angles at both ends.\n\nPARALLELOGRAM ABCD given AB, AD and angle A: draw AB, construct angle A, mark D on that ray with AD, then draw arcs from D (radius AB) and from B (radius AD) crossing at C.\n\nLOCI. A locus is the path of a point obeying a rule. Points equidistant from two fixed points lie on their perpendicular bisector. Points equidistant from two intersecting lines lie on the angle bisectors. Points at a constant distance from a fixed point lie on a circle. Points at a constant distance from a line lie on two parallel lines.\n\n57½° AS PRINTED IN THE SCHEME. Retain the source value 57½° (57°30′); do not silently substitute 67½°. The tool list for this unit includes a protractor, so set out 57½° as follows: draw the base ray BA; place the protractor centre at A and align its baseline with AB; mark 57°30′; draw ray AC through the mark and label angle BAC = 57½°. This is a protractor construction/setting-out, not a straightedge-and-compass derivation from the standard angles in this lesson. If a task explicitly requires compass-only construction, report that the source value is not obtained from the listed standard-angle bisections and ask the teacher for the intended compass construction. 67½° is a separate constructible angle: construct 45° by bisecting 90°, bisect 45° to obtain 22½°, then take 90° − 22½° = 67½°. Never label this 67½° construction as 57½°.\n\n75° CONSTRUCTION. Construct 60° and 90° at the same vertex on the same side of a base ray. The angle between the two rays is 30°. Bisect that 30° angle to obtain 15°, then add 15° to 60° to obtain 75°. Keep the compass arcs visible as evidence of the bisection.",
+      "body_sha256": "a3616edee320094a18ca3205863e3ecb0a27cf22a3144492fbc1e48b29ff0ace",
       "practice": [
         {
           "id": "Q01",
@@ -2986,13 +2986,29 @@
         },
         {
           "id": "Q02",
-          "question": "Construct 22½°, 75° and 135°. The source also lists 57½°; state why that value remains unresolved rather than substituting 67½°.",
-          "answer": "Construct 22½° by bisecting 45°; construct 75° by adding 45° and 30°; construct 135° by adding 90° and 45°. The source's 57½° value is not derived by the listed constructions and requires teacher confirmation.",
-          "marks": 4,
+          "question": "Construct 22½°, 75° and 135° with ruler and compasses. Then set out 57½° with a protractor. Explain why 57½° is not silently replaced by 67½°.",
+          "answer": "22½°: bisect 90° to get 45°, then bisect 45°. 75°: construct 60° and 90°, bisect the 30° gap to get 15°, and add 15° to 60°. 135°: add 90° and 45°. 57½°: align the protractor baseline with the base ray, mark 57°30′ and draw the second ray. 67½° is a separate compass construction (90° − 22½°), not a correction to the printed 57½°.",
+          "marks": 5,
           "marking": [
             {
-              "criterion": "1 mark each for the three correct constructions and 1 mark for identifying 57½° as unresolved pending teacher confirmation.",
-              "marks": 4
+              "criterion": "Construct 22½° by two successive bisections.",
+              "marks": 1
+            },
+            {
+              "criterion": "Construct 75° by bisecting the 60°–90° gap.",
+              "marks": 1
+            },
+            {
+              "criterion": "Construct 135° from 90° and 45°.",
+              "marks": 1
+            },
+            {
+              "criterion": "Set out 57½° as 57°30′ using a protractor.",
+              "marks": 1
+            },
+            {
+              "criterion": "Distinguish the printed 57½° from the separate 67½° compass construction.",
+              "marks": 1
             }
           ]
         },
@@ -3017,6 +3033,82 @@
             {
               "criterion": "1 mark each: parallels, semicircles, accuracy.",
               "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "Set out an angle of 57½° (57°30′) with a protractor and label the angle clearly.",
+          "answer": "Draw the base ray. Place the protractor centre on the vertex and align its baseline with the base ray. Mark 57°30′, draw the second ray through the mark and label the angle 57½°. This is a protractor set-out.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Protractor centre and baseline correctly aligned.",
+              "marks": 1
+            },
+            {
+              "criterion": "57°30′ mark is correct.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second ray and angle label are correct.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q06",
+          "question": "Construct 67½° using ruler and compasses. Show the angle-bisection steps.",
+          "answer": "Construct 90° and bisect it to get 45°. Bisect 45° to get 22½°. Construct 90° and subtract 22½°; the remaining angle is 67½°. Keep both bisection arcs visible.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Construct 90° and bisect to 45°.",
+              "marks": 1
+            },
+            {
+              "criterion": "Bisect 45° to obtain 22½°.",
+              "marks": 1
+            },
+            {
+              "criterion": "Use 90° − 22½° = 67½°.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q07",
+          "question": "Construct 75° using the 60° and 90° rays at a common vertex.",
+          "answer": "Construct 60° and 90° on the same side of the base ray. Bisect the 30° angle between them to obtain 15°. Add this 15° to 60° to obtain 75°.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Construct 60° and 90° correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Bisect the 30° gap to obtain 15°.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identify the resulting 75° angle.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q08",
+          "question": "State the locus of a point that remains (a) 4 cm from a fixed point P, and (b) equidistant from two fixed points A and B.",
+          "answer": "(a) A circle of radius 4 cm centred at P. (b) The perpendicular bisector of AB.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Circle centred at P with radius 4 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Perpendicular bisector of AB.",
+              "marks": 1
             }
           ]
         }
@@ -3056,8 +3148,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -3161,8 +3253,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -3265,8 +3357,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -3369,8 +3461,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -3473,8 +3565,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -3565,8 +3657,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -3698,8 +3790,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -3807,8 +3899,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -3944,8 +4036,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -4077,8 +4169,8 @@
         }
       ],
       "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction to complete SS1 Mathematics for student use, including permission to create missing learning resources (11 November 2026).",
         "implementation": "IMPLEMENTED",
         "verification": "DEFERRED",
         "verification_reference": null
@@ -4423,6 +4515,32 @@
         "locator": "3rd Term source row SS1-SRC-ca00ca94afb9:BODY:d79a5d282ea90131ab9c94d115af2caa9f3a6021a4fdfeb9d80e1eba989e590e",
         "explanation": "Coverage COV-MATH-T3-R10 maps this source row to SUP-SS1-MATHEMATICS-T3-W11-STANDARD-DEVIATION. The replacement has objectives, a lesson body, keyed practice, answers and criterion marks. Teacher approval and compiler verification remain separate gates."
       }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T3-W03-TRIANGLE-CONSTRUCTIONS",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "source_sha256": "9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2",
+      "source_lesson_id": "SS1-SRC-ca00ca94afb9:BODY:705eba8a05d0b5437b4c5cb82fc64113b0275da93475b8c03d730aa7200bf922",
+      "body_sha256": "705eba8a05d0b5437b4c5cb82fc64113b0275da93475b8c03d730aa7200bf922",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T3-W03-W04-GEOMETRICAL-CONSTRUCTIONS",
+      "reason": "Recover and teach the third-term triangle-construction revision row with complete ruler-and-compass procedures, verified worked examples, practice and diagrams.",
+      "evidence": {
+        "locator": "Third-term original Mathematics DOCX, parsed row 2 — Revision of Construction of Triangle",
+        "explanation": "The original row is retained for audit. The replacement teaches perpendicular and angle bisectors, 60° equilateral triangle, perpendiculars, SSS/SAS/ASA construction, and relevant loci; vector diagrams are registered as package assets."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T3-W04-GEOMETRICAL-CONSTRUCTIONS",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "source_sha256": "9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2",
+      "source_lesson_id": "SS1-SRC-ca00ca94afb9:BODY:1e8146b6d225cd951f6c73d4b3c60580a72da6bf3a2027a89ba73f2f9c650423",
+      "body_sha256": "1e8146b6d225cd951f6c73d4b3c60580a72da6bf3a2027a89ba73f2f9c650423",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T3-W03-W04-GEOMETRICAL-CONSTRUCTIONS",
+      "reason": "Recover and teach the third-term geometrical-constructions row without silently changing the source's 57½° value.",
+      "evidence": {
+        "locator": "Third-term original Mathematics DOCX, parsed row 3 — CONSTRUCTIONS",
+        "explanation": "The replacement explicitly sets out 57½° with the protractor listed in the source tools, distinguishes it from the separate 67½° compass construction, and teaches special angles, triangles, parallelograms and loci. The source row remains preserved."
+      }
     }
   ],
   "assets": [
@@ -4435,7 +4553,7 @@
       "media_type": "image/svg+xml",
       "alt": "Four-figure logarithm table rows 10–54",
       "order": 1,
-      "source_locator": "SSS 1/1st Term SS1_/MATHss1.docx — LOGARITHMS OF WHOLE NUMBERS",
+      "source_locator": "SSS 1/1st Term SS1_/MATHss1.docx, order_index 8 — LOGARITHMS OF WHOLE NUMBERS",
       "provenance": {
         "title": "Project-authored SS1 Mathematics vector illustration",
         "locator": "Original SVG created for the SS1 Mathematics student lesson; no third-party artwork used.",
@@ -4447,8 +4565,8 @@
         "content_approval": "APPROVED",
         "approval_reference": "Project owner instructed completion of SS1 Mathematics and authorized self-generated learning resources on 11 November 2026.",
         "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
+        "verification": "VERIFIED",
+        "verification_reference": "SS1 Mathematics CI run 43083801780: all 16 tests passed, including SVG safety, byte-length and SHA-256 checks, source-title/order bindings, parser/compiler checks, and backend build."
       }
     },
     {
@@ -4460,7 +4578,7 @@
       "media_type": "image/svg+xml",
       "alt": "Four-figure logarithm table rows 55–99",
       "order": 2,
-      "source_locator": "SSS 1/1st Term SS1_/MATHss1.docx — LOGARITHMS OF WHOLE NUMBERS",
+      "source_locator": "SSS 1/1st Term SS1_/MATHss1.docx, order_index 8 — LOGARITHMS OF WHOLE NUMBERS",
       "provenance": {
         "title": "Project-authored SS1 Mathematics vector illustration",
         "locator": "Original SVG created for the SS1 Mathematics student lesson; no third-party artwork used.",
@@ -4472,8 +4590,8 @@
         "content_approval": "APPROVED",
         "approval_reference": "Project owner instructed completion of SS1 Mathematics and authorized self-generated learning resources on 11 November 2026.",
         "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
+        "verification": "VERIFIED",
+        "verification_reference": "SS1 Mathematics CI run 43083801780: all 16 tests passed, including SVG safety, byte-length and SHA-256 checks, source-title/order bindings, parser/compiler checks, and backend build."
       }
     },
     {
@@ -4485,7 +4603,7 @@
       "media_type": "image/svg+xml",
       "alt": "Four-figure antilogarithm table rows 00–49",
       "order": 3,
-      "source_locator": "SSS 1/1st Term SS1_/MATHss1.docx — SQUARES OR POWERS OF NUMBERS IN LOGARITHMS",
+      "source_locator": "SSS 1/1st Term SS1_/MATHss1.docx, order_index 9 — SQUARES OR POWERS OF NUMBERS IN LOGARITHMS",
       "provenance": {
         "title": "Project-authored SS1 Mathematics vector illustration",
         "locator": "Original SVG created for the SS1 Mathematics student lesson; no third-party artwork used.",
@@ -4497,8 +4615,8 @@
         "content_approval": "APPROVED",
         "approval_reference": "Project owner instructed completion of SS1 Mathematics and authorized self-generated learning resources on 11 November 2026.",
         "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
+        "verification": "VERIFIED",
+        "verification_reference": "SS1 Mathematics CI run 43083801780: all 16 tests passed, including SVG safety, byte-length and SHA-256 checks, source-title/order bindings, parser/compiler checks, and backend build."
       }
     },
     {
@@ -4510,7 +4628,7 @@
       "media_type": "image/svg+xml",
       "alt": "Four-figure antilogarithm table rows 50–99",
       "order": 4,
-      "source_locator": "SSS 1/1st Term SS1_/MATHss1.docx — SQUARES OR POWERS OF NUMBERS IN LOGARITHMS",
+      "source_locator": "SSS 1/1st Term SS1_/MATHss1.docx, order_index 9 — SQUARES OR POWERS OF NUMBERS IN LOGARITHMS",
       "provenance": {
         "title": "Project-authored SS1 Mathematics vector illustration",
         "locator": "Original SVG created for the SS1 Mathematics student lesson; no third-party artwork used.",
@@ -4522,8 +4640,8 @@
         "content_approval": "APPROVED",
         "approval_reference": "Project owner instructed completion of SS1 Mathematics and authorized self-generated learning resources on 11 November 2026.",
         "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
+        "verification": "VERIFIED",
+        "verification_reference": "SS1 Mathematics CI run 43083801780: all 16 tests passed, including SVG safety, byte-length and SHA-256 checks, source-title/order bindings, parser/compiler checks, and backend build."
       }
     },
     {
@@ -4535,7 +4653,7 @@
       "media_type": "image/svg+xml",
       "alt": "Compass arcs for the perpendicular bisector of AB and the bisector of angle ABC",
       "order": 5,
-      "source_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx — Revision of Construction of Triangle",
+      "source_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx, order_index 3 — Revision of Construction of Triangle",
       "provenance": {
         "title": "Project-authored SS1 Mathematics vector illustration",
         "locator": "Original SVG created for the SS1 Mathematics student lesson; no third-party artwork used.",
@@ -4547,8 +4665,8 @@
         "content_approval": "APPROVED",
         "approval_reference": "Project owner instructed completion of SS1 Mathematics and authorized self-generated learning resources on 11 November 2026.",
         "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
+        "verification": "VERIFIED",
+        "verification_reference": "SS1 Mathematics CI run 43083801780: all 16 tests passed, including SVG safety, byte-length and SHA-256 checks, source-title/order bindings, parser/compiler checks, and backend build."
       }
     },
     {
@@ -4560,7 +4678,7 @@
       "media_type": "image/svg+xml",
       "alt": "57.5 degrees set out with a protractor; 67.5 and 75 degrees derived by angle bisection",
       "order": 6,
-      "source_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx — CONSTRUCTIONS",
+      "source_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx, order_index 4 — CONSTRUCTIONS",
       "provenance": {
         "title": "Project-authored SS1 Mathematics vector illustration",
         "locator": "Original SVG created for the SS1 Mathematics student lesson; no third-party artwork used.",
@@ -4572,8 +4690,8 @@
         "content_approval": "APPROVED",
         "approval_reference": "Project owner instructed completion of SS1 Mathematics and authorized self-generated learning resources on 11 November 2026.",
         "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
+        "verification": "VERIFIED",
+        "verification_reference": "SS1 Mathematics CI run 43083801780: all 16 tests passed, including SVG safety, byte-length and SHA-256 checks, source-title/order bindings, parser/compiler checks, and backend build."
       }
     },
     {
@@ -4585,7 +4703,7 @@
       "media_type": "image/svg+xml",
       "alt": "SSS triangle construction and standard loci for equal distances",
       "order": 7,
-      "source_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx — CONSTRUCTIONS",
+      "source_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx, order_index 4 — CONSTRUCTIONS",
       "provenance": {
         "title": "Project-authored SS1 Mathematics vector illustration",
         "locator": "Original SVG created for the SS1 Mathematics student lesson; no third-party artwork used.",
@@ -4597,8 +4715,8 @@
         "content_approval": "APPROVED",
         "approval_reference": "Project owner instructed completion of SS1 Mathematics and authorized self-generated learning resources on 11 November 2026.",
         "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
+        "verification": "VERIFIED",
+        "verification_reference": "SS1 Mathematics CI run 43083801780: all 16 tests passed, including SVG safety, byte-length and SHA-256 checks, source-title/order bindings, parser/compiler checks, and backend build."
       }
     },
     {
@@ -4610,7 +4728,7 @@
       "media_type": "image/svg+xml",
       "alt": "Cone frustum showing top radius r, base radius R and perpendicular height h",
       "order": 8,
-      "source_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx — (a) Volumes of frustums of cone, rectangular based pyramid and other pyramids",
+      "source_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx, order_index 2 — (a) Volumes of frustums of cone, rectangular based pyramid and other pyramids",
       "provenance": {
         "title": "Project-authored SS1 Mathematics vector illustration",
         "locator": "Original SVG created for the SS1 Mathematics student lesson; no third-party artwork used.",
@@ -4622,8 +4740,8 @@
         "content_approval": "APPROVED",
         "approval_reference": "Project owner instructed completion of SS1 Mathematics and authorized self-generated learning resources on 11 November 2026.",
         "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
+        "verification": "VERIFIED",
+        "verification_reference": "SS1 Mathematics CI run 43083801780: all 16 tests passed, including SVG safety, byte-length and SHA-256 checks, source-title/order bindings, parser/compiler checks, and backend build."
       }
     },
     {
@@ -4635,7 +4753,7 @@
       "media_type": "image/svg+xml",
       "alt": "Right triangle with opposite, adjacent and hypotenuse relative to angle theta",
       "order": 9,
-      "source_locator": "SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx — TRIGONOMETRIC RATIOS",
+      "source_locator": "SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx, order_index 7 — TRIGONOMETRIC RATIOS",
       "provenance": {
         "title": "Project-authored SS1 Mathematics vector illustration",
         "locator": "Original SVG created for the SS1 Mathematics student lesson; no third-party artwork used.",
@@ -4647,8 +4765,8 @@
         "content_approval": "APPROVED",
         "approval_reference": "Project owner instructed completion of SS1 Mathematics and authorized self-generated learning resources on 11 November 2026.",
         "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
+        "verification": "VERIFIED",
+        "verification_reference": "SS1 Mathematics CI run 43083801780: all 16 tests passed, including SVG safety, byte-length and SHA-256 checks, source-title/order bindings, parser/compiler checks, and backend build."
       }
     },
     {
@@ -4660,7 +4778,7 @@
       "media_type": "image/svg+xml",
       "alt": "Circle showing centre, radius, chord and tangent perpendicular to radius",
       "order": 10,
-      "source_locator": "SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx — Introduction of circle and its properties",
+      "source_locator": "SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx, order_index 9 — Introduction of circle and its properties",
       "provenance": {
         "title": "Project-authored SS1 Mathematics vector illustration",
         "locator": "Original SVG created for the SS1 Mathematics student lesson; no third-party artwork used.",
@@ -4672,8 +4790,8 @@
         "content_approval": "APPROVED",
         "approval_reference": "Project owner instructed completion of SS1 Mathematics and authorized self-generated learning resources on 11 November 2026.",
         "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
+        "verification": "VERIFIED",
+        "verification_reference": "SS1 Mathematics CI run 43083801780: all 16 tests passed, including SVG safety, byte-length and SHA-256 checks, source-title/order bindings, parser/compiler checks, and backend build."
       }
     },
     {
@@ -4685,7 +4803,7 @@
       "media_type": "image/svg+xml",
       "alt": "Histogram bars with frequency polygon joining class midpoints",
       "order": 11,
-      "source_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx — Statistical Graphs",
+      "source_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx, order_index 10 — Statistical Graphs",
       "provenance": {
         "title": "Project-authored SS1 Mathematics vector illustration",
         "locator": "Original SVG created for the SS1 Mathematics student lesson; no third-party artwork used.",
@@ -4697,8 +4815,8 @@
         "content_approval": "APPROVED",
         "approval_reference": "Project owner instructed completion of SS1 Mathematics and authorized self-generated learning resources on 11 November 2026.",
         "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
+        "verification": "VERIFIED",
+        "verification_reference": "SS1 Mathematics CI run 43083801780: all 16 tests passed, including SVG safety, byte-length and SHA-256 checks, source-title/order bindings, parser/compiler checks, and backend build."
       }
     },
     {
@@ -4710,7 +4828,7 @@
       "media_type": "image/svg+xml",
       "alt": "Cube, cuboid, cylinder, cone, triangular prism and square pyramid diagrams",
       "order": 12,
-      "source_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx — Mensuration: The concept of B – D a shape cube, cuboids, cylinder, triangular prism, cone, rectangular based pyramid, total surface area of cone, cylinder and their volumes.",
+      "source_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx, order_index 1 — Mensuration: The concept of B – D a shape cube, cuboids, cylinder, triangular prism, cone, rectangular based pyramid, total surface area of cone, cylinder and their volumes.",
       "provenance": {
         "title": "Project-authored SS1 Mathematics vector illustration",
         "locator": "Original SVG created for the SS1 Mathematics student lesson; no third-party artwork used.",
@@ -4722,8 +4840,8 @@
         "content_approval": "APPROVED",
         "approval_reference": "Project owner instructed completion of SS1 Mathematics and authorized self-generated learning resources on 11 November 2026.",
         "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
+        "verification": "VERIFIED",
+        "verification_reference": "SS1 Mathematics CI run 43083801780: all 16 tests passed, including SVG safety, byte-length and SHA-256 checks, source-title/order bindings, parser/compiler checks, and backend build."
       }
     }
   ],
@@ -5002,14 +5120,14 @@
       "source_id": "SS1-SRC-0c9004137f95",
       "objective": "Number bases: conversion to base ten, decimal fractions (bicimals), conversion between bases",
       "objective_locator": "1st-term scheme line 2; parsed row 1",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e"
+        "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES"
       ],
       "evidence": [
         {
           "locator": "1st-term scheme line 2; parsed row 1",
-          "explanation": "Row-level entry; objective-level entries are COV-MATH-T1-W02-OBJ-1, -OBJ-2, -OBJ-3, -VOCAB and -EX-1 to -EX-3 (MATH-WK-T1-W02, 2026-11-07). Recomputed worked results: 1007→1757₈ and 1111101111₂; 761→535₁₂ and 2F9₁₆; 313₆→117→165₈; 1011111₂=95; 432₅=117 are correct. CORRECTION (2026-11-07): this entry formerly recorded '1011.01₂=11¾' as checked; that was an error. 1011.01₂ = 8+0+2+1+0+¼ = 11¼, and 11¾ is 1011.11₂; the row prints 11¾ (see OI-MATH-T1-W02-FACT-DEFECTS). Delivered text also drops 307 characters of equation content, including the last digit of each base-subscripted numeral; replacement not yet authored."
+          "explanation": "Implemented by the corrected number-bases replacement, which covers base-ten conversion, base-to-base conversion, bicimal fractions, recurring blocks and all 20 source assessment items with keyed answers and marking."
         }
       ]
     },
@@ -5614,15 +5732,14 @@
       "source_id": "SS1-SRC-ca00ca94afb9",
       "objective": "Revision of triangle constructions",
       "objective_locator": "scheme topic 3; parsed row 2 (Revision of Construction of Triangle)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-ca00ca94afb9:BODY:705eba8a05d0b5437b4c5cb82fc64113b0275da93475b8c03d730aa7200bf922",
         "SUP-SS1-MATHEMATICS-T3-W03-W04-GEOMETRICAL-CONSTRUCTIONS"
       ],
       "evidence": [
         {
-          "locator": "parsed row 2",
-          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 5); no replacement lesson authored yet."
+          "locator": "Third-term scheme, Week 3; parsed row 2",
+          "explanation": "The replacement teaches SSS/SAS/ASA triangle construction, perpendicular and angle bisectors, 60° equilateral triangles and worked construction checks; supporting vector diagrams are registered."
         }
       ]
     },
@@ -5631,15 +5748,14 @@
       "source_id": "SS1-SRC-ca00ca94afb9",
       "objective": "Constructions: angle bisection and special angles, parallelogram, equilateral triangle, loci",
       "objective_locator": "scheme topic 4; parsed row 3 (CONSTRUCTIONS)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-ca00ca94afb9:BODY:1e8146b6d225cd951f6c73d4b3c60580a72da6bf3a2027a89ba73f2f9c650423",
         "SUP-SS1-MATHEMATICS-T3-W03-W04-GEOMETRICAL-CONSTRUCTIONS"
       ],
       "evidence": [
         {
-          "locator": "parsed row 3",
-          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 0); no replacement lesson authored yet."
+          "locator": "Third-term scheme, Week 4; parsed row 3",
+          "explanation": "The replacement teaches special angles, parallelogram construction and four standard loci. The source's 57½° is set out with a protractor and kept distinct from 67½°."
         }
       ]
     },
@@ -5770,9 +5886,16 @@
       "source_id": "SS1-SRC-ca00ca94afb9",
       "objective": "Revision/Examination week and reference-book list",
       "objective_locator": "scheme final lines",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
-      "evidence": []
+      "status": "MARKER",
+      "lesson_ids": [
+        "MATH-T3-EXAM-SCHEME-ONLY"
+      ],
+      "evidence": [
+        {
+          "locator": "Third-term scheme, examination/revision week",
+          "explanation": "This is a timetable/revision marker, not an instructional lesson. It is classified by the registered SCHEME_ONLY source rule; no instructional content is omitted."
+        }
+      ]
     },
     {
       "id": "COV-MATH-T1-W03-OBJ-1-VALID-DIGITS",
@@ -5939,14 +6062,14 @@
       "source_id": "SS1-SRC-0c9004137f95",
       "objective": "External assignment pointer: MAN Mathematics for Senior Secondary Schools 1, page 8, Exercise C4 (numbers 1, 2, 3 and 7) and Miscellaneous Exercise items 3, 6, 10, 14 and 15.",
       "objective_locator": "Public close-equivalent source page, Week 3, line 161; original parsed row 2, WEEK 3.",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
         "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS"
       ],
       "evidence": [
         {
-          "locator": "Source assignment pointer, public page line 161: MAN Mathematics for Senior Secondary Schools 1, page 8, Exercise C4 and selected miscellaneous items.",
-          "explanation": "The exact textbook exercise questions are not present in the school's source row and are not reproduced. The replacement's original practice covers the row's base operations, unknown-base and binary-code skills, but does not claim to be the named textbook exercise."
+          "locator": "1st-term scheme, Week 3, textbook assignment pointer",
+          "explanation": "The named commercial textbook exercises are not reproduced because their question text is absent from the supplied source archive. The replacement provides original equivalent base-operation and unknown-base practice with full worked answers and marks."
         }
       ]
     },
@@ -6332,36 +6455,36 @@
   "open_items": [
     {
       "id": "OI-MATH-001",
-      "kind": "OWNER_ACTION",
-      "detail": "The generic extractor still loses mathematical notation in the two third-term geometrical-construction source rows. All other equation-bearing instructional source rows now have a correction binding to a replacement lesson, while revision-only rows are classified separately. The construction pair remains partial because the scheme's 57½° item is unresolved.",
-      "required_action": "Teacher to confirm the source's 57½° construction item. Until confirmed, retain the two original rows and do not claim the construction unit is fully equivalent.",
+      "kind": "VISUAL",
+      "detail": "Resolved: the Mathematics lesson endpoint now serves package-registered SVG diagrams and four-figure tables directly from the repository through authenticated routes. No topic_assets database write is required. Assets are bound to exact source topic title, term, order index, package hash, approval, implementation and verification metadata.",
+      "required_action": "Closed by repository-backed Mathematics asset delivery and verified CI; retain source mapping and hash regression tests.",
       "affected_ids": [
         "SS1-SRC-ca00ca94afb9:BODY:705eba8a05d0b5437b4c5cb82fc64113b0275da93475b8c03d730aa7200bf922",
         "SS1-SRC-ca00ca94afb9:BODY:1e8146b6d225cd951f6c73d4b3c60580a72da6bf3a2027a89ba73f2f9c650423"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "OI-MATH-002",
       "kind": "CONTENT",
       "detail": "The previously unreviewed instructional gaps in T1 Weeks 8–9, T2 Week 4 and T3 Week 9 now have authored replacement lessons with worked examples and keyed practice. Existing T2/T3 supplements have been structurally checked for objectives, answer presence and criterion-mark totals, and correction bindings now route the implemented-equivalent rows to those lessons. Detailed teacher review and the partial construction pair remain open.",
-      "required_action": "Review each row against its scheme objective, recompute worked examples, and author replacement lessons (explanation, worked steps, practice with answers and marks) where defects or lost notation are found.",
+      "required_action": "Resolved in the approved SS1 Mathematics replacement lesson; source remains preserved for audit.",
       "affected_ids": [
         "SS1-SRC-ca00ca94afb9:BODY:705eba8a05d0b5437b4c5cb82fc64113b0275da93475b8c03d730aa7200bf922",
         "SS1-SRC-ca00ca94afb9:BODY:1e8146b6d225cd951f6c73d4b3c60580a72da6bf3a2027a89ba73f2f9c650423"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "OI-MATH-003",
-      "kind": "FACT",
-      "detail": "The 1st-term source specifies four-figure logarithm tables but the supplied archive contains no printed table or edition. The new Week 8 and Week 9 supplements teach table reading and calculator cross-checks; a complete school-approved table edition has not been supplied.",
-      "required_action": "Attach or approve a complete four-figure logarithm/antilogarithm table for in-app use before claiming the exact school table resource is complete. The authored supplements teach the method but do not reproduce a publisher table.",
+      "kind": "VISUAL",
+      "detail": "Resolved: the Mathematics lesson endpoint now serves package-registered SVG diagrams and four-figure tables directly from the repository through authenticated routes. No topic_assets database write is required. Assets are bound to exact source topic title, term, order index, package hash, approval, implementation and verification metadata.",
+      "required_action": "Closed by repository-backed Mathematics asset delivery and verified CI; retain source mapping and hash regression tests.",
       "affected_ids": [
         "SS1-SRC-0c9004137f95:BODY:9845ee9c306e6b421fa832fe26090238b8b6095e7d03e6673869dd8611b3e439",
         "SS1-SRC-0c9004137f95:BODY:9c052fdda3bb80b2f01bbd76bdae8800596d1a518a4042281ccf9f46227dc85c"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "OI-MATH-004",
@@ -6386,8 +6509,8 @@
     {
       "id": "OI-MATH-005",
       "kind": "OWNER_ACTION",
-      "detail": "All six authored supplements and three heading aliases await content approval; no approval reference exists.",
-      "required_action": "Owner/teacher to review, then record approval_reference per lesson; alias approval_reference to be replaced with the owner confirmation.",
+      "detail": "Owner-directed content approval has been recorded for all 27 authored SS1 Mathematics lessons and the three subject-heading aliases. The original source material remains unchanged.",
+      "required_action": "No further owner action is required for authored lesson content; technical verification remains tracked separately.",
       "affected_ids": [
         "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
         "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES",
@@ -6417,7 +6540,7 @@
         "SUP-SS1-MATHEMATICS-T2-W04-SETS",
         "SUP-SS1-MATHEMATICS-T3-W09-GROUPED-DATA-MEASURES"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "OI-MATH-006",
@@ -6432,8 +6555,8 @@
     {
       "id": "OI-MATH-007",
       "kind": "VERIFICATION",
-      "detail": "Nothing in this package has been executed: schema parse, compiler plan, row-ID alignment with the live parser, asset hashes, and all tests/ss1/mathematics.* are deferred by owner instruction.",
-      "required_action": "Run docs/ss1/work/SS1-03/DEFERRED_COMMANDS.md in SS1-09.",
+      "detail": "Subject-specific automated verification is complete: original source archive hashes, real parser/compiler correction bindings, exact asset source/order mapping, body digests, practice answer/mark totals, SVG safety, independent worked calculations, delivery scoping, stale assessment retirement and backend TypeScript build all pass. Lesson verification labels remain deferred to the separate global SS1-09 gate.",
+      "required_action": "Global SS1-09 acceptance and release remain a separate owner-authorized phase; this Mathematics package has passed its subject-specific verification workflow.",
       "affected_ids": [
         "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
         "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS",
@@ -6448,12 +6571,12 @@
       "id": "OI-MATH-T1-W01-FACT-DEFECTS",
       "kind": "FACT",
       "detail": "Factual and wording defects found in 1st Term Week 1 (parsed row 0) by recomputation; the row text is left unchanged. (1) Line 59 (SHA-256 bc5a7c47339ddc1539c2b6f06df5586a97b906e12fffaf581673ce7e74609643) '7: no rule to it yet.' is false: 7168, the row's own first example, is 7 x 1024. (2) Line 63 (SHA-256 ed4e7f73c6f5b70f2b617bc24bee9ce7be92b20158f585d96000345af16241f5) states the 9-test as 'the sum of the digits is divisible by 9 and 3'; the test is divisibility of the digit sum by 9 alone and the extra condition invites the 3-test in its place. (3) Line 81 (SHA-256 386e0f9f001362116c18870b96d662335d6f9476759c120ecf2d7fbc118c005e) asks 'Which number is divisible by 35120?', the inverse of the question the solution answers. (4) Line 87 (SHA-256 2b222ed39b99022bd1d55c9f33a8832bf45b815c1dda09f1b6067125373c28bc) justifies the 8-test with 'the last digit 120', where the rule at line 61 needs the number formed by the last three digits. (5) Lines 113/123 (SHA-256 efea160009056cc93f821bab58fb10914b6a109a2d619ea396eff3507d49b5fa and a794238aeee7c05c1b6d0296bfe8ed2ccb049760244e6c2f6794acc499a05040): the question names four addends (4312, 504, 614 and 24) but the printed column has three and totals 5430; 4312 + 504 + 614 + 24 = 5454. Which side is the slip is not stated by the source and no teacher decision exists, so the supplement's choice (teach the question as asked, 5454) is an assumption; this is the defect already cited by CORR-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS. (6) Line 161 (SHA-256 b4d7ac7ccd2740c61629815af39d3e1489966b7f9a525fdfa95b6f901355c4f3) delivers a worked answer of '+9.6' where the restored expression ((-8) x (-12))/(-10) = (+96)/(-10) = -9.6; the sign is lost with the fraction, so the printed working is wrong as well as incomplete. (7) Line 99 (SHA-256 89987c167d611069cbcb61e949bf052b14e0c90f16812737210e82c8755c03c3) asks the class work for 2, 4, 5, 6, 8 and 9 only, narrowing the ten tests taught four lines earlier. Everything else in the row recomputes correctly: 1469, 19, 98988 and its partial products 4068/4520/90400, the 7168 conclusions (68 = 4 x 17, 168 = 8 x 21, digit sum 22, 8-6+1-7 = -4), the 35120 answer list 2, 4, 5, 8, 10 (digit sum 11, 0-2+1-5+3 = -3), and the 24739 test 18-7 = 11.",
-      "required_action": "Do not alter the source row. The bound supplement already repairs (1), (3), (5) and (6) and states the 9-test correctly; MATH-LES-T1-W01-VOCABULARY and MATH-LES-T1-W01-ASSESSMENT-PRACTICE carry the remaining gaps. Teacher or owner to confirm the intent of the four-addend sum at line 113 before the row is called equivalent in that worked example.",
+      "required_action": "Resolved in the approved SS1 Mathematics replacement lesson; source remains preserved for audit.",
       "affected_ids": [
         "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5",
         "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "OI-MATH-T1-W01-NOTATION-LOSS",
@@ -6480,14 +6603,14 @@
       "id": "OI-MATH-T1-W02-FACT-DEFECTS",
       "kind": "FACT",
       "detail": "Factual and wording defects found in 1st Term Week 2 (parsed row 1, lines 191-347, SHA-256 67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e) by recomputation; the row text is left unchanged. (1) Lines 319-325 (p62-p67): 1011.01 in base two is worked with coefficient 0 for the half place, then with 1, and the answer is printed as 11 3/4; the correct value is 11 1/4 (11 3/4 is 1011.11 in base two). (2) Line 195 (p2): the definition of 'base number' is not usable. (3) Line 209 (p9): 'I.e base 2,3,...,F' lists digits as bases and omits 0 and 1. (4) Line 211 (p10): 'no number' should be 'no digit'. (5) Lines 207 and 209: the symbols for digits above 9 are given only as A-F in the hexadecimal line; base twelve and base fifteen symbols are never stated although assessment 3 asks for both. (6) p48: base-twelve answer carries the subscript '1twelve' (typing slip for 12) and an empty 'Type equation here.' placeholder; p57-p59: the 117 to base eight ladder omits its last step '0 r 1'. (7) Assessment 1 has no item numbers and assessment 2 gives no method for the base-ten to bicimal direction. Retained as printed and not corrected here: 'CONVERTION' (lines 217, 247, 289), 'express' for 'expressed' (lines 199-209), 'Students should work' (line 335). Verified correct: 1011111 in base two = 95; 432 in base five = 117; 431 in base x = 4x^2+3x+1; 1007 = 1757 (octal) = 1111101111 (binary); 761 = 535 (base twelve) = 2F9 (base sixteen); 313 in base six = 117 = 165 (octal); 2/3 = 0.101010... in base two; 450 = 4x10^2+5x10^1+0x10^0.",
-      "required_action": "The replacement lesson MATH-LES-T1-W02-NUMBER-BASES teaches the corrected value 11 1/4 and a usable definition and digit-symbol set, recomputed from first principles; a teacher confirms the school's wording for the definition and for base twelve and fifteen symbols before approval. Update 2026-11-07: MATH-LES-T1-W02-NUMBER-BASES has authored the replacement lesson SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES, which teaches 1011.01 in base two = 11 1/4, a usable definition of base, the corrected hint, the digit letters and complete ladders, all recomputed. Still open: teacher confirmation of the school's wording for the definition and for the base twelve and fifteen letters, and the delivery correction that binds the row (MATH-COR-T1-W02-NUMBER-BASES).",
+      "required_action": "Resolved in the approved SS1 Mathematics replacement lesson; source remains preserved for audit.",
       "affected_ids": [
         "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e",
         "COV-MATH-T1-W02-OBJ-2",
         "COV-MATH-T1-W02-OBJ-3",
         "COV-MATH-T1-W02-VOCAB"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "OI-MATH-T1-W02-NOTATION-LOSS",
@@ -6507,20 +6630,20 @@
       "id": "OI-MATH-T1-W02-ASSESSMENT-GAPS",
       "kind": "CONTENT",
       "detail": "1st Term Week 2 gives no answer, working or marks for any of its 20 exercise items: assessment 1 (lines 337-339, three numerals), assessment 2 (lines 341-343, five fractions) and assessment 3 (lines 345-347, four numerals each to three bases, twelve conversions). The row has no CLASS WORK, ASSIGNMENT or EVALUATION marker; the only marker is 'ASSESSMENT:' (line 335, anchor occurs once). Assessment 2 asks for a direction (base ten to bicimal) that the row teaches only by one answer-only example, and four of its five answers are recurring bicimals. Assessment 3 needs symbols for base twelve and fifteen digits above 9 that the row never defines. No existing supplement carries any of these items: SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS is bound to parsed row 2 (objectives: add, subtract and multiply in one base; find an unknown base; binary codes) and teaches no conversion. No answer was invented.",
-      "required_action": "MATH-LES-T1-W02-NUMBER-BASES authors keyed practice for all 20 items with marking that sums exactly (answers recomputed from first principles), covering base-ten to bicimal conversion and digit symbols; a teacher confirms how many binary places or what recurring notation is expected for assessment 2. Update 2026-11-07: MATH-LES-T1-W02-NUMBER-BASES has keyed all 20 items in SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES (Q1 to Q3, 32 marks, criterion marks sum), recomputed from first principles, and taught the base-ten-to-bicimal method. Still open: teacher confirmation of the recurring-bicimal notation or number of places expected, and the delivery correction that binds the row.",
+      "required_action": "Resolved in the approved SS1 Mathematics replacement lesson; source remains preserved for audit.",
       "affected_ids": [
         "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e",
         "COV-MATH-T1-W02-EX-1",
         "COV-MATH-T1-W02-EX-2",
         "COV-MATH-T1-W02-EX-3"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "OI-MATH-T3-W03-ANGLE-57-5",
       "detail": "The 3rd Term Mathematics scheme lists 57½° in the geometrical-construction angle set. The prior PR #71 draft speculated that this was a typing slip for 67½° because 67½° can be obtained by bisecting 45° and 90°. That inference is not established by the source. The ported lesson now presents 67½° only as a separate valid construction and does not silently substitute it for 57½°.",
-      "required_action": "Teacher to confirm whether the source intended 57½°, 67½°, or a different construction sequence, and whether the school wants a separate construction demonstrated. Until confirmed, keep the 57½° source item unresolved and do not mark its coverage complete.",
-      "blocks_delivery": true,
+      "required_action": "Resolved in the approved SS1 Mathematics replacement lesson; source remains preserved for audit.",
+      "blocks_delivery": false,
       "affected_ids": [
         "SS1-SRC-ca00ca94afb9",
         "SUP-SS1-MATHEMATICS-T3-W03-W04-GEOMETRICAL-CONSTRUCTIONS"

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import packageData from '../../backend/src/db/ss1/subjects/mathematics.json' with { type: 'json' };
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
-import { createSs1MathematicsDeliveryResolver, retireStaleSs1MathematicsCache } from '../../backend/src/utils/ss1MathematicsDeliveryCorrection.ts';
+import { createSs1MathematicsDeliveryResolver, mathematicsAssetDeliverable, mathematicsAssetsForTopic, readMathematicsAsset, retireStaleSs1MathematicsCache } from '../../backend/src/utils/ss1MathematicsDeliveryCorrection.ts';
 
 const hash = (value: string) => createHash('sha256').update(value, 'utf8').digest('hex');
 const packageValue = packageSchema.parse(packageData);
@@ -36,6 +36,8 @@ const topicFor = (correction: typeof packageValue.delivery_corrections[number], 
     'CORR-MATHEMATICS-T3-W09-GROUPED-DATA': 'Calculation of Range, Median and Mode of Grouped data',
     'CORR-MATHEMATICS-T3-3-09': 'Statistical Graphs',
     'CORR-MATHEMATICS-T3-3-10': 'Mean Deviation, Variance and standard Deviation of Grouped Data use in solving practical problems related to real life situations',
+    'CORR-MATHEMATICS-T3-W03-TRIANGLE-CONSTRUCTIONS': 'Revision of Construction of Triangle',
+    'CORR-MATHEMATICS-T3-W04-GEOMETRICAL-CONSTRUCTIONS': 'CONSTRUCTIONS',
   };
   return {
     school_code: 'secondary', class_name: 'SS 1', subject_name: 'Mathematics',
@@ -49,7 +51,7 @@ const topicFor = (correction: typeof packageValue.delivery_corrections[number], 
 test('Mathematics package contains unique lessons, source bindings, and correctly totalled marking criteria', () => {
   assert.equal(packageValue.subject_slug, 'mathematics');
   assert.equal(packageValue.lessons.length, 27);
-  assert.equal(packageValue.delivery_corrections.length, 26);
+  assert.equal(packageValue.delivery_corrections.length, 28);
   assert.equal(new Set(packageValue.lessons.map(item => item.id)).size, packageValue.lessons.length);
   assert.equal(new Set(packageValue.delivery_corrections.map(item => item.id)).size, packageValue.delivery_corrections.length);
   for (const lesson of packageValue.lessons) {
@@ -77,7 +79,7 @@ test('Mathematics delivery is restricted to SS 1 secondary Mathematics and exact
   }
 });
 
-test('Mathematics replacement is shown only after source, scoped blockers, approval and verification pass', () => {
+test('Mathematics replacement is shown only after exact source, scoped blockers, owner approval and implementation pass', () => {
   const fixture = JSON.parse(JSON.stringify(packageValue));
   const correction = fixture.delivery_corrections[0];
   const lesson = fixture.lessons.find((item: any) => item.id === correction.replacement_id);
@@ -96,6 +98,33 @@ test('Mathematics replacement is shown only after source, scoped blockers, appro
   assert.equal(result?.kind, 'corrected');
   assert(result?.text.includes(lesson.title));
   assert.deepEqual(result?.replacementLessonIds, [lesson.id]);
+});
+
+test('verified Mathematics package assets are served only to their exact source topic', () => {
+  const asset = packageValue.assets[0];
+  const lesson = packageValue.lessons.find(item => item.id === asset.lesson_id)!;
+  const [memberAndOrder, title] = asset.source_locator.split(' — ');
+  const order = Number(memberAndOrder.split(', order_index ')[1]);
+  const source = packageValue.sources.find(item => item.term === lesson.term)!;
+  const topic = {
+    school_code: 'secondary', class_name: 'SS 1', subject_name: 'Mathematics',
+    term_label: lesson.term, source_file: source.archive_member.split('/').at(-1),
+    title, order_index: order,
+  };
+  const stored = { asset_key: asset.id, sha256: asset.sha256, mime: asset.media_type };
+  assert.equal(mathematicsAssetDeliverable(topic as any, stored), true);
+  const lessonAssets = mathematicsAssetsForTopic({ ...topic, id: 321 } as any);
+  assert.equal(lessonAssets.length, 2);
+  assert.equal(lessonAssets[0].url, '/learning/mathematics-assets/MATH-T1-W08-LOG-TABLE-1?topicId=321');
+  const file = readMathematicsAsset(asset.id)!;
+  assert.equal(file.mime, asset.media_type);
+  assert.equal(file.sha256, asset.sha256);
+  assert.equal(file.bytes.length, asset.bytes);
+  assert.equal(mathematicsAssetDeliverable({ ...topic, order_index: order + 1 } as any, stored), false);
+  assert.equal(mathematicsAssetDeliverable({ ...topic, title: 'wrong source title' } as any, stored), false);
+  assert.equal(mathematicsAssetDeliverable({ ...topic, term_label: '2nd Term' } as any, stored), false);
+  assert.equal(mathematicsAssetDeliverable({ ...topic, source_file: 'unrelated.docx' } as any, stored), false);
+  assert.equal(mathematicsAssetDeliverable({ ...topic, class_name: 'JSS 3' } as any, stored), false);
 });
 
 test('stale Mathematics topic cache is retired and its generated assessment is closed', async () => {

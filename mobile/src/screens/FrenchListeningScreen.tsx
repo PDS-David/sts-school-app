@@ -5,30 +5,7 @@ import * as Speech from 'expo-speech';
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { Card, Btn, SectionHeader } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
-
-type DialogueLine = { speaker: 'Ada' | 'Le bibliothécaire'; text: string; translation: string };
-const DIALOGUE: DialogueLine[] = [
-  { speaker: 'Ada', text: 'Bonjour, monsieur. Je cherche un livre sur les animaux.', translation: 'Good morning, sir. I am looking for a book about animals.' },
-  { speaker: 'Le bibliothécaire', text: 'Bonjour. Regardez la deuxième étagère, à gauche.', translation: 'Good morning. Look at the second shelf, on the left.' },
-  { speaker: 'Ada', text: 'Merci. Est-ce que je peux emprunter ce livre ?', translation: 'Thank you. Can I borrow this book?' },
-  { speaker: 'Le bibliothécaire', text: 'Oui. Avez-vous votre carte ?', translation: 'Yes. Do you have your card?' },
-  { speaker: 'Ada', text: 'Oui, la voici. Quand dois-je rendre le livre ?', translation: 'Yes, here it is. When must I return the book?' },
-  { speaker: 'Le bibliothécaire', text: 'Vendredi prochain.', translation: 'Next Friday.' },
-  { speaker: 'Ada', text: 'Très bien. Merci et au revoir.', translation: 'Very good. Thank you and goodbye.' },
-  { speaker: 'Le bibliothécaire', text: 'Au revoir.', translation: 'Goodbye.' },
-];
-const QUESTIONS = [
-  { q: 'Quel livre cherche Ada ?', options: ['Un livre sur les animaux.', 'Un livre sur les voitures.', 'Un livre sur la musique.'], answer: 0 },
-  { q: 'Où doit-elle regarder ?', options: ['Sur la première étagère, à droite.', 'Sur la deuxième étagère, à gauche.', 'Près de la porte.'], answer: 1 },
-  { q: 'Que demande Ada au bibliothécaire ?', options: ['Si elle peut acheter le livre.', 'Si elle peut emprunter le livre.', 'Si elle peut lire dehors.'], answer: 1 },
-  { q: 'Que demande le bibliothécaire à Ada ?', options: ['Si elle a sa carte.', 'Si elle connaît le directeur.', 'Si elle a de l’argent.'], answer: 0 },
-  { q: 'Que montre Ada ?', options: ['Son cahier.', 'Son téléphone.', 'Sa carte.'], answer: 2 },
-  { q: 'Quand doit-elle rendre le livre ?', options: ['Lundi prochain.', 'Vendredi prochain.', 'Demain matin.'], answer: 1 },
-  { q: 'Combien de personnes parlent dans le dialogue ?', options: ['Deux personnes.', 'Trois personnes.', 'Quatre personnes.'], answer: 0 },
-  { q: 'Qui indique où se trouve le livre ?', options: ['Ada.', 'Le bibliothécaire.', 'Un autre élève.'], answer: 1 },
-  { q: 'Quelle expression de politesse Ada utilise-t-elle ?', options: ['Pardon.', 'S’il vous plaît.', 'Merci.'], answer: 2 },
-  { q: 'Quelle expression termine la conversation ?', options: ['À demain.', 'Au revoir.', 'Bonne nuit.'], answer: 1 },
-];
+import { FRENCH_DIALOGUE as DIALOGUE, FRENCH_LISTENING_QUESTIONS as QUESTIONS, type FrenchDialogueLine as DialogueLine, gradeFrenchListeningAnswers } from '../data/frenchListening';
 
 const STANDARD_AUDIO = require('../../assets/french/SS1_French_Dialogue_standard.mp3');
 const SLOW_AUDIO = require('../../assets/french/SS1_French_Dialogue_slow.mp3');
@@ -48,6 +25,7 @@ export default function FrenchListeningScreen({ navigation }: any) {
   const activeRecordingStatus = activeRecording === 'slow' ? slowStatus : standardStatus;
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
   const [quizSubmitted, setQuizSubmitted] = useState(false);
+  const quizResult = gradeFrenchListeningAnswers(selectedAnswers);
 
   useEffect(() => {
     let active = true;
@@ -207,10 +185,10 @@ export default function FrenchListeningScreen({ navigation }: any) {
           </View>
         ))}
         {!quizSubmitted ? (
-          <Btn label={Object.keys(selectedAnswers).length === QUESTIONS.length ? 'Submit answers' : 'Answer all 10 questions'} disabled={Object.keys(selectedAnswers).length !== QUESTIONS.length} onPress={() => setQuizSubmitted(true)} style={{ marginTop: Spacing.md }} />
+          <Btn label={quizResult.complete ? 'Submit answers' : 'Answer all 10 questions'} disabled={!quizResult.complete} onPress={() => setQuizSubmitted(true)} style={{ marginTop: Spacing.md }} />
         ) : (
           <View style={styles.resultBox}>
-            <Text style={styles.resultTitle}>Your score: {QUESTIONS.filter((item, index) => selectedAnswers[index] === item.answer).length} / 10</Text>
+            <Text style={styles.resultTitle}>Your score: {quizResult.score} / 10</Text>
             <Text style={styles.intro}>Correct answers are marked in green. Review the dialogue and try again if needed.</Text>
             <Btn label="Try again" onPress={() => { setSelectedAnswers({}); setQuizSubmitted(false); }} variant="outline" />
           </View>
