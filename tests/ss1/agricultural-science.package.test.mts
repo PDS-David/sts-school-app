@@ -449,7 +449,7 @@ test('Owner source verification and CI evidence are recorded separately from ass
   assert.match(decision, /DEC-AG-SS1-MILESTONE-2026-11-11/);
   assert.match(decision, /Owner content approval is granted for all 47 authored lessons and all 40 registered assets/);
   assert.match(sourceVerification, /Verification is confirmed for all in the ZIP file used for this work/);
-  assert.match(sourceVerification, /Mammoth 1\\.12\\.2/);
+  assert.match(sourceVerification, /Mammoth 1\.12\.2/);
   assert.match(sourceVerification, /all 47 authored lesson body hashes/);
   assert.equal(p.package_status, 'PENDING', 'package-level release checks remain separate');
   assert.equal(p.lessons.length, 47);
