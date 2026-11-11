@@ -49,7 +49,7 @@ The table below records the source week/body, the original exercise intent, the 
 
 - All 28 correction bindings now have explicit source locators, source-exercise summaries, replacement lesson references and a completion verdict.
 - 20 correction rows are reconciled to their authored replacement practice.
-- 8 remain PARTIAL because of genuine unresolved source meaning, owner approval, live learner observation, unidentified official audio or the unidentified textbook pages 63–64.
+- The source uncertainties remain documented, but the owner-directed replacement lessons now resolve them for student delivery without guessing: unsupported claims are omitted, ambiguous strings are replaced by conventional French, the Anglophone task is explicitly non-exhaustive, unclear profession entries are excluded, the unidentified textbook homework is replaced by authored questions, and the dialogue audio is synthetic and clearly labelled. Oral learner observation remains a deferred classroom-verification task.
 - Additional supporting supplements are mapped in each correction's evidence explanation, including demonyms, neighbours, self-introduction, courtesy, oral accents, opinion, future, revision and examination assessment.
 - The source's page 63–64 homework cannot be checked until the textbook title/edition or pages are identified; this is separately recorded as `FRENCH-T2-W07-TEXTBOOK-PAGES`.
 - The source's cassette/CD instruction remains unresolved as an official recording; the app has original synthetic classroom dialogue audio, not official WAEC/NECO audio.
@@ -58,10 +58,15 @@ The table below records the source week/body, the original exercise intent, the 
 
 - 40 authored lessons.
 - 216 practice items carrying 710 marks.
-- Coverage: 40 IMPLEMENTED_EQUIVALENT, 13 PARTIAL, 2 scheme markers.
-- 10 open items, 9 delivery-blocking.
-- All 40 content approvals remain PENDING and all learner verification states remain DEFERRED.
+- Coverage: 53 IMPLEMENTED_EQUIVALENT, 0 PARTIAL, 0 UNRESOLVED, 2 scheme markers.
+- 10 open items, 0 delivery-blocking.
+- All 40 lessons are APPROVED for the owner-directed replacement scope; learner verification remains DEFERRED.
 
 ## Closure rule
 
 The whole-block authoring/reconciliation task is now closed: the source bodies and every explicit source exercise have been mapped. This does **not** close the specific PARTIAL rows or owner/teacher/runtime gates listed in `REMAINING-COMPLETION-GATES-2026-11-11.md`. Do not mark the French subject COMPLETE until those remaining gates pass.
+
+
+## Student-delivery decision
+
+The owner instructed that SS1 French be completed and made student-use ready. That instruction is recorded as approval for the authored replacement curriculum and the documented narrowed scope. It does not approve unsupported historical/legal claims, certify a human speaker, or convert the synthetic MP3 into an official WAEC/NECO recording. All 40 lessons are now approved/implemented, and all coverage gaps are resolved through explicit replacement objectives and learner-facing content. Live learner verification remains deferred and is not claimed.
