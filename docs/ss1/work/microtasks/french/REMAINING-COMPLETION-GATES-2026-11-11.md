@@ -44,3 +44,8 @@ The Android production workflow already completed dependency installation and Ex
 ## Final distinction
 
 The authored replacement curriculum and source-exercise audit are approved and implemented for student delivery. The live classroom observations remain deferred. The app source changes are not yet a released Android binary until the Expo production build succeeds and the build is distributed to students.
+
+
+## Live deployment confirmation
+
+The code and curriculum changes are merged to `master` at `83c1bcb92d5b4fd3e62a3b2897e88cac5fed1cd3`, and the master integrity/type/regression checks completed successfully. The Render production service has not yet been inspected or confirmed deployed in this session. Connect the Render workspace and verify the backend deployment before claiming the corrected lessons are live to students. Then smoke-test an SS1 French topic through the authenticated student API.
