@@ -10,7 +10,7 @@ import mammoth from 'mammoth';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import { applyRules, compilePackages } from '../../backend/src/db/ss1/compiler.ts';
 import { parseTopics, isRegisteredOtherSs1Source } from '../../backend/src/db/ingestTopics.ts';
-import { createAgriculturalScienceDeliveryResolver, createAgriculturalScienceAssetDeliveryResolver, createAgriculturalScienceSupplementResolver, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceSupplementCache, agriculturalScienceAssessmentDeliverable } from '../../backend/src/utils/ss1AgriculturalScienceDeliveryCorrection.ts';
+import { createAgriculturalScienceDeliveryResolver, createAgriculturalScienceAssetDeliveryResolver, createAgriculturalScienceSupplementResolver, createAgriculturalScienceSourceProjectionResolver, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceSupplementCache, retireStaleAgriculturalScienceSourceCache, agriculturalScienceAssessmentDeliverable } from '../../backend/src/utils/ss1AgriculturalScienceDeliveryCorrection.ts';
 
 const raw = JSON.parse(readFileSync(new URL('../../backend/src/db/ss1/subjects/agricultural-science.json', import.meta.url), 'utf8'));
 const manifestText = readFileSync(new URL('../../docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv', import.meta.url), 'utf8');
@@ -560,7 +560,71 @@ test('supplement cache retirement updates only the exact SS1 Agricultural Scienc
   assert.equal(calls[0].params[4], raw.lessons[0].id);
 });
 
-test('Agricultural Science subject-scoped reviewed import excludes other subjects without swallowing unknown SS1 files', () => {
+
+test('Agricultural Science source projection removes source assessment sections and appends only verified package supplements', () => {
+  const fixture = packageSchema.parse(JSON.parse(JSON.stringify(raw)));
+  const source = fixture.sources[0];
+  const lesson = fixture.lessons.find(item => item.term === source.term)!;
+  const sourceReference = 'Teaching material that students need.\n\nWEEKEND ASSIGNMENT\nQ1. Ambiguous source question?\nAnswer: disputed';
+  const sourceLessonId = `${source.source_id}:BODY:${hash(sourceReference)}`;
+  fixture.coverage[0].lesson_ids = [sourceLessonId, lesson.id];
+  const topic = {
+    school_code: 'secondary', class_name: 'SS 1', subject_name: 'Agricultural Science',
+    term_label: source.term, title: 'Source topic', source_file: source.archive_member.split('/').at(-1),
+    source_reference: sourceReference, summary: 'stale summary', generated_assessment_id: 'stale-assessment',
+  };
+  const projection = createAgriculturalScienceSourceProjectionResolver(fixture)(topic);
+  assert.equal(projection?.kind, 'supplemented');
+  assert(projection);
+  assert(projection.text.includes('Teaching material that students need.'));
+  assert(projection.text.includes('VERIFIED PACKAGE CLARIFICATIONS'));
+  assert(projection.text.includes(lesson.title));
+  assert(!projection.text.includes('WEEKEND ASSIGNMENT'));
+  assert(!projection.text.includes('Answer:'));
+  assert(!projection.text.includes('Marks:'));
+});
+
+test('Agricultural Science source projection sanitizes ambiguous source assessments even without a replacement lesson', () => {
+  const source = raw.sources[0];
+  const sourceReference = 'Teaching material.\n\nWEEKEND ASSIGNMENT\nQ1. Ambiguous source question?\nAnswer: disputed';
+  const topic = {
+    school_code: 'secondary', class_name: 'SS 1', subject_name: 'Agricultural Science',
+    term_label: source.term, title: 'Source topic', source_file: source.archive_member.split('/').at(-1),
+    source_reference: sourceReference, summary: 'stale summary', generated_assessment_id: 'old-assessment',
+  };
+  const safe = safeAgriculturalScienceTopic(topic);
+  assert.equal((safe.delivery_correction as any).status, 'sanitized');
+  assert(safe.source_reference?.includes('Teaching material.'));
+  assert(!safe.source_reference?.includes('WEEKEND ASSIGNMENT'));
+  assert.equal(safe.summary, null);
+  assert.equal(safe.generated_assessment_id, null);
+});
+
+test('stale Agricultural Science source assessments are withdrawn after assessment-section sanitization', async () => {
+  const source = raw.sources[0];
+  const topic = {
+    id: 7702, school_code: 'secondary', class_name: 'SS 1', subject_name: 'Agricultural Science',
+    term_label: source.term, title: 'Source topic', source_file: source.archive_member.split('/').at(-1),
+    source_reference: 'Teaching material.\n\nWEEKEND ASSIGNMENT\nQ1. Ambiguous source question?',
+    summary: 'stale summary', generated_assessment_id: 'assessment-7702',
+  };
+  const calls: Array<{ sql: string; params: unknown[] }> = [];
+  const query = async (sql: string, params: unknown[] = []) => {
+    calls.push({ sql, params });
+    if (sql.includes('SELECT content_fingerprint FROM assessments')) return { rows: [{ content_fingerprint: null }] };
+    if (sql.includes('JOIN assessments a ON a.id=t.generated_assessment_id')) {
+      return { rows: [{ ...topic, assessment_id: 'assessment-7702', content_fingerprint: null }] };
+    }
+    return { rows: [{ retired: 1, closed_assessments: 1, updated_topics: 1 }] };
+  };
+  const result = await agriculturalScienceAssessmentDeliverable(query, 'assessment-7702');
+  assert.equal(result.ok, false);
+  assert.match(result.reason, /source was sanitized or supplemented/i);
+  assert(calls.some(call => call.sql.includes('FOR UPDATE OF t')));
+  assert(calls.some(call => String(call.params[6] ?? '').startsWith('SS1_AG_WITHDRAWN:')));
+});
+
+test('subject-scoped reviewed SS1 import excludes other registered subjects and requires a saved release plan', () => {
   assert.equal(isRegisteredOtherSs1Source('SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx', 'agricultural-science'), true);
   assert.equal(isRegisteredOtherSs1Source(raw.sources[0].archive_member, 'agricultural-science'), false);
   assert.equal(isRegisteredOtherSs1Source('SSS 1/unregistered-source.docx', 'agricultural-science'), false);
