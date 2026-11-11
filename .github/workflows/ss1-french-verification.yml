@@ -12,6 +12,8 @@ on:
       - "mobile/src/screens/TopicDetailScreen.tsx"
       - "mobile/src/navigation/StudentTabs.tsx"
       - "mobile/package.json"
+      - "mobile/app.json"
+      - "mobile/app.config.js"
       - "mobile/assets/french/**"
       - "mobile/src/data/frenchListening.ts"
       - "tests/student-launch.static.test.cjs"
@@ -136,6 +138,7 @@ jobs:
         run: |
           npm run test:ss1:french
           node --import tsx --test ../tests/ss1/french.runtime.test.mts
+          npm run build
 
       - name: Install student app dependencies for TypeScript validation
         working-directory: mobile
@@ -144,6 +147,10 @@ jobs:
       - name: Type-check the student mobile app
         working-directory: mobile
         run: npx tsc --noEmit
+
+      - name: Bundle the student app for Android and verify local French audio assets
+        working-directory: mobile
+        run: npx expo export --platform android --output-dir "$RUNNER_TEMP/french-android-export"
 
       - name: Verify student app French audio routing and playback integration
         working-directory: .
