@@ -40,22 +40,19 @@ test('rejects active content, external references and malformed input', () => {
   assert.equal(isSafeSvg(Buffer.from([0xff, 0xfe, 0x00])), false, 'invalid utf-8');
 });
 
-// Committed diagrams that isSafeSvg still rejects. The Agricultural Science diagrams that use simple
-// class-only <style> blocks are now accepted through the constrained style allowlist, so they are no
-// longer pinned. Pinning the rest means any NEW unsafe SVG still fails CI; shrink this list as each
-// remaining diagram is fixed.
-const KNOWN_REJECTED = [
-  'biology/forest-food-web.svg',
-];
+// Known offenders awaiting an owner decision: this diagram uses <style>, which isSafeSvg rejects by
+// design (SVG is rendered as native vector primitives). Inline its styling or consciously allow <style>.
+// Fixing an entry never fails CI (remove it from this list when you do); only a NEW unsafe SVG fails.
+const KNOWN_REJECTED = ['biology/forest-food-web.svg'];
 
-test('committed SS1 SVG assets pass the safety filter (except the pinned known set)', () => {
+test('committed SS1 SVG assets pass the safety filter (except the known set)', () => {
   const root = path.resolve(here, '../../backend/src/db/ss1/assets');
   const files: string[] = [];
   const walk = (d: string) => { for (const e of readdirSync(d)) { const p = path.join(d, e); statSync(p).isDirectory() ? walk(p) : e.endsWith('.svg') && files.push(p); } };
   walk(root);
   assert.ok(files.length > 0);
   const rejected = files.filter(f => !isSafeSvg(readFileSync(f))).map(f => path.relative(root, f).split(path.sep).join('/')).sort();
-  assert.deepEqual(rejected, KNOWN_REJECTED);
+  assert.deepEqual(rejected.filter(f => !KNOWN_REJECTED.includes(f)), [], 'new SVG(s) rejected by the safety filter');
 });
 
 test('mobile renderer uses the same unsafe-content pattern as the backend filter', () => {
