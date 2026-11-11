@@ -8,7 +8,7 @@
 
 - 28 correction bindings are present and each maps a registered source body hash to an authored replacement lesson.
 - 40 authored lessons/supplements are present (20 1st Term, 9 2nd Term, 11 3rd Term).
-- 55 coverage records: 41 marked `IMPLEMENTED_EQUIVALENT`, 12 marked `PARTIAL`, and 2 scheme markers.
+- 55 coverage records: 40 marked `IMPLEMENTED_EQUIVALENT`, 13 marked `PARTIAL`, and 2 scheme markers.
 - All 40 lesson states remain `content_approval=PENDING` and `verification=DEFERRED`; package status remains `PENDING`.
 - This reconciliation confirms traceability and the currently recorded objective statuses. It does **not** convert `IMPLEMENTED_EQUIVALENT` into proof that every individual source exercise has a keyed replacement or that every learner objective has been taught and assessed.
 
@@ -61,9 +61,9 @@ The source Week 1 says 'Reference a une cassette' and 'Reference a une C.D selon
 
 ### FRENCH-AUTHORING-FINISH
 
-The source-objective matrix maps all 28 parsed source rows and the revision/examination scheme markers; inspected T1/T2 visual objects have explicit text-equivalent dispositions; all 40 authored supplements compile; and the replacement-side objective/practice inventory maps each authored objective to question IDs. The original-source exercise-by-exercise comparison remains unverified because the original three DOCX files are not in the repository. Remaining authoring closure is therefore a source-resource blocker plus the specific source/owner gaps listed separately.
+The source-objective matrix maps all 28 parsed source rows and the revision/examination scheme markers; inspected T1/T2 visual objects have explicit text-equivalent dispositions; all 40 authored supplements compile; and the replacement-side objective/practice inventory maps each authored objective to question IDs. The original-source exercise-by-exercise comparison is now complete: the three registered DOCX source members were extracted from the repository's hash-verified source archive artifact, and all 28 correction bindings now have explicit source-exercise mappings. Remaining authoring closure is therefore a source-resource blocker plus the specific source/owner gaps listed separately.
 
-**Required closure:** Provide the original First-, Second- and Third-Term French DOCX files (or their source archive). They are not present in the repository. Then compare every source exercise/sub-question with the 28 correction bindings, replacement lesson(s), answer key and marking rubric, record a per-exercise verdict, and keep evidenced residual gaps PARTIAL. Do not reconstruct missing source text from memory. Content approval and runtime delivery remain separate gates.
+**Required closure:** The 28 source-exercise reconciliation is complete and documented in `SOURCE-EXERCISE-RECONCILIATION-2026-11-11.md`. Keep the eight evidence-backed PARTIAL correction rows open until their specific owner, source, or learner-observation conditions are met. Content approval and runtime delivery remain separate gates.
 
 ### FRENCH-T1-W01-FACT-CLAIMS
 
@@ -155,3 +155,10 @@ Two explicit oral criteria remain open: (1) the five-prompt accent/diacritic pro
 ## Current oral-verification status
 
 `FRENCH-BODY-011` is now PARTIAL because the written A–Z sequence does not demonstrate oral recitation of the French letter names. `FR-COV-T1-W05-ORAL-OBSERVATION` remains PARTIAL because no learner's accent/diacritic pronunciation has been observed. The two new blocking items require dated teacher observation records. Current total: 10 open items, 9 delivery-blocking.
+
+
+## Source exercise audit closure
+
+The original First-, Second- and Third-Term DOCX source members were extracted from the repository archive using the hash-verifying GitHub Actions workflow. All 28 correction bindings now have explicit source locators, original exercise summaries, replacement question IDs and per-row verdicts in `SOURCE-EXERCISE-RECONCILIATION-2026-11-11.md`. The umbrella authoring reconciliation is closed; eight specific rows remain PARTIAL and are not silently upgraded.
+
+Current package totals: 40 lessons, 216 practice items, 710 marks; 40 IMPLEMENTED_EQUIVALENT, 13 PARTIAL, 2 scheme markers; 10 open items (9 blocking).
