@@ -18,7 +18,7 @@ jobs:
   generate:
     name: Generate and commit French dialogue MP3 assets
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Check out master
         uses: actions/checkout@v4
@@ -31,12 +31,12 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install audio encoder and French TTS client
+      - name: Install Piper and FFmpeg
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg
           python -m pip install --upgrade pip
-          python -m pip install edge-tts==7.2.0
+          python -m pip install piper-tts==1.8.0
 
       - name: Generate standard and slow French recordings
         run: python mobile/scripts/generate_french_dialogue_audio.py
