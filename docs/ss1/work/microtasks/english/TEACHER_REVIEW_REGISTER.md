@@ -12,6 +12,21 @@ Generated from the current `master` English package for review; this is a worksh
 - Delivery corrections: 24
 - Blocking open items: 1
 
+- Coverage status: 616 implemented-equivalent, 12 supported, 32 scheme markers, 8 partial, 0 unresolved (668 total).
+- Approval state: all 149 lessons are still PENDING; all 149 verification states remain DEFERRED.
+- Asset state: 1 registered English asset; its approval/verification gate remains pending.
+
+## Implementation and verification update — 11 November 2026
+
+- The English-specific correction resolver is connected to learner topic listing, topic completion, assessment access, assessment withdrawal and stale-cache retirement.
+- The resolver is restricted to secondary SS 1 English Language and exact source file/term/body identity. It withholds changed or unapproved/unverified source rows, retires linked stale assessments, and keeps answer keys and marking criteria out of student study notes.
+- The Second Term affix assignment now teaches two examples and meanings for sixteen identifiable prefixes, with keyed practice. The source fragments `mat` and `ploy` remain explicitly unconfirmed and are not taught as prefixes.
+- English verification passed: package tests **13/13**, learner-delivery regression tests **8/8**, package schema and registered-asset validation, all three source-member hash checks, and the real parser/compiler plan-only assertions.
+- The real parser produced 37 First Term, 21 Second Term and 31 Third Term original rows; retained 32 scheme-only markers; and emitted all 149 authored English supplements. The English-specific blocker list matched the package exactly.
+- The compiler plan is still **not ready for database import**: 160 English-specific blockers are expected (149 lesson approvals, 8 partial coverage entries, asset approval, pending package state and the blocking owner-approval item). No database write was attempted.
+- PR #499 contains the English delivery integration; PR #500 contains the renderer and verification-workflow fix. PR #504 is a test-only follow-up with the current English verification run passing.
+
+
 **Do not mark a lesson approved merely because it exists, has practice, or has been committed.** For each lesson, the reviewer must read the complete teaching body, inspect examples and every answer/marking criterion, then record a real decision and auditable reference.
 
 ## Review procedure
@@ -213,4 +228,4 @@ Approval references must be real evidence references; do not use this worksheet 
 - Verification states: {"DEFERRED":149}
 - Blocking open items: ENGLISH-CONTENT-APPROVAL
 
-Generated 2026-11-11 from the repository package. Regenerate after any package change; do not treat this snapshot as live state.
+Updated 2026-11-11 after English delivery integration and CI verification. Regenerate after any package change; do not treat this snapshot as live state.
