@@ -174,8 +174,8 @@ export function mathematicsAssetDeliverable(topic: Ss1MathematicsTopic, storedAs
 }
 
 /** Package-backed asset metadata for the exact student topic; no topic_assets row is required. */
-export function mathematicsAssetsForTopic(topic: Ss1MathematicsTopic) {
-  const topicId = Number(topic.id);
+export function mathematicsAssetsForTopic(topic: Ss1MathematicsTopic, suppliedTopicId?: number) {
+  const topicId = Number(suppliedTopicId ?? topic.id);
   if (!Number.isInteger(topicId) || topicId <= 0) return [];
   return packageValue.assets
     .filter(asset => mathematicsAssetDeliverable(topic, {
@@ -188,11 +188,16 @@ export function mathematicsAssetsForTopic(topic: Ss1MathematicsTopic) {
       kind: 'diagram',
       mime: asset.media_type,
       sha256: asset.sha256,
-      caption: asset.title,
+      bytes: asset.bytes,
+      caption: asset.source_locator.split(' — ').at(-1)?.trim() ?? asset.id,
       alt_text: asset.alt,
       sort_order: asset.order,
       url: `/learning/mathematics-assets/${encodeURIComponent(asset.id)}?topicId=${topicId}`,
     }));
+}
+
+export function mathematicsAssetFilePath(assetKey: string) {
+  return packageValue.assets.find(asset => asset.id === assetKey)?.path ?? null;
 }
 
 export function readMathematicsAsset(assetKey: string) {
