@@ -336,7 +336,7 @@ router.get('/mathematics-assets/:assetKey', requirePerm('topics.read'), async (r
   res.setHeader('ETag', etag);
   res.setHeader('Cache-Control', 'private, max-age=86400');
   const inm = String(req.headers['if-none-match'] ?? '');
-  if (inm && inm.split(',').map(value => value.trim().replace(/^W\\//, '')).includes(etag)) {
+  if (inm && inm.split(',').map(value => value.trim().replace(/^W\//, '')).includes(etag)) {
     return res.status(304).end();
   }
   res.setHeader('Content-Type', file.mime);
