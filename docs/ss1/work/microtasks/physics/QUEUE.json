@@ -52,7 +52,8 @@
     "PHYS-LES-T1-W02-MEASUREMENT-BASICS (2026-11-11): implemented via SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; 20 answered questions/41 marks; coverage OBJ-1–6 and OBJ-8–10 updated. Evidence note created. Source figures and assessment answers remain open.",
     "PHYS-RULE-T1-REVISION-SCHEME and PHYS-RULE-T3-REVISION-EXAM (2026-11-11): both scheme-only markers are accounted. First Term R004 + COV-PHYS-T1-REVISION-SCHEME added; Third Term R003 + COV-PHYS-T3-SCHEME-REVISION-EXAM already existed from PHYS-PRE-T3. No lesson or revision plan invented.",
     "PHYS-VIS-T1/T2/T3 (2026-11-11): ten original SVGs authored and registered; original embedded legacy .doc figures still not inspectable from text extraction. Evidence PHYS-VIS-NEW-ASSETS-20261111.md; package open item PHYSICS-SOURCE-VISUAL-INVENTORY blocks delivery pending exhaustive rendered-source audit.",
-    "PHYS-FACT-T3-W05-SCHEME-MISMATCH (2026-11-11): resolved as a title-truncation artefact. The source body includes Diffusion, Graham's law and Osmosis; Brownian motion is only a heading plus two statements, with the full explanation supplied by the new lesson. Non-blocking open item PHYSICS-T3-W05-BROWNIAN-SOURCE-DEPTH records the source-depth gap."
+    "PHYS-FACT-T3-W05-SCHEME-MISMATCH (2026-11-11): resolved as a title-truncation artefact. The source body includes Diffusion, Graham's law and Osmosis; Brownian motion is only a heading plus two statements, with the full explanation supplied by the new lesson. Non-blocking open item PHYSICS-T3-W05-BROWNIAN-SOURCE-DEPTH records the source-depth gap.",
+    "PHYS-PORT-D1-FACT-EXPANSIVITY and PHYS-PORT-D1-FACT-T3-W10 (2026-11-12): source text extracted from the hash-registered original .doc members by Physics CI run 43082409860. Confirmed notation/derivation defects in extracted output; recorded bounded non-blocking open items and evidence notes. Student supplements retain correct physics notation/derivation. Original equation-object visual rendering remains unverified; no content approval or production acceptance is claimed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -71,9 +72,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 48,
+    "IMPLEMENTED_TESTING_DEFERRED": 50,
     "BLOCKED": 35,
-    "PENDING": 7
+    "PENDING": 5
   },
   "total": 90,
   "items": [
@@ -2037,8 +2038,8 @@
       "depends_on": [
         "PHYS-WK-T3-W10"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). OI-PHYS-002 (OTHER, OPEN), reported from extracted text only. Not on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: docs/ss1/work/microtasks/physics/PHYS-PORT-D1-FACT-T3-W10.md; Physics CI run 43082409860 extracted the registered Third Term Week Ten .doc and confirmed the garbled intermediate substitution at line 530 with correct final relation at line 531. Added non-blocking open item PHYSICS-T3-W10-FORCE-DERIVATION-NOTATION; student supplement provides clean derivation and worked value.",
       "completion_condition": "Defect confirmed or refuted with locator; if the rendered source shows no defect it is recorded as extraction loss."
     },
     {
@@ -2067,8 +2068,8 @@
       "depends_on": [
         "PHYS-WK-T2-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). OI-PHYS-002 gives no row; the T2 expansivity topic is parsed row 3 ('WEEK FOUR'); T3 Week 10 also has expansion working.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: docs/ss1/work/microtasks/physics/PHYS-PORT-D1-FACT-EXPANSIVITY.md; Physics CI run 43082409860 extracted the registered Second Term Week Four .doc and confirmed X/α substitutions and incomplete α:β:Y ratio in the emitted text. Added non-blocking open item PHYSICS-T2-W04-EXPANSIVITY-NOTATION; lesson uses α, β and γ consistently. Original Word equation-object appearance remains for visual review.",
       "completion_condition": "Row located, wording recorded, classified; moved to the right week item if it is in another row."
     },
     {
