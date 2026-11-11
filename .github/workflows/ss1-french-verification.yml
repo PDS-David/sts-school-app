@@ -13,6 +13,7 @@ on:
       - "mobile/src/navigation/StudentTabs.tsx"
       - "mobile/package.json"
       - "mobile/assets/french/**"
+      - "mobile/src/data/frenchListening.ts"
       - "tests/student-launch.static.test.cjs"
       - "backend/src/db/ss1/sourceRegistry.json"
       - "backend/src/db/ss1/compiler.ts"
@@ -23,6 +24,7 @@ on:
       - "tests/ss1/french.package.test.mts"
       - "tests/ss1/french.delivery.test.mts"
       - "tests/ss1/french.runtime.test.mts"
+      - "tests/ss1/french.audio.test.mts"
       - ".github/workflows/ss1-french-verification.yml"
   workflow_dispatch:
 
