@@ -140,13 +140,54 @@ export function loadManifest(manifestPath: string): ManifestRow[] {
 /** SVG is rendered as native vector primitives, never as a browser document.
  * Reject active content, external references, XML declarations other than the
  * standard UTF-8 prolog, and oversized documents before they enter topic_assets. */
+const SAFE_SVG_STYLE_PROPERTIES = new Set([
+  'font', 'font-family', 'font-size', 'font-weight', 'fill', 'stroke', 'stroke-width',
+  'stroke-linecap', 'stroke-linejoin', 'stroke-dasharray', 'marker-end',
+]);
+
+function hasSafeSvgStyles(source: string): boolean {
+  const openingTags = (source.match(/<style\b/gi) ?? []).length;
+  const blocks = [...source.matchAll(/<style\s*>([\s\S]*?)<\/style>/gi)];
+  if (openingTags !== blocks.length) return false;
+  for (const block of blocks) {
+    const css = block[1];
+    const rulePattern = /([^{}]+)\{([^{}]*)\}/g;
+    let cursor = 0;
+    let rules = 0;
+    let match: RegExpExecArray | null;
+    while ((match = rulePattern.exec(css)) !== null) {
+      if (css.slice(cursor, match.index).trim()) return false;
+      const selectors = match[1].trim().split(',');
+      if (!selectors.length || !selectors.every(selector => /^\.[A-Za-z_][\w-]*$/.test(selector.trim()))) return false;
+      const declarations = match[2].split(';').map(value => value.trim()).filter(Boolean);
+      if (!declarations.length) return false;
+      for (const declaration of declarations) {
+        const separator = declaration.indexOf(':');
+        if (separator <= 0) return false;
+        const property = declaration.slice(0, separator).trim().toLowerCase();
+        const value = declaration.slice(separator + 1).trim();
+        if (!SAFE_SVG_STYLE_PROPERTIES.has(property) || !/^[A-Za-z0-9#.,%+\-_\s()'"]+$/.test(value)) return false;
+        if (/url\s*\(/i.test(value) && !(property === 'marker-end' && /^url\(\s*["']?#[A-Za-z_][\w.-]*["']?\s*\)$/i.test(value))) return false;
+        if (/[@\\]|expression|javascript:|data:/i.test(value)) return false;
+      }
+      cursor = rulePattern.lastIndex;
+      rules++;
+    }
+    if (!rules || css.slice(cursor).trim()) return false;
+  }
+  return true;
+}
+
 export function isSafeSvg(bytes: Buffer): boolean {
   if (bytes.length === 0 || bytes.length > 1_000_000) return false;
   let source: string;
   try { source = new TextDecoder('utf-8', { fatal: true }).decode(bytes); } catch { return false; }
   source = source.replace(/^\uFEFF/, '').trim();
   if (!/^(?:<\?xml\s+version=["']1\.[01]["'][^?]*\?>\s*)?<svg\b[\s\S]*<\/svg>$/i.test(source)) return false;
-  if (/<!DOCTYPE|<!ENTITY|<\s*(?:script|foreignObject|iframe|object|embed|image|audio|video|style)\b|<\?xml-stylesheet|\bon[a-z][\w:-]*\s*=|\b(?:href|src)\s*=|javascript:|data:|@import|url\(\s*(?!["']?#)/i.test(source)) return false;
+  if (!hasSafeSvgStyles(source)) return false;
+  const viewBox = source.match(/\bviewBox=["']\s*([0-9.+-]+)[,\s]+([0-9.+-]+)[,\s]+([0-9.+-]+)[,\s]+([0-9.+-]+)\s*["']/i);
+  if (!viewBox || !Number.isFinite(Number(viewBox[3])) || !Number.isFinite(Number(viewBox[4])) || Number(viewBox[3]) <= 0 || Number(viewBox[4]) <= 0) return false;
+  if (/<!DOCTYPE|<!ENTITY|<\s*(?:script|foreignObject|iframe|object|embed|image|audio|video)\b|<\?xml-stylesheet|\bon[a-z][\w:-]*\s*=|\b(?:href|src|style)\s*=|javascript:|data:|@import|url\(\s*(?!["']?#)/i.test(source)) return false;
   return true;
 }
 
