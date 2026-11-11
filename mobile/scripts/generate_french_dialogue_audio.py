@@ -1,70 +1,87 @@
 #!/usr/bin/env python3
-"""Generate the original SS1 French library dialogue in two French TTS speeds.
+"""Generate the original SS1 French library dialogue as two MP3 assets.
 
-The dialogue is original classroom material. Audio is synthetic speech, not an
-official WAEC/NECO recording and not a human/native-speaker certification.
+Uses the two-speaker French UPMC Piper voice model. This is synthetic speech,
+not a human/native-speaker recording and not official WAEC/NECO audio.
 """
 from __future__ import annotations
 
-import asyncio
-import os
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 
-import edge_tts
-
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "assets" / "french"
+MODEL_DIR = Path(tempfile.gettempdir()) / "ss1-french-piper-voices"
+MODEL_DIR.mkdir(parents=True, exist_ok=True)
 OUT.mkdir(parents=True, exist_ok=True)
 
+MODEL_NAME = "fr_FR-upmc-medium"
+MODEL_PATH = MODEL_DIR / f"{MODEL_NAME}.onnx"
 DIALOGUE = [
-    ("Ada", "Bonjour, monsieur. Je cherche un livre sur les animaux."),
-    ("Le bibliothécaire", "Bonjour. Regardez la deuxième étagère, à gauche."),
-    ("Ada", "Merci. Est-ce que je peux emprunter ce livre ?"),
-    ("Le bibliothécaire", "Oui. Avez-vous votre carte ?"),
-    ("Ada", "Oui, la voici. Quand dois-je rendre le livre ?"),
-    ("Le bibliothécaire", "Vendredi prochain."),
-    ("Ada", "Très bien. Merci et au revoir."),
-    ("Le bibliothécaire", "Au revoir."),
+    (0, "Bonjour, monsieur. Je cherche un livre sur les animaux."),
+    (1, "Bonjour. Regardez la deuxième étagère, à gauche."),
+    (0, "Merci. Est-ce que je peux emprunter ce livre ?"),
+    (1, "Oui. Avez-vous votre carte ?"),
+    (0, "Oui, la voici. Quand dois-je rendre le livre ?"),
+    (1, "Vendredi prochain."),
+    (0, "Très bien. Merci et au revoir."),
+    (1, "Au revoir."),
 ]
 
-VOICES = {
-    "Ada": "fr-FR-DeniseNeural",
-    "Le bibliothécaire": "fr-FR-HenriNeural",
-}
+
+def run(command: list[str], *, input_text: str | None = None) -> None:
+    subprocess.run(
+        command,
+        input=input_text,
+        text=True,
+        check=True,
+        stdout=subprocess.DEVNULL,
+    )
 
 
-async def synthesize(rate: str, output_name: str) -> None:
+def ensure_voice() -> None:
+    if MODEL_PATH.exists() and MODEL_PATH.with_suffix(".onnx.json").exists():
+        return
+    run([
+        sys.executable, "-m", "piper.download_voices",
+        MODEL_NAME, "--data-dir", str(MODEL_DIR),
+    ])
+
+
+def synthesize(length_scale: str, filename: str) -> None:
     with tempfile.TemporaryDirectory(prefix="ss1-french-") as temp_dir:
         temp = Path(temp_dir)
-        segment_paths: list[Path] = []
-        for index, (speaker, text) in enumerate(DIALOGUE, start=1):
-            segment = temp / f"segment-{index:02d}.mp3"
-            communicate = edge_tts.Communicate(
-                text,
-                VOICES[speaker],
-                rate=rate,
-                pitch="+0Hz",
-                volume="+0%",
-            )
-            await communicate.save(str(segment))
-            segment_paths.append(segment)
+        segments: list[Path] = []
+        for index, (speaker_id, text) in enumerate(DIALOGUE, start=1):
+            wav = temp / f"turn-{index:02d}.wav"
+            run([
+                sys.executable, "-m", "piper",
+                "-m", str(MODEL_PATH),
+                "-f", str(wav),
+                "--speaker", str(speaker_id),
+                "--length-scale", length_scale,
+                "--", text,
+            ])
+            if not wav.exists() or wav.stat().st_size < 2_000:
+                raise RuntimeError(f"Piper did not produce turn {index}")
+            segments.append(wav)
 
         concat_list = temp / "segments.txt"
         concat_list.write_text(
-            "".join(f"file '{path.as_posix()}'\n" for path in segment_paths),
+            "".join(f"file '{path.as_posix()}'\n" for path in segments),
             encoding="utf-8",
         )
-        output = OUT / output_name
+        output = OUT / filename
         subprocess.run(
             [
                 "ffmpeg", "-y", "-f", "concat", "-safe", "0",
                 "-i", str(concat_list), "-c:a", "libmp3lame",
-                "-b:a", "64k", "-ar", "24000", "-ac", "1",
+                "-b:a", "64k", "-ar", "22050", "-ac", "1",
                 "-metadata", "title=À la bibliothèque — SS1 French dialogue",
                 "-metadata", "artist=STS School — synthetic French TTS",
-                "-metadata", "comment=Original classroom dialogue; not official WAEC/NECO audio.",
+                "-metadata", "comment=Original dialogue; Piper UPMC French voice model; CC BY-SA 4.0 dataset attribution in accompanying README; not official WAEC/NECO audio.",
                 str(output),
             ],
             check=True,
@@ -76,10 +93,11 @@ async def synthesize(rate: str, output_name: str) -> None:
         print(f"Generated {output} ({output.stat().st_size} bytes)")
 
 
-async def main() -> None:
-    await synthesize("+0%", "SS1_French_Dialogue_standard.mp3")
-    await synthesize("-20%", "SS1_French_Dialogue_slow.mp3")
+def main() -> None:
+    ensure_voice()
+    synthesize("1.0", "SS1_French_Dialogue_standard.mp3")
+    synthesize("1.25", "SS1_French_Dialogue_slow.mp3")
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
