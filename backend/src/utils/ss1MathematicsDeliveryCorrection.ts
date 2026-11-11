@@ -79,6 +79,7 @@ function lessonGate(pkg: SubjectPackage, correction: SubjectPackage['delivery_co
   if (blockers.length) return `This Mathematics topic is awaiting resolution of: ${blockers.map(item => item.id).join(', ')}.`;
   if (lesson.state.implementation !== 'IMPLEMENTED') return 'The Mathematics replacement lesson has not completed implementation.';
   if (lesson.state.content_approval !== 'APPROVED' || !lesson.state.approval_reference) return 'The Mathematics replacement lesson is awaiting owner/content approval.';
+  if (lesson.state.verification !== 'VERIFIED' || !lesson.state.verification_reference) return 'The Mathematics replacement lesson has not passed the SS1-09 verification gate.';
   if (lesson.provenance.some(source => source.reuse_status !== 'PERMITTED')) return 'The Mathematics replacement lesson has unresolved source-rights permission.';
   return null;
 }
