@@ -8711,6 +8711,338 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T1-W02-VOLUME-MEASUREMENT",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Physics",
+      "title": "Measurement of volume: regular solids, irregular solids and liquids",
+      "objectives": [
+        "Define volume and convert between m³, cm³, litres and millilitres.",
+        "Calculate volumes of regular solids using geometrical formulae.",
+        "Measure the volume of an irregular solid by water displacement.",
+        "Measure liquid volume using a graduated cylinder and read the meniscus correctly.",
+        "Explain the uses of a pipette and burette and choose an instrument for the required precision.",
+        "Identify common measurement errors including parallax and trapped air."
+      ],
+      "body": "MEASUREMENT OF VOLUME: REGULAR SOLIDS, IRREGULAR SOLIDS AND LIQUIDS\n\n1. What is volume?\nVolume is the amount of three-dimensional space occupied by an object or substance. The SI unit of volume is the cubic metre (m³).\nCommon units:\n- 1 m³ = 1,000,000 cm³.\n- 1 litre (L) = 1 dm³ = 1,000 cm³.\n- 1 millilitre (mL) = 1 cm³.\n- 1 cm³ = 10⁻⁶ m³.\nAlways write the unit with the numerical answer.\n\n2. Measuring the volume of regular solids\nA regular solid has a shape for which a geometrical formula can be used. Measure the required dimensions with a suitable instrument, then calculate its volume.\n- Cube: V = l³.\n- Cuboid/rectangular block: V = l × w × h.\n- Cylinder: V = πr²h.\n- Sphere: V = 4/3 πr³.\n- Triangular prism: V = area of triangular cross-section × length.\nUse metres for dimensions if the required answer is in m³, or centimetres if the answer is in cm³.\n\nWorked example 1 — cuboid\nA block is 4 cm long, 3 cm wide and 2 cm high.\nV = lwh = 4 × 3 × 2 = 24 cm³.\n\nWorked example 2 — cylinder\nA cylinder has radius 2 cm and height 10 cm.\nV = πr²h = π × 2² × 10 = 40π ≈ 125.7 cm³.\n\n3. Measuring the volume of an irregular solid by displacement\nAn irregular solid has no simple geometrical formula for its volume. If it does not dissolve in or react with the liquid, use a graduated measuring cylinder:\n1. Pour enough water into the cylinder to cover the object.\n2. Read and record the initial water volume V₁ at eye level.\n3. Lower the object gently until it is completely submerged. Remove trapped air bubbles.\n4. Read the final volume V₂ at eye level.\n5. Volume of the solid = V₂ − V₁.\nThe rise in water level is equal to the volume of the submerged object.\n\nWorked example 3 — displacement\nThe initial water reading is 35 cm³. After a stone is fully submerged, the reading is 48 cm³.\nVolume of stone = 48 − 35 = 13 cm³.\n\nIf an object floats, attach it to a sinker that is fully submerged. Measure the displacement due to the sinker alone and then due to the sinker plus the object. The difference is the object's volume. Ensure the sinker does not trap air and account for its own volume.\n\n4. Measuring the volume of liquids\nA graduated measuring cylinder is used for ordinary liquid-volume measurements. Place it on a level surface and read the scale at eye level to avoid parallax error.\nFor a liquid that forms a concave meniscus, such as water in clean glass, read the bottom of the meniscus. For a convex meniscus, such as mercury in glass, read the top of the meniscus.\nOther instruments:\n- A pipette is designed to transfer a specified volume accurately (a volumetric pipette delivers one fixed calibrated volume).\n- A burette delivers measured, variable volumes, commonly in titration work.\n- A measuring cylinder is convenient for general volume measurement but is usually less precise than a suitable pipette or burette.\nThe resolution/accuracy depends on the instrument's scale and calibration. A graduated cylinder does not universally measure to 1 cm³; inspect its graduations and use the instrument's stated tolerance.\n\n5. Avoiding errors\n- Read the meniscus at eye level; looking from above or below causes parallax error.\n- Keep the cylinder upright on a level surface.\n- Make sure the irregular solid is fully submerged.\n- Remove air bubbles attached to the object.\n- Do not use displacement with an object that dissolves in or reacts with the liquid.\n- Use a sinker for a floating object and subtract the sinker-only displacement.\n- Record the initial and final readings with the same unit and suitable precision.\n- Avoid splashing or losing liquid while lowering the object.\n\n6. Choosing a method\n- Regular solid: measure its dimensions and use the appropriate formula.\n- Irregular solid that sinks and does not react with water: use water displacement.\n- Irregular solid that floats: use a sinker and subtract the sinker-only displacement.\n- Liquid: use a graduated cylinder, pipette or burette according to the required accuracy and volume.\n\nCOMMON ERRORS\n- Volume is three-dimensional; area is two-dimensional.\n- The cylinder formula uses radius, not diameter.\n- Displacement is final reading minus initial reading, not the reverse.\n- The object must be fully submerged for its full volume to be displaced.\n- Read the bottom of a concave water meniscus at eye level.\n- The SI unit is m³; cm³ and mL are equal in volume.\n\nSUMMARY\nRegular solids are measured using geometrical formulae. Irregular solids can be measured by liquid displacement. Liquids are measured with graduated cylinders, pipettes or burettes. Read the meniscus at eye level, record units and choose an instrument whose scale suits the required accuracy.",
+      "body_sha256": "b848f82dd68abd1619344dd9d1dd49eeb12adf1ae03e15678fdb0b098c0ff437",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Define volume and state its SI unit.",
+          "answer": "Volume is the amount of three-dimensional space occupied by an object or substance. Its SI unit is the cubic metre (m³).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines volume as space occupied.",
+              "marks": 1
+            },
+            {
+              "criterion": "States m³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Convert 1 litre to cubic centimetres and cubic metres.",
+          "answer": "1 L = 1,000 cm³ = 0.001 m³.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Gives 1,000 cm³.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 0.001 m³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "Write formulae for the volumes of a cube, cuboid and cylinder.",
+          "answer": "Cube V = l³; cuboid V = lwh; cylinder V = πr²h.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Cube formula.",
+              "marks": 1
+            },
+            {
+              "criterion": "Cuboid formula.",
+              "marks": 1
+            },
+            {
+              "criterion": "Cylinder formula.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "A cuboid measures 4 cm by 3 cm by 2 cm. Find its volume.",
+          "answer": "V = 4 × 3 × 2 = 24 cm³.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses V = lwh.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 24 cm³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "A cylinder has radius 2 cm and height 10 cm. Calculate its volume.",
+          "answer": "V = πr²h = π × 2² × 10 = 40π ≈ 125.7 cm³.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses πr²h and correct radius.",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes values correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives approximately 125.7 cm³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q06",
+          "question": "The initial water reading in a measuring cylinder is 35 cm³. After a stone is submerged, the reading is 48 cm³. Find the stone's volume.",
+          "answer": "V = 48 − 35 = 13 cm³.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Subtracts initial from final reading.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 13 cm³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q07",
+          "question": "How can the volume of an irregular object that floats be measured by displacement?",
+          "answer": "Attach it to a sinker. Measure the displacement of the sinker alone and then the sinker plus object. Subtract the sinker-only volume from the combined displacement.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses a sinker to submerge the floating object.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subtracts the sinker's own displacement.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q08",
+          "question": "How should the volume of water be read in a graduated cylinder?",
+          "answer": "Place the cylinder upright on a level surface and read the bottom of the concave meniscus at eye level.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Reads at eye level.",
+              "marks": 1
+            },
+            {
+              "criterion": "Reads the bottom of the concave meniscus for water.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q09",
+          "question": "Distinguish between a concave and convex meniscus.",
+          "answer": "A concave meniscus curves upwards at the edges and downwards in the centre; a convex meniscus curves downwards at the edges and upwards in the centre.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correctly describes concave meniscus.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly describes convex meniscus.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "State the main use of a pipette and a burette.",
+          "answer": "A pipette transfers a specified calibrated volume accurately. A burette delivers measured variable volumes, commonly during titration.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Pipette use.",
+              "marks": 1
+            },
+            {
+              "criterion": "Burette use.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "Why is a measuring cylinder generally less precise than a suitable pipette or burette?",
+          "answer": "Its graduations are usually coarser and it is designed for general measurement rather than highly precise delivery of a set or variable volume.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Mentions coarser graduations/lower resolution.",
+              "marks": 1
+            },
+            {
+              "criterion": "Distinguishes its general purpose from precision delivery.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "What is parallax error when reading a measuring cylinder?",
+          "answer": "It is a reading error caused by viewing the scale from above or below eye level rather than looking horizontally at the meniscus.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies incorrect viewing angle.",
+              "marks": 1
+            },
+            {
+              "criterion": "States eye-level reading prevents it.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q13",
+          "question": "Why should you not assume every graduated cylinder measures accurately to 1 cm³?",
+          "answer": "Different cylinders have different scale divisions and calibrations. The reading resolution and uncertainty depend on the actual instrument.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that graduations differ.",
+              "marks": 1
+            },
+            {
+              "criterion": "Links accuracy/resolution to the instrument's scale/calibration.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q14",
+          "question": "The volume of an irregular solid is measured using (A) a spring balance (B) displacement of liquid (C) a thermometer (D) a stopwatch.",
+          "answer": "B. Displacement of liquid.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q15",
+          "question": "A stone is placed in a measuring cylinder. The water rises from 22 cm³ to 37 cm³. Find the volume of the stone.",
+          "answer": "37 − 22 = 15 cm³.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Subtracts readings correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 15 cm³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q16",
+          "question": "Convert 250 cm³ to cubic metres.",
+          "answer": "250 cm³ = 250 × 10⁻⁶ m³ = 2.5 × 10⁻⁴ m³.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses 1 cm³ = 10⁻⁶ m³.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 2.5 × 10⁻⁴ m³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q17",
+          "question": "Describe four steps for measuring the volume of an irregular solid by displacement.",
+          "answer": "Record initial water volume; fully submerge the object; record final water volume; subtract initial from final. Remove bubbles and read at eye level.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Records initial reading.",
+              "marks": 1
+            },
+            {
+              "criterion": "Submerges the object fully.",
+              "marks": 1
+            },
+            {
+              "criterion": "Records final reading.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subtracts initial from final.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q18",
+          "question": "Which instrument is most appropriate for delivering a fixed accurately measured volume in a laboratory? (A) beaker (B) volumetric pipette (C) ruler (D) spring balance.",
+          "answer": "B. Volumetric pipette.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Sow the Seed Schools SS1 Physics First Term source",
+          "locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 1 WEEK TWO; body ID SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e (8,197 characters; SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e). Original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206.",
+          "url": null,
+          "rights": "Source used for scope and locators; supplement independently authored and extends missing measurement procedures.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics First Term source."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -9349,14 +9681,18 @@
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Measurement of volume: the graduated cylinder (a week outline heading that is not in the scheme row)",
       "objective_locator": "word-extractor 1.0.4 getBody() lines 244-245; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+        "SUP-SS1-PHYSICS-T1-W02-VOLUME-MEASUREMENT"
       ],
       "evidence": [
         {
           "locator": "outline word line 200 SHA-256 22cd2ea2f2db447dde86c8466d9e213656fda6be18fbd50e7cbe403e6a3d8894; heading line 244 SHA-256 84a8c3425656f1de7f93e2a753de030bf7e3048721368bda503a5949906a2792; paragraph line 245 SHA-256 995a2d06d59fb62f3bc304c4015e9e303a204a566e74ec90de8cb687468d9917; block lines 244-245 SHA-256 9215bf7c3ef2afdeae243f7717df481a2ecf97c80f7d5a26b09cd9f133321197",
           "explanation": "Line 245 is the whole teaching of volume: a graduated cylinder measures volumes of liquids to the nearest 1 cm3 and, with the displacement or eureka can, the volume of an irregular solid such as a stone. The eureka can and the displacement method are named, not described; no reading procedure, no meniscus (the string 'meniscus' occurs nowhere), no litre or millilitre relation and no other volume instrument is taught, yet weekend item 5 asks about a burette and a pipette, which occur nowhere else in the extract. The accuracy claim of 1 cm3 is the source's and is held as an expert question in PHYS-FACT-T1-W02-SCOPE. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W02-VOLUME-MEASUREMENT; body SHA-256 b848f82dd68abd1619344dd9d1dd49eeb12adf1ae03e15678fdb0b098c0ff437; practice Q01–Q18.",
+          "explanation": "Supplement now explains graduated-cylinder use, meniscus reading, water displacement, regular-solid formulae, floating-object sinker method, pipette/burette uses and SI conversions. The source's universal 1 cm³ accuracy claim is not repeated; resolution depends on instrument graduations."
         }
       ]
     },
@@ -12875,6 +13211,17 @@
       "affected_ids": [
         "SS1-SRC-bed91bb4ef0e:BODY:87346147325e174b318300a5d1ac5312cd14784201b272138575665519d50d1b",
         "COV-PHYS-T3-W04-OBJ-1"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYSICS-T1-W02-VOLUME-ACCURACY",
+      "kind": "FACT",
+      "detail": "The source states a graduated cylinder measures to the nearest 1 cm³ as if this were universal. Actual resolution depends on the cylinder's graduations and calibration; no original scale figure is available to verify the specific instrument.",
+      "required_action": "Teacher/subject reviewer may confirm the intended cylinder's scale and required reading precision; the supplement correctly teaches students to inspect the instrument rather than memorise 1 cm³ as universal.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e",
+        "COV-PHYS-T1-W02-OBJ-11"
       ],
       "blocks_delivery": false
     }
