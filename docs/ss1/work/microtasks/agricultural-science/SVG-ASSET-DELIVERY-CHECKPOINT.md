@@ -1,6 +1,6 @@
 # Agricultural Science SVG asset delivery — implementation checkpoint
 
-Base: `c25c40cd89420d98a990b5ab41beb79873c5e756` (master at branch creation). Branch: `ss1/ag-science-asset-gate-svg-20261111`.
+Base: `172861b4c93dc15f35a785ada9a7a1dd427da1c6` (master at branch creation). Branch: `ss1/ag-science-asset-gate-svg-20261111`.
 
 ## Implemented in this batch
 - SVG ingestion validates strict UTF-8, document size, root element, responsive viewBox, and rejects active content, event handlers, inline styles, DTDs and external references. Existing PNG/JPEG/GIF signature checks remain.
