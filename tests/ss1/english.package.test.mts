@@ -252,11 +252,11 @@ test('English scheme markers use whole-line matching except multi-strand substri
   ]);
   const singleLine = p.source_rules.filter(rule =>
     rule.op === 'classify_marker' &&
-    !/[\\r\\n]/u.test(rule.anchor) &&
+    !/[\r\n]/u.test(rule.anchor) &&
     !multiStrandSubstringIds.has(rule.id)
   );
   const multiLine = p.source_rules.filter(rule =>
-    rule.op === 'classify_marker' && /[\\r\\n]/u.test(rule.anchor)
+    rule.op === 'classify_marker' && /[\r\n]/u.test(rule.anchor)
   );
   const multiStrandSubstring = p.source_rules.filter(rule => multiStrandSubstringIds.has(rule.id));
   assert.equal(singleLine.length, 19);
