@@ -44,3 +44,8 @@ The source's text-box stream includes graph labels `V(m/s)`, `t(s)`, `20m/s`, a 
 ## Validation boundary
 
 All 35 pages were rendered and reviewed as page images/contact sheets; selected measurement and equation pages were inspected at higher resolution. Raster-object counts were obtained with `pdfimages -list`. This is a visual inventory, not a claim that every figure has been recreated or that original tutor artwork may be redistributed. Original sources remain unchanged. Formal package tests, importer and device verification remain DEFERRED.
+
+
+## Completion update — original equivalents registered
+
+The four bounded visual tasks are now implemented with original SVG assets registered in physics.json: `PHYS-ASSET-T1-MOTION-FRICTION`, `PHYS-ASSET-T1-GRAPHS-VECTORS`, `PHYS-ASSET-T1-DENSITY-PRESSURE` and `PHYS-ASSET-T1-WORK-VISCOSITY`. These are original explanatory diagrams, not copies of the source illustrations. The cluster follow-up tasks are complete; the source visual inventory and its asset dispositions are complete. Content approval remains PENDING and verification DEFERRED.
