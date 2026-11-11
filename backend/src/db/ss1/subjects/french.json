@@ -5645,10 +5645,10 @@
       "source_lesson_id": "SS1-SRC-945dfb24eaf6:BODY:970d1e7a3d6d98a9953ce01c9180cd1c077c2fd1c61f3b9d60e6d8868856a7e5",
       "body_sha256": "970d1e7a3d6d98a9953ce01c9180cd1c077c2fd1c61f3b9d60e6d8868856a7e5",
       "replacement_id": "SUP-SS1-FRENCH-COUNTRIES-T1",
-      "reason": "Corrects source spelling, grammar or unsupported claims; whole-block objective scope remains subject to deferred review.",
+      "reason": "Country/capital/currency and demonym reference content is authored, but the source's 15-country Anglophone classification and DEVOIR are only partly reconciled. The current Anglophone supplement covers three verified examples, not the complete source list; see FRENCH-T1-W02-ANGLOPHONE-SCOPE.",
       "evidence": {
         "locator": "SS1-SRC-945dfb24eaf6: LES PAYS FRANCOPHONE EN AFRIQUE",
-        "explanation": "Replacement is independently authored; original body remains unchanged. Runtime activation belongs to SS1-08."
+        "explanation": "The replacement supplies country/capital/currency reference entries and separate demonym practice. The original 15-row Anglophone list is not silently accepted as accurate: the companion Anglophone lesson covers only Namibia, Kenya and South Africa with bounded evidence, and does not verify the other twelve classifications or complete the original exhaustive exercise. Objective FRENCH-T1-W02-OBJ-2 therefore remains PARTIAL pending source evidence or teacher-approved scope correction."
       }
     },
     {
@@ -5684,10 +5684,10 @@
       "source_lesson_id": "SS1-SRC-945dfb24eaf6:BODY:0804618bce823ed65d2b4c6420c0faa465e4d031e1885e512f6e0469a7f80157",
       "body_sha256": "0804618bce823ed65d2b4c6420c0faa465e4d031e1885e512f6e0469a7f80157",
       "replacement_id": "SUP-SS1-FRENCH-ACCENTS-T1",
-      "reason": "Provides a written Unicode equivalent for the source's French accent/diacritic material and punctuation; it does not close the separate oral recognition/pronunciation objective or the unresolved punctuation-drawing visual disposition.",
+      "reason": "The written Unicode replacement and separately authored oral-practice supplement cover the accent/diacritic teaching content. Learner oral performance remains unobserved and content approval/verification are deferred. The source punctuation drawing has an accessible text-equivalent disposition in VISUAL_DISPOSITION.md; no separate image asset is required.",
       "evidence": {
         "locator": "SS1-SRC-945dfb24eaf6: L’oral importance des accents francais tells",
-        "explanation": "The written replacement covers Unicode accents/diacritics and punctuation; the separate oral supplement SUP-SS1-FRENCH-ORAL-ACCENTS-T1 now covers listening, pronunciation and oral observation. Written and oral assessments are distinct. The source punctuation drawing at document.xml paragraph 278 remains visually unresolved. Original source row remains unchanged; no audio file is supplied or claimed."
+        "explanation": "The written replacement covers Unicode accents/diacritics and punctuation; SUP-SS1-FRENCH-ORAL-ACCENTS-T1 separately provides listening and pronunciation practice. The punctuation drawing is accounted for by the inspected text-equivalent disposition in VISUAL_DISPOSITION.md. This does not claim learner oral performance has been observed. Original source row remains unchanged."
       }
     },
     {
@@ -6197,7 +6197,7 @@
       "source_id": "SS1-SRC-945dfb24eaf6",
       "objective": "Know the African countries the source lists as Anglophone, with their capitals (15 rows), and write out the Anglophone countries (DEVOIR).",
       "objective_locator": "SS1-SRC-945dfb24eaf6: word/document.xml, 0-based children of w:body 48-66 (DEVOIR 48-49, heading 51, 15 country/capital rows 52-66)",
-      "status": "IMPLEMENTED_EQUIVALENT",
+      "status": "PARTIAL",
       "lesson_ids": [
         "SUP-SS1-FRENCH-COUNTRIES-T1",
         "SUP-SS1-FRENCH-ANGLOPHONE-T1"
@@ -6218,6 +6218,14 @@
         {
           "locator": "SUP-SS1-FRENCH-ANGLOPHONE-T1: body paragraphs on Namibie, Kenya and Afrique du Sud, practice Q1-Q5, provenance claims NA-1, KE-1 to KE-3, ZA-1 to ZA-5",
           "explanation": "Supplies a counterpart to DEVOIR 1 (children 48-49): original answered practice on identifying English as an official language, built on two official texts read 2026-11-05 (Kenya Art. 7(2); South Africa s. 6(1) with the 2023 amendment noted) and one dated annotated edition (Namibia Art. 3(1), Konrad-Adenauer-Stiftung edition dated May 2018, not a government publication). It is a deliberately small, non-exhaustive selection: it does not list every African country, does not reproduce the source's grouping and does not verify the status of the other countries in rows 52-66; those rows remain covered as reference only by SUP-SS1-FRENCH-COUNTRIES-T1. This entry supersedes the earlier statement that the exercise has no counterpart. Source limitations are tracked in FRENCH-T1-W02-ANGLOPHONE-SOURCE-CHECKS."
+        },
+        {
+          "locator": "Current replacement scope review — SUP-SS1-FRENCH-ANGLOPHONE-T1",
+          "explanation": "The supplement teaches a deliberately small, non-exhaustive selection (Namibia, Kenya and South Africa). It does not verify the source's other twelve country classifications or provide a complete replacement for the source's 15-row Anglophone list and DEVOIR. The source's blanket grouping is not assumed correct; the full list requires dated authoritative language-status evidence or teacher-approved narrowing/replacement."
+        },
+        {
+          "locator": "ANGLOPHONE_COUNTRY_SCOPE_RESEARCH.md — current legal-language examples",
+          "explanation": "Official/constitutional sources contradict treating the whole source list as a legal list of English-official countries: Egypt Constitution Art. 2 identifies Arabic; Angola Constitution Art. 19 identifies Portuguese; Libya's 2011 Constitutional Declaration Art. 1 identifies Arabic; Ethiopia Constitution Art. 5 names Amharic as the federal working language. Sudan's 2005 Constitution was repealed by the 2019 Charter, and Somalia's permanent 2026 Constitution supersedes the 2012 provisional framework; both need current-text checks. The source's intended definition of Anglophone remains unprovided."
         }
       ]
     },
@@ -7172,6 +7180,18 @@
         "SUP-SS1-FRENCH-SELF-ESSAY-T1"
       ],
       "blocks_delivery": false
+    },
+    {
+      "id": "FRENCH-T1-W02-ANGLOPHONE-SCOPE",
+      "kind": "FACT",
+      "detail": "The source labels 15 countries as Anglophone but does not define whether this means legal official language, official working language, language of instruction or broader English use. The current replacement covers only Namibia, Kenya and South Africa. Primary/official sources identify Arabic as official in Egypt (Constitution Art. 2), Portuguese in Angola (Constitution Art. 19), and Arabic in Libya (2011 Constitutional Declaration Art. 1); Ethiopia's Constitution Art. 5 identifies Amharic as the federal working language. Sudan's 2005 Constitution was repealed by the 2019 Constitutional Charter, and Somalia adopted a permanent Constitution in March 2026, so older status references cannot be reused without checking current text. See ANGLOPHONE_COUNTRY_SCOPE_RESEARCH.md.",
+      "required_action": "The teacher/owner must define the intended meaning of Anglophone. Then either provide dated authoritative evidence for all 15 classifications under that definition and complete an accurate keyed exercise, or approve replacing the source's exhaustive grouping with a clearly labelled selected-examples objective. Verify current legal status for Sudan and Somalia. Until the approved scope and exercise are complete, keep FRENCH-T1-W02-OBJ-2 and correction COR-002 PARTIAL.",
+      "affected_ids": [
+        "SS1-SRC-945dfb24eaf6",
+        "FRENCH-T1-W02-OBJ-2",
+        "SUP-SS1-FRENCH-ANGLOPHONE-T1"
+      ],
+      "blocks_delivery": true
     }
   ]
 }

@@ -45,3 +45,8 @@ Authoring checks only: SHA-256 of the member, the label block and the whole week
 - Sourced practice for the untaught être and avoir sentence groups and a composition task for the DEVOIR (the three new queue items).
 - Visual disposition of the 20 line shapes stays with `FR-VIS-T1-AUXILIARY-SEPARATORS`.
 - Same-file edits should run sequentially: next in order is `FR-WK-T1-W05`. This does not claim the subject or class complete.
+
+
+## Current-state supersession note — 11 November 2026
+
+The original Week 4 source inspection remains valid, but its outstanding authoring tasks are superseded by the current subject package. `SUP-SS1-FRENCH-VERBE-ETRE-T1` now provides keyed practice for the être sentence groups; `SUP-SS1-FRENCH-VOCAB-AVOIR-T1` expands the avoir sentence material; and `SUP-SS1-FRENCH-AVOIR-DEVOIR-T1` supplies the four-stem composition task with answer guidance. Current coverage `FRENCH-T1-W04-OBJ-1` through `OBJ-5` is `IMPLEMENTED_EQUIVALENT`. The source separator drawings are accounted for as layout-only line shapes in `VISUAL_DISPOSITION.md`; no image asset is required. This is authoring coverage, not teacher approval or learner verification, which remain pending/deferred.

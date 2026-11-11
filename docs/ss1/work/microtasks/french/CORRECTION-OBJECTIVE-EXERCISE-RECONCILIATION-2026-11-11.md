@@ -8,7 +8,7 @@
 
 - 28 correction bindings are present and each maps a registered source body hash to an authored replacement lesson.
 - 40 authored lessons/supplements are present (20 1st Term, 9 2nd Term, 11 3rd Term).
-- 55 coverage records: 44 marked `IMPLEMENTED_EQUIVALENT`, 9 marked `PARTIAL`, and 2 scheme markers.
+- 55 coverage records: 43 marked `IMPLEMENTED_EQUIVALENT`, 10 marked `PARTIAL`, and 2 scheme markers.
 - All 40 lesson states remain `content_approval=PENDING` and `verification=DEFERRED`; package status remains `PENDING`.
 - This reconciliation confirms traceability and the currently recorded objective statuses. It does **not** convert `IMPLEMENTED_EQUIVALENT` into proof that every individual source exercise has a keyed replacement or that every learner objective has been taught and assessed.
 
@@ -85,16 +85,16 @@ Clear expressions now taught in SUP-SS1-FRENCH-COURTESY-CELEBRATIONS-T1. Intende
 
 ## Consistency findings requiring correction
 
-1. Historical Week 1–3 indexing notes are not synchronized with the current package. For example, `FR-WK-T1-W01.md` still describes OBJ-4/OBJ-5 as unresolved and refers to supplements that have since been authored; the current package marks the neighbour and benefits objectives `IMPLEMENTED_EQUIVALENT`. `FR-WK-T1-W02.md` still says both DEVOIR exercises lack counterparts, while current coverage links the Anglophone supplement and demonym supplement. `FR-WK-T1-W03.md` predates the completed eight-field self-presentation supplement and still reports that objective as partial. Those historical task notes must be refreshed or explicitly marked superseded before they are used as current audit evidence.
-2. Correction `SS1-02-french-COR-005` contains contradictory visual claims: its evidence says the punctuation drawing remains unresolved, while `VISUAL_DISPOSITION.md` says punctuation is represented in accessible text and no image asset is required. The dedicated Week 5 record `FR-WK-T1-W05.md` still treats the punctuation drawing as open. A single verified disposition must be selected and the three records synchronized.
-3. The `QUEUE.json` header says its snapshot was generated from `dd739bba...` and its introductory notes describe an older package state (27 lessons, 29 coverage records, 3 open items), whereas current `master` contains 40 lessons, 55 coverage records and 8 open items. The queue must be regenerated/reconciled against current master before it is used to schedule remaining work.
+1. Historical Week 1–4 indexing notes were not synchronized with the current package. For example, `FR-WK-T1-W01.md` still describes OBJ-4/OBJ-5 as unresolved and refers to supplements that have since been authored; the current package marks the neighbour and benefits objectives `IMPLEMENTED_EQUIVALENT`. `FR-WK-T1-W02.md` still says both DEVOIR exercises lack counterparts, while current coverage links the Anglophone supplement and demonym supplement. `FR-WK-T1-W03.md` predates the completed eight-field self-presentation supplement and still reports that objective as partial. `FR-WK-T1-W04.md` still lists three authoring tasks as outstanding even though the corresponding être, avoir and four-stem composition supplements now exist. These historical task notes must be refreshed or explicitly marked superseded before they are used as current audit evidence.
+2. **Resolved in this reconciliation branch:** correction `SS1-02-french-COR-005` and the Week 5 indexing note are being aligned with `VISUAL_DISPOSITION.md`: the inspected punctuation drawing is represented by accessible text and needs no separate image asset. This does not close the separate learner oral-performance/approval gate.
+3. The `QUEUE.json` header says its snapshot was generated from `dd739bba...` and its introductory notes describe an older package state (27 lessons, 29 coverage records, 3 open items), whereas current `master` contains 40 lessons, 55 coverage records and 9 open items. The queue must be regenerated/reconciled against current master before it is used to schedule remaining work.
 
 ## What is actually closed by this reconciliation
 
 - Source-row identities and 28 correction bindings are traceable.
 - Current objective coverage statuses and replacement lesson references are indexed.
 - The linked practice counts can be computed from the currently authored lessons.
-- The nine `PARTIAL` coverage records and eight delivery-blocking open items remain visible; none is silently upgraded.
+- The ten `PARTIAL` coverage records and eight delivery-blocking open items remain visible; none is silently upgraded.
 
 ## What remains before authoring can be called complete
 
@@ -105,3 +105,31 @@ Clear expressions now taught in SUP-SS1-FRENCH-COURTESY-CELEBRATIONS-T1. Intende
 - Keep content approval, oral learner verification, database delivery, app runtime and production build as separate acceptance gates.
 
 **No lesson approval, learner observation, official exam recording, database write or production release is claimed by this report.**
+
+
+## Follow-up correction in this branch
+
+The Week 5 punctuation-drawing contradiction is corrected in `french.json` and `FR-WK-T1-W05.md`: the visual equivalent is recorded as implemented, while learner oral performance remains unobserved. The Week 1–3 indexing notes now include current-state supersession notes, and `QUEUE.json` carries an explicit stale-snapshot warning. These documentation corrections do not alter lesson approval or verification states.
+
+
+### Additional scope correction — Week 2 Anglophone objective
+
+The current package's `FRENCH-T1-W02-OBJ-2` status is corrected to `PARTIAL`. Its previous `IMPLEMENTED_EQUIVALENT` label contradicted the evidence that the Anglophone supplement covers only Namibia, Kenya and South Africa and does not verify the other twelve countries or reproduce the exhaustive source exercise. New blocking open item `FRENCH-T1-W02-ANGLOPHONE-SCOPE` requires either authoritative evidence for all 15 classifications and a complete keyed exercise, or explicit teacher approval to narrow/replace the source objective. Correction `SS1-02-french-COR-002` now records this limitation.
+
+
+### Research evidence for the Week 2 Anglophone scope gap
+
+ANGLOPHONE_COUNTRY_SCOPE_RESEARCH.md now records all 15 source countries and the evidence located so far. It distinguishes legal official language from working language and broader English use, documents constitutional counterexamples (Egypt: Arabic; Angola: Portuguese; Libya: Arabic; Ethiopia: Amharic as federal working language), and flags current-text checks for Sudan and Somalia. This research does not yet complete the 15-country exercise or replace the required teacher/owner decision.
+
+
+## Structural assessment-item audit
+
+A static scan of the current branch's French package (blob 6ececab52165434558f4dd09445cd43bb0d16f91) found:
+
+- 40 lessons, each with a non-empty lesson body, objectives, practice items and provenance.
+- 189 practice questions, carrying 549 marks in total.
+- Every question has a non-empty stem, keyed answer and marking rubric.
+- Every rubric's item marks sum to the question's declared marks.
+- No structural omissions or mark-sum mismatches were found by this scan.
+
+This is a structural integrity result only. It does not prove that each question assesses the correct source objective, that every original source exercise has a replacement, that a teacher has approved the language/content, or that learners can perform the required oral tasks. The 28-row source exercise reconciliation and teacher review remain open.
