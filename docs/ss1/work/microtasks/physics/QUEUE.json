@@ -28,7 +28,22 @@
     "PHYS-PRE-T3 (2026-11-07, base 679ab8b4edf311c2c376d978f220a75071792cdf) inventoried the 3rd Term text outside the parsed rows: lines 1-14 only (title, scheme heading, 12 scheme rows; no reference list). Scheme weeks 11 (Revision) and 12 (Examination) have no parsed row or body. Finding for PHYS-FACT-T3-W05-SCHEME-MISMATCH: the Week 5 TOPIC spans two lines, and the importer title keeps only the first ('MATTER, ATOMIC STRUCTURE, STATES OF MATTER,'); the second line reads 'DIFFUSION, OSMOSIS, BROWNIAN MOTION' and the body does contain a 'Diffusion and Osmosis' section with a 'Diffusion:' definition, a rate-of-diffusion list, Graham's law and an 'Osmosis:' definition, so the earlier 'body has no diffusion/osmosis' reading is a title-truncation artefact, to be confirmed by that item.",
     "PHYS-LES-T1-W02-MICROMETER-READING (2026-11-08): authored SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING. Adds pitch/least-count calculation, main and circular scale reading, signed zero-error correction and an independent example (12.84 mm = 1.284 cm). Four keyed items total 8 marks; every marking array sums to its item total. COV-PHYS-T1-W02-OBJ-7 is IMPLEMENTED_EQUIVALENT; OBJ-4 now references the lesson but stays PARTIAL for the wider vernier/micrometer objective. The open item PHYSICS-T1-W02-MICROMETER remains blocking until PHYS-COR-T1-W02-BINDING binds the original row and corrects its inconsistent printed example. Fig. 3.4 was not inspected or used. Source/member verification is reused from the existing PHYS-WK-T1-W02 record, not repeated in this run. Testing deferred by owner.",
     "PHYS-PORT-D1-COV-T1 (2026-11-08): compared all eleven PR #71 first-term coverage rows against master. None copied because master already has finer objective-level entries; W1/W2 contain PARTIAL/UNRESOLVED objectives, W3-W10 have more granular coverage and retain their own reconciliation/section-boundary gaps, and W11 remains unresolved. No status upgraded and no duplicate coverage added. Full disposition in PHYS-PORT-D1-COV-T1.md. Original binary member not rehashed/rendered in this run; existing master source evidence reused. Testing deferred by owner.",
-    "PHYS-TEST-PACKAGE-NEW (2026-11-11): owner explicitly authorised completion of the Physics job and its verification work. Added tests/ss1/physics.package.test.mts on branch agent/physics-package-regression-20261111. It checks the three manifest source identities, schema/package identity, lesson hashes/objectives/practice marking, coverage target/source references, source-rule hash/anchor guards, delivery correction and asset/open-item references, and queue dependencies/counts. Test has not yet run; queue item remains PENDING until CI execution. No content approval or verification state was fabricated."
+    "PHYS-TEST-PACKAGE-NEW (2026-11-11): owner explicitly authorised completion of the Physics job and its verification work. Added tests/ss1/physics.package.test.mts on branch agent/physics-package-regression-20261111. It checks the three manifest source identities, schema/package identity, lesson hashes/objectives/practice marking, coverage target/source references, source-rule hash/anchor guards, delivery correction and asset/open-item references, and queue dependencies/counts. Test has not yet run; queue item remains PENDING until CI execution. No content approval or verification state was fabricated.",
+    "PHYS-WK-T2-W03 (2026-11-11): expanded SUP-SS1-PHYSICS-T2-W03-THERMAL-EXPANSION-SOLIDS to 4,919 characters and 13 fully keyed questions (31 marks); updated COV-PHYS-T2-W03-OBJ-1 to the exact parsed row 2 body ID/hash. SchoolGist Week Three PDF lines 234-296 used only as a close-equivalent scope/assessment comparison. The original .doc row body itself was not accessible in this execution (parsed_rows.json contains only metadata), so exact source examples, assignments, formula/notation defects and figures remain unverified. Evidence PHYS-WK-T2-W03.md; queue item BLOCKED, not falsely completed.",
+    "PHYS-WK-T2-W04 (2026-11-11): authored SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY (5,141-char body; 20 keyed questions; 49 marks) and added five objective-level coverage entries for linear, area, volume, real/apparent and anomalous water expansion. SchoolGist PDF Week Four lines 297-414 used only as a close-equivalent comparison. Original .doc row body text was not retrievable in this execution, so exact source exercise/figure/formula reconciliation remains open; item BLOCKED, not marked complete. Evidence: PHYS-WK-T2-W04.md.",
+    "PHYS-WK-T2-W05 (2026-11-11): authored SUP-SS1-PHYSICS-T2-W05-HEAT-TRANSFER (5,914-char body; 16 keyed questions; 38 marks) and added five objective-level coverage entries. SchoolGist PDF Week Five lines 414-510 used only as close-equivalent scope comparison. Original .doc body and figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T2-W05.md; queue item BLOCKED.",
+    "PHYS-WK-T2-W06 (2026-11-11): authored SUP-SS1-PHYSICS-T2-W06-ELECTRIC-CHARGES (5,028-char body; 18 keyed questions; 37 marks) and added five objective-level coverage entries. SchoolGist PDF Week Six lines 518-566 used only as close-equivalent scope comparison. Original .doc body/figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T2-W06.md; queue item BLOCKED.",
+    "PHYS-WK-T2-W07 (2026-11-11): authored SUP-SS1-PHYSICS-T2-W07-GOLD-LEAF-ELECTROSCOPE (4,484-char body; 16 keyed questions; 34 marks) and added four objective-level coverage entries. SchoolGist PDF Week Seven lines 567-617 used only as close-equivalent scope comparison. Original .doc body/diagrams not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T2-W07.md; queue item BLOCKED.",
+    "PHYS-WK-T2-W08 (2026-11-11): authored SUP-SS1-PHYSICS-T2-W08-FIELDS-GRAVITY (4,389-char body; 15 keyed questions; 31 marks) and added five objective-level coverage entries. SchoolGist PDF Week Eight lines 618-677 used only as close-equivalent scope comparison. Original .doc body/figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T2-W08.md; queue item BLOCKED.",
+    "PHYS-WK-T2-W09 (2026-11-11): authored SUP-SS1-PHYSICS-T2-W09-ELECTRIC-FIELD-LINES (3,739-char body; 15 keyed questions; 33 marks) and added five objective-level coverage entries. SchoolGist PDF Week Nine lines 678-731 used only as close-equivalent scope comparison. Original .doc body/diagrams not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T2-W09.md; queue item BLOCKED.",
+    "PHYS-WK-T2-W10 (2026-11-11): authored SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT (5,079-char body; 18 keyed questions; 40 marks) and added five objective-level coverage entries. SchoolGist PDF Week Ten lines 732-835 used only as close-equivalent scope comparison. Original .doc body/diagrams not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T2-W10.md; queue item BLOCKED.",
+    "PHYS-WK-T3-W01 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS (6,167-char body; 18 keyed questions; 39 marks) and added five objective-level coverage entries. EduPodia/Ecolebooks public notes used only as close-equivalent comparisons. Original .doc body/circuit diagram not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W01.md; queue item BLOCKED.",
+    "PHYS-WK-T3-W02 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL (4,455-char body; 18 keyed questions; 38 marks) and added five objective-level coverage entries. SchoolGist/Ecolebooks close-equivalent notes used only for scope corroboration. Original .doc body/diagrams not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W02.md; queue item BLOCKED.",
+    "PHYS-WK-T3-W03 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER (4,065-char body; 18 keyed questions; 40 marks) and added five objective-level coverage entries. SchoolGist/Ecolebooks close-equivalent notes used only for scope corroboration. Original .doc body/figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W03.md; queue item BLOCKED.",
+    "PHYS-WK-T3-W04 + PHYS-FACT-T3-FUSE-RATING + PHYS-FACT-T3-W04-ASSIGNMENT + PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA (2026-11-11): implemented source indexing, correction and assessment disposition. See the four task notes in docs/ss1/work/microtasks/physics/. Source PDF line locators and prior original-source checkpoint are recorded; lesson content approval remains pending and testing deferred.",
+    "PHYS-TEST-PACKAGE-NEW (2026-11-11): completed and executed. Dedicated workflow run 43012753944 succeeded: 7 tests, 7 pass, 0 fail; registered SS1 package validator passed. Test file tests/ss1/physics.package.test.mts and workflow .github/workflows/ss1-physics-verification.yml. Does not certify source-importer, DB or device delivery.",
+    "PHYS-WK-T3-W05 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W05-PARTICLE-NATURE-MATTER (6,664-char body; 20 keyed questions; 43 marks) and added five objective-level coverage entries. SchoolGist PDF Week Five lines 348-432 used only as close-equivalent scope comparison. Original .doc body/figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W05.md; queue item BLOCKED.",
+    "PHYS-WK-T3-W06 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W06-CRYSTAL-STRUCTURE (4,818-char body; 20 keyed questions; 46 marks) and added five objective-level coverage entries. SchoolGist PDF Week Six lines 439-503 used as close-equivalent text evidence. Reversed crystalline/amorphous table and unit-cell/lattice conflation corrected. Original .doc body not independently retrievable; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W06.md; queue item BLOCKED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -47,9 +62,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 34,
-    "BLOCKED": 15,
-    "PENDING": 40
+    "IMPLEMENTED_TESTING_DEFERRED": 39,
+    "BLOCKED": 28,
+    "PENDING": 22
   },
   "total": 89,
   "items": [
@@ -721,8 +736,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 2 (source label 'WEEK THREE', title \"Expansion of Solid, Effect and Applications of Expansion\", 2792 characters, body sha256 35319222af7c43db21bfd51b1f897b2b74d81ebe320d3b8f97de427db549e303) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Scheme-level coverage mapped to parsed row 2 and the authored supplement was expanded in backend/src/db/ss1/subjects/physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W03.md. The exact registered original .doc body text was not retrievable in this execution (parsed_rows.json exposes only row title/length/hash), so exact source examples, assessment blocks, formula/notation defects and figures cannot be reconciled. A public close-equivalent PDF was used only for scope corroboration, not treated as the original. Keep blocked until the registered original member or a verified row extraction is inspected.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -758,8 +773,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 3 (source label 'WEEK FOUR', title \"Expansivity and Its Application - Linear, Area and Volume. Anomalous\", 4238 characters, body sha256 91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W04.md. Parsed row 3 identity/hash are bound, and the public SchoolGist PDF Week Four (lines 297-414) was used as a close-equivalent scope/assessment comparison. The exact registered .doc body was not retrievable in this execution; therefore original examples, assessment text, formula/notation defects and figures remain unverified. Do not claim source indexing complete until the original member or verified row extraction is inspected.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -795,8 +810,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 4 (source label 'WEEK FIVE', title \"Heat Transfer - Conduction, Convection, Radiation and Their Applications\", 6517 characters, body sha256 b9ff6beb9eabb79d76839bfdefbdc9bf074d5950aaf71a329193c0f8f7e939bd) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T2-W05-HEAT-TRANSFER and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W05.md. Parsed row 4 identity/hash are bound; SchoolGist PDF Week Five (lines 414-510) was used only as a close-equivalent scope comparison. The exact registered .doc body and its figures were not retrievable in this execution, so original assessment/notation reconciliation remains incomplete.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -832,8 +847,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 5 (source label 'WEEK SIX', title \"ELECTRIC CHARGES\\u2192 Production, Types, Distribution and Storage\", 3074 characters, body sha256 a034ad6dde530a2fca4ce660b671c1e9864eca26d5d9c4eaa92216d4a25aefd0) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T2-W06-ELECTRIC-CHARGES and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W06.md. Parsed row 5 identity/hash are bound; SchoolGist PDF Week Six (lines 518-566) used only as a close-equivalent scope comparison. The exact registered .doc body and its figures were not retrievable in this execution, so original assessment and source reconciliation remain incomplete.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -869,8 +884,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 6 (source label 'WEEK SEVEN', title \"Gold Leaf Electroscope and Its Uses. Lighting and Lighting Conductor.\", 4364 characters, body sha256 ff0474d250d038ced292af853aeea78bbc2ffbd31f3792df61ac11f1544957d8) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T2-W07-GOLD-LEAF-ELECTROSCOPE and four objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W07.md. Parsed row 6 identity/hash are bound; SchoolGist PDF Week Seven (lines 567-617) used only as a close-equivalent scope comparison. Exact registered .doc body and original diagrams were not retrievable in this execution, so source reconciliation remains incomplete.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -906,8 +921,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 7 (source label 'WEEK 8', title \"FIELD - CONCEPT AND TYPES OF FIELD. GRAVITATIONAL AND MAGNETIC FIELD. FORCE OF GRAVITY\", 3122 characters, body sha256 07b01d34682899f09096e2ac8cd0fb977b722b3d3ffcb6a276bf42f6d5488e96) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T2-W08-FIELDS-GRAVITY and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W08.md. Parsed row 7 identity/hash are bound; SchoolGist PDF Week Eight (lines 618-677) used only as a close-equivalent scope comparison. Exact registered .doc body and figures were not retrievable in this execution, so original source reconciliation remains incomplete.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -943,8 +958,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 8 (source label 'WEEK NINE', title \"Electric Field - Line of Forces, Properties of Line of Force, Description and     Properties of Force Field\", 3669 characters, body sha256 3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T2-W09-ELECTRIC-FIELD-LINES and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W09.md. Parsed row 8 identity/hash are bound; SchoolGist PDF Week Nine (lines 678-731) used only as a close-equivalent scope comparison. Exact registered .doc body and original diagrams were not retrievable in this execution, so source reconciliation remains incomplete.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -980,8 +995,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 9 (source label 'WEEK TEN', title \"PRODUCTION OF CONTINUOUS ELECTRIC CURRENT\", 3040 characters, body sha256 d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W10.md. Parsed row 9 identity/hash are bound; SchoolGist PDF Week Ten (lines 732-835) used only as a close-equivalent scope comparison. Exact registered .doc body and diagrams were not retrievable in this execution, so source reconciliation remains incomplete.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1017,8 +1032,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 0 (source label 'WEEK 1', title \"ELECTRIC CIRCUIT\", 4257 characters, body sha256 9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W01.md. Parsed row 0 identity/hash are bound; EduPodia/Ecolebooks public notes used only as close-equivalent scope comparisons. Exact registered .doc body and original circuit diagram were not retrievable in this execution, so source reconciliation remains incomplete.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1054,8 +1069,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 1 (source label 'WEEK 2', title \"RESISTORS & CELLS  CONNECTED IN SERIES & PARALLEL\", 2728 characters, body sha256 6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W02.md. Parsed row 1 identity/hash are bound; SchoolGist/Ecolebooks notes used only as close-equivalent scope comparisons. Exact registered .doc body and original circuit diagrams were not retrievable in this execution, so source reconciliation remains incomplete.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1091,8 +1106,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 2 (source label 'WEEK 3', title \"ELECTRICAL ENERGY AND POWER\", 2352 characters, body sha256 9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W03.md. Parsed row 2 identity/hash are bound; SchoolGist/Ecolebooks notes used only as close-equivalent scope comparisons. Exact registered .doc body and any original diagrams were not retrievable in this execution, so source reconciliation remains incomplete.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1128,8 +1143,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 3 (source label 'WEEK 4', title \"SAFETY DEVICE - FUSE\", 2393 characters, body sha256 87346147325e174b318300a5d1ac5312cd14784201b272138575665519d50d1b) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed the Week Four scheme objective, source row identity/hash, fuse definitions/types, fault-detection tests and source assessment blocks. Expanded SUP-SS1-PHYSICS-T3-W04-FUSE with 21 keyed questions (41 marks), including source assessment answer keys. Evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W04.md. Prior SS1-03 checkpoint confirms the original .doc was read and reports the current-rating and 'merger tester' defects; SchoolGist PDF lines 296-346 provides reproducible line-level corroboration. The unrelated tuning-fork question is recorded in non-blocking package open item PHYSICS-T3-W04-UNRELATED-QUESTION. Lesson approval PENDING; verification DEFERRED.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1165,8 +1180,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 4 (source label 'WEEK 5', title \"MATTER, ATOMIC STRUCTURE, STATES OF MATTER,\", 4916 characters, body sha256 f59b8928f2e3d005c70de58e2e9ada07cfa1c404e24a7b448478eb65c593569b) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W05-PARTICLE-NATURE-MATTER and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W05.md. Parsed row 4 identity/hash are bound; SchoolGist PDF Week Five (lines 348-432) used only as a close-equivalent scope comparison. Exact registered .doc body and original figures were not retrievable in this execution, so source reconciliation remains incomplete.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1202,8 +1217,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 5 (source label 'WEEK 6', title \"CRYSTAL STRUCTURE OF MATTER- AMORPHOUS AND\", 4124 characters, body sha256 c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W06-CRYSTAL-STRUCTURE and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W06.md. Parsed row 5 identity/hash are bound; SchoolGist PDF Week Six lines 439-503 used as close-equivalent text evidence. The original .doc body was not independently retrievable in this execution, so exact source-row reconciliation remains open. The reversed crystalline/amorphous table and unit-cell/lattice terminology were corrected in the student supplement.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1468,8 +1483,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "docs/ss1/work/SS1-03/CHECKPOINT.md section 3 (Physics): read so far 3rd term Weeks 1-4 only; defects found, not authored. Reported: the rating is defined as the MINIMUM current (it is the maximum carried indefinitely) and a 'merger tester' appears (megger). Not yet checked in this queue. PR #71 lesson SUP-SS1-PHYS-003 (branch-only) addresses the fuse topic.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Confirmed and corrected the current-rating definition and Megger terminology. Evidence: docs/ss1/work/microtasks/physics/PHYS-FACT-T3-FUSE-RATING.md; CHECKPOINT.md section 3 records the original .doc defect; SchoolGist PDF Week Four lines 310-316 and 324-329 gives reproducible close-equivalent wording. Lesson now distinguishes current rating (maximum continuous current under specified conditions), fusing current (minimum melting current), fusing factor and Megger (insulation-resistance tester).",
       "completion_condition": "Verbatim short quotes and locators recorded, defect confirmed or refuted, and a correction or lesson task appended if confirmed."
     },
     {
@@ -1499,8 +1514,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "docs/ss1/work/SS1-03/CHECKPOINT.md section 3 (Physics): read so far 3rd term Weeks 1-4 only; defects found, not authored. Reported: Week 4 assignment contains unrelated circular-motion items.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Located the unrelated tuning-fork question in Week Four Assignment Section A Q4 (SchoolGist PDF line 342). It is not a fuse objective and is excluded from the authored fuse assessment; a non-blocking package open item records that no destination topic is guessed. Evidence: docs/ss1/work/microtasks/physics/PHYS-FACT-T3-W04-ASSIGNMENT.md.",
       "completion_condition": "Each unrelated item located and quoted briefly; recorded for the delivery-correction decision."
     },
     {
@@ -1530,8 +1545,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "docs/ss1/work/SS1-03/CHECKPOINT.md section 3 (Physics): read so far 3rd term Weeks 1-4 only; defects found, not authored. Reported formula defect; the row where it occurs is not recorded in the repository.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Confirmed the unbracketed expression at Week One PDF lines 106-107 and the prior source checkpoint. Correct relation is I = E/(R + r), with terminal V = IR = E − Ir. The authored Week One lesson uses the corrected expression. Evidence: docs/ss1/work/microtasks/physics/PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA.md.",
       "completion_condition": "Row and wording recorded; classified as source defect or extraction loss."
     },
     {
@@ -2171,8 +2186,8 @@
         "PHYS-SRC-T2",
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "A Physics package regression test has been authored on branch agent/physics-package-regression-20261111. It checks source manifest identity, all three term registrations, package schema, lesson body hashes and marking totals, coverage/source references, source-rule guards, corrections/assets/open-item references and queue consistency. It has not yet been executed; status remains PENDING until a CI or authorised test run passes.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Physics package regression test is committed at tests/ss1/physics.package.test.mts and executed by the dedicated workflow .github/workflows/ss1-physics-verification.yml. Run 43012753944 succeeded on commit 2074b18cf0ffe884804f0daf0b7471e09faff715: all 7 Physics regression tests passed; registered SS1 package validation also passed. Run log: https://github.com/PDS-David/sts-school-app/actions/runs/43012753944. This verifies package/schema/hash/marking/reference/queue invariants only; source-importer, database and student-device acceptance remain separate.",
       "completion_condition": "The package test is committed, executed in the repository's supported test environment, and all failures are fixed without weakening the assertions or claiming unrun source/device acceptance."
     },
     {
@@ -3042,7 +3057,7 @@
   ],
   "review": {
     "date": "2026-11-11",
-    "reviewed_master_sha": "efc39c6288719026da5fc6e34ac12411669fa2bc",
+    "reviewed_master_sha": "dbc499c1b6da785c6df80dacc0b80c5ba8fa3067",
     "scope": "Physics package regression test authored; execution pending CI. Content approval, source-dependent full compiler parity, database and device acceptance remain separate.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
@@ -3061,73 +3076,37 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "PHYS-WK-T2-W02 lesson authored and objective-indexed; correction binding recorded. Mercury freezing point corrected using NIST; source boiling MCQ ambiguity retained as non-blocking. Tests deferred."
+    "notes": "Physics package has 26 lessons and 162 coverage rows. Weeks T2 W3–W10 and T3 W1–W6 now have authored supplements; exact original source reconciliation and visuals remain. PR #578 includes 7/7 passing Physics regression test."
   },
   "next_runnable": [
-    "PHYS-WK-T2-W03",
-    "PHYS-WK-T2-W04",
-    "PHYS-WK-T2-W05",
-    "PHYS-WK-T2-W06",
-    "PHYS-WK-T2-W07",
-    "PHYS-WK-T2-W08",
-    "PHYS-WK-T2-W09",
-    "PHYS-WK-T2-W10",
-    "PHYS-WK-T3-W01",
-    "PHYS-WK-T3-W02",
-    "PHYS-WK-T3-W03",
-    "PHYS-WK-T3-W04",
-    "PHYS-WK-T3-W05",
-    "PHYS-WK-T3-W06",
     "PHYS-WK-T3-W07",
     "PHYS-WK-T3-W08",
     "PHYS-WK-T3-W09",
     "PHYS-WK-T3-W10",
     "PHYS-RULE-T1-REVISION-SCHEME",
     "PHYS-RULE-T3-REVISION-EXAM",
-    "PHYS-FACT-T3-FUSE-RATING",
-    "PHYS-FACT-T3-W04-ASSIGNMENT",
-    "PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA",
     "PHYS-VIS-T1",
     "PHYS-VIS-T2",
     "PHYS-VIS-T3",
     "PHYS-PORT-D1-RULE-SPLIT",
     "PHYS-PORT-D1-FACT-T1-W05",
     "PHYS-PORT-D1-FACT-T2-W01",
-    "PHYS-TEST-PACKAGE-NEW",
     "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T2-W03",
-    "PHYS-WK-T2-W04",
-    "PHYS-WK-T2-W05",
-    "PHYS-WK-T2-W06",
-    "PHYS-WK-T2-W07",
-    "PHYS-WK-T2-W08",
-    "PHYS-WK-T2-W09",
-    "PHYS-WK-T2-W10",
-    "PHYS-WK-T3-W01",
-    "PHYS-WK-T3-W02",
-    "PHYS-WK-T3-W03",
-    "PHYS-WK-T3-W04",
-    "PHYS-WK-T3-W05",
-    "PHYS-WK-T3-W06",
     "PHYS-WK-T3-W07",
     "PHYS-WK-T3-W08",
     "PHYS-WK-T3-W09",
     "PHYS-WK-T3-W10",
     "PHYS-RULE-T1-REVISION-SCHEME",
     "PHYS-RULE-T3-REVISION-EXAM",
-    "PHYS-FACT-T3-FUSE-RATING",
-    "PHYS-FACT-T3-W04-ASSIGNMENT",
-    "PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA",
     "PHYS-VIS-T1",
     "PHYS-VIS-T2",
     "PHYS-VIS-T3",
     "PHYS-PORT-D1-RULE-SPLIT",
     "PHYS-PORT-D1-FACT-T1-W05",
     "PHYS-PORT-D1-FACT-T2-W01",
-    "PHYS-TEST-PACKAGE-NEW",
     "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ]
