@@ -12,6 +12,8 @@ on:
       - "backend/src/db/ss1/topicParserRules.ts"
       - "backend/src/db/ss1/assets/english/**"
       - "tests/ss1/english.package.test.mts"
+      - "tests/ss1/english.delivery.test.mts"
+      - "backend/src/utils/ss1EnglishDeliveryCorrection.ts"
       - "scripts/ss1/**"
       - "docs/ss1/sources/**"
       - "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv"
@@ -39,6 +41,8 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Run English package tests
         run: npm run test:ss1:english
+      - name: Run English learner-delivery regression tests
+        run: node --import tsx --test tests/ss1/english.delivery.test.mts
       - name: Validate English package and registered assets
         run: npm run validate:ss1:english
       - name: Set up Python for hash-bound source staging
