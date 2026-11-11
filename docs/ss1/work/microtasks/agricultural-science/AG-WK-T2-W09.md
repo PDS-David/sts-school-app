@@ -38,3 +38,8 @@ The five factors are climate, parent materials, topography, biotic factors (livi
 - Parsed package/queue JSON; checked unique IDs and the PARTIAL coverage's open-item link.
 - Importer, tests, TypeScript, DB and device checks **not run**; testing remains deferred by owner.
 - No source bytes, lesson bodies, rules, corrections, assets, shared code or other subjects modified.
+
+
+## Implementation follow-up (2026-11-11)
+
+The source row `SS1-SRC-956594d97094:BODY:1d566e884981c34293a7c08a90ce5177dc063ea5813da9a7f27e69e09c5f77ee` is now bound by `CORR-AG-T2-W09-SOIL-TERMS-REPLACEMENT` to `SUP-SS1-AGRICULTURAL-SCIENCE-T2-W09-SOIL-FORMATION`. The replacement teaches climate, parent material, relief, organisms and time, soil horizons, and the effects of slope/runoff. It corrects “sloppy area” to “sloping area” and “rock formation” to “soil formation”. Coverage is IMPLEMENTED_EQUIVALENT; approval and verification remain pending.
