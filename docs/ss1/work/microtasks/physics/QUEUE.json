@@ -68,11 +68,11 @@
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
     "LESSON": 14,
-    "CORRECTION_BINDING": 1
+    "CORRECTION_BINDING": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 56,
-    "BLOCKED": 33,
+    "IMPLEMENTED_TESTING_DEFERRED": 61,
+    "BLOCKED": 30,
     "PENDING": 1
   },
   "total": 90,
@@ -1374,8 +1374,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY (18 answered questions; 43 marks) and five objective-level coverage entries in physics.json. Evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W10.md. Parsed row 9 identity/hash bound; SchoolGist PDF Week Ten lines 660-713 used as close-equivalent scope evidence. Original .doc body not independently retrieved; exact source reconciliation remains open. Content approval PENDING; verification DEFERRED.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Rendered original Third Term PDF page 13 was inspected. Week 10 teaches force in a bar, energy stored in a wire and energy stored per unit volume. The source formula is wrong: α=e/L×θ, but the next line uses e=αLθ. Correct definition is α=ΔL/(L₀ΔT); F=EAαΔT. The lesson SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY covers the objectives, and delivery correction CORR-PHYSICS-T3-W10-ELASTIC-FORCE binds the source row. Evidence: PHYS-WK-T3-W10.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1703,8 +1703,8 @@
         "PHYS-SRC-T2",
         "PHYS-SRC-T3"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Foundation-level decision, shown for Mathematics as OI-MATH-001; for Physics only the branch records it (OI-PHYS-001).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Extraction strategy adopted under owner instruction: use WordExtractor getBody() for stable source-row hashes and text indexing, and render the hash-verified .doc to PDF as the authority for figures, fractions, superscripts, subscripts and control-character artefacts. Where PDF rendering restores content missing from getBody(), classify it as extraction loss; where the PDF confirms the source itself is wrong, record a source defect and bind a reviewed replacement. Never rewrite source bytes or infer missing figure readings. Evidence: PHYS-OWNER-EXTRACTION-STRATEGY.md.",
       "completion_condition": "Decision recorded; follow-up tasks appended by the owner or integration worker."
     },
     {
@@ -2038,7 +2038,7 @@
         "PHYS-WK-T3-W10"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "T3 Week 10 source lines 527–531 show an internally inconsistent extracted fraction: α=e/L×Ө, e=αLӨ, and F=EAαӨ. The consistent intended relation is α=e/(LΔT), giving F=EAαΔT. The final result is correct; original Word rendering is still needed to distinguish source error from extraction loss. Evidence: PHYS-PORT-D1-FACT-T3-W10.md and package open item PHYSICS-T3-W10-FRACTION-FORMATTING.",
+      "implementation_reference": "Rendered original PDF page 13 confirms the source itself prints α=e/L×θ; this is a source formula defect, not extraction loss. Correct relation α=ΔL/(L₀ΔT) and F=EAαΔT are taught in SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY and bound by CORR-PHYSICS-T3-W10-ELASTIC-FORCE. See PHYS-PORT-D1-FACT-T3-W10.md.",
       "completion_condition": "Defect confirmed or refuted with locator; if the rendered source shows no defect it is recorded as extraction loss."
     },
     {
@@ -2604,8 +2604,8 @@
         "PHYS-LES-T1-W02-KEY-ASSESSMENT",
         "PHYS-FACT-T1-W02-SCOPE"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Not safe to bind the Week Two source row yet. Seven assessment readings depend on original figures that PHYS-VIS-T1 has not inspected, and theory item 5 is corrupted by 98 U+001F control characters. The new measurement and answer-key supplements exist, but a single replacement binding must preserve all source teaching/visual content and suppress the incorrect micrometer example. Keep pending until PHYS-VIS-T1 and extraction strategy resolve these inputs.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The exact Week Two source row is bound by CORR-PHYSICS-T1-W02-MEASUREMENT-CONSOLIDATED to SUP-SS1-PHYSICS-T1-W02-CONSOLIDATED. Rendered pages 6–9 confirm the micrometer/vernier theory figures, the readable SI-units question and the absence of weekend diagrams 3, 7 and 10. Three original replacement SVG figures are registered and keyed. Evidence: PHYS-COR-T1-W02-BINDING.md.",
       "completion_condition": "delivery_corrections[] has one entry with this source id, source sha256, source_lesson_id SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e, body_sha256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e and a replacement_id that resolves to an existing supplement of the same subject and term; the reason and evidence name each defect; no schema, compiler or other subject is edited."
     },
     {
@@ -3086,12 +3086,54 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Authored SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS (5,877-char body; 20 answered questions; 41 marks). Updated coverage OBJ-1–6 and OBJ-8–10. Micrometer and volume are covered by companion supplements. Evidence: docs/ss1/work/microtasks/physics/PHYS-LES-T1-W02-MEASUREMENT-BASICS.md. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Student lesson includes correct measuring techniques, instrument uses, worked vernier reading, mass/weight distinctions and W=mg; at least 15 answered practice questions with marking totals; exact body hash and source row ID; remaining figure-dependent assessments explicitly open."
+    },
+    {
+      "id": "PHYS-COR-T2-W04-BINDING",
+      "kind": "CORRECTION_BINDING",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": null,
+      "objective": "Bind the original source row to its reviewed replacement so delivery does not expose a confirmed source defect.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The exact Second Term Week Four source row is bound by CORR-PHYSICS-T2-W04-EXPANSIVITY to SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY. Rendered page 8 confirms X is printed where α is required; page 9 confirms Y for cubical expansivity and the incomplete ratio. The replacement adds a new anomalous-water graph. Evidence: PHYS-COR-T2-W04-BINDING.md.",
+      "completion_condition": "One exact delivery_corrections[] entry resolves source id, source hash, source lesson id/body hash and an existing same-subject/same-term replacement lesson; evidence names the source defect and replacement coverage."
+    },
+    {
+      "id": "PHYS-COR-T3-W10-BINDING",
+      "kind": "CORRECTION_BINDING",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": null,
+      "objective": "Bind the original source row to its reviewed replacement so delivery does not expose a confirmed source defect.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The exact Third Term Week Ten source row is bound by CORR-PHYSICS-T3-W10-ELASTIC-FORCE to SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY. Rendered page 13 confirms the incorrect definition α=e/L×θ; the replacement derives α=ΔL/(L₀ΔT) and F=EAαΔT. Evidence: PHYS-COR-T3-W10-BINDING.md.",
+      "completion_condition": "One exact delivery_corrections[] entry resolves source id, source hash, source lesson id/body hash and an existing same-subject/same-term replacement lesson; evidence names the source defect and replacement coverage."
     }
   ],
   "review": {
     "date": "2026-11-11",
     "reviewed_master_sha": "2240fe9289f9017c805a2544eeecabcd2bd71e4a",
-    "scope": "Physics expanded with First Term laboratory familiarization and keyed assessments; Second Term Week Four source defects indexed; source/visual/correction blockers retained honestly. Content approval and student-delivery acceptance remain pending.",
+    "scope": "Rendered all three hash-verified Physics source documents to PDF. Corrected Week Two measurement row and bound it; confirmed and bound Second Term Week Four expansivity notation error and Third Term Week Ten thermal-expansivity formula error; recovered Week Two SI-units question from PDF rendering and adopted dual text/render extraction policy.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
