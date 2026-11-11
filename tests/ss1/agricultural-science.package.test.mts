@@ -10,7 +10,7 @@ import mammoth from 'mammoth';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import { applyRules, compilePackages } from '../../backend/src/db/ss1/compiler.ts';
 import { parseTopics } from '../../backend/src/db/ingestTopics.ts';
-import { createAgriculturalScienceDeliveryResolver, safeAgriculturalScienceTopic } from '../../backend/src/utils/ss1AgriculturalScienceDeliveryCorrection.ts';
+import { createAgriculturalScienceDeliveryResolver, createAgriculturalScienceAssetDeliveryResolver, safeAgriculturalScienceTopic } from '../../backend/src/utils/ss1AgriculturalScienceDeliveryCorrection.ts';
 
 const raw = JSON.parse(readFileSync(new URL('../../backend/src/db/ss1/subjects/agricultural-science.json', import.meta.url), 'utf8'));
 const manifestText = readFileSync(new URL('../../docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv', import.meta.url), 'utf8');
@@ -333,6 +333,22 @@ test('Agricultural Science learner delivery withholds corrected source rows unti
     const approved = createAgriculturalScienceDeliveryResolver(approvedFixture)(topic);
     assert.equal(approved?.kind, 'corrected');
     assert.ok(approved?.text.includes(replacement.title));
+
+    const lessonAsset = approvedFixture.assets.find((asset: any) => asset.lesson_id === replacement.id);
+    if (lessonAsset) {
+      lessonAsset.state.content_approval = 'APPROVED';
+      lessonAsset.state.approval_reference = 'TEST_ONLY_ASSET_APPROVAL_FIXTURE';
+      lessonAsset.state.verification = 'VERIFIED';
+      lessonAsset.state.verification_reference = 'TEST_ONLY_ASSET_VERIFICATION_FIXTURE';
+      const assetResolver = createAgriculturalScienceAssetDeliveryResolver(approvedFixture);
+      const metadata = { asset_key: lessonAsset.id, sha256: lessonAsset.sha256, mime: lessonAsset.media_type };
+      assert.equal(assetResolver(topic, metadata), true, 'approved asset for the exact corrected lesson may be delivered');
+      assert.equal(assetResolver(topic, { ...metadata, sha256: '0'.repeat(64) }), false, 'stored asset bytes must match the package hash');
+      assert.equal(assetResolver({ ...topic, title: 'UNRELATED WEEK' }, metadata), false, 'asset must not cross topic identity');
+      lessonAsset.state.verification = 'DEFERRED';
+      lessonAsset.state.verification_reference = null;
+      assert.equal(createAgriculturalScienceAssetDeliveryResolver(approvedFixture)(topic, metadata), false, 'unverified asset must remain hidden');
+    }
   }
 });
 
@@ -342,6 +358,14 @@ test('Agricultural Science correction adapter is wired through learner topic and
   assert.ok(route.includes('safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(r)))'));
   assert.ok(route.includes('safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(full[0] ?? rows[0])))'));
   assert.ok(route.includes('resolveAgriculturalScienceDelivery(topic)'));
+  assert.ok(route.includes('agriculturalScienceAssetDeliverable(visible[0], asset)'));
+  assert.ok(route.includes('agriculturalScienceAssetDeliverable(meta[0], meta[0])'));
+  const assetPlanWrapper = readFileSync(new URL('../../scripts/ss1/build_agricultural_science_asset_plan.mts', import.meta.url), 'utf8');
+  assert.ok(assetPlanWrapper.includes('STAGING.json'));
+  assert.ok(assetPlanWrapper.includes('stageManifest.archive_sha256'));
+  assert.ok(assetPlanWrapper.includes('buildFromFiles'));
+  assert.ok(assetPlanWrapper.includes('writeAssetPlanArtifacts'));
+  assert.ok(!assetPlanWrapper.includes('source.bytes'));
   assert.ok(route.includes('retireStaleAgriculturalScienceCache(query, topic.id, agriculturalScienceDelivery)'));
   assert.ok(route.includes('agriculturalScienceWithdrawnAssessmentIds(query, openIds)'));
   assert.equal(route.split('agriculturalScienceAssessmentDeliverable(query,').length - 1, 3);

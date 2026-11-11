@@ -16,6 +16,44 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 // the picture, so it is shown whole (resizeMode="contain", never cropped) at
 // full width, with its height taken from the picture's own proportions once it
 // has loaded. Pictures wider than WIDE_PICTURE_PX scroll sideways instead (below). Animated GIFs are passed straight through unchanged.
+const SAFE_SVG_STYLE_PROPERTIES = new Set([
+  'font', 'font-family', 'font-size', 'font-weight', 'fill', 'stroke', 'stroke-width',
+  'stroke-linecap', 'stroke-linejoin', 'stroke-dasharray', 'marker-end',
+]);
+
+function hasSafeSvgStyles(source: string): boolean {
+  const openingTags = (source.match(/<style\b/gi) ?? []).length;
+  const blocks = [...source.matchAll(/<style\s*>([\s\S]*?)<\/style>/gi)];
+  if (openingTags !== blocks.length) return false;
+  for (const block of blocks) {
+    const css = block[1];
+    const rulePattern = /([^{}]+)\{([^{}]*)\}/g;
+    let cursor = 0;
+    let rules = 0;
+    let match: RegExpExecArray | null;
+    while ((match = rulePattern.exec(css)) !== null) {
+      if (css.slice(cursor, match.index).trim()) return false;
+      const selectors = match[1].trim().split(',');
+      if (!selectors.length || !selectors.every(selector => /^\.[A-Za-z_][\w-]*$/.test(selector.trim()))) return false;
+      const declarations = match[2].split(';').map(value => value.trim()).filter(Boolean);
+      if (!declarations.length) return false;
+      for (const declaration of declarations) {
+        const separator = declaration.indexOf(':');
+        if (separator <= 0) return false;
+        const property = declaration.slice(0, separator).trim().toLowerCase();
+        const value = declaration.slice(separator + 1).trim();
+        if (!SAFE_SVG_STYLE_PROPERTIES.has(property) || !/^[A-Za-z0-9#.,%+\-_\s()'"]+$/.test(value)) return false;
+        if (/url\s*\(/i.test(value) && !(property === 'marker-end' && /^url\(\s*["']?#[A-Za-z_][\w.-]*["']?\s*\)$/i.test(value))) return false;
+        if (/[@\\]|expression|javascript:|data:/i.test(value)) return false;
+      }
+      cursor = rulePattern.lastIndex;
+      rules++;
+    }
+    if (!rules || css.slice(cursor).trim()) return false;
+  }
+  return true;
+}
+
 export const WIDE_PICTURE_PX = 1500;
 export const WIDE_PICTURE_SCALE = 0.45;
 function LessonImage({ asset, token, onRetry }: { asset: any; token: string; onRetry: () => void }) {
@@ -41,7 +79,7 @@ function LessonImage({ asset, token, onRetry }: { asset: any; token: string; onR
       const contentType = (response.headers.get('content-type') ?? '').split(';')[0].trim().toLowerCase();
       if (contentType !== 'image/svg+xml') throw new Error('Unexpected SVG content type');
       const xml = await response.text();
-      if (xml.length > 1_000_000 || /<!DOCTYPE|<!ENTITY|<\s*(?:script|foreignObject|iframe|object|embed|image|audio|video|style)\b|<\?xml-stylesheet|\bon[a-z][\w:-]*\s*=|\b(?:href|src)\s*=|javascript:|data:|@import|url\(\s*(?!["']?#)/i.test(xml)) {
+      if (xml.length > 1_000_000 || !hasSafeSvgStyles(xml) || /<!DOCTYPE|<!ENTITY|<\s*(?:script|foreignObject|iframe|object|embed|image|audio|video)\b|<\?xml-stylesheet|\bon[a-z][\w:-]*\s*=|\b(?:href|src|style)\s*=|javascript:|data:|@import|url\(\s*(?!["']?#)/i.test(xml)) {
         throw new Error('Unsafe SVG content');
       }
       const viewBox = xml.match(/<svg\b[^>]*\bviewBox=["']\s*([0-9.+-]+)[,\s]+([0-9.+-]+)[,\s]+([0-9.+-]+)[,\s]+([0-9.+-]+)\s*["']/i);
