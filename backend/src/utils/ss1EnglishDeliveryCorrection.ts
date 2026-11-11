@@ -45,9 +45,9 @@ function renderLesson(lesson: SubjectPackage['lessons'][number]) {
     lesson.title,
     lesson.body,
     'LEARNING OBJECTIVES',
-    ...lesson.objectives.map((objective, index) => \`\${index + 1}. \${objective}\`),
+    ...lesson.objectives.map((objective, index) => String(index + 1) + '. ' + objective),
     'PRACTICE — ATTEMPT THESE BEFORE DISCUSSING YOUR ANSWERS',
-    ...lesson.practice.map(question => \`\${question.id}. \${question.question} (\${question.marks} mark(s))\`),
+    ...lesson.practice.map(question => question.id + '. ' + question.question + ' (' + question.marks + ' mark(s))'),
     'SOURCES AND ATTRIBUTION',
     ...lesson.provenance.map(source =>
       source.title + ' — ' + source.locator + (source.url ? ' — ' + source.url : '') +
