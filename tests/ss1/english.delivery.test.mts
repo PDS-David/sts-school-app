@@ -44,7 +44,7 @@ test('English resolver is isolated by school, class, subject, term, source file 
   const resolver = createEnglishDeliveryResolver(fixture);
   const matched = resolver(fixtureTopic);
   assert.equal(matched?.kind, 'withheld');
-  assert.match(matched?.reason ?? '', /not yet approved/i);
+  assert.match(matched?.reason ?? '', /not completed its authorised verification/i);
   assert.equal(resolver({ ...fixtureTopic, school_code: 'primary' }), null);
   assert.equal(resolver({ ...fixtureTopic, class_name: 'SS 2' }), null);
   assert.equal(resolver({ ...fixtureTopic, subject_name: 'Literature' }), null);
