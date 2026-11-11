@@ -1,3 +1,46 @@
+# SS1 English Language — current closeout status
+
+Date: 2026-11-11  
+Repository: `PDS-David/sts-school-app`  
+Scope: English Language, SS1, all three instructional terms.
+
+> **Current status: CONTENT APPROVED; VERIFICATION PENDING; NOT RELEASED.** The repository owner explicitly instructed “All lessons approved.” This instruction is recorded individually against all 149 lessons. The package is now `IMPLEMENTED`; all lesson verification fields remain `DEFERRED`.
+
+## Current authoritative state
+
+- Package: `backend/src/db/ss1/subjects/english.json`; schema: `ss1-subject-v1`; package status: `IMPLEMENTED`.
+- Authored lessons: 149; content approval: `APPROVED` for all 149; unique approval references recorded in `OWNER_APPROVAL_20261111.md`.
+- Implementation: `IMPLEMENTED` for all 149; verification: `DEFERRED` for all 149; no verification references have been fabricated.
+- Blocking package open items: 0. Remaining open items: 67, all non-blocking source-scope/review follow-ups.
+- Objective coverage: 616 `IMPLEMENTED_EQUIVALENT`, 12 `SUPPORTED`, 32 `MARKER`, 8 `PARTIAL`, 0 `UNRESOLVED` (668 total).
+- Registered assets: 1; all registered provenance entries used by authored lessons are marked `PERMITTED`. Asset verification and oral observation remain separate from content approval.
+- Delivery corrections: 24. They remain subject to the existing correction-scope and verification safeguards; approval does not activate a correction by itself.
+
+## Owner approval evidence
+
+See [OWNER_APPROVAL_20261111.md](OWNER_APPROVAL_20261111.md). The file records the exact owner instruction, date, every lesson ID, and a unique reference matching the package's `state.approval_reference`. This is an owner attestation; it is not represented as an independent review performed by the assistant.
+
+The blocking `ENGLISH-CONTENT-APPROVAL` package item has been removed. Queue task `ENG-FACT-CONTENT-APPROVAL` is recorded complete with testing still deferred.
+
+## Verification and release
+
+Content approval is complete, but it is not the same as technical verification or production release. The following must remain outstanding until actual evidence is produced:
+
+- English package and delivery regression tests after the approval-state update.
+- Full SS1 foundation tests and Python unit tests.
+- Backend TypeScript no-emit check.
+- Source archive/member hash verification, source preparation and plan-only compiler/importer run.
+- Database preservation capture and transaction rehearsal against the designated snapshot.
+- Production runtime, correction/cache/asset sanitisation and MIME checks.
+- Student-device acceptance and deployment/release confirmation.
+- Oral listening/speaking observation, which requires a real authorised model and teacher observation; written content approval cannot substitute for it.
+
+The existing delivery guard correctly withholds corrected English content while lesson verification remains `DEFERRED`. Do not set verification to `VERIFIED`, claim student delivery, or claim deployment until the corresponding checks have passed.
+
+---
+
+## Historical checkpoint (2026-11-07; superseded by the current state above)
+
 # English Language SS1 — closeout checkpoint
 
 Date: 2026-11-07
