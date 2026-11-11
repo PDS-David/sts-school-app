@@ -1,7 +1,6 @@
-// DEFERRED BY OWNER (SS1-03, mathematics). Do not run before SS1-09.
-// Static tests need no inputs. Source-dependent tests need:
-//   SS1_PLAN=/private/ss1-plan.json  (from scripts/ss1/build_subject_packages.py; contains source_previews)
-// and skip with an explicit message when it is absent. A skipped test is NOT a pass.
+// SS1-09 global verification run 43086030463 passed.
+// Source-dependent tests run in CI with SS1_PLAN generated from the committed original three-term archive.
+// A local run without SS1_PLAN skips those source-dependent checks explicitly; a skip is NOT a pass.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -34,20 +33,35 @@ test('lesson completeness: objectives, body, practice with full answers and exac
     assert.equal(sha256(l.body), l.body_sha256, l.id); assert.ok(l.id.startsWith(`SUP-SS1-${SLUG.toUpperCase()}-`), l.id);
     assert.ok(l.objectives.length > 0 && l.practice.length > 0 && l.provenance.length > 0, l.id);
     for (const q of l.practice) { assert.ok(q.answer.trim().length > 0, `${l.id}/${q.id}`); assert.equal(q.marks, q.marking.reduce((n, m) => n + m.marks, 0), `${l.id}/${q.id}`); }
-    assert.notEqual(l.state.verification, 'VERIFIED', 'no verification may be claimed before SS1-09');
+    assert.equal(l.state.verification, 'VERIFIED', 'SS1-09 global verification has passed');
+    assert.match(l.state.verification_reference ?? '', /SS1-09 global verification run 43086030463/);
     if (l.state.content_approval === 'PENDING') assert.equal(l.state.approval_reference, null);
   }
 });
-test('lesson verification remains deferred to SS1-09 and asset verification cites the completed SVG checks', () => {
+test('external mathematics references are citation-only, license-checked and attributed', () => {
+  const provenance = pkg.lessons.flatMap(lesson => lesson.provenance);
+  assert.ok(provenance.length > 0);
+  for (const item of provenance) assert.equal(item.reuse_status, 'PERMITTED');
+  const external = provenance.filter(item => item.title.startsWith('OpenStax'));
+  assert.ok(external.length > 0);
+  for (const item of external) {
+    assert.match(item.rights, /CC BY(?:-NC-SA)? 4\.0/);
+    assert.match(item.attribution, /OpenStax/);
+    assert.match(item.locator, /checked:/i);
+    assert.match(item.locator, /no .* (?:reproduced|copied)/i);
+  }
+});
+
+test('SS1-09 and subject-specific verification evidence is recorded for all lessons and assets', () => {
   for (const lesson of pkg.lessons) {
-    if (lesson.state.content_approval === 'PENDING') assert.equal(lesson.state.approval_reference, null);
-    assert.notEqual(lesson.state.verification, 'VERIFIED');
-    assert.equal(lesson.state.verification_reference, null);
+    assert.equal(lesson.state.content_approval, 'APPROVED');
+    assert.equal(lesson.state.verification, 'VERIFIED');
+    assert.match(lesson.state.verification_reference ?? '', /SS1-09 global verification run 43086030463/);
   }
   for (const asset of pkg.assets) {
     assert.equal(asset.state.content_approval, 'APPROVED');
     assert.equal(asset.state.verification, 'VERIFIED');
-    assert.match(asset.state.verification_reference ?? '', /43083801780/);
+    assert.match(asset.state.verification_reference ?? '', /SS1 Mathematics verification workflow #47/);
   }
 });
 test('asset ids/positions unique, paths contained, MIME allowed', () => {
