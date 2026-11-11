@@ -36,7 +36,8 @@
     "PHYS-WK-T2-W07 (2026-11-11): authored SUP-SS1-PHYSICS-T2-W07-GOLD-LEAF-ELECTROSCOPE (4,484-char body; 16 keyed questions; 34 marks) and added four objective-level coverage entries. SchoolGist PDF Week Seven lines 567-617 used only as close-equivalent scope comparison. Original .doc body/diagrams not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T2-W07.md; queue item BLOCKED.",
     "PHYS-WK-T2-W08 (2026-11-11): authored SUP-SS1-PHYSICS-T2-W08-FIELDS-GRAVITY (4,389-char body; 15 keyed questions; 31 marks) and added five objective-level coverage entries. SchoolGist PDF Week Eight lines 618-677 used only as close-equivalent scope comparison. Original .doc body/figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T2-W08.md; queue item BLOCKED.",
     "PHYS-WK-T2-W09 (2026-11-11): authored SUP-SS1-PHYSICS-T2-W09-ELECTRIC-FIELD-LINES (3,739-char body; 15 keyed questions; 33 marks) and added five objective-level coverage entries. SchoolGist PDF Week Nine lines 678-731 used only as close-equivalent scope comparison. Original .doc body/diagrams not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T2-W09.md; queue item BLOCKED.",
-    "PHYS-WK-T2-W10 (2026-11-11): authored SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT (5,079-char body; 18 keyed questions; 40 marks) and added five objective-level coverage entries. SchoolGist PDF Week Ten lines 732-835 used only as close-equivalent scope comparison. Original .doc body/diagrams not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T2-W10.md; queue item BLOCKED."
+    "PHYS-WK-T2-W10 (2026-11-11): authored SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT (5,079-char body; 18 keyed questions; 40 marks) and added five objective-level coverage entries. SchoolGist PDF Week Ten lines 732-835 used only as close-equivalent scope comparison. Original .doc body/diagrams not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T2-W10.md; queue item BLOCKED.",
+    "PHYS-WK-T3-W01 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS (6,167-char body; 18 keyed questions; 39 marks) and added five objective-level coverage entries. EduPodia/Ecolebooks public notes used only as close-equivalent comparisons. Original .doc body/circuit diagram not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W01.md; queue item BLOCKED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -56,8 +57,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 34,
-    "BLOCKED": 23,
-    "PENDING": 32
+    "BLOCKED": 24,
+    "PENDING": 31
   },
   "total": 89,
   "items": [
@@ -1025,8 +1026,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 0 (source label 'WEEK 1', title \"ELECTRIC CIRCUIT\", 4257 characters, body sha256 9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W01.md. Parsed row 0 identity/hash are bound; EduPodia/Ecolebooks public notes used only as close-equivalent scope comparisons. Exact registered .doc body and original circuit diagram were not retrievable in this execution, so source reconciliation remains incomplete.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -3069,10 +3070,9 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "Second Term Weeks 3–10 supplements authored and objective coverage added. Original .doc body/figure reconciliation remains blocked. PR #578 open; CI state pending."
+    "notes": "Second Term Weeks 3–10 and Third Term Week 1 supplements authored; original .doc source reconciliation remains blocked. PR #578 open with Physics verification workflow queued."
   },
   "next_runnable": [
-    "PHYS-WK-T3-W01",
     "PHYS-WK-T3-W02",
     "PHYS-WK-T3-W03",
     "PHYS-WK-T3-W04",
@@ -3098,7 +3098,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T3-W01",
     "PHYS-WK-T3-W02",
     "PHYS-WK-T3-W03",
     "PHYS-WK-T3-W04",
