@@ -273,6 +273,7 @@ test('Agricultural Science learner delivery withholds corrected source rows unti
   const plan = compilePackages([p], inputs, parseTopics);
   const resolver = createAgriculturalScienceDeliveryResolver(p);
   const sourceTitles: Record<string, string> = {
+    'CORR-AG-T1-W09-ENVIRONMENTAL-FACTORS-REPLACEMENT': 'ENVIRONMENTAL FACTORS AFFECTING AGRICULTURAL PRODUCTION',
     'CORR-AG-T3-W01-TOOL-NAMES-REPLACEMENT': 'SIMPLE FARM TOOLS',
     'CORR-AG-T2-W07-PEAT-TYPO-REPLACEMENT': 'ROCK FORMATION AND TYPES',
     'CORR-AG-T2-W08-QUESTION-WORDING-REPLACEMENT': 'ROCK WEATHERING',
