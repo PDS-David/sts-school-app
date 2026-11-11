@@ -39,7 +39,20 @@ See [OWNER_APPROVAL_20261111.md](OWNER_APPROVAL_20261111.md). It records the ori
 
 ## Verification and release
 
-The current change has not yet completed its fresh CI run. The English workflow must rerun package tests, foundation/Python/type checks, source archive/member hash verification, English source isolation and the real plan-only compiler/checker. The new supplements are expected to appear as pending-approval plan blockers until the owner approves them; this is not a BODY-047 importer failure.
+Fresh workflow run [42990588253](https://github.com/PDS-David/sts-school-app/actions/runs/42990588253) completed successfully on 2026-11-11:
+
+- English package tests: **16/16 passed**, including the eight-row closure and BODY-047 rule-identity regression.
+- SS1 foundation tests: **8/8 passed**.
+- Python SS1 tests: **2/2 passed**.
+- Backend TypeScript no-emit check: **passed**.
+- English learner-delivery regression tests: **8/8 passed**.
+- English package/asset validation: **passed**.
+- All three registered English source members: **hash-verified and privately staged**.
+- The actual SS1 parser/compiler and `check_english_plan.py`: **PASS**; 89 original English source rows and 152 supplements were accounted for; all 32 scheme-only markers were preserved.
+
+The plan-only report correctly retains four English-specific approval blockers: the three new supplements awaiting owner approval and the existing pronunciation asset awaiting its separate approval. These are expected governance gates, not parser failures. The overall plan remains not ready because other SS1 subject packages are intentionally omitted and the English approval/asset gates remain open. No database write was attempted.
+
+A separate repository-wide integrity workflow currently has an unrelated SVG asset expectation mismatch (five Agricultural Science SVGs are absent from the current tracked tree); this does not fail the English package workflow or BODY-047 check.
 
 Still required before student release:
 - Owner review/approval of the three new supplements.
