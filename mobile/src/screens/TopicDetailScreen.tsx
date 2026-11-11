@@ -41,10 +41,10 @@ function LessonImage({ asset, token, onRetry }: { asset: any; token: string; onR
       const contentType = (response.headers.get('content-type') ?? '').split(';')[0].trim().toLowerCase();
       if (contentType !== 'image/svg+xml') throw new Error('Unexpected SVG content type');
       const xml = await response.text();
-      if (xml.length > 1_000_000 || /<!DOCTYPE|<!ENTITY|<\\s*(?:script|foreignObject|iframe|object|embed|image|audio|video|style)\\b|<\\?xml-stylesheet|\\bon[a-z][\\w:-]*\\s*=|\\b(?:href|src)\\s*=|javascript:|data:|@import|url\\(\\s*(?!["']?#)/i.test(xml)) {
+      if (xml.length > 1_000_000 || /<!DOCTYPE|<!ENTITY|<\s*(?:script|foreignObject|iframe|object|embed|image|audio|video|style)\b|<\?xml-stylesheet|\bon[a-z][\w:-]*\s*=|\b(?:href|src)\s*=|javascript:|data:|@import|url\(\s*(?!["']?#)/i.test(xml)) {
         throw new Error('Unsafe SVG content');
       }
-      const viewBox = xml.match(/<svg\\b[^>]*\\bviewBox=["']\\s*([0-9.+-]+)[,\\s]+([0-9.+-]+)[,\\s]+([0-9.+-]+)[,\\s]+([0-9.+-]+)\\s*["']/i);
+      const viewBox = xml.match(/<svg\b[^>]*\bviewBox=["']\s*([0-9.+-]+)[,\s]+([0-9.+-]+)[,\s]+([0-9.+-]+)[,\s]+([0-9.+-]+)\s*["']/i);
       if (!viewBox) throw new Error('SVG viewBox is missing');
       const [, , , widthText, heightText] = viewBox;
       const width = Number(widthText), height = Number(heightText);
