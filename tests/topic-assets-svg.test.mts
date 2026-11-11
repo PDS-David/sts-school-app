@@ -36,6 +36,8 @@ test('SVG safety rejects invalid UTF-8 and documents over the size limit', () =>
 
 test('SVG safety requires a positive viewBox and rejects inline style attributes', () => {
   assert.equal(isSafeSvg(svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><path d="M0 0"/></svg>')), true);
+  assert.equal(isSafeSvg(svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><style>.label{font:700 18px Arial,sans-serif;fill:#18324b}.flow{marker-end:url(#arrow)}</style><text class="label">Safe</text></svg>')), true);
+  assert.equal(isSafeSvg(svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><style>.label{background-image:url(https://evil.test/x)}</style></svg>')), false);
   assert.equal(isSafeSvg(svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 1"></svg>')), false);
   assert.equal(isSafeSvg(svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"><path style="fill:red"/></svg>')), false);
 });
