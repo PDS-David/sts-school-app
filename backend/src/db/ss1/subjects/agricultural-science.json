@@ -3227,6 +3227,74 @@
               "marks": 2
             }
           ]
+        },
+        {
+          "id": "Q9",
+          "question": "Which of these farm tools is used for digging, loosening and breaking the soil? A. Secateurs B. Hand towel C. Garden fork",
+          "options": [
+            "A. Secateurs",
+            "B. Hand towel",
+            "C. Garden fork"
+          ],
+          "answer": "C. Garden fork",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects Garden fork.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "Which of these farm tools is used for transplanting of seedlings? A. Go-to-hell B. Shears C. Hand Trowel",
+          "options": [
+            "A. Go-to-hell",
+            "B. Shears",
+            "C. Hand Trowel"
+          ],
+          "answer": "C. Hand Trowel",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects Hand Trowel (the source's 'Hand Towel' is corrected to the listed tool name).",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "Which of these farm tools is used for harvesting rice? A. Shears B. Sickle C. Ranging pole",
+          "options": [
+            "A. Shears",
+            "B. Sickle",
+            "C. Ranging pole"
+          ],
+          "answer": "B. Sickle",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects Sickle.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "Which of these farm tools is used for weeding? A. Cutlass B. Watering can C. Rake",
+          "options": [
+            "A. Cutlass",
+            "B. Watering can",
+            "C. Rake"
+          ],
+          "answer": "A. Cutlass",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects Cutlass as the best option for cutting/clearing weeds; a rake gathers removed weeds.",
+              "marks": 1
+            }
+          ]
         }
       ],
       "provenance": [
@@ -3261,6 +3329,22 @@
           "rights": "Safety and maintenance facts are paraphrased in original wording. No diagrams, tables or expressive text are reproduced.",
           "reuse_status": "PERMITTED",
           "attribution": "Masterman Publications Ltd."
+        },
+        {
+          "title": "National Open University of Nigeria, CRP 304 Module 4: Nursery Tools and their Uses",
+          "locator": "Section 3.5, Hand Trowel: transplanting seedlings from the nursery to the field",
+          "url": "https://oer.nou.edu.ng/sites/default/files/OER_Files/CRP304_04.pdf",
+          "rights": "Factual reference used for an independently written description and assessment item; no source text or image reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "National Open University of Nigeria, Open Educational Resource"
+        },
+        {
+          "title": "Oregon State University Extension, An Educator's Guide to Vegetable Gardening",
+          "locator": "Garden Tools: hand trowel is useful for transplanting seedlings and bulbs",
+          "url": "https://extension.oregonstate.edu/sites/default/files/documents/em9032.pdf",
+          "rights": "Factual reference used for an independently written description and assessment item; no source text or image reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Oregon State University Extension"
         }
       ],
       "state": {
@@ -7192,6 +7276,19 @@
       "evidence": {
         "locator": "Third-Term Week Two original parsed row SS1-SRC-458a07f7ea5a:BODY:57c54e51896e3d54fcb43c690c056b45ebcfffd8e132e8bc5038de6c0ea5879b; source blocks 107, 138, 210 and 216–220; AG-CORR-T3-W02-WATER-POWER.md; AG-CORR-T3-W02-POWER-TEXT.md",
         "explanation": "The original row identity and body hash were reproduced by the hash-pinned archive, Mammoth extraction, actual parseTopics implementation and compilePackages in Agricultural Science CI. The replacement lesson is in the same subject and term. The companion farm-power lesson now explicitly covers acquisition cost and replaces the imprecise grain-drying question with a supported distinction between sunlight/solar-thermal heat and solar-PV electricity. Both lessons remain PENDING content approval and DEFERRED verification; the adapter must withhold the original source row until the replacement is approved and verified."
+      }
+    },
+    {
+      "id": "CORR-AG-T3-W01-TOOL-NAMES-REPLACEMENT",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "source_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a",
+      "source_lesson_id": "SS1-SRC-458a07f7ea5a:BODY:0c06c5383b974616b0e06a23a1165fe3beeeec8b89b232c0383f83a6d2e056ff",
+      "body_sha256": "0c06c5383b974616b0e06a23a1165fe3beeeec8b89b232c0383f83a6d2e056ff",
+      "replacement_id": "SUP-SS1-AGRICULTURAL-SCIENCE-T3-W01-TOOL-REFERENCE",
+      "reason": "Replace the original Week One source row in learner delivery with the complete authored 30-tool reference lesson. The replacement preserves the tool list, the five selected tool descriptions, post-planting operations, maintenance and safety content, and supplies corrected practice for the source weekend questions. It retains the original 'Hand towel' as a distractor for the digging/loosening question (block 66) and corrects only the transplanting option at block 67 to 'Hand Trowel'. The replacement includes all 30 original-tool reference illustrations. Archived source bytes remain unchanged.",
+      "evidence": {
+        "locator": "Third-Term Week One parsed row SS1-SRC-458a07f7ea5a:BODY:0c06c5383b974616b0e06a23a1165fe3beeeec8b89b232c0383f83a6d2e056ff; source list block 36; weekend assignment blocks 64–68; block 67 SHA-256 4ba8749f05ebe9a294043f9dd791b2f18140e3bec811d9ebf19c4387388a9745",
+        "explanation": "The original list at block 36 names Hand trowel. Block 67 prints Hand Towel for the operation of transplanting seedlings, while block 66's Hand towel is a distractor for the preceding digging/loosening question and is preserved unchanged in the replacement practice. National Open University of Nigeria's CRP 304 nursery-tools module and Oregon State University Extension independently identify the hand trowel as a transplanting tool. The exact original row identity was reproduced by the hash-pinned archive, Mammoth extraction, parseTopics and compilePackages in CI. The replacement remains PENDING content approval and DEFERRED verification."
       }
     }
   ],
@@ -11174,8 +11271,8 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W01-TOOL-NAMES",
       "kind": "CONTENT",
-      "detail": "Weekend MCQ block 67 asks which tool is used for transplanting seedlings but prints 'Hand Towel'. The same source's tool list at block 36 contains 'Hand trowel' as a farm tool. University of Minnesota and University of Maryland Extension references confirm hand trowels are used for planting/transplanting seedlings. The intended option is 'C. Hand Trowel'. Parallel copies reproduce the typo, so the source's own list is the direct evidence. Block 66 also uses 'Hand towel' as a distractor in another MCQ; leave that occurrence unchanged under this task.",
-      "required_action": "When an original Week One lesson and its body_sha256 exist and a same-subject/same-term replacement lesson is authored, bind the correction at MCQ block 67 from 'Hand Towel' to 'Hand Trowel' using exact source ID/hash and lesson IDs/hashes. Do not alter block 66 or invent lesson IDs/body hashes; do not edit the archived source.",
+      "detail": "A source-hash-bound delivery correction (CORR-AG-T3-W01-TOOL-NAMES-REPLACEMENT) is now recorded against the actual parser/compiler identity. The complete 30-tool reference lesson preserves the original Hand towel distractor at block 66 and corrects only the transplanting option at block 67 to Hand Trowel. The replacement remains PENDING content approval and DEFERRED verification.",
+      "required_action": "Obtain genuine subject-content approval and verification for SUP-SS1-AGRICULTURAL-SCIENCE-T3-W01-TOOL-REFERENCE, then confirm the learner route applies the exact source-hash-bound correction without deleting learner work. Do not deliver the original row while the replacement is pending.",
       "affected_ids": [
         "AG-CORR-T3-W01-TOOL-NAMES",
         "SS1-SRC-458a07f7ea5a"
