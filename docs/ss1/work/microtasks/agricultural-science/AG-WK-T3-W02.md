@@ -37,3 +37,8 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. Source indexing only; no unverified re
 - Parsed package/queue JSON; checked unique IDs and open-item links for PARTIAL/UNRESOLVED coverage.
 - Importer, tests, TypeScript, DB and device checks **not run**; testing remains deferred by owner.
 - No source bytes, lesson bodies, rules, corrections, assets, shared code or other subjects modified.
+
+
+## Implementation follow-up (2026-11-11)
+
+The exact Week Two source row `SS1-SRC-458a07f7ea5a:BODY:57c54e51896e3d54fcb43c690c056b45ebcfffd8e132e8bc5038de6c0ea5879b` is now bound by `CORR-AG-T3-W02-POWER-WATER-REPLACEMENT` to `SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-HUMAN-ANIMAL-WATER-BIOGAS`. The replacement corrects the source power/water wording and teaches human and animal power, mechanical power, farm water sources and safe educational biogas concepts without inventing fuel rates or operational instructions. The lesson remains PENDING approval and DEFERRED verification; learner delivery is withheld until release gates pass.
