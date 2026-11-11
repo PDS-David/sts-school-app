@@ -24,6 +24,44 @@ const csvCell = (value) => {
   const text = String(value);
   return /[",\r\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
 };
+const SAFE_SVG_STYLE_PROPERTIES = new Set([
+  'font', 'font-family', 'font-size', 'font-weight', 'fill', 'stroke', 'stroke-width',
+  'stroke-linecap', 'stroke-linejoin', 'stroke-dasharray', 'marker-end',
+]);
+
+function hasSafeSvgStyles(source) {
+  const openingTags = (source.match(/<style\b/gi) ?? []).length;
+  const blocks = [...source.matchAll(/<style\s*>([\s\S]*?)<\/style>/gi)];
+  if (openingTags !== blocks.length) return false;
+  for (const block of blocks) {
+    const css = block[1];
+    const rulePattern = /([^{}]+)\{([^{}]*)\}/g;
+    let cursor = 0;
+    let rules = 0;
+    let match;
+    while ((match = rulePattern.exec(css)) !== null) {
+      if (css.slice(cursor, match.index).trim()) return false;
+      const selectors = match[1].trim().split(',');
+      if (!selectors.length || !selectors.every(selector => /^\.[A-Za-z_][\w-]*$/.test(selector.trim()))) return false;
+      const declarations = match[2].split(';').map(value => value.trim()).filter(Boolean);
+      if (!declarations.length) return false;
+      for (const declaration of declarations) {
+        const separator = declaration.indexOf(':');
+        if (separator <= 0) return false;
+        const property = declaration.slice(0, separator).trim().toLowerCase();
+        const value = declaration.slice(separator + 1).trim();
+        if (!SAFE_SVG_STYLE_PROPERTIES.has(property) || !/^[A-Za-z0-9#.,%+\-_\s()'"]+$/.test(value)) return false;
+        if (/url\s*\(/i.test(value) && !(property === 'marker-end' && /^url\(\s*["']?#[A-Za-z_][\w.-]*["']?\s*\)$/i.test(value))) return false;
+        if (/[@\\]|expression|javascript:|data:/i.test(value)) return false;
+      }
+      cursor = rulePattern.lastIndex;
+      rules++;
+    }
+    if (!rules || css.slice(cursor).trim()) return false;
+  }
+  return true;
+}
+
 const safeSvg = (bytes) => {
   if (!bytes.length || bytes.length > 1_000_000) return false;
   let xml;
