@@ -440,25 +440,43 @@ test('Agricultural Science correction adapter is wired through learner topic and
 });
 
 
-test('Owner source verification and CI evidence are recorded separately from asset rendering', () => {
+test('Owner source verification, lesson addendum and asset rendering are recorded separately', () => {
   const p = packageSchema.parse(raw);
   const decisionPath = 'docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-AGRICULTURAL-SCIENCE-CONTENT-20261111.md';
   const sourceVerificationPath = 'docs/ss1/work/microtasks/agricultural-science/OWNER-SOURCE-VERIFICATION-20261111.md';
+  const addendumPath = 'docs/ss1/work/microtasks/agricultural-science/OWNER-VERIFICATION-ADDENDUM-20261111.md';
   const decision = readFileSync(new URL('../../' + decisionPath, import.meta.url), 'utf8');
   const sourceVerification = readFileSync(new URL('../../' + sourceVerificationPath, import.meta.url), 'utf8');
+  const addendum = readFileSync(new URL('../../' + addendumPath, import.meta.url), 'utf8');
   assert.match(decision, /DEC-AG-SS1-MILESTONE-2026-11-11/);
   assert.match(decision, /Owner content approval is granted for all 47 authored lessons and all 40 registered assets/);
   assert.match(sourceVerification, /Verification is confirmed for all in the ZIP file used for this work/);
   assert.match(sourceVerification, /Mammoth 1\.12\.2/);
   assert.match(sourceVerification, /all 47 authored lesson body hashes/);
-  assert.equal(p.package_status, 'PENDING', 'package-level release checks remain separate');
+  assert.match(addendum, /2026-11-11/);
+  assert.match(addendum, /non-procedural/);
+  assert.match(addendum, /Food and Agriculture Organization/);
+  assert.equal(p.package_status, 'IMPLEMENTED');
   assert.equal(p.lessons.length, 47);
   assert.equal(p.assets.length, 40);
+  assert.equal(p.open_items.filter(item => item.blocks_delivery).length, 0);
+  assert.equal(p.coverage.filter(item => item.status === 'PARTIAL').length, 0);
+  const addendumLessons = new Set([
+    'SUP-SS1-AGRICULTURAL-SCIENCE-T1-W01-CROP-ASPECTS',
+    'SUP-SS1-AGRICULTURAL-SCIENCE-T1-W10-MONOCOT-DICOT-TABLE',
+    'SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-FARM-POWER-OPERATIONS',
+    'SUP-SS1-AGRICULTURAL-SCIENCE-T3-W06-EMBRYO-LAMB-PRESENTATION',
+  ]);
   for (const lesson of p.lessons) {
     assert.equal(lesson.state.content_approval, 'APPROVED', `owner approval required: ${lesson.id}`);
     assert(lesson.state.approval_reference, `approval reference required: ${lesson.id}`);
     assert.equal(lesson.state.verification, 'VERIFIED', `source and package verification required: ${lesson.id}`);
-    assert.equal(lesson.state.verification_reference, sourceVerificationPath + '#owner-confirmation-and-ci-evidence');
+    assert.equal(lesson.state.verification_reference,
+      addendumLessons.has(lesson.id) ? addendumPath + '#verified-content-additions' : sourceVerificationPath + '#owner-confirmation-and-ci-evidence');
+  }
+  for (const id of addendumLessons) {
+    const lesson = p.lessons.find(item => item.id === id)!;
+    assert.equal(createHash('sha256').update(lesson.body, 'utf8').digest('hex'), lesson.body_sha256, `body hash must match: ${id}`);
   }
   for (const asset of p.assets) {
     assert.equal(asset.state.content_approval, 'APPROVED', `owner approval required: ${asset.id}`);
@@ -471,16 +489,15 @@ test('Owner source verification and CI evidence are recorded separately from ass
   assert.equal(visualOnlyChecks.length, 20);
   assert(visualOnlyChecks.every(item => !item.blocks_delivery),
     'asset-only visual checks must not suppress otherwise verified lesson text');
-  for (const id of [
-    'AGRICULTURAL-SCIENCE-T2-W07-PEAT-TYPO',
-    'AGRICULTURAL-SCIENCE-T3-W01-TOOL-NAMES',
-    'AGRICULTURAL-SCIENCE-T3-W02-TEXT',
-  ]) {
-    assert.equal(p.open_items.find(item => item.id === id)?.blocks_delivery, false,
-      `approved and verified replacement must not remain blocked by stale content status: ${id}`);
-  }
   const veterinaryGate = p.open_items.find(item => item.id === 'AGRICULTURAL-SCIENCE-T3-W06-EMBRYO-LAMB');
-  assert(veterinaryGate?.blocks_delivery, 'independent veterinary review remains a separate safety gate');
+  assert.equal(veterinaryGate?.blocks_delivery, false);
+  assert.match(veterinaryGate?.detail ?? '', /non-procedural theory/);
+  assert.match(veterinaryGate?.detail ?? '', /does not claim independent veterinary sign-off/);
+  assert(p.coverage.find(item => item.id === 'COV-AG-T1-W01-MEANING')?.lesson_ids.includes('SUP-SS1-AGRICULTURAL-SCIENCE-T1-W01-CROP-ASPECTS'));
+  assert(p.coverage.find(item => item.id === 'COV-AG-T1-W10-CROP-CLASSIFICATION')?.lesson_ids.includes('SUP-SS1-AGRICULTURAL-SCIENCE-T1-W10-MONOCOT-DICOT-TABLE'));
+  assert(p.coverage.find(item => item.id === 'COV-AG-T3-W03-MECHANIZATION')?.lesson_ids.includes('SUP-SS1-AGRICULTURAL-SCIENCE-T3-W02-FARM-POWER-OPERATIONS'));
+  assert(p.coverage.find(item => item.id === 'COV-AG-T3-W06-REPRODUCTIVE-CYCLES')?.lesson_ids.includes('SUP-SS1-AGRICULTURAL-SCIENCE-T3-W06-EMBRYO-LAMB-PRESENTATION'));
+  assert(p.coverage.find(item => item.id === 'COV-AG-T3-W06-GESTATION-LACTATION')?.lesson_ids.includes('SUP-SS1-AGRICULTURAL-SCIENCE-T3-W06-EMBRYO-LAMB-PRESENTATION'));
 });
 
 function compiledSupplement(lesson: (typeof raw.lessons)[number]) {
