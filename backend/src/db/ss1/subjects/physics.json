@@ -5717,6 +5717,361 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "Electrical energy, power and buying electricity",
+      "objectives": [
+        "Define electrical energy and derive/use W = QV, VIt, I²Rt and V²t/R.",
+        "Define electrical power and use P = VI, I²R and V²/R.",
+        "Distinguish electrical energy from electrical power and state their units.",
+        "Define the kilowatt-hour and convert kWh to joules.",
+        "Calculate household/appliance energy consumption and electricity cost using a stated tariff."
+      ],
+      "body": "ELECTRICAL ENERGY, POWER AND BUYING ELECTRICITY\n\n1. Electrical energy\nElectrical energy is the energy transferred when electric charge moves through a potential difference. The work done or energy transferred is:\nW = QV\nwhere W is energy in joules (J), Q is charge in coulombs (C), and V is potential difference in volts (V).\nSince Q = It:\nW = VIt.\nUsing Ohm's law, V = IR or I = V/R, the same energy can be written:\nW = I²Rt\nW = V²t/R.\nUse the form that matches the quantities given. Time must be in seconds when energy is required in joules.\n\n2. Electrical power\nElectrical power is the rate at which electrical energy is transferred or converted:\nP = W/t.\nSince W = VIt:\nP = VI.\nUsing Ohm's law:\nP = I²R\nP = V²/R.\nPower is measured in watts (W), where 1 W = 1 J/s. A kilowatt (kW) is 1,000 W.\nA power rating on an appliance tells the rate at which it transfers or uses energy under its rated operating conditions.\n\nWorked example 1 — energy in joules\nA car headlamp operates at 12 V and draws 0.4 A for 5 minutes. Find the electrical energy transferred.\nConvert time: 5 min = 300 s.\nW = VIt = 12 × 0.4 × 300 = 1,440 J.\n\nWorked example 2 — power\nA lamp operates at 240 V and uses 60 W. Find its current and resistance.\nI = P/V = 60/240 = 0.25 A.\nR = V/I = 240/0.25 = 960 Ω.\nAlternatively R = V²/P = 240²/60 = 960 Ω.\n\n3. Commercial electrical energy\nElectricity meters measure the energy supplied to a consumer. The common commercial unit is the kilowatt-hour (kWh), often called one unit of electricity.\n1 kWh is the energy used by a 1 kW appliance operating for 1 hour:\n1 kWh = 1,000 W × 3,600 s = 3,600,000 J = 3.6 × 10⁶ J = 3.6 MJ.\nEnergy used in kWh:\nE(kWh) = P(kW) × t(h).\nIf the appliance power is given in watts:\nE(kWh) = P(W) × t(h)/1,000.\n\n4. Calculating an electricity bill\nCost = energy consumed in kWh × tariff per kWh.\nFor power in watts:\nCost = P(W) × time(h) × tariff(₦/kWh) / 1,000.\nThe tariff depends on the customer's current tariff band, provider, location and billing period. Always use the rate supplied in the question or on the actual bill; do not assume a permanent national price.\n\nWorked example 3 — several appliances\nA house uses two 100 W amplifiers, ten 50 W televisions and twenty 60 W lamps together for 24 hours. Find the energy used and the cost at an illustrative tariff of ₦60 per kWh.\nTotal power = 2(100) + 10(50) + 20(60)\n= 200 + 500 + 1,200 = 1,900 W = 1.9 kW.\nEnergy = 1.9 × 24 = 45.6 kWh.\nCost = 45.6 × ₦60 = ₦2,736.\nThe tariff is only an example for the calculation.\n\nWorked example 4 — daily use over a month\nA building uses eight 40 W bulbs, four 60 W bulbs and two 100 W bulbs for 5 hours each day. Find the 30-day energy use and cost at ₦60/kWh.\nTotal power = 8(40) + 4(60) + 2(100)\n= 320 + 240 + 200 = 760 W = 0.76 kW.\nEnergy per day = 0.76 × 5 = 3.8 kWh.\nEnergy in 30 days = 3.8 × 30 = 114 kWh.\nCost = 114 × ₦60 = ₦6,840.\n\n5. Practical steps for any energy-bill question\n1. List each appliance and its rated power.\n2. Multiply power by the number of appliances of that type.\n3. Add the powers to obtain total power if they operate together.\n4. Convert watts to kilowatts by dividing by 1,000.\n5. Convert the operating time to hours.\n6. Calculate energy in kWh = total power (kW) × time (h).\n7. Multiply by the stated tariff per kWh to find cost.\nIf appliances are used for different lengths of time, calculate each appliance's energy separately and add the kWh values.\n\nCOMMON ERRORS\n- Power is measured in watts; energy is measured in joules or kilowatt-hours.\n- A kWh is a unit of energy, not a unit of power.\n- Convert minutes to seconds for joule calculations and to hours for kWh calculations.\n- Convert watts to kilowatts before using a tariff stated per kWh.\n- Do not multiply by the number of days twice.\n- Use the tariff stated in the problem or current bill; the illustrative tariff in an example is not a current price quotation.\n\nSUMMARY\nW = QV = VIt = I²Rt = V²t/R.\nP = W/t = VI = I²R = V²/R.\n1 kWh = 3.6 × 10⁶ J.\nEnergy (kWh) = power (kW) × time (h).\nElectricity cost = energy (kWh) × tariff per kWh.",
+      "body_sha256": "2fb9e1a6b68e4f10c8c9f3c413c9bd282142b92e4eeefbb811dcf13b16c2c434",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Define electrical energy transferred in a circuit.",
+          "answer": "It is the work done or energy transferred when electric charge moves through a potential difference.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies it as work/energy transferred.",
+              "marks": 1
+            },
+            {
+              "criterion": "Links it with charge moving through a potential difference.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Write four equivalent formulae for electrical energy in a resistor.",
+          "answer": "W = QV; W = VIt; W = I²Rt; W = V²t/R.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "W = QV.",
+              "marks": 1
+            },
+            {
+              "criterion": "W = VIt.",
+              "marks": 1
+            },
+            {
+              "criterion": "W = I²Rt.",
+              "marks": 1
+            },
+            {
+              "criterion": "W = V²t/R.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "A 12 V headlamp draws 0.4 A for 5 minutes. Calculate the energy transferred.",
+          "answer": "t = 5 × 60 = 300 s. W = VIt = 12 × 0.4 × 300 = 1,440 J.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Converts time to 300 s.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses W = VIt.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 1,440 J.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Define electrical power and state its SI unit.",
+          "answer": "Electrical power is the rate at which electrical energy is transferred or converted. Its SI unit is the watt (W).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines power as energy transferred/work done per unit time.",
+              "marks": 1
+            },
+            {
+              "criterion": "States watt (W).",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "A lamp operates at 240 V and has a power rating of 60 W. Calculate the current.",
+          "answer": "I = P/V = 60/240 = 0.25 A.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses P = VI or I = P/V.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 0.25 A.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q06",
+          "question": "Using the data in Q05, calculate the resistance of the lamp.",
+          "answer": "R = V/I = 240/0.25 = 960 Ω.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses R = V/I.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 960 Ω.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q07",
+          "question": "What is one kilowatt-hour (1 kWh)?",
+          "answer": "It is the energy used by a 1 kW appliance operating for 1 hour.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies 1 kW power.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies 1 hour of operation/energy.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q08",
+          "question": "Convert 1 kWh into joules.",
+          "answer": "1 kWh = 1,000 W × 3,600 s = 3.6 × 10⁶ J.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses 1 kW = 1,000 W and 1 h = 3,600 s.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 3.6 × 10⁶ J.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q09",
+          "question": "Write the formula for the cost of electricity when appliance power is in watts, time is in hours and tariff is in naira per kWh.",
+          "answer": "Cost = P(W) × t(h) × tariff(₦/kWh) ÷ 1,000.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses power × time × tariff.",
+              "marks": 1
+            },
+            {
+              "criterion": "Divides by 1,000 to convert W to kW.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "Two 100 W amplifiers, ten 50 W televisions and twenty 60 W lamps operate together for 24 hours. Calculate the energy used in kWh.",
+          "answer": "Total power = 200 + 500 + 1,200 = 1,900 W = 1.9 kW. Energy = 1.9 × 24 = 45.6 kWh.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Calculates total power of 1,900 W.",
+              "marks": 1
+            },
+            {
+              "criterion": "Converts to 1.9 kW.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses E = Pt.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 45.6 kWh.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "Using Q10, calculate the cost at an illustrative tariff of ₦60 per kWh.",
+          "answer": "Cost = 45.6 × 60 = ₦2,736.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses cost = energy × tariff.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives ₦2,736.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "A building uses eight 40 W bulbs, four 60 W bulbs and two 100 W bulbs for 5 hours daily. Find the energy used in 30 days.",
+          "answer": "Total power = 8(40) + 4(60) + 2(100) = 760 W = 0.76 kW. Daily energy = 0.76 × 5 = 3.8 kWh. Monthly energy = 3.8 × 30 = 114 kWh.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Calculates total power 760 W.",
+              "marks": 1
+            },
+            {
+              "criterion": "Converts to 0.76 kW and calculates daily energy 3.8 kWh.",
+              "marks": 1
+            },
+            {
+              "criterion": "Multiplies by 30 days.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 114 kWh.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q13",
+          "question": "State two differences between electrical energy and electrical power.",
+          "answer": "Energy is the total work/energy transferred and is measured in joules or kWh. Power is the rate of energy transfer and is measured in watts.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correctly distinguishes energy and gives its unit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly distinguishes power and gives its unit.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q14",
+          "question": "Which is a unit of electrical energy? (A) watt (B) kilowatt-hour (C) ampere (D) ohm.",
+          "answer": "B. Kilowatt-hour.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q15",
+          "question": "A 240 V lamp has a power of 60 W. Its current is (A) 0.2 A (B) 0.25 A (C) 0.3 A (D) 3 A.",
+          "answer": "B. 0.25 A.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q16",
+          "question": "The resistance of the lamp in Q15 is (A) 96 Ω (B) 48 Ω (C) 960 Ω (D) 900 Ω.",
+          "answer": "C. 960 Ω.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects C.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q17",
+          "question": "Calculate the conductance of a resistor of resistance 10 Ω.",
+          "answer": "G = 1/R = 1/10 = 0.1 S.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses G = 1/R.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 0.1 S.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q18",
+          "question": "Why must a tariff be stated when calculating the cost of electricity?",
+          "answer": "The cost depends on the amount of energy used and the tariff charged per kWh. Tariffs can differ by provider, customer category, location and billing period.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that cost depends on energy consumed.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that the tariff per kWh is required and may vary.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Sow the Seed Schools SS1 Physics Third Term scheme",
+          "locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 2 WEEK 3; body ID SS1-SRC-bed91bb4ef0e:BODY:9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1 (2,352 characters; source member SHA-256 bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688). Original body text was not available in this execution.",
+          "url": null,
+          "rights": "Scheme used to establish subject/week scope; lesson independently authored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics scheme."
+        },
+        {
+          "title": "SchoolGist — Physics SSS 1 Third Term, Week Three",
+          "locator": "Week Three section: electrical energy formulae, power formulae, kWh and electricity-cost calculations.",
+          "url": "https://schoolgist.ng/storage/postFiles/SS1-Physics-3rd-Term-Lesson-Note-pdf.pdf",
+          "rights": "Used to corroborate scope and common exercise types only; no wording or questions copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "SchoolGist, Physics SSS 1 Third Term, Week Three, accessed 2026-11-11."
+        },
+        {
+          "title": "Ecolebooks Nigeria — Week 2 and 3 SS1 Third Term Physics Notes",
+          "locator": "Week Three section: electrical energy, power, buying electricity, calculations and assignments.",
+          "url": "https://ecolebooks.com/nigeria/posts/week-2-and-3-ss1-third-term-physics-notes/",
+          "rights": "Used to corroborate scope and common exercise types only; no wording or questions copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Ecolebooks Nigeria, Week 2 and 3 SS1 Third Term Physics Notes, accessed 2026-11-11."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -8675,6 +9030,106 @@
         {
           "locator": "SchoolGist and Ecolebooks SS1 Third Term Week Two close-equivalent notes.",
           "explanation": "Independent comparison supports the mapped topic scope and common calculation types; neither is asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W03-OBJ-1",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Electrical energy and work: W = QV, VIt, I²Rt and V²t/R.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 2 WEEK 3; body SS1-SRC-bed91bb4ef0e:BODY:9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1 (2,352 characters; SHA-256 9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1). Scheme topic: Electrical Energy and Power.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER; body SHA-256 2fb9e1a6b68e4f10c8c9f3c413c9bd282142b92e4eeefbb811dcf13b16c2c434; practice Q01–Q18.",
+          "explanation": "Authored supplement covers energy, power, kWh and household billing with worked examples and keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist/Ecolebooks SS1 Third Term Week Three close-equivalent notes.",
+          "explanation": "Independent comparison supports the mapped formulae, kWh conversion and appliance-cost objectives; neither is asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W03-OBJ-2",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Electrical power: P = W/t, VI, I²R and V²/R.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 2 WEEK 3; body SS1-SRC-bed91bb4ef0e:BODY:9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1 (2,352 characters; SHA-256 9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1). Scheme topic: Electrical Energy and Power.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER; body SHA-256 2fb9e1a6b68e4f10c8c9f3c413c9bd282142b92e4eeefbb811dcf13b16c2c434; practice Q01–Q18.",
+          "explanation": "Authored supplement covers energy, power, kWh and household billing with worked examples and keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist/Ecolebooks SS1 Third Term Week Three close-equivalent notes.",
+          "explanation": "Independent comparison supports the mapped formulae, kWh conversion and appliance-cost objectives; neither is asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W03-OBJ-3",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Commercial electrical energy unit: kilowatt-hour and conversion to joules.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 2 WEEK 3; body SS1-SRC-bed91bb4ef0e:BODY:9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1 (2,352 characters; SHA-256 9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1). Scheme topic: Electrical Energy and Power.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER; body SHA-256 2fb9e1a6b68e4f10c8c9f3c413c9bd282142b92e4eeefbb811dcf13b16c2c434; practice Q01–Q18.",
+          "explanation": "Authored supplement covers energy, power, kWh and household billing with worked examples and keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist/Ecolebooks SS1 Third Term Week Three close-equivalent notes.",
+          "explanation": "Independent comparison supports the mapped formulae, kWh conversion and appliance-cost objectives; neither is asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W03-OBJ-4",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Calculating energy consumption of electrical appliances.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 2 WEEK 3; body SS1-SRC-bed91bb4ef0e:BODY:9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1 (2,352 characters; SHA-256 9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1). Scheme topic: Electrical Energy and Power.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER; body SHA-256 2fb9e1a6b68e4f10c8c9f3c413c9bd282142b92e4eeefbb811dcf13b16c2c434; practice Q01–Q18.",
+          "explanation": "Authored supplement covers energy, power, kWh and household billing with worked examples and keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist/Ecolebooks SS1 Third Term Week Three close-equivalent notes.",
+          "explanation": "Independent comparison supports the mapped formulae, kWh conversion and appliance-cost objectives; neither is asserted to be the registered original .doc."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-W03-OBJ-5",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Calculating electricity bills using kWh and a stated tariff.",
+      "objective_locator": "Registered source SS1-SRC-bed91bb4ef0e; parsed row 2 WEEK 3; body SS1-SRC-bed91bb4ef0e:BODY:9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1 (2,352 characters; SHA-256 9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1). Scheme topic: Electrical Energy and Power.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER; body SHA-256 2fb9e1a6b68e4f10c8c9f3c413c9bd282142b92e4eeefbb811dcf13b16c2c434; practice Q01–Q18.",
+          "explanation": "Authored supplement covers energy, power, kWh and household billing with worked examples and keyed assessment. Content approval remains pending and verification deferred."
+        },
+        {
+          "locator": "SchoolGist/Ecolebooks SS1 Third Term Week Three close-equivalent notes.",
+          "explanation": "Independent comparison supports the mapped formulae, kWh conversion and appliance-cost objectives; neither is asserted to be the registered original .doc."
         }
       ]
     }
