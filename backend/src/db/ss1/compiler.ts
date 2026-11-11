@@ -70,13 +70,18 @@ function renderLesson(l: SubjectPackage['lessons'][number]) {
   return [l.body, 'OBJECTIVES', ...l.objectives, 'PRACTICE AND MARKING GUIDE', ...l.practice.map(q => `${q.id}. ${q.question}\nAnswer: ${q.answer}\nMarks: ${q.marks}\n${q.marking.map(m => `${m.marks}: ${m.criterion}`).join('\n')}`)].join('\n\n');
 }
 /** Pure: no filesystem, network, database, process or environment access. */
-export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], parse: (text: string) => ParsedTopic[]): Plan {
+export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], parse: (text: string) => ParsedTopic[], subjectSlug?: string): Plan {
   const packages = rawPackages.map(p => packageSchema.parse(p)).sort((a, b) => a.subject_slug.localeCompare(b.subject_slug, 'en'));
   unique(packages.map(p => p.subject_slug), 'packages'); unique(packages.map(p => p.canonical_subject.toLowerCase()), 'canonical subjects'); unique(inputs.map(s => s.source_id), 'source inputs');
+  if (subjectSlug) {
+    must(registeredSubjects.includes(subjectSlug), `unregistered subject-only scope ${subjectSlug}`);
+    must(packages.length === 1 && packages[0].subject_slug === subjectSlug, `subject-only scope ${subjectSlug} requires exactly its own package`);
+  }
   const plan: Plan = { version: 'ss1-plan-v1', rows: [], identified_rows: [], dispositions: [], assets: [], corrections: [], blockers: [], ready: false };
   const inputMap = new Map(inputs.map(s => [s.source_id, s]));
   for (const s of inputs) must(registry.some(r => r.source_id === s.source_id && r.sha256 === s.sha256), `unregistered or altered input ${s.source_id}`);
-  for (const slug of registeredSubjects) if (!packages.some(p => p.subject_slug === slug)) plan.blockers.push(`MISSING_PACKAGE:${slug}`);
+  const requiredSubjects = subjectSlug ? [subjectSlug] : registeredSubjects;
+  for (const slug of requiredSubjects) if (!packages.some(p => p.subject_slug === slug)) plan.blockers.push(`MISSING_PACKAGE:${slug}`);
   const originals: IdentifiedRow[] = [], supplements: IdentifiedRow[] = [];
   for (const p of packages) {
     must(registeredSubjects.includes(p.subject_slug), `unregistered subject ${p.subject_slug}`);

@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
-import { applyRules } from '../../backend/src/db/ss1/compiler.ts';
+import { applyRules, compilePackages } from '../../backend/src/db/ss1/compiler.ts';
 import { loadPackages } from '../../backend/src/db/ss1/loader.ts';
 
 const raw = JSON.parse(readFileSync(new URL('../../backend/src/db/ss1/subjects/english.json', import.meta.url), 'utf8'));
@@ -341,4 +341,30 @@ test('Second Term Week 10 BODY-047 coverage targets its SCHEME_ONLY rule identit
   assert.equal(rule.kind, 'SCHEME_ONLY');
   assert.match(rule.anchor, /^WEEK 9:/);
   assert.match(rule.anchor, /WEEK 10:  GENERAL REVISION CLASS \[GRC\]/);
+});
+
+
+test('Subject-only compiler scope permits an English-only plan without requiring unrelated subject packages', () => {
+  const minimalEnglishPackage = {
+    schema_version: 'ss1-subject-v1',
+    subject_slug: 'english',
+    canonical_subject: 'English Language',
+    package_status: 'IMPLEMENTED',
+    sources: [],
+    source_rules: [],
+    lessons: [],
+    delivery_corrections: [],
+    assets: [],
+    coverage: [],
+    open_items: [],
+  };
+  const scoped = compilePackages([minimalEnglishPackage], [], () => [], 'english');
+  assert.equal(scoped.blockers.some(item => item.startsWith('MISSING_PACKAGE:')), false);
+  assert(scoped.blockers.includes('NO_COVERAGE:english'));
+  const wholeSchool = compilePackages([minimalEnglishPackage], [], () => []);
+  assert(wholeSchool.blockers.some(item => item.startsWith('MISSING_PACKAGE:')));
+  assert.throws(
+    () => compilePackages([minimalEnglishPackage], [], () => [], 'unknown-subject'),
+    /unregistered subject-only scope/,
+  );
 });

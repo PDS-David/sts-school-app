@@ -30,7 +30,7 @@ export async function buildFromFiles(root: string, files: string[], extract: (fi
     inputs.push({ source_id: source.source_id, sha256: source.sha256, filePath: file, text: await extract(file) });
     owned.add(file);
   }
-  const plan = compilePackages(packages, inputs, parse);
+  const plan = compilePackages(packages, inputs, parse, subjectSlug);
   const source_previews = inputs.map(input => ({ source_id: input.source_id, sha256: input.sha256, topics: parse(input.text).map(topic => ({ ...topic, id: `${input.source_id}:BODY:${sha256(topic.body)}`, body_sha256: sha256(topic.body) })) }));
   const repoRoot = path.resolve(moduleDir, '../../../..');
   for (const a of plan.assets) {
