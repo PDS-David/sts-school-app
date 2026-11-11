@@ -6652,7 +6652,7 @@
       "source_id": "SS1-SRC-b6245ffb69e5",
       "objective": "Revision des alphabets francaise",
       "objective_locator": "SS1-SRC-b6245ffb69e5: 2; exact body hash 24c609d2d4134d58d3ef3b597d7239d9f82a46e4c5911694a07bd4a82a4369f6",
-      "status": "IMPLEMENTED_EQUIVALENT",
+      "status": "PARTIAL",
       "lesson_ids": [
         "SUP-SS1-FRENCH-ALPHABET-T2"
       ],
@@ -6664,6 +6664,10 @@
         {
           "locator": "SUP-SS1-FRENCH-ALPHABET-T2 practice Q4",
           "explanation": "Learner writes the complete 26-letter sequence in order; oral recitation remains subject to teacher observation."
+        },
+        {
+          "locator": "Current state audit — 11 November 2026",
+          "explanation": "Alphabet Q4 verifies the written A–Z sequence, but the source objective says learners should recite all twenty-six letters. The lesson gives teacher-model guidance, but no learner's oral letter-name recitation has been observed. Keep PARTIAL until a teacher records the oral check."
         }
       ]
     },
@@ -7176,8 +7180,8 @@
     {
       "id": "FRENCH-AUTHORING-FINISH",
       "kind": "CONTENT",
-      "detail": "A replacement-side objective-to-practice alignment inventory now maps all 40 authored lessons to their question IDs. The structural scan found and fixed two under-assessed areas: the full 26-letter alphabet sequence (T2 Alphabet Q4) and six irregular simple-future forms (T2 Future Q4). The oral-accent coverage row has been corrected to PARTIAL because a teacher-led task/checklist exists but no learner performance has been observed. The original-source exercise-by-exercise comparison remains unverified: the three original DOCX files are not in the repository. Only their archive member names, SHA-256 values and extracted authoring notes are present.",
-      "required_action": "Provide the three original source DOCX files (First Term, Second Term and Third Term) or the source archive containing them. Then compare every original exercise and sub-question against the 28 correction bindings, the replacement lesson(s), answer key and marking rubric; record a per-exercise verdict and any omissions. Until the original files are available and the audit is complete, keep FRENCH-AUTHORING-FINISH open. This is a source-resource blocker, not something to infer from the replacement lesson titles.",
+      "detail": "A replacement-side objective-to-practice alignment inventory now maps all 40 authored lessons to their question IDs. The structural scan found and fixed two under-assessed areas: the full 26-letter alphabet sequence (T2 Alphabet Q4) and six irregular simple-future forms (T2 Future Q4). The oral-accent coverage row has been corrected to PARTIAL because a teacher-led task/checklist exists but no learner performance has been observed. The original-source exercise-by-exercise comparison remains unverified: the three original DOCX files are not in the repository. Only their archive member names, SHA-256 values and extracted authoring notes are present. The alphabet recitation and oral-accent objectives are also explicit learner-observation gates: both are now separately recorded as PARTIAL/open until a teacher observes and documents real learner performance.",
+      "required_action": "Provide the three original source DOCX files (First Term, Second Term and Third Term) or the source archive containing them. Then compare every original exercise and sub-question against the 28 correction bindings, the replacement lesson(s), answer key and marking rubric; record a per-exercise verdict and any omissions. Until the original files are available and the audit is complete, keep FRENCH-AUTHORING-FINISH open. This is a source-resource blocker, not something to infer from the replacement lesson titles. Also complete the two live learner-observation gates `FRENCH-ORAL-ACCENT-OBSERVATION` and `FRENCH-ALPHABET-RECITATION-OBSERVATION` before marking the corresponding oral objectives complete.",
       "affected_ids": [
         "SS1-SRC-945dfb24eaf6",
         "SS1-SRC-b6245ffb69e5",
@@ -7239,6 +7243,29 @@
         "SS1-SRC-945dfb24eaf6",
         "FRENCH-T1-W02-OBJ-2",
         "SUP-SS1-FRENCH-ANGLOPHONE-T1"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "FRENCH-ORAL-ACCENT-OBSERVATION",
+      "kind": "LEARNER_OBSERVATION",
+      "detail": "The oral accent lesson includes five prompts and a 10-point teacher observation checklist, and the coverage record FR-COV-T1-W05-ORAL-OBSERVATION is PARTIAL. No real learner oral response has been observed or recorded; written accent questions and synthetic dialogue audio do not demonstrate the learner's pronunciation.",
+      "required_action": "A French teacher must conduct the live oral activity with an SS1 learner cohort, score the five prompts using the 10-point checklist, and record the observation date, cohort, assessor and anonymised results. Then update the evidence reference and coverage status. Do not mark oral pronunciation complete from authored prompts alone.",
+      "affected_ids": [
+        "FRENCH-BODY-005",
+        "FR-COV-T1-W05-ORAL-OBSERVATION",
+        "SUP-SS1-FRENCH-ORAL-ACCENTS-T1"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "FRENCH-ALPHABET-RECITATION-OBSERVATION",
+      "kind": "LEARNER_OBSERVATION",
+      "detail": "Alphabet Q4 now checks the complete written A–Z sequence, but the authored objective explicitly requires learners to recite all twenty-six French letter names. The lesson provides a teacher model; no learner oral recitation has been observed.",
+      "required_action": "A French teacher must listen to learners recite the twenty-six French letter names in sequence and distinguish letter names from the sounds represented in words. Record the observation date, cohort, assessor and anonymised result; then update FRENCH-BODY-011 from PARTIAL only when the oral criterion is evidenced.",
+      "affected_ids": [
+        "FRENCH-BODY-011",
+        "SUP-SS1-FRENCH-ALPHABET-T2"
       ],
       "blocks_delivery": true
     }
