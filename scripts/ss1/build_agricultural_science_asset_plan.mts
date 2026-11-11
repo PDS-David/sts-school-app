@@ -6,9 +6,10 @@
  *   python scripts/ss1/prepare_sources.py --archive docs/ss1/sources/SSS1-original.zip --output <private-stage>
  *   node --import tsx scripts/ss1/build_agricultural_science_asset_plan.mts --staged-root <private-stage> --out-dir <private-output>
  */
-import { existsSync } from 'node:fs';
+import { existsSync, lstatSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import mammoth from 'mammoth';
+// @ts-ignore — word-extractor ships no TypeScript declarations
 import WordExtractor from 'word-extractor';
 import packageData from '../../backend/src/db/ss1/subjects/agricultural-science.json' with { type: 'json' };
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
@@ -24,12 +25,26 @@ const stagedRoot = arg('staged-root');
 const outDir = arg('out-dir');
 if (!stagedRoot || !outDir) throw new Error('Required: --staged-root <private-source-stage> --out-dir <new-private-output-directory>');
 const root = path.resolve(stagedRoot);
+const stageStat = lstatSync(root);
+if (!stageStat.isDirectory() || stageStat.isSymbolicLink()) throw new Error('Staged source root must be a real directory, not a symlink.');
+const stageManifestPath = path.join(root, 'STAGING.json');
+if (!existsSync(stageManifestPath)) throw new Error('Missing STAGING.json; create this directory with scripts/ss1/prepare_sources.py.');
+const stageManifest = JSON.parse(readFileSync(stageManifestPath, 'utf8'));
+if (stageManifest.archive_sha256 !== '024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e') {
+  throw new Error('Staged source archive hash does not match the registered SS1 source archive.');
+}
 const repoRoot = process.cwd();
 if (!existsSync(path.join(repoRoot, 'backend/src/db/ss1/subjects/agricultural-science.json'))) {
   throw new Error('Run this command from the repository root.');
 }
 const subjectPackage = packageSchema.parse(packageData);
 const files = subjectPackage.sources.map(source => path.resolve(root, source.archive_member));
+for (const source of subjectPackage.sources) {
+  const staged = stageManifest.sources.find((item: any) => item.archive_member === source.archive_member);
+  if (!staged || staged.sha256 !== source.sha256 || Number(staged.bytes) !== Number(source.bytes)) {
+    throw new Error(`Staged source manifest does not match package source ${source.source_id}.`);
+  }
+}
 for (let index = 0; index < files.length; index++) {
   if (!existsSync(files[index])) throw new Error(`Missing staged source member: ${subjectPackage.sources[index].archive_member}`);
 }
