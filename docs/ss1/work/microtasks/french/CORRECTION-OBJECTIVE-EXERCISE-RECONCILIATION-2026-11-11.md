@@ -8,7 +8,7 @@
 
 - 28 correction bindings are present and each maps a registered source body hash to an authored replacement lesson.
 - 40 authored lessons/supplements are present (20 1st Term, 9 2nd Term, 11 3rd Term).
-- 55 coverage records: 42 marked `IMPLEMENTED_EQUIVALENT`, 11 marked `PARTIAL`, and 2 scheme markers.
+- 55 coverage records: 41 marked `IMPLEMENTED_EQUIVALENT`, 12 marked `PARTIAL`, and 2 scheme markers.
 - All 40 lesson states remain `content_approval=PENDING` and `verification=DEFERRED`; package status remains `PENDING`.
 - This reconciliation confirms traceability and the currently recorded objective statuses. It does **not** convert `IMPLEMENTED_EQUIVALENT` into proof that every individual source exercise has a keyed replacement or that every learner objective has been taught and assessed.
 
@@ -142,6 +142,11 @@ The non-blocking item FRENCH-T1-W01-NEIGHBOURS-LANGUAGE-STATUS was removed from 
 
 ## Replacement-side objective/practice alignment — 11 November 2026
 
-The new `OBJECTIVE-PRACTICE-ALIGNMENT-2026-11-11.md` inventory maps all 40 authored lessons' objectives to question IDs. It does not claim source-exercise equivalence. It records two fixes discovered in the scan: the complete 26-letter alphabet sequence (Alphabet Q4) and irregular simple-future forms of être, avoir, faire, aller, pouvoir and vouloir (Future Q4). The oral-accent objective `FR-COV-T1-W05-ORAL-OBSERVATION` is now PARTIAL, not IMPLEMENTED_EQUIVALENT: a teacher checklist exists, but no real learner oral performance has been observed.
+The new `OBJECTIVE-PRACTICE-ALIGNMENT-2026-11-11.md` inventory maps all 40 authored lessons' objectives to question IDs. It does not claim source-exercise equivalence. It records two fixes discovered in the scan: the complete 26-letter alphabet sequence (Alphabet Q4) and irregular simple-future forms of être, avoir, faire, aller, pouvoir and vouloir (Future Q4). The oral-accent objective `FR-COV-T1-W05-ORAL-OBSERVATION` and the alphabet recitation objective `FRENCH-BODY-011` are now PARTIAL: teacher tasks exist, but no real learner oral performance has been observed. Both have separate blocking observation items.
 
-Current package totals: 40 lessons; 191 practice items; 557 practice marks. Coverage: 42 IMPLEMENTED_EQUIVALENT, 11 PARTIAL, 2 scheme markers. All 40 lessons remain content_approval=PENDING and verification=DEFERRED.
+Current package totals: 40 lessons; 191 practice items; 557 practice marks. Coverage: 41 IMPLEMENTED_EQUIVALENT, 12 PARTIAL, 2 scheme markers. All 40 lessons remain content_approval=PENDING and verification=DEFERRED.
+
+
+## Live learner-observation gates
+
+Two explicit oral criteria remain open: (1) the five-prompt accent/diacritic pronunciation activity, scored with its 10-point teacher checklist; and (2) recitation of all twenty-six French letter names. The corresponding package items are `FRENCH-ORAL-ACCENT-OBSERVATION` and `FRENCH-ALPHABET-RECITATION-OBSERVATION`. Neither can be completed by static tests, written answers, or synthetic audio; a teacher must observe actual learners and record dated evidence.
