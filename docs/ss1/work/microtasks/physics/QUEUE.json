@@ -44,7 +44,8 @@
     "PHYS-TEST-PACKAGE-NEW (2026-11-11): completed and executed. Dedicated workflow run 43012753944 succeeded: 7 tests, 7 pass, 0 fail; registered SS1 package validator passed. Test file tests/ss1/physics.package.test.mts and workflow .github/workflows/ss1-physics-verification.yml. Does not certify source-importer, DB or device delivery.",
     "PHYS-WK-T3-W05 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W05-PARTICLE-NATURE-MATTER (6,664-char body; 20 keyed questions; 43 marks) and added five objective-level coverage entries. SchoolGist PDF Week Five lines 348-432 used only as close-equivalent scope comparison. Original .doc body/figures not retrievable in this execution; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W05.md; queue item BLOCKED.",
     "PHYS-WK-T3-W06 (2026-11-11): authored SUP-SS1-PHYSICS-T3-W06-CRYSTAL-STRUCTURE (4,818-char body; 20 keyed questions; 46 marks) and added five objective-level coverage entries. SchoolGist PDF Week Six lines 439-503 used as close-equivalent text evidence. Reversed crystalline/amorphous table and unit-cell/lattice conflation corrected. Original .doc body not independently retrievable; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W06.md; queue item BLOCKED.",
-    "PHYS-WK-T3-W07 (2026-11-11): expanded surface tension lesson to 4,300 chars and 18 keyed questions (35 marks), added four objective-level coverage entries, and bound coverage to parsed row 6 ID/hash. Evidence PHYS-WK-T3-W07.md; source body not independently retrievable, so task BLOCKED pending original .doc reconciliation."
+    "PHYS-WK-T3-W07 (2026-11-11): expanded surface tension lesson to 4,300 chars and 18 keyed questions (35 marks), added four objective-level coverage entries, and bound coverage to parsed row 6 ID/hash. Evidence PHYS-WK-T3-W07.md; source body not independently retrievable, so task BLOCKED pending original .doc reconciliation.",
+    "PHYS-WK-T3-W08 (2026-11-11): expanded SUP-SS1-PHYSICS-T3-W08-CAPILLARITY (4,391-char body; 16 keyed questions; 34 marks) and added three objective-level coverage entries. SchoolGist PDF Week Eight lines 554-580 used as close-equivalent scope comparison. Original .doc body not independently retrievable; exact source reconciliation remains open. Evidence: PHYS-WK-T3-W08.md; queue item BLOCKED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -64,8 +65,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 39,
-    "BLOCKED": 29,
-    "PENDING": 21
+    "BLOCKED": 30,
+    "PENDING": 20
   },
   "total": 89,
   "items": [
@@ -1292,8 +1293,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 7 (source label 'WEEK 8', title \"CAPILIARITY\", 1142 characters, body sha256 5c0e1ee8abc3919e0f3f87a78c4ab226dde438e36d335d77ca939ca2fb5aee3d) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "BLOCKED",
+      "implementation_reference": "Expanded SUP-SS1-PHYSICS-T3-W08-CAPILLARITY to 4,391 characters and 16 fully answered questions (34 marks); updated COV-PHYS-T3-W08-OBJ-1 and added three objective-level coverage entries. Exact registered source row ID/hash are bound; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W08.md. SchoolGist PDF Week Eight lines 554-580 used as close-equivalent scope corroboration. Original .doc body was not independently retrievable, so exact source reconciliation remains open; content approval PENDING, verification DEFERRED.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -3077,10 +3078,9 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "Physics package has 27 lessons and 166 coverage rows. T2 W3–10, T3 W1–7 authored/expanded; 7/7 Physics regression tests previously passed. Remaining T3 W8–10 and visual/source reconciliation continue."
+    "notes": "Physics package has 27 lessons and 169 coverage rows. Second Term Weeks 3–10 and Third Term Weeks 1–8 have authored/expanded lessons; exact original source reconciliation and visuals remain. Dedicated Physics tests previously passed 7/7."
   },
   "next_runnable": [
-    "PHYS-WK-T3-W08",
     "PHYS-WK-T3-W09",
     "PHYS-WK-T3-W10",
     "PHYS-RULE-T1-REVISION-SCHEME",
@@ -3095,7 +3095,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T3-W08",
     "PHYS-WK-T3-W09",
     "PHYS-WK-T3-W10",
     "PHYS-RULE-T1-REVISION-SCHEME",
