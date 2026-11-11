@@ -90,7 +90,7 @@ test('Stale cache retirement is scoped to secondary SS 1 English Language and ex
   const delivery = createEnglishDeliveryResolver(fixture)({ ...fixtureTopic, source_reference: 'changed' })!;
   await retireStaleEnglishCache(query, fixtureTopic.id, delivery);
   assert.equal(calls.length, 1);
-  assert.match(calls[0].sql, /s\\.name=\\$6 AND t\\.term_label=\\$7/);
+  assert.match(calls[0].sql, /s\.name=\$6 AND t\.term_label=\$7/);
   assert.match(calls[0].sql, /FOR UPDATE OF t/);
   assert.deepEqual(calls[0].params.slice(3, 7), ['secondary', 'SS 1', 'English Language', source.term]);
   assert.match(String(calls[0].params[7]), /^SS1_ENG_WITHDRAWN:/);
