@@ -53,7 +53,8 @@
     "PHYS-RULE-T1-REVISION-SCHEME and PHYS-RULE-T3-REVISION-EXAM (2026-11-11): both scheme-only markers are accounted. First Term R004 + COV-PHYS-T1-REVISION-SCHEME added; Third Term R003 + COV-PHYS-T3-SCHEME-REVISION-EXAM already existed from PHYS-PRE-T3. No lesson or revision plan invented.",
     "PHYS-VIS-T1/T2/T3 (2026-11-11): ten original SVGs authored and registered; original embedded legacy .doc figures still not inspectable from text extraction. Evidence PHYS-VIS-NEW-ASSETS-20261111.md; package open item PHYSICS-SOURCE-VISUAL-INVENTORY blocks delivery pending exhaustive rendered-source audit.",
     "PHYS-FACT-T3-W05-SCHEME-MISMATCH (2026-11-11): resolved as a title-truncation artefact. The source body includes Diffusion, Graham's law and Osmosis; Brownian motion is only a heading plus two statements, with the full explanation supplied by the new lesson. Non-blocking open item PHYSICS-T3-W05-BROWNIAN-SOURCE-DEPTH records the source-depth gap.",
-    "PHYS-PORT-D1-FACT-EXPANSIVITY and PHYS-PORT-D1-FACT-T3-W10 (2026-11-12): source text extracted from the hash-registered original .doc members by Physics CI run 43082409860. Confirmed notation/derivation defects in extracted output; recorded bounded non-blocking open items and evidence notes. Student supplements retain correct physics notation/derivation. Original equation-object visual rendering remains unverified; no content approval or production acceptance is claimed."
+    "PHYS-PORT-D1-FACT-EXPANSIVITY and PHYS-PORT-D1-FACT-T3-W10 (2026-11-12): source text extracted from the hash-registered original .doc members by Physics CI run 43082409860. Confirmed notation/derivation defects in extracted output; recorded bounded non-blocking open items and evidence notes. Student supplements retain correct physics notation/derivation. Original equation-object visual rendering remains unverified; no content approval or production acceptance is claimed.",
+    "PHYS-CMP-D4-TESTS (2026-11-12): compared the four legacy PR #71 test assertions with the current seven-test Physics package suite and registered SS1 package validator. Applicable checks are retained; obsolete split-rule assertion is intentionally not ported because the rule was not applied. Evidence: PHYS-CMP-D4-TESTS.md. No production importer/DB/device acceptance claimed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -72,8 +73,8 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 50,
-    "BLOCKED": 35,
+    "IMPLEMENTED_TESTING_DEFERRED": 51,
+    "BLOCKED": 34,
     "PENDING": 5
   },
   "total": 90,
@@ -2218,8 +2219,8 @@
       "depends_on": [
         "PHYS-TEST-PACKAGE-NEW"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Branch-only: b5ced7ebb0efe22df2351baa140266fbf40cbf41:tests/ss1/physics.test.mts blob 29f970835849cf756c585330b80f39866d35aa69, written against #71's schema and not portable verbatim. Deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: comparison recorded in docs/ss1/work/microtasks/physics/PHYS-CMP-D4-TESTS.md. The current seven-test package suite and SS1 package validator replace the applicable old assertions; the old PHYS-R01 split-specific assertion is intentionally not ported because the split was not applied. Successful Physics run 43082409860: 7/7 tests and validator passed.",
       "completion_condition": "Comparison recorded in the authorised verification stage; no test run in this queue."
     },
     {
