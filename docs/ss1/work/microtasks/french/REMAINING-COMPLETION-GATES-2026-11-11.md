@@ -7,15 +7,9 @@
 
 This register separates work the project team can author and test from decisions or evidence that only the curriculum owner, French teacher, learners or account administrator can supply. No item below is treated as approved by silence.
 
-## Source material required
+## Source material and audit status
 
-The repository records these original archive members and hashes, but does not contain the three DOCX source bodies:
-
-1. First Term: `SSS 1/1st Term SS1_/FRENCH Ss1.docx` — SHA-256 `2bedee524a17700d40d81dc1df8d10f529b49d4a918f38a83914ce7b0c43e864`
-2. Second Term: `SSS 1/2nd Term SS1_/FRENCH.docx` — SHA-256 `aa484dae7ed391296ddaa965c05a95540a43b21b65f4e17caac93624be0f3283`
-3. Third Term: `SSS 1/3rd Term SS1_/FRENCH.docx` — SHA-256 `7841df887cbd175e69ecbbf28896a324443467c82c35a4754fe169f50f09537d`
-
-**Required:** supply these three DOCX files or the source archive. Without them, the 28 correction bindings can be checked against the repository's extracted metadata and replacement lessons, but the original exercise wording cannot be exhaustively reconciled line by line.
+The three original DOCX members were extracted from the repository's registered SS1 source archive by the hash-verifying French GitHub Actions workflow. All 28 correction bindings have now been reconciled against the original source exercise instructions. See `SOURCE-EXERCISE-RECONCILIATION-2026-11-11.md`. No additional source upload is needed for that audit.
 
 ## Curriculum-owner decisions
 
@@ -70,3 +64,8 @@ The Android production workflow successfully installed locked dependencies and e
 ## Completion rule
 
 Do not change the package to COMPLETE until the source exercise audit, owner decisions, live oral observations, all 40 content approvals, staging/database and teacher/student runtime verification, and a successful production mobile build are evidenced. Automated CI passing is necessary but is not curriculum approval or classroom acceptance.
+
+
+## Source audit closure
+
+The original DOCX members were extracted from the repository archive and all 28 correction bindings were reconciled. The umbrella authoring audit is no longer a blocker. Remaining source-related blockers are the undefined Anglophone criterion, unscoped heads-of-state/currency headings, ambiguous greetings and occupation entries, the unidentified textbook pages 63–64, and the unapproved synthetic-vs-official exam-audio disposition.
