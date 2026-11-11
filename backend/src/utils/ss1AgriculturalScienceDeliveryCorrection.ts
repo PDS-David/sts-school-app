@@ -168,9 +168,38 @@ export function createAgriculturalScienceDeliveryResolver(input: SubjectPackage)
   };
 }
 
+export interface AgriculturalScienceAssetMetadata {
+  asset_key?: unknown;
+  sha256?: unknown;
+  mime?: unknown;
+}
+
+/** Assets are deliverable only with the exact approved replacement lesson that owns them. */
+export function createAgriculturalScienceAssetDeliveryResolver(input: SubjectPackage) {
+  const subjectPackage = packageSchema.parse(input);
+  const resolveTopic = createAgriculturalScienceDeliveryResolver(subjectPackage);
+  const assets = new Map(subjectPackage.assets.map(asset => [asset.id, asset]));
+  const lessons = new Map(subjectPackage.lessons.map(lesson => [lesson.id, lesson]));
+  return (topic: AgriculturalScienceDeliveryTopic, metadata: AgriculturalScienceAssetMetadata): boolean => {
+    const delivery = resolveTopic(topic);
+    if (!delivery || delivery.kind !== 'corrected') return false;
+    const asset = assets.get(String(metadata.asset_key ?? ''));
+    if (!asset || asset.sha256 !== metadata.sha256 || asset.media_type !== metadata.mime) return false;
+    const lesson = lessons.get(asset.lesson_id);
+    if (!lesson || !delivery.replacementLessonIds.includes(lesson.id) || approvalGate(subjectPackage, lesson)) return false;
+    if (asset.state.content_approval !== 'APPROVED' || !asset.state.approval_reference ||
+        asset.state.implementation !== 'IMPLEMENTED' ||
+        asset.state.verification !== 'VERIFIED' || !asset.state.verification_reference ||
+        asset.provenance.reuse_status !== 'PERMITTED') return false;
+    return true;
+  };
+}
+
 const packageValue = packageSchema.parse(packageData);
 const defaultResolver = createAgriculturalScienceDeliveryResolver(packageValue);
 export const resolveAgriculturalScienceDelivery = (topic: AgriculturalScienceDeliveryTopic) => defaultResolver(topic);
+const defaultAssetResolver = createAgriculturalScienceAssetDeliveryResolver(packageValue);
+export const agriculturalScienceAssetDeliverable = (topic: AgriculturalScienceDeliveryTopic, metadata: AgriculturalScienceAssetMetadata) => defaultAssetResolver(topic, metadata);
 
 export function safeAgriculturalScienceTopic<T extends AgriculturalScienceDeliveryTopic>(topic: T): T {
   const delivery = resolveAgriculturalScienceDelivery(topic);
