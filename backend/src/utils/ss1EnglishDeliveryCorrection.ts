@@ -118,10 +118,12 @@ export function createEnglishDeliveryResolver(input: SubjectPackage) {
       const source = sources.get(correction.source_id)!;
       const lesson = lessons.get(correction.replacement_id)!;
       if (topic.term_label !== source.term ||
-          basename(topic.source_file) !== basename(source.archive_member) ||
-          norm(topic.title) !== norm(sourceTitle(correction))) continue;
+          basename(topic.source_file) !== basename(source.archive_member)) continue;
 
       const currentHash = hash(typeof topic.source_reference === 'string' ? topic.source_reference : '');
+      // Exact content identity is strongest. If the stored text has changed,
+      // the exact source heading still identifies the row that must be withheld.
+      if (currentHash !== correction.body_sha256 && norm(topic.title) !== norm(sourceTitle(correction))) continue;
       const replacement = built.get(correction.id)!;
       if (currentHash !== correction.body_sha256) {
         return {
