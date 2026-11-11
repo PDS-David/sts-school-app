@@ -48,3 +48,8 @@ All 40 authored lessons remain content_approval=PENDING and verification=DEFERRE
 - Two synthetic MP3 dialogue recordings (standard and slow) have been generated with the Piper UPMC two-speaker French model, committed to `mobile/assets/french/`, and integrated into the student listening screen via Expo Audio. They are offline assets, not official WAEC/NECO recordings or human/native-speaker certification.
 - The mobile listening activity now includes a scored ten-question multiple-choice quiz and a device-speech fallback for individual line practice.
 - The source-exercise-by-source-exercise audit remains blocked until the original First-, Second- and Third-Term French DOCX files are supplied; their archive member names and hashes alone are not enough to verify unseen exercise wording.
+
+
+## Additional oral-verification blockers
+
+The full alphabet sequence is now tested in writing, but the source objective includes recitation of all twenty-six French letter names. The oral accent lesson also has five prompts and a 10-point checklist. Neither oral outcome has been observed in learners. The package now records two explicit blocking items: `FRENCH-ALPHABET-RECITATION-OBSERVATION` and `FRENCH-ORAL-ACCENT-OBSERVATION`. A French teacher must conduct and document these live observations before either objective is marked complete.
