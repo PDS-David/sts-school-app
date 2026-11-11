@@ -40,3 +40,8 @@ No personal tutor contact information or external advertising was observed in th
 ## Validation boundary
 
 All 14 pages were rendered and reviewed as page images/contact sheets; the Week Ten formula page 13 was inspected at higher resolution. The zero raster-image count does not mean the document has no figures: its diagrams are vector drawings/shapes. Original source bytes remain unchanged. Formal package tests, importer and device verification remain DEFERRED.
+
+
+## Completion update — original equivalents registered
+
+The two bounded visual tasks are now implemented with original SVG assets registered in physics.json: `PHYS-ASSET-T3-CIRCUITS-RESISTORS` and `PHYS-ASSET-T3-ATOMIC-DIFFUSION`. Together with the existing fuse, crystal-structure, surface-tension, capillarity and force-extension assets, the inventoried teaching clusters now have original equivalents. These are not copies of source art. Content approval remains PENDING and verification DEFERRED.
