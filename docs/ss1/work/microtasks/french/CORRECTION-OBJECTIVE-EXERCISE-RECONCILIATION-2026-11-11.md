@@ -115,3 +115,8 @@ The Week 5 punctuation-drawing contradiction is corrected in `french.json` and `
 ### Additional scope correction — Week 2 Anglophone objective
 
 The current package's `FRENCH-T1-W02-OBJ-2` status is corrected to `PARTIAL`. Its previous `IMPLEMENTED_EQUIVALENT` label contradicted the evidence that the Anglophone supplement covers only Namibia, Kenya and South Africa and does not verify the other twelve countries or reproduce the exhaustive source exercise. New blocking open item `FRENCH-T1-W02-ANGLOPHONE-SCOPE` requires either authoritative evidence for all 15 classifications and a complete keyed exercise, or explicit teacher approval to narrow/replace the source objective. Correction `SS1-02-french-COR-002` now records this limitation.
+
+
+### Research evidence for the Week 2 Anglophone scope gap
+
+ANGLOPHONE_COUNTRY_SCOPE_RESEARCH.md now records all 15 source countries and the evidence located so far. It distinguishes legal official language from working language and broader English use, documents constitutional counterexamples (Egypt: Arabic; Angola: Portuguese; Libya: Arabic; Ethiopia: Amharic as federal working language), and flags current-text checks for Sudan and Somalia. This research does not yet complete the 15-country exercise or replace the required teacher/owner decision.
