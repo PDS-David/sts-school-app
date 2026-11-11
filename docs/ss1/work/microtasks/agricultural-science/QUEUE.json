@@ -149,7 +149,8 @@
     "AG-asset-integrity correction (2026-11-10): the four committed original SVGs were confirmed as the intended learner diagrams by their structure/labels, matching lesson explanations and original-artwork PERMITTED provenance. Their committed bytes were authoritative; stale package and documentation metadata were rebound without editing SVG artwork or lesson bodies. Actual UTF-8 bytes/SHA-256: AG-ART-T3-W07-EGG-OVIDUCT-01 4,965 / 6a77e539204e845ca67f244b68fb1db9d4cc5c765b79e579b5e5bf2e31fb7759; AG-ART-T3-W07-EGG-CROSS-SECTION-01 3,550 / a2106024242f8c37532cc95a014281663927ea098755f5251862a5f277e54cc2; AG-ART-T3-W07-MALE-POULTRY-SYSTEM-01 3,615 / 082ac39e27af9b0c1fdc61a3732a43cf08bc1a92acb66f106df78938fb4132c5; AG-ART-T3-W07-FEMALE-POULTRY-SYSTEM-01 4,446 / b1f51df2dc342fc0f885ad87b28402450f8859aff831b34625a390a24b7f1c87. No SVG or lesson content changed.",
     "2026-11-10: Reproduced all 28 original teaching-row IDs from the exact source DOCX members using Mammoth 1.12.2 extraction behavior and ingestTopics.ts parser logic; First-Term Week One hash cross-check matches. Added original revision practice, regional-climate extension, and safe complete pig/cattle replacement lessons with delivery corrections. Runtime verification remains deferred.",
     "2026-11-10: Added original Weeks Four/Five animal-systems visual atlas and five independent SVG diagrams; unlicensed embedded DOCX images remain excluded pending learner-route verification.",
-    "OWNER DEC-AL-AG-2026-11-11: repository owner explicitly approved all three exact term-heading aliases on 2026-11-11. Applied approval reference docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-AL-20261111.md#DEC-AL-AG-2026-11-11 to source rules SS1-SRC-7aa642b0085b-R001, SS1-SRC-956594d97094-R001 and SS1-SRC-458a07f7ea5a-R001; closed only the three matching alias OWNER_ACTION open items. This is source identity approval only, not lesson content approval, factual approval, verification or student-release authorization."
+    "OWNER DEC-AL-AG-2026-11-11: repository owner explicitly approved all three exact term-heading aliases on 2026-11-11. Applied approval reference docs/ss1/work/microtasks/agricultural-science/OWNER-DEC-AL-20261111.md#DEC-AL-AG-2026-11-11 to source rules SS1-SRC-7aa642b0085b-R001, SS1-SRC-956594d97094-R001 and SS1-SRC-458a07f7ea5a-R001; closed only the three matching alias OWNER_ACTION open items. This is source identity approval only, not lesson content approval, factual approval, verification or student-release authorization.",
+    "2026-11-11 verification reconciliation after PR #545 merge (3cd7dd0398da923ceee1654d2d3fa2175a762c58): dedicated Agricultural Science verification run 42993422155 passed all four suites — package 8/8, asset plan 4/4, SVG safety/ingestion 5/5, authenticated asset-route/mobile-renderer 13/13 (30 passed, zero failed). Asset-plan rebuild verified all 40 assets against exact compiler rows and correctly withheld CSV emission because approvals remain pending. Subject validator returned valid:true for 47 lessons and 77 coverage records, but package status remains PENDING with 90 blocking open items and all 47 lessons unapproved or unverified. Repository-wide integrity run 42993422330 passed backend/mobile TypeScript, JSON parsing, SVG safety, stored hashes/byte counts and all-subject package validation. These results supersede the earlier note that the Agricultural Science tests were deferred; they do not clear subject-expert decisions, content approval, lesson verification, production import or release gates."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -402,8 +403,8 @@
         "AG-SRC-T3"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Wrote tests/ss1/agricultural-science.package.test.mts following tests/ss1/french.package.test.mts. Covers strict schema parse; exactly one registered source for each Agricultural Science manifest assignment across all three terms; exact source IDs, hashes, archive members and terms; rule-to-source hash binding and blocking pending owner alias references; lesson approval/verification reference, body hash and marking-integrity guards (no lessons exist yet, so those loops are presently vacuous and will apply as lesson items add content); and negative applyRules probes for wrong hashes, missing anchors and ambiguous anchors. Full-source compiler/parser comparison, asset validation, corrections and learner delivery remain later integration checks. Written, NOT RUN; testing remains deferred by owner.",
-      "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
+      "implementation_reference": "The package test file was written and committed. Initial task note that execution was deferred is historical and superseded for automated CI: PR #545 run 42993422155 successfully executed the Agricultural Science package suite (8/8), asset-plan suite (4/4), SVG safety/ingestion suite (5/5) and authenticated asset-route/native mobile-renderer suite (13/13). Total 30 passed, 0 failed, 0 skipped. The asset-plan rebuild verified all 40 assets against exact compiler rows and withheld CSV emission while approvals are pending. The package validator returned valid:true; the package remains PENDING with 90 blocking open items and 47 unapproved/unverified lessons. Repository-wide integrity run 42993422330 also passed TypeScript, JSON, hash, SVG and all-package validation.",
+      "completion_condition": "Test code is written and committed; automated package, asset-plan, SVG-safety and authenticated route/mobile-renderer verification completed successfully in run 42993422155 (30 passed, 0 failed), with repository integrity checks passing in run 42993422330. Do not treat these automated results as lesson approval or classroom verification; retain the package's human approval and lesson-verification gates."
     },
     {
       "id": "AG-FACT-CONTENT-APPROVAL",
@@ -6294,15 +6295,75 @@
     }
   ],
   "review": {
-    "date": "2026-11-10",
-    "reviewed_master_sha": "28cbdbf14aaadcb72f7172a42661f2c0f4b72029",
-    "scope": "Source archive and all three Agricultural Science member hashes verified. All 28 parsed teaching-row identities deterministically reproduced; original lesson IDs are bound to curriculum coverage. Added original revision practice, regional climate extension and safe pig/cattle replacement lessons. Importer/compiler, database, tests and authenticated learner delivery remain deferred. Visual atlas with five original SVG assets added; asset registration is implemented but runtime rendering remains deferred.",
+    "date": "2026-11-11",
+    "reviewed_master_sha": "3cd7dd0398da923ceee1654d2d3fa2175a762c58",
+    "scope": "All three registered Agricultural Science source-member hashes and 28 original parser/compiler teaching-row identities are verified. The package contains 47 authored lessons, 77 coverage records and 40 registered original assets. The expanded dedicated verification workflow passed on PR #545: 30 tests passed across package, asset-plan, SVG-safety and asset-route/mobile-renderer suites; all 40 assets mapped to exact compiler rows; the Agricultural Science package validator returned valid:true. The repository-wide integrity workflow also passed backend/mobile TypeScript, stored-hash/byte-count, SVG-safety and all-subject package validation. IMPORTANT: valid:true is structural validation, not release readiness. The package remains PENDING with 90 blocking open items and all 47 lessons unapproved or unverified. No importer-to-production database write, authenticated learner-device test, classroom practical observation, teacher approval or release certification is claimed.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
       "manifest_matches": 3,
       "mismatches": 0,
       "availability": "Committed in repository at docs/ss1/sources/SSS1-original.zip; user-uploaded copy independently hash-matched. All three Agricultural Science member hashes match the registered source records."
+    },
+    "automated_verification": {
+      "recorded_at": "2026-11-11",
+      "pull_request": 545,
+      "pull_request_merge_commit": "3cd7dd0398da923ceee1654d2d3fa2175a762c58",
+      "dedicated_workflow": {
+        "name": "SS1 Agricultural Science verification",
+        "run_id": 42993422155,
+        "result": "success",
+        "suites": [
+          {
+            "name": "Agricultural Science package tests",
+            "passed": 8,
+            "failed": 0
+          },
+          {
+            "name": "Agricultural Science asset-plan tests",
+            "passed": 4,
+            "failed": 0
+          },
+          {
+            "name": "SVG safety and ingestion tests",
+            "passed": 5,
+            "failed": 0
+          },
+          {
+            "name": "Authenticated asset-route and native mobile-renderer contracts",
+            "passed": 13,
+            "failed": 0
+          }
+        ],
+        "total_tests": {
+          "passed": 30,
+          "failed": 0,
+          "skipped": 0
+        },
+        "asset_plan": "All 40 registered assets mapped to exact compiler rows; pending approvals correctly prevented CSV emission.",
+        "package_validation": {
+          "valid": true,
+          "package_status": "PENDING",
+          "lessons": 47,
+          "coverage_records": 77,
+          "blocked_open_items": 90,
+          "unapproved_or_unverified_lessons": 47
+        }
+      },
+      "repository_integrity_workflow": {
+        "name": "SS1 package integrity gate",
+        "run_id": 42993422330,
+        "result": "success",
+        "checks": [
+          "backend and mobile TypeScript typechecks",
+          "tracked JSON parsing",
+          "merge-conflict marker scan",
+          "SVG safety tests",
+          "stored asset hashes and byte counts",
+          "validation of every subject package"
+        ]
+      },
+      "boundary": "These are successful automated CI and structural-integrity checks. They do not constitute owner/teacher content approval, subject-expert decisions, lesson-level verification, classroom practical sign-off, production database import, authenticated learner-device verification or student-release authorization."
     }
   },
   "next_runnable": []
