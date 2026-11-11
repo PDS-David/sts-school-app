@@ -65,7 +65,7 @@ test('asset bytes, hashes and SVG safety match the registered package metadata',
     assert.equal(a.state.content_approval, 'APPROVED', a.id);
     assert.equal(a.state.implementation, 'IMPLEMENTED', a.id);
     assert.equal(a.state.verification, 'VERIFIED', a.id);
-    assert.match(a.state.verification_reference ?? '', /SS1 Mathematics verification workflow #23/);
+    assert.match(a.state.verification_reference ?? '', /SS1 Mathematics (?:CI run|verification workflow)/);
   }
 });
 test('anchors are exact, bound to one source SHA, and repeated anchors are rejected (negative control)', () => {

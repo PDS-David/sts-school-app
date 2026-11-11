@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import packageData from '../../backend/src/db/ss1/subjects/mathematics.json' with { type: 'json' };
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
-import { createSs1MathematicsDeliveryResolver, mathematicsAssetDeliverable, mathematicsAssetsForTopic, mathematicsAssetFilePath, retireStaleSs1MathematicsCache } from '../../backend/src/utils/ss1MathematicsDeliveryCorrection.ts';
+import { createSs1MathematicsDeliveryResolver, mathematicsAssetDeliverable, mathematicsAssetsForTopic, readMathematicsAsset, retireStaleSs1MathematicsCache } from '../../backend/src/utils/ss1MathematicsDeliveryCorrection.ts';
 
 const hash = (value: string) => createHash('sha256').update(value, 'utf8').digest('hex');
 const packageValue = packageSchema.parse(packageData);
@@ -113,10 +113,13 @@ test('verified Mathematics package assets are served only to their exact source 
   };
   const stored = { asset_key: asset.id, sha256: asset.sha256, mime: asset.media_type };
   assert.equal(mathematicsAssetDeliverable(topic as any, stored), true);
-  const lessonAssets = mathematicsAssetsForTopic(topic as any, 321);
+  const lessonAssets = mathematicsAssetsForTopic({ ...topic, id: 321 } as any);
   assert.equal(lessonAssets.length, 2);
-  assert.equal(lessonAssets[0].url, '/learning/topics/321/assets/MATH-T1-W08-LOG-TABLE-1');
-  assert.equal(mathematicsAssetFilePath(asset.id), asset.path);
+  assert.equal(lessonAssets[0].url, '/learning/mathematics-assets/MATH-T1-W08-LOG-TABLE-1?topicId=321');
+  const file = readMathematicsAsset(asset.id)!;
+  assert.equal(file.mime, asset.media_type);
+  assert.equal(file.sha256, asset.sha256);
+  assert.equal(file.bytes.length, asset.bytes);
   assert.equal(mathematicsAssetDeliverable({ ...topic, order_index: order + 1 } as any, stored), false);
   assert.equal(mathematicsAssetDeliverable({ ...topic, title: 'wrong source title' } as any, stored), false);
   assert.equal(mathematicsAssetDeliverable({ ...topic, term_label: '2nd Term' } as any, stored), false);

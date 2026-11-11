@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import path from 'node:path';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import packageData from '../db/ss1/subjects/mathematics.json' with { type: 'json' };
 import { packageSchema, type SubjectPackage } from '../db/ss1/subjectPackageSchema.js';
@@ -173,8 +173,10 @@ export function mathematicsAssetDeliverable(topic: Ss1MathematicsTopic, storedAs
   return Number(topic.order_index) === Number(orderMatch[1]) && norm(topic.title) === norm(expectedTitle);
 }
 
-/** Package-backed asset metadata for the student lesson screen; no topic_assets row is required. */
-export function mathematicsAssetsForTopic(topic: Ss1MathematicsTopic, topicId: number) {
+/** Package-backed asset metadata for the exact student topic; no topic_assets row is required. */
+export function mathematicsAssetsForTopic(topic: Ss1MathematicsTopic) {
+  const topicId = Number(topic.id);
+  if (!Number.isInteger(topicId) || topicId <= 0) return [];
   return packageValue.assets
     .filter(asset => mathematicsAssetDeliverable(topic, {
       asset_key: asset.id, sha256: asset.sha256, mime: asset.media_type,
@@ -186,26 +188,28 @@ export function mathematicsAssetsForTopic(topic: Ss1MathematicsTopic, topicId: n
       kind: 'diagram',
       mime: asset.media_type,
       sha256: asset.sha256,
-      bytes: asset.bytes,
       caption: asset.title,
       alt_text: asset.alt,
       sort_order: asset.order,
-      url: `/learning/topics/${topicId}/assets/${encodeURIComponent(asset.id)}`,
+      url: `/learning/mathematics-assets/${encodeURIComponent(asset.id)}?topicId=${topicId}`,
     }));
-}
-
-/** Resolve only a package-registered asset path; callers still verify its bytes against SHA-256. */
-export function mathematicsAssetFilePath(assetKey: string) {
-  return packageValue.assets.find(asset => asset.id === assetKey)?.path ?? null;
 }
 
 export function readMathematicsAsset(assetKey: string) {
   const asset = packageValue.assets.find(item => item.id === assetKey);
-  const relative = mathematicsAssetFilePath(assetKey);
-  if (!asset || !relative || asset.state.content_approval !== 'APPROVED' ||
+  if (!asset || asset.state.content_approval !== 'APPROVED' ||
       asset.state.implementation !== 'IMPLEMENTED' || asset.state.verification !== 'VERIFIED' ||
       asset.provenance.reuse_status !== 'PERMITTED') return null;
-  const resolved = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../db/ss1/assets/mathematics', path.basename(relative));
+  const fileName = path.basename(asset.path);
+  const moduleDir = path.dirname(fileURLToPath(import.meta.url));
+  const candidates = [
+    path.resolve(process.cwd(), 'src/db/ss1/assets/mathematics', fileName),
+    path.resolve(process.cwd(), 'backend/src/db/ss1/assets/mathematics', fileName),
+    path.resolve(moduleDir, '../db/ss1/assets/mathematics', fileName),
+    path.resolve(moduleDir, '../../src/db/ss1/assets/mathematics', fileName),
+  ];
+  const resolved = candidates.find(candidate => existsSync(candidate));
+  if (!resolved) return null;
   const bytes = readFileSync(resolved);
   if (bytes.length !== asset.bytes || hash(bytes.toString('utf8')) !== asset.sha256) return null;
   return { bytes, mime: asset.media_type, sha256: asset.sha256 };
