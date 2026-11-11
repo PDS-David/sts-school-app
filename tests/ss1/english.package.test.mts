@@ -349,3 +349,24 @@ test('Second Term Week 10 BODY-047 coverage targets its SCHEME_ONLY rule identit
   assert.match(rule.anchor, /^WEEK 9:/);
   assert.match(rule.anchor, /WEEK 10:  GENERAL REVISION CLASS \[GRC\]/);
 });
+
+test('New English gap-filling lessons are implemented but never receive fabricated owner approval', () => {
+  const p = packageSchema.parse(raw);
+  const ids = [
+    'SUP-SS1-ENGLISH-SEXUALITY-VOCAB-T2-W06',
+    'SUP-SS1-ENGLISH-CONTEXTUAL-SEX-LEAVE-T3-W01',
+    'SUP-SS1-ENGLISH-FAMILY-ASSESSMENT-T3-W03',
+  ];
+  for (const id of ids) {
+    const lesson = p.lessons.find(item => item.id === id);
+    assert(lesson, 'missing new supplement: ' + id);
+    assert.equal(lesson.state.implementation, 'IMPLEMENTED', id);
+    assert.equal(lesson.state.content_approval, 'PENDING', id);
+    assert.equal(lesson.state.approval_reference, null, id);
+    assert.equal(lesson.state.verification, 'DEFERRED', id);
+    assert.equal(lesson.state.verification_reference, null, id);
+    for (const question of lesson.practice) {
+      assert.equal(question.marks, question.marking.reduce((sum, item) => sum + item.marks, 0), id + '/' + question.id);
+    }
+  }
+});
