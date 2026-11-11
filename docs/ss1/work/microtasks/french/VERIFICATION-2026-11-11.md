@@ -38,3 +38,13 @@ Other open owner decisions:
 - T3 Week 1: exact recording/rights evidence or explicit owner approval of the original printed-dialogue/teacher-read equivalent.
 
 All 40 authored lessons remain content_approval=PENDING and verification=DEFERRED. No approval or oral verification has been fabricated. The package is not deployable/complete until the scope and owner gates are closed and the application/database delivery path is separately verified.
+
+
+## Follow-up changes after the initial verification record
+
+- The replacement-side objective/practice alignment inventory is now recorded in `OBJECTIVE-PRACTICE-ALIGNMENT-2026-11-11.md` for all 40 authored lessons.
+- The complete alphabet sequence and irregular simple-future paradigms gained explicit practice items; package totals are now 191 practice items / 557 marks.
+- The oral-accent objective is explicitly PARTIAL until actual learner pronunciation is observed.
+- Two synthetic MP3 dialogue recordings (standard and slow) have been generated with the Piper UPMC two-speaker French model, committed to `mobile/assets/french/`, and integrated into the student listening screen via Expo Audio. They are offline assets, not official WAEC/NECO recordings or human/native-speaker certification.
+- The mobile listening activity now includes a scored ten-question multiple-choice quiz and a device-speech fallback for individual line practice.
+- The source-exercise-by-source-exercise audit remains blocked until the original First-, Second- and Third-Term French DOCX files are supplied; their archive member names and hashes alone are not enough to verify unseen exercise wording.
