@@ -34,7 +34,9 @@ export default function FrenchListeningScreen({ navigation }: any) {
   const [currentLine, setCurrentLine] = useState(-1);
   const [speaking, setSpeaking] = useState(false);
   const [showTranslations, setShowTranslations] = useState(false);
-  const [speechRate, setSpeechRate] = useState(0.82);\n  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});\n  const [quizSubmitted, setQuizSubmitted] = useState(false);
+  const [speechRate, setSpeechRate] = useState(0.82);
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
+  const [quizSubmitted, setQuizSubmitted] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -189,7 +191,21 @@ const styles = StyleSheet.create({
   speaker: { color: Colors.primary, fontSize: Fonts.sizes.xs, fontWeight: '700' },
   frenchText: { color: Colors.text, fontSize: Fonts.sizes.md, lineHeight: 23, paddingRight: Spacing.xs },
   translation: { color: Colors.textSub, fontSize: Fonts.sizes.sm, lineHeight: 19, marginTop: 4, fontStyle: 'italic' },
-  question: { paddingVertical: Spacing.sm, borderBottomWidth: 1, borderBottomColor: Colors.border },\n  speedRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.xs, marginTop: Spacing.sm, marginBottom: Spacing.xs },\n  speedLabel: { color: Colors.textSub, fontSize: Fonts.sizes.xs, fontWeight: '600', marginRight: 'auto' },\n  speedButton: { borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.sm, paddingHorizontal: Spacing.md, paddingVertical: Spacing.xs },\n  speedButtonActive: { borderColor: Colors.primary, backgroundColor: Colors.primary + '14' },\n  speedButtonText: { color: Colors.textSub, fontSize: Fonts.sizes.xs, fontWeight: '600' },\n  speedButtonTextActive: { color: Colors.primary },\n  option: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: Spacing.xs, borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.sm, padding: Spacing.sm, marginTop: Spacing.xs },\n  optionSelected: { borderColor: Colors.primary, backgroundColor: Colors.primary + '12' },\n  optionCorrect: { borderColor: Colors.success, backgroundColor: Colors.success + '12' },\n  optionIncorrect: { borderColor: Colors.error, backgroundColor: Colors.error + '10' },\n  optionText: { flex: 1, color: Colors.text, fontSize: Fonts.sizes.sm, lineHeight: 19 },\n  optionTextSelected: { fontWeight: '700' },\n  resultBox: { marginTop: Spacing.md, padding: Spacing.md, borderRadius: Radius.md, backgroundColor: Colors.primary + '10' },\n  resultTitle: { color: Colors.primary, fontSize: Fonts.sizes.lg, fontWeight: '800', marginBottom: Spacing.xs },
+  question: { paddingVertical: Spacing.sm, borderBottomWidth: 1, borderBottomColor: Colors.border },
+  speedRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.xs, marginTop: Spacing.sm, marginBottom: Spacing.xs },
+  speedLabel: { color: Colors.textSub, fontSize: Fonts.sizes.xs, fontWeight: '600', marginRight: 'auto' },
+  speedButton: { borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.sm, paddingHorizontal: Spacing.md, paddingVertical: Spacing.xs },
+  speedButtonActive: { borderColor: Colors.primary, backgroundColor: Colors.primary + '14' },
+  speedButtonText: { color: Colors.textSub, fontSize: Fonts.sizes.xs, fontWeight: '600' },
+  speedButtonTextActive: { color: Colors.primary },
+  option: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: Spacing.xs, borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.sm, padding: Spacing.sm, marginTop: Spacing.xs },
+  optionSelected: { borderColor: Colors.primary, backgroundColor: Colors.primary + '12' },
+  optionCorrect: { borderColor: Colors.success, backgroundColor: Colors.success + '12' },
+  optionIncorrect: { borderColor: Colors.error, backgroundColor: Colors.error + '10' },
+  optionText: { flex: 1, color: Colors.text, fontSize: Fonts.sizes.sm, lineHeight: 19 },
+  optionTextSelected: { fontWeight: '700' },
+  resultBox: { marginTop: Spacing.md, padding: Spacing.md, borderRadius: Radius.md, backgroundColor: Colors.primary + '10' },
+  resultTitle: { color: Colors.primary, fontSize: Fonts.sizes.lg, fontWeight: '800', marginBottom: Spacing.xs },
   questionText: { color: Colors.text, fontSize: Fonts.sizes.sm, fontWeight: '600', lineHeight: 20 },
   answerToggle: { color: Colors.primary, fontSize: Fonts.sizes.xs, fontWeight: '700', marginTop: 5 },
   answer: { color: Colors.success, fontSize: Fonts.sizes.sm, marginTop: 4 },
