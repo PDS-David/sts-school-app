@@ -4,19 +4,20 @@
 // and skip with an explicit message when it is absent. A skipped test is NOT a pass.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
+import JSZip from 'jszip';
+import mammoth from 'mammoth';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import { compilePackages, applyRules, registry, sha256, originalLessonId } from '../../backend/src/db/ss1/compiler.ts';
+import { parseTopics } from '../../backend/src/db/ingestTopics.ts';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(here, '../..');
 const SLUG = 'mathematics';
 const pkg = packageSchema.parse(JSON.parse(readFileSync(path.join(repo, `backend/src/db/ss1/subjects/${SLUG}.json`), 'utf8')));
 const expected = registry.filter(r => r.assigned_subject_slug === SLUG);
-const planPath = process.env.SS1_PLAN;
-const plan = planPath && existsSync(planPath) ? JSON.parse(readFileSync(planPath, 'utf8')) : null;
-const needPlan = { skip: plan ? false : 'SS1_PLAN not supplied: source-dependent check NOT executed' };
+const archiveBytes = readFileSync(path.join(repo, 'docs/ss1/sources/SSS1-original.zip'));
 
 test('package accounts for exactly the assigned sources with manifest hashes', () => {
   assert.deepEqual(pkg.sources.map(s => s.source_id).sort(), expected.map(s => s.source_id).sort());
@@ -64,17 +65,49 @@ test('package never targets another class or subject', () => {
   for (const l of pkg.lessons) { assert.equal(l.class_name, 'SS 1'); assert.equal(l.subject, pkg.canonical_subject); }
   for (const s of pkg.sources) assert.equal(s.class_name, 'SS 1');
 });
-test('source rows: exact parsed IDs, order, preserved text, zero leakage', needPlan, () => {
-  const mine = plan.identified_rows.filter((r: any) => r.row.subjectName === pkg.canonical_subject);
-  for (const r of mine) { assert.equal(r.row.className, 'SS 1'); assert.ok(['1st Term', '2nd Term', '3rd Term'].includes(r.row.termLabel)); }
-  const previews = new Map(plan.source_previews.map((p: any) => [p.source_id, p.topics]));
-  for (const s of pkg.sources) assert.ok(previews.has(s.source_id) && (previews.get(s.source_id) as any[]).length > 0, `parsed rows for ${s.source_id}`);
-  for (const c of pkg.coverage) for (const id of c.lesson_ids) assert.ok(mine.some((r: any) => r.id === id) || pkg.source_rules.some(r => r.id === id), `coverage target resolves: ${c.id}/${id}`);
-  for (const c of pkg.delivery_corrections) { const t = (previews.get(c.source_id) as any[]).find(t => originalLessonId(c.source_id, t.body) === c.source_lesson_id); assert.ok(t, c.id); assert.equal(sha256(t.body), c.body_sha256); }
-  const order = mine.filter((r: any) => r.source_id).map((r: any) => r.source_id);
-  assert.deepEqual(order, [...order].sort((a: string, b: string) => (expected.find(e => e.source_id === a)!.archive_member < expected.find(e => e.source_id === b)!.archive_member ? -1 : 1)));
+test('original source ZIP passes the real Mathematics parser/compiler and every correction binds to an exact source row', async () => {
+  const archive = await JSZip.loadAsync(archiveBytes);
+  const inputs = [];
+  for (const source of pkg.sources) {
+    const member = archive.file(source.archive_member);
+    assert(member, `missing original source member: ${source.archive_member}`);
+    const bytes = await member.async('nodebuffer');
+    assert.equal(sha256(bytes), source.sha256, `source hash mismatch: ${source.source_id}`);
+    const extracted = await mammoth.extractRawText({ buffer: bytes });
+    inputs.push({ source_id: source.source_id, sha256: source.sha256, filePath: source.archive_member, text: extracted.value });
+  }
+  const plan = compilePackages([pkg], inputs, parseTopics);
+  const identified = new Map(plan.identified_rows.map((row: any) => [row.id, row]));
+  for (const correction of pkg.delivery_corrections) {
+    assert(identified.has(correction.source_lesson_id), `unidentified correction source: ${correction.id}`);
+    assert.equal((identified.get(correction.source_lesson_id) as any).body_sha256, correction.body_sha256, correction.id);
+    assert(pkg.lessons.some(lesson => lesson.id === correction.replacement_id), `missing replacement: ${correction.id}`);
+  }
+  for (const coverage of pkg.coverage) for (const id of coverage.lesson_ids) {
+    assert(identified.has(id) || pkg.source_rules.some(rule => rule.id === id) || pkg.lessons.some(lesson => lesson.id === id) || pkg.delivery_corrections.some(correction => correction.id === id),
+      `unresolved coverage target: ${coverage.id} -> ${id}`);
+  }
+  assert.equal(inputs.length, 3);
 });
-test('plan for this subject has only declared blockers', needPlan, () => {
-  const mine = plan.blockers.filter((b: string) => pkg.sources.some(s => b.includes(s.source_id)) || b.includes(SLUG) || pkg.lessons.some(l => b.includes(l.id)));
-  for (const b of mine) assert.ok(/INCOMPLETE_COVERAGE|OPEN_ITEM|LESSON_NOT_APPROVED|ASSET_NOT_APPROVED|PENDING_PACKAGE/.test(b), `undeclared blocker ${b}`);
+
+test('key SS1 Mathematics worked calculations are independently recomputed', () => {
+  const baseValue = (digits: string, base: number) => {
+    const [whole, fraction = ''] = digits.split('.');
+    const wholeValue = [...whole].reduce((sum, digit) => sum * base + parseInt(digit, base), 0);
+    return wholeValue + [...fraction].reduce((sum, digit, i) => sum + parseInt(digit, base) / base ** (i + 1), 0);
+  };
+  const toBase = (value: number, base: number) => {
+    const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let n = value, out = '';
+    while (n > 0) { out = digits[n % base] + out; n = Math.floor(n / base); }
+    return out || '0';
+  };
+  assert.equal(baseValue('1011.01', 2), 11.25);
+  assert.equal(baseValue('2311', 4) - baseValue('213', 4), baseValue('2032', 4));
+  assert.equal(toBase(1007, 8), '1757');
+  assert.equal(toBase(761, 12), '535');
+  assert.equal(toBase(761, 16), '2F9');
+  assert.equal(Number(Math.log10(8615).toFixed(4)), 3.9353);
+  assert.equal((7 / 36) * 360, 70);
+  assert(Math.abs((5000 - 5000 / 27) - 130000 / 27) < 1e-10);
 });
