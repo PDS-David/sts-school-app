@@ -68,10 +68,10 @@
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
     "LESSON": 14,
-    "CORRECTION_BINDING": 3
+    "CORRECTION_BINDING": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 61,
+    "IMPLEMENTED_TESTING_DEFERRED": 62,
     "BLOCKED": 30,
     "PENDING": 1
   },
@@ -3128,6 +3128,32 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "The exact Third Term Week Ten source row is bound by CORR-PHYSICS-T3-W10-ELASTIC-FORCE to SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY. Rendered page 13 confirms the incorrect definition α=e/L×θ; the replacement derives α=ΔL/(L₀ΔT) and F=EAαΔT. Evidence: PHYS-COR-T3-W10-BINDING.md.",
       "completion_condition": "One exact delivery_corrections[] entry resolves source id, source hash, source lesson id/body hash and an existing same-subject/same-term replacement lesson; evidence names the source defect and replacement coverage."
+    },
+    {
+      "id": "PHYS-COR-T1-W01-BINDING",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK ONE",
+      "objective": "Bind the original Week One source row to a complete corrected replacement that preserves all teaching objectives and assessment.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-COR-T1-W01-BINDING.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W01",
+        "PHYS-LES-T1-W01-LABORATORY",
+        "PHYS-LES-T1-W01-KEY-ASSESSMENT"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "CORR-PHYSICS-T1-W01-CONSOLIDATED binds the exact source row to SUP-SS1-PHYSICS-T1-W01-CONSOLIDATED. Evidence: PHYS-COR-T1-W01-BINDING.md.",
+      "completion_condition": "One exact delivery_corrections[] entry binds the original Week One body hash to an existing complete replacement lesson; all original teaching objectives, assessment and reading marker are preserved or explicitly dispositioned; defects and approval status are documented."
     }
   ],
   "review": {
