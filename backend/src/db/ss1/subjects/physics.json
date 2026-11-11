@@ -9043,6 +9043,374 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Physics",
+      "title": "Measurement of length, time, mass and weight",
+      "objectives": [
+        "Explain measurement as a number and unit and select suitable measuring instruments.",
+        "Measure length using metre rules, tape rules, callipers and vernier callipers.",
+        "Use the main-scale and vernier-scale method to obtain a vernier reading.",
+        "Select clocks, watches, stop clocks and stopwatches for appropriate time intervals.",
+        "Define mass and identify balances used to measure it.",
+        "Define weight, distinguish it from mass and calculate weight using W = mg."
+      ],
+      "body": "MEASUREMENT OF LENGTH, TIME, MASS AND WEIGHT\n\n1. Measurement and units\nA measurement is a numerical value together with a unit. Writing only “5” does not identify what was measured; “5 cm” is a length.\nUse an instrument whose range and smallest scale division are suitable for the object. Read scales at eye level to reduce parallax error.\n\n2. Measurement of length\nA metre rule is suitable for lengths of a few centimetres up to about one metre. Its smallest common division is 1 mm (0.1 cm).\nA tape rule is useful for longer distances and curved or flexible measurements.\nGood practice:\n- Place the zero mark at one end of the object.\n- Keep the rule straight and aligned with the length being measured.\n- Read the scale with the eye vertically above the mark.\n- If the zero edge is damaged, start from another known mark and subtract the starting reading from the final reading.\n- Record the unit and suitable precision.\n\n3. Callipers\nOrdinary external callipers have curved legs that touch the outside of an object. Internal callipers have inward-facing legs used to compare an internal diameter or width. The distance between the legs is then measured against a rule.\nVernier callipers combine a main scale and a sliding vernier scale. They can measure external dimensions, internal diameters and depths, depending on the jaws/probe.\nLeast count (LC) is the smallest difference the scale can resolve. For a common direct vernier:\nLC = 1 main-scale division − 1 vernier-scale division.\nA reading is:\nReading = main-scale reading + (coinciding vernier division × LC).\nThe instrument's actual scale must be checked; not all vernier callipers have the same least count.\n\nWorked example — vernier reading\nA vernier calliper has a least count of 0.01 cm. The main-scale reading is 4.30 cm and the 7th vernier division coincides.\nVernier contribution = 7 × 0.01 = 0.07 cm.\nObserved reading = 4.30 + 0.07 = 4.37 cm.\nThis is a new example; it does not claim to reconstruct the missing original Fig. 3.3.\n\n4. Micrometer screw gauge\nA micrometer screw gauge measures very small external dimensions, such as wire diameter or sheet thickness. The full reading procedure, least count and zero-error correction are taught in the companion lesson “Reading a micrometer screw gauge” (SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING). Use that lesson for the main-scale/circular-scale reading method and worked examples; do not guess values from the missing source Fig. 3.4.\n\n5. Measurement of time\nClocks and watches are suitable for longer time intervals, such as minutes or hours. Stop clocks and stopwatches are used for shorter intervals, such as seconds.\nFor a repeated event, measure the time for several cycles and divide by the number of cycles to estimate the period:\nPeriod T = total time / number of cycles.\nTiming several cycles reduces the relative effect of reaction-time error. Use the same start/stop rule each time and repeat the measurement when possible.\n\n6. Measurement of mass\nMass is a measure of the amount of matter in a body. Its SI unit is the kilogram (kg). Mass is a scalar quantity and does not change simply because the object is moved to another location.\nA balance compares an object's mass with standard masses or uses a calibrated mechanism to measure mass. Examples include:\n- Beam balance: compares the object with standard masses.\n- Lever or platform balance: uses a lever mechanism for weighing loads.\n- Electronic/digital balance: uses a calibrated sensor and displays mass.\nUse a level, calibrated balance and allow the reading to settle before recording it.\n\n7. Weight and how it differs from mass\nWeight is the gravitational force acting on a body:\nW = mg\nwhere W is weight in newtons (N), m is mass in kilograms (kg), and g is gravitational field strength in N kg⁻¹ or m s⁻².\nNear Earth's surface, g is approximately 9.8 m s⁻²; school calculations may specify 10 m s⁻².\nMass and weight are different:\n- Mass is the amount of matter; weight is a gravitational force.\n- Mass is scalar; weight is a vector directed towards the attracting body.\n- Mass is measured in kg; weight in N.\n- Mass is measured with a balance; weight can be measured with a spring balance/force meter.\n- Mass is essentially unchanged from place to place; weight changes if gravitational field strength changes.\nDo not use grams as the mass value in W = mg unless it is first converted to kilograms.\n\nWorked example — weight\nA body has mass 5,000 g. Find its weight where g = 10 m s⁻².\nConvert mass: 5,000 g = 5 kg.\nW = mg = 5 × 10 = 50 N.\n\n8. Choosing the correct instrument\n- Metre rule or tape rule: length.\n- Ordinary callipers: compare external or internal dimensions; measure the jaw separation against a rule.\n- Vernier callipers: external/internal diameter and depth, using main and vernier scales.\n- Micrometer screw gauge: very small external dimensions such as wire diameter and sheet thickness.\n- Clock/watch: longer time intervals.\n- Stopwatch/stop clock: short time intervals.\n- Balance: mass.\n- Spring balance/force meter: weight or force.\n\nCOMMON ERRORS\n- Every measurement needs a number and a unit.\n- Do not confuse mass (kg) with weight (N).\n- Convert grams to kilograms before using W = mg.\n- A spring balance measures force/weight, not mass directly.\n- Read scales at eye level to reduce parallax.\n- A vernier reading uses the main-scale reading plus the coinciding vernier contribution.\n- Use the micrometer companion lesson for zero-error correction; do not invent readings from the missing source diagram.\n\nSUMMARY\nMeasure length with a rule, tape or callipers; time with clocks or stopwatches; mass with a balance; and weight with a spring balance. Mass is measured in kilograms, while weight is the gravitational force W = mg measured in newtons. A vernier calliper combines main-scale and vernier readings; a micrometer uses its sleeve and circular scale.",
+      "body_sha256": "52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "What is a measurement?",
+          "answer": "A measurement is a numerical value expressed with a unit.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States it is a numerical value.",
+              "marks": 1
+            },
+            {
+              "criterion": "States it includes a unit.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "State three good practices when measuring length with a metre rule.",
+          "answer": "Align the zero mark with one end, keep the rule straight, read at eye level, and record the unit. Any three.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "One correct practice.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second correct practice.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third correct practice.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "Match each instrument to the quantity it measures: metre rule, stopwatch, balance, spring balance.",
+          "answer": "Metre rule—length; stopwatch—time interval; balance—mass; spring balance—weight/force.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Metre rule—length.",
+              "marks": 1
+            },
+            {
+              "criterion": "Stopwatch—time.",
+              "marks": 1
+            },
+            {
+              "criterion": "Balance—mass.",
+              "marks": 1
+            },
+            {
+              "criterion": "Spring balance—weight/force.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Write the formula for the least count of a common direct vernier calliper.",
+          "answer": "LC = 1 main-scale division − 1 vernier-scale division.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies main-scale division.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subtracts one vernier-scale division.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "A vernier calliper has least count 0.01 cm. Main-scale reading is 4.30 cm and the 7th vernier division coincides. Find the reading.",
+          "answer": "Vernier contribution = 7 × 0.01 = 0.07 cm. Reading = 4.30 + 0.07 = 4.37 cm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Calculates vernier contribution 0.07 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Adds to 4.30 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 4.37 cm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q06",
+          "question": "State two uses of a micrometer screw gauge.",
+          "answer": "It measures small external dimensions such as the diameter of a wire or thickness of a sheet of paper.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Wire diameter.",
+              "marks": 1
+            },
+            {
+              "criterion": "Thickness of paper or another suitable small dimension.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q07",
+          "question": "Which time-measuring instrument is suitable for a short time interval of a few seconds?",
+          "answer": "A stopwatch or stop clock.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Names stopwatch or stop clock.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q08",
+          "question": "How can the period of a repeated event be estimated more accurately?",
+          "answer": "Measure the time for several cycles and divide the total time by the number of cycles.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Measures several cycles.",
+              "marks": 1
+            },
+            {
+              "criterion": "Divides total time by number of cycles.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q09",
+          "question": "Define mass and state its SI unit.",
+          "answer": "Mass is a measure of the amount of matter in a body. Its SI unit is kilogram (kg).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines mass as amount of matter.",
+              "marks": 1
+            },
+            {
+              "criterion": "States kg.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "Name two types of balance used to measure mass.",
+          "answer": "Beam balance, lever/platform balance or electronic/digital balance. Any two.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "First valid balance.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second valid balance.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "Define weight and state its SI unit.",
+          "answer": "Weight is the gravitational force acting on a body. Its SI unit is newton (N).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines weight as gravitational force.",
+              "marks": 1
+            },
+            {
+              "criterion": "States N.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "Convert 5,000 g to kilograms.",
+          "answer": "5,000 g ÷ 1,000 = 5 kg.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses 1,000 g = 1 kg.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 5 kg.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q13",
+          "question": "Calculate the weight of a 5 kg body where g = 10 m s⁻².",
+          "answer": "W = mg = 5 × 10 = 50 N.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses W = mg.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 50 N.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q14",
+          "question": "State four differences between mass and weight.",
+          "answer": "Mass is amount of matter; weight is gravitational force. Mass is scalar; weight is vector. Mass unit kg; weight unit N. Mass measured with balance; weight with spring balance. Mass is nearly constant; weight changes with g. Any four.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "One valid difference.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second valid difference.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third valid difference.",
+              "marks": 1
+            },
+            {
+              "criterion": "Fourth valid difference.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q15",
+          "question": "Which instrument measures the internal diameter of a tube accurately? (A) tape rule (B) vernier callipers (C) spring balance (D) stopwatch.",
+          "answer": "B. Vernier callipers.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q16",
+          "question": "A spring balance measures (A) mass (B) length (C) force/weight (D) time.",
+          "answer": "C. Force/weight.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects C.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q17",
+          "question": "The SI unit of mass is (A) gram (B) kilogram (C) newton (D) metre.",
+          "answer": "B. Kilogram.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q18",
+          "question": "The SI unit of weight is (A) kg (B) g (C) N (D) m/s.",
+          "answer": "C. Newton.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects C.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q19",
+          "question": "Why must 5,000 g be converted to 5 kg before using W = mg when g is in m s⁻²?",
+          "answer": "Because the SI unit of mass in the formula is kilogram. Using grams without conversion gives an answer 1,000 times too large.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States mass must be in kilograms.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains the unit-consistency error.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q20",
+          "question": "Explain why a stopwatch measurement may be repeated several times when measuring a short time interval.",
+          "answer": "Human reaction time introduces random error. Repeating the measurement and averaging the results reduces the effect of random timing variation.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Mentions reaction-time error.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains repetition/averaging reduces random error.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Sow the Seed Schools SS1 Physics First Term source",
+          "locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 1 WEEK TWO; body ID SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e (8,197 characters; SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e). Original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206.",
+          "url": null,
+          "rights": "Source used for scope and locators; supplement independently authored and expands the short source descriptions.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics First Term source."
+        },
+        {
+          "title": "Companion lesson: Reading a micrometer screw gauge",
+          "locator": "SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING; the detailed micrometer reading method and zero correction are taught there to avoid duplicate/inconsistent readings.",
+          "url": null,
+          "rights": "Internal companion lesson.",
+          "reuse_status": "PERMITTED",
+          "attribution": "AISchoolonair SS1 Physics companion supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -9505,10 +9873,10 @@
       "id": "COV-PHYS-T1-W02-OBJ-1",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Techniques and measurement: every measurement needs a number and a unit (week outline heading TECHNIQUES AND MEASUREMENT; precedes the four scheme quantities)",
-      "objective_locator": "word-extractor 1.0.4 getBody() lines 202-203; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
-      "status": "PARTIAL",
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 1 WEEK TWO; body SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e (8,197 characters; SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e).",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+        "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS"
       ],
       "evidence": [
         {
@@ -9518,6 +9886,10 @@
         {
           "locator": "heading line 202 SHA-256 b2838ed9b5f80400581092269faa3872e0c8251390040b36d7e600db732d905d; paragraph line 203 SHA-256 6a6c75b6be874df8af073093c985e6cc887711f220ecd3cfb770110768a473a4; block lines 202-203 SHA-256 4785bcd4e4969253823a8e48a5903b3627a7c47adfde8aafa766324953c5eff4",
           "explanation": "Line 203 states that physics rests on exact measurement and that every measurement needs two things, a number or quantity and a unit, and gives '20 metres as the length of a table tennis's board' as its example. The principle is taught at objective level. The example is implausible for a table-tennis table (a regulation table is about 2.74 m long) and is recorded, not corrected, in PHYSICS-T1-W02-FACT-DEFECTS. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
+          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
         }
       ]
     },
@@ -9525,15 +9897,19 @@
       "id": "COV-PHYS-T1-W02-OBJ-2",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Measurement of length: the metre rule and the tape rule (scheme clause Length)",
-      "objective_locator": "word-extractor 1.0.4 getBody() lines 205-206; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
-      "status": "PARTIAL",
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 1 WEEK TWO; body SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e (8,197 characters; SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e).",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+        "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS"
       ],
       "evidence": [
         {
           "locator": "scheme row line 25 SHA-256 18bb82f110afd09fa9e504a5c737c6e3f57d2dd2d5a9e235d51e5e613a1849a3 (text '2<5 spaces><tab>Measurement of Mass, Weight, Length and Time; ' with a trailing semicolon and space); heading line 205 SHA-256 a60d4a6191dc37b6c64fa09baf957c5210f4b86c77bb7101622471dd1a08675a; paragraph line 206 SHA-256 3b1fbb77bfc3d5f993037a591acf1ff4595cd386cf87121232ad016ac6a5531f; block lines 205-206 SHA-256 2d833dbedf012db96b029d172cce7292c99895063292bd517640a31afaa38e4d",
           "explanation": "Line 206 says the metre rule measures a few centimetres to some metres, that a tape rule is used for longer distances, and that the smallest graduation of a metre rule is 0.1 cm or 1 mm (the two values agree). The tape rule is named in one clause and never described. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
+          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
         }
       ]
     },
@@ -9541,15 +9917,19 @@
       "id": "COV-PHYS-T1-W02-OBJ-3",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Measurement of length: callipers for solid objects (scheme clause Length)",
-      "objective_locator": "word-extractor 1.0.4 getBody() lines 208-209; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
-      "status": "PARTIAL",
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 1 WEEK TWO; body SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e (8,197 characters; SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e).",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+        "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS"
       ],
       "evidence": [
         {
           "locator": "heading line 208 SHA-256 c6dde29bdadfd24857c08f81fcd6ef990223824028bb1870bd24405e11e1381f; paragraph line 209 SHA-256 d7b2862f32d410fc860992616073146277e829ce350f1617c20dd370a978863a; block lines 208-209 SHA-256 39b42acc4346d9194312b8ba104a7d0562a3ae8daf59b574d6f8e2c5853a6dcb",
           "explanation": "Line 209 describes ordinary callipers as hinged steel jaws closed on the object, with the jaw distance then read against a metre rule, and names external callipers. Internal callipers are implied by the phrase 'in the case of external callipers' but never described. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
+          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
         }
       ]
     },
@@ -9557,16 +9937,20 @@
       "id": "COV-PHYS-T1-W02-OBJ-4",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Measurement of length: the vernier callipers and the micrometer screw gauge, what each measures and to what accuracy (scheme clause Length)",
-      "objective_locator": "word-extractor 1.0.4 getBody() lines 211-215; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
-      "status": "PARTIAL",
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 1 WEEK TWO; body SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e (8,197 characters; SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e).",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e",
+        "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS",
         "SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING"
       ],
       "evidence": [
         {
           "locator": "vernier heading line 211 SHA-256 ba50e5e424260251458a31e7a2dfc42f6b22ec1af347ce7f190720e30c763736; vernier paragraph line 212 SHA-256 3ab68b4d96bf5bf689346fa70cf7f1a22bc71712cb80baab028f1525d6a145e8; micrometer heading line 214 SHA-256 fbd9e0eaad80e7849d62a444a47c87ebc1905c9b8b376d4cdc76e7c7cb162c22; micrometer paragraph line 215 SHA-256 804d14b101661948340a0cf18ee3c4a35ccdf961c7e9208cad519f4e22969fc5; block lines 211-215 SHA-256 e20b2af0d521a57f8848b5ea09bac4d5fe32f9e63c9f348cde4767540a734b5f",
           "explanation": "Line 212 gives the vernier callipers' use (thickness of a metre rule, internal and external diameters of a tube, diameter of a rod), the reading to the nearest 0.1 mm, and two jaws with a main and a vernier scale. Line 215 gives the micrometer screw gauge's use (diameter of a wire, thickness of paper, diameter of a pendulum bob) and its reading to 0.01 mm or 0.001 cm (the two values agree). The principle of the vernier scale and any treatment of zero error are not taught: the string 'zero error' occurs nowhere in the 1,288 extracted lines. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
+          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
         }
       ]
     },
@@ -9574,15 +9958,19 @@
       "id": "COV-PHYS-T1-W02-OBJ-5",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Reading a vernier calliper: the rule that the whole number and first decimal come from the main scale and the second decimal from the coinciding vernier mark",
-      "objective_locator": "word-extractor 1.0.4 getBody() lines 247-250; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
-      "status": "PARTIAL",
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 1 WEEK TWO; body SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e (8,197 characters; SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e).",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+        "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS"
       ],
       "evidence": [
         {
           "locator": "heading line 247 SHA-256 c08a03b4498f918bfc49bfab6dc12e8249a64bfc33f719e70567f1fa07a53aa4; rule line 248 SHA-256 65a0425edf3f070343ba3122217bfe3925e45e7160f1753589742362907cf7e0; lead-in line 250 SHA-256 693e3d3fb7f7083f56342b2345446d8312c9352df05ba95ded78389b85f0330b; block lines 247-250 SHA-256 4e524013ec6006c077ee2239b64d103fb079fc0abfbd76302d9ab8083c1861b9",
           "explanation": "Line 248 states the reading rule in words: digits before and the first digit after the decimal point from the main scale, the second digit after the decimal point from the vernier mark that coincides with a main-scale mark. This is the only reading procedure the week gives for either instrument. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
+          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
         }
       ]
     },
@@ -9590,9 +9978,11 @@
       "id": "COV-PHYS-T1-W02-OBJ-6",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Worked reading of a vernier calliper: Example 3.1 (Fig. 3.3)",
-      "objective_locator": "word-extractor 1.0.4 getBody() lines 252-268; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 1 WEEK TWO; body SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e (8,197 characters; SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e).",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS"
+      ],
       "evidence": [
         {
           "locator": "example heading line 252 SHA-256 a804095d9fd8df7a8dbee2590247bb0654a32a6f94687d7854da616e20dab8e2; caption line 260 SHA-256 cd015e079add90ad1d30c093a3df9509bba5f8e0912fa4376b158b929794769b 'Fig. 3.3 '; solution lines 262-268 SHA-256 e31954695e507e2499e4be664bf9705d96d7eff4be402ccc268dafd67e840fda; lines 263-267 SHA-256 69a13903ffcd26cd2ed50ed222bf19617f458732dd6a5ecffdd62d122de17f74; note line 268 SHA-256 0007d8675c6a21e10d6dc65f2a0d37ad6f9fa60a4df3f01718d03457716b10cc; whole example lines 252-268 SHA-256 f8f6029b5b1cda6c5d843198695f15a44b7f75a824f6a9b9d0ea9128ae4e7d66",
@@ -9601,6 +9991,10 @@
         {
           "locator": "drawn-object anchors (Word 0x08 characters) counted in a scratch copy of word-extractor 1.0.4 that emits a private-use marker for each 0x08 and 0x01 before the library's clean() step; the marker-stripped text is byte-identical to the stored body (SHA-256 23a1a9aed418ac382bcfa0c4302eaf70c8a348bba82dbe6c2893c10b9bd86908): line 253 has 35 anchors, line 257 has 2, line 262 has 1; no 0x01 inline-picture anchor occurs anywhere in lines 194-340",
           "explanation": "The figure exists in the member file as 37 drawn objects in lines 253-257 plus 1 at line 262, which getBody() cannot emit and the importer has no legacy .doc path to recover (backend/src/db/ingestTopics.ts:299-302). The figure inventory stays with PHYS-VIS-T1 and the exponent/figure rendering decision with PHYS-OWNER-EXTRACTION-STRATEGY (BLOCKED); no reading is invented here. The figure numbers 3.3 and 3.4 start at 3 although the week contains no Fig. 3.1 or Fig. 3.2 and the preceding week numbers its tables 2.0-2.3, which suggests text lifted from a printed chapter 3 (unverified; reading pages are the unseen textbook at line 292)."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
+          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
         }
       ]
     },
@@ -9632,15 +10026,19 @@
       "id": "COV-PHYS-T1-W02-OBJ-8",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Measurement of time: clocks, watches, stop clocks and stop watches (scheme clause Time)",
-      "objective_locator": "word-extractor 1.0.4 getBody() lines 218-219; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
-      "status": "PARTIAL",
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 1 WEEK TWO; body SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e (8,197 characters; SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e).",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+        "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS"
       ],
       "evidence": [
         {
           "locator": "scheme row line 25 SHA-256 18bb82f110afd09fa9e504a5c737c6e3f57d2dd2d5a9e235d51e5e613a1849a3 (text '2<5 spaces><tab>Measurement of Mass, Weight, Length and Time; ' with a trailing semicolon and space); heading line 218 SHA-256 9fdb5bd34f110b3879779d0780fc2a5be908376630fa44d61ed063b47da4974e; paragraph line 219 SHA-256 d9b6170a0401c4455f19832f0d867a432cdb146d186438c8a395d17b4543f78d; block lines 218-219 SHA-256 ecadaf457ad9621c61272033564e92448da1a64dae1e2229743f0db8e73d939c",
           "explanation": "Line 219 distinguishes time intervals of minutes or hours (clocks and watches) from shorter intervals of seconds (stop clocks or stop watches). The paragraph prints 'time internal' twice for 'time interval' and runs two sentences together without punctuation. The week does not teach how to use a stop watch or read its scale and does not restate the second as the unit (the unit is in Week 1 at line 86); whether anything beyond line 219 is required of Week 2 is a scope question held by PHYS-FACT-T1-W02-SCOPE. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
+          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
         }
       ]
     },
@@ -9648,15 +10046,19 @@
       "id": "COV-PHYS-T1-W02-OBJ-9",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Measurement of mass: mass as a quantity of matter, measured by comparison with standard masses on a balance (scheme clause Mass)",
-      "objective_locator": "word-extractor 1.0.4 getBody() lines 225-227; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
-      "status": "PARTIAL",
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 1 WEEK TWO; body SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e (8,197 characters; SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e).",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+        "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS"
       ],
       "evidence": [
         {
           "locator": "scheme row line 25 SHA-256 18bb82f110afd09fa9e504a5c737c6e3f57d2dd2d5a9e235d51e5e613a1849a3 (text '2<5 spaces><tab>Measurement of Mass, Weight, Length and Time; ' with a trailing semicolon and space); heading line 225 SHA-256 0a4c8f8212ce04e195489d67140886261c655247f0ca0f9efa2beac295f1dc34; definition line 226 SHA-256 59dd0ff4351865a7991a029dfe13f28bbc4d39eeb3b71dc4f935e61b173fa6bf; balance types line 227 SHA-256 cd94fb3eb1e850964a12ac58420eb724e6157c314ea2a977e38c95d749954426; block lines 225-227 SHA-256 99dd265ab39fc0153f6c5f3399c7c007025e005c506580d5572682d586974985",
           "explanation": "Line 226 defines mass as a measure of the quantity of matter in a body and says it is found by comparing with standard masses on a balance; line 227 names beam or chemical balance, lever balance and dial spring or direct reading balance. None of the balances is described or shown. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
+          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
         }
       ]
     },
@@ -9664,15 +10066,19 @@
       "id": "COV-PHYS-T1-W02-OBJ-10",
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Weight: its definition, how it differs from mass, and the relationship W = mg (scheme clause Weight)",
-      "objective_locator": "word-extractor 1.0.4 getBody() lines 229-242; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
-      "status": "PARTIAL",
+      "objective_locator": "Registered source SS1-SRC-5c0149cda71d; parsed row 1 WEEK TWO; body SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e (8,197 characters; SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e).",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+        "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS"
       ],
       "evidence": [
         {
           "locator": "scheme row line 25 SHA-256 18bb82f110afd09fa9e504a5c737c6e3f57d2dd2d5a9e235d51e5e613a1849a3 (text '2<5 spaces><tab>Measurement of Mass, Weight, Length and Time; ' with a trailing semicolon and space); definition line 229 SHA-256 e13d3cf52a0f8270cfaa1e38a0eb6c02be317018a21cae9af4ef4d6403ae3729; table heading line 231 SHA-256 d81bde82b662071915b06facfbb3ed16edea73a221b9b13de0bff853db4ae402; table lines 232-238 SHA-256 62105e74536688e7177f7d273f25ff8d10ace18661cab6f60356e9d6a7ff3607; relationship lines 240-242 SHA-256 083f8f6764cc2851bc433d513b0d75ed54273c6f418455fd5191cd6662f8fddd; whole block lines 229-242 SHA-256 49ecf2d2b1b87047f2ea2e3cdc7a19a010e6083de18834f43333ba7c62c9485c",
           "explanation": "Line 229 defines weight as the force due to the earth's gravitational pull, measured with a spring balance in newtons. Lines 232-238 tabulate six differences between mass and weight (quantity of matter versus gravity, constant versus varying, scalar versus vector, kg versus N, balance versus spring balance, moments versus Hooke's law). Lines 240-242 give W = mg with W in N, m in kg and g in m/s2. Taught at objective level, with four limits: the value of g is not stated in the teaching (it appears only in the EVALUATION at line 289); row 6 at line 238 leans on the principle of moments and 'Hook's law', and the string 'hooke' occurs nowhere in the extract; the exponent of m/s2 is flattened; and the gravitational-field idea behind 'weight varies' is not explained. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        },
+        {
+          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
+          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
         }
       ]
     },
