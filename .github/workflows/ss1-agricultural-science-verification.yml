@@ -6,7 +6,8 @@ on:
     paths:
       - "backend/src/db/ss1/**"
       - "backend/package.json"
-      - "backend/package-lock.json"
+      - "package-lock.json"
+      - "package.json"
       - "tests/ss1/agricultural-science.*.mts"
       - ".github/workflows/ss1-agricultural-science-verification.yml"
   push:
@@ -14,7 +15,8 @@ on:
     paths:
       - "backend/src/db/ss1/**"
       - "backend/package.json"
-      - "backend/package-lock.json"
+      - "package-lock.json"
+      - "package.json"
       - "tests/ss1/agricultural-science.*.mts"
       - ".github/workflows/ss1-agricultural-science-verification.yml"
   workflow_dispatch:
@@ -35,13 +37,10 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: backend/package-lock.json
-      - name: Install locked backend dependencies
-        working-directory: backend
-        run: npm ci --no-audit --no-fund
+          cache-dependency-path: package-lock.json
+      - name: Install locked backend workspace dependencies
+        run: npm ci --workspace=backend --include-workspace-root=false --no-audit --no-fund
       - name: Run Agricultural Science package tests (lesson body hashes, approvals, assets)
-        working-directory: backend
-        run: node --import tsx --test ../tests/ss1/agricultural-science.package.test.mts
+        run: node --import tsx --test tests/ss1/agricultural-science.package.test.mts
       - name: Run the SS1 package integrity validator for Agricultural Science only
-        working-directory: backend
-        run: node --import tsx src/db/ss1/validateSubjectPackages.ts agricultural-science
+        run: node --import tsx backend/src/db/ss1/validateSubjectPackages.ts agricultural-science
