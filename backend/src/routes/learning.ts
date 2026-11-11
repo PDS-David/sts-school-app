@@ -275,7 +275,7 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
   // gives for a topic outside the viewer's classes.
   if (scope === null) return res.json({ assets: [], attributions: [] });
   const { rows: visible } = await query(
-    `SELECT t.id, t.school_code, t.title, t.term_label, t.class_name, t.source_file, t.source_reference, s.name AS subject_name
+    `SELECT t.id, t.school_code, t.title, t.term_label, t.class_name, t.source_file, t.source_reference, t.order_index, s.name AS subject_name
        FROM topics t LEFT JOIN subjects s ON s.id=t.subject_id WHERE t.id=$1 AND t.school_code=$2${scope}`, params,
   );
   if (!visible[0]) return res.json({ assets: [], attributions: [] });
@@ -316,7 +316,7 @@ router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
   // Scope + metadata first (no bytes), so a 304 never reads the image.
   const { rows: meta } = await query(
     `SELECT a.mime, a.sha256, a.asset_key, t.id AS topic_id, t.school_code, t.class_name, t.term_label, t.title,
-            t.source_file, t.source_reference, s.name AS subject_name
+            t.source_file, t.source_reference, t.order_index, s.name AS subject_name
        FROM topic_assets a
        JOIN topics t ON t.id=a.topic_id
        LEFT JOIN subjects s ON s.id=t.subject_id
