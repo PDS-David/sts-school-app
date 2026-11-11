@@ -108,7 +108,9 @@ test('Third-Term revision and examination markers have original supplements and 
   const exam = p.lessons.find(l => l.id === 'SUP-SS1-FRENCH-EXAM-T3');
   assert(revision);
   assert(exam);
-  assert.equal(revision.practice.reduce((sum, q) => sum + q.marks, 0), 20);
+  assert.equal(revision.practice.length, 10);
+  assert.equal(revision.practice.reduce((sum, q) => sum + q.marks, 0), 40);
+  assert(revision.practice.every(q => q.marks === 4));
   assert.equal(exam.practice.length, 24);
   assert.equal(exam.practice.reduce((sum, q) => sum + q.marks, 0), 40);
   assert(exam.practice.slice(0, 20).every(q => q.marks === 1));
