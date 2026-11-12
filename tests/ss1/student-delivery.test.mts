@@ -101,3 +101,9 @@ test('locked student topic previews expose navigation metadata only', () => {
   assert.equal('source_file' in preview, false);
   assert.equal('source_reference' in preview, false);
 });
+
+
+test('Technical Drawing is not exposed to students while its package and lesson approvals remain pending', () => {
+  const lessons = listStudentSs1Lessons('Technical Drawing');
+  assert.deepEqual(lessons, [], 'pending Technical Drawing content must not enter student delivery');
+});

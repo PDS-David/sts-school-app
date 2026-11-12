@@ -470,3 +470,19 @@ test('Week Eight–Nine pentagon replacement construction resolves both mirror i
   assert.match(q.answer, /unique convex pentagon/);
   assert.match(lesson.body, /fully dimensioned convex pentagon/);
 });
+
+
+test('Technical Drawing subject alias approval is recorded without implying lesson approval', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const alias = subject.source_rules.find(rule => rule.id === 'SS1-SRC-af4868d2c026-R001');
+  assert.ok(alias && alias.op === 'source_alias', 'source subject alias rule missing');
+  assert.equal(alias.observed_subject, 'SUBJECT:TECHNICAL DRAWING');
+  assert.equal(alias.canonical_subject, 'Technical Drawing');
+  assert.match(alias.approval_reference, /^OWNER-APPROVAL-CHAT-2026-11-13:/);
+  const openItem = subject.open_items.find(item => item.id === 'TECHNICAL-DRAWING-ALIAS-APPROVAL');
+  assert.ok(openItem, 'alias approval provenance record missing');
+  assert.equal(openItem.blocks_delivery, false);
+  assert.match(openItem.detail, /subject alias\/normalization approval only/);
+  assert.equal(subject.package_status, 'PENDING', 'alias approval must not certify the whole package');
+  assert.ok(subject.lessons.every(lesson => lesson.state.content_approval === 'PENDING'), 'owner alias approval must not silently approve teaching content');
+});
