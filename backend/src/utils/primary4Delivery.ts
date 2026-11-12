@@ -98,7 +98,7 @@ try {
 
 export type Primary4SourceDelivery =
   | { source: 'primary4-export' | 'researched-package' | 'archive-correction'; kind: 'matched'; topicId: number; text: string; sourceHash: string; reviewRequired: boolean; reviewFlag: ReviewFlag; displayTitle?: string }
-  | { source: 'primary4-export' | 'researched-package' | 'archive-correction'; kind: 'withheld'; topicId: number | null; text: string; reason: string; hideFromStudent?: boolean };
+  | { source: 'primary4-export' | 'researched-package' | 'archive-correction'; kind: 'withheld'; topicId: number | null; text: string; reason: string; hideFromStudent?: boolean; displayTitle?: string };
 
 function isPrimary4(topic: Primary4Topic): boolean {
   return topic.school_code === 'primary' && normalize(topic.class_name) === 'primary 4';
@@ -177,7 +177,7 @@ export function resolvePrimary4SourceDelivery(topic: Primary4Topic): Primary4Sou
       const correctionText = archiveCorrectionSourceReference(correction);
       const sourceHash = sha256(correctionText);
       if (pendingApproval(correctionText)) {
-        return withheld('Archive-based lesson correction is pending owner approval', 'archive-correction');
+        return { ...withheld('Archive-based lesson correction is pending owner approval', 'archive-correction'), displayTitle: correction.title };
       }
       return {
         source: 'archive-correction',
@@ -255,6 +255,7 @@ export function safePrimary4Topic<T extends Primary4Topic>(topic: T): T {
   if (delivery.kind === 'withheld') {
     return {
       ...topic,
+      ...(delivery.source === 'archive-correction' && delivery.displayTitle ? { title: delivery.displayTitle } : {}),
       source_reference: null,
       summary: null,
       generated_assessment_id: null,
