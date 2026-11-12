@@ -129,6 +129,19 @@ export function resolvePrimarySubjectName<T extends { name: string; fallback: bo
 }
 
 export function applyPrimarySourceTextResolution(basename: string, text: string): string {
+  if (basename === '1st termBasicscience4.docx') {
+    // The opening section is a short scheme outline. Detailed notes begin at
+    // the first doubled marker, e.g. "WEEK: WEEK 1". Keep the lesson section
+    // and normalize only this exact source's malformed week headings so the
+    // shared parser can split its detailed lesson blocks correctly.
+    const detailedLessons = /\\n\\s*WEEK\\s*:\\s*WEEK\\s*1\\b/i.exec(text);
+    if (detailedLessons?.index !== undefined) {
+      return text.slice(detailedLessons.index).trimStart()
+        .replace(/^([ \\t]*)WEEK\\s*:\\s*WEEK\\s*(\\d{1,2})\\b/gim, '$1WEEK $2');
+    }
+    return text;
+  }
+
   if (basename === 'PRY 4 CCA First term E.docx') {
     // This source begins with a scheme-of-work outline, then switches to the
     // detailed lesson notes at the first explicit "WEEK: 1" heading. The old
