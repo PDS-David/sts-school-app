@@ -129,3 +129,36 @@ test('Week Ten tangency lesson explicitly flags the source two-circle locus typo
   assert.match(lesson.body, /supplied source repeats R₁\+R for the second locus/);
   assert.match(lesson.body, /geometrically correct second locus is R₁\+r/);
 });
+
+test('Technical Drawing resolved source rows and figure inventories are not left as blockers', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const ids = new Set(subject.open_items.map(item => item.id));
+  for (const resolved of [
+    'TD-T2-W03-FIGURES',
+    'TD-T2-W03-NOTATION',
+    'TD-T2-W04-FIGURES',
+    'TD-T2-W05-FIGURES',
+    'TD-T2-W06-W07-FIGURES',
+    'TD-T2-W08-W09-FIGURES',
+    'TD-T2-W10-FIGURES',
+    'TD-T2-W08-W09-TEACHING-ROW-MAPPING',
+    'TD-T2-W10-TEACHING-ROW-MAPPING',
+    'TD-T2-W08-W09-EXAMPLE2-DIRECTION',
+    'TD-T2-W01-GENERAL-Q2-DATA-IMPOSSIBLE',
+    'TD-T2-W01-GENERAL-Q4-SSA-AMBIGUITY'
+  ]) assert.equal(ids.has(resolved), false, `resolved item remains open: ${resolved}`);
+  assert.equal(subject.open_items.length, 20);
+});
+
+test('source-backed Week Two to Five answer keys retain verified results and unresolved caveats', async () => {
+  const root = new URL('../../docs/ss1/work/microtasks/technical-drawing/', import.meta.url);
+  const [w02, w03, w04, w05] = await Promise.all([
+    'TD-KEY-W02-ANSWERS.md', 'TD-KEY-W03-ANSWERS.md',
+    'TD-KEY-W04-ANSWERS.md', 'TD-KEY-W05-ANSWERS.md'
+  ].map(name => readFile(new URL(name, root), 'utf8')));
+  assert.match(w02, /109\.96 mm/);
+  assert.match(w02, /right-angled/);
+  assert.match(w03, /43\.30 mm/);
+  assert.match(w04, /60 mm/);
+  assert.match(w05, /27° is not a multiple of 5°/);
+});
