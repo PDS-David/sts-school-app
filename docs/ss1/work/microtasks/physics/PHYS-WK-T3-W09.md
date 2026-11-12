@@ -1,6 +1,6 @@
 # PHYS-WK-T3-W09 — Third Term Week Nine: elasticity
 
-Status: **BLOCKED — exact original source-row reconciliation incomplete**. The full student supplement and objective-level coverage are authored; the registered parsed-row identity is bound, but the original .doc body was not independently retrieved in this execution.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
 
 ## Registered source identity
 
@@ -34,3 +34,12 @@ This PDF is a close-equivalent scope comparison, not byte-verified as the regist
 - All 20 practice answers and marking totals checked.
 - Lesson content approval remains `PENDING`; verification remains `DEFERRED`.
 - No importer, database or device test is claimed.
+
+
+## Original-source inspection completed — 2026-11-12
+
+- Exact source member: hash-verified original registered .doc; full rendered page range: 12–13.
+- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
+- Source-row disposition: WEEK 9: elasticity, Hooke's law, stress, strain and Young's modulus. The rendered source contains no clear force-extension graph; the registered original force-extension/stress-strain SVGs supply the teaching visuals. Source exercises have no answer/marking key.
+- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
+- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.
