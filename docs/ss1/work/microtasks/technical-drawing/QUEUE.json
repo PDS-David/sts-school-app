@@ -33,18 +33,18 @@
     "SOURCE_WEEK_INDEXING": 19,
     "FACTUAL_DEPENDENCY": 7,
     "VISUAL_DISPOSITION": 9,
-    "ASSET": 89,
+    "ASSET": 106,
     "OWNER_DECISION": 1,
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
     "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 30,
+    "IMPLEMENTED_TESTING_DEFERRED": 31,
     "BLOCKED": 6,
-    "PENDING": 105
+    "PENDING": 121
   },
-  "total": 141,
+  "total": 158,
   "items": [
     {
       "id": "TD-SRC-T2",
@@ -1222,8 +1222,8 @@
         "TD-VIS-INVENTORY",
         "TD-WK-W10"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 19 DrawingML placements on PDF pages 43–54; circle, arc and straight-line tangency constructions. Per-figure disposition remains pending.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12 from master d47c1daa. Inspected all 19 Week Ten DrawingML placements and 17 unique PNG parts; recomputed hashes and recorded exact XML body-child locators, construction purposes, repeated placements and bind-as-asset dispositions in TD-VIS-W10.md. image93.png and image97.png each occur twice and have one derivative task each. Appended 17 bounded ASSET tasks TD-ASSET-W10-F01..F17 with unique SVG paths. No derivatives or package assets yet created. No subject tests/schema/compiler/importer or app display verification run; not approved, not verified.",
       "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
     },
     {
@@ -4876,6 +4876,584 @@
       "status": "PENDING",
       "implementation_reference": "Cross-row reuse task. image83.jpeg visually repeats the Week Three 30/60/70 triangle; see TD-VIS-W08-W09.md. Existing derivative task: TD-ASSET-W03-F13. No derivative or package binding exists yet.",
       "completion_condition": "Compare the final Week Three derivative against all three source representations; verify labels and geometry; bind the same asset path/hash to the Week Eight–Nine lesson with a unique asset ID/order and provenance recording all source locators, or create a separate derivative if equivalence fails. Validate the package. Do not commit original extracted media."
+    },
+    {
+      "id": "TD-ASSET-W10-F01",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1597 / word/media/image88.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Arc of known radius tangent to a straight line or two lines, with right-angle, acute and obtuse cases. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: d60e54fa139e1377f8d79624bf78257ce158b6daa6a2fc02b7e5dbe8045f4d2f.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f01-arc-to-line-tangency.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F01.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image88.png; original SHA-256 d60e54fa139e1377f8d79624bf78257ce158b6daa6a2fc02b7e5dbe8045f4d2f; XML body-child placement(s) 1597. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W10-F02",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1627 / word/media/image89.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Arc of known radius tangent to two straight lines using offset parallels and their intersection. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: d568c39398f13fb4563ef5e5ddbf730fccea3b3b548c8b412071a3abfdb34b3a.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f02-arc-to-inclined-lines.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F02.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image89.png; original SHA-256 d568c39398f13fb4563ef5e5ddbf730fccea3b3b548c8b412071a3abfdb34b3a; XML body-child placement(s) 1627. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W10-F03",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1662 / word/media/image90.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Internal joining of two arcs/circles using the difference of radii. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: a7a7390711e3f6f64ea957fe74a9648962c9cc78d4be704b0d3a8d3f5757de2d.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f03-two-arcs-internal-tangency.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F03.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image90.png; original SHA-256 a7a7390711e3f6f64ea957fe74a9648962c9cc78d4be704b0d3a8d3f5757de2d; XML body-child placement(s) 1662. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W10-F04",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1693 / word/media/image91.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Arc R2 externally tangent to existing arc AB and straight line CD. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: 3276cc08908666f3dc9b7b057fd99d43535723958b25f8a25d9a4de0fc6967d1.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f04-arc-external-to-arc-and-line.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F04.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image91.png; original SHA-256 3276cc08908666f3dc9b7b057fd99d43535723958b25f8a25d9a4de0fc6967d1; XML body-child placement(s) 1693. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W10-F05",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1709 / word/media/image92.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Common external tangent construction for two equal-diameter circles. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: 690f796e3f5a237326dcd1846ecbbd99ddd555e39fcf7543e09c4921cedd3ba2.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f05-common-external-tangent-equal-circles.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F05.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image92.png; original SHA-256 690f796e3f5a237326dcd1846ecbbd99ddd555e39fcf7543e09c4921cedd3ba2; XML body-child placement(s) 1709. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W10-F06",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1735, 1930 / word/media/image93.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Common external tangent construction for two unequal circles; repeated in a later tangency-type question. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: d53c17838cbf73f8ee2eb7cc45dbbcad77befe53cbb111fbd471b6eb6507551a.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f06-common-external-tangent-unequal-circles.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F06.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image93.png; original SHA-256 d53c17838cbf73f8ee2eb7cc45dbbcad77befe53cbb111fbd471b6eb6507551a; XML body-child placement(s) 1735, 1930. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W10-F07",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1755 / word/media/image94.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Common internal tangent construction for two equal circles. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: aca3c2b10a11fe23c7c1922c3aa57b6ad4990c823cc5a0b6285ae4d896663b5e.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f07-common-internal-tangent-equal-circles.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F07.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image94.png; original SHA-256 aca3c2b10a11fe23c7c1922c3aa57b6ad4990c823cc5a0b6285ae4d896663b5e; XML body-child placement(s) 1755. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W10-F08",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1782 / word/media/image95.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Common internal tangent construction for two unequal circles. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: b182427ea3ca4753534122dee7690a8131a48c0ab32c8f63754cacf91f2967e8.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f08-common-internal-tangent-unequal-circles.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F08.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image95.png; original SHA-256 b182427ea3ca4753534122dee7690a8131a48c0ab32c8f63754cacf91f2967e8; XML body-child placement(s) 1782. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W10-F09",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1803 / word/media/image96.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Dimensioned template with two circles and joining arcs for centres and tangency points. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: c3f1529dc21b2901a0665d8e9c67796e6a81a51b00e7a54c676f6ae0164dbdf6.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f09-two-circle-arc-template.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F09.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image96.png; original SHA-256 c3f1529dc21b2901a0665d8e9c67796e6a81a51b00e7a54c676f6ae0164dbdf6; XML body-child placement(s) 1803. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W10-F10",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1827, 1958 / word/media/image97.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Dimensioned spanner outline with multiple radii and tangency points; repeated in evaluation and theory. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: 0006889807b741467b19070a6f79638547310dccfa5776dbab6a9e0749bb2347.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f10-spanner-tangency-template.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F10.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image97.png; original SHA-256 0006889807b741467b19070a6f79638547310dccfa5776dbab6a9e0749bb2347; XML body-child placement(s) 1827, 1958. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W10-F11",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1847 / word/media/image98.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Dimensioned machine-part profile with multiple arcs/radii for half-size construction. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: 9cdbc52ff6e06a9090d87c0e353c486b74d9b6f43a468d164f731fb1660090da.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f11-machine-part-template.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F11.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image98.png; original SHA-256 9cdbc52ff6e06a9090d87c0e353c486b74d9b6f43a468d164f731fb1660090da; XML body-child placement(s) 1847. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W10-F12",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1874 / word/media/image99.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Full-size dimensioned template with circular and blended-arc geometry. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: 39077b2755a98923d0200572093e05ae03917828ff85dddcc5960f80dff619a3.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f12-full-size-tangency-template.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F12.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image99.png; original SHA-256 39077b2755a98923d0200572093e05ae03917828ff85dddcc5960f80dff619a3; XML body-child placement(s) 1874. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W10-F13",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1896 / word/media/image100.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Two-circle diagram with line X-X for classifying the line as common tangent, bisector or normal. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: eb989caad41617e30d3ed32a832f646a348a6a5c2727af5ebef1babd9331fe90.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f13-common-tangent-identification.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F13.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image100.png; original SHA-256 eb989caad41617e30d3ed32a832f646a348a6a5c2727af5ebef1babd9331fe90; XML body-child placement(s) 1896. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W10-F14",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1906 / word/media/image101.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Two-circle/arc centre-locus diagram labelled with radii Rp, Ry, Rz and Rc. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: b0045124f2c7e2912463328503e8013f537b92b21d28a1b904b5f113d13d891e.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f14-tangency-radius-equation.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F14.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image101.png; original SHA-256 b0045124f2c7e2912463328503e8013f537b92b21d28a1b904b5f113d13d891e; XML body-child placement(s) 1906. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W10-F15",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1919 / word/media/image102.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Two smaller circles and central arc of radius 80 with centres P, Q and O for PO/QO assessment. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: d8336cd590cf84c98a79e31e4129e9261ad7cbb0356aec98a3fa742e45aff4a0.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f15-tangency-centre-distances.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F15.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image102.png; original SHA-256 d8336cd590cf84c98a79e31e4129e9261ad7cbb0356aec98a3fa742e45aff4a0; XML body-child placement(s) 1919. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W10-F16",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1945 / word/media/image103.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Dimensioned symmetric/oval template with end holes, radii and tangency marks. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: 5e982a35638cb0957ba4cd546cc0587ecc2c3ade594d232fb3a2c6a645d2700f.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f16-theory-tangency-template.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F16.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image103.png; original SHA-256 5e982a35638cb0957ba4cd546cc0587ecc2c3ade594d232fb3a2c6a645d2700f; XML body-child placement(s) 1945. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W10-F17",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / source lesson SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863 / word/document.xml body child(s) 1980 / word/media/image104.png",
+      "objective": "Create a faithful SVG derivative for this Week Ten tangency figure: Composite sheet of six tangency problems with individual radii, construction geometry and dimensions. Preserve exact visible radii, tangent points, construction lines, dimensions and labels. Do not invent missing dimensions or answers. Original media SHA-256: 5f39fa450a1e10f7dfeaf9eda9a769b5d747cb77196b2e981dbfc67d1aeb6e65.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w10-f17-six-tangency-problems.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W10-F17.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W10.md. Source part word/media/image104.png; original SHA-256 5f39fa450a1e10f7dfeaf9eda9a769b5d747cb77196b2e981dbfc67d1aeb6e65; XML body-child placement(s) 1980. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative; preserve all radii, tangent points, construction geometry and dimensions; record source/derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Ten source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
     }
   ],
   "review": {
@@ -4892,12 +5470,12 @@
     "notes": "Reconciled queue metadata with live item statuses after Week 6–10 coverage updates; formal tests remain deferred."
   },
   "next_runnable": [
-    "TD-VIS-W10",
     "TD-FACT-W01-DEGREE-NOTATION",
     "TD-FACT-W03-NOTATION",
     "TD-FACT-W04-SCALE-DETAILS",
     "TD-FACT-W05-SCALE-CONSTRUCTIONS",
     "TD-FACT-W08-W09-DETAILS",
+    "TD-FACT-W10-TANGENCY-CONSTRUCTIONS",
     "TD-KEY-W02-ANSWERS",
     "TD-VIS-OLE",
     "TD-VIS-WMF",
@@ -4985,15 +5563,32 @@
     "TD-ASSET-W08-W09-F21",
     "TD-ASSET-W08-W09-F22",
     "TD-ASSET-W08-W09-F23",
-    "TD-ASSET-W08-W09-F24"
+    "TD-ASSET-W08-W09-F24",
+    "TD-ASSET-W10-F01",
+    "TD-ASSET-W10-F02",
+    "TD-ASSET-W10-F03",
+    "TD-ASSET-W10-F04",
+    "TD-ASSET-W10-F05",
+    "TD-ASSET-W10-F06",
+    "TD-ASSET-W10-F07",
+    "TD-ASSET-W10-F08",
+    "TD-ASSET-W10-F09",
+    "TD-ASSET-W10-F10",
+    "TD-ASSET-W10-F11",
+    "TD-ASSET-W10-F12",
+    "TD-ASSET-W10-F13",
+    "TD-ASSET-W10-F14",
+    "TD-ASSET-W10-F15",
+    "TD-ASSET-W10-F16",
+    "TD-ASSET-W10-F17"
   ],
   "runnable_now": [
-    "TD-VIS-W10",
     "TD-FACT-W01-DEGREE-NOTATION",
     "TD-FACT-W03-NOTATION",
     "TD-FACT-W04-SCALE-DETAILS",
     "TD-FACT-W05-SCALE-CONSTRUCTIONS",
     "TD-FACT-W08-W09-DETAILS",
+    "TD-FACT-W10-TANGENCY-CONSTRUCTIONS",
     "TD-KEY-W02-ANSWERS",
     "TD-VIS-OLE",
     "TD-VIS-WMF",
@@ -5081,6 +5676,23 @@
     "TD-ASSET-W08-W09-F21",
     "TD-ASSET-W08-W09-F22",
     "TD-ASSET-W08-W09-F23",
-    "TD-ASSET-W08-W09-F24"
+    "TD-ASSET-W08-W09-F24",
+    "TD-ASSET-W10-F01",
+    "TD-ASSET-W10-F02",
+    "TD-ASSET-W10-F03",
+    "TD-ASSET-W10-F04",
+    "TD-ASSET-W10-F05",
+    "TD-ASSET-W10-F06",
+    "TD-ASSET-W10-F07",
+    "TD-ASSET-W10-F08",
+    "TD-ASSET-W10-F09",
+    "TD-ASSET-W10-F10",
+    "TD-ASSET-W10-F11",
+    "TD-ASSET-W10-F12",
+    "TD-ASSET-W10-F13",
+    "TD-ASSET-W10-F14",
+    "TD-ASSET-W10-F15",
+    "TD-ASSET-W10-F16",
+    "TD-ASSET-W10-F17"
   ]
 }
