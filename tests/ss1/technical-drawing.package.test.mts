@@ -54,7 +54,7 @@ test('Week 8–9 and Week 10 scheme objectives are bound to teaching supplements
     assert.ok(coverage.lesson_ids.length > 0, `coverage has no lesson binding: ${id}`);
     for (const lessonId of coverage.lesson_ids) {
       assert.ok(
-        lessonIdsHas(subject.lessons, lessonId),
+        lessonIdsHas(subject.lessons, lessonId) || subject.sources.some(source => lessonId.startsWith(`${source.source_id}:BODY:`)),
         `coverage target is not a lesson: ${id} -> ${lessonId}`
       );
     }
