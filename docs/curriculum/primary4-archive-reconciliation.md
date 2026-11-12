@@ -48,6 +48,19 @@ The canonical source is `PRY 4 CCA First term E.docx`. It contains a scheme outl
 
 The canonical source is `PRY 4 HOME ECONS RD TERM.docx`. It contains an 11-week outline followed by 10 detailed lesson blocks (Weeks 2–11). The export includes both the outline rows and detailed lesson rows. The outline-only records should be suppressed from student delivery where the corresponding detailed lessons are present.
 
+## Delivery correction package prepared
+
+A delivery-only correction package now contains 32 newly authored lesson-note replacements mapped to exact existing topic IDs and original exported row identities:
+
+- Basic Science First Term: 11 topics (Changes in Nature through Measuring Time)
+- Cultural & Creative Arts First Term: 12 topics (Arts and Design through Musical Instruments)
+- Mathematics First Term: 7 topics (Ordering Fractions through Decimal Operations)
+- English Language: 2 topics (My Family composition and Antonyms)
+
+The package does not insert new topic rows. It replaces the source text and corrects learner-facing titles only after approval. All 32 corrections currently have `PENDING_OWNER_REVIEW` and `assessment_rebuild_status=PENDING`; they remain withheld from student delivery until both approval and assessment regeneration are completed.
+
+Sixteen superseded rows are hidden from students/parents but retained for staff audit: Basic Science First-Term revision/merged rows, CCA First-Term revision/exam, and Home Economics Third-Term outline-only rows.
+
 ## Required next corrections
 
 1. Correct the Primary 4 source resolution for Basic Science First Term and CCA First Term, with regression tests.
