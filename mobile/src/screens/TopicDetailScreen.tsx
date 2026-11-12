@@ -269,7 +269,9 @@ export default function TopicDetailScreen({ route, navigation }: any) {
 
         {note && (
           <View style={styles.noteBox}>
-            <Ionicons name="checkmark-circle-outline" size={16} color={Colors.success} />
+            {note.toLowerCase().includes("source for this topic is brief")
+              ? <Ionicons name="information-circle-outline" size={16} color={Colors.textSub} />
+              : <Ionicons name="checkmark-circle-outline" size={16} color={Colors.success} />}
             <Text style={styles.noteText}>{note}</Text>
           </View>
         )}

@@ -15,6 +15,7 @@ import { resolveSs1MathematicsDelivery, safeSs1MathematicsTopic, mathematicsAsse
 import { resolveAgriculturalScienceDelivery, resolveAgriculturalScienceSupplement, resolveAgriculturalScienceSourceProjection, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, retireStaleAgriculturalScienceSupplementCache, retireStaleAgriculturalScienceSourceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
 import { listStudentSs1Lessons, getStudentSs1Lesson, listStudentSs1Assets, readStudentSs1Asset, studentSs1LessonPreview } from '../db/ss1/studentDelivery.js';
+import { resolvePrimary4SourceDelivery, safePrimary4Topic, primary4WithdrawnAssessmentIds } from '../utils/primary4Delivery.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
 // Read per request (value is constant in a running server) so tests can exercise PIN on and off in one process.
@@ -297,7 +298,7 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
 
   const { rows: rawRows } = await query(sql, params);
   // JSS3 and SS1 subject-specific delivery corrections: audited source text and stale summaries are never returned.
-  const rows = rawRows.map((r: any) => safeSs1MathematicsTopic(safeEnglishTopic(safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(r))), user.role)));
+  const rows = rawRows.map((r: any) => safePrimary4Topic(safeSs1MathematicsTopic(safeEnglishTopic(safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(r))), user.role))));
 
   // For a student, also report whether they've completed each topic, and
   // whether it's currently locked. Locking (see schema.sql's "Term-PIN
@@ -770,6 +771,17 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
         note: 'This English Language topic is temporarily unavailable pending subject approval and verification.' });
     }
   }
+  // Primary 4 lessons are grounded only in source rows whose identity and source_reference hash
+  // match the supplied read-only export. Short source notes remain visibly flagged to pupils.
+  const primary4Delivery = resolvePrimary4SourceDelivery(topic);
+  if (primary4Delivery?.kind === 'withheld') {
+    return res.json({ ok: true, summary: primary4Delivery.text, summary_is_fallback: false,
+      practice_questions: [], assessment_status: null,
+      delivery_correction: { id: String(primary4Delivery.topicId ?? req.params.id), status: 'withheld', provenance: 'source does not match supplied database export' },
+      note: 'This Primary 4 topic is temporarily unavailable while its curriculum source is checked.' });
+  }
+  if (primary4Delivery?.kind === 'matched') topic.source_reference = primary4Delivery.text;
+
   // Agricultural Science compiled supplements contain teacher answer keys. Replace the stored
   // compiler payload with the exact verified learner projection before any AI grounding or fallback.
   const agriculturalScienceLearnerTopic = safeAgriculturalScienceTopic(topic);
@@ -782,7 +794,8 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   topic.source_reference = learnerTopic.source_reference;
   topic.summary = learnerTopic.summary;
 
-  const groundingSource: string | null = mathematicsDelivery?.kind === 'corrected' ? mathematicsDelivery.text
+  const groundingSource: string | null = primary4Delivery?.kind === 'matched' ? primary4Delivery.text
+    : mathematicsDelivery?.kind === 'corrected' ? mathematicsDelivery.text
     : englishDelivery?.kind === 'corrected' ? englishDelivery.text
     : agriculturalScienceDelivery?.kind === 'corrected' || agriculturalScienceSupplement?.kind === 'supplement' || agriculturalScienceSourceProjection
       ? (typeof topic.source_reference === 'string' ? topic.source_reference : null)
@@ -924,12 +937,15 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
     ok: true,
     summary,
     summary_is_fallback,
-    delivery_correction: ss1Delivery ? { id: ss1Delivery.correctionId, status: ss1Delivery.kind, provenance: ss1Delivery.kind === 'corrected' ? 'approved project-authored correction' : 'withheld pending source review' } : delivery ? { id: delivery.correctionId, status: delivery.kind, provenance: 'corrected/equivalent teaching' } : undefined,
+    delivery_correction: primary4Delivery?.kind === 'matched' ? { id: String(primary4Delivery.topicId), status: 'source-export-match', provenance: 'source_reference hash matches the supplied database export' } : ss1Delivery ? { id: ss1Delivery.correctionId, status: ss1Delivery.kind, provenance: ss1Delivery.kind === 'corrected' ? 'approved project-authored correction' : 'withheld pending source review' } : delivery ? { id: delivery.correctionId, status: delivery.kind, provenance: 'corrected/equivalent teaching' } : undefined,
     practice_questions,
     assessment_status,
-    note: assessment_status === 'open'
-      ? 'A standard assessment for this topic is available now — check Assessments.'
-      : undefined,
+    note: [
+      primary4Delivery?.kind === 'matched' && primary4Delivery.reviewRequired
+        ? 'The supplied curriculum source for this topic is brief. These study notes are grounded in that source, but your teacher may need to add fuller classroom explanations.'
+        : undefined,
+      assessment_status === 'open' ? 'A standard assessment for this topic is available now — check Assessments.' : undefined,
+    ].filter(Boolean).join(' ') || undefined,
   });
 });
 
@@ -1200,7 +1216,8 @@ router.get('/assessments', requirePerm('assessments.read'), async (req, res) => 
     const ss1Gone = await ss1WithdrawnAssessmentIds(query, openIds);
     const agriculturalScienceGone = await agriculturalScienceWithdrawnAssessmentIds(query, openIds);
     const englishGone = await englishWithdrawnAssessmentIds(query, openIds);
-    const gone = new Set([...jss3Gone, ...ss1Gone, ...agriculturalScienceGone, ...englishGone]);
+    const primary4Gone = await primary4WithdrawnAssessmentIds(query, openIds);
+    const gone = new Set([...jss3Gone, ...ss1Gone, ...agriculturalScienceGone, ...englishGone, ...primary4Gone]);
     if (gone.size) visibleRows = visibleRows.filter((r: any) => !gone.has(r.id));
   }
   return res.json({ assessments: visibleRows });
