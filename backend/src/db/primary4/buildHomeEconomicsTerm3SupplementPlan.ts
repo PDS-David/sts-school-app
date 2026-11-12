@@ -60,7 +60,7 @@ export function buildHomeEconomicsTerm3SupplementPlan() {
         '',
         'EVALUATION',
         ...lesson.evaluation.map((item: string, i: number) => `${i + 1}. ${item}`),
-      ].join('\\n'),
+      ].join('\n'),
     })),
   };
 }
