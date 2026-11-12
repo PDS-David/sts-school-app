@@ -155,3 +155,15 @@ Suggested rubric (10 marks): datum circle and centre lines (2); second centre an
 
 The rubrics above are original proposed assessment criteria for the identified source figures. They are not the original textbook's marking scheme and have not received teacher approval. A teacher may revise mark weighting, but must retain the geometric constraints and source ambiguity notes.
 
+
+## Additional original construction assessment — common internal tangent to unequal circles
+
+Given radii 20 mm and 15 mm and centre separation 70 mm:
+1. Let A be the centre of the 20 mm circle and B the centre of the 15 mm circle.
+2. Draw an auxiliary circle centred at A with radius 20+15=35 mm.
+3. From B construct a tangent to the auxiliary circle.
+4. Draw a parallel to that tangent at perpendicular distance 15 mm from B toward A. The shifted line is the common internal tangent.
+5. Drop perpendiculars from A and B to the final tangent to locate the contact points. The radii to the contact points must each be perpendicular to the tangent.
+6. Feasibility check: AB=70 mm > 20+15=35 mm, so the circles are separate and the internal tangent construction is feasible.
+
+Suggested rubric (6 marks): auxiliary radius 35 mm (1); tangent from B to auxiliary circle (1); 15 mm parallel offset (1); both contact points located (1); perpendicular-radius check (1); feasibility check (1). This is an original complete method supplementing the source's truncated written procedure.
