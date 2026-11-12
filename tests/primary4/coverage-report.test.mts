@@ -64,6 +64,7 @@ test('coverage report accounts for archive corrections and hidden duplicate sour
   const report = buildPrimary4CoverageReport();
   assert.equal(report.archive_correction_count, 32);
   assert.equal(report.archive_correction_pending_approval_count, 32);
+  assert.equal(report.archive_correction_pending_assessment_rebuild_count, 32);
   assert.equal(report.archive_hidden_topic_count, 16);
   assert.ok(report.archive_correction_note.includes('withheld until owner approval'));
 });
