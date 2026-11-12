@@ -82,6 +82,7 @@ if (!URL_) {
     return {
       topic_assets: await assetRows(),
       topics: await count('SELECT count(*) n FROM topics WHERE school_code=$1', [TEST_SC]),
+      assessments: await count('SELECT count(*) n FROM assessments WHERE school_code=$1', [TEST_SC]),
       subjects: await count('SELECT count(*) n FROM subjects WHERE school_code=$1', [TEST_SC]),
       students: await count('SELECT count(*) n FROM students WHERE school_code=$1', [TEST_SC]),
       users: await count("SELECT count(*) n FROM users WHERE school_code=$1 OR username LIKE 'zz_t2test_%'", [TEST_SC]),
