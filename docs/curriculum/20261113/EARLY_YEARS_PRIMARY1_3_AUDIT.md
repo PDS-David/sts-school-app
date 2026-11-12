@@ -246,3 +246,24 @@ This source corrects the earlier blanket statement that no revised Primary 1–3
 | Primary 3 | No new subject-level PDF inspected in this pass | INCOMPLETE |
 
 No app code, database rows, source importer, or production data was changed by this evidence update.
+
+
+## 13. Additional official-source reconciliation (13 November 2026)
+
+A second pass across NERDC's public curriculum portals confirms that the curriculum evidence must distinguish **subject groups**, **individual subject offerings**, and **class-specific revised documents**:
+
+- NERDC's current revised BEC landing page links separately to Primary 1, Primary 2 and Primary 3 curriculum collections. The links resolve to the official LMIS host, but the Primary 1 and Primary 2 collection roots returned HTTP 403 in this audit environment and the Primary 3 root returned HTTP 404. This is an access limitation, not proof that the documents do not exist.
+- NERDC's older Primary 1–3 curriculum index lists combined/legacy curriculum PDFs (including Basic Science and Technology, CCA, English Studies, Mathematics, National Values and Pre-Vocational Studies). It is useful as a legacy source index, but must not be mistaken for the September 2025 class-specific revised curriculum.
+- NERDC's e-Curriculum structure pages describe Primary 1–3 as six compulsory subject groups with a seventh optional Arabic group. The separate September 2025 NERDC approved-subject notice and Federal Ministry press release describe nine compulsory individual subjects plus optional Arabic (nine to ten subjects). These statements are not directly interchangeable: group counts aggregate related subjects, while the press release/notice count individual offerings. Keep both representations in the curriculum mapping and do not seed six groups as if they were the individual student subjects.
+- The older public Subject Listings portal still displays a broad list of Primary 1–3 individual subjects, including some that do not appear as standalone offerings in the 2025 approved-subject notice. Treat this as legacy portal data unless a current revised document or school adoption record confirms otherwise.
+
+Official references:
+- NERDC, New Revised Basic Education Curriculum landing page (separate Primary 1, 2 and 3 links): https://www.nerdc.gov.ng/content_manager/new_curriculum_home.html
+- NERDC, Primary 1–3 legacy curriculum index: https://www.nerdc.gov.ng/content_manager/pri1-3.html
+- NERDC e-Curriculum, Primary 1–3 subject-group structure: https://nerdc.org.ng/CurriculumStructure.aspx
+- NERDC e-Curriculum, Primary 1–3 subject groups: https://www.nerdc.org.ng/SubjectGroups.aspx
+- NERDC e-Curriculum, Primary 1–3 legacy subject listings: https://nerdc.org.ng/SubjectListings.aspx
+
+## 14. Focused regression-test execution
+
+A dedicated GitHub Actions workflow, `.github/workflows/early-years-primary1-3-resolution.yml`, now runs the existing resolver/duplicate-regression test file when the relevant importer, resolution rules, tests or workflow change. This closes the previous gap where the test file existed but no focused CI job executed it. The workflow was queued against the new branch commit at the time of this update; its result must be checked before describing these tests as passing. It validates class-name resolution and source-resolution safeguards only; it does not validate lesson completeness, database state, or app delivery.
