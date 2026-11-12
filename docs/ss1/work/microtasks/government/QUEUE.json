@@ -24,22 +24,23 @@
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "GOV-INV-T1 executed on 2026-10-29 from the supplied 1st Term source (header verified by GOV-SRC-T1): ten teaching weeks plus a scheme-only revision/examination row; fourteen indexing/visual items appended; no package, coverage, rule or lesson written. The 2nd and 3rd Term headers remain unverified and their inventories unknown; the earlier notes describe the state when the queue was built.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
-    "GOV-WK-T1-W01 (2026-11-07) indexed Week 1 at objective level: meaning as institution, art of governing and academic field mapped SUPPORTED to the reproduced generic parsed-row id; the Hobbes passage at lines 53-54 was checked against Leviathan Part I ch. XIII and needs a delivery replacement, 'why we study government' is only partly taught in the span, the reading pointer is unverified and the source has no answer key, so two PARTIAL rows, one more PARTIAL row and one UNRESOLVED row, four blocking open items (one OWNER_ACTION on the weekend key) and one lesson item were appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written."
+    "GOV-WK-T1-W01 (2026-11-07) indexed Week 1 at objective level: meaning as institution, art of governing and academic field mapped SUPPORTED to the reproduced generic parsed-row id; the Hobbes passage at lines 53-54 was checked against Leviathan Part I ch. XIII and needs a delivery replacement, 'why we study government' is only partly taught in the span, the reading pointer is unverified and the source has no answer key, so two PARTIAL rows, one more PARTIAL row and one UNRESOLVED row, four blocking open items (one OWNER_ACTION on the weekend key) and one lesson item were appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written.",
+    "GOV-INV-T2 (2026-11-12) verified the assigned 2nd Term Government DOCX from the hash-matching archive. Eleven teaching weeks (WEEK ONE–ELEVEN) were found, plus scheme-only row 12–13 Revision and Examination; the scheme is plain paragraphs. The document has one comparison table, one native Office Math pound sign and five superscript ordinal runs, but no embedded images. Fifteen bounded preamble, marker, week-indexing and visual-disposition items were appended. Exact XML body-child locators and C14N hashes are in GOV-INV-T2.md. No lesson, coverage, rule, correction or asset was written; tests remain deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
     "FACTUAL_DEPENDENCY": 1,
-    "SOURCE_PREAMBLE_INDEXING": 1,
-    "SOURCE_MARKER_DISPOSITION": 2,
-    "SOURCE_WEEK_INDEXING": 10,
-    "VISUAL_DISPOSITION": 1,
+    "SOURCE_PREAMBLE_INDEXING": 2,
+    "SOURCE_MARKER_DISPOSITION": 4,
+    "SOURCE_WEEK_INDEXING": 21,
+    "VISUAL_DISPOSITION": 2,
     "LESSON": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 5,
-    "PENDING": 17,
+    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "PENDING": 31,
     "BLOCKED": 1
   },
   "items": [
@@ -211,8 +212,8 @@
       "depends_on": [
         "GOV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12 from current master 3655bd2238e48aea5998f5357466c8c459fc4b94. Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact member SSS 1/2nd Term SS1_/GOVT.docx SHA-256 bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782 (591,018 bytes). Inspected DOCX XML: 510 paragraphs, one 6x3 table, one Office Math pound sign, five superscript runs, eleven unique WEEK labels, ten EVALUATION headings, scheme-only Revision and Examination row 12–13, no embedded images/drawings/text boxes. Recorded 11 exact week body-child ranges with C14N hashes and the preamble hash in GOV-INV-T2.md. Appended GOV-PRE-T2, GOV-REV-T2, GOV-MARK-T2, GOV-WK-T2-W01..W11 and GOV-VIS-T2 (15 PENDING items), each dependent on GOV-INV-T2 and GOV-SRC-T2. No package/coverage/rule/lesson/asset was written. Not approved, not verified; no tests or importer/compiler run; testing deferred.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -861,22 +862,576 @@
       "status": "PENDING",
       "implementation_reference": "Not authored. Required by GOV-WK-T1-W01 (2026-11-07): lines 53-54 need a delivery replacement (Hobbes wording and attribution, contested contract account stated as fact), the Week 1 exercises have no key, and 'why do we study government' is only partly taught in the span. COV-GOV-T1-W01-INSTITUTION-NEED and -WHY-STUDY are PARTIAL, COV-GOV-T1-W01-ASSESSMENT-KEYS is UNRESOLVED and GOVERNMENT-T1-W01-COVERAGE is open. GOV-WK-T1-W01 authors no lesson text, answer or correction.",
       "completion_condition": "A lesson in government.json teaches the three Week 1 objectives with the corrected natural-condition passage, labels itself a Week 1 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance with a dated primary text and PENDING content approval; a delivery_corrections entry binds the original lesson id and body hash to it; COV-GOV-T1-W01-INSTITUTION-NEED then cites it with evidence, and any entry it does not fully cover stays PARTIAL or UNRESOLVED; no source byte, schema or shared file is edited."
+    },
+    {
+      "id": "GOV-PRE-T2",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "word/document.xml w:body children 1–34; preamble C14N SHA-256 7df3af37ac3307035c8b7d43421ee754018a8ccc3deb5ed651da10d764ad56a0",
+      "objective": "Index the 2nd Term opening section and scheme of work. The document has TERM, SUBJECT and CLASS paragraphs at children 1–3, a blank paragraph at 4, SCHEME OF WORK at 5, header at 6, and scheme rows at 7–34. Map scheme entries 1&2 to Weeks One and Two, then entries 3–11 to Weeks Three–Eleven; cross-reference entry 12–13 Revision and Examination at child 34 to GOV-REV-T2. Preserve the source discrepancy at child 22 (Clifford constitution of 1992) separately from the Week Five body heading (1922). Write preamble coverage only under the contract; do not invent a Week Twelve or Thirteen lesson, answer key or book content.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-PRE-T2.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T2",
+        "GOV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "Preamble coverage and scheme mapping are recorded with exact source locators and hash; every teaching scheme entry points to its corresponding week item; row 12–13 points to GOV-REV-T2; no teaching content, lesson or source rule is invented."
+    },
+    {
+      "id": "GOV-REV-T2",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "word/document.xml w:body child 34: 12 - 13<TAB><TAB>Revision and Examination; exact anchor occurs once",
+      "objective": "Dispose the only revision/examination marker: scheme entry 12–13 at body child 34. It occurs once in the source scheme and there is no Week Twelve or Week Thirteen body after Week Eleven. Record a classify_marker rule with kind SCHEME_ONLY when this item is executed. Preserve the exact source wording; do not create revision teaching, an examination paper or a lesson.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-REV-T2.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T2",
+        "GOV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "The unique scheme row is classified SCHEME_ONLY with source/hash evidence; no extra teaching week, revision lesson, examination paper or coverage is fabricated."
+    },
+    {
+      "id": "GOV-MARK-T2",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "word/document.xml w:body children 82, 141, 172, 205, 278, 318, 369, 414, 442 and 505",
+      "objective": "Dispose the ten standalone EVALUATION headings found in the 2nd Term body. Preserve them as original within their respective teaching weeks; Week Nine has no EVALUATION heading. Confirm that no READING ASSIGNMENT, WEEKEND, THEORY, GENERAL EVALUATION, REVISION or EXAMINATION marker occurs in the body. These evaluation labels are not scheme-only or revision/examination markers and must not be removed or reclassified. Record the marker and parser findings without inventing unsupported rule kinds.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-MARK-T2.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T2",
+        "GOV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "All ten EVALUATION occurrences are accounted for as original teaching-body markers, the absence of other marker classes is recorded, and no lesson, coverage or unsupported classify_marker kind is added."
+    },
+    {
+      "id": "GOV-WK-T2-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "word/document.xml w:body children 35–88; exact label WEEK ONE; C14N SHA-256 491d4a2a7ec077af389fc995ebe43a2d75dfac5d11bd60954f17e946637d31ad",
+      "objective": "Index 2nd Term Week 1 from its complete source span. Read every objective, paragraph and exercise; map the scheme entry to exact objective-level coverage; retain source wording and distinguish the source's claims from verified historical/legal facts. Main sections: TOPIC: COLONIAL ADMINISTRATION (HISTORICAL BACKGROUND); reasons for colonialism; indirect rule; features; reasons for its introduction; roles of traditional rulers; indirect rule in Northern Nigeria. EVALUATION at child 82. Record every question without inventing answers or marks. Any missing scheme objective must become a precise PARTIAL/UNRESOLVED coverage entry with a bounded follow-up. Government teaching must remain neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W01.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T2",
+        "GOV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
+    },
+    {
+      "id": "GOV-WK-T2-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "word/document.xml w:body children 89–148; exact label WEEK TWO; C14N SHA-256 7e79e0f9de9f1909a853fd09d50ecc80bc09122120fcd4c7029eee926f605782",
+      "objective": "Index 2nd Term Week 2 from its complete source span. Read every objective, paragraph and exercise; map the scheme entry to exact objective-level coverage; retain source wording and distinguish the source's claims from verified historical/legal facts. Main sections: System of Indirect Rule in Western Nigeria; indirect rule in Eastern Nigeria; reasons for failure in Eastern Nigeria; merits/demerits of indirect rule; positive/negative impacts of colonial rule in West Africa. EVALUATION at child 141. Record every question without inventing answers or marks. Any missing scheme objective must become a precise PARTIAL/UNRESOLVED coverage entry with a bounded follow-up. Government teaching must remain neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W02.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T2",
+        "GOV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
+    },
+    {
+      "id": "GOV-WK-T2-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "word/document.xml w:body children 149–176; exact label WEEK THREE; C14N SHA-256 0606f62b70ff5309010f52586899b06c38c949cf46f7eb97f9374f58d6c6e177",
+      "objective": "Index 2nd Term Week 3 from its complete source span. Read every objective, paragraph and exercise; map the scheme entry to exact objective-level coverage; retain source wording and distinguish the source's claims from verified historical/legal facts. Main sections: Advantages/disadvantages of colonial rule; comparison of British indirect rule and French assimilation; six-row comparison table at child 162; functions of the British colonial governor in West Africa. EVALUATION at child 172. Record every question without inventing answers or marks. Any missing scheme objective must become a precise PARTIAL/UNRESOLVED coverage entry with a bounded follow-up. Government teaching must remain neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W03.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T2",
+        "GOV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
+    },
+    {
+      "id": "GOV-WK-T2-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "word/document.xml w:body children 177–209; exact label WEEK FOUR; C14N SHA-256 d6f82017c91ef3cc580f63e9ad4922478bba1e7db520dd5d8774163571113aac",
+      "objective": "Index 2nd Term Week 4 from its complete source span. Read every objective, paragraph and exercise; map the scheme entry to exact objective-level coverage; retain source wording and distinguish the source's claims from verified historical/legal facts. Main sections: Nationalism; effects of nationalism in Nigeria/West Africa; key nationalist leaders and contributions. EVALUATION at child 205. Record every question without inventing answers or marks. Any missing scheme objective must become a precise PARTIAL/UNRESOLVED coverage entry with a bounded follow-up. Government teaching must remain neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W04.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T2",
+        "GOV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
+    },
+    {
+      "id": "GOV-WK-T2-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "word/document.xml w:body children 210–287; exact label WEEK FIVE; C14N SHA-256 d37f05d486499d940557f0e598b1a7c83101958108c50a73363e91b49bfb01c6",
+      "objective": "Index 2nd Term Week 5 from its complete source span. Read every objective, paragraph and exercise; map the scheme entry to exact objective-level coverage; retain source wording and distinguish the source's claims from verified historical/legal facts. Main sections: Clifford Constitution of 1922; features, merits and demerits; Richards Constitution features, merits and demerits; Macpherson Constitution 1951 features, merits and demerits. EVALUATION at child 278; £ Office Math object at child 232; superscript ordinals at children 237 and 274. Record every question without inventing answers or marks. Any missing scheme objective must become a precise PARTIAL/UNRESOLVED coverage entry with a bounded follow-up. Government teaching must remain neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W05.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T2",
+        "GOV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
+    },
+    {
+      "id": "GOV-WK-T2-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "word/document.xml w:body children 288–322; exact label WEEK SIX; C14N SHA-256 2d7358099b33a7fb3b26a5b27db09dd566cf0b01d340d47f0c1b3bf5b1d60206",
+      "objective": "Index 2nd Term Week 6 from its complete source span. Read every objective, paragraph and exercise; map the scheme entry to exact objective-level coverage; retain source wording and distinguish the source's claims from verified historical/legal facts. Main sections: Lyttleton Constitution of 1954; merits/demerits; 1958 Constitutional Conference. EVALUATION at child 318. Record every question without inventing answers or marks. Any missing scheme objective must become a precise PARTIAL/UNRESOLVED coverage entry with a bounded follow-up. Government teaching must remain neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W06.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T2",
+        "GOV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
+    },
+    {
+      "id": "GOV-WK-T2-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "word/document.xml w:body children 323–373; exact label WEEK SEVEN; C14N SHA-256 8f8ea27b63ac7fe82d26b05cd8c1d7cece77434d0694625d8a9962d7b84af987",
+      "objective": "Index 2nd Term Week 7 from its complete source span. Read every objective, paragraph and exercise; map the scheme entry to exact objective-level coverage; retain source wording and distinguish the source's claims from verified historical/legal facts. Main sections: Independence Constitution of 1960; features, merits and weaknesses; Republican Constitution of 1963; merits and demerits. EVALUATION at child 369. Record every question without inventing answers or marks. Any missing scheme objective must become a precise PARTIAL/UNRESOLVED coverage entry with a bounded follow-up. Government teaching must remain neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W07.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T2",
+        "GOV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
+    },
+    {
+      "id": "GOV-WK-T2-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "word/document.xml w:body children 374–417; exact label WEEK EIGHT; C14N SHA-256 e88704dbce633832d6a02893344cfe61bc6fb11e60f63801175b15868d99fbb4",
+      "objective": "Index 2nd Term Week 8 from its complete source span. Read every objective, paragraph and exercise; map the scheme entry to exact objective-level coverage; retain source wording and distinguish the source's claims from verified historical/legal facts. Main sections: Features, merits and demerits of the 1989 Constitution; features, advantages and demerits of the 1999 Constitution. EVALUATION at child 414. Record every question without inventing answers or marks. Any missing scheme objective must become a precise PARTIAL/UNRESOLVED coverage entry with a bounded follow-up. Government teaching must remain neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W08.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T2",
+        "GOV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
+    },
+    {
+      "id": "GOV-WK-T2-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "word/document.xml w:body children 418–429; exact label WEEK NINE; C14N SHA-256 c9c39d30a7b8b668a029afa490512afe3e525940fb3ce7ff507c96724b0051b5",
+      "objective": "Index 2nd Term Week 9 from its complete source span. Read every objective, paragraph and exercise; map the scheme entry to exact objective-level coverage; retain source wording and distinguish the source's claims from verified historical/legal facts. Main sections: Features of Nigerian federalism. No EVALUATION marker in this week. Record every question without inventing answers or marks. Any missing scheme objective must become a precise PARTIAL/UNRESOLVED coverage entry with a bounded follow-up. Government teaching must remain neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W09.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T2",
+        "GOV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
+    },
+    {
+      "id": "GOV-WK-T2-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "word/document.xml w:body children 430–446; exact label WEEK TEN; C14N SHA-256 a8734e97dc7f3f2f1fe9e5c17fee138cd4d328a34910d4f4a4bc0b79e4af0bdd",
+      "objective": "Index 2nd Term Week 10 from its complete source span. Read every objective, paragraph and exercise; map the scheme entry to exact objective-level coverage; retain source wording and distinguish the source's claims from verified historical/legal facts. Main sections: Problems of Nigerian federalism. EVALUATION at child 442. Record every question without inventing answers or marks. Any missing scheme objective must become a precise PARTIAL/UNRESOLVED coverage entry with a bounded follow-up. Government teaching must remain neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W10.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T2",
+        "GOV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
+    },
+    {
+      "id": "GOV-WK-T2-W11",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "word/document.xml w:body children 447–511; exact label WEEK ELEVEN; C14N SHA-256 1c7e59e69bc84d55a3c2b1cf86ef2003f5e9ea33add6a9844d71a2faf4ec3886",
+      "objective": "Index 2nd Term Week 11 from its complete source span. Read every objective, paragraph and exercise; map the scheme entry to exact objective-level coverage; retain source wording and distinguish the source's claims from verified historical/legal facts. Main sections: Development of political parties: NNDP, NYM, Action Group and NPC; objectives and achievements. EVALUATION at child 505. Record every question without inventing answers or marks. Any missing scheme objective must become a precise PARTIAL/UNRESOLVED coverage entry with a bounded follow-up. Government teaching must remain neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W11.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T2",
+        "GOV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
+    },
+    {
+      "id": "GOV-VIS-T2",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "word/document.xml body child 162 (comparison table); body child 232 (Office Math £); superscript runs at children 1, 44, 197, 237 and 274",
+      "objective": "Dispose the source's structural visual/symbol groups. The only table is a six-row, three-column comparison of indirect rule and the policy of assimilation at child 162; the first cell in each row is blank. Preserve both comparison columns and their row relationships. Preserve the native Office Math pound sign (£) at child 232 and the five superscript ordinal runs (2ND, 17th, 14th, 1st January, 1st April). The DOCX contains no images, drawings, text boxes or embedded media, so no image asset is warranted.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-VIS-T2.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T2",
+        "GOV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "The comparison table and source symbol/ordinal formatting each have a disposition; no image bytes or fabricated figure are committed, no asset is invented, and all source structure needed for faithful teaching is retained."
     }
   ],
   "review": {
-    "date": "2026-10-29",
-    "reviewed_master_sha": "4159336c7068d2235209221f5f14adc4986acec5",
-    "scope": "1st Term inventory executed from the supplied source; 2nd and 3rd Term inventories still unknown; no importer, compiler, database or test run; testing deferred.",
+    "date": "2026-11-12",
+    "reviewed_master_sha": "3655bd2238e48aea5998f5357466c8c459fc4b94",
+    "scope": "2nd Term Government source inventory completed from the verified original DOCX; 11 teaching weeks and source structure inventoried. No tests, importer, compiler, database or device checks run; testing deferred.",
     "source_archive": {
-      "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
+      "filename": "SSS 1-20260507T072431Z-3-001.zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-      "manifest_matches": 3,
+      "manifest_matches": 1,
       "mismatches": 0,
-      "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
+      "availability": "Library archive; composite archive and assigned Government 2nd Term member both SHA-256 verified; extracted member kept outside Git."
     }
   },
   "next_runnable": [
-    "GOV-INV-T2",
     "GOV-INV-T3",
     "GOV-TEST-PACKAGE",
     "GOV-PRE-T1",
@@ -892,6 +1447,21 @@
     "GOV-WK-T1-W09",
     "GOV-WK-T1-W10",
     "GOV-VIS-T1",
-    "GOV-LES-T1-W01-CORRECTED-WEEK"
+    "GOV-LES-T1-W01-CORRECTED-WEEK",
+    "GOV-PRE-T2",
+    "GOV-REV-T2",
+    "GOV-MARK-T2",
+    "GOV-WK-T2-W01",
+    "GOV-WK-T2-W02",
+    "GOV-WK-T2-W03",
+    "GOV-WK-T2-W04",
+    "GOV-WK-T2-W05",
+    "GOV-WK-T2-W06",
+    "GOV-WK-T2-W07",
+    "GOV-WK-T2-W08",
+    "GOV-WK-T2-W09",
+    "GOV-WK-T2-W10",
+    "GOV-WK-T2-W11",
+    "GOV-VIS-T2"
   ]
 }
