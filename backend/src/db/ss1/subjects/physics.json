@@ -10609,24 +10609,8 @@
       ],
       "evidence": [
         {
-          "locator": "scheme line 24 SHA-256 107871e4a26a044a789c101b4fd1778fddfe046ce599b8cdcbee1f19fece62cc - text 'Introduction to Physics; Familiarization of Physics Laboratory ' with one trailing space; label line 41 SHA-256 635789fb4e63974d59acfd3667c0b0fb9a4b935d51684c017ac9879e598deb6b 'WEEK ONE'; topic line 42 SHA-256 881f2b47c5f21c1a6b8a3bc5dcf436b72e452333901a13f5425b79fefb1a5228 'TOPIC: INTRODUCTION TO PHYSICS'; block lines 41-42 SHA-256 83874f915a29e76216de67e785b119cbb0b2276dceeca7ef1960c096611965f7; whole parsed body lines 41-191 SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc",
-          "explanation": "The parsed body label (line 41) and topic line (42) carry the first clause of the scheme row beyond case, and the body digest equals the parsed row identity recorded in docs/ss1/work/SS1-03/evidence/parsed_rows.json for source SS1-SRC-5c0149cda71d. The second clause of the same scheme row is COV-PHYS-T1-W01-OBJ-2."
-        },
-        {
-          "locator": "the CONTENT outline lines 43-46 SHA-256 ac93d7b92c3ad4a977994270ca07f35424cd8128424e0f3e77e6ea1c219b26e3; outline word line 43 SHA-256 65f23e22a9bfedda96929b3cfcb8b6d2fdd34a2e877ddb81f45d79ab05710e12 'CONTENT'; outline 1 line 44 SHA-256 882cfe276d8013520b5d28567747cff46e12e33db85ec5e7eaa3c97a380bfe7e 'MEANING OF PHYSICS'; outline 2 line 45 SHA-256 c7689f5260c05a86aadd18c670558b55ef3a900b13f91b1c0514e9a9935b58a0 'FUNDAMENTAL QUANTITIES AND UNITS'; outline 3 line 46 SHA-256 f6ae36b3d1bf920b83fd3c1facea37d5b33d8c3983067597aecf3a1dc4185b5f 'DIMENSIONS OF PHYSICAL QUANTITIES'",
-          "explanation": "The week declares three content headings of its own. This task indexes them as separate objectives instead of folding them into the single scheme clause: line 44 becomes OBJ-1, line 45 becomes OBJ-3 to OBJ-5, and line 46 becomes OBJ-6 to OBJ-9."
-        },
-        {
-          "locator": "meaning block lines 48-59 SHA-256 8c1009407e3c51833d1414d142d967af80ee03aaac65a5a175efefa210e1e6ff; heading line 48 SHA-256 882cfe276d8013520b5d28567747cff46e12e33db85ec5e7eaa3c97a380bfe7e - identical string to line 44; definition prose lines 49-53 SHA-256 cd703c258fa1e02bba9d4e584284dbcdc0af3a73c3fe2de47f32604c8a6b34cc; first definition line 49 SHA-256 9f74776a62ab3bb66383b88204dca8c5c4347e99a265b89026c0e5f37f1918f4; branches lead line 55 SHA-256 fcf9c65f454e589dca0e0fe8b65b25f21f31355335e78dd1930e9b311d0306b7; Classical Physics line 56 SHA-256 7c1931f1fa2114f2418c98716c1c7c3cc9244541698fed44928aec1a55cbdfed; Modern Physics line 57 SHA-256 ccda3c88ac45018821c7cf38b5ebdbfb61992c7f9bbd85de8fd16bde35a51c01; other fields line 59 SHA-256 db0fb3addb3a9ee74f30f77cb07a27968c018d5904177c3aceb62ec84213ea2c",
-          "explanation": "Objective-level teaching is present: Physics is defined at line 49 and described at 49-53; the two main branches are named and described at 55-57 (Classical Physics as mechanics, heat, optics, wave and sound, electricity and magnetism; Modern Physics as the aspects of matter, energy and their relations at atomic and sub-atomic levels); five further fields are listed at line 59. Nothing is inferred and no source wording is corrected."
-        },
-        {
-          "locator": "backend/src/db/ss1/subjects/physics.json lessons[] length 0; importer not run",
-          "explanation": "No lesson exists for this objective and the importer has not been run, so the source teaching has nothing to deliver. PARTIAL: taught in the source at objective level, not deliverable."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; body SHA-256 408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26; practice Q01–Q20.",
-          "explanation": "Student supplement covers the source-taught objective and supplies explicit derivations where the extracted source leaves formula operands blank. Laboratory familiarisation, scientific-method assessment and other source gaps remain separate unresolved items."
+          "locator": "PDF p.3: Physics definition and branches; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week One body SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc.",
+          "explanation": "The lesson defines Physics and teaches the classical/modern branches and applications. The source paragraph is visually present; no missing text is inferred."
         }
       ]
     },
@@ -10635,24 +10619,14 @@
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Familiarization of Physics Laboratory (scheme Week 1, second clause of line 24)",
       "objective_locator": "word-extractor 1.0.4 getBody() scheme line 24; no teaching lines anywhere in the extract",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W01-LABORATORY-FAMILIARISATION"
+      ],
       "evidence": [
         {
-          "locator": "scheme line 24 SHA-256 107871e4a26a044a789c101b4fd1778fddfe046ce599b8cdcbee1f19fece62cc - the text after the semicolon is 'Familiarization of Physics Laboratory ' (one trailing space)",
-          "explanation": "The scheme names this objective for Week 1 alongside Introduction to Physics, so the contract requires the scheme objective to be mapped in coverage."
-        },
-        {
-          "locator": "search of all 1288 extracted lines for 'laborator': one occurrence, the scheme row itself line 24 SHA-256 107871e4a26a044a789c101b4fd1778fddfe046ce599b8cdcbee1f19fece62cc; search for 'familiar': one occurrence, line 24; the parsed WEEK ONE body (lines 41-191, SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc) contains neither string; 'apparatus' occurs once in the document, at line 1234 inside WEEK TEN",
-          "explanation": "UNRESOLVED: the objective has no teaching in the 1st Term source. No laboratory, apparatus, instrument, safety or workshop teaching exists in Week 1. Nothing is invented to fill the gap."
-        },
-        {
-          "locator": "unmerged PR #71 head b5ced7ebb0efe22df2351baa140266fbf40cbf41, physics.json blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3, entry PHYS-1-001 objective_text 'Introduction to physics; fundamental quantities, units and dimensions'",
-          "explanation": "The branch records the same Week 1 objective and drops the laboratory clause, so the gap is an unmapped scheme objective rather than a new reading of this source. Reported for PHYS-PORT-D1-COV-T1 to reconcile."
-        },
-        {
-          "locator": "PHYS-LES-T1-W01-LABORATORY (PENDING), PHYS-FACT-T1-W01-SCOPE (BLOCKED) and open item PHYSICS-T1-W01-LABORATORY",
-          "explanation": "The gap becomes a bounded supplement task for the named uncovered objective. This indexing task authors no lesson content and asserts no laboratory curriculum beyond the scheme line."
+          "locator": "Scheme line 24 names 'Familiarization of Physics Laboratory'; Week One body pages 2–6 contains no laboratory teaching; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week One body SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc.",
+          "explanation": "The independent laboratory-familiarisation supplement now covers the scheme clause. It is a proposed teaching supplement, not source wording; school-specific equipment and emergency locations require teacher confirmation."
         }
       ]
     },
@@ -10667,24 +10641,8 @@
       ],
       "evidence": [
         {
-          "locator": "heading line 65 SHA-256 ae1a81ed1b1d9139f9038cad5e3f8c6e088c84afbc50eab6715795e1f45ba49e 'FUNDAMENTAL QUANTITIES AND UNIT'; teaching block lines 65-81 SHA-256 7f4d63db3ce5d8c6bab215c00851d1ee2c23be853de062ce1869fe2a273cfd7b; systems of units line 66 SHA-256 9c1bfa75da604ed780dd6b119b0d2e08987716ae0ce9b87a0af9142001b49400; division line 68 SHA-256 db4a2c01384439209facb273023410fbfbf95a12f7f078136b45976c1e121b73; definitions lines 70-72 SHA-256 3da53e529ee2eb6b05b900acb96cec936914cdcc7897dbcd70a8d0f6e46238de; fundamental units line 74 SHA-256 f26c0098bfda0aed0db2d89dc619f89a63d2a46c42270f4516879e83c6169c98; three quantities line 75 SHA-256 970dcf54436c76a351d78ae54981b4f77aafe2a61e489f5bf45491dc14e0515f; length, mass, time lines 77-81 SHA-256 8d15bbe1d35f07f9a689083306a5373afda07914fbf1784cce051cd973e3e9a1",
-          "explanation": "Objective-level teaching is present: measurement and the FPS, CGS, MKS and SI systems at line 66; the fundamental/derived division at 68; fundamental quantities defined at 70-72; fundamental units defined at 74; length, mass and time defined individually at 77-81."
-        },
-        {
-          "locator": "caption line 83 SHA-256 67b0034f4e12a7f5442640306d8bae7ff54f53b1b8df267f65bc17011b49d267 'Table 2.0 Fundamental Quantities and Units '; header line 84 SHA-256 e5d5beee31f960a96611fb4e21005d955dd6b347ed5915b8b3e22eb3d6bf1a4a; rows lines 85-91 SHA-256 9016c5c82aa581890bd006bacbc349d7cadbbc37923b62cd440f72bcebf276fe; whole table lines 83-91 SHA-256 ad885b0650c0325ef4667d1ee3ed4050ae6d6a8ed5ecd8ff31a8f848f41c5ce3",
-          "explanation": "Seven fundamental quantities are tabulated with unit and abbreviation: Length/Metre/M, Time/Second/S, Mass/Kilogram/Kg, Electric current/Ampere/A, Temperature/Kelvin/K, Amount of substance/Mole/mol, Luminous intensity/Candela/Cd. Four abbreviations are not the SI symbols; recorded in PHYSICS-T1-W01-FACT-DEFECTS and left uncorrected. getBody() returns tab-separated lines only: no cell boundaries, borders or column widths survive, so a table layout is an asset decision (PHYS-VIS-T1)."
-        },
-        {
-          "locator": "the three-quantity statement line 75 SHA-256 970dcf54436c76a351d78ae54981b4f77aafe2a61e489f5bf45491dc14e0515f against the seven table rows lines 85-91 SHA-256 9016c5c82aa581890bd006bacbc349d7cadbbc37923b62cd440f72bcebf276fe",
-          "explanation": "Line 75 gives three most important basic quantities while Table 2.0 lists seven. Both are quoted as found; the difference is recorded rather than reconciled."
-        },
-        {
-          "locator": "backend/src/db/ss1/subjects/physics.json lessons[] length 0; importer not run",
-          "explanation": "No lesson exists for this objective and the importer has not been run, so the source teaching has nothing to deliver. PARTIAL: taught in the source at objective level, not deliverable."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; body SHA-256 408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26; practice Q01–Q20.",
-          "explanation": "Student supplement covers the source-taught objective and supplies explicit derivations where the extracted source leaves formula operands blank. Laboratory familiarisation, scientific-method assessment and other source gaps remain separate unresolved items."
+          "locator": "PDF p.4 Table 2.0 and p.5; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week One body SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc.",
+          "explanation": "The source renders the seven SI base quantities and units. Its table uses incorrect case-sensitive symbols for metre, second, kilogram and candela; the lesson gives the correct SI symbols."
         }
       ]
     },
@@ -10699,20 +10657,8 @@
       ],
       "evidence": [
         {
-          "locator": "heading and definition lines 93-94 SHA-256 890dee540fff19e6380fd089553f3f35f2dad5dd8aeeea509cd86045dd04172d; caption line 96 SHA-256 562b11ec7f79b59e5eaa012d01e18854cc51ea5499a4682f99061069f096b307 'Table 2.1 derived quantities and units'; header line 97 SHA-256 39ede1b3dda1ead20425e2a5ea04ec36944313ccadd676562ef9f2bfa1479035; rows lines 98-103 SHA-256 9f3d6f56eb1003224cf32474538bae13fe452cab7f5f62303a610df3b2f37023; whole table lines 96-103 SHA-256 1df33ffc6d9230a526123ca86ece257f3df272fd76491ee6537517b9ef99b603; block lines 93-105 SHA-256 36ed7e4af2509e03137dec61f7bd4f6af52567779616a65633742a1ead2cf687",
-          "explanation": "Derived quantities are defined at 93-94 and tabulated at 98-103 as Area, Volume, Density, Velocity, Acceleration and Force. The Derivation cell is empty for Density (line 100), Velocity (101) and Acceleration (102), so the derivation of three of the six units is not taught; recorded in PHYSICS-T1-W01-FACT-DEFECTS."
-        },
-        {
-          "locator": "Area row line 98 SHA-256 0643a2f094a9951326c7ccdcae0dd22aa2453dcf6f45c9c0d5066a523fbf95c5; Volume row line 99 SHA-256 a572316bb909a6a8d2678c15edf31c3612503a720d7dfacd45c66d5456b44e07; Density row line 100 SHA-256 27384a9dbdcf03cd6b208a350724e0dc20923118d7cc2aacf2dc6e6bdc14294c; Velocity row line 101 SHA-256 a9a886d58f01b6324e0dc9980d2f70b858a11041b37f56505725dcbb235fb3a0; Acceleration row line 102 SHA-256 2d0f671cc04b1bb59da0255a89d4db7146ba423d4ae83b32cebe35018f9b49ec; Force row line 103 SHA-256 c7ef7b1f7a04846aea74a9cfb32683e21fac0d89342e09735b98ee0aac34fdf7; the units paragraph line 105 SHA-256 ab70217b18eda07c99f5667da8f1abefcdd08d863bb1b474bae9c0f0484f6310",
-          "explanation": "Units are printed as m2, m3, Kg.m-3, m.s-1, m.s-2 and Newton (N), and line 105 explains the volume and density units in words. Every exponent reaches the extract as ordinary digits with an ASCII hyphen, so the text is quoted unchanged and the notation question is raised in PHYSICS-T1-W01-NOTATION-LOSS. Line 99 reads 'Length × breath × height' after line 98 'Length × breadth'."
-        },
-        {
-          "locator": "backend/src/db/ss1/subjects/physics.json lessons[] length 0; importer not run",
-          "explanation": "No lesson exists for this objective and the importer has not been run, so the source teaching has nothing to deliver. PARTIAL: taught in the source at objective level, not deliverable."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; body SHA-256 408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26; practice Q01–Q20.",
-          "explanation": "Student supplement covers the source-taught objective and supplies explicit derivations where the extracted source leaves formula operands blank. Laboratory familiarisation, scientific-method assessment and other source gaps remain separate unresolved items."
+          "locator": "PDF p.4 Table 2.1; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week One body SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc.",
+          "explanation": "The source table's equation cells render in the PDF; the earlier text-only blank-cell diagnosis was an extraction limitation. The lesson teaches derived quantities and their units with complete typed examples."
         }
       ]
     },
@@ -10727,20 +10673,8 @@
       ],
       "evidence": [
         {
-          "locator": "title and header lines 107-108 SHA-256 125ca8099c9699ee5780f89bbe42ded59c30df6bae13ff11f92ac2a65d264097; the five rows lines 109-113 SHA-256 7cf288d81280a4d3520cffbe16031616f9e1e20f1be7aafbabb0d0fe728bf821; whole table lines 107-113 SHA-256 304a9a5d8cd35aabef55ca0d3e9fe0d4886b1b39c03a4df2b93473900e6e4de4",
-          "explanation": "Five numbered differences between fundamental and derived units are taught at 109-113 under the two-column header at line 108."
-        },
-        {
-          "locator": "title and header lines 115-116 SHA-256 fa1b5e08d1808d80470c943b9632aba2a047632fb33c7d663ab13061e513e969; the rows lines 117-121 SHA-256 1c9c140628657ba813044edf32414717041806371a019cdd405c1b7e1385fee1; whole table lines 115-121 SHA-256 13c27c13265f3784dc30c50798a518f24c71eea7ec50659a1ce16dbca64e5847",
-          "explanation": "A second comparison table separates fundamental from derived quantities at 117-121. Both tables survive only as tab-separated text with no cell structure; wording is quoted, not corrected."
-        },
-        {
-          "locator": "backend/src/db/ss1/subjects/physics.json lessons[] length 0; importer not run",
-          "explanation": "No lesson exists for this objective and the importer has not been run, so the source teaching has nothing to deliver. PARTIAL: taught in the source at objective level, not deliverable."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; body SHA-256 408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26; practice Q01–Q20.",
-          "explanation": "Student supplement covers the source-taught objective and supplies explicit derivations where the extracted source leaves formula operands blank. Laboratory familiarisation, scientific-method assessment and other source gaps remain separate unresolved items."
+          "locator": "PDF p.4 comparison tables; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week One body SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc.",
+          "explanation": "The source compares fundamental and derived units/quantities. The lesson gives the distinction without repeating the source's incomplete three-versus-seven wording."
         }
       ]
     },
@@ -10755,20 +10689,8 @@
       ],
       "evidence": [
         {
-          "locator": "heading line 123 SHA-256 f6ae36b3d1bf920b83fd3c1facea37d5b33d8c3983067597aecf3a1dc4185b5f - the identical string to line 46; definition line 124 SHA-256 eaee16db4a7a743d57b699a311ced3ba5fe59879b1b481506ca9d36a9cac53b1; heading and definition lines 123-124 SHA-256 3fc77066c9b5f6a25d969779151bb3a6fe8dca0c56866085e4e77c3127c03a11",
-          "explanation": "A dimension is defined at line 124 as the way a physical quantity relates to mass, length and time, with M, L and T assigned to those units. Because lines 44/48 and 46/123 are pairs of identical strings, neither heading is a unique anchor; a classify_marker rule must not bind either one alone. Reported for PHYS-RULE-T1-REVISION-SCHEME and later rule workers."
-        },
-        {
-          "locator": "caption line 125 SHA-256 bed3cc10b09c1357c41290f11eec2a1a192c619ad45aaf021c2297b6cc5e8cda 'Table 2.2'; header line 126 SHA-256 0194ac7fc2af44beaf9ca9e257db3c467b1d798c147b5aa364be4ba3eec1df3a; rows lines 127-129 SHA-256 83731b280683ab97a72dd40437e5e4517e5c81bd7204fcbd640c18641d0a4461; whole table lines 125-129 SHA-256 7f2de137a2ca9b9938c4cc2465c7f5d143170ea6bdf156065582cbae92ae3f8f",
-          "explanation": "Three rows: Mass/Kilogramme, kg/M; Length/Metre, m/L; and Time with an empty Unit cell/T. The missing unit is recorded in PHYSICS-T1-W01-FACT-DEFECTS. The caption is the bare 'Table 2.2' with no title, unlike Tables 2.0 and 2.1."
-        },
-        {
-          "locator": "backend/src/db/ss1/subjects/physics.json lessons[] length 0; importer not run",
-          "explanation": "No lesson exists for this objective and the importer has not been run, so the source teaching has nothing to deliver. PARTIAL: taught in the source at objective level, not deliverable."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; body SHA-256 408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26; practice Q01–Q20.",
-          "explanation": "Student supplement covers the source-taught objective and supplies explicit derivations where the extracted source leaves formula operands blank. Laboratory familiarisation, scientific-method assessment and other source gaps remain separate unresolved items."
+          "locator": "PDF p.4 Table 2.2 and p.5 Table 2.3; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week One body SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc.",
+          "explanation": "The rendered source shows the dimensions table, including the time unit; the earlier empty-cell claim from text extraction was not a source-page defect. The lesson explains M, L and T and the dimensional formulae."
         }
       ]
     },
@@ -10783,24 +10705,8 @@
       ],
       "evidence": [
         {
-          "locator": "heading line 131 SHA-256 750150956658094ac4bfe07c1030779495f817d60cd1ad02a026a8ca5a1a727c; density block lines 132-134 SHA-256 0800008143ad95620af8e5f949a2493a8786aa0d47f8a68875ed28fbe824fb19; density definition line 132 SHA-256 6742522233933a5c23c47c7a167c2300f460029f6600c3422310f6418f52950b; the equation line line 133 SHA-256 34a75ea9ad17b9920de0eaddc65f6dffdaf2ddd68140f42b38bcdae08039b29e; the continuation line line 134 SHA-256 6fca6169bbaa4c0d047a1cbe63d82e29685a0121ddfdd68f72ec2d990ac2f47c",
-          "explanation": "UNRESOLVED: line 133 ends with an equals sign and whitespace and line 134 is fifty-four spaces followed by an equals sign, so neither operand of the dimensional equation of density reaches the extract. Only the words mass and volume at line 132 survive."
-        },
-        {
-          "locator": "velocity block lines 136-137 SHA-256 c94b757c50c02a0d8c497943013807688eb21ac5c1b4b984f7c2cb4922179186; acceleration block lines 140-141 SHA-256 216e9dc14588cd34c7b68f673b1d6744c74e0ce3d22a9690eb76e3a5ad5df816; whole heading block lines 131-141 SHA-256 4df785308606c86cfa907b21a2193a579e4ae5c79cfb14258e6217ec9cf186cb",
-          "explanation": "The same shape: line 137 reads \"Velocity =   = \" and line 141 \"Acceleration =    = \". The written definitions at 136 and 140 survive; the equations themselves do not."
-        },
-        {
-          "locator": "byte scan of the verified member file (8,479,232 bytes, SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206): 0 occurrences of the OLE class names Equation.3 and Equation.DS4.0 and of the MTEF equation payload in single-byte or UTF-16 form, 0 EQ field instructions, 0 equation-editor CLSID bytes; 76 complete embedded PNG images (76 PNG signatures with 76 matching IEND chunks) and 4 JPEG streams",
-          "explanation": "The missing operands are therefore not equation objects that extraction dropped: the source contains no equation objects at all. They are either blank as authored or carried by one of the embedded pictures, which getBody() cannot emit. Which of the two cannot be decided from the body text, so the objective is recorded UNRESOLVED instead of asserted either way. The importer has no legacy .doc image or equation path: backend/src/db/ingestTopics.ts:299-302 returns getBody() directly, and equation recovery at :289-295 applies only to .docx JSS3 Mathematics sources."
-        },
-        {
-          "locator": "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS (PENDING), PHYSICS-T1-W01-DIMENSIONAL-GAPS, PHYS-VIS-T1 (PENDING) and PHYS-OWNER-EXTRACTION-STRATEGY (BLOCKED)",
-          "explanation": "The gap becomes a bounded supplement task. The term-wide figure inventory and the extraction-strategy decision stay with their existing owners; no dimensional equation is invented and presented as source teaching."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; body SHA-256 408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26; practice Q01–Q20.",
-          "explanation": "Student supplement covers the source-taught objective and supplies explicit derivations where the extracted source leaves formula operands blank. Laboratory familiarisation, scientific-method assessment and other source gaps remain separate unresolved items."
+          "locator": "PDF p.5 dimensional-analysis equations for density, velocity and acceleration; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week One body SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc.",
+          "explanation": "The original equation images render with complete formulae. The lesson reproduces the derivations as clean typed equations and practice."
         }
       ]
     },
@@ -10815,16 +10721,8 @@
       ],
       "evidence": [
         {
-          "locator": "the working lines 143-147 SHA-256 600ab9205133e7108dd43dbaa5c62095c2bd2884efe3d6b91ded1bfcb153c983; the unit line line 145 SHA-256 8adb824c121e694693ea1634b812630f8035114f57c6fc19e8fa9690c380cb6d; the substitution line line 146 SHA-256 f91280026e8a1df8b4d2344e5038a5f79f625db436e7bc3542621be0f1653ace",
-          "explanation": "Unlike the three quantities at OBJ-7, the force working is complete in the body text: the definition at 143, the product of dimensions at 144, then 145 to 147 ending at MLT-2. The two multiplication signs at lines 145-146 are U+00D7 and are preserved, while line 144 spells the same product with the ASCII letter x. The exponent minus is an ASCII hyphen here (PHYSICS-T1-W01-NOTATION-LOSS) and line 146 uses a bare letter m where line 145 uses kg."
-        },
-        {
-          "locator": "backend/src/db/ss1/subjects/physics.json lessons[] length 0; importer not run",
-          "explanation": "No lesson exists for this objective and the importer has not been run, so the source teaching has nothing to deliver. PARTIAL: taught in the source at objective level, not deliverable."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; body SHA-256 408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26; practice Q01–Q20.",
-          "explanation": "Student supplement covers the source-taught objective and supplies explicit derivations where the extracted source leaves formula operands blank. Laboratory familiarisation, scientific-method assessment and other source gaps remain separate unresolved items."
+          "locator": "PDF p.5 force dimensional-analysis working; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week One body SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc.",
+          "explanation": "The source formula renders; the lesson derives force dimensions from F=ma."
         }
       ]
     },
@@ -10839,20 +10737,8 @@
       ],
       "evidence": [
         {
-          "locator": "lead-in line 149 SHA-256 0dba5acd8acb8804ba52473100e171668caced4e4294c902b415e0a655133da0; caption line 151 SHA-256 8d2a1486eb22eff787961c1a05e0992e4a17400f09578c037fd3568f595d210e 'Table 2.3'; header line 152 SHA-256 e9825e52d0bd353d37faf0eea767ad81c0a740166a23ff44c3148257e6e7fe62; rows lines 153-158 SHA-256 fdc2b192cae5ed2c419d74989bfb019e7b63ee453c37909f1e0bf5f46f745fdb; whole table lines 151-158 SHA-256 f8f5df62fb51783e416d088e66ecf7ab50e2cfd557d03e55d528943a30dd2de4; block lines 149-158 SHA-256 0d23da4fed9a0e1a6714ef93d9a29f4dd1b21fc67be81e34199e8610c1188d28",
-          "explanation": "Six rows: Velocity, Acceleration, Force, Momentum, Density and Pressure, each with a unit and a dimension. Read as flattened text these are LT-1, LT-2, MLT-2, MLT-1, ML-3 and ML-1 T-2; restoring them as exponents is a rendering decision owned by PHYS-OWNER-EXTRACTION-STRATEGY, so the text is quoted unchanged. Line 155 gives the force unit as 'N(ma)' and line 158 prints 'ML-1 T-2' with an interior space; both are recorded in PHYSICS-T1-W01-SOURCE-DEFECTS."
-        },
-        {
-          "locator": "Momentum row line 156 SHA-256 6c553c5b08f073ffe5ef6cb286f26e57d8a088f71382a8586d37a872a4683e7c; Density row line 157 SHA-256 d0c243aec85c83d147028fd2a3428aa838e4e57d663e30fb03b72a04fec26646",
-          "explanation": "Momentum is tabulated although the quantity is never defined in Week 1; the word then appears in this week only inside assessment text at lines 173 and 187. Recorded, not supplied."
-        },
-        {
-          "locator": "backend/src/db/ss1/subjects/physics.json lessons[] length 0; importer not run",
-          "explanation": "No lesson exists for this objective and the importer has not been run, so the source teaching has nothing to deliver. PARTIAL: taught in the source at objective level, not deliverable."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS; body SHA-256 408ce5f3ed0d61d018a09598d85dfed7fb73ffda0b558cf14b181af098007a26; practice Q01–Q20.",
-          "explanation": "Student supplement covers the source-taught objective and supplies explicit derivations where the extracted source leaves formula operands blank. Laboratory familiarisation, scientific-method assessment and other source gaps remain separate unresolved items."
+          "locator": "PDF pp.5–6 Table 2.3; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week One body SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc.",
+          "explanation": "The rendered table includes the dimensional formulae. The lesson provides a clean summary and keyed practice."
         }
       ]
     },
@@ -10861,20 +10747,15 @@
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "First EVALUATION of Week 1: define Physics and state the steps of the scientific method",
       "objective_locator": "word-extractor 1.0.4 getBody() lines 61-63",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS",
+        "SUP-SS1-PHYSICS-T1-W01-SCIENTIFIC-METHOD"
+      ],
       "evidence": [
         {
-          "locator": "heading line 61 SHA-256 d618ddb656d0ccb554c00bf68091953b55a50bbdfd5b8441fd14724b218b08da 'EVALUATION' - the identical string to line 160; block lines 61-63 SHA-256 13fbd968dc602854a2b4c11d5f460c86d6fa1468ab3b3953e29a15b9657d7dbb; question 1 line 62 SHA-256 b89a65bddd36c70ef1a2dc49eb9ba1cfeb140fe267f27a725406be9c05d403dc; question 2 line 63 SHA-256 b7298029e791e7dac2a1bc43e6c32caf743f32c2471adaf58863166ccdc6344e",
-          "explanation": "UNRESOLVED: question 1 is answered by the teaching at 48-59, but question 2 - printed as 'State the step involved in scientific method?' in the singular and without an article - asks for steps Week 1 never teaches. Neither question is numbered and neither carries an answer key."
-        },
-        {
-          "locator": "search of all 1288 extracted lines for 'scientific method': one occurrence, the question itself line 63 SHA-256 b7298029e791e7dac2a1bc43e6c32caf743f32c2471adaf58863166ccdc6344e",
-          "explanation": "The scientific method is not taught anywhere in the 1st Term Physics source, so the evaluation item has no source content to answer it from. No steps are invented. Put to PHYS-FACT-T1-W01-SCOPE and PHYS-LES-T1-W01-KEY-ASSESSMENT."
-        },
-        {
-          "locator": "the week's own CONTENT outline lines 43-46 SHA-256 ac93d7b92c3ad4a977994270ca07f35424cd8128424e0f3e77e6ea1c219b26e3; open item PHYSICS-T1-W01-SCIENTIFIC-METHOD",
-          "explanation": "The outline does not name the scientific method either, so the question is not an artefact of a heading the week did teach. It is recorded as an open item plus a keyed-assessment supplement."
+          "locator": "PDF p.3 EVALUATION asks for the meaning of Physics and steps of the scientific method; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week One body SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc.",
+          "explanation": "The Physics definition is taught in the main lesson. The separate scientific-method supplement supplies the requested steps because the source asks the question but does not teach them. The key is proposed and approval remains pending."
         }
       ]
     },
@@ -10883,20 +10764,14 @@
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "Second EVALUATION of Week 1: state three dimensions and classify fifteen named quantities as fundamental or derived",
       "objective_locator": "word-extractor 1.0.4 getBody() lines 160-163",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS"
+      ],
       "evidence": [
         {
-          "locator": "heading line 160 SHA-256 d618ddb656d0ccb554c00bf68091953b55a50bbdfd5b8441fd14724b218b08da; block lines 160-163 SHA-256 f36ebd540908d5a7d2f543a394513fa0ca5a22a5b4fca9a68fb2e613e9822ed1; question 1 lines 161-162 SHA-256 873edac1a4ee1e5e70eac553a599bcb517c7da4fe8183fa89a5fa8660b22528a; question 2 line 163 SHA-256 f2c91fcee123e30d6cfe54474e5017095a62a3042ba2fd832d4c6ef0e046dee6",
-          "explanation": "Question 1 (acceleration, pressure, density) is answerable from Table 2.3. Question 2 lists Velocity, mass, weight, length, volume, density, torque, speed, acceleration, power, energy, temperature, heat capacity, electric current and relative density. Seven of those fifteen are not defined or classified anywhere in the Week 1 teaching (lines 44-158): weight, torque, speed, power, energy, heat capacity and relative density. The other eight are taught - mass, length, temperature and electric current as fundamental quantities (lines 75 and 77-81 and Table 2.0 rows 85-91) and velocity, volume, density and acceleration as derived quantities (Table 2.1 rows 98-103). Energy does occur at lines 49 and 57, but inside the description of what Physics studies rather than as a classified quantity."
-        },
-        {
-          "locator": "taught examples: Table 2.0 rows lines 85-91 SHA-256 9016c5c82aa581890bd006bacbc349d7cadbbc37923b62cd440f72bcebf276fe and Table 2.1 rows lines 98-103 SHA-256 9f3d6f56eb1003224cf32474538bae13fe452cab7f5f62303a610df3b2f37023. Whole-extract searches: 'weight' is taught from WEEK TWO, the Week 2 topic line line 195 SHA-256 ffcac156af7c64c32017fa76f36148314c5a1921db8f97d79f9ca2f3b9aaf0d5; 'relative density' from WEEK SEVEN, the Week 7 topic line line 883 SHA-256 3ebc058fb1c544b11bce706100db4ba425378d7bfa1160bd996a252b8166fa98; 'energy' as a taught topic from WEEK 9, the Week 9 topic line line 1096 SHA-256 da29608abd190a7199cefdd095cd68e13e118658bc45d26a124233c3df7e394b; 'torque' and 'heat capacity' occur at line 163 only; 'speed' occurs in Week 1 at line 163 only and is taught in WEEK FIVE AND SIX from line 590; 'power' in Week 1 occurs only at lines 163 and 173",
-          "explanation": "UNRESOLVED: the classification reaches beyond the week. The seven untaught names are listed with the cross-week or assessment-only locators above. The classification itself is not supplied here."
-        },
-        {
-          "locator": "PHYS-FACT-T1-W01-SCOPE (BLOCKED) and PHYS-LES-T1-W01-KEY-ASSESSMENT (PENDING)",
-          "explanation": "Whether the eight are expected of a Week 1 student, and whether a key is authored for them, is an expert decision rather than an indexing outcome. No classification is invented."
+          "locator": "PDF p.6 EVALUATION asks for dimensions and classification of fifteen quantities; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week One body SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc.",
+          "explanation": "The main lesson teaches the dimensions and base/derived classification. Proposed teacher key is in PHYS-LES-T1-W01-KEY-ASSESSMENT.md; one defective weekend item is separately flagged."
         }
       ]
     },
@@ -10906,17 +10781,11 @@
       "objective": "Week 1 reading assignment: the named textbook and page range",
       "objective_locator": "word-extractor 1.0.4 getBody() lines 165-166",
       "status": "PARTIAL",
-      "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc"
-      ],
+      "lesson_ids": [],
       "evidence": [
         {
-          "locator": "the instruction lines 165-166 SHA-256 6f24082236e18d647ee4fa89fd80c69e64452c4d91c64b00b1602e29954a9787",
-          "explanation": "The instruction names 'New school physics by M.W.Anyakoha, Prof. Pg1-2'. It matches the first title in the scheme reference list (lines 36-38, COV-PHYS-T1-REFERENCES) with different title case, the author initials typed differently and 'Prof.' placed after the name. The assigned pages are outside this source, so none of the reading is teachable from this package; no edition, publisher or year is stated and none is added."
-        },
-        {
-          "locator": "backend/src/db/ss1/subjects/physics.json lessons[] length 0; importer not run",
-          "explanation": "No lesson exists for this objective and the importer has not been run, so the source teaching has nothing to deliver. PARTIAL: taught in the source at objective level, not deliverable."
+          "locator": "PDF p.6 reading assignment: M.W. Anyakoha, New School Physics, pages 1–2; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week One body SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc.",
+          "explanation": "The reference is recorded, but the cited textbook pages are not in the repository and cannot be independently mapped or checked."
         }
       ]
     },
@@ -10925,16 +10794,14 @@
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "WEEKEND ASSIGNMENT: seven objective questions with four options each",
       "objective_locator": "word-extractor 1.0.4 getBody() lines 168-182",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS"
+      ],
       "evidence": [
         {
-          "locator": "heading line 168 SHA-256 50f52dd3fa11fa4e06f6668bc2461e71a7d989bf4462b8bd6bc676748fde1b9d; item 1 lines 169-170 SHA-256 72773493e7c920c051275bdc5afb0a0c49a119c56946a7a0ae38c88c6f9d46f7; item 2 line 171 SHA-256 d86ca691e2b245daa682b56f2f8d892754e73b1d096b6f7661dcd582d95e0c96; item 3 lines 172-173 SHA-256 8684140a383205f0749ba4080a9c12f4277edfce5f5ccb35b5843dc4f6cdb897; item 4 lines 174-175 SHA-256 66c69e6e379e5c3bc6138e710c85505ea556ad815a961c1ba68b8ca9cda115fd; item 5 lines 176-177 SHA-256 4236fdcb98a8fd303d46c5d758628e486ec1055054fdbbfd18cf59c919a92b70; item 6 lines 178-179 SHA-256 b7b02e100c89144879174bc9df987feaaec9f95e077db71495767c03a2f07346; item 7 lines 180-182 SHA-256 2ddb7a4809e264239c107d2f7b4a7cd0e30f9fab2f3fbbf08dd1f926315178c7; whole block lines 168-182 SHA-256 f13123b9c03651004f38dfa7af99fe84845a34bc644a27d54f1d1f20ddb48b85",
-          "explanation": "Seven multiple-choice questions of four options each. No option is marked, no worked answer appears, and no mark allocation exists anywhere in the parsed body, so the block has no deliverable key. UNRESOLVED as an assessment objective: the questions are fully present and the answers are not."
-        },
-        {
-          "locator": "item 2, printed with U+2212 minus signs in Kgm−3 and Nm−2 line 171 SHA-256 d86ca691e2b245daa682b56f2f8d892754e73b1d096b6f7661dcd582d95e0c96; the item 3 options line 173 SHA-256 fa473f80bf8272067d91ae49576c2bebe1fe3730caae9ffdcf3dd73c454f33a6; the item 4 options line 175 SHA-256 7c583896d9b1d19f3ac70bca42ef6a30f354d0257cf8ce49020f422d94af28f8; the item 5 options line 177 SHA-256 1408a8aa6bece0551d7f0e77a3a8f680b42ce8d81e4427100ef51800eed3637a. Whole-extract searches inside the parsed body: 'thrust' at lines 170 and 181 only; 'ohm' at line 175 only; 'impulse' at lines 177, 189 and 190; 'tension' at line 177 and line 389 inside WEEK THREE; 'work' at line 173 only. Outside Week 1: thrust is used from line 1039, work is a WEEK 9 topic at the Week 9 topic line line 1096 SHA-256 da29608abd190a7199cefdd095cd68e13e118658bc45d26a124233c3df7e394b and upthrust is taught from WEEK 8, the Week 8 topic line line 987 SHA-256 19b697339460bb4a9bed98af3509404ef01fcc63386c47a25cc11441f3f0d79b",
-          "explanation": "Five of the seven questions - items 1, 3, 4, 5 and 7 - turn on a quantity or unit that Week 1 never teaches: Thrust (items 1 and 7), energy, work and momentum as alternatives (item 3), the ohm (item 4) and tension, impulse and upthrust (item 5). Items 2 and 6 are answerable from Tables 2.0 and 2.3. Recorded with their locators; no option is marked correct here."
+          "locator": "PDF p.6 WEEKEND ASSIGNMENT, seven MCQs; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week One body SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc.",
+          "explanation": "A proposed teacher key is in PHYS-LES-T1-W01-KEY-ASSESSMENT.md. Item 5 has three derived-unit options and is invalid as printed; the key proposes a corrected replacement. Teacher approval remains pending."
         }
       ]
     },
@@ -10943,20 +10810,14 @@
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "THEORY: four dimensional-analysis questions",
       "objective_locator": "word-extractor 1.0.4 getBody() lines 184-191",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W01-INTRO-DIMENSIONS"
+      ],
       "evidence": [
         {
-          "locator": "heading line 184 SHA-256 abdac08bec83e6324009a8e49663f2fc25e232d744d3fc256629a5980a9df706; question 1 lines 185-187 SHA-256 4c851c252feb639825ad3b03a00eb45dc33f868ae5b112ff3d61600d1a91ecd9; question 2 lines 188-189 SHA-256 b1e19ffa7dbbed9f07e6f9f4ad84dd14741f4b241f7c0b82551dcc45e6b18434; question 3 line 190 SHA-256 6b1c1bc82f62b45319e99dc2c6ee8381d0c58bdaee38cd8a7777cab619d13ce3; question 4 line 191 SHA-256 30598e01dbafa4b9171934bea66e2cc7b7fc3a5ffac7a738b62b94d2c9f6f7f5; whole block lines 184-191 SHA-256 5759524099c558672bf2d297392244c38c60e00f819fe260fe4c61cd04cc60e0",
-          "explanation": "Four questions with no answer key and no marking. Question 1 quotes its own formulae for stress, energy and momentum, so it is answerable from the taught dimensions; questions 2 to 4 are not. UNRESOLVED for the whole block because no key exists and two of its four items exceed the taught content."
-        },
-        {
-          "locator": "the question 2 list line 189 SHA-256 eb869c7c5ad5369fb47af9829cbd36cd33c4974104cab8a8793ebb556e77e7fc. Whole-extract searches: 'young' occurs at line 189 only; 'strain' occurs nowhere in the extract; 'impulse' at lines 177, 189 and 190; potential energy is taught at WEEK 9 from line 1128; 'stress' at line 186 and line 1218",
-          "explanation": "Young's modulus depends on stress and strain, and strain is never defined in this source; impulse and potential energy appear only in assessment text. The questions are quoted with these locators and no dimension is supplied."
-        },
-        {
-          "locator": "the impulse exponent question line 190 SHA-256 6b1c1bc82f62b45319e99dc2c6ee8381d0c58bdaee38cd8a7777cab619d13ce3; the pressure exponent question with its hint line 191 SHA-256 30598e01dbafa4b9171934bea66e2cc7b7fc3a5ffac7a738b62b94d2c9f6f7f5",
-          "explanation": "Both questions ask for the exponents of a dimension symbol whose superscripts the extraction flattens away, so as text they read as ordinary products of letters. The intended reading is recorded in PHYSICS-T1-W01-NOTATION-LOSS; the exponent values are not supplied here."
+          "locator": "PDF p.6 THEORY, four dimensional-analysis questions; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week One body SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc.",
+          "explanation": "The main lesson teaches the required dimensions and working. Proposed answers and a 44-mark allocation are recorded in PHYS-LES-T1-W01-KEY-ASSESSMENT.md; teacher approval remains pending."
         }
       ]
     },
@@ -10971,16 +10832,8 @@
       ],
       "evidence": [
         {
-          "locator": "whole parsed body lines 194-340 SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e; label line 194 SHA-256 88b3326818ebf3577b66bea2ea4fa2f670e9335dbeaf07bbe3729906fa939df6 'WEEK TWO'; topic line 195 SHA-256 ffcac156af7c64c32017fa76f36148314c5a1921db8f97d79f9ca2f3b9aaf0d5; block lines 194-195 SHA-256 e01f740c9c1eb3bef4dffd317181273943431e9f0aa6ec85be00e943cad1683e; CONTENT outline lines 196-200 SHA-256 b141aa6dd96d9bed5191d64e1bfe3a9715729d075893614ae6fa63389889a412; outline words line 197 SHA-256 6d08d7fe9817b541e9cfd88f904e8897f322d91832e3eb078744a070a7d35bf5 'Measurement of Length', line 198 SHA-256 42c9b86f6ba910c1234943c53e8ef30c922b0b067f2a28dada0b0b165ff5a0c2 'Measurement of Time', line 199 SHA-256 a500a88328bf75e3a204d29fc602a23b68f619ea7f7f4f5ed49670fd2da3aa8d 'Measurement of Mass', line 200 SHA-256 22cd2ea2f2db447dde86c8466d9e213656fda6be18fbd50e7cbe403e6a3d8894 'Measurement of Volume'",
-          "explanation": "The parsed body label and topic line carry the scheme clause beyond case and the ampersand, and the body digest equals the parsed row 1 identity recorded in docs/ss1/work/SS1-03/evidence/parsed_rows.json. The week declares four outline headings of its own: length, time, mass and volume. The scheme row names mass, weight, length and time: weight is in the scheme but has no outline heading, volume has an outline heading but is not in the scheme row. This task indexes both lists (see PHYSICS-T1-W02-FACT-DEFECTS)."
-        },
-        {
-          "locator": "heading line 202 SHA-256 b2838ed9b5f80400581092269faa3872e0c8251390040b36d7e600db732d905d; paragraph line 203 SHA-256 6a6c75b6be874df8af073093c985e6cc887711f220ecd3cfb770110768a473a4; block lines 202-203 SHA-256 4785bcd4e4969253823a8e48a5903b3627a7c47adfde8aafa766324953c5eff4",
-          "explanation": "Line 203 states that physics rests on exact measurement and that every measurement needs two things, a number or quantity and a unit, and gives '20 metres as the length of a table tennis's board' as its example. The principle is taught at objective level. The example is implausible for a table-tennis table (a regulation table is about 2.74 m long) and is recorded, not corrected, in PHYSICS-T1-W02-FACT-DEFECTS. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
-          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
+          "locator": "PDF p.7: techniques and measurement; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week Two body SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+          "explanation": "The lesson explains that a measurement requires a number and a unit."
         }
       ]
     },
@@ -10995,12 +10848,8 @@
       ],
       "evidence": [
         {
-          "locator": "scheme row line 25 SHA-256 18bb82f110afd09fa9e504a5c737c6e3f57d2dd2d5a9e235d51e5e613a1849a3 (text '2<5 spaces><tab>Measurement of Mass, Weight, Length and Time; ' with a trailing semicolon and space); heading line 205 SHA-256 a60d4a6191dc37b6c64fa09baf957c5210f4b86c77bb7101622471dd1a08675a; paragraph line 206 SHA-256 3b1fbb77bfc3d5f993037a591acf1ff4595cd386cf87121232ad016ac6a5531f; block lines 205-206 SHA-256 2d833dbedf012db96b029d172cce7292c99895063292bd517640a31afaa38e4d",
-          "explanation": "Line 206 says the metre rule measures a few centimetres to some metres, that a tape rule is used for longer distances, and that the smallest graduation of a metre rule is 0.1 cm or 1 mm (the two values agree). The tape rule is named in one clause and never described. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
-          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
+          "locator": "PDF p.7: metre rule and tape rule; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week Two body SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+          "explanation": "The lesson teaches suitable use, scale reading and parallax control."
         }
       ]
     },
@@ -11015,12 +10864,8 @@
       ],
       "evidence": [
         {
-          "locator": "heading line 208 SHA-256 c6dde29bdadfd24857c08f81fcd6ef990223824028bb1870bd24405e11e1381f; paragraph line 209 SHA-256 d7b2862f32d410fc860992616073146277e829ce350f1617c20dd370a978863a; block lines 208-209 SHA-256 39b42acc4346d9194312b8ba104a7d0562a3ae8daf59b574d6f8e2c5853a6dcb",
-          "explanation": "Line 209 describes ordinary callipers as hinged steel jaws closed on the object, with the jaw distance then read against a metre rule, and names external callipers. Internal callipers are implied by the phrase 'in the case of external callipers' but never described. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
-          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
+          "locator": "PDF p.7: external/internal callipers; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week Two body SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+          "explanation": "The lesson distinguishes ordinary callipers and suitable measuring uses."
         }
       ]
     },
@@ -11036,12 +10881,8 @@
       ],
       "evidence": [
         {
-          "locator": "vernier heading line 211 SHA-256 ba50e5e424260251458a31e7a2dfc42f6b22ec1af347ce7f190720e30c763736; vernier paragraph line 212 SHA-256 3ab68b4d96bf5bf689346fa70cf7f1a22bc71712cb80baab028f1525d6a145e8; micrometer heading line 214 SHA-256 fbd9e0eaad80e7849d62a444a47c87ebc1905c9b8b376d4cdc76e7c7cb162c22; micrometer paragraph line 215 SHA-256 804d14b101661948340a0cf18ee3c4a35ccdf961c7e9208cad519f4e22969fc5; block lines 211-215 SHA-256 e20b2af0d521a57f8848b5ea09bac4d5fe32f9e63c9f348cde4767540a734b5f",
-          "explanation": "Line 212 gives the vernier callipers' use (thickness of a metre rule, internal and external diameters of a tube, diameter of a rod), the reading to the nearest 0.1 mm, and two jaws with a main and a vernier scale. Line 215 gives the micrometer screw gauge's use (diameter of a wire, thickness of paper, diameter of a pendulum bob) and its reading to 0.01 mm or 0.001 cm (the two values agree). The principle of the vernier scale and any treatment of zero error are not taught: the string 'zero error' occurs nowhere in the 1,288 extracted lines. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
-          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
+          "locator": "PDF pp.7–10: vernier callipers and micrometer screw gauge; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week Two body SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+          "explanation": "The measurement lesson teaches vernier reading; the micrometer companion teaches parts, pitch, least count, reading and zero correction. New clear reading examples are registered as original replacement assets."
         }
       ]
     },
@@ -11056,12 +10897,8 @@
       ],
       "evidence": [
         {
-          "locator": "heading line 247 SHA-256 c08a03b4498f918bfc49bfab6dc12e8249a64bfc33f719e70567f1fa07a53aa4; rule line 248 SHA-256 65a0425edf3f070343ba3122217bfe3925e45e7160f1753589742362907cf7e0; lead-in line 250 SHA-256 693e3d3fb7f7083f56342b2345446d8312c9352df05ba95ded78389b85f0330b; block lines 247-250 SHA-256 4e524013ec6006c077ee2239b64d103fb079fc0abfbd76302d9ab8083c1861b9",
-          "explanation": "Line 248 states the reading rule in words: digits before and the first digit after the decimal point from the main scale, the second digit after the decimal point from the vernier mark that coincides with a main-scale mark. This is the only reading procedure the week gives for either instrument. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
-          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
+          "locator": "PDF p.8: Example 3.1 vernier reading; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week Two body SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+          "explanation": "The lesson teaches main-scale plus coinciding-vernier-division reading; Example 3.1's 4.37 cm result is reproduced as a new worked example."
         }
       ]
     },
@@ -11076,16 +10913,8 @@
       ],
       "evidence": [
         {
-          "locator": "example heading line 252 SHA-256 a804095d9fd8df7a8dbee2590247bb0654a32a6f94687d7854da616e20dab8e2; caption line 260 SHA-256 cd015e079add90ad1d30c093a3df9509bba5f8e0912fa4376b158b929794769b 'Fig. 3.3 '; solution lines 262-268 SHA-256 e31954695e507e2499e4be664bf9705d96d7eff4be402ccc268dafd67e840fda; lines 263-267 SHA-256 69a13903ffcd26cd2ed50ed222bf19617f458732dd6a5ecffdd62d122de17f74; note line 268 SHA-256 0007d8675c6a21e10d6dc65f2a0d37ad6f9fa60a4df3f01718d03457716b10cc; whole example lines 252-268 SHA-256 f8f6029b5b1cda6c5d843198695f15a44b7f75a824f6a9b9d0ea9128ae4e7d66",
-          "explanation": "UNRESOLVED: lines 253-259 are seven empty lines where the figure stood and the solution is written against it. Lines 265-267 read '( Total reading on the scale = 4.30', ' = 0.07' and '    4.37cm': the brace, plus sign and rule of the original sum did not survive extraction. The numbers 4.30 + 0.07 = 4.37 are internally consistent, but they cannot be checked against a diagram the extract does not contain, and line 268 refers to the end 'A' of the vernier and to a coincidence at 7 on that missing figure."
-        },
-        {
-          "locator": "drawn-object anchors (Word 0x08 characters) counted in a scratch copy of word-extractor 1.0.4 that emits a private-use marker for each 0x08 and 0x01 before the library's clean() step; the marker-stripped text is byte-identical to the stored body (SHA-256 23a1a9aed418ac382bcfa0c4302eaf70c8a348bba82dbe6c2893c10b9bd86908): line 253 has 35 anchors, line 257 has 2, line 262 has 1; no 0x01 inline-picture anchor occurs anywhere in lines 194-340",
-          "explanation": "The figure exists in the member file as 37 drawn objects in lines 253-257 plus 1 at line 262, which getBody() cannot emit and the importer has no legacy .doc path to recover (backend/src/db/ingestTopics.ts:299-302). The figure inventory stays with PHYS-VIS-T1 and the exponent/figure rendering decision with PHYS-OWNER-EXTRACTION-STRATEGY (BLOCKED); no reading is invented here. The figure numbers 3.3 and 3.4 start at 3 although the week contains no Fig. 3.1 or Fig. 3.2 and the preceding week numbers its tables 2.0-2.3, which suggests text lifted from a printed chapter 3 (unverified; reading pages are the unseen textbook at line 292)."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
-          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
+          "locator": "PDF p.8: Fig. 3.3 and Example 3.1; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week Two body SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+          "explanation": "The source example is visually present. The lesson supplies a clear worked equivalent; it does not claim the new SVG is a copy of the source figure."
         }
       ]
     },
@@ -11100,16 +10929,8 @@
       ],
       "evidence": [
         {
-          "locator": "heading line 271 SHA-256 cbdc60edd77a8186edbf1294a7f6645cedd1735b8d2cf831c5711712abd57b23; question line 272 SHA-256 1ad740915b16e27c8e6053e97409dd4de7d13ff985ef23e862b78e0886bb16e0; caption line 280 SHA-256 0114114b80c8e4174307ceb5a23c8fd84fe44f8ed899a7683765cc0c6f5562f9; solution lines 281-285 SHA-256 ecc3e71c5fd5e17dc7b1082689814704506424d6f5c23b13dadd0866abc8b5d0; lines 282-285 SHA-256 f691bc07ff6dee0be717f6a7e1b0505325ecf7fdaa29df7bf2e4ee84c2c0408e; whole example lines 271-285 SHA-256 e256cf3113fef995c699b95729e79ada010c489569deffcfc04a3c2adfcc24c9",
-          "explanation": "UNRESOLVED on three counts. (1) The figure is absent: lines 274-279 are empty and a single drawn-object anchor sits at line 273 (see the anchor evidence below). (2) No micrometer reading rule is stated anywhere in the week: the heading at line 271 promises 'How to read the micrometer scale' but the only procedure is the working inside the solution (sleeve reading, plus thimble reading times 0.01), unlike the vernier rule at line 248. (3) The working is internally inconsistent: line 282 reads 17.00, line 283 '11 x 0.01' and line 284 '= 0.11', so the sum is 17.11 mm, yet line 285 reads '17.1mm   or 1.711cm': 17.1 mm equals 1.71 cm, not 1.711 cm. The source is recorded as found; a correction needs an authored supplement and is bound by PHYS-COR-T1-W02-BINDING."
-        },
-        {
-          "locator": "drawn-object anchors counted as in COV-PHYS-T1-W02-OBJ-6: line 273 has 1 anchor; no 0x01 anchor in lines 194-340",
-          "explanation": "A single drawn object stands for the missing micrometer picture. The text-box stream of the member (482 characters, SHA-256 833455d3cd0fab9f56afa131825c27440b6226116db389bf8b0a983234ecf623, also recorded by PHYS-WK-T1-W01) holds short labels such as 4cm, 5cm, 15mm and the letters A and B that are consistent with measuring-instrument drawings, but getBody() gives no anchor-to-label mapping, so no label is attributed to this figure."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING; body sections 2–5; practice MICROMETER-Q1–MICROMETER-Q4",
-          "explanation": "The supplement supplies the missing reading rule, least-count calculation, main-scale plus circular-scale method, signed zero-error correction and a new internally consistent worked example (12.84 mm = 1.284 cm). It deliberately does not interpret Fig. 3.4. Four keyed practice items cover zero and non-zero positive/negative zero errors and unit conversion; marking criteria sum to each item's declared marks. The original source's erroneous printed conversion remains unaltered and must be excluded from delivery by the separate correction-binding task."
+          "locator": "PDF p.9: Fig. 3.4 and Example 3.2; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week Two body SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+          "explanation": "The source shows 17.00 mm + 0.11 mm = 17.11 mm but prints 17.1 mm as one conversion. The micrometer lesson gives the full reading rule and consistent units; replacement reading examples are in the new SVG."
         }
       ]
     },
@@ -11124,12 +10945,8 @@
       ],
       "evidence": [
         {
-          "locator": "scheme row line 25 SHA-256 18bb82f110afd09fa9e504a5c737c6e3f57d2dd2d5a9e235d51e5e613a1849a3 (text '2<5 spaces><tab>Measurement of Mass, Weight, Length and Time; ' with a trailing semicolon and space); heading line 218 SHA-256 9fdb5bd34f110b3879779d0780fc2a5be908376630fa44d61ed063b47da4974e; paragraph line 219 SHA-256 d9b6170a0401c4455f19832f0d867a432cdb146d186438c8a395d17b4543f78d; block lines 218-219 SHA-256 ecadaf457ad9621c61272033564e92448da1a64dae1e2229743f0db8e73d939c",
-          "explanation": "Line 219 distinguishes time intervals of minutes or hours (clocks and watches) from shorter intervals of seconds (stop clocks or stop watches). The paragraph prints 'time internal' twice for 'time interval' and runs two sentences together without punctuation. The week does not teach how to use a stop watch or read its scale and does not restate the second as the unit (the unit is in Week 1 at line 86); whether anything beyond line 219 is required of Week 2 is a scope question held by PHYS-FACT-T1-W02-SCOPE. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
-          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
+          "locator": "PDF p.7: clocks, watches, stop clocks and stopwatches; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week Two body SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+          "explanation": "The lesson covers time intervals and instrument selection."
         }
       ]
     },
@@ -11144,12 +10961,8 @@
       ],
       "evidence": [
         {
-          "locator": "scheme row line 25 SHA-256 18bb82f110afd09fa9e504a5c737c6e3f57d2dd2d5a9e235d51e5e613a1849a3 (text '2<5 spaces><tab>Measurement of Mass, Weight, Length and Time; ' with a trailing semicolon and space); heading line 225 SHA-256 0a4c8f8212ce04e195489d67140886261c655247f0ca0f9efa2beac295f1dc34; definition line 226 SHA-256 59dd0ff4351865a7991a029dfe13f28bbc4d39eeb3b71dc4f935e61b173fa6bf; balance types line 227 SHA-256 cd94fb3eb1e850964a12ac58420eb724e6157c314ea2a977e38c95d749954426; block lines 225-227 SHA-256 99dd265ab39fc0153f6c5f3399c7c007025e005c506580d5572682d586974985",
-          "explanation": "Line 226 defines mass as a measure of the quantity of matter in a body and says it is found by comparing with standard masses on a balance; line 227 names beam or chemical balance, lever balance and dial spring or direct reading balance. None of the balances is described or shown. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
-          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
+          "locator": "PDF p.8: mass definition and balances; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week Two body SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+          "explanation": "The lesson covers mass, balances and recording units."
         }
       ]
     },
@@ -11164,12 +10977,8 @@
       ],
       "evidence": [
         {
-          "locator": "scheme row line 25 SHA-256 18bb82f110afd09fa9e504a5c737c6e3f57d2dd2d5a9e235d51e5e613a1849a3 (text '2<5 spaces><tab>Measurement of Mass, Weight, Length and Time; ' with a trailing semicolon and space); definition line 229 SHA-256 e13d3cf52a0f8270cfaa1e38a0eb6c02be317018a21cae9af4ef4d6403ae3729; table heading line 231 SHA-256 d81bde82b662071915b06facfbb3ed16edea73a221b9b13de0bff853db4ae402; table lines 232-238 SHA-256 62105e74536688e7177f7d273f25ff8d10ace18661cab6f60356e9d6a7ff3607; relationship lines 240-242 SHA-256 083f8f6764cc2851bc433d513b0d75ed54273c6f418455fd5191cd6662f8fddd; whole block lines 229-242 SHA-256 49ecf2d2b1b87047f2ea2e3cdc7a19a010e6083de18834f43333ba7c62c9485c",
-          "explanation": "Line 229 defines weight as the force due to the earth's gravitational pull, measured with a spring balance in newtons. Lines 232-238 tabulate six differences between mass and weight (quantity of matter versus gravity, constant versus varying, scalar versus vector, kg versus N, balance versus spring balance, moments versus Hooke's law). Lines 240-242 give W = mg with W in N, m in kg and g in m/s2. Taught at objective level, with four limits: the value of g is not stated in the teaching (it appears only in the EVALUATION at line 289); row 6 at line 238 leans on the principle of moments and 'Hook's law', and the string 'hooke' occurs nowhere in the extract; the exponent of m/s2 is flattened; and the gravitational-field idea behind 'weight varies' is not explained. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS; body SHA-256 52c31ed3b278c40c9cafc01498a27dfc727be0a422cb7ba0156c52ee130d250d; practice Q01–Q20.",
-          "explanation": "Authored supplement teaches this measurement objective with worked examples and answer-keyed practice. For OBJ-6 the example is a new equivalent, not a reconstruction of the missing source figure."
+          "locator": "PDF p.8: weight, mass/weight differences and W=mg; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week Two body SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+          "explanation": "The lesson explains weight as gravitational force and distinguishes it from mass."
         }
       ]
     },
@@ -11184,12 +10993,8 @@
       ],
       "evidence": [
         {
-          "locator": "outline word line 200 SHA-256 22cd2ea2f2db447dde86c8466d9e213656fda6be18fbd50e7cbe403e6a3d8894; heading line 244 SHA-256 84a8c3425656f1de7f93e2a753de030bf7e3048721368bda503a5949906a2792; paragraph line 245 SHA-256 995a2d06d59fb62f3bc304c4015e9e303a204a566e74ec90de8cb687468d9917; block lines 244-245 SHA-256 9215bf7c3ef2afdeae243f7717df481a2ecf97c80f7d5a26b09cd9f133321197",
-          "explanation": "Line 245 is the whole teaching of volume: a graduated cylinder measures volumes of liquids to the nearest 1 cm3 and, with the displacement or eureka can, the volume of an irregular solid such as a stone. The eureka can and the displacement method are named, not described; no reading procedure, no meniscus (the string 'meniscus' occurs nowhere), no litre or millilitre relation and no other volume instrument is taught, yet weekend item 5 asks about a burette and a pipette, which occur nowhere else in the extract. The accuracy claim of 1 cm3 is the source's and is held as an expert question in PHYS-FACT-T1-W02-SCOPE. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
-        },
-        {
-          "locator": "SUP-SS1-PHYSICS-T1-W02-VOLUME-MEASUREMENT; body SHA-256 89cf46cc386a94ec76e04b2cb7bf5a53de52bf92fcb6088b91f4cc042fb40613; practice Q01–Q18.",
-          "explanation": "Supplement now explains graduated-cylinder use, meniscus reading, water displacement, regular-solid formulae, floating-object sinker method, pipette/burette uses and SI conversions. The source's universal 1 cm³ accuracy claim is not repeated; resolution depends on instrument graduations."
+          "locator": "PDF p.8: graduated cylinder, displacement method and eureka can; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week Two body SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+          "explanation": "The volume supplement teaches regular-solid formulae, graduated-cylinder readings, meniscus and displacement. It avoids treating 1 cm³ as a universal cylinder resolution."
         }
       ]
     },
@@ -11198,12 +11003,14 @@
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "EVALUATION 1 (after Time and before Mass): define length and time; list five length instruments",
       "objective_locator": "word-extractor 1.0.4 getBody() lines 221-223; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS"
+      ],
       "evidence": [
         {
-          "locator": "heading line 221 SHA-256 d618ddb656d0ccb554c00bf68091953b55a50bbdfd5b8441fd14724b218b08da; question lines 222-223 SHA-256 285214a3a93d76ef2c2cd1197cc3dfac6167957a3963066f2cad085d9ba6b516; line 222 SHA-256 cb77659b00e71acaade4041c8b09a6ffbc905f54bc9a42c071badbd7a820de24; line 223 SHA-256 82ea0b60e5041f22d629ebecc4053684eeda63ebf1f7e93411eb53f1fb21e8da; block lines 221-223 SHA-256 f1c19c80c3b39616ce85ea1f2307dbf01f446defdab967b6b75c645f5312e197",
-          "explanation": "UNRESOLVED: no answer key, worked answer or mark allocation exists. Question 1 asks for definitions of length and time that Week 2 never gives: the extract defines them only in Week 1 (length at line 77, time at line 81). Question 2 asks for five length instruments; the week names at least five at lines 206-215, so it is answerable from the week. Nothing is answered here."
+          "locator": "PDF p.7: EVALUATION 1 defines length/time and asks for five length instruments; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week Two body SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+          "explanation": "Proposed answers are in PHYS-LES-T1-W02-KEY-ASSESSMENT.md; the lesson teaches both definitions and instrument selection. Approval remains pending."
         }
       ]
     },
@@ -11212,12 +11019,14 @@
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "EVALUATION 2 (end of the week): differentiate mass and weight; weight of a 5000 g object with g = 10 m/s2",
       "objective_locator": "word-extractor 1.0.4 getBody() lines 287-289; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS"
+      ],
       "evidence": [
         {
-          "locator": "heading line 287 SHA-256 d618ddb656d0ccb554c00bf68091953b55a50bbdfd5b8441fd14724b218b08da; question 1 line 288 SHA-256 297198d1ac847697d8282501d49702c162f6956d10174730f7da6b1520e3fa23; question 2 line 289 SHA-256 fa92d8e476e41de1290c456b9b985b6a31ec45bf1968f525111ddd8c8afdd659; block lines 287-289 SHA-256 262e1818f4cac042398c130b2468eb82a1c162cebbf2e40503b46c819c12bad7",
-          "explanation": "UNRESOLVED: no answer key, worked answer or mark allocation exists. Question 1 is answerable from the table at lines 232-238. Question 2 needs W = mg (lines 241-242) and a step the week never teaches, converting the stated mass in grams to the kilogram that the unit of mass is stated to be at lines 236 and 242, and the line uses the letter g for both the gram and the gravitational acceleration. Nothing is answered here."
+          "locator": "PDF p.9: EVALUATION 2 asks mass/weight and W=mg; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week Two body SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+          "explanation": "Proposed answers (including 5000 g = 5 kg and 50 N) are in PHYS-LES-T1-W02-KEY-ASSESSMENT.md. Approval remains pending."
         }
       ]
     },
@@ -11227,13 +11036,11 @@
       "objective": "Reading assignment: New School Physics, Anyakoha, pages 3-11",
       "objective_locator": "word-extractor 1.0.4 getBody() lines 291-292; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
       "status": "PARTIAL",
-      "lesson_ids": [
-        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
-      ],
+      "lesson_ids": [],
       "evidence": [
         {
-          "locator": "heading line 291 SHA-256 ddbf33f9ed140d3418ccd113b7180c61271508ca0868777e59393b370c760b38; reference line 292 SHA-256 dfa2131c7efaaff3ef7060fde3b7f6bb8083faa5c20820dbce23924782d5f8d9; block lines 291-292 SHA-256 7123fe1a53b28d7acfcd20e3f493542f0bc56a51cce4c3f0361ca9be86ba7e89",
-          "explanation": "The week points to pages 3-11 of the named textbook. The textbook is not in the repository, so the pages cannot be mapped to any objective above; the reference itself is recorded, and its credit style 'M.W.Anyakoha, Prof.' repeats Week 1. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+          "locator": "PDF p.9 reading assignment: M.W. Anyakoha, New School Physics, pages 3–11; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week Two body SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+          "explanation": "The referenced textbook pages are not included in the repository and cannot be independently mapped or checked."
         }
       ]
     },
@@ -11242,12 +11049,16 @@
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "WEEKEND ASSIGNMENT: 10 four-option objective questions",
       "objective_locator": "word-extractor 1.0.4 getBody() lines 294-309; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS",
+        "SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING",
+        "SUP-SS1-PHYSICS-T1-W02-VOLUME-MEASUREMENT"
+      ],
       "evidence": [
         {
-          "locator": "heading line 294 SHA-256 50f52dd3fa11fa4e06f6668bc2461e71a7d989bf4462b8bd6bc676748fde1b9d; questions lines 295-309 SHA-256 9f353c8109e8da8d61f4d4db84ee9c1bd2d47dd257cc928e34b845be4667016c; item 1 line 295 SHA-256 b41a3c826d9aae23f2b774860c27d9ad5ba2af0a1adcc02a8ef54a2e636baa63; item 2 line 296 SHA-256 88677d4b485c2874d32e0f58b4294ff3d6d9bd886f5f81350aa2dca0816b7698; item 3 line 297 SHA-256 2e2b0a4b0f4a0673d1140c865c42cec9292a4a5a3b95b641260f548738b1690d; item 4 lines 298-299 SHA-256 e4d6b87c1edf0411871cb1b5bf03824fb66a51ac154f3e56d30a394820c9f36a; item 5 lines 300-301 SHA-256 2f3d130421cb6dd3c3b5b91b59902bc23584a3f1338dab4a6cd451090f636c2d; item 6 line 302 SHA-256 8d551553ca3555afe954975fb6137492eedaddac20f9503db563c71283864c0e; item 7 lines 303-304 SHA-256 b23bdf348826017e0c0420d0d6d08d0b0d13cb2f2cb81381dbbd8522f467f5ef; item 8 line 305 SHA-256 c78f5d59f73a85150f1faf06a86672e7a2db2bf7bc30d66fbd794b143b2d80af; item 9 lines 306-307 SHA-256 fe3e918f0f1dbdb0f8f989d83bdcbb20f09c11543cc2ea0b87c6ed811d35bc5a; item 10 lines 308-309 SHA-256 5e7d43f87d477066dacbd0246816c336fd7560a942e73fcbb3f564b60693e12d",
-          "explanation": "UNRESOLVED: there is no answer key, worked answer or mark allocation for any item. Source support per item: item 1 asks for the most accurate instrument for the internal diameter of a test-tube, but the week assigns internal diameters of a tube to the vernier callipers (line 212) and the vernier callipers is not among the four options, so no option matches the week's own teaching; item 2 turns on statements the table at lines 233-235 partly supports; items 3, 7 and 10 each point at a diagram that has no drawn-object or picture anchor anywhere in lines 295-309 (item 10 does not even name its instrument and lists its fourth option on the next line, with '(C)' capitalised); item 4 is answerable from lines 229 and 237; item 5 offers a burette and a pipette that occur nowhere else in the extract; item 6 is Week 1 content (force dimension, lines 143-147) with the minus printed as U+2212; item 8 is answerable from line 215 but names constantan, which occurs nowhere else, and a watt meter, which Week 2 does not teach; item 9 asks what a hydrometer measures, taught only in Week 7 at line 961, and offers 'attitude' and the terms relative humidity and dew point, which occur nowhere else. Nothing is answered here."
+          "locator": "PDF pp.9–10: WEEKEND ASSIGNMENT, ten MCQs; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week Two body SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+          "explanation": "The proposed key is in PHYS-LES-T1-W02-KEY-ASSESSMENT.md. Items 3, 7 and 10 depend on unclear/missing scale figures; item 1 lacks the taught vernier-callipers option; replacements are proposed, not approved."
         }
       ]
     },
@@ -11256,20 +11067,16 @@
       "source_id": "SS1-SRC-5c0149cda71d",
       "objective": "THEORY: 6 questions (instrument selection, three micrometer and vernier readings, SI units, differences between mass and weight)",
       "objective_locator": "word-extractor 1.0.4 getBody() lines 311-340; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS",
+        "SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING",
+        "SUP-SS1-PHYSICS-T1-W02-VOLUME-MEASUREMENT"
+      ],
       "evidence": [
         {
-          "locator": "heading line 311 SHA-256 abdac08bec83e6324009a8e49663f2fc25e232d744d3fc256629a5980a9df706; item 1 lines 312-315 SHA-256 a6f01ad028f850afdfcab71bacb703d8b707beadb6ba35d5cfe29940e2929903; item 2 lines 316-325 stem line 316 SHA-256 ddca5615b49de6810f836568bbf81b38ed590643a340d009c5e04fbf6ec9df9d; item 3 line 326 SHA-256 160941feaca45417b0f49834847cf00d2e87635a1cc29abb46ed043132f39a43; item 4 line 333 SHA-256 c5b72adf9e5fb59f4c91af57471a597d4e889d2bfbbe7162d7b485d9266ef927; item 5 line 339 SHA-256 16371d0e5f8ac402c0b74571ffe7811db76e1330202951dc419082912977f3c4; item 6 line 340 SHA-256 a37cbeaae52849021d0f54cac175889c3ce8f02b0eb03c22bf3c3538a7990c7d; whole block lines 311-340 SHA-256 cef73700bd2e7f02ce13a1d752495d52a3a2ebd98a7b100c11b9d4701415904f",
-          "explanation": "UNRESOLVED: no answer key, worked answer or mark allocation exists. Item 1 names six quantities; five (weight, internal diameter of a test tube, mass, length of a table, diameter of a wire) are covered by lines 229, 212, 226, 206 and 215 and the sixth, 'the dimension of a compound', is not defined anywhere in the week (a scope question in PHYS-FACT-T1-W02-SCOPE). Item 6 is answerable from the table at lines 232-238. Items 2, 3 and 4 ask for readings from diagrams: drawn-object anchors sit at lines 316, 321, 327 and 334 and the figures themselves are not in the extract. Item 5 is a fill-in of three blanks on the internationally agreed SI system; its stem has been corrupted by the extractor, see the artefact evidence below."
-        },
-        {
-          "locator": "line 339 SHA-256 16371d0e5f8ac402c0b74571ffe7811db76e1330202951dc419082912977f3c4; the literal string 'undefined' occurs 98 times on line 339 and once more in the whole extract, at line 995 ('m2undefined', WEEK 8); a raw count in the member's main text before clean() finds 99 U+001F control characters, and node_modules/word-extractor/lib/filters.js maps U+001F through replaceTable, which has no entry for it, so the replacement callback returns the JavaScript value undefined and String.replace writes the word",
-          "explanation": "The 98 'undefined' tokens are not source text: they are the extractor's rendering of 98 U+001F characters in theory item 5. The importer stores this body (ingestTopics.ts:299-302), so a student would be shown the word. The intended content of those characters (blank lines for answers, soft hyphens or something else) cannot be told from the body text, and the three underscore runs show three blanks. Delivered text must not print the word; the defect is open item PHYSICS-T1-W02-EXTRACTION-ARTEFACT and is bound to PHYS-COR-T1-W02-BINDING. No source byte is edited."
-        },
-        {
-          "locator": "drawn-object anchors counted as in COV-PHYS-T1-W02-OBJ-6: lines 316, 321, 327 and 334 have 1 anchor each; theory items 2(a), 2(b), 3 and 4 follow those anchors",
-          "explanation": "The four figures that theory items 2-4 depend on are drawn objects the extract cannot emit; the figure inventory stays with PHYS-VIS-T1."
+          "locator": "PDF p.10: THEORY, six questions; Rendered First Term source PDF (37 pages), original member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; PDF SHA-256 7b7ac33e2769b744c2d0c97565df2ff203e386bdd18550b6b3e7b63479074309; parsed Week Two body SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+          "explanation": "The proposed key identifies instrument answers and mass/weight differences. Figure-reading questions 2–4 and wording in 1(d)/5 require replacement or teacher disposition; see PHYS-LES-T1-W02-KEY-ASSESSMENT.md."
         }
       ]
     },
