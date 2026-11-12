@@ -46,17 +46,25 @@ const normalize = (value: unknown) => String(value ?? '').replace(/\s+/g, ' ').t
 
 // The same source-reference formatter is used by the existing ingestTopics.ts
 // pipeline and by student delivery, so the stored source text must match exactly.
-const researchedRecords = new Map<string, ResearchedRecord>(
-  getPrimary4SupplementRecords().map(record => [record.stable_key, {
-    stable_key: record.stable_key,
-    subject: record.subject_name,
-    term: record.term_label,
-    order_index: record.order_index,
-    title: record.title,
-    source_sha256: sha256(record.source_reference),
-    source_file: record.source_file,
-  } as const]),
-);
+const researchedRecords = new Map<string, ResearchedRecord>();
+let researchedRegistryError: string | null = null;
+try {
+  for (const record of getPrimary4SupplementRecords()) {
+    researchedRecords.set(record.stable_key, {
+      stable_key: record.stable_key,
+      subject: record.subject_name,
+      term: record.term_label,
+      order_index: record.order_index,
+      title: record.title,
+      source_sha256: sha256(record.source_reference),
+      source_file: record.source_file,
+    });
+  }
+} catch (error) {
+  // A malformed researched package must not take down existing Primary 4 lessons
+  // or the shared learning route. It only disables researched-package delivery.
+  researchedRegistryError = error instanceof Error ? error.message : String(error);
+}
 
 export type Primary4SourceDelivery =
   | { source: 'primary4-export' | 'researched-package'; kind: 'matched'; topicId: number; text: string; sourceHash: string; reviewRequired: boolean; reviewFlag: ReviewFlag }
@@ -114,6 +122,7 @@ export function resolvePrimary4SourceDelivery(topic: Primary4Topic): Primary4Sou
   const stableKey = /^CURRICULUM_KEY:\s*([^\s]+)/m.exec(source)?.[1];
   if (!stableKey) return withheld('No matching Primary 4 export or researched-package identity');
   const researched = researchedRecords.get(stableKey);
+  if (researchedRegistryError) return withheld(`Researched package registry is unavailable: ${researchedRegistryError}`, 'researched-package');
   if (!researched) return withheld('Researched-package key is not registered', 'researched-package');
   if (normalize(topic.subject_name) !== normalize(researched.subject) ||
       normalize(topic.term_label) !== normalize(researched.term) ||
