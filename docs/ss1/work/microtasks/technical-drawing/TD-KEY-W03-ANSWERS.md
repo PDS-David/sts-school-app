@@ -91,3 +91,8 @@ Award 2 marks each for the square, pentagon, hexagon, heptagon, octagon, nonagon
 
 For an area ratio image:original = 3:5, the linear scale factor is √(3/5)=0.7746 (2 marks). Award remaining marks for a correct pole/ray or geometric-mean construction, parallel corresponding edges, consistent image:original ratio, and a closed similar polygon. Do not use 3/5 as the linear scale factor when the ratio is explicitly an area ratio.
 
+
+
+## Source wording issue — pentagon from one diagonal
+
+The Week Three general revision says only “Construct a pentagon when given a diagonal of 70 mm.” A single diagonal does not uniquely determine a general (irregular) pentagon. If a **regular** pentagon is intended, a diagonal of 70 mm uniquely determines its side length (70/φ≈43.26 mm) and the regular-pentagon construction can be completed. The source does not say “regular” or provide the remaining side/angle data. Do not silently impose regularity; obtain author clarification or mark the exercise as under-specified.
