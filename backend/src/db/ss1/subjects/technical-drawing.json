@@ -1588,17 +1588,6 @@
       "blocks_delivery": true
     },
     {
-      "id": "TD-T2-W08-W09-TEACHING-DETAILS",
-      "kind": "CONTENT",
-      "detail": "The combined Week 8–9 teaching row is titled “Equal area of plane figures” (parsed row 17; body SHA-256 865bb6bbb80331ca2182e97801040727e986ad3f9334b61018a33f239e4eb97a). The current repository evidence does not list the individual constructions, methods, dimensions, labels, worked examples or exercises.",
-      "required_action": "Complete TD-FACT-W08-W09-DETAILS by inspecting the original teaching row and recording every equal-area construction, its steps, dimensions, labels, exercise and marking evidence with exact source locators. Do not split the combined source row.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:865bb6bbb80331ca2182e97801040727e986ad3f9334b61018a33f239e4eb97a",
-        "TD-FACT-W08-W09-DETAILS"
-      ],
-      "blocks_delivery": true
-    },
-    {
       "id": "TD-T2-W08-W09-FIGURES",
       "kind": "CONTENT",
       "detail": "No visual inventory or disposition is recorded for the figures/objects in the combined Week 8–9 equal-area lesson. Exact construction geometry and dimensions cannot be inferred from the row title.",
@@ -1698,6 +1687,18 @@
         "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc",
         "COV-TD-T2-W05-CHORDAL-SCALE",
         "TD-FACT-W05-SCALE-CONSTRUCTIONS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W08-W09-EXAMPLE2-DIRECTION",
+      "kind": "FACT",
+      "detail": "Week Eight–Nine Example 2 (source body children 1239–1243) gives two parallel-line constructions but its prose alternates between meeting AB and AB produced without a clear directional distinction. The corresponding source figure must be checked before the construction is taught as a definitive sequence.",
+      "required_action": "Compare the original Example 2 figure with the exact construction wording and obtain an authoritative direction/point-intersection reading; record the verified correction in a delivery supplement without changing the source.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:865bb6bbb80331ca2182e97801040727e986ad3f9334b61018a33f239e4eb97a",
+        "COV-TD-T2-SCH-W08",
+        "COV-TD-T2-SCH-W09"
       ],
       "blocks_delivery": true
     }
