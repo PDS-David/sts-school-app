@@ -18,6 +18,7 @@ export function buildPrimary4CoverageReport() {
   const archiveCorrections = (archiveCorrectionData as any).corrections as any[];
   const archiveHiddenTopicIds = (archiveCorrectionData as any).hidden_topic_ids as number[];
   const archiveCorrectionPendingApprovalCount = archiveCorrections.filter(row => row.content_approval !== 'APPROVED').length;
+  const archiveCorrectionPendingAssessmentRebuildCount = archiveCorrections.filter(row => row.assessment_rebuild_status !== 'VERIFIED').length;
   const packages = [
     ...(homeEconomics12 as any).lessons.map((lesson: any) => ({ subject: 'Home Economics', term: lesson.term })),
     ...(homeEconomics3 as any).lessons.map(() => ({ subject: 'Home Economics', term: '3rd Term' })),
@@ -61,6 +62,7 @@ export function buildPrimary4CoverageReport() {
     researched_lesson_count: packages.length,
     archive_correction_count: archiveCorrections.length,
     archive_correction_pending_approval_count: archiveCorrectionPendingApprovalCount,
+    archive_correction_pending_assessment_rebuild_count: archiveCorrectionPendingAssessmentRebuildCount,
     archive_hidden_topic_count: archiveHiddenTopicIds.length,
     archive_correction_note: 'Archive-based correction records replace identified skeletal Primary 4 source rows at delivery time; superseded outline/merged rows are hidden from learners. Newly authored corrections remain withheld until owner approval.',
     covered_combination_count: matrix.filter(row => row.existing_export_rows + row.researched_lessons_prepared > 0).length,
