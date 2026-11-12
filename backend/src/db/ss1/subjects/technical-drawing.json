@@ -336,6 +336,317 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Technical Drawing",
+      "title": "Week One — Keyed Construction Solutions",
+      "objectives": [
+        "Construct an incircle in a triangle and explain why two angle bisectors locate its centre.",
+        "Construct a circumcircle using perpendicular bisectors of triangle sides.",
+        "Solve triangle-construction data involving side lengths, angles and perimeter constraints.",
+        "Identify under-specified, impossible and ambiguous construction questions rather than inventing dimensions.",
+        "Construct a regular octagon inside a square using equal corner cuts."
+      ],
+      "body": "This keyed supplement addresses the two inscribed-circle evaluation tasks, the two circumscribed-circle evaluation tasks and the five general revision constructions in the Week One source row. All angles below are written with the proper degree symbol; the source DOCX uses a superscript zero as its degree marker.\n\n## 1. Inscribe a circle in triangle ABC\n\nGiven AB = 60 mm, AC = 50 mm and angle CAB = 67°:\n1. Draw AB = 60 mm.\n2. At A, construct a 67° ray.\n3. On that ray, mark C so AC = 50 mm; join BC.\n4. Bisect two interior angles, for example angles A and B. Their intersection O is the incentre.\n5. From O, draw OD perpendicular to AB. OD is the inradius.\n6. With O as centre and OD as radius, draw the incircle.\n\nCheck values: BC ≈ 61.28 mm; area ≈ 1,380.76 mm²; semiperimeter ≈ 85.64 mm; inradius OD ≈ 16.12 mm.\n\n## 2. Inscribe a circle in a regular polygon of side 40 mm\n\nThe source does not state the number of sides, so it does not define a unique polygon or a unique numerical inradius. Ask the teacher to specify the polygon (for example, a regular pentagon or hexagon). Once the polygon is constructed with 40 mm sides, bisect two interior angles to locate its centre O, drop a perpendicular from O to any side, and draw the incircle with that perpendicular as radius. Do not assume a hexagon without confirmation.\n\n## 3. Circumscribe a circle about triangle ABC (SSS)\n\nGiven AB = 70 mm, AC = 57 mm and BC = 76 mm:\n1. Draw AB = 70 mm.\n2. With A as centre and radius 57 mm, draw an arc.\n3. With B as centre and radius 76 mm, intersect the first arc at C; join AC and BC.\n4. Construct perpendicular bisectors of any two sides. Their intersection O is the circumcentre.\n5. With O as centre and OA as radius, draw the circle through A, B and C.\n\nCheck values: angle A ≈ 72.70°, angle B ≈ 45.73°, angle C ≈ 61.57°; circumradius OA ≈ 39.80 mm.\n\n## 4. Circumscribe a circle about triangle ABC (SAS/ASA data)\n\nGiven AB = 70 mm, AC = 90 mm and angle ABC = 105°:\n1. Draw AB = 70 mm.\n2. At B, construct a 105° ray on the intended side of AB.\n3. With A as centre and radius 90 mm, intersect that ray at C; join AC.\n4. Construct perpendicular bisectors of AB and AC to locate circumcentre O.\n5. Draw the circumcircle with centre O and radius OA.\n\nCheck values: BC ≈ 41.28 mm; angle A ≈ 26.30°; angle C ≈ 48.70°; circumradius ≈ 46.59 mm.\n\n## 5. Construct a triangle with perimeter 130 mm, base 40 mm and one base angle 105°\n\nTake AB = 40 mm and angle CAB = 105° (the mirror image with the 105° angle at B is congruent). Since the perimeter is 130 mm, AC + BC = 90 mm. Construct the ellipse with foci A and B and constant sum 90 mm (a string-and-pins construction is suitable). Its intersection with the 105° ray from A gives C. Join BC.\n\nCheck values: AC ≈ 32.39 mm; BC ≈ 57.61 mm; the other base angle at B ≈ 32.89°; angle C ≈ 42.11°. The side sum is 40 + 32.39 + 57.61 = 130 mm.\n\n## 6. Check the triangle specified by base 70 mm, height 50 mm and vertex angle 55°\n\nThese three conditions are inconsistent. For a 70 mm base and 50 mm perpendicular altitude, the smallest possible angle at the opposite vertex occurs when the altitude meets the midpoint of the base: 2 arctan(35/50) ≈ 69.98°. Any off-centre apex gives a larger angle. A 55° vertex angle is therefore impossible with the stated base and height. Do not draw a false triangle; request a corrected angle, base or height.\n\n## 7. Construct a triangle of perimeter 120 mm with side ratio 3:4:5\n\nThe ratio parts total 12. Each part is 120/12 = 10 mm, so the sides are 30 mm, 40 mm and 50 mm. Draw a 40 mm base, erect a perpendicular of 30 mm at one end, and join its endpoint to the other end of the base; the hypotenuse is 50 mm. The triangle is right-angled and its perimeter is 120 mm.\n\n## 8. Construct triangle ABC with AB = 60 mm, AC = 55 mm and angle ABC = 60°, then make a similar triangle with perimeter 140 mm\n\nThe data are an ambiguous SSA case: the 60° ray from B intersects the circle centred at A with radius 55 mm at two points. Both triangles satisfy the source data, so both must be accepted unless the source supplies a diagram or specifies the acute/obtuse position of C.\n\nSolution 1: BC ≈ 48.03 mm, angles A ≈ 49.13° and C ≈ 70.87°, original perimeter ≈ 163.03 mm. The similarity factor for perimeter 140 mm is k ≈ 0.85875. The image sides are AB ≈ 51.52 mm, AC ≈ 47.23 mm and BC ≈ 41.24 mm.\n\nSolution 2: BC ≈ 11.97 mm, angles A ≈ 10.87° and C ≈ 109.13°, original perimeter ≈ 126.97 mm. The similarity factor is k ≈ 1.10260. The image sides are AB ≈ 66.16 mm, AC ≈ 60.64 mm and BC ≈ 13.20 mm.\n\nConstruct both valid intersections, calculate each perimeter, then multiply all three sides by 140/original perimeter to obtain the similar triangle. The source must specify which configuration it expects if only one answer is desired.\n\n## 9. Inscribe a regular octagon in a square of side 80 mm\n\n1. Draw square ABCD, each side 80 mm.\n2. At each corner, mark equal cut-off distances x along the two adjacent sides.\n3. Join consecutive marks to form the four 45° corner cuts and the four remaining straight sides.\n4. For a regular octagon, the cut length must satisfy 80 − 2x = x√2. Thus x = 80/(2 + √2) ≈ 23.43 mm and each octagon side is 80 − 2x ≈ 33.14 mm.\n5. Check that all eight sides are equal and all interior angles are 135°.\n\nUse thin construction lines first, retain construction arcs where required, and darken only the final geometry.",
+      "body_sha256": "6d45b646e3cf8726d093310faafefe955322415dac0dfc7c2c082d2622fcaf0f",
+      "practice": [
+        {
+          "id": "TD-W01-KEY-Q01",
+          "question": "Construct an incircle in triangle ABC where AB = 60 mm, AC = 50 mm and ∠CAB = 67°. Give the inradius as a check.",
+          "answer": "Draw AB=60 mm, construct the 67° ray at A, mark AC=50 mm and join BC. Bisect two angles to locate incentre O; drop OD perpendicular to AB and draw the circle with radius OD. BC≈61.28 mm; area≈1,380.76 mm²; semiperimeter≈85.64 mm; inradius≈16.12 mm.",
+          "marks": 8,
+          "marking": [
+            {
+              "criterion": "Draws AB accurately as 60 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs the 67° angle at A.",
+              "marks": 1
+            },
+            {
+              "criterion": "Marks AC=50 mm and joins BC.",
+              "marks": 1
+            },
+            {
+              "criterion": "Bisects two interior angles correctly.",
+              "marks": 2
+            },
+            {
+              "criterion": "Identifies their intersection as incentre O.",
+              "marks": 1
+            },
+            {
+              "criterion": "Drops the perpendicular radius OD.",
+              "marks": 1
+            },
+            {
+              "criterion": "Draws the incircle with centre O and radius OD.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W01-KEY-Q02",
+          "question": "A source question asks for an incircle in a regular polygon with side length 40 mm but does not state the number of sides. What is the correct response and method?",
+          "answer": "The question is under-specified: the number of sides is required to define the polygon and its inradius. After the polygon is specified and constructed with 40 mm sides, bisect two interior angles to locate centre O, drop a perpendicular from O to a side, and draw the incircle with that perpendicular as radius. Do not assume a pentagon or hexagon.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Identifies that the number of sides is missing.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that no unique polygon/inradius can be determined.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that two angle bisectors locate the centre.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that the perpendicular from centre to side is the incircle radius.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W01-KEY-Q03",
+          "question": "Construct the circumcircle of triangle ABC where AB=70 mm, AC=57 mm and BC=76 mm.",
+          "answer": "Draw AB=70 mm. Intersect arcs centred at A radius57 mm and B radius76 mm to locate C. Join AC and BC. Construct perpendicular bisectors of two sides; their intersection O is the circumcentre. Draw the circle centred O through A, B and C. Check: angles A≈72.70°, B≈45.73°, C≈61.57°; radius≈39.80 mm.",
+          "marks": 8,
+          "marking": [
+            {
+              "criterion": "Draws AB=70 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses radius57 mm from A.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses radius76 mm from B and locates C.",
+              "marks": 2
+            },
+            {
+              "criterion": "Joins all three sides accurately.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs two perpendicular bisectors.",
+              "marks": 1
+            },
+            {
+              "criterion": "Locates circumcentre O.",
+              "marks": 1
+            },
+            {
+              "criterion": "Draws circle through A, B and C.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W01-KEY-Q04",
+          "question": "Construct the circumcircle of triangle ABC where AB=70 mm, AC=90 mm and ∠ABC=105°.",
+          "answer": "Draw AB=70 mm. Construct a 105° ray at B. With A as centre and radius90 mm, intersect the ray at C. Join AC. Construct perpendicular bisectors of AB and AC to locate O, then draw the circumcircle with radius OA. Check: BC≈41.28 mm; ∠A≈26.30°; ∠C≈48.70°; circumradius≈46.59 mm.",
+          "marks": 8,
+          "marking": [
+            {
+              "criterion": "Draws AB=70 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs the 105° ray at B.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses radius90 mm from A to locate C.",
+              "marks": 2
+            },
+            {
+              "criterion": "Joins AC.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs two perpendicular bisectors and locates O.",
+              "marks": 2
+            },
+            {
+              "criterion": "Draws the circumcircle through all vertices.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W01-KEY-Q05",
+          "question": "Construct a triangle with perimeter130 mm, base40 mm and one base angle105°; measure the other base angle.",
+          "answer": "Set AB=40 mm and ∠CAB=105°. Since AC+BC=90 mm, construct the ellipse with foci A and B and constant sum90 mm; its intersection with the ray from A locates C. AC≈32.39 mm, BC≈57.61 mm, other base angle≈32.89°, apex angle≈42.11°.",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "Draws the 40 mm base.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs the 105° base-angle ray.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses the perimeter to derive AC+BC=90 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs the ellipse locus with foci A and B and constant sum90 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Locates C and joins BC.",
+              "marks": 1
+            },
+            {
+              "criterion": "Measures/states the other base angle as approximately32.9°.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W01-KEY-Q06",
+          "question": "Can a triangle have base70 mm, perpendicular height50 mm and opposite vertex angle55°? Justify.",
+          "answer": "No. The minimum possible opposite vertex angle occurs when the altitude bisects the base: 2 arctan(35/50)≈69.98°. Any off-centre apex increases that angle, so 55° is impossible with the stated base and height.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Recognises that the stated data are inconsistent.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses the midpoint as the minimum-angle case.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 2 arctan(35/50)≈69.98°.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains that 55° is smaller than the minimum and requests corrected data.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W01-KEY-Q07",
+          "question": "Construct a triangle of perimeter120 mm with sides in ratio3:4:5.",
+          "answer": "The ratio has12 parts, so one part is10 mm. The sides are30,40 and50 mm. Construct the 30–40–50 right triangle and verify the perimeter is120 mm.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Adds the ratio parts to obtain12.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates one part as10 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds side lengths30,40 and50 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs the triangle accurately.",
+              "marks": 1
+            },
+            {
+              "criterion": "Verifies the perimeter and right angle.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W01-KEY-Q08",
+          "question": "Construct triangle ABC with AB=60 mm, AC=55 mm and ∠ABC=60°, then construct a similar triangle with perimeter140 mm.",
+          "answer": "The ray at B intersects the circle centred at A radius55 mm twice. Both solutions satisfy the source data. Solution1: BC≈48.03 mm, perimeter≈163.03 mm, k≈0.85875, image sides≈51.52,47.23,41.24 mm. Solution2: BC≈11.97 mm, perimeter≈126.97 mm, k≈1.10260, image sides≈66.16,60.64,13.20 mm. Construct both unless a source diagram identifies one.",
+          "marks": 8,
+          "marking": [
+            {
+              "criterion": "Draws AB=60 mm and the 60° ray at B.",
+              "marks": 2
+            },
+            {
+              "criterion": "Uses the 55 mm radius from A and identifies both valid intersections.",
+              "marks": 2
+            },
+            {
+              "criterion": "Explains the ambiguous SSA condition.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates a valid original perimeter and k=140/perimeter.",
+              "marks": 1
+            },
+            {
+              "criterion": "Scales all three sides proportionally.",
+              "marks": 1
+            },
+            {
+              "criterion": "Records both valid solutions or identifies the need for source clarification.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W01-KEY-Q09",
+          "question": "Inscribe a regular octagon in a square of side80 mm.",
+          "answer": "Draw the square. Mark equal corner cuts x on each side and join consecutive marks. For a regular octagon, 80−2x=x√2, so x≈23.43 mm and each octagon side≈33.14 mm. All interior angles are135°.",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "Draws the 80 mm square.",
+              "marks": 1
+            },
+            {
+              "criterion": "Sets equal corner cuts and states the regularity condition.",
+              "marks": 1
+            },
+            {
+              "criterion": "Derives 80−2x=x√2.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates x≈23.43 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Joins the eight vertices and obtains side≈33.14 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Checks equal sides and 135° interior angles.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "User-supplied SS1 Technical Drawing source",
+          "locator": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx; Week One teaching row, body children 29–163; original lesson body SHA-256 a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
+          "url": "",
+          "rights": "The source file was supplied by the user. This answer key and its worked calculations are independently authored; no source figure is copied into this text supplement. Reuse approval for source-derived lesson delivery remains pending.",
+          "reuse_status": "PENDING",
+          "attribution": "Source: user-supplied SS1 Technical Drawing, Second Term, Week One."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [],
@@ -364,7 +675,8 @@
       "objective_locator": "SS1-SRC-af4868d2c026: scheme-table line 11 of mammoth 1.12.2 extractRawText() output = parsed row 0 ('WEEK 1', 79 characters, id SS1-SRC-af4868d2c026:BODY:08c316219062202674404113758809456aaa229a8faaabbb1ca19dcbab0cc889, classified SCHEME_ONLY by rule SS1-SRC-af4868d2c026-R003); taught in parsed row 11 'WEEK ONE', lines 59-342 after trimming, id SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -604,7 +916,8 @@
       "objective_locator": "WEEK ONE teaching row (parsed row 11), original body SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -684,7 +997,8 @@
       "objective_locator": "WEEK ONE teaching row (parsed row 11), original body SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -704,7 +1018,8 @@
       "objective_locator": "WEEK ONE teaching row (parsed row 11), general evaluation/revisional questions, lines 243–261; original body SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -724,7 +1039,8 @@
       "objective_locator": "WEEK ONE teaching row (parsed row 11), general evaluation/revisional questions, lines 243–261; original body SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -744,7 +1060,8 @@
       "objective_locator": "WEEK ONE teaching row (parsed row 11), general evaluation/revisional questions, lines 243–261; original body SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -764,7 +1081,8 @@
       "objective_locator": "WEEK ONE teaching row (parsed row 11), general evaluation/revisional questions, lines 243–261; original body SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -784,7 +1102,8 @@
       "objective_locator": "WEEK ONE teaching row (parsed row 11), general evaluation/revisional questions, lines 243–261; original body SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
