@@ -20,15 +20,12 @@ test('Primary 4 export manifest records 248 unique topic identities across the 1
   assert.equal(manifest.provenance.original_archive_independently_rehashed, false);
 });
 
-test('source delivery matches exact Primary 4 identity and source fingerprint', () => {
+test('archive correction takes precedence over the superseded Primary 4 export source', () => {
   const result = resolvePrimary4SourceDelivery(baseTopic);
-  assert.equal(result?.kind, 'matched');
-  assert.equal(result?.source, 'primary4-export');
-  if (result?.kind === 'matched') {
-    assert.equal(result.topicId, 208);
-    assert.equal(result.reviewRequired, true);
-    assert.equal(result.reviewFlag, 'SHORT_SOURCE_REVIEW');
-    assert.equal(result.text, outline);
+  assert.equal(result?.kind, 'withheld');
+  if (result?.kind === 'withheld') {
+    assert.equal(result.source, 'archive-correction');
+    assert.match(result.reason, /pending owner approval/i);
   }
 });
 
@@ -55,7 +52,7 @@ test('safe topic projection removes drifted source, summary and generated assess
 test('withdrawn assessment lookup hides only assessments linked to drifted Primary 4 topics', async () => {
   const query = async () => ({ rows: [
     { ...baseTopic, source_reference: outline + ' changed', generated_assessment_id: 91 },
-    { ...baseTopic, generated_assessment_id: 92 },
+    { ...baseTopic, class_name: 'Primary 5', generated_assessment_id: 92 },
   ] });
   const ids = await primary4WithdrawnAssessmentIds(query, [91, 92, 93]);
   assert.deepEqual([...ids], [91]);
