@@ -5829,26 +5829,26 @@
     {
       "id": "TD-T2-W05-CHORD-ANGLE-GRANULARITY",
       "kind": "FACT",
-      "detail": "The chordal scale is constructed with 5° increments and the source says it constructs multiples of 5°, but the same lesson cites 24° and 37° as examples and asks for 27° in evaluation/weekend assignment. These are not multiples of 5°; the source gives no finer graduation or interpolation method.",
-      "required_action": "Confirm whether the scale is intended to have finer graduations/interpolation or whether the 24°, 37° and 27° values are source typos. Correct the teaching method and affected questions together; do not silently replace values.",
+      "detail": "The source constructs a 5° chordal scale but also asks for 24°, 27° and 37°. The lesson and TD-KEY-W05-ANSWERS.md now include an original exact fine-chord alternative at a fixed R=100 mm, with calculated chords 41.58 mm, 46.69 mm and 63.46 mm respectively. The original 5° method remains unchanged and its limitation is explicitly explained.",
+      "required_action": "Teacher reviews and approves the original fine-chord alternative for the nonmultiples of 5°. The source discrepancy remains recorded; students have a valid, fully specified alternative method.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc",
         "COV-TD-T2-W05-CHORDAL-SCALE",
         "TD-FACT-W05-SCALE-CONSTRUCTIONS"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "TD-T2-W05-CHORD-CENTRE-LABEL",
       "kind": "FACT",
-      "detail": "The chordal-scale construction paragraph at body child 962 renders “With 0⁰ as centre”, while the quadrant diagram labels its centre A. The text label and figure label do not agree unambiguously.",
-      "required_action": "Confirm the intended centre label and correct the method text or figure in a reviewed supplement; do not assume O/A without source-author confirmation.",
+      "detail": "The source prose reads “0⁰ as centre” while the quadrant figure labels its centre A. The original fine-chord alternative now explicitly defines the construction centre as O and does not depend on the ambiguous source label. The source discrepancy is retained unchanged.",
+      "required_action": "Teacher reviews the original alternative and confirms the O-centre notation for the replacement method; do not rewrite the source's A/O label without author approval.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc",
         "COV-TD-T2-W05-CHORDAL-SCALE",
         "TD-FACT-W05-SCALE-CONSTRUCTIONS"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "TD-T2-W01-DEGREE-GLYPH-RENDER",
