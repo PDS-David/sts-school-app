@@ -40,8 +40,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 36,
-    "PENDING": 41,
-    "BLOCKED": 1
+    "PENDING": 40,
+    "BLOCKED": 2
   },
   "items": [
     {
@@ -1486,8 +1486,8 @@
         "GOV-INV-T3",
         "GOV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-12: exact unique scheme row is line 39, '12/13. Revision and Examination'; eleven teaching spans exist and no Week Twelve/Thirteen body follows. Required classify_marker kind SCHEME_ONLY rule must be stored in backend/src/db/ss1/subjects/government.json, but this path is absent from this item's allowed_write_paths (only QUEUE.json and GOV-INV-T3.md are allowed). Protocol forbids writing outside allowed paths. No rule, coverage target, revision lesson or exam paper was added. Owner must authorize the package path or reassign the rule step.",
       "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
     },
     {
@@ -2952,7 +2952,6 @@
   "next_runnable": [
     "GOV-TEST-PACKAGE",
     "GOV-LES-T1-W01-CORRECTED-WEEK",
-    "GOV-REV-T3",
     "GOV-MARK-T3",
     "GOV-WK-T3-W01",
     "GOV-WK-T3-W02",

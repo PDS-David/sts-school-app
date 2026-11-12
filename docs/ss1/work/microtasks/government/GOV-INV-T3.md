@@ -200,3 +200,12 @@ These are source markers and pointers, not evidence that a question has an answe
 - The 12/13 revision/examination row is cross-referenced to GOV-REV-T3 and remains scheme-only.
 - References are indexed exactly as printed; bibliographic details not supplied by the source remain unknown.
 - No lesson, coverage entry, source rule, correction or asset is created by this preamble task. Objective completeness and any PARTIAL/UNRESOLVED follow-up are assessed by the corresponding GOV-WK-T3 items.
+
+## GOV-REV-T3 — scheme-only marker disposition (blocked by write-path scope)
+
+- Exact Antiword 0.37 line 39: `12/13.  Revision and Examination` (the source's two spaces are preserved in the extracted line).
+- Preamble lines 1–43 SHA-256: `ede0cf7df2995e5726d445d631d2a0c87480b79abb3c4095604ab584a162fb92`.
+- The row occurs once in the scheme. The inventory records eleven teaching spans ending at line 1551; no Week Twelve or Week Thirteen body follows.
+- Required disposition: a source-bound `classify_marker` rule with kind `SCHEME_ONLY`, targeting this exact row. No revision lesson, examination paper, answer, marks or additional teaching week is warranted.
+- **Implementation gate:** GOV-REV-T3's `allowed_write_paths` permits only `QUEUE.json` and `GOV-INV-T3.md`; it does not permit `backend/src/db/ss1/subjects/government.json`, where the package's `source_rules[]` must be written. The protocol prohibits writing outside the task's allowed paths. Therefore the rule and marker coverage target have **not** been written, and the item is marked BLOCKED rather than falsely completed.
+- Owner action required: add `backend/src/db/ss1/subjects/government.json` to this item's `allowed_write_paths` or explicitly reassign the rule-writing step to an item that authorizes the package path. Once authorized, add the SCHEME_ONLY rule and link the existing/new marker coverage according to the package contract.
