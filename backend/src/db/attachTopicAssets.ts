@@ -183,11 +183,11 @@ export function isSafeSvg(bytes: Buffer): boolean {
   let source: string;
   try { source = new TextDecoder('utf-8', { fatal: true }).decode(bytes); } catch { return false; }
   source = source.replace(/^\uFEFF/, '').trim();
-  if (!/^(?:<\?xml\s+version=["']1\.[01]["'][^?]*\?>\s*)?<svg\b[\s\S]*<\/svg>$/i.test(source)) return false;
+  if (!/^(?:<\?xml\s+version=["']1\.[01]["'](?:\s+encoding=["']utf-8["'])?(?:\s+standalone=["'](?:yes|no)["'])?\s*\?>\s*)?<svg\b[\s\S]*<\/svg>$/i.test(source)) return false;
   if (!hasSafeSvgStyles(source)) return false;
   const viewBox = source.match(/\bviewBox=["']\s*([0-9.+-]+)[,\s]+([0-9.+-]+)[,\s]+([0-9.+-]+)[,\s]+([0-9.+-]+)\s*["']/i);
   if (!viewBox || !Number.isFinite(Number(viewBox[3])) || !Number.isFinite(Number(viewBox[4])) || Number(viewBox[3]) <= 0 || Number(viewBox[4]) <= 0) return false;
-  if (/<!DOCTYPE|<!ENTITY|<\s*(?:script|foreignObject|iframe|object|embed|image|audio|video)\b|<\?xml-stylesheet|\bon[a-z][\w:-]*\s*=|\b(?:href|src|style)\s*=|javascript:|data:|@import|url\(\s*(?!["']?#)/i.test(source)) return false;
+  if (/<!DOCTYPE|<!ENTITY|<\s*(?:script|foreignObject|iframe|object|embed|image|audio|video|meta|link|base|set|animate|animateTransform|animateMotion|animateColor|mpath|feImage|use)\b|<\?xml-stylesheet|\bon[a-z][\w:-]*\s*=|\b(?:href|src|style)\s*=|javascript:|data:|@import|url\(\s*(?!["']?#)/i.test(source)) return false;
   return true;
 }
 

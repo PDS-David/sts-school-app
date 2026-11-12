@@ -33,6 +33,18 @@ test('rejects active content, external references and malformed input', () => {
     stylesheet: `<?xml-stylesheet href="a.css"?>${ok}`,
     notSvg: '<html><body/></html>',
     unterminated: ok.replace('</svg>', ''),
+    meta: ok.replace('<rect', '<meta http-equiv="refresh"/><rect'),
+    link: ok.replace('<rect', '<link rel="stylesheet"/><rect'),
+    base: ok.replace('<rect', '<base/><rect'),
+    set: ok.replace('<rect', '<set attributeName="fill" to="red"/><rect'),
+    animate: ok.replace('<rect', '<animate attributeName="fill" values="red"/><rect'),
+    animateTransform: ok.replace('<rect', '<animateTransform/><rect'),
+    mpath: ok.replace('<rect', '<mpath/><rect'),
+    feImage: ok.replace('<rect', '<filter><feImage/></filter><rect'),
+    use: ok.replace('<rect', '<use/><rect'),
+    upperStyleAttr: ok.replace('<rect', '<rect STYLE="fill:red"'),
+    nonUtf8Prolog: `<?xml version="1.0" encoding="UTF-16"?>${ok}`,
+    entityEscapedUrl: ok.replace('fill="#0a0"', 'fill="url(&#104;ttp://x)"'),
   };
   for (const [name, body] of Object.entries(bad)) assert.equal(isSafeSvg(svg(body)), false, name);
   assert.equal(isSafeSvg(Buffer.alloc(0)), false, 'empty');
