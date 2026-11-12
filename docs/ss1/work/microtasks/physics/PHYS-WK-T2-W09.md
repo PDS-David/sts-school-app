@@ -41,7 +41,7 @@ The source's statement that every field line must terminate on a charge is incom
 
 The current field-pattern lesson does not teach Coulomb's law, E, V, potential energy or D. Five coverage entries have therefore been added as `UNRESOLVED`, with open item `PHYSICS-T2-W09-QUANTITATIVE-ELECTRIC-QUANTITIES` and task `PHYS-LESSON-T2-W09-ELECTRIC-QUANTITIES`. These objectives are not claimed as covered. The new lesson must teach the source formulae, vector/scalar distinctions, units, worked examples, and key all source evaluations, MCQs and numerical theory questions.
 
-The source calls `D=Q/A` “flux density”. In modern SI terminology, charge per unit area is usually surface charge density `σ=Q/A`, while electric displacement `D` is distinct (`D=εE` in a linear isotropic medium). The new lesson must preserve the source's stated relation while clarifying the terminology. Correction record: `CORR-PHYSICS-T2-W09-FLUX-DENSITY-NOTATION`.
+The source calls `D=Q/A` “flux density”. In modern SI terminology, charge per unit area is usually surface charge density `σ=Q/A`, while electric displacement `D` is distinct (`D=εE` in a linear isotropic medium). The new lesson must preserve the source's stated relation while clarifying the terminology. The D/σ terminology discrepancy is documented here and in the queued quantitative lesson task. Its delivery-correction record will be created with the replacement lesson so the package never points a correction at a lesson that does not yet exist.
 
 ## Source numerical question ambiguity
 
