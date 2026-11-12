@@ -3614,6 +3614,31 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Five original SVG assets authored: backend/src/db/ss1/assets/further-mathematics/fm2-w4-half-plane-examples.svg sha256=0f5df5a2a16c1f90f099a712db5441969e7a9d8380c4e6f43a5ef695394f9de4 bytes=1278; backend/src/db/ss1/assets/further-mathematics/fm2-w4-feasible-region-triangle.svg sha256=bbafa7ceb67199aa4a8dfce73cfb839c706731f79500891a335703a164199692 bytes=2042; backend/src/db/ss1/assets/further-mathematics/fm2-w4-drink-lp-region.svg sha256=09c6b14c36543a16f1f9c254525e8595111cef47229c09eea58de3c921f32352 bytes=3907; backend/src/db/ss1/assets/further-mathematics/fm2-w4-dress-lp-region.svg sha256=99967ad245061d5a40b02ff785f5453ac3b7b9ceaceb7bcec2ee370889c65a15 bytes=3275; backend/src/db/ss1/assets/further-mathematics/fm2-w4-detergent-lp-region.svg sha256=0b64298de54f29d087d43d827e916652ecbde21a762ae160a24d41392b30e5e6 bytes=4038. SVG safety and app rendering remain to be verified.",
       "completion_condition": "All five diagrams pass SVG safety, exact hash/byte checks and app rendering; visual state and provenance are registered."
+    },
+    {
+      "id": "FM-ASSET-T2-W03-INEQUALITIES",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 03 corrected quadratic and absolute-value sign diagrams",
+      "objective": "Create original number-line/sign-chart SVGs to replace the source's incorrect quadratic inequality graphs and support the absolute-value solution.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/assets/further-mathematics/",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/assets/further-mathematics/",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-LES-T2-W03-LINEAR-INEQUALITIES"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Three original SVGs authored and registered with exact hash/byte metadata: backend/src/db/ss1/assets/further-mathematics/fm2-w3-quadratic-signchart-1.svg f43e605fdf5b2cdf4e2fce98e1e574d0196cd14e6bc20868a22ee12be89d117e (919 bytes); backend/src/db/ss1/assets/further-mathematics/fm2-w3-quadratic-signchart-2.svg dbe595037a3d9015373904db1fc6b7b24a887fcf4459c34bb85ada959b534347 (925 bytes); backend/src/db/ss1/assets/further-mathematics/fm2-w3-absolute-value-numberline.svg 991b9600d73d31b5d56cddee9208ec53faac95d058b1088c5abbf8d9b5d09f4e (837 bytes). SVG safety and app rendering remain unverified.",
+      "completion_condition": "Three SVGs pass SVG safety, integrity and app rendering; diagrams appear alongside the corrected solution examples."
     }
   ],
   "review": {
