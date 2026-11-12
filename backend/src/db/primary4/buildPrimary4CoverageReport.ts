@@ -10,6 +10,8 @@ export function buildPrimary4CoverageReport() {
   const subjects = (sourceManifest as any).expected_subjects as string[];
   const terms = (sourceManifest as any).expected_terms as string[];
   const records = (sourceManifest as any).records as any[];
+  const highShortSourceCount = records.filter(row => row.review_flag === 'HIGH_SHORT_SOURCE').length;
+  const shortSourceReviewCount = records.filter(row => row.review_flag === 'SHORT_SOURCE_REVIEW').length;
   const packages = [
     ...(homeEconomics12 as any).lessons.map((lesson: any) => ({ subject: 'Home Economics', term: lesson.term })),
     ...(homeEconomics3 as any).lessons.map(() => ({ subject: 'Home Economics', term: '3rd Term' })),
@@ -19,7 +21,7 @@ export function buildPrimary4CoverageReport() {
   const matrix = subjects.flatMap(subject => terms.map(term => {
     const existing = records.filter(row => row.subject === subject && row.term === term);
     const researched = packages.filter(row => row.subject === subject && row.term === term).length;
-    let status = existing.length ? 'SOURCE_ROWS_PRESENT_REVIEW_REQUIRED' : 'MISSING';
+    let status = existing.length ? 'SOURCE_ROWS_PRESENT' : 'MISSING';
     if (subject === 'Basic Technology' && ['1st Term', '2nd Term'].includes(term) && researched) {
       status = 'PROPOSED_LOCAL_ALLOCATION_PENDING_APPROVAL';
     } else if (subject === 'Basic Technology' && ['1st Term', '2nd Term'].includes(term)) {
@@ -29,7 +31,7 @@ export function buildPrimary4CoverageReport() {
     } else if (subject === 'Home Economics' && ['1st Term', '2nd Term'].includes(term) && researched) {
       status = 'RESEARCHED_PACKAGE_PENDING_APPROVAL';
     } else if (subject === 'Home Economics' && term === '3rd Term' && researched) {
-      status = 'SOURCE_ROWS_PLUS_RESEARCHED_SUPPLEMENTS';
+      status = 'SOURCE_ROWS_PLUS_RESEARCHED_SUPPLEMENTS_PENDING_APPROVAL';
     }
     return {
       subject,
@@ -37,6 +39,9 @@ export function buildPrimary4CoverageReport() {
       status,
       existing_export_rows: existing.length,
       researched_lessons_prepared: researched,
+      source_review_flagged_rows: existing.filter(row => row.review_flag !== 'CONTENT_PRESENT').length,
+      high_short_source_rows: existing.filter(row => row.review_flag === 'HIGH_SHORT_SOURCE').length,
+      short_source_review_rows: existing.filter(row => row.review_flag === 'SHORT_SOURCE_REVIEW').length,
       total_planned_lessons: existing.length + researched,
     };
   }));
@@ -47,6 +52,10 @@ export function buildPrimary4CoverageReport() {
     term_count: terms.length,
     combination_count: matrix.length,
     export_record_count: records.length,
+    source_review_flagged_record_count: highShortSourceCount + shortSourceReviewCount,
+    high_short_source_record_count: highShortSourceCount,
+    short_source_review_record_count: shortSourceReviewCount,
+    source_review_note: 'Length-based source flags are triage indicators only; they do not independently establish lesson quality or completeness.',
     provenance_note: 'Source-row counts are from the user-supplied database export. Researched lesson counts are newly authored packages and are not production records until an approved import is performed.',
     archive_verification: 'Original Word archive and extracted p4txt folder were not mounted in this execution environment; source hashes cover exported source_reference text only.',
     matrix,
@@ -76,7 +85,8 @@ export function buildPrimary4CoverageReport() {
         source: 'https://syllabus.ng/primary4-scheme-of-work/home-economics/',
       },
     ],
-    unresolved: matrix.filter(row => ['MISSING', 'NO_SEPARATE_TERM_ASSIGNMENT_FOUND', 'PROPOSED_LOCAL_ALLOCATION_PENDING_APPROVAL'].includes(row.status)),
+    pending_approval: matrix.filter(row => ['PROPOSED_LOCAL_ALLOCATION_PENDING_APPROVAL', 'RESEARCHED_PROPOSED_TERM_ALLOCATION', 'RESEARCHED_PACKAGE_PENDING_APPROVAL', 'SOURCE_ROWS_PLUS_RESEARCHED_SUPPLEMENTS_PENDING_APPROVAL'].includes(row.status)),
+    unresolved: matrix.filter(row => ['MISSING', 'NO_SEPARATE_TERM_ASSIGNMENT_FOUND'].includes(row.status)),
   };
 }
 
