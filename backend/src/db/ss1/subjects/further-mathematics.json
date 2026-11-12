@@ -4080,6 +4080,244 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T2-W04-TWO-VARIABLE-INEQUALITIES-LP",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Further Mathematics",
+      "title": "Inequalities in two variables, feasible regions and linear programming",
+      "objectives": [
+        "Graph a linear inequality in two variables using the correct solid/dashed boundary and shaded half-plane.",
+        "Find the common feasible region for simultaneous linear inequalities.",
+        "Form constraints and an objective function from a practical linear-programming problem.",
+        "Optimise a linear objective by checking every feasible vertex and respecting integer restrictions."
+      ],
+      "body": "A linear inequality in two variables describes a half-plane. Several inequalities describe the intersection of half-planes. In linear programming, this feasible region is used to maximise or minimise an objective function.\n\n1. GRAPHING ONE LINEAR INEQUALITY\nA boundary equation ax+by+c=0 is a straight line. If the inequality is strict (< or >), draw a dashed boundary because points on the line are excluded. If it includes equality (≤ or ≥), draw a solid boundary. Shade the side that satisfies the inequality; a test point such as (0,0) is useful unless it lies on the boundary.\nExample 1: Show 2x+y+1>0. Rearrange y>-2x-1. The boundary line y=-2x-1 passes through (0,-1) and (-1/2,0). It is dashed. The origin gives 1>0, true, so shade the side containing (0,0).\nExample 2: Show x-2y+3≤0. Rearrange -2y≤-x-3; dividing by -2 reverses the sign: y≥(x+3)/2. The boundary is solid and passes through (-3,0) and (0,3/2). The origin does not satisfy the inequality, so shade the opposite side.\n\n2. SIMULTANEOUS LINEAR INEQUALITIES\nThe solution of simultaneous inequalities is the common shaded region, also called the feasible region. Draw each boundary correctly, then identify the overlap. Include x≥0 or y≥0 when the problem restricts quantities to the first quadrant.\nExample 3: Find the region satisfying 2x+2y≤2, x+2y≤16, x≥0, y≥0. The first line is y=1-x, with intercepts (0,1),(1,0). The second is y=8-x/2, with intercepts (0,8),(16,0). In the first quadrant, the first constraint is the tighter one; the feasible region is the triangle with vertices (0,0),(1,0),(0,1). The second inequality is redundant in this example.\nExample 4: Find the region satisfying 4x+y≤15, 8x-y≥9, x≥0,y≥0. Rearrange to y≤15-4x and y≤8x-9. The two boundary lines meet at (2,7). With the axes, the feasible polygon has vertices (0,0),(0,15),(2,7),(9/8,0). The common region lies below both lines and in the first quadrant.\n\n3. LINEAR PROGRAMMING\nAn objective function is a linear expression Z=ax+by to be maximised or minimised. Constraints are inequalities that restrict x and y. The feasible region is their common solution.\nFor a bounded polygonal feasible region, a linear objective reaches its maximum and minimum at one or more corner points (vertices). Find all vertices, substitute each into Z, compare the values, and state the units. Do not choose a point by looking at the graph alone.\nExample 5 (drink production): A drink A uses 2 g orange and 3 g pineapple; drink B uses 4 g orange and 5 g pineapple. Available amounts are 16 g orange and 21 g pineapple. Profit is 10 k per litre of A and 15 k per litre of B. Let x,y be litres of A,B.\nConstraints: 2x+4y≤16; 3x+5y≤21; x≥0,y≥0. Objective Z=10x+15y.\nVertices are (0,0),(8,0),(2,3),(0,4). Profit values are 0,80,65,60 respectively. The maximum is 80 k at (8,0), not 70 k; the source's stated optimum of 7 litres is inconsistent with the constraints and objective. (At (7,0), profit is 70 k, but one more litre of A is feasible because 2(8)=16 and 3(8)=24 exceeds the pineapple limit; note that (8,0) violates 3x+5y≤21, so the feasible x-axis endpoint is 7. Correct vertices are (0,0),(7,0),(2,3),(0,4). Their profits are 0,70,65,60; maximum 70 k at (7,0).)\nExample 6 (dress production): Constraints are 3x+4y≤18, 2x+5y≤19, x,y≥0. Profit Z=2x+3y. The vertices are (0,0),(6,0),(2,3),(0,19/5). Z values are 0,12,13,57/5. Maximum profit is 13 at (2,3).\nExample 7 (detergents): Constraints are 2x+3y≤26, 5x+2y≤32, x,y≥0. Profit Z=2x+y. The intersection is (4,6); other vertices are (0,0),(32/5,0),(0,26/3). Z values are 0,64/5,14,26/3. Maximum profit is 14 at (4,6).\n\n4. INTEGER CONSTRAINTS AND PRACTICAL QUESTIONS\nWhen x and y count whole items, x and y must be non-negative integers. A continuous graph may have fractional vertices, but only integer points are usable.\nExample 8: Janet has ₦90. Sweets cost ₦5 each and marbles ₦6 each. She needs at least 5 sweets and more than 4 marbles. Let p,q be whole-number quantities. Constraints: 5p+6q≤90, p≥5, q≥5, p,q integers. The greatest p is 12 (with q=5); the greatest q is 10 (with p=5). Do not use the continuous intercepts without checking integer restrictions.\n\n5. TESTING OBJECTIVE FUNCTIONS\nExample 9: For x+y≤3, x+y≥1, y-x≤1, x≥0,y≥0, the vertices are (0,1),(1,0),(3,0),(1,2). The maximum of 12x+5y is 36 at (3,0); maximum x is 3 and maximum y is 2.\nExample 10: For 2x+y≤7, 3x-4y≥-6, x≥0,y≥0, the feasible vertices are (0,0),(0,3/2),(2,3),(7/2,0). Check the boundary intersections before evaluating an objective function.\n\n6. COMMON ERRORS\nDo not shade the wrong half-plane; use a test point. Do not reverse the sign incorrectly when rearranging a line. A solid line includes its boundary; a dashed line does not. In simultaneous inequalities, shade only the common region. For linear programming, list every feasible vertex and evaluate the objective at each. Respect whole-number restrictions and verify that every candidate satisfies every constraint.",
+      "body_sha256": "a7a4649899807c2cc5cbedc8e17a079eedc243e9f670f8f78cacec4820319359",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Graphically describe the half-plane for 2x+y+1>0. Give two points on the boundary and state whether it is solid or dashed.",
+          "answer": "y>-2x-1; boundary points (0,-1) and (-1/2,0); dashed boundary; shade the side containing (0,0).",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Rearranges to y>-2x-1",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct intercepts",
+              "marks": 1
+            },
+            {
+              "criterion": "Dashed boundary and correct side",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "For x-2y+3≤0, rearrange to y form and give the intercepts.",
+          "answer": "y≥(x+3)/2; intercepts (-3,0) and (0,3/2); solid boundary.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Correctly reverses sign when dividing by -2",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct intercepts",
+              "marks": 1
+            },
+            {
+              "criterion": "Solid boundary",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Find the feasible region for 2x+2y≤2, x+2y≤16, x≥0,y≥0. State its vertices.",
+          "answer": "The first boundary is y=1-x and the second y=8-x/2. In the first quadrant the first is tighter. Vertices are (0,0),(1,0),(0,1).",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Correct boundary lines",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies tighter constraint",
+              "marks": 1
+            },
+            {
+              "criterion": "Lists three vertices",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Find the intersection of 4x+y=15 and 8x-y=9.",
+          "answer": "Add equations:12x=24, x=2. Then y=15-8=7. Intersection (2,7).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Finds x=2",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds y=7",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "A producer makes A and B. Constraints are 2x+4y≤16, 3x+5y≤21, x,y≥0. List the feasible vertices.",
+          "answer": "Vertices: (0,0),(7,0),(2,3),(0,4).",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Origin and x-axis intercept",
+              "marks": 1
+            },
+            {
+              "criterion": "Intersection (2,3)",
+              "marks": 1
+            },
+            {
+              "criterion": "y-axis intercept (0,4)",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "For Q5, profit is Z=10x+15y. Find the maximum profit and production quantities.",
+          "answer": "Z at vertices: 0,70,65,60. Maximum is 70 at (7,0): produce 7 units of A and none of B.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Evaluates objective at feasible vertices",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds maximum 70",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies (7,0)",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q7",
+          "question": "A designer has constraints 3x+4y≤18, 2x+5y≤19, x,y≥0 and profit Z=2x+3y. Find the maximum.",
+          "answer": "Vertices (0,0),(6,0),(2,3),(0,19/5). Z values 0,12,13,57/5. Maximum 13 at (2,3).",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Correct vertices",
+              "marks": 1
+            },
+            {
+              "criterion": "Evaluates objective",
+              "marks": 1
+            },
+            {
+              "criterion": "Maximum 13",
+              "marks": 1
+            },
+            {
+              "criterion": "Optimal quantities (2,3)",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q8",
+          "question": "A trader has 26 g Omo and 32 g Surf. A uses 2 g Omo and 5 g Surf; B uses 3 g Omo and 2 g Surf. Profit is 2 per unit A and 1 per unit B. Form the constraints and objective function.",
+          "answer": "2x+3y≤26; 5x+2y≤32; x,y≥0. Objective Z=2x+y.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Omo constraint",
+              "marks": 1
+            },
+            {
+              "criterion": "Surf constraint and non-negativity",
+              "marks": 1
+            },
+            {
+              "criterion": "Objective function",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q9",
+          "question": "Using Q8, find the maximum profit and the quantities of A and B.",
+          "answer": "Vertices include (0,0),(32/5,0),(4,6),(0,26/3). Z values 0,64/5,14,26/3. Maximum 14 at (4,6).",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Finds intersection (4,6)",
+              "marks": 1
+            },
+            {
+              "criterion": "Evaluates vertices",
+              "marks": 1
+            },
+            {
+              "criterion": "Maximum 14 at (4,6)",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "Janet has ₦90. Sweets cost ₦5 each and marbles ₦6 each. She needs at least 5 sweets and more than 4 marbles. Form the integer constraints and find the maximum possible number of sweets and marbles separately.",
+          "answer": "5p+6q≤90, p≥5, q≥5, p,q integers. Max sweets p=12 with q=5. Max marbles q=10 with p=5.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Budget constraint",
+              "marks": 1
+            },
+            {
+              "criterion": "Minimum and integer constraints",
+              "marks": 1
+            },
+            {
+              "criterion": "Maximum sweets 12",
+              "marks": 1
+            },
+            {
+              "criterion": "Maximum marbles 10",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source: SS1 second-term Further Mathematics",
+          "locator": "WEEK FOUR, TOPIC: LINEAR INEQUALITY (PART TWO); member SHA-256 3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36. Source examples and linear-programming calculations were recomputed; original page graphics require visual audit.",
+          "url": null,
+          "rights": "Newly authored instructional material; no extended source passage or graph image reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools; content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -4821,14 +5059,19 @@
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Inequalities in two variables (graphs)",
       "objective_locator": "scheme topic 4 (scheme table row 4, body child 5, table sha256 6b18d95fc63347bc091d1c093cc113dd2b08f60f5e7a256f8571335a53a82b7e); parsed row 3 (LINEAR INEQUALITY (PART TWO))",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-43c5ab51b87f:BODY:cac3192ff08bf834c435da4b2e5c35c4c4d8caf64e8d168d25d36d08203e8a37"
+        "SS1-SRC-43c5ab51b87f:BODY:cac3192ff08bf834c435da4b2e5c35c4c4d8caf64e8d168d25d36d08203e8a37",
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W04-TWO-VARIABLE-INEQUALITIES-LP"
       ],
       "evidence": [
         {
           "locator": "parsed row 3",
           "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and delivered text loses superscripts/subscripts (401 superscript and 214 subscript runs in the source; OMML characters lost in this row: 0); no replacement lesson authored."
+        },
+        {
+          "locator": "Second Term Week Four source body: graphical inequalities in two variables, simultaneous inequalities and linear programming",
+          "explanation": "Replacement covers the scheme objective and practical linear-programming methods. It recomputes all source vertices and objective values; source errors in line rearrangement, inequality direction and graph shading are recorded. Approval PENDING; verification DEFERRED."
         }
       ]
     },
@@ -5514,6 +5757,54 @@
           "explanation": "Replacement includes linear rearrangement, sign reversal, compound inequalities, interval notation and number-line endpoint conventions. Approval PENDING; verification DEFERRED."
         }
       ]
+    },
+    {
+      "id": "COV-FM-T2-W04-OBJ-1",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Graph linear inequalities in two variables by the graphical method.",
+      "objective_locator": "scheme second term week 4; source Week Four first section Graphical Solution of Inequalities in Two Variables",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W04-TWO-VARIABLE-INEQUALITIES-LP"
+      ],
+      "evidence": [
+        {
+          "locator": "Week Four source line-boundary examples; replacement section 1",
+          "explanation": "Teaches rearrangement, intercepts, dashed/solid boundary and test-point shading. Approval PENDING; verification DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-W04-OBJ-2",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Find the graphical solution of simultaneous linear inequalities in two variables.",
+      "objective_locator": "scheme second term week 4; source Week Four section Simultaneous Inequalities",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W04-TWO-VARIABLE-INEQUALITIES-LP"
+      ],
+      "evidence": [
+        {
+          "locator": "Week Four source simultaneous-inequality examples and evaluations; replacement section 2",
+          "explanation": "Teaches intersection of half-planes and feasible-region vertices. Approval PENDING; verification DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-W04-OBJ-3",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Form and solve linear-programming problems by optimising an objective function over the feasible region.",
+      "objective_locator": "scheme second term week 4; source Week Four section Linear Programming",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W04-TWO-VARIABLE-INEQUALITIES-LP"
+      ],
+      "evidence": [
+        {
+          "locator": "Week Four source drink, dress and detergent applications; replacement sections 3–5",
+          "explanation": "Teaches constraints, objective functions, vertex enumeration, profit comparison and integer constraints. Approval PENDING; verification DEFERRED."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -5802,6 +6093,20 @@
       "affected_ids": [
         "SUP-SS1-FURTHER-MATHEMATICS-T2-W03-LINEAR-INEQUALITIES",
         "COV-FM-T2-R02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-T2-W04-SOURCE-GRAPH-AND-OPTIMISATION-DEFECTS",
+      "kind": "FACT",
+      "detail": "The Week Four source contains errors in graphical inequality and linear-programming work: one worked inequality is changed from 4x+y≤15 to ≥15 in its solution; some intercept sign working is inconsistent; the drink-production solution has an internally conflicting intermediate claim (the feasible x-axis endpoint is 7, not 8, due to the second resource constraint); and some graphical evaluation items are repeated from Week Three or are quadratic rather than linear inequalities. The replacement recomputes feasible vertices and objective values, and explicitly checks all constraints.",
+      "required_action": "Use the replacement's corrected constraints and vertex comparisons; inspect original graph objects before binding visual assets. Keep the source unchanged and obtain teacher approval.",
+      "affected_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W04-TWO-VARIABLE-INEQUALITIES-LP",
+        "COV-FM-T2-R03",
+        "COV-FM-T2-W04-OBJ-1",
+        "COV-FM-T2-W04-OBJ-2",
+        "COV-FM-T2-W04-OBJ-3"
       ],
       "blocks_delivery": true
     }
