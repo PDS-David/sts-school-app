@@ -54,7 +54,9 @@ test('Literature resolver does not cross subjects, terms or source files', () =>
     title: titles['2nd Term'][0], source_reference: titles['2nd Term'][0],
   };
   assert.equal(resolve({ ...base, subject_name: 'English Language' }), null);
-  assert.equal(resolve({ ...base, term_label: '3rd Term' }), null);
+  const thirdTermSource = pkg.sources.find(s => s.term === '3rd Term')!;
+  const thirdTerm = resolve({ ...base, term_label: '3rd Term', source_file: path.basename(thirdTermSource.archive_member) });
+  assert.equal(thirdTerm?.lessonId, 'SUP-SS1-LITERATURE-T3-W01');
   assert.equal(resolve({ ...base, source_file: 'other.docx' }), null);
   assert.equal(resolve({ ...base, title: 'not a Literature source topic' }), null);
   assert.equal(resolve({ ...base, source_reference: 'unrelated source text' }), null);
