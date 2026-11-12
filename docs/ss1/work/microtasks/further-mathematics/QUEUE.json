@@ -3671,8 +3671,8 @@
         "FM-LES-T2-W09-LOGIC",
         "FM-LES-T2-W10-LOGICAL-CONNECTIVES"
       ],
-      "status": "IN_PROGRESS",
-      "implementation_reference": "Follow-up PR #646 contains only the post-merge Further Mathematics integrity/coverage corrections and queue/review closeout. All 25 lessons, 90 coverage rows and 24 registered assets are preserved from merged PR #639. Verification pending current-head CI.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "PR #646 current-head checks all passed: Further Mathematics stored lesson/asset hashes and byte counts, package schema/references, SVG safety, source staging, Further Mathematics compiler, repository integrity, all registered SS1 source-anchor/compiler audit, and broader verification workflow. All 25 lesson body hashes and practice marking totals are covered by the integrity checks. Residual source/permission/teacher-approval gates are recorded; app/browser rendering remains a separate owner review.",
       "completion_condition": "Master-targeted CI passes all relevant checks; package hash/schema/compiler/SVG validation is complete; all remaining blockers are classified and recorded. No merge before required checks pass."
     },
     {
