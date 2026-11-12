@@ -181,3 +181,68 @@ The revised grade-level document links were reachable from the official NERDC pa
 ## 10. Current execution boundary
 
 The existing branch remains one commit ahead of, and zero commits behind, `master` at the time of this follow-up check. This follow-up changes the audit evidence only; it does not change class-resolution, promotion, subject seeding, student delivery, or production data. No curriculum content or delivery status is marked complete without the missing source and runtime evidence.
+
+
+## 11. Newly verified official source: Primary 1 Cultural and Creative Arts
+
+A source-level inspection after the initial audit found an indexed, readable copy of the official **New Revised Basic Education Curriculum: Cultural and Creative Arts for Primary 1**, published by NERDC in September 2025:
+
+https://lmis.nerdcportals.com.ng/pry_1/web/12.pdf
+
+The PDF is 16 topic entries long in its Primary 1 contents overview. It explicitly includes the curriculum fields needed for later authoring: learning outcomes, focal competencies, performance objectives, knowledge/skills, learning activities, teaching/learning resources and evaluation guides. It describes a thematic, spiral, activity-driven, learner-centred approach. This is a genuine official source document, not a school-authored lesson package.
+
+### Extracted Primary 1 CCA topic inventory
+
+| Theme | Topic |
+|---|---|
+| Arts and Crafts | Arts |
+| Arts and Crafts | Scribbling and Drawing |
+| Arts and Crafts | Letters and Numbers |
+| Arts and Crafts | Colours |
+| Arts and Crafts | Crafts |
+| Arts and Crafts | Decorative Artwork |
+| Arts and Crafts | Paper Crafts |
+| Arts and Crafts | Lines |
+| Arts and Crafts | Shapes and Texture |
+| Arts and Crafts | Art Materials and Tools |
+| Culture and Tradition | Culture |
+| Culture and Tradition | Ceremonies in Nigeria |
+| Culture and Tradition | Body Beautification |
+| Performing Arts and Entertainment | Cultural Rhymes |
+| Performing Arts and Entertainment | Folktales |
+| Performing Arts and Entertainment | Songs |
+
+### Delivery and assessment evidence in the source
+
+Examples of curriculum-aligned activity/resource/evaluation patterns include:
+
+- Scribbling and drawing: pencil grip, free scribbles, tracing straight/curved/zig-zag lines; pencils, crayons, drawing books and tracing sheets; evaluate the pupil's ability to scribble, draw and reproduce lines.
+- Letters and numbers: trace and draw A–Z and numbers 1–20; use traceable letters/numbers, posters, flashcards and writing books; evaluate letter recognition, case recognition and tracing.
+- Colours: identify primary/secondary colours, colour simple objects and make hand/finger-print patterns; use colour cards, paper, crayons and a colour wheel; evaluate identification, drawing/colouring and pattern-making.
+- Paper crafts: make simple 2-D and 3-D forms; use paper, child-safe scissors and non-toxic adhesive; evaluate material identification, safe cutting and assembly.
+- Shapes and texture: identify and draw simple shapes, compare smooth/rough surfaces and create patterns; use shape cut-outs, paper, pencils and safe tactile samples.
+- Culture and ceremonies: identify cultural elements and Nigerian ceremonies, discuss and observe examples; use culturally varied artefacts, attire, songs and audio-visual material; evaluate pupils' ability to describe and give examples respectfully.
+- Cultural rhymes, folktales and songs: listen, recite/sing, use movement and identify simple lessons; use rhymes, stories and audio-visual equipment; evaluate participation, recall, expression and understanding.
+
+The source includes a specific safety cue for paper craft: use safety scissors for children and non-toxic adhesives. These are authoring requirements if this source is converted into interactive child activities.
+
+### Limits of this evidence
+
+- The document is Primary 1 CCA only. It does not establish completeness for any other subject or class.
+- The contents overview does not allocate these 16 topics to the school's 1st, 2nd and 3rd terms. No term split has been invented.
+- The PDF was inspected through its indexed official source; this is not evidence that the app currently serves it, that any asset URL loads in the app, or that a learner can complete/submit its activities.
+- The PDF's presence does not replace the school's original source archive, local lesson notes, or the live database export.
+
+This source corrects the earlier blanket statement that no revised Primary 1–3 curriculum document could be inspected: at least this Primary 1 subject PDF is readable. The separate class curriculum landing page still returned access errors for Primary 1–3 directory navigation, so the remaining subject documents require individual discovery and inspection.
+
+## 12. Current evidence status after the source discovery
+
+| Class | New evidence in this pass | Completion status |
+|---|---|---|
+| Pre-Nursery | No age-specific official/local programme located | INCOMPLETE |
+| Reception | NERDC one-year pre-primary baseline, conditional on age/class mapping | INCOMPLETE |
+| Primary 1 | Official CCA curriculum topic inventory inspected; other subjects and term mapping still outstanding | INCOMPLETE |
+| Primary 2 | No new subject-level PDF inspected in this pass | INCOMPLETE |
+| Primary 3 | No new subject-level PDF inspected in this pass | INCOMPLETE |
+
+No app code, database rows, source importer, or production data was changed by this evidence update.
