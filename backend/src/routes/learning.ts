@@ -54,11 +54,11 @@ async function studentTopicSequenceLocked(user: AuthUser, topic: any): Promise<b
   const studentId = studentRows[0]?.id;
   if (!studentId) return true;
   const { rows: group } = await query(
-    `SELECT id, order_index, sequence_rank
-       FROM topics
-      WHERE school_code=$1 AND subject_id=$2 AND class_name=$3
-        AND term_label IS NOT DISTINCT FROM $4 AND order_index IS NOT NULL
-      ORDER BY order_index ASC, id ASC`,
+    `SELECT t.id, t.order_index, (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank
+       FROM topics t
+      WHERE t.school_code=$1 AND t.subject_id=$2 AND t.class_name=$3
+        AND t.term_label IS NOT DISTINCT FROM $4 AND t.order_index IS NOT NULL
+      ORDER BY t.order_index ASC, t.id ASC`,
     [topic.school_code, topic.subject_id, topic.class_name, topic.term_label],
   );
   const ids = group.map((row: any) => row.id);
@@ -452,7 +452,7 @@ router.get('/mathematics-assets/:assetKey', requirePerm('topics.read'), async (r
   const scope = await topicVisibilitySql(user, params);
   if (scope === null) return res.status(404).json({ error: 'Asset not found' });
   const { rows: visible } = await query(
-    `SELECT t.id, t.school_code, t.subject_id, t.sequence_rank, t.title, t.term_label, t.class_name, t.source_file, t.order_index, s.name AS subject_name
+    `SELECT t.id, t.school_code, t.subject_id, (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank, t.title, t.term_label, t.class_name, t.source_file, t.order_index, s.name AS subject_name
        FROM topics t LEFT JOIN subjects s ON s.id=t.subject_id
       WHERE t.id=$1 AND t.school_code=$2${scope}`,
     params,
