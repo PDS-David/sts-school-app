@@ -40,9 +40,9 @@
     "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 31,
+    "IMPLEMENTED_TESTING_DEFERRED": 33,
     "BLOCKED": 6,
-    "PENDING": 121
+    "PENDING": 119
   },
   "total": 158,
   "items": [
@@ -1253,8 +1253,8 @@
       "depends_on": [
         "TD-VIS-INVENTORY"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 17 embedded AutoCAD.Drawing.15 objects located in Weeks 4 (9), 5 (7) and 6–7 (1); each has a WMF preview. Controls were not executed; per-object transcription/render review remains pending. Week Four visual inspection now transcribes visible preview context for 9/17 objects (OLE 1–9; body children 718–841) in TD-VIS-W04.md; 8 objects in Weeks Five and Six–Seven remain to inspect. Native controls remain unexecuted. Week Five preview inspection now adds 7/17 objects/WMF parts (OLE 10–16; body children 866–964), with individual WMF hashes, byte counts and visible transcriptions in TD-VIS-W05.md; only the Week Six–Seven object remains. Week Six–Seven adds the final 17th OLE/WMF preview (body child 1194, oleObject17.bin/image63.wmf, WMF SHA-256 aff737699c5bbbb3ee5435a5920be3bd11c6459b7549fc4ed26f4f4cbbe276a5). Its preview is the Week Three 30/60/70 triangle; cross-row derivative reuse is assigned to TD-ASSET-W06-W07-F12.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12. All 17 AutoCAD.Drawing.15 OLE objects are located by exact XML body-child row, paired with one WMF preview, rendered and visually inspected without executing controls. Each object has an OLE binary hash/byte count and preview WMF hash/byte count, plus a visible transcription or explicit unreadable/uncertain status. Evidence: TD-VIS-OLE.md, supplemented by TD-VIS-W04.md, TD-VIS-W05.md and TD-VIS-W06-W07.md. OLE 6/8 small dimensions and OLE14 k/n answer remain explicitly unresolved, not guessed. No OLE control executed; no app display or subject tests run.",
       "completion_condition": "Each object's row, preview/rendering result and transcription (or reason) recorded; open item narrowed accordingly."
     },
     {
@@ -1286,8 +1286,8 @@
       "depends_on": [
         "TD-VIS-INVENTORY"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 17 WMF preview parts located in Weeks 4 (9), 5 (7) and 6–7 (1), paired with the 17 AutoCAD OLE objects. WMF is not an allowed asset MIME; faithful conversion/provenance decision remains pending. Week Four WMF previews image36.wmf–image44.wmf (9/17) have individual SHA-256 and byte counts recorded in TD-VIS-W04.md; all remain unconverted pending faithful derivative tasks. Week Five preview inspection now adds 7/17 objects/WMF parts (OLE 10–16; body children 866–964), with individual WMF hashes, byte counts and visible transcriptions in TD-VIS-W05.md; only the Week Six–Seven object remains. Week Six–Seven adds the final 17th OLE/WMF preview (body child 1194, oleObject17.bin/image63.wmf, WMF SHA-256 aff737699c5bbbb3ee5435a5920be3bd11c6459b7549fc4ed26f4f4cbbe276a5). Its preview is the Week Three 30/60/70 triangle; cross-row derivative reuse is assigned to TD-ASSET-W06-W07-F12.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12. All 17 WMF parts are identified, paired with OLE objects, and have byte counts/SHA-256 values and bounded per-object SVG tasks. Tested a representative LibreOffice Draw WMF-to-SVG export; vector paths are retained, but output has A4 whitespace and requires viewBox crop plus per-figure geometry/label review. Preferred route and rejection criteria recorded in TD-VIS-WMF.md. No production derivative is committed; per-object conversions remain open in the linked ASSET tasks. No OLE controls executed; no package/app/test verification claimed.",
       "completion_condition": "Per-figure conversion decision recorded; converted files (if any) added under the allowed asset path with hashes and provenance, or an open item records why not. Nothing displayed or verified in the app."
     },
     {
@@ -5477,8 +5477,6 @@
     "TD-FACT-W08-W09-DETAILS",
     "TD-FACT-W10-TANGENCY-CONSTRUCTIONS",
     "TD-KEY-W02-ANSWERS",
-    "TD-VIS-OLE",
-    "TD-VIS-WMF",
     "TD-ASSET-W01-F01",
     "TD-ASSET-W01-F02",
     "TD-ASSET-W01-F03",
@@ -5590,8 +5588,6 @@
     "TD-FACT-W08-W09-DETAILS",
     "TD-FACT-W10-TANGENCY-CONSTRUCTIONS",
     "TD-KEY-W02-ANSWERS",
-    "TD-VIS-OLE",
-    "TD-VIS-WMF",
     "TD-ASSET-W01-F01",
     "TD-ASSET-W01-F02",
     "TD-ASSET-W01-F03",
