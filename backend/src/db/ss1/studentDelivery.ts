@@ -8,6 +8,8 @@ import type { SubjectPackage } from './subjectPackageSchema.js';
 export type StudentSs1Lesson = SubjectPackage['lessons'][number] & {
   subject_slug: string;
   canonical_subject: string;
+  package_status: SubjectPackage['package_status'];
+  classroom_verification_pending: boolean;
 };
 
 const packages = loadPackages();
@@ -16,24 +18,35 @@ const repositoryRoot = path.resolve(moduleDir, '../../../..');
 const normalize = (value: unknown) => String(value ?? '').replace(/\\s+/g, ' ').trim().toLocaleLowerCase('en');
 
 function isStudentDeliverable(lesson: SubjectPackage['lessons'][number]): boolean {
-  return lesson.state.content_approval === 'APPROVED' &&
-    Boolean(lesson.state.approval_reference?.trim()) &&
-    lesson.state.implementation === 'IMPLEMENTED' &&
-    lesson.state.verification === 'VERIFIED' &&
-    Boolean(lesson.state.verification_reference?.trim()) &&
+  const state = lesson.state;
+  const verificationHasEvidence = state.verification === 'VERIFIED'
+    ? Boolean(state.verification_reference?.trim())
+    : state.verification === 'DEFERRED' && state.verification_reference === null;
+  return state.content_approval === 'APPROVED' &&
+    Boolean(state.approval_reference?.trim()) &&
+    state.implementation === 'IMPLEMENTED' &&
+    verificationHasEvidence &&
     lesson.provenance.length > 0 &&
     lesson.provenance.every(source => source.reuse_status === 'PERMITTED');
 }
 
-/** Expose only individually approved, implemented, verified and rights-cleared lessons. */
+/**
+ * Deliver only lessons from packages explicitly marked IMPLEMENTED with no
+ * delivery-blocking open items. A lesson whose classroom verification is
+ * DEFERRED remains visibly flagged; it is never represented as verified.
+ */
 export function listStudentSs1Lessons(subjectName?: string): StudentSs1Lesson[] {
   const expectedSubject = subjectName ? normalize(subjectName) : null;
   return packages.flatMap(subjectPackage => {
+    if (subjectPackage.package_status !== 'IMPLEMENTED' ||
+        subjectPackage.open_items.some(item => item.blocks_delivery)) return [];
     if (expectedSubject && normalize(subjectPackage.canonical_subject) !== expectedSubject) return [];
     return subjectPackage.lessons.filter(isStudentDeliverable).map(lesson => ({
       ...lesson,
       subject_slug: subjectPackage.subject_slug,
       canonical_subject: subjectPackage.canonical_subject,
+      package_status: subjectPackage.package_status,
+      classroom_verification_pending: lesson.state.verification === 'DEFERRED',
     }));
   });
 }
