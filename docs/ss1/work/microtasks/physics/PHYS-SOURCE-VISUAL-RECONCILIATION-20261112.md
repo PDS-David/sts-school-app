@@ -68,9 +68,9 @@ Rendering used LibreOffice headless on the exact hash-verified .doc files. PDF p
 
 ## New original visual assets
 
-The package now registers 29 SVG teaching assets. The 19 newly authored assets are original replacements/explanatory diagrams; they are not represented as recovered source images:
+The package now registers 30 SVG teaching assets. The 20 newly authored assets are original replacements/explanatory diagrams; they are not represented as recovered source images:
 
-- First Term: micrometer, volume displacement, density, motion/circular motion, friction/free-body diagrams, motion graphs, hydraulic pressure/upthrust and viscosity/terminal velocity.
+- First Term: micrometer, volume displacement, explicit micrometer/vernier reading examples, density, motion/circular motion, friction/free-body diagrams, motion graphs, hydraulic pressure/upthrust and viscosity/terminal velocity.
 - Second Term: clinical thermometer, conduction/convection/radiation, charge distribution, charging by induction, magnetic field, additional electric-field patterns and continuous-current sources.
 - Third Term: DC circuit, resistor/cell series-parallel networks and particle arrangements in matter.
 
