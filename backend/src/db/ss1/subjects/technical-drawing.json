@@ -646,6 +646,168 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-TECHNICAL-DRAWING-T2-W02-KEYED-CONSTRUCTIONS",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Technical Drawing",
+      "title": "Week Two — Escribed Circles and Tangent-Circle Constructions",
+      "objectives": [
+        "Construct an escribed circle on a triangle using exterior-angle bisectors and a perpendicular radius.",
+        "Construct escribed circles for polygon side configurations.",
+        "Construct a circle through a given point that touches a line at that point.",
+        "Locate the centre of a circle through two points and tangent to a given line using perpendicular constraints.",
+        "Check construction results using tangency, radius and exradius properties."
+      ],
+      "body": "This lesson explains escribed circles and circles constrained to pass through specified points while touching a straight line. An escribed circle lies outside a triangle and touches one side and the extensions of the other two sides. Its centre is an excentre.\n\nA. Escribed circle on a triangle\n1. Draw the given triangle ABC accurately.\n2. Extend two sides, for example AC beyond C and AB beyond B, as required by the chosen excentre.\n3. Construct the exterior-angle bisectors at the two selected vertices. Their intersection O is an excentre.\n4. From O, draw a perpendicular OQ to the side (or its extension) that the circle will touch.\n5. With O as centre and OQ as radius, draw the escribed circle.\n6. Check that the circle is tangent to all three supporting side lines and lies outside the triangle.\n\nFor a triangle with sides 55 mm, 60 mm and 50 mm, the semiperimeter is s = 82.5 mm. Heron's formula gives area Δ = √[82.5 × 27.5 × 22.5 × 32.5] ≈ 1,288.03 mm². The inradius is Δ/s ≈ 15.61 mm. The three exradii are Δ/(s−55) ≈ 46.84 mm, Δ/(s−60) ≈ 57.25 mm and Δ/(s−50) ≈ 39.63 mm. These values are checks; the construction remains the primary method.\n\nB. Escribed circles on a polygon\n1. Draw the polygon and extend the sides that meet at the selected vertex.\n2. Construct the relevant exterior-angle bisectors; their intersection is the centre of that escribed circle.\n3. Drop a perpendicular from the centre to the side (or its extension) to obtain the radius.\n4. Draw the circle and repeat for each required side/vertex configuration.\n5. Check tangency against the correct side lines. Do not confuse an escribed circle with a circumcircle.\n\nC. Circle through a given point and tangent to a line at that point\n1. Mark point R on the given line PQ and the other given point A.\n2. Join R to A.\n3. Erect a perpendicular to PQ at R. The circle centre must lie on this perpendicular because a radius is perpendicular to a tangent at the contact point.\n4. The centre O is also equidistant from A and R, so it lies on the perpendicular bisector of AR.\n5. Intersect the perpendicular at R with the perpendicular bisector of AR to locate O.\n6. Draw the circle with centre O and radius OR. This construction is equivalent to the equal-angle condition in the source method.\n\nD. Circle through two given points and tangent to a given line\nThe source method uses a construction involving the line through the two points, its intersection with the tangent line, a semicircle and a perpendicular. Follow the source's labelled figure for the exact point names and orientation. The invariant check is that the centre lies on the perpendicular bisector of the two given points and that the radius to the contact point is perpendicular to the given tangent line. Their intersection determines the centre. If the two constraints do not intersect in a valid location, the supplied data do not define the requested circle.\n\nE. Accuracy and checks\nUse thin construction lines, retain angle-bisector and perpendicular-bisector arcs, label the centre and point of contact, and state the radius. A tangent touches a circle at exactly one point; the radius to that point is perpendicular to the tangent. An excentre is the intersection of two exterior-angle bisectors (equivalently, one interior and two exterior bisectors depending on the selected excentre).",
+      "body_sha256": "b9031bd3de3068b5dab5cbcea59ac96745f361008b96543c91f6e497eb4916e4",
+      "practice": [
+        {
+          "id": "TD-W02-KEY-Q01",
+          "question": "Construct an escribed circle on a triangle with AB=55 mm, AC=60 mm and BC=50 mm. Give the exradii as numerical checks.",
+          "answer": "Draw the SSS triangle using intersecting arcs. Bisect two appropriate exterior angles to locate the selected excentre; drop a perpendicular to a side line for the radius and draw the escribed circle. With s=82.5 mm and area≈1,288.03 mm², the exradii are Δ/(s−55)≈46.84 mm, Δ/(s−60)≈57.25 mm and Δ/(s−50)≈39.63 mm.",
+          "marks": 8,
+          "marking": [
+            {
+              "criterion": "Constructs the 55/60/50 mm triangle accurately.",
+              "marks": 2
+            },
+            {
+              "criterion": "Constructs the appropriate exterior-angle bisectors.",
+              "marks": 2
+            },
+            {
+              "criterion": "Locates the excentre.",
+              "marks": 1
+            },
+            {
+              "criterion": "Drops a perpendicular to obtain the radius.",
+              "marks": 1
+            },
+            {
+              "criterion": "Draws the escribed circle tangent to the three side lines.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives a correct exradius check.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W02-KEY-Q02",
+          "question": "A regular hexagon has side 50 mm. Describe the construction of its escribed circles.",
+          "answer": "Construct a regular hexagon of side 50 mm. For each required side/vertex configuration, extend the relevant adjacent sides, bisect the exterior angles to locate the excentre, drop a perpendicular from the centre to the tangent side line, and draw the circle with that radius. Repeat around the polygon, checking each circle is tangent to the intended side lines.",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "Constructs a regular hexagon with 50 mm sides.",
+              "marks": 1
+            },
+            {
+              "criterion": "Extends the correct side lines.",
+              "marks": 1
+            },
+            {
+              "criterion": "Bisects exterior angles to locate an excentre.",
+              "marks": 2
+            },
+            {
+              "criterion": "Uses a perpendicular for the radius.",
+              "marks": 1
+            },
+            {
+              "criterion": "Draws and checks the escribed circles.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W02-KEY-Q03",
+          "question": "Construct a circle through a given point A and tangent to a given line at R.",
+          "answer": "Join A to R. Draw the perpendicular to the tangent line at R. Construct the perpendicular bisector of AR. Their intersection is the centre O. Draw the circle centred at O with radius OR; verify OA=OR and OR is perpendicular to the tangent.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Joins the two given points.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs the tangent-line perpendicular at R.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs the perpendicular bisector of AR.",
+              "marks": 1
+            },
+            {
+              "criterion": "Locates O at the intersection.",
+              "marks": 1
+            },
+            {
+              "criterion": "Draws the circle and verifies both constraints.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W02-KEY-Q04",
+          "question": "State the two geometric constraints that locate the centre of a circle through two given points and tangent to a given straight line.",
+          "answer": "The centre lies on the perpendicular bisector of the chord joining the two given points, and on the line perpendicular to the tangent at the point of contact. Their valid intersection is the centre; the radius is the distance from it to either given point or the contact point.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Identifies the perpendicular bisector of the two-point chord.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies the perpendicular to the tangent at contact.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that their intersection locates the centre.",
+              "marks": 1
+            },
+            {
+              "criterion": "States the equal-radius/tangency check.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W02-KEY-Q05",
+          "question": "Why is the radius to a point of tangency perpendicular to the tangent line?",
+          "answer": "The tangent is perpendicular to the radius at the point where it touches the circle. This perpendicular relationship is the defining geometric test used to locate the centre of a tangent circle.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States the radius is perpendicular to the tangent at contact.",
+              "marks": 1
+            },
+            {
+              "criterion": "Applies it as a centre/radius construction check.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "User-supplied SS1 Technical Drawing source",
+          "locator": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx; Week Two teaching row, body children 163–336; original source identity SS1-SRC-af4868d2c026.",
+          "rights": "The supplement is independently authored from the user-supplied construction instructions and standard Euclidean geometry. No source figure or textbook page is reproduced. Source-derived lesson reuse approval remains pending.",
+          "reuse_status": "PENDING",
+          "attribution": "Source: user-supplied SS1 Technical Drawing, Second Term, Week Two."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [],
@@ -1126,7 +1288,8 @@
       "objective_locator": "WEEK TWO teaching row (parsed row 12), lines 349–377; Example 1 and evaluation question 1. Original body SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd"
+        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W02-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -1146,7 +1309,8 @@
       "objective_locator": "WEEK TWO teaching row (parsed row 12), lines 383–429; Example 2 and evaluation question 2. Original body SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd"
+        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W02-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -1166,7 +1330,8 @@
       "objective_locator": "WEEK TWO teaching row (parsed row 12), lines 447–521; second content objective and worked construction 1. Original body SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd"
+        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W02-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -1186,7 +1351,8 @@
       "objective_locator": "WEEK TWO teaching row (parsed row 12), lines 447–521; second content objective and worked construction 2. Original body SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd"
+        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W02-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
