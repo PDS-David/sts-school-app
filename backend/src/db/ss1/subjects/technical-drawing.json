@@ -634,7 +634,6 @@
         {
           "title": "User-supplied SS1 Technical Drawing source",
           "locator": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx; Week One teaching row, body children 29–163; original lesson body SHA-256 a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
-          "url": "",
           "rights": "The source file was supplied by the user. This answer key and its worked calculations are independently authored; no source figure is copied into this text supplement. Reuse approval for source-derived lesson delivery remains pending.",
           "reuse_status": "PENDING",
           "attribution": "Source: user-supplied SS1 Technical Drawing, Second Term, Week One."
@@ -694,6 +693,10 @@
         {
           "locator": "SS1-SRC-af4868d2c026: parsed row 11, lines 59-342 (body SHA-256 a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6); weekend assignment lines 271-337",
           "explanation": "This entry certifies only that the row's text teaches the objective at topic level. It is not a factual or answer-key review and not a certification of delivered quality: the row's drawings (for example 'the figure shown above' on lines 283, 301 and 315) are absent from the extracted text and belong to TD-VIS-W01, and the superscript degree signs flatten to '670' (line 193), '1050' (lines 237, 335), '550' (line 251) and '600' (lines 257, 331) in the extracted text, a notation loss for TD-WK-W01 to review. Neither is resolved here."
+        },
+        {
+          "locator": "Week One source row, body children 29–163; keyed supplement SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS; evidence TD-KEY-W01-ANSWERS.md.",
+          "explanation": "An original keyed supplement now addresses both inscribed-circle evaluation tasks, both circumscribed-circle evaluation tasks and all five general revision constructions with worked answers and marking criteria. The missing first-term source still prevents certification that the five revision tasks match last term's exact scope."
         }
       ]
     },
@@ -1761,28 +1764,6 @@
       "blocks_delivery": true
     },
     {
-      "id": "TD-T2-W01-DEGREE-NOTATION",
-      "kind": "CONTENT",
-      "detail": "The existing text extraction flattened superscript degree signs in the Week One row: values appear as 670 (line 193), 1050 (lines 237 and 335), 550 (line 251), and 600 (lines 257 and 331). These cannot safely be interpreted from flattened text alone.",
-      "required_action": "Complete TD-FACT-W01-DEGREE-NOTATION by inspecting the exact original DOCX runs/visual layout, recording each intended angle with a source locator, and adding a same-term correction or original teaching supplement if needed. Do not alter the original source or guess values.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
-        "TD-FACT-W01-DEGREE-NOTATION"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "TD-T2-W01-ANSWER-KEYS",
-      "kind": "CONTENT",
-      "detail": "The Week One source contains two inscribed-circle evaluation questions, two circumscribed-circle evaluation questions and five general evaluation/revisional constructions. Current extraction evidence does not identify complete answer keys or marking criteria for these questions.",
-      "required_action": "Complete TD-KEY-W01-ANSWERS after the relevant figures and degree notation have been inspected. Add an original keyed supplement with complete construction steps, answers and marking criteria; do not fabricate missing dimensions or claim the source supplied an answer key.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
-        "TD-KEY-W01-ANSWERS"
-      ],
-      "blocks_delivery": true
-    },
-    {
       "id": "TD-T2-W02-FIGURES",
       "kind": "CONTENT",
       "detail": "The Week Two row contains 11 w:drawing and 13 w:pict anchors; instructions refer to figures “as shown above/below” (for example lines 423, 557, 583 and 603). The extracted text does not contain those drawings, and no visual disposition or faithful asset is recorded.",
@@ -2018,6 +1999,51 @@
         "SS1-SRC-af4868d2c026:BODY:865bb6bbb80331ca2182e97801040727e986ad3f9334b61018a33f239e4eb97a",
         "COV-TD-T2-SCH-W08",
         "COV-TD-T2-SCH-W09"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W01-REGULAR-POLYGON-CHOICE",
+      "kind": "CONTENT",
+      "detail": "The inscribed-circle evaluation asks for a regular polygon of side 40 mm but does not state its number of sides. The keyed supplement treats this as open-ended and accepts any regular polygon if the student states the chosen number of sides; a unique expected polygon/inradius is not specified.",
+      "required_action": "Teacher confirms whether any regular polygon is acceptable or supplies a required side count. Until then, mark any correctly specified regular polygon and its incircle as valid.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "TD-T2-W01-GENERAL-Q2-DATA-IMPOSSIBLE",
+      "kind": "FACT",
+      "detail": "The Week One general revision question specifies base 70 mm, perpendicular height 50 mm and opposite vertex angle 55°. For this base and height the minimum possible opposite angle is 2 arctan(35/50)≈69.98°, so no triangle satisfies all three conditions.",
+      "required_action": "Obtain corrected source data (angle, base or height) and revise the question/answer key. Do not publish a fabricated construction.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W01-GENERAL-Q4-SSA-AMBIGUITY",
+      "kind": "CONTENT",
+      "detail": "The Week One similar-triangle question gives AB=60 mm, AC=55 mm and ∠ABC=60° with no diagram or acute/obtuse condition. The SSA data admit two valid positions for C and therefore two different original perimeters and similar triangles of perimeter 140 mm.",
+      "required_action": "Teacher/source author confirms the intended configuration or accepts both keyed solutions. The supplement provides both valid solutions; no single answer should be enforced until clarification.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "TD-T2-W01-DEGREE-GLYPH-RENDER",
+      "kind": "VERIFICATION",
+      "detail": "The source XML contains seven unambiguous superscript-zero degree markers, normalized in TD-FACT-W01-DEGREE-NOTATION.md. The text extraction can flatten them to 670/1050/550/600; student delivery must render them as 67°/105°/55°/60°.",
+      "required_action": "Run the real import/compiler/student-display path and inspect all seven Week One occurrences. If the delivery path flattens superscript zero, implement a source-preserving degree-glyph normalization or reviewed replacement before enabling the lesson.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "TD-FACT-W01-DEGREE-NOTATION",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "blocks_delivery": true
     }
