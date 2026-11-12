@@ -412,6 +412,13 @@ if (!URL_) {
       { manifest: 'MUSIC_ASSET_MANIFEST.csv', dir: 'music', subject: 'Music', term: '1st Term', expect: 16 },
       { manifest: 'TASK2_BT_ASSET_MANIFEST.csv', dir: 'bt', subject: 'Basic Technology', term: '2nd Term', expect: 13 },
     ];
+    // Basic Technology's Week 13 and Week 15 assets are only visible
+    // after this student has passed the preceding topics in Term Two.
+    await query(
+      `INSERT INTO topic_completions(student_id, topic_id, passed)
+       VALUES ($1, $2, true), ($1, $3, true)`,
+      [created.studentIds[0], topicId['Basic Technology|12'], topicId['Basic Technology|13']],
+    );
     for (const run of runs) {
       const m = path.join(REAL!, run.manifest), d = path.join(REAL!, run.dir);
       const rows = attach.loadManifest(m);
