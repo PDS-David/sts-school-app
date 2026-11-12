@@ -61,3 +61,25 @@ export function resolveSequenceGroup(group: readonly SeqTopic[], passed: Readonl
 
 export const groupKey = (t: { subject_id: unknown; class_name: unknown; term_label: unknown }) =>
   `${t.subject_id}|${t.class_name}|${t.term_label}`;
+
+/** Safe navigation-only payload for a sequence-locked student topic. */
+export function studentTopicPreview(
+  topic: { id: number; title: string; subject_id?: number; subject_name?: string; class_name?: string | null; term_id?: number | null; term_label?: string | null; order_index?: number | null },
+  completed: boolean,
+  sequence: SeqResult,
+) {
+  return {
+    id: topic.id,
+    title: topic.title,
+    subject_id: topic.subject_id,
+    subject_name: topic.subject_name,
+    class_name: topic.class_name,
+    term_id: topic.term_id,
+    term_label: topic.term_label,
+    order_index: topic.order_index,
+    completed,
+    locked: true,
+    sequence_position: sequence.sequence_position,
+    is_sequence_first: sequence.is_sequence_first,
+  };
+}
