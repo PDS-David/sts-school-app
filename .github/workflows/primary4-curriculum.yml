@@ -10,7 +10,6 @@ on:
       - 'backend/src/routes/learning.ts'
       - 'tests/primary4/**'
       - 'backend/package.json'
-      - 'backend/package-lock.json'
       - 'package.json'
       - '.github/workflows/primary4-curriculum.yml'
   pull_request:
@@ -35,10 +34,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: backend/package-lock.json
-      - name: Install backend dependencies
-        run: npm ci --prefix backend
+      - name: Install backend dependencies (backend has no committed lockfile)
+        run: npm install --prefix backend
       - name: Run Primary 4 focused tests
         run: npm run test:primary4 --prefix backend
       - name: Run Primary 4 coverage audit
