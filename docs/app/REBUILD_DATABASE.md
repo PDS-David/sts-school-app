@@ -50,7 +50,12 @@ Free Render Postgres **expires 30 days after creation**. Expired databases are i
 grace period to upgrade; after that the database and all data are deleted (day 44). It is also limited to 1 GB
 and Render may restart it or do maintenance at any time.
 
-Day 0 is the creation date shown on the database page. Example if created 12 Nov 2026:
+Day 0 is the creation date shown on the database page.
+
+Make the reminders (writes `sts-db-expiry-<date>.ics` in the current folder; import it into Google Calendar or Outlook):
+`node scripts/ops/expiry-calendar.mjs 2026-11-12`
+
+Example if created 12 Nov 2026:
 
 | Day | Date | Action |
 |---|---|---|
