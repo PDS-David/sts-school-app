@@ -36,10 +36,10 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 32,
     "VISUAL_DISPOSITION": 2,
-    "LESSON": 2
+    "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 11,
+    "IMPLEMENTED_TESTING_DEFERRED": 12,
     "PENDING": 41,
     "BLOCKED": 1
   },
@@ -524,8 +524,8 @@
         "GOV-INV-T1",
         "GOV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: government.json has the three sources and their alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 179-254, block SHA-256 ca5d9266b095cb44c896e4bef54d55d2c71a5a87d085ca1ee710d076ce1220d4; `WEEK THREE` 179, `TOPIC: BASIC CONCEPTS OF GOVERNMENT` 180, `CONTENT` 181; sections `POWER` 186, `Forms of power` 189, `SOURCES OF POWER` 195, `AUTHORITY` 207, `Sources of Political Authority` 212, `Types of Authority` 218; markers 203, 226, 230, 236, 240, 252. Findings recorded by GOV-INV-T1 that this item must settle: The CONTENT list (182-184) omits Forms of power and both authority lists that the body teaches; cover them rather than the list. Verify the Weber attribution at 213, the traditional-authority examples at 214, and the generalising claim about military coups in Africa at 198 against dated sources. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12 on agent/government. Indexed Week Three from verified source SS1-SRC-40ce7dcaf672 (SHA-256 50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a), getBody lines 179–254, block SHA-256 ca5d9266b095cb44c896e4bef54d55d2c71a5a87d085ca1ee710d076ce1220d4. Covered all body sections omitted from the CONTENT list, including Forms of power and both authority lists. Added eight objective-level entries: Power and Authority SUPPORTED; Forms, Sources, Weber, Types and Reading PARTIAL; Assessment keys UNRESOLVED. Checked Weber attribution against the Stanford Encyclopedia of Philosophy (revised 2022), Nigerian traditional-ruler context against the 2009 APRM Nigeria report, the Africa coup generalisation against ISS Africa (2023) and the UK House of Commons Library (2023), and military/police roles against the Nigeria Constitution 1999 rev.2023 (ss.214, 217). Added eight precise open items and lesson task GOV-LES-T1-W03-CORRECTED-WEEK. No lesson content or new source rule written. No tests/typecheck/importer/compiler run; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no week is merged into Civic Education. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
     },
     {
@@ -1960,6 +1960,45 @@
       "status": "PENDING",
       "implementation_reference": "Created by GOV-WK-T1-W02 on 2026-11-12. Required to correct the law/constitution distinction, qualify the source's function list, distinguish the purpose of studying Government from the constitutional purpose of government, and supply keyed practice for all 14 exercises. Not authored yet.",
       "completion_condition": "A visibly original supplement lesson teaches all three objectives with a recomputed body_sha256, dated/citable provenance, complete answer keys and criterion-level marking that sums exactly; content approval stays PENDING and verification DEFERRED; delivery_corrections binds the exact original source row ID/body hash to the replacement; unsupported reading pages are not copied; no source bytes, schema or shared code are edited."
+    },
+    {
+      "id": "GOV-LES-T1-W03-CORRECTED-WEEK",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 3, getBody lines 179–254; objectives COV-GOV-T1-W03-POWER, COV-GOV-T1-W03-FORMS, COV-GOV-T1-W03-SOURCES, COV-GOV-T1-W03-AUTHORITY, COV-GOV-T1-W03-WEBER, COV-GOV-T1-W03-TYPES",
+      "objective": "Author one visibly original supplement lesson for Week Three. Teach power and authority, the source's forms/sources/categories; distinguish power from legitimate authority; correctly present Weber's three ideal types as traditional, charismatic and legal-rational; distinguish that typology from the source's additional textbook categories. Qualify traditional rulers' roles in Nigeria by time, place and applicable state law. Correct the source's continent-wide generalisation about military coups by presenting them as historical events in particular countries and periods, not a normal or universal source of political power. Explain the constitutional distinction between the Nigeria Police Force and the Armed Forces at a high civic level only; do not include operational details. Include original practice with complete answers and criterion-level marks that sum exactly, accounting for all 15 source exercise items. Do not copy unavailable textbook pages. Add dated, citable provenance. Keep content approval PENDING and verification DEFERRED.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T1.md",
+        "docs/ss1/work/microtasks/government/GOV-WK-T1-W03.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-LES-T1-W03-CORRECTED-WEEK.md"
+      ],
+      "depends_on": [
+        "GOV-SRC-T1",
+        "GOV-WK-T1-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GOV-WK-T1-W03 on 2026-11-12. Required to correct the Weber attribution, qualify the source's traditional-ruler and coup claims, distinguish constitutional military responsibilities, and supply keyed practice for all 15 exercises. Not authored yet.",
+      "completion_condition": "A visibly original supplement teaches all objectives with a recomputed body_sha256, dated/citable provenance, complete answer keys and criterion-level marking that sums exactly; content approval stays PENDING and verification DEFERRED; delivery_corrections binds the exact original source row ID/body hash to the replacement; unsupported reading pages are not copied; no source bytes, schema or shared code are edited."
     }
   ],
   "review": {
@@ -1976,7 +2015,6 @@
   },
   "next_runnable": [
     "GOV-TEST-PACKAGE",
-    "GOV-WK-T1-W03",
     "GOV-WK-T1-W04",
     "GOV-WK-T1-W05",
     "GOV-WK-T1-W06",
@@ -2015,6 +2053,7 @@
     "GOV-WK-T3-W09",
     "GOV-WK-T3-W10",
     "GOV-WK-T3-W11",
-    "GOV-LES-T1-W02-CORRECTED-WEEK"
+    "GOV-LES-T1-W02-CORRECTED-WEEK",
+    "GOV-LES-T1-W03-CORRECTED-WEEK"
   ]
 }
