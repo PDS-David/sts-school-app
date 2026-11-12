@@ -3,7 +3,7 @@ name: Primary 4 Curriculum Validation
 on:
   push:
     branches:
-      - curriculum/primary4-content-packages-20261112
+      - 'curriculum/primary4-*'
     paths:
       - 'backend/src/db/primary4/**'
       - 'backend/src/db/ingestTopics.ts'
