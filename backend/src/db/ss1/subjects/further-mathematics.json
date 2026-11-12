@@ -2045,6 +2045,451 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T1-W09-SURDS",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Further Mathematics",
+      "title": "Surds: simplification, operations, conjugates and rationalisation",
+      "objectives": [
+        "Define surds and apply valid product and quotient rules for square roots.",
+        "Simplify surds and combine only similar surds.",
+        "Multiply and divide surds, including products of conjugates.",
+        "Rationalise denominators using a surd or its conjugate.",
+        "Establish equality of surds and verify square roots of binomial surds."
+      ],
+      "body": "A surd is an irrational root that cannot be simplified to a rational number. This lesson develops the rules for simplifying, combining, multiplying, dividing, rationalising and comparing surds.\n\n1. WHAT IS A SURD?\nExamples include √2, √3 and √7. The square root of 9 is 3, so it is not a surd. The cube root of 8 is 2, so it is not a surd. A surd must remain irrational after simplification.\nFor non-negative real a and b: √(ab)=√a×√b. For a≥0 and b>0: √(a/b)=√a/√b. In general √(a+b) is not √a+√b; for example √(9+16)=5 but √9+√16=7.\n\n2. SIMPLIFYING TO BASIC FORM\nTake out the largest perfect-square factor.\nExample 1: √72=√(36×2)=6√2.\nExample 2: √98=√(49×2)=7√2.\nA surd is in basic form when the number inside the root has no square factor greater than 1.\n\n3. SIMILAR SURDS; ADDITION AND SUBTRACTION\nSurds are similar when their simplified irrational parts are the same. Only similar surds can be combined by adding or subtracting their coefficients.\nExample 3: 3√12+2√27-√75\n=3(2√3)+2(3√3)-5√3\n=6√3+6√3-5√3=7√3.\nExample 4: 7√3-√75=7√3-5√3=2√3. Do not change the radicand when combining unlike terms.\n\n4. MULTIPLICATION AND DIVISION\nFor non-negative a,b, √a×√b=√(ab). Simplify the result.\nExample 5: √45×√28=√1260=√(36×35)=6√35.\nExample 6: √24/√54=√(24/54)=√(4/9)=2/3.\nExample 7: (2√3-√7)(2√3+√7)=(2√3)^2-(√7)^2=12-7=5. The middle terms cancel because the factors are conjugates.\n\n5. CONJUGATES AND RATIONALISATION\nThe conjugate of p+q√r is p-q√r. Their product is p^2-q^2r, which is rational.\nTo rationalise a denominator containing one surd, multiply top and bottom by that surd. For a binomial denominator, multiply by its conjugate.\nExample 8: 5/√3=(5√3)/(√3×√3)=5√3/3.\nExample 9: 4/(√5+√3)\n=4(√5-√3)/[(√5+√3)(√5-√3)]\n=4(√5-√3)/(5-3)=2(√5-√3).\n\n6. EQUALITY AND SQUARE ROOTS OF BINOMIAL SURDS\nIf p+q√m=r+s√m, where m is not a perfect square and p,q,r,s are rational, then p=r and q=s. This follows because √m is irrational.\nExample 10: Find √(7+2√10). Notice (√5+√2)^2=5+2+2√10=7+2√10. Therefore √(7+2√10)=√5+√2 (the positive root).\nExample 11: √(14-4√6)=2√3-√2 because (2√3-√2)^2=12+2-4√6=14-4√6 and 2√3-√2 is positive.\n\n7. ERRORS TO AVOID\nDo not split a root across addition or subtraction. Simplify each surd before combining like terms. When multiplying conjugates, use the difference of two squares. Rationalise the denominator, not just the numerator. When taking a square root of a positive binomial surd, verify by squaring the proposed answer and check its sign.",
+      "body_sha256": "ad37d75d79bb5531de62f0e257eda2ee56fd4fc19185048b15c6a95f1f20153a",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Simplify √108 to basic form.",
+          "answer": "√108=√(36×3)=6√3.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies perfect-square factor 36",
+              "marks": 1
+            },
+            {
+              "criterion": "Answer 6√3",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Simplify 4√18-√50+2√8.",
+          "answer": "4(3√2)-5√2+2(2√2)=12√2-5√2+4√2=11√2.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Simplifies √18 and √50",
+              "marks": 1
+            },
+            {
+              "criterion": "Simplifies √8",
+              "marks": 1
+            },
+            {
+              "criterion": "Combines to 11√2",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Evaluate √32×√18 in simplest form.",
+          "answer": "√576=24.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Combines under one root",
+              "marks": 1
+            },
+            {
+              "criterion": "Answer 24",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Simplify √75/√3.",
+          "answer": "√(75/3)=√25=5.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Forms quotient under root",
+              "marks": 1
+            },
+            {
+              "criterion": "Answer 5",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Expand and simplify (√7+√3)(√7-√3).",
+          "answer": "7-3=4.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses conjugate/difference of squares",
+              "marks": 1
+            },
+            {
+              "criterion": "Answer 4",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Rationalise 6/√5.",
+          "answer": "6/√5×√5/√5=6√5/5.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Multiplies by √5/√5",
+              "marks": 1
+            },
+            {
+              "criterion": "Answer 6√5/5",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q7",
+          "question": "Rationalise 3/(√5+√2).",
+          "answer": "3(√5-√2)/(5-2)=√5-√2.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses conjugate",
+              "marks": 1
+            },
+            {
+              "criterion": "Denominator 3",
+              "marks": 1
+            },
+            {
+              "criterion": "Final answer √5-√2",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q8",
+          "question": "Show that √(7+2√10)=√5+√2.",
+          "answer": "(√5+√2)^2=5+2+2√10=7+2√10. Since √5+√2 is positive, it is the principal square root.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Squares the proposed expression",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains the radicand",
+              "marks": 1
+            },
+            {
+              "criterion": "Notes positive principal root",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q9",
+          "question": "Simplify √(14-4√6).",
+          "answer": "(2√3-√2)^2=12+2-4√6=14-4√6, and 2√3-√2>0. Hence the root is 2√3-√2.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Proposes correct binomial",
+              "marks": 1
+            },
+            {
+              "criterion": "Verifies by squaring",
+              "marks": 1
+            },
+            {
+              "criterion": "Checks positive sign",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "A learner claims √(4+9)=√4+√9. Explain the error and give the correct values.",
+          "answer": "Square roots do not distribute over addition. √13 is not 2+3=5; √13≈3.606 while √4+√9=5.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States no addition law",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct comparison",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source: SS1 first-term Further Mathematics",
+          "locator": "WEEK NINE, TOPIC: SURDS; scheme week 9 includes definition, manipulation, rationalisation and equality in member SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc; member SHA-256 995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145. Scope is restated and calculations recomputed; damaged notation and errors are not copied.",
+          "url": null,
+          "rights": "Newly authored instructional material based on the school's syllabus; no extended source passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools; content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T1-W10-CENTRAL-TENDENCY",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Further Mathematics",
+      "title": "Statistics: mean, median and mode for grouped and ungrouped data",
+      "objectives": [
+        "Calculate and interpret mean, median and mode for ungrouped data and discrete frequency tables.",
+        "Calculate estimated means for grouped data using class marks and the assumed-mean method.",
+        "Find grouped medians using cumulative frequency and the interpolation formula.",
+        "Identify modal classes and estimate grouped modes using interpolation and histogram construction."
+      ],
+      "body": "Measures of central tendency describe the centre of a data set. The three main measures are mean, median and mode. This lesson covers raw data, discrete frequency tables, grouped frequency distributions and estimation of the mode from a histogram.\n\n1. UNGROUPED DATA\nMean = sum of all observations ÷ number of observations.\nMedian is the middle observation after arranging the data. If there are an even number of observations, take the mean of the two middle values.\nMode is the value occurring most often. A data set may have one mode, more than one mode, or no mode if all values occur equally often.\nExample 1: For 12, 15, 18, 21, 24, mean=(12+15+18+21+24)/5=90/5=18. The median is 18. There is no mode because each value occurs once.\nExample 2: Arrange 35,28,42,28,56,70,35 as 28,28,35,35,42,56,70. The median is 35 and the mode is 28 and 35 (both occur twice); this data is bimodal. Do not call 35 the only mode.\n\n2. DISCRETE FREQUENCY DISTRIBUTIONS\nFor values x with frequencies f, total frequency N=Σf and mean=Σfx/Σf. To find a median, use the cumulative frequencies to locate the middle observation(s). The mode is the value with the greatest frequency.\nExample 3: Values 0,1,2,3,4 have frequencies 2,3,5,4,1. Σf=15 and Σfx=0+3+10+12+4=29. Mean=29/15≈1.93. The fifth, sixth, seventh, eighth and ninth observations are 2, so the median is 2. The mode is 2 because its frequency 5 is greatest.\n\n3. GROUPED DATA: CLASS MARK AND MEAN\nFor each class interval, class mark x is its midpoint: (lower limit+upper limit)/2. Estimate the mean using Σfx/Σf. It is an estimate because individual observations within each class are not known.\nExample 4:\nClass 10–14, 15–19, 20–24; frequencies 3,5,2.\nClass marks are 12,17,22. Thus Σf=10 and Σfx=3(12)+5(17)+2(22)=165. Estimated mean=165/10=16.5.\nThe assumed-mean method gives the same result: choose A=17, let d=x-A, then mean=A+Σfd/Σf. Here Σfd=3(-5)+5(0)+2(5)=-5, so mean=17-5/10=16.5.\n\n4. GROUPED MEDIAN\nFor continuous grouped data, first convert class limits to class boundaries where needed. Find cumulative frequencies. The median class is the first class whose cumulative frequency reaches or passes N/2.\nMedian ≈ L + [(N/2 - C_f)/f_m]h, where L is the lower boundary of the median class, C_f is the cumulative frequency before it, f_m is its frequency, and h is its class width.\nExample 5: Classes 0–9, 10–19, 20–29, 30–39 have frequencies 4,6,10,5. N=25; N/2=12.5. Cumulative frequencies are 4,10,20,25, so the median class is 20–29. Its boundaries are 19.5–29.5, L=19.5, C_f=10, f_m=10, h=10.\nMedian≈19.5+[(12.5-10)/10]×10=22.0.\n\n5. GROUPED MODE AND HISTOGRAM\nThe modal class is the class with the highest frequency (for equal class widths). For grouped data, estimate:\nMode ≈ L + [d1/(d1+d2)]h,\nwhere L is the lower boundary of the modal class, h is its width, d1 is modal frequency minus the preceding frequency, and d2 is modal frequency minus the following frequency.\nExample 6: Classes 10–14, 15–19, 20–24, 25–29 have frequencies 4,8,12,6. The modal class is 20–24; boundaries are 19.5–24.5. L=19.5, h=5, d1=12-8=4 and d2=12-6=6.\nMode≈19.5+[4/(4+6)]×5=21.5.\nA histogram displays adjacent class rectangles. With equal class widths, the tallest bar is the modal class. The intersection of the diagonal construction lines gives a graphical estimate of the mode. The interpolation formula above gives the same estimate when class widths are equal. If widths differ, compare frequency densities (frequency ÷ class width), not raw frequencies.\n\n6. CHECKS AND INTERPRETATION\n- Σf must equal the number of observations.\n- Σfx must use each class mark or value multiplied by its frequency.\n- The median divides the ordered data into two equal halves; it is not necessarily an observed value for grouped data.\n- The mode is the most frequent value or modal class, not the largest value.\n- For grouped estimates, state the formula, class, boundaries and substitutions. Do not report an estimated grouped mean, median or mode as an exact raw-data statistic.\n",
+      "body_sha256": "0e8a51e058c8ff84a971f5155fa8beb7a67da842f9a1e5875af5078a07a72adc",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Find the mean of 12, 15, 18, 21 and 24.",
+          "answer": "Sum=90; mean=90/5=18.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct sum 90",
+              "marks": 1
+            },
+            {
+              "criterion": "Mean 18",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Values 1,2,3,4 have frequencies 2,3,4,1 respectively. Find the mean.",
+          "answer": "Σf=10; Σfx=2+6+12+4=24; mean=24/10=2.4.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Total frequency 10",
+              "marks": 1
+            },
+            {
+              "criterion": "Σfx=24",
+              "marks": 1
+            },
+            {
+              "criterion": "Mean 2.4",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "For 2,3,3,4,5,5,5,7 find the median and mode.",
+          "answer": "The fourth and fifth values are 4 and 5, so median=4.5. Mode=5.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Median 4.5",
+              "marks": 1
+            },
+            {
+              "criterion": "Mode 5",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Find the estimated mean for classes 10–14,15–19,20–24 with frequencies 3,5,2.",
+          "answer": "Midpoints 12,17,22. Σfx=36+85+44=165; N=10; mean=16.5.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Correct class marks",
+              "marks": 1
+            },
+            {
+              "criterion": "Σfx and N",
+              "marks": 1
+            },
+            {
+              "criterion": "Mean 16.5",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Using A=17, find the estimated mean for the grouped data in Q4 by the assumed-mean method.",
+          "answer": "d values -5,0,5; Σfd=-15+0+10=-5; mean=17+(-5/10)=16.5.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Correct deviations",
+              "marks": 1
+            },
+            {
+              "criterion": "Σfd=-5",
+              "marks": 1
+            },
+            {
+              "criterion": "Mean 16.5",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Classes 0–9,10–19,20–29,30–39 have frequencies 4,6,10,5. Find the grouped median.",
+          "answer": "N=25, N/2=12.5. Median class 20–29; L=19.5, C_f=10, f_m=10, h=10. Median=19.5+[(12.5-10)/10]10=22.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "N and N/2",
+              "marks": 1
+            },
+            {
+              "criterion": "Median class and lower boundary",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct substitution",
+              "marks": 1
+            },
+            {
+              "criterion": "Median 22",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q7",
+          "question": "Classes 10–14,15–19,20–24,25–29 have frequencies 4,8,12,6. Estimate the mode.",
+          "answer": "Modal class 20–24; L=19.5,h=5,d1=4,d2=6. Mode=19.5+[4/(4+6)]5=21.5.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Modal class and L",
+              "marks": 1
+            },
+            {
+              "criterion": "d1 and d2",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct formula substitution",
+              "marks": 1
+            },
+            {
+              "criterion": "Mode 21.5",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q8",
+          "question": "Explain how a histogram helps estimate the mode of grouped data.",
+          "answer": "Identify the modal class (for equal widths, the tallest adjacent bar). Draw the two diagonal construction lines between the modal bar and its neighbours; project their intersection to the horizontal axis to estimate the mode.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Identifies modal class",
+              "marks": 1
+            },
+            {
+              "criterion": "Describes diagonal construction",
+              "marks": 1
+            },
+            {
+              "criterion": "Projects intersection to estimate",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q9",
+          "question": "Values 1,2,3,4 have frequencies 2,x,3,1. If the mean is 2.2, find x.",
+          "answer": "Σfx=2+2x+9+4=15+2x; N=6+x. 2.2=(15+2x)/(6+x); 13.2+2.2x=15+2x; 0.2x=1.8; x=9.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Correct Σfx",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct N",
+              "marks": 1
+            },
+            {
+              "criterion": "Forms and solves equation",
+              "marks": 1
+            },
+            {
+              "criterion": "x=9",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "A grouped frequency table has class intervals 20–24,25–29,30–34 with frequencies 5,9,6. State the modal class and its class boundaries.",
+          "answer": "Modal class is 25–29. For continuous boundaries, it is 24.5–29.5.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Modal class 25–29",
+              "marks": 1
+            },
+            {
+              "criterion": "Boundaries 24.5–29.5",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source: SS1 first-term Further Mathematics",
+          "locator": "WEEK TEN, TOPIC: STATISTICS: MEASURES OF CENTRAL TENDENCY; scheme week 10 requires grouped/ungrouped mean, median, mode and histogram mode estimation in member SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc; member SHA-256 995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145. Scope is restated and calculations recomputed; damaged notation and errors are not copied.",
+          "url": null,
+          "rights": "Newly authored instructional material based on the school's syllabus; no extended source passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools; content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -2497,14 +2942,19 @@
       "source_id": "SS1-SRC-e9efc9a976ed",
       "objective": "Surds: definition, manipulation, rationalisation",
       "objective_locator": "scheme weeks 1-10; parsed row 9 (SURDS)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-e9efc9a976ed:BODY:b06abb73acb6868e6d72626fa734efc483a2f249f525a33210cd903af0b1e674"
+        "SS1-SRC-e9efc9a976ed:BODY:b06abb73acb6868e6d72626fa734efc483a2f249f525a33210cd903af0b1e674",
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W09-SURDS"
       ],
       "evidence": [
         {
           "locator": "parsed row 9",
           "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        },
+        {
+          "locator": "WEEK NINE source body, rules through equality and worked examples",
+          "explanation": "Replacement lesson covers all scheme objectives: surd definition, simplification, similar surds, operations, conjugates, rationalisation and equality. Source defects corrected include the 7√3−√75 simplification and the missing radical signs in square-root answers. Approval and verification remain pending."
         }
       ]
     },
@@ -2513,14 +2963,19 @@
       "source_id": "SS1-SRC-e9efc9a976ed",
       "objective": "Measures of central tendency: mean, median, mode; mode from histogram",
       "objective_locator": "scheme weeks 1-10; parsed row 10 (STATISTICS: MEASURES OF CENTRAL TENDENCY)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-e9efc9a976ed:BODY:a4d19b29e5f43b710c993dfae6fc839fda976a93a34ab2ea90cb13e3862f1d2b"
+        "SS1-SRC-e9efc9a976ed:BODY:a4d19b29e5f43b710c993dfae6fc839fda976a93a34ab2ea90cb13e3862f1d2b",
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W10-CENTRAL-TENDENCY"
       ],
       "evidence": [
         {
           "locator": "parsed row 10",
           "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        },
+        {
+          "locator": "WEEK TEN source body, ungrouped and grouped statistics through interpolation and histogram mode",
+          "explanation": "Replacement lesson covers ungrouped and grouped mean/median/mode, class-mark and assumed-mean methods, grouped median interpolation, grouped mode interpolation and histogram estimation. Corrects the source's mismatched grouped-median example; approval and verification remain pending."
         }
       ]
     },
