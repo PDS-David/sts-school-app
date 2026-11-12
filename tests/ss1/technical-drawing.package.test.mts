@@ -240,3 +240,12 @@ test('Week Ten source assessment answer key covers figure-backed weekend answers
   assert.match(key, /Ø102→\*\*Ø51 mm\*\*/);
   assert.match(key, /The rubrics above are original proposed assessment criteria/);
 });
+
+test('Week Eight–Nine source pentagon keys do not import dimensions from another week', async () => {
+  const path = new URL('../../docs/ss1/work/microtasks/technical-drawing/TD-KEY-W08-W09-ANSWERS.md', import.meta.url);
+  const key = await readFile(path, 'utf8');
+  assert.match(key, /image64 supplies no CD length/);
+  assert.match(key, /image65 provides no numerical AD or BD/);
+  assert.match(key, /must not be imported into this question/);
+  assert.match(key, /do not report 43\.30 mm as this question's answer/);
+});
