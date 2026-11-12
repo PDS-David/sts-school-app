@@ -427,7 +427,7 @@ No lesson, correction, source rule, asset, answer key or marks were created. The
 ### Source identity and exact locator
 
 - Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
-- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc175239701db368e` — see the source member hash below for the authoritative full value.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`
 - Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
 - Extractor: Antiword 0.37 on the original legacy `.doc`.
 - Complete span: lines 231–338; UTF-8 span SHA-256: `a5fdd8fc95bebc2a59ba0915d39b7a3148c5673917d1b78dd1f5b5b7f2c345f9`.
