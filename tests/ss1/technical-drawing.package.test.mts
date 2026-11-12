@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.js';
 
 const packagePath = new URL('../../backend/src/db/ss1/subjects/technical-drawing.json', import.meta.url);
@@ -61,3 +62,16 @@ test('Week 8–9 and Week 10 scheme objectives are bound to teaching supplements
 function lessonIdsHas(lessons, id) {
   return lessons.some(lesson => lesson.id === id);
 }
+
+test('Technical Drawing supplemental SVG assets match registered paths, hashes and byte counts', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const assets = subject.assets.filter(asset => asset.id.startsWith('TD-SUP-W08-'));
+  assert.equal(assets.length, 4);
+  for (const asset of assets) {
+    const bytes = await readFile(resolve(process.cwd(), asset.path));
+    assert.equal(bytes.byteLength, asset.bytes, `asset byte count mismatch: ${asset.id}`);
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), asset.sha256, `asset hash mismatch: ${asset.id}`);
+    assert.equal(asset.media_type, 'image/svg+xml');
+    assert.equal(asset.lesson_id, 'SUP-SS1-TECHNICAL-DRAWING-T2-W08-W09-EQUAL-AREA');
+  }
+});
