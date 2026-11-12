@@ -54,7 +54,8 @@
     "PHYS-VIS-T1/T2/T3 (2026-11-11): ten original SVGs authored and registered; original embedded legacy .doc figures still not inspectable from text extraction. Evidence PHYS-VIS-NEW-ASSETS-20261111.md; package open item PHYSICS-SOURCE-VISUAL-INVENTORY blocks delivery pending exhaustive rendered-source audit.",
     "PHYS-FACT-T3-W05-SCHEME-MISMATCH (2026-11-11): resolved as a title-truncation artefact. The source body includes Diffusion, Graham's law and Osmosis; Brownian motion is only a heading plus two statements, with the full explanation supplied by the new lesson. Non-blocking open item PHYSICS-T3-W05-BROWNIAN-SOURCE-DEPTH records the source-depth gap.",
     "PHYS-PORT-D1-FACT-EXPANSIVITY and PHYS-PORT-D1-FACT-T3-W10 (2026-11-12): source text extracted from the hash-registered original .doc members by Physics CI run 43082409860. Confirmed notation/derivation defects in extracted output; recorded bounded non-blocking open items and evidence notes. Student supplements retain correct physics notation/derivation. Original equation-object visual rendering remains unverified; no content approval or production acceptance is claimed.",
-    "PHYS-CMP-D4-TESTS (2026-11-12): compared the four legacy PR #71 test assertions with the current seven-test Physics package suite and registered SS1 package validator. Applicable checks are retained; obsolete split-rule assertion is intentionally not ported because the rule was not applied. Evidence: PHYS-CMP-D4-TESTS.md. No production importer/DB/device acceptance claimed."
+    "PHYS-CMP-D4-TESTS (2026-11-12): compared the four legacy PR #71 test assertions with the current seven-test Physics package suite and registered SS1 package validator. Applicable checks are retained; obsolete split-rule assertion is intentionally not ported because the rule was not applied. Evidence: PHYS-CMP-D4-TESTS.md. No production importer/DB/device acceptance claimed.",
+    "2026-11-12 original source access unlocked: Physics CI run 43122782413 preserved the exact three registered .doc members; hashes were reverified and all 73 rendered PDF pages visually reviewed. The T2/T3 source-week tasks, T1 source-fact reconciliation tasks and three term visual-inventory tasks are now IMPLEMENTED_TESTING_DEFERRED. Full page map and figure dispositions: PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md; per-term inventories: PHYS-VIS-T1/T2/T3.md. 19 original SVG teaching aids added and package metadata registered (29 assets total). Original source bytes remain unchanged. Lesson content approval remains PENDING and verification DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -73,8 +74,8 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 51,
-    "BLOCKED": 34,
+    "IMPLEMENTED_TESTING_DEFERRED": 78,
+    "BLOCKED": 7,
     "PENDING": 5
   },
   "total": 90,
@@ -747,8 +748,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Scheme-level coverage mapped to parsed row 2 and the authored supplement was expanded in backend/src/db/ss1/subjects/physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W03.md. The exact registered original .doc body text was not retrievable in this execution (parsed_rows.json exposes only row title/length/hash), so exact source examples, assessment blocks, formula/notation defects and figures cannot be reconciled. A public close-equivalent PDF was used only for scope corroboration, not treated as the original. Keep blocked until the registered original member or a verified row extraction is inspected.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 5–7; source row, objective scope, evaluation, weekend assignment and theory are mapped. Evidence: PHYS-WK-T2-W03.md and PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -784,8 +785,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Authored SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W04.md. Parsed row 3 identity/hash are bound, and the public SchoolGist PDF Week Four (lines 297-414) was used as a close-equivalent scope/assessment comparison. The exact registered .doc body was not retrievable in this execution; therefore original examples, assessment text, formula/notation defects and figures remain unverified. Do not claim source indexing complete until the original member or verified row extraction is inspected.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 7–9; expansivity formula/notation and numeric inconsistencies recorded. Evidence: PHYS-WK-T2-W04.md and PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -821,8 +822,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Authored SUP-SS1-PHYSICS-T2-W05-HEAT-TRANSFER and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W05.md. Parsed row 4 identity/hash are bound; SchoolGist PDF Week Five (lines 414-510) was used only as a close-equivalent scope comparison. The exact registered .doc body and its figures were not retrievable in this execution, so original assessment/notation reconciliation remains incomplete.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 9–12; conduction, convection, radiation, thermo flask scope and page-10 figure mapped. Original instructional heat-transfer SVG added. Evidence: PHYS-WK-T2-W05.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -858,8 +859,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Authored SUP-SS1-PHYSICS-T2-W06-ELECTRIC-CHARGES and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W06.md. Parsed row 5 identity/hash are bound; SchoolGist PDF Week Six (lines 518-566) used only as a close-equivalent scope comparison. The exact registered .doc body and its figures were not retrievable in this execution, so original assessment and source reconciliation remain incomplete.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 12–14; charge-production/distribution/storage scope and page-13 sharp-point figure mapped. Original charge-distribution SVG added. Evidence: PHYS-WK-T2-W06.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -895,8 +896,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Authored SUP-SS1-PHYSICS-T2-W07-GOLD-LEAF-ELECTROSCOPE and four objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W07.md. Parsed row 6 identity/hash are bound; SchoolGist PDF Week Seven (lines 567-617) used only as a close-equivalent scope comparison. Exact registered .doc body and original diagrams were not retrievable in this execution, so source reconciliation remains incomplete.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 14–16; electroscope and induction figures inspected. Original induction SVG added; lightning-conductor simplification recorded. Evidence: PHYS-WK-T2-W07.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -932,8 +933,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Authored SUP-SS1-PHYSICS-T2-W08-FIELDS-GRAVITY and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W08.md. Parsed row 7 identity/hash are bound; SchoolGist PDF Week Eight (lines 618-677) used only as a close-equivalent scope comparison. Exact registered .doc body and figures were not retrievable in this execution, so original source reconciliation remains incomplete.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 16–18; gravitational/magnetic field scope and page-18 field figure mapped. Original magnetic-field SVG added. Evidence: PHYS-WK-T2-W08.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -969,8 +970,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Authored SUP-SS1-PHYSICS-T2-W09-ELECTRIC-FIELD-LINES and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W09.md. Parsed row 8 identity/hash are bound; SchoolGist PDF Week Nine (lines 678-731) used only as a close-equivalent scope comparison. Exact registered .doc body and original diagrams were not retrievable in this execution, so source reconciliation remains incomplete.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 18–20; source electric-field patterns inspected. Original companion SVG adds like-charge and parallel-plate patterns. Evidence: PHYS-WK-T2-W09.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1006,8 +1007,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Authored SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T2-W10.md. Parsed row 9 identity/hash are bound; SchoolGist PDF Week Ten (lines 732-835) used only as a close-equivalent scope comparison. Exact registered .doc body and diagrams were not retrievable in this execution, so source reconciliation remains incomplete.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 20–22; continuous-current source scope and diagram omission recorded. Original four-source SVG added. Evidence: PHYS-WK-T2-W10.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1043,8 +1044,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W01.md. Parsed row 0 identity/hash are bound; EduPodia/Ecolebooks public notes used only as close-equivalent scope comparisons. Exact registered .doc body and original circuit diagram were not retrievable in this execution, so source reconciliation remains incomplete.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 1–3; source's missing DC circuit diagram recorded and an original circuit SVG added. Evidence: PHYS-WK-T3-W01.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1080,8 +1081,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W02.md. Parsed row 1 identity/hash are bound; SchoolGist/Ecolebooks notes used only as close-equivalent scope comparisons. Exact registered .doc body and original circuit diagrams were not retrievable in this execution, so source reconciliation remains incomplete.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 3–5; series/parallel resistor and cell relations mapped; original resistor and cell SVGs added. Evidence: PHYS-WK-T3-W02.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1117,8 +1118,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W03.md. Parsed row 2 identity/hash are bound; SchoolGist/Ecolebooks notes used only as close-equivalent scope comparisons. Exact registered .doc body and any original diagrams were not retrievable in this execution, so source reconciliation remains incomplete.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 5–6; electrical-energy/power formulas and assessments reconciled. Evidence: PHYS-WK-T3-W03.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1191,8 +1192,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W05-PARTICLE-NATURE-MATTER and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W05.md. Parsed row 4 identity/hash are bound; SchoolGist PDF Week Five (lines 348-432) used only as a close-equivalent scope comparison. Exact registered .doc body and original figures were not retrievable in this execution, so source reconciliation remains incomplete.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 7–9; matter/atomic structure/diffusion/osmosis and shallow Brownian-motion source section recorded; original particle SVG added. Evidence: PHYS-WK-T3-W05.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1228,8 +1229,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W06-CRYSTAL-STRUCTURE and five objective-level coverage entries in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W06.md. Parsed row 5 identity/hash are bound; SchoolGist PDF Week Six lines 439-503 used as close-equivalent text evidence. The original .doc body was not independently retrievable in this execution, so exact source-row reconciliation remains open. The reversed crystalline/amorphous table and unit-cell/lattice terminology were corrected in the student supplement.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 9–10; crystal structure source scope reconciled; original crystal SVG retained. Evidence: PHYS-WK-T3-W06.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1265,8 +1266,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Expanded SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION to 4,300 characters and 18 fully answered questions (35 marks); updated COV-PHYS-T3-W07-OBJ-1 and added four objective-level coverage entries. Exact registered source row ID/hash are bound; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W07.md. SchoolGist PDF Week Seven lines 506-552 used as close-equivalent scope corroboration. Original .doc body was not independently retrievable, so exact source reconciliation remains open; content approval PENDING, verification DEFERRED.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 10–11; surface-tension source scope reconciled; original surface-tension SVG retained. Evidence: PHYS-WK-T3-W07.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1302,8 +1303,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Expanded SUP-SS1-PHYSICS-T3-W08-CAPILLARITY to 4,391 characters and 16 fully answered questions (34 marks); updated COV-PHYS-T3-W08-OBJ-1 and added three objective-level coverage entries. Exact registered source row ID/hash are bound; evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W08.md. SchoolGist PDF Week Eight lines 554-580 used as close-equivalent scope corroboration. Original .doc body was not independently retrievable, so exact source reconciliation remains open; content approval PENDING, verification DEFERRED.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 11–12; capillarity/meniscus source scope reconciled; original capillary SVG retained. Evidence: PHYS-WK-T3-W08.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1339,8 +1340,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W09-ELASTICITY (20 answered questions) and five objective-level coverage entries in physics.json. Evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W09.md. Parsed row 8 identity/hash bound; SchoolGist PDF Week Nine lines 582-659 used as close-equivalent scope evidence. Original .doc body not independently retrieved; exact source reconciliation remains open. Content approval PENDING; verification DEFERRED.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 12–13; elasticity source scope reconciled; original stress-strain/force-extension SVGs retained. Evidence: PHYS-WK-T3-W09.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1376,8 +1377,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Authored SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY (18 answered questions; 43 marks) and five objective-level coverage entries in physics.json. Evidence: docs/ss1/work/microtasks/physics/PHYS-WK-T3-W10.md. Parsed row 9 identity/hash bound; SchoolGist PDF Week Ten lines 660-713 used as close-equivalent scope evidence. Original .doc body not independently retrieved; exact source reconciliation remains open. Content approval PENDING; verification DEFERRED.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Rendered original source pages 13–14; source formula derivation issue reconciled against the correct final relation. Evidence: PHYS-WK-T3-W10.md and PHYS-PORT-D1-FACT-T3-W10.md.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -1619,8 +1620,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Ten original SVG teaching aids have been authored and registered in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-VIS-NEW-ASSETS-20261111.md. The source's embedded legacy .doc figures were not available in the text extraction, so exhaustive figure inventory and one-for-one source disposition cannot be claimed. Package open item PHYSICS-SOURCE-VISUAL-INVENTORY blocks delivery until original rendered pages/figures are inspected.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: First Term visual inventory completed: 52 raster image objects plus vector figures, with page/cluster dispositions and original equivalent SVGs registered. Evidence: PHYS-VIS-T1.md.",
       "completion_condition": "Inventory complete with locators; follow-up tasks appended; any branding or rights concern raised as an open item without copying contact details into Git."
     },
     {
@@ -1650,8 +1651,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Ten original SVG teaching aids have been authored and registered in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-VIS-NEW-ASSETS-20261111.md. The source's embedded legacy .doc figures were not available in the text extraction, so exhaustive figure inventory and one-for-one source disposition cannot be claimed. Package open item PHYSICS-SOURCE-VISUAL-INVENTORY blocks delivery until original rendered pages/figures are inspected.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Second Term visual inventory completed: 28 raster image objects plus vector figures, with page/cluster dispositions and original equivalent SVGs registered. Evidence: PHYS-VIS-T2.md.",
       "completion_condition": "Inventory complete with locators; follow-up tasks appended; any branding or rights concern raised as an open item without copying contact details into Git."
     },
     {
@@ -1681,8 +1682,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Ten original SVG teaching aids have been authored and registered in physics.json; evidence: docs/ss1/work/microtasks/physics/PHYS-VIS-NEW-ASSETS-20261111.md. The source's embedded legacy .doc figures were not available in the text extraction, so exhaustive figure inventory and one-for-one source disposition cannot be claimed. Package open item PHYSICS-SOURCE-VISUAL-INVENTORY blocks delivery until original rendered pages/figures are inspected.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Third Term visual inventory completed: zero raster image objects; missing/required instructional diagrams identified and original SVGs registered. Evidence: PHYS-VIS-T3.md.",
       "completion_condition": "Inventory complete with locators; follow-up tasks appended; any branding or rights concern raised as an open item without copying contact details into Git."
     },
     {
@@ -2671,8 +2672,8 @@
       "depends_on": [
         "PHYS-WK-T1-W03"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Blocked 2026-11-08: only the original member's hash and parsed row identity/title are available in this execution session; the legacy .doc bytes/text are not accessible. The scheme objectives are covered by the independent supplement, but original-row reconciliation cannot be claimed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Original First Term .doc rendered and WEEK THREE pages 10–14 inspected; motion, force, circular-motion formulas, figures and source assessment mapped. Evidence: PHYS-FACT-T1-W03-SOURCE-RECONCILIATION.md.",
       "completion_condition": "Inspect the original row and record exact subtopics, locators, formulas, units, figures, exercises and answer/marking evidence; reconcile the new supplement and original source without inventing content."
     },
     {
@@ -2736,8 +2737,8 @@
       "depends_on": [
         "PHYS-WK-T1-W04"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Blocked 2026-11-08: only the original member hash and parsed row identity/title are available; the legacy .doc bytes/text are not accessible in this session. The scheme topic is covered by an independent supplement, but original-row reconciliation cannot be claimed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Original First Term .doc rendered and WEEK FOUR pages 14–17 inspected; friction cases, free-body diagrams, equations and evaluation mapped. Evidence: PHYS-FACT-T1-W04-SOURCE-RECONCILIATION.md.",
       "completion_condition": "Inspect the original row and record exact subtopics, locators, formulae, units, figures, exercises and answer/marking evidence; reconcile the supplement without inventing source content."
     },
     {
@@ -2801,8 +2802,8 @@
       "depends_on": [
         "PHYS-WK-T1-W05-W06"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Blocked 2026-11-08: the current execution session cannot access the original legacy .doc bytes/text. A public close-equivalent PDF shows a second section beginning at line 612, but it is not verified byte-identical and conflicts with the repository's parsed row 5 label/title. The scheme objectives are covered by an original supplement, but exact source boundary and source-row reconciliation cannot be claimed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Original combined WEEK FIVE AND SIX row pages 17–26 visually inspected; motion graphs and figures mapped; original row identity preserved, no parser split. Evidence: PHYS-FACT-T1-W05-W06-SOURCE-RECONCILIATION.md.",
       "completion_condition": "Inspect original DOC and record exact section boundaries, row mapping, formulas, units, figures, assignments and answer/marking coverage; reconcile source version differences without splitting/merging rows absent source evidence."
     },
     {
@@ -2866,8 +2867,8 @@
       "depends_on": [
         "PHYS-WK-T1-W06"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Blocked 2026-11-08: the original legacy .doc bytes/text are not accessible in this execution session. The public close-equivalent PDF shows a Week Six density section, while the repository registers the row as Week Seven. The scheme topic is covered by an independent supplement, but original-row label/content reconciliation cannot be claimed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Original parsed row 5, source label WEEK SEVEN, pages 26–28 inspected; density/relative-density scope mapped and source label retained. Evidence: PHYS-FACT-T1-W06-SOURCE-RECONCILIATION.md.",
       "completion_condition": "Inspect original row and verify exact week label, subtopics, formulae/units, figures, exercises and answer/marking coverage; reconcile public-copy discrepancy without altering source data absent evidence."
     },
     {
@@ -2931,8 +2932,8 @@
       "depends_on": [
         "PHYS-WK-T1-W07"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Blocked 2026-11-08: original legacy .doc bytes/text are not accessible in this execution session. Public close-equivalent PDF has a different week label; supplement covers the scheme topic but original row reconciliation cannot be claimed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Original parsed row 6, source label WEEK 8, pages 28–32 inspected; pressure, hydraulic press, Archimedes/upthrust and figures mapped. Evidence: PHYS-FACT-T1-W07-SOURCE-RECONCILIATION.md.",
       "completion_condition": "Inspect original row and record exact week label, subtopics, formulae, units, figures, exercises and answer/marking coverage; reconcile without changing source data absent evidence."
     },
     {
@@ -2996,8 +2997,8 @@
       "depends_on": [
         "PHYS-WK-T1-W08"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Blocked 2026-11-08: original legacy .doc bytes/text are not accessible in this execution session. Public close-equivalent PDF has a different week label; supplement covers the scheme topic but original row reconciliation cannot be claimed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Original parsed row 7, source label WEEK 9, pages 32–34 inspected; work/energy/power examples and assessment mapped. Evidence: PHYS-FACT-T1-W08-SOURCE-RECONCILIATION.md.",
       "completion_condition": "Inspect original row and record exact week label, subtopics, equations/units, figures, examples, exercises and answer/marking coverage; reconcile without changing source data absent evidence."
     },
     {
@@ -3061,8 +3062,8 @@
       "depends_on": [
         "PHYS-WK-T1-W09"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Blocked 2026-11-08: original legacy .doc bytes/text are not accessible in this execution session. The scheme topic is covered by an original supplement, but exact original-row content and assessment cannot be reconciled.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Original parsed row 8, source label WEEK TEN, pages 34–37 inspected; viscosity, experiment, terminal-velocity graph and Stokes' law mapped. Evidence: PHYS-FACT-T1-W09-SOURCE-RECONCILIATION.md.",
       "completion_condition": "Inspect original row and record exact viscosity subtopics, formulae/units, figures, applications, assignments and answer/marking coverage; reconcile the supplement without inventing source content."
     },
     {
