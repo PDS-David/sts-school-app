@@ -742,3 +742,81 @@ The demerits section generalizes that pressure groups are self-centred, elitist,
 - `GOVERNMENT-T3-W06-WEEKEND-MCQ-AMBIGUITY` — correct category ambiguity and the unsafe/invalid technique option before keying.
 
 No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved in source locators. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-WK-T3-W07 — Political Parties indexing
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and dated constitutional fact-check evidence only; no lesson, answer key, marks, correction, asset or parser rule is authored here.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37 on the original legacy `.doc`.
+- Complete span: lines 714–830; UTF-8 span SHA-256: `b5cab6670a880156a5a362205733537f5f5c08759bc82613931981b3d3400942`.
+- Printed label: `WEEK SEVEN` at line 714; topic: `POLITICAL PARTIES` at line 715.
+- Scheme entry 7 is mapped by topic/order to this span. Its body content outline also lists party-system and manifesto subtopics, but those sections do not appear in the W07 body; W08 is separately labelled PARTY SYSTEM. The cross-week coverage is not assumed complete until W08 is indexed.
+- Locators refer to Antiword line numbers, not page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are empty rather than inferred from a different extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-W07-SCHEME-POLITICAL-PARTIES | Scheme entry 7 mapping | PARTIAL |
+| COV-GOV-T3-W07-MEANING | Meaning, lines 723–729 | PARTIAL |
+| COV-GOV-T3-W07-TYPES | Party types, lines 731–748 | PARTIAL |
+| COV-GOV-T3-W07-FUNCTIONS | Functions, lines 756–772 | PARTIAL |
+| COV-GOV-T3-W07-COMPARISON | Parties/pressure groups, lines 773–788 | PARTIAL |
+| COV-GOV-T3-W07-PARTY-SYSTEM-MANIFESTO | Party-system and manifesto objectives in outline | UNRESOLVED |
+| COV-GOV-T3-W07-GENERAL-REVISION | General revision, lines 795–804 | PARTIAL |
+| COV-GOV-T3-W07-READING | Reading pointers, lines 805–807 | PARTIAL |
+| COV-GOV-T3-W07-ASSESSMENT-KEYS | All exercise blocks | UNRESOLVED |
+| COV-GOV-T3-W07-WEEKEND-MCQS | Weekend MCQs, lines 809–824 | PARTIAL |
+
+Ten coverage entries and eight linked package open items were added. Party-system/manifesto coverage remains UNRESOLVED pending the separate W08 review.
+
+### Meaning, types and functions — lines 723–772
+
+The definition is broadly sound: a political party is an organized group seeking electoral power to run government. The Constitution's section 229 definition refers to associations whose activities include canvassing votes for candidates for specified elective offices. Section 221 provides that an association other than a political party may not canvass votes for a candidate or contribute to party/candidate campaign funds.
+
+The source's types—mass, elite, broker, charismatic and religious—are political-science classifications, not an exhaustive constitutional taxonomy:
+- Mass and elite parties are commonly used theoretical categories. The source's example of PDP as an “elite party” is asserted without evidence or criteria.
+- “Broker party” needs a clear reference and definition; the term is not self-explanatory.
+- A charismatic party may be organized around a prominent leader, but the listed UPN/PRP/NCP examples require a source and explicit criteria before they are accepted.
+- The “religious party” description conflicts with Nigerian constitutional requirements. Section 222(b) requires membership to be open to every Nigerian citizen irrespective of religion or ethnic grouping; section 222(e) prohibits a party's name, symbol or logo from containing an ethnic or religious connotation. Do not present an exclusive religious party as a lawful Nigerian party type.
+
+Most listed functions are standard: interest articulation and aggregation, political education/socialization, leadership recruitment, mobilization, policy formulation, opposition scrutiny, government formation through the electoral/constitutional system and peaceful transfer of power. These are potential functions, not guaranteed outcomes. In coalition or parliamentary contexts, a party may need partners or a legislative majority rather than forming a government alone.
+
+### Comparison with pressure groups — lines 773–788
+
+The central distinction is useful: political parties seek electoral office and governmental power; pressure groups seek to influence policy. Section 221 gives a more precise Nigerian legal distinction: an association other than a political party may not canvass votes for a candidate or contribute to party/candidate campaign funds.
+
+The other comparisons are overgeneralized. Pressure groups can have defined leadership and formal organization; they do not necessarily cease after one goal is achieved; they may advocate wider public interests rather than only members' interests. Section 222(b) requires party membership to be open to every citizen regardless of origin, circumstances of birth, sex, religion or ethnic grouping, but this does not mean parties have no membership rules at all.
+
+### Assessment and reading-marker audit
+
+- `EVALUATION QUESTIONS`: line 751; two questions at lines 752–753.
+- `EVALUATION QUESTIONS`: line 791; two questions at lines 792–793.
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 795; five questions at lines 796–804. Questions 1–3 relate to political parties. Questions 4–5 concern the rule of law, not taught in this span or listed in scheme entry 7.
+- `READING ASSIGNMENT`: line 805; `Comprehensive Government` pp. 77–79 and `Essential Government` pp. 92–94 at lines 806–807. Editions/publication details are absent and neither book was inspected.
+- `WEEKEND ASSINGMENT`: line 809; five MCQs at lines 810–824. Q1 has two plausible answers: serving as watchdogs and influencing government policies are both listed functions. Q2 tests the elite-party distinction; Q3 the party's objective of acquiring government power; Q4 the mass-party definition; Q5 the pressure-group objective. Preserve the items; do not key Q1 until it has one defensible answer.
+- `THEORY`: line 826; two prompts at lines 827–828. The phrase `elite part` in question 1 is retained as a source typo.
+- Total: **16 exercise stems** (2 + 2 + 5 + 5 + 2). No source answer key, marks or marking criteria are supplied. No answers or marks were invented.
+
+### Dated constitutional reference consulted
+
+**PLAC, *Constitution of the Federal Republic of Nigeria, 1999*, updated with the First–Fifth Alterations** (third revision October 2023; reprint September 2024). Used for sections 221–229, especially ss221, 222(b), 222(e) and 229: https://placng.org/i/wp-content/uploads/2023/11/Constitution-of-the-Federal-Republic-of-Nigeria-1999-Updated.pdf
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W07-SUBTOPICS-MISSING` — complete the cross-week map for party systems and party manifesto after W08 is indexed.
+- `GOVERNMENT-T3-W07-TYPES-FACT` — verify type examples and correct the religious-party claim against section 222.
+- `GOVERNMENT-T3-W07-FUNCTIONS-FACT` — qualify functions and account for different electoral/constitutional systems.
+- `GOVERNMENT-T3-W07-COMPARISON-FACT` — correct overgeneralizations and use section 221 for the party/pressure-group legal distinction.
+- `GOVERNMENT-T3-W07-REVISION-MISALIGNMENT` — resolve the rule-of-law questions' placement.
+- `GOVERNMENT-T3-W07-READING-VERIFICATION` — verify exact editions and page contents.
+- `GOVERNMENT-T3-W07-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 16 stems.
+- `GOVERNMENT-T3-W07-WEEKEND-MCQ-AMBIGUITY` — correct weekend question 1 before keying.
+
+No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
