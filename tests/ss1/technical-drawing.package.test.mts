@@ -122,3 +122,11 @@ test('Week Eight–Nine triangle dividers follow the source construction sequenc
   assert.match(lesson.body, /Bisect AB to locate its midpoint D/);
   assert.match(lesson.body, /Through D draw a line parallel to PC/);
 });
+
+test('Week Ten tangency lesson explicitly flags the source two-circle locus typo', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W10-TANGENCY');
+  assert.ok(lesson, 'Week Ten tangency lesson missing');
+  assert.match(lesson.body, /supplied source repeats R₁\+R for the second locus/);
+  assert.match(lesson.body, /geometrically correct second locus is R₁\+r/);
+});
