@@ -13,7 +13,7 @@ test('Technical Drawing package conforms to the SS1 package schema', async () =>
   const subject = packageSchema.parse(raw);
   assert.equal(subject.subject_slug, 'technical-drawing');
   assert.equal(subject.package_status, 'PENDING');
-  assert.ok(subject.lessons.length >= 8);
+  assert.ok(subject.lessons.length >= 9);
 });
 
 test('Technical Drawing lesson hashes and practice marking are internally consistent', async () => {
@@ -39,6 +39,8 @@ test('Technical Drawing lesson hashes and practice marking are internally consis
 test('Week 8–9 and Week 10 scheme objectives are bound to teaching supplements', async () => {
   const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
   const required = [
+    'COV-TD-T2-SCH-W07',
+    'COV-TD-T2-W07-REDUCTION',
     'COV-TD-T2-SCH-W08',
     'COV-TD-T2-SCH-W09',
     'COV-TD-T2-W08-EQUAL-AREA',
@@ -87,4 +89,13 @@ test('Technical Drawing Week Ten tangency SVG assets match their registered inte
     assert.equal(asset.media_type, 'image/svg+xml');
     assert.equal(asset.lesson_id, 'SUP-SS1-TECHNICAL-DRAWING-T2-W10-TANGENCY');
   }
+});
+
+test('Week Seven reduction supplement distinguishes linear and area ratios', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W07-REDUCTION');
+  assert.ok(lesson, 'Week Seven reduction lesson missing');
+  assert.match(lesson.body, /area scale factor is k²/);
+  assert.match(lesson.body, /√(3\/5)/);
+  assert.equal(lesson.practice.length, 4);
 });
