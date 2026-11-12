@@ -47,6 +47,8 @@ jobs:
           ./node_modules/.bin/tsc --noEmit -p mobile/tsconfig.json
       - name: SVG safety filter tests
         run: node --import tsx --test tests/ss1/svg-safety.test.mts tests/ss1/technical-drawing.package.test.mts tests/ss1/technical-drawing.source-assets.test.mts
+      - name: SS1 student delivery eligibility tests
+        run: node --import tsx --test tests/ss1/student-delivery.test.mts
       - name: Stored hashes and byte counts match content
         run: node --import tsx backend/src/db/ss1/refreshIntegrityHashes.ts --check
       - name: Validate Technical Drawing package independently
