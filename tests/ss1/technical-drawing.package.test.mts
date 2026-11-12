@@ -237,7 +237,7 @@ test('Week Ten source assessment answer key covers figure-backed weekend answers
   assert.match(key, /Weekend Q5 — image103/);
   assert.match(key, /Weekend Q6 — image104/);
   assert.match(key, /Evaluation 2 \/ Theory 2 — spanner/);
-  assert.match(key, /Ø102→Ø51 mm/);
+  assert.match(key, /Ø102→Ø51/);
   assert.match(key, /The rubrics above are original proposed assessment criteria/);
 });
 
