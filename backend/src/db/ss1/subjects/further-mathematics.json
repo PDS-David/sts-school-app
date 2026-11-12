@@ -5553,6 +5553,10 @@
         {
           "locator": "parsed row 5",
           "explanation": "Half-term revision classified by RULE-FM-T2-W06-REVISION; body retained."
+        },
+        {
+          "locator": "Source Week Six heading 'Revision of half term work' (56-character marker); separate assessment draft docs/ss1/work/microtasks/further-mathematics/FM-TEST-T2-W06-HALFTERM.md",
+          "explanation": "The source contains only a revision marker and no revision questions/test paper. A separate 50-mark assessment draft now covers Weeks 1–5. The marker classification is retained; the assessment is not misrepresented as source content."
         }
       ]
     },
@@ -6355,6 +6359,20 @@
           "explanation": "Replacement states bijectivity and demonstrates why x² on all real numbers is not invertible without a domain restriction."
         }
       ]
+    },
+    {
+      "id": "COV-FM-T2-W06-OBJ-1",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Review the first-half-term topics (Weeks 1–5) through a balanced assessment.",
+      "objective_locator": "scheme second term week 6; source WEEK SIX marker 'Revision of half term work'",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "docs/ss1/work/microtasks/further-mathematics/FM-TEST-T2-W06-HALFTERM.md",
+          "explanation": "New 50-mark half-term revision assessment covers AP, GP, one-variable inequalities, two-variable inequalities/linear programming, and mapping/functions. Approval PENDING; verification DEFERRED."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -6684,6 +6702,17 @@
         "COV-FM-T2-R06",
         "COV-FM-T2-W07-OBJ-1",
         "COV-FM-T2-W07-OBJ-2"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-T2-W06-REVISION-ASSESSMENT",
+      "kind": "CONTENT",
+      "detail": "The source Week Six row is only a 56-character marker 'Revision of half term work'; it contains no revision lesson, question set or answer key. A separate 50-mark assessment draft has been authored to cover Weeks 1–5.",
+      "required_action": "Teacher reviews and approves the half-term assessment; verify that the delivery interface can present the separate test document to students.",
+      "affected_ids": [
+        "COV-FM-T2-R05",
+        "COV-FM-T2-W06-OBJ-1"
       ],
       "blocks_delivery": true
     }
