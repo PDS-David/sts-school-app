@@ -3998,12 +3998,194 @@
               "marks": 1
             }
           ]
+        },
+        {
+          "id": "Q21",
+          "question": "A brass rod is 2 m long at a certain temperature. What will be its length after a temperature rise of 90 K if its linear expansivity is 1.8 × 10⁻⁶ K⁻¹?",
+          "answer": "ΔL = αL₀ΔT = 1.8 × 10⁻⁶ × 2 × 90 = 0.000324 m. Final length = 2 + 0.000324 = 2.000324 m.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses ΔL = αL₀ΔT.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates ΔL = 0.000324 m.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives final length 2.000324 m.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q22",
+          "question": "Show that the area of an isotropic solid after a small temperature rise is approximately A₂ = A₁(1 + βΔT).",
+          "answer": "For an isotropic plate, L₂ = L₁(1 + αΔT) and b₂ = b₁(1 + αΔT). Thus A₂ = A₁(1 + αΔT)² = A₁[1 + 2αΔT + (αΔT)²]. For small expansion, the squared term is negligible, so A₂ ≈ A₁(1 + 2αΔT). Since β ≈ 2α, A₂ ≈ A₁(1 + βΔT).",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Writes the expanded length and breadth relationships.",
+              "marks": 1
+            },
+            {
+              "criterion": "Forms A₂ = A₁(1 + αΔT)².",
+              "marks": 1
+            },
+            {
+              "criterion": "Neglects the small squared term for a small temperature change.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses β ≈ 2α to obtain the required expression.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q23",
+          "question": "The anomalous expansion of water takes place between/at:",
+          "options": [
+            "1 °C and 4 °C",
+            "0 °C and 4 °C",
+            "4 °C and 25 °C",
+            "all temperatures"
+          ],
+          "answer": "B. 0 °C and 4 °C.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects option B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q24",
+          "question": "The SI unit of linear expansivity is:",
+          "options": [
+            "per Celsius",
+            "per Fahrenheit",
+            "per Kelvin",
+            "per joule"
+          ],
+          "answer": "C. per kelvin (K⁻¹).",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects option C and states K⁻¹.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q25",
+          "question": "If the linear expansivity of a solid is 1.8 × 10⁻⁶ K⁻¹, its area expansivity is approximately:",
+          "options": [
+            "0.9 × 10⁻⁶ K⁻¹",
+            "3.6 × 10⁻⁶ K⁻¹",
+            "1.8 × 10⁻⁶ K⁻¹",
+            "5.4 × 10⁻⁶ K⁻¹"
+          ],
+          "answer": "B. 3.6 × 10⁻⁶ K⁻¹, because β ≈ 2α.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects option B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q26",
+          "question": "A metal is 15.01 m long. Its temperature rises by 60 °C and its new length is 15.05 m. Calculate its linear expansivity.",
+          "options": [
+            "0.0004 K⁻¹",
+            "0.00004 K⁻¹",
+            "0.004 K⁻¹",
+            "0.04 K⁻¹"
+          ],
+          "answer": "ΔL = 15.05 − 15.01 = 0.04 m. α = ΔL/(L₀ΔT) = 0.04/(15.01 × 60) = 4.44 × 10⁻⁵ K⁻¹. The closest listed option is B, 0.00004 K⁻¹.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects the nearest listed value, option B; the calculated value is approximately 4.44 × 10⁻⁵ K⁻¹.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q27",
+          "question": "The volume of 10 cm³ of mercury increases by 0.182 cm³ when its temperature rises by 100 °C. Its cubical expansivity is:",
+          "options": [
+            "0.000182 K⁻¹",
+            "0.0000182 K⁻¹",
+            "0.000187 K⁻¹",
+            "0.000178 K⁻¹"
+          ],
+          "answer": "γ = ΔV/(V₀ΔT) = 0.182/(10 × 100) = 0.000182 K⁻¹. Option A.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects option A.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q28",
+          "question": "Explain the anomalous behaviour of water.",
+          "answer": "When water is heated from 0 °C to 4 °C, it contracts and its density increases. It has maximum density at about 4 °C. When heated above 4 °C, it expands normally. When cooled from 4 °C towards 0 °C, it expands; on freezing it expands further, so ice is less dense and floats.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "States that water contracts when heated from 0 °C to 4 °C.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that its density increases and is maximum at about 4 °C.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that above 4 °C it expands normally.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains expansion on cooling/freezing and the lower density of ice.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q29",
+          "question": "An iron cube has a side length of 2 cm. If its temperature rises by 90 °C and the linear expansivity of iron is 1.25 × 10⁻⁵ K⁻¹, calculate its increase in volume.",
+          "answer": "Initial volume V₀ = 2³ = 8 cm³. For a small expansion of an isotropic solid, γ ≈ 3α = 3.75 × 10⁻⁵ K⁻¹. ΔV = γV₀ΔT = 3.75 × 10⁻⁵ × 8 × 90 = 0.027 cm³.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Calculates initial volume V₀ = 8 cm³.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses γ ≈ 3α = 3.75 × 10⁻⁵ K⁻¹.",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes into ΔV = γV₀ΔT.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives ΔV = 0.027 cm³.",
+              "marks": 1
+            }
+          ]
         }
       ],
       "provenance": [
         {
           "title": "Sow the Seed Schools SS1 Physics Second Term scheme",
-          "locator": "Registered source SS1-SRC-2c924c964660; parsed row 3 WEEK FOUR; body ID SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c (4,238 characters; source member SHA-256 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7). Original body text was not available in this execution.",
+          "locator": "Registered original source SS1-SRC-2c924c964660; archive member SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc; member SHA-256 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; 466432 bytes. Workflow run 43126374868 successfully verified the complete archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and manifest/member hashes; artifact 13902689395 contains the original member. Source week locator: WEEK FOUR, parsed row 3.",
           "url": null,
           "rights": "Scheme used to establish subject and week scope; lesson independently authored.",
           "reuse_status": "PERMITTED",
@@ -9618,6 +9800,19 @@
         "locator": "Verified original source member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7, parsed row 2 WEEK THREE (SS1-SRC-2c924c964660:BODY:35319222af7c43db21bfd51b1f897b2b74d81ebe320d3b8f97de427db549e303); rendered source pages 6–7. Watch-rate cross-check: Seiko Museum, “Temperature and regulators” (https://museum.seiko.co.jp/en/knowledge/MechanicalTimepieces07/); Watch Museum, “The Balance Wheel: The Heart of the Mechanical Watch” (https://explore.watchmuseum.org/articles/balance-wheel-heart-mechanical-watch); American Watchmakers-Clockmakers Institute, “Watch Adjustments” (https://www.awci.com/wp-content/uploads/ht/1981/1981-02-web.pdf).",
         "explanation": "The source's overhead-wire statement reverses the temperature effect; wires lengthen and sag more as they warm, while cooling contracts them. Warming a glass bottle neck can enlarge its opening and loosen the stopper. Pipe bursts are commonly caused by water freezing and expanding inside the pipe, not by the pipe metal simply expanding. The bridge sentence is visibly truncated in the original rendering and has not been reconstructed. The source's watch statement is not repeated: expansion of an uncompensated balance wheel increases moment of inertia and tends to lengthen its oscillation period/slow the watch; overall rate also depends on hairspring elasticity and temperature compensation. The lesson preserves the core SS1 thermal-expansion objectives without teaching the misleading statements."
       }
+    },
+    {
+      "id": "CORR-PHYSICS-T2-W04-EXPANSIVITY-NOTATION",
+      "source_id": "SS1-SRC-2c924c964660",
+      "source_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7",
+      "source_lesson_id": "SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c",
+      "body_sha256": "91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c",
+      "replacement_id": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY",
+      "reason": "The original row has notation and unit defects: a displayed linear-expansion derivation uses 'X' where the coefficient α is required; cubical expansivity is labelled Y rather than the conventional γ; the α:β:Y relationship is printed as 1:2 despite the preceding Y=3α relation; and an area-coefficient unit is printed as 'per 8C' instead of per °C. The source's real/apparent expansion heading is limited to water although the definition describes a liquid in an expansible vessel. The replacement uses α, β and γ consistently, gives α:β:γ ≈ 1:2:3 for small expansion of isotropic solids, uses K⁻¹ (with °C intervals equivalent), and explains real/apparent liquid expansion accurately.",
+      "evidence": {
+        "locator": "Original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 3 WEEK FOUR, body SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c; privately rendered source pages 7–9.",
+        "explanation": "The rendered source page 7 shows the stray X in the linear-expansion derivation; page 8 consistently uses Y for cubical expansivity and prints the incomplete ratio 1:2 even though it states Y=3α. The same page prints the area coefficient unit as per 8C. Page 9 contains the source assessments and a theory prompt requesting a diagram of anomalous water behaviour, but no instructional diagram is present. These are source-level notation/visual gaps, not merely text-extraction artefacts."
+      }
     }
   ],
   "assets": [
@@ -12029,12 +12224,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY; body SHA-256 b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b; practice Q01–Q14.",
-          "explanation": "Authored supplement teaches this objective with definitions, equations, worked examples, units and keyed practice. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY; body SHA-256 b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b; practice Q01–Q29.",
+          "explanation": "The authored supplement teaches the mapped objective with definitions, equations, worked examples, units and complete marked practice. The exact registered original source row has now also been inspected and reconciled; content approval remains PENDING and verification DEFERRED."
         },
         {
           "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Four, lines 297–414.",
           "explanation": "Close-equivalent source comparison includes linear, area, volume, real/apparent expansivity and anomalous expansion of water. It is not represented as the registered original source body."
+        },
+        {
+          "locator": "Original registered .doc member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 3 body SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c; rendered source pages 7–9.",
+          "explanation": "The original row includes linear, area and cubical expansivity, real/apparent liquid expansion, anomalous water behaviour, equations, one worked example, two evaluation questions, five weekend MCQs (the source numbering jumps from 4 to 6) and two theory questions. The source pages contain a provider watermark but no instructional diagram. The theory prompt requests a diagram of anomalous water behaviour, so a separate original SVG asset task is open."
         }
       ]
     },
@@ -12049,12 +12248,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY; body SHA-256 b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b; practice Q01–Q14.",
-          "explanation": "Authored supplement teaches this objective with definitions, equations, worked examples, units and keyed practice. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY; body SHA-256 b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b; practice Q01–Q29.",
+          "explanation": "The authored supplement teaches the mapped objective with definitions, equations, worked examples, units and complete marked practice. The exact registered original source row has now also been inspected and reconciled; content approval remains PENDING and verification DEFERRED."
         },
         {
           "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Four, lines 297–414.",
           "explanation": "Close-equivalent source comparison includes linear, area, volume, real/apparent expansivity and anomalous expansion of water. It is not represented as the registered original source body."
+        },
+        {
+          "locator": "Original registered .doc member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 3 body SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c; rendered source pages 7–9.",
+          "explanation": "The original row includes linear, area and cubical expansivity, real/apparent liquid expansion, anomalous water behaviour, equations, one worked example, two evaluation questions, five weekend MCQs (the source numbering jumps from 4 to 6) and two theory questions. The source pages contain a provider watermark but no instructional diagram. The theory prompt requests a diagram of anomalous water behaviour, so a separate original SVG asset task is open."
         }
       ]
     },
@@ -12069,12 +12272,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY; body SHA-256 b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b; practice Q01–Q14.",
-          "explanation": "Authored supplement teaches this objective with definitions, equations, worked examples, units and keyed practice. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY; body SHA-256 b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b; practice Q01–Q29.",
+          "explanation": "The authored supplement teaches the mapped objective with definitions, equations, worked examples, units and complete marked practice. The exact registered original source row has now also been inspected and reconciled; content approval remains PENDING and verification DEFERRED."
         },
         {
           "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Four, lines 297–414.",
           "explanation": "Close-equivalent source comparison includes linear, area, volume, real/apparent expansivity and anomalous expansion of water. It is not represented as the registered original source body."
+        },
+        {
+          "locator": "Original registered .doc member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 3 body SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c; rendered source pages 7–9.",
+          "explanation": "The original row includes linear, area and cubical expansivity, real/apparent liquid expansion, anomalous water behaviour, equations, one worked example, two evaluation questions, five weekend MCQs (the source numbering jumps from 4 to 6) and two theory questions. The source pages contain a provider watermark but no instructional diagram. The theory prompt requests a diagram of anomalous water behaviour, so a separate original SVG asset task is open."
         }
       ]
     },
@@ -12089,12 +12296,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY; body SHA-256 b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b; practice Q01–Q14.",
-          "explanation": "Authored supplement teaches this objective with definitions, equations, worked examples, units and keyed practice. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY; body SHA-256 b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b; practice Q01–Q29.",
+          "explanation": "The authored supplement teaches the mapped objective with definitions, equations, worked examples, units and complete marked practice. The exact registered original source row has now also been inspected and reconciled; content approval remains PENDING and verification DEFERRED."
         },
         {
           "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Four, lines 297–414.",
           "explanation": "Close-equivalent source comparison includes linear, area, volume, real/apparent expansivity and anomalous expansion of water. It is not represented as the registered original source body."
+        },
+        {
+          "locator": "Original registered .doc member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 3 body SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c; rendered source pages 7–9.",
+          "explanation": "The original row includes linear, area and cubical expansivity, real/apparent liquid expansion, anomalous water behaviour, equations, one worked example, two evaluation questions, five weekend MCQs (the source numbering jumps from 4 to 6) and two theory questions. The source pages contain a provider watermark but no instructional diagram. The theory prompt requests a diagram of anomalous water behaviour, so a separate original SVG asset task is open."
         }
       ]
     },
@@ -12109,12 +12320,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY; body SHA-256 b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b; practice Q01–Q14.",
-          "explanation": "Authored supplement teaches this objective with definitions, equations, worked examples, units and keyed practice. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY; body SHA-256 b6f7d5dbdb96850ed38c8f165b671860f80d8139aa18d0173a747ccd9ac5099b; practice Q01–Q29.",
+          "explanation": "The authored supplement teaches the mapped objective with definitions, equations, worked examples, units and complete marked practice. The exact registered original source row has now also been inspected and reconciled; content approval remains PENDING and verification DEFERRED."
         },
         {
           "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Four, lines 297–414.",
           "explanation": "Close-equivalent source comparison includes linear, area, volume, real/apparent expansivity and anomalous expansion of water. It is not represented as the registered original source body."
+        },
+        {
+          "locator": "Original registered .doc member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 3 body SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c; rendered source pages 7–9.",
+          "explanation": "The original row includes linear, area and cubical expansivity, real/apparent liquid expansion, anomalous water behaviour, equations, one worked example, two evaluation questions, five weekend MCQs (the source numbering jumps from 4 to 6) and two theory questions. The source pages contain a provider watermark but no instructional diagram. The theory prompt requests a diagram of anomalous water behaviour, so a separate original SVG asset task is open."
         }
       ]
     },
@@ -14140,6 +14355,18 @@
         "SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS"
       ],
       "blocks_delivery": false
+    },
+    {
+      "id": "PHYSICS-T2-W04-ANOMALOUS-WATER-DIAGRAM",
+      "kind": "VISUAL",
+      "detail": "The original Week Four theory prompt asks students to explain anomalous expansion of water with a diagram, but the rendered original source pages 7–9 contain no instructional diagram (only a repeated provider watermark). The authored lesson explains the phenomenon in text but has no dedicated visual.",
+      "required_action": "Create and register an original safe SVG showing water's volume/density behaviour from 0 °C through 4 °C and above 4 °C, clearly identifying maximum density near 4 °C; link it to the Week Four lesson and record its source locator and hash/bytes.",
+      "affected_ids": [
+        "SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c",
+        "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY",
+        "COV-PHYS-T2-W04-OBJ-4"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
