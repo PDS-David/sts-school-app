@@ -4762,6 +4762,276 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T2-W08-TRIGONOMETRIC-RATIOS",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Further Mathematics",
+      "title": "Trigonometric ratios, general angles, identities and graphs",
+      "objectives": [
+        "Calculate sine, cosine, tangent and reciprocal ratios in right-angled triangles.",
+        "Use reference angles and quadrant signs to evaluate trigonometric ratios of general and negative angles.",
+        "Apply exact special-angle values and prove basic trigonometric identities.",
+        "Solve trigonometric equations on a stated interval and interpret sine, cosine and tangent graphs."
+      ],
+      "body": "Trigonometric ratios relate angles to sides of right-angled triangles and to coordinates on the unit circle. Unless stated otherwise, angles are measured in degrees.\n\n1. BASIC RATIOS IN A RIGHT-ANGLED TRIANGLE\nFor an acute angle θ: sinθ=opposite/hypotenuse; cosθ=adjacent/hypotenuse; tanθ=opposite/adjacent. Reciprocals: cosecθ=1/sinθ, secθ=1/cosθ, cotθ=1/tanθ. Also tanθ=sinθ/cosθ and cotθ=cosθ/sinθ.\nExample: If sinθ=5/13 and θ is acute, opposite=5, hypotenuse=13 and adjacent=√(169−25)=12. Therefore cosθ=12/13, tanθ=5/12, secθ=13/12, cosecθ=13/5 and cotθ=12/5.\n\n2. GENERAL ANGLES AND QUADRANT SIGNS\nQuadrant I: all ratios positive. Quadrant II: sine/cosecant positive. Quadrant III: tangent/cotangent positive. Quadrant IV: cosine/secant positive. Use the acute reference angle for the magnitude.\nQII: sin(180°−α)=sinα, cos(180°−α)=−cosα, tan(180°−α)=−tanα.\nQIII: sin(180°+α)=−sinα, cos(180°+α)=−cosα, tan(180°+α)=tanα.\nQIV: sin(360°−α)=−sinα, cos(360°−α)=cosα, tan(360°−α)=−tanα.\nFor negative angles: sin(−θ)=−sinθ, cos(−θ)=cosθ, tan(−θ)=−tanθ.\nExamples: sin143°=sin37°≈0.6018; cos115°=−cos65°≈−0.4226; tan125°=−tan55°≈−1.428.\n\n3. SPECIAL ANGLES\n30°: sin=1/2, cos=√3/2, tan=√3/3.\n45°: sin=√2/2, cos=√2/2, tan=1.\n60°: sin=√3/2, cos=1/2, tan=√3.\nReciprocal values are found by taking reciprocals. Examples: sin135°=√2/2; tan330°=−√3/3; cos240°=−1/2. Write the ratio 1/2, not 0.5° (which is an angle).\n\n4. PYTHAGOREAN IDENTITIES\nOn the unit circle x=cosθ, y=sinθ and x²+y²=1. Thus sin²θ+cos²θ=1. Dividing by cos²θ gives 1+tan²θ=sec²θ; dividing by sin²θ gives 1+cot²θ=cosec²θ.\nExample: (1−sinθ)(1+sinθ)/sin²θ=(1−sin²θ)/sin²θ=cos²θ/sin²θ=cot²θ.\nExample: (secθ−tanθ)(secθ+tanθ)=sec²θ−tan²θ=1.\nExample: 1/(1+cosθ)+1/(1−cosθ)=2/(1−cos²θ)=2/sin²θ=2cosec²θ, where defined.\n\n5. SOLVING EQUATIONS ON 0°–360°\nSine is positive in I and II; cosine in I and IV; tangent in I and III.\nsinθ=0.4396: reference angle≈26.08°, so θ≈26.08° or 153.92°.\ntanθ=−2.4398: reference angle≈67.71°, so θ≈112.29° or 292.29°.\ncosθ=0.8427: reference angle≈32.57°, so θ≈32.57° or 327.43°.\nIf 5sinθ=4, sinθ=0.8 and θ≈53.13° or 126.87° (a hand graph may read about 54° and 126°).\n\n6. SINE, COSINE AND TANGENT GRAPHS\nSine and cosine have amplitude 1 and period 360°; their values lie between −1 and 1. Tangent has period 180° and is undefined at 90° and 270° in 0°–360°.\nθ: 0,30,60,90,120,150,180,210,240,270,300,330,360.\nsinθ: 0,1/2,√3/2,1,√3/2,1/2,0,−1/2,−√3/2,−1,−√3/2,−1/2,0.\ncosθ: 1,√3/2,1/2,0,−1/2,−√3/2,−1,−√3/2,−1/2,0,1/2,√3/2,1.\nThe source writes y=sinθ/2 without brackets. It may mean (sinθ)/2 (amplitude 1/2) or sin(θ/2) (period 720°). Teacher clarification is required; do not silently choose one.\n\n7. COMMON ERRORS\nUse quadrant signs after finding a reference angle. Do not confuse reciprocal ratios with negative ratios. State the interval when solving an equation. Do not include 90° or 270° as tangent values. Keep exact surd values until a decimal approximation is requested.",
+      "body_sha256": "d053a61c94625f3e3e3504432b008a8afa33fcc9fae4da08517d0a6d2f9972db",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Given sinθ=5/13 and θ acute, find cosθ, tanθ, secθ, cosecθ and cotθ.",
+          "answer": "Adjacent=12. cos=12/13, tan=5/12, sec=13/12, cosec=13/5, cot=12/5.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Pythagoras gives adjacent 12",
+              "marks": 1
+            },
+            {
+              "criterion": "cosθ=12/13",
+              "marks": 1
+            },
+            {
+              "criterion": "tanθ=5/12",
+              "marks": 1
+            },
+            {
+              "criterion": "secθ=13/12 and cosecθ=13/5",
+              "marks": 1
+            },
+            {
+              "criterion": "cotθ=12/5",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Evaluate sin143°, cos115° and tan125° using reference angles.",
+          "answer": "0.6018, −0.4226 and −1.428 respectively.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Correct sine value/sign",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct cosine value/sign",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct tangent value/sign",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Evaluate sin310°, cos285°, tan334°, cos(−75°), tan(−100°) and sin(−223°).",
+          "answer": "−0.7660; 0.2588; −0.4877; 0.2588; 5.6713; 0.6820.",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "sin310°",
+              "marks": 1
+            },
+            {
+              "criterion": "cos285°",
+              "marks": 1
+            },
+            {
+              "criterion": "tan334°",
+              "marks": 1
+            },
+            {
+              "criterion": "cos(−75°)",
+              "marks": 1
+            },
+            {
+              "criterion": "tan(−100°)",
+              "marks": 1
+            },
+            {
+              "criterion": "sin(−223°)",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Solve sinθ=0.4396 for 0°≤θ≤360°.",
+          "answer": "θ≈26.08° or 153.92°.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Reference angle",
+              "marks": 1
+            },
+            {
+              "criterion": "Both solutions",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Solve tanθ=−2.4398 for 0°≤θ≤360°.",
+          "answer": "θ≈112.29° or 292.29°.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Reference angle",
+              "marks": 1
+            },
+            {
+              "criterion": "Both solutions",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Write exact sin, cos and tan values for 30°,45° and 60°.",
+          "answer": "30°: 1/2,√3/2,√3/3. 45°: √2/2,√2/2,1. 60°: √3/2,1/2,√3.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "30° values",
+              "marks": 1
+            },
+            {
+              "criterion": "45° values",
+              "marks": 1
+            },
+            {
+              "criterion": "60° values",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q7",
+          "question": "Prove (1−sinθ)(1+sinθ)/sin²θ=cot²θ.",
+          "answer": "(1−sin²θ)/sin²θ=cos²θ/sin²θ=cot²θ.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Difference of squares and identity",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains cot²θ",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q8",
+          "question": "Show that (secθ−tanθ)(secθ+tanθ)=1.",
+          "answer": "sec²θ−tan²θ=(1+tan²θ)−tan²θ=1.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Difference of squares",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses Pythagorean identity",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q9",
+          "question": "Solve cosθ=0.2874 for 0°≤θ≤360°.",
+          "answer": "θ≈73.30° or 286.70°.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Reference angle",
+              "marks": 1
+            },
+            {
+              "criterion": "Both solutions",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "Complete sinθ and cosθ at 0°,90°,180°,270° and 360°.",
+          "answer": "sin: 0,1,0,−1,0. cos: 1,0,−1,0,1.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Sine row",
+              "marks": 1
+            },
+            {
+              "criterion": "Cosine row",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "State the periods of sinθ, cosθ and tanθ, and the angles where tanθ is undefined in 0°–360°.",
+          "answer": "Sine/cosine period 360°; tangent period 180°; undefined at 90° and 270°.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Sine/cosine period",
+              "marks": 1
+            },
+            {
+              "criterion": "Tangent period",
+              "marks": 1
+            },
+            {
+              "criterion": "Both undefined angles",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "Prove 1/(1+cosθ)+1/(1−cosθ)=2cosec²θ.",
+          "answer": "Common denominator gives 2/(1−cos²θ)=2/sin²θ=2cosec²θ.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Combines fractions",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses 1−cos²θ=sin²θ",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains 2cosec²θ",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source: SS1 second-term Further Mathematics",
+          "locator": "WEEK EIGHT, TOPIC: TRIGONOMETRIC RATIO; member SHA-256 3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36. Original pages 26–33 visually inspected; several graph/triangle images are absent in the rendered source and a graph expression is ambiguous.",
+          "url": null,
+          "rights": "Newly authored instructional material; no extended source passage or graph image reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools; content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -5586,14 +5856,19 @@
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Trigonometric ratios; graphs; special angles; applications",
       "objective_locator": "scheme topic 8 (scheme table row 8, body child 5, table sha256 6b18d95fc63347bc091d1c093cc113dd2b08f60f5e7a256f8571335a53a82b7e); parsed row 7 (TRIGONOMETRIC RATIO)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-43c5ab51b87f:BODY:e86ddcd3f65982c29bb026792fa4d288c75a9f95a204aa89cbcb141c6cc606fe"
+        "SS1-SRC-43c5ab51b87f:BODY:e86ddcd3f65982c29bb026792fa4d288c75a9f95a204aa89cbcb141c6cc606fe",
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W08-TRIGONOMETRIC-RATIOS"
       ],
       "evidence": [
         {
           "locator": "parsed row 7",
           "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and delivered text loses superscripts/subscripts (401 superscript and 214 subscript runs in the source; OMML characters lost in this row: 52); no replacement lesson authored."
+        },
+        {
+          "locator": "Second Term Week Eight source pages 26–33: right-triangle ratios, general angles, identities, special angles and trig graphs; original rendered pages visually inspected",
+          "explanation": "Replacement covers basic ratios, general-angle ratios and identities, plus special angles and graph interpretation. It corrects reciprocal/sign/decimal notation and flags ambiguous y=sinθ/2. Approval PENDING; verification DEFERRED."
         }
       ]
     },
@@ -6373,6 +6648,54 @@
           "explanation": "New 50-mark half-term revision assessment covers AP, GP, one-variable inequalities, two-variable inequalities/linear programming, and mapping/functions. Approval PENDING; verification DEFERRED."
         }
       ]
+    },
+    {
+      "id": "COV-FM-T2-W08-OBJ-1",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Calculate basic trigonometric ratios and their reciprocals in right-angled triangles.",
+      "objective_locator": "scheme second term week 8; source Week Eight Basic Trigonometric Ratio and Reciprocals",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W08-TRIGONOMETRIC-RATIOS"
+      ],
+      "evidence": [
+        {
+          "locator": "Week Eight pages 26–27; replacement section 1",
+          "explanation": "Replacement states the three basic ratios, reciprocal ratios and 5-12-13 example."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-W08-OBJ-2",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Evaluate trigonometric ratios of general angles using quadrant identities.",
+      "objective_locator": "scheme second term week 8; source Week Eight Ratios of General Angles, quadrants I–IV",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W08-TRIGONOMETRIC-RATIOS"
+      ],
+      "evidence": [
+        {
+          "locator": "Week Eight pages 27–28; replacement section 2",
+          "explanation": "Replacement gives quadrant signs, reference-angle identities and negative-angle rules."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-W08-OBJ-3",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Apply trigonometric identities to simplify and prove expressions.",
+      "objective_locator": "scheme second term week 8; source Week Eight Trigonometric Identity",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W08-TRIGONOMETRIC-RATIOS"
+      ],
+      "evidence": [
+        {
+          "locator": "Week Eight page 29; replacement section 4 and practice Q7–Q8,Q12",
+          "explanation": "Replacement derives all three Pythagorean identities and includes proof practice."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -6715,6 +7038,31 @@
         "COV-FM-T2-W06-OBJ-1"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-T2-W08-MISSING-VISUALS-AND-AMBIGUITY",
+      "kind": "VISUAL",
+      "detail": "The original Week Eight source refers to unit-circle, sine/cosine, tangent and special-angle triangle figures, but rendered pages 29–31 contain large blank spaces where several graphs/diagrams should appear. The source graph relation y=sinθ/2 has no brackets and is ambiguous between (sinθ)/2 and sin(θ/2). The cosine table for 0°–360° is incomplete. Replacement supplies complete values and explains both interpretations; original diagrams need clean replacement assets.",
+      "required_action": "Create original SVG assets for the unit circle, sine/cosine curves, tangent curve and 30°/45°/60° triangles; complete the graph table. Ask the teacher to confirm the intended meaning of y=sinθ/2 before choosing one graph.",
+      "affected_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W08-TRIGONOMETRIC-RATIOS",
+        "COV-FM-T2-R07",
+        "COV-FM-T2-W08-OBJ-1",
+        "COV-FM-T2-W08-OBJ-2",
+        "COV-FM-T2-W08-OBJ-3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-T2-W08-OUT-OF-SCOPE-EVALUATION",
+      "kind": "CONTENT",
+      "detail": "The Week Eight general evaluation includes two surd rationalisation questions that do not belong to the trigonometric-ratio topic. They are not included in the Week Eight replacement lesson; retain them as unassigned source extras unless the teacher identifies their intended week.",
+      "required_action": "Do not present the two surd questions as trigonometry. Teacher confirms the intended week or removes them from the Week Eight assessment.",
+      "affected_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W08-TRIGONOMETRIC-RATIOS",
+        "COV-FM-T2-R07"
+      ],
+      "blocks_delivery": false
     }
   ]
 }
