@@ -1,6 +1,14 @@
-# Consolidated SS1 Further Mathematics review — PR #639
+# Consolidated SS1 Further Mathematics review — PR #640
 
-The consolidated package currently includes 25 lesson packages (10 First Term, 9 Second Term, 6 Third Term), 86 coverage records, 31 open review items and 24 registered visual assets. It carries the First Term repairs, the full Second Term lesson set, and the source-available Third Term lessons.
+The consolidated package currently includes 25 lesson packages (10 First Term, 9 Second Term, 6 Third Term), 90 coverage records, 30 open review items and 24 registered visual assets. It carries the First Term repairs, the full Second Term lesson set, and the source-available Third Term lessons.
+
+Additional reconciliation work:
+- Inspected source branding/letterheads across all three terms; vendor permission remains a separate blocking owner decision. No commercial contact details were copied.
+- Recorded per-week equation-format/extraction audits for First and Second Term. The two unresolved 41-byte Equation Native objects in First Term Week 2 remain explicitly blocked.
+- Indexed First and Second Term Week 11 revision and Week 12 examination markers from their scheme tables.
+- Compared all 12 candidate lessons in immutable PR #72 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; no duplicate lessons were ported because current replacements already cover their objectives with more practice and corrections.
+- Completed objective-level indexing for First Term Week 5 and replaced obsolete broad scope umbrella OI-FM-002 with precise residual gates.
+- Queue: 106 of 115 tasks now IMPLEMENTED_TESTING_DEFERRED; 7 owner/source gates remain BLOCKED; 2 tasks remain in progress.
 
 First Term Week 6 work added in this continuation:
 - Added a full revision lesson spanning indices, logarithms, set operations and two-/three-set Venn counting, closing the source's set-theory revision gap at the replacement-content level.
