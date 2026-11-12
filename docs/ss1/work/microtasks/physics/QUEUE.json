@@ -54,7 +54,8 @@
     "PHYS-VIS-T1/T2/T3 (2026-11-11): ten original SVGs authored and registered; original embedded legacy .doc figures still not inspectable from text extraction. Evidence PHYS-VIS-NEW-ASSETS-20261111.md; package open item PHYSICS-SOURCE-VISUAL-INVENTORY blocks delivery pending exhaustive rendered-source audit.",
     "PHYS-FACT-T3-W05-SCHEME-MISMATCH (2026-11-11): resolved as a title-truncation artefact. The source body includes Diffusion, Graham's law and Osmosis; Brownian motion is only a heading plus two statements, with the full explanation supplied by the new lesson. Non-blocking open item PHYSICS-T3-W05-BROWNIAN-SOURCE-DEPTH records the source-depth gap.",
     "PHYS-WK-T2-W03 (2026-11-12): recovered and inspected the exact registered Second Term original .doc row and rendered source pages 6–7; indexed all subtopics and source assessment blocks; added answer keys for the five MCQs and two distinct theory prompts (17 marks); recorded the incorrect/imprecise source statements and the watch-balance factual disposition; row contains only a provider watermark, no instructional figure. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W03.md.",
-    "PHYS-WK-T2-W04 (2026-11-12): inspected exact registered original .doc row and rendered source pages 7–9; indexed all expansivity objectives, equations, examples and source assessments; keyed two evaluation prompts, five weekend MCQs and two theory questions (20 marks); corrected X/α, Y/γ, incomplete coefficient ratio and per-8C notation. Original source has no instructional diagram despite a diagram-required theory prompt; separate delivery-blocking SVG asset task PHYS-ASSET-T2-W04-ANOMALOUS-WATER-DIAGRAM added. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W04.md."
+    "PHYS-WK-T2-W04 (2026-11-12): inspected exact registered original .doc row and rendered source pages 7–9; indexed all expansivity objectives, equations, examples and source assessments; keyed two evaluation prompts, five weekend MCQs and two theory questions (20 marks); corrected X/α, Y/γ, incomplete coefficient ratio and per-8C notation. Original source has no instructional diagram despite a diagram-required theory prompt; separate delivery-blocking SVG asset task PHYS-ASSET-T2-W04-ANOMALOUS-WATER-DIAGRAM added. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W04.md.",
+    "PHYS-WK-T2-W05 (2026-11-12): inspected original .doc row and rendered pages 9–12; indexed all source applications and assessment blocks; keyed two distinct evaluation/theory prompts and five weekend MCQs (15 marks); corrected radiation-surface, infrared, flask-stopper and stone/carpet issues; expanded lesson applications. Existing vacuum-flask SVG covers the thermos diagram prompt; a separate conduction-rod SVG task was added for the low-resolution page-10 source figure. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W05.md."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -64,7 +65,7 @@
     "SOURCE_RULE": 2,
     "OWNER_DECISION": 2,
     "FACTUAL_DEPENDENCY": 14,
-    "VISUAL_DISPOSITION": 4,
+    "VISUAL_DISPOSITION": 5,
     "BRANCH_PORT": 13,
     "BRANCH_COMPARISON": 2,
     "SCOPE_DECOMPOSITION": 1,
@@ -73,11 +74,11 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 51,
+    "IMPLEMENTED_TESTING_DEFERRED": 52,
     "BLOCKED": 18,
     "PENDING": 23
   },
-  "total": 92,
+  "total": 93,
   "items": [
     {
       "id": "PHYS-SRC-T1",
@@ -821,8 +822,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Reopened 2026-11-12: the original Physics source members are now available from CI evidence artifact 13902689395 (run 43126374868). The run successfully executed scripts/ss1/prepare_sources.py, which enforces archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact manifest membership, member byte counts and member SHA-256. Independently checked the three extracted Physics members against SOURCE_ASSIGNMENTS.csv; all sizes and hashes match. Original row text and embedded source files are now accessible for this indexing task. Source reconciliation is NOT yet complete; inspect the row, figures, examples and assessments before closing.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12 against verified original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7. Parsed row 4 body SS1-SRC-2c924c964660:BODY:b9ff6beb9eabb79d76839bfdefbdc9bf074d5950aaf71a329193c0f8f7e939bd, SHA-256 b9ff6beb9eabb79d76839bfdefbdc9bf074d5950aaf71a329193c0f8f7e939bd, 6,517 characters; privately rendered source pages 9–12 inspected. Indexed conduction, convection, radiation, land/sea breezes, gas/liquid applications, radiation instruments, thermos-flask components and all source assessments. Added answer keys for the two distinct evaluation/theory prompts and five weekend MCQs (Q17–Q24; 15 marks). Expanded lesson body with source-aligned applications; new body SHA-256 56fe0d8e691501b99043eb99e99736f2cdb2bf0b7f67771da3dd738e121f81a1. Corrected radiation surface properties, infrared scope, flask stopper mechanism and stone-floor/carpet statement in CORR-PHYSICS-T2-W05-HEAT-TRANSFER. Existing vacuum-flask SVG covers the thermos diagram prompt; source page 10 conduction-rod figure requires a separate asset task PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -3154,12 +3155,46 @@
       "status": "PENDING",
       "implementation_reference": "Added 2026-11-12 after inspecting original rendered source page 9. The source theory prompt requires a diagram of anomalous water behaviour, but no pedagogical figure appears in the original row. The text lesson covers the concept; a dedicated original SVG remains required.",
       "completion_condition": "Create a self-contained SVG showing water's anomalous behaviour from 0 °C to above 4 °C, label maximum density near 4 °C, use accurate axes and a concise explanation, add a package asset entry and lesson link, compute exact SHA-256/bytes, and pass the existing SVG safety and Physics package tests."
+    },
+    {
+      "id": "PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FIVE, rendered source page 10: conduction-rod figure",
+      "objective": "Replace the low-resolution source conduction-rod illustration with a clear original instructional SVG.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "backend/src/db/ss1/assets/physics/t2-w05-conduction-rod.svg",
+        "docs/ss1/work/microtasks/physics/PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "backend/src/db/ss1/assets/physics/t2-w05-conduction-rod.svg",
+        "docs/ss1/work/microtasks/physics/PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T2-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added 2026-11-12 after inspecting original rendered source page 10. The source has a low-resolution conduction-rod diagram; the existing vacuum-flask SVG addresses a different source question and cannot replace this figure.",
+      "completion_condition": "Create a self-contained safe SVG showing a metal rod heated at one end, heat-energy arrows toward the cool end, and a clear conduction label; add an asset record and lesson link, compute exact SHA-256/bytes, and pass SVG safety plus Physics package tests."
     }
   ],
   "review": {
     "date": "2026-11-12",
     "reviewed_master_sha": "823afde087d6ad889c8ccf861b945a3a10163909",
-    "scope": "Physics source indexing: Second Term Weeks Three and Four completed against verified original source rows. Remaining source indexing, visual inventory/assets, technical gates and owner approvals remain open.",
+    "scope": "Physics source indexing: Second Term Weeks Three through Five completed against verified original source rows. Remaining source indexing, visual assets, technical gates and owner approvals remain open.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
@@ -3188,7 +3223,6 @@
     }
   },
   "next_runnable": [
-    "PHYS-WK-T2-W05",
     "PHYS-WK-T2-W06",
     "PHYS-WK-T2-W07",
     "PHYS-WK-T2-W08",
@@ -3204,10 +3238,10 @@
     "PHYS-WK-T3-W09",
     "PHYS-WK-T3-W10",
     "PHYS-ASSET-T2-W04-ANOMALOUS-WATER-DIAGRAM",
+    "PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM",
     "PHYS-PORT-D1-FACT-EXPANSIVITY"
   ],
   "runnable_now": [
-    "PHYS-WK-T2-W05",
     "PHYS-WK-T2-W06",
     "PHYS-WK-T2-W07",
     "PHYS-WK-T2-W08",
@@ -3223,6 +3257,7 @@
     "PHYS-WK-T3-W09",
     "PHYS-WK-T3-W10",
     "PHYS-ASSET-T2-W04-ANOMALOUS-WATER-DIAGRAM",
+    "PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM",
     "PHYS-PORT-D1-FACT-EXPANSIVITY"
   ]
 }
