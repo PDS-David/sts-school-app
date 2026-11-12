@@ -58,7 +58,7 @@ const packages = [
 const manifestRecords = (sourceManifest as any).records as Array<{
   subject: string; class: string; term: string; order_index: number; title: string; source_reference: string;
 }>;
-const normalize = (value: unknown) => String(value ?? '').normalize('NFKC').replace(/\\s+/g, ' ').trim().toLocaleLowerCase('en');
+const normalize = (value: unknown) => String(value ?? '').normalize('NFKC').replace(/\s+/g, ' ').trim().toLocaleLowerCase('en');
 const bucketKey = (subject: string, term: string) => JSON.stringify(['Primary 4', subject, term]);
 
 function sourceReference(pkg: LessonPackage, lesson: PackageLesson): string {
@@ -93,7 +93,7 @@ function sourceReference(pkg: LessonPackage, lesson: PackageLesson): string {
     '',
     'EVALUATION',
     ...lesson.evaluation.map((item, i) => `${i + 1}. ${item}`),
-  ].join('\\n');
+  ].join('\n');
 }
 
 export function assertPrimary4SupplementCorpus(): void {
