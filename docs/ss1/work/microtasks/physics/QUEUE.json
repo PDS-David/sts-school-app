@@ -66,7 +66,8 @@
     "PHYS-WK-T2-W07 (2026-11-12): inspected original .doc row and rendered pages 14–16; indexed electroscope structure/uses, contact/induction charging, lightning and conductor protection; added answer keys for four evaluation prompts, five weekend MCQs and two theory prompts (20 marks); original electroscope and induction figures are covered by registered SVG replacements. Corrected source induction polarity/earthing and lightning-conductor misconceptions. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W07.md.",
     "PHYS-WK-T2-W08 (2026-11-12): inspected original .doc row and rendered pages 16–18; indexed field concept/types, Newton's universal gravitation law, acceleration/free fall, magnetic field and field lines; added the missing Newton formula and magnetic-field explanation, plus answer keys for four evaluation prompts and two theory questions (17 marks). The page-18 magnetic-field figure is covered by the registered original SVG. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W08.md.",
     "PHYS-WK-T2-W09 (2026-11-12): inspected original .doc row and rendered pages 18–20; field-line lesson aligned and source assessment added; existing two SVGs cover the source's four field patterns. The same row contains quantitative Coulomb/E/V/potential-energy/flux-density objectives absent from the current lesson; added five UNRESOLVED coverage entries, CONTENT blocker and a bounded quantitative lesson task. Preserved printed 20MJ value and flagged its unusual magnitude for teacher confirmation. Evidence PHYS-WK-T2-W09.md.",
-    "CI follow-up 2026-11-12: removed premature delivery-correction record CORR-PHYSICS-T2-W09-FLUX-DENSITY-NOTATION because its replacement lesson is queued but not yet present. The D/σ notation issue remains documented in PHYS-WK-T2-W09.md and the quantitative lesson task; create the correction record together with the actual replacement lesson to satisfy the package's replacement-reference invariant."
+    "CI follow-up 2026-11-12: removed premature delivery-correction record CORR-PHYSICS-T2-W09-FLUX-DENSITY-NOTATION because its replacement lesson is queued but not yet present. The D/σ notation issue remains documented in PHYS-WK-T2-W09.md and the quantitative lesson task; create the correction record together with the actual replacement lesson to satisfy the package's replacement-reference invariant.",
+    "PHYS-WK-T2-W10 (2026-11-12): inspected original .doc row and rendered pages 20–22; indexed mechanical, chemical, thermal and solar generation; added keys for both evaluation diagram prompts, five MCQs and heat-generation theory (19 marks); corrected galvanic cell polarity and photovoltaic terminology. Source has no instructional diagrams; existing overview SVG is too general for diagram questions, so a detailed three-panel generator/cell/thermocouple asset task was added. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W10.md."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -76,7 +77,7 @@
     "SOURCE_RULE": 2,
     "OWNER_DECISION": 2,
     "FACTUAL_DEPENDENCY": 14,
-    "VISUAL_DISPOSITION": 5,
+    "VISUAL_DISPOSITION": 6,
     "BRANCH_PORT": 13,
     "BRANCH_COMPARISON": 2,
     "SCOPE_DECOMPOSITION": 1,
@@ -85,11 +86,11 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 74,
+    "IMPLEMENTED_TESTING_DEFERRED": 75,
     "BLOCKED": 7,
     "PENDING": 13
   },
-  "total": 94,
+  "total": 95,
   "items": [
     {
       "id": "PHYS-SRC-T1",
@@ -1018,8 +1019,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Reopened 2026-11-12: the original Physics source members are now available from CI evidence artifact 13902689395 (run 43126374868). The run successfully executed scripts/ss1/prepare_sources.py, which enforces archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact manifest membership, member byte counts and member SHA-256. Independently checked the three extracted Physics members against SOURCE_ASSIGNMENTS.csv; all sizes and hashes match. Original row text and embedded source files are now accessible for this indexing task. Source reconciliation is NOT yet complete; inspect the row, figures, examples and assessments before closing.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12 against verified original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7. Parsed row 9 body SS1-SRC-2c924c964660:BODY:d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6, SHA-256 d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6, 3,040 characters; rendered pages 20–22 inspected. Indexed continuous-current generation by mechanical, chemical, heat and solar energy, plus current/emf/p.d. Added keyed answers for two evaluation diagrams, five weekend MCQs and the heat-generation theory question (Q19–Q26; 19 marks); the mechanical theory question duplicates the first evaluation and is keyed once. Corrected galvanic-cell polarity and photovoltaic terminology in CORR-PHYSICS-T2-W10-GALVANIC-CELL-POLARITY and CORR-PHYSICS-T2-W10-PHOTOVOLTAIC-TERMINOLOGY. The existing four-source SVG is an overview; detailed generator/cell/thermocouple diagrams are still required, so added PHYSICS-T2-W10-DETAILED-GENERATION-DIAGRAMS and PHYS-ASSET-T2-W10-DETAILED-GENERATION-DIAGRAMS as a delivery-blocking visual task. Lesson approval PENDING; verification DEFERRED.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -3232,12 +3233,46 @@
       "status": "PENDING",
       "implementation_reference": "Added 2026-11-12 after inspecting original Week Nine source pages 19–20. The existing field-pattern lesson does not cover Coulomb's law, electric field intensity, electric potential, potential energy or the source's flux-density quantity. Five UNRESOLVED coverage entries and a delivery-blocking open item are recorded. Source question prints 20MJ; its prefix ambiguity is separately flagged without silently altering the source.",
       "completion_condition": "Author a self-contained lesson with Coulomb's law F=k|q1q2|/r², E=F/q (vector), V=W/q (scalar), potential-energy distinction U=qV, source D=Q/A notation with modern terminology note, SI units and worked examples. Key all source evaluation prompts, five MCQs and both numerical theory questions; preserve the literal printed 20MJ with an explicit teacher-confirmation note; update five coverage entries to IMPLEMENTED_EQUIVALENT only after content and practice exist; compute body hash and validate marks/references."
+    },
+    {
+      "id": "PHYS-ASSET-T2-W10-DETAILED-GENERATION-DIAGRAMS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN, source pages 21–22: diagram-based evaluation/theory questions",
+      "objective": "Add detailed, student-readable labelled diagrams for mechanical generator, galvanic cell and thermocouple energy conversion.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "backend/src/db/ss1/assets/physics/t2-w10-generator-cell-thermocouple.svg",
+        "docs/ss1/work/microtasks/physics/PHYS-ASSET-T2-W10-DETAILED-GENERATION-DIAGRAMS.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "backend/src/db/ss1/assets/physics/t2-w10-generator-cell-thermocouple.svg",
+        "docs/ss1/work/microtasks/physics/PHYS-ASSET-T2-W10-DETAILED-GENERATION-DIAGRAMS.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added 2026-11-12 after inspecting source pages 21–22. The source has diagram-based evaluation/theory prompts but no instructional diagrams. The current four-source overview SVG is useful but not detailed enough to support the requested labelled generator, cell and thermocouple drawings.",
+      "completion_condition": "Create one safe, labelled SVG with three panels: (1) DC generator with field magnets, rotating armature/prime mover, commutator/brushes and load; (2) galvanic cell with negative anode, positive cathode, electrolyte and external electron/current path; (3) thermocouple with two dissimilar conductors, hot/cold junctions and meter/load. Register the asset, link it to the lesson, compute hash/bytes and pass SVG safety and Physics package tests."
     }
   ],
   "review": {
     "date": "2026-11-12",
     "reviewed_master_sha": "174155c6fc080ad7c76c6e99e74b1a86e576bfe3",
-    "scope": "Physics source indexing: Second Term Weeks Three through Nine completed against verified original source rows. Quantitative electric-field lesson for Week Nine is queued; remaining source weeks, visual assets, technical gates and approvals remain open.",
+    "scope": "Physics source indexing: Second Term Weeks Three through Ten completed against verified original source rows. Week Nine quantitative lesson and visual tasks remain queued; Third Term source indexing, visual assets, technical gates and owner approvals remain open.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
@@ -3266,7 +3301,6 @@
     }
   },
   "next_runnable": [
-    "PHYS-WK-T2-W10",
     "PHYS-WK-T3-W01",
     "PHYS-WK-T3-W02",
     "PHYS-WK-T3-W03",
@@ -3278,10 +3312,10 @@
     "PHYS-WK-T3-W10",
     "PHYS-ASSET-T2-W04-ANOMALOUS-WATER-DIAGRAM",
     "PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM",
+    "PHYS-ASSET-T2-W10-DETAILED-GENERATION-DIAGRAMS",
     "PHYS-LESSON-T2-W09-ELECTRIC-QUANTITIES"
   ],
   "runnable_now": [
-    "PHYS-WK-T2-W10",
     "PHYS-WK-T3-W01",
     "PHYS-WK-T3-W02",
     "PHYS-WK-T3-W03",
@@ -3293,6 +3327,7 @@
     "PHYS-WK-T3-W10",
     "PHYS-ASSET-T2-W04-ANOMALOUS-WATER-DIAGRAM",
     "PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM",
+    "PHYS-ASSET-T2-W10-DETAILED-GENERATION-DIAGRAMS",
     "PHYS-LESSON-T2-W09-ELECTRIC-QUANTITIES"
   ]
 }
