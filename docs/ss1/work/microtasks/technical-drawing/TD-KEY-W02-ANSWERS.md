@@ -35,3 +35,17 @@ The source questions that say “choose suitable positions” are open construct
 ## Verification boundary
 
 The nine original Week Two figure assets are registered and integrity-tested. No missing figure is invented. Teacher approval and student rendering remain outstanding.
+
+## Original replacement for the missing source arc exercise
+
+The original Week Two Q4 asks learners to transfer an arc “shown below”, but no corresponding arc image or dimensions exist in the supplied source file. To teach the identifiable objective without inventing the missing source data, the package now includes an original replacement activity: a 90° arc of radius 40 mm.
+
+- Divide the 90° central angle into four equal 22.5° parts by angle bisection.
+- Each chord is 2×40×sin(11.25°)≈15.61 mm.
+- Four chord lengths give a straight-line approximation of 4×15.61≈62.45 mm.
+- Exact arc length is 40×π/2≈62.83 mm.
+- The chordal approximation is approximately 0.38 mm (0.61%) short.
+
+Suggested rubric (5 marks): four equal angular sectors (1); chord length 15.61 mm (1); four-chord straight-line approximation 62.45 mm (1); exact arc length 62.83 mm (1); error 0.38 mm or 0.61% (1).
+
+This is a new original alternative, not the missing source figure or recovered source answer. It is separately marked for teacher review.
