@@ -168,6 +168,7 @@ def main():
             }
         })
         task['status'] = 'IMPLEMENTED_TESTING_DEFERRED'
+        task['objective'] = task.get('objective', '').replace('Create a faithful SVG derivative', 'Materialize a faithful source figure asset', 1)
         task['implementation_reference'] = f'Committed {relpath}; original source part word/media/{media_name}; original SHA-256 {original_sha}; derivative SHA-256 {output_sha}; {len(output_bytes)} bytes; {conversion}. Visual review and student rendering remain deferred; source reuse approval remains pending.'
         manifest_rows.append({
             'task_id': task_id, 'lesson_id': lesson_id, 'source_media': media_name,
