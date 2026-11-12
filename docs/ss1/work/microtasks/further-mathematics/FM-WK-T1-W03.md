@@ -25,8 +25,8 @@ Index/logarithmic form; product, quotient and power laws; logarithmic equations;
 
 ## Repair added
 - Lesson ID: `SUP-SS1-FURTHER-MATHEMATICS-T1-W03-LOGARITHMS-REPAIR`
-- Objectives: 5; practice: 10 questions; total: 30 marks.
-- Added conditions for real logarithms, corrected laws, domain checks, change of base, standard form, negative characteristics, and correct log/antilog procedures.
+- Objectives: 5; practice: 12 questions; total: 38 marks.
+- Added conditions for real logarithms, corrected laws, domain checks, change of base, standard form, negative characteristics, and correct log/antilog procedures. Added explicit logarithm-table examples for multiplication, division, powers and roots of numbers below one.
 - Linked the supplement to `COV-FM-T1-R02`; coverage remains `PARTIAL` pending independent review and verification.
 - No owner approval or verification was fabricated.
 
