@@ -248,3 +248,92 @@ The original Antiword 0.37 extraction was re-read and all marker headings were c
 - Do not conflate any in-week `GENERAL EVALUATION/REVISION QUESTIONS` with the separate scheme-only row 12/13. GOV-REV-T3 separately records that row and is currently BLOCKED because its allowed write paths omit the package JSON.
 
 No lesson, coverage entry, source rule, correction or asset was created by GOV-MARK-T3.
+
+
+## GOV-WK-T3-W01 — Fundamental Human Rights indexing
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and dated legal fact-check evidence only; no lesson, answer key, marks, correction, asset or parser rule is authored here.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`.
+- Archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37, used on the original legacy `.doc` member.
+- Complete teaching span: lines 44–121; UTF-8 SHA-256 of those lines joined with a newline after every line: `56a766cf9063a77a3ffc249cecea8f30b9d9eebb02e9a7068c0b68eb6b459c34`.
+- Printed week label: `WEEK TWO` at line 44; topic: `FUNDAMENTAL HUMAN RIGHTS` at line 45.
+- Scheme entry 1 is `Fundamental Human Rights` at preamble line 10. It maps to this first body span by topic and order. The source has no WEEK ONE label; the next span (lines 122–230) is also printed WEEK TWO and maps to scheme entry 2 (Citizenship). Both labels remain unchanged.
+- Locators below refer to the Antiword extraction, not printed page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are left empty rather than inventing a body identity from a different extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Source objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-SCHEME-W01-FUNDAMENTAL-HUMAN-RIGHTS | Scheme entry 1 mapped to first body span | PARTIAL |
+| COV-GOV-T3-W01-DEFINITION | Definition of fundamental human rights, lines 50–56 | PARTIAL |
+| COV-GOV-T3-W01-RIGHTS-LIST | Rights listed, lines 57–66 | PARTIAL |
+| COV-GOV-T3-W01-CONSTITUTIONAL-REASONS | Reasons for constitutional inclusion, lines 72–83 | PARTIAL |
+| COV-GOV-T3-W01-GENERAL-REVISION | General evaluation/revision, lines 89–94 | PARTIAL |
+| COV-GOV-T3-W01-READING | Reading assignment, lines 96–98 | PARTIAL |
+| COV-GOV-T3-W01-ASSESSMENT-KEYS | All exercise blocks, lines 68–119 | UNRESOLVED |
+| COV-GOV-T3-W01-WEEKEND-CURTAILMENT | Weekend question 4, lines 110–112 | PARTIAL |
+
+Eight coverage entries and seven precise package open items were added. Every PARTIAL or UNRESOLVED entry is linked to at least one open item. The existing T3 source-alias owner action remains unchanged; no approval reference was invented.
+
+### Definition and scope — lines 50–66
+
+The source defines human rights as “privileges enjoyed by the citizens” and says they are defined and enjoyed within the bounds of domestic law. That is too narrow as a definition of human rights generally. The UN Universal Declaration of Human Rights (UDHR), proclaimed by the General Assembly on 10 December 1948, describes rights as universal: Articles 1–2 refer to all human beings/everyone without distinction. Distinguish:
+- human rights as universal claims held by people;
+- the fundamental rights specifically protected in Chapter IV of Nigeria's Constitution; and
+- citizen-specific political or constitutional entitlements.
+
+The source list is not a reliable undifferentiated list of rights belonging only to citizens:
+- **Life, dignity, slavery and inhuman treatment:** Constitution sections 33–34. Section 33 is framed for every person; section 34 protects every individual and prohibits torture/inhuman or degrading treatment, slavery/servitude and forced labour, subject to its stated exceptions.
+- **Personal liberty:** section 35 protects every person but allows deprivation only in listed cases and according to lawful procedure. “Freedom from unlawful detention” must not be taught as immunity from every lawful arrest or detention.
+- **Fair hearing:** section 36 protects every person's fair-hearing rights in the relevant determinations; it is not limited to citizens.
+- **Expression and association:** sections 39–40 use “every person”; their constitutional scope and lawful limitations must be explained.
+- **Movement:** section 41 is expressly framed as a right of every citizen, with specified restrictions in subsection (2).
+- **Property:** section 43 concerns acquiring and owning immovable property anywhere in Nigeria and is expressly citizen-specific; section 44 separately regulates compulsory acquisition and compensation.
+- **Education:** section 18 is in Chapter II, “Fundamental Objectives and Directive Principles of State Policy”, not Chapter IV. Section 6(6)(c) generally excludes Chapter II questions from judicial powers, except where the Constitution otherwise provides. It should not be labelled a Chapter IV fundamental right without explaining this distinction.
+- **Voting:** section 77(2) entitles a Nigerian citizen aged 18 or over and resident in Nigeria at voter registration to be registered for the relevant election. Eligibility to stand for office is governed separately by office-specific constitutional provisions; “vote and be voted for” is not one undifferentiated Chapter IV right.
+- **Security:** the UDHR includes security of person in Article 3. Nigeria's Chapter IV contains related protections, but the source's combined phrase “right to life, security, and protection from inhuman treatment” should not be represented as one verbatim Chapter IV right.
+
+### Reasons for constitutional inclusion — lines 72–83
+
+The reasons are retained as the source's claims, not accepted wholesale:
+- Easy reference and constitutional protection are reasonable aims; section 1 establishes constitutional supremacy.
+- Constitutional text can help limit arbitrary government, but its existence does not by itself prevent dictatorship.
+- Section 46 provides a route to apply to a High Court for redress for alleged Chapter IV contraventions.
+- The assertion that constitutional inclusion prevents government from changing rights is false as an absolute. Section 9 permits constitutional alteration; under section 9(3), altering Chapter IV requires at least a four-fifths majority of all members of each National Assembly chamber and approval by at least two-thirds of the State Houses of Assembly.
+- “Comply with U.N.O.'s directive” is imprecise. The UN General Assembly proclaimed the UDHR as a common standard of achievement, not as a direct instruction to insert this exact list into Nigeria's Constitution. The UDHR is a declaration, not itself a treaty. Section 12 of Nigeria's Constitution states that a treaty has force of law only to the extent it is enacted by the National Assembly.
+
+### Assessment and reading-marker audit
+
+All source markers and stems in the span were checked:
+- `EVALUATION QUESTIONS`: lines 68 and 85; two questions follow each heading (four total).
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 89; five questions follow. Question 1 concerns fundamental rights. Question 2 (functions of human-rights groups) and question 3 (origin of human rights) are not taught in this span. Questions 4–5 concern Nazism and do not match the Fundamental Human Rights scheme entry.
+- `READING ASSIGNMENT`: line 96; `Comprehensive Government` pp. 74–76 and `Essential Government` pp. 89–90 at lines 97–98. Editions and publication details are absent; neither book was available or consulted.
+- `WEEKEND ASSINGMENT`: exact misspelling retained at line 100; five multiple-choice stems at lines 101–115. Question 4 says rights may be curtailed when there is a violent demonstration. This is too broad: section 45 requires a law reasonably justifiable in a democratic society for specified purposes and applies to specified rights; a violent demonstration alone is not a blanket constitutional test.
+- `THEORY`: line 117; two written prompts at lines 118–119.
+
+There are **16 exercise stems** in total: 2 + 2 + 5 + 5 + 2. No source answer key, marks or marking criteria are supplied. No answer or mark has been invented. The general-revision questions that do not match this week remain visible as source content and are tracked for placement/teaching follow-up.
+
+### Dated legal and human-rights references consulted
+
+1. **Policy and Legal Advocacy Centre (PLAC), *Constitution of the Federal Republic of Nigeria, 1999*, updated with the First–Fifth Alterations** (third revision October 2023; reprint September 2024). Used for sections 1, 6(6)(c), 9(3), 12, 18, 33–46 and 77(2). This is a consolidated reference text, not represented as a Federal Government gazette: https://placng.org/i/wp-content/uploads/2023/11/Constitution-of-the-Federal-Republic-of-Nigeria-1999-Updated.pdf
+2. **United Nations, *Universal Declaration of Human Rights***, proclaimed by General Assembly resolution 217 A (III), 10 December 1948. Used for the universal scope of human rights (Articles 1–2), security of person (Article 3), slavery and inhuman treatment (Articles 4–5), fair hearing (Article 10), and the Declaration's status as a common standard: https://www.un.org/en/about-us/universal-declaration-of-human-rights
+3. **United Nations Office at Geneva, “Human rights”**. Explains that the UDHR is not itself a legally binding treaty and that it inspired subsequent human-rights treaties: https://www.ungeneva.org/en/about/topics/human-rights
+4. **United Nations Dag Hammarskjöld Library, “UN Human Rights Documentation: Overview”**. Confirms that the UDHR is not a treaty and has not been signed or ratified by states: https://research.un.org/en/docs/humanrights
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W01-DEFINITION-FACT` — correct the citizen-only definition and distinguish universal human rights from constitutional rights.
+- `GOVERNMENT-T3-W01-RIGHTS-CLASSIFICATION-FACT` — classify the listed rights by constitutional provision, scope and limitation.
+- `GOVERNMENT-T3-W01-CONSTITUTIONAL-REASONS-FACT` — correct the absolute amendment claim and qualify the “U.N.O. directive” claim.
+- `GOVERNMENT-T3-W01-REVISION-MISALIGNMENT` — resolve the untaught human-rights-group/origin questions and the two Nazism questions' placement.
+- `GOVERNMENT-T3-W01-READING-VERIFICATION` — verify editions and page contents before treating the pointers as checked reading.
+- `GOVERNMENT-T3-W01-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 16 stems.
+- `GOVERNMENT-T3-W01-WEEKEND-CURTAILMENT-FACT` — correct the oversimplified rights-curtailment proposition in weekend question 4.
+
+No lesson, correction, source rule, asset, answer key or marks were created. The source wording, duplicate WEEK TWO label and exercise spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
