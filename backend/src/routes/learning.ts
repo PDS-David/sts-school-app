@@ -491,7 +491,7 @@ router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
   if (scope === null) return res.status(404).json({ error: 'Asset not found' });
   // Scope + metadata first (no bytes), so a 304 never reads the image.
   const { rows: meta } = await query(
-    `SELECT a.mime, a.sha256, a.asset_key, t.id AS topic_id, t.school_code, t.subject_id, t.sequence_rank, t.class_name, t.term_label, t.title,
+    `SELECT a.mime, a.sha256, a.asset_key, t.id AS topic_id, t.school_code, t.subject_id, (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank, t.class_name, t.term_label, t.title,
             t.source_file, t.source_reference, t.order_index, s.name AS subject_name
        FROM topic_assets a
        JOIN topics t ON t.id=a.topic_id
