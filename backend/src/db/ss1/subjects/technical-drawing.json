@@ -1608,6 +1608,113 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-TECHNICAL-DRAWING-T2-W07-REDUCTION",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Technical Drawing",
+      "title": "Week Seven — Reduction of Similar Plane Figures and Area Ratios",
+      "objectives": [
+        "Define reduction and state the linear scale factor as image length divided by original corresponding length.",
+        "Construct reduced similar figures using a pole, rays and parallel lines.",
+        "Distinguish linear scale ratios from area ratios and derive the square-root relationship.",
+        "Calculate reduced dimensions for rectangles and polygons using stated linear ratios.",
+        "Apply geometric-mean construction principles to area-ratio reductions.",
+        "Verify similarity by checking corresponding angles and consistent side ratios."
+      ],
+      "body": "Reduction produces a smaller figure that is similar to the original: corresponding angles remain equal and all corresponding lengths have one constant linear ratio. The scale factor k is image length ÷ original length. For a reduction, 0<k<1.\n\nLinear ratio and area ratio are different. If the linear scale factor is k, the area scale factor is k². Therefore, if an area ratio is 3:5 (reduced area : original area), the linear scale factor is √(3/5) ≈ 0.7746, not 3/5. If a question simply gives a drawing ratio 3:5, it usually means linear dimensions, but the question must state whether it refers to lengths or areas.\n\n1. Reduction from a linear ratio using a pole\nTo reduce a rectangle or polygon by a linear ratio m:n (image : original):\n- Construct the original figure accurately and label its vertices in order.\n- Choose a pole P outside the figure and draw rays from P through each original vertex.\n- Divide one representative ray into n equal parts, because n represents the original length.\n- Mark the mth division from P and draw through that point lines parallel to the corresponding sides of the original figure.\n- Repeat the same proportional transfer for the other vertices and join the reduced vertices in order.\n- Check that every corresponding side has ratio m/n and that corresponding angles are unchanged.\n\nExample: a 40 mm by 20 mm rectangle reduced in the linear ratio 3:5 becomes 24 mm by 12 mm. Its original area is 800 mm² and its reduced area is 288 mm²; the area ratio is 288:800 = 9:25, the square of 3:5.\n\n2. Reduction of a polygon in a stated area ratio\nIf the required area ratio is 3:5, the required linear ratio is √3:√5. The source semicircle construction is a geometric-mean method for transferring this square-root ratio without calculating it numerically:\n- Draw the original polygon and extend a selected base line.\n- Mark off lengths representing the denominator and numerator of the area ratio on the extended line.\n- Construct the semicircles and perpendicular ordinate described in the source figure to obtain the geometric-mean lengths.\n- Use the resulting linear ratio to locate the reduced vertex on a ray from the selected pole.\n- Draw the remaining image sides parallel to the corresponding original sides.\nDo not substitute a direct 3/5 linear reduction when the question explicitly says 3:5 in area.\n\n3. Enlargement\nEnlargement uses the same ray-and-parallel construction, but the image is larger. For a linear ratio 5:3 (image : original), multiply each corresponding length by 5/3. For an area ratio 5:3, the linear scale factor is √(5/3) ≈ 1.291. State the ratio type before constructing.\n\n4. Worked examples\n- Linear reduction 3:5 of a 40 mm × 20 mm rectangle: image = 24 mm × 12 mm.\n- Linear reduction 4:7 of a 40 mm × 60 mm photo frame: image dimensions = 40×4/7 ≈ 22.86 mm and 60×4/7 ≈ 34.29 mm.\n- Area reduction 3:5: linear factor = √(3/5) ≈ 0.7746. A 100 mm corresponding side becomes about 77.46 mm.\n- Area enlargement 5:3: linear factor = √(5/3) ≈ 1.291. A 60 mm corresponding side becomes about 77.46 mm.\n\n5. Construction checks\n- Confirm whether the ratio refers to lengths or areas.\n- Keep the ratio order explicit: image : original.\n- Use one pole and consistent rays for all corresponding vertices.\n- Draw parallels accurately; corresponding angles must remain equal.\n- Check at least two corresponding side ratios numerically.\n- For area ratios, verify the square of the linear factor equals the stated area ratio.\n- Do not invent missing polygon dimensions or use an absent source diagram as if it were available.",
+      "body_sha256": "59fabc6185f821371516fad7b23af2d99415525cf91c8812660257fedacc774f",
+      "practice": [
+        {
+          "id": "TD-W07-RED-Q01",
+          "question": "Reduce a rectangle measuring 40 mm by 20 mm in the linear ratio 3:5 (image : original). State the new dimensions and its area.",
+          "answer": "New length = 40×3/5 = 24 mm; new breadth = 20×3/5 = 12 mm. Area = 24×12 = 288 mm².",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Calculates new length as 24 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates new breadth as 12 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates area as 288 mm².",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W07-RED-Q02",
+          "question": "A photo frame measures 40 mm by 60 mm. Reduce it in the linear ratio 4:7 (image : original). Give both dimensions to 2 decimal places.",
+          "answer": "40×4/7 = 22.86 mm; 60×4/7 = 34.29 mm.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Gives reduced first dimension 22.86 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives reduced second dimension 34.29 mm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W07-RED-Q03",
+          "question": "A polygon is reduced in the area ratio 3:5. Find the linear scale factor and the new length corresponding to an original 100 mm side.",
+          "answer": "Linear factor = √(3/5) ≈ 0.7746. New side = 100×0.7746 ≈ 77.46 mm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Recognises that the linear factor is the square root of the area ratio.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates factor ≈0.7746.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates new side ≈77.46 mm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W07-RED-Q04",
+          "question": "Explain the difference between a linear enlargement ratio of 5:3 and an area enlargement ratio of 5:3.",
+          "answer": "A linear ratio 5:3 gives a length scale factor 5/3≈1.667. An area ratio 5:3 gives a linear scale factor √(5/3)≈1.291 because area scales as the square of the linear factor.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Gives linear scale factor 5/3≈1.667.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives area-ratio linear factor √(5/3)≈1.291 and explains square relationship.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "User-supplied SS1 Technical Drawing source",
+          "locator": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx; combined Week Six–Seven teaching row, source children 1010–1107; original source member SHA-256 69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d.",
+          "rights": "This supplement independently explains reduction and the distinction between linear and area ratios using the supplied source topic and standard similarity geometry. No source diagrams are reproduced. Reuse approval remains pending.",
+          "reuse_status": "PENDING",
+          "attribution": "Source: user-supplied SS1 Technical Drawing, Second Term, combined Weeks Six–Seven."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [],
@@ -1909,7 +2016,8 @@
       "status": "SUPPORTED",
       "lesson_ids": [
         "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
-        "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT"
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W07-REDUCTION"
       ],
       "evidence": [
         {
@@ -1923,6 +2031,10 @@
         {
           "locator": "Combined teaching row 16, body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05; TD-FACT-ENLARGEMENT-SCOPE.md",
           "explanation": "Direct inspection of the original combined row confirms both reduction and enlargement sections; the same source lesson is bound to both Week Six and Week Seven scheme objectives. The separate enlargement supplement is retained as optional reinforcement."
+        },
+        {
+          "locator": "Supplement SUP-SS1-TECHNICAL-DRAWING-T2-W07-REDUCTION; reduction method, linear/area-ratio distinction and four marked practice items.",
+          "explanation": "This supplement directly teaches the reduction objectives, including source examples and the geometric-mean interpretation of area ratios. It supplements the combined Week Six–Seven source row without splitting or rewriting it."
         }
       ]
     },
@@ -1934,7 +2046,8 @@
       "status": "SUPPORTED",
       "lesson_ids": [
         "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
-        "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT"
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W07-REDUCTION"
       ],
       "evidence": [
         {
@@ -1948,6 +2061,10 @@
         {
           "locator": "Combined teaching row 16, body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05; TD-FACT-ENLARGEMENT-SCOPE.md",
           "explanation": "Direct inspection of the original combined row confirms both reduction and enlargement sections; the same source lesson is bound to both Week Six and Week Seven scheme objectives. The separate enlargement supplement is retained as optional reinforcement."
+        },
+        {
+          "locator": "Supplement SUP-SS1-TECHNICAL-DRAWING-T2-W07-REDUCTION; reduction method, linear/area-ratio distinction and four marked practice items.",
+          "explanation": "This supplement directly teaches the reduction objectives, including source examples and the geometric-mean interpretation of area ratios. It supplements the combined Week Six–Seven source row without splitting or rewriting it."
         }
       ]
     },
@@ -2004,8 +2121,10 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Week 10 scheme objective, verbatim: “Tangency”.",
       "objective_locator": "2nd Term scheme-table parsed row 9 (WEEK 10), extractRawText() line 29; row body SHA-256 e3f91d855eee7bf675d6dd70d966eb1f97fad91ac3d53306889b2b999af9d5ea.",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W10-TANGENCY"
+      ],
       "evidence": [
         {
           "locator": "Scheme row 9, line 29; exact anchor “WEEK 10:      Tangency”; 22 characters; SHA-256 e3f91d855eee7bf675d6dd70d966eb1f97fad91ac3d53306889b2b999af9d5ea; classified by source rule SS1-SRC-af4868d2c026-R012.",
@@ -2014,6 +2133,10 @@
         {
           "locator": "TD-PRE-T2: teaching rows begin at line 59; queue task TD-WK-W10 owns the combined/associated teaching-row review.",
           "explanation": "The exact parsed body identity and objective-to-teaching scope are not recorded in current repository evidence. No lesson ID is invented. TD-WK-W10 must inspect the source row and bind this objective only if the teaching actually covers it; coverage remains PARTIAL until then."
+        },
+        {
+          "locator": "Week Ten supplement SUP-SS1-TECHNICAL-DRAWING-T2-W10-TANGENCY.",
+          "explanation": "The source scheme objective “Tangency” is now bound to a dedicated teaching supplement covering tangent-radius perpendicularity, offset loci, external/internal tangency and common tangents."
         }
       ]
     },
@@ -2670,7 +2793,8 @@
       "objective_locator": "Parsed row 16, WEEK SIX AND SEVEN; 7,297-character body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05; original body SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05"
+        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W07-REDUCTION"
       ],
       "evidence": [
         {
@@ -2684,6 +2808,10 @@
         {
           "locator": "Combined Week Six–Seven source body children 1017–1067; exact method and tasks in TD-FACT-ENLARGEMENT-SCOPE.md.",
           "explanation": "The original row teaches reduction through a 3:5 linear rectangle reduction, a 4:5 linear polygon reduction, a 3:5 area reduction construction, and evaluation tasks for a 40 mm regular hexagon (3:5) and 40×60 photo frame (4:7). The complete construction steps and locators are recorded in the factual note."
+        },
+        {
+          "locator": "Supplement SUP-SS1-TECHNICAL-DRAWING-T2-W07-REDUCTION; reduction method, linear/area-ratio distinction and four marked practice items.",
+          "explanation": "This supplement directly teaches the reduction objectives, including source examples and the geometric-mean interpretation of area ratios. It supplements the combined Week Six–Seven source row without splitting or rewriting it."
         }
       ]
     },
@@ -2727,7 +2855,8 @@
       "objective_locator": "Parsed row 16, WEEK SIX AND SEVEN; 7,297-character body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05; original body SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05"
+        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W07-REDUCTION"
       ],
       "evidence": [
         {
@@ -2741,6 +2870,10 @@
         {
           "locator": "Combined Week Six–Seven source body children 1017–1067; exact method and tasks in TD-FACT-ENLARGEMENT-SCOPE.md.",
           "explanation": "The original row teaches reduction through a 3:5 linear rectangle reduction, a 4:5 linear polygon reduction, a 3:5 area reduction construction, and evaluation tasks for a 40 mm regular hexagon (3:5) and 40×60 photo frame (4:7). The complete construction steps and locators are recorded in the factual note."
+        },
+        {
+          "locator": "Supplement SUP-SS1-TECHNICAL-DRAWING-T2-W07-REDUCTION; reduction method, linear/area-ratio distinction and four marked practice items.",
+          "explanation": "This supplement directly teaches the reduction objectives, including source examples and the geometric-mean interpretation of area ratios. It supplements the combined Week Six–Seven source row without splitting or rewriting it."
         }
       ]
     },
