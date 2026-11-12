@@ -57,7 +57,8 @@
     "PHYS-CMP-D4-TESTS (2026-11-12): compared the four legacy PR #71 test assertions with the current seven-test Physics package suite and registered SS1 package validator. Applicable checks are retained; obsolete split-rule assertion is intentionally not ported because the rule was not applied. Evidence: PHYS-CMP-D4-TESTS.md. No production importer/DB/device acceptance claimed.",
     "2026-11-12 original source access unlocked: Physics CI run 43122782413 preserved the exact three registered .doc members; hashes were reverified and all 73 rendered PDF pages visually reviewed. The T2/T3 source-week tasks, T1 source-fact reconciliation tasks and three term visual-inventory tasks are now IMPLEMENTED_TESTING_DEFERRED. Full page map and figure dispositions: PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md; per-term inventories: PHYS-VIS-T1/T2/T3.md. 19 original SVG teaching aids added and package metadata registered (29 assets total). Original source bytes remain unchanged. Lesson content approval remains PENDING and verification DEFERRED.",
     "2026-11-12: Added proposed Week One laboratory familiarisation and scientific-method lessons with explicit independent-authoring provenance and PENDING approval. Added proposed teacher-only Week One and Week Two source assessment keys (44 marks each); ambiguous items are flagged rather than guessed. New measurement-reading SVG gives clear replacement examples. Source and visual audit remains complete; source alias/teacher approval and full regression are still open.",
-    "2026-11-12 coverage completion: all 173 non-marker coverage rows are now IMPLEMENTED_EQUIVALENT (7 markers remain). First Term Week One and Week Two reading assignments were replaced by in-app reading; source assessment gaps were replaced by keyed student practice; T1 W05–W09 source-row identities were verified against original rendered PDF. The authoring-finish task is complete; owner approvals and regression/device verification remain blocked."
+    "2026-11-12 coverage completion: all 173 non-marker coverage rows are now IMPLEMENTED_EQUIVALENT (7 markers remain). First Term Week One and Week Two reading assignments were replaced by in-app reading; source assessment gaps were replaced by keyed student practice; T1 W05–W09 source-row identities were verified against original rendered PDF. The authoring-finish task is complete; owner approvals and regression/device verification remain blocked.",
+    "2026-11-12 owner decision brief added: all remaining blocked decisions now distinguish resolved source facts from true owner/teacher approvals. No approval_reference is fabricated. See PHYS-OWNER-DECISION-BRIEF.md."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -184,7 +185,7 @@
       "source_id": "SS1-SRC-bed91bb4ef0e",
       "term": "3rd Term",
       "week_or_locator": "alias approval_reference for the 3rd Term source (only if registration finds no subject heading)",
-      "objective": "If PHYS-SRC-T3 finds that the 3rd Term document has no Physics heading, the owner confirms the filename assignment so a source_alias approval_reference can be recorded.",
+      "objective": "Owner records approval of the Third Term Physics source alias. The original filename is 3RD TERM S1 PHYSICS.doc and the rendered header/body identify SS1/3rd Term/Physics; the remaining issue is formal source-alias approval, not missing subject evidence.",
       "required_files": [
         "backend/src/db/ss1/subjects/physics.json",
         "docs/ss1/contracts/CONTRACT.md"
@@ -198,7 +199,7 @@
         "PHYS-SRC-T3"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "PR #71 records that the document has NO subject header (it opens 'THIRD TERM E-LEARNING NOTE') and that assignment rests on the archive path and manifest. The contract allows a heading differing from the canonical subject only through a source_alias rule carrying an approval_reference. Needed only if the registration confirms the missing heading.",
+      "implementation_reference": "Source identity and rendered-page evidence are documented in PHYS-OWNER-DECISION-BRIEF.md and PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md. Recommended alias is Physics/SS1/3rd Term; approval_reference remains unset.",
       "completion_condition": "Owner confirmation recorded as the rule's approval_reference, or the item closed as not needed once registration shows a Physics heading."
     },
     {
@@ -1452,7 +1453,7 @@
       "source_id": null,
       "term": null,
       "week_or_locator": "OI-PHYS-003 remaining question",
-      "objective": "Teacher confirms whether a revision/examination plan exists for the scheme weeks that have no body, once the sources have been checked.",
+      "objective": "Owner confirms whether the revision/examination markers without original teaching bodies remain non-teaching records or whether a separate revision/examination plan is to be supplied. The original source audit found ten teaching-week bodies and no source bodies for additional revision/exam weeks.",
       "required_files": [
         "backend/src/db/ss1/subjects/physics.json"
       ],
@@ -1466,7 +1467,7 @@
         "PHYS-PRE-T3"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "Raised only if the source documents contain no revision material; blocked on a teacher answer no document can supply.",
+      "implementation_reference": "Recommended disposition is to preserve revision/examination markers as non-teaching records and not invent lessons. Evidence and recommendation: PHYS-OWNER-DECISION-BRIEF.md.",
       "completion_condition": "Answer recorded in the open item; no revision content is invented."
     },
     {
@@ -1693,7 +1694,7 @@
       "source_id": null,
       "term": null,
       "week_or_locator": "superscript/subscript/fraction/figure recovery (branch OI-PHYS-001)",
-      "objective": "Owner/foundation decides how SS1 extraction handles flattened superscripts, subscripts, fractions and figures in the Physics .doc sources, versus replacement lessons.",
+      "objective": "Owner/foundation decides the repository-wide strategy for embedded equations, superscripts, subscripts, fractions and figures in legacy .doc files. Physics source audit demonstrates that rendered PDFs recover formula/figure objects omitted by text-only extraction.",
       "required_files": [
         "docs/ss1/work/SS1-03/HANDOFF.json",
         "docs/ss1/work/FOUNDATION_RECONCILIATION.md"
@@ -1708,7 +1709,7 @@
         "PHYS-SRC-T3"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "Foundation-level decision, shown for Mathematics as OI-MATH-001; for Physics only the branch records it (OI-PHYS-001).",
+      "implementation_reference": "Evidence and recommended strategy (preserve source bytes, retain text extraction, use rendered PDF page evidence, later export embedded objects with page/anchor locators) are in PHYS-OWNER-DECISION-BRIEF.md and PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md.",
       "completion_condition": "Decision recorded; follow-up tasks appended by the owner or integration worker."
     },
     {
@@ -2102,7 +2103,7 @@
       "source_id": null,
       "term": null,
       "week_or_locator": "ported supplements",
-      "objective": "Teacher reviews the ported Physics supplements and records an approval_reference per lesson, or returns defects.",
+      "objective": "Teacher reviews all 33 Physics lesson objects and 30 registered assets, then records approval_reference per lesson/asset or returns defects. All content_approval fields remain PENDING; no approval is inferred.",
       "required_files": [
         "backend/src/db/ss1/subjects/physics.json"
       ],
@@ -2119,7 +2120,7 @@
         "PHYS-PORT-D1-T3-L005"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "No Physics lesson exists on master, so there is nothing to approve yet. Branch OI-PHYS-005 also asks the teacher whether an answer key is needed for source weeks.",
+      "implementation_reference": "All authored lesson/asset content and the exact approval boundary are summarised in PHYS-OWNER-DECISION-BRIEF.md. No approval references have been fabricated.",
       "completion_condition": "Approval references recorded per lesson, or defects appended as correction items. No approval is invented."
     },
     {
@@ -2231,7 +2232,7 @@
       "source_id": null,
       "term": null,
       "week_or_locator": "full-source regression",
-      "objective": "Deferred: regression check of every parsed row and marker against the final package after indexing, ports and approvals.",
+      "objective": "Run the final regression after authoring: compare all original parsed rows and markers with the final package, validate source hashes, lesson/asset hashes, coverage and delivery corrections, then record the CI result. Authoring and coverage are now complete.",
       "required_files": [
         "backend/src/db/ss1/subjects/physics.json"
       ],
@@ -2244,7 +2245,7 @@
         "PHYS-TEST-PACKAGE-NEW"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "Deferred by owner; implementation, approval and verification are separate stages.",
+      "implementation_reference": "All 173 non-marker coverage rows are IMPLEMENTED_EQUIVALENT and scope authoring is complete. Awaiting the current Physics package verification and integrity workflow results; see PHYS-OWNER-DECISION-BRIEF.md.",
       "completion_condition": "Run only in the later authorised verification stage; nothing is run by this queue."
     },
     {
@@ -2375,7 +2376,7 @@
       "source_id": "SS1-SRC-5c0149cda71d",
       "term": "1st Term",
       "week_or_locator": "WEEK ONE, parsed row 0 (body lines 41-191, sha256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc); the scheme row at getBody() line 24 (sha256 107871e4a26a044a789c101b4fd1778fddfe046ce599b8cdcbee1f19fece62cc); the two EVALUATION blocks (sha256 13fbd968dc602854a2b4c11d5f460c86d6fa1468ab3b3953e29a15b9657d7dbb and f36ebd540908d5a7d2f543a394513fa0ca5a22a5b4fca9a68fb2e613e9822ed1); WEEKEND ASSIGNMENT (sha256 f13123b9c03651004f38dfa7af99fe84845a34bc644a27d54f1d1f20ddb48b85); THEORY (sha256 5759524099c558672bf2d297392244c38c60e00f819fe260fe4c61cd04cc60e0); cross-week teaching at lines 195, 591, 883, 987, 1096, 1128 and 1218",
-      "objective": "Obtain one recorded subject-expert decision on every Week 1 scope, factual and wording question so the three appended lessons can proceed without invented content: (1) whether 'Familiarization of Physics Laboratory' is taught at all in Week 1 and what it covers; (2) whether the scientific method, asked at line 63 and taught nowhere in the term, is in scope and from what authority; (3) whether the 7 quantities the classification question at line 163 names but Week 1 never teaches (weight, torque, speed, power, energy, heat capacity, relative density) are expected of a Week 1 student; (4) whether the beyond-week assessment items (weekend 1, 3, 4, 5, 7 and theory 2, 3) stay in Week 1 or move to their own weeks; (5) whether the dimensional analyses at lines 131-141 were pictures in the original document (PHYS-VIS-T1) and how flattened exponents, the two minus encodings and the letter x used as a multiplication sign are rendered (PHYS-OWNER-EXTRACTION-STRATEGY); (6) the correct SI symbols for metre, second, kilogram and candela, the three-versus-seven quantity count, the empty Derivation cells at lines 100-102 and the empty Time unit at line 129, and whether tables numbered 2.0-2.3 belong to a 1st Term document; (7) one disposition per numbered defect in PHYSICS-T1-W01-SOURCE-DEFECTS. Do not supply any answer, symbol or definition without recording the authority the teacher actually uses.",
+      "objective": "Teacher reviews/approves the two independent Week One supplements (laboratory familiarisation and scientific method) and confirms their placement. The original source facts have been reconciled visually: formulae are present as equation images, Time unit/derivation cells are present, and genuine SI-symbol/count defects are corrected in the replacement. Seven derived quantities and cross-week retrieval items are now covered by keyed practice.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
         "docs/ss1/contracts/CONTRACT.md",
@@ -2406,7 +2407,7 @@
         "PHYS-WK-T1-W01"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "Raised by PHYS-WK-T1-W01 (2026-11-05): 6 coverage entries are UNRESOLVED, 8 are PARTIAL, and PHYSICS-T1-W01-LABORATORY, -COVERAGE, -SCIENTIFIC-METHOD, -DIMENSIONAL-GAPS, -ASSESSMENT-NO-KEY and -FACT-DEFECTS are open and blocking while -NOTATION-LOSS and -SOURCE-DEFECTS are open and non-blocking. No lesson, correction, rule, asset or source byte was written and no answer invented.",
+      "implementation_reference": "Proposed independent lessons, corrected practice and proposed teacher key are complete. Only teacher approval/scope confirmation remains. Detailed evidence: PHYS-OWNER-DECISION-BRIEF.md, PHYS-LES-T1-W01-KEY-ASSESSMENT.md and PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md.",
       "completion_condition": "Every numbered item has a named expert decision recorded with its evidence and locators; the three lesson items then bind to those decisions; no correction is invented, no lesson authored and no shared file edited here."
     },
     {
@@ -2536,7 +2537,7 @@
       "source_id": "SS1-SRC-5c0149cda71d",
       "term": "1st Term",
       "week_or_locator": "WEEK TWO, parsed row 1 (body lines 194-340, sha256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e); scheme row line 25 (sha256 18bb82f110afd09fa9e504a5c737c6e3f57d2dd2d5a9e235d51e5e613a1849a3); the nine numbered questions in open item PHYSICS-T1-W02-FACT-DEFECTS and the wording defects in PHYSICS-T1-W02-SOURCE-DEFECTS",
-      "objective": "Obtain one recorded subject-expert decision on every Week 2 factual, scope and wording question so the lesson and correction tasks can proceed without invented content: (1) whether 20 metres for a table-tennis board (line 203) is a slip and what the intended example is; (2) which of 17.1 mm and 17.11 mm is the intended micrometer result at line 285; (3) the intended answer to weekend item 1 (line 295) given that the vernier callipers is not an option; (4) what 'the dimension of a compound' means at theory item 1(d) (line 314); (5) what the 98 U+001F characters of theory item 5 (line 339) stood for and what the three blanks ask; (6) whether weight or volume belongs in Week 2 where the scheme row and the outline differ; (7) whether the burette, pipette, hydrometer, relative humidity, dew point, constantan and watt meter items (weekend 5, 8, 9) and the force dimension (item 6) are expected of a Week 2 student; (8) whether the 1 cm3 graduated-cylinder accuracy at line 245 and the reliance on Hooke's law and the principle of moments at line 238 stand; (9) whether time measurement stops at clocks and stop watches (line 219). Do not supply any value, definition or answer without recording the authority the teacher actually uses.",
+      "objective": "Teacher reviews the replacement assessment scope: keep pipette/hydrometer as labelled extensions, retain force dimensions as Week One retrieval, include volume (present in the scheme/outline), and approve the clear replacement questions for unreadable figures/ambiguous wording. Source arithmetic, control-character and missing-option findings have already been reconciled and corrected in the learner replacement.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
         "docs/ss1/contracts/CONTRACT.md",
@@ -2567,7 +2568,7 @@
         "PHYS-WK-T1-W02"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "Raised by PHYS-WK-T1-W02 (2026-11-07): PHYSICS-T1-W02-FACT-DEFECTS, -SOURCE-DEFECTS and -EXTRACTION-ARTEFACT hold the evidence. Needs a named subject expert; nothing is decided or invented here.",
+      "implementation_reference": "Three in-app lessons, 10 keyed MCQs, six theory replacements, clear measurement-reading SVG and Week Two delivery correction are complete. Only teacher scope/approval remains. Detailed evidence: PHYS-OWNER-DECISION-BRIEF.md, PHYS-LES-T1-W02-KEY-ASSESSMENT.md and PHYS-COR-T1-W02-BINDING.md.",
       "completion_condition": "Every numbered item has a named expert decision recorded with its evidence and locators; the key-assessment lesson and the correction binding then bind to those decisions; no lesson authored and no shared file edited here."
     },
     {
