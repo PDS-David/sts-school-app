@@ -581,3 +581,87 @@ The source's central distinction is supported: the Constitution establishes the 
 - `GOVERNMENT-T3-W04-WEEKEND-PLACEMENT` — resolve the good-citizen, flexibility and sources-of-constitution items' placement before keying.
 
 No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-WK-T3-W05 — Public Opinion indexing
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and dated research-method fact-check evidence only; no lesson, answer key, marks, correction, asset or parser rule is authored here.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37 on the original legacy `.doc`.
+- Complete span: lines 411–557; UTF-8 span SHA-256: `81409e9aa438a30231626080743682bdc96420db3826b4c4dd3d4a7f55502def`.
+- Printed label: `WEEK FIVE` at line 411; topic: `PUBLIC OPINION` at line 412.
+- Scheme entry 5 (preamble lines 19–21) covers definition/features, formation, functions and demerits. The body also includes a separate measurement section.
+- Locators refer to Antiword line numbers, not page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are empty rather than inferred from a different extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-W05-SCHEME-PUBLIC-OPINION | Scheme entry 5 mapping | PARTIAL |
+| COV-GOV-T3-W05-DEFINITION-FEATURES | Definition/features, lines 418–435 | PARTIAL |
+| COV-GOV-T3-W05-FORMATION | Formation, lines 442–461 | PARTIAL |
+| COV-GOV-T3-W05-MEASUREMENT | Measurement, lines 467–486 | PARTIAL |
+| COV-GOV-T3-W05-FUNCTIONS-DEMERITS | Functions/demerits, lines 488–516 | PARTIAL |
+| COV-GOV-T3-W05-GENERAL-REVISION | General revision, lines 522–529 | PARTIAL |
+| COV-GOV-T3-W05-READING | Reading pointers, lines 530–532 | PARTIAL |
+| COV-GOV-T3-W05-ASSESSMENT-KEYS | All exercise blocks | UNRESOLVED |
+| COV-GOV-T3-W05-WEEKEND-MCQS | Weekend MCQs, lines 534–551 | PARTIAL |
+
+Nine coverage entries and eight linked package open items were added. The existing T3 source-alias owner action remains unchanged.
+
+### Definition and features — lines 418–435
+
+The source defines public opinion as commonly held beliefs, values and attitudes on a public issue, often relating to government policy. This is a useful starting point, but “majority” should not be treated as a necessary condition. Public opinion can be divided, contested, issue-specific and expressed by minority groups; it need not collapse into one consensus. The feature list's repeated majority-only claim is therefore too narrow.
+
+### Formation — lines 442–461
+
+The listed channels include mass media, election campaigns, pressure groups, political parties, influential individuals, lectures/symposia and rumours/gossip. These are plausible influences on how opinions form and spread, but they are not all reliable sources of information. Rumours and gossip may spread misinformation; media, campaign messages and influential voices can shape opinion. Formation should be distinguished from measurement.
+
+### Measurement — lines 467–486
+
+The source lists opinion polls, elections, mass media, referenda/plebiscites, phone-in programmes, letters to government and views expressed by leaders. These methods do not all measure the same thing:
+- **Opinion polls:** a selected sample can represent a wider population only if the target population, sample design and recruitment method support that inference. The sample must be assessed for coverage, selection/nonresponse and other sources of bias. Poll reporting should disclose who sponsored/conducted the poll, the population, sample generation/recruitment, sample size, exact question wording, mode, field dates, weighting and an appropriate measure of precision/limitations.
+- **Elections:** results show choices among candidates/parties and may indicate broad political support, but they are not a precise measure of opinion on one particular policy; voters make choices for multiple reasons.
+- **Mass media:** news content and media feedback can reveal themes or views but do not automatically represent the population.
+- **Referendum/plebiscite:** a direct vote can measure support for a specific proposition, but it may reduce a complex issue to a limited choice and does not capture every nuance of opinion.
+- **Phone-ins and letters:** participants self-select; their views cannot be treated as representative of all listeners or citizens without a suitable research design.
+- **Leaders' views:** statements by local leaders or representatives are influential opinions, not a representative sample of the public.
+
+### Functions and demerits — lines 488–516
+
+Public opinion can inform policy, reveal needs and channel views to government, but these are possible functions rather than guaranteed outcomes. Polls do not ensure that voters choose “popular candidates” or predict election results. Manipulation and measurement difficulties are genuine risks; however, the claim that public opinion is inherently unreliable is too broad. Protest and peaceful demonstration can be legitimate expressions of opinion protected by constitutional freedom of expression and peaceful assembly/association (sections 39–40). Political instability may arise in particular contexts, but civic protest is not inherently a demerit of public opinion.
+
+### Assessment and reading-marker audit
+
+- `EVALUATION`: line 438; two questions at lines 439–440.
+- `EVALUATION QUESTIONS`: line 464; one question at line 465.
+- `EVALUATION QUESTIONS`: line 518; two questions at lines 519–520.
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 522; five questions at lines 523–529. Questions 1–2 concern public opinion. Questions 3–5 concern the legislature, bill passage and parliamentary supremacy; these topics are not taught in this span or listed in scheme entry 5.
+- `READING ASSINGMENT`: exact misspelling at line 530; `Comprehensive Government` pp. 89–90 and `Essential Government` pp. 119–120 at lines 531–532. Editions/publication details are absent; neither book was inspected.
+- `WEEKEND ASSINGMENT`: line 534; five MCQs at lines 535–551. Q1 overstates the protection of minorities; Q2 presents competing definitions; Q3 lists coup as an exception to formation methods; Q4 places “difficult to ascertain” among functions rather than limitations; Q5 presents coup as a way of expressing public opinion. A coup is not a legitimate ordinary democratic channel for expressing public opinion. Preserve the questions and options; do not create a key until the ambiguous/out-of-scope items are resolved.
+- `THEORY`: line 553; two prompts at lines 554–555.
+- Total: **17 exercise stems** (2 + 1 + 2 + 5 + 5 + 2). No source answer key, marks or marking criteria are supplied. No answers or marks were invented.
+
+### Dated research-method and constitutional references consulted
+
+1. **American Association for Public Opinion Research (AAPOR), Transparency Initiative / Disclosure Standards**. Used for the need to disclose population, sample design and recruitment, question wording, collection mode, field dates, sample sizes, weighting, precision and limitations: https://aapor.org/standards-and-ethics/transparency-initiative/
+2. **AAPOR, “A Journalist's Guide to Understanding Polls & Surveys”**. Used for the distinction between probability and non-probability samples, interpretation of sampling error, question wording, timing and election-poll limitations: https://aapor.org/journalist-guide-to-understanding-polls-surveys/
+3. **Constitution of the Federal Republic of Nigeria, 1999, updated with the First–Fifth Alterations** (PLAC, third revision October 2023; reprint September 2024), sections 39–40 on expression and peaceful assembly/association: https://placng.org/i/wp-content/uploads/2023/11/Constitution-of-the-Federal-Republic-of-Nigeria-1999-Updated.pdf
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W05-DEFINITION-FACT` — remove the unnecessary majority-only condition.
+- `GOVERNMENT-T3-W05-FORMATION-FACT` — distinguish opinion formation from misinformation and measurement.
+- `GOVERNMENT-T3-W05-MEASUREMENT-FACT` — correct poll sampling/reporting and distinguish representative measurement from self-selected feedback.
+- `GOVERNMENT-T3-W05-FUNCTIONS-DEMERITS-FACT` — qualify possible functions and distinguish legitimate protest from instability.
+- `GOVERNMENT-T3-W05-REVISION-MISALIGNMENT` — resolve the legislature/bill/parliamentary-supremacy questions' placement.
+- `GOVERNMENT-T3-W05-READING-VERIFICATION` — verify exact editions and page contents.
+- `GOVERNMENT-T3-W05-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 17 stems.
+- `GOVERNMENT-T3-W05-WEEKEND-MCQ-AMBIGUITY` — resolve the competing definitions, category mismatch and coup wording before keying.
+
+No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
