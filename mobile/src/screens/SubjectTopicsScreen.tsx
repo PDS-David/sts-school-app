@@ -76,8 +76,8 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
         ListEmptyComponent={packageLessons.length === 0 ? <Empty message={`No topics yet for ${subjectName}.`} /> : null}
         ListFooterComponent={packageLessons.length > 0 ? (
           <View style={{ marginTop: Spacing.md }}>
-            <Text style={styles.packageHeading}>Additional verified lessons</Text>
-            <Text style={styles.packageHint}>Individually approved, verified and cleared for learning.</Text>
+            <Text style={styles.packageHeading}>Additional approved lessons</Text>
+            <Text style={styles.packageHint}>Approved, implemented lessons with permitted sources. Classroom verification status is shown for each lesson.</Text>
             {packageLessons.map((lesson) => (
               <TouchableOpacity key={lesson.id} style={[styles.row, lesson.locked && styles.rowLocked]} activeOpacity={lesson.locked ? 1 : 0.8}
                 disabled={!!lesson.locked}
@@ -85,7 +85,7 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
                 <View style={styles.rowIcon}><Ionicons name={lesson.locked ? 'lock-closed' : 'book-outline'} size={20} color={lesson.locked ? Colors.textSub : Colors.primary} /></View>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.rowTitle}>{lesson.title}</Text>
-                  <Text style={styles.rowSub}>{lesson.term} · {lesson.practice?.length ?? 0} practice questions</Text>
+                  <Text style={styles.rowSub}>{lesson.term} · {lesson.practice?.length ?? 0} practice questions{lesson.classroom_verification_pending ? ' · Teacher review pending' : ''}</Text>
                 </View>
                 <Ionicons name={lesson.locked ? 'lock-closed' : 'chevron-forward'} size={18} color={Colors.textSub} />
               </TouchableOpacity>
