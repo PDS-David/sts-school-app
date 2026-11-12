@@ -24,3 +24,13 @@ test('Home Economics third-term supplementary lessons include age-appropriate sa
   assert.ok(starch.lesson.includes('Heating and hot liquids must be handled by an adult'));
   assert.ok(snacks.lesson.includes('food allergies'));
 });
+
+test('every Home Economics third-term supplement has complete lesson components', () => {
+  for (const lesson of packageData.lessons as any[]) {
+    assert.ok(lesson.objectives.length >= 2, lesson.id);
+    assert.ok(lesson.lesson.length > 100, lesson.id);
+    assert.ok(lesson.examples.length >= 2, lesson.id);
+    assert.ok(lesson.activity.length > 20, lesson.id);
+    assert.ok(lesson.evaluation.length >= 3, lesson.id);
+  }
+});
