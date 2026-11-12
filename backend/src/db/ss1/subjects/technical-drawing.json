@@ -336,6 +336,696 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Technical Drawing",
+      "title": "Week One — Keyed Construction Solutions",
+      "objectives": [
+        "Construct an incircle in a triangle and explain why two angle bisectors locate its centre.",
+        "Construct a circumcircle using perpendicular bisectors of triangle sides.",
+        "Solve triangle-construction data involving side lengths, angles and perimeter constraints.",
+        "Identify under-specified, impossible and ambiguous construction questions rather than inventing dimensions.",
+        "Construct a regular octagon inside a square using equal corner cuts."
+      ],
+      "body": "This keyed supplement addresses the two inscribed-circle evaluation tasks, the two circumscribed-circle evaluation tasks and the five general revision constructions in the Week One source row. All angles below are written with the proper degree symbol; the source DOCX uses a superscript zero as its degree marker.\n\n## 1. Inscribe a circle in triangle ABC\n\nGiven AB = 60 mm, AC = 50 mm and angle CAB = 67°:\n1. Draw AB = 60 mm.\n2. At A, construct a 67° ray.\n3. On that ray, mark C so AC = 50 mm; join BC.\n4. Bisect two interior angles, for example angles A and B. Their intersection O is the incentre.\n5. From O, draw OD perpendicular to AB. OD is the inradius.\n6. With O as centre and OD as radius, draw the incircle.\n\nCheck values: BC ≈ 61.28 mm; area ≈ 1,380.76 mm²; semiperimeter ≈ 85.64 mm; inradius OD ≈ 16.12 mm.\n\n## 2. Inscribe a circle in a regular polygon of side 40 mm\n\nThe source does not state the number of sides, so it does not define a unique polygon or a unique numerical inradius. Ask the teacher to specify the polygon (for example, a regular pentagon or hexagon). Once the polygon is constructed with 40 mm sides, bisect two interior angles to locate its centre O, drop a perpendicular from O to any side, and draw the incircle with that perpendicular as radius. Do not assume a hexagon without confirmation.\n\n## 3. Circumscribe a circle about triangle ABC (SSS)\n\nGiven AB = 70 mm, AC = 57 mm and BC = 76 mm:\n1. Draw AB = 70 mm.\n2. With A as centre and radius 57 mm, draw an arc.\n3. With B as centre and radius 76 mm, intersect the first arc at C; join AC and BC.\n4. Construct perpendicular bisectors of any two sides. Their intersection O is the circumcentre.\n5. With O as centre and OA as radius, draw the circle through A, B and C.\n\nCheck values: angle A ≈ 72.70°, angle B ≈ 45.73°, angle C ≈ 61.57°; circumradius OA ≈ 39.80 mm.\n\n## 4. Circumscribe a circle about triangle ABC (SAS/ASA data)\n\nGiven AB = 70 mm, AC = 90 mm and angle ABC = 105°:\n1. Draw AB = 70 mm.\n2. At B, construct a 105° ray on the intended side of AB.\n3. With A as centre and radius 90 mm, intersect that ray at C; join AC.\n4. Construct perpendicular bisectors of AB and AC to locate circumcentre O.\n5. Draw the circumcircle with centre O and radius OA.\n\nCheck values: BC ≈ 41.28 mm; angle A ≈ 26.30°; angle C ≈ 48.70°; circumradius ≈ 46.59 mm.\n\n## 5. Construct a triangle with perimeter 130 mm, base 40 mm and one base angle 105°\n\nTake AB = 40 mm and angle CAB = 105° (the mirror image with the 105° angle at B is congruent). Since the perimeter is 130 mm, AC + BC = 90 mm. Construct the ellipse with foci A and B and constant sum 90 mm (a string-and-pins construction is suitable). Its intersection with the 105° ray from A gives C. Join BC.\n\nCheck values: AC ≈ 32.39 mm; BC ≈ 57.61 mm; the other base angle at B ≈ 32.89°; angle C ≈ 42.11°. The side sum is 40 + 32.39 + 57.61 = 130 mm.\n\n## 6. Check the triangle specified by base 70 mm, height 50 mm and vertex angle 55°\n\nThese three conditions are inconsistent. For a 70 mm base and 50 mm perpendicular altitude, the smallest possible angle at the opposite vertex occurs when the altitude meets the midpoint of the base: 2 arctan(35/50) ≈ 69.98°. Any off-centre apex gives a larger angle. A 55° vertex angle is therefore impossible with the stated base and height. Do not draw a false triangle; request a corrected angle, base or height.\n\n## 7. Construct a triangle of perimeter 120 mm with side ratio 3:4:5\n\nThe ratio parts total 12. Each part is 120/12 = 10 mm, so the sides are 30 mm, 40 mm and 50 mm. Draw a 40 mm base, erect a perpendicular of 30 mm at one end, and join its endpoint to the other end of the base; the hypotenuse is 50 mm. The triangle is right-angled and its perimeter is 120 mm.\n\n## 8. Construct triangle ABC with AB = 60 mm, AC = 55 mm and angle ABC = 60°, then make a similar triangle with perimeter 140 mm\n\nThe data are an ambiguous SSA case: the 60° ray from B intersects the circle centred at A with radius 55 mm at two points. Both triangles satisfy the source data, so both must be accepted unless the source supplies a diagram or specifies the acute/obtuse position of C.\n\nSolution 1: BC ≈ 48.03 mm, angles A ≈ 49.13° and C ≈ 70.87°, original perimeter ≈ 163.03 mm. The similarity factor for perimeter 140 mm is k ≈ 0.85875. The image sides are AB ≈ 51.52 mm, AC ≈ 47.23 mm and BC ≈ 41.24 mm.\n\nSolution 2: BC ≈ 11.97 mm, angles A ≈ 10.87° and C ≈ 109.13°, original perimeter ≈ 126.97 mm. The similarity factor is k ≈ 1.10260. The image sides are AB ≈ 66.16 mm, AC ≈ 60.64 mm and BC ≈ 13.20 mm.\n\nConstruct both valid intersections, calculate each perimeter, then multiply all three sides by 140/original perimeter to obtain the similar triangle. The source must specify which configuration it expects if only one answer is desired.\n\n## 9. Inscribe a regular octagon in a square of side 80 mm\n\n1. Draw square ABCD, each side 80 mm.\n2. At each corner, mark equal cut-off distances x along the two adjacent sides.\n3. Join consecutive marks to form the four 45° corner cuts and the four remaining straight sides.\n4. For a regular octagon, the cut length must satisfy 80 − 2x = x√2. Thus x = 80/(2 + √2) ≈ 23.43 mm and each octagon side is 80 − 2x ≈ 33.14 mm.\n5. Check that all eight sides are equal and all interior angles are 135°.\n\nUse thin construction lines first, retain construction arcs where required, and darken only the final geometry.",
+      "body_sha256": "6d45b646e3cf8726d093310faafefe955322415dac0dfc7c2c082d2622fcaf0f",
+      "practice": [
+        {
+          "id": "TD-W01-KEY-Q01",
+          "question": "Construct an incircle in triangle ABC where AB = 60 mm, AC = 50 mm and ∠CAB = 67°. Give the inradius as a check.",
+          "answer": "Draw AB=60 mm, construct the 67° ray at A, mark AC=50 mm and join BC. Bisect two angles to locate incentre O; drop OD perpendicular to AB and draw the circle with radius OD. BC≈61.28 mm; area≈1,380.76 mm²; semiperimeter≈85.64 mm; inradius≈16.12 mm.",
+          "marks": 8,
+          "marking": [
+            {
+              "criterion": "Draws AB accurately as 60 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs the 67° angle at A.",
+              "marks": 1
+            },
+            {
+              "criterion": "Marks AC=50 mm and joins BC.",
+              "marks": 1
+            },
+            {
+              "criterion": "Bisects two interior angles correctly.",
+              "marks": 2
+            },
+            {
+              "criterion": "Identifies their intersection as incentre O.",
+              "marks": 1
+            },
+            {
+              "criterion": "Drops the perpendicular radius OD.",
+              "marks": 1
+            },
+            {
+              "criterion": "Draws the incircle with centre O and radius OD.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W01-KEY-Q02",
+          "question": "A source question asks for an incircle in a regular polygon with side length 40 mm but does not state the number of sides. What is the correct response and method?",
+          "answer": "The question is under-specified: the number of sides is required to define the polygon and its inradius. After the polygon is specified and constructed with 40 mm sides, bisect two interior angles to locate centre O, drop a perpendicular from O to a side, and draw the incircle with that perpendicular as radius. Do not assume a pentagon or hexagon.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Identifies that the number of sides is missing.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that no unique polygon/inradius can be determined.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that two angle bisectors locate the centre.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that the perpendicular from centre to side is the incircle radius.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W01-KEY-Q03",
+          "question": "Construct the circumcircle of triangle ABC where AB=70 mm, AC=57 mm and BC=76 mm.",
+          "answer": "Draw AB=70 mm. Intersect arcs centred at A radius57 mm and B radius76 mm to locate C. Join AC and BC. Construct perpendicular bisectors of two sides; their intersection O is the circumcentre. Draw the circle centred O through A, B and C. Check: angles A≈72.70°, B≈45.73°, C≈61.57°; radius≈39.80 mm.",
+          "marks": 8,
+          "marking": [
+            {
+              "criterion": "Draws AB=70 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses radius57 mm from A.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses radius76 mm from B and locates C.",
+              "marks": 2
+            },
+            {
+              "criterion": "Joins all three sides accurately.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs two perpendicular bisectors.",
+              "marks": 1
+            },
+            {
+              "criterion": "Locates circumcentre O.",
+              "marks": 1
+            },
+            {
+              "criterion": "Draws circle through A, B and C.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W01-KEY-Q04",
+          "question": "Construct the circumcircle of triangle ABC where AB=70 mm, AC=90 mm and ∠ABC=105°.",
+          "answer": "Draw AB=70 mm. Construct a 105° ray at B. With A as centre and radius90 mm, intersect the ray at C. Join AC. Construct perpendicular bisectors of AB and AC to locate O, then draw the circumcircle with radius OA. Check: BC≈41.28 mm; ∠A≈26.30°; ∠C≈48.70°; circumradius≈46.59 mm.",
+          "marks": 8,
+          "marking": [
+            {
+              "criterion": "Draws AB=70 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs the 105° ray at B.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses radius90 mm from A to locate C.",
+              "marks": 2
+            },
+            {
+              "criterion": "Joins AC.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs two perpendicular bisectors and locates O.",
+              "marks": 2
+            },
+            {
+              "criterion": "Draws the circumcircle through all vertices.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W01-KEY-Q05",
+          "question": "Construct a triangle with perimeter130 mm, base40 mm and one base angle105°; measure the other base angle.",
+          "answer": "Set AB=40 mm and ∠CAB=105°. Since AC+BC=90 mm, construct the ellipse with foci A and B and constant sum90 mm; its intersection with the ray from A locates C. AC≈32.39 mm, BC≈57.61 mm, other base angle≈32.89°, apex angle≈42.11°.",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "Draws the 40 mm base.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs the 105° base-angle ray.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses the perimeter to derive AC+BC=90 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs the ellipse locus with foci A and B and constant sum90 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Locates C and joins BC.",
+              "marks": 1
+            },
+            {
+              "criterion": "Measures/states the other base angle as approximately32.9°.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W01-KEY-Q06",
+          "question": "Can a triangle have base70 mm, perpendicular height50 mm and opposite vertex angle55°? Justify.",
+          "answer": "No. The minimum possible opposite vertex angle occurs when the altitude bisects the base: 2 arctan(35/50)≈69.98°. Any off-centre apex increases that angle, so 55° is impossible with the stated base and height.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Recognises that the stated data are inconsistent.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses the midpoint as the minimum-angle case.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 2 arctan(35/50)≈69.98°.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains that 55° is smaller than the minimum and requests corrected data.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W01-KEY-Q07",
+          "question": "Construct a triangle of perimeter120 mm with sides in ratio3:4:5.",
+          "answer": "The ratio has12 parts, so one part is10 mm. The sides are30,40 and50 mm. Construct the 30–40–50 right triangle and verify the perimeter is120 mm.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Adds the ratio parts to obtain12.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates one part as10 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds side lengths30,40 and50 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs the triangle accurately.",
+              "marks": 1
+            },
+            {
+              "criterion": "Verifies the perimeter and right angle.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W01-KEY-Q08",
+          "question": "Construct triangle ABC with AB=60 mm, AC=55 mm and ∠ABC=60°, then construct a similar triangle with perimeter140 mm.",
+          "answer": "The ray at B intersects the circle centred at A radius55 mm twice. Both solutions satisfy the source data. Solution1: BC≈48.03 mm, perimeter≈163.03 mm, k≈0.85875, image sides≈51.52,47.23,41.24 mm. Solution2: BC≈11.97 mm, perimeter≈126.97 mm, k≈1.10260, image sides≈66.16,60.64,13.20 mm. Construct both unless a source diagram identifies one.",
+          "marks": 8,
+          "marking": [
+            {
+              "criterion": "Draws AB=60 mm and the 60° ray at B.",
+              "marks": 2
+            },
+            {
+              "criterion": "Uses the 55 mm radius from A and identifies both valid intersections.",
+              "marks": 2
+            },
+            {
+              "criterion": "Explains the ambiguous SSA condition.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates a valid original perimeter and k=140/perimeter.",
+              "marks": 1
+            },
+            {
+              "criterion": "Scales all three sides proportionally.",
+              "marks": 1
+            },
+            {
+              "criterion": "Records both valid solutions or identifies the need for source clarification.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W01-KEY-Q09",
+          "question": "Inscribe a regular octagon in a square of side80 mm.",
+          "answer": "Draw the square. Mark equal corner cuts x on each side and join consecutive marks. For a regular octagon, 80−2x=x√2, so x≈23.43 mm and each octagon side≈33.14 mm. All interior angles are135°.",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "Draws the 80 mm square.",
+              "marks": 1
+            },
+            {
+              "criterion": "Sets equal corner cuts and states the regularity condition.",
+              "marks": 1
+            },
+            {
+              "criterion": "Derives 80−2x=x√2.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates x≈23.43 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Joins the eight vertices and obtains side≈33.14 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Checks equal sides and 135° interior angles.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "User-supplied SS1 Technical Drawing source",
+          "locator": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx; Week One teaching row, body children 29–163; original lesson body SHA-256 a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
+          "rights": "The source file was supplied by the user. This answer key and its worked calculations are independently authored; no source figure is copied into this text supplement. Reuse approval for source-derived lesson delivery remains pending.",
+          "reuse_status": "PENDING",
+          "attribution": "Source: user-supplied SS1 Technical Drawing, Second Term, Week One."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-TECHNICAL-DRAWING-T2-W02-KEYED-CONSTRUCTIONS",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Technical Drawing",
+      "title": "Week Two — Escribed Circles and Tangent-Circle Constructions",
+      "objectives": [
+        "Construct an escribed circle on a triangle using exterior-angle bisectors and a perpendicular radius.",
+        "Construct escribed circles for polygon side configurations.",
+        "Construct a circle through a given point that touches a line at that point.",
+        "Locate the centre of a circle through two points and tangent to a given line using perpendicular constraints.",
+        "Check construction results using tangency, radius and exradius properties."
+      ],
+      "body": "This lesson explains escribed circles and circles constrained to pass through specified points while touching a straight line. An escribed circle lies outside a triangle and touches one side and the extensions of the other two sides. Its centre is an excentre.\n\nA. Escribed circle on a triangle\n1. Draw the given triangle ABC accurately.\n2. Extend two sides, for example AC beyond C and AB beyond B, as required by the chosen excentre.\n3. Construct the exterior-angle bisectors at the two selected vertices. Their intersection O is an excentre.\n4. From O, draw a perpendicular OQ to the side (or its extension) that the circle will touch.\n5. With O as centre and OQ as radius, draw the escribed circle.\n6. Check that the circle is tangent to all three supporting side lines and lies outside the triangle.\n\nFor a triangle with sides 55 mm, 60 mm and 50 mm, the semiperimeter is s = 82.5 mm. Heron's formula gives area Δ = √[82.5 × 27.5 × 22.5 × 32.5] ≈ 1,288.03 mm². The inradius is Δ/s ≈ 15.61 mm. The three exradii are Δ/(s−55) ≈ 46.84 mm, Δ/(s−60) ≈ 57.25 mm and Δ/(s−50) ≈ 39.63 mm. These values are checks; the construction remains the primary method.\n\nB. Escribed circles on a polygon\n1. Draw the polygon and extend the sides that meet at the selected vertex.\n2. Construct the relevant exterior-angle bisectors; their intersection is the centre of that escribed circle.\n3. Drop a perpendicular from the centre to the side (or its extension) to obtain the radius.\n4. Draw the circle and repeat for each required side/vertex configuration.\n5. Check tangency against the correct side lines. Do not confuse an escribed circle with a circumcircle.\n\nC. Circle through a given point and tangent to a line at that point\n1. Mark point R on the given line PQ and the other given point A.\n2. Join R to A.\n3. Erect a perpendicular to PQ at R. The circle centre must lie on this perpendicular because a radius is perpendicular to a tangent at the contact point.\n4. The centre O is also equidistant from A and R, so it lies on the perpendicular bisector of AR.\n5. Intersect the perpendicular at R with the perpendicular bisector of AR to locate O.\n6. Draw the circle with centre O and radius OR. This construction is equivalent to the equal-angle condition in the source method.\n\nD. Circle through two given points and tangent to a given line\nThe source method uses a construction involving the line through the two points, its intersection with the tangent line, a semicircle and a perpendicular. Follow the source's labelled figure for the exact point names and orientation. The invariant check is that the centre lies on the perpendicular bisector of the two given points and that the radius to the contact point is perpendicular to the given tangent line. Their intersection determines the centre. If the two constraints do not intersect in a valid location, the supplied data do not define the requested circle.\n\nE. Accuracy and checks\nUse thin construction lines, retain angle-bisector and perpendicular-bisector arcs, label the centre and point of contact, and state the radius. A tangent touches a circle at exactly one point; the radius to that point is perpendicular to the tangent. An excentre is the intersection of two exterior-angle bisectors (equivalently, one interior and two exterior bisectors depending on the selected excentre).",
+      "body_sha256": "b9031bd3de3068b5dab5cbcea59ac96745f361008b96543c91f6e497eb4916e4",
+      "practice": [
+        {
+          "id": "TD-W02-KEY-Q01",
+          "question": "Construct an escribed circle on a triangle with AB=55 mm, AC=60 mm and BC=50 mm. Give the exradii as numerical checks.",
+          "answer": "Draw the SSS triangle using intersecting arcs. Bisect two appropriate exterior angles to locate the selected excentre; drop a perpendicular to a side line for the radius and draw the escribed circle. With s=82.5 mm and area≈1,288.03 mm², the exradii are Δ/(s−55)≈46.84 mm, Δ/(s−60)≈57.25 mm and Δ/(s−50)≈39.63 mm.",
+          "marks": 8,
+          "marking": [
+            {
+              "criterion": "Constructs the 55/60/50 mm triangle accurately.",
+              "marks": 2
+            },
+            {
+              "criterion": "Constructs the appropriate exterior-angle bisectors.",
+              "marks": 2
+            },
+            {
+              "criterion": "Locates the excentre.",
+              "marks": 1
+            },
+            {
+              "criterion": "Drops a perpendicular to obtain the radius.",
+              "marks": 1
+            },
+            {
+              "criterion": "Draws the escribed circle tangent to the three side lines.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives a correct exradius check.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W02-KEY-Q02",
+          "question": "A regular hexagon has side 50 mm. Describe the construction of its escribed circles.",
+          "answer": "Construct a regular hexagon of side 50 mm. For each required side/vertex configuration, extend the relevant adjacent sides, bisect the exterior angles to locate the excentre, drop a perpendicular from the centre to the tangent side line, and draw the circle with that radius. Repeat around the polygon, checking each circle is tangent to the intended side lines.",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "Constructs a regular hexagon with 50 mm sides.",
+              "marks": 1
+            },
+            {
+              "criterion": "Extends the correct side lines.",
+              "marks": 1
+            },
+            {
+              "criterion": "Bisects exterior angles to locate an excentre.",
+              "marks": 2
+            },
+            {
+              "criterion": "Uses a perpendicular for the radius.",
+              "marks": 1
+            },
+            {
+              "criterion": "Draws and checks the escribed circles.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W02-KEY-Q03",
+          "question": "Construct a circle through a given point A and tangent to a given line at R.",
+          "answer": "Join A to R. Draw the perpendicular to the tangent line at R. Construct the perpendicular bisector of AR. Their intersection is the centre O. Draw the circle centred at O with radius OR; verify OA=OR and OR is perpendicular to the tangent.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Joins the two given points.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs the tangent-line perpendicular at R.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs the perpendicular bisector of AR.",
+              "marks": 1
+            },
+            {
+              "criterion": "Locates O at the intersection.",
+              "marks": 1
+            },
+            {
+              "criterion": "Draws the circle and verifies both constraints.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W02-KEY-Q04",
+          "question": "State the two geometric constraints that locate the centre of a circle through two given points and tangent to a given straight line.",
+          "answer": "The centre lies on the perpendicular bisector of the chord joining the two given points, and on the line perpendicular to the tangent at the point of contact. Their valid intersection is the centre; the radius is the distance from it to either given point or the contact point.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Identifies the perpendicular bisector of the two-point chord.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies the perpendicular to the tangent at contact.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that their intersection locates the centre.",
+              "marks": 1
+            },
+            {
+              "criterion": "States the equal-radius/tangency check.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W02-KEY-Q05",
+          "question": "Why is the radius to a point of tangency perpendicular to the tangent line?",
+          "answer": "The tangent is perpendicular to the radius at the point where it touches the circle. This perpendicular relationship is the defining geometric test used to locate the centre of a tangent circle.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States the radius is perpendicular to the tangent at contact.",
+              "marks": 1
+            },
+            {
+              "criterion": "Applies it as a centre/radius construction check.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "User-supplied SS1 Technical Drawing source",
+          "locator": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx; Week Two teaching row, body children 163–336; original source identity SS1-SRC-af4868d2c026.",
+          "rights": "The supplement is independently authored from the user-supplied construction instructions and standard Euclidean geometry. No source figure or textbook page is reproduced. Source-derived lesson reuse approval remains pending.",
+          "reuse_status": "PENDING",
+          "attribution": "Source: user-supplied SS1 Technical Drawing, Second Term, Week Two."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Technical Drawing",
+      "title": "Week Four — Plain Scales: Construction and Reading",
+      "objectives": [
+        "Define scale and representative fraction.",
+        "Distinguish full-size, reduction and enlargement scale ratios.",
+        "Calculate the length of a plain scale from RF and maximum represented length.",
+        "Construct plain scales with main and subdivided units.",
+        "Read and check lengths using a correctly graduated plain scale."
+      ],
+      "body": "A plain scale is a graduated line used to measure or set out lengths on a drawing. A representative fraction (RF) is the ratio of drawing length to actual length, expressed in the same units:\nRF = drawing length / actual length.\nFor example, 1:2.5 means 1 unit on the drawing represents 2.5 units on the object. A plain scale normally shows two related units: a main unit to the right of zero and a subdivision of that unit to the left.\n\nGeneral construction procedure\n1. Convert the stated scale to an RF using consistent units.\n2. Calculate scale length = RF × maximum actual length.\n3. Draw the scale line to that length and divide it into the required number of equal main units.\n4. Subdivide the first main unit into the required smaller units.\n5. Put zero at the boundary between the subdivided unit on the left and the main units on the right.\n6. Label the main and subdivided units, state the RF and use dividers to transfer measurements.\n\nWorked construction 1: RF 1:2.5, maximum 400 mm\nScale length = 400/2.5 = 160 mm. Divide 160 mm into four 40 mm main divisions, each representing 100 mm. Subdivide the first 40 mm division into ten equal parts, each representing 10 mm. Place zero at the junction between the subdivided part and the main divisions. The source readings are X = 280 mm and Y = 130 mm.\n\nWorked construction 2: 2 cm represents 1 m, maximum 6 m\nConvert 1 m to 100 cm: RF = 2:100 = 1:50. Scale length = 600 cm/50 = 12 cm = 120 mm. Divide into six 20 mm main divisions, each representing 1 m. Divide the first main division into ten equal parts, each representing 1 dm (10 cm).\n\nWorked construction 3: 3 cm represents 1 dm, maximum 4 dm\nRF = 3:10. Scale length = 3 cm × 4 = 12 cm = 120 mm. Divide into four 30 mm main divisions, each representing 1 dm. Subdivide the first main division into ten equal parts, each representing 1 cm.\n\nWorked construction 4: 1.5 times full size, maximum 8 cm\nRF = 1.5:1. Scale length = 1.5 × 8 cm = 12 cm = 120 mm. Divide into eight 15 mm main divisions, each representing 1 cm. Subdivide the first main division into ten equal parts, each representing 1 mm.\n\nWorked construction 5: RF 1:3, maximum 4 dm\nConvert 4 dm to 400 mm. Scale length = 400/3 = 133.33 mm. Divide the scale into four main divisions of 33.33 mm, each representing 1 dm, and subdivide the first main division into ten equal parts, each representing 1 cm. The source's printed step wording about a 1 dm line is abbreviated; the governing RF calculation gives 133.33 mm for the full 4 dm range.\n\nWorked calculation: land length 6.50 km at RF 1:500\nDrawing length = 6.50 km/500 = 0.013 km = 13 m = 13,000 mm.\n\nRevision construction: 4 cm represents 2 dm, maximum 5 dm\n2 dm = 20 cm, so RF = 4:20 = 1:5. Scale length = 50 cm/5 = 10 cm. Divide into five 20 mm main units, each representing 1 dm; subdivide the first unit into ten equal centimetre divisions.\n\nRevision construction: 2.5 times full size, maximum 6 cm\nScale length = 2.5 × 6 = 15 cm = 150 mm. Divide into six equal 25 mm main units, each representing 1 cm, and subdivide the first unit into ten equal millimetre divisions.\n\nRevision construction: RF 1:4, maximum 7 dm\n7 dm = 700 mm; scale length = 700/4 = 175 mm. Divide into seven equal main divisions of 25 mm, each representing 1 dm; subdivide the first main division into ten equal centimetre divisions.\n\nAccuracy checks\n- All dimensions must use the same units before calculating RF or scale length.\n- The scale line length must equal RF × actual maximum length.\n- Main divisions represent the stated principal unit; the left-hand subdivision represents the smaller unit.\n- An enlargement has RF greater than 1; a reduction has RF less than 1.\n- Do not estimate missing diagram readings or dimensions from a low-resolution figure. Record them as unresolved until a faithful figure is available.",
+      "body_sha256": "9da605d0460fb7852e7b093bfdfa95a15b1853a8e37e5296641345af5259a3d5",
+      "practice": [
+        {
+          "id": "TD-W04-KEY-Q01",
+          "question": "Define representative fraction and plain scale.",
+          "answer": "RF is drawing length divided by actual length in the same units. A plain scale is a graduated scale that reads two units of measurement.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Defines RF as drawing/actual length.",
+              "marks": 2
+            },
+            {
+              "criterion": "States both lengths use the same units.",
+              "marks": 1
+            },
+            {
+              "criterion": "Defines a plain scale as reading two units.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W04-KEY-Q02",
+          "question": "Construct a plain scale of 1:2.5 to show a maximum of 400 mm and read to 10 mm.",
+          "answer": "Scale length=400/2.5=160 mm. Divide into four 40 mm main divisions (100 mm each); subdivide the first 40 mm into ten 4 mm parts (10 mm each).",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Calculates 160 mm scale length.",
+              "marks": 1
+            },
+            {
+              "criterion": "Draws the 160 mm line.",
+              "marks": 1
+            },
+            {
+              "criterion": "Divides into four 40 mm main units.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subdivides first unit into ten equal parts.",
+              "marks": 1
+            },
+            {
+              "criterion": "Labels 100 mm and 10 mm units correctly.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W04-KEY-Q03",
+          "question": "A scale has 2 cm representing 1 m. Construct it to read up to 6 m in decimetres.",
+          "answer": "RF=2:100=1:50. Scale length=600/50=12 cm=120 mm. Divide into six 20 mm main units (1 m each) and subdivide the first unit into ten parts (1 dm each).",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Converts 1 m to 100 cm and obtains RF 1:50.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 120 mm scale length.",
+              "marks": 1
+            },
+            {
+              "criterion": "Divides into six equal main units.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subdivides first unit into ten decimetres.",
+              "marks": 1
+            },
+            {
+              "criterion": "Labels and presents scale correctly.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W04-KEY-Q04",
+          "question": "A scale is 3 cm = 1 dm and must read up to 4 dm in centimetres. Find RF and scale length.",
+          "answer": "RF=3:10. Scale length=3×4=12 cm=120 mm. Divide into four 30 mm units, each representing 1 dm; subdivide one unit into ten centimetres.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Obtains RF 3:10.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 120 mm scale length.",
+              "marks": 1
+            },
+            {
+              "criterion": "Divides into four 30 mm main units.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subdivides into centimetres correctly.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W04-KEY-Q05",
+          "question": "A piece of land is 6.50 km long. What length represents it on a 1:500 scale? Give the answer in millimetres.",
+          "answer": "6.50 km/500=0.013 km=13 m=13,000 mm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Applies drawing length=actual length/500.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains 13 m.",
+              "marks": 1
+            },
+            {
+              "criterion": "Converts to 13,000 mm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W04-KEY-Q06",
+          "question": "Construct a scale of 2.5 times full size to read up to 6 cm in millimetres.",
+          "answer": "Scale length=2.5×6=15 cm=150 mm. Divide into six 25 mm units (1 cm each) and subdivide the first into ten millimetre divisions.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Calculates 150 mm scale length.",
+              "marks": 1
+            },
+            {
+              "criterion": "Divides into six equal 25 mm units.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subdivides first unit into ten parts.",
+              "marks": 1
+            },
+            {
+              "criterion": "Labels millimetre and centimetre graduations.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W04-KEY-Q07",
+          "question": "Construct a scale of 1:4 to read up to 7 dm in centimetres.",
+          "answer": "7 dm=700 mm. Scale length=700/4=175 mm. Divide into seven 25 mm main units (1 dm each); subdivide the first unit into ten centimetre divisions.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Converts 7 dm to 700 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 175 mm scale length.",
+              "marks": 1
+            },
+            {
+              "criterion": "Divides into seven equal main units.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subdivides and labels centimetres.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W04-KEY-Q08",
+          "question": "The source asks for readings X and Z from a printed scale diagram. What evidence is required before marking a numerical answer?",
+          "answer": "The original scale figure must be rendered at sufficient resolution to identify zero, main graduations, subdivisions and the pointers X and Z. No numerical readings should be guessed from the text-only extraction.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies that the actual source figure and graduations are required.",
+              "marks": 1
+            },
+            {
+              "criterion": "Refuses to invent readings without inspecting the figure.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "User-supplied SS1 Technical Drawing source",
+          "locator": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx; Week Four teaching row, body children 697–859; source hash 69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d.",
+          "rights": "This supplement independently explains and solves source-based scale tasks. No source figure or textbook page is reproduced. Reuse approval remains pending.",
+          "reuse_status": "PENDING",
+          "attribution": "Source: user-supplied SS1 Technical Drawing, Second Term, Week Four."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [],
@@ -364,7 +1054,8 @@
       "objective_locator": "SS1-SRC-af4868d2c026: scheme-table line 11 of mammoth 1.12.2 extractRawText() output = parsed row 0 ('WEEK 1', 79 characters, id SS1-SRC-af4868d2c026:BODY:08c316219062202674404113758809456aaa229a8faaabbb1ca19dcbab0cc889, classified SCHEME_ONLY by rule SS1-SRC-af4868d2c026-R003); taught in parsed row 11 'WEEK ONE', lines 59-342 after trimming, id SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -382,6 +1073,10 @@
         {
           "locator": "SS1-SRC-af4868d2c026: parsed row 11, lines 59-342 (body SHA-256 a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6); weekend assignment lines 271-337",
           "explanation": "This entry certifies only that the row's text teaches the objective at topic level. It is not a factual or answer-key review and not a certification of delivered quality: the row's drawings (for example 'the figure shown above' on lines 283, 301 and 315) are absent from the extracted text and belong to TD-VIS-W01, and the superscript degree signs flatten to '670' (line 193), '1050' (lines 237, 335), '550' (line 251) and '600' (lines 257, 331) in the extracted text, a notation loss for TD-WK-W01 to review. Neither is resolved here."
+        },
+        {
+          "locator": "Week One source row, body children 29–163; keyed supplement SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS; evidence TD-KEY-W01-ANSWERS.md.",
+          "explanation": "An original keyed supplement now addresses both inscribed-circle evaluation tasks, both circumscribed-circle evaluation tasks and all five general revision constructions with worked answers and marking criteria. The missing first-term source still prevents certification that the five revision tasks match last term's exact scope."
         }
       ]
     },
@@ -478,8 +1173,11 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Week 6 scheme objective, verbatim: “Enlargement and reduction of plain figures”.",
       "objective_locator": "2nd Term scheme-table parsed row 5 (WEEK 6), extractRawText() line 21; exact row body SHA-256 b3be11f9bf4df24c1ee913290b0308eb630ef42993a154646f6ce3fcda784fa4.",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT"
+      ],
       "evidence": [
         {
           "locator": "Scheme row 5, line 21; exact anchor “WEEK 6:        Enlargement and reduction of plain figures”; 57 characters; SHA-256 b3be11f9bf4df24c1ee913290b0308eb630ef42993a154646f6ce3fcda784fa4; classified by source rule SS1-SRC-af4868d2c026-R008.",
@@ -488,6 +1186,10 @@
         {
           "locator": "TD-PRE-T2: lines 11–31 are scheme rows 0–10; teaching rows begin at line 59. Queue item TD-WK-W06-W07 owns the combined Week 6–7 teaching-row review.",
           "explanation": "The exact parsed body identity for the combined Week 6–7 teaching row is not recorded in the current repository evidence. It is therefore not safe to invent a lesson ID or claim a confirmed binding. The dependent TD-WK-W06-W07 task will establish that identity and map this objective; until then coverage remains PARTIAL."
+        },
+        {
+          "locator": "Combined teaching row 16, body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05; TD-FACT-ENLARGEMENT-SCOPE.md",
+          "explanation": "Direct inspection of the original combined row confirms both reduction and enlargement sections; the same source lesson is bound to both Week Six and Week Seven scheme objectives. The separate enlargement supplement is retained as optional reinforcement."
         }
       ]
     },
@@ -496,8 +1198,11 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Week 7 scheme objective, verbatim: “Enlargement and reduction of plain figures”.",
       "objective_locator": "2nd Term scheme-table parsed row 6 (WEEK 7), extractRawText() line 23; row body SHA-256 36277a6acff9ac3310023dc5ca73962b2c45f929f3a2f79269241edf07fed3aa.",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT"
+      ],
       "evidence": [
         {
           "locator": "Scheme row 6, line 23; exact anchor “WEEK 7:        Enlargement and reduction of plain figures”; 57 characters; SHA-256 36277a6acff9ac3310023dc5ca73962b2c45f929f3a2f79269241edf07fed3aa; classified by source rule SS1-SRC-af4868d2c026-R009.",
@@ -506,6 +1211,10 @@
         {
           "locator": "TD-PRE-T2: teaching rows begin at line 59; queue task TD-WK-W06-W07 owns the combined/associated teaching-row review.",
           "explanation": "The exact parsed body identity and objective-to-teaching scope are not recorded in current repository evidence. No lesson ID is invented. TD-WK-W06-W07 must inspect the source row and bind this objective only if the teaching actually covers it; coverage remains PARTIAL until then."
+        },
+        {
+          "locator": "Combined teaching row 16, body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05; TD-FACT-ENLARGEMENT-SCOPE.md",
+          "explanation": "Direct inspection of the original combined row confirms both reduction and enlargement sections; the same source lesson is bound to both Week Six and Week Seven scheme objectives. The separate enlargement supplement is retained as optional reinforcement."
         }
       ]
     },
@@ -590,7 +1299,8 @@
       "objective_locator": "WEEK ONE teaching row (parsed row 11), original body SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -670,7 +1380,8 @@
       "objective_locator": "WEEK ONE teaching row (parsed row 11), original body SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -690,7 +1401,8 @@
       "objective_locator": "WEEK ONE teaching row (parsed row 11), general evaluation/revisional questions, lines 243–261; original body SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -710,7 +1422,8 @@
       "objective_locator": "WEEK ONE teaching row (parsed row 11), general evaluation/revisional questions, lines 243–261; original body SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -730,7 +1443,8 @@
       "objective_locator": "WEEK ONE teaching row (parsed row 11), general evaluation/revisional questions, lines 243–261; original body SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -750,7 +1464,8 @@
       "objective_locator": "WEEK ONE teaching row (parsed row 11), general evaluation/revisional questions, lines 243–261; original body SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -770,7 +1485,8 @@
       "objective_locator": "WEEK ONE teaching row (parsed row 11), general evaluation/revisional questions, lines 243–261; original body SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6.",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -790,7 +1506,8 @@
       "objective_locator": "WEEK TWO teaching row (parsed row 12), lines 349–377; Example 1 and evaluation question 1. Original body SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd"
+        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W02-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -810,7 +1527,8 @@
       "objective_locator": "WEEK TWO teaching row (parsed row 12), lines 383–429; Example 2 and evaluation question 2. Original body SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd"
+        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W02-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -830,7 +1548,8 @@
       "objective_locator": "WEEK TWO teaching row (parsed row 12), lines 447–521; second content objective and worked construction 1. Original body SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd"
+        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W02-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -850,7 +1569,8 @@
       "objective_locator": "WEEK TWO teaching row (parsed row 12), lines 447–521; second content objective and worked construction 2. Original body SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd"
+        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W02-KEYED-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -1010,7 +1730,8 @@
       "objective_locator": "WEEK FOUR teaching row (parsed row 14), The existing COV-TD-T2-SCH-W04 evidence describes the source definition; source document pages 19–22; body SHA d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd"
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES"
       ],
       "evidence": [
         {
@@ -1030,7 +1751,8 @@
       "objective_locator": "WEEK FOUR teaching row (parsed row 14), The existing COV-TD-T2-SCH-W04 evidence records this definition; source document pages 19–22; body SHA d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd"
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES"
       ],
       "evidence": [
         {
@@ -1047,19 +1769,24 @@
       "id": "COV-TD-T2-W04-COMMON-RATIOS",
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Distinguish the common scale ratios taught in the source.",
-      "objective_locator": "WEEK FOUR teaching row (parsed row 14), Source document pages 19–22; the existing coverage records that common scale ratios are distinguished, but does not reproduce the exact ratio list in the current repository evidence.",
-      "status": "PARTIAL",
+      "objective_locator": "WEEK FOUR source body children 697–859; exact scale ratios, construction dimensions and readings are transcribed in TD-FACT-W04-SCALE-DETAILS.md. Remaining unit and gate-dimension anomalies are isolated in explicit open items.",
+      "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd"
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES"
       ],
       "evidence": [
         {
           "locator": "WEEK FOUR, source body SHA-256 d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd; source document pages 19–22.",
-          "explanation": "The existing source evidence records this topic, but the exact ratios, ranges, numerical readings or associated figures are not available in the current repository record; coverage remains PARTIAL pending the bounded source/visual follow-up."
+          "explanation": "The earlier evidence entry recorded this as partial while exact source values and figure readings were still uninspected. The source/visual follow-up is now complete and the exact values are documented in TD-FACT-W04-SCALE-DETAILS.md. The specific Q6 unit mismatch and gate-dimension inconsistency remain separate explicit blockers; they do not erase this core objective-level source coverage."
         },
         {
           "locator": "Scheme row COV-TD-T2-SCH-W04, parsed row 3 (WEEK 4), line 17; source rule SS1-SRC-af4868d2c026-R006.",
           "explanation": "This teaching point is mapped to the Week 4 scheme objective “Plain scales”."
+        },
+        {
+          "locator": "WEEK FOUR body children 707–714; source document pages 19–22; detailed transcription TD-FACT-W04-SCALE-DETAILS.md",
+          "explanation": "The earlier evidence entry recorded this as partial while exact source values and figure readings were still uninspected. The source/visual follow-up is now complete and the exact values are documented in TD-FACT-W04-SCALE-DETAILS.md. The specific Q6 unit mismatch and gate-dimension inconsistency remain separate explicit blockers; they do not erase this core objective-level source coverage."
         }
       ]
     },
@@ -1070,7 +1797,8 @@
       "objective_locator": "WEEK FOUR teaching row (parsed row 14), Source document pages 19–22; existing COV-TD-T2-SCH-W04 evidence records the two-unit feature.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd"
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES"
       ],
       "evidence": [
         {
@@ -1087,19 +1815,24 @@
       "id": "COV-TD-T2-W04-PLAIN-SCALE-CONSTRUCTION",
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Construct plain scales for the scale ratios and ranges given in the source.",
-      "objective_locator": "WEEK FOUR teaching row (parsed row 14), Source document pages 19–22; existing COV-TD-T2-SCH-W04 evidence records step-by-step constructions, but exact ratios/ranges and figures require source/visual inspection.",
-      "status": "PARTIAL",
+      "objective_locator": "WEEK FOUR source body children 697–859; exact scale ratios, construction dimensions and readings are transcribed in TD-FACT-W04-SCALE-DETAILS.md. Remaining unit and gate-dimension anomalies are isolated in explicit open items.",
+      "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd"
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES"
       ],
       "evidence": [
         {
           "locator": "WEEK FOUR, source body SHA-256 d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd; source document pages 19–22.",
-          "explanation": "The existing source evidence records this topic, but the exact ratios, ranges, numerical readings or associated figures are not available in the current repository record; coverage remains PARTIAL pending the bounded source/visual follow-up."
+          "explanation": "The earlier evidence entry recorded this as partial while exact source values and figure readings were still uninspected. The source/visual follow-up is now complete and the exact values are documented in TD-FACT-W04-SCALE-DETAILS.md. The specific Q6 unit mismatch and gate-dimension inconsistency remain separate explicit blockers; they do not erase this core objective-level source coverage."
         },
         {
           "locator": "Scheme row COV-TD-T2-SCH-W04, parsed row 3 (WEEK 4), line 17; source rule SS1-SRC-af4868d2c026-R006.",
           "explanation": "This teaching point is mapped to the Week 4 scheme objective “Plain scales”."
+        },
+        {
+          "locator": "WEEK FOUR body children 721–786 and 790–796; source pages 20–21; TD-FACT-W04-SCALE-DETAILS.md",
+          "explanation": "Five worked constructions and four revision construction prompts now have their RFs, ranges, total lengths, major divisions and first-unit subdivisions recorded with checked arithmetic. The source's two-unit convention is retained. The separate Q6 unit mismatch and gate-dimension issue remain explicit open items; they do not erase the source's core construction coverage."
         }
       ]
     },
@@ -1107,19 +1840,24 @@
       "id": "COV-TD-T2-W04-PLAIN-SCALE-READING",
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Read and interpret values from a constructed plain scale.",
-      "objective_locator": "WEEK FOUR teaching row (parsed row 14), Source document pages 19–22; existing COV-TD-T2-SCH-W04 evidence records worked scale readings; exact figure labels and numerical readings require visual inspection.",
-      "status": "PARTIAL",
+      "objective_locator": "WEEK FOUR source body children 697–859; exact scale ratios, construction dimensions and readings are transcribed in TD-FACT-W04-SCALE-DETAILS.md. Remaining unit and gate-dimension anomalies are isolated in explicit open items.",
+      "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd"
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES"
       ],
       "evidence": [
         {
           "locator": "WEEK FOUR, source body SHA-256 d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd; source document pages 19–22.",
-          "explanation": "The existing source evidence records this topic, but the exact ratios, ranges, numerical readings or associated figures are not available in the current repository record; coverage remains PARTIAL pending the bounded source/visual follow-up."
+          "explanation": "The earlier evidence entry recorded this as partial while exact source values and figure readings were still uninspected. The source/visual follow-up is now complete and the exact values are documented in TD-FACT-W04-SCALE-DETAILS.md. The specific Q6 unit mismatch and gate-dimension inconsistency remain separate explicit blockers; they do not erase this core objective-level source coverage."
         },
         {
           "locator": "Scheme row COV-TD-T2-SCH-W04, parsed row 3 (WEEK 4), line 17; source rule SS1-SRC-af4868d2c026-R006.",
           "explanation": "This teaching point is mapped to the Week 4 scheme objective “Plain scales”."
+        },
+        {
+          "locator": "WEEK FOUR body children 734, 742–748, 756–762, 821–827; source pages 20–22; TD-FACT-W04-SCALE-DETAILS.md",
+          "explanation": "Worked readings X=280 mm, Y=130 mm, 2.4 m/24 dm and 22 cm are transcribed. The weekend rulers read X=87 mm and Z=390 mm; the 3 m at 1:50 question gives 60 mm. The remaining scale reading questions are explicitly listed with their source units. Q6's millimetre/decimetre inconsistency is separately blocked pending author clarification."
         }
       ]
     },
@@ -1127,19 +1865,23 @@
       "id": "COV-TD-T2-W05-DIAGONAL-SCALE",
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Explain and use diagonal scales as taught in the Week Five source row.",
-      "objective_locator": "WEEK FIVE teaching row (parsed row 15), title “Diagonal and chordal scale and their uses”; original body SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc.",
-      "status": "PARTIAL",
+      "objective_locator": "WEEK FIVE body children 866–929; exact constructions, ratios, lengths and readings in TD-FACT-W05-SCALE-CONSTRUCTIONS.md.",
+      "status": "SUPPORTED",
       "lesson_ids": [
         "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc"
       ],
       "evidence": [
         {
           "locator": "Original lesson ID SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc; body SHA-256 2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc.",
-          "explanation": "The source row title explicitly names this scale type and its uses. The current repository evidence does not contain the detailed construction steps, dimensions, graduations or worked readings, so objective coverage remains PARTIAL pending exact source inspection."
+          "explanation": "The earlier evidence entry recorded this as partial before exact construction inspection. Four diagonal-scale examples and the 2/5 evaluation construction are now transcribed with checked lengths, units and worked readings in TD-FACT-W05-SCALE-CONSTRUCTIONS.md."
         },
         {
           "locator": "Scheme coverage COV-TD-T2-SCH-W05; parsed scheme row 4, line 19; exact source text “WEEK 5:        Diagonal and chordalScales”.",
           "explanation": "This objective maps to the Week 5 scheme objective. Source spacing and spelling are retained in the scheme record; no normalization is made here."
+        },
+        {
+          "locator": "WEEK FIVE body children 866–929; source pages 23–25; TD-FACT-W05-SCALE-CONSTRUCTIONS.md",
+          "explanation": "The source defines three diagonal-scale units (cm, mm, tenths of mm), gives four worked constructions (1:1, 2:1, 3 cm=1 m, 1:4) with verified lengths/readings, and specifies the 2/5 evaluation scale. The k−n assessment reading is assigned to the answer-key task."
         }
       ]
     },
@@ -1147,19 +1889,23 @@
       "id": "COV-TD-T2-W05-CHORDAL-SCALE",
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Explain and use chordal scales as taught in the Week Five source row.",
-      "objective_locator": "WEEK FIVE teaching row (parsed row 15), title “Diagonal and chordal scale and their uses”; original body SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc.",
-      "status": "PARTIAL",
+      "objective_locator": "WEEK FIVE body children 938–1005; exact 5-degree chordal-scale construction and 25-degree worked example in TD-FACT-W05-SCALE-CONSTRUCTIONS.md.",
+      "status": "SUPPORTED",
       "lesson_ids": [
         "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc"
       ],
       "evidence": [
         {
           "locator": "Original lesson ID SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc; body SHA-256 2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc.",
-          "explanation": "The source row title explicitly names this scale type and its uses. The current repository evidence does not contain the detailed construction steps, dimensions, graduations or worked readings, so objective coverage remains PARTIAL pending exact source inspection."
+          "explanation": "The earlier evidence entry recorded this as partial before exact construction inspection. The 5°/90° chordal-scale construction and 25° worked example are now transcribed from the source text and figure in TD-FACT-W05-SCALE-CONSTRUCTIONS.md. Non-multiple-of-5° examples and the centre label remain explicit blockers."
         },
         {
           "locator": "Scheme coverage COV-TD-T2-SCH-W05; parsed scheme row 4, line 19; exact source text “WEEK 5:        Diagonal and chordalScales”.",
           "explanation": "This objective maps to the Week 5 scheme objective. Source spacing and spelling are retained in the scheme record; no normalization is made here."
+        },
+        {
+          "locator": "WEEK FIVE body children 938–1005; source pages 25–26; TD-FACT-W05-SCALE-CONSTRUCTIONS.md",
+          "explanation": "The source constructs a 90° quadrant in 18 equal 5° divisions and demonstrates a 25° angle using the 0°–60° chord as radius R and 0°–25° chord as r. The source's 24°, 37° and 27° references conflict with its 5° increment statement; see open item TD-T2-W05-CHORD-ANGLE-GRANULARITY."
         }
       ]
     },
@@ -1168,18 +1914,22 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Week 6: reduction of plain figures, as named in the combined WEEK SIX AND SEVEN teaching row.",
       "objective_locator": "Parsed row 16, WEEK SIX AND SEVEN; 7,297-character body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05; original body SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05.",
-      "status": "PARTIAL",
+      "status": "SUPPORTED",
       "lesson_ids": [
         "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05"
       ],
       "evidence": [
         {
           "locator": "Queue evidence for TD-WK-W06-W07: parsed row 16 title “Reduction of plain figures”; body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05.",
-          "explanation": "The teaching-row title directly identifies reduction of plain figures. The exact construction tasks, dimensions, labels and exercise details are not preserved in the current repository evidence, so coverage remains PARTIAL."
+          "explanation": "The earlier entry recorded this as partial before direct source inspection. The full reduction constructions, ratios, examples and evaluation tasks are now transcribed with exact body-child locators in TD-FACT-ENLARGEMENT-SCOPE.md."
         },
         {
           "locator": "Scheme coverage COV-TD-T2-SCH-W06; source scheme row 5 states “Enlargement and reduction of plain figures”.",
           "explanation": "Reduction is a direct match to the combined teaching row's title; the same row may also cover enlargement, but that is not established by the title and remains a separate unresolved objective."
+        },
+        {
+          "locator": "Combined Week Six–Seven source body children 1017–1067; exact method and tasks in TD-FACT-ENLARGEMENT-SCOPE.md.",
+          "explanation": "The original row teaches reduction through a 3:5 linear rectangle reduction, a 4:5 linear polygon reduction, a 3:5 area reduction construction, and evaluation tasks for a 40 mm regular hexagon (3:5) and 40×60 photo frame (4:7). The complete construction steps and locators are recorded in the factual note."
         }
       ]
     },
@@ -1188,18 +1938,19 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Week 6: enlargement of plain figures (scheme objective; teaching coverage not yet established).",
       "objective_locator": "Scheme coverage COV-TD-T2-SCH-W06; scheme row 5; candidate teaching row parsed row 16, WEEK SIX AND SEVEN.",
-      "status": "IMPLEMENTED_EQUIVALENT",
+      "status": "SUPPORTED",
       "lesson_ids": [
+        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
         "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT"
       ],
       "evidence": [
         {
           "locator": "Scheme rows 5 and 6 (Weeks 6 and 7) both state “Enlargement and reduction of plain figures”; teaching row 16 title is “Reduction of plain figures”.",
-          "explanation": "The scheme explicitly requires enlargement, but the teaching-row title names only reduction. No evidence in the current repository establishes that enlargement is taught in the row body. It is not marked supported or bound to a lesson ID pending TD-FACT-ENLARGEMENT-SCOPE."
+          "explanation": "The earlier entry treated the supplement as equivalent coverage because the source bytes were unavailable. Direct inspection now confirms that the original combined source row itself teaches enlargement. The supplement is retained as optional additional explanation and practice, not as a replacement for missing source coverage."
         },
         {
           "locator": "New original lesson SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT; body SHA-256 0ab14c431c0bc6f41bb92b228051f41c7d423c6ec954eb3c6b1d9d6338af9273; objectives, five keyed practice questions and marking guides are in technical-drawing.json.",
-          "explanation": "The scheme objective is now taught by an independently authored SS1 supplement. This equivalent does not claim the original combined source row also teaches enlargement."
+          "explanation": "The earlier entry treated the supplement as equivalent coverage because the source bytes were unavailable. Direct inspection now confirms that the original combined source row itself teaches enlargement. The supplement is retained as optional additional explanation and practice, not as a replacement for missing source coverage."
         },
         {
           "locator": "Federal Ministry of Education, Nigeria, Inspire portal, “Enlargement and Reduction of Figures | SS1 Technical Drawings”; https://inspire.education.gov.ng/lessons/3888/preview.",
@@ -1208,6 +1959,10 @@
         {
           "locator": "Ministry of Education, Republic of Ghana, Design and Communication Technology Teacher Manual, Year One Book One, Section 2, pp. 74–77.",
           "explanation": "Close-equivalent official technical-drawing method source supports use of a centre, rays through vertices and a given ratio to enlarge/reduce plane figures. No text or figures are reproduced."
+        },
+        {
+          "locator": "Combined Week Six–Seven source body children 1069–1108; exact method and tasks in TD-FACT-ENLARGEMENT-SCOPE.md.",
+          "explanation": "The original row explicitly includes an “Enlargement of similar figures” section, explains enlargement versus reduction and ratio direction, demonstrates a 5:3 area enlargement using the semicircle/perpendicular construction, gives a pole-T enlargement method for a given figure, and assigns a 30 mm regular pentagon enlarged 3:2. The independent supplement remains optional reinforcement, not the sole coverage."
         }
       ]
     },
@@ -1216,18 +1971,22 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Week 7: reduction of plain figures, as named in the combined WEEK SIX AND SEVEN teaching row.",
       "objective_locator": "Parsed row 16, WEEK SIX AND SEVEN; 7,297-character body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05; original body SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05.",
-      "status": "PARTIAL",
+      "status": "SUPPORTED",
       "lesson_ids": [
         "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05"
       ],
       "evidence": [
         {
           "locator": "Queue evidence for TD-WK-W06-W07: parsed row 16 title “Reduction of plain figures”; body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05.",
-          "explanation": "The teaching-row title directly identifies reduction of plain figures. The exact construction tasks, dimensions, labels and exercise details are not preserved in the current repository evidence, so coverage remains PARTIAL."
+          "explanation": "The earlier entry recorded this as partial before direct source inspection. The full reduction constructions, ratios, examples and evaluation tasks are now transcribed with exact body-child locators in TD-FACT-ENLARGEMENT-SCOPE.md."
         },
         {
           "locator": "Scheme coverage COV-TD-T2-SCH-W07; source scheme row 6 states “Enlargement and reduction of plain figures”.",
           "explanation": "Reduction is a direct match to the combined teaching row's title; the same row may also cover enlargement, but that is not established by the title and remains a separate unresolved objective."
+        },
+        {
+          "locator": "Combined Week Six–Seven source body children 1017–1067; exact method and tasks in TD-FACT-ENLARGEMENT-SCOPE.md.",
+          "explanation": "The original row teaches reduction through a 3:5 linear rectangle reduction, a 4:5 linear polygon reduction, a 3:5 area reduction construction, and evaluation tasks for a 40 mm regular hexagon (3:5) and 40×60 photo frame (4:7). The complete construction steps and locators are recorded in the factual note."
         }
       ]
     },
@@ -1236,18 +1995,19 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Week 7: enlargement of plain figures (scheme objective; teaching coverage not yet established).",
       "objective_locator": "Scheme coverage COV-TD-T2-SCH-W07; scheme row 6; candidate teaching row parsed row 16, WEEK SIX AND SEVEN.",
-      "status": "IMPLEMENTED_EQUIVALENT",
+      "status": "SUPPORTED",
       "lesson_ids": [
+        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
         "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT"
       ],
       "evidence": [
         {
           "locator": "Scheme rows 5 and 6 (Weeks 6 and 7) both state “Enlargement and reduction of plain figures”; teaching row 16 title is “Reduction of plain figures”.",
-          "explanation": "The scheme explicitly requires enlargement, but the teaching-row title names only reduction. No evidence in the current repository establishes that enlargement is taught in the row body. It is not marked supported or bound to a lesson ID pending TD-FACT-ENLARGEMENT-SCOPE."
+          "explanation": "The earlier entry treated the supplement as equivalent coverage because the source bytes were unavailable. Direct inspection now confirms that the original combined source row itself teaches enlargement. The supplement is retained as optional additional explanation and practice, not as a replacement for missing source coverage."
         },
         {
           "locator": "New original lesson SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT; body SHA-256 0ab14c431c0bc6f41bb92b228051f41c7d423c6ec954eb3c6b1d9d6338af9273; objectives, five keyed practice questions and marking guides are in technical-drawing.json.",
-          "explanation": "The scheme objective is now taught by an independently authored SS1 supplement. This equivalent does not claim the original combined source row also teaches enlargement."
+          "explanation": "The earlier entry treated the supplement as equivalent coverage because the source bytes were unavailable. Direct inspection now confirms that the original combined source row itself teaches enlargement. The supplement is retained as optional additional explanation and practice, not as a replacement for missing source coverage."
         },
         {
           "locator": "Federal Ministry of Education, Nigeria, Inspire portal, “Enlargement and Reduction of Figures | SS1 Technical Drawings”; https://inspire.education.gov.ng/lessons/3888/preview.",
@@ -1256,6 +2016,10 @@
         {
           "locator": "Ministry of Education, Republic of Ghana, Design and Communication Technology Teacher Manual, Year One Book One, Section 2, pp. 74–77.",
           "explanation": "Close-equivalent official technical-drawing method source supports use of a centre, rays through vertices and a given ratio to enlarge/reduce plane figures. No text or figures are reproduced."
+        },
+        {
+          "locator": "Combined Week Six–Seven source body children 1069–1108; exact method and tasks in TD-FACT-ENLARGEMENT-SCOPE.md.",
+          "explanation": "The original row explicitly includes an “Enlargement of similar figures” section, explains enlargement versus reduction and ratio direction, demonstrates a 5:3 area enlargement using the semicircle/perpendicular construction, gives a pole-T enlargement method for a given figure, and assigns a 30 mm regular pentagon enlarged 3:2. The independent supplement remains optional reinforcement, not the sole coverage."
         }
       ]
     },
@@ -1364,20 +2128,6 @@
       "blocks_delivery": false
     },
     {
-      "id": "TD-T2-W06-TEACHING-ROW-MAPPING",
-      "kind": "CONTENT",
-      "detail": "The combined Week 6–7 teaching row is identified as parsed row 16, title “Reduction of plain figures”, body ID SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05. Reduction remains PARTIAL pending detailed construction/figure review. The scheme's enlargement objective is now covered by original supplement SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT; whether the source row also teaches enlargement remains unreconciled because its full bytes are not available in this execution session.",
-      "required_action": "When the original DOCX member can be inspected, determine whether the combined row also teaches enlargement and record exact source locators. Retain the independent supplement unless a source-backed review proves it is redundant; do not mark the original row supported from its title alone.",
-      "affected_ids": [
-        "COV-TD-T2-SCH-W06",
-        "COV-TD-T2-SCH-W07",
-        "SS1-SRC-af4868d2c026-R008",
-        "SS1-SRC-af4868d2c026-R009",
-        "TD-WK-W06-W07"
-      ],
-      "blocks_delivery": false
-    },
-    {
       "id": "TD-T2-W08-W09-TEACHING-ROW-MAPPING",
       "kind": "CONTENT",
       "detail": "Week 8 and Week 9 both list “Equal area of figures”. Their exact scheme rows are hash-accounted and classified SCHEME_ONLY, but the exact parsed-body identity and scope of the combined Week 8–9 teaching row are not recorded in current TD evidence. Neither objective has a confirmed lesson_id binding.",
@@ -1404,35 +2154,14 @@
       "blocks_delivery": true
     },
     {
-      "id": "TD-T2-W01-DEGREE-NOTATION",
-      "kind": "CONTENT",
-      "detail": "The existing text extraction flattened superscript degree signs in the Week One row: values appear as 670 (line 193), 1050 (lines 237 and 335), 550 (line 251), and 600 (lines 257 and 331). These cannot safely be interpreted from flattened text alone.",
-      "required_action": "Complete TD-FACT-W01-DEGREE-NOTATION by inspecting the exact original DOCX runs/visual layout, recording each intended angle with a source locator, and adding a same-term correction or original teaching supplement if needed. Do not alter the original source or guess values.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
-        "TD-FACT-W01-DEGREE-NOTATION"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "TD-T2-W01-ANSWER-KEYS",
-      "kind": "CONTENT",
-      "detail": "The Week One source contains two inscribed-circle evaluation questions, two circumscribed-circle evaluation questions and five general evaluation/revisional constructions. Current extraction evidence does not identify complete answer keys or marking criteria for these questions.",
-      "required_action": "Complete TD-KEY-W01-ANSWERS after the relevant figures and degree notation have been inspected. Add an original keyed supplement with complete construction steps, answers and marking criteria; do not fabricate missing dimensions or claim the source supplied an answer key.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
-        "TD-KEY-W01-ANSWERS"
-      ],
-      "blocks_delivery": true
-    },
-    {
       "id": "TD-T2-W02-FIGURES",
       "kind": "CONTENT",
-      "detail": "The Week Two row contains 11 w:drawing and 13 w:pict anchors; instructions refer to figures “as shown above/below” (for example lines 423, 557, 583 and 603). The extracted text does not contain those drawings, and no visual disposition or faithful asset is recorded.",
-      "required_action": "Complete TD-VIS-W02 by inspecting every source figure in the original DOCX, recording what it shows, and binding a faithful derivative as an asset or documenting a precise reason for exclusion. Do not invent geometry or claim PDF conversion is visual inspection.",
+      "detail": "Nine unique DrawingML image parts are inventoried. A VML arc overlay at body child 287 belongs to Example 2 and is already included in image12.png/F04. The Week Two general-evaluation Q4 refers to an arc “shown below”, but no arc/figure is attached to that question in the DOCX or rendered PDF; this is a distinct missing-source blocker.",
+      "required_action": "Complete the nine existing image derivative tasks and obtain/restore the missing q4 arc figure from the original source author. Do not reuse the Example 2 VML arc as the q4 figure.",
       "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd",
-        "TD-VIS-W02"
+        "TD-ASSET-W02-F01",
+        "TD-ASSET-W02-F09",
+        "TD-T2-W02-ARC-FIGURE-MISSING"
       ],
       "blocks_delivery": true
     },
@@ -1483,22 +2212,12 @@
     {
       "id": "TD-T2-W04-FIGURES",
       "kind": "CONTENT",
-      "detail": "The Week Four plain-scale lesson includes construction diagrams/scale layouts whose dimensions, labels and graduations are not captured in the current text-only evidence. No visual disposition or faithful asset is recorded.",
-      "required_action": "Complete TD-VIS-W04 by inspecting each original figure, recording its scale ratio, range, unit labels and graduations, and binding a faithful derivative with provenance or documenting a precise exclusion.",
+      "detail": "All nine Week Four AutoCAD objects and paired WMF previews have now been inventoried and visually inspected. Nine bounded derivative tasks exist, but no allowed-MIME derivative has yet been produced or bound in the package.",
+      "required_action": "Complete TD-ASSET-W04-F01 through TD-ASSET-W04-F09: create faithful allowed-MIME derivatives, record hashes/bytes/alt text/provenance, and bind each to the Week Four source lesson.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
-        "TD-VIS-W04"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "TD-T2-W04-SCALE-DETAILS",
-      "kind": "CONTENT",
-      "detail": "The existing source coverage records common scale ratios, several ranges, step-by-step constructions and worked readings, but the current repository evidence does not enumerate the exact ratios, dimensions, ranges or numerical readings.",
-      "required_action": "Complete TD-FACT-W04-SCALE-DETAILS by inspecting the original source text and figures, recording every ratio, range, dimension, unit and reading with exact locators; do not invent values.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
-        "TD-FACT-W04-SCALE-DETAILS"
+        "TD-ASSET-W04-F01",
+        "TD-ASSET-W04-F09"
       ],
       "blocks_delivery": true
     },
@@ -1516,22 +2235,12 @@
     {
       "id": "TD-T2-W05-FIGURES",
       "kind": "CONTENT",
-      "detail": "The current Week Five package evidence does not record the figure inventory or visual disposition for the diagonal/chordal scale constructions. Their exact geometry, dimensions, labels and graduations cannot be reconstructed safely from the title alone.",
-      "required_action": "Complete TD-VIS-W05 by inspecting every original figure and recording its purpose, dimensions, labels and graduations; bind a faithful derivative with provenance or document a precise exclusion.",
+      "detail": "All seven Week Five AutoCAD objects and WMF previews have been inventoried and visually inspected; seven bounded derivative tasks exist. No allowed-MIME derivative has yet been produced or bound.",
+      "required_action": "Complete TD-ASSET-W05-F01 through TD-ASSET-W05-F07, preserving diagonal-scale graduations and chordal-scale angle marks; record hashes, byte counts, alt text and provenance; bind each derivative to the Week Five lesson.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc",
-        "TD-VIS-W05"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "TD-T2-W05-CONSTRUCTION-DETAILS",
-      "kind": "CONTENT",
-      "detail": "The existing repository evidence confirms the row title but does not preserve the exact diagonal-scale and chordal-scale construction steps, ratios, ranges, dimensions or worked readings.",
-      "required_action": "Complete TD-FACT-W05-SCALE-CONSTRUCTIONS from the original DOCX; record each construction, ratio, range, dimension, label and reading with exact source locators. Do not infer these details from the title.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc",
-        "TD-FACT-W05-SCALE-CONSTRUCTIONS"
+        "TD-ASSET-W05-F01",
+        "TD-ASSET-W05-F07"
       ],
       "blocks_delivery": true
     },
@@ -1547,25 +2256,14 @@
       "blocks_delivery": true
     },
     {
-      "id": "TD-T2-W06-W07-REDUCTION-DETAILS",
-      "kind": "CONTENT",
-      "detail": "The combined Week 6–7 teaching row is titled “Reduction of plain figures” (parsed row 16; body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05). Current repository evidence does not list its individual drawing tasks, dimensions, labels, exercises, answers or marking criteria.",
-      "required_action": "Inspect the original teaching row and its figures; record each reduction construction, dimensions, labels, exercise and marking evidence with exact locators. Do not split the source row or invent details.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
-        "TD-WK-W06-W07",
-        "TD-VIS-W06-W07"
-      ],
-      "blocks_delivery": true
-    },
-    {
       "id": "TD-T2-W06-W07-FIGURES",
       "kind": "CONTENT",
-      "detail": "The combined Week 6–7 row's figure inventory and visual disposition are not recorded. Reduction constructions depend on exact geometry and dimensions.",
-      "required_action": "Complete TD-VIS-W06-W07 by inspecting every original figure and recording its purpose, dimensions and labels; bind faithful assets or record a precise exclusion.",
+      "detail": "All 11 DrawingML placements and the one AutoCAD OLE/WMF preview in the combined Week Six–Seven row have been visually inspected. Eleven unique raster diagrams have individual derivative tasks; the OLE preview repeats the Week Three/Week Eight–Nine 30/60/70 triangle and has a cross-row reuse-validation task. No allowed-MIME derivatives have yet been produced or bound.",
+      "required_action": "Complete TD-ASSET-W06-W07-F01 through F11 and F12 cross-row reuse validation; verify geometry/labels, create allowed-MIME derivatives, record hashes/bytes/alt text/provenance, and bind each to the combined source lesson.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
-        "TD-VIS-W06-W07"
+        "TD-ASSET-W06-W07-F01",
+        "TD-ASSET-W06-W07-F12"
       ],
       "blocks_delivery": true
     },
@@ -1577,29 +2275,6 @@
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
         "TD-KEY-W06-W07-ANSWERS"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "TD-T2-W06-W07-ORIGINAL-ENLARGEMENT-RECONCILIATION",
-      "kind": "VERIFICATION",
-      "detail": "The scheme's enlargement objective is covered by the new original supplement SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT. The combined source row is titled “Reduction of plain figures”; the current execution environment does not provide the full source member bytes needed to determine whether enlargement is also present in the row body.",
-      "required_action": "When the original DOCX member is accessible, inspect parsed row 16 and record whether enlargement is already taught, with exact construction locators. Keep the supplement as equivalent coverage unless source evidence proves duplication; never infer original coverage from the row title.",
-      "affected_ids": [
-        "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT",
-        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
-        "TD-FACT-ENLARGEMENT-SCOPE"
-      ],
-      "blocks_delivery": false
-    },
-    {
-      "id": "TD-T2-W08-W09-TEACHING-DETAILS",
-      "kind": "CONTENT",
-      "detail": "The combined Week 8–9 teaching row is titled “Equal area of plane figures” (parsed row 17; body SHA-256 865bb6bbb80331ca2182e97801040727e986ad3f9334b61018a33f239e4eb97a). The current repository evidence does not list the individual constructions, methods, dimensions, labels, worked examples or exercises.",
-      "required_action": "Complete TD-FACT-W08-W09-DETAILS by inspecting the original teaching row and recording every equal-area construction, its steps, dimensions, labels, exercise and marking evidence with exact source locators. Do not split the combined source row.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:865bb6bbb80331ca2182e97801040727e986ad3f9334b61018a33f239e4eb97a",
-        "TD-FACT-W08-W09-DETAILS"
       ],
       "blocks_delivery": true
     },
@@ -1655,6 +2330,134 @@
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863",
         "TD-KEY-W10-ANSWERS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W04-Q6-UNIT-MISMATCH",
+      "kind": "FACT",
+      "detail": "Week Four Evaluation Question 6 states that a 20 cm = 1 m plain scale should read up to 6 m in millimetres. At RF 1:5, ten subdivisions of the 1 m major unit represent decimetres, not millimetres; true 1 mm actual subdivisions would be 0.2 mm on paper and require 1,000 divisions per metre. The source may have intended decimetres, but this must not be silently corrected.",
+      "required_action": "Obtain an owner/source-author decision on whether the unit should read decimetres or whether a different scale construction is intended; record the correction in a reviewed supplement before publishing this question.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
+        "COV-TD-T2-W04-PLAIN-SCALE-READING",
+        "TD-FACT-W04-SCALE-DETAILS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W04-GATE-SCALE-RECONCILIATION",
+      "kind": "FACT",
+      "detail": "The ornamental-gate drawing supplies 2100 mm overall length and 300 mm post dimension, but the WMF preview's rendered pixel proportions are approximately 7.6:1 rather than the stated 7:1. A–E and the scale therefore cannot be safely measured from the current preview.",
+      "required_action": "Obtain the native AutoCAD drawing or a corrected, undistorted dimensioned export; verify the scale and measure A–E from that source. Do not infer dimensions from the distorted preview.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
+        "TD-FACT-W04-SCALE-DETAILS",
+        "TD-VIS-OLE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W05-CHORD-ANGLE-GRANULARITY",
+      "kind": "FACT",
+      "detail": "The chordal scale is constructed with 5° increments and the source says it constructs multiples of 5°, but the same lesson cites 24° and 37° as examples and asks for 27° in evaluation/weekend assignment. These are not multiples of 5°; the source gives no finer graduation or interpolation method.",
+      "required_action": "Confirm whether the scale is intended to have finer graduations/interpolation or whether the 24°, 37° and 27° values are source typos. Correct the teaching method and affected questions together; do not silently replace values.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc",
+        "COV-TD-T2-W05-CHORDAL-SCALE",
+        "TD-FACT-W05-SCALE-CONSTRUCTIONS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W05-CHORD-CENTRE-LABEL",
+      "kind": "FACT",
+      "detail": "The chordal-scale construction paragraph at body child 962 renders “With 0⁰ as centre”, while the quadrant diagram labels its centre A. The text label and figure label do not agree unambiguously.",
+      "required_action": "Confirm the intended centre label and correct the method text or figure in a reviewed supplement; do not assume O/A without source-author confirmation.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc",
+        "COV-TD-T2-W05-CHORDAL-SCALE",
+        "TD-FACT-W05-SCALE-CONSTRUCTIONS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W08-W09-EXAMPLE2-DIRECTION",
+      "kind": "FACT",
+      "detail": "Week Eight–Nine Example 2 (source body children 1239–1243) gives two parallel-line constructions but its prose alternates between meeting AB and AB produced without a clear directional distinction. The corresponding source figure must be checked before the construction is taught as a definitive sequence.",
+      "required_action": "Compare the original Example 2 figure with the exact construction wording and obtain an authoritative direction/point-intersection reading; record the verified correction in a delivery supplement without changing the source.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:865bb6bbb80331ca2182e97801040727e986ad3f9334b61018a33f239e4eb97a",
+        "COV-TD-T2-SCH-W08",
+        "COV-TD-T2-SCH-W09"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W01-REGULAR-POLYGON-CHOICE",
+      "kind": "CONTENT",
+      "detail": "The inscribed-circle evaluation asks for a regular polygon of side 40 mm but does not state its number of sides. The keyed supplement treats this as open-ended and accepts any regular polygon if the student states the chosen number of sides; a unique expected polygon/inradius is not specified.",
+      "required_action": "Teacher confirms whether any regular polygon is acceptable or supplies a required side count. Until then, mark any correctly specified regular polygon and its incircle as valid.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "TD-T2-W01-GENERAL-Q2-DATA-IMPOSSIBLE",
+      "kind": "FACT",
+      "detail": "The Week One general revision question specifies base 70 mm, perpendicular height 50 mm and opposite vertex angle 55°. For this base and height the minimum possible opposite angle is 2 arctan(35/50)≈69.98°, so no triangle satisfies all three conditions.",
+      "required_action": "Obtain corrected source data (angle, base or height) and revise the question/answer key. Do not publish a fabricated construction.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W01-GENERAL-Q4-SSA-AMBIGUITY",
+      "kind": "CONTENT",
+      "detail": "The Week One similar-triangle question gives AB=60 mm, AC=55 mm and ∠ABC=60° with no diagram or acute/obtuse condition. The SSA data admit two valid positions for C and therefore two different original perimeters and similar triangles of perimeter 140 mm.",
+      "required_action": "Teacher/source author confirms the intended configuration or accepts both keyed solutions. The supplement provides both valid solutions; no single answer should be enforced until clarification.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "TD-T2-W01-DEGREE-GLYPH-RENDER",
+      "kind": "VERIFICATION",
+      "detail": "The source XML contains seven unambiguous superscript-zero degree markers, normalized in TD-FACT-W01-DEGREE-NOTATION.md. The text extraction can flatten them to 670/1050/550/600; student delivery must render them as 67°/105°/55°/60°.",
+      "required_action": "Run the real import/compiler/student-display path and inspect all seven Week One occurrences. If the delivery path flattens superscript zero, implement a source-preserving degree-glyph normalization or reviewed replacement before enabling the lesson.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+        "TD-FACT-W01-DEGREE-NOTATION",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W02-ARC-FIGURE-MISSING",
+      "kind": "CONTENT",
+      "detail": "Week Two general-evaluation Q4 at body child 286 asks learners to construct a line approximately equal in length to an arc “shown below”. No arc image, VML shape or other figure is attached to the question in the supplied DOCX or rendered PDF page 8. The VML arc at child 287 is a floating overlay for Example 2 on page 7 and is already part of image12.png; it is not the missing q4 figure.",
+      "required_action": "Obtain the intended arc figure from the source author/original file or replace the question with a complete, dimensioned arc. Do not infer its radius, angle or length from the unrelated Example 2 arc.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:5b7f2f5d8d2b7c4d6d7f4e0d3e6a5c8c",
+        "TD-VIS-W02",
+        "TD-KEY-W02-ANSWERS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W02-OBJECTIVE-Q4-MULTIPLE-ANSWERS",
+      "kind": "ASSESSMENT",
+      "detail": "Weekend assignment Q4 asks which is not a procedure for describing a circle round a polygon. Under the source's own method, both “bisect two sides” (B) and “draw a line from the determined centre parallel to one side” (C) are not required/valid steps; the perpendicular from centre to side is required. The single-answer MCQ therefore has at least two defensible answers.",
+      "required_action": "Revise the options so exactly one is incorrect, or explicitly accept both B and C with explanation in the key. Do not force a single answer from the current wording.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:5b7f2f5d8d2b7c4d6d7f4e0d3e6a5c8c",
+        "TD-KEY-W02-ANSWERS"
       ],
       "blocks_delivery": true
     }
