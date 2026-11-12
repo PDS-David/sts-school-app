@@ -39,7 +39,7 @@ The source provides questions but no official answer/marking key. The lesson sup
 ## Student lesson update
 
 - Lesson ID: `SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER`
-- Updated body SHA-256: `61941423a68214017b035a00dda14b9e2374156bd4d15f929264086fe4c87bfb`
+- Updated body SHA-256: `85d810c8059e1fe948136f8c1124c68d5f8e8ac0659bb5ffd50fcc24bcb5e94b`
 - Practice: 20 questions; 45 marks; each question has an answer and marking criteria.
 - Added coverage:
   - `COV-PHYS-T3-W03-OBJ-6`: factors affecting resistance — `IMPLEMENTED_EQUIVALENT`.
