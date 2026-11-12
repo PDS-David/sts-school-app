@@ -39,8 +39,8 @@
     "LESSON": 16
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 19,
-    "PENDING": 47,
+    "IMPLEMENTED_TESTING_DEFERRED": 20,
+    "PENDING": 46,
     "BLOCKED": 1
   },
   "items": [
@@ -896,8 +896,8 @@
         "GOV-INV-T2",
         "GOV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12 after verifying the uploaded archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and member SSS 1/2nd Term SS1_/GOVT.docx SHA-256 bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782. Inspected word/document.xml directly: preamble children 1–34, C14N SHA-256 7df3af37ac3307035c8b7d43421ee754018a8ccc3deb5ed651da10d764ad56a0; confirmed TERM, SUBJECT, CLASS, blank paragraph, scheme heading/header and all scheme rows. Added 24 UNRESOLVED scheme-objective coverage entries mapped to GOV-WK-T2-W01–W11 and one MARKER entry for child 34 cross-referencing GOV-REV-T2. Preserved the exact child 22 discrepancy ('Clifford constitution of 1992' vs Week Five body heading '1922') and child 9 wording ('pool i lol') in two precise open items. No lesson, answer key, source rule or factual correction was invented. No tests/compiler/importer run; testing deferred by owner.",
       "completion_condition": "Preamble coverage and scheme mapping are recorded with exact source locators and hash; every teaching scheme entry points to its corresponding week item; row 12–13 points to GOV-REV-T2; no teaching content, lesson or source rule is invented."
     },
     {
@@ -2524,7 +2524,6 @@
     "GOV-TEST-PACKAGE",
     "GOV-VIS-T1",
     "GOV-LES-T1-W01-CORRECTED-WEEK",
-    "GOV-PRE-T2",
     "GOV-REV-T2",
     "GOV-MARK-T2",
     "GOV-WK-T2-W01",
