@@ -503,8 +503,8 @@
         "FM-SRC-T1",
         "FM-PRE-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 4 and 5 of SS1-03 parsed_rows.json (week label \"WEEK FIVE\", title \"SETS; OPERATION OF SET AND VENN DIAGRAMS (two parsed rows carry this week label)\", 18114 characters). Existing coverage COV-FM-T1-R04 + COV-FM-T1-R05 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). Two parsed rows (SETS, 10737 characters; OPERATION OF SET AND VENN DIAGRAMS, 7377 characters) carry the label WEEK FIVE; the item covers both rows. Venn diagram objects are handled in FM-VIS-T1-W05-VENN. PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IN_PROGRESS",
+      "implementation_reference": "parsed row 4 and 5 of SS1-03 parsed_rows.json (week label \"WEEK FIVE\", title \"SETS; OPERATION OF SET AND VENN DIAGRAMS (two parsed rows carry this week label)\", 18114 characters). Existing coverage COV-FM-T1-R04 + COV-FM-T1-R05 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). Two parsed rows (SETS, 10737 characters; OPERATION OF SET AND VENN DIAGRAMS, 7377 characters) carry the label WEEK FIVE; the item covers both rows. Venn diagram objects are handled in FM-VIS-T1-W05-VENN. PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002). Reviewed source body and authored replacement SUP-SS1-FURTHER-MATHEMATICS-T1-W05-SETS-VENN with objective coverage COV-FM-T1-W05-OBJ-1..3. Indexing remains IN_PROGRESS pending visual disposition and final source-object inspection.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -3069,6 +3069,42 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W10-CENTRAL-TENDENCY]. 4 objectives; 10 practice questions; 30 marks. Marking totals checked. content_approval=PENDING; verification=DEFERRED. Coverage COV-FM-T1-R10 updated to IMPLEMENTED_EQUIVALENT.",
       "completion_condition": "Replacement lesson exists with source provenance, body hash, complete worked examples and original practice; coverage linked. Approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T1-W05-SETS-VENN",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 05; source headings SETS and OPERATION OF SET AND VENN DIAGRAMS",
+      "objective": "Author a mathematically checked replacement covering set notation and types, union/intersection/complement, cardinality, two-set and three-set Venn diagrams, and inclusion-exclusion. Correct source errors in factor listing, universal-set enumeration and the youth-club total.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W05-SETS-VENN.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1",
+        "FM-WK-T1-W05"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W05-SETS-VENN]. 4 objectives; 10 original practice questions; 27 marks; marking totals checked. Coverage COV-FM-T1-W05-OBJ-1..3 added as IMPLEMENTED_EQUIVALENT; row-level R04/R05 linked. Owner approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement lesson exists with source provenance, body hash, complete worked examples and original practice; objective coverage links to lesson. Approval and verification remain pending/deferred."
     }
   ],
   "review": {
