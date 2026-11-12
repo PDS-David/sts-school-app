@@ -173,7 +173,15 @@ test('Week Two answer key documents the two valid radius options and equal-circl
   const path = new URL('../../docs/ss1/work/microtasks/technical-drawing/TD-KEY-W02-ANSWERS.md', import.meta.url);
   const key = await readFile(path, 'utf8');
   assert.match(key, /both B \(OB\) and C \(OQ\) are radii/);
+  assert.match(key, /accept either B or C for full credit/);
+  assert.match(key, /accept either B or C for full credit/);
   assert.match(key, /15\(√3−1\)≈\*\*10\.98 mm\*\*/);
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  for (const id of ['TD-T2-W02-OBJECTIVE-Q2-MULTIPLE-RADII', 'TD-T2-W02-OBJECTIVE-Q4-MULTIPLE-ANSWERS']) {
+    const item = subject.open_items.find(entry => entry.id === id);
+    assert.ok(item, `source ambiguity must remain documented: ${id}`);
+    assert.equal(item.blocks_delivery, false);
+  }
 });
 
 test('Week Five source answer key includes the diagram-derived k-minus-n reading', async () => {
