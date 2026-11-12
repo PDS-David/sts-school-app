@@ -209,3 +209,42 @@ These are source markers and pointers, not evidence that a question has an answe
 - Required disposition: a source-bound `classify_marker` rule with kind `SCHEME_ONLY`, targeting this exact row. No revision lesson, examination paper, answer, marks or additional teaching week is warranted.
 - **Implementation gate:** GOV-REV-T3's `allowed_write_paths` permits only `QUEUE.json` and `GOV-INV-T3.md`; it does not permit `backend/src/db/ss1/subjects/government.json`, where the package's `source_rules[]` must be written. The protocol prohibits writing outside the task's allowed paths. Therefore the rule and marker coverage target have **not** been written, and the item is marked BLOCKED rather than falsely completed.
 - Owner action required: add `backend/src/db/ss1/subjects/government.json` to this item's `allowed_write_paths` or explicitly reassign the rule-writing step to an item that authorizes the package path. Once authorized, add the SCHEME_ONLY rule and link the existing/new marker coverage according to the package contract.
+
+## GOV-MARK-T3 — assessment, reading and theory marker disposition
+
+The original Antiword 0.37 extraction was re-read and all marker headings were checked against the following lines. These markers remain within their respective teaching spans. They are not scheme-only revision/examination markers and are not reclassified by a parser rule.
+
+### Exact marker inventory and week mapping
+
+| Teaching item | Span lines | EVALUATION QUESTIONS / EVALUATION | GENERAL EVALUATION / REVISION | READING ASSIGNMENT | WEEKEND ASSINGMENT | THEORY |
+|---|---:|---|---|---|---|---|
+| GOV-WK-T3-W01 | 44–121 | 68, 85 | 89 | 96 | 100 | 117 |
+| GOV-WK-T3-W02 | 122–230 | 172, 193 | 197 | 205 | 209 | 226 |
+| GOV-WK-T3-W03 | 231–338 | 283, 303 | 307 | 315 | 319 | 335 (`THOERY`) |
+| GOV-WK-T3-W04 | 339–410 | 366 | 379 | 386 | 390 | 406 |
+| GOV-WK-T3-W05 | 411–557 | 438 (`EVALUATION`), 464, 518 | 522 | 530 | 534 | 553 |
+| GOV-WK-T3-W06 | 558–713 | 614, 671 | 675 | 686 | 690 | 708 |
+| GOV-WK-T3-W07 | 714–830 | 751, 791 | 795 | 805 | 809 | 826 |
+| GOV-WK-T3-W08 | 831–1035 | 892, 977, 996 | 1000 | 1009 | 1013 | 1031 |
+| GOV-WK-T3-W09 | 1036–1203 | 1086, 1126, 1167 | 1172 | 1180 | 1184 | 1199 |
+| GOV-WK-T3-W10 | 1204–1410 | 1273, 1330, 1371 | 1375 (`GENERAL EVALUATION/`, truncated) | 1385 | 1389 | 1405 |
+| GOV-WK-T3-W11 | 1411–1551 | 1450, 1515 | 1519 | 1526 | 1529 | 1549 |
+
+### Counts and content assessment
+
+- 24 `EVALUATION QUESTIONS` headings and one shortened `EVALUATION` heading (line 438). Each is followed by question text; these are source exercises, not answer keys.
+- Ten full `GENERAL EVALUATION/REVISION QUESTIONS` headings and one truncated `GENERAL EVALUATION/` heading (line 1375). The truncated heading is followed by question text and remains exactly as printed.
+- Eleven reading-assignment headings. The source alternates `READING ASSIGNMENT` and `READING ASSINGMENT`; each is followed by book/page pointers. Preserve the misspelling in source data.
+- Eleven `WEEKEND ASSINGMENT` headings. Each is followed by practice questions, predominantly multiple-choice. No answer key is supplied by the marker itself.
+- Ten `THEORY` headings and one misspelled `THOERY` heading (line 335). Each is followed by written prompts.
+- All these markers occur inside the eleven teaching spans. None is the scheme-only “12/13. Revision and Examination” row at preamble line 39.
+
+### Disposition
+
+- Preserve all marker strings and spelling variants exactly; do not normalize `ASSINGMENT`, `THOERY` or the truncated `GENERAL EVALUATION/` in the source.
+- Keep each marker attached to its teaching week as shown above.
+- Do not add `classify_marker` rules for EVALUATION, GENERAL EVALUATION, READING ASSIGNMENT, WEEKEND ASSINGMENT or THEORY. The package schema's supported marker kinds do not include these; they are in-week source content.
+- Do not mark a source question as answered, invent marks or create answer keys. Later lesson work may add clearly labelled original practice/answers where a task expressly authorizes it.
+- Do not conflate any in-week `GENERAL EVALUATION/REVISION QUESTIONS` with the separate scheme-only row 12/13. GOV-REV-T3 separately records that row and is currently BLOCKED because its allowed write paths omit the package JSON.
+
+No lesson, coverage entry, source rule, correction or asset was created by GOV-MARK-T3.

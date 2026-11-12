@@ -39,8 +39,8 @@
     "LESSON": 27
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 36,
-    "PENDING": 40,
+    "IMPLEMENTED_TESTING_DEFERRED": 37,
+    "PENDING": 39,
     "BLOCKED": 2
   },
   "items": [
@@ -1522,8 +1522,8 @@
         "GOV-INV-T3",
         "GOV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12. Re-read Antiword 0.37 extraction and verified all 24 EVALUATION QUESTIONS headings, one EVALUATION, ten full GENERAL EVALUATION/REVISION QUESTIONS, one truncated GENERAL EVALUATION/, eleven reading-assignment headings with ASSIGNMENT/ASSINGMENT variants, eleven WEEKEND ASSINGMENT headings, ten THEORY and one THOERY. Mapped each marker to its exact week span and line locator; confirmed each assessment/theory/weekend heading is followed by question text and reading headings by book/page pointers. Preserved all spelling/truncation variants. Kept all in-week markers separate from scheme-only row 12/13. No unsupported classify_marker rule, lesson, coverage, correction or asset added. No tests/compiler run; testing deferred.",
       "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
     },
     {
@@ -2952,7 +2952,6 @@
   "next_runnable": [
     "GOV-TEST-PACKAGE",
     "GOV-LES-T1-W01-CORRECTED-WEEK",
-    "GOV-MARK-T3",
     "GOV-WK-T3-W01",
     "GOV-WK-T3-W02",
     "GOV-WK-T3-W03",
