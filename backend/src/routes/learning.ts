@@ -14,7 +14,7 @@ import { resolveSs1LiteratureDelivery, retireStaleSs1LiteratureCache } from '../
 import { resolveSs1MathematicsDelivery, safeSs1MathematicsTopic, mathematicsAssetDeliverable, mathematicsAssetsForTopic, readMathematicsAsset, retireStaleSs1MathematicsCache } from '../utils/ss1MathematicsDeliveryCorrection.js';
 import { resolveAgriculturalScienceDelivery, resolveAgriculturalScienceSupplement, resolveAgriculturalScienceSourceProjection, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, retireStaleAgriculturalScienceSupplementCache, retireStaleAgriculturalScienceSourceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
-import { listStudentSs1Lessons, getStudentSs1Lesson } from '../db/ss1/studentDelivery.js';
+import { listStudentSs1Lessons, getStudentSs1Lesson, listStudentSs1Assets, readStudentSs1Asset } from '../db/ss1/studentDelivery.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
 // Read per request (value is constant in a running server) so tests can exercise PIN on and off in one process.
@@ -56,6 +56,13 @@ router.get('/ss1/lessons', requirePerm('topics.read'), async (req, res) => {
   const lessons = listStudentSs1Lessons(subjectName).map(lesson => ({
     ...lesson,
     locked: !unlockedTerms.has(lesson.term),
+    assets: listStudentSs1Assets(lesson.id).map(asset => ({
+      id: asset.id,
+      alt: asset.alt,
+      mime: asset.media_type,
+      url: `/learning/ss1/assets/${encodeURIComponent(asset.id)}`,
+      order: asset.order,
+    })),
   }));
   return res.json({ lessons });
 });
@@ -69,7 +76,34 @@ router.get('/ss1/lessons/:lessonId', requirePerm('topics.read'), async (req, res
   if (!unlockedTerms.has(lesson.term)) {
     return res.status(423).json({ error: 'Redeem the Term PIN to unlock lessons for this term.' });
   }
-  return res.json({ lesson });
+  return res.json({
+    lesson: {
+      ...lesson,
+      assets: listStudentSs1Assets(lesson.id).map(asset => ({
+        id: asset.id,
+        alt: asset.alt,
+        mime: asset.media_type,
+        url: `/learning/ss1/assets/${encodeURIComponent(asset.id)}`,
+        order: asset.order,
+      })),
+    },
+  });
+});
+
+router.get('/ss1/assets/:assetId', requirePerm('topics.read'), async (req, res) => {
+  const studentId = await ss1StudentId(req.user!);
+  if (!studentId) return res.status(404).json({ error: 'Asset not found' });
+  const result = readStudentSs1Asset(req.params.assetId);
+  if (!result) return res.status(404).json({ error: 'Asset not found' });
+  const unlockedTerms = await redeemedSs1Terms(studentId);
+  if (!unlockedTerms.has(result.asset.term)) {
+    return res.status(423).json({ error: 'Redeem the Term PIN to unlock this lesson asset.' });
+  }
+  res.set('Content-Type', result.asset.media_type);
+  res.set('Content-Length', String(result.bytes.length));
+  res.set('ETag', `"${result.asset.sha256}"`);
+  res.set('Cache-Control', 'private, max-age=3600');
+  return res.send(result.bytes);
 });
 
 // ════════════════════════════════════════════════════════
