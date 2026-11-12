@@ -6036,6 +6036,200 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T1-W06-REVISION-INDICES-LOGS-SETS",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Further Mathematics",
+      "title": "First Term revision: indices, logarithms and sets",
+      "objectives": [
+        "Revise index laws and solve exponential equations.",
+        "Apply logarithm laws and check domain restrictions.",
+        "Use set notation, union, intersection and complement.",
+        "Solve two-set and three-set Venn counting problems."
+      ],
+      "body": "FIRST TERM REVISION — INDICES, LOGARITHMS AND SETS\n\nUse this lesson to revise the main ideas studied in the first half of SS1 Further Mathematics. Show each step and check restrictions before accepting an answer.\n\n1. INDICES\nFor non-zero a, a^m × a^n = a^(m+n), a^m ÷ a^n = a^(m−n), (a^m)^n = a^(mn), and a^0=1. A negative index means reciprocal: a^(−n)=1/a^n.\nExample: 27^(2/3)=(∛27)^2=3²=9.\nExample: 32^(−2/5)=1/(∜(32^2))=1/4 because 32^(1/5)=2 and 2^(−2)=1/4.\nFor equations such as 2^(2x)−5(2^x)+4=0, set y=2^x. Then y²−5y+4=0, so y=1 or 4, giving x=0 or 2.\n\n2. LOGARITHMS\nlog_a x=y means a^y=x, with a>0, a≠1 and x>0. Product: log_a(MN)=log_a M+log_a N. Quotient: log_a(M/N)=log_a M−log_a N. Power: log_a(M^k)=k log_a M.\nExample: log_3 81−log_3 3=4−1=3.\nExample: solve log_10(x−1)=1. Then x−1=10, x=11. Check x−1>0; x=11 is valid.\nFor standard form, log(6.38×10^(−4))=log(6.38)−4.\n\n3. SETS AND OPERATIONS\nA set is a well-defined collection. The roster form lists its distinct elements. The cardinality n(A) is the number of distinct elements. Union A∪B contains elements in A or B or both; intersection A∩B contains elements in both; complement A′ contains elements in the universal set U but not A.\nExample: U={1,2,3,4,5,6}, A={1,2,4}, B={2,3,5}. Then A∩B={2}, A∪B={1,2,3,4,5}, and A′={3,5,6}.\nFor two finite sets, n(A∪B)=n(A)+n(B)−n(A∩B). For three sets, add the three single-set totals, subtract the three pairwise intersections, then add the triple intersection once.\n\n4. VENN DIAGRAMS AND COUNTING\nPlace the intersection first. For two sets, subtract the intersection from each set total to obtain the “only” regions. The number in neither is the universal total minus the union.\nExample: 40 study Mathematics, 32 study Physics and 12 study both. Then Mathematics only=28, Physics only=20, and at least one=40+32−12=60. If the class has 70 students, neither=10.\nFor three sets, fill the centre (triple intersection) first, then the pair-only regions, then the single-only regions, and finally the outside region. Check that all disjoint regions add to n(U).\n\n5. REVISION CHECKLIST\n- Apply index laws only with the required non-zero base restrictions.\n- Check logarithm arguments are positive and logarithm bases are valid.\n- Keep set elements distinct; repeated listing does not increase cardinality.\n- Use the correct universal set when finding a complement.\n- In Venn problems, subtract pairwise intersections and add the triple intersection once.\n- Check that all Venn regions sum to the stated population.\n",
+      "body_sha256": "69f56da44add5dc6ebe8c5c50d86c3dc5f3eb746c3ed686f7a16d8fd06c88aef",
+      "practice": [
+        {
+          "id": "FM1W6-R1",
+          "question": "Simplify 16^(3/4).",
+          "answer": "(⁴√16)³=2³=8.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses fourth root of 16",
+              "marks": 1
+            },
+            {
+              "criterion": "Answer 8",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM1W6-R2",
+          "question": "Solve 3^(2x)−10(3^x)+9=0.",
+          "answer": "Let y=3^x. y²−10y+9=0; y=1 or 9; x=0 or 2.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Substitution y=3^x",
+              "marks": 1
+            },
+            {
+              "criterion": "Factorisation",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds y=1 or 9",
+              "marks": 1
+            },
+            {
+              "criterion": "x=0 or 2",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM1W6-R3",
+          "question": "Solve log_2(x+1)=3 and state the domain restriction.",
+          "answer": "x+1=8, x=7. Domain requires x+1>0, i.e. x>−1; 7 is valid.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Converts to exponential form",
+              "marks": 1
+            },
+            {
+              "criterion": "x=7",
+              "marks": 1
+            },
+            {
+              "criterion": "States x>−1 and checks",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM1W6-R4",
+          "question": "Given log(2)=0.3010, find log(0.08).",
+          "answer": "0.08=8×10^−2=2³×10^−2; log(0.08)=3(0.3010)−2=−1.0970.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Expresses 0.08 as 2³×10^−2",
+              "marks": 1
+            },
+            {
+              "criterion": "Applies log laws",
+              "marks": 1
+            },
+            {
+              "criterion": "Answer −1.0970",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM1W6-R5",
+          "question": "Let U={1,2,3,4,5,6,7}, A={1,3,5,7} and B={2,3,4}. Find A∩B, A∪B and A′.",
+          "answer": "A∩B={3}; A∪B={1,2,3,4,5,7}; A′={2,4,6}.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Intersection",
+              "marks": 1
+            },
+            {
+              "criterion": "Union",
+              "marks": 1
+            },
+            {
+              "criterion": "Complement",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM1W6-R6",
+          "question": "In a group of 80, 46 study Biology, 38 study Chemistry and 18 study both. Find Biology only, Chemistry only, at least one and neither.",
+          "answer": "Biology only=28; Chemistry only=20; union=46+38−18=66; neither=80−66=14.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Biology only 28",
+              "marks": 1
+            },
+            {
+              "criterion": "Chemistry only 20",
+              "marks": 1
+            },
+            {
+              "criterion": "Union 66",
+              "marks": 1
+            },
+            {
+              "criterion": "Neither 14",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM1W6-R7",
+          "question": "In a three-set Venn diagram, n(A)=25, n(B)=22, n(C)=18, n(A∩B)=10, n(A∩C)=8, n(B∩C)=7 and n(A∩B∩C)=4. Find n(A∪B∪C).",
+          "answer": "25+22+18−10−8−7+4=44.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Adds single-set totals",
+              "marks": 1
+            },
+            {
+              "criterion": "Subtracts pair intersections",
+              "marks": 1
+            },
+            {
+              "criterion": "Adds triple intersection once and obtains 44",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM1W6-R8",
+          "question": "A student says the complement of A={1,2} is {3,4}. Explain why the answer cannot be checked without more information.",
+          "answer": "A′ depends on the universal set U. If U={1,2,3,4}, the complement is {3,4}; if U includes other elements, they must also appear. U must be stated.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies dependence on U",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains with an example",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 First Term Further Mathematics source",
+          "locator": "First Term Week Six: Revision of first half-term work; source member SHA-256 995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145. Replacement deliberately revises indices, logarithms and Weeks 4–5 set theory.",
+          "url": null,
+          "rights": "Newly authored revision lesson; original source preserved unchanged.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools; content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -7804,7 +7998,7 @@
       "source_id": "SS1-SRC-e9efc9a976ed",
       "objective": "Review the first-half-term material from Weeks 1–5 before the periodic test.",
       "objective_locator": "scheme week 6; source marker WEEK SIX, 'First Half Term Revision Questions'",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [],
       "evidence": [
         {
@@ -7822,7 +8016,7 @@
       "source_id": "SS1-SRC-e9efc9a976ed",
       "objective": "Administer a periodic test on first-half-term content.",
       "objective_locator": "scheme week 6; 'Periodic Test'",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [],
       "evidence": [
         {
@@ -8346,6 +8540,22 @@
           "explanation": "60-mark assessment with 20 MCQs and six structured questions. Explicitly excludes source weeks not present in the supplied archive."
         }
       ]
+    },
+    {
+      "id": "COV-FM-T1-W06-REVISION-OBJ-1",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Revise indices, logarithms, set operations and Venn counting before the periodic assessment.",
+      "objective_locator": "First Term Week Six: Revision of first half-term work; includes earlier Weeks 1–5 content.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W06-REVISION-INDICES-LOGS-SETS"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-FURTHER-MATHEMATICS-T1-W06-REVISION-INDICES-LOGS-SETS",
+          "explanation": "Replacement revises index laws, exponential equations, logarithm laws/domain, set operations and two-/three-set counting with eight keyed questions."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -8560,10 +8770,10 @@
     {
       "id": "OI-FM-T1-W06-REVISION-GAPS",
       "kind": "CONTENT",
-      "detail": "The source Week 6 revision block has 10 questions but they cover indices, exponential equations and logarithms only; they do not revise the Week 4–5 set theory work before the periodic test.",
-      "required_action": "Use the new Week 6 review/test document, which includes set notation, set operations and Venn problems, and obtain teacher approval.",
+      "detail": "The original Week Six revision block concentrates on indices and logarithms and does not revise the Week Four–Five set theory work. A replacement revision lesson now reviews indices, logarithms, set operations and Venn counting; the original source remains unchanged.",
+      "required_action": "Teacher reviews and approves the replacement revision lesson; verification remains deferred.",
       "affected_ids": [
-        "COV-FM-T1-R06",
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W06-REVISION-INDICES-LOGS-SETS",
         "COV-FM-T1-W06-OBJ-1"
       ],
       "blocks_delivery": true
@@ -8571,9 +8781,10 @@
     {
       "id": "OI-FM-T1-W06-PERIODIC-TEST",
       "kind": "CONTENT",
-      "detail": "The scheme specifies a periodic test in Week 6, but the source file contains revision questions only and no separate test paper, answer key or marking scheme.",
-      "required_action": "Use and review the separately authored Week 6 periodic test document; verify the assessment delivery format before student release.",
+      "detail": "The source specifies a periodic test but supplies revision questions rather than a separately marked test. A 50-mark periodic assessment with answer key and marking guide has been authored separately.",
+      "required_action": "Teacher reviews and approves the periodic assessment and confirms student delivery.",
       "affected_ids": [
+        "docs/ss1/work/microtasks/further-mathematics/FM-TEST-T1-W06-PERIODIC.md",
         "COV-FM-T1-W06-OBJ-2"
       ],
       "blocks_delivery": true
