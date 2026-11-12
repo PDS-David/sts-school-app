@@ -40,9 +40,9 @@
     "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 34,
+    "IMPLEMENTED_TESTING_DEFERRED": 35,
     "BLOCKED": 6,
-    "PENDING": 118
+    "PENDING": 117
   },
   "total": 158,
   "items": [
@@ -1516,7 +1516,7 @@
       "kind": "FACTUAL_DEPENDENCY",
       "source_id": "SS1-SRC-af4868d2c026",
       "term": "2nd Term",
-      "week_or_locator": "WEEK THREE, 27 superscript runs; flattened degree values and missing equation object",
+      "week_or_locator": "WEEK THREE; 26 superscript-zero degree markers plus one subscript punctuation run across body children 343–691; two native OMML objects at body children 365 and 453",
       "objective": "Recover the exact degree values and missing equation/notation in Week Three from the original DOCX and Equation Native objects; record all source locators and correct any affected replacement without changing the source.",
       "required_files": [
         "backend/src/db/ss1/subjects/technical-drawing.json",
@@ -1540,8 +1540,8 @@
         "TD-WK-W03",
         "TD-VIS-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by TD-WK-W03 on 2026-11-08. Extraction notes record 27 superscript runs, flattened 3600/450 degree values and a missing equation at line 959. Exact notation must be recovered from original source; no guesses permitted.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12. Direct XML inspection found 26 superscript-zero degree markers and one subscript period (27 vertical-alignment runs total), correcting the earlier count. Recovered all exact values, including 72°, 60°, 52°, 45°, 40°, 90°, 110° and 88°, with repeated assessment occurrences retained. Both native OMML equations are present and decoded: 360°/N = 360°/5 = 72° at body child 365, and 360°/8 = 45° at child 453; the alleged missing equation is not missing. Full locators, source member hash, original lesson ID and body hash in TD-FACT-W03-NOTATION.md. Original source unchanged; no correction replacement. Degree-glyph display check remains runtime-deferred; no tests/compiler/importer/app verification.",
       "completion_condition": "Record exact source notation with reproducible locators and hash evidence; add only a source-faithful correction/supplement. If an object cannot be decoded, retain a precise unresolved item."
     },
     {
@@ -5470,13 +5470,13 @@
     "notes": "Reconciled queue metadata with live item statuses after Week 6–10 coverage updates; formal tests remain deferred."
   },
   "next_runnable": [
-    "TD-FACT-W03-NOTATION",
     "TD-FACT-W04-SCALE-DETAILS",
     "TD-FACT-W05-SCALE-CONSTRUCTIONS",
     "TD-FACT-W08-W09-DETAILS",
     "TD-FACT-W10-TANGENCY-CONSTRUCTIONS",
     "TD-KEY-W01-ANSWERS",
     "TD-KEY-W02-ANSWERS",
+    "TD-KEY-W03-ANSWERS",
     "TD-ASSET-W01-F01",
     "TD-ASSET-W01-F02",
     "TD-ASSET-W01-F03",
@@ -5581,13 +5581,13 @@
     "TD-ASSET-W10-F17"
   ],
   "runnable_now": [
-    "TD-FACT-W03-NOTATION",
     "TD-FACT-W04-SCALE-DETAILS",
     "TD-FACT-W05-SCALE-CONSTRUCTIONS",
     "TD-FACT-W08-W09-DETAILS",
     "TD-FACT-W10-TANGENCY-CONSTRUCTIONS",
     "TD-KEY-W01-ANSWERS",
     "TD-KEY-W02-ANSWERS",
+    "TD-KEY-W03-ANSWERS",
     "TD-ASSET-W01-F01",
     "TD-ASSET-W01-F02",
     "TD-ASSET-W01-F03",
