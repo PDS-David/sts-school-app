@@ -5,6 +5,7 @@ import homeEconomics12 from './researched/homeEconomicsTerms1And2.json' with { t
 import homeEconomics3 from './researched/homeEconomicsTerm3Supplements.json' with { type: 'json' };
 import basicScience3 from './researched/basicScienceTerm3.json' with { type: 'json' };
 import basicTechnology12 from './researched/basicTechnologyTerms1And2.json' with { type: 'json' };
+import archiveCorrectionData from './researched/archiveLessonCorrections.json' with { type: 'json' };
 import { assertPrimary4SupplementCorpus } from './primary4Supplements.js';
 
 export function buildPrimary4CoverageReport() {
@@ -14,6 +15,10 @@ export function buildPrimary4CoverageReport() {
   const records = (sourceManifest as any).records as any[];
   const highShortSourceCount = records.filter(row => row.review_flag === 'HIGH_SHORT_SOURCE').length;
   const shortSourceReviewCount = records.filter(row => row.review_flag === 'SHORT_SOURCE_REVIEW').length;
+  const archiveCorrections = (archiveCorrectionData as any).corrections as any[];
+  const archiveHiddenTopicIds = (archiveCorrectionData as any).hidden_topic_ids as number[];
+  const archiveCorrectionPendingApprovalCount = archiveCorrections.filter(row => row.content_approval !== 'APPROVED').length;
+  const archiveCorrectionPendingAssessmentRebuildCount = archiveCorrections.filter(row => row.assessment_rebuild_status !== 'VERIFIED').length;
   const packages = [
     ...(homeEconomics12 as any).lessons.map((lesson: any) => ({ subject: 'Home Economics', term: lesson.term })),
     ...(homeEconomics3 as any).lessons.map(() => ({ subject: 'Home Economics', term: '3rd Term' })),
@@ -55,6 +60,11 @@ export function buildPrimary4CoverageReport() {
     combination_count: matrix.length,
     export_record_count: records.length,
     researched_lesson_count: packages.length,
+    archive_correction_count: archiveCorrections.length,
+    archive_correction_pending_approval_count: archiveCorrectionPendingApprovalCount,
+    archive_correction_pending_assessment_rebuild_count: archiveCorrectionPendingAssessmentRebuildCount,
+    archive_hidden_topic_count: archiveHiddenTopicIds.length,
+    archive_correction_note: 'Archive-based correction records replace identified skeletal Primary 4 source rows at delivery time; superseded outline/merged rows are hidden from learners. Newly authored corrections remain withheld until owner approval.',
     covered_combination_count: matrix.filter(row => row.existing_export_rows + row.researched_lessons_prepared > 0).length,
     pending_approval_combination_count: matrix.filter(row => ['PROPOSED_LOCAL_ALLOCATION_PENDING_APPROVAL', 'RESEARCHED_PROPOSED_TERM_ALLOCATION', 'RESEARCHED_PACKAGE_PENDING_APPROVAL', 'SOURCE_ROWS_PLUS_RESEARCHED_SUPPLEMENTS_PENDING_APPROVAL'].includes(row.status)).length,
     source_review_flagged_record_count: highShortSourceCount + shortSourceReviewCount,

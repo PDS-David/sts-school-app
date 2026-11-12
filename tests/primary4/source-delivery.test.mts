@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import manifest from '../../backend/src/db/primary4/sourceManifest.json' with { type: 'json' };
+import archiveCorrections from '../../backend/src/db/primary4/researched/archiveLessonCorrections.json' with { type: 'json' };
 import { resolvePrimary4SourceDelivery, safePrimary4Topic, primary4WithdrawnAssessmentIds } from '../../backend/src/utils/primary4Delivery.ts';
 
 const outline = 'WEEK 1:\u00a0CHANGES IN NATURE\n\nUNITS:\n\nTypes of changes :Temporary changes(reversible) and Permanent changes (irreversible)';
@@ -19,15 +20,12 @@ test('Primary 4 export manifest records 248 unique topic identities across the 1
   assert.equal(manifest.provenance.original_archive_independently_rehashed, false);
 });
 
-test('source delivery matches exact Primary 4 identity and source fingerprint', () => {
+test('archive correction takes precedence over the superseded Primary 4 export source', () => {
   const result = resolvePrimary4SourceDelivery(baseTopic);
-  assert.equal(result?.kind, 'matched');
-  assert.equal(result?.source, 'primary4-export');
-  if (result?.kind === 'matched') {
-    assert.equal(result.topicId, 208);
-    assert.equal(result.reviewRequired, true);
-    assert.equal(result.reviewFlag, 'SHORT_SOURCE_REVIEW');
-    assert.equal(result.text, outline);
+  assert.equal(result?.kind, 'withheld');
+  if (result?.kind === 'withheld') {
+    assert.equal(result.source, 'archive-correction');
+    assert.match(result.reason, /pending owner approval/i);
   }
 });
 
@@ -54,8 +52,109 @@ test('safe topic projection removes drifted source, summary and generated assess
 test('withdrawn assessment lookup hides only assessments linked to drifted Primary 4 topics', async () => {
   const query = async () => ({ rows: [
     { ...baseTopic, source_reference: outline + ' changed', generated_assessment_id: 91 },
-    { ...baseTopic, generated_assessment_id: 92 },
+    { ...baseTopic, class_name: 'Primary 5', generated_assessment_id: 92 },
   ] });
   const ids = await primary4WithdrawnAssessmentIds(query, [91, 92, 93]);
   assert.deepEqual([...ids], [91]);
+});
+
+
+test('archive correction package contains structurally complete lessons and explicit approval gates', () => {
+  assert.equal(archiveCorrections.corrections.length, 32);
+  assert.equal(archiveCorrections.hidden_topic_ids.length, 16);
+  assert.equal(archiveCorrections.provenance.archive_sha256, '69731806a1c59185a4d5f8f408cb87fb0897778265d654676e134615b88d4da5');
+  const ids = archiveCorrections.corrections.map((record: any) => record.topic_id);
+  assert.equal(new Set(ids).size, ids.length);
+  for (const record of archiveCorrections.corrections as any[]) {
+    const sourceIdentity = manifest.records.find((item: any) => item.id === record.topic_id) as any;
+    assert.ok(sourceIdentity, record.title);
+    assert.equal(record.source_title, sourceIdentity.title);
+    assert.equal(record.source_order_index, sourceIdentity.order_index);
+    assert.equal(record.subject, sourceIdentity.subject);
+    assert.equal(record.term, sourceIdentity.term);
+    assert.ok(record.objectives.length >= 2, record.title);
+    assert.ok(record.lesson.length >= 100, record.title);
+    assert.ok(record.examples.length >= 2, record.title);
+    assert.ok(record.activity.length >= 20, record.title);
+    assert.ok(record.evaluation.length >= 3, record.title);
+    assert.equal(record.content_approval, 'PENDING_OWNER_REVIEW');
+    assert.equal(record.pedagogical_verification, 'VERIFIED');
+    assert.equal(record.assessment_rebuild_status, 'PENDING');
+  }
+});
+
+test('archive corrections are withheld until explicit owner approval and never fall back to stale exported text', () => {
+  const correction = (archiveCorrections.corrections as any[])[0];
+  const topic = {
+    ...baseTopic,
+    id: correction.topic_id,
+    subject_name: correction.subject,
+    term_label: correction.term,
+    order_index: correction.source_order_index,
+    title: correction.source_title,
+    source_reference: 'old short export outline',
+    summary: 'stale generated summary',
+    generated_assessment_id: 77,
+  };
+  const result = resolvePrimary4SourceDelivery(topic);
+  assert.equal(result?.kind, 'withheld');
+  if (result?.kind === 'withheld') {
+    assert.equal(result.source, 'archive-correction');
+    assert.match(result.reason, /pending owner approval/i);
+  }
+  const safe = safePrimary4Topic(topic);
+  assert.equal(safe.source_reference, null);
+  assert.equal(safe.summary, null);
+  assert.equal(safe.generated_assessment_id, null);
+  assert.equal(safe.title, correction.title);
+});
+
+test('superseded Primary 4 outline and merged rows are explicitly hidden from student delivery', () => {
+  const record = manifest.records.find((item: any) => item.id === 432) as any;
+  assert.ok(record);
+  const topic = {
+    id: record.id,
+    school_code: 'primary',
+    class_name: 'Primary 4',
+    subject_name: record.subject,
+    term_label: record.term,
+    order_index: record.order_index,
+    title: record.title,
+    source_reference: record.source_reference,
+    summary: 'stale outline summary',
+    generated_assessment_id: 88,
+  };
+  const result = resolvePrimary4SourceDelivery(topic);
+  assert.equal(result?.kind, 'withheld');
+  if (result?.kind === 'withheld') {
+    assert.equal(result.source, 'archive-correction');
+    assert.equal(result.hideFromStudent, true);
+  }
+  const safe = safePrimary4Topic(topic);
+  assert.equal((safe as any).primary4_delivery.hide_from_student, true);
+  assert.equal(safe.source_reference, null);
+  assert.equal(safe.generated_assessment_id, null);
+});
+
+
+test('every retired Primary 4 outline/merged row matches a known export identity before hiding', () => {
+  for (const id of archiveCorrections.hidden_topic_ids as number[]) {
+    const record = manifest.records.find((item: any) => item.id === id) as any;
+    assert.ok(record, `missing manifest row for hidden id ${id}`);
+    const topic = {
+      id,
+      school_code: 'primary',
+      class_name: 'Primary 4',
+      subject_name: record.subject,
+      term_label: record.term,
+      order_index: record.order_index,
+      title: record.title,
+      source_reference: 'old outline source',
+      summary: 'stale summary',
+      generated_assessment_id: 91,
+    };
+    const delivery = resolvePrimary4SourceDelivery(topic);
+    assert.equal(delivery?.kind, 'withheld', `hidden id ${id}`);
+    if (delivery?.kind === 'withheld') assert.equal(delivery.hideFromStudent, true, `hidden id ${id}`);
+  }
 });
