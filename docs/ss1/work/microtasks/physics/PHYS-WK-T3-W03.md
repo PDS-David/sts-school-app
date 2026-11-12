@@ -57,4 +57,4 @@ The reading assignment says `New school physics`, pages 81–82, but gives no au
 - Lesson content approval remains `PENDING`; verification remains `DEFERRED`.
 - Original .doc bytes and source identity remain unchanged.
 - Authoring checks: original member SHA-256, lesson body SHA-256 and 20-question marking arithmetic recorded.
-- No typecheck, test suite, importer, database or device validation was run; these remain deferred under the task's explicit boundary.
+- No tests were manually invoked during authoring. After the PR was opened, GitHub Actions automatically ran the standard PR gates: Physics package schema/content/regression tests, SS1 integrity, all-subject source-anchor/compiler audit, Agricultural Science, Catering Craft and Biology package checks all passed. The unrelated JSS3 `verify` job was still in progress at the last status check. No database-backed student acceptance or device validation is claimed.
