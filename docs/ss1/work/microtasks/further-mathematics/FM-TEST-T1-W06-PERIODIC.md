@@ -123,14 +123,14 @@ In a group of 50 students, 28 study French, 24 study Hausa and 20 study Yoruba. 
 At least one = 28+24+20-12-10-9+5=46 (3).  
 None=50-46=4 (2).
 
-### 6. Surds (5 marks)
+### 6. Logarithm tables and standard form (5 marks)
 
-(a) Simplify 3√12+√27-√75. (2 marks)  
-(b) Rationalise 4/(√5+√3). (3 marks)
+(a) Given log(2)=0.3010 and log(5)=0.6990, find log(40). (2 marks)  
+(b) Given log(6.38)=0.8041, find log(0.000638). (3 marks)
 
 **Marking guide:**  
-(a) 6√3+3√3-5√3=4√3 (2).  
-(b) Multiply by (√5-√3)/(√5-√3); denominator 2; result 2(√5-√3) (3).
+(a) 40=2^3×5, so log(40)=3(0.3010)+0.6990=1.6020 (2).  
+(b) 0.000638=6.38×10^(-4), so log(0.000638)=0.8041-4=-3.1959 (3).
 
 ## Answer key — Section A
 
