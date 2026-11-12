@@ -1605,6 +1605,446 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T1-W07-BINARY-OPERATIONS",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Further Mathematics",
+      "title": "Binary operations: closure, commutativity, associativity and distributivity",
+      "objectives": [
+        "Define a binary operation on a set and evaluate expressions using its rule.",
+        "Test closure and explain why closure is required for a binary operation on a specified set.",
+        "Test commutativity and associativity using algebra and counterexamples.",
+        "Test left and right distributivity when two operations are defined."
+      ],
+      "body": "A binary operation combines two inputs according to one fixed rule. The set matters: a rule may give a real-number result for every pair but fail to give a result inside a smaller set. This lesson distinguishes that issue from the algebraic properties of the rule.\n\n1. DEFINITION AND NOTATION\nA binary operation on a non-empty set S is a rule that assigns to every ordered pair (a,b) in S×S exactly one result that is also in S. We write a*b for the result. Closure is therefore part of being a binary operation on S.\nExample 1: On the real numbers, define a*b=2a+3b-1. Then 4*2=2(4)+3(2)-1=13. Since 13 is real, this calculation is allowed in R.\n\n2. CLOSURE\nA set S is closed under * if a*b belongs to S for every a,b in S. One counterexample is enough to disprove closure.\nExample 2: Let S={0,1,2,3,4} and use the rule a*b=a+b-ab. Take a=2 and b=4: 2*4=2+4-8=-2. Since -2 is not in S, the rule is not a binary operation on S (although the formula is defined on R).\nExample 3: The integers are closed under addition because the sum of any two integers is an integer. The natural numbers including zero are closed under multiplication because the product of two such numbers is still in the set.\n\n3. COMMUTATIVE PROPERTY\nThe operation is commutative on S if a*b=b*a for every a,b in S. Compare the two expressions after swapping the inputs.\nExample 4: For a*b=a^3+b^3-3ab, b*a=b^3+a^3-3ba. Addition and multiplication are commutative, so the expressions are equal. The operation is commutative on R.\nCounterexample: For a*b=2a+3b-1, 1*2=2+6-1=7, but 2*1=4+3-1=6. It is not commutative.\n\n4. ASSOCIATIVE PROPERTY\nThe operation is associative if (a*b)*c=a*(b*c) for every a,b,c in S. Do not assume that commutativity implies associativity.\nExample 5: For a*b=2a+3b-1, (a*b)*c=2(2a+3b-1)+3c-1=4a+6b+3c-3. Also a*(b*c)=2a+3(2b+3c-1)-1=2a+6b+9c-4. These are not equal for all a,b,c; for a=b=c=0, the values are -3 and -4. The operation is not associative.\nExample 6: Ordinary addition is associative because (a+b)+c=a+(b+c). Ordinary subtraction is not: (8-3)-2=3, while 8-(3-2)=7.\n\n5. DISTRIBUTIVE PROPERTY\nWhen two operations * and ⊙ are defined on S, * is left-distributive over ⊙ if a*(b⊙c)=(a*b)⊙(a*c). It is right-distributive if (b⊙c)*a=(b*a)⊙(c*a). Test the stated side; do not assume left and right distributivity are identical for non-commutative operations.\nExample 7: Let a*b=a+b-3 and a⊙b=5ab on R. For a=1,b=2,c=3:\na*(b⊙c)=1*(5×2×3)=1*30=28.\n(a*b)⊙(a*c)=(1+2-3)⊙(1+3-3)=0⊙1=0.\nSince 28≠0, * is not left-distributive over ⊙.\nExample 8: Let a*b=a+b and a⊙b=ab on R. Then a*(b⊙c)=a+bc, whereas (a*b)⊙(a*c)=(a+b)(a+c), which is not generally equal. Addition does not distribute over multiplication; multiplication distributes over addition: a(b+c)=ab+ac.\n\n6. A SAFE TESTING ROUTINE\nFirst state the set and the rule. Check closure for every pair (or find a counterexample). Then test commutativity by swapping two inputs. Test associativity by calculating both bracketings. For distributivity, write both sides separately and expand carefully. A single numerical counterexample disproves a universal property; a few matching examples do not prove it.\n\n7. COMMON ERRORS\nDo not call a rule a binary operation on S if it can produce a result outside S. Do not confuse commutative (swapping inputs) with associative (changing brackets). Do not use the same symbol for the unknown and multiplication. When disproving a property, show one valid counterexample from the stated set.",
+      "body_sha256": "136904192a2eaef2aa05ccf5503ebdaeced354945a6b13c71328dbc5e86f28c0",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "A rule on integers is defined by a*b=2a-b. Find 3*5 and state whether the result belongs to the integers.",
+          "answer": "3*5=2(3)-5=1, which is an integer.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Substitutes correctly",
+              "marks": 1
+            },
+            {
+              "criterion": "Result 1 is an integer",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Let S={0,1,2,3,4} and a*b=a+b-ab. Use one counterexample to decide whether S is closed under this rule.",
+          "answer": "2*4=2+4-8=-2. Since -2 is not in S, S is not closed.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Valid pair and calculation",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct closure conclusion",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "On R, define a*b=a^2+b^2+ab. Is the operation commutative? Show the comparison.",
+          "answer": "b*a=b^2+a^2+ba=a^2+b^2+ab=a*b. It is commutative.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Writes swapped expression",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses commutativity of addition/multiplication",
+              "marks": 1
+            },
+            {
+              "criterion": "Conclusion",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "On R, define a*b=4a+b. Test commutativity using a=1 and b=2.",
+          "answer": "1*2=6, while 2*1=9. Since they differ, the operation is not commutative.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "First order 6",
+              "marks": 1
+            },
+            {
+              "criterion": "Swapped order 9",
+              "marks": 1
+            },
+            {
+              "criterion": "Conclusion",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "For a*b=a+b on R, show that the operation is associative.",
+          "answer": "(a*b)*c=(a+b)+c=a+(b+c)=a*(b*c).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct left bracketing",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct right bracketing and equality",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "For a*b=2a+3b-1, calculate (a*b)*c and a*(b*c). Hence test associativity.",
+          "answer": "(a*b)*c=4a+6b+3c-3; a*(b*c)=2a+6b+9c-4. At a=b=c=0 the results are -3 and -4, so it is not associative.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Left expression",
+              "marks": 1
+            },
+            {
+              "criterion": "Right expression",
+              "marks": 1
+            },
+            {
+              "criterion": "Valid counterexample",
+              "marks": 1
+            },
+            {
+              "criterion": "Conclusion",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q7",
+          "question": "On R let a*b=a+b-3 and a⊙b=5ab. Test left distributivity of * over ⊙ at a=1,b=2,c=3.",
+          "answer": "1*(2⊙3)=1*30=28. (1*2)⊙(1*3)=0⊙1=0. Since 28≠0, left distributivity fails.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Left side 28",
+              "marks": 1
+            },
+            {
+              "criterion": "Right side 0",
+              "marks": 1
+            },
+            {
+              "criterion": "Conclusion",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q8",
+          "question": "State the difference between commutative and associative properties.",
+          "answer": "Commutative changes the order of the two inputs: a*b=b*a. Associative changes the grouping of three inputs: (a*b)*c=a*(b*c).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Order comparison",
+              "marks": 1
+            },
+            {
+              "criterion": "Grouping comparison",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q9",
+          "question": "On R, define a*b=a+b+3ab. Determine whether it is commutative.",
+          "answer": "b*a=b+a+3ba=a+b+3ab=a*b. It is commutative.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Swapped expression",
+              "marks": 1
+            },
+            {
+              "criterion": "Conclusion",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "Give a counterexample showing ordinary subtraction is not associative.",
+          "answer": "(8-3)-2=3, but 8-(3-2)=7. Therefore subtraction is not associative.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "First bracketing 3",
+              "marks": 1
+            },
+            {
+              "criterion": "Second bracketing 7 and conclusion",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source: SS1 first-term Further Mathematics",
+          "locator": "WEEK SEVEN, TOPIC: BINARY OPERATIONS; scheme week 7 objectives (definition, simple problems, closure, commutative, associative and distributive laws) in member SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc; member SHA-256 995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145. Scope is restated and checked; damaged source notation and errors are not copied.",
+          "url": null,
+          "rights": "Newly authored instructional material based on the school's syllabus; no extended source passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools; content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T1-W08-IDENTITY-INVERSE-TABLES",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Further Mathematics",
+      "title": "Binary operations: identity, inverse elements and operation tables",
+      "objectives": [
+        "Find and verify identity elements using both left and right identity equations.",
+        "Find inverses relative to a given operation and state when an inverse does not exist.",
+        "Construct addition and multiplication tables for residues modulo 4.",
+        "Use operation tables to identify closure, identity elements and inverses."
+      ],
+      "body": "This lesson extends binary operations to identity elements, inverse elements and operation tables. An identity must leave every member unchanged on both sides. An inverse must combine with the chosen element to give the identity.\n\n1. IDENTITY ELEMENT\nLet * be a binary operation on S. An element e in S is an identity if a*e=e*a=a for every a in S. Check both orders unless commutativity has already been proved. If an identity exists, it is unique.\nExample 1: On R define a*b=a+b+ab. Let e be the identity.\na*e=a+e+ae=a, so e(1+a)=0 for every real a. This is possible for all a only when e=0. Check e*a=a+0+a(0)=a. Therefore the identity is 0.\nExample 2: On Q define a⊙b=9ab. Then a⊙e=9ae=a gives e=1/9 for non-zero a. Check e⊙a=9(1/9)a=a. The identity is 1/9.\n\n2. UNIQUENESS OF THE IDENTITY\nSuppose e and f are both identities. Since e is an identity, e*f=f. Since f is an identity, e*f=e. Thus e=f. There cannot be two different identity elements for the same operation on the same set.\n\n3. INVERSE ELEMENT\nIf e is the identity, an inverse of a is an element b in S satisfying a*b=b*a=e. The inverse depends on the operation and the set. It may not exist for every element.\nExample 3: For a*b=a+b+ab on R, the identity is 0. To find the inverse of a, solve a*b=0:\na+b+ab=0; b(1+a)=-a; b=-a/(1+a), provided a≠-1.\nFor a=-1 the equation -1+b-b=-1 cannot equal 0, so -1 has no inverse. For example, the inverse of 2 is -2/3.\nExample 4: For a*b=a+b-2ab on R, the identity is 0. Solve a+b-2ab=0:\nb(1-2a)=-a; b=-a/(1-2a), provided a≠1/2. The element 1/2 has no inverse under this operation.\nExample 5: For a⊙b=9ab on Q, the identity is 1/9. Solve 9ab=1/9; hence b=1/(81a), provided a≠0. Zero has no inverse.\n\n4. ADDITION AND MULTIPLICATION TABLES MODULO 4\nThe set of residues modulo 4 is {0,1,2,3}. After adding or multiplying, replace the result by its remainder on division by 4. Every table entry must remain in the set.\nAddition modulo 4:\n       + | 0  1  2  3\n       0 | 0  1  2  3\n       1 | 1  2  3  0\n       2 | 2  3  0  1\n       3 | 3  0  1  2\nThe additive identity is 0. Additive inverses are: inverse of 0 is 0; inverse of 1 is 3; inverse of 2 is 2; inverse of 3 is 1.\nMultiplication modulo 4:\n       × | 0  1  2  3\n       0 | 0  0  0  0\n       1 | 0  1  2  3\n       2 | 0  2  0  2\n       3 | 0  3  2  1\nThe multiplicative identity is 1. The multiplicative inverse of 1 is 1 and of 3 is 3 because 3×3=9, remainder 1. The elements 0 and 2 have no multiplicative inverse modulo 4: their products never have remainder 1.\n\n5. A RELIABLE METHOD\nWrite the operation and set first. For an identity, let the unknown identity be e and solve a*e=a and e*a=a for general a. Check that e belongs to S. For an inverse, use the identity already found, solve a*b=e, check the reverse order if needed, and check that b belongs to S. For a finite set, a table can show closure, identity and inverses directly.\n\n6. COMMON ERRORS\nDo not confuse an identity with an inverse. An identity is one element that works for every member; an inverse is found separately for each chosen element. Do not divide by an expression that may be zero without stating the restriction. An inverse outside the stated set does not count. In modular tables, reduce every result to its remainder.",
+      "body_sha256": "de1cc6deb3f2dd846421edf1255f9517b1071e5b957e036651c1cd94add59fd4",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "For a*b=a+b+ab on R, find the identity element and verify it on both sides.",
+          "answer": "Let e be the identity. a+e+ae=a gives e(1+a)=0 for all a, so e=0. Then a*0=0*a=a.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Sets up a*e=a",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds e=0",
+              "marks": 1
+            },
+            {
+              "criterion": "Checks both sides",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "For a⊙b=9ab on Q, find the identity element.",
+          "answer": "9ae=a for every a, so e=1/9. Also 9(1/9)a=a.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Forms identity equation",
+              "marks": 1
+            },
+            {
+              "criterion": "Identity 1/9",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "For a*b=a+b+ab, find the inverse of 2.",
+          "answer": "Identity is 0. Solve 2+b+2b=0, so 3b=-2 and b=-2/3. Check 2*(-2/3)=0.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses identity 0",
+              "marks": 1
+            },
+            {
+              "criterion": "Solves for b",
+              "marks": 1
+            },
+            {
+              "criterion": "Inverse -2/3",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "For a*b=a+b+ab on R, explain why -1 has no inverse.",
+          "answer": "To obtain identity 0, -1*b=-1+b-b=-1 for every b, never 0. Hence -1 has no inverse.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Substitutes -1",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains no solution",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "For a*b=a+b-2ab on R, find the inverse of 3 and state the element that has no inverse.",
+          "answer": "Identity is 0. b=-a/(1-2a). For a=3, b=-3/(1-6)=3/5. The denominator is zero at a=1/2, which has no inverse.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Correct inverse formula",
+              "marks": 1
+            },
+            {
+              "criterion": "Inverse of 3 is 3/5",
+              "marks": 1
+            },
+            {
+              "criterion": "1/2 has no inverse",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "For a⊙b=9ab on Q, find the inverse of 2 and explain why zero has no inverse.",
+          "answer": "Identity is 1/9. Solve 18b=1/9, giving b=1/162. For a=0, 9(0)b=0 for every b, never 1/9; zero has no inverse.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses identity 1/9",
+              "marks": 1
+            },
+            {
+              "criterion": "Inverse 1/162",
+              "marks": 1
+            },
+            {
+              "criterion": "Zero has no inverse",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q7",
+          "question": "Construct the addition table modulo 4 for {0,1,2,3}.",
+          "answer": "Rows and columns 0,1,2,3; rows are 0: 0,1,2,3; 1: 1,2,3,0; 2: 2,3,0,1; 3: 3,0,1,2.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Correct row for 0",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct row for 1",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct row for 2",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct row for 3",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q8",
+          "question": "Using multiplication modulo 4, find 2×3 and 3×3. Which residue is the multiplicative identity?",
+          "answer": "2×3=6, remainder 2. 3×3=9, remainder 1. The identity is 1.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "2×3 gives residue 2",
+              "marks": 1
+            },
+            {
+              "criterion": "3×3 gives residue 1",
+              "marks": 1
+            },
+            {
+              "criterion": "Identity 1",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q9",
+          "question": "List all additive inverses modulo 4.",
+          "answer": "0↔0, 1↔3, 2↔2, 3↔1.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct pairs for 0 and 1",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct pairs for 2 and 3",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "Which elements of {0,1,2,3} have multiplicative inverses modulo 4? Give each inverse.",
+          "answer": "1 and 3 only. 1×1≡1 and 3×3=9≡1 (mod 4). Neither 0 nor 2 can produce remainder 1.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Identifies 1 and 3",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives their inverses",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains 0 and 2",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source: SS1 first-term Further Mathematics",
+          "locator": "WEEK EIGHT, TOPIC: BINARY OPERATIONS: IDENTITY AND INVERSE ELEMENTS; scheme week 8 additionally requires addition and multiplication tables in member SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc; member SHA-256 995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145. Scope is restated and checked; damaged source notation and errors are not copied.",
+          "url": null,
+          "rights": "Newly authored instructional material based on the school's syllabus; no extended source passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools; content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -2015,14 +2455,19 @@
       "source_id": "SS1-SRC-e9efc9a976ed",
       "objective": "Binary operations: definition, closure, commutative, associative, distributive laws",
       "objective_locator": "scheme weeks 1-10; parsed row 7 (BINARY OPERATIONS: BASIC CONCEPT OF BINA)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-e9efc9a976ed:BODY:229e92adc01c9a1fd42b710c33852a8673f38e13e6fd3336487ef201223a91e7"
+        "SS1-SRC-e9efc9a976ed:BODY:229e92adc01c9a1fd42b710c33852a8673f38e13e6fd3336487ef201223a91e7",
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W07-BINARY-OPERATIONS"
       ],
       "evidence": [
         {
           "locator": "parsed row 7",
           "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        },
+        {
+          "locator": "WEEK SEVEN source body: definition through distributivity and evaluations",
+          "explanation": "Reviewed against scheme week 7 objectives. Replacement lesson now covers definition/evaluation, closure, commutativity, associativity and distributivity with corrected derivations and original keyed practice. Source row has been reviewed; approval and verification remain pending."
         }
       ]
     },
@@ -2031,14 +2476,19 @@
       "source_id": "SS1-SRC-e9efc9a976ed",
       "objective": "Binary operations: identity and inverse elements; tables",
       "objective_locator": "scheme weeks 1-10; parsed row 8 (BINARY OPERATIONS: IDENTITY AND INVERSE )",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-e9efc9a976ed:BODY:378f63ca6f0d3b21f3690fff939b69c99f36bce29837534fb355d1d9ada17dc5"
+        "SS1-SRC-e9efc9a976ed:BODY:378f63ca6f0d3b21f3690fff939b69c99f36bce29837534fb355d1d9ada17dc5",
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W08-IDENTITY-INVERSE-TABLES"
       ],
       "evidence": [
         {
           "locator": "parsed row 8",
           "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        },
+        {
+          "locator": "WEEK EIGHT source body: identity/inverse sections and modulo-4 weekend table item",
+          "explanation": "Reviewed against scheme week 8 objectives. Replacement lesson covers identity, inverse and both addition/multiplication tables modulo 4; restrictions and non-invertible elements are made explicit. The source's first identity worked example has flattened/ambiguous fraction notation and is not copied; approval and verification remain pending."
         }
       ]
     },
