@@ -36,10 +36,10 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 32,
     "VISUAL_DISPOSITION": 2,
-    "LESSON": 23
+    "LESSON": 24
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 27,
+    "IMPLEMENTED_TESTING_DEFERRED": 28,
     "PENDING": 46,
     "BLOCKED": 1
   },
@@ -1266,8 +1266,8 @@
         "GOV-INV-T2",
         "GOV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12. Verified source member SHA-256 bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782 in archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e. Inspected Week Eight body children 374–417 (44 paragraphs); C14N SHA-256 e88704dbce633832d6a02893344cfe61bc6fb11e60f63801175b15868d99fbb4. Added four objective-level entries for 1989 Constitution, 1999 Constitution, evaluation marker and practice pointers. Updated scheme coverage to PARTIAL. Recorded 1989 Constitution's aborted Third Republic implementation; corrected the 1999 Constitution's 1979-based promulgation, 768 LGAs plus six FCT Area Councils, federal/state judiciary and unsupported Abacha attribution. No question stems follow EVALUATION. Added eleven precise open items and lesson task GOV-LES-T2-W08-CORRECTED-CONSTITUTIONS. No source rule, lesson body, answer key, mark or asset was written. No tests/typecheck/importer/compiler run; testing deferred by owner.",
       "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
     },
     {
@@ -2779,6 +2779,45 @@
       "status": "PENDING",
       "implementation_reference": "Created after GOV-WK-T2-W07 on 2026-11-12. Required to correct 1960 regional legislative/Senate details and 1963 constitutional supremacy, Mid-Western Region, presidential election and carpet-crossing claims. Original practice only; no source question stems are present.",
       "completion_condition": "A visibly original supplement teaches both constitutions with recomputed body_sha256, dated/citable provenance and original keyed formative practice; all regional and constitutional details are accurate; source questions/marks are not invented; content approval stays PENDING and verification DEFERRED; no source bytes, schema or shared code are edited."
+    },
+    {
+      "id": "GOV-LES-T2-W08-CORRECTED-CONSTITUTIONS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "2nd Term Week Eight, word/document.xml w:body children 374–417; 1989 and 1999 constitutions",
+      "objective": "Author one visibly original, accurate supplement for Week Eight. Explain the 1989 Constitution's presidential system, two-party framework, recall mechanism, FCT status, judiciary and rights while distinguishing promulgation/transition arrangements from full operation; the Third Republic transition collapsed in 1993. Present candidate age/education qualifications and local-government development claims without saying they eliminate incompetence or guarantee development. Explain the 1999 Constitution as a separate instrument promulgated by Decree No. 24 of 1999 on 5 May and effective 29 May 1999, based principally on the 1979 Constitution with amendments; do not say it retained both 1979 and 1989. Clarify that the constitutional schedule lists 768 LGAs plus six FCT Area Councils, and that school certificate or equivalent and office-specific age thresholds apply. Distinguish the 1995 draft under Abacha from the 1999 Constitution promulgated by Abdulsalami after Abacha's death. Describe the federal/state judiciary rather than calling it simply centralized; present claims about excessive federal power as arguments supported by named provisions. The EVALUATION marker has no question stems, so create only clearly labelled original formative practice with complete answers and criterion-level marks; do not invent source questions or keys. Add dated, citable provenance and keep content approval PENDING and verification DEFERRED.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-PRE-T2.md",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W08.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-LES-T2-W08-CORRECTED-CONSTITUTIONS.md"
+      ],
+      "depends_on": [
+        "GOV-SRC-T2",
+        "GOV-WK-T2-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created after GOV-WK-T2-W08 on 2026-11-12. Required to distinguish the 1989 and 1999 constitutions, correct the 1999 Promulgation Decree basis, local government count, judicial structure and Abacha claim. Original practice only; no source question stems are present.",
+      "completion_condition": "A visibly original supplement teaches both constitutions with recomputed body_sha256, dated/citable provenance and original keyed formative practice; historical implementation and promulgation facts are accurate; source questions/marks are not invented; content approval stays PENDING and verification DEFERRED; no source bytes, schema or shared code are edited."
     }
   ],
   "review": {
@@ -2799,7 +2838,6 @@
     "GOV-LES-T1-W01-CORRECTED-WEEK",
     "GOV-REV-T2",
     "GOV-MARK-T2",
-    "GOV-WK-T2-W08",
     "GOV-WK-T2-W09",
     "GOV-WK-T2-W10",
     "GOV-WK-T2-W11",
@@ -2839,6 +2877,7 @@
     "GOV-LES-T2-W04-CORRECTED-WEEK",
     "GOV-LES-T2-W05-CORRECTED-CONSTITUTIONS",
     "GOV-LES-T2-W06-CORRECTED-WEEK",
-    "GOV-LES-T2-W07-CORRECTED-CONSTITUTIONS"
+    "GOV-LES-T2-W07-CORRECTED-CONSTITUTIONS",
+    "GOV-LES-T2-W08-CORRECTED-CONSTITUTIONS"
   ]
 }
