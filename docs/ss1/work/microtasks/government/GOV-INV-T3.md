@@ -820,3 +820,113 @@ The other comparisons are overgeneralized. Pressure groups can have defined lead
 - `GOVERNMENT-T3-W07-WEEKEND-MCQ-AMBIGUITY` — correct weekend question 1 before keying.
 
 No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-WK-T3-W08 — Party System and Party Manifesto indexing
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and dated comparative fact-check evidence only; no lesson, answer key, marks, correction, asset or parser rule is authored here.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37 on the original legacy `.doc`.
+- Complete span: lines 831–1035; UTF-8 span SHA-256: `f4ee10a23135ad118948b628f22c9fb0b60b3f5c39907f8dacd27d644b48a560`.
+- Printed label: `WEEK EIGHT` at line 831; topic: `PARTY SYSTEM` at line 832.
+- Scheme entry 8 (preamble lines 28–29) maps to this span. W08 covers party-system definition/types, comparative merits/demerits and party manifesto/importance. It also supplies the party-system/manifesto content named in W07's body outline (lines 717–721); this cross-week mapping is now recorded against W07's earlier open item.
+- Locators refer to Antiword line numbers, not page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are empty rather than inferred from a different extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-W08-SCHEME-PARTY-SYSTEM | Scheme entry 8 mapping | PARTIAL |
+| COV-GOV-T3-W08-DEFINITION | Party-system definition, lines 838–841 | PARTIAL |
+| COV-GOV-T3-W08-ONE-PARTY | One-party system, lines 843–890 | PARTIAL |
+| COV-GOV-T3-W08-TWO-PARTY | Two-party system, lines 896–936 | PARTIAL |
+| COV-GOV-T3-W08-MULTI-PARTY | Multi-party system, lines 938–975 | PARTIAL |
+| COV-GOV-T3-W08-MERITS-DEMERITS | Comparative advantages/disadvantages | PARTIAL |
+| COV-GOV-T3-W08-MANIFESTO | Manifesto and importance, lines 981–994 | PARTIAL |
+| COV-GOV-T3-W08-GENERAL-REVISION | General revision, lines 1000–1007 | PARTIAL |
+| COV-GOV-T3-W08-READING | Reading pointers, lines 1009–1011 | PARTIAL |
+| COV-GOV-T3-W08-ASSESSMENT-KEYS | All exercise blocks | UNRESOLVED |
+| COV-GOV-T3-W08-WEEKEND-MCQS | Weekend MCQs, lines 1013–1029 | PARTIAL |
+
+Eleven coverage entries and nine linked package open items were added. The W07 party-system/manifesto cross-week open item was changed to non-blocking after confirming the W08 coverage.
+
+### Definition and one-party system — lines 838–890
+
+The source defines party system mainly by the number of parties allowed to contest elections. This is a useful starting point but too narrow: party systems also concern the pattern of competition, relative strength, interaction and cooperation among parties.
+
+The strict one-party definition—only one legal party is permitted—must be distinguished from:
+- **Hegemonic-party arrangements:** opposition parties may exist legally but the ruling party dominates.
+- **Predominant-party arrangements:** opposition parties compete, but one party wins repeatedly over a sustained period; this does not mean it literally wins every election.
+
+The source's examples need updating:
+- **Malawi:** the one-party period ended after the 1993 referendum; the first multiparty Parliament was elected in 1994. The Malawi Government's own materials describe the current system as multiparty.
+- **Kenya:** the Kenyan Embassy describes a multiparty political system.
+- **Zambia:** it reverted to multiparty politics in 1991; Article 4(3) of its Constitution describes Zambia as a multi-party democratic State, and 2026 election-observation material describes ongoing multiparty competition.
+- **China:** the State Council's 2021 white paper identifies the Communist Party of China plus eight other political parties in a CPC-led cooperation system. A UK Home Office country note updated in 2026 describes China as a one-party state with subordinate minor parties. It is therefore inaccurate to say that only one legally existing party is present; explain the dominant-party/CCP-led system precisely.
+- **North Korea and Cuba:** the source gives no date or supporting reference. Verify their current party arrangements from country-specific sources before using them as examples of a strict single-legal-party system.
+
+Features such as no private ownership of mass media or a single ideology are not universal defining features. The advantages/disadvantages list is a set of possible claims, not guaranteed outcomes. A one-party system may permit rapid decisions, but restricted competition can weaken accountability; do not claim that every one-party system necessarily produces the same outcomes.
+
+### Two-party system — lines 896–936
+
+The source mixes two different ideas:
+1. a system in which exactly two parties are legally recognized; and
+2. a system in which two major parties dominate while other parties also exist.
+
+The Nigerian NRC/SDP example belongs to the historically restricted two-party arrangement of the aborted Third Republic. The United States is better described as a two-party-dominant system: the Library of Congress notes that the Democratic and Republican parties have dominated nationally while minor parties continue to exist and participate. The United Kingdom also has multiple parties even though two parties have often been the principal competitors.
+
+The claimed features and merits—democracy, press freedom, stability and prevention of dictatorship—are not guaranteed by the number of parties. The alleged disadvantages (ethnic/religious division, violence, rigging, uneven development) are also not inevitable; their occurrence depends on social conditions, electoral rules and political institutions.
+
+### Multi-party system — lines 938–975
+
+A multi-party system permits more than two parties to participate in political competition. Coalition governments are more likely in parliamentary systems when no party wins a legislative majority; they are not automatic and do not necessarily describe the executive structure of a presidential system. Nigeria is multiparty. The United States has multiple parties in formal existence but is two-party-dominant in practice; it should not be presented as an uncomplicated example of a competitive multiparty system.
+
+The source's claims that multi-party systems prevent dictators, guarantee rights or ensure smooth change of government are too absolute. Institutional quality, constitutional protections and electoral administration matter more than party count alone. The advantages/disadvantages lists should be taught as possible trade-offs, not universal effects.
+
+### Party manifesto — lines 981–994
+
+The source's definition of a manifesto as a party's plans/programmes presented to voters is broadly sound. A manifesto can communicate priorities, educate voters and provide a benchmark for assessing performance. It should not be represented as an unconditional or automatically enforceable guarantee that every promise will be implemented. Implementation depends on the party's electoral success, constitutional powers, budgets, legislative support and other legal/political constraints.
+
+### Assessment and reading-marker audit
+
+- `EVALUATION QUESTIONS`: line 892; two questions at lines 893–894.
+- `EVALUATION QUESTIONS`: line 977; two questions at lines 978–979.
+- `EVALUATION QUESTIONS`: line 996; two questions at lines 997–998.
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 1000; five questions at lines 1001–1007. Questions 1 and 3 relate to party systems. Question 2 asks about “Zero Party” system: this is not a standard one/two/multi-party classification, but has a historical Nigerian usage for non-partisan local-government elections, including 1987 and 1996 exercises. Questions 4–5 on separation of powers are outside this week's topic.
+- `READING ASSINGMENT`: exact misspelling at line 1009; `Comprehensive Government` pp. 79–84 and `Essential Government` pp. 95–99 at lines 1010–1011. Editions/publication details are absent and neither book was inspected.
+- `WEEKEND ASSINGMENT`: line 1013; five MCQs at lines 1014–1029. Q1 uses the undefined phrase “dominant two party system”. Q2 has no option matching the lesson's explanation that mass parties developed with the extension of the franchise. Q3 describes coalition as a multi-party feature without qualifying parliamentary/presidential context. Q4 is consistent with the source's broker-party description. Q5 treats prevention of dictatorship as a guaranteed two-party advantage, which is not established by party count alone.
+- `THEORY`: line 1031; two prompts at lines 1032–1033.
+- Total: **18 exercise stems** (2 + 2 + 2 + 5 + 5 + 2). No source answer key, marks or marking criteria are supplied. No answers or marks were invented.
+
+### Dated comparative references consulted
+
+1. **Malawi Government, “Legislature” and “Executive”**. Records the end of one-party rule following the 1993 referendum and the first multiparty Parliament in 1994: https://malawi.gov.mw/index.php/parliament/legislature and https://malawi.gov.mw/index.php/parliament/executive
+2. **Embassy of the Republic of Kenya, “Government and Political System”**. Describes Kenya's current multiparty system: https://www.kenyaembassyaddis.org/about-kenya/government-and-political-system/
+3. **Constitution of Zambia**, Article 4(3), describing Zambia as a multi-party democratic State; the 2026 African Union/COMESA election-observation preliminary statement also describes its multiparty electoral competition: https://zambialii.org/akn/zm/act/1991/1/eng%402025-12-18 and https://fwww.peaceau.org/en/article/preliminary-statement-african-union-and-the-common-market-for-eastern-and-southern-africa-election-observation-mission-to-the-13th-august-2026-general-election-in-the-republic-of-zambia-lusaka-15-august-2026
+4. **State Council Information Office of China, “China's Political Party System: Cooperation and Consultation”** (25 June 2021), identifying the CPC and eight other political parties in the CPC-led system: https://english.www.gov.cn/news/topnews/202106/26/content_WS60d66223c6d0df57f98dbe58.html
+5. **UK Home Office, “Country policy and information note: opposition to the state, China”** (January 2026; updated 1 September 2026), describing China as a one-party state with subordinate minor parties: https://www.gov.uk/government/publications/china-country-policy-and-information-notes/country-policy-and-information-note-opposition-to-the-state-china-january-2026-accessible
+6. **Library of Congress, “Political Parties”** and **Freedom House, United States 2026 report**. Both describe two major parties dominating nationally while minor parties continue to exist: https://www.loc.gov/classroom-materials/political-parties/ and https://freedomhouse.org/country/united-states/freedom-world/2026
+7. **IRIADN, *Electoral Management Bodies in Nigeria since 1958*** and **Human Rights Watch, Nigeria 1996/1997 reports**. These describe Nigeria's historical “zero-party” local-government elections in 1987/1996: https://www.iriadng.org/wp-content/uploads/2024/06/The-Electoral-Hub-EMBs-in-Nigeria-Since-1958_opt.pdf and https://www.hrw.org/legacy/reports/1996/Nigeria.htm
+
+### W07 cross-week resolution
+
+W07's body outline (lines 717–721) named party-system and manifesto objectives that were not in its body text. W08's body now supplies party-system content at lines 838–980 and manifesto content at lines 981–994. The package coverage entry `COV-GOV-T3-W07-PARTY-SYSTEM-MANIFESTO` is now PARTIAL with this cross-week evidence; `GOVERNMENT-T3-W07-SUBTOPICS-MISSING` is non-blocking. W07's body remains unchanged.
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W08-ONE-PARTY-EXAMPLES-FACT` — update the country examples and distinguish strict single-party from dominant/hegemonic arrangements.
+- `GOVERNMENT-T3-W08-TWO-PARTY-FACT` — distinguish exactly two legal parties from two-party dominance.
+- `GOVERNMENT-T3-W08-MULTI-PARTY-FACT` — qualify coalition formation and the USA example.
+- `GOVERNMENT-T3-W08-MERITS-DEMERITS-FACT` — present system effects as context-dependent rather than inevitable.
+- `GOVERNMENT-T3-W08-MANIFESTO-FACT` — distinguish manifesto commitments from guaranteed or automatically enforceable outcomes.
+- `GOVERNMENT-T3-W08-REVISION-CONTEXT` — explain zero-party in its historical Nigerian context and resolve the separation-of-powers questions' placement.
+- `GOVERNMENT-T3-W08-READING-VERIFICATION` — verify exact editions and page contents.
+- `GOVERNMENT-T3-W08-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 18 stems.
+- `GOVERNMENT-T3-W08-WEEKEND-MCQ-AMBIGUITY` — correct the undefined/missing options and overbroad claims before keying.
+
+No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
