@@ -510,3 +510,74 @@ The source's comparison is too absolute:
 - `GOVERNMENT-T3-W03-WEEKEND-MCQ-AMBIGUITY` — revise ambiguous MCQs before creating a key.
 
 No lesson, correction, source rule, asset, answer key or marks were created. The source's wording, headings and spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-WK-T3-W04 — Constitutionalism indexing
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and dated constitutional fact-check evidence only; no lesson, answer key, marks, correction, asset or parser rule is authored here.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37 on the original legacy `.doc`.
+- Complete span: lines 339–410; UTF-8 span SHA-256: `9863f0415e77c00769a39fecddd3190f220dbbcb22dfdef941c8ce90cad1f42a`.
+- Printed label: `WEEK FOUR` at line 339; topic: `CONSTITUTIONALISM` at line 340.
+- Scheme entry 4 (preamble lines 16–18) covers meaning, purposes and relationship between the Constitution and constitutionalism; all three appear in this span.
+- Locators refer to Antiword line numbers, not page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are empty rather than inferred from a different extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-W04-SCHEME-CONSTITUTIONALISM | Scheme entry 4 mapping | PARTIAL |
+| COV-GOV-T3-W04-MEANING | Meaning, lines 346–350 | PARTIAL |
+| COV-GOV-T3-W04-PURPOSES | Purposes, lines 352–364 | PARTIAL |
+| COV-GOV-T3-W04-RELATIONSHIP | Constitution/constitutionalism relationship, lines 370–377 | PARTIAL |
+| COV-GOV-T3-W04-GENERAL-REVISION | General revision, lines 379–384 | PARTIAL |
+| COV-GOV-T3-W04-READING | Reading pointers, lines 386–388 | PARTIAL |
+| COV-GOV-T3-W04-ASSESSMENT-KEYS | All exercise blocks | UNRESOLVED |
+| COV-GOV-T3-W04-WEEKEND-PLACEMENT | Weekend MCQs, lines 390–404 | PARTIAL |
+
+Eight coverage entries and seven linked package open items were added. The existing T3 source-alias owner action remains unchanged.
+
+### Meaning and purposes — lines 346–364
+
+The source's core definition—government acting according to the Constitution, with public power defined and limited by fundamental law—is broadly sound. The relationship section correctly distinguishes the Constitution as a body of fundamental rules from constitutionalism as the requirement that government and officials act within those rules. A later teaching correction should emphasize that constitutionalism concerns effective limits on public power, not merely the existence of a written document or a general restriction on all private conduct.
+
+The purposes list needs precision:
+- **Equality before law:** supported by the Constitution's equality and non-discrimination provisions, including sections 17(2)(a) and 42.
+- **Limiting government functions:** consistent with constitutional supremacy and the allocation of legislative, executive and judicial powers (sections 1 and 4–6).
+- **Fundamental human rights:** constitutionalism supports rights protection, but the source's wording as rights only of “the citizen” is too narrow; many Chapter IV rights apply to every person.
+- **Popular sovereignty:** the claim that every adult can vote and be voted for at any political election is overbroad. Section 77(2) voter registration requires Nigerian citizenship, age 18 or above and residence in Nigeria at the time of registration. Eligibility to stand for office is governed by office-specific qualifications (including sections 65, 106, 131 and 177).
+- **Independent courts:** section 46 gives High Courts special original jurisdiction to hear applications for redress for alleged Chapter IV contraventions. The source's statement that only “constitutional courts” can enforce rights and its list of High Courts, Courts of Appeal and the Supreme Court need correction: High Courts have the special original jurisdiction in section 46; appellate courts hear appeals. Do not misstate all three as original enforcement courts or claim that courts are the only institutions that safeguard rights.
+
+### Constitution and constitutionalism — lines 370–377
+
+The source's central distinction is supported: the Constitution establishes the fundamental framework and structures of government; constitutionalism requires public authorities to act within constitutional limits. The sentence that constitutionalism limits “individual actions and activities” is too broad if it obscures the doctrine's central focus on public power. Individuals are governed by law, but that is not the same as the constitutional restraint imposed on government.
+
+### Assessment and reading-marker audit
+
+- `EVALUATION QUESTIONS`: line 366; two questions at lines 367–368.
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 379; five questions at lines 380–384. Questions 1–2 relate to constitutionalism. Questions 3–5 ask about types of constitutions, written constitutions and features of written constitutions; those topics are not taught in this span or listed in the scheme entry.
+- `READING ASSINGMENT`: exact misspelling at line 386; `Essential Government` pp. 74–75 and `Comprehensive Government` pp. 61–62 at lines 387–388. Editions/publication details are absent and neither book was consulted.
+- `WEEKEND ASSINGMENT`: line 390; five MCQs at lines 391–404. Question 1 concerns a “good citizen” and is outside this topic. Question 2 asks about the purpose of a constitution and is only indirectly covered. Question 3 tests the definition of constitutionalism. Question 4 tests flexible constitutions/ease of amendment, and question 5 asks about sources of constitutions; these are not taught in this span. Preserve all stems and do not infer a key from this lesson alone.
+- `THEORY`: line 406; two prompts at lines 407–408.
+- Total: **14 exercise stems** (2 evaluation + 5 general revision + 5 weekend MCQs + 2 theory). No source answer key, marks or marking criteria are supplied. No answers or marks were invented.
+
+### Dated constitutional reference consulted
+
+**PLAC, *Constitution of the Federal Republic of Nigeria, 1999*, updated with the First–Fifth Alterations** (third revision October 2023; reprint September 2024). Used for sections 1, 4–6, 17(2)(a), 22, 36, 39, 42, 46, 65, 77(2), 106, 131 and 177: https://placng.org/i/wp-content/uploads/2023/11/Constitution-of-the-Federal-Republic-of-Nigeria-1999-Updated.pdf
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W04-MEANING-SCOPE-FACT` — clarify constitutionalism as effective limits on public power.
+- `GOVERNMENT-T3-W04-POPULAR-SOVEREIGNTY-FACT` — correct voter and candidate eligibility.
+- `GOVERNMENT-T3-W04-RIGHTS-ENFORCEMENT-FACT` — distinguish High Court original jurisdiction under section 46 from appellate jurisdiction.
+- `GOVERNMENT-T3-W04-REVISION-MISALIGNMENT` — resolve the types/written-constitution questions' placement.
+- `GOVERNMENT-T3-W04-READING-VERIFICATION` — verify exact editions and page contents.
+- `GOVERNMENT-T3-W04-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 14 stems.
+- `GOVERNMENT-T3-W04-WEEKEND-PLACEMENT` — resolve the good-citizen, flexibility and sources-of-constitution items' placement before keying.
+
+No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
