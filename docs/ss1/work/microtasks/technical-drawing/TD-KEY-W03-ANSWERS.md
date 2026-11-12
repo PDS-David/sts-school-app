@@ -54,3 +54,43 @@ The original Week Three XML contains 26 superscript-zero degree markers, one sep
 ## Verification boundary
 
 Original source figures are registered and their file integrity is tested. The construction methods and recoverable numerical values above are keyed; remaining MCQ/assessment marking, teacher approval and student UI rendering are still open.
+
+
+## Source construction marking criteria (proposed teacher rubric)
+
+These are original marking criteria for the supplied construction tasks; they are not claimed to be the source author's original marking scheme.
+
+### Theory Q1 — dimensioned pentagon (10 marks)
+
+- Draw AB=30 mm and construct triangle ABD with AD=70 mm and BD=60 mm (2).
+- Locate C using BC=40 mm and CD=35 mm, selecting the branch consistent with the source vertex order (2).
+- Construct the right-angle locus for E (∠DEA=90°) and intersect it with the circle centred at D, radius DE=55 mm (2).
+- Calculate AE=√(70²−55²)=43.30 mm and show the perpendicular/right-angle condition (2).
+- Join and label A-B-C-D-E in order; maintain dimensions and construction lines legibly (2).
+
+### Theory Q2 — irregular hexagon (10 marks)
+
+- Draw AB=51 mm and the 110° ray at A; locate F at AF=38 mm (2).
+- Draw the 88° ray at B; locate C at BC=30 mm (2).
+- Locate D from AD=70 mm and CD=23 mm using intersecting arcs (2).
+- Locate E from DE=36 mm and EF=30 mm using intersecting arcs (2).
+- Join and label A-B-C-D-E-F-A; retain the correct intersection branch and dimension labels (2).
+
+### General revision — regular polygons on a common 40 mm base (14 marks)
+
+Award 2 marks each for the square, pentagon, hexagon, heptagon, octagon, nonagon and decagon: 1 mark for a correctly located centre/circumcircle using the two-triangle method, and 1 mark for stepping off equal sides and closing the polygon with equal central spacing. The base AB=40 mm is common to all seven figures.
+
+### General revision — nonagon across corners 40 mm (6 marks)
+
+- Draw the circumcircle with diameter 40 mm (1).
+- Divide the horizontal diameter into nine equal parts and construct the endpoint arcs (2).
+- Locate the chord representing one side using the second division and the source general method (1).
+- Step the chord around the circle to obtain nine equal sides and close/label the nonagon (2).
+
+### Area reduction after construction
+
+For an area ratio image:original = 3:5, the linear scale factor is √(3/5)=0.7746 (2 marks). Award remaining marks for a correct pole/ray or geometric-mean construction, parallel corresponding edges, consistent image:original ratio, and a closed similar polygon. Do not use 3/5 as the linear scale factor when the ratio is explicitly an area ratio.
+
+## Residual source data gap
+
+The separate Week Three general-revision pentagon with AB=70, BC=40, DE=75 and AE=80 is referred to as “shown in the figure below”; the supplied source page does not render a complete dimensioned figure for all remaining sides/angles. Do not invent those values. Its full construction rubric requires the original missing figure or a corrected dimensioned statement.
