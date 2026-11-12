@@ -26,7 +26,8 @@
     "TD-SCH-W03 (2026-10-30, master e60b1fe) recorded the 2nd Term week 3 scheme row (parsed row 2, 'WEEK 3:Polygons'): technical-drawing.json now has 5 source_rules (added SS1-SRC-af4868d2c026-R005, SCHEME_ONLY) and 4 coverage entries (added COV-TD-T2-SCH-W03, SUPPORTED, bound to teaching row 13). Evidence: TD-SCH-W03.md.",
     "TD-SCH-W04 (2026-11-07, master 54edac346b11fb480c172f27d4ce7fe0e9ea2c78) indexed the 2nd Term Week 4 scheme row, parsed row 3: “Plain scales” (27 characters; SHA-256 dc7684f7b356a56c10dbdeefe7f7676a5e72e61d4a8c69a06814ff2ec7e600ab). Added source rule SS1-SRC-af4868d2c026-R006 (SCHEME_ONLY, unique full-row anchor) and coverage COV-TD-T2-SCH-W04 (SUPPORTED), bound to the existing WEEK FOUR teaching row parsed row 14, body ID SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd. No supplement, new lesson or source alteration. See TD-SCH-W04.md. Approval and verification remain pending/deferred; testing not run.",
     "2026-11-12 follow-through: added independently authored Weeks Eight–Nine equal-area lesson SUP-SS1-TECHNICAL-DRAWING-T2-W08-W09-EQUAL-AREA with six marked practice questions; both Week 8 and Week 9 scheme coverage entries and both combined-row coverage entries now bind the supplement. Added TD-KEY-W08-W09-ANSWERS.md; six supplement questions are fully keyed (18 marks). Source figure-dependent evaluation items, visual derivatives, formal approval, schema/compiler/importer and student rendering remain outstanding. Package remains PENDING.",
-    "2026-11-12 follow-through: added Week Ten tangency supplement SUP-SS1-TECHNICAL-DRAWING-T2-W10-TANGENCY, bound it to COV-TD-T2-W10-TANGENCY-SUPPLEMENT, and added TD-KEY-W10-ANSWERS.md with four keyed practice items (9 marks). Recorded the source's lower R20 tangency feasibility conflict as a blocking factual open item; no guessed correction."
+    "2026-11-12 follow-through: added Week Ten tangency supplement SUP-SS1-TECHNICAL-DRAWING-T2-W10-TANGENCY, bound it to COV-TD-T2-W10-TANGENCY-SUPPLEMENT, and added TD-KEY-W10-ANSWERS.md with four keyed practice items (9 marks). Recorded the source's lower R20 tangency feasibility conflict as a blocking factual open item; no guessed correction.",
+    "2026-11-12 follow-through: added a separate Week Seven reduction supplement because the existing Week Six enlargement lesson did not fully teach the reduction material in the combined Week Six–Seven source row. Bound it to Week 6/7 reduction and scheme coverage. Also bound the Week Ten scheme row to the Week Ten tangency supplement. Original figure derivatives and source assessment keys remain outstanding."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 1,
@@ -44,8 +45,8 @@
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 42,
     "BLOCKED": 5,
-    "IN_PROGRESS": 6,
-    "PENDING": 105
+    "IN_PROGRESS": 7,
+    "PENDING": 104
   },
   "total": 158,
   "items": [
@@ -1749,8 +1750,8 @@
         "TD-VIS-W06-W07",
         "TD-FACT-ENLARGEMENT-SCOPE"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by TD-WK-W06-W07 on 2026-11-08. The source title identifies reduction; the exact constructions, figures, dimensions, answers and marking evidence are not in the current repository record. The enlargement discrepancy must be resolved separately. Original Week Six–Seven source row has now been inspected and reconciled: both reduction and enlargement are explicitly taught. See TD-FACT-ENLARGEMENT-SCOPE.md for exact construction methods, ratios, dimensions and assessment locators; see TD-VIS-W06-W07.md for all figure mappings.",
+      "status": "IN_PROGRESS",
+      "implementation_reference": "A dedicated Week Seven reduction supplement now exists in technical-drawing.json as SUP-SS1-TECHNICAL-DRAWING-T2-W07-REDUCTION, with four marked practice questions and source ratio examples. The complete combined Week Six–Seven original assessment answer key remains open; this item is not complete.",
       "completion_condition": "Publish original keyed solutions for verified reduction tasks, with complete construction steps and positive integer marking criteria summing to each question's marks. Do not invent dimensions or answer any unresolved enlargement objective."
     },
     {
