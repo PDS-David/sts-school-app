@@ -96,7 +96,7 @@ try {
 }
 
 export type Primary4SourceDelivery =
-  | { source: 'primary4-export' | 'researched-package' | 'archive-correction'; kind: 'matched'; topicId: number; text: string; sourceHash: string; reviewRequired: boolean; reviewFlag: ReviewFlag }
+  | { source: 'primary4-export' | 'researched-package' | 'archive-correction'; kind: 'matched'; topicId: number; text: string; sourceHash: string; reviewRequired: boolean; reviewFlag: ReviewFlag; displayTitle?: string }
   | { source: 'primary4-export' | 'researched-package' | 'archive-correction'; kind: 'withheld'; topicId: number | null; text: string; reason: string; hideFromStudent?: boolean };
 
 function isPrimary4(topic: Primary4Topic): boolean {
@@ -185,6 +185,7 @@ export function resolvePrimary4SourceDelivery(topic: Primary4Topic): Primary4Sou
         sourceHash,
         reviewRequired: false,
         reviewFlag: 'RESEARCHED_VERIFIED',
+        displayTitle: correction.title,
       };
     }
     if (archiveHiddenTopicIds.has(topicId)) {
@@ -261,7 +262,7 @@ export function safePrimary4Topic<T extends Primary4Topic>(topic: T): T {
   }
   return {
     ...topic,
-    ...(delivery.source === 'archive-correction' ? { source_reference: delivery.text, summary: null, generated_assessment_id: null } : {}),
+    ...(delivery.source === 'archive-correction' ? { title: delivery.displayTitle ?? topic.title, source_reference: delivery.text, summary: null, generated_assessment_id: null } : {}),
     primary4_delivery: {
       status: delivery.source === 'primary4-export' ? 'source-export-match' : delivery.source === 'archive-correction' ? 'archive-correction-match' : 'researched-package-match',
       source: delivery.source,
