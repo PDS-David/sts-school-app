@@ -100,13 +100,17 @@ function sourceReference(pkg: LessonPackage, lesson: PackageLesson): string {
 export function assertPrimary4SupplementCorpus(): void {
   const stableKeys: string[] = [];
   for (const pkg of packages) {
-    if (pkg.class_name !== 'Primary 4' || !pkg.subject_name || !pkg.provenance?.content_approval || !pkg.provenance?.pedagogical_verification) {
+    if (pkg.class_name !== 'Primary 4' || !pkg.subject_name || !pkg.provenance?.content_approval ||
+        !pkg.provenance?.pedagogical_verification || !Array.isArray(pkg.lessons)) {
       throw new Error(`Invalid Primary 4 curriculum package metadata: ${pkg.package_id}`);
     }
     for (const lesson of pkg.lessons) {
       stableKeys.push(lesson.id);
-      if (!lesson.title || lesson.objectives?.length < 2 || lesson.lesson?.length < 100 ||
-          lesson.examples?.length < 2 || lesson.activity?.length < 20 || lesson.evaluation?.length < 3) {
+      if (!lesson.id || !lesson.title || !Array.isArray(lesson.objectives) || lesson.objectives.length < 2 ||
+          typeof lesson.lesson !== 'string' || lesson.lesson.length < 100 ||
+          !Array.isArray(lesson.examples) || lesson.examples.length < 2 ||
+          typeof lesson.activity !== 'string' || lesson.activity.length < 20 ||
+          !Array.isArray(lesson.evaluation) || lesson.evaluation.length < 3) {
         throw new Error(`Incomplete Primary 4 lesson package: ${lesson.id}`);
       }
       if (!lesson.term && !lesson.term_label && !pkg.term_label) {
