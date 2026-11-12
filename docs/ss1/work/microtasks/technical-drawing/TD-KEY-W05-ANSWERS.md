@@ -1,29 +1,41 @@
-# TD-KEY-W05-ANSWERS — Week Five keyed scale constructions
+# TD-KEY-W05-ANSWERS — Week Five diagonal and chordal scales
 
-**Status:** IN PROGRESS — a source-backed student lesson and five marked practice items are now in the package. The figure-dependent answer-key items and source-owner decisions remain open.
+**Status:** PARTIAL — all source-text readings and answerable objective questions are keyed. The chordal-scale granularity conflict and source-centre label remain open.
 
-## Package implementation
+## Diagonal scale worked readings
 
-- Lesson ID: `SUP-SS1-TECHNICAL-DRAWING-T2-W05-DIAGONAL-CHORDAL-SCALES`
-- Coverage bindings: diagonal scale and chordal scale.
-- Includes construction of three-unit diagonal scales, diagonal interpolation, four source worked readings, 5° chordal-scale construction, 25° worked construction and five marking-rubric items.
+- 4.66 cm = **46.6 mm** = 40 mm + 6 mm + 0.6 mm.
+- 2.49 cm = **24.9 mm**.
+- 1.93 m = **19.3 dm** = 193 cm.
+- 3.93 dm = **39.3 cm** = 393 mm.
+- 3 cm represents 1 m, maximum 4 m: total scale length 120 mm.
+- 1/4 full size, maximum 5 dm: total scale length 125 mm.
 
-## Recovered worked readings
+## Chordal scale
 
-- 4.66 cm = 46.6 mm.
-- 2.49 cm = 24.9 mm.
-- 1.93 m = 19.3 dm.
-- 3.93 dm = 39.3 cm.
-- 3 cm = 1 m, maximum 4 m: 120 mm scale.
-- The 2/5 full-size, 3 dm evaluation scale remains figure-dependent for the k−n difference.
+A quadrant is 90°. Dividing it into 18 equal arcs gives 5° per division. For a chordal scale, each graduation is the chord subtending the corresponding central angle at the same radius. The source demonstrates a 25° construction and describes the method as useful for angles that are difficult to construct directly.
 
-## Blocking source questions
+## Evaluation / weekend answers
 
-- The source claims 5° chordal graduations but assigns 24°, 27° and 37° construction questions. A finer graduation/interpolation method or correction is required.
-- The source text's centre label conflicts with the chordal diagram; an authoritative reading is required.
-- The exact k−n difference must be read from the original assessment figure.
-- Figures F01–F07 must be faithfully converted and bound before the construction lessons can be marked fully complete.
+- Evaluation Q1: diagonal scale is a graduated scale using diagonals to interpolate a finer subdivision; the source defines three units as centimetres, millimetres and tenths of a millimetre.
+- Weekend Q1: **B — scale of chords** constructs 27° (but a 5°-only scale does not directly give 27°; this question exposes the source's own inconsistency).
+- Weekend Q2: **B — diagonal scale** has the highest degree of linear measurement accuracy among the listed scales.
+- Weekend Q3: **B — diagonal scale** has three units of measurement.
+- Weekend Q4: **A — diagonal scale** uses centimetres, millimetres and tenths of a millimetre.
+- Weekend Q5: **A — 3:4** is a reduction ratio.
+- General evaluation Q1: 4 cm represents 2 dm, maximum 5 dm → RF 1:5 and scale length **100 mm**.
+- General evaluation Q2: 2/5 full size, maximum 3 dm → scale length **120 mm**.
+- General evaluation Q3: 27° is not a multiple of 5°; the source supplies no interpolation/finer graduation, so an exact 27° answer cannot be derived from the stated scale alone.
+- General evaluation Q4: 15°, 75°, 105°, 120° and 150° are all multiples of 5° and can be read directly from a 5° chordal scale.
+- Theory Q1: construct 50° from the 5° chordal graduation.
+- Theory Q2: 2/5 full size to 3 dm → scale length **120 mm**; construct the diagonal grid to read centimetres and millimetres.
+
+## Source conflicts retained
+
+- A 5° scale cannot directly represent 24°, 27° or 37°. Use a finer scale or a stated interpolation procedure; neither is supplied in the source.
+- The text at body child 962 reads “With 0⁰ as centre” while the quadrant figure marks centre A. The likely intended notation is the zero-degree mark/centre reference, but this is not silently normalized.
+- The exact k−n difference in Evaluation Q3 remains figure-dependent and must be read from the registered original image.
 
 ## Verification boundary
 
-No guessed answer or replacement source geometry is introduced. Testing, compiler/importer, app rendering, approval and deployment remain deferred.
+All seven Week Five AutoCAD/WMF figures have been extracted, converted and registered; source-asset hashes/byte counts are tested. Figure reading and the chordal source conflicts remain open. No teacher approval or student-rendering verification is claimed.
