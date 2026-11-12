@@ -12,9 +12,9 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. Content approval remains PENDING; orth
 
 ## Implementation
 Added three lessons to `backend/src/db/ss1/subjects/yoruba.json`:
-- `SUP-SS1-YO-T3-W08-EDE`: argumentative essay definition, two positions, structure, linking expressions, worked outline and practice.
-- `SUP-SS1-YO-T3-W08-ASA`: source-described funeral customs, careful cultural attribution, and respectful critical reading.
-- `SUP-SS1-YO-T3-W08-LIT`: oral poetry, oku-pipe, iremoje and an analysis method.
+- `SUP-SS1-YORUBA-T3-W08-EDE`: argumentative essay definition, two positions, structure, linking expressions, worked outline and practice.
+- `SUP-SS1-YORUBA-T3-W08-ASA`: source-described funeral customs, careful cultural attribution, and respectful critical reading.
+- `SUP-SS1-YORUBA-T3-W08-LIT`: oral poetry, oku-pipe, iremoje and an analysis method.
 
 Each lesson has two original practice questions, complete answers and marking criteria whose marks add exactly to the question totals. Each lesson has a body SHA-256, source locator, attribution and PENDING content approval / DEFERRED verification state.
 
