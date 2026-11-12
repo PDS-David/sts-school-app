@@ -29,14 +29,14 @@ The source provides no answer key or marks. The scheme below keys text-answerabl
 
 1. **No correct option as printed.** The appropriate instrument for the internal diameter of a test tube is vernier callipers using the inside jaws. The options list metre rule, ordinary callipers, micrometer screw gauge and tape rule. Add “vernier callipers” as the correct option; do not force an incorrect option.
 2. **(d)** is the false statement: weight at the equator and poles is not the same because effective gravitational acceleration differs. The mass remains the same.
-3. **Figure-dependent; do not key from the low-resolution source image.** Replace with a clear micrometer reading question whose main-scale and thimble readings are legible.
+3. **Figure-dependent; do not key from the low-resolution source image.** Replace with the new original measurement-reading SVG: main scale 17.00 mm, 11 thimble divisions at 0.01 mm each, total 17.11 mm. The SVG is `PHYS-ASSET-T1-W02-MEASUREMENT-READING-EXAMPLES`; it is not a source figure.
 4. **(a) Spring balance.**
 5. **(b) Pipette** for measuring/transferring a small measured volume of liquid. Note that this is not taught in detail in the source Week Two body; teacher may remove it if outside the intended scope.
 6. **(a) `MLT⁻²`** — dimension of force. This is a cross-week dimensional-analysis item.
-7. **Figure-dependent; do not key from the low-resolution source image.** Replace with a clear vernier-calipers reading question.
+7. **Figure-dependent; do not key from the low-resolution source image.** Use the new original measurement-reading SVG: 4.30 cm + 7×0.01 cm = 4.37 cm. It is not a source figure.
 8. **(c) Micrometer screw gauge** for the diameter of a thin constantan wire.
 9. **(c) Relative density** — measured by a hydrometer.
-10. **Figure missing/unclear in the rendered source.** Replace with a clear instrument diagram and a keyed reading; do not infer a value from the option list alone.
+10. **Figure missing/unclear in the rendered source.** Replace with a clear original diagram and keyed reading; the new SVG also provides a second vernier example (1.70 cm + 6×0.01 cm = 1.76 cm). Do not infer a value from the source option list alone.
 
 ### THEORY — page 10 (22 marks)
 
