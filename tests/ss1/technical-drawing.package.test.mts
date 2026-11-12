@@ -330,3 +330,15 @@ test('Week Eight–Nine has fully dimensioned original pentagon replacements', a
   assert.match(lesson.body, /area = \|13,000−2,000\|\/2 = 5,500 mm²/);
   assert.match(lesson.body, /AE=√\(70²−55²\)/);
 });
+
+test('Week Four millimetre unit mismatch has a clear decimetre-reading alternative', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES');
+  assert.ok(lesson, 'Week Four plain-scales lesson missing');
+  const q = lesson.practice.find(item => item.id === 'TD-W04-KEY-Q03');
+  assert.ok(q, 'decimetre-reading replacement exercise missing');
+  assert.match(q.question, /read up to 6 m in decimetres/);
+  const item = subject.open_items.find(entry => entry.id === 'TD-T2-W04-Q6-UNIT-MISMATCH');
+  assert.ok(item, 'original source unit mismatch must remain documented');
+  assert.equal(item.blocks_delivery, false);
+});
