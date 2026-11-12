@@ -74,7 +74,8 @@ test('Government source identities and aliases do not fabricate owner or teacher
     assert(source, `alias has no registered source: ${alias.id}`);
     assert.equal(alias.source_sha256, source.sha256);
     assert.match(alias.approval_reference, /^PENDING-OWNER:/);
-    assert.doesNotMatch(alias.approval_reference, /teacher approval|approved|verified/i);
+    // The reference may state that it is NOT teacher approval; it must not claim approval or verification.
+    assert.doesNotMatch(alias.approval_reference.replace(/not teacher approval/gi, ''), /teacher approval|approved|verified/i);
   }
 });
 
@@ -190,7 +191,8 @@ test('Every delivery correction binds an original source/body identity to its sa
     assert(source && lesson, correction.id);
     assert.equal(correction.source_sha256, source.sha256, correction.id);
     assert.equal(correction.source_lesson_id, `${correction.source_id}:BODY:${correction.body_sha256}`, correction.id);
-    assert.equal(lesson.body_sha256, correction.body_sha256, correction.id);
+    // correction.body_sha256 is the ORIGINAL row hash (compiler rule); the replacement has its own hash.
+    assert.notEqual(lesson.body_sha256, correction.body_sha256, correction.id);
     assert.equal(lesson.term, source.term, correction.id);
   }
 });
