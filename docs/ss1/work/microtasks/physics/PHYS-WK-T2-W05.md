@@ -1,62 +1,70 @@
 # PHYS-WK-T2-W05 — Second Term Week Five: heat transfer
 
-Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — the exact registered source row and rendered pages have been inspected. Lesson content approval remains PENDING and verification remains DEFERRED.
 
-## Registered source identity
+## Registered source identity and verification
 
 - Source ID: `SS1-SRC-2c924c964660`
 - Archive member: `SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc`
-- Registered member SHA-256: `3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7`
-- Parsed row: index 4, `WEEK FIVE`
+- Member SHA-256: `3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7`
+- Member size: 466,432 bytes
+- Parsed row: index 4, WEEK FIVE, “Heat Transfer - Conduction, Convection, Radiation and Their Applications”
 - Parsed body ID: `SS1-SRC-2c924c964660:BODY:b9ff6beb9eabb79d76839bfdefbdc9bf074d5950aaf71a329193c0f8f7e939bd`
 - Parsed body length: 6,517 characters
 - Parsed body SHA-256: `b9ff6beb9eabb79d76839bfdefbdc9bf074d5950aaf71a329193c0f8f7e939bd`
+- Original member recovered in CI artifact 13902689395 from workflow run 43126374868. The run successfully executed `scripts/ss1/prepare_sources.py`, which verifies the archive SHA-256, exact manifest membership, member sizes and member SHA-256 values.
 
-## Student supplement authored
+## Source content inventory
 
-- Lesson ID: `SUP-SS1-PHYSICS-T2-W05-HEAT-TRANSFER`
-- Body SHA-256: `a169a0ed558812a3544d7c849d3ecfb291117a9c20047526d0d6d5a43ffa2bfc`
-- Body length: 5,914 characters
-- Practice: 16 fully answered questions, 38 marks; marking rubrics checked.
+The source row covers:
+- Conduction: transfer through a material; metals as good conductors; wooden/ebonite handles, metal cooking utensils, thick brick walls and the stone-floor/carpet comparison.
+- Convection: transfer in liquids and gases; domestic water boilers, motorcar cooling, sea/land breezes, chimneys, ventilation, bonfires, room radiators, thermals/glider lift, wind and wall-mounted air conditioners.
+- Radiation: transfer without a material medium; radiant energy/infrared; radiometer, thermopile and Leslie cube; clothing, factory roofs, light-coloured walls and cooking-surface applications.
+- Thermos/vacuum flask: stopper, vacuum between double walls, silvered surfaces and insulating supports.
+- Evaluation/theory: definitions of the three heat-transfer methods, two radiation applications and the thermos-flask construction question.
+- Weekend assignment: five MCQs on silvering, dark clothing, wool as an insulator, copper/lead conductivity and the stone-floor/carpet comparison.
 
-It covers:
-1. Conduction, including the role of mobile electrons in metals and practical insulators.
-2. Convection in liquids and gases, including density-driven convection currents.
-3. Radiation as electromagnetic transfer that needs no medium.
-4. Sea breeze by day and land breeze at night.
-5. Vacuum flask construction: vacuum gap, silvered surfaces, insulating stopper/supports and tight lid.
-6. Applications and common misconceptions.
+The evaluation and theory sections repeat the same two prompts; one answer key for each distinct prompt is sufficient.
 
-Five coverage entries were added for conduction, convection, radiation, breezes/applications and vacuum flask operation. Each is `IMPLEMENTED_EQUIVALENT` based on the authored lesson, not teacher approval.
+## Source corrections and lesson additions
 
-## Close-equivalent comparison (not the registered original)
+Correction record: `CORR-PHYSICS-T2-W05-HEAT-TRANSFER`.
 
-SchoolGist, *Physics SSS 1 Second Term*, Week Five, PDF lines 414–510, covers conduction, convection, radiation, practical applications, sea/land breeze, vacuum flask components, classwork and assignment.
+- The source reverses/contradicts radiation-surface behaviour. Dull dark surfaces are generally good absorbers and good emitters; shiny polished surfaces are generally poor absorbers and poor emitters and reflect more radiation.
+- Thermal radiation is electromagnetic; at ordinary temperatures it is mainly infrared. Infrared is not the name for all electromagnetic radiation.
+- The source duplicates “conduction” in the stopper explanation. The corrected explanation is that the stopper reduces conduction and limits air movement/convection and evaporation.
+- The source's radiator/room-shadow wording is unclear and is not repeated. The lesson explains rising warm air and convection currents accurately.
+- The source weekend statement that a stone floor feels warm while a carpet feels cold is false. A stone floor usually feels colder because it conducts energy away from the feet faster; carpet traps air and insulates.
+- The lesson body was expanded to include source-aligned applications that were previously missing: brick walls, stone floor/carpet, water boilers, engine cooling, chimneys, ventilation, bonfires, room radiators, thermals, winds, air conditioners, radiometer, thermopile and Leslie cube.
 
-Reference: https://schoolgist.ng/storage/postFiles/SS1-Physics-2nd-Term-Lesson-Note-pdf.pdf
+## Source assessments and answer keys
 
-The PDF is used as a close-equivalent scope check only. It is not represented as the original registered .doc body. The original body text and figures have not been inspected in this execution.
+Eight distinct source assessment items were added as Q17–Q24:
+- Q17: definitions of conduction, convection and radiation (3 marks).
+- Q18: two applications of radiation (2 marks).
+- Q19–Q23: all five weekend MCQs (5 marks).
+- Q24: thermos-flask construction and heat exchange (5 marks).
 
-## Remaining source-dependent work
+The two evaluation questions are repeated verbatim in the theory section, so they are not duplicated. Added source assessment practice totals 15 marks. The lesson now has 24 fully answered questions.
 
-1. Inspect the registered original member or a verified extraction of parsed row 4.
-2. Compare the exact source's definitions, examples, applications, diagrams, classwork, assignment and theory items.
-3. Reconcile any formula/unit/notation issues and inventory figures under `PHYS-VIS-T2`.
-4. Confirm which close-equivalent assessment questions actually occur in the original before claiming exact answer-key coverage.
-5. Mark the queue task complete only after that reconciliation.
+## Rendered-source and visual disposition
 
-## Checks performed
+The original .doc was rendered privately to PDF. WEEK FIVE occupies source pages 9–12:
+- Page 10 contains a low-resolution conduction-rod/heat-flow figure. A dedicated original SVG replacement is still required; task `PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM` and open item `PHYSICS-T2-W05-CONDUCTION-DIAGRAM` have been added and block delivery until completed.
+- Page 12 contains the thermos-flask question but no source flask diagram. The package already has original asset `PHYS-ASSET-T2-W05-VACUUM-FLASK`, attached to this lesson, which supplies the required labelled cutaway schematic. It is not represented as a recovered source figure.
+- No other instructional figures were visible on pages 9–12; the recurring provider logo is a watermark, not a teaching asset.
 
-- Body SHA-256 recorded.
-- All 16 practice questions have complete answers and marking totals: 38 marks.
-- Content approval remains `PENDING`; verification remains `DEFERRED`.
-- No importer, database or device test is claimed.
+## Package mapping
 
+- Existing Week Five coverage entries remain `IMPLEMENTED_EQUIVALENT` and now include exact original-row evidence.
+- Lesson: `SUP-SS1-PHYSICS-T2-W05-HEAT-TRANSFER`
+- Updated body SHA-256: `56fe0d8e691501b99043eb99e99736f2cdb2bf0b7f67771da3dd738e121f81a1`
+- Practice: 24 questions; the new source-aligned assessment block adds 15 marks.
+- `content_approval=PENDING`; `verification=DEFERRED`.
 
-## Original-source inspection completed — 2026-11-12
+## Checks
 
-- Exact source member: hash-verified original registered .doc; full rendered page range: 9–12.
-- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
-- Source-row disposition: WEEK FIVE: conduction, convection, radiation and thermo flask. Page 10 has the conduction-rod figure; the source does not provide a clear vacuum-flask diagram. Evaluation and weekend questions are present without answer/marking keys in the source. The new heat-transfer SVG and existing vacuum-flask SVG are original instructional equivalents.
-- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
-- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.
+- Original archive staging and Physics member verification: passed in workflow run 43126374868.
+- Original row text and rendered pages 9–12 inspected.
+- JSON parse, body SHA-256, question-ID uniqueness, answer presence, marking totals, queue recount and coverage references checked before commit.
+- Full package tests, importer and SVG safety for this new commit: not yet run; testing remains deferred until CI.

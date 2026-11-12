@@ -1,68 +1,68 @@
 # PHYS-WK-T2-W03 — Second Term Week Three: thermal expansion of solids
 
-Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — the exact registered source row has now been inspected. Lesson content approval remains PENDING and verification remains DEFERRED.
 
-## Registered source identity
+## Registered source identity and verification
 
 - Source ID: `SS1-SRC-2c924c964660`
 - Archive member: `SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc`
-- Registered member SHA-256: `3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7`
-- Parsed row: index 2, `WEEK THREE`, title `Expansion of Solid, Effect and Applications of Expansion`
+- Member SHA-256: `3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7`
+- Member size: 466,432 bytes
+- Parsed row: index 2, WEEK THREE, “Expansion of Solid, Effect and Applications of Expansion”
 - Parsed body ID: `SS1-SRC-2c924c964660:BODY:35319222af7c43db21bfd51b1f897b2b74d81ebe320d3b8f97de427db549e303`
 - Parsed body length: 2,792 characters
 - Parsed body SHA-256: `35319222af7c43db21bfd51b1f897b2b74d81ebe320d3b8f97de427db549e303`
+- Original member recovered in CI artifact 13902689395 from workflow run 43126374868. The run successfully executed `scripts/ss1/prepare_sources.py`; that script checks the full source archive SHA-256, exact manifest membership, each member size and each member SHA-256. The three Physics member sizes and hashes were also independently checked against `SOURCE_ASSIGNMENTS.csv`.
 
-The original member bytes are registered and previously hashed. The source body text itself was not retrievable in this execution session; the parsed-row manifest exposes the body ID, title, length and hash, not its text. The original body has not been guessed or reconstructed.
+## Source content inventory
 
-## Scheme-level objective and package mapping
+The scheme objective is one combined objective: expansion of solids, its effects and applications. The original row teaches:
 
-The source scheme objective is thermal expansion of solids, effects and applications. The existing coverage entry `COV-PHYS-T2-W03-OBJ-1` remains `IMPLEMENTED_EQUIVALENT` and now points to the exact parsed body identity above and the authored supplement:
+- Effects/applications: hot-water cracking of a glass tumbler from uneven expansion; noise from zinc roofing; bridge rollers; bottle-stopper removal; concrete expansion spaces; railway-track gaps; bimetallic strips in thermostats.
+- Advantages: fire alarms/electric bells, wheel-rim fitting, bimetallic thermometers, hot riveting and bimetallic temperature controls/electric cookers.
+- Disadvantages: glass cracking, watch-balance temperature effects, bridge movement, overhead-wire sag, railway-track distortion and pipe bursting.
+- Evaluation: (1) mention four effects; (2) mention four advantages and disadvantages.
+- Reading assignment: New School Physics, pp. 37–42.
+- Weekend assignment: five multiple-choice questions on railway expansion gaps, glass cracking, bottle stoppers, useful applications and cooling of solids.
+- Theory: the same two prompts as the evaluation section. These are duplicates, not four distinct theory questions.
 
+There is no formula or unit prescribed in the Week Three source row. The lesson's linear-expansion calculation is explicitly labelled as a Week Four extension.
+
+## Rendered-source and visual disposition
+
+The original .doc was rendered privately to PDF for inspection. WEEK THREE occupies source pages 6–7. Those pages contain a repeated provider logo/header watermark and the text listed above; there is no instructional diagram or figure in the row. The watermark is not treated as a teaching asset. No image asset is required for this row. The wider three-term visual inventory remains open under `PHYSICS-SOURCE-VISUAL-INVENTORY`.
+
+## Source corrections and factual disposition
+
+Correction record: `CORR-PHYSICS-T2-W03-THERMAL-EXPANSION`.
+
+- The source says overhead wires sag because of contraction in winter. The student lesson correctly explains that wires expand and sag more in heat; cooling contracts them.
+- The bottle-stopper example is clarified: warming the glass neck enlarges its opening and can loosen the stopper.
+- “Bursting of water metal pipes” is clarified: freezing water expands inside a pipe; the metal pipe is not simply bursting because it expands.
+- The source's bridge disadvantage sentence is incomplete in the original rendered document. Its missing ending is not guessed; the lesson independently explains thermal movement and structural damage.
+- The watch-balance statement says expansion makes the watch fast. This is not repeated. Expansion of an uncompensated balance wheel increases its moment of inertia and tends to lengthen its oscillation period; the total watch rate also depends on the hairspring and temperature compensation. See the Seiko Museum and Watch Museum references in the correction record. Bounded follow-up `PHYS-FACT-T2-W03-WATCH-BALANCE` is resolved.
+
+## Assessment answer-key coverage
+
+Seven source-aligned assessment items were added to `SUP-SS1-PHYSICS-T2-W03-THERMAL-EXPANSION-SOLIDS`:
+
+- Q14–Q18: all five source weekend MCQs, with answer options, keyed answers and one mark each.
+- Q19: the evaluation/theory prompt on four effects of thermal expansion, keyed for four marks.
+- Q20: the repeated evaluation/theory prompt on four advantages and four disadvantages, keyed for eight marks.
+
+The original evaluation and theory sections repeat the same two prompts; one keyed item for each distinct prompt covers both. Added source-assessment practice totals 17 marks. The lesson now contains 20 questions with complete answers and marking arrays. Each new item's marking sums to its question total.
+
+## Package mapping
+
+- Coverage: `COV-PHYS-T2-W03-OBJ-1` remains `IMPLEMENTED_EQUIVALENT`, bound to the exact source body identity and the authored supplement.
 - Lesson: `SUP-SS1-PHYSICS-T2-W03-THERMAL-EXPANSION-SOLIDS`
-- Updated body SHA-256: `ab0a245ab4c6646935d76fa3fcd3176539988299a8a2f8fab6c7de6a6d65f59c`
-- Lesson body: 4,919 characters
-- Practice: 13 fully answered questions, 31 total marks; every marking breakdown sums to its question total.
+- Existing lesson body SHA-256 is unchanged; only the practice array and provenance locator were updated.
+- `content_approval=PENDING`; `verification=DEFERRED`.
 
-The lesson now explains the particle model, everyday effects, bridge/road/rail movement, glass cracking, roof-sheet noise, overhead-wire sag, bimetallic strips, thermostats, shrink fitting, hot riveting, engineering precautions and a clearly labelled linear-expansion extension for Week Four. It corrects two common oversimplifications: overhead wires sag more in heat (not because of winter contraction), and pipe bursting from freezing is caused by water expanding inside the pipe.
+## Checks
 
-## Close-equivalent source comparison (not the registered original)
-
-The public SchoolGist PDF, *Physics SSS 1 Second Term*, Week Three, lines 234–296, is a close-equivalent comparison. It identifies the same week topic and lists:
-- Glass cracking from uneven heating;
-- Zinc-roof cracking/noise;
-- Bridge rollers, concrete movement gaps and railway expansion allowance;
-- Bottle-stopper removal and bimetallic strips/thermostats;
-- Useful applications (fire alarms, wheel/rim fitting, bimetallic thermometers, hot riveting);
-- Disadvantages and two classwork prompts;
-- Five assignment MCQs and two theory prompts.
-
-The close-equivalent PDF is **not** asserted to be the registered original .doc member. Its text is used only to corroborate scope and inventory likely exercise types. No source wording or exercise text was copied.
-
-Reference: https://schoolgist.ng/storage/postFiles/SS1-Physics-2nd-Term-Lesson-Note-pdf.pdf
-
-Secondary scope corroboration: https://ecolebooks.com/nigeria/posts/week-3-ss1-second-term-physics-notes/
-
-## Remaining source-dependent work
-
-1. Retrieve and inspect the exact registered member `SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc` (SHA-256 above), or a verified extraction of parsed row 2.
-2. Compare every original source subtopic, classwork item, assignment/theory question, formula/unit and notation against the supplement.
-3. Inventory all figures/embedded objects in the row and record their disposition under `PHYS-VIS-T2`.
-4. Add an answer key for each original assessment item that is genuinely present and in scope; do not claim that the close-equivalent PDF proves the original assessment text.
-5. Only then change this queue item to `IMPLEMENTED_TESTING_DEFERRED`.
-
-## Checks performed
-
-- Recomputed the authored lesson body SHA-256 from its UTF-8 text.
-- Checked all 13 question mark totals by arithmetic: 31 marks in total.
-- Confirmed each marking rubric sums to the associated question's marks.
-- Kept lesson content approval `PENDING` and verification `DEFERRED`.
-- No schema test, importer, database or device test is claimed here.
-
-
-## Original-source inspection completed — 2026-11-12
-
-- Exact source member: hash-verified original registered .doc; full rendered page range: 5–7.
-- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
-- Source-row disposition: WEEK THREE: thermal expansion of solids, effects and applications. Source includes two evaluation questions, a five-item weekend MCQ block and two theory questions. The rendered row contains no substantive embedded figure; the supplement provides the explanatory thermal-expansion content and keyed practice.
-- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
-- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.
+- Original archive staging step and Physics member hashes: passed in workflow run 43126374868.
+- Independently checked the three extracted Physics member sizes and SHA-256 values against the manifest: passed.
+- Source row text and rendered pages inspected: passed.
+- JSON parse, question-ID uniqueness, answer presence, marking totals and coverage references: checked before commit.
+- Full package tests, SVG safety, importer and database/device verification: not run in this item; testing remains deferred.
