@@ -276,3 +276,21 @@ test('Week Two missing-arc objective has a dimensioned original replacement', as
   assert.ok(sourceGap, 'missing original source figure must remain documented');
   assert.equal(sourceGap.blocks_delivery, false, 'original alternative covers the objective');
 });
+
+test('Week Five non-multiple chord angles have a precise fixed-radius alternative', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W05-DIAGONAL-CHORDAL-SCALES');
+  assert.ok(lesson, 'Week Five scales lesson missing');
+  const q = lesson.practice.find(item => item.id === 'TD-W05-KEY-Q06');
+  assert.ok(q, 'fine-chord alternative practice missing');
+  assert.equal(q.marks, q.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+  assert.match(lesson.body, /R=100 mm/);
+  assert.match(lesson.body, /41\.58 mm/);
+  assert.match(lesson.body, /46\.69 mm/);
+  assert.match(lesson.body, /63\.46 mm/);
+  for (const id of ['TD-T2-W05-CHORD-ANGLE-GRANULARITY', 'TD-T2-W05-CHORD-CENTRE-LABEL']) {
+    const item = subject.open_items.find(entry => entry.id === id);
+    assert.ok(item, `source discrepancy missing: ${id}`);
+    assert.equal(item.blocks_delivery, false);
+  }
+});
