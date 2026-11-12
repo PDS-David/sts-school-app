@@ -1,6 +1,10 @@
 # Consolidated SS1 Further Mathematics review — PR #639
 
-The consolidated package currently includes 24 lesson packages (9 First Term, 9 Second Term, 6 Third Term), 85 coverage records, 31 open review items and 23 registered visual assets. It carries the First Term repairs, the full Second Term lesson set, and the source-available Third Term lessons.
+The consolidated package currently includes 25 lesson packages (10 First Term, 9 Second Term, 6 Third Term), 86 coverage records, 31 open review items and 24 registered visual assets. It carries the First Term repairs, the full Second Term lesson set, and the source-available Third Term lessons.
+
+First Term Week 6 work added in this continuation:
+- Added a full revision lesson spanning indices, logarithms, set operations and two-/three-set Venn counting, closing the source's set-theory revision gap at the replacement-content level.
+- Kept the separate 50-mark First Term periodic test with answer key and marking guide.
 
 Third Term work added in this continuation:
 - Expanded each of the six available Third Term lessons to 7–9 keyed practice questions with criterion-level marking.
