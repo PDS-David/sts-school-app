@@ -158,3 +158,26 @@ A focused regression test file covers:
 - Test users/parent/teacher roles and a test environment for student, teacher and parent delivery journeys.
 
 Until these are available, the five classes remain **INCOMPLETE**. This audit deliberately does not equate the existence of class rows or generic subjects with curriculum completion.
+
+
+## 9. Follow-up verification: revised Primary 1–3 curriculum structure
+
+A second check of NERDC's live curriculum portals exposes an important classification issue that must be resolved before changing subject registration:
+
+- NERDC's **New Curriculum Subjects** page for Basic Education (Primary 1–3) lists a minimum of 6 and maximum of 7 subject groups: English Studies, Mathematics, Nigerian Languages, Basic Science and Technology (BST), Religion and National Values (RNV), Cultural & Creative Arts (CCA), and optional Arabic Language. The RNV description says Social Studies, Civic Education and Security Education are themes within that curriculum, and CRS and Islamic Studies themes should be taught in separate classes.
+- The Federal Ministry of Education's 3 September 2025 press release describes the Primary 1–3 load as 9–10 subjects and states that Nigerian History is compulsory from Primary 1 to JSS 3.
+- NERDC's revised curriculum landing page links to separate revised Primary 1, Primary 2 and Primary 3 curriculum documents. Its legacy Primary 1–3 curriculum index and subject listing still expose older subject names and groupings.
+
+These sources are not safely reconciled by simply treating every theme as a separate subject, nor by counting only the portal's top-level groups. The earlier table in Section 3 is therefore a **provisional policy-level subject inventory**, not a verified class registration manifest. Before implementation, map each Primary 1, 2 and 3 class against its actual revised grade-level curriculum document and record whether the school is implementing the new grouping or a transitional approved offering. Preserve legacy subject rows and historic scores while making that mapping explicit.
+
+Official references checked 13 November 2026:
+- NERDC, New Curriculum Subjects (Primary 1–3): https://nerdc.org.ng/CurriculumStructure.aspx
+- NERDC, New Revised Basic Education Curriculum (separate Primary 1, 2 and 3 links): https://www.nerdc.gov.ng/content_manager/new_curriculum_home.html
+- Federal Ministry of Education, press release (3 September 2025): https://nerdc.gov.ng/content_manager/pdf_files/Press%20Release%20On%20New%20FG%20Curriculum.pdf
+- NERDC, legacy Primary 1–3 curriculum index: https://www.nerdc.gov.ng/content_manager/pri1-3.html
+
+The revised grade-level document links were reachable from the official NERDC page but the document host returned HTTP 403 to this audit client. The full grade-level PDFs must therefore be supplied or made accessible before a source-by-source term/topic crosswalk can be claimed.
+
+## 10. Current execution boundary
+
+The existing branch remains one commit ahead of, and zero commits behind, `master` at the time of this follow-up check. This follow-up changes the audit evidence only; it does not change class-resolution, promotion, subject seeding, student delivery, or production data. No curriculum content or delivery status is marked complete without the missing source and runtime evidence.
