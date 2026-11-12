@@ -34,6 +34,7 @@ export function buildHomeEconomicsImportPlan() {
     order_index: lesson.week,
     title: lesson.title,
     source_reference: [
+      `CURRICULUM_KEY: ${lesson.id}`,
       'PROVENANCE',
       'Material type: researched scheme sequence with newly authored teaching content.',
       'Scheme basis: Lagos State Government Ministry of Education Unified Scheme of Work for Primary/Basic 4, transcribed by Syllabus.ng.',
