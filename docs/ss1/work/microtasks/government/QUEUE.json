@@ -36,10 +36,10 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 32,
     "VISUAL_DISPOSITION": 2,
-    "LESSON": 25
+    "LESSON": 26
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 29,
+    "IMPLEMENTED_TESTING_DEFERRED": 30,
     "PENDING": 46,
     "BLOCKED": 1
   },
@@ -1340,8 +1340,8 @@
         "GOV-INV-T2",
         "GOV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12. Verified source member SHA-256 bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782 in archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e. Inspected Week Ten body children 430–446 (17 paragraphs); C14N SHA-256 a8734e97dc7f3f2f1fe9e5c17fee138cd4d328a34910d4f4a4bc0b79e4af0bdd. Added nine objective-level entries for revenue allocation, minority questions, state creation, inter-communal rivalry, boundary disputes, power sharing, resource control, evaluation marker and reading/practice pointers. Updated the Week Ten scheme entry to PARTIAL. Corrected the Bakassi chronology (ICJ 2002, Greentree Agreement 2006, transfer 2008) and the conflict labels/dates; recorded that power sharing and resource control are headings without explanation. Verified the 36 states plus FCT and 768 LGAs/six FCT Area Councils, RMAFC allocation roles, and Elizabeth Isichei's catalogued 1983 book title. No question stems follow EVALUATION. Added ten precise open items and lesson task GOV-LES-T2-W10-CORRECTED-FEDERALISM-PROBLEMS. No source rule, lesson body, answer key, mark or asset was written. No tests/typecheck/importer/compiler run; testing deferred by owner.",
       "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
     },
     {
@@ -2857,6 +2857,45 @@
       "status": "PENDING",
       "implementation_reference": "Created after GOV-WK-T2-W09 on 2026-11-12. Required to correct federalism's constitutional timeline, legislative structures, Senate representation, secession wording and federal character/quota distinction, and to correct the Achebe reading pointer. Original practice only; the source has no evaluation questions.",
       "completion_condition": "A visibly original supplement teaches the federalism features with recomputed body_sha256, dated/citable provenance and original keyed practice; historical constitutional distinctions are accurate; the reading pointer is corrected without reproducing the book; content approval stays PENDING and verification DEFERRED; no source bytes, schema or shared code are edited."
+    },
+    {
+      "id": "GOV-LES-T2-W10-CORRECTED-FEDERALISM-PROBLEMS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "2nd Term Week Ten, word/document.xml w:body children 430–446; problems of Nigerian federalism",
+      "objective": "Author one visibly original, balanced supplement for Week Ten. Explain revenue allocation using section 162 of the 1999 Constitution, vertical and horizontal allocation, RMAFC/FAAC roles and the 13% derivation principle with current dated official sources; do not invent percentages. Explain minority concerns with historical and constitutional context, avoiding ethnic stereotypes and noting that the source's examples are not exhaustive. Explain the 36 states plus FCT and the state-creation procedure in section 8. Correct the conflict examples: Aguleri–Umuleri (not 'Ugueli') as distinct episodes, verify whether the source intended Tiv–Jukun rather than Fulani–Tiv, and describe Ife–Modakeke episodes with dates and non-graphic context. Identify any Osun/Oyo boundary dispute precisely or leave it unverified. Explain power sharing and resource control only after defining them and distinguishing them from revenue allocation/derivation. Correct Bakassi chronology: ICJ judgment 10 October 2002, Greentree Agreement 12 June 2006, transfer of authority 14 August 2008 under Umaru Musa Yar'Adua; do not call it secession. Confirm the intended Elizabeth Isichei reading title rather than silently substituting A History of Nigeria. The EVALUATION marker has no question stems, so create only clearly labelled original formative practice with complete answers and criterion-level marks; do not invent source questions or keys. Add dated, citable provenance and keep content approval PENDING and verification DEFERRED.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-PRE-T2.md",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W10.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-LES-T2-W10-CORRECTED-FEDERALISM-PROBLEMS.md"
+      ],
+      "depends_on": [
+        "GOV-SRC-T2",
+        "GOV-WK-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created after GOV-WK-T2-W10 on 2026-11-12. Required to explain revenue allocation, minority questions, state creation, power sharing and resource control; correct the inter-communal conflict and Bakassi accounts; verify the Isichei reading title. Original practice only; no source question stems are present.",
+      "completion_condition": "A visibly original supplement teaches all listed problems with recomputed body_sha256, dated/citable provenance and original keyed formative practice; legal/historical facts are accurate and neutrally framed; the Isichei title is confirmed before substitution; source questions/marks are not invented; content approval stays PENDING and verification DEFERRED; no source bytes, schema or shared code are edited."
     }
   ],
   "review": {
@@ -2877,7 +2916,6 @@
     "GOV-LES-T1-W01-CORRECTED-WEEK",
     "GOV-REV-T2",
     "GOV-MARK-T2",
-    "GOV-WK-T2-W10",
     "GOV-WK-T2-W11",
     "GOV-VIS-T2",
     "GOV-PRE-T3",
@@ -2917,6 +2955,7 @@
     "GOV-LES-T2-W06-CORRECTED-WEEK",
     "GOV-LES-T2-W07-CORRECTED-CONSTITUTIONS",
     "GOV-LES-T2-W08-CORRECTED-CONSTITUTIONS",
-    "GOV-LES-T2-W09-CORRECTED-FEDERALISM"
+    "GOV-LES-T2-W09-CORRECTED-FEDERALISM",
+    "GOV-LES-T2-W10-CORRECTED-FEDERALISM-PROBLEMS"
   ]
 }
