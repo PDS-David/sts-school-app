@@ -153,7 +153,7 @@ const PRIMARY_CLASS_NAMES = new Set([
 ]);
 const SECONDARY_CLASS_NAMES = new Set(['JSS 1', 'JSS 2', 'JSS 3', 'SS 1', 'SS 2', 'SS 3']);
 
-function inferClassNames(fullPath: string): string[] | undefined {
+export function inferClassNames(fullPath: string): string[] | undefined {
   // Check the filename itself before the full path. Root cause of a real
   // bug found live: when Pre-Nursery and Reception files sit as siblings
   // in the same parent folder (e.g. a folder named something like "PRE
@@ -180,6 +180,27 @@ function inferClassNames(fullPath: string): string[] | undefined {
     if (re.test(fullPath)) return names ?? undefined;
   }
   return undefined; // no pattern matched at all
+}
+
+// Class named by the FOLDERS inside the audited root disagrees with the class
+// named by the FILENAME. inferClassNames() deliberately trusts the filename
+// (see its comment), which is how "2nd term grade 3 dig.docx" - a document
+// sitting in a Primary 4 folder - was silently filed under Primary 3. Rather
+// than flip that priority (it fixes a real Pre-Nursery/Reception case), this
+// turns the disagreement into an audit blocker so a person decides.
+// `relativeDir` must be the directory relative to the audited --root, so words
+// in the root's own location never count. A folder naming several classes
+// (e.g. a shared "PRE NURSERY AND RECEPTION" folder) passes whenever the
+// file's class is among them; a folder naming no class never conflicts.
+export function classFolderConflict(fileClasses: string[] | undefined, relativeDir: string): string | undefined {
+  if (!fileClasses) return undefined;
+  const folderClasses = new Set<string>();
+  for (const [re, names] of CLASS_PATTERNS) {
+    if (names && re.test(relativeDir)) for (const n of names) folderClasses.add(n);
+  }
+  if (folderClasses.size === 0) return undefined;
+  if (fileClasses.some(c => folderClasses.has(c))) return undefined;
+  return `filename says ${fileClasses.join('+')} but its folder says ${[...folderClasses].join('+')}`;
 }
 
 // ── Term normalization ────────────────────────────────────────────────────
@@ -498,6 +519,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   const missingTerm: Set<string> = new Set();
   const fallbackSubjects: Set<string> = new Set();
   const wrongSchoolCode: Set<string> = new Set();
+  const classFolderConflicts: Set<string> = new Set();
   const subjectConflicts: Set<string> = new Set();
   const suspiciousTopics: Set<string> = new Set();
   const noWeekMarkers: string[] = [];
@@ -545,6 +567,11 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
       if (classNames === undefined) unmappedClass.add(sourceIdentity(filePath));
       if (!termLabel) missingTerm.add(sourceIdentity(filePath));
       if (classNames === undefined || !termLabel) continue;
+      const classConflict = classFolderConflict(classNames, path.relative(root, path.dirname(filePath)));
+      if (classConflict) {
+        classFolderConflicts.add(`${sourceIdentity(filePath)} — ${classConflict}`);
+        continue;
+      }
       // Guard against a mixed folder (e.g. JSS files sitting alongside
       // Nursery files) silently tagging content under the wrong school —
       // --school-code only controls which subjects table this run writes
@@ -953,8 +980,13 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     console.log(`\n${unmappedClass.size} file(s) BLOCKED — class not recognized:`);
     for (const f of unmappedClass) console.log(`  ${f}`);
   }
+  if (classFolderConflicts.size > 0) {
+    console.log(`\n${classFolderConflicts.size} file(s) BLOCKED — filename and folder name different classes (a stale or copied filename can file a document under the wrong class):`);
+    for (const f of classFolderConflicts) console.log(`  ${f}`);
+    console.log('Rename the file, or move it into the folder of the class it really belongs to, then re-run the audit.');
+  }
   if (wrongSchoolCode.size > 0) {
-    const other = schoolCode === 'primary' ? 'secondary' : 'primary';
+    const other =schoolCode === 'primary' ? 'secondary' : 'primary';
     console.log(`\n${wrongSchoolCode.size} file(s) skipped — class belongs to '${other}', not '${schoolCode}':`);
     for (const f of wrongSchoolCode) console.log(`  ${f}`);
     console.log(`(Re-run this same --root with --school-code ${other} to pick these up correctly.)`);
@@ -1029,7 +1061,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   for (const r of normalRows) {
     console.log(`  ${r.className} / ${r.subjectName} / ${r.termLabel} #${r.orderIndex}: ${sourceIdentity(r.filePath)} / ${r.weekLabel} / ${r.title}`);
   }
-  const blocked = unmappedClass.size + missingTerm.size + noWeekMarkers.length + errors.length
+  const blocked = unmappedClass.size + classFolderConflicts.size + missingTerm.size + noWeekMarkers.length + errors.length
     + unsupported.length + fallbackSubjects.size + duplicates.length + identityCollisions.length
     + subjectConflicts.size + suspiciousTopics.size + jss3Gate.length;
   if (blocked || jss3PendingGate.length > 0 || allFiles.length === 0) {
