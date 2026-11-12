@@ -1,6 +1,6 @@
 # PHYS-WK-T2-W09 — Second Term Week Nine: electric field lines
 
-Status: **BLOCKED — original source-row inspection incomplete**. The student supplement and objective coverage are authored, but the original registered .doc body and diagrams have not been inspected.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
 
 ## Registered source identity
 
@@ -45,3 +45,12 @@ The PDF is used only as a close-equivalent scope comparison. It is not represent
 - All 15 practice answers and marking totals checked: 33 marks.
 - Content approval remains `PENDING`; verification remains `DEFERRED`.
 - No importer, database or device test is claimed.
+
+
+## Original-source inspection completed — 2026-11-12
+
+- Exact source member: hash-verified original registered .doc; full rendered page range: 18–20.
+- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
+- Source-row disposition: WEEK NINE: electric field, lines of force and field properties. Page 19 contains field-pattern diagrams (positive, negative, dipole and uniform-field cases). The existing field-pattern SVG plus the new like-charge/parallel-plate SVG cover the key visual cases. Source exercises have no answer/marking key.
+- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
+- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.

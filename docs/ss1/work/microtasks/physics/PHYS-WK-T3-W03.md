@@ -1,6 +1,6 @@
 # PHYS-WK-T3-W03 — Third Term Week Three: electrical energy and power
 
-Status: **BLOCKED — original source-row inspection incomplete**. The student supplement and objective coverage are authored, but the original registered .doc body and any source diagrams have not been inspected.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
 
 ## Registered source identity
 
@@ -46,3 +46,12 @@ These are close-equivalent scope comparisons only, not the registered original .
 - All 18 practice answers and marking totals checked: 40 marks.
 - Content approval remains `PENDING`; verification remains `DEFERRED`.
 - No importer, database or device test is claimed.
+
+
+## Original-source inspection completed — 2026-11-12
+
+- Exact source member: hash-verified original registered .doc; full rendered page range: 5–6.
+- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
+- Source-row disposition: WEEK 3: electrical energy and power, energy transferred, electrical power and electricity consumption/cost. The rendered source formulas and unit relationships were inspected; the source assessment is present but no answer/marking key is supplied.
+- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
+- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.

@@ -1,6 +1,6 @@
 # PHYS-WK-T3-W05 — Third Term Week Five: particle nature of matter
 
-Status: **BLOCKED — exact original source-row reconciliation incomplete**. The lesson and objective-level coverage are authored and bound to the registered parsed-row ID/hash. The public close-equivalent source provides a detailed line-level comparison, but the original .doc body was not independently retrievable in this execution.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
 
 ## Registered source identity
 
@@ -45,3 +45,12 @@ The PDF is a close-equivalent source. It is not claimed to be byte-identical to 
 - All 20 practice answers and marking totals checked: 43 marks.
 - Content approval remains `PENDING`; verification remains `DEFERRED`.
 - No importer, database or device test is claimed.
+
+
+## Original-source inspection completed — 2026-11-12
+
+- Exact source member: hash-verified original registered .doc; full rendered page range: 7–9.
+- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
+- Source-row disposition: WEEK 5: atomic structure, states of matter, diffusion, osmosis and Brownian motion. The source Brownian-motion section provides only two short statements, not an explanation of suspended-particle motion; the supplement provides an independently authored molecular-collision explanation. New original particle-state SVG is registered. Source exercises have no answer/marking key.
+- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
+- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.

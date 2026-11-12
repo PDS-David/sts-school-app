@@ -1,6 +1,6 @@
 # PHYS-WK-T3-W10 — Third Term Week Ten: energy stored in elastic materials
 
-Status: **BLOCKED — exact original source-row reconciliation incomplete**. The student supplement and objective coverage are authored; the registered parsed-row identity is bound, but the original .doc body was not independently retrieved in this execution.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
 
 ## Registered source identity
 
@@ -35,3 +35,12 @@ This PDF is a close-equivalent scope comparison, not byte-verified as the regist
 - All 18 practice answers and marking totals checked: 43 marks.
 - Lesson content approval remains `PENDING`; verification remains `DEFERRED`.
 - No importer, database or device test is claimed.
+
+
+## Original-source inspection completed — 2026-11-12
+
+- Exact source member: hash-verified original registered .doc; full rendered page range: 13–14.
+- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
+- Source-row disposition: WEEK 10: energy stored in elastic materials and restrained thermal force. Source line 530's intermediate substitution is garbled in extraction/rendering; line 531 states the correct final relation F = EAαθ. The lesson supplies the clean derivation and worked value. See PHYS-PORT-D1-FACT-T3-W10 for exact line and numerical reconciliation.
+- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
+- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.

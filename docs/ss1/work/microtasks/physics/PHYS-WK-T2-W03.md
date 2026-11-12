@@ -1,6 +1,6 @@
 # PHYS-WK-T2-W03 — Second Term Week Three: thermal expansion of solids
 
-Status: **BLOCKED — original source-row inspection incomplete**. The authored supplement is expanded and the scheme-level objective is mapped. Do not mark this indexing task complete until the original registered .doc row is inspected and its exact examples, exercises, formulae and embedded figures are reconciled.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
 
 ## Registered source identity
 
@@ -57,3 +57,12 @@ Secondary scope corroboration: https://ecolebooks.com/nigeria/posts/week-3-ss1-s
 - Confirmed each marking rubric sums to the associated question's marks.
 - Kept lesson content approval `PENDING` and verification `DEFERRED`.
 - No schema test, importer, database or device test is claimed here.
+
+
+## Original-source inspection completed — 2026-11-12
+
+- Exact source member: hash-verified original registered .doc; full rendered page range: 5–7.
+- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
+- Source-row disposition: WEEK THREE: thermal expansion of solids, effects and applications. Source includes two evaluation questions, a five-item weekend MCQ block and two theory questions. The rendered row contains no substantive embedded figure; the supplement provides the explanatory thermal-expansion content and keyed practice.
+- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
+- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.

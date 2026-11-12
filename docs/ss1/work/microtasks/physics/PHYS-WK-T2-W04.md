@@ -1,6 +1,6 @@
 # PHYS-WK-T2-W04 — Second Term Week Four: expansivity
 
-Status: **BLOCKED — original source-row inspection incomplete**. A full student supplement and keyed practice have been authored and linked to the parsed row. The source-indexing task is not complete until the original registered .doc body and its figures are inspected.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
 
 ## Registered source identity
 
@@ -60,3 +60,12 @@ Reference: https://schoolgist.ng/storage/postFiles/SS1-Physics-2nd-Term-Lesson-N
 - All 20 question marking totals checked: 49 marks in total.
 - Lesson content approval remains `PENDING`; verification remains `DEFERRED`.
 - No importer, database or device test is claimed.
+
+
+## Original-source inspection completed — 2026-11-12
+
+- Exact source member: hash-verified original registered .doc; full rendered page range: 7–9.
+- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
+- Source-row disposition: WEEK FOUR: linear, area and cubic expansivity; real/apparent expansivity of liquids; anomalous expansion of water. Confirmed source defects: uses X where α is defined; labels volume coefficient Y; leaves the ratio α:β:Y incomplete after 1:2; the worked 2 m brass-rod example's intermediate 0.00018/1.00018 is inconsistent with 18×10⁻⁶×100 K, although its final 2.0036 m is correct; the evaluation uses 1.8×10⁻⁶ K⁻¹, a tenfold mismatch with the example. The evaluation asks for a water-expansion diagram that the source does not supply. These are recorded for correction/teacher review.
+- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
+- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.
