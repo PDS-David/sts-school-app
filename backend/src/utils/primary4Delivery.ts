@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import manifestData from '../db/primary4/sourceManifest.json' with { type: 'json' };
 import { getPrimary4SupplementRecords } from '../db/primary4/primary4Supplements.js';
+import archiveCorrectionData from '../db/primary4/researched/archiveLessonCorrections.json' with { type: 'json' };
 
 type ReviewFlag = 'HIGH_SHORT_SOURCE' | 'SHORT_SOURCE_REVIEW' | 'CONTENT_PRESENT' | 'RESEARCHED_VERIFIED';
 type ManifestRecord = {
@@ -13,6 +14,27 @@ type ManifestRecord = {
   source_chars: number;
   source_words: number;
   review_flag: ReviewFlag;
+};
+type ArchiveCorrection = {
+  topic_id: number;
+  subject: string;
+  term: string;
+  order_index: number;
+  title: string;
+  source_archive_file: string;
+  material_type: string;
+  content_approval: string;
+  pedagogical_verification: string;
+  objectives: string[];
+  lesson: string;
+  examples: string[];
+  activity: string;
+  evaluation: string[];
+};
+type ArchiveCorrectionPackage = {
+  provenance: Record<string, string>;
+  hidden_topic_ids: number[];
+  corrections: ArchiveCorrection[];
 };
 type ResearchedRecord = {
   stable_key: string;
@@ -46,6 +68,11 @@ const normalize = (value: unknown) => String(value ?? '').replace(/\s+/g, ' ').t
 
 // The same source-reference formatter is used by the existing ingestTopics.ts
 // pipeline and by student delivery, so the stored source text must match exactly.
+const archivePackage = archiveCorrectionData as ArchiveCorrectionPackage;
+const archiveCorrections = new Map<number, ArchiveCorrection>(
+  archivePackage.corrections.map(record => [record.topic_id, record]),
+);
+const archiveHiddenTopicIds = new Set<number>(archivePackage.hidden_topic_ids);
 const researchedRecords = new Map<string, ResearchedRecord>();
 let researchedRegistryUnavailable = false;
 try {
@@ -67,8 +94,8 @@ try {
 }
 
 export type Primary4SourceDelivery =
-  | { source: 'primary4-export' | 'researched-package'; kind: 'matched'; topicId: number; text: string; sourceHash: string; reviewRequired: boolean; reviewFlag: ReviewFlag }
-  | { source: 'primary4-export' | 'researched-package'; kind: 'withheld'; topicId: number | null; text: string; reason: string };
+  | { source: 'primary4-export' | 'researched-package' | 'archive-correction'; kind: 'matched'; topicId: number; text: string; sourceHash: string; reviewRequired: boolean; reviewFlag: ReviewFlag }
+  | { source: 'primary4-export' | 'researched-package' | 'archive-correction'; kind: 'withheld'; topicId: number | null; text: string; reason: string; hideFromStudent?: boolean };
 
 function isPrimary4(topic: Primary4Topic): boolean {
   return topic.school_code === 'primary' && normalize(topic.class_name) === 'primary 4';
@@ -80,6 +107,46 @@ function pendingApproval(source: string): boolean {
   return approval !== 'APPROVED' || verification !== 'VERIFIED';
 }
 
+function archiveCorrectionSourceReference(record: ArchiveCorrection): string {
+  const provenance = archivePackage.provenance;
+  return [
+    `CURRICULUM_KEY: primary4-archive-correction-${record.topic_id}`,
+    'PROVENANCE',
+    `Package: ${archiveCorrectionData.package_id}`,
+    `Material type: ${record.material_type}`,
+    `Source archive: ${record.source_archive_file}`,
+    `Archive SHA-256: ${provenance.archive_sha256}`,
+    `Curriculum basis: ${provenance.authoring_note}`,
+    `Rights status: ${provenance.rights_status}`,
+    `Content approval: ${record.content_approval}. Pedagogical verification: ${record.pedagogical_verification}.`,
+    '',
+    `LESSON TITLE: ${record.title}`,
+    `CLASS: Primary 4 | SUBJECT: ${record.subject} | TERM: ${record.term}`,
+    '',
+    'LEARNING OBJECTIVES',
+    ...record.objectives.map((item, index) => `${index + 1}. ${item}`),
+    '',
+    'LESSON NOTES',
+    record.lesson,
+    '',
+    'EXAMPLES',
+    ...record.examples.map(item => `- ${item}`),
+    '',
+    'CLASS ACTIVITY',
+    record.activity,
+    '',
+    'EVALUATION',
+    ...record.evaluation.map((item, index) => `${index + 1}. ${item}`),
+  ].join('\\n');
+}
+
+function primary4IdentityMatches(topic: Primary4Topic, expected: { subject: string; term: string; order_index: number; title: string }): boolean {
+  return normalize(topic.subject_name) === normalize(expected.subject)
+    && normalize(topic.term_label) === normalize(expected.term)
+    && Number(topic.order_index) === expected.order_index
+    && normalize(topic.title) === normalize(expected.title);
+}
+
 /** Bind a live Primary 4 row to either the read-only export or a deterministic
  * researched package. Export hashes prove export-text identity only; they do
  * not claim that original Word files were independently re-hashed.
@@ -89,13 +156,42 @@ export function resolvePrimary4SourceDelivery(topic: Primary4Topic): Primary4Sou
   const id = Number(topic.id);
   const topicId = Number.isSafeInteger(id) ? id : null;
   const source = typeof topic.source_reference === 'string' ? topic.source_reference : '';
-  const withheld = (reason: string, source: 'primary4-export' | 'researched-package' = 'primary4-export'): Primary4SourceDelivery => ({
+  const withheld = (reason: string, source: 'primary4-export' | 'researched-package' | 'archive-correction' = 'primary4-export', hideFromStudent = false): Primary4SourceDelivery => ({
     source,
     kind: 'withheld',
     topicId,
     text: '[PRIMARY 4 SOURCE WITHHELD] This topic is temporarily unavailable because its curriculum source is missing, changed or still awaiting approval and verification.',
     reason,
+    ...(hideFromStudent ? { hideFromStudent: true } : {}),
   });
+  if (topicId !== null) {
+    const correction = archiveCorrections.get(topicId);
+    if (correction) {
+      if (!primary4IdentityMatches(topic, correction)) {
+        return withheld('Archive correction identity differs from the exported topic', 'archive-correction');
+      }
+      const correctionText = archiveCorrectionSourceReference(correction);
+      const sourceHash = sha256(correctionText);
+      if (pendingApproval(correctionText)) {
+        return withheld('Archive-based lesson correction is pending owner approval', 'archive-correction');
+      }
+      return {
+        source: 'archive-correction',
+        kind: 'matched',
+        topicId,
+        text: correctionText,
+        sourceHash,
+        reviewRequired: false,
+        reviewFlag: 'RESEARCHED_VERIFIED',
+      };
+    }
+    if (archiveHiddenTopicIds.has(topicId)) {
+      const originalIdentity = records.get(topicId);
+      if (originalIdentity && primary4IdentityMatches(topic, originalIdentity)) {
+        return withheld('Superseded outline or merged source row is suppressed from student delivery', 'archive-correction', true);
+      }
+    }
+  }
   if (!source.trim()) return withheld('Curriculum source text is missing');
 
   const original = topicId === null ? undefined : records.get(topicId);
@@ -158,13 +254,14 @@ export function safePrimary4Topic<T extends Primary4Topic>(topic: T): T {
       summary: null,
       generated_assessment_id: null,
       description: 'This Primary 4 lesson is being checked. It will become available after its curriculum source is approved and verified.',
-      primary4_delivery: { status: 'withheld', source: delivery.source },
+      primary4_delivery: { status: 'withheld', source: delivery.source, hide_from_student: delivery.hideFromStudent === true },
     } as T;
   }
   return {
     ...topic,
+    ...(delivery.source === 'archive-correction' ? { source_reference: delivery.text, summary: null, generated_assessment_id: null } : {}),
     primary4_delivery: {
-      status: delivery.source === 'primary4-export' ? 'source-export-match' : 'researched-package-match',
+      status: delivery.source === 'primary4-export' ? 'source-export-match' : delivery.source === 'archive-correction' ? 'archive-correction-match' : 'researched-package-match',
       source: delivery.source,
       source_review_required: delivery.reviewRequired,
       source_review_flag: delivery.reviewFlag,
