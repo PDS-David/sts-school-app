@@ -21,8 +21,8 @@ test('Home Economics First and Second Term packages contain 18 complete lessons'
 test('Home Economics source records use stable curriculum keys and scheme provenance', () => {
   const records = getPrimary4SupplementRecords().filter(x => x.subject_name === 'Home Economics' && x.term_label !== '3rd Term');
   assert.equal(records.length, 18);
-  assert.ok(records.every(x => x.source_reference.split('\\n')[0] === `CURRICULUM_KEY: ${x.stable_key}`));
-  assert.ok(records.every(x => x.source_reference.split('\\n')[1] === 'PROVENANCE'));
+  assert.ok(records.every(x => x.source_reference.split('\n')[0] === `CURRICULUM_KEY: ${x.stable_key}`));
+  assert.ok(records.every(x => x.source_reference.split('\n')[1] === 'PROVENANCE'));
   assert.ok(records.every(x => x.source_reference.includes('syllabus.ng/primary4-scheme-of-work/home-economics/')));
 });
 
