@@ -16,11 +16,11 @@ on:
   pull_request:
     paths:
       - 'backend/src/db/primary4/**'
+      - 'backend/src/db/ingestTopics.ts'
       - 'backend/src/utils/primary4Delivery.ts'
       - 'backend/src/routes/learning.ts'
       - 'tests/primary4/**'
       - 'backend/package.json'
-      - 'backend/package-lock.json'
       - 'package.json'
       - '.github/workflows/primary4-curriculum.yml'
   workflow_dispatch:
