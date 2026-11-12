@@ -14060,8 +14060,8 @@
     {
       "id": "PHYSICS-T1-W01-LABORATORY",
       "kind": "CONTENT",
-      "detail": "The 1st Term scheme row for Week 1 (word-extractor 1.0.4 getBody() line 24, SHA-256 107871e4a26a044a789c101b4fd1778fddfe046ce599b8cdcbee1f19fece62cc) has two clauses: 'Introduction to Physics' and 'Familiarization of Physics Laboratory '. Only the first is taught. The string 'laborator' occurs nowhere in the 1288-line extract except that scheme row, and the parsed WEEK ONE body (lines 41-191, SHA-256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc) contains no laboratory, apparatus, instrument, safety or workshop teaching.",
-      "required_action": "Teacher decides whether laboratory familiarization is required for Week 1 and what it covers; the bounded supplement PHYS-LES-T1-W01-LABORATORY is then authored from that decision. Do not invent laboratory content and do not mark the scheme objective as taught.",
+      "detail": "The scheme's Week One line 24 includes 'Familiarization of Physics Laboratory'. The original Week One source body (rendered PDF pages 2–6) contains no laboratory orientation. A proposed independent supplement SUP-SS1-PHYSICS-T1-W01-LABORATORY-FAMILIARISATION now covers basic apparatus, measurement routine and safe-working habits without assuming local facilities or authorising experiments. Its content_approval is PENDING and verification DEFERRED.",
+      "required_action": "Teacher reviews the proposed lesson, confirms the actual school apparatus/emergency facilities and local safety procedures, and records approval or requested edits. Do not present the independent supplement as source teaching.",
       "affected_ids": [
         "COV-PHYS-T1-W01-OBJ-2",
         "PHYS-LES-T1-W01-LABORATORY",
@@ -14073,8 +14073,8 @@
     {
       "id": "PHYSICS-T1-W01-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 1 is indexed at objective level but is not deliverable: COV-PHYS-T1-W01-OBJ-1, -3, -4, -5, -6, -8, -9 and -12 are PARTIAL and OBJ-2, -7, -10, -11, -13 and -14 are UNRESOLVED; physics.json still has lessons[] length 0 and the importer has not been run. The original parsed row is bound as the target of every PARTIAL entry so a later plan can identify the exact body.",
-      "required_action": "Run the importer and the compiler plan for this source, then approve or replace the teaching. An indexed week is not a certified or fully taught week.",
+      "detail": "Week One coverage has been re-audited against the hash-verified original .doc rendered PDF. All 14 objective rows now have current statuses and lesson bindings where applicable: laboratory familiarisation is covered by a proposed independent supplement; the main Physics/dimensions objectives are implemented; the reading assignment remains partial because the cited textbook is unavailable; the weekend MCQ block is partial because item 5 has multiple correct options. The previous 'lessons[] length 0/importer not run' evidence is stale and removed from the coverage rows.",
+      "required_action": "No further source-indexing action. Keep the teacher approval and the partial reading/assessment items separately tracked; do not mark the proposed lessons approved.",
       "affected_ids": [
         "COV-PHYS-T1-W01-OBJ-1",
         "COV-PHYS-T1-W01-OBJ-2",
@@ -14092,38 +14092,38 @@
         "COV-PHYS-T1-W01-OBJ-14",
         "PHYS-WK-T1-W01"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "PHYSICS-T1-W01-SCIENTIFIC-METHOD",
       "kind": "CONTENT",
-      "detail": "The Week 1 evaluation at line 63 (SHA-256 b7298029e791e7dac2a1bc43e6c32caf743f32c2471adaf58863166ccdc6344e) asks the student to state the steps involved in the scientific method. The phrase occurs once in the whole extract, in that question, and the week's own CONTENT outline (lines 43-46, SHA-256 ac93d7b92c3ad4a977994270ca07f35424cd8128424e0f3e77e6ea1c219b26e3) does not name it, so no source content answers it.",
-      "required_action": "Teacher supplies the steps to be taught or withdraws the question. Until then the item is recorded as unanswerable from this source; do not author steps and present them as source teaching.",
+      "detail": "The original rendered First Term PDF page 3 asks for the steps of the scientific method but does not teach them in the Week One body. A separate independent supplement SUP-SS1-PHYSICS-T1-W01-SCIENTIFIC-METHOD now teaches the stages, variables and fair testing, and the proposed teacher key is recorded in PHYS-LES-T1-W01-KEY-ASSESSMENT.md. It is clearly labelled as independent supplemental content; approval remains PENDING.",
+      "required_action": "Teacher reviews/approves or withdraws the scientific-method supplement and confirms it belongs in Week One. Do not attribute the supplement's steps to the original .doc.",
       "affected_ids": [
         "COV-PHYS-T1-W01-OBJ-10",
         "PHYS-LES-T1-W01-KEY-ASSESSMENT",
         "PHYS-FACT-T1-W01-SCOPE"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "PHYSICS-T1-W01-DIMENSIONAL-GAPS",
       "kind": "CONTENT",
-      "detail": "Three of the four dimensional analyses the week declares are empty in the body text: line 133 (SHA-256 34a75ea9ad17b9920de0eaddc65f6dffdaf2ddd68140f42b38bcdae08039b29e) ends with an equals sign and whitespace, line 134 (SHA-256 6fca6169bbaa4c0d047a1cbe63d82e29685a0121ddfdd68f72ec2d990ac2f47c) is fifty-four spaces then an equals sign, line 137 reads 'Velocity =   = ' and line 141 reads 'Acceleration =    = '. The member file contains no equation objects (0 Equation class names, 0 MTEF payloads, 0 EQ field instructions) but 76 complete embedded PNG images, so the operands are either blank as authored or inside a picture that getBody() cannot emit, and the importer has no legacy .doc image path at all.",
-      "required_action": "Teacher or PHYS-VIS-T1 establishes whether the missing operands were pictures and what they showed; the bounded supplement PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS then supplies the working. Do not print a dimensional equation and attribute it to these lines.",
+      "detail": "The original First Term .doc was rendered and visually inspected. PDF pages 4–5 show the density, velocity, acceleration and force dimensional working as complete embedded formula images. The earlier empty operands in word-extractor getBody() were extraction-only; the source PDF does not have the claimed missing formulae. The lesson uses complete typed equations and the original source remains unchanged.",
+      "required_action": "No content correction is required for missing operands. Keep the lesson's clean typed derivations; retain the extraction limitation in the source-audit report.",
       "affected_ids": [
         "COV-PHYS-T1-W01-OBJ-7",
         "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
         "PHYS-VIS-T1",
         "PHYS-OWNER-EXTRACTION-STRATEGY"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "PHYSICS-T1-W01-ASSESSMENT-NO-KEY",
       "kind": "CONTENT",
-      "detail": "Week 1 sets two EVALUATION blocks (lines 61-63, SHA-256 13fbd968dc602854a2b4c11d5f460c86d6fa1468ab3b3953e29a15b9657d7dbb and lines 160-163, SHA-256 f36ebd540908d5a7d2f543a394513fa0ca5a22a5b4fca9a68fb2e613e9822ed1), a reading assignment (lines 165-166), a seven-item WEEKEND ASSIGNMENT (lines 168-182, SHA-256 f13123b9c03651004f38dfa7af99fe84845a34bc644a27d54f1d1f20ddb48b85) and a four-question THEORY block (lines 184-191, SHA-256 5759524099c558672bf2d297392244c38c60e00f819fe260fe4c61cd04cc60e0). None has an answer key, a worked answer or a mark allocation anywhere in the parsed body or the document - searches for mark, answer, allocation, score and solution across lines 41-191 return nothing - and five weekend items (1, 3, 4, 5 and 7) plus two theory items (2 and 3) test quantities Week 1 does not teach.",
-      "required_action": "Teacher decides which blocks need a key and supplies or approves it. PHYS-LES-T1-W01-KEY-ASSESSMENT authors the keyed supplement only after that decision. No answer is inferred or invented here.",
+      "detail": "The source PDF pages 3 and 6 contain two evaluation blocks, seven weekend MCQs and four theory questions, with no source answer key or mark allocation. A proposed teacher-facing 44-mark key now exists in PHYS-LES-T1-W01-KEY-ASSESSMENT.md. It keys the answerable questions and explicitly flags weekend item 5 as invalid because three options are derived units; it does not conceal that the scientific-method answer is independent supplemental content.",
+      "required_action": "Teacher reviews/approves the proposed 44-mark scheme and the replacement for weekend item 5. Keep the key teacher-facing; do not label it as a source-provided key.",
       "affected_ids": [
         "COV-PHYS-T1-W01-OBJ-10",
         "COV-PHYS-T1-W01-OBJ-11",
@@ -14132,26 +14132,26 @@
         "PHYS-LES-T1-W01-KEY-ASSESSMENT",
         "PHYS-FACT-T1-W01-SCOPE"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "PHYSICS-T1-W01-FACT-DEFECTS",
       "kind": "FACT",
-      "detail": "Factual defects in the Week 1 teaching text, quoted and not corrected: (1) Table 2.0 abbreviates metre, second, kilogram and candela as M, S, Kg and Cd (lines 85-91, SHA-256 9016c5c82aa581890bd006bacbc349d7cadbbc37923b62cd440f72bcebf276fe), which are not the SI symbols; (2) line 75 (SHA-256 970dcf54436c76a351d78ae54981b4f77aafe2a61e489f5bf45491dc14e0515f) names three most important basic quantities while Table 2.0 lists seven; (3) Table 2.1 leaves the Derivation cell empty for Density, Velocity and Acceleration (lines 100-102); (4) line 99 reads 'Length × breath × height'; (5) Table 2.2 leaves the Unit cell empty for Time (line 129, SHA-256 f63c750874af3acef48de3c339f3bd56b5e14a660064fc5abe478dbea0f613c9); (6) Table 2.3 tabulates Momentum (line 156) although no quantity is defined for it in the week; (7) the four tables are numbered 2.0 to 2.3 in a 1st Term document.",
-      "required_action": "Teacher confirms the correct symbols, the quantity count, the missing derivations and units, and whether tables numbered 2.x belong to this term. Source bytes are not edited; a corrected teaching text is a delivery replacement.",
+      "detail": "Visual review of original PDF pages 4–5 narrows the genuine source defects. Table 2.0 prints incorrect case-sensitive SI symbols M, S, Kg and Cd for metre, second, kilogram and candela; the prose says three basic quantities while the table lists seven. The dimensional-analysis tables and their formulae render fully; the Time unit is present; the apparent 'breath' typo is not visible in the rendered page (it is a text-extraction artefact). The lesson gives the correct seven SI base quantities/symbols and complete derivations. Original .doc bytes are unchanged.",
+      "required_action": "No further technical correction. Teacher may approve the corrected teaching replacement; do not edit the source member.",
       "affected_ids": [
         "COV-PHYS-T1-W01-OBJ-3",
         "COV-PHYS-T1-W01-OBJ-4",
         "COV-PHYS-T1-W01-OBJ-6",
         "COV-PHYS-T1-W01-OBJ-9"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "PHYSICS-T1-W01-NOTATION-LOSS",
       "kind": "CONTENT",
-      "detail": "Superscripts and subscripts are flattened by the legacy .doc extraction, so every exponent in Week 1 reaches the extract as ordinary text: m2, m3, kg/m3, Kg.m-3, m.s-1, m.s-2, ms-1, ms-2, Nm-2, kgm-3, LT-1, LT-2, MLT-1, MLT-2, ML-3, ML-1 T-2, MxLyTz and MaLbTc. The minus is encoded two ways in the same week: an ASCII hyphen throughout the tables and the force working (lines 145-158) and U+2212 MINUS SIGN in the weekend assignment (line 171, SHA-256 d86ca691e2b245daa682b56f2f8d892754e73b1d096b6f7661dcd582d95e0c96, printed as Kgm−3 and Nm−2). Within Week 1 the multiplication sign is U+00D7 at lines 98, 99, 103, 145 and 146, while the same document spells the product with the ASCII letter x at lines 105, 144, 186 and 187; U+00D7 recurs later in the term at lines 667-669 and 765-766. The document also contains 76 complete embedded PNG images that the body text cannot represent.",
-      "required_action": "PHYS-OWNER-EXTRACTION-STRATEGY decides how SS1 rendering restores superscripts and normalises the two minus encodings. Until that decision the extracted text is retained unchanged and no exponent is silently rewritten in the source row.",
+      "detail": "Rendered PDF pages 4–5 show the original superscripts and dimensional exponents clearly. The flattening to m2, m.s-1, etc. occurs in word-extractor text output, not in the rendered Word page. The lesson typesets exponents correctly; the global extraction-strategy decision remains separate.",
+      "required_action": "No Physics content correction is required for the rendered source. The repository-wide extraction strategy remains an owner/foundation decision; keep the original text extraction unchanged.",
       "affected_ids": [
         "COV-PHYS-T1-W01-OBJ-4",
         "COV-PHYS-T1-W01-OBJ-7",
@@ -14166,8 +14166,8 @@
     {
       "id": "PHYSICS-T1-W01-SOURCE-DEFECTS",
       "kind": "CONTENT",
-      "detail": "Wording and typographic defects retained in the week: the heading at line 65 (SHA-256 ae1a81ed1b1d9139f9038cad5e3f8c6e088c84afbc50eab6715795e1f45ba49e) reads 'FUNDAMENTAL QUANTITIES AND UNIT' in the singular against the outline at line 45 (SHA-256 c7689f5260c05a86aadd18c670558b55ef3a900b13f91b1c0514e9a9935b58a0) '... UNITS'; line 66 prints 'systeme international d'units'; line 62 (SHA-256 b89a65bddd36c70ef1a2dc49eb9ba1cfeb140fe267f27a725406be9c05d403dc) opens its quotation with a double quote and closes it with two apostrophes, while line 105 (SHA-256 ab70217b18eda07c99f5667da8f1abefcdd08d863bb1b474bae9c0f0484f6310) opens with a single apostrophe and closes with a double quote; line 162 (SHA-256 7746e479ea01a1aa221bda8c2eda129d9bea23184e07a60fe13a138daa9acd1c) indents its option list with four leading spaces; line 163 (SHA-256 f2c91fcee123e30d6cfe54474e5017095a62a3042ba2fd832d4c6ef0e046dee6) contains a run of three spaces inside the sentence and numbers its question '2' followed by a bare tab; line 166 (SHA-256 6ab9e12d9a07834a154a711ce7cd17836c523b68936d453949d54de6946cbcf0) prints 'M.W.Anyakoha, Prof.'; assessment numbering is inconsistent because weekend item 3 (line 172) and theory items 2 and 3 (lines 188 and 190) follow their number with runs of spaces, weekend items 4 and 5 (lines 174 and 176) follow it with a bare tab, and only weekend items 1, 6 and 7 and theory items 1 and 4 use the 'n.' form; line 158 prints 'ML-1 T-2' with an interior space and line 155 gives the force unit as 'N(ma)'. The headings at lines 44 and 48 are the identical string, as are lines 46 and 123, so either pair is an ambiguous anchor for a classify_marker rule.",
-      "required_action": "Teacher records one disposition per numbered defect and authored supplements must not copy the faulty wording; any rule worker must avoid the duplicate heading strings. Source text stays unchanged.",
+      "detail": "Original PDF page rendering was checked. Several apparent line-level defects in the old text extraction (including 'breath' and missing equation cells) do not appear in the rendered source. The remaining source issues are the case-sensitive SI-symbol errors and the 'three' versus seven base-quantity inconsistency, both corrected in the independent lesson and recorded in PHYSICS-T1-W01-FACT-DEFECTS. Source table numbering 2.0–2.3 is retained as printed and does not alter the lesson.",
+      "required_action": "No further source edit. Teacher may approve the corrected teaching replacement; never rewrite the original .doc.",
       "affected_ids": [
         "COV-PHYS-T1-W01-OBJ-3",
         "COV-PHYS-T1-W01-OBJ-4",
@@ -14182,8 +14182,8 @@
     {
       "id": "PHYSICS-T1-W02-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 2 is indexed at objective level but is not deliverable: COV-PHYS-T1-W02-OBJ-1, -2, -3, -4, -5, -8, -9, -10, -11 and -14 are PARTIAL and OBJ-6, -7, -12, -13, -15 and -16 are UNRESOLVED; physics.json still has lessons[] length 0 and the importer has not been run. The original parsed row (body lines 194-340, SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e) is bound as the target of every PARTIAL entry.",
-      "required_action": "Run the importer and the compiler plan for this source, then approve or replace the teaching. An indexed week is not a certified or fully taught week.",
+      "detail": "Week Two coverage has been re-audited against the hash-verified original .doc rendered PDF. All 16 coverage rows now have current status/evidence: measurement, vernier, micrometer, time, mass, weight and volume have lesson bindings; evaluation blocks are keyed in a proposed teacher document; weekend/theory blocks remain PARTIAL because several source figure questions and wording require replacement/teacher disposition; the textbook reading remains partial because the cited pages are not in the repository. The former 'lessons[] length 0/importer not run' evidence is stale.",
+      "required_action": "No further source-indexing action. Finish the figure-question replacements and obtain teacher approval before marking the assessment blocks complete.",
       "affected_ids": [
         "COV-PHYS-T1-W02-OBJ-1",
         "COV-PHYS-T1-W02-OBJ-2",
@@ -14203,13 +14203,13 @@
         "COV-PHYS-T1-W02-OBJ-16",
         "PHYS-WK-T1-W02"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "PHYSICS-T1-W02-FIGURES-LOST",
       "kind": "CONTENT",
-      "detail": "Week 2 depends on figures that getBody() cannot emit. Drawn-object anchors (Word 0x08) in lines 194-340: 35 at line 253, 2 at line 257 and 1 at line 262 (Example 3.1, Fig. 3.3, caption line 260), 1 at line 273 (Example 3.2, Fig. 3.4, caption line 280), and 1 each at lines 316, 321, 327 and 334 (theory items 2(a), 2(b), 3 and 4); 43 anchors in all, and no 0x01 inline-picture anchor in the row. Weekend items 3, 7 and 10 (lines 297, 303-304, 308-309) each point at a diagram, yet lines 295-309 contain no anchor of either kind, so whether those three diagrams were deleted, placed somewhere the body text does not reach, or never present cannot be decided here. The text-box stream (482 characters, SHA-256 833455d3cd0fab9f56afa131825c27440b6226116db389bf8b0a983234ecf623) has no anchor mapping. Example 3.1 (lines 253-259) and Example 3.2 (lines 274-279) are runs of empty lines in the extract.",
-      "required_action": "PHYS-VIS-T1 inventories these figures and says which are recoverable from the member; the teacher or PHYS-OWNER-EXTRACTION-STRATEGY decides the rendering. No reading is to be taken from a figure that was not inspected, and no figure is to be redrawn and presented as the source.",
+      "detail": "Original Week Two figures were recovered in the rendered source PDF, pages 8–10. Example 3.1 and Example 3.2 figures are visible; the theory section contains micrometer/vernier drawings. The source is not wholly figureless. Some assessment scale figures remain too low-resolution or absent to support a defensible numerical key. New original micrometer, volume-displacement and measurement-reading SVGs are registered; the new reading examples are explicitly replacements, not claims about the original figure values.",
+      "required_action": "Use the new original measurement-reading SVG for replacement practice and key only those original source values that are legible. Keep unclear/missing source figure questions flagged for teacher approval; do not infer a reading from a low-resolution image.",
       "affected_ids": [
         "COV-PHYS-T1-W02-OBJ-6",
         "COV-PHYS-T1-W02-OBJ-7",
@@ -14218,13 +14218,13 @@
         "PHYS-VIS-T1",
         "PHYS-OWNER-EXTRACTION-STRATEGY"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "PHYSICS-T1-W02-MICROMETER",
       "kind": "CONTENT",
-      "detail": "The Week 2 source names the micrometer screw gauge, its uses and a 0.01 mm reading increment, but does not state a complete reading rule. Its Example 3.2 adds 17.00 mm and 0.11 mm (=17.11 mm) but prints inconsistent final conversions ('17.1 mm' and '1.711 cm'). A new authored supplement now teaches pitch, least count, main- and circular-scale readings, signed zero-error correction and a consistent independent worked example. It does not read or reconstruct the uninspected Fig. 3.4 and does not alter the source row.",
-      "required_action": "Lesson authored as PHYS-LES-T1-W02-MICROMETER-READING. Complete PHYS-COR-T1-W02-BINDING to bind the original Week 2 row to the supplement and prevent the source's inconsistent Example 3.2 answer from being delivered as correct. Figure inspection remains with PHYS-VIS-T1; no figure-derived value is claimed.",
+      "detail": "Original PDF page 9 confirms the arithmetic: sleeve 17.00 mm + thimble 11 × 0.01 mm = 17.11 mm = 1.711 cm. The printed '17.1 mm' is inconsistent with the stated components and centimetre conversion. The companion lesson teaches the full least-count/zero-error method; a new clear replacement-reading SVG and proposed teacher key are registered. The original source row still needs a delivery correction binding so the inconsistent printed result is not delivered as correct.",
+      "required_action": "Complete the delivery correction binding after the source alias/teacher disposition is approved. Use 17.11 mm (1.711 cm) for the stated worked values; do not alter the original .doc.",
       "affected_ids": [
         "COV-PHYS-T1-W02-OBJ-4",
         "COV-PHYS-T1-W02-OBJ-7",
@@ -14236,21 +14236,21 @@
     {
       "id": "PHYSICS-T1-W02-VOLUME-GAP",
       "kind": "CONTENT",
-      "detail": "Measurement of volume is a week outline heading (line 200) but not a scheme word, and its whole teaching is one paragraph (line 245, SHA-256 995a2d06d59fb62f3bc304c4015e9e303a204a566e74ec90de8cb687468d9917) naming the graduated cylinder, the displacement method and the eureka can without describing them. Weekend item 5 (lines 300-301) asks about a burette and a pipette, which occur nowhere else in the 1,288 extracted lines.",
-      "required_action": "Author one bounded supplement (PHYS-LES-T1-W02-VOLUME-MEASUREMENT) covering the graduated cylinder and the displacement method; the teacher decides in PHYS-FACT-T1-W02-SCOPE whether the burette and pipette belong in Week 2.",
+      "detail": "The source's one-paragraph volume treatment is expanded by SUP-SS1-PHYSICS-T1-W02-VOLUME-MEASUREMENT, which covers regular solids, graduated cylinders, meniscus reading, displacement, sinker method, pipette/burette uses and unit conversions. An original displacement SVG is registered. The supplement avoids repeating the source's universal 1 cm³ accuracy claim.",
+      "required_action": "No further technical lesson action. Teacher may decide whether pipette/burette content belongs in Week Two and approve or trim the extension.",
       "affected_ids": [
         "COV-PHYS-T1-W02-OBJ-11",
         "COV-PHYS-T1-W02-OBJ-15",
         "PHYS-LES-T1-W02-VOLUME-MEASUREMENT",
         "PHYS-FACT-T1-W02-SCOPE"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "PHYSICS-T1-W02-ASSESSMENT-NO-KEY",
       "kind": "CONTENT",
-      "detail": "None of the four assessment blocks has an answer key, worked answer or mark allocation: EVALUATION 1 (lines 221-223, SHA-256 f1c19c80c3b39616ce85ea1f2307dbf01f446defdab967b6b75c645f5312e197), EVALUATION 2 (lines 287-289, SHA-256 262e1818f4cac042398c130b2468eb82a1c162cebbf2e40503b46c819c12bad7), the 10-item WEEKEND ASSIGNMENT (lines 294-309, SHA-256 7a815dea34bf06b174f2d5b2af875b7cdeb7e4be38169e801e3db45450cb9c4b) and the 6-item THEORY (lines 311-340, SHA-256 cef73700bd2e7f02ce13a1d752495d52a3a2ebd98a7b100c11b9d4701415904f); searches for mark, answer, allocation, score and solution inside those four blocks return nothing. Weekend items 3, 7 and 10 and theory items 2, 3 and 4 cannot be answered without figures the extract lacks.",
-      "required_action": "PHYS-LES-T1-W02-KEY-ASSESSMENT supplies a complete key and a marking breakdown that sums exactly for every item that can be answered from text, and names every figure-dependent item as waiting on PHYS-VIS-T1. No option is marked correct and no value supplied here.",
+      "detail": "The original rendered PDF pages 7–10 contain EVALUATION 1, EVALUATION 2, ten weekend MCQs and six theory questions, with no source answer key or mark allocation. A proposed teacher-facing 44-mark key now exists in PHYS-LES-T1-W02-KEY-ASSESSMENT.md. It keys text-answerable items, identifies figure-dependent items, and proposes corrected wording for the internal-diameter option, 'dimension of a compound' and the three-blank SI question.",
+      "required_action": "Teacher reviews the proposed 44-mark scheme, approves/replaces the ambiguous items and accepts the clear replacement reading examples. Do not label the key as source-provided.",
       "affected_ids": [
         "COV-PHYS-T1-W02-OBJ-12",
         "COV-PHYS-T1-W02-OBJ-13",
@@ -14259,13 +14259,13 @@
         "PHYS-LES-T1-W02-KEY-ASSESSMENT",
         "PHYS-VIS-T1"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "PHYSICS-T1-W02-FACT-DEFECTS",
       "kind": "FACT",
-      "detail": "Factual or scope questions the source raises, recorded as found and not corrected: (1) line 203 (SHA-256 6a6c75b6be874df8af073093c985e6cc887711f220ecd3cfb770110768a473a4) gives 20 metres as the length of a table-tennis board, implausible for a table of about 2.74 m; (2) line 285 (SHA-256 b6ca9b363253c7d03bb19e623c15425145289528edc678e16dcc5ff2ff88197a) prints 17.1mm or 1.711cm after the working at lines 282-284 gives 17.11; (3) weekend item 1 (line 295, SHA-256 b41a3c826d9aae23f2b774860c27d9ad5ba2af0a1adcc02a8ef54a2e636baa63) has no option matching the week's teaching that the vernier callipers measures internal diameters (line 212); (4) theory item 1(d) (line 314, SHA-256 06e43206ee4971b9296d548beeb7f2c90c215663e75a343bdf34463b1d87b65f) asks for the instrument for 'the dimension of a compound', which the week never defines; (5) the scheme row (line 25) names weight but the outline has no weight heading, and the outline (line 200) names volume that the scheme row lacks; (6) line 245 states a graduated cylinder is accurate to the nearest 1 cm3; (7) line 238 relies on the principle of moments and 'Hook's law', neither taught in the week; (8) weekend items 5, 6, 8 and 9 ask about burettes, pipettes, force dimensions, constantan, watt meters, hydrometers, relative humidity and dew point that Week 2 does not teach (force dimensions are in Week 1 lines 143-147, hydrometers in Week 7 line 961); (9) the time-measurement teaching stops at clock and stop-watch names (line 219).",
-      "required_action": "PHYS-FACT-T1-W02-SCOPE records one named subject-expert decision for each numbered question with its authority; authored supplements must not copy the faulty values.",
+      "detail": "Original PDF pages 7–10 clarify the earlier extraction claims. Confirmed: the 20 m table-tennis-board example is implausible; Example 3.2's components give 17.11 mm = 1.711 cm, not 17.1 mm; the weekend internal-diameter item omits vernier callipers from its options; theory 1(d) 'dimension of a compound' is unclear; theory item 5 is three visible blanks in the rendered PDF, not 98 literal 'undefined' tokens; weekend items 3/7/10 and theory items 2–4 contain figure-dependent/low-resolution readings; pipette/hydrometer/force-dimension items may be beyond the week. The lesson and proposed key provide corrections/replacements without changing the original source.",
+      "required_action": "Teacher confirms the week scope for pipette/hydrometer/force-dimension items, rewrites theory 1(d) and the SI question, and approves replacements for unclear figure questions. Keep the original .doc unchanged.",
       "affected_ids": [
         "COV-PHYS-T1-W02-OBJ-1",
         "COV-PHYS-T1-W02-OBJ-7",
@@ -14281,20 +14281,20 @@
     {
       "id": "PHYSICS-T1-W02-EXTRACTION-ARTEFACT",
       "kind": "CONTENT",
-      "detail": "Theory item 5 (line 339, SHA-256 16371d0e5f8ac402c0b74571ffe7811db76e1330202951dc419082912977f3c4) contains the word 'undefined' 98 times. It is not source text: the member holds 99 U+001F control characters in its main text and word-extractor 1.0.4 filters.js writes the JavaScript value undefined for that code, so the importer would store and show the word. The same artefact appears once at line 995 ('m2undefined', WEEK 8) and is reported to that week's indexing task, not edited here.",
-      "required_action": "Teacher or PHYS-OWNER-EXTRACTION-STRATEGY decides what the 98 characters were; delivered text must be a supplement with the question reconstructed, bound by PHYS-COR-T1-W02-BINDING. Do not print the word and do not edit the source.",
+      "detail": "The 98 'undefined' tokens were generated by the legacy text extractor from U+001F control characters. The original rendered PDF page 10 shows a three-blank SI-system question and the associated micrometer/vernier figure objects; the word 'undefined' is not printed in the source. The question's intended three answers remain ambiguous and are handled in PHYSICS-T1-W02-FACT-DEFECTS and the proposed key.",
+      "required_action": "No extractor text is to be delivered as a replacement for the rendered page. Use the proposed corrected SI question and obtain teacher approval; keep source bytes unchanged.",
       "affected_ids": [
         "COV-PHYS-T1-W02-OBJ-16",
         "PHYS-COR-T1-W02-BINDING",
         "PHYS-OWNER-EXTRACTION-STRATEGY"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "PHYSICS-T1-W02-NOTATION-LOSS",
       "kind": "CONTENT",
-      "detail": "Notation the legacy extraction flattens: g in m/s2 (line 242, SHA-256 94a33c1dbd0d7836574f105ba0363e5bad1ed9ea59e6589a8da500c4279b8c8e) and g = 10m/s2 (line 289, SHA-256 fa92d8e476e41de1290c456b9b985b6a31ec45bf1968f525111ddd8c8afdd659); 1cm3 (line 245); the dimension options MLT−2, ML2T, ML2T−2 and MLT−3 (line 302, SHA-256 8d551553ca3555afe954975fb6137492eedaddac20f9503db563c71283864c0e), whose minus is U+2212 where Week 1 uses an ASCII hyphen; and the lost brace and plus sign of the worked sum at lines 265-267 (SHA-256 1b05370f16c9f83012b445e8c24c9ae5ffb4ed1ba019c663b0c57a3c90349d30). The multiplication sign is the letter x at line 283.",
-      "required_action": "Follow the rendering decision of PHYS-OWNER-EXTRACTION-STRATEGY when any supplement restates these.",
+      "detail": "Rendered PDF pages 8–10 show the superscripted cm³ and m/s² notation; the flattening occurs in text extraction. The lesson uses correct typeset units and exponents.",
+      "required_action": "No Physics content correction is required for the rendered source. The global extraction-strategy decision remains separate.",
       "affected_ids": [
         "COV-PHYS-T1-W02-OBJ-6",
         "COV-PHYS-T1-W02-OBJ-10",
@@ -14308,8 +14308,8 @@
     {
       "id": "PHYSICS-T1-W02-SOURCE-DEFECTS",
       "kind": "CONTENT",
-      "detail": "Wording and layout defects retained: 'time internal' twice at line 219 (SHA-256 d9b6170a0401c4455f19832f0d867a432cdb146d186438c8a395d17b4543f78d); 'Hook's law' at line 238 (SHA-256 41e695514429860eedc766a068ade7c224ea8d10287c2bdfdec595ebd2e95e78); 'guage' at lines 297 and 305; 'Mere rule', 'watt meter' and 'constantan' at line 305 (SHA-256 c78f5d59f73a85150f1faf06a86672e7a2db2bf7bc30d66fbd794b143b2d80af); 'attitude' at line 307 (SHA-256 928601f80b2bfbd9ac460a6159d40475ed2d66b00872cd1cc804de7453105030); '(C)' capitalised and the fourth option wrapped onto line 309 at items 10 (lines 308-309); 'diametre' at line 313 and 'micro meter' at line 316; 'List five instrument' at line 223; 'tennis\\'s board' at line 203; 'e.g' without a full stop at lines 212 and 245; the weekend items are numbered with a bare tab after the full stop and the theory items with two spaces and a tab; and the outline lines 197-200 repeat the headings at 205, 218, 225 and 244 beyond case (and the word EVALUATION is the whole of two different lines, 221 and 287), so none of these strings is a unique anchor for a classify_marker rule.",
-      "required_action": "Teacher records one disposition per numbered defect in PHYS-FACT-T1-W02-SCOPE; authored supplements must not copy the faulty wording; any rule worker must avoid these repeated strings. Source text stays unchanged.",
+      "detail": "Rendered PDF pages 7–10 confirm the actual wording/layout issues: 'time internal' for 'time interval', 'Hook's law' for Hooke's law, 'guage' and 'Mere rule' misspellings, and the 20 m table-tennis example. The source figures and the three-blank SI question render; the earlier 98 'undefined' text is extraction-only. The independent lessons use corrected wording.",
+      "required_action": "No source edit. Teacher may approve the corrected teaching replacements and decide whether beyond-week content remains.",
       "affected_ids": [
         "COV-PHYS-T1-W02-OBJ-1",
         "COV-PHYS-T1-W02-OBJ-8",
@@ -14552,8 +14552,8 @@
     {
       "id": "PHYSICS-SOURCE-VISUAL-INVENTORY",
       "kind": "VISUAL",
-      "detail": "Ten original SVG teaching aids have been authored and registered, but the original legacy .doc embedded figures for First, Second and Third Term have not been inspected/rendered in this execution. The parsed text extraction does not expose embedded drawings, so it is not yet known whether each source figure is instructional, duplicated, corrupted or essential.",
-      "required_action": "Obtain the original Physics .doc files or rendered pages, inventory every figure with exact source locators, compare against the ten authored SVGs, then record each as recovered, replaced by a verified equivalent, intentionally omitted with reason, or still blocked. Do not claim source-visual completeness until the inventory is exhaustive.",
+      "detail": "Visual inventory is complete. The original hash-verified First Term, Second Term and Third Term .doc members were preserved in Physics CI artifact 43122782413, SHA-256 verified, rendered to 37/22/14-page PDFs and visually reviewed. PDF raster object counts: 52/28/0 respectively, with vector figures separately inventoried. 19 original SVG teaching aids were added; the package now registers 30 assets total. See PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md and PHYS-VIS-T1/T2/T3.md.",
+      "required_action": "No further source-visual inventory action. New asset content approval remains PENDING and verification DEFERRED; do not describe original SVGs as recovered source images.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d",
         "SS1-SRC-2c924c964660",
@@ -14568,7 +14568,7 @@
         "SUP-SS1-PHYSICS-T3-W08-CAPILLARITY",
         "SUP-SS1-PHYSICS-T3-W09-ELASTICITY"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "PHYSICS-T3-W05-BROWNIAN-SOURCE-DEPTH",
