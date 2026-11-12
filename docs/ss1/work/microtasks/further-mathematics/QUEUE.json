@@ -3564,6 +3564,31 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W10-LOGICAL-CONNECTIVES-TRUTH-TABLES]. 4 objectives; 10 practice questions; 26 marks. Coverage COV-FM-T2-W10-OBJ-1..3 and row R09 linked. Source false claims corrected. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Replacement provides correct truth tables, tautology/contradiction examples and equivalence laws with keyed practice; source false identities recorded. Approval/verification pending."
+    },
+    {
+      "id": "FM-ASSET-T2-W08-TRIG",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 08 missing trigonometry figures and graphs",
+      "objective": "Provide original SVGs for right-triangle ratios, unit-circle coordinates, sine/cosine graphs, tangent graph and special-angle triangles; register exact integrity metadata and bind to the Week 8 lesson.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/assets/further-mathematics/",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/assets/further-mathematics/",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-LES-T2-W08-TRIGONOMETRIC-RATIOS"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Five original SVGs authored and registered: backend/src/db/ss1/assets/further-mathematics/fm2-w8-right-triangle-ratios.svg sha256=90262d6e0e5402d9fabd1ef3da93af82ca6af62721b2c5ca46b7c5a0744f85a0 bytes=808; backend/src/db/ss1/assets/further-mathematics/fm2-w8-unit-circle.svg sha256=34410903a554bea45da172b7d8cba26396a7cf86df8fcf52b1a504495f629fd6 bytes=1096; backend/src/db/ss1/assets/further-mathematics/fm2-w8-sine-cosine-graphs.svg sha256=a67c272ba72c6d5b8eb65617b5e3f0fa39531deb86a40c9f6282145a1cd0bff1 bytes=1381; backend/src/db/ss1/assets/further-mathematics/fm2-w8-tangent-graph.svg sha256=d019c84dc1ea9120f36c9b5a3b0db137466da8cba7a66fd27adaacadd71daac7 bytes=2596; backend/src/db/ss1/assets/further-mathematics/fm2-w8-special-angle-triangles.svg sha256=34a490b4ee2819c4df2c348135e4fbd9cc6215e05e3c2a6021cbe60f513c3fe5 bytes=1210. SVG safety and app rendering remain to be verified. Teacher clarification of y=sinθ/2 is still required.",
+      "completion_condition": "All five SVGs pass safety checks and exact hash/byte registration, appear correctly in the Week 8 lesson, and have source/provenance/state records. Approval and visual verification remain pending."
     }
   ],
   "review": {
