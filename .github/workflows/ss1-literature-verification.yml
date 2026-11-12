@@ -1,0 +1,48 @@
+name: SS1 Literature verification
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "backend/src/db/ss1/subjects/literature.json"
+      - "backend/src/routes/learning.ts"
+      - "backend/src/utils/ss1LiteratureDelivery.ts"
+      - "backend/src/db/ss1/subjectPackageSchema.ts"
+      - "backend/package.json"
+      - "tests/ss1/literature.*.mts"
+      - ".github/workflows/ss1-literature-verification.yml"
+  push:
+    branches: [master]
+    paths:
+      - "backend/src/db/ss1/subjects/literature.json"
+      - "backend/src/routes/learning.ts"
+      - "backend/src/utils/ss1LiteratureDelivery.ts"
+      - "backend/src/db/ss1/subjectPackageSchema.ts"
+      - "backend/package.json"
+      - "tests/ss1/literature.*.mts"
+      - ".github/workflows/ss1-literature-verification.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  literature:
+    name: Validate SS1 Literature package and student delivery
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Install locked backend dependencies
+        run: npm ci --workspace=backend --include-workspace-root=false --no-audit --no-fund
+      - name: Run Literature package and student-delivery tests
+        run: npm run test:ss1:literature --workspace=backend
+      - name: Type-check backend
+        run: npm run build --workspace=backend
