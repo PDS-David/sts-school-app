@@ -27,6 +27,7 @@ type ArchiveCorrection = {
   material_type: string;
   content_approval: string;
   pedagogical_verification: string;
+  assessment_rebuild_status: string;
   objectives: string[];
   lesson: string;
   examples: string[];
@@ -106,7 +107,8 @@ function isPrimary4(topic: Primary4Topic): boolean {
 function pendingApproval(source: string): boolean {
   const approval = /Content approval:\s*([A-Z_]+)/.exec(source)?.[1];
   const verification = /Pedagogical verification:\s*([A-Z_]+)/.exec(source)?.[1];
-  return approval !== 'APPROVED' || verification !== 'VERIFIED';
+  const assessmentRebuild = /Assessment rebuild:\\s*([A-Z_]+)/.exec(source)?.[1];
+  return approval !== 'APPROVED' || verification !== 'VERIFIED' || (assessmentRebuild !== undefined && assessmentRebuild !== 'VERIFIED');
 }
 
 function archiveCorrectionSourceReference(record: ArchiveCorrection): string {
@@ -120,7 +122,7 @@ function archiveCorrectionSourceReference(record: ArchiveCorrection): string {
     `Archive SHA-256: ${provenance.archive_sha256}`,
     `Curriculum basis: ${provenance.authoring_note}`,
     `Rights status: ${provenance.rights_status}`,
-    `Content approval: ${record.content_approval}. Pedagogical verification: ${record.pedagogical_verification}.`,
+    `Content approval: ${record.content_approval}. Pedagogical verification: ${record.pedagogical_verification}. Assessment rebuild: ${record.assessment_rebuild_status}.`,
     '',
     `LESSON TITLE: ${record.title}`,
     `CLASS: Primary 4 | SUBJECT: ${record.subject} | TERM: ${record.term}`,
