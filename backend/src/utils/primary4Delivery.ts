@@ -47,7 +47,7 @@ const normalize = (value: unknown) => String(value ?? '').replace(/\s+/g, ' ').t
 // The same source-reference formatter is used by the existing ingestTopics.ts
 // pipeline and by student delivery, so the stored source text must match exactly.
 const researchedRecords = new Map<string, ResearchedRecord>();
-let researchedRegistryError: string | null = null;
+let researchedRegistryUnavailable = false;
 try {
   for (const record of getPrimary4SupplementRecords()) {
     researchedRecords.set(record.stable_key, {
@@ -63,7 +63,7 @@ try {
 } catch (error) {
   // A malformed researched package must not take down existing Primary 4 lessons
   // or the shared learning route. It only disables researched-package delivery.
-  researchedRegistryError = error instanceof Error ? error.message : String(error);
+  researchedRegistryUnavailable = true;
 }
 
 export type Primary4SourceDelivery =
@@ -122,7 +122,7 @@ export function resolvePrimary4SourceDelivery(topic: Primary4Topic): Primary4Sou
   const stableKey = /^CURRICULUM_KEY:\s*([^\s]+)/m.exec(source)?.[1];
   if (!stableKey) return withheld('No matching Primary 4 export or researched-package identity');
   const researched = researchedRecords.get(stableKey);
-  if (researchedRegistryError) return withheld(`Researched package registry is unavailable: ${researchedRegistryError}`, 'researched-package');
+  if (researchedRegistryUnavailable) return withheld('Researched lesson package is temporarily unavailable while its content is checked', 'researched-package');
   if (!researched) return withheld('Researched-package key is not registered', 'researched-package');
   if (normalize(topic.subject_name) !== normalize(researched.subject) ||
       normalize(topic.term_label) !== normalize(researched.term) ||
