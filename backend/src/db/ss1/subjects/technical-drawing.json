@@ -31,7 +31,7 @@
       },
       "observed_subject": "SUBJECT:TECHNICAL DRAWING",
       "canonical_subject": "Technical Drawing",
-      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+      "approval_reference": "OWNER-APPROVAL-CHAT-2026-11-13: repository owner explicitly approved mapping source heading 'SUBJECT:TECHNICAL DRAWING' to canonical subject 'Technical Drawing' in the project conversation on 2026-11-13. This approval covers subject alias/normalization only; it does not constitute teacher approval of lesson content, answer keys, or replacement assessments."
     },
     {
       "id": "SS1-SRC-af4868d2c026-R002",
@@ -6089,13 +6089,13 @@
     {
       "id": "TECHNICAL-DRAWING-ALIAS-APPROVAL",
       "kind": "OWNER_ACTION",
-      "detail": "The 2nd Term source subject line is 'SUBJECT:TECHNICAL DRAWING' (class on the next title line, 'CLASS:SS1'). It differs from the canonical subject name 'Technical Drawing' by the label, so the contract requires a source_alias declaration; rule SS1-SRC-af4868d2c026-R001 carries approval_reference PENDING-OWNER.",
-      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "detail": "RESOLVED 2026-11-13: repository owner explicitly approved mapping the 2nd Term source subject line 'SUBJECT:TECHNICAL DRAWING' (class on next title line, 'CLASS:SS1') to canonical subject 'Technical Drawing'. Approval is recorded on source rule SS1-SRC-af4868d2c026-R001. This is subject alias/normalization approval only, not teacher approval of lesson content.",
+      "required_action": "No further owner action for this alias. Retain the approval reference as provenance; do not interpret it as teacher approval of lesson content.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026-R001",
         "SS1-SRC-af4868d2c026"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "TD-T2-W01-REVISION-SCOPE",
