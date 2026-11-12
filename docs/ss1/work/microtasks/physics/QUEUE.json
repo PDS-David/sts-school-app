@@ -75,9 +75,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 81,
+    "IMPLEMENTED_TESTING_DEFERRED": 82,
     "BLOCKED": 7,
-    "PENDING": 2
+    "PENDING": 1
   },
   "total": 90,
   "items": [
@@ -2608,8 +2608,8 @@
         "PHYS-LES-T1-W02-KEY-ASSESSMENT",
         "PHYS-FACT-T1-W02-SCOPE"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W02 (2026-11-07): open items PHYSICS-T1-W02-EXTRACTION-ARTEFACT and PHYSICS-T1-W02-FACT-DEFECTS. Waits for the supplements and the expert decisions; no replacement exists to bind yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: exact Week Two original source row is bound to SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS, with micrometer and volume companion lessons recorded in objective_scope_audit. Correction PHYS-COR-T1-W02-BINDING prevents the inconsistent 17.1 mm/1.711 cm source value and extractor artefact from being delivered. Content approval remains PENDING. Evidence: PHYS-COR-T1-W02-BINDING.md.",
       "completion_condition": "delivery_corrections[] has one entry with this source id, source sha256, source_lesson_id SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e, body_sha256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e and a replacement_id that resolves to an existing supplement of the same subject and term; the reason and evidence name each defect; no schema, compiler or other subject is edited."
     },
     {
