@@ -36,10 +36,10 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 32,
     "VISUAL_DISPOSITION": 2,
-    "LESSON": 26
+    "LESSON": 27
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 30,
+    "IMPLEMENTED_TESTING_DEFERRED": 31,
     "PENDING": 46,
     "BLOCKED": 1
   },
@@ -1377,8 +1377,8 @@
         "GOV-INV-T2",
         "GOV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12. Verified source member SHA-256 bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782 in archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e. Inspected Week Eleven body children 447–511 (65 paragraphs); C14N SHA-256 1c7e59e69bc84d55a3c2b1cf86ef2003f5e9ea33add6a9844d71a2faf4ec3886. Added ten objective-level entries covering objectives/achievements for NNDP, NYM, Action Group and NPC, including an UNRESOLVED NPC objectives entry because the source has no objectives section. Updated the Week Eleven scheme entry to PARTIAL. Corrected the NYM 1936 renaming date, NPC Jam'iyyar Mutanen Arewa origins/1951 political-party formation, and NPC–NCNC coalition context; flagged contradictory NYM objective wording and unverified party-officer details. No question stems follow EVALUATION. Added eleven precise open items and lesson task GOV-LES-T2-W11-CORRECTED-PARTIES. No source rule, lesson body, answer key, mark or asset was written. No tests/typecheck/importer/compiler run; testing deferred by owner.",
       "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
     },
     {
@@ -2896,6 +2896,45 @@
       "status": "PENDING",
       "implementation_reference": "Created after GOV-WK-T2-W10 on 2026-11-12. Required to explain revenue allocation, minority questions, state creation, power sharing and resource control; correct the inter-communal conflict and Bakassi accounts; verify the Isichei reading title. Original practice only; no source question stems are present.",
       "completion_condition": "A visibly original supplement teaches all listed problems with recomputed body_sha256, dated/citable provenance and original keyed formative practice; legal/historical facts are accurate and neutrally framed; the Isichei title is confirmed before substitution; source questions/marks are not invented; content approval stays PENDING and verification DEFERRED; no source bytes, schema or shared code are edited."
+    },
+    {
+      "id": "GOV-LES-T2-W11-CORRECTED-PARTIES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "2nd Term Week Eleven, word/document.xml w:body children 447–511; NNDP, NYM, Action Group and NPC objectives/achievements",
+      "objective": "Author one visibly original, balanced supplement for Week Eleven. Explain each party's founding context, objectives, electoral base, achievements and limitations without treating them as interchangeable or uniformly national. For NNDP, state the 1923 founding, Macaulay's leadership, three Lagos seats in 1923/1928/1933, and distinguish Lagos-based achievements from nationwide aspirations; verify the first-officer names before retaining them. For NYM, correct the Lagos Youth Movement's 1933/1934 origins and 1936 renaming, verify charter objectives, describe the 1938 electoral success and Daily Service, and note the 1941 internal crisis; do not say it gave birth to nationalism. For Action Group, state its 1951 founding, Awolowo's leadership, welfare/education platform, Enahoro's 31 March 1953 motion and 1955 free primary education; qualify Egbe Omo Oduduwa chronology and unsubstantiated claims of being the best-managed party or opposition in the East. For NPC, correct Jam'iyyar Mutanen Arewa's 1948/49 cultural origins and 1951 political-party formation; supply a clearly labelled, sourced objectives summary because the source omits it; explain the NPC–NCNC coalition and Balewa's role rather than saying NPC alone controlled the federal government. The EVALUATION marker has no question stems, so create only clearly labelled original formative practice with complete answers and criterion-level marks; do not invent source questions or keys. Identify the reading pointers only when exact resources are supplied. Add dated, citable provenance and keep content approval PENDING and verification DEFERRED.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-PRE-T2.md",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W11.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-LES-T2-W11-CORRECTED-PARTIES.md"
+      ],
+      "depends_on": [
+        "GOV-SRC-T2",
+        "GOV-WK-T2-W11"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created after GOV-WK-T2-W11 on 2026-11-12. Required to correct the NYM chronology, NPC origins/coalition, and party achievements; supply a sourced NPC objectives summary because the source omits it. Original practice only; no source question stems are present.",
+      "completion_condition": "A visibly original supplement teaches objectives and achievements for all four parties with recomputed body_sha256, dated/citable provenance and original keyed formative practice; source omissions are clearly labelled; party chronology/coalition facts are accurate; source questions/marks are not invented; content approval stays PENDING and verification DEFERRED; no source bytes, schema or shared code are edited."
     }
   ],
   "review": {
@@ -2916,7 +2955,6 @@
     "GOV-LES-T1-W01-CORRECTED-WEEK",
     "GOV-REV-T2",
     "GOV-MARK-T2",
-    "GOV-WK-T2-W11",
     "GOV-VIS-T2",
     "GOV-PRE-T3",
     "GOV-REV-T3",
@@ -2956,6 +2994,7 @@
     "GOV-LES-T2-W07-CORRECTED-CONSTITUTIONS",
     "GOV-LES-T2-W08-CORRECTED-CONSTITUTIONS",
     "GOV-LES-T2-W09-CORRECTED-FEDERALISM",
-    "GOV-LES-T2-W10-CORRECTED-FEDERALISM-PROBLEMS"
+    "GOV-LES-T2-W10-CORRECTED-FEDERALISM-PROBLEMS",
+    "GOV-LES-T2-W11-CORRECTED-PARTIES"
   ]
 }
