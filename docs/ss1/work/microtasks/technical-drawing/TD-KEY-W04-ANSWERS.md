@@ -21,10 +21,11 @@
 ## Figure-dependent items
 
 - Source worked example gives X=280 mm and Y=130 mm for the 1:2.5 scale. Weekend Q1 / image42 (two plain scales): top scale reads X=85 mm (80 mm main reading + 5 mm left subdivision); lower scale reads Z=370 mm (300 mm main reading + 70 mm left subdivision). Correct option: **C — 85 mm and 370 mm**.
-- Weekend theory Q1 (1:2 drawing) and the 1:2 gate exercise must use the source figure dimensions, not a proportional guess from extracted text.
+- Weekend Theory Q1 / page 22 (1:2 plinth/column drawing): apply 1/2 to every source dimension. Overall height 240→**120 mm**; base width 180→**90 mm**; base height 50→**25 mm**; top/stem width 40→**20 mm**; stem segment heights 40→**20 mm** and 30→**15 mm**; plinth width 100→**50 mm**; top offset 10→**5 mm**; chamfers 10×45°→**5×45°**. The source's 190 mm vertical callout scales to **95 mm**. Keep all centre lines, symmetry and parallel edges in the same relative positions.
+- Weekend theory Q2 (ornamental gate) remains blocked under the separate gate-reconciliation item; do not measure A–E from the distorted WMF preview.
 - Ornamental gate: source provides overall length 2100 mm and post width 300 mm, but the WMF preview's proportions conflict with the stated ratio. The A–E dimensions cannot be safely measured until a corrected native drawing/export is supplied.
 - Evaluation Q6: source says 20 cm represents 1 m and requests millimetre subdivisions up to 6 m. At RF 1:5, a 1 mm actual subdivision would be 0.2 mm on paper, requiring 1,000 divisions per metre. Ten subdivisions instead represent decimetres. The source likely confuses millimetres and decimetres, but only the author can approve a correction.
 
 ## Verification boundary
 
-The nine Week Four AutoCAD/WMF figures have been extracted, converted and registered; the source-asset regression test verifies their output bytes. Visual measurement and answer-key verification of the gate and X/Z diagram remain deferred. Teacher approval and student rendering remain outstanding.
+The nine Week Four AutoCAD/WMF figures have been extracted, converted and registered; the source-asset regression test verifies their output bytes. The X/Z and 1:2 plinth/column readings are keyed. Only the ornamental gate's A–E dimensions remain blocked by the inconsistent 2100/300 reference proportions. Teacher approval and student rendering remain outstanding.

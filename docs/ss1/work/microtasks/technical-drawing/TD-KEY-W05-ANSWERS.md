@@ -25,7 +25,8 @@ A quadrant is 90°. Dividing it into 18 equal arcs gives 5° per division. For a
 - Weekend Q5: **A — 3:4** is a reduction ratio.
 - General evaluation Q1: 4 cm represents 2 dm, maximum 5 dm → RF 1:5 and scale length **100 mm**.
 - General evaluation Q2: 2/5 full size, maximum 3 dm → scale length **120 mm**.
-- General evaluation Q3: 27° is not a multiple of 5°; the source supplies no interpolation/finer graduation, so an exact 27° answer cannot be derived from the stated scale alone.
+- General evaluation Q3 / image49: the k dimension spans from the 1 m mark left of zero to the 2 m mark, so k=3.0 m. The n dimension spans from the 0.5 m mark left of zero to the 1 m mark, so n=1.5 m. Therefore **k−n=1.5 m**. This reads the original diagonal scale, not its apparent pixel length.
+- General evaluation Q4: 27° is not a multiple of 5°; the source supplies no interpolation/finer graduation, so an exact 27° answer cannot be derived from the stated scale alone.
 - General evaluation Q4: 15°, 75°, 105°, 120° and 150° are all multiples of 5° and can be read directly from a 5° chordal scale.
 - Theory Q1: construct 50° from the 5° chordal graduation.
 - Theory Q2: 2/5 full size to 3 dm → scale length **120 mm**; construct the diagonal grid to read centimetres and millimetres.
@@ -34,7 +35,7 @@ A quadrant is 90°. Dividing it into 18 equal arcs gives 5° per division. For a
 
 - A 5° scale cannot directly represent 24°, 27° or 37°. Use a finer scale or a stated interpolation procedure; neither is supplied in the source.
 - The text at body child 962 reads “With 0⁰ as centre” while the quadrant figure marks centre A. The likely intended notation is the zero-degree mark/centre reference, but this is not silently normalized.
-- The exact k−n difference in Evaluation Q3 remains figure-dependent and must be read from the registered original image.
+- Evaluation Q3's k−n reading is now keyed from image49: 1.5 m. The two remaining source conflicts are the non-multiple chord angles and the centre label.
 
 ## Verification boundary
 

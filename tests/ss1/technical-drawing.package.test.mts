@@ -134,6 +134,10 @@ test('Technical Drawing resolved source rows and figure inventories are not left
   const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
   const ids = new Set(subject.open_items.map(item => item.id));
   for (const resolved of [
+    'TD-T2-FOOTER-TAGLINE',
+    'TD-T2-W02-ANSWER-KEYS',
+    'TD-T2-W05-ANSWER-KEYS',
+    'TD-T2-W04-ANSWER-KEYS',
     'TD-T2-W03-FIGURES',
     'TD-T2-W03-NOTATION',
     'TD-T2-W04-FIGURES',
@@ -147,7 +151,9 @@ test('Technical Drawing resolved source rows and figure inventories are not left
     'TD-T2-W01-GENERAL-Q2-DATA-IMPOSSIBLE',
     'TD-T2-W01-GENERAL-Q4-SSA-AMBIGUITY'
   ]) assert.equal(ids.has(resolved), false, `resolved item remains open: ${resolved}`);
-  assert.equal(subject.open_items.length, 20);
+  assert.equal(subject.open_items.length, 18);
+  assert.ok(ids.has('TD-T2-W02-OBJECTIVE-Q2-MULTIPLE-RADII'), 'ambiguous radius MCQ must remain explicitly open');
+  assert.ok(ids.has('TD-T2-W03-GENERAL-PENTAGON-DIAGONAL-UNDERDEFINED'), 'underdefined pentagon prompt must remain explicitly open');
 });
 
 test('source-backed Week Two to Five answer keys retain verified results and unresolved caveats', async () => {
@@ -161,4 +167,37 @@ test('source-backed Week Two to Five answer keys retain verified results and unr
   assert.match(w03, /43\.30 mm/);
   assert.match(w04, /60 mm/);
   assert.match(w05, /27° is not a multiple of 5°/);
+});
+
+test('Week Two answer key documents the two valid radius options and equal-circle construction', async () => {
+  const path = new URL('../../docs/ss1/work/microtasks/technical-drawing/TD-KEY-W02-ANSWERS.md', import.meta.url);
+  const key = await readFile(path, 'utf8');
+  assert.match(key, /both B \(OB\) and C \(OQ\) are radii/);
+  assert.match(key, /15\(√3−1\)≈\*\*10\.98 mm\*\*/);
+});
+
+test('Week Five source answer key includes the diagram-derived k-minus-n reading', async () => {
+  const path = new URL('../../docs/ss1/work/microtasks/technical-drawing/TD-KEY-W05-ANSWERS.md', import.meta.url);
+  const key = await readFile(path, 'utf8');
+  assert.match(key, /k=3\.0 m/);
+  assert.match(key, /n=1\.5 m/);
+  assert.match(key, /k−n=1\.5 m/);
+});
+
+test('Week Three weekend polygon objective answers match the original source figures', async () => {
+  const path = new URL('../../docs/ss1/work/microtasks/technical-drawing/TD-KEY-W03-ANSWERS.md', import.meta.url);
+  const key = await readFile(path, 'utf8');
+  assert.match(key, /Q1 \/ image31: \*\*D — length of sides\*\*/);
+  assert.match(key, /Q2 \/ image32: \*\*B — distance across corners\*\*/);
+  assert.match(key, /Q3 \/ image33: \*\*C — regular polygon\*\*/);
+  assert.match(key, /Q4 \/ image34: \*\*C\*\*/);
+  assert.match(key, /Q5 \/ image35: \*\*C — pentagon\*\*/);
+});
+
+test('Week Four answer key includes the source 1:2 drawing dimensions', async () => {
+  const path = new URL('../../docs/ss1/work/microtasks/technical-drawing/TD-KEY-W04-ANSWERS.md', import.meta.url);
+  const key = await readFile(path, 'utf8');
+  assert.match(key, /Overall height 240→\*\*120 mm\*\*/);
+  assert.match(key, /base width 180→\*\*90 mm\*\*/);
+  assert.match(key, /chamfers 10×45°→\*\*5×45°\*\*/);
 });
