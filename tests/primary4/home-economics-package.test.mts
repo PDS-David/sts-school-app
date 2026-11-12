@@ -20,6 +20,9 @@ test('researched Home Economics package has structured lessons for both missing 
 test('Home Economics import plan is reproducible, insert-only and requires owner approval', () => {
   const plan = buildHomeEconomicsImportPlan();
   assert.equal(plan.topic_count, 18);
+  assert.ok(plan.topics[0].source_reference.startsWith('CURRICULUM_KEY: '));
+  assert.ok(plan.topics[0].source_reference.includes('\\nPROVENANCE') === false);
+  assert.ok(plan.topics[0].source_reference.includes('\nPROVENANCE'));
   assert.equal(plan.write_mode, 'INSERT_ONLY_NO_UPDATE');
   assert.equal(plan.requires_explicit_owner_approval, true);
   assert.equal(plan.production_write_performed, false);
