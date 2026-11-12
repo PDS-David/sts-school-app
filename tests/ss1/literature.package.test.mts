@@ -143,8 +143,8 @@ test('All authored Literature lessons retain exact body hashes, complete marking
     }
     assert.equal(l.state.content_approval, 'APPROVED');
     assert.match(l.state.approval_reference ?? '', /^Owner instruction to bring SS1 Literature/);
-    assert.equal(l.state.verification, 'DEFERRED');
-    assert.equal(l.state.verification_reference, null);
+    assert.equal(l.state.verification, 'VERIFIED');
+    assert.match(l.state.verification_reference ?? '', /^SS1 Literature verification workflow run 43136694378:/);
   }
 });
 
