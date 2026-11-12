@@ -427,8 +427,8 @@
         "FM-SRC-T1",
         "FM-PRE-T1"
       ],
-      "status": "IN_PROGRESS",
-      "implementation_reference": "parsed row 2 of SS1-03 parsed_rows.json (week label \"WEEK THREE\", title \"LOGARITHM - SOLVING PROBLEMS BASED ON LAWS OF LOGARITHM\", 11419 characters). Existing coverage COV-FM-T1-R02 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-003 (task FM-PORT-D3-L003). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002). | 2026-11-12: composite archive and exact member hash verified; a new repair supplement was added and linked to COV-FM-T1-R02. Coverage remains PARTIAL; content approval PENDING; verification DEFERRED. Review: docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W03.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Source Week 3 fully indexed at objective level: COV-FM-T1-W03-OBJ-1..4. Replacement SUP-SS1-FURTHER-MATHEMATICS-T1-W03-LOGARITHMS-REPAIR covers all four scheme objectives with 12 original questions/38 marks. Source mathematical/notation defects recorded in OI-FM-T1-W03-SOURCE-DEFECTS. The source row R02 now points to the replacement as IMPLEMENTED_EQUIVALENT. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -3192,6 +3192,42 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Authored a 60-minute, 50-mark assessment draft: 20 MCQs (20 marks) and 6 structured questions (30 marks) across indices, exponential equations, logarithms, set theory/two- and three-set Venn diagrams, and standard-form/log-table calculations; it excludes later-term topics. Includes full answer key and marking guide. Teacher approval PENDING; verification DEFERRED.",
       "completion_condition": "Assessment contains balanced coverage, complete answer key and marking guide, and total marks reconcile to 50. Approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T1-W03-LOGARITHMS-REPAIR",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 03; source row WEEK THREE — LOGARITHM",
+      "objective": "Replace the Week 3 logarithms source with a corrected, complete lesson covering logarithmic form, laws, equations, change of base, standard form, log/antilog tables and calculations above and below one.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W03-LOGARITHMS-REPAIR.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1",
+        "FM-WK-T1-W03"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W03-LOGARITHMS-REPAIR]. 5 objectives; 12 original practice questions; 38 marks; marking totals checked. body_sha256=3dfaa976c35ed550eee059589f7c5b8e277aeadb3a80c12af0411eb6f85cb06f. Coverage COV-FM-T1-W03-OBJ-1..4 and COV-FM-T1-R02 link to it. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement lesson covers every Week 3 scheme objective with source provenance, exact body hash, worked examples and keyed practice; coverage entries link to it; approval/verification remain pending/deferred."
     }
   ],
   "review": {
