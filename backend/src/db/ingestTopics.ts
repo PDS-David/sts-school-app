@@ -77,6 +77,7 @@ import { applyJss3MathsSlipCorrections } from './jss3MathsSlipCorrections.js';
 import { isJss3EquationSource, recoverEquationsInDocx } from './jss3EquationRecovery.js';
 import {
   applyPrimarySourceTextResolution,
+  isAcknowledgedCrossClassDuplicate,
   isPrimarySourceExcluded,
   resolvePrimaryParsedTopic,
   resolvePrimarySubjectName,
@@ -202,6 +203,31 @@ export function classFolderConflict(fileClasses: string[] | undefined, relativeD
   if (folderClasses.size === 0) return undefined;
   if (fileClasses.some(c => folderClasses.has(c))) return undefined;
   return `filename says ${fileClasses.join('+')} but its folder says ${[...folderClasses].join('+')}`;
+}
+
+// A document whose bytes match a document filed under a DIFFERENT class is
+// either a copy that would put one class's lessons into another, or a pair the
+// owner has chosen to keep in both (isAcknowledgedCrossClassDuplicate). Real
+// cases: a Primary 3 Home Economics file that was Primary 4's, and an
+// Agricultural Science file present, unchanged, in both classes. Within one
+// class the existing exact-copy suppression still applies.
+export type SourceByteOwner = { identity: string; basename: string; classes: string };
+export function crossClassByteDuplicate(
+  owners: Map<string, SourceByteOwner>,
+  sourceHash: string,
+  identity: string,
+  basename: string,
+  classNames: string[],
+): string | undefined {
+  const classes = [...classNames].sort().join('+');
+  const prior = owners.get(sourceHash);
+  if (!prior) {
+    owners.set(sourceHash, { identity, basename, classes });
+    return undefined;
+  }
+  if (prior.classes === classes) return undefined;
+  if (isAcknowledgedCrossClassDuplicate(prior.basename, basename)) return undefined;
+  return `${identity} (${classes}) is byte-identical to ${prior.identity} (${prior.classes})`;
 }
 
 // ── Term normalization ────────────────────────────────────────────────────
@@ -521,6 +547,8 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   const fallbackSubjects: Set<string> = new Set();
   const wrongSchoolCode: Set<string> = new Set();
   const classFolderConflicts: Set<string> = new Set();
+  const crossClassDuplicates: Set<string> = new Set();
+  const sourceByteOwners = new Map<string, SourceByteOwner>();
   const subjectConflicts: Set<string> = new Set();
   const suspiciousTopics: Set<string> = new Set();
   const noWeekMarkers: string[] = [];
@@ -608,6 +636,10 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
 
       const bytes = readFileSync(filePath);
       const sourceHash = createHash('sha256').update(bytes).digest('hex');
+      const crossClassDuplicate = crossClassByteDuplicate(
+        sourceByteOwners, sourceHash, sourceIdentity(filePath), path.basename(filePath), validClassNames,
+      );
+      if (crossClassDuplicate) crossClassDuplicates.add(crossClassDuplicate);
 
       let text = await extractText(filePath);
       if (schoolCode === 'primary') {
@@ -993,6 +1025,11 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     for (const f of classFolderConflicts) console.log(`  ${f}`);
     console.log('Rename the file, or move it into the folder of the class it really belongs to, then re-run the audit.');
   }
+  if (crossClassDuplicates.size > 0) {
+    console.log(`\n${crossClassDuplicates.size} file(s) BLOCKED — byte-identical to a file in a different class (one of them is a copy and would put another class's lessons here):`);
+    for (const f of crossClassDuplicates) console.log(`  ${f}`);
+    console.log('Open both files, decide which class owns it, and exclude the copy (primaryCurriculumResolutions.ts), or record the pair as kept in both classes.');
+  }
   if (wrongSchoolCode.size > 0) {
     const other =schoolCode === 'primary' ? 'secondary' : 'primary';
     console.log(`\n${wrongSchoolCode.size} file(s) skipped — class belongs to '${other}', not '${schoolCode}':`);
@@ -1069,7 +1106,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   for (const r of normalRows) {
     console.log(`  ${r.className} / ${r.subjectName} / ${r.termLabel} #${r.orderIndex}: ${sourceIdentity(r.filePath)} / ${r.weekLabel} / ${r.title}`);
   }
-  const blocked = unmappedClass.size + classFolderConflicts.size + missingTerm.size + noWeekMarkers.length + errors.length
+  const blocked = unmappedClass.size + classFolderConflicts.size + crossClassDuplicates.size + missingTerm.size + noWeekMarkers.length + errors.length
     + unsupported.length + fallbackSubjects.size + duplicates.length + identityCollisions.length
     + subjectConflicts.size + suspiciousTopics.size + jss3Gate.length;
   if (blocked || jss3PendingGate.length > 0 || allFiles.length === 0) {

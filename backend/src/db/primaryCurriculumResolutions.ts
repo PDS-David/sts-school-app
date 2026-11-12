@@ -34,6 +34,12 @@ const EXCLUDED_FILES = new Set([
   // "1st termBasicscience4.docx"; importing only that zip would leave Primary 4
   // Basic Science 1st Term empty.
   'PRY 4 BST Ist term.docx',
+  // Byte-for-byte the same lessons as Primary 4's "PRY 4 HOME ECONS RD TERM.docx",
+  // whose heading is "THIRD TERM HOME ECONOMICS PRIMARY FOUR". Found in the live
+  // database as 21 Primary 3 2nd-Term rows with the same hashes as Primary 4's;
+  // removed with the curriculum owner's approval. Primary 3 has no Home
+  // Economics source of its own.
+  'PRY 3 HOME ECONS 2ND TERM.docx',
   // Anonymous source overlaps the retained, clearly identified Primary 5 CCA
   // First-Term source; do not let the anonymous copy duplicate its lesson.
   'み.docx',
@@ -89,6 +95,21 @@ export function isPrimarySourceExcluded(basename: string, sourceIdentity = ''): 
   }
 
   return false;
+}
+
+// Byte-identical files that the curriculum owner has reviewed and chosen to
+// keep in BOTH classes. Any other byte-identical pair across different classes
+// blocks the import audit (see crossClassByteDuplicate in ingestTopics.ts).
+const ACKNOWLEDGED_CROSS_CLASS_DUPLICATES: Array<[string, string]> = [
+  // Same bytes, no class named inside either file; owner decided on
+  // 2026-11-12 to keep the lessons in both Primary 3 and Primary 4.
+  ['PRY 3 AGRIC SCIENCE 3RD TERM.docx', 'PRY 4 AGRIC 3RD TERM.docx'],
+];
+
+export function isAcknowledgedCrossClassDuplicate(a: string, b: string): boolean {
+  return ACKNOWLEDGED_CROSS_CLASS_DUPLICATES.some(
+    ([x, y]) => (a === x && b === y) || (a === y && b === x),
+  );
 }
 
 // Exact-basename subject corrections where the filename and the document's own
