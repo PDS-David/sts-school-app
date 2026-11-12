@@ -3,6 +3,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+const hash = (value: string) => createHash('sha256').update(value).digest('hex');
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import { applyRules } from '../../backend/src/db/ss1/compiler.ts';
 
@@ -65,10 +67,6 @@ test('Government package follows the frozen schema and registers one source per 
 test('Government source identities and aliases do not fabricate owner or teacher approval', () => {
   const p = packageSchema.parse(raw);
   assert.equal(p.package_status, 'PENDING');
-  assert.equal(p.lessons.length, 0);
-  assert.equal(p.delivery_corrections.length, 0);
-  assert.equal(p.assets.length, 0);
-
   const aliases = p.source_rules.filter(rule => rule.op === 'source_alias');
   assert.equal(aliases.length, 3);
   for (const alias of aliases) {
@@ -159,3 +157,53 @@ test('Government coverage references resolve to a source, rule, original-body id
 // Lesson-body hashes, answer/mark totals, correction bindings and asset guards are
 // added by the later lesson/correction/asset tasks as those records enter this package.
 // Test execution remains deferred by the owner.
+
+
+test('Every authored Government lesson has an exact body hash and complete criterion-level marking', () => {
+  const p = packageSchema.parse(raw);
+  const lessonIds = new Set<string>();
+  for (const lesson of p.lessons) {
+    assert(!lessonIds.has(lesson.id), `duplicate lesson id ${lesson.id}`);
+    lessonIds.add(lesson.id);
+    assert.equal(hash(lesson.body), lesson.body_sha256, lesson.id);
+    assert.equal(lesson.subject, 'Government');
+    assert.equal(lesson.class_name, 'SS 1');
+    assert(lesson.objectives.length > 0 && lesson.practice.length > 0);
+    for (const question of lesson.practice) {
+      assert(question.answer.trim().length > 0, question.id);
+      assert.equal(question.marks, question.marking.reduce((sum, mark) => sum + mark.marks, 0), question.id);
+      assert(question.marking.every(mark => mark.criterion.trim() && mark.marks > 0), question.id);
+    }
+    assert.equal(lesson.state.content_approval, 'PENDING', lesson.id);
+    assert.equal(lesson.state.approval_reference, null, lesson.id);
+    assert.equal(lesson.state.implementation, 'IMPLEMENTED', lesson.id);
+    assert.equal(lesson.state.verification, 'DEFERRED', lesson.id);
+    assert.equal(lesson.state.verification_reference, null, lesson.id);
+  }
+});
+
+test('Every delivery correction binds an original source/body identity to its same-term replacement', () => {
+  const p = packageSchema.parse(raw);
+  for (const correction of p.delivery_corrections) {
+    const source = p.sources.find(candidate => candidate.source_id === correction.source_id);
+    const lesson = p.lessons.find(candidate => candidate.id === correction.replacement_id);
+    assert(source && lesson, correction.id);
+    assert.equal(correction.source_sha256, source.sha256, correction.id);
+    assert.equal(correction.source_lesson_id, `${correction.source_id}:BODY:${correction.body_sha256}`, correction.id);
+    assert.equal(lesson.body_sha256, correction.body_sha256, correction.id);
+    assert.equal(lesson.term, source.term, correction.id);
+  }
+});
+
+test('Any authored assets remain attached to an existing lesson and have deferred approval/verification', () => {
+  const p = packageSchema.parse(raw);
+  for (const asset of p.assets) {
+    assert(p.lessons.some(lesson => lesson.id === asset.lesson_id), asset.id);
+    assert.match(asset.sha256, /^[a-f0-9]{64}$/, asset.id);
+    assert(asset.bytes > 0, asset.id);
+    assert.equal(asset.state.content_approval, 'PENDING', asset.id);
+    assert.equal(asset.state.approval_reference, null, asset.id);
+    assert.equal(asset.state.verification, 'DEFERRED', asset.id);
+    assert.equal(asset.state.verification_reference, null, asset.id);
+  }
+});

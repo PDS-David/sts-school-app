@@ -279,7 +279,7 @@
         "GOV-SRC-T3"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Implemented 2026-11-12: wrote tests/ss1/government.package.test.mts following the French package test pattern. Covers frozen-schema parse, exact three-source/manifest correspondence (IDs, archive members, SHA-256, terms), pending alias approval/no invented lesson approval or verification, every current source rule's source-hash/anchor guards, all three SCHEME_ONLY marker bindings, and coverage-reference resolution. Test file committed but NOT RUN by owner instruction; lesson/correction/asset guards are explicitly deferred to the tasks that add those records.",
+      "implementation_reference": "Implemented 2026-11-12: wrote tests/ss1/government.package.test.mts following the French package test pattern. Covers frozen-schema parse, exact three-source/manifest correspondence (IDs, archive members, SHA-256, terms), pending alias approval/no invented lesson approval or verification, every current source rule's source-hash/anchor guards, all three SCHEME_ONLY marker bindings, and coverage-reference resolution. Test file committed but NOT RUN by owner instruction; lesson/correction/asset guards are explicitly deferred to the tasks that add those records. Follow-up 2026-11-12: made the suite extensible for subsequent lesson tasks by replacing zero-lesson/correction/asset assertions with dynamic body-hash, criterion-total, state, correction-binding and asset-reference guards. Test execution remains deferred.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
