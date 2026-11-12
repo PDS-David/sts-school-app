@@ -63,7 +63,7 @@ The source provides no answer key or marks. The scheme below keys text-answerabl
 | Theory | 22 |
 | **Total** | **44** |
 
-The weekend assignment and theory figure-dependent items are replaced, not falsely keyed. The original Example 3.2 is corrected to `17.00 mm + 0.11 mm = 17.11 mm = 1.711 cm`; the printed `17.1 mm` is inconsistent with the other two values. The 20 m table-tennis-board example is removed/reworded because it is implausible for the stated object. The source's “98 undefined” text-extraction artefact is not present in the rendered PDF: the original page shows three blank lines in the SI question and several embedded assessment figures.
+The weekend assignment and theory figure-dependent items are replaced in student practice with clear, keyed original examples (17.11 mm, 4.37 cm and 1.76 cm); they are not falsely keyed from the low-resolution source figures. The original Example 3.2 is corrected to `17.00 mm + 0.11 mm = 17.11 mm = 1.711 cm`; the printed `17.1 mm` is inconsistent with the other two values. The 20 m table-tennis-board example is removed/reworded because it is implausible for the stated object. The source's “98 undefined” text-extraction artefact is not present in the rendered PDF: the original page shows three blank lines in the SI question and several embedded assessment figures.
 
 ## Required teacher disposition before approval
 
