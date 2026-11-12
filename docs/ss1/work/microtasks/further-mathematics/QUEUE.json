@@ -3674,6 +3674,34 @@
       "status": "IN_PROGRESS",
       "implementation_reference": "Consolidated PR #639 now targets master and carries 24 lessons, 84 coverage rows, 30 open review items and 18 registered assets. All 24 lesson body hashes, practice marking totals and 18 asset hashes/byte counts were independently recomputed and matched. CI must now run on the master-targeted PR. Approval remains PENDING; verification DEFERRED.",
       "completion_condition": "Master-targeted CI passes all relevant checks; package hash/schema/compiler/SVG validation is complete; all remaining blockers are classified and recorded. No merge before required checks pass."
+    },
+    {
+      "id": "FM-TEST-T3-SOURCE-AVAILABLE",
+      "kind": "TEST",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "Third Term source: Weeks 2–6, Week 8 and Period 3 line-equation section",
+      "objective": "Assess all six instructional blocks present in the supplied Third Term source using a 60-mark paper with answer key and marking guide.",
+      "required_files": [
+        "docs/ss1/work/microtasks/further-mathematics/FM-TEST-T3-SOURCE-AVAILABLE.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/FM-TEST-T3-SOURCE-AVAILABLE.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-LES-T3-W02",
+        "FM-LES-T3-W03",
+        "FM-LES-T3-W04",
+        "FM-LES-T3-W05",
+        "FM-LES-T3-W06",
+        "FM-LES-T3-W08"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "New 75-minute, 60-mark assessment: 20 MCQs and six structured questions with answers and criterion-level marking. Explicitly limited to topics actually present in the source. Teacher approval PENDING; verification DEFERRED.",
+      "completion_condition": "Assessment totals 60 marks, samples all available source topics, has keyed answers and criterion-level marking. Approval and verification remain pending/deferred."
     }
   ],
   "review": {
