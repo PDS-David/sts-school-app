@@ -14,7 +14,7 @@ import { resolveSs1LiteratureDelivery, retireStaleSs1LiteratureCache } from '../
 import { resolveSs1MathematicsDelivery, safeSs1MathematicsTopic, mathematicsAssetDeliverable, mathematicsAssetsForTopic, readMathematicsAsset, retireStaleSs1MathematicsCache } from '../utils/ss1MathematicsDeliveryCorrection.js';
 import { resolveAgriculturalScienceDelivery, resolveAgriculturalScienceSupplement, resolveAgriculturalScienceSourceProjection, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, retireStaleAgriculturalScienceSupplementCache, retireStaleAgriculturalScienceSourceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
-import { listStudentSs1Lessons, getStudentSs1Lesson, listStudentSs1Assets, readStudentSs1Asset } from '../db/ss1/studentDelivery.js';
+import { listStudentSs1Lessons, getStudentSs1Lesson, listStudentSs1Assets, readStudentSs1Asset, studentSs1LessonPreview } from '../db/ss1/studentDelivery.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
 // Read per request (value is constant in a running server) so tests can exercise PIN on and off in one process.
@@ -53,17 +53,23 @@ router.get('/ss1/lessons', requirePerm('topics.read'), async (req, res) => {
     return res.status(400).json({ error: 'subject_name is too long' });
   }
   const unlockedTerms = await redeemedSs1Terms(studentId);
-  const lessons = listStudentSs1Lessons(subjectName).map(lesson => ({
-    ...lesson,
-    locked: !unlockedTerms.has(lesson.term),
-    assets: listStudentSs1Assets(lesson.id).map(asset => ({
-      id: asset.id,
-      alt: asset.alt,
-      mime: asset.media_type,
-      url: `/learning/ss1/assets/${encodeURIComponent(asset.id)}`,
-      order: asset.order,
-    })),
-  }));
+  const lessons = listStudentSs1Lessons(subjectName).map(lesson => {
+    const locked = !unlockedTerms.has(lesson.term);
+    // A locked list row is metadata only. Do not serialize lesson body,
+    // practice questions/answers, source provenance or asset URLs.
+    if (locked) return { ...studentSs1LessonPreview(lesson, true), assets: [] };
+    return {
+      ...lesson,
+      ...studentSs1LessonPreview(lesson, false),
+      assets: listStudentSs1Assets(lesson.id).map(asset => ({
+        id: asset.id,
+        alt: asset.alt,
+        mime: asset.media_type,
+        url: `/learning/ss1/assets/${encodeURIComponent(asset.id)}`,
+        order: asset.order,
+      })),
+    };
+  });
   return res.json({ lessons });
 });
 
