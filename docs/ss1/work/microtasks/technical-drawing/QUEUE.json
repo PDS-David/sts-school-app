@@ -1390,7 +1390,7 @@
         "TD-SRC-T2"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Added tests/ss1/technical-drawing.package.test.mts covering package schema, unique lesson/practice IDs, body hashes, marking totals, Week 7–10 coverage bindings and registered supplemental SVG integrity. CI execution is pending workflow authorization.",
+      "implementation_reference": "Added tests/ss1/technical-drawing.package.test.mts covering package schema, unique lesson/practice IDs, body hashes, marking totals, Week 7–10 coverage bindings and supplemental SVG integrity. Executed in GitHub Actions run 43173434189: included in 16 tests, all passed. The independent Technical Drawing package validator also parsed the package and reported its remaining 27 open items/approval gates.",
       "completion_condition": "Written and run only in the authorised later stage."
     },
     {
@@ -1412,7 +1412,7 @@
         "TD-TEST-PACKAGE-NEW"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Added tests/ss1/technical-drawing.source-assets.test.mts covering all 104 source asset files, actual byte counts/SHA-256, package-to-manifest-to-queue one-to-one reconciliation, source reuse mappings and supported scheme-week bindings. CI execution is pending workflow authorization.",
+      "implementation_reference": "Added tests/ss1/technical-drawing.source-assets.test.mts covering all 104 source asset files, actual byte counts/SHA-256, package-to-manifest-to-queue one-to-one reconciliation, source reuse mappings and supported scheme-week bindings. Executed in GitHub Actions run 43173434189: all tests passed. The separate full SS1 cross-subject compiler audit is not green because it fails on unrelated Yoruba lesson identity/hash; it also reports Technical Drawing's explicit owner/content approval gates.",
       "completion_condition": "Run only in the later authorised verification stage."
     },
     {
@@ -1887,7 +1887,7 @@
         "TD-VIS-W10"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Source row 18 written construction steps, all 19 DrawingML placements/17 unique figures, assessment templates and weekend figures image88–image104 have been inventoried. Native-resolution callouts and weekend Q1–Q6 outcomes are transcribed in TD-FACT-W10-TANGENCY-CONSTRUCTIONS.md. The two original-source defects (R1+R repeated for second circle; incomplete unequal-circle internal tangent steps) remain explicitly recorded as source gaps. Implementation complete; source/figure verification and owner correction remain deferred.",
+      "implementation_reference": "Source row 18 written construction steps, all 19 DrawingML placements/17 unique figures, assessment templates and weekend figures image88–image104 have been inventoried. Native-resolution callouts and weekend Q1–Q6 outcomes are transcribed in TD-FACT-W10-TANGENCY-CONSTRUCTIONS.md. Two source-method defects and low-resolution callouts remain explicit. Technical Drawing source-asset extraction and regression step passed in cross-subject workflow 43173434199; the global all-subject audit later failed on unrelated Yoruba package identity/hash.",
       "completion_condition": "Record every tangency construction with exact source locator, dimensions, labels, centres/radii/contact points and exercise references; no inferred constructions."
     },
     {
