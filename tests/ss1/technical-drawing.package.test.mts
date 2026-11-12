@@ -356,3 +356,18 @@ test('Week Four distorted gate source has a fully dimensioned original scale alt
   assert.ok(source, 'distorted source figure must remain documented');
   assert.equal(source.blocks_delivery, false);
 });
+
+test('Week Three under-specified pentagon has an explicit regular-pentagon alternative', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W03-POLYGON-CONSTRUCTIONS');
+  assert.ok(lesson, 'Week Three polygon lesson missing');
+  const q = lesson.practice.find(item => item.id === 'TD-W03-KEY-Q07');
+  assert.ok(q, 'regular-pentagon alternative missing');
+  assert.equal(q.marks, q.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+  assert.match(lesson.body, /regular-pentagon alternative/);
+  assert.match(lesson.body, /43\.26 mm/);
+  assert.match(lesson.body, /36\.84 mm/);
+  const item = subject.open_items.find(entry => entry.id === 'TD-T2-W03-GENERAL-PENTAGON-DIAGONAL-UNDERDEFINED');
+  assert.ok(item, 'source wording ambiguity must remain documented');
+  assert.equal(item.blocks_delivery, false);
+});
