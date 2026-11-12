@@ -39,8 +39,8 @@
     "LESSON": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 7,
-    "PENDING": 44,
+    "IMPLEMENTED_TESTING_DEFERRED": 8,
+    "PENDING": 43,
     "BLOCKED": 1
   },
   "items": [
@@ -339,8 +339,8 @@
         "GOV-INV-T1",
         "GOV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No preamble rule or coverage exists: government.json has the three sources and their three alias rules only, with coverage[], lessons[], assets[] and delivery_corrections[] empty. Inventory evidence: lines 1-16 blank, 17 title, 19 subject/class line equals header_text and occurs once (block 17-20 SHA-256 f75dff4d596cd843cf2c4edc3e7521087aad9269eedb7972b91f5a4a362d2496), scheme 21-42 SHA-256 7282181eb168ae114a2311b961108afe4a7111d2211eabe8e0139a97d38bb0a8, blanks 43-44. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12 on Government branch synced through master 38caac31c2a868b6d2f034ffa62a1acc8e6603bd. Reused verified GOV-INV-T1 source identity and word-extractor 1.0.4 getBody() locators: source SHA-256 50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a; title/header block lines 17–20 SHA-256 f75dff4d596cd843cf2c4edc3e7521087aad9269eedb7972b91f5a4a362d2496; scheme block lines 21–42 SHA-256 7282181eb168ae114a2311b961108afe4a7111d2211eabe8e0139a97d38bb0a8. Confirmed unique subject header at line 19. Mapped scheme rows 1–10 to W01–W10; retained existing Week 1 coverage, added 20 UNRESOLVED objective-level entries for rows 2–10 and nine precise week-indexing open items, and linked the existing partial 'Why we Study Government' entry to GOV-WK-T1-W02. Row 11 line 42 is cross-referenced to GOV-REV-T1, with no marker rule or fabricated Week 11 added. No lesson or new source rule written. No tests/typecheck/importer/compiler run; testing deferred by owner.",
       "completion_condition": "Preamble coverage exists and the scheme is accounted for with its hash and row map; week rows point at the week items; row 42 points at GOV-REV-T1; no lesson, invented heading or guessed week is written. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
     },
     {
@@ -1937,7 +1937,6 @@
   },
   "next_runnable": [
     "GOV-TEST-PACKAGE",
-    "GOV-PRE-T1",
     "GOV-REV-T1",
     "GOV-MARK-T1",
     "GOV-WK-T1-W02",
