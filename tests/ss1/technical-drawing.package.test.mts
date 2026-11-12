@@ -43,6 +43,8 @@ test('Week 8–9 and Week 10 scheme objectives are bound to teaching supplements
     'COV-TD-T2-W07-REDUCTION',
     'COV-TD-T2-SCH-W08',
     'COV-TD-T2-SCH-W09',
+    'COV-TD-T2-SCH-W10',
+    'COV-TD-T2-W10-TANGENCY',
     'COV-TD-T2-W08-EQUAL-AREA',
     'COV-TD-T2-W09-EQUAL-AREA',
     'COV-TD-T2-W10-TANGENCY-SUPPLEMENT'
