@@ -69,6 +69,12 @@ test('archive correction package contains structurally complete lessons and expl
   const ids = archiveCorrections.corrections.map((record: any) => record.topic_id);
   assert.equal(new Set(ids).size, ids.length);
   for (const record of archiveCorrections.corrections as any[]) {
+    const sourceIdentity = manifest.records.find((item: any) => item.id === record.topic_id) as any;
+    assert.ok(sourceIdentity, record.title);
+    assert.equal(record.source_title, sourceIdentity.title);
+    assert.equal(record.source_order_index, sourceIdentity.order_index);
+    assert.equal(record.subject, sourceIdentity.subject);
+    assert.equal(record.term, sourceIdentity.term);
     assert.ok(record.objectives.length >= 2, record.title);
     assert.ok(record.lesson.length >= 100, record.title);
     assert.ok(record.examples.length >= 2, record.title);
@@ -131,4 +137,27 @@ test('superseded Primary 4 outline and merged rows are explicitly hidden from st
   assert.equal((safe as any).primary4_delivery.hide_from_student, true);
   assert.equal(safe.source_reference, null);
   assert.equal(safe.generated_assessment_id, null);
+});
+
+
+test('every retired Primary 4 outline/merged row matches a known export identity before hiding', () => {
+  for (const id of archiveCorrections.hidden_topic_ids as number[]) {
+    const record = manifest.records.find((item: any) => item.id === id) as any;
+    assert.ok(record, `missing manifest row for hidden id ${id}`);
+    const topic = {
+      id,
+      school_code: 'primary',
+      class_name: 'Primary 4',
+      subject_name: record.subject,
+      term_label: record.term,
+      order_index: record.order_index,
+      title: record.title,
+      source_reference: 'old outline source',
+      summary: 'stale summary',
+      generated_assessment_id: 91,
+    };
+    const delivery = resolvePrimary4SourceDelivery(topic);
+    assert.equal(delivery?.kind, 'withheld', `hidden id ${id}`);
+    if (delivery?.kind === 'withheld') assert.equal(delivery.hideFromStudent, true, `hidden id ${id}`);
+  }
 });
