@@ -43,10 +43,10 @@
     "SOURCE_SECTION_INDEXING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 29,
-    "BLOCKED": 8,
-    "IN_PROGRESS": 1,
-    "PENDING": 52
+    "IMPLEMENTED_TESTING_DEFERRED": 72,
+    "BLOCKED": 7,
+    "IN_PROGRESS": 2,
+    "PENDING": 32
   },
   "items": [
     {
@@ -254,7 +254,7 @@
         "FM-PRE-T1"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Implemented: further-mathematics.json coverage COV-FM-T1-W01-OBJ-1 (basic laws of indices) and COV-FM-T1-W01-OBJ-2 (application of indices) added, both PARTIAL and bound to the row id SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2; COV-FM-T1-R00 keeps its status and gains a pointer to them. Scheme line 23 gives one topic, 'Indices: Basic Laws & Application of indices', and the row's own CONTENT bullets (lines 68-69) split it into the same two objectives. Scheme row 1 is classified as the week-1 objective source, body row 0 as an ordinary teaching row (no classify_marker rule needed); the row's blank tail, lines 145-172, is whitespace. Review found 12 factual defects (OI-FM-T1-W01-FACT-DEFECTS), flattened superscripts, root indices and stacked fractions but no equation objects, pictures or subscripts (OI-FM-T1-W01-NOTATION-LOSS), and no answers for any practice plus three equation-solving items belonging to week 2 (OI-FM-T1-W01-ASSESSMENT-GAPS). The row needs a replacement; none is authored here. Document SHA-256 995cba8c…7145 verified against the prompt and SOURCE_ASSIGNMENTS.csv; the supplied container was a different, partial ZIP (SHA-256 8055d852…e636) so the composite hash 02448712… was not checked. The registered row id was recomputed: SHA-256 of lines 65-144 joined by newlines equals 621448ae…5cb. Read with word-extractor 1.0.4 and a private LibreOffice render and ODT conversion, not the importer. Follow-ups: FM-LES-T1-W01-INDICES, FM-COR-T1-W01, FM-FACT-T1-W01-GEN-EVAL-F; FM-PORT-D3-L001 now has its precondition. Record: docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W01.md. Implemented, not approved or verified.",
+      "implementation_reference": "Implemented: further-mathematics.json coverage COV-FM-T1-W01-OBJ-1 (basic laws of indices) and COV-FM-T1-W01-OBJ-2 (application of indices) added, both PARTIAL and bound to the row id SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2; COV-FM-T1-R00 keeps its status and gains a pointer to them. Scheme line 23 gives one topic, 'Indices: Basic Laws & Application of indices', and the row's own CONTENT bullets (lines 68-69) split it into the same two objectives. Scheme row 1 is classified as the week-1 objective source, body row 0 as an ordinary teaching row (no classify_marker rule needed); the row's blank tail, lines 145-172, is whitespace. Review found 12 factual defects (OI-FM-T1-W01-FACT-DEFECTS), flattened superscripts, root indices and stacked fractions but no equation objects, pictures or subscripts (OI-FM-T1-W01-NOTATION-LOSS), and no answers for any practice plus three equation-solving items belonging to week 2 (OI-FM-T1-W01-ASSESSMENT-GAPS). The row needs a replacement; none is authored here. Document SHA-256 995cba8c…7145 verified against the prompt and SOURCE_ASSIGNMENTS.csv; the supplied container was a different, partial ZIP (SHA-256 8055d852…e636) so the composite hash 02448712… was not checked. The registered row id was recomputed: SHA-256 of lines 65-144 joined by newlines equals 621448ae…5cb. Read with word-extractor 1.0.4 and a private LibreOffice render and ODT conversion, not the importer. Follow-ups: FM-LES-T1-W01-INDICES, FM-COR-T1-W01, FM-FACT-T1-W01-GEN-EVAL-F; FM-PORT-D3-L001 now has its precondition. Record: docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W01.md. Implemented, not approved or verified. Original page 4 visually inspected: General Evaluation (f) is 625^(3/8)×25, not 3/4; replacement calculates 125√5 as printed. All in-scope evaluation/general/weekend/theory index questions now have worked answers; exponential-equation items are covered in Week Two. Coverage OBJ-2 is IMPLEMENTED_EQUIVALENT. Textbook reading page reference remains unverified.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -331,7 +331,7 @@
         "FM-PORT-D3-L002"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Closed by reference to the replacement ported by FM-PORT-D3-L002, lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS] in backend/src/db/ss1/subjects/further-mathematics.json, with one narrow addition. Checked against OI-FM-T1-W02-FACT-DEFECTS on 2026-11-06: defects 1 to 7 and 9 pass (qualified equal-base rule with a > 0 and a not 1 and no false converse; x for the unknown and × for multiplication; every index with a caret; both lost conclusions in words; weekend item 4 explained), and the equal-base contradiction is already corrected. Defect 8 was only named, so the lesson now teaches how to finish 2^x = 3: section 8 (log as the undoing of a power, x = log(k) ÷ log(a), worked examples 2^x = 3 and 5^x = 40), edited sentences in sections 5 and 7, objective 4, practice Q9 (3^(2x) - 4(3^x) - 21 = 0, 5 marks) and an OpenStax College Algebra 2e section 6.6 provenance entry. body_sha256 fe5e13bd865d5efba54ae554d2f6cf70224451b0e2f6491cf39af78e21e64ce9 (was 0f61001b9487a7d01eced4ade42cd5bc84299b14b793514f33159d11c7446871); 9 practice items, 38 marks, every marking list sums; state content_approval PENDING, approval_reference null, implementation IMPLEMENTED, verification DEFERRED, verification_reference null. Coverage COV-FM-T1-W02-OBJ-1 and COV-FM-T1-W02-OBJ-2 already point at the lesson; OBJ-2 gains one objective-level evidence entry, both lesson-hash literals are updated, and COV-FM-T1-R01 stays PARTIAL with a dated update. OI-FM-T1-W02-FACT-DEFECTS and OI-FM-T1-W02-ASSESSMENT-GAPS texts updated and still OPEN and blocking; no row binding (FM-COR-T1-W02), equation-object recovery or other task closed. Details in docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W02-EQUATIONS.md.",
+      "implementation_reference": "Closed by reference to the replacement ported by FM-PORT-D3-L002, lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS] in backend/src/db/ss1/subjects/further-mathematics.json, with one narrow addition. Checked against OI-FM-T1-W02-FACT-DEFECTS on 2026-11-06: defects 1 to 7 and 9 pass (qualified equal-base rule with a > 0 and a not 1 and no false converse; x for the unknown and × for multiplication; every index with a caret; both lost conclusions in words; weekend item 4 explained), and the equal-base contradiction is already corrected. Defect 8 was only named, so the lesson now teaches how to finish 2^x = 3: section 8 (log as the undoing of a power, x = log(k) ÷ log(a), worked examples 2^x = 3 and 5^x = 40), edited sentences in sections 5 and 7, objective 4, practice Q9 (3^(2x) - 4(3^x) - 21 = 0, 5 marks) and an OpenStax College Algebra 2e section 6.6 provenance entry. body_sha256 fe5e13bd865d5efba54ae554d2f6cf70224451b0e2f6491cf39af78e21e64ce9 (was 0f61001b9487a7d01eced4ade42cd5bc84299b14b793514f33159d11c7446871); 9 practice items, 38 marks, every marking list sums; state content_approval PENDING, approval_reference null, implementation IMPLEMENTED, verification DEFERRED, verification_reference null. Coverage COV-FM-T1-W02-OBJ-1 and COV-FM-T1-W02-OBJ-2 already point at the lesson; OBJ-2 gains one objective-level evidence entry, both lesson-hash literals are updated, and COV-FM-T1-R01 stays PARTIAL with a dated update. OI-FM-T1-W02-FACT-DEFECTS and OI-FM-T1-W02-ASSESSMENT-GAPS texts updated and still OPEN and blocking; no row binding (FM-COR-T1-W02), equation-object recovery or other task closed. Details in docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W02-EQUATIONS.md. Added Week One misplaced exponential-equation items as Week Two Examples F–G and practice Q10–Q11; practice now 11 questions, 42 marks; body_sha256=7da374f9258a2b0abf2d07c4301e3b4fb5f1c224609d16572bb9098754466787. Practice updated to 11 questions/42 marks; includes Week One misplaced equation items 3^(-y)=243 and 25^(-5n)=625 as Q10–Q11.",
       "completion_condition": "Supplement exists with provenance, objectives, original practice with complete answers and marks that sum, exact body hash, state content_approval PENDING / implementation IMPLEMENTED / verification DEFERRED; both coverage entries COV-FM-T1-W02-OBJ-1 and COV-FM-T1-W02-OBJ-2 updated to point at it with objective-level evidence; or closed by reference to a ported replacement that passes the defect list. Approval and verification are not invented."
     },
     {
@@ -427,8 +427,8 @@
         "FM-SRC-T1",
         "FM-PRE-T1"
       ],
-      "status": "IN_PROGRESS",
-      "implementation_reference": "parsed row 2 of SS1-03 parsed_rows.json (week label \"WEEK THREE\", title \"LOGARITHM - SOLVING PROBLEMS BASED ON LAWS OF LOGARITHM\", 11419 characters). Existing coverage COV-FM-T1-R02 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-003 (task FM-PORT-D3-L003). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002). | 2026-11-12: composite archive and exact member hash verified; a new repair supplement was added and linked to COV-FM-T1-R02. Coverage remains PARTIAL; content approval PENDING; verification DEFERRED. Review: docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W03.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Source Week 3 fully indexed at objective level: COV-FM-T1-W03-OBJ-1..4. Replacement SUP-SS1-FURTHER-MATHEMATICS-T1-W03-LOGARITHMS-REPAIR covers all four scheme objectives with 12 original questions/38 marks. Source mathematical/notation defects recorded in OI-FM-T1-W03-SOURCE-DEFECTS. The source row R02 now points to the replacement as IMPLEMENTED_EQUIVALENT. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -465,8 +465,8 @@
         "FM-SRC-T1",
         "FM-PRE-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 3 of SS1-03 parsed_rows.json (week label \"WEEK FOUR\", title \"REVIEW OF BASIC CONCEPT OF SET\", 107 characters). Existing coverage COV-FM-T1-R03 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). The parsed row is only 107 characters; PR71 treats it as a stranded topic label belonging to the following Sets row (rule FMATHS-R03). FM-FACT-T1-W04-STRANDED-LABEL handles that structural question separately. PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The source row is a distinct WEEK FOUR heading-only marker (TOPIC: REVIEW OF BASIC CONCEPT OF SET), followed by a separate WEEK FIVE heading; it is not a stranded Week Five label. Added COV-FM-T1-W04-OBJ-1 and replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T1-W04-SET-THEORY-REVIEW (4 objectives, 8 practice questions, 18 marks). Source body is absent, so the supplement reconstructs the review scope using the following Week Five SETS section; no source row identity was changed. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -503,8 +503,8 @@
         "FM-SRC-T1",
         "FM-PRE-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 4 and 5 of SS1-03 parsed_rows.json (week label \"WEEK FIVE\", title \"SETS; OPERATION OF SET AND VENN DIAGRAMS (two parsed rows carry this week label)\", 18114 characters). Existing coverage COV-FM-T1-R04 + COV-FM-T1-R05 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). Two parsed rows (SETS, 10737 characters; OPERATION OF SET AND VENN DIAGRAMS, 7377 characters) carry the label WEEK FIVE; the item covers both rows. Venn diagram objects are handled in FM-VIS-T1-W05-VENN. PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IN_PROGRESS",
+      "implementation_reference": "parsed row 4 and 5 of SS1-03 parsed_rows.json (week label \"WEEK FIVE\", title \"SETS; OPERATION OF SET AND VENN DIAGRAMS (two parsed rows carry this week label)\", 18114 characters). Existing coverage COV-FM-T1-R04 + COV-FM-T1-R05 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). Two parsed rows (SETS, 10737 characters; OPERATION OF SET AND VENN DIAGRAMS, 7377 characters) carry the label WEEK FIVE; the item covers both rows. Venn diagram objects are handled in FM-VIS-T1-W05-VENN. PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002). Reviewed source body and authored replacement SUP-SS1-FURTHER-MATHEMATICS-T1-W05-SETS-VENN with objective coverage COV-FM-T1-W05-OBJ-1..3. Indexing remains IN_PROGRESS pending visual disposition and final source-object inspection.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -541,8 +541,8 @@
         "FM-SRC-T1",
         "FM-PRE-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 6 of SS1-03 parsed_rows.json (week label \"WEEK SIX\", title \"First Half Term Revision Questions\", 1399 characters). Existing coverage COV-FM-T1-R06 is MARKER (marker row, body retained). Row is classified REVISION by RULE-FM-T1-W06-REVISION (anchor \"First Half  Term Revision Questions\"); body retained. The item confirms what the scheme assigns to this week and whether the revision questions carry content needing any objective. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Reviewed the Week Six revision block and mapped both scheme objectives: COV-FM-T1-W06-OBJ-1 (first-half review) and OBJ-2 (periodic test). The source revision questions cover indices/exponential equations/logarithms but omit Weeks 4–5 sets; a new 50-mark assessment draft is at FM-TEST-T1-W06-PERIODIC. The source itself contains no separate periodic-test paper. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -579,8 +579,8 @@
         "FM-SRC-T1",
         "FM-PRE-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 7 of SS1-03 parsed_rows.json (week label \"WEEK SEVEN\", title \"BINARY OPERATIONS: BASIC CONCEPT OF BINARY OPEATIONS\", 5736 characters). Existing coverage COV-FM-T1-R07 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "parsed row 7 of SS1-03 parsed_rows.json (week label \"WEEK SEVEN\", title \"BINARY OPERATIONS: BASIC CONCEPT OF BINARY OPEATIONS\", 5736 characters). Existing coverage COV-FM-T1-R07 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002). Scheme objectives 1–3 mapped to objective-level coverage COV-FM-T1-W07-OBJ-1..3; the replacement lesson addresses all five taught properties and the definition. Original Week 7 body reviewed; source notation is restated explicitly. No image objects are present in the week body. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -617,8 +617,8 @@
         "FM-SRC-T1",
         "FM-PRE-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 8 of SS1-03 parsed_rows.json (week label \"WEEK EIGHT\", title \"BINARY OPERATIONS: IDENTITY AND INVERSE ELEMENTS\", 3173 characters). Existing coverage COV-FM-T1-R08 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "parsed row 8 of SS1-03 parsed_rows.json (week label \"WEEK EIGHT\", title \"BINARY OPERATIONS: IDENTITY AND INVERSE ELEMENTS\", 3173 characters). Existing coverage COV-FM-T1-R08 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002). Scheme objectives 1–3 mapped to COV-FM-T1-W08-OBJ-1..3. Rendered original pages 34–35 visually to recover the identity operation exactly as a*b=(2a−1)/2+b; replacement lesson now works it and verifies both sides. Week 8 table objective is completed with both modulo-4 tables. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -655,8 +655,8 @@
         "FM-SRC-T1",
         "FM-PRE-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 9 of SS1-03 parsed_rows.json (week label \"WEEK NINE\", title \"SURDS\", 7506 characters). Existing coverage COV-FM-T1-R09 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "parsed row 9 of SS1-03 parsed_rows.json (week label \"WEEK NINE\", title \"SURDS\", 7506 characters). Existing coverage COV-FM-T1-R09 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002). Scheme objectives 1–3 mapped to COV-FM-T1-W09-OBJ-1..3. Source examples were recomputed; corrected wrong final radical in 7√3−√75 and restored radical signs in the two square-root examples. Replacement lesson covers the full scope. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -693,8 +693,8 @@
         "FM-SRC-T1",
         "FM-PRE-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 10 of SS1-03 parsed_rows.json (week label \"WEEK TEN\", title \"STATISTICS: MEASURES OF CENTRAL TENDENCY\", 10289 characters). Existing coverage COV-FM-T1-R10 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "parsed row 10 of SS1-03 parsed_rows.json (week label \"WEEK TEN\", title \"STATISTICS: MEASURES OF CENTRAL TENDENCY\", 10289 characters). Existing coverage COV-FM-T1-R10 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002). Scheme objectives 1–2 mapped to COV-FM-T1-W10-OBJ-1..2. Source grouped-median example is internally inconsistent (shoe-size table totals 50, but the stated median-class values do not match it); replacement uses a consistent grouped dataset and formula. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -731,8 +731,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 0 of SS1-03 parsed_rows.json (week label \"WEEK ONE\", title \"SEQUENCE & SERIES\", 8291 characters). Existing coverage COV-FM-T2-R00 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-004 (task FM-PORT-D3-L004). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "parsed row 0 of SS1-03 parsed_rows.json (week label \"WEEK ONE\", title \"SEQUENCE & SERIES\", 8291 characters). Existing coverage COV-FM-T2-R00 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-004 (task FM-PORT-D3-L004). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).Indexed scheme objectives COV-FM-T2-W01-OBJ-1..3; replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T2-W01-ARITHMETIC-PROGRESSION covers them. Source defect OI-FM-T2-W01-SOURCE-DEFECTS records the inconsistent AP 100,96,92,88,86 and out-of-scope evaluation items. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -769,8 +769,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 1 of SS1-03 parsed_rows.json (week label \"WEEK TWO\", title \"SEQUENCE AND SERIES (II)\", 6131 characters). Existing coverage COV-FM-T2-R01 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-005 (task FM-PORT-D3-L005). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "parsed row 1 of SS1-03 parsed_rows.json (week label \"WEEK TWO\", title \"SEQUENCE AND SERIES (II)\", 6131 characters). Existing coverage COV-FM-T2-R01 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-005 (task FM-PORT-D3-L005). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).Indexed scheme objectives COV-FM-T2-W02-OBJ-1..3; replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T2-W02-GEOMETRIC-PROGRESSION covers them. Source defect OI-FM-T2-W02-GP-CONDITIONS records the missing radical in geometric mean, sign ambiguity and incorrect sum-to-infinity condition. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -807,8 +807,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 2 of SS1-03 parsed_rows.json (week label \"WEEK THREE\", title \"LINEAR INEQUALITIES\", 6194 characters). Existing coverage COV-FM-T2-R02 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-006 (task FM-PORT-D3-L006). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Reviewed original Week Three source and rendered pages 9–12. Scheme objective mapped to COV-FM-T2-W03-OBJ-1; replacement SUP-SS1-FURTHER-MATHEMATICS-T2-W03-LINEAR-INEQUALITIES covers linear inequalities and the additional source sections on quadratic and absolute-value inequalities. Source errors in two quadratic solution sets, a graph equation label, and weekend MCQ options recorded in OI-FM-T2-W03-QUADRATIC-SOLUTION-ERRORS and OI-FM-T2-W03-WEEKEND-ITEMS. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -845,8 +845,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 3 of SS1-03 parsed_rows.json (week label \"WEEK FOUR\", title \"LINEAR INEQUALITY (PART TWO)\", 11333 characters). Existing coverage COV-FM-T2-R03 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-007 (task FM-PORT-D3-L007). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Reviewed source Week Four and mapped scheme objectives to COV-FM-T2-W04-OBJ-1..3. Replacement SUP-SS1-FURTHER-MATHEMATICS-T2-W04-TWO-VARIABLE-INEQUALITIES-LP corrects graph inequalities, feasible-region intersections and LP vertex calculations. Source defects recorded in OI-FM-T2-W04-SOURCE-GRAPH-AND-OPTIMISATION-DEFECTS. Original source graph objects remain to be visually inspected and replaced with clean assets if needed. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -883,8 +883,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 4 of SS1-03 parsed_rows.json (week label \"WEEK FIVE\", title \"MAPPING AND FUNCTIONS\", 5989 characters). Existing coverage COV-FM-T2-R04 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Reviewed original Week Five source and visually inspected pages 20–22. Scheme objectives mapped to COV-FM-T2-W05-OBJ-1..3. Replacement SUP-SS1-FURTHER-MATHEMATICS-T2-W05-MAPPING-FUNCTIONS corrects the function definition, one-to-one implication, missing negative preimages, and a mapping-diagram output. The extracted codomain labels were checked against the rendered original. Source defects recorded in OI-FM-T2-W05-MAPPING-SOURCE-DEFECTS. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -921,8 +921,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 5 of SS1-03 parsed_rows.json (week label \"WEEK SIX\", title \"Revision of half term work\", 56 characters). Existing coverage COV-FM-T2-R05 is MARKER (marker row, body retained). Row is only 56 characters, classified REVISION by RULE-FM-T2-W06-REVISION (anchor \"Revision of half term work\"); body retained. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Source row is a revision marker only (56 characters); retained as MARKER. Added COV-FM-T2-W06-OBJ-1 linked to the separate 50-mark revision assessment FM-TEST-T2-W06-HALFTERM. It covers Weeks 1–5 and does not include Week 7 topics. Source itself remains unchanged. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -959,8 +959,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 6 of SS1-03 parsed_rows.json (week label \"WEEK SEVEN\", title \"Composite Mapping and Inverse Mapping\", 5326 characters). Existing coverage COV-FM-T2-R06 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-008 (task FM-PORT-D3-L008). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Reviewed Week Seven composite/inverse mapping source; objective coverage COV-FM-T2-W07-OBJ-1..3 added. Replacement SUP-SS1-FURTHER-MATHEMATICS-T2-W07-COMPOSITE-INVERSE-MAPPINGS covers all objectives with domain restrictions. Incorrect f(f(x)) options recorded in OI-FM-T2-W07-SOURCE-ITEM-DEFECTS. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -997,8 +997,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 7 of SS1-03 parsed_rows.json (week label \"WEEK EIGHT\", title \"TRIGONOMETRIC RATIO\", 10680 characters). Existing coverage COV-FM-T2-R07 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). SS1-03 records 52 characters of equation content lost from this row (parsed_rows eqExtra). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-009 (task FM-PORT-D3-L009). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Mapped scheme objectives to COV-FM-T2-W08-OBJ-1..3. Replacement SUP-SS1-FURTHER-MATHEMATICS-T2-W08-TRIGONOMETRIC-RATIOS covers right-triangle ratios, general angles, identities and graph interpretation. Original rendered pages 26–33 visually inspected; several diagrams/graphs are absent in source render and y=sinθ/2 is ambiguous. Visual asset task and teacher clarification remain open. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -1035,8 +1035,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 8 of SS1-03 parsed_rows.json (week label \"WEEK NINE\", title \"LOGIC\", 11019 characters). Existing coverage COV-FM-T2-R08 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "parsed row 8 of SS1-03 parsed_rows.json (week label \"WEEK NINE\", title \"LOGIC\", 11019 characters). Existing coverage COV-FM-T2-R08 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).Week Nine objectives COV-FM-T2-W09-OBJ-1..4 are mapped to replacement SUP-SS1-FURTHER-MATHEMATICS-T2-W09-LOGIC. Source defects in the polygon biconditional, conditional truth assignment and weekend MCQ options are recorded in OI-FM-T2-W09-LOGIC-ERRORS. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -1073,8 +1073,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 9 of SS1-03 parsed_rows.json (week label \"WEEK TEN\", title \"Logical reasing continues\", 3203 characters). Existing coverage COV-FM-T2-R09 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). SS1-03 records 45 characters of equation content lost from this row (parsed_rows eqExtra). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "parsed row 9 of SS1-03 parsed_rows.json (week label \"WEEK TEN\", title \"Logical reasing continues\", 3203 characters). Existing coverage COV-FM-T2-R09 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). SS1-03 records 45 characters of equation content lost from this row (parsed_rows eqExtra). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).Week Ten objectives COV-FM-T2-W10-OBJ-1..3 are mapped to replacement SUP-SS1-FURTHER-MATHEMATICS-T2-W10-LOGICAL-CONNECTIVES-TRUTH-TABLES. Source errors in p∧¬p, distributive law, false tautology and weekend contradiction claim are recorded in OI-FM-T2-W10-LOGIC-IDENTITY-ERRORS. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -1110,8 +1110,8 @@
       "depends_on": [
         "FM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 0 of SS1-03 parsed_rows.json (week label \"WEEK 2\", title \"A flowchart is a diagrammatical representation of a solution to a problem.\", 755 characters). Existing replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS (FM-LES-T3-W02) and correction CORR-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS (FM-COR-T3-W02); coverage COV-FM-T3-R00 is IMPLEMENTED_EQUIVALENT at row level only. Source equation loss recorded for this row by SS1-03 (parsed_rows eqExtra = 0). PR71-only counterpart (not on master): SUP-SS1-FMATHS-010 (FMATHS-3-002). The coverage entry does not certify that every scheme objective was checked; the 3rd Term source has no scheme (OI-FM-003).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Source week reviewed against its replacement lesson; added four additional keyed practice items with criterion-level marking. Existing approval PENDING and verification DEFERRED are preserved.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; the replacement-scope review for this row is recorded (preserved / gap, with the gap becoming an open item and a separate small PENDING item); any PARTIAL/UNRESOLVED entry has an OPEN open item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -1147,8 +1147,8 @@
       "depends_on": [
         "FM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 1 of SS1-03 parsed_rows.json (week label \"WEEK 3\", title \"Gradients of straight lines and curves\", 3801 characters). Existing replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES (FM-LES-T3-W03) and correction CORR-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES (FM-COR-T3-W03); coverage COV-FM-T3-R01 is IMPLEMENTED_EQUIVALENT at row level only. Source equation loss recorded for this row by SS1-03 (parsed_rows eqExtra = 167). PR71-only counterpart (not on master): SUP-SS1-FMATHS-011 (FMATHS-3-003). The coverage entry does not certify that every scheme objective was checked; the 3rd Term source has no scheme (OI-FM-003).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Source week reviewed against its replacement lesson; added four additional keyed practice items with criterion-level marking. Existing approval PENDING and verification DEFERRED are preserved.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; the replacement-scope review for this row is recorded (preserved / gap, with the gap becoming an open item and a separate small PENDING item); any PARTIAL/UNRESOLVED entry has an OPEN open item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -1184,8 +1184,8 @@
       "depends_on": [
         "FM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 2 of SS1-03 parsed_rows.json (week label \"WEEK 4\", title \"Straight line\", 2353 characters). Existing replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR (FM-LES-T3-W04) and correction CORR-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR (FM-COR-T3-W04); coverage COV-FM-T3-R02 is IMPLEMENTED_EQUIVALENT at row level only. Source equation loss recorded for this row by SS1-03 (parsed_rows eqExtra = 299). PR71-only counterpart (not on master): SUP-SS1-FMATHS-012 (FMATHS-3-004; shared with Week 8). The coverage entry does not certify that every scheme objective was checked; the 3rd Term source has no scheme (OI-FM-003).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Source week reviewed against its replacement lesson; added four additional keyed practice items with criterion-level marking. Existing approval PENDING and verification DEFERRED are preserved.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; the replacement-scope review for this row is recorded (preserved / gap, with the gap becoming an open item and a separate small PENDING item); any PARTIAL/UNRESOLVED entry has an OPEN open item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -1221,8 +1221,8 @@
       "depends_on": [
         "FM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 3 of SS1-03 parsed_rows.json (week label \"WEEK 5\", title \"Vectors\", 2500 characters). Existing replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT (FM-LES-T3-W05) and correction CORR-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT (FM-COR-T3-W05); coverage COV-FM-T3-R03 is IMPLEMENTED_EQUIVALENT at row level only. Source equation loss recorded for this row by SS1-03 (parsed_rows eqExtra = 438). PR71-only counterpart (not on master): SUP-SS1-FMATHS-013 (FMATHS-3-005; shared with Week 6). The coverage entry does not certify that every scheme objective was checked; the 3rd Term source has no scheme (OI-FM-003).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Source week reviewed against its replacement lesson; added four additional keyed practice items with criterion-level marking. Existing approval PENDING and verification DEFERRED are preserved.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; the replacement-scope review for this row is recorded (preserved / gap, with the gap becoming an open item and a separate small PENDING item); any PARTIAL/UNRESOLVED entry has an OPEN open item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -1258,8 +1258,8 @@
       "depends_on": [
         "FM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 4 of SS1-03 parsed_rows.json (week label \"WEEK 6\", title \"MAGNITUDE OF A VECTOR\", 2723 characters). Existing replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES (FM-LES-T3-W06) and correction CORR-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES (FM-COR-T3-W06); coverage COV-FM-T3-R04 is IMPLEMENTED_EQUIVALENT at row level only. Source equation loss recorded for this row by SS1-03 (parsed_rows eqExtra = 438). PR71-only counterpart (not on master): SUP-SS1-FMATHS-013 (FMATHS-3-006; shared with Week 5). The coverage entry does not certify that every scheme objective was checked; the 3rd Term source has no scheme (OI-FM-003).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Source week reviewed against its replacement lesson; added four additional keyed practice items with criterion-level marking. Existing approval PENDING and verification DEFERRED are preserved.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; the replacement-scope review for this row is recorded (preserved / gap, with the gap becoming an open item and a separate small PENDING item); any PARTIAL/UNRESOLVED entry has an OPEN open item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -1295,8 +1295,8 @@
       "depends_on": [
         "FM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 5 of SS1-03 parsed_rows.json (week label \"WEEK 8\", title \"Straight line\", 3455 characters). Existing replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS (FM-LES-T3-W08) and correction CORR-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS (FM-COR-T3-W08); coverage COV-FM-T3-R05 is IMPLEMENTED_EQUIVALENT at row level only. Source equation loss recorded for this row by SS1-03 (parsed_rows eqExtra = 163). PR71-only counterpart (not on master): SUP-SS1-FMATHS-012 and SUP-SS1-FMATHS-014 (FMATHS-3-008, FMATHS-3-009). The coverage entry does not certify that every scheme objective was checked; the 3rd Term source has no scheme (OI-FM-003).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Source week reviewed against its replacement lesson; added four additional keyed practice items with criterion-level marking. Existing approval PENDING and verification DEFERRED are preserved.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; the replacement-scope review for this row is recorded (preserved / gap, with the gap becoming an open item and a separate small PENDING item); any PARTIAL/UNRESOLVED entry has an OPEN open item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -1666,8 +1666,8 @@
       "depends_on": [
         "FM-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PR71 OI-FMATHS-008 and coverage FMATHS-1-006 state that drawn Venn diagrams are lost by text extraction while the numeric worked examples survive in text. That is a PR71 claim made from extracted text; master records no disposition and no figure inventory for the 1st Term .doc.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Rendered the original .doc through LibreOffice and visually inspected PDF pages 19–25 as page images (not text-only). Inventory: p.19 universal-set rectangle and subset oval; p.20 complement P′, A∩B caption/diagram (no shading visible despite caption), P∩Q′, A∪B, disjoint P/Q, P⊂Q, and neither P nor Q (lower figure partly cut by footer); p.21 three-set overlap, chain-arranged three-circle example, P-only shading and three-set union shading, plus two-set worked-example diagram; p.22 youth-club two-set diagram, whose printed universal total is 94 despite problem statement 90; p.23 four-region two-set partition diagram; p.25 numbered eight-region three-set diagram and key. New lesson explains the concepts but has no embedded diagram asset. Residual student-facing gap: the source figures are uneven/ambiguous and are not bound to the lesson; add original clean Venn SVGs as a separate asset task. No app display verification claimed. Follow-on asset task FM-ASSET-T1-W05-VENN has now authored and registered four clean SVGs; visual/app display remains unverified.",
       "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
     },
     {
@@ -1703,8 +1703,8 @@
       "depends_on": [
         "FM-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PR71 OI-FMATHS-008 states that mapping diagrams are not extracted. SS1-03 recorded 51 equation objects and 214 subscripts in the 2nd Term source overall. Master has no figure inventory or disposition for these rows.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added original mapping diagram contrasting a valid many-to-one function with a relation in which one input has two outputs. Registered exact SHA-256 and UTF-8 byte count. Teacher approval PENDING; verification DEFERRED.",
       "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
     },
     {
@@ -1740,8 +1740,8 @@
       "depends_on": [
         "FM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "OI-FM-003 states that Week 3 refers to these figures but the source does not draw them, and that the replacement lesson describes them in text only. That statement was not checked against the document in this task.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added original SVG teaching diagrams and registered their exact SHA-256 hashes and UTF-8 byte counts in the subject package. SVG safety, browser rendering, teacher approval and verification remain pending/deferred.",
       "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
     },
     {
@@ -1777,8 +1777,8 @@
       "depends_on": [
         "FM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PR71 OI-FMATHS-008 lists vector figures among drawn figures that are not extracted. Master has lessons for both weeks (FM-LES-T3-W05, FM-LES-T3-W06) but no figure disposition.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added original SVG teaching diagrams and registered their exact SHA-256 hashes and UTF-8 byte counts in the subject package. SVG safety, browser rendering, teacher approval and verification remain pending/deferred.",
       "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
     },
     {
@@ -1814,8 +1814,8 @@
       "depends_on": [
         "FM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PR71 OI-FMATHS-008 lists straight-line figures among drawn figures that are not extracted. Master has lessons for both weeks (FM-LES-T3-W04, FM-LES-T3-W08) but no figure disposition.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added original SVG teaching diagrams and registered their exact SHA-256 hashes and UTF-8 byte counts in the subject package. SVG safety, browser rendering, teacher approval and verification remain pending/deferred.",
       "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
     },
     {
@@ -1851,8 +1851,8 @@
       "depends_on": [
         "FM-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Found by FM-PRE-T1 and recorded in open item OI-FM-007 (PERMISSION, blocks_delivery true): contrary to the earlier queue note, the 1st Term source does carry the tutor's advertising material. Locations are in FM-PRE-T1.md. The images were not bound as lesson assets.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inspected the source cover/letterhead and rendered pages 1–3. Commercial tutor logo, promotional cover/letterhead and tutor-name running footer are present. No contact details were copied into repository content. This is a source-visual disposition only; delivery/removal permission remains blocked by FM-FACT-VENDOR-PERMISSION. Browser/app rendering not claimed.",
       "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
     },
     {
@@ -1888,8 +1888,8 @@
       "depends_on": [
         "FM-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "OI-FM-004 (PERMISSION, blocks_delivery true) records that the 2nd Term source embeds a commercial tutor's letterhead and cover page with a personal phone number and e-mail, and that the images were deliberately not bound as lesson assets. Reuse rights are unconfirmed. Locations were not recorded. | Locations recorded by FM-PRE-T2 (still needs visual inspection here): word/header1.xml has one anchored picture (docPr name 'Picture 1', descr 'LOGO 2.jpg') embedding word/media/image1.jpeg (106,941 bytes, sha256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14), extent 3933825x933450 EMU, referenced as the default header of the first section (section break at body child 73); word/header2.xml is the final section's default header and holds a Name/Class line; footer2 reads 'MR OSHO/2nd TERM/further mathematics/SS 1Page 2' and footer4 'GSS/2ndTERM/further mathematics/SS 1Page 39'; footer1 and footer3 are empty. No picture occurs in body children 0-30, so no separate full-page cover picture was found. Contact details are not reproduced here and the image was not viewed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inspected the source cover/letterhead and rendered pages 1–3. Commercial tutor logo, promotional cover/letterhead and tutor-name running footer are present. No contact details were copied into repository content. This is a source-visual disposition only; delivery/removal permission remains blocked by FM-FACT-VENDOR-PERMISSION. Browser/app rendering not claimed.",
       "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
     },
     {
@@ -1925,8 +1925,8 @@
       "depends_on": [
         "FM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "OI-FM-004 (PERMISSION, blocks_delivery true) records that the 3rd Term source embeds a commercial tutor's letterhead and cover page with a personal phone number and e-mail, and that the images were deliberately not bound as lesson assets. Reuse rights are unconfirmed. Locations were not recorded.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inspected the source cover/letterhead and rendered pages 1–3. Commercial tutor logo, promotional cover/letterhead and tutor-name running footer are present. No contact details were copied into repository content. This is a source-visual disposition only; delivery/removal permission remains blocked by FM-FACT-VENDOR-PERMISSION. Browser/app rendering not claimed.",
       "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
     },
     {
@@ -1963,8 +1963,8 @@
         "FM-SRC-T1",
         "FM-WK-T1-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Master parsed row 3 (WEEK FOUR, 107 characters) is bound by COV-FM-T1-R03 (PARTIAL) and listed in OI-FM-001/OI-FM-002 affected_ids. Master package has no attach_stranded_label rule. PR71 rule FMATHS-R03 (attach_stranded_label, label_anchor \"TOPIC:  REVIEW OF BASIC CONCEPT OF SET\", direction NEXT) exists only in PR71's incompatible schema; master's operation supports attach-to-following only.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Rendered and inspected the original source at the Week Four/Week Five boundary (PDF page 17). Exact sequence: WEEK FOUR / TOPIC: REVIEW OF BASIC CONCEPT OF SET / WEEK FIVE / TOPIC: SETS. These are distinct week headings; Week Four is not a stranded label belonging to Week Five. No attach_stranded_label rule should be added. The Week Four row has no instructional body; replacement review lesson SUP-SS1-FURTHER-MATHEMATICS-T1-W04-SET-THEORY-REVIEW supplies the missing review content. Original source identities remain unchanged.",
       "completion_condition": "Finding recorded with exact anchor text. Either a master-schema rule is added with its effect on row identity stated, or an open item records why not. No lesson is authored."
     },
     {
@@ -1995,7 +1995,7 @@
         "FM-PORT-D3-L001"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Closed by reference, no new lesson authored: backend/src/db/ss1/subjects/further-mathematics.json lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES] title='Laws of indices and their applications', ported and corrected by FM-PORT-D3-L001 (record docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L001.md). Compared against this item's authoring requirements on current master: ONE replacement for both objectives (definition, Laws 1-8, Examples A-E); 9 original practice items, 30 marks, every marking list sums to its item and every answer present; body_sha256 7745eb2b4ea9f09762f8fefac60339a4a998569ac635b13ceca9d6ab4aa2d4c8 recomputed over the UTF-8 body; state content_approval PENDING / implementation IMPLEMENTED / verification DEFERRED with null references; 3 provenance entries; id follows SUP-SS1-<SLUG>-<SUFFIX>. Defect list OI-FM-T1-W01-FACT-DEFECTS: 1 zero index states a != 0; 2 and 3 cube-root chains corrected (Law 7, Example A, Q9); 4 definition with m factors and m a positive whole number; 5 conditions stated; 6 intermediate n-th root step in Law 8; 7 and 8 Example C and brackets balanced (checked per line), 4^2 evaluated; 9 zero index typed as the digit 0; 10 no 'Solve' for evaluation items; 11 item (f) not reused; 12 weekend item 2 not reproduced. Notation (OI-FM-T1-W01-NOTATION-LOSS): every index, root and fraction written explicitly. Printed source exercises are not used as a key. Numeric claims in the body and answer key rechecked with exact rational arithmetic on 2026-11-05. Coverage: COV-FM-T1-W01-OBJ-1 IMPLEMENTED_EQUIVALENT and COV-FM-T1-W01-OBJ-2 PARTIAL both already point at the lesson with objective-level evidence; neither changed. STILL SEPARATE AND UNRESOLVED: Week 2 exponential-equation coverage (weekend items 1, 3, 4; FM-WK-T1-W02 PENDING); the ambiguous exponent in general-evaluation item (f) (FM-FACT-T1-W01-GEN-EVAL-F BLOCKED); the unchecked reading-assignment reference (OI-FM-T1-W01-ASSESSMENT-GAPS; no queue item); delivery binding (FM-COR-T1-W01 PENDING, no delivery correction exists, nothing activated). OI-FM-T1-W01-FACT-DEFECTS, -NOTATION-LOSS and -ASSESSMENT-GAPS stay OPEN and blocking. Content approval and verification not invented. Record: docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W01-INDICES.md. Implemented, not approved or verified.",
+      "implementation_reference": "Closed by reference, no new lesson authored: backend/src/db/ss1/subjects/further-mathematics.json lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES] title='Laws of indices and their applications', ported and corrected by FM-PORT-D3-L001 (record docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L001.md). Compared against this item's authoring requirements on current master: ONE replacement for both objectives (definition, Laws 1-8, Examples A-E); 9 original practice items, 30 marks, every marking list sums to its item and every answer present; body_sha256 7745eb2b4ea9f09762f8fefac60339a4a998569ac635b13ceca9d6ab4aa2d4c8 recomputed over the UTF-8 body; state content_approval PENDING / implementation IMPLEMENTED / verification DEFERRED with null references; 3 provenance entries; id follows SUP-SS1-<SLUG>-<SUFFIX>. Defect list OI-FM-T1-W01-FACT-DEFECTS: 1 zero index states a != 0; 2 and 3 cube-root chains corrected (Law 7, Example A, Q9); 4 definition with m factors and m a positive whole number; 5 conditions stated; 6 intermediate n-th root step in Law 8; 7 and 8 Example C and brackets balanced (checked per line), 4^2 evaluated; 9 zero index typed as the digit 0; 10 no 'Solve' for evaluation items; 11 item (f) not reused; 12 weekend item 2 not reproduced. Notation (OI-FM-T1-W01-NOTATION-LOSS): every index, root and fraction written explicitly. Printed source exercises are not used as a key. Numeric claims in the body and answer key rechecked with exact rational arithmetic on 2026-11-05. Coverage: COV-FM-T1-W01-OBJ-1 IMPLEMENTED_EQUIVALENT and COV-FM-T1-W01-OBJ-2 PARTIAL both already point at the lesson with objective-level evidence; neither changed. STILL SEPARATE AND UNRESOLVED: Week 2 exponential-equation coverage (weekend items 1, 3, 4; FM-WK-T1-W02 PENDING); the ambiguous exponent in general-evaluation item (f) (FM-FACT-T1-W01-GEN-EVAL-F BLOCKED); the unchecked reading-assignment reference (OI-FM-T1-W01-ASSESSMENT-GAPS; no queue item); delivery binding (FM-COR-T1-W01 PENDING, no delivery correction exists, nothing activated). OI-FM-T1-W01-FACT-DEFECTS, -NOTATION-LOSS and -ASSESSMENT-GAPS stay OPEN and blocking. Content approval and verification not invented. Record: docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W01-INDICES.md. Implemented, not approved or verified. Expanded 2026-11-12 with Examples F–J and practice Q10–Q14 (additional 18 marks); total practice now 14 questions, 48 marks. body_sha256=77684db5c981e0cff5f8e42fe083a5c5ed4be639c5cc21019f2be930008fdc3a. Correction binding CORR-FURTHER-MATHEMATICS-T1-W01-INDICES added.",
       "completion_condition": "Supplement exists with provenance, objectives, original practice with complete answers and marks that sum, exact body hash, state content_approval PENDING / implementation IMPLEMENTED / verification DEFERRED; both coverage entries are updated to point at it with objective-level evidence; or closed by reference to the ported replacement. Approval and verification are not invented."
     },
     {
@@ -2023,8 +2023,8 @@
         "FM-WK-T1-W01",
         "FM-LES-T1-W01-INDICES"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by FM-WK-T1-W01. No delivery_corrections entry exists for 1st Term; the row id and body hash are both 621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2 (the row id is SS1-SRC-e9efc9a976ed:BODY:<that hash>). Not started.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added delivery_corrections[id=CORR-FURTHER-MATHEMATICS-T1-W01-INDICES], exact source/body identity and single replacement SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES. Expanded the replacement with Examples F–J and practice Q10–Q14 to answer all in-scope Week One application/theory items. Week One exponential-equation questions are explicitly assigned to and solved in Week Two. COV-FM-T1-W01-OBJ-1/OBJ-2 and row R00 now IMPLEMENTED_EQUIVALENT. Reading assignment page range remains unverified; factual/notation registers remain open pending owner review. Approval PENDING; verification DEFERRED. Week Two replacement now explicitly covers the two exponential-equation items that were misplaced in Week One (3^(-y)=243 → y=-5; 25^(-5n)=625 → n=-2/5).",
       "completion_condition": "delivery_corrections entry added with exact source id, source SHA-256, source lesson id, body hash, replacement id, reason and evidence; no whole-row correction is activated while teaching scope is unresolved."
     },
     {
@@ -2046,8 +2046,8 @@
       "depends_on": [
         "FM-WK-T1-W01"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Defect 11 in OI-FM-T1-W01-FACT-DEFECTS. The intent is not an inspectable fact; BLOCKED on the teacher or owner. It does not block drafting the replacement, which must not reuse the printed item.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inspected the original rendered Week One page 4 image. Item (f) is printed exactly as 625^(3/8) × 25 (the denominator is an 8, not a 4). The expression as printed evaluates to (5^4)^(3/8)×25=5^(3/2)×25=125√5. The replacement teaches and keys that exact expression. The source alone cannot establish whether the author intended 3/4; no correction to the original is made and no intent is fabricated. The residual ambiguity is recorded in OI-FM-T1-W01-FACT-DEFECTS.",
       "completion_condition": "Owner or teacher answer recorded in the open item, or the item left unresolved with the reason."
     },
     {
@@ -2083,8 +2083,8 @@
       "depends_on": [
         "FM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "CORR-FURTHER-MATHEMATICS-T3-W06 states the row repeats Week 5. PR71 OI-FMATHS-004 says the bodies are not byte-identical so no exclusion is justified, and asks the teacher whether the repeat is intended. Master body hashes differ (W05 0fb860b2..., W06 857ea4cf...). Master's exclude_duplicate applies only to byte-identical whole sources.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Week 6 repeats the Week 5 introductory definitions, but its distinct worked content adds vector arithmetic, vector-between-points and direction cosines. These objectives are retained as a separate extension lesson; duplicate source introduction is not treated as a separate learning objective.",
       "completion_condition": "Repeated and differing passages are listed with locators; the finding is recorded for the Week 5 and Week 6 items. Teacher input is requested only if the inspection cannot show whether a repeat is intended."
     },
     {
@@ -2120,8 +2120,8 @@
         "FM-SRC-T1",
         "FM-PRE-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "The 1st Term source is a legacy .doc read by word-extractor; OI-FM-001 states MathType/OLE objects are not read. No per-row loss counts exist for the 1st Term (parsed_rows eqExtra is null). No per-row usability finding exists.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Per-week source XML formatting/embedded-equation audit recorded in FM-FACT-EQUATION-LOSS-T1.md. Replacement coverage and residual OLE/ambiguity gates are explicitly identified. No source or anchor was changed; approval PENDING and verification DEFERRED.",
       "completion_condition": "Per-row loss and usability finding recorded with locators; rows needing a replacement are named for later items; no lesson is authored."
     },
     {
@@ -2157,8 +2157,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "SS1-03 recorded 51 Word equations, 401 superscripts and 214 subscripts lost or flattened in the 2nd Term source (OI-FM-001); per-row eqExtra shows 52 (Week 8) and 45 (Week 10) with 0 elsewhere, but the figures differ in kind and have not been reconciled. No per-row usability finding exists.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Per-week source XML formatting/embedded-equation audit recorded in FM-FACT-EQUATION-LOSS-T2.md. Replacement coverage and residual OLE/ambiguity gates are explicitly identified. No source or anchor was changed; approval PENDING and verification DEFERRED.",
       "completion_condition": "Per-row loss and usability finding recorded with locators; rows needing a replacement are named for later items; no lesson is authored."
     },
     {
@@ -2447,8 +2447,8 @@
         "FM-SRC-T1",
         "FM-WK-T1-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-003] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-1-003; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared immutable PR #72 package commit b5ced7ebb0efe22df2351baa140266fbf40cbf41 lesson SUP-SS1-FMATHS-003 against SUP-SS1-FURTHER-MATHEMATICS-T1-W03-LOGARITHMS-REPAIR. No port. Current replacement is more complete (12 keyed questions vs 5) and includes the source-specific corrected logarithm laws, equation/domain checks, change of base and standard-form applications. The older draft adds no unique required objective. This is a comparison/no-port decision; no old lesson body or unverified reference was copied. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
     },
     {
@@ -2475,8 +2475,8 @@
         "FM-SRC-T2",
         "FM-WK-T2-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-004] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-2-001; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared immutable PR #72 package commit b5ced7ebb0efe22df2351baa140266fbf40cbf41 lesson SUP-SS1-FMATHS-004 against SUP-SS1-FURTHER-MATHEMATICS-T2-W01-ARITHMETIC-PROGRESSION. No port. Current replacement covers AP definition, nth term, arithmetic means and sums, with 13 keyed questions vs 5. Its source-specific corrections are already recorded. This is a comparison/no-port decision; no old lesson body or unverified reference was copied. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
     },
     {
@@ -2503,8 +2503,8 @@
         "FM-SRC-T2",
         "FM-WK-T2-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-005] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-2-002; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared immutable PR #72 package commit b5ced7ebb0efe22df2351baa140266fbf40cbf41 lesson SUP-SS1-FMATHS-005 against SUP-SS1-FURTHER-MATHEMATICS-T2-W02-GEOMETRIC-PROGRESSION. No port. Current replacement covers nth term, geometric means, finite sums and sum to infinity with the |r|<1 condition, and has 20 keyed questions vs 5. This is a comparison/no-port decision; no old lesson body or unverified reference was copied. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
     },
     {
@@ -2531,8 +2531,8 @@
         "FM-SRC-T2",
         "FM-WK-T2-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-006] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-2-003; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared immutable PR #72 package commit b5ced7ebb0efe22df2351baa140266fbf40cbf41 lesson SUP-SS1-FMATHS-006 against SUP-SS1-FURTHER-MATHEMATICS-T2-W03-LINEAR-INEQUALITIES. No port. Current replacement covers linear, quadratic and absolute-value inequalities, number-line solutions and corrected intervals, with 12 keyed questions vs 5. This is a comparison/no-port decision; no old lesson body or unverified reference was copied. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
     },
     {
@@ -2559,8 +2559,8 @@
         "FM-SRC-T2",
         "FM-WK-T2-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-007] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-2-004; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared immutable PR #72 package commit b5ced7ebb0efe22df2351baa140266fbf40cbf41 lesson SUP-SS1-FMATHS-007 against SUP-SS1-FURTHER-MATHEMATICS-T2-W04-TWO-VARIABLE-INEQUALITIES-LP. No port. Current replacement covers half-planes, feasible-region intersections, vertices and optimisation with 10 keyed questions vs 4; the five Week 4 graph assets supply the missing visuals. This is a comparison/no-port decision; no old lesson body or unverified reference was copied. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
     },
     {
@@ -2587,8 +2587,8 @@
         "FM-SRC-T2",
         "FM-WK-T2-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-008] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-2-007; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared immutable PR #72 package commit b5ced7ebb0efe22df2351baa140266fbf40cbf41 lesson SUP-SS1-FMATHS-008 against SUP-SS1-FURTHER-MATHEMATICS-T2-W07-COMPOSITE-INVERSE-MAPPINGS. No port. Current Second Term package splits the scope across Week 5 mapping/function foundations and Week 7 composite/inverse mappings. Both have keyed practice; the Week 7 inverse lesson states bijectivity and domain restrictions. The older draft's unique objective is already covered. This is a comparison/no-port decision; no old lesson body or unverified reference was copied. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
     },
     {
@@ -2615,8 +2615,8 @@
         "FM-SRC-T2",
         "FM-WK-T2-W08"
       ],
-      "status": "PENDING",
-      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-009] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-2-008; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared immutable PR #72 package commit b5ced7ebb0efe22df2351baa140266fbf40cbf41 lesson SUP-SS1-FMATHS-009 against SUP-SS1-FURTHER-MATHEMATICS-T2-W08-TRIGONOMETRIC-RATIOS. No port. Current replacement covers six ratios, special/general angles, quadrant signs, identities and graphs with 17 keyed questions vs 5 and five original SVG teaching diagrams. This is a comparison/no-port decision; no old lesson body or unverified reference was copied. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
     },
     {
@@ -2644,8 +2644,8 @@
         "FM-WK-T3-W02",
         "FM-LES-T3-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-010] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), covering FMATHS-3-002; written in PR71's schema (content_hash, covers_objectives, sequence, provenance object, references[]). Master already holds FM-LES-T3-W02. Overlap between the two was not assessed (FOUNDATION_RECONCILIATION.md, D-3). PR71 has 0 delivery corrections.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared immutable PR #72 package commit b5ced7ebb0efe22df2351baa140266fbf40cbf41 lesson SUP-SS1-FMATHS-010 against SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS. No port. Current Week 2 lesson already has standard symbols, calculation, decision, loop/trace-table examples and 7 keyed questions vs 4. No uncovered learning objective was identified. This is a comparison/no-port decision; no old lesson body or unverified reference was copied. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Comparison recorded with the PR71 lesson text read at the immutable SHA. Either a bounded gap is ported into the existing master lesson (state PENDING/DEFERRED, no approval invented) or the PR71 lesson is recorded as fully covered. Overlap is not counted as new implementation."
     },
     {
@@ -2673,8 +2673,8 @@
         "FM-WK-T3-W03",
         "FM-LES-T3-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-011] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), covering FMATHS-3-003; written in PR71's schema (content_hash, covers_objectives, sequence, provenance object, references[]). Master already holds FM-LES-T3-W03. Overlap between the two was not assessed (FOUNDATION_RECONCILIATION.md, D-3). PR71 has 0 delivery corrections.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared immutable PR #72 package commit b5ced7ebb0efe22df2351baa140266fbf40cbf41 lesson SUP-SS1-FMATHS-011 against SUP-SS1-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES. No port. Current Week 3 lesson covers two-point gradients, y=mx+c, intercept sketches, horizontal/vertical lines, point/two-point line equations and tangent gradients, with 8 keyed questions vs 4 and three original graphs. This is a comparison/no-port decision; no old lesson body or unverified reference was copied. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Comparison recorded with the PR71 lesson text read at the immutable SHA. Either a bounded gap is ported into the existing master lesson (state PENDING/DEFERRED, no approval invented) or the PR71 lesson is recorded as fully covered. Overlap is not counted as new implementation."
     },
     {
@@ -2704,8 +2704,8 @@
         "FM-LES-T3-W04",
         "FM-LES-T3-W08"
       ],
-      "status": "PENDING",
-      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-012] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), covering FMATHS-3-004, FMATHS-3-008; written in PR71's schema (content_hash, covers_objectives, sequence, provenance object, references[]). Master already holds FM-LES-T3-W04, FM-LES-T3-W08. Overlap between the two was not assessed (FOUNDATION_RECONCILIATION.md, D-3). PR71 has 0 delivery corrections.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared immutable PR #72 package commit b5ced7ebb0efe22df2351baa140266fbf40cbf41 lesson SUP-SS1-FMATHS-012 against SUP-SS1-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR. No port. Current Week 4 covers angle of slope and gradient tests for parallel/perpendicular lines; the acute angle between two lines is treated in Week 8. Combined practice is 8 + 9 keyed questions vs 4. This is a comparison/no-port decision; no old lesson body or unverified reference was copied. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Comparison recorded with the PR71 lesson text read at the immutable SHA. Either a bounded gap is ported into the existing master lesson (state PENDING/DEFERRED, no approval invented) or the PR71 lesson is recorded as fully covered. Overlap is not counted as new implementation."
     },
     {
@@ -2735,8 +2735,8 @@
         "FM-LES-T3-W05",
         "FM-LES-T3-W06"
       ],
-      "status": "PENDING",
-      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-013] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), covering FMATHS-3-005, FMATHS-3-006; written in PR71's schema (content_hash, covers_objectives, sequence, provenance object, references[]). Master already holds FM-LES-T3-W05, FM-LES-T3-W06. Overlap between the two was not assessed (FOUNDATION_RECONCILIATION.md, D-3). PR71 has 0 delivery corrections.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared immutable PR #72 package commit b5ced7ebb0efe22df2351baa140266fbf40cbf41 lesson SUP-SS1-FMATHS-013 against SUP-SS1-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT + SUP-SS1-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES. No port. Current Week 5 covers magnitude, special and unit vectors; Week 6 covers vector arithmetic, point-to-point vectors and direction cosines. Combined practice is 7 + 7 keyed questions vs 5. The Week 6 arithmetic sign error from the old draft/source is corrected. This is a comparison/no-port decision; no old lesson body or unverified reference was copied. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Comparison recorded with the PR71 lesson text read at the immutable SHA. Either a bounded gap is ported into the existing master lesson (state PENDING/DEFERRED, no approval invented) or the PR71 lesson is recorded as fully covered. Overlap is not counted as new implementation."
     },
     {
@@ -2764,8 +2764,8 @@
         "FM-WK-T3-W08",
         "FM-LES-T3-W08"
       ],
-      "status": "PENDING",
-      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-014] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), covering FMATHS-3-009; written in PR71's schema (content_hash, covers_objectives, sequence, provenance object, references[]). Master already holds FM-LES-T3-W08. Overlap between the two was not assessed (FOUNDATION_RECONCILIATION.md, D-3). PR71 has 0 delivery corrections.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared immutable PR #72 package commit b5ced7ebb0efe22df2351baa140266fbf40cbf41 lesson SUP-SS1-FMATHS-014 against SUP-SS1-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS. No port. Current Week 8 includes acute angle between lines, gradient-intercept, point-gradient and two-point forms, and the vertical-line exception; it has 9 keyed questions vs 4. This is a comparison/no-port decision; no old lesson body or unverified reference was copied. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Comparison recorded with the PR71 lesson text read at the immutable SHA. Either a bounded gap is ported into the existing master lesson (state PENDING/DEFERRED, no approval invented) or the PR71 lesson is recorded as fully covered. Overlap is not counted as new implementation."
     },
     {
@@ -2897,8 +2897,8 @@
         "FM-INV-T3",
         "FM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (FM-INV-T3): block 443 text 'PERIOD 3' (sha256 ced01b423102c586b9ed9d23acb24d2d75d6a46ca97170a24a5d9123447edd34); block 444 'Topic: Equation of a straight line' (sha256 5f1ea5453107309c00bcd0f8e3bd3116c488bf924350d6eb72bf377fd898a92b); blocks 443-473 range sha256 bc586a6d016376bb45a0097567d73f1f20a741dca876c37996a4925968b22ec9; 442 and 474-476 empty; the only PERIOD marker in the document. SS1-03 parsed_rows row 5 (WEEK 8, 3455 characters) is the unit that may or may not include this section; not checked here. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-476; block 477 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The source's PERIOD 3 section on gradient-point and two-point line equations is incorporated into the Week 8 replacement, which also handles the vertical-line case where the two-point formula divides by zero. Teacher approval PENDING; verification DEFERRED.",
       "completion_condition": "Section objectives listed with block locators and a status; coverage reach against FM-LES-T3-W08 recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -2922,9 +2922,809 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised from PR #71 open item OI-FMATHS-003. Master RULE-FM-T2-SCHEME-EXAM currently records the scheme-only Week 11 revision and Week 12 examination rows; no separate revision plan or teaching body is present in the indexed source.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The Second Term source scheme-of-work table on rendered page 1 explicitly lists Week 11 as 'Revision of Second Term’s lesson' and Week 12 as 'Examination'. These are revision/examination weeks, not missing teaching lessons. Retain the marker treatment; no invented instructional lessons are needed. Teacher approval/verification remain pending.",
       "completion_condition": "Record the teacher's answer. If a revision plan is supplied, index its source and add bounded objective/lesson tasks. If the weeks are revision/examination-only, retain scheme-only markers and record the decision; do not create invented lessons."
+    },
+    {
+      "id": "FM-LES-T1-W07-BINARY-OPERATIONS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 07; replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T1-W07-BINARY-OPERATIONS",
+      "objective": "Replace the Week 7 row with complete, mathematically checked teaching of binary operation definition, closure, commutative, associative and distributive properties.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W07-BINARY-OPERATIONS.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1",
+        "FM-WK-T1-W07"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W07-BINARY-OPERATIONS]. 4 objectives; 10 original practice questions; 25 marks. All marking criterion totals match question marks. state content_approval=PENDING, implementation=IMPLEMENTED, verification=DEFERRED. Coverage COV-FM-T1-R07 updated to IMPLEMENTED_EQUIVALENT. See docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W07-BINARY-OPERATIONS.md.",
+      "completion_condition": "Replacement lesson is present with source provenance, exact body hash, original practice and marking totals; coverage points to the lesson. Approval remains PENDING and verification DEFERRED; do not invent either."
+    },
+    {
+      "id": "FM-LES-T1-W08-IDENTITY-INVERSE-TABLES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 08; replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T1-W08-IDENTITY-INVERSE-TABLES",
+      "objective": "Replace the Week 8 row with complete identity/inverse methods, domain restrictions and addition/multiplication tables modulo 4.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W08-IDENTITY-INVERSE-TABLES.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1",
+        "FM-WK-T1-W08"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W08-IDENTITY-INVERSE-TABLES]. 4 objectives; 10 original practice questions; 28 marks. All marking criterion totals match question marks. state content_approval=PENDING, implementation=IMPLEMENTED, verification=DEFERRED. Coverage COV-FM-T1-R08 updated to IMPLEMENTED_EQUIVALENT. See docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W08-IDENTITY-INVERSE-TABLES.md.",
+      "completion_condition": "Replacement lesson is present with source provenance, exact body hash, original practice and marking totals; coverage points to the lesson. Approval remains PENDING and verification DEFERRED; do not invent either."
+    },
+    {
+      "id": "FM-LES-T1-W09-SURDS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 09; replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T1-W09-SURDS",
+      "objective": "Author a mathematically checked replacement covering surds, basic form, similar surds, operations, conjugates, rationalisation and equality.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W09-SURDS.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1",
+        "FM-WK-T1-W09"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W09-SURDS]. 5 objectives; 10 practice questions; 24 marks. Marking totals checked. content_approval=PENDING; verification=DEFERRED. Coverage COV-FM-T1-R09 updated to IMPLEMENTED_EQUIVALENT.",
+      "completion_condition": "Replacement lesson exists with source provenance, body hash, complete worked examples and original practice; coverage linked. Approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T1-W10-CENTRAL-TENDENCY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 10; replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T1-W10-CENTRAL-TENDENCY",
+      "objective": "Author a replacement covering mean, median and mode for ungrouped and grouped data, including histogram mode estimation.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W10-CENTRAL-TENDENCY.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1",
+        "FM-WK-T1-W10"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W10-CENTRAL-TENDENCY]. 4 objectives; 10 practice questions; 30 marks. Marking totals checked. content_approval=PENDING; verification=DEFERRED. Coverage COV-FM-T1-R10 updated to IMPLEMENTED_EQUIVALENT.",
+      "completion_condition": "Replacement lesson exists with source provenance, body hash, complete worked examples and original practice; coverage linked. Approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T1-W05-SETS-VENN",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 05; source headings SETS and OPERATION OF SET AND VENN DIAGRAMS",
+      "objective": "Author a mathematically checked replacement covering set notation and types, union/intersection/complement, cardinality, two-set and three-set Venn diagrams, and inclusion-exclusion. Correct source errors in factor listing, universal-set enumeration and the youth-club total.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W05-SETS-VENN.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1",
+        "FM-WK-T1-W05"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W05-SETS-VENN]. 4 objectives; 10 original practice questions; 27 marks; marking totals checked. Coverage COV-FM-T1-W05-OBJ-1..3 added as IMPLEMENTED_EQUIVALENT; row-level R04/R05 linked. Owner approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement lesson exists with source provenance, body hash, complete worked examples and original practice; objective coverage links to lesson. Approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-ASSET-T1-W05-VENN",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 05 Venn diagram operations and two-/three-set worked examples",
+      "objective": "Create original clean SVGs for two-set operations, the eight regions of a three-set Venn diagram, and corrected numeric two-/three-set examples; bind them to the Week 5 replacement lesson.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/assets/further-mathematics/",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/assets/further-mathematics/",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-LES-T1-W05-SETS-VENN",
+        "FM-VIS-T1-W05-VENN"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Four original SVG assets are present in the repository and registered with exact verified hashes/byte counts: ASSET-SS1-FM-T1-W05-VENN-1 (backend/src/db/ss1/assets/further-mathematics/fm1-w5-venn-two-set-operations.svg, sha256=7c0b6e7c81922606f6474ae11d1550a817b45057411f4659dec0f60e049bb87e, bytes=1769); ASSET-SS1-FM-T1-W05-VENN-2 (backend/src/db/ss1/assets/further-mathematics/fm1-w5-venn-three-set-regions.svg, sha256=df342c193ee5df936ed30a7c030fd9bc53fa367f7bfb88a95e695e999ee0010a, bytes=1351); ASSET-SS1-FM-T1-W05-VENN-3 (backend/src/db/ss1/assets/further-mathematics/fm1-w5-venn-two-set-worked.svg, sha256=9f32b0cdb54fed0a0e04f621289db3096431f60c567a05a39f9d84e6ec75eb38, bytes=1111); ASSET-SS1-FM-T1-W05-VENN-4 (backend/src/db/ss1/assets/further-mathematics/fm1-w5-venn-three-set-worked.svg, sha256=fe9a85db76630b28f2e0a0654a5f90deec1c552cb0920508b89c7fc7dfeb7380, bytes=1164). CI SVG safety and package hash verification plus app rendering/teacher review remain pending; content approval PENDING, verification DEFERRED.",
+      "completion_condition": "Original SVG assets pass SVG safety checks, exact byte/hash registration and source/provenance/state schema; visual and app display verification remain deferred."
+    },
+    {
+      "id": "FM-LES-T1-W04-SET-THEORY-REVIEW",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 04; heading-only source row 'REVIEW OF BASIC CONCEPT OF SET'",
+      "objective": "Provide the missing instructional review for the Week 4 set-theory review objective without reassigning the distinct Week 5 source row.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W04-SET-THEORY-REVIEW.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1",
+        "FM-WK-T1-W04"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W04-SET-THEORY-REVIEW]. 4 objectives; 8 practice questions; 18 marks; criterion totals checked. COV-FM-T1-W04-OBJ-1 and COV-FM-T1-R03 linked. Content approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement review lesson is present with source provenance, body hash, complete examples and keyed practice; objective coverage links to it; approval/verification remain pending/deferred."
+    },
+    {
+      "id": "FM-TEST-T1-W06-PERIODIC",
+      "kind": "TEST",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 06 periodic test; scheme requires review and periodic assessment",
+      "objective": "Provide a balanced 50-mark first-term review and periodic test across Weeks 1–5, including the missing set-theory revision, with answer key and criterion-level marking.",
+      "required_files": [
+        "docs/ss1/work/microtasks/further-mathematics/FM-TEST-T1-W06-PERIODIC.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/FM-TEST-T1-W06-PERIODIC.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-WK-T1-W06",
+        "FM-LES-T1-W01-INDICES",
+        "FM-LES-T1-W02-EQUATIONS",
+        "FM-LES-T1-W03-LOGARITHMS-REPAIR",
+        "FM-LES-T1-W04-SET-THEORY-REVIEW",
+        "FM-LES-T1-W05-SETS-VENN"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored a 60-minute, 50-mark assessment draft: 20 MCQs (20 marks) and 6 structured questions (30 marks) across indices, exponential equations, logarithms, set theory/two- and three-set Venn diagrams, and standard-form/log-table calculations; it excludes later-term topics. Includes full answer key and marking guide. Teacher approval PENDING; verification DEFERRED.",
+      "completion_condition": "Assessment contains balanced coverage, complete answer key and marking guide, and total marks reconcile to 50. Approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T1-W03-LOGARITHMS-REPAIR",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 03; source row WEEK THREE — LOGARITHM",
+      "objective": "Replace the Week 3 logarithms source with a corrected, complete lesson covering logarithmic form, laws, equations, change of base, standard form, log/antilog tables and calculations above and below one.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W03-LOGARITHMS-REPAIR.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1",
+        "FM-WK-T1-W03"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W03-LOGARITHMS-REPAIR]. 5 objectives; 12 original practice questions; 38 marks; marking totals checked. body_sha256=3dfaa976c35ed550eee059589f7c5b8e277aeadb3a80c12af0411eb6f85cb06f. Coverage COV-FM-T1-W03-OBJ-1..4 and COV-FM-T1-R02 link to it. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement lesson covers every Week 3 scheme objective with source provenance, exact body hash, worked examples and keyed practice; coverage entries link to it; approval/verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T2-W01-ARITHMETIC-PROGRESSION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 01; replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T2-W01-ARITHMETIC-PROGRESSION",
+      "objective": "Author a complete AP lesson with nth term, arithmetic means, sum of n terms, reverse problems and source error corrections.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T2-W01-ARITHMETIC-PROGRESSION.md"
+      ],
+      "depends_on": [
+        "FM-WK-T2-W01"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W01-ARITHMETIC-PROGRESSION]. 4 objectives; 13 practice questions; 41 marks. All marking criterion totals checked. body_sha256=79b145c51bf98d252e3b7a28b9184f20c24bd75b1bf3402a9f126db51ce20748. Coverage objective rows and row-level coverage linked. Content approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement lesson exists with source provenance, body hash, complete worked examples and original practice; objective coverage links to it; approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T2-W02-GEOMETRIC-PROGRESSION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 02; replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T2-W02-GEOMETRIC-PROGRESSION",
+      "objective": "Author a complete GP lesson with nth term, geometric means, finite sums and convergence to infinity, correcting source formula/domain defects.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T2-W02-GEOMETRIC-PROGRESSION.md"
+      ],
+      "depends_on": [
+        "FM-WK-T2-W02"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W02-GEOMETRIC-PROGRESSION]. 4 objectives; 20 practice questions; 66 marks. All marking criterion totals checked. body_sha256=429936ece9380eb7d89aa20e0086264b0f7dd90972d8d3a7dfe2edfc6eb3b038. Coverage objective rows and row-level coverage linked. Content approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement lesson exists with source provenance, body hash, complete worked examples and original practice; objective coverage links to it; approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T2-W03-LINEAR-INEQUALITIES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 03; source heading LINEAR INEQUALITIES",
+      "objective": "Author a corrected lesson for linear inequalities in one variable, with the source's quadratic and absolute-value extension material, number-line and graph reasoning, and corrected assessment items.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T2-W03-LINEAR-INEQUALITIES.md"
+      ],
+      "depends_on": [
+        "FM-WK-T2-W03"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W03-LINEAR-INEQUALITIES]. 4 objectives; 12 practice questions; 39 marks. Source graph and inequalities errors corrected. Coverage COV-FM-T2-W03-OBJ-1 and row R02 linked. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement lesson includes corrected solutions, graph/sign reasoning, domain restrictions and keyed practice; objective coverage linked. Approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T2-W04-TWO-VARIABLE-LP",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 04; source heading LINEAR INEQUALITY (PART TWO)",
+      "objective": "Author a corrected lesson for inequalities in two variables, simultaneous feasible regions and linear programming, with vertex optimisation and integer constraints.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T2-W04-TWO-VARIABLE-LP.md"
+      ],
+      "depends_on": [
+        "FM-WK-T2-W04"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W04-TWO-VARIABLE-INEQUALITIES-LP]. 4 objectives; 10 questions; 31 marks; source LP examples recalculated. Coverage COV-FM-T2-W04-OBJ-1..3 and row R03 linked. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement lesson covers all scheme objectives, corrects graph/vertex errors and includes keyed practice; objective coverage linked. Approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T2-W05-MAPPING-FUNCTIONS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 05; source heading MAPPING AND FUNCTIONS",
+      "objective": "Author a complete mapping/functions lesson covering domain, codomain, image, range, function evaluation and types of mapping, correcting source definition and diagram errors.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T2-W05-MAPPING-FUNCTIONS.md"
+      ],
+      "depends_on": [
+        "FM-WK-T2-W05"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W05-MAPPING-FUNCTIONS]. 4 objectives; 10 practice questions; 26 marks. Original mapping diagrams inspected; defects recorded in OI-FM-T2-W05-MAPPING-SOURCE-DEFECTS. Coverage COV-FM-T2-W05-OBJ-1..3 and row R04 linked. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement lesson covers all scheme objectives, corrects mapping/function definitions and domain/range examples, and includes keyed practice; objective coverage linked. Approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T2-W07-COMPOSITE-INVERSE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 07; source heading Composite Mapping and Inverse Mapping",
+      "objective": "Author a complete composite/inverse mapping lesson with order-sensitive composition, bijectivity, inverse algebra, domain restrictions and corrected practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T2-W07-COMPOSITE-INVERSE.md"
+      ],
+      "depends_on": [
+        "FM-WK-T2-W07",
+        "FM-LES-T2-W05-MAPPING-FUNCTIONS"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W07-COMPOSITE-INVERSE-MAPPINGS]. 4 objectives; 10 practice questions; 28 marks. Coverage COV-FM-T2-W07-OBJ-1..3 and row R06 linked. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement lesson covers composition, inverse existence, algebraic inverse and domain restrictions with keyed practice; objective coverage linked. Approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-TEST-T2-W06-HALFTERM",
+      "kind": "TEST",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 06 marker: Revision of half term work",
+      "objective": "Provide a balanced 50-mark half-term revision assessment across Weeks 1–5 (AP, GP, inequalities, linear programming and mapping/functions), with full answer key and criterion-level marking.",
+      "required_files": [
+        "docs/ss1/work/microtasks/further-mathematics/FM-TEST-T2-W06-HALFTERM.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/FM-TEST-T2-W06-HALFTERM.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-WK-T2-W06",
+        "FM-LES-T2-W01-ARITHMETIC-PROGRESSION",
+        "FM-LES-T2-W02-GEOMETRIC-PROGRESSION",
+        "FM-LES-T2-W03-LINEAR-INEQUALITIES",
+        "FM-LES-T2-W04-TWO-VARIABLE-LP",
+        "FM-LES-T2-W05-MAPPING-FUNCTIONS"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored a 60-minute, 50-mark half-term revision assessment: 20 MCQs and 6 structured questions, with answer key and criterion-level marking. Covers Weeks 1–5 only and excludes later Week 7 composite/inverse mapping. Teacher approval PENDING; verification DEFERRED.",
+      "completion_condition": "Assessment has balanced coverage of Weeks 1–5, complete answer key and marking guide, and mark totals reconcile to 50. Approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T2-W08-TRIGONOMETRIC-RATIOS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 08; source heading TRIGONOMETRIC RATIO",
+      "objective": "Author a complete lesson on right-triangle ratios, general angles, special angles, identities and trig graphs, with corrected formulas and source evaluation.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T2-W08-TRIGONOMETRIC-RATIOS.md"
+      ],
+      "depends_on": [
+        "FM-WK-T2-W08"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W08-TRIGONOMETRIC-RATIOS]. 4 objectives; 17 questions; 51 marks. Five original SVGs registered with exact verified hashes/bytes. Coverage COV-FM-T2-W08-OBJ-1..3 and row R07 linked. y=sinθ/2 ambiguity remains. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement covers scheme objectives, corrected identities and quadrant rules, and includes keyed practice. Visual assets and ambiguous graph notation remain open; approval/verification pending."
+    },
+    {
+      "id": "FM-LES-T2-W09-LOGIC",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 09; source heading LOGIC",
+      "objective": "Author a complete lesson on propositions, negation, conditional and biconditional statements, related conditionals and chain-rule arguments.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T2-W09-LOGIC.md"
+      ],
+      "depends_on": [
+        "FM-WK-T2-W09"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W09-LOGIC]. 4 objectives; 10 practice questions; 26 marks. Coverage COV-FM-T2-W09-OBJ-1..4 and row R08 linked. Source defects recorded. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement covers all scheme objectives with correct truth tables, conditionals and valid argument examples; keyed practice and objective coverage linked. Approval/verification pending."
+    },
+    {
+      "id": "FM-LES-T2-W10-LOGICAL-CONNECTIVES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 10; source heading Logical reasoning continues",
+      "objective": "Author a complete lesson on conjunction, disjunction, truth tables, tautologies, contradictions and logical equivalence, correcting false source identities.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T2-W10-LOGICAL-CONNECTIVES.md"
+      ],
+      "depends_on": [
+        "FM-WK-T2-W10",
+        "FM-LES-T2-W09-LOGIC"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W10-LOGICAL-CONNECTIVES-TRUTH-TABLES]. 4 objectives; 10 practice questions; 26 marks. Coverage COV-FM-T2-W10-OBJ-1..3 and row R09 linked. Source false claims corrected. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement provides correct truth tables, tautology/contradiction examples and equivalence laws with keyed practice; source false identities recorded. Approval/verification pending."
+    },
+    {
+      "id": "FM-ASSET-T2-W08-TRIG",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 08 missing trigonometry figures and graphs",
+      "objective": "Provide original SVGs for right-triangle ratios, unit-circle coordinates, sine/cosine graphs, tangent graph and special-angle triangles; register exact integrity metadata and bind to the Week 8 lesson.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/assets/further-mathematics/",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/assets/further-mathematics/",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-LES-T2-W08-TRIGONOMETRIC-RATIOS"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Original SVGs authored and registered with exact SHA-256 and UTF-8 byte counts: backend/src/db/ss1/assets/further-mathematics/fm2-w8-right-triangle-ratios.svg 2cfb5f20b15984a046b02d75223141c18bf24e84f1cf21887beff59cf6719596 (808 bytes); backend/src/db/ss1/assets/further-mathematics/fm2-w8-unit-circle.svg 9639195bd7d5e8dfcccb7296de5a169253be38b34389498a86e5c1596181b3d2 (1096 bytes); backend/src/db/ss1/assets/further-mathematics/fm2-w8-sine-cosine-graphs.svg a67c272ba72c6d5b8eb65617b5e3f0fa39531deb86a40c9f6282145a1cd0bff1 (1381 bytes); backend/src/db/ss1/assets/further-mathematics/fm2-w8-tangent-graph.svg d019c84dc1ea9120f36c9b5a3b0db137466da8cba7a66fd27adaacadd71daac7 (2596 bytes); backend/src/db/ss1/assets/further-mathematics/fm2-w8-special-angle-triangles.svg adb02e7893e2d4b856a5a5b71607671bcf1ca9994560b36e9026dfe52f67b9ae (1276 bytes). Exact hashes/bytes are being checked; SVG safety and app rendering remain unverified.",
+      "completion_condition": "All five SVGs pass safety checks and exact hash/byte registration, appear correctly in the Week 8 lesson, and have source/provenance/state records. Approval and visual verification remain pending."
+    },
+    {
+      "id": "FM-ASSET-T2-W04-GRAPHING",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 04 blank graphical inequality and linear-programming figures",
+      "objective": "Provide original SVG diagrams for half-plane shading, simultaneous inequalities and the three worked LP feasible regions; register exact hashes/byte counts and bind them to the Week 4 lesson.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/assets/further-mathematics/",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/assets/further-mathematics/",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-LES-T2-W04-TWO-VARIABLE-LP"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Original SVGs authored and registered with exact SHA-256 and UTF-8 byte counts: backend/src/db/ss1/assets/further-mathematics/fm2-w4-half-plane-examples.svg bc314b1c4bc7cbfb37ddcc5757c8a5505db99ed2c9fcdc8946eb2bd0670d2510 (1286 bytes); backend/src/db/ss1/assets/further-mathematics/fm2-w4-feasible-region-triangle.svg bbafa7ceb67199aa4a8dfce73cfb839c706731f79500891a335703a164199692 (2042 bytes); backend/src/db/ss1/assets/further-mathematics/fm2-w4-drink-lp-region.svg 09c6b14c36543a16f1f9c254525e8595111cef47229c09eea58de3c921f32352 (3907 bytes); backend/src/db/ss1/assets/further-mathematics/fm2-w4-dress-lp-region.svg a81bc4de40073100e672215c9a10f2cc296e43c475a28f98f42a8ca26b57b13d (3275 bytes); backend/src/db/ss1/assets/further-mathematics/fm2-w4-detergent-lp-region.svg a56bce63dbfe370c197aaebf98f327244396c16f515f6e730c9196bc7bcaf711 (4037 bytes). Exact hashes/bytes are being checked; SVG safety and app rendering remain unverified.",
+      "completion_condition": "All five diagrams pass SVG safety, exact hash/byte checks and app rendering; visual state and provenance are registered."
+    },
+    {
+      "id": "FM-ASSET-T2-W03-INEQUALITIES",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 03 corrected quadratic and absolute-value sign diagrams",
+      "objective": "Create original number-line/sign-chart SVGs to replace the source's incorrect quadratic inequality graphs and support the absolute-value solution.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/assets/further-mathematics/",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/assets/further-mathematics/",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-LES-T2-W03-LINEAR-INEQUALITIES"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Original SVGs authored and registered with exact SHA-256 and UTF-8 byte counts: backend/src/db/ss1/assets/further-mathematics/fm2-w3-quadratic-signchart-1.svg f43e605fdf5b2cdf4e2fce98e1e574d0196cd14e6bc20868a22ee12be89d117e (919 bytes); backend/src/db/ss1/assets/further-mathematics/fm2-w3-quadratic-signchart-2.svg dbe595037a3d9015373904db1fc6b7b24a887fcf4459c34bb85ada959b534347 (925 bytes); backend/src/db/ss1/assets/further-mathematics/fm2-w3-absolute-value-numberline.svg 991b9600d73d31b5d56cddee9208ec53faac95d058b1088c5abbf8d9b5d09f4e (837 bytes). Exact hashes/bytes are being checked; SVG safety and app rendering remain unverified.",
+      "completion_condition": "Three SVGs pass SVG safety, integrity and app rendering; diagrams appear alongside the corrected solution examples."
+    },
+    {
+      "id": "FM-PR-639-INTEGRATION-VALIDATION",
+      "kind": "VERIFICATION",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "All terms",
+      "week_or_locator": "Consolidated First/Second Term PR #639 integration validation",
+      "objective": "Run repository CI on the consolidated package, resolve any package-specific hash/schema/SVG/compiler failures, verify all asset references and lesson-body hashes, and record remaining cross-subject blockers without modifying other subject packages.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/refreshIntegrityHashes.ts",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PR-639-CONSOLIDATED-REVIEW.md"
+      ],
+      "depends_on": [
+        "FM-LES-T2-W01-ARITHMETIC-PROGRESSION",
+        "FM-LES-T2-W02-GEOMETRIC-PROGRESSION",
+        "FM-LES-T2-W03-LINEAR-INEQUALITIES",
+        "FM-LES-T2-W04-TWO-VARIABLE-LP",
+        "FM-LES-T2-W05-MAPPING-FUNCTIONS",
+        "FM-LES-T2-W07-COMPOSITE-INVERSE",
+        "FM-LES-T2-W08-TRIGONOMETRIC-RATIOS",
+        "FM-LES-T2-W09-LOGIC",
+        "FM-LES-T2-W10-LOGICAL-CONNECTIVES"
+      ],
+      "status": "IN_PROGRESS",
+      "implementation_reference": "Consolidated PR #639 now targets master and carries 24 lessons, 84 coverage rows, 30 open review items and 18 registered assets. All 24 lesson body hashes, practice marking totals and 18 asset hashes/byte counts were independently recomputed and matched. CI must now run on the master-targeted PR. Approval remains PENDING; verification DEFERRED.",
+      "completion_condition": "Master-targeted CI passes all relevant checks; package hash/schema/compiler/SVG validation is complete; all remaining blockers are classified and recorded. No merge before required checks pass."
+    },
+    {
+      "id": "FM-TEST-T3-SOURCE-AVAILABLE",
+      "kind": "TEST",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "Third Term source: Weeks 2–6, Week 8 and Period 3 line-equation section",
+      "objective": "Assess all six instructional blocks present in the supplied Third Term source using a 60-mark paper with answer key and marking guide.",
+      "required_files": [
+        "docs/ss1/work/microtasks/further-mathematics/FM-TEST-T3-SOURCE-AVAILABLE.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/FM-TEST-T3-SOURCE-AVAILABLE.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-LES-T3-W02",
+        "FM-LES-T3-W03",
+        "FM-LES-T3-W04",
+        "FM-LES-T3-W05",
+        "FM-LES-T3-W06",
+        "FM-LES-T3-W08"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "New 75-minute, 60-mark assessment: 20 MCQs and six structured questions with answers and criterion-level marking. Explicitly limited to topics actually present in the source. Teacher approval PENDING; verification DEFERRED.",
+      "completion_condition": "Assessment totals 60 marks, samples all available source topics, has keyed answers and criterion-level marking. Approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T1-W06-REVISION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 06 — Revision of first half-term work",
+      "objective": "Supply a complete first-half-term revision lesson that covers both indices/logarithms and set theory/Venn diagrams, with worked examples and keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-WK-T1-W06"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added replacement revision lesson with four objectives, worked examples and eight keyed practice questions. The separate 50-mark periodic test remains available. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Revision lesson covers all first-half-term topics and practice marking reconciles; teacher approval and verification remain pending."
     }
   ],
   "review": {

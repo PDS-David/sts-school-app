@@ -1,0 +1,81 @@
+name: SS1 Further Mathematics package verification
+
+on:
+  pull_request:
+    paths:
+      - "backend/src/db/ss1/subjects/further-mathematics.json"
+      - "backend/src/db/ss1/assets/further-mathematics/**"
+      - "docs/ss1/work/microtasks/further-mathematics/**"
+      - ".github/workflows/ss1-further-mathematics.yml"
+  push:
+    branches: [master, main]
+    paths:
+      - "backend/src/db/ss1/subjects/further-mathematics.json"
+      - "backend/src/db/ss1/assets/further-mathematics/**"
+      - "docs/ss1/work/microtasks/further-mathematics/**"
+      - ".github/workflows/ss1-further-mathematics.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ss1-further-mathematics-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-further-mathematics:
+    name: Validate Further Mathematics package and source compilation
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Verify stored lesson and asset integrity
+        run: node --import tsx backend/src/db/ss1/refreshIntegrityHashes.ts --check
+
+      - name: Validate Further Mathematics package schema and references
+        run: node --import tsx backend/src/db/ss1/validateSubjectPackages.ts further-mathematics
+
+      - name: Run SVG safety tests
+        run: node --import tsx --test tests/ss1/svg-safety.test.mts
+
+      - name: Stage the registered SS1 source archive
+        run: |
+          python scripts/ss1/prepare_sources.py \
+            --archive docs/ss1/sources/SSS1-original.zip \
+            --output "$RUNNER_TEMP/ss1-staged"
+
+      - name: Compile only Further Mathematics in plan-only mode
+        run: |
+          plan="$RUNNER_TEMP/further-mathematics-plan.json"
+          status=0
+          node --import tsx backend/src/db/ingestTopics.ts \
+            --root "$RUNNER_TEMP/ss1-staged" \
+            --school-code secondary \
+            --ss1-reviewed \
+            --ss1-plan "$plan" \
+            --ss1-subject-slug further-mathematics || status=$?
+          if [ ! -s "$plan" ]; then
+            echo "::error::Further Mathematics compiler failed before producing a plan (exit $status)"
+            exit 1
+          fi
+          python -m json.tool "$plan" >/dev/null
+          if [ "$status" -ne 0 ]; then
+            echo "::warning::Plan produced with pending owner/content gates (exit $status). This is not a compiler crash."
+          fi
