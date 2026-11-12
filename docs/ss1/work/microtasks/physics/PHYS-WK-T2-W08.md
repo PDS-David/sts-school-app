@@ -1,6 +1,6 @@
 # PHYS-WK-T2-W08 — Second Term Week Eight: fields and gravity
 
-Status: **BLOCKED — original source-row inspection incomplete**. The student supplement and objective-level coverage are authored, but the original registered .doc body and its figures have not been inspected.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
 
 ## Registered source identity
 
@@ -45,3 +45,12 @@ The PDF is used as a close-equivalent scope comparison only, not as proof of the
 - All 15 answers and marking totals checked: 31 marks.
 - Content approval remains `PENDING`; verification remains `DEFERRED`.
 - No importer, database or device test is claimed.
+
+
+## Original-source inspection completed — 2026-11-12
+
+- Exact source member: hash-verified original registered .doc; full rendered page range: 16–18.
+- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
+- Source-row disposition: WEEK 8: field concept and types, gravitational and magnetic fields. Page 18 contains the magnetic-field illustration. The source's Newtonian gravity material is shallow; the supplement provides the standard gravitational-field treatment. Source exercises have no answer/marking key.
+- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
+- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.
