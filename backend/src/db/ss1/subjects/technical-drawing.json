@@ -5667,16 +5667,6 @@
       "blocks_delivery": true
     },
     {
-      "id": "TD-T2-REFERENCES-IN-ROW-10",
-      "kind": "CONTENT",
-      "detail": "The eight-entry “Reference materials:” list (lines 35–54; block SHA-256 0a0da4d2f7cf7fbe8f0d78487b723de5cfaf637c9821feabf8580f42350fbc67) lies inside parsed row 10, the 655-character Week 11 “Revision and Examination” scheme marker (body SHA-256 9ed71c88b6dcfa0addf25ba9d70aff536071f56d2828839a9e2fa79f910e3337). The row is now classified SCHEME_ONLY by rule SS1-SRC-af4868d2c026-R013. The reference list is source metadata, not lesson text, and remains separately accounted for.",
-      "required_action": "Preserve the eight source titles as references/provenance in the later integration handoff; do not reproduce textbook content or claim any page was inspected. If the runtime needs a student-facing reference display, obtain the required edition/rights evidence first.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026"
-      ],
-      "blocks_delivery": false
-    },
-    {
       "id": "TD-T2-FOOTER-TAGLINE",
       "kind": "OWNER_ACTION",
       "detail": "The running footer (word/footer1.xml) reads a school/term/class/subject code followed by a religious tagline and a page number; the running header (word/header1.xml) is a blank 'Name / Class' form line. Neither is returned by the importer's extractRawText() call, so neither is in any parsed row or lesson body. Footer text SHA-256 eaa6b97681cec1dc8914332146fefb80c681944091b37f714d1710ec375127aa; header text SHA-256 c71a57eb63b2833932eb537b9432a507d23ef07fecaac444429cabf913182bc4 (concatenated w:t runs).",
@@ -5844,51 +5834,6 @@
         "TD-FACT-W05-SCALE-CONSTRUCTIONS"
       ],
       "blocks_delivery": true
-    },
-    {
-      "id": "TD-T2-W08-W09-EXAMPLE2-DIRECTION",
-      "kind": "FACT",
-      "detail": "Week Eight–Nine Example 2 (source body children 1239–1243) gives two parallel-line constructions but its prose alternates between meeting AB and AB produced without a clear directional distinction. The corresponding source figure must be checked before the construction is taught as a definitive sequence.",
-      "required_action": "Compare the original Example 2 figure with the exact construction wording and obtain an authoritative direction/point-intersection reading; record the verified correction in a delivery supplement without changing the source.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:865bb6bbb80331ca2182e97801040727e986ad3f9334b61018a33f239e4eb97a",
-        "COV-TD-T2-SCH-W08",
-        "COV-TD-T2-SCH-W09"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "TD-T2-W01-REGULAR-POLYGON-CHOICE",
-      "kind": "CONTENT",
-      "detail": "The inscribed-circle evaluation asks for a regular polygon of side 40 mm but does not state its number of sides. The keyed supplement treats this as open-ended and accepts any regular polygon if the student states the chosen number of sides; a unique expected polygon/inradius is not specified.",
-      "required_action": "Teacher confirms whether any regular polygon is acceptable or supplies a required side count. Until then, mark any correctly specified regular polygon and its incircle as valid.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
-        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
-      ],
-      "blocks_delivery": false
-    },
-    {
-      "id": "TD-T2-W01-GENERAL-Q2-DATA-IMPOSSIBLE",
-      "kind": "FACT",
-      "detail": "The Week One general revision question specifies base 70 mm, perpendicular height 50 mm and opposite vertex angle 55°. For this base and height the minimum possible opposite angle is 2 arctan(35/50)≈69.98°, so no triangle satisfies all three conditions.",
-      "required_action": "Obtain corrected source data (angle, base or height) and revise the question/answer key. Do not publish a fabricated construction.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
-        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "TD-T2-W01-GENERAL-Q4-SSA-AMBIGUITY",
-      "kind": "CONTENT",
-      "detail": "The Week One similar-triangle question gives AB=60 mm, AC=55 mm and ∠ABC=60° with no diagram or acute/obtuse condition. The SSA data admit two valid positions for C and therefore two different original perimeters and similar triangles of perimeter 140 mm.",
-      "required_action": "Teacher/source author confirms the intended configuration or accepts both keyed solutions. The supplement provides both valid solutions; no single answer should be enforced until clarification.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
-        "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
-      ],
-      "blocks_delivery": false
     },
     {
       "id": "TD-T2-W01-DEGREE-GLYPH-RENDER",
