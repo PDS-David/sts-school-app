@@ -52,6 +52,7 @@ if (!URL_) {
   let server: ReturnType<ReturnType<typeof express>['listen']>;
   let base = '';
   let tokenA = '', tokenB = '';
+  let generatedAssessmentId = '';
   const topicId: Record<string, number> = {}; // "Music|2" → id
   let topicSnapshot: any[] = [];
 
@@ -122,6 +123,13 @@ if (!URL_) {
     tokenA = await mk('A', 'JSS 3');
     tokenB = await mk('B', 'JSS 1');
     topicSnapshot = await snapshot();
+    const linkedTopic = (await query('SELECT subject_id FROM topics WHERE id=$1', [topicId['Music|4']])).rows[0];
+    generatedAssessmentId = (await query(
+      `INSERT INTO assessments(school_code, subject_id, class_name, title, total_marks, status, created_by)
+       VALUES($1,$2,'JSS 3','Locked topic assessment',10,'open',$3) RETURNING id`,
+      [TEST_SC, linkedTopic.subject_id, created.userIds[0]],
+    )).rows[0].id;
+    await query('UPDATE topics SET generated_assessment_id=$1 WHERE id=$2', [generatedAssessmentId, topicId['Music|4']]);
 
     const app = express();
     app.use(express.json());
@@ -286,6 +294,19 @@ if (!URL_) {
     assert.equal((await get('/learning/assets/0', tokenA)).status, 400);
   });
 
+  test('endpoint: generated assessments remain hidden and inaccessible while their topic is sequence-locked', async () => {
+    const listed: any = await (await get('/learning/assessments', tokenA)).json();
+    assert.equal(listed.assessments.some((assessment: any) => assessment.id === generatedAssessmentId), false);
+    const questions = await get(`/learning/assessments/${generatedAssessmentId}/questions`, tokenA);
+    assert.equal(questions.status, 403);
+    const submitted = await fetch(`${base}/learning/assessments/${generatedAssessmentId}/submit`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${tokenA}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ answers: {} }),
+    });
+    assert.equal(submitted.status, 403);
+  });
+
   test('endpoint: sequence-locked topic assets stay hidden until the prerequisite topics are passed', async () => {
     const lockedList: any = await (await get(`/learning/topics/${topicId['Music|4']}/assets`, tokenA)).json();
     assert.deepEqual(lockedList.assets, []);
@@ -304,6 +325,9 @@ if (!URL_) {
     );
     const unlocked: any = await (await get(`/learning/topics/${topicId['Music|4']}/assets`, tokenA)).json();
     assert.deepEqual(unlocked.assets.map((asset: any) => asset.asset_key), ['W4-1']);
+    const nowListed: any = await (await get('/learning/assessments', tokenA)).json();
+    assert.equal(nowListed.assessments.some((assessment: any) => assessment.id === generatedAssessmentId), true);
+    assert.equal((await get(`/learning/assessments/${generatedAssessmentId}/questions`, tokenA)).status, 200);
   });
 
   test('endpoint: student in the right class sees ordered, displayed assets (metadata only, no bytes)', async () => {
