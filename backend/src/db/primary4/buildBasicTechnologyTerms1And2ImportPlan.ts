@@ -55,11 +55,11 @@ export function buildBasicTechnologyTerms1And2ImportPlan() {
         '',
         'EVALUATION',
         ...lesson.evaluation.map((item: string, i: number) => `${i + 1}. ${item}`),
-      ].join('\\n'),
+      ].join('\n'),
     })),
   };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  process.stdout.write(`${JSON.stringify(buildBasicTechnologyTerms1And2ImportPlan(), null, 2)}\\n`);
+  process.stdout.write(`${JSON.stringify(buildBasicTechnologyTerms1And2ImportPlan(), null, 2)}\n`);
 }
