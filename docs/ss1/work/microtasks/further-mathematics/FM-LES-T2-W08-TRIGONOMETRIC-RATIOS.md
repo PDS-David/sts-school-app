@@ -11,4 +11,4 @@ Findings:
 - Two surd rationalisation questions appear in Week Eight general evaluation; they are not reproduced as trigonometry.
 - Source writes 0.5° where the intended ratio is 1/2; replacement corrects the notation.
 
-Replacement `SUP-SS1-FURTHER-MATHEMATICS-T2-W08-TRIGONOMETRIC-RATIOS`: 4 objectives; 12 practice questions; 35 marks. Coverage COV-FM-T2-W08-OBJ-1..3 added; row COV-FM-T2-R07 linked. Visual assets and notation clarification remain open. Approval PENDING; verification DEFERRED.
+Replacement `SUP-SS1-FURTHER-MATHEMATICS-T2-W08-TRIGONOMETRIC-RATIOS`: 4 objectives; 17 practice questions; 51 marks. Coverage COV-FM-T2-W08-OBJ-1..3 added; row COV-FM-T2-R07 linked. Visual assets and notation clarification remain open. Approval PENDING; verification DEFERRED.
