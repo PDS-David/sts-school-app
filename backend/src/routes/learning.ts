@@ -14,6 +14,7 @@ import { resolveSs1LiteratureDelivery, retireStaleSs1LiteratureCache } from '../
 import { resolveSs1MathematicsDelivery, safeSs1MathematicsTopic, mathematicsAssetDeliverable, mathematicsAssetsForTopic, readMathematicsAsset, retireStaleSs1MathematicsCache } from '../utils/ss1MathematicsDeliveryCorrection.js';
 import { resolveAgriculturalScienceDelivery, resolveAgriculturalScienceSupplement, resolveAgriculturalScienceSourceProjection, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, retireStaleAgriculturalScienceSupplementCache, retireStaleAgriculturalScienceSourceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
+import { listStudentSs1Lessons, getStudentSs1Lesson } from '../db/ss1/studentDelivery.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
 // Read per request (value is constant in a running server) so tests can exercise PIN on and off in one process.
@@ -21,6 +22,32 @@ const termPinEnforced = () => process.env.TERM_PIN_ENFORCED === 'true';
 
 const router = Router();
 router.use(requireAuth);
+
+// Individually certified SS1 package lessons are read-only student content.
+// Existing database topics, term PINs and topic-completion sequencing remain unchanged.
+async function isSs1Learner(user: AuthUser): Promise<boolean> {
+  if (user.role !== 'student') return false;
+  const classes = await resolveViewerClassNames(user);
+  return Array.isArray(classes) && classes.includes('SS 1');
+}
+
+router.get('/ss1/lessons', requirePerm('topics.read'), async (req, res) => {
+  const user = req.user!;
+  if (!(await isSs1Learner(user))) return res.json({ lessons: [] });
+  const subjectName = typeof req.query.subject_name === 'string' ? req.query.subject_name : undefined;
+  if (subjectName && subjectName.trim().length > 120) {
+    return res.status(400).json({ error: 'subject_name is too long' });
+  }
+  return res.json({ lessons: listStudentSs1Lessons(subjectName) });
+});
+
+router.get('/ss1/lessons/:lessonId', requirePerm('topics.read'), async (req, res) => {
+  const user = req.user!;
+  if (!(await isSs1Learner(user))) return res.status(404).json({ error: 'Lesson not found' });
+  const lesson = getStudentSs1Lesson(req.params.lessonId);
+  if (!lesson) return res.status(404).json({ error: 'Lesson not found' });
+  return res.json({ lesson });
+});
 
 // ════════════════════════════════════════════════════════
 // MATERIALS
