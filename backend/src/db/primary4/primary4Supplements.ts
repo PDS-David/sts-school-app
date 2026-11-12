@@ -70,6 +70,7 @@ function sourceReference(pkg: LessonPackage, lesson: PackageLesson): string {
     'PROVENANCE',
     `Package: ${pkg.package_id}`,
     `Material type: ${pkg.provenance.material_type}`,
+    `Rights status: ${pkg.provenance.rights_status ?? 'NOT_SPECIFIED'}`,
     `Curriculum basis: ${pkg.provenance.scheme_basis ?? pkg.provenance.curriculum_basis ?? ''}`,
     `Curriculum source: ${sourceUrl}`,
     `Term allocation: ${termAllocation}`,
