@@ -86,7 +86,8 @@ export function createSs1LiteratureDeliveryResolver(input: SubjectPackage) {
   const sources = new Map(subjectPackage.sources.map(source => [source.term, source]));
   const lessons = new Map(subjectPackage.lessons.map(lesson => [lesson.id, lesson]));
   const built = new Map<string, { lesson: SubjectPackage['lessons'][number]; text: string; fingerprint: string; sourceHash: string; filename: string; term: string; title: string }>();
-  for (const [term, titleMap] of Object.entries(SOURCE_TITLES)) {
+  for (const term of ['1st Term', '2nd Term', '3rd Term'] as const) {
+    const titleMap = SOURCE_TITLES[term];
     const source = sources.get(term);
     if (!source) throw new Error(`Missing SS1 Literature source for ${term}`);
     for (const [title, lessonId] of Object.entries(titleMap)) {
