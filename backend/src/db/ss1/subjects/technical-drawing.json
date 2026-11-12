@@ -2941,7 +2941,7 @@
     {
       "id": "TD-T2-W10-FIGURES",
       "kind": "CONTENT",
-      "detail": "No figure-by-figure visual inventory or disposition is recorded for the Week Ten tangency lesson. The geometry of tangency constructions depends on accurate diagrams, radii, centres and contact points.",
+      "detail": "No figure-by-figure visual inventory or disposition is recorded for the Week Ten tangency lesson. The geometry of tangency constructions depends on accurate diagrams, radii, centres and contact points. A Week Ten teaching supplement and four keyed practice questions are now implemented; original construction templates and assessment diagrams still require faithful assets and review.",
       "required_action": "Complete TD-VIS-W10 by inspecting every original figure, recording its purpose and exact dimensions/labels, and binding faithful assets with provenance or documenting precise exclusions.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863",
@@ -3085,6 +3085,18 @@
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:5b7f2f5d8d2b7c4d6d7f4e0d3e6a5c8c",
         "TD-KEY-W02-ANSWERS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W10-R20-TANGENCY-AMBIGUITY",
+      "kind": "FACT",
+      "detail": "The source general evaluation gives circles of diameters 50 mm and 40 mm and requests a lower R20 arc to exclude both circles tangentially. If this means internal tangency with the arc enclosing the circles, it is geometrically impossible because R20 is smaller than the radius-25 circle. The source figure is needed to determine the intended arrangement.",
+      "required_action": "Inspect the original source figure and reconcile whether R20 is an external touching arc or whether the stated radius/wording is erroneous. Do not change the source or teach an impossible internal-containment construction without authoritative evidence.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863",
+        "TD-VIS-W10",
+        "TD-KEY-W10-ANSWERS"
       ],
       "blocks_delivery": true
     }
