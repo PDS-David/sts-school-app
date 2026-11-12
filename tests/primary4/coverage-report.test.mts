@@ -34,11 +34,24 @@ test('coverage report explains the proposed Basic Technology term allocation and
   assert.ok(decision.required_evidence.length > 20);
 });
 
-test('only the two Basic Technology term allocations remain unresolved', () => {
+test('coverage report separates pending approval from missing combinations', () => {
   const report = buildPrimary4CoverageReport();
-  assert.equal(report.unresolved.length, 2);
-  assert.deepEqual(report.unresolved.map((row: any) => [row.subject, row.term]), [
+  assert.equal(report.unresolved.length, 0);
+  assert.equal(report.pending_approval.length, 6);
+  assert.deepEqual(report.pending_approval.map((row: any) => [row.subject, row.term]).sort(), [
+    ['Basic Science', '3rd Term'],
     ['Basic Technology', '1st Term'],
     ['Basic Technology', '2nd Term'],
-  ]);
+    ['Home Economics', '1st Term'],
+    ['Home Economics', '2nd Term'],
+    ['Home Economics', '3rd Term'],
+  ].sort());
+});
+
+test('coverage report surfaces source-review triage without calling it a lesson-quality verdict', () => {
+  const report = buildPrimary4CoverageReport();
+  assert.equal(report.source_review_flagged_record_count, 45);
+  assert.equal(report.high_short_source_record_count, 22);
+  assert.equal(report.short_source_review_record_count, 23);
+  assert.ok(report.source_review_note.includes('triage indicators only'));
 });
