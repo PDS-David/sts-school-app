@@ -31,7 +31,8 @@ Each exported topic was compared with the canonical Word document selected by su
 
 - 227 of 248 records have at least 95% token-presence coverage.
 - 21 records fall below 95% and need closer source reconciliation.
-- The existing source-length audit flags 45 records: 22 `HIGH_SHORT_SOURCE` and 23 `SHORT_SOURCE_REVIEW`. Length flags are not proof of incompleteness; several are outline records for which a fuller lesson exists elsewhere in the same source document.
+- The existing source-length audit flags 45 records: 22 `HIGH_SHORT_SOURCE` and 23 `SHORT_SOURCE_REVIEW`. The flagged records are concentrated in Basic Science First Term (12), CCA First Term (13), English Language First Term (1), English Language Third Term (1), Home Economics Third Term (11), and Mathematics First Term (7).
+- Length flags are not proof of incompleteness. The archive confirms that several are scheme-outline rows for which fuller lesson notes exist elsewhere in the same document; others are genuinely skeletal lesson notes and need expansion.
 
 ## Ingestion defects found
 
