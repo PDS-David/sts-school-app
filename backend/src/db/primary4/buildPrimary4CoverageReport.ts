@@ -52,7 +52,7 @@ export function buildPrimary4CoverageReport() {
         terms: ['1st Term', '2nd Term'],
         status: 'NEEDS_SCHOOL_TERM_ALLOCATION',
         decision: 'Do not invent or duplicate a separate term sequence. NERDC lists Primary 4 Basic Technology topics without term labels. The Lagos State 2021 Primary 4–6 integrated BST scheme presents the Basic Technology sequence in its Third-Term section; no separate First- or Second-Term Basic Technology sequence was found in that scheme.',
-        nerdec_source: 'https://nerdc.gov.ng/content_manager/primary/pri4-6_basic_science_technology.pdf',
+        nerdc_source: 'https://nerdc.gov.ng/content_manager/primary/pri4-6_basic_science_technology.pdf',
         state_scheme_source: 'https://classbasic.com/wp-content/uploads/2020/08/Basic-Science-and-Technology-BST-New-Lagos-State-Unified-Scheme-of-Work-for-Primary-4-6-2021-Edition.pdf',
         required_evidence: 'A school-specific term scheme or owner approval for a clearly labelled supplementary progression.',
       },
