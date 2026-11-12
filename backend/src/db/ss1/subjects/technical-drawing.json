@@ -808,6 +808,224 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Technical Drawing",
+      "title": "Week Four — Plain Scales: Construction and Reading",
+      "objectives": [
+        "Define scale and representative fraction.",
+        "Distinguish full-size, reduction and enlargement scale ratios.",
+        "Calculate the length of a plain scale from RF and maximum represented length.",
+        "Construct plain scales with main and subdivided units.",
+        "Read and check lengths using a correctly graduated plain scale."
+      ],
+      "body": "A plain scale is a graduated line used to measure or set out lengths on a drawing. A representative fraction (RF) is the ratio of drawing length to actual length, expressed in the same units:\nRF = drawing length / actual length.\nFor example, 1:2.5 means 1 unit on the drawing represents 2.5 units on the object. A plain scale normally shows two related units: a main unit to the right of zero and a subdivision of that unit to the left.\n\nGeneral construction procedure\n1. Convert the stated scale to an RF using consistent units.\n2. Calculate scale length = RF × maximum actual length.\n3. Draw the scale line to that length and divide it into the required number of equal main units.\n4. Subdivide the first main unit into the required smaller units.\n5. Put zero at the boundary between the subdivided unit on the left and the main units on the right.\n6. Label the main and subdivided units, state the RF and use dividers to transfer measurements.\n\nWorked construction 1: RF 1:2.5, maximum 400 mm\nScale length = 400/2.5 = 160 mm. Divide 160 mm into four 40 mm main divisions, each representing 100 mm. Subdivide the first 40 mm division into ten equal parts, each representing 10 mm. Place zero at the junction between the subdivided part and the main divisions. The source readings are X = 280 mm and Y = 130 mm.\n\nWorked construction 2: 2 cm represents 1 m, maximum 6 m\nConvert 1 m to 100 cm: RF = 2:100 = 1:50. Scale length = 600 cm/50 = 12 cm = 120 mm. Divide into six 20 mm main divisions, each representing 1 m. Divide the first main division into ten equal parts, each representing 1 dm (10 cm).\n\nWorked construction 3: 3 cm represents 1 dm, maximum 4 dm\nRF = 3:10. Scale length = 3 cm × 4 = 12 cm = 120 mm. Divide into four 30 mm main divisions, each representing 1 dm. Subdivide the first main division into ten equal parts, each representing 1 cm.\n\nWorked construction 4: 1.5 times full size, maximum 8 cm\nRF = 1.5:1. Scale length = 1.5 × 8 cm = 12 cm = 120 mm. Divide into eight 15 mm main divisions, each representing 1 cm. Subdivide the first main division into ten equal parts, each representing 1 mm.\n\nWorked construction 5: RF 1:3, maximum 4 dm\nConvert 4 dm to 400 mm. Scale length = 400/3 = 133.33 mm. Divide the scale into four main divisions of 33.33 mm, each representing 1 dm, and subdivide the first main division into ten equal parts, each representing 1 cm. The source's printed step wording about a 1 dm line is abbreviated; the governing RF calculation gives 133.33 mm for the full 4 dm range.\n\nWorked calculation: land length 6.50 km at RF 1:500\nDrawing length = 6.50 km/500 = 0.013 km = 13 m = 13,000 mm.\n\nRevision construction: 4 cm represents 2 dm, maximum 5 dm\n2 dm = 20 cm, so RF = 4:20 = 1:5. Scale length = 50 cm/5 = 10 cm. Divide into five 20 mm main units, each representing 1 dm; subdivide the first unit into ten equal centimetre divisions.\n\nRevision construction: 2.5 times full size, maximum 6 cm\nScale length = 2.5 × 6 = 15 cm = 150 mm. Divide into six equal 25 mm main units, each representing 1 cm, and subdivide the first unit into ten equal millimetre divisions.\n\nRevision construction: RF 1:4, maximum 7 dm\n7 dm = 700 mm; scale length = 700/4 = 175 mm. Divide into seven equal main divisions of 25 mm, each representing 1 dm; subdivide the first main division into ten equal centimetre divisions.\n\nAccuracy checks\n- All dimensions must use the same units before calculating RF or scale length.\n- The scale line length must equal RF × actual maximum length.\n- Main divisions represent the stated principal unit; the left-hand subdivision represents the smaller unit.\n- An enlargement has RF greater than 1; a reduction has RF less than 1.\n- Do not estimate missing diagram readings or dimensions from a low-resolution figure. Record them as unresolved until a faithful figure is available.",
+      "body_sha256": "9da605d0460fb7852e7b093bfdfa95a15b1853a8e37e5296641345af5259a3d5",
+      "practice": [
+        {
+          "id": "TD-W04-KEY-Q01",
+          "question": "Define representative fraction and plain scale.",
+          "answer": "RF is drawing length divided by actual length in the same units. A plain scale is a graduated scale that reads two units of measurement.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Defines RF as drawing/actual length.",
+              "marks": 2
+            },
+            {
+              "criterion": "States both lengths use the same units.",
+              "marks": 1
+            },
+            {
+              "criterion": "Defines a plain scale as reading two units.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W04-KEY-Q02",
+          "question": "Construct a plain scale of 1:2.5 to show a maximum of 400 mm and read to 10 mm.",
+          "answer": "Scale length=400/2.5=160 mm. Divide into four 40 mm main divisions (100 mm each); subdivide the first 40 mm into ten 4 mm parts (10 mm each).",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Calculates 160 mm scale length.",
+              "marks": 1
+            },
+            {
+              "criterion": "Draws the 160 mm line.",
+              "marks": 1
+            },
+            {
+              "criterion": "Divides into four 40 mm main units.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subdivides first unit into ten equal parts.",
+              "marks": 1
+            },
+            {
+              "criterion": "Labels 100 mm and 10 mm units correctly.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W04-KEY-Q03",
+          "question": "A scale has 2 cm representing 1 m. Construct it to read up to 6 m in decimetres.",
+          "answer": "RF=2:100=1:50. Scale length=600/50=12 cm=120 mm. Divide into six 20 mm main units (1 m each) and subdivide the first unit into ten parts (1 dm each).",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Converts 1 m to 100 cm and obtains RF 1:50.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 120 mm scale length.",
+              "marks": 1
+            },
+            {
+              "criterion": "Divides into six equal main units.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subdivides first unit into ten decimetres.",
+              "marks": 1
+            },
+            {
+              "criterion": "Labels and presents scale correctly.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W04-KEY-Q04",
+          "question": "A scale is 3 cm = 1 dm and must read up to 4 dm in centimetres. Find RF and scale length.",
+          "answer": "RF=3:10. Scale length=3×4=12 cm=120 mm. Divide into four 30 mm units, each representing 1 dm; subdivide one unit into ten centimetres.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Obtains RF 3:10.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 120 mm scale length.",
+              "marks": 1
+            },
+            {
+              "criterion": "Divides into four 30 mm main units.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subdivides into centimetres correctly.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W04-KEY-Q05",
+          "question": "A piece of land is 6.50 km long. What length represents it on a 1:500 scale? Give the answer in millimetres.",
+          "answer": "6.50 km/500=0.013 km=13 m=13,000 mm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Applies drawing length=actual length/500.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains 13 m.",
+              "marks": 1
+            },
+            {
+              "criterion": "Converts to 13,000 mm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W04-KEY-Q06",
+          "question": "Construct a scale of 2.5 times full size to read up to 6 cm in millimetres.",
+          "answer": "Scale length=2.5×6=15 cm=150 mm. Divide into six 25 mm units (1 cm each) and subdivide the first into ten millimetre divisions.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Calculates 150 mm scale length.",
+              "marks": 1
+            },
+            {
+              "criterion": "Divides into six equal 25 mm units.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subdivides first unit into ten parts.",
+              "marks": 1
+            },
+            {
+              "criterion": "Labels millimetre and centimetre graduations.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W04-KEY-Q07",
+          "question": "Construct a scale of 1:4 to read up to 7 dm in centimetres.",
+          "answer": "7 dm=700 mm. Scale length=700/4=175 mm. Divide into seven 25 mm main units (1 dm each); subdivide the first unit into ten centimetre divisions.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Converts 7 dm to 700 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 175 mm scale length.",
+              "marks": 1
+            },
+            {
+              "criterion": "Divides into seven equal main units.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subdivides and labels centimetres.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W04-KEY-Q08",
+          "question": "The source asks for readings X and Z from a printed scale diagram. What evidence is required before marking a numerical answer?",
+          "answer": "The original scale figure must be rendered at sufficient resolution to identify zero, main graduations, subdivisions and the pointers X and Z. No numerical readings should be guessed from the text-only extraction.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies that the actual source figure and graduations are required.",
+              "marks": 1
+            },
+            {
+              "criterion": "Refuses to invent readings without inspecting the figure.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "User-supplied SS1 Technical Drawing source",
+          "locator": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx; Week Four teaching row, body children 697–859; source hash 69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d.",
+          "rights": "This supplement independently explains and solves source-based scale tasks. No source figure or textbook page is reproduced. Reuse approval remains pending.",
+          "reuse_status": "PENDING",
+          "attribution": "Source: user-supplied SS1 Technical Drawing, Second Term, Week Four."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [],
@@ -1512,7 +1730,8 @@
       "objective_locator": "WEEK FOUR teaching row (parsed row 14), The existing COV-TD-T2-SCH-W04 evidence describes the source definition; source document pages 19–22; body SHA d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd"
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES"
       ],
       "evidence": [
         {
@@ -1532,7 +1751,8 @@
       "objective_locator": "WEEK FOUR teaching row (parsed row 14), The existing COV-TD-T2-SCH-W04 evidence records this definition; source document pages 19–22; body SHA d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd"
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES"
       ],
       "evidence": [
         {
@@ -1552,7 +1772,8 @@
       "objective_locator": "WEEK FOUR source body children 697–859; exact scale ratios, construction dimensions and readings are transcribed in TD-FACT-W04-SCALE-DETAILS.md. Remaining unit and gate-dimension anomalies are isolated in explicit open items.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd"
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES"
       ],
       "evidence": [
         {
@@ -1576,7 +1797,8 @@
       "objective_locator": "WEEK FOUR teaching row (parsed row 14), Source document pages 19–22; existing COV-TD-T2-SCH-W04 evidence records the two-unit feature.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd"
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES"
       ],
       "evidence": [
         {
@@ -1596,7 +1818,8 @@
       "objective_locator": "WEEK FOUR source body children 697–859; exact scale ratios, construction dimensions and readings are transcribed in TD-FACT-W04-SCALE-DETAILS.md. Remaining unit and gate-dimension anomalies are isolated in explicit open items.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd"
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES"
       ],
       "evidence": [
         {
@@ -1620,7 +1843,8 @@
       "objective_locator": "WEEK FOUR source body children 697–859; exact scale ratios, construction dimensions and readings are transcribed in TD-FACT-W04-SCALE-DETAILS.md. Remaining unit and gate-dimension anomalies are isolated in explicit open items.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd"
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES"
       ],
       "evidence": [
         {
