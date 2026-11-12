@@ -154,7 +154,7 @@ def main():
             'id': task_id, 'lesson_id': lesson_id, 'path': relpath,
             'sha256': output_sha, 'bytes': len(output_bytes), 'media_type': media_type,
             'alt': (description or f'Original source drawing {media_name} for Technical Drawing {week_code}.')[:500],
-            'order': figure_number, 'source_locator': locator,
+            'order': 100 + figure_number, 'source_locator': locator,
             'provenance': {
                 'title': 'Original embedded Technical Drawing source figure',
                 'locator': locator,
