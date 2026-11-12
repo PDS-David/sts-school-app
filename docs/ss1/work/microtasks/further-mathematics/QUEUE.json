@@ -959,8 +959,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 6 of SS1-03 parsed_rows.json (week label \"WEEK SEVEN\", title \"Composite Mapping and Inverse Mapping\", 5326 characters). Existing coverage COV-FM-T2-R06 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-008 (task FM-PORT-D3-L008). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Reviewed Week Seven composite/inverse mapping source; objective coverage COV-FM-T2-W07-OBJ-1..3 added. Replacement SUP-SS1-FURTHER-MATHEMATICS-T2-W07-COMPOSITE-INVERSE-MAPPINGS covers all objectives with domain restrictions. Incorrect f(f(x)) options recorded in OI-FM-T2-W07-SOURCE-ITEM-DEFECTS. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -3398,6 +3398,41 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W05-MAPPING-FUNCTIONS]. 4 objectives; 10 practice questions; 26 marks. Original mapping diagrams inspected; defects recorded in OI-FM-T2-W05-MAPPING-SOURCE-DEFECTS. Coverage COV-FM-T2-W05-OBJ-1..3 and row R04 linked. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Replacement lesson covers all scheme objectives, corrects mapping/function definitions and domain/range examples, and includes keyed practice; objective coverage linked. Approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T2-W07-COMPOSITE-INVERSE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 07; source heading Composite Mapping and Inverse Mapping",
+      "objective": "Author a complete composite/inverse mapping lesson with order-sensitive composition, bijectivity, inverse algebra, domain restrictions and corrected practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T2-W07-COMPOSITE-INVERSE.md"
+      ],
+      "depends_on": [
+        "FM-WK-T2-W07",
+        "FM-LES-T2-W05-MAPPING-FUNCTIONS"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W07-COMPOSITE-INVERSE-MAPPINGS]. 4 objectives; 10 practice questions; 28 marks. Coverage COV-FM-T2-W07-OBJ-1..3 and row R06 linked. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement lesson covers composition, inverse existence, algebraic inverse and domain restrictions with keyed practice; objective coverage linked. Approval and verification remain pending/deferred."
     }
   ],
   "review": {
