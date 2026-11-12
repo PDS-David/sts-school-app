@@ -36,10 +36,10 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 32,
     "VISUAL_DISPOSITION": 2,
-    "LESSON": 21
+    "LESSON": 22
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 25,
+    "IMPLEMENTED_TESTING_DEFERRED": 26,
     "PENDING": 46,
     "BLOCKED": 1
   },
@@ -1192,8 +1192,8 @@
         "GOV-INV-T2",
         "GOV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12. Verified source member SHA-256 bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782 in archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e. Inspected Week Six body children 288–322 (35 paragraphs); C14N SHA-256 2d7358099b33a7fb3b26a5b27db09dd566cf0b01d340d47f0c1b3bf5b1d60206. Added five objective-level entries for Lyttleton, federal structure, 1958 conference, evaluation marker and practice pointers. Updated both Week Six scheme entries to PARTIAL; preserved scheme 'Lagos conference of 1958' versus source/official report 'London' discrepancy. Fact-checked the 1954 Order in Council, 1958 resumed conference report, Hansard, and fiscal history. No question stems follow EVALUATION. Added nine precise open items and lesson task GOV-LES-T2-W06-CORRECTED-WEEK. No source rule, lesson body, answer key, mark or asset was written. No tests/typecheck/importer/compiler run; testing deferred by owner.",
       "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
     },
     {
@@ -2701,6 +2701,45 @@
       "status": "PENDING",
       "implementation_reference": "Created after GOV-WK-T2-W05 on 2026-11-12. Required to correct Clifford seat allocation/franchise, Richards regional councils and franchise, Macpherson structure/crisis chronology, and scheme year discrepancy; add stated objectives from authoritative records. Original practice only; no source question stems are present.",
       "completion_condition": "A visibly original supplement covers objectives, features, merits and demerits of all three constitutions with recomputed body_sha256, dated/citable provenance and original keyed formative practice; scheme/source year discrepancy is preserved until owner/teacher confirmation; source questions/marks are not invented; content approval stays PENDING and verification DEFERRED; no source bytes, schema or shared code are edited."
+    },
+    {
+      "id": "GOV-LES-T2-W06-CORRECTED-WEEK",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "2nd Term Week Six, word/document.xml w:body children 288–322; Lyttleton Constitution and 1958 resumed Constitutional Conference",
+      "objective": "Author one visibly original, accurate supplement for Week Six. Explain the 1954 Constitution's federal structure and division of powers using the actual constitutional lists and institutions. Distinguish the federal House of Representatives from regional Houses; specify speaker selection by level/region; explain that electoral methods varied, including indirect arrangements in the North. Distinguish the Governor-General from the Federal Executive Council and describe his chairing role; do not claim that he was the Council. Explain derivation in the context of the 1953 Chick Commission and wider fiscal arrangements, including need, population and national interest where evidenced. Present regionalism as a complex political outcome, not an automatic single cause of disunity. Explain the resumed 1958 Constitutional Conference at Lancaster House, London (29 September–27 October), its minority-rights discussions, the Willink Commission safeguards, the decision not to create new regions before independence and the agreement on 1 October 1960 independence. Preserve the scheme's 'Lagos conference of 1958' wording separately from the source's London venue pending owner/teacher confirmation. The EVALUATION marker has no question stems, so create only clearly labelled original formative practice with complete answers and criterion-level marks; do not invent source questions or keys. Add dated, citable provenance and keep content approval PENDING and verification DEFERRED.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-PRE-T2.md",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W06.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-LES-T2-W06-CORRECTED-WEEK.md"
+      ],
+      "depends_on": [
+        "GOV-SRC-T2",
+        "GOV-WK-T2-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created after GOV-WK-T2-W06 on 2026-11-12. Required to correct federal institutions, electoral methods, Governor-General/executive distinction, derivation formula and 1958 conference outcomes/venue discrepancy. Original practice only; no source question stems are present.",
+      "completion_condition": "A visibly original supplement teaches all objectives with recomputed body_sha256, dated/citable provenance and original keyed formative practice; scheme/source venue discrepancy is preserved until owner/teacher confirmation; source questions/marks are not invented; content approval stays PENDING and verification DEFERRED; no source bytes, schema or shared code are edited."
     }
   ],
   "review": {
@@ -2721,7 +2760,6 @@
     "GOV-LES-T1-W01-CORRECTED-WEEK",
     "GOV-REV-T2",
     "GOV-MARK-T2",
-    "GOV-WK-T2-W06",
     "GOV-WK-T2-W07",
     "GOV-WK-T2-W08",
     "GOV-WK-T2-W09",
@@ -2761,6 +2799,7 @@
     "GOV-LES-T2-W02-CORRECTED-WEEK",
     "GOV-LES-T2-W03-CORRECTED-WEEK",
     "GOV-LES-T2-W04-CORRECTED-WEEK",
-    "GOV-LES-T2-W05-CORRECTED-CONSTITUTIONS"
+    "GOV-LES-T2-W05-CORRECTED-CONSTITUTIONS",
+    "GOV-LES-T2-W06-CORRECTED-WEEK"
   ]
 }
