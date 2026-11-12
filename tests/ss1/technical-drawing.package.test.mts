@@ -19,12 +19,12 @@ test('Week One source degree markers survive package delivery and the mobile les
     assert.ok(lesson.body.includes(value), `normalized degree value missing: ${value}`);
   }
   assert.equal((lesson.body.match(/°/g) ?? []).length >= 7, true);
-  assert.doesNotMatch(lesson.body, /\\b(?:670|1050|550|600)\\b/, 'flattened superscript-zero values must not reach students');
+  assert.doesNotMatch(lesson.body, /\b(?:670|1050|550|600)\b/, 'flattened superscript-zero values must not reach students');
 
   // The mobile lesson screen passes the package body directly to React Native
   // Text; there is no HTML conversion or lossy degree-glyph replacement step.
   const screen = await readFile(new URL('../../mobile/src/screens/Ss1PackageLessonScreen.tsx', import.meta.url), 'utf8');
-  assert.match(screen, /<Text style=\\{styles\\.body\\}>\\{lesson\\.body\\}<\\/Text>/);
+  assert.match(screen, /<Text style=\{styles\.body\}>\{lesson\.body\}<\/Text>/);
 });
 
 test('Technical Drawing package conforms to the SS1 package schema', async () => {
