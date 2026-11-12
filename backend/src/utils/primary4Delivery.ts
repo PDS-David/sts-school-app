@@ -258,7 +258,7 @@ export function safePrimary4Topic<T extends Primary4Topic>(topic: T): T {
       source_reference: null,
       summary: null,
       generated_assessment_id: null,
-      description: 'This Primary 4 lesson is being checked. It will become available after its curriculum source is approved and verified.',
+      description: 'This Primary 4 lesson is being checked. It will become available after its content is approved and verified and its assessment has been rebuilt.',
       primary4_delivery: { status: 'withheld', source: delivery.source, hide_from_student: delivery.hideFromStudent === true },
     } as T;
   }
