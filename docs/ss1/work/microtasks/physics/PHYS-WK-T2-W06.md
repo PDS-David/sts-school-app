@@ -1,6 +1,6 @@
 # PHYS-WK-T2-W06 — Second Term Week Six: electric charges
 
-Status: **BLOCKED — original source-row inspection incomplete**. The student supplement and objective coverage have been authored; exact reconciliation with the registered original .doc remains outstanding.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
 
 ## Registered source identity
 
@@ -45,3 +45,12 @@ The PDF is used as a close-equivalent scope comparison only. The original regist
 - All 18 question answers and marking totals checked: 37 marks.
 - Content approval remains `PENDING`; verification remains `DEFERRED`.
 - No importer, database or device test is claimed.
+
+
+## Original-source inspection completed — 2026-11-12
+
+- Exact source member: hash-verified original registered .doc; full rendered page range: 12–14.
+- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
+- Source-row disposition: WEEK SIX: production, types, distribution and storage of electric charges. Page 13 shows charge concentration at a sharp point; source exercises include evaluation, weekend assignment and theory but no answer/marking key. New charge-distribution SVG is an original explanatory replacement.
+- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
+- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.

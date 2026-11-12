@@ -1,6 +1,6 @@
 # PHYS-WK-T3-W01 — Third Term Week One: DC electric circuits
 
-Status: **BLOCKED — original source-row inspection incomplete**. The student supplement and objective coverage are authored, but the registered original .doc body and circuit diagram have not been inspected.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
 
 ## Registered source identity
 
@@ -46,3 +46,12 @@ These are close-equivalent comparison sources only, not the registered original 
 - All 18 answers and marking totals checked: 39 marks.
 - Content approval remains `PENDING`; verification remains `DEFERRED`.
 - No importer, database or device test is claimed.
+
+
+## Original-source inspection completed — 2026-11-12
+
+- Exact source member: hash-verified original registered .doc; full rendered page range: 1–3.
+- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
+- Source-row disposition: WEEK 1: DC electric circuit, components, current, potential difference, emf, resistance, internal resistance and Ohm's-law verification. The source explicitly says a circuit diagram follows, but no circuit diagram appears in the rendered pages. The new original circuit SVG supplies the missing learner diagram. The source's assessment is present; no answer/marking key is supplied.
+- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
+- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.

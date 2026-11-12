@@ -1,6 +1,6 @@
 # PHYS-WK-T3-W02 — Third Term Week Two: resistors and cells in series and parallel
 
-Status: **BLOCKED — original source-row inspection incomplete**. The student supplement and objective coverage are authored; exact source reconciliation remains outstanding.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
 
 ## Registered source identity
 
@@ -46,3 +46,12 @@ These are close-equivalent comparison sources only. The registered original .doc
 - All 18 practice answers and marking totals checked: 38 marks.
 - Content approval remains `PENDING`; verification remains `DEFERRED`.
 - No importer, database or device test is claimed.
+
+
+## Original-source inspection completed — 2026-11-12
+
+- Exact source member: hash-verified original registered .doc; full rendered page range: 3–5.
+- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
+- Source-row disposition: WEEK 2: resistors and cells in series/parallel, equivalent resistance and emf/current relationships. The source provides relations/examples but no clear connection diagrams. Original resistor-network and cell-connection SVGs have been added. Source exercises have no answer/marking key.
+- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
+- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.
