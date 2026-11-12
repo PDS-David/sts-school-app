@@ -55,7 +55,7 @@ const researchedRecords = new Map<string, ResearchedRecord>(
     title: record.title,
     source_sha256: sha256(record.source_reference),
     source_file: record.source_file,
-  }]),
+  } as const]),
 );
 
 export type Primary4SourceDelivery =
