@@ -30,3 +30,12 @@ test('coverage report explains why Basic Technology First and Second Terms are n
   assert.ok(decision.state_scheme_source.includes('2021-Edition.pdf'));
   assert.ok(decision.required_evidence.length > 20);
 });
+
+test('only the two Basic Technology term allocations remain unresolved', () => {
+  const report = buildPrimary4CoverageReport();
+  assert.equal(report.unresolved.length, 2);
+  assert.deepEqual(report.unresolved.map((row: any) => [row.subject, row.term]), [
+    ['Basic Technology', '1st Term'],
+    ['Basic Technology', '2nd Term'],
+  ]);
+});
