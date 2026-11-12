@@ -33,18 +33,18 @@
     "SOURCE_WEEK_INDEXING": 19,
     "FACTUAL_DEPENDENCY": 7,
     "VISUAL_DISPOSITION": 9,
-    "ASSET": 53,
+    "ASSET": 65,
     "OWNER_DECISION": 1,
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
     "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 28,
+    "IMPLEMENTED_TESTING_DEFERRED": 29,
     "BLOCKED": 6,
-    "PENDING": 71
+    "PENDING": 82
   },
-  "total": 105,
+  "total": 117,
   "items": [
     {
       "id": "TD-SRC-T2",
@@ -1158,8 +1158,8 @@
         "TD-VIS-INVENTORY",
         "TD-WK-W06-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 11 DrawingML placements plus 1 embedded AutoCAD.Drawing.15 object/WMF preview on PDF pages 27–30; similar-figure reduction diagrams. OLE control not executed; per-figure disposition remains pending.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12 from master d47c1daa. Inspected all 11 Week Six–Seven DrawingML placements and 11 unique raster parts; recomputed hashes and recorded source locators, visual purposes and bind-as-asset dispositions in TD-VIS-W06-W07.md. Also rendered the single AutoCAD.Drawing.15 object/WMF preview at body child 1194; it visually repeats Week Three triangle ABD with labels 30/60/70. Appended 11 unique figure asset tasks and one cross-row reuse-validation task referencing TD-ASSET-W03-F13. No derivatives or package assets created; OLE control not executed. No tests/schema/compiler/importer or app display verification run; not approved, not verified.",
       "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
     },
     {
@@ -1254,7 +1254,7 @@
         "TD-VIS-INVENTORY"
       ],
       "status": "PENDING",
-      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 17 embedded AutoCAD.Drawing.15 objects located in Weeks 4 (9), 5 (7) and 6–7 (1); each has a WMF preview. Controls were not executed; per-object transcription/render review remains pending. Week Four visual inspection now transcribes visible preview context for 9/17 objects (OLE 1–9; body children 718–841) in TD-VIS-W04.md; 8 objects in Weeks Five and Six–Seven remain to inspect. Native controls remain unexecuted. Week Five preview inspection now adds 7/17 objects/WMF parts (OLE 10–16; body children 866–964), with individual WMF hashes, byte counts and visible transcriptions in TD-VIS-W05.md; only the Week Six–Seven object remains.",
+      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 17 embedded AutoCAD.Drawing.15 objects located in Weeks 4 (9), 5 (7) and 6–7 (1); each has a WMF preview. Controls were not executed; per-object transcription/render review remains pending. Week Four visual inspection now transcribes visible preview context for 9/17 objects (OLE 1–9; body children 718–841) in TD-VIS-W04.md; 8 objects in Weeks Five and Six–Seven remain to inspect. Native controls remain unexecuted. Week Five preview inspection now adds 7/17 objects/WMF parts (OLE 10–16; body children 866–964), with individual WMF hashes, byte counts and visible transcriptions in TD-VIS-W05.md; only the Week Six–Seven object remains. Week Six–Seven adds the final 17th OLE/WMF preview (body child 1194, oleObject17.bin/image63.wmf, WMF SHA-256 aff737699c5bbbb3ee5435a5920be3bd11c6459b7549fc4ed26f4f4cbbe276a5). Its preview is the Week Three 30/60/70 triangle; cross-row derivative reuse is assigned to TD-ASSET-W06-W07-F12.",
       "completion_condition": "Each object's row, preview/rendering result and transcription (or reason) recorded; open item narrowed accordingly."
     },
     {
@@ -1287,7 +1287,7 @@
         "TD-VIS-INVENTORY"
       ],
       "status": "PENDING",
-      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 17 WMF preview parts located in Weeks 4 (9), 5 (7) and 6–7 (1), paired with the 17 AutoCAD OLE objects. WMF is not an allowed asset MIME; faithful conversion/provenance decision remains pending. Week Four WMF previews image36.wmf–image44.wmf (9/17) have individual SHA-256 and byte counts recorded in TD-VIS-W04.md; all remain unconverted pending faithful derivative tasks. Week Five preview inspection now adds 7/17 objects/WMF parts (OLE 10–16; body children 866–964), with individual WMF hashes, byte counts and visible transcriptions in TD-VIS-W05.md; only the Week Six–Seven object remains.",
+      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 17 WMF preview parts located in Weeks 4 (9), 5 (7) and 6–7 (1), paired with the 17 AutoCAD OLE objects. WMF is not an allowed asset MIME; faithful conversion/provenance decision remains pending. Week Four WMF previews image36.wmf–image44.wmf (9/17) have individual SHA-256 and byte counts recorded in TD-VIS-W04.md; all remain unconverted pending faithful derivative tasks. Week Five preview inspection now adds 7/17 objects/WMF parts (OLE 10–16; body children 866–964), with individual WMF hashes, byte counts and visible transcriptions in TD-VIS-W05.md; only the Week Six–Seven object remains. Week Six–Seven adds the final 17th OLE/WMF preview (body child 1194, oleObject17.bin/image63.wmf, WMF SHA-256 aff737699c5bbbb3ee5435a5920be3bd11c6459b7549fc4ed26f4f4cbbe276a5). Its preview is the Week Three 30/60/70 triangle; cross-row derivative reuse is assigned to TD-ASSET-W06-W07-F12.",
       "completion_condition": "Per-figure conversion decision recorded; converted files (if any) added under the allowed asset path with hashes and provenance, or an open item records why not. Nothing displayed or verified in the app."
     },
     {
@@ -2936,7 +2936,7 @@
         "TD-VIS-W03"
       ],
       "status": "PENDING",
-      "implementation_reference": "Created from TD-VIS-W03.md. Source part word/media/image30.png; original part SHA-256 9b1910a869c34393edd38519e72e2a95a812f71276c87180c87fd2f2a1c8d14e; XML body-child placement(s) 593, 679. No derivative created yet.",
+      "implementation_reference": "Created from TD-VIS-W03.md. Source part word/media/image30.png; original part SHA-256 9b1910a869c34393edd38519e72e2a95a812f71276c87180c87fd2f2a1c8d14e; XML body-child placement(s) 593, 679. No derivative created yet. A visually matching AutoCAD/WMF occurrence is reused in Week Six–Seven (body child 1194); TD-ASSET-W06-W07-F12 will validate cross-row equivalence and bind the same derivative to that lesson.",
       "completion_condition": "Produce a faithful, labelled SVG derivative with a verified geometry/label review; record source locator, original and derivative SHA-256, byte count, accurate alt text and truthful provenance; bind the asset to the exact Week Three source lesson and relevant coverage records without claiming dimensions not shown; validate the package and asset path. Do not commit the original extracted source image."
     },
     {
@@ -3652,6 +3652,414 @@
       "status": "PENDING",
       "implementation_reference": "Created from TD-VIS-W05.md. OLE part oleObject16.bin; WMF preview word/media/image51.wmf; original preview SHA-256 0ffa14db4c8b9b9e4e425c553c0119185ae12d51afffd8be68d564ff2da75206; XML body-child locator 964. No derivative created yet.",
       "completion_condition": "Produce a faithful SVG derivative preserving all scale graduations, diagonals, labels, units and construction marks; record source/derivative hashes, bytes, alt text, provenance and exact source locator; bind to the exact Week Five source lesson and relevant coverage records; validate schema and asset path. Do not commit original WMF/OLE bytes or execute embedded controls."
+    },
+    {
+      "id": "TD-ASSET-W06-W07-F01",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX AND SEVEN / source lesson SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05 / word/document.xml body child 1019 / word/media/image52.png",
+      "objective": "Create a faithful SVG derivative for this Week Six–Seven source figure: Rectangle ABCD reduced to similar rectangle A1B1C1D1 in ratio 3:5 using rays from P and parallel lines. Preserve all visible geometry, dimensions, labels, projection rays and construction marks. Do not invent dimensions or alter the source's mathematical meaning. Original embedded media SHA-256: 0b2a6a12ce86c219fdf0e449ffd078cf66092c08d1a1106dfc646bbdea4117e0.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w06-w07-f01-rectangle-reduction-3-5.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W06-W07-F01.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W06-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W06-W07.md. Source part word/media/image52.png; original SHA-256 0b2a6a12ce86c219fdf0e449ffd078cf66092c08d1a1106dfc646bbdea4117e0; XML body-child locator 1019. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with geometry/dimension review; record source and derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Six–Seven source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W06-W07-F02",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX AND SEVEN / source lesson SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05 / word/document.xml body child 1035 / word/media/image53.jpeg",
+      "objective": "Create a faithful SVG derivative for this Week Six–Seven source figure: Polygon ABCDE reduced to A1B1C1D1E1 in ratio 4:5 using rays from A and equal divisions. Preserve all visible geometry, dimensions, labels, projection rays and construction marks. Do not invent dimensions or alter the source's mathematical meaning. Original embedded media SHA-256: 2506080bb2062fd3ded96bcfe44528e3b71cea3d6ac19b72b32969f4486de73e.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w06-w07-f02-polygon-reduction-4-5.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W06-W07-F02.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W06-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W06-W07.md. Source part word/media/image53.jpeg; original SHA-256 2506080bb2062fd3ded96bcfe44528e3b71cea3d6ac19b72b32969f4486de73e; XML body-child locator 1035. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with geometry/dimension review; record source and derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Six–Seven source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W06-W07-F03",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX AND SEVEN / source lesson SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05 / word/document.xml body child 1053 / word/media/image54.jpeg",
+      "objective": "Create a faithful SVG derivative for this Week Six–Seven source figure: Polygon area reduction construction in ratio 3:5 using radiating diagonals, semicircles, perpendiculars and parallels. Preserve all visible geometry, dimensions, labels, projection rays and construction marks. Do not invent dimensions or alter the source's mathematical meaning. Original embedded media SHA-256: a913597ad877c784b30f42f990ed0c3726be9b13f25407b666d742e35b26a213.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w06-w07-f03-polygon-area-reduction-3-5.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W06-W07-F03.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W06-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W06-W07.md. Source part word/media/image54.jpeg; original SHA-256 a913597ad877c784b30f42f990ed0c3726be9b13f25407b666d742e35b26a213; XML body-child locator 1053. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with geometry/dimension review; record source and derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Six–Seven source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W06-W07-F04",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX AND SEVEN / source lesson SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05 / word/document.xml body child 1074 / word/media/image55.jpeg",
+      "objective": "Create a faithful SVG derivative for this Week Six–Seven source figure: Polygon area enlargement construction in ratio 5:3 using radiating lines, semicircles and parallel edges. Preserve all visible geometry, dimensions, labels, projection rays and construction marks. Do not invent dimensions or alter the source's mathematical meaning. Original embedded media SHA-256: cbf2e59007a829f37a20cd1da880519fd2b2d6721272154ae0d69f66095ee34c.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w06-w07-f04-polygon-area-enlargement-5-3.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W06-W07-F04.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W06-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W06-W07.md. Source part word/media/image55.jpeg; original SHA-256 cbf2e59007a829f37a20cd1da880519fd2b2d6721272154ae0d69f66095ee34c; XML body-child locator 1074. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with geometry/dimension review; record source and derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Six–Seven source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W06-W07-F05",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX AND SEVEN / source lesson SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05 / word/document.xml body child 1087 / word/media/image56.jpeg",
+      "objective": "Create a faithful SVG derivative for this Week Six–Seven source figure: Enlargement of a stepped/object outline from pole T using projection lines, arcs and corresponding points. Preserve all visible geometry, dimensions, labels, projection rays and construction marks. Do not invent dimensions or alter the source's mathematical meaning. Original embedded media SHA-256: 66dc199a41dd2d4df315987b0eedafd7c5e5d2126143a1fb6b0f89b70559610f.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w06-w07-f05-similar-object-enlargement-rays.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W06-W07-F05.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W06-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W06-W07.md. Source part word/media/image56.jpeg; original SHA-256 66dc199a41dd2d4df315987b0eedafd7c5e5d2126143a1fb6b0f89b70559610f; XML body-child locator 1087. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with geometry/dimension review; record source and derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Six–Seven source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W06-W07-F06",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX AND SEVEN / source lesson SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05 / word/document.xml body child 1120 / word/media/image57.png",
+      "objective": "Create a faithful SVG derivative for this Week Six–Seven source figure: Dimensioned five-sided polygon with right angle at A and labelled data AB 95, BC 65, CD 70, DE 75 and BE 120. Preserve all visible geometry, dimensions, labels, projection rays and construction marks. Do not invent dimensions or alter the source's mathematical meaning. Original embedded media SHA-256: 3a944a3bb00e1390283213653b70b83233b5a5afc9be61aa7a1d4eec50c71ea6.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w06-w07-f06-dimensioned-polygon-question.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W06-W07-F06.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W06-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W06-W07.md. Source part word/media/image57.png; original SHA-256 3a944a3bb00e1390283213653b70b83233b5a5afc9be61aa7a1d4eec50c71ea6; XML body-child locator 1120. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with geometry/dimension review; record source and derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Six–Seven source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W06-W07-F07",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX AND SEVEN / source lesson SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05 / word/document.xml body child 1137 / word/media/image58.png",
+      "objective": "Create a faithful SVG derivative for this Week Six–Seven source figure: Construction sketch with centre line through K, base ST, and 60-degree and 45-degree base angles. Preserve all visible geometry, dimensions, labels, projection rays and construction marks. Do not invent dimensions or alter the source's mathematical meaning. Original embedded media SHA-256: 019f8259e5975156bc4e4021ab01f77c6f1e3900b789a4ccd6c99d068c5791ae.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w06-w07-f07-triangle-construction-60-45.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W06-W07-F07.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W06-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W06-W07.md. Source part word/media/image58.png; original SHA-256 019f8259e5975156bc4e4021ab01f77c6f1e3900b789a4ccd6c99d068c5791ae; XML body-child locator 1137. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with geometry/dimension review; record source and derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Six–Seven source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W06-W07-F08",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX AND SEVEN / source lesson SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05 / word/document.xml body child 1147 / word/media/image59.jpeg",
+      "objective": "Create a faithful SVG derivative for this Week Six–Seven source figure: Series of similar quadrilateral outlines P, Q, R, S and T along a numbered baseline/ray construction. Preserve all visible geometry, dimensions, labels, projection rays and construction marks. Do not invent dimensions or alter the source's mathematical meaning. Original embedded media SHA-256: 68e12539b6ff86caa899f06404162c50542fff18fce4c2e38a829cd037f25125.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w06-w07-f08-similar-quadrilateral-series.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W06-W07-F08.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W06-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W06-W07.md. Source part word/media/image59.jpeg; original SHA-256 68e12539b6ff86caa899f06404162c50542fff18fce4c2e38a829cd037f25125; XML body-child locator 1147. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with geometry/dimension review; record source and derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Six–Seven source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W06-W07-F09",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX AND SEVEN / source lesson SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05 / word/document.xml body child 1160 / word/media/image60.png",
+      "objective": "Create a faithful SVG derivative for this Week Six–Seven source figure: Three irregular hexagons J, K and M arranged from common centre O with scale divisions for a side-ratio question. Preserve all visible geometry, dimensions, labels, projection rays and construction marks. Do not invent dimensions or alter the source's mathematical meaning. Original embedded media SHA-256: 1e4fe74b1b46035d16092021ce1480c668114c065ef7dcdc5c820cb53a41a7b0.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w06-w07-f09-three-irregular-hexagons-ratio.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W06-W07-F09.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W06-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W06-W07.md. Source part word/media/image60.png; original SHA-256 1e4fe74b1b46035d16092021ce1480c668114c065ef7dcdc5c820cb53a41a7b0; XML body-child locator 1160. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with geometry/dimension review; record source and derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Six–Seven source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W06-W07-F10",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX AND SEVEN / source lesson SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05 / word/document.xml body child 1171 / word/media/image61.png",
+      "objective": "Create a faithful SVG derivative for this Week Six–Seven source figure: Enlargement construction with centre O, rays through labelled points and numbered baseline. Preserve all visible geometry, dimensions, labels, projection rays and construction marks. Do not invent dimensions or alter the source's mathematical meaning. Original embedded media SHA-256: 6d78f838cdfc0bc61c209e00b9703f1b7e78a1c2412f74eb2204ae057151b9d5.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w06-w07-f10-enlargement-centre-distance.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W06-W07-F10.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W06-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W06-W07.md. Source part word/media/image61.png; original SHA-256 6d78f838cdfc0bc61c209e00b9703f1b7e78a1c2412f74eb2204ae057151b9d5; XML body-child locator 1171. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with geometry/dimension review; record source and derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Six–Seven source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W06-W07-F11",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX AND SEVEN / source lesson SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05 / word/document.xml body child 1184 / word/media/image62.png",
+      "objective": "Create a faithful SVG derivative for this Week Six–Seven source figure: Original rectangle ABCD and rectangle A1B1C1D1 connected by rays from P and numbered proportional divisions. Preserve all visible geometry, dimensions, labels, projection rays and construction marks. Do not invent dimensions or alter the source's mathematical meaning. Original embedded media SHA-256: 815e2557180232ee6cdde5d73e86b66351b1c1b9ab460b327b1c9c0336ed0c81.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w06-w07-f11-rectangle-similarity-ratio.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W06-W07-F11.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W06-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W06-W07.md. Source part word/media/image62.png; original SHA-256 815e2557180232ee6cdde5d73e86b66351b1c1b9ab460b327b1c9c0336ed0c81; XML body-child locator 1184. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with geometry/dimension review; record source and derivative hashes, bytes, alt text, provenance and exact locator; bind to the Week Six–Seven source lesson and relevant coverage records; validate schema and asset path. Do not commit the original extracted image."
+    },
+    {
+      "id": "TD-ASSET-W06-W07-F12",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX AND SEVEN / source lesson SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05 / body child 1194 / word/embeddings/oleObject17.bin / word/media/image63.wmf; compare Week Three image30.png and TD-ASSET-W03-F13",
+      "objective": "Verify the Week Six–Seven AutoCAD preview triangle ABD (AB=30, BD=60, AD=70) against the Week Three source figure image30.png. Reuse the faithful derivative produced by TD-ASSET-W03-F13 only if all geometry, labels and proportions match; otherwise document the mismatch and produce a separate faithful SVG. Bind the accepted derivative to the Week Six–Seven source lesson without executing the OLE control. WMF preview SHA-256 aff737699c5bbbb3ee5435a5920be3bd11c6459b7549fc4ed26f4f4cbbe276a5.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W06-W07-F12.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W06-W07",
+        "TD-ASSET-W03-F13"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Cross-row reuse task. The WMF preview visually shows the same labelled 30/60/70 triangle as Week Three image30.png; see TD-VIS-W06-W07.md. Existing derivative task: TD-ASSET-W03-F13. No derivative or package binding exists yet.",
+      "completion_condition": "Compare the final Week Three derivative against both original source representations; verify labels and geometry; bind the same asset path/hash to the Week Six–Seven lesson with a unique asset ID/order and provenance that records both source locators, or create a separate derivative if equivalence fails. Validate the package. Do not execute OLE or commit original WMF bytes."
     }
   ],
   "review": {
@@ -3668,7 +4076,6 @@
     "notes": "Reconciled queue metadata with live item statuses after Week 6–10 coverage updates; formal tests remain deferred."
   },
   "next_runnable": [
-    "TD-VIS-W06-W07",
     "TD-VIS-W08-W09",
     "TD-VIS-W10",
     "TD-FACT-W01-DEGREE-NOTATION",
@@ -3728,10 +4135,20 @@
     "TD-ASSET-W05-F04",
     "TD-ASSET-W05-F05",
     "TD-ASSET-W05-F06",
-    "TD-ASSET-W05-F07"
+    "TD-ASSET-W05-F07",
+    "TD-ASSET-W06-W07-F01",
+    "TD-ASSET-W06-W07-F02",
+    "TD-ASSET-W06-W07-F03",
+    "TD-ASSET-W06-W07-F04",
+    "TD-ASSET-W06-W07-F05",
+    "TD-ASSET-W06-W07-F06",
+    "TD-ASSET-W06-W07-F07",
+    "TD-ASSET-W06-W07-F08",
+    "TD-ASSET-W06-W07-F09",
+    "TD-ASSET-W06-W07-F10",
+    "TD-ASSET-W06-W07-F11"
   ],
   "runnable_now": [
-    "TD-VIS-W06-W07",
     "TD-VIS-W08-W09",
     "TD-VIS-W10",
     "TD-FACT-W01-DEGREE-NOTATION",
@@ -3791,6 +4208,17 @@
     "TD-ASSET-W05-F04",
     "TD-ASSET-W05-F05",
     "TD-ASSET-W05-F06",
-    "TD-ASSET-W05-F07"
+    "TD-ASSET-W05-F07",
+    "TD-ASSET-W06-W07-F01",
+    "TD-ASSET-W06-W07-F02",
+    "TD-ASSET-W06-W07-F03",
+    "TD-ASSET-W06-W07-F04",
+    "TD-ASSET-W06-W07-F05",
+    "TD-ASSET-W06-W07-F06",
+    "TD-ASSET-W06-W07-F07",
+    "TD-ASSET-W06-W07-F08",
+    "TD-ASSET-W06-W07-F09",
+    "TD-ASSET-W06-W07-F10",
+    "TD-ASSET-W06-W07-F11"
   ]
 }
