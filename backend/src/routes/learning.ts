@@ -6,7 +6,7 @@ import { generate, generateJSON } from '../utils/ai.js';
 import { sendPushToClass } from '../utils/push.js';
 import type { AuthUser } from '../types/index.js';
 import { attributionsForTopic, publicAttribution } from '../db/jss3Attributions.js';
-import { resolveSequenceGroup } from '../utils/jss3Sequence.js';
+import { resolveSequenceGroup, studentTopicPreview } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
 import { resolveSs1Delivery, safeSs1Topic, retireStaleSs1Cache, ss1AssessmentDeliverable, ss1WithdrawnAssessmentIds } from '../utils/ss1CateringDeliveryCorrection.js';
 import { resolveSs1FrenchDelivery, retireStaleSs1FrenchCache } from '../utils/ss1FrenchDeliveryCorrection.js';
@@ -43,6 +43,33 @@ async function redeemedSs1Terms(studentId: string): Promise<Set<string>> {
     [studentId],
   );
   return new Set(rows.map((row: any) => String(row.term_label)));
+}
+
+// Resolve the same sequence policy used by GET /topics for direct asset access.
+// A missing student record is fail-closed: no ordered lesson content/assets.
+async function studentTopicSequenceLocked(user: AuthUser, topic: any): Promise<boolean> {
+  if (user.role !== 'student') return false;
+  if (topic.order_index == null) return false;
+  const { rows: studentRows } = await query('SELECT id FROM students WHERE user_id=$1', [user.id]);
+  const studentId = studentRows[0]?.id;
+  if (!studentId) return true;
+  const { rows: group } = await query(
+    `SELECT t.id, t.order_index, (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank
+       FROM topics t
+      WHERE t.school_code=$1 AND t.subject_id=$2 AND t.class_name=$3
+        AND t.term_label IS NOT DISTINCT FROM $4 AND t.order_index IS NOT NULL
+      ORDER BY t.order_index ASC, t.id ASC`,
+    [topic.school_code, topic.subject_id, topic.class_name, topic.term_label],
+  );
+  const ids = group.map((row: any) => row.id);
+  const [{ rows: completionRows }, { rows: pinRows }] = await Promise.all([
+    query('SELECT topic_id, passed FROM topic_completions WHERE student_id=$1 AND topic_id=ANY($2)', [studentId, ids]),
+    query('SELECT term_label FROM term_access_pins WHERE student_id=$1 AND redeemed_at IS NOT NULL', [studentId]),
+  ]);
+  const passedIds = new Set(completionRows.filter((row: any) => row.passed === true).map((row: any) => Number(row.topic_id)));
+  const redeemedTerms = new Set(pinRows.map((row: any) => String(row.term_label)));
+  const pinOk = !termPinEnforced() || redeemedTerms.has(String(topic.term_label));
+  return resolveSequenceGroup(group, passedIds, pinOk).get(Number(topic.id))?.locked ?? true;
 }
 
 router.get('/ss1/lessons', requirePerm('topics.read'), async (req, res) => {
@@ -311,15 +338,29 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
       }
 
       return res.json({
-        topics: rows.map((r: any) => ({
-          ...r,
-          completed: completedIds.has(r.id),
-          locked: lockedIds.has(r.id),
-          sequence_position: seqById.get(r.id)?.sequence_position ?? null,
-          is_sequence_first: seqById.get(r.id)?.is_sequence_first ?? false,
-        })),
+        topics: rows.map((r: any) => {
+          const completed = completedIds.has(r.id);
+          const locked = lockedIds.has(r.id);
+          const sequence = {
+            completed,
+            locked,
+            sequence_position: seqById.get(r.id)?.sequence_position ?? null,
+            is_sequence_first: seqById.get(r.id)?.is_sequence_first ?? false,
+          };
+          // Locked rows are navigation metadata only. Do not send descriptions,
+          // generated summaries, source text/provenance or any lesson payload.
+          if (locked) return studentTopicPreview(
+            r,
+            completed,
+            seqById.get(r.id) ?? { locked: true, sequence_position: null, is_sequence_first: false },
+          );
+          return { ...r, ...sequence };
+        }),
       });
     }
+    // A student without a linked student record must never fall through to
+    // the unrestricted raw-topic response.
+    return res.json({ topics: [] });
   }
 
   return res.json({ topics: rows });
@@ -366,10 +407,11 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
   // gives for a topic outside the viewer's classes.
   if (scope === null) return res.json({ assets: [], attributions: [] });
   const { rows: visible } = await query(
-    `SELECT t.id, t.school_code, t.title, t.term_label, t.class_name, t.source_file, t.source_reference, t.order_index, s.name AS subject_name
+    `SELECT t.id, t.school_code, t.subject_id, (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank, t.title, t.term_label, t.class_name, t.source_file, t.source_reference, t.order_index, s.name AS subject_name
        FROM topics t LEFT JOIN subjects s ON s.id=t.subject_id WHERE t.id=$1 AND t.school_code=$2${scope}`, params,
   );
   if (!visible[0]) return res.json({ assets: [], attributions: [] });
+  if (await studentTopicSequenceLocked(user, visible[0])) return res.json({ assets: [], attributions: [] });
 
   // Metadata only — `bytes` is never selected here.
   const { rows: storedAssets } = await query(
@@ -410,13 +452,13 @@ router.get('/mathematics-assets/:assetKey', requirePerm('topics.read'), async (r
   const scope = await topicVisibilitySql(user, params);
   if (scope === null) return res.status(404).json({ error: 'Asset not found' });
   const { rows: visible } = await query(
-    `SELECT t.id, t.school_code, t.title, t.term_label, t.class_name, t.source_file, t.order_index, s.name AS subject_name
+    `SELECT t.id, t.school_code, t.subject_id, (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank, t.title, t.term_label, t.class_name, t.source_file, t.order_index, s.name AS subject_name
        FROM topics t LEFT JOIN subjects s ON s.id=t.subject_id
       WHERE t.id=$1 AND t.school_code=$2${scope}`,
     params,
   );
   const topic = visible[0];
-  if (!topic || topic.school_code !== 'secondary' || topic.class_name !== 'SS 1' || topic.subject_name !== 'Mathematics') {
+  if (!topic || await studentTopicSequenceLocked(user, topic) || topic.school_code !== 'secondary' || topic.class_name !== 'SS 1' || topic.subject_name !== 'Mathematics') {
     return res.status(404).json({ error: 'Asset not found' });
   }
   const asset = mathematicsAssetsForTopic(topic).find((item: any) => item.asset_key === assetKey);
@@ -449,7 +491,7 @@ router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
   if (scope === null) return res.status(404).json({ error: 'Asset not found' });
   // Scope + metadata first (no bytes), so a 304 never reads the image.
   const { rows: meta } = await query(
-    `SELECT a.mime, a.sha256, a.asset_key, t.id AS topic_id, t.school_code, t.class_name, t.term_label, t.title,
+    `SELECT a.mime, a.sha256, a.asset_key, t.id AS topic_id, t.school_code, t.subject_id, (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank, t.class_name, t.term_label, t.title,
             t.source_file, t.source_reference, t.order_index, s.name AS subject_name
        FROM topic_assets a
        JOIN topics t ON t.id=a.topic_id
@@ -457,7 +499,7 @@ router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
       WHERE a.id=$1 AND a.displayed=true AND t.school_code=$2${scope}`,
     params,
   );
-  if (!meta[0]) return res.status(404).json({ error: 'Asset not found' });
+  if (!meta[0] || await studentTopicSequenceLocked(user, meta[0] && { ...meta[0], id: meta[0].topic_id, order_index: meta[0].order_index })) return res.status(404).json({ error: 'Asset not found' });
   if (meta[0].school_code === 'secondary' && meta[0].class_name === 'SS 1' && meta[0].subject_name === 'Agricultural Science' &&
       !agriculturalScienceAssetDeliverable(meta[0], meta[0])) return res.status(404).json({ error: 'Asset not found' });
   if (meta[0].school_code === 'secondary' && meta[0].class_name === 'SS 1' && meta[0].subject_name === 'Mathematics' &&
