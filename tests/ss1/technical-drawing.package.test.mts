@@ -371,3 +371,20 @@ test('Week Three under-specified pentagon has an explicit regular-pentagon alter
   assert.ok(item, 'source wording ambiguity must remain documented');
   assert.equal(item.blocks_delivery, false);
 });
+
+test('Week Six–Seven ambiguous source figures have original replacement exercises', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W07-REDUCTION');
+  assert.ok(lesson, 'Week Seven reduction lesson missing');
+  for (const id of ['TD-W07-RED-Q06', 'TD-W07-RED-Q07', 'TD-W07-RED-Q08']) {
+    const q = lesson.practice.find(item => item.id === id);
+    assert.ok(q, `replacement exercise missing: ${id}`);
+    assert.equal(q.marks, q.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+  }
+  assert.match(lesson.body, /Original alternatives for the under-specified Week Six–Seven assessment figures/);
+  for (const id of ['TD-T2-W06-W07-PENTAGON-FIGURE-UNDERDEFINED', 'TD-T2-W06-W07-WEEKEND-Q1-Q2-FIGURE-AMBIGUITY']) {
+    const item = subject.open_items.find(entry => entry.id === id);
+    assert.ok(item, `source ambiguity must remain documented: ${id}`);
+    assert.equal(item.blocks_delivery, false);
+  }
+});
