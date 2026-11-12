@@ -6,7 +6,7 @@ import { resolvePrimary4SourceDelivery } from '../../backend/src/utils/primary4D
 
 test('researched Home Economics package has structured lessons for both missing terms', () => {
   const lessons = packageData.lessons as any[];
-  assert.equal(lessons.length, 17);
+  assert.equal(lessons.length, 18);
   assert.deepEqual([...new Set(lessons.map(x => x.term))].sort(), ['1st Term', '2nd Term']);
   for (const lesson of lessons) {
     assert.ok(lesson.id && lesson.title && lesson.lesson.length > 100);
@@ -19,11 +19,11 @@ test('researched Home Economics package has structured lessons for both missing 
 
 test('Home Economics import plan is reproducible, insert-only and requires owner approval', () => {
   const plan = buildHomeEconomicsImportPlan();
-  assert.equal(plan.topic_count, 17);
+  assert.equal(plan.topic_count, 18);
   assert.equal(plan.write_mode, 'INSERT_ONLY_NO_UPDATE');
   assert.equal(plan.requires_explicit_owner_approval, true);
   assert.equal(plan.production_write_performed, false);
-  assert.equal(new Set(plan.topics.map((topic: any) => topic.stable_key)).size, 17);
+  assert.equal(new Set(plan.topics.map((topic: any) => topic.stable_key)).size, 18);
   assert.ok(plan.topics.every((topic: any) => topic.class_name === 'Primary 4' && topic.subject_name === 'Home Economics'));
   assert.ok(plan.topics.every((topic: any) => topic.source_reference.includes('PENDING OWNER REVIEW')));
 });
