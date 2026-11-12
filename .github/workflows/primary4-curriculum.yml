@@ -1,0 +1,45 @@
+name: Primary 4 Curriculum Validation
+
+on:
+  push:
+    branches:
+      - curriculum/primary4-content-packages-20261112
+    paths:
+      - 'backend/src/db/primary4/**'
+      - 'backend/src/db/ingestTopics.ts'
+      - 'backend/src/utils/primary4Delivery.ts'
+      - 'backend/src/routes/learning.ts'
+      - 'tests/primary4/**'
+      - 'backend/package.json'
+      - 'package.json'
+      - '.github/workflows/primary4-curriculum.yml'
+  pull_request:
+    paths:
+      - 'backend/src/db/primary4/**'
+      - 'backend/src/db/ingestTopics.ts'
+      - 'backend/src/utils/primary4Delivery.ts'
+      - 'backend/src/routes/learning.ts'
+      - 'tests/primary4/**'
+      - 'backend/package.json'
+      - 'package.json'
+      - '.github/workflows/primary4-curriculum.yml'
+  workflow_dispatch:
+
+jobs:
+  validate-primary4:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install backend dependencies (backend has no committed lockfile)
+        run: npm install --prefix backend
+      - name: Run Primary 4 focused tests
+        run: npm run test:primary4 --prefix backend
+      - name: Run Primary 4 coverage audit
+        run: npm run audit:primary4 --prefix backend
+      - name: Build backend
+        run: npm run build --prefix backend

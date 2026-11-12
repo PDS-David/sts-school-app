@@ -14,7 +14,8 @@
     "validate:ss1": "node --import tsx backend/src/db/ss1/validateSubjectPackages.ts",
     "ss1:refresh-hashes": "node --import tsx backend/src/db/ss1/refreshIntegrityHashes.ts",
     "validate:ss1:english": "node --import tsx backend/src/db/ss1/validateSubjectPackages.ts english",
-    "test:primary4": "cd backend && npm run test:primary4"
+    "test:primary4": "cd backend && npm run test:primary4",
+    "audit:primary4": "cd backend && npm run audit:primary4"
   },
   "workspaces": [
     "backend",

@@ -1,6 +1,8 @@
 import { createHash } from 'node:crypto';
 import manifestData from '../db/primary4/sourceManifest.json' with { type: 'json' };
+import { getPrimary4SupplementRecords } from '../db/primary4/primary4Supplements.js';
 
+type ReviewFlag = 'HIGH_SHORT_SOURCE' | 'SHORT_SOURCE_REVIEW' | 'CONTENT_PRESENT' | 'RESEARCHED_VERIFIED';
 type ManifestRecord = {
   id: number;
   subject: string;
@@ -10,9 +12,17 @@ type ManifestRecord = {
   source_sha256: string;
   source_chars: number;
   source_words: number;
-  review_flag: 'HIGH_SHORT_SOURCE' | 'SHORT_SOURCE_REVIEW' | 'CONTENT_PRESENT';
+  review_flag: ReviewFlag;
 };
-
+type ResearchedRecord = {
+  stable_key: string;
+  subject: string;
+  term: string;
+  order_index: number;
+  title: string;
+  source_sha256: string;
+  source_file: string;
+};
 type Primary4Topic = {
   id?: unknown;
   school_code?: unknown;
@@ -22,6 +32,7 @@ type Primary4Topic = {
   order_index?: unknown;
   title?: unknown;
   source_reference?: unknown;
+  source_file?: unknown;
   summary?: unknown;
   generated_assessment_id?: unknown;
   [key: string]: unknown;
@@ -30,56 +41,112 @@ type Primary4Topic = {
 const records = new Map<number, ManifestRecord>(
   (manifestData as { records: ManifestRecord[] }).records.map(record => [record.id, record]),
 );
-const normalize = (value: unknown) => String(value ?? '').replace(/\\s+/g, ' ').trim().toLocaleLowerCase('en');
 const sha256 = (value: string) => createHash('sha256').update(value, 'utf8').digest('hex');
+const normalize = (value: unknown) => String(value ?? '').replace(/\s+/g, ' ').trim().toLocaleLowerCase('en');
+
+// The same source-reference formatter is used by the existing ingestTopics.ts
+// pipeline and by student delivery, so the stored source text must match exactly.
+const researchedRecords = new Map<string, ResearchedRecord>();
+let researchedRegistryUnavailable = false;
+try {
+  for (const record of getPrimary4SupplementRecords()) {
+    researchedRecords.set(record.stable_key, {
+      stable_key: record.stable_key,
+      subject: record.subject_name,
+      term: record.term_label,
+      order_index: record.order_index,
+      title: record.title,
+      source_sha256: sha256(record.source_reference),
+      source_file: record.source_file,
+    });
+  }
+} catch (error) {
+  // A malformed researched package must not take down existing Primary 4 lessons
+  // or the shared learning route. It only disables researched-package delivery.
+  researchedRegistryUnavailable = true;
+}
 
 export type Primary4SourceDelivery =
-  | { source: 'primary4-export'; kind: 'matched'; topicId: number; text: string; sourceHash: string; reviewRequired: boolean; reviewFlag: ManifestRecord['review_flag'] }
-  | { source: 'primary4-export'; kind: 'withheld'; topicId: number | null; text: string; reason: string };
+  | { source: 'primary4-export' | 'researched-package'; kind: 'matched'; topicId: number; text: string; sourceHash: string; reviewRequired: boolean; reviewFlag: ReviewFlag }
+  | { source: 'primary4-export' | 'researched-package'; kind: 'withheld'; topicId: number | null; text: string; reason: string };
 
 function isPrimary4(topic: Primary4Topic): boolean {
   return topic.school_code === 'primary' && normalize(topic.class_name) === 'primary 4';
 }
 
-/** Bind the live topic row to the exact source_reference captured in the supplied export.
- * This verifies export integrity only; it does not claim the original Word file was re-hashed.
+function pendingApproval(source: string): boolean {
+  const approval = /Content approval:\s*([A-Z_]+)/.exec(source)?.[1];
+  const verification = /Pedagogical verification:\s*([A-Z_]+)/.exec(source)?.[1];
+  return approval !== 'APPROVED' || verification !== 'VERIFIED';
+}
+
+/** Bind a live Primary 4 row to either the read-only export or a deterministic
+ * researched package. Export hashes prove export-text identity only; they do
+ * not claim that original Word files were independently re-hashed.
  */
 export function resolvePrimary4SourceDelivery(topic: Primary4Topic): Primary4SourceDelivery | null {
   if (!isPrimary4(topic)) return null;
   const id = Number(topic.id);
-  const record = Number.isSafeInteger(id) ? records.get(id) : undefined;
-  const withheld = (reason: string): Primary4SourceDelivery => ({
-    source: 'primary4-export',
+  const topicId = Number.isSafeInteger(id) ? id : null;
+  const source = typeof topic.source_reference === 'string' ? topic.source_reference : '';
+  const withheld = (reason: string, source: 'primary4-export' | 'researched-package' = 'primary4-export'): Primary4SourceDelivery => ({
+    source,
     kind: 'withheld',
-    topicId: Number.isSafeInteger(id) ? id : null,
-    text: '[PRIMARY 4 SOURCE WITHHELD] This topic is temporarily unavailable because its curriculum source does not match the reviewed database export.',
+    topicId,
+    text: '[PRIMARY 4 SOURCE WITHHELD] This topic is temporarily unavailable because its curriculum source is missing, changed or still awaiting approval and verification.',
     reason,
   });
-  if (!record) return withheld('No matching Primary 4 export record');
-  if (normalize(topic.subject_name) !== normalize(record.subject) ||
-      normalize(topic.term_label) !== normalize(record.term) ||
-      Number(topic.order_index) !== record.order_index ||
-      normalize(topic.title) !== normalize(record.title)) {
-    return withheld('Topic identity differs from the exported record');
+  if (!source.trim()) return withheld('Curriculum source text is missing');
+
+  const original = topicId === null ? undefined : records.get(topicId);
+  if (original) {
+    if (normalize(topic.subject_name) !== normalize(original.subject) ||
+        normalize(topic.term_label) !== normalize(original.term) ||
+        Number(topic.order_index) !== original.order_index ||
+        normalize(topic.title) !== normalize(original.title)) {
+      return withheld('Topic identity differs from the exported record');
+    }
+    const sourceHash = sha256(source);
+    if (sourceHash !== original.source_sha256) return withheld('Source text hash differs from the exported record');
+    return {
+      source: 'primary4-export',
+      kind: 'matched',
+      topicId: topicId!,
+      text: source,
+      sourceHash,
+      reviewRequired: original.review_flag !== 'CONTENT_PRESENT',
+      reviewFlag: original.review_flag,
+    };
   }
-  if (typeof topic.source_reference !== 'string' || !topic.source_reference.trim()) {
-    return withheld('Exported source text is missing');
+
+  const stableKey = /^CURRICULUM_KEY:\s*([^\s]+)/m.exec(source)?.[1];
+  if (!stableKey) return withheld('No matching Primary 4 export or researched-package identity');
+  const researched = researchedRecords.get(stableKey);
+  if (researchedRegistryUnavailable) return withheld('Researched lesson package is temporarily unavailable while its content is checked', 'researched-package');
+  if (!researched) return withheld('Researched-package key is not registered', 'researched-package');
+  if (normalize(topic.subject_name) !== normalize(researched.subject) ||
+      normalize(topic.term_label) !== normalize(researched.term) ||
+      normalize(topic.source_file) !== normalize(researched.source_file) ||
+      Number(topic.order_index) !== researched.order_index ||
+      normalize(topic.title) !== normalize(researched.title)) {
+    return withheld('Researched-package topic identity differs from its registered lesson', 'researched-package');
   }
-  const sourceHash = sha256(topic.source_reference);
-  if (sourceHash !== record.source_sha256) return withheld('Source text hash differs from the exported record');
+  const sourceHash = sha256(source);
+  if (sourceHash !== researched.source_sha256) return withheld('Researched-package source hash mismatch', 'researched-package');
+  if (pendingApproval(source)) return withheld('Researched lesson is pending owner approval and independent verification', 'researched-package');
   return {
-    source: 'primary4-export',
+    source: 'researched-package',
     kind: 'matched',
-    topicId: id,
-    text: topic.source_reference,
+    topicId: topicId!,
+    text: source,
     sourceHash,
-    reviewRequired: record.review_flag !== 'CONTENT_PRESENT',
-    reviewFlag: record.review_flag,
+    reviewRequired: false,
+    reviewFlag: 'RESEARCHED_VERIFIED',
   };
 }
 
-/** Hide cached teaching and assessment links if the stored source has drifted.
- * Short source notes remain available but are explicitly flagged during lesson delivery.
+/** Hide cached teaching and assessment links if the stored source has drifted
+ * or a researched lesson has not passed owner approval and verification.
  */
 export function safePrimary4Topic<T extends Primary4Topic>(topic: T): T {
   const delivery = resolvePrimary4SourceDelivery(topic);
@@ -90,20 +157,22 @@ export function safePrimary4Topic<T extends Primary4Topic>(topic: T): T {
       source_reference: null,
       summary: null,
       generated_assessment_id: null,
-      primary4_delivery: { status: 'withheld' },
+      description: 'This Primary 4 lesson is being checked. It will become available after its curriculum source is approved and verified.',
+      primary4_delivery: { status: 'withheld', source: delivery.source },
     } as T;
   }
   return {
     ...topic,
     primary4_delivery: {
-      status: 'source-export-match',
+      status: delivery.source === 'primary4-export' ? 'source-export-match' : 'researched-package-match',
+      source: delivery.source,
       source_review_required: delivery.reviewRequired,
       source_review_flag: delivery.reviewFlag,
     },
   } as T;
 }
 
-/** Exclude stale generated assessments whose Primary 4 source no longer matches the export. */
+/** Exclude stale generated assessments whose Primary 4 source no longer matches an approved source. */
 export async function primary4WithdrawnAssessmentIds(
   query: (sql: string, params?: unknown[]) => Promise<{ rows: any[] }>,
   assessmentIds: Array<string | number>,

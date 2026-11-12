@@ -27,7 +27,8 @@
     "test:ss1:french": "node --import tsx --test ../tests/ss1/french.package.test.mts ../tests/ss1/french.delivery.test.mts ../tests/ss1/french.runtime.test.mts ../tests/ss1/french.audio.test.mts && node --import tsx src/db/ss1/validateSubjectPackages.ts french",
     "test:ss1:mathematics": "node --import tsx --test ../tests/ss1/mathematics.package.test.mts ../tests/ss1/mathematics.delivery.test.mts && node --import tsx src/db/ss1/validateSubjectPackages.ts mathematics",
     "test:ss1:literature": "node --import tsx --test ../tests/ss1/literature.package.test.mts ../tests/ss1/literature.delivery.test.mts && node --import tsx src/db/ss1/validateSubjectPackages.ts literature",
-    "test:primary4": "node --import tsx --test ../tests/primary4/source-delivery.test.mts"
+    "test:primary4": "node --import tsx --test ../tests/primary4/source-delivery.test.mts ../tests/primary4/home-economics-package.test.mts ../tests/primary4/home-economics-term3.test.mts ../tests/primary4/basic-science-term3.test.mts ../tests/primary4/basic-technology-terms1-2.test.mts ../tests/primary4/primary4-ingestion.test.mts ../tests/primary4/coverage-report.test.mts",
+    "audit:primary4": "node --import tsx src/db/primary4/buildPrimary4CoverageReport.ts"
   },
   "dependencies": {
     "@google/genai": "^1.48.0",

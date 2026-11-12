@@ -98,6 +98,7 @@ import {
   applyJss3SecondTermSourceTextResolution,
   resolveJss3SecondTermParsedTopic,
 } from './jss3SecondTermResolutions.js';
+import { assertPrimary4SupplementCorpus, buildPrimary4SupplementRows, primary4SupplementApprovalIssues } from './primary4/primary4Supplements.js';
 import {
   JSS3_EXCLUDED_SUBJECTS,
   JSS3_THIRD_TERM_REVIEWED_SOURCES,
@@ -483,10 +484,12 @@ export function parseTopics(text: string): ParsedTopic[] {
 interface Row {
   filePath: string; className: string; termLabel: string; subjectName: string;
   weekLabel: string; orderIndex: number; title: string; sourceReference: string;
+  preserveOrderIndex?: true;
 }
 
 function parseArgs(argv: string[]) {
   const yes = argv.includes('--yes');
+  const primary4Supplements = argv.includes('--primary4-supplements');
   const rootIdx = argv.indexOf('--root');
   const scIdx = argv.indexOf('--school-code');
   const termIdx = argv.indexOf('--default-term');
@@ -495,14 +498,14 @@ function parseArgs(argv: string[]) {
   const schoolCode = scIdx >= 0 ? argv[scIdx + 1] : undefined;
   const defaultTerm = termIdx >= 0 ? argv[termIdx + 1] : undefined;
   const ss1SubjectSlug = subjectIdx >= 0 ? argv[subjectIdx + 1] : undefined;
-  return { root, schoolCode, yes, defaultTerm, ss1SubjectSlug };
+  return { root, schoolCode, yes, defaultTerm, ss1SubjectSlug, primary4Supplements };
 }
 
 async function main() {
-  const { root, schoolCode, yes, defaultTerm, ss1SubjectSlug } = parseArgs(process.argv.slice(2));
+  const { root, schoolCode, yes, defaultTerm, ss1SubjectSlug, primary4Supplements } = parseArgs(process.argv.slice(2));
   if (!root || !schoolCode || !['primary', 'secondary'].includes(schoolCode)) {
     console.log(`Usage:
-  npx tsx src/db/ingestTopics.ts --root <path> --school-code primary|secondary [--default-term "1st Term"] [--ss1-reviewed --ss1-plan <output> [--ss1-subject-slug <slug>]] [--jss3-supplements] [--yes]
+  npx tsx src/db/ingestTopics.ts --root <path> --school-code primary|secondary [--default-term "1st Term"] [--ss1-reviewed --ss1-plan <output> [--ss1-subject-slug <slug>]] [--jss3-supplements] [--primary4-supplements] [--yes]
 
 --default-term is used ONLY for files whose path gives no term clue at all
 (e.g. a standalone file not organized into a "1st/2nd/3rd Term" folder) —
@@ -526,6 +529,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   if (ss1PlanIndex >= 0 && (!ss1Reviewed || !ss1PlanPath || ss1PlanPath.startsWith('--'))) throw new Error('--ss1-plan requires --ss1-reviewed and a new output filename');
   if (ss1SubjectSlug && (!ss1Reviewed || !/^[a-z0-9-]+$/.test(ss1SubjectSlug))) throw new Error('--ss1-subject-slug requires --ss1-reviewed and a valid package slug');
   if (ss1Reviewed && schoolCode !== 'secondary') throw new Error('SS1 reviewed packages require --school-code secondary.');
+  if (primary4Supplements && schoolCode !== 'primary') throw new Error('--primary4-supplements requires --school-code primary.');
   if (ss1Reviewed && yes && !ss1PlanPath) throw new Error('SS1 reviewed import requires --ss1-plan <new-output-file> so the exact release plan is preserved before database writes.');
 
   const unsupported: string[] = [];
@@ -911,13 +915,39 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     }
   }
 
+  // Primary 4 researched packages enter through this existing ingestion pipeline.
+  // Dry runs may display pending content; --yes is blocked until approval and verification.
+  if (primary4Supplements) {
+    try {
+      assertPrimary4SupplementCorpus();
+      const supplements = buildPrimary4SupplementRows(rows, root, schoolCode);
+      rows.push(...supplements);
+      console.log(`\nPRIMARY 4 RESEARCHED SUPPLEMENTS: ${supplements.length} rows appended to the source audit.`);
+      const approvalIssues = primary4SupplementApprovalIssues();
+      if (approvalIssues.length) {
+        console.log('PRIMARY 4 SUPPLEMENT APPROVAL GATE — dry-run only; --yes is blocked:');
+        for (const issue of approvalIssues) console.log(`  ${issue}`);
+        if (yes) errors.push({ file: '__primary4_supplements__', error: 'Owner approval and independent pedagogical verification are required before --yes.' });
+      }
+    } catch (e: any) {
+      errors.push({ file: '__primary4_supplements__', error: e.message });
+    }
+  }
+
   // One sequence per complete bucket, retaining stable file/section/topic order.
   const bucketKey = (r: Row) => JSON.stringify([r.className, r.subjectName, r.termLabel]);
   const normalRows = rows.filter(r => r.className !== 'SS 3');
   const examRows = rows.filter(r => r.className === 'SS 3');
   const nextOrder = new Map<string, number>();
+  const preservedSequenceErrors: string[] = [];
   for (const r of normalRows) {
     const key = bucketKey(r);
+    if (r.preserveOrderIndex) {
+      const expected = (nextOrder.get(key) ?? 0) + 1;
+      if (r.orderIndex !== expected) preservedSequenceErrors.push(`${sourceIdentity(r.filePath)}: expected append order #${expected}, received #${r.orderIndex}`);
+      nextOrder.set(key, r.orderIndex);
+      continue;
+    }
     r.orderIndex = (nextOrder.get(key) ?? 0) + 1;
     nextOrder.set(key, r.orderIndex);
   }
@@ -1074,6 +1104,10 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     console.log(`\nDUPLICATE normalized content: ${contentLabels.get(key)}`);
     for (const file of files) console.log(`  ${file}`);
   }
+  if (preservedSequenceErrors.length > 0) {
+    console.log(`\nPreserved supplement sequence conflict: ${preservedSequenceErrors.length}`);
+    for (const item of preservedSequenceErrors) console.log(`  ${item}`);
+  }
   if (jss3Gate.length > 0) {
     console.log(`\nJSS3 Third-Term reconciliation gate FAILED: ${jss3Gate.length}`);
     for (const item of jss3Gate) console.log(`  ${item}`);
@@ -1108,7 +1142,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   }
   const blocked = unmappedClass.size + classFolderConflicts.size + crossClassDuplicates.size + missingTerm.size + noWeekMarkers.length + errors.length
     + unsupported.length + fallbackSubjects.size + duplicates.length + identityCollisions.length
-    + subjectConflicts.size + suspiciousTopics.size + jss3Gate.length;
+    + subjectConflicts.size + suspiciousTopics.size + jss3Gate.length + preservedSequenceErrors.length;
   if (blocked || jss3PendingGate.length > 0 || allFiles.length === 0) {
     console.log(`\nAUDIT BLOCKED — resolve the reported conditions before import. No database changes made.${allFiles.length === 0 ? ' No supported source files found.' : ''}`);
     process.exitCode = 1;

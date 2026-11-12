@@ -777,7 +777,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   if (primary4Delivery?.kind === 'withheld') {
     return res.json({ ok: true, summary: primary4Delivery.text, summary_is_fallback: false,
       practice_questions: [], assessment_status: null,
-      delivery_correction: { id: String(primary4Delivery.topicId ?? req.params.id), status: 'withheld', provenance: 'source does not match supplied database export' },
+      delivery_correction: { id: String(primary4Delivery.topicId ?? req.params.id), status: 'withheld', provenance: primary4Delivery.source === 'researched-package' ? 'researched lesson package pending owner approval/verification or source identity check' : 'source does not match supplied database export' },
       note: 'This Primary 4 topic is temporarily unavailable while its curriculum source is checked.' });
   }
   if (primary4Delivery?.kind === 'matched') topic.source_reference = primary4Delivery.text;
@@ -937,7 +937,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
     ok: true,
     summary,
     summary_is_fallback,
-    delivery_correction: primary4Delivery?.kind === 'matched' ? { id: String(primary4Delivery.topicId), status: 'source-export-match', provenance: 'source_reference hash matches the supplied database export' } : ss1Delivery ? { id: ss1Delivery.correctionId, status: ss1Delivery.kind, provenance: ss1Delivery.kind === 'corrected' ? 'approved project-authored correction' : 'withheld pending source review' } : delivery ? { id: delivery.correctionId, status: delivery.kind, provenance: 'corrected/equivalent teaching' } : undefined,
+    delivery_correction: primary4Delivery?.kind === 'matched' ? { id: String(primary4Delivery.topicId), status: primary4Delivery.source === 'primary4-export' ? 'source-export-match' : 'researched-package-match', provenance: primary4Delivery.source === 'primary4-export' ? 'source_reference hash matches the supplied database export' : 'source_reference hash matches an approved researched lesson package' } : ss1Delivery ? { id: ss1Delivery.correctionId, status: ss1Delivery.kind, provenance: ss1Delivery.kind === 'corrected' ? 'approved project-authored correction' : 'withheld pending source review' } : delivery ? { id: delivery.correctionId, status: delivery.kind, provenance: 'corrected/equivalent teaching' } : undefined,
     practice_questions,
     assessment_status,
     note: [

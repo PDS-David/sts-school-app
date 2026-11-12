@@ -22,6 +22,7 @@ test('Primary 4 export manifest records 248 unique topic identities across the 1
 test('source delivery matches exact Primary 4 identity and source fingerprint', () => {
   const result = resolvePrimary4SourceDelivery(baseTopic);
   assert.equal(result?.kind, 'matched');
+  assert.equal(result?.source, 'primary4-export');
   if (result?.kind === 'matched') {
     assert.equal(result.topicId, 208);
     assert.equal(result.reviewRequired, true);
