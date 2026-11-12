@@ -200,3 +200,12 @@ The available image72–image75 parts do not match the point labels used in the 
 
 These are source-image/text pairing defects. Do not infer the correct multiple-choice option from a visually similar but differently labelled diagram. Obtain the original page/vector artwork or a corrected mapping before enabling these four items.
 
+
+## Original replacement pentagon exercises
+
+The original source pentagon prompts are under-specified. Two fully specified original alternatives have been added to the Week Eight–Nine lesson:
+
+1. Coordinate-defined pentagon A(0,0), B(70,0), C(90,40), D(50,80), E(0,60) mm. Shoelace sums are 13,000 and 2,000, giving area 5,500 mm². The equal-area square side is √5,500≈74.16 mm and its diagonal is approximately 104.88 mm.
+2. Fully dimensioned pentagon using AB=30, AD=70, BD=60, BC=40, CD=35, DE=55 mm and angle DEA=90°. AE=√(70²−55²)≈43.30 mm. This is a new explicit data set; it is not a claim that the Week Eight source image65 contains AD=70 or BD=60.
+
+Each replacement includes a construction sequence and positive-integer marking criteria. The original source assessment remains unchanged and is still not uniquely solvable without its missing data.
