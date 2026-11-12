@@ -8,6 +8,6 @@ Review:
 - The drink-production example mixes litre variables with profit per gramme; replacement treats 10k/15k as per-litre coefficients only as a stated assumption and leaves the unit for teacher confirmation. Its constraints 2x+4y≤16 and 3x+5y≤21. The feasible x-axis endpoint is 7 (not 8), and the feasible vertices are (0,0),(7,0),(2,3),(0,4); the maximum profit is 70k at (7,0). The replacement explains the feasibility check.
 - The dress and detergent LP examples were recomputed; optima remain (2,3) with profit 13 and (4,6) with profit 14 respectively.
 - Some source evaluations repeat Week Three material or switch to quadratic inequalities; they are not treated as Week Four linear-programming objectives.
-- Source graph images have not yet been visually inspected.
+- Rendered source pages 14–19 contain blank graph areas. Five original SVGs now provide half-plane shading, the simultaneous feasible triangle and three LP feasible regions; SVG safety/app rendering remains pending.
 
 Replacement `SUP-SS1-FURTHER-MATHEMATICS-T2-W04-TWO-VARIABLE-INEQUALITIES-LP`: 4 objectives; 10 questions; 31 marks. Coverage COV-FM-T2-W04-OBJ-1..3 added; row COV-FM-T2-R03 linked. Approval PENDING; verification DEFERRED.
