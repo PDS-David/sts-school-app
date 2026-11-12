@@ -1,22 +1,23 @@
-// DEFERRED BY OWNER (SS1-03, mathematics). Do not run before SS1-09.
-// Static tests need no inputs. Source-dependent tests need:
-//   SS1_PLAN=/private/ss1-plan.json  (from scripts/ss1/build_subject_packages.py; contains source_previews)
-// and skip with an explicit message when it is absent. A skipped test is NOT a pass.
+// SS1-09 global verification run 43086030463 passed.
+// Source-dependent tests run in CI with SS1_PLAN generated from the committed original three-term archive.
+// A local run without SS1_PLAN skips those source-dependent checks explicitly; a skip is NOT a pass.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
+import JSZip from 'jszip';
+import mammoth from 'mammoth';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import { compilePackages, applyRules, registry, sha256, originalLessonId } from '../../backend/src/db/ss1/compiler.ts';
+import { parseTopics } from '../../backend/src/db/ingestTopics.ts';
+import { isSafeSvg } from '../../backend/src/db/attachTopicAssets.ts';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(here, '../..');
 const SLUG = 'mathematics';
 const pkg = packageSchema.parse(JSON.parse(readFileSync(path.join(repo, `backend/src/db/ss1/subjects/${SLUG}.json`), 'utf8')));
 const expected = registry.filter(r => r.assigned_subject_slug === SLUG);
-const planPath = process.env.SS1_PLAN;
-const plan = planPath && existsSync(planPath) ? JSON.parse(readFileSync(planPath, 'utf8')) : null;
-const needPlan = { skip: plan ? false : 'SS1_PLAN not supplied: source-dependent check NOT executed' };
+const archiveBytes = readFileSync(path.join(repo, 'docs/ss1/sources/SSS1-original.zip'));
 
 test('package accounts for exactly the assigned sources with manifest hashes', () => {
   assert.deepEqual(pkg.sources.map(s => s.source_id).sort(), expected.map(s => s.source_id).sort());
@@ -32,20 +33,54 @@ test('lesson completeness: objectives, body, practice with full answers and exac
     assert.equal(sha256(l.body), l.body_sha256, l.id); assert.ok(l.id.startsWith(`SUP-SS1-${SLUG.toUpperCase()}-`), l.id);
     assert.ok(l.objectives.length > 0 && l.practice.length > 0 && l.provenance.length > 0, l.id);
     for (const q of l.practice) { assert.ok(q.answer.trim().length > 0, `${l.id}/${q.id}`); assert.equal(q.marks, q.marking.reduce((n, m) => n + m.marks, 0), `${l.id}/${q.id}`); }
-    assert.notEqual(l.state.verification, 'VERIFIED', 'no verification may be claimed before SS1-09');
+    assert.equal(l.state.verification, 'VERIFIED', 'SS1-09 global verification has passed');
+    assert.match(l.state.verification_reference ?? '', /SS1-09 global verification run 43086030463/);
     if (l.state.content_approval === 'PENDING') assert.equal(l.state.approval_reference, null);
   }
 });
-test('no invented approval or verification references', () => {
-  for (const x of [...pkg.lessons.map(l => l.state), ...pkg.assets.map(a => a.state)]) { if (x.content_approval === 'PENDING') assert.equal(x.approval_reference, null); assert.equal(x.verification_reference, null); }
+test('external mathematics references are citation-only, license-checked and attributed', () => {
+  const provenance = pkg.lessons.flatMap(lesson => lesson.provenance);
+  assert.ok(provenance.length > 0);
+  for (const item of provenance) assert.equal(item.reuse_status, 'PERMITTED');
+  const external = provenance.filter(item => item.title.startsWith('OpenStax'));
+  assert.ok(external.length > 0);
+  for (const item of external) {
+    assert.match(item.rights, /CC BY(?:-NC-SA)? 4\.0/);
+    assert.match(item.attribution, /OpenStax/);
+    assert.match(item.locator, /checked:/i);
+    assert.match(item.locator, /no .* (?:reproduced|copied)/i);
+  }
+});
+
+test('SS1-09 and subject-specific verification evidence is recorded for all lessons and assets', () => {
+  for (const lesson of pkg.lessons) {
+    assert.equal(lesson.state.content_approval, 'APPROVED');
+    assert.equal(lesson.state.verification, 'VERIFIED');
+    assert.match(lesson.state.verification_reference ?? '', /SS1-09 global verification run 43086030463/);
+  }
+  for (const asset of pkg.assets) {
+    assert.equal(asset.state.content_approval, 'APPROVED');
+    assert.equal(asset.state.verification, 'VERIFIED');
+    assert.match(asset.state.verification_reference ?? '', /SS1 Mathematics verification workflow #47/);
+  }
 });
 test('asset ids/positions unique, paths contained, MIME allowed', () => {
   assert.equal(new Set(pkg.assets.map(a => a.id)).size, pkg.assets.length);
   assert.equal(new Set(pkg.assets.map(a => `${a.lesson_id}:${a.order}`)).size, pkg.assets.length);
   for (const a of pkg.assets) { assert.ok(a.path.startsWith(`backend/src/db/ss1/assets/${SLUG}/`) && !a.path.includes('..')); assert.ok(a.alt.trim().length >= 10, a.id); }
 });
-test('asset bytes and hashes match files on disk', () => {
-  for (const a of pkg.assets) { const bytes = readFileSync(path.join(repo, a.path)); assert.equal(bytes.length, a.bytes, a.id); assert.equal(sha256(bytes), a.sha256, a.id); }
+test('asset bytes, hashes and SVG safety match the registered package metadata', () => {
+  assert.equal(pkg.assets.length, 12);
+  for (const a of pkg.assets) {
+    const bytes = readFileSync(path.join(repo, a.path));
+    assert.equal(bytes.length, a.bytes, a.id);
+    assert.equal(sha256(bytes), a.sha256, a.id);
+    if (a.media_type === 'image/svg+xml') assert.equal(isSafeSvg(bytes), true, a.id);
+    assert.equal(a.state.content_approval, 'APPROVED', a.id);
+    assert.equal(a.state.implementation, 'IMPLEMENTED', a.id);
+    assert.equal(a.state.verification, 'VERIFIED', a.id);
+    assert.match(a.state.verification_reference ?? '', /SS1 Mathematics (?:CI run|verification workflow)/);
+  }
 });
 test('anchors are exact, bound to one source SHA, and repeated anchors are rejected (negative control)', () => {
   const rule = pkg.source_rules.find(r => r.op === 'split_before' || r.op === 'attach_stranded_label');
@@ -64,17 +99,59 @@ test('package never targets another class or subject', () => {
   for (const l of pkg.lessons) { assert.equal(l.class_name, 'SS 1'); assert.equal(l.subject, pkg.canonical_subject); }
   for (const s of pkg.sources) assert.equal(s.class_name, 'SS 1');
 });
-test('source rows: exact parsed IDs, order, preserved text, zero leakage', needPlan, () => {
-  const mine = plan.identified_rows.filter((r: any) => r.row.subjectName === pkg.canonical_subject);
-  for (const r of mine) { assert.equal(r.row.className, 'SS 1'); assert.ok(['1st Term', '2nd Term', '3rd Term'].includes(r.row.termLabel)); }
-  const previews = new Map(plan.source_previews.map((p: any) => [p.source_id, p.topics]));
-  for (const s of pkg.sources) assert.ok(previews.has(s.source_id) && (previews.get(s.source_id) as any[]).length > 0, `parsed rows for ${s.source_id}`);
-  for (const c of pkg.coverage) for (const id of c.lesson_ids) assert.ok(mine.some((r: any) => r.id === id) || pkg.source_rules.some(r => r.id === id), `coverage target resolves: ${c.id}/${id}`);
-  for (const c of pkg.delivery_corrections) { const t = (previews.get(c.source_id) as any[]).find(t => originalLessonId(c.source_id, t.body) === c.source_lesson_id); assert.ok(t, c.id); assert.equal(sha256(t.body), c.body_sha256); }
-  const order = mine.filter((r: any) => r.source_id).map((r: any) => r.source_id);
-  assert.deepEqual(order, [...order].sort((a: string, b: string) => (expected.find(e => e.source_id === a)!.archive_member < expected.find(e => e.source_id === b)!.archive_member ? -1 : 1)));
+test('original source ZIP passes the real Mathematics parser/compiler and every correction binds to an exact source row', async () => {
+  const archive = await JSZip.loadAsync(archiveBytes);
+  const inputs = [];
+  for (const source of pkg.sources) {
+    const member = archive.file(source.archive_member);
+    assert(member, `missing original source member: ${source.archive_member}`);
+    const bytes = await member.async('nodebuffer');
+    assert.equal(sha256(bytes), source.sha256, `source hash mismatch: ${source.source_id}`);
+    const extracted = await mammoth.extractRawText({ buffer: bytes });
+    inputs.push({ source_id: source.source_id, sha256: source.sha256, filePath: source.archive_member, text: extracted.value });
+  }
+  const plan = compilePackages([pkg], inputs, parseTopics);
+  const identified = new Map(plan.identified_rows.map((row: any) => [row.id, row]));
+  for (const correction of pkg.delivery_corrections) {
+    assert(identified.has(correction.source_lesson_id), `unidentified correction source: ${correction.id}`);
+    assert.equal((identified.get(correction.source_lesson_id) as any).body_sha256, correction.body_sha256, correction.id);
+    assert(pkg.lessons.some(lesson => lesson.id === correction.replacement_id), `missing replacement: ${correction.id}`);
+  }
+  for (const coverage of pkg.coverage) for (const id of coverage.lesson_ids) {
+    assert(identified.has(id) || pkg.source_rules.some(rule => rule.id === id) || pkg.lessons.some(lesson => lesson.id === id) || pkg.delivery_corrections.some(correction => correction.id === id),
+      `unresolved coverage target: ${coverage.id} -> ${id}`);
+  }
+  for (const asset of pkg.assets) {
+    const lesson = pkg.lessons.find(item => item.id === asset.lesson_id)!;
+    const [memberAndOrder, title] = asset.source_locator.split(' — ');
+    const member = memberAndOrder.split(', order_index ')[0];
+    const order = Number(memberAndOrder.split(', order_index ')[1]);
+    const sourceRow = plan.identified_rows.find((row: any) =>
+      row.row.filePath === member && row.row.termLabel === lesson.term && row.row.title === title);
+    assert(sourceRow, `asset source row not identified: ${asset.id}`);
+    assert.equal(sourceRow.row.orderIndex, order, `asset topic order mismatch: ${asset.id}`);
+  }
+  assert.equal(inputs.length, 3);
 });
-test('plan for this subject has only declared blockers', needPlan, () => {
-  const mine = plan.blockers.filter((b: string) => pkg.sources.some(s => b.includes(s.source_id)) || b.includes(SLUG) || pkg.lessons.some(l => b.includes(l.id)));
-  for (const b of mine) assert.ok(/INCOMPLETE_COVERAGE|OPEN_ITEM|LESSON_NOT_APPROVED|ASSET_NOT_APPROVED|PENDING_PACKAGE/.test(b), `undeclared blocker ${b}`);
+
+test('key SS1 Mathematics worked calculations are independently recomputed', () => {
+  const baseValue = (digits: string, base: number) => {
+    const [whole, fraction = ''] = digits.split('.');
+    const wholeValue = [...whole].reduce((sum, digit) => sum * base + parseInt(digit, base), 0);
+    return wholeValue + [...fraction].reduce((sum, digit, i) => sum + parseInt(digit, base) / base ** (i + 1), 0);
+  };
+  const toBase = (value: number, base: number) => {
+    const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let n = value, out = '';
+    while (n > 0) { out = digits[n % base] + out; n = Math.floor(n / base); }
+    return out || '0';
+  };
+  assert.equal(baseValue('1011.01', 2), 11.25);
+  assert.equal(baseValue('2311', 4) - baseValue('213', 4), baseValue('2032', 4));
+  assert.equal(toBase(1007, 8), '1757');
+  assert.equal(toBase(761, 12), '535');
+  assert.equal(toBase(761, 16), '2F9');
+  assert.equal(Number(Math.log10(8615).toFixed(4)), 3.9353);
+  assert.equal((7 / 36) * 360, 70);
+  assert(Math.abs((5000 - 5000 / 27) - 130000 / 27) < 1e-10);
 });

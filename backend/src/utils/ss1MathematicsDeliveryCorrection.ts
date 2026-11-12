@@ -1,5 +1,7 @@
 import { createHash } from 'node:crypto';
 import path from 'node:path';
+import { readFileSync, existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import packageData from '../db/ss1/subjects/mathematics.json' with { type: 'json' };
 import { packageSchema, type SubjectPackage } from '../db/ss1/subjectPackageSchema.js';
 
@@ -39,6 +41,8 @@ const SOURCE_TITLES: Record<string, string> = {
   'CORR-MATHEMATICS-T3-W09-GROUPED-DATA': 'Calculation of Range, Median and Mode of Grouped data',
   'CORR-MATHEMATICS-T3-3-09': 'Statistical Graphs',
   'CORR-MATHEMATICS-T3-3-10': 'Mean Deviation, Variance and standard Deviation of Grouped Data use in solving practical problems related to real life situations',
+  'CORR-MATHEMATICS-T3-W03-TRIANGLE-CONSTRUCTIONS': 'Revision of Construction of Triangle',
+  'CORR-MATHEMATICS-T3-W04-GEOMETRICAL-CONSTRUCTIONS': 'CONSTRUCTIONS',
 };
 export interface Ss1MathematicsTopic {
   id?: unknown; school_code?: unknown; class_name?: unknown; subject_name?: unknown;
@@ -75,7 +79,7 @@ function lessonGate(pkg: SubjectPackage, correction: SubjectPackage['delivery_co
   if (blockers.length) return `This Mathematics topic is awaiting resolution of: ${blockers.map(item => item.id).join(', ')}.`;
   if (lesson.state.implementation !== 'IMPLEMENTED') return 'The Mathematics replacement lesson has not completed implementation.';
   if (lesson.state.content_approval !== 'APPROVED' || !lesson.state.approval_reference) return 'The Mathematics replacement lesson is awaiting owner/content approval.';
-  if (lesson.state.verification !== 'VERIFIED' || !lesson.state.verification_reference) return 'The Mathematics replacement lesson has not completed its recorded verification.';
+  if (lesson.state.verification !== 'VERIFIED' || !lesson.state.verification_reference) return 'The Mathematics replacement lesson has not passed the SS1-09 verification gate.';
   if (lesson.provenance.some(source => source.reuse_status !== 'PERMITTED')) return 'The Mathematics replacement lesson has unresolved source-rights permission.';
   return null;
 }
@@ -98,7 +102,7 @@ export function createSs1MathematicsDeliveryResolver(input: SubjectPackage) {
         correction.source_lesson_id !== `${correction.source_id}:BODY:${correction.body_sha256}`) {
       throw new Error(`Invalid SS1 Mathematics correction binding: ${correction.id}`);
     }
-    const text = `${SS1_MATHEMATICS_CORRECTION_MARKER} ${correction.id}\nThe original source row is preserved for audit. This authored replacement is shown only after its scoped approval, verification and source checks pass.\n\n${renderStudentLesson(lesson)}`;
+    const text = `${SS1_MATHEMATICS_CORRECTION_MARKER} ${correction.id}\nThe original source row is preserved for audit. This authored replacement is shown only after its scoped owner approval and exact source checks pass.\n\n${renderStudentLesson(lesson)}`;
     const fingerprint = hash(JSON.stringify({
       id: correction.id, source: correction.body_sha256, lesson,
       blockers: scopedBlockers(pkg, correction).map(item => item.id).sort(),
@@ -152,6 +156,71 @@ const packageValue = packageSchema.parse(packageData);
 const defaultResolver = createSs1MathematicsDeliveryResolver(packageValue);
 export const resolveSs1MathematicsDelivery = (topic: Ss1MathematicsTopic) => defaultResolver(topic);
 
+/** Permit only the exact, approved and verified Mathematics SVG registered in the subject package. */
+export function mathematicsAssetDeliverable(topic: Ss1MathematicsTopic, storedAsset: { asset_key?: unknown; sha256?: unknown; mime?: unknown }) {
+  if (topic.school_code !== SCHOOL_CODE || topic.class_name !== CLASS_NAME ||
+      norm(topic.subject_name) !== norm(SUBJECT_NAME)) return false;
+  const asset = packageValue.assets.find(item => item.id === storedAsset.asset_key);
+  if (!asset || asset.sha256 !== storedAsset.sha256 || asset.media_type !== storedAsset.mime ||
+      asset.state.content_approval !== 'APPROVED' || asset.state.implementation !== 'IMPLEMENTED' ||
+      asset.state.verification !== 'VERIFIED' || asset.provenance.reuse_status !== 'PERMITTED') return false;
+  const lesson = packageValue.lessons.find(item => item.id === asset.lesson_id);
+  if (!lesson || lesson.term !== topic.term_label) return false;
+  const source = packageValue.sources.find(item => item.term === lesson.term);
+  if (!source || path.basename(source.archive_member) !== path.basename(String(topic.source_file ?? ''))) return false;
+  const expectedTitle = asset.source_locator.split(' — ').at(-1)?.trim() ?? '';
+  const orderMatch = asset.source_locator.match(/order_index\s+(\d+)/i);
+  if (!orderMatch) return false;
+  return Number(topic.order_index) === Number(orderMatch[1]) && norm(topic.title) === norm(expectedTitle);
+}
+
+/** Package-backed asset metadata for the exact student topic; no topic_assets row is required. */
+export function mathematicsAssetsForTopic(topic: Ss1MathematicsTopic, suppliedTopicId?: number) {
+  const topicId = Number(suppliedTopicId ?? topic.id);
+  if (!Number.isInteger(topicId) || topicId <= 0) return [];
+  return packageValue.assets
+    .filter(asset => mathematicsAssetDeliverable(topic, {
+      asset_key: asset.id, sha256: asset.sha256, mime: asset.media_type,
+    }))
+    .sort((a, b) => a.order - b.order)
+    .map(asset => ({
+      id: asset.id,
+      asset_key: asset.id,
+      kind: 'diagram',
+      mime: asset.media_type,
+      sha256: asset.sha256,
+      bytes: asset.bytes,
+      caption: asset.source_locator.split(' — ').at(-1)?.trim() ?? asset.id,
+      alt_text: asset.alt,
+      sort_order: asset.order,
+      url: `/learning/mathematics-assets/${encodeURIComponent(asset.id)}?topicId=${topicId}`,
+    }));
+}
+
+export function mathematicsAssetFilePath(assetKey: string) {
+  return packageValue.assets.find(asset => asset.id === assetKey)?.path ?? null;
+}
+
+export function readMathematicsAsset(assetKey: string) {
+  const asset = packageValue.assets.find(item => item.id === assetKey);
+  if (!asset || asset.state.content_approval !== 'APPROVED' ||
+      asset.state.implementation !== 'IMPLEMENTED' || asset.state.verification !== 'VERIFIED' ||
+      asset.provenance.reuse_status !== 'PERMITTED') return null;
+  const fileName = path.basename(asset.path);
+  const moduleDir = path.dirname(fileURLToPath(import.meta.url));
+  const candidates = [
+    path.resolve(process.cwd(), 'src/db/ss1/assets/mathematics', fileName),
+    path.resolve(process.cwd(), 'backend/src/db/ss1/assets/mathematics', fileName),
+    path.resolve(moduleDir, '../db/ss1/assets/mathematics', fileName),
+    path.resolve(moduleDir, '../../src/db/ss1/assets/mathematics', fileName),
+  ];
+  const resolved = candidates.find(candidate => existsSync(candidate));
+  if (!resolved) return null;
+  const bytes = readFileSync(resolved);
+  if (bytes.length !== asset.bytes || hash(bytes.toString('utf8')) !== asset.sha256) return null;
+  return { bytes, mime: asset.media_type, sha256: asset.sha256 };
+}
+
 /** Prevent raw Mathematics source rows (including unresolved weeks) from leaking into student topic lists/details. */
 export function safeSs1MathematicsTopic<T extends Ss1MathematicsTopic>(topic: T): T {
   if (topic.school_code !== SCHOOL_CODE || topic.class_name !== CLASS_NAME ||
@@ -165,7 +234,7 @@ export function safeSs1MathematicsTopic<T extends Ss1MathematicsTopic>(topic: T)
     return {
       ...topic, source_reference: delivery.text, summary: delivery.text, generated_assessment_id: null,
       delivery_correction: { id: delivery.correctionId, status: 'corrected',
-        provenance: 'approved and verified Mathematics replacement lesson' },
+        provenance: 'owner-approved Mathematics replacement lesson' },
     } as T;
   }
   const correctionId = delivery?.correctionId ?? `${source.source_id}:BODY:${hash(topic.source_reference)}`;
@@ -174,7 +243,7 @@ export function safeSs1MathematicsTopic<T extends Ss1MathematicsTopic>(topic: T)
     summary: delivery?.text ?? `${SS1_MATHEMATICS_WITHHELD_MARKER} ${correctionId}\nThis Mathematics source row has no approved, verified student replacement yet.`,
     generated_assessment_id: null,
     delivery_correction: { id: correctionId, status: 'withheld',
-      provenance: 'withheld pending exact source mapping, approval and verification',
+      provenance: 'withheld pending exact source mapping and owner approval',
       reason: delivery?.reason ?? 'No approved replacement is bound to this exact source row' },
   } as T;
 }

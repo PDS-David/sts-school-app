@@ -3,7 +3,7 @@
   "subject": "French",
   "slug": "french",
   "generated_from": {
-    "master_sha": "dd739bba4101c0b1e2f5924863deaaa0b38c27c7",
+    "master_sha": "9645538538c3ecfb3e3df7cd61b3a8250c0e855c",
     "package": "backend/src/db/ss1/subjects/french.json",
     "task": "SS1-02 French (existing package content; queue created by SS1-FR-QUEUE)"
   },
@@ -27,7 +27,10 @@
     "CURRENT-STATE WARNING — 11 November 2026: this queue snapshot was generated from master dd739bba... and its introductory counts/notes are stale. Current master baseline c25c40cd89420d98a990b5ab41beb79873c5e756 has 40 lessons, 28 delivery corrections, 55 coverage records and 8 open items. Do not use the old status_counts or next_runnable to select work until this queue is regenerated. Current correction/objective mapping is recorded in docs/ss1/work/microtasks/french/CORRECTION-OBJECTIVE-EXERCISE-RECONCILIATION-2026-11-11.md.",
     "Additional current-state finding — 11 November 2026: `FRENCH-T1-W02-OBJ-2` was incorrectly labelled IMPLEMENTED_EQUIVALENT despite its own evidence describing only a non-exhaustive three-country example set. It is now PARTIAL and blocking open item FRENCH-T1-W02-ANGLOPHONE-SCOPE records the required evidence or teacher-approved scope correction. Current package totals: 43 IMPLEMENTED_EQUIVALENT, 10 PARTIAL, 2 MARKER; 9 open items. Queue status_counts remain stale and must not be used.",
     "Closure note — 11 November 2026: removed the non-blocking FRENCH-T1-W01-NEIGHBOURS-LANGUAGE-STATUS caution from package open_items. The current neighbour lesson makes no current legal-language-status claim, so the conditional future check was not a current delivery gap. For future reference, Niger's 2025 Charter of Refoundation Article 12 identifies Hausa as the national language and English/French as working languages; source: official Niger Presidency charter page https://presidence.ne/pages/refondation and Journal officiel PDF https://niger.dk/wp-content/uploads/2025/05/Charte-Refondation-26Mars2025.pdf. The stale queue's status_counts remain invalid.",
-    "Current status update — 11 November 2026: the current French package contains 40 lessons, 55 coverage records and 10 open items (9 delivery-blocking). The old status_counts remain stale and must not be used until the queue is regenerated from the current package."
+    "Current status update — 11 November 2026: the current French package contains 40 lessons, 55 coverage records and 10 open items (9 delivery-blocking). The old status_counts remain stale and must not be used until the queue is regenerated from the current package.",
+    "SOFTWARE VERIFICATION RECONCILIATION — 11 November 2026: current master package is IMPLEMENTED with 40 lessons, 55 coverage records (53 IMPLEMENTED_EQUIVALENT, 2 MARKER, zero PARTIAL/UNRESOLVED), 28 corrections, 218 practice items, 715 assessment marks and 10 open package items, all blocks_delivery=false. This supersedes earlier queue notes that described the package as PENDING or reported partial/blocking package coverage. The 122 queue item statuses remain task-level historical work/owner follow-ups (112 IMPLEMENTED_TESTING_DEFERRED, 4 PENDING, 6 BLOCKED); they do not imply package delivery blockers. See audit_snapshot and SOFTWARE-VERIFICATION-2026-11-11.md.",
+    "Automated baseline run #138 passed on the PR #600 commit: archive and member hashes, production parser compilation for all three terms, authored-body hashes, package/schema tests, mobile TypeScript, student-launch static regression and French delivery/cache safety tests. The subsequent audio-content and MP3-integrity tests, backend build and Android Expo bundle export are added in the follow-up verification PR and remain pending its CI result.",
+    "Database integration, importer execution against a database and live student-data checks are intentionally deferred by owner. Physical device playback and classroom oral observation remain human/device verification tasks."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -3620,5 +3623,31 @@
     "FR-COR-001",
     "FR-FACT-T1-W02-HEADS-OF-STATE"
   ],
-  "total": 118
+  "total": 122,
+  "audit_snapshot": {
+    "audited_at": "2026-11-11",
+    "package_path": "backend/src/db/ss1/subjects/french.json",
+    "package_status": "IMPLEMENTED",
+    "lesson_count": 40,
+    "coverage": {
+      "IMPLEMENTED_EQUIVALENT": 53,
+      "MARKER": 2,
+      "PARTIAL": 0,
+      "UNRESOLVED": 0
+    },
+    "correction_bindings": 28,
+    "practice_items": 218,
+    "assessment_marks": 715,
+    "open_package_items": 10,
+    "delivery_blocking_open_package_items": 0,
+    "queue_task_statuses": {
+      "IMPLEMENTED_TESTING_DEFERRED": 112,
+      "PENDING": 4,
+      "BLOCKED": 6
+    },
+    "queue_task_total": 122,
+    "software_verification_report": "docs/ss1/work/microtasks/french/SOFTWARE-VERIFICATION-2026-11-11.md",
+    "note": "Queue task statuses are not package delivery status. Legacy item descriptions may contain historical package counts/states; this audit snapshot is authoritative for current package facts. Database integration is deferred by owner.",
+    "package_blob_sha": "16af331ee3044c72de71fac706ff99231deaea4c"
+  }
 }
