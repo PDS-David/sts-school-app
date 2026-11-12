@@ -18,14 +18,17 @@ test('coverage report distinguishes researched packages from missing term alloca
   assert.equal(find('Home Economics','2nd Term')?.researched_lessons_prepared, 9);
   assert.equal(find('Home Economics','3rd Term')?.researched_lessons_prepared, 7);
   assert.equal(find('Basic Science','3rd Term')?.status, 'RESEARCHED_PROPOSED_TERM_ALLOCATION');
-  assert.equal(find('Basic Technology','1st Term')?.status, 'NO_SEPARATE_TERM_ASSIGNMENT_FOUND');
-  assert.equal(find('Basic Technology','2nd Term')?.status, 'NO_SEPARATE_TERM_ASSIGNMENT_FOUND');
+  assert.equal(find('Basic Technology','1st Term')?.status, 'PROPOSED_LOCAL_ALLOCATION_PENDING_APPROVAL');
+  assert.equal(find('Basic Technology','2nd Term')?.status, 'PROPOSED_LOCAL_ALLOCATION_PENDING_APPROVAL');
+  assert.equal(find('Basic Technology','1st Term')?.researched_lessons_prepared, 4);
+  assert.equal(find('Basic Technology','2nd Term')?.researched_lessons_prepared, 4);
 });
 
-test('coverage report explains why Basic Technology First and Second Terms are not fabricated', () => {
+test('coverage report explains the proposed Basic Technology term allocation and its approval gate', () => {
   const report = buildPrimary4CoverageReport();
   const decision = report.curriculum_decisions.find((item: any) => item.subject === 'Basic Technology');
-  assert.equal(decision.status, 'NEEDS_SCHOOL_TERM_ALLOCATION');
+  assert.equal(decision.status, 'PROPOSED_LOCAL_ALLOCATION_PENDING_APPROVAL');
+  assert.equal(decision.proposed_lesson_count, 8);
   assert.ok(decision.nerdc_source.includes('nerdc.gov.ng'));
   assert.ok(decision.state_scheme_source.includes('2021-Edition.pdf'));
   assert.ok(decision.required_evidence.length > 20);
