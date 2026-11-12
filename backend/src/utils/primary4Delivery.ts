@@ -137,7 +137,7 @@ function archiveCorrectionSourceReference(record: ArchiveCorrection): string {
     '',
     'EVALUATION',
     ...record.evaluation.map((item, index) => `${index + 1}. ${item}`),
-  ].join('\\n');
+  ].join('\n');
 }
 
 function primary4IdentityMatches(topic: Primary4Topic, expected: { subject: string; term: string; order_index: number; title: string }): boolean {
