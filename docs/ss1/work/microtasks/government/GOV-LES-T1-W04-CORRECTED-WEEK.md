@@ -10,7 +10,7 @@
 - Source member SHA-256: `50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a`
 - Original parsed row ID: `SS1-SRC-40ce7dcaf672:BODY:4600502e06ee8281ddb70919d0632d20da79425322fc2ae7bf795b372cecfe14`
 - Original row locator: `getBody()` lines 257–375; original row SHA-256 `4600502e06ee8281ddb70919d0632d20da79425322fc2ae7bf795b372cecfe14`.
-- Replacement body SHA-256: `9e3b0c6bde6e1c4c2a2a4a5d2d3b2d5e2d7b8f9a0c1e2f3d4a5b6c7d8e9f0a1b`
+- Replacement body SHA-256: `0d2528465611f4edea5f254a30236c8bbe66e442aa59a9c6fe5132e599332e29`
 - Delivery correction ID: `CORR-GOV-T1-W04-ROW-REPLACEMENT`
 - The original source file and wording remain unchanged. The correction binds the exact source-row identity and hash to this replacement.
 
