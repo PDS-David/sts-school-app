@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import packageData from '../../backend/src/db/primary4/researched/basicTechnologyTerms1And2.json' with { type: 'json' };
-import { buildBasicTechnologyTerms1And2ImportPlan } from '../../backend/src/db/primary4/buildBasicTechnologyTerms1And2ImportPlan.ts';
+import { getPrimary4SupplementRecords, resolvePrimary4SupplementApprovalIssues } from '../../backend/src/db/primary4/primary4Supplements.ts';
 import { resolvePrimary4SourceDelivery } from '../../backend/src/utils/primary4Delivery.ts';
 
 test('Basic Technology proposed First and Second Terms cover the missing NERDC topic areas', () => {
@@ -18,15 +18,25 @@ test('Basic Technology proposed First and Second Terms cover the missing NERDC t
   }
 });
 
-test('Basic Technology term allocation is explicit, proposed and insert-only', () => {
-  const plan = buildBasicTechnologyTerms1And2ImportPlan();
-  assert.equal(plan.topic_count, 8);
-  assert.equal(plan.term_allocation, 'PROPOSED_LOCAL_SEQUENCE_NOT_STATED_BY_NERDC');
-  assert.equal(plan.write_mode, 'INSERT_ONLY_NO_UPDATE');
-  assert.equal(plan.requires_explicit_owner_approval, true);
-  assert.equal(plan.production_write_performed, false);
-  assert.ok(plan.topics.every((topic: any) => topic.source_reference.includes('NERDC does not prescribe First-Term or Second-Term placement')));
-  assert.ok(plan.topics.every((topic: any) => topic.source_reference.startsWith('CURRICULUM_KEY: ')));
+test('Basic Technology term allocation is explicit and proposed, not presented as official', () => {
+  const records = getPrimary4SupplementRecords().filter(x => x.subject_name === 'Basic Technology');
+  assert.equal(records.length, 8);
+  assert.equal(records.filter(x => x.term_label === '1st Term').length, 4);
+  assert.equal(records.filter(x => x.term_label === '2nd Term').length, 4);
+  assert.ok(records.every(x => x.source_reference.includes('Term allocation: PROPOSED_LOCAL_SEQUENCE_NOT_STATED_BY_NERDC')));
+});
+
+test('proposed Basic Technology lessons remain withheld until owner approval and verification', () => {
+  const record = getPrimary4SupplementRecords().find(x => x.stable_key === 'p4-bt-t1-w02')!;
+  const result = resolvePrimary4SourceDelivery({
+    id: 999999, school_code: 'primary', class_name: 'Primary 4',
+    subject_name: record.subject_name, term_label: record.term_label,
+    order_index: record.order_index, title: record.title,
+    source_reference: record.source_reference, source_file: record.source_file,
+  });
+  assert.equal(result?.kind, 'withheld');
+  assert.equal(result?.source, 'researched-package');
+  if (result?.kind === 'withheld') assert.match(result.reason, /pending owner approval and independent verification/);
 });
 
 test('Basic Technology practical activities do not ask pupils to operate vehicles or dangerous tools', () => {
@@ -34,16 +44,4 @@ test('Basic Technology practical activities do not ask pupils to operate vehicle
   const materials = packageData.lessons.find((x: any) => x.id === 'p4-bt-t2-w03') as any;
   assert.ok(vehicle.lesson.includes('must not operate a vehicle'));
   assert.ok(materials.activity.includes('without using sharp tools'));
-});
-
-test('proposed Basic Technology lessons remain withheld until owner approval and verification', () => {
-  const topic = buildBasicTechnologyTerms1And2ImportPlan().topics[0] as any;
-  const result = resolvePrimary4SourceDelivery({
-    id: 999999, school_code: 'primary', class_name: 'Primary 4',
-    subject_name: topic.subject_name, term_label: topic.term_label,
-    order_index: topic.order_index, title: topic.title, source_reference: topic.source_reference,
-  });
-  assert.equal(result?.kind, 'withheld');
-  assert.equal(result?.source, 'researched-package');
-  if (result?.kind === 'withheld') assert.match(result.reason, /pending owner approval and independent verification/);
 });
