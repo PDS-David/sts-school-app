@@ -25,7 +25,7 @@ test('Home Economics import plan is reproducible, insert-only and requires owner
   assert.equal(plan.production_write_performed, false);
   assert.equal(new Set(plan.topics.map((topic: any) => topic.stable_key)).size, 18);
   assert.ok(plan.topics.every((topic: any) => topic.class_name === 'Primary 4' && topic.subject_name === 'Home Economics'));
-  assert.ok(plan.topics.every((topic: any) => topic.source_reference.includes('PENDING OWNER REVIEW')));
+  assert.ok(plan.topics.every((topic: any) => topic.source_reference.includes('PENDING_OWNER_REVIEW')));
 });
 
 test('researched Home Economics topics remain withheld until approval and verification', () => {
