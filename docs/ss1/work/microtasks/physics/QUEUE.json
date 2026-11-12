@@ -61,7 +61,8 @@
     "2026-11-12 owner decision brief added: all remaining blocked decisions now distinguish resolved source facts from true owner/teacher approvals. No approval_reference is fabricated. See PHYS-OWNER-DECISION-BRIEF.md.",
     "PHYS-WK-T2-W03 (2026-11-12): recovered and inspected the exact registered Second Term original .doc row and rendered source pages 6–7; indexed all subtopics and source assessment blocks; added answer keys for the five MCQs and two distinct theory prompts (17 marks); recorded the incorrect/imprecise source statements and the watch-balance factual disposition; row contains only a provider watermark, no instructional figure. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W03.md.",
     "PHYS-WK-T2-W04 (2026-11-12): inspected exact registered original .doc row and rendered source pages 7–9; indexed all expansivity objectives, equations, examples and source assessments; keyed two evaluation prompts, five weekend MCQs and two theory questions (20 marks); corrected X/α, Y/γ, incomplete coefficient ratio and per-8C notation. Original source has no instructional diagram despite a diagram-required theory prompt; separate delivery-blocking SVG asset task PHYS-ASSET-T2-W04-ANOMALOUS-WATER-DIAGRAM added. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W04.md.",
-    "PHYS-WK-T2-W05 (2026-11-12): inspected original .doc row and rendered pages 9–12; indexed all source applications and assessment blocks; keyed two distinct evaluation/theory prompts and five weekend MCQs (15 marks); corrected radiation-surface, infrared, flask-stopper and stone/carpet issues; expanded lesson applications. Existing vacuum-flask SVG covers the thermos diagram prompt; a separate conduction-rod SVG task was added for the low-resolution page-10 source figure. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W05.md."
+    "PHYS-WK-T2-W05 (2026-11-12): inspected original .doc row and rendered pages 9–12; indexed all source applications and assessment blocks; keyed two distinct evaluation/theory prompts and five weekend MCQs (15 marks); corrected radiation-surface, infrared, flask-stopper and stone/carpet issues; expanded lesson applications. Existing vacuum-flask SVG covers the thermos diagram prompt; a separate conduction-rod SVG task was added for the low-resolution page-10 source figure. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W05.md.",
+    "PHYS-WK-T2-W06 (2026-11-12): inspected original .doc row and rendered pages 12–14; indexed charge production/types, conductors/insulators, fundamental law, surface distribution/density and storage; added answer keys for four distinct evaluation/theory prompts and five weekend MCQs (15 marks); existing charge-distribution SVG on page 13 is attached to the lesson; page-14 electroscope diagram belongs to WEEK SEVEN. Clarified electrophorus transfer vs capacitor storage. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W06.md."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -80,9 +81,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 70,
+    "IMPLEMENTED_TESTING_DEFERRED": 71,
     "BLOCKED": 7,
-    "PENDING": 16
+    "PENDING": 15
   },
   "total": 93,
   "items": [
@@ -865,8 +866,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Reopened 2026-11-12: the original Physics source members are now available from CI evidence artifact 13902689395 (run 43126374868). The run successfully executed scripts/ss1/prepare_sources.py, which enforces archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact manifest membership, member byte counts and member SHA-256. Independently checked the three extracted Physics members against SOURCE_ASSIGNMENTS.csv; all sizes and hashes match. Original row text and embedded source files are now accessible for this indexing task. Source reconciliation is NOT yet complete; inspect the row, figures, examples and assessments before closing.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12 against the verified original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7. Parsed row 5 body SS1-SRC-2c924c964660:BODY:a034ad6dde530a2fca4ce660b671c1e9864eca26d5d9c4eaa92216d4a25aefd0, SHA-256 a034ad6dde530a2fca4ce660b671c1e9864eca26d5d9c4eaa92216d4a25aefd0, 3,074 characters; privately rendered source pages 12–14 inspected. Indexed production, types, conductors/insulators, fundamental law, distribution, surface charge density and storage; added the missing conductor/insulator examples and σ=Q/A with SI unit. Added answer keys for the four distinct evaluation/theory prompts and five weekend MCQs (Q19–Q27; 15 marks). The source's charge-distribution figure on page 13 is covered by the already registered original SVG PHYS-ASSET-T2-W06-CHARGE-DISTRIBUTION; the page-14 electroscope figure belongs to WEEK SEVEN. Recorded the electrophorus mechanism clarification in CORR-PHYSICS-T2-W06-CHARGE-STORAGE. New body SHA-256 112613dfe067b377b700ac1e09e67fbd6837a8dbfcaa9d697bccb303865f0aa0; lesson approval PENDING; verification DEFERRED.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -3199,8 +3200,8 @@
   ],
   "review": {
     "date": "2026-11-12",
-    "reviewed_master_sha": "3908e7ca31c7f3c31c9a0b625cc9c35b65a074b4",
-    "scope": "Physics lesson and source reconciliation work reconciled with current master; all ten SVG asset hashes/byte counts corrected; three branch-reconciliation tasks completed with source/identity limitations preserved. Subject approval and delivery acceptance remain pending.",
+    "reviewed_master_sha": "8289cc0286d8103a394855d1dc08d56272fb7be7",
+    "scope": "Physics source indexing: Second Term Weeks Three through Six completed against verified original source rows. Remaining source indexing, visual assets, technical gates and owner approvals remain open.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
@@ -3229,7 +3230,6 @@
     }
   },
   "next_runnable": [
-    "PHYS-WK-T2-W06",
     "PHYS-WK-T2-W07",
     "PHYS-WK-T2-W08",
     "PHYS-WK-T2-W09",
@@ -3247,7 +3247,6 @@
     "PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM"
   ],
   "runnable_now": [
-    "PHYS-WK-T2-W06",
     "PHYS-WK-T2-W07",
     "PHYS-WK-T2-W08",
     "PHYS-WK-T2-W09",
@@ -3260,6 +3259,8 @@
     "PHYS-WK-T3-W07",
     "PHYS-WK-T3-W08",
     "PHYS-WK-T3-W09",
-    "PHYS-WK-T3-W10"
+    "PHYS-WK-T3-W10",
+    "PHYS-ASSET-T2-W04-ANOMALOUS-WATER-DIAGRAM",
+    "PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM"
   ]
 }
