@@ -8,6 +8,25 @@ import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.js'
 const packagePath = new URL('../../backend/src/db/ss1/subjects/technical-drawing.json', import.meta.url);
 const digest = value => createHash('sha256').update(value, 'utf8').digest('hex');
 
+test('Week One source degree markers survive package delivery and the mobile lesson renderer unchanged', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS');
+  assert.ok(lesson, 'Week One keyed-constructions lesson missing');
+
+  // The source's seven superscript-zero angle markers must be normalized as
+  // degree symbols before the lesson enters the student package.
+  for (const value of ['67°', '105°', '55°', '60°']) {
+    assert.ok(lesson.body.includes(value), `normalized degree value missing: ${value}`);
+  }
+  assert.equal((lesson.body.match(/°/g) ?? []).length >= 7, true);
+  assert.doesNotMatch(lesson.body, /\\b(?:670|1050|550|600)\\b/, 'flattened superscript-zero values must not reach students');
+
+  // The mobile lesson screen passes the package body directly to React Native
+  // Text; there is no HTML conversion or lossy degree-glyph replacement step.
+  const screen = await readFile(new URL('../../mobile/src/screens/Ss1PackageLessonScreen.tsx', import.meta.url), 'utf8');
+  assert.match(screen, /<Text style=\\{styles\\.body\\}>\\{lesson\\.body\\}<\\/Text>/);
+});
+
 test('Technical Drawing package conforms to the SS1 package schema', async () => {
   const raw = JSON.parse(await readFile(packagePath, 'utf8'));
   const subject = packageSchema.parse(raw);
