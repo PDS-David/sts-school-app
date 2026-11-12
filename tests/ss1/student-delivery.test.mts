@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { getStudentSs1Lesson, isStudentDeliverableSs1Lesson, listStudentSs1Lessons, listStudentSs1Assets, readStudentSs1Asset, studentSs1LessonPreview } from '../../backend/src/db/ss1/studentDelivery.js';
 import { studentTopicPreview } from '../../backend/src/utils/jss3Sequence.js';
+import { loadPackages } from '../../backend/src/db/ss1/loader.js';
 
 test('SS1 student delivery exposes approved implemented lessons without hiding deferred classroom verification', () => {
   const lessons = listStudentSs1Lessons();
@@ -106,4 +107,18 @@ test('locked student topic previews expose navigation metadata only', () => {
 test('Technical Drawing is not exposed to students while its package and lesson approvals remain pending', () => {
   const lessons = listStudentSs1Lessons('Technical Drawing');
   assert.deepEqual(lessons, [], 'pending Technical Drawing content must not enter student delivery');
+});
+
+
+test('unapproved Technical Drawing figures are hidden from student asset lists and direct byte lookup', () => {
+  const subject = loadPackages().find(item => item.subject_slug === 'technical-drawing');
+  assert.ok(subject, 'Technical Drawing package must be registered');
+  assert.ok(subject.assets.length > 0, 'Technical Drawing source assets must be covered by this regression');
+
+  for (const lesson of subject.lessons) {
+    assert.deepEqual(listStudentSs1Assets(lesson.id), [], `unapproved lesson assets leaked: ${lesson.id}`);
+  }
+  for (const asset of subject.assets) {
+    assert.equal(readStudentSs1Asset(asset.id), null, `unapproved asset bytes leaked: ${asset.id}`);
+  }
 });
