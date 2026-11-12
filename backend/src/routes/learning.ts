@@ -45,6 +45,33 @@ async function redeemedSs1Terms(studentId: string): Promise<Set<string>> {
   return new Set(rows.map((row: any) => String(row.term_label)));
 }
 
+// Resolve the same sequence policy used by GET /topics for direct asset access.
+// A missing student record is fail-closed: no ordered lesson content/assets.
+async function studentTopicSequenceLocked(user: AuthUser, topic: any): Promise<boolean> {
+  if (user.role !== 'student') return false;
+  if (topic.order_index == null) return false;
+  const { rows: studentRows } = await query('SELECT id FROM students WHERE user_id=$1', [user.id]);
+  const studentId = studentRows[0]?.id;
+  if (!studentId) return true;
+  const { rows: group } = await query(
+    `SELECT id, order_index, sequence_rank
+       FROM topics
+      WHERE school_code=$1 AND subject_id=$2 AND class_name=$3
+        AND term_label IS NOT DISTINCT FROM $4 AND order_index IS NOT NULL
+      ORDER BY order_index ASC, id ASC`,
+    [topic.school_code, topic.subject_id, topic.class_name, topic.term_label],
+  );
+  const ids = group.map((row: any) => row.id);
+  const [{ rows: completionRows }, { rows: pinRows }] = await Promise.all([
+    query('SELECT topic_id, passed FROM topic_completions WHERE student_id=$1 AND topic_id=ANY($2)', [studentId, ids]),
+    query('SELECT term_label FROM term_access_pins WHERE student_id=$1 AND redeemed_at IS NOT NULL', [studentId]),
+  ]);
+  const passedIds = new Set(completionRows.filter((row: any) => row.passed === true).map((row: any) => Number(row.topic_id)));
+  const redeemedTerms = new Set(pinRows.map((row: any) => String(row.term_label)));
+  const pinOk = !termPinEnforced() || redeemedTerms.has(String(topic.term_label));
+  return resolveSequenceGroup(group, passedIds, pinOk).get(Number(topic.id))?.locked ?? true;
+}
+
 router.get('/ss1/lessons', requirePerm('topics.read'), async (req, res) => {
   const studentId = await ss1StudentId(req.user!);
   if (!studentId) return res.json({ lessons: [] });
@@ -311,15 +338,35 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
       }
 
       return res.json({
-        topics: rows.map((r: any) => ({
-          ...r,
-          completed: completedIds.has(r.id),
-          locked: lockedIds.has(r.id),
-          sequence_position: seqById.get(r.id)?.sequence_position ?? null,
-          is_sequence_first: seqById.get(r.id)?.is_sequence_first ?? false,
-        })),
+        topics: rows.map((r: any) => {
+          const completed = completedIds.has(r.id);
+          const locked = lockedIds.has(r.id);
+          const sequence = {
+            completed,
+            locked,
+            sequence_position: seqById.get(r.id)?.sequence_position ?? null,
+            is_sequence_first: seqById.get(r.id)?.is_sequence_first ?? false,
+          };
+          // Locked rows are navigation metadata only. Do not send descriptions,
+          // generated summaries, source text/provenance or any lesson payload.
+          if (locked) return {
+            id: r.id,
+            title: r.title,
+            subject_id: r.subject_id,
+            subject_name: r.subject_name,
+            class_name: r.class_name,
+            term_id: r.term_id,
+            term_label: r.term_label,
+            order_index: r.order_index,
+            ...sequence,
+          };
+          return { ...r, ...sequence };
+        }),
       });
     }
+    // A student without a linked student record must never fall through to
+    // the unrestricted raw-topic response.
+    return res.json({ topics: [] });
   }
 
   return res.json({ topics: rows });
