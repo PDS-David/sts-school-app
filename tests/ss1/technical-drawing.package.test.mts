@@ -249,3 +249,15 @@ test('Week Eight–Nine source pentagon keys do not import dimensions from anoth
   assert.match(key, /must not be imported into this question/);
   assert.match(key, /do not report 43\.30 mm as this question's answer/);
 });
+
+test('Week Eight–Nine source answer key supplies marks and preserves image/text mismatches', async () => {
+  const path = new URL('../../docs/ss1/work/microtasks/technical-drawing/TD-KEY-W08-W09-ANSWERS.md', import.meta.url);
+  const key = await readFile(path, 'utf8');
+  assert.match(key, /Evaluation Q3 — triangle to equal-area parallelogram/);
+  assert.match(key, /1,288\.03 mm²/);
+  assert.match(key, /Evaluation Q4 — square equal in area to 60 mm × 35 mm rectangle/);
+  assert.match(key, /Evaluation Q5 — sum of three equilateral-triangle areas/);
+  assert.match(key, /image72 shows a different set of labels/);
+  assert.match(key, /image73 is labelled A–G/);
+  assert.match(key, /Do not infer the correct multiple-choice option/);
+});
