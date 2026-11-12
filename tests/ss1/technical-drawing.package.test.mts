@@ -174,7 +174,7 @@ test('Week Two answer key documents the two valid radius options and equal-circl
   const key = await readFile(path, 'utf8');
   assert.match(key, /both B \(OB\) and C \(OQ\) are radii/);
   assert.match(key, /accept either B or C for full credit/);
-  assert.match(key, /accept either B or C for full credit/);
+  assert.match(key, /Weekend Q4 — ambiguous single-answer MCQ/);
   assert.match(key, /15\(√3−1\)≈\*\*10\.98 mm\*\*/);
   const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
   for (const id of ['TD-T2-W02-OBJECTIVE-Q2-MULTIPLE-RADII', 'TD-T2-W02-OBJECTIVE-Q4-MULTIPLE-ANSWERS']) {
