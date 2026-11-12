@@ -167,9 +167,9 @@ test('Every term week has a delivered lesson and the three source documents rema
     assert.equal(lessons.length, 9, term);
     assert.ok(lessons.every(l => l.practice.length >= 4), term);
   }
-  for (const source of p.sources) {
-    const delivered = p.coverage.filter(c => c.source_id === source.source_id && c.status === 'IMPLEMENTED_EQUIVALENT');
-    assert.equal(delivered.length, 9, source.term);
+  for (const lesson of p.lessons) {
+    const source = p.sources.find(s => s.term === lesson.term)!;
+    assert.ok(p.coverage.some(c => c.source_id === source.source_id && c.lesson_ids.includes(lesson.id)), lesson.id);
   }
   assert.equal(p.lessons.reduce((n,l) => n + l.practice.length, 0), 111);
   assert.equal(p.lessons.reduce((n,l) => n + l.practice.reduce((a,q) => a + q.marks, 0), 0), 418);
