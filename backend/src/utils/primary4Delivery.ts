@@ -3,6 +3,7 @@ import manifestData from '../db/primary4/sourceManifest.json' with { type: 'json
 import { buildHomeEconomicsImportPlan } from '../db/primary4/buildHomeEconomicsImportPlan.js';
 import { buildHomeEconomicsTerm3SupplementPlan } from '../db/primary4/buildHomeEconomicsTerm3SupplementPlan.js';
 import { buildBasicScienceTerm3ImportPlan } from '../db/primary4/buildBasicScienceTerm3ImportPlan.js';
+import { buildBasicTechnologyTerms1And2ImportPlan } from '../db/primary4/buildBasicTechnologyTerms1And2ImportPlan.js';
 
 type ReviewFlag = 'HIGH_SHORT_SOURCE' | 'SHORT_SOURCE_REVIEW' | 'CONTENT_PRESENT' | 'RESEARCHED_VERIFIED';
 type ManifestRecord = {
@@ -62,6 +63,7 @@ const researchedPlans = [
   buildHomeEconomicsImportPlan(),
   buildHomeEconomicsTerm3SupplementPlan(),
   buildBasicScienceTerm3ImportPlan(),
+  buildBasicTechnologyTerms1And2ImportPlan(),
 ];
 const researchedRecords = new Map<string, ResearchedRecord>(
   researchedPlans.flatMap(plan => plan.topics.map((topic: any) => {
