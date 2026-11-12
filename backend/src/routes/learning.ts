@@ -25,27 +25,50 @@ router.use(requireAuth);
 
 // Individually certified SS1 package lessons are read-only student content.
 // Existing database topics, term PINs and topic-completion sequencing remain unchanged.
-async function isSs1Learner(user: AuthUser): Promise<boolean> {
-  if (user.role !== 'student') return false;
+async function ss1StudentId(user: AuthUser): Promise<string | null> {
+  if (user.role !== 'student') return null;
   const classes = await resolveViewerClassNames(user);
-  return Array.isArray(classes) && classes.includes('SS 1');
+  if (!Array.isArray(classes) || !classes.includes('SS 1')) return null;
+  const { rows } = await query(
+    'SELECT id FROM students WHERE user_id=$1 AND class_name=$2 AND deleted_at IS NULL',
+    [user.id, 'SS 1'],
+  );
+  return rows[0]?.id ?? null;
+}
+
+async function redeemedSs1Terms(studentId: string): Promise<Set<string>> {
+  if (!termPinEnforced()) return new Set(['1st Term', '2nd Term', '3rd Term']);
+  const { rows } = await query(
+    'SELECT term_label FROM term_access_pins WHERE student_id=$1 AND redeemed_at IS NOT NULL',
+    [studentId],
+  );
+  return new Set(rows.map((row: any) => String(row.term_label)));
 }
 
 router.get('/ss1/lessons', requirePerm('topics.read'), async (req, res) => {
-  const user = req.user!;
-  if (!(await isSs1Learner(user))) return res.json({ lessons: [] });
+  const studentId = await ss1StudentId(req.user!);
+  if (!studentId) return res.json({ lessons: [] });
   const subjectName = typeof req.query.subject_name === 'string' ? req.query.subject_name : undefined;
   if (subjectName && subjectName.trim().length > 120) {
     return res.status(400).json({ error: 'subject_name is too long' });
   }
-  return res.json({ lessons: listStudentSs1Lessons(subjectName) });
+  const unlockedTerms = await redeemedSs1Terms(studentId);
+  const lessons = listStudentSs1Lessons(subjectName).map(lesson => ({
+    ...lesson,
+    locked: !unlockedTerms.has(lesson.term),
+  }));
+  return res.json({ lessons });
 });
 
 router.get('/ss1/lessons/:lessonId', requirePerm('topics.read'), async (req, res) => {
-  const user = req.user!;
-  if (!(await isSs1Learner(user))) return res.status(404).json({ error: 'Lesson not found' });
+  const studentId = await ss1StudentId(req.user!);
+  if (!studentId) return res.status(404).json({ error: 'Lesson not found' });
   const lesson = getStudentSs1Lesson(req.params.lessonId);
   if (!lesson) return res.status(404).json({ error: 'Lesson not found' });
+  const unlockedTerms = await redeemedSs1Terms(studentId);
+  if (!unlockedTerms.has(lesson.term)) {
+    return res.status(423).json({ error: 'Redeem the Term PIN to unlock lessons for this term.' });
+  }
   return res.json({ lesson });
 });
 
