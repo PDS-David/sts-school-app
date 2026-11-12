@@ -7622,6 +7622,42 @@
               "marks": 1
             }
           ]
+        },
+        {
+          "id": "Q19",
+          "question": "Two 1 Ω resistors are connected in parallel with a 2 Ω resistor. Calculate the equivalent resistance of the combination.",
+          "answer": "1/Rₜ = 1/1 + 1/1 + 1/2 = 2.5 S. Therefore Rₜ = 1/2.5 = 0.4 Ω.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses reciprocal-resistance relation for parallel branches.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates total conductance as 2.5 S.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives equivalent resistance 0.4 Ω.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q20",
+          "question": "State the relationship between resistance and conductance.",
+          "answer": "Conductance is the reciprocal of resistance: G = 1/R (and R = 1/G). Conductance is measured in siemens (S).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States G = 1/R or R = 1/G.",
+              "marks": 1
+            },
+            {
+              "criterion": "States the reciprocal relationship correctly, with siemens as the conductance unit.",
+              "marks": 1
+            }
+          ]
         }
       ],
       "provenance": [
@@ -11631,6 +11667,19 @@
         "locator": "Original member bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; parsed row 0 WEEK 1, body SS1-SRC-bed91bb4ef0e:BODY:9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231; rendered source pages 1–3, especially page 3 internal-resistance relation.",
         "explanation": "The original rendering visibly places the denominator as R + r without clear grouping. The supplement uses brackets to make the intended total circuit resistance explicit and gives the terminal-voltage relation."
       }
+    },
+    {
+      "id": "CORR-PHYSICS-T3-W02-PARALLEL-CELL-EMF",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "source_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688",
+      "source_lesson_id": "SS1-SRC-bed91bb4ef0e:BODY:6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7",
+      "body_sha256": "6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7",
+      "replacement_id": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL",
+      "reason": "The source prints the identical-cell parallel emf relation as E_T = E+E+E/3 = 3E/3 = E without parentheses, which is ambiguous and could be read as E+E+(E/3). The correct relation for n identical cells in parallel is E_T=E; for three identical cells the arithmetic is (E+E+E)/3=E. The lesson states the general result directly and explains that the equivalent internal resistance is reduced for matched cells.",
+      "evidence": {
+        "locator": "Original member bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; parsed row 1 WEEK 2 body SS1-SRC-bed91bb4ef0e:BODY:6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7; rendered source page 4.",
+        "explanation": "The original rendering visibly shows the ungrouped expression. The lesson supplies the correct identical-cell parallel result and clarifies the physical arrangement."
+      }
     }
   ],
   "assets": [
@@ -15280,12 +15329,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL; body SHA-256 2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141; practice Q01–Q18.",
-          "explanation": "Authored supplement covers series/parallel resistors, cells, calculations, conductance and internal resistance with a keyed assessment. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL; body SHA-256 2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141; practice Q01–Q20; assets PHYS-ASSET-T3-W02-SERIES-PARALLEL and PHYS-ASSET-T3-W02-CELLS-SERIES-PARALLEL.",
+          "explanation": "The supplement covers the mapped series/parallel resistor and cell objectives, calculations, internal resistance and conductance, with source-aligned answer keys. The exact original row and rendered pages have now been inspected; approval remains PENDING and verification DEFERRED."
         },
         {
           "locator": "SchoolGist and Ecolebooks SS1 Third Term Week Two close-equivalent notes.",
           "explanation": "Independent comparison supports the mapped topic scope and common calculation types; neither is asserted to be the registered original .doc."
+        },
+        {
+          "locator": "Original member bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; parsed row 1 WEEK 2 body SS1-SRC-bed91bb4ef0e:BODY:6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7; privately rendered source pages 3–5; assets PHYS-ASSET-T3-W02-SERIES-PARALLEL and PHYS-ASSET-T3-W02-CELLS-SERIES-PARALLEL.",
+          "explanation": "The source gives series/parallel resistor properties and formulae, cells in series/parallel, worked examples, two evaluation blocks, five MCQs and two theory questions. The original pages contain no clear circuit connection diagrams; the two registered original SVGs provide resistor and cell schematics. The source's parallel-cell emf equation is ambiguously typeset without grouping; the lesson correctly states that identical cells in parallel have emf E."
         }
       ]
     },
@@ -15300,12 +15353,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL; body SHA-256 2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141; practice Q01–Q18.",
-          "explanation": "Authored supplement covers series/parallel resistors, cells, calculations, conductance and internal resistance with a keyed assessment. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL; body SHA-256 2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141; practice Q01–Q20; assets PHYS-ASSET-T3-W02-SERIES-PARALLEL and PHYS-ASSET-T3-W02-CELLS-SERIES-PARALLEL.",
+          "explanation": "The supplement covers the mapped series/parallel resistor and cell objectives, calculations, internal resistance and conductance, with source-aligned answer keys. The exact original row and rendered pages have now been inspected; approval remains PENDING and verification DEFERRED."
         },
         {
           "locator": "SchoolGist and Ecolebooks SS1 Third Term Week Two close-equivalent notes.",
           "explanation": "Independent comparison supports the mapped topic scope and common calculation types; neither is asserted to be the registered original .doc."
+        },
+        {
+          "locator": "Original member bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; parsed row 1 WEEK 2 body SS1-SRC-bed91bb4ef0e:BODY:6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7; privately rendered source pages 3–5; assets PHYS-ASSET-T3-W02-SERIES-PARALLEL and PHYS-ASSET-T3-W02-CELLS-SERIES-PARALLEL.",
+          "explanation": "The source gives series/parallel resistor properties and formulae, cells in series/parallel, worked examples, two evaluation blocks, five MCQs and two theory questions. The original pages contain no clear circuit connection diagrams; the two registered original SVGs provide resistor and cell schematics. The source's parallel-cell emf equation is ambiguously typeset without grouping; the lesson correctly states that identical cells in parallel have emf E."
         }
       ]
     },
@@ -15320,12 +15377,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL; body SHA-256 2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141; practice Q01–Q18.",
-          "explanation": "Authored supplement covers series/parallel resistors, cells, calculations, conductance and internal resistance with a keyed assessment. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL; body SHA-256 2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141; practice Q01–Q20; assets PHYS-ASSET-T3-W02-SERIES-PARALLEL and PHYS-ASSET-T3-W02-CELLS-SERIES-PARALLEL.",
+          "explanation": "The supplement covers the mapped series/parallel resistor and cell objectives, calculations, internal resistance and conductance, with source-aligned answer keys. The exact original row and rendered pages have now been inspected; approval remains PENDING and verification DEFERRED."
         },
         {
           "locator": "SchoolGist and Ecolebooks SS1 Third Term Week Two close-equivalent notes.",
           "explanation": "Independent comparison supports the mapped topic scope and common calculation types; neither is asserted to be the registered original .doc."
+        },
+        {
+          "locator": "Original member bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; parsed row 1 WEEK 2 body SS1-SRC-bed91bb4ef0e:BODY:6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7; privately rendered source pages 3–5; assets PHYS-ASSET-T3-W02-SERIES-PARALLEL and PHYS-ASSET-T3-W02-CELLS-SERIES-PARALLEL.",
+          "explanation": "The source gives series/parallel resistor properties and formulae, cells in series/parallel, worked examples, two evaluation blocks, five MCQs and two theory questions. The original pages contain no clear circuit connection diagrams; the two registered original SVGs provide resistor and cell schematics. The source's parallel-cell emf equation is ambiguously typeset without grouping; the lesson correctly states that identical cells in parallel have emf E."
         }
       ]
     },
@@ -15340,12 +15401,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL; body SHA-256 2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141; practice Q01–Q18.",
-          "explanation": "Authored supplement covers series/parallel resistors, cells, calculations, conductance and internal resistance with a keyed assessment. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL; body SHA-256 2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141; practice Q01–Q20; assets PHYS-ASSET-T3-W02-SERIES-PARALLEL and PHYS-ASSET-T3-W02-CELLS-SERIES-PARALLEL.",
+          "explanation": "The supplement covers the mapped series/parallel resistor and cell objectives, calculations, internal resistance and conductance, with source-aligned answer keys. The exact original row and rendered pages have now been inspected; approval remains PENDING and verification DEFERRED."
         },
         {
           "locator": "SchoolGist and Ecolebooks SS1 Third Term Week Two close-equivalent notes.",
           "explanation": "Independent comparison supports the mapped topic scope and common calculation types; neither is asserted to be the registered original .doc."
+        },
+        {
+          "locator": "Original member bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; parsed row 1 WEEK 2 body SS1-SRC-bed91bb4ef0e:BODY:6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7; privately rendered source pages 3–5; assets PHYS-ASSET-T3-W02-SERIES-PARALLEL and PHYS-ASSET-T3-W02-CELLS-SERIES-PARALLEL.",
+          "explanation": "The source gives series/parallel resistor properties and formulae, cells in series/parallel, worked examples, two evaluation blocks, five MCQs and two theory questions. The original pages contain no clear circuit connection diagrams; the two registered original SVGs provide resistor and cell schematics. The source's parallel-cell emf equation is ambiguously typeset without grouping; the lesson correctly states that identical cells in parallel have emf E."
         }
       ]
     },
@@ -15360,12 +15425,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL; body SHA-256 2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141; practice Q01–Q18.",
-          "explanation": "Authored supplement covers series/parallel resistors, cells, calculations, conductance and internal resistance with a keyed assessment. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL; body SHA-256 2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141; practice Q01–Q20; assets PHYS-ASSET-T3-W02-SERIES-PARALLEL and PHYS-ASSET-T3-W02-CELLS-SERIES-PARALLEL.",
+          "explanation": "The supplement covers the mapped series/parallel resistor and cell objectives, calculations, internal resistance and conductance, with source-aligned answer keys. The exact original row and rendered pages have now been inspected; approval remains PENDING and verification DEFERRED."
         },
         {
           "locator": "SchoolGist and Ecolebooks SS1 Third Term Week Two close-equivalent notes.",
           "explanation": "Independent comparison supports the mapped topic scope and common calculation types; neither is asserted to be the registered original .doc."
+        },
+        {
+          "locator": "Original member bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; parsed row 1 WEEK 2 body SS1-SRC-bed91bb4ef0e:BODY:6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7; privately rendered source pages 3–5; assets PHYS-ASSET-T3-W02-SERIES-PARALLEL and PHYS-ASSET-T3-W02-CELLS-SERIES-PARALLEL.",
+          "explanation": "The source gives series/parallel resistor properties and formulae, cells in series/parallel, worked examples, two evaluation blocks, five MCQs and two theory questions. The original pages contain no clear circuit connection diagrams; the two registered original SVGs provide resistor and cell schematics. The source's parallel-cell emf equation is ambiguously typeset without grouping; the lesson correctly states that identical cells in parallel have emf E."
         }
       ]
     },

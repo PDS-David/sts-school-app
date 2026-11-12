@@ -69,7 +69,8 @@
     "CI follow-up 2026-11-12: removed premature delivery-correction record CORR-PHYSICS-T2-W09-FLUX-DENSITY-NOTATION because its replacement lesson is queued but not yet present. The D/σ notation issue remains documented in PHYS-WK-T2-W09.md and the quantitative lesson task; create the correction record together with the actual replacement lesson to satisfy the package's replacement-reference invariant.",
     "PHYS-WK-T2-W10 (2026-11-12): inspected original .doc row and rendered pages 20–22; indexed mechanical, chemical, thermal and solar generation; added keys for both evaluation diagram prompts, five MCQs and heat-generation theory (19 marks); corrected galvanic cell polarity and photovoltaic terminology. Source has no instructional diagrams; existing overview SVG is too general for diagram questions, so a detailed three-panel generator/cell/thermocouple asset task was added. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W10.md.",
     "CI follow-up 2026-11-12: combined the galvanic-cell polarity and photovoltaic terminology corrections into one source-row correction record. The SS1 compiler requires at most one correction record per registered source body; both independently verified corrections remain documented in the combined record and Week Ten evidence note.",
-    "PHYS-WK-T3-W01 (2026-11-12): inspected original .doc row and rendered pages 1–3; indexed circuit, conductors/semiconductors/insulators, quantities, internal resistance and Ohm's law; added missing source voltage-unit MCQ and definitions (Q19–Q20); existing circuit SVG replaces the absent source circuit figure. Source V–I graph area is blank, so added a separate delivery-blocking graph asset task. Corrected internal-resistance definition/formula grouping. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T3-W01.md."
+    "PHYS-WK-T3-W01 (2026-11-12): inspected original .doc row and rendered pages 1–3; indexed circuit, conductors/semiconductors/insulators, quantities, internal resistance and Ohm's law; added missing source voltage-unit MCQ and definitions (Q19–Q20); existing circuit SVG replaces the absent source circuit figure. Source V–I graph area is blank, so added a separate delivery-blocking graph asset task. Corrected internal-resistance definition/formula grouping. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T3-W01.md.",
+    "PHYS-WK-T3-W02 (2026-11-12): inspected original .doc row and rendered pages 3–5; indexed series/parallel resistors and cells, calculations, conductance and internal resistance; added exact source parallel-combination calculation and resistance/conductance prompt (Q19–Q20); existing original SVGs cover resistor and cell arrangements. Corrected ambiguous identical-cell parallel emf notation. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T3-W02.md."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -88,9 +89,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 76,
+    "IMPLEMENTED_TESTING_DEFERRED": 77,
     "BLOCKED": 7,
-    "PENDING": 13
+    "PENDING": 12
   },
   "total": 96,
   "items": [
@@ -1095,8 +1096,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Reopened 2026-11-12: the original Physics source members are now available from CI evidence artifact 13902689395 (run 43126374868). The run successfully executed scripts/ss1/prepare_sources.py, which enforces archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact manifest membership, member byte counts and member SHA-256. Independently checked the three extracted Physics members against SOURCE_ASSIGNMENTS.csv; all sizes and hashes match. Original row text and embedded source files are now accessible for this indexing task. Source reconciliation is NOT yet complete; inspect the row, figures, examples and assessments before closing.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12 against verified original member bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688. Parsed row 1 body SS1-SRC-bed91bb4ef0e:BODY:6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7, SHA-256 6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7, 2,728 characters; rendered pages 3–5 inspected. Indexed series/parallel resistor properties and equations, equivalent-resistance calculations, series-aiding/parallel cells, conductance, internal resistance, terminal/lost voltage and source assessments. Added the missing exact weekend calculation for two 1 Ω resistors in parallel with a 2 Ω resistor (0.4 Ω) and the explicit resistance/conductance relationship (Q19–Q20). Source's parallel-cell emf expression is ambiguously typeset; lesson uses E_T=E for identical cells in parallel, recorded in CORR-PHYSICS-T3-W02-PARALLEL-CELL-EMF. Existing original SVGs cover resistor and cell arrangements; source pages contain no clear original diagrams. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -3308,7 +3309,7 @@
   "review": {
     "date": "2026-11-12",
     "reviewed_master_sha": "174155c6fc080ad7c76c6e99e74b1a86e576bfe3",
-    "scope": "Physics source indexing: Second Term Weeks Three through Ten and Third Term Week One completed against verified original source rows. Week Nine quantitative lesson and visual assets remain queued; remaining Third Term source weeks, technical gates and approvals remain open.",
+    "scope": "Physics source indexing: Second Term Weeks Three through Ten and Third Term Weeks One through Two completed against verified original source rows. Week Nine quantitative lesson and visual assets remain queued; remaining Third Term source weeks, technical gates and owner approvals remain open.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
@@ -3337,7 +3338,6 @@
     }
   },
   "next_runnable": [
-    "PHYS-WK-T3-W02",
     "PHYS-WK-T3-W03",
     "PHYS-WK-T3-W05",
     "PHYS-WK-T3-W06",
@@ -3352,7 +3352,6 @@
     "PHYS-LESSON-T2-W09-ELECTRIC-QUANTITIES"
   ],
   "runnable_now": [
-    "PHYS-WK-T3-W02",
     "PHYS-WK-T3-W03",
     "PHYS-WK-T3-W05",
     "PHYS-WK-T3-W06",

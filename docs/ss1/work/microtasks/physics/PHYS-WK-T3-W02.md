@@ -1,57 +1,65 @@
 # PHYS-WK-T3-W02 — Third Term Week Two: resistors and cells in series and parallel
 
-Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — the exact registered source row and rendered pages 3–5 have been inspected. Source indexing and answer keys are complete; original SVG teaching aids cover the connection diagrams.
 
 ## Registered source identity
 
 - Source ID: `SS1-SRC-bed91bb4ef0e`
 - Archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc`
-- Registered member SHA-256: `bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688`
-- Parsed row: index 1, `WEEK 2`
+- Member SHA-256: `bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688`
+- Parsed row: index 1, WEEK 2
 - Parsed body ID: `SS1-SRC-bed91bb4ef0e:BODY:6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7`
 - Parsed body length: 2,728 characters
 - Parsed body SHA-256: `6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7`
+- Original member hash verified against the registered archive manifest in workflow run 43126374868.
 
-## Student supplement authored
+## Source content inventory
 
-- Lesson ID: `SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL`
-- Body SHA-256: `2c753ad670cc185c647e312c54c23668fbeb1952228b3bdf41d138b8a1c6c141`
-- Body length: 4,455 characters
-- Practice: 18 fully answered questions, 38 marks; marking totals checked.
+The original row covers:
+- Resistors in series: same current, additive p.d. and resistance.
+- Resistors in parallel: same p.d. across branches, additive branch current and conductance.
+- Equivalent-resistance formulae for series and parallel networks.
+- Cells in series-aiding and parallel; equivalent emf for identical cells.
+- Calculations using 2 Ω, 3 Ω and 5 Ω in series/parallel; 2 Ω, 2 Ω and 1 Ω in series/parallel; a 2 kΩ resistor carrying 1 mA; and two 1 Ω resistors in parallel with a 2 Ω resistor.
+- Conductance and its relationship to resistance.
+- A 15 V battery with 5 Ω internal resistance and 20 Ω external resistance: current, terminal voltage and lost voltage.
+- A charge of 8 C passing in 2 s.
+- Two evaluation blocks, five weekend MCQs and two theory questions.
 
-The lesson covers series and parallel resistor behaviour, equivalent resistance calculations, series-aiding and parallel cells, emf, internal resistance, terminal voltage, lost voltage and conductance. It includes correct limiting checks: parallel resistance is below the smallest branch resistance; identical cells in parallel retain one-cell emf; identical aiding cells in series add their emfs.
+## Source correction
 
-Five objective-level coverage entries were added. All are `IMPLEMENTED_EQUIVALENT` based on the authored supplement; approval and verification remain pending/deferred.
+Correction record: `CORR-PHYSICS-T3-W02-PARALLEL-CELL-EMF`.
 
-## Close-equivalent comparison (not the registered original)
+The source's identical-cell parallel emf equation is typeset without grouping as `E_T=E+E+E/3=3E/3=E`. The lesson gives the correct result for identical cells in parallel, `E_T=E`, and explains the reduced effective internal resistance for matched cells. It does not silently treat the ambiguous expression as a valid ungrouped arithmetic statement.
 
-SchoolGist, Ecolebooks and lesson-note sources cover the same Week Two scheme topic and common calculations. The SchoolGist PDF includes series/parallel properties, cell arrangements, equivalent resistance, terminal voltage and lost voltage.
+## Source assessments and answer keys
 
-References:
-- https://schoolgist.ng/storage/postFiles/SS1-Physics-3rd-Term-Lesson-Note-pdf.pdf
-- https://ecolebooks.com/nigeria/posts/week-2-and-3-ss1-third-term-physics-notes/
+The existing lesson already keys the resistor series/parallel calculations, four-cell series/parallel emf, internal-resistance/terminal/lost-voltage calculation, and 8 C in 2 s current question. Two exact source gaps were added:
+- Q19: two 1 Ω resistors in parallel with a 2 Ω resistor, equivalent resistance 0.4 Ω (3 marks).
+- Q20: relationship between resistance and conductance, `G=1/R` (2 marks).
 
-These are close-equivalent comparison sources only. The registered original .doc body and its circuit diagrams have not been inspected in this execution.
+The lesson now has 20 questions with complete answers and marking. The five weekend MCQs are covered by Q08, Q09, Q15, Q16 and Q19; the two theory questions are covered by Q11/Q12 and Q18.
 
-## Remaining source-dependent work
+## Rendered-source and visual disposition
 
-1. Inspect the registered original member or a verified extraction of parsed row 1.
-2. Compare its exact resistor/cell arrangements, worked examples, classwork and assignments.
-3. Inventory original circuit diagrams and reconcile any damaged formula notation.
-4. Mark the queue item complete only after source reconciliation.
+WEEK TWO occupies rendered source pages 3–5:
+- The original pages contain text and formulae but no clear resistor/cell connection diagrams.
+- Registered original teaching aids attached to the lesson:
+  - `PHYS-ASSET-T3-W02-SERIES-PARALLEL`
+  - `PHYS-ASSET-T3-W02-CELLS-SERIES-PARALLEL`
+- These are original instructional SVG equivalents, not recovered source images.
+- The recurring provider logo is a watermark, not a teaching asset.
 
-## Checks performed
+## Package mapping
 
-- Body SHA-256 recorded.
-- All 18 practice answers and marking totals checked: 38 marks.
-- Content approval remains `PENDING`; verification remains `DEFERRED`.
-- No importer, database or device test is claimed.
+- Coverage entries `COV-PHYS-T3-W02-OBJ-1` through `OBJ-5` remain `IMPLEMENTED_EQUIVALENT` and now cite the exact original row and both visual assets.
+- Lesson: `SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL`
+- Practice: 20 questions.
+- `content_approval=PENDING`; `verification=DEFERRED`.
 
+## Checks
 
-## Original-source inspection completed — 2026-11-12
-
-- Exact source member: hash-verified original registered .doc; full rendered page range: 3–5.
-- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
-- Source-row disposition: WEEK 2: resistors and cells in series/parallel, equivalent resistance and emf/current relationships. The source provides relations/examples but no clear connection diagrams. Original resistor-network and cell-connection SVGs have been added. Source exercises have no answer/marking key.
-- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
-- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.
+- Original row text and rendered source pages 3–5 inspected.
+- Original archive member hash verified against the source manifest.
+- JSON parse, unique practice IDs, answer presence, marking totals, coverage references and queue recount checked before commit.
+- Full package tests, importer and SVG safety for this commit: pending CI.
