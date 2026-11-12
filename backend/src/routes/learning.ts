@@ -58,7 +58,7 @@ async function studentTopicSequenceLocked(user: AuthUser, topic: any): Promise<b
        FROM topics t
       WHERE t.school_code=$1 AND t.subject_id=$2 AND t.class_name=$3
         AND t.term_label IS NOT DISTINCT FROM $4 AND t.order_index IS NOT NULL
-      ORDER BY t.order_index ASC, t.id ASC`,
+      ORDER BY COALESCE((to_jsonb(t)->>'sequence_rank')::numeric, t.order_index) NULLS LAST, t.order_index NULLS LAST, t.created_at DESC`,
     [topic.school_code, topic.subject_id, topic.class_name, topic.term_label],
   );
   const ids = group.map((row: any) => row.id);
