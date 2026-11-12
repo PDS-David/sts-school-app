@@ -4,6 +4,7 @@ import sourceManifest from './sourceManifest.json' with { type: 'json' };
 import homeEconomics12 from './researched/homeEconomicsTerms1And2.json' with { type: 'json' };
 import homeEconomics3 from './researched/homeEconomicsTerm3Supplements.json' with { type: 'json' };
 import basicScience3 from './researched/basicScienceTerm3.json' with { type: 'json' };
+import basicTechnology12 from './researched/basicTechnologyTerms1And2.json' with { type: 'json' };
 
 export function buildPrimary4CoverageReport() {
   const subjects = (sourceManifest as any).expected_subjects as string[];
@@ -13,12 +14,15 @@ export function buildPrimary4CoverageReport() {
     ...(homeEconomics12 as any).lessons.map((lesson: any) => ({ subject: 'Home Economics', term: lesson.term })),
     ...(homeEconomics3 as any).lessons.map(() => ({ subject: 'Home Economics', term: '3rd Term' })),
     ...(basicScience3 as any).lessons.map(() => ({ subject: 'Basic Science', term: '3rd Term' })),
+    ...(basicTechnology12 as any).lessons.map((lesson: any) => ({ subject: 'Basic Technology', term: lesson.term })),
   ];
   const matrix = subjects.flatMap(subject => terms.map(term => {
     const existing = records.filter(row => row.subject === subject && row.term === term);
     const researched = packages.filter(row => row.subject === subject && row.term === term).length;
     let status = existing.length ? 'SOURCE_ROWS_PRESENT_REVIEW_REQUIRED' : 'MISSING';
-    if (subject === 'Basic Technology' && ['1st Term', '2nd Term'].includes(term)) {
+    if (subject === 'Basic Technology' && ['1st Term', '2nd Term'].includes(term) && researched) {
+      status = 'PROPOSED_LOCAL_ALLOCATION_PENDING_APPROVAL';
+    } else if (subject === 'Basic Technology' && ['1st Term', '2nd Term'].includes(term)) {
       status = 'NO_SEPARATE_TERM_ASSIGNMENT_FOUND';
     } else if (subject === 'Basic Science' && term === '3rd Term' && researched) {
       status = 'RESEARCHED_PROPOSED_TERM_ALLOCATION';
@@ -50,11 +54,12 @@ export function buildPrimary4CoverageReport() {
       {
         subject: 'Basic Technology',
         terms: ['1st Term', '2nd Term'],
-        status: 'NEEDS_SCHOOL_TERM_ALLOCATION',
-        decision: 'Do not invent or duplicate a separate term sequence. NERDC lists Primary 4 Basic Technology topics without term labels. The Lagos State 2021 Primary 4–6 integrated BST scheme presents the Basic Technology sequence in its Third-Term section; no separate First- or Second-Term Basic Technology sequence was found in that scheme.',
+        status: 'PROPOSED_LOCAL_ALLOCATION_PENDING_APPROVAL',
+        proposed_lesson_count: (basicTechnology12 as any).lessons.length,
+        decision: 'NERDC lists Primary 4 Vehicles, Materials and Maintenance, and Basic Motor Vehicle Parts without assigning them to terms. Eight newly authored lessons propose a First/Second-Term progression for these topics. This is a local proposal, not an official NERDC or Lagos State term allocation; the supplied Third-Term source remains preserved.',
         nerdc_source: 'https://nerdc.gov.ng/content_manager/primary/pri4-6_basic_science_technology.pdf',
         state_scheme_source: 'https://classbasic.com/wp-content/uploads/2020/08/Basic-Science-and-Technology-BST-New-Lagos-State-Unified-Scheme-of-Work-for-Primary-4-6-2021-Edition.pdf',
-        required_evidence: 'A school-specific term scheme or owner approval for a clearly labelled supplementary progression.',
+        required_evidence: 'A school-specific term scheme or explicit owner approval of this clearly labelled proposed progression.',
       },
       {
         subject: 'Basic Science',
@@ -71,7 +76,7 @@ export function buildPrimary4CoverageReport() {
         source: 'https://syllabus.ng/primary4-scheme-of-work/home-economics/',
       },
     ],
-    unresolved: matrix.filter(row => row.status === 'MISSING' || row.status === 'NO_SEPARATE_TERM_ASSIGNMENT_FOUND'),
+    unresolved: matrix.filter(row => ['MISSING', 'NO_SEPARATE_TERM_ASSIGNMENT_FOUND', 'PROPOSED_LOCAL_ALLOCATION_PENDING_APPROVAL'].includes(row.status)),
   };
 }
 
