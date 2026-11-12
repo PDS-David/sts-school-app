@@ -98,8 +98,8 @@ A unique construction cannot be completed without the irregular pentagon's origi
 
 The original row also contains construction/evaluation tasks whose diagrams carry dimensions, angles, or answer choices. In particular:
 
-- The irregular pentagon construction and equal-area square task refers to a figure; its side/angle data must be read from the original image.
-- The pentagon with diagonals AD and BD gives BC = 40 mm, CD = 35 mm, DE = 55 mm and ∠DEA = 90° in the text, but AD and BD are figure-dependent. Do not solve the pentagon or its equivalent triangle without those dimensions.
+- The irregular pentagon construction and equal-area square task gives AB=70, BC=40, DE=75 and AE=80, but the figure image64 supplies no CD length or sufficient angles/diagonals to define the polygon uniquely. Its area and the equal-area square diagonal cannot be calculated uniquely from the supplied data.
+- The pentagon with diagonals AD and BD gives BC=40 mm, CD=35 mm, DE=55 mm and ∠DEA=90° in the text, but image65 provides no numerical AD or BD. AE is therefore not calculable; do not import AD=70 from the different Week Three exercise.
 - The triangle/parallelogram exercise gives triangle sides 50 mm, 60 mm and 55 mm; this is solvable from text using Heron's formula, but the requested construction still needs a proper scale drawing.
 - The rectangle-to-square task gives 60 mm by 40 mm; the equal-area square side is √2,400 ≈ 48.99 mm.
 - The three-equilateral-triangle area-sum task gives sides 40 mm, 55 mm and 65 mm. The required resultant triangle's area can be calculated from the sum of the three equilateral-triangle areas, but a unique shape/side set is not specified unless the source's intended construction defines it.
@@ -131,12 +131,13 @@ For an equilateral triangle of side a, area = (√3/4)a². The sum of the three 
 
 If the intended resultant triangle is also equilateral, its side is √8,850 ≈ **94.07 mm**. However, the source says only “another triangle”; it does not say the resultant must be equilateral. Without that condition, infinitely many triangles have the required area and their side lengths are not uniquely determined. This is a source-wording clarification, not a value to assume.
 
-### Source Q2 — Pentagon side AE
+### Source Q2 — Pentagon side AE: figure data is insufficient
 
-The source gives AD = 70 mm, DE = 55 mm and angle DEA = 90°. Triangle ADE is right-angled at E, with AD as its hypotenuse:
-AE = √(AD² − DE²) = √(70² − 55²) = √1,875 ≈ **43.30 mm**.
+The source text gives BC=40 mm, CD=35 mm, DE=55 mm and angle DEA=90°. The attached source figure (image65) labels AD and BD as diagonals but supplies no numerical values for either. In particular, AD=70 mm belongs to a different Week Three pentagon exercise and must not be imported into this question.
 
-The remaining pentagon construction and equal-area reduction must follow the source figure for the locations of C and the diagonals; the side AE value is independently determined by the text.
+Because AD is not given, AE cannot be calculated from the right triangle ADE. The correct relation is:
+AE = √(AD² − DE²) = √(AD² − 55²),
+but AD is unknown. BD is also unquantified. Therefore neither a unique pentagon nor its equal-area triangle can be constructed from the supplied numerical data. Obtain the intended AD/BD dimensions or a corrected fully dimensioned source figure; do not report 43.30 mm as this question's answer.
 
 The multiple-choice questions tied to figures remain unkeyed until each image is faithfully bound and its labels/options are legible. No option letters have been guessed.
 
@@ -146,3 +147,11 @@ The multiple-choice questions tied to figures remain unkeyed until each image is
 - Each question's criterion marks sum exactly to its stated marks (3 + 3 + 3 + 3 + 3 + 3 = 18).
 - No schema validation, hash refresh script, subject compiler/importer, database integration, student UI rendering or deployment was run in this work step.
 - Content approval remains pending; verification remains deferred; source-media reuse approval remains pending.
+
+## Source figure constraint audit — correction
+
+The figure audit confirms that the two source pentagon assessment items cannot be completed numerically from the supplied evidence:
+- Evaluation Q1 / image64: AB=70, BC=40, DE=75 and AE=80 are printed, but CD and any sufficient independent angle/diagonal constraint are absent. The polygon area and equal-area square are not uniquely determined.
+- Evaluation Q2 / image65: BC=40, CD=35, DE=55 and angle DEA=90° are printed. AD and BD are merely labelled; no numerical values appear in the image. AE is therefore unknown, with AE=√(AD²−55²). The earlier 43.30 mm value must not be used here because AD=70 belongs to the separate Week Three pentagon exercise.
+
+These are source-data defects, not student calculation errors. Keep the two tasks disabled or present them as explicit “identify the missing data” exercises until the source author supplies the missing dimensions. The other text-complete numerical questions Q3–Q5 remain keyed above.
