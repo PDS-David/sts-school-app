@@ -8708,8 +8708,8 @@
     {
       "id": "OI-FM-006",
       "kind": "VERIFICATION",
-      "detail": "Technical verification is being run through PR #639 CI. Earlier PR head checks passed for the Further Mathematics package and SS1 integrity, but the all-subject compiler failed on unrelated Yoruba lesson identity/hash SUP-SS1-YO-T3-W08-EDE. A fresh CI run after the latest package updates is required; app/browser student rendering has not been verified.",
-      "required_action": "Record final current-head Further Mathematics schema/hash/SVG/compiler checks and resolve the unrelated Yoruba blocker in the Yoruba owner's scope; then verify actual student-facing app rendering.",
+      "detail": "Technical verification is being run through follow-up PR #646. The prior run on the post-merge branch identified six SVG metadata byte/hash mismatches and missing coverage linkage for COV-FM-T1-W06-OBJ-1; both have been corrected in PR #646. The all-subject compiler previously also failed on unrelated Yoruba lesson identity/hash SUP-SS1-YO-T3-W08-EDE. Current-head package schema/hash/SVG/compiler checks and app/browser student rendering remain to be verified.",
+      "required_action": "Complete current-head PR #646 package integrity, Further Mathematics compilation and all-subject checks; resolve unrelated Yoruba failure in the Yoruba owner's scope; then verify actual student-facing app rendering.",
       "affected_ids": [
         "SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS",
         "SUP-SS1-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES",
