@@ -39,7 +39,8 @@ export function buildHomeEconomicsTerm3SupplementPlan() {
       order_index: lesson.append_order_index,
       title: lesson.title,
       source_reference: [
-        'PROVENANCE',
+        `CURRICULUM_KEY: ${lesson.id}`,
+      'PROVENANCE',
         'Material type: researched, newly authored supplement; not part of the supplied sewing source notes.',
         'Scheme basis: Lagos State Government Ministry of Education Unified Scheme of Work for Primary/Basic 4, transcribed by Syllabus.ng.',
         'Scheme reference: https://syllabus.ng/primary4-scheme-of-work/home-economics/',
