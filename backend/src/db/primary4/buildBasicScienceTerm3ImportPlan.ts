@@ -57,5 +57,5 @@ export function buildBasicScienceTerm3ImportPlan() {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  process.stdout.write(`${JSON.stringify(buildBasicScienceTerm3ImportPlan(), null, 2)}\\n`);
+  process.stdout.write(`${JSON.stringify(buildBasicScienceTerm3ImportPlan(), null, 2)}\n`);
 }
