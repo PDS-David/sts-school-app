@@ -102,6 +102,7 @@ test('archive corrections are withheld until explicit owner approval and never f
   assert.equal(safe.source_reference, null);
   assert.equal(safe.summary, null);
   assert.equal(safe.generated_assessment_id, null);
+  assert.equal(safe.title, correction.title);
 });
 
 test('superseded Primary 4 outline and merged rows are explicitly hidden from student delivery', () => {
