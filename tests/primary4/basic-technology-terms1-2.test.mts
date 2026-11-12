@@ -44,5 +44,6 @@ test('proposed Basic Technology lessons remain withheld until owner approval and
     order_index: topic.order_index, title: topic.title, source_reference: topic.source_reference,
   });
   assert.equal(result?.kind, 'withheld');
+  assert.equal(result?.source, 'researched-package');
   if (result?.kind === 'withheld') assert.match(result.reason, /pending owner approval and independent verification/);
 });
