@@ -9,6 +9,9 @@ test('Primary 4 coverage report accounts for all 33 subject-term combinations', 
   assert.equal(report.combination_count, 33);
   assert.equal(report.export_record_count, 248);
   assert.equal(report.matrix.length, 33);
+  assert.equal(report.researched_lesson_count, 36);
+  assert.equal(report.covered_combination_count, 33);
+  assert.equal(report.pending_approval_combination_count, 6);
 });
 
 test('coverage report distinguishes researched packages from missing term allocation', () => {
