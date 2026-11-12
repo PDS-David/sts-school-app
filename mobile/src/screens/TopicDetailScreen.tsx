@@ -56,7 +56,7 @@ function hasSafeSvgStyles(source: string): boolean {
 
 export const WIDE_PICTURE_PX = 1500;
 export const WIDE_PICTURE_SCALE = 0.45;
-function LessonImage({ asset, token, onRetry }: { asset: any; token: string; onRetry: () => void }) {
+export function LessonImage({ asset, token, onRetry }: { asset: any; token: string; onRetry: () => void }) {
   const [ratio, setRatio] = useState(4 / 3);
   const [srcWidth, setSrcWidth] = useState(0);
   const [failed, setFailed] = useState(false);
