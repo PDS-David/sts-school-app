@@ -665,3 +665,80 @@ Public opinion can inform policy, reveal needs and channel views to government, 
 - `GOVERNMENT-T3-W05-WEEKEND-MCQ-AMBIGUITY` — resolve the competing definitions, category mismatch and coup wording before keying.
 
 No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-WK-T3-W06 — Pressure Groups indexing
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and high-level legal/content review only. No lesson, answer key, marks, correction, asset or parser rule is authored here. The source's violent-method item is recorded only as a safety/content defect; no operational details are reproduced or expanded.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37 on the original legacy `.doc`.
+- Complete span: lines 558–713; UTF-8 span SHA-256: `9f97e6fbb99bc5bc4941ac40b48d947efcd4d8253aa61e65233aa728a232998a`.
+- Printed label: `WEEK SIX` at line 558; topic: `PRESSURE GROUPS` at line 559.
+- Scheme entry 6 (preamble lines 22–24) covers meaning/types, functions, factors aiding/impeding success, modes of operation and dangers.
+- Locators refer to Antiword line numbers, not page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are empty rather than inferred from a different extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-W06-SCHEME-PRESSURE-GROUPS | Scheme entry 6 mapping | PARTIAL |
+| COV-GOV-T3-W06-MEANING-TYPES | Meaning/types, lines 566–596 | PARTIAL |
+| COV-GOV-T3-W06-FUNCTIONS | Functions objective from scheme/content outline | UNRESOLVED |
+| COV-GOV-T3-W06-FACTORS | Success/weakness factors, lines 598–632 | PARTIAL |
+| COV-GOV-T3-W06-MODES | Modes of operation, lines 634–650 | PARTIAL |
+| COV-GOV-T3-W06-DEMERITS | Demerits/dangers, lines 652–669 | PARTIAL |
+| COV-GOV-T3-W06-GENERAL-REVISION | General revision, lines 675–684 | PARTIAL |
+| COV-GOV-T3-W06-READING | Reading pointers, lines 686–688 | PARTIAL |
+| COV-GOV-T3-W06-ASSESSMENT-KEYS | All exercise blocks | UNRESOLVED |
+| COV-GOV-T3-W06-WEEKEND-MCQS | Weekend MCQs, lines 690–706 | PARTIAL |
+
+Ten coverage entries and nine linked package open items were added. The functions objective is explicitly UNRESOLVED because no distinct functions section appears in the teaching span.
+
+### Meaning and types — lines 566–596
+
+The central definition—an organized group of people with shared interests seeking to influence government policy—is broadly sound. The listed types are economic, professional, occupational, educational, religious, social, ethnic/cultural and anomic. These are analytical categories, not mutually exclusive boxes: professional and occupational groups can overlap. Some examples need exact names or better identification: “Nigeria Union of Journalist” and “Academic Staff Union of University (A.S.S.U.)” should be checked against official organization names; “Arewa” is too broad to identify one specific organization. The description of anomic groups should be taught as a theoretical ideal type, not a universal rule that every such group necessarily disappears after achieving an aim.
+
+### Functions and organizational factors — lines 598–632
+
+The scheme and content outline both name functions, but the body moves from types to factors aiding effective operation, weaknesses, techniques and demerits without a separate functions section. The definition's statement that pressure groups seek to influence policy does not fully satisfy the functions objective. It remains UNRESOLVED; no missing section has been invented.
+
+The success/weakness lists include membership size, unity, funding, leadership, government attitude, organization, literacy/political education and dedication. These are context-dependent factors, not deterministic rules. Large membership alone does not guarantee influence; strategy, public legitimacy, issue salience, resources, internal organization and access to decision-makers also matter. “Illiteracy” is too broad as a causal label; political education and access to information are more precise concepts.
+
+### Modes of operation and dangers — lines 634–669
+
+The source lists dialogue, ultimatums, lobbying, demonstrations, strikes, mass-media campaigns and open-air campaigns. These should be distinguished by their legality and peaceful character; industrial action is subject to applicable labour law. The source also labels violence as a technique at lines 646–647. That is dangerous and unlawful conduct, not a legitimate pressure-group method. This note does not repeat or expand the source's operational examples. Any later correction should replace that item with lawful, peaceful civic participation.
+
+The demerits section generalizes that pressure groups are self-centred, elitist, lawless, destabilizing or corrupt. Pressure groups can also advocate public interests, rights and minority concerns. Peaceful lobbying, demonstrations, strikes and boycotts are not inherently unlawful or corrupt; lawful lobbying is distinct from bribery. Group support for a political party does not itself make a government illegitimate; legitimacy depends on constitutional and electoral rules. Disorder or violence may occur in particular cases but is not an inherent feature of every pressure group.
+
+### Assessment and reading-marker audit
+
+- `EVALUATION QUESTIONS`: line 614; two questions at lines 615–616.
+- `EVALUATION QUESTIONS`: line 671; two questions at lines 672–673.
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 675; six questions at lines 676–684. Questions 1–3 concern pressure groups. Questions 4–6 concern judicial independence and executive functions, outside this scheme entry.
+- `READING ASSIGNMENT`: line 686; `Essential Government` pp. 75–77 and `Comprehensive Government` pp. 69–71 at lines 687–688. Editions/publication details are absent and neither book was inspected.
+- `WEEKEND ASSINGMENT`: line 690; five MCQs at lines 691–706. Q1 blurs professional and occupational categories. Q2 makes a broad claim about limited membership. Q3 tests policy influence. Q4 includes riot among the options even though violent conduct must not be normalized as a legitimate method. Q5 lists both dedication/unity and large membership as factors already identified, so it has more than one plausible correct option.
+- `THEORY`: line 708; two prompts at lines 709–711.
+- Total: **17 exercise stems** (2 + 2 + 6 + 5 + 2). No source answer key, marks or marking criteria are supplied. No answers or marks were invented.
+
+### Dated legal reference consulted
+
+**Constitution of the Federal Republic of Nigeria, 1999, updated with the First–Fifth Alterations** (PLAC, third revision October 2023; reprint September 2024), sections 39–40 on expression and peaceful assembly/association: https://placng.org/i/wp-content/uploads/2023/11/Constitution-of-the-Federal-Republic-of-Nigeria-1999-Updated.pdf
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W06-FUNCTIONS-MISSING` — functions are listed in the scheme/content outline but not taught in a distinct section.
+- `GOVERNMENT-T3-W06-TYPES-FACT` — verify organization names and refine overlapping group categories.
+- `GOVERNMENT-T3-W06-FACTORS-FACT` — qualify context-dependent factors and remove broad/stigmatizing generalizations.
+- `GOVERNMENT-T3-W06-VIOLENCE-FACT` — replace the source's violent-method item with lawful peaceful civic methods; no operational detail is provided.
+- `GOVERNMENT-T3-W06-DEMERITS-FACT` — distinguish legitimate advocacy from unlawful conduct and corruption.
+- `GOVERNMENT-T3-W06-REVISION-MISALIGNMENT` — resolve the judiciary/executive questions' placement.
+- `GOVERNMENT-T3-W06-READING-VERIFICATION` — verify exact editions and page contents.
+- `GOVERNMENT-T3-W06-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 17 stems.
+- `GOVERNMENT-T3-W06-WEEKEND-MCQ-AMBIGUITY` — correct category ambiguity and the unsafe/invalid technique option before keying.
+
+No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved in source locators. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
