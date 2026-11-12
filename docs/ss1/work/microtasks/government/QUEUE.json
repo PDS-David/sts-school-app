@@ -36,10 +36,10 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 32,
     "VISUAL_DISPOSITION": 2,
-    "LESSON": 17
+    "LESSON": 18
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 21,
+    "IMPLEMENTED_TESTING_DEFERRED": 22,
     "PENDING": 46,
     "BLOCKED": 1
   },
@@ -1044,8 +1044,8 @@
         "GOV-INV-T2",
         "GOV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12. Verified source member SHA-256 bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782 in archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e. Inspected Week Two body children 89–148 (60 paragraphs); C14N SHA-256 7e79e0f9de9f1909a853fd09d50ecc80bc09122120fcd4c7029eee926f605782. Added nine objective-level entries for Western/Eastern indirect rule, failure reasons, merits/demerits, positive/negative colonial impacts, evaluation marker and workbook pointer. Updated scheme regional-coverage and colonial-impacts entries to PARTIAL. Recorded the scheme 'North, West and South' versus body 'North, West and East' discrepancy; updated the W01 open item rather than silently harmonizing. Fact-checked the 1929 Women's War, Mary Slessor, Ovonramwen, Jaja, 1922 Clifford Constitution/elections, West African Currency Board, Bank of British West Africa and ECOWAS against academic, institutional and official sources. No question stems follow EVALUATION. Added thirteen precise open items and lesson task GOV-LES-T2-W02-CORRECTED-WEEK. No source rule, lesson body, answer key, mark or asset was written. No tests/typecheck/importer/compiler run; testing deferred by owner.",
       "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
     },
     {
@@ -2545,6 +2545,45 @@
       "status": "PENDING",
       "implementation_reference": "Created after GOV-WK-T2-W01 on 2026-11-12. Required to correct colonial chronology and motives, the Berlin Conference, indirect-rule history and regional variation, and unsupported stereotypes about Islam/literacy. Original practice only; no source question stems are present in the EVALUATION block.",
       "completion_condition": "A visibly original supplement teaches all supported Week One objectives with recomputed body_sha256, dated/citable provenance and original keyed formative practice; source questions/marks are not invented; the colonial-impacts scheme objective remains pending until Week Two indexing; content approval stays PENDING and verification DEFERRED; no source bytes, schema or shared code are edited."
+    },
+    {
+      "id": "GOV-LES-T2-W02-CORRECTED-WEEK",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "2nd Term Week Two, word/document.xml w:body children 89–148; indirect rule in Western/Eastern Nigeria and colonial impacts in West Africa",
+      "objective": "Author one visibly original, balanced and historically accurate supplement for Week Two. Explain the regional variation of indirect rule in Western Nigeria, including the Oyo example and checks on the Alaafin, without generalizing to all Yoruba communities or using religious stereotypes. Explain Eastern Nigerian political diversity and the use of warrant chiefs; treat the 1929 Women's War as a multi-cause expression of political agency and resistance, not a one-cause proof of system failure. Distinguish Mary Slessor's missionary work from indirect rule. Present merits/demerits as context-dependent effects. Correct the constitutional/electoral, currency/banking and political-party chronology; correct the Ovonramwen and Jaja exile/death accounts; qualify claims about economic dependence, cultural imperialism, language relations and industrialization. Preserve the scheme's 'South' versus body 'East' discrepancy. The EVALUATION marker has no question stems, so create only clearly labelled original formative practice with complete answers and criterion-level marks; do not invent source questions or keys. Do not copy unavailable workbook material. Add dated, citable provenance and keep content approval PENDING and verification DEFERRED.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-PRE-T2.md",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-LES-T2-W02-CORRECTED-WEEK.md"
+      ],
+      "depends_on": [
+        "GOV-SRC-T2",
+        "GOV-WK-T2-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created after GOV-WK-T2-W02 on 2026-11-12. Required to correct regional political descriptions, the 1929 Women's War, Mary Slessor attribution, constitutional/electoral and currency/banking chronology, Ovonramwen/Jaja histories, and the balanced account of colonial impacts. Original practice only; no source question stems are present.",
+      "completion_condition": "A visibly original supplement teaches all supported Week Two objectives with recomputed body_sha256, dated/citable provenance and original keyed formative practice; source questions/marks are not invented; scheme 'South' versus body 'East' discrepancy is preserved; content approval stays PENDING and verification DEFERRED; no source bytes, schema or shared code are edited."
     }
   ],
   "review": {
@@ -2565,7 +2604,6 @@
     "GOV-LES-T1-W01-CORRECTED-WEEK",
     "GOV-REV-T2",
     "GOV-MARK-T2",
-    "GOV-WK-T2-W02",
     "GOV-WK-T2-W03",
     "GOV-WK-T2-W04",
     "GOV-WK-T2-W05",
@@ -2605,6 +2643,7 @@
     "GOV-LES-T1-W09-CORRECTED-WEEK",
     "GOV-LES-T1-W10-CORRECTED-WEEK",
     "GOV-LES-T1-W10-CORRECTED-WEEK",
-    "GOV-LES-T2-W01-CORRECTED-WEEK"
+    "GOV-LES-T2-W01-CORRECTED-WEEK",
+    "GOV-LES-T2-W02-CORRECTED-WEEK"
   ]
 }
