@@ -9779,6 +9779,50 @@
         "locator": "Source SS1-SRC-2c924c964660:BODY:37902c962443675e3f808e940475f47a69fe6f6823f3332964cb53d7aa3dfe46; parsed row 1 WEEK TWO; public close-equivalent Week Two lines 109–233.",
         "explanation": "The replacement SUP-SS1-PHYSICS-T2-W02-THERMOMETERS-EVAPORATION (body SHA-256 9abfc4d9cc4eca3fda047aef831a682f316cbbdda540c3f95ec44728ab31ed02) covers thermometer definition and thermometric property; five thermometer types and their measurable properties; mercury/alcohol comparison; water's unsuitability; clinical thermometer use/safety; evaporation and boiling; fixed points and thermometer scale calculations; absolute zero. It corrects “resistant thermometer” to “resistance thermometer” and mercury freezing point to about −38.8 °C (NIST). The source boiling MCQ is retained as a non-blocking ambiguity with a clearer replacement question: heat input affects heating rate, external pressure determines boiling point. No third-party wording copied. Content approval PENDING; verification DEFERRED."
       }
+    },
+    {
+      "id": "PHYS-COR-T1-W02-BINDING",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "source_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206",
+      "source_lesson_id": "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e",
+      "body_sha256": "b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e",
+      "replacement_id": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS",
+      "reason": "Replace the original First Term Week Two source body for learner delivery with the authored measurement-basics primary supplement. Companion supplements SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING and SUP-SS1-PHYSICS-T1-W02-VOLUME-MEASUREMENT deliver the row's remaining micrometer and volume objectives. The correction prevents the source's inconsistent Example 3.2 result (17.1 mm versus the stated 17.11 mm = 1.711 cm) and extraction-only control-character artefact from being presented as authoritative student text. The original .doc and parsed source body remain unchanged.",
+      "evidence": {
+        "locator": "Hash-verified First Term source PDF, pages 7–10; Example 3.2 on page 9; exact original source row identity SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e.",
+        "explanation": "Primary replacement lesson covers measurement techniques, length instruments, vernier callipers, time, mass and weight. Companion micrometer lesson covers least count, reading and zero correction; companion volume lesson covers regular solids, graduated cylinder, meniscus and displacement. New original SVG assets include micrometer, vernier, volume-displacement and clear worked reading examples. Proposed teacher-only answer key is PHYS-LES-T1-W02-KEY-ASSESSMENT.md. Source scope questions and content approval remain PENDING.",
+        "objective_scope_audit": {
+          "primary_lesson_id": "SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS",
+          "companion_lesson_ids": [
+            "SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING",
+            "SUP-SS1-PHYSICS-T1-W02-VOLUME-MEASUREMENT"
+          ],
+          "coverage_ids": [
+            "COV-PHYS-T1-W02-OBJ-1",
+            "COV-PHYS-T1-W02-OBJ-2",
+            "COV-PHYS-T1-W02-OBJ-3",
+            "COV-PHYS-T1-W02-OBJ-4",
+            "COV-PHYS-T1-W02-OBJ-5",
+            "COV-PHYS-T1-W02-OBJ-6",
+            "COV-PHYS-T1-W02-OBJ-7",
+            "COV-PHYS-T1-W02-OBJ-8",
+            "COV-PHYS-T1-W02-OBJ-9",
+            "COV-PHYS-T1-W02-OBJ-10",
+            "COV-PHYS-T1-W02-OBJ-11",
+            "COV-PHYS-T1-W02-OBJ-12",
+            "COV-PHYS-T1-W02-OBJ-13",
+            "COV-PHYS-T1-W02-OBJ-15",
+            "COV-PHYS-T1-W02-OBJ-16"
+          ],
+          "teacher_key": "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W02-KEY-ASSESSMENT.md",
+          "unresolved_scope_items": [
+            "COV-PHYS-T1-W02-OBJ-14 textbook reading unavailable",
+            "COV-PHYS-T1-W02-OBJ-15 figure-dependent source MCQs and missing vernier option",
+            "COV-PHYS-T1-W02-OBJ-16 ambiguous theory wording and unclear source scale figures"
+          ],
+          "approval_status": "PENDING; this correction is a technical delivery binding, not teacher approval."
+        }
+      }
     }
   ],
   "assets": [
@@ -14223,15 +14267,15 @@
     {
       "id": "PHYSICS-T1-W02-MICROMETER",
       "kind": "CONTENT",
-      "detail": "Original PDF page 9 confirms the arithmetic: sleeve 17.00 mm + thimble 11 × 0.01 mm = 17.11 mm = 1.711 cm. The printed '17.1 mm' is inconsistent with the stated components and centimetre conversion. The companion lesson teaches the full least-count/zero-error method; a new clear replacement-reading SVG and proposed teacher key are registered. The original source row still needs a delivery correction binding so the inconsistent printed result is not delivered as correct.",
-      "required_action": "Complete the delivery correction binding after the source alias/teacher disposition is approved. Use 17.11 mm (1.711 cm) for the stated worked values; do not alter the original .doc.",
+      "detail": "The correction binding PHYS-COR-T1-W02-BINDING now maps the exact original Week Two source row to the measurement-basics primary replacement, with micrometer and volume companion lessons. Original PDF page 9 confirms the correct worked reading 17.11 mm = 1.711 cm; the source's printed 17.1 mm is inconsistent. New clear original reading examples are registered. The original .doc is unchanged; content approval remains PENDING.",
+      "required_action": "Teacher reviews and approves the corrected Example 3.2 and companion micrometer lesson before publication. The correction binding is technical, not a content approval.",
       "affected_ids": [
         "COV-PHYS-T1-W02-OBJ-4",
         "COV-PHYS-T1-W02-OBJ-7",
         "PHYS-LES-T1-W02-MICROMETER-READING",
         "PHYS-COR-T1-W02-BINDING"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "PHYSICS-T1-W02-VOLUME-GAP",
