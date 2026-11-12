@@ -1035,8 +1035,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 8 of SS1-03 parsed_rows.json (week label \"WEEK NINE\", title \"LOGIC\", 11019 characters). Existing coverage COV-FM-T2-R08 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "parsed row 8 of SS1-03 parsed_rows.json (week label \"WEEK NINE\", title \"LOGIC\", 11019 characters). Existing coverage COV-FM-T2-R08 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).Week Nine objectives COV-FM-T2-W09-OBJ-1..4 are mapped to replacement SUP-SS1-FURTHER-MATHEMATICS-T2-W09-LOGIC. Source defects in the polygon biconditional, conditional truth assignment and weekend MCQ options are recorded in OI-FM-T2-W09-LOGIC-ERRORS. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -1073,8 +1073,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 9 of SS1-03 parsed_rows.json (week label \"WEEK TEN\", title \"Logical reasing continues\", 3203 characters). Existing coverage COV-FM-T2-R09 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). SS1-03 records 45 characters of equation content lost from this row (parsed_rows eqExtra). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "parsed row 9 of SS1-03 parsed_rows.json (week label \"WEEK TEN\", title \"Logical reasing continues\", 3203 characters). Existing coverage COV-FM-T2-R09 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). SS1-03 records 45 characters of equation content lost from this row (parsed_rows eqExtra). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).Week Ten objectives COV-FM-T2-W10-OBJ-1..3 are mapped to replacement SUP-SS1-FURTHER-MATHEMATICS-T2-W10-LOGICAL-CONNECTIVES-TRUTH-TABLES. Source errors in p∧¬p, distributive law, false tautology and weekend contradiction claim are recorded in OI-FM-T2-W10-LOGIC-IDENTITY-ERRORS. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -3495,6 +3495,75 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W08-TRIGONOMETRIC-RATIOS]. 4 objectives; 12 questions; 35 marks. Coverage COV-FM-T2-W08-OBJ-1..3 and row R07 linked. Visual assets and ambiguous graph notation remain open. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Replacement covers scheme objectives, corrected identities and quadrant rules, and includes keyed practice. Visual assets and ambiguous graph notation remain open; approval/verification pending."
+    },
+    {
+      "id": "FM-LES-T2-W09-LOGIC",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 09; source heading LOGIC",
+      "objective": "Author a complete lesson on propositions, negation, conditional and biconditional statements, related conditionals and chain-rule arguments.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T2-W09-LOGIC.md"
+      ],
+      "depends_on": [
+        "FM-WK-T2-W09"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W09-LOGIC]. 4 objectives; 10 practice questions; 26 marks. Coverage COV-FM-T2-W09-OBJ-1..4 and row R08 linked. Source defects recorded. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement covers all scheme objectives with correct truth tables, conditionals and valid argument examples; keyed practice and objective coverage linked. Approval/verification pending."
+    },
+    {
+      "id": "FM-LES-T2-W10-LOGICAL-CONNECTIVES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 10; source heading Logical reasoning continues",
+      "objective": "Author a complete lesson on conjunction, disjunction, truth tables, tautologies, contradictions and logical equivalence, correcting false source identities.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T2-W10-LOGICAL-CONNECTIVES.md"
+      ],
+      "depends_on": [
+        "FM-WK-T2-W10",
+        "FM-LES-T2-W09-LOGIC"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W10-LOGICAL-CONNECTIVES-TRUTH-TABLES]. 4 objectives; 10 practice questions; 26 marks. Coverage COV-FM-T2-W10-OBJ-1..3 and row R09 linked. Source false claims corrected. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement provides correct truth tables, tautology/contradiction examples and equivalence laws with keyed practice; source false identities recorded. Approval/verification pending."
     }
   ],
   "review": {
