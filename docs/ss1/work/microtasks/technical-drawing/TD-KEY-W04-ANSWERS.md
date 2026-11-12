@@ -20,7 +20,7 @@
 
 ## Figure-dependent items
 
-- Source worked example gives X=280 mm and Y=130 mm for the 1:2.5 scale. Weekend Q1 asks X and Z on a different source figure; the scale diagram and pointer locations must be read from its registered original asset before selecting an option.
+- Source worked example gives X=280 mm and Y=130 mm for the 1:2.5 scale. Weekend Q1 / image42 (two plain scales): top scale reads X=85 mm (80 mm main reading + 5 mm left subdivision); lower scale reads Z=370 mm (300 mm main reading + 70 mm left subdivision). Correct option: **C — 85 mm and 370 mm**.
 - Weekend theory Q1 (1:2 drawing) and the 1:2 gate exercise must use the source figure dimensions, not a proportional guess from extracted text.
 - Ornamental gate: source provides overall length 2100 mm and post width 300 mm, but the WMF preview's proportions conflict with the stated ratio. The A–E dimensions cannot be safely measured until a corrected native drawing/export is supplied.
 - Evaluation Q6: source says 20 cm represents 1 m and requests millimetre subdivisions up to 6 m. At RF 1:5, a 1 mm actual subdivision would be 0.2 mm on paper, requiring 1,000 divisions per metre. Ten subdivisions instead represent decimetres. The source likely confuses millimetres and decimetres, but only the author can approve a correction.
