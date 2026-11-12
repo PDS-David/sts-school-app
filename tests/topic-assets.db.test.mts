@@ -30,6 +30,7 @@ if (!URL_) {
   assert.ok(['localhost', '127.0.0.1', '::1', '[::1]'].includes(host), `refusing non-local database host: ${host}`);
   process.env.DATABASE_URL = URL_;
   process.env.NODE_ENV = 'development';
+  process.env.TERM_PIN_ENFORCED = 'false';
 
   const TEST_SC = 'zz_t2test';
   const sha = (b: Buffer) => createHash('sha256').update(b).digest('hex');
@@ -283,6 +284,26 @@ if (!URL_) {
     assert.equal((await get('/learning/topics/abc/assets', tokenA)).status, 400);
     assert.equal((await get('/learning/assets/abc', tokenA)).status, 400);
     assert.equal((await get('/learning/assets/0', tokenA)).status, 400);
+  });
+
+  test('endpoint: sequence-locked topic assets stay hidden until the prerequisite topics are passed', async () => {
+    const lockedList: any = await (await get(`/learning/topics/${topicId['Music|4']}/assets`, tokenA)).json();
+    assert.deepEqual(lockedList.assets, []);
+    const assetId = (await query(
+      `SELECT a.id FROM topic_assets a JOIN topics t ON t.id=a.topic_id WHERE t.school_code=$1 AND a.asset_key='W4-1'`,
+      [TEST_SC],
+    )).rows[0].id;
+    assert.equal((await get(`/learning/assets/${assetId}`, tokenA)).status, 404);
+
+    // Topic order 4 is available only after the preceding ordered topics
+    // (orders 2 and 3) have been passed by this student.
+    await query(
+      `INSERT INTO topic_completions(student_id, topic_id, passed)
+       VALUES ($1, $2, true), ($1, $3, true)`,
+      [created.studentIds[0], topicId['Music|2'], topicId['Music|3']],
+    );
+    const unlocked: any = await (await get(`/learning/topics/${topicId['Music|4']}/assets`, tokenA)).json();
+    assert.deepEqual(unlocked.assets.map((asset: any) => asset.asset_key), ['W4-1']);
   });
 
   test('endpoint: student in the right class sees ordered, displayed assets (metadata only, no bytes)', async () => {
