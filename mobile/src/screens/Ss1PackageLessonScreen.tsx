@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Card, SectionHeader } from '../components/UI';
+import { getSecureItem } from '../api/secureTokenStorage';
+import { LessonImage } from './TopicDetailScreen';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 
 export default function Ss1PackageLessonScreen({ route }: any) {
   const { lesson } = route.params as { lesson: any };
   const [revealed, setRevealed] = useState<Record<number, boolean>>({});
+  const [token, setToken] = useState<string | null>(null);
+  const [assetAttempt, setAssetAttempt] = useState(0);
+  useEffect(() => {
+    let active = true;
+    getSecureItem('access_token').then(value => { if (active) setToken(value); }).catch(() => {});
+    return () => { active = false; };
+  }, []);
   return (
     <ScrollView style={{ flex: 1, backgroundColor: Colors.background }} contentContainerStyle={{ padding: Spacing.md }}>
       <Card>
         <Text style={styles.meta}>{lesson.canonical_subject} · {lesson.term}</Text>
         <SectionHeader title={lesson.title} />
         <Text style={styles.body}>{lesson.body}</Text>
+        {lesson.assets?.length > 0 && token ? (
+          <View style={{ marginTop: Spacing.md }}>
+            {lesson.assets.map((asset: any) => (
+              <LessonImage key={`${asset.id}:${assetAttempt}`} asset={asset} token={token} onRetry={() => setAssetAttempt(value => value + 1)} />
+            ))}
+          </View>
+        ) : null}
         <Text style={styles.heading}>Learning objectives</Text>
         {lesson.objectives.map((objective: string, index: number) => (
           <Text key={index} style={styles.objective}>{index + 1}. {objective}</Text>
