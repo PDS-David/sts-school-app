@@ -5698,35 +5698,9 @@
       "blocks_delivery": false
     },
     {
-      "id": "TD-T2-W08-W09-TEACHING-ROW-MAPPING",
-      "kind": "CONTENT",
-      "detail": "Week 8 and Week 9 both list “Equal area of figures”. Their exact scheme rows are hash-accounted and classified SCHEME_ONLY, but the exact parsed-body identity and scope of the combined Week 8–9 teaching row are not recorded in current TD evidence. Neither objective has a confirmed lesson_id binding. The combined row identity is now recorded in TD-WK-W08-W09.md and the independent supplement is bound to both Week 8 and Week 9 coverage entries.",
-      "required_action": "Retain the combined source row without splitting it; review the lesson mapping during formal teacher/content approval.",
-      "affected_ids": [
-        "COV-TD-T2-SCH-W08",
-        "COV-TD-T2-SCH-W09",
-        "SS1-SRC-af4868d2c026-R010",
-        "SS1-SRC-af4868d2c026-R011",
-        "TD-WK-W08-W09"
-      ],
-      "blocks_delivery": false
-    },
-    {
-      "id": "TD-T2-W10-TEACHING-ROW-MAPPING",
-      "kind": "CONTENT",
-      "detail": "Week 10 scheme objective “Tangency” is hash-accounted and classified SCHEME_ONLY, but the exact parsed-body identity and scope of the Week 10 teaching row are not recorded in current TD evidence. No lesson ID binding is confirmed. Resolved: TD-WK-W10.md records the exact parsed row 18 identity/body hash, and COV-TD-T2-W10-TANGENCY now binds the source row to the Week Ten tangency supplement.",
-      "required_action": "Retain the combined source row identity and verify the binding during teacher/content approval.",
-      "affected_ids": [
-        "COV-TD-T2-SCH-W10",
-        "SS1-SRC-af4868d2c026-R012",
-        "TD-WK-W10"
-      ],
-      "blocks_delivery": false
-    },
-    {
       "id": "TD-T2-W02-FIGURES",
       "kind": "CONTENT",
-      "detail": "Nine unique DrawingML image parts are inventoried. A VML arc overlay at body child 287 belongs to Example 2 and is already included in image12.png/F04. The Week Two general-evaluation Q4 refers to an arc “shown below”, but no arc/figure is attached to that question in the DOCX or rendered PDF; this is a distinct missing-source blocker.",
+      "detail": "Nine Week Two source figures have been registered as exact original-media assets and bound to the Week Two lesson; the package and asset regression tests verify all nine file hashes and byte counts. One separate general-evaluation Q4 arc illustration is genuinely absent from the supplied DOCX and rendered PDF. Keep only that missing arc as the residual blocker; do not reuse the Example 2 VML arc.",
       "required_action": "Complete the nine existing image derivative tasks and obtain/restore the missing q4 arc figure from the original source author. Do not reuse the Example 2 VML arc as the q4 figure.",
       "affected_ids": [
         "TD-ASSET-W02-F01",
@@ -5747,28 +5721,6 @@
       "blocks_delivery": true
     },
     {
-      "id": "TD-T2-W03-FIGURES",
-      "kind": "CONTENT",
-      "detail": "The Week Three teaching row contains 38 w:drawing and 21 w:pict anchors; the text refers to figures “above/below”. These drawings are load-bearing for polygon construction and are absent from the text extraction.",
-      "required_action": "Complete TD-VIS-W03 by inspecting every source figure, recording its construction purpose and dimensions/labels, and binding a faithful derivative with provenance or documenting a precise exclusion. Do not invent diagrams.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf",
-        "TD-VIS-W03"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "TD-T2-W03-NOTATION",
-      "kind": "CONTENT",
-      "detail": "The Week Three extraction loses mathematical notation: 27 superscript runs occur; degree values are flattened (e.g. “3600” at line 807 and “450” at line 963); line 959 reads “Determine the size of the exterior angle thus: .” where an equation object was not extracted. Equation-aware extraction recovered about 38 more characters than plain extraction, but exact missing notation is not recorded.",
-      "required_action": "Complete TD-FACT-W03-NOTATION by inspecting the original DOCX/Equation Native content, recording exact values and locators, and adding a same-term correction or supplement only where required. Do not guess any angle or equation.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf",
-        "TD-FACT-W03-NOTATION"
-      ],
-      "blocks_delivery": true
-    },
-    {
       "id": "TD-T2-W03-ANSWER-KEYS",
       "kind": "CONTENT",
       "detail": "The source includes two evaluation sets, general revision questions and a weekend assignment (objective questions and two theory questions). Current evidence does not identify complete answer keys or marking criteria.",
@@ -5776,18 +5728,6 @@
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf",
         "TD-KEY-W03-ANSWERS"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "TD-T2-W04-FIGURES",
-      "kind": "CONTENT",
-      "detail": "All nine Week Four AutoCAD objects and paired WMF previews have now been inventoried and visually inspected. Nine bounded derivative tasks exist, but no allowed-MIME derivative has yet been produced or bound in the package.",
-      "required_action": "Complete TD-ASSET-W04-F01 through TD-ASSET-W04-F09: create faithful allowed-MIME derivatives, record hashes/bytes/alt text/provenance, and bind each to the Week Four source lesson.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
-        "TD-ASSET-W04-F01",
-        "TD-ASSET-W04-F09"
       ],
       "blocks_delivery": true
     },
@@ -5803,18 +5743,6 @@
       "blocks_delivery": true
     },
     {
-      "id": "TD-T2-W05-FIGURES",
-      "kind": "CONTENT",
-      "detail": "All seven Week Five AutoCAD objects and WMF previews have been inventoried and visually inspected; seven bounded derivative tasks exist. No allowed-MIME derivative has yet been produced or bound.",
-      "required_action": "Complete TD-ASSET-W05-F01 through TD-ASSET-W05-F07, preserving diagonal-scale graduations and chordal-scale angle marks; record hashes, byte counts, alt text and provenance; bind each derivative to the Week Five lesson.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc",
-        "TD-ASSET-W05-F01",
-        "TD-ASSET-W05-F07"
-      ],
-      "blocks_delivery": true
-    },
-    {
       "id": "TD-T2-W05-ANSWER-KEYS",
       "kind": "CONTENT",
       "detail": "The current Week Five evidence does not establish whether all evaluation and assignment tasks have complete keyed answers and marking criteria.",
@@ -5826,18 +5754,6 @@
       "blocks_delivery": true
     },
     {
-      "id": "TD-T2-W06-W07-FIGURES",
-      "kind": "CONTENT",
-      "detail": "All 11 DrawingML placements and the one AutoCAD OLE/WMF preview in the combined Week Six–Seven row have been visually inspected. Eleven unique raster diagrams have individual derivative tasks; the OLE preview repeats the Week Three/Week Eight–Nine 30/60/70 triangle and has a cross-row reuse-validation task. No allowed-MIME derivatives have yet been produced or bound.",
-      "required_action": "Complete TD-ASSET-W06-W07-F01 through F11 and F12 cross-row reuse validation; verify geometry/labels, create allowed-MIME derivatives, record hashes/bytes/alt text/provenance, and bind each to the combined source lesson.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
-        "TD-ASSET-W06-W07-F01",
-        "TD-ASSET-W06-W07-F12"
-      ],
-      "blocks_delivery": true
-    },
-    {
       "id": "TD-T2-W06-W07-ANSWER-KEYS",
       "kind": "CONTENT",
       "detail": "The current Week 6–7 evidence does not establish complete answer keys or marking criteria for the reduction constructions and assignments.",
@@ -5845,17 +5761,6 @@
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
         "TD-KEY-W06-W07-ANSWERS"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "TD-T2-W08-W09-FIGURES",
-      "kind": "CONTENT",
-      "detail": "No visual inventory or disposition is recorded for the figures/objects in the combined Week 8–9 equal-area lesson. Exact construction geometry and dimensions cannot be inferred from the row title.",
-      "required_action": "Complete TD-VIS-W08-W09 by inspecting every original figure and recording its purpose, dimensions and labels; bind faithful assets with provenance or document precise exclusions.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:865bb6bbb80331ca2182e97801040727e986ad3f9334b61018a33f239e4eb97a",
-        "TD-VIS-W08-W09"
       ],
       "blocks_delivery": true
     },
@@ -5873,7 +5778,7 @@
     {
       "id": "TD-T2-W10-CONSTRUCTION-DETAILS",
       "kind": "CONTENT",
-      "detail": "The written Week Ten construction procedures and exact source locators are now inventoried in TD-FACT-W10-TANGENCY-CONSTRUCTIONS.md. Remaining factual gaps are the second-locus radius typo in the external two-circle construction, the incomplete final steps for the unequal-circle internal tangent, and complete dimension transcription from the assessment templates.",
+      "detail": "Week Ten written construction steps, all 17 unique source figures/19 placements, template dimensions and weekend questions Q1–Q6 are inventoried in TD-FACT-W10-TANGENCY-CONSTRUCTIONS.md. Weekend answers recoverable from figures are recorded there. Remaining defects: source step 1654 repeats R1+R for the second circle (mathematically expected R1+r); the written unequal-circle internal tangent procedure stops after step 1797 without its final tangent construction; image98 small callouts remain low-resolution. These require subject-owner/source-author correction; source text remains unchanged.",
       "required_action": "Resolve the external-locus R1+R versus R1+r source discrepancy with the subject owner; recover the missing final steps for the unequal-circle internal tangent from the figure or author; transcribe every dimension from the original templates. Keep the source unchanged until approved.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863",
@@ -5882,20 +5787,9 @@
       "blocks_delivery": true
     },
     {
-      "id": "TD-T2-W10-FIGURES",
-      "kind": "CONTENT",
-      "detail": "The Week Ten visual inventory identifies 17 unique embedded source figures and 19 placements, with each figure's instructional purpose recorded in TD-VIS-W10.md. No faithful derivative has yet been committed or bound for the original source figures; six supplementary diagrams elsewhere in the package do not replace these source assets.",
-      "required_action": "Complete TD-ASSET-W10-F01 through F17: produce faithful allowed-MIME derivatives, verify dimensions/labels against the originals, record provenance/hash/bytes/alt text, and bind each derivative to the source lesson.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863",
-        "TD-VIS-W10"
-      ],
-      "blocks_delivery": true
-    },
-    {
       "id": "TD-T2-W10-ANSWER-KEYS",
       "kind": "CONTENT",
-      "detail": "A dedicated Week Ten supplement and four keyed practice items with marking criteria are implemented in TD-KEY-W10-ANSWERS.md. Original source evaluation questions for the template, spanner, machine part, R80 centre distances and tangent-type diagrams remain unkeyed until their source figures are bound and reviewed.",
+      "detail": "The Week Ten supplement has four marked practice items. Figure-backed weekend Q1–Q5 are keyed in TD-FACT-W10-TANGENCY-CONSTRUCTIONS.md (common internal tangent; Rp+Ry=Rz; PO=105 mm; QO=102 mm; external tangency; R120 joining arcs). Remaining original evaluation template/spanner/machine-part construction answers need full worked constructions and marking criteria.",
       "required_action": "Complete the remaining source assessment answer key after source figure derivatives are available; transcribe exact dimensions and label-dependent results and provide positive integer marking criteria for each original question.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863",
