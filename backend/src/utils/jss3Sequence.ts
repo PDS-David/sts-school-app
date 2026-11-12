@@ -64,13 +64,14 @@ export const groupKey = (t: { subject_id: unknown; class_name: unknown; term_lab
 
 /** Safe navigation-only payload for a sequence-locked student topic. */
 export function studentTopicPreview(
-  topic: { id: number; title: string; subject_id?: number; subject_name?: string; class_name?: string | null; term_id?: number | null; term_label?: string | null; order_index?: number | null },
+  topic: { id: number; title: string; school_code?: string; subject_id?: number; subject_name?: string; class_name?: string | null; term_id?: number | null; term_label?: string | null; order_index?: number | null },
   completed: boolean,
   sequence: SeqResult,
 ) {
   return {
     id: topic.id,
     title: topic.title,
+    school_code: topic.school_code,
     subject_id: topic.subject_id,
     subject_name: topic.subject_name,
     class_name: topic.class_name,

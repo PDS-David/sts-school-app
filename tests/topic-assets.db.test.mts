@@ -30,6 +30,7 @@ if (!URL_) {
   assert.ok(['localhost', '127.0.0.1', '::1', '[::1]'].includes(host), `refusing non-local database host: ${host}`);
   process.env.DATABASE_URL = URL_;
   process.env.NODE_ENV = 'development';
+  process.env.TERM_PIN_ENFORCED = 'false';
 
   const TEST_SC = 'zz_t2test';
   const sha = (b: Buffer) => createHash('sha256').update(b).digest('hex');
@@ -51,6 +52,7 @@ if (!URL_) {
   let server: ReturnType<ReturnType<typeof express>['listen']>;
   let base = '';
   let tokenA = '', tokenB = '';
+  let generatedAssessmentId = '';
   const topicId: Record<string, number> = {}; // "Music|2" → id
   let topicSnapshot: any[] = [];
 
@@ -69,6 +71,7 @@ if (!URL_) {
 
   async function cleanup() {
     await query('DELETE FROM topics WHERE school_code=$1', [TEST_SC]);            // cascades topic_assets
+    await query('DELETE FROM assessments WHERE school_code=$1', [TEST_SC]);         // topic-generated assessment fixture
     await query('DELETE FROM subjects WHERE school_code=$1', [TEST_SC]);
     await query('DELETE FROM students WHERE school_code=$1', [TEST_SC]);
     await query('DELETE FROM users WHERE school_code=$1 OR username LIKE $2', [TEST_SC, 'zz_t2test_%']);
@@ -79,6 +82,7 @@ if (!URL_) {
     return {
       topic_assets: await assetRows(),
       topics: await count('SELECT count(*) n FROM topics WHERE school_code=$1', [TEST_SC]),
+      assessments: await count('SELECT count(*) n FROM assessments WHERE school_code=$1', [TEST_SC]),
       subjects: await count('SELECT count(*) n FROM subjects WHERE school_code=$1', [TEST_SC]),
       students: await count('SELECT count(*) n FROM students WHERE school_code=$1', [TEST_SC]),
       users: await count("SELECT count(*) n FROM users WHERE school_code=$1 OR username LIKE 'zz_t2test_%'", [TEST_SC]),
@@ -121,6 +125,13 @@ if (!URL_) {
     tokenA = await mk('A', 'JSS 3');
     tokenB = await mk('B', 'JSS 1');
     topicSnapshot = await snapshot();
+    const linkedTopic = (await query('SELECT subject_id FROM topics WHERE id=$1', [topicId['Music|4']])).rows[0];
+    generatedAssessmentId = (await query(
+      `INSERT INTO assessments(school_code, subject_id, class_name, title, total_marks, status, created_by)
+       VALUES($1,$2,'JSS 3','Locked topic assessment',10,'open',$3) RETURNING id`,
+      [TEST_SC, linkedTopic.subject_id, created.userIds[0]],
+    )).rows[0].id;
+    await query('UPDATE topics SET generated_assessment_id=$1 WHERE id=$2', [generatedAssessmentId, topicId['Music|4']]);
 
     const app = express();
     app.use(express.json());
@@ -285,6 +296,47 @@ if (!URL_) {
     assert.equal((await get('/learning/assets/0', tokenA)).status, 400);
   });
 
+  test('endpoint: generated assessments remain hidden and inaccessible while their topic is sequence-locked', async () => {
+    const listed: any = await (await get('/learning/assessments', tokenA)).json();
+    assert.equal(listed.assessments.some((assessment: any) => assessment.id === generatedAssessmentId), false);
+    const questions = await get(`/learning/assessments/${generatedAssessmentId}/questions`, tokenA);
+    assert.equal(questions.status, 403);
+    const submitted = await fetch(`${base}/learning/assessments/${generatedAssessmentId}/submit`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${tokenA}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ answers: {} }),
+    });
+    assert.equal(submitted.status, 403);
+  });
+
+  test('endpoint: sequence-locked topic assets stay hidden until the prerequisite topics are passed', async () => {
+    const lockedList: any = await (await get(`/learning/topics/${topicId['Music|4']}/assets`, tokenA)).json();
+    assert.deepEqual(lockedList.assets, []);
+    const assetId = (await query(
+      `SELECT a.id FROM topic_assets a JOIN topics t ON t.id=a.topic_id WHERE t.school_code=$1 AND a.asset_key='W4-1'`,
+      [TEST_SC],
+    )).rows[0].id;
+    assert.equal((await get(`/learning/assets/${assetId}`, tokenA)).status, 404);
+
+    // Topic order 4 is available only after the preceding ordered topics
+    // (orders 2 and 3) have been passed by this student.
+    await query(
+      `INSERT INTO topic_completions(student_id, topic_id, passed)
+       VALUES ($1, $2, true), ($1, $3, true)`,
+      [created.studentIds[0], topicId['Music|2'], topicId['Music|3']],
+    );
+    const unlocked: any = await (await get(`/learning/topics/${topicId['Music|4']}/assets`, tokenA)).json();
+    assert.deepEqual(unlocked.assets.map((asset: any) => asset.asset_key), ['W4-1']);
+    // The later Week Seven assets are unlocked only after the Week Four topic is passed too.
+    await query(
+      'INSERT INTO topic_completions(student_id, topic_id, passed) VALUES ($1, $2, true)',
+      [created.studentIds[0], topicId['Music|4']],
+    );
+    const nowListed: any = await (await get('/learning/assessments', tokenA)).json();
+    assert.equal(nowListed.assessments.some((assessment: any) => assessment.id === generatedAssessmentId), true);
+    assert.equal((await get(`/learning/assessments/${generatedAssessmentId}/questions`, tokenA)).status, 200);
+  });
+
   test('endpoint: student in the right class sees ordered, displayed assets (metadata only, no bytes)', async () => {
     const r = await get(`/learning/topics/${topicId['Music|4']}/assets`, tokenA);
     assert.equal(r.status, 200);
@@ -362,6 +414,13 @@ if (!URL_) {
       { manifest: 'MUSIC_ASSET_MANIFEST.csv', dir: 'music', subject: 'Music', term: '1st Term', expect: 16 },
       { manifest: 'TASK2_BT_ASSET_MANIFEST.csv', dir: 'bt', subject: 'Basic Technology', term: '2nd Term', expect: 13 },
     ];
+    // Basic Technology's Week 13 and Week 15 assets are only visible
+    // after this student has passed the preceding topics in Term Two.
+    await query(
+      `INSERT INTO topic_completions(student_id, topic_id, passed)
+       VALUES ($1, $2, true), ($1, $3, true)`,
+      [created.studentIds[0], topicId['Basic Technology|12'], topicId['Basic Technology|13']],
+    );
     for (const run of runs) {
       const m = path.join(REAL!, run.manifest), d = path.join(REAL!, run.dir);
       const rows = attach.loadManifest(m);

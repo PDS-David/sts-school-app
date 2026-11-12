@@ -56,9 +56,9 @@ async function studentTopicSequenceLocked(user: AuthUser, topic: any): Promise<b
   const { rows: group } = await query(
     `SELECT t.id, t.order_index, (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank
        FROM topics t
-      WHERE t.school_code=$1 AND t.subject_id=$2 AND t.class_name=$3
+      WHERE t.school_code=$1 AND t.subject_id=$2 AND t.class_name IS NOT DISTINCT FROM $3
         AND t.term_label IS NOT DISTINCT FROM $4 AND t.order_index IS NOT NULL
-      ORDER BY t.order_index ASC, t.id ASC`,
+      ORDER BY COALESCE((to_jsonb(t)->>'sequence_rank')::numeric, t.order_index) NULLS LAST, t.order_index NULLS LAST, t.created_at DESC`,
     [topic.school_code, topic.subject_id, topic.class_name, topic.term_label],
   );
   const ids = group.map((row: any) => row.id);
@@ -70,6 +70,20 @@ async function studentTopicSequenceLocked(user: AuthUser, topic: any): Promise<b
   const redeemedTerms = new Set(pinRows.map((row: any) => String(row.term_label)));
   const pinOk = !termPinEnforced() || redeemedTerms.has(String(topic.term_label));
   return resolveSequenceGroup(group, passedIds, pinOk).get(Number(topic.id))?.locked ?? true;
+}
+
+async function studentAssessmentTopicLocked(user: AuthUser, assessmentId: string | number): Promise<boolean> {
+  if (user.role !== 'student') return false;
+  const { rows: linkedTopics } = await query(
+    `SELECT t.id, t.school_code, t.subject_id, t.class_name, t.term_label, t.order_index,
+            (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank
+       FROM topics t WHERE t.generated_assessment_id=$1`,
+    [assessmentId],
+  );
+  for (const topic of linkedTopics) {
+    if (await studentTopicSequenceLocked(user, topic)) return true;
+  }
+  return false;
 }
 
 router.get('/ss1/lessons', requirePerm('topics.read'), async (req, res) => {
@@ -328,7 +342,7 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
         groups.get(key)!.push(t);
       }
       const lockedIds = new Set<number>();
-      const seqById = new Map<number, { sequence_position: number | null; is_sequence_first: boolean }>();
+      const seqById = new Map<number, { locked: boolean; sequence_position: number | null; is_sequence_first: boolean }>();
       for (const group of groups.values()) {
         const pinOk = !termPinEnforced() || redeemedTermLabels.has(group[0].term_label);
         for (const [id, r] of resolveSequenceGroup(group, passedIds, pinOk)) {
@@ -1164,17 +1178,32 @@ router.get('/assessments', requirePerm('assessments.read'), async (req, res) => 
   if (status)     { params.push(status);     sql += ` AND a.status=$${params.length}`; }
   sql += ' ORDER BY a.created_at DESC';
   const { rows } = await query(sql, params);
+  let visibleRows = rows;
+  if (user.role === 'student' && rows.length) {
+    // Topic-generated assessments become globally linked after one student
+    // reaches the topic. Keep them hidden from students whose own sequence
+    // state still locks that topic.
+    const { rows: linkedTopics } = await query(
+      `SELECT t.id, t.generated_assessment_id, t.school_code, t.subject_id, t.class_name,
+              t.term_label, t.order_index, (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank
+         FROM topics t WHERE t.generated_assessment_id=ANY($1)`,
+      [rows.map((row: any) => row.id)],
+    );
+    const lockStates = await Promise.all(linkedTopics.map((topic: any) => studentTopicSequenceLocked(user, topic)));
+    const lockedAssessmentIds = new Set(linkedTopics.filter((topic: any, index: number) => lockStates[index]).map((topic: any) => topic.generated_assessment_id));
+    if (lockedAssessmentIds.size) visibleRows = rows.filter((assessment: any) => !lockedAssessmentIds.has(assessment.id));
+  }
   if (viewerClasses) {
     // Students/parents never see a topic assessment built from since-corrected teaching (admins keep the audit view).
-    const openIds = rows.map((r: any) => r.id);
+    const openIds = visibleRows.map((r: any) => r.id);
     const jss3Gone = await withdrawnAssessmentIds(query, openIds);
     const ss1Gone = await ss1WithdrawnAssessmentIds(query, openIds);
     const agriculturalScienceGone = await agriculturalScienceWithdrawnAssessmentIds(query, openIds);
     const englishGone = await englishWithdrawnAssessmentIds(query, openIds);
     const gone = new Set([...jss3Gone, ...ss1Gone, ...agriculturalScienceGone, ...englishGone]);
-    if (gone.size) return res.json({ assessments: rows.filter((r: any) => !gone.has(r.id)) });
+    if (gone.size) visibleRows = visibleRows.filter((r: any) => !gone.has(r.id));
   }
-  return res.json({ assessments: rows });
+  return res.json({ assessments: visibleRows });
 });
 
 router.post('/assessments', requirePerm('assessments.create'), async (req, res) => {
@@ -1298,6 +1327,9 @@ router.get('/assessments/:id/questions', async (req, res) => {
     if (!student || assessment.school_code !== student.school_code || assessment.class_name !== student.class_name) {
       return res.status(404).json({ error: 'Assessment not found' });
     }
+    if (await studentAssessmentTopicLocked(user, assessment.id)) {
+      return res.status(403).json({ error: 'This assessment is locked until its topic is unlocked.' });
+    }
     if (assessment.status !== 'open') {
       return res.status(403).json({ error: `This assessment is ${assessment.status === 'draft' ? 'not yet open' : 'closed'}.` });
     }
@@ -1383,6 +1415,9 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
   if (!assessment) return res.status(404).json({ error: 'Assessment not found' });
   if (assessment.school_code !== student.school_code || assessment.class_name !== student.class_name) {
     return res.status(403).json({ error: 'This assessment is not available to you' });
+  }
+  if (await studentAssessmentTopicLocked(user, req.params.id)) {
+    return res.status(403).json({ error: 'This assessment is locked until its topic is unlocked.' });
   }
   if (assessment.status !== 'open') {
     return res.status(403).json({ error: `This assessment is ${assessment.status === 'draft' ? 'not yet open' : 'closed'}.` });

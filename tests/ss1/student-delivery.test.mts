@@ -75,6 +75,7 @@ test('locked student topic previews expose navigation metadata only', () => {
   const source = {
     id: 42,
     title: 'Quadratic equations',
+    school_code: 'secondary',
     subject_id: 7,
     subject_name: 'Mathematics',
     class_name: 'SS 1',
@@ -92,6 +93,7 @@ test('locked student topic previews expose navigation metadata only', () => {
     is_sequence_first: false,
   });
   assert.equal(preview.id, 42);
+  assert.equal(preview.school_code, 'secondary');
   assert.equal(preview.locked, true);
   assert.equal(preview.sequence_position, 4);
   assert.equal('description' in preview, false);
