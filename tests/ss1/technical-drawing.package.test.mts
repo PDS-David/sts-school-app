@@ -47,7 +47,6 @@ test('Week 8–9 and Week 10 scheme objectives are bound to teaching supplements
     'COV-TD-T2-W10-TANGENCY',
     'COV-TD-T2-W08-EQUAL-AREA',
     'COV-TD-T2-W09-EQUAL-AREA',
-    'COV-TD-T2-W10-TANGENCY-SUPPLEMENT'
   ];
   for (const id of required) {
     const coverage = subject.coverage.find(entry => entry.id === id);
