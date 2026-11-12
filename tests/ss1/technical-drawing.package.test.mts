@@ -98,7 +98,7 @@ test('Week Seven reduction supplement distinguishes linear and area ratios', asy
   assert.ok(lesson, 'Week Seven reduction lesson missing');
   assert.match(lesson.body, /area scale factor is k²/);
   assert.match(lesson.body, /√\(3\/5\)/);
-  assert.equal(lesson.practice.length, 5);
+  assert.equal(lesson.practice.length, 8);
 });
 
 test('Week Seven reduction SVG asset matches registered integrity metadata', async () => {
@@ -151,7 +151,7 @@ test('Technical Drawing resolved source rows and figure inventories are not left
     'TD-T2-W01-GENERAL-Q2-DATA-IMPOSSIBLE',
     'TD-T2-W01-GENERAL-Q4-SSA-AMBIGUITY'
   ]) assert.equal(ids.has(resolved), false, `resolved item remains open: ${resolved}`);
-  assert.equal(subject.open_items.length, 18);
+  assert.equal(subject.open_items.length, 20);
   assert.ok(ids.has('TD-T2-W02-OBJECTIVE-Q2-MULTIPLE-RADII'), 'ambiguous radius MCQ must remain explicitly open');
   assert.ok(ids.has('TD-T2-W03-GENERAL-PENTAGON-DIAGONAL-UNDERDEFINED'), 'underdefined pentagon prompt must remain explicitly open');
 });
@@ -173,7 +173,15 @@ test('Week Two answer key documents the two valid radius options and equal-circl
   const path = new URL('../../docs/ss1/work/microtasks/technical-drawing/TD-KEY-W02-ANSWERS.md', import.meta.url);
   const key = await readFile(path, 'utf8');
   assert.match(key, /both B \(OB\) and C \(OQ\) are radii/);
+  assert.match(key, /accept either B or C for full credit/);
+  assert.match(key, /Weekend Q4:.*ambiguous single-answer MCQ/);
   assert.match(key, /15\(√3−1\)≈\*\*10\.98 mm\*\*/);
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  for (const id of ['TD-T2-W02-OBJECTIVE-Q2-MULTIPLE-RADII', 'TD-T2-W02-OBJECTIVE-Q4-MULTIPLE-ANSWERS']) {
+    const item = subject.open_items.find(entry => entry.id === id);
+    assert.ok(item, `source ambiguity must remain documented: ${id}`);
+    assert.equal(item.blocks_delivery, false);
+  }
 });
 
 test('Week Five source answer key includes the diagram-derived k-minus-n reading', async () => {
@@ -200,4 +208,197 @@ test('Week Four answer key includes the source 1:2 drawing dimensions', async ()
   assert.match(key, /Overall height 240→\*\*120 mm\*\*/);
   assert.match(key, /base width 180→\*\*90 mm\*\*/);
   assert.match(key, /chamfers 10×45°→\*\*5×45°\*\*/);
+});
+
+test('Week Six–Seven answer key covers revision constructions and refuses under-specified source geometry', async () => {
+  const root = new URL('../../docs/ss1/work/microtasks/technical-drawing/', import.meta.url);
+  const key = await readFile(new URL('TD-KEY-W06-W07-ANSWERS.md', root), 'utf8');
+  assert.match(key, /Q1 — irregular pentagon, then area reduction 3:5/);
+  assert.match(key, /√\(3\/5\)=0\.7745967/);
+  assert.match(key, /Q3 — regular nonagon, chord AC=40 mm/);
+  assert.match(key, /Q4 — irregular hexagon and area reduction 3:5/);
+  assert.match(key, /one degree of freedom remains/);
+  assert.match(key, /Q3 \/ image60: the three irregular hexagons/);
+  assert.match(key, /Q1 and Q2 require a higher-fidelity source figure/);
+});
+
+test('Technical Drawing answer-key implementation is complete but source-owner decisions remain explicit', async () => {
+  const root = new URL('../../docs/ss1/work/microtasks/technical-drawing/', import.meta.url);
+  const queue = JSON.parse(await readFile(new URL('QUEUE.json', root), 'utf8'));
+  for (const id of ['TD-KEY-W03-ANSWERS', 'TD-KEY-W06-W07-ANSWERS']) {
+    const item = queue.items.find(entry => entry.id === id);
+    assert.equal(item.status, 'IMPLEMENTED_TESTING_DEFERRED', `${id} must be implemented`);
+  }
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  for (const id of [
+    'TD-T2-W03-GENERAL-PENTAGON-DIAGONAL-UNDERDEFINED',
+    'TD-T2-W06-W07-PENTAGON-FIGURE-UNDERDEFINED',
+    'TD-T2-W06-W07-WEEKEND-Q1-Q2-FIGURE-AMBIGUITY'
+  ]) assert.ok(subject.open_items.some(item => item.id === id), `source ambiguity not tracked: ${id}`);
+});
+
+test('Week Ten source assessment answer key covers figure-backed weekend answers and templates', async () => {
+  const path = new URL('../../docs/ss1/work/microtasks/technical-drawing/TD-KEY-W10-ANSWERS.md', import.meta.url);
+  const key = await readFile(path, 'utf8');
+  assert.match(key, /Weekend Q1 — image100/);
+  assert.match(key, /PO=105 mm; QO=102 mm/);
+  assert.match(key, /Weekend Q5 — image103/);
+  assert.match(key, /Weekend Q6 — image104/);
+  assert.match(key, /Evaluation 2 \/ Theory 2 — spanner/);
+  assert.match(key, /Ø102→Ø51/);
+  assert.match(key, /The rubrics above are original proposed assessment criteria/);
+});
+
+test('Week Eight–Nine source pentagon keys do not import dimensions from another week', async () => {
+  const path = new URL('../../docs/ss1/work/microtasks/technical-drawing/TD-KEY-W08-W09-ANSWERS.md', import.meta.url);
+  const key = await readFile(path, 'utf8');
+  assert.match(key, /image64 supplies no CD length/);
+  assert.match(key, /image65 provides no numerical AD or BD/);
+  assert.match(key, /must not be imported into this question/);
+  assert.match(key, /do not report 43\.30 mm as this question's answer/);
+});
+
+test('Week Eight–Nine source answer key supplies marks and preserves image/text mismatches', async () => {
+  const path = new URL('../../docs/ss1/work/microtasks/technical-drawing/TD-KEY-W08-W09-ANSWERS.md', import.meta.url);
+  const key = await readFile(path, 'utf8');
+  assert.match(key, /Evaluation Q3 — triangle to equal-area parallelogram/);
+  assert.match(key, /1,288\.03 mm²/);
+  assert.match(key, /Evaluation Q4 — square equal in area to 60 mm × 35 mm rectangle/);
+  assert.match(key, /Evaluation Q5 — sum of three equilateral-triangle areas/);
+  assert.match(key, /image72 shows a different set of labels/);
+  assert.match(key, /image73 is labelled A–G/);
+  assert.match(key, /Do not infer the correct multiple-choice option/);
+});
+
+test('Week Two missing-arc objective has a dimensioned original replacement', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W02-KEYED-CONSTRUCTIONS');
+  assert.ok(lesson, 'Week Two lesson missing');
+  const question = lesson.practice.find(item => item.id === 'TD-W02-KEY-Q06');
+  assert.ok(question, 'original arc-length replacement exercise missing');
+  assert.equal(question.marks, 5);
+  assert.equal(question.marks, question.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+  assert.match(lesson.body, /four equal 22\.5° sectors/);
+  assert.match(lesson.body, /62\.83 mm/);
+  const sourceGap = subject.open_items.find(item => item.id === 'TD-T2-W02-ARC-FIGURE-MISSING');
+  assert.ok(sourceGap, 'missing original source figure must remain documented');
+  assert.equal(sourceGap.blocks_delivery, false, 'original alternative covers the objective');
+});
+
+test('Week Five non-multiple chord angles have a precise fixed-radius alternative', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W05-DIAGONAL-CHORDAL-SCALES');
+  assert.ok(lesson, 'Week Five scales lesson missing');
+  const q = lesson.practice.find(item => item.id === 'TD-W05-KEY-Q06');
+  assert.ok(q, 'fine-chord alternative practice missing');
+  assert.equal(q.marks, q.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+  assert.match(lesson.body, /R=100 mm/);
+  assert.match(lesson.body, /41\.58 mm/);
+  assert.match(lesson.body, /46\.69 mm/);
+  assert.match(lesson.body, /63\.46 mm/);
+  for (const id of ['TD-T2-W05-CHORD-ANGLE-GRANULARITY', 'TD-T2-W05-CHORD-CENTRE-LABEL']) {
+    const item = subject.open_items.find(entry => entry.id === id);
+    assert.ok(item, `source discrepancy missing: ${id}`);
+    assert.equal(item.blocks_delivery, false);
+  }
+});
+
+test('Week Ten unequal-circle internal tangent has a complete construction and keyed practice', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W10-TANGENCY');
+  assert.ok(lesson, 'Week Ten tangency lesson missing');
+  const q = lesson.practice.find(item => item.id === 'TD-W10-KEY-Q05');
+  assert.ok(q, 'unequal-circle internal tangent practice missing');
+  assert.equal(q.marks, q.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+  assert.match(lesson.body, /auxiliary circle centred at A with radius r₁\+r₂/);
+  assert.match(lesson.body, /parallel to BT at perpendicular distance r₂ from B/);
+  const source = subject.open_items.find(item => item.id === 'TD-T2-W10-CONSTRUCTION-DETAILS');
+  assert.ok(source, 'source construction discrepancy must remain recorded');
+  assert.equal(source.blocks_delivery, false);
+});
+
+test('Week Eight–Nine has fully dimensioned original pentagon replacements', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W08-W09-EQUAL-AREA');
+  assert.ok(lesson, 'Week Eight–Nine lesson missing');
+  for (const id of ['TD-W08-W09-Q07', 'TD-W08-W09-Q08']) {
+    const q = lesson.practice.find(item => item.id === id);
+    assert.ok(q, `original pentagon replacement missing: ${id}`);
+    assert.equal(q.marks, q.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+  }
+  assert.match(lesson.body, /coordinate-defined irregular pentagon/);
+  assert.match(lesson.body, /area = \|13,000−2,000\|\/2 = 5,500 mm²/);
+  assert.match(lesson.body, /AE=√\(70²−55²\)/);
+});
+
+test('Week Four millimetre unit mismatch has a clear decimetre-reading alternative', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES');
+  assert.ok(lesson, 'Week Four plain-scales lesson missing');
+  const q = lesson.practice.find(item => item.id === 'TD-W04-KEY-Q03');
+  assert.ok(q, 'decimetre-reading replacement exercise missing');
+  assert.match(q.question, /read up to 6 m in decimetres/);
+  const item = subject.open_items.find(entry => entry.id === 'TD-T2-W04-Q6-UNIT-MISMATCH');
+  assert.ok(item, 'original source unit mismatch must remain documented');
+  assert.equal(item.blocks_delivery, false);
+});
+
+test('Week Four distorted gate source has a fully dimensioned original scale alternative', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES');
+  assert.ok(lesson, 'Week Four lesson missing');
+  const q = lesson.practice.find(item => item.id === 'TD-W04-KEY-Q09');
+  assert.ok(q, 'original gate scale replacement missing');
+  assert.equal(q.marks, q.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+  assert.match(lesson.body, /overall width 105 mm/);
+  assert.match(lesson.body, /13 mm/);
+  const source = subject.open_items.find(item => item.id === 'TD-T2-W04-GATE-SCALE-RECONCILIATION');
+  assert.ok(source, 'distorted source figure must remain documented');
+  assert.equal(source.blocks_delivery, false);
+});
+
+test('Week Three under-specified pentagon has an explicit regular-pentagon alternative', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W03-POLYGON-CONSTRUCTIONS');
+  assert.ok(lesson, 'Week Three polygon lesson missing');
+  const q = lesson.practice.find(item => item.id === 'TD-W03-KEY-Q07');
+  assert.ok(q, 'regular-pentagon alternative missing');
+  assert.equal(q.marks, q.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+  assert.match(lesson.body, /regular-pentagon alternative/);
+  assert.match(lesson.body, /43\.26 mm/);
+  assert.match(lesson.body, /36\.84 mm/);
+  const item = subject.open_items.find(entry => entry.id === 'TD-T2-W03-GENERAL-PENTAGON-DIAGONAL-UNDERDEFINED');
+  assert.ok(item, 'source wording ambiguity must remain documented');
+  assert.equal(item.blocks_delivery, false);
+});
+
+test('Week Six–Seven ambiguous source figures have original replacement exercises', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W07-REDUCTION');
+  assert.ok(lesson, 'Week Seven reduction lesson missing');
+  for (const id of ['TD-W07-RED-Q06', 'TD-W07-RED-Q07', 'TD-W07-RED-Q08']) {
+    const q = lesson.practice.find(item => item.id === id);
+    assert.ok(q, `replacement exercise missing: ${id}`);
+    assert.equal(q.marks, q.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+  }
+  assert.match(lesson.body, /Original alternatives for the under-specified Week Six–Seven assessment figures/);
+  for (const id of ['TD-T2-W06-W07-PENTAGON-FIGURE-UNDERDEFINED', 'TD-T2-W06-W07-WEEKEND-Q1-Q2-FIGURE-AMBIGUITY']) {
+    const item = subject.open_items.find(entry => entry.id === id);
+    assert.ok(item, `source ambiguity must remain documented: ${id}`);
+    assert.equal(item.blocks_delivery, false);
+  }
+});
+
+test('Week Ten ambiguous R20 source task has a feasible original external-tangency alternative', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W10-TANGENCY');
+  assert.ok(lesson, 'Week Ten tangency lesson missing');
+  const q = lesson.practice.find(item => item.id === 'TD-W10-KEY-Q06');
+  assert.ok(q, 'R20 alternative practice missing');
+  assert.equal(q.marks, q.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+  assert.match(lesson.body, /centres 70 mm apart/);
+  assert.match(lesson.body, /5<70<85/);
+  const item = subject.open_items.find(entry => entry.id === 'TD-T2-W10-R20-TANGENCY-AMBIGUITY');
+  assert.ok(item, 'source ambiguity must remain documented');
+  assert.equal(item.blocks_delivery, false);
 });

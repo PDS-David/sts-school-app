@@ -32,25 +32,19 @@
     "2026-11-12 source-asset generation commit a2888bbc: all 104 TD-ASSET tasks are now materialized and registered as 104 asset bindings backed by 102 committed files. PNG/JPEG source media was copied byte-for-byte; 16 WMF previews were converted to cropped 2400px PNG; two documented duplicate triangles reuse the Week Three derivative. The 16 WMF outputs were reviewed in a contact sheet for clipping/obvious rendering faults; per-figure label/dimension review, student rendering and rights/content approvals remain deferred.",
     "2026-11-12: native-resolution inspection of Week Ten original figures image88–image104 completed; fact inventory now includes figure dimensions and answerable weekend tasks. Added package-to-manifest-to-queue regression test for all 104 source figure bindings. The two known source-method defects remain explicit, not silently repaired. Package and source-asset CI runs on PR #637 currently require workflow authorization.",
     "Extraction strategy decision completed by applying the least-destructive, source-preserving hybrid method; owner direction to proceed by recommendation was used. Teacher/content approval remains separate.",
-    "Archive scope check: searched all ZIP members for Technical Drawing filenames; exactly one document is present, the Second Term SS1 source. First and Third Term remain genuine missing-source dependencies."
+    "Archive scope check: searched all ZIP members for Technical Drawing filenames; exactly one document is present, the Second Term SS1 source. First and Third Term remain genuine missing-source dependencies.",
+    "2026-11-12 completion pass: expanded W03 and W06-W07 answer keys with source construction sequences, numerical checks, area-ratio to linear-ratio conversions, proposed positive-integer marking rubrics, and explicit non-guessing treatment of under-specified/ambiguous prompts. Their queue implementation is complete to the evidence boundary; testing and teacher approval remain deferred."
   ],
   "counts": {
-    "SOURCE_REGISTRATION": 1,
-    "MISSING_MATERIAL": 2,
-    "SOURCE_PREAMBLE_INDEXING": 1,
-    "SOURCE_WEEK_INDEXING": 19,
-    "FACTUAL_DEPENDENCY": 7,
-    "VISUAL_DISPOSITION": 9,
-    "ASSET": 106,
-    "OWNER_DECISION": 1,
-    "SCOPE_DECOMPOSITION": 1,
-    "TEST": 2,
-    "LESSON": 9
+    "total": 158,
+    "IMPLEMENTED_TESTING_DEFERRED": 155,
+    "BLOCKED": 2,
+    "IN_PROGRESS": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 153,
+    "IMPLEMENTED_TESTING_DEFERRED": 155,
     "BLOCKED": 2,
-    "IN_PROGRESS": 3
+    "IN_PROGRESS": 1
   },
   "total": 158,
   "items": [
@@ -1583,8 +1577,8 @@
         "TD-VIS-W03",
         "TD-FACT-W03-NOTATION"
       ],
-      "status": "IN_PROGRESS",
-      "implementation_reference": "Added SUP-SS1-TECHNICAL-DRAWING-T2-W03-POLYGON-CONSTRUCTIONS with six marked practice tasks and coverage bindings. Figure-dependent pentagon/irregular-hexagon data and weekend objective items remain documented in TD-KEY-W03-ANSWERS.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Expanded source-backed answer key and proposed criterion-based marking rubric added. Under-specified source prompts and ambiguous figure labels are explicitly identified; see TD-T2-W03-GENERAL-PENTAGON-DIAGONAL-UNDERDEFINED and the W06-W07 key limitations. Teacher approval and student-render verification remain deferred.",
       "completion_condition": "Publish an original keyed supplement with complete explanations, construction steps, answers and positive integer marking criteria summing to each question's marks; do not invent missing figures/dimensions."
     },
     {
@@ -1754,8 +1748,8 @@
         "TD-VIS-W06-W07",
         "TD-FACT-ENLARGEMENT-SCOPE"
       ],
-      "status": "IN_PROGRESS",
-      "implementation_reference": "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W06-W07-ANSWERS.md keys the source's two text-specified reduction exercises (hexagon 40 mm at linear 3:5; photo frame 40×60 at linear 4:7) and the five practice items in SUP-SS1-TECHNICAL-DRAWING-T2-W07-REDUCTION. Original diagram-dependent source exercises remain unkeyed pending faithful figure derivatives.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Expanded source-backed answer key and proposed criterion-based marking rubric added. Under-specified source prompts and ambiguous figure labels are explicitly identified; see TD-T2-W03-GENERAL-PENTAGON-DIAGONAL-UNDERDEFINED and the W06-W07 key limitations. Teacher approval and student-render verification remain deferred.",
       "completion_condition": "Publish original keyed solutions for verified reduction tasks, with complete construction steps and positive integer marking criteria summing to each question's marks. Do not invent dimensions or answer any unresolved enlargement objective."
     },
     {

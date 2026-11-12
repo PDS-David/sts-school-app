@@ -29,3 +29,17 @@
 ## Verification boundary
 
 The nine Week Four AutoCAD/WMF figures have been extracted, converted and registered; the source-asset regression test verifies their output bytes. The X/Z and 1:2 plinth/column readings are keyed. Only the ornamental gate's A–E dimensions remain blocked by the inconsistent 2100/300 reference proportions. Teacher approval and student rendering remain outstanding.
+
+## Original replacement for the distorted ornamental-gate scale figure
+
+The source preview does not preserve the stated overall-to-post ratio and does not support reliable A–E measurements. The Week Four lesson now includes a fully dimensioned original gate elevation for scale practice, not a reconstruction of the source ornament:
+
+- Actual overall size: 2,100 mm × 1,200 mm; RF 1:20 gives 105 mm × 60 mm.
+- Two 300 mm posts: 15 mm each on the drawing.
+- Top and bottom rails 100 mm high: 5 mm each on the drawing.
+- Clear opening 1,500 mm; four bars each 50 mm wide; remaining 1,300 mm divided into five 260 mm gaps.
+- On the drawing, each bar is 2.5 mm and each gap is 13 mm.
+
+Suggested rubric (6 marks): overall width/height (2); post width (1); rail height (1); bar and gap dimensions (1); correctly labelled RF 1:20 elevation (1).
+
+This alternative is explicitly original. The source's distorted A–E drawing and its unverified dimensions remain unchanged and are not presented as recovered.

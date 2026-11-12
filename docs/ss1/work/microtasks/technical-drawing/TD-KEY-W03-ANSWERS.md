@@ -96,3 +96,54 @@ For an area ratio image:original = 3:5, the linear scale factor is √(3/5)=0.77
 ## Source wording issue — pentagon from one diagonal
 
 The Week Three general revision says only “Construct a pentagon when given a diagonal of 70 mm.” A single diagonal does not uniquely determine a general (irregular) pentagon. If a **regular** pentagon is intended, a diagonal of 70 mm uniquely determines its side length (70/φ≈43.26 mm) and the regular-pentagon construction can be completed. The source does not say “regular” or provide the remaining side/angle data. Do not silently impose regularity; obtain author clarification or mark the exercise as under-specified.
+## Additional construction marking guidance
+
+The following are proposed, criterion-based rubrics. They are not represented as the source author's original mark scheme.
+
+### Regular polygon constructions
+
+For each given-side construction (pentagon, hexagon, octagon), award 6 marks:
+- Correctly draw and label the given side (1).
+- Construct the required exterior/interior angle or circle/centre locus (2).
+- Locate the remaining vertices by the correct compass intersections or equal chord steps (2).
+- Close the polygon and show equal sides/equal central spacing (1).
+
+For circle-based constructions from distance across corners/flats, award 6 marks:
+- Interpret the stated across-corners/across-flats dimension correctly and construct the corresponding circle or parallel loci (2).
+- Divide the circle or reference diameter into the correct equal parts (2).
+- Locate/step the equal vertices and close the polygon (2).
+
+### Two-triangle common-base method
+
+Suggested 8-mark rubric:
+- Draw the common base and construct the 45° reference triangle for the square centre (2).
+- Construct the 60° reference triangle for the hexagon centre (2).
+- Use the two centre positions to establish the intermediate centre locations consistently (2).
+- Draw the corresponding circumcircles and step equal chords to form the requested polygons (2).
+
+The exact intermediate centre transfer must be followed from the original source figure; do not replace the source's geometric construction with an unrelated numerical shortcut in a practical construction assessment.
+
+### Weekend multiple-choice marking
+
+- Q1 (image31): D — length of sides (1).
+- Q2 (image32): B — distance across corners (1).
+- Q3 (image33): C — regular polygon (1).
+- Q4 (image34): C — re-entrant/concave polygon (1).
+- Q5 (image35): C — pentagon (1).
+
+For any item whose option labels are lost in a student rendering, mark the correct geometric response rather than a guessed option letter. The visual derivative and option-order check remains part of UI verification.
+
+### Teacher review
+
+Teacher review must specifically confirm the intersection branch for the dimensioned pentagon and irregular hexagon, the wording of the under-specified single-diagonal pentagon task, and the exact source-option lettering in the rendered student view. The unresolved single-diagonal task is separately tracked under TD-T2-W03-GENERAL-PENTAGON-DIAGONAL-UNDERDEFINED.
+
+## Original regular-pentagon replacement for the single-diagonal revision prompt
+
+The source prompt gives only a 70 mm diagonal and does not say the pentagon is regular. A general pentagon is therefore under-specified. The Week Three lesson now supplies a separate, explicitly labelled original replacement that states “regular pentagon”:
+
+- Golden ratio φ=(1+√5)/2≈1.61803.
+- Side length =70/φ≈43.26 mm.
+- Circumradius =70/[2sin72°]≈36.84 mm.
+- Draw the circumcircle, mark five 72° central intervals and join consecutive vertices.
+
+This is a complete alternative assessment with a five-mark rubric. It does not reinterpret or silently correct the original source prompt.

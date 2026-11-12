@@ -69,3 +69,112 @@ The source specifies two circles of diameters 50 mm and 40 mm, an upper R150 arc
 - Criterion marks sum exactly to each item's marks (2 + 2 + 3 + 2 = 9).
 - No schema validation, compiler/importer, student UI rendering, database integration or deployment was run.
 - Content approval remains pending; verification remains deferred; source-media reuse approval remains pending.
+
+## Figure-backed weekend answer key
+
+These answers were recovered from the original embedded figures, not inferred from option wording alone.
+
+| Item | Correct answer | Evidence / check |
+|---|---|---|
+| Weekend Q1 — image100 | Common internal tangent | The line touches the two circles on opposite sides of their centre line. |
+| Weekend Q2 — image101 | Rp + Ry = Rz | The lower circle's external-contact centre distance is the sum of the joining-arc radius and the lower-circle radius. |
+| Weekend Q3 — image102 | PO=105 mm; QO=102 mm | Joining arc R80; given circle radii 25 mm and 22 mm. Thus 80+25=105 and 80+22=102. |
+| Weekend Q4 — image102 | External tangency | The R80 arc touches the two given circles externally. |
+| Weekend Q5 — image103 | Two common external tangent joining arcs, each R120 | The two outside circles have Ø40 and Ø70 and centre spacing 80 mm. The inner Ø20 bores are not the tangency references. |
+| Weekend Q6 — image104 | Six separate tangent-profile constructions | The six profiles and their dimensions are listed below; they must be marked as six sub-constructions, not one composite shape. |
+
+### Weekend Q6 — image104 profile register
+
+1. Top-left: R50 and R20 with 65 mm horizontal span.
+2. Top-right: R35 and two R12 fillets with 40 mm span.
+3. Middle-left: R25, R40, R12 and R80 with 50 mm span.
+4. Middle-right: R30, R35 and R6 with 45 mm span and 6 mm vertical offset.
+5. Bottom-left: R22, R55, R12 and R85 with 75 mm span and 10 mm vertical offset.
+6. Bottom-right: R100, R8, R9, R6, R105, R140 and R15; base length 112 mm, overall height 100 mm and base thickness 25 mm.
+
+Suggested marking: award 2 marks per profile for correct centre/locus construction and correct tangent contact/arc completion, then up to 1 additional mark per profile for all radii and dimensions correctly labelled. Total 18 marks. This is a proposed rubric; the teacher may adjust the weighting without changing the geometry.
+
+## Original source template and assessment construction keys
+
+### Evaluation 1(a) / Theory 1 — two-circle template (image96)
+
+The source figure gives left circle radius 44 mm, right circle radius 32 mm, centre spacing 100 mm and upper/lower joining arcs R50.
+
+1. Draw the centre line and locate the two circle centres 100 mm apart.
+2. Draw the circles at radii 44 mm and 32 mm.
+3. For each R50 joining arc, construct the relevant centre locus at radius 50±44 about the left centre and 50±32 about the right centre. Select the locus intersections that match the upper/lower arc arrangement in the source figure; do not swap internal and external tangency loci.
+4. Join each arc centre to the corresponding circle centre to locate tangent points; draw the arcs from the verified centres and trim construction lines.
+5. Check that each radius to a tangent point is perpendicular to the common tangent at that point.
+
+Suggested rubric (10 marks): centre spacing and given circles (2); correct offset loci (3); correct centre intersection and tangency branch (2); tangent points/radii (2); clean labelled arcs (1).
+
+### Evaluation 2 / Theory 2 — spanner (image97)
+
+The original figure is the controlling dimension reference. It shows R40, R30, R23, R20, R53 and R55 radii, a 34 mm handle width and a 30° angular construction at the head.
+
+1. Establish the 30° head reference and the main handle/head centre lines from the original figure.
+2. Draw the principal arcs/circles using the radii at their individual leader arrows. Do not assign a radius to a neighbouring arc merely because the raster leader crosses another line.
+3. Construct each fillet centre as an intersection of offset loci: for external tangency use centre distance R+r; for internal tangency use |R−r|. Select the branch that matches the original figure.
+4. Draw radii to each tangent point, confirm perpendicularity to the tangent, and trim the profile.
+5. Maintain the 34 mm handle width and preserve the source's 30° head geometry.
+
+Suggested rubric (12 marks): datum/centre lines and 30° setup (2); correct major radii and handle width (3); fillet loci and centre locations (3); tangent points and perpendicular radii (2); complete profile, dimensions and line quality (2).
+
+### Evaluation 3 — machine part (image98)
+
+The source requires a half-full-size construction. The readable callouts include two Ø16 holes, central bore Ø50, central boss Ø102, overall horizontal width 64 mm, and radii R16, R26, R38, R50 and R60. Additional small callouts are low-resolution; use the bound original figure as the authority and do not retype uncertain digits.
+
+1. Establish horizontal/vertical centre lines and the principal symmetry axes.
+2. Convert every readable full-size dimension to half-size before drawing: Ø16→Ø8, Ø50→Ø25, Ø102→Ø51, 64→32 mm; R16→R8, R26→R13, R38→R19, R50→R25 and R60→R30.
+3. Mark the centres and tangent points by the correct internal/external offset-locus method. Keep hole and boss centres aligned to the source centre lines.
+4. Transfer the remaining low-resolution callouts directly from the original image at zoom; do not guess or silently omit a dimension.
+5. Check symmetry, scaled overall width and all visible tangencies.
+
+Suggested rubric (12 marks): centre lines and symmetry (2); correct half-size conversion of legible dimensions (3); principal circles/bosses/holes (2); correct tangent-arc centres and contacts (3); dimensions and final profile (2). The small callouts remain a teacher/source-quality verification item.
+
+### Evaluation 4 — dimensioned template (image99)
+
+The figure gives left circle Ø100, centre spacing 150 mm, vertical offset 20 mm, and joining/fillet radii R20, R45, R25 and R2.
+
+1. Draw the Ø100 circle and establish its centre lines.
+2. Set the second centre 150 mm horizontally from the first, with the 20 mm vertical offset shown in the source.
+3. Construct the R20, R45, R25 and R2 fillets using offset loci and the correct internal/external tangency branch from the source figure.
+4. Join the centres to tangent points, draw each arc, and verify that radii to the tangent points are perpendicular to the profile.
+5. Check the 150 mm span and 20 mm offset before finalising.
+
+Suggested rubric (10 marks): datum circle and centre lines (2); second centre and offset (2); correct offset-locus centres (3); tangent points and arc completion (2); dimensions/line quality (1).
+
+## Source ambiguity handling
+
+- The source's two-circle external-joining method repeats R1+R for both loci although the second circle has radius r. The mathematically correct second locus is R1+r; the source wording remains unchanged and is separately flagged for owner correction.
+- The unequal-circle internal tangent written method ends before its final construction. The figure-based geometric method is described in the teaching supplement, but the source text itself remains incomplete.
+- The lower R20 arc in the general evaluation cannot internally enclose a circle of radius 25 mm. It must be interpreted from the original figure as an external-contact arrangement or corrected by the source author; do not teach impossible containment.
+- The machine-part small callouts remain legible only in the original image at zoom. The source raster is bound; exact values are not fabricated here.
+
+## Proposed marking boundary
+
+The rubrics above are original proposed assessment criteria for the identified source figures. They are not the original textbook's marking scheme and have not received teacher approval. A teacher may revise mark weighting, but must retain the geometric constraints and source ambiguity notes.
+
+
+## Additional original construction assessment — common internal tangent to unequal circles
+
+Given radii 20 mm and 15 mm and centre separation 70 mm:
+1. Let A be the centre of the 20 mm circle and B the centre of the 15 mm circle.
+2. Draw an auxiliary circle centred at A with radius 20+15=35 mm.
+3. From B construct a tangent to the auxiliary circle.
+4. Draw a parallel to that tangent at perpendicular distance 15 mm from B toward A. The shifted line is the common internal tangent.
+5. Drop perpendiculars from A and B to the final tangent to locate the contact points. The radii to the contact points must each be perpendicular to the tangent.
+6. Feasibility check: AB=70 mm > 20+15=35 mm, so the circles are separate and the internal tangent construction is feasible.
+
+Suggested rubric (6 marks): auxiliary radius 35 mm (1); tangent from B to auxiliary circle (1); 15 mm parallel offset (1); both contact points located (1); perpendicular-radius check (1); feasibility check (1). This is an original complete method supplementing the source's truncated written procedure.
+
+## Original feasible alternative for the ambiguous lower R20 arc
+
+The source's lower R20 arc cannot internally enclose a circle of radius 25 mm. The source figure does not unambiguously establish the intended external/internal arrangement. The Week Ten lesson now provides an original, fully specified external-tangency alternative:
+
+- Given circle radii 25 mm and 20 mm; centre spacing 70 mm; required joining arc R20.
+- External centre-locus radii are 25+20=45 mm and 20+20=40 mm.
+- Feasibility: |45−40|=5 < 70 < 45+40=85, so the loci intersect.
+- Choose the intersection on the required side, join centres to contact points, draw the R20 arc and verify perpendicular radii.
+
+Suggested rubric (5 marks): locus radii (2); feasibility check (1); correct centre/contact points (1); R20 arc and perpendicular-radius verification (1). This is an original alternative, not a claim that the source's lower R20 figure has been recovered.

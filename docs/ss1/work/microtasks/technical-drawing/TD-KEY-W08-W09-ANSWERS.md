@@ -98,8 +98,8 @@ A unique construction cannot be completed without the irregular pentagon's origi
 
 The original row also contains construction/evaluation tasks whose diagrams carry dimensions, angles, or answer choices. In particular:
 
-- The irregular pentagon construction and equal-area square task refers to a figure; its side/angle data must be read from the original image.
-- The pentagon with diagonals AD and BD gives BC = 40 mm, CD = 35 mm, DE = 55 mm and ∠DEA = 90° in the text, but AD and BD are figure-dependent. Do not solve the pentagon or its equivalent triangle without those dimensions.
+- The irregular pentagon construction and equal-area square task gives AB=70, BC=40, DE=75 and AE=80, but the figure image64 supplies no CD length or sufficient angles/diagonals to define the polygon uniquely. Its area and the equal-area square diagonal cannot be calculated uniquely from the supplied data.
+- The pentagon with diagonals AD and BD gives BC=40 mm, CD=35 mm, DE=55 mm and ∠DEA=90° in the text, but image65 provides no numerical AD or BD. AE is therefore not calculable; do not import AD=70 from the different Week Three exercise.
 - The triangle/parallelogram exercise gives triangle sides 50 mm, 60 mm and 55 mm; this is solvable from text using Heron's formula, but the requested construction still needs a proper scale drawing.
 - The rectangle-to-square task gives 60 mm by 40 mm; the equal-area square side is √2,400 ≈ 48.99 mm.
 - The three-equilateral-triangle area-sum task gives sides 40 mm, 55 mm and 65 mm. The required resultant triangle's area can be calculated from the sum of the three equilateral-triangle areas, but a unique shape/side set is not specified unless the source's intended construction defines it.
@@ -131,12 +131,13 @@ For an equilateral triangle of side a, area = (√3/4)a². The sum of the three 
 
 If the intended resultant triangle is also equilateral, its side is √8,850 ≈ **94.07 mm**. However, the source says only “another triangle”; it does not say the resultant must be equilateral. Without that condition, infinitely many triangles have the required area and their side lengths are not uniquely determined. This is a source-wording clarification, not a value to assume.
 
-### Source Q2 — Pentagon side AE
+### Source Q2 — Pentagon side AE: figure data is insufficient
 
-The source gives AD = 70 mm, DE = 55 mm and angle DEA = 90°. Triangle ADE is right-angled at E, with AD as its hypotenuse:
-AE = √(AD² − DE²) = √(70² − 55²) = √1,875 ≈ **43.30 mm**.
+The source text gives BC=40 mm, CD=35 mm, DE=55 mm and angle DEA=90°. The attached source figure (image65) labels AD and BD as diagonals but supplies no numerical values for either. In particular, AD=70 mm belongs to a different Week Three pentagon exercise and must not be imported into this question.
 
-The remaining pentagon construction and equal-area reduction must follow the source figure for the locations of C and the diagonals; the side AE value is independently determined by the text.
+Because AD is not given, AE cannot be calculated from the right triangle ADE. The correct relation is:
+AE = √(AD² − DE²) = √(AD² − 55²),
+but AD is unknown. BD is also unquantified. Therefore neither a unique pentagon nor its equal-area triangle can be constructed from the supplied numerical data. Obtain the intended AD/BD dimensions or a corrected fully dimensioned source figure; do not report 43.30 mm as this question's answer.
 
 The multiple-choice questions tied to figures remain unkeyed until each image is faithfully bound and its labels/options are legible. No option letters have been guessed.
 
@@ -146,3 +147,65 @@ The multiple-choice questions tied to figures remain unkeyed until each image is
 - Each question's criterion marks sum exactly to its stated marks (3 + 3 + 3 + 3 + 3 + 3 = 18).
 - No schema validation, hash refresh script, subject compiler/importer, database integration, student UI rendering or deployment was run in this work step.
 - Content approval remains pending; verification remains deferred; source-media reuse approval remains pending.
+
+## Source figure constraint audit — correction
+
+The figure audit confirms that the two source pentagon assessment items cannot be completed numerically from the supplied evidence:
+- Evaluation Q1 / image64: AB=70, BC=40, DE=75 and AE=80 are printed, but CD and any sufficient independent angle/diagonal constraint are absent. The polygon area and equal-area square are not uniquely determined.
+- Evaluation Q2 / image65: BC=40, CD=35, DE=55 and angle DEA=90° are printed. AD and BD are merely labelled; no numerical values appear in the image. AE is therefore unknown, with AE=√(AD²−55²). The earlier 43.30 mm value must not be used here because AD=70 belongs to the separate Week Three pentagon exercise.
+
+These are source-data defects, not student calculation errors. Keep the two tasks disabled or present them as explicit “identify the missing data” exercises until the source author supplies the missing dimensions. The other text-complete numerical questions Q3–Q5 remain keyed above.
+
+## Proposed source-assessment marking guidance
+
+These rubrics are original proposals for teacher review. They do not claim to reproduce an unseen textbook marking scheme.
+
+### Evaluation Q1 — irregular pentagon to equal-area square (6 marks)
+
+The source gives AB=70 mm, BC=40 mm, DE=75 mm and AE=80 mm. The figure image64 does not give CD or a sufficient independent angle/diagonal constraint. The polygon area is therefore not uniquely determined.
+
+Award: identifies the four readable dimensions and labels (2); identifies that CD/another independent constraint is missing (2); explains that the equal-area square side would be √A and its diagonal would be √(2A) once the verified polygon area is known (2). Do not award invented construction coordinates or a numerical square diagonal.
+
+### Evaluation Q2 — pentagon and equal-area triangle (6 marks)
+
+The source gives BC=40 mm, CD=35 mm, DE=55 mm and angle DEA=90°. Image65 labels AD and BD but gives neither value. AE=√(AD²−55²), so AE cannot be calculated numerically from this question as supplied.
+
+Award: constructs/identifies the right-angle condition at E (1); writes the correct Pythagorean relation (2); identifies missing AD/BD numerical constraints (2); explains that the equal-area triangle cannot be constructed uniquely until the source data are restored (1).
+
+### Evaluation Q3 — triangle to equal-area parallelogram (8 marks)
+
+For sides 50, 60 and 55 mm, s=82.5 mm and Heron's formula gives area approximately 1,288.03 mm². A parallelogram with 50 mm base requires perpendicular height 1,288.03/50≈25.76 mm.
+
+Award: constructs the triangle from its three sides (3); calculates the area correctly (2); calculates the equal-area parallelogram height (2); shows a right-angle height and correct base (1).
+
+### Evaluation Q4 — square equal in area to 60 mm × 35 mm rectangle (5 marks)
+
+Rectangle area = 2,100 mm²; square side = √2,100≈45.83 mm. Construct the geometric mean of 60 and 35 mm, then construct the square on the resulting side.
+
+Award: constructs/determines rectangle dimensions (1); calculates 2,100 mm² (1); uses the geometric mean (1); calculates 45.83 mm (1); constructs and labels the square (1).
+
+### Evaluation Q5 — sum of three equilateral-triangle areas (6 marks)
+
+The total area is (√3/4)(40²+55²+65²)≈3,832.18 mm². The source asks for “another triangle” but does not specify that it must be equilateral. Therefore the area is determinable but its side lengths are not unique. If the intended result is an equilateral triangle, its side is √8,850≈94.07 mm.
+
+Award: applies the equilateral-triangle area formula (2); sums the three squared side lengths correctly (1); obtains total area ≈3,832.18 mm² (1); explicitly identifies the non-uniqueness of a general triangle (1); gives 94.07 mm only with the stated equilateral assumption (1).
+
+## Weekend assignment visual reconciliation
+
+The available image72–image75 parts do not match the point labels used in the extracted weekend question text:
+- Q1 names rectangle JKLM and square KFGH, while image72 shows a different set of labels (A–H and X); the stated correspondence cannot be established.
+- Q2/Q3 refer to rectangle RSTU, square TVWX and angle SXY, but image73 is labelled A–G and contains a triangle and rectangle; the named points are absent.
+- Q4 options refer to triangles VTM, TUM, TOM, MZU, MUT, VST, MOU and MVU, but image74 uses a different point set.
+- Q5 refers to polygon BCDEG and options CDG/CDGB/ABGEF/AGF; image75 does not show G and its labels/regions do not correspond unambiguously to the extracted option wording.
+
+These are source-image/text pairing defects. Do not infer the correct multiple-choice option from a visually similar but differently labelled diagram. Obtain the original page/vector artwork or a corrected mapping before enabling these four items.
+
+
+## Original replacement pentagon exercises
+
+The original source pentagon prompts are under-specified. Two fully specified original alternatives have been added to the Week Eight–Nine lesson:
+
+1. Coordinate-defined pentagon A(0,0), B(70,0), C(90,40), D(50,80), E(0,60) mm. Shoelace sums are 13,000 and 2,000, giving area 5,500 mm². The equal-area square side is √5,500≈74.16 mm and its diagonal is approximately 104.88 mm.
+2. Fully dimensioned pentagon using AB=30, AD=70, BD=60, BC=40, CD=35, DE=55 mm and angle DEA=90°. AE=√(70²−55²)≈43.30 mm. This is a new explicit data set; it is not a claim that the Week Eight source image65 contains AD=70 or BD=60.
+
+Each replacement includes a construction sequence and positive-integer marking criteria. The original source assessment remains unchanged and is still not uniquely solvable without its missing data.

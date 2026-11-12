@@ -40,3 +40,19 @@ A quadrant is 90°. Dividing it into 18 equal arcs gives 5° per division. For a
 ## Verification boundary
 
 All seven Week Five AutoCAD/WMF figures have been extracted, converted and registered; source-asset hashes/byte counts are tested. Figure reading and the chordal source conflicts remain open. No teacher approval or student-rendering verification is claimed.
+
+## Original exact alternative for 24°, 27° and 37° chordal-scale tasks
+
+The source's five-degree graduations do not directly represent 24°, 27° or 37°. The Week Five lesson now includes an original fine-chord alternative with an explicitly fixed construction radius R=100 mm:
+
+| Angle | Chord c=2R sin(θ/2) | 
+|---:|---:|
+| 24° | 41.58 mm |
+| 27° | 46.69 mm |
+| 37° | 63.46 mm |
+
+To construct each angle, draw the initial ray and a 100 mm radius arc from its vertex. Set the compass to the tabulated chord, mark the arc, and join the marked point to the vertex. Keep the same 100 mm radius for scale construction and angle construction.
+
+This is an original, mathematically exact alternative to the source's 5°-only graduation method. It does not silently alter the source or pretend the original five-degree scale directly contains the three nonmultiples. The original source's conflicting centre label remains documented; this alternative explicitly names its centre O.
+
+Suggested rubric (5 marks): chord formula and fixed radius (1); 24° chord (1); 27° chord (1); 37° chord (1); correct constant-radius construction (1).
