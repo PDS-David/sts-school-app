@@ -40,9 +40,9 @@
     "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 33,
+    "IMPLEMENTED_TESTING_DEFERRED": 34,
     "BLOCKED": 6,
-    "PENDING": 119
+    "PENDING": 118
   },
   "total": 158,
   "items": [
@@ -1414,7 +1414,7 @@
       "kind": "FACTUAL_DEPENDENCY",
       "source_id": "SS1-SRC-af4868d2c026",
       "term": "2nd Term",
-      "week_or_locator": "WEEK ONE teaching row, flattened superscript degree values at lines 193, 237, 251, 257, 331 and 335",
+      "week_or_locator": "WEEK ONE teaching row; seven superscript-zero markers at word/document.xml body children 92, 113, 118, 120, 123, 157 and 159 (initial queue locator listed six)",
       "objective": "Recover the exact angle values from the original DOCX formatting/visual layout; the text extractor has flattened superscript degree symbols (e.g. 670, 1050, 550, 600).",
       "required_files": [
         "backend/src/db/ss1/subjects/technical-drawing.json",
@@ -1438,8 +1438,8 @@
         "TD-WK-W01",
         "TD-VIS-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by TD-WK-W01 on 2026-11-08. Existing extraction records degree-sign loss at six locators. Exact values must be recovered from original DOCX runs/visual layout; no guesses permitted.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12. Direct XML inspection confirms seven literal superscript '0' runs (run index 1, w:vertAlign=superscript), not six. In angle contexts they denote degrees: 67°, 105°, 105°, 55°, 60°, 60°/60° and 105°. Exact paragraph text, run indices, source member SHA-256, original lesson ID and body SHA-256 are recorded in TD-FACT-W01-DEGREE-NOTATION.md. Original source remains unchanged; no correction replacement was added because the DOCX formatting itself is unambiguous. Plain-text delivery must render these as degree glyphs; runtime display verification remains deferred. No package tests/compiler/importer or app verification run.",
       "completion_condition": "Record exact intended angle values and reproducible source locators; preserve original bytes; add a correction or supplement only if needed. If source visual cannot resolve a value, keep it explicitly unresolved."
     },
     {
@@ -5470,12 +5470,12 @@
     "notes": "Reconciled queue metadata with live item statuses after Week 6–10 coverage updates; formal tests remain deferred."
   },
   "next_runnable": [
-    "TD-FACT-W01-DEGREE-NOTATION",
     "TD-FACT-W03-NOTATION",
     "TD-FACT-W04-SCALE-DETAILS",
     "TD-FACT-W05-SCALE-CONSTRUCTIONS",
     "TD-FACT-W08-W09-DETAILS",
     "TD-FACT-W10-TANGENCY-CONSTRUCTIONS",
+    "TD-KEY-W01-ANSWERS",
     "TD-KEY-W02-ANSWERS",
     "TD-ASSET-W01-F01",
     "TD-ASSET-W01-F02",
@@ -5581,12 +5581,12 @@
     "TD-ASSET-W10-F17"
   ],
   "runnable_now": [
-    "TD-FACT-W01-DEGREE-NOTATION",
     "TD-FACT-W03-NOTATION",
     "TD-FACT-W04-SCALE-DETAILS",
     "TD-FACT-W05-SCALE-CONSTRUCTIONS",
     "TD-FACT-W08-W09-DETAILS",
     "TD-FACT-W10-TANGENCY-CONSTRUCTIONS",
+    "TD-KEY-W01-ANSWERS",
     "TD-KEY-W02-ANSWERS",
     "TD-ASSET-W01-F01",
     "TD-ASSET-W01-F02",
