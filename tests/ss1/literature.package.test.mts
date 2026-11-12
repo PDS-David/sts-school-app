@@ -175,16 +175,13 @@ test('Every term week has a delivered lesson and the three source documents rema
   assert.equal(p.lessons.reduce((n,l) => n + l.practice.reduce((a,q) => a + q.marks, 0), 0), 418);
 });
 
-test('Literature correction preserves the source row identity and points to the approved replacement', () => {
+test('Week One corrected lesson is mapped as an equivalent supplement without inventing a parser fingerprint', () => {
   const p = packageSchema.parse(raw);
-  const c = p.delivery_corrections.find(x => x.id === 'LIT-CORR-T1-W01');
-  assert(c);
-  const source = p.sources.find(x => x.source_id === c.source_id)!;
-  const lesson = p.lessons.find(x => x.id === c.replacement_id)!;
-  assert.equal(c.source_sha256, source.sha256);
-  assert.equal(c.source_lesson_id, c.source_id + ':BODY:' + c.body_sha256);
-  assert.equal(lesson.term, source.term);
-  assert.equal(lesson.state.content_approval, 'APPROVED');
+  const lesson = p.lessons.find(l => l.id === 'SUP-SS1-LITERATURE-T1-W01-CORRECTED');
+  assert(lesson);
+  const source = p.sources.find(s => s.term === '1st Term')!;
+  assert.ok(p.coverage.some(c => c.source_id === source.source_id && c.lesson_ids.includes(lesson.id) && c.status === 'IMPLEMENTED_EQUIVALENT'));
+  assert.equal(p.delivery_corrections.length, 0, 'no source correction fingerprint is asserted until the importer confirms the parsed row identity');
 });
 
 // Full importer/parser comparison is a separate integration check.
