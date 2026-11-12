@@ -13,7 +13,8 @@
     "test:ss1:english": "node --import tsx --test tests/ss1/english.package.test.mts",
     "validate:ss1": "node --import tsx backend/src/db/ss1/validateSubjectPackages.ts",
     "ss1:refresh-hashes": "node --import tsx backend/src/db/ss1/refreshIntegrityHashes.ts",
-    "validate:ss1:english": "node --import tsx backend/src/db/ss1/validateSubjectPackages.ts english"
+    "validate:ss1:english": "node --import tsx backend/src/db/ss1/validateSubjectPackages.ts english",
+    "test:primary4": "cd backend && npm run test:primary4"
   },
   "workspaces": [
     "backend",
