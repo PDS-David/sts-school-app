@@ -3702,6 +3702,29 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "New 75-minute, 60-mark assessment: 20 MCQs and six structured questions with answers and criterion-level marking. Explicitly limited to topics actually present in the source. Teacher approval PENDING; verification DEFERRED.",
       "completion_condition": "Assessment totals 60 marks, samples all available source topics, has keyed answers and criterion-level marking. Approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T1-W06-REVISION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 06 — Revision of first half-term work",
+      "objective": "Supply a complete first-half-term revision lesson that covers both indices/logarithms and set theory/Venn diagrams, with worked examples and keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-WK-T1-W06"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added replacement revision lesson with four objectives, worked examples and eight keyed practice questions. The separate 50-mark periodic test remains available. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Revision lesson covers all first-half-term topics and practice marking reconciles; teacher approval and verification remain pending."
     }
   ],
   "review": {
