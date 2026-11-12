@@ -56,3 +56,12 @@ Twenty-four bounded ASSET tasks have been appended: `TD-ASSET-W08-W09-F01` throu
 - Visually inspected all 24 unique image previews and matched each to surrounding source text.
 - Did not create SVG derivatives, bind package assets, run subject schema/tests/compiler/importer, or verify app display. Those remain outstanding.
 - No approval, certification or deployment is claimed.
+
+
+## Example 2 direction ambiguity — resolved by the original figure
+
+The original image65.jpeg for Example 2 was inspected at native resolution against source body children 1239–1243. It confirms the two different endpoints stated in the method:
+- From E, the line parallel to DA meets the original base segment AB at F (F lies between A and B).
+- From C, the line parallel to DB meets the extension of AB beyond B at G (G lies to the right of B).
+
+The apparent alternation is intentional, not an unresolved directional ambiguity. The construction is FGD, and the original figure explicitly shows F on AB and G on AB produced. The source wording should be taught with these distinct endpoints; no source text correction is required.
