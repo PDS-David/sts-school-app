@@ -89,9 +89,9 @@
     "CORRECTION_BINDING": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 81,
+    "IMPLEMENTED_TESTING_DEFERRED": 82,
     "BLOCKED": 7,
-    "PENDING": 12
+    "PENDING": 11
   },
   "total": 100,
   "items": [
@@ -1133,8 +1133,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Reopened 2026-11-12: the original Physics source members are now available from CI evidence artifact 13902689395 (run 43126374868). The run successfully executed scripts/ss1/prepare_sources.py, which enforces archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact manifest membership, member byte counts and member SHA-256. Independently checked the three extracted Physics members against SOURCE_ASSIGNMENTS.csv; all sizes and hashes match. Original row text and embedded source files are now accessible for this indexing task. Source reconciliation is NOT yet complete; inspect the row, figures, examples and assessments before closing.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented on isolated branch feat/physics-t3-week3-source-reconciliation. Exact registered original member was retrieved from Physics CI artifact 13901498110 (run 43122782413); independently checked extracted .doc length 107,008 bytes and SHA-256 bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688 against the registered source. Parsed row 2 WEEK 3 body ID SS1-SRC-bed91bb4ef0e:BODY:9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1 (2,352 chars; source body SHA-256 as recorded). Compared every formula, evaluation, reading assignment, weekend MCQ and theory item. Existing lesson SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER retained and extended with resistance/resistivity concepts needed by source assessment; body SHA-256 85d810c8059e1fe948136f8c1124c68d5f8e8ac0659bb5ffd50fcc24bcb5e94b; 20 keyed practice questions, 45 marks. Added objective-level coverage COV-PHYS-T3-W03-OBJ-6 (four resistance factors) and OBJ-7 (SI unit of resistivity), both IMPLEMENTED_EQUIVALENT. Source assessment mapping: evaluation headlamp calculation to Q03; factors of resistance to Q20; appliance billing theory to Q10–12; weekend energy unit/current/resistance/conductance/resistivity to Q14–17 and Q19. Source reading assignment 'New school physics' pp.81–82 lacks bibliographic identity; non-blocking package open item PHYSICS-T3-W03-READING-ASSIGNMENT-EDITION records the exact missing details. No formula error found in the original energy/power equations; source cost expression is interpreted with P in W, c in currency/kWh and t in hours, then divided by 1,000. Original source unchanged. Content approval PENDING and verification DEFERRED. No tests were manually invoked during authoring. After PR creation, GitHub Actions automatically passed Physics package schema/content/regression tests, SS1 integrity, all-subject source-anchor/compiler audit, Agricultural Science, Catering Craft and Biology package checks. The unrelated JSS3 verify job remained in progress at the last status check. No database-backed student acceptance or device validation is claimed. Authoring-level SHA-256, unique-ID/reference, queue-count and marking arithmetic checks were also completed.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
