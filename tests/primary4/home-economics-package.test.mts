@@ -37,6 +37,7 @@ test('researched Home Economics topics remain withheld until approval and verifi
   const result = resolvePrimary4SourceDelivery(topic);
   assert.equal(result?.kind, 'withheld');
   assert.equal(result?.source, 'researched-package');
+  assert.equal(resolvePrimary4SourceDelivery({ ...topic, source_file: 'wrong-package.json' })?.kind, 'withheld');
   if (result?.kind === 'withheld') assert.match(result.reason, /pending owner approval and independent verification/);
   const safe = safePrimary4Topic(topic);
   assert.equal(safe.source_reference, null);
