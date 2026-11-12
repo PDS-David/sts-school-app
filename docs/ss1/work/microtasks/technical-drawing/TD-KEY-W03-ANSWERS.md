@@ -41,7 +41,11 @@ Given AB=51, BC=30, CD=23, DE=36, EF=30, AD=70, AF=38, ∠FAB=110° and ∠ABC=8
 ## Weekend objective questions
 
 - Q4 (re-entrant polygon): choose the concave polygon with one interior angle greater than 180°. The exact option letter depends on the labelled source figure and option order.
-- Q1–Q3 and Q5 depend on the specific constructions shown in images31–35. The source images are now registered, but a definitive option letter should be entered only after each question's exact figure and option mapping is checked against the original page. No option letters are guessed here.
+- Q1 / image31: **D — length of sides**. The figure is the two-circle construction for a regular pentagon from a known side AB.
+- Q2 / image32: **B — distance across corners**. The figure constructs the regular heptagon from a circle whose diameter is the given across-corners distance.
+- Q3 / image33: **C — regular polygon**. The numbered diameter divisions and intersecting arcs are the initial construction of a regular polygon.
+- Q4 / image34: **C**. It is the only concave/re-entrant polygon (one interior angle exceeds 180°).
+- Q5 / image35: **C — pentagon**. The two-circle construction divides the semicircle into five equal parts and uses the second division to locate the regular pentagon centre.
 
 ## Notation and visual source recovery
 
