@@ -39,8 +39,8 @@
     "LESSON": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 9,
-    "PENDING": 42,
+    "IMPLEMENTED_TESTING_DEFERRED": 10,
+    "PENDING": 41,
     "BLOCKED": 1
   },
   "items": [
@@ -413,8 +413,8 @@
         "GOV-INV-T1",
         "GOV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No marker rule or coverage exists: government.json has the three sources and their alias rules only. Inventory evidence: EVALUATION QUESTION 7 occurrences, EVALUATION QUESTIONS 8, bare EVALUATION 3 (495, 796, 840), GENERAL EVALUATION/REVISION QUESTIONS 10 plus GENERAL EVALUATION 574, READING ASSIGNMENT 10 (colon at 357 and 617), WEEKEND spelled ASSINGMENT 5 / ASSINGNMENT 1 / ASSIGNMENT 4, THEORY 10 (trailing space at 174 and 549); the word THEORY also occurs inside the Week One option line 91. Irregular sections at 495, 510-517, 574, 720, 796, 840 and 852. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12 using GOV-INV-T1's verified word-extractor 1.0.4 getBody() inventory. Accounted for every marker occurrence: EVALUATION QUESTION 7; EVALUATION QUESTIONS 8; bare EVALUATION 3; GENERAL EVALUATION/REVISION QUESTIONS 10; mid-week GENERAL EVALUATION 1; READING ASSIGNMENT 10 (two colon variants); WEEKEND 10 (ASSINGMENT 5, ASSINGNMENT 1, ASSIGNMENT 4); THEORY 10 (two trailing-space variants). All are retained ORIGINAL within their teaching spans. The word THEORY in option line 91 is not a marker. Recorded duplicate TOPIC/CONTENT anchors and irregular sections; split_before and attach_stranded_label are not warranted. Scheme-only row 42 is already classified by GOV-REV-T1 rule SS1-SRC-40ce7dcaf672-R002. No further source rule, lesson or coverage written. No tests/typecheck/importer/compiler run; testing deferred by owner.",
       "completion_condition": "Every marker occurrence in the list is classified or explicitly left ORIGINAL, ambiguous anchors are recorded as findings, no substring classification is used, and no lesson or teaching coverage is written. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
     },
     {
@@ -1937,7 +1937,6 @@
   },
   "next_runnable": [
     "GOV-TEST-PACKAGE",
-    "GOV-MARK-T1",
     "GOV-WK-T1-W02",
     "GOV-WK-T1-W03",
     "GOV-WK-T1-W04",
