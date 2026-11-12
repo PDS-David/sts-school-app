@@ -2490,6 +2490,228 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T1-W05-SETS-VENN",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Further Mathematics",
+      "title": "Sets and Venn diagrams: set operations and counting problems",
+      "objectives": [
+        "Use set notation, roster and set-builder descriptions, and cardinality.",
+        "Identify subsets, proper subsets, empty, finite, infinite, universal, complementary and disjoint sets.",
+        "Find unions, intersections and complements and apply the two-set cardinality formula.",
+        "Solve two-set and three-set counting problems using Venn diagrams and inclusion-exclusion."
+      ],
+      "body": "Sets are collections of well-defined objects. Set theory gives precise language for describing membership and for solving counting problems. Venn diagrams display relationships among sets and help prevent double-counting.\n\n1. SETS, ELEMENTS AND NOTATION\nA set is a well-defined collection. Sets are named with capital letters; elements are listed inside braces. For example A={1,3,5,7}. The statement 3∈A means 3 belongs to A; 4∉A means 4 does not belong.\nA roster lists the elements. Set-builder notation describes a rule: B={x∈Z:-2≤x≤3} means B={-2,-1,0,1,2,3}. The cardinality n(A) is the number of distinct elements; order and repetition do not change a set.\n\n2. TYPES AND RELATIONSHIPS\nA finite set has a countable number of elements; an infinite set does not end. The empty set ∅ has no elements. A is a subset of B, written A⊆B, if every element of A is in B. A proper subset A⊂B has at least one element of B outside A. A universal set U contains all objects under discussion.\nTwo sets are disjoint if A∩B=∅. The complement A' (or A^c) contains the elements of U that are not in A. Always state U before finding a complement.\nExample 1: U={1,2,...,12}, A={2,4,6,8,10,12}. Then A'={1,3,5,7,9,11}.\n\n3. UNION AND INTERSECTION\nA∪B contains elements in A or B or both. A∩B contains only elements common to both.\nExample 2: A={1,2,3,5,7}, B={2,4,5,8}. Then A∪B={1,2,3,4,5,7,8} and A∩B={2,5}.\nFor finite sets, n(A∪B)=n(A)+n(B)-n(A∩B). The intersection is subtracted once because it was counted in both n(A) and n(B).\nExample 3: If n(A)=23, n(B)=12 and n(A∪B)=30, then 30=23+12-n(A∩B), so n(A∩B)=5.\n\n4. TWO-SET VENN DIAGRAMS\nDraw a rectangle for U and two overlapping circles for A and B. Put the intersection in the overlap first. Then A-only=n(A)-n(A∩B), B-only=n(B)-n(A∩B), and neither=n(U)-n(A∪B).\nExample 4: In a school of 400 students, 300 offer Biology, 190 offer Chemistry and 70 offer neither. The number offering at least one is 400-70=330. Both=300+190-330=160. Biology only=140; Chemistry only=30.\nA reliable check is 140+160+30+70=400.\n\n5. THREE-SET VENN DIAGRAMS\nFor three sets A,B,C, there are eight regions: A only, B only, C only, the three pair-only regions, the central triple intersection, and the outside region. Fill the centre first. Subtract it from each pairwise intersection to obtain pair-only counts. Then subtract the relevant regions from each set total to obtain the single-only counts.\nThe inclusion-exclusion formula is:\nn(A∪B∪C)=n(A)+n(B)+n(C)-n(A∩B)-n(A∩C)-n(B∩C)+n(A∩B∩C).\nThe triple intersection is added back because it was subtracted three times after being counted three times.\nExample 5: A school has 37 vacancies. English E=22, History H=20 and Fine Art F=17. Pairwise intersections are n(E∩H)=11, n(H∩F)=8 and n(E∩F)=7. Every vacancy is in at least one set.\nLet x=n(E∩H∩F). Then:\n37=22+20+17-11-8-7+x=33+x, so x=4.\nEnglish and History only=11-4=7; History and Fine Art only=8-4=4; English and Fine Art only=7-4=3. Fine Art only=17-(3+4+4)=6.\nCheck all eight regions add to 37.\n\n6. EXACTLY TWO, AT LEAST ONE AND NEITHER\nFor three sets, exactly two = (A∩B only)+(A∩C only)+(B∩C only). At least one = n(A∪B∪C). None = n(U)-n(A∪B∪C). Read the wording carefully: \"A and B\" may include those also in C unless the question says \"A and B only\".\nExample 6: In a survey, 7 like all three subjects; 11 like History and Geography, 9 like Geography and Science, and 10 like History and Science. The pair counts include the 7 who like all three. The pair-only counts are 4,2 and 3. Exactly two subjects are liked by 4+2+3=9 students.\n\n7. COMMON ERRORS\nDo not list a factor set incompletely: the positive factors of 30 are {1,2,3,5,6,10,15,30}. Do not omit elements of the stated universal set. Do not mix up union and intersection. Do not add two set totals without subtracting their overlap. In three-set problems, pair-only counts require subtracting the central triple count. Finally, check that every Venn region is non-negative and that all regions sum to n(U).",
+      "body_sha256": "1b99f0ed9458faad2b4808e1897efa1e02a6b321f16c882aa09d90ac5ffc72cf",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Let A={1,3,5,7} and B={2,3,5,8}. Find A∪B and A∩B.",
+          "answer": "A∪B={1,2,3,5,7,8}; A∩B={3,5}.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct union",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct intersection",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "If U={1,2,...,12} and A={2,4,6,8,10,12}, find A^c.",
+          "answer": "A^c={1,3,5,7,9,11}.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses stated universal set",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct complement",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Write B={x∈Z:-2≤x≤3} in roster form and state n(B).",
+          "answer": "B={-2,-1,0,1,2,3}; n(B)=6.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct elements",
+              "marks": 1
+            },
+            {
+              "criterion": "Cardinality 6",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "If n(A)=23, n(B)=12 and n(A∪B)=30, find n(A∩B).",
+          "answer": "30=23+12-n(A∩B), so n(A∩B)=5.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct formula",
+              "marks": 1
+            },
+            {
+              "criterion": "Answer 5",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "In a school of 400 students, 300 offer Biology, 190 offer Chemistry and 70 offer neither. Find (a) both subjects, (b) Biology only and (c) Chemistry only.",
+          "answer": "At least one=400-70=330. Both=300+190-330=160. Biology only=140; Chemistry only=30.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "At least one 330",
+              "marks": 1
+            },
+            {
+              "criterion": "Both 160",
+              "marks": 1
+            },
+            {
+              "criterion": "Biology only 140",
+              "marks": 1
+            },
+            {
+              "criterion": "Chemistry only 30",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "There are 37 vacancies. English=22, History=20, Fine Art=17; pairwise intersections are 11,8,7 and all vacancies are in at least one set. Find the number in all three and Fine Art only.",
+          "answer": "Triple=37-(22+20+17-11-8-7)=4. Fine Art only=17-[(7-4)+(8-4)+4]=6.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Uses inclusion-exclusion",
+              "marks": 1
+            },
+            {
+              "criterion": "Triple intersection 4",
+              "marks": 1
+            },
+            {
+              "criterion": "Subtracts pair-only regions correctly",
+              "marks": 1
+            },
+            {
+              "criterion": "Fine Art only 6",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q7",
+          "question": "Three sets have pairwise counts 11,9,10 and triple intersection 7. Find the number in exactly two sets.",
+          "answer": "Pair-only counts are 11-7=4, 9-7=2 and 10-7=3. Exactly two=4+2+3=9.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "First pair-only count",
+              "marks": 1
+            },
+            {
+              "criterion": "Other pair-only counts",
+              "marks": 1
+            },
+            {
+              "criterion": "Total 9",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q8",
+          "question": "State the difference between A∪B and A∩B.",
+          "answer": "A∪B contains elements in A or B or both; A∩B contains only elements common to both.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Union meaning",
+              "marks": 1
+            },
+            {
+              "criterion": "Intersection meaning",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q9",
+          "question": "A set has 5 distinct elements. How many subsets does it have, including the empty set and itself?",
+          "answer": "2^5=32 subsets.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses 2^n",
+              "marks": 1
+            },
+            {
+              "criterion": "Answer 32",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "In a group of 90 members, 60 like modern music and 50 like traditional music. The number who like both is three times the number who like neither. Find the number who like neither and the number who like only one type.",
+          "answer": "Let neither=x and both=3x. Union=90-x. Also union=60+50-3x=110-3x. Thus 90-x=110-3x, so x=10 and both=30. Only one=(60-30)+(50-30)=50.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Defines variables and union",
+              "marks": 1
+            },
+            {
+              "criterion": "Forms equation",
+              "marks": 1
+            },
+            {
+              "criterion": "Neither 10 and both 30",
+              "marks": 1
+            },
+            {
+              "criterion": "Only one 50",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source: SS1 first-term Further Mathematics",
+          "locator": "WEEK FIVE headings 'SETS' and 'OPERATION OF SET AND VENN DIAGRAMS'; member SHA-256 995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145. The replacement corrects source inconsistencies and does not reproduce its wording.",
+          "url": null,
+          "rights": "Newly authored instructional material based on the school's syllabus; no extended source passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools; content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -2852,14 +3074,19 @@
       "source_id": "SS1-SRC-e9efc9a976ed",
       "objective": "Sets (continued)",
       "objective_locator": "scheme weeks 1-10; parsed row 4 (SETS)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-e9efc9a976ed:BODY:8a3265214707d49a68d808cdc8b39f45327b35f17151f80855b86a127f691bf2"
+        "SS1-SRC-e9efc9a976ed:BODY:8a3265214707d49a68d808cdc8b39f45327b35f17151f80855b86a127f691bf2",
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W05-SETS-VENN"
       ],
       "evidence": [
         {
           "locator": "parsed row 4",
           "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        },
+        {
+          "locator": "WEEK FIVE source row headed SETS; notation and set types",
+          "explanation": "Reviewed and supported by the replacement lesson with corrected set enumeration, universal-set consistency, and Venn calculations. Visual source objects still require separate inspection; content approval and verification remain pending."
         }
       ]
     },
@@ -2868,14 +3095,19 @@
       "source_id": "SS1-SRC-e9efc9a976ed",
       "objective": "Operations on sets and Venn diagrams",
       "objective_locator": "scheme weeks 1-10; parsed row 5 (OPERATION OF SET AND VENN DIAGRAMS)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-e9efc9a976ed:BODY:e96acb2ff59235a40ac1277b6ec320e19a976f1b1edeafb84c9310d5be5f5a6d"
+        "SS1-SRC-e9efc9a976ed:BODY:e96acb2ff59235a40ac1277b6ec320e19a976f1b1edeafb84c9310d5be5f5a6d",
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W05-SETS-VENN"
       ],
       "evidence": [
         {
           "locator": "parsed row 5",
           "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        },
+        {
+          "locator": "WEEK FIVE source row headed OPERATION OF SET AND VENN DIAGRAMS; two-set and three-set operations",
+          "explanation": "Reviewed and supported by the replacement lesson with corrected set enumeration, universal-set consistency, and Venn calculations. Visual source objects still require separate inspection; content approval and verification remain pending."
         }
       ]
     },
@@ -3313,6 +3545,54 @@
       "status": "UNRESOLVED",
       "lesson_ids": [],
       "evidence": []
+    },
+    {
+      "id": "COV-FM-T1-W05-OBJ-1",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Use set notation, roster/set-builder descriptions and cardinality.",
+      "objective_locator": "scheme week 5 and WEEK FIVE source row headed SETS",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W05-SETS-VENN"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 5 and WEEK FIVE source row headed SETS",
+          "explanation": "WEEK FIVE source body: set definition, element notation, roster, set-builder and cardinality; corrected factor listing. Owner content approval is PENDING and technical verification is DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W05-OBJ-2",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Perform union, intersection and complement; identify subsets, disjoint sets and universal sets.",
+      "objective_locator": "scheme week 5; WEEK FIVE source rows SETS and OPERATION OF SET AND VENN DIAGRAMS",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W05-SETS-VENN"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 5; WEEK FIVE source rows SETS and OPERATION OF SET AND VENN DIAGRAMS",
+          "explanation": "Replacement lesson covers set types and operations with an explicit universal set and correct complements. Owner content approval is PENDING and technical verification is DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W05-OBJ-3",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Use two-set and three-set Venn diagrams to solve counting problems.",
+      "objective_locator": "scheme week 5; WEEK FIVE source row OPERATION OF SET AND VENN DIAGRAMS",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W05-SETS-VENN"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 5; WEEK FIVE source row OPERATION OF SET AND VENN DIAGRAMS",
+          "explanation": "Replacement lesson covers two-set cardinality, three-set inclusion-exclusion, pair-only regions, exactly two, at least one and neither. Owner content approval is PENDING and technical verification is DEFERRED."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -3498,6 +3778,17 @@
       "required_action": "The Week 2 replacement (FM-PORT-D3-L002, then FM-LES-T1-W02-EQUATIONS) must supply original answered practice with a complete marking breakdown under the contract, must not reuse the printed items as a key, and must not quietly teach the week-3 logarithm step needed by quadratic Evaluation item (a) - either teach it or replace the item. Week 1 delivery remains bound to FM-COR-T1-W01 and is not activated by this finding. Narrowed on 2026-11-06 by FM-PORT-D3-L002: lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS] works each of the thirteen unanswered items in the body with its exact value (including the five weekend options) and sets nine original answered practice items worth 38 marks in total (Q9 added by FM-LES-T1-W02-EQUATIONS), every criterion list summing to its question; no printed source item is reused as the practice key, and the one logarithm step that finishes Evaluation item (a) is taught in section 8 and practised in Q9, while scheme week 3 (Logarithms) is not covered. What remains: no mark here is teacher-approved (content approval PENDING, approval_reference null), the reading-assignment page range at row line 276 is still unchecked against the book, and the row stays unbound until FM-COR-T1-W02. This item stays OPEN and blocking.",
       "affected_ids": [
         "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-T1-W05-FACT-DEFECTS",
+      "kind": "FACT",
+      "detail": "The first-term Week 5 source contains countable factual errors: (1) the listed positive factors of 30 omit 2; (2) the worked universal-set example defines U as integers 1 through 12 but then lists only 1 through 10, while a later complement includes 11 and 12; (3) the youth-club problem states 90 members but its solution substitutes 94, producing x=8 instead of the correct x=10; (4) the newspaper-reader inclusion-exclusion line has a corrupted intermediate total even though the final triple count 39 is consistent with 290. The replacement recalculates these patterns and does not copy the incorrect worked values.",
+      "required_action": "Retain this source defect record; teacher review of the replacement and the original Venn diagram figures remains required. Do not edit the original source row.",
+      "affected_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:378f63ca6f0d3b21f3690fff939b69c99f36bce29837534fb355d1d9ada17dc5",
+        "SS1-SRC-e9efc9a976ed:BODY:b06abb73acb6868e6d72626fa734efc483a2f249f525a33210cd903af0b1e674"
       ],
       "blocks_delivery": true
     }
