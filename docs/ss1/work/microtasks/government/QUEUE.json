@@ -25,7 +25,8 @@
     "GOV-INV-T1 executed on 2026-10-29 from the supplied 1st Term source (header verified by GOV-SRC-T1): ten teaching weeks plus a scheme-only revision/examination row; fourteen indexing/visual items appended; no package, coverage, rule or lesson written. The 2nd and 3rd Term headers remain unverified and their inventories unknown; the earlier notes describe the state when the queue was built.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "GOV-WK-T1-W01 (2026-11-07) indexed Week 1 at objective level: meaning as institution, art of governing and academic field mapped SUPPORTED to the reproduced generic parsed-row id; the Hobbes passage at lines 53-54 was checked against Leviathan Part I ch. XIII and needs a delivery replacement, 'why we study government' is only partly taught in the span, the reading pointer is unverified and the source has no answer key, so two PARTIAL rows, one more PARTIAL row and one UNRESOLVED row, four blocking open items (one OWNER_ACTION on the weekend key) and one lesson item were appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written.",
-    "GOV-INV-T2 (2026-11-12) verified the assigned 2nd Term Government DOCX from the hash-matching archive. Eleven teaching weeks (WEEK ONE–ELEVEN) were found, plus scheme-only row 12–13 Revision and Examination; the scheme is plain paragraphs. The document has one comparison table, one native Office Math pound sign and five superscript ordinal runs, but no embedded images. Fifteen bounded preamble, marker, week-indexing and visual-disposition items were appended. Exact XML body-child locators and C14N hashes are in GOV-INV-T2.md. No lesson, coverage, rule, correction or asset was written; tests remain deferred."
+    "GOV-INV-T2 (2026-11-12) verified the assigned 2nd Term Government DOCX from the hash-matching archive. Eleven teaching weeks (WEEK ONE–ELEVEN) were found, plus scheme-only row 12–13 Revision and Examination; the scheme is plain paragraphs. The document has one comparison table, one native Office Math pound sign and five superscript ordinal runs, but no embedded images. Fifteen bounded preamble, marker, week-indexing and visual-disposition items were appended. Exact XML body-child locators and C14N hashes are in GOV-INV-T2.md. No lesson, coverage, rule, correction or asset was written; tests remain deferred.",
+    "Owner authorization 2026-11-12: backend/src/db/ss1/subjects/government.json is added to allowed_write_paths for GOV-REV-T3 and GOV-WK-T3-W01 through GOV-WK-T3-W11. This authorizes the package writes specified by those tasks; all other path and task restrictions remain unchanged."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -40,8 +41,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 37,
-    "PENDING": 39,
-    "BLOCKED": 2
+    "PENDING": 40,
+    "BLOCKED": 1
   },
   "items": [
     {
@@ -1480,14 +1481,15 @@
       ],
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/government/QUEUE.json",
-        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md",
+        "backend/src/db/ss1/subjects/government.json"
       ],
       "depends_on": [
         "GOV-INV-T3",
         "GOV-SRC-T3"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Blocked 2026-11-12: exact unique scheme row is line 39, '12/13. Revision and Examination'; eleven teaching spans exist and no Week Twelve/Thirteen body follows. Required classify_marker kind SCHEME_ONLY rule must be stored in backend/src/db/ss1/subjects/government.json, but this path is absent from this item's allowed_write_paths (only QUEUE.json and GOV-INV-T3.md are allowed). Protocol forbids writing outside allowed paths. No rule, coverage target, revision lesson or exam paper was added. Owner must authorize the package path or reassign the rule step.",
+      "status": "PENDING",
+      "implementation_reference": "Reopened 2026-11-12 after owner explicitly authorized adding backend/src/db/ss1/subjects/government.json to this item's allowed_write_paths. The SCHEME_ONLY classify_marker rule and marker coverage remain unimplemented.",
       "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
     },
     {
@@ -1552,7 +1554,8 @@
       ],
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/government/QUEUE.json",
-        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md",
+        "backend/src/db/ss1/subjects/government.json"
       ],
       "depends_on": [
         "GOV-INV-T3",
@@ -1588,7 +1591,8 @@
       ],
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/government/QUEUE.json",
-        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md",
+        "backend/src/db/ss1/subjects/government.json"
       ],
       "depends_on": [
         "GOV-INV-T3",
@@ -1624,7 +1628,8 @@
       ],
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/government/QUEUE.json",
-        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md",
+        "backend/src/db/ss1/subjects/government.json"
       ],
       "depends_on": [
         "GOV-INV-T3",
@@ -1660,7 +1665,8 @@
       ],
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/government/QUEUE.json",
-        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md",
+        "backend/src/db/ss1/subjects/government.json"
       ],
       "depends_on": [
         "GOV-INV-T3",
@@ -1696,7 +1702,8 @@
       ],
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/government/QUEUE.json",
-        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md",
+        "backend/src/db/ss1/subjects/government.json"
       ],
       "depends_on": [
         "GOV-INV-T3",
@@ -1732,7 +1739,8 @@
       ],
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/government/QUEUE.json",
-        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md",
+        "backend/src/db/ss1/subjects/government.json"
       ],
       "depends_on": [
         "GOV-INV-T3",
@@ -1768,7 +1776,8 @@
       ],
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/government/QUEUE.json",
-        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md",
+        "backend/src/db/ss1/subjects/government.json"
       ],
       "depends_on": [
         "GOV-INV-T3",
@@ -1804,7 +1813,8 @@
       ],
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/government/QUEUE.json",
-        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md",
+        "backend/src/db/ss1/subjects/government.json"
       ],
       "depends_on": [
         "GOV-INV-T3",
@@ -1840,7 +1850,8 @@
       ],
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/government/QUEUE.json",
-        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md",
+        "backend/src/db/ss1/subjects/government.json"
       ],
       "depends_on": [
         "GOV-INV-T3",
@@ -1876,7 +1887,8 @@
       ],
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/government/QUEUE.json",
-        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md",
+        "backend/src/db/ss1/subjects/government.json"
       ],
       "depends_on": [
         "GOV-INV-T3",
@@ -1912,7 +1924,8 @@
       ],
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/government/QUEUE.json",
-        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md",
+        "backend/src/db/ss1/subjects/government.json"
       ],
       "depends_on": [
         "GOV-INV-T3",
@@ -2952,6 +2965,7 @@
   "next_runnable": [
     "GOV-TEST-PACKAGE",
     "GOV-LES-T1-W01-CORRECTED-WEEK",
+    "GOV-REV-T3",
     "GOV-WK-T3-W01",
     "GOV-WK-T3-W02",
     "GOV-WK-T3-W03",
