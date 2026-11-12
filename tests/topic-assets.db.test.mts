@@ -71,6 +71,7 @@ if (!URL_) {
 
   async function cleanup() {
     await query('DELETE FROM topics WHERE school_code=$1', [TEST_SC]);            // cascades topic_assets
+    await query('DELETE FROM assessments WHERE school_code=$1', [TEST_SC]);         // topic-generated assessment fixture
     await query('DELETE FROM subjects WHERE school_code=$1', [TEST_SC]);
     await query('DELETE FROM students WHERE school_code=$1', [TEST_SC]);
     await query('DELETE FROM users WHERE school_code=$1 OR username LIKE $2', [TEST_SC, 'zz_t2test_%']);
