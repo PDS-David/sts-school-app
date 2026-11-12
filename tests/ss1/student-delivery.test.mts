@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { getStudentSs1Lesson, isStudentDeliverableSs1Lesson, listStudentSs1Lessons } from '../../backend/src/db/ss1/studentDelivery.js';
+import { getStudentSs1Lesson, isStudentDeliverableSs1Lesson, listStudentSs1Lessons, listStudentSs1Assets, readStudentSs1Asset } from '../../backend/src/db/ss1/studentDelivery.js';
 
 test('SS1 student delivery exposes only lessons with approval, implementation, verification and permitted provenance', () => {
   const lessons = listStudentSs1Lessons();
@@ -30,4 +30,17 @@ test('SS1 student delivery lookup rejects unknown lesson IDs', () => {
   const lesson = listStudentSs1Lessons()[0];
   if (lesson) assert.deepEqual(getStudentSs1Lesson(lesson.id), lesson);
   assert.equal(getStudentSs1Lesson('not-a-real-ss1-lesson'), null);
+});
+
+test('SS1 package assets are delivered only for certified lessons and their own verified asset records', () => {
+  const lessons = listStudentSs1Lessons();
+  const assets = lessons.flatMap(lesson => listStudentSs1Assets(lesson.id));
+  assert.ok(assets.length > 0, 'at least one verified SS1 lesson asset must be available');
+  for (const asset of assets) {
+    assert.ok(lessons.some(lesson => lesson.id === asset.lesson_id));
+    const result = readStudentSs1Asset(asset.id);
+    assert.ok(result, asset.id);
+    assert.equal(result.asset.sha256, asset.sha256);
+    assert.equal(result.bytes.length, asset.bytes);
+  }
 });
