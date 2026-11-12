@@ -30,7 +30,8 @@ export function buildBasicScienceTerm3ImportPlan() {
       order_index: lesson.week,
       title: lesson.title,
       source_reference: [
-        'PROVENANCE',
+        `CURRICULUM_KEY: ${lesson.id}`,
+      'PROVENANCE',
         'Material type: researched, newly authored lesson based on the NERDC Primary 4 Basic Science curriculum.',
         'Curriculum reference: https://nerdc.gov.ng/content_manager/primary/pri4-6_basic_science_technology.pdf',
         'The NERDC document does not prescribe this term placement; Third Term is a proposed local allocation for topics not found in the supplied Primary 4 Basic Science export.',
