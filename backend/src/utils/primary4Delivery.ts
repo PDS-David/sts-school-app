@@ -42,7 +42,7 @@ const records = new Map<number, ManifestRecord>(
   (manifestData as { records: ManifestRecord[] }).records.map(record => [record.id, record]),
 );
 const sha256 = (value: string) => createHash('sha256').update(value, 'utf8').digest('hex');
-const normalize = (value: unknown) => String(value ?? '').replace(/\\s+/g, ' ').trim().toLocaleLowerCase('en');
+const normalize = (value: unknown) => String(value ?? '').replace(/\s+/g, ' ').trim().toLocaleLowerCase('en');
 
 function makeResearchedRecord(topic: any): ResearchedRecord {
   return {
@@ -79,8 +79,8 @@ function isPrimary4(topic: Primary4Topic): boolean {
 }
 
 function pendingApproval(source: string): boolean {
-  const approval = /Content approval:\\s*([A-Z_]+)/.exec(source)?.[1];
-  const verification = /Pedagogical verification:\\s*([A-Z_]+)/.exec(source)?.[1];
+  const approval = /Content approval:\s*([A-Z_]+)/.exec(source)?.[1];
+  const verification = /Pedagogical verification:\s*([A-Z_]+)/.exec(source)?.[1];
   return approval !== 'APPROVED' || verification !== 'VERIFIED';
 }
 
@@ -123,7 +123,7 @@ export function resolvePrimary4SourceDelivery(topic: Primary4Topic): Primary4Sou
     };
   }
 
-  const stableKey = /^CURRICULUM_KEY:\\s*([^\\s]+)/m.exec(source)?.[1];
+  const stableKey = /^CURRICULUM_KEY:\s*([^\s]+)/m.exec(source)?.[1];
   if (!stableKey) return withheld('No matching Primary 4 export or researched-package identity');
   const researched = researchedRecords.get(stableKey);
   if (!researched) return withheld('Researched-package key is not registered');
