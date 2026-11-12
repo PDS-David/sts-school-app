@@ -76,6 +76,7 @@ test('archive correction package contains structurally complete lessons and expl
     assert.ok(record.evaluation.length >= 3, record.title);
     assert.equal(record.content_approval, 'PENDING_OWNER_REVIEW');
     assert.equal(record.pedagogical_verification, 'VERIFIED');
+    assert.equal(record.assessment_rebuild_status, 'PENDING');
   }
 });
 
