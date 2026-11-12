@@ -74,5 +74,5 @@ export function buildHomeEconomicsImportPlan() {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  process.stdout.write(`${JSON.stringify(buildHomeEconomicsImportPlan(), null, 2)}\\n`);
+  process.stdout.write(`${JSON.stringify(buildHomeEconomicsImportPlan(), null, 2)}\n`);
 }
