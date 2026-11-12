@@ -40,8 +40,8 @@
     "LESSON": 27
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 42,
-    "PENDING": 35,
+    "IMPLEMENTED_TESTING_DEFERRED": 50,
+    "PENDING": 27,
     "BLOCKED": 1
   },
   "items": [
@@ -278,8 +278,8 @@
         "GOV-SRC-T2",
         "GOV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/government.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12: wrote tests/ss1/government.package.test.mts following the French package test pattern. Covers frozen-schema parse, exact three-source/manifest correspondence (IDs, archive members, SHA-256, terms), pending alias approval/no invented lesson approval or verification, every current source rule's source-hash/anchor guards, all three SCHEME_ONLY marker bindings, and coverage-reference resolution. Test file committed but NOT RUN by owner instruction; lesson/correction/asset guards are explicitly deferred to the tasks that add those records. Follow-up 2026-11-12: made the suite extensible for subsequent lesson tasks by replacing zero-lesson/correction/asset assertions with dynamic body-hash, criterion-total, state, correction-binding and asset-reference guards. Test execution remains deferred.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -860,8 +860,8 @@
         "GOV-SRC-T1",
         "GOV-WK-T1-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by GOV-WK-T1-W01 (2026-11-07): lines 53-54 need a delivery replacement (Hobbes wording and attribution, contested contract account stated as fact), the Week 1 exercises have no key, and 'why do we study government' is only partly taught in the span. COV-GOV-T1-W01-INSTITUTION-NEED and -WHY-STUDY are PARTIAL, COV-GOV-T1-W01-ASSESSMENT-KEYS is UNRESOLVED and GOVERNMENT-T1-W01-COVERAGE is open. GOV-WK-T1-W01 authors no lesson text, answer or correction.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12: added SUP-SS1-GOVERNMENT-T1-W01-CORRECTED as a full-row Week 1 delivery supplement, body SHA-256 12d72f1b5037c36d2fbe7a984630fe9098fc3ffb3a80a9f24ab25dee9b69f4c1, bound by CORR-GOV-T1-W01-ROW-REPLACEMENT to SS1-SRC-40ce7dcaf672:BODY:cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04. Teaches the three Week 1 scheme objectives with Hobbes's correctly attributed Part I ch.XIII account, neutral alternative explanations, Nigerian Constitution ss4–6/47/90, and Government-school-subject vs Political Science distinction. Added 13 answered practice items with criterion marking totalling 43 marks; weekend Q1/Q5 deliberately omitted pending owner choice. Core coverage entries updated to IMPLEMENTED_EQUIVALENT; why-study, reading and assessment remain PARTIAL. Approval PENDING; verification DEFERRED; tests NOT RUN.",
       "completion_condition": "A lesson in government.json teaches the three Week 1 objectives with the corrected natural-condition passage, labels itself a Week 1 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance with a dated primary text and PENDING content approval; a delivery_corrections entry binds the original lesson id and body hash to it; COV-GOV-T1-W01-INSTITUTION-NEED then cites it with evidence, and any entry it does not fully cover stays PARTIAL or UNRESOLVED; no source byte, schema or shared file is edited."
     },
     {
@@ -1488,8 +1488,8 @@
         "GOV-INV-T3",
         "GOV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Reopened 2026-11-12 after owner explicitly authorized adding backend/src/db/ss1/subjects/government.json to this item's allowed_write_paths. The SCHEME_ONLY classify_marker rule and marker coverage remain unimplemented.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12: added SS1-SRC-5f34b9f4efc4-R002 classify_marker kind SCHEME_ONLY with WHOLE_LINE matching for the exact line-39 anchor \"    12/13.  Revision and Examination\", plus MARKER coverage COV-GOV-T3-SCHEME-REVISION-EXAMINATION. Verified the complete body has eleven teaching-week labels and no Week Twelve/Thirteen body. No revision lesson, exam paper, answers, marks or teaching week was created. Testing remains deferred; no compiler/importer was run.",
       "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
     },
     {
@@ -1746,8 +1746,8 @@
         "GOV-INV-T3",
         "GOV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12: indexed T3 Government W06 (Antiword 0.37 lines 558–713; span SHA-256 9f97e6fbb99bc5bc4941ac40b48d947efcd4d8253aa61e65233aa728a232998a), mapped scheme entry 6, marked the missing functions objective UNRESOLVED, reviewed types/factors/modes/dangers and all evaluation/revision/reading/weekend/theory markers, added 10 coverage entries and 9 linked open items, and recorded constitutional context in GOV-INV-T3.md. Source's violent-method item is flagged without operational detail. No lesson, answer, mark, correction, asset or parser rule was created. Testing remains deferred; no importer/parser was run and no importer-produced row ID was fabricated.",
       "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
     },
     {
@@ -1783,8 +1783,8 @@
         "GOV-INV-T3",
         "GOV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12: indexed T3 Government W07 (Antiword 0.37 lines 714–830; span SHA-256 b5cab6670a880156a5a362205733537f5f5c08759bc82613931981b3d3400942), mapped scheme entry 7, reviewed party meaning/types/functions/comparison and all evaluation/revision/reading/weekend/theory markers, flagged missing party-system/manifesto coverage pending W08, added 10 coverage entries and 8 linked open items, and recorded constitutional checks in GOV-INV-T3.md. No lesson, answer, mark, correction, asset or parser rule was created. Testing remains deferred; no importer/parser was run and no importer-produced row ID was fabricated. Cross-week party-system and manifesto outline objectives were subsequently mapped to W08 lines 838–994; the related open item is now non-blocking.",
       "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
     },
     {
@@ -1820,8 +1820,8 @@
         "GOV-INV-T3",
         "GOV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12: indexed T3 Government W08 (Antiword 0.37 lines 831–1035; span SHA-256 f4ee10a23135ad118948b628f22c9fb0b60b3f5c39907f8dacd27d644b48a560), mapped scheme entry 8, reviewed one/two/multi-party systems, manifesto and all evaluation/revision/reading/weekend/theory markers, added 11 coverage entries and 9 linked open items, and resolved W07's cross-week party-system/manifesto mapping with evidence. No lesson, answer, mark, correction, asset or parser rule was created. Testing remains deferred; no importer/parser was run and no importer-produced row ID was fabricated.",
       "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
     },
     {
@@ -1857,8 +1857,8 @@
         "GOV-INV-T3",
         "GOV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12: indexed T3 Government W09 (Antiword 0.37 lines 1036–1203; span SHA-256 8be9514882ea201da7509c5da287d9e62331078e321ed445589502ddd9ed19b4), mapped scheme entry 9, reviewed restricted/universal suffrage, types, candidate eligibility and all evaluation/revision/reading/weekend/theory markers, added 10 coverage entries and 8 linked open items, and recorded dated Constitution/Electoral Act/INEC evidence in GOV-INV-T3.md. No lesson, answer, mark, correction, asset or parser rule was created. Testing remains deferred; no importer/parser was run and no importer-produced row ID was fabricated.",
       "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
     },
     {
@@ -1894,8 +1894,8 @@
         "GOV-INV-T3",
         "GOV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12: indexed T3 Government W10 (Antiword 0.37 lines 1204–1410; span SHA-256 1e6415f8e03eb9f6f9ff71d3908fd46d3728dd37bd1d109851e8a99e2c8ca71c), mapped scheme entry 10, reviewed definition/features, FPTP, absolute-majority/second-ballot, AV, PR/List PR/STV and all evaluation/revision/reading/weekend/theory markers, added 10 coverage entries and 10 linked open items, and recorded dated International IDEA/Nigerian constitutional evidence in GOV-INV-T3.md. No lesson, answer, mark, correction, asset or parser rule was created. Testing remains deferred; no importer/parser was run and no importer-produced row ID was fabricated.",
       "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
     },
     {
@@ -1931,8 +1931,8 @@
         "GOV-INV-T3",
         "GOV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12: indexed T3 Government W11 (Antiword 0.37 lines 1411–1551; span SHA-256 0d0def3386eb6f0873264fec10183fe334c38e912daa9a9f660053247d6c9637), mapped scheme entry 11, reviewed meaning/factors/single- and multi-member constituencies/delimitation problems and all evaluation/revision/reading/weekend/theory markers, marked multi-member merits/demerits UNRESOLVED, added 11 coverage entries and 9 linked open items, and recorded dated Nigerian constitutional checks in GOV-INV-T3.md. No lesson, answer, mark, correction, asset or parser rule was created. Testing remains deferred; no importer/parser was run and no importer-produced row ID was fabricated.",
       "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
     },
     {
@@ -2963,15 +2963,6 @@
     }
   },
   "next_runnable": [
-    "GOV-TEST-PACKAGE",
-    "GOV-LES-T1-W01-CORRECTED-WEEK",
-    "GOV-REV-T3",
-    "GOV-WK-T3-W06",
-    "GOV-WK-T3-W07",
-    "GOV-WK-T3-W08",
-    "GOV-WK-T3-W09",
-    "GOV-WK-T3-W10",
-    "GOV-WK-T3-W11",
     "GOV-LES-T1-W02-CORRECTED-WEEK",
     "GOV-LES-T1-W03-CORRECTED-WEEK",
     "GOV-LES-T1-W04-CORRECTED-WEEK",
