@@ -155,3 +155,48 @@ The figure audit confirms that the two source pentagon assessment items cannot b
 - Evaluation Q2 / image65: BC=40, CD=35, DE=55 and angle DEA=90° are printed. AD and BD are merely labelled; no numerical values appear in the image. AE is therefore unknown, with AE=√(AD²−55²). The earlier 43.30 mm value must not be used here because AD=70 belongs to the separate Week Three pentagon exercise.
 
 These are source-data defects, not student calculation errors. Keep the two tasks disabled or present them as explicit “identify the missing data” exercises until the source author supplies the missing dimensions. The other text-complete numerical questions Q3–Q5 remain keyed above.
+
+## Proposed source-assessment marking guidance
+
+These rubrics are original proposals for teacher review. They do not claim to reproduce an unseen textbook marking scheme.
+
+### Evaluation Q1 — irregular pentagon to equal-area square (6 marks)
+
+The source gives AB=70 mm, BC=40 mm, DE=75 mm and AE=80 mm. The figure image64 does not give CD or a sufficient independent angle/diagonal constraint. The polygon area is therefore not uniquely determined.
+
+Award: identifies the four readable dimensions and labels (2); identifies that CD/another independent constraint is missing (2); explains that the equal-area square side would be √A and its diagonal would be √(2A) once the verified polygon area is known (2). Do not award invented construction coordinates or a numerical square diagonal.
+
+### Evaluation Q2 — pentagon and equal-area triangle (6 marks)
+
+The source gives BC=40 mm, CD=35 mm, DE=55 mm and angle DEA=90°. Image65 labels AD and BD but gives neither value. AE=√(AD²−55²), so AE cannot be calculated numerically from this question as supplied.
+
+Award: constructs/identifies the right-angle condition at E (1); writes the correct Pythagorean relation (2); identifies missing AD/BD numerical constraints (2); explains that the equal-area triangle cannot be constructed uniquely until the source data are restored (1).
+
+### Evaluation Q3 — triangle to equal-area parallelogram (8 marks)
+
+For sides 50, 60 and 55 mm, s=82.5 mm and Heron's formula gives area approximately 1,288.03 mm². A parallelogram with 50 mm base requires perpendicular height 1,288.03/50≈25.76 mm.
+
+Award: constructs the triangle from its three sides (3); calculates the area correctly (2); calculates the equal-area parallelogram height (2); shows a right-angle height and correct base (1).
+
+### Evaluation Q4 — square equal in area to 60 mm × 35 mm rectangle (5 marks)
+
+Rectangle area = 2,100 mm²; square side = √2,100≈45.83 mm. Construct the geometric mean of 60 and 35 mm, then construct the square on the resulting side.
+
+Award: constructs/determines rectangle dimensions (1); calculates 2,100 mm² (1); uses the geometric mean (1); calculates 45.83 mm (1); constructs and labels the square (1).
+
+### Evaluation Q5 — sum of three equilateral-triangle areas (6 marks)
+
+The total area is (√3/4)(40²+55²+65²)≈3,832.18 mm². The source asks for “another triangle” but does not specify that it must be equilateral. Therefore the area is determinable but its side lengths are not unique. If the intended result is an equilateral triangle, its side is √8,850≈94.07 mm.
+
+Award: applies the equilateral-triangle area formula (2); sums the three squared side lengths correctly (1); obtains total area ≈3,832.18 mm² (1); explicitly identifies the non-uniqueness of a general triangle (1); gives 94.07 mm only with the stated equilateral assumption (1).
+
+## Weekend assignment visual reconciliation
+
+The available image72–image75 parts do not match the point labels used in the extracted weekend question text:
+- Q1 names rectangle JKLM and square KFGH, while image72 shows a different set of labels (A–H and X); the stated correspondence cannot be established.
+- Q2/Q3 refer to rectangle RSTU, square TVWX and angle SXY, but image73 is labelled A–G and contains a triangle and rectangle; the named points are absent.
+- Q4 options refer to triangles VTM, TUM, TOM, MZU, MUT, VST, MOU and MVU, but image74 uses a different point set.
+- Q5 refers to polygon BCDEG and options CDG/CDGB/ABGEF/AGF; image75 does not show G and its labels/regions do not correspond unambiguously to the extracted option wording.
+
+These are source-image/text pairing defects. Do not infer the correct multiple-choice option from a visually similar but differently labelled diagram. Obtain the original page/vector artwork or a corrected mapping before enabling these four items.
+
