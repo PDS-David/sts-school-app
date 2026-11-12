@@ -503,8 +503,8 @@
         "FM-SRC-T1",
         "FM-PRE-T1"
       ],
-      "status": "IN_PROGRESS",
-      "implementation_reference": "parsed row 4 and 5 of SS1-03 parsed_rows.json (week label \"WEEK FIVE\", title \"SETS; OPERATION OF SET AND VENN DIAGRAMS (two parsed rows carry this week label)\", 18114 characters). Existing coverage COV-FM-T1-R04 + COV-FM-T1-R05 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). Two parsed rows (SETS, 10737 characters; OPERATION OF SET AND VENN DIAGRAMS, 7377 characters) carry the label WEEK FIVE; the item covers both rows. Venn diagram objects are handled in FM-VIS-T1-W05-VENN. PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002). Reviewed source body and authored replacement SUP-SS1-FURTHER-MATHEMATICS-T1-W05-SETS-VENN with objective coverage COV-FM-T1-W05-OBJ-1..3. Indexing remains IN_PROGRESS pending visual disposition and final source-object inspection.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed objective-level indexing for both Week Five source rows (SETS; OPERATION OF SET AND VENN DIAGRAMS). Coverage COV-FM-T1-W05-OBJ-1..3 and row COV-FM-T1-R04/R05 are IMPLEMENTED_EQUIVALENT. Source factual defects and extraction risks are recorded; four source visual defects are addressed with original SVGs and documented in FM-VIS-T1-W05-VENN.md. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -2339,8 +2339,8 @@
         "FM-COR-T1-W02",
         "FM-FACT-T1-W02-EQ-OBJECTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "OI-FM-002 (CONTENT) is unchanged in further-mathematics.json. Children: objective review = FM-WK-T1-*, FM-WK-T2-*, FM-PRE-*; notation loss = FM-FACT-EQUATION-LOSS-*; figures = FM-VIS-*; branch comparisons = FM-PORT-D3-L001..L009. FM-WK-T1-W02 (2026-11-05) added its Week 2 children to this list: FM-LES-T1-W02-EQUATIONS, FM-COR-T1-W02 and FM-FACT-T1-W02-EQ-OBJECTS.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Reconciled the First and Second Term scope umbrella: all source teaching weeks have replacement lesson packages or explicit revision/examination markers; per-week equation extraction audits and candidate-port comparisons are recorded; residual factual, OLE, permission, approval and verification gates are now tracked as precise open items. Removed obsolete umbrella OI-FM-002. No remaining lesson gap is hidden.",
       "completion_condition": "All dependencies complete and OI-FM-002 replaced by precise open items or removed with evidence."
     },
     {
@@ -2363,8 +2363,8 @@
         "FM-FACT-T3-MISSING-MATERIAL",
         "FM-VIS-T3-W03-GRAPHS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "OI-FM-003 (CONTENT) and COV-FM-T3-SCHEME (UNRESOLVED) are unchanged in further-mathematics.json.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Decomposed Third Term scope gap into a precise OI-FM-003 and FM-FACT-T3-MISSING-MATERIAL blocker: the source has Weeks 2–6 and 8 plus Period 3 line-equation material; weeks 1, 7 and 9–12 are absent. Added available-source lessons, five diagrams and a 60-mark assessment; no missing syllabus is invented. OI-FM-003 remains open pending owner material/confirmation.",
       "completion_condition": "All dependencies complete and OI-FM-003 / COV-FM-T3-SCHEME replaced by precise dispositions."
     },
     {
@@ -3641,12 +3641,12 @@
       "completion_condition": "Three SVGs pass SVG safety, integrity and app rendering; diagrams appear alongside the corrected solution examples."
     },
     {
-      "id": "FM-PR-639-INTEGRATION-VALIDATION",
+      "id": "FM-PR-640-INTEGRATION-VALIDATION",
       "kind": "VERIFICATION",
       "source_id": "SS1-SRC-43c5ab51b87f",
       "term": "All terms",
-      "week_or_locator": "Consolidated First/Second Term PR #639 integration validation",
-      "objective": "Run repository CI on the consolidated package, resolve any package-specific hash/schema/SVG/compiler failures, verify all asset references and lesson-body hashes, and record remaining cross-subject blockers without modifying other subject packages.",
+      "week_or_locator": "PR #640 follow-up integrity/coverage closeout",
+      "objective": "Run repository CI on the follow-up package changes in PR #640, resolve package-specific hash/schema/SVG/compiler failures, verify all asset references and lesson-body hashes, and record remaining cross-subject blockers without modifying other subject packages.",
       "required_files": [
         "backend/src/db/ss1/subjects/further-mathematics.json",
         "backend/src/db/ss1/refreshIntegrityHashes.ts",
@@ -3672,7 +3672,7 @@
         "FM-LES-T2-W10-LOGICAL-CONNECTIVES"
       ],
       "status": "IN_PROGRESS",
-      "implementation_reference": "Consolidated PR #639 now targets master and carries 24 lessons, 84 coverage rows, 30 open review items and 18 registered assets. All 24 lesson body hashes, practice marking totals and 18 asset hashes/byte counts were independently recomputed and matched. CI must now run on the master-targeted PR. Approval remains PENDING; verification DEFERRED.",
+      "implementation_reference": "Follow-up PR #640 contains only the post-merge Further Mathematics integrity/coverage corrections and queue/review closeout. All 25 lessons, 90 coverage rows and 24 registered assets are preserved from merged PR #639. Verification pending current-head CI.",
       "completion_condition": "Master-targeted CI passes all relevant checks; package hash/schema/compiler/SVG validation is complete; all remaining blockers are classified and recorded. No merge before required checks pass."
     },
     {
