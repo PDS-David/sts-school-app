@@ -14125,32 +14125,6 @@
       }
     },
     {
-      "id": "CORR-PHYSICS-T1-W02-MEASUREMENT-CONSOLIDATED",
-      "source_id": "SS1-SRC-5c0149cda71d",
-      "source_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206",
-      "source_lesson_id": "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e",
-      "body_sha256": "b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e",
-      "replacement_id": "SUP-SS1-PHYSICS-T1-W02-CONSOLIDATED",
-      "reason": "The original Week Two row contains an incorrect 20 m table-tennis table example, an inconsistent micrometer Example 3.2 result (17.1 mm versus 1.711 cm), incomplete micrometer instruction, and three weekend-assignment figures that are absent from the rendered source PDF. The consolidated replacement preserves all Week Two objectives and measurement teaching, corrects the source facts and arithmetic, keys the visible theory figures, supplies three clearly labelled original replacement practice diagrams for the missing weekend figures, answers the readable SI-units question and withdraws the ambiguous 'dimension of a compound' question pending rewrite.",
-      "evidence": {
-        "locator": "Source member SS1-SRC-5c0149cda71d SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; original Week Two body SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e; rendered PDF pages 6–9.",
-        "explanation": "Replacement SUP-SS1-PHYSICS-T1-W02-CONSOLIDATED consolidates the measurement basics, micrometer reading, volume measurement and keyed assessment supplements. It corrects the 20 m table-tennis example to the ITTF dimensions 2.74 m × 1.525 m; corrects 17.00 + 0.11 to 17.11 mm = 1.711 cm; answers the visible theory diagrams (3.67 mm, 3.25 mm, 1.95 cm, 1.68 cm); answers the SI base-unit question (metre, kilogram, second); and supplies original SVG replacement figures for the three weekend items whose source diagrams are absent. The ambiguous compound-dimension question is explicitly withdrawn rather than guessed. Content approval PENDING; verification DEFERRED."
-      }
-    },
-    {
-      "id": "CORR-PHYSICS-T2-W04-EXPANSIVITY",
-      "source_id": "SS1-SRC-2c924c964660",
-      "source_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7",
-      "source_lesson_id": "SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c",
-      "body_sha256": "91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c",
-      "replacement_id": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY",
-      "reason": "The original Week Four source prints X instead of α in the linear-expansion equations on rendered page 8, uses Y instead of γ for volume expansivity on rendered page 9, and gives an incomplete α:β:Y ratio. It asks for a diagram of anomalous water behaviour but supplies none. The replacement teaches the correct α, β and γ relationships, provides a new anomalous-water graph, keys the source calculations and explains apparent expansion.",
-      "evidence": {
-        "locator": "Original source member SHA-256 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed body ID SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c; rendered PDF pages 8–9.",
-        "explanation": "The rendered original page 8 confirms literal X in L₂ = L₁ + X L₁Δθ and L₂ = L₁(1 + XΔθ); this is a source typo, not a WordExtractor artefact. Page 9 confirms Y is used for cubical expansivity and the α:β:Y ratio is incomplete. Replacement SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY teaches α, β and γ, gives β≈2α and γ≈3α, provides an original anomalous-water graph, and keys the calculation/experiment questions. Content approval PENDING; verification DEFERRED."
-      }
-    },
-    {
       "id": "CORR-PHYSICS-T3-W10-ELASTIC-FORCE",
       "source_id": "SS1-SRC-bed91bb4ef0e",
       "source_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688",
@@ -14961,7 +14935,7 @@
       "bytes": 1223,
       "media_type": "image/svg+xml",
       "alt": "Original replacement vernier callipers diagram: 4.40 cm main scale plus 0.03 cm vernier equals 4.43 cm.",
-      "order": 0,
+      "order": 1,
       "source_locator": "Original replacement diagram authored for the consolidated Week Two lesson on 2026-11-11 because the corresponding weekend-assignment figure is absent from the rendered source PDF. It is not a reproduction of the missing source figure.",
       "provenance": {
         "title": "Original replacement instrument-reading diagram",
@@ -14986,7 +14960,7 @@
       "bytes": 1252,
       "media_type": "image/svg+xml",
       "alt": "Original replacement micrometer diagram: 10.00 mm sleeve plus 0.16 mm thimble equals 10.16 mm.",
-      "order": 0,
+      "order": 2,
       "source_locator": "Original replacement diagram authored for the consolidated Week Two lesson on 2026-11-11 because the corresponding weekend-assignment figure is absent from the rendered source PDF. It is not a reproduction of the missing source figure.",
       "provenance": {
         "title": "Original replacement instrument-reading diagram",
@@ -15029,81 +15003,6 @@
       }
     },
     {
-      "id": "PHYS-ASSET-T1-MOTION-FRICTION",
-      "lesson_id": "SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR",
-      "path": "backend/src/db/ss1/assets/physics/t1-motion-friction.svg",
-      "sha256": "17c5a632207980bc649dd51603d705c3d4ef03b951db5d9e666879e396d79f06",
-      "bytes": 2419,
-      "media_type": "image/svg+xml",
-      "alt": "Original diagrams of circular motion and friction forces.",
-      "order": 0,
-      "source_locator": "Original SVG authored to disposition PHYS-VIS-T1-MOTION-FRICTION; based on rendered source PDF page clusters documented in PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Not a copy of source artwork.",
-      "provenance": {
-        "title": "Original Physics instructional diagram",
-        "locator": "Original diagram authored for SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR.",
-        "rights": "Original artwork created for the SS1 Physics student package.",
-        "reuse_status": "PERMITTED",
-        "attribution": "AISchoolonair SS1 Physics original instructional asset."
-      },
-      "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
-        "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
-      }
-    },
-    {
-      "id": "PHYS-ASSET-T1-GRAPHS-VECTORS",
-      "lesson_id": "SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS",
-      "path": "backend/src/db/ss1/assets/physics/t1-graphs-vectors.svg",
-      "sha256": "52b1df9220df5a2911bb99861b5ccdaad381eef68cb080fd28d70eb095409084",
-      "bytes": 1983,
-      "media_type": "image/svg+xml",
-      "alt": "Original vector addition, displacement-time and velocity-time graphs.",
-      "order": 0,
-      "source_locator": "Original SVG authored to disposition PHYS-VIS-T1-GRAPHS-VECTORS; based on rendered source PDF page clusters documented in PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Not a copy of source artwork.",
-      "provenance": {
-        "title": "Original Physics instructional diagram",
-        "locator": "Original diagram authored for SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS.",
-        "rights": "Original artwork created for the SS1 Physics student package.",
-        "reuse_status": "PERMITTED",
-        "attribution": "AISchoolonair SS1 Physics original instructional asset."
-      },
-      "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
-        "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
-      }
-    },
-    {
-      "id": "PHYS-ASSET-T1-DENSITY-PRESSURE",
-      "lesson_id": "SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION",
-      "path": "backend/src/db/ss1/assets/physics/t1-density-pressure.svg",
-      "sha256": "52226574e69ef565a977eb3f7de3a03fa49ee0df06b346af4125089f9c453407",
-      "bytes": 1725,
-      "media_type": "image/svg+xml",
-      "alt": "Original density displacement and pressure/upthrust diagrams.",
-      "order": 0,
-      "source_locator": "Original SVG authored to disposition PHYS-VIS-T1-DENSITY-PRESSURE; based on rendered source PDF page clusters documented in PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Not a copy of source artwork.",
-      "provenance": {
-        "title": "Original Physics instructional diagram",
-        "locator": "Original diagram authored for SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION.",
-        "rights": "Original artwork created for the SS1 Physics student package.",
-        "reuse_status": "PERMITTED",
-        "attribution": "AISchoolonair SS1 Physics original instructional asset."
-      },
-      "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
-        "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
-      }
-    },
-    {
       "id": "PHYS-ASSET-T1-WORK-VISCOSITY",
       "lesson_id": "SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER",
       "path": "backend/src/db/ss1/assets/physics/t1-work-viscosity.svg",
@@ -15116,156 +15015,6 @@
       "provenance": {
         "title": "Original Physics instructional diagram",
         "locator": "Original diagram authored for SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER.",
-        "rights": "Original artwork created for the SS1 Physics student package.",
-        "reuse_status": "PERMITTED",
-        "attribution": "AISchoolonair SS1 Physics original instructional asset."
-      },
-      "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
-        "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
-      }
-    },
-    {
-      "id": "PHYS-ASSET-T2-THERMOMETRY",
-      "lesson_id": "SUP-SS1-PHYSICS-T2-W02-THERMOMETERS-EVAPORATION",
-      "path": "backend/src/db/ss1/assets/physics/t2-thermometry.svg",
-      "sha256": "c85193c7031a0d58bf67cfbcf6dbe223a9b39da9031bd9e3a9cfc9f5c9f8670c",
-      "bytes": 1412,
-      "media_type": "image/svg+xml",
-      "alt": "Original liquid-in-glass thermometer with labelled bulb, capillary and fixed points.",
-      "order": 0,
-      "source_locator": "Original SVG authored to disposition PHYS-VIS-T2-THERMOMETRY; based on rendered source PDF page clusters documented in PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Not a copy of source artwork.",
-      "provenance": {
-        "title": "Original Physics instructional diagram",
-        "locator": "Original diagram authored for SUP-SS1-PHYSICS-T2-W02-THERMOMETERS-EVAPORATION.",
-        "rights": "Original artwork created for the SS1 Physics student package.",
-        "reuse_status": "PERMITTED",
-        "attribution": "AISchoolonair SS1 Physics original instructional asset."
-      },
-      "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
-        "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
-      }
-    },
-    {
-      "id": "PHYS-ASSET-T2-HEAT-TRANSFER",
-      "lesson_id": "SUP-SS1-PHYSICS-T2-W05-HEAT-TRANSFER",
-      "path": "backend/src/db/ss1/assets/physics/t2-heat-transfer.svg",
-      "sha256": "ce7b5333c89e3d1a8d228f856b54351970928310fd2c9594c474edcd979e039d",
-      "bytes": 1818,
-      "media_type": "image/svg+xml",
-      "alt": "Original diagrams of conduction, convection and thermal radiation.",
-      "order": 0,
-      "source_locator": "Original SVG authored to disposition PHYS-VIS-T2-HEAT-TRANSFER; based on rendered source PDF page clusters documented in PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Not a copy of source artwork.",
-      "provenance": {
-        "title": "Original Physics instructional diagram",
-        "locator": "Original diagram authored for SUP-SS1-PHYSICS-T2-W05-HEAT-TRANSFER.",
-        "rights": "Original artwork created for the SS1 Physics student package.",
-        "reuse_status": "PERMITTED",
-        "attribution": "AISchoolonair SS1 Physics original instructional asset."
-      },
-      "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
-        "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
-      }
-    },
-    {
-      "id": "PHYS-ASSET-T2-ELECTROSTATICS",
-      "lesson_id": "SUP-SS1-PHYSICS-T2-W06-ELECTRIC-CHARGES",
-      "path": "backend/src/db/ss1/assets/physics/t2-electrostatics.svg",
-      "sha256": "3c67ae7ca47fe69cc4356e572463447264a23a86e9105acaf06bb788ad24c402",
-      "bytes": 2144,
-      "media_type": "image/svg+xml",
-      "alt": "Original diagrams of charging by friction, contact and induction.",
-      "order": 0,
-      "source_locator": "Original SVG authored to disposition PHYS-VIS-T2-ELECTROSTATICS; based on rendered source PDF page clusters documented in PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Not a copy of source artwork.",
-      "provenance": {
-        "title": "Original Physics instructional diagram",
-        "locator": "Original diagram authored for SUP-SS1-PHYSICS-T2-W06-ELECTRIC-CHARGES.",
-        "rights": "Original artwork created for the SS1 Physics student package.",
-        "reuse_status": "PERMITTED",
-        "attribution": "AISchoolonair SS1 Physics original instructional asset."
-      },
-      "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
-        "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
-      }
-    },
-    {
-      "id": "PHYS-ASSET-T2-GRAVITATION",
-      "lesson_id": "SUP-SS1-PHYSICS-T2-W08-FIELDS-GRAVITY",
-      "path": "backend/src/db/ss1/assets/physics/t2-gravitation.svg",
-      "sha256": "97658524ffa82c7950da3ff33052ba74f753d0469eaadd4fb0d91be54d990aab",
-      "bytes": 1548,
-      "media_type": "image/svg+xml",
-      "alt": "Original diagram of radial gravitational field lines around Earth and a potential curve.",
-      "order": 0,
-      "source_locator": "Original SVG authored to disposition PHYS-VIS-T2-GRAVITATION; based on rendered source PDF page clusters documented in PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Not a copy of source artwork.",
-      "provenance": {
-        "title": "Original Physics instructional diagram",
-        "locator": "Original diagram authored for SUP-SS1-PHYSICS-T2-W08-FIELDS-GRAVITY.",
-        "rights": "Original artwork created for the SS1 Physics student package.",
-        "reuse_status": "PERMITTED",
-        "attribution": "AISchoolonair SS1 Physics original instructional asset."
-      },
-      "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
-        "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
-      }
-    },
-    {
-      "id": "PHYS-ASSET-T3-CIRCUITS-RESISTORS",
-      "lesson_id": "SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL",
-      "path": "backend/src/db/ss1/assets/physics/t3-circuits-resistors.svg",
-      "sha256": "495b7cbdaecd1d4bb66795cba096e943a32e117cfeed575538d336ad501a9d0a",
-      "bytes": 2290,
-      "media_type": "image/svg+xml",
-      "alt": "Original circuit diagrams showing an ammeter in series, voltmeter in parallel, and resistor series/parallel networks.",
-      "order": 0,
-      "source_locator": "Original SVG authored to disposition PHYS-VIS-T3-CIRCUITS-RESISTORS; based on rendered source PDF page clusters documented in PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Not a copy of source artwork.",
-      "provenance": {
-        "title": "Original Physics instructional diagram",
-        "locator": "Original diagram authored for SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL.",
-        "rights": "Original artwork created for the SS1 Physics student package.",
-        "reuse_status": "PERMITTED",
-        "attribution": "AISchoolonair SS1 Physics original instructional asset."
-      },
-      "state": {
-        "content_approval": "PENDING",
-        "approval_reference": null,
-        "implementation": "IMPLEMENTED",
-        "verification": "DEFERRED",
-        "verification_reference": null
-      }
-    },
-    {
-      "id": "PHYS-ASSET-T3-ATOMIC-DIFFUSION",
-      "lesson_id": "SUP-SS1-PHYSICS-T3-W05-PARTICLE-NATURE-MATTER",
-      "path": "backend/src/db/ss1/assets/physics/t3-atomic-diffusion.svg",
-      "sha256": "ad10f222522ea168a487fee507944b5e4152a221cdac957e672e825335d8c97d",
-      "bytes": 2010,
-      "media_type": "image/svg+xml",
-      "alt": "Original atom, diffusion and Brownian-motion diagrams.",
-      "order": 0,
-      "source_locator": "Original SVG authored to disposition PHYS-VIS-T3-ATOMIC-DIFFUSION; based on rendered source PDF page clusters documented in PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Not a copy of source artwork.",
-      "provenance": {
-        "title": "Original Physics instructional diagram",
-        "locator": "Original diagram authored for SUP-SS1-PHYSICS-T3-W05-PARTICLE-NATURE-MATTER.",
         "rights": "Original artwork created for the SS1 Physics student package.",
         "reuse_status": "PERMITTED",
         "attribution": "AISchoolonair SS1 Physics original instructional asset."

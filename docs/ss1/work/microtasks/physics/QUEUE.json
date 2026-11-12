@@ -80,7 +80,7 @@
     "SOURCE_RULE": 2,
     "OWNER_DECISION": 2,
     "FACTUAL_DEPENDENCY": 14,
-    "VISUAL_DISPOSITION": 17,
+    "VISUAL_DISPOSITION": 8,
     "BRANCH_PORT": 13,
     "BRANCH_COMPARISON": 2,
     "SCOPE_DECOMPOSITION": 1,
@@ -89,11 +89,11 @@
     "CORRECTION_BINDING": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 90,
+    "IMPLEMENTED_TESTING_DEFERRED": 81,
     "BLOCKED": 7,
     "PENDING": 12
   },
-  "total": 109,
+  "total": 100,
   "items": [
     {
       "id": "PHYS-SRC-T1",
@@ -3374,66 +3374,6 @@
       "completion_condition": "One exact delivery_corrections[] entry binds the original Week One body hash to an existing complete replacement lesson; all original teaching objectives, assessment and reading marker are preserved or explicitly dispositioned; defects and approval status are documented."
     },
     {
-      "id": "PHYS-VIS-T1-MOTION-FRICTION",
-      "kind": "VISUAL_DISPOSITION",
-      "source_id": "SS1-SRC-5c0149cda71d",
-      "term": "1st Term",
-      "week_or_locator": "PDF pages 10–15; Weeks Three/Four",
-      "objective": "Create original motion/circular-motion and friction diagrams; do not copy source artwork or tutor branding.",
-      "required_files": [
-        "backend/src/db/ss1/subjects/physics.json"
-      ],
-      "required_attachments": [],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/physics.json",
-        "docs/ss1/work/microtasks/physics/QUEUE.json"
-      ],
-      "depends_on": [],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Original SVG PHYS-ASSET-T1-MOTION-FRICTION registered at backend/src/db/ss1/assets/physics/t1-motion-friction.svg, attached to SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR; SHA-256 ceb6e5679a3a4bb975228b5cb0e41c7734e10d4811be261b3a26560a362d1360, 2419 UTF-8 bytes. Original equivalent, not a copy of the source figure. Content approval PENDING; verification DEFERRED.",
-      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
-    },
-    {
-      "id": "PHYS-VIS-T1-GRAPHS-VECTORS",
-      "kind": "VISUAL_DISPOSITION",
-      "source_id": "SS1-SRC-5c0149cda71d",
-      "term": "1st Term",
-      "week_or_locator": "PDF pages 16–24; Weeks Five/Six",
-      "objective": "Create original vector, distance/displacement-time and speed/velocity-time graph diagrams, including labelled axes and gradients.",
-      "required_files": [
-        "backend/src/db/ss1/subjects/physics.json"
-      ],
-      "required_attachments": [],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/physics.json",
-        "docs/ss1/work/microtasks/physics/QUEUE.json"
-      ],
-      "depends_on": [],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Original SVG PHYS-ASSET-T1-GRAPHS-VECTORS registered at backend/src/db/ss1/assets/physics/t1-graphs-vectors.svg, attached to SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS; SHA-256 9b1860bd126dd0175ca7382d635c59fc9040f23396edc63adbe13a3f83905c19, 1983 UTF-8 bytes. Original equivalent, not a copy of the source figure. Content approval PENDING; verification DEFERRED.",
-      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
-    },
-    {
-      "id": "PHYS-VIS-T1-DENSITY-PRESSURE",
-      "kind": "VISUAL_DISPOSITION",
-      "source_id": "SS1-SRC-5c0149cda71d",
-      "term": "1st Term",
-      "week_or_locator": "PDF pages 25–29; Weeks Seven/Eight",
-      "objective": "Create original density/relative-density, pressure, upthrust, Archimedes and floatation diagrams.",
-      "required_files": [
-        "backend/src/db/ss1/subjects/physics.json"
-      ],
-      "required_attachments": [],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/physics.json",
-        "docs/ss1/work/microtasks/physics/QUEUE.json"
-      ],
-      "depends_on": [],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Original SVG PHYS-ASSET-T1-DENSITY-PRESSURE registered at backend/src/db/ss1/assets/physics/t1-density-pressure.svg, attached to SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION; SHA-256 ca26c4cd944800318cea16ac6d215181959ee816fda2e426cd62094f78882c40, 1725 UTF-8 bytes. Original equivalent, not a copy of the source figure. Content approval PENDING; verification DEFERRED.",
-      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
-    },
-    {
       "id": "PHYS-VIS-T1-WORK-VISCOSITY",
       "kind": "VISUAL_DISPOSITION",
       "source_id": "SS1-SRC-5c0149cda71d",
@@ -3451,126 +3391,6 @@
       "depends_on": [],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Original SVG PHYS-ASSET-T1-WORK-VISCOSITY registered at backend/src/db/ss1/assets/physics/t1-work-viscosity.svg, attached to SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER; SHA-256 2dc9c6ee058bfebf8f061fed9d345a989413a66a866e44eac213b91fd41ac85a, 2023 UTF-8 bytes. Original equivalent, not a copy of the source figure. Content approval PENDING; verification DEFERRED.",
-      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
-    },
-    {
-      "id": "PHYS-VIS-T2-THERMOMETRY",
-      "kind": "VISUAL_DISPOSITION",
-      "source_id": "SS1-SRC-2c924c964660",
-      "term": "2nd Term",
-      "week_or_locator": "PDF pages 3–7",
-      "objective": "Create original thermometer, fixed-point and temperature-scale diagrams.",
-      "required_files": [
-        "backend/src/db/ss1/subjects/physics.json"
-      ],
-      "required_attachments": [],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/physics.json",
-        "docs/ss1/work/microtasks/physics/QUEUE.json"
-      ],
-      "depends_on": [],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Original SVG PHYS-ASSET-T2-THERMOMETRY registered at backend/src/db/ss1/assets/physics/t2-thermometry.svg, attached to SUP-SS1-PHYSICS-T2-W02-THERMOMETERS-EVAPORATION; SHA-256 d34c67f87d2536084bbb66b1d376e1e120ad9942980092cac3943517bcc4e9a4, 1412 UTF-8 bytes. Original equivalent, not a copy of the source figure. Content approval PENDING; verification DEFERRED.",
-      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
-    },
-    {
-      "id": "PHYS-VIS-T2-HEAT-TRANSFER",
-      "kind": "VISUAL_DISPOSITION",
-      "source_id": "SS1-SRC-2c924c964660",
-      "term": "2nd Term",
-      "week_or_locator": "PDF pages 11–13",
-      "objective": "Create original conduction, convection and radiation diagrams; supplement the existing vacuum-flask SVG.",
-      "required_files": [
-        "backend/src/db/ss1/subjects/physics.json"
-      ],
-      "required_attachments": [],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/physics.json",
-        "docs/ss1/work/microtasks/physics/QUEUE.json"
-      ],
-      "depends_on": [],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Original SVG PHYS-ASSET-T2-HEAT-TRANSFER registered at backend/src/db/ss1/assets/physics/t2-heat-transfer.svg, attached to SUP-SS1-PHYSICS-T2-W05-HEAT-TRANSFER; SHA-256 5602d8f4dd40883daa0ee8d3d8f612e9d259731f8e9d7bc549ef2c0ea6c43a93, 1818 UTF-8 bytes. Original equivalent, not a copy of the source figure. Content approval PENDING; verification DEFERRED.",
-      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
-    },
-    {
-      "id": "PHYS-VIS-T2-ELECTROSTATICS",
-      "kind": "VISUAL_DISPOSITION",
-      "source_id": "SS1-SRC-2c924c964660",
-      "term": "2nd Term",
-      "week_or_locator": "PDF pages 14–18",
-      "objective": "Create original charging-by-friction/contact/induction diagrams; reuse existing electroscope/field-pattern SVGs where appropriate.",
-      "required_files": [
-        "backend/src/db/ss1/subjects/physics.json"
-      ],
-      "required_attachments": [],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/physics.json",
-        "docs/ss1/work/microtasks/physics/QUEUE.json"
-      ],
-      "depends_on": [],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Original SVG PHYS-ASSET-T2-ELECTROSTATICS registered at backend/src/db/ss1/assets/physics/t2-electrostatics.svg, attached to SUP-SS1-PHYSICS-T2-W06-ELECTRIC-CHARGES; SHA-256 e8e02fd58ad233bb5d09976678afb09831146440c751779a4ca2b07dfe9ce31f, 2144 UTF-8 bytes. Original equivalent, not a copy of the source figure. Content approval PENDING; verification DEFERRED.",
-      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
-    },
-    {
-      "id": "PHYS-VIS-T2-GRAVITATION",
-      "kind": "VISUAL_DISPOSITION",
-      "source_id": "SS1-SRC-2c924c964660",
-      "term": "2nd Term",
-      "week_or_locator": "PDF pages 19–24",
-      "objective": "Create original gravitational field-line and potential diagrams.",
-      "required_files": [
-        "backend/src/db/ss1/subjects/physics.json"
-      ],
-      "required_attachments": [],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/physics.json",
-        "docs/ss1/work/microtasks/physics/QUEUE.json"
-      ],
-      "depends_on": [],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Original SVG PHYS-ASSET-T2-GRAVITATION registered at backend/src/db/ss1/assets/physics/t2-gravitation.svg, attached to SUP-SS1-PHYSICS-T2-W08-FIELDS-GRAVITY; SHA-256 49807cad59fe547ce056b839d1015911d312384a18f78e0bfed4dd64835327c9, 1548 UTF-8 bytes. Original equivalent, not a copy of the source figure. Content approval PENDING; verification DEFERRED.",
-      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
-    },
-    {
-      "id": "PHYS-VIS-T3-CIRCUITS-RESISTORS",
-      "kind": "VISUAL_DISPOSITION",
-      "source_id": "SS1-SRC-bed91bb4ef0e",
-      "term": "3rd Term",
-      "week_or_locator": "PDF pages 2–5",
-      "objective": "Create original circuit-symbol, simple-circuit and series/parallel resistor/cell network diagrams.",
-      "required_files": [
-        "backend/src/db/ss1/subjects/physics.json"
-      ],
-      "required_attachments": [],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/physics.json",
-        "docs/ss1/work/microtasks/physics/QUEUE.json"
-      ],
-      "depends_on": [],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Original SVG PHYS-ASSET-T3-CIRCUITS-RESISTORS registered at backend/src/db/ss1/assets/physics/t3-circuits-resistors.svg, attached to SUP-SS1-PHYSICS-T3-W02-RESISTORS-CELLS-SERIES-PARALLEL; SHA-256 b87a418284ee9dc7239fdfa991745d78072bd9b5eec3ff1fd5d6f840483adbb0, 2290 UTF-8 bytes. Original equivalent, not a copy of the source figure. Content approval PENDING; verification DEFERRED.",
-      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
-    },
-    {
-      "id": "PHYS-VIS-T3-ATOMIC-DIFFUSION",
-      "kind": "VISUAL_DISPOSITION",
-      "source_id": "SS1-SRC-bed91bb4ef0e",
-      "term": "3rd Term",
-      "week_or_locator": "PDF pages 8–10",
-      "objective": "Create original atomic-structure, diffusion, osmosis and Brownian-motion diagrams.",
-      "required_files": [
-        "backend/src/db/ss1/subjects/physics.json"
-      ],
-      "required_attachments": [],
-      "allowed_write_paths": [
-        "backend/src/db/ss1/subjects/physics.json",
-        "docs/ss1/work/microtasks/physics/QUEUE.json"
-      ],
-      "depends_on": [],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Original SVG PHYS-ASSET-T3-ATOMIC-DIFFUSION registered at backend/src/db/ss1/assets/physics/t3-atomic-diffusion.svg, attached to SUP-SS1-PHYSICS-T3-W05-PARTICLE-NATURE-MATTER; SHA-256 554ed13610cf99aeb605c591ce1351cf7ad07890393dc8a861ebd2a95deb01d6, 2010 UTF-8 bytes. Original equivalent, not a copy of the source figure. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
     }
   ],
