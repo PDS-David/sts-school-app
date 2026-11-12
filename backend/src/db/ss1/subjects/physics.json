@@ -7242,6 +7242,38 @@
               "marks": 1
             }
           ]
+        },
+        {
+          "id": "Q19",
+          "question": "The SI unit of potential difference is (A) ampere (B) volt (C) ohm (D) coulomb.",
+          "answer": "B. Volt (V).",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q20",
+          "question": "Define (a) electric current, (b) potential difference and (c) internal resistance.",
+          "answer": "(a) Electric current is the rate of flow of electric charge. (b) Potential difference is the energy transferred/work done per unit charge between two points. (c) Internal resistance is the resistance to current within a real cell or source, arising from its electrolyte, electrodes and other internal parts.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Correct definition of electric current.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct definition of potential difference.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct definition of internal resistance.",
+              "marks": 1
+            }
+          ]
         }
       ],
       "provenance": [
@@ -11586,6 +11618,19 @@
         "locator": "Original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 9 WEEK TEN, body SS1-SRC-2c924c964660:BODY:d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6; rendered source pages 20–22.",
         "explanation": "The source describes conversion of chemical energy to electrical energy in a cell, then labels positive electrode anode and negative cathode. The lesson explicitly identifies the context as a galvanic cell and uses anode-negative/cathode-positive. The source also names the photoelectric effect for a solar cell; the lesson accurately identifies the photovoltaic effect and explains charge separation and potential difference in a semiconductor junction."
       }
+    },
+    {
+      "id": "CORR-PHYSICS-T3-W01-INTERNAL-RESISTANCE",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "source_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688",
+      "source_lesson_id": "SS1-SRC-bed91bb4ef0e:BODY:9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231",
+      "body_sha256": "9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231",
+      "replacement_id": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS",
+      "reason": "The source defines internal resistance only as resistance offered by the electrolyte, which is incomplete because resistance also arises from electrodes and other internal parts of a real cell. Its rendered relation for current is unbracketed as I=E/R+r=V/R, which is ambiguous and could be read as E/R + r. The lesson defines internal resistance as the total internal opposition of the source and writes the unambiguous relations ε=I(R+r) and V=IR=ε−Ir.",
+      "evidence": {
+        "locator": "Original member bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; parsed row 0 WEEK 1, body SS1-SRC-bed91bb4ef0e:BODY:9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231; rendered source pages 1–3, especially page 3 internal-resistance relation.",
+        "explanation": "The original rendering visibly places the denominator as R + r without clear grouping. The supplement uses brackets to make the intended total circuit resistance explicit and gives the terminal-voltage relation."
+      }
     }
   ],
   "assets": [
@@ -15115,12 +15160,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS; body SHA-256 4a611b9dbc48d8c38db2d88940bdc00037d200ca86ca6578c064f2107e78f25c; practice Q01–Q18.",
-          "explanation": "Authored supplement teaches the circuit, quantities, components and Ohm's law verification with a complete keyed assessment. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS; body SHA-256 4a611b9dbc48d8c38db2d88940bdc00037d200ca86ca6578c064f2107e78f25c; practice Q01–Q20; registered circuit asset PHYS-ASSET-T3-W01-DC-CIRCUIT.",
+          "explanation": "The supplement covers the source objective with component functions, quantities, Ohm's law, the verification procedure and keyed source assessments. The original row and rendered pages have now been inspected; approval remains PENDING and verification DEFERRED."
         },
         {
           "locator": "EduPodia, Third Term SS1 Physics PDF, Week One, lines 45–93.",
           "explanation": "Close-equivalent comparison includes circuit components, quantities and Ohm's law. It is not asserted to be the registered original .doc."
+        },
+        {
+          "locator": "Original member bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; parsed row 0 WEEK 1 body SS1-SRC-bed91bb4ef0e:BODY:9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231; privately rendered source pages 1–3; asset PHYS-ASSET-T3-W01-DC-CIRCUIT.",
+          "explanation": "The original source states that a circuit diagram follows, but no circuit schematic appears in the rendered pages. The package's original SVG provides the circuit diagram. The source also labels a V–I graph but contains no plotted graph; a separate original graph asset is queued. All evaluation, theory and weekend questions are now mapped to keyed practice."
         }
       ]
     },
@@ -15135,12 +15184,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS; body SHA-256 4a611b9dbc48d8c38db2d88940bdc00037d200ca86ca6578c064f2107e78f25c; practice Q01–Q18.",
-          "explanation": "Authored supplement teaches the circuit, quantities, components and Ohm's law verification with a complete keyed assessment. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS; body SHA-256 4a611b9dbc48d8c38db2d88940bdc00037d200ca86ca6578c064f2107e78f25c; practice Q01–Q20; registered circuit asset PHYS-ASSET-T3-W01-DC-CIRCUIT.",
+          "explanation": "The supplement covers the source objective with component functions, quantities, Ohm's law, the verification procedure and keyed source assessments. The original row and rendered pages have now been inspected; approval remains PENDING and verification DEFERRED."
         },
         {
           "locator": "EduPodia, Third Term SS1 Physics PDF, Week One, lines 45–93.",
           "explanation": "Close-equivalent comparison includes circuit components, quantities and Ohm's law. It is not asserted to be the registered original .doc."
+        },
+        {
+          "locator": "Original member bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; parsed row 0 WEEK 1 body SS1-SRC-bed91bb4ef0e:BODY:9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231; privately rendered source pages 1–3; asset PHYS-ASSET-T3-W01-DC-CIRCUIT.",
+          "explanation": "The original source states that a circuit diagram follows, but no circuit schematic appears in the rendered pages. The package's original SVG provides the circuit diagram. The source also labels a V–I graph but contains no plotted graph; a separate original graph asset is queued. All evaluation, theory and weekend questions are now mapped to keyed practice."
         }
       ]
     },
@@ -15155,12 +15208,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS; body SHA-256 4a611b9dbc48d8c38db2d88940bdc00037d200ca86ca6578c064f2107e78f25c; practice Q01–Q18.",
-          "explanation": "Authored supplement teaches the circuit, quantities, components and Ohm's law verification with a complete keyed assessment. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS; body SHA-256 4a611b9dbc48d8c38db2d88940bdc00037d200ca86ca6578c064f2107e78f25c; practice Q01–Q20; registered circuit asset PHYS-ASSET-T3-W01-DC-CIRCUIT.",
+          "explanation": "The supplement covers the source objective with component functions, quantities, Ohm's law, the verification procedure and keyed source assessments. The original row and rendered pages have now been inspected; approval remains PENDING and verification DEFERRED."
         },
         {
           "locator": "EduPodia, Third Term SS1 Physics PDF, Week One, lines 45–93.",
           "explanation": "Close-equivalent comparison includes circuit components, quantities and Ohm's law. It is not asserted to be the registered original .doc."
+        },
+        {
+          "locator": "Original member bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; parsed row 0 WEEK 1 body SS1-SRC-bed91bb4ef0e:BODY:9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231; privately rendered source pages 1–3; asset PHYS-ASSET-T3-W01-DC-CIRCUIT.",
+          "explanation": "The original source states that a circuit diagram follows, but no circuit schematic appears in the rendered pages. The package's original SVG provides the circuit diagram. The source also labels a V–I graph but contains no plotted graph; a separate original graph asset is queued. All evaluation, theory and weekend questions are now mapped to keyed practice."
         }
       ]
     },
@@ -15175,12 +15232,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS; body SHA-256 4a611b9dbc48d8c38db2d88940bdc00037d200ca86ca6578c064f2107e78f25c; practice Q01–Q18.",
-          "explanation": "Authored supplement teaches the circuit, quantities, components and Ohm's law verification with a complete keyed assessment. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS; body SHA-256 4a611b9dbc48d8c38db2d88940bdc00037d200ca86ca6578c064f2107e78f25c; practice Q01–Q20; registered circuit asset PHYS-ASSET-T3-W01-DC-CIRCUIT.",
+          "explanation": "The supplement covers the source objective with component functions, quantities, Ohm's law, the verification procedure and keyed source assessments. The original row and rendered pages have now been inspected; approval remains PENDING and verification DEFERRED."
         },
         {
           "locator": "EduPodia, Third Term SS1 Physics PDF, Week One, lines 45–93.",
           "explanation": "Close-equivalent comparison includes circuit components, quantities and Ohm's law. It is not asserted to be the registered original .doc."
+        },
+        {
+          "locator": "Original member bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; parsed row 0 WEEK 1 body SS1-SRC-bed91bb4ef0e:BODY:9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231; privately rendered source pages 1–3; asset PHYS-ASSET-T3-W01-DC-CIRCUIT.",
+          "explanation": "The original source states that a circuit diagram follows, but no circuit schematic appears in the rendered pages. The package's original SVG provides the circuit diagram. The source also labels a V–I graph but contains no plotted graph; a separate original graph asset is queued. All evaluation, theory and weekend questions are now mapped to keyed practice."
         }
       ]
     },
@@ -15195,12 +15256,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS; body SHA-256 4a611b9dbc48d8c38db2d88940bdc00037d200ca86ca6578c064f2107e78f25c; practice Q01–Q18.",
-          "explanation": "Authored supplement teaches the circuit, quantities, components and Ohm's law verification with a complete keyed assessment. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS; body SHA-256 4a611b9dbc48d8c38db2d88940bdc00037d200ca86ca6578c064f2107e78f25c; practice Q01–Q20; registered circuit asset PHYS-ASSET-T3-W01-DC-CIRCUIT.",
+          "explanation": "The supplement covers the source objective with component functions, quantities, Ohm's law, the verification procedure and keyed source assessments. The original row and rendered pages have now been inspected; approval remains PENDING and verification DEFERRED."
         },
         {
           "locator": "EduPodia, Third Term SS1 Physics PDF, Week One, lines 45–93.",
           "explanation": "Close-equivalent comparison includes circuit components, quantities and Ohm's law. It is not asserted to be the registered original .doc."
+        },
+        {
+          "locator": "Original member bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; parsed row 0 WEEK 1 body SS1-SRC-bed91bb4ef0e:BODY:9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231; privately rendered source pages 1–3; asset PHYS-ASSET-T3-W01-DC-CIRCUIT.",
+          "explanation": "The original source states that a circuit diagram follows, but no circuit schematic appears in the rendered pages. The package's original SVG provides the circuit diagram. The source also labels a V–I graph but contains no plotted graph; a separate original graph asset is queued. All evaluation, theory and weekend questions are now mapped to keyed practice."
         }
       ]
     },
@@ -16720,6 +16785,18 @@
         "PHYS-WK-T2-W10",
         "COV-PHYS-T2-W10-OBJ-3",
         "COV-PHYS-T2-W10-OBJ-4"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "PHYSICS-T3-W01-OHMS-LAW-GRAPH",
+      "kind": "VISUAL",
+      "detail": "The original Week One source labels a V–I graph and asks students to verify Ohm's law, but the rendered source pages contain a blank graph area. The lesson explains the graph and its gradient but has no dedicated plotted example.",
+      "required_action": "Create a clear original V-versus-I graph for an ohmic conductor through the origin, label axes and show gradient ΔV/ΔI = R; optionally contrast a non-ohmic curve. Register it and link it to the lesson with exact hash/bytes.",
+      "affected_ids": [
+        "SUP-SS1-PHYSICS-T3-W01-ELECTRIC-CIRCUITS",
+        "PHYS-WK-T3-W01",
+        "COV-PHYS-T3-W01-OBJ-5"
       ],
       "blocks_delivery": true
     }

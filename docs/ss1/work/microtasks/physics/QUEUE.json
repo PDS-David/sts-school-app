@@ -68,7 +68,8 @@
     "PHYS-WK-T2-W09 (2026-11-12): inspected original .doc row and rendered pages 18–20; field-line lesson aligned and source assessment added; existing two SVGs cover the source's four field patterns. The same row contains quantitative Coulomb/E/V/potential-energy/flux-density objectives absent from the current lesson; added five UNRESOLVED coverage entries, CONTENT blocker and a bounded quantitative lesson task. Preserved printed 20MJ value and flagged its unusual magnitude for teacher confirmation. Evidence PHYS-WK-T2-W09.md.",
     "CI follow-up 2026-11-12: removed premature delivery-correction record CORR-PHYSICS-T2-W09-FLUX-DENSITY-NOTATION because its replacement lesson is queued but not yet present. The D/σ notation issue remains documented in PHYS-WK-T2-W09.md and the quantitative lesson task; create the correction record together with the actual replacement lesson to satisfy the package's replacement-reference invariant.",
     "PHYS-WK-T2-W10 (2026-11-12): inspected original .doc row and rendered pages 20–22; indexed mechanical, chemical, thermal and solar generation; added keys for both evaluation diagram prompts, five MCQs and heat-generation theory (19 marks); corrected galvanic cell polarity and photovoltaic terminology. Source has no instructional diagrams; existing overview SVG is too general for diagram questions, so a detailed three-panel generator/cell/thermocouple asset task was added. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W10.md.",
-    "CI follow-up 2026-11-12: combined the galvanic-cell polarity and photovoltaic terminology corrections into one source-row correction record. The SS1 compiler requires at most one correction record per registered source body; both independently verified corrections remain documented in the combined record and Week Ten evidence note."
+    "CI follow-up 2026-11-12: combined the galvanic-cell polarity and photovoltaic terminology corrections into one source-row correction record. The SS1 compiler requires at most one correction record per registered source body; both independently verified corrections remain documented in the combined record and Week Ten evidence note.",
+    "PHYS-WK-T3-W01 (2026-11-12): inspected original .doc row and rendered pages 1–3; indexed circuit, conductors/semiconductors/insulators, quantities, internal resistance and Ohm's law; added missing source voltage-unit MCQ and definitions (Q19–Q20); existing circuit SVG replaces the absent source circuit figure. Source V–I graph area is blank, so added a separate delivery-blocking graph asset task. Corrected internal-resistance definition/formula grouping. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T3-W01.md."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -78,7 +79,7 @@
     "SOURCE_RULE": 2,
     "OWNER_DECISION": 2,
     "FACTUAL_DEPENDENCY": 14,
-    "VISUAL_DISPOSITION": 6,
+    "VISUAL_DISPOSITION": 7,
     "BRANCH_PORT": 13,
     "BRANCH_COMPARISON": 2,
     "SCOPE_DECOMPOSITION": 1,
@@ -87,11 +88,11 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 75,
+    "IMPLEMENTED_TESTING_DEFERRED": 76,
     "BLOCKED": 7,
     "PENDING": 13
   },
-  "total": 95,
+  "total": 96,
   "items": [
     {
       "id": "PHYS-SRC-T1",
@@ -1057,8 +1058,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Reopened 2026-11-12: the original Physics source members are now available from CI evidence artifact 13902689395 (run 43126374868). The run successfully executed scripts/ss1/prepare_sources.py, which enforces archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact manifest membership, member byte counts and member SHA-256. Independently checked the three extracted Physics members against SOURCE_ASSIGNMENTS.csv; all sizes and hashes match. Original row text and embedded source files are now accessible for this indexing task. Source reconciliation is NOT yet complete; inspect the row, figures, examples and assessments before closing.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12 against verified original member bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688. Parsed row 0 body SS1-SRC-bed91bb4ef0e:BODY:9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231, SHA-256 9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231, 4,257 characters; privately rendered pages 1–3 inspected. Indexed conductor/semiconductor/insulator, DC circuit definition/components, current, charge, p.d., emf, resistance, internal resistance and Ohm's law verification. Existing lesson covers source evaluation/theory and four of five weekend MCQs; added missing p.d. unit MCQ and exact definitions of current, p.d. and internal resistance (Q19–Q20). The source's current/internal-resistance formula is ambiguous and electrolyte-only definition incomplete; corrected in CORR-PHYSICS-T3-W01-INTERNAL-RESISTANCE. Original source has no circuit diagram and a blank V–I graph; registered circuit SVG covers the former, and visual task PHYS-ASSET-T3-W01-OHMS-LAW-GRAPH covers the latter. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -3268,12 +3269,46 @@
       "status": "PENDING",
       "implementation_reference": "Added 2026-11-12 after inspecting source pages 21–22. The source has diagram-based evaluation/theory prompts but no instructional diagrams. The current four-source overview SVG is useful but not detailed enough to support the requested labelled generator, cell and thermocouple drawings.",
       "completion_condition": "Create one safe, labelled SVG with three panels: (1) DC generator with field magnets, rotating armature/prime mover, commutator/brushes and load; (2) galvanic cell with negative anode, positive cathode, electrolyte and external electron/current path; (3) thermocouple with two dissimilar conductors, hot/cold junctions and meter/load. Register the asset, link it to the lesson, compute hash/bytes and pass SVG safety and Physics package tests."
+    },
+    {
+      "id": "PHYS-ASSET-T3-W01-OHMS-LAW-GRAPH",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK 1, rendered source page 3: blank V–I graph area",
+      "objective": "Create a student-readable V-versus-I graph to support Ohm's law verification and gradient interpretation.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "backend/src/db/ss1/assets/physics/t3-w01-ohms-law-v-i-graph.svg",
+        "docs/ss1/work/microtasks/physics/PHYS-ASSET-T3-W01-OHMS-LAW-GRAPH.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "backend/src/db/ss1/assets/physics/t3-w01-ohms-law-v-i-graph.svg",
+        "docs/ss1/work/microtasks/physics/PHYS-ASSET-T3-W01-OHMS-LAW-GRAPH.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T3-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added 2026-11-12 after inspecting the original rendered page 3. The source labels a graph but the rendered graph area is blank; the lesson explains the graph but needs a plotted teaching aid.",
+      "completion_condition": "Create a self-contained safe SVG with V on the vertical axis, I on the horizontal axis, a straight line through the origin for an ohmic conductor, and a gradient annotation ΔV/ΔI=R. Optionally show a non-ohmic curve as a contrast. Register/link it and record hash/bytes; pass SVG safety and Physics package tests."
     }
   ],
   "review": {
     "date": "2026-11-12",
     "reviewed_master_sha": "174155c6fc080ad7c76c6e99e74b1a86e576bfe3",
-    "scope": "Physics source indexing: Second Term Weeks Three through Ten completed against verified original source rows. Week Nine quantitative lesson and visual tasks remain queued; Third Term source indexing, visual assets, technical gates and owner approvals remain open.",
+    "scope": "Physics source indexing: Second Term Weeks Three through Ten and Third Term Week One completed against verified original source rows. Week Nine quantitative lesson and visual assets remain queued; remaining Third Term source weeks, technical gates and approvals remain open.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
@@ -3302,7 +3337,6 @@
     }
   },
   "next_runnable": [
-    "PHYS-WK-T3-W01",
     "PHYS-WK-T3-W02",
     "PHYS-WK-T3-W03",
     "PHYS-WK-T3-W05",
@@ -3314,10 +3348,10 @@
     "PHYS-ASSET-T2-W04-ANOMALOUS-WATER-DIAGRAM",
     "PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM",
     "PHYS-ASSET-T2-W10-DETAILED-GENERATION-DIAGRAMS",
+    "PHYS-ASSET-T3-W01-OHMS-LAW-GRAPH",
     "PHYS-LESSON-T2-W09-ELECTRIC-QUANTITIES"
   ],
   "runnable_now": [
-    "PHYS-WK-T3-W01",
     "PHYS-WK-T3-W02",
     "PHYS-WK-T3-W03",
     "PHYS-WK-T3-W05",
@@ -3329,6 +3363,7 @@
     "PHYS-ASSET-T2-W04-ANOMALOUS-WATER-DIAGRAM",
     "PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM",
     "PHYS-ASSET-T2-W10-DETAILED-GENERATION-DIAGRAMS",
+    "PHYS-ASSET-T3-W01-OHMS-LAW-GRAPH",
     "PHYS-LESSON-T2-W09-ELECTRIC-QUANTITIES"
   ]
 }
