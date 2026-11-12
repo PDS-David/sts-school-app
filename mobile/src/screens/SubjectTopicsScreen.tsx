@@ -13,6 +13,7 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 export default function SubjectTopicsScreen({ route, navigation }: any) {
   const { subjectId, subjectName } = route.params as { subjectId: number; subjectName: string };
   const [topics, setTopics]         = useState<any[]>([]);
+  const [packageLessons, setPackageLessons] = useState<any[]>([]);
   const [loading, setLoading]       = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [fromCache, setFromCache]   = useState(false);
@@ -24,6 +25,12 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
       setFromCache(!!res.fromCache);
     } catch {
       // leave whatever's already on screen
+    }
+    try {
+      const packageRes: any = await api.get(`/learning/ss1/lessons?subject_name=${encodeURIComponent(subjectName)}`);
+      setPackageLessons(packageRes.data.lessons ?? []);
+    } catch {
+      // Non-SS1 learners and subjects without certified package lessons retain the existing topic experience.
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -38,7 +45,7 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
   // entering a PIN, so only show that shortcut when it would actually help.
   // Task 05: the server marks the sequence-first topic explicitly (placed supplements make order_index
   // comparison unsafe). Older servers omit the field, so fall back to the previous order_index rule.
-  const anyPinLocked = topics.some((t) => t.locked && (t.is_sequence_first !== undefined
+  const anyPinLocked = packageLessons.some((lesson) => lesson.locked) || topics.some((t) => t.locked && (t.is_sequence_first !== undefined
     ? t.is_sequence_first === true
     : t.order_index === Math.min(
       ...topics.filter((x) => x.term_label === t.term_label).map((x) => x.order_index ?? Infinity),
@@ -66,7 +73,25 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
         keyExtractor={(t) => String(t.id)}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); fetchTopics(); }} />}
         contentContainerStyle={{ padding: Spacing.md, paddingTop: 0 }}
-        ListEmptyComponent={<Empty message={`No topics yet for ${subjectName}.`} />}
+        ListEmptyComponent={packageLessons.length === 0 ? <Empty message={`No topics yet for ${subjectName}.`} /> : null}
+        ListFooterComponent={packageLessons.length > 0 ? (
+          <View style={{ marginTop: Spacing.md }}>
+            <Text style={styles.packageHeading}>Additional approved lessons</Text>
+            <Text style={styles.packageHint}>Approved, implemented lessons with permitted sources. Classroom verification status is shown for each lesson.</Text>
+            {packageLessons.map((lesson) => (
+              <TouchableOpacity key={lesson.id} style={[styles.row, lesson.locked && styles.rowLocked]} activeOpacity={lesson.locked ? 1 : 0.8}
+                disabled={!!lesson.locked}
+                onPress={() => navigation.navigate('Ss1PackageLesson', { lesson })}>
+                <View style={styles.rowIcon}><Ionicons name={lesson.locked ? 'lock-closed' : 'book-outline'} size={20} color={lesson.locked ? Colors.textSub : Colors.primary} /></View>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.rowTitle}>{lesson.title}</Text>
+                  <Text style={styles.rowSub}>{lesson.term} · {lesson.practice?.length ?? 0} practice questions{lesson.classroom_verification_pending ? ' · Teacher review pending' : ''}</Text>
+                </View>
+                <Ionicons name={lesson.locked ? 'lock-closed' : 'chevron-forward'} size={18} color={Colors.textSub} />
+              </TouchableOpacity>
+            ))}
+          </View>
+        ) : null}
         renderItem={({ item }) => {
           const locked = !!item.locked;
           return (
@@ -100,6 +125,8 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
 }
 
 const styles = StyleSheet.create({
+  packageHeading: { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.text, marginBottom: 4 },
+  packageHint: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginBottom: Spacing.sm },
   offlineBanner: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#FFF3E0', padding: Spacing.sm, justifyContent: 'center' },
   offlineText: { fontSize: Fonts.sizes.xs, color: Colors.textSub },
   row: { flexDirection: 'row', alignItems: 'center', backgroundColor: Colors.card, borderRadius: Radius.md, padding: Spacing.sm, marginBottom: Spacing.sm, elevation: 1, gap: Spacing.sm },
