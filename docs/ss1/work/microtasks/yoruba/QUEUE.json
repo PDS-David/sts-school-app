@@ -74,8 +74,9 @@
     "ASSET": 1
   },
   "status_counts": {
-    "PENDING": 77,
-    "IMPLEMENTED_TESTING_DEFERRED": 41,
+    "PENDING": 76,
+    "IN_PROGRESS": 0,
+    "IMPLEMENTED_TESTING_DEFERRED": 42,
     "BLOCKED": 34
   },
   "items": [
@@ -2966,11 +2967,11 @@
       "depends_on": [
         "YO-SRC-T3"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "YO-WK-T3-W08",
       "week_or_locator": "Week 8 (scheme group lines 61-67, no week label; leading EDE text \"Aroko asariyanjiyan: Ilana kiko aroko asariyanjiyan, Awon ori-oro ti o je mo aroko asariiyanjiyan, ijiroro lori ori-oro ti o je mo aroko asariiyanjiyan, kiko ilapa ero\"; teaching label \"OSE KEJO\" at extractRawText line 1879, char offset 38186; section lines 1879-2160)",
       "objective": "Index 3rd Term Week 8 at objective level: read every EDE, ASA and LITIRESO objective and every exercise in section lines 1879-2160 (scheme group lines 61-67, which carries no week label), list each objective, bind it to exact source rows or supplements with reproducible locators, and record any scheme objective or exercise the body does not teach as a precise PENDING open item plus, where content is missing, a small lesson item.",
-      "implementation_reference": "Not yet indexed. Found by YO-INV-T3 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5). Scheme group lines 61-67, SHA-256 33511c69113dda8efe27fc0fcae84dae663a74c7258cc7e19689af787454b9f5; teaching section lines 1879-2160, trimmed body SHA-256 ab8f624ff32e4d054d2b7ff7e4dd8fbbfecc38d0bef950c4ec5602f2d6c448fc. Parts: EDE 1881 AROKO ASARIYANJIYAN 1883-1940 with IGBELEWON 1941-1947; ASA 1955 ASA ISINKU NI ILE YORUBA 1957-2021 with IGBELEWON 2023-2027; LITIRESO 2029 EWI ALOHUN TO JE MO ASA ISINKU 2031-2095 with IGBELEWON 2097-2101; IWE AKATILEWA 1949-1951 and 2103-2105; APAPO IGBELEWON 2109-2139; APA KEJI 2141-2159. No objective-level coverage exists; yoruba.json has no coverage entries. The body must be read from the original attachment. No lesson is authored in this item.",
+      "implementation_reference": "Indexed in docs/ss1/work/microtasks/yoruba/YO-WK-T3-W08.md. Added 22 objective/exercise-level coverage entries, retaining the three scheme-level records; added five explicit blockers for ASA/LITIRESO scheme gaps, assessment, unavailable external reading and Yoruba notation review. Paragraph locators and hashes are recorded in the week note. No source content was invented. Package/runtime verification remains deferred.",
       "completion_condition": "Every scheme objective and every body exercise for the week is enumerated with an exact locator and hash; an objective or exercise the body does not teach becomes a precise PENDING open item and, where content is missing, a small lesson item; no lesson is authored, no objective is invented, and no schema or compiler edit is made here."
     },
     {
@@ -6770,11 +6771,11 @@
     }
   },
   "next_runnable": [
-    "YO-WK-T3-W08",
-    "YO-WK-T3-W09",
-    "YO-WK-T3-W10",
-    "YO-PRE-T3-1",
-    "YO-PRE-T3-2",
-    "YO-FND-T3-01"
+    "YO-SCOPE-OBJECTIVE-INDEXING",
+    "YO-TEST-PACKAGE",
+    "YO-LES-T1-W02-EDE",
+    "YO-LES-T1-W02-ASA",
+    "YO-LES-T1-W02-LIT",
+    "YO-LES-T1-W03-EDE"
   ]
 }
