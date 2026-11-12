@@ -76,5 +76,5 @@ export function buildPrimary4CoverageReport() {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  process.stdout.write(`${JSON.stringify(buildPrimary4CoverageReport(), null, 2)}\\n`);
+  process.stdout.write(`${JSON.stringify(buildPrimary4CoverageReport(), null, 2)}\n`);
 }
