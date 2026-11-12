@@ -3331,7 +3331,7 @@
       "source_id": "SS1-SRC-e9efc9a976ed",
       "objective": "Logarithms: laws and application",
       "objective_locator": "scheme weeks 1-10; parsed row 2 (LOGARITHM - SOLVING PROBLEMS BASED ON LA)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
         "SS1-SRC-e9efc9a976ed:BODY:41bdc1e692fb1e01dd9e240f64747fc4be5f9a84c7cb7f74dab830115dc75fa6",
         "SUP-SS1-FURTHER-MATHEMATICS-T1-W03-LOGARITHMS-REPAIR"
@@ -3344,6 +3344,10 @@
         {
           "locator": "WEEK THREE source section, full topic and content block; source member SHA-256 recorded in lesson provenance",
           "explanation": "A newly authored repair supplement covers the scheme scope, including domain conditions, logarithm laws, equation checks, change of base, standard form and table/antilog calculations. Coverage remains PARTIAL pending independent source/assessment review and technical verification."
+        },
+        {
+          "locator": "WEEK THREE source body: logarithmic form and laws; equation solving; change of base; standard form; common logarithm and antilogarithm applications for numbers greater than and less than one",
+          "explanation": "A complete replacement supplement now covers the source scope with corrected derivations, valid domain conditions, checked numerical examples and 12 original practice questions. It explicitly corrects the quotient/power-law derivation, mixed-base simplification, malformed change-of-base proof, decimal standard-form examples, multiplication/division labels and negative-characteristic notation. Owner approval PENDING; verification DEFERRED."
         }
       ]
     },
@@ -4116,6 +4120,70 @@
           "explanation": "A new 50-mark assessment, answer key and marking guide are supplied as a separate teacher/student assessment document. Approval PENDING; verification DEFERRED."
         }
       ]
+    },
+    {
+      "id": "COV-FM-T1-W03-OBJ-1",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Convert between index and logarithmic forms and apply product, quotient and power laws.",
+      "objective_locator": "scheme week 3; source WEEK THREE content bullets 'Logarithm of numbers (Index & Logarithmic Form)' and 'Laws of Logarithm'",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W03-LOGARITHMS-REPAIR"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 3; source WEEK THREE content bullets 'Logarithm of numbers (Index & Logarithmic Form)' and 'Laws of Logarithm'",
+          "explanation": "Convert forms; domain conditions; product, quotient and power laws. The replacement lesson has 12 original practice questions worth 38 marks; all criterion totals match. Approval PENDING; verification DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W03-OBJ-2",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Solve logarithmic equations and apply change of base.",
+      "objective_locator": "scheme week 3; source bullets 'Logarithmic Equation' and 'Change of Base'",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W03-LOGARITHMS-REPAIR"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 3; source bullets 'Logarithmic Equation' and 'Change of Base'",
+          "explanation": "Domain checks for every solution; change-of-base formula and inverse identity. The replacement lesson has 12 original practice questions worth 38 marks; all criterion totals match. Approval PENDING; verification DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W03-OBJ-3",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Use standard form and common logarithms/antilogarithms.",
+      "objective_locator": "scheme week 3; source bullets 'Standard forms' and logarithms of numbers greater than one/less than one",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W03-LOGARITHMS-REPAIR"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 3; source bullets 'Standard forms' and logarithms of numbers greater than one/less than one",
+          "explanation": "Standard form, characteristic/mantissa and negative-characteristic bar notation; table reading and antilog. The replacement lesson has 12 original practice questions worth 38 marks; all criterion totals match. Approval PENDING; verification DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W03-OBJ-4",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Use logarithms to multiply, divide, raise to powers and extract roots of numbers greater than and less than one.",
+      "objective_locator": "scheme week 3; source bullets for multiplication/division, roots and powers for numbers >1 and <1",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W03-LOGARITHMS-REPAIR"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 3; source bullets for multiplication/division, roots and powers for numbers >1 and <1",
+          "explanation": "Worked examples and practice cover products, quotients, powers and roots on both sides of 1. The replacement lesson has 12 original practice questions worth 38 marks; all criterion totals match. Approval PENDING; verification DEFERRED."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -4345,6 +4413,20 @@
       "required_action": "Use and review the separately authored Week 6 periodic test document; verify the assessment delivery format before student release.",
       "affected_ids": [
         "COV-FM-T1-W06-OBJ-2"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-T1-W03-SOURCE-DEFECTS",
+      "kind": "FACT",
+      "detail": "The Week 3 source has several defects in the printed working: the quotient-law derivation uses an addition sign in the exponent; the power-law conclusion is malformed; one simplification changes logarithm bases without a valid transition; the change-of-base proof has a malformed final line; the decimal standard-form table and negative-characteristic notation are corrupted; multiplication/division examples are mislabeled or use the wrong operation in intermediate steps; and a few table results are treated as exact despite rounding. The replacement lesson recomputes and rewrites these examples; the original source remains unchanged.",
+      "required_action": "Teacher/owner reviews the replacement and confirms the corrected examples before content approval. Technical verification remains in SS1-09.",
+      "affected_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W03-LOGARITHMS-REPAIR",
+        "COV-FM-T1-W03-OBJ-1",
+        "COV-FM-T1-W03-OBJ-2",
+        "COV-FM-T1-W03-OBJ-3",
+        "COV-FM-T1-W03-OBJ-4"
       ],
       "blocks_delivery": true
     }
