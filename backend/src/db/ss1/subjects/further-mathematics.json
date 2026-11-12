@@ -6058,6 +6058,84 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "ASSET-SS1-FM-T2-W03-INEQ-1",
+      "lesson_id": "SUP-SS1-FURTHER-MATHEMATICS-T2-W03-LINEAR-INEQUALITIES",
+      "path": "backend/src/db/ss1/assets/further-mathematics/fm2-w3-quadratic-signchart-1.svg",
+      "sha256": "f43e605fdf5b2cdf4e2fce98e1e574d0196cd14e6bc20868a22ee12be89d117e",
+      "bytes": 919,
+      "media_type": "image/svg+xml",
+      "alt": "Correct sign chart for x²+x−6>0.",
+      "order": 0,
+      "source_locator": "Second Term Week Three original rendered pages 10–12; corrected replacement visuals for source sign/interval errors.",
+      "provenance": {
+        "title": "Quadratic sign chart: roots −3 and 2",
+        "locator": "SS1 Second Term Week Three inequalities lesson; original replacement visual",
+        "url": null,
+        "rights": "Original deterministic SVG authored for Sow the Seed Schools; no source image or third-party artwork reproduced.",
+        "reuse_status": "PERMITTED",
+        "attribution": "Authored for Sow the Seed Schools; content approval pending."
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "ASSET-SS1-FM-T2-W03-INEQ-2",
+      "lesson_id": "SUP-SS1-FURTHER-MATHEMATICS-T2-W03-LINEAR-INEQUALITIES",
+      "path": "backend/src/db/ss1/assets/further-mathematics/fm2-w3-quadratic-signchart-2.svg",
+      "sha256": "dbe595037a3d9015373904db1fc6b7b24a887fcf4459c34bb85ada959b534347",
+      "bytes": 925,
+      "media_type": "image/svg+xml",
+      "alt": "Correct sign chart for x²−2x−3≥0.",
+      "order": 1,
+      "source_locator": "Second Term Week Three original rendered pages 10–12; corrected replacement visuals for source sign/interval errors.",
+      "provenance": {
+        "title": "Quadratic sign chart: roots −1 and 3",
+        "locator": "SS1 Second Term Week Three inequalities lesson; original replacement visual",
+        "url": null,
+        "rights": "Original deterministic SVG authored for Sow the Seed Schools; no source image or third-party artwork reproduced.",
+        "reuse_status": "PERMITTED",
+        "attribution": "Authored for Sow the Seed Schools; content approval pending."
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "ASSET-SS1-FM-T2-W03-INEQ-3",
+      "lesson_id": "SUP-SS1-FURTHER-MATHEMATICS-T2-W03-LINEAR-INEQUALITIES",
+      "path": "backend/src/db/ss1/assets/further-mathematics/fm2-w3-absolute-value-numberline.svg",
+      "sha256": "991b9600d73d31b5d56cddee9208ec53faac95d058b1088c5abbf8d9b5d09f4e",
+      "bytes": 837,
+      "media_type": "image/svg+xml",
+      "alt": "Number-line solution of |2x−3|≥4.",
+      "order": 2,
+      "source_locator": "Second Term Week Three original rendered pages 10–12; corrected replacement visuals for source sign/interval errors.",
+      "provenance": {
+        "title": "Absolute-value inequality number line",
+        "locator": "SS1 Second Term Week Three inequalities lesson; original replacement visual",
+        "url": null,
+        "rights": "Original deterministic SVG authored for Sow the Seed Schools; no source image or third-party artwork reproduced.",
+        "reuse_status": "PERMITTED",
+        "attribution": "Authored for Sow the Seed Schools; content approval pending."
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "coverage": [
@@ -7877,7 +7955,7 @@
     {
       "id": "OI-FM-T2-W03-QUADRATIC-SOLUTION-ERRORS",
       "kind": "FACT",
-      "detail": "The source Week Three worked solution for x²+x−6>0 incorrectly concludes −3<x<2; the correct solution is x<−3 or x>2. It also concludes −1≤x≤3 for x²−2x−3≥0, but the correct solution is x≤−1 or x≥3. The graph on page 10 is labelled y=x²+x−12 although the factorised equation is x²−x−12; its roots −3 and 4 are consistent with the latter, not the printed graph label. These errors are corrected in the replacement.",
+      "detail": "The source Week Three worked solution for x²+x−6>0 incorrectly concludes −3<x<2; the correct solution is x<−3 or x>2. It also concludes −1≤x≤3 for x²−2x−3≥0, but the correct solution is x≤−1 or x≥3. The graph on page 10 is labelled y=x²+x−12 although the factorised equation is x²−x−12; its roots −3 and 4 are consistent with the latter, not the printed graph label. These errors are corrected in the replacement. Three original SVGs now show the corrected sign charts for both quadratic inequalities and the absolute-value number line; exact hash and byte registration is included.",
       "required_action": "Use the replacement's sign analysis and graph equation; preserve the original source unchanged and obtain teacher review.",
       "affected_ids": [
         "SUP-SS1-FURTHER-MATHEMATICS-T2-W03-LINEAR-INEQUALITIES",
