@@ -36,11 +36,11 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 32,
     "VISUAL_DISPOSITION": 2,
-    "LESSON": 3
+    "LESSON": 5
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 12,
-    "PENDING": 41,
+    "IMPLEMENTED_TESTING_DEFERRED": 13,
+    "PENDING": 42,
     "BLOCKED": 1
   },
   "items": [
@@ -561,8 +561,8 @@
         "GOV-INV-T1",
         "GOV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: government.json has the three sources and their alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 257-375, block SHA-256 4600502e06ee8281ddb70919d0632d20da79425322fc2ae7bf795b372cecfe14; `WEEK FOUR` 257, `TOPIC: BASIC CONCEPTS IN GOVERNMENT` 258, `CONTENT` 259; sections `LEGITIMACY` 264, `Factors that affect Legitimacy` 269, `SOVEREIGNTY` 286, `Types of Sovereignty` 291, `Characteristics of Sovereignty` 303, `DEMOCRACY` 315, `Types of Democracy` 320, `Features of Democracy` 325, `Demerits of Democracy` 339; markers 282, 311, 347, 351, 357, 361, 373. Findings recorded by GOV-INV-T1 that this item must settle: Verify the Bodin dates and definition at 287-289, the absoluteness claim at 306 (`receives order from none`) as a doctrinal position contested in international law, the Lincoln attribution at 318, and the evaluative claim that democracy `is regarded as the best form of government`; attribute, do not endorse. Line 308 carries a leading space. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12 on agent/government. Indexed Week Four from verified source SS1-SRC-40ce7dcaf672 (SHA-256 50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a), getBody lines 257–375, block SHA-256 4600502e06ee8281ddb70919d0632d20da79425322fc2ae7bf795b372cecfe14. Added 12 objective-level coverage entries: Lincoln attribution and democracy types SUPPORTED; legitimacy, factors, sovereignty, sovereignty types/characteristics, democracy, features/demerits and reading PARTIAL; assessment keys UNRESOLVED. Verified Bodin dates/definition against Stanford Encyclopedia of Philosophy, sovereignty limits against UN Charter Article 2 and a 2024 sovereignty study, de facto/de jure distinctions against Núñez (2024), Lincoln attribution against the U.S. National Archives, and democracy's evaluative status against Oxford Bibliographies/Stanford Encyclopedia. Recorded the leading space at line 308 without normalizing it. Added nine precise open items and lesson task GOV-LES-T1-W04-CORRECTED-WEEK. No lesson content or source rule written. No tests/typecheck/importer/compiler run; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no week is merged into Civic Education. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
     },
     {
@@ -1999,6 +1999,84 @@
       "status": "PENDING",
       "implementation_reference": "Created by GOV-WK-T1-W03 on 2026-11-12. Required to correct the Weber attribution, qualify the source's traditional-ruler and coup claims, distinguish constitutional military responsibilities, and supply keyed practice for all 15 exercises. Not authored yet.",
       "completion_condition": "A visibly original supplement teaches all objectives with a recomputed body_sha256, dated/citable provenance, complete answer keys and criterion-level marking that sums exactly; content approval stays PENDING and verification DEFERRED; delivery_corrections binds the exact original source row ID/body hash to the replacement; unsupported reading pages are not copied; no source bytes, schema or shared code are edited."
+    },
+    {
+      "id": "GOV-LES-T1-W04-CORRECTED-WEEK",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 4, getBody lines 257–375; objectives COV-GOV-T1-W04-LEGITIMACY, COV-GOV-T1-W04-SOVEREIGNTY, COV-GOV-T1-W04-DEMOCRACY",
+      "objective": "Author one visibly original supplement lesson for Week Four. Teach legitimacy while distinguishing legality, public acceptance, performance and external recognition; teach sovereignty and its legal/political, internal/external and de facto/de jure dimensions; present Jean Bodin's dates and 1576 work accurately, and distinguish his historical doctrine of absolute sovereignty from modern international obligations. Correct the de facto/de jure definitions as factual control versus legal status. Teach democracy, direct and representative forms, features and criticisms neutrally. Attribute the Gettysburg formulation correctly to Abraham Lincoln's 19 November 1863 address. Treat 'democracy is the best form of government' as a normative claim with arguments and counterarguments, not an objective fact. Include original practice with complete answers and criterion-level marks that sum exactly, accounting for all 15 source exercises. Do not copy unavailable textbook pages. Add dated, citable provenance. Keep content approval PENDING and verification DEFERRED.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T1.md",
+        "docs/ss1/work/microtasks/government/GOV-WK-T1-W04.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-LES-T1-W04-CORRECTED-WEEK.md"
+      ],
+      "depends_on": [
+        "GOV-SRC-T1",
+        "GOV-WK-T1-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GOV-WK-T1-W04 on 2026-11-12. Required to correct legitimacy, Bodin/sovereignty, de facto/de jure, democracy's normative claim and minority-rights qualifications, and supply keyed practice for all 15 exercises. Not authored yet.",
+      "completion_condition": "A visibly original supplement teaches all objectives with a recomputed body_sha256, dated/citable provenance, complete answer keys and criterion-level marking that sums exactly; content approval stays PENDING and verification DEFERRED; delivery_corrections binds the exact original source row ID/body hash to the replacement; unsupported reading pages are not copied; no source bytes, schema or shared code are edited."
+    },
+    {
+      "id": "GOV-LES-T1-W04-CORRECTED-WEEK",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 4, getBody lines 257–375; objectives COV-GOV-T1-W04-LEGITIMACY, COV-GOV-T1-W04-SOVEREIGNTY, COV-GOV-T1-W04-DEMOCRACY",
+      "objective": "Author one visibly original supplement lesson for Week Four. Teach legitimacy while distinguishing legality, public acceptance, performance and external recognition; teach sovereignty and its legal/political, internal/external and de facto/de jure dimensions; present Jean Bodin's dates and 1576 work accurately, and distinguish his historical doctrine of absolute sovereignty from modern international obligations. Correct the de facto/de jure definitions as factual control versus legal status. Teach democracy, direct and representative forms, features and criticisms neutrally. Attribute the Gettysburg formulation correctly to Abraham Lincoln's 19 November 1863 address. Treat 'democracy is the best form of government' as a normative claim with arguments and counterarguments, not an objective fact. Include original practice with complete answers and criterion-level marks that sum exactly, accounting for all 15 source exercises. Do not copy unavailable textbook pages. Add dated, citable provenance. Keep content approval PENDING and verification DEFERRED.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T1.md",
+        "docs/ss1/work/microtasks/government/GOV-WK-T1-W04.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-LES-T1-W04-CORRECTED-WEEK.md"
+      ],
+      "depends_on": [
+        "GOV-SRC-T1",
+        "GOV-WK-T1-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GOV-WK-T1-W04 on 2026-11-12. Required to correct legitimacy, Bodin/sovereignty, de facto/de jure, democracy's normative claim and minority-rights qualifications, and supply keyed practice for all 15 exercises. Not authored yet.",
+      "completion_condition": "A visibly original supplement teaches all objectives with a recomputed body_sha256, dated/citable provenance, complete answer keys and criterion-level marking that sums exactly; content approval stays PENDING and verification DEFERRED; delivery_corrections binds the exact original source row ID/body hash to the replacement; unsupported reading pages are not copied; no source bytes, schema or shared code are edited."
     }
   ],
   "review": {
@@ -2015,7 +2093,6 @@
   },
   "next_runnable": [
     "GOV-TEST-PACKAGE",
-    "GOV-WK-T1-W04",
     "GOV-WK-T1-W05",
     "GOV-WK-T1-W06",
     "GOV-WK-T1-W07",
@@ -2054,6 +2131,8 @@
     "GOV-WK-T3-W10",
     "GOV-WK-T3-W11",
     "GOV-LES-T1-W02-CORRECTED-WEEK",
-    "GOV-LES-T1-W03-CORRECTED-WEEK"
+    "GOV-LES-T1-W03-CORRECTED-WEEK",
+    "GOV-LES-T1-W04-CORRECTED-WEEK",
+    "GOV-LES-T1-W04-CORRECTED-WEEK"
   ]
 }
