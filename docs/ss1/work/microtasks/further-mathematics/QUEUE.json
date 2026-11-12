@@ -465,8 +465,8 @@
         "FM-SRC-T1",
         "FM-PRE-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 3 of SS1-03 parsed_rows.json (week label \"WEEK FOUR\", title \"REVIEW OF BASIC CONCEPT OF SET\", 107 characters). Existing coverage COV-FM-T1-R03 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). The parsed row is only 107 characters; PR71 treats it as a stranded topic label belonging to the following Sets row (rule FMATHS-R03). FM-FACT-T1-W04-STRANDED-LABEL handles that structural question separately. PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The source row is a distinct WEEK FOUR heading-only marker (TOPIC: REVIEW OF BASIC CONCEPT OF SET), followed by a separate WEEK FIVE heading; it is not a stranded Week Five label. Added COV-FM-T1-W04-OBJ-1 and replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T1-W04-SET-THEORY-REVIEW (4 objectives, 8 practice questions, 18 marks). Source body is absent, so the supplement reconstructs the review scope using the following Week Five SETS section; no source row identity was changed. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -541,8 +541,8 @@
         "FM-SRC-T1",
         "FM-PRE-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 6 of SS1-03 parsed_rows.json (week label \"WEEK SIX\", title \"First Half Term Revision Questions\", 1399 characters). Existing coverage COV-FM-T1-R06 is MARKER (marker row, body retained). Row is classified REVISION by RULE-FM-T1-W06-REVISION (anchor \"First Half  Term Revision Questions\"); body retained. The item confirms what the scheme assigns to this week and whether the revision questions carry content needing any objective. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Reviewed the Week Six revision block and mapped both scheme objectives: COV-FM-T1-W06-OBJ-1 (first-half review) and OBJ-2 (periodic test). The source revision questions cover indices/exponential equations/logarithms but omit Weeks 4–5 sets; a new 50-mark assessment draft is at FM-TEST-T1-W06-PERIODIC. The source itself contains no separate periodic-test paper. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -1963,8 +1963,8 @@
         "FM-SRC-T1",
         "FM-WK-T1-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Master parsed row 3 (WEEK FOUR, 107 characters) is bound by COV-FM-T1-R03 (PARTIAL) and listed in OI-FM-001/OI-FM-002 affected_ids. Master package has no attach_stranded_label rule. PR71 rule FMATHS-R03 (attach_stranded_label, label_anchor \"TOPIC:  REVIEW OF BASIC CONCEPT OF SET\", direction NEXT) exists only in PR71's incompatible schema; master's operation supports attach-to-following only.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Rendered and inspected the original source at the Week Four/Week Five boundary (PDF page 17). Exact sequence: WEEK FOUR / TOPIC: REVIEW OF BASIC CONCEPT OF SET / WEEK FIVE / TOPIC: SETS. These are distinct week headings; Week Four is not a stranded label belonging to Week Five. No attach_stranded_label rule should be added. The Week Four row has no instructional body; replacement review lesson SUP-SS1-FURTHER-MATHEMATICS-T1-W04-SET-THEORY-REVIEW supplies the missing review content. Original source identities remain unchanged.",
       "completion_condition": "Finding recorded with exact anchor text. Either a master-schema rule is added with its effect on row identity stated, or an open item records why not. No lesson is authored."
     },
     {
@@ -3131,6 +3131,65 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Four original SVG assets authored and registered in further-mathematics.json: ASSET-SS1-FM-T1-W05-VENN-1 (backend/src/db/ss1/assets/further-mathematics/fm1-w5-venn-two-set-operations.svg, sha256=5df7dc0ad314f909b2c4cd7dbbcfd5bd21538100d2618ec9e9767bb8d390c2f0, bytes=1766); ASSET-SS1-FM-T1-W05-VENN-2 (backend/src/db/ss1/assets/further-mathematics/fm1-w5-venn-three-set-regions.svg, sha256=df342c193ee5df936ed30a7c030fd9bc53fa367f7bfb88a95e695e999ee0010a, bytes=1351); ASSET-SS1-FM-T1-W05-VENN-3 (backend/src/db/ss1/assets/further-mathematics/fm1-w5-venn-two-set-worked.svg, sha256=360170cb96f920f179b9fdb14e1216f0683be5bea3281a15c9f8a2423c690f1c, bytes=1105); ASSET-SS1-FM-T1-W05-VENN-4 (backend/src/db/ss1/assets/further-mathematics/fm1-w5-venn-three-set-worked.svg, sha256=fe9a85db76630b28f2e0a0654a5f90deec1c552cb0920508b89c7fc7dfeb7380, bytes=1164). All are newly authored and labelled derivatives, not copied source figures. SVG safety, app rendering and visual approval still require CI/teacher review; approval PENDING, verification DEFERRED.",
       "completion_condition": "Original SVG assets pass SVG safety checks, exact byte/hash registration and source/provenance/state schema; visual and app display verification remain deferred."
+    },
+    {
+      "id": "FM-LES-T1-W04-SET-THEORY-REVIEW",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 04; heading-only source row 'REVIEW OF BASIC CONCEPT OF SET'",
+      "objective": "Provide the missing instructional review for the Week 4 set-theory review objective without reassigning the distinct Week 5 source row.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W04-SET-THEORY-REVIEW.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1",
+        "FM-WK-T1-W04"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W04-SET-THEORY-REVIEW]. 4 objectives; 8 practice questions; 18 marks; criterion totals checked. COV-FM-T1-W04-OBJ-1 and COV-FM-T1-R03 linked. Content approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement review lesson is present with source provenance, body hash, complete examples and keyed practice; objective coverage links to it; approval/verification remain pending/deferred."
+    },
+    {
+      "id": "FM-TEST-T1-W06-PERIODIC",
+      "kind": "TEST",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 06 periodic test; scheme requires review and periodic assessment",
+      "objective": "Provide a balanced 50-mark first-term review and periodic test across Weeks 1–5, including the missing set-theory revision, with answer key and criterion-level marking.",
+      "required_files": [
+        "docs/ss1/work/microtasks/further-mathematics/FM-TEST-T1-W06-PERIODIC.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/FM-TEST-T1-W06-PERIODIC.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-WK-T1-W06",
+        "FM-LES-T1-W04-SET-THEORY-REVIEW",
+        "FM-LES-T1-W05-SETS-VENN",
+        "FM-LES-T1-W07-BINARY-OPERATIONS"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored a 60-minute, 50-mark assessment draft: 20 MCQs (20 marks) and 6 structured questions (30 marks) across indices, exponential equations, logarithms, set theory/two- and three-set Venn diagrams, and surds. Includes full answer key and marking guide. Teacher approval PENDING; verification DEFERRED.",
+      "completion_condition": "Assessment contains balanced coverage, complete answer key and marking guide, and total marks reconcile to 50. Approval and verification remain pending/deferred."
     }
   ],
   "review": {
