@@ -9,4 +9,4 @@ Confirmed source defects:
 - Weekend MCQ options do not include the correct answers for |2x−1|>3, the compound inequality −3≤y<2, or the rational inequality 1/x+3<2x (with x≠0).
 - Other printed examples on quadratic/absolute-value inequalities were recomputed; replacement gives the valid sign intervals and number-line logic.
 
-Replacement `SUP-SS1-FURTHER-MATHEMATICS-T2-W03-LINEAR-INEQUALITIES`: 4 objectives; 12 questions; 39 marks. Coverage COV-FM-T2-W03-OBJ-1 added; row COV-FM-T2-R02 linked. Approval PENDING; verification DEFERRED.
+Replacement `SUP-SS1-FURTHER-MATHEMATICS-T2-W03-LINEAR-INEQUALITIES`: 4 objectives; 12 questions; 39 marks. Coverage COV-FM-T2-W03-OBJ-1 added; row COV-FM-T2-R02 linked. Three original SVGs now provide corrected sign charts for x²+x−6>0 and x²−2x−3≥0 and a number line for |2x−3|≥4; SVG safety/app rendering remains pending. Approval PENDING; verification DEFERRED.
