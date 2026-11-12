@@ -1156,6 +1156,200 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-TECHNICAL-DRAWING-T2-W03-POLYGON-CONSTRUCTIONS",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Technical Drawing",
+      "title": "Week Three — Polygons and Regular Polygon Construction",
+      "objectives": [
+        "Define polygons and distinguish regular, irregular and re-entrant polygons.",
+        "Calculate interior-angle sums and regular polygon exterior/interior angles.",
+        "Construct regular polygons using the exterior-angle method.",
+        "Construct regular polygons using a circumscribing circle.",
+        "Apply the two-triangle centre method to regular polygons on a common base."
+      ],
+      "body": "A polygon is a closed plane figure bounded by straight line segments. A regular polygon has all sides and all interior angles equal. An irregular polygon does not have all sides and angles equal. A re-entrant polygon is a concave polygon with at least one interior angle greater than 180°.\n\nFor a polygon with n sides, the sum of its interior angles is (n−2)×180°. The sum of its exterior turning angles is 360°. Therefore, for a regular polygon:\n- each exterior angle = 360°/n;\n- each interior angle = 180°−360°/n.\n\nCommon names: triangle (3), quadrilateral (4), pentagon (5), hexagon (6), heptagon (7), octagon (8), nonagon (9), decagon (10).\n\nA. Exterior-angle method for a regular polygon\n1. Calculate the exterior angle 360°/n.\n2. Draw the first side AB to the required length.\n3. At the next vertex, construct the exterior turning angle and mark the next side to the same length.\n4. Repeat at each new vertex, keeping every side equal and every exterior turn equal.\n5. Join the final vertex to the starting point. Check that the polygon closes.\n\nExamples: pentagon exterior angle 72° and interior angle 108°; hexagon 60°/120°; heptagon approximately 51.43°/128.57°; octagon 45°/135°; nonagon 40°/140°; decagon 36°/144°.\n\nB. Circumscribing-circle method\n1. Draw the given circle or construct it from the stated diameter/across-corners data.\n2. Divide the circumference into n equal angular parts, each central angle 360°/n.\n3. Mark the division points and join consecutive points.\n4. Check equal chords and equal central angles. The polygon is regular when all vertices lie on the same circle and the divisions are equal.\n\nFor a regular hexagon inscribed in a circle, each side equals the circle radius. Step the radius around the circumference six times.\n\nC. Regular octagon from a circle across corners\n1. Draw a circle whose diameter equals the specified distance across opposite corners.\n2. Draw horizontal and vertical diameters.\n3. Bisect each 90° quadrant to obtain four additional points at 45° intervals.\n4. Join the eight points in order. The central angles are 45°.\n\nD. Two-triangle method for polygons on a common base\n1. Draw base AB and its perpendicular bisector.\n2. Construct the two isosceles triangles on AB with base angles 45° and 60°. Their apices are centres for the square and regular hexagon respectively.\n3. Bisect the distance between these centres along the perpendicular bisector to obtain the regular-pentagon centre.\n4. Continue the equal-step centre progression along the perpendicular bisector to obtain centres for higher-sided regular polygons as in the source construction.\n5. With each centre, draw the corresponding circumcircle through A and B, then step off chord AB around the circle to locate the polygon vertices.\n\nE. General construction checks\n- Use the same side length at every step in the exterior-angle method.\n- Use 360°/n for the central/exterior angle; do not confuse it with the interior angle.\n- For the circle method, all vertices must lie on one circle and all central divisions must be equal.\n- A source exercise that depends on a labelled diagram must be answered from that diagram; do not infer missing diagonals or dimensions.",
+      "body_sha256": "7696166e497fa153402e0dc1c1c5fca978bbf8bb9ab4e59cd233fca6cf2eb70e",
+      "practice": [
+        {
+          "id": "TD-W03-KEY-Q01",
+          "question": "Define a polygon and distinguish regular, irregular and re-entrant polygons.",
+          "answer": "A polygon is a closed plane figure bounded by straight line segments. A regular polygon has equal sides and angles; an irregular polygon does not have all sides and angles equal; a re-entrant polygon is concave and has an interior angle greater than 180°.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Defines polygon as closed figure bounded by straight segments.",
+              "marks": 1
+            },
+            {
+              "criterion": "Defines regular polygon.",
+              "marks": 1
+            },
+            {
+              "criterion": "Defines irregular polygon.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies re-entrant/concave angle greater than 180°.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W03-KEY-Q02",
+          "question": "Find the exterior and interior angles of a regular pentagon, hexagon, octagon and nonagon.",
+          "answer": "Pentagon: 72° and 108°. Hexagon: 60° and 120°. Octagon: 45° and 135°. Nonagon: 40° and 140°.",
+          "marks": 8,
+          "marking": [
+            {
+              "criterion": "Pentagon angles correct.",
+              "marks": 2
+            },
+            {
+              "criterion": "Hexagon angles correct.",
+              "marks": 2
+            },
+            {
+              "criterion": "Octagon angles correct.",
+              "marks": 2
+            },
+            {
+              "criterion": "Nonagon angles correct.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "TD-W03-KEY-Q03",
+          "question": "Construct a regular octagon by bisecting the four quadrants of a circle.",
+          "answer": "Draw the circle to the given across-corners diameter, draw horizontal and vertical diameters, bisect each quadrant to create eight points at 45° intervals, and join consecutive points.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Draws circle to specified diameter.",
+              "marks": 1
+            },
+            {
+              "criterion": "Draws horizontal and vertical diameters.",
+              "marks": 1
+            },
+            {
+              "criterion": "Bisects all four quadrants.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains eight equally spaced points.",
+              "marks": 1
+            },
+            {
+              "criterion": "Joins points in order to form octagon.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W03-KEY-Q04",
+          "question": "Construct a regular hexagon when the side length is 50 mm using a circumscribing circle.",
+          "answer": "Draw a circle of radius 50 mm. Draw a diameter. With the compass still set to 50 mm, step this chord around the circumference to mark six vertices, then join consecutive points.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Draws a circle with radius 50 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Establishes a diameter/reference point.",
+              "marks": 1
+            },
+            {
+              "criterion": "Steps off six equal radius chords.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains six vertices on the circle.",
+              "marks": 1
+            },
+            {
+              "criterion": "Joins vertices accurately.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W03-KEY-Q05",
+          "question": "On a common base of 30 mm, construct regular square, pentagon, hexagon, heptagon, octagon, nonagon and decagon using the two-triangle method.",
+          "answer": "Draw the 30 mm base and perpendicular bisector. Construct 45° and 60° base-angle triangles to locate square and hexagon centres. Bisect the centre spacing to obtain the pentagon centre, then continue the equal-step centre progression for higher polygons. Draw each circumcircle through the base endpoints and step off the 30 mm chord.",
+          "marks": 7,
+          "marking": [
+            {
+              "criterion": "Draws base and perpendicular bisector.",
+              "marks": 1
+            },
+            {
+              "criterion": "Locates square centre from 45° triangle.",
+              "marks": 1
+            },
+            {
+              "criterion": "Locates hexagon centre from 60° triangle.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains pentagon centre by bisecting centre spacing.",
+              "marks": 1
+            },
+            {
+              "criterion": "Continues progression for higher polygon centres.",
+              "marks": 1
+            },
+            {
+              "criterion": "Constructs circumcircles through base endpoints.",
+              "marks": 1
+            },
+            {
+              "criterion": "Steps off equal 30 mm chords to form polygons.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W03-KEY-Q06",
+          "question": "A source pentagon problem gives AD and BD only in an illustration, while the text supplies BC=40 mm, CD=35 mm, DE=55 mm and ∠DEA=90°. What is needed to complete a unique construction?",
+          "answer": "The original dimensioned illustration must be inspected to recover the lengths/positions of diagonals AD and BD and the point order. The text alone does not contain enough data for a unique pentagon; do not invent the missing diagonal values.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Identifies the missing diagonal information from the illustration.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains why text alone is insufficient for a unique construction.",
+              "marks": 1
+            },
+            {
+              "criterion": "Does not invent the missing dimensions.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "User-supplied SS1 Technical Drawing source",
+          "locator": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx; Week Three teaching row, body children 336–697; source member SHA-256 69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d.",
+          "rights": "This supplement independently explains polygon geometry and construction methods. Source figures and cited textbook pages are not reproduced. Reuse approval remains pending.",
+          "reuse_status": "PENDING",
+          "attribution": "Source: user-supplied SS1 Technical Drawing, Second Term, Week Three."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [],
@@ -1720,7 +1914,8 @@
       "objective_locator": "WEEK THREE teaching row (parsed row 13), lines 721–759; meaning and types section. Original body SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf"
+        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W03-POLYGON-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -1740,7 +1935,8 @@
       "objective_locator": "WEEK THREE teaching row (parsed row 13), lines 721–759; types of polygon section and first evaluation at lines 761–769. Original body SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf.",
       "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf"
+        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W03-POLYGON-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -1760,7 +1956,8 @@
       "objective_locator": "WEEK THREE teaching row (parsed row 13), lines 771–1113; worked regular-polygon constructions. Original body SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf.",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf"
+        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W03-POLYGON-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -1780,7 +1977,8 @@
       "objective_locator": "WEEK THREE teaching row (parsed row 13), lines 771–1113; worked regular-polygon constructions. Original body SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf.",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf"
+        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W03-POLYGON-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -1800,7 +1998,8 @@
       "objective_locator": "WEEK THREE teaching row (parsed row 13), lines 771–1113; worked regular-polygon constructions. Original body SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf.",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf"
+        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W03-POLYGON-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -1820,7 +2019,8 @@
       "objective_locator": "WEEK THREE teaching row (parsed row 13), lines 1115–1249; general methods section. Original body SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf.",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf"
+        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W03-POLYGON-CONSTRUCTIONS"
       ],
       "evidence": [
         {
@@ -1840,7 +2040,8 @@
       "objective_locator": "WEEK THREE teaching row (parsed row 13), lines 1115–1249; general methods section. Original body SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf.",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf"
+        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W03-POLYGON-CONSTRUCTIONS"
       ],
       "evidence": [
         {
