@@ -209,3 +209,75 @@ The original source pentagon prompts are under-specified. Two fully specified or
 2. Fully dimensioned pentagon using AB=30, AD=70, BD=60, BC=40, CD=35, DE=55 mm and angle DEA=90°. AE=√(70²−55²)≈43.30 mm. This is a new explicit data set; it is not a claim that the Week Eight source image65 contains AD=70 or BD=60.
 
 Each replacement includes a construction sequence and positive-integer marking criteria. The original source assessment remains unchanged and is still not uniquely solvable without its missing data.
+
+
+## Five original replacements for the mismatched weekend figures
+
+The extracted weekend questions Q1–Q5 cannot safely be paired with images72–75 because the labels and geometry do not match. The following original alternatives are fully specified and are not claimed to reconstruct the source questions.
+
+### Replacement Q09 — rectangle to equal-area square (5 marks)
+
+Rectangle area = 72 × 50 = **3,600 mm²**. The equal-area square side is √3,600 = **60 mm**. Construct the geometric mean of 72 mm and 50 mm with the semicircle method, then construct the square on the 60 mm segment.
+
+| Criterion | Marks |
+|---|---:|
+| Calculates rectangle area as 3,600 mm² | 1 |
+| Sets square side s = √3,600 | 1 |
+| Obtains 60 mm | 1 |
+| Describes the semicircle/geometric-mean construction | 1 |
+| Constructs and labels the square | 1 |
+| **Total** | **5** |
+
+### Replacement Q10 — triangle to equal-area rectangle (5 marks)
+
+Triangle area = ½ × 90 × 40 = **1,800 mm²**. On a 60 mm rectangle base, breadth = 1,800/60 = **30 mm**. Construct the 60 mm base, erect a perpendicular 30 mm breadth, and complete the rectangle.
+
+| Criterion | Marks |
+|---|---:|
+| Uses the triangle area formula | 1 |
+| Calculates 1,800 mm² | 1 |
+| Equates rectangle area to 1,800 mm² | 1 |
+| Calculates breadth as 30 mm | 1 |
+| Describes the perpendicular rectangle construction | 1 |
+| **Total** | **5** |
+
+### Replacement Q11 — circle equal in area to two circles (5 marks)
+
+For radii 18 mm and 24 mm, R = √(18² + 24²) = √900 = **30 mm**. Construct perpendicular legs of 18 mm and 24 mm; their hypotenuse is the required radius.
+
+| Criterion | Marks |
+|---|---:|
+| Equates required area to the sum of the two circle areas | 1 |
+| Uses R² = 18² + 24² | 1 |
+| Calculates R = 30 mm | 1 |
+| Describes the perpendicular-leg construction | 1 |
+| Constructs and labels the 30 mm radius circle | 1 |
+| **Total** | **5** |
+
+### Replacement Q12 — four equal-area triangular regions (5 marks)
+
+For altitude H = 80 mm, the kth parallel is at xₖ = H√(k/4) from the opposite vertex. The three distances are **40 mm**, **56.57 mm** and **69.28 mm** (to 2 d.p.). Mark these distances on the altitude and draw parallels to the base.
+
+| Criterion | Marks |
+|---|---:|
+| States the square-root distance relation | 1 |
+| Calculates 40 mm | 1 |
+| Calculates 56.57 mm | 1 |
+| Calculates 69.28 mm | 1 |
+| Draws/describes the three parallels | 1 |
+| **Total** | **5** |
+
+### Replacement Q13 — square equal to the difference of two squares (5 marks)
+
+Difference of areas = 25² − 7² = 625 − 49 = **576 mm²**. Required square side = √576 = **24 mm**. Construct a right triangle with hypotenuse 25 mm and one leg 7 mm; the other leg is 24 mm. Construct the square on that leg.
+
+| Criterion | Marks |
+|---|---:|
+| Calculates 25² = 625 mm² | 1 |
+| Calculates 7² = 49 mm² | 1 |
+| Finds the difference 576 mm² | 1 |
+| Calculates side 24 mm | 1 |
+| Describes the right-triangle construction | 1 |
+| **Total** | **5** |
+
+The source image/text mismatch remains recorded as a provenance defect. These five alternatives may be reviewed as replacement assessment items; they must not be labelled as the original source Q1–Q5 answers. Teacher approval of the alternatives and marking criteria remains pending.
