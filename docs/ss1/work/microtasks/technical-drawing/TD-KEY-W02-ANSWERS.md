@@ -20,7 +20,9 @@
 - Weekend Q4: **ambiguous single-answer MCQ**. Both B (“bisect two sides”) and C (“draw a line from the determined centre parallel to one side”) are not valid required steps for an escribed circle; the perpendicular from the centre to a side is required. Accept B or C only if the assessment is revised to permit multiple answers.
 - Weekend Q5: **B — right-angled**. Since AB is a diameter and C lies on the circumference, ∠ACB=90° (angle in a semicircle).
 
-## Additional general-revision construction
+## Additional general-revision constructions
+
+For the source's general-revision Q1 (equilateral triangle side 60 mm with three equal circles, two circles touching each side), draw the equilateral triangle and its three 60° angle bisectors. Each circle centre lies on a vertex angle bisector; its perpendicular distance to either adjacent side is its radius. For equal circles to touch pairwise along the three sides, adjacent centres are separated by 2r. With triangle side a=60 mm, the centre spacing along the base is a−2√3r, so a−2√3r=2r and r=a/(2+2√3)=15(√3−1)≈**10.98 mm**. Construct one circle at each vertex with that radius; check all three pairwise tangencies.
 
 For the source's general-revision Q2, draw a tangent from external point S to the given circle with centre O: join SO; bisect SO at M; draw the auxiliary circle centred at M with radius MS (the circle on diameter SO); its intersection T with the given circle gives ST as a tangent because angle STO is 90°. The two intersection points give the two possible tangents.
 
