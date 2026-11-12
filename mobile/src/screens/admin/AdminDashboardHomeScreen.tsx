@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { View, Text, ScrollView, RefreshControl } from 'react-native';
+import { View, Text, ScrollView, RefreshControl, Alert } from 'react-native';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
 import { useAdminSchool } from '../../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../../components/SchoolSwitcherBar';
-import { Card, Loader } from '../../components/UI';
+import { Card, Loader, Btn } from '../../components/UI';
 import { PageContainer } from '../../components/layout';
 import { Colors, Spacing, Fonts } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
@@ -29,6 +29,62 @@ import { openNotifications } from '../../navigation/navigationRef';
 // this specific screen needs to show yet beyond what the header now
 // carries; it becomes a real content area once there's something worth
 // putting here (e.g. a future activity feed).
+type BackupStatus = {
+  last_backup_at: string | null; last_status: string | null; days_since: number | null;
+  overdue: boolean; configured: boolean;
+};
+
+// Weekly encrypted database backup, emailed to the admin recipients. The server sends a reminder
+// (email + push) when one is more than 7 days overdue; this card shows the state and runs it on demand.
+function BackupCard() {
+  const [st, setSt] = useState<BackupStatus | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [msg, setMsg] = useState<string | null>(null);
+
+  const refresh = useCallback(async () => {
+    try { setSt((await api.get('/admin/backups/status')).data); } catch { /* offline */ }
+  }, []);
+  useEffect(() => { refresh(); }, [refresh]);
+
+  const run = async () => {
+    setBusy(true); setMsg(null);
+    try {
+      const r = (await api.post('/admin/backups/run')).data;
+      setMsg(r.emailed
+        ? 'Backup emailed to the admin recipients.'
+        : 'Backup was created but NOT emailed (too large or no recipient set). Ask your developer to run the backup export.');
+      setSt(r);
+    } catch (e: any) {
+      setMsg(e?.response?.data?.error ?? 'Backup failed. Please try again.');
+    }
+    setBusy(false);
+  };
+  const confirm = () => Alert.alert('Back up now?',
+    'This emails an encrypted copy of the whole database to the admin recipients.',
+    [{ text: 'Cancel', style: 'cancel' }, { text: 'Back up', onPress: run }]);
+
+  if (!st) return null;
+  const last = st.last_backup_at ? new Date(st.last_backup_at).toLocaleDateString() : 'never';
+  const color = !st.configured || st.overdue ? Colors.warning : Colors.success;
+  return (
+    <Card style={{ marginTop: Spacing.md }}>
+      <Text style={{ fontSize: Fonts.sizes.md, fontWeight: '600', color: Colors.text }}>Database backup</Text>
+      <Text style={{ color, fontSize: Fonts.sizes.sm, marginTop: 4 }}>
+        {!st.configured
+          ? 'Not set up: the server needs BACKUP_PASSPHRASE.'
+          : st.overdue
+            ? (st.days_since === null ? 'No emailed backup yet - one is due.' : `Overdue: last emailed backup ${st.days_since} days ago.`)
+            : `Up to date: last emailed backup ${st.days_since === 0 ? 'today' : `${st.days_since} day(s) ago`}.`}
+      </Text>
+      <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm, marginTop: 2 }}>
+        Last attempt: {last}{st.last_status ? ` (${st.last_status})` : ''}
+      </Text>
+      {msg ? <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm, marginTop: 6 }}>{msg}</Text> : null}
+      <Btn label="Back up now" onPress={confirm} loading={busy} disabled={busy || !st.configured} style={{ marginTop: Spacing.sm }} />
+    </Card>
+  );
+}
+
 export default function AdminDashboardHomeScreen() {
   const { user } = useAuth();
   const { selectedSchoolCode } = useAdminSchool();
@@ -74,6 +130,7 @@ export default function AdminDashboardHomeScreen() {
               Use Academics, Chats, or More to get started — or Quick Actions in the sidebar for Students, Users, and Enter Scores.
             </Text>
           </Card>
+          <BackupCard />
         </PageContainer>
       </ScrollView>
     </View>

@@ -176,6 +176,26 @@ schema changes (`db:migrate` remains the existing manual cumulative-schema tool)
 The completion marker is not a schema-drift checker or a repair mechanism.
 Neither application startup nor `npm run build` runs bootstrap/migrations.
 
+### Encrypted backups (weekly reminder + "Back up now")
+
+Set `BACKUP_PASSPHRASE` (16+ characters) on the server and keep a copy somewhere other than Render.
+The admin dashboard shows a **Database backup** card. **Back up now** emails an AES-256-GCM encrypted
+`.sts-backup` file (every table, exact values incl. images and microsecond timestamps) to
+`ADMIN_LOG_RECIPIENTS` over the existing SMTP settings. Once a week the server emails and push-notifies admins
+if the last emailed backup is more than 7 days old (an always-on instance is needed for the timer; the card
+still shows the overdue state on any plan). Files over ~17 MB are not emailed; use the export command instead.
+
+```powershell
+cd backend
+$env:DATABASE_URL="<EXTERNAL URL>"; $env:NODE_ENV="production"; $env:BACKUP_PASSPHRASE="<passphrase>"
+npm run db:backup-export -- --out sts.sts-backup          # manual export from any computer
+# Restore into a database that already has the schema (db:bootstrap on a new empty DB first):
+npm run db:backup-restore -- --file sts.sts-backup                                   # dry run
+npm run db:backup-restore -- --file sts.sts-backup --apply --confirm-database <exact db name>
+```
+Restore replaces the contents of every table in one transaction (all or nothing) and resets sequences.
+Test a restore into a scratch database before you need it.
+
 ### Development/demo seed only
 
 `npm run db:seed --workspace backend` remains a separate development utility.
