@@ -14337,8 +14337,8 @@
     {
       "id": "PHYS-T1-W03-ORIGINAL-ROW-RECONCILIATION",
       "kind": "VERIFICATION",
-      "detail": "The registered Physics member hash and parsed row identity/title are present in repository evidence, but the full original .doc member text is not available in this execution session. The new lesson SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR independently covers the scheme objectives; it does not establish what the original row actually taught or which formula/figure/exercise defects it contains.",
-      "required_action": "When the original member bytes/text are accessible, inspect parsed row 2 line-by-line, map each original subtopic and assessment to the scheme and supplement, record exact formula/unit/notation defects and figure anchors, and reconcile duplication without changing the original source.",
+      "detail": "The original hash-verified First Term .doc has now been rendered and visually reviewed. Parsed WEEK THREE is PDF pages 10–14 and covers motion in nature, types of motion, relative motion, circular motion, centripetal acceleration/force and the source assessment. The new supplement covers the scheme objectives; exact source/page mapping is in PHYS-FACT-T1-W03-SOURCE-RECONCILIATION.md and PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md.",
+      "required_action": "No further source-access task. Keep any content approval/assessment-key decisions separate; original .doc bytes remain unchanged.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:7f54acc3468f0acb9971e038a65be77f6caf86500123c105baedd2434ac9de21",
         "SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR",
@@ -14350,8 +14350,8 @@
     {
       "id": "PHYS-T1-W03-FIGURE-DISPOSITION",
       "kind": "CONTENT",
-      "detail": "The original Week Three row's figure inventory has not been inspected in this execution session. The source extraction record states equation recovery was not measured for Physics (eqExtra is null); no claim is made that the row has no equations or figures.",
-      "required_action": "Use existing PHYS-VIS-T1 and PHYS-OWNER-EXTRACTION-STRATEGY workflows to inspect the original member's figures/objects and decide how they can be rendered; retain this supplement's text-only explanations unless a faithful source-backed visual is available.",
+      "detail": "The original WEEK THREE figures were visually inspected in rendered PDF pages 11–13. They include motion paths and circular-motion material; a new original motion/circular-motion SVG is registered. The SVG is an explanatory replacement, not a copy of the source figure.",
+      "required_action": "No further inventory action. Teacher reviews the new asset before content approval; retain the original source unchanged.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:7f54acc3468f0acb9971e038a65be77f6caf86500123c105baedd2434ac9de21",
         "PHYS-VIS-T1",
@@ -14362,8 +14362,8 @@
     {
       "id": "PHYS-T1-W04-ORIGINAL-ROW-RECONCILIATION",
       "kind": "VERIFICATION",
-      "detail": "The registered Physics member hash and parsed Week Four row identity/title are present, but the full original .doc member text is not accessible in this execution session. The new lesson SUP-SS1-PHYSICS-T1-W04-FRICTION covers the friction scheme topic independently; it does not establish the exact contents, formulae, figures or assessments in the original row.",
-      "required_action": "When the original member bytes/text are accessible, inspect parsed row 3 line-by-line, map its exact friction subtopics and assessments to the new supplement, record any formula/unit/notation/figure defects, and reconcile overlap without changing the original source.",
+      "detail": "The original hash-verified First Term .doc has now been rendered and visually reviewed. Parsed WEEK FOUR is PDF pages 14–17 and covers friction, free-body force resolution, inclined planes and the source evaluation. The new supplement maps to the scheme objectives; see PHYS-FACT-T1-W04-SOURCE-RECONCILIATION.md.",
+      "required_action": "No further source-access task. Keep content approval and source assessment-key decisions separate.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:4bdf68054b2e399aa989b7e0c1cea9cd16a3cadb4723c2f0cf0a67d56571e299",
         "SUP-SS1-PHYSICS-T1-W04-FRICTION",
@@ -14375,8 +14375,8 @@
     {
       "id": "PHYS-T1-W05-W06-ROW-BOUNDARY",
       "kind": "VERIFICATION",
-      "detail": "The repository registers one parsed row labelled WEEK FIVE AND SIX (row 4; 15,574 characters; body SHA-256 593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d). A public close-equivalent PDF has a Week Five motion section at lines 434–611 and begins a Week Six Density & Relative Density section at line 612. The repository separately registers parsed row 5 as WEEK SEVEN, also Density & Relative Density. This may be a source-version mismatch or duplicated week content; the PDF is not verified byte-identical to the archive member.",
-      "required_action": "Inspect the original archive DOCX and identify the exact start/end of both teaching sections in parsed row 4, then compare row 5. Record whether the combined row contains Week Five and Week Six and whether row 5 duplicates/repeats the density content. Preserve source row identities; do not split or merge content based only on the public PDF.",
+      "detail": "The original parsed row is visibly labelled WEEK FIVE AND SIX and spans rendered PDF pages 17–26. It is a single combined row; the source's graphs/kinematics content is present across pages 18–24. The repository keeps the original content-bound row identity and does not split or rewrite its hash. The separate density row follows at pages 26–28 and is parsed as WEEK SEVEN.",
+      "required_action": "Do not split the source row. Existing coverage and lesson mapping preserve the combined identity; any future split requires an explicit migration/rebinding plan.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d",
         "PHYS-WK-T1-W05-W06",
@@ -14388,8 +14388,8 @@
     {
       "id": "PHYS-T1-W05-W06-FIGURES",
       "kind": "CONTENT",
-      "detail": "The public close-equivalent PDF contains distance/displacement-time and speed/velocity-time graphs, but the original archive member's figure inventory and visual disposition are not available in this execution session. No claim is made that the original source has no figures.",
-      "required_action": "Use existing PHYS-VIS-T1 to inspect original graph/figure anchors, record axis labels, units and plotted points, and bind faithful assets with provenance or document precise exclusions.",
+      "detail": "The original combined WEEK FIVE AND SIX row's vector/graph figures were visually inspected in rendered PDF pages 18–24. A new original motion-graphs SVG is registered and explains distance-time and velocity-time gradients/areas. The SVG is not copied from the source graphs.",
+      "required_action": "No further inventory action. Teacher may review the original-equivalent graph aid; source row identity remains unchanged.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d",
         "PHYS-VIS-T1"
@@ -14399,8 +14399,8 @@
     {
       "id": "PHYS-T1-W05-W06-ORIGINAL-ASSESSMENT",
       "kind": "CONTENT",
-      "detail": "The original archive row's exact classwork, evaluation and assignment questions and any supplied answer/marking keys are not accessible in this execution session. The new supplement has its own six/seven? keyed practice, but that does not verify the original assessment.",
-      "required_action": "During PHYS-FACT-T1-W05-W06-SOURCE-RECONCILIATION, inspect the original row's assessment and record which answers/marking criteria are supplied or omitted; append a bounded answer-key supplement only for confirmed gaps.",
+      "detail": "The original combined WEEK FIVE AND SIX row and its exercises/graph questions were visually inspected in rendered PDF pages 17–26. The package's supplement has its own keyed practice; the source assessment inventory is recorded in PHYS-FACT-T1-W05-W06-SOURCE-RECONCILIATION.md. The source does not supply a full answer/marking key.",
+      "required_action": "A teacher may decide whether a separate teacher key for the original combined-row exercises is required. Do not invent graph readings from a low-resolution figure.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d",
         "PHYS-FACT-T1-W05-W06-SOURCE-RECONCILIATION"
@@ -14410,8 +14410,8 @@
     {
       "id": "PHYS-T1-W06-ORIGINAL-ROW-RECONCILIATION",
       "kind": "VERIFICATION",
-      "detail": "The repository registers parsed row 5 as WEEK SEVEN, Density & Relative Density. A public close-equivalent PDF contains the same topic under WEEK SIX at lines 612–620. The PDF is not verified byte-identical to the archive member; the original label and exact row content must remain as registered until the DOC member is inspected.",
-      "required_action": "Inspect original parsed row 5 and the full source DOC; confirm exact week label, content, figures and its relationship to the combined WEEK FIVE AND SIX row. Do not change the source row label or merge/split content based on the public PDF alone.",
+      "detail": "The original parsed row is visually verified as source label WEEK SEVEN, Density and Relative Density, rendered PDF pages 26–28. The scheme/task mapping is preserved as T1-W06; the source's own printed label is not silently changed. See PHYS-FACT-T1-W06-SOURCE-RECONCILIATION.md.",
+      "required_action": "No further source-access task. Preserve the original row label and hash.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242",
         "PHYS-WK-T1-W06",
@@ -14423,8 +14423,8 @@
     {
       "id": "PHYS-T1-W06-ORIGINAL-ASSESSMENT",
       "kind": "CONTENT",
-      "detail": "The original archive row's exact classwork, assignment questions and any supplied answers/marking criteria are not accessible in this execution session. The new supplement contains its own keyed practice but does not verify the original assessment.",
-      "required_action": "During PHYS-FACT-T1-W06-SOURCE-RECONCILIATION, inspect original exercises and answer keys, record what the source provides/omits, and append a bounded answer-key supplement only for confirmed gaps.",
+      "detail": "The original density/relative-density row (source label WEEK SEVEN, PDF pages 26–28) and its assessment were visually inspected. The authored density supplement includes keyed practice; the original source answer/marking gaps are documented in PHYS-FACT-T1-W06-SOURCE-RECONCILIATION.md.",
+      "required_action": "Teacher may confirm whether a separate teacher key for the original source assessment is required; no source answer is invented.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242",
         "PHYS-FACT-T1-W06-SOURCE-RECONCILIATION"
@@ -14434,8 +14434,8 @@
     {
       "id": "PHYS-T1-W07-ORIGINAL-ROW-RECONCILIATION",
       "kind": "VERIFICATION",
-      "detail": "The repository registers parsed row 6 as WEEK 8, pressure/Archimedes/upthrust/floatation. The public close-equivalent PDF labels the same topic WEEK SEVEN at lines 772–775. It is not verified byte-identical to the archive member.",
-      "required_action": "Inspect the original source member and confirm the exact week label, content, formulae, figures and its relationship to the preceding density row. Do not change the repository label based on the public PDF alone.",
+      "detail": "The original parsed row is visually verified as source label WEEK 8, pressure/Archimedes/upthrust/floatation, rendered PDF pages 28–32. The source label and scheme task mapping remain unchanged. See PHYS-FACT-T1-W07-SOURCE-RECONCILIATION.md.",
+      "required_action": "No further source-access task. Preserve the original row label and hash.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:e37e6cc1fe1a5a80189cad8ce314aaeb88aa0b3b2cff9a8cbaf7f624388a75c0",
         "PHYS-WK-T1-W07",
@@ -14447,8 +14447,8 @@
     {
       "id": "PHYS-T1-W07-FIGURES-ASSESSMENT",
       "kind": "CONTENT",
-      "detail": "The original archive row's figure inventory, classwork, assignment and answer/marking keys are not available in this execution session. The public close-equivalent PDF includes a pressure diagram and assessment tasks, but these are not verified as the exact archive member's content.",
-      "required_action": "Use PHYS-VIS-T1 to inspect original figures and the source reconciliation task to compare exercises/answers; create a bounded correction or keyed supplement only for confirmed gaps.",
+      "detail": "The original pressure/floatation figures and assessment were visually inspected in rendered PDF pages 29–30. A new original hydraulic-pressure/upthrust SVG is registered. The source does not provide a complete answer/marking key; the authored supplement supplies its own keyed practice.",
+      "required_action": "Teacher may review the original-equivalent SVG and decide whether a separate teacher key for source exercises is needed.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:e37e6cc1fe1a5a80189cad8ce314aaeb88aa0b3b2cff9a8cbaf7f624388a75c0",
         "PHYS-VIS-T1",
@@ -14459,8 +14459,8 @@
     {
       "id": "PHYS-T1-W08-ORIGINAL-ROW-RECONCILIATION",
       "kind": "VERIFICATION",
-      "detail": "The repository registers parsed row 7 as WEEK 9, Work, Energy and Power. A public close-equivalent PDF labels the corresponding section WEEK EIGHT at lines 920–924. The PDF is not verified byte-identical to the archive member.",
-      "required_action": "Inspect the original source member and confirm the exact week label, content, equations, worked examples and its relationship to preceding/following rows. Do not change the repository label based on the public PDF alone.",
+      "detail": "The original parsed row is visually verified as source label WEEK 9, Work, Energy and Power, rendered PDF pages 32–34. The source label and scheme task mapping remain unchanged. See PHYS-FACT-T1-W08-SOURCE-RECONCILIATION.md.",
+      "required_action": "No further source-access task. Preserve the original row label and hash.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:d82793066a786ab56fa399f91e274913a72c8e8bef287701de133822d30e413b",
         "PHYS-WK-T1-W08",
@@ -14471,8 +14471,8 @@
     {
       "id": "PHYS-T1-W08-ORIGINAL-ASSESSMENT",
       "kind": "CONTENT",
-      "detail": "The original archive row's exact classwork, assignment questions and any supplied answers/marking criteria are not accessible in this execution session. The new supplement contains its own keyed practice but does not verify the original assessment.",
-      "required_action": "During PHYS-FACT-T1-W08-SOURCE-RECONCILIATION, inspect the original exercises and answer keys, record what the source provides/omits, and append a bounded answer-key supplement only for confirmed gaps.",
+      "detail": "The original Work, Energy and Power row and its source exercises were visually inspected in rendered PDF pages 32–34. The authored supplement includes keyed practice; the original source does not provide a complete answer/marking key. See PHYS-FACT-T1-W08-SOURCE-RECONCILIATION.md.",
+      "required_action": "Teacher may decide whether a separate teacher key for the original source exercises is needed.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:d82793066a786ab56fa399f91e274913a72c8e8bef287701de133822d30e413b",
         "PHYS-FACT-T1-W08-SOURCE-RECONCILIATION"
@@ -14482,8 +14482,8 @@
     {
       "id": "PHYS-T1-W09-ORIGINAL-ROW-RECONCILIATION",
       "kind": "VERIFICATION",
-      "detail": "The repository registers parsed row 8 as WEEK TEN, Viscosity. The original legacy .doc bytes/text are not accessible in this execution session, so the exact subtopics, equations, examples, figures and assignments cannot be reconciled against the supplement.",
-      "required_action": "Inspect original parsed row 8 when the member is accessible; record the exact viscosity definition, any coefficient formula, temperature effects, terminal-velocity treatment, figures, exercises and answer/marking keys. Reconcile with the independent supplement without claiming source verification.",
+      "detail": "The original parsed row is visually verified as source label WEEK TEN, Viscosity, rendered PDF pages 34–37. It includes the viscosity definition/coefficient, steel-ball-in-glycerine experiment, apparatus/procedure, terminal-velocity graph, Stokes' law, factors/effects/applications and assessments. See PHYS-FACT-T1-W09-SOURCE-RECONCILIATION.md.",
+      "required_action": "No further source-access task. Preserve the original row label and hash.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:101cab19611133e22a4717f2a65ae284763a0bd45f43b99dd046c9837c6a790e",
         "PHYS-WK-T1-W09",
@@ -14494,8 +14494,8 @@
     {
       "id": "PHYS-T1-W09-FIGURES-ASSESSMENT",
       "kind": "CONTENT",
-      "detail": "The original archive row's figure inventory and assessment/answer-key evidence are not available in this execution session. The new supplement has its own fair investigation and keyed practice, but this does not verify the original source's figures or assessment.",
-      "required_action": "Use PHYS-VIS-T1 and the original-row reconciliation task to inspect original diagrams/objects and exercises; add a bounded asset or answer-key correction only for confirmed gaps.",
+      "detail": "The original viscosity apparatus and terminal-velocity graph were visually inspected in rendered PDF pages 35–36. A new original viscosity/terminal-velocity SVG is registered. The source's exercise/answer-key gaps are recorded in PHYS-FACT-T1-W09-SOURCE-RECONCILIATION.md.",
+      "required_action": "Teacher may review the original-equivalent diagram and decide whether a separate teacher key for source exercises is required.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:101cab19611133e22a4717f2a65ae284763a0bd45f43b99dd046c9837c6a790e",
         "PHYS-VIS-T1",
@@ -14530,8 +14530,8 @@
     {
       "id": "PHYSICS-T3-W04-UNRELATED-QUESTION",
       "kind": "FACT",
-      "detail": "The Week Four fuse assignment's Section A item 4 is a question about the motion of a sounding tuning fork (source PDF line 342), which is unrelated to fuse safety. It is deliberately excluded from the authored fuse lesson and fuse assessment. No SS1 destination topic has been verified, so it must not be silently reassigned.",
-      "required_action": "Teacher may confirm whether the item should be omitted from assessment or moved to an appropriate sound/vibration topic; until then, keep it out of the fuse lesson and do not change the original source.",
+      "detail": "The original Third Term .doc was rendered and inspected. The Week Four fuse assignment includes an unrelated tuning-fork motion question; it is excluded from the fuse lesson and assessment. No destination topic has been verified, so it is not silently moved.",
+      "required_action": "Teacher may confirm whether to omit the item or move it to an appropriate sound/vibration topic; original source remains unchanged.",
       "affected_ids": [
         "SS1-SRC-bed91bb4ef0e:BODY:87346147325e174b318300a5d1ac5312cd14784201b272138575665519d50d1b",
         "COV-PHYS-T3-W04-OBJ-1"
@@ -14573,8 +14573,8 @@
     {
       "id": "PHYSICS-T3-W05-BROWNIAN-SOURCE-DEPTH",
       "kind": "CONTENT",
-      "detail": "The Week Five source contains a BROWNIAN MOTION heading and two statements ('Molecules exist' and 'Molecules are continually in motion') but does not explain the observed random movement of suspended particles or its cause. The authored supplement teaches the definition and molecular-collision explanation.",
-      "required_action": "Teacher may confirm that the independently authored Brownian-motion explanation is suitable as an equivalent supplement; do not describe it as a verbatim source lesson.",
+      "detail": "Original Third Term PDF pages 7–9 confirm the Brownian-motion heading and only two short statements about molecular existence and motion. The supplement adds an independently authored explanation of random suspended-particle motion caused by molecular collisions; it is not represented as source wording.",
+      "required_action": "Teacher reviews the independently authored explanation before approval; no further source inspection is needed.",
       "affected_ids": [
         "SS1-SRC-bed91bb4ef0e:BODY:f59b8928f2e3d005c70de58e2e9ada07cfa1c404e24a7b448478eb65c593569b",
         "COV-PHYS-T3-W05-OBJ-5",
@@ -14585,8 +14585,8 @@
     {
       "id": "PHYSICS-T1-W05-W06-SPLIT-IDENTITY",
       "kind": "CONTENT",
-      "detail": "The earlier branch proposed splitting the combined parsed row WEEK FIVE AND SIX before the GRAPHS heading. The current schema's split_before operation can express a numeric Week 6 boundary, but applying it would change the content-bound parsed-row identities and hashes for the combined row and require re-binding all affected coverage and any correction targets. The current supplement SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS covers the scheme's motion and graph objectives without requiring a parser split. The old branch's proposed anchor was 'GRAPHS\\nThe motion of an object is best represented'; its uniqueness has not been independently rechecked against the original member in this execution.",
-      "required_action": "Do not apply the split rule solely to make source row numbering resemble the scheme. If a split is later required, verify the anchor against the hash-matching original member, compute the resulting row identities, rebind coverage and correction references, and obtain a reviewed migration plan before any import. Keep the current combined-row identity until then.",
+      "detail": "The hash-verified original .doc was rendered. The single parsed source row is labelled WEEK FIVE AND SIX and includes the graph/kinematics material across PDF pages 17–26. The package intentionally retains the combined row and original body hash; no split_before rule is applied.",
+      "required_action": "Do not split without a separately approved migration and complete coverage/correction rebinding.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d",
         "PHYS-WK-T1-W05-W06",
@@ -14597,8 +14597,8 @@
     {
       "id": "PHYSICS-T1-W05-W06-FORMULA-FORMATTING",
       "kind": "FACT",
-      "detail": "A prior branch reported the Week Five equation S = (v + u)t over 2 as an incorrect or fraction-lost formula. The extracted expression explicitly says 'over 2' and is mathematically equivalent to S = 1/2(u + v)t, the displacement from average velocity multiplied by time for uniformly accelerated motion. No mathematical error is established by the extracted wording. The original equation's visual fraction layout has not been inspected in the archive member, so this is a presentation/extraction question, not a confirmed physics error.",
-      "required_action": "Retain the correct formula in the authored motion lesson. During PHYS-VIS-T1, inspect the original equation/figure if a visual fidelity decision is needed; do not create a factual correction for an expression that is already mathematically equivalent.",
+      "detail": "The original combined WEEK FIVE AND SIX row has been visually inspected. The extracted expression S = (v + u)t over 2 is mathematically equivalent to S = 1/2(u + v)t for uniformly accelerated motion; the source text already states 'over 2'. The lesson keeps the correct formula. No factual correction is required.",
+      "required_action": "No further correction. Keep the original source unchanged.",
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d",
         "SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS"
@@ -14624,6 +14624,26 @@
       "affected_ids": [
         "SS1-SRC-bed91bb4ef0e:BODY:90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3",
         "SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYSICS-T2-W04-EXPANSIVITY-ARITHMETIC",
+      "kind": "FACT",
+      "detail": "The rendered Second Term Week Four source (PDF pages 7–9) shows the 2 m brass-rod example with α = 18×10⁻⁶ K⁻¹ and ΔT = 100 K. The final 2.0036 m is correct, but the intermediate factors printed as 0.00018 and 1.00018 should be 0.0018 and 1.0018. A later evaluation uses 1.8×10⁻⁶ K⁻¹, a tenfold mismatch with the worked example. The student lesson uses consistent formulae and worked values.",
+      "required_action": "Retain the original source unchanged. Teacher may approve the corrected example and confirm which coefficient is intended for the evaluation.",
+      "affected_ids": [
+        "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYSICS-T2-W07-LIGHTNING-CONDUCTOR-EXPLANATION",
+      "kind": "FACT",
+      "detail": "The rendered Second Term Week Seven source (PDF pages 14–16) describes a lightning conductor as if it discharges the cloud before a flash. This is an oversimplification and may mislead students. The authored lesson explains a grounded air terminal and a controlled low-resistance path for lightning current; it does not claim that a rod reliably prevents a strike by discharging the cloud.",
+      "required_action": "Teacher reviews the corrected explanation and approves the wording; original source remains unchanged.",
+      "affected_ids": [
+        "SUP-SS1-PHYSICS-T2-W07-GOLD-LEAF-ELECTROSCOPE"
       ],
       "blocks_delivery": false
     }
