@@ -790,6 +790,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
       note: 'This Primary 4 topic is temporarily unavailable while its curriculum source is checked.' });
   }
   if (primary4Delivery?.kind === 'matched' && primary4Delivery.source === 'archive-correction') {
+    topic.title = primary4Delivery.displayTitle ?? topic.title;
     topic.source_reference = primary4Delivery.text;
     topic.summary = null;
     topic.generated_assessment_id = null;
