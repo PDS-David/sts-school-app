@@ -1029,3 +1029,97 @@ The remaining claims need qualification:
 - `GOVERNMENT-T3-W09-WEEKEND-MCQ-AMBIGUITY` — correct the franchise/candidacy and registration/nomination ambiguities before keying.
 
 No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-WK-T3-W10 — Electoral System indexing
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and dated comparative/electoral-law fact-check evidence only; no lesson, answer key, marks, correction, asset or parser rule is authored here.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37 on the original legacy `.doc`.
+- Complete span: lines 1204–1410; UTF-8 span SHA-256: `1e6415f8e03eb9f6f9ff71d3908fd46d3728dd37bd1d109851e8a99e2c8ca71c`.
+- Printed label: `WEEK TEN` at line 1204; topic: `ELECTORAL SYSTEM` at line 1205.
+- Scheme entry 10 (preamble lines 34–35) maps to this span by topic and order.
+- Locators refer to Antiword line numbers, not page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are empty rather than inferred from a different extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-W10-SCHEME-ELECTORAL-SYSTEM | Scheme entry 10 mapping | PARTIAL |
+| COV-GOV-T3-W10-DEFINITION-FEATURES | Meaning/features, lines 1213–1238 | PARTIAL |
+| COV-GOV-T3-W10-PLURALITY | Plurality/FPTP, lines 1240–1268 | PARTIAL |
+| COV-GOV-T3-W10-ABSOLUTE-SECOND-ROUND | Absolute majority/two-round, lines 1271–1304 | PARTIAL |
+| COV-GOV-T3-W10-ALTERNATIVE-VOTE | Alternative Vote, lines 1306–1328 | PARTIAL |
+| COV-GOV-T3-W10-PROPORTIONAL | PR/List PR/STV, lines 1330–1369 | PARTIAL |
+| COV-GOV-T3-W10-GENERAL-REVISION | General revision, lines 1375–1384 | PARTIAL |
+| COV-GOV-T3-W10-READING | Reading pointers, lines 1385–1387 | PARTIAL |
+| COV-GOV-T3-W10-ASSESSMENT-KEYS | All exercise blocks | UNRESOLVED |
+| COV-GOV-T3-W10-WEEKEND-MCQS | Weekend MCQs, lines 1389–1403 | PARTIAL |
+
+Ten coverage entries and ten linked package open items were added.
+
+### Definition and features — lines 1213–1238
+
+The source defines an electoral system as the process/procedure by which representatives are selected. A more precise definition is the set of rules translating votes into winners or legislative seats, including the ballot structure, district magnitude and allocation formula.
+
+The listed features combine electoral-system design with wider election integrity and administration: independent/impartial electoral management, periodic elections, constituency boundaries, voter franchise, candidate nomination/qualification, voter registration, voter education, independent courts, secret ballots and transparent counting. These are important features of credible elections, but they are not all necessary components of every electoral-system formula. Keep the two levels distinct.
+
+### Plurality / First-Past-The-Post — lines 1240–1268
+
+The core rule is sound: the candidate with more votes than any other candidate wins, even without an absolute majority. This is a plurality rule, not necessarily a majority of all valid votes. Simplicity and a clear winner can be advantages, but cost and stability are context-dependent. FPTP can under-represent smaller parties and voters whose candidates lose; it does not automatically ensure accountability, minority access to power or political stability.
+
+### Absolute majority and second ballot — lines 1271–1304
+
+An absolute-majority rule requires the applicable majority threshold; a second round may be held if the first-round threshold is not met. The source's statement that candidates below 10% must withdraw is not a general rule and does not match Nigerian constitutional presidential/gubernatorial election rules.
+
+Under Constitution section 134, a presidential candidate must secure the required majority of votes and the specified spread across at least two-thirds of the States of the Federation and the FCT; if no candidate satisfies the prescribed conditions, section 134(3) specifies the candidates for the second election. Section 179 sets corresponding majority-and-spread rules for governors and specifies the second-election process. Do not substitute a generic 10% withdrawal threshold for these constitutional provisions. Runoff rules differ across jurisdictions.
+
+### Alternative Vote — lines 1306–1328
+
+The source correctly identifies ranked preferences and transfers from eliminated candidates. The Alternative Vote is a single-winner preferential plurality/majority system, usually used in single-member districts. Voters rank candidates. If no candidate has an absolute majority of first preferences, the lowest candidates are eliminated and ballots transfer to the next available preference until one candidate has a majority. AV is not STV: it does not transfer surplus votes from candidates who have already been elected.
+
+### Proportional representation, List PR and STV — lines 1330–1369
+
+The general PR principle is to translate parties'/groups' vote shares into corresponding seat shares, usually in multi-member districts.
+- **List PR:** each party/group presents a list; voters vote for a party; seats are allocated proportionally to party vote share; the order of elected candidates depends on closed/open/free list rules.
+- **STV:** voters normally rank individual candidates in multi-member districts. Candidates reaching a quota are elected; surplus votes from elected candidates and votes from eliminated candidates are transferred according to the rules until all seats are filled. This is candidate-centred and is not the party-list model described in the source's STV subsection.
+
+The source's STV paragraph repeats the List PR explanation and must be corrected. PR can improve proportionality and representation, but coalition formation, fragmentation, administrative cost and stability effects depend on thresholds, district magnitude and political institutions; they are not automatic.
+
+### Assessment and reading-marker audit
+
+- `EVALUATION QUESTIONS`: line 1241; two questions at lines 1242–1243.
+- `EVALUATION QUESTIONS`: line 1273; two questions at lines 1274–1275.
+- `EVALUATION QUESTIONS`: line 1330; two questions at lines 1331–1335.
+- `EVALUATION QUESTIONS`: line 1371; two questions at lines 1372–1373.
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 1375; five questions at lines 1376–1384. Questions 1–3 relate to electoral systems. Questions 4–5 ask about centralization, not taught in this span or listed in scheme entry 10.
+- `READING ASSIGNMENT`: line 1385; `Essential Government` pp. 100–103 and `Comprehensive Government` pp. 95–98 at lines 1386–1387. Editions/publication details are absent and neither book was inspected.
+- `WEEKEND ASSINGMENT`: line 1389; five MCQs at lines 1390–1403. Q1 tests the definition; Q2 List PR; Q3 plurality; Q4 equates “simple majority” with FPTP and needs correction because FPTP is a plurality rule and may produce a winner with less than 50%; Q5 PR.
+- `THEORY`: line 1405; two prompts at lines 1406–1408.
+- Total: **20 exercise stems** (four evaluation blocks × 2 + 5 general revision + 5 weekend + 2 theory). No source answer key, marks or marking criteria are supplied. No answers or marks were invented.
+
+### Dated comparative and Nigerian legal references consulted
+
+1. **International IDEA, Electoral System Design Database — Glossary**. Used for precise definitions of FPTP, Alternative Vote, Two-Round System, List PR and STV, and for distinguishing plurality/majority, proportional and mixed families: https://www.idea.int/data-tools/data/electoral-system-design-database
+2. **International IDEA, *Electoral System Design: The New International IDEA Handbook*** (2005). Used for the taxonomy and context-dependent consequences of electoral-system choices: https://www.idea.int/publications/catalogue/electoral-system-design-new-international-idea-handbook
+3. **PLAC, *Constitution of the Federal Republic of Nigeria, 1999*, updated with the First–Fifth Alterations** (third revision October 2023; reprint September 2024), sections 134 and 179 on presidential and gubernatorial majority/spread and second-election rules: https://placng.org/i/wp-content/uploads/2023/11/Constitution-of-the-Federal-Republic-of-Nigeria-1999-Updated.pdf
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W10-DEFINITION-FACT` — distinguish electoral-system rules from broader election administration/integrity.
+- `GOVERNMENT-T3-W10-PLURALITY-FACT` — distinguish plurality/FPTP from an absolute majority.
+- `GOVERNMENT-T3-W10-ABSOLUTE-SECOND-ROUND-FACT` — correct the generic 10% withdrawal claim and explain Nigeria's sections 134/179.
+- `GOVERNMENT-T3-W10-AV-STV-FACT` — distinguish Alternative Vote from STV.
+- `GOVERNMENT-T3-W10-PR-STV-FACT` — replace the mistaken STV description with candidate-centred quota-based transfers.
+- `GOVERNMENT-T3-W10-MERITS-DEMERITS-FACT` — qualify the systems' possible trade-offs.
+- `GOVERNMENT-T3-W10-REVISION-MISALIGNMENT` — resolve the centralization questions' placement.
+- `GOVERNMENT-T3-W10-READING-VERIFICATION` — verify exact editions and page contents.
+- `GOVERNMENT-T3-W10-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 20 stems.
+- `GOVERNMENT-T3-W10-WEEKEND-MCQ-AMBIGUITY` — clarify plurality versus absolute majority before keying Q4.
+
+No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
