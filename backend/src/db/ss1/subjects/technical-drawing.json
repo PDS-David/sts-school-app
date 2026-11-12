@@ -478,8 +478,11 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Week 6 scheme objective, verbatim: “Enlargement and reduction of plain figures”.",
       "objective_locator": "2nd Term scheme-table parsed row 5 (WEEK 6), extractRawText() line 21; exact row body SHA-256 b3be11f9bf4df24c1ee913290b0308eb630ef42993a154646f6ce3fcda784fa4.",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT"
+      ],
       "evidence": [
         {
           "locator": "Scheme row 5, line 21; exact anchor “WEEK 6:        Enlargement and reduction of plain figures”; 57 characters; SHA-256 b3be11f9bf4df24c1ee913290b0308eb630ef42993a154646f6ce3fcda784fa4; classified by source rule SS1-SRC-af4868d2c026-R008.",
@@ -488,6 +491,10 @@
         {
           "locator": "TD-PRE-T2: lines 11–31 are scheme rows 0–10; teaching rows begin at line 59. Queue item TD-WK-W06-W07 owns the combined Week 6–7 teaching-row review.",
           "explanation": "The exact parsed body identity for the combined Week 6–7 teaching row is not recorded in the current repository evidence. It is therefore not safe to invent a lesson ID or claim a confirmed binding. The dependent TD-WK-W06-W07 task will establish that identity and map this objective; until then coverage remains PARTIAL."
+        },
+        {
+          "locator": "Combined teaching row 16, body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05; TD-FACT-ENLARGEMENT-SCOPE.md",
+          "explanation": "Direct inspection of the original combined row confirms both reduction and enlargement sections; the same source lesson is bound to both Week Six and Week Seven scheme objectives. The separate enlargement supplement is retained as optional reinforcement."
         }
       ]
     },
@@ -496,8 +503,11 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Week 7 scheme objective, verbatim: “Enlargement and reduction of plain figures”.",
       "objective_locator": "2nd Term scheme-table parsed row 6 (WEEK 7), extractRawText() line 23; row body SHA-256 36277a6acff9ac3310023dc5ca73962b2c45f929f3a2f79269241edf07fed3aa.",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT"
+      ],
       "evidence": [
         {
           "locator": "Scheme row 6, line 23; exact anchor “WEEK 7:        Enlargement and reduction of plain figures”; 57 characters; SHA-256 36277a6acff9ac3310023dc5ca73962b2c45f929f3a2f79269241edf07fed3aa; classified by source rule SS1-SRC-af4868d2c026-R009.",
@@ -506,6 +516,10 @@
         {
           "locator": "TD-PRE-T2: teaching rows begin at line 59; queue task TD-WK-W06-W07 owns the combined/associated teaching-row review.",
           "explanation": "The exact parsed body identity and objective-to-teaching scope are not recorded in current repository evidence. No lesson ID is invented. TD-WK-W06-W07 must inspect the source row and bind this objective only if the teaching actually covers it; coverage remains PARTIAL until then."
+        },
+        {
+          "locator": "Combined teaching row 16, body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05; TD-FACT-ENLARGEMENT-SCOPE.md",
+          "explanation": "Direct inspection of the original combined row confirms both reduction and enlargement sections; the same source lesson is bound to both Week Six and Week Seven scheme objectives. The separate enlargement supplement is retained as optional reinforcement."
         }
       ]
     },
@@ -1188,18 +1202,22 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Week 6: reduction of plain figures, as named in the combined WEEK SIX AND SEVEN teaching row.",
       "objective_locator": "Parsed row 16, WEEK SIX AND SEVEN; 7,297-character body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05; original body SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05.",
-      "status": "PARTIAL",
+      "status": "SUPPORTED",
       "lesson_ids": [
         "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05"
       ],
       "evidence": [
         {
           "locator": "Queue evidence for TD-WK-W06-W07: parsed row 16 title “Reduction of plain figures”; body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05.",
-          "explanation": "The teaching-row title directly identifies reduction of plain figures. The exact construction tasks, dimensions, labels and exercise details are not preserved in the current repository evidence, so coverage remains PARTIAL."
+          "explanation": "The earlier entry recorded this as partial before direct source inspection. The full reduction constructions, ratios, examples and evaluation tasks are now transcribed with exact body-child locators in TD-FACT-ENLARGEMENT-SCOPE.md."
         },
         {
           "locator": "Scheme coverage COV-TD-T2-SCH-W06; source scheme row 5 states “Enlargement and reduction of plain figures”.",
           "explanation": "Reduction is a direct match to the combined teaching row's title; the same row may also cover enlargement, but that is not established by the title and remains a separate unresolved objective."
+        },
+        {
+          "locator": "Combined Week Six–Seven source body children 1017–1067; exact method and tasks in TD-FACT-ENLARGEMENT-SCOPE.md.",
+          "explanation": "The original row teaches reduction through a 3:5 linear rectangle reduction, a 4:5 linear polygon reduction, a 3:5 area reduction construction, and evaluation tasks for a 40 mm regular hexagon (3:5) and 40×60 photo frame (4:7). The complete construction steps and locators are recorded in the factual note."
         }
       ]
     },
@@ -1208,18 +1226,19 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Week 6: enlargement of plain figures (scheme objective; teaching coverage not yet established).",
       "objective_locator": "Scheme coverage COV-TD-T2-SCH-W06; scheme row 5; candidate teaching row parsed row 16, WEEK SIX AND SEVEN.",
-      "status": "IMPLEMENTED_EQUIVALENT",
+      "status": "SUPPORTED",
       "lesson_ids": [
+        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
         "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT"
       ],
       "evidence": [
         {
           "locator": "Scheme rows 5 and 6 (Weeks 6 and 7) both state “Enlargement and reduction of plain figures”; teaching row 16 title is “Reduction of plain figures”.",
-          "explanation": "The scheme explicitly requires enlargement, but the teaching-row title names only reduction. No evidence in the current repository establishes that enlargement is taught in the row body. It is not marked supported or bound to a lesson ID pending TD-FACT-ENLARGEMENT-SCOPE."
+          "explanation": "The earlier entry treated the supplement as equivalent coverage because the source bytes were unavailable. Direct inspection now confirms that the original combined source row itself teaches enlargement. The supplement is retained as optional additional explanation and practice, not as a replacement for missing source coverage."
         },
         {
           "locator": "New original lesson SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT; body SHA-256 0ab14c431c0bc6f41bb92b228051f41c7d423c6ec954eb3c6b1d9d6338af9273; objectives, five keyed practice questions and marking guides are in technical-drawing.json.",
-          "explanation": "The scheme objective is now taught by an independently authored SS1 supplement. This equivalent does not claim the original combined source row also teaches enlargement."
+          "explanation": "The earlier entry treated the supplement as equivalent coverage because the source bytes were unavailable. Direct inspection now confirms that the original combined source row itself teaches enlargement. The supplement is retained as optional additional explanation and practice, not as a replacement for missing source coverage."
         },
         {
           "locator": "Federal Ministry of Education, Nigeria, Inspire portal, “Enlargement and Reduction of Figures | SS1 Technical Drawings”; https://inspire.education.gov.ng/lessons/3888/preview.",
@@ -1228,6 +1247,10 @@
         {
           "locator": "Ministry of Education, Republic of Ghana, Design and Communication Technology Teacher Manual, Year One Book One, Section 2, pp. 74–77.",
           "explanation": "Close-equivalent official technical-drawing method source supports use of a centre, rays through vertices and a given ratio to enlarge/reduce plane figures. No text or figures are reproduced."
+        },
+        {
+          "locator": "Combined Week Six–Seven source body children 1069–1108; exact method and tasks in TD-FACT-ENLARGEMENT-SCOPE.md.",
+          "explanation": "The original row explicitly includes an “Enlargement of similar figures” section, explains enlargement versus reduction and ratio direction, demonstrates a 5:3 area enlargement using the semicircle/perpendicular construction, gives a pole-T enlargement method for a given figure, and assigns a 30 mm regular pentagon enlarged 3:2. The independent supplement remains optional reinforcement, not the sole coverage."
         }
       ]
     },
@@ -1236,18 +1259,22 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Week 7: reduction of plain figures, as named in the combined WEEK SIX AND SEVEN teaching row.",
       "objective_locator": "Parsed row 16, WEEK SIX AND SEVEN; 7,297-character body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05; original body SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05.",
-      "status": "PARTIAL",
+      "status": "SUPPORTED",
       "lesson_ids": [
         "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05"
       ],
       "evidence": [
         {
           "locator": "Queue evidence for TD-WK-W06-W07: parsed row 16 title “Reduction of plain figures”; body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05.",
-          "explanation": "The teaching-row title directly identifies reduction of plain figures. The exact construction tasks, dimensions, labels and exercise details are not preserved in the current repository evidence, so coverage remains PARTIAL."
+          "explanation": "The earlier entry recorded this as partial before direct source inspection. The full reduction constructions, ratios, examples and evaluation tasks are now transcribed with exact body-child locators in TD-FACT-ENLARGEMENT-SCOPE.md."
         },
         {
           "locator": "Scheme coverage COV-TD-T2-SCH-W07; source scheme row 6 states “Enlargement and reduction of plain figures”.",
           "explanation": "Reduction is a direct match to the combined teaching row's title; the same row may also cover enlargement, but that is not established by the title and remains a separate unresolved objective."
+        },
+        {
+          "locator": "Combined Week Six–Seven source body children 1017–1067; exact method and tasks in TD-FACT-ENLARGEMENT-SCOPE.md.",
+          "explanation": "The original row teaches reduction through a 3:5 linear rectangle reduction, a 4:5 linear polygon reduction, a 3:5 area reduction construction, and evaluation tasks for a 40 mm regular hexagon (3:5) and 40×60 photo frame (4:7). The complete construction steps and locators are recorded in the factual note."
         }
       ]
     },
@@ -1256,18 +1283,19 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Week 7: enlargement of plain figures (scheme objective; teaching coverage not yet established).",
       "objective_locator": "Scheme coverage COV-TD-T2-SCH-W07; scheme row 6; candidate teaching row parsed row 16, WEEK SIX AND SEVEN.",
-      "status": "IMPLEMENTED_EQUIVALENT",
+      "status": "SUPPORTED",
       "lesson_ids": [
+        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
         "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT"
       ],
       "evidence": [
         {
           "locator": "Scheme rows 5 and 6 (Weeks 6 and 7) both state “Enlargement and reduction of plain figures”; teaching row 16 title is “Reduction of plain figures”.",
-          "explanation": "The scheme explicitly requires enlargement, but the teaching-row title names only reduction. No evidence in the current repository establishes that enlargement is taught in the row body. It is not marked supported or bound to a lesson ID pending TD-FACT-ENLARGEMENT-SCOPE."
+          "explanation": "The earlier entry treated the supplement as equivalent coverage because the source bytes were unavailable. Direct inspection now confirms that the original combined source row itself teaches enlargement. The supplement is retained as optional additional explanation and practice, not as a replacement for missing source coverage."
         },
         {
           "locator": "New original lesson SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT; body SHA-256 0ab14c431c0bc6f41bb92b228051f41c7d423c6ec954eb3c6b1d9d6338af9273; objectives, five keyed practice questions and marking guides are in technical-drawing.json.",
-          "explanation": "The scheme objective is now taught by an independently authored SS1 supplement. This equivalent does not claim the original combined source row also teaches enlargement."
+          "explanation": "The earlier entry treated the supplement as equivalent coverage because the source bytes were unavailable. Direct inspection now confirms that the original combined source row itself teaches enlargement. The supplement is retained as optional additional explanation and practice, not as a replacement for missing source coverage."
         },
         {
           "locator": "Federal Ministry of Education, Nigeria, Inspire portal, “Enlargement and Reduction of Figures | SS1 Technical Drawings”; https://inspire.education.gov.ng/lessons/3888/preview.",
@@ -1276,6 +1304,10 @@
         {
           "locator": "Ministry of Education, Republic of Ghana, Design and Communication Technology Teacher Manual, Year One Book One, Section 2, pp. 74–77.",
           "explanation": "Close-equivalent official technical-drawing method source supports use of a centre, rays through vertices and a given ratio to enlarge/reduce plane figures. No text or figures are reproduced."
+        },
+        {
+          "locator": "Combined Week Six–Seven source body children 1069–1108; exact method and tasks in TD-FACT-ENLARGEMENT-SCOPE.md.",
+          "explanation": "The original row explicitly includes an “Enlargement of similar figures” section, explains enlargement versus reduction and ratio direction, demonstrates a 5:3 area enlargement using the semicircle/perpendicular construction, gives a pole-T enlargement method for a given figure, and assigns a 30 mm regular pentagon enlarged 3:2. The independent supplement remains optional reinforcement, not the sole coverage."
         }
       ]
     },
@@ -1380,20 +1412,6 @@
       "affected_ids": [
         "COV-TD-T2-SCH-W01",
         "SS1-SRC-af4868d2c026-R003"
-      ],
-      "blocks_delivery": false
-    },
-    {
-      "id": "TD-T2-W06-TEACHING-ROW-MAPPING",
-      "kind": "CONTENT",
-      "detail": "The combined Week 6–7 teaching row is identified as parsed row 16, title “Reduction of plain figures”, body ID SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05. Reduction remains PARTIAL pending detailed construction/figure review. The scheme's enlargement objective is now covered by original supplement SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT; whether the source row also teaches enlargement remains unreconciled because its full bytes are not available in this execution session.",
-      "required_action": "When the original DOCX member can be inspected, determine whether the combined row also teaches enlargement and record exact source locators. Retain the independent supplement unless a source-backed review proves it is redundant; do not mark the original row supported from its title alone.",
-      "affected_ids": [
-        "COV-TD-T2-SCH-W06",
-        "COV-TD-T2-SCH-W07",
-        "SS1-SRC-af4868d2c026-R008",
-        "SS1-SRC-af4868d2c026-R009",
-        "TD-WK-W06-W07"
       ],
       "blocks_delivery": false
     },
@@ -1547,25 +1565,14 @@
       "blocks_delivery": true
     },
     {
-      "id": "TD-T2-W06-W07-REDUCTION-DETAILS",
-      "kind": "CONTENT",
-      "detail": "The combined Week 6–7 teaching row is titled “Reduction of plain figures” (parsed row 16; body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05). Current repository evidence does not list its individual drawing tasks, dimensions, labels, exercises, answers or marking criteria.",
-      "required_action": "Inspect the original teaching row and its figures; record each reduction construction, dimensions, labels, exercise and marking evidence with exact locators. Do not split the source row or invent details.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
-        "TD-WK-W06-W07",
-        "TD-VIS-W06-W07"
-      ],
-      "blocks_delivery": true
-    },
-    {
       "id": "TD-T2-W06-W07-FIGURES",
       "kind": "CONTENT",
-      "detail": "The combined Week 6–7 row's figure inventory and visual disposition are not recorded. Reduction constructions depend on exact geometry and dimensions.",
-      "required_action": "Complete TD-VIS-W06-W07 by inspecting every original figure and recording its purpose, dimensions and labels; bind faithful assets or record a precise exclusion.",
+      "detail": "All 11 DrawingML placements and the one AutoCAD OLE/WMF preview in the combined Week Six–Seven row have been visually inspected. Eleven unique raster diagrams have individual derivative tasks; the OLE preview repeats the Week Three/Week Eight–Nine 30/60/70 triangle and has a cross-row reuse-validation task. No allowed-MIME derivatives have yet been produced or bound.",
+      "required_action": "Complete TD-ASSET-W06-W07-F01 through F11 and F12 cross-row reuse validation; verify geometry/labels, create allowed-MIME derivatives, record hashes/bytes/alt text/provenance, and bind each to the combined source lesson.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
-        "TD-VIS-W06-W07"
+        "TD-ASSET-W06-W07-F01",
+        "TD-ASSET-W06-W07-F12"
       ],
       "blocks_delivery": true
     },
@@ -1579,18 +1586,6 @@
         "TD-KEY-W06-W07-ANSWERS"
       ],
       "blocks_delivery": true
-    },
-    {
-      "id": "TD-T2-W06-W07-ORIGINAL-ENLARGEMENT-RECONCILIATION",
-      "kind": "VERIFICATION",
-      "detail": "The scheme's enlargement objective is covered by the new original supplement SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT. The combined source row is titled “Reduction of plain figures”; the current execution environment does not provide the full source member bytes needed to determine whether enlargement is also present in the row body.",
-      "required_action": "When the original DOCX member is accessible, inspect parsed row 16 and record whether enlargement is already taught, with exact construction locators. Keep the supplement as equivalent coverage unless source evidence proves duplication; never infer original coverage from the row title.",
-      "affected_ids": [
-        "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT",
-        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
-        "TD-FACT-ENLARGEMENT-SCOPE"
-      ],
-      "blocks_delivery": false
     },
     {
       "id": "TD-T2-W08-W09-TEACHING-DETAILS",
