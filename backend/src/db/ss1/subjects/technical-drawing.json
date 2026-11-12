@@ -5930,14 +5930,14 @@
     {
       "id": "TD-T2-W04-GATE-SCALE-RECONCILIATION",
       "kind": "FACT",
-      "detail": "The ornamental-gate drawing supplies 2100 mm overall length and 300 mm post dimension, but the WMF preview's rendered pixel proportions are approximately 7.6:1 rather than the stated 7:1. A–E and the scale therefore cannot be safely measured from the current preview.",
-      "required_action": "Obtain the native AutoCAD drawing or a corrected, undistorted dimensioned export; verify the scale and measure A–E from that source. Do not infer dimensions from the distorted preview.",
+      "detail": "The original ornamental-gate WMF preview is distorted (rendered proportions about 7.6:1 versus stated 7:1), so its A–E details cannot be measured reliably. The Week Four lesson now contains an original fully dimensioned gate elevation at RF 1:20 (actual 2,100×1,200 mm, 300 mm posts, 100 mm rails, four 50 mm bars and five equal gaps) with a complete keyed practice task. This alternative covers the scale-construction objective without claiming to recover the source ornament.",
+      "required_action": "Teacher reviews and accepts the original gate scale alternative for delivery. Retain the source distortion note; do not use its A–E labels or claim the original CAD geometry has been recovered.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
         "TD-FACT-W04-SCALE-DETAILS",
         "TD-VIS-OLE"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "TD-T2-W05-CHORD-ANGLE-GRANULARITY",
