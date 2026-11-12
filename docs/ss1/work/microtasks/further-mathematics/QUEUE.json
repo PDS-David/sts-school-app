@@ -921,8 +921,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 5 of SS1-03 parsed_rows.json (week label \"WEEK SIX\", title \"Revision of half term work\", 56 characters). Existing coverage COV-FM-T2-R05 is MARKER (marker row, body retained). Row is only 56 characters, classified REVISION by RULE-FM-T2-W06-REVISION (anchor \"Revision of half term work\"); body retained. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Source row is a revision marker only (56 characters); retained as MARKER. Added COV-FM-T2-W06-OBJ-1 linked to the separate 50-mark revision assessment FM-TEST-T2-W06-HALFTERM. It covers Weeks 1–5 and does not include Week 7 topics. Source itself remains unchanged. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -3433,6 +3433,34 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W07-COMPOSITE-INVERSE-MAPPINGS]. 4 objectives; 10 practice questions; 28 marks. Coverage COV-FM-T2-W07-OBJ-1..3 and row R06 linked. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Replacement lesson covers composition, inverse existence, algebraic inverse and domain restrictions with keyed practice; objective coverage linked. Approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-TEST-T2-W06-HALFTERM",
+      "kind": "TEST",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 06 marker: Revision of half term work",
+      "objective": "Provide a balanced 50-mark half-term revision assessment across Weeks 1–5 (AP, GP, inequalities, linear programming and mapping/functions), with full answer key and criterion-level marking.",
+      "required_files": [
+        "docs/ss1/work/microtasks/further-mathematics/FM-TEST-T2-W06-HALFTERM.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/FM-TEST-T2-W06-HALFTERM.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-WK-T2-W06",
+        "FM-LES-T2-W01-ARITHMETIC-PROGRESSION",
+        "FM-LES-T2-W02-GEOMETRIC-PROGRESSION",
+        "FM-LES-T2-W03-LINEAR-INEQUALITIES",
+        "FM-LES-T2-W04-TWO-VARIABLE-LP",
+        "FM-LES-T2-W05-MAPPING-FUNCTIONS"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored a 60-minute, 50-mark half-term revision assessment: 20 MCQs and 6 structured questions, with answer key and criterion-level marking. Covers Weeks 1–5 only and excludes later Week 7 composite/inverse mapping. Teacher approval PENDING; verification DEFERRED.",
+      "completion_condition": "Assessment has balanced coverage of Weeks 1–5, complete answer key and marking guide, and mark totals reconcile to 50. Approval and verification remain pending/deferred."
     }
   ],
   "review": {
