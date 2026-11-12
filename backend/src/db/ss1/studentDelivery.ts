@@ -15,7 +15,7 @@ export type StudentSs1Lesson = SubjectPackage['lessons'][number] & {
 const packages = loadPackages();
 const moduleDir = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(moduleDir, '../../../..');
-const normalize = (value: unknown) => String(value ?? '').replace(/\\s+/g, ' ').trim().toLocaleLowerCase('en');
+const normalize = (value: unknown) => String(value ?? '').replace(/\s+/g, ' ').trim().toLocaleLowerCase('en');
 
 function isStudentDeliverable(lesson: SubjectPackage['lessons'][number]): boolean {
   const state = lesson.state;
