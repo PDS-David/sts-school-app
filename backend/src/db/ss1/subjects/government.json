@@ -5642,6 +5642,41 @@
         "SS1-SRC-c76f430c7cf8"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "GOVERNMENT-T1-VISUAL-BRANDING-PERMISSION",
+      "kind": "PERMISSION",
+      "detail": "The 1st Term Government cover and letterhead images contain vendor branding and personal contact details. Their reuse rights/permission are not established. The images are byte-identical to a generic vendor cover/header used in other subject files, but duplication does not grant reuse permission.",
+      "required_action": "Obtain explicit permission/rights confirmation for the vendor branding and any personal contact details before binding either image to a lesson or distributing it. Until then, keep both image files out of Git and leave the package assets array empty. Do not transcribe or reproduce the contact details.",
+      "affected_ids": [
+        "SS1-SRC-40ce7dcaf672",
+        "GOV-VIS-T1"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "GOVERNMENT-T1-VISUAL-HEADER-RENDER",
+      "kind": "VISUAL",
+      "detail": "The header JPEG is referenced from the legacy Word header story (picture character at paragraph 881). The document was not rendered in Word/LibreOffice, so it is unknown whether the letterhead prints on every page or only in a particular section/page. Cached page-count metadata is not a render.",
+      "required_action": "Obtain a private render of the original .doc and inspect page-by-page header placement before deciding whether the image is a repeating letterhead. Do not infer placement from the header-story reference alone; do not commit the render or image bytes.",
+      "affected_ids": [
+        "SS1-SRC-40ce7dcaf672",
+        "GOV-VIS-T1"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "GOVERNMENT-T1-W07-COMPARISON-TABLE-MISSING",
+      "kind": "CONTENT",
+      "detail": "The Week Seven THEORY question at getBody line 632 asks for a tabular comparison of democracy and fascism, but the 1st Term Government document contains no body table, diagram or figure. The only table structure is an empty 1×1 layout row above the cover; it is not the requested comparison table.",
+      "required_action": "Keep the source omission explicit. If teaching requires the comparison, create a separately labelled original table in GOV-LES-T1-W07-CORRECTED-WEEK with sourced criteria and do not present it as a recovered source table. Do not fabricate an original-source visual or bind an asset.",
+      "affected_ids": [
+        "COV-GOV-T1-W07-ASSESSMENT-KEYS",
+        "GOV-LES-T1-W07-CORRECTED-WEEK",
+        "SS1-SRC-40ce7dcaf672",
+        "GOV-VIS-T1"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
