@@ -33,3 +33,38 @@ test('Primary 4 CCA First Term keeps detailed lesson notes instead of the openin
   assert.ok(!resolved.includes('WEEK 14: REVISION AND EXAMINATION'));
   assert.ok(!resolved.includes('Units: Uses and branches of art'));
 });
+
+test('Primary 4 Basic Science First Term drops the outline and normalizes detailed week headings', () => {
+  const source = [
+    'PRY 4 BASIC SCIENCE FIRST TERM LESSON NOTES',
+    'WEEK 1: CHANGES IN NATURE',
+    'WEEK 2: CHANGES IN PLANT',
+    'WEEK 13: EXAMINATION',
+    '',
+    'WEEK: WEEK 1',
+    'CLASS: PRIMARY 4',
+    'TOPIC: CHANGES IN NATURE',
+    'LESSON CONTENT',
+    'Change is when something passes from one state to another.',
+    '',
+    'WEEK: WEEK 2',
+    'CLASS: PRIMARY 4',
+    'TOPIC: CHANGES IN PLANT',
+    'LESSON CONTENT',
+    'Plants grow from seeds into mature plants.',
+    '',
+    'WEEK: 5',
+    'TOPIC: OUR WEATHER',
+    'LESSON CONTENT',
+    'Weather is the condition of the atmosphere.',
+  ].join('\\n');
+
+  const resolved = applyPrimarySourceTextResolution('1st termBasicscience4.docx', source);
+
+  assert.ok(resolved.startsWith('WEEK 1'));
+  assert.ok(resolved.includes('WEEK 2'));
+  assert.ok(resolved.includes('WEEK 5'));
+  assert.ok(resolved.includes('LESSON CONTENT'));
+  assert.ok(!resolved.includes('WEEK 13: EXAMINATION'));
+  assert.ok(!resolved.includes('WEEK: WEEK'));
+});
