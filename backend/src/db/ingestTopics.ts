@@ -79,6 +79,7 @@ import {
   applyPrimarySourceTextResolution,
   isPrimarySourceExcluded,
   resolvePrimaryParsedTopic,
+  resolvePrimarySubjectName,
 } from './primaryCurriculumResolutions.js';
 import {
   applyJss1SourceTextResolution,
@@ -742,6 +743,13 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
           const subjectName = inferSubjectName(m[0].replace(/^subject\s*[:;]\s*/i, ''));
           sections.push({ subjectName, sectionText });
         });
+      }
+
+      if (schoolCode === 'primary') {
+        sections = sections.map(section => ({
+          ...section,
+          subjectName: resolvePrimarySubjectName(path.basename(filePath), termLabel, section.subjectName),
+        }));
       }
 
       if (validClassNames.includes('JSS 1')) {

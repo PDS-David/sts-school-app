@@ -25,6 +25,15 @@ const EXCLUDED_FILES = new Set([
   'PRY 4 CCA First term E_1.docx',
   '[1st Term] PRY 4 English 1.docx',
   'PRY 4 Maths Ist term_1.doc',
+  // Filename says BST (Basic Technology) but the document is headed "PRY 4
+  // BASIC SCIENCE FIRST TERM ENOTE" and its lessons are Basic Science (changes
+  // in nature, weather, colours, measurement). The same lessons are in the
+  // Primary 4 Basic Science 1st-Term source "1st termBasicscience4.docx", which
+  // is the file that is retained. Primary 4 has no genuine Basic Technology
+  // 1st-Term source. NOTE: the 2023 "1st Term Basic 4" zip does not contain
+  // "1st termBasicscience4.docx"; importing only that zip would leave Primary 4
+  // Basic Science 1st Term empty.
+  'PRY 4 BST Ist term.docx',
   // Anonymous source overlaps the retained, clearly identified Primary 5 CCA
   // First-Term source; do not let the anonymous copy duplicate its lesson.
   'み.docx',
@@ -80,6 +89,22 @@ export function isPrimarySourceExcluded(basename: string, sourceIdentity = ''): 
   }
 
   return false;
+}
+
+// Exact-basename subject corrections where the filename and the document's own
+// heading disagree about the subject.
+export function resolvePrimarySubjectName<T extends { name: string; fallback: boolean }>(
+  basename: string,
+  termLabel: string,
+  subjectName: T,
+): T {
+  // Filename says BASIC SCIENCE but the document is headed "BASIC TECHNOLOGY
+  // THIRD TERM PRIMARY 4" (technology, ICT gadgets, shape construction,
+  // buildings, energy).
+  if (termLabel === '3rd Term' && basename === 'BASIC SCIENCE THIRD TERM PRY 4.docx') {
+    return { ...subjectName, name: 'Basic Technology', fallback: false };
+  }
+  return subjectName;
 }
 
 export function applyPrimarySourceTextResolution(basename: string, text: string): string {
