@@ -997,8 +997,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 7 of SS1-03 parsed_rows.json (week label \"WEEK EIGHT\", title \"TRIGONOMETRIC RATIO\", 10680 characters). Existing coverage COV-FM-T2-R07 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). SS1-03 records 52 characters of equation content lost from this row (parsed_rows eqExtra). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-009 (task FM-PORT-D3-L009). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Mapped scheme objectives to COV-FM-T2-W08-OBJ-1..3. Replacement SUP-SS1-FURTHER-MATHEMATICS-T2-W08-TRIGONOMETRIC-RATIOS covers right-triangle ratios, general angles, identities and graph interpretation. Original rendered pages 26–33 visually inspected; several diagrams/graphs are absent in source render and y=sinθ/2 is ambiguous. Visual asset task and teacher clarification remain open. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -3461,6 +3461,40 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Authored a 60-minute, 50-mark half-term revision assessment: 20 MCQs and 6 structured questions, with answer key and criterion-level marking. Covers Weeks 1–5 only and excludes later Week 7 composite/inverse mapping. Teacher approval PENDING; verification DEFERRED.",
       "completion_condition": "Assessment has balanced coverage of Weeks 1–5, complete answer key and marking guide, and mark totals reconcile to 50. Approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T2-W08-TRIGONOMETRIC-RATIOS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 08; source heading TRIGONOMETRIC RATIO",
+      "objective": "Author a complete lesson on right-triangle ratios, general angles, special angles, identities and trig graphs, with corrected formulas and source evaluation.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T2-W08-TRIGONOMETRIC-RATIOS.md"
+      ],
+      "depends_on": [
+        "FM-WK-T2-W08"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W08-TRIGONOMETRIC-RATIOS]. 4 objectives; 12 questions; 35 marks. Coverage COV-FM-T2-W08-OBJ-1..3 and row R07 linked. Visual assets and ambiguous graph notation remain open. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement covers scheme objectives, corrected identities and quadrant rules, and includes keyed practice. Visual assets and ambiguous graph notation remain open; approval/verification pending."
     }
   ],
   "review": {
