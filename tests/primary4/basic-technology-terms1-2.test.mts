@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import packageData from '../../backend/src/db/primary4/researched/basicTechnologyTerms1And2.json' with { type: 'json' };
-import { getPrimary4SupplementRecords, resolvePrimary4SupplementApprovalIssues } from '../../backend/src/db/primary4/primary4Supplements.ts';
+import { getPrimary4SupplementRecords } from '../../backend/src/db/primary4/primary4Supplements.ts';
 import { resolvePrimary4SourceDelivery } from '../../backend/src/utils/primary4Delivery.ts';
 
 test('Basic Technology proposed First and Second Terms cover the missing NERDC topic areas', () => {
