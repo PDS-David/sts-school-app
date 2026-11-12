@@ -3008,9 +3008,10 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Tangency involving circles, arcs and lines.",
       "objective_locator": "WEEK TEN teaching row (parsed row 18), title “Tangency involving circles, arcs and lines.”; 8,427-character body SHA-256 e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863; original body SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863.",
-      "status": "PARTIAL",
+      "status": "SUPPORTED",
       "lesson_ids": [
-        "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863"
+        "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W10-TANGENCY"
       ],
       "evidence": [
         {
@@ -3020,6 +3021,10 @@
         {
           "locator": "Scheme coverage COV-TD-T2-SCH-W10; parsed scheme row 9, line 29; rule SS1-SRC-af4868d2c026-R012 classifies the scheme row SCHEME_ONLY.",
           "explanation": "The teaching row is the candidate source match for the Week 10 scheme objective. No source content is split or rewritten."
+        },
+        {
+          "locator": "TD-WK-W10.md records parsed row 18, stable body ID and body hash e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863; supplement SUP-SS1-TECHNICAL-DRAWING-T2-W10-TANGENCY.",
+          "explanation": "The original combined teaching row explicitly teaches tangency involving circles, arcs and lines, and is now bound to a dedicated tangency supplement. Construction-specific ambiguities, figures and source assessment keys remain separate open items."
         }
       ]
     },
@@ -3100,14 +3105,14 @@
     {
       "id": "TD-T2-W10-TEACHING-ROW-MAPPING",
       "kind": "CONTENT",
-      "detail": "Week 10 scheme objective “Tangency” is hash-accounted and classified SCHEME_ONLY, but the exact parsed-body identity and scope of the Week 10 teaching row are not recorded in current TD evidence. No lesson ID binding is confirmed.",
-      "required_action": "In TD-WK-W10, inspect the Week 10 source teaching row, record its parsed body SHA-256 and stable lesson ID, and bind COV-TD-T2-SCH-W10 only if the lesson actually teaches tangency. If not, retain the objective as unresolved and add a precise lesson follow-up.",
+      "detail": "Week 10 scheme objective “Tangency” is hash-accounted and classified SCHEME_ONLY, but the exact parsed-body identity and scope of the Week 10 teaching row are not recorded in current TD evidence. No lesson ID binding is confirmed. Resolved: TD-WK-W10.md records the exact parsed row 18 identity/body hash, and COV-TD-T2-W10-TANGENCY now binds the source row to the Week Ten tangency supplement.",
+      "required_action": "Retain the combined source row identity and verify the binding during teacher/content approval.",
       "affected_ids": [
         "COV-TD-T2-SCH-W10",
         "SS1-SRC-af4868d2c026-R012",
         "TD-WK-W10"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "TD-T2-W02-FIGURES",
@@ -3259,8 +3264,8 @@
     {
       "id": "TD-T2-W10-CONSTRUCTION-DETAILS",
       "kind": "CONTENT",
-      "detail": "The Week Ten row title confirms tangency involving circles, arcs and lines, but current repository evidence does not list the individual construction tasks, construction steps, dimensions, labels or exercises.",
-      "required_action": "Complete TD-FACT-W10-TANGENCY-CONSTRUCTIONS by inspecting the original teaching row and recording each tangency construction, geometry, dimensions, labels and exercise with exact source locators. Do not infer the tasks from the title.",
+      "detail": "The written Week Ten construction procedures and exact source locators are now inventoried in TD-FACT-W10-TANGENCY-CONSTRUCTIONS.md. Remaining factual gaps are the second-locus radius typo in the external two-circle construction, the incomplete final steps for the unequal-circle internal tangent, and complete dimension transcription from the assessment templates.",
+      "required_action": "Resolve the external-locus R1+R versus R1+r source discrepancy with the subject owner; recover the missing final steps for the unequal-circle internal tangent from the figure or author; transcribe every dimension from the original templates. Keep the source unchanged until approved.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863",
         "TD-FACT-W10-TANGENCY-CONSTRUCTIONS"
@@ -3270,8 +3275,8 @@
     {
       "id": "TD-T2-W10-FIGURES",
       "kind": "CONTENT",
-      "detail": "No figure-by-figure visual inventory or disposition is recorded for the Week Ten tangency lesson. The geometry of tangency constructions depends on accurate diagrams, radii, centres and contact points. A Week Ten teaching supplement and four keyed practice questions are now implemented; original construction templates and assessment diagrams still require faithful assets and review.",
-      "required_action": "Complete TD-VIS-W10 by inspecting every original figure, recording its purpose and exact dimensions/labels, and binding faithful assets with provenance or documenting precise exclusions.",
+      "detail": "The Week Ten visual inventory identifies 17 unique embedded source figures and 19 placements, with each figure's instructional purpose recorded in TD-VIS-W10.md. No faithful derivative has yet been committed or bound for the original source figures; six supplementary diagrams elsewhere in the package do not replace these source assets.",
+      "required_action": "Complete TD-ASSET-W10-F01 through F17: produce faithful allowed-MIME derivatives, verify dimensions/labels against the originals, record provenance/hash/bytes/alt text, and bind each derivative to the source lesson.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863",
         "TD-VIS-W10"
@@ -3281,8 +3286,8 @@
     {
       "id": "TD-T2-W10-ANSWER-KEYS",
       "kind": "CONTENT",
-      "detail": "The current repository evidence does not establish whether all Week Ten tangency evaluation/assignment tasks have complete answer keys and marking criteria.",
-      "required_action": "Complete TD-KEY-W10-ANSWERS after construction and figure inspection; provide original keyed construction steps and positive integer marking criteria for every unkeyed task.",
+      "detail": "A dedicated Week Ten supplement and four keyed practice items with marking criteria are implemented in TD-KEY-W10-ANSWERS.md. Original source evaluation questions for the template, spanner, machine part, R80 centre distances and tangent-type diagrams remain unkeyed until their source figures are bound and reviewed.",
+      "required_action": "Complete the remaining source assessment answer key after source figure derivatives are available; transcribe exact dimensions and label-dependent results and provide positive integer marking criteria for each original question.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863",
         "TD-KEY-W10-ANSWERS"
