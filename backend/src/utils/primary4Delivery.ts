@@ -73,8 +73,8 @@ const researchedRecords = new Map<string, ResearchedRecord>(
 );
 
 export type Primary4SourceDelivery =
-  | { source: 'primary4-export'; kind: 'matched'; topicId: number; text: string; sourceHash: string; reviewRequired: boolean; reviewFlag: ReviewFlag }
-  | { source: 'primary4-export'; kind: 'withheld'; topicId: number | null; text: string; reason: string };
+  | { source: 'primary4-export' | 'researched-package'; kind: 'matched'; topicId: number; text: string; sourceHash: string; reviewRequired: boolean; reviewFlag: ReviewFlag }
+  | { source: 'primary4-export' | 'researched-package'; kind: 'withheld'; topicId: number | null; text: string; reason: string };
 
 function isPrimary4(topic: Primary4Topic): boolean {
   return topic.school_code === 'primary' && normalize(topic.class_name) === 'primary 4';
@@ -95,8 +95,8 @@ export function resolvePrimary4SourceDelivery(topic: Primary4Topic): Primary4Sou
   const id = Number(topic.id);
   const topicId = Number.isSafeInteger(id) ? id : null;
   const source = typeof topic.source_reference === 'string' ? topic.source_reference : '';
-  const withheld = (reason: string): Primary4SourceDelivery => ({
-    source: 'primary4-export',
+  const withheld = (reason: string, source: 'primary4-export' | 'researched-package' = 'primary4-export'): Primary4SourceDelivery => ({
+    source,
     kind: 'withheld',
     topicId,
     text: '[PRIMARY 4 SOURCE WITHHELD] This topic is temporarily unavailable because its curriculum source is missing, changed or still awaiting approval and verification.',
@@ -128,18 +128,18 @@ export function resolvePrimary4SourceDelivery(topic: Primary4Topic): Primary4Sou
   const stableKey = /^CURRICULUM_KEY:\s*([^\s]+)/m.exec(source)?.[1];
   if (!stableKey) return withheld('No matching Primary 4 export or researched-package identity');
   const researched = researchedRecords.get(stableKey);
-  if (!researched) return withheld('Researched-package key is not registered');
+  if (!researched) return withheld('Researched-package key is not registered', 'researched-package');
   if (normalize(topic.subject_name) !== normalize(researched.subject) ||
       normalize(topic.term_label) !== normalize(researched.term) ||
       Number(topic.order_index) !== researched.order_index ||
       normalize(topic.title) !== normalize(researched.title)) {
-    return withheld('Researched-package topic identity differs from its registered lesson');
+    return withheld('Researched-package topic identity differs from its registered lesson', 'researched-package');
   }
   const sourceHash = sha256(source);
-  if (sourceHash !== researched.source_sha256) return withheld('Researched-package source hash mismatch');
-  if (pendingApproval(source)) return withheld('Researched lesson is pending owner approval and independent verification');
+  if (sourceHash !== researched.source_sha256) return withheld('Researched-package source hash mismatch', 'researched-package');
+  if (pendingApproval(source)) return withheld('Researched lesson is pending owner approval and independent verification', 'researched-package');
   return {
-    source: 'primary4-export',
+    source: 'researched-package',
     kind: 'matched',
     topicId: topicId!,
     text: source,
@@ -162,13 +162,14 @@ export function safePrimary4Topic<T extends Primary4Topic>(topic: T): T {
       summary: null,
       generated_assessment_id: null,
       description: 'This Primary 4 lesson is being checked. It will become available after its curriculum source is approved and verified.',
-      primary4_delivery: { status: 'withheld' },
+      primary4_delivery: { status: 'withheld', source: delivery.source },
     } as T;
   }
   return {
     ...topic,
     primary4_delivery: {
-      status: 'source-export-match',
+      status: delivery.source === 'primary4-export' ? 'source-export-match' : 'researched-package-match',
+      source: delivery.source,
       source_review_required: delivery.reviewRequired,
       source_review_flag: delivery.reviewFlag,
     },
