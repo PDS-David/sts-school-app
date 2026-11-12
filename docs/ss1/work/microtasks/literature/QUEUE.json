@@ -26,7 +26,8 @@
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "LIT-PRE-T1 (2026-10-30, master 4bdb581) indexed the 1st Term preamble: literature.json now has 13 source_rules (added SS1-SRC-470d43e54e5b-R002..R011, all SCHEME_ONLY) and 2 coverage entries (COV-LIT-T1-TITLE, COV-LIT-T1-SCHEME, both MARKER). Evidence: LIT-PRE-T1.md.",
     "LIT-WK-T1-W01 (2026-11-07) indexed Week 1 at objective level: three objectives SUPPORTED against the reproduced generic parsed-row id, four PARTIAL (the garbled line 49 sentence, the unreferenced Beowulf/Literature-In-English claims at line 55, and the two unkeyed Class Work questions), four blocking open items and one lesson item appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written.",
-    "LIT-COMPLETE-WORK-20261112: The uploaded original archive SSS 1-20260507T072431Z-3-001.zip was inspected. All three Literature DOCX members and their registered SHA-256 values match the source registry. The package now contains 27 authored student lessons (9 per term), 111 keyed practice questions and 418 marks; source-bound lesson coverage is mapped separately for each term. The 2nd and 3rd Term source files remain separate mappings because they are not byte-identical even though the extracted teaching text repeats. Owner instruction authorizes the canonical Literature-in-English alias and lesson content approval. Automated verification remains pending; no lesson is marked VERIFIED until CI checks pass. Copyrighted poem/play text is not reproduced in the supplements."
+    "LIT-COMPLETE-WORK-20261112: The uploaded original archive SSS 1-20260507T072431Z-3-001.zip was inspected. All three Literature DOCX members and their registered SHA-256 values match the source registry. The package now contains 27 authored student lessons (9 per term), 111 keyed practice questions and 418 marks; source-bound lesson coverage is mapped separately for each term. The 2nd and 3rd Term source files remain separate mappings because they are not byte-identical even though the extracted teaching text repeats. Owner instruction authorizes the canonical Literature-in-English alias and lesson content approval. Automated verification remains pending; no lesson is marked VERIFIED until CI checks pass. Copyrighted poem/play text is not reproduced in the supplements.",
+    "LIT-VERIFICATION-20261112: SS1 Literature verification workflow run 43136694378 passed all package and student-delivery tests and backend TypeScript build. Cross-subject source-anchor/compiler run 43136694358 passed; repository integrity/typecheck run 43136694330 passed. All 27 authored lessons carry VERIFIED package/delivery evidence. Independent teacher academic sign-off remains separately tracked and is not implied by automated verification."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -39,7 +40,8 @@
     "LESSON": 27
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 69,
+    "IMPLEMENTED_TESTING_DEFERRED": 14,
+    "VERIFIED": 55,
     "BLOCKED": 1
   },
   "items": [
@@ -352,7 +354,7 @@
         "LIT-FACT-T2-T3-RELATIONSHIP",
         "LIT-TEST-PACKAGE"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
       "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
     },
@@ -463,7 +465,7 @@
         "LIT-INV-T1",
         "LIT-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "Implemented 2026-11-07 (master 532270f): literature.json gained 7 source-anchored coverage entries for lines 37-99 (block SHA-256 b4ad59792cac040a9cab42eedeed7f3b2794837bb257e375b297a9a129a78518): COV-LIT-T1-W01-MEANING, -REASONS and -APPRECIATION SUPPORTED against the reproduced generic parsed-row id SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2; -SUBJECT, -ENGLIT-VS-LITENG, -CLASSWORK-Q1 and -CLASSWORK-Q2 PARTIAL; and 4 blocking open items (LITERATURE-T1-W01-COVERAGE, -MINORS-CORRECTION, -ENGLIT-CLAIMS, -CLASSWORK-KEYS). No source rule was added (the Week 1 row parses without one; the 'Class Work' marker text occurs 7 times and is left to LIT-MARK-T1). No lesson, correction or asset was written, no set text is named and no assignment marker exists in the span. Follow-up LIT-LES-T1-W01-CORRECTED-WEEK appended. Evidence: LIT-WK-T1-W01.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
     },
@@ -500,7 +502,7 @@
         "LIT-INV-T1",
         "LIT-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "Indexed 2026-11-08: source SS1-SRC-470d43e54e5b, member SHA-256 732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea; Week Two body lines107–181, block SHA-256 1e5bf5325a56d432b9630af84b6608064fdfe291b17eeb1bf837e339fdec00b2. Added objective-level coverage for three genres (PARTIAL, because this span teaches prose only), prose definition, five characteristics, seven prose-fiction elements, five novel types, three classwork questions (PARTIAL pending keyed follow-up), and source terminology “genie”/“muter” (preserved separately from corrected “genre”/“writer”). Bibliographic forms of the five novel types and examples were checked against catalog/library/university references and documented separately in LIT-WK-T1-W02.md; original source wording is not overwritten. Added open items for scheme/body scope and classwork keys, plus separate lesson task LIT-LES-T1-W02-PROSE. Poetry and drama are not invented here; source locates them later at lines381 and475. No set text invented. Approval PENDING; verification DEFERRED; tests not run. Separate lesson SUP-SS1-LITERATURE-T1-W02-PROSE and delivery correction CORR-LITERATURE-T1-W02-PROSE are now implemented; classwork key open item resolved. Genre scope mismatch remains open.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
     },
@@ -537,7 +539,7 @@
         "LIT-INV-T1",
         "LIT-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 187-243, block SHA-256 e37d851557183031e0ce5e9da84d4063403217849e96a98f848155529496566b; label `WEEK 3` 187, heading `FICTION AND NON-FICTION` 191 (the same heading recurs at 321, so it is not a unique anchor), `What is Friction?` 193, `Example of Friction` 197 with eight entries 199-215, `What is Non-Friction?` 219, `Examples of Non-Friction` 227 with four entries 229-235; marker `Class Work     ` 239 (trailing spaces) with questions 241 and 243. Findings recorded by LIT-INV-T1 that this item must settle: the week lists eight examples while 243 asks for `the 6 examples`; 201 splices the example into the definition; 205 claims `Jesus spoke or gave out 40 parables`; 215's `William Gowing` cannot be identified; 229 credits a Byron biography to `Marchland`; the fiction/non-fiction definitions are restated at 321-325 and must not be double-counted. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
     },
@@ -574,7 +576,7 @@
         "LIT-INV-T1",
         "LIT-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 249-283, block SHA-256 c702dce3f3654c5e65841498fd0757837b02da867ba0c5e1a6567670c4b9eebd; label `WEEK 4` 249, heading `ELEMENT OF PROSE` 253 (scheme row 13 adds `FICTION-PLOT,SETTING, NARRATIVE TECHNIQUE`), sections `Plot` 255, `Setting` 263, `Example` 265, `Narrative Technique` 267, `First person narrative point of view` 269, `Third person narrative essay of view` 271; marker `Class Work` 275 with questions 277-283. Findings recorded by LIT-INV-T1 that this item must settle: plot, setting and narrative technique were already tabulated at 139-153, so the week's fuller treatment must not be counted as new content twice; 265's Harry Potter example is truncated (`non-magical) wor with the “muggle” folks`) and must not be completed from memory; 271 says `essay` for person. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
     },
@@ -611,7 +613,7 @@
         "LIT-INV-T1",
         "LIT-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 289-369, block SHA-256 416b3b78cd59923af0277bf91297216978a9e645082849a47cc818e122fb9ea7; label `WEEK 5 & 6` 289 (scheme row 15 packs `WEEK 5&6: WHAT IS PROSE? TYPES OF PROSE`), heading `WHAT IS PROSE?` 293, sections `TYPE OF PROSE` 305 with six entries 307-317, `FICTION AND NON-FICTION` 321 with 323 and 325, `FEATURES OR CHARACTERISTICS OF PROSE` 329 with entries 331-349; markers `CLASS – WORK ` 353 with questions 355-361 and `ASSIGNMENT:` 365 with 367-369. Findings recorded by LIT-INV-T1 that this item must settle: the document gives no boundary between week 5 and week 6 and the scheme has one row for both, so this span covers both weeks and no split may be invented; 295 is one run-on paragraph whose glossary (AGONIST, MARCEAU, POT BOILER, EXEMPLUM, TALL STORY/FAIRY TALE, SARCASTIC HUMOUR, PARODY) is nonstandard in places; the prose and fiction material repeats weeks 2-3 (117-153, 193-235). Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
     },
@@ -648,7 +650,7 @@
         "LIT-INV-T1",
         "LIT-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 377-429, block SHA-256 5aaaf029f1ded1dbe6d8704ea8562e13d305928db13b7a5b9f93e2891e5739c8; label `WEEK 7` 377, heading `WHAT IS POETRY?` 381 (scheme row 17 says `WHAT IS POETRY? FEATURES OF   POETRY.`), definition and Wordsworth sentence 383-389, `Characteristics of poetry` 393 with seven entries 395-407; markers `CLASS-WORK ` 411 with questions 413-423 and `ASSIGNMENT:` 427 with 429. Findings recorded by LIT-INV-T1 that this item must settle: the Wordsworth wording at 387 (`an overflow of spontaneous emotions recaptured in tranquility`) is a loose rendering of the Preface to Lyrical Ballads and needs the primary text before it is quoted; 407 uses `Triplet` for what is usually a tercet; no poem text is supplied. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
     },
@@ -685,7 +687,7 @@
         "LIT-INV-T1",
         "LIT-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 437-465, block SHA-256 ca279c15c5003235e0d684fd7cfd00a0b4c9a2fa4b1c556bd5f91f5cd0a01f36; label `WEEK 8` 437, heading `DIFFERENT FORMS OF POETRY AND TYPES OF POETRY` 441, nine forms at 443-459 (Ballad 443, Elegy/Dirge 445, Didantic Poem 447, Epic 449, Narrative Poem 451, Ode 453, Chant 455, Incantation 457, Recitation 459); marker `Class Work` 463 with question 465. Findings recorded by LIT-INV-T1 that this item must settle: the form names, titles and author names are heavily garbled (443 `Literacy ballad` and `The rhyme of the Ancient Mariner`; 445 `Lycida`; 447 `Didantic` and `Essay an Nlan`; 449 `idaure`; 453 `Coffin’s` and `shally’s`; 455 `gciregorian` and `oew notes`) and must be attributed from a bibliographic source, not guessed; 465 asks the difference between `clergy` and an Epic; no poem is supplied. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
     },
@@ -722,7 +724,7 @@
         "LIT-INV-T1",
         "LIT-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 471-569, block SHA-256 4528c1a5b375db155daa875ac5123fc97ca1e99516a0cbbf73b337f4b9701270; label `WEEK 9` 471, heading `WHAT IS DRAMA` 475 (scheme row 21 adds `FEATURES OF DRAMA.`), definition 477, `Features of Drama` 481 with nine entries 483-499, `FORMS OF DRAMA` 503 with Tragedy 505, Comedy 507 and Tragic-Comedy 509, `Characterization:` 519, `Types of Character` 525 with five entries 527-535, the three ways to assess a character 537-543; markers `Class Work` 547 with 549-555 and `Assignment` 559 with 561-569. Findings recorded by LIT-INV-T1 that this item must settle: the week's own definitions need checking: 477's `penetration of life through artificial means`, 497's `Auditor` (a casting/audition practice), the unfinished `Soliloquies` entry at 499, and 533's definition of a minor character; 505 names `Macbeth` and `The God’s are not to be Blame by Ola-Rotimi`; no play text is supplied. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
     },
@@ -759,7 +761,7 @@
         "LIT-INV-T1",
         "LIT-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 575-603, block SHA-256 d75fcb4a083bab6e067caa95211695fa1f9d9868c9819cca7e40ee95cb6a2b14; label `WEEK 10` 575, heading `ORAL TRADITION OF LITERATURE` 579 (scheme row 23 says `ORAL FORMS OF LITERATURE.`), 581 defines oral tradition and orality, `Folklore` 583, `A Folklorist` 585; markers `Class Work` 589 with 591-595 and `Assignment ` 599 with 601-603. Findings recorded by LIT-INV-T1 that this item must settle: the scheme promises oral forms but the span describes none beyond naming folksongs and tales at 583, so the gap is recorded as missing content rather than filled by invention; 581 says `charts` for chants and `Ballade`; 583's `Folklore:Is a dictations stay ...` is garbled; no oral text is supplied. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
     },
@@ -870,7 +872,7 @@
         "LIT-INV-T2",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -907,7 +909,7 @@
         "LIT-INV-T2",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -944,7 +946,7 @@
         "LIT-INV-T2",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -981,7 +983,7 @@
         "LIT-INV-T2",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -1018,7 +1020,7 @@
         "LIT-INV-T2",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -1055,7 +1057,7 @@
         "LIT-INV-T2",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -1092,7 +1094,7 @@
         "LIT-INV-T2",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -1129,7 +1131,7 @@
         "LIT-INV-T2",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -1166,7 +1168,7 @@
         "LIT-INV-T2",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -1204,7 +1206,7 @@
         "LIT-SRC-T1",
         "LIT-WK-T1-W01"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "Not authored. Required by LIT-WK-T1-W01 (2026-11-07): line 49 has a garbled sentence, line 55 has unreferenced claims, and the two Class Work questions have no key. COV-LIT-T1-W01-SUBJECT, -ENGLIT-VS-LITENG, -CLASSWORK-Q1 and -CLASSWORK-Q2 are PARTIAL and the open items LITERATURE-T1-W01-COVERAGE, -MINORS-CORRECTION, -ENGLIT-CLAIMS and -CLASSWORK-KEYS block delivery. LIT-WK-T1-W01 authors no lesson text, answer or correction.",
       "completion_condition": "A lesson in literature.json teaches the Week 1 objectives, labels itself a Week 1 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance with dated references and PENDING content approval; a delivery_corrections entry binds the original lesson id and body hash to it; the PARTIAL coverage entries then cite it with evidence and any entry it does not fully cover stays PARTIAL; the two FACT items stay open until a teacher confirmation and an authoritative reference are recorded; no set text is invented or presented as prescribed; no source byte, schema or shared file is edited."
     },
@@ -1315,7 +1317,7 @@
         "LIT-INV-T3",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T3.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -1352,7 +1354,7 @@
         "LIT-INV-T3",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T3.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -1389,7 +1391,7 @@
         "LIT-INV-T3",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T3.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -1426,7 +1428,7 @@
         "LIT-INV-T3",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T3.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -1463,7 +1465,7 @@
         "LIT-INV-T3",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T3.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -1500,7 +1502,7 @@
         "LIT-INV-T3",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T3.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -1537,7 +1539,7 @@
         "LIT-INV-T3",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T3.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -1574,7 +1576,7 @@
         "LIT-INV-T3",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T3.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -1611,7 +1613,7 @@
         "LIT-INV-T3",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T3.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
@@ -1666,7 +1668,7 @@
       "depends_on": [
         "LIT-WK-T1-W02"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "implementation_reference": "Implemented 2026-11-08: added SUP-SS1-LITERATURE-T1-W02-PROSE to literature.json, body SHA-256 4629de5c8df332d27304d24f5ef2487b54144dd4289391ecbc045b284e5c284d; five objectives, seven keyed practice items, 33 total marks. Covers prose definition, five characteristics, seven prose-fiction elements, five novel types and all three source classwork questions. Bibliographic forms corrected and verified in LIT-WK-T1-W02.md; source wording retained separately. Delivery correction CORR-LITERATURE-T1-W02-PROSE binds source row SS1-SRC-470d43e54e5b:BODY:1e5bf5325a56d432b9630af84b6608064fdfe291b17eeb1bf837e339fdec00b2 to the replacement. Scheme/body poetry-drama mismatch remains open; no set text or copyrighted passage invented. Approval PENDING; verification DEFERRED; tests not run.",
       "completion_condition": "One original SS1 prose lesson with correct definition, five source characteristics, seven prose-fiction elements, five verified novel types, keyed classwork answers/marking, source-vs-corrected bibliography table, provenance and PENDING approval/DEFERRED verification. Poetry/drama scope mismatch remains separately recorded; no prescribed literary text is invented."
     },
@@ -1680,7 +1682,7 @@
         "LIT-WK-T1-W03",
         "LIT-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T1-W03 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1694,7 +1696,7 @@
         "LIT-WK-T1-W04",
         "LIT-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T1-W04 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1708,7 +1710,7 @@
         "LIT-WK-T1-W05-W06",
         "LIT-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T1-W05-W06 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1722,7 +1724,7 @@
         "LIT-WK-T1-W07",
         "LIT-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T1-W07 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1736,7 +1738,7 @@
         "LIT-WK-T1-W08",
         "LIT-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T1-W08 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1750,7 +1752,7 @@
         "LIT-WK-T1-W09",
         "LIT-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T1-W09 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1764,7 +1766,7 @@
         "LIT-WK-T1-W10",
         "LIT-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T1-W10 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1778,7 +1780,7 @@
         "LIT-WK-T2-W01",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T2-W01 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1792,7 +1794,7 @@
         "LIT-WK-T2-W02",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T2-W02 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1806,7 +1808,7 @@
         "LIT-WK-T2-W03",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T2-W03 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1820,7 +1822,7 @@
         "LIT-WK-T2-W04",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T2-W04 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1834,7 +1836,7 @@
         "LIT-WK-T2-W05",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T2-W05 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1848,7 +1850,7 @@
         "LIT-WK-T2-W06",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T2-W06 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1862,7 +1864,7 @@
         "LIT-WK-T2-W07",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T2-W07 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1876,7 +1878,7 @@
         "LIT-WK-T2-W08",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T2-W08 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1890,7 +1892,7 @@
         "LIT-WK-T2-W09",
         "LIT-SRC-T2"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T2-W09 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1904,7 +1906,7 @@
         "LIT-WK-T3-W01",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T3-W01 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1918,7 +1920,7 @@
         "LIT-WK-T3-W02",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T3-W02 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1932,7 +1934,7 @@
         "LIT-WK-T3-W03",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T3-W03 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1946,7 +1948,7 @@
         "LIT-WK-T3-W04",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T3-W04 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1960,7 +1962,7 @@
         "LIT-WK-T3-W05",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T3-W05 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1974,7 +1976,7 @@
         "LIT-WK-T3-W06",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T3-W06 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -1988,7 +1990,7 @@
         "LIT-WK-T3-W07",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T3-W07 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -2002,7 +2004,7 @@
         "LIT-WK-T3-W08",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T3-W08 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     },
@@ -2016,7 +2018,7 @@
         "LIT-WK-T3-W09",
         "LIT-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "status": "VERIFIED",
       "required_attachments": [],
       "evidence": "Student lesson SUP-SS1-LITERATURE-T3-W09 is present in backend/src/db/ss1/subjects/literature.json; all practice marks reconcile. Independent lesson verification remains deferred."
     }
