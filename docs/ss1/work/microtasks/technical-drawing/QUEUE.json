@@ -40,9 +40,9 @@
     "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 35,
+    "IMPLEMENTED_TESTING_DEFERRED": 36,
     "BLOCKED": 6,
-    "PENDING": 117
+    "PENDING": 116
   },
   "total": 158,
   "items": [
@@ -1608,8 +1608,8 @@
         "TD-WK-W04",
         "TD-VIS-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by TD-WK-W04 on 2026-11-08. Current package evidence confirms scale concepts and constructions but does not enumerate all ratios/ranges/dimensions/readings. Requires exact original source inspection.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12. Recorded all common ratios, five worked scale constructions, revision/evaluation ratios and lengths, source units, subdivisions, worked readings, X/Z ruler readings, objective answer calculations and visible pedestal dimensions with exact body-child locators in TD-FACT-W04-SCALE-DETAILS.md. Recomputed all scale lengths. Two source anomalies are explicitly preserved as blocking package open items: Q6 says millimetres although ten subdivisions represent decimetres at RF1:5; the gate's 2100/300 dimension ratio conflicts with the rendered preview, so A–E cannot be safely measured. The small OLE6 dimension labels remain unreadable. No source edits or guessed values. Package coverage for common ratios, construction and reading upgraded to SUPPORTED with reconciled evidence; package remains PENDING. No tests/compiler/importer/app verification.",
       "completion_condition": "Record every ratio, range, unit, dimension, label and reading with exact source locator and verified arithmetic; do not invent any value."
     },
     {
@@ -5470,13 +5470,13 @@
     "notes": "Reconciled queue metadata with live item statuses after Week 6–10 coverage updates; formal tests remain deferred."
   },
   "next_runnable": [
-    "TD-FACT-W04-SCALE-DETAILS",
     "TD-FACT-W05-SCALE-CONSTRUCTIONS",
     "TD-FACT-W08-W09-DETAILS",
     "TD-FACT-W10-TANGENCY-CONSTRUCTIONS",
     "TD-KEY-W01-ANSWERS",
     "TD-KEY-W02-ANSWERS",
     "TD-KEY-W03-ANSWERS",
+    "TD-KEY-W04-ANSWERS",
     "TD-ASSET-W01-F01",
     "TD-ASSET-W01-F02",
     "TD-ASSET-W01-F03",
@@ -5581,13 +5581,13 @@
     "TD-ASSET-W10-F17"
   ],
   "runnable_now": [
-    "TD-FACT-W04-SCALE-DETAILS",
     "TD-FACT-W05-SCALE-CONSTRUCTIONS",
     "TD-FACT-W08-W09-DETAILS",
     "TD-FACT-W10-TANGENCY-CONSTRUCTIONS",
     "TD-KEY-W01-ANSWERS",
     "TD-KEY-W02-ANSWERS",
     "TD-KEY-W03-ANSWERS",
+    "TD-KEY-W04-ANSWERS",
     "TD-ASSET-W01-F01",
     "TD-ASSET-W01-F02",
     "TD-ASSET-W01-F03",
