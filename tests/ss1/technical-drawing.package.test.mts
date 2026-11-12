@@ -114,6 +114,7 @@ test('Week Eight–Nine triangle dividers follow the source construction sequenc
   const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
   const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W08-W09-EQUAL-AREA');
   assert.ok(lesson, 'Week Eight–Nine equal-area lesson missing');
+  assert.match(lesson.body, /construct a semicircle on the altitude AC and divide AC into n equal parts/);
   assert.match(lesson.body, /Construct a semicircle on DB/);
   assert.match(lesson.body, /Through F draw a line parallel to CD/);
   assert.match(lesson.body, /Bisect AB to locate its midpoint D/);
