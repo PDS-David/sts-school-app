@@ -32,15 +32,15 @@
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
     "FACTUAL_DEPENDENCY": 1,
-    "SOURCE_PREAMBLE_INDEXING": 2,
-    "SOURCE_MARKER_DISPOSITION": 4,
-    "SOURCE_WEEK_INDEXING": 21,
+    "SOURCE_PREAMBLE_INDEXING": 3,
+    "SOURCE_MARKER_DISPOSITION": 6,
+    "SOURCE_WEEK_INDEXING": 32,
     "VISUAL_DISPOSITION": 2,
     "LESSON": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 6,
-    "PENDING": 31,
+    "IMPLEMENTED_TESTING_DEFERRED": 7,
+    "PENDING": 44,
     "BLOCKED": 1
   },
   "items": [
@@ -247,8 +247,8 @@
       "depends_on": [
         "GOV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12 from current master fb129ad5dbebc6941cf8908d035e2bb2fb453cb5. Verified uploaded archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact member SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc (228,352 bytes; SHA-256 04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e). Inspected the original .doc with Antiword 0.37: 1,551 extracted text lines, preamble/scheme/references lines 1–43, eleven consecutive teaching spans at lines 44–1551. First two spans both labelled WEEK TWO; scheme entry 1 is Fundamental Human Rights and no WEEK ONE label appears. Recorded eleven span hashes, scheme-only 12/13 Revision and Examination, assessment/reading/weekend/theory marker variants, parser findings, factual-review flags and secondary converted-document visual check in GOV-INV-T3.md. Appended fourteen PENDING follow-up items: GOV-PRE-T3, GOV-REV-T3, GOV-MARK-T3 and GOV-WK-T3-W01..W11. No package, coverage, source rule, lesson, correction or asset was written. No tests, typecheck, importer/compiler or device run; testing deferred by owner.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -1417,6 +1417,510 @@
       "status": "PENDING",
       "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
       "completion_condition": "The comparison table and source symbol/ordinal formatting each have a disposition; no image bytes or fabricated figure are committed, no asset is invented, and all source structure needed for faithful teaching is retained."
+    },
+    {
+      "id": "GOV-PRE-T3",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "term": "3rd Term",
+      "week_or_locator": "antiword 0.37 text lines 1–43; SHA-256 ede0cf7df2995e5726d445d631d2a0c87480b79abb3c4095604ab584a162fb92",
+      "objective": "Index the 3rd Term title/header, scheme and references. The preamble identifies THIRD TERM E-LEARNING NOTE, SUBJECT: GOVERNMENT and CLASS: SS 1 (lines 2–5); SCHEME OF WORK is lines 7–39; references are lines 41–43. Scheme entries 1–11 map in order to GOV-WK-T3-W01..W11. Preserve the anomaly: entry 1 is Fundamental Human Rights but its body span (lines 44–121) is labelled WEEK TWO; entry 2 is Citizenship and its body span (lines 122–230) is also labelled WEEK TWO. No WEEK ONE label occurs. Do not silently relabel either span. Cross-reference scheme row 12/13 Revision and Examination to GOV-REV-T3. Preserve the unusual 'ii. Rights of a citizen in a State.' continuation under scheme entry 2.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc",
+          "member_sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T3",
+        "GOV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
+    },
+    {
+      "id": "GOV-REV-T3",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "term": "3rd Term",
+      "week_or_locator": "antiword 0.37 text line 39: '12/13. Revision and Examination'; exact scheme row occurs once",
+      "objective": "Dispose the sole revision/examination marker: scheme row 12/13 at line 39. It occurs in the scheme only; no Week Twelve or Week Thirteen teaching span follows the eleven body sections. Record classify_marker kind SCHEME_ONLY when this item is executed. Preserve exact wording; do not create revision teaching, an examination paper or another lesson.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc",
+          "member_sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T3",
+        "GOV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
+    },
+    {
+      "id": "GOV-MARK-T3",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "term": "3rd Term",
+      "week_or_locator": "antiword 0.37 text lines 68, 85, 172, 193, 283, 303, 366, 438, 464, 518, 614, 671, 751, 791, 892, 977, 996, 1086, 1126, 1167, 1273, 1330, 1371, 1450, 1515; other marker lines in GOV-INV-T3.md",
+      "objective": "Dispose assessment and reading markers within teaching spans: 24 EVALUATION QUESTIONS headings plus one EVALUATION; ten full GENERAL EVALUATION/REVISION QUESTIONS plus one truncated GENERAL EVALUATION/ at line 1375; eleven reading-assignment headings with ASSIGNMENT/ASSINGMENT variants; eleven WEEKEND ASSINGMENT headings; ten THEORY headings and one misspelled THOERY at line 335. Keep these within their teaching sections; do not conflate in-week revision questions with scheme-only row 12/13. Preserve variants without normalizing source text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc",
+          "member_sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T3",
+        "GOV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
+    },
+    {
+      "id": "GOV-WK-T3-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "term": "3rd Term",
+      "week_or_locator": "antiword 0.37 text lines 44–121; exact label WEEK TWO (scheme entry 1); extracted-span SHA-256 56a766cf9063a77a3ffc249cecea8f30b9d9eebb02e9a7068c0b68eb6b459c34",
+      "objective": "Index 3rd Term teaching span W01. FUNDAMENTAL HUMAN RIGHTS; definition, rights listed in the source, and reasons for constitutional inclusion. The scheme calls this Week 1, but the body prints WEEK TWO. Read the complete span, map its matching scheme entry to objective-level coverage, retain source wording and review every assessment/reading/weekend/theory marker. Preserve exact source labels and the duplicated WEEK TWO anomaly. Review Nigerian constitutional/legal rights, citizenship, institutions and election-rule claims against dated primary authorities in later correction work. Keep Government neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc",
+          "member_sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T3",
+        "GOV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
+    },
+    {
+      "id": "GOV-WK-T3-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "term": "3rd Term",
+      "week_or_locator": "antiword 0.37 text lines 122–230; exact label WEEK TWO (scheme entry 2); extracted-span SHA-256 794ec054b76684c811ef3d05e9a53e07f275ac9c3c1f610a9039594e062d100f",
+      "objective": "Index 3rd Term teaching span W02. CITIZENSHIP; meaning, acquisition by birth/descent/registration/naturalization/honorary status/conquest, and stated ways of losing citizenship. Read the complete span, map its matching scheme entry to objective-level coverage, retain source wording and review every assessment/reading/weekend/theory marker. Preserve exact source labels and the duplicated WEEK TWO anomaly. Review Nigerian constitutional/legal rights, citizenship, institutions and election-rule claims against dated primary authorities in later correction work. Keep Government neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc",
+          "member_sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T3",
+        "GOV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
+    },
+    {
+      "id": "GOV-WK-T3-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "term": "3rd Term",
+      "week_or_locator": "antiword 0.37 text lines 231–338; exact label WEEK THREE; extracted-span SHA-256 a5fdd8fc95bebc2a59ba0915d39b7a3148c5673917d1b78dd1f5b5b7f2c345f9",
+      "objective": "Index 3rd Term teaching span W03. CITIZENSHIP; safeguarding rights, limitations to rights, and citizen/non-citizen differences. Read the complete span, map its matching scheme entry to objective-level coverage, retain source wording and review every assessment/reading/weekend/theory marker. Preserve exact source labels and the duplicated WEEK TWO anomaly. Review Nigerian constitutional/legal rights, citizenship, institutions and election-rule claims against dated primary authorities in later correction work. Keep Government neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc",
+          "member_sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T3",
+        "GOV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
+    },
+    {
+      "id": "GOV-WK-T3-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "term": "3rd Term",
+      "week_or_locator": "antiword 0.37 text lines 339–410; exact label WEEK FOUR; extracted-span SHA-256 9863f0415e77c00769a39fecddd3190f220dbbcb22dfdef941c8ce90cad1f42a",
+      "objective": "Index 3rd Term teaching span W04. CONSTITUTIONALISM; meaning, purposes/importance, and relationship between constitution and constitutionalism. Read the complete span, map its matching scheme entry to objective-level coverage, retain source wording and review every assessment/reading/weekend/theory marker. Preserve exact source labels and the duplicated WEEK TWO anomaly. Review Nigerian constitutional/legal rights, citizenship, institutions and election-rule claims against dated primary authorities in later correction work. Keep Government neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc",
+          "member_sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T3",
+        "GOV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
+    },
+    {
+      "id": "GOV-WK-T3-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "term": "3rd Term",
+      "week_or_locator": "antiword 0.37 text lines 411–557; exact label WEEK FIVE; extracted-span SHA-256 81409e9aa438a30231626080743682bdc96420db3826b4c4dd3d4a7f55502def",
+      "objective": "Index 3rd Term teaching span W05. PUBLIC OPINION; definition, features, formation, measurement, functions/merits and demerits. Read the complete span, map its matching scheme entry to objective-level coverage, retain source wording and review every assessment/reading/weekend/theory marker. Preserve exact source labels and the duplicated WEEK TWO anomaly. Review Nigerian constitutional/legal rights, citizenship, institutions and election-rule claims against dated primary authorities in later correction work. Keep Government neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc",
+          "member_sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T3",
+        "GOV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
+    },
+    {
+      "id": "GOV-WK-T3-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "term": "3rd Term",
+      "week_or_locator": "antiword 0.37 text lines 558–713; exact label WEEK SIX; extracted-span SHA-256 9f97e6fbb99bc5bc4941ac40b48d947efcd4d8253aa61e65233aa728a232998a",
+      "objective": "Index 3rd Term teaching span W06. PRESSURE GROUPS; meaning, types, functions, enabling/limiting factors, techniques and dangers. Read the complete span, map its matching scheme entry to objective-level coverage, retain source wording and review every assessment/reading/weekend/theory marker. Preserve exact source labels and the duplicated WEEK TWO anomaly. Review Nigerian constitutional/legal rights, citizenship, institutions and election-rule claims against dated primary authorities in later correction work. Keep Government neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc",
+          "member_sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T3",
+        "GOV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
+    },
+    {
+      "id": "GOV-WK-T3-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "term": "3rd Term",
+      "week_or_locator": "antiword 0.37 text lines 714–830; exact label WEEK SEVEN; extracted-span SHA-256 b5cab6670a880156a5a362205733537f5f5c08759bc82613931981b3d3400942",
+      "objective": "Index 3rd Term teaching span W07. POLITICAL PARTIES; meaning, types, importance/functions, and comparison with pressure groups. Read the complete span, map its matching scheme entry to objective-level coverage, retain source wording and review every assessment/reading/weekend/theory marker. Preserve exact source labels and the duplicated WEEK TWO anomaly. Review Nigerian constitutional/legal rights, citizenship, institutions and election-rule claims against dated primary authorities in later correction work. Keep Government neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc",
+          "member_sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T3",
+        "GOV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
+    },
+    {
+      "id": "GOV-WK-T3-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "term": "3rd Term",
+      "week_or_locator": "antiword 0.37 text lines 831–1035; exact label WEEK EIGHT; extracted-span SHA-256 f4ee10a23135ad118948b628f22c9fb0b60b3f5c39907f8dacd27d644b48a560",
+      "objective": "Index 3rd Term teaching span W08. PARTY SYSTEM; one-party, two-party and multi-party systems; features, merits/demerits and party manifesto. Read the complete span, map its matching scheme entry to objective-level coverage, retain source wording and review every assessment/reading/weekend/theory marker. Preserve exact source labels and the duplicated WEEK TWO anomaly. Review Nigerian constitutional/legal rights, citizenship, institutions and election-rule claims against dated primary authorities in later correction work. Keep Government neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc",
+          "member_sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T3",
+        "GOV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
+    },
+    {
+      "id": "GOV-WK-T3-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "term": "3rd Term",
+      "week_or_locator": "antiword 0.37 text lines 1036–1203; exact label WEEK NINE; extracted-span SHA-256 8be9514882ea201da7509c5da287d9e62331078e321ed445589502ddd9ed19b4",
+      "objective": "Index 3rd Term teaching span W09. FRANCHISE; limited/restricted and universal adult suffrage, merits/demerits, suffrage types and candidate eligibility. Read the complete span, map its matching scheme entry to objective-level coverage, retain source wording and review every assessment/reading/weekend/theory marker. Preserve exact source labels and the duplicated WEEK TWO anomaly. Review Nigerian constitutional/legal rights, citizenship, institutions and election-rule claims against dated primary authorities in later correction work. Keep Government neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc",
+          "member_sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T3",
+        "GOV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
+    },
+    {
+      "id": "GOV-WK-T3-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "term": "3rd Term",
+      "week_or_locator": "antiword 0.37 text lines 1204–1410; exact label WEEK TEN; extracted-span SHA-256 1e6415f8e03eb9f6f9ff71d3908fd46d3728dd37bd1d109851e8a99e2c8ca71c",
+      "objective": "Index 3rd Term teaching span W10. ELECTORAL SYSTEM; plurality, absolute-majority, alternative and proportional-representation systems. Read the complete span, map its matching scheme entry to objective-level coverage, retain source wording and review every assessment/reading/weekend/theory marker. Preserve exact source labels and the duplicated WEEK TWO anomaly. Review Nigerian constitutional/legal rights, citizenship, institutions and election-rule claims against dated primary authorities in later correction work. Keep Government neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc",
+          "member_sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T3",
+        "GOV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
+    },
+    {
+      "id": "GOV-WK-T3-W11",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "term": "3rd Term",
+      "week_or_locator": "antiword 0.37 text lines 1411–1551; exact label WEEK ELEVEN; extracted-span SHA-256 0d0def3386eb6f0873264fec10183fe334c38e912daa9a9f660053247d6c9637",
+      "objective": "Index 3rd Term teaching span W11. ELECTORAL CONSTITUENCY; meaning, delimitation factors, types, single-member constituency merits/demerits and delimitation problems. Read the complete span, map its matching scheme entry to objective-level coverage, retain source wording and review every assessment/reading/weekend/theory marker. Preserve exact source labels and the duplicated WEEK TWO anomaly. Review Nigerian constitutional/legal rights, citizenship, institutions and election-rule claims against dated primary authorities in later correction work. Keep Government neutral and separate from Civic Education.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc",
+          "member_sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T3.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T3",
+        "GOV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
     }
   ],
   "review": {
@@ -1432,7 +1936,6 @@
     }
   },
   "next_runnable": [
-    "GOV-INV-T3",
     "GOV-TEST-PACKAGE",
     "GOV-PRE-T1",
     "GOV-REV-T1",
@@ -1462,6 +1965,20 @@
     "GOV-WK-T2-W09",
     "GOV-WK-T2-W10",
     "GOV-WK-T2-W11",
-    "GOV-VIS-T2"
+    "GOV-VIS-T2",
+    "GOV-PRE-T3",
+    "GOV-REV-T3",
+    "GOV-MARK-T3",
+    "GOV-WK-T3-W01",
+    "GOV-WK-T3-W02",
+    "GOV-WK-T3-W03",
+    "GOV-WK-T3-W04",
+    "GOV-WK-T3-W05",
+    "GOV-WK-T3-W06",
+    "GOV-WK-T3-W07",
+    "GOV-WK-T3-W08",
+    "GOV-WK-T3-W09",
+    "GOV-WK-T3-W10",
+    "GOV-WK-T3-W11"
   ]
 }
