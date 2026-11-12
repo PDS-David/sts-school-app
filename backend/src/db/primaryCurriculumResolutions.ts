@@ -130,11 +130,13 @@ export function resolvePrimarySubjectName<T extends { name: string; fallback: bo
 
 export function applyPrimarySourceTextResolution(basename: string, text: string): string {
   if (basename === 'PRY 4 CCA First term E.docx') {
-    // This reviewed source contains the complete Week 1-14 sequence followed
-    // by a second embedded copy beginning at "WEEK: 1". Keep the first,
-    // complete sequence only. This is exact-source cleanup, not parser logic.
-    const repeatedSequence = /\n\s*WEEK:\s*1\b/i.exec(text);
-    if (repeatedSequence?.index !== undefined) return text.slice(0, repeatedSequence.index);
+    // This source begins with a scheme-of-work outline, then switches to the
+    // detailed lesson notes at the first explicit "WEEK: 1" heading. The old
+    // projection kept only the outline by slicing the text before that marker.
+    // Retain the detailed section instead; the outline remains in the source
+    // archive and is not emitted as a separate learner lesson.
+    const detailedLessons = /\n\s*WEEK:\s*1\b/i.exec(text);
+    if (detailedLessons?.index !== undefined) return text.slice(detailedLessons.index).trimStart();
     return text;
   }
 
