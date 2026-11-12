@@ -29,7 +29,8 @@
     "2026-11-12 follow-through: added Week Ten tangency supplement SUP-SS1-TECHNICAL-DRAWING-T2-W10-TANGENCY, bound it to COV-TD-T2-W10-TANGENCY-SUPPLEMENT, and added TD-KEY-W10-ANSWERS.md with four keyed practice items (9 marks). Recorded the source's lower R20 tangency feasibility conflict as a blocking factual open item; no guessed correction.",
     "2026-11-12 follow-through: added a separate Week Seven reduction supplement because the existing Week Six enlargement lesson did not fully teach the reduction material in the combined Week Six–Seven source row. Bound it to Week 6/7 reduction and scheme coverage. Also bound the Week Ten scheme row to the Week Ten tangency supplement. Original figure derivatives and source assessment keys remain outstanding.",
     "Source figure extraction: 104 bounded TD-ASSET tasks registered against the original archive. PNG/JPEG parts copied byte-for-byte; 16 WMF previews rendered to cropped 2400px PNG; two cross-row duplicates reuse the Week Three triangle source asset. Figure verification and reuse rights approval remain deferred/pending.",
-    "2026-11-12 source-asset generation commit a2888bbc: all 104 TD-ASSET tasks are now materialized and registered as 104 asset bindings backed by 102 committed files. PNG/JPEG source media was copied byte-for-byte; 16 WMF previews were converted to cropped 2400px PNG; two documented duplicate triangles reuse the Week Three derivative. The 16 WMF outputs were reviewed in a contact sheet for clipping/obvious rendering faults; per-figure label/dimension review, student rendering and rights/content approvals remain deferred."
+    "2026-11-12 source-asset generation commit a2888bbc: all 104 TD-ASSET tasks are now materialized and registered as 104 asset bindings backed by 102 committed files. PNG/JPEG source media was copied byte-for-byte; 16 WMF previews were converted to cropped 2400px PNG; two documented duplicate triangles reuse the Week Three derivative. The 16 WMF outputs were reviewed in a contact sheet for clipping/obvious rendering faults; per-figure label/dimension review, student rendering and rights/content approvals remain deferred.",
+    "2026-11-12: native-resolution inspection of Week Ten original figures image88–image104 completed; fact inventory now includes figure dimensions and answerable weekend tasks. Added package-to-manifest-to-queue regression test for all 104 source figure bindings. The two known source-method defects remain explicit, not silently repaired. Package and source-asset CI runs on PR #637 currently require workflow authorization."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 1,
@@ -45,9 +46,9 @@
     "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 146,
-    "BLOCKED": 5,
-    "IN_PROGRESS": 7
+    "IMPLEMENTED_TESTING_DEFERRED": 149,
+    "BLOCKED": 3,
+    "IN_PROGRESS": 6
   },
   "total": 158,
   "items": [
@@ -1388,8 +1389,8 @@
       "depends_on": [
         "TD-SRC-T2"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "No Technical Drawing test exists. Testing is deferred by owner until SS1-09; nothing is written or run by this queue.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added tests/ss1/technical-drawing.package.test.mts covering package schema, unique lesson/practice IDs, body hashes, marking totals, Week 7–10 coverage bindings and registered supplemental SVG integrity. CI execution is pending workflow authorization.",
       "completion_condition": "Written and run only in the authorised later stage."
     },
     {
@@ -1410,8 +1411,8 @@
         "TD-SCOPE-AUTHORING-FINISH",
         "TD-TEST-PACKAGE-NEW"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Deferred by owner; implementation, approval and verification are separate stages.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added tests/ss1/technical-drawing.source-assets.test.mts covering all 104 source asset files, actual byte counts/SHA-256, package-to-manifest-to-queue one-to-one reconciliation, source reuse mappings and supported scheme-week bindings. CI execution is pending workflow authorization.",
       "completion_condition": "Run only in the later authorised verification stage."
     },
     {
@@ -1885,8 +1886,8 @@
         "TD-WK-W10",
         "TD-VIS-W10"
       ],
-      "status": "IN_PROGRESS",
-      "implementation_reference": "Work note docs/ss1/work/microtasks/technical-drawing/TD-FACT-W10-TANGENCY-CONSTRUCTIONS.md now records all written tangent-arc and common-tangent procedures, source locators, known textual dimensions and assessment prompts from the re-extracted DOCX (registered member hash matched). Closure is withheld because the unequal-circle internal-tangent method ends mid-procedure in the source and numeric dimension callouts on four template figures still need transcription; an apparent R1+R/R1+r inconsistency is also flagged.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Source row 18 written construction steps, all 19 DrawingML placements/17 unique figures, assessment templates and weekend figures image88–image104 have been inventoried. Native-resolution callouts and weekend Q1–Q6 outcomes are transcribed in TD-FACT-W10-TANGENCY-CONSTRUCTIONS.md. The two original-source defects (R1+R repeated for second circle; incomplete unequal-circle internal tangent steps) remain explicitly recorded as source gaps. Implementation complete; source/figure verification and owner correction remain deferred.",
       "completion_condition": "Record every tangency construction with exact source locator, dimensions, labels, centres/radii/contact points and exercise references; no inferred constructions."
     },
     {
