@@ -44,3 +44,9 @@ The source's other Week Six–Seven construction/evaluation items depend on orig
 ## Verification boundary
 
 No teacher approval, schema/compiler/importer run, student rendering, or deployment is claimed in this note.
+
+## Source enlargement evaluation
+
+The combined row's enlargement evaluation asks for a regular pentagon of side 30 mm enlarged in the linear ratio 3:2 (image : original). The scale factor is 3/2=1.5, so each image side is 30×1.5=**45 mm** and the image perimeter is 5×45=**225 mm**. The five interior angles remain 108°; the figure is similar to the original. A centre-of-enlargement construction should use rays through the five original vertices and proportional division 3:2, then join corresponding image vertices.
+
+The source's general revision task also contains a pentagon with AB=40, BC=35, CD=65, AE=45, ED=55, ∠ABC=120° and ∠BAE=105°, followed by an area reduction 3:5. The polygon must first be constructed using the two stated angles and the five side lengths. The area-reduction linear factor is √(3/5)≈0.7746; each corresponding side of the reduced similar polygon is multiplied by that factor. The final measured area/side coordinates depend on the correct intersection branch in the source construction and should be checked against the original drawing before marking.

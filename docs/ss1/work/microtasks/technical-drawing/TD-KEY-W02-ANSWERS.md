@@ -1,31 +1,31 @@
 # TD-KEY-W02-ANSWERS — Week Two keyed constructions
 
-**Status:** IN PROGRESS — construction supplement added; final source-figure-dependent assessment key and rendering verification remain open.
+**Status:** PARTIAL — student supplement and source-backed calculations implemented; two source assessment defects remain.
 
-## Package implementation
+## Verified construction and numerical keys
 
-The independently authored student lesson is now in `backend/src/db/ss1/subjects/technical-drawing.json`:
+1. **Escribed circle on triangle 55, 60, 50 mm.** Construct the SSS triangle by intersecting arcs. Semiperimeter s=82.5 mm; Heron area Δ≈1,288.03 mm². Exradii are Δ/(s−55)=46.84 mm, Δ/(s−60)=57.25 mm and Δ/(s−50)=39.63 mm. For the selected excentre, bisect the two exterior angles, drop a perpendicular to the corresponding side line and draw the circle.
+2. **Escribed circles on a regular 50 mm-side hexagon.** Construct the regular hexagon, extend the relevant side lines, bisect adjacent exterior angles to locate each excentre, and use the perpendicular distance to a side line as radius. A regular hexagon has six congruent exscribed-circle configurations by symmetry; the exact circle requested should be identified from the source figure.
+3. **Circle through A and tangent to line at R.** The centre lies on the perpendicular to the tangent at R and on the perpendicular bisector of chord AR. Their intersection is O; draw radius OR. This verifies OA=OR and OR ⟂ tangent.
+4. **Circle through two points and tangent to a line.** The centre lies on the perpendicular bisector of the chord joining the two given points and on the perpendicular to the tangent at its contact point. The source's semicircle construction is a geometric method to locate the intersection; the final circle is centred at O with radius to either given point/contact.
+5. **Circle diameter 35 mm.** Circumference = πd = 35π ≈ **109.96 mm**.
 
-- Lesson ID: `SUP-SS1-TECHNICAL-DRAWING-T2-W02-KEYED-CONSTRUCTIONS`
-- Five keyed practice items with positive-integer marks and criterion-level marking.
-- Bound to the four Week Two coverage entries for triangle/polygon escribed circles and tangent-circle constructions.
-- Package state remains approval pending and verification deferred.
+## Source evaluation and weekend questions
 
-## Source-backed solutions included
+- Evaluation Q1: exscribed circle on the 55/60/50 mm triangle — use the construction and exradii above.
+- Evaluation Q2: regular hexagon of side 50 mm — use the sixfold-symmetry method above; the source asks for a description rather than a single numerical radius.
+- Weekend Q1: **C — bisect two external angles**. An excentre is the intersection of two external angle bisectors (with the corresponding internal bisector for the chosen excentre).
+- Weekend Q2: the source diagram (image10) labels multiple centre/radius lines; the radius is any segment from the excentre to its tangency point, perpendicular to the tangent side. The option cannot be keyed uniquely from the low-resolution label overlap; retain the figure and require the learner to identify the perpendicular radius rather than guessing a letter.
+- Weekend Q3: the image depicts a circle through two given points and tangent to a straight line; the supplied answer options classify circle types but do not precisely name this construction. The source item is malformed and should be corrected by the author.
+- Weekend Q4: **ambiguous single-answer MCQ**. Both B (“bisect two sides”) and C (“draw a line from the determined centre parallel to one side”) are not valid required steps for an escribed circle; the perpendicular from the centre to a side is required. Accept B or C only if the assessment is revised to permit multiple answers.
+- Weekend Q5: **B — right-angled**. Since AB is a diameter and C lies on the circumference, ∠ACB=90° (angle in a semicircle).
 
-1. Escribed circle on the 55 mm, 60 mm, 50 mm triangle. Heron area is approximately 1,288.03 mm²; semiperimeter 82.5 mm; exradii approximately 46.84 mm, 57.25 mm and 39.63 mm.
-2. Escribed circles on a regular 50 mm-side hexagon, with exterior-angle bisectors and perpendicular radii.
-3. Circle through a given point and tangent to a line at that point, using the tangent perpendicular and chord perpendicular bisector.
-4. Centre constraints for a circle through two points and tangent to a line.
+## Missing source figure and remaining limitations
 
-## Remaining source questions
+General Evaluation Q4 (body child 286) asks for a line equal to an arc “shown below”, but the supplied DOCX/PDF has no such arc attached. The separate VML arc at child 287 belongs to Example 2 and is not the missing figure. Do not substitute it. The original author must supply the missing arc or replace the item with a fully dimensioned one.
 
-- The source evaluation task at body children 260–265 has incomplete/ambiguous point wording and references a figure. The intended given points and tangent line must be confirmed from the original figure before a unique numerical construction key is approved.
-- The second tangent-circle evaluation at 265–266 explicitly delegates the geometry to a missing figure and asks the student to choose suitable positions. The supplement states the invariant centre constraints, but the figure-specific worked drawing remains outstanding.
-- Weekend objective Q2 (body child 304) depends on an uninspected diagram; its radius label must not be guessed.
-- Weekend objective Q4 (children 311–313) presents multiple statements that may be non-procedures. The exact intended single answer must be resolved against the source figure/author rather than forcing a speculative key.
-- The source textbook reading assignment is cited only; no textbook pages are reproduced or claimed as inspected.
+The source questions that say “choose suitable positions” are open constructions, not fixed numerical-answer questions. Their marking should assess the centre constraints and perpendicular radius, not invented point coordinates.
 
 ## Verification boundary
 
-The supplement is source-linked and the package schema shape was inspected. No schema test, compiler/importer, student rendering or deployment check has been run. Source figure bindings and teacher approval remain pending.
+The nine original Week Two figure assets are registered and integrity-tested. No missing figure is invented. Teacher approval and student rendering remain outstanding.

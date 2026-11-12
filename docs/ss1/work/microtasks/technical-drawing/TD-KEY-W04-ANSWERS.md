@@ -1,33 +1,30 @@
 # TD-KEY-W04-ANSWERS — Week Four plain-scale solutions
 
-**Status:** IN PROGRESS — the student lesson and eight marked practice items are implemented; diagram-dependent answers and two source conflicts remain.
+**Status:** PARTIAL — all source-text numerical constructions and answerable objective items are keyed. Figure-dependent readings and the unit mismatch remain open.
 
-## Package implementation
+## Verified scale calculations
 
-- Lesson: `SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES`
-- Includes RF definitions, all source construction ratios/ranges, calculation steps, unit conversions, main/subdivided graduations, worked values X=280 mm and Y=130 mm, and independent marking criteria.
-- Coverage bindings: all six Week Four plain-scale objective entries.
-
-## Verified numerical solutions
-
-- RF 1:2.5, range 400 mm: 160 mm scale; four 40 mm divisions; ten 4 mm subdivisions in the first division.
-- 2 cm = 1 m, range 6 m: RF 1:50; 120 mm scale; six 20 mm divisions; ten decimetre subdivisions.
-- 3 cm = 1 dm, range 4 dm: RF 3:10; 120 mm scale; four 30 mm divisions; ten centimetre subdivisions.
-- 1.5×, range 8 cm: 120 mm scale; eight 15 mm divisions; ten millimetre subdivisions.
-- RF 1:3, range 4 dm: 133.33 mm overall scale length. The source's prose for the first step is abbreviated; the RF/range calculation controls the scale length.
+- RF 1:2.5, maximum 400 mm: scale length 160 mm; four 40 mm main divisions (100 mm each); ten 4 mm subdivisions in the first division (10 mm each).
+- 2 cm represents 1 m, maximum 6 m: RF 1:50; scale length 120 mm; six 20 mm main divisions; ten decimetre subdivisions in the first main division.
+- 3 cm represents 1 dm, maximum 4 dm: RF 3:10; scale length 120 mm; four 30 mm main divisions; ten centimetre subdivisions.
+- 1.5× full size, maximum 8 cm: scale length 120 mm; eight 15 mm divisions; ten millimetre subdivisions.
+- Source 1:3 scale, maximum 4 dm: mathematically consistent RF/range gives 400/3=133.33 mm. Source method's abbreviated instruction is flagged; do not silently substitute a different scale.
 - 6.50 km at 1:500: 13 m = 13,000 mm.
-- Revision: 4 cm = 2 dm, range 5 dm gives RF 1:5 and 100 mm scale.
-- Revision: 2.5×, range 6 cm gives 150 mm scale.
-- Revision: RF 1:4, range 7 dm gives 175 mm scale.
+- Revision: 4 cm represents 2 dm, maximum 5 dm: RF 1:5; length 100 mm.
+- Revision: 2.5× full size, maximum 6 cm: length 150 mm.
+- Revision: 1:4, maximum 7 dm: length 175 mm.
+- Weekend Q2: 3 m at 1:50 = **60 mm**.
+- Weekend Q3: a plain scale has **two** units of measurement.
+- Weekend Q4: standard mathematical set rulers are full-size **1:1** rulers (option B).
+- Weekend Q5: **3:4** is not an enlargement scale because image:original is less than 1 (option B).
 
-## Unresolved source-dependent items
+## Figure-dependent items
 
-- Weekend objective Q1's X/Z values depend on the original scale figure; it must be bound as an asset and read visually before a definitive option is marked.
-- The 1:2 gate exercise (body child 830 onward) requires the original figure and its dimensions.
-- The ornamental gate exercise gives only 2100 mm and 300 mm and asks for A–E; the native AutoCAD drawing or corrected dimensioned export is required. Existing open item `TD-T2-W04-GATE-SCALE-RECONCILIATION` remains blocking.
-- The source question about a 1:3 scale (body children 781–785) has compressed wording; the supplement uses the mathematically consistent RF/range length 133.33 mm and flags the source wording.
-- Q6's unit mismatch remains an owner/source-author decision under `TD-T2-W04-Q6-UNIT-MISMATCH`.
+- Source worked example gives X=280 mm and Y=130 mm for the 1:2.5 scale. Weekend Q1 / image42 (two plain scales): top scale reads X=85 mm (80 mm main reading + 5 mm left subdivision); lower scale reads Z=370 mm (300 mm main reading + 70 mm left subdivision). Correct option: **C — 85 mm and 370 mm**.
+- Weekend theory Q1 (1:2 drawing) and the 1:2 gate exercise must use the source figure dimensions, not a proportional guess from extracted text.
+- Ornamental gate: source provides overall length 2100 mm and post width 300 mm, but the WMF preview's proportions conflict with the stated ratio. The A–E dimensions cannot be safely measured until a corrected native drawing/export is supplied.
+- Evaluation Q6: source says 20 cm represents 1 m and requests millimetre subdivisions up to 6 m. At RF 1:5, a 1 mm actual subdivision would be 0.2 mm on paper, requiring 1,000 divisions per metre. Ten subdivisions instead represent decimetres. The source likely confuses millimetres and decimetres, but only the author can approve a correction.
 
 ## Verification boundary
 
-No source figure is guessed. Package state remains pending; content approval and runtime verification are deferred. No test, compiler/importer, student-display or deployment result is claimed.
+The nine Week Four AutoCAD/WMF figures have been extracted, converted and registered; the source-asset regression test verifies their output bytes. Visual measurement and answer-key verification of the gate and X/Z diagram remain deferred. Teacher approval and student rendering remain outstanding.

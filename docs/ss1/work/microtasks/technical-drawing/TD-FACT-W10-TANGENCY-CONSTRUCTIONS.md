@@ -81,3 +81,35 @@ The visual inventory `TD-VIS-W10.md` identifies each figure and exact placement;
 - Transcribed all written construction procedures, locators, textual dimensions and question prompts.
 - Matched the 17 unique visual assets and 19 placements to `TD-VIS-W10.md`.
 - Did not execute OLE objects, complete the image-dimension transcription, create SVG derivatives, create answer keys, run schema/tests/compiler/importer, verify app display, or claim approval/deployment.
+
+
+## Figure callout inspection — original media opened at native resolution
+
+The original embedded PNGs image88–image104 were extracted from the registered DOCX and inspected individually or in a labelled contact sheet. The committed byte-for-byte source assets preserve the same image data; the following transcriptions supplement the existing visual inventory.
+
+### Dimensioned templates
+
+- **image96.png (evaluation 1a / theory 1):** two unequal circles joined by upper and lower arcs; left circle R44, right circle R32, joining arcs R50 (upper) and R50 (lower), centre spacing 100 mm. The source labels arc radii at the callout arrows; use the dimension arrows, not the apparent drawing scale.
+- **image97.png (evaluation 2 / theory 2, spanner):** radii called out R40, R30, R23, R20, R53 and R55; handle width 34 mm; a 30° angular construction is shown at the head. The exact radii must remain attached to their individual leader arrows in the original image.
+- **image98.png (evaluation 3, machine part):** two holes Ø16; central bore Ø50; central boss Ø102; overall horizontal width 64 mm; radii include R16, R26, R38, R50 and R60; additional small boss/hole callouts are printed in the original raster. The source specifies half-full-size drawing. The raster must remain the controlling reference for those smaller callouts rather than retyping uncertain low-resolution digits.
+- **image99.png (evaluation 4):** left circle Ø100; centre spacing 150 mm; vertical offset 20 mm; joining/fillet radii R20, R45, R25 and R2. The lower and upper connecting profiles are tangent arcs.
+- **image100.png (weekend Q1):** the line X–X is a common internal tangent: it touches the upper-left circle and the right-hand circle on opposite sides of their centre line. It is not a perpendicular bisector or a normal.
+- **image101.png (weekend Q2):** two given circles of radii Rx and Ry with a larger arc centred at O; the diagram labels the centre distances Rc and Rz and the arc radius Rp. For the lower circle the external-contact radius relation is **Rz = Rp + Ry**. The corresponding option is the statement 'Rp + Ry = Rz'. The upper construction has its own centre-distance relation and must not be conflated with the lower one.
+- **image102.png (weekend Q3/Q4):** left circle radius 25 mm, right circle radius 22 mm, joining arc radius 80 mm. For external tangency, PO = 80 + 25 = **105 mm** and QO = 80 + 22 = **102 mm**. Therefore the correct ordered pair is **105, 102**; the joining arc is **externally tangent** to both circles.
+- **image103.png (weekend Q5):** two circles on a common horizontal centre line, centre spacing 80 mm; left outside diameter Ø40 and bore Ø20; right outside diameter Ø70 and bore Ø20. The upper and lower joining arcs are each R120 and are externally tangent to the two outside circles. The bores are not the tangency references.
+- **image104.png (weekend Q6 composite):** four independent tangency profiles. Top-left: R50 and R20 with 65 mm horizontal span. Top-right: R35 and two R12 fillets with 40 mm span. Middle-left: R25, R40, R12 and R80 with 50 mm span. Middle-right: R30, R35 and R6 with 45 mm span and 6 mm vertical offset. Bottom-left: R22, R55, R12 and R85 with 75 mm span and 10 mm vertical offset. Bottom-right: radii R100, R8, R9, R6, R105, R140 and R15; base length 112 mm, overall height 100 mm and 25 mm base thickness. All six subprofiles are distinct; do not collapse the composite into one construction.
+
+### Weekend answer key (figure-backed)
+
+1. Q1 / image100: **common internal tangent**.
+2. Q2 / image101: **Rp + Ry = Rz** for the lower circle's external contact.
+3. Q3 / image102: **PO = 105 mm; QO = 102 mm**.
+4. Q4 / image102: **external tangency**.
+5. Q5 / image103: two **external tangent joining arcs**, R120, joining the Ø40 and Ø70 outside circles at 80 mm centre spacing.
+6. Q6 / image104: construction identification is by six independent profiles and their callout radii as transcribed above; any multiple-choice letter must be taken from the original question's option ordering, not inferred from this visual key.
+
+## Remaining limitations
+
+- The small print on image98 and several image104 leader-arrow endpoints are low resolution. The exact original raster is bound and retained for the student to zoom; the uncertain micro-callouts are not independently retyped as authoritative values.
+- The final tangent line for the unequal-circle internal tangent construction (image95 / children 1793–1797) is absent from the written source steps. The image shows the intended tangent direction, but the source procedure still needs a corrected, fully stated step sequence approved by the subject owner.
+- The repeated R1+R locus for the second circle in child 1654 remains a source typo pending correction. The mathematically correct locus is R1+r, but the source wording is retained in the package and flagged.
