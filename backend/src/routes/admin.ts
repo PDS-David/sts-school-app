@@ -6,6 +6,7 @@ import { audit } from '../utils/audit.js';
 import { sendAdminLogEmail } from '../utils/email.js';
 import * as XLSX from 'xlsx';
 import { generateTempPassword, generateNumericPin } from '../utils/password.js';
+import { getBackupStatus, runBackup, BackupConfigError } from '../utils/backup.js';
 
 const router = Router();
 router.use(requireAuth, requireRole('admin'));
@@ -464,6 +465,29 @@ router.get('/class-codes', async (req, res) => {
   sql += ' ORDER BY cc.school_code, cc.class_name';
   const { rows } = await query(sql, params);
   return res.json({ class_codes: rows });
+});
+
+// ══════════════════════════════════════════
+// DATABASE BACKUP (encrypted, emailed to ADMIN_LOG_RECIPIENTS)
+// ══════════════════════════════════════════
+router.get('/backups/status', async (_req, res) => {
+  return res.json(await getBackupStatus());
+});
+
+let backupRunning = false;
+router.post('/backups/run', async (req, res) => {
+  if (backupRunning) return res.status(409).json({ error: 'A backup is already running.' });
+  backupRunning = true;
+  try {
+    const r = await runBackup(req.user?.username ?? 'admin');
+    await audit(req.user ?? null, 'BACKUP_RUN', 'database', undefined, `${r.status}; ${r.tables} tables; ${r.rows} rows; ${r.size_bytes} bytes`);
+    return res.json({ ...r, ...(await getBackupStatus()) });
+  } catch (e: any) {
+    if (e instanceof BackupConfigError) return res.status(503).json({ error: e.message });
+    return res.status(500).json({ error: 'Backup failed. See server logs.' });
+  } finally {
+    backupRunning = false;
+  }
 });
 
 export default router;

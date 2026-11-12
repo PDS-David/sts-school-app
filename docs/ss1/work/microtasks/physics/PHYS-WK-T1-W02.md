@@ -1,6 +1,6 @@
 # PHYS-WK-T1-W02 — Physics, 1st Term, Week 2 (objective index)
 
-Status: **IMPLEMENTED_TESTING_DEFERRED** (objective index only; not approved, not verified). Testing deferred by owner. No tests, typechecks, importer, database or device checks were run. Week 2 is **not** a complete, certified or taught week, and no objective is marked SUPPORTED.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — original source row indexed; original member visually inspected; lessons/coverage now updated. Content approval PENDING and verification DEFERRED.
 
 ## Inputs
 - Base: `origin/master` `882224048a1628d1d9fd03e6ee79ff6ead148622` (after PHYS-WK-T1-W01, `b29de19`). Physics work already IMPLEMENTED_TESTING_DEFERRED on master: PHYS-SRC-T1/T2/T3, PHYS-PRE-T1, PHYS-PRE-T2, PHYS-WK-T1-W01. No `AGENTS.md` exists in the repository.
@@ -72,3 +72,18 @@ Member SHA-256 re-computed from the supplied file before parsing; extraction re-
 
 ## Deferred and remaining
 Full tests, typechecks, importer runs, compiler plans, database and device checks remain deferred by owner instruction; CI was left enabled. `package_status` stays PENDING and `lessons[]` stays empty: nothing is deliverable and the week keeps blocking. Five bounded tasks are appended: `PHYS-LES-T1-W02-MICROMETER-READING`, `PHYS-LES-T1-W02-VOLUME-MEASUREMENT` (PENDING, runnable), `PHYS-LES-T1-W02-KEY-ASSESSMENT` (PENDING, waits for the expert item), `PHYS-COR-T1-W02-BINDING` (PENDING, waits for the supplements) and `PHYS-FACT-T1-W02-SCOPE` (BLOCKED, nine expert questions). `PHYS-VIS-T1` still owns the figures, `PHYS-OWNER-EXTRACTION-STRATEGY` the notation, and `PHYS-RULE-T1-REVISION-SCHEME` now also owns the repeated-heading constraint. Files outside this task's three allowed paths (including `NEXT_TASK.md`, `QUEUE_BUILD.md` and every other subject's files) were not written.
+
+
+## Current source-render and delivery update — 2026-11-12 (supersedes stale statements above)
+
+The original text-extraction and body-hash analysis above remains valid, but its delivery-state statements are historical. The exact original member was recovered from CI artifact `physics-original-source-evidence`, hash-verified and rendered to a 37-page PDF. Week Two is PDF pages 6–10.
+
+- Three student supplements now exist: measurement basics, micrometer reading and volume measurement. Coverage rows 1–13 have lesson bindings and are marked implemented-equivalent; the external textbook reading is replaced by the three in-app lessons; weekend and theory blocks now have keyed replacement questions with clear measurement values. All 16 non-marker coverage rows are now IMPLEMENTED_EQUIVALENT.
+- Original figures that the text extractor omitted are visible in the rendered PDF. The micrometer and vernier examples are present; however, some assessment scale drawings are too low-resolution or absent to support a defensible numerical key. The new SVGs are original replacements, not copied source figures.
+- Example 3.2's stated components give 17.00 mm + 0.11 mm = 17.11 mm = 1.711 cm. The source's “17.1 mm” is inconsistent. A clear original replacement-reading SVG is now registered with worked examples 17.11 mm, 4.37 cm and 1.76 cm.
+- The original PDF page 10 shows the three blanks in the SI question and the micrometer/vernier figures. The 98 “undefined” strings are a word-extractor artefact from U+001F control characters; “undefined” is not printed in the rendered source.
+- A proposed teacher-only 44-mark answer key is in `PHYS-LES-T1-W02-KEY-ASSESSMENT.md`. It keys text-answerable questions and explicitly flags weekend items 3/7/10 and theory items 2–4 for replacement rather than guessing readings. It also flags the missing vernier-callipers option, “dimension of a compound” and the three-blank SI wording.
+- Volume coverage is now taught by `SUP-SS1-PHYSICS-T1-W02-VOLUME-MEASUREMENT`; a new displacement SVG is registered. Measurement basics includes vernier and micrometer assets; micrometer reading has its own companion lesson.
+- Original source member and row identity remain unchanged. The micrometer worked-example delivery correction is now bound in `PHYS-COR-T1-W02-BINDING` to the primary measurement-basics replacement, with the micrometer and volume companion lessons recorded in `objective_scope_audit`. Teacher scope/approval and source-alias decisions remain open. Content approval is PENDING and verification DEFERRED.
+
+Full page/visual evidence: `PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`. Current coverage and open-item state is in `physics.json` and `QUEUE.json`.

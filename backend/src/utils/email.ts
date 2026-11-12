@@ -16,6 +16,7 @@ export async function sendEmail(opts: {
   to: string | string[];
   subject: string;
   html: string;
+  attachments?: { filename: string; content: Buffer; contentType?: string }[];
 }) {
   const to = Array.isArray(opts.to) ? opts.to.join(',') : opts.to;
   return transporter.sendMail({
@@ -23,6 +24,7 @@ export async function sendEmail(opts: {
     to,
     subject: opts.subject,
     html: opts.html,
+    attachments: opts.attachments,
   });
 }
 

@@ -17,6 +17,7 @@ import adminRouter       from './routes/admin.js';
 import financeRouter     from './routes/finance.js';
 import aiRouter          from './routes/ai.js';
 import announcementsRouter from './routes/announcements.js';
+import { startBackupScheduler } from './utils/backup.js';
 
 dotenv.config();
 
@@ -135,5 +136,6 @@ process.on('uncaughtException', (err) => {
 
 const port = Number(process.env.PORT ?? 4000);
 app.listen(port, () => {
+  startBackupScheduler();
   console.log(`🏫 STS School API running on http://localhost:${port}`);
 });

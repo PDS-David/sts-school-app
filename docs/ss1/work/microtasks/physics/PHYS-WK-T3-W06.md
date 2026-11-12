@@ -1,6 +1,6 @@
 # PHYS-WK-T3-W06 — Third Term Week Six: crystal structure
 
-Status: **BLOCKED — exact original source-row reconciliation incomplete**. The student supplement, five coverage entries and source-error corrections are implemented. The registered parsed-row identity is bound, and the public close-equivalent PDF supplies reproducible text locators, but the original .doc body was not independently retrieved in this execution.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
 
 ## Registered source identity
 
@@ -49,3 +49,12 @@ The PDF is a close-equivalent source, not byte-verified as the registered origin
 - All 20 practice answers and marking totals checked: 46 marks.
 - Content approval remains `PENDING`; verification remains `DEFERRED`.
 - No importer, database or device test is claimed.
+
+
+## Original-source inspection completed — 2026-11-12
+
+- Exact source member: hash-verified original registered .doc; full rendered page range: 9–10.
+- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
+- Source-row disposition: WEEK 6: crystalline and amorphous solids and crystal structures. The source row was visually inspected; it contains no clear crystal-cell diagrams. The registered original crystal-structure SVG supplies the learner diagrams. Source exercises have no answer/marking key.
+- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
+- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.

@@ -1,47 +1,30 @@
-# PHYS-VIS-T3 — Third Term source visual inventory
+# PHYS-VIS-T3 — Third Term visual inventory
 
-Status: `IMPLEMENTED_TESTING_DEFERRED`.
+Status: **IMPLEMENTED_TESTING_DEFERRED**. Original member inspected and rendered from the hash-verified archive artifact.
 
-## Source identity and rendered evidence
+- Original member SHA-256: `bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688`
+- Rendered PDF: 14 pages; SHA-256 `bcf6a54661738d773ae6c004a4d5da95dc9b1a8f6b0cdd307d914c69a80ec4cd`
+- Raster image objects in PDF: 0. No embedded raster figures were found. The source explicitly refers to a circuit diagram in Week 1, but the diagram is absent from the rendered source.
 
-- Source member: `SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc`.
-- Member SHA-256: `bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688`.
-- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
-- Rendered PDF: 14 pages. `pdfimages -list` reports zero raster images; the visible diagrams are vector drawings/shapes in the rendered document.
+## Figure clusters and dispositions
 
-## Page/parsed-week inventory
-
-| PDF pages | Parsed week / source region | Visual content and disposition |
+| Source pages | Figure/embedded-object cluster | Student-facing disposition |
 |---|---|---|
-| 1 | Title and scheme | Title/scheme table; no tutor advertising logo or contact details observed. Footer identifies the class/term/subject and is treated as source page furniture. |
-| 2–3 | Week One: electric circuit | Circuit symbols and simple circuit diagrams. Original equivalent circuit diagrams still needed. |
-| 4–5 | Week Two: resistors and cells in series/parallel | Series/parallel resistor and cell arrangements. Original equivalent network diagrams still needed. |
-| 6–7 | Weeks Three/Four: electrical energy/power and fuse | Electrical energy/power illustrations and fuse/safety-device diagram. Existing fuse-circuit SVG covers the fuse concept; remaining power diagrams should be checked against the lesson. |
-| 8–10 | Week Five: atomic structure, diffusion and osmosis | Atomic/matter representations and diffusion/osmosis/Brownian-motion teaching illustrations. Original equivalents still needed. |
-| 11–12 | Weeks Six–Eight: crystal structure, surface tension and capillarity | Crystal lattice, surface tension and capillary-rise/meniscus diagrams. Existing crystal-cells, surface-tension and capillary-meniscus SVGs cover these teaching clusters. |
-| 13–14 | Weeks Nine/Ten: elasticity and energy stored in elastic material | Force-extension and elastic-energy illustrations. Existing force-extension SVG covers the graph concept. Page 13's thermal-expansivity definition is mathematically wrong as printed; correction binding `CORR-PHYSICS-T3-W10-ELASTIC-FORCE` replaces the source row with the correct derivation. |
+| 1–3 | DC circuit components and Ohm's-law verification; source says a circuit diagram follows but none appears | New original DC-circuit schematic added. |
+| 3–5 | Resistors and cells in series/parallel; no clear source connection diagrams | New original resistor-network and cell-connection SVGs added. |
+| 5–6 | Electrical energy and power | Formulae are typeset in lesson text; no source diagram required. |
+| 6–7 | Fuse and safety device | Existing original fuse schematic retained. |
+| 7–9 | Atomic structure, states, diffusion, osmosis and Brownian motion | New original solid/liquid/gas particle-arrangement SVG added. |
+| 9–10 | Crystalline/amorphous solids and crystal structures | Existing original crystal-cell SVG retained. |
+| 10–11 | Surface tension | Existing original surface-tension SVG retained. |
+| 11–12 | Capillarity and menisci | Existing original capillary-meniscus SVG retained. |
+| 12–13 | Elasticity, stress/strain and force-extension | Existing original elasticity and force-extension SVGs retained. |
+| 13–14 | Elastic energy and restrained thermal force | Derivation is typed in lesson text; no source diagram is present. |
 
-No personal tutor contact information or external advertising was observed in the rendered pages. The footer `WKLAS/SS1/3rd term/Physics` is not copied into learner content.
+## Registered original assets
 
-## Asset disposition
+New assets: `PHYS-ASSET-T3-W01-DC-CIRCUIT`, `PHYS-ASSET-T3-W02-SERIES-PARALLEL`, `PHYS-ASSET-T3-W02-CELLS-SERIES-PARALLEL`, `PHYS-ASSET-T3-W05-MATTER-PARTICLES`.
 
-- Week Four fuse: original fuse-circuit SVG exists.
-- Week Six crystal structure: original BCC/FCC/HCP comparison SVG exists.
-- Week Seven surface tension: original SVG exists.
-- Week Eight capillarity: original meniscus/capillary-rise SVG exists.
-- Week Nine elasticity: original force-extension SVG exists.
-- Week One circuits, Week Two resistor networks, Week Five atomic/diffusion/osmosis: original equivalent SVGs still required.
+Existing fuse, crystal structure, surface tension, capillarity, elasticity and force-extension assets remain registered. All SVGs are original teaching aids and are not represented as source-image recoveries.
 
-## Follow-up tasks
-
-- `PHYS-VIS-T3-CIRCUITS-RESISTORS`: circuit symbols, simple circuits and series/parallel resistor/cell networks, pages 2–5.
-- `PHYS-VIS-T3-ATOMIC-DIFFUSION`: atomic structure, diffusion, osmosis and Brownian-motion diagrams, pages 8–10.
-
-## Validation boundary
-
-All 14 pages were rendered and reviewed as page images/contact sheets; the Week Ten formula page 13 was inspected at higher resolution. The zero raster-image count does not mean the document has no figures: its diagrams are vector drawings/shapes. Original source bytes remain unchanged. Formal package tests, importer and device verification remain DEFERRED.
-
-
-## Completion update — original equivalents registered
-
-The two bounded visual tasks are now implemented with original SVG assets registered in physics.json: `PHYS-ASSET-T3-CIRCUITS-RESISTORS` and `PHYS-ASSET-T3-ATOMIC-DIFFUSION`. Together with the existing fuse, crystal-structure, surface-tension, capillarity and force-extension assets, the inventoried teaching clusters now have original equivalents. These are not copies of source art. Content approval remains PENDING and verification DEFERRED.
+The original .doc bytes remain unchanged. Visual inventory is complete; new asset approval remains PENDING and verification DEFERRED.

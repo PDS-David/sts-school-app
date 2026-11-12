@@ -1,47 +1,66 @@
 # PHYS-WK-T2-W08 — Second Term Week Eight: fields and gravity
 
-Status: **BLOCKED — original source-row inspection incomplete**. The student supplement and objective-level coverage are authored, but the original registered .doc body and its figures have not been inspected.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — the exact registered source row and rendered pages have been inspected. Lesson content approval remains PENDING and verification remains DEFERRED.
 
 ## Registered source identity
 
 - Source ID: `SS1-SRC-2c924c964660`
 - Archive member: `SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc`
-- Registered member SHA-256: `3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7`
-- Parsed row: index 7, `WEEK 8`
+- Member SHA-256: `3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7`
+- Member size: 466,432 bytes
+- Parsed row: index 7, WEEK 8
 - Parsed body ID: `SS1-SRC-2c924c964660:BODY:07b01d34682899f09096e2ac8cd0fb977b722b3d3ffcb6a276bf42f6d5488e96`
 - Parsed body length: 3,122 characters
 - Parsed body SHA-256: `07b01d34682899f09096e2ac8cd0fb977b722b3d3ffcb6a276bf42f6d5488e96`
+- Original member recovered in CI artifact 13902689395 from workflow run 43126374868. The run successfully executed `scripts/ss1/prepare_sources.py`, verifying archive SHA-256, exact manifest membership, member sizes and member hashes.
 
-## Student supplement authored
+## Source content inventory
 
-- Lesson ID: `SUP-SS1-PHYSICS-T2-W08-FIELDS-GRAVITY`
-- Body SHA-256: `0342d735f906e47af8df6dc4b142463e8b9a5b8a7089f966b58ef32d7889f28d`
-- Body length: 4,389 characters
-- Practice: 15 fully answered questions, 31 marks; marking totals checked.
+The original row covers:
+- Field as a region/space under the influence of a physical agency; gravitational, electric and magnetic field types.
+- Gravitational field and force of gravity.
+- Newton's law of universal gravitation, including direct proportionality to the product of masses and inverse-square dependence on centre-to-centre distance.
+- Acceleration due to gravity, average value about 9.81 m s⁻², and free fall without air resistance.
+- Magnetic field, mapping with iron filings and a plotting compass, and the definition of a line of force by its tangent direction.
+- Evaluation: define field; state Newton's law; define magnetic field; define gravitational field.
+- Weekend theory: define gravitational field and acceleration due to gravity and describe variation with latitude; explain a field and name three types.
 
-The lesson covers field as a region of force, gravitational/electric/magnetic fields, gravitational field direction, field strength `g = F/m`, weight `W = mg`, free fall, `h = ½gt²`, and why air resistance changes the observed fall of objects. It distinguishes mass from weight and states the assumptions behind `g = 2h/t²`.
+## Supplement gaps corrected
 
-Five objective-level coverage entries were added. All are `IMPLEMENTED_EQUIVALENT` based on the authored supplement; approval and verification remain pending/deferred.
+The existing lesson already taught field concepts, gravitational field strength, weight, free fall and the conditions for `g = 2h/t²`, but it did not explicitly teach two source objectives. The body now adds:
+- Newton's law `F = Gm₁m₂/r²`, definitions of the variables, SI units and the approximate SI value of G.
+- Magnetic-field definition and field-line mapping using iron filings/compass; tangent direction and N-to-S direction outside a bar magnet.
+- The source's latitude question: effective g is generally smaller at the equator and increases towards the poles because of Earth's rotation and shape.
 
-## Close-equivalent comparison (not the registered original)
+## Source assessments and answer keys
 
-SchoolGist, *Physics SSS 1 Second Term*, Week Eight, PDF lines 618–677, covers field concept/types, gravitational field, acceleration due to gravity, `g = 2h/t²`, classwork and assignment.
+Six source-aligned questions were added as Q16–Q21 (17 marks):
+- Q16–Q17: field definition and Newton's law.
+- Q18–Q19: magnetic and gravitational field definitions.
+- Q20: gravitational field, acceleration due to gravity and latitude variation.
+- Q21: field concept and three field types.
 
-Reference: https://schoolgist.ng/storage/postFiles/SS1-Physics-2nd-Term-Lesson-Note-pdf.pdf
+The source has no weekend MCQ block; no questions have been invented to fill one. The lesson now has 21 fully answered questions with marking totals.
 
-The PDF is used as a close-equivalent scope comparison only, not as proof of the registered original .doc's exact wording or exercises.
+## Rendered-source and visual disposition
 
-## Remaining source-dependent work
+The original .doc was rendered privately to PDF. WEEK 8 occupies source pages 16–18:
+- Page 17 contains the Newton's law formula; the equation is visible in the original rendering even though the text extraction loses its formatting.
+- Page 18 contains the bar-magnet magnetic-field-line figure. The package already registers original replacement asset `PHYS-ASSET-T2-W08-MAGNETIC-FIELD`, attached to this lesson. It is a newly authored teaching aid, not a recovered source image.
+- No gravity-specific figure is present in the source row.
 
-1. Inspect the registered original member or a verified extraction of parsed row 7.
-2. Compare all original definitions, equations, examples, classwork and assignment items against the supplement.
-3. Inspect and disposition any original field/gravity diagrams under `PHYS-VIS-T2`.
-4. Confirm original exercise wording before claiming exact answer-key coverage.
-5. Mark the queue task complete only after source reconciliation.
+## Package mapping
 
-## Checks performed
+- Coverage entries `COV-PHYS-T2-W08-OBJ-1` through `OBJ-5` remain `IMPLEMENTED_EQUIVALENT` and now cite the inspected source row and magnetic-field visual.
+- Lesson: `SUP-SS1-PHYSICS-T2-W08-FIELDS-GRAVITY`
+- Updated body SHA-256: `6e70b3eca81d3bca4c8caebd81307fb952c1efae92e73ee585d2786f60bce7e0`
+- Practice: 21 questions; the source-aligned assessment block adds 17 marks.
+- `content_approval=PENDING`; `verification=DEFERRED`.
 
-- Body SHA-256 recorded.
-- All 15 answers and marking totals checked: 31 marks.
-- Content approval remains `PENDING`; verification remains `DEFERRED`.
-- No importer, database or device test is claimed.
+## Checks
+
+- Original archive staging and Physics member verification: passed in workflow run 43126374868.
+- Original row text and rendered pages 16–18 inspected.
+- Existing magnetic-field SVG is registered and attached to the lesson.
+- JSON parse, body SHA-256, question-ID uniqueness, answer presence, marking totals, queue recount and coverage references checked before commit.
+- Full package tests, importer and SVG safety for this new commit: not yet run; testing remains deferred until CI.
