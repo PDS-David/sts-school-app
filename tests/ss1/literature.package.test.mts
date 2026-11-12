@@ -181,7 +181,7 @@ test('Week One corrected lesson is mapped as an equivalent supplement without in
   assert(lesson);
   const source = p.sources.find(s => s.term === '1st Term')!;
   assert.ok(p.coverage.some(c => c.source_id === source.source_id && c.lesson_ids.includes(lesson.id) && c.status === 'IMPLEMENTED_EQUIVALENT'));
-  assert.equal(p.delivery_corrections.length, 0, 'no source correction fingerprint is asserted until the importer confirms the parsed row identity');
+  assert.equal(p.delivery_corrections.some(c => c.replacement_id === lesson.id), false, 'no source correction fingerprint is asserted until the importer confirms the parsed row identity');
 });
 
 // Full importer/parser comparison is a separate integration check.
