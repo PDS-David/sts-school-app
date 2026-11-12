@@ -1048,7 +1048,7 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Distinguish the common scale ratios taught in the source.",
       "objective_locator": "WEEK FOUR teaching row (parsed row 14), Source document pages 19–22; the existing coverage records that common scale ratios are distinguished, but does not reproduce the exact ratio list in the current repository evidence.",
-      "status": "PARTIAL",
+      "status": "SUPPORTED",
       "lesson_ids": [
         "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd"
       ],
@@ -1060,6 +1060,10 @@
         {
           "locator": "Scheme row COV-TD-T2-SCH-W04, parsed row 3 (WEEK 4), line 17; source rule SS1-SRC-af4868d2c026-R006.",
           "explanation": "This teaching point is mapped to the Week 4 scheme objective “Plain scales”."
+        },
+        {
+          "locator": "WEEK FOUR body children 707–714; source document pages 19–22; detailed transcription TD-FACT-W04-SCALE-DETAILS.md",
+          "explanation": "The source explicitly lists RF 1:1 (full size), 1:2 (half size), 1:5, 1:10, 2:1 and 5:1; it also teaches 1:2.5, 1:50, 3:10, 1.5:1 and 1:3 in worked plain-scale constructions. Exact ratios and derived scale lengths are recorded in the factual evidence note."
         }
       ]
     },
@@ -1088,7 +1092,7 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Construct plain scales for the scale ratios and ranges given in the source.",
       "objective_locator": "WEEK FOUR teaching row (parsed row 14), Source document pages 19–22; existing COV-TD-T2-SCH-W04 evidence records step-by-step constructions, but exact ratios/ranges and figures require source/visual inspection.",
-      "status": "PARTIAL",
+      "status": "SUPPORTED",
       "lesson_ids": [
         "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd"
       ],
@@ -1100,6 +1104,10 @@
         {
           "locator": "Scheme row COV-TD-T2-SCH-W04, parsed row 3 (WEEK 4), line 17; source rule SS1-SRC-af4868d2c026-R006.",
           "explanation": "This teaching point is mapped to the Week 4 scheme objective “Plain scales”."
+        },
+        {
+          "locator": "WEEK FOUR body children 721–786 and 790–796; source pages 20–21; TD-FACT-W04-SCALE-DETAILS.md",
+          "explanation": "Five worked constructions and four revision construction prompts now have their RFs, ranges, total lengths, major divisions and first-unit subdivisions recorded with checked arithmetic. The source's two-unit convention is retained. The separate Q6 unit mismatch and gate-dimension issue remain explicit open items; they do not erase the source's core construction coverage."
         }
       ]
     },
@@ -1108,7 +1116,7 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Read and interpret values from a constructed plain scale.",
       "objective_locator": "WEEK FOUR teaching row (parsed row 14), Source document pages 19–22; existing COV-TD-T2-SCH-W04 evidence records worked scale readings; exact figure labels and numerical readings require visual inspection.",
-      "status": "PARTIAL",
+      "status": "SUPPORTED",
       "lesson_ids": [
         "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd"
       ],
@@ -1120,6 +1128,10 @@
         {
           "locator": "Scheme row COV-TD-T2-SCH-W04, parsed row 3 (WEEK 4), line 17; source rule SS1-SRC-af4868d2c026-R006.",
           "explanation": "This teaching point is mapped to the Week 4 scheme objective “Plain scales”."
+        },
+        {
+          "locator": "WEEK FOUR body children 734, 742–748, 756–762, 821–827; source pages 20–22; TD-FACT-W04-SCALE-DETAILS.md",
+          "explanation": "Worked readings X=280 mm, Y=130 mm, 2.4 m/24 dm and 22 cm are transcribed. The weekend rulers read X=87 mm and Z=390 mm; the 3 m at 1:50 question gives 60 mm. The remaining scale reading questions are explicitly listed with their source units. Q6's millimetre/decimetre inconsistency is separately blocked pending author clarification."
         }
       ]
     },
@@ -1483,22 +1495,12 @@
     {
       "id": "TD-T2-W04-FIGURES",
       "kind": "CONTENT",
-      "detail": "The Week Four plain-scale lesson includes construction diagrams/scale layouts whose dimensions, labels and graduations are not captured in the current text-only evidence. No visual disposition or faithful asset is recorded.",
-      "required_action": "Complete TD-VIS-W04 by inspecting each original figure, recording its scale ratio, range, unit labels and graduations, and binding a faithful derivative with provenance or documenting a precise exclusion.",
+      "detail": "All nine Week Four AutoCAD objects and paired WMF previews have now been inventoried and visually inspected. Nine bounded derivative tasks exist, but no allowed-MIME derivative has yet been produced or bound in the package.",
+      "required_action": "Complete TD-ASSET-W04-F01 through TD-ASSET-W04-F09: create faithful allowed-MIME derivatives, record hashes/bytes/alt text/provenance, and bind each to the Week Four source lesson.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
-        "TD-VIS-W04"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "TD-T2-W04-SCALE-DETAILS",
-      "kind": "CONTENT",
-      "detail": "The existing source coverage records common scale ratios, several ranges, step-by-step constructions and worked readings, but the current repository evidence does not enumerate the exact ratios, dimensions, ranges or numerical readings.",
-      "required_action": "Complete TD-FACT-W04-SCALE-DETAILS by inspecting the original source text and figures, recording every ratio, range, dimension, unit and reading with exact locators; do not invent values.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
-        "TD-FACT-W04-SCALE-DETAILS"
+        "TD-ASSET-W04-F01",
+        "TD-ASSET-W04-F09"
       ],
       "blocks_delivery": true
     },
@@ -1655,6 +1657,30 @@
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863",
         "TD-KEY-W10-ANSWERS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W04-Q6-UNIT-MISMATCH",
+      "kind": "FACT",
+      "detail": "Week Four Evaluation Question 6 states that a 20 cm = 1 m plain scale should read up to 6 m in millimetres. At RF 1:5, ten subdivisions of the 1 m major unit represent decimetres, not millimetres; true 1 mm actual subdivisions would be 0.2 mm on paper and require 1,000 divisions per metre. The source may have intended decimetres, but this must not be silently corrected.",
+      "required_action": "Obtain an owner/source-author decision on whether the unit should read decimetres or whether a different scale construction is intended; record the correction in a reviewed supplement before publishing this question.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
+        "COV-TD-T2-W04-PLAIN-SCALE-READING",
+        "TD-FACT-W04-SCALE-DETAILS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W04-GATE-SCALE-RECONCILIATION",
+      "kind": "FACT",
+      "detail": "The ornamental-gate drawing supplies 2100 mm overall length and 300 mm post dimension, but the WMF preview's rendered pixel proportions are approximately 7.6:1 rather than the stated 7:1. A–E and the scale therefore cannot be safely measured from the current preview.",
+      "required_action": "Obtain the native AutoCAD drawing or a corrected, undistorted dimensioned export; verify the scale and measure A–E from that source. Do not infer dimensions from the distorted preview.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
+        "TD-FACT-W04-SCALE-DETAILS",
+        "TD-VIS-OLE"
       ],
       "blocks_delivery": true
     }
