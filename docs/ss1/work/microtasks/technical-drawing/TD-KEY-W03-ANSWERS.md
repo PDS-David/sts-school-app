@@ -91,6 +91,3 @@ Award 2 marks each for the square, pentagon, hexagon, heptagon, octagon, nonagon
 
 For an area ratio image:original = 3:5, the linear scale factor is √(3/5)=0.7746 (2 marks). Award remaining marks for a correct pole/ray or geometric-mean construction, parallel corresponding edges, consistent image:original ratio, and a closed similar polygon. Do not use 3/5 as the linear scale factor when the ratio is explicitly an area ratio.
 
-## Residual source data gap
-
-The separate Week Three general-revision pentagon with AB=70, BC=40, DE=75 and AE=80 is referred to as “shown in the figure below”; the supplied source page does not render a complete dimensioned figure for all remaining sides/angles. Do not invent those values. Its full construction rubric requires the original missing figure or a corrected dimensioned statement.
