@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { getStudentSs1Lesson, isStudentDeliverableSs1Lesson, listStudentSs1Lessons, listStudentSs1Assets, readStudentSs1Asset, studentSs1LessonPreview } from '../../backend/src/db/ss1/studentDelivery.js';
+import { studentTopicPreview } from '../../backend/src/utils/jss3Sequence.js';
 
 test('SS1 student delivery exposes approved implemented lessons without hiding deferred classroom verification', () => {
   const lessons = listStudentSs1Lessons();
@@ -67,4 +68,34 @@ test('locked SS1 lesson previews contain metadata only and never expose teaching
   assert.equal('provenance' in preview, false);
   assert.equal('objectives' in preview, false);
   assert.equal('assets' in preview, false);
+});
+
+
+test('locked student topic previews expose navigation metadata only', () => {
+  const source = {
+    id: 42,
+    title: 'Quadratic equations',
+    subject_id: 7,
+    subject_name: 'Mathematics',
+    class_name: 'SS 1',
+    term_id: 2,
+    term_label: '1st Term',
+    order_index: 4,
+    description: 'Hidden teaching text',
+    summary: 'Hidden generated summary',
+    source_file: 'private-source.docx',
+    source_reference: 'private locator',
+  };
+  const preview = studentTopicPreview(source, false, {
+    locked: true,
+    sequence_position: 4,
+    is_sequence_first: false,
+  });
+  assert.equal(preview.id, 42);
+  assert.equal(preview.locked, true);
+  assert.equal(preview.sequence_position, 4);
+  assert.equal('description' in preview, false);
+  assert.equal('summary' in preview, false);
+  assert.equal('source_file' in preview, false);
+  assert.equal('source_reference' in preview, false);
 });
