@@ -337,3 +337,84 @@ There are **16 exercise stems** in total: 2 + 2 + 5 + 5 + 2. No source answer ke
 - `GOVERNMENT-T3-W01-WEEKEND-CURTAILMENT-FACT` — correct the oversimplified rights-curtailment proposition in weekend question 4.
 
 No lesson, correction, source rule, asset, answer key or marks were created. The source wording, duplicate WEEK TWO label and exercise spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-WK-T3-W02 — Citizenship indexing
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and dated constitutional fact-check evidence only; no lesson, answer key, marks, correction, asset or parser rule is authored here.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37 on the original legacy `.doc`.
+- Complete span: lines 122–230; UTF-8 span SHA-256: `794ec054b76684c811ef3d05e9a53e07f275ac9c3c1f610a9039594e062d100f`.
+- Exact printed label: `WEEK TWO` at line 122; topic: `CITIZENSHIP` at line 123.
+- This is scheme entry 2 by topic and order. It follows the first span, which also prints WEEK TWO and maps to scheme entry 1. Both labels are retained; no silent relabelling is made.
+- Scheme entry 2 continues at preamble line 13 with `ii. Rights of a citizen in a State.` That continuation is carried forward to W03, whose span (lines 231–338) addresses safeguarding rights, limitations and citizen/non-citizen differences. It is not claimed as taught in W02.
+- Locators below refer to Antiword line numbers, not page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are empty rather than inferred from a different extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-W02-MEANING | Meaning of citizenship, lines 129–138 | PARTIAL |
+| COV-GOV-T3-W02-ACQUISITION | Birth/descent, registration, naturalisation, honorary status and conquest, lines 140–170 | PARTIAL |
+| COV-GOV-T3-W02-LOSS | Stated loss grounds, lines 176–191 | PARTIAL |
+| COV-GOV-T3-W02-GENERAL-REVISION | General revision questions, lines 197–203 | PARTIAL |
+| COV-GOV-T3-W02-READING | Reading pointers, lines 205–207 | PARTIAL |
+| COV-GOV-T3-W02-ASSESSMENT-KEYS | All evaluation, revision, weekend and theory stems | UNRESOLVED |
+| COV-GOV-T3-W02-WEEKEND-ACQUISITION | Weekend MCQs 1–3, lines 210–218 | PARTIAL |
+| COV-GOV-T3-W02-SCHEME-CITIZENSHIP | Scheme entry 2 citizenship subtopics; rights continuation carried to W03 | PARTIAL |
+
+Eight coverage entries and seven linked package open items were added. The T3 alias approval action remains unchanged; no owner approval was invented.
+
+### Meaning and rights of citizens — lines 129–138
+
+The source describes a citizen as a legal member who owes allegiance to a country “he resides in” and enjoys full civil and political rights. Residence is not a defining condition of citizenship: a Nigerian citizen can live abroad and retain citizenship. The statement that aliens have no civil or political rights is too broad. Many constitutional rights apply to every person, while some political rights are citizen-specific and subject to qualifications. The Constitution separately sets out citizens' duties in section 24. Preserve the source's wording as evidence; do not silently replace it.
+
+### Acquisition of Nigerian citizenship — lines 140–170
+
+The current constitutional framework is Chapter III, sections 25–27:
+- **Birth/descent:** section 25 calls the category “citizenship by birth”; descent is included within it. A person born outside Nigeria is a Nigerian citizen by birth if either parent is a Nigerian citizen (s25(1)(c)). A person born in Nigeria after independence qualifies if either parent or any grandparent is a Nigerian citizen (s25(1)(b)). Thus the source's “born in a particular state” definition is incomplete. The U.S.-birth example depends on U.S. law and is not verified by this Nigerian constitutional review.
+- **Registration:** section 26 requires the President to be satisfied about good character, a clear intention to be domiciled in Nigeria and the prescribed oath. Section 26(2) identifies those to whom it applies, including any woman who is or has been married to a Nigerian citizen and a person of full age and capacity born outside Nigeria with a Nigerian-citizen grandparent. Marriage alone does not automatically confer citizenship.
+- **Naturalisation:** section 27 requires full age and capacity, good character, intention to domicile, acceptance by the local community/assimilation, a useful contribution to Nigeria and the oath. The residence test is either 15 continuous years, or 12 continuous months immediately before application plus at least 15 years' aggregate residence during the preceding 20 years. The source's “15 years” alone is incomplete.
+- **Honorary citizenship:** the Nigerian Constitution does not list honorary citizenship as a nationality-acquisition route in Chapter III. It may be a form of symbolic recognition in another country, but should not be presented as a Nigerian constitutional mode. The source's example says Miriam Makeba received honorary citizenship in Liberia, Ethiopia and Guinea. A scholarly study supports honorary Guinean citizenship and land in Dalaba in 1967; the Liberia and Ethiopia citizenship claims were not corroborated in the sources consulted. Do not infer formal nationality from honorary recognition or an honorary passport.
+- **Conquest:** conquest is not listed as a current Nigerian constitutional acquisition route. The source's phrase “after secessionist struggles” is not a legal explanation of how Nigerian citizenship is acquired. Section 2(1) describes Nigeria as an indivisible and indissoluble sovereign state. Treat the source claim as historical/unverified rather than current law.
+
+### Loss or deprivation of citizenship — lines 176–191
+
+The source heading misspells `LOSING` as `LOOSING`; preserve it in the source record. The seven claims need substantial qualification against sections 28–30:
+- **Dual citizenship (s28):** it is not true that every dual citizen automatically loses Nigerian citizenship. Section 28(1) distinguishes a Nigerian citizen by birth from a person who is not a citizen by birth; the latter forfeits Nigerian citizenship if they acquire or retain another country's citizenship/nationality and are not a citizen by birth of that other country. Section 28(2) imposes an effective-renunciation condition within no more than 12 months in specified registration/naturalisation cases.
+- **Renunciation (s29):** a citizen of full age (18 or above) must make a declaration in the prescribed manner. Cessation follows registration of that declaration. The President may withhold registration during a war in which Nigeria is physically involved or where registration is contrary to public policy. A verbal statement alone is not the constitutional procedure.
+- **Imprisonment after naturalisation (s30(1)):** the President may deprive a person who is neither a citizen by birth nor by registration if, within seven years after naturalisation, the person has been sentenced to imprisonment for at least three years. This is not any criminal case or any unspecified period of incarceration.
+- **Disloyalty and wartime conduct (s30(2)):** the Constitution addresses disloyalty shown by act or speech and specified unlawful trade/business/communication with an enemy during a war, subject to the stated process. It is not simply any support for another country.
+- **False declaration and treasonable felony:** neither appears as a standalone ground in sections 28–30. Do not assert either as an automatic ground without identifying any separate applicable legal authority. A conviction for an offence and deprivation of citizenship are not interchangeable.
+
+### Assessment, reading and weekend-marker audit
+
+- `EVALUATION QUESTIONS`: line 172 (two stems at lines 173–174) and line 193 (two stems at lines 194–195).
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 197; five stems at lines 198–203. The first three concern citizenship, although conquest is not a current constitutional acquisition mode and treason requires precise legal treatment. Questions 4–5 ask about monarchy and military intervention in politics, not taught in this citizenship span and not part of this scheme entry.
+- `READING ASSINGMENT`: exact misspelling at line 205; pointers to `Comprehensive Government` pp. 72–74 and `Essential Government` pp. 87–88 at lines 206–207. Editions/publication details are absent; neither text was supplied or consulted.
+- `WEEKEND ASSINGMENT`: line 209; five MCQs at lines 210–224. Question 1 appears to offer both “by coup” and “by conquest” as options to exclude; neither is a current constitutional acquisition mode, so more than one option may be defensible. Question 2 treats honorary citizenship as a Nigerian acquisition mode, which Chapter III does not list. Question 3 uses good character (one condition, not a complete test) and repeats the option label `(c)`; preserve the defect. Question 4 gives a simple meaning of dual citizenship but does not address its constitutional consequences. Question 5's disloyalty option needs the section 30(2) qualifications.
+- `THEORY`: line 226; two prompts at lines 227–228.
+- Total: **16 exercise stems** (4 evaluation + 5 general revision + 5 weekend + 2 theory). No source answer key, marks or marking criteria are supplied. No answers or marks were invented.
+
+### Dated constitutional and historical references consulted
+
+1. **PLAC, *Constitution of the Federal Republic of Nigeria, 1999*, updated with the First–Fifth Alterations** (third revision October 2023; reprint September 2024). Used for Chapter III ss25–30, s2(1), s24 and the relevant Chapter IV rights: https://placng.org/i/wp-content/uploads/2023/11/Constitution-of-the-Federal-Republic-of-Nigeria-1999-Updated.pdf
+2. **Hashachar, “Playing the backbeat in Conakry: Miriam Makeba and the cultural politics of Sékou Touré’s Guinea, 1968–1986”** (2017). Reports that Makeba was awarded honorary citizenship and land in Dalaba during her 1967 visit to Guinea: https://www.tandfonline.com/doi/abs/10.1080/02533952.2017.1364467
+3. **“Remembering Miriam Makeba,” *Journal of Musical Arts in Africa*** (2008). Describes honorary Guinean citizenship and her residence in Guinea: https://www.tandfonline.com/doi/pdf/10.2989/JMAA.2008.5.1.6.789
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W02-MEANING-FACT` — correct the residence-based definition and the overbroad claim about aliens' rights.
+- `GOVERNMENT-T3-W02-ACQUISITION-FACT` — correct birth/descent, registration and naturalisation; distinguish honorary status and conquest from Nigerian constitutional routes; verify the foreign-law example separately.
+- `GOVERNMENT-T3-W02-HONORARY-EXAMPLE-FACT` — verify the Liberia and Ethiopia claims and distinguish honorary recognition from nationality; Guinea is supported by a scholarly source.
+- `GOVERNMENT-T3-W02-LOSS-FACT` — correct all seven claims against sections 28–30 and verify any additional statutory ground.
+- `GOVERNMENT-T3-W02-REVISION-MISALIGNMENT` — resolve the monarchy and military-intervention questions' placement.
+- `GOVERNMENT-T3-W02-READING-VERIFICATION` — verify exact editions and pages.
+- `GOVERNMENT-T3-W02-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 16 stems.
+
+No lesson, correction, source rule, asset, answer key or marks were created. The source wording, duplicate WEEK TWO label, misspelled headings and repeated MCQ option label remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
