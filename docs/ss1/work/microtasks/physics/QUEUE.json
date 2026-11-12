@@ -55,7 +55,8 @@
     "PHYS-FACT-T3-W05-SCHEME-MISMATCH (2026-11-11): resolved as a title-truncation artefact. The source body includes Diffusion, Graham's law and Osmosis; Brownian motion is only a heading plus two statements, with the full explanation supplied by the new lesson. Non-blocking open item PHYSICS-T3-W05-BROWNIAN-SOURCE-DEPTH records the source-depth gap.",
     "PHYS-PORT-D1-FACT-EXPANSIVITY and PHYS-PORT-D1-FACT-T3-W10 (2026-11-12): source text extracted from the hash-registered original .doc members by Physics CI run 43082409860. Confirmed notation/derivation defects in extracted output; recorded bounded non-blocking open items and evidence notes. Student supplements retain correct physics notation/derivation. Original equation-object visual rendering remains unverified; no content approval or production acceptance is claimed.",
     "PHYS-CMP-D4-TESTS (2026-11-12): compared the four legacy PR #71 test assertions with the current seven-test Physics package suite and registered SS1 package validator. Applicable checks are retained; obsolete split-rule assertion is intentionally not ported because the rule was not applied. Evidence: PHYS-CMP-D4-TESTS.md. No production importer/DB/device acceptance claimed.",
-    "2026-11-12 original source access unlocked: Physics CI run 43122782413 preserved the exact three registered .doc members; hashes were reverified and all 73 rendered PDF pages visually reviewed. The T2/T3 source-week tasks, T1 source-fact reconciliation tasks and three term visual-inventory tasks are now IMPLEMENTED_TESTING_DEFERRED. Full page map and figure dispositions: PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md; per-term inventories: PHYS-VIS-T1/T2/T3.md. 19 original SVG teaching aids added and package metadata registered (29 assets total). Original source bytes remain unchanged. Lesson content approval remains PENDING and verification DEFERRED."
+    "2026-11-12 original source access unlocked: Physics CI run 43122782413 preserved the exact three registered .doc members; hashes were reverified and all 73 rendered PDF pages visually reviewed. The T2/T3 source-week tasks, T1 source-fact reconciliation tasks and three term visual-inventory tasks are now IMPLEMENTED_TESTING_DEFERRED. Full page map and figure dispositions: PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md; per-term inventories: PHYS-VIS-T1/T2/T3.md. 19 original SVG teaching aids added and package metadata registered (29 assets total). Original source bytes remain unchanged. Lesson content approval remains PENDING and verification DEFERRED.",
+    "2026-11-12: Added proposed Week One laboratory familiarisation and scientific-method lessons with explicit independent-authoring provenance and PENDING approval. Added proposed teacher-only Week One and Week Two source assessment keys (44 marks each); ambiguous items are flagged rather than guessed. New measurement-reading SVG gives clear replacement examples. Source and visual audit remains complete; source alias/teacher approval and full regression are still open."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -74,9 +75,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 78,
+    "IMPLEMENTED_TESTING_DEFERRED": 81,
     "BLOCKED": 7,
-    "PENDING": 5
+    "PENDING": 2
   },
   "total": 90,
   "items": [
@@ -2283,8 +2284,8 @@
         "PHYS-WK-T1-W01",
         "PHYS-FACT-T1-W01-SCOPE"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W01 (2026-11-05): COV-PHYS-T1-W01-OBJ-2 is UNRESOLVED and PHYSICS-T1-W01-LABORATORY blocks delivery. The scheme clause is the only evidence that the objective exists.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Proposed independent lesson SUP-SS1-PHYSICS-T1-W01-LABORATORY-FAMILIARISATION is authored and registered in physics.json; 8 keyed practice questions, 19 marks; school-specific facilities and safety procedures remain pending teacher approval. Evidence: PHYS-LES-T1-W01-LABORATORY.md.",
       "completion_condition": "A lesson in physics.json teaches the laboratory content the teacher cleared, identifies itself as a Week 1 supplement with the scheme line 24 (sha256 107871e4a26a044a789c101b4fd1778fddfe046ce599b8cdcbee1f19fece62cc) as its provenance objective, carries practice with complete answers and marking that sums exactly, has body_sha256 over the UTF-8 body and PENDING content approval, and adds no apparatus, experiment or safety claim the teacher did not approve; no schema, compiler, rule or shared file is edited."
     },
     {
@@ -2364,8 +2365,8 @@
         "PHYS-WK-T1-W01",
         "PHYS-FACT-T1-W01-SCOPE"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W01 (2026-11-05): COV-PHYS-T1-W01-OBJ-10, -OBJ-11, -OBJ-13 and -OBJ-14 are UNRESOLVED and PHYSICS-T1-W01-ASSESSMENT-NO-KEY blocks delivery. Five of the seven weekend questions and two of the four theory questions turn on quantities Week 1 never teaches ('thrust' at lines 170 and 181 only, 'ohm' at line 175 only, 'tension'/'impulse'/'upthrust' at line 177, 'work' at line 173; 'strain' occurs nowhere in 1,288 lines).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Proposed teacher-facing 44-mark Week One key is complete, including answers for both evaluations, seven MCQs and four theory questions; weekend item 5 is flagged as defective with a replacement. Scientific-method response is explicitly marked independent proposed content. Evidence: PHYS-LES-T1-W01-KEY-ASSESSMENT.md.",
       "completion_condition": "A keyed assessment supplement in physics.json answers every item at lines 61-63, 160-163, 168-182 and 184-191 that Week 1 teaches, states the basis for each answer drawn from the taught lines, marks each beyond-syllabus item as pending PHYS-FACT-T1-W01-SCOPE rather than inventing a quantity, has marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no schema, compiler, rule, asset or shared file is edited."
     },
     {
@@ -2525,8 +2526,8 @@
         "PHYS-WK-T1-W02",
         "PHYS-FACT-T1-W02-SCOPE"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W02 (2026-11-07): COV-PHYS-T1-W02-OBJ-12, -13, -15 and -16 are UNRESOLVED and PHYSICS-T1-W02-ASSESSMENT-NO-KEY blocks delivery. Waits for PHYS-FACT-T1-W02-SCOPE.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12: Proposed teacher-facing 44-mark Week Two key is complete. Text-answerable items are keyed; unclear/missing source figures and ambiguous wording are flagged for replacement, with clear original micrometer/vernier examples now registered. Evidence: PHYS-LES-T1-W02-KEY-ASSESSMENT.md.",
       "completion_condition": "A lesson in physics.json carries objectives, a body whose body_sha256 is the SHA-256 of its UTF-8 body, complete practice answers and marking that sums exactly, a provenance that says it is an authored supplement and not the source, state content_approval PENDING and verification DEFERRED; the coverage entry it targets is updated by stable ID only after a reviewer confirms objective-level teaching; no schema, compiler, rule, asset or shared file is edited."
     },
     {
