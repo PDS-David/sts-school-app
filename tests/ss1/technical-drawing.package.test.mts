@@ -99,3 +99,13 @@ test('Week Seven reduction supplement distinguishes linear and area ratios', asy
   assert.match(lesson.body, /√\(3\/5\)/);
   assert.equal(lesson.practice.length, 4);
 });
+
+test('Week Seven reduction SVG asset matches registered integrity metadata', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const asset = subject.assets.find(item => item.id === 'TD-SUP-W07-F01');
+  assert.ok(asset, 'Week Seven reduction ratio diagram missing');
+  const bytes = await readFile(resolve(process.cwd(), asset.path));
+  assert.equal(bytes.byteLength, asset.bytes);
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), asset.sha256);
+  assert.equal(asset.lesson_id, 'SUP-SS1-TECHNICAL-DRAWING-T2-W07-REDUCTION');
+});
