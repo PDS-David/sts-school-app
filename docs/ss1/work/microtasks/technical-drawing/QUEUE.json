@@ -40,8 +40,8 @@
     "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 38,
-    "BLOCKED": 6,
+    "IMPLEMENTED_TESTING_DEFERRED": 39,
+    "BLOCKED": 5,
     "PENDING": 113,
     "IN_PROGRESS": 1
   },
@@ -824,7 +824,7 @@
         "TD-SCH-W07"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Implemented 2026-11-08: added separate Week 6 and Week 7 coverage for reduction of plain figures (PARTIAL; candidate combined teaching row parsed row 16, body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05) and separate UNRESOLVED coverage entries for the scheme's enlargement objective. The scheme requires enlargement and reduction, while the combined teaching-row title says only “Reduction of plain figures”; no split was made and no enlargement coverage was invented. Added open items for exact constructions, figures and answer keys. Existing TD-FACT-ENLARGEMENT-SCOPE is now the next required dependency. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
+      "implementation_reference": "Implemented 2026-11-08: added separate Week 6 and Week 7 coverage for reduction of plain figures (PARTIAL; candidate combined teaching row parsed row 16, body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05) and separate UNRESOLVED coverage entries for the scheme's enlargement objective. The scheme requires enlargement and reduction, while the combined teaching-row title says only “Reduction of plain figures”; no split was made and no enlargement coverage was invented. Added open items for exact constructions, figures and answer keys. Existing TD-FACT-ENLARGEMENT-SCOPE is now the next required dependency. Tests/typechecks/importer/DB remain deferred; not approved, not verified. Original Week Six–Seven source row has now been inspected and reconciled: both reduction and enlargement are explicitly taught. See TD-FACT-ENLARGEMENT-SCOPE.md for exact construction methods, ratios, dimensions and assessment locators; see TD-VIS-W06-W07.md for all figure mappings.",
       "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
     },
     {
@@ -911,7 +911,7 @@
       "kind": "FACTUAL_DEPENDENCY",
       "source_id": "SS1-SRC-af4868d2c026",
       "term": "2nd Term",
-      "week_or_locator": "scheme Weeks 6-7 vs teaching row 16 (WEEK SIX AND SEVEN)",
+      "week_or_locator": "COMBINED WEEK SIX–SEVEN teaching row; word/document.xml body children 1009–1210; source lesson SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
       "objective": "Inspect the Weeks 6-7 teaching row and record whether it teaches enlargement as well as reduction of plain figures, with locators for each construction found.",
       "required_files": [
         "backend/src/db/ss1/subjects/technical-drawing.json",
@@ -935,8 +935,8 @@
         "TD-SCH-W07",
         "TD-WK-W06-W07"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Blocked 2026-11-08: the current repository records the combined row title/body hash but does not contain its text; the original DOCX member bytes are not accessible in this execution session, so I cannot determine whether enlargement appears in the body. To avoid blocking the scheme objective, an independently authored SS1 enlargement supplement SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT has been added and bound as IMPLEMENTED_EQUIVALENT for Weeks 6 and 7. The original-source reconciliation remains in open item TD-T2-W06-W07-ORIGINAL-ENLARGEMENT-RECONCILIATION. No claim is made that the original row teaches enlargement.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12 after retrieving the registered original DOCX. Direct source inspection confirms both “Reduction of similar figures” (child 1017) and “Enlargement of similar figures” (child 1069); the row explicitly explains ratio direction, gives 5:3 area enlargement, pole-T figure enlargement and 3:2 regular-pentagon enlargement. Detailed reduction/enlargement methods, ratios, source dimensions and all assessment data are in TD-FACT-ENLARGEMENT-SCOPE.md. Original source lesson ID/body hash preserved. Package coverage for W06/W07 scheme, reduction and enlargement objectives upgraded to SUPPORTED; old row-mapping/reconciliation/reduction-detail blockers removed. The existing enlargement supplement is retained as optional reinforcement, not equivalent replacement. Figure derivatives and answer keys remain open. No tests/compiler/importer/app verification.",
       "completion_condition": "Finding recorded. If enlargement is not taught, the uncovered objective is named precisely and a bounded lesson task (with drawing task, dimensions and marking criteria) is appended; otherwise coverage is recorded as supported with evidence."
     },
     {
@@ -1748,7 +1748,7 @@
         "TD-FACT-ENLARGEMENT-SCOPE"
       ],
       "status": "PENDING",
-      "implementation_reference": "Raised by TD-WK-W06-W07 on 2026-11-08. The source title identifies reduction; the exact constructions, figures, dimensions, answers and marking evidence are not in the current repository record. The enlargement discrepancy must be resolved separately.",
+      "implementation_reference": "Raised by TD-WK-W06-W07 on 2026-11-08. The source title identifies reduction; the exact constructions, figures, dimensions, answers and marking evidence are not in the current repository record. The enlargement discrepancy must be resolved separately. Original Week Six–Seven source row has now been inspected and reconciled: both reduction and enlargement are explicitly taught. See TD-FACT-ENLARGEMENT-SCOPE.md for exact construction methods, ratios, dimensions and assessment locators; see TD-VIS-W06-W07.md for all figure mappings.",
       "completion_condition": "Publish original keyed solutions for verified reduction tasks, with complete construction steps and positive integer marking criteria summing to each question's marks. Do not invent dimensions or answer any unresolved enlargement objective."
     },
     {
@@ -5471,11 +5471,13 @@
     "notes": "Reconciled queue metadata with live item statuses after Week 6–10 coverage updates; formal tests remain deferred."
   },
   "next_runnable": [
+    "TD-SCOPE-AUTHORING-FINISH",
     "TD-KEY-W01-ANSWERS",
     "TD-KEY-W02-ANSWERS",
     "TD-KEY-W03-ANSWERS",
     "TD-KEY-W04-ANSWERS",
     "TD-KEY-W05-ANSWERS",
+    "TD-KEY-W06-W07-ANSWERS",
     "TD-KEY-W08-W09-ANSWERS",
     "TD-ASSET-W01-F01",
     "TD-ASSET-W01-F02",
@@ -5581,11 +5583,13 @@
     "TD-ASSET-W10-F17"
   ],
   "runnable_now": [
+    "TD-SCOPE-AUTHORING-FINISH",
     "TD-KEY-W01-ANSWERS",
     "TD-KEY-W02-ANSWERS",
     "TD-KEY-W03-ANSWERS",
     "TD-KEY-W04-ANSWERS",
     "TD-KEY-W05-ANSWERS",
+    "TD-KEY-W06-W07-ANSWERS",
     "TD-KEY-W08-W09-ANSWERS",
     "TD-ASSET-W01-F01",
     "TD-ASSET-W01-F02",
