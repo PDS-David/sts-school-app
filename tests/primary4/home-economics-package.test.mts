@@ -34,7 +34,7 @@ test('Home Economics import plan is reproducible, insert-only and requires owner
 test('researched Home Economics topics remain withheld until approval and verification', () => {
   const topic = buildHomeEconomicsImportPlan().topics[0] as any;
   const result = resolvePrimary4SourceDelivery({
-    id: 999, school_code: 'primary', class_name: 'Primary 4',
+    id: 999999, school_code: 'primary', class_name: 'Primary 4',
     subject_name: topic.subject_name, term_label: topic.term_label,
     order_index: topic.order_index, title: topic.title, source_reference: topic.source_reference,
   });
