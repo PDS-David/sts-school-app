@@ -228,3 +228,15 @@ test('Technical Drawing answer-key implementation is complete but source-owner d
     'TD-T2-W06-W07-WEEKEND-Q1-Q2-FIGURE-AMBIGUITY'
   ]) assert.ok(subject.open_items.some(item => item.id === id), `source ambiguity not tracked: ${id}`);
 });
+
+test('Week Ten source assessment answer key covers figure-backed weekend answers and templates', async () => {
+  const path = new URL('../../docs/ss1/work/microtasks/technical-drawing/TD-KEY-W10-ANSWERS.md', import.meta.url);
+  const key = await readFile(path, 'utf8');
+  assert.match(key, /Weekend Q1 — image100/);
+  assert.match(key, /PO=105 mm; QO=102 mm/);
+  assert.match(key, /Weekend Q5 — image103/);
+  assert.match(key, /Weekend Q6 — image104/);
+  assert.match(key, /Evaluation 2 \/ Theory 2 — spanner/);
+  assert.match(key, /Ø102→\*\*Ø51 mm\*\*/);
+  assert.match(key, /The rubrics above are original proposed assessment criteria/);
+});
