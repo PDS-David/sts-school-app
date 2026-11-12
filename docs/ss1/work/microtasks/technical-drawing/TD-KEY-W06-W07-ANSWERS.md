@@ -126,13 +126,13 @@ Suggested rubric (6 marks): derive AE≈77.30 mm (2); identify and document the 
 
 ## Week Six–Seven weekend assignment — source figure keys
 
-- Q1 / image58: K is the centre of a hexagon. The centre-to-base construction uses the 60°/45° reference triangles; the exact polygon type should be keyed from the labelled rays in the original image.
-- Q2 / image61: quadrilaterals P and S have side ratio 1:4 (the baseline divisions show P at 3–4 units and S at 12–16 units; corresponding side ratios are 1:4).
+- Q1 / image58: the figure shows a 60° ray from S, a 45° ray from T, and a vertical centre/reference line through K. The raster does not unambiguously establish which candidate polygon K is intended to centre; the options are square, pentagon, hexagon and heptagon. Do not retain an option letter until the source author or a clearer native figure confirms the construction geometry.
+- Q2 / image61: the figure is a ray-and-parallel construction with several similar quadrilaterals, but the printed labels P/Q/R/S/T identify vertices or corresponding figures ambiguously at this resolution. The exact pair with side ratio 1:4 cannot be established safely from the flattened raster alone. Do not force an option letter without the native vector/source image.
 - Q3 / image60: the three irregular hexagons J, K and M have side ratio 10:6:3 (option B). The labelled scale divisions provide the proportional side lengths.
 - Q4 / image61: the pole O is at any convenient distance from L (option D); the ray construction preserves the required proportional geometry.
 - Q5 / image62: rectangle ABCD : rectangle A1B1C1D1 is 7:5 (option A), as shown by the numbered proportional baseline.
 
-For the weekend MCQs, retain the source's original option letters only where the source figure and options are unambiguous. The general pentagon construction described above remains under-specified and must not be treated as a uniquely solvable assessment.
+For the weekend MCQs, retain the source's original option letters only where the source figure and options are unambiguous. Q1 and Q2 require a higher-fidelity source figure or author confirmation. Q3–Q5 are keyed above. The general pentagon construction described above remains under-specified and must not be treated as a uniquely solvable assessment.
 
 ## Verification boundary
 
