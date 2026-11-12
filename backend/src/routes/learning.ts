@@ -297,8 +297,12 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
   sql += " ORDER BY COALESCE((to_jsonb(t)->>'sequence_rank')::numeric, t.order_index) NULLS LAST, t.order_index NULLS LAST, t.created_at DESC";
 
   const { rows: rawRows } = await query(sql, params);
-  // JSS3 and SS1 subject-specific delivery corrections: audited source text and stale summaries are never returned.
-  const rows = rawRows.map((r: any) => safePrimary4Topic(safeSs1MathematicsTopic(safeEnglishTopic(safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(r))), user.role))));
+  // Subject-specific delivery corrections are applied before any topic payload reaches a learner.
+  const projectedRows = rawRows.map((r: any) => safePrimary4Topic(safeSs1MathematicsTopic(safeEnglishTopic(safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(r))), user.role))));
+  // Retired outline/merged Primary 4 source rows remain visible to staff for audit, but not to students or parents.
+  const rows = viewerClasses
+    ? projectedRows.filter((r: any) => r.primary4_delivery?.hide_from_student !== true)
+    : projectedRows;
 
   // For a student, also report whether they've completed each topic, and
   // whether it's currently locked. Locking (see schema.sql's "Term-PIN
@@ -426,6 +430,10 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
        FROM topics t LEFT JOIN subjects s ON s.id=t.subject_id WHERE t.id=$1 AND t.school_code=$2${scope}`, params,
   );
   if (!visible[0]) return res.json({ assets: [], attributions: [] });
+  const primary4AssetTopic = safePrimary4Topic(visible[0]);
+  if (viewerClasses && (primary4AssetTopic as any).primary4_delivery?.hide_from_student === true) {
+    return res.json({ assets: [], attributions: [] });
+  }
   if (await studentTopicSequenceLocked(user, visible[0])) return res.json({ assets: [], attributions: [] });
 
   // Metadata only — `bytes` is never selected here.
@@ -775,10 +783,16 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   // match the supplied read-only export. Short source notes remain visibly flagged to pupils.
   const primary4Delivery = resolvePrimary4SourceDelivery(topic);
   if (primary4Delivery?.kind === 'withheld') {
+    if (primary4Delivery.hideFromStudent) return res.status(404).json({ error: 'Topic not found' });
     return res.json({ ok: true, summary: primary4Delivery.text, summary_is_fallback: false,
       practice_questions: [], assessment_status: null,
-      delivery_correction: { id: String(primary4Delivery.topicId ?? req.params.id), status: 'withheld', provenance: primary4Delivery.source === 'researched-package' ? 'researched lesson package pending owner approval/verification or source identity check' : 'source does not match supplied database export' },
+      delivery_correction: { id: String(primary4Delivery.topicId ?? req.params.id), status: 'withheld', provenance: primary4Delivery.source },
       note: 'This Primary 4 topic is temporarily unavailable while its curriculum source is checked.' });
+  }
+  if (primary4Delivery?.kind === 'matched') {
+    topic.source_reference = primary4Delivery.text;
+    topic.summary = null;
+    topic.generated_assessment_id = null;
   }
   if (primary4Delivery?.kind === 'matched') topic.source_reference = primary4Delivery.text;
 
