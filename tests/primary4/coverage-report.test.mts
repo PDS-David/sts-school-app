@@ -21,3 +21,12 @@ test('coverage report distinguishes researched packages from missing term alloca
   assert.equal(find('Basic Technology','1st Term')?.status, 'NO_SEPARATE_TERM_ASSIGNMENT_FOUND');
   assert.equal(find('Basic Technology','2nd Term')?.status, 'NO_SEPARATE_TERM_ASSIGNMENT_FOUND');
 });
+
+test('coverage report explains why Basic Technology First and Second Terms are not fabricated', () => {
+  const report = buildPrimary4CoverageReport();
+  const decision = report.curriculum_decisions.find((item: any) => item.subject === 'Basic Technology');
+  assert.equal(decision.status, 'NEEDS_SCHOOL_TERM_ALLOCATION');
+  assert.ok(decision.nerdc_source.includes('nerdc.gov.ng'));
+  assert.ok(decision.state_scheme_source.includes('2021-Edition.pdf'));
+  assert.ok(decision.required_evidence.length > 20);
+});
