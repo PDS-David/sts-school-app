@@ -80,20 +80,20 @@
     "SOURCE_RULE": 2,
     "OWNER_DECISION": 2,
     "FACTUAL_DEPENDENCY": 14,
-    "VISUAL_DISPOSITION": 7,
+    "VISUAL_DISPOSITION": 8,
     "BRANCH_PORT": 13,
     "BRANCH_COMPARISON": 2,
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
     "LESSON": 15,
-    "CORRECTION_BINDING": 1
+    "CORRECTION_BINDING": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 77,
+    "IMPLEMENTED_TESTING_DEFERRED": 81,
     "BLOCKED": 7,
     "PENDING": 12
   },
-  "total": 96,
+  "total": 100,
   "items": [
     {
       "id": "PHYS-SRC-T1",
@@ -3304,6 +3304,94 @@
       "status": "PENDING",
       "implementation_reference": "Added 2026-11-12 after inspecting the original rendered page 3. The source labels a graph but the rendered graph area is blank; the lesson explains the graph but needs a plotted teaching aid.",
       "completion_condition": "Create a self-contained safe SVG with V on the vertical axis, I on the horizontal axis, a straight line through the origin for an ohmic conductor, and a gradient annotation ΔV/ΔI=R. Optionally show a non-ohmic curve as a contrast. Register/link it and record hash/bytes; pass SVG safety and Physics package tests."
+    },
+    {
+      "id": "PHYS-COR-T2-W04-BINDING",
+      "kind": "CORRECTION_BINDING",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": null,
+      "objective": "Bind the original source row to its reviewed replacement so delivery does not expose a confirmed source defect.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The exact Second Term Week Four source row is bound by CORR-PHYSICS-T2-W04-EXPANSIVITY to SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY. Rendered page 8 confirms X is printed where α is required; page 9 confirms Y for cubical expansivity and the incomplete ratio. The replacement adds a new anomalous-water graph. Evidence: PHYS-COR-T2-W04-BINDING.md.",
+      "completion_condition": "One exact delivery_corrections[] entry resolves source id, source hash, source lesson id/body hash and an existing same-subject/same-term replacement lesson; evidence names the source defect and replacement coverage."
+    },
+    {
+      "id": "PHYS-COR-T3-W10-BINDING",
+      "kind": "CORRECTION_BINDING",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": null,
+      "objective": "Bind the original source row to its reviewed replacement so delivery does not expose a confirmed source defect.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The exact Third Term Week Ten source row is bound by CORR-PHYSICS-T3-W10-ELASTIC-FORCE to SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY. Rendered page 13 confirms the incorrect definition α=e/L×θ; the replacement derives α=ΔL/(L₀ΔT) and F=EAαΔT. Evidence: PHYS-COR-T3-W10-BINDING.md.",
+      "completion_condition": "One exact delivery_corrections[] entry resolves source id, source hash, source lesson id/body hash and an existing same-subject/same-term replacement lesson; evidence names the source defect and replacement coverage."
+    },
+    {
+      "id": "PHYS-COR-T1-W01-BINDING",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK ONE",
+      "objective": "Bind the original Week One source row to a complete corrected replacement that preserves all teaching objectives and assessment.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-COR-T1-W01-BINDING.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W01",
+        "PHYS-LES-T1-W01-LABORATORY",
+        "PHYS-LES-T1-W01-KEY-ASSESSMENT"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "CORR-PHYSICS-T1-W01-CONSOLIDATED binds the exact source row to SUP-SS1-PHYSICS-T1-W01-CONSOLIDATED. Evidence: PHYS-COR-T1-W01-BINDING.md.",
+      "completion_condition": "One exact delivery_corrections[] entry binds the original Week One body hash to an existing complete replacement lesson; all original teaching objectives, assessment and reading marker are preserved or explicitly dispositioned; defects and approval status are documented."
+    },
+    {
+      "id": "PHYS-VIS-T1-WORK-VISCOSITY",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "PDF pages 30–35; Weeks Nine/Ten",
+      "objective": "Create original work/energy/power and viscosity/terminal-velocity diagrams.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Original SVG PHYS-ASSET-T1-WORK-VISCOSITY registered at backend/src/db/ss1/assets/physics/t1-work-viscosity.svg, attached to SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER; SHA-256 2dc9c6ee058bfebf8f061fed9d345a989413a66a866e44eac213b91fd41ac85a, 2023 UTF-8 bytes. Original equivalent, not a copy of the source figure. Content approval PENDING; verification DEFERRED.",
+      "completion_condition": "Create and register original SVG assets with accurate labels, alt text, byte count, SHA-256, lesson association and provenance. Review the diagram for scientific accuracy; keep content approval PENDING and verification DEFERRED."
     }
   ],
   "review": {

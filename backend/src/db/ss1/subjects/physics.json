@@ -9206,8 +9206,8 @@
         "Derive and apply F = EAαΔT for a bar whose thermal movement is fully restrained.",
         "Distinguish ductile and brittle materials."
       ],
-      "body": "ENERGY STORED IN ELASTIC MATERIALS\n\n1. Elastic energy\nWhen a spring or wire is stretched or compressed within its elastic range, work is done on it. The work is stored as elastic potential energy and can be released when the force is removed.\nFor a spring obeying Hooke's law, force rises from zero to F as extension increases from zero to e. The average force is F/2, so:\nU = ½Fe.\nSince F = ke:\nU = ½ke².\nU is measured in joules (J).\n\n2. Energy stored in a stretched wire\nFor a uniform wire of original length L, cross-sectional area A, Young's modulus E and extension e:\nYoung's modulus E = FL/(Ae)\nTherefore F = EAe/L.\nElastic energy stored:\nU = ½Fe\nU = ½(EAe/L)e\nU = EAe²/(2L).\nThis assumes the wire remains within its elastic range and behaves linearly.\n\n3. Energy stored per unit volume\nThe volume of the wire is AL. Divide the stored energy by this volume:\nu = U/(AL) = ½(EAe²/L)/(AL)\nu = ½E(e/L)².\nSince tensile stress σ = F/A and tensile strain ε = e/L:\nu = ½σε.\nThe unit is J m⁻³, which is equivalent to pascal (Pa). This is the elastic strain-energy density.\n\nWorked example 1 — energy in a wire\nA steel wire has length 10 m, cross-sectional area 2 × 10⁻⁶ m² and extension 1 mm. Young's modulus is 2 × 10¹¹ Pa. Find the energy stored.\nConvert extension: e = 0.001 m.\nU = EAe²/(2L)\n= (2 × 10¹¹)(2 × 10⁻⁶)(0.001)²/(2 × 10)\n= 0.020 J.\n\nWorked example 2 — energy in a spring\nA spring has stiffness 100 N m⁻¹ and is compressed by 0.015 m.\nU = ½ke² = 0.5 × 100 × 0.015² = 0.01125 J.\n\n4. Force in a bar prevented from contracting\nSuppose a straight bar is heated and then its ends are fixed so it cannot expand freely, or it is heated and then prevented from contracting as it cools. A thermal strain would occur if the bar were free to change length. If movement is prevented, a stress and force develop.\nFor a bar with Young's modulus E, cross-sectional area A, linear expansivity α and temperature change magnitude ΔT:\nThermal strain = αΔT.\nStress = EαΔT.\nForce:\nF = stress × area = EAαΔT.\nThis relation assumes a uniform bar, linear elastic behaviour, uniform temperature change and complete restraint of the relevant thermal movement. Real structures may have more complex restraints and stresses.\n\nWorked example 3 — restrained thermal contraction\nA steel rod has cross-sectional area 2 cm². It is heated to 100 °C and then prevented from contracting as it cools to 10 °C. Take α = 12 × 10⁻⁶ K⁻¹ and E = 2 × 10¹¹ Pa. Find the force.\nA = 2 cm² = 2 × 10⁻⁴ m².\nΔT = 100 − 10 = 90 K.\nF = EAαΔT\n= (2 × 10¹¹)(2 × 10⁻⁴)(12 × 10⁻⁶)(90)\n= 43,200 N = 4.32 × 10⁴ N.\n\n5. Ductile and brittle materials\nDuctile materials can undergo considerable plastic deformation (permanent extension) before breaking. Examples include copper, lead and mild steel under suitable conditions.\nBrittle materials fracture with little plastic deformation after the elastic range. Examples include glass and many ceramics.\nSome metals and alloys do not show a sharply defined yield point. Their transition from elastic to plastic behaviour may be gradual.\n\n6. Solving elastic-energy problems\n- Identify whether the object is a spring or a wire/bar.\n- For a Hookean spring, use U = ½ke² or U = ½Fe.\n- For a wire with E, A, L and e, use U = EAe²/(2L).\n- For energy per unit volume, use u = ½σε.\n- For a fully restrained thermal change, use F = EAαΔT.\n- Convert all lengths, areas and temperature changes to SI units before substitution.\n- Check that the material remains in its elastic range for the elastic-energy formulae.\n\nCOMMON ERRORS\n- Elastic energy is not F × e when the force rises from zero to F; the average force is F/2.\n- Use extension in metres, not millimetres.\n- Convert cm² to m² carefully: 1 cm² = 10⁻⁴ m².\n- Energy is measured in joules; energy density is measured in J m⁻³.\n- The thermal-restraint force formula requires movement to be prevented; a freely expanding bar does not develop this same thermal force.\n- Use the temperature difference, not the absolute temperature, in αΔT.\n\nSUMMARY\nU = ½Fe = ½ke² for a Hookean spring.\nU = EAe²/(2L) for a linearly elastic wire.\nEnergy density u = ½σε.\nFor a fully restrained thermal change, F = EAαΔT.\nDuctile materials deform plastically more before fracture than brittle materials.",
-      "body_sha256": "27fd9e09c3ead0398dd34e4833c4d7b303c8174b7e79408d126a1b1188479824",
+      "body": "ENERGY STORED IN ELASTIC MATERIALS\n\n1. Elastic energy\nWhen a spring or wire is stretched or compressed within its elastic range, work is done on it. The work is stored as elastic potential energy and can be released when the force is removed.\nFor a spring obeying Hooke's law, force rises from zero to F as extension increases from zero to e. The average force is F/2, so:\nU = ½Fe.\nSince F = ke:\nU = ½ke².\nU is measured in joules (J).\n\n2. Energy stored in a stretched wire\nFor a uniform wire of original length L, cross-sectional area A, Young's modulus E and extension e:\nYoung's modulus E = FL/(Ae)\nTherefore F = EAe/L.\nElastic energy stored:\nU = ½Fe\nU = ½(EAe/L)e\nU = EAe²/(2L).\nThis assumes the wire remains within its elastic range and behaves linearly.\n\n3. Energy stored per unit volume\nThe volume of the wire is AL. Divide the stored energy by this volume:\nu = U/(AL) = ½(EAe²/L)/(AL)\nu = ½E(e/L)².\nSince tensile stress σ = F/A and tensile strain ε = e/L:\nu = ½σε.\nThe unit is J m⁻³, which is equivalent to pascal (Pa). This is the elastic strain-energy density.\n\nWorked example 1 — energy in a wire\nA steel wire has length 10 m, cross-sectional area 2 × 10⁻⁶ m² and extension 1 mm. Young's modulus is 2 × 10¹¹ Pa. Find the energy stored.\nConvert extension: e = 0.001 m.\nU = EAe²/(2L)\n= (2 × 10¹¹)(2 × 10⁻⁶)(0.001)²/(2 × 10)\n= 0.020 J.\n\nWorked example 2 — energy in a spring\nA spring has stiffness 100 N m⁻¹ and is compressed by 0.015 m.\nU = ½ke² = 0.5 × 100 × 0.015² = 0.01125 J.\n\n4. Force in a bar prevented from contracting\nSuppose a straight bar is heated and then its ends are fixed so it cannot expand freely, or it is heated and then prevented from contracting as it cools. A thermal strain would occur if the bar were free to change length. If movement is prevented, a stress and force develop.\nFor a bar with Young's modulus E, cross-sectional area A, linear expansivity α and temperature change magnitude ΔT:\nThermal strain = αΔT.\nStress = EαΔT.\nForce:\nF = stress × area = EAαΔT.\nThis relation assumes a uniform bar, linear elastic behaviour, uniform temperature change and complete restraint of the relevant thermal movement. Real structures may have more complex restraints and stresses.\n\nWorked example 3 — restrained thermal contraction\nA steel rod has cross-sectional area 2 cm². It is heated to 100 °C and then prevented from contracting as it cools to 10 °C. Take α = 12 × 10⁻⁶ K⁻¹ and E = 2 × 10¹¹ Pa. Find the force.\nA = 2 cm² = 2 × 10⁻⁴ m².\nΔT = 100 − 10 = 90 K.\nF = EAαΔT\n= (2 × 10¹¹)(2 × 10⁻⁴)(12 × 10⁻⁶)(90)\n= 43,200 N = 4.32 × 10⁴ N.\n\n5. Ductile and brittle materials\nDuctile materials can undergo considerable plastic deformation (permanent extension) before breaking. Examples include copper, lead and mild steel under suitable conditions.\nBrittle materials fracture with little plastic deformation after the elastic range. Examples include glass and many ceramics.\nSome metals and alloys do not show a sharply defined yield point. Their transition from elastic to plastic behaviour may be gradual.\n\n6. Solving elastic-energy problems\n- Identify whether the object is a spring or a wire/bar.\n- For a Hookean spring, use U = ½ke² or U = ½Fe.\n- For a wire with E, A, L and e, use U = EAe²/(2L).\n- For energy per unit volume, use u = ½σε.\n- For a fully restrained thermal change, use F = EAαΔT.\n- Convert all lengths, areas and temperature changes to SI units before substitution.\n- Check that the material remains in its elastic range for the elastic-energy formulae.\n\nCOMMON ERRORS\n- Elastic energy is not F × e when the force rises from zero to F; the average force is F/2.\n- Use extension in metres, not millimetres.\n- Convert cm² to m² carefully: 1 cm² = 10⁻⁴ m².\n- Energy is measured in joules; energy density is measured in J m⁻³.\n- The thermal-restraint force formula requires movement to be prevented; a freely expanding bar does not develop this same thermal force.\n- Use the temperature difference, not the absolute temperature, in αΔT.\n\nSUMMARY\nU = ½Fe = ½ke² for a Hookean spring.\nU = EAe²/(2L) for a linearly elastic wire.\nEnergy density u = ½σε.\nFor a fully restrained thermal change, F = EAαΔT.\nDuctile materials deform plastically more before fracture than brittle materials.\n\nSOURCE FORMULA CORRECTION\nThe original Third Term Week Ten source defines linear expansivity as change in length/original length multiplied by temperature change. That is incorrect. The correct definition is α = ΔL/(L₀ΔT), so ΔL = αL₀ΔT. For a bar fully prevented from contracting, the thermal stress is EαΔT and the restraining force is F = EAαΔT. Do not use α = (ΔL/L₀) × ΔT.\n",
+      "body_sha256": "583d6ea05fe9d7066cd0e2464bc3f2b60ecd827933cf76a9e6d6303df1af18bc",
       "practice": [
         {
           "id": "Q01",
@@ -11491,6 +11491,2449 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T1-W01-LABORATORY",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Physics",
+      "title": "Physics laboratory familiarization and safe practice",
+      "objectives": [
+        "Explain why physics students use a laboratory.",
+        "Identify common measuring instruments and state what each measures.",
+        "Recognise common apparatus used in introductory physics activities.",
+        "Apply basic safety rules before, during and after a practical activity.",
+        "State how to report hazards and respond to an emergency."
+      ],
+      "body": "PHYSICS LABORATORY FAMILIARIZATION AND SAFE PRACTICE\n\n1. Why use a physics laboratory?\nA physics laboratory is a place where students observe physical events, make measurements, test ideas and compare results with predictions. A good experiment changes or measures one factor at a time where possible, uses suitable instruments and records observations honestly. The laboratory is a learning environment, not a place for unsupervised play.\n\n2. Common measuring instruments\n- Metre rule or measuring tape: measures length. Read the scale at eye level and record the unit.\n- Vernier callipers: measure external dimensions, internal diameters and depths when the correct jaws or probe are used.\n- Micrometer screw gauge: measures very small external dimensions, such as the diameter of a thin wire or thickness of a sheet.\n- Stopwatch or stop clock: measures time intervals.\n- Beam or electronic balance: measures mass.\n- Spring balance or force meter: measures force, including weight.\n- Thermometer: measures temperature.\n- Graduated measuring cylinder: measures liquid volume and can be used for water-displacement measurements.\n- Pipette and burette: transfer or deliver measured volumes of liquid. Their use depends on the task and the teacher's instructions.\n\n3. Other apparatus students may meet\nA retort stand and clamp support equipment; a spring can demonstrate extension and elasticity; a pulley changes the direction of a force; a pendulum can be used to study periodic motion; a beaker or flask holds a liquid; cells, connecting wires and low-voltage components can form simple circuits. These are examples of common school apparatus, not a statement that every item is present in this school's laboratory. Ask the teacher to identify the actual equipment before use.\n\n4. Rules before an activity\n1. Enter and work in the laboratory only when the teacher or authorised instructor is present.\n2. Read and listen to the instructions before touching equipment.\n3. Perform only the experiment authorised by the teacher. Never improvise a procedure.\n4. Know the location of the exits and the safety equipment identified by the teacher, such as the first-aid kit and fire extinguisher. Do not assume their location.\n5. Keep bags and unnecessary materials away from the work area.\n6. Tie back long hair and secure loose clothing where moving parts or flames may be used.\n\n5. Rules during an activity\n- Handle instruments gently and use them only for their intended purpose.\n- Do not eat, drink, taste chemicals or smell substances directly.\n- Do not touch chemicals, hot objects, electrical connections or moving apparatus unless the teacher has instructed you and shown the safe method.\n- Never connect equipment to mains electricity or light a flame without direct teacher instruction.\n- Keep the bench dry, clear and orderly. Walk; do not run or play.\n- Record readings honestly, including units and any uncertainty. Do not change a reading to make it agree with a predicted result.\n- Report a spill, breakage, injury, unusual smell, overheating or electrical fault immediately. Do not try to clean up or repair it without instructions.\n\n6. After an activity\nSwitch off equipment only as directed. Return apparatus to its designated place, dispose of materials as instructed, clean the work area and wash your hands. Report damaged or missing equipment. Do not take apparatus out of the laboratory.\n\n7. If there is an emergency\nStop the activity, warn people nearby and tell the teacher immediately. Follow the school's evacuation or emergency instructions. Use a fire extinguisher, eyewash, safety shower or electrical shut-off only if the teacher has trained and directed you to do so. Never hide an accident.\n\nIMPORTANT LIMIT\nThis is a general SS1 familiarization lesson. It does not identify the actual room layout, the school's emergency-equipment locations or the school's complete apparatus inventory. The teacher must show those local details before practical work begins.\n\nSUMMARY\nUse the correct instrument, follow the teacher's procedure, keep the work area safe, record measurements honestly and report every accident or fault at once.",
+      "body_sha256": "17966a791dc954da3eb9940f1027682d69c5633f63273211bfe0ae52503366cd",
+      "practice": [
+        {
+          "id": "LAB-Q1",
+          "question": "Give two reasons why students use a physics laboratory.",
+          "answer": "To observe physical events and make measurements; to test ideas or predictions through controlled experiments.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "One valid reason.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second valid reason.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "LAB-Q2",
+          "question": "Match each instrument to the quantity it measures: (a) thermometer (b) stopwatch (c) balance (d) spring balance (e) metre rule.",
+          "answer": "(a) temperature; (b) time interval; (c) mass; (d) force/weight; (e) length.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "One correct match each.",
+              "marks": 5
+            }
+          ]
+        },
+        {
+          "id": "LAB-Q3",
+          "question": "State four safe rules to follow before or during a physics practical.",
+          "answer": "Work only under teacher supervision; follow instructions; do not touch unauthorised equipment; do not eat or drink; keep the bench clear; report spills/breakages; do not use mains electricity or flames without instruction. Any four.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "One valid rule.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second valid rule.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third valid rule.",
+              "marks": 1
+            },
+            {
+              "criterion": "Fourth valid rule.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "LAB-Q4",
+          "question": "What should you do if a glass apparatus breaks or a liquid spills?",
+          "answer": "Stop, keep away from the hazard and tell the teacher immediately. Do not clean it up unless instructed.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Stops and keeps away from hazard.",
+              "marks": 1
+            },
+            {
+              "criterion": "Reports to teacher and does not handle it unauthorised.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "LAB-Q5",
+          "question": "Why must a student not perform an experiment that the teacher has not authorised?",
+          "answer": "The student may not know the hazards, correct procedure or safe controls. Unauthorised experiments can injure people or damage equipment.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Mentions unknown hazards or lack of safe procedure.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains risk of injury or damage.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "LAB-Q6",
+          "question": "Which instrument is suitable for measuring the diameter of a thin wire accurately?",
+          "answer": "A micrometer screw gauge.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Names micrometer screw gauge.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "LAB-Q7",
+          "question": "Name two safety details the teacher should show students before practical work.",
+          "answer": "The location of exits and the school's first-aid kit, fire extinguisher, eyewash or other relevant emergency equipment. Any two actually present and identified by the teacher.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "One valid local safety location.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second valid local safety location.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "LAB-Q8",
+          "question": "State three actions to take at the end of a laboratory activity.",
+          "answer": "Switch off equipment as directed, return apparatus, dispose of materials as instructed, clean the work area and wash hands. Any three.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "One correct action.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second correct action.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third correct action.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Sow the Seed Schools SS1 Physics First Term scheme",
+          "locator": "Source SS1-SRC-5c0149cda71d; scheme line 24 explicitly includes 'Familiarization of Physics Laboratory'. The registered Week One source body contains no laboratory teaching; this is an independently authored supplement.",
+          "url": null,
+          "rights": "No source lesson text copied; generic introductory familiarization authored for this course.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics; supplementary laboratory familiarization."
+        },
+        {
+          "title": "American Chemical Society, Student Laboratory Code of Conduct — High School Labs",
+          "locator": "General supervised-lab conduct, authorised experiments, handling of equipment, housekeeping and emergency awareness; accessed 2026-11-11.",
+          "url": "https://institute.acs.org/acs-center/lab-safety/education-training/high-school-labs/student-lab-code-of-conduct.html",
+          "rights": "Used to corroborate safety principles; no wording copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "American Chemical Society, Student Laboratory Code of Conduct."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T1-W01-KEY-ASSESSMENT",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Physics",
+      "title": "Week One scientific method and keyed assessment review",
+      "objectives": [
+        "Describe a standard scientific-method sequence and answer the source evaluation question.",
+        "State the seven SI base quantities and their correct unit symbols.",
+        "Classify the Week One quantities as fundamental or derived.",
+        "Answer the Week One evaluation, weekend assignment and theory questions with dimensional working.",
+        "Identify a defective multiple-choice question rather than force a unique answer."
+      ],
+      "body": "WEEK ONE: SCIENTIFIC METHOD AND KEYED REVIEW OF QUANTITIES\n\n1. The scientific method\nThe scientific method is a systematic way to investigate a question using observations and evidence. A useful sequence is:\n1. Observe a phenomenon and identify a problem or question.\n2. Gather relevant information and review what is already known.\n3. Form a testable hypothesis (a proposed explanation or prediction).\n4. Plan and carry out a fair experiment to test the hypothesis.\n5. Record measurements and observations accurately.\n6. Analyse the results, using calculations or graphs where appropriate.\n7. Draw a conclusion: state whether the evidence supports the hypothesis and explain why.\n8. Communicate the method and findings so that others can examine or repeat the work.\nThe sequence is a guide, not a guarantee that every investigation follows exactly the same order. Results may lead to a revised hypothesis or another experiment.\n\n2. Fundamental quantities and SI base units\nThe SI has seven base quantities and seven corresponding base units:\n- Length — metre (m)\n- Mass — kilogram (kg)\n- Time — second (s)\n- Electric current — ampere (A)\n- Thermodynamic temperature — kelvin (K)\n- Amount of substance — mole (mol)\n- Luminous intensity — candela (cd)\nUse the exact unit symbols. Symbols are case-sensitive: kg is kilogram, m is metre, s is second, K is kelvin, A is ampere, mol is mole and cd is candela. Do not write Kg, M, S or Cd as the unit symbols.\n\n3. Fundamental and derived quantities\nA fundamental (base) quantity is one of the seven independent base quantities. A derived quantity is defined using one or more base quantities.\nExamples:\n- Fundamental: length, mass, time, temperature and electric current.\n- Derived: area, volume, speed, velocity, acceleration, density, weight, force, torque, power, energy, heat capacity and momentum.\n- Relative density is a ratio of two densities; it is dimensionless, but it is derived from density rather than a separate SI base quantity.\nA quantity and its unit are not the same thing. Mass is a base quantity; kilogram is its base unit. Force is a derived quantity; newton is its derived unit.\n\n4. Dimensional formulae used in the Week One questions\nUse M for mass, L for length and T for time.\n- Velocity or speed: [LT⁻¹].\n- Acceleration: [LT⁻²].\n- Density: [ML⁻³].\n- Force or thrust: [MLT⁻²].\n- Pressure or stress: [ML⁻¹T⁻²].\n- Work or energy: [ML²T⁻²].\n- Momentum or impulse: [MLT⁻¹].\n- Young's modulus: [ML⁻¹T⁻²].\nA dimension is not a unit. For example, pressure has dimension [ML⁻¹T⁻²] and SI unit pascal (Pa), equivalent to kg m⁻¹ s⁻².\n\n5. Answer key — first evaluation\nQ1. What is Physics?\nAnswer: Physics is the branch of science that studies matter, energy, space, time and the interactions between them. (2 marks: identifies the subject as a natural science; describes its study of matter/energy/interactions.)\n\nQ2. State the steps involved in the scientific method.\nAnswer: Observe and identify a question; gather information; form a testable hypothesis; plan and perform an experiment; record results; analyse results; draw a conclusion; communicate findings. (2 marks: any four logically ordered steps, 0.5 mark each.)\n\n6. Answer key — second evaluation\nQ1. Dimensions:\n(a) Acceleration: [LT⁻²].\n(b) Pressure: [ML⁻¹T⁻²].\n(c) Density: [ML⁻³].\n(3 marks: one correct dimension each.)\n\nQ2. Classify the listed quantities:\n- Derived: velocity, weight, volume, density, torque, speed, acceleration, power, energy, heat capacity.\n- Fundamental: mass, length, temperature, electric current.\n- Relative density: dimensionless ratio derived from density; it is not a base quantity.\n(15 marks: one mark for each correct classification. Accept the relative-density note as the correct explanation for that item.)\n\n7. Answer key — weekend assignment\n1. Which listed unit is not derived? D, mass (kilogram is a base unit).\n2. Which is a fundamental unit? D, kg.\n3. Which quantity has the same unit as energy? B, work; both are measured in joules.\n4. Which is a derived unit? D, ohm (Ω).\n5. Which listed quantity has a derived unit? The item has no unique single answer: tension, impulse and upthrust are all derived quantities/units; distance is fundamental. The question must be rewritten or withdrawn as a single-answer MCQ. Do not mark only one of A, B or C as uniquely correct.\n6. The three base units listed are kg, m and s: C. These are three SI base units, not the complete set of seven.\n7. Derived units among I area, II thrust, III pressure and IV mass: B, I, II and III only.\n\n8. Answer key — theory\n1. Dimensions:\n(a) Stress = force/area = [ML⁻¹T⁻²].\n(b) Energy = force × distance = [ML²T⁻²].\n(c) Momentum = mass × velocity = [MLT⁻¹].\n2. Dimensions:\n(a) Impulse = force × time = [MLT⁻¹].\n(b) Potential energy = work = [ML²T⁻²].\n(c) Pressure = force/area = [ML⁻¹T⁻²].\n(d) Young's modulus = stress/strain; strain is dimensionless, so [ML⁻¹T⁻²].\n3. Impulse has dimension [MLT⁻¹]. Comparing with MᵃLᵇTᶜ gives a = 1, b = 1, c = −1.\n4. Pressure has dimension [ML⁻¹T⁻²]. Comparing with MˣLʸTᶻ gives x = 1, y = −1, z = −2.\n\nASSESSMENT QUALITY NOTE\nThe source's weekend item 5 has three correct options (A, B and C), so it is defective as a single-answer multiple-choice question. The key records the defect rather than inventing one unique answer. The original source's spelling, table numbering and SI symbol errors are not copied into this supplement. The authored marks above are a new marking guide, not marks printed in the source.\n\nSUMMARY\nThe scientific method uses observation, a testable hypothesis, an experiment, recorded evidence, analysis and a conclusion. The SI has seven base quantities and units. Derived quantities and dimensions are built from the base quantities.",
+      "body_sha256": "84e17a56a9c7063ce7faea1d19b4183d3abc52fb9948f20a4b8499511ee78087",
+      "practice": [
+        {
+          "id": "W1KEY-Q1",
+          "question": "Define Physics.",
+          "answer": "Physics is the branch of science that studies matter, energy, space, time and their interactions.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies Physics as a branch of natural science.",
+              "marks": 1
+            },
+            {
+              "criterion": "Mentions matter, energy, space, time or their interactions.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W1KEY-Q2",
+          "question": "State four stages of the scientific method in a logical order.",
+          "answer": "For example: observe and ask a question; form a testable hypothesis; carry out an experiment; record and analyse results; draw a conclusion; communicate findings. Any four in a logical order.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Two relevant stages in logical order.",
+              "marks": 1
+            },
+            {
+              "criterion": "Two further relevant stages in logical order.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W1KEY-Q3",
+          "question": "Give the dimensions of acceleration, pressure and density.",
+          "answer": "Acceleration [LT⁻²]; pressure [ML⁻¹T⁻²]; density [ML⁻³].",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Acceleration.",
+              "marks": 1
+            },
+            {
+              "criterion": "Pressure.",
+              "marks": 1
+            },
+            {
+              "criterion": "Density.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W1KEY-Q4",
+          "question": "Classify mass, weight, length, volume, density, temperature and electric current as fundamental or derived quantities.",
+          "answer": "Fundamental: mass, length, temperature, electric current. Derived: weight, volume, density.",
+          "marks": 7,
+          "marking": [
+            {
+              "criterion": "One mark for each correct classification.",
+              "marks": 7
+            }
+          ]
+        },
+        {
+          "id": "W1KEY-Q5",
+          "question": "Find the dimensions of stress, energy and momentum.",
+          "answer": "Stress [ML⁻¹T⁻²]; energy [ML²T⁻²]; momentum [MLT⁻¹].",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Stress.",
+              "marks": 1
+            },
+            {
+              "criterion": "Energy.",
+              "marks": 1
+            },
+            {
+              "criterion": "Momentum.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W1KEY-Q6",
+          "question": "The dimension of impulse is MᵃLᵇTᶜ. Find a, b and c.",
+          "answer": "Impulse = force × time = [MLT⁻²][T] = [MLT⁻¹]. Therefore a=1, b=1, c=−1.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses impulse = force × time.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains [MLT⁻¹].",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives a=1, b=1, c=−1.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W1KEY-Q7",
+          "question": "Pressure has dimension MˣLʸTᶻ. Find x, y and z.",
+          "answer": "Pressure = force/area = [MLT⁻²]/[L²] = [ML⁻¹T⁻²]. Thus x=1, y=−1, z=−2.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses pressure = force/area.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains [ML⁻¹T⁻²].",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives x=1, y=−1, z=−2.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Sow the Seed Schools SS1 Physics First Term source",
+          "locator": "Source SS1-SRC-5c0149cda71d; Week One body SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc; evaluation lines 61–63; second evaluation lines 160–163; weekend assignment lines 168–182; theory lines 184–191.",
+          "url": null,
+          "rights": "Question topics used for curriculum scope; answers and explanations independently authored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics; authored answer-key supplement."
+        },
+        {
+          "title": "BIPM, SI Base Units",
+          "locator": "Seven SI base quantities, unit names and exact unit symbols; accessed 2026-11-11.",
+          "url": "https://www.bipm.org/en/measurement-units/si-base-units",
+          "rights": "Used to verify unit names and symbols; no text copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "BIPM, The International System of Units (SI): Base units."
+        },
+        {
+          "title": "NIEHS, Scientific Method",
+          "locator": "Scientific-method framework: gather information, form hypothesis, experiment, record results, analyse, conclude and report; accessed 2026-11-11.",
+          "url": "https://www.niehs.nih.gov/health/kids/topics/how-science-works/scientific-method",
+          "rights": "Used to corroborate the standard sequence; no text copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "National Institute of Environmental Health Sciences, Scientific Method."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T1-W02-KEY-ASSESSMENT",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Physics",
+      "title": "Week Two answer key and measurement assessment guide",
+      "objectives": [
+        "Answer text-based questions on length, time, measuring instruments, mass and weight.",
+        "Solve the source weight calculation using W = mg and consistent SI units.",
+        "Identify the correct instruments for internal diameter, wire diameter, mass, weight and liquid volume.",
+        "Recognise ambiguous or defective questions and identify questions that require missing figures.",
+        "Use accurate dimensions and distinguish answerable questions from figure-dependent items."
+      ],
+      "body": "WEEK TWO: KEYED REVIEW OF MEASUREMENT, MASS AND WEIGHT\n\n1. Evaluation answers\nQ1. Define length and time.\nLength is the distance between two points. Time is the duration between events or the interval during which an event occurs.\nQ2. List five instruments for measuring length.\nExamples: metre rule, measuring tape, vernier callipers, micrometer screw gauge and ordinary callipers (used to compare an internal or external dimension, then measured against a scale). Choose the instrument according to the size and precision required.\nQ3. Differentiate between mass and weight.\nMass is a measure of the amount of matter in a body; its SI unit is kilogram (kg), and it is measured with a balance. Weight is the gravitational force acting on a body; its SI unit is newton (N), and it can be measured with a spring balance. Mass is essentially unchanged when location changes; weight changes when gravitational field strength changes.\nQ4. An object has mass 5000 g. Find its weight where g = 10 m s⁻².\n5000 g = 5 kg. W = mg = 5 × 10 = 50 N.\n\n2. Weekend assignment answers\n1. Most suitable instrument for the internal diameter of a test tube: B, a pair of callipers. In practice, use the internal jaws of vernier callipers when a direct reading is required. A micrometer screw gauge is normally used for small external dimensions.\n2. Incorrect statement about mass and weight: D, “weight at the equator and at the poles is the same”. The effective gravitational acceleration varies with latitude; weight is generally greater at the poles than at the equator for the same mass.\n3. Micrometer diagram reading: NOT KEYED. The figure is absent from the extracted text. Do not infer a reading from the answer options.\n4. Instrument used to measure weight: A, spring balance (force meter).\n5. Best instrument for a small, accurately measured fixed quantity of liquid: B, pipette. A burette is appropriate when a measured but variable delivered volume is required; the question's phrase “small quantity” is imprecise, so the distinction is stated.\n6. Dimension of force: A, [MLT⁻²].\n7. Vernier calliper diagram reading: NOT KEYED. The figure is absent from the extracted text.\n8. Instrument for the diameter of a constantan wire: C, micrometer screw gauge.\n9. Hydrometer measures: C, relative density of a liquid.\n10. Micrometer diagram reading: NOT KEYED. The figure is absent from the extracted text.\n\n3. Theory answers\n1. Suitable instruments:\n(a) Weight of a body — spring balance/force meter.\n(b) Internal diameter of a test tube — vernier callipers with internal jaws.\n(c) Mass of a body — beam or electronic balance.\n(d) “Dimension of a compound” — AMBIGUOUS. The source does not define what “dimension” or “compound” means in this context. The question must be rewritten before it is assessed.\n(e) Length of a table — metre rule or measuring tape.\n(f) Diameter of a wire — micrometer screw gauge.\n2. Micrometer screw-gauge diagrams (a) and (b): NOT KEYED until the original figures are inspected.\n3. Vernier calliper diagram for the glass block: NOT KEYED until the original figure is inspected.\n4. Vernier calliper diagram reading: NOT KEYED until the original figure is inspected.\n5. The extracted question contains 98 repetitions of the word “undefined” caused by U+001F control characters in the legacy .doc text stream. This is an extraction artefact, not a recoverable question. Do not present “undefined” to students or invent the missing words.\n6. State three differences between mass and weight:\n- Mass is the amount of matter; weight is gravitational force.\n- Mass is measured in kg; weight is measured in N.\n- Mass is measured with a balance; weight is measured with a spring balance.\n- Mass is scalar; weight is a vector directed towards the attracting body.\n- Mass is essentially constant with location; weight varies with gravitational field strength. Any three.\n\n4. Figure and extraction status\nThe following source questions remain dependent on original visual evidence: weekend assignment 3 (micrometer), 7 (vernier calliper), 10 (micrometer), theory 2(a) and 2(b) (micrometer), theory 3 (vernier calliper) and theory 4 (vernier calliper). Their values are not supplied here. The corrupted theory item 5 is also not reconstructed. The source's micrometer Example 3.2 gives 17.00 mm + 0.11 mm = 17.11 mm but prints 17.1 mm and 1.711 cm; the corrected arithmetic is 17.11 mm = 1.711 cm. A delivery correction is still required to prevent the inconsistent source answer from being presented as correct.\n\nSUMMARY\nUse a balance for mass, a spring balance for weight, a vernier calliper for internal diameters, and a micrometer for small external diameters. Convert mass to kilograms before using W = mg. Figure-based readings must wait for the actual figures; do not guess from multiple-choice options.\n\n5. Source figure answers and source corrections\nThe rendered original Week Two PDF shows the theory figures. Readings from the visible diagrams are:\n- Theory 2(a), micrometer: sleeve 3.50 mm + thimble 17 × 0.01 mm = 3.67 mm.\n- Theory 2(b), micrometer: sleeve 3.00 mm + thimble 25 × 0.01 mm = 3.25 mm.\n- Theory 3, vernier callipers: main scale 1.90 cm + 5 × 0.01 cm = 1.95 cm.\n- Theory 4, vernier callipers: main scale 1.60 cm + 8 × 0.01 cm = 1.68 cm.\n- Theory 5 asks for three base units used in mechanics: metre, kilogram and second. The seven SI base units are listed in the Week One key.\nThe original micrometer Example 3.2 gives 17.00 mm + 0.11 mm = 17.1 mm but then prints 1.711 cm. The correct sum is 17.11 mm = 1.711 cm. The 17.1 mm figure is a source arithmetic/rounding typo.\nThe three weekend-assignment figures for questions 3, 7 and 10 are not present in the rendered source PDF. The consolidated replacement lesson supplies three clearly labelled original practice figures with answers; these are replacements, not reconstructions of the missing source diagrams.\n",
+      "body_sha256": "0d19d56ccc73d2f784b425cd80f032be0267fe8833b50ac3cb5354d4190d11b6",
+      "practice": [
+        {
+          "id": "W2KEY-Q1",
+          "question": "Define length and time.",
+          "answer": "Length is the distance between two points. Time is the duration or interval between events.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct definition of length.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct definition of time.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q2",
+          "question": "List five instruments used to measure length.",
+          "answer": "Metre rule, measuring tape, vernier callipers, micrometer screw gauge and ordinary callipers (among other suitable instruments).",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "One suitable instrument each.",
+              "marks": 5
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q3",
+          "question": "State four differences between mass and weight.",
+          "answer": "Mass is amount of matter; weight is gravitational force. Mass is measured in kg; weight in N. Mass is measured with a balance; weight with a spring balance. Mass is scalar; weight is vector. Mass is essentially constant with location; weight changes with gravitational field strength. Any four.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "One valid difference each.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q4",
+          "question": "Calculate the weight of a 5000 g object where g = 10 m s⁻².",
+          "answer": "5000 g = 5 kg. W = mg = 5 × 10 = 50 N.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Converts to 5 kg.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 50 N.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q5",
+          "question": "Which instrument is suitable for measuring the internal diameter of a test tube: metre rule, pair of callipers, micrometer screw gauge or tape rule?",
+          "answer": "A pair of callipers; vernier callipers with internal jaws provide a direct internal-diameter reading.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects a pair of callipers/vernier callipers.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q6",
+          "question": "Which statement about mass and weight is not correct: mass is scalar; weight depends on gravitational pull; mass is the same on Earth and Moon; weight is the same at equator and poles?",
+          "answer": "The last statement is incorrect. Effective gravitational acceleration varies with latitude, so weight is generally greater at the poles than at the equator.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Identifies the equator/poles statement.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q7",
+          "question": "Which instrument measures weight?",
+          "answer": "A spring balance or force meter.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Names spring balance/force meter.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q8",
+          "question": "Which instrument is best for delivering a fixed, accurately measured small volume of liquid?",
+          "answer": "A pipette. A burette is used for measured variable volumes.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects pipette and distinguishes burette if explained.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q9",
+          "question": "State the dimension of force.",
+          "answer": "Force = mass × acceleration, so [F] = [M][LT⁻²] = [MLT⁻²].",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Gives [MLT⁻²].",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q10",
+          "question": "Which instrument measures the diameter of a thin constantan wire accurately?",
+          "answer": "A micrometer screw gauge.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Names micrometer screw gauge.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q11",
+          "question": "What does a hydrometer measure?",
+          "answer": "The relative density (specific gravity) of a liquid.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "States relative density of a liquid.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q12",
+          "question": "Name a suitable instrument for each: (a) weight (b) internal diameter of a test tube (c) mass (d) length of a table (e) diameter of a wire.",
+          "answer": "(a) spring balance; (b) vernier callipers; (c) beam/electronic balance; (d) metre rule or tape; (e) micrometer screw gauge.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "One correct instrument for each item.",
+              "marks": 5
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q13",
+          "question": "State three differences between mass and weight.",
+          "answer": "Mass is amount of matter while weight is gravitational force; mass unit kg while weight unit N; mass measured with a balance while weight measured with a spring balance; mass is scalar while weight is vector; mass is essentially constant while weight changes with g. Any three.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "One valid difference each.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q14",
+          "question": "Read micrometer diagram (a) in the original Week Two theory section.",
+          "answer": "3.67 mm. Sleeve reading = 3.50 mm; thimble reading = 17 × 0.01 mm = 0.17 mm; total = 3.67 mm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Sleeve reading 3.50 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Thimble reading 0.17 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Total 3.67 mm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q15",
+          "question": "Read micrometer diagram (b) in the original Week Two theory section.",
+          "answer": "3.25 mm. Sleeve reading = 3.00 mm; thimble reading = 25 × 0.01 mm = 0.25 mm; total = 3.25 mm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Sleeve reading 3.00 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Thimble reading 0.25 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Total 3.25 mm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q16",
+          "question": "Read the vernier calliper diagram for the glass block in the original Week Two theory section.",
+          "answer": "1.95 cm. Main-scale reading = 1.90 cm; the fifth vernier division coincides, giving 0.05 cm; total = 1.95 cm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Main scale 1.90 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Vernier reading 0.05 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Total 1.95 cm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q17",
+          "question": "Read the second vernier calliper diagram in the original Week Two theory section.",
+          "answer": "1.68 cm. Main-scale reading = 1.60 cm; the eighth vernier division coincides, giving 0.08 cm; total = 1.68 cm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Main scale 1.60 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Vernier reading 0.08 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Total 1.68 cm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q18",
+          "question": "The source asks for three SI base units used in mechanical measurement. Name them.",
+          "answer": "Metre (m), kilogram (kg) and second (s).",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Metre (m).",
+              "marks": 1
+            },
+            {
+              "criterion": "Kilogram (kg).",
+              "marks": 1
+            },
+            {
+              "criterion": "Second (s).",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "W2KEY-Q19",
+          "question": "Correct the arithmetic in the source's micrometer Example 3.2: sleeve = 17.00 mm; thimble = 11 × 0.01 mm.",
+          "answer": "Thimble = 0.11 mm. Total = 17.00 + 0.11 = 17.11 mm = 1.711 cm. The printed 17.1 mm is incorrect.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Calculates 0.11 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 17.11 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Converts to 1.711 cm and identifies the printed 17.1 mm typo.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Sow the Seed Schools SS1 Physics First Term source",
+          "locator": "Source SS1-SRC-5c0149cda71d; Week Two body SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e; evaluation lines 221–223 and 287–289; weekend assignment lines 294–309; theory lines 311–340.",
+          "url": null,
+          "rights": "Question topics and locators used; answers independently authored. No figure value copied or inferred.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics; authored answer-key supplement."
+        },
+        {
+          "title": "eLearn Pakistan, Physics IX, Unit 1: Physical Quantities and Measurement",
+          "locator": "Measurement instruments and reading procedures; accessed 2026-11-11.",
+          "url": "https://www.elearn.gov.pk/onlinepdf/physics/9physics/pdfEng/chapter1.pdf",
+          "rights": "Used to corroborate instrument functions; no text copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "eLearn Pakistan, Physics IX, Unit 1."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T1-W02-CONSOLIDATED",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Physics",
+      "title": "Week Two consolidated measurement lesson and answer key",
+      "objectives": [
+        "Explain measurement as a number and unit and select suitable measuring instruments.",
+        "Measure length using metre rules, tape rules, callipers and vernier callipers.",
+        "Use the main-scale and vernier-scale method to obtain a vernier reading.",
+        "Select clocks, watches, stop clocks and stopwatches for appropriate time intervals.",
+        "Define mass and identify balances used to measure it.",
+        "Define weight, distinguish it from mass and calculate weight using W = mg.",
+        "Identify the main parts of a micrometer screw gauge and state what it measures.",
+        "Define pitch and calculate the least count from pitch and circular-scale divisions.",
+        "Find an observed reading by adding the main-scale reading to the circular-scale reading multiplied by the least count.",
+        "Identify zero error and calculate the corrected reading using the signed zero error.",
+        "Express a micrometer reading consistently in millimetres and centimetres.",
+        "Define volume and convert between m³, cm³, litres and millilitres.",
+        "Calculate volumes of regular solids using geometrical formulae.",
+        "Measure the volume of an irregular solid by water displacement.",
+        "Measure liquid volume using a graduated cylinder and read the meniscus correctly.",
+        "Explain the uses of a pipette and burette and choose an instrument for the required precision.",
+        "Identify common measurement errors including parallax and trapped air.",
+        "Answer text-based questions on length, time, measuring instruments, mass and weight.",
+        "Solve the source weight calculation using W = mg and consistent SI units.",
+        "Identify the correct instruments for internal diameter, wire diameter, mass, weight and liquid volume.",
+        "Recognise ambiguous or defective questions and identify questions that require missing figures.",
+        "Use accurate dimensions and distinguish answerable questions from figure-dependent items."
+      ],
+      "body": "WEEK TWO — CONSOLIDATED MEASUREMENT AND ANSWER-KEY LESSON\n\nThis replacement combines the original Week Two teaching objectives into one continuous student lesson. It consolidates the measurement-basics, micrometer-reading, volume-measurement and keyed-assessment supplements. The original source is replaced because its micrometer arithmetic and table-tennis measurement example are incorrect. The source's ambiguous question about “the dimension of a compound” is explicitly withdrawn pending teacher rewriting.\n\nMEASUREMENT OF LENGTH, TIME, MASS AND WEIGHT\n\n1. Measurement and units\nA measurement is a numerical value together with a unit. Writing only “5” does not identify what was measured; “5 cm” is a length.\nUse an instrument whose range and smallest scale division are suitable for the object. Read scales at eye level to reduce parallax error.\n\n2. Measurement of length\nA metre rule is suitable for lengths of a few centimetres up to about one metre. Its smallest common division is 1 mm (0.1 cm).\nA tape rule is useful for longer distances and curved or flexible measurements.\nGood practice:\n- Place the zero mark at one end of the object.\n- Keep the rule straight and aligned with the length being measured.\n- Read the scale with the eye vertically above the mark.\n- If the zero edge is damaged, start from another known mark and subtract the starting reading from the final reading.\n- Record the unit and suitable precision.\n\n3. Callipers\nOrdinary external callipers have curved legs that touch the outside of an object. Internal callipers have inward-facing legs used to compare an internal diameter or width. The distance between the legs is then measured against a rule.\nVernier callipers combine a main scale and a sliding vernier scale. They can measure external dimensions, internal diameters and depths, depending on the jaws/probe.\nLeast count (LC) is the smallest difference the scale can resolve. For a common direct vernier:\nLC = 1 main-scale division − 1 vernier-scale division.\nA reading is:\nReading = main-scale reading + (coinciding vernier division × LC).\nThe instrument's actual scale must be checked; not all vernier callipers have the same least count.\n\nWorked example — vernier reading\nA vernier calliper has a least count of 0.01 cm. The main-scale reading is 4.30 cm and the 7th vernier division coincides.\nVernier contribution = 7 × 0.01 = 0.07 cm.\nObserved reading = 4.30 + 0.07 = 4.37 cm.\nThis is a new example; it does not claim to reconstruct the missing original Fig. 3.3.\n\n4. Micrometer screw gauge\nA micrometer screw gauge measures very small external dimensions, such as wire diameter or sheet thickness. The full reading procedure, least count and zero-error correction are taught in the companion lesson “Reading a micrometer screw gauge” (SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING). Use that lesson for the main-scale/circular-scale reading method and worked examples; do not guess values from the missing source Fig. 3.4.\n\n5. Measurement of time\nClocks and watches are suitable for longer time intervals, such as minutes or hours. Stop clocks and stopwatches are used for shorter intervals, such as seconds.\nFor a repeated event, measure the time for several cycles and divide by the number of cycles to estimate the period:\nPeriod T = total time / number of cycles.\nTiming several cycles reduces the relative effect of reaction-time error. Use the same start/stop rule each time and repeat the measurement when possible.\n\n6. Measurement of mass\nMass is a measure of the amount of matter in a body. Its SI unit is the kilogram (kg). Mass is a scalar quantity and does not change simply because the object is moved to another location.\nA balance compares an object's mass with standard masses or uses a calibrated mechanism to measure mass. Examples include:\n- Beam balance: compares the object with standard masses.\n- Lever or platform balance: uses a lever mechanism for weighing loads.\n- Electronic/digital balance: uses a calibrated sensor and displays mass.\nUse a level, calibrated balance and allow the reading to settle before recording it.\n\n7. Weight and how it differs from mass\nWeight is the gravitational force acting on a body:\nW = mg\nwhere W is weight in newtons (N), m is mass in kilograms (kg), and g is gravitational field strength in N kg⁻¹ or m s⁻².\nNear Earth's surface, g is approximately 9.8 m s⁻²; school calculations may specify 10 m s⁻².\nMass and weight are different:\n- Mass is the amount of matter; weight is a gravitational force.\n- Mass is scalar; weight is a vector directed towards the attracting body.\n- Mass is measured in kg; weight in N.\n- Mass is measured with a balance; weight can be measured with a spring balance/force meter.\n- Mass is essentially unchanged from place to place; weight changes if gravitational field strength changes.\nDo not use grams as the mass value in W = mg unless it is first converted to kilograms.\n\nWorked example — weight\nA body has mass 5,000 g. Find its weight where g = 10 m s⁻².\nConvert mass: 5,000 g = 5 kg.\nW = mg = 5 × 10 = 50 N.\n\n8. Choosing the correct instrument\n- Metre rule or tape rule: length.\n- Ordinary callipers: compare external or internal dimensions; measure the jaw separation against a rule.\n- Vernier callipers: external/internal diameter and depth, using main and vernier scales.\n- Micrometer screw gauge: very small external dimensions such as wire diameter and sheet thickness.\n- Clock/watch: longer time intervals.\n- Stopwatch/stop clock: short time intervals.\n- Balance: mass.\n- Spring balance/force meter: weight or force.\n\nCOMMON ERRORS\n- Every measurement needs a number and a unit.\n- Do not confuse mass (kg) with weight (N).\n- Convert grams to kilograms before using W = mg.\n- A spring balance measures force/weight, not mass directly.\n- Read scales at eye level to reduce parallax.\n- A vernier reading uses the main-scale reading plus the coinciding vernier contribution.\n- Use the micrometer companion lesson for zero-error correction; do not invent readings from the missing source diagram.\n\nSUMMARY\nMeasure length with a rule, tape or callipers; time with clocks or stopwatches; mass with a balance; and weight with a spring balance. Mass is measured in kilograms, while weight is the gravitational force W = mg measured in newtons. A vernier calliper combines main-scale and vernier readings; a micrometer uses its sleeve and circular scale.\n\nSOURCE EXAMPLE CORRECTION — TABLE-TENNIS TABLE LENGTH\nThe original Week Two example says “20 metres” for the length of a table-tennis board. That value is incorrect. The International Table Tennis Federation specifies a playing surface 2.74 m long and 1.525 m wide. Use 2.74 m for the table length in measurement examples; do not repeat the source's 20 m value.\n\n\nMICROMETER SCREW GAUGE: HOW TO READ IT\n\nA micrometer screw gauge measures very small external dimensions, such as the diameter of a thin wire or the thickness of a sheet. The Week Two source names these uses and gives a reading increment of 0.01 mm, but it does not state a complete reading rule. This supplement supplies that rule. It is not a transcription of the source, and no value is taken from the uninspected Fig. 3.4.\n\n1. Main parts\n- Frame: supports the instrument.\n- Anvil: the fixed measuring face.\n- Spindle: the moving measuring face.\n- Sleeve or barrel: carries the main (linear) scale and its reference line.\n- Thimble: carries the circular scale and turns the screw.\n- Ratchet stop: helps apply gentle, repeatable pressure.\n- Lock: holds the spindle in position when a reading is being recorded.\n\n2. Pitch and least count\nThe pitch is the distance the spindle advances during one complete turn of the thimble. The least count (LC) is the distance represented by one division on the circular scale:\n\nLC = pitch ÷ number of circular-scale divisions.\n\nFor example, if the pitch is 0.5 mm and the circular scale has 50 equal divisions:\n\nLC = 0.5 mm ÷ 50 = 0.01 mm.\n\nDo not assume every instrument has the same pitch or number of divisions. Read the instrument's stated scale and calculate its least count.\n\n3. Taking an observed reading\n1. Check that the measuring faces are clean.\n2. Close the anvil and spindle gently with the ratchet. Check whether the zero marks coincide; if not, determine the zero error.\n3. Place the object between the faces and turn the ratchet until it grips gently. Do not force the thimble tight.\n4. Read the last main-scale mark visible before the thimble edge. This is the main-scale reading (MSR).\n5. Read the circular-scale division that coincides with the sleeve's reference line. Multiply that division by the least count to obtain the circular-scale reading.\n6. Add the two parts:\n\nObserved reading = MSR + (circular-scale division × LC).\n\n4. Zero error and correction\nZero error is the reading shown when the measuring faces are fully closed. If the instrument reads zero when closed, its zero error is zero. If it does not, record the error with its sign.\n\nCorrect reading = observed reading − zero error.\n\nTherefore:\n- A positive zero error is subtracted from the observed reading.\n- A negative zero error is also subtracted as a signed number, so its magnitude is added.\n\nAlways write the sign. Do not treat a negative zero error as positive.\n\n5. Worked example (new example; not read from the source figure)\nA micrometer has a pitch of 0.5 mm and 50 circular divisions. The main scale reading is 12.50 mm and the 34th circular division coincides with the reference line. There is no zero error.\n\nLC = 0.5 ÷ 50 = 0.01 mm.\nCircular-scale reading = 34 × 0.01 = 0.34 mm.\nObserved reading = 12.50 + 0.34 = 12.84 mm.\nCorrect reading = 12.84 − 0 = 12.84 mm.\nSince 10 mm = 1 cm, 12.84 mm = 1.284 cm.\n\nThe millimetre and centimetre readings agree.\n\n6. Common errors to avoid\n- Do not confuse pitch with least count.\n- Do not multiply the main-scale reading by the least count.\n- Do not read a circular division that does not meet the reference line.\n- Do not forget zero correction.\n- Do not over-tighten the object; use the ratchet.\n- Keep units with every measurement.\n\nPractice\nShow the least-count calculation and the reading steps. The marks below are authored practice marks, not marks printed in the school source.\n\nMEASUREMENT OF VOLUME: REGULAR SOLIDS, IRREGULAR SOLIDS AND LIQUIDS\n\n1. What is volume?\nVolume is the amount of three-dimensional space occupied by an object or substance. The SI unit of volume is the cubic metre (m³).\nCommon units:\n- 1 m³ = 1,000,000 cm³.\n- 1 litre (L) = 1 dm³ = 1,000 cm³.\n- 1 millilitre (mL) = 1 cm³.\n- 1 cm³ = 10⁻⁶ m³.\nAlways write the unit with the numerical answer.\n\n2. Measuring the volume of regular solids\nA regular solid has a shape for which a geometrical formula can be used. Measure the required dimensions with a suitable instrument, then calculate its volume.\n- Cube: V = l³.\n- Cuboid/rectangular block: V = l × w × h.\n- Cylinder: V = πr²h.\n- Sphere: V = 4/3 πr³.\n- Triangular prism: V = area of triangular cross-section × length.\nUse metres for dimensions if the required answer is in m³, or centimetres if the answer is in cm³.\n\nWorked example 1 — cuboid\nA block is 4 cm long, 3 cm wide and 2 cm high.\nV = lwh = 4 × 3 × 2 = 24 cm³.\n\nWorked example 2 — cylinder\nA cylinder has radius 2 cm and height 10 cm.\nV = πr²h = π × 2² × 10 = 40π ≈ 125.7 cm³.\n\n3. Measuring the volume of an irregular solid by displacement\nAn irregular solid has no simple geometrical formula for its volume. If it does not dissolve in or react with the liquid, use a graduated measuring cylinder:\n1. Pour enough water into the cylinder to cover the object.\n2. Read and record the initial water volume V₁ at eye level.\n3. Lower the object gently until it is completely submerged. Remove trapped air bubbles.\n4. Read the final volume V₂ at eye level.\n5. Volume of the solid = V₂ − V₁.\nThe rise in water level is equal to the volume of the submerged object.\n\nWorked example 3 — displacement\nThe initial water reading is 35 cm³. After a stone is fully submerged, the reading is 48 cm³.\nVolume of stone = 48 − 35 = 13 cm³.\n\nIf an object floats, attach it to a sinker that is fully submerged. Measure the displacement due to the sinker alone and then due to the sinker plus the object. The difference is the object's volume. Ensure the sinker does not trap air and account for its own volume.\n\n4. Measuring the volume of liquids\nA graduated measuring cylinder is used for ordinary liquid-volume measurements. Place it on a level surface and read the scale at eye level to avoid parallax error.\nFor a liquid that forms a concave meniscus, such as water in clean glass, read the bottom of the meniscus. For a convex meniscus, such as mercury in glass, read the top of the meniscus.\nOther instruments:\n- A pipette is designed to transfer a specified volume accurately (a volumetric pipette delivers one fixed calibrated volume).\n- A burette delivers measured, variable volumes, commonly in titration work.\n- A measuring cylinder is convenient for general volume measurement but is usually less precise than a suitable pipette or burette.\nThe resolution/accuracy depends on the instrument's scale and calibration. A graduated cylinder does not universally measure to 1 cm³; inspect its graduations and use the instrument's stated tolerance.\n\n5. Avoiding errors\n- Read the meniscus at eye level; looking from above or below causes parallax error.\n- Keep the cylinder upright on a level surface.\n- Make sure the irregular solid is fully submerged.\n- Remove air bubbles attached to the object.\n- Do not use displacement with an object that dissolves in or reacts with the liquid.\n- Use a sinker for a floating object and subtract the sinker-only displacement.\n- Record the initial and final readings with the same unit and suitable precision.\n- Avoid splashing or losing liquid while lowering the object.\n\n6. Choosing a method\n- Regular solid: measure its dimensions and use the appropriate formula.\n- Irregular solid that sinks and does not react with water: use water displacement.\n- Irregular solid that floats: use a sinker and subtract the sinker-only displacement.\n- Liquid: use a graduated cylinder, pipette or burette according to the required accuracy and volume.\n\nCOMMON ERRORS\n- Volume is three-dimensional; area is two-dimensional.\n- The cylinder formula uses radius, not diameter.\n- Displacement is final reading minus initial reading, not the reverse.\n- The object must be fully submerged for its full volume to be displaced.\n- Read the bottom of a concave water meniscus at eye level.\n- The SI unit is m³; cm³ and mL are equal in volume.\n\nSUMMARY\nRegular solids are measured using geometrical formulae. Irregular solids can be measured by liquid displacement. Liquids are measured with graduated cylinders, pipettes or burettes. Read the meniscus at eye level, record units and choose an instrument whose scale suits the required accuracy.\n\nWEEK TWO: KEYED REVIEW OF MEASUREMENT, MASS AND WEIGHT\n\n1. Evaluation answers\nQ1. Define length and time.\nLength is the distance between two points. Time is the duration between events or the interval during which an event occurs.\nQ2. List five instruments for measuring length.\nExamples: metre rule, measuring tape, vernier callipers, micrometer screw gauge and ordinary callipers (used to compare an internal or external dimension, then measured against a scale). Choose the instrument according to the size and precision required.\nQ3. Differentiate between mass and weight.\nMass is a measure of the amount of matter in a body; its SI unit is kilogram (kg), and it is measured with a balance. Weight is the gravitational force acting on a body; its SI unit is newton (N), and it can be measured with a spring balance. Mass is essentially unchanged when location changes; weight changes when gravitational field strength changes.\nQ4. An object has mass 5000 g. Find its weight where g = 10 m s⁻².\n5000 g = 5 kg. W = mg = 5 × 10 = 50 N.\n\n2. Weekend assignment answers\n1. Most suitable instrument for the internal diameter of a test tube: B, a pair of callipers. In practice, use the internal jaws of vernier callipers when a direct reading is required. A micrometer screw gauge is normally used for small external dimensions.\n2. Incorrect statement about mass and weight: D, “weight at the equator and at the poles is the same”. The effective gravitational acceleration varies with latitude; weight is generally greater at the poles than at the equator for the same mass.\n3. Micrometer diagram reading: NOT KEYED. The figure is absent from the extracted text. Do not infer a reading from the answer options.\n4. Instrument used to measure weight: A, spring balance (force meter).\n5. Best instrument for a small, accurately measured fixed quantity of liquid: B, pipette. A burette is appropriate when a measured but variable delivered volume is required; the question's phrase “small quantity” is imprecise, so the distinction is stated.\n6. Dimension of force: A, [MLT⁻²].\n7. Vernier calliper diagram reading: NOT KEYED. The figure is absent from the extracted text.\n8. Instrument for the diameter of a constantan wire: C, micrometer screw gauge.\n9. Hydrometer measures: C, relative density of a liquid.\n10. Micrometer diagram reading: NOT KEYED. The figure is absent from the extracted text.\n\n3. Theory answers\n1. Suitable instruments:\n(a) Weight of a body — spring balance/force meter.\n(b) Internal diameter of a test tube — vernier callipers with internal jaws.\n(c) Mass of a body — beam or electronic balance.\n(d) “Dimension of a compound” — AMBIGUOUS. The source does not define what “dimension” or “compound” means in this context. The question must be rewritten before it is assessed.\n(e) Length of a table — metre rule or measuring tape.\n(f) Diameter of a wire — micrometer screw gauge.\n2. Micrometer screw-gauge diagrams (a) and (b): NOT KEYED until the original figures are inspected.\n3. Vernier calliper diagram for the glass block: NOT KEYED until the original figure is inspected.\n4. Vernier calliper diagram reading: NOT KEYED until the original figure is inspected.\n5. The extracted question contains 98 repetitions of the word “undefined” caused by U+001F control characters in the legacy .doc text stream. This is an extraction artefact, not a recoverable question. Do not present “undefined” to students or invent the missing words.\n6. State three differences between mass and weight:\n- Mass is the amount of matter; weight is gravitational force.\n- Mass is measured in kg; weight is measured in N.\n- Mass is measured with a balance; weight is measured with a spring balance.\n- Mass is scalar; weight is a vector directed towards the attracting body.\n- Mass is essentially constant with location; weight varies with gravitational field strength. Any three.\n\n4. Figure and extraction status\nThe following source questions remain dependent on original visual evidence: weekend assignment 3 (micrometer), 7 (vernier calliper), 10 (micrometer), theory 2(a) and 2(b) (micrometer), theory 3 (vernier calliper) and theory 4 (vernier calliper). Their values are not supplied here. The corrupted theory item 5 is also not reconstructed. The source's micrometer Example 3.2 gives 17.00 mm + 0.11 mm = 17.11 mm but prints 17.1 mm and 1.711 cm; the corrected arithmetic is 17.11 mm = 1.711 cm. A delivery correction is still required to prevent the inconsistent source answer from being presented as correct.\n\nSUMMARY\nUse a balance for mass, a spring balance for weight, a vernier calliper for internal diameters, and a micrometer for small external diameters. Convert mass to kilograms before using W = mg. Figure-based readings must wait for the actual figures; do not guess from multiple-choice options.\n\n5. Source figure answers and source corrections\nThe rendered original Week Two PDF shows the theory figures. Readings from the visible diagrams are:\n- Theory 2(a), micrometer: sleeve 3.50 mm + thimble 17 × 0.01 mm = 3.67 mm.\n- Theory 2(b), micrometer: sleeve 3.00 mm + thimble 25 × 0.01 mm = 3.25 mm.\n- Theory 3, vernier callipers: main scale 1.90 cm + 5 × 0.01 cm = 1.95 cm.\n- Theory 4, vernier callipers: main scale 1.60 cm + 8 × 0.01 cm = 1.68 cm.\n- Theory 5 asks for three base units used in mechanics: metre, kilogram and second. The seven SI base units are listed in the Week One key.\nThe original micrometer Example 3.2 gives 17.00 mm + 0.11 mm = 17.1 mm but then prints 1.711 cm. The correct sum is 17.11 mm = 1.711 cm. The 17.1 mm figure is a source arithmetic/rounding typo.\nThe three weekend-assignment figures for questions 3, 7 and 10 are not present in the rendered source PDF. The consolidated replacement lesson supplies three clearly labelled original practice figures with answers; these are replacements, not reconstructions of the missing source diagrams.\n\n\n5. Replacement practice figures for missing source diagrams\nThe original rendered source PDF has no diagrams for weekend-assignment questions 3, 7 and 10. The following three companion SVGs are original replacement teaching figures, not reproductions of the missing source diagrams:\n- PHYS-ASSET-T1-W02-REPLACEMENT-MICROMETER-Q3: main scale 5.00 mm; thimble 25 divisions × 0.01 mm; reading 5.25 mm.\n- PHYS-ASSET-T1-W02-REPLACEMENT-VERNIER-Q7: main scale 4.40 cm; third vernier division coincides; reading 4.43 cm.\n- PHYS-ASSET-T1-W02-REPLACEMENT-MICROMETER-Q10: main scale 10.00 mm; thimble 16 divisions × 0.01 mm; reading 10.16 mm.\nThese are replacement practice questions with their own answer keys. They are not claimed to reveal the missing original readings.\n\n6. Source correction register\n- The source says a table-tennis board is 20 m long. The ITTF playing surface is 2.74 m long and 1.525 m wide.\n- Source Example 3.2 adds 17.00 mm and 0.11 mm but prints 17.1 mm. The correct result is 17.11 mm = 1.711 cm.\n- The original theory diagrams are visible and keyed in the answer guide: micrometers 3.67 mm and 3.25 mm; vernier callipers 1.95 cm and 1.68 cm.\n- The original weekend diagrams for questions 3, 7 and 10 are absent from the rendered source PDF; the three original replacement diagrams above provide equivalent practice.\n- The source question “dimension of a compound” is ambiguous and is not assigned a fabricated answer.\n- The source's theory question asking for three SI units is readable in the rendered PDF; answer: metre, kilogram and second.\n\nThis consolidated lesson preserves the measurement objectives, instrument methods, mass/weight relationship, time, volume measurement, micrometer method, reading assignment, text-answerable assessment and corrected source facts. Content approval remains PENDING; formal verification remains DEFERRED.",
+      "body_sha256": "aa89e47533f508c20b2f898ed710dc8a800611a568dcfef6d4300906720a91dd",
+      "practice": [
+        {
+          "id": "BASICS-Q01",
+          "question": "What is a measurement?",
+          "answer": "A measurement is a numerical value expressed with a unit.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States it is a numerical value.",
+              "marks": 1
+            },
+            {
+              "criterion": "States it includes a unit.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q02",
+          "question": "State three good practices when measuring length with a metre rule.",
+          "answer": "Align the zero mark with one end, keep the rule straight, read at eye level, and record the unit. Any three.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "One correct practice.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second correct practice.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third correct practice.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q03",
+          "question": "Match each instrument to the quantity it measures: metre rule, stopwatch, balance, spring balance.",
+          "answer": "Metre rule—length; stopwatch—time interval; balance—mass; spring balance—weight/force.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Metre rule—length.",
+              "marks": 1
+            },
+            {
+              "criterion": "Stopwatch—time.",
+              "marks": 1
+            },
+            {
+              "criterion": "Balance—mass.",
+              "marks": 1
+            },
+            {
+              "criterion": "Spring balance—weight/force.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q04",
+          "question": "Write the formula for the least count of a common direct vernier calliper.",
+          "answer": "LC = 1 main-scale division − 1 vernier-scale division.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies main-scale division.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subtracts one vernier-scale division.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q05",
+          "question": "A vernier calliper has least count 0.01 cm. Main-scale reading is 4.30 cm and the 7th vernier division coincides. Find the reading.",
+          "answer": "Vernier contribution = 7 × 0.01 = 0.07 cm. Reading = 4.30 + 0.07 = 4.37 cm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Calculates vernier contribution 0.07 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Adds to 4.30 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 4.37 cm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q06",
+          "question": "State two uses of a micrometer screw gauge.",
+          "answer": "It measures small external dimensions such as the diameter of a wire or thickness of a sheet of paper.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Wire diameter.",
+              "marks": 1
+            },
+            {
+              "criterion": "Thickness of paper or another suitable small dimension.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q07",
+          "question": "Which time-measuring instrument is suitable for a short time interval of a few seconds?",
+          "answer": "A stopwatch or stop clock.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Names stopwatch or stop clock.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q08",
+          "question": "How can the period of a repeated event be estimated more accurately?",
+          "answer": "Measure the time for several cycles and divide the total time by the number of cycles.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Measures several cycles.",
+              "marks": 1
+            },
+            {
+              "criterion": "Divides total time by number of cycles.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q09",
+          "question": "Define mass and state its SI unit.",
+          "answer": "Mass is a measure of the amount of matter in a body. Its SI unit is kilogram (kg).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines mass as amount of matter.",
+              "marks": 1
+            },
+            {
+              "criterion": "States kg.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q10",
+          "question": "Name two types of balance used to measure mass.",
+          "answer": "Beam balance, lever/platform balance or electronic/digital balance. Any two.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "First valid balance.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second valid balance.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q11",
+          "question": "Define weight and state its SI unit.",
+          "answer": "Weight is the gravitational force acting on a body. Its SI unit is newton (N).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines weight as gravitational force.",
+              "marks": 1
+            },
+            {
+              "criterion": "States N.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q12",
+          "question": "Convert 5,000 g to kilograms.",
+          "answer": "5,000 g ÷ 1,000 = 5 kg.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses 1,000 g = 1 kg.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 5 kg.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q13",
+          "question": "Calculate the weight of a 5 kg body where g = 10 m s⁻².",
+          "answer": "W = mg = 5 × 10 = 50 N.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses W = mg.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 50 N.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q14",
+          "question": "State four differences between mass and weight.",
+          "answer": "Mass is amount of matter; weight is gravitational force. Mass is scalar; weight is vector. Mass unit kg; weight unit N. Mass measured with balance; weight with spring balance. Mass is nearly constant; weight changes with g. Any four.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "One valid difference.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second valid difference.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third valid difference.",
+              "marks": 1
+            },
+            {
+              "criterion": "Fourth valid difference.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q15",
+          "question": "Which instrument measures the internal diameter of a tube accurately? (A) tape rule (B) vernier callipers (C) spring balance (D) stopwatch.",
+          "answer": "B. Vernier callipers.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q16",
+          "question": "A spring balance measures (A) mass (B) length (C) force/weight (D) time.",
+          "answer": "C. Force/weight.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects C.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q17",
+          "question": "The SI unit of mass is (A) gram (B) kilogram (C) newton (D) metre.",
+          "answer": "B. Kilogram.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q18",
+          "question": "The SI unit of weight is (A) kg (B) g (C) N (D) m/s.",
+          "answer": "C. Newton.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects C.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q19",
+          "question": "Why must 5,000 g be converted to 5 kg before using W = mg when g is in m s⁻²?",
+          "answer": "Because the SI unit of mass in the formula is kilogram. Using grams without conversion gives an answer 1,000 times too large.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States mass must be in kilograms.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains the unit-consistency error.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "BASICS-Q20",
+          "question": "Explain why a stopwatch measurement may be repeated several times when measuring a short time interval.",
+          "answer": "Human reaction time introduces random error. Repeating the measurement and averaging the results reduces the effect of random timing variation.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Mentions reaction-time error.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains repetition/averaging reduces random error.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MICRO-MICROMETER-Q1",
+          "question": "A screw gauge has a pitch of 0.5 mm and 50 divisions on its circular scale. The main-scale reading is 6.50 mm and the 32nd circular division coincides with the reference line. Find the least count and the observed reading. There is no zero error.",
+          "answer": "LC = 0.5/50 = 0.01 mm. Circular reading = 32 × 0.01 = 0.32 mm. Observed reading = 6.50 + 0.32 = 6.82 mm.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct least count: 0.01 mm",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct observed reading: 6.82 mm",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MICRO-MICROMETER-Q2",
+          "question": "A micrometer gives an observed reading of 8.27 mm. Its zero error is +0.03 mm. Find the corrected reading.",
+          "answer": "Corrected reading = observed reading − zero error = 8.27 − (+0.03) = 8.24 mm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "States the correction rule: subtract the signed zero error",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes 8.27 − 0.03",
+              "marks": 1
+            },
+            {
+              "criterion": "Corrected reading: 8.24 mm",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MICRO-MICROMETER-Q3",
+          "question": "The main-scale reading is 4.50 mm and the circular scale reading is 18 divisions. The least count is 0.01 mm and the zero error is −0.02 mm. Calculate the corrected reading.",
+          "answer": "Observed reading = 4.50 + (18 × 0.01) = 4.68 mm. Corrected reading = 4.68 − (−0.02) = 4.70 mm.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct observed reading: 4.68 mm",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly adds the negative zero correction to obtain 4.70 mm",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "MICRO-MICROMETER-Q4",
+          "question": "Convert a corrected micrometer reading of 4.70 mm to centimetres.",
+          "answer": "4.70 mm ÷ 10 = 0.470 cm.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Correct conversion: 0.470 cm",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q01",
+          "question": "Define volume and state its SI unit.",
+          "answer": "Volume is the amount of three-dimensional space occupied by an object or substance. Its SI unit is the cubic metre (m³).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines volume as space occupied.",
+              "marks": 1
+            },
+            {
+              "criterion": "States m³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q02",
+          "question": "Convert 1 litre to cubic centimetres and cubic metres.",
+          "answer": "1 L = 1,000 cm³ = 0.001 m³.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Gives 1,000 cm³.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 0.001 m³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q03",
+          "question": "Write formulae for the volumes of a cube, cuboid and cylinder.",
+          "answer": "Cube V = l³; cuboid V = lwh; cylinder V = πr²h.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Cube formula.",
+              "marks": 1
+            },
+            {
+              "criterion": "Cuboid formula.",
+              "marks": 1
+            },
+            {
+              "criterion": "Cylinder formula.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q04",
+          "question": "A cuboid measures 4 cm by 3 cm by 2 cm. Find its volume.",
+          "answer": "V = 4 × 3 × 2 = 24 cm³.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses V = lwh.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 24 cm³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q05",
+          "question": "A cylinder has radius 2 cm and height 10 cm. Calculate its volume.",
+          "answer": "V = πr²h = π × 2² × 10 = 40π ≈ 125.7 cm³.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses πr²h and correct radius.",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes values correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives approximately 125.7 cm³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q06",
+          "question": "The initial water reading in a measuring cylinder is 35 cm³. After a stone is submerged, the reading is 48 cm³. Find the stone's volume.",
+          "answer": "V = 48 − 35 = 13 cm³.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Subtracts initial from final reading.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 13 cm³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q07",
+          "question": "How can the volume of an irregular object that floats be measured by displacement?",
+          "answer": "Attach it to a sinker. Measure the displacement of the sinker alone and then the sinker plus object. Subtract the sinker-only volume from the combined displacement.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses a sinker to submerge the floating object.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subtracts the sinker's own displacement.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q08",
+          "question": "How should the volume of water be read in a graduated cylinder?",
+          "answer": "Place the cylinder upright on a level surface and read the bottom of the concave meniscus at eye level.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Reads at eye level.",
+              "marks": 1
+            },
+            {
+              "criterion": "Reads the bottom of the concave meniscus for water.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q09",
+          "question": "Distinguish between a concave and convex meniscus.",
+          "answer": "A concave meniscus curves upwards at the edges and downwards in the centre; a convex meniscus curves downwards at the edges and upwards in the centre.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correctly describes concave meniscus.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly describes convex meniscus.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q10",
+          "question": "State the main use of a pipette and a burette.",
+          "answer": "A pipette transfers a specified calibrated volume accurately. A burette delivers measured variable volumes, commonly during titration.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Pipette use.",
+              "marks": 1
+            },
+            {
+              "criterion": "Burette use.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q11",
+          "question": "Why is a measuring cylinder generally less precise than a suitable pipette or burette?",
+          "answer": "Its graduations are usually coarser and it is designed for general measurement rather than highly precise delivery of a set or variable volume.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Mentions coarser graduations/lower resolution.",
+              "marks": 1
+            },
+            {
+              "criterion": "Distinguishes its general purpose from precision delivery.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q12",
+          "question": "What is parallax error when reading a measuring cylinder?",
+          "answer": "It is a reading error caused by viewing the scale from above or below eye level rather than looking horizontally at the meniscus.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies incorrect viewing angle.",
+              "marks": 1
+            },
+            {
+              "criterion": "States eye-level reading prevents it.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q13",
+          "question": "Why should you not assume every graduated cylinder measures accurately to 1 cm³?",
+          "answer": "Different cylinders have different scale divisions and calibrations. The reading resolution and uncertainty depend on the actual instrument.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that graduations differ.",
+              "marks": 1
+            },
+            {
+              "criterion": "Links accuracy/resolution to the instrument's scale/calibration.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q14",
+          "question": "The volume of an irregular solid is measured using (A) a spring balance (B) displacement of liquid (C) a thermometer (D) a stopwatch.",
+          "answer": "B. Displacement of liquid.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q15",
+          "question": "A stone is placed in a measuring cylinder. The water rises from 22 cm³ to 37 cm³. Find the volume of the stone.",
+          "answer": "37 − 22 = 15 cm³.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Subtracts readings correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 15 cm³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q16",
+          "question": "Convert 250 cm³ to cubic metres.",
+          "answer": "250 cm³ = 250 × 10⁻⁶ m³ = 2.5 × 10⁻⁴ m³.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses 1 cm³ = 10⁻⁶ m³.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 2.5 × 10⁻⁴ m³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q17",
+          "question": "Describe four steps for measuring the volume of an irregular solid by displacement.",
+          "answer": "Record initial water volume; fully submerge the object; record final water volume; subtract initial from final. Remove bubbles and read at eye level.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Records initial reading.",
+              "marks": 1
+            },
+            {
+              "criterion": "Submerges the object fully.",
+              "marks": 1
+            },
+            {
+              "criterion": "Records final reading.",
+              "marks": 1
+            },
+            {
+              "criterion": "Subtracts initial from final.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "VOLUME-Q18",
+          "question": "Which instrument is most appropriate for delivering a fixed accurately measured volume in a laboratory? (A) beaker (B) volumetric pipette (C) ruler (D) spring balance.",
+          "answer": "B. Volumetric pipette.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q1",
+          "question": "Define length and time.",
+          "answer": "Length is the distance between two points. Time is the duration or interval between events.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct definition of length.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct definition of time.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q2",
+          "question": "List five instruments used to measure length.",
+          "answer": "Metre rule, measuring tape, vernier callipers, micrometer screw gauge and ordinary callipers (among other suitable instruments).",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "One suitable instrument each.",
+              "marks": 5
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q3",
+          "question": "State four differences between mass and weight.",
+          "answer": "Mass is amount of matter; weight is gravitational force. Mass is measured in kg; weight in N. Mass is measured with a balance; weight with a spring balance. Mass is scalar; weight is vector. Mass is essentially constant with location; weight changes with gravitational field strength. Any four.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "One valid difference each.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q4",
+          "question": "Calculate the weight of a 5000 g object where g = 10 m s⁻².",
+          "answer": "5000 g = 5 kg. W = mg = 5 × 10 = 50 N.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Converts to 5 kg.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 50 N.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q5",
+          "question": "Which instrument is suitable for measuring the internal diameter of a test tube: metre rule, pair of callipers, micrometer screw gauge or tape rule?",
+          "answer": "A pair of callipers; vernier callipers with internal jaws provide a direct internal-diameter reading.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects a pair of callipers/vernier callipers.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q6",
+          "question": "Which statement about mass and weight is not correct: mass is scalar; weight depends on gravitational pull; mass is the same on Earth and Moon; weight is the same at equator and poles?",
+          "answer": "The last statement is incorrect. Effective gravitational acceleration varies with latitude, so weight is generally greater at the poles than at the equator.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Identifies the equator/poles statement.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q7",
+          "question": "Which instrument measures weight?",
+          "answer": "A spring balance or force meter.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Names spring balance/force meter.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q8",
+          "question": "Which instrument is best for delivering a fixed, accurately measured small volume of liquid?",
+          "answer": "A pipette. A burette is used for measured variable volumes.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects pipette and distinguishes burette if explained.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q9",
+          "question": "State the dimension of force.",
+          "answer": "Force = mass × acceleration, so [F] = [M][LT⁻²] = [MLT⁻²].",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Gives [MLT⁻²].",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q10",
+          "question": "Which instrument measures the diameter of a thin constantan wire accurately?",
+          "answer": "A micrometer screw gauge.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Names micrometer screw gauge.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q11",
+          "question": "What does a hydrometer measure?",
+          "answer": "The relative density (specific gravity) of a liquid.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "States relative density of a liquid.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q12",
+          "question": "Name a suitable instrument for each: (a) weight (b) internal diameter of a test tube (c) mass (d) length of a table (e) diameter of a wire.",
+          "answer": "(a) spring balance; (b) vernier callipers; (c) beam/electronic balance; (d) metre rule or tape; (e) micrometer screw gauge.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "One correct instrument for each item.",
+              "marks": 5
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q13",
+          "question": "State three differences between mass and weight.",
+          "answer": "Mass is amount of matter while weight is gravitational force; mass unit kg while weight unit N; mass measured with a balance while weight measured with a spring balance; mass is scalar while weight is vector; mass is essentially constant while weight changes with g. Any three.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "One valid difference each.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q14",
+          "question": "Read micrometer diagram (a) in the original Week Two theory section.",
+          "answer": "3.67 mm. Sleeve reading = 3.50 mm; thimble reading = 17 × 0.01 mm = 0.17 mm; total = 3.67 mm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Sleeve reading 3.50 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Thimble reading 0.17 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Total 3.67 mm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q15",
+          "question": "Read micrometer diagram (b) in the original Week Two theory section.",
+          "answer": "3.25 mm. Sleeve reading = 3.00 mm; thimble reading = 25 × 0.01 mm = 0.25 mm; total = 3.25 mm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Sleeve reading 3.00 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Thimble reading 0.25 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Total 3.25 mm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q16",
+          "question": "Read the vernier calliper diagram for the glass block in the original Week Two theory section.",
+          "answer": "1.95 cm. Main-scale reading = 1.90 cm; the fifth vernier division coincides, giving 0.05 cm; total = 1.95 cm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Main scale 1.90 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Vernier reading 0.05 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Total 1.95 cm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q17",
+          "question": "Read the second vernier calliper diagram in the original Week Two theory section.",
+          "answer": "1.68 cm. Main-scale reading = 1.60 cm; the eighth vernier division coincides, giving 0.08 cm; total = 1.68 cm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Main scale 1.60 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Vernier reading 0.08 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Total 1.68 cm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q18",
+          "question": "The source asks for three SI base units used in mechanical measurement. Name them.",
+          "answer": "Metre (m), kilogram (kg) and second (s).",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Metre (m).",
+              "marks": 1
+            },
+            {
+              "criterion": "Kilogram (kg).",
+              "marks": 1
+            },
+            {
+              "criterion": "Second (s).",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W2KEY-Q19",
+          "question": "Correct the arithmetic in the source's micrometer Example 3.2: sleeve = 17.00 mm; thimble = 11 × 0.01 mm.",
+          "answer": "Thimble = 0.11 mm. Total = 17.00 + 0.11 = 17.11 mm = 1.711 cm. The printed 17.1 mm is incorrect.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Calculates 0.11 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 17.11 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Converts to 1.711 cm and identifies the printed 17.1 mm typo.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "REPLACEMENT-Q3",
+          "question": "Use the original replacement micrometer diagram PHYS-ASSET-T1-W02-REPLACEMENT-MICROMETER-Q3. What is the reading?",
+          "answer": "5.25 mm: 5.00 mm on the sleeve + 25 × 0.01 mm = 0.25 mm on the thimble.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Sleeve reading 5.00 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Thimble reading 0.25 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Total 5.25 mm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "REPLACEMENT-Q7",
+          "question": "Use the original replacement vernier diagram PHYS-ASSET-T1-W02-REPLACEMENT-VERNIER-Q7. What is the reading?",
+          "answer": "4.43 cm: main scale 4.40 cm + third vernier division 0.03 cm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Main scale 4.40 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Vernier reading 0.03 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Total 4.43 cm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "REPLACEMENT-Q10",
+          "question": "Use the original replacement micrometer diagram PHYS-ASSET-T1-W02-REPLACEMENT-MICROMETER-Q10. What is the reading?",
+          "answer": "10.16 mm: 10.00 mm on the sleeve + 16 × 0.01 mm = 0.16 mm on the thimble.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Sleeve reading 10.00 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Thimble reading 0.16 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Total 10.16 mm.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Sow the Seed Schools SS1 Physics First Term source",
+          "locator": "Source SS1-SRC-5c0149cda71d; original Week Two parsed body SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e; rendered PDF pages 6–9.",
+          "url": null,
+          "rights": "Source objectives and assessment question topics referenced; explanations, answer keys and replacement diagrams independently authored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics; consolidated authored correction lesson."
+        },
+        {
+          "title": "International Table Tennis Federation, Laws of Table Tennis 2021, section 2.1.1",
+          "locator": "Playing surface dimensions 2.74 m × 1.525 m; accessed 2026-11-11.",
+          "url": "https://db.ittf.com/sites/default/files/public/2021-06/2021ITTFHandbook.pdf",
+          "rights": "Used to verify dimensions; no text copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "ITTF, Laws of Table Tennis, 2.1.1."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T1-W01-CONSOLIDATED",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Physics",
+      "title": "Week One consolidated Physics, laboratory and dimensional analysis lesson",
+      "objectives": [
+        "Define Physics and identify major branches and applications.",
+        "Define physical quantities and distinguish fundamental from derived quantities.",
+        "List the seven SI base quantities and units.",
+        "Identify units and dimensions of common derived quantities.",
+        "Use M, L and T to derive dimensions of density, velocity, acceleration, force and pressure.",
+        "Use dimensional analysis to check equations and state its limitations.",
+        "Explain why physics students use a laboratory.",
+        "Identify common measuring instruments and state what each measures.",
+        "Recognise common apparatus used in introductory physics activities.",
+        "Apply basic safety rules before, during and after a practical activity.",
+        "State how to report hazards and respond to an emergency.",
+        "Describe a standard scientific-method sequence and answer the source evaluation question.",
+        "State the seven SI base quantities and their correct unit symbols.",
+        "Classify the Week One quantities as fundamental or derived.",
+        "Answer the Week One evaluation, weekend assignment and theory questions with dimensional working.",
+        "Identify a defective multiple-choice question rather than force a unique answer."
+      ],
+      "body": "WEEK ONE — CONSOLIDATED INTRODUCTION TO PHYSICS, LABORATORY, QUANTITIES AND DIMENSIONS\n\nThis replacement combines the complete Week One teaching and assessment supplements into one student lesson. It replaces the original source row because the source contains incorrect SI symbols, incomplete unit/dimension tables, blank derivation cells and assessment questions that are not taught or are defective.\n\nINTRODUCTION TO PHYSICS, PHYSICAL QUANTITIES, SI UNITS AND DIMENSIONS\n\n1. What is Physics?\nPhysics is the branch of science that studies matter, energy, motion, forces and the interactions that explain natural events. It uses observation, measurement, experiments, mathematical relationships and models to describe and predict how the physical world behaves.\nPhysics is important in engineering, transport, electricity generation, communication, medicine, construction, manufacturing and agriculture.\n\n2. Branches of Physics\n- Mechanics: motion, forces, equilibrium and energy.\n- Heat and thermodynamics: temperature, heat transfer and thermal behaviour.\n- Optics: light, mirrors, lenses and optical instruments.\n- Acoustics/wave physics: sound and other wave phenomena.\n- Electricity and magnetism: electric charges, current, fields and magnetic effects.\n- Atomic and nuclear physics: atoms, nuclei, radioactivity and nuclear processes.\n- Electronics: the control and use of electrical signals and devices.\nThese branches overlap. For example, medical imaging uses ideas from waves, electricity, magnetism and modern physics.\n\n3. Physical quantities and measurement\nA physical quantity is a property that can be measured and expressed as a number together with a unit.\nA measurement is incomplete if the unit is omitted. For example, writing 5 for a length is incomplete; 5 m identifies both the numerical value and the unit.\nPhysical quantities are commonly classified as:\n- Fundamental (base) quantities: quantities selected as independent starting points in a system of units.\n- Derived quantities: quantities defined by mathematical combinations of base quantities.\n\n4. The seven SI base quantities and units\n1. Length — metre (m)\n2. Mass — kilogram (kg)\n3. Time — second (s)\n4. Electric current — ampere (A)\n5. Thermodynamic temperature — kelvin (K)\n6. Amount of substance — mole (mol)\n7. Luminous intensity — candela (cd)\nThe SI system uses these seven base quantities to define many derived quantities. Do not confuse a unit symbol with the name of the quantity.\n\n5. Derived quantities, units and dimensions\nA derived quantity is expressed using one or more base quantities.\nExamples:\n- Area = length × length; unit m²; dimension [L²].\n- Volume = length × length × length; unit m³; dimension [L³].\n- Speed/velocity = distance ÷ time; unit m s⁻¹; dimension [L T⁻¹].\n- Acceleration = change in velocity ÷ time; unit m s⁻²; dimension [L T⁻²].\n- Density = mass ÷ volume; unit kg m⁻³; dimension [M L⁻³].\n- Force = mass × acceleration; unit newton (N) = kg m s⁻²; dimension [M L T⁻²].\n- Pressure = force ÷ area; unit pascal (Pa) = N m⁻²; dimension [M L⁻¹ T⁻²].\n- Work/energy = force × distance; unit joule (J) = N m; dimension [M L² T⁻²].\n- Power = work ÷ time; unit watt (W) = J s⁻¹; dimension [M L² T⁻³].\n\n6. What are dimensions?\nDimensions describe how a physical quantity depends on base quantities, independent of the units chosen.\nIn mechanics, the common base dimensions are:\n- Mass: [M]\n- Length: [L]\n- Time: [T]\nOther base dimensions include electric current [I] and thermodynamic temperature [Θ].\nFor example, velocity has dimension [L T⁻¹], whether it is measured in m/s, km/h or another consistent unit. Its unit changes, but its dimension does not.\n\n7. Dimensional analysis\nDimensional analysis expresses a quantity in terms of base dimensions and can be used to:\n- find the dimensions of a derived quantity;\n- check whether the two sides of an equation are dimensionally consistent;\n- help identify a missing or incorrect power of a base quantity.\nIt cannot by itself determine a dimensionless numerical constant or prove that a dimensionally consistent equation is physically correct.\n\nWorked example 1 — density\nDensity = mass/volume.\nDimension of mass = [M]; dimension of volume = [L³].\nTherefore dimension of density = [M]/[L³] = [M L⁻³].\nIts SI unit is kg m⁻³.\n\nWorked example 2 — velocity and acceleration\nVelocity = distance/time.\nDimension = [L]/[T] = [L T⁻¹].\nAcceleration = change in velocity/time.\nDimension = [L T⁻¹]/[T] = [L T⁻²].\n\nWorked example 3 — force\nForce = mass × acceleration.\nDimension = [M] × [L T⁻²] = [M L T⁻²].\nIts SI unit is kg m s⁻², called the newton (N).\n\n8. Checking an equation dimensionally\nFor a physically meaningful equation, every term being added or equated must have compatible dimensions.\nExample: s = ut + ½at².\n- s has dimension [L].\n- ut has [L T⁻¹] × [T] = [L].\n- at² has [L T⁻²] × [T²] = [L].\nBoth terms on the right have dimension [L], matching the left side.\nThis check supports dimensional consistency; it does not prove that the equation is correct in every physical situation.\n\nCOMMON ERRORS\n- A physical quantity needs both a number and a unit.\n- Mass is a base quantity; weight is a force and is derived.\n- Unit symbols are case-sensitive: metre m, kilogram kg, second s, ampere A, kelvin K, mole mol, candela cd.\n- Dimensions are not the same as units: velocity has dimension [L T⁻¹] but may be measured in m/s or km/h.\n- Density has dimension [M L⁻³], not [M L³].\n- Acceleration has dimension [L T⁻²].\n- Dimensional consistency is a necessary check, not a complete proof of an equation.\n\nSUMMARY\nPhysics studies matter, energy, motion and their interactions. A physical quantity is written as a number and a unit. The SI system has seven base quantities. Derived quantities are combinations of base quantities. Dimensions express those combinations using symbols such as M, L and T. Dimensional analysis helps derive dimensions and check equations.\n\nPHYSICS LABORATORY FAMILIARIZATION AND SAFE PRACTICE\n\n1. Why use a physics laboratory?\nA physics laboratory is a place where students observe physical events, make measurements, test ideas and compare results with predictions. A good experiment changes or measures one factor at a time where possible, uses suitable instruments and records observations honestly. The laboratory is a learning environment, not a place for unsupervised play.\n\n2. Common measuring instruments\n- Metre rule or measuring tape: measures length. Read the scale at eye level and record the unit.\n- Vernier callipers: measure external dimensions, internal diameters and depths when the correct jaws or probe are used.\n- Micrometer screw gauge: measures very small external dimensions, such as the diameter of a thin wire or thickness of a sheet.\n- Stopwatch or stop clock: measures time intervals.\n- Beam or electronic balance: measures mass.\n- Spring balance or force meter: measures force, including weight.\n- Thermometer: measures temperature.\n- Graduated measuring cylinder: measures liquid volume and can be used for water-displacement measurements.\n- Pipette and burette: transfer or deliver measured volumes of liquid. Their use depends on the task and the teacher's instructions.\n\n3. Other apparatus students may meet\nA retort stand and clamp support equipment; a spring can demonstrate extension and elasticity; a pulley changes the direction of a force; a pendulum can be used to study periodic motion; a beaker or flask holds a liquid; cells, connecting wires and low-voltage components can form simple circuits. These are examples of common school apparatus, not a statement that every item is present in this school's laboratory. Ask the teacher to identify the actual equipment before use.\n\n4. Rules before an activity\n1. Enter and work in the laboratory only when the teacher or authorised instructor is present.\n2. Read and listen to the instructions before touching equipment.\n3. Perform only the experiment authorised by the teacher. Never improvise a procedure.\n4. Know the location of the exits and the safety equipment identified by the teacher, such as the first-aid kit and fire extinguisher. Do not assume their location.\n5. Keep bags and unnecessary materials away from the work area.\n6. Tie back long hair and secure loose clothing where moving parts or flames may be used.\n\n5. Rules during an activity\n- Handle instruments gently and use them only for their intended purpose.\n- Do not eat, drink, taste chemicals or smell substances directly.\n- Do not touch chemicals, hot objects, electrical connections or moving apparatus unless the teacher has instructed you and shown the safe method.\n- Never connect equipment to mains electricity or light a flame without direct teacher instruction.\n- Keep the bench dry, clear and orderly. Walk; do not run or play.\n- Record readings honestly, including units and any uncertainty. Do not change a reading to make it agree with a predicted result.\n- Report a spill, breakage, injury, unusual smell, overheating or electrical fault immediately. Do not try to clean up or repair it without instructions.\n\n6. After an activity\nSwitch off equipment only as directed. Return apparatus to its designated place, dispose of materials as instructed, clean the work area and wash your hands. Report damaged or missing equipment. Do not take apparatus out of the laboratory.\n\n7. If there is an emergency\nStop the activity, warn people nearby and tell the teacher immediately. Follow the school's evacuation or emergency instructions. Use a fire extinguisher, eyewash, safety shower or electrical shut-off only if the teacher has trained and directed you to do so. Never hide an accident.\n\nIMPORTANT LIMIT\nThis is a general SS1 familiarization lesson. It does not identify the actual room layout, the school's emergency-equipment locations or the school's complete apparatus inventory. The teacher must show those local details before practical work begins.\n\nSUMMARY\nUse the correct instrument, follow the teacher's procedure, keep the work area safe, record measurements honestly and report every accident or fault at once.\n\nWEEK ONE: SCIENTIFIC METHOD AND KEYED REVIEW OF QUANTITIES\n\n1. The scientific method\nThe scientific method is a systematic way to investigate a question using observations and evidence. A useful sequence is:\n1. Observe a phenomenon and identify a problem or question.\n2. Gather relevant information and review what is already known.\n3. Form a testable hypothesis (a proposed explanation or prediction).\n4. Plan and carry out a fair experiment to test the hypothesis.\n5. Record measurements and observations accurately.\n6. Analyse the results, using calculations or graphs where appropriate.\n7. Draw a conclusion: state whether the evidence supports the hypothesis and explain why.\n8. Communicate the method and findings so that others can examine or repeat the work.\nThe sequence is a guide, not a guarantee that every investigation follows exactly the same order. Results may lead to a revised hypothesis or another experiment.\n\n2. Fundamental quantities and SI base units\nThe SI has seven base quantities and seven corresponding base units:\n- Length — metre (m)\n- Mass — kilogram (kg)\n- Time — second (s)\n- Electric current — ampere (A)\n- Thermodynamic temperature — kelvin (K)\n- Amount of substance — mole (mol)\n- Luminous intensity — candela (cd)\nUse the exact unit symbols. Symbols are case-sensitive: kg is kilogram, m is metre, s is second, K is kelvin, A is ampere, mol is mole and cd is candela. Do not write Kg, M, S or Cd as the unit symbols.\n\n3. Fundamental and derived quantities\nA fundamental (base) quantity is one of the seven independent base quantities. A derived quantity is defined using one or more base quantities.\nExamples:\n- Fundamental: length, mass, time, temperature and electric current.\n- Derived: area, volume, speed, velocity, acceleration, density, weight, force, torque, power, energy, heat capacity and momentum.\n- Relative density is a ratio of two densities; it is dimensionless, but it is derived from density rather than a separate SI base quantity.\nA quantity and its unit are not the same thing. Mass is a base quantity; kilogram is its base unit. Force is a derived quantity; newton is its derived unit.\n\n4. Dimensional formulae used in the Week One questions\nUse M for mass, L for length and T for time.\n- Velocity or speed: [LT⁻¹].\n- Acceleration: [LT⁻²].\n- Density: [ML⁻³].\n- Force or thrust: [MLT⁻²].\n- Pressure or stress: [ML⁻¹T⁻²].\n- Work or energy: [ML²T⁻²].\n- Momentum or impulse: [MLT⁻¹].\n- Young's modulus: [ML⁻¹T⁻²].\nA dimension is not a unit. For example, pressure has dimension [ML⁻¹T⁻²] and SI unit pascal (Pa), equivalent to kg m⁻¹ s⁻².\n\n5. Answer key — first evaluation\nQ1. What is Physics?\nAnswer: Physics is the branch of science that studies matter, energy, space, time and the interactions between them. (2 marks: identifies the subject as a natural science; describes its study of matter/energy/interactions.)\n\nQ2. State the steps involved in the scientific method.\nAnswer: Observe and identify a question; gather information; form a testable hypothesis; plan and perform an experiment; record results; analyse results; draw a conclusion; communicate findings. (2 marks: any four logically ordered steps, 0.5 mark each.)\n\n6. Answer key — second evaluation\nQ1. Dimensions:\n(a) Acceleration: [LT⁻²].\n(b) Pressure: [ML⁻¹T⁻²].\n(c) Density: [ML⁻³].\n(3 marks: one correct dimension each.)\n\nQ2. Classify the listed quantities:\n- Derived: velocity, weight, volume, density, torque, speed, acceleration, power, energy, heat capacity.\n- Fundamental: mass, length, temperature, electric current.\n- Relative density: dimensionless ratio derived from density; it is not a base quantity.\n(15 marks: one mark for each correct classification. Accept the relative-density note as the correct explanation for that item.)\n\n7. Answer key — weekend assignment\n1. Which listed unit is not derived? D, mass (kilogram is a base unit).\n2. Which is a fundamental unit? D, kg.\n3. Which quantity has the same unit as energy? B, work; both are measured in joules.\n4. Which is a derived unit? D, ohm (Ω).\n5. Which listed quantity has a derived unit? The item has no unique single answer: tension, impulse and upthrust are all derived quantities/units; distance is fundamental. The question must be rewritten or withdrawn as a single-answer MCQ. Do not mark only one of A, B or C as uniquely correct.\n6. The three base units listed are kg, m and s: C. These are three SI base units, not the complete set of seven.\n7. Derived units among I area, II thrust, III pressure and IV mass: B, I, II and III only.\n\n8. Answer key — theory\n1. Dimensions:\n(a) Stress = force/area = [ML⁻¹T⁻²].\n(b) Energy = force × distance = [ML²T⁻²].\n(c) Momentum = mass × velocity = [MLT⁻¹].\n2. Dimensions:\n(a) Impulse = force × time = [MLT⁻¹].\n(b) Potential energy = work = [ML²T⁻²].\n(c) Pressure = force/area = [ML⁻¹T⁻²].\n(d) Young's modulus = stress/strain; strain is dimensionless, so [ML⁻¹T⁻²].\n3. Impulse has dimension [MLT⁻¹]. Comparing with MᵃLᵇTᶜ gives a = 1, b = 1, c = −1.\n4. Pressure has dimension [ML⁻¹T⁻²]. Comparing with MˣLʸTᶻ gives x = 1, y = −1, z = −2.\n\nASSESSMENT QUALITY NOTE\nThe source's weekend item 5 has three correct options (A, B and C), so it is defective as a single-answer multiple-choice question. The key records the defect rather than inventing one unique answer. The original source's spelling, table numbering and SI symbol errors are not copied into this supplement. The authored marks above are a new marking guide, not marks printed in the source.\n\nSUMMARY\nThe scientific method uses observation, a testable hypothesis, an experiment, recorded evidence, analysis and a conclusion. The SI has seven base quantities and units. Derived quantities and dimensions are built from the base quantities.\n\n8. Reading assignment from the source\nThe original source lists *New School Physics* by Prof. M. W. Anyakoha and *New System Physics* by Dr. Charles Chow et al. It does not specify an edition, publisher, chapter or page range in the extracted reference list. Use the teacher's assigned edition and page range; do not invent page numbers.\n\n9. Corrected source table notes\n- The SI has seven base quantities and units, not three. The source's claim that only three are the most important base quantities is incomplete.\n- Correct symbols are m, kg, s, A, K, mol and cd. The source table's M, S, Kg and Cd are not the correct SI symbols for metre, second, kilogram and candela.\n- Time has SI base unit second (s); the source leaves the unit cell blank.\n- The correct volume formula is length × breadth × height; “breath” in the source is a typographical error.\n- The source's derivation cells for density, velocity and acceleration are blank. The worked derivations in the introduction lesson supply them.\n- The source's weekend item asking which quantity has a derived unit has three correct options (tension, impulse and upthrust); it is not a valid single-answer MCQ and is explicitly withdrawn pending rewrite.\n- The source's theory question on Young's modulus is answered using the fact that strain is dimensionless.\n\nThis consolidated replacement preserves the Week One objectives: meaning and branches of Physics, laboratory familiarization, physical quantities, fundamental and derived quantities, SI units, dimensions, dimensional analysis, scientific method and the source assessment/reading assignment. Content approval remains PENDING; formal verification remains DEFERRED.",
+      "body_sha256": "6f6bf954993fb61a5164fe21e90cc3da6333ac42f8d754a23bd85aba9a46e42e",
+      "practice": [
+        {
+          "id": "INTRO-Q01",
+          "question": "Define Physics.",
+          "answer": "Physics is the branch of science that studies matter, energy, motion, forces and their interactions.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that it is a branch of science.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies matter/energy/motion/forces or interactions as its subject.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q02",
+          "question": "Name four branches of Physics.",
+          "answer": "Any four: mechanics, heat/thermodynamics, optics, acoustics/waves, electricity and magnetism, atomic/nuclear physics, electronics.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "One correct branch.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second correct branch.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third correct branch.",
+              "marks": 1
+            },
+            {
+              "criterion": "Fourth correct branch.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q03",
+          "question": "What is a physical quantity?",
+          "answer": "A property that can be measured and expressed as a number together with a unit.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that it is measurable.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that it is expressed as a number and unit.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q04",
+          "question": "Distinguish between fundamental and derived physical quantities.",
+          "answer": "Fundamental quantities are independent base quantities. Derived quantities are defined by mathematical combinations of base quantities.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correctly defines fundamental quantities.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly defines derived quantities.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q05",
+          "question": "List the seven SI base quantities and their units.",
+          "answer": "Length—metre (m); mass—kilogram (kg); time—second (s); electric current—ampere (A); thermodynamic temperature—kelvin (K); amount of substance—mole (mol); luminous intensity—candela (cd).",
+          "marks": 7,
+          "marking": [
+            {
+              "criterion": "Any seven correctly paired quantity and unit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly pairs another base quantity and unit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly pairs another base quantity and unit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly pairs another base quantity and unit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly pairs another base quantity and unit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly pairs another base quantity and unit.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly pairs another base quantity and unit.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q06",
+          "question": "Give the SI units of area, volume, velocity and acceleration.",
+          "answer": "Area: m²; volume: m³; velocity: m s⁻¹; acceleration: m s⁻².",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Area m².",
+              "marks": 1
+            },
+            {
+              "criterion": "Volume m³.",
+              "marks": 1
+            },
+            {
+              "criterion": "Velocity m s⁻¹.",
+              "marks": 1
+            },
+            {
+              "criterion": "Acceleration m s⁻².",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q07",
+          "question": "What are dimensions of a physical quantity?",
+          "answer": "Dimensions express how the quantity depends on base quantities such as mass, length and time, independently of the chosen units.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States dependence on base quantities.",
+              "marks": 1
+            },
+            {
+              "criterion": "States independence from the particular units used.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q08",
+          "question": "Find the dimensional formula of density.",
+          "answer": "Density = mass/volume = [M]/[L³] = [M L⁻³].",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses mass divided by volume.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives [M L⁻³].",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q09",
+          "question": "Find the dimensions of velocity and acceleration.",
+          "answer": "Velocity = [L T⁻¹]. Acceleration = [L T⁻²].",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Velocity formula/dimension.",
+              "marks": 1
+            },
+            {
+              "criterion": "Acceleration as velocity per time.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives both correct dimensions.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q10",
+          "question": "Find the dimensional formula of force.",
+          "answer": "F = ma. Dimension = [M] × [L T⁻²] = [M L T⁻²].",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses F = ma.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives [M L T⁻²].",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q11",
+          "question": "Find the dimensional formula of pressure.",
+          "answer": "Pressure = force/area = [M L T⁻²]/[L²] = [M L⁻¹ T⁻²].",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses force divided by area.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives [M L⁻¹ T⁻²].",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q12",
+          "question": "State two uses of dimensional analysis.",
+          "answer": "It can find dimensions of derived quantities and check dimensional consistency of equations; it can help detect incorrect powers of base quantities.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "One valid use.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second valid use.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q13",
+          "question": "Check dimensionally whether s = ut + ½at² is consistent.",
+          "answer": "s has [L]. ut has [L T⁻¹][T] = [L]. at² has [L T⁻²][T²] = [L]. All terms have dimension [L], so the equation is dimensionally consistent.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Identifies dimension of s as [L].",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds ut has [L].",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds at² has [L] and concludes consistency.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q14",
+          "question": "Distinguish between a unit and a dimension using velocity as an example.",
+          "answer": "A unit is the standard used to measure a quantity; velocity may have unit m/s or km/h. Its dimension is [L T⁻¹] regardless of the unit chosen.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Explains what a unit is or gives m/s and km/h.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives the dimension [L T⁻¹].",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q15",
+          "question": "Why is mass a fundamental quantity but weight a derived quantity?",
+          "answer": "Mass is one of the SI base quantities. Weight is a force given by W = mg, so it is derived from mass and acceleration.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies mass as a base quantity.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains weight as mg and derived from other quantities.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q16",
+          "question": "Convert 72 km/h to m/s.",
+          "answer": "72 × 1,000/3,600 = 20 m/s.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses the correct conversion factor.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 20 m/s.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q17",
+          "question": "Which is an SI base quantity? (A) force (B) density (C) electric current (D) pressure.",
+          "answer": "C. Electric current.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects C.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q18",
+          "question": "The dimension of acceleration is (A) [LT⁻¹] (B) [LT⁻²] (C) [MLT⁻²] (D) [ML⁻³].",
+          "answer": "B. [L T⁻²].",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q19",
+          "question": "The dimensional formula of density is (A) [ML³] (B) [M L⁻³] (C) [M L⁻¹] (D) [L³M⁻¹].",
+          "answer": "B. [M L⁻³].",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects B.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "INTRO-Q20",
+          "question": "State one limitation of dimensional analysis.",
+          "answer": "It cannot determine dimensionless numerical constants and cannot prove that a dimensionally consistent equation is physically correct.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Mentions inability to determine a dimensionless constant.",
+              "marks": 1
+            },
+            {
+              "criterion": "Mentions that dimensional consistency does not prove physical correctness.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "LAB-LAB-Q1",
+          "question": "Give two reasons why students use a physics laboratory.",
+          "answer": "To observe physical events and make measurements; to test ideas or predictions through controlled experiments.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "One valid reason.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second valid reason.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "LAB-LAB-Q2",
+          "question": "Match each instrument to the quantity it measures: (a) thermometer (b) stopwatch (c) balance (d) spring balance (e) metre rule.",
+          "answer": "(a) temperature; (b) time interval; (c) mass; (d) force/weight; (e) length.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "One correct match each.",
+              "marks": 5
+            }
+          ]
+        },
+        {
+          "id": "LAB-LAB-Q3",
+          "question": "State four safe rules to follow before or during a physics practical.",
+          "answer": "Work only under teacher supervision; follow instructions; do not touch unauthorised equipment; do not eat or drink; keep the bench clear; report spills/breakages; do not use mains electricity or flames without instruction. Any four.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "One valid rule.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second valid rule.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third valid rule.",
+              "marks": 1
+            },
+            {
+              "criterion": "Fourth valid rule.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "LAB-LAB-Q4",
+          "question": "What should you do if a glass apparatus breaks or a liquid spills?",
+          "answer": "Stop, keep away from the hazard and tell the teacher immediately. Do not clean it up unless instructed.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Stops and keeps away from hazard.",
+              "marks": 1
+            },
+            {
+              "criterion": "Reports to teacher and does not handle it unauthorised.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "LAB-LAB-Q5",
+          "question": "Why must a student not perform an experiment that the teacher has not authorised?",
+          "answer": "The student may not know the hazards, correct procedure or safe controls. Unauthorised experiments can injure people or damage equipment.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Mentions unknown hazards or lack of safe procedure.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains risk of injury or damage.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "LAB-LAB-Q6",
+          "question": "Which instrument is suitable for measuring the diameter of a thin wire accurately?",
+          "answer": "A micrometer screw gauge.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Names micrometer screw gauge.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "LAB-LAB-Q7",
+          "question": "Name two safety details the teacher should show students before practical work.",
+          "answer": "The location of exits and the school's first-aid kit, fire extinguisher, eyewash or other relevant emergency equipment. Any two actually present and identified by the teacher.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "One valid local safety location.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second valid local safety location.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "LAB-LAB-Q8",
+          "question": "State three actions to take at the end of a laboratory activity.",
+          "answer": "Switch off equipment as directed, return apparatus, dispose of materials as instructed, clean the work area and wash hands. Any three.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "One correct action.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second correct action.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third correct action.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W1KEY-Q1",
+          "question": "Define Physics.",
+          "answer": "Physics is the branch of science that studies matter, energy, space, time and their interactions.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies Physics as a branch of natural science.",
+              "marks": 1
+            },
+            {
+              "criterion": "Mentions matter, energy, space, time or their interactions.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W1KEY-Q2",
+          "question": "State four stages of the scientific method in a logical order.",
+          "answer": "For example: observe and ask a question; form a testable hypothesis; carry out an experiment; record and analyse results; draw a conclusion; communicate findings. Any four in a logical order.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Two relevant stages in logical order.",
+              "marks": 1
+            },
+            {
+              "criterion": "Two further relevant stages in logical order.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W1KEY-Q3",
+          "question": "Give the dimensions of acceleration, pressure and density.",
+          "answer": "Acceleration [LT⁻²]; pressure [ML⁻¹T⁻²]; density [ML⁻³].",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Acceleration.",
+              "marks": 1
+            },
+            {
+              "criterion": "Pressure.",
+              "marks": 1
+            },
+            {
+              "criterion": "Density.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W1KEY-Q4",
+          "question": "Classify mass, weight, length, volume, density, temperature and electric current as fundamental or derived quantities.",
+          "answer": "Fundamental: mass, length, temperature, electric current. Derived: weight, volume, density.",
+          "marks": 7,
+          "marking": [
+            {
+              "criterion": "One mark for each correct classification.",
+              "marks": 7
+            }
+          ]
+        },
+        {
+          "id": "KEY-W1KEY-Q5",
+          "question": "Find the dimensions of stress, energy and momentum.",
+          "answer": "Stress [ML⁻¹T⁻²]; energy [ML²T⁻²]; momentum [MLT⁻¹].",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Stress.",
+              "marks": 1
+            },
+            {
+              "criterion": "Energy.",
+              "marks": 1
+            },
+            {
+              "criterion": "Momentum.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W1KEY-Q6",
+          "question": "The dimension of impulse is MᵃLᵇTᶜ. Find a, b and c.",
+          "answer": "Impulse = force × time = [MLT⁻²][T] = [MLT⁻¹]. Therefore a=1, b=1, c=−1.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses impulse = force × time.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains [MLT⁻¹].",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives a=1, b=1, c=−1.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "KEY-W1KEY-Q7",
+          "question": "Pressure has dimension MˣLʸTᶻ. Find x, y and z.",
+          "answer": "Pressure = force/area = [MLT⁻²]/[L²] = [ML⁻¹T⁻²]. Thus x=1, y=−1, z=−2.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses pressure = force/area.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains [ML⁻¹T⁻²].",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives x=1, y=−1, z=−2.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Sow the Seed Schools SS1 Physics First Term source",
+          "locator": "Source SS1-SRC-5c0149cda71d; Week One body SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc; rendered PDF pages 3–5 and source assessment/reading-assignment blocks.",
+          "url": null,
+          "rights": "Source topics and question locators used; lesson explanations and answer keys independently authored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics; consolidated authored replacement."
+        },
+        {
+          "title": "BIPM, SI Base Units",
+          "locator": "Seven SI base quantities and exact symbols; accessed 2026-11-11.",
+          "url": "https://www.bipm.org/en/measurement-units/si-base-units",
+          "rights": "Used to verify symbols; no wording copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "BIPM, SI Base Units."
+        },
+        {
+          "title": "American Chemical Society, Student Laboratory Code of Conduct — High School Labs",
+          "locator": "General supervised laboratory safety; accessed 2026-11-11.",
+          "url": "https://institute.acs.org/acs-center/lab-safety/education-training/high-school-labs/student-lab-code-of-conduct.html",
+          "rights": "Used to corroborate safety principles; no wording copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "American Chemical Society."
+        },
+        {
+          "title": "NIEHS, Scientific Method",
+          "locator": "Scientific method framework; accessed 2026-11-11.",
+          "url": "https://www.niehs.nih.gov/health/kids/topics/how-science-works/scientific-method",
+          "rights": "Used to corroborate method steps; no wording copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "National Institute of Environmental Health Sciences."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -11679,6 +14122,32 @@
       "evidence": {
         "locator": "Original member bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; parsed row 1 WEEK 2 body SS1-SRC-bed91bb4ef0e:BODY:6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7; rendered source page 4.",
         "explanation": "The original rendering visibly shows the ungrouped expression. The lesson supplies the correct identical-cell parallel result and clarifies the physical arrangement."
+      }
+    },
+    {
+      "id": "CORR-PHYSICS-T3-W10-ELASTIC-FORCE",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "source_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688",
+      "source_lesson_id": "SS1-SRC-bed91bb4ef0e:BODY:90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3",
+      "body_sha256": "90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3",
+      "replacement_id": "SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY",
+      "reason": "The original Week Ten source page 13 incorrectly defines linear expansivity as change in length/original length multiplied by temperature change. The correct definition is α = ΔL/(L₀ΔT), leading to F = EAαΔT for a fully restrained bar. The replacement lesson teaches the correct derivation and covers force in a bar, energy stored in a wire and elastic energy per unit volume.",
+      "evidence": {
+        "locator": "Original Third Term member SHA-256 bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; parsed body ID SS1-SRC-bed91bb4ef0e:BODY:90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3; rendered PDF page 13.",
+        "explanation": "Rendered page 13 confirms the source literally prints α = e/L × Ө and e = αLӨ, then derives F = EAαӨ. The intermediate definition is wrong; this is not extraction loss. Replacement SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY states α = ΔL/(L₀ΔT), ΔL = αL₀ΔT and F = EAαΔT. Content approval PENDING; verification DEFERRED."
+      }
+    },
+    {
+      "id": "CORR-PHYSICS-T1-W01-CONSOLIDATED",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "source_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206",
+      "source_lesson_id": "SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc",
+      "body_sha256": "e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc",
+      "replacement_id": "SUP-SS1-PHYSICS-T1-W01-CONSOLIDATED",
+      "reason": "The original Week One row contains incorrect SI symbols (M, S, Kg, Cd), an incomplete three-base-quantity statement, blank derivations for density/velocity/acceleration, a missing time unit, the typo 'breath' for 'breadth', no laboratory teaching, no scientific-method teaching, and assessment questions that are unkeyed or defective. The consolidated replacement preserves the objectives, supplies the missing derivations and safe laboratory familiarization, corrects SI symbols, answers the questions and flags the defective multi-answer MCQ.",
+      "evidence": {
+        "locator": "Source member SHA-256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206; Week One body ID SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc; rendered PDF pages 3–5; source line inventory in PHYS-WK-T1-W01.md.",
+        "explanation": "Replacement SUP-SS1-PHYSICS-T1-W01-CONSOLIDATED consolidates the introduction/dimensional analysis lesson, laboratory familiarization and keyed assessment review. It corrects the SI base units and symbols, supplies the missing time unit and dimensional derivations, corrects breadth, answers all answerable questions and explicitly withdraws the defective single-answer MCQ. The reading assignment preserves the two source book titles without inventing page numbers. Content approval PENDING; verification DEFERRED."
       }
     }
   ],
@@ -12422,6 +14891,131 @@
         "title": "Clear micrometer and vernier reading examples",
         "locator": "Original vector assessment aid authored for SUP-SS1-PHYSICS-T1-W02-MEASUREMENT-BASICS.",
         "rights": "Original artwork created for this student supplement; no third-party figure reproduced.",
+        "reuse_status": "PERMITTED",
+        "attribution": "AISchoolonair SS1 Physics original instructional asset."
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "PHYS-ASSET-T1-W02-REPLACEMENT-MICROMETER-Q3",
+      "lesson_id": "SUP-SS1-PHYSICS-T1-W02-CONSOLIDATED",
+      "path": "backend/src/db/ss1/assets/physics/t1-w02-replacement-micrometer-q3.svg",
+      "sha256": "985a75483cde875add6844cc6c01981914e7d1b65cdd04f591e5eb53e37797c2",
+      "bytes": 1246,
+      "media_type": "image/svg+xml",
+      "alt": "Original replacement micrometer diagram: 5.00 mm sleeve plus 0.25 mm thimble equals 5.25 mm.",
+      "order": 0,
+      "source_locator": "Original replacement diagram authored for the consolidated Week Two lesson on 2026-11-11 because the corresponding weekend-assignment figure is absent from the rendered source PDF. It is not a reproduction of the missing source figure.",
+      "provenance": {
+        "title": "Original replacement instrument-reading diagram",
+        "locator": "Original SVG authored for SUP-SS1-PHYSICS-T1-W02-CONSOLIDATED.",
+        "rights": "Original artwork created for this student supplement.",
+        "reuse_status": "PERMITTED",
+        "attribution": "AISchoolonair SS1 Physics original instructional asset."
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "PHYS-ASSET-T1-W02-REPLACEMENT-VERNIER-Q7",
+      "lesson_id": "SUP-SS1-PHYSICS-T1-W02-CONSOLIDATED",
+      "path": "backend/src/db/ss1/assets/physics/t1-w02-replacement-vernier-q7.svg",
+      "sha256": "768bd12f6b5e5e540b4a5f56cd7759a416d361593bc829bbda6c3f98ab14aaba",
+      "bytes": 1223,
+      "media_type": "image/svg+xml",
+      "alt": "Original replacement vernier callipers diagram: 4.40 cm main scale plus 0.03 cm vernier equals 4.43 cm.",
+      "order": 1,
+      "source_locator": "Original replacement diagram authored for the consolidated Week Two lesson on 2026-11-11 because the corresponding weekend-assignment figure is absent from the rendered source PDF. It is not a reproduction of the missing source figure.",
+      "provenance": {
+        "title": "Original replacement instrument-reading diagram",
+        "locator": "Original SVG authored for SUP-SS1-PHYSICS-T1-W02-CONSOLIDATED.",
+        "rights": "Original artwork created for this student supplement.",
+        "reuse_status": "PERMITTED",
+        "attribution": "AISchoolonair SS1 Physics original instructional asset."
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "PHYS-ASSET-T1-W02-REPLACEMENT-MICROMETER-Q10",
+      "lesson_id": "SUP-SS1-PHYSICS-T1-W02-CONSOLIDATED",
+      "path": "backend/src/db/ss1/assets/physics/t1-w02-replacement-micrometer-q10.svg",
+      "sha256": "129a01a4086b1fa6e68548c76618697244e90863f9c12de4045ae25a41a5fbcc",
+      "bytes": 1252,
+      "media_type": "image/svg+xml",
+      "alt": "Original replacement micrometer diagram: 10.00 mm sleeve plus 0.16 mm thimble equals 10.16 mm.",
+      "order": 2,
+      "source_locator": "Original replacement diagram authored for the consolidated Week Two lesson on 2026-11-11 because the corresponding weekend-assignment figure is absent from the rendered source PDF. It is not a reproduction of the missing source figure.",
+      "provenance": {
+        "title": "Original replacement instrument-reading diagram",
+        "locator": "Original SVG authored for SUP-SS1-PHYSICS-T1-W02-CONSOLIDATED.",
+        "rights": "Original artwork created for this student supplement.",
+        "reuse_status": "PERMITTED",
+        "attribution": "AISchoolonair SS1 Physics original instructional asset."
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "PHYS-ASSET-T2-W04-ANOMALOUS-WATER-GRAPH",
+      "lesson_id": "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY",
+      "path": "backend/src/db/ss1/assets/physics/t2-w04-anomalous-water-graph.svg",
+      "sha256": "2f6e434135ed04ba0315dc43a0c2423aa947040bb4d6ea9d69c20082ec9ab587",
+      "bytes": 1419,
+      "media_type": "image/svg+xml",
+      "alt": "Original graph showing water volume decreasing to a minimum at 4°C and increasing above 4°C.",
+      "order": 0,
+      "source_locator": "Original graph authored for the Week Four anomalous-water assessment; original source asks for a diagram but contains no diagram on rendered page 9.",
+      "provenance": {
+        "title": "Original anomalous-water graph",
+        "locator": "Original SVG authored for SS1 Physics Second Term Week Four.",
+        "rights": "Original artwork; not copied from source.",
+        "reuse_status": "PERMITTED",
+        "attribution": "AISchoolonair SS1 Physics original instructional asset."
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "PHYS-ASSET-T1-WORK-VISCOSITY",
+      "lesson_id": "SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER",
+      "path": "backend/src/db/ss1/assets/physics/t1-work-viscosity.svg",
+      "sha256": "c3a6ab2b7634e35670d071f584e59d0b28f47823ba8d3faf3a3a50b107d26d32",
+      "bytes": 2023,
+      "media_type": "image/svg+xml",
+      "alt": "Original work-energy block diagram and terminal-velocity forces on a sphere.",
+      "order": 0,
+      "source_locator": "Original SVG authored to disposition PHYS-VIS-T1-WORK-VISCOSITY; based on rendered source PDF page clusters documented in PHYS-VIS-T1.md / PHYS-VIS-T2.md / PHYS-VIS-T3.md. Not a copy of source artwork.",
+      "provenance": {
+        "title": "Original Physics instructional diagram",
+        "locator": "Original diagram authored for SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER.",
+        "rights": "Original artwork created for the SS1 Physics student package.",
         "reuse_status": "PERMITTED",
         "attribution": "AISchoolonair SS1 Physics original instructional asset."
       },
@@ -16868,6 +19462,69 @@
         "COV-PHYS-T3-W01-OBJ-5"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "PHYSICS-T2-W04-SOURCE-NOTATION-DEFECTS",
+      "kind": "FACT",
+      "blocks_delivery": false,
+      "detail": "Rendered original pages 8–9 confirm the source defects: literal X appears in place of α in the linear-expansion equations; Y is used for cubical expansivity and the α:β:Y ratio is incomplete. The original source asks for an anomalous-water diagram but supplies none. These defects are now addressed by correction binding CORR-PHYSICS-T2-W04-EXPANSIVITY to SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY, which teaches α/β/γ correctly and includes a newly authored anomalous-water graph.",
+      "required_action": "Use the bound replacement; the original source bytes remain unchanged. Review the replacement during content approval.",
+      "affected_ids": [
+        "SS1-SRC-2c924c964660:BODY:91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c",
+        "SUP-SS1-PHYSICS-T2-W04-EXPANSIVITY"
+      ]
+    },
+    {
+      "id": "PHYSICS-T3-W10-FRACTION-FORMATTING",
+      "kind": "FACT",
+      "blocks_delivery": false,
+      "detail": "Rendered original Third Term PDF page 13 confirms a source formula error, not an extraction artefact: the source defines α = e/L × Ө, then uses e = αLӨ and concludes F = EAαӨ. The correct definition is α = ΔL/(L₀ΔT), giving F = EAαΔT. Correction binding CORR-PHYSICS-T3-W10-ELASTIC-FORCE now replaces the source row with the lesson that teaches the correct derivation.",
+      "required_action": "Use the bound replacement. Original source remains unchanged; content approval is PENDING.",
+      "affected_ids": [
+        "SS1-SRC-bed91bb4ef0e:BODY:90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3",
+        "SUP-SS1-PHYSICS-T3-W10-ELASTIC-ENERGY"
+      ]
+    },
+    {
+      "id": "PHYSICS-T1-W02-COMPOUND-DIMENSION-AMBIGUITY",
+      "kind": "CONTENT",
+      "detail": "The source theory question asks for the 'dimension of a compound' without specifying a compound quantity or physical property. This wording is ambiguous and cannot be assigned a defensible dimensional formula. The consolidated replacement explicitly withdraws the item pending a teacher rewrite.",
+      "required_action": "Teacher should replace the wording with a named physical quantity (for example, density, pressure or energy) before reuse. No answer is invented.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e",
+        "SUP-SS1-PHYSICS-T1-W02-CONSOLIDATED"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYSICS-T1-VISUAL-REPRODUCTION",
+      "kind": "VISUAL",
+      "detail": "The First Term source visual inventory is complete, but Weeks Three–Ten still contain motion/circular-motion, friction, vector/graph, density, pressure/floatation, work/energy and viscosity diagrams without registered original equivalents. The source art remains in the original archive and is not copied into the package. Original equivalent SVG assets have now been authored and registered for the inventoried clusters. Remaining source art is not copied; student delivery uses original SVG equivalents attached to corresponding week lessons.",
+      "required_action": "Use the registered original equivalents; keep content approval PENDING and verification DEFERRED.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYSICS-T2-VISUAL-REPRODUCTION",
+      "kind": "VISUAL",
+      "detail": "The Second Term source visual inventory is complete. Existing assets cover thermal expansion, anomalous water, a vacuum flask, electroscope and electric-field patterns, but thermometry, full heat-transfer, charging-method and gravitation figure clusters still need original equivalents. Original equivalent SVG assets have now been authored and registered for the inventoried clusters. Remaining source art is not copied; student delivery uses original SVG equivalents attached to corresponding week lessons.",
+      "required_action": "Use the registered original equivalents; keep content approval PENDING and verification DEFERRED.",
+      "affected_ids": [
+        "SS1-SRC-2c924c964660"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYSICS-T3-VISUAL-REPRODUCTION",
+      "kind": "VISUAL",
+      "detail": "The Third Term source visual inventory is complete. Existing assets cover fuse, crystal structure, surface tension, capillarity and elasticity; circuit symbols, circuit/resistor networks and atomic-structure/diffusion/osmosis figures still need original equivalents. Original equivalent SVG assets have now been authored and registered for the inventoried clusters. Remaining source art is not copied; student delivery uses original SVG equivalents attached to corresponding week lessons.",
+      "required_action": "Use the registered original equivalents; keep content approval PENDING and verification DEFERRED.",
+      "affected_ids": [
+        "SS1-SRC-bed91bb4ef0e"
+      ],
+      "blocks_delivery": false
     }
   ]
 }
