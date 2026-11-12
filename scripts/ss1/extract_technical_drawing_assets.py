@@ -54,14 +54,14 @@ def convert_wmf(media_name: str, data: bytes, temp_root: Path) -> bytes:
     ], capture_output=True, text=True)
     svg = svg_dir / (Path(media_name).stem + '.svg')
     if proc.returncode or not svg.exists():
-        raise RuntimeError(f'LibreOffice WMF conversion failed for {media_name}: {proc.stdout}\\n{proc.stderr}')
+        raise RuntimeError(f'LibreOffice WMF conversion failed for {media_name}: {proc.stdout}\n{proc.stderr}')
     out = png_dir / (Path(media_name).stem + '.png')
     proc = subprocess.run([
         'inkscape', str(svg), '--export-area-drawing', '--export-width=2400',
         f'--export-filename={out}'
     ], capture_output=True, text=True)
     if proc.returncode or not out.exists():
-        raise RuntimeError(f'Inkscape WMF crop failed for {media_name}: {proc.stdout}\\n{proc.stderr}')
+        raise RuntimeError(f'Inkscape WMF crop failed for {media_name}: {proc.stdout}\n{proc.stderr}')
     return out.read_bytes()
 
 def main():
@@ -100,7 +100,7 @@ def main():
     for task in tasks:
         task_id = task['id']
         combined = task.get('implementation_reference', '') + ' ' + task.get('objective', '')
-        match = re.search(r'word/media/(image\\d+\\.(?:png|jpeg|jpg|wmf))', combined, re.I)
+        match = re.search(r'word/media/(image\d+\.(?:png|jpeg|jpg|wmf))', combined, re.I)
         if not match:
             raise SystemExit(f'No exact source media locator for {task_id}')
         media_name = match.group(1)
@@ -122,7 +122,7 @@ def main():
         reuse = task_id in REUSE_MEDIA
         if reuse:
             target_task = next((item for item in tasks if item['id'] == REUSE_TARGET_TASK), None)
-            target_match = re.search(r'word/media/(image\\d+\\.(?:png|jpeg|jpg))', target_task.get('implementation_reference', '') + ' ' + target_task.get('objective', '')) if target_task else None
+            target_match = re.search(r'word/media/(image\d+\.(?:png|jpeg|jpg))', target_task.get('implementation_reference', '') + ' ' + target_task.get('objective', '')) if target_task else None
             if not target_match:
                 raise SystemExit('Week Three reuse target is missing its media locator')
             target_name = target_match.group(1)
@@ -181,8 +181,8 @@ def main():
     queue.setdefault('notes', [])
     if note not in queue['notes']:
         queue['notes'].append(note)
-    args.package.write_text(json.dumps(package, ensure_ascii=False, indent=2) + '\\n', encoding='utf-8')
-    args.queue.write_text(json.dumps(queue, ensure_ascii=False, indent=2) + '\\n', encoding='utf-8')
+    args.package.write_text(json.dumps(package, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    args.queue.write_text(json.dumps(queue, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     manifest = {
         'source_id': SOURCE_ID, 'archive_sha256': ARCHIVE_SHA256, 'member_sha256': SOURCE_MEMBER_SHA256,
         'source_figure_tasks': len(tasks), 'registered_asset_bindings': len(manifest_rows),
@@ -193,7 +193,7 @@ def main():
     }
     manifest_path = args.manifest or (args.repo_root / 'docs/ss1/work/microtasks/technical-drawing/TD-SOURCE-ASSET-MANIFEST.json')
     manifest_path.parent.mkdir(parents=True, exist_ok=True)
-    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\\n', encoding='utf-8')
+    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({key: value for key, value in manifest.items() if key != 'assets'}, indent=2))
 
 if __name__ == '__main__':
