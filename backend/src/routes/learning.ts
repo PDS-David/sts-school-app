@@ -431,7 +431,7 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
   );
   if (!visible[0]) return res.json({ assets: [], attributions: [] });
   const primary4AssetTopic = safePrimary4Topic(visible[0]);
-  if (viewerClasses && (primary4AssetTopic as any).primary4_delivery?.hide_from_student === true) {
+  if ((user.role === 'student' || user.role === 'parent') && (primary4AssetTopic as any).primary4_delivery?.hide_from_student === true) {
     return res.json({ assets: [], attributions: [] });
   }
   if (await studentTopicSequenceLocked(user, visible[0])) return res.json({ assets: [], attributions: [] });
