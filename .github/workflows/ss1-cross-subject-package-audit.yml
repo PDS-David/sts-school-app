@@ -13,20 +13,25 @@ on:
       - "backend/src/db/ingestTopics.ts"
       - "docs/ss1/sources/**"
       - "scripts/ss1/**"
+      - "tests/ss1/technical-drawing.*.test.mts"
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/ss1-cross-subject-package-audit.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   cross-subject-audit:
+    if: github.event.pull_request.head.repo.full_name == github.repository
     name: All registered SS1 subjects — source anchors and compiler
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -43,6 +48,35 @@ jobs:
           python scripts/ss1/prepare_sources.py \
             --archive docs/ss1/sources/SSS1-original.zip \
             --output "$RUNNER_TEMP/ss1-staged"
+      - name: Install WMF conversion tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libreoffice-draw inkscape
+      - name: Extract and register all source Technical Drawing figures
+        run: |
+          python scripts/ss1/extract_technical_drawing_assets.py \
+            --archive docs/ss1/sources/SSS1-original.zip \
+            --package backend/src/db/ss1/subjects/technical-drawing.json \
+            --queue docs/ss1/work/microtasks/technical-drawing/QUEUE.json \
+            --repo-root .
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add backend/src/db/ss1/assets/technical-drawing/source \
+            backend/src/db/ss1/subjects/technical-drawing.json \
+            docs/ss1/work/microtasks/technical-drawing/QUEUE.json \
+            docs/ss1/work/microtasks/technical-drawing/TD-SOURCE-ASSET-MANIFEST.json
+          if git diff --cached --quiet; then
+            echo "All source figures are already materialized and registered."
+          else
+            git commit -m "assets(technical-drawing): register all 104 source figures"
+            git push origin "HEAD:${{ github.event.pull_request.head.ref }}"
+          fi
+      - name: Run Technical Drawing source-asset regression tests
+        run: |
+          node --import tsx --test \
+            tests/ss1/technical-drawing.package.test.mts \
+            tests/ss1/technical-drawing.source-assets.test.mts
+          node --import tsx backend/src/db/ss1/validateSubjectPackages.ts technical-drawing
       - name: Compile Technical Drawing independently in plan-only mode
         run: |
           plan="$RUNNER_TEMP/technical-drawing-plan.json"
