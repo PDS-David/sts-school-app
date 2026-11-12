@@ -33,18 +33,18 @@
     "SOURCE_WEEK_INDEXING": 19,
     "FACTUAL_DEPENDENCY": 7,
     "VISUAL_DISPOSITION": 9,
-    "ASSET": 2,
+    "ASSET": 10,
     "OWNER_DECISION": 1,
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
     "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 23,
+    "IMPLEMENTED_TESTING_DEFERRED": 24,
     "BLOCKED": 6,
-    "PENDING": 25
+    "PENDING": 32
   },
-  "total": 54,
+  "total": 62,
   "items": [
     {
       "id": "TD-SRC-T2",
@@ -998,8 +998,8 @@
         "TD-VIS-INVENTORY",
         "TD-WK-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 8 DrawingML placements on PDF pages 1–3; circle/triangle diagrams for inscribed and circumscribed constructions. Per-figure disposition remains pending.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12 from master d47c1daa. Inspected all eight Week One DrawingML PNGs individually from the verified source member; recomputed each embedded-part SHA-256; mapped each to its surrounding source paragraph and XML body-child locator; recorded visual content and bind-as-asset disposition in TD-VIS-W01.md. Appended eight bounded ASSET tasks TD-ASSET-W01-F01..F08 with unique SVG paths, source part hashes and exact locators. Original PNGs remain private; no derivative or package asset has yet been created. No subject tests/schema/compiler/importer or app display verification run; not approved, not verified.",
       "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
     },
     {
@@ -1918,6 +1918,278 @@
       "status": "PENDING",
       "implementation_reference": "Raised by TD-WK-W10 on 2026-11-08. Complete source construction tasks and figure geometry are not recorded in current repository evidence.",
       "completion_condition": "Provide correct original construction steps and answers with positive integer marking criteria summing exactly to each question's marks; do not invent figures or dimensions."
+    },
+    {
+      "id": "TD-ASSET-W01-F01",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE teaching row / word/document.xml body child 38 / word/media/image1.png",
+      "objective": "Create a faithful SVG derivative for the Week One figure: triangle ABC with angle-bisector centre O and perpendicular radius OD. Preserve visible geometry, construction marks, labels and relative relationships. Do not invent dimensions, alter the source's mathematical meaning, or copy any unrelated page branding. Record original source part SHA-256 402a3e9cc5fb78e084f293073cecea0b3583898619dae1811ca3f9d3788009d2.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w01-f01-incircle-triangle.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W01-F01.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from the figure-by-figure visual inspection in TD-VIS-W01.md. Source part word/media/image1.png; original part SHA-256 402a3e9cc5fb78e084f293073cecea0b3583898619dae1811ca3f9d3788009d2; body-child locator 38. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with a verified geometry/label review; record source locator, original and derivative SHA-256, byte count, accurate alt text and truthful provenance; bind the asset to the exact relevant coverage/lesson records without claiming source dimensions not shown; validate the package and asset path. Do not commit the original extracted PNG."
+    },
+    {
+      "id": "TD-ASSET-W01-F02",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE teaching row / word/document.xml body child 48 / word/media/image2.png",
+      "objective": "Create a faithful SVG derivative for the Week One figure: three mutually tangent equal circles inside an equilateral triangle. Preserve visible geometry, construction marks, labels and relative relationships. Do not invent dimensions, alter the source's mathematical meaning, or copy any unrelated page branding. Record original source part SHA-256 3208e6f4e1e99345a0314ff8eb2e6213068f6e2c43e66a10edf81034ccbc7402.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w01-f02-three-equal-circles-equilateral-triangle.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W01-F02.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from the figure-by-figure visual inspection in TD-VIS-W01.md. Source part word/media/image2.png; original part SHA-256 3208e6f4e1e99345a0314ff8eb2e6213068f6e2c43e66a10edf81034ccbc7402; body-child locator 48. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with a verified geometry/label review; record source locator, original and derivative SHA-256, byte count, accurate alt text and truthful provenance; bind the asset to the exact relevant coverage/lesson records without claiming source dimensions not shown; validate the package and asset path. Do not commit the original extracted PNG."
+    },
+    {
+      "id": "TD-ASSET-W01-F03",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE teaching row / word/document.xml body child 65 / word/media/image3.png",
+      "objective": "Create a faithful SVG derivative for the Week One figure: circle inscribed in a sector with tangent construction. Preserve visible geometry, construction marks, labels and relative relationships. Do not invent dimensions, alter the source's mathematical meaning, or copy any unrelated page branding. Record original source part SHA-256 d8b99726c444a2a4f5ddd37a257063fd14ba3d7fc6355f160d8c47ea3be94ed4.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w01-f03-incircle-sector.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W01-F03.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from the figure-by-figure visual inspection in TD-VIS-W01.md. Source part word/media/image3.png; original part SHA-256 d8b99726c444a2a4f5ddd37a257063fd14ba3d7fc6355f160d8c47ea3be94ed4; body-child locator 65. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with a verified geometry/label review; record source locator, original and derivative SHA-256, byte count, accurate alt text and truthful provenance; bind the asset to the exact relevant coverage/lesson records without claiming source dimensions not shown; validate the package and asset path. Do not commit the original extracted PNG."
+    },
+    {
+      "id": "TD-ASSET-W01-F04",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE teaching row / word/document.xml body child 80 / word/media/image4.png",
+      "objective": "Create a faithful SVG derivative for the Week One figure: circle inscribed in a regular polygon/rhombus/deltoid with centre O and radius/contact construction. Preserve visible geometry, construction marks, labels and relative relationships. Do not invent dimensions, alter the source's mathematical meaning, or copy any unrelated page branding. Record original source part SHA-256 1a5b6534add875edea4a88dc323c5cc412d72838a96f1b78c0e41a4e65c00de6.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w01-f04-incircle-regular-polygon.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W01-F04.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from the figure-by-figure visual inspection in TD-VIS-W01.md. Source part word/media/image4.png; original part SHA-256 1a5b6534add875edea4a88dc323c5cc412d72838a96f1b78c0e41a4e65c00de6; body-child locator 80. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with a verified geometry/label review; record source locator, original and derivative SHA-256, byte count, accurate alt text and truthful provenance; bind the asset to the exact relevant coverage/lesson records without claiming source dimensions not shown; validate the package and asset path. Do not commit the original extracted PNG."
+    },
+    {
+      "id": "TD-ASSET-W01-F05",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE teaching row / word/document.xml body child 98 / word/media/image5.png",
+      "objective": "Create a faithful SVG derivative for the Week One figure: triangle ABC and its circumscribed circle with centre O. Preserve visible geometry, construction marks, labels and relative relationships. Do not invent dimensions, alter the source's mathematical meaning, or copy any unrelated page branding. Record original source part SHA-256 0c6072f927a9422ae7af4261171f3195722c6f4b306563de3b394cfffc54cc4d.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w01-f05-circumcircle-triangle.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W01-F05.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from the figure-by-figure visual inspection in TD-VIS-W01.md. Source part word/media/image5.png; original part SHA-256 0c6072f927a9422ae7af4261171f3195722c6f4b306563de3b394cfffc54cc4d; body-child locator 98. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with a verified geometry/label review; record source locator, original and derivative SHA-256, byte count, accurate alt text and truthful provenance; bind the asset to the exact relevant coverage/lesson records without claiming source dimensions not shown; validate the package and asset path. Do not commit the original extracted PNG."
+    },
+    {
+      "id": "TD-ASSET-W01-F06",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE teaching row / word/document.xml body child 130 / word/media/image6.png",
+      "objective": "Create a faithful SVG derivative for the Week One figure: triangle within a circle for the source classification question. Preserve visible geometry, construction marks, labels and relative relationships. Do not invent dimensions, alter the source's mathematical meaning, or copy any unrelated page branding. Record original source part SHA-256 ca409b5493cb7c6f4ff01c6ea91e0782833b8a8fe43da2fc54c83aa0daedb191.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w01-f06-triangle-in-circle-classification.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W01-F06.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from the figure-by-figure visual inspection in TD-VIS-W01.md. Source part word/media/image6.png; original part SHA-256 ca409b5493cb7c6f4ff01c6ea91e0782833b8a8fe43da2fc54c83aa0daedb191; body-child locator 130. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with a verified geometry/label review; record source locator, original and derivative SHA-256, byte count, accurate alt text and truthful provenance; bind the asset to the exact relevant coverage/lesson records without claiming source dimensions not shown; validate the package and asset path. Do not commit the original extracted PNG."
+    },
+    {
+      "id": "TD-ASSET-W01-F07",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE teaching row / word/document.xml body child 136 / word/media/image7.png",
+      "objective": "Create a faithful SVG derivative for the Week One figure: labelled circle P in a larger circle/triangle relationship for the source classification question. Preserve visible geometry, construction marks, labels and relative relationships. Do not invent dimensions, alter the source's mathematical meaning, or copy any unrelated page branding. Record original source part SHA-256 bd259025a978bec8f9e53eab347a7d05cae7f36f64c513d0d2399f55f42f5340.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w01-f07-circle-p-classification.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W01-F07.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from the figure-by-figure visual inspection in TD-VIS-W01.md. Source part word/media/image7.png; original part SHA-256 bd259025a978bec8f9e53eab347a7d05cae7f36f64c513d0d2399f55f42f5340; body-child locator 136. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with a verified geometry/label review; record source locator, original and derivative SHA-256, byte count, accurate alt text and truthful provenance; bind the asset to the exact relevant coverage/lesson records without claiming source dimensions not shown; validate the package and asset path. Do not commit the original extracted PNG."
+    },
+    {
+      "id": "TD-ASSET-W01-F08",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE teaching row / word/document.xml body child 150 / word/media/image8.png",
+      "objective": "Create a faithful SVG derivative for the Week One figure: circle/triangle PQR with centre O and labelled radius candidate OT. Preserve visible geometry, construction marks, labels and relative relationships. Do not invent dimensions, alter the source's mathematical meaning, or copy any unrelated page branding. Record original source part SHA-256 d0c1aae277ffd0bfaa342b30aee4c3eee999d1067e566c455c542cbefeab2272.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w01-f08-circle-radius-ot.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W01-F08.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from the figure-by-figure visual inspection in TD-VIS-W01.md. Source part word/media/image8.png; original part SHA-256 d0c1aae277ffd0bfaa342b30aee4c3eee999d1067e566c455c542cbefeab2272; body-child locator 150. No derivative created yet.",
+      "completion_condition": "Produce a faithful, labelled SVG derivative with a verified geometry/label review; record source locator, original and derivative SHA-256, byte count, accurate alt text and truthful provenance; bind the asset to the exact relevant coverage/lesson records without claiming source dimensions not shown; validate the package and asset path. Do not commit the original extracted PNG."
     }
   ],
   "review": {
@@ -1934,7 +2206,6 @@
     "notes": "Reconciled queue metadata with live item statuses after Week 6–10 coverage updates; formal tests remain deferred."
   },
   "next_runnable": [
-    "TD-VIS-W01",
     "TD-VIS-W02",
     "TD-VIS-W03",
     "TD-VIS-W04",
@@ -1942,11 +2213,19 @@
     "TD-VIS-W06-W07",
     "TD-VIS-W08-W09",
     "TD-VIS-W10",
+    "TD-FACT-W01-DEGREE-NOTATION",
     "TD-VIS-OLE",
-    "TD-VIS-WMF"
+    "TD-VIS-WMF",
+    "TD-ASSET-W01-F01",
+    "TD-ASSET-W01-F02",
+    "TD-ASSET-W01-F03",
+    "TD-ASSET-W01-F04",
+    "TD-ASSET-W01-F05",
+    "TD-ASSET-W01-F06",
+    "TD-ASSET-W01-F07",
+    "TD-ASSET-W01-F08"
   ],
   "runnable_now": [
-    "TD-VIS-W01",
     "TD-VIS-W02",
     "TD-VIS-W03",
     "TD-VIS-W04",
@@ -1954,7 +2233,16 @@
     "TD-VIS-W06-W07",
     "TD-VIS-W08-W09",
     "TD-VIS-W10",
+    "TD-FACT-W01-DEGREE-NOTATION",
     "TD-VIS-OLE",
-    "TD-VIS-WMF"
+    "TD-VIS-WMF",
+    "TD-ASSET-W01-F01",
+    "TD-ASSET-W01-F02",
+    "TD-ASSET-W01-F03",
+    "TD-ASSET-W01-F04",
+    "TD-ASSET-W01-F05",
+    "TD-ASSET-W01-F06",
+    "TD-ASSET-W01-F07",
+    "TD-ASSET-W01-F08"
   ]
 }
