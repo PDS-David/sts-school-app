@@ -342,3 +342,17 @@ test('Week Four millimetre unit mismatch has a clear decimetre-reading alternati
   assert.ok(item, 'original source unit mismatch must remain documented');
   assert.equal(item.blocks_delivery, false);
 });
+
+test('Week Four distorted gate source has a fully dimensioned original scale alternative', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W04-PLAIN-SCALES');
+  assert.ok(lesson, 'Week Four lesson missing');
+  const q = lesson.practice.find(item => item.id === 'TD-W04-KEY-Q09');
+  assert.ok(q, 'original gate scale replacement missing');
+  assert.equal(q.marks, q.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+  assert.match(lesson.body, /overall width 105 mm/);
+  assert.match(lesson.body, /each gap 13 mm/);
+  const source = subject.open_items.find(item => item.id === 'TD-T2-W04-GATE-SCALE-RECONCILIATION');
+  assert.ok(source, 'distorted source figure must remain documented');
+  assert.equal(source.blocks_delivery, false);
+});
