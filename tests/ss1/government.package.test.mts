@@ -207,3 +207,10 @@ test('Any authored assets remain attached to an existing lesson and have deferre
     assert.equal(asset.state.verification_reference, null, asset.id);
   }
 });
+
+test('delivery corrections record the original source row hash (the compiler rejects the replacement hash)', () => {
+  for (const correction of raw.delivery_corrections) {
+    const originalRowHash = String(correction.source_lesson_id).split(':BODY:')[1];
+    assert.equal(correction.body_sha256, originalRowHash, `${correction.id}: body_sha256 must equal the original row hash in source_lesson_id`);
+  }
+});
