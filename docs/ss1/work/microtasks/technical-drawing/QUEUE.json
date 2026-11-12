@@ -31,7 +31,8 @@
     "Source figure extraction: 104 bounded TD-ASSET tasks registered against the original archive. PNG/JPEG parts copied byte-for-byte; 16 WMF previews rendered to cropped 2400px PNG; two cross-row duplicates reuse the Week Three triangle source asset. Figure verification and reuse rights approval remain deferred/pending.",
     "2026-11-12 source-asset generation commit a2888bbc: all 104 TD-ASSET tasks are now materialized and registered as 104 asset bindings backed by 102 committed files. PNG/JPEG source media was copied byte-for-byte; 16 WMF previews were converted to cropped 2400px PNG; two documented duplicate triangles reuse the Week Three derivative. The 16 WMF outputs were reviewed in a contact sheet for clipping/obvious rendering faults; per-figure label/dimension review, student rendering and rights/content approvals remain deferred.",
     "2026-11-12: native-resolution inspection of Week Ten original figures image88–image104 completed; fact inventory now includes figure dimensions and answerable weekend tasks. Added package-to-manifest-to-queue regression test for all 104 source figure bindings. The two known source-method defects remain explicit, not silently repaired. Package and source-asset CI runs on PR #637 currently require workflow authorization.",
-    "Extraction strategy decision completed by applying the least-destructive, source-preserving hybrid method; owner direction to proceed by recommendation was used. Teacher/content approval remains separate."
+    "Extraction strategy decision completed by applying the least-destructive, source-preserving hybrid method; owner direction to proceed by recommendation was used. Teacher/content approval remains separate.",
+    "Archive scope check: searched all ZIP members for Technical Drawing filenames; exactly one document is present, the Second Term SS1 source. First and Third Term remain genuine missing-source dependencies."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 1,
@@ -105,7 +106,7 @@
         "TD-SRC-T2"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "SOURCE_ASSIGNMENTS.csv has exactly one technical-drawing row (2nd Term). The worker prompt says absence of First/Third-Term documents is not proof those terms do not exist, and the contract requires missing terms to be unresolved items, not invented sources. The 2nd Term scheme's Week 1 'Revision of the work for last term' implies earlier work exists, but that is not a document.",
+      "implementation_reference": "Searched the complete user-supplied SS1 source ZIP archive; its only Technical Drawing document is SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx. No First Term or Third Term Technical Drawing source is present. This cannot be reconstructed faithfully from the Second Term document. Keep blocked until the owner supplies the missing term document or confirms that the term source does not exist.",
       "completion_condition": "Blocked on the owner. When a document is supplied, a new registration item is appended with its manifest row; until then an open item names the missing term. Never marked complete and no scheme is invented."
     },
     {
@@ -129,7 +130,7 @@
         "TD-SRC-T2"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "SOURCE_ASSIGNMENTS.csv has exactly one technical-drawing row (2nd Term). The worker prompt says absence of First/Third-Term documents is not proof those terms do not exist, and the contract requires missing terms to be unresolved items, not invented sources.",
+      "implementation_reference": "Searched the complete user-supplied SS1 source ZIP archive; its only Technical Drawing document is SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx. No First Term or Third Term Technical Drawing source is present. This cannot be reconstructed faithfully from the Second Term document. Keep blocked until the owner supplies the missing term document or confirms that the term source does not exist.",
       "completion_condition": "Blocked on the owner. When a document is supplied, a new registration item is appended with its manifest row; until then an open item names the missing term. Never marked complete and no scheme is invented."
     },
     {
