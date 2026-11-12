@@ -421,3 +421,41 @@ test('Week Ten ambiguous R20 source task has a feasible original external-tangen
   assert.ok(item, 'source ambiguity must remain documented');
   assert.equal(item.blocks_delivery, false);
 });
+
+
+test('Week Eight–Nine mismatched weekend figures have five fully dimensioned original replacements', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W08-W09-EQUAL-AREA');
+  assert.ok(lesson, 'Week Eight–Nine lesson missing');
+  const ids = ['TD-W08-W09-Q09', 'TD-W08-W09-Q10', 'TD-W08-W09-Q11', 'TD-W08-W09-Q12', 'TD-W08-W09-Q13'];
+  for (const id of ids) {
+    const q = lesson.practice.find(item => item.id === id);
+    assert.ok(q, `original weekend replacement missing: ${id}`);
+    assert.match(q.question, /^Original replacement for an ambiguous weekend figure:/);
+    assert.equal(q.marks, 5);
+    assert.equal(q.marks, q.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+    assert.ok(q.answer.length > 40, `worked answer missing: ${id}`);
+  }
+  assert.match(lesson.body, /Original fully dimensioned replacements for the five mismatched weekend assessment figures/);
+  const sourceGap = subject.open_items.find(item => item.id === 'TD-T2-W08-W09-ANSWER-KEYS');
+  assert.ok(sourceGap, 'source assessment discrepancy must remain recorded');
+  assert.equal(sourceGap.blocks_delivery, false, 'original replacement set covers the affected student objectives');
+  assert.match(sourceGap.required_action, /Teacher reviews and approves/);
+});
+
+test('Week Eight–Nine original replacement numerical keys are internally consistent', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W08-W09-EQUAL-AREA');
+  const expected = new Map([
+    ['TD-W08-W09-Q09', /60 mm/],
+    ['TD-W08-W09-Q10', /30 mm/],
+    ['TD-W08-W09-Q11', /30 mm/],
+    ['TD-W08-W09-Q12', /56\.57 mm.*69\.28 mm/s],
+    ['TD-W08-W09-Q13', /24 mm/]
+  ]);
+  for (const [id, pattern] of expected) {
+    const q = lesson.practice.find(item => item.id === id);
+    assert.ok(q, `replacement missing: ${id}`);
+    assert.match(q.answer, pattern, `incorrect keyed result: ${id}`);
+  }
+});
