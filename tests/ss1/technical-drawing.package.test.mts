@@ -388,3 +388,17 @@ test('Week Six–Seven ambiguous source figures have original replacement exerci
     assert.equal(item.blocks_delivery, false);
   }
 });
+
+test('Week Ten ambiguous R20 source task has a feasible original external-tangency alternative', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W10-TANGENCY');
+  assert.ok(lesson, 'Week Ten tangency lesson missing');
+  const q = lesson.practice.find(item => item.id === 'TD-W10-KEY-Q06');
+  assert.ok(q, 'R20 alternative practice missing');
+  assert.equal(q.marks, q.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+  assert.match(lesson.body, /centres 70 mm apart/);
+  assert.match(lesson.body, /5<70<85/);
+  const item = subject.open_items.find(entry => entry.id === 'TD-T2-W10-R20-TANGENCY-AMBIGUITY');
+  assert.ok(item, 'source ambiguity must remain documented');
+  assert.equal(item.blocks_delivery, false);
+});
