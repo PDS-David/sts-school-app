@@ -922,7 +922,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
       assertPrimary4SupplementCorpus();
       const supplements = buildPrimary4SupplementRows(rows, root, schoolCode);
       rows.push(...supplements);
-      console.log(`\\nPRIMARY 4 RESEARCHED SUPPLEMENTS: ${supplements.length} rows appended to the source audit.`);
+      console.log(`\nPRIMARY 4 RESEARCHED SUPPLEMENTS: ${supplements.length} rows appended to the source audit.`);
       const approvalIssues = primary4SupplementApprovalIssues();
       if (approvalIssues.length) {
         console.log('PRIMARY 4 SUPPLEMENT APPROVAL GATE — dry-run only; --yes is blocked:');
