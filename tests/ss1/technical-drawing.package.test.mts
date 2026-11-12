@@ -48,7 +48,7 @@ test('Week 8–9 and Week 10 scheme objectives are bound to teaching supplements
   for (const id of required) {
     const coverage = subject.coverage.find(entry => entry.id === id);
     assert.ok(coverage, `coverage missing: ${id}`);
-    assert.equal(coverage.status, 'SUPPORTED', `coverage not supported: ${id}`);
+    assert.equal(coverage.status, 'PARTIAL', `supplement-only coverage must stay PARTIAL (source has no teaching body): ${id}`);
     assert.ok(coverage.lesson_ids.length > 0, `coverage has no lesson binding: ${id}`);
     for (const lessonId of coverage.lesson_ids) {
       assert.ok(
