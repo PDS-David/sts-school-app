@@ -6355,6 +6355,30 @@
               "marks": 1
             }
           ]
+        },
+        {
+          "id": "Q16",
+          "question": "State four properties of electric lines of force.",
+          "answer": "Any four: they are imaginary representations; arrows show the force direction on a positive test charge; lines never cross; lines leave positive charges and end on negative charges or extend to/from infinity; closer spacing indicates a stronger field; in a uniform field they are straight, parallel and equally spaced.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "One correct property.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second correct property.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third correct property.",
+              "marks": 1
+            },
+            {
+              "criterion": "Fourth correct property.",
+              "marks": 1
+            }
+          ]
         }
       ],
       "provenance": [
@@ -11366,6 +11390,32 @@
         "locator": "Original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 6 WEEK SEVEN, body SS1-SRC-2c924c964660:BODY:ff0474d250d038ced292af853aeea78bbc2ffbd31f3792df61ac11f1544957d8; rendered source pages 14–16. Lightning protection cross-check: National Weather Service, “Lightning Rods” (https://www.weather.gov/safety/lightning-rods).",
         "explanation": "The original rendered page 15 contains the incorrect negative-rod outcome and the claim that positive charge conducts away. The lesson now explains electron flow and the correct grounding sequence for both signs. The National Weather Service states that lightning protection systems do not prevent strikes; they intercept a strike, provide a conductive path and disperse energy safely into a grounding network. The lesson's safety explanation follows that guidance."
       }
+    },
+    {
+      "id": "CORR-PHYSICS-T2-W09-FIELD-LINE-TERMINATION",
+      "source_id": "SS1-SRC-2c924c964660",
+      "source_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7",
+      "source_lesson_id": "SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7",
+      "body_sha256": "3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7",
+      "replacement_id": "SUP-SS1-PHYSICS-T2-W09-ELECTRIC-FIELD-LINES",
+      "reason": "The source's field-line properties say that no line originates or terminates in the space surrounding a charge and that every line terminates on a positive and negative charge. This is incomplete for isolated/net charges: lines may extend to or from infinity. The student lesson correctly teaches that lines begin on positive charges and end on negative charges, or extend to/from infinity when no opposite charge is present.",
+      "evidence": {
+        "locator": "Original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 8 WEEK NINE, body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7; rendered page 19.",
+        "explanation": "The source property list is visible on page 19. The lesson's field-line rules preserve the physical meaning without implying every isolated charge must have an opposite charge within the diagram."
+      }
+    },
+    {
+      "id": "CORR-PHYSICS-T2-W09-FLUX-DENSITY-NOTATION",
+      "source_id": "SS1-SRC-2c924c964660",
+      "source_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7",
+      "source_lesson_id": "SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7",
+      "body_sha256": "3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7",
+      "replacement_id": "SUP-SS1-PHYSICS-T2-W09-ELECTRIC-QUANTITIES",
+      "reason": "The source labels D=Q/A as electric flux density. In modern SI usage, charge per unit area is surface charge density (commonly σ=Q/A); electric displacement D is a distinct quantity (D=εE in a linear isotropic medium). The queued quantitative lesson must preserve the source's stated elementary relation while explicitly clarifying the notation so students do not conflate the two concepts.",
+      "evidence": {
+        "locator": "Original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 8 WEEK NINE, body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7; rendered page 20.",
+        "explanation": "The source page 20 explicitly labels D as flux density and defines it as charge per unit area, with formula D=Q/A and unit C m⁻². The supplement will distinguish the source's classroom notation from modern electromagnetic displacement notation."
+      }
     }
   ],
   "assets": [
@@ -14655,12 +14705,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T2-W09-ELECTRIC-FIELD-LINES; body SHA-256 d326d7b0cad0e23c28f40ca9d6e01d984ab7b6bd8fa8891e1e5e1e50fba4e03f; practice Q01–Q15.",
-          "explanation": "Authored supplement teaches field direction, field-line properties, patterns and uniformity with a complete keyed assessment. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T2-W09-ELECTRIC-FIELD-LINES; body SHA-256 d326d7b0cad0e23c28f40ca9d6e01d984ab7b6bd8fa8891e1e5e1e50fba4e03f; practice Q01–Q16; assets PHYS-ASSET-T2-W09-ELECTRIC-FIELD-PATTERNS and PHYS-ASSET-T2-W09-ELECTRIC-FIELD-ADDITIONAL.",
+          "explanation": "The lesson covers the mapped field-line objective and all source diagrams are represented by registered original SVG teaching aids. The original source row has now been inspected; the quantitative electric-field objectives in the same row are tracked separately and are not claimed as covered by this field-pattern lesson."
         },
         {
           "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Nine, lines 678–731.",
           "explanation": "Close-equivalent comparison includes electric field, lines of force, field patterns and assessment. It is not asserted to be the registered original .doc."
+        },
+        {
+          "locator": "Original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 8 body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7; rendered source pages 18–20; original field-pattern figures on page 19.",
+          "explanation": "The original row includes isolated positive/negative charges, an unlike-charge pair and a like-positive pair. The two registered original SVGs cover isolated charges, dipole, like-charge and uniform parallel-plate patterns. The original source property wording that appears to terminate every line only on a charge is clarified: lines may extend to/from infinity when no opposite charge is present."
         }
       ]
     },
@@ -14675,12 +14729,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T2-W09-ELECTRIC-FIELD-LINES; body SHA-256 d326d7b0cad0e23c28f40ca9d6e01d984ab7b6bd8fa8891e1e5e1e50fba4e03f; practice Q01–Q15.",
-          "explanation": "Authored supplement teaches field direction, field-line properties, patterns and uniformity with a complete keyed assessment. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T2-W09-ELECTRIC-FIELD-LINES; body SHA-256 d326d7b0cad0e23c28f40ca9d6e01d984ab7b6bd8fa8891e1e5e1e50fba4e03f; practice Q01–Q16; assets PHYS-ASSET-T2-W09-ELECTRIC-FIELD-PATTERNS and PHYS-ASSET-T2-W09-ELECTRIC-FIELD-ADDITIONAL.",
+          "explanation": "The lesson covers the mapped field-line objective and all source diagrams are represented by registered original SVG teaching aids. The original source row has now been inspected; the quantitative electric-field objectives in the same row are tracked separately and are not claimed as covered by this field-pattern lesson."
         },
         {
           "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Nine, lines 678–731.",
           "explanation": "Close-equivalent comparison includes electric field, lines of force, field patterns and assessment. It is not asserted to be the registered original .doc."
+        },
+        {
+          "locator": "Original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 8 body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7; rendered source pages 18–20; original field-pattern figures on page 19.",
+          "explanation": "The original row includes isolated positive/negative charges, an unlike-charge pair and a like-positive pair. The two registered original SVGs cover isolated charges, dipole, like-charge and uniform parallel-plate patterns. The original source property wording that appears to terminate every line only on a charge is clarified: lines may extend to/from infinity when no opposite charge is present."
         }
       ]
     },
@@ -14695,12 +14753,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T2-W09-ELECTRIC-FIELD-LINES; body SHA-256 d326d7b0cad0e23c28f40ca9d6e01d984ab7b6bd8fa8891e1e5e1e50fba4e03f; practice Q01–Q15.",
-          "explanation": "Authored supplement teaches field direction, field-line properties, patterns and uniformity with a complete keyed assessment. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T2-W09-ELECTRIC-FIELD-LINES; body SHA-256 d326d7b0cad0e23c28f40ca9d6e01d984ab7b6bd8fa8891e1e5e1e50fba4e03f; practice Q01–Q16; assets PHYS-ASSET-T2-W09-ELECTRIC-FIELD-PATTERNS and PHYS-ASSET-T2-W09-ELECTRIC-FIELD-ADDITIONAL.",
+          "explanation": "The lesson covers the mapped field-line objective and all source diagrams are represented by registered original SVG teaching aids. The original source row has now been inspected; the quantitative electric-field objectives in the same row are tracked separately and are not claimed as covered by this field-pattern lesson."
         },
         {
           "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Nine, lines 678–731.",
           "explanation": "Close-equivalent comparison includes electric field, lines of force, field patterns and assessment. It is not asserted to be the registered original .doc."
+        },
+        {
+          "locator": "Original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 8 body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7; rendered source pages 18–20; original field-pattern figures on page 19.",
+          "explanation": "The original row includes isolated positive/negative charges, an unlike-charge pair and a like-positive pair. The two registered original SVGs cover isolated charges, dipole, like-charge and uniform parallel-plate patterns. The original source property wording that appears to terminate every line only on a charge is clarified: lines may extend to/from infinity when no opposite charge is present."
         }
       ]
     },
@@ -14715,12 +14777,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T2-W09-ELECTRIC-FIELD-LINES; body SHA-256 d326d7b0cad0e23c28f40ca9d6e01d984ab7b6bd8fa8891e1e5e1e50fba4e03f; practice Q01–Q15.",
-          "explanation": "Authored supplement teaches field direction, field-line properties, patterns and uniformity with a complete keyed assessment. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T2-W09-ELECTRIC-FIELD-LINES; body SHA-256 d326d7b0cad0e23c28f40ca9d6e01d984ab7b6bd8fa8891e1e5e1e50fba4e03f; practice Q01–Q16; assets PHYS-ASSET-T2-W09-ELECTRIC-FIELD-PATTERNS and PHYS-ASSET-T2-W09-ELECTRIC-FIELD-ADDITIONAL.",
+          "explanation": "The lesson covers the mapped field-line objective and all source diagrams are represented by registered original SVG teaching aids. The original source row has now been inspected; the quantitative electric-field objectives in the same row are tracked separately and are not claimed as covered by this field-pattern lesson."
         },
         {
           "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Nine, lines 678–731.",
           "explanation": "Close-equivalent comparison includes electric field, lines of force, field patterns and assessment. It is not asserted to be the registered original .doc."
+        },
+        {
+          "locator": "Original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 8 body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7; rendered source pages 18–20; original field-pattern figures on page 19.",
+          "explanation": "The original row includes isolated positive/negative charges, an unlike-charge pair and a like-positive pair. The two registered original SVGs cover isolated charges, dipole, like-charge and uniform parallel-plate patterns. The original source property wording that appears to terminate every line only on a charge is clarified: lines may extend to/from infinity when no opposite charge is present."
         }
       ]
     },
@@ -14735,12 +14801,16 @@
       ],
       "evidence": [
         {
-          "locator": "SUP-SS1-PHYSICS-T2-W09-ELECTRIC-FIELD-LINES; body SHA-256 d326d7b0cad0e23c28f40ca9d6e01d984ab7b6bd8fa8891e1e5e1e50fba4e03f; practice Q01–Q15.",
-          "explanation": "Authored supplement teaches field direction, field-line properties, patterns and uniformity with a complete keyed assessment. Content approval remains pending and verification deferred."
+          "locator": "SUP-SS1-PHYSICS-T2-W09-ELECTRIC-FIELD-LINES; body SHA-256 d326d7b0cad0e23c28f40ca9d6e01d984ab7b6bd8fa8891e1e5e1e50fba4e03f; practice Q01–Q16; assets PHYS-ASSET-T2-W09-ELECTRIC-FIELD-PATTERNS and PHYS-ASSET-T2-W09-ELECTRIC-FIELD-ADDITIONAL.",
+          "explanation": "The lesson covers the mapped field-line objective and all source diagrams are represented by registered original SVG teaching aids. The original source row has now been inspected; the quantitative electric-field objectives in the same row are tracked separately and are not claimed as covered by this field-pattern lesson."
         },
         {
           "locator": "SchoolGist, Physics SSS 1 Second Term PDF, Week Nine, lines 678–731.",
           "explanation": "Close-equivalent comparison includes electric field, lines of force, field patterns and assessment. It is not asserted to be the registered original .doc."
+        },
+        {
+          "locator": "Original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 8 body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7; rendered source pages 18–20; original field-pattern figures on page 19.",
+          "explanation": "The original row includes isolated positive/negative charges, an unlike-charge pair and a like-positive pair. The two registered original SVGs cover isolated charges, dipole, like-charge and uniform parallel-plate patterns. The original source property wording that appears to terminate every line only on a charge is clarified: lines may extend to/from infinity when no opposite charge is present."
         }
       ]
     },
@@ -15703,6 +15773,76 @@
           "explanation": "Revision is a scheme-only marker, not a teaching lesson. It is preserved and mapped without inventing a revision programme."
         }
       ]
+    },
+    {
+      "id": "COV-PHYS-T2-W09-OBJ-6",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Coulomb's law for the force between two point charges, including the inverse-square relationship and SI Coulomb constant.",
+      "objective_locator": "Registered source SS1-SRC-2c924c964660; parsed row 8 WEEK NINE; body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7 (3,669 characters; SHA-256 3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7); rendered source pages 19–20.",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 8 body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7; rendered source pages 19–20.",
+          "explanation": "The original source explicitly teaches this objective, but the current field-pattern lesson does not cover it. A separate quantitative electric-field lesson has been queued; do not claim coverage until that lesson is implemented and keyed."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W09-OBJ-7",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Electric field intensity E=F/Q; vector nature, direction and SI units.",
+      "objective_locator": "Registered source SS1-SRC-2c924c964660; parsed row 8 WEEK NINE; body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7 (3,669 characters; SHA-256 3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7); rendered source pages 19–20.",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 8 body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7; rendered source pages 19–20.",
+          "explanation": "The original source explicitly teaches this objective, but the current field-pattern lesson does not cover it. A separate quantitative electric-field lesson has been queued; do not claim coverage until that lesson is implemented and keyed."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W09-OBJ-8",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Electric potential V=W/Q; scalar nature and unit volt (J/C).",
+      "objective_locator": "Registered source SS1-SRC-2c924c964660; parsed row 8 WEEK NINE; body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7 (3,669 characters; SHA-256 3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7); rendered source pages 19–20.",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 8 body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7; rendered source pages 19–20.",
+          "explanation": "The original source explicitly teaches this objective, but the current field-pattern lesson does not cover it. A separate quantitative electric-field lesson has been queued; do not claim coverage until that lesson is implemented and keyed."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W09-OBJ-9",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Distinction between electric potential and electric potential energy, including U=qV.",
+      "objective_locator": "Registered source SS1-SRC-2c924c964660; parsed row 8 WEEK NINE; body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7 (3,669 characters; SHA-256 3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7); rendered source pages 19–20.",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 8 body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7; rendered source pages 19–20.",
+          "explanation": "The original source explicitly teaches this objective, but the current field-pattern lesson does not cover it. A separate quantitative electric-field lesson has been queued; do not claim coverage until that lesson is implemented and keyed."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W09-OBJ-10",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Source's flux-density quantity D=Q/A, its charge-per-unit-area meaning and SI unit C m⁻².",
+      "objective_locator": "Registered source SS1-SRC-2c924c964660; parsed row 8 WEEK NINE; body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7 (3,669 characters; SHA-256 3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7); rendered source pages 19–20.",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 8 body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7; rendered source pages 19–20.",
+          "explanation": "The original source explicitly teaches this objective, but the current field-pattern lesson does not cover it. A separate quantitative electric-field lesson has been queued; do not claim coverage until that lesson is implemented and keyed."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -16352,6 +16492,33 @@
         "COV-PHYS-T2-W05-OBJ-1"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "PHYSICS-T2-W09-QUANTITATIVE-ELECTRIC-QUANTITIES",
+      "kind": "CONTENT",
+      "detail": "The registered Week Nine source row also requires Coulomb's law, electric field intensity, electric potential, potential energy versus potential, and flux density. The current field-pattern lesson covers only the field-line portion; it does not teach or assess these quantitative objectives.",
+      "required_action": "Complete the queued independent quantitative electric-field lesson, including formulas, vector/scalar distinctions, SI units, worked examples, all source MCQs and both numerical theory questions. Update the five UNRESOLVED coverage entries only when the lesson and keyed practice are present. Content approval remains PENDING.",
+      "affected_ids": [
+        "COV-PHYS-T2-W09-OBJ-6",
+        "COV-PHYS-T2-W09-OBJ-7",
+        "COV-PHYS-T2-W09-OBJ-8",
+        "COV-PHYS-T2-W09-OBJ-9",
+        "COV-PHYS-T2-W09-OBJ-10",
+        "PHYS-LESSON-T2-W09-ELECTRIC-QUANTITIES",
+        "PHYS-WK-T2-W09"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "PHYSICS-T2-W09-POTENTIAL-WORK-PREFIX",
+      "kind": "FACT",
+      "detail": "The original rendered page 20 prints the work in the potential-difference theory question as '20MJ' for a 5 μC charge. Read literally, this gives 4×10¹² V; if the intended prefix was mJ, it gives 4×10³ V. The page visibly appears as uppercase M, but the magnitude is unusual for SS1.",
+      "required_action": "Keep the literal source value and show the resulting calculation in the teacher key; ask the Physics teacher to confirm whether the printed prefix M is intentional or a typographical error before replacing the source-aligned item. Do not silently change MJ to mJ.",
+      "affected_ids": [
+        "PHYS-LESSON-T2-W09-ELECTRIC-QUANTITIES",
+        "PHYSICS-T2-W09-QUANTITATIVE-ELECTRIC-QUANTITIES"
+      ],
+      "blocks_delivery": false
     }
   ]
 }

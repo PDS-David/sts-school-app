@@ -64,7 +64,8 @@
     "PHYS-WK-T2-W05 (2026-11-12): inspected original .doc row and rendered pages 9–12; indexed all source applications and assessment blocks; keyed two distinct evaluation/theory prompts and five weekend MCQs (15 marks); corrected radiation-surface, infrared, flask-stopper and stone/carpet issues; expanded lesson applications. Existing vacuum-flask SVG covers the thermos diagram prompt; a separate conduction-rod SVG task was added for the low-resolution page-10 source figure. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W05.md.",
     "PHYS-WK-T2-W06 (2026-11-12): inspected original .doc row and rendered pages 12–14; indexed charge production/types, conductors/insulators, fundamental law, surface distribution/density and storage; added answer keys for four distinct evaluation/theory prompts and five weekend MCQs (15 marks); existing charge-distribution SVG on page 13 is attached to the lesson; page-14 electroscope diagram belongs to WEEK SEVEN. Clarified electrophorus transfer vs capacitor storage. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W06.md.",
     "PHYS-WK-T2-W07 (2026-11-12): inspected original .doc row and rendered pages 14–16; indexed electroscope structure/uses, contact/induction charging, lightning and conductor protection; added answer keys for four evaluation prompts, five weekend MCQs and two theory prompts (20 marks); original electroscope and induction figures are covered by registered SVG replacements. Corrected source induction polarity/earthing and lightning-conductor misconceptions. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W07.md.",
-    "PHYS-WK-T2-W08 (2026-11-12): inspected original .doc row and rendered pages 16–18; indexed field concept/types, Newton's universal gravitation law, acceleration/free fall, magnetic field and field lines; added the missing Newton formula and magnetic-field explanation, plus answer keys for four evaluation prompts and two theory questions (17 marks). The page-18 magnetic-field figure is covered by the registered original SVG. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W08.md."
+    "PHYS-WK-T2-W08 (2026-11-12): inspected original .doc row and rendered pages 16–18; indexed field concept/types, Newton's universal gravitation law, acceleration/free fall, magnetic field and field lines; added the missing Newton formula and magnetic-field explanation, plus answer keys for four evaluation prompts and two theory questions (17 marks). The page-18 magnetic-field figure is covered by the registered original SVG. Lesson approval PENDING; verification DEFERRED. Evidence PHYS-WK-T2-W08.md.",
+    "PHYS-WK-T2-W09 (2026-11-12): inspected original .doc row and rendered pages 18–20; field-line lesson aligned and source assessment added; existing two SVGs cover the source's four field patterns. The same row contains quantitative Coulomb/E/V/potential-energy/flux-density objectives absent from the current lesson; added five UNRESOLVED coverage entries, CONTENT blocker and a bounded quantitative lesson task. Preserved printed 20MJ value and flagged its unusual magnitude for teacher confirmation. Evidence PHYS-WK-T2-W09.md."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -79,15 +80,15 @@
     "BRANCH_COMPARISON": 2,
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
-    "LESSON": 14,
+    "LESSON": 15,
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 73,
+    "IMPLEMENTED_TESTING_DEFERRED": 74,
     "BLOCKED": 7,
     "PENDING": 13
   },
-  "total": 93,
+  "total": 94,
   "items": [
     {
       "id": "PHYS-SRC-T1",
@@ -979,8 +980,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Reopened 2026-11-12: the original Physics source members are now available from CI evidence artifact 13902689395 (run 43126374868). The run successfully executed scripts/ss1/prepare_sources.py, which enforces archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact manifest membership, member byte counts and member SHA-256. Independently checked the three extracted Physics members against SOURCE_ASSIGNMENTS.csv; all sizes and hashes match. Original row text and embedded source files are now accessible for this indexing task. Source reconciliation is NOT yet complete; inspect the row, figures, examples and assessments before closing.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-12 against verified original member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7. Parsed row 8 body SS1-SRC-2c924c964660:BODY:3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7, SHA-256 3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7, 3,669 characters; rendered pages 18–20 inspected. Indexed field definition/direction, all field-line properties and four source patterns; existing two original SVG teaching aids cover isolated charges, dipole, like-positive charges and uniform parallel plates. Added the exact source assessment “State four properties of lines of force” to the field-pattern lesson. The same source row also contains Coulomb's law, E=F/Q, V=W/Q, potential vs potential energy, and D=Q/A; these were not in the current lesson, so five UNRESOLVED coverage entries, one delivery-blocking CONTENT open item and lesson task PHYS-LESSON-T2-W09-ELECTRIC-QUANTITIES were added. Recorded the field-line infinity clarification and D/σ notation distinction. The printed theory value 20MJ is preserved and separately flagged for teacher confirmation; no silent mJ substitution. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -3198,12 +3199,44 @@
       "status": "PENDING",
       "implementation_reference": "Added 2026-11-12 after inspecting original rendered source page 10. The source has a low-resolution conduction-rod diagram; the existing vacuum-flask SVG addresses a different source question and cannot replace this figure.",
       "completion_condition": "Create a self-contained safe SVG showing a metal rod heated at one end, heat-energy arrows toward the cool end, and a clear conduction label; add an asset record and lesson link, compute exact SHA-256/bytes, and pass SVG safety plus Physics package tests."
+    },
+    {
+      "id": "PHYS-LESSON-T2-W09-ELECTRIC-QUANTITIES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK NINE, rendered source pages 19–20: Coulomb's law, electric field intensity, electric potential and flux density",
+      "objective": "Create a separate student-ready quantitative electric-field lesson covering Coulomb's law, E=F/Q, V=W/Q, potential versus potential energy, source flux-density notation D=Q/A, SI units and all original assessments.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LESSON-T2-W09-ELECTRIC-QUANTITIES.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LESSON-T2-W09-ELECTRIC-QUANTITIES.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T2-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added 2026-11-12 after inspecting original Week Nine source pages 19–20. The existing field-pattern lesson does not cover Coulomb's law, electric field intensity, electric potential, potential energy or the source's flux-density quantity. Five UNRESOLVED coverage entries and a delivery-blocking open item are recorded. Source question prints 20MJ; its prefix ambiguity is separately flagged without silently altering the source.",
+      "completion_condition": "Author a self-contained lesson with Coulomb's law F=k|q1q2|/r², E=F/q (vector), V=W/q (scalar), potential-energy distinction U=qV, source D=Q/A notation with modern terminology note, SI units and worked examples. Key all source evaluation prompts, five MCQs and both numerical theory questions; preserve the literal printed 20MJ with an explicit teacher-confirmation note; update five coverage entries to IMPLEMENTED_EQUIVALENT only after content and practice exist; compute body hash and validate marks/references."
     }
   ],
   "review": {
     "date": "2026-11-12",
     "reviewed_master_sha": "174155c6fc080ad7c76c6e99e74b1a86e576bfe3",
-    "scope": "Physics source indexing: Second Term Weeks Three through Eight completed against verified original source rows. Remaining source indexing, visual assets, technical gates and owner approvals remain open.",
+    "scope": "Physics source indexing: Second Term Weeks Three through Nine completed against verified original source rows. Quantitative electric-field lesson for Week Nine is queued; remaining source weeks, visual assets, technical gates and approvals remain open.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
@@ -3232,7 +3265,6 @@
     }
   },
   "next_runnable": [
-    "PHYS-WK-T2-W09",
     "PHYS-WK-T2-W10",
     "PHYS-WK-T3-W01",
     "PHYS-WK-T3-W02",
@@ -3244,10 +3276,10 @@
     "PHYS-WK-T3-W09",
     "PHYS-WK-T3-W10",
     "PHYS-ASSET-T2-W04-ANOMALOUS-WATER-DIAGRAM",
-    "PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM"
+    "PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM",
+    "PHYS-LESSON-T2-W09-ELECTRIC-QUANTITIES"
   ],
   "runnable_now": [
-    "PHYS-WK-T2-W09",
     "PHYS-WK-T2-W10",
     "PHYS-WK-T3-W01",
     "PHYS-WK-T3-W02",
@@ -3259,6 +3291,7 @@
     "PHYS-WK-T3-W09",
     "PHYS-WK-T3-W10",
     "PHYS-ASSET-T2-W04-ANOMALOUS-WATER-DIAGRAM",
-    "PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM"
+    "PHYS-ASSET-T2-W05-CONDUCTION-ROD-DIAGRAM",
+    "PHYS-LESSON-T2-W09-ELECTRIC-QUANTITIES"
   ]
 }
