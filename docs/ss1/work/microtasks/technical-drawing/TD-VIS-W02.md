@@ -36,3 +36,12 @@ Nine bounded ASSET tasks have been appended: `TD-ASSET-W02-F01` through `TD-ASSE
 - Visually inspected all nine unique PNG previews and matched them to surrounding source text.
 - Did not create derivative SVGs, bind package assets, run subject schema/tests/compiler/importer, or verify app display. Those remain outstanding.
 - No approval, certification or deployment is claimed.
+
+
+## Supplemental VML and missing-figure audit (2026-11-12)
+
+A follow-up XML/PDF audit found one VML arc shape at `word/document.xml` body child 287 (`w:pict` / `v:shape`, preset type 19). It is a floating construction overlay for Example 2 (circle through F and G tangent to line CD), not a separate instructional figure; the visible large arc is already included in the paired `word/media/image12.png` preview (F04). No separate asset task is required; `TD-ASSET-W02-F04` must preserve the full composite, including the arc and labels.
+
+The same audit checked the Week Two general-evaluation item at body child 286: “Construct a line of approximate length to the given arc shown below.” The following paragraph/anchor area has no attached DrawingML image, no VML shape, no OLE object and no visible arc in the rendered source PDF page 8. The only VML arc at child 287 is anchored/floated beside Example 2 on page 7 and is not the missing q4 arc. The q4 source figure is therefore absent from the supplied document/render; no length or construction answer can be derived. This is recorded as blocking open item `TD-T2-W02-ARC-FIGURE-MISSING`.
+
+The weekend multiple-choice question 4 at body children 311–313 also has two incorrect options under the source's own method: “bisect two sides” and “draw a line from the centre parallel to one side.” The correct escribed-circle method bisects exterior angles and drops a perpendicular from the centre to a side. The item is not single-answer as written; see `TD-T2-W02-OBJECTIVE-Q4-MULTIPLE-ANSWERS`.
