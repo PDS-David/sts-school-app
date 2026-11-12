@@ -3641,12 +3641,12 @@
       "completion_condition": "Three SVGs pass SVG safety, integrity and app rendering; diagrams appear alongside the corrected solution examples."
     },
     {
-      "id": "FM-PR-640-INTEGRATION-VALIDATION",
+      "id": "FM-PR-646-INTEGRATION-VALIDATION",
       "kind": "VERIFICATION",
       "source_id": "SS1-SRC-43c5ab51b87f",
       "term": "All terms",
       "week_or_locator": "PR #640 follow-up integrity/coverage closeout",
-      "objective": "Run repository CI on the follow-up package changes in PR #640, resolve package-specific hash/schema/SVG/compiler failures, verify all asset references and lesson-body hashes, and record remaining cross-subject blockers without modifying other subject packages.",
+      "objective": "Run repository CI on the follow-up package changes in PR #646, resolve package-specific hash/schema/SVG/compiler failures, verify all asset references and lesson-body hashes, and record remaining cross-subject blockers without modifying other subject packages.",
       "required_files": [
         "backend/src/db/ss1/subjects/further-mathematics.json",
         "backend/src/db/ss1/refreshIntegrityHashes.ts",
@@ -3672,7 +3672,7 @@
         "FM-LES-T2-W10-LOGICAL-CONNECTIVES"
       ],
       "status": "IN_PROGRESS",
-      "implementation_reference": "Follow-up PR #640 contains only the post-merge Further Mathematics integrity/coverage corrections and queue/review closeout. All 25 lessons, 90 coverage rows and 24 registered assets are preserved from merged PR #639. Verification pending current-head CI.",
+      "implementation_reference": "Follow-up PR #646 contains only the post-merge Further Mathematics integrity/coverage corrections and queue/review closeout. All 25 lessons, 90 coverage rows and 24 registered assets are preserved from merged PR #639. Verification pending current-head CI.",
       "completion_condition": "Master-targeted CI passes all relevant checks; package hash/schema/compiler/SVG validation is complete; all remaining blockers are classified and recorded. No merge before required checks pass."
     },
     {
