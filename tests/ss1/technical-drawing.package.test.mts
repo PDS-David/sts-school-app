@@ -459,3 +459,14 @@ test('Week Eight–Nine original replacement numerical keys are internally consi
     assert.match(q.answer, pattern, `incorrect keyed result: ${id}`);
   }
 });
+
+test('Week Eight–Nine pentagon replacement construction resolves both mirror intersections', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W08-W09-EQUAL-AREA');
+  const q = lesson.practice.find(item => item.id === 'TD-W08-W09-Q08');
+  assert.ok(q);
+  assert.match(q.question, /side of BD opposite A/);
+  assert.match(q.question, /side of AD opposite B/);
+  assert.match(q.answer, /unique convex pentagon/);
+  assert.match(lesson.body, /fully dimensioned convex pentagon/);
+});
