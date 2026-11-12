@@ -97,7 +97,7 @@ test('Week Seven reduction supplement distinguishes linear and area ratios', asy
   assert.ok(lesson, 'Week Seven reduction lesson missing');
   assert.match(lesson.body, /area scale factor is k²/);
   assert.match(lesson.body, /√\(3\/5\)/);
-  assert.equal(lesson.practice.length, 4);
+  assert.equal(lesson.practice.length, 5);
 });
 
 test('Week Seven reduction SVG asset matches registered integrity metadata', async () => {
