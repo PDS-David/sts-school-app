@@ -43,6 +43,34 @@ jobs:
           python scripts/ss1/prepare_sources.py \
             --archive docs/ss1/sources/SSS1-original.zip \
             --output "$RUNNER_TEMP/ss1-staged"
+      - name: Compile Technical Drawing independently in plan-only mode
+        run: |
+          plan="$RUNNER_TEMP/technical-drawing-plan.json"
+          status=0
+          python scripts/ss1/build_subject_packages.py \
+            --root "$RUNNER_TEMP/ss1-staged" \
+            --output "$plan" \
+            --subject-slug technical-drawing || status=$?
+          if [ ! -s "$plan" ]; then
+            echo "::error::Technical Drawing compile failed before producing a plan (exit $status)"
+            exit 1
+          fi
+          if [ "$status" -ne 0 ]; then
+            echo "::warning::Technical Drawing plan produced; owner gates remain (exit $status)."
+          fi
+          python - "$plan" <<'PY'
+          import json, sys
+          from collections import Counter
+          plan = json.load(open(sys.argv[1], encoding="utf-8"))
+          blockers = plan.get("blockers", [])
+          print(json.dumps({
+              "compiled_rows": len(plan.get("rows", [])),
+              "identified_rows": len(plan.get("identified_rows", [])),
+              "dispositions": len(plan.get("dispositions", [])),
+              "ready": plan.get("ready"),
+              "blockers_by_kind": dict(sorted(Counter(b.split(":", 1)[0] for b in blockers).items())),
+          }, indent=2))
+          PY
       - name: Compile every registered SS1 subject in plan-only mode
         run: |
           # The importer exits 1 while owner gates / unapproved content remain, but it
