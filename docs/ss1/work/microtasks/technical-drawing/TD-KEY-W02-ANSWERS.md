@@ -49,3 +49,17 @@ The original Week Two Q4 asks learners to transfer an arc “shown below”, but
 Suggested rubric (5 marks): four equal angular sectors (1); chord length 15.61 mm (1); four-chord straight-line approximation 62.45 mm (1); exact arc length 62.83 mm (1); error 0.38 mm or 0.61% (1).
 
 This is a new original alternative, not the missing source figure or recovered source answer. It is separately marked for teacher review.
+
+## Safe scoring and replacement wording for ambiguous source MCQs
+
+### Weekend Q2 — two valid radii
+
+The original figure shows O as the centre and B and Q as two contact points. OB and OQ are both radii, so both options B and C are mathematically correct. For any delivery that retains the source options, **accept either B or C for full credit**; do not force one answer.
+
+Original replacement wording (single-answer): “Which statement is true for a circle with centre O and contact points B and Q?” Correct answer: “OB and OQ are equal radii, and each is perpendicular to its tangent at the contact point.”
+
+### Weekend Q4 — two invalid method steps
+
+The original single-answer wording asks which is not a procedure for constructing an escribed circle. Both option B (“bisect two sides”) and option C (“draw a line from the determined centre parallel to one side”) are not required/valid steps; the perpendicular from the excentre to a side line is required to obtain the radius. **Accept either B or C for full credit** if the original options are retained.
+
+Original replacement wording (single-answer): “Which construction gives the radius of an escribed circle?” Correct answer: “Draw a perpendicular from the excentre to the side line (or its extension) that the circle touches.”
