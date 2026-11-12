@@ -151,8 +151,9 @@ test('Technical Drawing resolved source rows and figure inventories are not left
     'TD-T2-W01-GENERAL-Q2-DATA-IMPOSSIBLE',
     'TD-T2-W01-GENERAL-Q4-SSA-AMBIGUITY'
   ]) assert.equal(ids.has(resolved), false, `resolved item remains open: ${resolved}`);
-  assert.equal(subject.open_items.length, 17);
+  assert.equal(subject.open_items.length, 18);
   assert.ok(ids.has('TD-T2-W02-OBJECTIVE-Q2-MULTIPLE-RADII'), 'ambiguous radius MCQ must remain explicitly open');
+  assert.ok(ids.has('TD-T2-W03-GENERAL-PENTAGON-DIAGONAL-UNDERDEFINED'), 'underdefined pentagon prompt must remain explicitly open');
 });
 
 test('source-backed Week Two to Five answer keys retain verified results and unresolved caveats', async () => {
