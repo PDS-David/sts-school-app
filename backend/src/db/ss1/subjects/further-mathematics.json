@@ -172,8 +172,8 @@
         "Evaluate expressions with zero, negative and fractional indices, taking the root first",
         "Simplify numerical and algebraic expressions using the laws, writing every index explicitly"
       ],
-      "body": "In this lesson we write every index with a caret: a^m means \"a to the power m\". Fractions in an index are in brackets, so 8^(2/3) means 8 to the power two-thirds. The sign ∛ means cube root, and the n-th root of a is written with the words \"n-th root of a\" and as a^(1/n).\n\n1. THE MEANING OF AN INDEX\nLet m be a positive whole number. Then a^m means that m copies of a are multiplied together: a^m = a × a × ... × a, with m factors. The number a is the base and m is the index (plural indices), also called the power or exponent. For example 2^5 = 2 × 2 × 2 × 2 × 2 = 32, and 2^1 = 2.\n\nConditions used in this lesson: a and b are non-zero real numbers. Whenever an index is a fraction, take a and b to be positive, because an even root of a negative number is not a real number (for example no real number multiplied by itself four times gives -16, so (-16)^(1/4) is not a real number).\n\n2. THE EIGHT LAWS\nLaw 1 (multiplication): a^m × a^n = a^(m+n).\nWhy: x^4 × x^3 = (x × x × x × x) × (x × x × x) = x^7, which is x^(4+3).\nLaw 2 (division): a^m ÷ a^n = a^(m-n), with a not equal to 0.\nWhy: y^9 ÷ y^4 cancels four factors, leaving y^5, which is y^(9-4).\nLaw 3 (power of a power): (a^m)^n = a^(m×n).\nWhy: (z^2)^5 means five copies of z^2, so z^(2+2+2+2+2) = z^10.\nLaw 4 (zero index): a^0 = 1, with a not equal to 0.\nWhy: a^m ÷ a^m = 1 because anything non-zero divided by itself is 1. By Law 2 it is also a^(m-m) = a^0. So a^0 = 1. If a = 0 this argument divides by zero, so a^0 = 1 is stated only for a not equal to 0 and 0^0 is not defined here. Examples: 7^0 = 1 and (3k)^0 = 1 when k is not 0.\nLaw 5 (product and quotient to a power): (ab)^m = a^m × b^m, and (a/b)^m = a^m / b^m with b not equal to 0.\nExample: (3xy)^3 = 3^3 × x^3 × y^3 = 27x^3y^3.\nLaw 6 (negative index): a^(-m) = 1 / a^m, with a not equal to 0.\nExample: 5^(-2) = 1 / 5^2 = 1/25. A negative index does not make the answer negative; it takes the reciprocal.\nLaw 7 (root as an index): a^(1/n) = the n-th root of a, for a positive and n a whole number of at least 2.\nExamples: 36^(1/2) = 6 because 6 × 6 = 36, and 125^(1/3) = 5 because 5 × 5 × 5 = 125. So a^(1/3) is ∛a, and the cube root of 27 is 3, not 27^(1/3) = 3^3.\nLaw 8 (fractional index): a^(m/n) = (the n-th root of a)^m = the n-th root of (a^m), with a positive. The two forms are equal because a^(m/n) = (a^(1/n))^m = (a^m)^(1/n), using Law 3.\nTake the root first, because the numbers stay small. In a^(m/n) the top number m is the power and the bottom number n is the root.\nExample: 16^(3/4) = (4th root of 16)^3 = 2^3 = 8. Check with the other form: 16^3 = 4096, and the 4th root of 4096 is 8, because 8^4 = 4096.\n\n3. APPLYING THE LAWS\nMethod: write each number as a power of a small base, then apply the laws, and check the sign of each index at every step.\n\nExample A (negative fractional index). Evaluate 27^(-2/3).\n27^(-2/3) = 1 / 27^(2/3)   (Law 6)\n27^(2/3) = (∛27)^2 = 3^2 = 9   (Law 8: the root is 3 and the power is 2)\nSo 27^(-2/3) = 1/9.\nA common slip is to write 27^(2/3) = ∛27 = 9: the cube root of 27 is 3, and the power 2 is applied after taking the root.\n\nExample B (negative index on a fraction). Evaluate (1/4)^(-1/2).\n(1/4)^(-1/2) = (4/1)^(1/2) = 4^(1/2) = 2. A negative index turns the fraction upside down.\n\nExample C (decimal). Write (0.001)^3 as a power of 10.\n0.001 = 1/1000 = 10^(-3). So (0.001)^3 = (10^(-3))^3 = 10^(-9) = 0.000000001 (nine decimal places). Note that 0.001 is one thousandth, not one hundredth.\n\nExample D (algebra). Simplify (x^3 y^2)^2 ÷ (x^2 y).\n(x^3 y^2)^2 = x^6 y^4   (Laws 5 and 3)\nx^6 y^4 ÷ (x^2 y) = x^(6-2) y^(4-1) = x^4 y^3   (Law 2, with y = y^1)\n\nExample E (mixed). Evaluate 8^(2/3) × 4^(-3/2).\n8^(2/3) = (∛8)^2 = 2^2 = 4, and 4^(-3/2) = 1 / 4^(3/2) = 1 / ((square root of 4)^3) = 1/2^3 = 1/8. So the product is 4 × 1/8 = 1/2.\n\nAlways evaluate an expression like 4^2 in full (16) before moving on, and keep brackets balanced. Use the word \"evaluate\" when you find a number and \"simplify\" when you reduce an expression. Equations in which the unknown is the index belong to the next scheme week and are not set here.\n",
-      "body_sha256": "7745eb2b4ea9f09762f8fefac60339a4a998569ac635b13ceca9d6ab4aa2d4c8",
+      "body": "In this lesson we write every index with a caret: a^m means \"a to the power m\". Fractions in an index are in brackets, so 8^(2/3) means 8 to the power two-thirds. The sign ∛ means cube root, and the n-th root of a is written with the words \"n-th root of a\" and as a^(1/n).\n\n1. THE MEANING OF AN INDEX\nLet m be a positive whole number. Then a^m means that m copies of a are multiplied together: a^m = a × a × ... × a, with m factors. The number a is the base and m is the index (plural indices), also called the power or exponent. For example 2^5 = 2 × 2 × 2 × 2 × 2 = 32, and 2^1 = 2.\n\nConditions used in this lesson: a and b are non-zero real numbers. Whenever an index is a fraction, take a and b to be positive, because an even root of a negative number is not a real number (for example no real number multiplied by itself four times gives -16, so (-16)^(1/4) is not a real number).\n\n2. THE EIGHT LAWS\nLaw 1 (multiplication): a^m × a^n = a^(m+n).\nWhy: x^4 × x^3 = (x × x × x × x) × (x × x × x) = x^7, which is x^(4+3).\nLaw 2 (division): a^m ÷ a^n = a^(m-n), with a not equal to 0.\nWhy: y^9 ÷ y^4 cancels four factors, leaving y^5, which is y^(9-4).\nLaw 3 (power of a power): (a^m)^n = a^(m×n).\nWhy: (z^2)^5 means five copies of z^2, so z^(2+2+2+2+2) = z^10.\nLaw 4 (zero index): a^0 = 1, with a not equal to 0.\nWhy: a^m ÷ a^m = 1 because anything non-zero divided by itself is 1. By Law 2 it is also a^(m-m) = a^0. So a^0 = 1. If a = 0 this argument divides by zero, so a^0 = 1 is stated only for a not equal to 0 and 0^0 is not defined here. Examples: 7^0 = 1 and (3k)^0 = 1 when k is not 0.\nLaw 5 (product and quotient to a power): (ab)^m = a^m × b^m, and (a/b)^m = a^m / b^m with b not equal to 0.\nExample: (3xy)^3 = 3^3 × x^3 × y^3 = 27x^3y^3.\nLaw 6 (negative index): a^(-m) = 1 / a^m, with a not equal to 0.\nExample: 5^(-2) = 1 / 5^2 = 1/25. A negative index does not make the answer negative; it takes the reciprocal.\nLaw 7 (root as an index): a^(1/n) = the n-th root of a, for a positive and n a whole number of at least 2.\nExamples: 36^(1/2) = 6 because 6 × 6 = 36, and 125^(1/3) = 5 because 5 × 5 × 5 = 125. So a^(1/3) is ∛a, and the cube root of 27 is 3, not 27^(1/3) = 3^3.\nLaw 8 (fractional index): a^(m/n) = (the n-th root of a)^m = the n-th root of (a^m), with a positive. The two forms are equal because a^(m/n) = (a^(1/n))^m = (a^m)^(1/n), using Law 3.\nTake the root first, because the numbers stay small. In a^(m/n) the top number m is the power and the bottom number n is the root.\nExample: 16^(3/4) = (4th root of 16)^3 = 2^3 = 8. Check with the other form: 16^3 = 4096, and the 4th root of 4096 is 8, because 8^4 = 4096.\n\n3. APPLYING THE LAWS\nMethod: write each number as a power of a small base, then apply the laws, and check the sign of each index at every step.\n\nExample A (negative fractional index). Evaluate 27^(-2/3).\n27^(-2/3) = 1 / 27^(2/3)   (Law 6)\n27^(2/3) = (∛27)^2 = 3^2 = 9   (Law 8: the root is 3 and the power is 2)\nSo 27^(-2/3) = 1/9.\nA common slip is to write 27^(2/3) = ∛27 = 9: the cube root of 27 is 3, and the power 2 is applied after taking the root.\n\nExample B (negative index on a fraction). Evaluate (1/4)^(-1/2).\n(1/4)^(-1/2) = (4/1)^(1/2) = 4^(1/2) = 2. A negative index turns the fraction upside down.\n\nExample C (decimal). Write (0.001)^3 as a power of 10.\n0.001 = 1/1000 = 10^(-3). So (0.001)^3 = (10^(-3))^3 = 10^(-9) = 0.000000001 (nine decimal places). Note that 0.001 is one thousandth, not one hundredth.\n\nExample D (algebra). Simplify (x^3 y^2)^2 ÷ (x^2 y).\n(x^3 y^2)^2 = x^6 y^4   (Laws 5 and 3)\nx^6 y^4 ÷ (x^2 y) = x^(6-2) y^(4-1) = x^4 y^3   (Law 2, with y = y^1)\n\nExample E (mixed). Evaluate 8^(2/3) × 4^(-3/2).\n8^(2/3) = (∛8)^2 = 2^2 = 4, and 4^(-3/2) = 1 / 4^(3/2) = 1 / ((square root of 4)^3) = 1/2^3 = 1/8. So the product is 4 × 1/8 = 1/2.\n\nAlways evaluate an expression like 4^2 in full (16) before moving on, and keep brackets balanced. Use the word \"evaluate\" when you find a number and \"simplify\" when you reduce an expression. Equations in which the unknown is the index belong to the next scheme week and are not set here.\n\n\n4. COMPLETE THE WEEK ONE APPLICATION SET\nThe following source questions are included here because they test the laws of indices. The exponential equations in the source weekend assignment (3^x=1/81, 3^(-y)=243 and 25^(-5n)=625) are not repeated here: their method is taught in the Week Two exponential-equations lesson.\n\nExample F (the remaining General Evaluation items). Evaluate each expression:\n(a) 216^(4/3)=(cube root of 216)^4=6^4=1296.\n(b) 25^(3/2)=(square root of 25)^3=5^3=125.\n(c) (0.00001)^2=(10^(-5))^2=10^(-10).\n(d) 32^(2/5)=(5th root of 32)^2=2^2=4.\n(e) 81^(3/4)=(4th root of 81)^3=3^3=27.\n(f) 625^(3/8)×25=(5^4)^(3/8)×25=5^(3/2)×25=5√5×25=125√5.\n\nExample G (combine powers with the same base). Simplify 2^(x-1)×2^(2x+2)=2^((x-1)+(2x+2))=2^(3x+1).\n\nExample H (algebraic multiplication). Simplify 2r^5×9r^3=18r^8.\n\nExample I (theory evaluation). Evaluate (16^(3/2)×8^(2/3))/32^(1/5). The three factors are 64, 4 and 2 respectively, so the value is (64×4)/2=128.\n\nExample J (algebraic quotient). Simplify (3x^2×4x^3)/(6x^7), where x≠0. This is 12x^5/(6x^7)=2x^(-2)=2/x^2.\n\nThe source's 3^(-y)=243 and 25^(-5n)=625 are linear-form exponential equations and are answered in the Week Two replacement. This preserves the scheme boundary: Week One applies index laws; Week Two solves equations in which the unknown is an index.",
+      "body_sha256": "77684db5c981e0cff5f8e42fe083a5c5ed4be639c5cc21019f2be930008fdc3a",
       "practice": [
         {
           "id": "Q1",
@@ -363,6 +363,118 @@
             },
             {
               "criterion": "3^2 = 9",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "Evaluate (a) 27^(5/3), (b) (1,000,000,000)^0, and (c) simplify 2^(x-1)×2^(2x+2).",
+          "answer": "(a) (cube root of 27)^5=3^5=243. (b) The base is non-zero, so the value is 1. (c) 2^((x-1)+(2x+2))=2^(3x+1).",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "(a) answer 243",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) answer 1",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) adds indices",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) final 2^(3x+1)",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "Evaluate the six expressions: (a) 216^(4/3), (b) 25^(3/2), (c) (0.00001)^2, (d) 32^(2/5), (e) 81^(3/4), (f) 625^(3/8)×25.",
+          "answer": "(a)1296; (b)125; (c)10^(-10); (d)4; (e)27; (f)125√5.",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "(a) 1296",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) 125",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) 10^(-10)",
+              "marks": 1
+            },
+            {
+              "criterion": "(d) 4",
+              "marks": 1
+            },
+            {
+              "criterion": "(e) 27",
+              "marks": 1
+            },
+            {
+              "criterion": "(f) 125√5",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "Simplify 2r^5×9r^3.",
+          "answer": "Multiply coefficients and add indices: 18r^8.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Coefficient 18",
+              "marks": 1
+            },
+            {
+              "criterion": "Power r^8",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q13",
+          "question": "Evaluate (16^(3/2)×8^(2/3))/32^(1/5).",
+          "answer": "16^(3/2)=64, 8^(2/3)=4, 32^(1/5)=2; result=64×4/2=128.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "First two powers 64 and 4",
+              "marks": 1
+            },
+            {
+              "criterion": "Denominator 2",
+              "marks": 1
+            },
+            {
+              "criterion": "Answer 128",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q14",
+          "question": "Simplify (3x^2×4x^3)/(6x^7), where x≠0.",
+          "answer": "12x^5/(6x^7)=2x^(5-7)=2x^(-2)=2/x^2.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Multiplies numerator",
+              "marks": 1
+            },
+            {
+              "criterion": "Coefficient/index reduction",
+              "marks": 1
+            },
+            {
+              "criterion": "Answer 2/x^2",
               "marks": 1
             }
           ]
@@ -2995,6 +3107,19 @@
         "locator": "Further Mathematics 1st Term, parsed row 1 (WEEK TWO), getBody() lines 173–287; coverage COV-FM-T1-W02-OBJ-1 and COV-FM-T1-W02-OBJ-2; replacement SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS.",
         "explanation": "The replacement covers both indexed objectives and has been checked against the source row and the recorded defect/assessment registers. It states the equal-base conditions a > 0 and a ≠ 1, removes the false converse, writes indices explicitly, restores the missing quadratic example, gives both rejected branches in words, answers the previously unanswered linear and quadratic assessment items, and adds the logarithm step needed to finish 2^x = 3. All nine practice items have complete answers and marking totals (38 marks). This correction binds the original row to one replacement for delivery only. The original source row is retained unchanged. OI-FM-T1-W02-FACT-DEFECTS and OI-FM-T1-W02-ASSESSMENT-GAPS remain OPEN; FM-FACT-T1-W02-EQ-OBJECTS remains pending; the teacher decision on whether the logarithm step belongs in Week Two remains open. Content approval is PENDING and verification is DEFERRED; this binding does not constitute approval or acceptance."
       }
+    },
+    {
+      "id": "CORR-FURTHER-MATHEMATICS-T1-W01-INDICES",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "source_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145",
+      "source_lesson_id": "SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2",
+      "body_sha256": "621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2",
+      "replacement_id": "SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES",
+      "reason": "The original Week One row contains false/overbroad statements, a cube-root example with a wrong exponent, flattened superscripts/root indices/fractions, unanswered application and theory questions, and exponential-equation questions that belong to Week Two. The replacement corrects the laws and all in-scope calculations, and the two equation items are taught in the Week Two replacement.",
+      "evidence": {
+        "locator": "Week One parsed source row SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2; coverage COV-FM-T1-W01-OBJ-1 and OBJ-2; replacement SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES",
+        "eplanation": "One replacement is bound for delivery. It covers both scheme objectives, states conditions for zero/negative/fractional indices, explicitly writes powers, answers the source's in-scope application and theory items, and redirects the exponential-equation items to the Week Two lesson. Original row retained unchanged. Source-specific open items remain open pending review/verification; content approval PENDING, verification DEFERRED."
+      }
     }
   ],
   "assets": [
@@ -3135,7 +3260,7 @@
       "source_id": "SS1-SRC-e9efc9a976ed",
       "objective": "Indices: laws and application",
       "objective_locator": "scheme weeks 1-10; parsed row 0 (INDICES)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
         "SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2"
       ],
@@ -3147,6 +3272,10 @@
         {
           "locator": "FM-WK-T1-W01 (docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W01.md)",
           "explanation": "Row reviewed in full by FM-WK-T1-W01 against the original document: two scheme objectives, bound at objective level in COV-FM-T1-W01-OBJ-1 and COV-FM-T1-W01-OBJ-2 (both PARTIAL). Factual defects, lost notation and assessment gaps are recorded in OI-FM-T1-W01-FACT-DEFECTS, OI-FM-T1-W01-NOTATION-LOSS and OI-FM-T1-W01-ASSESSMENT-GAPS. The row needs a replacement; none is authored here. This entry stays a row-level association and is not an objective-level certification."
+        },
+        {
+          "locator": "Week One replacement lesson sections 1–4; objective coverage W01-OBJ-1 and W01-OBJ-2",
+          "explanation": "Both Week One scheme objectives now have complete replacement coverage; the original row is retained and bound through CORR-FURTHER-MATHEMATICS-T1-W01-EQUATIONS."
         }
       ]
     },
@@ -3184,7 +3313,7 @@
       "source_id": "SS1-SRC-e9efc9a976ed",
       "objective": "Indices: application of the laws of indices (scheme week 1 'Application of indices'; row bullet 'Application of Laws of Indices'): evaluating and simplifying numeric and algebraic expressions with fractional, zero and negative indices, with five worked examples, a general evaluation set, a reading assignment, a five-item objective weekend assignment and two theory questions.",
       "objective_locator": "SS1-SRC-e9efc9a976ed: getBody() lines (word-extractor 1.0.4, 1-based) 69 (row bullet), 110-144 (section; SHA-256 35d60c52b90b3366a1c497c88908514e9ec7a6fbe5ead17e811829e0799e7e60): examples 112-128, general evaluation 130-131, reading assignment 133, weekend assignment 135-140, theory 142-144; scheme line 23; parsed row 0, id SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
         "SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2",
         "SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES"
@@ -3205,6 +3334,10 @@
         {
           "locator": "SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES: body section 3 (Examples A-E) and practice Q1-Q9; source lines 107-108, 112-131, 135-144",
           "explanation": "The supplement teaches evaluating and simplifying numerical and algebraic expressions with fractional, zero and negative indices, with decimal-to-power-of-10 conversion, and gives original answered practice (30 marks, every mark breakdown sums). Worked examples avoid source defects 7, 8 and 10 and the printed items are not reused as a key. Still PARTIAL: weekend items 1, 3 and 4 (solving 3^x = 1/81 and similar) are exponential equations that scheme week 2 teaches and are not reproduced, pending FM-WK-T1-W02 confirmation; general evaluation (f) is not reused because its intended exponent is unconfirmed (FM-FACT-T1-W01-GEN-EVAL-F); the reading assignment page range is unchecked."
+        },
+        {
+          "locator": "Original Week One page 4: General Evaluation (a)–(f), Evaluation items, weekend application items and Theory 1–2; replacement lesson section 4 and practice Q10–Q14",
+          "explanation": "The replacement now works every in-scope index application: 216^(4/3), 25^(3/2), (0.00001)^2, 32^(2/5), 81^(3/4), 625^(3/8)×25, the same-base product, the algebraic product and both theory expressions. The two weekend items that solve exponential equations are intentionally assigned to Week Two and are taught there. The source's ambiguous/flattened powers are restored from rendered page 4. Reading assignment page range remains unverified. Approval PENDING; verification DEFERRED."
         }
       ]
     },
