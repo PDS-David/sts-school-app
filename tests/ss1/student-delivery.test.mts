@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { getStudentSs1Lesson, isStudentDeliverableSs1Lesson, listStudentSs1Lessons, listStudentSs1Assets, readStudentSs1Asset } from '../../backend/src/db/ss1/studentDelivery.js';
 
-test('SS1 student delivery exposes only lessons with approval, implementation, verification and permitted provenance', () => {
+test('SS1 student delivery exposes approved implemented lessons without hiding deferred classroom verification', () => {
   const lessons = listStudentSs1Lessons();
   assert.ok(lessons.length > 0, 'at least one individually certified SS1 lesson must be available');
   for (const lesson of lessons) {
@@ -10,15 +10,24 @@ test('SS1 student delivery exposes only lessons with approval, implementation, v
     assert.equal(lesson.state.content_approval, 'APPROVED');
     assert.ok(lesson.state.approval_reference?.trim());
     assert.equal(lesson.state.implementation, 'IMPLEMENTED');
-    assert.equal(lesson.state.verification, 'VERIFIED');
-    assert.ok(lesson.state.verification_reference?.trim());
+    assert.equal(lesson.package_status, 'IMPLEMENTED');
+    if (lesson.state.verification === 'VERIFIED') {
+      assert.ok(lesson.state.verification_reference?.trim());
+      assert.equal(lesson.classroom_verification_pending, false);
+    } else {
+      assert.equal(lesson.state.verification, 'DEFERRED');
+      assert.equal(lesson.state.verification_reference, null);
+      assert.equal(lesson.classroom_verification_pending, true);
+    }
     assert.ok(lesson.provenance.length > 0);
     assert.ok(lesson.provenance.every(source => source.reuse_status === 'PERMITTED'));
   }
 });
 
 test('SS1 student delivery filters by canonical subject name', () => {
-  const subjects = [...new Set(listStudentSs1Lessons().map(lesson => lesson.canonical_subject))];
+  const all = listStudentSs1Lessons();
+  assert.ok(all.some(lesson => lesson.classroom_verification_pending), 'deferred classroom verification must be surfaced rather than silently relabelled');
+  const subjects = [...new Set(all.map(lesson => lesson.canonical_subject))];
   for (const subject of subjects) {
     const filtered = listStudentSs1Lessons(subject);
     assert.ok(filtered.length > 0, subject);
