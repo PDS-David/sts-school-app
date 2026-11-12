@@ -5692,24 +5692,24 @@
     {
       "id": "TD-T2-W03-ANSWER-KEYS",
       "kind": "CONTENT",
-      "detail": "TD-KEY-W03-ANSWERS.md now keys the five weekend objective items from original figures image31–image35: Q1 D (length of sides), Q2 B (distance across corners), Q3 C (regular polygon), Q4 C (re-entrant polygon), Q5 C (pentagon). It also gives regular-polygon angle values, octagon/hexagon methods, the two-triangle construction, the dimensioned pentagon with AE≈43.30 mm and the irregular-hexagon construction sequence. Remaining: full source-construction marking rubrics and teacher approval; six marked supplement practice questions already have marking totals.",
-      "required_action": "Complete TD-KEY-W03-ANSWERS after figure and notation inspection; add original keyed construction steps, answers and marking criteria without inventing dimensions or reproducing textbook pages.",
+      "detail": "TD-KEY-W03-ANSWERS.md now contains the keyed weekend answers, source-based construction sequences, numerical AE result, regular-polygon angle values, and proposed positive-integer construction rubrics. The single-diagonal pentagon remains separately tracked as TD-T2-W03-GENERAL-PENTAGON-DIAGONAL-UNDERDEFINED. Teacher approval and runtime student rendering remain deferred.",
+      "required_action": "Teacher reviews and approves the proposed answer key and marking rubrics; retain the separate under-specified pentagon issue until the source author clarifies it.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf",
         "TD-KEY-W03-ANSWERS"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "TD-T2-W06-W07-ANSWER-KEYS",
       "kind": "CONTENT",
-      "detail": "TD-KEY-W06-W07-ANSWERS.md keys the Week Seven reduction evaluation items and five marked practice tasks. The Week Six enlargement supplement separately keys its five construction/calculation practice items and source evaluation (regular pentagon side 30 mm enlarged 3:2 gives 45 mm sides and 225 mm perimeter). Remaining: source general evaluation/revision construction answers and diagram-specific marking criteria for the combined row.",
-      "required_action": "Complete TD-KEY-W06-W07-ANSWERS after the constructions and figures are inspected; provide original keyed construction steps, correct results and marking criteria.",
+      "detail": "TD-KEY-W06-W07-ANSWERS.md now keys the source's evaluable construction/revision tasks, provides numerical construction checks, area-to-linear scale conversions and proposed positive-integer rubrics. The source's image57 pentagon lacks one independent constraint and weekend figure questions Q1/Q2 remain visually ambiguous; these are split into dedicated open items rather than answered by guesswork.",
+      "required_action": "Teacher reviews and approves the proposed key. Resolve the separately tracked image57 pentagon constraint and weekend figure Q1/Q2 ambiguity before those particular questions are enabled.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
         "TD-KEY-W06-W07-ANSWERS"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "TD-T2-W08-W09-ANSWER-KEYS",
@@ -5858,6 +5858,28 @@
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf",
         "SUP-SS1-TECHNICAL-DRAWING-T2-W03-POLYGON-CONSTRUCTIONS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W06-W07-PENTAGON-FIGURE-UNDERDEFINED",
+      "kind": "CONTENT",
+      "detail": "The Week Six–Seven general revision pentagon in image57 gives AB=95, BC=65, CD=70, DE=75, diagonal BE=120 and right angle at A. AE is derivable as √(120²−95²)≈77.30 mm, but the B-C-D-E chain retains one degree of freedom without an additional angle, diagonal or exact vertex constraint. The raster outline is illustrative and cannot supply a numerical constraint.",
+      "required_action": "Obtain the missing independent angle/diagonal or native dimensioned CAD source from the source author. Keep the question disabled or mark it as an investigation of insufficient data; do not select arbitrary construction intersections.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
+        "TD-KEY-W06-W07-ANSWERS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W06-W07-WEEKEND-Q1-Q2-FIGURE-AMBIGUITY",
+      "kind": "CONTENT",
+      "detail": "The Week Six–Seven weekend figure for Q1 does not make the K-centred polygon type unambiguous in the available raster, and Q2's labelled similar quadrilaterals/vertex names cannot be reliably mapped to the options from the flattened image. The key intentionally withholds option letters.",
+      "required_action": "Obtain the original vector/native figure or a high-resolution source export with labels and construction marks intact, then key Q1/Q2 against the option order. Do not guess.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
+        "TD-KEY-W06-W07-ANSWERS"
       ],
       "blocks_delivery": true
     }
