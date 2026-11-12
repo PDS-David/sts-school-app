@@ -36,10 +36,10 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 32,
     "VISUAL_DISPOSITION": 2,
-    "LESSON": 24
+    "LESSON": 25
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 28,
+    "IMPLEMENTED_TESTING_DEFERRED": 29,
     "PENDING": 46,
     "BLOCKED": 1
   },
@@ -1303,8 +1303,8 @@
         "GOV-INV-T2",
         "GOV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12. Verified source member SHA-256 bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782 in archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e. Inspected Week Nine body children 418–429 (12 paragraphs); C14N SHA-256 c9c39d30c4a9dd76e6d0d752f61aefab78df4e2c3d9b2b2c9d64e7f0a4d5b1a8. Added two objective-level entries for federalism features and the reading pointer. Updated both Week Nine scheme entries to PARTIAL. Corrected the constitutional timeline omission, distinguished federal bicameralism from unicameral state legislatures, clarified the Supreme Court's role, constitutional unity, Senate representation, and federal character versus quota policy. Corrected 'Chinna Achebe' to Chinua Achebe and verified The Trouble with Nigeria (1983). No evaluation marker or question stems occur. Added seven precise open items and lesson task GOV-LES-T2-W09-CORRECTED-FEDERALISM. No source rule, lesson body, answer key, mark or asset was written. No tests/typecheck/importer/compiler run; testing deferred by owner.",
       "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
     },
     {
@@ -2818,6 +2818,45 @@
       "status": "PENDING",
       "implementation_reference": "Created after GOV-WK-T2-W08 on 2026-11-12. Required to distinguish the 1989 and 1999 constitutions, correct the 1999 Promulgation Decree basis, local government count, judicial structure and Abacha claim. Original practice only; no source question stems are present.",
       "completion_condition": "A visibly original supplement teaches both constitutions with recomputed body_sha256, dated/citable provenance and original keyed formative practice; historical implementation and promulgation facts are accurate; source questions/marks are not invented; content approval stays PENDING and verification DEFERRED; no source bytes, schema or shared code are edited."
+    },
+    {
+      "id": "GOV-LES-T2-W09-CORRECTED-FEDERALISM",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "2nd Term Week Nine, word/document.xml w:body children 418–429; features of Nigerian federalism",
+      "objective": "Author one visibly original, accurate supplement for Week Nine. Explain Nigerian federalism through the constitutional timeline from 1954 to the current amended 1999 Constitution, distinguishing the 1989 Constitution that was not fully implemented. Specify that the federal National Assembly is bicameral while State Houses of Assembly are unicameral; explain that historical regional legislatures differed. Explain the Supreme Court as final appellate authority while noting that other courts also interpret the Constitution. Use the 1999 Constitution's indivisible/indissoluble wording to explain the absence of a unilateral secession procedure without calling it a specific criminal offence. State that the 1999 Senate has three senators per state and one for the FCT. Distinguish the constitutional federal character principle (section 14) from specific quota policies. Correct the reading pointer to Chinua Achebe, The Trouble with Nigeria (1983), without reproducing book text. The source contains no evaluation marker or question stems; any original formative practice must be clearly labelled and keyed. Add dated, citable provenance and keep content approval PENDING and verification DEFERRED.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-PRE-T2.md",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W09.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-LES-T2-W09-CORRECTED-FEDERALISM.md"
+      ],
+      "depends_on": [
+        "GOV-SRC-T2",
+        "GOV-WK-T2-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created after GOV-WK-T2-W09 on 2026-11-12. Required to correct federalism's constitutional timeline, legislative structures, Senate representation, secession wording and federal character/quota distinction, and to correct the Achebe reading pointer. Original practice only; the source has no evaluation questions.",
+      "completion_condition": "A visibly original supplement teaches the federalism features with recomputed body_sha256, dated/citable provenance and original keyed practice; historical constitutional distinctions are accurate; the reading pointer is corrected without reproducing the book; content approval stays PENDING and verification DEFERRED; no source bytes, schema or shared code are edited."
     }
   ],
   "review": {
@@ -2838,7 +2877,6 @@
     "GOV-LES-T1-W01-CORRECTED-WEEK",
     "GOV-REV-T2",
     "GOV-MARK-T2",
-    "GOV-WK-T2-W09",
     "GOV-WK-T2-W10",
     "GOV-WK-T2-W11",
     "GOV-VIS-T2",
@@ -2878,6 +2916,7 @@
     "GOV-LES-T2-W05-CORRECTED-CONSTITUTIONS",
     "GOV-LES-T2-W06-CORRECTED-WEEK",
     "GOV-LES-T2-W07-CORRECTED-CONSTITUTIONS",
-    "GOV-LES-T2-W08-CORRECTED-CONSTITUTIONS"
+    "GOV-LES-T2-W08-CORRECTED-CONSTITUTIONS",
+    "GOV-LES-T2-W09-CORRECTED-FEDERALISM"
   ]
 }
