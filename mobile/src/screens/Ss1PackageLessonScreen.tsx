@@ -20,6 +20,11 @@ export default function Ss1PackageLessonScreen({ route }: any) {
       <Card>
         <Text style={styles.meta}>{lesson.canonical_subject} · {lesson.term}</Text>
         <SectionHeader title={lesson.title} />
+        {lesson.classroom_verification_pending && (
+          <View style={styles.reviewPending}>
+            <Text style={styles.reviewPendingText}>Teacher review pending. This lesson is approved and implemented, but classroom verification has not yet been recorded. Follow your teacher's guidance for practical or oral activities.</Text>
+          </View>
+        )}
         <Text style={styles.body}>{lesson.body}</Text>
         {lesson.assets?.length > 0 && token ? (
           <View style={{ marginTop: Spacing.md }}>
@@ -63,6 +68,8 @@ export default function Ss1PackageLessonScreen({ route }: any) {
 }
 
 const styles = StyleSheet.create({
+  reviewPending: { borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.sm, padding: Spacing.sm, marginTop: Spacing.sm },
+  reviewPendingText: { color: Colors.textSub, fontSize: Fonts.sizes.xs, lineHeight: 18 },
   meta: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginBottom: Spacing.xs },
   body: { color: Colors.text, fontSize: Fonts.sizes.sm, lineHeight: 22, marginTop: Spacing.sm },
   heading: { color: Colors.primary, fontSize: Fonts.sizes.md, fontWeight: '700', marginTop: Spacing.lg, marginBottom: Spacing.xs },
