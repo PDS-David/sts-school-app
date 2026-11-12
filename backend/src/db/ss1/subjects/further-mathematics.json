@@ -1832,8 +1832,8 @@
         "Construct addition and multiplication tables for residues modulo 4.",
         "Use operation tables to identify closure, identity elements and inverses."
       ],
-      "body": "This lesson extends binary operations to identity elements, inverse elements and operation tables. An identity must leave every member unchanged on both sides. An inverse must combine with the chosen element to give the identity.\n\n1. IDENTITY ELEMENT\nLet * be a binary operation on S. An element e in S is an identity if a*e=e*a=a for every a in S. Check both orders unless commutativity has already been proved. If an identity exists, it is unique.\nExample 1: On R define a*b=a+b+ab. Let e be the identity.\na*e=a+e+ae=a, so e(1+a)=0 for every real a. This is possible for all a only when e=0. Check e*a=a+0+a(0)=a. Therefore the identity is 0.\nExample 2: On Q define a⊙b=9ab. Then a⊙e=9ae=a gives e=1/9 for non-zero a. Check e⊙a=9(1/9)a=a. The identity is 1/9.\n\n2. UNIQUENESS OF THE IDENTITY\nSuppose e and f are both identities. Since e is an identity, e*f=f. Since f is an identity, e*f=e. Thus e=f. There cannot be two different identity elements for the same operation on the same set.\n\n3. INVERSE ELEMENT\nIf e is the identity, an inverse of a is an element b in S satisfying a*b=b*a=e. The inverse depends on the operation and the set. It may not exist for every element.\nExample 3: For a*b=a+b+ab on R, the identity is 0. To find the inverse of a, solve a*b=0:\na+b+ab=0; b(1+a)=-a; b=-a/(1+a), provided a≠-1.\nFor a=-1 the equation -1+b-b=-1 cannot equal 0, so -1 has no inverse. For example, the inverse of 2 is -2/3.\nExample 4: For a*b=a+b-2ab on R, the identity is 0. Solve a+b-2ab=0:\nb(1-2a)=-a; b=-a/(1-2a), provided a≠1/2. The element 1/2 has no inverse under this operation.\nExample 5: For a⊙b=9ab on Q, the identity is 1/9. Solve 9ab=1/9; hence b=1/(81a), provided a≠0. Zero has no inverse.\n\n4. ADDITION AND MULTIPLICATION TABLES MODULO 4\nThe set of residues modulo 4 is {0,1,2,3}. After adding or multiplying, replace the result by its remainder on division by 4. Every table entry must remain in the set.\nAddition modulo 4:\n       + | 0  1  2  3\n       0 | 0  1  2  3\n       1 | 1  2  3  0\n       2 | 2  3  0  1\n       3 | 3  0  1  2\nThe additive identity is 0. Additive inverses are: inverse of 0 is 0; inverse of 1 is 3; inverse of 2 is 2; inverse of 3 is 1.\nMultiplication modulo 4:\n       × | 0  1  2  3\n       0 | 0  0  0  0\n       1 | 0  1  2  3\n       2 | 0  2  0  2\n       3 | 0  3  2  1\nThe multiplicative identity is 1. The multiplicative inverse of 1 is 1 and of 3 is 3 because 3×3=9, remainder 1. The elements 0 and 2 have no multiplicative inverse modulo 4: their products never have remainder 1.\n\n5. A RELIABLE METHOD\nWrite the operation and set first. For an identity, let the unknown identity be e and solve a*e=a and e*a=a for general a. Check that e belongs to S. For an inverse, use the identity already found, solve a*b=e, check the reverse order if needed, and check that b belongs to S. For a finite set, a table can show closure, identity and inverses directly.\n\n6. COMMON ERRORS\nDo not confuse an identity with an inverse. An identity is one element that works for every member; an inverse is found separately for each chosen element. Do not divide by an expression that may be zero without stating the restriction. An inverse outside the stated set does not count. In modular tables, reduce every result to its remainder.",
-      "body_sha256": "de1cc6deb3f2dd846421edf1255f9517b1071e5b957e036651c1cd94add59fd4",
+      "body": "This lesson extends binary operations to identity elements, inverse elements and operation tables. An identity must leave every member unchanged on both sides. An inverse must combine with the chosen element to give the identity.\n\n1. IDENTITY ELEMENT\nLet * be a binary operation on S. An element e in S is an identity if a*e=e*a=a for every a in S. Check both orders unless commutativity has already been proved. If an identity exists, it is unique.\nExample 1 (the source operation): On R define a*b=(2a-1)/2+b. Let e be the identity.\na*e=(2a-1)/2+e=a gives (2a-1)+2e=2a, so e=1/2. Check the other side: e*a=(2e-1)/2+a=(1-1)/2+a=a. Therefore the identity is 1/2.\nExample 2: On R define a*b=a+b+ab. Let e be the identity.\na*e=a+e+ae=a, so e(1+a)=0 for every real a. This is possible for all a only when e=0. Check e*a=a+0+a(0)=a. Therefore the identity is 0.\nExample 3: On Q define a⊙b=9ab. Then a⊙e=9ae=a gives e=1/9 for non-zero a. Check e⊙a=9(1/9)a=a. The identity is 1/9.\n\n2. UNIQUENESS OF THE IDENTITY\nSuppose e and f are both identities. Since e is an identity, e*f=f. Since f is an identity, e*f=e. Thus e=f. There cannot be two different identity elements for the same operation on the same set.\n\n3. INVERSE ELEMENT\nIf e is the identity, an inverse of a is an element b in S satisfying a*b=b*a=e. The inverse depends on the operation and the set. It may not exist for every element.\nExample 3: For a*b=a+b+ab on R, the identity is 0. To find the inverse of a, solve a*b=0:\na+b+ab=0; b(1+a)=-a; b=-a/(1+a), provided a≠-1.\nFor a=-1 the equation -1+b-b=-1 cannot equal 0, so -1 has no inverse. For example, the inverse of 2 is -2/3.\nExample 4: For a*b=a+b-2ab on R, the identity is 0. Solve a+b-2ab=0:\nb(1-2a)=-a; b=-a/(1-2a), provided a≠1/2. The element 1/2 has no inverse under this operation.\nExample 5: For a⊙b=9ab on Q, the identity is 1/9. Solve 9ab=1/9; hence b=1/(81a), provided a≠0. Zero has no inverse.\n\n4. ADDITION AND MULTIPLICATION TABLES MODULO 4\nThe set of residues modulo 4 is {0,1,2,3}. After adding or multiplying, replace the result by its remainder on division by 4. Every table entry must remain in the set.\nAddition modulo 4:\n       + | 0  1  2  3\n       0 | 0  1  2  3\n       1 | 1  2  3  0\n       2 | 2  3  0  1\n       3 | 3  0  1  2\nThe additive identity is 0. Additive inverses are: inverse of 0 is 0; inverse of 1 is 3; inverse of 2 is 2; inverse of 3 is 1.\nMultiplication modulo 4:\n       × | 0  1  2  3\n       0 | 0  0  0  0\n       1 | 0  1  2  3\n       2 | 0  2  0  2\n       3 | 0  3  2  1\nThe multiplicative identity is 1. The multiplicative inverse of 1 is 1 and of 3 is 3 because 3×3=9, remainder 1. The elements 0 and 2 have no multiplicative inverse modulo 4: their products never have remainder 1.\n\n5. A RELIABLE METHOD\nWrite the operation and set first. For an identity, let the unknown identity be e and solve a*e=a and e*a=a for general a. Check that e belongs to S. For an inverse, use the identity already found, solve a*b=e, check the reverse order if needed, and check that b belongs to S. For a finite set, a table can show closure, identity and inverses directly.\n\n6. COMMON ERRORS\nDo not confuse an identity with an inverse. An identity is one element that works for every member; an inverse is found separately for each chosen element. Do not divide by an expression that may be zero without stating the restriction. An inverse outside the stated set does not count. In modular tables, reduce every result to its remainder.",
+      "body_sha256": "14c9b9b84c951654e29ba714fda592b46c3f7dba1157b8e3593b8258b050ba6e",
       "practice": [
         {
           "id": "Q1",
@@ -2023,6 +2023,26 @@
             },
             {
               "criterion": "Explains 0 and 2",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "On R define a*b=(2a-1)/2+b. Find and verify the identity element.",
+          "answer": "Let e be the identity. (2a-1)/2+e=a gives 2a-1+2e=2a, so e=1/2. Check e*a=(2e-1)/2+a=0+a=a.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Sets up a*e=a",
+              "marks": 1
+            },
+            {
+              "criterion": "Solves e=1/2",
+              "marks": 1
+            },
+            {
+              "criterion": "Checks e*a=a",
               "marks": 1
             }
           ]
@@ -3593,6 +3613,182 @@
           "explanation": "Replacement lesson covers two-set cardinality, three-set inclusion-exclusion, pair-only regions, exactly two, at least one and neither. Owner content approval is PENDING and technical verification is DEFERRED."
         }
       ]
+    },
+    {
+      "id": "COV-FM-T1-W07-OBJ-1",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Define a binary operation on a set and evaluate expressions using its rule.",
+      "objective_locator": "scheme week 7 (i) Definition; (ii) Solution of simple problems on binary operations",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W07-BINARY-OPERATIONS"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 7 (i) Definition; (ii) Solution of simple problems on binary operations",
+          "explanation": "Definition and evaluation of binary operation rules. Content approval remains PENDING; technical verification remains DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W07-OBJ-2",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Test closure of a set under a binary operation.",
+      "objective_locator": "scheme week 7 (iii) Closure property",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W07-BINARY-OPERATIONS"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 7 (iii) Closure property",
+          "explanation": "Closure condition, positive example and counterexample. Content approval remains PENDING; technical verification remains DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W07-OBJ-3",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Test commutative, associative and distributive laws.",
+      "objective_locator": "scheme week 7 (iii) Commutative, associative and distributive laws",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W07-BINARY-OPERATIONS"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 7 (iii) Commutative, associative and distributive laws",
+          "explanation": "Separate definitions and worked proofs/counterexamples for all three laws. Content approval remains PENDING; technical verification remains DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W08-OBJ-1",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Solve problems involving the laws of binary operations.",
+      "objective_locator": "scheme week 8 (i) Solution to problems on laws of binary operations",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W07-BINARY-OPERATIONS"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 8 (i) Solution to problems on laws of binary operations",
+          "explanation": "The Week 7 replacement is linked as prior-week prerequisite/revision for Week 8 applications; Week 8 source gives no separate developed worked section for this bullet. Content approval remains PENDING; technical verification remains DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W08-OBJ-2",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Find identity and inverse elements of a given binary operation.",
+      "objective_locator": "scheme week 8 (ii) Identity and inverse elements of a given binary operations",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W08-IDENTITY-INVERSE-TABLES"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 8 (ii) Identity and inverse elements of a given binary operations",
+          "explanation": "Includes exact source identity operation (2a−1)/2+b, general inverse methods and exceptional elements. Content approval remains PENDING; technical verification remains DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W08-OBJ-3",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Construct addition and multiplication tables for binary operations.",
+      "objective_locator": "scheme week 8 (iii) Addition and multiplication tables for binary operations; source weekend question requests multiplication table modulo 4",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W08-IDENTITY-INVERSE-TABLES"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 8 (iii) Addition and multiplication tables for binary operations; source weekend question requests multiplication table modulo 4",
+          "explanation": "Replacement provides complete addition and multiplication tables modulo 4 and identifies units. Content approval remains PENDING; technical verification remains DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W09-OBJ-1",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Define surds and identify surds in basic form.",
+      "objective_locator": "scheme week 9 (i) Definition of surds",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W09-SURDS"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 9 (i) Definition of surds",
+          "explanation": "Defines surds and distinguishes rational roots from irrational roots. Content approval remains PENDING; technical verification remains DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W09-OBJ-2",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Apply rules and manipulate surds.",
+      "objective_locator": "scheme week 9 (ii) Rules and manipulation of surds",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W09-SURDS"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 9 (ii) Rules and manipulation of surds",
+          "explanation": "Covers simplification, similar surds, addition, subtraction, multiplication and division. Content approval remains PENDING; technical verification remains DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W09-OBJ-3",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Rationalise denominators and establish equality of surds.",
+      "objective_locator": "scheme week 9 (iii) Rationalization of surds at the denominator and equality of surds",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W09-SURDS"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 9 (iii) Rationalization of surds at the denominator and equality of surds",
+          "explanation": "Covers single and binomial denominators, conjugates and verified square-root identities. Content approval remains PENDING; technical verification remains DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W10-OBJ-1",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Calculate mean, median and mode for grouped and ungrouped data.",
+      "objective_locator": "scheme week 10 (i) Mean, Median and Mode of grouped and ungrouped data",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W10-CENTRAL-TENDENCY"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 10 (i) Mean, Median and Mode of grouped and ungrouped data",
+          "explanation": "Covers raw lists, discrete frequency tables, grouped mean, median and mode interpolation. Content approval remains PENDING; technical verification remains DEFERRED."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W10-OBJ-2",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Estimate the mode of grouped data from a histogram.",
+      "objective_locator": "scheme week 10 (ii) Estimation of mode from the histogram of a grouped data",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W10-CENTRAL-TENDENCY"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme week 10 (ii) Estimation of mode from the histogram of a grouped data",
+          "explanation": "Explains modal class, adjacent bars, graphical diagonal construction and interpolation. Content approval remains PENDING; technical verification remains DEFERRED."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -3789,6 +3985,18 @@
       "affected_ids": [
         "SS1-SRC-e9efc9a976ed:BODY:378f63ca6f0d3b21f3690fff939b69c99f36bce29837534fb355d1d9ada17dc5",
         "SS1-SRC-e9efc9a976ed:BODY:b06abb73acb6868e6d72626fa734efc483a2f249f525a33210cd903af0b1e674"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-T1-W05-VISUAL-GAPS",
+      "kind": "VISUAL",
+      "detail": "Visual review of first-term Week 5 source pages 19–25 found the set diagrams are not reliably student-ready: the A∩B diagram on p.20 has no visible shading despite its caption; the bottom complement-of-union figure is partly obscured by the footer; the three-set diagrams on p.21 are inconsistently arranged/shaded; the p.22 youth-club diagram repeats the incorrect total 94 although the prompt states 90. The numbered eight-region map on p.25 is useful, but none of these source figures is currently bound as an app asset to the replacement lesson.",
+      "required_action": "Create original clean SVG assets for two-set operations, three-set region mapping and corrected worked examples; bind them to the Week 5 replacement lesson and run SVG safety/hash checks. Do not reproduce vendor branding.",
+      "affected_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W05-SETS-VENN",
+        "COV-FM-T1-W05-OBJ-2",
+        "COV-FM-T1-W05-OBJ-3"
       ],
       "blocks_delivery": true
     }
