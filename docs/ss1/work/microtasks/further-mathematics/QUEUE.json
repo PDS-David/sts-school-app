@@ -45,7 +45,7 @@
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 72,
     "BLOCKED": 7,
-    "IN_PROGRESS": 1,
+    "IN_PROGRESS": 2,
     "PENDING": 32
   },
   "items": [
@@ -3639,6 +3639,41 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Original SVGs authored and registered with exact SHA-256 and UTF-8 byte counts: backend/src/db/ss1/assets/further-mathematics/fm2-w3-quadratic-signchart-1.svg f43e605fdf5b2cdf4e2fce98e1e574d0196cd14e6bc20868a22ee12be89d117e (919 bytes); backend/src/db/ss1/assets/further-mathematics/fm2-w3-quadratic-signchart-2.svg dbe595037a3d9015373904db1fc6b7b24a887fcf4459c34bb85ada959b534347 (925 bytes); backend/src/db/ss1/assets/further-mathematics/fm2-w3-absolute-value-numberline.svg 991b9600d73d31b5d56cddee9208ec53faac95d058b1088c5abbf8d9b5d09f4e (837 bytes). Exact hashes/bytes are being checked; SVG safety and app rendering remain unverified.",
       "completion_condition": "Three SVGs pass SVG safety, integrity and app rendering; diagrams appear alongside the corrected solution examples."
+    },
+    {
+      "id": "FM-PR-639-INTEGRATION-VALIDATION",
+      "kind": "VERIFICATION",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "All terms",
+      "week_or_locator": "Consolidated First/Second Term PR #639 integration validation",
+      "objective": "Run repository CI on the consolidated package, resolve any package-specific hash/schema/SVG/compiler failures, verify all asset references and lesson-body hashes, and record remaining cross-subject blockers without modifying other subject packages.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/refreshIntegrityHashes.ts",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PR-639-CONSOLIDATED-REVIEW.md"
+      ],
+      "depends_on": [
+        "FM-LES-T2-W01-ARITHMETIC-PROGRESSION",
+        "FM-LES-T2-W02-GEOMETRIC-PROGRESSION",
+        "FM-LES-T2-W03-LINEAR-INEQUALITIES",
+        "FM-LES-T2-W04-TWO-VARIABLE-LP",
+        "FM-LES-T2-W05-MAPPING-FUNCTIONS",
+        "FM-LES-T2-W07-COMPOSITE-INVERSE",
+        "FM-LES-T2-W08-TRIGONOMETRIC-RATIOS",
+        "FM-LES-T2-W09-LOGIC",
+        "FM-LES-T2-W10-LOGICAL-CONNECTIVES"
+      ],
+      "status": "IN_PROGRESS",
+      "implementation_reference": "Consolidated PR #639 now targets master and carries 24 lessons, 84 coverage rows, 30 open review items and 18 registered assets. All 24 lesson body hashes, practice marking totals and 18 asset hashes/byte counts were independently recomputed and matched. CI must now run on the master-targeted PR. Approval remains PENDING; verification DEFERRED.",
+      "completion_condition": "Master-targeted CI passes all relevant checks; package hash/schema/compiler/SVG validation is complete; all remaining blockers are classified and recorded. No merge before required checks pass."
     }
   ],
   "review": {
