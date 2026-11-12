@@ -1208,3 +1208,21 @@ Reliable population data, mapping/communication access, technical capacity and r
 - `GOVERNMENT-T3-W11-WEEKEND-MCQ-AMBIGUITY` — clarify Q1 accessibility versus administrative/geographical convenience before keying.
 
 No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-REV-T3 — Scheme-only Revision and Examination marker
+
+**Status:** IMPLEMENTED — TESTING DEFERRED.
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37.
+- Exact scheme line: 39; exact line SHA-256: `bc44ba88587199793f920691da95c20b7b5bad805bd801deafb938641703c8d3`.
+- Exact anchor retained: `    12/13.  Revision and Examination`.
+- The body spans lines 44–1551 and contains eleven teaching-week labels. The first two both print `WEEK TWO`; the final body label is `WEEK ELEVEN`. No Week Twelve or Week Thirteen teaching body, revision lesson or examination paper follows.
+- Added source rule `SS1-SRC-5f34b9f4efc4-R002`: `classify_marker`, kind `SCHEME_ONLY`, match mode `WHOLE_LINE`.
+- Added coverage `COV-GOV-T3-SCHEME-REVISION-EXAMINATION` with status `MARKER`, targeting the source-rule ID. No teaching lesson ID is fabricated.
+- The source row is preserved exactly. No revision content, exam paper, teaching week, answers or marks were created.
+- Existing source-alias approval remains PENDING owner approval; this marker disposition does not imply teacher approval or source reuse permission.
+- No compiler/importer/test/typecheck/database/device run was performed; testing remains deferred.

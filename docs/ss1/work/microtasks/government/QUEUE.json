@@ -40,8 +40,8 @@
     "LESSON": 27
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 48,
-    "PENDING": 29,
+    "IMPLEMENTED_TESTING_DEFERRED": 49,
+    "PENDING": 28,
     "BLOCKED": 1
   },
   "items": [
@@ -1488,8 +1488,8 @@
         "GOV-INV-T3",
         "GOV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Reopened 2026-11-12 after owner explicitly authorized adding backend/src/db/ss1/subjects/government.json to this item's allowed_write_paths. The SCHEME_ONLY classify_marker rule and marker coverage remain unimplemented.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12: added SS1-SRC-5f34b9f4efc4-R002 classify_marker kind SCHEME_ONLY with WHOLE_LINE matching for the exact line-39 anchor \"    12/13.  Revision and Examination\", plus MARKER coverage COV-GOV-T3-SCHEME-REVISION-EXAMINATION. Verified the complete body has eleven teaching-week labels and no Week Twelve/Thirteen body. No revision lesson, exam paper, answers, marks or teaching week was created. Testing remains deferred; no compiler/importer was run.",
       "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
     },
     {
@@ -2965,7 +2965,6 @@
   "next_runnable": [
     "GOV-TEST-PACKAGE",
     "GOV-LES-T1-W01-CORRECTED-WEEK",
-    "GOV-REV-T3",
     "GOV-LES-T1-W02-CORRECTED-WEEK",
     "GOV-LES-T1-W03-CORRECTED-WEEK",
     "GOV-LES-T1-W04-CORRECTED-WEEK",

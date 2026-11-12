@@ -112,6 +112,19 @@
       },
       "kind": "SCHEME_ONLY",
       "match_mode": "WHOLE_LINE"
+    },
+    {
+      "id": "SS1-SRC-5f34b9f4efc4-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "source_sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e",
+      "anchor": "    12/13.  Revision and Examination",
+      "evidence": {
+        "locator": "Antiword 0.37; SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc; source SHA-256 04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e; exact source line 39 UTF-8 SHA-256 bc44ba88587199793f920691da95c20b7b5bad805bd801deafb938641703c8d3; exact anchor \"    12/13.  Revision and Examination\".",
+        "explanation": "This exact scheme row occurs once at line 39. The complete teaching body spans lines 44–1551 and contains eleven teaching-week labels (the first two both print WEEK TWO); there is no Week Twelve or Week Thirteen teaching body and no revision lesson or examination paper. Classify this one scheme row as SCHEME_ONLY. Preserve the source wording and do not create a teaching week, revision lesson or exam paper."
+      },
+      "kind": "SCHEME_ONLY",
+      "match_mode": "WHOLE_LINE"
     }
   ],
   "lessons": [],
@@ -4579,6 +4592,22 @@
         {
           "locator": "Antiword lines 1529–1548.",
           "explanation": "Q1 asks for an exception to the factors list; poverty is not listed, but accessibility may overlap with administrative/geographical convenience, so the options should be clarified. Q2 defines gerrymandering. Q3 defines single-member constituency. Q4 identifies a demerit among merits. Q5 defines delimitation. Preserve the source options and do not key Q1 until its intended scope is clear."
+        }
+      ]
+    },
+    {
+      "id": "COV-GOV-T3-SCHEME-REVISION-EXAMINATION",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "objective": "Scheme-only row 12/13: Revision and Examination. This is a planning marker, not a taught objective or Week Twelve/Thirteen.",
+      "objective_locator": "Antiword 0.37 line 39; source SHA-256 04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e; exact anchor \"    12/13.  Revision and Examination\"; body lines 44–1551 contain eleven teaching-week labels and no Week Twelve/Thirteen body.",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-5f34b9f4efc4-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "Antiword 0.37; SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc; source SHA-256 04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e; exact source line 39 UTF-8 SHA-256 bc44ba88587199793f920691da95c20b7b5bad805bd801deafb938641703c8d3; exact anchor \"    12/13.  Revision and Examination\".",
+          "explanation": "This exact scheme row occurs once at line 39. The complete teaching body spans lines 44–1551 and contains eleven teaching-week labels (the first two both print WEEK TWO); there is no Week Twelve or Week Thirteen teaching body and no revision lesson or examination paper. Classify this one scheme row as SCHEME_ONLY. Preserve the source wording and do not create a teaching week, revision lesson or exam paper."
         }
       ]
     }
