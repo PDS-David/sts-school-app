@@ -807,8 +807,8 @@
         "FM-SRC-T2",
         "FM-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 2 of SS1-03 parsed_rows.json (week label \"WEEK THREE\", title \"LINEAR INEQUALITIES\", 6194 characters). Existing coverage COV-FM-T2-R02 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-006 (task FM-PORT-D3-L006). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Reviewed original Week Three source and rendered pages 9–12. Scheme objective mapped to COV-FM-T2-W03-OBJ-1; replacement SUP-SS1-FURTHER-MATHEMATICS-T2-W03-LINEAR-INEQUALITIES covers linear inequalities and the additional source sections on quadratic and absolute-value inequalities. Source errors in two quadratic solution sets, a graph equation label, and weekend MCQ options recorded in OI-FM-T2-W03-QUADRATIC-SOLUTION-ERRORS and OI-FM-T2-W03-WEEKEND-ITEMS. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -3296,6 +3296,40 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W02-GEOMETRIC-PROGRESSION]. 4 objectives; 20 practice questions; 66 marks. All marking criterion totals checked. body_sha256=429936ece9380eb7d89aa20e0086264b0f7dd90972d8d3a7dfe2edfc6eb3b038. Coverage objective rows and row-level coverage linked. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Replacement lesson exists with source provenance, body hash, complete worked examples and original practice; objective coverage links to it; approval and verification remain pending/deferred."
+    },
+    {
+      "id": "FM-LES-T2-W03-LINEAR-INEQUALITIES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 03; source heading LINEAR INEQUALITIES",
+      "objective": "Author a corrected lesson for linear inequalities in one variable, with the source's quadratic and absolute-value extension material, number-line and graph reasoning, and corrected assessment items.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T2-W03-LINEAR-INEQUALITIES.md"
+      ],
+      "depends_on": [
+        "FM-WK-T2-W03"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T2-W03-LINEAR-INEQUALITIES]. 4 objectives; 12 practice questions; 39 marks. Source graph and inequalities errors corrected. Coverage COV-FM-T2-W03-OBJ-1 and row R02 linked. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Replacement lesson includes corrected solutions, graph/sign reasoning, domain restrictions and keyed practice; objective coverage linked. Approval and verification remain pending/deferred."
     }
   ],
   "review": {
