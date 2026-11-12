@@ -40,9 +40,9 @@
     "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 22,
+    "IMPLEMENTED_TESTING_DEFERRED": 23,
     "BLOCKED": 6,
-    "PENDING": 26
+    "PENDING": 25
   },
   "total": 54,
   "items": [
@@ -966,8 +966,8 @@
       "depends_on": [
         "TD-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "CHECKPOINT.md records 94 drawings, 17 OLE objects and WMF figures but not their row locations. Drawings can exist without media images, so counts must come from the document structure, not only media files. The contract's allowed asset MIME types exclude WMF.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12 from master d47c1daa7d9ae657f5ea65f9a79ac34e343acf79. Verified registered DOCX member SHA-256 69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d (2,865,886 bytes); source archive SHA-256 and member receipt are recorded in merged PR #570. Parsed word/document.xml and relationships; recorded exact per-row body-child ranges, PDF page ranges, 94 DrawingML placements, 17 AutoCAD.Drawing.15 OLE objects and 17 paired WMF previews, 87 unique raster parts (60 PNG/27 JPEG), 104 total referenced media parts, two Week Three OMML objects and no Word tables. Rendered all 54 pages and visually reviewed page contact sheet/representative pages; no OLE controls executed. Recorded repeated GSS footer/tagline and no advertising/contact page. Evidence: TD-VIS-INVENTORY.md. Per-row visual dispositions, OLE transcription, WMF conversion, app display, tests/compiler/importer and approval remain open; not approved, not verified, no repository test run.",
       "completion_condition": "Per-row counts and kinds recorded with locators; per-row disposition items below are updated with their counts; embedded controls are not executed; no contact details are copied into Git."
     },
     {
@@ -999,7 +999,7 @@
         "TD-WK-W01"
       ],
       "status": "PENDING",
-      "implementation_reference": "No disposition exists. The source is a technical-drawing lesson: figures are likely the instructional content, so a missing figure leaves the lesson unusable. Exact geometry or a labelled faithful derivative with provenance is required; no AI-invented diagrams.",
+      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 8 DrawingML placements on PDF pages 1–3; circle/triangle diagrams for inscribed and circumscribed constructions. Per-figure disposition remains pending.",
       "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
     },
     {
@@ -1031,7 +1031,7 @@
         "TD-WK-W02"
       ],
       "status": "PENDING",
-      "implementation_reference": "No disposition exists. The source is a technical-drawing lesson: figures are likely the instructional content, so a missing figure leaves the lesson unusable. Exact geometry or a labelled faithful derivative with provenance is required; no AI-invented diagrams.",
+      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 11 DrawingML placements on PDF pages 4–8; escribed-circle, excentre and circle-to-side/point constructions. Per-figure disposition remains pending.",
       "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
     },
     {
@@ -1063,7 +1063,7 @@
         "TD-WK-W03"
       ],
       "status": "PENDING",
-      "implementation_reference": "No disposition exists. The source is a technical-drawing lesson: figures are likely the instructional content, so a missing figure leaves the lesson unusable. Exact geometry or a labelled faithful derivative with provenance is required; no AI-invented diagrams.",
+      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 19 DrawingML placements on PDF pages 9–18; regular/irregular polygon construction diagrams; two OMML objects also occur in this row. Per-figure disposition remains pending.",
       "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
     },
     {
@@ -1095,7 +1095,7 @@
         "TD-WK-W04"
       ],
       "status": "PENDING",
-      "implementation_reference": "No disposition exists. The source is a technical-drawing lesson: figures are likely the instructional content, so a missing figure leaves the lesson unusable. Exact geometry or a labelled faithful derivative with provenance is required; no AI-invented diagrams.",
+      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 9 embedded AutoCAD.Drawing.15 objects with 9 WMF previews on PDF pages 19–22; plain-scale bars, divisions and measurement layouts. OLE controls not executed; asset disposition remains pending.",
       "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
     },
     {
@@ -1127,7 +1127,7 @@
         "TD-WK-W05"
       ],
       "status": "PENDING",
-      "implementation_reference": "No disposition exists. The source is a technical-drawing lesson: figures are likely the instructional content, so a missing figure leaves the lesson unusable. Exact geometry or a labelled faithful derivative with provenance is required; no AI-invented diagrams.",
+      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 7 embedded AutoCAD.Drawing.15 objects with 7 WMF previews on PDF pages 23–26; diagonal/chordal scale grids and subdivisions. OLE controls not executed; asset disposition remains pending.",
       "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
     },
     {
@@ -1159,7 +1159,7 @@
         "TD-WK-W06-W07"
       ],
       "status": "PENDING",
-      "implementation_reference": "No disposition exists. The source is a technical-drawing lesson: figures are likely the instructional content, so a missing figure leaves the lesson unusable. Exact geometry or a labelled faithful derivative with provenance is required; no AI-invented diagrams.",
+      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 11 DrawingML placements plus 1 embedded AutoCAD.Drawing.15 object/WMF preview on PDF pages 27–30; similar-figure reduction diagrams. OLE control not executed; per-figure disposition remains pending.",
       "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
     },
     {
@@ -1191,7 +1191,7 @@
         "TD-WK-W08-W09"
       ],
       "status": "PENDING",
-      "implementation_reference": "No disposition exists. The source is a technical-drawing lesson: figures are likely the instructional content, so a missing figure leaves the lesson unusable. Exact geometry or a labelled faithful derivative with provenance is required; no AI-invented diagrams.",
+      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 26 DrawingML placements on PDF pages 31–42; equal-area transformations and equivalent triangle/polygon construction diagrams. Per-figure disposition remains pending.",
       "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
     },
     {
@@ -1223,7 +1223,7 @@
         "TD-WK-W10"
       ],
       "status": "PENDING",
-      "implementation_reference": "No disposition exists. The source is a technical-drawing lesson: figures are likely the instructional content, so a missing figure leaves the lesson unusable. Exact geometry or a labelled faithful derivative with provenance is required; no AI-invented diagrams.",
+      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 19 DrawingML placements on PDF pages 43–54; circle, arc and straight-line tangency constructions. Per-figure disposition remains pending.",
       "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
     },
     {
@@ -1254,7 +1254,7 @@
         "TD-VIS-INVENTORY"
       ],
       "status": "PENDING",
-      "implementation_reference": "CHECKPOINT.md: 17 OLE objects. HANDOFF.json notes plain extraction drops equations in this source. Contents unknown.",
+      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 17 embedded AutoCAD.Drawing.15 objects located in Weeks 4 (9), 5 (7) and 6–7 (1); each has a WMF preview. Controls were not executed; per-object transcription/render review remains pending.",
       "completion_condition": "Each object's row, preview/rendering result and transcription (or reason) recorded; open item narrowed accordingly."
     },
     {
@@ -1287,7 +1287,7 @@
         "TD-VIS-INVENTORY"
       ],
       "status": "PENDING",
-      "implementation_reference": "CHECKPOINT.md: WMF figures exist and WMF is not an allowed asset MIME (png/jpeg/gif/svg/pdf/mp3/wav). Assets must live under backend/src/db/ss1/assets/technical-drawing/ with sha256, bytes, alt text, locator and provenance (the worker prompt mentions curriculum-assets/ss1/, but the schema and contract path governs). Original bytes stay private.",
+      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 17 WMF preview parts located in Weeks 4 (9), 5 (7) and 6–7 (1), paired with the 17 AutoCAD OLE objects. WMF is not an allowed asset MIME; faithful conversion/provenance decision remains pending.",
       "completion_condition": "Per-figure conversion decision recorded; converted files (if any) added under the allowed asset path with hashes and provenance, or an open item records why not. Nothing displayed or verified in the app."
     },
     {
@@ -1934,9 +1934,27 @@
     "notes": "Reconciled queue metadata with live item statuses after Week 6–10 coverage updates; formal tests remain deferred."
   },
   "next_runnable": [
-    "TD-VIS-INVENTORY"
+    "TD-VIS-W01",
+    "TD-VIS-W02",
+    "TD-VIS-W03",
+    "TD-VIS-W04",
+    "TD-VIS-W05",
+    "TD-VIS-W06-W07",
+    "TD-VIS-W08-W09",
+    "TD-VIS-W10",
+    "TD-VIS-OLE",
+    "TD-VIS-WMF"
   ],
   "runnable_now": [
-    "TD-VIS-INVENTORY"
+    "TD-VIS-W01",
+    "TD-VIS-W02",
+    "TD-VIS-W03",
+    "TD-VIS-W04",
+    "TD-VIS-W05",
+    "TD-VIS-W06-W07",
+    "TD-VIS-W08-W09",
+    "TD-VIS-W10",
+    "TD-VIS-OLE",
+    "TD-VIS-WMF"
   ]
 }
