@@ -1,57 +1,60 @@
 # PHYS-WK-T3-W03 — Third Term Week Three: electrical energy and power
 
-Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — original registered source member inspected and reconciled; lesson and assessment coverage updated. Content approval remains pending and technical verification remains deferred.
 
-## Registered source identity
+## Registered source identity and integrity
 
 - Source ID: `SS1-SRC-bed91bb4ef0e`
 - Archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc`
 - Registered member SHA-256: `bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688`
-- Parsed row: index 2, `WEEK 3`
-- Parsed body ID: `SS1-SRC-bed91bb4ef0e:BODY:9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1`
-- Parsed body length: 2,352 characters
-- Parsed body SHA-256: `9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1`
+- Retrieved from Physics CI artifact `physics-original-source-evidence`, artifact ID `13901498110`, run `43122782413`.
+- Extracted original member size: 107,008 bytes; independently recomputed SHA-256 matches the registered manifest.
+- Parsed row: index 2, `WEEK 3`; source label and task identity preserved.
+- Parsed body ID: `SS1-SRC-bed91bb4ef0e:BODY:9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1`.
+- Parsed body length: 2,352 characters; parsed body SHA-256: `9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1`.
 
-## Student supplement authored
+## Source reconciliation
+
+The original row contains three teaching sections: electrical energy, electrical power and buying electrical energy.
+
+| Source objective / assessment | Student lesson coverage |
+|---|---|
+| Energy transferred: W = QV, W = VIt, W = I²Rt, W = V²t/R | Lesson section 1; Q01–Q03 |
+| Electrical power: P = W/t = VI = I²R = V²/R | Lesson section 2; Q04–Q06 |
+| Commercial unit kWh and conversion 1 kWh = 3.6 × 10⁶ J | Lesson section 3; Q07–Q08, Q14 |
+| Appliance energy use and electricity cost at a stated tariff | Lesson sections 4–5; Q09–Q12 |
+| Source evaluation: energy from a 12 V, 0.4 A headlamp for five minutes | Q03; answer 1,440 J |
+| Source evaluation: four factors affecting wire resistance | New lesson section 6; Q20 |
+| Weekend MCQ: current and resistance for 240 V / 60 W lamp | Q15–Q16 |
+| Weekend MCQ: conductance of a 10 Ω resistor | Q17; answer 0.1 S |
+| Weekend MCQ: SI unit of resistivity | New lesson section 6; Q19; answer Ω·m |
+| Source theory: two appliance-billing scenarios | Q10–Q12; both worked with stated 60 currency-units/kWh example |
+
+The original energy and power equations are dimensionally consistent. The source's commercial-cost expression `Cost = Pct/1000` is interpreted using P in watts, c as the tariff per kWh, and t in hours; division by 1,000 converts watts to kilowatts. The source's 1 kWh = 3.6 × 10⁶ J conversion is correct.
+
+The source-week evaluation also asks about factors affecting resistance, and the weekend assignment asks for the SI unit of resistivity. These were not taught explicitly in the earlier supplement. The lesson now includes R = ρL/A, explains length, cross-sectional area, material/resistivity and temperature, and identifies Ω·m as the SI unit. This is assessment support and is not represented as an additional scheme-of-work heading.
+
+The source provides questions but no official answer/marking key. The lesson supplies original keyed practice and worked equivalents; it does not claim to reproduce an official teacher key.
+
+## Student lesson update
 
 - Lesson ID: `SUP-SS1-PHYSICS-T3-W03-ELECTRICAL-ENERGY-POWER`
-- Body SHA-256: `2fb9e1a6b68e4f10c8c9f3c413c9bd282142b92e4eeefbb811dcf13b16c2c434`
-- Body length: 4,065 characters
-- Practice: 18 fully answered questions, 40 marks; marking totals checked.
+- Updated body SHA-256: `61941423a68214017b035a00dda14b9e2374156bd4d15f929264086fe4c87bfb`
+- Practice: 20 questions; 45 marks; each question has an answer and marking criteria.
+- Added coverage:
+  - `COV-PHYS-T3-W03-OBJ-6`: factors affecting resistance — `IMPLEMENTED_EQUIVALENT`.
+  - `COV-PHYS-T3-W03-OBJ-7`: SI unit of resistivity — `IMPLEMENTED_EQUIVALENT`.
+- All existing lesson content and stable IDs retained.
 
-The lesson covers electrical energy and work, the four energy equations, electrical power and its alternative formulae, kWh as a commercial energy unit, conversion to joules, appliance energy consumption and electricity-bill calculations. It provides worked examples for multiple appliances and a 30-day household bill. The tariff used in examples is explicitly illustrative, not represented as a current Nigerian tariff.
+## Explicit non-blocking source item
 
-Five objective-level coverage entries were added. All are `IMPLEMENTED_EQUIVALENT` based on the authored supplement; approval and verification remain pending/deferred.
+The reading assignment says `New school physics`, pages 81–82, but gives no author, publisher, edition or year. The registered source bundle does not contain the book. Package open item `PHYSICS-T3-W03-READING-ASSIGNMENT-EDITION` records this precise bibliographic gap. Do not invent a book edition or add an unverified resource link.
 
-## Close-equivalent comparison (not the registered original)
+## Status and verification boundary
 
-SchoolGist and Ecolebooks Week Three notes cover electrical energy, power, kWh, appliance consumption and cost calculations.
-
-References:
-- https://schoolgist.ng/storage/postFiles/SS1-Physics-3rd-Term-Lesson-Note-pdf.pdf
-- https://ecolebooks.com/nigeria/posts/week-2-and-3-ss1-third-term-physics-notes/
-
-These are close-equivalent scope comparisons only, not the registered original .doc.
-
-## Remaining source-dependent work
-
-1. Inspect the registered original member or a verified extraction of parsed row 2.
-2. Compare the exact source formulae, symbols, examples, evaluations, assignment and theory questions.
-3. Reconcile any source arithmetic/notation errors and inspect any embedded figures.
-4. Mark the queue item complete only after exact source reconciliation.
-
-## Checks performed
-
-- Body SHA-256 recorded.
-- All 18 practice answers and marking totals checked: 40 marks.
-- Content approval remains `PENDING`; verification remains `DEFERRED`.
-- No importer, database or device test is claimed.
-
-
-## Original-source inspection completed — 2026-11-12
-
-- Exact source member: hash-verified original registered .doc; full rendered page range: 5–6.
-- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
-- Source-row disposition: WEEK 3: electrical energy and power, energy transferred, electrical power and electricity consumption/cost. The rendered source formulas and unit relationships were inspected; the source assessment is present but no answer/marking key is supplied.
-- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
-- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.
+- Queue item: `PHYS-WK-T3-W03` → `IMPLEMENTED_TESTING_DEFERRED`.
+- Package remains `PENDING`; this task does not certify Physics or the lesson for classroom use.
+- Lesson content approval remains `PENDING`; verification remains `DEFERRED`.
+- Original .doc bytes and source identity remain unchanged.
+- Authoring checks: original member SHA-256, lesson body SHA-256 and 20-question marking arithmetic recorded.
+- No typecheck, test suite, importer, database or device validation was run; these remain deferred under the task's explicit boundary.
