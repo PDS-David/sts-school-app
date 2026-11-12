@@ -10,4 +10,4 @@ Review:
 - Sum to infinity requires |r|<1; the source's r<1/r>1 condition is mathematically wrong.
 - The source's evaluation with T2=21,T4=189 and the one with T4=75,T6=192 are underdetermined without a sign condition; replacement states both branches.
 
-Replacement `SUP-SS1-FURTHER-MATHEMATICS-T2-W02-GEOMETRIC-PROGRESSION`: 4 objectives; 10 practice questions; 32 marks. Coverage COV-FM-T2-W02-OBJ-1..3 added. Approval PENDING; verification DEFERRED.
+Replacement `SUP-SS1-FURTHER-MATHEMATICS-T2-W02-GEOMETRIC-PROGRESSION`: 4 objectives; 20 practice questions; 66 marks. Coverage COV-FM-T2-W02-OBJ-1..3 added. Approval PENDING; verification DEFERRED.
