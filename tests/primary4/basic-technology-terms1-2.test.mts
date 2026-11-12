@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import packageData from '../../backend/src/db/primary4/researched/basicTechnologyTerms1And2.json' with { type: 'json' };
 import { buildBasicTechnologyTerms1And2ImportPlan } from '../../backend/src/db/primary4/buildBasicTechnologyTerms1And2ImportPlan.ts';
+import { resolvePrimary4SourceDelivery } from '../../backend/src/utils/primary4Delivery.ts';
 
 test('Basic Technology proposed First and Second Terms cover the missing NERDC topic areas', () => {
   const lessons = packageData.lessons as any[];
@@ -33,4 +34,15 @@ test('Basic Technology practical activities do not ask pupils to operate vehicle
   const materials = packageData.lessons.find((x: any) => x.id === 'p4-bt-t2-w03') as any;
   assert.ok(vehicle.lesson.includes('must not operate a vehicle'));
   assert.ok(materials.activity.includes('without using sharp tools'));
+});
+
+test('proposed Basic Technology lessons remain withheld until owner approval and verification', () => {
+  const topic = buildBasicTechnologyTerms1And2ImportPlan().topics[0] as any;
+  const result = resolvePrimary4SourceDelivery({
+    id: 999999, school_code: 'primary', class_name: 'Primary 4',
+    subject_name: topic.subject_name, term_label: topic.term_label,
+    order_index: topic.order_index, title: topic.title, source_reference: topic.source_reference,
+  });
+  assert.equal(result?.kind, 'withheld');
+  if (result?.kind === 'withheld') assert.match(result.reason, /pending owner approval and independent verification/);
 });
