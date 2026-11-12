@@ -860,8 +860,8 @@
         "GOV-SRC-T1",
         "GOV-WK-T1-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by GOV-WK-T1-W01 (2026-11-07): lines 53-54 need a delivery replacement (Hobbes wording and attribution, contested contract account stated as fact), the Week 1 exercises have no key, and 'why do we study government' is only partly taught in the span. COV-GOV-T1-W01-INSTITUTION-NEED and -WHY-STUDY are PARTIAL, COV-GOV-T1-W01-ASSESSMENT-KEYS is UNRESOLVED and GOVERNMENT-T1-W01-COVERAGE is open. GOV-WK-T1-W01 authors no lesson text, answer or correction.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12: added SUP-SS1-GOVERNMENT-T1-W01-CORRECTED as a full-row Week 1 delivery supplement, body SHA-256 12d72f1b5037c36d2fbe7a984630fe9098fc3ffb3a80a9f24ab25dee9b69f4c1, bound by CORR-GOV-T1-W01-ROW-REPLACEMENT to SS1-SRC-40ce7dcaf672:BODY:cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04. Teaches the three Week 1 scheme objectives with Hobbes's correctly attributed Part I ch.XIII account, neutral alternative explanations, Nigerian Constitution ss4–6/47/90, and Government-school-subject vs Political Science distinction. Added 13 answered practice items with criterion marking totalling 43 marks; weekend Q1/Q5 deliberately omitted pending owner choice. Core coverage entries updated to IMPLEMENTED_EQUIVALENT; why-study, reading and assessment remain PARTIAL. Approval PENDING; verification DEFERRED; tests NOT RUN.",
       "completion_condition": "A lesson in government.json teaches the three Week 1 objectives with the corrected natural-condition passage, labels itself a Week 1 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance with a dated primary text and PENDING content approval; a delivery_corrections entry binds the original lesson id and body hash to it; COV-GOV-T1-W01-INSTITUTION-NEED then cites it with evidence, and any entry it does not fully cover stays PARTIAL or UNRESOLVED; no source byte, schema or shared file is edited."
     },
     {
@@ -2963,7 +2963,6 @@
     }
   },
   "next_runnable": [
-    "GOV-LES-T1-W01-CORRECTED-WEEK",
     "GOV-LES-T1-W02-CORRECTED-WEEK",
     "GOV-LES-T1-W03-CORRECTED-WEEK",
     "GOV-LES-T1-W04-CORRECTED-WEEK",
