@@ -134,6 +134,7 @@ test('Technical Drawing resolved source rows and figure inventories are not left
   const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
   const ids = new Set(subject.open_items.map(item => item.id));
   for (const resolved of [
+    'TD-T2-FOOTER-TAGLINE',
     'TD-T2-W03-FIGURES',
     'TD-T2-W03-NOTATION',
     'TD-T2-W04-FIGURES',
@@ -147,7 +148,7 @@ test('Technical Drawing resolved source rows and figure inventories are not left
     'TD-T2-W01-GENERAL-Q2-DATA-IMPOSSIBLE',
     'TD-T2-W01-GENERAL-Q4-SSA-AMBIGUITY'
   ]) assert.equal(ids.has(resolved), false, `resolved item remains open: ${resolved}`);
-  assert.equal(subject.open_items.length, 20);
+  assert.equal(subject.open_items.length, 19);
 });
 
 test('source-backed Week Two to Five answer keys retain verified results and unresolved caveats', async () => {
