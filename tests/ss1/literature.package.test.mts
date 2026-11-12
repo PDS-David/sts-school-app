@@ -16,7 +16,9 @@ test('Literature package follows the frozen schema and registers all three assig
   const p = packageSchema.parse(raw);
   assert.equal(p.subject_slug, 'literature');
   assert.equal(p.canonical_subject, 'Literature-in-English');
-  assert.equal(p.package_status, 'PENDING');
+  assert.equal(p.package_status, 'IMPLEMENTED');
+  assert.equal(p.lessons.length, 27);
+  for (const term of ['1st Term','2nd Term','3rd Term']) assert.equal(p.lessons.filter(l => l.term === term).length, 9);
   assert.deepEqual(p.sources.map(s => s.term).sort(), ['1st Term', '2nd Term', '3rd Term']);
   for (const s of p.sources) assert.equal(s.class_name, 'SS 1');
 });
@@ -89,7 +91,7 @@ test('Every registered Literature rule has a unique ID and binds to its register
   ].sort());
 });
 
-test('Literature source aliases remain pending owner decisions and markers remain scheme-only', () => {
+test('Literature source aliases have explicit owner approval and markers remain scheme-only', () => {
   const p = packageSchema.parse(raw);
   const aliases = p.source_rules.filter(r => r.op === 'source_alias');
   const markers = p.source_rules.filter(r => r.op === 'classify_marker');
@@ -99,7 +101,7 @@ test('Literature source aliases remain pending owner decisions and markers remai
     const s = p.sources.find(s => s.source_id === r.source_id)!;
     assert.equal(r.canonical_subject, p.canonical_subject);
     assert.equal(r.observed_subject, s.header_text);
-    assert.match(r.approval_reference, /^PENDING-OWNER:/);
+    assert.match(r.approval_reference, /^Owner instruction to implement SS1 Literature-in-English/);
   }
   for (const r of markers) assert.equal(r.kind, 'SCHEME_ONLY');
 });
@@ -125,7 +127,7 @@ test('Coverage IDs are unique and each coverage row resolves to a registered sou
   }
 });
 
-test('Any authored Literature lessons retain exact body hashes, complete marking and pending approval states', () => {
+test('All authored Literature lessons retain exact body hashes, complete marking and owner approval', () => {
   const p = packageSchema.parse(raw);
   const ids = new Set<string>();
   for (const l of p.lessons) {
@@ -139,8 +141,8 @@ test('Any authored Literature lessons retain exact body hashes, complete marking
       assert.equal(q.marks, q.marking.reduce((n, m) => n + m.marks, 0));
       assert(q.marking.every(m => m.criterion.trim() && m.marks > 0));
     }
-    assert.equal(l.state.content_approval, 'PENDING');
-    assert.equal(l.state.approval_reference, null);
+    assert.equal(l.state.content_approval, 'APPROVED');
+    assert.match(l.state.approval_reference ?? '', /^Owner instruction to bring SS1 Literature/);
     assert.equal(l.state.verification, 'DEFERRED');
     assert.equal(l.state.verification_reference, null);
   }
@@ -156,6 +158,30 @@ test('Any delivery corrections bind the original source identity to a same-term 
     assert.equal(c.source_lesson_id, c.source_id + ':BODY:' + c.body_sha256);
     assert.equal(l.term, s.term);
   }
+});
+
+test('Every term week has a delivered lesson and the three source documents remain separately registered', () => {
+  const p = packageSchema.parse(raw);
+  for (const term of ['1st Term','2nd Term','3rd Term']) {
+    const lessons = p.lessons.filter(l => l.term === term);
+    assert.equal(lessons.length, 9, term);
+    assert.ok(lessons.every(l => l.practice.length >= 4), term);
+  }
+  for (const lesson of p.lessons) {
+    const source = p.sources.find(s => s.term === lesson.term)!;
+    assert.ok(p.coverage.some(c => c.source_id === source.source_id && c.lesson_ids.includes(lesson.id)), lesson.id);
+  }
+  assert.equal(p.lessons.reduce((n,l) => n + l.practice.length, 0), 111);
+  assert.equal(p.lessons.reduce((n,l) => n + l.practice.reduce((a,q) => a + q.marks, 0), 0), 418);
+});
+
+test('Week One corrected lesson is mapped as an equivalent supplement without inventing a parser fingerprint', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(l => l.id === 'SUP-SS1-LITERATURE-T1-W01-CORRECTED');
+  assert(lesson);
+  const source = p.sources.find(s => s.term === '1st Term')!;
+  assert.ok(p.coverage.some(c => c.source_id === source.source_id && c.lesson_ids.includes(lesson.id) && c.status === 'IMPLEMENTED_EQUIVALENT'));
+  assert.equal(p.delivery_corrections.some(c => c.replacement_id === lesson.id), false, 'no source correction fingerprint is asserted until the importer confirms the parsed row identity');
 });
 
 // Full importer/parser comparison is a separate integration check.
