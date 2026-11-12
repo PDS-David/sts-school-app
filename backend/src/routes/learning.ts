@@ -328,7 +328,7 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
         groups.get(key)!.push(t);
       }
       const lockedIds = new Set<number>();
-      const seqById = new Map<number, { sequence_position: number | null; is_sequence_first: boolean }>();
+      const seqById = new Map<number, { locked: boolean; sequence_position: number | null; is_sequence_first: boolean }>();
       for (const group of groups.values()) {
         const pinOk = !termPinEnforced() || redeemedTermLabels.has(group[0].term_label);
         for (const [id, r] of resolveSequenceGroup(group, passedIds, pinOk)) {
