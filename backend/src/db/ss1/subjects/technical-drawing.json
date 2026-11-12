@@ -6121,14 +6121,14 @@
     {
       "id": "TD-T2-W10-R20-TANGENCY-AMBIGUITY",
       "kind": "FACT",
-      "detail": "The source general evaluation gives circles of diameters 50 mm and 40 mm and requests a lower R20 arc to exclude both circles tangentially. If this means internal tangency with the arc enclosing the circles, it is geometrically impossible because R20 is smaller than the radius-25 circle. The source figure is needed to determine the intended arrangement.",
-      "required_action": "Inspect the original source figure and reconcile whether R20 is an external touching arc or whether the stated radius/wording is erroneous. Do not change the source or teach an impossible internal-containment construction without authoritative evidence.",
+      "detail": "The source's lower R20 arc is ambiguous and cannot internally enclose the given radius-25 circle. The Week Ten lesson now supplies an original, fully dimensioned feasible alternative: circles of radii 25 and 20 mm, centre separation 70 mm, and an R20 arc externally tangent to both. Its centre loci are 45 and 40 mm and satisfy 5<70<85. The source ambiguity is preserved; the alternative is not represented as the recovered source figure.",
+      "required_action": "Teacher reviews and approves the original external-tangency alternative. Keep the source R20 arrangement flagged as ambiguous and do not teach it as internal containment.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863",
         "TD-VIS-W10",
         "TD-KEY-W10-ANSWERS"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "TD-T2-W02-OBJECTIVE-Q2-MULTIPLE-RADII",
