@@ -39,8 +39,8 @@
     "LESSON": 27
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 31,
-    "PENDING": 46,
+    "IMPLEMENTED_TESTING_DEFERRED": 36,
+    "PENDING": 41,
     "BLOCKED": 1
   },
   "items": [
@@ -1450,8 +1450,8 @@
         "GOV-INV-T3",
         "GOV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12. Re-read the original archive member with Antiword 0.37. Verified member SHA-256 04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e; lines 1–43 SHA-256 ede0cf7df2995e5726d445d631d2a0c87480b79abb3c4095604ab584a162fb92. Added exact header, scheme and reference locators and an objective-level mapping from scheme entries 1–11 to GOV-WK-T3-W01..W11. Preserved the duplicate WEEK TWO labels, missing WEEK ONE label and 'ii. Rights of a citizen in a State.' continuation. Cross-referenced row 12/13 to GOV-REV-T3. Audited exercise/reading marker counts against GOV-INV-T3; detailed marker disposition remains GOV-MARK-T3. No lesson, coverage, source rule, correction or asset created. No tests/compiler run; testing deferred.",
       "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
     },
     {
@@ -2951,12 +2951,7 @@
   },
   "next_runnable": [
     "GOV-TEST-PACKAGE",
-    "GOV-VIS-T1",
     "GOV-LES-T1-W01-CORRECTED-WEEK",
-    "GOV-REV-T2",
-    "GOV-MARK-T2",
-    "GOV-VIS-T2",
-    "GOV-PRE-T3",
     "GOV-REV-T3",
     "GOV-MARK-T3",
     "GOV-WK-T3-W01",

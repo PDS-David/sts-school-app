@@ -141,3 +141,62 @@ No visual-disposition item was added because the secondary structural check foun
 - Updated only the Government queue and this inventory note. No package, coverage entry, source rule, lesson, correction or asset was written.
 - No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed. Testing remains deferred by owner.
 - No content approval, verification, certification, acceptance or deployment is claimed.
+
+## GOV-PRE-T3 — preamble and objective-level scheme mapping
+
+This section completes the preamble indexing task using the original archive member and Antiword 0.37 extraction. The exact first 43 extracted lines were re-read. The UTF-8 SHA-256 of lines 1–43, each followed by a newline, is `ede0cf7df2995e5726d445d631d2a0c87480b79abb3c4095604ab584a162fb92`, matching the inventory above.
+
+### Header and references
+
+| Element | Exact text / locator |
+|---|---|
+| Document title | Line 2: `THIRD TERM E-LEARNING NOTE` |
+| Subject | Line 4: `SUBJECT: GOVERNMENT` |
+| Class | Line 5: `CLASS: SS 1` |
+| Scheme heading | Line 7: `SCHEME OF WORK` |
+| Scheme column header | Line 9: `WEEK  TOPIC` |
+| References | Lines 41–43: `Essential Government by C.C. Dibie.` and `Comprehensive Government by J.U. Anyaele.` |
+
+The document header confirms Government, SS1. The reference titles and authors are recorded exactly as printed; the source supplies no edition, publisher or publication year, so those details are not inferred.
+
+### Scheme-to-body mapping
+
+Each scheme entry maps by topic and order to one indexed body span. Scheme locators are Antiword 0.37 lines in the preamble; body locators are Antiword 0.37 lines in the original teaching text. Preserve all source wording, including the second “WEEK TWO” label and the indented “ii.” continuation.
+
+| Scheme entry | Scheme line locator | Exact scheme topic (abbreviated only where noted) | Body item | Body line locator | Mapping status |
+|---:|---:|---|---|---:|---|
+| 1 | 10 | Fundamental Human Rights | GOV-WK-T3-W01 | 44–121 | Mapped by topic; body prints WEEK TWO |
+| 2 | 11–13 | Citizenship: meaning, acquisition, loss; continuation “ii. Rights of a citizen in a State.” | GOV-WK-T3-W02 | 122–230 | Mapped by topic; body also prints WEEK TWO |
+| 3 | 14–15 | Safeguarding citizens’ rights; limitations; citizen/non-citizen differences | GOV-WK-T3-W03 | 231–338 | Mapped by topic |
+| 4 | 16–18 | Constitutionalism: meaning, purposes, relationship with constitution | GOV-WK-T3-W04 | 339–410 | Mapped by topic |
+| 5 | 19–21 | Public opinion: definition, features, formation, measurement, functions and demerits | GOV-WK-T3-W05 | 411–557 | Mapped by topic |
+| 6 | 22–24 | Pressure groups: meaning, types, functions, enabling/limiting factors, modes and dangers | GOV-WK-T3-W06 | 558–713 | Mapped by topic |
+| 7 | 25–27 | Political parties: meaning, types, functions, comparison with pressure groups | GOV-WK-T3-W07 | 714–830 | Mapped by topic |
+| 8 | 28–29 | Party system: definition, types, features, merits/demerits and manifestos | GOV-WK-T3-W08 | 831–1035 | Mapped by topic |
+| 9 | 30–33 | Franchise, universal adult suffrage, types and candidate eligibility | GOV-WK-T3-W09 | 1036–1203 | Mapped by topic |
+| 10 | 34–35 | Electoral system: definition, features, types and merits/demerits | GOV-WK-T3-W10 | 1204–1410 | Mapped by topic |
+| 11 | 36–38 | Electoral constituencies: meaning, delimitation, types, merits/demerits and problems | GOV-WK-T3-W11 | 1411–1551 | Mapped by topic |
+| 12/13 | 39 | `12/13. Revision and Examination` | GOV-REV-T3 | Scheme-only | No teaching-body span; do not invent Week Twelve/Thirteen |
+
+**Week-label anomaly:** scheme entry 1 maps to the first body span (lines 44–121), but that span is printed as WEEK TWO. Scheme entry 2 maps to lines 122–230, also printed as WEEK TWO. There is no WEEK ONE label. Both printed labels are preserved; no silent relabeling or parser split is made.
+
+**Scheme continuation:** the exact line 13 text `ii. Rights of a citizen in a State.` remains attached to scheme entry 2 (Citizenship). It is not reinterpreted as a separate scheme week or silently moved to entry 3.
+
+### Exercise and reading assessment
+
+The inventory's marker list is the exercise/reading audit for this preamble task:
+- 24 `EVALUATION QUESTIONS` headings and one shortened `EVALUATION`;
+- ten full `GENERAL EVALUATION/REVISION QUESTIONS` headings and one truncated `GENERAL EVALUATION/`;
+- eleven `READING ASSIGNMENT / READING ASSINGMENT` headings;
+- eleven `WEEKEND ASSINGMENT` headings;
+- ten `THEORY` and one misspelled `THOERY` headings.
+
+These are source markers and pointers, not evidence that a question has an answer key or marks. The detailed marker disposition is handled by GOV-MARK-T3. No question, answer, mark, reading source or weekend assignment is invented by GOV-PRE-T3.
+
+### Scope and follow-up
+
+- All eleven scheme teaching entries have a corresponding indexed body span by topic and order.
+- The two printed WEEK TWO labels remain a source anomaly requiring explicit treatment in W01/W02 indexing and any later parser/importer review.
+- The 12/13 revision/examination row is cross-referenced to GOV-REV-T3 and remains scheme-only.
+- References are indexed exactly as printed; bibliographic details not supplied by the source remain unknown.
+- No lesson, coverage entry, source rule, correction or asset is created by this preamble task. Objective completeness and any PARTIAL/UNRESOLVED follow-up are assessed by the corresponding GOV-WK-T3 items.
