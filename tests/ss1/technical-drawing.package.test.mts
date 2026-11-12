@@ -261,3 +261,18 @@ test('Week Eight–Nine source answer key supplies marks and preserves image/tex
   assert.match(key, /image73 is labelled A–G/);
   assert.match(key, /Do not infer the correct multiple-choice option/);
 });
+
+test('Week Two missing-arc objective has a dimensioned original replacement', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W02-KEYED-CONSTRUCTIONS');
+  assert.ok(lesson, 'Week Two lesson missing');
+  const question = lesson.practice.find(item => item.id === 'TD-W02-KEY-Q06');
+  assert.ok(question, 'original arc-length replacement exercise missing');
+  assert.equal(question.marks, 5);
+  assert.equal(question.marks, question.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+  assert.match(lesson.body, /four equal 22\.5° sectors/);
+  assert.match(lesson.body, /62\.83 mm/);
+  const sourceGap = subject.open_items.find(item => item.id === 'TD-T2-W02-ARC-FIGURE-MISSING');
+  assert.ok(sourceGap, 'missing original source figure must remain documented');
+  assert.equal(sourceGap.blocks_delivery, false, 'original alternative covers the objective');
+});
