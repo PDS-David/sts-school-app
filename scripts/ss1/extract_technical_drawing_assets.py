@@ -99,7 +99,7 @@ def main():
     manifest_rows = []
     for task in tasks:
         task_id = task['id']
-        combined = task.get('implementation_reference', '') + ' ' + task.get('objective', '')
+        combined = task.get('implementation_reference', '') + ' ' + task.get('objective', '') + ' ' + task.get('week_or_locator', '')
         match = re.search(r'word/media/(image\d+\.(?:png|jpeg|jpg|wmf))', combined, re.I)
         if not match:
             raise SystemExit(f'No exact source media locator for {task_id}')
