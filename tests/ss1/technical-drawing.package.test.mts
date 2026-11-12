@@ -109,3 +109,13 @@ test('Week Seven reduction SVG asset matches registered integrity metadata', asy
   assert.equal(createHash('sha256').update(bytes).digest('hex'), asset.sha256);
   assert.equal(asset.lesson_id, 'SUP-SS1-TECHNICAL-DRAWING-T2-W07-REDUCTION');
 });
+
+test('Week Eight–Nine triangle dividers follow the source construction sequences', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W08-W09-EQUAL-AREA');
+  assert.ok(lesson, 'Week Eight–Nine equal-area lesson missing');
+  assert.match(lesson.body, /Construct a semicircle on DB/);
+  assert.match(lesson.body, /Through F draw a line parallel to CD/);
+  assert.match(lesson.body, /Bisect AB to locate its midpoint D/);
+  assert.match(lesson.body, /Through D draw a line parallel to PC/);
+});
