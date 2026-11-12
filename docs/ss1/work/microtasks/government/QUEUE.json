@@ -36,10 +36,10 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 32,
     "VISUAL_DISPOSITION": 2,
-    "LESSON": 1
+    "LESSON": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 10,
+    "IMPLEMENTED_TESTING_DEFERRED": 11,
     "PENDING": 41,
     "BLOCKED": 1
   },
@@ -487,8 +487,8 @@
         "GOV-INV-T1",
         "GOV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: government.json has the three sources and their alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 105-176, block SHA-256 7033a59e217a778fa0e5d8008fab1a1c9fa348e77b8b85ebcc6b3e573336f6dd; `WEEK TWO` 105, `TOPIC: FEATURES/CHARACTERISTICS OF GOVERNMENT` 106, `CONTENT` 107; sections `FEATURES OF GOVERNMENT` 112, `FUNCTIONS OF GOVERNMENT` 124, `WHY DO WE STUDY GOVERNMENT?` 136; markers 121, 147, 151, 158, 162, 174. Findings recorded by GOV-INV-T1 that this item must settle: Verify the evaluative claim at 144 that `The ultimate aim of government is to make us political scientists` and the list of functions (126-134) against a current, citable authority; present the aim as attributed opinion. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12 on agent/government. Indexed Week Two from verified source SS1-SRC-40ce7dcaf672 (SHA-256 50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a), getBody lines 105–176, block SHA-256 7033a59e217a778fa0e5d8008fab1a1c9fa348e77b8b85ebcc6b3e573336f6dd. Added five objective-level coverage entries: features PARTIAL, functions PARTIAL, reasons for study PARTIAL, reading pointer PARTIAL and assessment keys UNRESOLVED. Verified legal/political-purpose claims against the Federal Ministry of Justice Constitution PDF (1999 with First–Third Alterations), the Nigeria Constitution 1999 rev.2023 text, and OpenStax Introduction to Political Science §§1.3–1.5 and 2.1. Recorded the law/constitution conflation, overbroad function claims, line 144 purpose confusion, missing textbook editions and 14 unkeyed exercises. Added five precise open items and lesson task GOV-LES-T1-W02-CORRECTED-WEEK. No lesson content or source rule written. No tests/typecheck/importer/compiler run; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no week is merged into Civic Education. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
     },
     {
@@ -1921,6 +1921,45 @@
       "status": "PENDING",
       "implementation_reference": "Added from the verified GOV-INV-T3 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
       "completion_condition": "Record the source span and objective-level scheme mapping with exact, reproducible locators; retain the original wording and assess every exercise. Any PARTIAL/UNRESOLVED objective must receive a precise follow-up. Do not invent a lesson, answer, mark, fact or asset."
+    },
+    {
+      "id": "GOV-LES-T1-W02-CORRECTED-WEEK",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 2, getBody lines 105–176; objectives COV-GOV-T1-W02-FEATURES, COV-GOV-T1-W02-FUNCTIONS, COV-GOV-T1-W02-WHY-STUDY",
+      "objective": "Author one visibly original supplement lesson, suggested id SUP-SS1-GOVERNMENT-T1-W02-CORRECTED, for delivery in place of the Week Two original. Teach all three scheme objectives: (1) features of government, accurately distinguishing law from the constitution; (2) functions of government, distinguishing constitutional powers under sections 4–6 from policy objectives under sections 14–19 and qualifying textbook claims about employment, prisons and the ranking of functions; (3) reasons for studying Government. Explicitly preserve and correct the source claim at line 144 ('The ultimate aim of government is to make us political scientists'): distinguish the purpose of studying Government from the purpose of government, cite section 14(2)(b) for Nigeria's constitutional statement that security and welfare are the primary purpose, and present other political-philosophy views neutrally. Include original practice with complete answers and criterion-level marks that sum exactly; account for all 14 source exercise items without inventing a source-provided key. Do not copy unavailable textbook pages. Add dated, citable provenance for the Constitution and political-science references. Keep content approval PENDING and verification DEFERRED; do not claim teacher approval.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T1.md",
+        "docs/ss1/work/microtasks/government/GOV-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-LES-T1-W02-CORRECTED-WEEK.md"
+      ],
+      "depends_on": [
+        "GOV-SRC-T1",
+        "GOV-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GOV-WK-T1-W02 on 2026-11-12. Required to correct the law/constitution distinction, qualify the source's function list, distinguish the purpose of studying Government from the constitutional purpose of government, and supply keyed practice for all 14 exercises. Not authored yet.",
+      "completion_condition": "A visibly original supplement lesson teaches all three objectives with a recomputed body_sha256, dated/citable provenance, complete answer keys and criterion-level marking that sums exactly; content approval stays PENDING and verification DEFERRED; delivery_corrections binds the exact original source row ID/body hash to the replacement; unsupported reading pages are not copied; no source bytes, schema or shared code are edited."
     }
   ],
   "review": {
@@ -1937,7 +1976,6 @@
   },
   "next_runnable": [
     "GOV-TEST-PACKAGE",
-    "GOV-WK-T1-W02",
     "GOV-WK-T1-W03",
     "GOV-WK-T1-W04",
     "GOV-WK-T1-W05",
@@ -1976,6 +2014,7 @@
     "GOV-WK-T3-W08",
     "GOV-WK-T3-W09",
     "GOV-WK-T3-W10",
-    "GOV-WK-T3-W11"
+    "GOV-WK-T3-W11",
+    "GOV-LES-T1-W02-CORRECTED-WEEK"
   ]
 }
