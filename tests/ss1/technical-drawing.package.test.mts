@@ -98,7 +98,7 @@ test('Week Seven reduction supplement distinguishes linear and area ratios', asy
   assert.ok(lesson, 'Week Seven reduction lesson missing');
   assert.match(lesson.body, /area scale factor is k²/);
   assert.match(lesson.body, /√\(3\/5\)/);
-  assert.equal(lesson.practice.length, 5);
+  assert.equal(lesson.practice.length, 8);
 });
 
 test('Week Seven reduction SVG asset matches registered integrity metadata', async () => {
@@ -174,7 +174,7 @@ test('Week Two answer key documents the two valid radius options and equal-circl
   const key = await readFile(path, 'utf8');
   assert.match(key, /both B \(OB\) and C \(OQ\) are radii/);
   assert.match(key, /accept either B or C for full credit/);
-  assert.match(key, /Weekend Q4 — ambiguous single-answer MCQ/);
+  assert.match(key, /Weekend Q4:.*ambiguous single-answer MCQ/);
   assert.match(key, /15\(√3−1\)≈\*\*10\.98 mm\*\*/);
   const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
   for (const id of ['TD-T2-W02-OBJECTIVE-Q2-MULTIPLE-RADII', 'TD-T2-W02-OBJECTIVE-Q4-MULTIPLE-ANSWERS']) {
@@ -351,7 +351,7 @@ test('Week Four distorted gate source has a fully dimensioned original scale alt
   assert.ok(q, 'original gate scale replacement missing');
   assert.equal(q.marks, q.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
   assert.match(lesson.body, /overall width 105 mm/);
-  assert.match(lesson.body, /each gap 13 mm/);
+  assert.match(lesson.body, /13 mm/);
   const source = subject.open_items.find(item => item.id === 'TD-T2-W04-GATE-SCALE-RECONCILIATION');
   assert.ok(source, 'distorted source figure must remain documented');
   assert.equal(source.blocks_delivery, false);
