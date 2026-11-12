@@ -167,3 +167,14 @@ Given radii 20 mm and 15 mm and centre separation 70 mm:
 6. Feasibility check: AB=70 mm > 20+15=35 mm, so the circles are separate and the internal tangent construction is feasible.
 
 Suggested rubric (6 marks): auxiliary radius 35 mm (1); tangent from B to auxiliary circle (1); 15 mm parallel offset (1); both contact points located (1); perpendicular-radius check (1); feasibility check (1). This is an original complete method supplementing the source's truncated written procedure.
+
+## Original feasible alternative for the ambiguous lower R20 arc
+
+The source's lower R20 arc cannot internally enclose a circle of radius 25 mm. The source figure does not unambiguously establish the intended external/internal arrangement. The Week Ten lesson now provides an original, fully specified external-tangency alternative:
+
+- Given circle radii 25 mm and 20 mm; centre spacing 70 mm; required joining arc R20.
+- External centre-locus radii are 25+20=45 mm and 20+20=40 mm.
+- Feasibility: |45−40|=5 < 70 < 45+40=85, so the loci intersect.
+- Choose the intersection on the required side, join centres to contact points, draw the R20 arc and verify perpendicular radii.
+
+Suggested rubric (5 marks): locus radii (2); feasibility check (1); correct centre/contact points (1); R20 arc and perpendicular-radius verification (1). This is an original alternative, not a claim that the source's lower R20 figure has been recovered.
