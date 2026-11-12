@@ -104,6 +104,40 @@ The original row also contains construction/evaluation tasks whose diagrams carr
 - The rectangle-to-square task gives 60 mm by 40 mm; the equal-area square side is √2,400 ≈ 48.99 mm.
 - The three-equilateral-triangle area-sum task gives sides 40 mm, 55 mm and 65 mm. The required resultant triangle's area can be calculated from the sum of the three equilateral-triangle areas, but a unique shape/side set is not specified unless the source's intended construction defines it.
 
+The following source-text numerical tasks can be keyed without inventing diagram geometry:
+
+### Source Q3 — Parallelogram equal in area to a 50–60–55 mm triangle
+
+For triangle sides 50 mm, 60 mm and 55 mm, the semiperimeter is
+s = (50 + 60 + 55)/2 = 82.5 mm.
+
+By Heron's formula:
+A = √[82.5 × 32.5 × 22.5 × 27.5] ≈ **1,288.03 mm²**.
+
+One valid equal-area parallelogram can use a 50 mm base. Its perpendicular height must be:
+h = A/base = 1,288.03/50 ≈ **25.76 mm**.
+
+A construction using a 50 mm base and a perpendicular height of approximately 25.76 mm therefore has the same area. Other base/height pairs are possible; the question does not specify a unique parallelogram shape.
+
+### Source Q4 — Square equal in area to a 60 mm × 35 mm rectangle
+
+Rectangle area = 60 × 35 = **2,100 mm²**.
+Required square side = √2,100 ≈ **45.83 mm**.
+
+### Source Q5 — Sum of three equilateral-triangle areas
+
+For an equilateral triangle of side a, area = (√3/4)a². The sum of the three areas is:
+(√3/4)(40² + 55² + 65²) = (√3/4)(8,850) ≈ **3,832.18 mm²**.
+
+If the intended resultant triangle is also equilateral, its side is √8,850 ≈ **94.07 mm**. However, the source says only “another triangle”; it does not say the resultant must be equilateral. Without that condition, infinitely many triangles have the required area and their side lengths are not uniquely determined. This is a source-wording clarification, not a value to assume.
+
+### Source Q2 — Pentagon side AE
+
+The source gives AD = 70 mm, DE = 55 mm and angle DEA = 90°. Triangle ADE is right-angled at E, with AD as its hypotenuse:
+AE = √(AD² − DE²) = √(70² − 55²) = √1,875 ≈ **43.30 mm**.
+
+The remaining pentagon construction and equal-area reduction must follow the source figure for the locations of C and the diagonals; the side AE value is independently determined by the text.
+
 The multiple-choice questions tied to figures remain unkeyed until each image is faithfully bound and its labels/options are legible. No option letters have been guessed.
 
 ## Verification boundary
