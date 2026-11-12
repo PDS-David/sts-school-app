@@ -489,7 +489,7 @@ interface Row {
 
 function parseArgs(argv: string[]) {
   const yes = argv.includes('--yes');
-  const primary4Reviewed = argv.includes('--primary4-reviewed');
+  const primary4Supplements = argv.includes('--primary4-supplements');
   const rootIdx = argv.indexOf('--root');
   const scIdx = argv.indexOf('--school-code');
   const termIdx = argv.indexOf('--default-term');
@@ -498,14 +498,14 @@ function parseArgs(argv: string[]) {
   const schoolCode = scIdx >= 0 ? argv[scIdx + 1] : undefined;
   const defaultTerm = termIdx >= 0 ? argv[termIdx + 1] : undefined;
   const ss1SubjectSlug = subjectIdx >= 0 ? argv[subjectIdx + 1] : undefined;
-  return { root, schoolCode, yes, defaultTerm, ss1SubjectSlug, primary4Reviewed };
+  return { root, schoolCode, yes, defaultTerm, ss1SubjectSlug, primary4Supplements };
 }
 
 async function main() {
-  const { root, schoolCode, yes, defaultTerm, ss1SubjectSlug, primary4Reviewed } = parseArgs(process.argv.slice(2));
+  const { root, schoolCode, yes, defaultTerm, ss1SubjectSlug, primary4Supplements } = parseArgs(process.argv.slice(2));
   if (!root || !schoolCode || !['primary', 'secondary'].includes(schoolCode)) {
     console.log(`Usage:
-  npx tsx src/db/ingestTopics.ts --root <path> --school-code primary|secondary [--default-term "1st Term"] [--ss1-reviewed --ss1-plan <output> [--ss1-subject-slug <slug>]] [--jss3-supplements] [--primary4-reviewed] [--yes]
+  npx tsx src/db/ingestTopics.ts --root <path> --school-code primary|secondary [--default-term "1st Term"] [--ss1-reviewed --ss1-plan <output> [--ss1-subject-slug <slug>]] [--jss3-supplements] [--primary4-supplements] [--yes]
 
 --default-term is used ONLY for files whose path gives no term clue at all
 (e.g. a standalone file not organized into a "1st/2nd/3rd Term" folder) —
@@ -529,7 +529,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   if (ss1PlanIndex >= 0 && (!ss1Reviewed || !ss1PlanPath || ss1PlanPath.startsWith('--'))) throw new Error('--ss1-plan requires --ss1-reviewed and a new output filename');
   if (ss1SubjectSlug && (!ss1Reviewed || !/^[a-z0-9-]+$/.test(ss1SubjectSlug))) throw new Error('--ss1-subject-slug requires --ss1-reviewed and a valid package slug');
   if (ss1Reviewed && schoolCode !== 'secondary') throw new Error('SS1 reviewed packages require --school-code secondary.');
-  if (primary4Reviewed && schoolCode !== 'primary') throw new Error('--primary4-reviewed requires --school-code primary.');
+  if (primary4Supplements && schoolCode !== 'primary') throw new Error('--primary4-supplements requires --school-code primary.');
   if (ss1Reviewed && yes && !ss1PlanPath) throw new Error('SS1 reviewed import requires --ss1-plan <new-output-file> so the exact release plan is preserved before database writes.');
 
   const unsupported: string[] = [];
@@ -917,7 +917,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
 
   // Primary 4 researched packages enter through this existing ingestion pipeline.
   // Dry runs may display pending content; --yes is blocked until approval and verification.
-  if (primary4Reviewed) {
+  if (primary4Supplements) {
     try {
       assertPrimary4SupplementCorpus();
       const supplements = buildPrimary4SupplementRows(rows, root, schoolCode);
