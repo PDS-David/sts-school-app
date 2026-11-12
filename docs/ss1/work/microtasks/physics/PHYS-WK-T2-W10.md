@@ -26,8 +26,8 @@ The source row covers:
 
 ## Source corrections
 
-Correction records:
-- `CORR-PHYSICS-T2-W10-GALVANIC-CELL-POLARITY`: the source gives positive anode/negative cathode for a chemical cell generating current. In a galvanic cell delivering current, the anode is negative (oxidation) and cathode positive (reduction). The lesson corrects the polarity and distinguishes galvanic from electrolytic cells.
+Combined correction record: `CORR-PHYSICS-T2-W10-GALVANIC-CELL-POLARITY`:
+- the source gives positive anode/negative cathode for a chemical cell generating current. In a galvanic cell delivering current, the anode is negative (oxidation) and cathode positive (reduction). The lesson corrects the polarity and distinguishes galvanic from electrolytic cells.
 - `CORR-PHYSICS-T2-W10-PHOTOVOLTAIC-TERMINOLOGY`: the source calls solar-cell operation the photoelectric effect. The lesson uses the more precise photovoltaic effect for semiconductor solar cells.
 
 The lesson also clarifies that a DC generator uses a commutator/rectifier arrangement for unidirectional output; an alternator with slip rings produces alternating current.
