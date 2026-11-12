@@ -599,6 +599,102 @@
               "marks": 1
             }
           ]
+        },
+        {
+          "id": "FM3W2-Q4",
+          "question": "Draw a flowchart that inputs three numbers a, b and c, calculates their mean, and outputs the mean. Evaluate it for 4, 7 and 10.",
+          "answer": "START → Input a,b,c → M=(a+b+c)/3 → Output M → STOP. M=(4+7+10)/3=7.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Correct START and STOP terminators",
+              "marks": 1
+            },
+            {
+              "criterion": "Inputs a,b,c",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct mean calculation process",
+              "marks": 1
+            },
+            {
+              "criterion": "Output and arrow sequence",
+              "marks": 1
+            },
+            {
+              "criterion": "Mean 7",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W2-Q5",
+          "question": "A flowchart inputs two numbers x and y and outputs the larger number. Describe the decision and both branches. What should it output when x=y?",
+          "answer": "Decision: Is x>y? Yes → Output x; No → Output y. When x=y either branch outputs the same common value.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Uses a decision diamond with x>y",
+              "marks": 1
+            },
+            {
+              "criterion": "Yes branch outputs x",
+              "marks": 1
+            },
+            {
+              "criterion": "No branch outputs y",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains equality case correctly",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W2-Q6",
+          "question": "Trace this loop: set C=0 and N=2. While N≤8, add 2 to C and add 2 to N. State the values of N at each test and the final C.",
+          "answer": "Tests N=2,4,6,8 (true); after the fourth pass N=10, so the loop stops. C=8.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Lists the four true test values",
+              "marks": 2
+            },
+            {
+              "criterion": "Recognises stop at N=10",
+              "marks": 1
+            },
+            {
+              "criterion": "Final C=8",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W2-Q7",
+          "question": "State the purpose of each symbol: (a) oval (b) parallelogram (c) rectangle (d) diamond.",
+          "answer": "(a) Start/stop; (b) input/output; (c) process/calculation; (d) decision/branch.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Oval",
+              "marks": 1
+            },
+            {
+              "criterion": "Parallelogram",
+              "marks": 1
+            },
+            {
+              "criterion": "Rectangle",
+              "marks": 1
+            },
+            {
+              "criterion": "Diamond",
+              "marks": 1
+            }
+          ]
         }
       ],
       "provenance": [
@@ -713,6 +809,82 @@
               "marks": 1
             }
           ]
+        },
+        {
+          "id": "FM3W3-Q5",
+          "question": "Find the gradient and y-intercept of 6x+3y=12.",
+          "answer": "3y=-6x+12; y=-2x+4. Gradient -2; y-intercept 4.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Rearranges correctly",
+              "marks": 1
+            },
+            {
+              "criterion": "Gradient -2",
+              "marks": 1
+            },
+            {
+              "criterion": "Intercept 4",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W3-Q6",
+          "question": "Find the equation of the line parallel to y=4x-7 and passing through (2,5).",
+          "answer": "Parallel gradient m=4. y-5=4(x-2), hence y=4x-3.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Identifies gradient 4",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses point-gradient form",
+              "marks": 1
+            },
+            {
+              "criterion": "Equation y=4x-3",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W3-Q7",
+          "question": "A line passes through (3,-1) and (3,6). State its equation and explain why its gradient is undefined.",
+          "answer": "Both x-coordinates are 3, so the line is x=3. The gradient denominator Δx=3-3=0; division by zero is undefined.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Equation x=3",
+              "marks": 1
+            },
+            {
+              "criterion": "Δx=0",
+              "marks": 1
+            },
+            {
+              "criterion": "Undefined gradient explanation",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W3-Q8",
+          "question": "For y=x²/4, estimate the gradient at x=1 using the derivative rule m=x/2. Also state the gradient at x=-3.",
+          "answer": "At x=1, m=1/2. At x=-3, m=-3/2.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Gradient 1/2",
+              "marks": 1
+            },
+            {
+              "criterion": "Gradient -3/2",
+              "marks": 1
+            }
+          ]
         }
       ],
       "provenance": [
@@ -822,6 +994,82 @@
               "marks": 1
             }
           ]
+        },
+        {
+          "id": "FM3W4-Q5",
+          "question": "Find the angle of slope of a line with gradient -1. Give the inclination measured anticlockwise from the positive x-axis.",
+          "answer": "tan θ=-1. The inclination is 135° (the principal arctan value -45° is adjusted to the 0°–180° line-inclination range).",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Recognises tan θ=-1",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds reference angle 45°",
+              "marks": 1
+            },
+            {
+              "criterion": "Inclination 135°",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W4-Q6",
+          "question": "Determine whether 2x-3y+6=0 and 4x-6y-9=0 are parallel.",
+          "answer": "First: y=(2/3)x+2; second: y=(2/3)x-3/2. Equal gradients 2/3 and distinct intercepts, so parallel distinct lines.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "First gradient 2/3",
+              "marks": 1
+            },
+            {
+              "criterion": "Second gradient 2/3",
+              "marks": 1
+            },
+            {
+              "criterion": "Concludes parallel and distinct",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W4-Q7",
+          "question": "Find the gradient of a line perpendicular to 5x+2y=8.",
+          "answer": "y=-(5/2)x+4, so the perpendicular gradient is the negative reciprocal 2/5.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Original gradient -5/2",
+              "marks": 1
+            },
+            {
+              "criterion": "Perpendicular gradient 2/5",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W4-Q8",
+          "question": "Find the equation of the line perpendicular to y=3x+1 and passing through (6,2).",
+          "answer": "Perpendicular gradient -1/3. y-2=-(1/3)(x-6), so y=-(1/3)x+4, or x+3y=12.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Perpendicular gradient -1/3",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct point-gradient substitution",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct equation",
+              "marks": 1
+            }
+          ]
         }
       ],
       "provenance": [
@@ -908,6 +1156,82 @@
             },
             {
               "criterion": "Gives √29",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W5-Q4",
+          "question": "Find the magnitude and unit vector of r=-8i+6j.",
+          "answer": "|r|=√(64+36)=10; r̂=(-8i+6j)/10=-(4/5)i+(3/5)j.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Magnitude 10",
+              "marks": 1
+            },
+            {
+              "criterion": "Divides vector by magnitude",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct unit vector",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W5-Q5",
+          "question": "Find the magnitude of 2i-3j+6k and the unit vector in its direction.",
+          "answer": "Magnitude √(4+9+36)=7; unit vector=(2i-3j+6k)/7.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Squares and adds components",
+              "marks": 1
+            },
+            {
+              "criterion": "Magnitude 7",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct unit vector",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W5-Q6",
+          "question": "If a=3i-4j, write -a and state its magnitude and relationship in direction to a.",
+          "answer": "-a=-3i+4j. Both have magnitude 5; their directions are opposite.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Negative vector -3i+4j",
+              "marks": 1
+            },
+            {
+              "criterion": "Magnitude 5",
+              "marks": 1
+            },
+            {
+              "criterion": "Opposite direction",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W5-Q7",
+          "question": "Are vectors 2i-3j and 4i-6j equal? Explain.",
+          "answer": "No. The second is twice the first; they have the same direction but different magnitudes.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Not equal",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains magnitude differs",
               "marks": 1
             }
           ]
@@ -1001,6 +1325,86 @@
             },
             {
               "criterion": "Check sum 1",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W6-Q4",
+          "question": "Given a=2i-j and b=-i+4j, find 3a-2b.",
+          "answer": "3a=6i-3j; 2b=-2i+8j; 3a-2b=8i-11j.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Finds 3a",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds 2b",
+              "marks": 1
+            },
+            {
+              "criterion": "Subtracts to 8i-11j",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W6-Q5",
+          "question": "Find the magnitude and direction cosines of r=2i-2j+z? Correct the expression by taking r=2i-2j+ k.",
+          "answer": "For r=2i-2j+k, |r|=√(4+4+1)=3. Direction cosines are 2/3, -2/3 and 1/3.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Magnitude 3",
+              "marks": 1
+            },
+            {
+              "criterion": "First two direction cosines",
+              "marks": 1
+            },
+            {
+              "criterion": "Third direction cosine",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W6-Q6",
+          "question": "If OA=2i+j and OB=-i+5j, find vector AB and its magnitude.",
+          "answer": "AB=OB-OA=(-i+5j)-(2i+j)=-3i+4j; |AB|=5.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses OB-OA",
+              "marks": 1
+            },
+            {
+              "criterion": "Vector -3i+4j",
+              "marks": 1
+            },
+            {
+              "criterion": "Magnitude 5",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W6-Q7",
+          "question": "Verify that the direction cosines of r=-4i+3j+12k satisfy the direction-cosine identity.",
+          "answer": "|r|=√(16+9+144)=13. Cosines are -4/13, 3/13, 12/13; squares sum to (16+9+144)/169=1.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Magnitude 13",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct direction cosines",
+              "marks": 1
+            },
+            {
+              "criterion": "Verifies sum of squares equals 1",
               "marks": 1
             }
           ]
@@ -1130,6 +1534,78 @@
           "marking": [
             {
               "criterion": "y = mx + c form with correct m and c",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W8-Q6",
+          "question": "Find the acute angle between y=2x+1 and y=-x+4.",
+          "answer": "Gradients 2 and -1. tan α=|(-1-2)/(1-2)|=3, so α=arctan 3≈71.57°.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Gradients 2 and -1",
+              "marks": 1
+            },
+            {
+              "criterion": "tan α=3",
+              "marks": 1
+            },
+            {
+              "criterion": "Angle 71.57°",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W8-Q7",
+          "question": "Find the equation of the line with gradient 3/4 through (-4,2).",
+          "answer": "y-2=(3/4)(x+4), so y=(3/4)x+5.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Point-gradient form",
+              "marks": 1
+            },
+            {
+              "criterion": "Equation y=3x/4+5",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W8-Q8",
+          "question": "Find the equation of the line through (2,-3) and (6,5) in two-point/gradient form and gradient-intercept form.",
+          "answer": "m=(5+3)/(6-2)=2. y+3=2(x-2), hence y=2x-7.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Gradient 2",
+              "marks": 1
+            },
+            {
+              "criterion": "Point-gradient equation",
+              "marks": 1
+            },
+            {
+              "criterion": "y=2x-7",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W8-Q9",
+          "question": "Find the acute angle between the lines 3x-y+2=0 and x+3y-5=0.",
+          "answer": "Gradients 3 and -1/3; their product is -1, so the lines are perpendicular and the acute angle is 90°.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Finds gradients 3 and -1/3",
+              "marks": 1
+            },
+            {
+              "criterion": "Concludes perpendicular, 90°",
               "marks": 1
             }
           ]
