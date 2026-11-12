@@ -181,3 +181,13 @@ test('Week Five source answer key includes the diagram-derived k-minus-n reading
   assert.match(key, /n=1\.5 m/);
   assert.match(key, /k−n=1\.5 m/);
 });
+
+test('Week Three weekend polygon objective answers match the original source figures', async () => {
+  const path = new URL('../../docs/ss1/work/microtasks/technical-drawing/TD-KEY-W03-ANSWERS.md', import.meta.url);
+  const key = await readFile(path, 'utf8');
+  assert.match(key, /Q1 \/ image31: \*\*D — length of sides\*\*/);
+  assert.match(key, /Q2 \/ image32: \*\*B — distance across corners\*\*/);
+  assert.match(key, /Q3 \/ image33: \*\*C — regular polygon\*\*/);
+  assert.match(key, /Q4 \/ image34: \*\*C\*\*/);
+  assert.match(key, /Q5 \/ image35: \*\*C — pentagon\*\*/);
+});
