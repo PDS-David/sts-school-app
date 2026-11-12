@@ -1139,19 +1139,23 @@
       "id": "COV-TD-T2-W05-DIAGONAL-SCALE",
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Explain and use diagonal scales as taught in the Week Five source row.",
-      "objective_locator": "WEEK FIVE teaching row (parsed row 15), title “Diagonal and chordal scale and their uses”; original body SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc.",
-      "status": "PARTIAL",
+      "objective_locator": "WEEK FIVE body children 866–929; exact constructions, ratios, lengths and readings in TD-FACT-W05-SCALE-CONSTRUCTIONS.md.",
+      "status": "SUPPORTED",
       "lesson_ids": [
         "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc"
       ],
       "evidence": [
         {
           "locator": "Original lesson ID SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc; body SHA-256 2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc.",
-          "explanation": "The source row title explicitly names this scale type and its uses. The current repository evidence does not contain the detailed construction steps, dimensions, graduations or worked readings, so objective coverage remains PARTIAL pending exact source inspection."
+          "explanation": "The earlier evidence entry recorded this as partial before exact construction inspection. Four diagonal-scale examples and the 2/5 evaluation construction are now transcribed with checked lengths, units and worked readings in TD-FACT-W05-SCALE-CONSTRUCTIONS.md."
         },
         {
           "locator": "Scheme coverage COV-TD-T2-SCH-W05; parsed scheme row 4, line 19; exact source text “WEEK 5:        Diagonal and chordalScales”.",
           "explanation": "This objective maps to the Week 5 scheme objective. Source spacing and spelling are retained in the scheme record; no normalization is made here."
+        },
+        {
+          "locator": "WEEK FIVE body children 866–929; source pages 23–25; TD-FACT-W05-SCALE-CONSTRUCTIONS.md",
+          "explanation": "The source defines three diagonal-scale units (cm, mm, tenths of mm), gives four worked constructions (1:1, 2:1, 3 cm=1 m, 1:4) with verified lengths/readings, and specifies the 2/5 evaluation scale. The k−n assessment reading is assigned to the answer-key task."
         }
       ]
     },
@@ -1159,19 +1163,23 @@
       "id": "COV-TD-T2-W05-CHORDAL-SCALE",
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Explain and use chordal scales as taught in the Week Five source row.",
-      "objective_locator": "WEEK FIVE teaching row (parsed row 15), title “Diagonal and chordal scale and their uses”; original body SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc.",
-      "status": "PARTIAL",
+      "objective_locator": "WEEK FIVE body children 938–1005; exact 5-degree chordal-scale construction and 25-degree worked example in TD-FACT-W05-SCALE-CONSTRUCTIONS.md.",
+      "status": "SUPPORTED",
       "lesson_ids": [
         "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc"
       ],
       "evidence": [
         {
           "locator": "Original lesson ID SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc; body SHA-256 2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc.",
-          "explanation": "The source row title explicitly names this scale type and its uses. The current repository evidence does not contain the detailed construction steps, dimensions, graduations or worked readings, so objective coverage remains PARTIAL pending exact source inspection."
+          "explanation": "The earlier evidence entry recorded this as partial before exact construction inspection. The 5°/90° chordal-scale construction and 25° worked example are now transcribed from the source text and figure in TD-FACT-W05-SCALE-CONSTRUCTIONS.md. Non-multiple-of-5° examples and the centre label remain explicit blockers."
         },
         {
           "locator": "Scheme coverage COV-TD-T2-SCH-W05; parsed scheme row 4, line 19; exact source text “WEEK 5:        Diagonal and chordalScales”.",
           "explanation": "This objective maps to the Week 5 scheme objective. Source spacing and spelling are retained in the scheme record; no normalization is made here."
+        },
+        {
+          "locator": "WEEK FIVE body children 938–1005; source pages 25–26; TD-FACT-W05-SCALE-CONSTRUCTIONS.md",
+          "explanation": "The source constructs a 90° quadrant in 18 equal 5° divisions and demonstrates a 25° angle using the 0°–60° chord as radius R and 0°–25° chord as r. The source's 24°, 37° and 27° references conflict with its 5° increment statement; see open item TD-T2-W05-CHORD-ANGLE-GRANULARITY."
         }
       ]
     },
@@ -1518,22 +1526,12 @@
     {
       "id": "TD-T2-W05-FIGURES",
       "kind": "CONTENT",
-      "detail": "The current Week Five package evidence does not record the figure inventory or visual disposition for the diagonal/chordal scale constructions. Their exact geometry, dimensions, labels and graduations cannot be reconstructed safely from the title alone.",
-      "required_action": "Complete TD-VIS-W05 by inspecting every original figure and recording its purpose, dimensions, labels and graduations; bind a faithful derivative with provenance or document a precise exclusion.",
+      "detail": "All seven Week Five AutoCAD objects and WMF previews have been inventoried and visually inspected; seven bounded derivative tasks exist. No allowed-MIME derivative has yet been produced or bound.",
+      "required_action": "Complete TD-ASSET-W05-F01 through TD-ASSET-W05-F07, preserving diagonal-scale graduations and chordal-scale angle marks; record hashes, byte counts, alt text and provenance; bind each derivative to the Week Five lesson.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc",
-        "TD-VIS-W05"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "TD-T2-W05-CONSTRUCTION-DETAILS",
-      "kind": "CONTENT",
-      "detail": "The existing repository evidence confirms the row title but does not preserve the exact diagonal-scale and chordal-scale construction steps, ratios, ranges, dimensions or worked readings.",
-      "required_action": "Complete TD-FACT-W05-SCALE-CONSTRUCTIONS from the original DOCX; record each construction, ratio, range, dimension, label and reading with exact source locators. Do not infer these details from the title.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc",
-        "TD-FACT-W05-SCALE-CONSTRUCTIONS"
+        "TD-ASSET-W05-F01",
+        "TD-ASSET-W05-F07"
       ],
       "blocks_delivery": true
     },
@@ -1681,6 +1679,30 @@
         "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
         "TD-FACT-W04-SCALE-DETAILS",
         "TD-VIS-OLE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W05-CHORD-ANGLE-GRANULARITY",
+      "kind": "FACT",
+      "detail": "The chordal scale is constructed with 5° increments and the source says it constructs multiples of 5°, but the same lesson cites 24° and 37° as examples and asks for 27° in evaluation/weekend assignment. These are not multiples of 5°; the source gives no finer graduation or interpolation method.",
+      "required_action": "Confirm whether the scale is intended to have finer graduations/interpolation or whether the 24°, 37° and 27° values are source typos. Correct the teaching method and affected questions together; do not silently replace values.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc",
+        "COV-TD-T2-W05-CHORDAL-SCALE",
+        "TD-FACT-W05-SCALE-CONSTRUCTIONS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W05-CHORD-CENTRE-LABEL",
+      "kind": "FACT",
+      "detail": "The chordal-scale construction paragraph at body child 962 renders “With 0⁰ as centre”, while the quadrant diagram labels its centre A. The text label and figure label do not agree unambiguously.",
+      "required_action": "Confirm the intended centre label and correct the method text or figure in a reviewed supplement; do not assume O/A without source-author confirmation.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc",
+        "COV-TD-T2-W05-CHORDAL-SCALE",
+        "TD-FACT-W05-SCALE-CONSTRUCTIONS"
       ],
       "blocks_delivery": true
     }
