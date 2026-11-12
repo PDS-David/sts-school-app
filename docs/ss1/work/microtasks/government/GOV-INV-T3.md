@@ -418,3 +418,95 @@ The source heading misspells `LOSING` as `LOOSING`; preserve it in the source re
 - `GOVERNMENT-T3-W02-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 16 stems.
 
 No lesson, correction, source rule, asset, answer key or marks were created. The source wording, duplicate WEEK TWO label, misspelled headings and repeated MCQ option label remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-WK-T3-W03 — Safeguarding citizens' rights, limitations and citizen/non-citizen distinctions
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and dated constitutional/legal fact-check evidence only; no lesson, answer key, marks, correction, asset or parser rule is authored here.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc175239701db368e` — see the source member hash below for the authoritative full value.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37 on the original legacy `.doc`.
+- Complete span: lines 231–338; UTF-8 span SHA-256: `a5fdd8fc95bebc2a59ba0915d39b7a3148c5673917d1b78dd1f5b5b7f2c345f9`.
+- Printed label: `WEEK THREE` at line 231; topic: `CITIZENSHIP` at line 232.
+- This span maps to the continuation of scheme entry 2, `ii. Rights of a citizen in a State.` (preamble line 13). W02 indexed the preceding citizenship meaning/acquisition/loss subtopics; this W03 span covers the rights continuation.
+- Locators refer to Antiword line numbers, not page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are empty rather than inferred from another extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-W03-SCHEME-RIGHTS | Scheme entry 2 rights continuation | PARTIAL |
+| COV-GOV-T3-W03-SAFEGUARDS | Safeguards, lines 238–257 | PARTIAL |
+| COV-GOV-T3-W03-LIMITATIONS | Limitations, lines 259–281 | PARTIAL |
+| COV-GOV-T3-W03-PRISONER-VOTING | Imprisonment and voting claim, lines 262–263 | PARTIAL |
+| COV-GOV-T3-W03-CITIZEN-NONCITIZEN | Comparison, lines 286–301 | PARTIAL |
+| COV-GOV-T3-W03-GENERAL-REVISION | General revision, lines 307–313 | PARTIAL |
+| COV-GOV-T3-W03-READING | Reading pointers, lines 315–317 | PARTIAL |
+| COV-GOV-T3-W03-ASSESSMENT-KEYS | All assessment blocks | UNRESOLVED |
+| COV-GOV-T3-W03-WEEKEND-MCQS | Weekend MCQs, lines 320–333 | PARTIAL |
+
+Nine coverage entries and eight linked open items were added. The existing T3 source-alias owner action remains unchanged.
+
+### Safeguarding rights — lines 238–257
+
+The source lists an independent judiciary, freedom of the press, democracy, constitutional entrenchment, peace/order, supremacy of law, literacy and poverty reduction. These are not all the same kind of safeguard:
+- Constitutional supremacy and access to courts support legal protection (ss1 and 46); fair hearing and judicial independence are also reflected in s36 and the constitutional judicial framework.
+- Freedom of expression/press is in s39; section 22 is a Chapter II directive to mass media. A free press can support accountability, but it does not guarantee that rights will always be protected.
+- Entrenchment makes rights constitutionally protected, but it is not immutable: Chapter IV can be altered only through the special process in s9(3).
+- Peace/order and rule of law are important conditions, but must not be used to justify arbitrary restrictions.
+- Literacy and poverty reduction are important social-policy aims; they are not direct individual remedies for a Chapter IV violation. The lesson should distinguish institutions and enforceable remedies from broader policy conditions.
+
+### Limitations — lines 259–281
+
+The source's list combines different legal rules and often overstates them:
+- **Slander/libel/sedition:** freedom of expression is protected by s39, subject to the Constitution's specified limitations and the general s45 test. Defamation and sedition should not be taught as automatic or unlimited restrictions. Sedition case law requires careful dating: *DPP v Chike Obi* (1961) considered Criminal Code provisions under the 1960 Constitution; *Arthur Nwankwo v State* (1985) is commonly cited for a later constitutional challenge under the 1979 Constitution. The source's generic statement does not identify the applicable law or current constitutional test.
+- **Conviction and imprisonment:** a lawful sentence can deprive liberty under s35(1)(a), but imprisonment does not automatically remove every right. In particular, INEC's 2025 report summarises a Federal High Court decision of 16 December 2014 recognising inmates' voting rights and an affirming Court of Appeal decision. INEC also notes the Electoral Act 2022 s12(1)(e) legal-incapacity qualification and unresolved implementation questions for some categories. The source's blanket statement that an imprisoned citizen may lose voting rights is inaccurate.
+- **Emergency/curfew:** s45(1) allows laws restricting specified rights only when reasonably justifiable in a democratic society for listed purposes. Section 45(2) separately addresses emergency derogations from ss33 and 35 under an Act and only to the extent reasonably justifiable. A curfew is not an automatic, unlimited power arising from the word “emergency”.
+- **Secret societies:** s38(4) expressly states that the right to freedom of thought, conscience and religion does not entitle a person to form, participate in or be a member of a secret society. This specific provision should not be confused with a general power to deny peaceful association under s40.
+- **Property:** s43 gives citizens a right to acquire and own immovable property. Compulsory acquisition is separately controlled by s44: it must follow law, require prompt compensation and allow access to a court/tribunal. “Useful for development” is not a complete legal test or a licence for arbitrary taking.
+- **Trespass:** the fact that a person has no right to trespass on another's property is not, by itself, a general constitutional limitation on freedom of movement under s41. The relevant property and movement rules should be distinguished.
+- **Life:** s33(1) sets out the constitutional circumstance for deprivation of life through execution of a court sentence for a criminal offence of which the person has been found guilty in Nigeria. The source's examples must not be read as a sentence without lawful conviction and due process.
+- **Political disqualification/bans:** a vague label such as “banned politician because of past role” is not a sufficient legal rule. Candidate eligibility and disqualification are governed by office-specific constitutional provisions. Political expression and association are protected by ss39–40; any restriction requires a valid legal basis and applicable constitutional test.
+
+### Citizen and non-citizen — lines 286–301
+
+The source's comparison is too absolute:
+- Citizenship is legal membership, but non-citizens are still subject to Nigerian law and can owe legal duties; section 24 sets out duties of citizens, not a general exemption of non-citizens from all obligations.
+- Many constitutional rights apply to every person, including rights in ss33–40. Some provisions are expressly citizen-specific, such as movement under s41, immovable property under s43 and voter registration under s77(2).
+- Some public offices have citizenship qualifications, but “citizens can serve in any capacity; non-citizens cannot” is too broad.
+- “Citizens can take any job of their choice” is also too broad: qualifications and legal restrictions apply to everyone. Non-citizen employment depends on the applicable immigration and work-authorisation rules; the source gives no statute or exception.
+- “The rights of a citizen are guaranteed, while those of a non-citizen are not” is false as a blanket statement. Non-citizens have many constitutional protections, while some political and other entitlements are citizen-specific.
+
+### Assessment and reading-marker audit
+
+- `EVALUATION QUESTIONS`: line 283; one question at line 284.
+- `EVALUATION QUESTIONS`: line 303; two questions at lines 304–305.
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 307; five questions at lines 308–313. Questions 1–3 concern this topic; questions 4–5 ask for sources/features of a constitution, not taught in this span.
+- `READING ASSINGMENT`: exact misspelling at line 315; `Comprehensive Government` pp. 74–76 and `Essential Government` pp. 89–91 at lines 316–317. Editions are unspecified and the books were not inspected.
+- `WEEKEND ASSINGMENT`: line 319; five MCQs at lines 320–333. Q1 has several potentially defensible options because marriage to a foreigner is not a general deprivation ground, dual citizenship has qualified consequences, and conviction/ex-convict status is not automatically sufficient. Q2 may have more than one “not an obligation” option: freedom of conscience/religion is a right, voting is not listed as a duty in s24, and reporting a crime is not one of the enumerated constitutional duties. Q3 mixes birth, conviction and renunciation, which have different legal effects. Q4 requires the precise s33(1) court-sentence rule. Q5 contains overlapping descriptions of rights.
+- `THOERY`: exact misspelling at line 335; two prompts at lines 336–337.
+- Total: **15 exercise stems** (1 + 2 + 5 + 5 + 2). No source answer key, marks or marking criteria are supplied. No answers or marks were invented.
+
+### Dated legal references consulted
+
+1. **PLAC, *Constitution of the Federal Republic of Nigeria, 1999*, updated with the First–Fifth Alterations** (third revision October 2023; reprint September 2024). Used for ss1, 6, 17, 22, 24, 33, 35–45, 46, 77 and the applicable limitations: https://placng.org/i/wp-content/uploads/2023/11/Constitution-of-the-Federal-Republic-of-Nigeria-1999-Updated.pdf
+2. **Independent National Electoral Commission, *Election Management in Nigeria: 2015–2025*** (first published July 2025), section 9.4.2, “Voting Rights for Inmates in Correctional Centres”. It summarises the 2014 Federal High Court decision, the affirming Court of Appeal decision, Electoral Act 2022 s12(1)(e) and implementation issues: https://wp1.inecnigeria.org/wp-content/uploads/Activity-Report-Election-Management-Body.pdf
+3. ***Director of Public Prosecutions v Chike Obi* (FSC 56/1961)**, NigeriaLII case record, on Criminal Code sedition provisions under the 1960 constitutional framework: https://nigerialii.org/akn/ng/judgment/ngsc/1961/28/eng%401961-04-06
+4. ***Arthur Nwankwo v State* (1985) 6 NCLR 228**. A later legal discussion describes the Court of Appeal's constitutional treatment of Criminal Code sedition provisions under the 1979 Constitution; current application requires a provision-specific legal review: https://repository.run.edu.ng/bitstreams/f2121c61-f57a-4edb-9225-97cad175aaa0/download
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W03-SAFEGUARDS-FACT` — distinguish enforceable safeguards from institutional conditions and social-policy aims.
+- `GOVERNMENT-T3-W03-LIMITATIONS-FACT` — correct the nine limitation claims against the exact constitutional provisions and tests.
+- `GOVERNMENT-T3-W03-PRISONER-VOTING-FACT` — replace the blanket prisoner-voting claim with the Constitution, Electoral Act and INEC/court context.
+- `GOVERNMENT-T3-W03-CITIZEN-NONCITIZEN-FACT` — correct the absolute rights, duties, work and public-service comparisons.
+- `GOVERNMENT-T3-W03-REVISION-MISALIGNMENT` — resolve the two constitution-structure questions' placement.
+- `GOVERNMENT-T3-W03-READING-VERIFICATION` — verify the exact editions and page contents.
+- `GOVERNMENT-T3-W03-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 15 stems.
+- `GOVERNMENT-T3-W03-WEEKEND-MCQ-AMBIGUITY` — revise ambiguous MCQs before creating a key.
+
+No lesson, correction, source rule, asset, answer key or marks were created. The source's wording, headings and spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
