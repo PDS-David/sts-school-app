@@ -125,7 +125,6 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  rowLocked: { opacity: 0.6 },
   packageHeading: { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.text, marginBottom: 4 },
   packageHint: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginBottom: Spacing.sm },
   offlineBanner: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#FFF3E0', padding: Spacing.sm, justifyContent: 'center' },
