@@ -13,14 +13,14 @@ test('Home Economics third-term supplements fill scheme topics without replacing
   assert.equal(plan.requires_explicit_owner_approval, true);
   assert.equal(plan.production_write_performed, false);
   assert.deepEqual(plan.topics.map((topic: any) => topic.order_index), [22,23,24,25,26,27,28]);
-  assert.ok(plan.topics.every((topic: any) => topic.source_reference.includes('PENDING OWNER REVIEW')));
+  assert.ok(plan.topics.every((topic: any) => topic.source_reference.includes('PENDING_OWNER_REVIEW')));
 });
 
 test('Home Economics third-term supplementary lessons include age-appropriate safety', () => {
-  const baking = packageData.lessons.find((x: any) => x.id === 'p4-he-t3-supp-w08') as any;
-  const soap = packageData.lessons.find((x: any) => x.id === 'p4-he-t3-supp-w02') as any;
-  const snacks = packageData.lessons.find((x: any) => x.id === 'p4-he-t3-supp-w06') as any;
+  const baking = packageData.lessons.find((x: any) => x.id === 'p4-he-t3-supp-w06') as any;
+  const starch = packageData.lessons.find((x: any) => x.id === 'p4-he-t3-supp-w02') as any;
+  const snacks = packageData.lessons.find((x: any) => x.id === 'p4-he-t3-supp-w08') as any;
   assert.ok(baking.lesson.includes('Only an adult should operate an oven'));
-  assert.ok(soap.lesson.includes('Heating and hot liquids must be handled by an adult'));
+  assert.ok(starch.lesson.includes('Heating and hot liquids must be handled by an adult'));
   assert.ok(snacks.lesson.includes('food allergies'));
 });
