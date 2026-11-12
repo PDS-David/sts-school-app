@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { getStudentSs1Lesson, isStudentDeliverableSs1Lesson, listStudentSs1Lessons, listStudentSs1Assets, readStudentSs1Asset } from '../../backend/src/db/ss1/studentDelivery.js';
+import { getStudentSs1Lesson, isStudentDeliverableSs1Lesson, listStudentSs1Lessons, listStudentSs1Assets, readStudentSs1Asset, studentSs1LessonPreview } from '../../backend/src/db/ss1/studentDelivery.js';
 
 test('SS1 student delivery exposes approved implemented lessons without hiding deferred classroom verification', () => {
   const lessons = listStudentSs1Lessons();
@@ -52,4 +52,19 @@ test('SS1 package assets are delivered only for certified lessons and their own 
     assert.equal(result.asset.sha256, asset.sha256);
     assert.equal(result.bytes.length, asset.bytes);
   }
+});
+
+
+test('locked SS1 lesson previews contain metadata only and never expose teaching content or source details', () => {
+  const lesson = listStudentSs1Lessons()[0];
+  assert.ok(lesson, 'a certified lesson fixture must exist');
+  const preview = studentSs1LessonPreview(lesson, true);
+  assert.equal(preview.locked, true);
+  assert.equal(preview.id, lesson.id);
+  assert.equal(preview.practice_count, lesson.practice.length);
+  assert.equal('body' in preview, false);
+  assert.equal('practice' in preview, false);
+  assert.equal('provenance' in preview, false);
+  assert.equal('objectives' in preview, false);
+  assert.equal('assets' in preview, false);
 });
