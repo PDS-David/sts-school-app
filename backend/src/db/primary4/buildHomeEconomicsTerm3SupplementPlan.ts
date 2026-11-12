@@ -44,7 +44,7 @@ export function buildHomeEconomicsTerm3SupplementPlan() {
         'Material type: researched, newly authored supplement; not part of the supplied sewing source notes.',
         'Scheme basis: Lagos State Government Ministry of Education Unified Scheme of Work for Primary/Basic 4, transcribed by Syllabus.ng.',
         'Scheme reference: https://syllabus.ng/primary4-scheme-of-work/home-economics/',
-        'Content approval: PENDING OWNER REVIEW. Pedagogical verification: NOT YET INDEPENDENTLY VERIFIED.',
+        `Content approval: ${(packageData as any).provenance.content_approval}. Pedagogical verification: ${(packageData as any).provenance.pedagogical_verification}.`,
         '',
         'LEARNING OBJECTIVES',
         ...lesson.objectives.map((item: string, i: number) => `${i + 1}. ${item}`),
