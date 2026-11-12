@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import packageData from '../../backend/src/db/primary4/researched/homeEconomicsTerms1And2.json' with { type: 'json' };
 import { buildHomeEconomicsImportPlan } from '../../backend/src/db/primary4/buildHomeEconomicsImportPlan.ts';
+import { resolvePrimary4SourceDelivery } from '../../backend/src/utils/primary4Delivery.ts';
 
 test('researched Home Economics package has structured lessons for both missing terms', () => {
   const lessons = packageData.lessons as any[];
@@ -25,6 +26,17 @@ test('Home Economics import plan is reproducible, insert-only and requires owner
   assert.equal(new Set(plan.topics.map((topic: any) => topic.stable_key)).size, 17);
   assert.ok(plan.topics.every((topic: any) => topic.class_name === 'Primary 4' && topic.subject_name === 'Home Economics'));
   assert.ok(plan.topics.every((topic: any) => topic.source_reference.includes('PENDING OWNER REVIEW')));
+});
+
+test('researched Home Economics topics remain withheld until approval and verification', () => {
+  const topic = buildHomeEconomicsImportPlan().topics[0] as any;
+  const result = resolvePrimary4SourceDelivery({
+    id: 999, school_code: 'primary', class_name: 'Primary 4',
+    subject_name: topic.subject_name, term_label: topic.term_label,
+    order_index: topic.order_index, title: topic.title, source_reference: topic.source_reference,
+  });
+  assert.equal(result?.kind, 'withheld');
+  if (result?.kind === 'withheld') assert.match(result.reason, /pending owner approval and independent verification/);
 });
 
 test('liquid-soap lesson does not direct pupils to handle caustic soda or strong acids', () => {
