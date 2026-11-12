@@ -53,3 +53,29 @@ test('source-figure queue and manifest account for all 104 tasks and the two app
     assert.equal(reused.sha256, weekThree.sha256);
   }
 });
+
+test('source manifest is a one-to-one audit of package assets and queue tasks', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const queue = JSON.parse(await readFile(queuePath, 'utf8'));
+  const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
+  const packageById = new Map(subject.assets.filter(asset => asset.id.startsWith('TD-ASSET-')).map(asset => [asset.id, asset]));
+  const queueById = new Map(queue.items.filter(item => item.id.startsWith('TD-ASSET-')).map(item => [item.id, item]));
+  assert.equal(manifest.assets.length, 104);
+  assert.equal(packageById.size, 104);
+  assert.equal(queueById.size, 104);
+  for (const row of manifest.assets) {
+    const asset = packageById.get(row.task_id);
+    const task = queueById.get(row.task_id);
+    assert.ok(asset, `package asset missing for ${row.task_id}`);
+    assert.ok(task, `queue task missing for ${row.task_id}`);
+    assert.equal(asset.lesson_id, row.lesson_id, `lesson binding mismatch: ${row.task_id}`);
+    assert.equal(asset.path, row.path, `path mismatch: ${row.task_id}`);
+    assert.equal(asset.sha256, row.sha256, `manifest SHA mismatch: ${row.task_id}`);
+    assert.equal(asset.bytes, row.bytes, `manifest byte count mismatch: ${row.task_id}`);
+    assert.equal(asset.media_type, row.media_type, `media type mismatch: ${row.task_id}`);
+    assert.equal(task.status, 'IMPLEMENTED_TESTING_DEFERRED');
+  }
+  const supportedWeeks = subject.coverage.filter(entry => /^COV-TD-T2-SCH-W(0[1-9]|10)$/.test(entry.id));
+  assert.equal(supportedWeeks.length, 10);
+  assert.ok(supportedWeeks.every(entry => entry.status === 'SUPPORTED' && entry.lesson_ids.length > 0));
+});
