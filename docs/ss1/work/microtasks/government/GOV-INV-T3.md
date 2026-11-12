@@ -1123,3 +1123,88 @@ The source's STV paragraph repeats the List PR explanation and must be corrected
 - `GOVERNMENT-T3-W10-WEEKEND-MCQ-AMBIGUITY` — clarify plurality versus absolute majority before keying Q4.
 
 No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-WK-T3-W11 — Electoral Constituency indexing
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and dated Nigerian constitutional fact-check evidence only; no lesson, answer key, marks, correction, asset or parser rule is authored here.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37 on the original legacy `.doc`.
+- Complete span: lines 1411–1551; UTF-8 span SHA-256: `0d0def3386eb6f0873264fec10183fe334c38e912daa9a9f660053247d6c9637`.
+- Printed label: `WEEK ELEVEN` at line 1411; topic: `ELECTORAL CONSTITUENCY` at line 1412.
+- Scheme entry 11 (preamble lines 36–38) maps to this span by topic and order.
+- Locators refer to Antiword line numbers, not page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are empty rather than inferred from a different extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-W11-SCHEME-CONSTITUENCY | Scheme entry 11 mapping | PARTIAL |
+| COV-GOV-T3-W11-MEANING | Constituency/delimitation meaning, lines 1418–1422 | PARTIAL |
+| COV-GOV-T3-W11-FACTORS | Factors, lines 1423–1448 | PARTIAL |
+| COV-GOV-T3-W11-SINGLE-MEMBER | Single-member type, merits/demerits, lines 1454–1482 | PARTIAL |
+| COV-GOV-T3-W11-MULTI-MEMBER | Multi-member definition, lines 1484–1491 | PARTIAL |
+| COV-GOV-T3-W11-MULTI-MEMBER-MERITS | Multi-member merits/demerits required by outline | UNRESOLVED |
+| COV-GOV-T3-W11-DELIMITATION-PROBLEMS | Problems, lines 1493–1513 | PARTIAL |
+| COV-GOV-T3-W11-GENERAL-REVISION | General revision, lines 1519–1525 | PARTIAL |
+| COV-GOV-T3-W11-READING | Reading pointers, lines 1526–1528 | PARTIAL |
+| COV-GOV-T3-W11-ASSESSMENT-KEYS | All exercise blocks | UNRESOLVED |
+| COV-GOV-T3-W11-WEEKEND-MCQS | Weekend MCQs, lines 1529–1548 | PARTIAL |
+
+Eleven coverage entries and nine linked package open items were added. The multi-member merits/demerits objective is explicitly UNRESOLVED because the body contains no such section.
+
+### Meaning and constitutional delimitation principles — lines 1418–1448
+
+An electoral constituency is a geographic electoral district from which a representative is elected. Delimitation is the drawing and periodic review of those boundaries.
+
+Nigeria's Constitution provides specific rules:
+- **Section 49:** the House of Representatives has 360 members representing constituencies of nearly equal population as far as possible; a constituency cannot cross a State boundary.
+- **Sections 71–73:** INEC divides each State into three senatorial districts and the Federation into 360 Federal constituencies. Districts/constituencies must not cross State boundaries; boundaries should be as contiguous as possible; inhabitants should be as nearly equal to the population quota as reasonably practicable. INEC must review them at intervals of not less than ten years, with earlier review possible in specified circumstances such as a census or constitutional/statutory change.
+- **Sections 112–115:** INEC divides each State into State constituencies, with population equality as nearly as reasonably practicable and periodic review.
+
+Population, contiguity, State-boundary integrity and the constitutionally prescribed number of seats are therefore central legal requirements. Geographic size and administrative convenience can matter in practice, but the Constitution does not set a universal minimum land area for a constituency. Historical, cultural, language, ethnic and religious identity are not commands to segregate communities. The source's claim that minority groups must be given separate constituencies “irrespective of other consideration” is too absolute and cannot override population equality or constitutional non-discrimination (s42). Community interests may be considered only consistently with the governing constitutional rules.
+
+### Single- and multi-member constituencies — lines 1454–1491
+
+A **single-member constituency** returns one representative from the district. This does not mean that a voter can cast only one ballot across every election held at the same time; it means one seat/representative is returned from that constituency. Nigeria's federal and state legislative constituencies are single-member. The UK House of Commons uses single-member constituencies, but this should not be generalized to every UK election.
+
+Local accountability and a direct relationship with a representative are possible advantages. Stable legislative majorities and “greater democracy” are not guaranteed. Gerrymandering and under-representation of smaller parties are recognized risks.
+
+A **multi-member constituency** returns two or more representatives from one district. The source's claim that every voter has two or more votes is not universal: the ballot depends on the electoral formula. List PR may use one party-centred vote; STV generally uses one ranked candidate ballot; block-vote systems may give voters multiple candidate votes. Multi-member districts can improve proportionality under some formulas, but do not guarantee minority representation. The scheme/content outline requires merits and demerits of both constituency types; the source gives no separate multi-member merits/demerits section, so that objective remains UNRESOLVED.
+
+### Problems of delimitation — lines 1493–1513
+
+Reliable population data, mapping/communication access, technical capacity and resistance to gerrymandering are plausible practical challenges. The source generalizes about “many countries” and West Africa without a date or country-specific evidence. Its description of rural settlements is dated and stigmatizing; later teaching should use precise terms such as dispersed rural settlements and difficult terrain. Ethnic and religious differences should not be presented as inherent problems or grounds for segregated constituencies. Constitution sections 42, 72 and 113 provide equality/non-discrimination and population/contiguity principles.
+
+### Assessment and reading-marker audit
+
+- `EVALUATION QUESTIONS`: line 1450; two questions at lines 1451–1452.
+- `EVALUATION QUESTIONS`: line 1515; two questions at lines 1516–1517.
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 1519; five questions at lines 1520–1525. Questions 1–3 concern constituencies/delimitation/gerrymandering. Questions 4–5 ask about delegated legislature and delegated legislation, not taught in this span or listed in scheme entry 11.
+- `READING ASSINGMENT`: exact misspelling at line 1526; `Comprehensive Government` pp. 99–100 and `Essential Government` pp. 110–111 at lines 1527–1528. Editions/publication details are absent and neither book was inspected.
+- `WEEKEND ASSINGMENT`: line 1529; five MCQs at lines 1530–1548. Q1 asks for an exception to the factors list: poverty is not listed, but accessibility may overlap with administrative/geographical convenience, so the options need clarification. Q2 defines gerrymandering. Q3 defines single-member constituency. Q4 identifies a demerit among merits. Q5 defines delimitation.
+- `THEORY`: line 1549; two prompts at lines 1550–1551.
+- Total: **16 exercise stems** (2 + 2 + 5 + 5 + 2). No source answer key, marks or marking criteria are supplied. No answers or marks were invented.
+
+### Dated Nigerian constitutional reference consulted
+
+**PLAC, *Constitution of the Federal Republic of Nigeria, 1999*, updated with the First–Fifth Alterations** (third revision October 2023; reprint September 2024). Used for sections 42, 49, 71–74 and 112–115 on non-discrimination, population equality, contiguity, seat allocation, INEC delimitation and periodic review: https://placng.org/i/wp-content/uploads/2023/11/Constitution-of-the-Federal-Republic-of-Nigeria-1999-Updated.pdf
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W11-CONSTITUENCY-LAW-FACT` — correct delimitation factors against constitutional population, contiguity, State-boundary and non-discrimination requirements.
+- `GOVERNMENT-T3-W11-SINGLE-MEMBER-FACT` — define the type by one seat, not one ballot across concurrent elections; qualify claimed benefits.
+- `GOVERNMENT-T3-W11-MULTI-MEMBER-MERITS-MISSING` — source lacks the required merits/demerits section.
+- `GOVERNMENT-T3-W11-MULTI-MEMBER-FACT` — distinguish ballot methods and avoid guaranteeing minority representation.
+- `GOVERNMENT-T3-W11-PROBLEMS-FACT` — replace broad/stigmatizing claims with precise country-specific language.
+- `GOVERNMENT-T3-W11-REVISION-MISALIGNMENT` — resolve the delegated-legislation questions' placement.
+- `GOVERNMENT-T3-W11-READING-VERIFICATION` — verify exact editions and page contents.
+- `GOVERNMENT-T3-W11-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 16 stems.
+- `GOVERNMENT-T3-W11-WEEKEND-MCQ-AMBIGUITY` — clarify Q1 accessibility versus administrative/geographical convenience before keying.
+
+No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
