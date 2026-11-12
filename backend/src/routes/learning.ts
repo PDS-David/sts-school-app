@@ -789,7 +789,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
       delivery_correction: { id: String(primary4Delivery.topicId ?? req.params.id), status: 'withheld', provenance: primary4Delivery.source },
       note: 'This Primary 4 topic is temporarily unavailable while its curriculum source is checked.' });
   }
-  if (primary4Delivery?.kind === 'matched') {
+  if (primary4Delivery?.kind === 'matched' && primary4Delivery.source === 'archive-correction') {
     topic.source_reference = primary4Delivery.text;
     topic.summary = null;
     topic.generated_assessment_id = null;
