@@ -38,7 +38,7 @@ test('all 27 Literature lessons resolve from their exact term, source file and t
       const result = resolve(topic);
       assert(result, `${source.term}: ${title}`);
       assert.equal(result.kind, 'lesson');
-      assert.equal(result.lessonId, pkg.lessons.find(l => l.term === source.term && l.id.endsWith(`W${String(index + 1).padStart(2,'0')}`))?.id);
+      assert.equal(result.lessonId, pkg.lessons.filter(l => l.term === source.term).sort((a,b) => a.id.localeCompare(b.id))[index]?.id);
       assert.match(result.text, /PRACTICE QUESTIONS AND MARKING GUIDE/);
       assert.match(result.text, /Answer:/);
     }
