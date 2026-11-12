@@ -294,3 +294,17 @@ test('Week Five non-multiple chord angles have a precise fixed-radius alternativ
     assert.equal(item.blocks_delivery, false);
   }
 });
+
+test('Week Ten unequal-circle internal tangent has a complete construction and keyed practice', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W10-TANGENCY');
+  assert.ok(lesson, 'Week Ten tangency lesson missing');
+  const q = lesson.practice.find(item => item.id === 'TD-W10-KEY-Q05');
+  assert.ok(q, 'unequal-circle internal tangent practice missing');
+  assert.equal(q.marks, q.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+  assert.match(lesson.body, /auxiliary circle centred at A with radius r₁\+r₂/);
+  assert.match(lesson.body, /parallel to BT at perpendicular distance r₂ from B/);
+  const source = subject.open_items.find(item => item.id === 'TD-T2-W10-CONSTRUCTION-DETAILS');
+  assert.ok(source, 'source construction discrepancy must remain recorded');
+  assert.equal(source.blocks_delivery, false);
+});
