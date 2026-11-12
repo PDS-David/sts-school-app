@@ -75,3 +75,16 @@ test('Technical Drawing supplemental SVG assets match registered paths, hashes a
     assert.equal(asset.lesson_id, 'SUP-SS1-TECHNICAL-DRAWING-T2-W08-W09-EQUAL-AREA');
   }
 });
+
+test('Technical Drawing Week Ten tangency SVG assets match their registered integrity metadata', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const assets = subject.assets.filter(asset => asset.id.startsWith('TD-SUP-W10-'));
+  assert.equal(assets.length, 2);
+  for (const asset of assets) {
+    const bytes = await readFile(resolve(process.cwd(), asset.path));
+    assert.equal(bytes.byteLength, asset.bytes, `asset byte count mismatch: ${asset.id}`);
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), asset.sha256, `asset hash mismatch: ${asset.id}`);
+    assert.equal(asset.media_type, 'image/svg+xml');
+    assert.equal(asset.lesson_id, 'SUP-SS1-TECHNICAL-DRAWING-T2-W10-TANGENCY');
+  }
+});
