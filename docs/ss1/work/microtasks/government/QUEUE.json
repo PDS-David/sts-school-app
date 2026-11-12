@@ -39,8 +39,8 @@
     "LESSON": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 8,
-    "PENDING": 43,
+    "IMPLEMENTED_TESTING_DEFERRED": 9,
+    "PENDING": 42,
     "BLOCKED": 1
   },
   "items": [
@@ -376,8 +376,8 @@
         "GOV-INV-T1",
         "GOV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No marker rule or coverage exists: government.json has the three sources and their alias rules only. Inventory evidence: line 42 `11.<TAB><TAB>Revision/examination` is the only occurrence of Revision or examination in the document; the body has no WEEK ELEVEN label and teaching ends at Week Ten (line 864). Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12 on agent/government after GOV-PRE-T1. Added source rule SS1-SRC-40ce7dcaf672-R002 (classify_marker, kind SCHEME_ONLY, match_mode WHOLE_LINE) for the exact scheme line 42 anchor '11.\\t\\tRevision/examination', and MARKER coverage COV-GOV-T1-REVISION-EXAMINATION targeting that rule. GOV-INV-T1 confirms the anchor occurs once in the scheme and nowhere in the body; the body ends after Week Ten at line 864, with no Week Eleven, revision content or examination paper. No lesson or teaching week created. No tests/typecheck/importer/compiler run; testing deferred by owner.",
       "completion_condition": "The row is disposed as a scheme-only revision/examination marker with its anchor and single occurrence recorded; no eleventh week, lesson, examination paper or coverage of teaching is fabricated. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
     },
     {
@@ -1937,7 +1937,6 @@
   },
   "next_runnable": [
     "GOV-TEST-PACKAGE",
-    "GOV-REV-T1",
     "GOV-MARK-T1",
     "GOV-WK-T1-W02",
     "GOV-WK-T1-W03",

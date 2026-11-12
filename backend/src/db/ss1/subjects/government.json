@@ -86,6 +86,19 @@
       "observed_subject": "SUBJECT: GOVERNMENT                                                                             CLASS: SS 1",
       "canonical_subject": "Government",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-40ce7dcaf672-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "source_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a",
+      "anchor": "11.\t\tRevision/examination",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody(), scheme line 42; scheme block lines 21–42 SHA-256 7282181eb168ae114a2311b961108afe4a7111d2211eabe8e0139a97d38bb0a8",
+        "explanation": "The exact row occurs once in the scheme and nowhere in the teaching body. The body ends at Week Ten and has no WEEK ELEVEN label, revision content or examination paper. This is a scheme-only marker, not a teaching week."
+      },
+      "kind": "SCHEME_ONLY",
+      "match_mode": "WHOLE_LINE"
     }
   ],
   "lessons": [],
@@ -517,6 +530,22 @@
         {
           "locator": "getBody() of word-extractor 1.0.4; source SHA-256 50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a; scheme block lines 21–42 SHA-256 7282181eb168ae114a2311b961108afe4a7111d2211eabe8e0139a97d38bb0a8; scheme row 10, line 41; mapped to GOV-WK-T1-W10",
           "explanation": "The preamble identifies this objective in the scheme but does not establish that the teaching body covers it. GOV-WK-T1-W10 must inspect the complete corresponding teaching span and assess this objective independently. Do not infer support from scheme wording or another objective in the same row."
+        }
+      ]
+    },
+    {
+      "id": "COV-GOV-T1-REVISION-EXAMINATION",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "objective": "Scheme-only row 11: Revision/examination. This is a planning marker, not a taught objective or Week Eleven.",
+      "objective_locator": "getBody() of word-extractor 1.0.4; source SHA-256 50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a; scheme line 42; scheme block lines 21–42 SHA-256 7282181eb168ae114a2311b961108afe4a7111d2211eabe8e0139a97d38bb0a8; exact anchor 11.<TAB><TAB>Revision/examination",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-40ce7dcaf672-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "getBody() line 42; exact anchor occurs once in the source; GOV-INV-T1 body inventory ends at Week Ten line 864",
+          "explanation": "The marker appears only in the scheme. There is no WEEK ELEVEN label, revision teaching span or examination paper in the body. The SCHEME_ONLY rule is its coverage target; no lesson ID or teaching week is fabricated."
         }
       ]
     }
