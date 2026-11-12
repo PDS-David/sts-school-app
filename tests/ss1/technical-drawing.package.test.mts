@@ -316,3 +316,17 @@ test('Week Ten unequal-circle internal tangent has a complete construction and k
   assert.ok(source, 'source construction discrepancy must remain recorded');
   assert.equal(source.blocks_delivery, false);
 });
+
+test('Week Eight–Nine has fully dimensioned original pentagon replacements', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const lesson = subject.lessons.find(item => item.id === 'SUP-SS1-TECHNICAL-DRAWING-T2-W08-W09-EQUAL-AREA');
+  assert.ok(lesson, 'Week Eight–Nine lesson missing');
+  for (const id of ['TD-W08-W09-Q07', 'TD-W08-W09-Q08']) {
+    const q = lesson.practice.find(item => item.id === id);
+    assert.ok(q, `original pentagon replacement missing: ${id}`);
+    assert.equal(q.marks, q.marking.reduce((sum, criterion) => sum + criterion.marks, 0));
+  }
+  assert.match(lesson.body, /coordinate-defined irregular pentagon/);
+  assert.match(lesson.body, /area = \|13,000−2,000\|\/2 = 5,500 mm²/);
+  assert.match(lesson.body, /AE=√\(70²−55²\)/);
+});
