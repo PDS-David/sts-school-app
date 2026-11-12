@@ -1336,8 +1336,8 @@
         "Use change of base and standard form to evaluate common logarithms.",
         "Use logarithm and antilogarithm tables for products, quotients, powers and roots, including numbers below one."
       ],
-      "body": "This lesson develops logarithms from indices and applies them to equations, standard form and numerical calculation. Common logarithms have base 10. Show the method; use a calculator only to check arithmetic.\n\n1. MEANING AND CONDITIONS\nIf a^x=N, then log_a(N)=x. For a real logarithm, a>0, a≠1 and N>0. Thus 2^5=32 means log_2(32)=5; 10^-3=0.001 means log(0.001)=-3. A logarithm is an exponent, not a multiplication sign.\n\n2. LAWS OF LOGARITHMS\nFor M,N>0 and valid base a:\nlog_a(MN)=log_a(M)+log_a(N).\nlog_a(M/N)=log_a(M)-log_a(N).\nlog_a(M^k)=k log_a(M), where the expressions are defined.\nlog_a(a)=1 and log_a(1)=0.\nThere is no sum law: log(M+N) is not log(M)+log(N).\n\nExample 1: log_3(27)+2log_3(9)-log_3(54)\n=log_3(27×81/54)=log_3(81/2)=4-log_3(2).\nExample 2: log_3(13.5)-log_3(10.5)=log_3(9/7)=2-log_3(7).\nExample 3: if log(2)=0.3010 and log(3)=0.4771, then 72=2^3×3^2, so log(72)=3(0.3010)+2(0.4771)=1.8572.\n\n3. LOGARITHMIC EQUATIONS\nConvert to index form, solve, then check every candidate in the original logarithm's argument.\nExample 4: log_10(x^2-4x+7)=2.\nThe argument is (x-2)^2+3, always positive. Hence x^2-4x+7=100; x^2-4x-93=0; x=2±√97. Both roots are valid because the original argument equals 100.\nExample 5: log_8(x^2-8x+18)=1/3.\nThe argument equals 8^(1/3)=2. Thus x^2-8x+16=0, (x-4)^2=0 and x=4. The original argument is 2>0, so the solution is valid.\n\n4. CHANGE OF BASE\nFor valid bases a,c: log_a(N)=log_c(N)/log_c(a). In particular, log_2(7)=log(7)/log(2). Using log(7)≈0.8451 and log(2)≈0.3010 gives log_2(7)≈2.8070.\nAlso log_a(b)×log_b(a)=1.\n\n5. STANDARD FORM AND COMMON LOGARITHMS\nStandard form is A×10^n, where 1≤A<10 and n is an integer.\n7853=7.853×10^3; 0.00387=3.87×10^-3; 0.0000104=1.04×10^-5.\nIf N=A×10^n, then log(N)=log(A)+n. The integer part is the characteristic and the decimal part is the mantissa.\nExample 6: 628000=6.28×10^5, so log(628000)=log(6.28)+5≈0.7980+5=5.7980.\nExample 7: 0.00472=4.72×10^-3, so log(0.00472)≈0.6749-3=-2.3251. Bar notation writes this as 3̅.6749, meaning -3+0.6749, not -(3.6749).\n\n6. LOG AND ANTILOG TABLES\nA four-figure common-log table gives an approximate mantissa for 1.000 to 9.999. Find the characteristic from the power of ten. For an antilogarithm, use the mantissa in the antilog table, then place the decimal point using the characteristic.\nFor multiplication, add logarithms; for division, subtract; for powers, multiply the logarithm by the power; for roots, divide by the root index. Take the antilogarithm last.\nExample 8: log(462.7)≈2.6653 and log(29.3)≈1.4669. Their sum is 4.1322, so 462.7×29.3≈antilog(4.1322)≈13,560.\nExample 9: log((48.63×8.53)/15.39)=1.6869+0.9309-1.1872=1.4306, so the result is approximately 26.95.\nExample 10: log(cube root of 125)=log(125)/3≈2.0969/3≈0.6990; antilog(0.6990)≈5.\n\n7. ERRORS TO AVOID\nDo not split a logarithm of a sum. Do not interchange multiplication and division. Do not omit the negative characteristic for numbers below one. Do not treat rounded table results as exact. Check the original domain after solving logarithmic equations. Keep the base visible unless it is 10.",
-      "body_sha256": "374ae85e3a2643777a536a31b4878acf3b5d97f6d838f32c5db1cbe15d33248b",
+      "body": "This lesson develops logarithms from indices and applies them to equations, standard form and numerical calculation. Common logarithms have base 10. Show the method; use a calculator only to check arithmetic.\n\n1. MEANING AND CONDITIONS\nIf a^x=N, then log_a(N)=x. For a real logarithm, a>0, a≠1 and N>0. Thus 2^5=32 means log_2(32)=5; 10^-3=0.001 means log(0.001)=-3. A logarithm is an exponent, not a multiplication sign.\n\n2. LAWS OF LOGARITHMS\nFor M,N>0 and valid base a:\nlog_a(MN)=log_a(M)+log_a(N).\nlog_a(M/N)=log_a(M)-log_a(N).\nlog_a(M^k)=k log_a(M), where the expressions are defined.\nlog_a(a)=1 and log_a(1)=0.\nThere is no sum law: log(M+N) is not log(M)+log(N).\n\nExample 1: log_3(27)+2log_3(9)-log_3(54)\n=log_3(27×81/54)=log_3(81/2)=4-log_3(2).\nExample 2: log_3(13.5)-log_3(10.5)=log_3(9/7)=2-log_3(7).\nExample 3: if log(2)=0.3010 and log(3)=0.4771, then 72=2^3×3^2, so log(72)=3(0.3010)+2(0.4771)=1.8572.\n\n3. LOGARITHMIC EQUATIONS\nConvert to index form, solve, then check every candidate in the original logarithm's argument.\nExample 4: log_10(x^2-4x+7)=2.\nThe argument is (x-2)^2+3, always positive. Hence x^2-4x+7=100; x^2-4x-93=0; x=2±√97. Both roots are valid because the original argument equals 100.\nExample 5: log_8(x^2-8x+18)=1/3.\nThe argument equals 8^(1/3)=2. Thus x^2-8x+16=0, (x-4)^2=0 and x=4. The original argument is 2>0, so the solution is valid.\n\n4. CHANGE OF BASE\nFor valid bases a,c: log_a(N)=log_c(N)/log_c(a). In particular, log_2(7)=log(7)/log(2). Using log(7)≈0.8451 and log(2)≈0.3010 gives log_2(7)≈2.8070.\nAlso log_a(b)×log_b(a)=1.\n\n5. STANDARD FORM AND COMMON LOGARITHMS\nStandard form is A×10^n, where 1≤A<10 and n is an integer.\n7853=7.853×10^3; 0.00387=3.87×10^-3; 0.0000104=1.04×10^-5.\nIf N=A×10^n, then log(N)=log(A)+n. The integer part is the characteristic and the decimal part is the mantissa.\nExample 6: 628000=6.28×10^5, so log(628000)=log(6.28)+5≈0.7980+5=5.7980.\nExample 7: 0.00472=4.72×10^-3, so log(0.00472)≈0.6749-3=-2.3251. Bar notation writes this as 3̅.6749, meaning -3+0.6749, not -(3.6749).\n\n6. LOG AND ANTILOG TABLES\nA four-figure common-log table gives an approximate mantissa for 1.000 to 9.999. Find the characteristic from the power of ten. For an antilogarithm, use the mantissa in the antilog table, then place the decimal point using the characteristic.\nFor multiplication, add logarithms; for division, subtract; for powers, multiply the logarithm by the power; for roots, divide by the root index. Take the antilogarithm last.\nExample 8: log(462.7)≈2.6653 and log(29.3)≈1.4669. Their sum is 4.1322, so 462.7×29.3≈antilog(4.1322)≈13,560.\nExample 9: log((48.63×8.53)/15.39)=1.6869+0.9309-1.1872=1.4306, so the result is approximately 26.95.\nExample 10: log(cube root of 125)=log(125)/3≈2.0969/3≈0.6990; antilog(0.6990)≈5.\n\n7. NUMERICAL WORK WITH NUMBERS LESS THAN ONE\nThe same logarithm laws work for positive decimals. Their logarithms are negative, so keep the signs when adding or subtracting.\nExample 11 (multiplication): evaluate 0.25 × 0.04.\nlog(0.25) ≈ -0.6021 and log(0.04) ≈ -1.3979.\nlog(product) = -0.6021 + (-1.3979) = -2.0000.\nAntilog(-2.0000) = 0.01.\nExample 12 (division): evaluate 0.08 ÷ 0.004.\nlog(0.08) ≈ -1.0969 and log(0.004) ≈ -2.3979.\nlog(quotient) = -1.0969 - (-2.3979) = 1.3010.\nAntilog(1.3010) ≈ 20.\nExample 13 (power): evaluate (0.2)^3.\nlog((0.2)^3) = 3log(0.2) ≈ 3(-0.6990) = -2.0970.\nAntilog(-2.0970) ≈ 0.008.\nExample 14 (root): evaluate the square root of 0.0004.\nlog(square root of 0.0004) = log(0.0004)/2 ≈ -3.3979/2 = -1.6990.\nAntilog(-1.6990) ≈ 0.0200.\n\n8. ERRORS TO AVOID\nDo not split a logarithm of a sum. Do not interchange multiplication and division. Do not omit the negative characteristic for numbers below one. Do not treat rounded table results as exact. Check the original domain after solving logarithmic equations. Keep the base visible unless it is 10.",
+      "body_sha256": "3dfaa976c35ed550eee059589f7c5b8e277aeadb3a80c12af0411eb6f85cb06f",
       "practice": [
         {
           "id": "Q1",
@@ -1535,6 +1535,54 @@
             },
             {
               "criterion": "Antilog",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "Use logarithms to evaluate (a) 0.25×0.04 and (b) 0.08÷0.004.",
+          "answer": "(a) log(product)=-0.6021+(-1.3979)=-2, so product=0.01. (b) log(quotient)=-1.0969-(-2.3979)=1.3010, so quotient≈20.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Correct log sum for product",
+              "marks": 1
+            },
+            {
+              "criterion": "Product 0.01",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct log difference for quotient",
+              "marks": 1
+            },
+            {
+              "criterion": "Quotient 20",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "Use logarithms to evaluate (a) (0.2)^3 and (b) the square root of 0.0004.",
+          "answer": "(a) 3log(0.2)≈-2.0970; antilog≈0.008. (b) log(0.0004)/2≈-1.6990; antilog≈0.0200.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Multiplies log by 3",
+              "marks": 1
+            },
+            {
+              "criterion": "Power 0.008",
+              "marks": 1
+            },
+            {
+              "criterion": "Divides log by 2",
+              "marks": 1
+            },
+            {
+              "criterion": "Root 0.0200",
               "marks": 1
             }
           ]
