@@ -930,3 +930,102 @@ W07's body outline (lines 717–721) named party-system and manifesto objectives
 - `GOVERNMENT-T3-W08-WEEKEND-MCQ-AMBIGUITY` — correct the undefined/missing options and overbroad claims before keying.
 
 No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-WK-T3-W09 — Franchise and Suffrage indexing
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and dated Nigerian electoral/constitutional fact-check evidence only; no lesson, answer key, marks, correction, asset or parser rule is authored here.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37 on the original legacy `.doc`.
+- Complete span: lines 1036–1203; UTF-8 span SHA-256: `8be9514882ea201da7509c5da287d9e62331078e321ed445589502ddd9ed19b4`.
+- Printed label: `WEEK NINE` at line 1036; topic: `FRANCHISE` at line 1037.
+- Scheme entry 9 (preamble lines 30–33) maps to this span by topic and order.
+- Locators refer to Antiword line numbers, not page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are empty rather than inferred from a different extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-W09-SCHEME-FRANCHISE | Scheme entry 9 mapping | PARTIAL |
+| COV-GOV-T3-W09-MEANING | Meaning/electorate, lines 1043–1053 | PARTIAL |
+| COV-GOV-T3-W09-RESTRICTED | Restricted franchise, lines 1055–1080 | PARTIAL |
+| COV-GOV-T3-W09-UNIVERSAL | Universal adult suffrage, lines 1082–1107 | PARTIAL |
+| COV-GOV-T3-W09-TYPES | Types of suffrage, lines 1109–1122 | PARTIAL |
+| COV-GOV-T3-W09-CANDIDATE-ELIGIBILITY | Candidate eligibility, lines 1124–1153 | PARTIAL |
+| COV-GOV-T3-W09-GENERAL-REVISION | General revision, lines 1155–1162 | PARTIAL |
+| COV-GOV-T3-W09-READING | Reading pointers, lines 1164–1166 | PARTIAL |
+| COV-GOV-T3-W09-ASSESSMENT-KEYS | All exercise blocks | UNRESOLVED |
+| COV-GOV-T3-W09-WEEKEND-MCQS | Weekend MCQs, lines 1168–1184 | PARTIAL |
+
+Ten coverage entries and eight linked package open items were added.
+
+### Meaning, electorate and current voter qualifications — lines 1043–1053
+
+Franchise/suffrage is primarily the right to vote. The source's phrase “vote and be voted for” combines voter franchise with a separate question: eligibility to stand for office. The electorate is the body of people qualified and registered to vote.
+
+For current Nigerian elections, the Electoral Act 2022 section 12(1) requires a voter to be a Nigerian citizen, at least 18, ordinarily resident in/working in/originating from the Local Government Area, Area Council or Ward covered by the registration centre, personally present for registration, and not subject to a legal incapacity to vote. Constitution sections 77(2) and 117(2) also set the constitutional citizen/age/residence basis for legislative elections. Universal adult suffrage therefore does not mean voting without any qualification.
+
+### Restricted and universal franchise — lines 1055–1107
+
+The source's definition of restricted franchise as confining voting rights to a selected class is broadly sound. Property, tax, sex and racial restrictions are historical forms of exclusion; apartheid South Africa is a historical example, not a current description of South African voting law.
+
+The claimed merits of restricted franchise—better-informed voters, mature elections and reduced violence—are unsupported normative arguments and should not be taught as established facts. They can legitimize exclusion from political participation.
+
+Universal adult suffrage is a principle of broad adult participation, but it remains subject to lawful voter-registration qualifications. The source's claims that illiterate voters vote blindly, universal suffrage causes violence, or it produces unqualified representatives are unsupported and discriminatory generalizations. Literacy is not a general voter-registration requirement. The source's blanket exclusion of criminals is also overbroad: INEC's 2025 report summarizes court decisions recognizing inmates' voting rights, subject to legal-incapacity and implementation issues. Distinguish a lawful sentence of imprisonment from automatic loss of voting eligibility.
+
+### Types of suffrage — lines 1109–1122
+
+Adult, male, taxpayer and property-owner suffrage are useful historical/analytical categories. Male, taxpayer and property-owner suffrage are restrictive forms and should not be presented as current Nigerian rules. Adult suffrage is universal in principle but still operates with the current citizenship, age, registration and legal-capacity requirements.
+
+### Candidate eligibility — lines 1124–1153
+
+The source's list mixes different offices and different legal categories. Current Nigerian qualifications are office-specific:
+- **President:** citizen by birth, at least 35 years old, member of and sponsored by a political party, and educated to at least School Certificate level or equivalent (Constitution s131).
+- **Governor:** similar requirements, including citizen by birth and at least 35 years old (s177).
+- **Senate/House of Representatives:** citizenship, different age thresholds (35 for Senate and 25 for House of Representatives), School Certificate or equivalent, and party membership/sponsorship (s65).
+- **State House of Assembly:** citizenship, at least 25 years old, School Certificate or equivalent and party membership/sponsorship (s106).
+
+The remaining claims need qualification:
+- **Residence:** voter registration has local residence/work/origin conditions; this is not a general candidate qualification for all elective offices.
+- **Tax payment:** not a general constitutional qualification for every candidate.
+- **Election deposit:** not a universal constitutional personal qualification; any party nomination fee or procedure must be assessed under the applicable Electoral Act and party rules.
+- **Criminal record:** “no criminal record” is too broad. The Constitution has specific, office-dependent disqualifications, including certain sentences/convictions and Code of Conduct findings within specified periods.
+- **Mental capacity:** the constitutional language concerns a person adjudged or declared to be of unsound mind under law; it is not a blanket exclusion based on a diagnosis or assumption.
+- **Bankruptcy:** undischarged bankruptcy is a candidate disqualification for specified offices; it is not a general voter disqualification.
+- **Citizenship/education/nomination:** these are relevant, but exact requirements differ by office. A nomination paper is a procedural step, not the same as a personal eligibility qualification.
+- **“Banned politicians”:** this is not a general current eligibility category. Apply the relevant constitutional disqualification provisions (ss66, 107, 137 and 182) rather than a vague historical label.
+
+### Assessment and reading-marker audit
+
+- `EVALUATION QUESTIONS`: line 1065; two questions at lines 1066–1067.
+- `EVALUATION QUESTIONS`: line 1089; two questions at lines 1090–1091.
+- `EVALUATION QUESTIONS`: line 1137; two questions at lines 1138–1139.
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 1155; five questions at lines 1156–1162. Questions 1–3 relate to franchise/suffrage. Questions 4–5 ask about representative government, not taught in this span or listed in scheme entry 9.
+- `READING ASSIGNMENT`: line 1164; `Essential Government` pp. 104–106 and `Comprehensive Government` pp. 85–87 at lines 1165–1166. Editions/publication details are absent and neither book was inspected.
+- `WEEKEND ASSINGMENT`: line 1168; five MCQs at lines 1169–1184. Q1 combines the right to vote with candidacy. Q2 and Q3 are broadly consistent with the source's definition, subject to current registration qualifications. Q4's “registration” option is ambiguous because voter registration and candidate/party nomination are different processes. Q5 is a normative claim about democracy, not a legal rule.
+- `THEORY`: line 1186; two prompts at lines 1187–1188.
+- Total: **18 exercise stems** (2 + 2 + 2 + 5 + 5 + 2). No source answer key, marks or marking criteria are supplied. No answers or marks were invented.
+
+### Dated Nigerian legal references consulted
+
+1. **PLAC, *Constitution of the Federal Republic of Nigeria, 1999*, updated with the First–Fifth Alterations** (third revision October 2023; reprint September 2024). Used for voter franchise (ss77(2), 117(2)), candidate qualifications (ss65, 66, 106, 107, 131, 137, 177, 182): https://placng.org/i/wp-content/uploads/2023/11/Constitution-of-the-Federal-Republic-of-Nigeria-1999-Updated.pdf
+2. **Federal Republic of Nigeria, *Electoral Act, 2022*, Act No. 13, Official Gazette No. 61 (29 March 2022)**, section 12(1), qualification for voter registration: https://placng.org/i/wp-content/uploads/2022/02/Electoral-Act-2022.pdf
+3. **Independent National Electoral Commission, *Election Management in Nigeria: 2015–2025*** (first published July 2025), section 9.4.2, “Voting Rights for Inmates in Correctional Centres”, summarizing the 2014 Federal High Court decision, the affirming Court of Appeal decision and implementation issues: https://wp1.inecnigeria.org/wp-content/uploads/Activity-Report-Election-Management-Body.pdf
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W09-FRANCHISE-SCOPE-FACT` — distinguish the right to vote from candidacy eligibility.
+- `GOVERNMENT-T3-W09-RESTRICTED-FRANCHISE-FACT` — label restrictive suffrage as historical and separate advocacy claims from evidence.
+- `GOVERNMENT-T3-W09-UNIVERSAL-FRANCHISE-FACT` — correct current voter qualifications and remove stereotypes/blanket criminal exclusions.
+- `GOVERNMENT-T3-W09-CANDIDATE-ELIGIBILITY-FACT` — replace the generic list with office-specific qualifications and disqualifications.
+- `GOVERNMENT-T3-W09-REVISION-MISALIGNMENT` — resolve the representative-government questions' placement.
+- `GOVERNMENT-T3-W09-READING-VERIFICATION` — verify exact editions and page contents.
+- `GOVERNMENT-T3-W09-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 18 stems.
+- `GOVERNMENT-T3-W09-WEEKEND-MCQ-AMBIGUITY` — correct the franchise/candidacy and registration/nomination ambiguities before keying.
+
+No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
