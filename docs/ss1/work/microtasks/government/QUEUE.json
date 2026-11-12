@@ -36,10 +36,10 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 32,
     "VISUAL_DISPOSITION": 2,
-    "LESSON": 5
+    "LESSON": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 13,
+    "IMPLEMENTED_TESTING_DEFERRED": 14,
     "PENDING": 42,
     "BLOCKED": 1
   },
@@ -598,8 +598,8 @@
         "GOV-INV-T1",
         "GOV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: government.json has the three sources and their alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 378-460, block SHA-256 df5ed63115006e7219e10b98a3a5be0710360ba8a104d7956e51ea09d86639d3; `WEEK FIVE` 378, `TOPIC: BASIC CONCEPTS OF GOVERNMENT` 379, `CONTENT` 380; sections `COMMUNALISM` 384, `Features of Communalism` 388, `FEUDALISM` 403, `Features of Feudalism` 408, `Merits of Feudalism` 418, `Demerits of Feudalism` 425; markers 399, 432, 436, 442, 446, 458. Findings recorded by GOV-INV-T1 that this item must settle: Verify the historical framing of feudalism at 404-407 (Western Europe, the Middle Ages, fief and vassal) and the claim that industrialisation ended it, against dated historical authorities; keep communalism described as a model, not as a present legal order. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12 on agent/government. Indexed Week Five from verified source SS1-SRC-40ce7dcaf672 (SHA-256 50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a), getBody lines 378–460, block SHA-256 df5ed63115006e7219e10b98a3a5be0710360ba8a104d7956e51ea09d86639d3. Added nine objective-level entries for communalism, its features, feudalism, feudal features, serf/vassal distinction, merits, demerits, reading and assessment. All content entries PARTIAL; assessment keys UNRESOLVED. Checked feudalism's historical scope and contested terminology against Oxford Bibliographies (2012) and Oxford Handbook (2012); serfdom's decline against Mark Bailey (2014) and Jason W. Moore (2002); and communal tenure diversity against FAO (2000) and University of Leeds (2001). Added eight precise open items and lesson task GOV-LES-T1-W05-CORRECTED-WEEK. No lesson content or source rule written. No tests/typecheck/importer/compiler run; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no week is merged into Civic Education. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
     },
     {
@@ -2077,6 +2077,45 @@
       "status": "PENDING",
       "implementation_reference": "Created by GOV-WK-T1-W04 on 2026-11-12. Required to correct legitimacy, Bodin/sovereignty, de facto/de jure, democracy's normative claim and minority-rights qualifications, and supply keyed practice for all 15 exercises. Not authored yet.",
       "completion_condition": "A visibly original supplement teaches all objectives with a recomputed body_sha256, dated/citable provenance, complete answer keys and criterion-level marking that sums exactly; content approval stays PENDING and verification DEFERRED; delivery_corrections binds the exact original source row ID/body hash to the replacement; unsupported reading pages are not copied; no source bytes, schema or shared code are edited."
+    },
+    {
+      "id": "GOV-LES-T1-W05-CORRECTED-WEEK",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 5, getBody lines 378–460; communalism and feudalism objectives",
+      "objective": "Author one visibly original supplement lesson for Week Five. Present communalism as an idealized political/economic model, not a uniform present legal order; explain that actual land-tenure arrangements vary and can combine communal, individual and other rights. Present medieval Western European feudalism as a contested historical category, accurately explain fief and vassalage, and distinguish serfs/villeins from vassals. Correct the claim that industrialisation alone ended feudalism using dated, region-specific history; present claims about capitalism, order, protection, war and insecurity as attributed interpretations, not universal facts. Include original practice with complete answers and criterion-level marks that sum exactly, accounting for all 15 source exercises. Do not copy unavailable textbook pages. Add dated, citable provenance. Keep content approval PENDING and verification DEFERRED.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T1.md",
+        "docs/ss1/work/microtasks/government/GOV-WK-T1-W05.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-LES-T1-W05-CORRECTED-WEEK.md"
+      ],
+      "depends_on": [
+        "GOV-SRC-T1",
+        "GOV-WK-T1-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GOV-WK-T1-W05 on 2026-11-12. Required to correct communalism as a model, distinguish serfs from vassals, qualify the historical scope of feudalism and replace the single-cause industrialisation claim, and supply keyed practice for all 15 exercises. Not authored yet.",
+      "completion_condition": "A visibly original supplement teaches all objectives with a recomputed body_sha256, dated/citable provenance, complete answer keys and criterion-level marking that sums exactly; content approval stays PENDING and verification DEFERRED; delivery_corrections binds the exact original source row ID/body hash to the replacement; unsupported reading pages are not copied; no source bytes, schema or shared code are edited."
     }
   ],
   "review": {
@@ -2093,7 +2132,6 @@
   },
   "next_runnable": [
     "GOV-TEST-PACKAGE",
-    "GOV-WK-T1-W05",
     "GOV-WK-T1-W06",
     "GOV-WK-T1-W07",
     "GOV-WK-T1-W08",
@@ -2133,6 +2171,7 @@
     "GOV-LES-T1-W02-CORRECTED-WEEK",
     "GOV-LES-T1-W03-CORRECTED-WEEK",
     "GOV-LES-T1-W04-CORRECTED-WEEK",
-    "GOV-LES-T1-W04-CORRECTED-WEEK"
+    "GOV-LES-T1-W04-CORRECTED-WEEK",
+    "GOV-LES-T1-W05-CORRECTED-WEEK"
   ]
 }
