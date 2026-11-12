@@ -5,8 +5,10 @@ import homeEconomics12 from './researched/homeEconomicsTerms1And2.json' with { t
 import homeEconomics3 from './researched/homeEconomicsTerm3Supplements.json' with { type: 'json' };
 import basicScience3 from './researched/basicScienceTerm3.json' with { type: 'json' };
 import basicTechnology12 from './researched/basicTechnologyTerms1And2.json' with { type: 'json' };
+import { assertPrimary4SupplementCorpus } from './primary4Supplements.js';
 
 export function buildPrimary4CoverageReport() {
+  assertPrimary4SupplementCorpus();
   const subjects = (sourceManifest as any).expected_subjects as string[];
   const terms = (sourceManifest as any).expected_terms as string[];
   const records = (sourceManifest as any).records as any[];
