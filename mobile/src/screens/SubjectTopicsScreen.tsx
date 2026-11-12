@@ -45,7 +45,7 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
   // entering a PIN, so only show that shortcut when it would actually help.
   // Task 05: the server marks the sequence-first topic explicitly (placed supplements make order_index
   // comparison unsafe). Older servers omit the field, so fall back to the previous order_index rule.
-  const anyPinLocked = topics.some((t) => t.locked && (t.is_sequence_first !== undefined
+  const anyPinLocked = packageLessons.some((lesson) => lesson.locked) || topics.some((t) => t.locked && (t.is_sequence_first !== undefined
     ? t.is_sequence_first === true
     : t.order_index === Math.min(
       ...topics.filter((x) => x.term_label === t.term_label).map((x) => x.order_index ?? Infinity),
@@ -79,14 +79,15 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
             <Text style={styles.packageHeading}>Additional verified lessons</Text>
             <Text style={styles.packageHint}>Individually approved, verified and cleared for learning.</Text>
             {packageLessons.map((lesson) => (
-              <TouchableOpacity key={lesson.id} style={styles.row} activeOpacity={0.8}
+              <TouchableOpacity key={lesson.id} style={[styles.row, lesson.locked && styles.rowLocked]} activeOpacity={lesson.locked ? 1 : 0.8}
+                disabled={!!lesson.locked}
                 onPress={() => navigation.navigate('Ss1PackageLesson', { lesson })}>
-                <View style={styles.rowIcon}><Ionicons name="book-outline" size={20} color={Colors.primary} /></View>
+                <View style={styles.rowIcon}><Ionicons name={lesson.locked ? 'lock-closed' : 'book-outline'} size={20} color={lesson.locked ? Colors.textSub : Colors.primary} /></View>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.rowTitle}>{lesson.title}</Text>
                   <Text style={styles.rowSub}>{lesson.term} · {lesson.practice?.length ?? 0} practice questions</Text>
                 </View>
-                <Ionicons name="chevron-forward" size={18} color={Colors.textSub} />
+                <Ionicons name={lesson.locked ? 'lock-closed' : 'chevron-forward'} size={18} color={Colors.textSub} />
               </TouchableOpacity>
             ))}
           </View>
@@ -124,6 +125,7 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
 }
 
 const styles = StyleSheet.create({
+  rowLocked: { opacity: 0.6 },
   packageHeading: { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.text, marginBottom: 4 },
   packageHint: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginBottom: Spacing.sm },
   offlineBanner: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#FFF3E0', padding: Spacing.sm, justifyContent: 'center' },
