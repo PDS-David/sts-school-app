@@ -39,6 +39,7 @@ test('researched Home Economics topics remain withheld until approval and verifi
     order_index: topic.order_index, title: topic.title, source_reference: topic.source_reference,
   });
   assert.equal(result?.kind, 'withheld');
+  assert.equal(result?.source, 'researched-package');
   if (result?.kind === 'withheld') assert.match(result.reason, /pending owner approval and independent verification/);
 });
 
