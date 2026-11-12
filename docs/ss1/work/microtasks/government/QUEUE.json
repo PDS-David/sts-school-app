@@ -36,10 +36,10 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 32,
     "VISUAL_DISPOSITION": 2,
-    "LESSON": 18
+    "LESSON": 19
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 22,
+    "IMPLEMENTED_TESTING_DEFERRED": 23,
     "PENDING": 46,
     "BLOCKED": 1
   },
@@ -1081,8 +1081,8 @@
         "GOV-INV-T2",
         "GOV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12. Verified source member SHA-256 bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782 in archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e. Inspected Week Three body children 149–176; C14N SHA-256 0606f62b70ff5309010f52586899b06c38c949cf46f7eb97f9374f58d6c6e177. Inspected the comparison table at child 162: six rows, three cells per row, first cell blank; table C14N hash b63ad595c7d4d7a9a3b0a0b9b8f17c8e. Added seven objective-level entries for positive/negative impacts, British/French comparison, table content, governor functions, evaluation marker and practice pointers. Updated both Week Three scheme entries to PARTIAL; separate table visual disposition remains pending GOV-VIS-T2. Recorded no question stems under EVALUATION. Added eight precise open items and lesson task GOV-LES-T2-W03-CORRECTED-WEEK. Fact-checked University College Ibadan against official history, British/French administration against Crowder (1964) and Oxford research, and precolonial trade networks against Cambridge/Springer scholarship. No source rule, lesson body, answer key, mark or asset was written. No tests/typecheck/importer/compiler run; testing deferred by owner.",
       "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
     },
     {
@@ -2584,6 +2584,45 @@
       "status": "PENDING",
       "implementation_reference": "Created after GOV-WK-T2-W02 on 2026-11-12. Required to correct regional political descriptions, the 1929 Women's War, Mary Slessor attribution, constitutional/electoral and currency/banking chronology, Ovonramwen/Jaja histories, and the balanced account of colonial impacts. Original practice only; no source question stems are present.",
       "completion_condition": "A visibly original supplement teaches all supported Week Two objectives with recomputed body_sha256, dated/citable provenance and original keyed formative practice; source questions/marks are not invented; scheme 'South' versus body 'East' discrepancy is preserved; content approval stays PENDING and verification DEFERRED; no source bytes, schema or shared code are edited."
+    },
+    {
+      "id": "GOV-LES-T2-W03-CORRECTED-WEEK",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "2nd Term Week Three, word/document.xml w:body children 149–176; advantages/disadvantages of colonial rule, British/French policy comparison and governor functions",
+      "objective": "Author one visibly original, balanced supplement for Week Three. Present the advantages and disadvantages of colonial rule with evidence and appropriate qualification; accurately describe University College Ibadan's 1948 establishment as a University of London college and its 1962 independence; distinguish colonial formal education from pre-existing and parallel African educational traditions. Explain precolonial West African trade and diplomatic networks and reject the paternalistic claim that Africans were 'not ready' for the world economy. Attribute colonial cultural hierarchies as ideology, and qualify claims about rural neglect and economic restructuring. Distinguish British indirect rule, direct administration, French assimilation and association; explain that both British and French authorities used African intermediaries in different ways and that practice varied by territory and period. Correct the six-row comparison table conceptually while leaving its visual disposition to GOV-VIS-T2. Identify the colony and constitutional instrument for each governor power; do not generalize across all British West Africa. The EVALUATION marker has no question stems, so create only clearly labelled original formative practice with complete answers and criterion-level marks; do not invent source questions or keys. Add dated, citable provenance and keep content approval PENDING and verification DEFERRED.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-PRE-T2.md",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W03.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-LES-T2-W03-CORRECTED-WEEK.md"
+      ],
+      "depends_on": [
+        "GOV-SRC-T2",
+        "GOV-WK-T2-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created after GOV-WK-T2-W03 on 2026-11-12. Required to qualify colonial impacts, correct the British/French comparison and identify the constitutional basis for colonial governor powers. Original practice only; no source question stems are present.",
+      "completion_condition": "A visibly original supplement teaches all objectives with recomputed body_sha256, dated/citable provenance and original keyed formative practice; the British/French table is corrected conceptually while visual disposition remains assigned to GOV-VIS-T2; governor powers are tied to named colonial constitutional instruments; content approval stays PENDING and verification DEFERRED; no source bytes, schema or shared code are edited."
     }
   ],
   "review": {
@@ -2604,7 +2643,6 @@
     "GOV-LES-T1-W01-CORRECTED-WEEK",
     "GOV-REV-T2",
     "GOV-MARK-T2",
-    "GOV-WK-T2-W03",
     "GOV-WK-T2-W04",
     "GOV-WK-T2-W05",
     "GOV-WK-T2-W06",
@@ -2644,6 +2682,7 @@
     "GOV-LES-T1-W10-CORRECTED-WEEK",
     "GOV-LES-T1-W10-CORRECTED-WEEK",
     "GOV-LES-T2-W01-CORRECTED-WEEK",
-    "GOV-LES-T2-W02-CORRECTED-WEEK"
+    "GOV-LES-T2-W02-CORRECTED-WEEK",
+    "GOV-LES-T2-W03-CORRECTED-WEEK"
   ]
 }
