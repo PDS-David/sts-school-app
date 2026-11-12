@@ -33,18 +33,18 @@
     "SOURCE_WEEK_INDEXING": 19,
     "FACTUAL_DEPENDENCY": 7,
     "VISUAL_DISPOSITION": 9,
-    "ASSET": 37,
+    "ASSET": 46,
     "OWNER_DECISION": 1,
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
     "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 26,
+    "IMPLEMENTED_TESTING_DEFERRED": 27,
     "BLOCKED": 6,
-    "PENDING": 57
+    "PENDING": 65
   },
-  "total": 89,
+  "total": 98,
   "items": [
     {
       "id": "TD-SRC-T2",
@@ -1094,8 +1094,8 @@
         "TD-VIS-INVENTORY",
         "TD-WK-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 9 embedded AutoCAD.Drawing.15 objects with 9 WMF previews on PDF pages 19–22; plain-scale bars, divisions and measurement layouts. OLE controls not executed; asset disposition remains pending.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12 from master d47c1daa. Inspected all nine Week Four embedded AutoCAD.Drawing.15 objects through their paired WMF previews on rendered PDF pages 20–22; mapped each OLE relationship and WMF part to its exact XML body-child locator; recomputed all nine WMF byte counts and SHA-256 values; transcribed visible scale ratios, ranges, units, graduations and dimensioned-exercise context in TD-VIS-W04.md. Three small-label transcriptions are explicitly deferred for higher-resolution/native inspection; no values guessed. Appended nine bounded ASSET tasks TD-ASSET-W04-F01..F09 with unique SVG paths. OLE controls were not executed; no derivatives or package assets yet created. No subject tests/schema/compiler/importer or app display verification run; not approved, not verified.",
       "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
     },
     {
@@ -1254,7 +1254,7 @@
         "TD-VIS-INVENTORY"
       ],
       "status": "PENDING",
-      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 17 embedded AutoCAD.Drawing.15 objects located in Weeks 4 (9), 5 (7) and 6–7 (1); each has a WMF preview. Controls were not executed; per-object transcription/render review remains pending.",
+      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 17 embedded AutoCAD.Drawing.15 objects located in Weeks 4 (9), 5 (7) and 6–7 (1); each has a WMF preview. Controls were not executed; per-object transcription/render review remains pending. Week Four visual inspection now transcribes visible preview context for 9/17 objects (OLE 1–9; body children 718–841) in TD-VIS-W04.md; 8 objects in Weeks Five and Six–Seven remain to inspect. Native controls remain unexecuted.",
       "completion_condition": "Each object's row, preview/rendering result and transcription (or reason) recorded; open item narrowed accordingly."
     },
     {
@@ -1287,7 +1287,7 @@
         "TD-VIS-INVENTORY"
       ],
       "status": "PENDING",
-      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 17 WMF preview parts located in Weeks 4 (9), 5 (7) and 6–7 (1), paired with the 17 AutoCAD OLE objects. WMF is not an allowed asset MIME; faithful conversion/provenance decision remains pending.",
+      "implementation_reference": "Inventory recorded in TD-VIS-INVENTORY.md: 17 WMF preview parts located in Weeks 4 (9), 5 (7) and 6–7 (1), paired with the 17 AutoCAD OLE objects. WMF is not an allowed asset MIME; faithful conversion/provenance decision remains pending. Week Four WMF previews image36.wmf–image44.wmf (9/17) have individual SHA-256 and byte counts recorded in TD-VIS-W04.md; all remain unconverted pending faithful derivative tasks.",
       "completion_condition": "Per-figure conversion decision recorded; converted files (if any) added under the allowed asset path with hashes and provenance, or an open item records why not. Nothing displayed or verified in the app."
     },
     {
@@ -3108,6 +3108,312 @@
       "status": "PENDING",
       "implementation_reference": "Created from TD-VIS-W03.md. Source part word/media/image35.png; original part SHA-256 466c03842956ab91f74db23c92b8b5e228ffabd7292773de2cc5684cd38cdba0; XML body-child placement(s) 671. No derivative created yet.",
       "completion_condition": "Produce a faithful, labelled SVG derivative with a verified geometry/label review; record source locator, original and derivative SHA-256, byte count, accurate alt text and truthful provenance; bind the asset to the exact Week Three source lesson and relevant coverage records without claiming dimensions not shown; validate the package and asset path. Do not commit the original extracted source image."
+    },
+    {
+      "id": "TD-ASSET-W04-F01",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR / source lesson SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd / word/document.xml body child 718 / word/embeddings/oleObject1.bin / word/media/image36.wmf",
+      "objective": "Create a faithful SVG derivative of this Week Four AutoCAD scale/dimension figure: RF 1:2.5, maximum 400 mm, minimum 10 mm; 160 mm length; four 40 mm major units; first unit divided into ten; X=280 mm and Y=130 mm. Preserve all visible linework, scale graduations, labels, units and dimension callouts. Do not execute the OLE object or invent missing labels. Original WMF preview SHA-256: 51f4c161a02d372de6177971a95935ca509a6eb7cedec181c17cb905169f52f2.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w04-f01-plain-scale-rf-1-2-5.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W04-F01.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W04.md. OLE part oleObject1.bin; WMF preview word/media/image36.wmf; source preview SHA-256 51f4c161a02d372de6177971a95935ca509a6eb7cedec181c17cb905169f52f2; XML body-child locator 718. No derivative created yet.",
+      "completion_condition": "Produce a faithful SVG derivative from the paired WMF preview/native drawing evidence; preserve geometry, labels, units, graduations and dimensions; record source/derivative hashes, bytes, alt text, provenance and any illegible labels; bind to the exact Week Four source lesson; validate schema and asset path. Do not commit original WMF/OLE bytes or execute embedded controls."
+    },
+    {
+      "id": "TD-ASSET-W04-F02",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR / source lesson SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd / word/document.xml body child 729 / word/embeddings/oleObject2.bin / word/media/image37.wmf",
+      "objective": "Create a faithful SVG derivative of this Week Four AutoCAD scale/dimension figure: 2 cm = 1 m (RF 1:50), up to 6 m in decimetres; 120 mm length; six 20 mm units; first unit divided into ten; example reading 2.4 m / 24 dm. Preserve all visible linework, scale graduations, labels, units and dimension callouts. Do not execute the OLE object or invent missing labels. Original WMF preview SHA-256: dcb5600cbe868389be027ea502559b271ee32d3d1cb80bcf0ddea6193c24aeb8.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w04-f02-plain-scale-2cm-per-metre.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W04-F02.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W04.md. OLE part oleObject2.bin; WMF preview word/media/image37.wmf; source preview SHA-256 dcb5600cbe868389be027ea502559b271ee32d3d1cb80bcf0ddea6193c24aeb8; XML body-child locator 729. No derivative created yet.",
+      "completion_condition": "Produce a faithful SVG derivative from the paired WMF preview/native drawing evidence; preserve geometry, labels, units, graduations and dimensions; record source/derivative hashes, bytes, alt text, provenance and any illegible labels; bind to the exact Week Four source lesson; validate schema and asset path. Do not commit original WMF/OLE bytes or execute embedded controls."
+    },
+    {
+      "id": "TD-ASSET-W04-F03",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR / source lesson SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd / word/document.xml body child 742 / word/embeddings/oleObject3.bin / word/media/image38.wmf",
+      "objective": "Create a faithful SVG derivative of this Week Four AutoCAD scale/dimension figure: 3 cm = 1 dm (10 cm), up to 4 dm in centimetres; 120 mm length; four 30 mm units; first unit divided into ten; example reading 22 cm. Preserve all visible linework, scale graduations, labels, units and dimension callouts. Do not execute the OLE object or invent missing labels. Original WMF preview SHA-256: 6614747895550767b8aaf2851ea7b157ea101ba091e55a12d883c5321a72b6ec.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w04-f03-plain-scale-3cm-per-decimetre.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W04-F03.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W04.md. OLE part oleObject3.bin; WMF preview word/media/image38.wmf; source preview SHA-256 6614747895550767b8aaf2851ea7b157ea101ba091e55a12d883c5321a72b6ec; XML body-child locator 742. No derivative created yet.",
+      "completion_condition": "Produce a faithful SVG derivative from the paired WMF preview/native drawing evidence; preserve geometry, labels, units, graduations and dimensions; record source/derivative hashes, bytes, alt text, provenance and any illegible labels; bind to the exact Week Four source lesson; validate schema and asset path. Do not commit original WMF/OLE bytes or execute embedded controls."
+    },
+    {
+      "id": "TD-ASSET-W04-F04",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR / source lesson SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd / word/document.xml body child 758 / word/embeddings/oleObject4.bin / word/media/image39.wmf",
+      "objective": "Create a faithful SVG derivative of this Week Four AutoCAD scale/dimension figure: 1.5 times full size, up to 8 cm in millimetres; 120 mm length; eight equal units; first unit divided into ten. Preserve all visible linework, scale graduations, labels, units and dimension callouts. Do not execute the OLE object or invent missing labels. Original WMF preview SHA-256: 5303c1555e9c33be841bc614fa91c13ae7adb514f39e4a718f867b1184f8861c.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w04-f04-enlargement-scale-1-5-times.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W04-F04.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W04.md. OLE part oleObject4.bin; WMF preview word/media/image39.wmf; source preview SHA-256 5303c1555e9c33be841bc614fa91c13ae7adb514f39e4a718f867b1184f8861c; XML body-child locator 758. No derivative created yet.",
+      "completion_condition": "Produce a faithful SVG derivative from the paired WMF preview/native drawing evidence; preserve geometry, labels, units, graduations and dimensions; record source/derivative hashes, bytes, alt text, provenance and any illegible labels; bind to the exact Week Four source lesson; validate schema and asset path. Do not commit original WMF/OLE bytes or execute embedded controls."
+    },
+    {
+      "id": "TD-ASSET-W04-F05",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR / source lesson SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd / word/document.xml body child 773 / word/embeddings/oleObject5.bin / word/media/image40.wmf",
+      "objective": "Create a faithful SVG derivative of this Week Four AutoCAD scale/dimension figure: 1/3 reduction scale, up to 4 dm in centimetres; 1 dm interval divided into three equal parts; first unit divided into ten. Preserve all visible linework, scale graduations, labels, units and dimension callouts. Do not execute the OLE object or invent missing labels. Original WMF preview SHA-256: 285d30656f6b92950794c6e22d638b78105cdf6e541cdb17b68d3e5054423ff9.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w04-f05-reduction-scale-one-third.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W04-F05.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W04.md. OLE part oleObject5.bin; WMF preview word/media/image40.wmf; source preview SHA-256 285d30656f6b92950794c6e22d638b78105cdf6e541cdb17b68d3e5054423ff9; XML body-child locator 773. No derivative created yet.",
+      "completion_condition": "Produce a faithful SVG derivative from the paired WMF preview/native drawing evidence; preserve geometry, labels, units, graduations and dimensions; record source/derivative hashes, bytes, alt text, provenance and any illegible labels; bind to the exact Week Four source lesson; validate schema and asset path. Do not commit original WMF/OLE bytes or execute embedded controls."
+    },
+    {
+      "id": "TD-ASSET-W04-F06",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR / source lesson SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd / word/document.xml body child 796 / word/embeddings/oleObject6.bin / word/media/image41.wmf",
+      "objective": "Create a faithful SVG derivative of this Week Four AutoCAD scale/dimension figure: Dimensioned frame/stand-like outline for the 1:5 scale exercise; preserve all visible dimensions and mark small labels for higher-resolution transcription. Preserve all visible linework, scale graduations, labels, units and dimension callouts. Do not execute the OLE object or invent missing labels. Original WMF preview SHA-256: 65bce7fac66086b258c501e0812ce7d77814fa6be28796f08280db4ffff595de.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w04-f06-dimensioned-frame-exercise.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W04-F06.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W04.md. OLE part oleObject6.bin; WMF preview word/media/image41.wmf; source preview SHA-256 65bce7fac66086b258c501e0812ce7d77814fa6be28796f08280db4ffff595de; XML body-child locator 796. No derivative created yet.",
+      "completion_condition": "Produce a faithful SVG derivative from the paired WMF preview/native drawing evidence; preserve geometry, labels, units, graduations and dimensions; record source/derivative hashes, bytes, alt text, provenance and any illegible labels; bind to the exact Week Four source lesson; validate schema and asset path. Do not commit original WMF/OLE bytes or execute embedded controls."
+    },
+    {
+      "id": "TD-ASSET-W04-F07",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR / source lesson SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd / word/document.xml body child 810 / word/embeddings/oleObject7.bin / word/media/image42.wmf",
+      "objective": "Create a faithful SVG derivative of this Week Four AutoCAD scale/dimension figure: Composite of two scale rulers: upper 0–120 in tens, lower 0–500 in hundreds, with X/Z reading spans and 53/70 offset marks. Preserve all visible linework, scale graduations, labels, units and dimension callouts. Do not execute the OLE object or invent missing labels. Original WMF preview SHA-256: 2619d4b706481a57c0f210acf4019edbdbf9370e6d7756eec60d5677cb699090.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w04-f07-paired-scale-ruler-readings.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W04-F07.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W04.md. OLE part oleObject7.bin; WMF preview word/media/image42.wmf; source preview SHA-256 2619d4b706481a57c0f210acf4019edbdbf9370e6d7756eec60d5677cb699090; XML body-child locator 810. No derivative created yet.",
+      "completion_condition": "Produce a faithful SVG derivative from the paired WMF preview/native drawing evidence; preserve geometry, labels, units, graduations and dimensions; record source/derivative hashes, bytes, alt text, provenance and any illegible labels; bind to the exact Week Four source lesson; validate schema and asset path. Do not commit original WMF/OLE bytes or execute embedded controls."
+    },
+    {
+      "id": "TD-ASSET-W04-F08",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR / source lesson SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd / word/document.xml body child 827 / word/embeddings/oleObject8.bin / word/media/image43.wmf",
+      "objective": "Create a faithful SVG derivative of this Week Four AutoCAD scale/dimension figure: Dimensioned ornamental pedestal/stand; visible overall height 240, base width 180, intermediate dimensions and 10x45-degree chamfer; small labels need higher-resolution confirmation. Preserve all visible linework, scale graduations, labels, units and dimension callouts. Do not execute the OLE object or invent missing labels. Original WMF preview SHA-256: 9f3c64c1a20090b5d0141149cfefaffb4613d39632ab366a87930f6d774273fe.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w04-f08-dimensioned-ornamental-pedestal.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W04-F08.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W04.md. OLE part oleObject8.bin; WMF preview word/media/image43.wmf; source preview SHA-256 9f3c64c1a20090b5d0141149cfefaffb4613d39632ab366a87930f6d774273fe; XML body-child locator 827. No derivative created yet.",
+      "completion_condition": "Produce a faithful SVG derivative from the paired WMF preview/native drawing evidence; preserve geometry, labels, units, graduations and dimensions; record source/derivative hashes, bytes, alt text, provenance and any illegible labels; bind to the exact Week Four source lesson; validate schema and asset path. Do not commit original WMF/OLE bytes or execute embedded controls."
+    },
+    {
+      "id": "TD-ASSET-W04-F09",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR / source lesson SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd / word/document.xml body child 841 / word/embeddings/oleObject9.bin / word/media/image44.wmf",
+      "objective": "Create a faithful SVG derivative of this Week Four AutoCAD scale/dimension figure: Ornamental gate elevation; overall length 2100 mm and post width 300 mm; preserve A–E unknown dimension callouts. Preserve all visible linework, scale graduations, labels, units and dimension callouts. Do not execute the OLE object or invent missing labels. Original WMF preview SHA-256: 10a083ad382f5e55bc642fbeae1cc6620586afe068d17e21543e40898b926f14.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "backend/src/db/ss1/assets/technical-drawing/td-t2-w04-f09-dimensioned-ornamental-gate.svg",
+        "docs/ss1/work/microtasks/technical-drawing/TD-ASSET-W04-F09.md"
+      ],
+      "depends_on": [
+        "TD-VIS-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created from TD-VIS-W04.md. OLE part oleObject9.bin; WMF preview word/media/image44.wmf; source preview SHA-256 10a083ad382f5e55bc642fbeae1cc6620586afe068d17e21543e40898b926f14; XML body-child locator 841. No derivative created yet.",
+      "completion_condition": "Produce a faithful SVG derivative from the paired WMF preview/native drawing evidence; preserve geometry, labels, units, graduations and dimensions; record source/derivative hashes, bytes, alt text, provenance and any illegible labels; bind to the exact Week Four source lesson; validate schema and asset path. Do not commit original WMF/OLE bytes or execute embedded controls."
     }
   ],
   "review": {
@@ -3124,13 +3430,13 @@
     "notes": "Reconciled queue metadata with live item statuses after Week 6–10 coverage updates; formal tests remain deferred."
   },
   "next_runnable": [
-    "TD-VIS-W04",
     "TD-VIS-W05",
     "TD-VIS-W06-W07",
     "TD-VIS-W08-W09",
     "TD-VIS-W10",
     "TD-FACT-W01-DEGREE-NOTATION",
     "TD-FACT-W03-NOTATION",
+    "TD-FACT-W04-SCALE-DETAILS",
     "TD-KEY-W02-ANSWERS",
     "TD-VIS-OLE",
     "TD-VIS-WMF",
@@ -3168,16 +3474,25 @@
     "TD-ASSET-W03-F15",
     "TD-ASSET-W03-F16",
     "TD-ASSET-W03-F17",
-    "TD-ASSET-W03-F18"
+    "TD-ASSET-W03-F18",
+    "TD-ASSET-W04-F01",
+    "TD-ASSET-W04-F02",
+    "TD-ASSET-W04-F03",
+    "TD-ASSET-W04-F04",
+    "TD-ASSET-W04-F05",
+    "TD-ASSET-W04-F06",
+    "TD-ASSET-W04-F07",
+    "TD-ASSET-W04-F08",
+    "TD-ASSET-W04-F09"
   ],
   "runnable_now": [
-    "TD-VIS-W04",
     "TD-VIS-W05",
     "TD-VIS-W06-W07",
     "TD-VIS-W08-W09",
     "TD-VIS-W10",
     "TD-FACT-W01-DEGREE-NOTATION",
     "TD-FACT-W03-NOTATION",
+    "TD-FACT-W04-SCALE-DETAILS",
     "TD-KEY-W02-ANSWERS",
     "TD-VIS-OLE",
     "TD-VIS-WMF",
@@ -3215,6 +3530,15 @@
     "TD-ASSET-W03-F15",
     "TD-ASSET-W03-F16",
     "TD-ASSET-W03-F17",
-    "TD-ASSET-W03-F18"
+    "TD-ASSET-W03-F18",
+    "TD-ASSET-W04-F01",
+    "TD-ASSET-W04-F02",
+    "TD-ASSET-W04-F03",
+    "TD-ASSET-W04-F04",
+    "TD-ASSET-W04-F05",
+    "TD-ASSET-W04-F06",
+    "TD-ASSET-W04-F07",
+    "TD-ASSET-W04-F08",
+    "TD-ASSET-W04-F09"
   ]
 }
