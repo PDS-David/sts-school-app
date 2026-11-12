@@ -3,7 +3,6 @@ import assert from 'node:assert/strict';
 import sourceManifest from '../../backend/src/db/primary4/sourceManifest.json' with { type: 'json' };
 import {
   buildPrimary4SupplementRows,
-  getPrimary4SupplementRecords,
   primary4SupplementApprovalIssues,
 } from '../../backend/src/db/primary4/primary4Supplements.ts';
 
@@ -29,7 +28,8 @@ test('Primary 4 supplements append to the existing ingestion plan with stable or
 
 test('Primary 4 ingestion refuses secondary school and archive/export count mismatches', () => {
   assert.throws(() => buildPrimary4SupplementRows(existingRows, 'C:/curriculum', 'secondary'), /only valid with --school-code primary/);
-  assert.throws(() => buildPrimary4SupplementRows(existingRows.slice(1), 'C:/curriculum', 'primary'), /source archive mismatch/);
+  const missingHomeEconomicsRow = existingRows.filter((row, index) => !(row.subjectName === 'Home Economics' && row.termLabel === '3rd Term' && index === existingRows.findIndex(x => x.subjectName === 'Home Economics' && x.termLabel === '3rd Term')));
+  assert.throws(() => buildPrimary4SupplementRows(missingHomeEconomicsRow, 'C:/curriculum', 'primary'), /source archive mismatch/);
 });
 
 test('Primary 4 packages cannot be written until owner approval and verification', () => {
