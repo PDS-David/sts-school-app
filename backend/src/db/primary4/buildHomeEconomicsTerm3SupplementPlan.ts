@@ -66,5 +66,5 @@ export function buildHomeEconomicsTerm3SupplementPlan() {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  process.stdout.write(`${JSON.stringify(buildHomeEconomicsTerm3SupplementPlan(), null, 2)}\\n`);
+  process.stdout.write(`${JSON.stringify(buildHomeEconomicsTerm3SupplementPlan(), null, 2)}\n`);
 }
