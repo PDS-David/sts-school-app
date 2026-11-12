@@ -3,7 +3,9 @@ import assert from 'node:assert/strict';
 import { getStudentSs1Lesson, isStudentDeliverableSs1Lesson, listStudentSs1Lessons } from '../../backend/src/db/ss1/studentDelivery.js';
 
 test('SS1 student delivery exposes only lessons with approval, implementation, verification and permitted provenance', () => {
-  for (const lesson of listStudentSs1Lessons()) {
+  const lessons = listStudentSs1Lessons();
+  assert.ok(lessons.length > 0, 'at least one individually certified SS1 lesson must be available');
+  for (const lesson of lessons) {
     assert.equal(isStudentDeliverableSs1Lesson(lesson), true, lesson.id);
     assert.equal(lesson.state.content_approval, 'APPROVED');
     assert.ok(lesson.state.approval_reference?.trim());
