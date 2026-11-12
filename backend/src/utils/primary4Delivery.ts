@@ -107,7 +107,7 @@ function isPrimary4(topic: Primary4Topic): boolean {
 function pendingApproval(source: string): boolean {
   const approval = /Content approval:\s*([A-Z_]+)/.exec(source)?.[1];
   const verification = /Pedagogical verification:\s*([A-Z_]+)/.exec(source)?.[1];
-  const assessmentRebuild = /Assessment rebuild:\\s*([A-Z_]+)/.exec(source)?.[1];
+  const assessmentRebuild = /Assessment rebuild:\s*([A-Z_]+)/.exec(source)?.[1];
   return approval !== 'APPROVED' || verification !== 'VERIFIED' || (assessmentRebuild !== undefined && assessmentRebuild !== 'VERIFIED');
 }
 
