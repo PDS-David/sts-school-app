@@ -151,7 +151,7 @@ test('Technical Drawing resolved source rows and figure inventories are not left
     'TD-T2-W01-GENERAL-Q2-DATA-IMPOSSIBLE',
     'TD-T2-W01-GENERAL-Q4-SSA-AMBIGUITY'
   ]) assert.equal(ids.has(resolved), false, `resolved item remains open: ${resolved}`);
-  assert.equal(subject.open_items.length, 18);
+  assert.equal(subject.open_items.length, 20);
   assert.ok(ids.has('TD-T2-W02-OBJECTIVE-Q2-MULTIPLE-RADII'), 'ambiguous radius MCQ must remain explicitly open');
   assert.ok(ids.has('TD-T2-W03-GENERAL-PENTAGON-DIAGONAL-UNDERDEFINED'), 'underdefined pentagon prompt must remain explicitly open');
 });
@@ -200,4 +200,31 @@ test('Week Four answer key includes the source 1:2 drawing dimensions', async ()
   assert.match(key, /Overall height 240→\*\*120 mm\*\*/);
   assert.match(key, /base width 180→\*\*90 mm\*\*/);
   assert.match(key, /chamfers 10×45°→\*\*5×45°\*\*/);
+});
+
+test('Week Six–Seven answer key covers revision constructions and refuses under-specified source geometry', async () => {
+  const root = new URL('../../docs/ss1/work/microtasks/technical-drawing/', import.meta.url);
+  const key = await readFile(new URL('TD-KEY-W06-W07-ANSWERS.md', root), 'utf8');
+  assert.match(key, /Q1 — irregular pentagon, then area reduction 3:5/);
+  assert.match(key, /√\(3\/5\)=0\.7745967/);
+  assert.match(key, /Q3 — regular nonagon, chord AC=40 mm/);
+  assert.match(key, /Q4 — irregular hexagon and area reduction 3:5/);
+  assert.match(key, /one degree of freedom remains/);
+  assert.match(key, /Q3 \/ image60: the three irregular hexagons/);
+  assert.match(key, /Q1 and Q2 require a higher-fidelity source figure/);
+});
+
+test('Technical Drawing answer-key implementation is complete but source-owner decisions remain explicit', async () => {
+  const root = new URL('../../docs/ss1/work/microtasks/technical-drawing/', import.meta.url);
+  const queue = JSON.parse(await readFile(new URL('QUEUE.json', root), 'utf8'));
+  for (const id of ['TD-KEY-W03-ANSWERS', 'TD-KEY-W06-W07-ANSWERS']) {
+    const item = queue.items.find(entry => entry.id === id);
+    assert.equal(item.status, 'IMPLEMENTED_TESTING_DEFERRED', `${id} must be implemented`);
+  }
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  for (const id of [
+    'TD-T2-W03-GENERAL-PENTAGON-DIAGONAL-UNDERDEFINED',
+    'TD-T2-W06-W07-PENTAGON-FIGURE-UNDERDEFINED',
+    'TD-T2-W06-W07-WEEKEND-Q1-Q2-FIGURE-AMBIGUITY'
+  ]) assert.ok(subject.open_items.some(item => item.id === id), `source ambiguity not tracked: ${id}`);
 });
