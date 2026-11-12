@@ -2156,11 +2156,12 @@
     {
       "id": "TD-T2-W02-FIGURES",
       "kind": "CONTENT",
-      "detail": "The Week Two row contains 11 w:drawing and 13 w:pict anchors; instructions refer to figures “as shown above/below” (for example lines 423, 557, 583 and 603). The extracted text does not contain those drawings, and no visual disposition or faithful asset is recorded.",
-      "required_action": "Complete TD-VIS-W02 by inspecting every source figure in the original DOCX, recording what it shows, and binding a faithful derivative as an asset or documenting a precise reason for exclusion. Do not invent geometry or claim PDF conversion is visual inspection.",
+      "detail": "Nine unique DrawingML image parts are inventoried. A VML arc overlay at body child 287 belongs to Example 2 and is already included in image12.png/F04. The Week Two general-evaluation Q4 refers to an arc “shown below”, but no arc/figure is attached to that question in the DOCX or rendered PDF; this is a distinct missing-source blocker.",
+      "required_action": "Complete the nine existing image derivative tasks and obtain/restore the missing q4 arc figure from the original source author. Do not reuse the Example 2 VML arc as the q4 figure.",
       "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd",
-        "TD-VIS-W02"
+        "TD-ASSET-W02-F01",
+        "TD-ASSET-W02-F09",
+        "TD-T2-W02-ARC-FIGURE-MISSING"
       ],
       "blocks_delivery": true
     },
@@ -2434,6 +2435,29 @@
         "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
         "TD-FACT-W01-DEGREE-NOTATION",
         "SUP-SS1-TECHNICAL-DRAWING-T2-W01-KEYED-CONSTRUCTIONS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W02-ARC-FIGURE-MISSING",
+      "kind": "CONTENT",
+      "detail": "Week Two general-evaluation Q4 at body child 286 asks learners to construct a line approximately equal in length to an arc “shown below”. No arc image, VML shape or other figure is attached to the question in the supplied DOCX or rendered PDF page 8. The VML arc at child 287 is a floating overlay for Example 2 on page 7 and is already part of image12.png; it is not the missing q4 figure.",
+      "required_action": "Obtain the intended arc figure from the source author/original file or replace the question with a complete, dimensioned arc. Do not infer its radius, angle or length from the unrelated Example 2 arc.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:5b7f2f5d8d2b7c4d6d7f4e0d3e6a5c8c",
+        "TD-VIS-W02",
+        "TD-KEY-W02-ANSWERS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W02-OBJECTIVE-Q4-MULTIPLE-ANSWERS",
+      "kind": "ASSESSMENT",
+      "detail": "Weekend assignment Q4 asks which is not a procedure for describing a circle round a polygon. Under the source's own method, both “bisect two sides” (B) and “draw a line from the determined centre parallel to one side” (C) are not required/valid steps; the perpendicular from centre to side is required. The single-answer MCQ therefore has at least two defensible answers.",
+      "required_action": "Revise the options so exactly one is incorrect, or explicitly accept both B and C with explanation in the key. Do not force a single answer from the current wording.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:5b7f2f5d8d2b7c4d6d7f4e0d3e6a5c8c",
+        "TD-KEY-W02-ANSWERS"
       ],
       "blocks_delivery": true
     }
