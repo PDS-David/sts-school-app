@@ -167,7 +167,7 @@ export function buildPrimary4SupplementRows(
   root: string,
   schoolCode: string,
 ): Primary4IngestionRow[] {
-  if (schoolCode !== 'primary') throw new Error('--primary4-reviewed is only valid with --school-code primary');
+  if (schoolCode !== 'primary') throw new Error('--primary4-supplements is only valid with --school-code primary');
   const records = getPrimary4SupplementRecords();
   const affected = new Map<string, { subject: string; term: string }>();
   for (const record of records) affected.set(bucketKey(record.subject_name, record.term_label), { subject: record.subject_name, term: record.term_label });
