@@ -137,3 +137,13 @@ For the weekend MCQs, retain the source's original option letters only where the
 ## Verification boundary
 
 This key contains original proposed solutions and marking rubrics, not an approved teacher marking scheme. All construction branches must be checked against the source diagrams during teacher review. Package schema/integrity success does not prove that a student-facing renderer displays the figures correctly. No teacher approval or live student UI rendering is claimed.
+
+## Original replacements for the under-specified pentagon and ambiguous weekend figures
+
+The source image57 pentagon lacks one independent constraint. A fully dimensioned original coordinate alternative is now included in the Week Seven lesson: A(0,0), B(70,0), C(90,40), D(50,80), E(0,60) mm. Its area is 5,500 mm². For reduced:original area ratio 5:7, the linear factor is √(5/7)≈0.84515, the reduced area is approximately 3,928.57 mm², B′≈(59.16,0) mm and D′≈(42.26,67.61) mm. This is not represented as a reconstruction of image57.
+
+The two ambiguous weekend items now have original, unambiguous alternatives:
+- Central angle 60° identifies a regular hexagon because 360°/60°=6 sides.
+- Rectangles 20×10 mm and 80×40 mm have small:large linear ratio 1:4 and area ratio 1:16.
+
+These alternatives preserve the identifiable polygon-centre and similar-figure ratio objectives without guessing the source's option letters.
