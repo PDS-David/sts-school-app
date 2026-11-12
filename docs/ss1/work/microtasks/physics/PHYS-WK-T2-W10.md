@@ -1,56 +1,63 @@
 # PHYS-WK-T2-W10 — Second Term Week Ten: production of continuous electric current
 
-Status: **IMPLEMENTED_TESTING_DEFERRED** — original hash-verified .doc visually inspected and rendered; source-row reconciliation is recorded below.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — the exact registered source row and rendered pages have been inspected. Source indexing and assessment keys are complete; a detailed visual aid remains a delivery blocker.
 
 ## Registered source identity
 
 - Source ID: `SS1-SRC-2c924c964660`
 - Archive member: `SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc`
-- Registered member SHA-256: `3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7`
-- Parsed row: index 9, `WEEK TEN`
+- Member SHA-256: `3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7`
+- Member size: 466,432 bytes
+- Parsed row: index 9, WEEK TEN, “PRODUCTION OF CONTINUOUS ELECTRIC CURRENT”
 - Parsed body ID: `SS1-SRC-2c924c964660:BODY:d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6`
 - Parsed body length: 3,040 characters
 - Parsed body SHA-256: `d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6`
+- Original member recovered in CI artifact 13902689395 from workflow run 43126374868; source-staging verified archive SHA-256, manifest membership, member size and member hash.
 
-## Student supplement authored
+## Source content inventory
 
-- Lesson ID: `SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT`
-- Body SHA-256: `ef63b6f4dea9062569b92f78d2e8a245a7c399544ee8e8dd5b898d28ca764b64`
-- Body length: 5,079 characters
-- Practice: 18 fully answered questions, 40 marks; marking totals checked.
+The source row covers:
+- Continuous current, electric charge, current, emf and potential difference.
+- Mechanical generation: a prime mover drives an armature/rotor in a magnetic field; changing flux induces an emf.
+- Chemical generation: a cell uses two dissimilar electrodes in an electrolyte to convert chemical energy into electrical energy.
+- Heat generation: a thermocouple uses dissimilar metals and a temperature difference to produce an emf.
+- Solar generation: a photovoltaic cell converts light energy into electrical energy.
+- Two diagram-based evaluation prompts, five weekend MCQs and two theory questions. The theory's mechanical-generation prompt repeats the first evaluation; the heat-generation prompt is distinct.
 
-The lesson covers current and charge/time, conventional current versus electron flow, emf, potential difference, cells, thermocouples, generators and photovoltaic cells. It corrects common overgeneralisation by noting that alternators produce AC, while a DC generator or rectifier is needed for DC. It also distinguishes emf from terminal p.d. and avoids an incorrect universal polarity rule for all cell types.
+## Source corrections
 
-Five objective-level coverage entries were added. All are `IMPLEMENTED_EQUIVALENT` based on the authored supplement; approval and verification remain pending/deferred.
+Combined correction record: `CORR-PHYSICS-T2-W10-GALVANIC-CELL-POLARITY`:
+- the source gives positive anode/negative cathode for a chemical cell generating current. In a galvanic cell delivering current, the anode is negative (oxidation) and cathode positive (reduction). The lesson corrects the polarity and distinguishes galvanic from electrolytic cells.
+- `CORR-PHYSICS-T2-W10-PHOTOVOLTAIC-TERMINOLOGY`: the source calls solar-cell operation the photoelectric effect. The lesson uses the more precise photovoltaic effect for semiconductor solar cells.
 
-## Close-equivalent comparison (not the registered original)
+The lesson also clarifies that a DC generator uses a commutator/rectifier arrangement for unidirectional output; an alternator with slip rings produces alternating current.
 
-SchoolGist, *Physics SSS 1 Second Term*, Week Ten, PDF lines 732–835, covers current, charge/time, emf, p.d., and generation from chemical, thermal, mechanical and solar energy, with classwork and assignment.
+## Source assessments and answer keys
 
-Reference: https://schoolgist.ng/storage/postFiles/SS1-Physics-2nd-Term-Lesson-Note-pdf.pdf
+Eight distinct source assessment items were added as Q19–Q26 (19 marks):
+- Q19: mechanical-to-electrical generation diagram and explanation (5 marks).
+- Q20: chemical-cell diagram and explanation (5 marks).
+- Q21–Q25: all five weekend MCQs (5 marks).
+- Q26: heat-to-electrical generation with a thermocouple diagram (4 marks).
 
-The PDF is used as a close-equivalent scope comparison only, not as proof of the registered original .doc's exact wording, formulae or exercises.
+The repeated mechanical-generation theory prompt is keyed once. The lesson now has 26 questions with complete answers and marking arrays.
 
-## Remaining source-dependent work
+## Rendered-source and visual disposition
 
-1. Inspect the registered original member or a verified extraction of parsed row 9.
-2. Compare all source formulae, symbols, definitions, diagrams, examples, classwork and assignments.
-3. Confirm and correct any source-specific electrode polarity, generator-output and current-direction statements.
-4. Inventory original diagrams under `PHYS-VIS-T2`.
-5. Mark the queue item complete only after exact source reconciliation.
+The original .doc was rendered privately to PDF. WEEK TEN occupies source pages 20–22. Pages 21–22 contain the evaluation, MCQs and theory prompts; no instructional generator, cell or thermocouple figure is present in the original source.
+- Existing registered asset `PHYS-ASSET-T2-W10-CONTINUOUS-CURRENT` is a four-source overview and is attached to the lesson.
+- That overview does not show the detailed generator armature/field/commutator, galvanic-cell electrodes/electrolyte or thermocouple hot/cold junctions required to support the diagram questions. A new delivery-blocking visual item `PHYS-ASSET-T2-W10-DETAILED-GENERATION-DIAGRAMS` and open item `PHYSICS-T2-W10-DETAILED-GENERATION-DIAGRAMS` have been added.
 
-## Checks performed
+## Package mapping
 
-- Body SHA-256 recorded.
-- All 18 practice answers and marking totals checked: 40 marks.
-- Content approval remains `PENDING`; verification remains `DEFERRED`.
-- No importer, database or device test is claimed.
+- Coverage entries `COV-PHYS-T2-W10-OBJ-1` through `OBJ-5` remain `IMPLEMENTED_EQUIVALENT` and now include exact original-row evidence.
+- Lesson: `SUP-SS1-PHYSICS-T2-W10-CONTINUOUS-CURRENT`
+- Practice: 26 questions; source-aligned additions total 19 marks.
+- `content_approval=PENDING`; `verification=DEFERRED`.
 
+## Checks
 
-## Original-source inspection completed — 2026-11-12
-
-- Exact source member: hash-verified original registered .doc; full rendered page range: 20–22.
-- Evidence report: `docs/ss1/work/microtasks/physics/PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`.
-- Source-row disposition: WEEK TEN: production of continuous current by chemical, heat, mechanical and solar methods. The source assessment asks for diagrams but the original rendered pages do not supply a complete set of diagrams for those methods. The new original four-source SVG supplies the missing visual teaching aid; source exercises have no answer/marking key.
-- Original source bytes were not edited. New teaching diagrams are original SVG equivalents and are explicitly not claimed as recovered source images.
-- Content approval remains PENDING; technical verification remains DEFERRED. The source inspection itself is complete; any factual or teacher-decision issues remain separately tracked as package open items.
+- Original source row and rendered pages 20–22 inspected.
+- Original archive member identity checked against the verified source manifest.
+- JSON parse, unique practice IDs, answer presence, marking totals, coverage references and queue recount checked before commit.
+- Full package tests, importer and SVG safety for this commit: pending CI.
