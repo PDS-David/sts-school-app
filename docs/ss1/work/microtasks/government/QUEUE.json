@@ -36,10 +36,10 @@
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 32,
     "VISUAL_DISPOSITION": 2,
-    "LESSON": 19
+    "LESSON": 20
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 23,
+    "IMPLEMENTED_TESTING_DEFERRED": 24,
     "PENDING": 46,
     "BLOCKED": 1
   },
@@ -1118,8 +1118,8 @@
         "GOV-INV-T2",
         "GOV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Added from the verified GOV-INV-T2 inventory on 2026-11-12. Not started; no lesson, coverage, rule, correction or asset is implied.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed 2026-11-12. Verified source member SHA-256 bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782 in archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e. Inspected Week Four body children 177–209; C14N SHA-256 d6f82017c91ef3cc580f63e9ad4922478bba1e7db520dd5d8774163571113aac. Added seven objective-level entries for definition, factors, effects, resistance figures, Nigerian nationalist leaders, evaluation marker and practice pointers. Updated both Week Four scheme entries to PARTIAL. Fact-checked Great Depression chronology against Federal Reserve/USHMM, Macaulay against CBN/Guardian, Azikiwe against CBN/Stanford, Ahmadu Bello against Oxford DNB, Awolowo against Inner Temple/DAWN, Imoudu against MINILS/NDNB, and Nana Olomu/Jimi Solanke against biographical sources. No question stems follow EVALUATION. Added thirteen precise open items and lesson task GOV-LES-T2-W04-CORRECTED-WEEK. No source rule, lesson body, answer key, mark or asset was written. No tests/typecheck/importer/compiler run; testing deferred by owner.",
       "completion_condition": "The full week span is indexed with exact source locators and objective-level scheme mapping; all exercises and markers are inventoried; every PARTIAL/UNRESOLVED objective has a precise open item; no lesson, answer, mark, fact or asset is invented."
     },
     {
@@ -2623,6 +2623,45 @@
       "status": "PENDING",
       "implementation_reference": "Created after GOV-WK-T2-W03 on 2026-11-12. Required to qualify colonial impacts, correct the British/French comparison and identify the constitutional basis for colonial governor powers. Original practice only; no source question stems are present.",
       "completion_condition": "A visibly original supplement teaches all objectives with recomputed body_sha256, dated/citable provenance and original keyed formative practice; the British/French table is corrected conceptually while visual disposition remains assigned to GOV-VIS-T2; governor powers are tied to named colonial constitutional instruments; content approval stays PENDING and verification DEFERRED; no source bytes, schema or shared code are edited."
+    },
+    {
+      "id": "GOV-LES-T2-W04-CORRECTED-WEEK",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "term": "2nd Term",
+      "week_or_locator": "2nd Term Week Four, word/document.xml w:body children 177–209; nationalism, factors/effects and Nigerian nationalist leaders",
+      "objective": "Author one visibly original, accurate supplement for Week Four. Define nationalism broadly as collective political identity and self-determination, not as requiring a common language or identical historical experience; verify the K.B.C. Onwubiko attribution before using it. Separate World War I/postwar economic hardship from the Great Depression beginning in 1929. Explain economic exploitation, cost-of-living pressures, the press and party formation with dated, territory-specific examples. Correct the roles and dates of Herbert Macaulay, Nnamdi Azikiwe, Ahmadu Bello and Obafemi Awolowo; distinguish Azikiwe's 1937 newspaper, 1944 NCNC founding and 1946 Secretary-General appointment; correct Bello's birth year to 1910; qualify Awolowo's TUC role; correct Macaulay's 1923 NNDP founding and Lagos Daily News chronology. Identify Nana Olomu and the specific Awujale only when evidenced; cross-reference the Week Two Jaja/Ovonramwen facts. Classify W.E.B. Du Bois as a Pan-Africanist and do not misidentify Jimi Solanke as a nationalist leader. Remove unsupported claims of rapid economic growth and clarify the source's ambiguous 'sold West Africa' phrase. The EVALUATION marker has no question stems, so create only clearly labelled original formative practice with complete answers and criterion-level marks; do not invent source questions or keys. Add dated, citable provenance and keep content approval PENDING and verification DEFERRED.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-PRE-T2.md",
+        "docs/ss1/work/microtasks/government/GOV-WK-T2-W04.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/GOVT.docx",
+          "member_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-LES-T2-W04-CORRECTED-WEEK.md"
+      ],
+      "depends_on": [
+        "GOV-SRC-T2",
+        "GOV-WK-T2-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created after GOV-WK-T2-W04 on 2026-11-12. Required to correct the definition, separate WWI from the Great Depression, clarify press/party and labour history, and verify the named nationalist leaders' dates and roles. Original practice only; no source question stems are present.",
+      "completion_condition": "A visibly original supplement teaches all objectives with recomputed body_sha256, dated/citable provenance and original keyed formative practice; all leaders/parties are accurately identified; source questions/marks are not invented; content approval stays PENDING and verification DEFERRED; no source bytes, schema or shared code are edited."
     }
   ],
   "review": {
@@ -2643,7 +2682,6 @@
     "GOV-LES-T1-W01-CORRECTED-WEEK",
     "GOV-REV-T2",
     "GOV-MARK-T2",
-    "GOV-WK-T2-W04",
     "GOV-WK-T2-W05",
     "GOV-WK-T2-W06",
     "GOV-WK-T2-W07",
@@ -2683,6 +2721,7 @@
     "GOV-LES-T1-W10-CORRECTED-WEEK",
     "GOV-LES-T2-W01-CORRECTED-WEEK",
     "GOV-LES-T2-W02-CORRECTED-WEEK",
-    "GOV-LES-T2-W03-CORRECTED-WEEK"
+    "GOV-LES-T2-W03-CORRECTED-WEEK",
+    "GOV-LES-T2-W04-CORRECTED-WEEK"
   ]
 }
