@@ -136,3 +136,14 @@ For any item whose option labels are lost in a student rendering, mark the corre
 ### Teacher review
 
 Teacher review must specifically confirm the intersection branch for the dimensioned pentagon and irregular hexagon, the wording of the under-specified single-diagonal pentagon task, and the exact source-option lettering in the rendered student view. The unresolved single-diagonal task is separately tracked under TD-T2-W03-GENERAL-PENTAGON-DIAGONAL-UNDERDEFINED.
+
+## Original regular-pentagon replacement for the single-diagonal revision prompt
+
+The source prompt gives only a 70 mm diagonal and does not say the pentagon is regular. A general pentagon is therefore under-specified. The Week Three lesson now supplies a separate, explicitly labelled original replacement that states “regular pentagon”:
+
+- Golden ratio φ=(1+√5)/2≈1.61803.
+- Side length =70/φ≈43.26 mm.
+- Circumradius =70/[2sin72°]≈36.84 mm.
+- Draw the circumcircle, mark five 72° central intervals and join consecutive vertices.
+
+This is a complete alternative assessment with a five-mark rubric. It does not reinterpret or silently correct the original source prompt.
