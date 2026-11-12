@@ -21,6 +21,8 @@ type ArchiveCorrection = {
   term: string;
   order_index: number;
   title: string;
+  source_title?: string;
+  source_order_index?: number;
   source_archive_file: string;
   material_type: string;
   content_approval: string;
@@ -140,11 +142,11 @@ function archiveCorrectionSourceReference(record: ArchiveCorrection): string {
   ].join('\n');
 }
 
-function primary4IdentityMatches(topic: Primary4Topic, expected: { subject: string; term: string; order_index: number; title: string }): boolean {
+function primary4IdentityMatches(topic: Primary4Topic, expected: { subject: string; term: string; order_index: number; title: string; source_title?: string; source_order_index?: number }): boolean {
   return normalize(topic.subject_name) === normalize(expected.subject)
     && normalize(topic.term_label) === normalize(expected.term)
-    && Number(topic.order_index) === expected.order_index
-    && normalize(topic.title) === normalize(expected.title);
+    && Number(topic.order_index) === (expected.source_order_index ?? expected.order_index)
+    && normalize(topic.title) === normalize(expected.source_title ?? expected.title);
 }
 
 /** Bind a live Primary 4 row to either the read-only export or a deterministic
