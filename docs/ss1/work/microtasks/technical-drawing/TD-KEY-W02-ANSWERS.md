@@ -15,10 +15,14 @@
 - Evaluation Q1: exscribed circle on the 55/60/50 mm triangle — use the construction and exradii above.
 - Evaluation Q2: regular hexagon of side 50 mm — use the sixfold-symmetry method above; the source asks for a description rather than a single numerical radius.
 - Weekend Q1: **C — bisect two external angles**. An excentre is the intersection of two external angle bisectors (with the corresponding internal bisector for the chosen excentre).
-- Weekend Q2: the source diagram (image10) labels multiple centre/radius lines; the radius is any segment from the excentre to its tangency point, perpendicular to the tangent side. The option cannot be keyed uniquely from the low-resolution label overlap; retain the figure and require the learner to identify the perpendicular radius rather than guessing a letter.
-- Weekend Q3: the image depicts a circle through two given points and tangent to a straight line; the supplied answer options classify circle types but do not precisely name this construction. The source item is malformed and should be corrected by the author.
+- Weekend Q2 / page 8 figure: **both B (OB) and C (OQ) are radii**. O is the centre; B and Q are tangency points on the two tangent side-lines, so OB=OQ and both are perpendicular to their respective tangents. The single-answer MCQ has two correct options and must be revised; do not force one letter.
+- Weekend Q3 / page 8 figure: **D — escribed circle**. The circle lies outside the triangle and touches the extended side-lines; its centre is an excentre.
 - Weekend Q4: **ambiguous single-answer MCQ**. Both B (“bisect two sides”) and C (“draw a line from the determined centre parallel to one side”) are not valid required steps for an escribed circle; the perpendicular from the centre to a side is required. Accept B or C only if the assessment is revised to permit multiple answers.
 - Weekend Q5: **B — right-angled**. Since AB is a diameter and C lies on the circumference, ∠ACB=90° (angle in a semicircle).
+
+## Additional general-revision construction
+
+For the source's general-revision Q2, draw a tangent from external point S to the given circle with centre O: join SO; bisect SO at M; draw the auxiliary circle centred at M with radius MS (the circle on diameter SO); its intersection T with the given circle gives ST as a tangent because angle STO is 90°. The two intersection points give the two possible tangents.
 
 ## Missing source figure and remaining limitations
 
