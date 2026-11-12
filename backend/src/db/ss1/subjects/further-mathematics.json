@@ -4536,6 +4536,232 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T2-W07-COMPOSITE-INVERSE-MAPPINGS",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Further Mathematics",
+      "title": "Composite mappings and inverse functions",
+      "objectives": [
+        "Evaluate composite mappings and distinguish f∘g from g∘f.",
+        "Find inverse functions algebraically and state the domain restrictions.",
+        "Explain why an inverse function requires a one-to-one and onto mapping.",
+        "Solve equations involving composite functions and inverse values."
+      ],
+      "body": "Composite mappings combine two or more functions in sequence. An inverse mapping reverses a bijection: it takes each output back to its unique input.\n\n1. COMPOSITE MAPPINGS\nIf f:X→Y and g:Y→Z, then g∘f:X→Z is defined by (g∘f)(x)=g(f(x)). Apply the function nearest the input first. In general, g∘f is not the same as f∘g. The output of the first function must belong to the domain of the second.\nExample 1: Let f(x)=3x-1 and g(x)=5x+2.\nf(g(x))=3(5x+2)-1=15x+5.\ng(f(x))=5(3x-1)+2=15x-3.\nThey are different, so order matters.\nAlso 2f(x)-g(x)=2(3x-1)-(5x+2)=x-4.\nExample 2: Let f(x)=x^2-1 and g(x)=2x+3. Then g(f(x))=2(x^2-1)+3=2x^2+1. But f(g(x))=(2x+3)^2-1=4x^2+12x+8.\n\n2. INVERSE MAPPINGS\nA function has an inverse function if it is one-to-one and onto between the stated domain and codomain (bijective). The inverse reverses the mapping: f^(-1)(f(x))=x and f(f^(-1)(y))=y for values in the appropriate domains. The inverse is not the reciprocal 1/f(x).\nTo find an inverse:\n1. Write y=f(x).\n2. Interchange x and y.\n3. Solve for y.\n4. Write f^(-1)(x)=y and state the domain of the inverse.\nExample 3: f(x)=(x-3)/2. Let y=(x-3)/2. Then 2y=x-3, x=2y+3. Interchange variables: f^(-1)(x)=2x+3.\n\n3. INVERSE OF A RATIONAL FUNCTION\nExample 4: f(x)=(2x-1)/(3x+2), x≠-2/3.\nLet y=(2x-1)/(3x+2). Then 3xy+2y=2x-1, so x(3y-2)=-1-2y and x=(-1-2y)/(3y-2). Therefore f^(-1)(x)=(-1-2x)/(3x-2)=(1+2x)/(2-3x), with x≠2/3. The original function excludes -2/3; its range excludes 2/3, which becomes the inverse's domain restriction.\nExample 5: f^(-1)(-2)=(-1-2(-2))/(3(-2)-2)=3/(-8)=-3/8.\n\n4. INVERSE OF A SQUARE-ROOT FUNCTION\nExample 6: g(x)=√(x-2), x≥2. Its range is y≥0. Set y=√(x-2), square: y^2=x-2, so x=y^2+2. Hence g^(-1)(x)=x^2+2, with inverse domain x≥0. Therefore g^(-1)(4)=18.\nThe restriction x≥0 matters: without it, x^2+2 is not one-to-one on all real numbers.\n\n5. INVERSE OF A RECIPROCAL-TYPE FUNCTION\nExample 7: g(x)=2/(x-2), x≠2. Let y=2/(x-2). Then yx-2y=2, so x=2+2/y. Thus g^(-1)(x)=2+2/x, with x≠0.\n\n6. SOLVING EQUATIONS INVOLVING COMPOSITIONS\nExample 8: If f(x)=x^2+4x+3, solve f(x)=f(x+1). Expand f(x+1)=x^2+6x+8. Equating gives x^2+4x+3=x^2+6x+8, so x=-5/2.\nExample 9: If f(x)=2x-3, then f(f(x))=2(2x-3)-3=4x-9. Do not confuse this with 2f(x).\n\n7. COMMON ERRORS\nDo not reverse the order of composition. Do not assume f∘g=g∘f. An inverse exists as a function only when the original function is bijective on the stated domain and codomain. Restrict square-root and quadratic functions where needed. State the inverse domain and exclude denominator zeros. An inverse is not the reciprocal.",
+      "body_sha256": "92c612cffa7e573b54f16a92cfba67963cd9867842777d423d8ca179e3f716a3",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Let f(x)=3x-1 and g(x)=5x+2. Find f(g(x)) and g(f(x)).",
+          "answer": "f(g(x))=15x+5; g(f(x))=15x-3.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "f(g(x))",
+              "marks": 1
+            },
+            {
+              "criterion": "g(f(x))",
+              "marks": 1
+            },
+            {
+              "criterion": "Shows order differs",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "If f(x)=x²-1 and g(x)=2x+3, find g(f(x)).",
+          "answer": "g(f(x))=2(x²-1)+3=2x²+1.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Substitutes f(x) into g",
+              "marks": 1
+            },
+            {
+              "criterion": "Simplifies to 2x²+1",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Find the inverse of f(x)=(x-3)/2.",
+          "answer": "y=(x-3)/2; x=2y+3. Thus f^(-1)(x)=2x+3.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Writes y=f(x)",
+              "marks": 1
+            },
+            {
+              "criterion": "Interchanges and solves",
+              "marks": 1
+            },
+            {
+              "criterion": "Inverse 2x+3",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Find the inverse of f(x)=(2x-1)/(3x+2) and state its domain.",
+          "answer": "f^(-1)(x)=(-1-2x)/(3x-2)=(1+2x)/(2-3x), x≠2/3.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Forms equation and cross-multiplies",
+              "marks": 1
+            },
+            {
+              "criterion": "Solves for original x",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct inverse formula",
+              "marks": 1
+            },
+            {
+              "criterion": "Domain excludes 2/3",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "For the function in Q4, find f^(-1)(-2).",
+          "answer": "(-1+4)/(-6-2)=3/-8=-3/8.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct substitution",
+              "marks": 1
+            },
+            {
+              "criterion": "Answer -3/8",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Find the inverse of g(x)=√(x-2), x≥2, and evaluate g^(-1)(4).",
+          "answer": "y=√(x-2) gives x=y²+2. Thus g^(-1)(x)=x²+2 for x≥0, and g^(-1)(4)=18.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Squares and rearranges",
+              "marks": 1
+            },
+            {
+              "criterion": "Inverse x²+2 and domain x≥0",
+              "marks": 1
+            },
+            {
+              "criterion": "Value 18",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q7",
+          "question": "Find the inverse of g(x)=2/(x-2), x≠2.",
+          "answer": "y=2/(x-2); yx-2y=2; x=2+2/y. Therefore g^(-1)(x)=2+2/x, x≠0.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Cross-multiplies correctly",
+              "marks": 1
+            },
+            {
+              "criterion": "Solves for x",
+              "marks": 1
+            },
+            {
+              "criterion": "Inverse and domain",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q8",
+          "question": "If f(x)=x²+4x+3, solve f(x)=f(x+1).",
+          "answer": "f(x+1)=x²+6x+8. Equate to x²+4x+3; 2x=-5, x=-5/2.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Expands f(x+1)",
+              "marks": 1
+            },
+            {
+              "criterion": "Equates and simplifies",
+              "marks": 1
+            },
+            {
+              "criterion": "x=-5/2",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q9",
+          "question": "If f(x)=2x-3, find f(f(x)).",
+          "answer": "f(f(x))=2(2x-3)-3=4x-9.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Substitutes f(x)",
+              "marks": 1
+            },
+            {
+              "criterion": "Answer 4x-9",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "State the condition for a function to have an inverse function. Explain why f(x)=x² on all real numbers does not have an inverse function on all real numbers.",
+          "answer": "It must be one-to-one and onto (bijective). x² is not one-to-one on R because f(2)=f(-2)=4, so no inverse function on all R without restricting the domain.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Bijective condition",
+              "marks": 1
+            },
+            {
+              "criterion": "Counterexample f(2)=f(-2)",
+              "marks": 1
+            },
+            {
+              "criterion": "Conclusion/domain restriction",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source: SS1 second-term Further Mathematics",
+          "locator": "WEEK SEVEN, CONTENT: Composite Mapping and Inverse Mapping; member SHA-256 3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36. Source algebra was recomputed and notation restored.",
+          "url": null,
+          "rights": "Newly authored instructional material; no extended source passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools; content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -5335,14 +5561,19 @@
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Functions: one-to-one, onto, composite, inverse",
       "objective_locator": "scheme topic 7 (scheme table row 7, body child 5, table sha256 6b18d95fc63347bc091d1c093cc113dd2b08f60f5e7a256f8571335a53a82b7e); parsed row 6 (Composite Mapping and Inverse Mapping)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-43c5ab51b87f:BODY:c9158495ed49375d8ad340bc83cbc3f3eef760a4b89985df3e4a5bc8863ecbd6"
+        "SS1-SRC-43c5ab51b87f:BODY:c9158495ed49375d8ad340bc83cbc3f3eef760a4b89985df3e4a5bc8863ecbd6",
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W07-COMPOSITE-INVERSE-MAPPINGS"
       ],
       "evidence": [
         {
           "locator": "parsed row 6",
           "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and delivered text loses superscripts/subscripts (401 superscript and 214 subscript runs in the source; OMML characters lost in this row: 0); no replacement lesson authored."
+        },
+        {
+          "locator": "Second Term Week Seven source body: composite mapping and inverse mapping definitions, worked examples, evaluation, general evaluation, weekend and theory",
+          "explanation": "Replacement corrects composition notation, inverse function conditions and domain/range restrictions. It supplies worked examples and 10 keyed practice questions. Approval PENDING; verification DEFERRED."
         }
       ]
     },
@@ -6076,6 +6307,54 @@
           "explanation": "Replacement correctly defines one-to-one, onto, into, identity and constant mappings and distinguishes their properties."
         }
       ]
+    },
+    {
+      "id": "COV-FM-T2-W07-OBJ-1",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Evaluate composite mappings and distinguish composition order.",
+      "objective_locator": "scheme second term week 7; source Week Seven Composite Mapping section and examples",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W07-COMPOSITE-INVERSE-MAPPINGS"
+      ],
+      "evidence": [
+        {
+          "locator": "Week Seven source Examples 1–2; replacement section 1",
+          "explanation": "Replacement defines g∘f and computes both orders, showing they need not agree."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-W07-OBJ-2",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Find inverse mappings and evaluate inverse functions.",
+      "objective_locator": "scheme second term week 7; source Week Seven Inverse Mapping section and rational/square-root examples",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W07-COMPOSITE-INVERSE-MAPPINGS"
+      ],
+      "evidence": [
+        {
+          "locator": "Week Seven source inverse procedure and worked examples; replacement sections 2–5",
+          "explanation": "Replacement gives algebraic inverse procedure and examples for linear, rational, square-root and reciprocal-type functions with domain restrictions."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-W07-OBJ-3",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "State when an inverse function exists and apply one-to-one/onto conditions.",
+      "objective_locator": "scheme second term week 7; source statement 'A function has an inverse if it’s both one-one and onto'",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W07-COMPOSITE-INVERSE-MAPPINGS"
+      ],
+      "evidence": [
+        {
+          "locator": "Week Seven source inverse definition; replacement section 2 and practice Q10",
+          "explanation": "Replacement states bijectivity and demonstrates why x² on all real numbers is not invertible without a domain restriction."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -6392,6 +6671,19 @@
         "COV-FM-T2-W05-OBJ-1",
         "COV-FM-T2-W05-OBJ-2",
         "COV-FM-T2-W05-OBJ-3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-T2-W07-SOURCE-ITEM-DEFECTS",
+      "kind": "FACT",
+      "detail": "The Week Seven source has a weekend MCQ for f(x)=2x−3 asking for f(f(x)); the correct answer is 4x−9, but none of the printed options (4x−6, 2x+3, 4x+6) matches. A square-root inverse example loses the domain restriction in extracted text; the correct original domain is x≥2 and the inverse domain is x≥0. The inverse of 2/(x−2) requires x≠0 in its inverse domain. These are corrected in the replacement.",
+      "required_action": "Use the replacement's keyed inverse and composite examples; do not use the source's incorrect f(f(x)) options. Keep original source unchanged and obtain teacher approval.",
+      "affected_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W07-COMPOSITE-INVERSE-MAPPINGS",
+        "COV-FM-T2-R06",
+        "COV-FM-T2-W07-OBJ-1",
+        "COV-FM-T2-W07-OBJ-2"
       ],
       "blocks_delivery": true
     }
