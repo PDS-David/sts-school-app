@@ -24,7 +24,9 @@
     "Workers start from current master and change only their own entries; PENDING means unclaimed.",
     "TD-SCH-W02 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5) indexed the 2nd Term scheme week 2 row. technical-drawing.json now has 4 source_rules (added SS1-SRC-af4868d2c026-R004, SCHEME_ONLY) and 3 coverage entries (added COV-TD-T2-SCH-W02, SUPPORTED). \"Escribed circle.\" (with the source full stop) is the only unique form of the scheme line; the teaching row 12 \"WEEK TWO\" covers it and the second objective (circles touching given points). Figures are routed to TD-VIS-W02. Note 1 is the queue-generation snapshot. Hashes and mapping are in docs/ss1/work/microtasks/technical-drawing/TD-SCH-W02.md. Nothing was run; testing remains deferred.",
     "TD-SCH-W03 (2026-10-30, master e60b1fe) recorded the 2nd Term week 3 scheme row (parsed row 2, 'WEEK 3:Polygons'): technical-drawing.json now has 5 source_rules (added SS1-SRC-af4868d2c026-R005, SCHEME_ONLY) and 4 coverage entries (added COV-TD-T2-SCH-W03, SUPPORTED, bound to teaching row 13). Evidence: TD-SCH-W03.md.",
-    "TD-SCH-W04 (2026-11-07, master 54edac346b11fb480c172f27d4ce7fe0e9ea2c78) indexed the 2nd Term Week 4 scheme row, parsed row 3: “Plain scales” (27 characters; SHA-256 dc7684f7b356a56c10dbdeefe7f7676a5e72e61d4a8c69a06814ff2ec7e600ab). Added source rule SS1-SRC-af4868d2c026-R006 (SCHEME_ONLY, unique full-row anchor) and coverage COV-TD-T2-SCH-W04 (SUPPORTED), bound to the existing WEEK FOUR teaching row parsed row 14, body ID SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd. No supplement, new lesson or source alteration. See TD-SCH-W04.md. Approval and verification remain pending/deferred; testing not run."
+    "TD-SCH-W04 (2026-11-07, master 54edac346b11fb480c172f27d4ce7fe0e9ea2c78) indexed the 2nd Term Week 4 scheme row, parsed row 3: “Plain scales” (27 characters; SHA-256 dc7684f7b356a56c10dbdeefe7f7676a5e72e61d4a8c69a06814ff2ec7e600ab). Added source rule SS1-SRC-af4868d2c026-R006 (SCHEME_ONLY, unique full-row anchor) and coverage COV-TD-T2-SCH-W04 (SUPPORTED), bound to the existing WEEK FOUR teaching row parsed row 14, body ID SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd. No supplement, new lesson or source alteration. See TD-SCH-W04.md. Approval and verification remain pending/deferred; testing not run.",
+    "2026-11-12 follow-through: added independently authored Weeks Eight–Nine equal-area lesson SUP-SS1-TECHNICAL-DRAWING-T2-W08-W09-EQUAL-AREA with six marked practice questions; both Week 8 and Week 9 scheme coverage entries and both combined-row coverage entries now bind the supplement. Added TD-KEY-W08-W09-ANSWERS.md; six supplement questions are fully keyed (18 marks). Source figure-dependent evaluation items, visual derivatives, formal approval, schema/compiler/importer and student rendering remain outstanding. Package remains PENDING.",
+    "2026-11-12 follow-through: added Week Ten tangency supplement SUP-SS1-TECHNICAL-DRAWING-T2-W10-TANGENCY, bound it to COV-TD-T2-W10-TANGENCY-SUPPLEMENT, and added TD-KEY-W10-ANSWERS.md with four keyed practice items (9 marks). Recorded the source's lower R20 tangency feasibility conflict as a blocking factual open item; no guessed correction."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 1,
@@ -40,10 +42,10 @@
     "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 40,
+    "IMPLEMENTED_TESTING_DEFERRED": 42,
     "BLOCKED": 5,
     "IN_PROGRESS": 6,
-    "PENDING": 107
+    "PENDING": 105
   },
   "total": 158,
   "items": [
@@ -864,7 +866,7 @@
         "TD-SCH-W09"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Implemented 2026-11-08: added separate PARTIAL coverage entries for Week 8 and Week 9 equal-area objectives, bound to the combined original row parsed row 17 (WEEK EIGHT-NINE), title “Equal area of plane figures”, body SHA-256 865bb6bbb80331ca2182e97801040727e986ad3f9334b61018a33f239e4eb97a. The combined source row is not split. Exact constructions, dimensions, labels, figures, exercises and answer/marking evidence are not present in the current repository record; added TD-FACT-W08-W09-DETAILS and TD-KEY-W08-W09-ANSWERS; existing TD-VIS-W08-W09 owns visuals. No source-specific detail invented. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
+      "implementation_reference": "docs/ss1/work/microtasks/technical-drawing/TD-WK-W08-W09.md and lesson SUP-SS1-TECHNICAL-DRAWING-T2-W08-W09-EQUAL-AREA; parsed row 17 identity/body hash recorded, both Week 8 and Week 9 coverage entries now bind the combined row to the equal-area supplement. The original row remains combined and is not split.",
       "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
     },
     {
@@ -1848,9 +1850,9 @@
         "TD-VIS-W08-W09",
         "TD-FACT-W08-W09-DETAILS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by TD-WK-W08-W09 on 2026-11-08. Exact constructions, figures, answers and marking evidence are not present in current repository evidence.",
-      "completion_condition": "Publish original keyed construction solutions and positive integer marking criteria summing exactly to each question's marks, with no invented dimensions or diagrams."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W08-W09-ANSWERS.md; six independently authored equal-area practice items keyed with explicit worked solutions and positive integer marking criteria; marks total 18 and each criterion sum matches its question. Source figure-dependent assessments remain separately unresolved.",
+      "completion_condition": "Six supplement practice items have keyed answers and marking criteria summing exactly to each question's marks. Original source figure-dependent questions remain separate blockers until diagrams are bound and reviewed."
     },
     {
       "id": "TD-FACT-W10-TANGENCY-CONSTRUCTIONS",
@@ -1916,9 +1918,9 @@
         "TD-VIS-W10",
         "TD-FACT-W10-TANGENCY-CONSTRUCTIONS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by TD-WK-W10 on 2026-11-08. Complete source construction tasks and figure geometry are not recorded in current repository evidence.",
-      "completion_condition": "Provide correct original construction steps and answers with positive integer marking criteria summing exactly to each question's marks; do not invent figures or dimensions."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W10-ANSWERS.md; four independently authored tangency practice items keyed with explicit answers and marking criteria; criterion marks sum to question marks (9 total). Source figure-dependent templates and weekend assignment questions remain unkeyed pending asset review.",
+      "completion_condition": "Four supplement practice items are keyed and criteria sum to question marks. Original source assessment items remain blocked until all relevant diagrams are faithfully bound and dimensions/labels verified."
     },
     {
       "id": "TD-ASSET-W01-F01",
