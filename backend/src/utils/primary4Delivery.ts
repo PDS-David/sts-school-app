@@ -1,9 +1,6 @@
 import { createHash } from 'node:crypto';
 import manifestData from '../db/primary4/sourceManifest.json' with { type: 'json' };
-import { buildHomeEconomicsImportPlan } from '../db/primary4/buildHomeEconomicsImportPlan.js';
-import { buildHomeEconomicsTerm3SupplementPlan } from '../db/primary4/buildHomeEconomicsTerm3SupplementPlan.js';
-import { buildBasicScienceTerm3ImportPlan } from '../db/primary4/buildBasicScienceTerm3ImportPlan.js';
-import { buildBasicTechnologyTerms1And2ImportPlan } from '../db/primary4/buildBasicTechnologyTerms1And2ImportPlan.js';
+import { getPrimary4SupplementRecords } from '../db/primary4/primary4Supplements.js';
 
 type ReviewFlag = 'HIGH_SHORT_SOURCE' | 'SHORT_SOURCE_REVIEW' | 'CONTENT_PRESENT' | 'RESEARCHED_VERIFIED';
 type ManifestRecord = {
@@ -24,6 +21,7 @@ type ResearchedRecord = {
   order_index: number;
   title: string;
   source_sha256: string;
+  source_file: string;
 };
 type Primary4Topic = {
   id?: unknown;
@@ -34,6 +32,7 @@ type Primary4Topic = {
   order_index?: unknown;
   title?: unknown;
   source_reference?: unknown;
+  source_file?: unknown;
   summary?: unknown;
   generated_assessment_id?: unknown;
   [key: string]: unknown;
@@ -45,31 +44,18 @@ const records = new Map<number, ManifestRecord>(
 const sha256 = (value: string) => createHash('sha256').update(value, 'utf8').digest('hex');
 const normalize = (value: unknown) => String(value ?? '').replace(/\s+/g, ' ').trim().toLocaleLowerCase('en');
 
-function makeResearchedRecord(topic: any): ResearchedRecord {
-  return {
-    stable_key: String(topic.stable_key),
-    subject: String(topic.subject_name),
-    term: String(topic.term_label),
-    order_index: Number(topic.order_index),
-    title: String(topic.title),
-    source_sha256: sha256(String(topic.source_reference)),
-  };
-}
-
-// The same deterministic builders produce both the insert-only import plan and
-// the exact source fingerprints accepted by student delivery. Pending lessons
-// are deliberately withheld until their package metadata is approved/verified.
-const researchedPlans = [
-  buildHomeEconomicsImportPlan(),
-  buildHomeEconomicsTerm3SupplementPlan(),
-  buildBasicScienceTerm3ImportPlan(),
-  buildBasicTechnologyTerms1And2ImportPlan(),
-];
+// The same source-reference formatter is used by the existing ingestTopics.ts
+// pipeline and by student delivery, so the stored source text must match exactly.
 const researchedRecords = new Map<string, ResearchedRecord>(
-  researchedPlans.flatMap(plan => plan.topics.map((topic: any) => {
-    const record = makeResearchedRecord(topic);
-    return [record.stable_key, record] as const;
-  })),
+  getPrimary4SupplementRecords().map(record => [record.stable_key, {
+    stable_key: record.stable_key,
+    subject: record.subject_name,
+    term: record.term_label,
+    order_index: record.order_index,
+    title: record.title,
+    source_sha256: sha256(record.source_reference),
+    source_file: record.source_file,
+  }]),
 );
 
 export type Primary4SourceDelivery =
@@ -131,6 +117,7 @@ export function resolvePrimary4SourceDelivery(topic: Primary4Topic): Primary4Sou
   if (!researched) return withheld('Researched-package key is not registered', 'researched-package');
   if (normalize(topic.subject_name) !== normalize(researched.subject) ||
       normalize(topic.term_label) !== normalize(researched.term) ||
+      normalize(topic.source_file) !== normalize(researched.source_file) ||
       Number(topic.order_index) !== researched.order_index ||
       normalize(topic.title) !== normalize(researched.title)) {
     return withheld('Researched-package topic identity differs from its registered lesson', 'researched-package');
