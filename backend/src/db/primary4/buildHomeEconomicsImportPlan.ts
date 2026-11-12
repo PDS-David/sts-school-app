@@ -56,7 +56,7 @@ export function buildHomeEconomicsImportPlan() {
       '',
       'EVALUATION',
       ...lesson.evaluation.map((item, index) => `${index + 1}. ${item}`),
-    ].join('\\n'),
+    ].join('\n'),
   }));
   return {
     plan_version: 'primary4-home-economics-insert-only-v1',
