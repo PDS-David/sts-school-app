@@ -482,7 +482,7 @@ test('Technical Drawing subject alias approval is recorded without implying less
   const openItem = subject.open_items.find(item => item.id === 'TECHNICAL-DRAWING-ALIAS-APPROVAL');
   assert.ok(openItem, 'alias approval provenance record missing');
   assert.equal(openItem.blocks_delivery, false);
-  assert.match(openItem.detail, /subject alias\/normalization only/);
+  assert.match(openItem.detail, /subject alias\/normalization approval only/);
   assert.equal(subject.package_status, 'PENDING', 'alias approval must not certify the whole package');
   assert.ok(subject.lessons.every(lesson => lesson.state.content_approval === 'PENDING'), 'owner alias approval must not silently approve teaching content');
 });
