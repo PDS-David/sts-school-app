@@ -325,6 +325,11 @@ if (!URL_) {
     );
     const unlocked: any = await (await get(`/learning/topics/${topicId['Music|4']}/assets`, tokenA)).json();
     assert.deepEqual(unlocked.assets.map((asset: any) => asset.asset_key), ['W4-1']);
+    // The later Week Seven assets are unlocked only after the Week Four topic is passed too.
+    await query(
+      'INSERT INTO topic_completions(student_id, topic_id, passed) VALUES ($1, $2, true)',
+      [created.studentIds[0], topicId['Music|4']],
+    );
     const nowListed: any = await (await get('/learning/assessments', tokenA)).json();
     assert.equal(nowListed.assessments.some((assessment: any) => assessment.id === generatedAssessmentId), true);
     assert.equal((await get(`/learning/assessments/${generatedAssessmentId}/questions`, tokenA)).status, 200);
