@@ -665,3 +665,564 @@ Public opinion can inform policy, reveal needs and channel views to government, 
 - `GOVERNMENT-T3-W05-WEEKEND-MCQ-AMBIGUITY` — resolve the competing definitions, category mismatch and coup wording before keying.
 
 No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-WK-T3-W06 — Pressure Groups indexing
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and high-level legal/content review only. No lesson, answer key, marks, correction, asset or parser rule is authored here. The source's violent-method item is recorded only as a safety/content defect; no operational details are reproduced or expanded.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37 on the original legacy `.doc`.
+- Complete span: lines 558–713; UTF-8 span SHA-256: `9f97e6fbb99bc5bc4941ac40b48d947efcd4d8253aa61e65233aa728a232998a`.
+- Printed label: `WEEK SIX` at line 558; topic: `PRESSURE GROUPS` at line 559.
+- Scheme entry 6 (preamble lines 22–24) covers meaning/types, functions, factors aiding/impeding success, modes of operation and dangers.
+- Locators refer to Antiword line numbers, not page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are empty rather than inferred from a different extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-W06-SCHEME-PRESSURE-GROUPS | Scheme entry 6 mapping | PARTIAL |
+| COV-GOV-T3-W06-MEANING-TYPES | Meaning/types, lines 566–596 | PARTIAL |
+| COV-GOV-T3-W06-FUNCTIONS | Functions objective from scheme/content outline | UNRESOLVED |
+| COV-GOV-T3-W06-FACTORS | Success/weakness factors, lines 598–632 | PARTIAL |
+| COV-GOV-T3-W06-MODES | Modes of operation, lines 634–650 | PARTIAL |
+| COV-GOV-T3-W06-DEMERITS | Demerits/dangers, lines 652–669 | PARTIAL |
+| COV-GOV-T3-W06-GENERAL-REVISION | General revision, lines 675–684 | PARTIAL |
+| COV-GOV-T3-W06-READING | Reading pointers, lines 686–688 | PARTIAL |
+| COV-GOV-T3-W06-ASSESSMENT-KEYS | All exercise blocks | UNRESOLVED |
+| COV-GOV-T3-W06-WEEKEND-MCQS | Weekend MCQs, lines 690–706 | PARTIAL |
+
+Ten coverage entries and nine linked package open items were added. The functions objective is explicitly UNRESOLVED because no distinct functions section appears in the teaching span.
+
+### Meaning and types — lines 566–596
+
+The central definition—an organized group of people with shared interests seeking to influence government policy—is broadly sound. The listed types are economic, professional, occupational, educational, religious, social, ethnic/cultural and anomic. These are analytical categories, not mutually exclusive boxes: professional and occupational groups can overlap. Some examples need exact names or better identification: “Nigeria Union of Journalist” and “Academic Staff Union of University (A.S.S.U.)” should be checked against official organization names; “Arewa” is too broad to identify one specific organization. The description of anomic groups should be taught as a theoretical ideal type, not a universal rule that every such group necessarily disappears after achieving an aim.
+
+### Functions and organizational factors — lines 598–632
+
+The scheme and content outline both name functions, but the body moves from types to factors aiding effective operation, weaknesses, techniques and demerits without a separate functions section. The definition's statement that pressure groups seek to influence policy does not fully satisfy the functions objective. It remains UNRESOLVED; no missing section has been invented.
+
+The success/weakness lists include membership size, unity, funding, leadership, government attitude, organization, literacy/political education and dedication. These are context-dependent factors, not deterministic rules. Large membership alone does not guarantee influence; strategy, public legitimacy, issue salience, resources, internal organization and access to decision-makers also matter. “Illiteracy” is too broad as a causal label; political education and access to information are more precise concepts.
+
+### Modes of operation and dangers — lines 634–669
+
+The source lists dialogue, ultimatums, lobbying, demonstrations, strikes, mass-media campaigns and open-air campaigns. These should be distinguished by their legality and peaceful character; industrial action is subject to applicable labour law. The source also labels violence as a technique at lines 646–647. That is dangerous and unlawful conduct, not a legitimate pressure-group method. This note does not repeat or expand the source's operational examples. Any later correction should replace that item with lawful, peaceful civic participation.
+
+The demerits section generalizes that pressure groups are self-centred, elitist, lawless, destabilizing or corrupt. Pressure groups can also advocate public interests, rights and minority concerns. Peaceful lobbying, demonstrations, strikes and boycotts are not inherently unlawful or corrupt; lawful lobbying is distinct from bribery. Group support for a political party does not itself make a government illegitimate; legitimacy depends on constitutional and electoral rules. Disorder or violence may occur in particular cases but is not an inherent feature of every pressure group.
+
+### Assessment and reading-marker audit
+
+- `EVALUATION QUESTIONS`: line 614; two questions at lines 615–616.
+- `EVALUATION QUESTIONS`: line 671; two questions at lines 672–673.
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 675; six questions at lines 676–684. Questions 1–3 concern pressure groups. Questions 4–6 concern judicial independence and executive functions, outside this scheme entry.
+- `READING ASSIGNMENT`: line 686; `Essential Government` pp. 75–77 and `Comprehensive Government` pp. 69–71 at lines 687–688. Editions/publication details are absent and neither book was inspected.
+- `WEEKEND ASSINGMENT`: line 690; five MCQs at lines 691–706. Q1 blurs professional and occupational categories. Q2 makes a broad claim about limited membership. Q3 tests policy influence. Q4 includes riot among the options even though violent conduct must not be normalized as a legitimate method. Q5 lists both dedication/unity and large membership as factors already identified, so it has more than one plausible correct option.
+- `THEORY`: line 708; two prompts at lines 709–711.
+- Total: **17 exercise stems** (2 + 2 + 6 + 5 + 2). No source answer key, marks or marking criteria are supplied. No answers or marks were invented.
+
+### Dated legal reference consulted
+
+**Constitution of the Federal Republic of Nigeria, 1999, updated with the First–Fifth Alterations** (PLAC, third revision October 2023; reprint September 2024), sections 39–40 on expression and peaceful assembly/association: https://placng.org/i/wp-content/uploads/2023/11/Constitution-of-the-Federal-Republic-of-Nigeria-1999-Updated.pdf
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W06-FUNCTIONS-MISSING` — functions are listed in the scheme/content outline but not taught in a distinct section.
+- `GOVERNMENT-T3-W06-TYPES-FACT` — verify organization names and refine overlapping group categories.
+- `GOVERNMENT-T3-W06-FACTORS-FACT` — qualify context-dependent factors and remove broad/stigmatizing generalizations.
+- `GOVERNMENT-T3-W06-VIOLENCE-FACT` — replace the source's violent-method item with lawful peaceful civic methods; no operational detail is provided.
+- `GOVERNMENT-T3-W06-DEMERITS-FACT` — distinguish legitimate advocacy from unlawful conduct and corruption.
+- `GOVERNMENT-T3-W06-REVISION-MISALIGNMENT` — resolve the judiciary/executive questions' placement.
+- `GOVERNMENT-T3-W06-READING-VERIFICATION` — verify exact editions and page contents.
+- `GOVERNMENT-T3-W06-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 17 stems.
+- `GOVERNMENT-T3-W06-WEEKEND-MCQ-AMBIGUITY` — correct category ambiguity and the unsafe/invalid technique option before keying.
+
+No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved in source locators. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-WK-T3-W07 — Political Parties indexing
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and dated constitutional fact-check evidence only; no lesson, answer key, marks, correction, asset or parser rule is authored here.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37 on the original legacy `.doc`.
+- Complete span: lines 714–830; UTF-8 span SHA-256: `b5cab6670a880156a5a362205733537f5f5c08759bc82613931981b3d3400942`.
+- Printed label: `WEEK SEVEN` at line 714; topic: `POLITICAL PARTIES` at line 715.
+- Scheme entry 7 is mapped by topic/order to this span. Its body content outline also lists party-system and manifesto subtopics, but those sections do not appear in the W07 body; W08 is separately labelled PARTY SYSTEM. The cross-week coverage is not assumed complete until W08 is indexed.
+- Locators refer to Antiword line numbers, not page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are empty rather than inferred from a different extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-W07-SCHEME-POLITICAL-PARTIES | Scheme entry 7 mapping | PARTIAL |
+| COV-GOV-T3-W07-MEANING | Meaning, lines 723–729 | PARTIAL |
+| COV-GOV-T3-W07-TYPES | Party types, lines 731–748 | PARTIAL |
+| COV-GOV-T3-W07-FUNCTIONS | Functions, lines 756–772 | PARTIAL |
+| COV-GOV-T3-W07-COMPARISON | Parties/pressure groups, lines 773–788 | PARTIAL |
+| COV-GOV-T3-W07-PARTY-SYSTEM-MANIFESTO | Party-system and manifesto objectives in outline | UNRESOLVED |
+| COV-GOV-T3-W07-GENERAL-REVISION | General revision, lines 795–804 | PARTIAL |
+| COV-GOV-T3-W07-READING | Reading pointers, lines 805–807 | PARTIAL |
+| COV-GOV-T3-W07-ASSESSMENT-KEYS | All exercise blocks | UNRESOLVED |
+| COV-GOV-T3-W07-WEEKEND-MCQS | Weekend MCQs, lines 809–824 | PARTIAL |
+
+Ten coverage entries and eight linked package open items were added. Party-system/manifesto coverage remains UNRESOLVED pending the separate W08 review.
+
+### Meaning, types and functions — lines 723–772
+
+The definition is broadly sound: a political party is an organized group seeking electoral power to run government. The Constitution's section 229 definition refers to associations whose activities include canvassing votes for candidates for specified elective offices. Section 221 provides that an association other than a political party may not canvass votes for a candidate or contribute to party/candidate campaign funds.
+
+The source's types—mass, elite, broker, charismatic and religious—are political-science classifications, not an exhaustive constitutional taxonomy:
+- Mass and elite parties are commonly used theoretical categories. The source's example of PDP as an “elite party” is asserted without evidence or criteria.
+- “Broker party” needs a clear reference and definition; the term is not self-explanatory.
+- A charismatic party may be organized around a prominent leader, but the listed UPN/PRP/NCP examples require a source and explicit criteria before they are accepted.
+- The “religious party” description conflicts with Nigerian constitutional requirements. Section 222(b) requires membership to be open to every Nigerian citizen irrespective of religion or ethnic grouping; section 222(e) prohibits a party's name, symbol or logo from containing an ethnic or religious connotation. Do not present an exclusive religious party as a lawful Nigerian party type.
+
+Most listed functions are standard: interest articulation and aggregation, political education/socialization, leadership recruitment, mobilization, policy formulation, opposition scrutiny, government formation through the electoral/constitutional system and peaceful transfer of power. These are potential functions, not guaranteed outcomes. In coalition or parliamentary contexts, a party may need partners or a legislative majority rather than forming a government alone.
+
+### Comparison with pressure groups — lines 773–788
+
+The central distinction is useful: political parties seek electoral office and governmental power; pressure groups seek to influence policy. Section 221 gives a more precise Nigerian legal distinction: an association other than a political party may not canvass votes for a candidate or contribute to party/candidate campaign funds.
+
+The other comparisons are overgeneralized. Pressure groups can have defined leadership and formal organization; they do not necessarily cease after one goal is achieved; they may advocate wider public interests rather than only members' interests. Section 222(b) requires party membership to be open to every citizen regardless of origin, circumstances of birth, sex, religion or ethnic grouping, but this does not mean parties have no membership rules at all.
+
+### Assessment and reading-marker audit
+
+- `EVALUATION QUESTIONS`: line 751; two questions at lines 752–753.
+- `EVALUATION QUESTIONS`: line 791; two questions at lines 792–793.
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 795; five questions at lines 796–804. Questions 1–3 relate to political parties. Questions 4–5 concern the rule of law, not taught in this span or listed in scheme entry 7.
+- `READING ASSIGNMENT`: line 805; `Comprehensive Government` pp. 77–79 and `Essential Government` pp. 92–94 at lines 806–807. Editions/publication details are absent and neither book was inspected.
+- `WEEKEND ASSINGMENT`: line 809; five MCQs at lines 810–824. Q1 has two plausible answers: serving as watchdogs and influencing government policies are both listed functions. Q2 tests the elite-party distinction; Q3 the party's objective of acquiring government power; Q4 the mass-party definition; Q5 the pressure-group objective. Preserve the items; do not key Q1 until it has one defensible answer.
+- `THEORY`: line 826; two prompts at lines 827–828. The phrase `elite part` in question 1 is retained as a source typo.
+- Total: **16 exercise stems** (2 + 2 + 5 + 5 + 2). No source answer key, marks or marking criteria are supplied. No answers or marks were invented.
+
+### Dated constitutional reference consulted
+
+**PLAC, *Constitution of the Federal Republic of Nigeria, 1999*, updated with the First–Fifth Alterations** (third revision October 2023; reprint September 2024). Used for sections 221–229, especially ss221, 222(b), 222(e) and 229: https://placng.org/i/wp-content/uploads/2023/11/Constitution-of-the-Federal-Republic-of-Nigeria-1999-Updated.pdf
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W07-SUBTOPICS-MISSING` — complete the cross-week map for party systems and party manifesto after W08 is indexed.
+- `GOVERNMENT-T3-W07-TYPES-FACT` — verify type examples and correct the religious-party claim against section 222.
+- `GOVERNMENT-T3-W07-FUNCTIONS-FACT` — qualify functions and account for different electoral/constitutional systems.
+- `GOVERNMENT-T3-W07-COMPARISON-FACT` — correct overgeneralizations and use section 221 for the party/pressure-group legal distinction.
+- `GOVERNMENT-T3-W07-REVISION-MISALIGNMENT` — resolve the rule-of-law questions' placement.
+- `GOVERNMENT-T3-W07-READING-VERIFICATION` — verify exact editions and page contents.
+- `GOVERNMENT-T3-W07-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 16 stems.
+- `GOVERNMENT-T3-W07-WEEKEND-MCQ-AMBIGUITY` — correct weekend question 1 before keying.
+
+No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-WK-T3-W08 — Party System and Party Manifesto indexing
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and dated comparative fact-check evidence only; no lesson, answer key, marks, correction, asset or parser rule is authored here.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37 on the original legacy `.doc`.
+- Complete span: lines 831–1035; UTF-8 span SHA-256: `f4ee10a23135ad118948b628f22c9fb0b60b3f5c39907f8dacd27d644b48a560`.
+- Printed label: `WEEK EIGHT` at line 831; topic: `PARTY SYSTEM` at line 832.
+- Scheme entry 8 (preamble lines 28–29) maps to this span. W08 covers party-system definition/types, comparative merits/demerits and party manifesto/importance. It also supplies the party-system/manifesto content named in W07's body outline (lines 717–721); this cross-week mapping is now recorded against W07's earlier open item.
+- Locators refer to Antiword line numbers, not page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are empty rather than inferred from a different extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-W08-SCHEME-PARTY-SYSTEM | Scheme entry 8 mapping | PARTIAL |
+| COV-GOV-T3-W08-DEFINITION | Party-system definition, lines 838–841 | PARTIAL |
+| COV-GOV-T3-W08-ONE-PARTY | One-party system, lines 843–890 | PARTIAL |
+| COV-GOV-T3-W08-TWO-PARTY | Two-party system, lines 896–936 | PARTIAL |
+| COV-GOV-T3-W08-MULTI-PARTY | Multi-party system, lines 938–975 | PARTIAL |
+| COV-GOV-T3-W08-MERITS-DEMERITS | Comparative advantages/disadvantages | PARTIAL |
+| COV-GOV-T3-W08-MANIFESTO | Manifesto and importance, lines 981–994 | PARTIAL |
+| COV-GOV-T3-W08-GENERAL-REVISION | General revision, lines 1000–1007 | PARTIAL |
+| COV-GOV-T3-W08-READING | Reading pointers, lines 1009–1011 | PARTIAL |
+| COV-GOV-T3-W08-ASSESSMENT-KEYS | All exercise blocks | UNRESOLVED |
+| COV-GOV-T3-W08-WEEKEND-MCQS | Weekend MCQs, lines 1013–1029 | PARTIAL |
+
+Eleven coverage entries and nine linked package open items were added. The W07 party-system/manifesto cross-week open item was changed to non-blocking after confirming the W08 coverage.
+
+### Definition and one-party system — lines 838–890
+
+The source defines party system mainly by the number of parties allowed to contest elections. This is a useful starting point but too narrow: party systems also concern the pattern of competition, relative strength, interaction and cooperation among parties.
+
+The strict one-party definition—only one legal party is permitted—must be distinguished from:
+- **Hegemonic-party arrangements:** opposition parties may exist legally but the ruling party dominates.
+- **Predominant-party arrangements:** opposition parties compete, but one party wins repeatedly over a sustained period; this does not mean it literally wins every election.
+
+The source's examples need updating:
+- **Malawi:** the one-party period ended after the 1993 referendum; the first multiparty Parliament was elected in 1994. The Malawi Government's own materials describe the current system as multiparty.
+- **Kenya:** the Kenyan Embassy describes a multiparty political system.
+- **Zambia:** it reverted to multiparty politics in 1991; Article 4(3) of its Constitution describes Zambia as a multi-party democratic State, and 2026 election-observation material describes ongoing multiparty competition.
+- **China:** the State Council's 2021 white paper identifies the Communist Party of China plus eight other political parties in a CPC-led cooperation system. A UK Home Office country note updated in 2026 describes China as a one-party state with subordinate minor parties. It is therefore inaccurate to say that only one legally existing party is present; explain the dominant-party/CCP-led system precisely.
+- **North Korea and Cuba:** the source gives no date or supporting reference. Verify their current party arrangements from country-specific sources before using them as examples of a strict single-legal-party system.
+
+Features such as no private ownership of mass media or a single ideology are not universal defining features. The advantages/disadvantages list is a set of possible claims, not guaranteed outcomes. A one-party system may permit rapid decisions, but restricted competition can weaken accountability; do not claim that every one-party system necessarily produces the same outcomes.
+
+### Two-party system — lines 896–936
+
+The source mixes two different ideas:
+1. a system in which exactly two parties are legally recognized; and
+2. a system in which two major parties dominate while other parties also exist.
+
+The Nigerian NRC/SDP example belongs to the historically restricted two-party arrangement of the aborted Third Republic. The United States is better described as a two-party-dominant system: the Library of Congress notes that the Democratic and Republican parties have dominated nationally while minor parties continue to exist and participate. The United Kingdom also has multiple parties even though two parties have often been the principal competitors.
+
+The claimed features and merits—democracy, press freedom, stability and prevention of dictatorship—are not guaranteed by the number of parties. The alleged disadvantages (ethnic/religious division, violence, rigging, uneven development) are also not inevitable; their occurrence depends on social conditions, electoral rules and political institutions.
+
+### Multi-party system — lines 938–975
+
+A multi-party system permits more than two parties to participate in political competition. Coalition governments are more likely in parliamentary systems when no party wins a legislative majority; they are not automatic and do not necessarily describe the executive structure of a presidential system. Nigeria is multiparty. The United States has multiple parties in formal existence but is two-party-dominant in practice; it should not be presented as an uncomplicated example of a competitive multiparty system.
+
+The source's claims that multi-party systems prevent dictators, guarantee rights or ensure smooth change of government are too absolute. Institutional quality, constitutional protections and electoral administration matter more than party count alone. The advantages/disadvantages lists should be taught as possible trade-offs, not universal effects.
+
+### Party manifesto — lines 981–994
+
+The source's definition of a manifesto as a party's plans/programmes presented to voters is broadly sound. A manifesto can communicate priorities, educate voters and provide a benchmark for assessing performance. It should not be represented as an unconditional or automatically enforceable guarantee that every promise will be implemented. Implementation depends on the party's electoral success, constitutional powers, budgets, legislative support and other legal/political constraints.
+
+### Assessment and reading-marker audit
+
+- `EVALUATION QUESTIONS`: line 892; two questions at lines 893–894.
+- `EVALUATION QUESTIONS`: line 977; two questions at lines 978–979.
+- `EVALUATION QUESTIONS`: line 996; two questions at lines 997–998.
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 1000; five questions at lines 1001–1007. Questions 1 and 3 relate to party systems. Question 2 asks about “Zero Party” system: this is not a standard one/two/multi-party classification, but has a historical Nigerian usage for non-partisan local-government elections, including 1987 and 1996 exercises. Questions 4–5 on separation of powers are outside this week's topic.
+- `READING ASSINGMENT`: exact misspelling at line 1009; `Comprehensive Government` pp. 79–84 and `Essential Government` pp. 95–99 at lines 1010–1011. Editions/publication details are absent and neither book was inspected.
+- `WEEKEND ASSINGMENT`: line 1013; five MCQs at lines 1014–1029. Q1 uses the undefined phrase “dominant two party system”. Q2 has no option matching the lesson's explanation that mass parties developed with the extension of the franchise. Q3 describes coalition as a multi-party feature without qualifying parliamentary/presidential context. Q4 is consistent with the source's broker-party description. Q5 treats prevention of dictatorship as a guaranteed two-party advantage, which is not established by party count alone.
+- `THEORY`: line 1031; two prompts at lines 1032–1033.
+- Total: **18 exercise stems** (2 + 2 + 2 + 5 + 5 + 2). No source answer key, marks or marking criteria are supplied. No answers or marks were invented.
+
+### Dated comparative references consulted
+
+1. **Malawi Government, “Legislature” and “Executive”**. Records the end of one-party rule following the 1993 referendum and the first multiparty Parliament in 1994: https://malawi.gov.mw/index.php/parliament/legislature and https://malawi.gov.mw/index.php/parliament/executive
+2. **Embassy of the Republic of Kenya, “Government and Political System”**. Describes Kenya's current multiparty system: https://www.kenyaembassyaddis.org/about-kenya/government-and-political-system/
+3. **Constitution of Zambia**, Article 4(3), describing Zambia as a multi-party democratic State; the 2026 African Union/COMESA election-observation preliminary statement also describes its multiparty electoral competition: https://zambialii.org/akn/zm/act/1991/1/eng%402025-12-18 and https://fwww.peaceau.org/en/article/preliminary-statement-african-union-and-the-common-market-for-eastern-and-southern-africa-election-observation-mission-to-the-13th-august-2026-general-election-in-the-republic-of-zambia-lusaka-15-august-2026
+4. **State Council Information Office of China, “China's Political Party System: Cooperation and Consultation”** (25 June 2021), identifying the CPC and eight other political parties in the CPC-led system: https://english.www.gov.cn/news/topnews/202106/26/content_WS60d66223c6d0df57f98dbe58.html
+5. **UK Home Office, “Country policy and information note: opposition to the state, China”** (January 2026; updated 1 September 2026), describing China as a one-party state with subordinate minor parties: https://www.gov.uk/government/publications/china-country-policy-and-information-notes/country-policy-and-information-note-opposition-to-the-state-china-january-2026-accessible
+6. **Library of Congress, “Political Parties”** and **Freedom House, United States 2026 report**. Both describe two major parties dominating nationally while minor parties continue to exist: https://www.loc.gov/classroom-materials/political-parties/ and https://freedomhouse.org/country/united-states/freedom-world/2026
+7. **IRIADN, *Electoral Management Bodies in Nigeria since 1958*** and **Human Rights Watch, Nigeria 1996/1997 reports**. These describe Nigeria's historical “zero-party” local-government elections in 1987/1996: https://www.iriadng.org/wp-content/uploads/2024/06/The-Electoral-Hub-EMBs-in-Nigeria-Since-1958_opt.pdf and https://www.hrw.org/legacy/reports/1996/Nigeria.htm
+
+### W07 cross-week resolution
+
+W07's body outline (lines 717–721) named party-system and manifesto objectives that were not in its body text. W08's body now supplies party-system content at lines 838–980 and manifesto content at lines 981–994. The package coverage entry `COV-GOV-T3-W07-PARTY-SYSTEM-MANIFESTO` is now PARTIAL with this cross-week evidence; `GOVERNMENT-T3-W07-SUBTOPICS-MISSING` is non-blocking. W07's body remains unchanged.
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W08-ONE-PARTY-EXAMPLES-FACT` — update the country examples and distinguish strict single-party from dominant/hegemonic arrangements.
+- `GOVERNMENT-T3-W08-TWO-PARTY-FACT` — distinguish exactly two legal parties from two-party dominance.
+- `GOVERNMENT-T3-W08-MULTI-PARTY-FACT` — qualify coalition formation and the USA example.
+- `GOVERNMENT-T3-W08-MERITS-DEMERITS-FACT` — present system effects as context-dependent rather than inevitable.
+- `GOVERNMENT-T3-W08-MANIFESTO-FACT` — distinguish manifesto commitments from guaranteed or automatically enforceable outcomes.
+- `GOVERNMENT-T3-W08-REVISION-CONTEXT` — explain zero-party in its historical Nigerian context and resolve the separation-of-powers questions' placement.
+- `GOVERNMENT-T3-W08-READING-VERIFICATION` — verify exact editions and page contents.
+- `GOVERNMENT-T3-W08-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 18 stems.
+- `GOVERNMENT-T3-W08-WEEKEND-MCQ-AMBIGUITY` — correct the undefined/missing options and overbroad claims before keying.
+
+No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-WK-T3-W09 — Franchise and Suffrage indexing
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and dated Nigerian electoral/constitutional fact-check evidence only; no lesson, answer key, marks, correction, asset or parser rule is authored here.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37 on the original legacy `.doc`.
+- Complete span: lines 1036–1203; UTF-8 span SHA-256: `8be9514882ea201da7509c5da287d9e62331078e321ed445589502ddd9ed19b4`.
+- Printed label: `WEEK NINE` at line 1036; topic: `FRANCHISE` at line 1037.
+- Scheme entry 9 (preamble lines 30–33) maps to this span by topic and order.
+- Locators refer to Antiword line numbers, not page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are empty rather than inferred from a different extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-W09-SCHEME-FRANCHISE | Scheme entry 9 mapping | PARTIAL |
+| COV-GOV-T3-W09-MEANING | Meaning/electorate, lines 1043–1053 | PARTIAL |
+| COV-GOV-T3-W09-RESTRICTED | Restricted franchise, lines 1055–1080 | PARTIAL |
+| COV-GOV-T3-W09-UNIVERSAL | Universal adult suffrage, lines 1082–1107 | PARTIAL |
+| COV-GOV-T3-W09-TYPES | Types of suffrage, lines 1109–1122 | PARTIAL |
+| COV-GOV-T3-W09-CANDIDATE-ELIGIBILITY | Candidate eligibility, lines 1124–1153 | PARTIAL |
+| COV-GOV-T3-W09-GENERAL-REVISION | General revision, lines 1155–1162 | PARTIAL |
+| COV-GOV-T3-W09-READING | Reading pointers, lines 1164–1166 | PARTIAL |
+| COV-GOV-T3-W09-ASSESSMENT-KEYS | All exercise blocks | UNRESOLVED |
+| COV-GOV-T3-W09-WEEKEND-MCQS | Weekend MCQs, lines 1168–1184 | PARTIAL |
+
+Ten coverage entries and eight linked package open items were added.
+
+### Meaning, electorate and current voter qualifications — lines 1043–1053
+
+Franchise/suffrage is primarily the right to vote. The source's phrase “vote and be voted for” combines voter franchise with a separate question: eligibility to stand for office. The electorate is the body of people qualified and registered to vote.
+
+For current Nigerian elections, the Electoral Act 2022 section 12(1) requires a voter to be a Nigerian citizen, at least 18, ordinarily resident in/working in/originating from the Local Government Area, Area Council or Ward covered by the registration centre, personally present for registration, and not subject to a legal incapacity to vote. Constitution sections 77(2) and 117(2) also set the constitutional citizen/age/residence basis for legislative elections. Universal adult suffrage therefore does not mean voting without any qualification.
+
+### Restricted and universal franchise — lines 1055–1107
+
+The source's definition of restricted franchise as confining voting rights to a selected class is broadly sound. Property, tax, sex and racial restrictions are historical forms of exclusion; apartheid South Africa is a historical example, not a current description of South African voting law.
+
+The claimed merits of restricted franchise—better-informed voters, mature elections and reduced violence—are unsupported normative arguments and should not be taught as established facts. They can legitimize exclusion from political participation.
+
+Universal adult suffrage is a principle of broad adult participation, but it remains subject to lawful voter-registration qualifications. The source's claims that illiterate voters vote blindly, universal suffrage causes violence, or it produces unqualified representatives are unsupported and discriminatory generalizations. Literacy is not a general voter-registration requirement. The source's blanket exclusion of criminals is also overbroad: INEC's 2025 report summarizes court decisions recognizing inmates' voting rights, subject to legal-incapacity and implementation issues. Distinguish a lawful sentence of imprisonment from automatic loss of voting eligibility.
+
+### Types of suffrage — lines 1109–1122
+
+Adult, male, taxpayer and property-owner suffrage are useful historical/analytical categories. Male, taxpayer and property-owner suffrage are restrictive forms and should not be presented as current Nigerian rules. Adult suffrage is universal in principle but still operates with the current citizenship, age, registration and legal-capacity requirements.
+
+### Candidate eligibility — lines 1124–1153
+
+The source's list mixes different offices and different legal categories. Current Nigerian qualifications are office-specific:
+- **President:** citizen by birth, at least 35 years old, member of and sponsored by a political party, and educated to at least School Certificate level or equivalent (Constitution s131).
+- **Governor:** similar requirements, including citizen by birth and at least 35 years old (s177).
+- **Senate/House of Representatives:** citizenship, different age thresholds (35 for Senate and 25 for House of Representatives), School Certificate or equivalent, and party membership/sponsorship (s65).
+- **State House of Assembly:** citizenship, at least 25 years old, School Certificate or equivalent and party membership/sponsorship (s106).
+
+The remaining claims need qualification:
+- **Residence:** voter registration has local residence/work/origin conditions; this is not a general candidate qualification for all elective offices.
+- **Tax payment:** not a general constitutional qualification for every candidate.
+- **Election deposit:** not a universal constitutional personal qualification; any party nomination fee or procedure must be assessed under the applicable Electoral Act and party rules.
+- **Criminal record:** “no criminal record” is too broad. The Constitution has specific, office-dependent disqualifications, including certain sentences/convictions and Code of Conduct findings within specified periods.
+- **Mental capacity:** the constitutional language concerns a person adjudged or declared to be of unsound mind under law; it is not a blanket exclusion based on a diagnosis or assumption.
+- **Bankruptcy:** undischarged bankruptcy is a candidate disqualification for specified offices; it is not a general voter disqualification.
+- **Citizenship/education/nomination:** these are relevant, but exact requirements differ by office. A nomination paper is a procedural step, not the same as a personal eligibility qualification.
+- **“Banned politicians”:** this is not a general current eligibility category. Apply the relevant constitutional disqualification provisions (ss66, 107, 137 and 182) rather than a vague historical label.
+
+### Assessment and reading-marker audit
+
+- `EVALUATION QUESTIONS`: line 1065; two questions at lines 1066–1067.
+- `EVALUATION QUESTIONS`: line 1089; two questions at lines 1090–1091.
+- `EVALUATION QUESTIONS`: line 1137; two questions at lines 1138–1139.
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 1155; five questions at lines 1156–1162. Questions 1–3 relate to franchise/suffrage. Questions 4–5 ask about representative government, not taught in this span or listed in scheme entry 9.
+- `READING ASSIGNMENT`: line 1164; `Essential Government` pp. 104–106 and `Comprehensive Government` pp. 85–87 at lines 1165–1166. Editions/publication details are absent and neither book was inspected.
+- `WEEKEND ASSINGMENT`: line 1168; five MCQs at lines 1169–1184. Q1 combines the right to vote with candidacy. Q2 and Q3 are broadly consistent with the source's definition, subject to current registration qualifications. Q4's “registration” option is ambiguous because voter registration and candidate/party nomination are different processes. Q5 is a normative claim about democracy, not a legal rule.
+- `THEORY`: line 1186; two prompts at lines 1187–1188.
+- Total: **18 exercise stems** (2 + 2 + 2 + 5 + 5 + 2). No source answer key, marks or marking criteria are supplied. No answers or marks were invented.
+
+### Dated Nigerian legal references consulted
+
+1. **PLAC, *Constitution of the Federal Republic of Nigeria, 1999*, updated with the First–Fifth Alterations** (third revision October 2023; reprint September 2024). Used for voter franchise (ss77(2), 117(2)), candidate qualifications (ss65, 66, 106, 107, 131, 137, 177, 182): https://placng.org/i/wp-content/uploads/2023/11/Constitution-of-the-Federal-Republic-of-Nigeria-1999-Updated.pdf
+2. **Federal Republic of Nigeria, *Electoral Act, 2022*, Act No. 13, Official Gazette No. 61 (29 March 2022)**, section 12(1), qualification for voter registration: https://placng.org/i/wp-content/uploads/2022/02/Electoral-Act-2022.pdf
+3. **Independent National Electoral Commission, *Election Management in Nigeria: 2015–2025*** (first published July 2025), section 9.4.2, “Voting Rights for Inmates in Correctional Centres”, summarizing the 2014 Federal High Court decision, the affirming Court of Appeal decision and implementation issues: https://wp1.inecnigeria.org/wp-content/uploads/Activity-Report-Election-Management-Body.pdf
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W09-FRANCHISE-SCOPE-FACT` — distinguish the right to vote from candidacy eligibility.
+- `GOVERNMENT-T3-W09-RESTRICTED-FRANCHISE-FACT` — label restrictive suffrage as historical and separate advocacy claims from evidence.
+- `GOVERNMENT-T3-W09-UNIVERSAL-FRANCHISE-FACT` — correct current voter qualifications and remove stereotypes/blanket criminal exclusions.
+- `GOVERNMENT-T3-W09-CANDIDATE-ELIGIBILITY-FACT` — replace the generic list with office-specific qualifications and disqualifications.
+- `GOVERNMENT-T3-W09-REVISION-MISALIGNMENT` — resolve the representative-government questions' placement.
+- `GOVERNMENT-T3-W09-READING-VERIFICATION` — verify exact editions and page contents.
+- `GOVERNMENT-T3-W09-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 18 stems.
+- `GOVERNMENT-T3-W09-WEEKEND-MCQ-AMBIGUITY` — correct the franchise/candidacy and registration/nomination ambiguities before keying.
+
+No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-WK-T3-W10 — Electoral System indexing
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and dated comparative/electoral-law fact-check evidence only; no lesson, answer key, marks, correction, asset or parser rule is authored here.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37 on the original legacy `.doc`.
+- Complete span: lines 1204–1410; UTF-8 span SHA-256: `1e6415f8e03eb9f6f9ff71d3908fd46d3728dd37bd1d109851e8a99e2c8ca71c`.
+- Printed label: `WEEK TEN` at line 1204; topic: `ELECTORAL SYSTEM` at line 1205.
+- Scheme entry 10 (preamble lines 34–35) maps to this span by topic and order.
+- Locators refer to Antiword line numbers, not page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are empty rather than inferred from a different extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-W10-SCHEME-ELECTORAL-SYSTEM | Scheme entry 10 mapping | PARTIAL |
+| COV-GOV-T3-W10-DEFINITION-FEATURES | Meaning/features, lines 1213–1238 | PARTIAL |
+| COV-GOV-T3-W10-PLURALITY | Plurality/FPTP, lines 1240–1268 | PARTIAL |
+| COV-GOV-T3-W10-ABSOLUTE-SECOND-ROUND | Absolute majority/two-round, lines 1271–1304 | PARTIAL |
+| COV-GOV-T3-W10-ALTERNATIVE-VOTE | Alternative Vote, lines 1306–1328 | PARTIAL |
+| COV-GOV-T3-W10-PROPORTIONAL | PR/List PR/STV, lines 1330–1369 | PARTIAL |
+| COV-GOV-T3-W10-GENERAL-REVISION | General revision, lines 1375–1384 | PARTIAL |
+| COV-GOV-T3-W10-READING | Reading pointers, lines 1385–1387 | PARTIAL |
+| COV-GOV-T3-W10-ASSESSMENT-KEYS | All exercise blocks | UNRESOLVED |
+| COV-GOV-T3-W10-WEEKEND-MCQS | Weekend MCQs, lines 1389–1403 | PARTIAL |
+
+Ten coverage entries and ten linked package open items were added.
+
+### Definition and features — lines 1213–1238
+
+The source defines an electoral system as the process/procedure by which representatives are selected. A more precise definition is the set of rules translating votes into winners or legislative seats, including the ballot structure, district magnitude and allocation formula.
+
+The listed features combine electoral-system design with wider election integrity and administration: independent/impartial electoral management, periodic elections, constituency boundaries, voter franchise, candidate nomination/qualification, voter registration, voter education, independent courts, secret ballots and transparent counting. These are important features of credible elections, but they are not all necessary components of every electoral-system formula. Keep the two levels distinct.
+
+### Plurality / First-Past-The-Post — lines 1240–1268
+
+The core rule is sound: the candidate with more votes than any other candidate wins, even without an absolute majority. This is a plurality rule, not necessarily a majority of all valid votes. Simplicity and a clear winner can be advantages, but cost and stability are context-dependent. FPTP can under-represent smaller parties and voters whose candidates lose; it does not automatically ensure accountability, minority access to power or political stability.
+
+### Absolute majority and second ballot — lines 1271–1304
+
+An absolute-majority rule requires the applicable majority threshold; a second round may be held if the first-round threshold is not met. The source's statement that candidates below 10% must withdraw is not a general rule and does not match Nigerian constitutional presidential/gubernatorial election rules.
+
+Under Constitution section 134, a presidential candidate must secure the required majority of votes and the specified spread across at least two-thirds of the States of the Federation and the FCT; if no candidate satisfies the prescribed conditions, section 134(3) specifies the candidates for the second election. Section 179 sets corresponding majority-and-spread rules for governors and specifies the second-election process. Do not substitute a generic 10% withdrawal threshold for these constitutional provisions. Runoff rules differ across jurisdictions.
+
+### Alternative Vote — lines 1306–1328
+
+The source correctly identifies ranked preferences and transfers from eliminated candidates. The Alternative Vote is a single-winner preferential plurality/majority system, usually used in single-member districts. Voters rank candidates. If no candidate has an absolute majority of first preferences, the lowest candidates are eliminated and ballots transfer to the next available preference until one candidate has a majority. AV is not STV: it does not transfer surplus votes from candidates who have already been elected.
+
+### Proportional representation, List PR and STV — lines 1330–1369
+
+The general PR principle is to translate parties'/groups' vote shares into corresponding seat shares, usually in multi-member districts.
+- **List PR:** each party/group presents a list; voters vote for a party; seats are allocated proportionally to party vote share; the order of elected candidates depends on closed/open/free list rules.
+- **STV:** voters normally rank individual candidates in multi-member districts. Candidates reaching a quota are elected; surplus votes from elected candidates and votes from eliminated candidates are transferred according to the rules until all seats are filled. This is candidate-centred and is not the party-list model described in the source's STV subsection.
+
+The source's STV paragraph repeats the List PR explanation and must be corrected. PR can improve proportionality and representation, but coalition formation, fragmentation, administrative cost and stability effects depend on thresholds, district magnitude and political institutions; they are not automatic.
+
+### Assessment and reading-marker audit
+
+- `EVALUATION QUESTIONS`: line 1241; two questions at lines 1242–1243.
+- `EVALUATION QUESTIONS`: line 1273; two questions at lines 1274–1275.
+- `EVALUATION QUESTIONS`: line 1330; two questions at lines 1331–1335.
+- `EVALUATION QUESTIONS`: line 1371; two questions at lines 1372–1373.
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 1375; five questions at lines 1376–1384. Questions 1–3 relate to electoral systems. Questions 4–5 ask about centralization, not taught in this span or listed in scheme entry 10.
+- `READING ASSIGNMENT`: line 1385; `Essential Government` pp. 100–103 and `Comprehensive Government` pp. 95–98 at lines 1386–1387. Editions/publication details are absent and neither book was inspected.
+- `WEEKEND ASSINGMENT`: line 1389; five MCQs at lines 1390–1403. Q1 tests the definition; Q2 List PR; Q3 plurality; Q4 equates “simple majority” with FPTP and needs correction because FPTP is a plurality rule and may produce a winner with less than 50%; Q5 PR.
+- `THEORY`: line 1405; two prompts at lines 1406–1408.
+- Total: **20 exercise stems** (four evaluation blocks × 2 + 5 general revision + 5 weekend + 2 theory). No source answer key, marks or marking criteria are supplied. No answers or marks were invented.
+
+### Dated comparative and Nigerian legal references consulted
+
+1. **International IDEA, Electoral System Design Database — Glossary**. Used for precise definitions of FPTP, Alternative Vote, Two-Round System, List PR and STV, and for distinguishing plurality/majority, proportional and mixed families: https://www.idea.int/data-tools/data/electoral-system-design-database
+2. **International IDEA, *Electoral System Design: The New International IDEA Handbook*** (2005). Used for the taxonomy and context-dependent consequences of electoral-system choices: https://www.idea.int/publications/catalogue/electoral-system-design-new-international-idea-handbook
+3. **PLAC, *Constitution of the Federal Republic of Nigeria, 1999*, updated with the First–Fifth Alterations** (third revision October 2023; reprint September 2024), sections 134 and 179 on presidential and gubernatorial majority/spread and second-election rules: https://placng.org/i/wp-content/uploads/2023/11/Constitution-of-the-Federal-Republic-of-Nigeria-1999-Updated.pdf
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W10-DEFINITION-FACT` — distinguish electoral-system rules from broader election administration/integrity.
+- `GOVERNMENT-T3-W10-PLURALITY-FACT` — distinguish plurality/FPTP from an absolute majority.
+- `GOVERNMENT-T3-W10-ABSOLUTE-SECOND-ROUND-FACT` — correct the generic 10% withdrawal claim and explain Nigeria's sections 134/179.
+- `GOVERNMENT-T3-W10-AV-STV-FACT` — distinguish Alternative Vote from STV.
+- `GOVERNMENT-T3-W10-PR-STV-FACT` — replace the mistaken STV description with candidate-centred quota-based transfers.
+- `GOVERNMENT-T3-W10-MERITS-DEMERITS-FACT` — qualify the systems' possible trade-offs.
+- `GOVERNMENT-T3-W10-REVISION-MISALIGNMENT` — resolve the centralization questions' placement.
+- `GOVERNMENT-T3-W10-READING-VERIFICATION` — verify exact editions and page contents.
+- `GOVERNMENT-T3-W10-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 20 stems.
+- `GOVERNMENT-T3-W10-WEEKEND-MCQ-AMBIGUITY` — clarify plurality versus absolute majority before keying Q4.
+
+No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-WK-T3-W11 — Electoral Constituency indexing
+
+**Status:** IMPLEMENTED — TESTING DEFERRED. Source indexing and dated Nigerian constitutional fact-check evidence only; no lesson, answer key, marks, correction, asset or parser rule is authored here.
+
+### Source identity and exact locator
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37 on the original legacy `.doc`.
+- Complete span: lines 1411–1551; UTF-8 span SHA-256: `0d0def3386eb6f0873264fec10183fe334c38e912daa9a9f660053247d6c9637`.
+- Printed label: `WEEK ELEVEN` at line 1411; topic: `ELECTORAL CONSTITUENCY` at line 1412.
+- Scheme entry 11 (preamble lines 36–38) maps to this span by topic and order.
+- Locators refer to Antiword line numbers, not page numbers or native Word paragraph IDs. No importer/parser was run, so no importer-produced lesson-row ID is asserted; coverage lesson_ids are empty rather than inferred from a different extractor.
+
+### Objective-level coverage
+
+| Coverage ID | Objective / marker | Status |
+|---|---|---|
+| COV-GOV-T3-W11-SCHEME-CONSTITUENCY | Scheme entry 11 mapping | PARTIAL |
+| COV-GOV-T3-W11-MEANING | Constituency/delimitation meaning, lines 1418–1422 | PARTIAL |
+| COV-GOV-T3-W11-FACTORS | Factors, lines 1423–1448 | PARTIAL |
+| COV-GOV-T3-W11-SINGLE-MEMBER | Single-member type, merits/demerits, lines 1454–1482 | PARTIAL |
+| COV-GOV-T3-W11-MULTI-MEMBER | Multi-member definition, lines 1484–1491 | PARTIAL |
+| COV-GOV-T3-W11-MULTI-MEMBER-MERITS | Multi-member merits/demerits required by outline | UNRESOLVED |
+| COV-GOV-T3-W11-DELIMITATION-PROBLEMS | Problems, lines 1493–1513 | PARTIAL |
+| COV-GOV-T3-W11-GENERAL-REVISION | General revision, lines 1519–1525 | PARTIAL |
+| COV-GOV-T3-W11-READING | Reading pointers, lines 1526–1528 | PARTIAL |
+| COV-GOV-T3-W11-ASSESSMENT-KEYS | All exercise blocks | UNRESOLVED |
+| COV-GOV-T3-W11-WEEKEND-MCQS | Weekend MCQs, lines 1529–1548 | PARTIAL |
+
+Eleven coverage entries and nine linked package open items were added. The multi-member merits/demerits objective is explicitly UNRESOLVED because the body contains no such section.
+
+### Meaning and constitutional delimitation principles — lines 1418–1448
+
+An electoral constituency is a geographic electoral district from which a representative is elected. Delimitation is the drawing and periodic review of those boundaries.
+
+Nigeria's Constitution provides specific rules:
+- **Section 49:** the House of Representatives has 360 members representing constituencies of nearly equal population as far as possible; a constituency cannot cross a State boundary.
+- **Sections 71–73:** INEC divides each State into three senatorial districts and the Federation into 360 Federal constituencies. Districts/constituencies must not cross State boundaries; boundaries should be as contiguous as possible; inhabitants should be as nearly equal to the population quota as reasonably practicable. INEC must review them at intervals of not less than ten years, with earlier review possible in specified circumstances such as a census or constitutional/statutory change.
+- **Sections 112–115:** INEC divides each State into State constituencies, with population equality as nearly as reasonably practicable and periodic review.
+
+Population, contiguity, State-boundary integrity and the constitutionally prescribed number of seats are therefore central legal requirements. Geographic size and administrative convenience can matter in practice, but the Constitution does not set a universal minimum land area for a constituency. Historical, cultural, language, ethnic and religious identity are not commands to segregate communities. The source's claim that minority groups must be given separate constituencies “irrespective of other consideration” is too absolute and cannot override population equality or constitutional non-discrimination (s42). Community interests may be considered only consistently with the governing constitutional rules.
+
+### Single- and multi-member constituencies — lines 1454–1491
+
+A **single-member constituency** returns one representative from the district. This does not mean that a voter can cast only one ballot across every election held at the same time; it means one seat/representative is returned from that constituency. Nigeria's federal and state legislative constituencies are single-member. The UK House of Commons uses single-member constituencies, but this should not be generalized to every UK election.
+
+Local accountability and a direct relationship with a representative are possible advantages. Stable legislative majorities and “greater democracy” are not guaranteed. Gerrymandering and under-representation of smaller parties are recognized risks.
+
+A **multi-member constituency** returns two or more representatives from one district. The source's claim that every voter has two or more votes is not universal: the ballot depends on the electoral formula. List PR may use one party-centred vote; STV generally uses one ranked candidate ballot; block-vote systems may give voters multiple candidate votes. Multi-member districts can improve proportionality under some formulas, but do not guarantee minority representation. The scheme/content outline requires merits and demerits of both constituency types; the source gives no separate multi-member merits/demerits section, so that objective remains UNRESOLVED.
+
+### Problems of delimitation — lines 1493–1513
+
+Reliable population data, mapping/communication access, technical capacity and resistance to gerrymandering are plausible practical challenges. The source generalizes about “many countries” and West Africa without a date or country-specific evidence. Its description of rural settlements is dated and stigmatizing; later teaching should use precise terms such as dispersed rural settlements and difficult terrain. Ethnic and religious differences should not be presented as inherent problems or grounds for segregated constituencies. Constitution sections 42, 72 and 113 provide equality/non-discrimination and population/contiguity principles.
+
+### Assessment and reading-marker audit
+
+- `EVALUATION QUESTIONS`: line 1450; two questions at lines 1451–1452.
+- `EVALUATION QUESTIONS`: line 1515; two questions at lines 1516–1517.
+- `GENERAL EVALUATION/REVISION QUESTIONS`: line 1519; five questions at lines 1520–1525. Questions 1–3 concern constituencies/delimitation/gerrymandering. Questions 4–5 ask about delegated legislature and delegated legislation, not taught in this span or listed in scheme entry 11.
+- `READING ASSINGMENT`: exact misspelling at line 1526; `Comprehensive Government` pp. 99–100 and `Essential Government` pp. 110–111 at lines 1527–1528. Editions/publication details are absent and neither book was inspected.
+- `WEEKEND ASSINGMENT`: line 1529; five MCQs at lines 1530–1548. Q1 asks for an exception to the factors list: poverty is not listed, but accessibility may overlap with administrative/geographical convenience, so the options need clarification. Q2 defines gerrymandering. Q3 defines single-member constituency. Q4 identifies a demerit among merits. Q5 defines delimitation.
+- `THEORY`: line 1549; two prompts at lines 1550–1551.
+- Total: **16 exercise stems** (2 + 2 + 5 + 5 + 2). No source answer key, marks or marking criteria are supplied. No answers or marks were invented.
+
+### Dated Nigerian constitutional reference consulted
+
+**PLAC, *Constitution of the Federal Republic of Nigeria, 1999*, updated with the First–Fifth Alterations** (third revision October 2023; reprint September 2024). Used for sections 42, 49, 71–74 and 112–115 on non-discrimination, population equality, contiguity, seat allocation, INEC delimitation and periodic review: https://placng.org/i/wp-content/uploads/2023/11/Constitution-of-the-Federal-Republic-of-Nigeria-1999-Updated.pdf
+
+### Open items and limits
+
+- `GOVERNMENT-T3-W11-CONSTITUENCY-LAW-FACT` — correct delimitation factors against constitutional population, contiguity, State-boundary and non-discrimination requirements.
+- `GOVERNMENT-T3-W11-SINGLE-MEMBER-FACT` — define the type by one seat, not one ballot across concurrent elections; qualify claimed benefits.
+- `GOVERNMENT-T3-W11-MULTI-MEMBER-MERITS-MISSING` — source lacks the required merits/demerits section.
+- `GOVERNMENT-T3-W11-MULTI-MEMBER-FACT` — distinguish ballot methods and avoid guaranteeing minority representation.
+- `GOVERNMENT-T3-W11-PROBLEMS-FACT` — replace broad/stigmatizing claims with precise country-specific language.
+- `GOVERNMENT-T3-W11-REVISION-MISALIGNMENT` — resolve the delegated-legislation questions' placement.
+- `GOVERNMENT-T3-W11-READING-VERIFICATION` — verify exact editions and page contents.
+- `GOVERNMENT-T3-W11-ASSESSMENT-KEYS` — no answers, marks or marking criteria for the 16 stems.
+- `GOVERNMENT-T3-W11-WEEKEND-MCQ-AMBIGUITY` — clarify Q1 accessibility versus administrative/geographical convenience before keying.
+
+No lesson, correction, source rule, asset, answer key or marks were created. Source wording and marker spellings remain preserved. No tests, typechecks, importer/compiler run, database write, app/device check or teacher review was performed; testing remains deferred.
+
+
+## GOV-REV-T3 — Scheme-only Revision and Examination marker
+
+**Status:** IMPLEMENTED — TESTING DEFERRED.
+
+- Source ID: `SS1-SRC-5f34b9f4efc4`; archive member: `SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc`.
+- Archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
+- Member SHA-256: `04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e`.
+- Extractor: Antiword 0.37.
+- Exact scheme line: 39; exact line SHA-256: `bc44ba88587199793f920691da95c20b7b5bad805bd801deafb938641703c8d3`.
+- Exact anchor retained: `    12/13.  Revision and Examination`.
+- The body spans lines 44–1551 and contains eleven teaching-week labels. The first two both print `WEEK TWO`; the final body label is `WEEK ELEVEN`. No Week Twelve or Week Thirteen teaching body, revision lesson or examination paper follows.
+- Added source rule `SS1-SRC-5f34b9f4efc4-R002`: `classify_marker`, kind `SCHEME_ONLY`, match mode `WHOLE_LINE`.
+- Added coverage `COV-GOV-T3-SCHEME-REVISION-EXAMINATION` with status `MARKER`, targeting the source-rule ID. No teaching lesson ID is fabricated.
+- The source row is preserved exactly. No revision content, exam paper, teaching week, answers or marks were created.
+- Existing source-alias approval remains PENDING owner approval; this marker disposition does not imply teacher approval or source reuse permission.
+- No compiler/importer/test/typecheck/database/device run was performed; testing remains deferred.

@@ -8520,7 +8520,7 @@
       "source_id": "SS1-SRC-c7a7523bdb0d",
       "objective": "Review and assess all instructional material present in the supplied Third Term source.",
       "objective_locator": "Third Term source Weeks 2–6, Week 8 and Period 3 line-equation section",
-      "status": "IMPLEMENTED_EQUIVALENT",
+      "status": "PARTIAL",
       "lesson_ids": [],
       "evidence": [
         {
@@ -8551,7 +8551,9 @@
       "objective": "Revision of First Term material.",
       "objective_locator": "First Term scheme of work, rendered page 2, Week 11 row: Revision.",
       "status": "MARKER",
-      "lesson_ids": [],
+      "lesson_ids": [
+        "RULE-FM-T1-SCHEME-EXAM"
+      ],
       "evidence": [
         {
           "locator": "Rendered First Term source scheme table, Week 11",
@@ -8565,7 +8567,9 @@
       "objective": "First Term examination.",
       "objective_locator": "First Term scheme of work, rendered page 2, Week 12 row: Examination.",
       "status": "MARKER",
-      "lesson_ids": [],
+      "lesson_ids": [
+        "RULE-FM-T1-SCHEME-EXAM"
+      ],
       "evidence": [
         {
           "locator": "Rendered First Term source scheme table, Week 12",
@@ -8579,7 +8583,9 @@
       "objective": "Revision of Second Term material.",
       "objective_locator": "Second Term scheme of work, rendered page 1, Week 11 row: Revision of Second Term’s lesson.",
       "status": "MARKER",
-      "lesson_ids": [],
+      "lesson_ids": [
+        "RULE-FM-T2-SCHEME-EXAM"
+      ],
       "evidence": [
         {
           "locator": "Rendered Second Term source scheme table, Week 11",
@@ -8593,7 +8599,9 @@
       "objective": "Second Term examination.",
       "objective_locator": "Second Term scheme of work, rendered page 1, Week 12 row: Examination.",
       "status": "MARKER",
-      "lesson_ids": [],
+      "lesson_ids": [
+        "RULE-FM-T2-SCHEME-EXAM"
+      ],
       "evidence": [
         {
           "locator": "Rendered Second Term source scheme table, Week 12",
@@ -8700,8 +8708,8 @@
     {
       "id": "OI-FM-006",
       "kind": "VERIFICATION",
-      "detail": "Technical verification is being run through PR #639 CI. Earlier PR head checks passed for the Further Mathematics package and SS1 integrity, but the all-subject compiler failed on unrelated Yoruba lesson identity/hash SUP-SS1-YO-T3-W08-EDE. A fresh CI run after the latest package updates is required; app/browser student rendering has not been verified.",
-      "required_action": "Record final current-head Further Mathematics schema/hash/SVG/compiler checks and resolve the unrelated Yoruba blocker in the Yoruba owner's scope; then verify actual student-facing app rendering.",
+      "detail": "Current-head PR #646 CI passed: Further Mathematics package hash/integrity verification, package schema/references, SVG safety, source archive staging, Further Mathematics plan-only compilation, repository integrity gate, all registered SS1 source-anchor/compiler audit, and broader verification workflow. Actual student-facing app/browser rendering remains unverified; content approval remains PENDING.",
+      "required_action": "Perform student-facing app/browser rendering review and obtain authorised teacher/owner content approval. Do not mark content approved based solely on CI.",
       "affected_ids": [
         "SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS",
         "SUP-SS1-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES",

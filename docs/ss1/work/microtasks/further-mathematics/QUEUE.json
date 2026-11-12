@@ -3641,12 +3641,12 @@
       "completion_condition": "Three SVGs pass SVG safety, integrity and app rendering; diagrams appear alongside the corrected solution examples."
     },
     {
-      "id": "FM-PR-639-INTEGRATION-VALIDATION",
+      "id": "FM-PR-646-INTEGRATION-VALIDATION",
       "kind": "VERIFICATION",
       "source_id": "SS1-SRC-43c5ab51b87f",
       "term": "All terms",
-      "week_or_locator": "Consolidated First/Second Term PR #639 integration validation",
-      "objective": "Run repository CI on the consolidated package, resolve any package-specific hash/schema/SVG/compiler failures, verify all asset references and lesson-body hashes, and record remaining cross-subject blockers without modifying other subject packages.",
+      "week_or_locator": "PR #640 follow-up integrity/coverage closeout",
+      "objective": "Run repository CI on the follow-up package changes in PR #646, resolve package-specific hash/schema/SVG/compiler failures, verify all asset references and lesson-body hashes, and record remaining cross-subject blockers without modifying other subject packages.",
       "required_files": [
         "backend/src/db/ss1/subjects/further-mathematics.json",
         "backend/src/db/ss1/refreshIntegrityHashes.ts",
@@ -3671,8 +3671,8 @@
         "FM-LES-T2-W09-LOGIC",
         "FM-LES-T2-W10-LOGICAL-CONNECTIVES"
       ],
-      "status": "IN_PROGRESS",
-      "implementation_reference": "Consolidated PR #639 now targets master and carries 24 lessons, 84 coverage rows, 30 open review items and 18 registered assets. All 24 lesson body hashes, practice marking totals and 18 asset hashes/byte counts were independently recomputed and matched. CI must now run on the master-targeted PR. Approval remains PENDING; verification DEFERRED.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "PR #646 current-head checks all passed: Further Mathematics stored lesson/asset hashes and byte counts, package schema/references, SVG safety, source staging, Further Mathematics compiler, repository integrity, all registered SS1 source-anchor/compiler audit, and broader verification workflow. All 25 lesson body hashes and practice marking totals are covered by the integrity checks. Residual source/permission/teacher-approval gates are recorded; app/browser rendering remains a separate owner review.",
       "completion_condition": "Master-targeted CI passes all relevant checks; package hash/schema/compiler/SVG validation is complete; all remaining blockers are classified and recorded. No merge before required checks pass."
     },
     {

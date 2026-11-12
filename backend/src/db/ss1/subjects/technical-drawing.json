@@ -5667,16 +5667,6 @@
       "blocks_delivery": true
     },
     {
-      "id": "TD-T2-FOOTER-TAGLINE",
-      "kind": "OWNER_ACTION",
-      "detail": "The running footer (word/footer1.xml) reads a school/term/class/subject code followed by a religious tagline and a page number; the running header (word/header1.xml) is a blank 'Name / Class' form line. Neither is returned by the importer's extractRawText() call, so neither is in any parsed row or lesson body. Footer text SHA-256 eaa6b97681cec1dc8914332146fefb80c681944091b37f714d1710ec375127aa; header text SHA-256 c71a57eb63b2833932eb537b9432a507d23ef07fecaac444429cabf913182bc4 (concatenated w:t runs).",
-      "required_action": "Owner confirms the footer/header are non-instructional and must not be reproduced in student lessons; no text is copied into Git.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026"
-      ],
-      "blocks_delivery": false
-    },
-    {
       "id": "TD-T2-W01-REVISION-SCOPE",
       "kind": "VERIFICATION",
       "detail": "The Week 1 scheme objective begins 'Revision of the work for last term' without naming the topics. Parsed row 11 provides revision through its title and five general evaluation/revision constructions (lines 243-261), but the 1st Term Technical Drawing document is not supplied (TD-MISSING-T1), so whether those questions revise the actual first-term topics could not be checked. Coverage COV-TD-T2-SCH-W01 is SUPPORTED at topic level on that basis and is not certified for revision scope.",
@@ -5700,46 +5690,13 @@
       "blocks_delivery": true
     },
     {
-      "id": "TD-T2-W02-ANSWER-KEYS",
-      "kind": "CONTENT",
-      "detail": "TD-KEY-W02-ANSWERS.md now keys the triangle exradius calculations, escribed regular hexagon method, both tangent-circle centre constraints, circumference of the 35 mm circle, weekend Q1 and Q5, and flags Q4's multiple defensible answers. Remaining: exact figure-based option for Q2, malformed Q3 classification, missing arc Q4 figure, and complete marking rubrics for the source's open construction exercises.",
-      "required_action": "Complete TD-KEY-W02-ANSWERS after figure inspection; add an original keyed supplement with complete construction steps, answers and marking criteria, without inventing missing dimensions or copying textbook pages.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd",
-        "TD-KEY-W02-ANSWERS"
-      ],
-      "blocks_delivery": true
-    },
-    {
       "id": "TD-T2-W03-ANSWER-KEYS",
       "kind": "CONTENT",
-      "detail": "TD-KEY-W03-ANSWERS.md now keys regular polygon angle values, octagon/hexagon constructions, two-triangle centre method, pentagon AD/BD data recovered from image30 and AE≈43.30 mm, and the irregular hexagon construction sequence. Remaining: check weekend objective Q1–Q5 option mapping against images31–35, complete full construction marking rubrics and source-author review of any ambiguous circle-intersection branches.",
+      "detail": "TD-KEY-W03-ANSWERS.md now keys the five weekend objective items from original figures image31–image35: Q1 D (length of sides), Q2 B (distance across corners), Q3 C (regular polygon), Q4 C (re-entrant polygon), Q5 C (pentagon). It also gives regular-polygon angle values, octagon/hexagon methods, the two-triangle construction, the dimensioned pentagon with AE≈43.30 mm and the irregular-hexagon construction sequence. Remaining: full source-construction marking rubrics and teacher approval; six marked supplement practice questions already have marking totals.",
       "required_action": "Complete TD-KEY-W03-ANSWERS after figure and notation inspection; add original keyed construction steps, answers and marking criteria without inventing dimensions or reproducing textbook pages.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf",
         "TD-KEY-W03-ANSWERS"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "TD-T2-W04-ANSWER-KEYS",
-      "kind": "CONTENT",
-      "detail": "TD-KEY-W04-ANSWERS.md now keys every source-text numerical scale task, weekend MCQs Q2–Q5 and weekend Q1's figure-backed readings (X=85 mm, Z=370 mm; option C). Remaining Week Four answer dependencies are the 1:2 gate construction and ornamental-gate A–E measurements, which are tracked separately under TD-T2-W04-GATE-SCALE-RECONCILIATION, plus the source's millimetre/decimetre mismatch under TD-T2-W04-Q6-UNIT-MISMATCH. Do not duplicate those as unresolved generic answer-key work.",
-      "required_action": "Complete TD-KEY-W04-ANSWERS after scale figures and exact ratios are inspected; add original keyed solutions and marking criteria for every task not already answered in the source.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
-        "TD-KEY-W04-ANSWERS"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "TD-T2-W05-ANSWER-KEYS",
-      "kind": "CONTENT",
-      "detail": "TD-KEY-W05-ANSWERS.md now keys all source-text diagonal-scale readings, scale lengths, theory tasks and weekend objective answers. Remaining: read the k−n difference from its source figure and obtain an approved method for 24°, 27° and 37° on a 5°-graduated chordal scale; clarify the centre label.",
-      "required_action": "Complete TD-KEY-W05-ANSWERS after the source constructions and figures are inspected; add original keyed solutions and marking criteria for any unkeyed task.",
-      "affected_ids": [
-        "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc",
-        "TD-KEY-W05-ANSWERS"
       ],
       "blocks_delivery": true
     },
@@ -5879,6 +5836,28 @@
         "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863",
         "TD-VIS-W10",
         "TD-KEY-W10-ANSWERS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W02-OBJECTIVE-Q2-MULTIPLE-RADII",
+      "kind": "CONTENT",
+      "detail": "Weekend Q2's figure shows O as the circle centre and both B and Q as tangency points on the two side-lines. OB and OQ are both radii, so both options B and C are geometrically correct. The source is a single-answer MCQ and needs an author-approved correction or acceptance of both options.",
+      "required_action": "Obtain an author-approved correction of Weekend Q2 or explicit acceptance of both options B and C; do not silently pick one.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W02-KEYED-CONSTRUCTIONS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W03-GENERAL-PENTAGON-DIAGONAL-UNDERDEFINED",
+      "kind": "CONTENT",
+      "detail": "Week Three general revision asks only to construct a pentagon from one diagonal of 70 mm. This does not uniquely define a general/irregular pentagon. A regular pentagon would be uniquely constructible (side=70/φ≈43.26 mm), but the source does not specify regularity. Obtain author clarification or explicitly revise the task to say regular pentagon; do not infer it.",
+      "required_action": "Obtain author clarification, or explicitly revise the task to say regular pentagon; do not infer regularity.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf",
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W03-POLYGON-CONSTRUCTIONS"
       ],
       "blocks_delivery": true
     }
