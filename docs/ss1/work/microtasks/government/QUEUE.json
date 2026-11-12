@@ -40,8 +40,8 @@
     "LESSON": 27
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 49,
-    "PENDING": 28,
+    "IMPLEMENTED_TESTING_DEFERRED": 50,
+    "PENDING": 27,
     "BLOCKED": 1
   },
   "items": [
@@ -278,8 +278,8 @@
         "GOV-SRC-T2",
         "GOV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/government.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-12: wrote tests/ss1/government.package.test.mts following the French package test pattern. Covers frozen-schema parse, exact three-source/manifest correspondence (IDs, archive members, SHA-256, terms), pending alias approval/no invented lesson approval or verification, every current source rule's source-hash/anchor guards, all three SCHEME_ONLY marker bindings, and coverage-reference resolution. Test file committed but NOT RUN by owner instruction; lesson/correction/asset guards are explicitly deferred to the tasks that add those records.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -2963,7 +2963,6 @@
     }
   },
   "next_runnable": [
-    "GOV-TEST-PACKAGE",
     "GOV-LES-T1-W01-CORRECTED-WEEK",
     "GOV-LES-T1-W02-CORRECTED-WEEK",
     "GOV-LES-T1-W03-CORRECTED-WEEK",
