@@ -30,7 +30,8 @@
     "2026-11-12 follow-through: added a separate Week Seven reduction supplement because the existing Week Six enlargement lesson did not fully teach the reduction material in the combined Week Six–Seven source row. Bound it to Week 6/7 reduction and scheme coverage. Also bound the Week Ten scheme row to the Week Ten tangency supplement. Original figure derivatives and source assessment keys remain outstanding.",
     "Source figure extraction: 104 bounded TD-ASSET tasks registered against the original archive. PNG/JPEG parts copied byte-for-byte; 16 WMF previews rendered to cropped 2400px PNG; two cross-row duplicates reuse the Week Three triangle source asset. Figure verification and reuse rights approval remain deferred/pending.",
     "2026-11-12 source-asset generation commit a2888bbc: all 104 TD-ASSET tasks are now materialized and registered as 104 asset bindings backed by 102 committed files. PNG/JPEG source media was copied byte-for-byte; 16 WMF previews were converted to cropped 2400px PNG; two documented duplicate triangles reuse the Week Three derivative. The 16 WMF outputs were reviewed in a contact sheet for clipping/obvious rendering faults; per-figure label/dimension review, student rendering and rights/content approvals remain deferred.",
-    "2026-11-12: native-resolution inspection of Week Ten original figures image88–image104 completed; fact inventory now includes figure dimensions and answerable weekend tasks. Added package-to-manifest-to-queue regression test for all 104 source figure bindings. The two known source-method defects remain explicit, not silently repaired. Package and source-asset CI runs on PR #637 currently require workflow authorization."
+    "2026-11-12: native-resolution inspection of Week Ten original figures image88–image104 completed; fact inventory now includes figure dimensions and answerable weekend tasks. Added package-to-manifest-to-queue regression test for all 104 source figure bindings. The two known source-method defects remain explicit, not silently repaired. Package and source-asset CI runs on PR #637 currently require workflow authorization.",
+    "Extraction strategy decision completed by applying the least-destructive, source-preserving hybrid method; owner direction to proceed by recommendation was used. Teacher/content approval remains separate."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 1,
@@ -46,8 +47,8 @@
     "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 149,
-    "BLOCKED": 3,
+    "IMPLEMENTED_TESTING_DEFERRED": 150,
+    "BLOCKED": 2,
     "IN_PROGRESS": 6
   },
   "total": 158,
@@ -1314,8 +1315,8 @@
       "depends_on": [
         "TD-SRC-T2"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "HANDOFF.json lists Technical Drawing among sources where plain extraction drops equations and sub/superscripts; the same foundation decision is open for Mathematics (OI-MATH-001) and Physics.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The owner-approved-by-direction extraction approach is now documented in TD-EXTRACTION-STRATEGY.md and implemented by the source extraction workflow: immutable source hashes, structured row provenance, OOXML notation recovery, byte-faithful raster extraction, WMF conversion, no OLE execution, explicit source defect records, and separate content approval gates. This follows the user's instruction to proceed by recommendation; it does not grant teacher approval or authorise source corrections.",
       "completion_condition": "Decision recorded; follow-up tasks appended by the owner or integration worker."
     },
     {
