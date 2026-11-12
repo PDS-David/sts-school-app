@@ -5032,6 +5032,430 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T2-W09-LOGIC",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Further Mathematics",
+      "title": "Logic: propositions, negation, conditionals and valid arguments",
+      "objectives": [
+        "Identify propositions and write their negations correctly.",
+        "Interpret conditional statements and identify antecedents and consequents.",
+        "Construct converse, inverse, contrapositive and biconditional statements.",
+        "Use truth values and the chain rule to assess simple arguments."
+      ],
+      "body": "A logical statement (proposition) is a declarative sentence that has exactly one truth value: true (T) or false (F). Questions, commands, exclamations and incomplete clauses are not propositions. A statement may be false and still be a proposition.\n\n1. PROPOSITIONS AND NEGATION\nUse letters p,q,r to represent statements. The negation of p is ¬p, read \"not p\"; it has the opposite truth value.\nExample 1: p: \"7 is an even number\" is false; ¬p: \"7 is not an even number\" is true.\nExample 2: p: \"The school bus arrived before 8 a.m.\" Its negation is \"The school bus did not arrive before 8 a.m.\" Avoid changing a statement into a different claim when writing its negation.\nFor a universal statement, negate \"all\" by \"at least one is not\"; negate \"some\" by \"none\". Example: the negation of \"All students passed\" is \"At least one student did not pass.\"\n\n2. CONDITIONAL STATEMENTS\nA conditional \"if p, then q\" is written p→q. p is the antecedent; q is the consequent. It is false only when p is true and q is false.\nTruth table:\np T, q T: p→q T.\np T, q F: p→q F.\np F, q T: p→q T.\np F, q F: p→q T.\nA false antecedent makes the conditional true in classical logic, regardless of q.\nExample 3: p: \"A number is divisible by 4\"; q: \"The number is even\". p→q is true.\nNecessary and sufficient: \"p is sufficient for q\" means p→q. \"p is necessary for q\" means q→p.\n\n3. RELATED CONDITIONALS\nFor p→q:\n- Converse: q→p.\n- Inverse: ¬p→¬q.\n- Contrapositive: ¬q→¬p.\nThe original conditional and its contrapositive are logically equivalent. The converse and inverse are equivalent to each other, but they need not be equivalent to the original.\nExample 4: p: \"A number is divisible by 4\"; q: \"The number is even\".\nConverse: if a number is even, then it is divisible by 4 (not always true).\nInverse: if a number is not divisible by 4, then it is not even (not always true).\nContrapositive: if a number is not even, then it is not divisible by 4 (true).\n\n4. BICONDITIONAL STATEMENTS\np↔q means \"p if and only if q\". It is true exactly when p and q have the same truth value. It is equivalent to the pair of conditionals (p→q)∧(q→p).\nExample 5: For an integer n, \"n is even\" if and only if \"n is divisible by 2\". Both directions are true.\nDo not claim that a polygon is regular merely because its interior angles are equal: equal angles alone do not guarantee equal sides.\n\n5. ANTECEDENTS, CONSEQUENTS AND ARGUMENTS\nIdentify the statement after \"if\" as the antecedent and the statement after \"then\" as the consequent. In \"q if p\", p is still the antecedent: rewrite it as \"if p, then q\".\nExample 6 (valid chain rule): If a student studies, the student passes. If the student passes, the student earns a certificate. Therefore, if the student studies, the student earns a certificate. Symbolically p→q, q→r, therefore p→r.\nExample 7 (invalid inference): Soldiers are disciplined (p→q); good leaders are disciplined (r→q). It does not follow that soldiers are good leaders (p→r). Two statements sharing the same consequent do not establish a chain.\nExample 8: Some dogs are tame. All tame animals are small. Therefore, some dogs are small. This conclusion follows: the dogs that are tame are also small.\n\n6. COMMON ERRORS\nA false statement is still a proposition. Do not confuse the converse with the contrapositive. Do not reverse \"necessary\" and \"sufficient\". A biconditional requires both directions. A chain p→q and q→r supports p→r; p→q and r→q do not.",
+      "body_sha256": "02fca77c6b80c3450fc7adb50e41e978e2e71f19d1aa57d4226d66f7cd12a459",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Classify each as a proposition or not: (a) 6 is an even number; (b) Who is he?; (c) Stop talking; (d) 3+5=10.",
+          "answer": "(a) proposition (true); (b) not a proposition; (c) not a proposition; (d) proposition (false).",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "(a) proposition",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) not proposition",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) not proposition",
+              "marks": 1
+            },
+            {
+              "criterion": "(d) proposition",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Write the negation of (a) All students passed; (b) Some books are damaged.",
+          "answer": "(a) At least one student did not pass. (b) No books are damaged.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Negates all as at least one not",
+              "marks": 1
+            },
+            {
+              "criterion": "Negates some as none",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Complete the truth values of p→q for TT, TF, FT and FF.",
+          "answer": "T,F,T,T.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "TT gives T",
+              "marks": 1
+            },
+            {
+              "criterion": "TF gives F",
+              "marks": 1
+            },
+            {
+              "criterion": "FT gives T",
+              "marks": 1
+            },
+            {
+              "criterion": "FF gives T",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "For p: 'n is divisible by 4' and q: 'n is even', write the converse, inverse and contrapositive of p→q.",
+          "answer": "Converse q→p: if n is even then divisible by 4. Inverse ¬p→¬q: if n is not divisible by 4 then n is not even. Contrapositive ¬q→¬p: if n is not even then n is not divisible by 4.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Converse",
+              "marks": 1
+            },
+            {
+              "criterion": "Inverse",
+              "marks": 1
+            },
+            {
+              "criterion": "Contrapositive",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Translate: 'A is necessary for B' and 'C is sufficient for D' into conditional symbols.",
+          "answer": "B→A; C→D.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Necessary: B→A",
+              "marks": 1
+            },
+            {
+              "criterion": "Sufficient: C→D",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "When is p↔q true? State its equivalent conditional form.",
+          "answer": "It is true when p and q have the same truth value. It is equivalent to (p→q)∧(q→p).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Same truth values",
+              "marks": 1
+            },
+            {
+              "criterion": "Both conditionals joined by and",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q7",
+          "question": "Given p→q and q→r, what conclusion follows? Name the rule.",
+          "answer": "p→r follows by the chain rule (hypothetical syllogism).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Conclusion p→r",
+              "marks": 1
+            },
+            {
+              "criterion": "Names chain rule",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q8",
+          "question": "Does p→q and r→q imply p→r? Explain.",
+          "answer": "No. Both premises share a consequent; they do not establish a link from q to r. For example, p and r may both imply q without implying each other.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "No",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct reason",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q9",
+          "question": "Let p='Ayo has determination' and q='Ayo will succeed'. Write: (a) Ayo has no determination; (b) If Ayo has no determination, he will not succeed; (c) If Ayo will not succeed, he has no determination.",
+          "answer": "(a) ¬p; (b) ¬p→¬q; (c) ¬q→¬p.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "¬p",
+              "marks": 1
+            },
+            {
+              "criterion": "¬p→¬q",
+              "marks": 1
+            },
+            {
+              "criterion": "¬q→¬p",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "Some dogs are tame. All tame animals are small. What valid conclusion follows?",
+          "answer": "Some dogs are small.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States some dogs are small",
+              "marks": 2
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source: SS1 second-term Further Mathematics",
+          "locator": "WEEK NINE, TOPIC: LOGIC; member SHA-256 3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36. Original page 33 begins Week Nine. The source's conditional truth table, converse/inverse/contrapositive and chain-rule examples were checked; the biconditional polygon example is mathematically invalid and has been replaced with an even/divisible-by-two equivalence.",
+          "url": null,
+          "rights": "Newly authored instructional material; no extended source passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools; content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T2-W10-LOGICAL-CONNECTIVES-TRUTH-TABLES",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Further Mathematics",
+      "title": "Logical connectives, truth tables, tautologies and contradictions",
+      "objectives": [
+        "Construct truth tables for negation, conjunction and disjunction.",
+        "Distinguish tautologies, contradictions and contingencies.",
+        "Test logical equivalence using complete truth tables.",
+        "Apply commutative, distributive, implication, biconditional and De Morgan equivalences."
+      ],
+      "body": "Week Ten develops the logical connectives \"or\" and \"and\", truth tables, tautologies, contradictions and logical equivalence. A truth table lists every possible combination of truth values. With n simple propositions there are 2^n rows.\n\n1. NEGATION, CONJUNCTION AND DISJUNCTION\nNegation ¬p reverses the truth value of p.\nConjunction p∧q (\"p and q\") is true only when both p and q are true.\nDisjunction p∨q (\"p or q\") is true when at least one of p or q is true; it is false only when both are false. In ordinary mathematical logic, \"or\" is inclusive unless stated otherwise.\nTwo-variable truth table:\np q | ¬p | p∧q | p∨q\nT T | F | T | T\nT F | F | F | T\nF T | T | F | T\nF F | T | F | F\n\n2. TAUTOLOGY, CONTRADICTION AND CONTINGENCY\nA tautology is true on every row of its truth table. A contradiction is false on every row. A contingency is true on some rows and false on others.\nExample 1: p∨¬p is a tautology: if p is true, p∨¬p is true; if p is false, ¬p is true.\nExample 2: p∧¬p is a contradiction because p and its negation cannot both be true.\nExample 3: p∧q is a contingency: it is true only when both p and q are true.\n\n3. LOGICAL EQUIVALENCE\nTwo compound statements are logically equivalent when their final truth-table columns agree for every possible assignment. Write p≡q or p=q when the context is clear.\nExample 4 (commutative law): p∧q≡q∧p. The order of the two propositions does not change the result.\nExample 5 (distributive law): p∨(q∧r)≡(p∨q)∧(p∨r). This is the correct distributive form; p∨(q∧r) is not generally equivalent to (p∨q)∨r.\nExample 6 (biconditional): p↔q≡(p→q)∧(q→p).\nExample 7 (implication): p→q≡¬p∨q.\nDe Morgan's laws:\n¬(p∧q)≡¬p∨¬q.\n¬(p∨q)≡¬p∧¬q.\n\n4. CHECKING A CLAIM WITH A COUNTEREXAMPLE\nA claimed tautology must be true for every row. One false row disproves the claim.\nExample 8: p∧(¬p∨q)∨q simplifies to q, because p∧(¬p∨q)=(p∧¬p)∨(p∧q)=p∧q and (p∧q)∨q=q. It is not a tautology; when q is false, the whole expression is false.\nExample 9: (p∧q)∧(p∨q) simplifies to p∧q. It is not a contradiction; it is true when p and q are both true.\nExample 10: (p∧q)∧¬(p∨q) is a contradiction because p∧q requires both true while ¬(p∨q) requires both false.\n\n5. THREE-PROPOSITION TABLES\nFor p,q,r, list all eight combinations. Calculate inner brackets first, then negation, conjunction and disjunction. For example, evaluate ¬p∧(q∨r) by finding q∨r, then ¬p, then their conjunction. Do not skip rows.\nFor p=T,q=F,r=T: q∨r=T, ¬p=F, so ¬p∧(q∨r)=F.\nFor p=F,q=F,r=T: q∨r=T, ¬p=T, so the expression is T.\n\n6. COMMON ERRORS\nDo not call p∧¬p a tautology; it is a contradiction. Do not confuse inclusive OR with exclusive OR. A distributive law must preserve the correct connective: p∨(q∧r)≡(p∨q)∧(p∨r). To disprove a claimed equivalence or tautology, one counterexample row is enough.",
+      "body_sha256": "d71a9f86a6605aa73baaaa0cd5bbdfa461c95963e710333a94fff2d075a9ec40",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Complete p∧q and p∨q for rows TT, TF, FT and FF.",
+          "answer": "p∧q: T,F,F,F. p∨q: T,T,T,F.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Conjunction column",
+              "marks": 2
+            },
+            {
+              "criterion": "Disjunction column",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Classify p∨¬p and p∧¬p.",
+          "answer": "p∨¬p is a tautology; p∧¬p is a contradiction.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Tautology",
+              "marks": 1
+            },
+            {
+              "criterion": "Contradiction",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Classify p∧q as a tautology, contradiction or contingency.",
+          "answer": "Contingency: true only on row TT and false on the other three rows.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Names contingency",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains truth rows",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Use a truth table or argument to show p∧q≡q∧p.",
+          "answer": "Both expressions are true only when p and q are both true; their columns are T,F,F,F.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Correct truth combinations",
+              "marks": 1
+            },
+            {
+              "criterion": "Matching columns",
+              "marks": 1
+            },
+            {
+              "criterion": "States equivalence",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "State the correct distributive equivalence for p∨(q∧r).",
+          "answer": "p∨(q∧r)≡(p∨q)∧(p∨r).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct left expression",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct right expression with ∧",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Write p↔q using only → and ∧.",
+          "answer": "(p→q)∧(q→p).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "First implication",
+              "marks": 1
+            },
+            {
+              "criterion": "Second implication and conjunction",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q7",
+          "question": "Simplify p∧(¬p∨q)∨q. Is it a tautology?",
+          "answer": "p∧(¬p∨q)=(p∧¬p)∨(p∧q)=p∧q; then (p∧q)∨q=q. It is not a tautology.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Distributes conjunction",
+              "marks": 1
+            },
+            {
+              "criterion": "Simplifies to q",
+              "marks": 1
+            },
+            {
+              "criterion": "Says not a tautology",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q8",
+          "question": "Simplify (p∧q)∧(p∨q). Is it a contradiction?",
+          "answer": "By absorption, it simplifies to p∧q. It is not a contradiction; it is true when p=q=T.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Simplifies to p∧q",
+              "marks": 1
+            },
+            {
+              "criterion": "Says not contradiction",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives TT case",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q9",
+          "question": "Let p='She is short' and q='She is beautiful'. Write: (a) short and beautiful; (b) short but not beautiful; (c) neither short nor beautiful.",
+          "answer": "(a) p∧q; (b) p∧¬q; (c) ¬p∧¬q.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "p∧q",
+              "marks": 1
+            },
+            {
+              "criterion": "p∧¬q",
+              "marks": 1
+            },
+            {
+              "criterion": "¬p∧¬q",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "Find the truth value of ¬p∧(q∨r) when (a) p=T,q=F,r=T and (b) p=F,q=F,r=T.",
+          "answer": "(a) F. (b) T.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Case (a)",
+              "marks": 1
+            },
+            {
+              "criterion": "Case (b)",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source: SS1 second-term Further Mathematics",
+          "locator": "WEEK TEN, TOPIC: LOGICAL REASONING CONTINUES; member SHA-256 3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36. Original pages 38–39 visually inspected. Source mislabels p∧¬p as a tautology, makes a false distributive equivalence, claims a non-tautology is tautological, and mislabels (p∧q)∧(p∨q) as a contradiction; replacement corrects each.",
+          "url": null,
+          "rights": "Newly authored instructional material; no extended source passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools; content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -5877,14 +6301,19 @@
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Logical reasoning: statements, negation, converse, contrapositive",
       "objective_locator": "scheme topic 9 (scheme table row 9, body child 5, table sha256 6b18d95fc63347bc091d1c093cc113dd2b08f60f5e7a256f8571335a53a82b7e); parsed row 8 (LOGIC)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-43c5ab51b87f:BODY:d3d1920311377de95341891a1e20ffd0db191cf66f80abe82e40e245bda49591"
+        "SS1-SRC-43c5ab51b87f:BODY:d3d1920311377de95341891a1e20ffd0db191cf66f80abe82e40e245bda49591",
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W09-LOGIC"
       ],
       "evidence": [
         {
           "locator": "parsed row 8",
           "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and delivered text loses superscripts/subscripts (401 superscript and 214 subscript runs in the source; OMML characters lost in this row: 0); no replacement lesson authored."
+        },
+        {
+          "locator": "Second Term Week Nine source body, Logic",
+          "explanation": "Logical statements, negation, conditionals, converse/inverse/contrapositive, biconditional and chain rule. Replacement includes worked examples and keyed practice; source defects are corrected and recorded. Approval PENDING; verification DEFERRED."
         }
       ]
     },
@@ -5893,14 +6322,19 @@
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Compound statements, connectives, conditionals",
       "objective_locator": "scheme topic 10 (scheme table row 10, body child 5, table sha256 6b18d95fc63347bc091d1c093cc113dd2b08f60f5e7a256f8571335a53a82b7e); parsed row 9 (Logical reasing continues)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-43c5ab51b87f:BODY:6a5fab126bb2321e0385327297cc9ec0e43f4f80f816e1ff7024f99e786d29b4"
+        "SS1-SRC-43c5ab51b87f:BODY:6a5fab126bb2321e0385327297cc9ec0e43f4f80f816e1ff7024f99e786d29b4",
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W10-LOGICAL-CONNECTIVES-TRUTH-TABLES"
       ],
       "evidence": [
         {
           "locator": "parsed row 9",
           "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and delivered text loses superscripts/subscripts (401 superscript and 214 subscript runs in the source; OMML characters lost in this row: 45); no replacement lesson authored."
+        },
+        {
+          "locator": "Second Term Week Ten source body, Logical reasoning continues",
+          "explanation": "Disjunction, conjunction, truth tables, tautology, contradiction and logical equivalence. Replacement includes worked examples and keyed practice; source defects are corrected and recorded. Approval PENDING; verification DEFERRED."
         }
       ]
     },
@@ -6696,6 +7130,118 @@
           "explanation": "Replacement derives all three Pythagorean identities and includes proof practice."
         }
       ]
+    },
+    {
+      "id": "COV-FM-T2-W09-OBJ-1",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Identify logical statements and write their negations.",
+      "objective_locator": "scheme second term week 9; source Week Nine Logical Statements and Negation",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W09-LOGIC"
+      ],
+      "evidence": [
+        {
+          "locator": "Week Nine source pages 33–34; replacement section 1",
+          "explanation": "Replacement distinguishes propositions from questions/commands and handles negation of all/some statements."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-W09-OBJ-2",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Interpret conditional statements and identify antecedents and consequences.",
+      "objective_locator": "scheme second term week 9; source Week Nine Conditional Statements",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W09-LOGIC"
+      ],
+      "evidence": [
+        {
+          "locator": "Week Nine source Conditional Statements and truth table; replacement section 2",
+          "explanation": "Replacement gives the correct conditional truth table and necessary/sufficient translations."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-W09-OBJ-3",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Construct converse, inverse, contrapositive and biconditional statements.",
+      "objective_locator": "scheme second term week 9; source Week Nine Converse, Inverse, Contrapositive and Biconditional",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W09-LOGIC"
+      ],
+      "evidence": [
+        {
+          "locator": "Week Nine source sections and replacement sections 3–4",
+          "explanation": "Replacement defines all four forms and uses a valid even/divisible-by-two biconditional."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-W09-OBJ-4",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Use the chain rule to identify valid and invalid arguments.",
+      "objective_locator": "scheme second term week 9; source Week Nine Chain Rule",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W09-LOGIC"
+      ],
+      "evidence": [
+        {
+          "locator": "Week Nine source chain-rule examples; replacement section 5",
+          "explanation": "Replacement explains valid p→q,q→r ⟹ p→r and rejects the invalid shared-consequent argument."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-W10-OBJ-1",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Construct truth tables for conjunction and disjunction.",
+      "objective_locator": "scheme second term week 10; source Week Ten Connectives",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W10-LOGICAL-CONNECTIVES-TRUTH-TABLES"
+      ],
+      "evidence": [
+        {
+          "locator": "Week Ten source disjunction/conjunction tables; replacement section 1",
+          "explanation": "Replacement gives complete and correct truth tables."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-W10-OBJ-2",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Distinguish tautologies, contradictions and contingencies.",
+      "objective_locator": "scheme second term week 10; source Week Ten Tautology and Contradiction",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W10-LOGICAL-CONNECTIVES-TRUTH-TABLES"
+      ],
+      "evidence": [
+        {
+          "locator": "Week Ten source examples; replacement section 2",
+          "explanation": "Replacement correctly classifies p∨¬p, p∧¬p and p∧q."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-W10-OBJ-3",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Test logical equivalence and prove identities by truth tables.",
+      "objective_locator": "scheme second term week 10; source Week Ten evaluations and general evaluation",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W10-LOGICAL-CONNECTIVES-TRUTH-TABLES"
+      ],
+      "evidence": [
+        {
+          "locator": "Week Ten source evaluation and replacement sections 3–5",
+          "explanation": "Replacement corrects the distributive law, biconditional equivalence and source false tautology/contradiction claims."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -7063,6 +7609,30 @@
         "COV-FM-T2-R07"
       ],
       "blocks_delivery": false
+    },
+    {
+      "id": "OI-FM-T2-W09-LOGIC-ERRORS",
+      "kind": "FACT",
+      "detail": "The Week Nine source uses an invalid biconditional example: 'all interior angles of a polygon are equal' does not imply the polygon is regular (a non-square rectangle is equiangular but not regular). The Mary/model/beautiful example uses subjective predicates and is unsuitable for objective truth-table work. The conditional example with 'I am a male' and 'the sun will rise' assigns truth values inconsistently (if p is true and q true, ¬p→¬q is false, not true). The weekend MCQ for ¬q→¬p has no correct listed option. The replacement uses precise statements and correct logical forms.",
+      "required_action": "Use the replacement's examples and keyed questions; do not reuse the invalid biconditional/conditional example or weekend item 3 options. Teacher approval remains pending.",
+      "affected_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W09-LOGIC",
+        "COV-FM-T2-R08",
+        "COV-FM-T2-W09-OBJ-3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-T2-W10-LOGIC-IDENTITY-ERRORS",
+      "kind": "FACT",
+      "detail": "The Week Ten source labels p∧¬p as a tautology although it is a contradiction. It claims p∨(q∧r)=(p∨q)∨r, which is false; the correct distributive law is p∨(q∧r)=(p∨q)∧(p∨r). It claims p∧(¬p∨q)∨q is a tautology, but it simplifies to q and is not tautological. The weekend expression (p∧q)∧(p∨q) is labelled a contradiction, but it simplifies to p∧q. One additional weekend tautology expression is visually damaged by missing equation objects and cannot be reconstructed safely.",
+      "required_action": "Use the corrected replacement identities and truth tables. Do not reproduce the damaged expression or the false source claims; teacher approval remains pending.",
+      "affected_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T2-W10-LOGICAL-CONNECTIVES-TRUTH-TABLES",
+        "COV-FM-T2-R09",
+        "COV-FM-T2-W10-OBJ-3"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
