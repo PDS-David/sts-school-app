@@ -7,7 +7,7 @@ teacher password change, student, score, permission refusals. No database errors
 Never paste a connection string or password into chat, a commit or a ticket.
 
 ## 1. Render dashboard
-1. New → PostgreSQL. Name `sts-school-db`, region Frankfurt, a **paid** plan (not Free). Wait for Available.
+1. New → PostgreSQL. Name `sts-school-db`, region Frankfurt. Plan: **Free** for now (see "Free plan: upgrade schedule" below; it expires, so the upgrade is mandatory). Wait for Available.
 2. On its Info page copy the **Internal** and **External** database URLs. The last path segment is the
    database name (needed in step 2.5).
 3. Backend service `sts-school-backend` → Environment:
@@ -38,8 +38,38 @@ Never paste a connection string or password into chat, a commit or a ticket.
 3. Students per class, then parents.
 
 ## 5. Backups
-1. Confirm Render's automatic backups are on for the paid plan.
-2. Weekly: `pg_dump "<External URL>" -Fc -f sts-YYYYMMDD.dump`, stored off Render.
+Free Render Postgres has no backups. Until upgraded, the weekly dump below is the only backup.
+1. Weekly (PowerShell, `pg_dump` from the PostgreSQL client tools installed):
+   `$env:DATABASE_URL="<External URL>"; pg_dump $env:DATABASE_URL -Fc -f ("sts-" + (Get-Date -Format yyyyMMdd) + ".dump"); Remove-Item Env:DATABASE_URL`
+2. Keep the last 4 dumps somewhere other than Render (another drive and a cloud folder).
+3. Restore test once, right after the first dump: restore into a throwaway local database with `pg_restore --no-owner -d <local db> <file>`.
+4. After upgrading to a paid plan, confirm Render's automatic backups are on and keep the weekly dump.
+
+## Free plan: upgrade schedule
+Free Render Postgres **expires 30 days after creation**. Expired databases are inaccessible; there is a 14-day
+grace period to upgrade; after that the database and all data are deleted (day 44). It is also limited to 1 GB
+and Render may restart it or do maintenance at any time.
+
+Day 0 is the creation date shown on the database page. Example if created 12 Nov 2026:
+
+| Day | Date | Action |
+|---|---|---|
+| 0 | 12 Nov | Create, run section 2, first dump + restore test |
+| 7, 14 | 19 Nov, 26 Nov | Weekly dump |
+| 21 | 3 Dec | Decide the paid plan, make sure payment method works |
+| 25 | 7 Dec | **Upgrade the database to a paid instance type** (Render dashboard → the database → change instance type) |
+| 28 | 10 Dec | Check: database shows a paid type, URLs still work, login works, backups on |
+| 30 | 12 Dec | **Expiry. Do not reach this day on Free.** |
+| 44 | 26 Dec | Absolute deadline; data deleted after this |
+
+Steps for the upgrade day:
+1. Take a fresh dump first.
+2. Upgrade the database in place from the dashboard.
+3. Confirm the backend `DATABASE_URL` still works (log in as a teacher). If the URL changed, update it and save.
+4. Confirm automatic backups are enabled.
+5. Optionally upgrade the backend web service so it stops sleeping.
+
+Missed the schedule? Upgrade during the 14-day grace period; after day 44 it cannot be recovered, so restore from the latest dump into a new database instead.
 
 ## If the API logs a certificate error after step 3
 1. Preferred: set `DATABASE_SSL_CA` to the provider's CA certificate (PEM; `\n` allowed for newlines).
