@@ -6,7 +6,7 @@ import { generate, generateJSON } from '../utils/ai.js';
 import { sendPushToClass } from '../utils/push.js';
 import type { AuthUser } from '../types/index.js';
 import { attributionsForTopic, publicAttribution } from '../db/jss3Attributions.js';
-import { resolveSequenceGroup } from '../utils/jss3Sequence.js';
+import { resolveSequenceGroup, studentTopicPreview } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
 import { resolveSs1Delivery, safeSs1Topic, retireStaleSs1Cache, ss1AssessmentDeliverable, ss1WithdrawnAssessmentIds } from '../utils/ss1CateringDeliveryCorrection.js';
 import { resolveSs1FrenchDelivery, retireStaleSs1FrenchCache } from '../utils/ss1FrenchDeliveryCorrection.js';
@@ -349,17 +349,11 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
           };
           // Locked rows are navigation metadata only. Do not send descriptions,
           // generated summaries, source text/provenance or any lesson payload.
-          if (locked) return {
-            id: r.id,
-            title: r.title,
-            subject_id: r.subject_id,
-            subject_name: r.subject_name,
-            class_name: r.class_name,
-            term_id: r.term_id,
-            term_label: r.term_label,
-            order_index: r.order_index,
-            ...sequence,
-          };
+          if (locked) return studentTopicPreview(
+            r,
+            completed,
+            seqById.get(r.id) ?? { locked: true, sequence_position: null, is_sequence_first: false },
+          );
           return { ...r, ...sequence };
         }),
       });
