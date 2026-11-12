@@ -51,6 +51,22 @@ export function listStudentSs1Lessons(subjectName?: string): StudentSs1Lesson[] 
   });
 }
 
+/** Safe metadata for the lesson list. Locked lessons must never expose body,
+ * practice answers, provenance locators or asset URLs before their Term PIN is redeemed.
+ */
+export function studentSs1LessonPreview(lesson: StudentSs1Lesson, locked: boolean) {
+  return {
+    id: lesson.id,
+    title: lesson.title,
+    term: lesson.term,
+    subject_slug: lesson.subject_slug,
+    canonical_subject: lesson.canonical_subject,
+    classroom_verification_pending: lesson.classroom_verification_pending,
+    locked,
+    practice_count: lesson.practice.length,
+  };
+}
+
 export function getStudentSs1Lesson(lessonId: string): StudentSs1Lesson | null {
   return listStudentSs1Lessons().find(lesson => lesson.id === lessonId) ?? null;
 }

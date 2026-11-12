@@ -85,7 +85,7 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
                 <View style={styles.rowIcon}><Ionicons name={lesson.locked ? 'lock-closed' : 'book-outline'} size={20} color={lesson.locked ? Colors.textSub : Colors.primary} /></View>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.rowTitle}>{lesson.title}</Text>
-                  <Text style={styles.rowSub}>{lesson.term} · {lesson.practice?.length ?? 0} practice questions{lesson.classroom_verification_pending ? ' · Teacher review pending' : ''}</Text>
+                  <Text style={styles.rowSub}>{lesson.term} · {lesson.practice_count ?? lesson.practice?.length ?? 0} practice questions{lesson.classroom_verification_pending ? ' · Teacher review pending' : ''}</Text>
                 </View>
                 <Ionicons name={lesson.locked ? 'lock-closed' : 'chevron-forward'} size={18} color={Colors.textSub} />
               </TouchableOpacity>
