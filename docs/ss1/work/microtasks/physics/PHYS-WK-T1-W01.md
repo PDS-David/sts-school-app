@@ -1,6 +1,6 @@
 # PHYS-WK-T1-W01 — Physics, 1st Term, Week 1 (objective index)
 
-Status: **IMPLEMENTED_TESTING_DEFERRED** (objective index only; not approved, not verified). Testing deferred by owner. No tests, typechecks, importer, database or device checks were run. Week 1 is **not** a complete, certified or taught week, and no objective is marked SUPPORTED.
+Status: **IMPLEMENTED_TESTING_DEFERRED** — original source row indexed; original member visually inspected; lessons/coverage now updated. Content approval PENDING and verification DEFERRED.
 
 ## Inputs
 - Branch `ss1/phys-wk-t1-w01`, cut from `origin/master` `a665934c6cf89ea9ea0cbacb5d9e77abc9809e5e` (the merge of PR #328, BIO-WK-T1-W01). Working tree clean at start. The open-pull-request list for `PDS-David/sts-school-app` was read through the GitHub API and is empty, so no other branch owns `backend/src/db/ss1/subjects/physics.json`, this queue or this record. Physics work already IMPLEMENTED_TESTING_DEFERRED on master: PHYS-SRC-T1/T2/T3, PHYS-PRE-T1, PHYS-PRE-T2. No `AGENTS.md` or `QODER.md` exists in the repository.
@@ -69,3 +69,17 @@ Member SHA-256 re-computed from the supplied file before parsing; extraction re-
 
 ## Deferred and remaining
 Full tests, typechecks, importer runs, compiler plans, database and device checks remain deferred by owner instruction; CI was left enabled and untouched. `package_status` stays PENDING and `lessons[]` stays empty: nothing is deliverable and the week keeps blocking. `PHYS-FACT-T1-W01-SCOPE` (BLOCKED) holds the seven expert questions; three bounded lessons (`PHYS-LES-T1-W01-LABORATORY`, `-DIMENSIONAL-ANALYSIS`, `-KEY-ASSESSMENT`) are appended as PENDING; `PHYS-VIS-T1` still owns the 76 figures; `PHYS-OWNER-EXTRACTION-STRATEGY` still owns exponent rendering; `PHYS-PORT-D1-COV-T1` still owns PR #71 reconciliation; `PHYS-RULE-T1-REVISION-SCHEME` now also owns the duplicate-heading constraint. `NEXT_TASK.md`, `QUEUE_BUILD.md`, `PHYS-PRE-T1.md` and every other subject's files were not written: they are outside this task's three allowed paths.
+
+
+## Current source-render and delivery update — 2026-11-12 (supersedes stale statements above)
+
+The earlier note was written before the original .doc could be rendered and before the lessons were authored. It remains useful for the original text-extraction locator and row-body digest, but statements that `lessons[]` is empty, the week is not indexed or no key/supplement exists are historical and no longer current.
+
+- The original member was recovered from CI artifact `physics-original-source-evidence`, re-hashed and rendered to a 37-page PDF. PDF pages 2–6 are Week One; pages 4–5 visibly render the formula images that `getBody()` had flattened/omitted. Density, velocity, acceleration and force dimensional derivations are present in the original PDF.
+- The source's actual defects are narrowed in the package: case-sensitive SI symbols in Table 2.0 and the “three” versus seven base-quantity wording. The missing-derivation claim and apparent “breath” typo are extraction-only, not visible source-page defects.
+- Student supplements now exist for introduction/dimensional analysis, laboratory familiarisation and the scientific method. The latter two are independent supplements because the source scheme includes lab familiarisation and page 3 asks for scientific-method steps without teaching them.
+- A proposed teacher-only 44-mark answer key is in `PHYS-LES-T1-W01-KEY-ASSESSMENT.md`. It flags the weekend question with three derived-unit options and proposes a replacement.
+- Coverage rows are updated with current lesson bindings and source PDF page evidence. The reading assignment remains partial because the cited textbook is not in the repository; the weekend MCQ block remains partial pending approval of the corrected item.
+- Original source member and original row identity are unchanged. Lesson content approval is PENDING and verification is DEFERRED. The teacher must review the independent lab/scientific-method supplements and the proposed key before approval.
+
+Full page/visual evidence: `PHYS-SOURCE-VISUAL-RECONCILIATION-20261112.md`. Current coverage and open-item state is in `physics.json` and `QUEUE.json`.
