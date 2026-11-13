@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import api from '../api/client';
 import { useAuth } from '../api/AuthContext';
 
@@ -14,6 +14,8 @@ interface NotificationsState {
   notifications: AppNotification[];
   unreadCount: number;
   loading: boolean;
+  announcementsLoaded: boolean;
+  announcementsError: boolean;
   refresh: () => Promise<void>;
   markAllRead: () => void;
 }
@@ -21,37 +23,47 @@ interface NotificationsState {
 const NotificationsContext = createContext<NotificationsState>({} as NotificationsState);
 export const useNotifications = () => useContext(NotificationsContext);
 
-// There is no single "/notifications" endpoint in this API yet, so this
-// assembles a best-effort feed from data the app already has permission to
-// read (open assessments, unread conversations) rather than inventing
-// content. Once a real notifications/announcements endpoint exists, swap
-// the body of `refresh` to call it directly.
-//
-// Found live in QA Pass 7: the comment above always described "unread-
-// looking conversations" as part of this feed, but the code never actually
-// built any `kind: 'message'` entries — `AppNotification`'s type included
-// it, `NotificationsScreen`'s icon map had one for it, but `refresh()` only
-// ever pushed `'assessment'` items. Unread messages never showed up here or
-// in the bell badge on `AppHeader`, no matter how many were waiting. Now
-// that `GET /messages/contacts` returns real `unread_count`/`last_message_at`
-// per contact (added this same pass), this folds those in too.
 export function NotificationsProvider({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
   const [notifications, setNotifications] = useState<AppNotification[]>([]);
   const [loading, setLoading] = useState(false);
   const [readIds, setReadIds] = useState<Set<string>>(new Set());
+  const [announcementsLoaded, setAnnouncementsLoaded] = useState(false);
+  const [announcementsError, setAnnouncementsError] = useState(false);
+
+  // Keep the last successful announcement response if a later refresh fails.
+  // Refs avoid changing refresh's identity and triggering home-screen loops.
+  const previousAnnouncementsRef = useRef<AppNotification[]>([]);
+  const lastUserIdRef = useRef<string | null>(null);
+  const refreshGenerationRef = useRef(0);
 
   const refresh = useCallback(async () => {
-    if (!user) { setNotifications([]); return; }
+    const generation = ++refreshGenerationRef.current;
+    if (!user) {
+      lastUserIdRef.current = null;
+      previousAnnouncementsRef.current = [];
+      setNotifications([]);
+      setReadIds(new Set());
+      setAnnouncementsLoaded(false);
+      setAnnouncementsError(false);
+      setLoading(false);
+      return;
+    }
+
+    if (lastUserIdRef.current !== user.id) {
+      lastUserIdRef.current = user.id;
+      previousAnnouncementsRef.current = [];
+      setNotifications([]);
+      setReadIds(new Set());
+      setAnnouncementsLoaded(false);
+      setAnnouncementsError(false);
+    }
+
     setLoading(true);
     const items: AppNotification[] = [];
+
     try {
-      // Student only (SEC-04). GET /learning/assessments requires
-      // `assessments.read`, which the parent role does not have (rbac.ts),
-      // so asking for it as a parent was a guaranteed 403 swallowed below.
-      // It also returns class-wide assessments, so parents must not get it
-      // until a ward-scoped endpoint exists — do not re-add 'parent' here
-      // or widen the permission as a shortcut.
+      // Students only: parents use the separate ward-scoped upcoming-tests endpoint.
       if (user.role === 'student') {
         const { data } = await api.get('/learning/assessments');
         const open = (data.assessments ?? []).filter((a: any) => a.status === 'open');
@@ -65,7 +77,8 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
           });
         }
       }
-    } catch { /* offline or endpoint unavailable — skip silently */ }
+    } catch { /* an unavailable assessment feed does not block other sources */ }
+
     try {
       const { data } = await api.get('/messages/contacts');
       const withUnread = (data.contacts ?? []).filter((c: any) => (c.unread_count ?? 0) > 0);
@@ -78,34 +91,48 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
           createdAt: c.last_message_at ?? new Date().toISOString(),
         });
       }
-    } catch { /* offline or endpoint unavailable — skip silently */ }
-    // PRD-01: school announcements, read-only, for every authenticated role.
-    // The API scopes them to the viewer's school/class/role. A 404 from an
-    // older server, or an offline failure, simply leaves the feed as it was.
+    } catch { /* an unavailable messages feed does not block other sources */ }
+
+    let announcementItems: AppNotification[] = [];
+    let announcementSucceeded = false;
     try {
       const { data } = await api.get('/announcements');
-      for (const a of (data.announcements ?? []).slice(0, 10)) {
-        items.push({
-          id: `announcement-${a.id}`,
-          kind: 'announcement',
-          title: a.title,
-          body: a.body,
-          createdAt: a.created_at ?? new Date().toISOString(),
-        });
-      }
-    } catch { /* offline or endpoint unavailable — skip silently */ }
+      announcementItems = (data.announcements ?? []).slice(0, 10).map((a: any) => ({
+        id: `announcement-${a.id}`,
+        kind: 'announcement' as const,
+        title: a.title,
+        body: a.body,
+        createdAt: a.created_at ?? new Date().toISOString(),
+      }));
+      announcementSucceeded = true;
+    } catch { /* retain the last successful announcement feed and expose the error */ }
+
+    // A newer refresh or account switch supersedes this response.
+    if (generation !== refreshGenerationRef.current) return;
+
+    if (announcementSucceeded) previousAnnouncementsRef.current = announcementItems;
+    else announcementItems = previousAnnouncementsRef.current;
+
+    items.push(...announcementItems);
     items.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
     setNotifications(items);
+    setAnnouncementsLoaded(previous => previous || announcementSucceeded);
+    setAnnouncementsError(!announcementSucceeded);
     setLoading(false);
   }, [user]);
 
-  useEffect(() => { refresh(); }, [refresh]);
+  useEffect(() => {
+    refresh();
+    return () => { refreshGenerationRef.current += 1; };
+  }, [refresh]);
 
   const unreadCount = notifications.filter(n => !readIds.has(n.id)).length;
   const markAllRead = () => setReadIds(new Set(notifications.map(n => n.id)));
 
   return (
-    <NotificationsContext.Provider value={{ notifications, unreadCount, loading, refresh, markAllRead }}>
+    <NotificationsContext.Provider value={{
+      notifications, unreadCount, loading, announcementsLoaded, announcementsError, refresh, markAllRead,
+    }}>
       {children}
     </NotificationsContext.Provider>
   );
