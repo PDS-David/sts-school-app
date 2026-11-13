@@ -30,7 +30,8 @@
     "2026-11-08 FA-INV-T3: appended the 3rd Term inventory items (18) and set FA-INV-T3 to IMPLEMENTED_TESTING_DEFERRED. All 18 new items are PENDING because no coverage, lesson, disposition, preservation record or factual check has been written. The body has seven week labels covering ten weeks, no table or equation, one header picture (a third-party tutor letterhead, a provenance question for the owner) and no revision or examination marker, so no marker item was added. No answer key is printed for any question. Nothing is approved, verified or deployed.",
     "FA-TEST-PACKAGE (2026-11-13): added tests/ss1/financial-accounting.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; explicit PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current partial/unresolved coverage/open-item boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed.",
     "FA-PRE-T1 (2026-11-13): verified first-term source member hash and inspected original DOCX paragraphs 15–31. Recorded title, subject/class heading, scheme heading, literal WEEK/TOPIC header with trailing space and all seven scheme rows verbatim in FA-PRE-T1.md. Mixed row numbering/separators preserved; row 1 has no literal number; row 4–5 continues in a following paragraph. No preamble coverage entry or classify_marker rule was added; the scheme is before the first body week and is recorded in FA-PRE-T1.md because scheme rows do not contain body week markers and the body begins at WEEK ONE. Verified no REVISION occurrence and EXAMINATION occurs twice only in prose, not as a section. No scheme row became a lesson.",
-    "2026-11-13 Week Three indexing and supplement ported onto the active Week Two branch without changing its Week Two work. Added twelve W03 objective records, one original ledger/journal lesson, and two W03 open items. Source wording at lines 379/461 remains assigned to FA-PRES-T1-SOURCE-WORDING; ledger/journal visual frames remain with FA-VIS-T1-W03-FORMATS; page 41 remains unresolved. W03 lesson approval PENDING and verification DEFERRED."
+    "2026-11-13 Week Three indexing and supplement ported onto the active Week Two branch without changing its Week Two work. Added twelve W03 objective records, one original ledger/journal lesson, and two W03 open items. Source wording at lines 379/461 remains assigned to FA-PRES-T1-SOURCE-WORDING; ledger/journal visual frames remain with FA-VIS-T1-W03-FORMATS; page 41 remains unresolved. W03 lesson approval PENDING and verification DEFERRED.",
+    "2026-11-13 FA-VIS-T1-W03-FORMATS completed as an asset-free visual disposition. Original source page 6 rendered and inspected. Ledger eight-cell order and nine vertical rules; first four cells are Debit side (left), next four Credit side (right), side labels are editorial annotations from adjacent prose/standard convention, not source cell text. Journal five-cell order and six vertical rules preserved; no unprinted debit/credit columns invented. No drawing or asset committed; format coverage remains PARTIAL pending a student-facing visual."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -44,10 +45,10 @@
     "LESSON": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 11,
+    "IMPLEMENTED_TESTING_DEFERRED": 12,
     "BLOCKED": 3,
     "IN_PROGRESS": 1,
-    "PENDING": 59
+    "PENDING": 58
   },
   "items": [
     {
@@ -678,8 +679,8 @@
         "FA-INV-T1",
         "FA-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T1.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Recorded in FA-VIS-T1-W03-FORMATS.md after inspecting the original DOCX and rendered page 6. Ledger format: exact eight-cell row Date|Narration|Folio|Amount|Date|Narration|Folio|Amount, nine vertical rules, two four-column groups; the adjacent prose identifies Debit and Credit sides but the table does not print side labels. Original explanatory representation: first group Debit (left), second Credit (right), explicitly editorial labels based on adjacent prose and standard layout. Journal format: exact five cells Date|Narration|Folio|Details|Totals, six vertical rules; no debit/credit subcolumns inferred. No binary drawing or asset committed. Coverage remains PARTIAL because no student-facing rendered visual is included; lesson answer text is consistent with disposition.",
       "completion_condition": "Both format figures have a recorded disposition that preserves the printed cell order and makes the two ledger sides explicit without inventing labels; the 'Draw the format' answer is consistent with it; no binary drawing is committed."
     },
     {
@@ -2803,7 +2804,6 @@
     "FA-WK-T1-W08",
     "FA-WK-T1-W09-W10",
     "FA-VIS-T1-W02-T03-DIAGRAMS",
-    "FA-VIS-T1-W03-FORMATS",
     "FA-VIS-T1-W04-TACCOUNTS",
     "FA-VIS-T1-W06-RULING",
     "FA-VIS-T1-W09-COLUMN-LAYOUT",
