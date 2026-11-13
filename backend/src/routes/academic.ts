@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { query } from '../db/pool.js';
+import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requireRole } from '../middleware/auth.js';
 import { SESSION_TERM_NAMES, isValidSessionTermName } from '../utils/terms.js';
 import { audit } from '../utils/audit.js';
@@ -56,55 +56,80 @@ router.get('/terms/current', async (req, res) => {
 });
 
 router.post('/terms', requireRole('admin'), async (req, res) => {
-  const { name, academic_year, school_code, start_date, end_date, days_opened, next_term_begins } = req.body;
+  const { name, academic_year, school_code, start_date, end_date, days_opened, next_term_begins } = req.body ?? {};
 
-  // A session is fixed at exactly 3 terms (1st, 2nd, 3rd). This is enforced
-  // here rather than only in the UI, since /terms can be called directly.
   if (!isValidSessionTermName(name)) {
     return res.status(400).json({
       error: `Term name must be one of: ${SESSION_TERM_NAMES.join(', ')}`,
     });
   }
-  const { rows: existingTerms } = await query(
-    'SELECT id, name FROM terms WHERE school_code=$1 AND academic_year=$2',
-    [school_code, academic_year],
-  );
-  if (existingTerms.length >= 3) {
-    return res.status(409).json({
-      error: `${academic_year} for ${school_code} already has all 3 terms of a session ` +
-             `(${existingTerms.map((t: any) => t.name).join(', ')}). A session cannot exceed 3 terms.`,
-    });
+  if (typeof academic_year !== 'string' || !academic_year.trim() || academic_year.length > 20) {
+    return res.status(400).json({ error: 'A valid academic_year is required (maximum 20 characters).' });
   }
-  if (existingTerms.some((t: any) => t.name === name)) {
-    return res.status(409).json({ error: `${name} already exists for ${academic_year}.` });
+  if (typeof school_code !== 'string' || !school_code.trim() || school_code.length > 50) {
+    return res.status(400).json({ error: 'A valid school_code is required.' });
   }
   const daysOpenedError = validateDaysOpened(days_opened);
   if (daysOpenedError) return res.status(400).json({ error: daysOpenedError });
 
-  const { rows } = await query(
-    `INSERT INTO terms(name,academic_year,school_code,start_date,end_date,days_opened,next_term_begins)
-     VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
-    [name, academic_year, school_code, start_date ?? null, end_date ?? null,
-     days_opened ?? 0, next_term_begins ?? null],
-  );
-  return res.status(201).json({ term: rows[0] });
+  const schoolCode = school_code.trim();
+  const academicYear = academic_year.trim();
+
+  // Serialize term mutations for this school. The schema's unique constraint
+  // remains the final duplicate-name guard; this lock makes the read/check/
+  // write path deterministic and lets concurrent duplicates return HTTP 409.
+  const result = await withTransaction(async (client) => {
+    const { rows: schoolRows } = await client.query(
+      'SELECT 1 FROM schools WHERE code=$1 FOR SHARE',
+      [schoolCode],
+    );
+    if (!schoolRows[0]) {
+      return { ok: false as const, status: 400, error: 'Unknown school_code.' };
+    }
+    await client.query(
+      "SELECT pg_advisory_xact_lock(hashtext('academic-terms'), hashtext($1))",
+      [schoolCode],
+    );
+    const { rows: existingTerms } = await client.query(
+      'SELECT id, name FROM terms WHERE school_code=$1 AND academic_year=$2 ORDER BY id FOR UPDATE',
+      [schoolCode, academicYear],
+    );
+    if (existingTerms.length >= 3) {
+      return {
+        ok: false as const,
+        status: 409,
+        error: `${academicYear} for ${schoolCode} already has all 3 terms of a session (${existingTerms.map((t: any) => t.name).join(', ')}).`,
+      };
+    }
+    if (existingTerms.some((term: any) => term.name === name)) {
+      return { ok: false as const, status: 409, error: `${name} already exists for ${academicYear}.` };
+    }
+
+    const { rows } = await client.query(
+      `INSERT INTO terms(name,academic_year,school_code,start_date,end_date,days_opened,next_term_begins)
+       VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
+      [name, academicYear, schoolCode, start_date ?? null, end_date ?? null,
+       days_opened ?? 0, next_term_begins ?? null],
+    );
+    return { ok: true as const, term: rows[0] };
+  });
+
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  return res.status(201).json({ term: result.term });
 });
 
 router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
-  const { name, academic_year, is_current, start_date, end_date, days_opened, next_term_begins } = req.body;
+  const termId = Number(req.params.id);
+  if (!Number.isSafeInteger(termId) || termId <= 0 || termId > 2_147_483_647) {
+    return res.status(404).json({ error: 'Term not found' });
+  }
+  const { name, academic_year, is_current, start_date, end_date, days_opened, next_term_begins } = req.body ?? {};
+  const user = req.user!;
 
-  // Teachers may touch days_opened and next_term_begins here (both
-  // requested by the school as teacher-filled fields on the report), for a
-  // term in their own school only. Still can't rename terms, change which
-  // term is current, or edit start/end dates through this endpoint.
-  if (req.user!.role === 'teacher') {
+  if (user.role === 'teacher') {
     if (name !== undefined || academic_year !== undefined || is_current !== undefined ||
         start_date !== undefined || end_date !== undefined) {
       return res.status(403).json({ error: 'Teachers can only update days-opened and next-term-begins for a term.' });
-    }
-    const { rows: owned } = await query('SELECT school_code FROM terms WHERE id=$1', [req.params.id]);
-    if (!owned[0] || owned[0].school_code !== req.user!.school_code) {
-      return res.status(404).json({ error: 'Term not found' });
     }
   }
 
@@ -113,36 +138,75 @@ router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
       error: `Term name must be one of: ${SESSION_TERM_NAMES.join(', ')}`,
     });
   }
-  if (name !== undefined) {
-    const { rows: t } = await query('SELECT school_code, academic_year FROM terms WHERE id=$1', [req.params.id]);
-    if (t[0]) {
-      const yr = academic_year ?? t[0].academic_year;
-      const { rows: clash } = await query(
-        'SELECT id FROM terms WHERE school_code=$1 AND academic_year=$2 AND name=$3 AND id<>$4',
-        [t[0].school_code, yr, name, req.params.id],
-      );
-      if (clash.length) {
-        return res.status(409).json({ error: `${name} already exists for ${yr}.` });
-      }
-    }
+  if (academic_year !== undefined &&
+      (typeof academic_year !== 'string' || !academic_year.trim() || academic_year.length > 20)) {
+    return res.status(400).json({ error: 'academic_year must be a non-empty string of at most 20 characters.' });
+  }
+  if (is_current !== undefined && typeof is_current !== 'boolean') {
+    return res.status(400).json({ error: 'is_current must be a boolean.' });
   }
   const daysOpenedError = validateDaysOpened(days_opened);
   if (daysOpenedError) return res.status(400).json({ error: daysOpenedError });
 
-  if (is_current) {
-    // Unset others first
-    const { rows: t } = await query('SELECT school_code FROM terms WHERE id=$1', [req.params.id]);
-    if (t[0]) await query('UPDATE terms SET is_current=FALSE WHERE school_code=$1', [t[0].school_code]);
-  }
-  const { rows } = await query(
-    `UPDATE terms SET name=COALESCE($1,name), academic_year=COALESCE($2,academic_year),
-            is_current=COALESCE($3,is_current), start_date=COALESCE($4,start_date),
-            end_date=COALESCE($5,end_date), days_opened=COALESCE($6,days_opened),
-            next_term_begins=COALESCE($7,next_term_begins)
-     WHERE id=$8 RETURNING *`,
-    [name, academic_year, is_current, start_date, end_date, days_opened, next_term_begins, req.params.id],
-  );
-  return res.json({ term: rows[0] });
+  const result = await withTransaction(async (client) => {
+    // school_code is immutable through this endpoint. Read it to select the
+    // per-school advisory lock, then lock/re-read the row before authorizing
+    // or writing. This lock is shared with POST /terms.
+    const { rows: initialRows } = await client.query(
+      'SELECT school_code FROM terms WHERE id=$1',
+      [termId],
+    );
+    if (!initialRows[0]) return { ok: false as const, status: 404, error: 'Term not found' };
+    const schoolCode = initialRows[0].school_code as string | null;
+    if (!schoolCode) return { ok: false as const, status: 409, error: 'Term has no school assignment and cannot be updated.' };
+
+    await client.query(
+      "SELECT pg_advisory_xact_lock(hashtext('academic-terms'), hashtext($1))",
+      [schoolCode],
+    );
+    const { rows: lockedRows } = await client.query(
+      'SELECT * FROM terms WHERE id=$1 FOR UPDATE',
+      [termId],
+    );
+    const term = lockedRows[0];
+    if (!term) return { ok: false as const, status: 404, error: 'Term not found' };
+
+    if (user.role === 'teacher' && term.school_code !== user.school_code) {
+      return { ok: false as const, status: 404, error: 'Term not found' };
+    }
+
+    const targetYear = academic_year ?? term.academic_year;
+    if (name !== undefined || academic_year !== undefined) {
+      const { rows: clash } = await client.query(
+        'SELECT id FROM terms WHERE school_code=$1 AND academic_year=$2 AND name=$3 AND id<>$4',
+        [term.school_code, targetYear, name ?? term.name, termId],
+      );
+      if (clash.length) {
+        return { ok: false as const, status: 409, error: `${name ?? term.name} already exists for ${targetYear}.` };
+      }
+    }
+
+    if (is_current === true) {
+      await client.query(
+        'UPDATE terms SET is_current=FALSE WHERE school_code=$1 AND id<>$2',
+        [term.school_code, termId],
+      );
+    }
+
+    const { rows } = await client.query(
+      `UPDATE terms SET name=COALESCE($1,name), academic_year=COALESCE($2,academic_year),
+              is_current=COALESCE($3,is_current), start_date=COALESCE($4,start_date),
+              end_date=COALESCE($5,end_date), days_opened=COALESCE($6,days_opened),
+              next_term_begins=COALESCE($7,next_term_begins)
+       WHERE id=$8 RETURNING *`,
+      [name, academic_year?.trim(), is_current, start_date, end_date, days_opened, next_term_begins, termId],
+    );
+    if (!rows[0]) return { ok: false as const, status: 404, error: 'Term not found' };
+    return { ok: true as const, term: rows[0] };
+  });
+
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  return res.json({ term: result.term });
 });
 
 // ════════════════════════════════════════
