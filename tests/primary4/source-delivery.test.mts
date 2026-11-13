@@ -115,7 +115,7 @@ test('withdrawn assessment lookup hides only stale or withheld Primary 4 assessm
 
 
 test('archive correction package contains structurally complete lessons and explicit approval gates', () => {
-  assert.equal(archiveCorrections.corrections.length, 32);
+  assert.equal(archiveCorrections.corrections.length, 33);
   assert.equal(archiveCorrections.hidden_topic_ids.length, 16);
   assert.equal(archiveCorrections.provenance.archive_sha256, '69731806a1c59185a4d5f8f408cb87fb0897778265d654676e134615b88d4da5');
   const ids = archiveCorrections.corrections.map((record: any) => record.topic_id);
@@ -222,4 +222,14 @@ test('every length-flagged Primary 4 export row is corrected or explicitly suppr
   assert.deepEqual(unresolved, []);
   assert.equal(flagged.filter(record => corrected.has(record.id)).length, 32);
   assert.equal(flagged.filter(record => hidden.has(record.id)).length, 13);
+});
+
+test('Roman Numerals lesson correction expands the source table into explicit rules and worked examples', () => {
+  const correction = (archiveCorrections.corrections as any[]).find(record => record.topic_id === 311);
+  assert.ok(correction);
+  assert.equal(correction.source_title, 'Roman Numerals');
+  assert.equal(correction.source_order_index, 4);
+  assert.match(correction.lesson, /I = 1, V = 5, X = 10, L = 50 and C = 100/);
+  assert.match(correction.lesson, /IV = 4 and IX = 9/);
+  assert.ok(correction.evaluation.length >= 5);
 });
