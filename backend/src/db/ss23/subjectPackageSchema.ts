@@ -42,12 +42,17 @@ const provenance = z.object({
 const markingCriterion = z.object({ criterion: text, marks: z.number().int().positive() }).strict();
 export const practiceSchema = z.object({
   id: text,
+  question_origin: z.enum(['ORIGINAL_SOURCE', 'AUTHORED_SUPPLEMENT']),
+  question_locator: text,
   question: text,
+  answer_origin: z.literal('AUTHORED_SUPPLEMENT'),
+  answer_locator: text,
   options: z.array(text).min(2).optional(),
   answer: text,
   explanation: z.string().min(30).refine(value => value.trim().length >= 30, 'A substantive answer explanation is required'),
   marks: z.number().int().positive(),
   marking: z.array(markingCriterion).min(1),
+  provenance: z.array(provenance).min(1),
 }).strict().superRefine((question, ctx) => {
   const awarded = question.marking.reduce((sum, item) => sum + item.marks, 0);
   if (awarded !== question.marks) {
@@ -229,6 +234,20 @@ function validateReferences(pkg: {
         if (source.class_name !== unit.class_name || source.term !== unit.term) issue('Unit provenance class/term does not match unit', ['units', index, 'provenance', pIndex]);
         if (ref.role === 'ORIGINAL_SOURCE' && !ref.source_id.startsWith('SS23-SRC-')) issue('Original-source provenance must reference SS23-SRC', ['units', index, 'provenance', pIndex, 'role']);
         if (ref.role === 'AUTHORED_SUPPLEMENT' && !ref.source_id.startsWith('SS23-EXT-')) issue('Authored supplements must reference SS23-EXT', ['units', index, 'provenance', pIndex, 'role']);
+      }
+    }
+    for (const [qIndex, question] of unit.practice.entries()) {
+      if (question.question_origin === 'ORIGINAL_SOURCE' && !question.provenance.some(ref => ref.role === 'ORIGINAL_SOURCE')) {
+        issue('Original-source question requires original-source provenance', ['units', index, 'practice', qIndex, 'provenance']);
+      }
+      for (const [pIndex, ref] of question.provenance.entries()) {
+        const source = all.get(ref.source_id);
+        if (!source || source.sha256 !== ref.source_sha256) issue('Question provenance source/hash is missing or mismatched', ['units', index, 'practice', qIndex, 'provenance', pIndex]);
+        else {
+          if (source.class_name !== unit.class_name || source.term !== unit.term) issue('Question provenance class/term does not match unit', ['units', index, 'practice', qIndex, 'provenance', pIndex]);
+          if (ref.role === 'ORIGINAL_SOURCE' && !ref.source_id.startsWith('SS23-SRC-')) issue('Original question provenance must reference SS23-SRC', ['units', index, 'practice', qIndex, 'provenance', pIndex, 'role']);
+          if (ref.role === 'AUTHORED_SUPPLEMENT' && !ref.source_id.startsWith('SS23-EXT-')) issue('Authored question provenance must reference SS23-EXT', ['units', index, 'practice', qIndex, 'provenance', pIndex, 'role']);
+        }
       }
     }
   }
