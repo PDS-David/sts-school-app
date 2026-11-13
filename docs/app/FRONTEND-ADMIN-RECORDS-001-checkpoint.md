@@ -35,7 +35,7 @@ Worker branch: `agent/frontend-admin-records-current-20261113`
 
 ## Commits
 - `7a01800b3fc3884502ea2a7ad3c57a659999e125` — reapply admin records recovery on current master.
-- Checkpoint commit: pending.
+- Checkpoint commit: `d5187f371ba60506cc6e3daa35d9c815c629cac7`.
 
 ## Verification
 - Static inspection confirms class summary score requests continue to include school_code.
