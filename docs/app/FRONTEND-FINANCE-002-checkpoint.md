@@ -40,7 +40,7 @@ Worker branch: `agent/frontend-finance-actions-recovery-20261113`
 - `ccf187c258a971af9aece73ad6b329c3f3196f54` — invoice retry and web-safe confirmations.
 - `ffa6a65015752803a72060db32dbb4e5399e18b2` — require live server confirmation for finance writes.
 - `597afb2fa3c0fdf7ee23429b710adcb8dc6c4ed7` — require school selection for invoice setup.
-- Checkpoint commit: pending.
+- Checkpoint commit: `1c3717c40b2c8f6ed653e58f161c5a6277ba9051`.
 
 ## Verification
 - Static inspection confirms parent remains read-only and finance_admin remains the only write-enabled role.
