@@ -9,7 +9,7 @@ Status: `IMPLEMENTED_TESTING_DEFERRED`. Source-grounded institutional fact recor
 
 - Composite archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`.
 - Exact T3 Civic member SHA-256: `8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1`.
-- Source block digest, paragraphs 182–203: `a3e7e3c7b18f9f4b6f6e1f6f3f9a7d...` (source member remains the authority; the exact source section and locators are preserved in `CIV-WK-T3-W04-05.md`).
+- Source block digest, paragraphs 182–203: `ac526bfe6d15df9a3eba999a451fb15b288f81af96baa1c9d20e9ba1a9481e30` (source member remains the authority; the exact source section and locators are preserved in `CIV-WK-T3-W04-05.md`).
 
 ## Applicable constitutional baseline
 
