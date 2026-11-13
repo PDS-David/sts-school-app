@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import {
   packageSchema,
@@ -200,4 +201,16 @@ test('rejects approval or verification claims without evidence references', () =
     verification_reference: null,
   };
   assert.equal(packageSchema.safeParse(invalid).success, false);
+});
+
+test('loads the SS2 Agricultural Science soil draft and keeps delivery blocked', () => {
+  const raw = readFileSync(new URL('./subjects/agricultural-science.json', import.meta.url), 'utf8');
+  const pkg = packageSchema.parse(JSON.parse(raw));
+  assert.equal(pkg.class_name, 'SS 2');
+  assert.equal(pkg.package_status, 'PENDING');
+  assert.equal(pkg.units.length, 2);
+  assert.equal(pkg.sources[0].source_id, 'SS23-SRC-237dbcc77749');
+  assert.ok(pkg.open_items.length >= 5);
+  assert.ok(pkg.open_items.every(item => item.blocks_delivery));
+  assert.ok(pkg.units.every(unit => unit.state.content_approval === 'PENDING'));
 });
