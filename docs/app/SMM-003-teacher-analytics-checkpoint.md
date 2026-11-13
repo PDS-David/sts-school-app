@@ -36,7 +36,7 @@ Branch: `agent/teacher-marking-analytics-20261113`
 - Static review confirmed the route is behind `requirePerm('grades.read')`; teachers already have that permission.
 - The aggregate query is constrained by school, active students, assigned class or assigned subject IDs, and current term.
 - Attendance denominator uses the current term's `days_opened`; subject rows are constrained to the teacher's school.
-- GitHub Actions run `43444117020` completed successfully for the PR head: `verify` passed backend/mobile typechecks, static/focused regressions, PostgreSQL schema replay and existing integration checks. These are repository-wide checks, not feature-specific tests for the new analytics query. No local device test was run.
+- GitHub Actions run `43445698487` completed successfully for the latest PR head: `verify` passed backend/mobile typechecks, static/focused regressions, PostgreSQL schema replay and existing integration checks. These are repository-wide checks, not feature-specific tests for the new analytics query. No local device test was run.
 
 ## Remaining
 - Add executable route/query tests and run backend/mobile typechecks when a local runtime is available.
