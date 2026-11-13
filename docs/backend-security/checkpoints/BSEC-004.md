@@ -2,14 +2,14 @@
 
 - **Task ID:** BSEC-004
 - **Title:** Make bulk attendance writes all-or-nothing
-- **Status:** review
+- **Status:** review (all required checks passing)
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
 - **Working branch:** agent/backend-attendance-bulk-atomicity-20261113
 - **PR:** https://github.com/PDS-David/sts-school-app/pull/704
-- **Latest implementation commit:** pending rename/CI verification
-- **Checkpoint commit:** pending
+- **Latest implementation commit:** 07d92fc063033597ae33958d46773e87c43cc48c
+- **Checkpoint commit:** this update
 - **Changed files:**
   - backend/src/routes/attendance.ts
   - backend/src/utils/attendanceWrites.ts
@@ -22,5 +22,7 @@
 - **Commits:** dd70e61e38b299e4e32b57b52181f56292193d95; 8d54edbc853c51d60d9bdb8501ebffb9225d11b1; 504c66283af4d0d7de514e8cddd883af7293e236; 1618cf0c3667cb18b3cccd5f6fefc0a395a6b3b3; 1bc05e3deab07f078af9068dcb4d6f54190221aa.
 - **Verification:** GitHub Actions run https://github.com/PDS-David/sts-school-app/actions/runs/43446008820 completed successfully. Passed: PostgreSQL 16 service initialization, locked dependency installation, disposable database bootstrap, attendance success/rollback integration tests and backend TypeScript typecheck. Branch comparison before PR: 5 commits ahead of master, 0 behind; five changed paths. No production database or data was changed.
 - **Concurrency:** PR #698 changes mobile attendance recovery only. PR #700/#688 changes scores.ts; this PR does not touch it. No active PR changes backend/src/routes/attendance.ts.
+- **CI correction:** the PostgreSQL test file was renamed to backend-attendance-bulk.integration.test.mts so it is not misclassified by the separate JSS3 database-test registry; the workflow command and path filter now use the new name. No tests were removed or weakened.
+- **Final verification:** Backend attendance batch integrity workflow 43447509285, JSS3 implementation/asset checks 43447509134, and SS1 package integrity gate 43447509081 all passed on implementation commit 07d92fc063033597ae33958d46773e87c43cc48c.
 - **Remaining:** PR review/merge. Do not mark the overall backend/security assignment complete.
 - **Exact next action:** review PR #704 and merge only after owner approval; then refresh from master and continue the backend audit.
