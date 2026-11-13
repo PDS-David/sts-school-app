@@ -131,7 +131,7 @@ Six technical/content issues remain delivery blockers: drought is listed as a cl
 
 ## CI evidence
 
-GitHub Actions run **43474891512** completed successfully after Weeks 1-7 and all First Term source figures were added: backend TypeScript typecheck passed and all 24 SS23 Node tests passed (24 passed, 0 failed). The combined Weeks 8-9 unit and its new assertions were added afterward and require a fresh validation run.
+GitHub Actions run **43476440171** completed successfully after the combined Weeks 8-9 unit was added: backend TypeScript typecheck passed and all 25 SS23 Node tests passed (25 passed, 0 failed). The suite also verifies the byte count and SHA-256 of all five stored SVG assets.
 
 
 ## Weeks 8–9 — Plant nutrients, nutrient cycles and water in crop production
@@ -158,4 +158,4 @@ The main blockers are: the scheme assigns Weeks 8-9 but the body has only one We
 
 ## Asset integrity test update
 
-A new student-delivery test now verifies the actual byte count and SHA-256 for all five stored authored SVG assets, not only the sedimentation jar. The Weeks 8-9 package and the expanded 25-test suite require a fresh CI run on this branch.
+A new student-delivery test now verifies the actual byte count and SHA-256 for all five stored authored SVG assets, not only the sedimentation jar. The Weeks 8-9 package and expanded 25-test suite passed CI run 43476440171.
