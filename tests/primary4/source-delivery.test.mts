@@ -212,3 +212,14 @@ test('every retired Primary 4 outline/merged row matches a known export identity
     if (delivery?.kind === 'withheld') assert.equal(delivery.hideFromStudent, true, `hidden id ${id}`);
   }
 });
+
+test('every length-flagged Primary 4 export row is corrected or explicitly suppressed', () => {
+  const flagged = (manifest.records as any[]).filter(record => record.review_flag !== 'CONTENT_PRESENT');
+  const corrected = new Set((archiveCorrections.corrections as any[]).map(record => record.topic_id));
+  const hidden = new Set(archiveCorrections.hidden_topic_ids as number[]);
+  assert.equal(flagged.length, 45);
+  const unresolved = flagged.filter(record => !corrected.has(record.id) && !hidden.has(record.id));
+  assert.deepEqual(unresolved, []);
+  assert.equal(flagged.filter(record => corrected.has(record.id)).length, 32);
+  assert.equal(flagged.filter(record => hidden.has(record.id)).length, 13);
+});
