@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import type { AddressInfo } from 'node:net';
+import type { Server } from 'node:http';
 import express from 'express';
 import test, { after } from 'node:test';
 import { pool, query } from '../backend/src/db/pool.js';
@@ -19,7 +20,7 @@ test('individual student score and class-record reports reject a term from anoth
   let userId: string | undefined;
   let primaryTermId: number | undefined;
   let secondaryTermId: number | undefined;
-  let server: ReturnType<express.Express['listen']> | undefined;
+  let server: Server | undefined;
 
   try {
     const { rows: users } = await query(
