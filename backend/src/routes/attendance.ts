@@ -67,19 +67,26 @@ router.put('/', requirePerm('attendance.write'), async (req, res) => {
 router.get('/', requirePerm('attendance.read'), async (req, res) => {
   const { class_name, term_id, school_code: requestedSchoolCode } = req.query as Record<string, string>;
   const user = req.user!;
-  const effectiveClass = user.role === 'teacher' ? (user.assigned_class ?? class_name) : class_name;
+  const parsedTermId = Number(term_id);
+  const effectiveClass = user.role === 'teacher'
+    ? (user.assigned_class ?? class_name?.trim())
+    : class_name?.trim();
   // Admins have no own school_code. Their selected school is explicit in
   // the screen's school switcher; requiring it prevents same-named classes
   // from different schools being mixed in the attendance editor.
   const effectiveSchoolCode = user.role === 'admin' ? requestedSchoolCode : user.school_code;
 
-  if (!effectiveClass || !term_id) {
-    return res.status(400).json({ error: 'class_name and term_id are required' });
+  if (!effectiveClass || !Number.isSafeInteger(parsedTermId) || parsedTermId <= 0 || parsedTermId > 2_147_483_647) {
+    return res.status(400).json({ error: 'A valid class_name and positive integer term_id are required' });
+  }
+
+  if (user.role === 'teacher' && !user.school_code) {
+    return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
   }
   if (!effectiveSchoolCode) {
     return res.status(400).json({ error: 'school_code is required to load attendance for this account' });
   }
-  const termScopeError = await checkTermSchoolScope(effectiveSchoolCode, Number(term_id));
+  const termScopeError = await checkTermSchoolScope(effectiveSchoolCode, parsedTermId);
   if (termScopeError) return res.status(termScopeError.status).json({ error: termScopeError.error });
 
   const { rows } = await query(
@@ -87,8 +94,9 @@ router.get('/', requirePerm('attendance.read'), async (req, res) => {
      FROM attendance a
      JOIN students s ON s.id = a.student_id
      WHERE s.class_name = $1 AND a.term_id = $2
+       AND ($4::boolean OR s.deleted_at IS NULL)
        AND s.school_code = $3`,
-    [effectiveClass, term_id, effectiveSchoolCode],
+    [effectiveClass, parsedTermId, effectiveSchoolCode, user.role === 'admin'],
   );
   return res.json({ attendance: rows });
 });
@@ -170,10 +178,24 @@ router.get('/class-records/:student_id/:term_id', async (req, res) => {
 router.get('/class-records', requirePerm('classRecord.read'), async (req, res) => {
   const { class_name, term_id } = req.query as Record<string, string>;
   const user = req.user!;
-  const effectiveClass = user.role === 'teacher' ? (user.assigned_class ?? class_name) : class_name;
+  const parsedTermId = Number(term_id);
+  const effectiveClass = user.role === 'teacher'
+    ? (user.assigned_class ?? class_name?.trim())
+    : class_name?.trim();
 
-  if (!effectiveClass || !term_id) {
-    return res.status(400).json({ error: 'class_name and term_id are required' });
+  if (!effectiveClass || !Number.isSafeInteger(parsedTermId) || parsedTermId <= 0 || parsedTermId > 2_147_483_647) {
+    return res.status(400).json({ error: 'A valid class_name and positive integer term_id are required' });
+  }
+
+  if (user.role === 'teacher' && !user.school_code) {
+    return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
+  }
+  if (user.school_code) {
+    const termScopeError = await checkTermSchoolScope(user.school_code, parsedTermId);
+    if (termScopeError) return res.status(termScopeError.status).json({ error: termScopeError.error });
+  } else {
+    const { rows: termRows } = await query('SELECT 1 FROM terms WHERE id=$1', [parsedTermId]);
+    if (!termRows[0]) return res.status(404).json({ error: 'Term not found' });
   }
 
   const { rows } = await query(
@@ -181,8 +203,10 @@ router.get('/class-records', requirePerm('classRecord.read'), async (req, res) =
      FROM class_records cr
      JOIN students s ON s.id = cr.student_id
      WHERE s.class_name = $1 AND cr.term_id = $2
+       AND ($4::boolean OR s.deleted_at IS NULL)
+       AND ($3::text IS NULL OR s.school_code = $3)
      ORDER BY s.full_name`,
-    [effectiveClass, term_id],
+    [effectiveClass, parsedTermId, user.school_code ?? null, user.role === 'admin'],
   );
   return res.json({ class_records: rows });
 });
