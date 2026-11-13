@@ -1,0 +1,30 @@
+name: SS2 and SS3 source validation
+
+on:
+  pull_request:
+    paths:
+      - "docs/ss23/**"
+      - "scripts/ss23/**"
+      - "tests/test_ss23_*.py"
+      - ".github/workflows/ss23-source-validation.yml"
+  push:
+    branches: [master]
+    paths:
+      - "docs/ss23/**"
+      - "scripts/ss23/**"
+      - "tests/test_ss23_*.py"
+      - ".github/workflows/ss23-source-validation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  ss23-source-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run SS2/SS3 source validation tests
+        run: python -m unittest discover -s tests -p "test_ss23_*.py" -v
