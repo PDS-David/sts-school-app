@@ -20,6 +20,7 @@ test('coverage report distinguishes researched packages from missing term alloca
   assert.equal(find('Home Economics','1st Term')?.researched_lessons_prepared, 9);
   assert.equal(find('Home Economics','2nd Term')?.researched_lessons_prepared, 9);
   assert.equal(find('Home Economics','3rd Term')?.researched_lessons_prepared, 7);
+  assert.equal(find('Basic Science','3rd Term')?.researched_lessons_prepared, 5);
   assert.equal(find('Basic Science','3rd Term')?.status, 'OWNER_APPROVED_LOCAL_ALLOCATION');
   assert.equal(find('Basic Technology','1st Term')?.status, 'OWNER_APPROVED_LOCAL_ALLOCATION');
   assert.equal(find('Basic Technology','2nd Term')?.status, 'OWNER_APPROVED_LOCAL_ALLOCATION');
