@@ -216,3 +216,49 @@ test('delivery corrections record the original source row hash (the compiler rej
     assert.equal(correction.body_sha256, originalRowHash, `${correction.id}: body_sha256 must equal the original row hash in source_lesson_id`);
   }
 });
+
+
+test('Week Nine political socialization replacement accounts for all 11 source exercises and constitutional scope', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(entry => entry.id === 'SUP-SS1-GOVERNMENT-T1-W09-CORRECTED');
+  assert(lesson, 'Week Nine replacement lesson is missing');
+  assert.equal(hash(lesson.body), lesson.body_sha256);
+  assert.equal(lesson.practice.length, 11);
+  assert.equal(lesson.practice.reduce((sum, question) => sum + question.marks, 0), 39);
+  assert.equal(new Set(lesson.practice.map(question => question.id)).size, 11);
+  for (const agent of ['FAMILY', 'SCHOOL', 'PEER GROUPS', 'POLITICAL PARTIES', 'MASS MEDIA', 'RELIGIOUS GROUPS', 'PRESSURE GROUPS']) {
+    assert(lesson.body.includes(agent), `missing political socialization agent: ${agent}`);
+  }
+  for (const section of ['Section 10', 'Section 14(2)(c)', 'Section 38', 'Section 40', 'Section 42']) {
+    assert(lesson.body.includes(section), `missing constitutional protection: ${section}`);
+  }
+  assert.equal(lesson.state.content_approval, 'PENDING');
+  assert.equal(lesson.state.approval_reference, null);
+  assert.equal(lesson.state.verification, 'DEFERRED');
+  assert.equal(lesson.state.verification_reference, null);
+  assert.equal(p.package_status, 'PENDING');
+
+  const correction = p.delivery_corrections.find(entry => entry.id === 'CORR-GOV-T1-W09-ROW-REPLACEMENT');
+  assert(correction);
+  assert.equal(correction.source_lesson_id, 'SS1-SRC-40ce7dcaf672:BODY:86deb98f3e2a279c5b0db3740445df80f6791965cb44d496702e2e34ed3046f2');
+  assert.equal(correction.body_sha256, '86deb98f3e2a279c5b0db3740445df80f6791965cb44d496702e2e34ed3046f2');
+  assert.equal(correction.replacement_id, lesson.id);
+  assert.equal(correction.evidence.objective_scope_audit.practice_item_count, 11);
+  assert.equal(correction.evidence.objective_scope_audit.practice_total_marks, 39);
+
+  for (const id of [
+    'COV-GOV-T1-W09-POLITICAL-SOCIALIZATION',
+    'COV-GOV-T1-W09-AGENTS',
+    'COV-GOV-T1-W09-RELIGIOUS-GROUPS',
+    'COV-GOV-T1-W09-ASSESSMENT-KEYS',
+  ]) {
+    const coverage = p.coverage.find(entry => entry.id === id);
+    assert.equal(coverage?.status, 'IMPLEMENTED_EQUIVALENT', id);
+    assert(coverage?.lesson_ids.includes(lesson.id), id);
+  }
+  const reading = p.coverage.find(entry => entry.id === 'COV-GOV-T1-W09-READING');
+  assert.equal(reading?.status, 'PARTIAL');
+  const readingOpenItem = p.open_items.find(entry => entry.id === 'GOVERNMENT-T1-W09-READING-VERIFICATION');
+  assert(readingOpenItem);
+  assert.equal(readingOpenItem.blocks_delivery, false);
+});
