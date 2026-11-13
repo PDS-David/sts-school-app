@@ -11,6 +11,7 @@
   - `mobile/src/offline/replayPolicy.ts`
   - `tests/mobile/offline-replay.test.mts`
   - `package.json`
+  - `README.md`
 - Ownership check:
   - No branch matching `offline` was found.
   - Open mobile PR #685 changes only the student and parent home screens plus its checkpoint; this task's API client change does not overlap.
@@ -22,6 +23,9 @@
   - Static control-flow trace of `mobile/src/api/client.ts` and `mobile/src/offline/storage.ts`.
   - Hardened cold-start session restoration: storage read/JSON parsing failures now return to the signed-out state and always clear the startup loading gate; malformed persisted user records are discarded.
   - Extracted the offline replay enqueue decision into a pure helper, added three focused Node test cases, and added the root command `npm run test:mobile:offline`. The tests are authored but not yet executed.
+  - Static release/config review: `mobile/app.json` points to the HTTPS production API origin and its Android package name matches `mobile/google-services.json`; `mobile/eas.json` defines internal APK and production AAB profiles.
+  - Static navigation review: `RootNavigator` routes student, parent, teacher, admin and finance-admin roles to separate navigators. Push registration, backend Expo delivery, foreground display and supported message/assessment/score tap routing exist; live device delivery remains unverified.
+  - Materials are URL-based and opened with `Linking.openURL`; the current screen does not implement native file downloads or an offline file library. Updated the README to replace its stale claim that no push wiring exists and to distinguish implemented code from unverified live delivery.
   - No local checkout or package installation was possible (the runtime could not resolve github.com). The new test command, TypeScript build, full automated suite, Expo export, EAS build, emulator, and physical-device execution remain unrun.
   - No device verification is claimed.
 - Remaining acceptance work:
@@ -30,7 +34,7 @@
   - Audit cache freshness, write queue authorization/idempotency and synchronization conflict handling.
   - Audit assessments, learning resources, file viewing/downloads, notifications and permission enforcement.
   - Verify network recovery, startup/crash handling and supported Android API/device compatibility.
-  - Verify production API target and staging/production config, dependency lock consistency, Android export and EAS release credentials/build.
+  - Verify production API target and staging/production config, dependency lock consistency, Android export and EAS release credentials/build. Reconcile the current URL-based materials scope with the requested file-view/download acceptance criteria.
   - Obtain emulator/physical-device smoke evidence before claiming device readiness.
 - Exact next action:
   - Run `npm run test:mobile:offline` from a checkout with workspace dependencies installed, add a regression for startup restore behavior, and run the mobile TypeScript/Android export workflows before proceeding to the next independent readiness gap.
