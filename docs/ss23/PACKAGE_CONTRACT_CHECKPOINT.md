@@ -13,7 +13,8 @@ Base: `master` @ `b8651cebaa480097fd1c40c9b02c11b228187caa`
 
 - `backend/src/db/ss23/subjectPackageSchema.ts`
 - `backend/src/db/ss23/subjectPackageSchema.test.ts`
-- `backend/src/db/ss23/subjects/agricultural-science.json` (SS2 First Term Weeks 1-2 draft)
+- `backend/src/db/ss23/subjects/agricultural-science.json` (SS2 First Term Weeks 1-2 draft with 27 source assessment prompts and 10 authored practice supplements)
+- `backend/src/db/ss23/assets/agricultural-science/soil-sedimentation-jar.svg` (authored practical diagram)
 - `.github/workflows/ss23-package-schema.yml`
 
 ## Contract boundaries
@@ -30,7 +31,7 @@ Base: `master` @ `b8651cebaa480097fd1c40c9b02c11b228187caa`
 
 ## Tests authored
 
-Eleven Node tests cover valid SS2/SS3 package shapes, the real Agricultural Science draft package, and rejection of:
+Thirteen Node tests cover valid SS2/SS3 package shapes, question/answer provenance, the real Agricultural Science draft package, and rejection of:
 - SS3 third-term sources;
 - SS3 normal instructional mode;
 - stale lesson body hashes;
@@ -52,4 +53,4 @@ The workflow installs locked dependencies, type-checks the backend and runs the 
 
 ## Exact next action
 
-The first SS2 Agricultural Science First Term Weeks 1-2 Soil draft is now in `backend/src/db/ss23/subjects/agricultural-science.json` (stacked PR based on this contract). Resolve its explicit source/technical/visual blockers, complete the assessment reconciliation, then implement the loader and student route so approved units are actually accessible. Preserve SS3 as exam preparation only.
+The SS2 Agricultural Science First Term Weeks 1-2 Soil draft now includes all 27 original-source assessment prompts with authored answers and mark-by-mark guidance, five source-figure references, and an authored sedimentation diagram. Resolve its remaining technical/rights/visual blockers and verify the assessment set, then implement the loader and student route so approved units are actually accessible. Preserve SS3 as exam preparation only.
