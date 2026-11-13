@@ -1,7 +1,7 @@
 # School-management feature completion checkpoint
 
 Task ID: SMM-001
-Status: IN PROGRESS — announcement dashboard integration implemented; broader feature work remains
+Status: IMPLEMENTATION SUBMITTED — five focused PRs open; awaiting final CI/review/merge evidence
 Base branch: master
 Base commit: 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
 Worker branch: agent/school-management-feature-completion-20261113
@@ -13,6 +13,24 @@ Worker branch: agent/school-management-feature-completion-20261113
 - Teacher analytics, calendar, student badges, and parent upcoming tests/events are absent from current teacher/parent/student navigation or are documented as placeholders in `docs/app/remaining-20261030/app/PRD-02-placeholders.md`. Existing archived redesign notes are stale and must not be treated as source of truth.
 - Existing product-gap documentation `docs/app/remaining-20261030/README.md` records owner decisions D8 (announcements yes, read-only) and D9 (remove placeholders unless individually approved for build). This assignment explicitly requests the named features, so implementation should follow the requested scope without resurrecting unrelated placeholders.
 - Existing open PRs #682, #683, #684 do not touch the requested school-management features. Historical branches `app/prd-01-announcements` and `app/asm-04-marking-backlog` are 3,827+ commits behind current master and are not safe bases.
+
+
+## Feature implementation PRs (all open; none merged)
+
+- PR #685 — student/parent dashboard announcement integration. Existing announcement schema/API/notification feed reused.
+- PR #686 — school calendar/events API and schema, admin event management, parent upcoming tests/events, and student/teacher calendar views.
+- PR #688 — teacher pending traditional score-entry counts and analytics. Aggregate-only; no AI essay answers or provisional grades exposed.
+- PR #691 — student badges/achievements derived from existing passed-topic and finalized-assessment evidence.
+- PR #694 — admin announcement authoring/management UI, completing the existing backend path.
+
+## Additional documented backlog audit
+
+- Term PIN generation/redemption and lesson gating already exist in current master; no duplicate implementation was added.
+- Assessment submission transactions already use the existing transaction helper; finance invoice creation also uses a transaction.
+- Database TLS certificate validation is already implemented in `backend/src/db/pool.ts`.
+- The six PRD-02 navigation placeholders were either already removed from master or have now been replaced by functional screens in the PRs above. The dead student AssessmentResults route is already absent.
+- Owner-decision items remain blocked and were not guessed: D1 (whether AI essay suggestions are final or must be teacher-reviewed) and D4 (assessment retake policy). The current request explicitly authorized building the PRD-02 calendar, badges, analytics and upcoming-test features despite the older D9 recommendation to remove placeholders.
+- Other operational/data-integrity tasks in the archived backlog (for example migration-ledger, offline idempotency and push-receipt work) are separate from the school-management feature scope and remain for a dedicated pass.
 
 ## Changed files
 - `mobile/src/screens/student/StudentHomeScreen.tsx` — replaced the hard-coded empty announcements card with the latest three announcement items from the already-scoped notification feed; pull-to-refresh refreshes the feed.
