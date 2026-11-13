@@ -1,0 +1,54 @@
+name: STS Work Queue Health
+
+on:
+  push:
+    paths:
+      - '.github/work-orchestrator/**'
+      - 'scripts/validate_work_queue.py'
+      - '.github/workflows/work-queue.yml'
+  pull_request:
+    paths:
+      - '.github/work-orchestrator/**'
+      - 'scripts/validate_work_queue.py'
+      - '.github/workflows/work-queue.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '*/15 * * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sts-work-queue-health
+  cancel-in-progress: false
+
+jobs:
+  validate-and-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validate durable task registry
+        id: validate
+        run: python3 scripts/validate_work_queue.py
+      - name: Publish queue summary
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('.github/work-orchestrator/tasks.json').read_text())
+          tasks = data['tasks']
+          counts = {}
+          for task in tasks:
+              counts[task['status']] = counts.get(task['status'], 0) + 1
+          lines = ['## STS Work Queue', '', f"Total tasks: **{len(tasks)}**", '']
+          lines += [f"- {status}: {count}" for status, count in sorted(counts.items())]
+          lines += ['', '### Active and stalled tasks']
+          for task in tasks:
+              if task['status'] in ('in_progress', 'stalled', 'blocked', 'review'):
+                  lines.append(f"- **{task['id']}** — {task['title']} ({task['status']}); owner: {task.get('owner') or 'unassigned'}")
+          with open(__import__('os').environ['GITHUB_STEP_SUMMARY'], 'a') as f:
+              f.write('\n'.join(lines) + '\n')
+          PY
