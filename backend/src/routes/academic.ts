@@ -3,6 +3,7 @@ import { query } from '../db/pool.js';
 import { requireAuth, requireRole } from '../middleware/auth.js';
 import { SESSION_TERM_NAMES, isValidSessionTermName } from '../utils/terms.js';
 import { audit } from '../utils/audit.js';
+import { checkTermSchoolScope } from '../utils/scope.js';
 
 const router = Router();
 router.use(requireAuth);
@@ -204,12 +205,15 @@ router.get('/class-locks', async (req, res) => {
   }
   const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
   if (!sc) return res.status(400).json({ error: 'school_code is required' });
+  const parsedTermId = Number(term_id);
+  const termScopeError = await checkTermSchoolScope(sc, parsedTermId);
+  if (termScopeError) return res.status(termScopeError.status).json({ error: termScopeError.error });
 
   const { rows } = await query(
     `SELECT cl.*, u.full_name AS locked_by_name
      FROM class_locks cl LEFT JOIN users u ON u.id = cl.locked_by
      WHERE cl.school_code=$1 AND cl.class_name=$2 AND cl.term_id=$3`,
-    [sc, class_name, Number(term_id)],
+    [sc, class_name, parsedTermId],
   );
   return res.json({ lock: rows[0] ?? null });
 });
@@ -244,7 +248,11 @@ router.put('/class-locks', requireRole('teacher', 'admin'), async (req, res) => 
       return res.status(403).json({ error: 'You can only lock or unlock your own assigned class' });
     }
     sc = user.school_code;
+    if (!sc) return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
   }
+
+  const termScopeError = await checkTermSchoolScope(sc, term_id);
+  if (termScopeError) return res.status(termScopeError.status).json({ error: termScopeError.error });
 
   if (locked) {
     const { rows } = await query(
