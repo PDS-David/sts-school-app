@@ -17,7 +17,7 @@
 
 ### Time-limited mobile toolchain exception
 
-The full monorepo audit still reports four high-severity findings in the Expo SDK 56 dependency tree. The affected locked packages are version-pinned in CI:
+The full monorepo audit still reports four high-severity findings in the Expo SDK 56 dependency tree. The high findings include the image-size JXL/HEIF and ICNS parser denial-of-service advisories (GHSA-5p2g-fcmc-qvqq and GHSA-w3rx-r6r6-pgpr) and the Zod oversized-collection memory-exhaustion advisory (GHSA-mrhx-c7xc-m3w5). The remaining Expo CLI/SDK high findings are in the same SDK 56 dependency chain. The affected locked packages are version-pinned in CI:
 
 | Package | Locked version | Context |
 |---|---:|---|
@@ -30,8 +30,12 @@ The audit indicates the Expo-related fixes require moving to Expo 58.0.25. This 
 
 **Removal condition:** remove this exception after a separate Expo SDK 58 migration has updated the compatible React Native/Expo modules and passed native build and device smoke tests. Do not widen the version allowlist to accommodate new advisories.
 
+### Remaining moderate/low Expo SDK 56 findings
+
+The full audit also reports these moderate findings in the same Expo 56 toolchain: `@expo/config` 56.0.15, `@expo/config-plugins` 56.0.17, `@expo/fingerprint` 0.19.10, `@expo/inline-modules` 0.0.16, `@expo/metro-config` 56.0.20, `@expo/prebuild-config` 56.0.24, `expo-sharing` 56.0.27, `expo-splash-screen` 56.0.16, `glob` 13.0.7 and `minimatch` 10.2.6. Two low findings remain in `@expo/local-build-cache-provider` 56.0.12 and `deepmerge` 4.3.1. These are tracked with the same Expo SDK migration; they are not in the backend production workspace.
+
 ## Current audit status
 
 - Critical findings: 0 after non-forced lockfile remediation.
 - Backend production moderate/high/critical findings: 0.
-- Remaining full-tree findings: Expo SDK 56 toolchain exception above, plus moderate/low findings tracked for the coordinated mobile dependency upgrade.
+- Remaining full-tree findings: 4 high, 10 moderate and 2 low, all in the reviewed Expo SDK 56 toolchain dependency chain above.
