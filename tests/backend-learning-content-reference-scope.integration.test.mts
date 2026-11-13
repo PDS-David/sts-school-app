@@ -142,17 +142,17 @@ test('learning content writes and reads reject cross-school subject, term and qu
     const validMaterialPayload = await validMaterial.json() as { material: { id: number } };
     materialIds.push(validMaterialPayload.material.id);
 
-    const wrongSubjectQuestion = await post('/questions', {
+    const wrongSubjectQuestionResponse = await post('/questions', {
       subject_id: subjectIds[2], term_id: termIds[0], class_name: 'Primary 4',
       type: 'mcq', stem: 'Foreign subject question', options: [], correct_keys: ['A'], marks: 1,
     });
-    assert.equal(wrongSubjectQuestion.status, 400);
+    assert.equal(wrongSubjectQuestionResponse.status, 400);
 
-    const wrongTermQuestion = await post('/questions', {
+    const wrongTermQuestionResponse = await post('/questions', {
       subject_id: subjectIds[0], term_id: termIds[1], class_name: 'Primary 4',
       type: 'mcq', stem: 'Foreign term question', options: [], correct_keys: ['A'], marks: 1,
     });
-    assert.equal(wrongTermQuestion.status, 400);
+    assert.equal(wrongTermQuestionResponse.status, 400);
 
     const validQuestion = await post('/questions', {
       subject_id: subjectIds[0], term_id: termIds[0], class_name: 'Primary 4',
