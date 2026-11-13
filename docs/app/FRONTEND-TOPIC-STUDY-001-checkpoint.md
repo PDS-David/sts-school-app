@@ -7,7 +7,7 @@
 
 ## Commits
 - `5c79ec8cc8bde224af6870872537f462f92ef251` — replace native topic-study error alert with shared cross-platform feedback.
-- Checkpoint commit: pending.
+- Checkpoint commit: `383b516673c2e655b48c479fbf6635eb8424bc9a`.
 
 ## Changes
 - Replace the native `Alert.alert` used when fetching study notes/practice questions fails with the shared ConfirmDialog.
