@@ -6,6 +6,7 @@ import { requireAuth } from '../middleware/auth.js';
 import { audit } from '../utils/audit.js';
 import { claimStudentAccount, registerSelfServiceAccount } from '../utils/selfRegistration.js';
 import { normalizeAnswer, usernameBaseFromName } from '../utils/password.js';
+import { activateAccount, resetPasswordWithSecurityAnswer } from '../utils/credentialAttempts.js';
 import type { AuthUser, Role } from '../types/index.js';
 
 const router = Router();
@@ -310,67 +311,24 @@ router.post('/forgot-password/reset', async (req, res) => {
     return res.status(400).json({ error: 'New password must be at least 8 characters' });
   }
 
-  const uname = username.trim().toLowerCase();
-  const { rows } = await query(
-    `SELECT id, is_active, access_expires_at, revocation_reason,
-            security_question, security_answer_hash, must_set_security_question,
-            security_answer_fail_count, security_answer_locked_until
-     FROM users WHERE username=$1`,
-    [uname],
+  const result = await resetPasswordWithSecurityAnswer(
+    username.trim().toLowerCase(),
+    answer,
+    new_password,
   );
-  const user = rows[0];
 
-  // Same generic shape for "no such user", "no question set", and a wrong
-  // answer — see the comment on the question-lookup route above for why.
-  const genericFail = () => res.status(401).json({ error: 'Incorrect answer, or this account is not eligible for self-service reset.' });
-
-  if (!user) return genericFail();
-  if (!user.is_active) {
-    return res.status(403).json({
-      error: user.revocation_reason
-        ? `Your account was deactivated: ${user.revocation_reason}. Contact your school admin.`
-        : 'Your account is deactivated. Contact your school admin.',
+  if (result.kind === 'inactive' || result.kind === 'expired') {
+    return res.status(403).json({ error: result.message });
+  }
+  if (result.kind === 'locked') {
+    return res.status(429).json({
+      error: `Too many incorrect attempts. Try again in about ${result.retryAfterMinutes} minute(s), or contact your school admin.`,
     });
   }
-  if (user.access_expires_at && new Date(user.access_expires_at).getTime() <= Date.now()) {
-    return res.status(403).json({
-      error: user.revocation_reason
-        ? `Your access period has ended: ${user.revocation_reason}. Contact your school admin.`
-        : 'Your access period has ended. Contact your school admin to reactivate your account.',
-    });
-  }
-  if (user.must_set_security_question || !user.security_answer_hash) return genericFail();
-
-  if (user.security_answer_locked_until && new Date(user.security_answer_locked_until).getTime() > Date.now()) {
-    const mins = Math.ceil((new Date(user.security_answer_locked_until).getTime() - Date.now()) / 60000);
-    return res.status(429).json({ error: `Too many incorrect attempts. Try again in about ${mins} minute(s), or contact your school admin.` });
+  if (result.kind === 'invalid' || result.kind === 'ineligible') {
+    return res.status(401).json({ error: 'Incorrect answer, or this account is not eligible for self-service reset.' });
   }
 
-  const correct = await bcrypt.compare(normalizeAnswer(answer), user.security_answer_hash);
-  if (!correct) {
-    const fails = (user.security_answer_fail_count ?? 0) + 1;
-    const LOCK_THRESHOLD = 5;
-    if (fails >= LOCK_THRESHOLD) {
-      await query(
-        `UPDATE users SET security_answer_fail_count=0,
-           security_answer_locked_until=now() + interval '1 hour' WHERE id=$1`,
-        [user.id],
-      );
-    } else {
-      await query('UPDATE users SET security_answer_fail_count=$1 WHERE id=$2', [fails, user.id]);
-    }
-    await audit(null, 'forgot_password_failed', 'user', user.id, `attempt ${fails}`);
-    return genericFail();
-  }
-
-  const hash = await bcrypt.hash(new_password, 10);
-  await query(
-    `UPDATE users SET password_hash=$1, must_change_pw=FALSE,
-       security_answer_fail_count=0, security_answer_locked_until=NULL
-     WHERE id=$2`,
-    [hash, user.id],
-  );
-  await audit(null, 'forgot_password_reset', 'user', user.id);
   return res.json({ ok: true });
 });
 
@@ -551,45 +509,21 @@ router.post('/activate', async (req, res) => {
     return res.status(400).json({ error: 'New password must be at least 8 characters' });
   }
 
-  const { rows } = await query(
-    'SELECT id, username, activation_code, activation_fail_count, activation_locked_until, password_hash FROM users WHERE username=$1',
-    [username.trim().toLowerCase()],
+  const result = await activateAccount(
+    username.trim().toLowerCase(),
+    activation_code,
+    new_password,
   );
-  const user = rows[0];
-  // Same generic-failure shape as self-claim: whether the username doesn't
-  // exist, was never issued a code, or is already activated (password_hash
-  // already set), the caller learns nothing more specific than "that
-  // didn't work" — in particular this never confirms a username exists.
-  const genericFail = () => res.status(401).json({ error: 'Invalid username or activation code, or this account is already active.' });
-  if (!user || !user.activation_code || user.password_hash) return genericFail();
-
-  if (user.activation_locked_until && new Date(user.activation_locked_until).getTime() > Date.now()) {
-    const mins = Math.ceil((new Date(user.activation_locked_until).getTime() - Date.now()) / 60000);
-    return res.status(429).json({ error: `Too many incorrect attempts. Try again in about ${mins} minute(s), or ask your school admin for a new code.` });
+  if (result.kind === 'locked') {
+    return res.status(429).json({
+      error: `Too many incorrect attempts. Try again in about ${result.retryAfterMinutes} minute(s), or ask your school admin for a new code.`,
+    });
+  }
+  if (result.kind === 'invalid') {
+    return res.status(401).json({ error: 'Invalid username or activation code, or this account is already active.' });
   }
 
-  if (user.activation_code !== activation_code.trim()) {
-    const fails = (user.activation_fail_count ?? 0) + 1;
-    const LOCK_THRESHOLD = 5;
-    if (fails >= LOCK_THRESHOLD) {
-      await query(
-        `UPDATE users SET activation_fail_count=0, activation_locked_until=now() + interval '1 hour' WHERE id=$1`,
-        [user.id],
-      );
-    } else {
-      await query('UPDATE users SET activation_fail_count=$1 WHERE id=$2', [fails, user.id]);
-    }
-    await audit(null, 'activation_failed', 'user', user.id, `attempt ${fails}`);
-    return genericFail();
-  }
-
-  const hash = await bcrypt.hash(new_password, 10);
-  await query(
-    `UPDATE users SET password_hash=$1, activation_code=NULL, activation_fail_count=0, activation_locked_until=NULL WHERE id=$2`,
-    [hash, user.id],
-  );
-  await audit(null, 'activation_success', 'user', user.id);
-  return res.status(201).json({ ok: true, username: user.username });
+  return res.status(201).json({ ok: true, username: result.username });
 });
 
 // self-claim above is a deliberate, narrower exception to that decision —
