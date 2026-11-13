@@ -70,6 +70,11 @@ if (!SERVER_URL) {
     const allBeforeBaseline = cli('--all', DB_FRESH);
     assert.notEqual(allBeforeBaseline.status, 0, 'default --all must not invent a baseline on an empty database');
     assert.match(output(allBeforeBaseline), /Use --fresh only against an empty database/);
+    client = await dbClient(DB_FRESH);
+    try {
+      const absent = await client.query("SELECT to_regclass('public.schema_migrations') IS NULL AS absent");
+      assert.equal(absent.rows[0].absent, true, '--all must not create a ledger before a baseline exists');
+    } finally { await client.end(); }
 
     const fresh = cli('--fresh', DB_FRESH);
     assert.equal(fresh.status, 0, output(fresh));
