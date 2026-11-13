@@ -70,8 +70,8 @@ class WorkQueueValidationTests(unittest.TestCase):
 
     def test_active_task_requires_owner_heartbeat_lease_and_checkpoint(self):
         errors, _ = MODULE.validate({"version": 1, "tasks": [task(status="in_progress")]})
-        self.assertTrue(any("in_progress requires owner" in item for item in errors))
-        self.assertTrue(any("in_progress requires checkpoint" in item for item in errors))
+        self.assertTrue(any("in_progress requires non-empty owner" in item for item in errors))
+        self.assertTrue(any("in_progress requires non-empty checkpoint" in item for item in errors))
 
     def test_expired_lease_is_warning_not_automatic_reassignment(self):
         active = task(
