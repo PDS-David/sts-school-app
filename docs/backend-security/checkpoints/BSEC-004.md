@@ -8,12 +8,12 @@
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
 - **Working branch:** agent/backend-attendance-bulk-atomicity-20261113
 - **PR:** https://github.com/PDS-David/sts-school-app/pull/704
-- **Latest implementation commit:** 1bc05e3deab07f078af9068dcb4d6f54190221aa
+- **Latest implementation commit:** pending rename/CI verification
 - **Checkpoint commit:** pending
 - **Changed files:**
   - backend/src/routes/attendance.ts
   - backend/src/utils/attendanceWrites.ts
-  - tests/backend-attendance-bulk.db.test.mts
+  - tests/backend-attendance-bulk.integration.test.mts
   - .github/workflows/backend-attendance-bulk.yml
   - docs/backend-security/checkpoints/BSEC-004.md
 - **Defect:** PUT /attendance/bulk validated the full request before writing, but persisted each row using separate pool.query calls without a transaction. A database error or concurrent deletion after prevalidation could leave only part of the class attendance batch committed while the request failed.
