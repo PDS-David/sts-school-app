@@ -27,7 +27,8 @@
     "GOV-WK-T1-W01 (2026-11-07) indexed Week 1 at objective level: meaning as institution, art of governing and academic field mapped SUPPORTED to the reproduced generic parsed-row id; the Hobbes passage at lines 53-54 was checked against Leviathan Part I ch. XIII and needs a delivery replacement, 'why we study government' is only partly taught in the span, the reading pointer is unverified and the source has no answer key, so two PARTIAL rows, one more PARTIAL row and one UNRESOLVED row, four blocking open items (one OWNER_ACTION on the weekend key) and one lesson item were appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written.",
     "GOV-INV-T2 (2026-11-12) verified the assigned 2nd Term Government DOCX from the hash-matching archive. Eleven teaching weeks (WEEK ONE–ELEVEN) were found, plus scheme-only row 12–13 Revision and Examination; the scheme is plain paragraphs. The document has one comparison table, one native Office Math pound sign and five superscript ordinal runs, but no embedded images. Fifteen bounded preamble, marker, week-indexing and visual-disposition items were appended. Exact XML body-child locators and C14N hashes are in GOV-INV-T2.md. No lesson, coverage, rule, correction or asset was written; tests remain deferred.",
     "Owner authorization 2026-11-12: backend/src/db/ss1/subjects/government.json is added to allowed_write_paths for GOV-REV-T3 and GOV-WK-T3-W01 through GOV-WK-T3-W11. This authorizes the package writes specified by those tasks; all other path and task restrictions remain unchanged.",
-    "2026-11-13 GOV-LES-T1-W08-CORRECTED-WEEK: implemented SUP-SS1-GOVERNMENT-T1-W08-CORRECTED, body SHA-256 44aa2b7ed31e1f8fdef51f9ff6469a7e336fbfbe1cf78a4767695ec67373de5f; bound exact original row SS1-SRC-40ce7dcaf672:BODY:18f42d69b8171e73a693a0f6e333706ccdf511bfa42e1074dd577fec0d01dbca; 13 practice items, 37 marks, each criterion total checked; duplicate queue records both marked IMPLEMENTED_TESTING_DEFERRED. Week Eight reading remains PARTIAL and its verification gate remains open. Package stays PENDING; tests deferred by owner."
+    "2026-11-13 GOV-LES-T1-W08-CORRECTED-WEEK: implemented SUP-SS1-GOVERNMENT-T1-W08-CORRECTED, body SHA-256 44aa2b7ed31e1f8fdef51f9ff6469a7e336fbfbe1cf78a4767695ec67373de5f; bound exact original row SS1-SRC-40ce7dcaf672:BODY:18f42d69b8171e73a693a0f6e333706ccdf511bfa42e1074dd577fec0d01dbca; 13 practice items, 37 marks, each criterion total checked; duplicate queue records both marked IMPLEMENTED_TESTING_DEFERRED. Week Eight reading remains PARTIAL and its verification gate remains open. Package stays PENDING; tests deferred by owner.",
+    "2026-11-13 GOV-LES-T1-W09-CORRECTED-WEEK: added original political socialization lesson and complete 11-item assessment; exact source correction binding and four objective coverage rows recorded. Reading reference remains partial/non-blocking. Test suite extended but not run; content approval and verification remain pending/deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -41,9 +42,9 @@
     "LESSON": 27
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 62,
+    "IMPLEMENTED_TESTING_DEFERRED": 64,
     "BLOCKED": 1,
-    "PENDING": 15
+    "PENDING": 13
   },
   "items": [
     {
@@ -280,7 +281,7 @@
         "GOV-SRC-T3"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Implemented 2026-11-12: wrote tests/ss1/government.package.test.mts following the French package test pattern. Covers frozen-schema parse, exact three-source/manifest correspondence (IDs, archive members, SHA-256, terms), pending alias approval/no invented lesson approval or verification, every current source rule's source-hash/anchor guards, all three SCHEME_ONLY marker bindings, and coverage-reference resolution. Test file committed but NOT RUN by owner instruction; lesson/correction/asset guards are explicitly deferred to the tasks that add those records. Follow-up 2026-11-12: made the suite extensible for subsequent lesson tasks by replacing zero-lesson/correction/asset assertions with dynamic body-hash, criterion-total, state, correction-binding and asset-reference guards. Test execution remains deferred.",
+      "implementation_reference": "Test file updated 2026-11-13 at tests/ss1/government.package.test.mts. Added explicit guards for the Week Nine replacement: exact body hash, all seven agents, constitutional sections 10/14(2)(c)/38/40/42, 11 practice items, 39 total marks, exact original source row/body hash correction binding, four IMPLEMENTED_EQUIVALENT coverage rows, partial/non-blocking reading reference and PENDING/DEFERRED states. Existing generic schema/source/lesson/correction/asset guards retained. Per owner instruction, tests written but NOT RUN.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -2400,8 +2401,8 @@
         "GOV-SRC-T1",
         "GOV-WK-T1-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GOV-WK-T1-W09 on 2026-11-12. Required to clarify political socialization as lifelong learning, qualify religious groups' role and the politics/religion claim under Nigeria's constitutional protections, and supply keyed practice for all 11 exercises. Not authored yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-13: Authored SUP-SS1-GOVERNMENT-T1-W09-CORRECTED in government.json and GOV-LES-T1-W09-CORRECTED-WEEK.md. Body SHA-256 0ecf1b515614d9d50516161e089697f2cc9ab4a60d61537c003ed05349c7d6a8. Teaches lifelong political socialization, formal/informal learning, all seven agents, non-deterministic influence, religious groups as one possible agent, and Nigeria Constitution ss.10, 14(2)(c), 38, 40 and 42. Adds 11 original keyed exercises with criterion marking, 39 marks total, including the Week Eight sovereignty item. Adds CORR-GOV-T1-W09-ROW-REPLACEMENT bound to exact original source row/hash. Updated four content/assessment coverage rows to IMPLEMENTED_EQUIVALENT; reading coverage remains PARTIAL because exact textbook editions were not supplied, but its open item is now non-blocking because the replacement provides original reading. Content approval PENDING; verification DEFERRED; package remains PENDING. No source bytes or shared code edited.",
       "completion_condition": "A visibly original supplement teaches all objectives neutrally with a recomputed body_sha256, dated/citable provenance, complete answer keys and criterion-level marking that sums exactly; content approval stays PENDING and verification DEFERRED; delivery_corrections binds the exact original source row ID/body hash to the replacement; unsupported reading pages are not copied; no source bytes, schema or shared code are edited."
     },
     {
@@ -2439,8 +2440,8 @@
         "GOV-SRC-T1",
         "GOV-WK-T1-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GOV-WK-T1-W09 on 2026-11-12. Required to clarify political socialization as lifelong learning, qualify religious groups' role and the politics/religion claim under Nigeria's constitutional protections, and supply keyed practice for all 11 exercises. Not authored yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-13: Authored SUP-SS1-GOVERNMENT-T1-W09-CORRECTED in government.json and GOV-LES-T1-W09-CORRECTED-WEEK.md. Body SHA-256 0ecf1b515614d9d50516161e089697f2cc9ab4a60d61537c003ed05349c7d6a8. Teaches lifelong political socialization, formal/informal learning, all seven agents, non-deterministic influence, religious groups as one possible agent, and Nigeria Constitution ss.10, 14(2)(c), 38, 40 and 42. Adds 11 original keyed exercises with criterion marking, 39 marks total, including the Week Eight sovereignty item. Adds CORR-GOV-T1-W09-ROW-REPLACEMENT bound to exact original source row/hash. Updated four content/assessment coverage rows to IMPLEMENTED_EQUIVALENT; reading coverage remains PARTIAL because exact textbook editions were not supplied, but its open item is now non-blocking because the replacement provides original reading. Content approval PENDING; verification DEFERRED; package remains PENDING. No source bytes or shared code edited.",
       "completion_condition": "A visibly original supplement teaches all objectives neutrally with a recomputed body_sha256, dated/citable provenance, complete answer keys and criterion-level marking that sums exactly; content approval stays PENDING and verification DEFERRED; delivery_corrections binds the exact original source row ID/body hash to the replacement; unsupported reading pages are not copied; no source bytes, schema or shared code are edited."
     },
     {
@@ -2964,8 +2965,6 @@
     }
   },
   "next_runnable": [
-    "GOV-LES-T1-W09-CORRECTED-WEEK",
-    "GOV-LES-T1-W09-CORRECTED-WEEK",
     "GOV-LES-T1-W10-CORRECTED-WEEK",
     "GOV-LES-T1-W10-CORRECTED-WEEK",
     "GOV-LES-T2-W01-CORRECTED-WEEK",
