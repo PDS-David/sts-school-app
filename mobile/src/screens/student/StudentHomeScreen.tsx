@@ -13,7 +13,7 @@ import { openNotifications, openBraineeChat, openTextStudy } from '../../navigat
 
 export default function StudentHomeScreen({ navigation }: any) {
   const { user } = useAuth();
-  const { notifications, refresh: refreshNotifications } = useNotifications();
+  const { notifications, refresh: refreshNotifications, announcementsLoaded, announcementsError } = useNotifications();
   const announcements = notifications.filter(n => n.kind === 'announcement').slice(0, 3);
   const [tasks, setTasks] = useState<any[]>([]);
   const [materials, setMaterials] = useState<any[]>([]);
@@ -84,7 +84,13 @@ export default function StudentHomeScreen({ navigation }: any) {
 
         {/* Announcements are loaded from the school/class/role-scoped API feed. */}
         <Text style={styles.sectionLabel}>Announcements</Text>
-        {announcements.length === 0 ? (
+        {announcementsError ? (
+          <Card style={styles.emptyCard}>
+            <Text style={styles.emptyText}>{announcements.length ? 'Could not refresh announcements. Showing the last available notices.' : 'Could not load announcements. Pull down to retry.'}</Text>
+          </Card>
+        ) : !announcementsLoaded ? (
+          <Card style={styles.emptyCard}><Text style={styles.emptyText}>Loading announcements…</Text></Card>
+        ) : announcements.length === 0 ? (
           <Card style={styles.emptyCard}>
             <Text style={styles.emptyText}>No announcements yet. Your school admin can post updates here.</Text>
           </Card>
