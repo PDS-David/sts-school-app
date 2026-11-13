@@ -38,6 +38,16 @@ const approvedPackage = () => {
     verification_reference: 'ASSET-VERIFICATION-TEST',
   };
   diagram.provenance.reuse_status = 'PERMITTED';
+  pkg.assets.filter((asset: any) => asset.path.endsWith('.svg')).forEach((asset: any) => {
+    asset.state = {
+      content_approval: 'APPROVED',
+      approval_reference: 'SUBJECT-APPROVAL-TEST',
+      implementation: 'IMPLEMENTED',
+      verification: 'VERIFIED',
+      verification_reference: 'ASSET-VERIFICATION-TEST',
+    };
+    asset.provenance.reuse_status = 'PERMITTED';
+  });
   return pkg;
 };
 
@@ -88,7 +98,7 @@ test('blocks approved-looking content while package-level open items remain', ()
 test('keeps SS2 and SS3 delivery class-separated', () => {
   const delivery = createSs23StudentDelivery([approvedPackage()]);
   const ss2Units = delivery.listUnits('SS 2');
-  assert.equal(ss2Units.length, 6);
+  assert.equal(ss2Units.length, 8);
   assert.deepEqual(delivery.listUnits('SS 3'), []);
   assert.equal(delivery.getUnit(ss2Units[0].id, 'SS 3'), null);
 });
@@ -114,6 +124,19 @@ test('serves only verified, permitted assets and verifies file bytes and SHA-256
   assert.ok(result);
   assert.equal(result.bytes.length, result.asset.bytes);
   assert.equal(result.asset.sha256, 'f8bbbe5d682198aa5517c4d206186c8104935df6ae8d06aaf06634e68cca5406');
+});
+
+test('verifies the stored bytes and SHA-256 for every authored SVG asset', () => {
+  const pkg = approvedPackage();
+  const delivery = createSs23StudentDelivery([pkg]);
+  const svgAssets = pkg.assets.filter((asset: any) => asset.path.endsWith('.svg'));
+  assert.equal(svgAssets.length, 5);
+  for (const asset of svgAssets) {
+    const result = delivery.readAsset(asset.id, 'SS 2');
+    assert.ok(result);
+    assert.equal(result.bytes.length, asset.bytes);
+    assert.equal(result.asset.sha256, asset.sha256);
+  }
 });
 
 test('rejects asset path traversal even after approval flags are set', () => {

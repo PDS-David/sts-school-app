@@ -3,7 +3,7 @@
 Updated: 2026-11-13
 Task ID: SS23-AGRIC-SS2-T1-SOIL
 Branch: `agent/ss23-agriculture-soil-unit-20261113`
-Base: package-contract branch `agent/ss23-package-contract-20261113` (PR #794).
+Base: `master` (PR #794).
 
 ## Status
 
@@ -131,4 +131,55 @@ Six technical/content issues remain delivery blockers: drought is listed as a cl
 
 ## CI evidence
 
-GitHub Actions run **43474264243** completed successfully after Weeks 4-6 were added: backend TypeScript typecheck passed and all 24 SS23 Node tests passed (24 passed, 0 failed). Week 7 was added after this run and still requires a fresh validation run.
+GitHub Actions run **43476440171** completed successfully after the combined Weeks 8-9 unit was added: backend TypeScript typecheck passed and all 25 SS23 Node tests passed (25 passed, 0 failed). The suite also verifies the byte count and SHA-256 of all five stored SVG assets.
+
+
+## Weeks 8–9 — Plant nutrients, nutrient cycles and water in crop production
+
+A combined Weeks 8-9 unit is drafted from the single Week Eight body, consistent with the source map's two-week scheme range. It covers macro- and micronutrient classification; functions and common deficiency symptoms for N, P, K, Ca, Mg, S, Fe, Mn, Cu, Zn, B, Mo, Cl and Ni; nitrogen inputs, transformations and losses; carbon and water cycles; soil-water forms; water conservation; the importance of water and organic matter; and factors affecting nutrient availability. Eighteen original-source assessment prompts have authored answers and marking criteria, with three authored practice supplements.
+
+Four new factual references support the nutrient and cycle material: FAO Plant Nutrition for Food Security, RHS nutrient-deficiency guidance, NOAA's carbon-cycle explanation and USGS's water-cycle reference. The existing USDA NRCS Soil Biology Primer supports soil organisms and microbial nutrient transformations.
+
+Three source figures (nitrogen, carbon and water cycles) are hashed and recorded as pending source-extract references. The nitrogen figure carries an FLRC 2014 credit, the carbon-cycle figure has an Alamy watermark, and the water-cycle image has no verified rights record. Two original diagrams have been authored: a nitrogen-cycle diagram and a combined carbon/water-cycle diagram.
+
+The main blockers are: the scheme assigns Weeks 8-9 but the body has only one Week Eight heading; the source's nutrient table omits requested functions/deficiencies for sulphur and micronutrients; nitrogen inputs, transformations and losses are conflated; carbon and water cycle explanations require technical correction; and source figure permissions remain unverified. The O.A. Iwena Chapter 18 pages 187-201 reading reference is unverified and non-blocking.
+
+## Updated First Term package totals
+
+- 7 units: Weeks 1, 2, 3, combined Weeks 4-5, Week 6, Week 7 and combined Weeks 8-9.
+- 128 assessment/practice items: 109 original-source prompts and 19 authored supplements.
+- 47 asset records: 42 pending source-extract references and 5 stored authored SVG diagrams.
+- 18 external factual references.
+- 35 open items: 30 delivery-blocking and 5 non-blocking.
+- Package status remains PENDING; student routes intentionally serve no lessons until blocking items are resolved and evidence-backed approval/verification is recorded.
+
+**Next exact task:** audit and draft Week 10 (Nutrient Availability), preserving the source's topic boundaries, assessments and figures. Then continue SS2 Agricultural Science Term 2 and Term 3.
+
+
+## Asset integrity test update
+
+A new student-delivery test now verifies the actual byte count and SHA-256 for all five stored authored SVG assets, not only the sedimentation jar. The Weeks 8-9 package and expanded 25-test suite passed CI run 43476440171.
+
+
+## Week 10 — Farming practices and soil nutrient management
+
+Week 10 is drafted with bush burning, overgrazing, clean clearing, fertiliser application, organic manuring, crop rotation, continuous cropping, flooding, tillage effects, nutrient replenishment, zero tillage, nutrient availability and soil organic matter. Nineteen original-source prompts have authored answers, explanations and mark-by-mark criteria, with three authored application questions.
+
+Four new factual references support the corrections: FAO Conservation Agriculture principles, North Carolina Department of Agriculture's gypsum FAQ, FAO's soil-organic-matter guidance and Nebraska Extension's fire/crop-residue analysis. Existing Penn State aglime and USDA NRCS soil-biology references are reused.
+
+Seven technical issues are delivery blockers: the source presents soil sterilisation as a merit of burning; lists gypsum as a liming material; asks for zero tillage without defining it; claims ploughing increases soil organic matter; overgeneralises nitrogen fixation in crop rotation; mixes nutrient-availability factors with actual nutrient losses; and defines flooding incompletely. The Week Ten Iwena Chapter 18 pages 187-201 reading reference is unverified and non-blocking. No new source figures were found for Week Ten.
+
+## Updated First Term package totals
+
+- 8 units: Weeks 1, 2, 3, combined Weeks 4-5, Week 6, Week 7, combined Weeks 8-9 and Week 10.
+- 150 assessment/practice items: 128 original-source prompts and 22 authored supplements.
+- 47 asset records: 42 pending source-extract references and 5 stored authored SVG diagrams.
+- 22 external factual references.
+- 43 open items: 37 delivery-blocking and 6 non-blocking.
+- Package status remains PENDING; no lesson is student-ready until all blocking issues and evidence-backed approvals are resolved.
+
+## CI status after Week 10
+
+The previous Weeks 1-9 CI run **43476440171** passed the backend TypeScript typecheck and all 25 SS23 Node tests. Week 10 and its assertions were added after that run and require a fresh validation run.
+
+**Next exact task:** begin the SS2 Agricultural Science Second Term source inventory and audit its first teaching week. Continue subject-by-subject through Terms 2 and 3 before moving to the next subject.
