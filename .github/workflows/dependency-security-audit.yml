@@ -11,7 +11,7 @@ on:
       - ".github/workflows/dependency-security-audit.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   npm-audit:
@@ -28,8 +28,21 @@ jobs:
           cache: npm
       - name: Install locked dependencies
         run: npm ci --ignore-scripts
-      - name: Apply non-breaking npm audit fixes
-        run: npm audit fix
+      - name: Apply non-breaking npm audit fixes and commit lockfile
+        shell: bash
+        run: |
+          set +e
+          npm audit fix
+          audit_fix_status=$?
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(deps): apply non-breaking npm audit fixes"
+            git push origin "HEAD:${GITHUB_HEAD_REF}"
+          fi
+          exit "$audit_fix_status"
       - name: Audit locked dependencies and print exact advisories
         if: always()
         shell: bash
