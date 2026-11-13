@@ -7,16 +7,25 @@
 - **Base branch:** master
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
 - **Working branch:** agent/backend-auth-claims-20261113
-- **Last commit:** pending
-- **Changed files:** docs/backend-security/checkpoints/BSEC-001.md (checkpoint only at initialization)
-- **Defect under investigation:** access tokens embed role, school, class and teacher-subject assignments. Admin user-edit routes can change these fields while requireAuth currently checks only active/expiry/deletion/pending-review state. A previously issued token can therefore continue using stale authorization claims until expiry.
-- **Scope boundary:** do not touch backend/src/routes/learning.ts; open PR #686 is actively changing it. The old branch fix/agent4-security-reconciliation is 5 commits ahead but 4,458 commits behind master and has no open PR; it is not a safe base and will not be reused. No active PR currently changes backend/src/middleware/auth.ts.
-- **Acceptance criteria:**
-  1. Authenticated requests use the current database role, school, class and subject assignments, not stale JWT authorization claims.
-  2. Existing account-state checks remain fail-closed.
-  3. Regression tests prove demotion, school reassignment and teacher-subject revocation override stale token claims.
-  4. TypeScript build and focused regression tests pass, or exact execution limitation is recorded.
-  5. Focused PR targets master; no production deployment or live database mutation is performed.
-- **Verification:** baseline repository/branch/PR inspection completed. Automated tests not yet run.
-- **Remaining:** implement canonical claim hydration, add regression tests, run available checks, update this checkpoint, open PR.
-- **Exact next action:** add a pure auth-claims resolver, wire it into requireAuth's existing users lookup, and test stale token claim replacement.
+- **Latest commit before checkpoint update:** 1e58cbc52e5e2006812cab16f21f220ece6c7620
+- **Commits:**
+  - 627ac0565bdf4d23161f36fb5c8429962e16eef6 — initialize durable task checkpoint
+  - 30f0148487f63de5e47e70c7b54c76ec44f2f779 — add pure current-claims resolver
+  - bf5d9f605ec94e5bcef771ca44f13c8798707134 — hydrate authenticated requests from current DB authorization state
+  - e76e562523f3fded4b74809b68f1a4649cb44495 — add four stale-claim regression cases
+  - 16c9362114cc76c50aa619bc6d843437e04371bb — add focused test command
+  - 1e58cbc52e5e2006812cab16f21f220ece6c7620 — add PR workflow for regression tests and backend typecheck
+- **Changed files:**
+  - backend/src/middleware/auth.ts
+  - backend/src/utils/authClaims.ts
+  - backend/package.json
+  - tests/backend-auth-claims.test.mts
+  - .github/workflows/backend-auth-claims.yml
+  - docs/backend-security/checkpoints/BSEC-001.md
+- **Defect:** access tokens embed role, school, class and teacher-subject assignments. Admin user-edit routes can change these fields while requireAuth previously checked only active/expiry/deletion/pending-review state. A previously issued token could therefore continue using stale authorization claims until expiry.
+- **Implementation:** requireAuth now loads username, role, school, assigned class and teacher-subject IDs from the current users/teacher_subjects rows and replaces those mutable JWT claims before downstream route authorization. Existing account-state checks are preserved. The token subject remains the identity key.
+- **Regression coverage:** four cases cover administrator demotion, school/class reassignment, partial subject revocation and clearing all subject grants.
+- **Verification:** GitHub branch comparison confirmed 5 implementation commits ahead of master and 0 behind before the workflow/checkpoint additions. Source files and workflow were fetched back from the branch for review. Automated test and TypeScript execution have **not** been run in this session because no local repository runtime is available. A focused PR workflow was added to run both on GitHub Actions. No database or production data was changed.
+- **Concurrency:** open PR #686 changes backend/src/routes/learning.ts; this task does not touch that file. The historical fix/agent4-security-reconciliation branch is 5 commits ahead but 4,458 behind master and has no open PR; it was not reused. No other open PR changes the files in this task.
+- **Remaining:** open PR, inspect its checks, fix any genuine failures, then continue to the next backend/security defect.
+- **Exact next action:** open a focused PR from agent/backend-auth-claims-20261113 to master and wait for its regression/typecheck workflow.
