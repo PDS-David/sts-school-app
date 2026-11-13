@@ -56,7 +56,7 @@ export function TermsMgmtScreen({ navigation }: any) {
     if (!form.name.trim() || !form.academic_year.trim()) { setInfoDialog({ title: 'Required fields', message: 'Enter the term name and academic year.' }); return; }
     const days = form.days_opened.trim() ? Number(form.days_opened) : 0;
     if (!Number.isInteger(days) || days < 0) { setInfoDialog({ title: 'Invalid school days', message: 'Days school opened must be a whole number of zero or more.' }); return; }
-    const datePattern = /^\\d{4}-\\d{2}-\\d{2}$/;
+    const datePattern = /^\d{4}-\d{2}-\d{2}$/;
     if (form.start_date && !datePattern.test(form.start_date)) { setInfoDialog({ title: 'Invalid start date', message: 'Use YYYY-MM-DD for the start date.' }); return; }
     if (form.end_date && !datePattern.test(form.end_date)) { setInfoDialog({ title: 'Invalid end date', message: 'Use YYYY-MM-DD for the end date.' }); return; }
     if (form.start_date && form.end_date && form.end_date < form.start_date) { setInfoDialog({ title: 'Invalid date range', message: 'The end date must not be earlier than the start date.' }); return; }
@@ -80,11 +80,18 @@ export function TermsMgmtScreen({ navigation }: any) {
     } finally { setUpdatingCurrent(null); }
   };
 
-  if (loading) return <Loader />;
+  if (loading && terms.length === 0) return <Loader />;
+  if (loadError && terms.length === 0) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={loadError} />
+      <Btn label='Retry terms' variant='outline' onPress={() => fetch()} />
+    </View>
+  );
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <PageContainer style={{ padding: Spacing.sm, paddingBottom: 0 }}>
+        {!!loadError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry terms' variant='outline' size='sm' onPress={() => fetch()} /></View>}
         <TouchableOpacity style={styles.addBtn} onPress={openAddModal}>
           <Ionicons name="add-circle" size={20} color={Colors.white} />
           <Text style={styles.addBtnTxt}>Add Term</Text>
@@ -97,7 +104,7 @@ export function TermsMgmtScreen({ navigation }: any) {
         // See AdminUsersScreen.tsx's FlatList for why this is set explicitly.
         removeClippedSubviews={false}
         contentContainerStyle={{ padding: Spacing.sm, ...(isWide ? { alignItems: 'center' as const } : null) }}
-        ListEmptyComponent={<Empty message="No terms created yet" />}
+        ListEmptyComponent={<Empty message={loadError ? 'Terms could not be loaded.' : 'No terms created yet'} />}
         renderItem={({ item: t }) => (
           <PageContainer style={{ width: '100%' }}>
             <Card>
@@ -109,8 +116,8 @@ export function TermsMgmtScreen({ navigation }: any) {
                 </View>
                 {t.is_current
                   ? <Badge label="CURRENT" color={Colors.success} />
-                  : <TouchableOpacity onPress={() => setCurrentTerm(t)} style={styles.setCurrentBtn}>
-                      <Text style={styles.setCurrentTxt}>Set Current</Text>
+                  : <TouchableOpacity onPress={() => setCurrentTerm(t)} style={styles.setCurrentBtn} disabled={updatingCurrent !== null} accessibilityRole='button' accessibilityLabel={`Set ${t.name} ${t.academic_year} as current term`}>
+                      <Text style={styles.setCurrentTxt}>{updatingCurrent === t.id ? 'Setting…' : 'Set Current'}</Text>
                     </TouchableOpacity>
                 }
               </View>
@@ -135,10 +142,11 @@ export function TermsMgmtScreen({ navigation }: any) {
           </View>
           <View style={{ flexDirection: 'row', gap: Spacing.sm, marginTop: Spacing.md }}>
             <Btn label="Cancel" onPress={() => setModal(false)} variant="outline" style={{ flex: 1 }} />
-            <Btn label="Save"   onPress={handleSave}            style={{ flex: 1 }} />
+            <Btn label={saving ? 'Saving…' : 'Save'} onPress={handleSave} loading={saving} disabled={saving} style={{ flex: 1 }} />
           </View>
         </ScrollView>
       </Modal>
+      <ConfirmDialog visible={!!infoDialog} title={infoDialog?.title ?? ''} message={infoDialog?.message ?? ''} hideCancel onConfirm={() => setInfoDialog(null)} onCancel={() => setInfoDialog(null)} />
     </View>
   );
 }
