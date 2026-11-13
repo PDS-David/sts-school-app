@@ -1168,7 +1168,7 @@ router.post('/questions', requirePerm('questions.write'), async (req, res) => {
 // never receive question content, submissions from other students, or draft tests.
 router.get('/parent/upcoming-assessments', requireRole('parent'), async (req, res) => {
   const { rows } = await query(
-    `SELECT DISTINCT a.id, a.title, a.start_at, a.end_at, a.class_name,
+    `SELECT DISTINCT a.id, a.school_code, a.title, a.start_at, a.end_at, a.class_name,
             sub.name AS subject_name
        FROM parent_wards pw
        JOIN students st ON st.id=pw.student_id AND st.deleted_at IS NULL
