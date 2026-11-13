@@ -37,6 +37,8 @@ Worker branch: `agent/frontend-admin-records-current-20261113`
 - `7a01800b3fc3884502ea2a7ad3c57a659999e125` — reapply admin records recovery on current master.
 - Checkpoint commit: `d5187f371ba60506cc6e3daa35d9c815c629cac7`.
 
+- CI follow-up: removed 1 unsupported Btn size prop(s) before the current-master TypeScript run.
+
 ## Verification
 - Static inspection confirms class summary score requests continue to include school_code.
 - Static inspection confirms school switches clear prior school data and stale requests are ignored.
