@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
 import { useNotifications } from '../../components/NotificationsContext';
-import { Card, Loader } from '../../components/UI';
+import { Card, Btn, Loader } from '../../components/UI';
 import { PageContainer } from '../../components/layout';
 import { Colors, Spacing, Fonts, Radius } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
@@ -18,31 +18,44 @@ export default function StudentHomeScreen({ navigation }: any) {
   const [tasks, setTasks] = useState<any[]>([]);
   const [materials, setMaterials] = useState<any[]>([]);
   const [recentScores, setRecentScores] = useState<any[]>([]);
+  const [tasksError, setTasksError] = useState('');
+  const [materialsError, setMaterialsError] = useState('');
+  const [scoresError, setScoresError] = useState('');
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
   const load = useCallback(async () => {
+    setTasksError('');
+    setMaterialsError('');
+    setScoresError('');
     try {
-      const [a, m] = await Promise.all([
-        api.get('/learning/assessments'),
-        api.get('/learning/materials'),
-      ]);
-      setTasks((a.data.assessments ?? []).filter((x: any) => x.status === 'open').slice(0, 4));
-      setMaterials((m.data.materials ?? []).slice(0, 4));
-    } catch { /* offline — sections below just show what's cached/empty */ }
+      const { data } = await api.get('/learning/assessments');
+      setTasks((data.assessments ?? []).filter((x: any) => x.status === 'open').slice(0, 4));
+    } catch (e: any) {
+      setTasksError(e?.response?.data?.error ?? 'Could not refresh open assessments.');
+    }
+    try {
+      const { data } = await api.get('/learning/materials');
+      setMaterials((data.materials ?? []).slice(0, 4));
+    } catch (e: any) {
+      setMaterialsError(e?.response?.data?.error ?? 'Could not refresh learning materials.');
+    }
     try {
       const s = await api.get('/students/me');
-      // See the matching comment in MyResultsScreen.tsx — students.user_id
-      // is UNIQUE at the DB level, this is just a canary.
       if (s.data.students?.length > 1) {
         console.warn('[StudentHomeScreen] /students/me returned more than one linked student — using the first.');
       }
       const mine = s.data.students?.[0];
-      if (mine) {
+      if (!mine) {
+        setRecentScores([]);
+        setScoresError('No student record is linked to this account yet. Contact the school administrator.');
+      } else {
         const r = await api.get(`/scores/report/${mine.id}`);
         setRecentScores((r.data.scores ?? []).slice(0, 3));
       }
-    } catch { /* no linked student record yet, or offline */ }
+    } catch (e: any) {
+      setScoresError(e?.response?.data?.error ?? 'Could not load recent results.');
+    }
     await refreshNotifications();
     setLoading(false);
   }, [refreshNotifications]);
@@ -65,7 +78,12 @@ export default function StudentHomeScreen({ navigation }: any) {
         <PageContainer>
         {/* Today's tasks */}
         <Text style={styles.sectionLabel}>Today's Tasks</Text>
-        {tasks.length === 0 ? (
+        {tasksError ? (
+          <Card style={styles.emptyCard}>
+            <Text style={styles.emptyText}>{tasks.length ? 'Could not refresh assessments. Showing the last available list.' : tasksError}</Text>
+            <Btn label="Retry dashboard" variant="outline" onPress={() => load()} style={{ marginTop: Spacing.sm }} />
+          </Card>
+        ) : tasks.length === 0 ? (
           <Card style={styles.emptyCard}><Text style={styles.emptyText}>Nothing due right now — you're all caught up.</Text></Card>
         ) : tasks.map((t) => (
           <TouchableOpacity key={t.id} onPress={() => navigation.navigate('AssessmentsTab', { screen: 'Assessments' })}>
@@ -76,6 +94,48 @@ export default function StudentHomeScreen({ navigation }: any) {
               <View style={{ flex: 1 }}>
                 <Text style={styles.rowTitle}>{t.title}</Text>
                 <Text style={styles.rowMeta}>{t.type ?? 'Assessment'}</Text>
+              </View>
+              <Ionicons name="chevron-forward" size={18} color={Colors.textSub} />
+            </Card>
+          </TouchableOpacity>
+        ))}
+
+        <Text style={styles.sectionLabel}>Learning Materials</Text>
+        {materialsError ? (
+          <Card style={styles.emptyCard}>
+            <Text style={styles.emptyText}>{materials.length ? 'Could not refresh materials. Showing the last available items.' : materialsError}</Text>
+            <Btn label="Retry materials" variant="outline" onPress={() => load()} style={{ marginTop: Spacing.sm }} />
+          </Card>
+        ) : materials.length === 0 ? (
+          <Card style={styles.emptyCard}><Text style={styles.emptyText}>No learning materials are available yet.</Text></Card>
+        ) : materials.map((item) => (
+          <TouchableOpacity key={item.id} onPress={() => navigation.getParent()?.navigate('LearningTab', { screen: 'Materials' })}>
+            <Card style={styles.rowCard}>
+              <View style={[styles.rowIcon, { backgroundColor: Colors.primary + '18' }]}><Ionicons name="book" size={20} color={Colors.primary} /></View>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.rowTitle}>{item.title}</Text>
+                <Text style={styles.rowMeta}>{item.subject_name ?? item.type ?? 'Learning resource'}</Text>
+              </View>
+              <Ionicons name="chevron-forward" size={18} color={Colors.textSub} />
+            </Card>
+          </TouchableOpacity>
+        ))}
+
+        <Text style={styles.sectionLabel}>Recent Results</Text>
+        {scoresError ? (
+          <Card style={styles.emptyCard}>
+            <Text style={styles.emptyText}>{recentScores.length ? 'Could not refresh results. Showing the last available marks.' : scoresError}</Text>
+            <Btn label="Retry results" variant="outline" onPress={() => load()} style={{ marginTop: Spacing.sm }} />
+          </Card>
+        ) : recentScores.length === 0 ? (
+          <Card style={styles.emptyCard}><Text style={styles.emptyText}>No scores have been published yet.</Text></Card>
+        ) : recentScores.map((score) => (
+          <TouchableOpacity key={score.subject_id} onPress={() => navigation.navigate('AssessmentsTab', { screen: 'MyResults' })}>
+            <Card style={styles.rowCard}>
+              <View style={[styles.rowIcon, { backgroundColor: Colors.success + '20' }]}><Ionicons name="bar-chart" size={20} color={Colors.success} /></View>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.rowTitle}>{score.subject_name}</Text>
+                <Text style={styles.rowMeta}>Total: {score.total ?? '—'} · Grade: {score.grade ?? '—'}</Text>
               </View>
               <Ionicons name="chevron-forward" size={18} color={Colors.textSub} />
             </Card>
