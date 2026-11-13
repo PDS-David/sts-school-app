@@ -28,7 +28,10 @@ jobs:
           cache: npm
       - name: Install locked dependencies
         run: npm ci --ignore-scripts
+      - name: Apply non-breaking npm audit fixes
+        run: npm audit fix
       - name: Audit locked dependencies and print exact advisories
+        if: always()
         shell: bash
         run: |
           npm audit --json > "$RUNNER_TEMP/npm-audit.json" || audit_status=$?
@@ -46,3 +49,10 @@ jobs:
           }
           NODE
           exit "${audit_status:-0}"
+      - name: Upload refreshed lockfile and audit-fix log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-audit-refresh
+          path: package-lock.json
+          if-no-files-found: error
