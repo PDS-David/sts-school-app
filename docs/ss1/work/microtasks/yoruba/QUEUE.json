@@ -66,7 +66,8 @@
     "YO-T1-W03 provisional replacement drafts were added in yoruba.json: EDE (four articulatory dimensions of vowels), ASA (five proverb functions with clearly labelled original examples), and LITIRESO (oral performance, oriki, etiological narratives and social value). Each includes practice, answers and marking. All remain DRAFT/PENDING approval/DEFERRED verification. The source vowel chart and garbled traditional proverbs remain explicit blockers.",
     "An original accessible Yoruba vowel chart SVG was added at backend/src/db/ss1/assets/yoruba/yoruba-t1-w03-vowel-chart.svg and registered in yoruba.json as YO-T1-W03-EDE-VOWEL-CHART-1 (3,579 bytes; SHA-256 4b0b993d378869e542a0ecf030d6263a647c1f581194492899e9e1bd77d5acdd). It replaces the damaged tab-positioned source chart with a labelled vowel-height/frontness chart and the five commonly taught nasal spellings. Verification remains deferred; do not close the asset gate until the SVG safety and runtime checks pass.",
     "Vowel chart integrity metadata corrected after CI measured the committed SVG as 3,578 bytes (the GitHub file write omitted the terminal newline from the 3,579-byte working string). Registered SHA-256 now matches the committed 3,578-byte file: f04606a8d65e14d030ab2a05003cebda73263cbcd363e2b25089c0b01bbc2db4. The asset remains pending safety/hash/runtime validation.",
-    "YO-T1-W04 provisional replacement drafts were added to yoruba.json via Git data API: EDE (consonant place/manner and voicing), ASA (ìyàn, àmàlà ògèdè, àádùn and food hygiene), and LITIRESO (theme, language, culture, character, setting). All remain DRAFT/PENDING approval/DEFERRED verification. The empty source consonant chart and uncertain àádùn ingredient words remain explicit blockers."
+    "YO-T1-W04 provisional replacement drafts were added to yoruba.json via Git data API: EDE (consonant place/manner and voicing), ASA (ìyàn, àmàlà ògèdè, àádùn and food hygiene), and LITIRESO (theme, language, culture, character, setting). All remain DRAFT/PENDING approval/DEFERRED verification. The empty source consonant chart and uncertain àádùn ingredient words remain explicit blockers.",
+    "YO-T1-W05 provisional replacement drafts were added: EDE (high/mid/low and contour tones), ASA (marriage and mutual-help proverbs), and LITIRESO (a structured method for analysing the approved prose text). All remain DRAFT/PENDING approval/DEFERRED verification. The source's unmarked tone examples and missing WAEC/NECO prose title remain explicit blockers."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -1180,7 +1181,7 @@
         "YO-FACT-T1-W05-DEFECTS"
       ],
       "status": "PENDING",
-      "implementation_reference": "Not authored. Required by YO-WK-T1-W05 (2026-10-29, master 3d72c04). The EDE part (source lines 1173-1233 (objectives YO-T1-W05-EDE-01..07)) is indexed as YO-T1-W05-EDE-01..07. Defects and notation gaps are listed in YORUBA-T1-W05-SOURCE-DEFECTS and YORUBA-T1-W05-NOTATION and must be decided in YO-FACT-T1-W05-DEFECTS first. No lesson is authored in YO-WK-T1-W05.",
+      "implementation_reference": "Not authored. Required by YO-WK-T1-W05 (2026-10-29, master 3d72c04). The EDE part (source lines 1173-1233 (objectives YO-T1-W05-EDE-01..07)) is indexed as YO-T1-W05-EDE-01..07. Defects and notation gaps are listed in YORUBA-T1-W05-SOURCE-DEFECTS and YORUBA-T1-W05-NOTATION and must be decided in YO-FACT-T1-W05-DEFECTS first. No lesson is authored in YO-WK-T1-W05. Provisional draft exists in yoruba.json on branch agent/yoruba-t1-week2-lesson-drafts-20261113; status remains PENDING pending source-expert review, set-text confirmation, approval and verification.",
       "completion_condition": "A lesson in yoruba.json teaches every Week 5 EDE objective, uses the notation and corrections agreed in YO-FACT-T1-W05-DEFECTS, shows every example with a full and correct tone marking, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance, and PENDING content approval; no fact is invented and no schema or compiler edit is made."
     },
     {
@@ -1224,7 +1225,7 @@
         "YO-FACT-T1-W05-DEFECTS"
       ],
       "status": "PENDING",
-      "implementation_reference": "Not authored. Required by YO-WK-T1-W05 (2026-10-29, master 3d72c04). The ASA part (source lines 1237-1255 (objectives YO-T1-W05-ASA-01..02)) is indexed as YO-T1-W05-ASA-01..02. Defects and notation gaps are listed in YORUBA-T1-W05-SOURCE-DEFECTS and YORUBA-T1-W05-NOTATION and must be decided in YO-FACT-T1-W05-DEFECTS first. No lesson is authored in YO-WK-T1-W05.",
+      "implementation_reference": "Not authored. Required by YO-WK-T1-W05 (2026-10-29, master 3d72c04). The ASA part (source lines 1237-1255 (objectives YO-T1-W05-ASA-01..02)) is indexed as YO-T1-W05-ASA-01..02. Defects and notation gaps are listed in YORUBA-T1-W05-SOURCE-DEFECTS and YORUBA-T1-W05-NOTATION and must be decided in YO-FACT-T1-W05-DEFECTS first. No lesson is authored in YO-WK-T1-W05. Provisional draft exists in yoruba.json on branch agent/yoruba-t1-week2-lesson-drafts-20261113; status remains PENDING pending source-expert review, set-text confirmation, approval and verification.",
       "completion_condition": "A lesson in yoruba.json teaches both Week 5 ASA objectives, gives every proverb in corrected tone-marked spelling with a translation and explanation, uses the notation and corrections agreed in YO-FACT-T1-W05-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance, and PENDING content approval; no fact is invented and no schema or compiler edit is made."
     },
     {
@@ -1268,7 +1269,7 @@
         "YO-FACT-T1-W05-DEFECTS"
       ],
       "status": "PENDING",
-      "implementation_reference": "Not authored. Required by YO-WK-T1-W05 (2026-10-29, master 3d72c04). The LIT part (source lines 1259-1261 (objective YO-T1-W05-LIT-01, UNRESOLVED)) is indexed as YO-T1-W05-LIT-01 (UNRESOLVED, heading only). Defects and notation gaps are listed in YORUBA-T1-W05-SOURCE-DEFECTS and YORUBA-T1-W05-NOTATION and must be decided in YO-FACT-T1-W05-DEFECTS first. No lesson is authored in YO-WK-T1-W05.",
+      "implementation_reference": "Not authored. Required by YO-WK-T1-W05 (2026-10-29, master 3d72c04). The LIT part (source lines 1259-1261 (objective YO-T1-W05-LIT-01, UNRESOLVED)) is indexed as YO-T1-W05-LIT-01 (UNRESOLVED, heading only). Defects and notation gaps are listed in YORUBA-T1-W05-SOURCE-DEFECTS and YORUBA-T1-W05-NOTATION and must be decided in YO-FACT-T1-W05-DEFECTS first. No lesson is authored in YO-WK-T1-W05. Provisional draft exists in yoruba.json on branch agent/yoruba-t1-week2-lesson-drafts-20261113; status remains PENDING pending source-expert review, set-text confirmation, approval and verification.",
       "completion_condition": "A lesson in yoruba.json teaches the Week 5 LITIRESO objective against the set text named in YORUBA-T1-W05-LITIRESO-EMPTY, uses the notation and corrections agreed in YO-FACT-T1-W05-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance, and PENDING content approval; no fact is invented and no schema or compiler edit is made. The lesson cannot be completed before the owner names the text."
     },
     {
