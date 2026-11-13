@@ -106,10 +106,10 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
   let attendanceRecords = 0;
   let weeklyEffortEntries = 0;
   if (user.role === 'admin' || className) {
-    const classParams = [schoolCode, className, term.id];
+    const classParams = [schoolCode, className, term.id, term.days_opened];
     const { rows: attendanceRows } = await query(
       `SELECT COUNT(a.id)::int AS attendance_records,
-              ROUND(AVG(100.0 * a.days_present / NULLIF($3::numeric, 0)), 1) AS attendance_rate
+              ROUND(AVG(100.0 * a.days_present / NULLIF($4::numeric, 0)), 1) AS attendance_rate
          FROM attendance a
          JOIN students st ON st.id=a.student_id
         WHERE st.school_code=$1 AND st.deleted_at IS NULL
