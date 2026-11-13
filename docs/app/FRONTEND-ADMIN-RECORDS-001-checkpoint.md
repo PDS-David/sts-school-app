@@ -39,6 +39,8 @@ Worker branch: `agent/frontend-admin-records-current-20261113`
 
 - CI follow-up: removed 1 unsupported Btn size prop(s) before the current-master TypeScript run.
 
+- CI evidence: Mobile TypeScript workflow run 43458787536 completed successfully on the current-master PR head.
+
 ## Verification
 - Static inspection confirms class summary score requests continue to include school_code.
 - Static inspection confirms school switches clear prior school data and stale requests are ignored.
