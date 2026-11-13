@@ -84,13 +84,16 @@ export default function ParentHomeScreen({ navigation }: any) {
           <Card style={{ marginHorizontal: Spacing.md }}>
             <Text style={styles.hint}>{announcements.length ? 'Could not refresh announcements. Showing the last available notices.' : 'Could not load announcements. Pull down to retry.'}</Text>
           </Card>
-        ) : !announcementsLoaded ? (
+        ) : null}
+        {!announcementsError && !announcementsLoaded ? (
           <Card style={{ marginHorizontal: Spacing.md }}><Text style={styles.hint}>Loading announcements…</Text></Card>
-        ) : announcements.length === 0 ? (
+        ) : null}
+        {!announcementsError && announcementsLoaded && announcements.length === 0 ? (
           <Card style={{ marginHorizontal: Spacing.md }}>
             <Text style={styles.hint}>No announcements yet. Your school admin can post updates here.</Text>
           </Card>
-        ) : announcements.map(item => (
+        ) : null}
+        {announcements.map(item => (
           <Card key={item.id} style={{ marginHorizontal: Spacing.md }}>
             <Text style={styles.announcementTitle}>{item.title}</Text>
             <Text style={styles.hint}>{item.body}</Text>
