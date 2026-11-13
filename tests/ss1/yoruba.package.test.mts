@@ -44,8 +44,13 @@ test('First-Term Weeks One to Five have EDE, ASA and LITIRESO drafts linked from
       assert(p.coverage.some(item => item.lesson_ids.includes(lessonId)), `no coverage link for ${lessonId}`);
     }
   }
+  for (const strand of ['EDE', 'ASA']) {
+    const lessonId = `SUP-SS1-YORUBA-T1-W06-${strand}`;
+    assert(p.lessons.some(item => item.id === lessonId), `missing ${lessonId}`);
+    assert(p.coverage.some(item => item.lesson_ids.includes(lessonId)), `no coverage link for ${lessonId}`);
+  }
   const firstTermDrafts = p.lessons.filter(lesson => lesson.term === '1st Term');
-  assert.equal(firstTermDrafts.length, 15);
+  assert.equal(firstTermDrafts.length, 17);
 });
 
 test('Yoruba drafts preserve under-dotted letters, tone marks and the taught sound inventories', () => {
@@ -68,7 +73,7 @@ test('Uncertain source wording is tracked instead of being silently repaired', (
 
 test('New lesson drafts are not misrepresented as approved or verified', () => {
   const drafts = p.lessons.filter(lesson => lesson.id.startsWith('SUP-SS1-YORUBA-T1-W'));
-  assert.equal(drafts.length, 15);
+  assert.equal(drafts.length, 17);
   for (const lesson of drafts) {
     assert.equal(lesson.state.content_approval, 'PENDING', lesson.id);
     assert.equal(lesson.state.implementation, 'DRAFT', lesson.id);
@@ -102,4 +107,6 @@ test('Yoruba package retains explicit source-expert, visual and classroom verifi
   assert(p.open_items.some(item => item.id === 'YORUBA-T1-W04-ASA-RECIPE-DETAIL' && item.blocks_delivery));
   assert(p.open_items.some(item => item.id === 'YORUBA-T1-W05-TONE-EXAMPLES' && item.blocks_delivery));
   assert(p.open_items.some(item => item.id === 'YORUBA-T1-W05-LIT-SET-TEXT' && item.blocks_delivery));
+  assert(p.open_items.some(item => item.id === 'YORUBA-T1-W06-EDE-SYLLABIC-NASAL' && item.blocks_delivery));
+  assert(p.open_items.some(item => item.id === 'YORUBA-T1-W06-ASA-PROVERB-REVIEW' && item.blocks_delivery));
 });
