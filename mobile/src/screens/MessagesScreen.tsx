@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import {
   View, Text, StyleSheet, FlatList, TouchableOpacity,
-  KeyboardAvoidingView, Platform, Alert,
+  KeyboardAvoidingView, Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRoute } from '@react-navigation/native';
@@ -96,7 +96,7 @@ export default function MessagesScreen() {
   }, [routeContact?.id]);
 
   const sendMessage = async () => {
-    if (!body.trim() || !activeContact || sending) return;
+    if (!body.trim() || !activeContact || sending || threadLoading || !!threadError) return;
     const outgoing = body.trim();
     setSending(true);
     setSendError('');
@@ -133,7 +133,7 @@ export default function MessagesScreen() {
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         {/* Header */}
         <View style={styles.threadHeader}>
-          <TouchableOpacity onPress={() => setActiveContact(null)} style={{ padding: 6 }}>
+          <TouchableOpacity onPress={() => { threadRequestRef.current += 1; setThreadLoading(false); setActiveContact(null); }} style={{ padding: 6 }}>
             <Ionicons name="arrow-back" size={22} color={Colors.white} />
           </TouchableOpacity>
           <View style={styles.threadAvatar}>
@@ -184,7 +184,7 @@ export default function MessagesScreen() {
             multiline
             numberOfLines={2}
           />
-          <TouchableOpacity style={[styles.sendBtn, (!body.trim() || sending) && { opacity: 0.5 }]} onPress={sendMessage} disabled={sending || !body.trim()} accessibilityRole='button' accessibilityLabel='Send message'>
+          <TouchableOpacity style={[styles.sendBtn, (!body.trim() || sending) && { opacity: 0.5 }]} onPress={sendMessage} disabled={sending || threadLoading || !!threadError || !body.trim()} accessibilityRole='button' accessibilityLabel='Send message'>
             <Ionicons name="send" size={20} color={Colors.white} />
           </TouchableOpacity>
         </View>
