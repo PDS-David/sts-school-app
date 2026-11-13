@@ -34,7 +34,7 @@ File: `backend/src/db/ss23/subjects/agricultural-science.json`
 
 - Package data is added to the SS23 package-contract test suite. The integration test parses the actual JSON file and asserts that its status and lesson approval remain pending and all blockers prevent delivery.
 - The package schema enforces class/mode separation, source/hash binding, body hashes, provenance roles, minimum body length, answer explanations and marking totals.
-- The Node/backend workflow is defined in PR #794's base branch and should run for this stacked PR. No successful CI result is claimed until the workflow reports it.
+- The Node/backend workflow is defined in PR #794's base branch and should run for this stacked PR. GitHub Actions run 43471333725 passed: backend TypeScript typecheck and all 13 SS23 Node tests succeeded.
 - No student-facing delivery route exists yet; accessibility has not been tested.
 
 ## Exact next action
