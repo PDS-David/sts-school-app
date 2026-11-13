@@ -36,7 +36,7 @@ Worker branch: `agent/frontend-role-dashboard-current-20261113`
 - `019de20a7a713b1eed06a341726b89dfd875511f` — reapply `mobile/src/screens/teacher/TeacherDashboardHomeScreen.tsx` recovery on current master.
 - `a89812f1dfeda8c26e0bf03f593c6d4e1532119a` — reapply `mobile/src/screens/teacher/TeacherAnalyticsScreen.tsx` recovery on current master.
 - `1a951e8bf34451c40ae3876e06793baad01796a2` — reapply `mobile/src/screens/admin/AdminDashboardHomeScreen.tsx` recovery on current master.
-- Checkpoint commit: pending.
+- Checkpoint commit: `4409815145ae4d07aecb4ec8f5fef8decbaf2a2b`.
 
 ## Verification
 - Static inspection confirms existing role-scoped overview and school-specific endpoints remain in use.
