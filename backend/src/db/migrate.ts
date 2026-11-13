@@ -130,7 +130,10 @@ async function applyAll(client: PoolClient, migrations: Migration[]): Promise<vo
 
   // A production database with a pre-existing schema must not be silently
   // adopted as version 0001. OPS-05 owns drift evidence and explicit adoption.
-  if (!applied.length) await assertNoUntrackedApplicationSchema(client);
+  if (!applied.length) {
+    await assertNoUntrackedApplicationSchema(client);
+    throw new Error('No baseline migration is recorded. Use --fresh only against an empty database, or complete OPS-05 drift review before adopting an existing database.');
+  }
   assertAppliedChecksums(migrations, applied);
   assertSequentialHistory(migrations, applied);
 
