@@ -2,7 +2,7 @@
 
 Task ID: SMM-005
 Status: IMPLEMENTED — stacked behind current-master OPS-01, calendar and achievements
-Base: `agent/student-achievements-rebased-20261113` (PR #743)
+PR base: `master` (this branch includes OPS-01 #737, calendar #740 and achievements #743 before announcements)
 Branch: `agent/announcements-admin-ui-rebased-20261113`
 
 ## Scope delivered
