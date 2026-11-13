@@ -404,9 +404,9 @@ export default function AdminUsersScreen() {
   return (
     <View style={styles.container}>
       <PageContainer style={{ padding: Spacing.sm, paddingBottom: 0 }}>
-        {!!loadError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry user list' variant='outline' size='sm' onPress={() => fetchUsers()} /></View>}
-        {!!schoolsError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{schoolsError}</Text><Btn label='Retry schools' variant='outline' size='sm' onPress={() => setSchoolsRetry(v => v + 1)} /></View>}
-        {!!lookupError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{lookupError}</Text><Btn label='Retry class/subject options' variant='outline' size='sm' onPress={() => setLookupRetry(v => v + 1)} /></View>}
+        {!!loadError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry user list' variant='outline' onPress={() => fetchUsers()} /></View>}
+        {!!schoolsError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{schoolsError}</Text><Btn label='Retry schools' variant='outline' onPress={() => setSchoolsRetry(v => v + 1)} /></View>}
+        {!!lookupError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{lookupError}</Text><Btn label='Retry class/subject options' variant='outline' onPress={() => setLookupRetry(v => v + 1)} /></View>}
         <TouchableOpacity style={styles.addBtn} onPress={openNew}>
           <Ionicons name="person-add" size={20} color={Colors.white} />
           <Text style={styles.addBtnText}>Add User</Text>
@@ -547,9 +547,9 @@ export default function AdminUsersScreen() {
       <Modal visible={modal} animationType="slide" onRequestClose={() => setModal(false)}>
         <ScrollView style={styles.modalWrapOuter} contentContainerStyle={styles.modalWrap} keyboardShouldPersistTaps="handled">
           <SectionHeader title={editUser ? 'Edit User' : 'New User'} />
-          {!!schoolsError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{schoolsError}</Text><Btn label='Retry schools' variant='outline' size='sm' onPress={() => setSchoolsRetry(v => v + 1)} /></View>}
+          {!!schoolsError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{schoolsError}</Text><Btn label='Retry schools' variant='outline' onPress={() => setSchoolsRetry(v => v + 1)} /></View>}
           {!!lookupLoading && <Text style={styles.expiryHint}>Loading class and subject options…</Text>}
-          {!!lookupError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{lookupError}</Text><Btn label='Retry class/subject options' variant='outline' size='sm' onPress={() => setLookupRetry(v => v + 1)} /></View>}
+          {!!lookupError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{lookupError}</Text><Btn label='Retry class/subject options' variant='outline' onPress={() => setLookupRetry(v => v + 1)} /></View>}
           {!editUser && !isNewClassTeacher && (
             <Input label="Username" value={form.username} onChangeText={v => setForm(f => ({ ...f, username: v }))} autoCapitalize="none" />
           )}
