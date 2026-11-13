@@ -26,6 +26,7 @@ Worker branch: `agent/frontend-notification-recovery-latest2-20261113`
 ## Commits
 - `b22e27c11147ce432663f5474c38a60b659867cd` — refresh notification recovery in `mobile/src/components/NotificationsContext.tsx` on latest master.
 - `e39919c435d1aa5e2e11028a9d84fc11ccf29aa5` — refresh notification recovery in `mobile/src/screens/NotificationsScreen.tsx` on latest master.
+- `bc48657d9575e7de7e42003d67c9583af2796b5d` — remove the unsupported Btn size prop reported by mobile TypeScript CI.
 - Checkpoint commit: `0820b7607c530fbb19f264f01d542633ab5d8bcc`.
 
 ## Verification
