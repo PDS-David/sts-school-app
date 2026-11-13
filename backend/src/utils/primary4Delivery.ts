@@ -309,7 +309,7 @@ export async function retireStalePrimary4Cache(
      ),
      updated AS (
        UPDATE topics t SET
-         summary=CASE WHEN $4 THEN NULL ELSE t.summary END,
+         summary=CASE WHEN $4 OR EXISTS (SELECT 1 FROM stale) THEN NULL ELSE t.summary END,
          generated_assessment_id=CASE WHEN EXISTS (SELECT 1 FROM stale) THEN NULL ELSE t.generated_assessment_id END
        FROM target
        WHERE t.id=target.id
