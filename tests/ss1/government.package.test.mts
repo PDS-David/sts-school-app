@@ -240,8 +240,8 @@ test('Week Nine political socialization replacement accounts for all 11 source e
 
   const correction = p.delivery_corrections.find(entry => entry.id === 'CORR-GOV-T1-W09-ROW-REPLACEMENT');
   assert(correction);
-  assert.equal(correction.source_lesson_id, 'SS1-SRC-40ce7dcaf672:BODY:86deb98f3e2a279c5b0db3740445df80f6791965cb44d496702e2e34ed3046f2');
-  assert.equal(correction.body_sha256, '86deb98f3e2a279c5b0db3740445df80f6791965cb44d496702e2e34ed3046f2');
+  assert.equal(correction.source_lesson_id, 'SS1-SRC-40ce7dcaf672:BODY:7b1d7ed3a759c954f4e04651fa26320b0d3c0b1977027cd18a0317ef08d3d151');
+  assert.equal(correction.body_sha256, '7b1d7ed3a759c954f4e04651fa26320b0d3c0b1977027cd18a0317ef08d3d151');
   assert.equal(correction.replacement_id, lesson.id);
   assert.equal(correction.evidence.objective_scope_audit.practice_item_count, 11);
   assert.equal(correction.evidence.objective_scope_audit.practice_total_marks, 39);
