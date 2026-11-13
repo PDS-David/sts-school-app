@@ -5,7 +5,8 @@ import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { audit } from '../utils/audit.js';
 import { checkTeacherDeleteScope, checkTeacherRosterScope } from '../utils/scope.js';
-import { findOrCreateParent, linkParentToStudent, type ProvisionedParent } from '../utils/parentProvisioning.js';
+import { resolveStudentRosterScope } from '../utils/studentRosterScope.js';
+import { createStudentWithParent } from '../utils/parentProvisioning.js';
 
 const router = Router();
 router.use(requireAuth);
@@ -15,11 +16,13 @@ router.get('/', requirePerm('students.read'), async (req, res) => {
   const { school_code, class_name, search } = req.query as Record<string, string>;
   const user = req.user!;
 
-  // Scope: teachers see their own class; admin sees all. finance_admin also
-  // has school_code=NULL and needs to pick a student when creating an
-  // invoice, so it gets the same explicit-school-code override as admin.
-  const effectiveSchool = (user.role === 'admin' || user.role === 'finance_admin') ? (school_code ?? user.school_code) : user.school_code;
-  const effectiveClass  = user.role === 'teacher' ? (user.assigned_class ?? class_name) : class_name;
+  // Resolve role-specific roster scope before constructing SQL. Finance
+  // administrators must explicitly select a campus; teachers can never widen
+  // their school/class scope with query parameters.
+  const scope = resolveStudentRosterScope(user, { school_code, class_name });
+  if ('error' in scope) return res.status(scope.status).json({ error: scope.error });
+  const effectiveSchool = scope.schoolCode;
+  const effectiveClass = scope.className;
 
   // A teacher who is a class teacher (assigned_class set) is always pinned
   // to their own class above, same as before — a hybrid teacher (also has
@@ -162,11 +165,12 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
     gender:           z.enum(['M','F','Other']).optional(),
     date_of_birth:    z.string().optional(),
     admission_number: z.string().optional(),
-    // Optional — when given, a parent account is found (by phone, scoped to
-    // this school — siblings share one account) or auto-created and linked.
-    // See utils/parentProvisioning.ts.
     parent_name:      z.string().optional(),
-    parent_phone:     z.string().optional(),
+    parent_phone: z.string().optional().refine((value) => {
+      if (!value?.trim()) return true;
+      const digits = value.replace(/\D/g, '');
+      return digits.length >= 10 && digits.length <= 15;
+    }, { message: 'Parent phone must contain between 10 and 15 digits' }),
     parent_email:     z.string().optional(),
   });
   const parsed = schema.safeParse(req.body);
@@ -176,25 +180,36 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
   const scopeError = checkTeacherRosterScope(req.user!, { school_code: d.school_code, class_name: d.class_name });
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
-  const { rows } = await query(
-    `INSERT INTO students(full_name,class_name,school_code,gender,date_of_birth,admission_number)
-     VALUES($1,$2,$3,$4,$5,$6) RETURNING *`,
-    [d.full_name, d.class_name, d.school_code, d.gender ?? null, d.date_of_birth ?? null, d.admission_number ?? null],
-  );
-  await audit(req.user!, 'add_student', 'student', rows[0].id, d.full_name);
-
-  let parent: ProvisionedParent | undefined;
-  if (d.parent_phone?.trim()) {
-    parent = await findOrCreateParent(req.user!, {
+  const result = await createStudentWithParent(
+    {
+      full_name: d.full_name,
+      class_name: d.class_name,
+      school_code: d.school_code,
+      gender: d.gender ?? null,
+      date_of_birth: d.date_of_birth ?? null,
+      admission_number: d.admission_number ?? null,
+    },
+    d.parent_phone?.trim() ? {
       school_code: d.school_code,
       parent_name: d.parent_name ?? null,
       parent_phone: d.parent_phone,
       parent_email: d.parent_email ?? null,
-    });
-    await linkParentToStudent(parent.id, rows[0].id);
+    } : undefined,
+  );
+
+  const studentId = String(result.student.id);
+  await audit(req.user!, 'add_student', 'student', studentId, d.full_name);
+
+  let parent: { id: string; username: string; temporary_password?: string } | undefined;
+  if (result.parent) {
+    const { created, ...parentDetails } = result.parent;
+    parent = parentDetails;
+    if (created) {
+      await audit(req.user!, 'add_parent_auto', 'user', parent.id, `auto-provisioned for phone ${d.parent_phone}`);
+    }
   }
 
-  return res.status(201).json({ student: rows[0], parent });
+  return res.status(201).json({ student: result.student, parent });
 });
 
 // ── PUT /students/:id ─────────────────────────────────────────────────────────

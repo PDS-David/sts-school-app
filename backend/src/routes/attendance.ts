@@ -1,9 +1,10 @@
 import { Router } from 'express';
 import { query } from '../db/pool.js';
+import { saveAttendanceBulk } from '../utils/attendanceWrites.js';
 import { requireAuth, requirePerm } from '../middleware/auth.js';
 import { hasPerm } from '../utils/rbac.js';
 import { audit } from '../utils/audit.js';
-import { checkTeacherStudentScope } from '../utils/scope.js';
+import { checkTeacherStudentScope, checkTermSchoolScope } from '../utils/scope.js';
 
 const router = Router();
 router.use(requireAuth);
@@ -108,13 +109,7 @@ router.put('/bulk', requirePerm('attendance.write'), async (req, res) => {
     }
   }
 
-  for (const e of entries) {
-    await query(
-      `INSERT INTO attendance(student_id,term_id,days_present) VALUES($1,$2,$3)
-       ON CONFLICT(student_id,term_id) DO UPDATE SET days_present=$3`,
-      [e.student_id, term_id, e.days_present],
-    );
-  }
+  await saveAttendanceBulk(entries, term_id);
   // Wasn't audited at all before this pass, same gap as the single route
   // above — one summary entry per batch, not one per student.
   await audit(req.user!, 'save_attendance_bulk', 'attendance', undefined, `${entries.length} student(s), term ${term_id}`);
@@ -151,9 +146,13 @@ router.get('/class-records/:student_id/:term_id', async (req, res) => {
     return res.status(403).json({ error: 'Access denied' });
   }
 
+  const parsedTermId = Number(term_id);
+  const termScopeError = await checkTermSchoolScope(student.school_code, parsedTermId);
+  if (termScopeError) return res.status(termScopeError.status).json({ error: termScopeError.error });
+
   const { rows } = await query(
     `SELECT * FROM class_records WHERE student_id=$1 AND term_id=$2`,
-    [student_id, term_id],
+    [student_id, parsedTermId],
   );
   return res.json({ class_record: rows[0] ?? null });
 });

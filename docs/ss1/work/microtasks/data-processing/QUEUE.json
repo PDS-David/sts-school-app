@@ -31,7 +31,8 @@
     "DP-INV-T3 (2026-11-13) opened the exact 3rd Term Data Processing DOCX from the user-attached composite archive; archive and member hashes verified against SOURCE_ASSIGNMENTS.csv. Subject/class header confirms Data Processing, SS1. Inventory DP-INV-T3.md records scheme and nine actual body weeks, assessments, legacy software/UI claims, formula validation flags and 10 screenshot locations. DOCX inspected with python-docx 1.2.0: 588 paragraphs, no Word tables, 10 inline images/media parts, no equations/hyperlinks. Embedded screenshot at paragraph 461 shows student-like names and ID numbers; a separate preservation task requires synthetic/redacted replacement before learner-facing reuse. 25 bounded follow-up tasks appended: nine week indexes, opening scheme, revision/exam marker, two preservation tasks, two factual audits and ten visual dispositions. No subject package content or approvals changed; no tests/importer/device checks run. Testing deferred.",
     "DP-TEST-PACKAGE (2026-11-13): added tests/ss1/data-processing.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; current authored lesson body hash/objectives/practice/marking integrity without fabricated approval or verification; two PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and coverage reference/status boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed.",
     "DP-WK-T3-W01 (2026-11-13): source member hash verified; indexed original DOCX paragraphs 27–79. Added PARTIAL coverage for definition, basic features, functions and uses pending parsed-body binding; PARTIAL coverage for the bare MICROSOFT WORD heading (p43, no explanation); PARTIAL coverage for the Week 1 text-editor/Notepad question because Week 2 p92–95 identifies Notepad as a text editor. Recorded evaluation p45–47, general evaluation p57–61, reading p63–64, weekend MCQs p66–73 and theory p75–77. Added a blocking question-sequencing open item and tasks for sequence decision and lesson authoring. No Word-specific procedure or answers invented.",
-    "DP-PRE-T3 (2026-11-13): inspected original third-term Data Processing DOCX paragraphs 1–27. Recorded title, subject/class, WEEK/TOPIC header with trailing tabs, twelve scheme rows (initial Revision; Word Processing I–III; Spreadsheet I–III; Database Management I–III; Revision; Examination), three references, and first body marker WEEK ONE. Scheme rows are plain paragraphs with no WEEK <number> body marker, so no classify_marker rule or marker coverage entry is needed. Rows 2–10 map to body Weeks 1–9; rows 1,11,12 remain scheme-only."
+    "DP-PRE-T3 (2026-11-13): inspected original third-term Data Processing DOCX paragraphs 1–27. Recorded title, subject/class, WEEK/TOPIC header with trailing tabs, twelve scheme rows (initial Revision; Word Processing I–III; Spreadsheet I–III; Database Management I–III; Revision; Examination), three references, and first body marker WEEK ONE. Scheme rows are plain paragraphs with no WEEK <number> body marker, so no classify_marker rule or marker coverage entry is needed. Rows 2–10 map to body Weeks 1–9; rows 1,11,12 remain scheme-only.",
+    "DP-PRE-T1 (2026-11-13): recorded the hash-verified First Term opening block as preamble/scheme/reference material, mapped scheme rows 1-10 to exact body ranges/digests without creating coverage from scheme headings, preserved the existing row 1/2 coverage, and recorded the three bibliographic entries as unverified external references with a permission follow-up. Rows 11-12 remain with DP-MARK-T1-REVEXAM. No lesson, parser rule, approval or verification was invented; tests/importer/database/device checks deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -47,9 +48,9 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 12,
-    "BLOCKED": 2,
-    "PENDING": 67
+    "IMPLEMENTED_TESTING_DEFERRED": 14,
+    "BLOCKED": 4,
+    "PENDING": 65
   },
   "items": [
     {
@@ -347,8 +348,8 @@
         "DP-INV-T1",
         "DP-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (opening 1-81, scheme rows 49-71, references 75-81).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented on agent/data-processing from the hash-verified DP-INV-T1 inventory. The opening block lines 1-81 (SHA-256 07f34cdccb656a70155d2a989ffc5a737c39292a710d37021c16e7e6307c1d54) is recorded as preamble/scheme/reference material. The existing package source registration and alias establish the exact identity; existing row 1 and row 2 scheme coverage is retained. Added non-coverage verification evidence for scheme rows 1-10 mapped to exact week body ranges/digests and explicit drift, plus a nonblocking permission follow-up for the three references at lines 77, 79 and 81. No coverage or lesson was invented from scheme headings. Rows 11-12 remain with DP-MARK-T1-REVEXAM. See docs/ss1/work/microtasks/data-processing/DP-PRE-T1.md.",
       "completion_condition": "Identity, scheme rows and the three references are represented under the existing schema with exact provenance; rows 11-12 are left to the marker item; no lesson or coverage entry is invented from a scheme heading. Testing deferred by owner."
     },
     {
@@ -458,8 +459,8 @@
         "DP-INV-T1",
         "DP-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Week table, lines 435-581, SHA-256 23f33f0dfe418f06a5570aa13bc045679fcc1dab8de099cd55d87f70dd832c65; assessment blocks listed there).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in branch agent/data-processing-week-three-20261113. Package content commit b82a184a6e5e2dffcee1f53ccc960cf74cc4c102; open-item/task cross-reference correction 7ad5cb56546aed44b42bd2238bf52b62e62c8b02. Adds a new generation-of-computers supplement, objective/assessment coverage, proposed answers and open items for scheme drift, dated-generation review and reading rights. Testing remains deferred; see DP-WK-T1-W03.md. Exact body hash was recalculated from the serialized lesson body after CI found the previous stored digest included an extra trailing newline; corrected body_sha256=5a1696f3827eeefba9d577365add8514647ea0c2c89d9b44d80ca67a7bd9374f in package commit 0a8756dfb843ad653a56a0dc28bb0cfed345ae80. Await the rerun of the integrity/compiler workflow before returning the task to IMPLEMENTED_TESTING_DEFERRED. Automated PR checks now passed: package integrity 43454395135 SUCCESS; all-subject source-anchor/compiler audit 43454395359 SUCCESS. Independent owner content approval remains PENDING and lesson.state.verification remains DEFERRED; see the durable checkpoint.",
       "completion_condition": "Week 3 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
     },
     {
@@ -2998,6 +2999,78 @@
       "status": "PENDING",
       "implementation_reference": "Created by DP-WK-T3-W01 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-WK-T3-W01.md.",
       "completion_condition": "Preserve source text and sequence boundaries; do not invent Microsoft Word procedures or misclassify Notepad. Any new teaching text must be accurate, version-labelled and independently verified."
+    },
+    {
+      "id": "DP-OWNER-T1-W03-SCHEME-ALIGNMENT",
+      "kind": "OWNER_ACTION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "Week Three body lines 435–581; compare the scheme lines 49–51.",
+      "objective": "Confirm whether the Week Three 'Generations of Computers' section is an approved extension of the scheme's 'History of Computing' or whether the First Term scheme requires an authorised correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W03.md"
+      ],
+      "depends_on": [
+        "DP-WK-T1-W03"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Created by DP-WK-T1-W03; no scheme row explicitly names generations of computers.",
+      "completion_condition": "Owner/teacher confirms the intended scheme mapping. Do not silently change the source or merge distinct weekly topics."
+    },
+    {
+      "id": "DP-OWNER-T1-W03-READING-RIGHTS",
+      "kind": "OWNER_ACTION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "Week Three reading assignment, Mammoth lines 547–552.",
+      "objective": "Confirm the exact edition and reuse rights for 'A Handbook On Computer Studies' by Niyi Adekolegan, Chapter 2 pages 9–10.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W03.md"
+      ],
+      "depends_on": [
+        "DP-WK-T1-W03"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Created by DP-WK-T1-W03; the referenced book is not included in the owner-supplied archive.",
+      "completion_condition": "Owner confirms the exact title/edition and rights. Until then retain the reading pointer only."
     }
   ],
   "review": {
@@ -3013,8 +3086,6 @@
     }
   },
   "next_runnable": [
-    "DP-PRE-T1",
-    "DP-WK-T1-W03",
     "DP-WK-T1-W04",
     "DP-WK-T1-W05",
     "DP-WK-T1-W06",

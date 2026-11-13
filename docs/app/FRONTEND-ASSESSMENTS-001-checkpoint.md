@@ -4,8 +4,8 @@ Task ID: FRONTEND-ASSESSMENTS-001
 Status: IMPLEMENTED — awaiting PR review and CI; no runtime verification claimed
 Repository: `PDS-David/sts-school-app`
 Base branch: `master`
-Base commit: `6e98fa46c2ef400527c9615d5afff237a8b1f8fd`
-Worker branch: `agent/frontend-assessment-recovery-current-20261113`
+Base commit: `af406a3e73f811ec27f02ba3b7e19b51873664bc`
+Worker branch: `agent/frontend-assessment-recovery-latest-20261113`
 
 ## Baseline and ownership checks
 - Inspected current master commit and open PR list before changes.
@@ -41,11 +41,11 @@ Worker branch: `agent/frontend-assessment-recovery-current-20261113`
 - `mobile/src/api/client.ts`
 
 ## Commits
-- `d4f2c2296524f229d5956ad36213e4505dce2038` — API client immediate-response rules.
-- `12bf3ec18249ff20b697d68641fd06fe5b8bc34c` — assessment list recovery.
-- `66a6f5c7de25ed0705f9f25fb0cc0bd52f74d975` — student attempt/review recovery.
-- `4140a02a1218ad013677d0772c7ccdcb5b67165d` — admin authoring recovery and validation.
-- `8bfe30a8cf179fc1470628a9571b8a2a98e55886` — admin results recovery.
+- `ad63beb8184c2f05b7b64b3b0cdb0cc2168df236` — applied `mobile/src/api/client.ts` recovery changes on latest master.
+- `33d4f5693c3699381514adce559570a7e39311e8` — applied `mobile/src/screens/AssessmentsScreen.tsx` recovery changes on latest master.
+- `b598a2b8207ad8b31faebb91cd490ee8651cb46e` — applied `mobile/src/screens/TakeAssessmentScreen.tsx` recovery changes on latest master.
+- `a9b416aac68bb327b4fb1d76272f7c25b9cf3634` — applied `mobile/src/screens/CreateAssessmentScreen.tsx` recovery changes on latest master.
+- `1a79bfae53f76cec018bafbf6912621e55e51893` — applied `mobile/src/screens/AssessmentResultsScreen.tsx` recovery changes on latest master.
 - Checkpoint commit: `80f8846b7d6a8af5c2fbe29e27725c5f44e5499a`.
 
 ## Verification
@@ -64,4 +64,4 @@ Worker branch: `agent/frontend-assessment-recovery-current-20261113`
 - Verify admin creation, question-bank selection, publication, results navigation and essay grading on admin/teacher accounts. Confirm teacher access remains aligned with backend RBAC.
 
 ## Exact next action
-Compare this branch against current `master`, open a focused PR from this current-master branch, and continue the broader audit with notifications and parent/teacher/admin navigation.
+Open a focused PR from this latest-master branch and continue the broader audit with notifications and parent/teacher/admin navigation.

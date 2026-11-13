@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Alert, Modal, ScrollView, Switch } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, ScrollView, Switch } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../api/client';
 import { Card, Btn, Input, Loader, Empty, SectionHeader, Badge } from '../components/UI';
@@ -7,6 +7,7 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAuth } from '../api/AuthContext';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 import { PageContainer, useIsWide } from '../components/layout';
 
 // ══════════════════════════════════════════
@@ -17,6 +18,10 @@ export function TermsMgmtScreen({ navigation }: any) {
   const { selectedSchoolCode } = useAdminSchool();
   const [terms,   setTerms]   = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [saving, setSaving] = useState(false);
+  const [updatingCurrent, setUpdatingCurrent] = useState<number | null>(null);
+  const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
   const [modal,   setModal]   = useState(false);
   const [form,    setForm]    = useState({
     name: '', academic_year: '', school_code: '',
@@ -30,11 +35,14 @@ export function TermsMgmtScreen({ navigation }: any) {
 
   const fetch = async () => {
     setLoading(true);
+    setLoadError('');
+    setTerms([]);
     try {
       const { data } = await api.get('/academic/terms', { params: { school_code: selectedSchoolCode } });
-      setTerms(data.terms);
-    }
-    catch { } finally { setLoading(false); }
+      setTerms(data.terms ?? []);
+    } catch (e: any) {
+      setLoadError(e?.response?.data?.error ?? 'Could not load academic terms for the selected school.');
+    } finally { setLoading(false); }
   };
   // Re-fetch whenever admin switches which school they're viewing.
   useEffect(() => { fetch(); }, [selectedSchoolCode]);
@@ -45,28 +53,53 @@ export function TermsMgmtScreen({ navigation }: any) {
   };
 
   const handleSave = async () => {
-    if (!form.name || !form.academic_year) { Alert.alert('Name and academic year required'); return; }
+    if (saving) return;
+    if (!form.name.trim() || !form.academic_year.trim() || !form.school_code.trim()) { setInfoDialog({ title: 'Required fields', message: 'Enter the term name, academic year and school code.' }); return; }
+    const days = form.days_opened.trim() ? Number(form.days_opened) : 0;
+    if (!Number.isInteger(days) || days < 0) { setInfoDialog({ title: 'Invalid school days', message: 'Days school opened must be a whole number of zero or more.' }); return; }
+    const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+    const validDate = (value: string) => {
+      if (!value) return true;
+      if (!datePattern.test(value)) return false;
+      const [year, month, day] = value.split('-').map(Number);
+      const date = new Date(year, month - 1, day);
+      return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+    };
+    if (!validDate(form.start_date)) { setInfoDialog({ title: 'Invalid start date', message: 'Enter a real calendar date in YYYY-MM-DD format.' }); return; }
+    if (!validDate(form.end_date)) { setInfoDialog({ title: 'Invalid end date', message: 'Enter a real calendar date in YYYY-MM-DD format.' }); return; }
+    if (form.start_date && form.end_date && form.end_date < form.start_date) { setInfoDialog({ title: 'Invalid date range', message: 'The end date must not be earlier than the start date.' }); return; }
+    setSaving(true);
     try {
-      await api.post('/academic/terms', { ...form, is_current: isCurrent, days_opened: Number(form.days_opened) || 0 });
+      await api.post('/academic/terms', { ...form, name: form.name.trim(), academic_year: form.academic_year.trim(), is_current: isCurrent, days_opened: days });
       setModal(false);
-      fetch();
-    } catch (e: any) { Alert.alert('Error', e?.response?.data?.error ?? 'Save failed'); }
+      await fetch();
+    } catch (e: any) { setInfoDialog({ title: 'Could not save term', message: e?.response?.data?.error ?? 'Save failed. Check your connection and try again.' }); }
+    finally { setSaving(false); }
   };
 
   const setCurrentTerm = async (t: any) => {
+    if (updatingCurrent !== null) return;
+    setUpdatingCurrent(t.id);
     try {
       await api.put(`/academic/terms/${t.id}`, { is_current: true });
-      fetch();
+      await fetch();
     } catch (e: any) {
-      Alert.alert('Error', e?.response?.data?.error ?? 'Could not set current term');
-    }
+      setInfoDialog({ title: 'Could not set current term', message: e?.response?.data?.error ?? 'Check your connection and try again.' });
+    } finally { setUpdatingCurrent(null); }
   };
 
-  if (loading) return <Loader />;
+  if (loading && terms.length === 0) return <Loader />;
+  if (loadError && terms.length === 0) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={loadError} />
+      <Btn label='Retry terms' variant='outline' onPress={() => fetch()} />
+    </View>
+  );
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <PageContainer style={{ padding: Spacing.sm, paddingBottom: 0 }}>
+        {!!loadError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry terms' variant='outline' onPress={() => fetch()} /></View>}
         <TouchableOpacity style={styles.addBtn} onPress={openAddModal}>
           <Ionicons name="add-circle" size={20} color={Colors.white} />
           <Text style={styles.addBtnTxt}>Add Term</Text>
@@ -79,7 +112,7 @@ export function TermsMgmtScreen({ navigation }: any) {
         // See AdminUsersScreen.tsx's FlatList for why this is set explicitly.
         removeClippedSubviews={false}
         contentContainerStyle={{ padding: Spacing.sm, ...(isWide ? { alignItems: 'center' as const } : null) }}
-        ListEmptyComponent={<Empty message="No terms created yet" />}
+        ListEmptyComponent={<Empty message={loadError ? 'Terms could not be loaded.' : 'No terms created yet'} />}
         renderItem={({ item: t }) => (
           <PageContainer style={{ width: '100%' }}>
             <Card>
@@ -91,8 +124,8 @@ export function TermsMgmtScreen({ navigation }: any) {
                 </View>
                 {t.is_current
                   ? <Badge label="CURRENT" color={Colors.success} />
-                  : <TouchableOpacity onPress={() => setCurrentTerm(t)} style={styles.setCurrentBtn}>
-                      <Text style={styles.setCurrentTxt}>Set Current</Text>
+                  : <TouchableOpacity onPress={() => setCurrentTerm(t)} style={styles.setCurrentBtn} disabled={updatingCurrent !== null} accessibilityRole='button' accessibilityLabel={`Set ${t.name} ${t.academic_year} as current term`}>
+                      <Text style={styles.setCurrentTxt}>{updatingCurrent === t.id ? 'Setting…' : 'Set Current'}</Text>
                     </TouchableOpacity>
                 }
               </View>
@@ -117,10 +150,11 @@ export function TermsMgmtScreen({ navigation }: any) {
           </View>
           <View style={{ flexDirection: 'row', gap: Spacing.sm, marginTop: Spacing.md }}>
             <Btn label="Cancel" onPress={() => setModal(false)} variant="outline" style={{ flex: 1 }} />
-            <Btn label="Save"   onPress={handleSave}            style={{ flex: 1 }} />
+            <Btn label={saving ? 'Saving…' : 'Save'} onPress={handleSave} loading={saving} disabled={saving} style={{ flex: 1 }} />
           </View>
         </ScrollView>
       </Modal>
+      <ConfirmDialog visible={!!infoDialog} title={infoDialog?.title ?? ''} message={infoDialog?.message ?? ''} hideCancel onConfirm={() => setInfoDialog(null)} onCancel={() => setInfoDialog(null)} />
     </View>
   );
 }
@@ -135,6 +169,10 @@ export function SubjectsMgmtScreen({ navigation }: any) {
   const isWide = useIsWide();
   const [subjects, setSubjects] = useState<any[]>([]);
   const [loading,  setLoading]  = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
+  const [deleteConfirm, setDeleteConfirm] = useState<{ id: number; name: string } | null>(null);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
   const [name,     setName]     = useState('');
   const [code,     setCode]     = useState('');
   const [saving,   setSaving]   = useState(false);
@@ -149,48 +187,51 @@ export function SubjectsMgmtScreen({ navigation }: any) {
 
   const fetch = async () => {
     setLoading(true);
+    setLoadError('');
+    setSubjects([]);
     try {
       const { data } = await api.get('/academic/subjects', { params: { school_code: selectedSchoolCode ?? undefined } });
-      setSubjects(data.subjects);
-    }
-    catch { } finally { setLoading(false); }
+      setSubjects(data.subjects ?? []);
+    } catch (e: any) {
+      setLoadError(e?.response?.data?.error ?? 'Could not load subjects for the selected school.');
+    } finally { setLoading(false); }
   };
   useEffect(() => { fetch(); }, [selectedSchoolCode]);
 
   const handleAdd = async () => {
-    if (!name.trim()) { Alert.alert('Subject name required'); return; }
+    if (saving) return;
+    if (!name.trim()) { setInfoDialog({ title: 'Subject name required', message: 'Enter a subject name before adding it.' }); return; }
     setSaving(true);
     try {
       await api.post('/academic/subjects', { name: name.trim(), code: code.trim(), school_code: selectedSchoolCode ?? undefined });
-      setName(''); setCode(''); fetch();
-    }
-    catch (e: any) { Alert.alert('Error', e?.response?.data?.error ?? 'Failed'); }
+      setName(''); setCode(''); await fetch();
+    } catch (e: any) { setInfoDialog({ title: 'Could not add subject', message: e?.response?.data?.error ?? 'Check your connection and try again.' }); }
     finally { setSaving(false); }
   };
 
-  const handleDelete = (id: number) => {
-    Alert.alert(
-      'Delete subject?',
-      'This is blocked if any scores, materials, questions, or assessments have already been recorded against it — deleting only works for a subject with no history.',
-      [
-        { text: 'Cancel', style: 'cancel' },
-        { text: 'Delete', style: 'destructive', onPress: async () => {
-          try {
-            await api.delete(`/academic/subjects/${id}`);
-            fetch();
-          } catch (e: any) {
-            Alert.alert('Error', e?.response?.data?.error ?? 'Could not delete this subject');
-          }
-        }},
-      ],
-    );
+  const handleDelete = (subject: any) => {
+    setDeleteConfirm({ id: subject.id, name: subject.name });
   };
 
-  if (loading) return <Loader />;
+  const confirmDelete = async () => {
+    if (!deleteConfirm || deletingId !== null) return;
+    const subject = deleteConfirm;
+    setDeletingId(subject.id);
+    setDeleteConfirm(null);
+    try {
+      await api.delete(`/academic/subjects/${subject.id}`);
+      await fetch();
+    } catch (e: any) {
+      setInfoDialog({ title: 'Could not delete subject', message: e?.response?.data?.error ?? 'This subject may already have academic records. Check and try again.' });
+    } finally { setDeletingId(null); }
+  };
+
+  if (loading && subjects.length === 0) return <Loader />;
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <PageContainer style={{ padding: Spacing.sm }}>
+        {!!loadError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry subjects' variant='outline' onPress={() => fetch()} /></View>}
         <Card>
           <SectionHeader title="Add Subject" />
           <View style={isWide ? styles.filterRow : undefined}>
@@ -201,7 +242,7 @@ export function SubjectsMgmtScreen({ navigation }: any) {
               <Input label="Code (optional)" value={code} onChangeText={setCode} placeholder="e.g. MTH" />
             </View>
           </View>
-          <Btn label={saving ? 'Adding…' : 'Add Subject'} onPress={handleAdd} loading={saving} />
+          <Btn label={saving ? 'Adding…' : 'Add Subject'} onPress={handleAdd} loading={saving} disabled={saving} />
           {!isAdmin && (
             <Text style={styles.hint}>You can add subjects here. Removing a subject requires an admin.</Text>
           )}
@@ -213,14 +254,14 @@ export function SubjectsMgmtScreen({ navigation }: any) {
         // See AdminUsersScreen.tsx's FlatList for why this is set explicitly.
         removeClippedSubviews={false}
         contentContainerStyle={{ paddingHorizontal: Spacing.sm, ...(isWide ? { alignItems: 'center' as const } : null) }}
-        ListEmptyComponent={<Empty message="No subjects yet" />}
+        ListEmptyComponent={<Empty message={loadError ? 'Subjects could not be loaded.' : 'No subjects yet'} />}
         renderItem={({ item: s }) => (
           <PageContainer style={{ width: '100%' }}>
             <View style={styles.subRow}>
               <Text style={styles.subName}>{s.name}</Text>
               {s.code && <Text style={styles.subCode}>{s.code}</Text>}
               {isAdmin && (
-                <TouchableOpacity onPress={() => handleDelete(s.id)} style={{ padding: 6 }}>
+                <TouchableOpacity onPress={() => handleDelete(s)} style={{ padding: 6 }} accessibilityRole='button' accessibilityLabel={`Delete subject ${s.name}`} disabled={deletingId !== null}>
                   <Ionicons name="trash-outline" size={18} color={Colors.error} />
                 </TouchableOpacity>
               )}
@@ -228,6 +269,8 @@ export function SubjectsMgmtScreen({ navigation }: any) {
           </PageContainer>
         )}
       />
+      <ConfirmDialog visible={!!infoDialog} title={infoDialog?.title ?? ''} message={infoDialog?.message ?? ''} hideCancel onConfirm={() => setInfoDialog(null)} onCancel={() => setInfoDialog(null)} />
+      <ConfirmDialog visible={!!deleteConfirm} title='Delete subject?' message={`Delete ${deleteConfirm?.name ?? 'this subject'}? This is blocked if scores, materials, questions or assessments already reference it.`} confirmLabel='Delete' destructive onConfirm={confirmDelete} onCancel={() => setDeleteConfirm(null)} />
     </View>
   );
 }

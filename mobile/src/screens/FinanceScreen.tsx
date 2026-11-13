@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Alert, Modal, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 import api from '../api/client';
@@ -10,6 +10,7 @@ import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
 import { Card, Loader, Empty, Badge, Btn, Input, SectionHeader } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { PageContainer } from '../components/layout';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 
 const STATUS_COLOR: Record<string, string> = {
   unpaid: Colors.error, partial: Colors.warning, paid: Colors.success,
@@ -30,6 +31,13 @@ export default function FinanceScreen({ navigation }: any) {
   const [invoices,  setInvoices]  = useState<any[]>([]);
   const [feeItems,  setFeeItems]  = useState<any[]>([]);
   const [loading,   setLoading]   = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [updatingInvoiceId, setUpdatingInvoiceId] = useState<string | null>(null);
+  const [feeSaving, setFeeSaving] = useState(false);
+  const [invOptionsLoading, setInvOptionsLoading] = useState(false);
+  const [invOptionsError, setInvOptionsError] = useState('');
+  const [confirmPaid, setConfirmPaid] = useState<any>(null);
+  const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
 
   // Compact switcher lives in the native header now (finance_admin only —
   // parent has no school to switch), not as a full-width block in the
@@ -55,45 +63,68 @@ export default function FinanceScreen({ navigation }: any) {
     const invUrl = isParent && selectedWardId
       ? `/finance/invoices?student_id=${selectedWardId}`
       : '/finance/invoices';
+    setLoading(true);
+    setLoadError('');
+    setInvoices([]);
+    setFeeItems([]);
+    const errors: string[] = [];
     try {
-      const [inv, fee] = await Promise.all([
-        api.get(invUrl),
-        // finance_admin has no school of its own — fee items are always
-        // school-scoped server-side, so it needs to say which school
-        // explicitly (via the switcher) or this comes back empty.
-        api.get('/finance/fee-items', { params: { school_code: isFinanceAdmin ? (selectedSchoolCode ?? undefined) : undefined } }),
-      ]);
-      setInvoices(inv.data.invoices ?? []);
-      setFeeItems(fee.data.fee_items ?? []);
-    } catch { } finally { setLoading(false); }
+      const { data } = await api.get(invUrl);
+      setInvoices(data.invoices ?? []);
+    } catch { errors.push('invoices'); }
+    try {
+      // finance_admin has no school of its own — fee items are school-scoped.
+      const { data } = await api.get('/finance/fee-items', { params: { school_code: isFinanceAdmin ? (selectedSchoolCode ?? undefined) : undefined } });
+      setFeeItems(data.fee_items ?? []);
+    } catch { errors.push('fee schedule'); }
+    if (errors.length) setLoadError(`Could not load ${errors.join(' and ')}. Check your connection and retry.`);
+    setLoading(false);
   };
   useEffect(() => { fetch(); }, [selectedWardId, selectedSchoolCode]);
 
-  const markPaid = async (id: string) => {
-    // Moved off /admin/finance/... — finance is its own path now, gated to
-    // finance_admin only (routes/finance.ts).
-    await api.put(`/finance/invoices/${id}/status`, { status: 'paid' });
-    fetch();
+  const markPaid = async () => {
+    if (!confirmPaid || updatingInvoiceId !== null) return;
+    const invoice = confirmPaid;
+    setConfirmPaid(null);
+    setUpdatingInvoiceId(invoice.id);
+    try {
+      await api.put(`/finance/invoices/${invoice.id}/status`, { status: 'paid' });
+      await fetch();
+      setInfoDialog({ title: 'Payment updated', message: `Invoice for ${invoice.student_name} has been marked as paid.` });
+    } catch (e: any) {
+      setInfoDialog({ title: 'Could not update payment', message: e?.response?.data?.error ?? 'Please check your connection and try again.' });
+    } finally {
+      setUpdatingInvoiceId(null);
+    }
   };
 
   const handleSaveFeeItem = async () => {
-    if (!feeForm.name || !feeForm.amount) { Alert.alert('Name and amount required'); return; }
+    if (feeSaving) return;
+    const amount = Number(feeForm.amount);
+    if (!feeForm.name.trim() || !feeForm.amount.trim()) { setInfoDialog({ title: 'Required fields', message: 'Enter a fee name and amount.' }); return; }
+    if (!Number.isFinite(amount) || amount <= 0) { setInfoDialog({ title: 'Invalid amount', message: 'Enter a valid amount greater than zero.' }); return; }
+    if (!selectedSchoolCode) { setInfoDialog({ title: 'Select a school', message: 'Choose a school before creating a fee item.' }); return; }
+    setFeeSaving(true);
     try {
       await api.post('/finance/fee-items', {
-        name: feeForm.name,
-        amount: Number(feeForm.amount),
-        class_name: feeForm.class_name || null,
+        name: feeForm.name.trim(),
+        amount,
+        class_name: feeForm.class_name.trim() || null,
         school_code: selectedSchoolCode,
       });
       setFeeModal(false);
       setFeeForm({ name: '', amount: '', class_name: '' });
-      fetch();
-    } catch (e: any) { Alert.alert('Error', e?.response?.data?.error ?? 'Save failed'); }
+      await fetch();
+      setInfoDialog({ title: 'Fee item created', message: 'The fee item is now available in this school’s fee schedule.' });
+    } catch (e: any) { setInfoDialog({ title: 'Could not save fee item', message: e?.response?.data?.error ?? 'Save failed. Check your connection and try again.' }); }
+    finally { setFeeSaving(false); }
   };
 
-  const openInvoiceModal = async () => {
-    setInvForm({ student_id: '', term_id: '', fee_item_ids: [] });
-    setInvModal(true);
+  const loadInvoiceOptions = async () => {
+    setInvOptionsLoading(true);
+    setInvOptionsError('');
+    setStudents([]);
+    setTerms([]);
     try {
       const [s, t] = await Promise.all([
         api.get('/students', { params: { school_code: selectedSchoolCode ?? undefined } }),
@@ -101,7 +132,19 @@ export default function FinanceScreen({ navigation }: any) {
       ]);
       setStudents(s.data.students ?? []);
       setTerms(t.data.terms ?? []);
-    } catch { Alert.alert('Error', 'Could not load students/terms for this school.'); }
+    } catch (e: any) {
+      setInvOptionsError(e?.response?.data?.error ?? 'Could not load students and terms for this school. Retry before creating an invoice.');
+    } finally { setInvOptionsLoading(false); }
+  };
+
+  const openInvoiceModal = () => {
+    if (isFinanceAdmin && !selectedSchoolCode) {
+      setInfoDialog({ title: 'Select a school', message: 'Choose a school before creating an invoice.' });
+      return;
+    }
+    setInvForm({ student_id: '', term_id: '', fee_item_ids: [] });
+    setInvModal(true);
+    loadInvoiceOptions();
   };
 
   const toggleFeeItem = (id: number) => {
@@ -118,8 +161,13 @@ export default function FinanceScreen({ navigation }: any) {
     .reduce((sum, f) => sum + Number(f.amount), 0);
 
   const handleCreateInvoice = async () => {
+    if (saving) return;
+    if (invOptionsLoading || invOptionsError || !students.length || !terms.length) {
+      setInfoDialog({ title: 'Invoice options unavailable', message: 'Load the current school’s students and terms before creating an invoice.' });
+      return;
+    }
     if (!invForm.student_id || !invForm.term_id || invForm.fee_item_ids.length === 0) {
-      Alert.alert('Select a student, a term, and at least one fee item.');
+      setInfoDialog({ title: 'Incomplete invoice', message: 'Select a student, a term, and at least one fee item.' });
       return;
     }
     setSaving(true);
@@ -130,9 +178,10 @@ export default function FinanceScreen({ navigation }: any) {
         fee_item_ids: invForm.fee_item_ids,
       });
       setInvModal(false);
-      fetch();
+      await fetch();
+      setInfoDialog({ title: 'Invoice created', message: 'The invoice has been created for the selected student and term.' });
     } catch (e: any) {
-      Alert.alert('Error', e?.response?.data?.error ?? 'Could not create invoice');
+      setInfoDialog({ title: 'Could not create invoice', message: e?.response?.data?.error ?? 'Check your connection and try again.' });
     } finally {
       setSaving(false);
     }
@@ -146,12 +195,18 @@ export default function FinanceScreen({ navigation }: any) {
         <Text style={styles.wardLabel}>Showing fees for {selectedWard.full_name}</Text>
       )}
       <PageContainer style={{ padding: Spacing.sm, flex: 1 }}>
+        {loadError ? (
+          <Card>
+            <Text style={styles.loadError}>{loadError}</Text>
+            <Btn label="Retry loading" onPress={() => { setLoading(true); fetch(); }} variant="outline" />
+          </Card>
+        ) : null}
         {/* Fee Schedule */}
         <Card>
           <View style={styles.sectionRow}>
             <SectionHeader title="Fee Schedule" />
             {isFinanceAdmin && (
-              <TouchableOpacity onPress={() => setFeeModal(true)} style={styles.addBtn}>
+              <TouchableOpacity onPress={() => setFeeModal(true)} style={styles.addBtn} accessibilityRole='button' accessibilityLabel='Add fee item'>
                 <Ionicons name="add" size={20} color={Colors.white} />
               </TouchableOpacity>
             )}
@@ -187,7 +242,7 @@ export default function FinanceScreen({ navigation }: any) {
               </View>
               <Text style={styles.invAmt}>₦{Number(inv.total).toLocaleString()}</Text>
               {isFinanceAdmin && inv.status !== 'paid' && (
-                <Btn label="Mark as Paid" onPress={() => markPaid(inv.id)} variant="outline" style={{ marginTop: Spacing.sm }} />
+                <Btn label={updatingInvoiceId === inv.id ? 'Updating…' : 'Mark as Paid'} onPress={() => setConfirmPaid(inv)} variant='outline' style={{ marginTop: Spacing.sm }} disabled={updatingInvoiceId !== null} loading={updatingInvoiceId === inv.id} accessibilityLabel={`Mark invoice for ${inv.student_name} as paid`} />
               )}
             </Card>
           )}
@@ -203,7 +258,7 @@ export default function FinanceScreen({ navigation }: any) {
           <Input label="Class (optional — blank means All)" value={feeForm.class_name} onChangeText={v => setFeeForm(f => ({ ...f, class_name: v }))} />
           <View style={styles.modalActions}>
             <Btn label="Cancel" onPress={() => setFeeModal(false)} variant="outline" style={{ flex: 1 }} />
-            <Btn label="Save" onPress={handleSaveFeeItem} style={{ flex: 1 }} />
+            <Btn label={feeSaving ? 'Saving…' : 'Save'} onPress={handleSaveFeeItem} style={{ flex: 1 }} disabled={feeSaving} loading={feeSaving} />
           </View>
         </ScrollView>
       </Modal>
@@ -212,6 +267,11 @@ export default function FinanceScreen({ navigation }: any) {
       <Modal visible={invModal} animationType="slide" onRequestClose={() => setInvModal(false)}>
         <ScrollView style={styles.modalWrapOuter} contentContainerStyle={styles.modalWrap} keyboardShouldPersistTaps="handled">
           <SectionHeader title="New Invoice" />
+          {invOptionsLoading ? <Loader /> : invOptionsError ? (
+            <View><Empty message={invOptionsError} /><Btn label='Retry students and terms' variant='outline' onPress={() => loadInvoiceOptions()} /></View>
+          ) : !students.length || !terms.length ? (
+            <Empty message='Students and academic terms must be available before an invoice can be created.' />
+          ) : null}
 
           <Text style={styles.filterLabel}>Student</Text>
           <View style={styles.pickerWrap}>
@@ -239,7 +299,7 @@ export default function FinanceScreen({ navigation }: any) {
           ) : feeItems.map(f => {
             const checked = invForm.fee_item_ids.includes(f.id);
             return (
-              <TouchableOpacity key={f.id} style={styles.checkRow} onPress={() => toggleFeeItem(f.id)}>
+              <TouchableOpacity key={f.id} style={styles.checkRow} onPress={() => toggleFeeItem(f.id)} accessibilityRole='checkbox' accessibilityState={{ checked }} accessibilityLabel={`${f.name}, ₦${Number(f.amount).toLocaleString()}`}>
                 <Ionicons name={checked ? 'checkbox' : 'square-outline'} size={22} color={checked ? Colors.primary : Colors.textSub} />
                 <Text style={styles.checkLabel}>{f.name} {f.class_name ? `(${f.class_name})` : '(All)'}</Text>
                 <Text style={styles.feeAmt}>₦{Number(f.amount).toLocaleString()}</Text>
@@ -254,15 +314,18 @@ export default function FinanceScreen({ navigation }: any) {
 
           <View style={styles.modalActions}>
             <Btn label="Cancel" onPress={() => setInvModal(false)} variant="outline" style={{ flex: 1 }} disabled={saving} />
-            <Btn label={saving ? 'Creating…' : 'Create Invoice'} onPress={handleCreateInvoice} style={{ flex: 1 }} disabled={saving} />
+            <Btn label={saving ? 'Creating…' : 'Create Invoice'} onPress={handleCreateInvoice} style={{ flex: 1 }} disabled={saving || invOptionsLoading || !!invOptionsError || !students.length || !terms.length || !feeItems.length} loading={saving} />
           </View>
         </ScrollView>
       </Modal>
+      <ConfirmDialog visible={!!confirmPaid} title='Mark invoice as paid?' message={confirmPaid ? `Mark ${confirmPaid.student_name}’s invoice of ₦${Number(confirmPaid.total).toLocaleString()} as paid?` : ''} confirmLabel='Mark as paid' onConfirm={markPaid} onCancel={() => setConfirmPaid(null)} />
+      <ConfirmDialog visible={!!infoDialog} title={infoDialog?.title ?? ''} message={infoDialog?.message ?? ''} hideCancel onConfirm={() => setInfoDialog(null)} onCancel={() => setInfoDialog(null)} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  loadError: { color: Colors.error, fontSize: Fonts.sizes.sm, marginBottom: Spacing.sm },
   wardLabel: { textAlign: 'center', color: Colors.primary, fontWeight: '700', fontSize: Fonts.sizes.sm, marginTop: Spacing.sm },
   sectionRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Spacing.sm },
   addBtn: { backgroundColor: Colors.primary, borderRadius: Radius.md, width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },

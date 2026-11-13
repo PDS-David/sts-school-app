@@ -1,0 +1,42 @@
+name: Mobile TypeScript
+
+on:
+  pull_request:
+    paths:
+      - 'mobile/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/mobile-typecheck.yml'
+  push:
+    branches:
+      - master
+      - 'agent/**'
+    paths:
+      - 'mobile/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/mobile-typecheck.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mobile-typecheck-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  typecheck:
+    name: TypeScript (mobile)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install workspace dependencies
+        run: npm ci
+      - name: Type-check mobile application
+        run: npm run mobile:typecheck

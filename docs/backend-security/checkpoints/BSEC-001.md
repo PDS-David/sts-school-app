@@ -1,0 +1,28 @@
+# Checkpoint — BSEC-001
+
+- **Task ID:** BSEC-001
+- **Title:** Enforce database-authoritative authorization claims on every authenticated request
+- **Status:** merged
+- **Owner:** ChatGPT implementation worker
+- **Base branch:** master
+- **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
+- **Working branch:** agent/backend-auth-claims-20261113
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/692
+- **Latest implementation commit:** 1e58cbc52e5e2006812cab16f21f220ece6c7620
+- **Checkpoint commit:** pending
+- **Changed files:**
+  - backend/src/middleware/auth.ts
+  - backend/src/utils/authClaims.ts
+  - backend/package.json
+  - tests/backend-auth-claims.test.mts
+  - .github/workflows/backend-auth-claims.yml
+  - docs/backend-security/checkpoints/BSEC-001.md
+- **Defect:** access tokens embed role, school, class and teacher-subject assignments. Admin user-edit routes can change these fields while requireAuth previously checked only active/expiry/deletion/pending-review state. A previously issued token could therefore continue using stale authorization claims until expiry.
+- **Implementation:** requireAuth now loads username, role, school, assigned class and teacher-subject IDs from the current users/teacher_subjects rows and replaces those mutable JWT claims before downstream route authorization. Existing account-state checks are preserved. The token subject remains the identity key.
+- **Regression coverage:** four cases cover administrator demotion, school/class reassignment, partial subject revocation and clearing all subject grants.
+- **Commits:** 627ac0565bdf4d23161f36fb5c8429962e16eef6; 30f0148487f63de5e47e70c7b54c76ec44f2f779; bf5d9f605ec94e5bcef771ca44f13c8798707134; e76e562523f3fded4b74809b68f1a4649cb44495; 16c9362114cc76c50aa619bc6d843437e04371bb; 1e58cbc52e5e2006812cab16f21f220ece6c7620; 9867b28f43bed14cb70385018b5f85c0095d7a0a.
+- **Verification:** GitHub Actions run https://github.com/PDS-David/sts-school-app/actions/runs/43444413357 completed successfully. Steps passed: locked workspace dependency installation, four authorization-claim regression tests, and backend TypeScript typecheck. Branch comparison: 7 commits ahead of master, 0 behind; six changed paths. Source files were fetched back from GitHub for review. No live database or production data was changed.
+- **Concurrency:** open PR #686 changes backend/src/routes/learning.ts; this task does not touch that file. The historical fix/agent4-security-reconciliation branch is 5 commits ahead but 4,458 behind master and has no open PR; it was not reused. No other open PR changes the files in this task.
+- **Merged:** PR #692 merged at 2026-11-13T15:22:41Z; merge commit 380f6ff832cf4d3e608f2c6f6d413edbb0c45015.
+- **Remaining:** continue the backend/security audit. This checkpoint does not mark the overall assignment complete.
+- **Exact next action:** review PR #692 and merge only after owner approval; then refresh from master and begin BSEC-002 on the next independently scoped data-integrity defect.

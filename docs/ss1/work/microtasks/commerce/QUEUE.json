@@ -30,7 +30,8 @@
     "COM-FACT-T2-TBL-DOMFOR-CLAIMS (2026-11-06): the two Foreign cells of block 138 were checked against dated authoritative sources. Row 2 (different currencies) is true with exceptions (currency unions such as the euro area and the West African CFA franc; invoicing in a third currency); row 3 (different weights and measures) is not to be taught as written (SI is the internationally agreed, preferred system of world trade; Nigeria's Cap. W3 makes trade within Nigeria exclusively metric from 1 January 1979). Endorsed claim limits are recorded in open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS, which no longer blocks delivery; the paired-row restatement item still does. Nigerian indigenous-measures regulations, later amendments to Cap. W3 and the revocation order were not read and stay open. next_runnable recomputed without deferred TEST tasks (COM-TEST-PACKAGE excluded). No teaching text drafted, nothing approved or verified, app display unchecked.",
     "COM-INV-T3 (2026-11-13) opened the exact 3rd Term Commerce .doc source from the user-attached composite archive; archive and member hashes verified against SOURCE_ASSIGNMENTS.csv. Source read with antiword 0.37 and privately converted/rendered with LibreOffice 25.2.3.2 for layout inspection. Inventory COM-INV-T3.md records scheme, nine teaching bodies (including combined Weeks 7–8), revision marker, assessment sections, three structured comparison tables and four drawn cheque/bill/promissory-note visual groups. Sample forms contain names, addresses, bank details, dates and amounts; do not reuse without synthetic replacement/redaction. Current institutional/legal claims are flagged for dated primary-source review. 21 bounded follow-up tasks appended: nine week indexes, preamble, revision marker, seven visual dispositions, one sample-data preservation item and two factual dependencies. No package/lesson/coverage/rule/correction/asset/approval changes; no tests/importer/device checks. Testing deferred.",
     "COM-TEST-PACKAGE (2026-11-13): added tests/ss1/commerce.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; three PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current partial/unresolved coverage/open-item boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no curriculum content or approval state changed.",
-    "COM-PRE-T3 (2026-11-13): verified preamble in original Commerce .doc. Lines 4–20 contain the title, wrapped subject/class header (CLASS label at line5, SS1 at line6), WEEKS/TOPICS header and ten scheme rows: Week1,2,3,4,5,6,7–8,9,10,11 Revision. The first body marker is WEEK 1 at line22. Numeric scheme rows do not use same-line WEEK <number> body markers; no preamble rule or marker coverage is needed. No standalone bibliography/reference list appears in the opening; reading assignments are embedded in body blocks. Week11 Revision is scheme-only."
+    "COM-PRE-T3 (2026-11-13): verified preamble in original Commerce .doc. Lines 4–20 contain the title, wrapped subject/class header (CLASS label at line5, SS1 at line6), WEEKS/TOPICS header and ten scheme rows: Week1,2,3,4,5,6,7–8,9,10,11 Revision. The first body marker is WEEK 1 at line22. Numeric scheme rows do not use same-line WEEK <number> body markers; no preamble rule or marker coverage is needed. No standalone bibliography/reference list appears in the opening; reading assignments are embedded in body blocks. Week11 Revision is scheme-only.",
+    "COM-PRE-T1 (2026-11-13): indexed the unlabelled First Term opening/scheme block using the previously hash-verified COM-INV-T1 evidence. Added nine scheme-to-body locator coverage records (rows 2-10) as UNRESOLVED until each week's objective-level indexing; retained existing row 1 coverage; rows 11-12 remain assigned to COM-MARK-T1-SCHEME-REVEXAM. No lesson or rule authored; tests/importer/database/device checks deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -45,9 +46,9 @@
     "LESSON": 5
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 12,
-    "BLOCKED": 2,
-    "PENDING": 56
+    "IMPLEMENTED_TESTING_DEFERRED": 15,
+    "BLOCKED": 4,
+    "PENDING": 54
   },
   "items": [
     {
@@ -345,8 +346,8 @@
         "COM-INV-T1",
         "COM-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PENDING - by design: no scheme/identity coverage or rule is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (opening 1-36, scheme rows 25-36).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented on agent/commerce from the previously verified source inventory. The opening block (lines 1-36; SHA-256 d8658c5c643ff3336b8b240a9c89a6abbdd1a45ba35f2a423ff25ef45cdad092) is indexed as preamble/scheme, not a teaching week. Existing row 1 coverage is retained; added COV-COM-T1-SCHEME-2..10 with exact scheme-row line locators, the opening-block digest, mapped week body ranges/digests and UNRESOLVED status pending week-specific objective review. Week mapping and differences are recorded in COM-PRE-T1.md. Scheme rows 11-12 remain for COM-MARK-T1-SCHEME-REVEXAM. No lesson, parser rule, approval or verification was invented.",
       "completion_condition": "Identity and scheme rows are represented under the existing schema with exact provenance; rows 11-12 are left to the marker item; no lesson or coverage entry is invented from a scheme heading. Testing deferred by owner."
     },
     {
@@ -419,8 +420,8 @@
         "COM-INV-T1",
         "COM-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Week table, lines 124-183, SHA-256 85dc81676442434e28c7a8e1568f8e576741de98eaef0fc6b0be27d4bcc44b57; assessment blocks listed there).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in branch agent/commerce-week-two-20261113. Package commit 3a8f9d14b5d54e8f64e28430a588a619b4f6c354 adds the original occupation lesson, 21 objective/assessment coverage entries, proposed answers/marking and precise open items. Hash and compiler checks remain deferred; see COM-WK-T1-W02.md.",
       "completion_condition": "Week 2 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
     },
     {
@@ -1011,8 +1012,8 @@
         "COM-SRC-T1",
         "COM-WK-T1-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PENDING - by design: no correction is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Factual and neutrality flags).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Fact review completed in COM-FACT-T1-OCCUPATION-CLASSIFICATION.md. The source's 'secondary occupation' label is inconsistent with the standard three-sector model: official NCERT Business Studies (2026–27 reprint) and the Jharkhand MOHEST SS1 Commerce text both place trade/support services in tertiary activity. The original school wording is preserved; no silent source edit or owner approval is claimed. Testing deferred.",
       "completion_condition": "The classification is either supported by an authoritative dated source or flagged as inconsistent, with the source's wording preserved; no silent edit of the definition. Testing deferred by owner."
     },
     {
@@ -2573,6 +2574,117 @@
       "status": "PENDING",
       "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
       "completion_condition": "Record source locator, visual structure, decision, accuracy review, accessibility description and reuse status. Do not publish identifying, misleading or legally inaccurate examples."
+    },
+    {
+      "id": "COM-LES-T1-W02-GENERAL-EVALUATION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "Week Two GENERAL EVALUATION, Mammoth lines 178–183.",
+      "objective": "After the related Commerce weeks are indexed, write a concise supplementary revision lesson that answers the five general-evaluation questions on business contributions to national development, divisions of Commerce, importance of Commerce to Nigeria, aids to trade and commercial-bank functions. Use the relevant later-week content and authoritative references; do not pretend these five questions are taught in the occupation section alone.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "COM-WK-T1-W01",
+        "COM-WK-T1-W02",
+        "COM-WK-T1-W03",
+        "COM-WK-T1-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-WK-T1-W02; five general-evaluation questions are recorded as out-of-scope until the relevant weeks are completed.",
+      "completion_condition": "All five questions have accurate answers, original examples and criterion-level marking after the related course content is complete."
+    },
+    {
+      "id": "COM-OWNER-T1-W02-WEEKEND-Q4",
+      "kind": "OWNER_ACTION",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "Week Two WEEKEND ASSIGNMENT item 4, Mammoth lines 167–172.",
+      "objective": "Resolve the ambiguous single-answer question on direct services: source options include policemen and teachers, while the source lists policemen as indirect and later identifies a teacher as indirect.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "COM-WK-T1-W02"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Created by COM-WK-T1-W02; the original item remains ungraded because more than one option is defensible.",
+      "completion_condition": "Teacher/owner supplies corrected options or a clear payment/employer context; do not guess a unique answer."
+    },
+    {
+      "id": "COM-OWNER-T1-W02-READING-RIGHTS",
+      "kind": "OWNER_ACTION",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "Week Two READING ASSIGNMENT, Mammoth lines 163–165.",
+      "objective": "Confirm exact editions and reuse rights for Essential Commerce for SSS by O. A. Longe pages 9–12 and Comprehensive Commerce for SSS by J. U. Anyaele pages 42–43.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "COM-WK-T1-W02"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Created by COM-WK-T1-W02; the cited books are not included in the supplied source archive.",
+      "completion_condition": "Owner confirms editions and rights; until then only retain the reading pointers."
     }
   ],
   "review": {
@@ -2588,8 +2700,6 @@
     }
   },
   "next_runnable": [
-    "COM-PRE-T1",
-    "COM-WK-T1-W02",
     "COM-WK-T1-W03",
     "COM-WK-T1-W04",
     "COM-WK-T1-W05",

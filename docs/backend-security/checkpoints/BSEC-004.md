@@ -1,0 +1,29 @@
+# Checkpoint — BSEC-004
+
+- **Task ID:** BSEC-004
+- **Title:** Make bulk attendance writes all-or-nothing
+- **Status:** merged
+- **Owner:** ChatGPT implementation worker
+- **Base branch:** master
+- **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
+- **Working branch:** agent/backend-attendance-bulk-atomicity-20261113
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/704
+- **Latest implementation commit:** 07d92fc063033597ae33958d46773e87c43cc48c
+- **Checkpoint commit:** this update
+- **Changed files:**
+  - backend/src/routes/attendance.ts
+  - backend/src/utils/attendanceWrites.ts
+  - tests/backend-attendance-bulk.integration.test.mts
+  - .github/workflows/backend-attendance-bulk.yml
+  - docs/backend-security/checkpoints/BSEC-004.md
+- **Defect:** PUT /attendance/bulk validated the full request before writing, but persisted each row using separate pool.query calls without a transaction. A database error or concurrent deletion after prevalidation could leave only part of the class attendance batch committed while the request failed.
+- **Implementation:** extracted the persistence loop into saveAttendanceBulk and moved every upsert onto one withTransaction client. Route-level scope checks, value validation, audit behavior and response shape remain unchanged.
+- **Regression coverage:** PostgreSQL integration tests prove successful batch upserts and rollback of the first row when a later row violates the student foreign key.
+- **Commits:** dd70e61e38b299e4e32b57b52181f56292193d95; 8d54edbc853c51d60d9bdb8501ebffb9225d11b1; 504c66283af4d0d7de514e8cddd883af7293e236; 1618cf0c3667cb18b3cccd5f6fefc0a395a6b3b3; 1bc05e3deab07f078af9068dcb4d6f54190221aa.
+- **Verification:** GitHub Actions run https://github.com/PDS-David/sts-school-app/actions/runs/43446008820 completed successfully. Passed: PostgreSQL 16 service initialization, locked dependency installation, disposable database bootstrap, attendance success/rollback integration tests and backend TypeScript typecheck. Branch comparison before PR: 5 commits ahead of master, 0 behind; five changed paths. No production database or data was changed.
+- **Concurrency:** PR #698 changes mobile attendance recovery only. PR #700/#688 changes scores.ts; this PR does not touch it. No active PR changes backend/src/routes/attendance.ts.
+- **CI correction:** the PostgreSQL test file was renamed to backend-attendance-bulk.integration.test.mts so it is not misclassified by the separate JSS3 database-test registry; the workflow command and path filter now use the new name. No tests were removed or weakened.
+- **Final verification:** Backend attendance batch integrity workflow 43447509285, JSS3 implementation/asset checks 43447509134, and SS1 package integrity gate 43447509081 all passed on implementation commit 07d92fc063033597ae33958d46773e87c43cc48c.
+- **Merged:** PR #704 merged at 2026-11-13T15:26:44Z; merge commit 4fa2df74d8bc33e29e34ce0fb24a7b6cf817f9c1.
+- **Remaining:** continue the backend/security audit. This checkpoint does not mark the overall assignment complete.
+- **Exact next action:** review PR #704 and merge only after owner approval; then refresh from master and continue the backend audit.

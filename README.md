@@ -18,7 +18,8 @@ Into a single unified **Expo React Native Android app** backed by a **Node.js/Ex
 ```
 sts-school-app/
 ├── backend/          → Node.js + Express + TypeScript + PostgreSQL
-│   ├── schema.sql    → Full database schema (run this first)
+│   ├── schema.sql    → Complete fresh-install schema
+│   ├── migrations/   → Immutable numbered incremental migrations
 │   └── src/
 │       ├── routes/   → auth, students, scores, attendance, academic,
 │       │               messages, weeklyEfforts, learning, admin
@@ -103,7 +104,7 @@ A class teacher can "close" her own class's records for a term from Classes → 
 
 `DELETE /students/:id` no longer permanently erases a student. A teacher may delete a student under their own class or subject care directly (no admin approval needed); the record is flagged `deleted_at`/`deleted_by` rather than removed, so every historical score/attendance/class-record/weekly-effort/submission/invoice tied to that student still resolves correctly. A deleted student disappears from the roster, ward list, self-lookup, and materials/assessments visibility for everyone, and can't be written to again (scores, attendance, etc. all 404) until an admin restores it from Admin → Deleted Students, a one-tap action against `POST /students/:id/restore`. Both the delete and the restore are recorded in the Audit Log.
 
-**Migration note:** if you have an existing database, run the updated `backend/schema.sql` (or just its two `ALTER TABLE ... ADD COLUMN IF NOT EXISTS` statements and the `CREATE INDEX` for `students.deleted_at`/`deleted_by`) before deploying this change — both columns are nullable, so this is a safe, additive migration with no downtime or backfill required.
+**Migration note:** do not replay `backend/schema.sql` against an existing production database. New schema changes use numbered files in `backend/migrations/` and the versioned runner (`npm run db:migrate --workspace backend`). The runner verifies SHA-256 checksums and refuses to baseline an existing untracked schema. Existing databases without a migration ledger require the owner-approved OPS-05 schema-drift review before adoption.
 
 ## Content Scope (materials, questions & assessments)
 
@@ -171,10 +172,22 @@ extension-owned objects may already exist.
 
 A repeated invocation with the same schema/foundation checksum is a no-op. It
 never resets current terms or replays schema over a database already in use.
-A different checksum is refused: use a separately reviewed migration for later
-schema changes (`db:migrate` remains the existing manual cumulative-schema tool).
+The clean bootstrap stamps the immutable `0001_baseline.sql` migration marker.
+A different checksum is refused: use a new numbered migration for later schema
+changes; never edit an applied migration.
 The completion marker is not a schema-drift checker or a repair mechanism.
 Neither application startup nor `npm run build` runs bootstrap/migrations.
+
+For migration operations (run from the repository root):
+
+```bash
+npm run db:migrate:status --workspace backend  # read-only status
+npm run db:migrate --workspace backend         # apply pending numbered migrations
+npm run db:migrate:fresh --workspace backend   # complete schema replay on a clean application schema only
+```
+
+`db:migrate` defaults to `--all`. An existing database with no baseline is not
+silently adopted; complete OPS-05 drift review and owner approval first.
 
 ### Encrypted backups (weekly reminder + "Back up now")
 
@@ -496,7 +509,7 @@ This was audited end-to-end (real Postgres, real login/token flow, real HTTP req
 - **A newly created student or parent login had no way to be connected to an actual student record.** A student account with no link couldn't take assessments, view their report, or message anyone; a parent account with no link would see zero children. Fixed: Admin → a student's detail page now has "Login Account" and "Parents/Guardians" sections to link (and unlink) both, verified with a real create → link → verify round-trip against a live database.
 
 ### Real, currently-unaddressed limitations (be aware of these before rollout)
-- **No push notifications.** The in-app notification bell shows real data (open assessments, etc.) but nothing arrives on a parent's/teacher's phone if the app isn't open — there's no FCM/Expo-push wiring, despite an `FCM_SERVER_KEY` placeholder in `.env.example`. Building this is a distinct, non-trivial piece of work (device token registration, a push-sending service, a UI for what triggers a push).
+- **Push notification code is implemented but still needs live-device verification.** The app registers Expo push tokens on successful device login, removes the current device token on logout, displays foreground notifications, and routes supported message/assessment/score taps. The backend sends pushes for supported message, score and assessment events through Expo and prunes unregistered device tokens. This has not been verified end-to-end against a real Android device/provider delivery in this session; an Expo ticket being accepted is not proof that a device received it. School announcements are in-app feed items and are explicitly not push-triggered.
 - **No APK has actually been built yet, but the config to build one now exists.** Pass 19 added `mobile/eas.json` (a `preview` profile that outputs an installable `.apk`, and a `production` profile for a Play Store `.aab`), matching the `eas build -p android --profile preview` command already documented above — that command would have failed before this pass since there was no `eas.json` at all. Building the actual APK still needs to happen from a machine with network access to Expo's build service (`expo.dev`) — this wasn't done as part of this pass since the sandboxed environment used for Passes 16–19 has no route to it (its network allowlist covers package registries only — npm, PyPI, crates, GitHub — not `expo.dev`, `dl.google.com`, or the Gradle plugin portal). To build it yourself: **first change `mobile/app.json → expo.extra.apiUrl`** away from `http://10.0.2.2:4000` (the Android-emulator-only loopback alias — a real phone can't reach it) to your backend's real, reachable URL, then run `npm install -g eas-cli && eas login && eas build -p android --profile preview` from `mobile/`. That produces a signed `.apk` you can sideload directly, no Play Store step needed.
 - **Materials are link-based, not uploaded files.** Teachers paste a URL (e.g. a Google Drive link) rather than uploading a file to be hosted by this server. This is a reasonable, common approach for a small school (avoids needing S3/R2 setup) but means teachers need somewhere else to host the file first.
 - **Finance is record-keeping, not online payment.** Admin marks an invoice "paid" by hand; there's no Paystack/Flutterwave/card integration. Fine if fees are paid offline (bank transfer, cash) and just tracked here — not fine if you want parents to pay *inside* the app.

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import {
   View, Text, StyleSheet, FlatList, TouchableOpacity,
-  KeyboardAvoidingView, Platform, Alert,
+  KeyboardAvoidingView, Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRoute } from '@react-navigation/native';
@@ -45,23 +45,43 @@ export default function MessagesScreen() {
   const [thread,       setThread]       = useState<Msg[]>([]);
   const [body,         setBody]         = useState('');
   const [loading,      setLoading]      = useState(true);
+  const [contactsError, setContactsError] = useState('');
+  const [contactsRetry, setContactsRetry] = useState(0);
+  const [threadLoading, setThreadLoading] = useState(false);
+  const [threadError, setThreadError] = useState('');
   const [sending,      setSending]      = useState(false);
+  const [sendError, setSendError] = useState('');
+  const threadRequestRef = useRef(0);
   const flatRef = useRef<FlatList>(null);
 
   useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    setContactsError('');
     api.get('/messages/contacts')
-      .then(({ data }) => setContacts(data.contacts ?? []))
-      .catch(() => {})
-      .finally(() => setLoading(false));
-  }, []);
+      .then(({ data }) => { if (!cancelled) setContacts(data.contacts ?? []); })
+      .catch((e: any) => { if (!cancelled) setContactsError(e?.response?.data?.error ?? 'Could not load contacts. Check your connection and retry.'); })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
+  }, [contactsRetry]);
 
   const openConversation = async (c: Contact) => {
+    const requestId = ++threadRequestRef.current;
     setActiveContact(c);
+    setThread([]);
+    setThreadLoading(true);
+    setThreadError('');
+    setSendError('');
     try {
       const { data } = await api.get(`/messages/conversation/${c.id}`);
+      if (requestId !== threadRequestRef.current) return;
       setThread(data.messages ?? []);
       setTimeout(() => flatRef.current?.scrollToEnd({ animated: false }), 100);
-    } catch { }
+    } catch (e: any) {
+      if (requestId === threadRequestRef.current) setThreadError(e?.response?.data?.error ?? 'Could not load this conversation. Retry to see the saved messages.');
+    } finally {
+      if (requestId === threadRequestRef.current) setThreadLoading(false);
+    }
   };
 
   // Deep-link entry: if a push tap (or anything else) navigated here with a
@@ -76,9 +96,10 @@ export default function MessagesScreen() {
   }, [routeContact?.id]);
 
   const sendMessage = async () => {
-    if (!body.trim() || !activeContact) return;
+    if (!body.trim() || !activeContact || sending || threadLoading || !!threadError) return;
     const outgoing = body.trim();
     setSending(true);
+    setSendError('');
     try {
       const { data } = await api.post('/messages', { recipient_id: activeContact.id, body: outgoing });
       setBody('');
@@ -94,11 +115,17 @@ export default function MessagesScreen() {
       }
       setTimeout(() => flatRef.current?.scrollToEnd({ animated: true }), 100);
     } catch (e: any) {
-      Alert.alert('Error', e?.response?.data?.error ?? 'Could not send message');
+      setSendError(e?.response?.data?.error ?? 'Could not send message. Your draft is still here; retry when connected.');
     } finally { setSending(false); }
   };
 
   if (loading) return <Loader />;
+  if (!activeContact && contactsError) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={contactsError} />
+      <Btn label="Retry loading contacts" onPress={() => setContactsRetry(v => v + 1)} variant="outline" />
+    </View>
+  );
 
   // Thread view
   if (activeContact) {
@@ -106,7 +133,7 @@ export default function MessagesScreen() {
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         {/* Header */}
         <View style={styles.threadHeader}>
-          <TouchableOpacity onPress={() => setActiveContact(null)} style={{ padding: 6 }}>
+          <TouchableOpacity onPress={() => { threadRequestRef.current += 1; setThreadLoading(false); setActiveContact(null); }} style={{ padding: 6 }}>
             <Ionicons name="arrow-back" size={22} color={Colors.white} />
           </TouchableOpacity>
           <View style={styles.threadAvatar}>
@@ -118,6 +145,12 @@ export default function MessagesScreen() {
           </View>
         </View>
 
+        {threadLoading ? <Loader /> : threadError ? (
+          <View style={{ flex: 1, justifyContent: 'center', padding: Spacing.md }}>
+            <Empty message={threadError} />
+            <Btn label="Retry conversation" onPress={() => activeContact && openConversation(activeContact)} variant="outline" />
+          </View>
+        ) : (
         <FlatList
           ref={flatRef}
           data={thread}
@@ -139,17 +172,19 @@ export default function MessagesScreen() {
             );
           }}
         />
+        )}
 
+        {!!sendError && <Text style={{ color: Colors.error, paddingHorizontal: Spacing.md, paddingTop: Spacing.xs }}>{sendError}</Text>}
         <View style={[styles.inputRow, { paddingBottom: Spacing.sm + insets.bottom }]}>
           <Input
             value={body}
-            onChangeText={setBody}
+            onChangeText={(value) => { setBody(value); setSendError(''); }}
             placeholder="Type a message…"
             style={{ flex: 1, marginBottom: 0 }}
             multiline
             numberOfLines={2}
           />
-          <TouchableOpacity style={styles.sendBtn} onPress={sendMessage} disabled={sending}>
+          <TouchableOpacity style={[styles.sendBtn, (!body.trim() || sending) && { opacity: 0.5 }]} onPress={sendMessage} disabled={sending || threadLoading || !!threadError || !body.trim()} accessibilityRole='button' accessibilityLabel='Send message'>
             <Ionicons name="send" size={20} color={Colors.white} />
           </TouchableOpacity>
         </View>

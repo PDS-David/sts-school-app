@@ -1,0 +1,83 @@
+name: Dependency security audit
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "package.json"
+      - "package-lock.json"
+      - "backend/package.json"
+      - "backend/package-lock.json"
+      - ".github/workflows/dependency-security-audit.yml"
+      - "docs/backend-security/dependency-exceptions.md"
+
+permissions:
+  contents: read
+
+jobs:
+  npm-audit:
+    name: Enforce backend production dependency security
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install exact locked dependencies
+        run: npm ci --ignore-scripts
+      - name: Smoke-test upgraded backend dependencies
+        run: node --import tsx --test tests/backend-dependency-smoke.test.mts
+      - name: Explain reviewed Expo SDK 56 dependency paths
+        run: |
+          npm explain expo
+          npm explain image-size
+          npm explain zod
+      - name: Report full audit and enforce version-pinned exception policy
+        shell: bash
+        run: |
+          npm audit --json > "$RUNNER_TEMP/npm-audit.json" || audit_status=$?
+          node - "$RUNNER_TEMP/npm-audit.json" <<'NODE'
+          const fs = require('node:fs');
+          const report = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
+          const lock = JSON.parse(fs.readFileSync('package-lock.json', 'utf8'));
+          const totals = report.metadata?.vulnerabilities ?? {};
+          const approvedHigh = new Map([
+            ['@expo/cli', new Set(['56.1.27'])],
+            ['expo', new Set(['56.0.24'])],
+            ['image-size', new Set(['1.2.1'])],
+            ['zod', new Set(['3.25.76'])],
+          ]);
+          const unexpectedHigh = [];
+
+          console.log('Full dependency audit totals:', JSON.stringify(totals));
+          for (const [name, item] of Object.entries(report.vulnerabilities ?? {})) {
+            if (item.severity !== 'high' && item.severity !== 'critical') continue;
+            const installed = (item.nodes ?? []).map((path) => ({
+              path,
+              version: lock.packages?.[path]?.version ?? 'unknown',
+            }));
+            const allowedVersions = approvedHigh.get(name);
+            const approved = item.severity === 'high'
+              && allowedVersions
+              && installed.length > 0
+              && installed.every((entry) => allowedVersions.has(entry.version));
+            console.log(
+              `${item.severity.toUpperCase()} ${name}: ${JSON.stringify(installed)}${approved ? ' [reviewed Expo SDK 56 exception]' : ''}`,
+            );
+            if (!approved) unexpectedHigh.push(name);
+          }
+
+          if ((totals.critical ?? 0) > 0 || unexpectedHigh.length > 0) {
+            console.error('Unapproved critical/high dependency advisories remain:', unexpectedHigh);
+            process.exit(1);
+          }
+          console.log('Full-tree policy passed: no critical advisories; remaining high findings match the version-pinned Expo SDK 56 exception.');
+          NODE
+      - name: Gate backend production dependencies
+        run: npm audit --workspace=backend --omit=dev --audit-level=moderate
+      - name: Build backend
+        run: npm run build --workspace=backend
