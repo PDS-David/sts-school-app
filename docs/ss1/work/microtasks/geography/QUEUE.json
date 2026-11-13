@@ -19,23 +19,30 @@
     "All SS1 terms are instructional. No tests, typechecks, importer or database operations run.",
     "GEO-INV-T1 inventoried the 1st Term document (scheme rows 1-11, WEEK ONE..WEEK TEN, markers, visual groups); thirteen indexing/visual items appended. No coverage or rule was written by the inventory.",
     "GEO-INV-T2 (2026-10-30) inventoried the 2nd Term original (nine scheme rows covering weeks 1-11, eight week labels covering weeks 1-10, 46 markers, header letterhead image, two weather tables, two drawing objects); eleven indexing/visual items appended. The 3rd Term inventory remains unread. No coverage, lesson, rule, correction or asset was written.",
-    "GEO-WK-T1-W01 (2026-11-07) indexed Week 1 at objective level: meaning, scope and value mapped SUPPORTED to the reproduced generic parsed-row id; 'Nature' is named in the scheme row and never taught, the state-capital questions at lines 75 and 88 are taught nowhere in the document, the reading pointer is unverified and the source has no answer key, so two PARTIAL rows and two UNRESOLVED rows plus three lesson items (one BLOCKED on an owner decision) were appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written."
+    "GEO-WK-T1-W01 (2026-11-07) indexed Week 1 at objective level: meaning, scope and value mapped SUPPORTED to the reproduced generic parsed-row id; 'Nature' is named in the scheme row and never taught, the state-capital questions at lines 75 and 88 are taught nowhere in the document, the reading pointer is unverified and the source has no answer key, so two PARTIAL rows and two UNRESOLVED rows plus three lesson items (one BLOCKED on an owner decision) were appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written.",
+    "GEO-INV-T3 (2026-11-13) inspected the exact 3rd Term Geography .doc from the owner-attached composite archive; archive/member hashes verified against SOURCE_ASSIGNMENTS.csv. Source extracted with antiword 0.37 and privately converted/rendered with LibreOffice 25.2.3.2 for structure. Inventory GEO-INV-T3.md records scheme, nine body blocks (combined Weeks 1–2, then Weeks 3–10), evaluation/assignment sections, one 38x4 state/capital/slogan table, a drawn Nigeria location/boundary sketch, and a tab-aligned thermal plant list. Geography/population/census/industry/agriculture/mineral/power claims are flagged for dated authoritative verification. 15 bounded follow-up tasks appended: nine week indexes, preamble, two visual dispositions plus one tabular-list disposition, and three factual dependencies. No lessons/package/coverage/rules/corrections/assets/approval changed; no tests/importer/device checks. Testing deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
     "FACTUAL_DEPENDENCY": 1,
-    "SOURCE_PREAMBLE_INDEXING": 2,
+    "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 2,
-    "SOURCE_WEEK_INDEXING": 18,
+    "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 2,
-    "LESSON": 3
+    "LESSON": 3,
+    "Antiword lines 42–58; converted DOCX paragraphs 29 and 32; rendered PDF page 1": 1,
+    "Antiword lines 85–132; rendered PDF page 2; converted DOCX table 1 (38 rows × 4 columns)": 1,
+    "Antiword lines 1447–1453; Week 10; tab-aligned text block": 1,
+    "Nigeria location/size paragraphs 30–65; political division/admin chronology in Week 1–2; state/capital table lines 85–132": 1,
+    "Weeks 3–5; relief/drainage lines 166–392, climate 393–516, vegetation/soils 517–605": 1,
+    "Weeks 6–10; transportation/industry lines 606–992, population 993–1138, agriculture 1139–1285, minerals 1286–1430, power 1431–1493": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 6,
-    "BLOCKED": 2,
-    "PENDING": 27
+    "IMPLEMENTED_TESTING_DEFERRED": 7,
+    "PENDING": 42,
+    "BLOCKED": 2
   },
   "items": [
     {
@@ -241,8 +248,8 @@
       "depends_on": [
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Manifest assignment SS1-SRC-74a10d374306, SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc, 54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6. No Geography subject package exists at d01704cd15aa69241a8775c5e072fd2297b1d71b; original header and week inventory not inspected.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13 from user-attached archive. Archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e verified; member SHA-256 54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6, 200,192 bytes, matches SOURCE_ASSIGNMENTS.csv. Header confirms Geography, SS1. Source extracted with antiword 0.37 (63,011 characters, 1,493 lines) and privately converted/rendered with LibreOffice 25.2.3.2 (23-page PDF) for structural inspection. Converted DOCX: 1 table (38x4), 4 VML drawing/pict elements forming the location/boundary sketch, no raster media or equations. Nine body blocks indexed: combined Weeks 1–2, then Weeks 3–10. Identified state/capital/slogan table and tab-aligned thermal plant list. Population/census, geographic, institutional and resource claims flagged for dated authoritative review. Inventory: docs/ss1/work/microtasks/geography/GEO-INV-T3.md. No package/lesson/coverage/rule/correction/asset/approval changes; no tests/importer/database/device checks. Testing deferred.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -1328,6 +1335,582 @@
       "status": "BLOCKED",
       "implementation_reference": "Not authored; BLOCKED on the owner decision recorded as open item GEOGRAPHY-T1-W01-STATE-CAPITALS-SCOPE (raised by GEO-WK-T1-W01, 2026-11-07). COV-GEO-T1-W01-STATE-CAPITALS is UNRESOLVED. GEO-WK-T1-W01 states no capital as an answer.",
       "completion_condition": "The owner decision is recorded with a reference; the lesson or exclusion it requires exists in geography.json with complete answers and marking that sums exactly where practice is authored; COV-GEO-T1-W01-STATE-CAPITALS then cites it with evidence; no source byte, correction or shared file is edited."
+    },
+    {
+      "id": "GEO-WK-T3-W01-02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 28–165; source heading `WEEK ONE AND TWO`; digest 0b967f0cbb4795d3d7f45f8313859ae178706cc352a67fa81a5e6610c228b433",
+      "objective": "Index combined Weeks One and Two: Nigeria location, coordinates, latitudinal/longitudinal extent, position/boundaries, size and population claim, political division and colonial administrative chronology; evaluation, general evaluation, reading assignment, weekend assignment and theory. Preserve combined label and flag coordinate/population/colonial-history claims for dated primary-source review.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T3-W01-02.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T3",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
+    },
+    {
+      "id": "GEO-WK-T3-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 166–392; WEEK THREE; digest ae9898a94a4a83e8b400fc13dd01cb02f8138ff1794d53231d86fc3fd2415c31",
+      "objective": "Index Nigeria relief and drainage: lowlands/plains and associated rocks/importance/disadvantages; north-central, western and eastern highlands and eastern scarpland; highland rocks/importance/disadvantages; drainage, rivers/characteristics/importance, river basins and lakes; evaluation/general evaluation, reading, weekend assignment and theory. Preserve named regions/rivers and flag any geographic distribution claims for source review.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T3-W03.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T3",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
+    },
+    {
+      "id": "GEO-WK-T3-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 393–516; WEEK FOUR; digest dee959f9ad7f025e06874f5be05b8bfd8eef8e9d1de37d5acda43b72b370804a",
+      "objective": "Index Nigeria Climate: climate and factors affecting climate, rainfall/temperature/season content, evaluations, general evaluation, reading, weekend assignment and theory. Preserve all climate descriptions and any rainfall/temperature values as source claims pending meteorological-source verification.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T3-W04.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T3",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
+    },
+    {
+      "id": "GEO-WK-T3-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 517–605; WEEK FIVE; digest 88a50efe2ac8ef46e51c09f509f0213890b07bd9ed446a629246860c0c6ef6d5",
+      "objective": "Index Nigeria Vegetation and Soils: vegetation zones, soils, laterite/sandy/forest/alluvial soil zones, evaluations, general evaluation, reading, weekend assignment and theory. Preserve named zones and avoid inferring missing regional boundaries.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T3-W05.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T3",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
+    },
+    {
+      "id": "GEO-WK-T3-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 606–992; WEEK SIX; digest dae1276b9bdad53af51da896efa8926e59d7182fe79678482604485cede742a1",
+      "objective": "Index Nigeria Transportation and Industry: transport modes, contributions to economic development, problems, industries, characteristics/classification of manufacturing industries, factors affecting industrial location, urban concentration, localization, cottage/modern industries, contributions/problems/solutions; evaluations, general evaluation, reading, weekend assignment and theory. Flag named firms/industrial sites and economic claims for date-grounded verification.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T3-W06.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T3",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
+    },
+    {
+      "id": "GEO-WK-T3-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 993–1138; WEEK SEVEN; digest dbd92909c045b8959ef83ba7a1fddf6b4726f71e9fc3bb24a700fc0f92778c01",
+      "objective": "Index Nigeria Population: population concepts, distribution of population in Nigeria, evaluation/general evaluation, reading, weekend assignment and theory. Preserve all census references and population-distribution claims as dated source material pending authoritative statistical review.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T3-W07.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T3",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
+    },
+    {
+      "id": "GEO-WK-T3-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 1139–1285; WEEK EIGHT; digest 755eae8ef28c9c3cb9021874f09703ef85aab7850d4ef98be3257a7fb9ffbbb8",
+      "objective": "Index Nigeria Agriculture: types of agriculture, importance, problems and solutions; evaluations, general evaluation, reading, weekend assignment and theory. Preserve crop/livestock/region claims and flag current production figures or policy claims for primary-source review.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T3-W08.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T3",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
+    },
+    {
+      "id": "GEO-WK-T3-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 1286–1430; WEEK NINE; digest 96d22f2c4cf06f1847ad29a8d85c1d275e53c9d3ad931f0c1949e3c2025ad422",
+      "objective": "Index Mineral Resources in Nigeria: mineral resource descriptions/distribution, evaluation sections, importance, problems facing mining, general evaluation, reading, weekend assignment and theory. Preserve mineral names/locations and flag production/reserve/current industry claims for dated official-source review.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T3-W09.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T3",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
+    },
+    {
+      "id": "GEO-WK-T3-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 1431–1493; WEEK TEN; digest 5d33e30e1276f887f88a50c80c5a5ed6ececb87aa70b692dc791e5f0eb7dead1",
+      "objective": "Index Power Resources in Nigeria: water, coal, petroleum and natural gas; hydro-electric power and Kainji/Shiroro examples; thermal power and the tab-aligned thermal plant/state/fuel listing; effects of climate on dams; evaluation, general evaluation, reading, weekend assignment and theory. Preserve the tabular plant listing and verify all named facilities/fuels as current or historical.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T3-W10.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T3",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
+    },
+    {
+      "id": "GEO-PRE-T3",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 2–25; heading, scheme and reference",
+      "objective": "Index the opening: Third Term E-Learning Note; subject Geography, class SS1; scheme rows: Week 1–2 Nigeria Location, Position and Size; Week 3 Physical Relief and Drainage; Week 4 Climate; Week 5 Vegetation and Soils; Week 6 Transportation and Industries; Week 7 Population; Week 8 Agriculture; Week 9 Mineral Resources; Week 10 Power Resources; reference to Essential Geography for Senior Secondary Schools by O.A. Iwena. Scheme is not a teaching body; preserve combined Week 1–2.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-PRE-T3.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T3",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
+    },
+    {
+      "id": "GEO-VIS-T3-LOCATION-SKETCH",
+      "kind": "Antiword lines 42–58; converted DOCX paragraphs 29 and 32; rendered PDF page 1",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "VISUAL_DISPOSITION",
+      "objective": "Inspect the Word-drawn location/boundary sketch: directional labels for Niger, Chad, Cameroon, Benin and Atlantic Ocean, embedded between the position and size paragraphs. It is not a detailed outline map. Decide whether a properly sourced, accessible Nigeria locator map is required instead; retain original sketch only as source evidence.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-VIS-T3-LOCATION-SKETCH.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T3",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
+    },
+    {
+      "id": "GEO-VIS-T3-STATE-CAPITALS-TABLE",
+      "kind": "Antiword lines 85–132; rendered PDF page 2; converted DOCX table 1 (38 rows × 4 columns)",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "VISUAL_DISPOSITION",
+      "objective": "Inspect the 37-state/FCT table of state, capital and title/slogan. Preserve its tabular structure; validate state/capital spelling and all titles/slogans against authoritative current sources. Ensure no slogan or location is presented as an official statutory name unless verified.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-VIS-T3-STATE-CAPITALS-TABLE.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T3",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
+    },
+    {
+      "id": "GEO-VIS-T3-THERMAL-PLANT-LIST",
+      "kind": "Antiword lines 1447–1453; Week 10; tab-aligned text block",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "VISUAL_DISPOSITION",
+      "objective": "Inspect the tab-aligned thermal-plant/state/fuel listing (Egbin, Ijora, Sapele, Oji). It is not a Word table but is structured tabular content. Preserve columns and verify each plant's present/historical status, state and fuel type before learner-facing use.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-VIS-T3-THERMAL-PLANT-LIST.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T3",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
+    },
+    {
+      "id": "GEO-FACT-T3-LOCATION-POPULATION",
+      "kind": "Nigeria location/size paragraphs 30–65; political division/admin chronology in Week 1–2; state/capital table lines 85–132",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "FACTUAL_DEPENDENCY",
+      "objective": "Verify coordinates, boundaries, land area, population/census figures, political division and administrator chronology using authoritative Nigerian mapping, census/statistical and historical sources. In particular, date the 2006 population-census claim; do not reuse it as current population data. Verify the state/capital table and slogans; preserve source claims separately from corrected facts.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-FACT-T3-LOCATION-POPULATION.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T3",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
+    },
+    {
+      "id": "GEO-FACT-T3-PHYSICAL-CLIMATE",
+      "kind": "Weeks 3–5; relief/drainage lines 166–392, climate 393–516, vegetation/soils 517–605",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "FACTUAL_DEPENDENCY",
+      "objective": "Verify relief regions, drainage basin/rivers/lakes, climate factors/seasons, rainfall/temperature claims, vegetation zones and soil distributions against authoritative maps, Nigerian meteorological and geological/geographical sources. Cite dates and geographic scope; distinguish general concepts from current observations.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-FACT-T3-PHYSICAL-CLIMATE.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T3",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
+    },
+    {
+      "id": "GEO-FACT-T3-ECONOMY-RESOURCES",
+      "kind": "Weeks 6–10; transportation/industry lines 606–992, population 993–1138, agriculture 1139–1285, minerals 1286–1430, power 1431–1493",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "FACTUAL_DEPENDENCY",
+      "objective": "Audit transport networks, industries, population distribution, agriculture, mineral locations/mining and power projects/plant fuels against dated official datasets and agency sources. Preserve historical examples as historical; do not present old plant, production or population data as current.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-FACT-T3-ECONOMY-RESOURCES.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T3",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     }
   ],
   "review": {
@@ -1336,7 +1919,6 @@
     "scope": "1st Term inventory executed from the supplied source; no importer, compiler or tests run; testing deferred."
   },
   "next_runnable": [
-    "GEO-INV-T3",
     "GEO-TEST-PACKAGE",
     "GEO-PRE-T1",
     "GEO-MARK-T1",
@@ -1362,6 +1944,22 @@
     "GEO-WK-T2-W10",
     "GEO-VIS-T2",
     "GEO-LES-T1-W01-NATURE",
-    "GEO-LES-T1-W01-KEYED-PRACTICE"
+    "GEO-LES-T1-W01-KEYED-PRACTICE",
+    "GEO-WK-T3-W01-02",
+    "GEO-WK-T3-W03",
+    "GEO-WK-T3-W04",
+    "GEO-WK-T3-W05",
+    "GEO-WK-T3-W06",
+    "GEO-WK-T3-W07",
+    "GEO-WK-T3-W08",
+    "GEO-WK-T3-W09",
+    "GEO-WK-T3-W10",
+    "GEO-PRE-T3",
+    "GEO-VIS-T3-LOCATION-SKETCH",
+    "GEO-VIS-T3-STATE-CAPITALS-TABLE",
+    "GEO-VIS-T3-THERMAL-PLANT-LIST",
+    "GEO-FACT-T3-LOCATION-POPULATION",
+    "GEO-FACT-T3-PHYSICAL-CLIMATE",
+    "GEO-FACT-T3-ECONOMY-RESOURCES"
   ]
 }
