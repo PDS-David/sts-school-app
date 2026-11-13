@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { createSerialQueue } from './serialQueue';
+import { createOutboxStore } from './outboxStore';
 
 // ── Per-user namespace ──────────────────────────────────────────────────────
 // The cache and outbox below are prefixed with whichever user is currently
@@ -108,31 +108,13 @@ export interface QueuedRequest {
   createdAt: number;
 }
 
-const OUTBOX_PREFIX = 'offline_outbox:';
-// AsyncStorage has no atomic append operation. Serialize every outbox mutation
-// so two network failures in the same event loop cannot both read the same
-// snapshot and overwrite one another's queued writes.
-const serializeOutboxMutation = createSerialQueue();
-const outboxKey = () => `${OUTBOX_PREFIX}${namespace}`;
+const outbox = createOutboxStore<QueuedRequest>(AsyncStorage, () => namespace);
 
-export async function getOutbox(): Promise<QueuedRequest[]> {
-  try {
-    const raw = await AsyncStorage.getItem(outboxKey());
-    return raw ? JSON.parse(raw) : [];
-  } catch {
-    return [];
-  }
+export function getOutbox(): Promise<QueuedRequest[]> {
+  return outbox.getAll();
 }
 
-async function setOutbox(list: QueuedRequest[]): Promise<void> {
-  try {
-    await AsyncStorage.setItem(outboxKey(), JSON.stringify(list));
-  } catch {
-    // best-effort
-  }
-}
-
-export async function enqueueRequest(
+export function enqueueRequest(
   req: Omit<QueuedRequest, 'id' | 'createdAt'>,
 ): Promise<QueuedRequest> {
   const queued: QueuedRequest = {
@@ -140,23 +122,15 @@ export async function enqueueRequest(
     id: `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
     createdAt: Date.now(),
   };
-  return serializeOutboxMutation(async () => {
-    const list = await getOutbox();
-    list.push(queued);
-    await setOutbox(list);
-    return queued;
-  });
+  return outbox.enqueue(queued);
 }
 
-export async function removeFromOutbox(id: string): Promise<void> {
-  await serializeOutboxMutation(async () => {
-    const list = await getOutbox();
-    await setOutbox(list.filter((q) => q.id !== id));
-  });
+export function removeFromOutbox(id: string): Promise<void> {
+  return outbox.remove(id);
 }
 
-export async function outboxCount(): Promise<number> {
-  return (await getOutbox()).length;
+export function outboxCount(): Promise<number> {
+  return outbox.count();
 }
 
 export { setOutbox };
