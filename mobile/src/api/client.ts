@@ -225,7 +225,9 @@ api.interceptors.response.use(
         const url = original.url ?? '';
         if (
           url.startsWith('/ai/') || url.startsWith('/auth/') ||
-          /^\/learning\/topics\/[^/]+\/complete/.test(url) || url.startsWith('/learning/term-pins/redeem')
+          /^\/learning\/topics\/[^/]+\/complete/.test(url) ||
+          /^\/learning\/assessments\/[^/]+\/submit(?:\?|$)/.test(url) ||
+          url.startsWith('/learning/term-pins/redeem')
         ) {
           return Promise.reject(error);
         }
