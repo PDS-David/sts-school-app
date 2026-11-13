@@ -1,6 +1,6 @@
 # FN-WK-T1-W03 — Food and Nutrition: relationship to other subjects
 
-Status: IMPLEMENTED_TESTING_DEFERRED. No lesson is authored in this task; content approval and verification remain pending/deferred.
+Status: IN_PROGRESS. No lesson is authored in this task; content approval and verification remain pending.
 
 ## Source evidence
 - Source ID: SS1-SRC-de2cdd0b85f6.
@@ -55,3 +55,9 @@ The source wording at lines 195-197 says that both come under one world organiza
 - Tests: package/queue JSON parsing and ID uniqueness checks performed in the authoring session; no subject test suite, TypeScript, importer/compiler, database or device checks run (owner protocol defers these gates).
 - Remaining work: explain all thirteen subject relationships in a new lesson; author an original assessment with answer and marking guide; verify the FAO/Rome statement; later complete Week 4–11 and other term tasks.
 - Exact next action after this PR is integrated: implement FN-LES-T1-W03-RELATIONSHIPS before continuing the next week index; it is now eligible in QUEUE.json.
+
+
+## Compiler validation correction
+- PR #699 registered-subject compiler check run 131951457883 failed at coverage target COV-FN-T1-W03-RELATIONSHIP / SS1-SRC-de2cdd0b85f6:BODY:5ea5a6577e5feea1074ed64173cafae653c2634b6975d45cc17013b66f60e606.
+- The inventory section digest is not sufficient evidence that the compiler's parsed row ID is identical. The unverified lesson_ids were removed from all new Week 3 PARTIAL/UNRESOLVED entries. Exact source line ranges, section hash and evidence remain. No body ID is asserted until the loader's parsed row identity is confirmed.
+- Queue task status is IN_PROGRESS; the Week 3 relationship lesson is no longer runnable until this task is revalidated. A fresh CI run will determine whether the package compiles without a target-identity error.
