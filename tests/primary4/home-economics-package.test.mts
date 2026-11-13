@@ -26,7 +26,7 @@ test('Home Economics source records use stable curriculum keys and scheme proven
   assert.ok(records.every(x => x.source_reference.includes('syllabus.ng/primary4-scheme-of-work/home-economics/')));
 });
 
-test('researched Home Economics topics remain withheld until approval and verification', () => {
+test('approved researched Home Economics topics are available with source provenance', () => {
   const record = getPrimary4SupplementRecords().find(x => x.stable_key === 'p4-he-t1-w01')!;
   const topic = {
     id: 999999, school_code: 'primary', class_name: 'Primary 4',
@@ -35,13 +35,17 @@ test('researched Home Economics topics remain withheld until approval and verifi
     source_reference: record.source_reference, source_file: record.source_file,
   };
   const result = resolvePrimary4SourceDelivery(topic);
-  assert.equal(result?.kind, 'withheld');
+  assert.equal(result?.kind, 'matched');
   assert.equal(result?.source, 'researched-package');
   assert.equal(resolvePrimary4SourceDelivery({ ...topic, source_file: 'wrong-package.json' })?.kind, 'withheld');
-  if (result?.kind === 'withheld') assert.match(result.reason, /pending owner approval and independent verification/);
+  if (result?.kind === 'matched') {
+    assert.match(result.text, /Content approval: APPROVED/);
+    assert.match(result.text, /Pedagogical verification: VERIFIED/);
+    assert.match(result.text, /Assessment rebuild: VERIFIED/);
+  }
   const safe = safePrimary4Topic(topic);
-  assert.equal(safe.source_reference, null);
-  assert.equal((safe as any).primary4_delivery.status, 'withheld');
+  assert.equal(safe.source_reference, record.source_reference);
+  assert.equal((safe as any).primary4_delivery.status, 'researched-package-match');
 });
 
 test('liquid-soap lesson does not direct pupils to handle caustic soda or strong acids', () => {
