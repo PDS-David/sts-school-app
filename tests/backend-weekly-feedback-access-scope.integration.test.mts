@@ -255,7 +255,7 @@ test('weekly-effort feedback enforces class, teacher ownership, active ward and 
     });
     const teacherPayload = await subjectTeacherFeed.json() as { weekly_efforts: Array<{ id: number }> };
     assert.ok(teacherPayload.weekly_efforts.every(row =>
-      [fixture.efforts.classFiveBySubjectTeacher, fixture.efforts.classFourBySubjectTeacher, fixture.efforts.secondaryBySubjectTeacher]
+      [fixture.efforts.classFiveBySubjectTeacher, fixture.efforts.classFourBySubjectTeacher]
         .includes(row.id),
     ), 'subject-only teacher feed must include only their own active entries');
   } finally {
