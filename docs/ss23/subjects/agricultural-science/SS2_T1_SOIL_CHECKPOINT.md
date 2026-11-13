@@ -17,7 +17,7 @@ File: `backend/src/db/ss23/subjects/agricultural-science.json`
 - SS2 Agricultural Science First Term Week 2: soil formation, weathering, texture, structure, pH, profile and a settling-jar demonstration.
 - Five assessment items per week, each with a model answer, explanation and marking criteria whose marks sum to the question total.
 - Original-source provenance pinned to `SS23-SRC-237dbcc77749` and member SHA-256 `237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d`.
-- Three external factual references recorded separately as authored supplements; summaries are content-hashed.
+- Four external factual references recorded separately as authored supplements; summaries are content-hashed, including Penn State Extension's gypsum/liming distinction.
 - Source-to-scheme mapping is documented in PR #791.
 
 ## Explicit blockers — package remains PENDING
