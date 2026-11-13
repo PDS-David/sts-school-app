@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, ActivityIndicator, TextInput,
+  View, Text, StyleSheet, ScrollView, TouchableOpacity, ActivityIndicator, TextInput,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../api/client';
 import { Card, Btn, Loader, Empty, SectionHeader } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 
 interface Question {
   id: number;
@@ -43,6 +44,7 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
   const [reviewData,    setReviewData]    = useState<any>(null);
   const [reviewError,   setReviewError]   = useState('');
   const [reviewRetry,   setReviewRetry]   = useState(0);
+  const [dialog, setDialog] = useState<{ title: string; message: string; confirmLabel?: string; destructive?: boolean; hideCancel?: boolean; onConfirm?: () => void } | null>(null);
 
   useEffect(() => {
     if (!alreadySubmitted) return;
@@ -93,21 +95,15 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
 
   const handleSubmit = () => {
     const unanswered = questions.filter(q => !answers[q.id]).length;
-    if (unanswered > 0) {
-      Alert.alert(
-        'Unanswered Questions',
-        `You have ${unanswered} unanswered question(s). Submit anyway?`,
-        [
-          { text: 'Review', style: 'cancel' },
-          { text: 'Submit', style: 'destructive', onPress: doSubmit },
-        ],
-      );
-    } else {
-      Alert.alert('Submit Assessment', 'Are you sure you want to submit?', [
-        { text: 'Cancel', style: 'cancel' },
-        { text: 'Submit', onPress: doSubmit },
-      ]);
-    }
+    setDialog({
+      title: unanswered > 0 ? 'Unanswered questions' : 'Submit assessment?',
+      message: unanswered > 0
+        ? `You have ${unanswered} unanswered question(s). You can go back to review them, or submit the answers you have provided.`
+        : 'After submission, your answers will be recorded for marking.',
+      confirmLabel: 'Submit',
+      destructive: unanswered > 0,
+      onConfirm: () => { setDialog(null); void doSubmit(); },
+    });
   };
 
   const doSubmit = async () => {
@@ -120,7 +116,7 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
       setResult(data);
       setSubmitted(true);
     } catch (e: any) {
-      Alert.alert('Error', e?.response?.data?.error ?? 'Submission failed');
+      setDialog({ title: 'Submission failed', message: e?.response?.data?.error ?? 'Check your connection and try again. Your answers are still on this screen.', hideCancel: true });
     } finally { setSubmitting(false); }
   };
 
@@ -139,14 +135,13 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
     const revAnswers: any[] = reviewData.answers ?? [];
     const fullyGraded = sub?.fully_graded !== false;
     const handleRetake = () => {
-      Alert.alert(
-        'Retake Assessment?',
-        'This will replace your current answers and score with a new attempt. Your previous submission cannot be recovered afterward.',
-        [
-          { text: 'Cancel', style: 'cancel' },
-          { text: 'Retake', style: 'destructive', onPress: () => { setAnswers({}); setCurrent(0); setReviewError(''); setReviewMode(false); } },
-        ],
-      );
+      setDialog({
+        title: 'Retake assessment?',
+        message: 'This will replace your current answers and score with a new attempt. Your previous submission cannot be recovered afterward.',
+        confirmLabel: 'Retake',
+        destructive: true,
+        onConfirm: () => { setDialog(null); setAnswers({}); setCurrent(0); setReviewError(''); setReviewMode(false); },
+      });
     };
     return (
       <ScrollView contentContainerStyle={styles.resultContainer}>
@@ -176,6 +171,7 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
         <Btn label="Retake Assessment" onPress={handleRetake} variant="outline" style={{ marginTop: Spacing.md }} />
         <Btn label="Back to Assessments" onPress={() => navigation.goBack()} style={{ marginTop: Spacing.sm, marginBottom: Spacing.xl }} />
       </ScrollView>
+      <ConfirmDialog visible={!!dialog} title={dialog?.title ?? ''} message={dialog?.message ?? ''} confirmLabel={dialog?.confirmLabel} destructive={dialog?.destructive} hideCancel={dialog?.hideCancel} onConfirm={() => { const action = dialog?.onConfirm; if (action) action(); else setDialog(null); }} onCancel={() => setDialog(null)} />
     );
   }
 
@@ -306,6 +302,7 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
           />
         )}
       </View>
+      <ConfirmDialog visible={!!dialog} title={dialog?.title ?? ''} message={dialog?.message ?? ''} confirmLabel={dialog?.confirmLabel} destructive={dialog?.destructive} hideCancel={dialog?.hideCancel} onConfirm={() => { const action = dialog?.onConfirm; if (action) action(); else setDialog(null); }} onCancel={() => setDialog(null)} />
     </View>
   );
 }
