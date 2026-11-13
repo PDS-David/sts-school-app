@@ -38,6 +38,8 @@ Worker branch: `agent/frontend-academic-setup-current-20261113`
 - `29dd092e140c49ed281b4701c1e864d70243a12d` — reapply academic setup recovery on current master.
 - Checkpoint commit: `1f87011775a0632cce7c4ca117d30718a3c2c27b`.
 
+- CI evidence: Mobile TypeScript workflow run 43458397901 completed successfully on the PR head.
+
 ## Verification
 - Static inspection confirms terms and subjects continue to use the selected-school query parameter.
 - Static inspection confirms old-school data is cleared before a school change fetch completes.
