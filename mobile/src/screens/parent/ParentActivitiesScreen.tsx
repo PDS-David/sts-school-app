@@ -61,7 +61,8 @@ export default function ParentActivitiesScreen({ navigation }: any) {
         {testsError ? <Card><Text style={styles.sub}>{assessments.length ? 'Could not refresh upcoming tests. Showing the last available list.' : 'Could not load upcoming tests. Pull down to retry.'}</Text></Card> : null}
         {!testsError && assessments.length === 0 ? (
           <Card><Text style={styles.sub}>No upcoming tests have been published for your children.</Text></Card>
-        ) : !testsError ? assessments.map(test => (
+        ) : null}
+        {!testsError ? assessments.map(test => (
           <Card key={test.id} style={styles.card}>
             <View style={styles.icon}><Ionicons name="clipboard-outline" size={22} color={Colors.primary} /></View>
             <View style={styles.content}>
@@ -71,13 +72,14 @@ export default function ParentActivitiesScreen({ navigation }: any) {
               {test.end_at ? <Text style={styles.sub}>Closes: {dateLabel(test.end_at)}</Text> : null}
             </View>
           </Card>
-        ))}
+        )) : null}
 
         <Text style={styles.section}>School Calendar & Events</Text>
         {eventsError ? <Card><Text style={styles.sub}>{events.length ? 'Could not refresh school events. Showing the last available list.' : 'Could not load school events. Pull down to retry.'}</Text></Card> : null}
         {!eventsError && events.length === 0 ? (
           <Card><Text style={styles.sub}>No school events are scheduled in the current calendar window.</Text></Card>
-        ) : !eventsError ? events.map(event => (
+        ) : null}
+        {!eventsError ? events.map(event => (
           <Card key={String(event.id)} style={styles.card}>
             <View style={styles.icon}><Ionicons name={event.event_type === 'holiday' ? 'sunny-outline' : event.event_type === 'exam' ? 'school-outline' : 'calendar-outline'} size={22} color={Colors.primary} /></View>
             <View style={styles.content}>
@@ -88,7 +90,7 @@ export default function ParentActivitiesScreen({ navigation }: any) {
               {event.description ? <Text style={styles.sub}>{event.description}</Text> : null}
             </View>
           </Card>
-        ))}
+        )) : null}
 
         <Text style={styles.section}>Assignments & Results</Text>
         <TouchableOpacity onPress={() => navigation.navigate('MyResults')} activeOpacity={0.8}>
