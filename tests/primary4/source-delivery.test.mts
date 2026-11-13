@@ -128,7 +128,7 @@ test('archive correction package contains structurally complete lessons and expl
     assert.equal(record.subject, sourceIdentity.subject);
     assert.equal(record.term, sourceIdentity.term);
     assert.ok(record.objectives.length >= 2, record.title);
-    assert.ok(record.lesson.length >= 100, record.title);
+    assert.ok(record.lesson.length >= 350, record.title);
     assert.ok(record.examples.length >= 2, record.title);
     assert.ok(record.activity.length >= 20, record.title);
     assert.ok(record.evaluation.length >= 3, record.title);
