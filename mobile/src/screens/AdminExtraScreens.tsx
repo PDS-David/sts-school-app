@@ -275,7 +275,7 @@ export function DeletedStudentsScreen({ navigation }: any) {
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); fetchDeleted(); }} />}
     >
       <PageContainer style={{ padding: Spacing.sm }}>
-        {!!loadError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry deleted students' variant='outline' size='sm' onPress={() => fetchDeleted()} /></View>}
+        {!!loadError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry deleted students' variant='outline' onPress={() => fetchDeleted()} /></View>}
         {students.length === 0 ? <Empty message="No deleted students for this school" /> : students.map(s => (
           <Card key={s.id} style={{ marginBottom: Spacing.sm }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
