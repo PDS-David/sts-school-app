@@ -164,8 +164,8 @@ if (!SERVER_URL) {
 
     client = await dbClient(DB_EXISTING);
     try {
-      const rows = await client.query('SELECT count(*)::int AS count FROM schema_migrations');
-      assert.equal(rows.rows[0].count, 0, 'existing database must not be silently stamped');
+      const absent = await client.query("SELECT to_regclass('public.schema_migrations') IS NULL AS absent");
+      assert.equal(absent.rows[0].absent, true, 'failed --all/--fresh must not leave a ledger on an untracked existing database');
     } finally { await client.end(); }
   });
 }
