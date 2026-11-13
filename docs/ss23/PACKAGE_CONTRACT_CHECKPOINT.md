@@ -43,7 +43,7 @@ Twenty-four Node tests cover valid SS2/SS3 package shapes, question/answer prove
 - superficial lesson bodies;
 - approval or verification claims without supporting references.
 
-The workflow installs locked dependencies, type-checks the backend and runs the schema tests. Because this workflow is introduced in this PR, it cannot execute on this PR until it is present on the base branch. Latest package-contract commit: `943d9be62030d9c6c9c821c07ab3ef17b2157e8d`. GitHub Actions run 43472999779 completed successfully after the Week 3 package extension: backend TypeScript typecheck passed and all 24 SS23 Node tests passed.
+The workflow installs locked dependencies, type-checks the backend and runs the schema tests. Because this workflow is introduced in this PR, it cannot execute on this PR until it is present on the base branch. Latest package-contract commit: `943d9be62030d9c6c9c821c07ab3ef17b2157e8d`. GitHub Actions run 43474264243 completed successfully after the Weeks 4-6 package extension: backend TypeScript typecheck passed and all 24 SS23 Node tests passed. Week 7 is now added and awaits the next run.
 
 ## Remaining work
 
