@@ -84,7 +84,7 @@ async function assertNoUntrackedApplicationSchema(client: PoolClient): Promise<v
     SELECT 1 FROM (
       SELECT 'pg_class'::regclass AS classid, c.oid AS objid
         FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace
-        WHERE n.nspname='public' AND c.relname <> 'schema_migrations'
+        WHERE n.nspname='public' AND c.relname <> 'schema_migrations' AND c.relkind IN ('r','p','v','m','f')
       UNION ALL
       SELECT 'pg_proc'::regclass, p.oid
         FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace
