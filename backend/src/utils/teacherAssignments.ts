@@ -28,8 +28,17 @@ export async function validateTeacherAssignments(
   assignedClass: string | null | undefined,
   subjectIds: number[],
 ): Promise<void> {
-  if (!schoolCode?.trim()) {
+  if (typeof schoolCode !== 'string' || !schoolCode.trim()) {
     throw new TeacherAssignmentValidationError('A teacher must be assigned to a school.');
+  }
+  if (schoolCode !== schoolCode.trim()) {
+    throw new TeacherAssignmentValidationError('The teacher school code must not contain surrounding whitespace.');
+  }
+  if (assignedClass !== null && assignedClass !== undefined && typeof assignedClass !== 'string') {
+    throw new TeacherAssignmentValidationError('The assigned class must be text.');
+  }
+  if (typeof assignedClass === 'string' && assignedClass !== assignedClass.trim()) {
+    throw new TeacherAssignmentValidationError('The assigned class must not contain surrounding whitespace.');
   }
 
   const { rows: schools } = await client.query(
