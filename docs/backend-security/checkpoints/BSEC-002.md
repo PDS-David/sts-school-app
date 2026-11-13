@@ -2,22 +2,25 @@
 
 - **Task ID:** BSEC-002
 - **Title:** Make student and parent auto-provisioning atomic and concurrency-safe
-- **Status:** in_progress
+- **Status:** review
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
 - **Working branch:** agent/backend-parent-provisioning-atomicity-20261113
-- **Last commit:** pending
-- **Files planned:** backend/src/routes/students.ts; backend/src/utils/parentProvisioning.ts; focused regression tests; focused GitHub Actions workflow; this checkpoint.
-- **Defect:** POST /students commits the student row before parent lookup/creation and parent_wards linking. A failure during parent provisioning can return HTTP 500 after the student has already been created, leaving a partial workflow and making a retry prone to a duplicate-admission conflict. Parent de-duplication is also a read-then-insert sequence without a transaction-scoped lock, so concurrent requests for the same normalized phone suffix can create duplicate parent accounts.
-- **Scope boundary:** no active PR changes backend/src/routes/students.ts or backend/src/utils/parentProvisioning.ts. Active PR #686 changes backend/src/routes/learning.ts and schoolEvents.ts; BSEC-001 PR #692 changes only auth middleware/claims, package script, tests, workflow and checkpoint. The teacher analytics branch changes scores.ts only. Do not touch those concurrent paths.
-- **Acceptance criteria:**
-  1. Student insert, parent find/create and parent_wards link execute on one PostgreSQL transaction client.
-  2. Concurrent provisioning for the same normalized phone suffix is serialized so only one parent is created and reused.
-  3. Audit logging remains best-effort and happens after the data transaction commits.
-  4. Regression tests cover successful reuse, new-parent creation, lock usage and rollback-safe control flow.
-  5. Backend typecheck and focused tests pass; no production database mutation.
-  6. Focused PR targets master with test evidence.
-- **Verification:** source inspection confirms the partial-commit path and unlocked find-or-create path. Automated tests not yet run.
-- **Remaining:** refactor parent provisioning to accept a transaction client, wrap POST /students in withTransaction, add regression coverage and CI, run checks, open PR.
-- **Exact next action:** inspect bootstrap/schema test conventions, then implement transaction-client helpers and the route transaction.
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/702
+- **Latest implementation commit:** 139d5a3806d271d22976e0f483d5de8eda793090
+- **Checkpoint commit:** pending
+- **Changed files:**
+  - backend/src/routes/students.ts
+  - backend/src/utils/parentProvisioning.ts
+  - tests/backend-parent-provisioning.db.test.mts
+  - .github/workflows/backend-parent-provisioning.yml
+  - docs/backend-security/checkpoints/BSEC-002.md
+- **Defect:** POST /students committed the student row before parent lookup/creation and parent_wards linking. A failure during parent provisioning could return HTTP 500 after the student had already been created. Parent de-duplication was also a read-then-insert sequence without a transaction-scoped lock, so concurrent requests for the same normalized phone suffix could create duplicate parent accounts.
+- **Implementation:** student insert, parent lookup/create and parent_wards link now run through one withTransaction client. Parent lookup/create takes a transaction-scoped advisory lock keyed by normalized last 10 phone digits; the second concurrent request rechecks and reuses the first parent's account. Best-effort audit writes occur after commit. The internal created flag is removed from the API response. Parent phone digit count is validated before the transaction.
+- **Regression coverage:** PostgreSQL integration tests exercise simultaneous local/international phone formats across primary and secondary schools, assert one parent and two ward links, and force a duplicate-email failure after student insert to prove rollback removes the student and parent.
+- **Commits:** 8920c479b64dc31214fcfbfa0e82e138f3157134; 1bb0789b9aedb8f56888525b0b5bfbaaf9f28ba7; a5da4c74834b6672b1d3d431a743499f07e0d22e; 487c7174dcdc75fd37c6b54f8ff6e5969b4672ca; 31dd5123f07c0b185f3ef8dd081192570a4531b7; 139d5a3806d271d22976e0f483d5de8eda793090.
+- **Verification:** GitHub Actions run https://github.com/PDS-David/sts-school-app/actions/runs/43445137970 completed successfully. Passed: PostgreSQL 16 service initialization, locked dependency installation, disposable database bootstrap, transaction/concurrency integration tests and backend TypeScript typecheck. Branch comparison before PR: 6 commits ahead of master, 0 behind; five changed paths. No production database or production data was touched.
+- **Concurrency:** PR #692 changes auth middleware/claims only. PR #686 changes learning/schoolEvents. This PR changes the student creation handler and parent provisioning helper; no active PR changes parentProvisioning.ts.
+- **Remaining:** PR review/merge. Do not mark the overall backend/security assignment complete.
+- **Exact next action:** review PR #702 and merge only after owner approval; then refresh from master and continue to the next backend defect.
