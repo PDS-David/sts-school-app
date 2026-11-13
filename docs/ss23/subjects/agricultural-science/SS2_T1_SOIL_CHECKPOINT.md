@@ -54,3 +54,14 @@ The SS23 package loader and fail-closed student delivery service are implemented
 The server resolves a student's class membership; clients cannot choose a class. Term PIN redemption is checked. Student projections omit model answers, explanations, marking criteria and source provenance. Assets are served only after approval, implementation, verification, permitted reuse and byte/hash checks. The current Agriculture package remains PENDING with seven blockers, so **these routes currently return no Agriculture lesson content**.
 
 GitHub Actions run 43472154140 passed: backend TypeScript typecheck and 24/24 SS23 Node tests. Tests cover package loading, wrong-class access, fail-closed pending packages, answer-key hiding, term/asset gating, path traversal and stale asset hashes.
+
+
+## Week 3 — Farm machinery and implements
+
+Week 3 is now drafted with a substantive lesson covering tractor systems, functions, daily and periodic maintenance, bulldozers and tree pullers, shellers, dryers, incubators, milking machines, ploughs, harrows, cultivators, ridgers, planters, harvesters, sprayers and safe operation. All 17 distinct source assessment prompts have authored answers, explanations and mark-by-mark criteria. Fifteen embedded machinery figures have derivative hashes, byte counts, source locators and alt text recorded; original bytes are not stored for student delivery.
+
+Three technical references support the authored corrections and safety guidance: Penn State Extension (PTO), UF/IFAS Extension (tractor safety), and Tamil Nadu Agricultural University (sprayer safety). Two source inaccuracies are explicitly flagged: the PTO is a power-transmission shaft, not the pulling hitch; petrol engines use spark plugs whereas diesel engines normally use compression ignition.
+
+The source document jumps from Week Eight to Week Ten. Week Nine has no heading or teaching content in the supplied file. It is recorded as a blocking source gap; no Week Nine lesson has been invented. The Week Three reading assignment also cites O.A. Iwena, *Essential Agricultural Science*, Chapter 12, pages 101–115, but the edition was not supplied; this is recorded as a non-blocking unverified reference.
+
+The package now contains 3 units, 54 questions (44 original-source prompts and 10 authored supplements), 21 asset records (20 source-extract references and one stored SVG), 8 external factual references and 11 open items (10 delivery-blocking, one non-blocking). All package content remains PENDING; student routes therefore serve no lessons yet.
