@@ -11,7 +11,7 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. The original source gap is supplied by
 - The source asks “Mention five adverse effects of chemicals and how they can be controlled” at evaluation line 203 and weekend question line 227. The indexed Week One body contains no teaching section on adverse effects or controls. The original questions remain unchanged; this supplement is clearly labelled as newly authored material.
 
 ## Implementation
-- Added `SUP-SS1-CHEM-T1A-W01-ADVERSE-EFFECTS` to `backend/src/db/ss1/subjects/chemistry.json`.
+- Added `SUP-SS1-CHEMISTRY-T1A-W01-ADVERSE-EFFECTS` to `backend/src/db/ss1/subjects/chemistry.json`.
 - Lesson body SHA-256: `210e76e83f7ec84f102dbef2348eb77abb4fbd009c245b8ae37706224c0b71c1`.
 - Teaching covers hazard versus risk, four exposure routes, irritation, corrosive injury, acute poisoning/organ effects, sensitisation, chronic harm, environmental effects, the five-level hierarchy of controls and school-learner safety boundaries.
 - Added six original keyed practice questions with marking criteria totalling 26 marks.
