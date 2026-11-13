@@ -18,6 +18,7 @@ import financeRouter     from './routes/finance.js';
 import aiRouter          from './routes/ai.js';
 import announcementsRouter from './routes/announcements.js';
 import schoolEventsRouter from './routes/schoolEvents.js';
+import healthRouter from './routes/health.js';
 import { startBackupScheduler } from './utils/backup.js';
 import { pool } from './db/pool.js';
 import { installFatalProcessHandlers } from './utils/fatalProcessHandlers.js';
@@ -34,6 +35,8 @@ app.use(express.json({ limit: '5mb' }));
 app.use('/auth', rateLimit({ windowMs: 15 * 60 * 1000, max: 30 }));
 
 // Routes
+app.use('/health', healthRouter);
+
 app.get('/', (_req, res) => res.json({
   status: 'ok',
   app: 'Sow the Seed School API',
