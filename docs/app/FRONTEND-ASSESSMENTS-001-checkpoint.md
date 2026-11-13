@@ -46,7 +46,7 @@ Worker branch: `agent/frontend-assessment-recovery-refresh-20261113`
 - `3ea9cfe6fd9f7d34d858c8cd9cfacb4f03672407` — carry forward student attempt/review recovery.
 - `607f520caf7dcded77bf363ff31db75f2c249db3` — carry forward admin authoring recovery and validation.
 - `03f1c8f15e2214839b887087d7bf925ad8d7066c` — carry forward admin results recovery.
-- Checkpoint commit: pending.
+- Checkpoint commit: `e38578d0ac5b351cd18d0c607b1f38a58ad9b75c`.
 
 ## Verification
 - Static inspection confirms list/question/results retry paths reissue their existing GET endpoints.
