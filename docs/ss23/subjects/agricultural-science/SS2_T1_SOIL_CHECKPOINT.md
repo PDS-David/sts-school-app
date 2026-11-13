@@ -53,7 +53,7 @@ The SS23 package loader and fail-closed student delivery service are implemented
 
 The server resolves a student's class membership; clients cannot choose a class. Term PIN redemption is checked. Student projections omit model answers, explanations, marking criteria and source provenance. Assets are served only after approval, implementation, verification, permitted reuse and byte/hash checks. The current Agriculture package remains PENDING with seven blockers, so **these routes currently return no Agriculture lesson content**.
 
-GitHub Actions run 43472154140 passed: backend TypeScript typecheck and 24/24 SS23 Node tests. Tests cover package loading, wrong-class access, fail-closed pending packages, answer-key hiding, term/asset gating, path traversal and stale asset hashes.
+GitHub Actions run 43472999779 passed after Week 3 was added: backend TypeScript typecheck and 24/24 SS23 Node tests. Tests cover package loading, wrong-class access, fail-closed pending packages, answer-key hiding, term/asset gating, path traversal and stale asset hashes.
 
 
 ## Week 3 — Farm machinery and implements
