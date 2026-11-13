@@ -30,8 +30,8 @@ The durable per-task checkpoints are:
 
 ## Verification evidence
 - OPS-01 PR #737 GitHub Actions run `43453221768` passed backend/mobile typechecks, static regressions, schema replay and all 3 disposable PostgreSQL migration-ledger integration tests.
-- Calendar PR #740 first CI run exposed JSX syntax and duplicate-state defects in Parent Activities. Both were corrected in later commits; fresh combined CI is pending.
-- PR #743 and #744 include the same calendar corrections; combined CI is pending.
+- Calendar PR #740 first CI run exposed JSX syntax and duplicate-state defects in Parent Activities. Both were corrected; latest JSS3 verify run `43455712697` passed, including TypeScript checks and the migration-ledger suite applying `0002_school_events.sql`.
+- PR #743 and #744 include the same calendar corrections plus achievements-feed error handling; their latest cumulative CI runs are still queued/in progress.
 - No local device acceptance or production database migration has been performed.
 
 ## Remaining
