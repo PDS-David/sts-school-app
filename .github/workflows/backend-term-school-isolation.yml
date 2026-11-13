@@ -9,6 +9,7 @@ on:
       - "backend/src/routes/attendance.ts"
       - "tests/backend-term-school-isolation.integration.test.mts"
       - "tests/backend-attendance-report-scope.integration.test.mts"
+      - "tests/backend-term-session-atomicity.integration.test.mts"
       - ".github/workflows/backend-term-school-isolation.yml"
 
 permissions:
@@ -52,5 +53,7 @@ jobs:
         run: node --import tsx --test tests/backend-term-school-isolation.integration.test.mts
       - name: Run whole-class attendance scope regressions
         run: node --import tsx --test tests/backend-attendance-report-scope.integration.test.mts
+      - name: Run term session atomicity regressions
+        run: node --import tsx --test tests/backend-term-session-atomicity.integration.test.mts
       - name: Typecheck backend
         run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json

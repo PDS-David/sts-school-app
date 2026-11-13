@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import { z } from 'zod';
+import type { PoolClient } from 'pg';
 import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scope.js';
@@ -23,6 +25,58 @@ const termPinEnforced = () => process.env.TERM_PIN_ENFORCED === 'true';
 
 const router = Router();
 router.use(requireAuth);
+
+type ContentReferenceError = { status: 400; error: string } | null;
+
+/**
+ * Lock and validate the school-owned reference rows before a learning-content
+ * write. The row locks prevent an administrator changing a subject/term's
+ * school assignment between validation and persistence.
+ */
+async function validateContentReferences(
+  client: PoolClient,
+  schoolCode: string,
+  subjectId: number,
+  termId: number | null,
+): Promise<ContentReferenceError> {
+  const { rows: schoolRows } = await client.query(
+    'SELECT code FROM schools WHERE code=$1 FOR SHARE',
+    [schoolCode],
+  );
+  if (!schoolRows[0]) return { status: 400, error: 'Unknown school_code.' };
+
+  const { rows: subjectRows } = await client.query(
+    'SELECT id FROM subjects WHERE id=$1 AND school_code=$2 FOR SHARE',
+    [subjectId, schoolCode],
+  );
+  if (!subjectRows[0]) return { status: 400, error: 'subject_id must belong to the target school.' };
+
+  if (termId != null) {
+    const { rows: termRows } = await client.query(
+      'SELECT id FROM terms WHERE id=$1 AND school_code=$2 FOR SHARE',
+      [termId, schoolCode],
+    );
+    if (!termRows[0]) return { status: 400, error: 'term_id must belong to the target school.' };
+  }
+  return null;
+}
+
+function resolveContentSchool(
+  user: AuthUser,
+  requestedSchoolCode?: string,
+): { schoolCode: string } | { status: 400 | 403; error: string } {
+  if (user.role === 'admin') {
+    const schoolCode = requestedSchoolCode?.trim() || user.school_code?.trim();
+    return schoolCode
+      ? { schoolCode }
+      : { status: 400, error: 'school_code is required when an administrator creates learning content.' };
+  }
+  const schoolCode = user.school_code?.trim();
+  return schoolCode
+    ? { schoolCode }
+    : { status: 403, error: 'Your account is not assigned to a school.' };
+}
+
 
 // Individually certified SS1 package lessons are read-only student content.
 // Existing database topics, term PINs and topic-completion sequencing remain unchanged.
@@ -171,9 +225,10 @@ router.get('/materials', requirePerm('materials.read'), async (req, res) => {
 
   let sql = `SELECT m.*,sub.name AS subject_name,u.full_name AS uploaded_by
              FROM materials m
-             JOIN subjects sub ON sub.id=m.subject_id
+             JOIN subjects sub ON sub.id=m.subject_id AND sub.school_code=m.school_code
              JOIN users u ON u.id=m.created_by
-             WHERE m.school_code=$1`;
+             WHERE m.school_code=$1
+               AND (m.term_id IS NULL OR EXISTS (SELECT 1 FROM terms t WHERE t.id=m.term_id AND t.school_code=m.school_code))`;
   const params: unknown[] = [sc];
 
   if (user.role === 'teacher') {
@@ -211,26 +266,45 @@ router.get('/materials', requirePerm('materials.read'), async (req, res) => {
   return res.json({ materials: rows });
 });
 
-router.post('/materials', requirePerm('materials.write'), async (req, res) => {
-  const { subject_id, class_name, term_id, title, type, url, school_code } = req.body;
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+const materialCreateSchema = z.object({
+  subject_id: z.coerce.number().int().positive(),
+  class_name: z.string().trim().min(1).max(100).nullable().optional(),
+  term_id: z.coerce.number().int().positive().nullable().optional(),
+  title: z.string().trim().min(1).max(255),
+  type: z.string().trim().min(1).max(40),
+  url: z.string().trim().min(1).max(2048),
+  school_code: z.string().trim().min(1).max(50).optional(),
+});
 
-  // Found alongside the same-shape bug on /assessments below: a teacher
-  // could previously publish a material for any class/subject in their
-  // school, whether or not they actually teach it. A teacher may write here
-  // for their own assigned_class (any subject) or their own
-  // assigned_subject_id (any class) — see checkTeacherContentScope() for
-  // the full rule; admin is unrestricted as everywhere else.
-  const scopeError = await checkTeacherContentScope(req.user!, { class_name: class_name ?? null, subject_id });
+router.post('/materials', requirePerm('materials.write'), async (req, res) => {
+  const parsed = materialCreateSchema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
+  const data = parsed.data;
+  const target = resolveContentSchool(req.user!, data.school_code);
+  if ('error' in target) return res.status(target.status).json({ error: target.error });
+
+  const scopeError = await checkTeacherContentScope(req.user!, {
+    class_name: data.class_name ?? null,
+    subject_id: data.subject_id,
+  });
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
-  const { rows } = await query(
-    `INSERT INTO materials(school_code,subject_id,class_name,term_id,title,type,url,created_by)
-     VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
-    [sc, subject_id, class_name ?? null, term_id ?? null,
-     title, type, url, req.user!.id],
-  );
-  return res.status(201).json({ material: rows[0] });
+  const result = await withTransaction(async (client) => {
+    const referenceError = await validateContentReferences(
+      client, target.schoolCode, data.subject_id, data.term_id ?? null,
+    );
+    if (referenceError) return { ok: false as const, ...referenceError };
+
+    const { rows } = await client.query(
+      `INSERT INTO materials(school_code,subject_id,class_name,term_id,title,type,url,created_by)
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
+      [target.schoolCode, data.subject_id, data.class_name ?? null, data.term_id ?? null,
+       data.title, data.type, data.url, req.user!.id],
+    );
+    return { ok: true as const, material: rows[0] };
+  });
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  return res.status(201).json({ material: result.material });
 });
 
 router.delete('/materials/:id', requirePerm('materials.write'), async (req, res) => {
@@ -1213,7 +1287,9 @@ router.put('/study-plan/subjects/:subject_id', requireRole('student'), async (re
 
 router.get('/questions', requirePerm('questions.read'), async (req, res) => {
   const { subject_id, class_name, type } = req.query as Record<string, string>;
-  let sql = `SELECT * FROM questions WHERE school_code=$1`;
+  let sql = `SELECT * FROM questions q WHERE q.school_code=$1
+               AND EXISTS (SELECT 1 FROM subjects sub WHERE sub.id=q.subject_id AND sub.school_code=q.school_code)
+               AND (q.term_id IS NULL OR EXISTS (SELECT 1 FROM terms t WHERE t.id=q.term_id AND t.school_code=q.school_code))`;
   const params: unknown[] = [req.user!.school_code];
   if (subject_id) { params.push(subject_id); sql += ` AND subject_id=$${params.length}`; }
   if (class_name) { params.push(class_name); sql += ` AND class_name=$${params.length}`; }
@@ -1222,33 +1298,48 @@ router.get('/questions', requirePerm('questions.read'), async (req, res) => {
   return res.json({ questions: rows });
 });
 
-router.post('/questions', requirePerm('questions.write'), async (req, res) => {
-  const { subject_id, class_name, term_id, type, stem, options, correct_keys, marks, school_code } = req.body;
+const questionCreateSchema = z.object({
+  subject_id: z.coerce.number().int().positive(),
+  class_name: z.string().trim().min(1).max(100).nullable().optional(),
+  term_id: z.coerce.number().int().positive().nullable().optional(),
+  type: z.enum(['mcq', 'essay']).optional(),
+  stem: z.string().trim().min(1).max(10000),
+  options: z.unknown().optional(),
+  correct_keys: z.array(z.string().min(1)).optional(),
+  marks: z.number().int().positive().max(1000).optional(),
+  school_code: z.string().trim().min(1).max(50).optional(),
+});
 
-  // Added in Pass 19: the same scoping gap as /materials and /assessments
-  // (flagged as a follow-up when those two were fixed in Pass 17, since a
-  // question feeds directly into an assessment) — a teacher could publish a
-  // question for any class/subject in their school, whether or not they
-  // actually teach it. Same rule as the other two: allowed for the
-  // teacher's own assigned class (any subject) or their own assigned
-  // subject (any class).
-  const scopeError = await checkTeacherContentScope(req.user!, { class_name: class_name ?? null, subject_id });
+router.post('/questions', requirePerm('questions.write'), async (req, res) => {
+  const parsed = questionCreateSchema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
+  const data = parsed.data;
+  const target = resolveContentSchool(req.user!, data.school_code);
+  if ('error' in target) return res.status(target.status).json({ error: target.error });
+
+  const scopeError = await checkTeacherContentScope(req.user!, {
+    class_name: data.class_name ?? null,
+    subject_id: data.subject_id,
+  });
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
-  // Same admin-NULL-school_code fix already applied to /materials and
-  // /assessments: admin accounts have school_code=null, so always writing
-  // req.user.school_code silently created questions invisible to every
-  // teacher's GET /questions (which filters by their own non-null
-  // school_code). Accept an explicit school_code in the body for admin only.
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+  const result = await withTransaction(async (client) => {
+    const referenceError = await validateContentReferences(
+      client, target.schoolCode, data.subject_id, data.term_id ?? null,
+    );
+    if (referenceError) return { ok: false as const, ...referenceError };
 
-  const { rows } = await query(
-    `INSERT INTO questions(school_code,subject_id,class_name,term_id,type,stem,options,correct_keys,marks,created_by)
-     VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
-    [sc, subject_id, class_name ?? null, term_id ?? null,
-     type ?? 'mcq', stem, JSON.stringify(options ?? []), correct_keys ?? [], marks ?? 1, req.user!.id],
-  );
-  return res.status(201).json({ question: rows[0] });
+    const { rows } = await client.query(
+      `INSERT INTO questions(school_code,subject_id,class_name,term_id,type,stem,options,correct_keys,marks,created_by)
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
+      [target.schoolCode, data.subject_id, data.class_name ?? null, data.term_id ?? null,
+       data.type ?? 'mcq', data.stem, JSON.stringify(data.options ?? []),
+       data.correct_keys ?? [], data.marks ?? 1, req.user!.id],
+    );
+    return { ok: true as const, question: rows[0] };
+  });
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  return res.status(201).json({ question: result.question });
 });
 
 // ════════════════════════════════════════════════════════
@@ -1266,7 +1357,7 @@ router.get('/parent/upcoming-assessments', requireRole('parent'), async (req, re
        JOIN students st ON st.id=pw.student_id AND st.deleted_at IS NULL
        JOIN assessments a ON a.school_code=st.school_code
          AND (a.class_name IS NULL OR a.class_name=st.class_name)
-       JOIN subjects sub ON sub.id=a.subject_id AND sub.school_code=a.school_code
+       JOIN subjects sub ON sub.id=a.subject_id AND sub.school_code=a.school_code AND sub.school_code=a.school_code
       WHERE pw.parent_id=$1
         AND a.status='open'
         AND (a.start_at IS NULL OR a.start_at >= now())
@@ -1328,8 +1419,9 @@ router.get('/assessments', requirePerm('assessments.read'), async (req, res) => 
   let sql = `SELECT a.*,sub.name AS subject_name,
                     (SELECT COUNT(*) FROM assessment_questions aq WHERE aq.assessment_id=a.id) AS question_count
                     ${submittedCol}
-             FROM assessments a JOIN subjects sub ON sub.id=a.subject_id
-             WHERE a.school_code=$1`;
+             FROM assessments a JOIN subjects sub ON sub.id=a.subject_id AND sub.school_code=a.school_code
+             WHERE a.school_code=$1
+               AND (a.term_id IS NULL OR EXISTS (SELECT 1 FROM terms t WHERE t.id=a.term_id AND t.school_code=a.school_code))`;
 
   if (viewerClasses) {
     if (!viewerClasses.length) return res.json({ assessments: [] });
@@ -1373,46 +1465,88 @@ router.get('/assessments', requirePerm('assessments.read'), async (req, res) => 
   return res.json({ assessments: visibleRows });
 });
 
-router.post('/assessments', requirePerm('assessments.create'), async (req, res) => {
-  const { subject_id, class_name, term_id, title, start_at, end_at, shuffle, question_ids, school_code } = req.body as {
-    subject_id: number; class_name: string; term_id?: number; title: string;
-    start_at?: string; end_at?: string; shuffle?: boolean;
-    question_ids: Array<{ id: number; points: number }>; school_code?: string;
-  };
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+const assessmentCreateSchema = z.object({
+  subject_id: z.coerce.number().int().positive(),
+  class_name: z.string().trim().min(1).max(100),
+  term_id: z.coerce.number().int().positive().nullable().optional(),
+  title: z.string().trim().min(1).max(255),
+  start_at: z.string().optional(),
+  end_at: z.string().optional(),
+  shuffle: z.boolean().optional(),
+  question_ids: z.array(z.object({
+    id: z.coerce.number().int().positive(),
+    points: z.coerce.number().int().positive().max(1000).optional(),
+  })).min(1).max(200)
+    .refine(items => new Set(items.map(item => item.id)).size === items.length,
+      'question_ids must not contain duplicates'),
+  school_code: z.string().trim().min(1).max(50).optional(),
+});
 
-  // Same rule as POST /materials above — a teacher may only schedule an
-  // assessment for their own assigned class (any subject) or their own
-  // assigned subject (any class in their school).
-  const scopeError = await checkTeacherContentScope(req.user!, { class_name, subject_id });
+router.post('/assessments', requirePerm('assessments.create'), async (req, res) => {
+  const parsed = assessmentCreateSchema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
+  const data = parsed.data;
+  const target = resolveContentSchool(req.user!, data.school_code);
+  if ('error' in target) return res.status(target.status).json({ error: target.error });
+
+  const scopeError = await checkTeacherContentScope(req.user!, {
+    class_name: data.class_name,
+    subject_id: data.subject_id,
+  });
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
-  const total_marks = (question_ids ?? []).reduce((s, q) => s + (q.points ?? 1), 0);
-  // ASM-03: header and question links commit together or not at all, so a
-  // failure part-way through the loop cannot leave an assessment with missing
-  // questions and a total_marks that no longer matches them.
-  const assessment = await withTransaction(async (client) => {
+  const result = await withTransaction(async (client) => {
+    const referenceError = await validateContentReferences(
+      client, target.schoolCode, data.subject_id, data.term_id ?? null,
+    );
+    if (referenceError) return { ok: false as const, ...referenceError };
+
+    const questionIds = data.question_ids.map(item => item.id);
+    const { rows: questions } = await client.query(
+      'SELECT id, school_code, subject_id, class_name, term_id FROM questions WHERE id=ANY($1::int[]) ORDER BY id FOR SHARE',
+      [questionIds],
+    );
+    if (questions.length !== questionIds.length) {
+      return { ok: false as const, status: 400, error: 'One or more question_ids do not exist.' };
+    }
+
+    const invalidQuestion = questions.find(question =>
+      question.school_code !== target.schoolCode ||
+      Number(question.subject_id) !== data.subject_id ||
+      (question.class_name != null && question.class_name !== data.class_name) ||
+      (question.term_id != null && Number(question.term_id) !== (data.term_id ?? null)),
+    );
+    if (invalidQuestion) {
+      return {
+        ok: false as const,
+        status: 400,
+        error: 'Every question must belong to the assessment school and subject, and any class/term-specific question must match the assessment.',
+      };
+    }
+
+    const totalMarks = data.question_ids.reduce((sum, item) => sum + (item.points ?? 1), 0);
     const { rows } = await client.query(
       `INSERT INTO assessments(school_code,subject_id,class_name,term_id,title,total_marks,
          start_at,end_at,shuffle,created_by)
        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
-      [sc, subject_id, class_name, term_id ?? null, title, total_marks,
-       start_at ?? null, end_at ?? null, shuffle !== false, req.user!.id],
+      [target.schoolCode, data.subject_id, data.class_name, data.term_id ?? null,
+       data.title, totalMarks, data.start_at ?? null, data.end_at ?? null,
+       data.shuffle !== false, req.user!.id],
     );
     const created = rows[0];
 
-    // Link questions
-    for (let i = 0; i < (question_ids ?? []).length; i++) {
-      const q = question_ids[i];
+    for (let index = 0; index < data.question_ids.length; index++) {
+      const item = data.question_ids[index];
       await client.query(
         `INSERT INTO assessment_questions(assessment_id,question_id,points,order_index)
-         VALUES($1,$2,$3,$4) ON CONFLICT DO NOTHING`,
-        [created.id, q.id, q.points ?? 1, i],
+         VALUES($1,$2,$3,$4)`,
+        [created.id, item.id, item.points ?? 1, index],
       );
     }
-    return created;
+    return { ok: true as const, assessment: created };
   });
-  return res.status(201).json({ assessment });
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  return res.status(201).json({ assessment: result.assessment });
 });
 
 // ── PUT /assessments/:id/status  (draft → open → closed) ──────────────────────
@@ -1486,6 +1620,18 @@ router.get('/assessments/:id/questions', async (req, res) => {
   const assessment = aRows[0];
   if (!assessment) return res.status(404).json({ error: 'Assessment not found' });
 
+  if (user.role !== 'admin') {
+    const { rows: validReferences } = await query(
+      `SELECT 1 FROM subjects s
+        WHERE s.id=$1 AND s.school_code=$2
+          AND ($3::int IS NULL OR EXISTS (
+            SELECT 1 FROM terms t WHERE t.id=$3 AND t.school_code=$2
+          ))`,
+      [assessment.subject_id, assessment.school_code, assessment.term_id],
+    );
+    if (!validReferences[0]) return res.status(404).json({ error: 'Assessment not found' });
+  }
+
   if (user.role === 'student') {
     const { rows: stRows } = await query(
       'SELECT school_code, class_name FROM students WHERE user_id=$1', [user.id],
@@ -1531,8 +1677,13 @@ router.get('/assessments/:id/questions', async (req, res) => {
   const { rows: qRows } = await query(
     `SELECT ${cols}, aq.points, aq.order_index
      FROM assessment_questions aq JOIN questions q ON q.id = aq.question_id
-     WHERE aq.assessment_id=$1 ORDER BY aq.order_index`,
-    [req.params.id],
+     WHERE aq.assessment_id=$1
+       AND q.school_code=$2
+       AND q.subject_id=$3
+       AND (q.class_name IS NULL OR q.class_name=$4)
+       AND (q.term_id IS NULL OR q.term_id IS NOT DISTINCT FROM $5)
+     ORDER BY aq.order_index`,
+    [req.params.id, assessment.school_code, assessment.subject_id, assessment.class_name, assessment.term_id],
   );
   return res.json({ assessment, questions: qRows });
 });

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Alert } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import api from '../api/client';
 import { Card, Btn, Input, Loader, Empty, SectionHeader } from '../components/UI';
@@ -7,6 +7,7 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAuth } from '../api/AuthContext';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 import { PageContainer, useIsWide } from '../components/layout';
 
 interface Student { id: string; full_name: string; class_name: string; }
@@ -42,6 +43,7 @@ export default function AttendanceScreen({ navigation }: any) {
   const [entries,  setEntries]  = useState<Record<string, string>>({});
   const [loading,  setLoading]  = useState(true);
   const [saving,   setSaving]   = useState(false);
+  const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
   const [setupError, setSetupError] = useState('');
   const [setupRetry, setSetupRetry] = useState(0);
   const [rosterError, setRosterError] = useState('');
@@ -107,7 +109,7 @@ export default function AttendanceScreen({ navigation }: any) {
     let cancelled = false;
     setAttendanceLoading(true);
     setAttendanceError('');
-    api.get(`/attendance?class_name=${encodeURIComponent(selClass)}&term_id=${selTerm}`)
+    api.get('/attendance', { params: { class_name: selClass, term_id: selTerm, school_code: effectiveSchoolCode ?? undefined } })
       .then(r => {
         if (cancelled) return;
         const existing: Record<string, string> = { ...init };
@@ -128,24 +130,40 @@ export default function AttendanceScreen({ navigation }: any) {
   }, [selClass, selTerm, students, rosterLoading, rosterError, attendanceRetry]);
 
   const handleSave = async () => {
-    if (!selTerm) { Alert.alert('Select a term first'); return; }
+    if (saving) return;
+    if (!selTerm) { setInfoDialog({ title: 'Select a term', message: 'Choose a term before saving attendance.' }); return; }
+    if (daysOpened.trim() && (!Number.isInteger(Number(daysOpened)) || Number(daysOpened) < 0)) {
+      setInfoDialog({ title: 'Invalid school days', message: 'Days school opened must be a non-negative whole number.' }); return;
+    }
+    const targetDays = daysOpened.trim() ? Number(daysOpened) : Number(terms.find(t => t.id === selTerm)?.days_opened ?? 0);
+    const invalid = Object.entries(entries).find(([studentId, value]) => {
+      if (value.trim() === '') return false;
+      const n = Number(value);
+      return !Number.isFinite(n) || !Number.isInteger(n) || n < 0 || (targetDays > 0 && n > targetDays);
+    });
+    if (invalid) {
+      const student = students.find(s => s.id === invalid[0]);
+      setInfoDialog({ title: 'Invalid attendance value', message: `Enter a whole number between 0 and ${targetDays || 'the number of days opened'} for ${student?.full_name ?? 'the selected student'}.` });
+      return;
+    }
     const payload = Object.entries(entries)
-      .filter(([, v]) => v !== '')
+      .filter(([, v]) => v.trim() !== '')
       .map(([student_id, days_present]) => ({ student_id, days_present: Number(days_present) }));
-    if (!payload.length) { Alert.alert('No attendance values entered'); return; }
+    if (!payload.length) { setInfoDialog({ title: 'No attendance entered', message: 'Enter at least one student attendance value before saving.' }); return; }
     setSaving(true);
     try {
-      await api.put('/attendance/bulk', { term_id: Number(selTerm), entries: payload });
-      // Update term days_opened / next_term_begins if changed
-      if (daysOpened || nextTermBegins) {
+      // Update the term limit first so the server validates the attendance
+      // batch against the new days-opened value when both are changed together.
+      if (daysOpened.trim() || nextTermBegins.trim()) {
         await api.put(`/academic/terms/${selTerm}`, {
-          days_opened: daysOpened ? Number(daysOpened) : undefined,
-          next_term_begins: nextTermBegins || undefined,
+          days_opened: daysOpened.trim() ? Number(daysOpened) : undefined,
+          next_term_begins: nextTermBegins.trim() || undefined,
         });
       }
-      Alert.alert('Saved', 'Attendance saved successfully.');
+      await api.put('/attendance/bulk', { term_id: Number(selTerm), entries: payload });
+      setInfoDialog({ title: 'Attendance saved', message: `Attendance for ${payload.length} student(s) was saved successfully.` });
     } catch (e: any) {
-      Alert.alert('Error', e?.response?.data?.error ?? 'Save failed');
+      setInfoDialog({ title: 'Could not save attendance', message: e?.response?.data?.error ?? 'Save failed. Check your connection and try again.' });
     } finally { setSaving(false); }
   };
 
@@ -171,6 +189,7 @@ export default function AttendanceScreen({ navigation }: any) {
   const classStudents = students.filter(s => s.class_name === selClass);
 
   return (
+    <>
     <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
       <PageContainer style={{ padding: Spacing.sm }}>
         <Card>
@@ -245,6 +264,8 @@ export default function AttendanceScreen({ navigation }: any) {
         </Card>
       </PageContainer>
     </ScrollView>
+    <ConfirmDialog visible={!!infoDialog} title={infoDialog?.title ?? ''} message={infoDialog?.message ?? ''} hideCancel onConfirm={() => setInfoDialog(null)} onCancel={() => setInfoDialog(null)} />
+    </>
   );
 }
 

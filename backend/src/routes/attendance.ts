@@ -65,12 +65,16 @@ router.put('/', requirePerm('attendance.write'), async (req, res) => {
 // here)" comment where this call should have been, meaning it always showed
 // blank inputs even when a class/term already had data saved.
 router.get('/', requirePerm('attendance.read'), async (req, res) => {
-  const { class_name, term_id } = req.query as Record<string, string>;
+  const { class_name, term_id, school_code: requestedSchoolCode } = req.query as Record<string, string>;
   const user = req.user!;
   const parsedTermId = Number(term_id);
   const effectiveClass = user.role === 'teacher'
     ? (user.assigned_class ?? class_name?.trim())
     : class_name?.trim();
+  // Admins have no own school_code. Their selected school is explicit in
+  // the screen's school switcher; requiring it prevents same-named classes
+  // from different schools being mixed in the attendance editor.
+  const effectiveSchoolCode = user.role === 'admin' ? requestedSchoolCode : user.school_code;
 
   if (!effectiveClass || !Number.isSafeInteger(parsedTermId) || parsedTermId <= 0 || parsedTermId > 2_147_483_647) {
     return res.status(400).json({ error: 'A valid class_name and positive integer term_id are required' });
@@ -79,13 +83,11 @@ router.get('/', requirePerm('attendance.read'), async (req, res) => {
   if (user.role === 'teacher' && !user.school_code) {
     return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
   }
-  if (user.school_code) {
-    const termScopeError = await checkTermSchoolScope(user.school_code, parsedTermId);
-    if (termScopeError) return res.status(termScopeError.status).json({ error: termScopeError.error });
-  } else {
-    const { rows: termRows } = await query('SELECT 1 FROM terms WHERE id=$1', [parsedTermId]);
-    if (!termRows[0]) return res.status(404).json({ error: 'Term not found' });
+  if (!effectiveSchoolCode) {
+    return res.status(400).json({ error: 'school_code is required to load attendance for this account' });
   }
+  const termScopeError = await checkTermSchoolScope(effectiveSchoolCode, parsedTermId);
+  if (termScopeError) return res.status(termScopeError.status).json({ error: termScopeError.error });
 
   const { rows } = await query(
     `SELECT a.student_id, a.days_present
@@ -93,8 +95,8 @@ router.get('/', requirePerm('attendance.read'), async (req, res) => {
      JOIN students s ON s.id = a.student_id
      WHERE s.class_name = $1 AND a.term_id = $2
        AND ($4::boolean OR s.deleted_at IS NULL)
-       AND ($3::text IS NULL OR s.school_code = $3)`,
-    [effectiveClass, parsedTermId, user.school_code ?? null, user.role === 'admin'],
+       AND s.school_code = $3`,
+    [effectiveClass, parsedTermId, effectiveSchoolCode, user.role === 'admin'],
   );
   return res.json({ attendance: rows });
 });
