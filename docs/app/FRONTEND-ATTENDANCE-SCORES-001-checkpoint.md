@@ -26,6 +26,9 @@
 - Branch comparison: 2 commits ahead, 0 behind master; only the two assigned screen files changed before this checkpoint.
 - Automated Mobile TypeScript and repository CI have not yet completed. No runtime/device test is claimed.
 
+- CI Mobile TypeScript run 43468340394 failed only on two unrelated current-master errors: `mobile/src/api/client.ts(366,50)` (`flushPromise` used before assignment) and `mobile/src/screens/NotificationsScreen.tsx(35,64)` (unsupported `Btn size` prop). Neither file is changed by this PR. Both are addressed by current-master remediation PR #788; merge #788 and rerun this PR's checks before treating CI as green.
+- SS1 package integrity run 43468433891 was still in progress at the last check.
+
 ## Remaining work
 - Check the Mobile TypeScript and package integrity workflow results.
 - Fix any genuine errors without weakening checks.
