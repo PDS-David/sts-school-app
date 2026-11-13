@@ -71,7 +71,23 @@ export default function MyResultsScreen({ route, navigation }: any) {
   useEffect(() => { fetchReport(); }, [effectiveWardId]);
 
   if (loading) return <Loader />;
-  if (error)   return <Empty message={error} />;
+  if (error) {
+    const retryable = !error.startsWith('Select a child') &&
+      !error.startsWith('No student record') &&
+      !error.startsWith('No student selected');
+    return (
+      <View style={styles.errorWrap}>
+        <Empty message={error} />
+        {retryable ? (
+          <Btn
+            label="Try again"
+            variant="outline"
+            onPress={() => { setLoading(true); fetchReport(); }}
+          />
+        ) : null}
+      </View>
+    );
+  }
   if (!report || !report.student) return <Empty message="No report available" />;
 
   const { student, term, scores, attendance, class_record, summary } = report;
@@ -236,6 +252,7 @@ export default function MyResultsScreen({ route, navigation }: any) {
 }
 
 const styles = StyleSheet.create({
+  errorWrap: { flex: 1, justifyContent: 'center', backgroundColor: Colors.background, padding: Spacing.md },
   container:   { flex: 1, backgroundColor: Colors.background, padding: Spacing.sm },
   pdfRow:      { flexDirection: 'row', gap: Spacing.sm, marginBottom: Spacing.sm },
   letterhead:  { alignItems: 'center', backgroundColor: Colors.card, borderRadius: Radius.md, padding: Spacing.md, marginBottom: Spacing.sm, borderWidth: 1, borderColor: Colors.border },
