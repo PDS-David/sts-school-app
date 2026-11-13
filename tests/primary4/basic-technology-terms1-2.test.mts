@@ -4,7 +4,7 @@ import packageData from '../../backend/src/db/primary4/researched/basicTechnolog
 import { getPrimary4SupplementRecords } from '../../backend/src/db/primary4/primary4Supplements.ts';
 import { resolvePrimary4SourceDelivery } from '../../backend/src/utils/primary4Delivery.ts';
 
-test('Basic Technology proposed First and Second Terms cover the missing NERDC topic areas', () => {
+test('Basic Technology First and Second Terms cover the approved local progression', () => {
   const lessons = packageData.lessons as any[];
   assert.equal(lessons.length, 8);
   assert.equal(lessons.filter(x => x.term === '1st Term').length, 4);
@@ -18,15 +18,15 @@ test('Basic Technology proposed First and Second Terms cover the missing NERDC t
   }
 });
 
-test('Basic Technology term allocation is explicit and proposed, not presented as official', () => {
+test('Basic Technology term allocation is explicitly owner-approved and not presented as official', () => {
   const records = getPrimary4SupplementRecords().filter(x => x.subject_name === 'Basic Technology');
   assert.equal(records.length, 8);
   assert.equal(records.filter(x => x.term_label === '1st Term').length, 4);
   assert.equal(records.filter(x => x.term_label === '2nd Term').length, 4);
-  assert.ok(records.every(x => x.source_reference.includes('Term allocation: PROPOSED_LOCAL_SEQUENCE_NOT_STATED_BY_NERDC')));
+  assert.ok(records.every(x => x.source_reference.includes('Term allocation: OWNER_APPROVED_LOCAL_ALLOCATION')));
 });
 
-test('proposed Basic Technology lessons remain withheld until owner approval and verification', () => {
+test('owner-approved Basic Technology lessons are available through the researched delivery package', () => {
   const record = getPrimary4SupplementRecords().find(x => x.stable_key === 'p4-bt-t1-w02')!;
   const result = resolvePrimary4SourceDelivery({
     id: 999999, school_code: 'primary', class_name: 'Primary 4',
@@ -34,9 +34,13 @@ test('proposed Basic Technology lessons remain withheld until owner approval and
     order_index: record.order_index, title: record.title,
     source_reference: record.source_reference, source_file: record.source_file,
   });
-  assert.equal(result?.kind, 'withheld');
+  assert.equal(result?.kind, 'matched');
   assert.equal(result?.source, 'researched-package');
-  if (result?.kind === 'withheld') assert.match(result.reason, /pending owner approval and independent verification/);
+  if (result?.kind === 'matched') {
+    assert.match(result.text, /Content approval: APPROVED/);
+    assert.match(result.text, /Pedagogical verification: VERIFIED/);
+    assert.match(result.text, /Assessment rebuild: VERIFIED/);
+  }
 });
 
 test('Basic Technology practical activities do not ask pupils to operate vehicles or dangerous tools', () => {

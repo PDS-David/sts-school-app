@@ -9,9 +9,9 @@ test('Primary 4 coverage report accounts for all 33 subject-term combinations', 
   assert.equal(report.combination_count, 33);
   assert.equal(report.export_record_count, 248);
   assert.equal(report.matrix.length, 33);
-  assert.equal(report.researched_lesson_count, 36);
+  assert.equal(report.researched_lesson_count, 38);
   assert.equal(report.covered_combination_count, 33);
-  assert.equal(report.pending_approval_combination_count, 6);
+  assert.equal(report.pending_approval_combination_count, 0);
 });
 
 test('coverage report distinguishes researched packages from missing term allocation', () => {
@@ -20,9 +20,10 @@ test('coverage report distinguishes researched packages from missing term alloca
   assert.equal(find('Home Economics','1st Term')?.researched_lessons_prepared, 9);
   assert.equal(find('Home Economics','2nd Term')?.researched_lessons_prepared, 9);
   assert.equal(find('Home Economics','3rd Term')?.researched_lessons_prepared, 7);
-  assert.equal(find('Basic Science','3rd Term')?.status, 'RESEARCHED_PROPOSED_TERM_ALLOCATION');
-  assert.equal(find('Basic Technology','1st Term')?.status, 'PROPOSED_LOCAL_ALLOCATION_PENDING_APPROVAL');
-  assert.equal(find('Basic Technology','2nd Term')?.status, 'PROPOSED_LOCAL_ALLOCATION_PENDING_APPROVAL');
+  assert.equal(find('Basic Science','3rd Term')?.researched_lessons_prepared, 5);
+  assert.equal(find('Basic Science','3rd Term')?.status, 'OWNER_APPROVED_LOCAL_ALLOCATION');
+  assert.equal(find('Basic Technology','1st Term')?.status, 'OWNER_APPROVED_LOCAL_ALLOCATION');
+  assert.equal(find('Basic Technology','2nd Term')?.status, 'OWNER_APPROVED_LOCAL_ALLOCATION');
   assert.equal(find('Basic Technology','1st Term')?.researched_lessons_prepared, 4);
   assert.equal(find('Basic Technology','2nd Term')?.researched_lessons_prepared, 4);
 });
@@ -30,25 +31,18 @@ test('coverage report distinguishes researched packages from missing term alloca
 test('coverage report explains the proposed Basic Technology term allocation and its approval gate', () => {
   const report = buildPrimary4CoverageReport();
   const decision = report.curriculum_decisions.find((item: any) => item.subject === 'Basic Technology');
-  assert.equal(decision.status, 'PROPOSED_LOCAL_ALLOCATION_PENDING_APPROVAL');
+  assert.equal(decision.status, 'OWNER_APPROVED_LOCAL_ALLOCATION');
   assert.equal(decision.proposed_lesson_count, 8);
   assert.ok(decision.nerdc_source.includes('nerdc.gov.ng'));
   assert.ok(decision.state_scheme_source.includes('2021-Edition.pdf'));
-  assert.ok(decision.required_evidence.length > 20);
+  assert.ok(decision.required_evidence.includes('approved'));
 });
 
 test('coverage report separates pending approval from missing combinations', () => {
   const report = buildPrimary4CoverageReport();
   assert.equal(report.unresolved.length, 0);
-  assert.equal(report.pending_approval.length, 6);
-  assert.deepEqual(report.pending_approval.map((row: any) => [row.subject, row.term]).sort(), [
-    ['Basic Science', '3rd Term'],
-    ['Basic Technology', '1st Term'],
-    ['Basic Technology', '2nd Term'],
-    ['Home Economics', '1st Term'],
-    ['Home Economics', '2nd Term'],
-    ['Home Economics', '3rd Term'],
-  ].sort());
+  assert.equal(report.pending_approval.length, 0);
+  assert.deepEqual(report.pending_approval.map((row: any) => [row.subject, row.term]), []);
 });
 
 test('coverage report surfaces source-review triage without calling it a lesson-quality verdict', () => {
@@ -62,9 +56,9 @@ test('coverage report surfaces source-review triage without calling it a lesson-
 
 test('coverage report accounts for archive corrections and hidden duplicate source rows', () => {
   const report = buildPrimary4CoverageReport();
-  assert.equal(report.archive_correction_count, 32);
-  assert.equal(report.archive_correction_pending_approval_count, 32);
-  assert.equal(report.archive_correction_pending_assessment_rebuild_count, 32);
+  assert.equal(report.archive_correction_count, 33);
+  assert.equal(report.archive_correction_pending_approval_count, 0);
+  assert.equal(report.archive_correction_pending_assessment_rebuild_count, 0);
   assert.equal(report.archive_hidden_topic_count, 16);
-  assert.ok(report.archive_correction_note.includes('withheld until owner approval'));
+  assert.ok(report.archive_correction_note.includes('regenerated from the approved source'));
 });

@@ -15,7 +15,7 @@ import { resolveSs1MathematicsDelivery, safeSs1MathematicsTopic, mathematicsAsse
 import { resolveAgriculturalScienceDelivery, resolveAgriculturalScienceSupplement, resolveAgriculturalScienceSourceProjection, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, retireStaleAgriculturalScienceSupplementCache, retireStaleAgriculturalScienceSourceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
 import { listStudentSs1Lessons, getStudentSs1Lesson, listStudentSs1Assets, readStudentSs1Asset, studentSs1LessonPreview } from '../db/ss1/studentDelivery.js';
-import { resolvePrimary4SourceDelivery, safePrimary4Topic, primary4WithdrawnAssessmentIds } from '../utils/primary4Delivery.js';
+import { resolvePrimary4SourceDelivery, safePrimary4Topic, primary4WithdrawnAssessmentIds, primary4AssessmentDeliverable, retireStalePrimary4Cache } from '../utils/primary4Delivery.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
 // Read per request (value is constant in a running server) so tests can exercise PIN on and off in one process.
@@ -782,6 +782,15 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   // Primary 4 lessons are grounded only in source rows whose identity and source_reference hash
   // match the supplied read-only export. Short source notes remain visibly flagged to pupils.
   const primary4Delivery = resolvePrimary4SourceDelivery(topic);
+  if (primary4Delivery && (primary4Delivery.kind === 'withheld' || primary4Delivery.source !== 'primary4-export')) {
+    await retireStalePrimary4Cache(query, topic.id, primary4Delivery);
+    const { rows: freshPrimary4 } = await query(
+      'SELECT summary, generated_assessment_id FROM topics WHERE id=$1',
+      [topic.id],
+    );
+    topic.summary = freshPrimary4[0]?.summary ?? null;
+    topic.generated_assessment_id = freshPrimary4[0]?.generated_assessment_id ?? null;
+  }
   if (primary4Delivery?.kind === 'withheld') {
     if (primary4Delivery.hideFromStudent) return res.status(404).json({ error: 'Topic not found' });
     return res.json({ ok: true, summary: primary4Delivery.text, summary_is_fallback: false,
@@ -920,7 +929,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
           `INSERT INTO assessments(school_code,subject_id,class_name,term_id,title,total_marks,status,created_by,content_fingerprint)
            VALUES($1,$2,$3,$4,$5,$6,'open',NULL,$7) RETURNING id`,
           [topic.school_code, topic.subject_id, topic.class_name, topic.term_id,
-           `${topic.title} — Topic Assessment`, questionIds.length, mathematicsDelivery?.kind === 'corrected' ? mathematicsDelivery.fingerprint : ss1Delivery?.kind === 'corrected' ? ss1Delivery.fingerprint : agriculturalScienceSupplement?.kind === 'supplement' ? agriculturalScienceSupplement.fingerprint : agriculturalScienceSourceProjection && agriculturalScienceSourceProjection.kind !== 'withheld' ? agriculturalScienceSourceProjection.fingerprint : delivery?.kind === 'corrected' ? delivery.fingerprint : null],
+           `${topic.title} — Topic Assessment`, questionIds.length, primary4Delivery?.kind === 'matched' && primary4Delivery.source !== 'primary4-export' ? primary4Delivery.sourceHash : mathematicsDelivery?.kind === 'corrected' ? mathematicsDelivery.fingerprint : ss1Delivery?.kind === 'corrected' ? ss1Delivery.fingerprint : agriculturalScienceSupplement?.kind === 'supplement' ? agriculturalScienceSupplement.fingerprint : agriculturalScienceSourceProjection && agriculturalScienceSourceProjection.kind !== 'withheld' ? agriculturalScienceSourceProjection.fingerprint : delivery?.kind === 'corrected' ? delivery.fingerprint : null],
         );
         const assessmentId = aRows[0].id;
 
@@ -1380,6 +1389,8 @@ router.get('/assessments/:id/questions', async (req, res) => {
     if (!agriculturalScienceDeliverable.ok) return res.status(403).json({ error: agriculturalScienceDeliverable.reason });
     const englishDeliverable = await englishAssessmentDeliverable(query, assessment.id);
     if (!englishDeliverable.ok) return res.status(403).json({ error: englishDeliverable.reason });
+    const primary4Deliverable = await primary4AssessmentDeliverable(query, assessment.id);
+    if (!primary4Deliverable.ok) return res.status(403).json({ error: primary4Deliverable.reason });
   } else if (user.role !== 'admin') {
     // Teachers never get here: creating, viewing, or opening the questions of
     // an assessment is Brainee/admin territory on this platform, not a
@@ -1469,6 +1480,8 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
   if (!agriculturalScienceDeliverable.ok) return res.status(403).json({ error: agriculturalScienceDeliverable.reason });
   const englishDeliverable = await englishAssessmentDeliverable(query, req.params.id);
   if (!englishDeliverable.ok) return res.status(403).json({ error: englishDeliverable.reason });
+  const primary4Deliverable = await primary4AssessmentDeliverable(query, req.params.id);
+  if (!primary4Deliverable.ok) return res.status(403).json({ error: primary4Deliverable.reason });
 
   // Auto-mark MCQs; hand essay answers to Brainee (this is the STS Virtual
   // School's own AI grading path — see submission_answers in schema.sql.
@@ -1734,6 +1747,8 @@ router.get('/submissions/:id/answers', async (req, res) => {
       if (!agriculturalScienceDeliverable.ok) return res.status(410).json({ error: agriculturalScienceDeliverable.reason });
       const englishDeliverable = await englishAssessmentDeliverable(query, assessmentId);
       if (!englishDeliverable.ok) return res.status(410).json({ error: englishDeliverable.reason });
+      const primary4Deliverable = await primary4AssessmentDeliverable(query, assessmentId);
+      if (!primary4Deliverable.ok) return res.status(410).json({ error: primary4Deliverable.reason });
     }
   }
 

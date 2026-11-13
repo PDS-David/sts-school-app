@@ -98,7 +98,7 @@ import {
   applyJss3SecondTermSourceTextResolution,
   resolveJss3SecondTermParsedTopic,
 } from './jss3SecondTermResolutions.js';
-import { assertPrimary4SupplementCorpus, buildPrimary4SupplementRows, primary4SupplementApprovalIssues } from './primary4/primary4Supplements.js';
+import { assertPrimary4SupplementCorpus, buildPrimary4SupplementRows, primary4SupplementApprovalIssues, refreshPrimary4PackageRows } from './primary4/primary4Supplements.js';
 import {
   JSS3_EXCLUDED_SUBJECTS,
   JSS3_THIRD_TERM_REVIEWED_SOURCES,
@@ -1248,7 +1248,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
                AND p.order_index=t.order_index
                AND p.title=t.title
                AND p.source_file=t.source_file
-               AND p.source_reference=t.source_reference
+               AND (p.source_reference=t.source_reference OR t.source_file LIKE 'P4-RESEARCHED-%')
            )
          LIMIT 1`,
         [schoolCode, plannedPayload],
@@ -1258,6 +1258,13 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
         throw new Error(
           `Existing curriculum differs from audited sequence: ${bad.class_name} / ${bad.subject_name} / ${bad.term_label} / order #${bad.order_index}. Review separately; nothing will be overwritten.`,
         );
+      }
+
+      // Refresh only exact-identity researched package rows whose approved
+      // lesson source changed. Original archive rows are never rewritten here.
+      const refreshedPackages = await refreshPrimary4PackageRows(query, schoolCode, plannedRows);
+      if (refreshedPackages.refreshedCount > 0) {
+        console.log(`\\n↻ Refreshed ${refreshedPackages.refreshedCount} approved Primary 4 researched lesson source(s); retired ${refreshedPackages.closedAssessmentCount} stale assessment(s).`);
       }
 
       // Keep write round-trips bounded while avoiding thousands of per-topic

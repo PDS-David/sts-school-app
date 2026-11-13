@@ -30,15 +30,15 @@ export function buildPrimary4CoverageReport() {
     const researched = packages.filter(row => row.subject === subject && row.term === term).length;
     let status = existing.length ? 'SOURCE_ROWS_PRESENT' : 'MISSING';
     if (subject === 'Basic Technology' && ['1st Term', '2nd Term'].includes(term) && researched) {
-      status = 'PROPOSED_LOCAL_ALLOCATION_PENDING_APPROVAL';
+      status = 'OWNER_APPROVED_LOCAL_ALLOCATION';
     } else if (subject === 'Basic Technology' && ['1st Term', '2nd Term'].includes(term)) {
       status = 'NO_SEPARATE_TERM_ASSIGNMENT_FOUND';
     } else if (subject === 'Basic Science' && term === '3rd Term' && researched) {
-      status = 'RESEARCHED_PROPOSED_TERM_ALLOCATION';
+      status = 'OWNER_APPROVED_LOCAL_ALLOCATION';
     } else if (subject === 'Home Economics' && ['1st Term', '2nd Term'].includes(term) && researched) {
-      status = 'RESEARCHED_PACKAGE_PENDING_APPROVAL';
+      status = 'OWNER_APPROVED_RESEARCHED_PACKAGE';
     } else if (subject === 'Home Economics' && term === '3rd Term' && researched) {
-      status = 'SOURCE_ROWS_PLUS_RESEARCHED_SUPPLEMENTS_PENDING_APPROVAL';
+      status = 'SOURCE_ROWS_PLUS_APPROVED_RESEARCHED_SUPPLEMENTS';
     }
     return {
       subject,
@@ -64,7 +64,7 @@ export function buildPrimary4CoverageReport() {
     archive_correction_pending_approval_count: archiveCorrectionPendingApprovalCount,
     archive_correction_pending_assessment_rebuild_count: archiveCorrectionPendingAssessmentRebuildCount,
     archive_hidden_topic_count: archiveHiddenTopicIds.length,
-    archive_correction_note: 'Archive-based correction records replace identified skeletal Primary 4 source rows at delivery time; superseded outline/merged rows are hidden from learners. Newly authored corrections remain withheld until owner approval.',
+    archive_correction_note: 'Archive-based correction records replace identified skeletal Primary 4 source rows at delivery time; superseded outline/merged rows are hidden from learners. Owner approval and source review are complete. Existing generated assessments are retired when stale, then regenerated from the approved source on the next learner topic-completion request.',
     covered_combination_count: matrix.filter(row => row.existing_export_rows + row.researched_lessons_prepared > 0).length,
     pending_approval_combination_count: matrix.filter(row => ['PROPOSED_LOCAL_ALLOCATION_PENDING_APPROVAL', 'RESEARCHED_PROPOSED_TERM_ALLOCATION', 'RESEARCHED_PACKAGE_PENDING_APPROVAL', 'SOURCE_ROWS_PLUS_RESEARCHED_SUPPLEMENTS_PENDING_APPROVAL'].includes(row.status)).length,
     source_review_flagged_record_count: highShortSourceCount + shortSourceReviewCount,
@@ -72,31 +72,31 @@ export function buildPrimary4CoverageReport() {
     short_source_review_record_count: shortSourceReviewCount,
     source_review_note: 'Length-based source flags are triage indicators only; they do not independently establish lesson quality or completeness.',
     provenance_note: 'Source-row counts are from the user-supplied database export. Researched lesson counts are newly authored packages and are not production records until an approved import is performed.',
-    archive_verification: 'Original Word archive and extracted p4txt folder were not mounted in this execution environment; source hashes cover exported source_reference text only.',
+    archive_verification: 'The user-supplied Word archive was recursively extracted and audited. Original document hashes, duplicate inventory, and source-to-export mapping are recorded in docs/curriculum/primary4-archive-reconciliation.md. Exported source_reference hashes are separately recorded in sourceManifest.json; these are not represented as original Word-file hashes.',
     matrix,
     curriculum_decisions: [
       {
         subject: 'Basic Technology',
         terms: ['1st Term', '2nd Term'],
-        status: 'PROPOSED_LOCAL_ALLOCATION_PENDING_APPROVAL',
+        status: 'OWNER_APPROVED_LOCAL_ALLOCATION',
         proposed_lesson_count: (basicTechnology12 as any).lessons.length,
-        decision: 'NERDC lists Primary 4 Vehicles, Materials and Maintenance, and Basic Motor Vehicle Parts without assigning them to terms. Eight newly authored lessons propose a First/Second-Term progression for these topics. This is a local proposal, not an official NERDC or Lagos State term allocation; the supplied Third-Term source remains preserved.',
+        decision: 'NERDC lists Primary 4 Vehicles, Materials and Maintenance, and Basic Motor Vehicle Parts without assigning them to terms. Eight newly authored lessons implement the owner-approved First/Second-Term local progression for these topics. This remains a local allocation, not an official NERDC or Lagos State term assignment; the supplied Third-Term source remains preserved.',
         nerdc_source: 'https://nerdc.gov.ng/content_manager/primary/pri4-6_basic_science_technology.pdf',
         state_scheme_source: 'https://classbasic.com/wp-content/uploads/2020/08/Basic-Science-and-Technology-BST-New-Lagos-State-Unified-Scheme-of-Work-for-Primary-4-6-2021-Edition.pdf',
-        required_evidence: 'A school-specific term scheme or explicit owner approval of this clearly labelled proposed progression.',
+        required_evidence: 'The owner approved the clearly labelled local progression; the term assignment is not represented as an official NERDC allocation.',
       },
       {
         subject: 'Basic Science',
         terms: ['3rd Term'],
-        status: 'PROPOSED_LOCAL_ALLOCATION',
-        decision: 'Three lessons address NERDC Primary 4 topics not represented as distinct lessons in the supplied export. NERDC does not prescribe their Third-Term placement; the placement remains proposed pending school approval.',
+        status: 'OWNER_APPROVED_LOCAL_ALLOCATION',
+        decision: 'Five lessons now cover the NERDC Primary 4 topics not represented as distinct lessons in the supplied export. NERDC does not prescribe their Third-Term placement; the user has approved this clearly labelled local allocation.',
         source: 'https://nerdc.gov.ng/content_manager/primary/pri4-6_basic_science_technology.pdf',
       },
       {
         subject: 'Home Economics',
         terms: ['1st Term', '2nd Term', '3rd Term'],
-        status: 'RESEARCHED_PACKAGES_PENDING_APPROVAL',
-        decision: 'Eighteen First/Second-Term lessons and seven Third-Term supplements are newly authored from the Lagos State Primary 4 scheme transcription. They do not overwrite the supplied sewing lessons.',
+        status: 'OWNER_APPROVED_RESEARCHED_PACKAGES',
+        decision: 'Eighteen First/Second-Term lessons and seven Third-Term supplements are newly authored from the Lagos State Primary 4 scheme transcription. They do not overwrite the supplied sewing lessons. Content and assessment rebuild gates are approved and verified.',
         source: 'https://syllabus.ng/primary4-scheme-of-work/home-economics/',
       },
     ],
