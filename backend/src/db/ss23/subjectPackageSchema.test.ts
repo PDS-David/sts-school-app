@@ -239,8 +239,8 @@ test('loads the SS2 Agricultural Science soil package with source assessment cov
   assert.equal(pkg.units.reduce((total, unit) => total + unit.practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 0), 91);
   assert.ok(pkg.units.every(unit => unit.practice.every(question => question.answer_origin === 'AUTHORED_SUPPLEMENT')));
   assert.equal(pkg.sources[0].source_id, 'SS23-SRC-225f920d3751');
-  assert.equal(pkg.assets.length, 40);
-  assert.equal(pkg.assets.filter(asset => asset.path.startsWith('source-extract://')).length, 37);
+  assert.equal(pkg.assets.length, 42);
+  assert.equal(pkg.assets.filter(asset => asset.path.startsWith('source-extract://')).length, 39);
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/soil-sedimentation-jar.svg' && asset.state.implementation === 'IMPLEMENTED'));
   assert.ok(pkg.open_items.length >= 5);
   assert.ok(pkg.open_items.some(item => item.blocks_delivery));
