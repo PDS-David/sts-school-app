@@ -60,3 +60,9 @@ The reference section is lines 39-40. It names Essential Geography for Senior Se
 - The second registered-subject compiler run matched the Revision substring but failed at COV-GEO-T1-IDENTITY because SUPPORTED coverage requires a source teaching-row target. The identity record is metadata, not a teaching lesson, so its status is now UNRESOLVED with no lesson_ids; the existing source-alias owner gate remains authoritative.
 - The compiler also requires a MARKER coverage entry to reference its marker disposition. COV-GEO-T1-SCHEME-11-REVISION now points to the source-bound classify_marker rule SS1-SRC-1c1c1bdcecb4-R002.
 - Task remains IN_PROGRESS until the next registered-subject compiler run passes. No source approval or teaching evidence was fabricated.
+
+
+## Compiler validation correction 3
+- PR #693's registered-subject compiler run 43445525256 failed at `COV-GEO-T1-SCHEME-2` with a source body ID in `lesson_ids`.
+- The coverage record was already UNRESOLVED; the body ID was not a lesson ID and the preamble task does not claim Week Two instruction. Removed the unverified `lesson_ids` value; kept the scheme/body locators and explanation unchanged.
+- Queue task remains IN_PROGRESS pending a clean compiler rerun. The next curriculum task remains GEO-MARK-T1; Week Two lesson indexing is still separate.
