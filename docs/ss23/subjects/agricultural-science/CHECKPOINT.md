@@ -17,7 +17,7 @@ Five source documents have been extracted and their document headers checked aga
 
 | Class | Term | Source ID | Week mapping |
 |---|---|---|---|
-| SS2 | First | `SS23-SRC-237dbcc77749` | 1-10; Weeks 8-9 are grouped under a Week Eight body heading |
+| SS2 | First | `SS23-SRC-225f920d3751` | 1-10; Weeks 8-9 are grouped under a Week Eight body heading |
 | SS2 | Second | `SS23-SRC-cd612ad10f40` | 1-12; source headings map to scheme |
 | SS2 | Third | `SS23-SRC-6abb32818845` | 1-10 body present; Weeks 7-8 accounting heading is missing, but content begins at “Balance Sheet or Networth Statement” |
 | SS3 | First | `SS23-SRC-d5fb9404af80` | Exam-prep topics in Weeks 1-10; scheme-only revision and examination at 11-12 |
