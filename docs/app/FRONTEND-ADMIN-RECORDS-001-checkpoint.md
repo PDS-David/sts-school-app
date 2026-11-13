@@ -47,6 +47,8 @@ Worker branch: `agent/frontend-admin-records-current-20261113`
 - Automated tests, TypeScript and device checks were not run because no local checkout/command execution environment is available.
 - No runtime readiness claim is made.
 
+- Deleted-student restore relies on shared API offline-write policy PR #776 so the restore is not shown as complete from a queued placeholder.
+
 ## Remaining work
 - Verify class summary rankings, empty score states and retry for multiple schools/classes/terms.
 - Verify audit log entries remain school-scoped.
