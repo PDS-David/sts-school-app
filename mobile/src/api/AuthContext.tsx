@@ -69,16 +69,35 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [mustSetSecurityQuestion, setMustSetSecurityQuestion] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Restore session on mount
+  // Restore session on mount. Storage can reject (device storage/key-value
+  // corruption, quota or native bridge failure), and JSON.parse can throw if
+  // an interrupted write left malformed data. Always release the startup
+  // gate so a recoverable storage problem cannot strand the app on its
+  // permanent splash spinner.
   useEffect(() => {
-    AsyncStorage.getItem('user').then((raw) => {
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        setUser(parsed);
-        setCacheNamespace(parsed.id);
+    const restoreSession = async () => {
+      try {
+        const raw = await AsyncStorage.getItem('user');
+        if (raw) {
+          const parsed = JSON.parse(raw) as User;
+          const validRole = ['student', 'parent', 'teacher', 'admin', 'finance_admin'].includes(parsed?.role);
+          if (parsed && typeof parsed.id === 'string' && parsed.id.length > 0 && validRole) {
+            setUser(parsed);
+            setCacheNamespace(parsed.id);
+          } else {
+            await AsyncStorage.removeItem('user');
+            setCacheNamespace(null);
+          }
+        }
+      } catch (error) {
+        console.warn('[AuthContext] Unable to restore saved session; returning to sign-in.', error);
+        setCacheNamespace(null);
+        try { await AsyncStorage.removeItem('user'); } catch { /* storage is unavailable; remain signed out in memory */ }
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
-    });
+    };
+    restoreSession();
   }, []);
 
   // If client.ts's response interceptor fails to refresh the access token
