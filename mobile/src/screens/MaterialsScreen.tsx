@@ -3,11 +3,14 @@ import {
   View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, Alert, ScrollView, Linking,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Directory, File, Paths } from 'expo-file-system';
+import * as Sharing from 'expo-sharing';
 import { Picker } from '@react-native-picker/picker';
 import api from '../api/client';
 import { useAuth } from '../api/AuthContext';
 import { Card, Btn, Input, Loader, Empty, SectionHeader, Badge } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
+import { getMaterialDownloadTarget } from '../utils/materialDownload';
 
 const TYPE_ICON: Record<string, string> = {
   pdf: 'document-text', video: 'videocam', doc: 'document', link: 'link',
@@ -33,6 +36,7 @@ export default function MaterialsScreen({ route }: any) {
   const [materials, setMaterials] = useState<any[]>([]);
   const [subjects,  setSubjects]  = useState<any[]>([]);
   const [loading,   setLoading]   = useState(true);
+  const [downloadingId, setDownloadingId] = useState<string | null>(null);
   const [modal,     setModal]     = useState(false);
   const [filterSub, setFilterSub] = useState(initialSubjectId ?? '');
   const [form, setForm] = useState({ title: '', type: 'pdf', url: '', subject_id: '', class_name: '' });
@@ -46,6 +50,50 @@ export default function MaterialsScreen({ route }: any) {
     } catch { } finally { setLoading(false); }
   };
   useEffect(() => { fetch(); }, [filterSub]);
+
+  const handleOpen = async (url: string) => {
+    if (typeof url !== 'string' || !/^https:\/\//i.test(url)) {
+      Alert.alert('Invalid material link', 'Only secure HTTPS links can be opened.');
+      return;
+    }
+    try {
+      await Linking.openURL(url);
+    } catch {
+      Alert.alert('Unable to open link', 'This material link could not be opened on this device.');
+    }
+  };
+
+  const handleDownload = async (material: any) => {
+    const target = getMaterialDownloadTarget(material.url, material.title, material.type);
+    if (!target) {
+      Alert.alert('Invalid download link', 'Only secure HTTPS file links can be downloaded.');
+      return;
+    }
+    setDownloadingId(String(material.id));
+    try {
+      const directory = new Directory(Paths.document, 'learning-materials');
+      directory.create({ idempotent: true, intermediates: true });
+      let downloaded = new File(directory, target.fileName);
+      if (!downloaded.exists) {
+        const task = File.createDownloadTask(target.url, downloaded);
+        const result = await task.downloadAsync();
+        if (!result || !result.exists) throw new Error('The download did not produce a file.');
+        downloaded = result;
+      }
+      if (!(await Sharing.isAvailableAsync())) {
+        Alert.alert('Downloaded', 'The file is saved in the app documents folder, but sharing is unavailable on this device.');
+        return;
+      }
+      await Sharing.shareAsync(downloaded.uri, {
+        mimeType: target.mimeType,
+        dialogTitle: 'Save or open learning material',
+      });
+    } catch {
+      Alert.alert('Download failed', 'The link may require sign-in or may not point directly to a downloadable file. Try opening the link instead.');
+    } finally {
+      setDownloadingId(null);
+    }
+  };
 
   const visibleMaterials = typeFilter ? materials.filter((m) => m.type === typeFilter) : materials;
 
@@ -104,9 +152,24 @@ export default function MaterialsScreen({ route }: any) {
                 <Text style={styles.matBy}>By {m.uploaded_by}</Text>
               </View>
               <View style={{ gap: 4 }}>
-                <TouchableOpacity onPress={() => Linking.openURL(m.url)} style={styles.openBtn}>
+                <TouchableOpacity onPress={() => handleOpen(m.url)} style={styles.openBtn}>
                   <Ionicons name="open-outline" size={18} color={Colors.primary} />
                 </TouchableOpacity>
+                {(m.type === 'pdf' || m.type === 'doc') && (
+                  <TouchableOpacity
+                    onPress={() => handleDownload(m)}
+                    disabled={downloadingId === String(m.id)}
+                    style={styles.openBtn}
+                    accessibilityRole="button"
+                    accessibilityLabel={downloadingId === String(m.id) ? 'Downloading material' : 'Download material'}
+                  >
+                    <Ionicons
+                      name={downloadingId === String(m.id) ? 'hourglass-outline' : 'download-outline'}
+                      size={18}
+                      color={downloadingId === String(m.id) ? Colors.textSub : Colors.primary}
+                    />
+                  </TouchableOpacity>
+                )}
                 {canWrite && (
                   <TouchableOpacity onPress={() => handleDelete(m.id)}>
                     <Ionicons name="trash-outline" size={18} color={Colors.error} />
