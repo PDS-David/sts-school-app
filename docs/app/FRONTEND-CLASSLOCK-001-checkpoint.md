@@ -35,6 +35,7 @@ Worker branch: `agent/frontend-class-lock-recovery-20261113`
 - `e2a316dbe432b92a142e638bcf08f6f8778baa06` — fail closed on status errors and confirm changes.
 - `3a677652b915a3ba7f48560ddd5bc523e42bed68` — add status and confirmation UI.
 - `44820e392e908f63986d256833b99a424c184fa3` — ignore stale status responses.
+- `0a9650c841e6f74d8407f1fa247a5fd2e737aab7` — prevent a completed write from refreshing an old selection.
 - Checkpoint commit: `5a6409f4e56a06a10e7bbe04586fa6eda3962ff7`.
 
 ## Verification
