@@ -1,6 +1,7 @@
 import 'express-async-errors';
 import assert from 'node:assert/strict';
 import { randomInt } from 'node:crypto';
+import type { Server } from 'node:http';
 import express from 'express';
 import test, { after, before } from 'node:test';
 import adminRouter from '../backend/src/routes/admin.js';
@@ -8,7 +9,7 @@ import { pool, query } from '../backend/src/db/pool.js';
 import { signAccess } from '../backend/src/utils/jwt.js';
 
 const unique = () => randomInt(100_000_000, 999_999_999).toString();
-let server: ReturnType<ReturnType<typeof express>['listen']>;
+let server: Server;
 let baseUrl = '';
 let adminId = '';
 let adminToken = '';
