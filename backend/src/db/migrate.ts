@@ -143,14 +143,15 @@ function assertSequentialHistory(migrations: Migration[], applied: AppliedMigrat
 }
 
 async function applyAll(client: PoolClient, migrations: Migration[]): Promise<void> {
-  await ensureLedger(client);
-  const applied = await getApplied(client);
-
-  // A production database with a pre-existing schema must not be silently
-  // adopted as version 0001. OPS-05 owns drift evidence and explicit adoption.
-  if (!applied.length) {
+  // Do not create even an empty ledger on an existing untracked database.
+  // --all is incremental-only; --fresh is the explicit clean-install path.
+  if (!(await ledgerExists(client))) {
     await assertNoUntrackedApplicationSchema(client);
     throw new Error('No baseline migration is recorded. Use --fresh only against an empty database, or complete OPS-05 drift review before adopting an existing database.');
+  }
+  const applied = await getApplied(client);
+  if (!applied.length) {
+    throw new Error('The migration ledger is empty. Use --fresh only against an empty database, or complete OPS-05 drift review before adopting an existing database.');
   }
   assertAppliedChecksums(migrations, applied);
   assertSequentialHistory(migrations, applied);
