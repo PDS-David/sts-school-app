@@ -175,11 +175,10 @@ async function applyFresh(client: PoolClient, migrations: Migration[]): Promise<
   console.log('Applying complete schema.sql for a fresh installation…');
   await client.query(schema);
 
-  if (!applied.some(row => row.version === '0001')) {
-    await client.query(
-      'INSERT INTO public.schema_migrations(version,name,checksum) VALUES($1,$2,$3)',
-      [baseline.version, baseline.name, baseline.checksum],
-    );
+  const appliedAfterSchema = await getApplied(client);
+  assertAppliedChecksums(migrations, appliedAfterSchema);
+  if (!appliedAfterSchema.some(row => row.version === '0001')) {
+    throw new Error('schema.sql did not stamp the immutable 0001 baseline migration.');
   }
   console.log('Fresh schema applied and baseline migration stamped.');
 }
