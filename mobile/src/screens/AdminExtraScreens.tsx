@@ -217,45 +217,61 @@ export function DeletedStudentsScreen({ navigation }: any) {
   const [loading,   setLoading]   = useState(true);
   const [refreshing,setRefreshing]= useState(false);
   const [restoringId, setRestoringId] = useState<string | null>(null);
+  const [loadError, setLoadError] = useState('');
+  const [restoreConfirm, setRestoreConfirm] = useState<{ id: string; name: string } | null>(null);
+  const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
 
   useEffect(() => {
     navigation.setOptions({ headerRight: () => <SchoolSwitcherBar compact /> });
   }, [navigation]);
 
   const fetchDeleted = async () => {
+    setLoading(true);
+    setLoadError('');
     try {
       const { data } = await api.get('/students/deleted', {
         params: { school_code: selectedSchoolCode ?? undefined },
       });
       setStudents(data.students ?? []);
-    } catch { } finally { setLoading(false); setRefreshing(false); }
+    } catch (e: any) {
+      setLoadError(e?.response?.data?.error ?? 'Could not load deleted students for this school.');
+    } finally { setLoading(false); setRefreshing(false); }
   };
 
   useEffect(() => { setLoading(true); fetchDeleted(); }, [selectedSchoolCode]);
 
-  const restore = (id: string, name: string) => {
-    Alert.alert('Restore student?', `${name} will reappear in the student list and all their scores/attendance history will be reachable again.`, [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Restore', onPress: async () => {
-        setRestoringId(id);
-        try {
-          await api.post(`/students/${id}/restore`);
-          fetchDeleted();
-        } catch (e: any) {
-          Alert.alert('Error', e?.response?.data?.error ?? 'Could not restore this student');
-        } finally { setRestoringId(null); }
-      }},
-    ]);
+  const restore = (id: string, name: string) => setRestoreConfirm({ id, name });
+
+  const confirmRestore = async () => {
+    if (!restoreConfirm || restoringId !== null) return;
+    const target = restoreConfirm;
+    setRestoreConfirm(null);
+    setRestoringId(target.id);
+    try {
+      await api.post(`/students/${target.id}/restore`);
+      await fetchDeleted();
+      setInfoDialog({ title: 'Student restored', message: `${target.name} has been restored and is available in the student list again.` });
+    } catch (e: any) {
+      setInfoDialog({ title: 'Could not restore student', message: e?.response?.data?.error ?? 'Check your connection and try again.' });
+    } finally { setRestoringId(null); }
   };
 
-  if (loading) return <Loader />;
+  if (loading && students.length === 0) return <Loader />;
+  if (loadError && students.length === 0) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={loadError} />
+      <Btn label='Retry deleted students' variant='outline' onPress={() => fetchDeleted()} />
+    </View>
+  );
 
   return (
+    <View style={{ flex: 1, backgroundColor: Colors.background }}>
     <ScrollView
       style={styles.container}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); fetchDeleted(); }} />}
     >
       <PageContainer style={{ padding: Spacing.sm }}>
+        {!!loadError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry deleted students' variant='outline' size='sm' onPress={() => fetchDeleted()} /></View>}
         {students.length === 0 ? <Empty message="No deleted students for this school" /> : students.map(s => (
           <Card key={s.id} style={{ marginBottom: Spacing.sm }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -271,6 +287,8 @@ export function DeletedStudentsScreen({ navigation }: any) {
                 onPress={() => restore(s.id, s.full_name)}
                 disabled={restoringId === s.id}
                 style={styles.restoreBtn}
+                accessibilityRole='button'
+                accessibilityLabel={`Restore ${s.full_name}`}
               >
                 <Text style={styles.restoreBtnTxt}>{restoringId === s.id ? 'Restoring…' : 'Restore'}</Text>
               </TouchableOpacity>
@@ -279,6 +297,9 @@ export function DeletedStudentsScreen({ navigation }: any) {
         ))}
       </PageContainer>
     </ScrollView>
+    <ConfirmDialog visible={!!restoreConfirm} title='Restore student?' message={`${restoreConfirm?.name ?? 'This student'} will reappear in the student list and their scores/attendance history will be reachable again.`} confirmLabel='Restore' onConfirm={confirmRestore} onCancel={() => setRestoreConfirm(null)} />
+    <ConfirmDialog visible={!!infoDialog} title={infoDialog?.title ?? ''} message={infoDialog?.message ?? ''} hideCancel onConfirm={() => setInfoDialog(null)} onCancel={() => setInfoDialog(null)} />
+    </View>
   );
 }
 
