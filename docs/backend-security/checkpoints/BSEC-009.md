@@ -2,11 +2,12 @@
 
 - **Task ID:** BSEC-009
 - **Title:** Enforce same-school academic term references on student record writes and class locks
-- **Status:** implementation committed; CI verification pending
+- **Status:** implementation verified; PR review pending
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Working branch:** agent/backend-term-school-isolation-20261113
-- **Latest implementation commit:** pending
+- **Latest implementation commit:** cbfb61ab0ecb4ecd3aa9c94249b8755a7d59f78a
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/722
 - **Changed files:**
   - backend/src/utils/scope.ts
   - backend/src/routes/academic.ts
@@ -16,6 +17,6 @@
 - **Defect:** checkTeacherStudentScope verified that a student belonged to the caller's school/class but did not verify that term_id belonged to the same school. Scores, attendance, class records and weekly efforts could therefore be written against another school's term. The admin early-return also bypassed term consistency. PUT /academic/class-locks likewise accepted a term from a different school and could create an ineffective/mis-scoped lock row.
 - **Implementation:** add checkTermSchoolScope, which validates a positive integer term id, existence and school ownership. Invoke it in checkTeacherStudentScope before the admin bypass, so both teacher and admin writes must use a term belonging to the student. Invoke the same helper for GET/PUT class-locks; teacher lock writes now also fail closed if the teacher has no school assignment.
 - **Regression coverage:** disposable PostgreSQL tests verify that teacher and administrator writes reject a cross-school term, same-school term references remain allowed, and invalid/nonexistent term identifiers are rejected.
-- **Verification:** source and tests fetched back from GitHub and reviewed. Dedicated PostgreSQL workflow added; CI run pending. No production database or production records were accessed or changed.
-- **Remaining:** run PostgreSQL integration tests and backend TypeScript typecheck; fix any genuine failures; open focused PR; verify all required checks.
+- **Verification:** GitHub Actions run 43451584972 passed: locked workspace dependency installation, PostgreSQL 16 schema bootstrap, all academic term tenant-isolation regressions, and backend TypeScript typecheck. Repository-wide JSS3 checks (43451584900) and SS1 package integrity gate (43451584831) also passed. No production database or production records were accessed or changed.
+- **Remaining:** PR review/merge. Do not mark the overall backend/security assignment complete.
 - **Exact next action:** inspect branch head and CI run for Backend academic term tenant isolation.
