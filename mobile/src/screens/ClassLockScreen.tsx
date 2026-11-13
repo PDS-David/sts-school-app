@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { Ionicons } from '@expo/vector-icons';
@@ -52,6 +52,7 @@ export default function ClassLockScreen({ navigation }: any) {
   const [confirmLock, setConfirmLock] = useState<boolean | null>(null);
   const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
   const [busy,     setBusy]     = useState(false);
+  const lockRequestRef = useRef(0);
 
   // Teacher: only their own assigned class is relevant here at all — they
   // can't lock/unlock anyone else's (enforced server-side too). Admin:
@@ -103,6 +104,7 @@ export default function ClassLockScreen({ navigation }: any) {
   }, [isAdmin, effectiveSchoolCode, setupRetry]);
 
   const fetchLock = useCallback(async () => {
+    const requestId = ++lockRequestRef.current;
     if (!selClass || !selTerm) { setLock(null); setLockError(''); setLockLoading(false); return; }
     setLockLoading(true);
     setLockError('');
@@ -110,11 +112,13 @@ export default function ClassLockScreen({ navigation }: any) {
       const { data } = await api.get('/academic/class-locks', {
         params: { class_name: selClass, term_id: selTerm, school_code: isAdmin ? effectiveSchoolCode ?? undefined : undefined },
       });
-      setLock(data.lock ?? null);
+      if (requestId === lockRequestRef.current) setLock(data.lock ?? null);
     } catch (e: any) {
-      setLock(null);
-      setLockError(e?.response?.data?.error ?? 'Could not verify the current lock status. Retry before changing this class.');
-    } finally { setLockLoading(false); }
+      if (requestId === lockRequestRef.current) {
+        setLock(null);
+        setLockError(e?.response?.data?.error ?? 'Could not verify the current lock status. Retry before changing this class.');
+      }
+    } finally { if (requestId === lockRequestRef.current) setLockLoading(false); }
   }, [selClass, selTerm, isAdmin, effectiveSchoolCode, lockRetry]);
 
   useEffect(() => { fetchLock(); }, [fetchLock]);
