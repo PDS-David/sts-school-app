@@ -65,7 +65,7 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
   }
 
   const scopeParams = [schoolCode, className, subjectIds, term.id];
-  const scopeWhere = `st.school_code=$1 AND st.deleted_at IS NULL
+  const scopeWhere = `st.school_code=$1 AND su.school_code=$1 AND st.deleted_at IS NULL
     AND ($2::text IS NULL OR st.class_name=$2)
     AND ($3::int[] IS NULL OR su.id=ANY($3))`;
 
