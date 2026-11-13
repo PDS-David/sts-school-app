@@ -2,12 +2,13 @@
 
 - **Task ID:** BSEC-005
 - **Title:** Validate teacher school/class/subject assignments atomically in admin user management
-- **Status:** in_progress
+- **Status:** review (all required checks passing)
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
 - **Working branch:** agent/backend-teacher-assignment-integrity-20261113
-- **Last commit:** pending
+- **Latest implementation commit:** 52d80bee14a53b00a5808d6540a4d45f376544bb
+- **Checkpoint commit:** this update
 - **Files planned:** backend/src/routes/admin.ts; teacher-assignment validation helper; PostgreSQL integration tests; focused workflow; this checkpoint.
 - **Defects:** admin POST /users inserts a teacher before inserting teacher_subjects; an invalid subject FK can leave a partially created account. PUT /users/:id updates the user and deletes/reinserts teacher_subjects as independent statements; an insert failure can commit a changed user and a partially replaced assignment set. Neither route verifies that assigned subjects and classes belong to the teacher's selected school, so a crafted API request can create cross-school subject assignments.
 - **Scope boundary:** no active PR changes backend/src/routes/admin.ts. PR #694 changes backend/src/routes/announcements.ts and mobile UI; other open PRs touch learning, scores, attendance, auth, or students. Do not modify those paths.
