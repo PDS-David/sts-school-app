@@ -7,7 +7,7 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. This is a separately authored suppleme
 - Composite archive SHA-256: `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`; member SHA-256: `07053f977dcbef91ee05d74a2e4dab9c3fa921cbb3792dc8698287a55197bb3a`.
 - Source definition, branches and scientific-method statements are indexed in `CHEM-IDX-T1A-W01.md` at lines 103–149.
 - The factual findings and authoritative references are recorded in `CHEM-FACT-T1A-W01-STATEMENTS.md`.
-- Lesson body SHA-256: `6a03ec3b02553bf67822e57d8356df2afe3f963c3bcf4ad295dd7d843df09940`.
+- Lesson body SHA-256: `1e448e35285b3057663cb8767ea3e095adebd268786a21b0b446c10fac8afb3f`.
 
 ## Implementation
 - Added `SUP-SS1-CHEM-T1A-W01-SCIENCE-FOUNDATIONS` to `backend/src/db/ss1/subjects/chemistry.json`.
