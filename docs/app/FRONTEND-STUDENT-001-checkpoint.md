@@ -31,7 +31,7 @@ Worker branch: `agent/frontend-student-dashboard-recovery-20261113`
 
 ## Commits
 - `0a12e7040d35521bc9ed466b87d0abad75d57af9` — render materials/results and add independent dashboard recovery.
-- Checkpoint commit: pending.
+- Checkpoint commit: `40718529ab9bf2b07330a81c5cb664f45428f7b7`.
 
 ## Verification
 - Static inspection confirms Materials and My Results navigate to existing registered stack routes.
