@@ -43,6 +43,8 @@ Worker branch: `agent/frontend-admin-users-current-20261113`
 - Automated tests, TypeScript and device checks were not run because no local checkout/command execution environment is available.
 - No runtime account-management readiness claim is made.
 
+- Account create/update/approval live-response policy is provided by shared API PR #776; merge it before this UI PR.
+
 ## Remaining work
 - Verify new teacher, subject-only teacher, parent, student, admin and finance_admin creation/edit flows.
 - Test school lookup failures and retries, role changes, class/subject assignment and access expiry.
