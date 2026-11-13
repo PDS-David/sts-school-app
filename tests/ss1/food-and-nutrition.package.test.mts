@@ -113,7 +113,7 @@ test('Current coverage remains explicitly partial/marker-only and all references
   assert(p.open_items.some(item => item.id === 'FOOD-AND-NUTRITION-T1-W01-NUTRITION-CLAIMS' && item.blocks_delivery));
   assert(p.open_items.some(item => item.id === 'FOOD-AND-NUTRITION-T1-W01-THIN-TEACHING' && !item.blocks_delivery));
   assert(p.coverage.some(entry => entry.id === 'COV-FN-T1-W02-CAREER-OVERVIEW' && entry.status === 'PARTIAL'));
-  assert.equal(p.coverage.filter(entry => entry.id.startsWith('COV-FN-T1-W02-CAREER-') && entry.status === 'PARTIAL').length, 12);
+  assert.equal(p.coverage.filter(entry => entry.id.startsWith('COV-FN-T1-W02-CAREER-') && entry.id !== 'COV-FN-T1-W02-CAREER-OVERVIEW' && entry.status === 'PARTIAL').length, 12);
   assert(p.open_items.some(item => item.id === 'FOOD-AND-NUTRITION-T1-W02-CAREER-DESCRIPTIONS' && item.blocks_delivery));
   assert(p.open_items.some(item => item.id === 'FOOD-AND-NUTRITION-T1-W02-MISFILED-EVALUATION' && item.blocks_delivery));
 });
