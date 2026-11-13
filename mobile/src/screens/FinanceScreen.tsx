@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Alert, Modal, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 import api from '../api/client';
@@ -10,6 +10,7 @@ import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
 import { Card, Loader, Empty, Badge, Btn, Input, SectionHeader } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { PageContainer } from '../components/layout';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 
 const STATUS_COLOR: Record<string, string> = {
   unpaid: Colors.error, partial: Colors.warning, paid: Colors.success,
@@ -33,6 +34,10 @@ export default function FinanceScreen({ navigation }: any) {
   const [loadError, setLoadError] = useState('');
   const [updatingInvoiceId, setUpdatingInvoiceId] = useState<string | null>(null);
   const [feeSaving, setFeeSaving] = useState(false);
+  const [invOptionsLoading, setInvOptionsLoading] = useState(false);
+  const [invOptionsError, setInvOptionsError] = useState('');
+  const [confirmPaid, setConfirmPaid] = useState<any>(null);
+  const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
 
   // Compact switcher lives in the native header now (finance_admin only —
   // parent has no school to switch), not as a full-width block in the
@@ -58,60 +63,68 @@ export default function FinanceScreen({ navigation }: any) {
     const invUrl = isParent && selectedWardId
       ? `/finance/invoices?student_id=${selectedWardId}`
       : '/finance/invoices';
+    setLoading(true);
     setLoadError('');
+    setInvoices([]);
+    setFeeItems([]);
+    const errors: string[] = [];
     try {
-      const [inv, fee] = await Promise.all([
-        api.get(invUrl),
-        // finance_admin has no school of its own — fee items are always
-        // school-scoped server-side, so it needs to say which school
-        // explicitly (via the switcher) or this comes back empty.
-        api.get('/finance/fee-items', { params: { school_code: isFinanceAdmin ? (selectedSchoolCode ?? undefined) : undefined } }),
-      ]);
-      setInvoices(inv.data.invoices ?? []);
-      setFeeItems(fee.data.fee_items ?? []);
-    } catch {
-      setLoadError('Could not load fee items and invoices. Check your connection and try again.');
-    } finally { setLoading(false); }
+      const { data } = await api.get(invUrl);
+      setInvoices(data.invoices ?? []);
+    } catch { errors.push('invoices'); }
+    try {
+      // finance_admin has no school of its own — fee items are school-scoped.
+      const { data } = await api.get('/finance/fee-items', { params: { school_code: isFinanceAdmin ? (selectedSchoolCode ?? undefined) : undefined } });
+      setFeeItems(data.fee_items ?? []);
+    } catch { errors.push('fee schedule'); }
+    if (errors.length) setLoadError(`Could not load ${errors.join(' and ')}. Check your connection and retry.`);
+    setLoading(false);
   };
   useEffect(() => { fetch(); }, [selectedWardId, selectedSchoolCode]);
 
-  const markPaid = async (id: string) => {
-    // Moved off /admin/finance/... — finance is its own path now, gated to
-    // finance_admin only (routes/finance.ts).
-    setUpdatingInvoiceId(id);
+  const markPaid = async () => {
+    if (!confirmPaid || updatingInvoiceId !== null) return;
+    const invoice = confirmPaid;
+    setConfirmPaid(null);
+    setUpdatingInvoiceId(invoice.id);
     try {
-      await api.put(`/finance/invoices/${id}/status`, { status: 'paid' });
+      await api.put(`/finance/invoices/${invoice.id}/status`, { status: 'paid' });
       await fetch();
-      Alert.alert('Payment updated', 'The invoice has been marked as paid.');
+      setInfoDialog({ title: 'Payment updated', message: `Invoice for ${invoice.student_name} has been marked as paid.` });
     } catch (e: any) {
-      Alert.alert('Could not update payment', e?.response?.data?.error ?? 'Please check your connection and try again.');
+      setInfoDialog({ title: 'Could not update payment', message: e?.response?.data?.error ?? 'Please check your connection and try again.' });
     } finally {
       setUpdatingInvoiceId(null);
     }
   };
 
   const handleSaveFeeItem = async () => {
+    if (feeSaving) return;
     const amount = Number(feeForm.amount);
-    if (!feeForm.name.trim() || !feeForm.amount.trim()) { Alert.alert('Name and amount required'); return; }
-    if (!Number.isFinite(amount) || amount <= 0) { Alert.alert('Enter a valid amount greater than zero.'); return; }
+    if (!feeForm.name.trim() || !feeForm.amount.trim()) { setInfoDialog({ title: 'Required fields', message: 'Enter a fee name and amount.' }); return; }
+    if (!Number.isFinite(amount) || amount <= 0) { setInfoDialog({ title: 'Invalid amount', message: 'Enter a valid amount greater than zero.' }); return; }
+    if (!selectedSchoolCode) { setInfoDialog({ title: 'Select a school', message: 'Choose a school before creating a fee item.' }); return; }
     setFeeSaving(true);
     try {
       await api.post('/finance/fee-items', {
-        name: feeForm.name,
+        name: feeForm.name.trim(),
         amount,
-        class_name: feeForm.class_name || null,
+        class_name: feeForm.class_name.trim() || null,
         school_code: selectedSchoolCode,
       });
       setFeeModal(false);
       setFeeForm({ name: '', amount: '', class_name: '' });
       await fetch();
-    } catch (e: any) { Alert.alert('Error', e?.response?.data?.error ?? 'Save failed'); }
+      setInfoDialog({ title: 'Fee item created', message: 'The fee item is now available in this school’s fee schedule.' });
+    } catch (e: any) { setInfoDialog({ title: 'Could not save fee item', message: e?.response?.data?.error ?? 'Save failed. Check your connection and try again.' }); }
     finally { setFeeSaving(false); }
   };
 
-  const openInvoiceModal = async () => {
-    setInvForm({ student_id: '', term_id: '', fee_item_ids: [] });
-    setInvModal(true);
+  const loadInvoiceOptions = async () => {
+    setInvOptionsLoading(true);
+    setInvOptionsError('');
+    setStudents([]);
+    setTerms([]);
     try {
       const [s, t] = await Promise.all([
         api.get('/students', { params: { school_code: selectedSchoolCode ?? undefined } }),
@@ -119,7 +132,15 @@ export default function FinanceScreen({ navigation }: any) {
       ]);
       setStudents(s.data.students ?? []);
       setTerms(t.data.terms ?? []);
-    } catch { Alert.alert('Error', 'Could not load students/terms for this school.'); }
+    } catch (e: any) {
+      setInvOptionsError(e?.response?.data?.error ?? 'Could not load students and terms for this school. Retry before creating an invoice.');
+    } finally { setInvOptionsLoading(false); }
+  };
+
+  const openInvoiceModal = () => {
+    setInvForm({ student_id: '', term_id: '', fee_item_ids: [] });
+    setInvModal(true);
+    loadInvoiceOptions();
   };
 
   const toggleFeeItem = (id: number) => {
@@ -136,8 +157,13 @@ export default function FinanceScreen({ navigation }: any) {
     .reduce((sum, f) => sum + Number(f.amount), 0);
 
   const handleCreateInvoice = async () => {
+    if (saving) return;
+    if (invOptionsLoading || invOptionsError || !students.length || !terms.length) {
+      setInfoDialog({ title: 'Invoice options unavailable', message: 'Load the current school’s students and terms before creating an invoice.' });
+      return;
+    }
     if (!invForm.student_id || !invForm.term_id || invForm.fee_item_ids.length === 0) {
-      Alert.alert('Select a student, a term, and at least one fee item.');
+      setInfoDialog({ title: 'Incomplete invoice', message: 'Select a student, a term, and at least one fee item.' });
       return;
     }
     setSaving(true);
@@ -148,9 +174,10 @@ export default function FinanceScreen({ navigation }: any) {
         fee_item_ids: invForm.fee_item_ids,
       });
       setInvModal(false);
-      fetch();
+      await fetch();
+      setInfoDialog({ title: 'Invoice created', message: 'The invoice has been created for the selected student and term.' });
     } catch (e: any) {
-      Alert.alert('Error', e?.response?.data?.error ?? 'Could not create invoice');
+      setInfoDialog({ title: 'Could not create invoice', message: e?.response?.data?.error ?? 'Check your connection and try again.' });
     } finally {
       setSaving(false);
     }
