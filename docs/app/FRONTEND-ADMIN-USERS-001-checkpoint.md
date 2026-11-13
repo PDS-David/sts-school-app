@@ -35,6 +35,8 @@ Worker branch: `agent/frontend-admin-users-current-20261113`
 - `3165082e4113bc9005a53a9edd76137e9fbde462` — reapply the focused implementation on current master.
 - Checkpoint commit: `b4ac4ed5be4927dbcb3a0187832a5410cdfd39fa`.
 
+- CI follow-up: removed 5 unsupported Btn size prop(s) before the current-master TypeScript run.
+
 ## Verification
 - Static inspection confirms school/class/subject lookup calls remain scoped by school_code.
 - Static inspection confirms teacher save is blocked when selected-school lookup data is unavailable.
