@@ -9,15 +9,15 @@ Base: `master`
 
 **PACKAGE CONTRACT, LOADER AND FAIL-CLOSED DELIVERY IMPLEMENTED. SS2 AGRICULTURAL SCIENCE FIRST TERM WEEKS 1-9 DRAFTED; CURRICULUM APPROVAL AND FINAL VALIDATION PENDING.**
 
-The Weeks 1-9 package is structurally validated in CI. GitHub Actions run 43476440171 passed the backend TypeScript typecheck and all 25 SS23 Node tests. No SS2 or SS3 lesson package is certified for student release by this work. All SS2 Agriculture units and assets remain pending approval; the student routes intentionally serve no lesson content until blockers and evidence-backed approvals are resolved.
+The Weeks 1-9 package is structurally validated in CI. GitHub Actions run 43476440171 passed the backend TypeScript typecheck and all 25 SS23 Node tests. Week 10 and its package assertions were added afterward and require a fresh run. No SS2 or SS3 lesson package is certified for student release by this work. All SS2 Agriculture units and assets remain pending approval; the student routes intentionally serve no lesson content until blockers and evidence-backed approvals are resolved.
 
 ## Current SS2 Agricultural Science First Term scope
 
-- 7 units: Weeks 1, 2, 3, combined Weeks 4-5, Week 6, Week 7 and combined Weeks 8-9.
-- 128 assessment/practice items: 109 original-source prompts and 19 authored supplements. All have source locators, authored answers, explanations and marking criteria.
+- 8 units: Weeks 1, 2, 3, combined Weeks 4-5, Week 6, Week 7, combined Weeks 8-9 and Week 10.
+- 150 assessment/practice items: 128 original-source prompts and 22 authored supplements. All have source locators, authored answers, explanations and marking criteria.
 - 47 asset records: 42 pending source-extract references and 5 original SVG diagrams.
-- 18 separate, content-hashed external factual references.
-- 35 open items: 30 delivery-blocking and 5 non-blocking.
+- 22 separate, content-hashed external factual references.
+- 43 open items: 37 delivery-blocking and 6 non-blocking.
 - Original source member: `SS23-SRC-225f920d3751`; archive-member SHA-256 and byte count were cross-checked against the existing source register.
 
 Weeks 8-9 are represented as one combined unit because the scheme assigns the Plant Nutrients/Nutrient Cycles topic to Weeks 8-9 while the source body has a single Week Eight heading. The unit uses all supplied content; the subject lead must confirm that it covers the full two-week scheme range. No separate Week Nine lesson has been invented.
@@ -38,11 +38,11 @@ Weeks 8-9 are represented as one combined unit because the scheme assigns the Pl
 
 Twenty-five Node tests cover valid SS2/SS3 package shapes, question/answer provenance, the real Agricultural Science draft package, registered-package loading, class separation, answer-key hiding, term/asset gating and file integrity, including byte-count and SHA-256 checks for all five stored SVG assets.
 
-GitHub Actions run **43476440171** passed after the Weeks 8-9 package extension: backend TypeScript typecheck passed and all 25 SS23 Node tests passed (25 passed, 0 failed). The suite includes byte-count and SHA-256 checks for all five stored SVG assets.
+GitHub Actions run **43476440171** passed after the Weeks 8-9 package extension: backend TypeScript typecheck passed and all 25 SS23 Node tests passed (25 passed, 0 failed). The suite includes byte-count and SHA-256 checks for all five stored SVG assets. Week 10 and its assertions were added after this run and await a fresh validation.
 
 ## Remaining work
 
-1. Complete SS2 Agricultural Science Week 10 (Nutrient Availability) from the supplied source document.
+1. Audit and complete SS2 Agricultural Science Terms 2 and 3 from their supplied source documents.
 2. Complete all SS2 Agricultural Science Term 2 and Term 3 weeks, with source coverage and assessments.
 3. Audit and complete every other registered SS2 subject, term and teaching week.
 4. Audit SS3 subject packages as exam preparation only, Terms 1-2; do not create normal instructional units or a third-term package.
@@ -52,4 +52,4 @@ GitHub Actions run **43476440171** passed after the Weeks 8-9 package extension:
 
 ## Exact next action
 
-Audit the original SS2 Agricultural Science First Term Week Ten (Nutrient Availability) section, including its lesson body, assessment questions and any embedded figures. Draft the unit only from supplied source material, distinguish authored supplementation, record all corrections and blockers, update tests/checkpoints, then run CI.
+Begin the SS2 Agricultural Science Second Term source inventory and audit its first teaching week, including the lesson body, assessments and any embedded figures. Continue week-by-week through Terms 2 and 3 before moving to the next subject.
