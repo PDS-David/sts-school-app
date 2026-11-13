@@ -27,7 +27,7 @@ When report loading failed, the screen returned only an `Empty` message. The suc
 
 ## Commits
 - `d129d3d3cc44e0e6ad9e19d6b5c3450dccf1b76b` — add report retry action.
-- Checkpoint commit: pending.
+- Checkpoint created in commit `4e746d29a5390fcefa6f07c12e7d86761bb10454`.
 
 ## Verification
 - Static inspection: retry invokes the same existing `fetchReport` routine, which continues to use the current role-specific report endpoint and selected ward/student identifiers.
