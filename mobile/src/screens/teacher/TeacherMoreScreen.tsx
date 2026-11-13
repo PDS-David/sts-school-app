@@ -13,6 +13,7 @@ export default function TeacherMoreScreen({ navigation }: any) {
   const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; onPress?: () => void }[] = [
     { icon: 'trending-up-outline', label: 'Weekly Efforts', sub: 'Log weekly student effort', onPress: () => navigation.navigate('WeeklyEfforts') },
     { icon: 'settings-outline', label: 'Settings', sub: 'Change password and preferences', onPress: () => navigation.navigate('ChangePassword') },
+    { icon: 'calendar-outline', label: 'School Calendar', sub: 'View school events and important dates', onPress: () => navigation.navigate('SchoolCalendar') },
     // No "Security Question" entry here (deliberately, not an omission):
     // per explicit school-owner policy, a teacher who forgets their
     // password has admin reset it directly — self-service recovery
