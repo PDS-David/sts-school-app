@@ -27,6 +27,8 @@
 
 - Follow-up on shared blocker: PR #788 now has passing Mobile TypeScript, Android readiness and SS1 package-integrity checks on its latest head. It is still open; rerun this branch's checks after #788 merges. PR #788's JSS3 and cross-subject package audits were still in progress at the last check.
 
+- CI on current-master head `27e7e805cbcacda197307f1faf9fc25c7e226edd`: Mobile TypeScript, Android mobile readiness and SS1 package integrity passed; JSS3 implementation/assets check is still in progress.
+
 ## Remaining work
 - Run mobile TypeScript, Android readiness and package-integrity checks.
 - Fix any new errors without weakening validation.
