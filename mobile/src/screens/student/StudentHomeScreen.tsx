@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, RefreshControl } 
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
+import { useNotifications } from '../../components/NotificationsContext';
 import { Card, Loader } from '../../components/UI';
 import { PageContainer } from '../../components/layout';
 import { Colors, Spacing, Fonts, Radius } from '../../theme';
@@ -12,6 +13,8 @@ import { openNotifications, openBraineeChat, openTextStudy } from '../../navigat
 
 export default function StudentHomeScreen({ navigation }: any) {
   const { user } = useAuth();
+  const { notifications, refresh: refreshNotifications } = useNotifications();
+  const announcements = notifications.filter(n => n.kind === 'announcement').slice(0, 3);
   const [tasks, setTasks] = useState<any[]>([]);
   const [materials, setMaterials] = useState<any[]>([]);
   const [recentScores, setRecentScores] = useState<any[]>([]);
@@ -40,8 +43,9 @@ export default function StudentHomeScreen({ navigation }: any) {
         setRecentScores((r.data.scores ?? []).slice(0, 3));
       }
     } catch { /* no linked student record yet, or offline */ }
+    await refreshNotifications();
     setLoading(false);
-  }, []);
+  }, [refreshNotifications]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -78,11 +82,19 @@ export default function StudentHomeScreen({ navigation }: any) {
           </TouchableOpacity>
         ))}
 
-        {/* Announcements */}
+        {/* Announcements are loaded from the school/class/role-scoped API feed. */}
         <Text style={styles.sectionLabel}>Announcements</Text>
-        <Card style={styles.emptyCard}>
-          <Text style={styles.emptyText}>No announcements yet. Your school admin can post updates here.</Text>
-        </Card>
+        {announcements.length === 0 ? (
+          <Card style={styles.emptyCard}>
+            <Text style={styles.emptyText}>No announcements yet. Your school admin can post updates here.</Text>
+          </Card>
+        ) : announcements.map(item => (
+          <Card key={item.id} style={styles.emptyCard}>
+            <Text style={styles.rowTitle}>{item.title}</Text>
+            <Text style={styles.emptyText}>{item.body}</Text>
+            <Text style={styles.rowMeta}>{new Date(item.createdAt).toLocaleDateString()}</Text>
+          </Card>
+        ))}
 
         {/* Continue learning */}
         <Text style={styles.sectionLabel}>Continue Learning</Text>
