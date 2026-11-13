@@ -107,3 +107,23 @@ The Week Six reading assignment cites O.A. Iwena, Chapter 19, pages 204-208; the
 - Package status remains PENDING; the student routes intentionally serve no lessons until blocking items are resolved and evidence-backed approval/verification is recorded.
 
 **Next exact task:** audit and draft Week 7, preserving the source text, assessments and figures; then verify the combined Weeks 8-9 nutrient-cycle coverage and Week 10.
+
+
+## Week 7 — Environmental factors affecting agricultural production
+
+Week 7 is drafted with climatic, biotic and edaphic factors and their effects on crops and livestock. It covers rainfall, drought, temperature, wind, solar radiation, relative humidity, soil organisms, pests, parasites, diseases, soil pH, texture, structure, fertility, soil types and topography. Sixteen original-source prompts have authored answers, explanations and marking criteria, plus two authored application questions.
+
+NOAA supports the distinction between long-term climate and short-term weather; USDA NRCS's Soil Biology Primer supports the roles of beneficial soil organisms and harmful pests/pathogens. Existing Illinois Extension, FAO, USDA soil-texture and Penn State soil-acidity references support the edaphic explanations.
+
+Six technical/content issues remain delivery blockers: drought is listed as a climatic element; relative humidity is defined incompletely; topography is classified as edaphic; sandy/clayey soil behaviour is stated too absolutely; sunshine duration is conflated with solar radiation and heat; and the source assessment asks about disease effects without a dedicated disease subsection. A supplementary disease explanation has been added for review. The O.A. Iwena Chapter 9 pages 48-59 reading reference is unverified and non-blocking.
+
+## Updated First Term package totals
+
+- 6 units: Weeks 1, 2, 3, combined Weeks 4-5, Week 6 and Week 7.
+- 107 assessment/practice items: 91 original-source prompts and 16 authored supplements.
+- 40 asset records: 37 pending source-extract references and 3 stored authored SVG diagrams.
+- 14 external factual references.
+- 29 open items: 25 delivery-blocking and 4 non-blocking.
+- Package status remains PENDING; the student routes intentionally serve no lessons until blocking items are resolved and evidence-backed approval/verification is recorded.
+
+**Next exact task:** audit the combined Weeks 8-9 Plant Nutrients/Nutrient Cycles source body and assessments, then draft the combined unit only if the supplied content supports the full two-week scheme range. Follow with Week 10 nutrient availability.
