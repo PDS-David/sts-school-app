@@ -11,7 +11,7 @@ Branch: `agent/student-achievements-rebased-20261113`
 - Awards first/10th/25th topic milestones, first assessment, 80%+ fully graded assessment, and perfect-score badges.
 - Score-based badges require `fully_graded=true` and reject submissions with answer grading status `ai_graded` or `ai_unavailable`.
 - Resolves the active student row from authenticated identity; no caller-supplied student ID.
-- Added a student achievements screen with earned/in-progress state, progress and earned dates; linked from Profile alongside School Calendar.
+- Added a student achievements screen with earned/in-progress state, progress and earned dates; linked from Profile alongside School Calendar. Load failures now show a retry warning rather than masquerading as an empty achievements feed.
 
 ## Changed files
 - `backend/src/routes/learning.ts`
