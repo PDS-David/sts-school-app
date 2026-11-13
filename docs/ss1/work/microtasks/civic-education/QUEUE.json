@@ -59,7 +59,8 @@
     "CIV-PRE-T2 (2026-11-13): verified second-term DOCX preamble paragraphs 1–37. Header TERM: 2ND TERM; SUBJECT: CIVIC EDUCATION; SS 1; SCHEME OF WORK; WEEKS/TOPICS; nine topic groups and subtopics; split 'The current Nigerian' / 'Constitution' feature/function topic; final row '12 & 13 Test & Examination'. Scheme is ordinary paragraphs, not a table; ten paragraphs carry Word auto-numbering not present in text. No teaching text before WEEK ONE.",
     "CIV-MARK-T2-SCHEME-GAPS (2026-11-13): reconciled scheme to ten body weeks and added three blocking CONTENT open items: missing INEC composition (scheme lines35–37), missing meaning of free/fair elections (39–41), missing meaning of electoral malpractice (45–47). Week1 is review-only; voter education spans Weeks2–3 with repeated title; Week8 planning is separate; no Week11–13 body. No missing content authored.",
     "CIV-MARK-T2-REVEXAM (2026-11-13): scheme row at line73 is '12 & 13 Test & Examination'; final evaluation lines489–495 directs teacher to 'Treat Akwa Past Question Papers', 'Nos 1 -100', 'Best wishes.' No test/examination paper, past-question text or marking scheme is in source; Akwa papers not supplied. Scheme-only marker, not a WEEK12/13 lesson.",
-    "2026-11-13 CIV-PRES-T2-LISTS: source-preservation audit completed from the user-attached archive. Archive/member hashes verified; 86 numbered paragraphs resolved through OOXML numbering definitions and recorded in CIV-PRES-T2-LISTS.md. No source wording or package content changed. Automated/runtime testing remains deferred."
+    "2026-11-13 CIV-PRES-T2-LISTS: source-preservation audit completed from the user-attached archive. Archive/member hashes verified; 86 numbered paragraphs resolved through OOXML numbering definitions and recorded in CIV-PRES-T2-LISTS.md. No source wording or package content changed. Automated/runtime testing remains deferred.",
+    "2026-11-13 CIV-FACT-T2-ELECTORAL-LAW: factual dependency audit completed. Used the hash-verified source DOCX and current enacted electoral statute (Electoral Act 2026, Act No.1) plus Constitution consolidated through Fifth Alteration (2023); separated exact source text from statutory assessment. No content corrections or lesson/package changes. Automated/runtime testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -74,9 +75,9 @@
     "LESSON": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 39,
+    "IMPLEMENTED_TESTING_DEFERRED": 40,
     "BLOCKED": 1,
-    "PENDING": 15
+    "PENDING": 14
   },
   "items": [
     {
@@ -1424,8 +1425,8 @@
         "CIV-WK-T2-W03",
         "CIV-WK-T2-W05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-13: Added CIV-FACT-T2-ELECTORAL-LAW.md. Verified the attached archive/member hashes; preserved source excerpts and assessed each claim against the 1999 Constitution consolidated through Fifth Alteration (2023) and Electoral Act 2026, Act No.1 (commenced 2026-02-18; s154 repeals Electoral Act 2022). Recorded precise provisions for voter eligibility, PVC/BVAS accreditation, public display, thumb marks/open-secret ballot, INEC powers/delimitation, State SIEC remit/composition/appointment. No lesson/package/coverage/rule/correction/answer/asset edits. Tests/importer/database/device checks not run; deferred.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -2003,7 +2004,6 @@
     }
   },
   "next_runnable": [
-    "CIV-FACT-T2-ELECTORAL-LAW",
     "CIV-FACT-T2-CONSTITUTION",
     "CIV-FACT-T2-NEUTRALITY",
     "CIV-LES-T1-W02-VALUES-TYPES",
