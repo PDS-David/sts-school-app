@@ -21,7 +21,8 @@
     "GEO-INV-T2 (2026-10-30) inventoried the 2nd Term original (nine scheme rows covering weeks 1-11, eight week labels covering weeks 1-10, 46 markers, header letterhead image, two weather tables, two drawing objects); eleven indexing/visual items appended. The 3rd Term inventory remains unread. No coverage, lesson, rule, correction or asset was written.",
     "GEO-WK-T1-W01 (2026-11-07) indexed Week 1 at objective level: meaning, scope and value mapped SUPPORTED to the reproduced generic parsed-row id; 'Nature' is named in the scheme row and never taught, the state-capital questions at lines 75 and 88 are taught nowhere in the document, the reading pointer is unverified and the source has no answer key, so two PARTIAL rows and two UNRESOLVED rows plus three lesson items (one BLOCKED on an owner decision) were appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written.",
     "GEO-INV-T3 (2026-11-13) inspected the exact 3rd Term Geography .doc from the owner-attached composite archive; archive/member hashes verified against SOURCE_ASSIGNMENTS.csv. Source extracted with antiword 0.37 and privately converted/rendered with LibreOffice 25.2.3.2 for structure. Inventory GEO-INV-T3.md records scheme, nine body blocks (combined Weeks 1–2, then Weeks 3–10), evaluation/assignment sections, one 38x4 state/capital/slogan table, a drawn Nigeria location/boundary sketch, and a tab-aligned thermal plant list. Geography/population/census/industry/agriculture/mineral/power claims are flagged for dated authoritative verification. 16 bounded follow-up tasks appended: nine week indexes, preamble, two visual dispositions plus one tabular-list disposition, and three factual dependencies. No lessons/package/coverage/rules/corrections/assets/approval changed; no tests/importer/device checks. Testing deferred.",
-    "GEO-TEST-PACKAGE (2026-11-13): added tests/ss1/geography.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; three PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current supported/partial/unresolved coverage/open-item boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no curriculum content or approval state changed."
+    "GEO-TEST-PACKAGE (2026-11-13): added tests/ss1/geography.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; three PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current supported/partial/unresolved coverage/open-item boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no curriculum content or approval state changed.",
+    "GEO-PRE-T3 (2026-11-13): inspected exact third-term Geography source preamble and scheme rows. Recorded the title, subject/class, SCHEME OF WORK, WEEK/TOPIC header and nine rows (1–2 combined, then 3–10) in GEO-PRE-T3.md. Scheme rows use a WEEK/TOPIC column header followed by bare numeric labels; they are not same-line WEEK <number> body markers. The first actual body marker is WEEK ONE AND TWO. No classify_marker rule or MARKER coverage entry is needed; scheme rows remain preamble, not lessons. No revision/exam row is present."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -35,9 +36,9 @@
     "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 8,
+    "IMPLEMENTED_TESTING_DEFERRED": 9,
     "BLOCKED": 2,
-    "PENDING": 41
+    "PENDING": 40
   },
   "items": [
     {
@@ -1687,8 +1688,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Exact source member hash verified. Original DOCX opening paragraphs and scheme table inspected. Preserved title, subject/class, SCHEME OF WORK, WEEK/TOPIC column header and nine numeric scheme rows (Week 1–2 through Week 10) in GEO-PRE-T3.md. The scheme rows contain bare numeric week cells, not same-line WEEK <number> body markers; the first body marker is WEEK ONE AND TWO at line28. No classify_marker rule or MARKER coverage entry is required; do not promote scheme rows to lessons. No revision/examination row exists in the scheme.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     },
     {
@@ -1948,7 +1949,6 @@
     "GEO-WK-T3-W08",
     "GEO-WK-T3-W09",
     "GEO-WK-T3-W10",
-    "GEO-PRE-T3",
     "GEO-VIS-T3-LOCATION-SKETCH",
     "GEO-VIS-T3-STATE-CAPITALS-TABLE",
     "GEO-VIS-T3-THERMAL-PLANT-LIST",
