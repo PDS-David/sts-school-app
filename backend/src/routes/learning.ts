@@ -783,11 +783,13 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   // match the supplied read-only export. Short source notes remain visibly flagged to pupils.
   const primary4Delivery = resolvePrimary4SourceDelivery(topic);
   if (primary4Delivery && (primary4Delivery.kind === 'withheld' || primary4Delivery.source !== 'primary4-export')) {
-    const retirement = await retireStalePrimary4Cache(query, topic.id, primary4Delivery);
-    if (retirement.retired || primary4Delivery.kind === 'withheld' || primary4Delivery.source === 'archive-correction') {
-      topic.summary = null;
-      topic.generated_assessment_id = null;
-    }
+    await retireStalePrimary4Cache(query, topic.id, primary4Delivery);
+    const { rows: freshPrimary4 } = await query(
+      'SELECT summary, generated_assessment_id FROM topics WHERE id=$1',
+      [topic.id],
+    );
+    topic.summary = freshPrimary4[0]?.summary ?? null;
+    topic.generated_assessment_id = freshPrimary4[0]?.generated_assessment_id ?? null;
   }
   if (primary4Delivery?.kind === 'withheld') {
     if (primary4Delivery.hideFromStudent) return res.status(404).json({ error: 'Topic not found' });
@@ -1745,6 +1747,8 @@ router.get('/submissions/:id/answers', async (req, res) => {
       if (!agriculturalScienceDeliverable.ok) return res.status(410).json({ error: agriculturalScienceDeliverable.reason });
       const englishDeliverable = await englishAssessmentDeliverable(query, assessmentId);
       if (!englishDeliverable.ok) return res.status(410).json({ error: englishDeliverable.reason });
+      const primary4Deliverable = await primary4AssessmentDeliverable(query, assessmentId);
+      if (!primary4Deliverable.ok) return res.status(410).json({ error: primary4Deliverable.reason });
     }
   }
 
