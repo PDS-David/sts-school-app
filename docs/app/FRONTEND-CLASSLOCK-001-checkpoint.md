@@ -33,7 +33,7 @@ Worker branch: `agent/frontend-class-lock-current-20261113`
 
 ## Commits
 - `648d94ee84319434162fe1df6e8ed268946a5614` — reapply class-lock recovery on current master.
-- Checkpoint commit: pending.
+- Checkpoint commit: `9091c40c5ddb842fcd9e0caeedb61b7c0cfccc45`.
 
 ## Verification
 - Static inspection confirms lock status errors block lock/unlock rather than showing an assumed-open state.
