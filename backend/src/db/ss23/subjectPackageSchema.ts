@@ -143,7 +143,7 @@ const assetSchema = z.object({
 
 const coverageSchema = z.object({
   id: text,
-  source_id: z.string().regex(/^SS23-(?:SRC|EXT)-[A-Z0-9]+(?:-[A-Z0-9]+)*$/),
+  source_id: z.string().regex(/^SS23-(?:SRC|EXT)-[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/),
   objective: text,
   objective_locator: text,
   status: z.enum(['SUPPORTED', 'IMPLEMENTED_EQUIVALENT', 'PARTIAL', 'UNRESOLVED', 'MARKER']),
