@@ -43,8 +43,9 @@
     "LESSON": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 10,
+    "IMPLEMENTED_TESTING_DEFERRED": 9,
     "BLOCKED": 3,
+    "IN_PROGRESS": 1,
     "PENDING": 60
   },
   "items": [
@@ -417,8 +418,8 @@
         "FA-INV-T1",
         "FA-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Implemented in branch agent/financial-accounting-week-two-20261113. Commit 95822c9703b658a654a62b3973c6c5b1a5288c89 adds source-bound Week 2 objective/assessment coverage and an original transaction-classification lesson with model answers and proposed marking. Jan 28 remains unresolved; diagram and external reading remain open. Testing deferred; see FA-WK-T1-W02.md.",
+      "status": "IN_PROGRESS",
+      "implementation_reference": "Implemented in branch agent/financial-accounting-week-two-20261113. Commit 95822c9703b658a654a62b3973c6c5b1a5288c89 adds source-bound Week 2 objective/assessment coverage and an original transaction-classification lesson with model answers and proposed marking. Jan 28 remains unresolved; diagram and external reading remain open. Testing deferred; see FA-WK-T1-W02.md. Exact body hash was recalculated from the serialized lesson body after CI found the previous stored digest included an extra trailing newline; corrected body_sha256=3be6f3eef661a24e2459e3a727d573cadfd18ae11325bdb81ddf9592a82f671e in package commit a4f8255a86b4252932fe55d089f141d0fd127cd6. Await the rerun of the integrity/compiler workflow before returning the task to IMPLEMENTED_TESTING_DEFERRED.",
       "completion_condition": "Week 2 objective-level coverage or marker rules exist under the existing schema for meaning/classification of transactions and every assessment block, with exact locators; the classification diagram's disposition is delegated to FA-VIS-T1-W02-T03-DIAGRAMS; unanswered items become precise open items plus a small lesson task."
     },
     {
