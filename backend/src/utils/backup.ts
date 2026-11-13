@@ -259,8 +259,27 @@ export async function sendReminderIfDue(): Promise<boolean> {
 }
 
 /** Hourly check. Safe on a single instance; the advisory lock also protects against duplicate instances. */
-export function startBackupScheduler() {
-  const tick = () => sendReminderIfDue().catch(e => console.error('[backup] reminder check failed:', e?.message));
-  setTimeout(tick, 60_000).unref();
-  setInterval(tick, 60 * 60 * 1000).unref();
+export function startBackupScheduler(): () => Promise<void> {
+  let stopped = false;
+  let inFlight: Promise<void> | undefined;
+  const tick = () => {
+    if (stopped || inFlight) return;
+    inFlight = sendReminderIfDue()
+      .then(
+        () => undefined,
+        (e) => { console.error('[backup] reminder check failed:', e?.message); },
+      )
+      .finally(() => { inFlight = undefined; });
+  };
+  const initial = setTimeout(tick, 60_000);
+  const interval = setInterval(tick, 60 * 60 * 1000);
+  initial.unref();
+  interval.unref();
+
+  return async () => {
+    stopped = true;
+    clearTimeout(initial);
+    clearInterval(interval);
+    await inFlight;
+  };
 }
