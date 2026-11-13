@@ -80,7 +80,7 @@ router.post('/chat', async (req, res) => {
   if (message.length > 4000) {
     return res.status(400).json({ error: 'message is too long (maximum 4000 characters).' });
   }
-  if (history !== undefined) {
+  if (history != null) {
     if (!Array.isArray(history) || history.length > 6) {
       return res.status(400).json({ error: 'history must contain no more than 6 turns.' });
     }
@@ -113,8 +113,8 @@ router.post('/chat', async (req, res) => {
 router.post('/explain', async (req, res) => {
   const { topic, subject, class_name } = req.body as { topic?: string; subject?: string; class_name?: string };
   if (typeof topic !== 'string' || !topic.trim()) return res.status(400).json({ error: 'topic is required' });
-  if (topic.length > 1000 || (subject !== undefined && (typeof subject !== 'string' || subject.length > 100)) ||
-      (class_name !== undefined && (typeof class_name !== 'string' || class_name.length > 50))) {
+  if (topic.length > 1000 || (subject != null && (typeof subject !== 'string' || subject.length > 100)) ||
+      (class_name != null && (typeof class_name !== 'string' || class_name.length > 50))) {
     return res.status(400).json({ error: 'topic, subject or class_name exceeds the allowed input length.' });
   }
 
