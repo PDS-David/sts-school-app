@@ -1,9 +1,10 @@
 // ── ClassSummaryScreen.tsx ────────────────────────────────────────────────────
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, RefreshControl, TouchableOpacity, Alert } from 'react-native';
+import React, { useEffect, useState, useCallback } from 'react';
+import { View, Text, StyleSheet, ScrollView, RefreshControl, TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import api from '../api/client';
-import { Card, Loader, Empty, SectionHeader, GradePill } from '../components/UI';
+import { Card, Btn, Loader, Empty, SectionHeader, GradePill } from '../components/UI';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
@@ -19,6 +20,10 @@ export function ClassSummaryScreen({ navigation }: any) {
   const [selTerm,   setSelTerm]   = useState<number | ''>('');
   const [scores,    setScores]    = useState<any[]>([]);
   const [loading,   setLoading]   = useState(true);
+  const [setupError, setSetupError] = useState('');
+  const [scoresLoading, setScoresLoading] = useState(false);
+  const [scoresError, setScoresError] = useState('');
+  const [scoresRetry, setScoresRetry] = useState(0);
   const [refreshing,setRefreshing]= useState(false);
 
   // Compact switcher lives in the native header now, not as a full-width
@@ -29,40 +34,51 @@ export function ClassSummaryScreen({ navigation }: any) {
   }, [navigation]);
 
   useEffect(() => {
+    let cancelled = false;
     setLoading(true);
+    setSetupError('');
+    setClasses([]); setTerms([]); setSubjects([]); setScores([]);
+    setSelClass(''); setSelTerm('');
     const sc = selectedSchoolCode ?? undefined;
     Promise.all([
       api.get('/students', { params: { school_code: sc } }),
       api.get('/academic/terms', { params: { school_code: sc } }),
       api.get('/academic/subjects', { params: { school_code: sc } }),
-    ])
-      .then(([s, t, sub]) => {
-        const cls = [...new Set((s.data.students as any[]).map((x: any) => x.class_name))].sort();
-        setClasses(cls);
-        setSelClass(cls[0] ?? '');
-        setTerms(t.data.terms);
-        setSubjects(sub.data.subjects);
-        const cur = t.data.terms.find((x: any) => x.is_current);
-        setSelTerm(cur ? cur.id : '');
-      }).catch(() => {}).finally(() => setLoading(false));
+    ]).then(([s, t, sub]) => {
+      if (cancelled) return;
+      const cls = [...new Set((s.data.students as any[]).map((x: any) => x.class_name))].sort();
+      setClasses(cls);
+      setSelClass(cls[0] ?? '');
+      setTerms(t.data.terms ?? []);
+      setSubjects(sub.data.subjects ?? []);
+      const cur = (t.data.terms ?? []).find((x: any) => x.is_current);
+      setSelTerm(cur ? cur.id : '');
+    }).catch((e: any) => {
+      if (!cancelled) setSetupError(e?.response?.data?.error ?? 'Could not load classes, terms and subjects for this school.');
+    }).finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
   }, [selectedSchoolCode]);
 
-  const fetchScores = async () => {
-    if (!selClass || !selTerm) return;
+  const fetchScores = useCallback(async () => {
+    if (!selClass || !selTerm) { setScores([]); setScoresError(''); setScoresLoading(false); setRefreshing(false); return; }
+    setScoresLoading(true);
+    setScoresError('');
+    setScores([]);
     try {
       // school_code is required here, not optional — class names aren't
       // unique across schools ("JSS 1" can exist in more than one), so
       // without this an admin viewing one school's ranking could silently
-      // pick up another school's same-named class too. See the matching
-      // fix in backend/src/routes/scores.ts (GET /).
+      // pick up another school's same-named class too.
       const sc = selectedSchoolCode ?? undefined;
       const { data } = await api.get('/scores', {
         params: { class_name: selClass, term_id: selTerm, school_code: sc },
       });
-      setScores(data.scores);
-    } catch { } finally { setRefreshing(false); }
-  };
-  useEffect(() => { fetchScores(); }, [selClass, selTerm]);
+      setScores(data.scores ?? []);
+    } catch (e: any) {
+      setScoresError(e?.response?.data?.error ?? 'Could not load scores for this class and term.');
+    } finally { setScoresLoading(false); setRefreshing(false); }
+  }, [selClass, selTerm, selectedSchoolCode]);
+  useEffect(() => { fetchScores(); }, [fetchScores, scoresRetry]);
 
   // Aggregate by student
   const byStudent: Record<string, { name: string; total: number; subjects: number }> = {};
