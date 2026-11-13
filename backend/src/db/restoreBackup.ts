@@ -82,7 +82,7 @@ async function validateTargetSchema(
   present: Set<string>,
 ): Promise<void> {
   const backupNames = new Set(tables.map(table => table.name));
-  const targetNames = new Set([...present].filter(name => name !== 'app_bootstrap' && name !== 'backup_log'));
+  const targetNames = new Set([...present].filter(name => !['app_bootstrap', 'backup_log', 'schema_migrations'].includes(name)));
 
   const extra = [...targetNames].filter(name => !backupNames.has(name)).sort();
   if (extra.length) {
@@ -145,7 +145,7 @@ export async function restore(p: BackupPayload, opts: { apply: boolean; confirmD
     const { rows: have } = await client.query(
       `SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE'`);
     const present = new Set(have.map((r: any) => r.table_name));
-    const tables = p.tables.filter(t => t.name !== 'app_bootstrap' && t.name !== 'backup_log');
+    const tables = p.tables.filter(t => !['app_bootstrap', 'backup_log', 'schema_migrations'].includes(t.name));
     const missing = tables.filter(t => !present.has(t.name)).map(t => t.name);
     if (missing.length) throw new Error('Target is missing tables (run db:bootstrap first): ' + missing.join(', '));
 
