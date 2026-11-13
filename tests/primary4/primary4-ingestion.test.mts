@@ -4,6 +4,7 @@ import sourceManifest from '../../backend/src/db/primary4/sourceManifest.json' w
 import {
   buildPrimary4SupplementRows,
   primary4SupplementApprovalIssues,
+  refreshPrimary4PackageRows,
 } from '../../backend/src/db/primary4/primary4Supplements.ts';
 
 const existingRows = (sourceManifest as any).records.map((row: any) => ({
@@ -41,4 +42,30 @@ test('Primary 4 ingestion refuses secondary school and archive/export count mism
 test('all Primary 4 researched packages pass the owner approval and verification gate', () => {
   const issues = primary4SupplementApprovalIssues();
   assert.deepEqual(issues, []);
+});
+
+test('approved Primary 4 package refresh updates only exact researched rows and retires their stale assessments', async () => {
+  let captured: { sql: string; params?: unknown[] } | null = null;
+  const query = async (sql: string, params?: unknown[]) => {
+    captured = { sql, params };
+    return { rows: [{ refreshed_count: '2', closed_assessment_count: '1' }] };
+  };
+  const planned = [{
+    subject_id: 44,
+    class_name: 'Primary 4',
+    term_label: '1st Term',
+    title: 'Vehicles: Meaning, Types and Uses',
+    source_reference: 'approved refreshed lesson source',
+    order_index: 1,
+    source_file: 'P4-RESEARCHED-p4-bt-t1-w02.json',
+  }];
+  const result = await refreshPrimary4PackageRows(query, 'primary', planned);
+  assert.deepEqual(result, { refreshedCount: 2, closedAssessmentCount: 1 });
+  assert.ok(captured);
+  assert.match(captured!.sql, /t\.source_file LIKE 'P4-RESEARCHED-%'/);
+  assert.match(captured!.sql, /content_fingerprint='__PRIMARY4_WITHDRAWN__:'/);
+  assert.match(captured!.sql, /summary=NULL/);
+  assert.match(captured!.sql, /generated_assessment_id=NULL/);
+  assert.deepEqual(JSON.parse(String(captured!.params?.[1])), planned);
+  await assert.rejects(() => refreshPrimary4PackageRows(query, 'secondary', planned), /only valid for the primary school/);
 });
