@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { query } from '../db/pool.js';
+import { saveAttendanceBulk } from '../utils/attendanceWrites.js';
 import { requireAuth, requirePerm } from '../middleware/auth.js';
 import { hasPerm } from '../utils/rbac.js';
 import { audit } from '../utils/audit.js';
@@ -108,13 +109,7 @@ router.put('/bulk', requirePerm('attendance.write'), async (req, res) => {
     }
   }
 
-  for (const e of entries) {
-    await query(
-      `INSERT INTO attendance(student_id,term_id,days_present) VALUES($1,$2,$3)
-       ON CONFLICT(student_id,term_id) DO UPDATE SET days_present=$3`,
-      [e.student_id, term_id, e.days_present],
-    );
-  }
+  await saveAttendanceBulk(entries, term_id);
   // Wasn't audited at all before this pass, same gap as the single route
   // above — one summary entry per batch, not one per student.
   await audit(req.user!, 'save_attendance_bulk', 'attendance', undefined, `${entries.length} student(s), term ${term_id}`);
