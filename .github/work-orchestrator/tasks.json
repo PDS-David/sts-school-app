@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "repository": "PDS-David/sts-school-app",
+  "updated_at": "2026-11-13T14:30:00Z",
+  "lease_policy": {
+    "lease_minutes": 45,
+    "heartbeat_minutes": 10,
+    "recovery_grace_minutes": 15
+  },
+  "tasks": [
+    {
+      "id": "ORCH-001",
+      "title": "Implement durable task registry and validation",
+      "gate": "operations",
+      "status": "in_progress",
+      "priority": "P0",
+      "owner": "agent/sts-work-orchestrator-v1",
+      "created_at": "2026-11-13T14:30:00Z",
+      "updated_at": "2026-11-13T14:30:00Z",
+      "heartbeat_at": "2026-11-13T14:30:00Z",
+      "lease_expires_at": "2026-11-13T15:15:00Z",
+      "depends_on": [],
+      "files": [
+        ".github/work-orchestrator/**",
+        "scripts/validate_work_queue.py"
+      ],
+      "acceptance_criteria": [
+        "Task schema and registry are committed",
+        "Validator checks required fields, unique IDs, dependencies and state invariants",
+        "Workflow validates and reports the queue",
+        "Documentation explains recovery and limitations"
+      ],
+      "checkpoint": ".github/work-orchestrator/checkpoints/ORCH-001.md",
+      "pull_request": null,
+      "verification": []
+    },
+    {
+      "id": "ORCH-002",
+      "title": "Integrate agent-platform worker launch and recovery adapter",
+      "gate": "operations",
+      "status": "backlog",
+      "priority": "P1",
+      "owner": null,
+      "created_at": "2026-11-13T14:30:00Z",
+      "updated_at": "2026-11-13T14:30:00Z",
+      "heartbeat_at": null,
+      "lease_expires_at": null,
+      "depends_on": [
+        "ORCH-001"
+      ],
+      "files": [
+        ".github/work-orchestrator/adapters/**"
+      ],
+      "acceptance_criteria": [
+        "Document supported agent execution platform and authentication model",
+        "Implement safe launch/resume adapter using supported API",
+        "Expired task can be requeued without duplicate workers",
+        "Adapter tests cover timeout and duplicate launch"
+      ],
+      "checkpoint": null,
+      "pull_request": null,
+      "verification": []
+    },
+    {
+      "id": "ORCH-003",
+      "title": "Create completion-gate dashboard from task evidence",
+      "gate": "operations",
+      "status": "backlog",
+      "priority": "P2",
+      "owner": null,
+      "created_at": "2026-11-13T14:30:00Z",
+      "updated_at": "2026-11-13T14:30:00Z",
+      "heartbeat_at": null,
+      "lease_expires_at": null,
+      "depends_on": [
+        "ORCH-001"
+      ],
+      "files": [
+        ".github/work-orchestrator/**",
+        "scripts/**"
+      ],
+      "acceptance_criteria": [
+        "Summarize gate progress from task records",
+        "Distinguish verified, unverified, blocked and stalled work",
+        "Link PRs and workflow evidence",
+        "Never infer completion from unchecked status"
+      ],
+      "checkpoint": null,
+      "pull_request": null,
+      "verification": []
+    }
+  ]
+}
