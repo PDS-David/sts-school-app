@@ -9,7 +9,7 @@ import { Colors, Fonts, Spacing } from '../../theme';
 import { openNotifications } from '../../navigation/navigationRef';
 
 const TYPES = ['event', 'exam', 'holiday', 'meeting', 'deadline'];
-const ROLES = ['', 'student', 'parent', 'teacher', 'finance_admin'];
+const ROLES = ['', 'student', 'parent', 'teacher'];
 
 export default function AdminSchoolEventsScreen() {
   const { user } = useAuth();
