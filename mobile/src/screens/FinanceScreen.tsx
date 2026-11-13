@@ -138,6 +138,10 @@ export default function FinanceScreen({ navigation }: any) {
   };
 
   const openInvoiceModal = () => {
+    if (isFinanceAdmin && !selectedSchoolCode) {
+      setInfoDialog({ title: 'Select a school', message: 'Choose a school before creating an invoice.' });
+      return;
+    }
     setInvForm({ student_id: '', term_id: '', fee_item_ids: [] });
     setInvModal(true);
     loadInvoiceOptions();
