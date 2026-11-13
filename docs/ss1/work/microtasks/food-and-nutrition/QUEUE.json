@@ -29,24 +29,25 @@
     "2026-11-07 FN-WK-T1-W01: indexed Week 1 lines 107-153 of the 1st Term source into 7 coverage entries (6 PARTIAL, 1 UNRESOLVED) and 5 open items (3 blocking), and appended FN-FACT-T1-W01-TEACHER-DECISIONS (BLOCKED) plus three lesson tasks. Week 1 has no assessment of its own; nothing is approved, verified or deliverable. Week 1 is not complete.",
     "2026-11-08 FN-INV-T3: appended the 3rd Term inventory items (14) and set FN-INV-T3 to IMPLEMENTED_TESTING_DEFERRED. All 14 new items are PENDING because no coverage, lesson, preservation record or factual correction has been written. The body has nine labelled weeks (Week 6 and Week 9 are heading-only practicals) and a combined closing marker 'WEEK 10 & 11' / 'REVISIONS AND EXAMS'; the scheme's row 10 'Meat cookery' has no body. The document has no table, drawing or media, so no visual-disposition item was added. Nothing is approved, verified or deployed.",
     "2026-11-08 FN-PRE-T1: indexed the 1st Term opening (title and thirteen-row scheme table, lines 1-99) as scheme-only marker material: rule SS1-SRC-de2cdd0b85f6-R002 and coverage COV-FN-T1-TITLE. No row is claimed as teaching coverage; no lesson was written. Nothing is approved, verified or deployed.",
-    "FN-TEST-PACKAGE (2026-11-13): added tests/ss1/food-and-nutrition.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; explicit PENDING-OWNER alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current coverage/open-item boundary. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed."
+    "FN-TEST-PACKAGE (2026-11-13): added tests/ss1/food-and-nutrition.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; explicit PENDING-OWNER alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current coverage/open-item boundary. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed.",
+    "FN-WK-T1-W02 (2026-11-13): verified source member hash; read original DOCX paragraphs 28–43 for the Week 2 career list and sole evaluation. Added 12 SUPPORTED coverage entries at item-level for the twelve career names, one PARTIAL coverage entry for the broader scheme objective (names only, no descriptions), and two blocking open items: missing career descriptions and misfiled Week 1 evaluation. Added three follow-up queue tasks for sourced career-role research, descriptions supplement and career-specific assessment. Original line 185 evaluation is not counted as a Week 2 assessment. No career descriptions, answer key or lesson content invented; package remains PENDING, owner alias approvals remain open."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 5,
+    "FACTUAL_DEPENDENCY": 6,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 30,
     "SOURCE_MARKER_DISPOSITION": 3,
     "VISUAL_DISPOSITION": 4,
     "SOURCE_PRESERVATION": 8,
-    "LESSON": 3
+    "LESSON": 5
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 9,
+    "IMPLEMENTED_TESTING_DEFERRED": 10,
     "BLOCKED": 2,
-    "PENDING": 52
+    "PENDING": 54
   },
   "items": [
     {
@@ -418,8 +419,8 @@
         "FN-INV-T1",
         "FN-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Exact source member SHA-256 verified. Week 2 marker and twelve career names were read from original DOCX paragraphs 28–41; task-provided Mammoth 1.12.2 locators lines 155–185 retained. Added 12 SUPPORTED objective-level coverage entries for the named careers, one PARTIAL overview entry because descriptions/roles are absent, two precise delivery-blocking open items (career descriptions and misfiled evaluation), and three follow-up tasks (career-role source research, descriptions lesson, career assessment). The source evaluation at line 185 asks Week 1's importance-of-human-nutrition question and is not counted as Week 2 assessment. No descriptions, answers or lesson body invented. Tests not run; classroom verification deferred.",
       "completion_condition": "Week 2 objective-level coverage or marker rules exist under the existing schema for the twelve careers, with exact locators; the missing career descriptions and the misfiled evaluation are precise open items plus small lesson tasks; nothing is invented."
     },
     {
@@ -2360,6 +2361,109 @@
       "status": "PENDING",
       "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md.",
       "completion_condition": "Each listed claim has the source wording, an authoritative primary source and a separately recorded corrected or confirmed statement, or an explicit open item; no treatment, dose or observation is invented; owner approval stays PENDING."
+    },
+    {
+      "id": "FN-FACT-T1-W02-CAREER-ROLES",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "Week 2 careers list; original DOCX paragraphs 30–41; Mammoth lines 157–181",
+      "objective": "Research the twelve listed Food and Nutrition careers in the Nigerian context. For each, establish typical work, training/qualification pathways and any regulated professional scope from authoritative professional bodies, regulators, accredited institutions or government sources. Clearly distinguish professional licensure from general job titles; cite source/date and leave unsupported roles unresolved.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-FACT-T1-W02-CAREER-ROLES.md"
+      ],
+      "depends_on": [
+        "FN-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by FN-WK-T1-W02 (2026-11-13); see docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W02.md.",
+      "completion_condition": "Use reliable, dated sources and preserve the original list/question separately. Do not invent role descriptions, qualifications, assessment answers or classroom verification."
+    },
+    {
+      "id": "FN-LES-T1-W02-CAREER-DESCRIPTIONS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "Week 2 career list; twelve names only",
+      "objective": "Author an age-appropriate lesson supplement describing each of the twelve source-listed career opportunities, with sourced role summaries, typical work settings and qualification pathways where verified. Preserve the source list and distinguish licensed practice from broader roles. Do not infer unsupported credentials.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-LES-T1-W02-CAREER-DESCRIPTIONS.md"
+      ],
+      "depends_on": [
+        "FN-WK-T1-W02",
+        "FN-FACT-T1-W02-CAREER-ROLES"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by FN-WK-T1-W02 (2026-11-13); see docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W02.md.",
+      "completion_condition": "Use reliable, dated sources and preserve the original list/question separately. Do not invent role descriptions, qualifications, assessment answers or classroom verification."
+    },
+    {
+      "id": "FN-LES-T1-W02-CAREER-ASSESSMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "Week 2 currently has no career-specific evaluation; source line 185 is misfiled Week 1 question",
+      "objective": "Author a short assessment that checks learners can identify and explain the twelve career opportunities and match roles to work settings. Provide a complete marking guide and ensure every answer is taught in the career-description supplement. Do not reuse the Week 1 importance-of-human-nutrition question as Week 2 assessment.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-LES-T1-W02-CAREER-ASSESSMENT.md"
+      ],
+      "depends_on": [
+        "FN-LES-T1-W02-CAREER-DESCRIPTIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by FN-WK-T1-W02 (2026-11-13); see docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W02.md.",
+      "completion_condition": "Use reliable, dated sources and preserve the original list/question separately. Do not invent role descriptions, qualifications, assessment answers or classroom verification."
     }
   ],
   "review": {
@@ -2375,7 +2479,6 @@
     }
   },
   "next_runnable": [
-    "FN-WK-T1-W02",
     "FN-WK-T1-W03",
     "FN-WK-T1-W04",
     "FN-WK-T1-W05",
@@ -2422,6 +2525,7 @@
     "FN-WK-T3-W09",
     "FN-MARK-T3-REVEXAM",
     "FN-PRES-T3-COOKING-PROCESSES",
-    "FN-PRES-T3-SOURCE-WORDING"
+    "FN-PRES-T3-SOURCE-WORDING",
+    "FN-FACT-T1-W02-CAREER-ROLES"
   ]
 }
