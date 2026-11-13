@@ -126,6 +126,8 @@ export default function ClassLockScreen({ navigation }: any) {
   const toggleLock = async (locked: boolean) => {
     if (!selClass || !selTerm || busy || lockLoading || lockError) return;
     setBusy(true);
+    const requestId = lockRequestRef.current;
+    const className = selClass;
     try {
       await api.put('/academic/class-locks', {
         class_name: selClass,
@@ -133,12 +135,12 @@ export default function ClassLockScreen({ navigation }: any) {
         school_code: isAdmin ? effectiveSchoolCode ?? undefined : undefined,
         locked,
       });
-      await fetchLock();
+      if (requestId === lockRequestRef.current) await fetchLock();
       setInfoDialog({
         title: locked ? 'Class locked' : 'Class unlocked',
         message: locked
-          ? `${selClass} is now closed for this term. Scores, attendance, remarks and weekly efforts cannot be saved until it is unlocked.`
-          : `${selClass} is open again for this term.`,
+          ? `${className} is now closed for this term. Scores, attendance, remarks and weekly efforts cannot be saved until it is unlocked.`
+          : `${className} is open again for this term.`,
       });
     } catch (e: any) {
       setInfoDialog({ title: 'Could not update class lock', message: e?.response?.data?.error ?? 'Check your connection and try again.' });
