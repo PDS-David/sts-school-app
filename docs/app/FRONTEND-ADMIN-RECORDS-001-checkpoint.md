@@ -39,7 +39,7 @@ Worker branch: `agent/frontend-admin-records-recovery-20261113`
 - `db797db7f3b2adf323db2f258b84cb656400a325` — add audit log error/retry.
 - `c2cd43c4c62c221b57a085ba8078beecba71a6eb` — recover deleted student list and restore feedback.
 - `7b17a87a1cbbc48d64853d5d55441a5ccd237a81` — ignore stale requests.
-- Checkpoint commit: pending.
+- Checkpoint commit: `05b9ddb5444c0b3f136629ba4b19934e8fa2bb02`.
 
 ## Verification
 - Static inspection confirms class summary score requests continue to include school_code.
