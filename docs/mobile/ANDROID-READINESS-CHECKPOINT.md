@@ -4,10 +4,13 @@
 - Status: IN PROGRESS — two confirmed mobile reliability defects fixed; broader acceptance audit remains open.
 - Branch: `agent/mobile-android-readiness-20261113`
 - Base: `master` at `982c1d2d94e9bfbbb890d027c620b8a16e7f3f26`
-- Latest implementation commit: `f6b149b63dc4e96143b95c61bd4f74766ac3a1ec`
+- Latest implementation commit: `8b6453d2e5f44bf3890366af8ca2e499468ab733`
 - Changed files:
   - `mobile/src/api/client.ts`
   - `mobile/src/api/AuthContext.tsx`
+  - `mobile/src/offline/replayPolicy.ts`
+  - `tests/mobile/offline-replay.test.mts`
+  - `package.json`
 - Ownership check:
   - No branch matching `offline` was found.
   - Open mobile PR #685 changes only the student and parent home screens plus its checkpoint; this task's API client change does not overlap.
@@ -18,7 +21,8 @@
 - Verification:
   - Static control-flow trace of `mobile/src/api/client.ts` and `mobile/src/offline/storage.ts`.
   - Hardened cold-start session restoration: storage read/JSON parsing failures now return to the signed-out state and always clear the startup loading gate; malformed persisted user records are discarded.
-  - No local checkout, package installation, TypeScript run, automated test, Expo export, EAS build, emulator, or physical-device execution was available through the repository connector in this session.
+  - Extracted the offline replay enqueue decision into a pure helper, added three focused Node test cases, and added the root command `npm run test:mobile:offline`. The tests are authored but not yet executed.
+  - No local checkout or package installation was possible (the runtime could not resolve github.com). The new test command, TypeScript build, full automated suite, Expo export, EAS build, emulator, and physical-device execution remain unrun.
   - No device verification is claimed.
 - Remaining acceptance work:
   - Add/run a regression test proving replay network failure retains exactly one original outbox item.
@@ -29,4 +33,4 @@
   - Verify production API target and staging/production config, dependency lock consistency, Android export and EAS release credentials/build.
   - Obtain emulator/physical-device smoke evidence before claiming device readiness.
 - Exact next action:
-  - Inspect the repository's mobile test harness and CI workflow; add focused regressions for replay retention and startup restore failure, then run canonical mobile typecheck/test and Android export workflows before proceeding to the next independent readiness gap.
+  - Run `npm run test:mobile:offline` from a checkout with workspace dependencies installed, add a regression for startup restore behavior, and run the mobile TypeScript/Android export workflows before proceeding to the next independent readiness gap.
