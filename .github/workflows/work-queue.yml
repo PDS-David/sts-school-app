@@ -33,11 +33,14 @@ jobs:
         id: validate
         run: python3 scripts/validate_work_queue.py
       - name: Unit test queue validator
+        if: always()
         run: python3 -m unittest discover -s tests -p 'test_validate_work_queue.py' -v
       - name: Build completion-gate dashboard
+        id: dashboard
+        if: always()
         run: python3 scripts/build_completion_dashboard.py --output /tmp/sts-completion-dashboard.md
       - name: Publish completion-gate dashboard
-        if: always()
+        if: always() && steps.dashboard.outcome == 'success'
         run: cat /tmp/sts-completion-dashboard.md >> "$GITHUB_STEP_SUMMARY"
       - name: Publish queue summary
         if: always()
