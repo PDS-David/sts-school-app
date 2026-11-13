@@ -93,13 +93,14 @@ test('queued mutations retain the account namespace captured before waiting', as
 });
 
 test('persisted session accepts only known roles and a non-empty user ID', () => {
-  assert.equal(isRestorableUser({ id: 'user-1', role: 'student' }), true);
-  assert.equal(isRestorableUser({ id: 'user-2', role: 'parent' }), true);
-  assert.equal(isRestorableUser({ id: 'user-3', role: 'teacher' }), true);
-  assert.equal(isRestorableUser({ id: 'user-4', role: 'admin' }), true);
-  assert.equal(isRestorableUser({ id: 'user-5', role: 'finance_admin' }), true);
-  assert.equal(isRestorableUser({ id: '', role: 'student' }), false);
-  assert.equal(isRestorableUser({ id: 'user-6', role: 'unknown' }), false);
+  assert.equal(isRestorableUser({ id: 'user-1', username: 'student', school_code: null, role: 'student' }), true);
+  assert.equal(isRestorableUser({ id: 'user-2', username: 'parent', school_code: 'SCH1', role: 'parent' }), true);
+  assert.equal(isRestorableUser({ id: 'user-3', username: 'teacher', school_code: 'SCH1', role: 'teacher' }), true);
+  assert.equal(isRestorableUser({ id: 'user-4', username: 'admin', school_code: null, role: 'admin' }), true);
+  assert.equal(isRestorableUser({ id: 'user-5', username: 'finance', school_code: null, role: 'finance_admin' }), true);
+  assert.equal(isRestorableUser({ id: '', username: 'student', school_code: null, role: 'student' }), false);
+  assert.equal(isRestorableUser({ id: 'user-6', username: 'unknown', school_code: null, role: 'unknown' }), false);
+  assert.equal(isRestorableUser({ id: 'user-7', role: 'student' }), false);
   assert.equal(isRestorableUser(null), false);
   assert.equal(isRestorableUser('not-json-object'), false);
 });
