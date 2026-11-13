@@ -17,6 +17,7 @@ import adminRouter       from './routes/admin.js';
 import financeRouter     from './routes/finance.js';
 import aiRouter          from './routes/ai.js';
 import announcementsRouter from './routes/announcements.js';
+import schoolEventsRouter from './routes/schoolEvents.js';
 import { startBackupScheduler } from './utils/backup.js';
 
 dotenv.config();
@@ -49,6 +50,7 @@ app.use('/admin',          adminRouter);
 app.use('/finance',        financeRouter);
 app.use('/ai',              aiRouter);
 app.use('/announcements',  announcementsRouter);
+app.use('/school-events',  schoolEventsRouter);
 
 // 404
 app.use((_req, res) => res.status(404).json({ error: 'Route not found' }));
