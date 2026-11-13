@@ -135,7 +135,8 @@ test('concurrent class-code claims can link one student to only one account', as
 
     assert.equal(results.filter(result => result.kind === 'claimed').length, 1);
     assert.equal(results.filter(result => result.kind === 'student_not_found').length, 1);
-    claimedUsername = results.find((result): result is Extract<typeof result, { kind: 'claimed' }> => result.kind === 'claimed')?.username;
+    const successfulClaim = results.find(result => result.kind === 'claimed');
+    if (successfulClaim?.kind === 'claimed') claimedUsername = successfulClaim.username;
 
     const { rows: linked } = await query('SELECT user_id FROM students WHERE id=$1', [studentId]);
     assert.ok(linked[0].user_id);
