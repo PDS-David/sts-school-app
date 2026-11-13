@@ -213,8 +213,7 @@ api.interceptors.response.use(
         //
         // Immediate-result workflows need the same treatment: the caller
         // needs the real response body right now, not a synthetic queued
-        // stand-in. This includes Term-PIN gates, assessment submission,
-        // student enrollment and admin user creation:
+        // stand-in. This includes Term-PIN gates and assessment submission:
         //   - POST /topics/:id/complete returns the actual summary/practice
         //     questions/assessment status the screen renders immediately —
         //     a queued `{queued:true}` has none of that.
@@ -223,9 +222,6 @@ api.interceptors.response.use(
         //     single-use server-side — silently "succeeding" offline would
         //     tell the student their PIN worked when the server has never
         //     seen it, then fail for real once the queue flushes).
-        //   - POST /students and POST /admin/users return one-time parent
-        //     credentials/activation secrets that the admin must hand over;
-        //     a queued placeholder must never be presented as a created account.
         const url = original.url ?? '';
         if (
           url.startsWith('/ai/') || url.startsWith('/auth/') ||
@@ -233,8 +229,6 @@ api.interceptors.response.use(
           /^\/learning\/assessments(?:\?|$)/.test(url) ||
           /^\/learning\/assessments\/[^/]+\/submit(?:\?|$)/.test(url) ||
           /^\/learning\/questions(?:\?|$)/.test(url) ||
-          /^\/students(?:\?|$)/.test(url) ||
-          /^\/admin\/users(?:\?|$)/.test(url) ||
           url.startsWith('/learning/term-pins/redeem')
         ) {
           return Promise.reject(error);
