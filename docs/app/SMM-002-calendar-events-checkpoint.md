@@ -2,7 +2,7 @@
 
 Task ID: SMM-002
 Status: IMPLEMENTED — stacked behind current-master OPS-01 PR #737
-Base: `agent/ops-01-rebased-20261113` (OPS-01 PR #737)
+PR base: `master` (this branch includes OPS-01 PR #737 as its first commit set)
 Branch: `agent/calendar-rebased-20261113`
 
 ## Scope delivered
