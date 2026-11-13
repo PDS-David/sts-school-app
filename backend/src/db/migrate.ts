@@ -78,18 +78,32 @@ async function getApplied(client: PoolClient): Promise<AppliedMigration[]> {
 }
 
 async function assertNoUntrackedApplicationSchema(client: PoolClient): Promise<void> {
+  // Match the clean-bootstrap guard: tolerate extension-owned objects and
+  // the ledger itself, but refuse any other pre-existing public schema object.
   const { rows } = await client.query(`
-    SELECT table_name
-      FROM information_schema.tables
-     WHERE table_schema='public'
-       AND table_type='BASE TABLE'
-       AND table_name IN ('schools','users','students','classes','terms','scores')
-     LIMIT 1
+    SELECT 1 FROM (
+      SELECT 'pg_class'::regclass AS classid, c.oid AS objid
+        FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace
+        WHERE n.nspname='public' AND c.relname <> 'schema_migrations'
+      UNION ALL
+      SELECT 'pg_proc'::regclass, p.oid
+        FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace
+        WHERE n.nspname='public'
+      UNION ALL
+      SELECT 'pg_type'::regclass, t.oid
+        FROM pg_type t JOIN pg_namespace n ON n.oid=t.typnamespace
+        WHERE n.nspname='public' AND t.typrelid=0 AND t.typelem=0
+    ) obj
+    WHERE NOT EXISTS (
+      SELECT 1 FROM pg_depend d
+       WHERE d.classid=obj.classid AND d.objid=obj.objid AND d.deptype='e'
+    )
+    LIMIT 1
   `);
   if (rows[0]) {
     throw new Error(
-      'An application schema already exists without a migration baseline. Refusing to mark it migrated. ' +
-      'Use --fresh only for a clean installation, or complete the owner-approved OPS-05 drift review before adopting an existing database.',
+      'The public schema contains untracked objects. Refusing clean schema replay or baseline adoption. ' +
+      'Use --fresh only for a genuinely clean installation, or complete the owner-approved OPS-05 drift review before adopting an existing database.',
     );
   }
 }
