@@ -11,6 +11,7 @@ import StudentHomeScreen from '../screens/student/StudentHomeScreen';
 import StudentLearningScreen from '../screens/student/StudentLearningScreen';
 import StudentAssessmentsHomeScreen from '../screens/student/StudentAssessmentsHomeScreen';
 import StudentProfileScreen from '../screens/student/StudentProfileScreen';
+import StudentAchievementsScreen from '../screens/student/StudentAchievementsScreen';
 import ChatsScreen from '../screens/chats/ChatsScreen';
 import ChatThreadScreen from '../screens/chats/ChatThreadScreen';
 
@@ -89,6 +90,7 @@ function ProfileStackNavigator() {
   return (
     <ProfileStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <ProfileStack.Screen name="Profile" component={StudentProfileScreen} />
+      <ProfileStack.Screen name="StudentAchievements" component={StudentAchievementsScreen} options={{ headerShown: false }} />
       <ProfileStack.Screen name="MyResults" component={MyResultsScreen} options={{ headerShown: true, title: 'My Results', ...stackScreenOptions }} />
       <ProfileStack.Screen name="SessionReport" component={SessionReportScreen} options={{ headerShown: true, title: 'Session Report', ...stackScreenOptions }} />
       <ProfileStack.Screen name="WeeklyEfforts" component={WeeklyEffortsScreen} options={{ headerShown: true, title: 'Weekly Efforts', ...stackScreenOptions }} />
