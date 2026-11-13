@@ -42,13 +42,9 @@ VALUES
 ON CONFLICT DO NOTHING;
 
 -- ── Users & Roles ─────────────────────────────────────────────────────────────
--- Postgres has no `CREATE TYPE IF NOT EXISTS`, and migrate.ts re-runs this
--- whole file verbatim every time (no migration-tracking table) — so on an
--- already-migrated database this line failed with "type already exists"
--- and aborted the entire migration before anything below it ran (found in
--- QA Pass 3 while adding the ALTER statements further down: `db:migrate`
--- had only ever been tested against a brand-new, never-migrated database).
--- Wrapped so it's a no-op if the type is already there.
+-- Postgres has no `CREATE TYPE IF NOT EXISTS`. Keep this guarded so
+-- clean schema replay remains idempotent for fresh-install/bootstrap tooling.
+-- Incremental production changes belong in numbered backend/migrations files.
 DO $$ BEGIN
   CREATE TYPE user_role AS ENUM ('student','parent','teacher','admin');
 EXCEPTION WHEN duplicate_object THEN NULL;
