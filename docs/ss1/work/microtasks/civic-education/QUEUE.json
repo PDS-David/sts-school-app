@@ -74,7 +74,8 @@
     "2026-11-13 CIV-PRES-T3-CULTISM-CLAIMS: source names and claims preserved only as unverified school-source material; directory, profiling, operational expansion and stigmatising diagnosis expressly prohibited. Historical/legal facts remain separate verification tasks. Testing remains deferred.",
     "2026-11-13 CIV-FACT-T3-INSTITUTIONS: primary legal/institutional mandate audit completed for all agencies listed in T3 Law and Order. Effective dates and jurisdiction distinctions recorded; source labels remain unchanged. Software/runtime verification remains deferred.",
     "2026-11-13 CIV-FACT-T3-CULTISM-HISTORY: historical fact review completed with UNODC/NISS and scholarly/institutional sources. Date and aims qualified; traditional institutions distinguished from modern campus confraternities; unsupported splintering/growth claims retained as unresolved. No lesson content or operational detail added.",
-    "2026-11-13 CIV-FACT-T3-EMPLOYMENT-CLAIMS: employment/unemployment/poverty/full-employment/guaranteed-employment claims classified against NBS/ILO definitions and NBS MPI framework. No current statistics or unsupported causal effects added. Testing remains deferred."
+    "2026-11-13 CIV-FACT-T3-EMPLOYMENT-CLAIMS: employment/unemployment/poverty/full-employment/guaranteed-employment claims classified against NBS/ILO definitions and NBS MPI framework. No current statistics or unsupported causal effects added. Testing remains deferred.",
+    "2026-11-13 CIV-TEST-PACKAGE: expanded the authored package regression suite for the new T1 Week 2 values lesson, its keyed 16-mark assignment, coverage status changes and remaining blocker. Tests remain deliberately unrun per task boundary."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -327,7 +328,7 @@
         "CIV-SRC-T3"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Test file authored 2026-11-13 at tests/ss1/civic-education.package.test.mts. It parses the current pending package, matches all three source registrations against SOURCE_ASSIGNMENTS.csv (member/hash/term), validates the one existing lesson body hash and marking totals while preserving PENDING content approval and DEFERRED verification, guards the three source-alias rules with wrong-hash/ambiguous/missing-anchor probes, and checks coverage reference resolution/current status counts. Per task contract, tests were written but NOT RUN; package remains PENDING and owner/content/permission gates remain open.",
+      "implementation_reference": "Test file authored/updated 2026-11-13 at tests/ss1/civic-education.package.test.mts. It parses the current pending package, matches all three source registrations against SOURCE_ASSIGNMENTS.csv (member/hash/term), validates both lesson body hashes and marking totals while preserving PENDING content approval and DEFERRED verification, specifically guards the T1 Week 2 five-values supplement and its 16-mark four-value discussion answer, checks the two Week 2 coverage transitions and remaining content blocker, guards all three source aliases and eight scheme markers, and validates all coverage references/status counts. Per task contract, tests were written but NOT RUN; package remains PENDING and owner/content/permission gates remain open.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
