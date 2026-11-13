@@ -10,7 +10,7 @@ import { audit } from '../utils/audit.js';
 const router = Router();
 router.use(requireAuth);
 
-const COLUMNS = 'a.id, a.title, a.body, a.audience_role, a.class_name, a.created_by, a.created_at, a.expires_at';
+const COLUMNS = 'a.id, a.school_code, a.title, a.body, a.audience_role, a.class_name, a.created_by, a.created_at, a.expires_at';
 const LIVE = '(a.expires_at IS NULL OR a.expires_at > now())';
 const LIMIT = 50;
 
@@ -78,7 +78,7 @@ router.get('/', async (req, res) => {
 const createSchema = z.object({
   title: z.string().trim().min(1).max(200),
   body: z.string().trim().min(1).max(5000),
-  audience_role: z.enum(['student', 'parent', 'teacher', 'finance_admin']).nullish(),
+  audience_role: z.enum(['student', 'parent', 'teacher']).nullish(),
   class_name: z.string().trim().min(1).max(100).nullish(),
   expires_at: z.string().datetime({ offset: true }).nullish(),
   school_code: z.string().trim().min(1).max(50).nullish(),
