@@ -70,12 +70,7 @@ test('term creation conflicts are deterministic and concurrent current-term swit
        VALUES('2nd Term',$1,'primary',FALSE) RETURNING id`,
       [academicYear],
     );
-    const { rows: third } = await query(
-      `INSERT INTO terms(name,academic_year,school_code,is_current)
-       VALUES('3rd Term',$1,'primary',FALSE) RETURNING id`,
-      [academicYear],
-    );
-    termIds.push(Number(first[0].id), Number(second[0].id), Number(third[0].id));
+    termIds.push(Number(first[0].id), Number(second[0].id));
 
     const started = await startServer();
     server = started.server;
@@ -94,8 +89,8 @@ test('term creation conflicts are deterministic and concurrent current-term swit
     );
 
     const [duplicateA, duplicateB] = await Promise.all([
-      postTerm('1st Term'),
-      postTerm('1st Term'),
+      postTerm('3rd Term'),
+      postTerm('3rd Term'),
     ]);
     assert.deepEqual(
       [duplicateA.status, duplicateB.status].sort((a, b) => a - b),
@@ -107,6 +102,11 @@ test('term creation conflicts are deterministic and concurrent current-term swit
       ['primary', academicYear],
     );
     assert.equal(countAfterCreate[0].count, 3, 'session must never contain more than its three allowed terms');
+    const { rows: allTerms } = await query(
+      'SELECT id FROM terms WHERE school_code=$1 AND academic_year=$2 ORDER BY id',
+      ['primary', academicYear],
+    );
+    termIds.splice(0, termIds.length, ...allTerms.map(row => Number(row.id)));
 
     const [switchSecond, switchThird] = await Promise.all([
       putTerm(termIds[1], { is_current: true }),
