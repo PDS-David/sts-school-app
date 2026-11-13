@@ -30,7 +30,7 @@ Branch: `agent/announcements-admin-ui-20261113`
 ## Verification
 - Static review confirmed existing backend route enforces admin-only writes, validates school and class references, validates future expiry, and limits deletion to the admin's school unless the admin is global.
 - New form performs client-side required-field/date checks; server validation remains authoritative. Admin feed includes `school_code` for cross-school distinction. `finance_admin` is not offered as a target because that role intentionally has no announcement read path.
-- GitHub Actions `verify` run `43445291530` completed successfully: backend/mobile types, static/focused regressions, PostgreSQL schema replay and existing integration checks all passed. These are repository-wide checks, not feature-specific announcement API tests. No device test was run.
+- GitHub Actions `verify` run `43446425202` completed successfully: backend/mobile types, static/focused regressions, PostgreSQL schema replay and existing integration checks all passed. These are repository-wide checks, not feature-specific announcement API tests. No device test was run.
 
 ## Remaining
 - Test publishing/deleting as a school-bound and global admin, and confirm each audience sees only matching notices.
