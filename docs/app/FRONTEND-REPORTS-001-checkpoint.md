@@ -8,7 +8,7 @@
 ## Commits
 - `cb32d49b3d8bf19a06776e0f65d3da4a1f08a8e2` — fix SessionReportScreen hook ordering, add retry and cross-platform export feedback.
 - `55e73a8b8b9b891f9b1eedb7e0f7e761c3dbd805` — replace native PDF export alerts in MyResultsScreen.
-- Checkpoint commit: pending.
+- Checkpoint commit: `58c3520912fca02526e1419fb17a84d8c82c6c9f`.
 
 ## Changes
 - Move SessionReportScreen's PDF busy state hook above all early returns. Previously loading/error/empty renders skipped this hook and successful report render added it, violating React's Rules of Hooks and risking a blank/crashed screen.
