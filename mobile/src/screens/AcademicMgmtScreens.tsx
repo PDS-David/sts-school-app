@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Alert, Modal, ScrollView, Switch } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, ScrollView, Switch } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../api/client';
 import { Card, Btn, Input, Loader, Empty, SectionHeader, Badge } from '../components/UI';
@@ -7,6 +7,7 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAuth } from '../api/AuthContext';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 import { PageContainer, useIsWide } from '../components/layout';
 
 // ══════════════════════════════════════════
@@ -17,6 +18,10 @@ export function TermsMgmtScreen({ navigation }: any) {
   const { selectedSchoolCode } = useAdminSchool();
   const [terms,   setTerms]   = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [saving, setSaving] = useState(false);
+  const [updatingCurrent, setUpdatingCurrent] = useState<number | null>(null);
+  const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
   const [modal,   setModal]   = useState(false);
   const [form,    setForm]    = useState({
     name: '', academic_year: '', school_code: '',
@@ -30,11 +35,13 @@ export function TermsMgmtScreen({ navigation }: any) {
 
   const fetch = async () => {
     setLoading(true);
+    setLoadError('');
     try {
       const { data } = await api.get('/academic/terms', { params: { school_code: selectedSchoolCode } });
-      setTerms(data.terms);
-    }
-    catch { } finally { setLoading(false); }
+      setTerms(data.terms ?? []);
+    } catch (e: any) {
+      setLoadError(e?.response?.data?.error ?? 'Could not load academic terms for the selected school.');
+    } finally { setLoading(false); }
   };
   // Re-fetch whenever admin switches which school they're viewing.
   useEffect(() => { fetch(); }, [selectedSchoolCode]);
@@ -45,21 +52,32 @@ export function TermsMgmtScreen({ navigation }: any) {
   };
 
   const handleSave = async () => {
-    if (!form.name || !form.academic_year) { Alert.alert('Name and academic year required'); return; }
+    if (saving) return;
+    if (!form.name.trim() || !form.academic_year.trim()) { setInfoDialog({ title: 'Required fields', message: 'Enter the term name and academic year.' }); return; }
+    const days = form.days_opened.trim() ? Number(form.days_opened) : 0;
+    if (!Number.isInteger(days) || days < 0) { setInfoDialog({ title: 'Invalid school days', message: 'Days school opened must be a whole number of zero or more.' }); return; }
+    const datePattern = /^\\d{4}-\\d{2}-\\d{2}$/;
+    if (form.start_date && !datePattern.test(form.start_date)) { setInfoDialog({ title: 'Invalid start date', message: 'Use YYYY-MM-DD for the start date.' }); return; }
+    if (form.end_date && !datePattern.test(form.end_date)) { setInfoDialog({ title: 'Invalid end date', message: 'Use YYYY-MM-DD for the end date.' }); return; }
+    if (form.start_date && form.end_date && form.end_date < form.start_date) { setInfoDialog({ title: 'Invalid date range', message: 'The end date must not be earlier than the start date.' }); return; }
+    setSaving(true);
     try {
-      await api.post('/academic/terms', { ...form, is_current: isCurrent, days_opened: Number(form.days_opened) || 0 });
+      await api.post('/academic/terms', { ...form, name: form.name.trim(), academic_year: form.academic_year.trim(), is_current: isCurrent, days_opened: days });
       setModal(false);
       fetch();
-    } catch (e: any) { Alert.alert('Error', e?.response?.data?.error ?? 'Save failed'); }
+    } catch (e: any) { setInfoDialog({ title: 'Could not save term', message: e?.response?.data?.error ?? 'Save failed. Check your connection and try again.' }); }
+    finally { setSaving(false); }
   };
 
   const setCurrentTerm = async (t: any) => {
+    if (updatingCurrent !== null) return;
+    setUpdatingCurrent(t.id);
     try {
       await api.put(`/academic/terms/${t.id}`, { is_current: true });
       fetch();
     } catch (e: any) {
-      Alert.alert('Error', e?.response?.data?.error ?? 'Could not set current term');
-    }
+      setInfoDialog({ title: 'Could not set current term', message: e?.response?.data?.error ?? 'Check your connection and try again.' });
+    } finally { setUpdatingCurrent(null); }
   };
 
   if (loading) return <Loader />;
