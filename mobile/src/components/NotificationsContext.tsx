@@ -34,13 +34,13 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
   // Keep the last successful announcement response if a later refresh fails.
   // Refs avoid changing refresh's identity and triggering home-screen loops.
   const previousAnnouncementsRef = useRef<AppNotification[]>([]);
-  const lastUserIdRef = useRef<string | null>(null);
+  const lastUserKeyRef = useRef<string | null>(null);
   const refreshGenerationRef = useRef(0);
 
   const refresh = useCallback(async () => {
     const generation = ++refreshGenerationRef.current;
     if (!user) {
-      lastUserIdRef.current = null;
+      lastUserKeyRef.current = null;
       previousAnnouncementsRef.current = [];
       setNotifications([]);
       setReadIds(new Set());
@@ -50,8 +50,9 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
       return;
     }
 
-    if (lastUserIdRef.current !== user.id) {
-      lastUserIdRef.current = user.id;
+    const userKey = [user.id, user.role, user.school_code ?? '', user.assigned_class ?? ''].join(':');
+    if (lastUserKeyRef.current !== userKey) {
+      lastUserKeyRef.current = userKey;
       previousAnnouncementsRef.current = [];
       setNotifications([]);
       setReadIds(new Set());
