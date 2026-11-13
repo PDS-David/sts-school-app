@@ -29,6 +29,7 @@ import { navigationRef } from './navigationRef';
 // separate stacks, but only if the name doesn't change.
 import AdminDashboardHomeScreen from '../screens/admin/AdminDashboardHomeScreen';
 import AdminMoreScreen from '../screens/admin/AdminMoreScreen';
+import AdminAnnouncementsScreen from '../screens/admin/AdminAnnouncementsScreen';
 import AdminSchoolEventsScreen from '../screens/admin/AdminSchoolEventsScreen';
 import AdminTermPinsScreen from '../screens/admin/AdminTermPinsScreen';
 import AdminClassCodesScreen from '../screens/admin/AdminClassCodesScreen';
@@ -117,6 +118,7 @@ function MoreStackNavigator() {
           Log/Export Excel had no tap path to reach them at all. */}
       <MoreStack.Screen name="AdminMore" component={AdminMoreScreen} />
       <MoreStack.Screen name="SchoolEvents" component={AdminSchoolEventsScreen} options={{ headerShown: false }} />
+      <MoreStack.Screen name="AdminAnnouncements" component={AdminAnnouncementsScreen} />
       <MoreStack.Screen name="AdminUsers" component={AdminUsersScreen} options={{ headerShown: true, title: 'Users', ...opts }} />
       <MoreStack.Screen name="AdminTermPins" component={AdminTermPinsScreen} options={{ headerShown: true, title: 'Term PINs', ...opts }} />
       <MoreStack.Screen name="AdminClassCodes" component={AdminClassCodesScreen} options={{ headerShown: true, title: 'Class Codes', ...opts }} />
