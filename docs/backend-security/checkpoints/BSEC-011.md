@@ -2,7 +2,7 @@
 
 - **Task ID:** BSEC-011
 - **Title:** Refuse partial or schema-incompatible database restores before destructive writes
-- **Status:** focused verification passed; repository-wide CI pending; PR review pending
+- **Status:** all required CI checks passed; PR review pending
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Working branch:** agent/backend-backup-restore-schema-guard-20261113
@@ -17,6 +17,6 @@
 - **Defect:** restore accepted any backup table subset as long as the listed tables existed in the target. It then executed TRUNCATE ... CASCADE. If a target database had a newer public table omitted from an older backup, that unrepresented table could be silently truncated through a foreign-key cascade. Column drift was also discovered only during INSERT, after the destructive operation had begun (although transaction rollback protected committed data).
 - **Implementation:** backup exports now capture optional column compatibility metadata (UDT, length, precision/scale, nullability, defaults, identity/generated flags). Restore validates payload structure, unique table/column names, row widths, exact public table-set coverage (excluding app_bootstrap, backup_log and schema_migrations), and column metadata before applying. The restore no longer uses CASCADE; explicit multi-table TRUNCATE cannot cascade into unbacked dependent tables. Migration history is excluded from backup capture and restore so an older data backup cannot roll back schema_migrations and cause already-applied DDL to replay.
 - **Regression coverage:** PostgreSQL tests create an unbacked table with an FK to a backed table and prove restore refuses before deleting its row; mutate a backed column type and prove schema drift is refused before truncation; verify backup capture omits schema_migrations and restore preserves a later target migration marker; malformed row widths are rejected before database connection.
-- **Verification:** Latest focused GitHub Actions run 43455277276 passed: locked dependency installation, PostgreSQL 16 bootstrap, backup format/encryption tests, all four restore-safety/migration-ledger integration tests, and backend TypeScript typecheck. Latest JSS3 checks and SS1 package integrity are still running. No production database or backup was read, restored, or modified.
+- **Verification:** Latest branch head 0afbff1bc5b7b855be852dd8ceb395172f9de98b passed focused restore workflow 43456178179, JSS3 implementation/asset checks 43456178203, SS1 package integrity 43456178157, and fatal process shutdown regression 43456178192. The focused workflow ran backup format/encryption tests, all four restore-safety/migration-ledger integration tests, and backend TypeScript typecheck. No production database or backup was read, restored, or modified.
 - **Remaining:** PR review/merge. Do not mark the overall backend/security assignment complete.
 - **Exact next action:** inspect branch head and CI run for Backend backup restore schema safeguards.
