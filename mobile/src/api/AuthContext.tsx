@@ -154,10 +154,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // safe, but invisible) until this user comes back and signs in again.
     // Try to flush first; only bother the person with a choice if that
     // wasn't possible.
-    let pending = await outboxCount();
+    const readPendingCount = async (): Promise<number | null> => {
+      try {
+        return await outboxCount();
+      } catch {
+        Alert.alert(
+          'Cannot check saved changes',
+          'Device storage is unavailable or the offline queue is damaged. Reconnect or resolve the storage problem before signing out so unsynced work is not put at risk.',
+        );
+        return null;
+      }
+    };
+    let pending = await readPendingCount();
+    if (pending === null) return;
     if (pending > 0 && (await isOnline())) {
       await flushOutbox().catch(() => {});
-      pending = await outboxCount();
+      pending = await readPendingCount();
+      if (pending === null) return;
     }
     if (pending > 0) {
       const proceed = await new Promise<boolean>((resolve) => {
