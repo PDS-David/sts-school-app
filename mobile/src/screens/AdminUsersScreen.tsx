@@ -208,6 +208,24 @@ export default function AdminUsersScreen() {
   };
 
   const handleSave = async () => {
+    if (saving) return;
+    if (!editUser && !isNewClassTeacher && !form.username.trim()) {
+      setInfoDialog({ title: 'Username required', message: 'Enter a username for this account.' });
+      return;
+    }
+    if (SCHOOL_ROLES.includes(form.role) && !form.school_code) {
+      setInfoDialog({ title: 'School required', message: 'Select a school for this account.' });
+      return;
+    }
+    const phoneDigits = form.phone.trim().replace(/\D/g, '');
+    if (form.phone.trim() && (phoneDigits.length < 10 || phoneDigits.length > 15)) {
+      setInfoDialog({ title: 'Invalid phone number', message: 'Enter a phone number containing 10 to 15 digits, or leave the field blank.' });
+      return;
+    }
+    if (form.role === 'teacher' && form.school_code && (lookupLoading || !classesBySchool[form.school_code] || !subjectsBySchool[form.school_code])) {
+      setInfoDialog({ title: 'School options unavailable', message: 'Wait for this school’s class and subject options to load, or retry the lookup before saving a teacher account.' });
+      return;
+    }
     // access_expires_at only applies to teacher/parent roles. An empty string
     // means "no expiry" — for edits that has to be sent explicitly (clear_expiry)
     // since the backend otherwise leaves an existing expiry untouched.
@@ -236,6 +254,7 @@ export default function AdminUsersScreen() {
       delete payload.access_expires_at;
       if (editUser && showsExpiry) payload.clear_expiry = true;
     }
+    setSaving(true);
     try {
       if (editUser) {
         await api.put(`/admin/users/${editUser.id}`, payload);
@@ -271,6 +290,8 @@ export default function AdminUsersScreen() {
       }
     } catch (e: any) {
       setInfoDialog({ title: 'Error', message: e?.response?.data?.error ?? 'Save failed' });
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -372,11 +393,20 @@ export default function AdminUsersScreen() {
     });
   };
 
-  if (loading) return <Loader />;
+  if (loading && users.length === 0) return <Loader />;
+  if (loadError && users.length === 0) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={loadError} />
+      <Btn label='Retry loading users' variant='outline' onPress={() => fetchUsers()} />
+    </View>
+  );
 
   return (
     <View style={styles.container}>
       <PageContainer style={{ padding: Spacing.sm, paddingBottom: 0 }}>
+        {!!loadError && <Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm, marginBottom: Spacing.xs }}>{loadError}</Text>}
+        {!!schoolsError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{schoolsError}</Text><Btn label='Retry schools' variant='outline' size='sm' onPress={() => setSchoolsRetry(v => v + 1)} /></View>}
+        {!!lookupError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{lookupError}</Text><Btn label='Retry class/subject options' variant='outline' size='sm' onPress={() => setLookupRetry(v => v + 1)} /></View>}
         <TouchableOpacity style={styles.addBtn} onPress={openNew}>
           <Ionicons name="person-add" size={20} color={Colors.white} />
           <Text style={styles.addBtnText}>Add User</Text>
@@ -517,6 +547,9 @@ export default function AdminUsersScreen() {
       <Modal visible={modal} animationType="slide" onRequestClose={() => setModal(false)}>
         <ScrollView style={styles.modalWrapOuter} contentContainerStyle={styles.modalWrap} keyboardShouldPersistTaps="handled">
           <SectionHeader title={editUser ? 'Edit User' : 'New User'} />
+          {!!schoolsError && <Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm, marginBottom: Spacing.sm }}>{schoolsError} Use Retry schools on the list screen before saving.</Text>}
+          {!!lookupLoading && <Text style={styles.expiryHint}>Loading class and subject options…</Text>}
+          {!!lookupError && <Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm, marginBottom: Spacing.sm }}>{lookupError} Retry class/subject options on the list screen.</Text>}
           {!editUser && !isNewClassTeacher && (
             <Input label="Username" value={form.username} onChangeText={v => setForm(f => ({ ...f, username: v }))} autoCapitalize="none" />
           )}
@@ -633,7 +666,7 @@ export default function AdminUsersScreen() {
           )}
           <View style={{ flexDirection: 'row', gap: Spacing.sm, marginTop: Spacing.md }}>
             <Btn label="Cancel" onPress={() => setModal(false)} variant="outline" style={{ flex: 1 }} />
-            <Btn label="Save"   onPress={handleSave}            style={{ flex: 1 }} />
+            <Btn label={saving ? 'Saving…' : 'Save'} onPress={handleSave} loading={saving} disabled={saving || (form.role === 'teacher' && !!form.school_code && (lookupLoading || !classesBySchool[form.school_code] || !subjectsBySchool[form.school_code]))} style={{ flex: 1 }} />
           </View>
         </ScrollView>
       </Modal>
