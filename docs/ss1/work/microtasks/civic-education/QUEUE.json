@@ -29,7 +29,8 @@
     "2026-11-06 closeout correction: CIV-LES-T1-W01-MEANING provides the missing bounded authoring follow-up. Drafting does not depend on final content approval; all approval and release gates remain blocked until their own evidence is supplied. Earlier no-authoring/gated-next-action notes describe their historical task scope, not a prohibition on this new pending draft.",
     "CIV-LES-T1-W01-MEANING (2026-11-06) authored the first lesson and the first coverage row this subject has: SUP-SS1-CIVIC-EDUCATION-T1-W01-MEANING, body SHA-256 0b468a41b9cea74ccd9d2eeb5ed83b6f745c0a53b920c3ef063e17939265aff9, 3 original exercises at 4+5+6 = 15 marks, teaching the meaning of civic education, a right against a responsibility, and informed participation as two checkable moves. The definition is independently sourced from NERDC and from the UNICEF Innocenti explainer (URLs and exact sections in the lesson provenance) and the scheme's own sentences are not reproduced, so COV-CIV-T1-W01-MEANING is IMPLEMENTED_EQUIVALENT for the meaning objective only; the week's needs, school-objective and nation-building blocks, the \"reasons\" half of scheme line 15 and the absent Week 1 assessment remain open and Week 1 is not complete. Two owner decisions were recorded as blocking open items - which of the scheme's two definitions the class teaches, and permission for the two quoted NERDC phrases. content_approval, verification, package_status, the three alias approvals and CIV-FACT-CONTENT-APPROVAL are unchanged. Nothing was run; testing deferred by owner.",
     "CIV-WK-T1-W02 (2026-11-07) indexed 1st Term Week 2 (mammoth lines 173-210, digest 1dfa4413154b91e1dd63f78e9fede595bea987f5ec3c638d17d9737688377915) from the verified member: definition 177-179, TYPES OF VALUE 181-197 (seven-item list), SELFLESSNESS 199, JUSTICE 201 and the Assignment 205-209, all 17 non-blank lines assigned. Six coverage rows (PARTIAL x4, UNRESOLVED x2) and one blocking CONTENT open item were written to civic-education.json, which stays PENDING; no lesson, rule, correction, asset or answer was authored. Lines 199 and 201 were reported as stopping mid-sentence in the task brief but end with a full stop; nothing was completed. The Assignment has no answer or marks in the source. One bounded follow-up, CIV-LES-T1-W02-VALUES-TYPES, was added. Nothing was run; testing deferred by owner.",
-    "CIV-INV-T3 (2026-11-13) opened the exact 3rd Term Civic Education DOCX from the user-attached composite archive; archive/member hashes verified against SOURCE_ASSIGNMENTS.csv. Header confirms Civic Education (source alias spelling CIVICS EDUCATION; alias approval remains open). Inventory CIV-INV-T3.md records the scheme, five combined body blocks, assessment boundaries, week-label mismatches, source-quality/factual flags and zero visual assets. DOCX inspected with python-docx 1.2.0 using 1-based Word body paragraph locators; block digests are paragraph-text digests, not Mammoth digests or DOCX hashes. No lesson/package/coverage/rule/correction/asset/approval changes and no tests/importer/device checks. 12 bounded follow-up tasks appended: five body indexes, scheme index, scheme-gap and revision/exam disposition, preservation/neutrality and three factual dependency audits. Testing deferred."
+    "CIV-INV-T3 (2026-11-13) opened the exact 3rd Term Civic Education DOCX from the user-attached composite archive; archive/member hashes verified against SOURCE_ASSIGNMENTS.csv. Header confirms Civic Education (source alias spelling CIVICS EDUCATION; alias approval remains open). Inventory CIV-INV-T3.md records the scheme, five combined body blocks, assessment boundaries, week-label mismatches, source-quality/factual flags and zero visual assets. DOCX inspected with python-docx 1.2.0 using 1-based Word body paragraph locators; block digests are paragraph-text digests, not Mammoth digests or DOCX hashes. No lesson/package/coverage/rule/correction/asset/approval changes and no tests/importer/device checks. 12 bounded follow-up tasks appended: five body indexes, scheme index, scheme-gap and revision/exam disposition, preservation/neutrality and three factual dependency audits. Testing deferred.",
+    "CIV-TEST-PACKAGE (2026-11-13): added tests/ss1/civic-education.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; current authored lesson body hash/objectives/practice/marking integrity without fabricated approval or verification; three PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and coverage reference/status boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -44,9 +45,9 @@
     "LESSON": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 9,
-    "PENDING": 45,
-    "BLOCKED": 1
+    "IMPLEMENTED_TESTING_DEFERRED": 10,
+    "BLOCKED": 1,
+    "PENDING": 44
   },
   "items": [
     {
@@ -282,8 +283,8 @@
         "CIV-SRC-T2",
         "CIV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/civic-education.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Test file authored 2026-11-13 at tests/ss1/civic-education.package.test.mts. It parses the current pending package, matches all three source registrations against SOURCE_ASSIGNMENTS.csv (member/hash/term), validates the one existing lesson body hash and marking totals while preserving PENDING content approval and DEFERRED verification, guards the three source-alias rules with wrong-hash/ambiguous/missing-anchor probes, and checks coverage reference resolution/current status counts. Per task contract, tests were written but NOT RUN; package remains PENDING and owner/content/permission gates remain open.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -1973,7 +1974,6 @@
     }
   },
   "next_runnable": [
-    "CIV-TEST-PACKAGE",
     "CIV-WK-T1-W03",
     "CIV-WK-T1-W04",
     "CIV-WK-T1-W05",
