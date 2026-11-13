@@ -34,7 +34,7 @@ Assessment submission and Term PIN exclusions already in master remain unchanged
 
 ## Commits
 - `9ace6f38e8e6122c5cd6441d7292d026c9243e85` — require live confirmation for account, finance and academic writes.
-- Checkpoint commit: pending.
+- Checkpoint commit: `36ff1b21ea9e1d571aef82c264b1bd3ba2f71117`.
 
 ## Verification
 - Static inspection confirms the exclusions are added only in the write-error/offline-queue branch; GET requests are unaffected.
