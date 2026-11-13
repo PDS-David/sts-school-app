@@ -15,7 +15,7 @@ import { openNotifications } from '../../navigation/navigationRef';
 export default function ParentHomeScreen({ navigation }: any) {
   const { user } = useAuth();
   const { wards, selectedWardId, selectWard, loading: wardsLoading } = useWards();
-  const { notifications, refresh: refreshNotifications } = useNotifications();
+  const { notifications, refresh: refreshNotifications, announcementsLoaded, announcementsError } = useNotifications();
   const announcements = notifications.filter(n => n.kind === 'announcement').slice(0, 3);
   const [report, setReport] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -80,7 +80,13 @@ export default function ParentHomeScreen({ navigation }: any) {
         )}
 
         <Text style={styles.sectionLabel}>School Announcements</Text>
-        {announcements.length === 0 ? (
+        {announcementsError ? (
+          <Card style={{ marginHorizontal: Spacing.md }}>
+            <Text style={styles.hint}>{announcements.length ? 'Could not refresh announcements. Showing the last available notices.' : 'Could not load announcements. Pull down to retry.'}</Text>
+          </Card>
+        ) : !announcementsLoaded ? (
+          <Card style={{ marginHorizontal: Spacing.md }}><Text style={styles.hint}>Loading announcements…</Text></Card>
+        ) : announcements.length === 0 ? (
           <Card style={{ marginHorizontal: Spacing.md }}>
             <Text style={styles.hint}>No announcements yet. Your school admin can post updates here.</Text>
           </Card>
