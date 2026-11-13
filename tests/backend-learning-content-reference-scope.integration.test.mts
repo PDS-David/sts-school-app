@@ -50,7 +50,7 @@ test('learning content writes and reads reject cross-school subject, term and qu
   const suffix = randomUUID();
   const year = `BSEC19/${suffix.slice(0, 8)}`;
   const teacher = await createUser('teacher', 'teacher', 'primary', 'Primary 4');
-  const admin = await createUser('admin', 'admin', null);
+  const admin = await createUser('admin', 'admin', 'primary');
   const student = await createUser('student', 'student', 'primary');
   const subjectIds: number[] = [];
   const termIds: number[] = [];
@@ -241,7 +241,7 @@ test('learning content writes and reads reject cross-school subject, term and qu
     assert.ok(materialsPayload.materials.some(item => item.id === validMaterialPayload.material.id));
     assert.ok(!materialsPayload.materials.some(item => item.id === Number(legacyMaterial[0].id)));
 
-    const questionsResponse = await get('/questions', teacher.token);
+    const questionsResponse = await get('/questions', admin.token);
     const questionsPayload = await questionsResponse.json() as { questions: Array<{ id: number }> };
     assert.ok(!questionsPayload.questions.some(item => item.id === Number(legacyQuestion[0].id)));
 
