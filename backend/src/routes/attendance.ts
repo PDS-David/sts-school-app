@@ -65,21 +65,30 @@ router.put('/', requirePerm('attendance.write'), async (req, res) => {
 // here)" comment where this call should have been, meaning it always showed
 // blank inputs even when a class/term already had data saved.
 router.get('/', requirePerm('attendance.read'), async (req, res) => {
-  const { class_name, term_id } = req.query as Record<string, string>;
+  const { class_name, term_id, school_code: requestedSchoolCode } = req.query as Record<string, string>;
   const user = req.user!;
   const effectiveClass = user.role === 'teacher' ? (user.assigned_class ?? class_name) : class_name;
+  // Admins have no own school_code. Their selected school is explicit in
+  // the screen's school switcher; requiring it prevents same-named classes
+  // from different schools being mixed in the attendance editor.
+  const effectiveSchoolCode = user.role === 'admin' ? requestedSchoolCode : user.school_code;
 
   if (!effectiveClass || !term_id) {
     return res.status(400).json({ error: 'class_name and term_id are required' });
   }
+  if (!effectiveSchoolCode) {
+    return res.status(400).json({ error: 'school_code is required to load attendance for this account' });
+  }
+  const termScopeError = await checkTermSchoolScope(effectiveSchoolCode, Number(term_id));
+  if (termScopeError) return res.status(termScopeError.status).json({ error: termScopeError.error });
 
   const { rows } = await query(
     `SELECT a.student_id, a.days_present
      FROM attendance a
      JOIN students s ON s.id = a.student_id
      WHERE s.class_name = $1 AND a.term_id = $2
-       AND ($3::text IS NULL OR s.school_code = $3)`,
-    [effectiveClass, term_id, user.school_code ?? null],
+       AND s.school_code = $3`,
+    [effectiveClass, term_id, effectiveSchoolCode],
   );
   return res.json({ attendance: rows });
 });
