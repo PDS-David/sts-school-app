@@ -33,9 +33,11 @@ Branch: `agent/ops-01-migration-ledger-20261113`
 - Schema baseline stamp: `4a28d86e6b3e2bf1b3edc6133bca56c234fc60c4`.
 - Verify baseline after fresh replay: `4df16f938aea53789c7c548d6db66e75ac4e9867`.
 - Enforce contiguous migration numbering: `0b5b7def1f70d36e8b248eba297510cf0f6ebbcc`.
+- Atomic fresh schema replay: `3d81ad5deaab7b944eb92ad15a09611fe1d27509`.
+- Restrict `--fresh` to an empty application schema: `8afbacc228e427a78eb4ec9cf699b6387bcb8731`.
 
 ## Verification
-- Static review confirms default mode is `--all`, `--status` does not create the ledger, migration SQL is wrapped in BEGIN/COMMIT with rollback on error, and the advisory lock is released in a finally block. Fresh schema replay stamps the immutable baseline; default `--all` refuses an untracked schema or an empty uninitialized database.
+- Static review confirms default mode is `--all`, `--status` does not create the ledger, migration SQL is wrapped in BEGIN/COMMIT with rollback on error, and the advisory lock is released in a finally block. Fresh schema replay stamps the immutable baseline; `--fresh` is restricted to an empty application schema; default `--all` refuses an untracked schema or an empty uninitialized database.
 - Static review confirms an existing schema without a baseline is refused rather than stamped automatically.
 - No migration command or live database was run in this session. The repository's PR verify workflow must typecheck the backend and replay the fresh schema before merge.
 - Existing databases must not be adopted until OPS-05 schema-drift evidence and owner approval exist.
