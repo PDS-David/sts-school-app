@@ -7,7 +7,7 @@
 
 ## Commits
 - `64d2bb16f46e7b7f7a9ef92ad4dfeb617db9e773` — prevent stale send responses from corrupting another conversation or draft.
-- Checkpoint commit: pending.
+- Checkpoint commit: `d80d7af455950258d34e2f343990e485a5efe40b`.
 
 ## Changes
 - Capture recipient and conversation request identity before sending.
