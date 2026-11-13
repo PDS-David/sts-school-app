@@ -97,3 +97,11 @@ Refresh the latest open PR list and Actions run/job results. Fetch current #708 
 - The first follow-up commit for ORCH-001 URL validation had an escaping mistake and its CI run #43450954587 failed. The correction is now committed at `6e555135d6a478c7c4c9fc07b800a4a03953cb82` with the intended single-backslash Python raw regex `r"^https://\S+$"`; run #43450997964 was pending at last inspection. Do not merge PR #717 until this latest run passes.
 - PR #708's current required workflow state was not returned by the latest first-page Actions query; the prior run on head `78b9434` had its integrity gate pass, while the main acceptance/JSS3 run remained queued. Refresh checks by exact run ID/commit before any merge.
 - PR #714 checks from its earlier branch head are stale after the checkpoint refresh; rerun and inspect current-head checks before merging the documentation PR.
+
+
+## Update — 2026-11-13 15:19 UTC
+
+- PR #708 is mergeable at GitHub metadata level but its branch remains based on master `982c1d2` while current master is `af406a3` (78 commits ahead of the merge base). Its changed-file set is 9 paths. I did not alter the active migration branch; I left an integration comment requesting refresh/rebase and complete rerun. #708 remains a hard prerequisite for #710.
+- Latest known #708 integrity gate #43450585649 passed, but its JSS3/static acceptance run #43450584916 was still queued. Earlier static/focused regressions failed on an earlier head; current-head success has not been demonstrated.
+- PR #717 contains the corrected queue URL validator and regression tests. The first follow-up CI run failed because of an escaping typo; the second correction is at `6e555135d6a478c7c4c9fc07b800a4a03953cb82`, and its workflow #43450997964 was pending with no jobs reported at the last poll. PR #683 remains blocked until this follow-up is green and its own workflow reruns successfully.
+- PR #714's checkpoint branch is now exactly based on current master `af406a3e73f811ec27f02ba3b7e19b51873664bc`, 3 commits ahead and 0 behind; the checkpoint is fetched back and the PR is mergeable. Its current-head workflow evidence still needs a fresh check.
