@@ -29,6 +29,13 @@ class AgriculturalScienceSourceMapTests(unittest.TestCase):
         self.assertEqual(self.data["policy"]["ss3_mode"], "EXAM_PREPARATION_ONLY")
         self.assertEqual(self.data["policy"]["ss3_examination_targets"], ["WAEC", "NECO", "JAMB"])
 
+    def test_ss2_first_term_agriculture_uses_the_registered_source_hash(self):
+        source = next(s for s in self.data["sources"] if s["class"] == "SS2" and s["term"] == "1st Term")
+        self.assertEqual(source["source_id"], "SS23-SRC-225f920d3751")
+        self.assertEqual(source["sha256"], "225f920d3751892fcdd870b7c2bfb35ed6d773e70f317a60e72c07445e621316")
+        self.assertEqual(source["bytes"], 10759168)
+        self.assertTrue(source["archive_member"].endswith("1ST TERM S2 AGRICULTURAL SCIENCE.doc"))
+
     def test_ss2_third_term_farm_records_is_separated_from_week_five_six(self):
         source = next(s for s in self.data["sources"] if s["source_id"] == "SS23-SRC-6abb32818845")
         mapping = next(m for m in source["body_mapping"] if m["weeks"] == "7-8")
