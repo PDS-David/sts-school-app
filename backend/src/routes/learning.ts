@@ -1465,46 +1465,88 @@ router.get('/assessments', requirePerm('assessments.read'), async (req, res) => 
   return res.json({ assessments: visibleRows });
 });
 
-router.post('/assessments', requirePerm('assessments.create'), async (req, res) => {
-  const { subject_id, class_name, term_id, title, start_at, end_at, shuffle, question_ids, school_code } = req.body as {
-    subject_id: number; class_name: string; term_id?: number; title: string;
-    start_at?: string; end_at?: string; shuffle?: boolean;
-    question_ids: Array<{ id: number; points: number }>; school_code?: string;
-  };
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+const assessmentCreateSchema = z.object({
+  subject_id: z.coerce.number().int().positive(),
+  class_name: z.string().trim().min(1).max(100),
+  term_id: z.coerce.number().int().positive().nullable().optional(),
+  title: z.string().trim().min(1).max(255),
+  start_at: z.string().optional(),
+  end_at: z.string().optional(),
+  shuffle: z.boolean().optional(),
+  question_ids: z.array(z.object({
+    id: z.coerce.number().int().positive(),
+    points: z.coerce.number().int().positive().max(1000).optional(),
+  })).min(1).max(200)
+    .refine(items => new Set(items.map(item => item.id)).size === items.length,
+      'question_ids must not contain duplicates'),
+  school_code: z.string().trim().min(1).max(50).optional(),
+});
 
-  // Same rule as POST /materials above — a teacher may only schedule an
-  // assessment for their own assigned class (any subject) or their own
-  // assigned subject (any class in their school).
-  const scopeError = await checkTeacherContentScope(req.user!, { class_name, subject_id });
+router.post('/assessments', requirePerm('assessments.create'), async (req, res) => {
+  const parsed = assessmentCreateSchema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
+  const data = parsed.data;
+  const target = resolveContentSchool(req.user!, data.school_code);
+  if ('error' in target) return res.status(target.status).json({ error: target.error });
+
+  const scopeError = await checkTeacherContentScope(req.user!, {
+    class_name: data.class_name,
+    subject_id: data.subject_id,
+  });
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
-  const total_marks = (question_ids ?? []).reduce((s, q) => s + (q.points ?? 1), 0);
-  // ASM-03: header and question links commit together or not at all, so a
-  // failure part-way through the loop cannot leave an assessment with missing
-  // questions and a total_marks that no longer matches them.
-  const assessment = await withTransaction(async (client) => {
+  const result = await withTransaction(async (client) => {
+    const referenceError = await validateContentReferences(
+      client, target.schoolCode, data.subject_id, data.term_id ?? null,
+    );
+    if (referenceError) return { ok: false as const, ...referenceError };
+
+    const questionIds = data.question_ids.map(item => item.id);
+    const { rows: questions } = await client.query(
+      'SELECT id, school_code, subject_id, class_name, term_id FROM questions WHERE id=ANY($1::int[]) ORDER BY id FOR SHARE',
+      [questionIds],
+    );
+    if (questions.length !== questionIds.length) {
+      return { ok: false as const, status: 400, error: 'One or more question_ids do not exist.' };
+    }
+
+    const invalidQuestion = questions.find(question =>
+      question.school_code !== target.schoolCode ||
+      Number(question.subject_id) !== data.subject_id ||
+      (question.class_name != null && question.class_name !== data.class_name) ||
+      (question.term_id != null && Number(question.term_id) !== (data.term_id ?? null)),
+    );
+    if (invalidQuestion) {
+      return {
+        ok: false as const,
+        status: 400,
+        error: 'Every question must belong to the assessment school and subject, and any class/term-specific question must match the assessment.',
+      };
+    }
+
+    const totalMarks = data.question_ids.reduce((sum, item) => sum + (item.points ?? 1), 0);
     const { rows } = await client.query(
       `INSERT INTO assessments(school_code,subject_id,class_name,term_id,title,total_marks,
          start_at,end_at,shuffle,created_by)
        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
-      [sc, subject_id, class_name, term_id ?? null, title, total_marks,
-       start_at ?? null, end_at ?? null, shuffle !== false, req.user!.id],
+      [target.schoolCode, data.subject_id, data.class_name, data.term_id ?? null,
+       data.title, totalMarks, data.start_at ?? null, data.end_at ?? null,
+       data.shuffle !== false, req.user!.id],
     );
     const created = rows[0];
 
-    // Link questions
-    for (let i = 0; i < (question_ids ?? []).length; i++) {
-      const q = question_ids[i];
+    for (let index = 0; index < data.question_ids.length; index++) {
+      const item = data.question_ids[index];
       await client.query(
         `INSERT INTO assessment_questions(assessment_id,question_id,points,order_index)
-         VALUES($1,$2,$3,$4) ON CONFLICT DO NOTHING`,
-        [created.id, q.id, q.points ?? 1, i],
+         VALUES($1,$2,$3,$4)`,
+        [created.id, item.id, item.points ?? 1, index],
       );
     }
-    return created;
+    return { ok: true as const, assessment: created };
   });
-  return res.status(201).json({ assessment });
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  return res.status(201).json({ assessment: result.assessment });
 });
 
 // ── PUT /assessments/:id/status  (draft → open → closed) ──────────────────────
