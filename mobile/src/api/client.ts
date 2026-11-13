@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   cacheGet, cacheSet, cacheInvalidatePrefix,
   enqueueRequest, getOutbox, removeFromOutbox,
-  subscribeConnectivity, setCacheNamespace,
+  subscribeConnectivity, setCacheNamespace, getCacheNamespace,
 } from '../offline';
 
 // A write to e.g. `/scores/bulk` should invalidate cached GETs under
@@ -88,6 +88,9 @@ const api = axios.create({ baseURL: BASE_URL, timeout: 15000 });
 
 // ── Request interceptor: attach access token ──────────────────────────────────
 api.interceptors.request.use(async (config) => {
+  if ((config as any)._cacheNamespace === undefined) {
+    (config as any)._cacheNamespace = getCacheNamespace();
+  }
   await tokenMigration;
   const token = await getSecureItem('access_token');
   if (token) config.headers.Authorization = `Bearer ${token}`;
@@ -105,18 +108,19 @@ api.interceptors.response.use(
   async (res) => {
     const method = (res.config.method ?? 'get').toLowerCase();
     if (method === 'get') {
-      await cacheSet(res.config.url ?? '', res.data);
+      await cacheSet(res.config.url ?? '', res.data, (res.config as any)._cacheNamespace ?? getCacheNamespace());
     } else {
       // Real, server-confirmed write — safe to drop stale cached reads for
       // this resource area. (Queued-offline writes never reach this branch;
       // they resolve via the catch handler below instead, so nothing gets
       // invalidated until the write actually lands.)
-      await cacheInvalidatePrefix(resourcePrefix(res.config.url ?? ''));
+      await cacheInvalidatePrefix(resourcePrefix(res.config.url ?? ''), (res.config as any)._cacheNamespace ?? getCacheNamespace());
     }
     return res;
   },
   async (error) => {
     const original = error.config;
+    const requestNamespace = (original as any)?._cacheNamespace ?? getCacheNamespace();
     const method = (original?.method ?? 'get').toLowerCase();
 
     // ── Existing auth-refresh flow (server reachable, just expired token) ──────
@@ -180,7 +184,7 @@ api.interceptors.response.use(
     const isNetworkFailure = !error.response;
     if (isNetworkFailure && original) {
       if (method === 'get') {
-        const cached = await cacheGet(original.url ?? '');
+        const cached = await cacheGet(original.url ?? '', requestNamespace);
         if (cached) {
           return { data: cached.data, status: 200, statusText: 'OK (cached)', headers: {}, config: original, fromCache: true };
         }
@@ -241,7 +245,7 @@ api.interceptors.response.use(
         let parsedData: any = undefined;
         try { parsedData = typeof original.data === 'string' ? JSON.parse(original.data) : original.data; } catch { parsedData = original.data; }
 
-        const queued = await enqueueRequest({ method: method as any, url: original.url ?? '', data: parsedData });
+        const queued = await enqueueRequest({ method: method as any, url: original.url ?? '', data: parsedData }, requestNamespace);
 
         // Best-effort synthetic response so calling screens don't have to special-case
         // every offline write. Messages get a realistic shape so they can render
@@ -284,22 +288,31 @@ api.interceptors.response.use(
 // identical rows in `messages`. Fixed with an in-flight-promise guard so any
 // number of concurrent callers (now, or any future caller added later)
 // collapse into a single actual flush and all await the same result.
-let inFlightFlush: Promise<{ synced: number; failed: number; remaining: number }> | null = null;
+const inFlightFlushes = new Map<string, Promise<{ synced: number; failed: number; remaining: number }>>();
 
 export function flushOutbox(): Promise<{ synced: number; failed: number; remaining: number }> {
-  if (inFlightFlush) return inFlightFlush;
+  const userNamespace = getCacheNamespace();
+  const existing = inFlightFlushes.get(userNamespace);
+  if (existing) return existing;
 
-  inFlightFlush = (async () => {
+  const flushPromise = (async () => {
     try {
-      const queue = await getOutbox();
+      const queue = await getOutbox(userNamespace);
       let synced = 0;
       let failed = 0;
       for (const item of queue) {
+        // Do not continue replaying account A's queue after the app has
+        // switched to account B (or signed out) while this flush was running.
+        if (getCacheNamespace() !== userNamespace) break;
         try {
-          // Bypass the normal offline-write interceptor: a failed replay must
-          // leave this same queue item pending, not enqueue a second copy.
-          await api.request({ method: item.method, url: item.url, data: item.data, _skipOfflineQueue: true } as any);
-          await removeFromOutbox(item.id);
+          await api.request({
+            method: item.method,
+            url: item.url,
+            data: item.data,
+            _skipOfflineQueue: true,
+            _cacheNamespace: userNamespace,
+          } as any);
+          await removeFromOutbox(item.id, userNamespace);
           synced++;
         } catch (e: any) {
           const status = e?.response?.status;
@@ -307,7 +320,7 @@ export function flushOutbox(): Promise<{ synced: number; failed: number; remaini
             // Invalid payload/resource errors cannot succeed unchanged. Keep
             // 401/403/409 items: they may need re-authentication, restored
             // permissions or conflict resolution, and must not be silently lost.
-            await removeFromOutbox(item.id);
+            await removeFromOutbox(item.id, userNamespace);
             failed++;
           }
           if (shouldStopOutboxFlush(status)) {
@@ -316,17 +329,19 @@ export function flushOutbox(): Promise<{ synced: number; failed: number; remaini
             // entries for the next successful sign-in.
             break;
           }
-          // Otherwise (network/server error) leave it queued for the next attempt.
         }
       }
-      const remaining = (await getOutbox()).length;
+      const remaining = (await getOutbox(userNamespace)).length;
       return { synced, failed, remaining };
     } finally {
-      inFlightFlush = null;
+      if (inFlightFlushes.get(userNamespace) === flushPromise) {
+        inFlightFlushes.delete(userNamespace);
+      }
     }
   })();
 
-  return inFlightFlush;
+  inFlightFlushes.set(userNamespace, flushPromise);
+  return flushPromise;
 }
 
 // Auto-sync whenever connectivity comes back.
