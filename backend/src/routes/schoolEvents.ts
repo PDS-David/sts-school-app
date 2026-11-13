@@ -63,7 +63,7 @@ const eventSchema = z.object({
   title: z.string().trim().min(1).max(200),
   description: z.string().trim().max(5000).nullish(),
   event_type: z.enum(['event', 'exam', 'holiday', 'meeting', 'deadline']).default('event'),
-  audience_role: z.enum(['student', 'parent', 'teacher', 'finance_admin']).nullish(),
+  audience_role: z.enum(['student', 'parent', 'teacher']).nullish(),
   class_name: z.string().trim().min(1).max(100).nullish(),
   start_at: z.string().datetime({ offset: true }),
   end_at: z.string().datetime({ offset: true }).nullish(),
