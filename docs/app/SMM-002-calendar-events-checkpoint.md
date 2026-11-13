@@ -49,6 +49,7 @@ Branch: `agent/calendar-parent-upcoming-20261113`
 - `928528e655645257df07e748789eaf2a410c4f7d` — enforce subject/school ownership on parent test queries.
 - `e335c6a3a7acec65603b01a5b7da0596adb76ff8` — add validated admin event updates.
 - `6ae13b4aa20e82e52822f5139670bbc41ad9d3ec` — add event edit controls to the admin screen.
+- `8bf9e9214229b7d38a479165dec12b48d3104d54` — clarify edit/create form state and errors.
 - `40dd2b84441417716aa7316d1095a6b491fcd94b` — shared calendar screen for students/teachers.
 - `ff27c3f9c0afece28bde81a72f5d3bee44a78c6f` and `d4e7c5f84d3c6bff039d2973c97bc092e09c5915` — teacher calendar link and route.
 - `f868c9815aaf9278a82fc46bc9904097e7cccc43` and `724c73cc241ccd2dce962639d35c52206bad43d2` — student calendar link and route.
