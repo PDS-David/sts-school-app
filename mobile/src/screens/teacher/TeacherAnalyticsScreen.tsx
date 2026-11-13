@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { View, Text, ScrollView, RefreshControl, TouchableOpacity } from 'react-native';
 import api from '../../api/client';
-import { Card, Loader } from '../../components/UI';
+import { Card, Btn, Loader, Empty } from '../../components/UI';
 import { AppHeader } from '../../components/AppHeader';
 import { openNotifications } from '../../navigation/navigationRef';
 import { Colors, Fonts, Spacing } from '../../theme';
@@ -9,19 +9,30 @@ import { Colors, Fonts, Spacing } from '../../theme';
 export default function TeacherAnalyticsScreen({ navigation }: any) {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
   const [refreshing, setRefreshing] = useState(false);
 
   const load = useCallback(async () => {
+    setLoadError('');
     try {
       const response = await api.get('/scores/teacher/overview');
       setData(response.data);
-    } catch { /* keep the last successful snapshot when offline */ }
-    setLoading(false);
+    } catch (e: any) {
+      setLoadError(e?.response?.data?.error ?? 'Could not load marking analytics. Check your connection and retry.');
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   useEffect(() => { load(); }, [load]);
 
-  if (loading) return <Loader />;
+  if (loading && !data) return <Loader />;
+  if (loadError && !data) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={loadError} />
+      <Btn label="Retry analytics" variant="outline" onPress={() => load()} />
+    </View>
+  );
 
   const summary = data?.summary ?? {};
   const subjects = data?.subjects ?? [];
@@ -32,6 +43,7 @@ export default function TeacherAnalyticsScreen({ navigation }: any) {
       <ScrollView contentContainerStyle={{ padding: Spacing.md }} refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />
       }>
+        {!!loadError && <Card><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label="Retry analytics" variant="outline" onPress={() => load()} style={{ marginTop: Spacing.sm }} /></Card>}
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.sm }}>
           {[
             { label: 'Students', value: summary.student_count ?? 0 },
