@@ -1,5 +1,5 @@
 // ── ClassSummaryScreen.tsx ────────────────────────────────────────────────────
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView, RefreshControl, TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import api from '../api/client';
@@ -26,6 +26,7 @@ export function ClassSummaryScreen({ navigation }: any) {
   const [scoresRetry, setScoresRetry] = useState(0);
   const [setupRetry, setSetupRetry] = useState(0);
   const [refreshing,setRefreshing]= useState(false);
+  const scoresRequestRef = useRef(0);
 
   // Compact switcher lives in the native header now, not as a full-width
   // block in the content area — see SchoolSwitcherBar.tsx's `compact` doc.
@@ -61,6 +62,7 @@ export function ClassSummaryScreen({ navigation }: any) {
   }, [selectedSchoolCode, setupRetry]);
 
   const fetchScores = useCallback(async () => {
+    const requestId = ++scoresRequestRef.current;
     if (!selClass || !selTerm) { setScores([]); setScoresError(''); setScoresLoading(false); setRefreshing(false); return; }
     setScoresLoading(true);
     setScoresError('');
@@ -74,10 +76,10 @@ export function ClassSummaryScreen({ navigation }: any) {
       const { data } = await api.get('/scores', {
         params: { class_name: selClass, term_id: selTerm, school_code: sc },
       });
-      setScores(data.scores ?? []);
+      if (requestId === scoresRequestRef.current) setScores(data.scores ?? []);
     } catch (e: any) {
-      setScoresError(e?.response?.data?.error ?? 'Could not load scores for this class and term.');
-    } finally { setScoresLoading(false); setRefreshing(false); }
+      if (requestId === scoresRequestRef.current) setScoresError(e?.response?.data?.error ?? 'Could not load scores for this class and term.');
+    } finally { if (requestId === scoresRequestRef.current) { setScoresLoading(false); setRefreshing(false); } }
   }, [selClass, selTerm, selectedSchoolCode]);
   useEffect(() => { fetchScores(); }, [fetchScores, scoresRetry]);
 
@@ -220,25 +222,27 @@ export function DeletedStudentsScreen({ navigation }: any) {
   const [loadError, setLoadError] = useState('');
   const [restoreConfirm, setRestoreConfirm] = useState<{ id: string; name: string } | null>(null);
   const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
+  const deletedRequestRef = useRef(0);
 
   useEffect(() => {
     navigation.setOptions({ headerRight: () => <SchoolSwitcherBar compact /> });
   }, [navigation]);
 
   const fetchDeleted = async () => {
+    const requestId = ++deletedRequestRef.current;
     setLoading(true);
     setLoadError('');
     try {
       const { data } = await api.get('/students/deleted', {
         params: { school_code: selectedSchoolCode ?? undefined },
       });
-      setStudents(data.students ?? []);
+      if (requestId === deletedRequestRef.current) setStudents(data.students ?? []);
     } catch (e: any) {
-      setLoadError(e?.response?.data?.error ?? 'Could not load deleted students for this school.');
-    } finally { setLoading(false); setRefreshing(false); }
+      if (requestId === deletedRequestRef.current) setLoadError(e?.response?.data?.error ?? 'Could not load deleted students for this school.');
+    } finally { if (requestId === deletedRequestRef.current) { setLoading(false); setRefreshing(false); } }
   };
 
-  useEffect(() => { setLoading(true); fetchDeleted(); }, [selectedSchoolCode]);
+  useEffect(() => { setLoading(true); setStudents([]); fetchDeleted(); }, [selectedSchoolCode]);
 
   const restore = (id: string, name: string) => setRestoreConfirm({ id, name });
 
