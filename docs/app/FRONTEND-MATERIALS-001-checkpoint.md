@@ -24,6 +24,8 @@
 - Static inspection: list fetch has a visible retry path; upload has a saving guard; delete is confirmed and catches failures.
 - CI pending; no runtime web/mobile download test is claimed.
 
+- Follow-up on shared blocker: PR #788 now has passing Mobile TypeScript, Android readiness and SS1 package-integrity checks on its latest head. It is still open; rerun this branch's checks after #788 merges. PR #788's JSS3 and cross-subject package audits were still in progress at the last check.
+
 ## Remaining work
 - Check Mobile TypeScript, Android readiness, and package integrity.
 - Inspect the parent/teacher/student material visibility rules in the API and verify UI empty states against them.
