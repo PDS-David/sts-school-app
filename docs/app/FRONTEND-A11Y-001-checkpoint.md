@@ -28,16 +28,19 @@ Worker branch: `agent/frontend-accessibility-header-current2-20261113`
 - Add accessible labels and selected state to sidebar navigation; label quick actions and logout.
 - Set sidebar item minimum height to 44 points.
 - Add accessible labels and hints to FAB and menu actions.
+- Add screen-reader labels/hints to shared form inputs and buttons; input validation errors are exposed as hints and buttons expose disabled/busy state.
 
 ## Changed files
 - `mobile/src/components/AppHeader.tsx`
 - `mobile/src/components/Sidebar.tsx`
 - `mobile/src/components/FAB.tsx`
+- `mobile/src/components/UI.tsx`
 
 ## Commits
-- `49c84dd4bf0371042d96d94673196a7ccefd7d44` — apply accessibility changes in `mobile/src/components/AppHeader.tsx` on current master.
-- `a1b845c5b4dc82befaf94970a700428315ee6ae6` — apply accessibility changes in `mobile/src/components/Sidebar.tsx` on current master.
-- `ed2dae46820797902529c19bcf6712bb5da5b8d2` — apply accessibility changes in `mobile/src/components/FAB.tsx` on current master.
+- `49c84dd4bf0371042d96d94673196a7ccefd7d44` — apply accessible header controls.
+- `a1b845c5b4dc82befaf94970a700428315ee6ae6` — label sidebar navigation.
+- `ed2dae46820797902529c19bcf6712bb5da5b8d2` — label FAB actions.
+- `431736c57591135a843f4bf997cdf4fbcd54e17d` — connect shared input labels and button states.
 - Checkpoint commit: `48f5dcf437f595426ff1309ed60f13a84dbb697a`.
 
 ## Verification
