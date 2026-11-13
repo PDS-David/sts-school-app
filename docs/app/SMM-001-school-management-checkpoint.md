@@ -1,7 +1,7 @@
 # School-management feature completion checkpoint
 
 Task ID: SMM-001
-Status: IMPLEMENTATION SUBMITTED — five focused PRs open; awaiting final CI/review/merge evidence
+Status: IMPLEMENTATION SUBMITTED — six focused PRs open; awaiting final CI/review/merge evidence
 Base branch: master
 Base commit: 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
 Worker branch: agent/school-management-feature-completion-20261113
@@ -18,7 +18,8 @@ Worker branch: agent/school-management-feature-completion-20261113
 ## Feature implementation PRs (all open; none merged)
 
 - PR #685 — student/parent dashboard announcement integration. Existing announcement schema/API/notification feed reused.
-- PR #686 — school calendar/events API and schema, admin event management, parent upcoming tests/events, and student/teacher calendar views.
+- PR #708 — versioned migration ledger prerequisite; protects schema rollout and refuses unapproved baseline adoption.
+- PR #709 — school calendar/events API and schema migration, admin event management, parent upcoming tests/events, and student/teacher calendar views (stacked on #708; #686 was closed as superseded).
 - PR #688 — teacher pending traditional score-entry counts and analytics. Aggregate-only; no AI essay answers or provisional grades exposed.
 - PR #691 — student badges/achievements derived from existing passed-topic and finalized-assessment evidence.
 - PR #694 — admin announcement authoring/management UI, completing the existing backend path.
