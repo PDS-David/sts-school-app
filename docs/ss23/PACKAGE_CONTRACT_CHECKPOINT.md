@@ -15,6 +15,8 @@ Base: `master` @ `b8651cebaa480097fd1c40c9b02c11b228187caa`
 - `backend/src/db/ss23/subjectPackageSchema.test.ts`
 - `backend/src/db/ss23/subjects/agricultural-science.json` (SS2 First Term Weeks 1-2 draft with 27 source assessment prompts and 10 authored practice supplements)
 - `backend/src/db/ss23/assets/agricultural-science/soil-sedimentation-jar.svg` (authored practical diagram)
+- `backend/src/db/ss23/loader.ts` and `studentDelivery.ts` (registered package loading and fail-closed student delivery)
+- `backend/src/db/ss23/studentDelivery.test.ts` and SS23 routes in `backend/src/routes/learning.ts`
 - `.github/workflows/ss23-package-schema.yml`
 
 ## Contract boundaries
@@ -31,7 +33,7 @@ Base: `master` @ `b8651cebaa480097fd1c40c9b02c11b228187caa`
 
 ## Tests authored
 
-Thirteen Node tests cover valid SS2/SS3 package shapes, question/answer provenance, the real Agricultural Science draft package, and rejection of:
+Twenty-four Node tests cover valid SS2/SS3 package shapes, question/answer provenance, the real Agricultural Science draft package, registered-package loading, class separation, answer-key hiding, term/asset gating and file integrity.
 - SS3 third-term sources;
 - SS3 normal instructional mode;
 - stale lesson body hashes;
@@ -41,7 +43,7 @@ Thirteen Node tests cover valid SS2/SS3 package shapes, question/answer provenan
 - superficial lesson bodies;
 - approval or verification claims without supporting references.
 
-The workflow installs locked dependencies, type-checks the backend and runs the schema tests. Because this workflow is introduced in this PR, it cannot execute on this PR until it is present on the base branch. Latest package-contract commit: `943d9be62030d9c6c9c821c07ab3ef17b2157e8d`. GitHub Actions run 43471333725 completed successfully on the stacked Agriculture PR: backend TypeScript typecheck passed and all 13 SS23 Node tests passed.
+The workflow installs locked dependencies, type-checks the backend and runs the schema tests. Because this workflow is introduced in this PR, it cannot execute on this PR until it is present on the base branch. Latest package-contract commit: `943d9be62030d9c6c9c821c07ab3ef17b2157e8d`. GitHub Actions run 43472154140 completed successfully on the stacked Agriculture PR: backend TypeScript typecheck passed and all 24 SS23 Node tests passed.
 
 ## Remaining work
 
@@ -53,4 +55,4 @@ The workflow installs locked dependencies, type-checks the backend and runs the 
 
 ## Exact next action
 
-The SS2 Agricultural Science First Term Weeks 1-2 Soil draft now includes all 27 original-source assessment prompts with authored answers and mark-by-mark guidance, five source-figure references, and an authored sedimentation diagram. Resolve its remaining technical/rights/visual blockers and verify the assessment set, then implement the loader and student route so approved units are actually accessible. Preserve SS3 as exam preparation only.
+The SS2 Agricultural Science First Term Weeks 1-2 Soil draft now includes all 27 original-source assessment prompts with authored answers and mark-by-mark guidance, five source-figure references, and an authored sedimentation diagram. Resolve the remaining technical/rights/visual blockers, verify the assessment set, complete the remaining five practicals and continue source-complete SS2 Agriculture lessons. The loader and class-safe routes are implemented but currently serve no lessons because the package is PENDING and all seven blockers remain. Preserve SS3 as exam preparation only.
