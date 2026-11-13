@@ -266,26 +266,45 @@ router.get('/materials', requirePerm('materials.read'), async (req, res) => {
   return res.json({ materials: rows });
 });
 
-router.post('/materials', requirePerm('materials.write'), async (req, res) => {
-  const { subject_id, class_name, term_id, title, type, url, school_code } = req.body;
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+const materialCreateSchema = z.object({
+  subject_id: z.coerce.number().int().positive(),
+  class_name: z.string().trim().min(1).max(100).nullable().optional(),
+  term_id: z.coerce.number().int().positive().nullable().optional(),
+  title: z.string().trim().min(1).max(255),
+  type: z.string().trim().min(1).max(40),
+  url: z.string().trim().min(1).max(2048),
+  school_code: z.string().trim().min(1).max(50).optional(),
+});
 
-  // Found alongside the same-shape bug on /assessments below: a teacher
-  // could previously publish a material for any class/subject in their
-  // school, whether or not they actually teach it. A teacher may write here
-  // for their own assigned_class (any subject) or their own
-  // assigned_subject_id (any class) — see checkTeacherContentScope() for
-  // the full rule; admin is unrestricted as everywhere else.
-  const scopeError = await checkTeacherContentScope(req.user!, { class_name: class_name ?? null, subject_id });
+router.post('/materials', requirePerm('materials.write'), async (req, res) => {
+  const parsed = materialCreateSchema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
+  const data = parsed.data;
+  const target = resolveContentSchool(req.user!, data.school_code);
+  if ('error' in target) return res.status(target.status).json({ error: target.error });
+
+  const scopeError = await checkTeacherContentScope(req.user!, {
+    class_name: data.class_name ?? null,
+    subject_id: data.subject_id,
+  });
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
-  const { rows } = await query(
-    `INSERT INTO materials(school_code,subject_id,class_name,term_id,title,type,url,created_by)
-     VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
-    [sc, subject_id, class_name ?? null, term_id ?? null,
-     title, type, url, req.user!.id],
-  );
-  return res.status(201).json({ material: rows[0] });
+  const result = await withTransaction(async (client) => {
+    const referenceError = await validateContentReferences(
+      client, target.schoolCode, data.subject_id, data.term_id ?? null,
+    );
+    if (referenceError) return { ok: false as const, ...referenceError };
+
+    const { rows } = await client.query(
+      `INSERT INTO materials(school_code,subject_id,class_name,term_id,title,type,url,created_by)
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
+      [target.schoolCode, data.subject_id, data.class_name ?? null, data.term_id ?? null,
+       data.title, data.type, data.url, req.user!.id],
+    );
+    return { ok: true as const, material: rows[0] };
+  });
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  return res.status(201).json({ material: result.material });
 });
 
 router.delete('/materials/:id', requirePerm('materials.write'), async (req, res) => {
