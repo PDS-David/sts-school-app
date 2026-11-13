@@ -72,33 +72,43 @@ router.post('/terms', requireRole('admin'), async (req, res) => {
   const daysOpenedError = validateDaysOpened(days_opened);
   if (daysOpenedError) return res.status(400).json({ error: daysOpenedError });
 
-  // All term creation for a school is serialized. The three-term session cap
-  // is an application invariant that a unique term-name index alone cannot
-  // protect against when two different term names are created concurrently.
+  const schoolCode = school_code.trim();
+  const academicYear = academic_year.trim();
+
+  // Serialize term mutations for this school. The schema's unique constraint
+  // remains the final duplicate-name guard; this lock makes the read/check/
+  // write path deterministic and lets concurrent duplicates return HTTP 409.
   const result = await withTransaction(async (client) => {
+    const { rows: schoolRows } = await client.query(
+      'SELECT 1 FROM schools WHERE code=$1 FOR SHARE',
+      [schoolCode],
+    );
+    if (!schoolRows[0]) {
+      return { ok: false as const, status: 400, error: 'Unknown school_code.' };
+    }
     await client.query(
       "SELECT pg_advisory_xact_lock(hashtext('academic-terms'), hashtext($1))",
-      [school_code],
+      [schoolCode],
     );
     const { rows: existingTerms } = await client.query(
       'SELECT id, name FROM terms WHERE school_code=$1 AND academic_year=$2 ORDER BY id FOR UPDATE',
-      [school_code, academic_year.trim()],
+      [schoolCode, academicYear],
     );
     if (existingTerms.length >= 3) {
       return {
         ok: false as const,
         status: 409,
-        error: `${academic_year} for ${school_code} already has all 3 terms of a session (${existingTerms.map((t: any) => t.name).join(', ')}).`,
+        error: `${academicYear} for ${schoolCode} already has all 3 terms of a session (${existingTerms.map((t: any) => t.name).join(', ')}).`,
       };
     }
     if (existingTerms.some((term: any) => term.name === name)) {
-      return { ok: false as const, status: 409, error: `${name} already exists for ${academic_year}.` };
+      return { ok: false as const, status: 409, error: `${name} already exists for ${academicYear}.` };
     }
 
     const { rows } = await client.query(
       `INSERT INTO terms(name,academic_year,school_code,start_date,end_date,days_opened,next_term_begins)
        VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
-      [name, academic_year.trim(), school_code.trim(), start_date ?? null, end_date ?? null,
+      [name, academicYear, schoolCode, start_date ?? null, end_date ?? null,
        days_opened ?? 0, next_term_begins ?? null],
     );
     return { ok: true as const, term: rows[0] };
@@ -109,6 +119,10 @@ router.post('/terms', requireRole('admin'), async (req, res) => {
 });
 
 router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
+  const termId = Number(req.params.id);
+  if (!Number.isSafeInteger(termId) || termId <= 0 || termId > 2_147_483_647) {
+    return res.status(404).json({ error: 'Term not found' });
+  }
   const { name, academic_year, is_current, start_date, end_date, days_opened, next_term_begins } = req.body ?? {};
   const user = req.user!;
 
@@ -140,7 +154,7 @@ router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
     // or writing. This lock is shared with POST /terms.
     const { rows: initialRows } = await client.query(
       'SELECT school_code FROM terms WHERE id=$1',
-      [req.params.id],
+      [termId],
     );
     if (!initialRows[0]) return { ok: false as const, status: 404, error: 'Term not found' };
     const schoolCode = initialRows[0].school_code as string | null;
@@ -152,7 +166,7 @@ router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
     );
     const { rows: lockedRows } = await client.query(
       'SELECT * FROM terms WHERE id=$1 FOR UPDATE',
-      [req.params.id],
+      [termId],
     );
     const term = lockedRows[0];
     if (!term) return { ok: false as const, status: 404, error: 'Term not found' };
@@ -165,7 +179,7 @@ router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
     if (name !== undefined || academic_year !== undefined) {
       const { rows: clash } = await client.query(
         'SELECT id FROM terms WHERE school_code=$1 AND academic_year=$2 AND name=$3 AND id<>$4',
-        [term.school_code, targetYear, name ?? term.name, req.params.id],
+        [term.school_code, targetYear, name ?? term.name, termId],
       );
       if (clash.length) {
         return { ok: false as const, status: 409, error: `${name ?? term.name} already exists for ${targetYear}.` };
@@ -185,7 +199,7 @@ router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
               end_date=COALESCE($5,end_date), days_opened=COALESCE($6,days_opened),
               next_term_begins=COALESCE($7,next_term_begins)
        WHERE id=$8 RETURNING *`,
-      [name, academic_year?.trim(), is_current, start_date, end_date, days_opened, next_term_begins, req.params.id],
+      [name, academic_year?.trim(), is_current, start_date, end_date, days_opened, next_term_begins, termId],
     );
     if (!rows[0]) return { ok: false as const, status: 404, error: 'Term not found' };
     return { ok: true as const, term: rows[0] };
