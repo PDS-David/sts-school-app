@@ -65,3 +65,23 @@ Three technical references support the authored corrections and safety guidance:
 The scheme assigns Plant Nutrients and Nutrient Cycles to Weeks 8-9, while the body has a single Week Eight heading for that range and no separate Week Nine heading. The source map records this as a two-week scheme range extending beyond the body heading, not proof of a missing separate Week Nine lesson. Full Week Eight content and assessment coverage must be verified before treating the range as complete; no separate Week Nine lesson will be invented. The Week Three reading assignment also cites O.A. Iwena, *Essential Agricultural Science*, Chapter 12, pages 101–115, but the edition was not supplied; this is recorded as a non-blocking unverified reference.
 
 The package now contains 3 units, 54 questions (44 original-source prompts and 10 authored supplements), 21 asset records (20 source-extract references and one stored SVG), 8 external factual references and 11 open items (10 delivery-blocking, one non-blocking). All package content remains PENDING; student routes therefore serve no lessons yet.
+
+
+## Weeks 4–5 — Farm surveying and planning of farmstead
+
+Weeks 4–5 are drafted as one combined source unit, matching the original heading and source map. The lesson covers surveying meaning and importance, eight surveying instruments and their uses, chaining precautions, instrument maintenance, farm planning, farmstead definition and siting, area formulas, hectare conversion and plant-population calculations. Fourteen clear original-source assessment prompts have authored answers, explanations and mark-by-mark criteria; two additional calculation exercises are authored supplements.
+
+Two verified factual references support the work: the WAEC 2018 Agricultural Science examiner report for farm surveying definitions and instrument uses, and NIST Handbook 44 for the exact hectare conversion. The source's statement that 1 hectare = 100,000 m² is corrected to 10,000 m². The source's siting rule that livestock buildings should always occupy the poorest soil is flagged for subject review. The General Evaluation item "List five factors coupled implements" is malformed and remains unresolved rather than guessed.
+
+Three embedded source figures (a watermarked farmstead layout and two calculation graphics) have derivative hashes, byte counts, source locators and alt text recorded as pending source-extract references. The watermarked layout requires permission or replacement. The O.A. Iwena Chapter 22 pages 214-222 reading reference remains unverified because the cited edition was not supplied.
+
+## Current First Term package totals
+
+- 4 units: Weeks 1, 2, 3 and combined Weeks 4-5.
+- 70 assessment/practice items: 58 original-source prompts and 12 authored supplements.
+- 24 asset records: 23 pending source-extract references and one stored authored SVG.
+- 10 external factual references.
+- 16 open items: 15 delivery-blocking and one non-blocking.
+- Package status remains PENDING; the student routes intentionally serve no lessons until blocking items are resolved and evidence-backed approval/verification is recorded.
+
+**Next exact task:** audit and draft Week 6 (Irrigation and Drainage), preserving its source text, assessments and figures. Then proceed to Week 7, and only after that verify the combined Week 8-9 nutrient-cycle coverage and Week 10 nutrient-availability content.
