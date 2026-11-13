@@ -409,7 +409,7 @@ router.get('/self-claim/roster', async (req, res) => {
   const className = String(req.query.class_name ?? '').trim();
   if (!schoolCode || !className) return res.status(400).json({ error: 'school_code and class_name are required' });
   const { rows } = await query(
-    'SELECT id, full_name FROM students WHERE school_code=$1 AND class_name=$2 AND user_id IS NULL ORDER BY full_name',
+    'SELECT id, full_name FROM students WHERE school_code=$1 AND class_name=$2 AND user_id IS NULL AND deleted_at IS NULL ORDER BY full_name',
     [schoolCode, className],
   );
   return res.json({ students: rows });
