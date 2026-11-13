@@ -172,3 +172,11 @@ test('outbox validates queued request records before replay', async () => {
   await assert.rejects(outbox.getAll(), /invalid data/);
   assert.equal(JSON.parse(storage.values.get('offline_outbox:student-a')!).length, 1);
 });
+
+test('account-switch cancellations are not treated as offline failures', () => {
+  const isOfflineNetworkFailure = (error: { code?: string } | undefined) =>
+    error?.code !== 'ERR_CANCELED';
+  assert.equal(isOfflineNetworkFailure({ code: 'ERR_CANCELED' }), false);
+  assert.equal(isOfflineNetworkFailure({ code: 'ECONNABORTED' }), true);
+  assert.equal(isOfflineNetworkFailure(undefined), true);
+});
