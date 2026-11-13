@@ -75,7 +75,13 @@ test('Civic Education source-alias guards reject wrong hashes, ambiguous anchors
   const p = packageSchema.parse(raw);
   const aliases = p.source_rules.filter(rule => rule.op === 'source_alias');
   assert.equal(aliases.length, 3);
-  assert.equal(p.source_rules.length, 3);
+  const schemeMarkers = p.source_rules.filter(rule => rule.op === 'classify_marker');
+  assert.equal(schemeMarkers.length, 8);
+  assert(schemeMarkers.every(rule => rule.kind === 'SCHEME_ONLY' && rule.match_mode === 'WHOLE_LINE'));
+  const schemeCoverage = p.coverage.find(entry => entry.id === 'COV-CIV-T3-SCHEME-MARKERS');
+  assert(schemeCoverage && schemeCoverage.status === 'MARKER');
+  assert.deepEqual(new Set(schemeCoverage.lesson_ids), new Set(schemeMarkers.map(rule => rule.id)));
+  assert.equal(p.source_rules.length, 11);
   for (const rule of aliases) {
     const source = p.sources.find(entry => entry.source_id === rule.source_id);
     assert(source, `unknown rule source ${rule.id}`);
@@ -98,13 +104,13 @@ test('Current Civic Education coverage references resolve and retain their parti
   const sourceIds = new Set(p.sources.map(source => source.source_id));
   const ruleIds = new Set(p.source_rules.map(rule => rule.id));
   const lessonIds = new Set(p.lessons.map(lesson => lesson.id));
-  assert.equal(p.coverage.length, 7);
+  assert.equal(p.coverage.length, 8);
   assert.deepEqual(
     p.coverage.reduce((counts, entry) => {
       counts[entry.status] = (counts[entry.status] ?? 0) + 1;
       return counts;
     }, {} as Record<string, number>),
-    { IMPLEMENTED_EQUIVALENT: 1, PARTIAL: 4, UNRESOLVED: 2 },
+    { IMPLEMENTED_EQUIVALENT: 1, PARTIAL: 4, UNRESOLVED: 2, MARKER: 1 },
   );
   for (const entry of p.coverage) {
     assert(sourceIds.has(entry.source_id), `unknown source in ${entry.id}`);
@@ -120,4 +126,24 @@ test('Current Civic Education coverage references resolve and retain their parti
   assert(p.open_items.some(item => item.id === 'CIVIC-EDUCATION-ALIAS-APPROVAL-T2' && item.blocks_delivery));
   assert(p.open_items.some(item => item.id === 'CIVIC-EDUCATION-ALIAS-APPROVAL-T3' && item.blocks_delivery));
   assert(p.open_items.some(item => item.id === 'CIVIC-EDUCATION-T1-W01-MEANING-REFERENCE-REUSE' && item.blocks_delivery));
+});
+
+test('Civic Education scheme-only markers are source-bound and cannot become teaching weeks', () => {
+  const p = packageSchema.parse(raw);
+  const schemeMarkers = p.source_rules.filter(rule => rule.op === 'classify_marker');
+  assert.equal(schemeMarkers.length, 8);
+  for (const rule of schemeMarkers) {
+    assert.equal(rule.kind, 'SCHEME_ONLY');
+    assert.equal(rule.match_mode, 'WHOLE_LINE');
+    const input = {
+      source_id: rule.source_id,
+      sha256: rule.source_sha256,
+      filePath: 'synthetic-civic-scheme-marker-probe.docx',
+      text: rule.anchor,
+    };
+    assert.equal(applyRules(input, [rule]), rule.anchor);
+    assert.throws(() => applyRules({ ...input, sha256: '0'.repeat(64) }, [rule]), /source mismatch/);
+    assert.throws(() => applyRules({ ...input, text: rule.anchor + '\\n' + rule.anchor }, [rule]), /ambiguous/);
+    assert.throws(() => applyRules({ ...input, text: 'anchor absent' }, [rule]), /missing/);
+  }
 });
