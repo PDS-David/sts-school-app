@@ -10,7 +10,7 @@ import { audit } from '../utils/audit.js';
 const router = Router();
 router.use(requireAuth);
 
-const COLUMNS = 'a.id, a.title, a.body, a.audience_role, a.class_name, a.created_by, a.created_at, a.expires_at';
+const COLUMNS = 'a.id, a.school_code, a.title, a.body, a.audience_role, a.class_name, a.created_by, a.created_at, a.expires_at';
 const LIVE = '(a.expires_at IS NULL OR a.expires_at > now())';
 const LIMIT = 50;
 
