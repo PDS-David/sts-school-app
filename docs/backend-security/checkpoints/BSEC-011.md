@@ -2,11 +2,12 @@
 
 - **Task ID:** BSEC-011
 - **Title:** Refuse partial or schema-incompatible database restores before destructive writes
-- **Status:** implementation committed; CI verification pending
+- **Status:** implementation verified; PR review pending
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Working branch:** agent/backend-backup-restore-schema-guard-20261113
-- **Latest implementation commit:** pending
+- **Latest implementation commit:** 2f0e9388d831dc7e614ab4120889e88535e22597
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/736
 - **Changed files:**
   - backend/src/utils/backup.ts
   - backend/src/db/restoreBackup.ts
@@ -16,6 +17,6 @@
 - **Defect:** restore accepted any backup table subset as long as the listed tables existed in the target. It then executed TRUNCATE ... CASCADE. If a target database had a newer public table omitted from an older backup, that unrepresented table could be silently truncated through a foreign-key cascade. Column drift was also discovered only during INSERT, after the destructive operation had begun (although transaction rollback protected committed data).
 - **Implementation:** backup exports now capture optional column compatibility metadata (UDT, length, precision/scale, nullability, defaults, identity/generated flags). Restore validates payload structure, unique table/column names, row widths, exact public table-set coverage (excluding app_bootstrap and backup_log), and column metadata before applying. The restore no longer uses CASCADE; explicit multi-table TRUNCATE cannot cascade into unbacked dependent tables.
 - **Regression coverage:** PostgreSQL tests create an unbacked table with an FK to a backed table and prove restore refuses before deleting its row; mutate a backed column type and prove schema drift is refused before truncation; malformed row widths are rejected before database connection.
-- **Verification:** source/tests fetched back from GitHub and reviewed. Dedicated PostgreSQL 16 workflow added; CI pending. No production database or backup was read, restored, or modified.
-- **Remaining:** run backup unit/integration tests and backend TypeScript typecheck; fix genuine failures; open focused PR; verify required checks.
+- **Verification:** GitHub Actions run 43453187077 passed: locked dependency installation, PostgreSQL 16 bootstrap, existing backup format/encryption tests, all three restore-safety integration tests, and backend TypeScript typecheck. JSS3 implementation/asset checks 43453186869 and SS1 package integrity 43453218184 also passed. No production database or backup was read, restored, or modified.
+- **Remaining:** PR review/merge. Do not mark the overall backend/security assignment complete.
 - **Exact next action:** inspect branch head and CI run for Backend backup restore schema safeguards.
