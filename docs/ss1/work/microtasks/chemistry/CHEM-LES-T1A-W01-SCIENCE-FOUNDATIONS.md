@@ -10,7 +10,7 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. This is a separately authored suppleme
 - Lesson body SHA-256: `1e448e35285b3057663cb8767ea3e095adebd268786a21b0b446c10fac8afb3f`.
 
 ## Implementation
-- Added `SUP-SS1-CHEM-T1A-W01-SCIENCE-FOUNDATIONS` to `backend/src/db/ss1/subjects/chemistry.json`.
+- Added `SUP-SS1-CHEMISTRY-T1A-W01-SCIENCE-FOUNDATIONS` to `backend/src/db/ss1/subjects/chemistry.json`.
 - Teaches an iterative evidence-based inquiry cycle; observation, pattern, question, hypothesis and prediction; the difference between theories and laws; the three source-listed branches; and analytical chemistry and biochemistry as additional important areas.
 - Includes original examples and seven practice questions with complete answers and criterion-level marking, totalling 26 marks.
 - Updated `COV-CHEM-T1A-W01-DEFINITION`, `COV-CHEM-T1A-W01-BRANCHES` and `COV-CHEM-T1A-W01-METHOD` to `IMPLEMENTED_EQUIVALENT`, each linked to the new lesson with explicit evidence.
