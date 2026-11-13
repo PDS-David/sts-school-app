@@ -141,7 +141,7 @@ test('Current Civic Education coverage references resolve and retain their parti
       counts[entry.status] = (counts[entry.status] ?? 0) + 1;
       return counts;
     }, {} as Record<string, number>),
-    { IMPLEMENTED_EQUIVALENT: 2, PARTIAL: 4, UNRESOLVED: 2, MARKER: 1 },
+    { IMPLEMENTED_EQUIVALENT: 3, PARTIAL: 4, MARKER: 1 },
   );
   for (const entry of p.coverage) {
     assert(sourceIds.has(entry.source_id), `unknown source in ${entry.id}`);
