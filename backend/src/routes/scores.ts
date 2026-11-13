@@ -331,13 +331,11 @@ router.post('/bulk', requirePerm('grades.write'), async (req, res) => {
   // row (scope, school maxima, FK, numeric precision, or a database trigger)
   // rolls back every upsert rather than leaving a partially marked class.
   const result = await withTransaction(async (client) => {
-    const scopes: Array<{ schoolCode: string }> = [];
     for (const score of scores) {
       const scope = await validateScoreWriteScope(client, req.user!, score);
       if ('error' in scope) {
         return { ok: false as const, status: scope.status, error: scope.error };
       }
-      scopes.push(scope);
 
       const { rows: schRows } = await client.query(
         'SELECT ca1_max, ca2_max, exam_max FROM schools WHERE code=$1 FOR SHARE',
