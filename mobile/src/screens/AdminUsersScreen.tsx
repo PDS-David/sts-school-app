@@ -404,7 +404,7 @@ export default function AdminUsersScreen() {
   return (
     <View style={styles.container}>
       <PageContainer style={{ padding: Spacing.sm, paddingBottom: 0 }}>
-        {!!loadError && <Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm, marginBottom: Spacing.xs }}>{loadError}</Text>}
+        {!!loadError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry user list' variant='outline' size='sm' onPress={() => fetchUsers()} /></View>}
         {!!schoolsError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{schoolsError}</Text><Btn label='Retry schools' variant='outline' size='sm' onPress={() => setSchoolsRetry(v => v + 1)} /></View>}
         {!!lookupError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{lookupError}</Text><Btn label='Retry class/subject options' variant='outline' size='sm' onPress={() => setLookupRetry(v => v + 1)} /></View>}
         <TouchableOpacity style={styles.addBtn} onPress={openNew}>
