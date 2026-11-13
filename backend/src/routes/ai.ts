@@ -60,6 +60,7 @@ router.post('/ping', requireRole('admin'), async (req, res) => {
   const prompt = typeof req.body?.prompt === 'string' && req.body.prompt.trim()
     ? req.body.prompt.trim()
     : 'Reply with exactly one short sentence confirming you received this test message.';
+  if (prompt.length > 1000) return res.status(400).json({ error: 'prompt is too long (maximum 1000 characters).' });
   return respondWithGenerate(res, prompt, 'ping', req.user!.id, req.user!.role);
 });
 
@@ -73,9 +74,25 @@ router.post('/chat', async (req, res) => {
     message?: string;
     history?: Array<{ role: 'user' | 'brainee'; text: string }>;
   };
-  if (!message?.trim()) return res.status(400).json({ error: 'message is required' });
+  if (typeof message !== 'string' || !message.trim()) {
+    return res.status(400).json({ error: 'message is required' });
+  }
+  if (message.length > 4000) {
+    return res.status(400).json({ error: 'message is too long (maximum 4000 characters).' });
+  }
+  if (history !== undefined) {
+    if (!Array.isArray(history) || history.length > 6) {
+      return res.status(400).json({ error: 'history must contain no more than 6 turns.' });
+    }
+    if (history.some((turn) =>
+      !turn || !['user', 'brainee'].includes(turn.role) ||
+      typeof turn.text !== 'string' || turn.text.length > 4000
+    )) {
+      return res.status(400).json({ error: 'Each history turn must have a valid role and text of at most 4000 characters.' });
+    }
+  }
 
-  const priorTurns = Array.isArray(history) ? history.slice(-6) : [];
+  const priorTurns = Array.isArray(history) ? history : [];
   const transcript = priorTurns
     .map((h) => `${h.role === 'user' ? 'Student' : 'Brainee'}: ${h.text}`)
     .join('\n');
@@ -95,7 +112,11 @@ router.post('/chat', async (req, res) => {
 // ── POST /ai/explain ───────────────────────────────────────────────────────
 router.post('/explain', async (req, res) => {
   const { topic, subject, class_name } = req.body as { topic?: string; subject?: string; class_name?: string };
-  if (!topic?.trim()) return res.status(400).json({ error: 'topic is required' });
+  if (typeof topic !== 'string' || !topic.trim()) return res.status(400).json({ error: 'topic is required' });
+  if (topic.length > 1000 || (subject !== undefined && (typeof subject !== 'string' || subject.length > 100)) ||
+      (class_name !== undefined && (typeof class_name !== 'string' || class_name.length > 50))) {
+    return res.status(400).json({ error: 'topic, subject or class_name exceeds the allowed input length.' });
+  }
 
   const prompt =
     `Explain "${topic.trim()}" to a ${class_name ?? 'school'} student` +
@@ -109,7 +130,10 @@ router.post('/explain', async (req, res) => {
 // ── POST /ai/notes ──────────────────────────────────────────────────────────
 router.post('/notes', async (req, res) => {
   const { topic, subject } = req.body as { topic?: string; subject?: string };
-  if (!topic?.trim()) return res.status(400).json({ error: 'topic is required' });
+  if (typeof topic !== 'string' || !topic.trim()) return res.status(400).json({ error: 'topic is required' });
+  if (topic.length > 2000 || (subject !== undefined && (typeof subject !== 'string' || subject.length > 100))) {
+    return res.status(400).json({ error: 'topic or subject exceeds the allowed input length.' });
+  }
 
   const prompt =
     `Write short, clear study notes on "${topic.trim()}"` +
@@ -141,7 +165,9 @@ router.post('/text-study', async (req, res) => {
 router.post('/hint', requireRole('student'), async (req, res) => {
   const user = req.user!;
   const { question_id } = req.body as { question_id?: number };
-  if (!question_id) return res.status(400).json({ error: 'question_id is required' });
+  if (!Number.isSafeInteger(question_id) || Number(question_id) <= 0) {
+    return res.status(400).json({ error: 'question_id must be a positive integer' });
+  }
 
   const { rows: stRows } = await query('SELECT school_code, class_name FROM students WHERE user_id=$1', [user.id]);
   const student = stRows[0];
@@ -189,7 +215,11 @@ router.post('/generate-questions', requirePerm('questions.write'), async (req, r
     subject?: string; class_name?: string; topic?: string;
     type?: 'mcq' | 'essay'; count?: number;
   };
-  if (!topic?.trim()) return res.status(400).json({ error: 'topic is required' });
+  if (typeof topic !== 'string' || !topic.trim()) return res.status(400).json({ error: 'topic is required' });
+  if (topic.length > 1000 || (subject !== undefined && (typeof subject !== 'string' || subject.length > 100)) ||
+      (class_name !== undefined && (typeof class_name !== 'string' || class_name.length > 50))) {
+    return res.status(400).json({ error: 'topic, subject or class_name exceeds the allowed input length.' });
+  }
   const qType = type === 'essay' ? 'essay' : 'mcq';
   const n = Math.min(Math.max(Number(count) || 3, 1), 10);
 
