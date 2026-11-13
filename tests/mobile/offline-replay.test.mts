@@ -5,7 +5,7 @@ import { createSerialQueue } from '../../mobile/src/offline/serialQueue.ts';
 import { createOutboxStore } from '../../mobile/src/offline/outboxStore.ts';
 import { isRestorableUser } from '../../mobile/src/api/authSession.ts';
 import { shouldDiscardOutboxFailure } from '../../mobile/src/offline/outboxFailurePolicy.ts';
-import { getMaterialDownloadTarget } from '../../mobile/src/utils/materialDownload.ts';
+import { getMaterialDownloadTarget, isSafeMaterialUrl } from '../../mobile/src/utils/materialDownload.ts';
 
 test('normal failed writes remain eligible for offline queueing', () => {
   assert.equal(shouldEnqueueOfflineWrite({}), true);
@@ -139,4 +139,12 @@ test('material downloads reject insecure and non-web URL schemes', () => {
   assert.equal(getMaterialDownloadTarget('file:///etc/passwd', 'Notes', 'pdf'), null);
   assert.equal(getMaterialDownloadTarget('javascript:alert(1)', 'Notes', 'pdf'), null);
   assert.equal(getMaterialDownloadTarget('', 'Notes', 'pdf'), null);
+});
+
+test('material links require a valid HTTPS URL', () => {
+  assert.equal(isSafeMaterialUrl('https://school.example/material.pdf'), true);
+  assert.equal(isSafeMaterialUrl('http://school.example/material.pdf'), false);
+  assert.equal(isSafeMaterialUrl('https://'), false);
+  assert.equal(isSafeMaterialUrl('https://school.example/a b.pdf'), false);
+  assert.equal(isSafeMaterialUrl('javascript:alert(1)'), false);
 });
