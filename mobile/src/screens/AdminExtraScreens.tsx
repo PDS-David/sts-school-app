@@ -1,9 +1,10 @@
 // ── ClassSummaryScreen.tsx ────────────────────────────────────────────────────
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, RefreshControl, TouchableOpacity, Alert } from 'react-native';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
+import { View, Text, StyleSheet, ScrollView, RefreshControl, TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import api from '../api/client';
-import { Card, Loader, Empty, SectionHeader, GradePill } from '../components/UI';
+import { Card, Btn, Loader, Empty, SectionHeader, GradePill } from '../components/UI';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
@@ -19,7 +20,13 @@ export function ClassSummaryScreen({ navigation }: any) {
   const [selTerm,   setSelTerm]   = useState<number | ''>('');
   const [scores,    setScores]    = useState<any[]>([]);
   const [loading,   setLoading]   = useState(true);
+  const [setupError, setSetupError] = useState('');
+  const [scoresLoading, setScoresLoading] = useState(false);
+  const [scoresError, setScoresError] = useState('');
+  const [scoresRetry, setScoresRetry] = useState(0);
+  const [setupRetry, setSetupRetry] = useState(0);
   const [refreshing,setRefreshing]= useState(false);
+  const scoresRequestRef = useRef(0);
 
   // Compact switcher lives in the native header now, not as a full-width
   // block in the content area — see SchoolSwitcherBar.tsx's `compact` doc.
@@ -29,40 +36,52 @@ export function ClassSummaryScreen({ navigation }: any) {
   }, [navigation]);
 
   useEffect(() => {
+    let cancelled = false;
     setLoading(true);
+    setSetupError('');
+    setClasses([]); setTerms([]); setSubjects([]); setScores([]);
+    setSelClass(''); setSelTerm('');
     const sc = selectedSchoolCode ?? undefined;
     Promise.all([
       api.get('/students', { params: { school_code: sc } }),
       api.get('/academic/terms', { params: { school_code: sc } }),
       api.get('/academic/subjects', { params: { school_code: sc } }),
-    ])
-      .then(([s, t, sub]) => {
-        const cls = [...new Set((s.data.students as any[]).map((x: any) => x.class_name))].sort();
-        setClasses(cls);
-        setSelClass(cls[0] ?? '');
-        setTerms(t.data.terms);
-        setSubjects(sub.data.subjects);
-        const cur = t.data.terms.find((x: any) => x.is_current);
-        setSelTerm(cur ? cur.id : '');
-      }).catch(() => {}).finally(() => setLoading(false));
-  }, [selectedSchoolCode]);
+    ]).then(([s, t, sub]) => {
+      if (cancelled) return;
+      const cls = [...new Set((s.data.students as any[]).map((x: any) => x.class_name))].sort();
+      setClasses(cls);
+      setSelClass(cls[0] ?? '');
+      setTerms(t.data.terms ?? []);
+      setSubjects(sub.data.subjects ?? []);
+      const cur = (t.data.terms ?? []).find((x: any) => x.is_current);
+      setSelTerm(cur ? cur.id : '');
+    }).catch((e: any) => {
+      if (!cancelled) setSetupError(e?.response?.data?.error ?? 'Could not load classes, terms and subjects for this school.');
+    }).finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
+  }, [selectedSchoolCode, setupRetry]);
 
-  const fetchScores = async () => {
-    if (!selClass || !selTerm) return;
+  const fetchScores = useCallback(async () => {
+    const requestId = ++scoresRequestRef.current;
+    if (!selClass || !selTerm) { setScores([]); setScoresError(''); setScoresLoading(false); setRefreshing(false); return; }
+    setScoresLoading(true);
+    setScoresError('');
+    setScores([]);
     try {
       // school_code is required here, not optional — class names aren't
       // unique across schools ("JSS 1" can exist in more than one), so
       // without this an admin viewing one school's ranking could silently
-      // pick up another school's same-named class too. See the matching
-      // fix in backend/src/routes/scores.ts (GET /).
+      // pick up another school's same-named class too.
       const sc = selectedSchoolCode ?? undefined;
       const { data } = await api.get('/scores', {
         params: { class_name: selClass, term_id: selTerm, school_code: sc },
       });
-      setScores(data.scores);
-    } catch { } finally { setRefreshing(false); }
-  };
-  useEffect(() => { fetchScores(); }, [selClass, selTerm]);
+      if (requestId === scoresRequestRef.current) setScores(data.scores ?? []);
+    } catch (e: any) {
+      if (requestId === scoresRequestRef.current) setScoresError(e?.response?.data?.error ?? 'Could not load scores for this class and term.');
+    } finally { if (requestId === scoresRequestRef.current) { setScoresLoading(false); setRefreshing(false); } }
+  }, [selClass, selTerm, selectedSchoolCode]);
+  useEffect(() => { fetchScores(); }, [fetchScores, scoresRetry]);
 
   // Aggregate by student
   const byStudent: Record<string, { name: string; total: number; subjects: number }> = {};
@@ -76,6 +95,12 @@ export function ClassSummaryScreen({ navigation }: any) {
     .sort((a, b) => b.total - a.total);
 
   if (loading) return <Loader />;
+  if (setupError) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={setupError} />
+      <Btn label='Retry school setup' variant='outline' onPress={() => { setLoading(true); setSetupError(''); /* effect reruns when school changes; retry counter handled below */ setSetupRetry(v => v + 1); }} />
+    </View>
+  );
 
   return (
     <ScrollView
@@ -83,7 +108,7 @@ export function ClassSummaryScreen({ navigation }: any) {
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); fetchScores(); }} />}
     >
       <PageContainer style={{ padding: Spacing.sm }}>
-        <Card>
+        {classes.length === 0 ? <Card><Empty message='No student classes are available for this school.' /></Card> : <Card>
           <View style={isWide ? styles.filterRow : undefined}>
             <View style={isWide ? styles.filterCol : undefined}>
               <View style={styles.pickerWrap}>
@@ -100,11 +125,13 @@ export function ClassSummaryScreen({ navigation }: any) {
               </View>
             </View>
           </View>
-        </Card>
+        </Card>}
 
         <Card>
           <SectionHeader title={`${selClass} Rankings`} />
-          {ranked.length === 0 ? <Empty message="No scores for this selection" /> : (
+          {scoresLoading ? <Loader /> : scoresError ? (
+            <View><Empty message={scoresError} /><Btn label='Retry scores' variant='outline' onPress={() => setScoresRetry(v => v + 1)} /></View>
+          ) : ranked.length === 0 ? <Empty message='No scores for this selection' /> : (
             <>
               <View style={styles.tableHeader}>
                 {['Pos','Student','Subjects','Total','Avg'].map(h => (
@@ -133,18 +160,32 @@ export function AuditLogScreen({ navigation }: any) {
   const { selectedSchoolCode } = useAdminSchool();
   const [logs,    setLogs]    = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [retry, setRetry] = useState(0);
 
   useEffect(() => {
     navigation.setOptions({ headerRight: () => <SchoolSwitcherBar compact /> });
   }, [navigation]);
 
   useEffect(() => {
+    let cancelled = false;
     setLoading(true);
+    setLoadError('');
+    setLogs([]);
     api.get('/admin/audit-log', { params: { school_code: selectedSchoolCode ?? undefined } })
-      .then(({ data }) => setLogs(data.audit_log)).catch(() => {}).finally(() => setLoading(false));
-  }, [selectedSchoolCode]);
+      .then(({ data }) => { if (!cancelled) setLogs(data.audit_log ?? []); })
+      .catch((e: any) => { if (!cancelled) setLoadError(e?.response?.data?.error ?? 'Could not load the audit log for this school.'); })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
+  }, [selectedSchoolCode, retry]);
 
   if (loading) return <Loader />;
+  if (loadError) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={loadError} />
+      <Btn label='Retry audit log' variant='outline' onPress={() => setRetry(v => v + 1)} />
+    </View>
+  );
 
   return (
     <ScrollView style={styles.container}>
@@ -178,45 +219,63 @@ export function DeletedStudentsScreen({ navigation }: any) {
   const [loading,   setLoading]   = useState(true);
   const [refreshing,setRefreshing]= useState(false);
   const [restoringId, setRestoringId] = useState<string | null>(null);
+  const [loadError, setLoadError] = useState('');
+  const [restoreConfirm, setRestoreConfirm] = useState<{ id: string; name: string } | null>(null);
+  const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
+  const deletedRequestRef = useRef(0);
 
   useEffect(() => {
     navigation.setOptions({ headerRight: () => <SchoolSwitcherBar compact /> });
   }, [navigation]);
 
   const fetchDeleted = async () => {
+    const requestId = ++deletedRequestRef.current;
+    setLoading(true);
+    setLoadError('');
     try {
       const { data } = await api.get('/students/deleted', {
         params: { school_code: selectedSchoolCode ?? undefined },
       });
-      setStudents(data.students ?? []);
-    } catch { } finally { setLoading(false); setRefreshing(false); }
+      if (requestId === deletedRequestRef.current) setStudents(data.students ?? []);
+    } catch (e: any) {
+      if (requestId === deletedRequestRef.current) setLoadError(e?.response?.data?.error ?? 'Could not load deleted students for this school.');
+    } finally { if (requestId === deletedRequestRef.current) { setLoading(false); setRefreshing(false); } }
   };
 
-  useEffect(() => { setLoading(true); fetchDeleted(); }, [selectedSchoolCode]);
+  useEffect(() => { setLoading(true); setStudents([]); fetchDeleted(); }, [selectedSchoolCode]);
 
-  const restore = (id: string, name: string) => {
-    Alert.alert('Restore student?', `${name} will reappear in the student list and all their scores/attendance history will be reachable again.`, [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Restore', onPress: async () => {
-        setRestoringId(id);
-        try {
-          await api.post(`/students/${id}/restore`);
-          fetchDeleted();
-        } catch (e: any) {
-          Alert.alert('Error', e?.response?.data?.error ?? 'Could not restore this student');
-        } finally { setRestoringId(null); }
-      }},
-    ]);
+  const restore = (id: string, name: string) => setRestoreConfirm({ id, name });
+
+  const confirmRestore = async () => {
+    if (!restoreConfirm || restoringId !== null) return;
+    const target = restoreConfirm;
+    setRestoreConfirm(null);
+    setRestoringId(target.id);
+    try {
+      await api.post(`/students/${target.id}/restore`);
+      await fetchDeleted();
+      setInfoDialog({ title: 'Student restored', message: `${target.name} has been restored and is available in the student list again.` });
+    } catch (e: any) {
+      setInfoDialog({ title: 'Could not restore student', message: e?.response?.data?.error ?? 'Check your connection and try again.' });
+    } finally { setRestoringId(null); }
   };
 
-  if (loading) return <Loader />;
+  if (loading && students.length === 0) return <Loader />;
+  if (loadError && students.length === 0) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={loadError} />
+      <Btn label='Retry deleted students' variant='outline' onPress={() => fetchDeleted()} />
+    </View>
+  );
 
   return (
+    <View style={{ flex: 1, backgroundColor: Colors.background }}>
     <ScrollView
       style={styles.container}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); fetchDeleted(); }} />}
     >
       <PageContainer style={{ padding: Spacing.sm }}>
+        {!!loadError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry deleted students' variant='outline' size='sm' onPress={() => fetchDeleted()} /></View>}
         {students.length === 0 ? <Empty message="No deleted students for this school" /> : students.map(s => (
           <Card key={s.id} style={{ marginBottom: Spacing.sm }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -232,6 +291,8 @@ export function DeletedStudentsScreen({ navigation }: any) {
                 onPress={() => restore(s.id, s.full_name)}
                 disabled={restoringId === s.id}
                 style={styles.restoreBtn}
+                accessibilityRole='button'
+                accessibilityLabel={`Restore ${s.full_name}`}
               >
                 <Text style={styles.restoreBtnTxt}>{restoringId === s.id ? 'Restoring…' : 'Restore'}</Text>
               </TouchableOpacity>
@@ -240,6 +301,9 @@ export function DeletedStudentsScreen({ navigation }: any) {
         ))}
       </PageContainer>
     </ScrollView>
+    <ConfirmDialog visible={!!restoreConfirm} title='Restore student?' message={`${restoreConfirm?.name ?? 'This student'} will reappear in the student list and their scores/attendance history will be reachable again.`} confirmLabel='Restore' onConfirm={confirmRestore} onCancel={() => setRestoreConfirm(null)} />
+    <ConfirmDialog visible={!!infoDialog} title={infoDialog?.title ?? ''} message={infoDialog?.message ?? ''} hideCancel onConfirm={() => setInfoDialog(null)} onCancel={() => setInfoDialog(null)} />
+    </View>
   );
 }
 
