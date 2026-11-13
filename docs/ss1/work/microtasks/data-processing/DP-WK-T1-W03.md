@@ -2,7 +2,7 @@
 
 ## Task identity and status
 - Task ID: `DP-WK-T1-W03`
-- Status: `IMPLEMENTED_TESTING_DEFERRED`
+- Status: `IN_PROGRESS`
 - Subject: Data Processing, SS1, First Term
 - Source topic: `TOPIC: GENERATIONS OF COMPUTERS`
 - Content supplement is implemented; owner content approval remains PENDING and importer/compiler/runtime verification remains DEFERRED.
@@ -17,7 +17,7 @@
 
 ## Implemented student-facing material
 - Lesson ID: `SUP-SS1-DATA-PROCESSING-T1-W03-GENERATIONS`.
-- Body SHA-256: `b69c347c68dbcf8d17dfd946d380a229dbb75bfa888b2b68eddc4000ae724439`.
+- Body SHA-256: `5a1696f3827eeefba9d577365add8514647ea0c2c89d9b44d80ca67a7bd9374f`.
 - Teaches the common five-generation model by technology, with explicit caution that generation year boundaries vary across sources.
 - Explains vacuum tubes, transistors, integrated circuits, SSI, LSI, VLSI and microprocessors.
 - Corrects the UNIVAC chronology: UNIVAC I was delivered in 1951; it was a first-generation vacuum-tube computer, not a machine delivered in 1945.
@@ -99,3 +99,8 @@ These sources are summarized in new wording; no third-party passage is reproduce
 
 ## Exact next action
 After PR integration, refresh Data Processing package and queue from current master, check branch ownership again, then implement `DP-WK-T1-W04` and its visual disposition task before closing the generation-facts review.
+
+## CI integrity correction
+- The first PR integrity workflow detected that the manually stored `body_sha256` included a trailing newline not present in the actual serialized lesson body. The lesson text itself was not changed.
+- Recomputed the digest from the exact stored body bytes and updated `body_sha256` to `5a1696f3827eeefba9d577365add8514647ea0c2c89d9b44d80ca67a7bd9374f` in package commit `0a8756dfb843ad653a56a0dc28bb0cfed345ae80`.
+- Updated the queue task to IN_PROGRESS and its checkpoint reference in commit `eee9922a141bd49cf84ed17e2bd80a2e7c6d0cb0`. Do not mark this task implemented/testing-deferred again until the integrity and registered-subject compiler workflows rerun successfully.
