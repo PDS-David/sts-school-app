@@ -44,7 +44,7 @@ Worker branch: `agent/frontend-enrollment-current-20261113`
 - Automated tests, TypeScript and device checks were not run because no local checkout/command execution environment is available.
 - No runtime enrollment-readiness claim is made.
 
-- Account-provisioning offline exclusion was moved to shared API policy PR #760 to avoid overlapping client.ts changes.
+- Account-provisioning offline exclusion is provided by shared API policy PR #776; this UI PR requires #776 to merge first.
 
 ## Remaining work
 - Verify new parent account creation, sibling account linking, and enrollment without parent details.
