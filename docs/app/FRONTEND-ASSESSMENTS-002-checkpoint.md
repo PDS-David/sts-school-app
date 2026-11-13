@@ -25,6 +25,8 @@
 - CI has not yet completed. The current master has known TypeScript failures tracked by PR #788; this PR must be rechecked after that remediation merges.
 - No live assessment or device test is claimed.
 
+- Follow-up on shared blocker: PR #788 now has passing Mobile TypeScript, Android readiness and SS1 package-integrity checks on its latest head. It is still open; rerun this branch's checks after #788 merges. PR #788's JSS3 and cross-subject package audits were still in progress at the last check.
+
 ## Remaining work
 - Run mobile TypeScript, Android readiness and package-integrity checks.
 - Fix any new errors without weakening validation.
