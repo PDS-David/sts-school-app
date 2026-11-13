@@ -1,7 +1,7 @@
 # SS2 / SS3 curriculum readiness — checkpoint
 
 Task: SS23-00 baseline inspection. Date: 2026-11-13. Base: master @ 982c1d2.
-Status: **BLOCKED — no SS2/SS3 source material in repository.** Nothing implemented; no content authored.
+Status: **SOURCES RECEIVED 2026-11-13 (task SS23-00 done); content work not started.** See `docs/ss23/sources/README.md` for hashes and gaps. SS3 Third Term source archive is EMPTY.
 
 ## Evidence (live repository, not assumed)
 | Check | Result |
@@ -16,13 +16,17 @@ Status: **BLOCKED — no SS2/SS3 source material in repository.** Nothing implem
 
 Not run: `npm run validate:ss1` (no code changed; SS1 status is not evidence for SS2/SS3).
 
-## Why no content was written
-Required inputs (original SS2/SS3 term documents) are absent. Per project rules, source text must not be fabricated and authored supplementary content must be separate from original source. Registered SS2/SS3 subjects, terms and weeks cannot be audited because none exist in master.
+## Task log
+| Task | Status | Evidence |
+|---|---|---|
+| SS23-00 baseline | done | this file |
+| SS23-S0 source receipt + inventory | done | `docs/ss23/sources/` (100 members hashed; not committed as extracts) |
+| SS23-01 generalise validator to SS2/SS3 | pending | needs owner policy answers below |
+| SS23-02… per-subject packages | pending | after SS23-01; SS2 alphabetical, one PR per subject |
 
-## Owner inputs needed (one message)
-1. Upload the SS2 and SS3 source archives (same layout as `SSS 1/…`), or confirm their location.
-2. Confirm SS 3 policy: keep audit-only (WAEC/NECO exam preparation), or deliver as normal curriculum?
-3. If no sources exist for some subjects: authorise NERDC-syllabus-based authored content, labelled as supplementary with no original-source claim?
+## Owner decisions still needed (one message)
+1. SS3 policy: `ingestTopics.ts` treats SS 3 as audit-only. Keep that, or deliver SS3 as normal curriculum?
+2. SS3 Third Term (empty archive), missing Technical Drawing / Catering Craft / SS3 T2 Food & Nutrition, and duplicated Literature and Book-keeping terms: supply the real files, or authorise clearly-labelled authored supplementary content from the national syllabus?
 
-## Exact next action on resumption
-Once archives exist: verify archive SHA-256, build `docs/ss23/sources/SOURCE_ASSIGNMENTS.csv` (mirror SS1 format), then start with SS2 subjects alphabetically (one subject per PR), generalising the SS1 validator to SS2/SS3 first (task SS23-01).
+## Exact next action
+Resume from the latest commit on this branch; start SS23-01 once decision 1 is answered, otherwise begin per-subject header/week verification for SS2 (needs re-supplied archives: verify SHA-256 against README first).
