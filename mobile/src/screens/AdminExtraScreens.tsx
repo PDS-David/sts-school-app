@@ -158,18 +158,32 @@ export function AuditLogScreen({ navigation }: any) {
   const { selectedSchoolCode } = useAdminSchool();
   const [logs,    setLogs]    = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [retry, setRetry] = useState(0);
 
   useEffect(() => {
     navigation.setOptions({ headerRight: () => <SchoolSwitcherBar compact /> });
   }, [navigation]);
 
   useEffect(() => {
+    let cancelled = false;
     setLoading(true);
+    setLoadError('');
+    setLogs([]);
     api.get('/admin/audit-log', { params: { school_code: selectedSchoolCode ?? undefined } })
-      .then(({ data }) => setLogs(data.audit_log)).catch(() => {}).finally(() => setLoading(false));
-  }, [selectedSchoolCode]);
+      .then(({ data }) => { if (!cancelled) setLogs(data.audit_log ?? []); })
+      .catch((e: any) => { if (!cancelled) setLoadError(e?.response?.data?.error ?? 'Could not load the audit log for this school.'); })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
+  }, [selectedSchoolCode, retry]);
 
   if (loading) return <Loader />;
+  if (loadError) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={loadError} />
+      <Btn label='Retry audit log' variant='outline' onPress={() => setRetry(v => v + 1)} />
+    </View>
+  );
 
   return (
     <ScrollView style={styles.container}>
