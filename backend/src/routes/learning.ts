@@ -1287,7 +1287,7 @@ router.put('/study-plan/subjects/:subject_id', requireRole('student'), async (re
 
 router.get('/questions', requirePerm('questions.read'), async (req, res) => {
   const { subject_id, class_name, type } = req.query as Record<string, string>;
-  let sql = `SELECT * FROM questions q WHERE school_code=$1
+  let sql = `SELECT * FROM questions q WHERE q.school_code=$1
                AND EXISTS (SELECT 1 FROM subjects sub WHERE sub.id=q.subject_id AND sub.school_code=q.school_code)
                AND (q.term_id IS NULL OR EXISTS (SELECT 1 FROM terms t WHERE t.id=q.term_id AND t.school_code=q.school_code))`;
   const params: unknown[] = [req.user!.school_code];
@@ -1419,7 +1419,7 @@ router.get('/assessments', requirePerm('assessments.read'), async (req, res) => 
   let sql = `SELECT a.*,sub.name AS subject_name,
                     (SELECT COUNT(*) FROM assessment_questions aq WHERE aq.assessment_id=a.id) AS question_count
                     ${submittedCol}
-             FROM assessments a JOIN subjects sub ON sub.id=a.subject_id
+             FROM assessments a JOIN subjects sub ON sub.id=a.subject_id AND sub.school_code=a.school_code
              WHERE a.school_code=$1
                AND (a.term_id IS NULL OR EXISTS (SELECT 1 FROM terms t WHERE t.id=a.term_id AND t.school_code=a.school_code))`;
 
@@ -1665,8 +1665,13 @@ router.get('/assessments/:id/questions', async (req, res) => {
   const { rows: qRows } = await query(
     `SELECT ${cols}, aq.points, aq.order_index
      FROM assessment_questions aq JOIN questions q ON q.id = aq.question_id
-     WHERE aq.assessment_id=$1 ORDER BY aq.order_index`,
-    [req.params.id],
+     WHERE aq.assessment_id=$1
+       AND q.school_code=$2
+       AND q.subject_id=$3
+       AND (q.class_name IS NULL OR q.class_name=$4)
+       AND (q.term_id IS NULL OR q.term_id IS NOT DISTINCT FROM $5)
+     ORDER BY aq.order_index`,
+    [req.params.id, assessment.school_code, assessment.subject_id, assessment.class_name, assessment.term_id],
   );
   return res.json({ assessment, questions: qRows });
 });
