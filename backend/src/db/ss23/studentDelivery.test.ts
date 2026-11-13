@@ -135,7 +135,10 @@ test('rejects stale asset hashes after approval flags are set', () => {
 
 test('blocks lessons whose question-level source reuse is still pending', () => {
   const pkg = approvedPackage();
+  const blockedUnitId = pkg.units[0].id;
+  const unaffectedUnitId = pkg.units[1].id;
   pkg.units[0].practice[0].provenance[0].reuse_status = 'PENDING';
   const delivery = createSs23StudentDelivery([pkg]);
-  assert.deepEqual(delivery.listUnits('SS 2'), []);
+  assert.equal(delivery.getUnit(blockedUnitId, 'SS 2'), null);
+  assert.ok(delivery.getUnit(unaffectedUnitId, 'SS 2'));
 });
