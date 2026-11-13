@@ -32,7 +32,8 @@
     "CIV-INV-T3 (2026-11-13) opened the exact 3rd Term Civic Education DOCX from the user-attached composite archive; archive/member hashes verified against SOURCE_ASSIGNMENTS.csv. Header confirms Civic Education (source alias spelling CIVICS EDUCATION; alias approval remains open). Inventory CIV-INV-T3.md records the scheme, five combined body blocks, assessment boundaries, week-label mismatches, source-quality/factual flags and zero visual assets. DOCX inspected with python-docx 1.2.0 using 1-based Word body paragraph locators; block digests are paragraph-text digests, not Mammoth digests or DOCX hashes. No lesson/package/coverage/rule/correction/asset/approval changes and no tests/importer/device checks. 12 bounded follow-up tasks appended: five body indexes, scheme index, scheme-gap and revision/exam disposition, preservation/neutrality and three factual dependency audits. Testing deferred.",
     "CIV-TEST-PACKAGE (2026-11-13): added tests/ss1/civic-education.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; current authored lesson body hash/objectives/practice/marking integrity without fabricated approval or verification; three PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and coverage reference/status boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed.",
     "CIV-PRE-T3 (2026-11-13): verified source hash; inspected ordinary-paragraph scheme at original DOCX paragraphs 2–38 and body markers. Scheme/body mapping: Week1 revision (no body); Weeks2–3 Cultism → WEEKS 2 and 3 p42; Weeks4–5 Law and Order → WEEKS 4 & 5 p149; Week6 Constituted Authority → WEEK 6 p244; Week7 Employment/Unemployment → WEEKS 7 & 8 p306; Weeks8–9 Capitalist Democracy → WEEK 9 p368; Week10 revision (no body); Weeks11–12 examination/closing (no body). Added eight source-bound WHOLE_LINE SCHEME_ONLY classify_marker rules and one MARKER coverage entry referencing all eight. No scheme row was converted into a lesson.",
-    "CIV-PRE-T1 (2026-11-13): verified exact member SHA-256; inspected the original Word table as 13 rows × 2 columns. Recorded header plus all twelve scheme rows verbatim in CIV-PRE-T1.md, preserving EXCETATION, defrend, Capentry and 12–13 (en dash). Scheme rows 1–8 map to actual body WEEK ONE through WEEK EIGHT; scheme rows 9–13 (Weeks 9,10,11 and 12–13 Revision/Examination) have no corresponding body marker. The document contains exactly eight body week markers. No package coverage, rule, lesson, correction or answer was changed, in accordance with task scope."
+    "CIV-PRE-T1 (2026-11-13): verified exact member SHA-256; inspected the original Word table as 13 rows × 2 columns. Recorded header plus all twelve scheme rows verbatim in CIV-PRE-T1.md, preserving EXCETATION, defrend, Capentry and 12–13 (en dash). Scheme rows 1–8 map to actual body WEEK ONE through WEEK EIGHT; scheme rows 9–13 (Weeks 9,10,11 and 12–13 Revision/Examination) have no corresponding body marker. The document contains exactly eight body week markers. No package coverage, rule, lesson, correction or answer was changed, in accordance with task scope.",
+    "CIV-WK-T1-W03 (2026-11-13): source week indexed using original DOCX paragraphs 49–65 and existing Mammoth lines 211–244/body digest. Recorded ACCEPTABLE SOCIETAL VALUES (no TOPIC prefix), TYPES OF JUSTICE (distributive, procedure, restoration/restitution, retributive), four IMPORTANCE OF JUSTICE points and three IMPORTANCE OF VALUES points. No assessment block. Preserved scheme typo EXCETATION and its 'Opportunity to defrend oneself' entry; that latter topic is taught separately in WEEK FOUR p66–78, headed 'OPPORTUNITY TO DEFENT ONESELF'. No package coverage/rules/lessons/corrections/answers were added."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -47,9 +48,9 @@
     "LESSON": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 12,
+    "IMPLEMENTED_TESTING_DEFERRED": 13,
     "BLOCKED": 1,
-    "PENDING": 42
+    "PENDING": 41
   },
   "items": [
     {
@@ -415,8 +416,8 @@
         "CIV-INV-T1",
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Original DOCX paragraphs 49–65 inspected; retained the task's Mammoth 1.12.2 locator lines 211–244 and exact block SHA-256 60fd0099c08e4d3d38c9c47507fda014c3715d59ecd0bf7b37e41b75e281b4ec. Indexed heading, four justice types, four importance-of-justice points and three importance-of-values points. No assessment block exists. Recorded scheme/body mismatch: scheme row says EXCETATION and includes defrend oneself, which appears as the separate Week Four body heading OPPORTUNITY TO DEFENT ONESELF. No package coverage, rule, lesson, correction or answer changed, as explicitly required.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching sha256 60fd0099c08e4d3d38c9c47507fda014c3715d59ecd0bf7b37e41b75e281b4ec; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1976,7 +1977,6 @@
     }
   },
   "next_runnable": [
-    "CIV-WK-T1-W03",
     "CIV-WK-T1-W04",
     "CIV-WK-T1-W05",
     "CIV-WK-T1-W06",
