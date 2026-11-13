@@ -234,6 +234,7 @@ export function primary4SupplementApprovalIssues(): string[] {
     const issues: string[] = [];
     if (pkg.provenance.content_approval !== 'APPROVED') issues.push(`${pkg.package_id}: content approval is ${pkg.provenance.content_approval}`);
     if (pkg.provenance.pedagogical_verification !== 'VERIFIED') issues.push(`${pkg.package_id}: pedagogical verification is ${pkg.provenance.pedagogical_verification}`);
+    if (pkg.provenance.assessment_rebuild_status !== 'VERIFIED') issues.push(`${pkg.package_id}: assessment rebuild is ${pkg.provenance.assessment_rebuild_status ?? 'PENDING'}`);
     return issues;
   });
 }
