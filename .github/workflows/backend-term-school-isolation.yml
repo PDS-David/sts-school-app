@@ -7,6 +7,7 @@ on:
       - "backend/src/utils/scope.ts"
       - "backend/src/routes/academic.ts"
       - "tests/backend-term-school-isolation.integration.test.mts"
+      - "tests/backend-term-session-atomicity.integration.test.mts"
       - ".github/workflows/backend-term-school-isolation.yml"
 
 permissions:
@@ -48,5 +49,7 @@ jobs:
         run: npm run db:bootstrap --workspace=backend
       - name: Run academic term tenant-isolation regressions
         run: node --import tsx --test tests/backend-term-school-isolation.integration.test.mts
+      - name: Run term session atomicity regressions
+        run: node --import tsx --test tests/backend-term-session-atomicity.integration.test.mts
       - name: Typecheck backend
         run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
