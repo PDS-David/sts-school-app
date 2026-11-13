@@ -67,9 +67,10 @@
 - Static source inspection and branch comparison completed.
 - The post-merge Android workflow run [43452520723](https://github.com/PDS-David/sts-school-app/actions/runs/43452520723) executed all 17 offline outbox regression tests successfully (17 passed, 0 failed).
 - The same run failed mobile TypeScript validation at `mobile/src/api/client.ts(349,50)` with TS2454 (`flushPromise` used before assignment); Android bundle export and artifact upload were skipped.
-- PR #792 moves in-flight promise cleanup outside the promise initializer while preserving per-account deduplication. A fresh CI run for the latest PR #792 head (including the NotificationsScreen button-prop fix) is still pending verification.
+- PR #792 moves in-flight promise cleanup outside the promise initializer while preserving per-account deduplication. Latest Android readiness run [43468513417](https://github.com/PDS-David/sts-school-app/actions/runs/43468513417) passed all gates: dependency install, 17/17 offline tests, mobile TypeScript validation, Android Expo JS export and artifact upload. Artifact [mobile-android-js-bundle](https://github.com/PDS-David/sts-school-app/actions/runs/43468513417) (6,139,964 bytes; expires 2026-11-20; SHA-256 `b7d0f4a144b9821dff9d507d29e916a5a1ad4391ca2496dd3c2c544d0d059e99`). This is an exported JavaScript bundle, **not an installable APK/AAB**.
 - A local checkout was attempted earlier, but the environment could not resolve github.com. No local Expo export, emulator or device test was run.
 - No EAS APK/AAB build was produced. Release credentials/availability were not verified.
+- CI `npm ci` reported 16 dependency audit findings (2 low, 10 moderate, 4 high); a scoped audit and remediation review remain outstanding before production release.
 - No physical-device verification is claimed.
 
 ## Remaining acceptance work
@@ -83,4 +84,4 @@
 
 ## Exact next action
 
-Verify CI for PR #792. The acceptance sequence is: all 17 regression tests pass, mobile TypeScript check passes, Android Expo export succeeds and uploads its artifact; then proceed to staging role/auth/offline/assessment/material/push smoke tests, physical-device verification and EAS APK/AAB builds. Do not mark this task complete until the evidence is recorded.
+The automated PR #792 gates now pass. Next: review/remediate dependency audit findings; run staging role/auth/offline/assessment/material/push smoke tests; verify installation/startup and file/share behavior on physical Android devices; then build and verify internal APK and production AAB with authorized EAS credentials. Do not mark this task complete until those acceptance results are recorded.
