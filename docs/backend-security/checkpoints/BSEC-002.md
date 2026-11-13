@@ -8,12 +8,12 @@
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
 - **Working branch:** agent/backend-parent-provisioning-atomicity-20261113
 - **PR:** https://github.com/PDS-David/sts-school-app/pull/702
-- **Latest implementation commit:** 139d5a3806d271d22976e0f483d5de8eda793090
+- **Latest implementation commit:** pending rename/CI verification
 - **Checkpoint commit:** pending
 - **Changed files:**
   - backend/src/routes/students.ts
   - backend/src/utils/parentProvisioning.ts
-  - tests/backend-parent-provisioning.db.test.mts
+  - tests/backend-parent-provisioning.integration.test.mts
   - .github/workflows/backend-parent-provisioning.yml
   - docs/backend-security/checkpoints/BSEC-002.md
 - **Defect:** POST /students committed the student row before parent lookup/creation and parent_wards linking. A failure during parent provisioning could return HTTP 500 after the student had already been created. Parent de-duplication was also a read-then-insert sequence without a transaction-scoped lock, so concurrent requests for the same normalized phone suffix could create duplicate parent accounts.
