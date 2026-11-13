@@ -66,7 +66,7 @@ function resolveContentSchool(
   requestedSchoolCode?: string,
 ): { schoolCode: string } | { status: 400 | 403; error: string } {
   if (user.role === 'admin') {
-    const schoolCode = requestedSchoolCode?.trim();
+    const schoolCode = requestedSchoolCode?.trim() || user.school_code?.trim();
     return schoolCode
       ? { schoolCode }
       : { status: 400, error: 'school_code is required when an administrator creates learning content.' };
