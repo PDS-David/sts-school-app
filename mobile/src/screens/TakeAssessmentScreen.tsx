@@ -144,6 +144,7 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
       });
     };
     return (
+      <>
       <ScrollView contentContainerStyle={styles.resultContainer}>
         <View style={styles.resultCard}>
           <Ionicons name="document-text-outline" size={64} color={Colors.primary} />
@@ -172,6 +173,7 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
         <Btn label="Back to Assessments" onPress={() => navigation.goBack()} style={{ marginTop: Spacing.sm, marginBottom: Spacing.xl }} />
       </ScrollView>
       <ConfirmDialog visible={!!dialog} title={dialog?.title ?? ''} message={dialog?.message ?? ''} confirmLabel={dialog?.confirmLabel} destructive={dialog?.destructive} hideCancel={dialog?.hideCancel} onConfirm={() => { const action = dialog?.onConfirm; if (action) action(); else setDialog(null); }} onCancel={() => setDialog(null)} />
+      </>
     );
   }
 
