@@ -463,3 +463,39 @@ test('Week Three colonial impacts replacement teaches source objectives with dat
   }
   assert.equal(p.package_status, 'PENDING');
 });
+
+
+test('Week Four nationalism replacement corrects chronology and leader facts with original practice', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(entry => entry.id === 'SUP-SS1-GOVERNMENT-T2-W04-CORRECTED');
+  assert(lesson, 'Week Four replacement lesson is missing');
+  assert.equal(hash(lesson.body), lesson.body_sha256);
+  assert.equal(lesson.practice.length, 8);
+  assert.equal(lesson.practice.reduce((sum, question) => sum + question.marks, 0), 42);
+  assert.equal(new Set(lesson.practice.map(question => question.id)).size, 8);
+  for (const phrase of ['Nationalism is a feeling', '1914 to 1918', 'began in 1929', 'Nigerian National Democratic Party', 'West African Pilot', '16 November 1904', '1910', '1955', 'Nana Olomu', 'Pan-Africanist']) {
+    assert(lesson.body.includes(phrase), `Week Four lesson missing concept: ${phrase}`);
+  }
+  assert.equal(lesson.state.content_approval, 'PENDING');
+  assert.equal(lesson.state.approval_reference, null);
+  assert.equal(lesson.state.implementation, 'IMPLEMENTED');
+  assert.equal(lesson.state.verification, 'DEFERRED');
+  assert.equal(lesson.state.verification_reference, null);
+  const correction = p.delivery_corrections.find(entry => entry.id === 'CORR-GOV-T2-W04-ROW-REPLACEMENT');
+  assert(correction);
+  assert.equal(correction.source_lesson_id, 'SS1-SRC-c76f430c7cf8:BODY:87a642e35cee4918dc791017d309de3ec88ad8fcdedb1e2ae3a2f67819ce7e8a');
+  assert.equal(correction.body_sha256, '87a642e35cee4918dc791017d309de3ec88ad8fcdedb1e2ae3a2f67819ce7e8a');
+  assert.equal(correction.replacement_id, lesson.id);
+  for (const id of ["COV-GOV-T2-SCHEME-W04-NATIONALISM","COV-GOV-T2-SCHEME-W04-NATIONALIST-LEADERS","COV-GOV-T2-W04-NATIONALISM-DEFINITION","COV-GOV-T2-W04-FACTORS-NATIONALISM","COV-GOV-T2-W04-EFFECTS-NATIONALISM","COV-GOV-T2-W04-KEY-NATIONALIST-LEADERS"]) {
+    const coverage = p.coverage.find(entry => entry.id === id);
+    assert(coverage);
+    assert.equal(coverage.status, 'IMPLEMENTED_EQUIVALENT', id);
+    assert(coverage.lesson_ids.includes(lesson.id), id);
+  }
+  for (const id of ["GOVERNMENT-T2-W04-NATIONALISM-DEFINITION-FACT","GOVERNMENT-T2-W04-WORLD-DEPRESSION-FACT","GOVERNMENT-T2-W04-NATIONALIST-FIGURES-FACT","GOVERNMENT-T2-W04-NATIONALISM-EFFECTS-FACT","GOVERNMENT-T2-W04-PRESS-PARTIES-FACT","GOVERNMENT-T2-W04-MICHAEL-IMOUDU-FACT","GOVERNMENT-T2-W04-HERBERT-MACAULAY-FACT","GOVERNMENT-T2-W04-AZIKIWE-FACT","GOVERNMENT-T2-W04-AHMADU-BELLO-FACT","GOVERNMENT-T2-W04-AWOLOWO-FACT","GOVERNMENT-T2-W04-RESISTANCE-LEADERS-FACT","GOVERNMENT-T2-W04-EVALUATION-QUESTIONS-MISSING","GOVERNMENT-T2-W04-PRACTICE-VERIFICATION"]) {
+    const item = p.open_items.find(entry => entry.id === id);
+    assert(item);
+    assert.equal(item.blocks_delivery, false, id);
+  }
+  assert.equal(p.package_status, 'PENDING');
+});
