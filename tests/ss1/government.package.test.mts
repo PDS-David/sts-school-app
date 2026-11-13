@@ -499,3 +499,43 @@ test('Week Four nationalism replacement corrects chronology and leader facts wit
   }
   assert.equal(p.package_status, 'PENDING');
 });
+
+
+test('Week Five constitutional replacement corrects composition, franchise and 1953 chronology', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(entry => entry.id === 'SUP-SS1-GOVERNMENT-T2-W05-CORRECTED');
+  assert(lesson, 'Week Five replacement lesson is missing');
+  assert.equal(hash(lesson.body), lesson.body_sha256);
+  assert.equal(lesson.practice.length, 8);
+  assert.equal(lesson.practice.reduce((sum, question) => sum + question.marks, 0), 48);
+  assert.equal(new Set(lesson.practice.map(question => question.id)).size, 8);
+  for (const phrase of ['46 members', 'three for Lagos and one for Calabar', '£100', '£50', '1 January 1947', 'twelve members', '31 March 1953', 'Lyttleton Constitution of 1954', '1992']) {
+    assert(lesson.body.includes(phrase), `Week Five lesson missing concept: ${phrase}`);
+  }
+  assert.equal(lesson.state.content_approval, 'PENDING');
+  assert.equal(lesson.state.approval_reference, null);
+  assert.equal(lesson.state.implementation, 'IMPLEMENTED');
+  assert.equal(lesson.state.verification, 'DEFERRED');
+  assert.equal(lesson.state.verification_reference, null);
+  const correction = p.delivery_corrections.find(entry => entry.id === 'CORR-GOV-T2-W05-ROW-REPLACEMENT');
+  assert(correction);
+  assert.equal(correction.source_lesson_id, 'SS1-SRC-c76f430c7cf8:BODY:3cabc3b91d321966cb868fd857a8177b4c652a12022453938973851aa133af97');
+  assert.equal(correction.body_sha256, '3cabc3b91d321966cb868fd857a8177b4c652a12022453938973851aa133af97');
+  assert.equal(correction.replacement_id, lesson.id);
+  for (const id of ["COV-GOV-T2-SCHEME-W05-CONSTITUTIONAL-DEVELOPMENT","COV-GOV-T2-SCHEME-W05-PRE-INDEPENDENCE-CONSTITUTIONS","COV-GOV-T2-SCHEME-W05-CLIFFORD-CONSTITUTION","COV-GOV-T2-SCHEME-W05-RICHARDS-CONSTITUTION","COV-GOV-T2-SCHEME-W05-MACPHERSON-CONSTITUTION","COV-GOV-T2-SCHEME-W05-CONSTITUTION-ATTRIBUTES","COV-GOV-T2-W05-CLIFFORD-CONSTITUTION","COV-GOV-T2-W05-RICHARDS-CONSTITUTION","COV-GOV-T2-W05-MACPHERSON-CONSTITUTION"]) {
+    const coverage = p.coverage.find(entry => entry.id === id);
+    assert(coverage);
+    assert.equal(coverage.status, 'IMPLEMENTED_EQUIVALENT', id);
+    assert(coverage.lesson_ids.includes(lesson.id), id);
+  }
+  const yearGate = p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W05-SCHEME-YEAR-DISCREPANCY');
+  assert(yearGate);
+  assert.equal(yearGate.blocks_delivery, true);
+  assert(yearGate.required_action.includes('1992/1922'));
+  for (const id of ["GOVERNMENT-T2-W05-CLIFFORD-COMPOSITION-FACT","GOVERNMENT-T2-W05-CLIFFORD-EXECUTIVE-COUNCIL-FACT","GOVERNMENT-T2-W05-CLIFFORD-PARTIES-PRESS-FACT","GOVERNMENT-T2-W05-RICHARDS-FACT","GOVERNMENT-T2-W05-MACPHERSON-FACT","GOVERNMENT-T2-W05-MACPHERSON-CRISIS-FACT","GOVERNMENT-T2-W05-CONSTITUTION-OBJECTIVES-MISSING","GOVERNMENT-T2-W05-EVALUATION-QUESTIONS-MISSING","GOVERNMENT-T2-W05-PRACTICE-VERIFICATION"]) {
+    const item = p.open_items.find(entry => entry.id === id);
+    assert(item);
+    assert.equal(item.blocks_delivery, false, id);
+  }
+  assert.equal(p.package_status, 'PENDING');
+});
