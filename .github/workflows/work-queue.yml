@@ -32,6 +32,8 @@ jobs:
       - name: Validate durable task registry
         id: validate
         run: python3 scripts/validate_work_queue.py
+      - name: Unit test queue validator
+        run: python3 -m unittest discover -s tests -p 'test_validate_work_queue.py' -v
       - name: Publish queue summary
         if: always()
         run: |
