@@ -153,3 +153,11 @@ This section supersedes earlier PR-state snapshots above. It records subsequent 
 8. Run a fresh dependency audit against the exact post-merge lockfiles and remediate exploitable vulnerabilities without suppressing audit failures.
 
 **Current task status:** code-level integration is active; production release remains BLOCKED. The next worker must start with the current #788 check runs on the exact head SHA above, not the historical runs.
+## Continuation update — 2026-11-13 17:10 UTC
+
+- PR #788 is now MERGED into master at `acc6ff5f62113df659fbd0f39afe18ac44e7debf`. All seven workflows on its exact combined head `2e3d126239e288f1fff00970b2f9d50eb6f73aa9` passed: mobile TypeScript, Android readiness, SS1 integrity, JSS3/PostgreSQL acceptance, all-subject compiler, Agricultural Science and Catering Craft.
+- PR #803 was merged into #788's branch before #788's final checks; the mobile changes are therefore included in master. PR #792 was closed as superseded after confirming its implementation was carried forward.
+- A new health endpoint implementation is under review in PR #808. Its first workflow run confirmed all three HTTP-level behavior tests passed, but TypeScript rejected the original `pg` QueryConfig `query_timeout` approach. The implementation was corrected to use a transaction-scoped PostgreSQL `SET LOCAL statement_timeout = '5s'`; a fresh current-head workflow result is pending. Do not merge #808 until its new health test and typecheck both pass.
+- The checkpoint refresh PR itself (#806) is based on the exact post-#788 master and has passed its latest package integrity, mobile TypeScript and JSS3/PostgreSQL acceptance checks; this update will trigger a fresh verification pass.
+
+**Updated next action:** finish the fresh PR #808 checks, then merge the checkpoint refresh after its current-head checks pass. Production remains blocked on Render account evidence, OPS-05 drift/backup/restore approval, provider health-check configuration, deployment ownership and signed Android release/device acceptance.
