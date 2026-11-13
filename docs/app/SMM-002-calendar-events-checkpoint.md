@@ -2,8 +2,8 @@
 
 Task ID: SMM-002
 Status: IMPLEMENTED IN BRANCH — awaiting CI/PR review; no runtime verification claimed
-Base: `master` at `982c1d2d94e9bfbbb890d027c620b8a16e7f3f26`
-Branch: `agent/calendar-parent-upcoming-20261113`
+Base: `agent/ops-01-migration-ledger-20261113` at OPS-01 PR #708 head `7398f32772edf44827a7a960a51632211bfae30c`
+Branch: `agent/calendar-parent-upcoming-ops01-20261113` (stacked on OPS-01 PR #708)
 
 ## Scope delivered
 - Added `school_events` to the replayable PostgreSQL schema with school ownership, event type/audience checks, start/end validation, and calendar indexes.
@@ -17,7 +17,8 @@ Branch: `agent/calendar-parent-upcoming-20261113`
 - Added admin School Calendar management UI to create and delete events.
 
 ## Changed files
-- `backend/schema.sql`
+- `backend/schema.sql` (includes OPS-01 ledger plus school_events fresh schema)
+- `backend/migrations/0002_school_events.sql` (new incremental migration)
 - `backend/src/routes/schoolEvents.ts` (new)
 - `backend/src/index.ts`
 - `backend/src/routes/learning.ts`
@@ -33,13 +34,15 @@ Branch: `agent/calendar-parent-upcoming-20261113`
 - This checkpoint.
 
 ## Commits
-- Latest implementation commit: `8bf9e9214229b7d38a479165dec12b48d3104d54`.
-- Durable checkpoint commit / branch head at last checkpoint: `40ce0a5218e538bc1b09ccede39c2322ac1b1669`.
+- OPS-01 migration-ledger base: `7398f32772edf44827a7a960a51632211bfae30c` (PR #708).
+- Calendar migration: `2f9d9096130ca4c30528a49d6672f4493494bfea`.
+- Latest calendar screen implementation: `028bdde09cb14b03998306ccbc3fbaa5fe92ddb0`.
+- Checkpoint copy: `3c97d0b5f0dc31506dfd59af64c2ba69b658d8dd`.
 
 ## Verification
 - Static checks: confirmed the learning router applies `requireAuth`; event router applies `requireAuth`; event POST/PUT/DELETE use `requireRole('admin')`; class validation checks the same school's `classes` row; schema table and indexes are present.
-- No automated test, TypeScript build, database migration, or device test has been run. This session has GitHub connector access but no local repository runtime/command execution.
-- The schema change requires the project's existing manual `npm run db:migrate --workspace backend` process against the target database before deployment; do not claim it has been applied.
+- The PR is stacked on OPS-01 PR #708; latest CI for this branch is pending. OPS-01's migration runner and this branch's `0002_school_events.sql` must be reviewed together. No live database migration or device test has been run.
+- The school_events schema is applied through the new OPS-01 migration runner. Merge PR #708 first, then merge this PR; do not deploy the schema until both are merged and the target DB migration has been run.
 
 ## Remaining
 - Add route-level tests and run backend/mobile typechecks once a repository execution environment is available.
@@ -47,4 +50,4 @@ Branch: `agent/calendar-parent-upcoming-20261113`
 - Continue SMM-001: teacher-safe pending-mark counts, teacher analytics, student badges/achievements, and other unfinished features in repository documentation.
 
 ## Exact next action
-Open a focused PR for SMM-002 and inspect CI. Then design the teacher marking backlog around the existing separation between traditional teacher-entered scores and admin-only AI essay review; do not grant teachers `aiResults.read` or access to essay answers.
+Open a focused dependent PR for SMM-002 with base branch `agent/ops-01-migration-ledger-20261113`, inspect CI, and wait for PR #708 to merge first. After #708 merges, retarget this PR to `master` and verify migration 0002 is applied only after owner-approved deployment.
