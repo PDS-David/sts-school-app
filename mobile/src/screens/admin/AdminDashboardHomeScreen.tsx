@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { View, Text, ScrollView, RefreshControl, Alert } from 'react-native';
+import { View, Text, ScrollView, RefreshControl } from 'react-native';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
 import { useAdminSchool } from '../../api/AdminSchoolContext';
@@ -38,11 +38,15 @@ type BackupStatus = {
 // (email + push) when one is more than 7 days overdue; this card shows the state and runs it on demand.
 function BackupCard() {
   const [st, setSt] = useState<BackupStatus | null>(null);
+  const [statusError, setStatusError] = useState('');
   const [busy, setBusy] = useState(false);
+  const [confirming, setConfirming] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
 
   const refresh = useCallback(async () => {
-    try { setSt((await api.get('/admin/backups/status')).data); } catch { /* offline */ }
+    setStatusError('');
+    try { setSt((await api.get('/admin/backups/status')).data); }
+    catch (e: any) { setStatusError(e?.response?.data?.error ?? 'Could not load backup status. Retry when connected.'); }
   }, []);
   useEffect(() => { refresh(); }, [refresh]);
 
@@ -59,11 +63,15 @@ function BackupCard() {
     }
     setBusy(false);
   };
-  const confirm = () => Alert.alert('Back up now?',
-    'This emails an encrypted copy of the whole database to the admin recipients.',
-    [{ text: 'Cancel', style: 'cancel' }, { text: 'Back up', onPress: run }]);
+  const confirm = () => setConfirming(true);
 
-  if (!st) return null;
+  if (!st) return (
+    <Card style={{ marginTop: Spacing.md }}>
+      <Text style={{ fontSize: Fonts.sizes.md, fontWeight: '600', color: Colors.text }}>Database backup</Text>
+      <Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm, marginTop: 4 }}>{statusError || 'Loading backup status…'}</Text>
+      {!!statusError && <Btn label='Retry backup status' variant='outline' onPress={() => refresh()} style={{ marginTop: Spacing.sm }} />}
+    </Card>
+  );
   const last = st.last_backup_at ? new Date(st.last_backup_at).toLocaleDateString() : 'never';
   const color = !st.configured || st.overdue ? Colors.warning : Colors.success;
   return (
@@ -79,8 +87,17 @@ function BackupCard() {
       <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm, marginTop: 2 }}>
         Last attempt: {last}{st.last_status ? ` (${st.last_status})` : ''}
       </Text>
+      {!!statusError && <Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm, marginTop: 6 }}>{statusError}</Text>}
       {msg ? <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm, marginTop: 6 }}>{msg}</Text> : null}
-      <Btn label="Back up now" onPress={confirm} loading={busy} disabled={busy || !st.configured} style={{ marginTop: Spacing.sm }} />
+      {confirming ? (
+        <View style={{ marginTop: Spacing.sm, gap: Spacing.sm }}>
+          <Text style={{ color: Colors.text, fontSize: Fonts.sizes.sm }}>Send an encrypted copy of the whole database to the configured admin recipients?</Text>
+          <View style={{ flexDirection: 'row', gap: Spacing.sm }}>
+            <Btn label="Cancel" variant="outline" onPress={() => setConfirming(false)} style={{ flex: 1 }} disabled={busy} />
+            <Btn label="Confirm backup" onPress={() => { setConfirming(false); run(); }} style={{ flex: 1 }} loading={busy} disabled={busy} />
+          </View>
+        </View>
+      ) : <Btn label="Back up now" onPress={confirm} loading={busy} disabled={busy || !st.configured} style={{ marginTop: Spacing.sm }} />}
     </Card>
   );
 }
@@ -91,18 +108,22 @@ export default function AdminDashboardHomeScreen() {
   const [term, setTerm] = useState<any>(null);
   const [studentCount, setStudentCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
   const [refreshing, setRefreshing] = useState(false);
 
   const load = useCallback(async () => {
+    setLoadError('');
+    const errors: string[] = [];
+    const sc = selectedSchoolCode ?? undefined;
     try {
-      const sc = selectedSchoolCode ?? undefined;
-      const [s, t] = await Promise.all([
-        api.get('/students', { params: { school_code: sc } }),
-        api.get('/academic/terms/current', { params: { school_code: sc } }),
-      ]);
-      setStudentCount(s.data.students?.length ?? null);
-      setTerm(t.data.term);
-    } catch { /* offline */ }
+      const { data } = await api.get('/students', { params: { school_code: sc } });
+      setStudentCount(data.students?.length ?? null);
+    } catch { errors.push('student count'); }
+    try {
+      const { data } = await api.get('/academic/terms/current', { params: { school_code: sc } });
+      setTerm(data.term);
+    } catch { errors.push('current term'); }
+    if (errors.length) setLoadError(`Could not refresh ${errors.join(' and ')} for the selected school.`);
     setLoading(false);
   }, [selectedSchoolCode]);
 
@@ -125,6 +146,7 @@ export default function AdminDashboardHomeScreen() {
       />
       <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />}>
         <PageContainer style={{ padding: Spacing.md }}>
+          {!!loadError && <Card style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry school summary' variant='outline' onPress={() => load()} style={{ marginTop: Spacing.sm }} /></Card>}
           <Card>
             <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm }}>
               Use Academics, Chats, or More to get started — or Quick Actions in the sidebar for Students, Users, and Enter Scores.
