@@ -35,7 +35,7 @@ test('Multer 2 accepts a bounded multipart upload in memory storage', async () =
     assert.equal(response.status, 200);
     assert.deepEqual(await response.json(), {
       originalname: 'check.txt',
-      size: 11,
+      size: 12,
       content: 'upload-check',
     });
   } finally {
