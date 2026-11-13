@@ -38,6 +38,8 @@ Worker branch: `agent/frontend-finance-actions-current-20261113`
 - `b081e520523331b58fb34c0ce52a98f25889497f` — reapply finance action recovery on current master.
 - Checkpoint commit: `e07d1253bab29e9813d17e0943f1a31bdcdb7575`.
 
+- CI evidence: Mobile TypeScript workflow run 43458423804 completed successfully on the PR head.
+
 ## Verification
 - Static inspection confirms parent remains read-only and finance_admin remains the only write-enabled role.
 - Static inspection confirms all FinanceScreen Alert.alert calls were removed.
