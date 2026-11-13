@@ -25,6 +25,7 @@ function resourcePrefix(url: string): string {
 import { emitForcedLogout } from './authEvents';
 import { getSecureItem, setSecureItem, deleteSecureItems, migrateLegacyTokens } from './secureTokenStorage';
 import { resolveApiBaseUrl } from '../../config/apiTarget';
+import { shouldEnqueueOfflineWrite } from '../offline/replayPolicy';
 
 // Kicked off once at module load (not awaited here) and awaited lazily by
 // the request interceptor below, so the very first request — and every
@@ -169,7 +170,7 @@ api.interceptors.response.use(
     // Outbox replay must never enqueue itself again. If connectivity drops
     // during a replay, reject so flushOutbox leaves the original item in place
     // for the next reconnect instead of replacing it with a duplicate entry.
-    if (original?._skipOfflineQueue) return Promise.reject(error);
+    if (!shouldEnqueueOfflineWrite(original)) return Promise.reject(error);
 
     // ── Offline handling: only kicks in when the request never reached the
     //    server at all (no response object = network-level failure). Real
