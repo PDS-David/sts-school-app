@@ -262,3 +262,60 @@ test('Week Nine political socialization replacement accounts for all 11 source e
   assert(readingOpenItem);
   assert.equal(readingOpenItem.blocks_delivery, false);
 });
+
+
+test('Week Ten unitary/federal and Federal Character replacement covers all 15 source exercises', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(entry => entry.id === 'SUP-SS1-GOVERNMENT-T1-W10-CORRECTED');
+  assert(lesson, 'Week Ten replacement lesson is missing');
+  assert.equal(hash(lesson.body), lesson.body_sha256);
+  assert.equal(lesson.practice.length, 15);
+  assert.equal(lesson.practice.reduce((sum, question) => sum + question.marks, 0), 59);
+  assert.equal(new Set(lesson.practice.map(question => question.id)).size, 15);
+  for (const phrase of [
+    'United Kingdom', 'France', 'Italy', 'Nigeria', 'United States', 'India', 'Russia',
+    'Federal Character Principle', 'Federal Character Commission',
+    'Second Schedule, Part II, Item L', 'Fourth Schedule',
+    'Section 14(3)', 'Section 14(4)',
+  ]) {
+    assert(lesson.body.includes(phrase), `missing Week Ten coverage: ${phrase}`);
+  }
+  const ukQuestion = lesson.practice.find(question => question.id === 'T1W10-WEEKEND-02-854');
+  assert(ukQuestion?.question.includes("United Kingdom"));
+  assert(ukQuestion?.answer.includes("not a universal feature"));
+  const allocationQuestion = lesson.practice.find(question => question.id === 'T1W10-WEEKEND-04-854');
+  assert(allocationQuestion?.answer.includes('Second Schedule'));
+  assert.equal(lesson.state.content_approval, 'PENDING');
+  assert.equal(lesson.state.approval_reference, null);
+  assert.equal(lesson.state.verification, 'DEFERRED');
+  assert.equal(lesson.state.verification_reference, null);
+  assert.equal(p.package_status, 'PENDING');
+
+  const correction = p.delivery_corrections.find(entry => entry.id === 'CORR-GOV-T1-W10-ROW-REPLACEMENT');
+  assert(correction);
+  assert.equal(correction.source_lesson_id, 'SS1-SRC-40ce7dcaf672:BODY:ee1e05d99499ee072b0f55cda5a1e30fce140fbf305e42be956fe61b468f14b1');
+  assert.equal(correction.body_sha256, 'ee1e05d99499ee072b0f55cda5a1e30fce140fbf305e42be956fe61b468f14b1');
+  assert.equal(correction.replacement_id, lesson.id);
+  assert.equal(correction.evidence.objective_scope_audit.practice_item_count, 15);
+  assert.equal(correction.evidence.objective_scope_audit.practice_total_marks, 59);
+
+  for (const id of [
+    'COV-GOV-T1-W10-UNITARY',
+    'COV-GOV-T1-W10-UNITARY-EXAMPLES',
+    'COV-GOV-T1-W10-UNITARY-FEATURES',
+    'COV-GOV-T1-W10-FEDERAL',
+    'COV-GOV-T1-W10-FEDERAL-EXAMPLES',
+    'COV-GOV-T1-W10-FEDERAL-FEATURES',
+    'COV-GOV-T1-W10-FEDERAL-CHARACTER',
+    'COV-GOV-T1-W10-ASSESSMENT-KEYS',
+  ]) {
+    const coverage = p.coverage.find(entry => entry.id === id);
+    assert.equal(coverage?.status, 'IMPLEMENTED_EQUIVALENT', id);
+    assert(coverage?.lesson_ids.includes(lesson.id), id);
+  }
+  const reading = p.coverage.find(entry => entry.id === 'COV-GOV-T1-W10-READING');
+  assert.equal(reading?.status, 'PARTIAL');
+  const readingOpenItem = p.open_items.find(entry => entry.id === 'GOVERNMENT-T1-W10-READING-VERIFICATION');
+  assert(readingOpenItem);
+  assert.equal(readingOpenItem.blocks_delivery, false);
+});
