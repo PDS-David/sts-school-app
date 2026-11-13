@@ -1,0 +1,34 @@
+name: Backend API health endpoints
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "backend/src/index.ts"
+      - "backend/src/routes/health.ts"
+      - "backend/src/db/pool.ts"
+      - "tests/backend-health-check.test.mts"
+      - ".github/workflows/backend-health-check.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  health:
+    name: Health endpoint regressions and backend typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install locked workspace dependencies
+        run: npm ci --ignore-scripts
+      - name: Run health endpoint regressions
+        run: node --import tsx --test tests/backend-health-check.test.mts
+      - name: Typecheck backend
+        run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json

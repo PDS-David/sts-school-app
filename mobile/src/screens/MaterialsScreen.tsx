@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, Alert, ScrollView, Linking,
+  View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, ScrollView, Linking,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Directory, File, Paths } from 'expo-file-system';
@@ -11,6 +11,7 @@ import { useAuth } from '../api/AuthContext';
 import { Card, Btn, Input, Loader, Empty, SectionHeader, Badge } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { getMaterialDownloadTarget, isSafeMaterialUrl } from '../utils/materialDownload';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 
 const TYPE_ICON: Record<string, string> = {
   pdf: 'document-text', video: 'videocam', doc: 'document', link: 'link',
@@ -36,37 +37,44 @@ export default function MaterialsScreen({ route }: any) {
   const [materials, setMaterials] = useState<any[]>([]);
   const [subjects,  setSubjects]  = useState<any[]>([]);
   const [loading,   setLoading]   = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [saving, setSaving] = useState(false);
+  const [dialog, setDialog] = useState<{ title: string; message: string; confirmLabel?: string; destructive?: boolean; hideCancel?: boolean; onConfirm?: () => void } | null>(null);
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
   const [modal,     setModal]     = useState(false);
   const [filterSub, setFilterSub] = useState(initialSubjectId ?? '');
   const [form, setForm] = useState({ title: '', type: 'pdf', url: '', subject_id: '', class_name: '' });
 
   const fetch = async () => {
+    setLoading(true);
+    setLoadError('');
     try {
-      const params = filterSub ? `?subject_id=${filterSub}` : '';
+      const params = filterSub ? `?subject_id=${encodeURIComponent(filterSub)}` : '';
       const [m, s] = await Promise.all([api.get(`/learning/materials${params}`), api.get('/academic/subjects')]);
-      setMaterials(m.data.materials);
-      setSubjects(s.data.subjects);
-    } catch { } finally { setLoading(false); }
+      setMaterials(m.data.materials ?? []);
+      setSubjects(s.data.subjects ?? []);
+    } catch (e: any) {
+      setLoadError(e?.response?.data?.error ?? 'Could not load learning materials and subjects. Check your connection and retry.');
+    } finally { setLoading(false); }
   };
   useEffect(() => { fetch(); }, [filterSub]);
 
   const handleOpen = async (url: string) => {
     if (!isSafeMaterialUrl(url)) {
-      Alert.alert('Invalid material link', 'Only secure HTTPS links can be opened.');
+      setDialog({ title: 'Invalid material link', message: 'Only secure HTTPS links can be opened.', hideCancel: true });
       return;
     }
     try {
       await Linking.openURL(url);
     } catch {
-      Alert.alert('Unable to open link', 'This material link could not be opened on this device.');
+      setDialog({ title: 'Unable to open link', message: 'This material link could not be opened on this device.', hideCancel: true });
     }
   };
 
   const handleDownload = async (material: any) => {
     const target = getMaterialDownloadTarget(material.url, material.title, material.type);
     if (!target) {
-      Alert.alert('Invalid download link', 'Only secure HTTPS file links can be downloaded.');
+      setDialog({ title: 'Invalid download link', message: 'Only secure HTTPS file links can be downloaded.', hideCancel: true });
       return;
     }
     setDownloadingId(String(material.id));
@@ -81,7 +89,7 @@ export default function MaterialsScreen({ route }: any) {
         downloaded = result;
       }
       if (!(await Sharing.isAvailableAsync())) {
-        Alert.alert('Downloaded', 'The file is saved in the app documents folder, but sharing is unavailable on this device.');
+        setDialog({ title: 'Download complete', message: 'The file is saved in the app documents folder, but sharing is unavailable on this device.', hideCancel: true });
         return;
       }
       await Sharing.shareAsync(downloaded.uri, {
@@ -89,7 +97,7 @@ export default function MaterialsScreen({ route }: any) {
         dialogTitle: 'Save or open learning material',
       });
     } catch {
-      Alert.alert('Download failed', 'The link may require sign-in or may not point directly to a downloadable file. Try opening the link instead.');
+      setDialog({ title: 'Download failed', message: 'The link may require sign-in or may not point directly to a downloadable file. Try opening the link instead.', hideCancel: true });
     } finally {
       setDownloadingId(null);
     }
@@ -98,23 +106,37 @@ export default function MaterialsScreen({ route }: any) {
   const visibleMaterials = typeFilter ? materials.filter((m) => m.type === typeFilter) : materials;
 
   const handleSave = async () => {
-    if (!form.title || !form.url) { Alert.alert('Title and URL required'); return; }
-    if (!isSafeMaterialUrl(form.url)) { Alert.alert('Invalid URL', 'Material links must use a valid HTTPS address.'); return; }
+    if (saving) return;
+    if (!form.title.trim() || !form.url.trim()) { setDialog({ title: 'Required fields', message: 'Enter a material title and URL.', hideCancel: true }); return; }
+    if (!isSafeMaterialUrl(form.url.trim())) { setDialog({ title: 'Invalid URL', message: 'Material links must use a valid HTTPS address.', hideCancel: true }); return; }
+    setSaving(true);
     try {
-      await api.post('/learning/materials', { ...form, subject_id: Number(form.subject_id) || null });
+      await api.post('/learning/materials', { ...form, title: form.title.trim(), url: form.url.trim(), subject_id: Number(form.subject_id) || null });
       setModal(false);
-      fetch();
-    } catch (e: any) { Alert.alert('Error', e?.response?.data?.error ?? 'Save failed'); }
+      await fetch();
+      setDialog({ title: 'Material uploaded', message: 'The learning material has been added.', hideCancel: true });
+    } catch (e: any) {
+      setDialog({ title: 'Could not upload material', message: e?.response?.data?.error ?? 'Save failed. Check your connection and try again.', hideCancel: true });
+    } finally { setSaving(false); }
   };
 
-  const handleDelete = async (id: number) => {
-    Alert.alert('Delete material?', '', [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Delete', style: 'destructive', onPress: async () => {
-        await api.delete(`/learning/materials/${id}`);
-        fetch();
-      }},
-    ]);
+  const handleDelete = (id: number) => {
+    setDialog({
+      title: 'Delete material?',
+      message: 'Students will no longer be able to access this material from the learning library.',
+      confirmLabel: 'Delete',
+      destructive: true,
+      onConfirm: async () => {
+        setDialog(null);
+        try {
+          await api.delete(`/learning/materials/${id}`);
+          await fetch();
+          setDialog({ title: 'Material deleted', message: 'The material was removed from the learning library.', hideCancel: true });
+        } catch (e: any) {
+          setDialog({ title: 'Could not delete material', message: e?.response?.data?.error ?? 'Please check your connection and try again.', hideCancel: true });
+        }
+      },
+    });
   };
 
   if (loading) return <Loader />;
@@ -136,6 +158,14 @@ export default function MaterialsScreen({ route }: any) {
         )}
       </View>
 
+      {loadError ? (
+        <View style={{ paddingHorizontal: Spacing.sm }}>
+          <Card>
+            <Text style={{ color: Colors.error, marginBottom: Spacing.sm }}>{loadError}</Text>
+            <Btn label="Retry loading materials" onPress={fetch} variant="outline" />
+          </Card>
+        </View>
+      ) : null}
       <FlatList
         data={visibleMaterials}
         keyExtractor={m => String(m.id)}
@@ -204,10 +234,11 @@ export default function MaterialsScreen({ route }: any) {
           </View>
           <View style={{ flexDirection: 'row', gap: Spacing.sm, marginTop: Spacing.md }}>
             <Btn label="Cancel" onPress={() => setModal(false)} variant="outline" style={{ flex: 1 }} />
-            <Btn label="Upload" onPress={handleSave} style={{ flex: 1 }} />
+            <Btn label={saving ? 'Uploading…' : 'Upload'} onPress={handleSave} loading={saving} disabled={saving} style={{ flex: 1 }} />
           </View>
         </ScrollView>
       </Modal>
+      <ConfirmDialog visible={!!dialog} title={dialog?.title ?? ''} message={dialog?.message ?? ''} confirmLabel={dialog?.confirmLabel} destructive={dialog?.destructive} hideCancel={dialog?.hideCancel} onConfirm={() => { const action = dialog?.onConfirm; if (action) action(); else setDialog(null); }} onCancel={() => setDialog(null)} />
     </View>
   );
 }

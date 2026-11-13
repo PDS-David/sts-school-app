@@ -2,12 +2,12 @@
 
 - Status: implementation committed; awaiting CI and review.
 - Base branch: `master`
-- Base commit: `acc6ff5f62113df659fbd0f39afe18ac44e7debf`
-- Worker branch: `agent/frontend-messaging-race-current-20261113`
+- Base commit: `b8651cebaa480097fd1c40c9b02c11b228187caa`
+- Worker branch: `agent/frontend-messaging-race-20261113`
 
 ## Commits
-- `8332ed6333e8768d43590b65f08f01fbaabb1e10` — prevent stale send responses from corrupting another conversation or draft.
-- Checkpoint commit: `pending`.
+- `64d2bb16f46e7b7f7a9ef92ad4dfeb617db9e773` — prevent stale send responses from corrupting another conversation or draft.
+- Checkpoint commit: `d80d7af455950258d34e2f343990e485a5efe40b`.
 
 ## Changes
 - Capture recipient and conversation request identity before sending.
@@ -22,8 +22,6 @@
 - Static inspection: cached conversation is still updated using the captured recipient id.
 - Static inspection: local cache errors are isolated from the API send result.
 - CI pending; no live multi-conversation race or offline-device test is claimed.
-
-- CI on current-master head `e31f7228b65e9d7026094e7b8157d66781607dd3`: Mobile TypeScript and SS1 package integrity passed; Android readiness and JSS3 implementation/assets checks are still in progress.
 
 ## Remaining work
 - Check mobile TypeScript and Android readiness.

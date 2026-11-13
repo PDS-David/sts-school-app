@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View, Text, StyleSheet, FlatList, TouchableOpacity, Alert, ScrollView,
+  View, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../api/client';
@@ -8,6 +8,7 @@ import { useAuth } from '../api/AuthContext';
 import { Card, Btn, Loader, Empty, SectionHeader, Badge } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { PageContainer, useIsWide } from '../components/layout';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 
 const STATUS_COLOR: Record<string, string> = {
   draft: Colors.textSub, open: Colors.success, closed: Colors.error,
@@ -23,6 +24,7 @@ export default function AssessmentsScreen({ navigation }: any) {
   const [assessments, setAssessments] = useState<any[]>([]);
   const [loading,     setLoading]     = useState(true);
   const [loadError, setLoadError] = useState('');
+  const [dialog, setDialog] = useState<{ title: string; message: string; confirmLabel?: string; destructive?: boolean; hideCancel?: boolean; onConfirm?: () => void } | null>(null);
 
   const fetch = async () => {
     setLoading(true);
@@ -39,7 +41,7 @@ export default function AssessmentsScreen({ navigation }: any) {
   useEffect(() => { fetch(); }, []);
 
   const handleTake = (a: any) => {
-    if (a.status !== 'open') { Alert.alert('Assessment is not open'); return; }
+    if (a.status !== 'open') { setDialog({ title: 'Assessment unavailable', message: 'This assessment is not currently open.', hideCancel: true }); return; }
     navigation.navigate('TakeAssessment', {
       assessmentId: a.id,
       title: a.title,
@@ -51,13 +53,25 @@ export default function AssessmentsScreen({ navigation }: any) {
   // Found in QA Pass 6: there was no way anywhere — UI or API — to move an
   // assessment out of 'draft', so "Take Assessment" could never work for any
   // student. This wires up the new PUT /assessments/:id/status route.
-  const handleStatusChange = async (a: any, status: 'open' | 'closed' | 'draft') => {
-    try {
-      await api.put(`/learning/assessments/${a.id}/status`, { status });
-      await fetch();
-    } catch (e: any) {
-      Alert.alert('Error', e?.response?.data?.error ?? 'Could not update status');
-    }
+  const handleStatusChange = (a: any, status: 'open' | 'closed' | 'draft') => {
+    const action = status === 'open' ? 'publish' : status === 'closed' ? 'close' : 'reopen';
+    setDialog({
+      title: `${action[0].toUpperCase() + action.slice(1)} assessment?`,
+      message: status === 'open'
+        ? 'Students who are eligible for this assessment will be able to start it when its availability window allows.'
+        : 'Students will no longer be able to submit new attempts while this assessment is closed.',
+      confirmLabel: action[0].toUpperCase() + action.slice(1),
+      destructive: status === 'closed',
+      onConfirm: async () => {
+        setDialog(null);
+        try {
+          await api.put(`/learning/assessments/${a.id}/status`, { status });
+          await fetch();
+        } catch (e: any) {
+          setDialog({ title: 'Could not update assessment', message: e?.response?.data?.error ?? 'Check your connection and try again.', hideCancel: true });
+        }
+      },
+    });
   };
 
   if (loading) return <Loader />;
@@ -122,6 +136,7 @@ export default function AssessmentsScreen({ navigation }: any) {
           </PageContainer>
         )}
       />
+      <ConfirmDialog visible={!!dialog} title={dialog?.title ?? ''} message={dialog?.message ?? ''} confirmLabel={dialog?.confirmLabel} destructive={dialog?.destructive} hideCancel={dialog?.hideCancel} onConfirm={() => { const action = dialog?.onConfirm; if (action) action(); else setDialog(null); }} onCancel={() => setDialog(null)} />
     </View>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import {
-  View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert,
+  View, Text, StyleSheet, ScrollView, TouchableOpacity,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { Ionicons } from '@expo/vector-icons';
@@ -11,6 +11,7 @@ import { PageContainer, useIsWide } from '../components/layout';
 import { useAuth } from '../api/AuthContext';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 
 interface Student { id: string; full_name: string; class_name: string; }
 interface Subject { id: number; name: string; }
@@ -63,6 +64,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
   const [newSubName, setNewSubName] = useState('');
   const [newSubCode, setNewSubCode] = useState('');
   const [addingSub,  setAddingSub]  = useState(false);
+  const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
 
   useEffect(() => {
     // Admin: wait until a school is actually selected before fetching,
@@ -156,9 +158,21 @@ export default function ScoreEntryScreen({ navigation }: any) {
   };
 
   const handleSave = async () => {
-    if (!selSub || !selTerm) { Alert.alert('Select a subject and term first'); return; }
+    if (saving) return;
+    if (!selSub || !selTerm) { setInfoDialog({ title: 'Select subject and term', message: 'Choose both a subject and term before saving scores.' }); return; }
+    const invalid = rows.find(r => (['ca1', 'ca2', 'exam'] as const).some(field => {
+      const raw = r[field].trim();
+      if (!raw) return false;
+      const value = Number(raw);
+      const maximum = field === 'ca1' ? schoolCfg.ca1_max : field === 'ca2' ? schoolCfg.ca2_max : schoolCfg.exam_max;
+      return !Number.isFinite(value) || value < 0 || value > maximum;
+    }));
+    if (invalid) {
+      setInfoDialog({ title: 'Score outside allowed range', message: `Each score must be a valid number within the school's limits: CA1 0–${schoolCfg.ca1_max}, CA2 0–${schoolCfg.ca2_max}, Exam 0–${schoolCfg.exam_max}.` });
+      return;
+    }
     const payload = rows
-      .filter(r => r.ca1 !== '' || r.ca2 !== '' || r.exam !== '')
+      .filter(r => r.ca1.trim() !== '' || r.ca2.trim() !== '' || r.exam.trim() !== '')
       .map(r => ({
         student_id: r.student_id,
         subject_id: Number(selSub),
@@ -167,18 +181,19 @@ export default function ScoreEntryScreen({ navigation }: any) {
         ca2: Number(r.ca2 || 0),
         exam: Number(r.exam || 0),
       }));
-    if (!payload.length) { Alert.alert('No scores entered'); return; }
+    if (!payload.length) { setInfoDialog({ title: 'No scores entered', message: 'Enter at least one score before saving.' }); return; }
     setSaving(true);
     try {
       await api.post('/scores/bulk', { scores: payload });
-      Alert.alert('Saved', `${payload.length} scores saved successfully.`);
+      setInfoDialog({ title: 'Scores saved', message: `${payload.length} student score record(s) saved successfully.` });
     } catch (e: any) {
-      Alert.alert('Error', e?.response?.data?.error ?? 'Save failed');
+      setInfoDialog({ title: 'Could not save scores', message: e?.response?.data?.error ?? 'Save failed. Check your connection and try again.' });
     } finally { setSaving(false); }
   };
 
   const handleAddSubject = async () => {
-    if (!newSubName.trim()) { Alert.alert('Enter a subject name'); return; }
+    if (!newSubName.trim()) { setInfoDialog({ title: 'Subject name required', message: 'Enter a subject name before adding it.' }); return; }
+    if (isAdmin && !effectiveSchoolCode) { setInfoDialog({ title: 'Select a school', message: 'Choose a school before adding a subject.' }); return; }
     setAddingSub(true);
     try {
       const { data } = await api.post('/academic/subjects', {
@@ -193,7 +208,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
       setSelSub(created.id);
       setNewSubName(''); setNewSubCode(''); setShowNewSub(false);
     } catch (e: any) {
-      Alert.alert('Error', e?.response?.data?.error ?? 'Could not add subject');
+      setInfoDialog({ title: 'Could not add subject', message: e?.response?.data?.error ?? 'Please check your connection and try again.' });
     } finally { setAddingSub(false); }
   };
 
@@ -338,6 +353,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
           </ScrollView>
         )
       }
+      <ConfirmDialog visible={!!infoDialog} title={infoDialog?.title ?? ''} message={infoDialog?.message ?? ''} hideCancel onConfirm={() => setInfoDialog(null)} onCancel={() => setInfoDialog(null)} />
     </View>
   );
 }

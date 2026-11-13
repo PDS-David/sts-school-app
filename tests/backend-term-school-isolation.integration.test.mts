@@ -66,6 +66,13 @@ test('student writes reject a term belonging to another school for teachers and 
     const adminMismatch = await checkTeacherStudentScope(admin, studentId, secondaryTermId);
     assert.deepEqual(adminMismatch, teacherMismatch, 'global admin access must not permit cross-school term references');
 
+    assert.equal(await checkTermSchoolScope('secondary', secondaryTermId), null,
+      'an admin reading the selected secondary school may load that school\'s term');
+    assert.deepEqual(await checkTermSchoolScope('primary', secondaryTermId), {
+      status: 400,
+      error: 'The selected term belongs to a different school than the student.',
+    }, 'the attendance screen must not load another school\'s same-named class records');
+
     assert.equal(await checkTeacherStudentScope(teacher, studentId, primaryTermId), null);
     assert.equal(await checkTeacherStudentScope(admin, studentId, primaryTermId), null);
   } finally {
