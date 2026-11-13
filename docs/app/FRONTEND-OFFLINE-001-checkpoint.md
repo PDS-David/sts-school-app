@@ -36,7 +36,7 @@ Assessment submission and Term PIN exclusions already in master remain unchanged
 
 ## Commits
 - `eb5b3c3738a5a5cf6d957e609ef26245cd5eb8a7` — reapply immediate-confirmation write policy on current master.
-- Checkpoint commit: pending.
+- Checkpoint commit: `c2ee8591ab6347ddf88352bef9fa5376816a78e9`.
 
 ## Verification
 - Static inspection confirms the exclusions are added only in the write-error/offline-queue branch; GET requests are unaffected.
