@@ -28,7 +28,7 @@ Branch: `agent/announcements-admin-ui-master-merged-ops-20261113`
 ## Verification
 - Static review confirms admin-only backend writes, school/class validation, future expiry validation and school-bound deletion.
 - Client validates title/body/school and future ISO expiry; server validation remains authoritative.
-- Full CI, role-specific API tests and device acceptance are pending.
+- Mobile TypeScript passed in run `43457696034`. The package integrity gate is blocked by the unrelated stale Financial Accounting lesson hash in `backend/src/db/ss1/subjects/financial-accounting.json`; this file is outside the announcement feature and belongs to another agent's active work. Role-specific API tests and device acceptance remain outstanding.
 
 ## Remaining
 - Add API tests for global-admin vs school-admin isolation and role/class visibility.
