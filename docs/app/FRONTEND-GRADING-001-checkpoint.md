@@ -34,7 +34,7 @@ Worker branch: `agent/frontend-essay-review-recovery-20261113`
 - `0681cefa14d398a756163cf235e96de5bcd837e8` — add score validation and recover review failures.
 - `072f7def0630d542064d73492abf408a3bf937ac` — show review and score-save feedback.
 - `95f9cfe9d551236f616e00b904c035075f3fa8e5` — reject blank review scores.
-- Checkpoint commit: pending.
+- Checkpoint commit: `0b990bf7e7dc79935145eb92031d48ab92edb9a2`.
 
 ## Verification
 - Static inspection confirms the review GET failure is no longer interpreted as a valid empty answer list.
