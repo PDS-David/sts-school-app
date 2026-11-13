@@ -169,7 +169,7 @@ const commonFields = {
   external_sources: z.array(externalSourceSchema),
   source_rules: z.array(sourceRuleSchema),
   assets: z.array(assetSchema),
-  coverage: z.array(coverageSchema),
+  coverage: z.array(coverageSchema).min(1),
   open_items: z.array(openItemSchema),
 };
 
@@ -227,8 +227,15 @@ function validateReferences(pkg: {
     if (asset.provenance.role === 'ORIGINAL_SOURCE' && !asset.provenance.source_id.startsWith('SS23-SRC-')) issue('Original asset provenance must reference SS23-SRC', ['assets', index, 'provenance', 'role']);
     if (asset.provenance.role === 'AUTHORED_SUPPLEMENT' && !asset.provenance.source_id.startsWith('SS23-EXT-')) issue('Supplementary asset provenance must reference SS23-EXT', ['assets', index, 'provenance', 'role']);
   }
+  for (const source of pkg.sources) {
+    if (!pkg.coverage.some(row => row.source_id === source.source_id)) issue('Every original source requires an explicit coverage disposition', ['coverage', source.source_id]);
+  }
+  for (const source of pkg.external_sources) {
+    if (!pkg.coverage.some(row => row.source_id === source.source_id)) issue('Every external source requires an explicit coverage disposition', ['coverage', source.source_id]);
+  }
   for (const [index, row] of pkg.coverage.entries()) {
     if (!all.has(row.source_id)) issue('Coverage references an unknown source', ['coverage', index, 'source_id']);
+    if (['SUPPORTED', 'IMPLEMENTED_EQUIVALENT'].includes(row.status) && row.unit_ids.length === 0) issue('Supported coverage must link to at least one delivered unit', ['coverage', index, 'unit_ids']);
     for (const id of row.unit_ids) if (!unitIds.has(id)) issue('Coverage references an unknown unit', ['coverage', index, 'unit_ids']);
   }
   const openIds = pkg.open_items.map(item => item.id);
