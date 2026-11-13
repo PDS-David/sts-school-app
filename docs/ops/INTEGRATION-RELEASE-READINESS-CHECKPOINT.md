@@ -170,3 +170,9 @@ This section supersedes earlier PR-state snapshots above. It records subsequent 
 - A Render integration is available for connection, which would permit direct verification of service/database status and backup settings. It is not yet connected; continue repository-only work until the owner connects it.
 
 **Updated next action:** finish the latest PR #806 checkpoint verification and merge it after its current-head required checks pass. Then, with owner-authorised Render access, configure the provider's health-check path to `/health/ready`, inspect the actual PostgreSQL plan/creation date/backups, and execute OPS-05 only after explicit approval.
+## Continuation update — 2026-11-13 17:13 UTC
+
+- PR #790 was closed as superseded, not merged. Its activation/recovery locking changes are already in merged PR #731, and its normalized per-account login limiter and integration tests are already in merged PR #770. Current master uses a SHA-256-bounded normalized username key and validates username length/type; PR #790's stale un-hashed limiter would have been a regression. The branch was 544 commits behind current master.
+- PR #808's health endpoint is confirmed present on master after merge commit `7451e263136b4fedc5fd876f5822c755b6c7b1c7`; `backend/src/index.ts` mounts the router at `/health`. The provider still needs its health-check path configured by an authorised operator.
+
+**Current next action:** finish the current-head checks for PR #806, then merge the checkpoint update if all required checks pass. Production provider verification remains blocked on Render access and owner approval.
