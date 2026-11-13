@@ -7,7 +7,7 @@ import { Card, Loader } from '../../components/UI';
 import { Colors, Fonts, Spacing } from '../../theme';
 import { openNotifications } from '../../navigation/navigationRef';
 
-const AUDIENCES = ['', 'student', 'parent', 'teacher', 'finance_admin'];
+const AUDIENCES = ['', 'student', 'parent', 'teacher'];
 
 export default function AdminAnnouncementsScreen() {
   const { user } = useAuth();
