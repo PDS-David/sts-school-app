@@ -78,5 +78,24 @@ class WorkQueueValidationTests(unittest.TestCase):
         self.assertTrue(any("already holds active task" in item for item in errors))
 
 
+
+class CompletionDashboardTests(unittest.TestCase):
+    def test_dashboard_does_not_count_status_without_evidence(self):
+        import importlib.util
+        path = Path(__file__).resolve().parents[1] / "scripts" / "build_completion_dashboard.py"
+        spec = importlib.util.spec_from_file_location("completion_dashboard", path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        data = {"updated_at": "2026-11-13T00:00:00Z", "tasks": [
+            task("OPS-010", status="completed", verification=[]),
+            task("OPS-011", status="completed", verification=[
+                {"result": "passed", "evidence": "CI run #123"}
+            ])
+        ]}
+        report = module.render(data)
+        self.assertIn("Evidence-verified:** 1", report)
+        self.assertIn("No active, stalled, blocked or review tasks", report)
+
+
 if __name__ == "__main__":
     unittest.main()
