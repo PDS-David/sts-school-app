@@ -427,3 +427,39 @@ test('Week Two Western/Eastern indirect-rule replacement is sourced, marked and 
   assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W02-CURRENCY-BANKING-FACT')?.blocks_delivery, false);
   assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W02-EVALUATION-QUESTIONS-MISSING')?.blocks_delivery, false);
 });
+
+
+test('Week Three colonial impacts replacement teaches source objectives with dated evidence and original practice', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(entry => entry.id === 'SUP-SS1-GOVERNMENT-T2-W03-CORRECTED');
+  assert(lesson, 'Week Three replacement lesson is missing');
+  assert.equal(hash(lesson.body), lesson.body_sha256);
+  assert.equal(lesson.practice.length, 8);
+  assert.equal(lesson.practice.reduce((sum, question) => sum + question.marks, 0), 45);
+  assert.equal(new Set(lesson.practice.map(question => question.id)).size, 8);
+  for (const phrase of ['University College Ibadan', '1948', '1962', 'precolonial', 'assimilation', 'association', 'Nigeria (Legislative Council) Order in Council, 1922', 'Nigeria (Constitution) Order in Council, 1951', 'Section 86', 'Section 87']) {
+    assert(lesson.body.includes(phrase), `Week Three lesson missing concept: ${phrase}`);
+  }
+  assert.equal(lesson.state.content_approval, 'PENDING');
+  assert.equal(lesson.state.approval_reference, null);
+  assert.equal(lesson.state.implementation, 'IMPLEMENTED');
+  assert.equal(lesson.state.verification, 'DEFERRED');
+  assert.equal(lesson.state.verification_reference, null);
+  const correction = p.delivery_corrections.find(entry => entry.id === 'CORR-GOV-T2-W03-ROW-REPLACEMENT');
+  assert(correction);
+  assert.equal(correction.source_lesson_id, 'SS1-SRC-c76f430c7cf8:BODY:0b52b381b32c022cd26a6b524ff0205321246eed8e81564f3597decceeeb5487');
+  assert.equal(correction.body_sha256, '0b52b381b32c022cd26a6b524ff0205321246eed8e81564f3597decceeeb5487');
+  assert.equal(correction.replacement_id, lesson.id);
+  for (const id of ["COV-GOV-T2-SCHEME-W03-COLONIAL-RULE-MERITS","COV-GOV-T2-SCHEME-W03-BRITISH-FRENCH-COMPARISON","COV-GOV-T2-W03-POSITIVE-IMPACTS","COV-GOV-T2-W03-NEGATIVE-IMPACTS","COV-GOV-T2-W03-BRITISH-FRENCH-COMPARISON","COV-GOV-T2-W03-COMPARISON-TABLE","COV-GOV-T2-W03-COLONIAL-GOVERNOR-FUNCTIONS"]) {
+    const coverage = p.coverage.find(entry => entry.id === id);
+    assert(coverage);
+    assert.equal(coverage.status, 'IMPLEMENTED_EQUIVALENT', id);
+    assert(coverage.lesson_ids.includes(lesson.id), id);
+  }
+  for (const id of ["GOVERNMENT-T2-W03-COLONIAL-EDUCATION-FACT","GOVERNMENT-T2-W03-PRECOLONIAL-TRADE-FACT","GOVERNMENT-T2-W03-COLONIAL-IDEOLOGY-FACT","GOVERNMENT-T2-W03-RURAL-URBAN-FACT","GOVERNMENT-T2-W03-BRITISH-FRENCH-TABLE-FACT","GOVERNMENT-T2-W03-GOVERNOR-POWERS-FACT","GOVERNMENT-T2-W03-EVALUATION-QUESTIONS-MISSING","GOVERNMENT-T2-W03-PRACTICE-VERIFICATION"]) {
+    const item = p.open_items.find(entry => entry.id === id);
+    assert(item);
+    assert.equal(item.blocks_delivery, false, id);
+  }
+  assert.equal(p.package_status, 'PENDING');
+});
