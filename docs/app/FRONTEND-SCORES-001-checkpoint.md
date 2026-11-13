@@ -32,7 +32,7 @@ Worker branch: `agent/frontend-score-recovery-20261113`
 
 ## Commits
 - `f411caf01b49569fb1a2bf4d9e8bf69b7789cf8b` — add setup, roster and saved-score recovery states.
-- Checkpoint commit: pending.
+- Checkpoint created in commit `97803dbdf0c2c7a27945fbf530c835b0734a1774`.
 
 ## Verification
 - Static inspection confirms retries reuse existing scoped setup, roster and score endpoints.
