@@ -316,97 +316,69 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
 
 // ── POST /scores/bulk  (batch entry for a whole class) ────────────────────────
 router.post('/bulk', requirePerm('grades.write'), async (req, res) => {
-  // Found live in Pass 10: this is the endpoint ScoreEntryScreen.tsx (the
-  // only mobile screen that writes scores) actually calls — but unlike
-  // POST /scores above, it never ran the shape/type schema, and never
-  // checked ca1/ca2/exam against the school's ca1_max/ca2_max/exam_max at
-  // all. Live-verified before this fix: a same-school teacher could submit
-  // e.g. ca1=50 for a school where ca1_max=15 and it saved silently
-  // (grade/total computed off the inflated number); a large enough value
-  // (e.g. ca1=999) instead crashed with a raw Postgres numeric-field-
-  // overflow surfaced as a generic 500, since the generated `total` column
-  // is NUMERIC(5,2). Both are now caught with the same 400 the single-score
-  // route already gives, before anything is written.
-  const bodySchema = z.object({ scores: z.array(scoreEntrySchema).min(1) });
+  const bodySchema = z.object({
+    scores: z.array(scoreEntrySchema).min(1).max(500)
+      .refine(items => new Set(items.map(s => `${s.student_id}:${s.subject_id}:${s.term_id}`)).size === items.length,
+        'A student/subject/term score may appear only once per batch'),
+  });
   const parsed = bodySchema.safeParse(req.body);
   if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
   const { scores } = parsed.data;
 
-  // Check every distinct (student, term) pair in the batch is in scope
-  // before writing any of it — a partial batch write (some students saved,
-  // one silently rejected midway) would be worse than rejecting the whole
-  // request. Keyed by student+term rather than just student, since the
-  // class-lock check inside checkTeacherStudentScope() is per-term — a
-  // student could in principle appear in the same batch under two
-  // different term_ids (unusual, but the schema doesn't forbid it), and
-  // each needs its own lock check.
-  const uniquePairs = [...new Map(scores.map(s => [`${s.student_id}:${s.term_id}`, s])).values()];
-  for (const s of uniquePairs) {
-    const scopeViolation = await checkTeacherStudentScope(req.user!, s.student_id, s.term_id);
-    if (scopeViolation) return res.status(scopeViolation.status).json({ error: scopeViolation.error });
-  }
+  // Validate and write the entire batch in one transaction. A failure on any
+  // row (scope, school maxima, FK, numeric precision, or a database trigger)
+  // rolls back every upsert rather than leaving a partially marked class.
+  const result = await withTransaction(async (client) => {
+    const scopes: Array<{ schoolCode: string }> = [];
+    for (const score of scores) {
+      const scope = await validateScoreWriteScope(client, req.user!, score);
+      if ('error' in scope) {
+        return { ok: false as const, status: scope.status, error: scope.error };
+      }
+      scopes.push(scope);
 
-  // Same per-school max-score check as POST /scores, run for every row
-  // before any write — a batch is usually all one school, but each row is
-  // still checked individually since nothing stops a client from mixing
-  // student_ids across schools in one payload.
-  type ScoreCfg = { ca1_max: number; ca2_max: number; exam_max: number };
-  const cfgCache = new Map<string, ScoreCfg>();
-  const getScoreCfg = async (studentId: string): Promise<ScoreCfg> => {
-    const cached = cfgCache.get(studentId);
-    if (cached) return cached;
-    const { rows: schRows } = await query(
-      `SELECT sc.ca1_max, sc.ca2_max, sc.exam_max
-       FROM schools sc JOIN students st ON st.school_code=sc.code
-       WHERE st.id=$1`, [studentId],
-    );
-    const cfg: ScoreCfg = schRows[0] ?? { ca1_max: 20, ca2_max: 20, exam_max: 60 };
-    cfgCache.set(studentId, cfg);
-    return cfg;
-  };
-  for (const s of scores) {
-    const cfg = await getScoreCfg(s.student_id);
-    if (s.ca1 > cfg.ca1_max || s.ca2 > cfg.ca2_max || s.exam > cfg.exam_max) {
-      return res.status(400).json({
-        error: `Score exceeds maximum for one or more students (CA1≤${cfg.ca1_max}, CA2≤${cfg.ca2_max}, Exam≤${cfg.exam_max})`,
-      });
+      const { rows: schRows } = await client.query(
+        'SELECT ca1_max, ca2_max, exam_max FROM schools WHERE code=$1 FOR SHARE',
+        [scope.schoolCode],
+      );
+      const cfg = schRows[0] ?? { ca1_max: 20, ca2_max: 20, exam_max: 60 };
+      if (score.ca1 > Number(cfg.ca1_max) || score.ca2 > Number(cfg.ca2_max) || score.exam > Number(cfg.exam_max)) {
+        return {
+          ok: false as const,
+          status: 400,
+          error: `Score exceeds maximum for one or more students (CA1≤${cfg.ca1_max}, CA2≤${cfg.ca2_max}, Exam≤${cfg.exam_max})`,
+        };
+      }
     }
-  }
 
-  const saved = [];
-  for (const s of scores) {
-    const grade = getGrade(s.ca1 + s.ca2 + s.exam);
-    const { rows } = await query(
-      // class_name stamp: same rule as POST /scores above (DATA-03).
-      `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at,class_name)
-       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT class_name FROM students WHERE id=$1))
-       ON CONFLICT(student_id,subject_id,term_id)
-       DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now(),
-                     class_name=COALESCE(scores.class_name, EXCLUDED.class_name)
-       RETURNING *`,
-      [s.student_id, s.subject_id, s.term_id, s.ca1, s.ca2, s.exam,
-       grade, s.teacher_remark ?? null, req.user!.id],
-    );
-    saved.push(rows[0]);
-  }
+    const saved = [];
+    for (const score of scores) {
+      const grade = getGrade(score.ca1 + score.ca2 + score.exam);
+      const { rows } = await client.query(
+        `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at,class_name)
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT class_name FROM students WHERE id=$1))
+         ON CONFLICT(student_id,subject_id,term_id)
+         DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now(),
+                       class_name=COALESCE(scores.class_name, EXCLUDED.class_name)
+         RETURNING *`,
+        [score.student_id, score.subject_id, score.term_id, score.ca1, score.ca2, score.exam,
+         grade, score.teacher_remark ?? null, req.user!.id],
+      );
+      saved.push(rows[0]);
+    }
+    return { ok: true as const, saved };
+  });
 
-  // ScoreEntryScreen.tsx (the only mobile screen that writes scores) calls
-  // this endpoint, not POST / above — which means bulk saves were never
-  // showing up in the admin Audit Log at all until now. One summary entry
-  // per batch (not one per row) keeps the log readable for a 30-student
-  // class save.
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  const saved = result.saved;
+
   const subjectIds = [...new Set(scores.map(s => s.subject_id))];
-  const termIds    = [...new Set(scores.map(s => s.term_id))];
+  const termIds = [...new Set(scores.map(s => s.term_id))];
   await audit(
     req.user!, 'save_scores_bulk', 'score', undefined,
     `${saved.length} score(s) saved — subject(s) ${subjectIds.join(',')}, term(s) ${termIds.join(',')}`,
   );
 
-  // Push the affected students. scores.student_id references students.id,
-  // not users.id directly (a student may not even have a login) — resolve
-  // through students.user_id the same way GET /scores/report/:student_id
-  // above already does. One push per student per batch save, not one per
-  // row, matching the "one audit entry per batch" pattern just above.
   const studentIds = [...new Set(saved.map(s => s.student_id))];
   const { rows: studentUserRows } = await query(
     `SELECT user_id FROM students WHERE id = ANY($1) AND user_id IS NOT NULL`, [studentIds],
