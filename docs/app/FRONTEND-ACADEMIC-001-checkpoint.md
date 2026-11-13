@@ -40,7 +40,7 @@ Worker branch: `agent/frontend-academic-setup-recovery-20261113`
 - `d2ad27b8f6740ead78f80d651dc9b4f0e0d57aa8` — subject load recovery and web-safe actions.
 - `9f6b44fd79f552d024f2abe5434482465801cfee` — clear stale school data and validate calendar dates.
 - `a1eb3d0253f1d0cb4467482bf48609e57c777fa4` — await post-write refresh.
-- Checkpoint commit: pending.
+- Checkpoint commit: `7524e1bd48499a0ba3935874c85d4ed0319e01df`.
 
 ## Verification
 - Static inspection confirms terms and subjects continue to use the selected-school query parameter.
