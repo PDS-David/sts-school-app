@@ -58,8 +58,15 @@ test('term creation conflicts are deterministic and concurrent current-term swit
   const termIds: number[] = [];
   let server: Server | undefined;
   let triggerCreated = false;
+  let originalCurrentTermIds: number[] = [];
 
   try {
+    const { rows: originalCurrentRows } = await query(
+      'SELECT id FROM terms WHERE school_code=$1 AND is_current=TRUE', ['primary'],
+    );
+    originalCurrentTermIds = originalCurrentRows.map(row => Number(row.id));
+    await query('UPDATE terms SET is_current=FALSE WHERE school_code=$1', ['primary']);
+
     const { rows: first } = await query(
       `INSERT INTO terms(name,academic_year,school_code,is_current)
        VALUES('1st Term',$1,'primary',TRUE) RETURNING id`,
