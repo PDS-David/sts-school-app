@@ -265,7 +265,10 @@ export function startBackupScheduler(): () => Promise<void> {
   const tick = () => {
     if (stopped || inFlight) return;
     inFlight = sendReminderIfDue()
-      .catch(e => console.error('[backup] reminder check failed:', e?.message))
+      .then(
+        () => undefined,
+        (e) => { console.error('[backup] reminder check failed:', e?.message); },
+      )
       .finally(() => { inFlight = undefined; });
   };
   const initial = setTimeout(tick, 60_000);
