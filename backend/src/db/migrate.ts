@@ -170,7 +170,7 @@ async function applyFresh(client: PoolClient, migrations: Migration[]): Promise<
   await ensureLedger(client);
   const applied = await getApplied(client);
   assertAppliedChecksums(migrations, applied);
-  if (!applied.length) await assertNoUntrackedApplicationSchema(client);
+  await assertNoUntrackedApplicationSchema(client);
   if (applied.some(row => row.version !== '0001')) {
     throw new Error('Refusing --fresh after incremental migrations have been applied. Use --all.');
   }
