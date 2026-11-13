@@ -29,7 +29,8 @@
     "2026-11-07 FA-WK-T1-W01: indexed Week One lines 65-263 of the 1st Term source into 11 coverage entries (6 PARTIAL, 5 UNRESOLVED) and 8 open items (6 blocking), and appended FA-FACT-T1-W01-TEACHER-DECISIONS (BLOCKED) plus six lesson tasks. Nothing is approved, verified or deliverable; the source prints no key for any of the 12 questions and does not teach the duties of an accountant. Week 1 is not complete.",
     "2026-11-08 FA-INV-T3: appended the 3rd Term inventory items (18) and set FA-INV-T3 to IMPLEMENTED_TESTING_DEFERRED. All 18 new items are PENDING because no coverage, lesson, disposition, preservation record or factual check has been written. The body has seven week labels covering ten weeks, no table or equation, one header picture (a third-party tutor letterhead, a provenance question for the owner) and no revision or examination marker, so no marker item was added. No answer key is printed for any question. Nothing is approved, verified or deployed.",
     "FA-TEST-PACKAGE (2026-11-13): added tests/ss1/financial-accounting.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; explicit PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current partial/unresolved coverage/open-item boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed.",
-    "FA-PRE-T1 (2026-11-13): verified first-term source member hash and inspected original DOCX paragraphs 15–31. Recorded title, subject/class heading, scheme heading, literal WEEK/TOPIC header with trailing space and all seven scheme rows verbatim in FA-PRE-T1.md. Mixed row numbering/separators preserved; row 1 has no literal number; row 4–5 continues in a following paragraph. No preamble coverage entry or classify_marker rule was added; the scheme is before the first body week and is recorded in FA-PRE-T1.md because scheme rows do not contain body week markers and the body begins at WEEK ONE. Verified no REVISION occurrence and EXAMINATION occurs twice only in prose, not as a section. No scheme row became a lesson."
+    "FA-PRE-T1 (2026-11-13): verified first-term source member hash and inspected original DOCX paragraphs 15–31. Recorded title, subject/class heading, scheme heading, literal WEEK/TOPIC header with trailing space and all seven scheme rows verbatim in FA-PRE-T1.md. Mixed row numbering/separators preserved; row 1 has no literal number; row 4–5 continues in a following paragraph. No preamble coverage entry or classify_marker rule was added; the scheme is before the first body week and is recorded in FA-PRE-T1.md because scheme rows do not contain body week markers and the body begins at WEEK ONE. Verified no REVISION occurrence and EXAMINATION occurs twice only in prose, not as a section. No scheme row became a lesson.",
+    "2026-11-13 Week Three indexing and supplement ported onto the active Week Two branch without changing its Week Two work. Added twelve W03 objective records, one original ledger/journal lesson, and two W03 open items. Source wording at lines 379/461 remains assigned to FA-PRES-T1-SOURCE-WORDING; ledger/journal visual frames remain with FA-VIS-T1-W03-FORMATS; page 41 remains unresolved. W03 lesson approval PENDING and verification DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -43,10 +44,10 @@
     "LESSON": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 9,
+    "IMPLEMENTED_TESTING_DEFERRED": 11,
     "BLOCKED": 3,
     "IN_PROGRESS": 1,
-    "PENDING": 60
+    "PENDING": 59
   },
   "items": [
     {
@@ -455,8 +456,8 @@
         "FA-INV-T1",
         "FA-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T1.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed Week Three lines 353-517 in FA-WK-T1-W03.md with section SHA-256 ceeb81718319d69d21106826a24d61b37019705f3c03069fd7620e14219c403e. Added 12 objective-level coverage entries for books of accounts, ledger, journal, formats, double-entry wording, routing, evaluation, reading, weekend MCQs and theory. Formats remain with FA-VIS-T1-W03-FORMATS; the path diagram remains with FA-VIS-T1-W02-T03-DIAGRAMS; wording defects at lines 379 and 461 remain with FA-PRES-T1-SOURCE-WORDING. Added FA-LES-T1-W03-LEDGER-JOURNAL-ANSWER-KEY and blocking assessment/reading open items. No source text or answer key changed in this index; testing deferred.",
       "completion_condition": "Week 3 objective-level coverage or marker rules exist under the existing schema for the ledger, the journal, their formats and every assessment block, with exact locators; formats are delegated to the visual item and wording to the preservation item; unanswered items become precise open items plus a small lesson task."
     },
     {
@@ -2745,6 +2746,43 @@
       "status": "PENDING",
       "implementation_reference": "Created by FA-WK-T1-W02; task is intentionally dependent on an owner clarification.",
       "completion_condition": "Classification follows the supplied payment timing; if no clarification is supplied, retain the item as ungraded and unresolved."
+    },
+    {
+      "id": "FA-LES-T1-W03-LEDGER-JOURNAL-ANSWER-KEY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "term": "1st Term",
+      "week_or_locator": "WEEK THREE lines 353-517; books of accounts 367-371; ledger 375-423; journal 427-465; evaluation 485-489; weekend MCQ 499-511; theory 513-517",
+      "objective": "Create an original SS1 Financial Accounting supplement that accurately teaches the purpose of books of accounts, the ledger as the principal book, ledger account fields and debit/credit sides, the journal as a book of original entry/subsidiary book, and how journal records are posted to the ledger. Explicitly address the source's statement at line 461 that journal recording does not follow double entry: do not silently repeat it as fact; explain the accurate accounting principle in original teaching and preserve the original wording in the separate FA-PRES-T1-SOURCE-WORDING task. Provide complete answers and criterion-level marking for the two evaluation questions at 487/489, all five MCQs at 501-509 and both theory questions at 515/517. Do not recreate ledger/journal format frames (FA-VIS-T1-W03-FORMATS) or the routing diagram (FA-VIS-T1-W02-T03-DIAGRAMS). Do not quote or claim coverage of the unavailable textbook page 41; FA-FACT-T1-EXTERNAL-MATERIALS owns that boundary. Include original worked examples and marked practice. Approval PENDING; verification DEFERRED.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-INV-T1.md",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "c6d4a1b32ff8eb5377f8e7f1014cccfc4345a706bbeb333131a5d50afa6a3edb"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-LES-T1-W03-LEDGER-JOURNAL-ANSWER-KEY.md"
+      ],
+      "depends_on": [
+        "FA-INV-T1",
+        "FA-SRC-T1",
+        "FA-WK-T1-W03"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as SUP-SS1-FINANCIAL-ACCOUNTING-T1-W03-LEDGER-JOURNAL in financial-accounting.json; body SHA-256 227666f08e99f746064688224f256710cff0ff06cfcfd8e72e0e19d2f2f9bb1f. Teaches books of accounts, ledger and journal roles, debit/credit, double entry and posting; explicitly corrects the source's misleading line 461 in separate original teaching while preserving source wording. Answers evaluation, five MCQs and theory questions with marking; six practice items total 21 marks. Format coverage remains PARTIAL pending FA-VIS-T1-W03-FORMATS; page 41 remains unresolved. Content approval PENDING; verification DEFERRED.",
+      "completion_condition": "An original supplement accurately teaches ledger/journal roles and posting, answers the two evaluation questions, five MCQs and two theory questions with marking criteria, and explicitly handles the inaccurate double-entry claim without editing the source. Formats and diagrams remain delegated; page 41 is not reproduced. Approval PENDING; verification DEFERRED."
     }
   ],
   "review": {
@@ -2760,7 +2798,6 @@
     }
   },
   "next_runnable": [
-    "FA-WK-T1-W03",
     "FA-WK-T1-W04-W05",
     "FA-WK-T1-W06-W07",
     "FA-WK-T1-W08",
