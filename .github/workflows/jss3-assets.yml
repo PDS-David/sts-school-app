@@ -70,6 +70,8 @@ jobs:
       - run: npm ci --ignore-scripts
       - name: Python visual and baseline tools
         run: python3 -m pip install -r scripts/jss3/acceptance-requirements.txt
+      - name: Decode all Technical Drawing source and supplemental images
+        run: python3 scripts/ss1/verify_technical_drawing_assets.py
       - name: Backend and mobile types
         run: |
           ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
