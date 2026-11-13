@@ -108,6 +108,47 @@ router.post('/', requireRole('admin'), async (req, res) => {
   return res.status(201).json({ event: rows[0] });
 });
 
+router.put('/:id', requireRole('admin'), async (req, res) => {
+  const user = req.user!;
+  if (!/^[0-9]+$/.test(req.params.id)) return res.status(404).json({ error: 'School event not found' });
+  const parsed = eventSchema.safeParse(req.body);
+  if (!parsed.success) {
+    return res.status(400).json({
+      error: 'Invalid school event: ' + parsed.error.issues.map(i => i.path.join('.') || 'body').join(', '),
+    });
+  }
+  const d = parsed.data;
+  if (d.end_at && new Date(d.end_at).getTime() < new Date(d.start_at).getTime()) {
+    return res.status(400).json({ error: 'end_at cannot be earlier than start_at' });
+  }
+  if (user.school_code && d.school_code && d.school_code !== user.school_code) {
+    return res.status(403).json({ error: "You can't update an event for another school" });
+  }
+  const school = user.school_code ?? d.school_code ?? null;
+  if (!school) return res.status(400).json({ error: 'school_code is required' });
+  const { rows: schools } = await query('SELECT 1 FROM schools WHERE code=$1', [school]);
+  if (!schools[0]) return res.status(400).json({ error: 'Unknown school' });
+  if (d.class_name) {
+    const { rows: classes } = await query(
+      'SELECT 1 FROM classes WHERE school_code=$1 AND name=$2', [school, d.class_name],
+    );
+    if (!classes[0]) return res.status(400).json({ error: 'Unknown class for this school' });
+  }
+  const { rows } = await query(
+    `UPDATE school_events
+        SET school_code=$2, title=$3, description=$4, event_type=$5,
+            audience_role=$6, class_name=$7, start_at=$8, end_at=$9
+      WHERE id=$1 AND ($10::text IS NULL OR school_code=$10::text)
+      RETURNING id, school_code, title, description, event_type, audience_role, class_name, start_at, end_at, created_at`,
+    [req.params.id, school, d.title, d.description ?? null, d.event_type,
+      d.audience_role ?? null, d.class_name ?? null, d.start_at, d.end_at ?? null,
+      user.school_code ?? null],
+  );
+  if (!rows[0]) return res.status(404).json({ error: 'School event not found' });
+  await audit(user, 'update_school_event', 'school_event', String(rows[0].id), d.title);
+  return res.json({ event: rows[0] });
+});
+
 router.delete('/:id', requireRole('admin'), async (req, res) => {
   if (!/^[0-9]+$/.test(req.params.id)) return res.status(404).json({ error: 'School event not found' });
   const { rows } = await query(
