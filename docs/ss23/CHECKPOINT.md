@@ -33,7 +33,7 @@ See `docs/ss23/sources/RECEIPT_20261113.md`.
 | Task ID | Status | Changed files | Commit / evidence | Remaining work |
 |---|---|---|---|---|
 | SS23-00 | DONE | `docs/ss23/CHECKPOINT.md`, `docs/ss23/sources/README.md`, `docs/ss23/sources/SOURCE_ASSIGNMENTS.csv` (prior merged checkpoint) | PR #684 merged; baseline recorded | None for baseline |
-| SS23-S0 | RECEIVED; RECONCILIATION IN PROGRESS | `docs/ss23/sources/RECEIPT_20261113.md`, checkpoint | Two attached ZIPs: 61 + 39 members; archive hashes and term counts recorded | Compare every member hash and resolve path/duplicate identity |
+| SS23-S0 | TOOL IMPLEMENTED; MEMBER RECONCILIATION PENDING | `docs/ss23/sources/RECEIPT_20261113.md`, `scripts/ss23/reconcile_received_archives.py`, `tests/test_ss23_source_reconciliation.py`, source README | Archive structure parsed: 61 SS2 + 39 SS3; all 100 members classified into expected term folders with no path errors. Utility and 5 focused tests committed by `c3fa10e85c7f33a7ab3f9fad8380d1829e8527fd`; isolated Python test execution: 5/5 passed | Run utility against both attached ZIPs and authoritative CSV; then resolve any mismatches |
 | SS23-01 | PENDING | Package contract / validator / tests | Existing SS1 schema is SS1-only; SS3 ingestion exclusion confirmed | Design SS2 instructional and SS3 exam-prep contracts without weakening SS1 validation |
 | SS23-02 onward | PENDING | One subject package and focused tests per PR | No SS2/SS3 subject package is currently certified | Work SS2 alphabetical, then SS3 exam-prep subjects; source headers, week coverage, lesson depth, assessments, answers, explanations, marking and student delivery |
 
@@ -56,6 +56,8 @@ A subject is not ready until evidence demonstrates:
 7. focused tests and relevant package/importer checks pass without changing SS1 or unrelated classes.
 
 ## Exact next action
-1. Reconcile the 100 member SHA-256 values in the new combined ZIPs against `SOURCE_ASSIGNMENTS.csv`; preserve both old archive receipt and new archive receipt.
+1. Run `scripts/ss23/reconcile_received_archives.py` against the two re-supplied ZIPs and `SOURCE_ASSIGNMENTS.csv`; preserve both old archive receipt and new archive receipt.
 2. Begin SS2 Agricultural Science source-header and week/topic verification (T1–T3) as the first alphabetical subject task. Do not author lessons until the actual source topics and structure are extracted and mapped.
 3. In parallel, design SS23-01 contract boundaries: SS2 instructional terms vs SS3 exam-preparation resources, with explicit provenance and separate student-delivery tests.
+
+The reconciliation utility and its five focused unit tests are in branch `agent/ss2-ss3-readiness-source-receipt-20261113`. The test logic was executed in an isolated Python run (5/5 passed). The actual uploaded archives were also checked for class/term path classification (100/100 members; zero path errors). Full repository test workflows and member-vs-register reconciliation have not yet run.
