@@ -48,6 +48,8 @@ Worker branch: `agent/frontend-finance-actions-current-20261113`
 
 - Financial-write offline exclusion was moved to shared API policy PR #760 to avoid overlapping client.ts changes.
 
+- Financial write live-response policy is provided by shared API PR #776; merge it before this UI PR.
+
 ## Remaining work
 - Verify fee item creation, invoice creation and payment status update for finance_admin.
 - Verify parent can only view the selected child's invoices and cannot access write controls.
