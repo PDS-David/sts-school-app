@@ -7,9 +7,11 @@
 - Worker branch: `agent/frontend-attendance-score-ux-current-20261113`
 
 ## Commits
-- `3dae1197aa3d1b75505dd1fe553693339665fa6b` — validate attendance values and replace native alerts with cross-platform feedback.
-- `3bda2ede0b90b00e77777709ae5a74ddd45c3f80` — validate score values against school limits and replace native alerts with cross-platform feedback.
-- Checkpoint commit: `71ad3f63eee41ca092bcd70bb297307fcb8ec970`..
+- `3dae1197aa3d1b75505dd1fe553693339665fa6b` — refresh attendance route on current master.
+- `3bda2ede0b90b00e77777709ae5a74ddd45c3f80` — refresh attendance screen on current master.
+- `1f62b8737597998df51cf6a3547d4e00e666eccc` — refresh score entry screen on current master.
+- `82d7bb24aace1dff63cd7af4117ff68d8a8d6bd2` — refresh term-school isolation integration test on current master.
+- Checkpoint commit: pending.
 
 ## Changes
 - Attendance: validate days opened as a non-negative whole number; validate entered days present as whole, non-negative values not exceeding the target days-opened limit.
@@ -23,13 +25,10 @@
 - Static inspection: both screens contain no remaining `Alert.alert` calls.
 - Static inspection: both screens render the shared `ConfirmDialog`.
 - Static inspection: attendance value bounds and score-school caps are checked before writes.
-- Branch comparison: 2 commits ahead, 0 behind master; only the two assigned screen files changed before this checkpoint.
+- Branch comparison: 6 commits ahead, 0 behind master; four implementation files and this checkpoint are the only changed paths.
 - Automated Mobile TypeScript and repository CI have not yet completed. No runtime/device test is claimed.
 
-- CI Mobile TypeScript run 43468340394 failed only on two unrelated current-master errors: `mobile/src/api/client.ts(366,50)` (`flushPromise` used before assignment) and `mobile/src/screens/NotificationsScreen.tsx(35,64)` (unsupported `Btn size` prop). Neither file is changed by this PR. Both are addressed by current-master remediation PR #788; merge #788 and rerun this PR's checks before treating CI as green.
-- SS1 package integrity run 43468433891 was still in progress at the last check.
-
-- Follow-up on shared blocker: PR #788 now has passing Mobile TypeScript, Android readiness and SS1 package-integrity checks on its latest head. It is still open; these checks must be rerun on this branch after #788 merges. PR #788's JSS3 and cross-subject package audits were still in progress at the last check.
+- PR #788 has merged into master, resolving the two pre-existing TypeScript blockers. Fresh checks on this refreshed branch are pending.
 
 ## Remaining work
 - Check the Mobile TypeScript and package integrity workflow results.
