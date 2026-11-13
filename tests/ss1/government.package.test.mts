@@ -420,7 +420,7 @@ test('Week Two Western/Eastern indirect-rule replacement is sourced, marked and 
     assert.equal(coverage?.status, 'IMPLEMENTED_EQUIVALENT', id);
     assert(coverage?.lesson_ids.includes(lesson.id), id);
   }
-  assert.equal(p.coverage.find(entry => entry.id === 'COV-GOV-T2-W02-EVALUATION-MARKER')?.status, 'MARKER');
+  assert.equal(p.coverage.find(entry => entry.id === 'COV-GOV-T2-W02-EVALUATION-MARKER')?.status, 'PARTIAL');
   assert.equal(p.coverage.find(entry => entry.id === 'COV-GOV-T2-W02-PRACTICE-POINTER')?.status, 'PARTIAL');
   assert.equal(p.coverage.find(entry => entry.id === 'COV-GOV-T2-SCHEME-W01-02-INDIRECT-RULE-NIGERIA')?.status, 'PARTIAL');
   assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W02-REGIONAL-SCOPE-DISCREPANCY')?.blocks_delivery, true);
