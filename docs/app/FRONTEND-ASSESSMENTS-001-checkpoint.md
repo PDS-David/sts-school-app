@@ -46,7 +46,7 @@ Worker branch: `agent/frontend-assessment-recovery-latest-20261113`
 - `b598a2b8207ad8b31faebb91cd490ee8651cb46e` — applied `mobile/src/screens/TakeAssessmentScreen.tsx` recovery changes on latest master.
 - `a9b416aac68bb327b4fb1d76272f7c25b9cf3634` — applied `mobile/src/screens/CreateAssessmentScreen.tsx` recovery changes on latest master.
 - `1a79bfae53f76cec018bafbf6912621e55e51893` — applied `mobile/src/screens/AssessmentResultsScreen.tsx` recovery changes on latest master.
-- Checkpoint commit: pending.
+- Checkpoint commit: `80f8846b7d6a8af5c2fbe29e27725c5f44e5499a`.
 
 ## Verification
 - Static inspection confirms list/question/results retry paths reissue their existing GET endpoints.
