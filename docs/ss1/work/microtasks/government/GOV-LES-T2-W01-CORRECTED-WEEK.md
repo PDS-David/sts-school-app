@@ -226,10 +226,15 @@ All secondary and copyrighted sources are paraphrased in original wording; no te
 ## Provenance and status
 - Lesson ID: `SUP-SS1-GOVERNMENT-T2-W01-CORRECTED`
 - Body SHA-256 (UTF-8): `e2a29dea056139b150fa81f8d0d29846cc72c5d1b80a978c132e08f42dfbb5a0`
-- Berlin Conference: German Federal Foreign Office (12 November 2024) and General Act of Berlin (1885).
-- West African decolonization dates: United Nations and Decolonization former-territory list.
-- First Industrial Revolution: Encyclopaedia Britannica, c.1760–1840.
-- Slavery and colonial labour: The Metropolitan Museum of Art (2003); Catherine B. Ash, *History Compass* (2006).
-- Civilizing mission: Alice L. Conklin (2011); colonial extraction argument attributed to Walter Rodney (1972).
-- Indirect rule and Northern Nigeria: Bolt et al., *American Political Science Review* (published online 30 October 2026); Cambridge University Press, *Understanding Colonial Nigeria*, Chapter 10.
-- Content approval: PENDING. Verification: DEFERRED. No importer/database/device test is claimed.
+- Berlin Conference: German Federal Foreign Office Political Archive and the General Act of Berlin (1885).
+- West African decolonization dates: United Nations former-territory list.
+- First Industrial Revolution: Encyclopaedia Britannica.
+- Transatlantic slave trade: Arlindo Manuel Caldeira, Oxford Research Encyclopedia of African History (2024), and The Metropolitan Museum of Art (2003).
+- Colonial forced-labour systems: Catherine B. Ash, *History Compass* (2006).
+- Civilizing-mission ideology: Alice L. Conklin (2011).
+- Colonial extraction: Walter Rodney, *How Europe Underdeveloped Africa* (1972), cited as an attributed interpretation.
+- Indirect rule and Northern Nigeria: Toyin Falola, *Understanding Colonial Nigeria* (2024); Falola et al., *History of Nigeria 3* (1991); Northern Nigeria annual reports for 1906–07 and 1907–08; and *History in Africa* (2023).
+- Implementation: integrated into `backend/src/db/ss1/subjects/government.json`; original source member and source archive bytes remain unchanged.
+- Government regression suite: **38 passed, 0 failed** on commit `8def21c864bbacce7322987ae5ce9bd8eb1e8f0a`.
+- Cross-subject plan-only compile: **passed**, with 1,143 compiled rows, 1,143 identified rows and 840 dispositions. The plan is **not ready for delivery**: 171 unapproved assets, 914 incomplete-coverage blockers, 90 lessons awaiting approval, 3 sources without parsed lessons, 529 open items, 13 pending packages and 14 sources without coverage remain.
+- Content approval: PENDING. Independent content verification: DEFERRED. No database import, student-facing API, frontend, device or teacher-acceptance test is claimed.
