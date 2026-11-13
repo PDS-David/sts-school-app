@@ -2,7 +2,7 @@
 
 - **Task ID:** BSEC-007
 - **Title:** Audit and remediate vulnerable locked npm dependencies
-- **Status:** in_progress
+- **Status:** merged
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
@@ -19,5 +19,8 @@
   5. Add an enforceable dependency audit gate that fails on unresolved critical/high production vulnerabilities, with an explicit reviewed exception policy if any advisory is unfixable.
   6. No production deployment or data changes.
 - **Verification:** CI install logs from PR branches report 40 vulnerabilities (2 low, 16 moderate, 20 high, 2 critical); npm audit has not yet been run to retrieve exact advisories.
-- **Remaining:** run npm audit in a disposable CI job, inspect advisory output, remediate with focused commits and verify.
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/707
+- **Merged:** PR #707 merged at 2026-11-13T15:31:22Z; merge commit 5405f45db77c6e5f0d4cfde2b4ef5f60b9ed43a2.
+- **Final audit:** 0 critical findings; 0 moderate/high/critical findings in backend production dependencies. The full monorepo retains 4 high, 10 moderate and 2 low findings, all in the explicitly reviewed Expo SDK 56 toolchain exception documented in docs/backend-security/dependency-exceptions.md. CI fails on critical findings, any additional high finding, or any backend production moderate-or-higher finding.
+- **Remaining:** remove the narrow Expo exception after a separately tested Expo SDK 58 migration; continue the broader backend/security audit.
 - **Exact next action:** add a temporary diagnostic CI workflow that prints exact advisory metadata and exits with npm audit's original non-zero status.

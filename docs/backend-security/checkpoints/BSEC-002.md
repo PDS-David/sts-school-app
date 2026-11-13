@@ -2,7 +2,7 @@
 
 - **Task ID:** BSEC-002
 - **Title:** Make student and parent auto-provisioning atomic and concurrency-safe
-- **Status:** review (all required checks passing)
+- **Status:** merged
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
@@ -24,5 +24,6 @@
 - **Concurrency:** PR #692 changes auth middleware/claims only. PR #686 changes learning/schoolEvents. This PR changes the student creation handler and parent provisioning helper; no active PR changes parentProvisioning.ts.
 - **CI correction:** the PostgreSQL test file was renamed to backend-parent-provisioning.integration.test.mts so it is not misclassified by the separate JSS3 database-test registry; the workflow command and path filter now use the new name. No tests were removed or weakened.
 - **Final verification:** Backend parent provisioning workflow 43447497936, JSS3 implementation/asset checks 43447497954, and SS1 package integrity gate 43447497996 all passed on implementation commit ab098a40b0bbc1d0357dfa2538a835c10cfe6a79.
-- **Remaining:** PR review/merge. Do not mark the overall backend/security assignment complete.
+- **Merged:** PR #702 merged at 2026-11-13T15:24:18Z; merge commit 692fae468dc819f92ccf6b0d2b0ad9c34f4f2f45.
+- **Remaining:** continue the backend/security audit. This checkpoint does not mark the overall assignment complete.
 - **Exact next action:** review PR #702 and merge only after owner approval; then refresh from master and continue to the next backend defect.
