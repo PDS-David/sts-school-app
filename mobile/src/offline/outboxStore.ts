@@ -54,7 +54,7 @@ export function createOutboxStore<T extends { id: string }>(
       });
     },
     async count(): Promise<number> {
-      return (await this.getAll()).length;
+      return (await read(keyForCurrentNamespace())).length;
     },
   };
 }
