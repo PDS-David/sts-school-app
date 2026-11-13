@@ -16,7 +16,7 @@ STATUSES = {"backlog", "ready", "in_progress", "blocked", "stalled", "review", "
 GATES = {"curriculum", "application", "verification", "release", "operations"}
 PRIORITIES = {"P0", "P1", "P2", "P3"}
 ID_RE = re.compile(r"^[A-Z][A-Z0-9]+-[0-9]{3,}$")
-URL_RE = re.compile(r"^https://[^\\s]+$")
+URL_RE = re.compile(r"^https://\S+$")
 
 
 def parse_time(value: Any, field: str) -> datetime:
