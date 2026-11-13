@@ -901,6 +901,90 @@
           "explanation": "The reading cannot be checked against a held edition; rights and edition stay with the owner (DATA-PROCESSING-T1-W02-READING-RIGHTS)."
         }
       ]
+    },
+    {
+      "id": "COV-DP-T3-W01-WORD-PROCESSING-DEFINITION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "objective": "Define word processing and describe its purpose in creating, editing and printing documents.",
+      "objective_locator": "Word body paragraphs 27–29; Week 1 block digest e5e5026b566151169e7c204f95a37791ee6f25d1ff67b020855b19f390d7fee8.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Word body paragraphs 27–29; Week 1 block digest e5e5026b566151169e7c204f95a37791ee6f25d1ff67b020855b19f390d7fee8.",
+          "explanation": "Paragraph 29 defines word processing and describes creating, editing, storing, formatting and printing documents."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T3-W01-BASIC-FEATURES",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "objective": "Identify the basic features of word processing: text editing, word wrap, document creation, headers/footers and page numbering.",
+      "objective_locator": "Word body paragraphs 31–40.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Word body paragraphs 31–40.",
+          "explanation": "Paragraphs 31–40 list the basic features and examples."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T3-W01-FUNCTIONS",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "objective": "Describe word-processing functions including layout setting, copy, move, search and replace.",
+      "objective_locator": "Word body paragraph 41.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Word body paragraph 41.",
+          "explanation": "Paragraph 41 describes layout setting, copying/moving text and search/replace."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T3-W01-USES",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "objective": "Explain uses of word processing, including saving work, templates, formatting and correcting spelling/grammar.",
+      "objective_locator": "Word body paragraphs 49–55.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Word body paragraphs 49–55.",
+          "explanation": "Paragraphs 49–55 list the uses and benefits."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T3-W01-MICROSOFT-WORD-HEADING",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "objective": "Microsoft Word is introduced as a named heading in Week 1.",
+      "objective_locator": "Word body paragraph 43.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Word body paragraph 43.",
+          "explanation": "Paragraph 43 contains only the heading MICROSOFT WORD; no Word-specific explanation or procedure follows in this section."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T3-W01-TEXT-EDITOR-NOTEPAD-QUESTION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "objective": "Distinguish a text editor from a word processor and identify Notepad as a text-editor example.",
+      "objective_locator": "Week 1 evaluation paragraph 47 and theory paragraph 76; explanatory source content appears in Week 2 paragraphs 92–95.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 1 evaluation paragraph 47 and theory paragraph 76; explanatory source content appears in Week 2 paragraphs 92–95.",
+          "explanation": "Week 1 asks for the difference between a text editor and Notepad, but Notepad is itself identified as a text editor in Week 2. The comparison is out of sequence and category/member phrasing is defective; Week 2 later compares text editors with word processors."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -1224,6 +1308,18 @@
         "DP-WK-T1-W02"
       ],
       "blocks_delivery": false
+    },
+    {
+      "id": "DATA-PROCESSING-T3-W01-NOTEPAD-QUESTION-SEQUENCE",
+      "kind": "CONTENT",
+      "detail": "Week 1 evaluation (paragraph 47) and theory (paragraph 76) ask for the difference between a text editor and a Notepad. Week 2 paragraphs 92–95 identify Notepad as the most common text editor, so the Week 1 prompt compares a category with one of its examples and is also placed before its explanatory material.",
+      "required_action": "After Week 2 is indexed, reframe or relocate the Week 1 question so that it compares a text editor with a word processor, or asks learners to name a text-editor example. Preserve the original source question separately and do not teach Notepad as a different category from text editors.",
+      "affected_ids": [
+        "COV-DP-T3-W01-TEXT-EDITOR-NOTEPAD-QUESTION",
+        "DP-SEQ-T3-W01-NOTEPAD-QUESTION",
+        "DP-LES-T3-W01-WORD-PROCESSING"
+      ],
+      "blocks_delivery": true
     }
   ]
 }

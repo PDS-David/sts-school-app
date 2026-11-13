@@ -27,24 +27,29 @@
     "DP-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, week-indexing and visual items; the 3rd Term inventory remains unread. The document has no Week 1, scheme or revision/examination marker, recorded as source gaps. No lesson, coverage entry, rule, correction or asset was written.",
     "DP-WK-T1-W01 (2026-11-05) indexed the 1st Term Week 1 body at objective level and appended 5 follow-up items (4 LESSON, 1 FACTUAL_DEPENDENCY). Counts below reflect items, not content completeness: no Week 1 coverage entry carries a lesson, and the week is indexed rather than certified or fully taught.",
     "DP-VIS-T1-W01-CYCLE (2026-11-06) disposed of the two Week 1 arrow drawings as a readable ordered relationship in the first package lesson, SUP-SS1-DATA-PROCESSING-T1-W01-INPUT-PROCESSING-OUTPUT; COV-DP-T1-W01-CYCLE-DIAGRAM is IMPLEMENTED_EQUIVALENT, not SUPPORTED, because the diagram itself is still not delivered and DATA-PROCESSING-T1-W01-CYCLE-DIAGRAM-MISSING stays blocking. Counts below reflect items, not content completeness: 11 PARTIAL and 6 UNRESOLVED Week 1 coverage entries still carry no lesson, and the six-stage cycle and the Week 1 assessment key are untouched.",
-    "DP-WK-T1-W02 (2026-11-07) indexed 1st Term Week 2 (lines 287-429, digest c5d048b437c13cff6b205906da399d2bed18f01bc0cadc0503d8fc346ac5366b) as 18 coverage rows (11 PARTIAL, 7 UNRESOLVED, 0 SUPPORTED) and 9 open items (7 blocking). The week has no table, picture or drawing; NUMBER SYSTEM (REVISION) is a lead sentence and four bare labels, classified by its body; the 13 questions have no key and four depend on number-system content never taught. One dated-citation FACTUAL_DEPENDENCY and three LESSON follow-ups were appended; no lesson, answer, rule, correction or asset was authored and package_status stays PENDING. next_runnable was recomputed by the stated rule, which excludes TEST items. Nothing was run; testing deferred by owner."
+    "DP-WK-T1-W02 (2026-11-07) indexed 1st Term Week 2 (lines 287-429, digest c5d048b437c13cff6b205906da399d2bed18f01bc0cadc0503d8fc346ac5366b) as 18 coverage rows (11 PARTIAL, 7 UNRESOLVED, 0 SUPPORTED) and 9 open items (7 blocking). The week has no table, picture or drawing; NUMBER SYSTEM (REVISION) is a lead sentence and four bare labels, classified by its body; the 13 questions have no key and four depend on number-system content never taught. One dated-citation FACTUAL_DEPENDENCY and three LESSON follow-ups were appended; no lesson, answer, rule, correction or asset was authored and package_status stays PENDING. next_runnable was recomputed by the stated rule, which excludes TEST items. Nothing was run; testing deferred by owner.",
+    "DP-INV-T3 (2026-11-13) opened the exact 3rd Term Data Processing DOCX from the user-attached composite archive; archive and member hashes verified against SOURCE_ASSIGNMENTS.csv. Subject/class header confirms Data Processing, SS1. Inventory DP-INV-T3.md records scheme and nine actual body weeks, assessments, legacy software/UI claims, formula validation flags and 10 screenshot locations. DOCX inspected with python-docx 1.2.0: 588 paragraphs, no Word tables, 10 inline images/media parts, no equations/hyperlinks. Embedded screenshot at paragraph 461 shows student-like names and ID numbers; a separate preservation task requires synthetic/redacted replacement before learner-facing reuse. 25 bounded follow-up tasks appended: nine week indexes, opening scheme, revision/exam marker, two preservation tasks, two factual audits and ten visual dispositions. No subject package content or approvals changed; no tests/importer/device checks run. Testing deferred.",
+    "DP-TEST-PACKAGE (2026-11-13): added tests/ss1/data-processing.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; current authored lesson body hash/objectives/practice/marking integrity without fabricated approval or verification; two PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and coverage reference/status boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed.",
+    "DP-WK-T3-W01 (2026-11-13): source member hash verified; indexed original DOCX paragraphs 27–79. Added PARTIAL coverage for definition, basic features, functions and uses pending parsed-body binding; PARTIAL coverage for the bare MICROSOFT WORD heading (p43, no explanation); PARTIAL coverage for the Week 1 text-editor/Notepad question because Week 2 p92–95 identifies Notepad as a text editor. Recorded evaluation p45–47, general evaluation p57–61, reading p63–64, weekend MCQs p66–73 and theory p75–77. Added a blocking question-sequencing open item and tasks for sequence decision and lesson authoring. No Word-specific procedure or answers invented.",
+    "DP-PRE-T3 (2026-11-13): inspected original third-term Data Processing DOCX paragraphs 1–27. Recorded title, subject/class, WEEK/TOPIC header with trailing tabs, twelve scheme rows (initial Revision; Word Processing I–III; Spreadsheet I–III; Database Management I–III; Revision; Examination), three references, and first body marker WEEK ONE. Scheme rows are plain paragraphs with no WEEK <number> body marker, so no classify_marker rule or marker coverage entry is needed. Rows 2–10 map to body Weeks 1–9; rows 1,11,12 remain scheme-only."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 6,
-    "SOURCE_PREAMBLE_INDEXING": 2,
-    "SOURCE_WEEK_INDEXING": 18,
-    "SOURCE_MARKER_DISPOSITION": 1,
-    "VISUAL_DISPOSITION": 11,
-    "SOURCE_PRESERVATION": 2,
-    "LESSON": 7
+    "FACTUAL_DEPENDENCY": 8,
+    "SOURCE_PREAMBLE_INDEXING": 3,
+    "SOURCE_WEEK_INDEXING": 27,
+    "SOURCE_MARKER_DISPOSITION": 2,
+    "VISUAL_DISPOSITION": 21,
+    "SOURCE_PRESERVATION": 4,
+    "LESSON": 8,
+    "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 8,
-    "PENDING": 44,
-    "BLOCKED": 2
+    "IMPLEMENTED_TESTING_DEFERRED": 12,
+    "BLOCKED": 2,
+    "PENDING": 67
   },
   "items": [
     {
@@ -250,8 +255,8 @@
       "depends_on": [
         "DP-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13 from the user-attached composite archive. Archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e verified; assigned DOCX member SHA-256 09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804, 1,493,833 bytes, matches SOURCE_ASSIGNMENTS.csv. Header paragraph 3 identifies SUBJECT: DATA PROCESSING, CLASS: SS1. Inspected with python-docx 1.2.0: 588 paragraphs, 0 Word tables, 10 inline images/media parts, 10 embedded screenshots; no equations or hyperlinks. Nine teaching blocks indexed; scheme contains revision/exam markers only. Image positions and dimensions recorded; image8 contains student-like names/IDs and is flagged for synthetic replacement/redaction. Word/Excel/Access procedures include legacy UI instructions. Inventory: docs/ss1/work/microtasks/data-processing/DP-INV-T3.md. No lesson/package/coverage/rule/correction/asset/approval changes and no tests/importer/database/device checks; testing deferred.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -280,8 +285,8 @@
         "DP-SRC-T2",
         "DP-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/data-processing.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Test file authored 2026-11-13 at tests/ss1/data-processing.package.test.mts. It parses the current pending package, matches all three source registrations against SOURCE_ASSIGNMENTS.csv (member/hash/term), validates the one existing lesson body hash and marking totals while preserving PENDING content approval and DEFERRED verification, guards the two source-alias rules with wrong-hash/ambiguous/missing-anchor probes, and checks coverage reference resolution/current status counts. Per task contract, tests were written but NOT RUN; package remains PENDING and owner/content/permission gates remain open.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -2015,6 +2020,984 @@
       "status": "PENDING",
       "implementation_reference": "Not started. Created by DP-WK-T1-W02 (2026-11-07) as a bounded follow-up for the gaps in its coverage rows and open items.",
       "completion_condition": "Every one of the 13 questions has an answer with its basis, a mark and a marker, or a precise unresolved note; no approval or verification fabricated."
+    },
+    {
+      "id": "DP-WK-T3-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Word body paragraphs 27–79; WEEK ONE; digest e5e5026b566151169e7c204f95a37791ee6f25d1ff67b020855b19f390d7fee8",
+      "objective": "Index Word Processing I: definition (p29), basic features (p31–41), Microsoft Word introduction (p43), uses (p49–55), evaluation (p45–47), general evaluation (p57–60), reading assignment (p63–64), weekend assignment (p66–73), theory (p75–77). Record that p43 is an unelaborated Microsoft Word heading and that the source includes text-editor/Notepad distinctions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T3-W01.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Verified source member hash and indexed Word Processing I using original DOCX paragraphs 27–79. Added four PARTIAL coverage entries for definition, basic features, functions and uses pending parsed-body binding, a PARTIAL entry for the unelaborated Microsoft Word heading, and PARTIAL coverage for the Notepad/text-editor assessment because Week 2 later identifies Notepad as a text editor. Recorded all evaluation, general evaluation, reading, weekend MCQ and theory blocks. Added a blocking sequencing open item and two follow-up tasks (sequence decision and Week 1 lesson). No Word-specific procedures or answer key invented; tests not run.",
+      "completion_condition": "Record exact source sections, instructional boundaries and assessment prompts. Preserve source wording; do not invent content, answer keys, approval or verification."
+    },
+    {
+      "id": "DP-WK-T3-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Word body paragraphs 80–118; WEEK TWO; digest 07340d83a61c12d922b5bb8bfdd996a334be2d600f16170361706e9b1ecda0a1",
+      "objective": "Index Word Processing II: examples of word processors (p82–86), text editors and their differences (p92–95), evaluation (p88–90), general evaluation (p97–101), reading assignment (p103–104), weekend assignment (p106–112), theory (p114–116). Preserve product names and historical claims for a later current-software check.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T3-W02.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record exact source sections, instructional boundaries and assessment prompts. Preserve source wording; do not invent content, answer keys, approval or verification."
+    },
+    {
+      "id": "DP-WK-T3-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Word body paragraphs 119–163; WEEK THREE; digest 63a942512c4db8611b49f20b6182b868e6c9a2fcae42744bd52daef0fc968728",
+      "objective": "Index Word Processing III: creating a Word document (p121–122), saving (p124–130), saving formats (p133–134), opening documents (p136–140), general evaluation (p142–146), reading assignment (p148–149), weekend assignment (p151–157), theory (p159–161). Preserve original UI steps and shortcut references for a later current-version correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T3-W03.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record exact source sections, instructional boundaries and assessment prompts. Preserve source wording; do not invent content, answer keys, approval or verification."
+    },
+    {
+      "id": "DP-WK-T3-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Word body paragraphs 164–216; WEEK FOUR; digest 712b2472116302173792c1df0ae76cd8fb264f2d14d1d58736e6606b76aeeb50",
+      "objective": "Index Spreadsheet I: spreadsheet/worksheet definition (p166), values/labels/formulas (p171–175), evaluation (p177–179), spreadsheet uses (p183–193), general evaluation (p195–199), reading assignment (p201), weekend assignment (p202–210), theory (p212–214). Record the embedded worksheet screenshot at paragraph 168 for visual disposition.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T3-W04.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record exact source sections, instructional boundaries and assessment prompts. Preserve source wording; do not invent content, answer keys, approval or verification."
+    },
+    {
+      "id": "DP-WK-T3-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Word body paragraphs 217–285; WEEK FIVE; digest 6b6ed6038d5ff54fd05fbbb427d25c3b0e04094267b8b2dca9416e2452b256ae",
+      "objective": "Index Spreadsheet II: spreadsheet package examples (p219–224), Microsoft Excel (p226–231), starting Excel (p233–238), arithmetic operators and PEMDAS (p244–254), formula examples (p256–262), general evaluation (p264–268), reading assignment (p270–271), weekend assignment (p273–279), theory (p281–283). Flag `=AVERAGE(C4...C9)` for formula validation; do not silently repair it in the index.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T3-W05.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record exact source sections, instructional boundaries and assessment prompts. Preserve source wording; do not invent content, answer keys, approval or verification."
+    },
+    {
+      "id": "DP-WK-T3-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Word body paragraphs 286–372; WEEK SIX; digest 6a461834def301482588b5ffc9bd598b9665832d70d397de6ecf573a7b31a188",
+      "objective": "Index Spreadsheet III: loading Excel (p288–289), creating an Excel document (p291–297), entering worksheet data (p300–317), evaluation (p319–321), editing data (p323–331), saving (p333–340), retrieving saved worksheets (p342–347), general evaluation (p349–352), reading assignment (p354–355), weekend assignment (p357–366), theory (p368–370). Preserve all procedural steps and mark legacy UI dependencies.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T3-W06.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record exact source sections, instructional boundaries and assessment prompts. Preserve source wording; do not invent content, answer keys, approval or verification."
+    },
+    {
+      "id": "DP-WK-T3-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Word body paragraphs 373–430; source heading `WEEKSEVEN` (no separating space); digest a90e7a1042ed8587e585e367f2f2dff41f3a0ecbdb62014a7fa6cdfcb361a8f9",
+      "objective": "Index Database Management I: database and DBMS definitions (p375–377), functions of DBMS (p379–384), evaluation (p386–388), examples/packages (p390–396), database terminology (p398–403), general evaluation (p405–409), reading assignment (p411–412), weekend assignment (p414–422), theory (p425–428). Preserve the source marker typo `WEEKSEVEN`; do not normalize it without a source-scoped parser decision.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T3-W07.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record exact source sections, instructional boundaries and assessment prompts. Preserve source wording; do not invent content, answer keys, approval or verification."
+    },
+    {
+      "id": "DP-WK-T3-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Word body paragraphs 431–518; WEEK EIGHT; digest 031bfa22b01bc92b1ae777f72aa292726fbd4671570a1ed0517c3bee85ac4d8f",
+      "objective": "Index Database Management II: DBMS and MS Access introduction (p433–434), loading Access (p436–442), creating database (p447–450), creating a table/file (p453–459), rows/records and columns/fields (p460–463), evaluation (p465–467), field names and data types (p469–473), unique identifier/primary key (p475–478), general database creation steps (p480–495), general evaluation (p498–500), reading assignment (p503–504), weekend assignment (p506–510), theory (p513–516). Six embedded screenshots occur in this week and require separate visual dispositions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T3-W08.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record exact source sections, instructional boundaries and assessment prompts. Preserve source wording; do not invent content, answer keys, approval or verification."
+    },
+    {
+      "id": "DP-WK-T3-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Word body paragraphs 519–588; WEEK NINE; digest 0a6e6809bc8c0116c010f9d4a0a3e4f0e351962942481607129ff8a02711bf85",
+      "objective": "Index Database Management III: inputting records (p521–525), basic operations (p526–531), searching (p533–540), evaluation (p541–543), sorting (p545–558), modifying/editing records (p560–567), general evaluation (p569–572), reading assignment (p574–575), weekend assignment (p576–584), theory (p586–588). Preserve all database operation steps and validate them against the selected current DBMS version later.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T3-W09.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record exact source sections, instructional boundaries and assessment prompts. Preserve source wording; do not invent content, answer keys, approval or verification."
+    },
+    {
+      "id": "DP-PRE-T3",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Word body paragraphs 1–24; third-term heading, scheme and references",
+      "objective": "Index the opening: third-term e-learning heading (p1), subject/class identity (p3), scheme heading and rows (p5–19), references (p21–24). The scheme is a sequence of paragraphs, not a Word table: revision, Word Processing I–III, Spreadsheet I–III, Database Management I–III, revision, examination. Map Weeks 1–9 to the corresponding body units; do not turn scheme-only revision/examination markers into teaching weeks.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": "Index opening scheme and references with exact labels/paragraph locators; no missing content is invented.",
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Exact source member hash verified. Original DOCX paragraphs 1–24 inspected: title, subject/class, scheme header, twelve scheme rows and three references. Scheme rows 1 (Revision), 11 (Revision) and 12 (Examination) are scheme-only; rows 2–10 map to body Weeks 1–9. Body begins at WEEK ONE paragraph 27. The scheme rows are bare text labels without WEEK <number> prefixes; no classify_marker rule or MARKER coverage entry is required. No scheme-only revision/examination row was turned into a lesson.",
+      "completion_condition": "Record exact source sections, instructional boundaries and assessment prompts. Preserve source wording; do not invent content, answer keys, approval or verification."
+    },
+    {
+      "id": "DP-MARK-T3-REVEXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Scheme paragraphs 8 and 18–19; body paragraphs 27–588",
+      "objective": "Disposition the two `REVISION` scheme rows and `EXAMINATION` row. The body has nine teaching weeks and embedded evaluations, general evaluations, weekend assignments and theory questions, but no separate revision unit or examination paper/marking scheme. Classify scheme entries as markers; do not create a tenth teaching week or invent an exam.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-MARK-T3-REVEXAM.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record exact source sections, instructional boundaries and assessment prompts. Preserve source wording; do not invent content, answer keys, approval or verification."
+    },
+    {
+      "id": "DP-PRES-T3-LEGACY-UI",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Word/Excel/Access procedural steps across paragraphs 121–140, 233–238, 288–317, 436–459, 469–478, 533–567",
+      "objective": "Preserve original software instructions and screenshots as historical source evidence. Flag Start > All Programs > Microsoft Office navigation, Office 2003/2007 references, Windows-era menu names and legacy Access workflow as version-specific. A later correction must provide a current, safe, version-labelled equivalent while keeping original source wording separate; do not present old steps as universal current UI.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-PRES-T3-LEGACY-UI.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record exact source sections, instructional boundaries and assessment prompts. Preserve source wording; do not invent content, answer keys, approval or verification."
+    },
+    {
+      "id": "DP-PRES-T3-SAMPLE-DATA",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Access screenshot at paragraph 461, embedded `word/media/image8.png`",
+      "objective": "Record that the sample Student Table screenshot visibly contains student-like names and ID numbers. Do not copy the displayed rows into lessons or assets. Any retained/redrawn screenshot must replace the sample values with synthetic non-identifying examples or redact them, and must preserve only the concept being taught.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-PRES-T3-SAMPLE-DATA.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record exact source sections, instructional boundaries and assessment prompts. Preserve source wording; do not invent content, answer keys, approval or verification."
+    },
+    {
+      "id": "DP-FACT-T3-SOFTWARE-STATUS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Word Processor examples p82–86; spreadsheet examples p220–224; DBMS packages p390–396; MS Access procedures p436–478",
+      "objective": "Verify the current status, supported versions and platform compatibility of named products (WordPerfect, Microsoft Word/Office, OpenOffice, Lotus 1-2-3, Starview, Supercal, Corel products, FileMaker, MySQL, Oracle, SQL Server and Microsoft Access). Distinguish legacy examples from currently supported software; use vendor documentation and dates. Do not rename the subject from Data Processing to Computer Studies or ICT. Also verify the source's Notepad/text-editor classification and current Notepad capabilities; distinguish Notepad as an example of a text editor from the broader software category.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-FACT-T3-SOFTWARE-STATUS.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record exact source sections, instructional boundaries and assessment prompts. Preserve source wording; do not invent content, answer keys, approval or verification."
+    },
+    {
+      "id": "DP-FACT-T3-FORMULAS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Spreadsheet formulas p244–262 and formula assignment p273–279",
+      "objective": "Validate arithmetic operator precedence and all formula examples against a current spreadsheet implementation. In particular, the source's `=AVERAGE(C4...C9)` range syntax may be invalid; verify the intended syntax from the source context before proposing a correction. Keep the original source string distinct from any approved replacement.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-FACT-T3-FORMULAS.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record exact source sections, instructional boundaries and assessment prompts. Preserve source wording; do not invent content, answer keys, approval or verification."
+    },
+    {
+      "id": "DP-VIS-T3-IMG01",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "paragraph 42 / `word/media/image1.png`",
+      "objective": "Inspect and disposition the exact embedded screenshot DP-VIS-T3-IMG01: Blank Microsoft Word window; week-one Word Processing I introduction; 1366×768 screenshot. Confirm source placement/context, legibility, instructional necessity, accurate current meaning, accessible alt text, source/reuse permission and whether to retain, redraw or replace. Keep original screenshot bytes private; do not claim reuse permission from inclusion in the source document.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "backend/src/db/ss1/assets/data-processing",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T3-IMG01.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record image identity/hash, context, decision, accessibility description, rights/reuse state and any required correction. Do not publish an unsafe, misleading, illegible or privacy-exposing image."
+    },
+    {
+      "id": "DP-VIS-T3-IMG02",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "paragraph 131 / `word/media/image2.png`",
+      "objective": "Inspect and disposition the exact embedded screenshot DP-VIS-T3-IMG02: Microsoft Word Save As dialog screenshot; week-three save-document procedure; 1366×768. Confirm source placement/context, legibility, instructional necessity, accurate current meaning, accessible alt text, source/reuse permission and whether to retain, redraw or replace. Keep original screenshot bytes private; do not claim reuse permission from inclusion in the source document.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "backend/src/db/ss1/assets/data-processing",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T3-IMG02.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record image identity/hash, context, decision, accessibility description, rights/reuse state and any required correction. Do not publish an unsafe, misleading, illegible or privacy-exposing image."
+    },
+    {
+      "id": "DP-VIS-T3-IMG03",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "paragraph 168 / `word/media/image3.png`",
+      "objective": "Inspect and disposition the exact embedded screenshot DP-VIS-T3-IMG03: Spreadsheet worksheet grid with row numbers and sheet tabs; week-four spreadsheet introduction; 539×357. Confirm source placement/context, legibility, instructional necessity, accurate current meaning, accessible alt text, source/reuse permission and whether to retain, redraw or replace. Keep original screenshot bytes private; do not claim reuse permission from inclusion in the source document.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "backend/src/db/ss1/assets/data-processing",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T3-IMG03.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record image identity/hash, context, decision, accessibility description, rights/reuse state and any required correction. Do not publish an unsafe, misleading, illegible or privacy-exposing image."
+    },
+    {
+      "id": "DP-VIS-T3-IMG04",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "paragraph 302 / `word/media/image4.png`",
+      "objective": "Inspect and disposition the exact embedded screenshot DP-VIS-T3-IMG04: Microsoft Excel worksheet/interface screenshot; week-six data-entry procedure; 412×267. Confirm source placement/context, legibility, instructional necessity, accurate current meaning, accessible alt text, source/reuse permission and whether to retain, redraw or replace. Keep original screenshot bytes private; do not claim reuse permission from inclusion in the source document.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "backend/src/db/ss1/assets/data-processing",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T3-IMG04.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record image identity/hash, context, decision, accessibility description, rights/reuse state and any required correction. Do not publish an unsafe, misleading, illegible or privacy-exposing image."
+    },
+    {
+      "id": "DP-VIS-T3-IMG05",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "paragraph 444 / `word/media/image5.png`",
+      "objective": "Inspect and disposition the exact embedded screenshot DP-VIS-T3-IMG05: Microsoft Access Getting Started screen; week-eight Access introduction; 1366×768. Confirm source placement/context, legibility, instructional necessity, accurate current meaning, accessible alt text, source/reuse permission and whether to retain, redraw or replace. Keep original screenshot bytes private; do not claim reuse permission from inclusion in the source document.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "backend/src/db/ss1/assets/data-processing",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T3-IMG05.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record image identity/hash, context, decision, accessibility description, rights/reuse state and any required correction. Do not publish an unsafe, misleading, illegible or privacy-exposing image."
+    },
+    {
+      "id": "DP-VIS-T3-IMG06",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "paragraph 446 / `word/media/image6.png`",
+      "objective": "Inspect and disposition the exact embedded screenshot DP-VIS-T3-IMG06: Microsoft Access Getting Started screen with database/template pane; week-eight Access procedure; 1305×408. Confirm source placement/context, legibility, instructional necessity, accurate current meaning, accessible alt text, source/reuse permission and whether to retain, redraw or replace. Keep original screenshot bytes private; do not claim reuse permission from inclusion in the source document.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "backend/src/db/ss1/assets/data-processing",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T3-IMG06.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record image identity/hash, context, decision, accessibility description, rights/reuse state and any required correction. Do not publish an unsafe, misleading, illegible or privacy-exposing image."
+    },
+    {
+      "id": "DP-VIS-T3-IMG07",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "paragraph 458 / `word/media/image7.png`",
+      "objective": "Inspect and disposition the exact embedded screenshot DP-VIS-T3-IMG07: Microsoft Access menu screenshot showing table creation/design workflow; week-eight; 1366×768. Confirm source placement/context, legibility, instructional necessity, accurate current meaning, accessible alt text, source/reuse permission and whether to retain, redraw or replace. Keep original screenshot bytes private; do not claim reuse permission from inclusion in the source document.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "backend/src/db/ss1/assets/data-processing",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T3-IMG07.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record image identity/hash, context, decision, accessibility description, rights/reuse state and any required correction. Do not publish an unsafe, misleading, illegible or privacy-exposing image."
+    },
+    {
+      "id": "DP-VIS-T3-IMG08",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "paragraph 461 / `word/media/image8.png`",
+      "objective": "Inspect and disposition the exact embedded screenshot DP-VIS-T3-IMG08: Microsoft Access Student Table datasheet with visible sample names and ID values; week-eight. Requires synthetic-data replacement/redaction before any learner-facing reuse; 1366×768. Confirm source placement/context, legibility, instructional necessity, accurate current meaning, accessible alt text, source/reuse permission and whether to retain, redraw or replace. Keep original screenshot bytes private; do not claim reuse permission from inclusion in the source document.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "backend/src/db/ss1/assets/data-processing",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T3-IMG08.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record image identity/hash, context, decision, accessibility description, rights/reuse state and any required correction. Do not publish an unsafe, misleading, illegible or privacy-exposing image."
+    },
+    {
+      "id": "DP-VIS-T3-IMG09",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "paragraph 472 / `word/media/image9.png`",
+      "objective": "Inspect and disposition the exact embedded screenshot DP-VIS-T3-IMG09: Microsoft Access field Data Type dropdown screenshot; week-eight; 1069×497. Confirm source placement/context, legibility, instructional necessity, accurate current meaning, accessible alt text, source/reuse permission and whether to retain, redraw or replace. Keep original screenshot bytes private; do not claim reuse permission from inclusion in the source document.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "backend/src/db/ss1/assets/data-processing",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T3-IMG09.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record image identity/hash, context, decision, accessibility description, rights/reuse state and any required correction. Do not publish an unsafe, misleading, illegible or privacy-exposing image."
+    },
+    {
+      "id": "DP-VIS-T3-IMG10",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "paragraph 477 / `word/media/image10.png`",
+      "objective": "Inspect and disposition the exact embedded screenshot DP-VIS-T3-IMG10: Microsoft Access primary-key context-menu screenshot; week-eight; 1366×768. Confirm source placement/context, legibility, instructional necessity, accurate current meaning, accessible alt text, source/reuse permission and whether to retain, redraw or replace. Keep original screenshot bytes private; do not claim reuse permission from inclusion in the source document.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "backend/src/db/ss1/assets/data-processing",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T3-IMG10.md"
+      ],
+      "depends_on": [
+        "DP-INV-T3",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "completion_condition": "Record image identity/hash, context, decision, accessibility description, rights/reuse state and any required correction. Do not publish an unsafe, misleading, illegible or privacy-exposing image."
+    },
+    {
+      "id": "DP-SEQ-T3-W01-NOTEPAD-QUESTION",
+      "kind": "SCOPE_DECOMPOSITION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Week 1 paragraphs 47 and 76; Week 2 paragraphs 92–95",
+      "objective": "Resolve the out-of-sequence/category error in the Week 1 question comparing a text editor with Notepad. Determine whether to move the question until after Week 2 or reframe it as text editor vs word processor / name a text-editor example. Preserve the original prompt and do not teach Notepad as a separate software category.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T3-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-SEQ-T3-W01-NOTEPAD-QUESTION.md"
+      ],
+      "depends_on": [
+        "DP-WK-T3-W01",
+        "DP-WK-T3-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-WK-T3-W01 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-WK-T3-W01.md.",
+      "completion_condition": "Preserve source text and sequence boundaries; do not invent Microsoft Word procedures or misclassify Notepad. Any new teaching text must be accurate, version-labelled and independently verified."
+    },
+    {
+      "id": "DP-LES-T3-W01-WORD-PROCESSING",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "Week 1 paragraphs 29–41 and 49–55; evaluations/assignments paragraphs 45–77",
+      "objective": "Author an SS1 lesson for Word Processing I covering definition, document lifecycle, basic features, functions and uses. Include the source's evaluations, general evaluation, weekend MCQs and theory prompts with accurate answers/marking guide. Keep the Microsoft Word heading as a heading only unless verified version-labelled Word content is added in a separate approved scope. Correct the Notepad question only after DP-SEQ-T3-W01-NOTEPAD-QUESTION is resolved.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T3-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-LES-T3-W01-WORD-PROCESSING.md"
+      ],
+      "depends_on": [
+        "DP-WK-T3-W01",
+        "DP-SEQ-T3-W01-NOTEPAD-QUESTION"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by DP-WK-T3-W01 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-WK-T3-W01.md.",
+      "completion_condition": "Preserve source text and sequence boundaries; do not invent Microsoft Word procedures or misclassify Notepad. Any new teaching text must be accurate, version-labelled and independently verified."
     }
   ],
   "review": {
@@ -2030,8 +3013,6 @@
     }
   },
   "next_runnable": [
-    "DP-INV-T3",
-    "DP-TEST-PACKAGE",
     "DP-PRE-T1",
     "DP-WK-T1-W03",
     "DP-WK-T1-W04",
@@ -2064,6 +3045,29 @@
     "DP-VIS-T2-FIG-SATELLITE",
     "DP-VIS-T2-TBL-OSLAYERS",
     "DP-FACT-T1-W02-HISTORY-CLAIMS",
-    "DP-LES-T1-W02-NUMBER-SYSTEMS"
+    "DP-LES-T1-W02-NUMBER-SYSTEMS",
+    "DP-WK-T3-W02",
+    "DP-WK-T3-W03",
+    "DP-WK-T3-W04",
+    "DP-WK-T3-W05",
+    "DP-WK-T3-W06",
+    "DP-WK-T3-W07",
+    "DP-WK-T3-W08",
+    "DP-WK-T3-W09",
+    "DP-MARK-T3-REVEXAM",
+    "DP-PRES-T3-LEGACY-UI",
+    "DP-PRES-T3-SAMPLE-DATA",
+    "DP-FACT-T3-SOFTWARE-STATUS",
+    "DP-FACT-T3-FORMULAS",
+    "DP-VIS-T3-IMG01",
+    "DP-VIS-T3-IMG02",
+    "DP-VIS-T3-IMG03",
+    "DP-VIS-T3-IMG04",
+    "DP-VIS-T3-IMG05",
+    "DP-VIS-T3-IMG06",
+    "DP-VIS-T3-IMG07",
+    "DP-VIS-T3-IMG08",
+    "DP-VIS-T3-IMG09",
+    "DP-VIS-T3-IMG10"
   ]
 }
