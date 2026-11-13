@@ -340,7 +340,7 @@
         "GEO-SRC-T1"
       ],
       "status": "IN_PROGRESS",
-      "implementation_reference": "Initial PR #693 compiler workflow found the source-bound marker anchor did not match the loader's extracted text as a whole line ('Revision.'; check run 131950210888). The rule is being corrected to bind the exact visible, unique substring 'Revision' with SUBSTRING matching; uniqueness remains enforced by compiler.once. Task remains IN_PROGRESS until the registered-subject compiler workflow passes. See GEO-PRE-T1.md.",
+      "implementation_reference": "CI follow-up: the first whole-line marker failed; SUBSTRING correction now passes anchor matching, but the next compiler run exposed that COV-GEO-T1-IDENTITY cannot be SUPPORTED without a teaching-row target and the Revision marker coverage must reference its classify_marker rule. Corrected identity coverage to UNRESOLVED (metadata, not teaching) and linked the Revision MARKER coverage to SS1-SRC-1c1c1bdcecb4-R002. Task remains IN_PROGRESS pending a clean compiler run.",
       "completion_condition": "Every non-week block is hash-accounted and either mapped to coverage with an exact locator or recorded as a precise open item; scheme rows are bound to body weeks by order where numerals are absent; no teaching, lesson or invented scheme row is written."
     },
     {
