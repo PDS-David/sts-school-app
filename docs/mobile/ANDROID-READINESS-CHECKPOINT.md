@@ -5,7 +5,8 @@
 - Branch: `agent/mobile-android-readiness-20261113-v2`
 - Base: `master` at `03aa60f0f448caed371e8da9a30ff1f91cb0cbf5`
 - Latest implementation commit before this checkpoint: `3afd0c18aeb826ba122002d8c8f6adb5fdda9d6e`
-- Prior PR #696 was based on an older master and is superseded by the current branch/PR.
+- Current PR: [#727](https://github.com/PDS-David/sts-school-app/pull/727), draft and awaiting CI/review.
+- Prior PR #696 was based on an older master, became 82 commits behind, and was closed as superseded by #727.
 - Ownership/rebase check:
   - Master advanced after the original branch was created. Its changes touched notification context, role dashboards/navigation and curriculum/backend files, but did not overlap the 18 paths carried forward here.
   - Created this branch from the current master and reapplied only the mobile readiness paths. Comparison is 18 commits ahead, 0 behind.
@@ -59,6 +60,7 @@
 
 - Static source inspection and branch comparison completed.
 - 17 regression tests are authored; **they have not been executed**.
+- Latest PR workflow run: [43452096073](https://github.com/PDS-David/sts-school-app/actions/runs/43452096073), still queued with no job steps reported at the last check.
 - A local checkout was attempted, but the environment could not resolve github.com. No local npm install, Node test, TypeScript check, Expo export, emulator or device test was run.
 - The new GitHub Actions workflow was added. Recent workflow attempts were reported as cancelled before any test/type/export steps produced results; no successful CI result or artifact is claimed.
 - No EAS APK/AAB build was produced. Release credentials/availability were not verified.
