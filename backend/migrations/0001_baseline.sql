@@ -1,0 +1,2 @@
+-- Baseline marker for databases initialized from backend/schema.sql.
+-- Do not add schema changes here. New changes must use a new numbered migration.
