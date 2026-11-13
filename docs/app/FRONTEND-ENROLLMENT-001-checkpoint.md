@@ -34,7 +34,7 @@ Worker branch: `agent/frontend-enrollment-current-20261113`
 
 ## Commits
 - `76188898157209e91f016ac619a9ece7544af4b7` — reapply the focused implementation on current master.
-- Checkpoint commit: pending.
+- Checkpoint commit: `7fa67b5d2924795e515915bd12d4eaa37bff7f7b`.
 
 ## Verification
 - Static inspection confirms class list is scoped to selected school and stale class selections are cleared on school changes.
