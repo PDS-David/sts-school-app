@@ -58,6 +58,7 @@ export default function FinanceScreen({ navigation }: any) {
     const invUrl = isParent && selectedWardId
       ? `/finance/invoices?student_id=${selectedWardId}`
       : '/finance/invoices';
+    setLoadError('');
     try {
       const [inv, fee] = await Promise.all([
         api.get(invUrl),
