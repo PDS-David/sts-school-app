@@ -26,7 +26,8 @@
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "GOV-WK-T1-W01 (2026-11-07) indexed Week 1 at objective level: meaning as institution, art of governing and academic field mapped SUPPORTED to the reproduced generic parsed-row id; the Hobbes passage at lines 53-54 was checked against Leviathan Part I ch. XIII and needs a delivery replacement, 'why we study government' is only partly taught in the span, the reading pointer is unverified and the source has no answer key, so two PARTIAL rows, one more PARTIAL row and one UNRESOLVED row, four blocking open items (one OWNER_ACTION on the weekend key) and one lesson item were appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written.",
     "GOV-INV-T2 (2026-11-12) verified the assigned 2nd Term Government DOCX from the hash-matching archive. Eleven teaching weeks (WEEK ONE–ELEVEN) were found, plus scheme-only row 12–13 Revision and Examination; the scheme is plain paragraphs. The document has one comparison table, one native Office Math pound sign and five superscript ordinal runs, but no embedded images. Fifteen bounded preamble, marker, week-indexing and visual-disposition items were appended. Exact XML body-child locators and C14N hashes are in GOV-INV-T2.md. No lesson, coverage, rule, correction or asset was written; tests remain deferred.",
-    "Owner authorization 2026-11-12: backend/src/db/ss1/subjects/government.json is added to allowed_write_paths for GOV-REV-T3 and GOV-WK-T3-W01 through GOV-WK-T3-W11. This authorizes the package writes specified by those tasks; all other path and task restrictions remain unchanged."
+    "Owner authorization 2026-11-12: backend/src/db/ss1/subjects/government.json is added to allowed_write_paths for GOV-REV-T3 and GOV-WK-T3-W01 through GOV-WK-T3-W11. This authorizes the package writes specified by those tasks; all other path and task restrictions remain unchanged.",
+    "2026-11-13 GOV-LES-T1-W08-CORRECTED-WEEK: implemented SUP-SS1-GOVERNMENT-T1-W08-CORRECTED, body SHA-256 44aa2b7ed31e1f8fdef51f9ff6469a7e336fbfbe1cf78a4767695ec67373de5f; bound exact original row SS1-SRC-40ce7dcaf672:BODY:18f42d69b8171e73a693a0f6e333706ccdf511bfa42e1074dd577fec0d01dbca; 13 practice items, 37 marks, each criterion total checked; duplicate queue records both marked IMPLEMENTED_TESTING_DEFERRED. Week Eight reading remains PARTIAL and its verification gate remains open. Package stays PENDING; tests deferred by owner."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -40,9 +41,9 @@
     "LESSON": 27
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 60,
-    "PENDING": 17,
-    "BLOCKED": 1
+    "IMPLEMENTED_TESTING_DEFERRED": 62,
+    "BLOCKED": 1,
+    "PENDING": 15
   },
   "items": [
     {
@@ -2321,8 +2322,8 @@
         "GOV-SRC-T1",
         "GOV-WK-T1-W08"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GOV-WK-T1-W08 on 2026-11-12. Required to correct statehood criteria, permanence, nation/state distinctions and the colonial-legacy claim about Nigerian federalism; teach the omitted political-culture components/determinants; and supply keyed practice for all 13 exercises. Not authored yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-13 as SUP-SS1-GOVERNMENT-T1-W08-CORRECTED; body SHA-256 44aa2b7ed31e1f8fdef51f9ff6469a7e336fbfbe1cf78a4767695ec67373de5f. Bound to original source row SS1-SRC-40ce7dcaf672:BODY:18f42d69b8171e73a693a0f6e333706ccdf511bfa42e1074dd577fec0d01dbca (source member SHA-256 50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a). Added 13 complete practice answers with criterion-level marks totalling 37; corrected the invalid authoritarianism/totalitarianism MCQ wording. Updated 11 objective/scheme/assessment coverage entries to IMPLEMENTED_EQUIVALENT; reading remains PARTIAL because the cited books were not supplied. Content approval PENDING; verification DEFERRED; no tests/importer/compiler/device checks run.",
       "completion_condition": "A visibly original supplement teaches all objectives with a recomputed body_sha256, dated/citable provenance, complete answer keys and criterion-level marking that sums exactly; content approval stays PENDING and verification DEFERRED; delivery_corrections binds the exact original source row ID/body hash to the replacement; unsupported reading pages are not copied; no source bytes, schema or shared code are edited."
     },
     {
@@ -2360,8 +2361,8 @@
         "GOV-SRC-T1",
         "GOV-WK-T1-W08"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GOV-WK-T1-W08 on 2026-11-12. Required to correct statehood criteria, permanence, nation/state distinctions and the colonial-legacy claim about Nigerian federalism; teach the omitted political-culture components/determinants; and supply keyed practice for all 13 exercises. Not authored yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-13 as SUP-SS1-GOVERNMENT-T1-W08-CORRECTED; body SHA-256 44aa2b7ed31e1f8fdef51f9ff6469a7e336fbfbe1cf78a4767695ec67373de5f. Bound to original source row SS1-SRC-40ce7dcaf672:BODY:18f42d69b8171e73a693a0f6e333706ccdf511bfa42e1074dd577fec0d01dbca (source member SHA-256 50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a). Added 13 complete practice answers with criterion-level marks totalling 37; corrected the invalid authoritarianism/totalitarianism MCQ wording. Updated 11 objective/scheme/assessment coverage entries to IMPLEMENTED_EQUIVALENT; reading remains PARTIAL because the cited books were not supplied. Content approval PENDING; verification DEFERRED; no tests/importer/compiler/device checks run.",
       "completion_condition": "A visibly original supplement teaches all objectives with a recomputed body_sha256, dated/citable provenance, complete answer keys and criterion-level marking that sums exactly; content approval stays PENDING and verification DEFERRED; delivery_corrections binds the exact original source row ID/body hash to the replacement; unsupported reading pages are not copied; no source bytes, schema or shared code are edited."
     },
     {
@@ -2963,8 +2964,6 @@
     }
   },
   "next_runnable": [
-    "GOV-LES-T1-W08-CORRECTED-WEEK",
-    "GOV-LES-T1-W08-CORRECTED-WEEK",
     "GOV-LES-T1-W09-CORRECTED-WEEK",
     "GOV-LES-T1-W09-CORRECTED-WEEK",
     "GOV-LES-T1-W10-CORRECTED-WEEK",
