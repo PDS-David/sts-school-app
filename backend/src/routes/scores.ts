@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { z } from 'zod';
-import { query } from '../db/pool.js';
+import { query, withTransaction } from '../db/pool.js';
+import type { PoolClient } from 'pg';
 import { requireAuth, requirePerm } from '../middleware/auth.js';
 import { getGrade } from '../utils/grades.js';
 import { audit } from '../utils/audit.js';
@@ -16,13 +17,73 @@ router.use(requireAuth);
 // on why /bulk needs this too, not just type/shape validation.
 const scoreEntrySchema = z.object({
   student_id:     z.string().uuid(),
-  subject_id:     z.number().int(),
-  term_id:        z.number().int(),
+  subject_id:     z.number().int().positive(),
+  term_id:        z.number().int().positive(),
   ca1:            z.number().min(0),
   ca2:            z.number().min(0),
   exam:           z.number().min(0),
   teacher_remark: z.string().optional(),
 });
+
+/**
+ * Validate and lock all three school-owned references for a score write.
+ * Subject-only teachers may enter only their assigned subjects; class
+ * teachers retain the class-wide subject access exposed by GET /scores.
+ */
+async function validateScoreWriteScope(
+  client: PoolClient,
+  user: AuthUser,
+  score: { student_id: string; subject_id: number; term_id: number },
+): Promise<{ schoolCode: string } | { status: number; error: string }> {
+  const { rows: studentRows } = await client.query(
+    'SELECT school_code, class_name, deleted_at FROM students WHERE id=$1 FOR SHARE',
+    [score.student_id],
+  );
+  const student = studentRows[0];
+  if (!student || student.deleted_at) return { status: 404, error: 'Student not found' };
+
+  const { rows: subjectRows } = await client.query(
+    'SELECT school_code FROM subjects WHERE id=$1 FOR SHARE',
+    [score.subject_id],
+  );
+  const subject = subjectRows[0];
+  if (!subject) return { status: 400, error: 'Subject not found' };
+
+  const { rows: termRows } = await client.query(
+    'SELECT school_code FROM terms WHERE id=$1 FOR SHARE',
+    [score.term_id],
+  );
+  const term = termRows[0];
+  if (!term) return { status: 404, error: 'Term not found' };
+
+  if (!student.school_code || subject.school_code !== student.school_code || term.school_code !== student.school_code) {
+    return { status: 400, error: 'Student, subject and term must all belong to the same school.' };
+  }
+
+  if (user.role !== 'admin') {
+    if (user.role !== 'teacher') return { status: 403, error: 'Not authorized to write scores' };
+    if (!user.school_code || user.school_code !== student.school_code) {
+      return { status: 403, error: "You can't write scores outside your school" };
+    }
+    if (user.assigned_class) {
+      if (student.class_name !== user.assigned_class) {
+        return { status: 403, error: "You can't write scores outside your assigned class" };
+      }
+    } else if (!(user.assigned_subject_ids ?? []).some(id => Number(id) === score.subject_id)) {
+      return { status: 403, error: 'You can only enter scores for your assigned subjects.' };
+    }
+
+    const { rows: locks } = await client.query(
+      'SELECT locked_at FROM class_locks WHERE school_code=$1 AND class_name=$2 AND term_id=$3 FOR SHARE',
+      [student.school_code, student.class_name, score.term_id],
+    );
+    if (locks[0]) {
+      return { status: 403, error: 'This class is locked for the selected term. Ask an administrator to unlock it.' };
+    }
+  }
+
+  return { schoolCode: student.school_code };
+}
 
 // ── GET /scores/teacher/overview — aggregate-only marking and class analytics ──
 // A missing score row represents an unentered subject/term mark. This endpoint
