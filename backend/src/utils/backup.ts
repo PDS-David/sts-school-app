@@ -94,7 +94,9 @@ export async function collectPayload(): Promise<BackupPayload> {
       `SELECT table_name FROM information_schema.tables
         WHERE table_schema='public' AND table_type='BASE TABLE' ORDER BY table_name`);
     const tables: BackupTable[] = [];
+    const excludedTables = new Set(['app_bootstrap', 'backup_log', 'schema_migrations']);
     for (const { table_name } of tbls) {
+      if (excludedTables.has(table_name)) continue;
       const { rows: cols } = await client.query(
         `SELECT column_name, data_type, udt_name, character_maximum_length, numeric_precision, numeric_scale,
                is_nullable, column_default, is_identity, is_generated FROM information_schema.columns
