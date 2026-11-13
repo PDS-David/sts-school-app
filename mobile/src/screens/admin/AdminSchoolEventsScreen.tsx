@@ -66,7 +66,7 @@ export default function AdminSchoolEventsScreen() {
       Alert.alert(editingId != null ? 'Event updated' : 'Event created', 'The event is now available to its selected audience.');
       await load();
     } catch (error: any) {
-      Alert.alert('Could not create event', error?.response?.data?.error ?? 'Please check the details and try again.');
+      Alert.alert(editingId != null ? 'Could not update event' : 'Could not create event', error?.response?.data?.error ?? 'Please check the details and try again.');
     } finally { setSaving(false); }
   };
 
@@ -105,7 +105,7 @@ export default function AdminSchoolEventsScreen() {
       <AppHeader title="School Calendar" onPressBell={() => openNotifications()} />
       <ScrollView contentContainerStyle={{ padding: Spacing.md }}>
         <Card>
-          <Text style={styles.heading}>Create school event</Text>
+          <Text style={styles.heading}>{editingId != null ? 'Edit school event' : 'Create school event'}</Text>
           <Text style={styles.help}>Dates must include a timezone. Example: 2026-12-01T09:00:00+01:00</Text>
           <TextInput value={title} onChangeText={setTitle} placeholder="Event title" style={styles.input} maxLength={200} />
           <TextInput value={description} onChangeText={setDescription} placeholder="Description (optional)" style={[styles.input, styles.multiline]} multiline maxLength={5000} />
