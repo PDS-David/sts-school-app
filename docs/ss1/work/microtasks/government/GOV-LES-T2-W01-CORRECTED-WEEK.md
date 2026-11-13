@@ -81,7 +81,7 @@ Colonial governments and businesses later used coercive labour systems in parts 
 
 Indirect rule was a form of colonial administration in which British officials governed through selected local rulers, councils or other Native Authority agents. The local authorities carried out specified administrative tasks under colonial supervision. They did not possess full independence from the colonial government.
 
-Sir Frederick Lugard, later Lord Lugard, played a major role in developing and applying this system in Northern Nigeria. He served as the first High Commissioner of the Northern Nigeria Protectorate from 1900 to 1906 and later became Governor-General of the amalgamated Nigeria in 1914. The paradigmatic Native Administration institutions in Northern Nigeria were formalised between 1914 and 1917 under the British administration. Indirect rule was not invented from nothing by one person, and it was not unique to Britain; other empires used forms of indirect administration in different territories.
+Sir Frederick Lugard, later Lord Lugard, played a major role in developing and applying this system in Northern Nigeria. He served as the first High Commissioner of the Northern Nigeria Protectorate from 1900 to 1906 and later became Governor-General of the amalgamated Nigeria in 1914. The Northern Nigerian model developed during Lugard’s High Commissionership (1900–1906) and was supported by a sequence of legal proclamations. One historical account identifies the Native Courts Proclamation (1900), Native Revenue Proclamation (1906) and Native Authority (Enforcement) Proclamation (1907). Contemporary Northern Nigeria annual reports also record Native Courts and Native Revenue proclamations in 1906 and describe the 1907–1908 administration as governing through native rulers under British Residents. The later Native Courts, Native Authority and Native Treasury Ordinances of 1914–1916 were used to extend the northern/Lugardian model into Southern Nigeria after amalgamation; they did not mark the beginning of indirect rule in Northern Nigeria. This chronology distinguishes the development of the northern system from its later extension. Indirect rule was not invented from nothing by one person, and it was not unique to Britain; other empires used forms of indirect administration in different territories.
 
 6. WHY THE BRITISH USED INDIRECT RULE
 
@@ -182,7 +182,7 @@ The Berlin Conference of 1884–1885 established rules for European claims and t
 
 ### 6. Explain Lord Lugard's role in Northern Nigeria and why indirect rule did not operate in exactly the same way in every community.
 
-**Answer:** Sir Frederick Lugard, later Lord Lugard, was High Commissioner of the Northern Nigeria Protectorate from 1900 to 1906 and later Governor-General of Nigeria. Native Administration institutions based on indirect rule were formalised in Northern Nigeria during 1914–1917. In emirate areas, British officials worked through established hierarchies such as emirs and district heads. In decentralised communities, including parts of Tiv and Jos Plateau areas, there was not always one ruler with authority over a large territory. British officials sometimes misunderstood local institutions or appointed agents who lacked legitimacy, and later used councils in some areas. Therefore, the system varied by local political history and colonial policy.
+**Answer:** Sir Frederick Lugard, later Lord Lugard, was High Commissioner of the Northern Nigeria Protectorate from 1900 to 1906 and later Governor-General of Nigeria. The Northern Nigerian model developed during Lugard’s High Commissionership (1900–1906) and was supported by a sequence of legal proclamations. One historical account identifies the Native Courts Proclamation (1900), Native Revenue Proclamation (1906) and Native Authority (Enforcement) Proclamation (1907). Contemporary Northern Nigeria annual reports also record Native Courts and Native Revenue proclamations in 1906 and describe the 1907–1908 administration as governing through native rulers under British Residents. The later Native Courts, Native Authority and Native Treasury Ordinances of 1914–1916 were used to extend the northern/Lugardian model into Southern Nigeria after amalgamation; they did not mark the beginning of indirect rule in Northern Nigeria. This chronology distinguishes the development of the northern system from its later extension. In emirate areas, British officials worked through established hierarchies such as emirs and district heads. In decentralised communities, including parts of Tiv and Jos Plateau areas, there was not always one ruler with authority over a large territory. British officials sometimes misunderstood local institutions or appointed agents who lacked legitimacy, and later used councils in some areas. Therefore, the system varied by local political history and colonial policy.
 
 **Marks:** 6
 
@@ -206,9 +206,26 @@ The Berlin Conference of 1884–1885 established rules for European claims and t
 
 **Practice coverage:** 7 original formative questions, 33 marks total. No source question stems or source answer key are claimed.
 
+### Dated source references used in the supplement
+
+- German Federal Foreign Office, Political Archive, *General Act of the Berlin West Africa Conference* (26 February 1885): https://archiv.diplo.de/arc-en/the-political-archive/general-act-2684414
+- United Nations, *List of former Trust and Non-Self-Governing Territories*: https://www.un.org/dppa/decolonization/en/history/former-trust-and-nsgts
+- Encyclopaedia Britannica, “Industrial Revolution”: https://www.britannica.com/event/Industrial-Revolution
+- Arlindo Manuel Caldeira, “Portuguese Slave Trade,” *Oxford Research Encyclopedia of African History* (30 January 2024): https://doi.org/10.1093/acrefore/9780190277734.013.903
+- Alexander Ives Bortolot, “The Transatlantic Slave Trade,” The Metropolitan Museum of Art (1 October 2003): https://www.metmuseum.org/essays/the-transatlantic-slave-trade
+- Catherine B. Ash, “Forced Labor in Colonial West Africa,” *History Compass* 4, no. 3 (28 April 2006): https://doi.org/10.1111/j.1478-0542.2006.00327.x
+- Alice L. Conklin, “The Civilizing Mission,” in *The French Republic: History, Values, Debates* (2011), pp. 173–181: https://doi.org/10.7591/cornell/9780801449017.003.0020
+- Toyin Falola, “Indirect Rule and the Native Administration,” in *Understanding Colonial Nigeria* (Cambridge University Press, 2024), pp. 215–234: https://doi.org/10.1017/9781009337205.012
+- Toyin Falola et al., *History of Nigeria 3* (Longman Nigeria, 1991), pp. 23–26; accessed through the National Library of Nigeria repository: https://nigeriareposit.nln.gov.ng/server/api/core/bitstreams/39af5c00-0106-4d12-9118-9aab883796de/content
+- *Annual Report of the Colonies, Northern Nigeria, 1906–1907*, Colonial Reports—Annual No. 551 (1907): https://libsysdigi.library.illinois.edu/ilharvest/Africana/Books2011-05/3064634/3064634_1906_1907_northern_nigeria/3064634_1906_1907_northern_nigeria_opt.pdf
+- *Annual Report of the Colonies, Northern Nigeria, 1907–1908*, Colonial Reports—Annual No. 694 (1909): https://libsysdigi.library.illinois.edu/ilharvest/Africana/Books2011-05/3064634/3064634_1907_1908_northern_nigeria/3064634_1907_1908_northern_nigeria_opt.pdf
+- “Writing a Colonial Legal History of Northern Nigeria: An Analysis of Methods and Sources,” *History in Africa* (2023): https://doi.org/10.1017/hia.2023.11
+
+All secondary and copyrighted sources are paraphrased in original wording; no textbook, examination paper, image or extended passage is reproduced. Public-domain archival reports are cited for historical chronology.
+
 ## Provenance and status
 - Lesson ID: `SUP-SS1-GOVERNMENT-T2-W01-CORRECTED`
-- Body SHA-256 (UTF-8): `31210cb93d061bc82edddf79de7f29f4947c883da2a1594a1f14a1172fb58e11`
+- Body SHA-256 (UTF-8): `bef8fca8a27366d18e2b5ade80a44a945ee6d716319a702489fe9c573d70f374`
 - Berlin Conference: German Federal Foreign Office (12 November 2024) and General Act of Berlin (1885).
 - West African decolonization dates: United Nations and Decolonization former-territory list.
 - First Industrial Revolution: Encyclopaedia Britannica, c.1760–1840.
