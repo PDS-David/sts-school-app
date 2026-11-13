@@ -208,9 +208,8 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     // averages, positions, class size or the raw teacher score list.
     await query(
       `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,entered_by,class_name)
-       VALUES($1,$2,$3,10,10,30,'B',$4,'Primary 4'),
-             ($5,$2,$3,20,20,60,'A',$4,'Primary 4')`,
-      [studentIds[0], subjectIds[0], termIds[0], admin.id, studentIds[2]],
+       VALUES($1,$2,$3,20,20,60,'A',$4,'Primary 4')`,
+      [studentIds[2], subjectIds[0], termIds[0], admin.id],
     );
 
     const report = await fetch(
