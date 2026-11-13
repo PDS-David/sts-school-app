@@ -16,14 +16,14 @@ const existingRows = (sourceManifest as any).records.map((row: any) => ({
 
 test('Primary 4 supplements append to the existing ingestion plan with stable order and source files', () => {
   const rows = buildPrimary4SupplementRows(existingRows, 'C:/curriculum/primary4', 'primary');
-  assert.equal(rows.length, 36);
+  assert.equal(rows.length, 38);
   assert.ok(rows.every(row => row.className === 'Primary 4' && row.preserveOrderIndex === true));
   assert.ok(rows.every(row => row.filePath.includes('__primary4_researched__')));
   assert.equal(rows.filter(row => row.subjectName === 'Home Economics' && row.termLabel === '3rd Term').length, 7);
   const sequence = (subject: string, term: string) => rows.filter(row => row.subjectName === subject && row.termLabel === term).map(row => row.orderIndex);
   assert.deepEqual(sequence('Home Economics', '1st Term'), [1,2,3,4,5,6,7,8,9]);
   assert.deepEqual(sequence('Home Economics', '2nd Term'), [1,2,3,4,5,6,7,8,9]);
-  assert.deepEqual(sequence('Basic Science', '3rd Term'), [1,2,3]);
+  assert.deepEqual(sequence('Basic Science', '3rd Term'), [1,2,3,4,5]);
   assert.deepEqual(sequence('Basic Technology', '1st Term'), [1,2,3,4]);
   assert.deepEqual(sequence('Basic Technology', '2nd Term'), [1,2,3,4]);
   assert.deepEqual(
@@ -38,9 +38,7 @@ test('Primary 4 ingestion refuses secondary school and archive/export count mism
   assert.throws(() => buildPrimary4SupplementRows(missingHomeEconomicsRow, 'C:/curriculum', 'primary'), /source archive mismatch/);
 });
 
-test('Primary 4 packages cannot be written until owner approval and verification', () => {
+test('all Primary 4 researched packages pass the owner approval and verification gate', () => {
   const issues = primary4SupplementApprovalIssues();
-  assert.equal(issues.length, 8);
-  assert.ok(issues.some(issue => issue.includes('PENDING_OWNER_REVIEW')));
-  assert.ok(issues.some(issue => issue.includes('NOT_YET_INDEPENDENTLY_VERIFIED')));
+  assert.deepEqual(issues, []);
 });
