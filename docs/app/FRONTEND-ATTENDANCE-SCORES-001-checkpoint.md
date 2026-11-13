@@ -9,7 +9,7 @@
 ## Commits
 - `3dae1197aa3d1b75505dd1fe553693339665fa6b` — validate attendance values and replace native alerts with cross-platform feedback.
 - `3bda2ede0b90b00e77777709ae5a74ddd45c3f80` — validate score values against school limits and replace native alerts with cross-platform feedback.
-- Checkpoint commit: pending..
+- Checkpoint commit: `71ad3f63eee41ca092bcd70bb297307fcb8ec970`..
 
 ## Changes
 - Attendance: validate days opened as a non-negative whole number; validate entered days present as whole, non-negative values not exceeding the target days-opened limit.
