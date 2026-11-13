@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import rateLimit from 'express-rate-limit';
 import type { Response } from 'express';
 import { query } from '../db/pool.js';
 import { requireAuth, requireRole, requirePerm } from '../middleware/auth.js';
@@ -7,6 +8,23 @@ import { validateTextStudyRequest, buildTextStudyPrompt } from '../utils/textStu
 
 const router = Router();
 router.use(requireAuth);
+
+// The optional Redis limiter in utils/ai.ts is distributed when configured,
+// but deliberately fails open during Redis outages or when Redis is absent.
+// Keep a per-process, per-account ceiling at the HTTP boundary as a mandatory
+// fallback so authenticated users cannot make unlimited paid model calls
+// when the optional store is unavailable. Admin diagnostic calls retain the
+// existing bypass.
+const aiRequestLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: (req) => req.user!.id,
+  skip: (req) => req.user?.role === 'admin',
+  message: { error: 'AI request limit exceeded. Try again in one minute.' },
+});
+router.use(aiRequestLimiter);
 
 // This file is the technical AI hub — every route here is what the mobile
 // app presents to users as "Brainee". Nothing in this file, or anywhere else
