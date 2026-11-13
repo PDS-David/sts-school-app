@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import manifest from '../../backend/src/db/primary4/sourceManifest.json' with { type: 'json' };
 import archiveCorrections from '../../backend/src/db/primary4/researched/archiveLessonCorrections.json' with { type: 'json' };
-import { resolvePrimary4SourceDelivery, safePrimary4Topic, primary4WithdrawnAssessmentIds } from '../../backend/src/utils/primary4Delivery.ts';
+import { resolvePrimary4SourceDelivery, safePrimary4Topic, primary4WithdrawnAssessmentIds, primary4AssessmentDeliverable, retireStalePrimary4Cache } from '../../backend/src/utils/primary4Delivery.ts';
 
 const outline = 'WEEK 1:\u00a0CHANGES IN NATURE\n\nUNITS:\n\nTypes of changes :Temporary changes(reversible) and Permanent changes (irreversible)';
 const baseTopic = {
@@ -49,11 +49,58 @@ test('safe topic projection removes drifted source, summary and generated assess
   assert.equal((safe as any).primary4_delivery.status, 'withheld');
 });
 
-test('withdrawn assessment lookup hides only assessments linked to drifted Primary 4 topics', async () => {
-  const query = async () => ({ rows: [
-    { ...baseTopic, source_reference: outline + ' changed', generated_assessment_id: 91 },
-    { ...baseTopic, class_name: 'Primary 5', generated_assessment_id: 92 },
-  ] });
+test('retiring an approved archive correction closes stale assessment and clears cached summary/link', async () => {
+  const calls: Array<{ sql: string; params?: unknown[] }> = [];
+  const query = async (sql: string, params?: unknown[]) => {
+    calls.push({ sql, params });
+    return { rows: [{ retired: 1, closed_assessments: 1, updated_topics: 1 }] };
+  };
+  const correction = (archiveCorrections.corrections as any[])[0];
+  const result = resolvePrimary4SourceDelivery({
+    ...baseTopic, id: correction.topic_id, subject_name: correction.subject, term_label: correction.term,
+    order_index: correction.source_order_index, title: correction.source_title,
+  });
+  assert.equal(result?.kind, 'matched');
+  if (!result || result.kind !== 'matched') return;
+  const retired = await retireStalePrimary4Cache(query, correction.topic_id, result);
+  assert.deepEqual(retired, { retired: true, closedAssessments: 1, updatedTopic: true });
+  assert.match(calls[0].sql, /UPDATE assessments a SET status='closed'/);
+  assert.match(calls[0].sql, /generated_assessment_id=CASE WHEN EXISTS/);
+  assert.equal(calls[0].params?.[1], result.sourceHash);
+  assert.equal(calls[0].params?.[3], true);
+});
+
+test('Primary 4 assessment is rejected when its linked correction fingerprint is stale', async () => {
+  const correction = (archiveCorrections.corrections as any[])[0];
+  const topic = {
+    ...baseTopic, id: correction.topic_id, subject_name: correction.subject, term_label: correction.term,
+    order_index: correction.source_order_index, title: correction.source_title,
+    generated_assessment_id: 91, content_fingerprint: null,
+  };
+  let linkedRead = false;
+  const query = async (sql: string) => {
+    if (sql.startsWith('SELECT content_fingerprint')) return { rows: [{ content_fingerprint: null }] };
+    if (sql.includes('JOIN assessments a')) {
+      linkedRead = true;
+      return { rows: [topic] };
+    }
+    return { rows: [{ retired: 1, closed_assessments: 1, updated_topics: 1 }] };
+  };
+  const result = await primary4AssessmentDeliverable(query, 91);
+  assert.equal(linkedRead, true);
+  assert.equal(result.ok, false);
+  assert.match(result.reason, /withdrawn/i);
+});
+
+test('withdrawn assessment lookup hides only stale or withheld Primary 4 assessments', async () => {
+  const query = async (sql: string) => {
+    if (sql.includes('left(content_fingerprint')) return { rows: [] };
+    if (sql.includes('JOIN assessments a')) return { rows: [
+      { ...baseTopic, source_reference: outline + ' changed', generated_assessment_id: 91, content_fingerprint: null },
+      { ...baseTopic, class_name: 'Primary 5', generated_assessment_id: 92, content_fingerprint: null },
+    ] };
+    return { rows: [{ retired: 1, closed_assessments: 1, updated_topics: 1 }] };
+  };
   const ids = await primary4WithdrawnAssessmentIds(query, [91, 92, 93]);
   assert.deepEqual([...ids], [91]);
 });
@@ -83,7 +130,7 @@ test('archive correction package contains structurally complete lessons and expl
   }
 });
 
-test('archive corrections are withheld until explicit owner approval and never fall back to stale exported text', () => {
+test('approved archive corrections replace stale exported text and clear cached learner content', () => {
   const correction = (archiveCorrections.corrections as any[])[0];
   const topic = {
     ...baseTopic,
