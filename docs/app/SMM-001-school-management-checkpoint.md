@@ -33,7 +33,8 @@ Worker branch: agent/school-management-feature-completion-20261113
 - Other operational/data-integrity tasks in the archived backlog (for example migration-ledger, offline idempotency and push-receipt work) are separate from the school-management feature scope and remain for a dedicated pass.
 
 ## Changed files
-- `mobile/src/screens/student/StudentHomeScreen.tsx` — replaced the hard-coded empty announcements card with the latest three announcement items from the already-scoped notification feed; pull-to-refresh refreshes the feed.
+- `mobile/src/screens/student/StudentHomeScreen.tsx` — replaced the hard-coded empty announcements card with the latest three announcement items from the already-scoped notification feed; pull-to-refresh refreshes the feed and shows a distinct error state.
+- `mobile/src/components/NotificationsContext.tsx` — retains the last successful announcement feed on refresh failure, exposes load/error state, and guards against stale account-switch responses.
 - `mobile/src/screens/parent/ParentHomeScreen.tsx` — same for parent dashboard; the backend's parent/ward scoping remains authoritative.
 - This checkpoint file.
 
@@ -41,6 +42,9 @@ Worker branch: agent/school-management-feature-completion-20261113
 - `b30835c24ff2de7c2fbb1e149d8c6165133f4e2a` — initial durable checkpoint.
 - `9b74a964985cc4bab131e626fdf9ca5bdaa07c3a` — student dashboard announcement integration.
 - `59761d8ee5e95430e443f1a59a1fdc3d992701f8` — parent dashboard announcement integration.
+- `c8af650ff83ecc547eb3be6db90c9c2cf2bb25c1` — preserve cached announcements and expose refresh error state.
+- `c8112748cb277121e478dfe2c8b8271eb3c1f6c3` and `322dd8cf9a417b8c6cfd701b246e609861a8a3a5` — distinguish announcement load errors from an empty feed.
+- `9c5946a6e605ce368fe80e3efac55340f3381cd3` and `2a456cee1d121748f880e2efcff55bba8cdbdbed` — keep previously loaded notices visible while showing refresh warnings.
 
 ## Tests
 - No automated tests/typecheck run: this session has GitHub repository write/read access but no local checkout or command execution environment for this repository.
