@@ -4,7 +4,7 @@ export interface MaterialDownloadTarget {
   mimeType: string;
 }
 
-const SECURE_HTTPS_URL = /^https:\/\/[a-z0-9.-]+(?::\\d+)?(?:[/?#][^\\s]*)?$/i;
+const SECURE_HTTPS_URL = /^https:\/\/[a-z0-9.-]+(?::\d+)?(?:[/?#][^\s]*)?$/i;
 
 export function isSafeMaterialUrl(value: unknown): value is string {
   return typeof value === 'string' && value === value.trim() && SECURE_HTTPS_URL.test(value);
