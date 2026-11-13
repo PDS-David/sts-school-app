@@ -1,50 +1,78 @@
 # Android/mobile readiness checkpoint
 
 - Task ID: MOB-ANDROID-001
-- Status: IN PROGRESS — offline outbox persistence/isolation and session validation fixes implemented; Android CI is now running; device/release acceptance remains open.
-- Branch: `agent/mobile-android-readiness-20261113`
-- Base: `master` at `982c1d2d94e9bfbbb890d027c620b8a16e7f3f26`
-- Latest implementation commit: `ee761d70d636976e1d902ea882eae6e403b2e540`
+- Status: IN PROGRESS — implementation expanded and rebased onto current master; automated/device/release gates remain open.
+- Branch: `agent/mobile-android-readiness-20261113-v2`
+- Base: `master` at `03aa60f0f448caed371e8da9a30ff1f91cb0cbf5`
+- Latest implementation commit before this checkpoint: `3afd0c18aeb826ba122002d8c8f6adb5fdda9d6e`
+- Prior PR #696 was based on an older master and is superseded by the current branch/PR.
+- Ownership/rebase check:
+  - Master advanced after the original branch was created. Its changes touched notification context, role dashboards/navigation and curriculum/backend files, but did not overlap the 18 paths carried forward here.
+  - Created this branch from the current master and reapplied only the mobile readiness paths. Comparison is 18 commits ahead, 0 behind.
+  - Open work on current master includes messaging, notification and backend authorization PRs; the changed files in this branch do not overlap those PR paths.
 - Changed files:
-  - `mobile/src/api/client.ts`
-  - `mobile/src/api/AuthContext.tsx`
-  - `mobile/src/offline/replayPolicy.ts`
-  - `mobile/src/offline/storage.ts`
-  - `mobile/src/offline/serialQueue.ts`
-  - `mobile/src/offline/outboxStore.ts`
-  - `mobile/src/api/authSession.ts`
   - `.github/workflows/mobile-android-readiness.yml`
-  - `tests/mobile/offline-replay.test.mts`
-  - `package.json`
   - `README.md`
-- Ownership check:
-  - No branch matching `offline` was found.
-  - Open mobile PR #685 changes only the student and parent home screens plus its checkpoint; this task's API client change does not overlap.
-  - Existing `mobile/add-expo-audio-dependency-2026-11-11` and `fix/mobile-svg-safety-regex-2026-11-11` branches do not indicate ownership of the API client.
-- Finding and fix:
-  - `flushOutbox()` replayed queued writes through the normal Axios response interceptor. If connectivity failed during replay, that interceptor enqueued a new copy and returned a synthetic 202 response; the flusher then removed the old entry. This could churn/duplicate queued writes and lose stable retry identity.
-  - Outbox replay now marks its request with an internal `_skipOfflineQueue` flag. The network-failure interceptor rejects marked replays rather than re-enqueueing them, so the existing flusher retains the original item for the next retry.
-- Verification:
-  - Static control-flow trace of `mobile/src/api/client.ts` and `mobile/src/offline/storage.ts`.
-  - Hardened cold-start session restoration: storage read/JSON parsing failures now return to the signed-out state and always clear the startup loading gate; malformed persisted user records are discarded.
-  - Extracted the offline replay enqueue decision into a pure helper, added three focused Node test cases, and added the root command `npm run test:mobile:offline`.
-  - Fixed concurrent outbox races with a FIFO async mutation queue.
-  - Extracted a namespaced outbox store. Every mutation captures its account key before waiting in the queue; storage read/write/JSON failures propagate instead of silently treating unsaved work as queued. This prevents false-success writes, corrupt-data overwrite and namespace drift during account switching.
-  - Persisted-session validation is now a pure guard that checks user ID, username, role, school code and optional field types.
-  - Nine focused Node regression cases now cover replay bypass, queue ordering/recovery, persistence errors, corrupt queue preservation, account namespace capture and supported/invalid persisted user shapes. They have not yet been executed locally.
-  - Added `.github/workflows/mobile-android-readiness.yml` to run the offline tests, mobile TypeScript validation and Android JS bundle export on this branch/PR, then upload the bundle. Run `43450548867` (push event) was created and its mobile job was queued at the last poll; results are pending.
-  - Static release/config review: `mobile/app.json` points to the HTTPS production API origin and its Android package name matches `mobile/google-services.json`; `mobile/eas.json` defines internal APK and production AAB profiles.
-  - Static navigation review: `RootNavigator` routes student, parent, teacher, admin and finance-admin roles to separate navigators. Push registration, backend Expo delivery, foreground display and supported message/assessment/score tap routing exist; live device delivery remains unverified.
-  - Materials are URL-based and opened with `Linking.openURL`; the current screen does not implement native file downloads or an offline file library. Updated the README to replace its stale claim that no push wiring exists and to distinguish implemented code from unverified live delivery.
-  - No local checkout or package installation was possible (the runtime could not resolve github.com). CI is now the available execution path; its test, typecheck and export results must be checked before treating those gates as passed. EAS APK/AAB build, emulator and physical-device execution remain unverified.
-  - No device verification is claimed.
-- Remaining acceptance work:
-  - Add/run an integration regression test proving replay network failure retains exactly one original outbox item.
-  - Check run `43450548867` for the nine test cases, TypeScript validation and Android JS export. Audit token/session expiry, role navigation, logout/switch-user behavior and server authorization for queued writes.
-  - Audit cache freshness, write queue authorization/idempotency and synchronization conflict handling.
-  - Audit assessments, learning resources, file viewing/downloads, notifications and permission enforcement.
-  - Verify network recovery, startup/crash handling and supported Android API/device compatibility.
-  - Verify production API target and staging/production config, dependency lock consistency, Android export and EAS release credentials/build. Reconcile the current URL-based materials scope with the requested file-view/download acceptance criteria.
-  - Obtain emulator/physical-device smoke evidence before claiming device readiness.
-- Exact next action:
-  - Inspect the Android readiness workflow result. Fix any test/type/export failures, then add the replay-retention integration test and continue the permission, assessment, file and release audit.
+  - `docs/mobile/ANDROID-READINESS-CHECKPOINT.md`
+  - `mobile/src/api/AuthContext.tsx`
+  - `mobile/src/api/authSession.ts`
+  - `mobile/src/api/client.ts`
+  - `mobile/src/api/pushRegistration.ts`
+  - `mobile/src/components/OfflineBanner.tsx`
+  - `mobile/src/offline/outboxFailurePolicy.ts`
+  - `mobile/src/offline/outboxFlushPolicy.ts`
+  - `mobile/src/offline/outboxStore.ts`
+  - `mobile/src/offline/replayPolicy.ts`
+  - `mobile/src/offline/serialQueue.ts`
+  - `mobile/src/offline/storage.ts`
+  - `mobile/src/screens/MaterialsScreen.tsx`
+  - `mobile/src/utils/materialDownload.ts`
+  - `package.json`
+  - `tests/mobile/offline-replay.test.mts`
+
+## Implemented
+
+1. Outbox replay failures no longer re-enqueue replacement writes; the original item remains pending.
+2. Outbox mutations are FIFO serialized. Durable storage errors and malformed JSON/records propagate instead of appearing as an empty/successful queue.
+3. Queue operations capture the originating account namespace before waiting. GET caching, cache invalidation, queued writes and replay are bound to the request's account namespace.
+4. Requests are cancelled if the active account changes before credentials are attached; these cancellations are not misclassified as network failures or queued.
+5. 401/403/409 queued-write failures are retained for re-authentication, restored permissions or conflict resolution. Replay pauses after 401 instead of repeatedly sending remaining writes with an expired session.
+6. Logout does not silently proceed if the pending queue cannot be inspected. OfflineBanner reports queue-storage failures rather than displaying a false zero.
+7. Cold-start session restoration catches storage/parse failures, validates user ID, username, school code and supported role, discards malformed records and always releases the startup loading gate.
+8. Previously authorized push tokens are re-registered after session restore without prompting at startup. The account's pending outbox is flushed after restore/login even if connectivity did not emit a reconnect event.
+9. Learning-material PDF/DOC downloads use the SDK 56 FileSystem download task, persist under the app Documents directory and open the system share sheet. Material links are restricted to HTTPS and local filenames are sanitized.
+10. README push documentation was corrected. Existing push registration/backend Expo delivery/foreground handling are present; real Android delivery remains unverified.
+11. Added 17 focused Node regression cases and `npm run test:mobile:offline`.
+12. Added a CI workflow for offline tests, mobile TypeScript validation and Android JS bundle export with artifact upload.
+
+## Static audit findings
+
+- `mobile/app.json` targets the HTTPS production API and its Android package identifier matches the Firebase Android client entry.
+- Separate student, parent and teacher navigation trees exist; admin and finance-admin roles are routed separately in the root navigator.
+- Backend `requireAuth` checks account active/expiry/deleted-student/pending-review state on requests; route-level permission and content-scope middleware remain authoritative. No backend permission logic was weakened.
+- Assessments use assessment-scoped question endpoints and server submission routes.
+- Materials were previously external-URL-only; direct HTTPS PDF/DOC download/share support is now implemented. Other link/video types continue to open externally.
+- Announcements are in-app feeds and the backend explicitly does not push them. Push provider delivery to a real device is not verified.
+- Existing GET cache has a per-user 500-entry cap and write invalidation. Cache freshness remains best-effort; no explicit max-age policy was added.
+
+## Verification and limitations
+
+- Static source inspection and branch comparison completed.
+- 17 regression tests are authored; **they have not been executed**.
+- A local checkout was attempted, but the environment could not resolve github.com. No local npm install, Node test, TypeScript check, Expo export, emulator or device test was run.
+- The new GitHub Actions workflow was added. Recent workflow attempts were reported as cancelled before any test/type/export steps produced results; no successful CI result or artifact is claimed.
+- No EAS APK/AAB build was produced. Release credentials/availability were not verified.
+- No physical-device verification is claimed.
+
+## Remaining acceptance work
+
+- Obtain a successful run of `npm ci`, `npm run test:mobile:offline`, mobile TypeScript validation and Android Expo bundle export; fix all failures.
+- Run authenticated student, parent, teacher, admin and finance-admin smoke journeys against staging, including token expiry/revocation, logout/account switching and backend 401/403 authorization behavior.
+- Verify outbox replay against the backend for duplicate-message/idempotency and 401/403/409 recovery semantics.
+- Verify offline cache behavior and stale-data UX, assessments, materials download/share/open, file formats, push registration and actual Expo/FCM device delivery.
+- Build an installable internal APK and production AAB where EAS credentials/runner access are available; verify installation/startup on supported Android versions and at least one physical device.
+- Record test run URLs, artifact URLs, device/OS versions and results before changing task status.
+
+## Exact next action
+
+Check the current branch's Android readiness workflow runs. If they remain cancelled without starting, ask the repository owner to enable/retry Actions for this workflow or provide a runner; then run the 17 regression tests, TypeScript check and Android export before proceeding to emulator/device and EAS build verification.
