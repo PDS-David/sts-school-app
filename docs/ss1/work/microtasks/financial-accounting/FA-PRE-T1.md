@@ -17,7 +17,7 @@ Status: IMPLEMENTED — TESTING DEFERRED. Preamble and scheme indexing only. No 
 | 15 | 33 | FIRST TERM E-LEARNING NOTE — title, not a lesson |
 | 17 | 37 | SUBJECT: FINANCIAL ACCOUNTING ... CLASS: SS1 — registered subject/class header |
 | 19 | 41 | SCHEME OF WORK — scheme heading |
-| 21 | 43 | WEEK/TOPIC header; literal source text includes a trailing space after TOPIC |
+| 21 | 43 | Raw text representation: `WEEK\\tTOPIC ` (`\\t` is one tab; the final character is one U+0020 space) |
 | 22–29 | 45–61 | Seven scheme rows, all outline markers rather than teaching content |
 
 ## Seven scheme rows — source wording preserved
@@ -30,7 +30,7 @@ Status: IMPLEMENTED — TESTING DEFERRED. Preamble and scheme indexing only. No 
 6. 8 Source Documents: Purpose Characteristics and Functions.
 7. 9 -10 Subsidiary Books: Purpose, Characteristics, Functions and Preparations.
 
-The row separators are mixed and are not normalized: 4 - 5 uses a hyphen, 6 – 7 and 9 -10 retain their source forms. The first row has no explicit number. The WEEK/TOPIC header retains its trailing space.
+The row separators are mixed and are not normalized: 4 - 5 uses a hyphen, 6 – 7 and 9 -10 retain their source forms. The first row has no explicit number. The raw header representation is `WEEK\\tTOPIC `; `\\t` denotes the single tab between the words and the final blank denotes one U+0020 trailing space.
 
 ## Body boundary and rule decision
 
