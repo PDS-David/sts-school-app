@@ -2,11 +2,12 @@
 
 - **Task ID:** BSEC-012
 - **Title:** Enforce same-school term ownership in individual student score and class-record reports
-- **Status:** implementation committed; CI verification pending
+- **Status:** implementation verified; PR review pending
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Working branch:** agent/backend-student-report-term-scope-20261113
-- **Latest implementation commit:** pending
+- **Latest implementation commit:** 5476554758baf03678131a8dd42bf67446bb9557
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/746
 - **Changed files:**
   - backend/src/routes/scores.ts
   - backend/src/routes/attendance.ts
@@ -16,6 +17,6 @@
 - **Defect:** individual GET /scores/report/:student_id accepted a caller-supplied term_id and returned term metadata without verifying that the term belonged to the student's school. GET /attendance/class-records/:student_id/:term_id likewise accepted a foreign-school term ID after checking only student ownership/teacher school. The write-side BSEC-009 guard did not cover these read routes.
 - **Implementation:** both endpoints now validate the requested term with checkTermSchoolScope after student authorization, reject invalid/nonexistent/cross-school terms, and constrain the score-report term lookup to the student's school. Same-school report behavior is preserved.
 - **Regression coverage:** disposable PostgreSQL HTTP integration test signs in a real seeded student account and exercises both endpoints: cross-school term IDs return 400; same-school term IDs return 200.
-- **Verification:** source and tests fetched back from GitHub and reviewed. Dedicated PostgreSQL 16 workflow added; CI pending. No production student records or database were accessed or changed.
-- **Remaining:** run HTTP/PostgreSQL integration test and backend TypeScript typecheck; fix genuine failures; open focused PR; verify required checks.
+- **Verification:** GitHub Actions run 43453863759 passed: locked dependency install, PostgreSQL 16 bootstrap, real Express HTTP requests to both endpoints, and backend TypeScript typecheck. Repository-wide JSS3 checks 43453863681, attendance batch integrity 43453863899, and SS1 package integrity 43453863654 also passed. No production student records or database were accessed or changed.
+- **Remaining:** PR review/merge. Do not mark the overall backend/security assignment complete.
 - **Exact next action:** inspect branch head and CI run for Backend student report term scope.
