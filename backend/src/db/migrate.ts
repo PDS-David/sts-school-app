@@ -182,13 +182,13 @@ async function applyFresh(client: PoolClient, migrations: Migration[]): Promise<
     throw new Error('Fresh install requires migrations/0001_baseline.sql.');
   }
 
-  await ensureLedger(client);
   const applied = await getApplied(client);
   assertAppliedChecksums(migrations, applied);
   await assertNoUntrackedApplicationSchema(client);
   if (applied.some(row => row.version !== '0001')) {
     throw new Error('Refusing --fresh after incremental migrations have been applied. Use --all.');
   }
+  await ensureLedger(client);
 
   const schema = readFileSync(SCHEMA_PATH, 'utf8');
   console.log('Applying complete schema.sql for a fresh installation…');
