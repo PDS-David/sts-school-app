@@ -308,7 +308,7 @@ Colonial rule brought constitutional, administrative, educational, transport and
 
 - Package lesson: `SUP-SS1-GOVERNMENT-T2-W02-CORRECTED`.
 - Body SHA-256 (UTF-8): `c6568aa5796f191fbb17528ed035826ca045f6a93b4a4030e7d88fed3530f598`.
-- Correction record: `CORR-GOV-T2-W02-ROW-REPLACEMENT`; exact compiler-parsed original row identity is awaiting the diagnostic candidate list before final binding.
+- Correction record: `CORR-GOV-T2-W02-ROW-REPLACEMENT`; exact compiler-parsed original row is bound to `SS1-SRC-c76f430c7cf8:BODY:8d08df9bf392097c3b9501f9e94abd0fd0301ddda3a6c0a44dc03309eb4b5292` with body hash `8d08df9bf392097c3b9501f9e94abd0fd0301ddda3a6c0a44dc03309eb4b5292`.
 - Content approval: PENDING.
 - Independent verification: DEFERRED.
 - Database import, student-facing API, frontend/device and teacher-acceptance tests have not been performed.
