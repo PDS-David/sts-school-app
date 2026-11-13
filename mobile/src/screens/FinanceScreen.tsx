@@ -30,6 +30,9 @@ export default function FinanceScreen({ navigation }: any) {
   const [invoices,  setInvoices]  = useState<any[]>([]);
   const [feeItems,  setFeeItems]  = useState<any[]>([]);
   const [loading,   setLoading]   = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [updatingInvoiceId, setUpdatingInvoiceId] = useState<string | null>(null);
+  const [feeSaving, setFeeSaving] = useState(false);
 
   // Compact switcher lives in the native header now (finance_admin only —
   // parent has no school to switch), not as a full-width block in the
@@ -65,30 +68,44 @@ export default function FinanceScreen({ navigation }: any) {
       ]);
       setInvoices(inv.data.invoices ?? []);
       setFeeItems(fee.data.fee_items ?? []);
-    } catch { } finally { setLoading(false); }
+    } catch {
+      setLoadError('Could not load fee items and invoices. Check your connection and try again.');
+    } finally { setLoading(false); }
   };
   useEffect(() => { fetch(); }, [selectedWardId, selectedSchoolCode]);
 
   const markPaid = async (id: string) => {
     // Moved off /admin/finance/... — finance is its own path now, gated to
     // finance_admin only (routes/finance.ts).
-    await api.put(`/finance/invoices/${id}/status`, { status: 'paid' });
-    fetch();
+    setUpdatingInvoiceId(id);
+    try {
+      await api.put(`/finance/invoices/${id}/status`, { status: 'paid' });
+      await fetch();
+      Alert.alert('Payment updated', 'The invoice has been marked as paid.');
+    } catch (e: any) {
+      Alert.alert('Could not update payment', e?.response?.data?.error ?? 'Please check your connection and try again.');
+    } finally {
+      setUpdatingInvoiceId(null);
+    }
   };
 
   const handleSaveFeeItem = async () => {
-    if (!feeForm.name || !feeForm.amount) { Alert.alert('Name and amount required'); return; }
+    const amount = Number(feeForm.amount);
+    if (!feeForm.name.trim() || !feeForm.amount.trim()) { Alert.alert('Name and amount required'); return; }
+    if (!Number.isFinite(amount) || amount <= 0) { Alert.alert('Enter a valid amount greater than zero.'); return; }
+    setFeeSaving(true);
     try {
       await api.post('/finance/fee-items', {
         name: feeForm.name,
-        amount: Number(feeForm.amount),
+        amount,
         class_name: feeForm.class_name || null,
         school_code: selectedSchoolCode,
       });
       setFeeModal(false);
       setFeeForm({ name: '', amount: '', class_name: '' });
-      fetch();
+      await fetch();
     } catch (e: any) { Alert.alert('Error', e?.response?.data?.error ?? 'Save failed'); }
+    finally { setFeeSaving(false); }
   };
 
   const openInvoiceModal = async () => {
@@ -146,6 +163,12 @@ export default function FinanceScreen({ navigation }: any) {
         <Text style={styles.wardLabel}>Showing fees for {selectedWard.full_name}</Text>
       )}
       <PageContainer style={{ padding: Spacing.sm, flex: 1 }}>
+        {loadError ? (
+          <Card>
+            <Text style={styles.loadError}>{loadError}</Text>
+            <Btn label="Retry loading" onPress={() => { setLoading(true); fetch(); }} variant="outline" />
+          </Card>
+        ) : null}
         {/* Fee Schedule */}
         <Card>
           <View style={styles.sectionRow}>
@@ -187,7 +210,7 @@ export default function FinanceScreen({ navigation }: any) {
               </View>
               <Text style={styles.invAmt}>₦{Number(inv.total).toLocaleString()}</Text>
               {isFinanceAdmin && inv.status !== 'paid' && (
-                <Btn label="Mark as Paid" onPress={() => markPaid(inv.id)} variant="outline" style={{ marginTop: Spacing.sm }} />
+                <Btn label={updatingInvoiceId === inv.id ? 'Updating…' : 'Mark as Paid'} onPress={() => markPaid(inv.id)} variant="outline" style={{ marginTop: Spacing.sm }} disabled={updatingInvoiceId !== null} loading={updatingInvoiceId === inv.id} />
               )}
             </Card>
           )}
@@ -203,7 +226,7 @@ export default function FinanceScreen({ navigation }: any) {
           <Input label="Class (optional — blank means All)" value={feeForm.class_name} onChangeText={v => setFeeForm(f => ({ ...f, class_name: v }))} />
           <View style={styles.modalActions}>
             <Btn label="Cancel" onPress={() => setFeeModal(false)} variant="outline" style={{ flex: 1 }} />
-            <Btn label="Save" onPress={handleSaveFeeItem} style={{ flex: 1 }} />
+            <Btn label={feeSaving ? 'Saving…' : 'Save'} onPress={handleSaveFeeItem} style={{ flex: 1 }} disabled={feeSaving} loading={feeSaving} />
           </View>
         </ScrollView>
       </Modal>
@@ -263,6 +286,7 @@ export default function FinanceScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
+  loadError: { color: Colors.error, fontSize: Fonts.sizes.sm, marginBottom: Spacing.sm },
   wardLabel: { textAlign: 'center', color: Colors.primary, fontWeight: '700', fontSize: Fonts.sizes.sm, marginTop: Spacing.sm },
   sectionRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Spacing.sm },
   addBtn: { backgroundColor: Colors.primary, borderRadius: Radius.md, width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
