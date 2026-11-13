@@ -283,18 +283,38 @@ router.get('/achievements/me', requireRole('student'), async (req, res) => {
               MIN(sub.submitted_at) AS first_assessment_at,
               COUNT(*) FILTER (
                 WHERE sub.fully_graded IS TRUE AND a.total_marks > 0
+                  AND NOT EXISTS (
+                    SELECT 1 FROM submission_answers sa
+                     WHERE sa.submission_id=sub.id
+                       AND sa.grading_status IN ('ai_graded','ai_unavailable')
+                  )
                   AND sub.total_score >= a.total_marks * 0.8
               )::int AS high_scores,
               MIN(sub.submitted_at) FILTER (
                 WHERE sub.fully_graded IS TRUE AND a.total_marks > 0
+                  AND NOT EXISTS (
+                    SELECT 1 FROM submission_answers sa
+                     WHERE sa.submission_id=sub.id
+                       AND sa.grading_status IN ('ai_graded','ai_unavailable')
+                  )
                   AND sub.total_score >= a.total_marks * 0.8
               ) AS first_high_score_at,
               COUNT(*) FILTER (
                 WHERE sub.fully_graded IS TRUE AND a.total_marks > 0
+                  AND NOT EXISTS (
+                    SELECT 1 FROM submission_answers sa
+                     WHERE sa.submission_id=sub.id
+                       AND sa.grading_status IN ('ai_graded','ai_unavailable')
+                  )
                   AND sub.total_score >= a.total_marks
               )::int AS perfect_scores,
               MIN(sub.submitted_at) FILTER (
                 WHERE sub.fully_graded IS TRUE AND a.total_marks > 0
+                  AND NOT EXISTS (
+                    SELECT 1 FROM submission_answers sa
+                     WHERE sa.submission_id=sub.id
+                       AND sa.grading_status IN ('ai_graded','ai_unavailable')
+                  )
                   AND sub.total_score >= a.total_marks
               ) AS first_perfect_score_at
          FROM submissions sub
