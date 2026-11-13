@@ -161,3 +161,12 @@ This section supersedes earlier PR-state snapshots above. It records subsequent 
 - The checkpoint refresh PR itself (#806) is based on the exact post-#788 master and has passed its latest package integrity, mobile TypeScript and JSS3/PostgreSQL acceptance checks; this update will trigger a fresh verification pass.
 
 **Updated next action:** finish the fresh PR #808 checks, then merge the checkpoint refresh after its current-head checks pass. Production remains blocked on Render account evidence, OPS-05 drift/backup/restore approval, provider health-check configuration, deployment ownership and signed Android release/device acceptance.
+## Continuation update — 2026-11-13 17:12 UTC
+
+- PR #808 (health endpoints) is now MERGED into master at `7451e263136b4fedc5fd876f5822c755b6c7b1c7`.
+- The merged API exposes `GET /health/live` (process-only) and `GET /health/ready` (bounded PostgreSQL `SELECT 1` inside a transaction with `SET LOCAL statement_timeout = '5s'`). Readiness returns 503 with a generic body on database failure and does not reveal connection details or exception text.
+- Current-head CI for PR #808 passed all four workflow groups: dedicated health endpoint tests + backend typecheck, existing fatal-process regression + backend typecheck, SS1 package integrity, and JSS3/PostgreSQL integration acceptance. The HTTP suite passed 3/3 cases: liveness does not query DB; readiness succeeds when DB probe succeeds; readiness returns a safe 503 without leaking a simulated secret on DB failure.
+- This is application code and test evidence only. Render's provider health-check path has not been configured. The recommended readiness path is `/health/ready`; no provider-side configuration or live production request has been performed.
+- A Render integration is available for connection, which would permit direct verification of service/database status and backup settings. It is not yet connected; continue repository-only work until the owner connects it.
+
+**Updated next action:** finish the latest PR #806 checkpoint verification and merge it after its current-head required checks pass. Then, with owner-authorised Render access, configure the provider's health-check path to `/health/ready`, inspect the actual PostgreSQL plan/creation date/backups, and execute OPS-05 only after explicit approval.
