@@ -61,6 +61,40 @@ test('restore refuses schema column drift before truncating existing data', asyn
   assert.equal(afterRows[0].count, before[0].count);
 });
 
+test('backup and restore preserve the target migration ledger', async () => {
+  await query(`CREATE TABLE IF NOT EXISTS public.schema_migrations (
+    version TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    checksum TEXT NOT NULL,
+    applied_at TIMESTAMPTZ NOT NULL DEFAULT now()
+  )`);
+  await query(
+    `INSERT INTO public.schema_migrations(version,name,checksum)
+     VALUES('0001','0001_baseline.sql','baseline-test-checksum')
+     ON CONFLICT(version) DO NOTHING`,
+  );
+
+  const payload = await collectPayload();
+  assert.equal(
+    payload.tables.some(table => table.name === 'schema_migrations'),
+    false,
+    'schema migration history must not be captured as restorable application data',
+  );
+
+  const { rows: databaseRows } = await query('SELECT current_database() AS name');
+  const database = String(databaseRows[0].name);
+  await query(
+    `INSERT INTO public.schema_migrations(version,name,checksum)
+     VALUES('0002','0002_after-backup.sql','later-migration-checksum')
+     ON CONFLICT(version) DO NOTHING`,
+  );
+
+  await restore(payload, { apply: true, confirmDatabase: database });
+
+  const { rows } = await query('SELECT version FROM public.schema_migrations ORDER BY version');
+  assert.deepEqual(rows.map(row => row.version), ['0001', '0002']);
+});
+
 test('restore rejects malformed row widths before connecting to the target database', async () => {
   const payload = await collectPayload();
   const table = payload.tables[0];
