@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { TouchableOpacity } from 'react-native';
-import { View, Text, StyleSheet, ScrollView, RefreshControl } from 'react-native';
+import { View, Text, ScrollView, RefreshControl, TouchableOpacity } from 'react-native';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
 import { Card, Loader } from '../../components/UI';
@@ -15,7 +14,7 @@ import { openNotifications } from '../../navigation/navigationRef';
 // AND a FAB with the same destinations) now lives in that one real
 // Sidebar instead (see TeacherTabs.tsx's QUICK_ACTIONS). Student count
 // folds into the header subtitle rather than a separate centre stat row.
-export default function TeacherDashboardHomeScreen() {
+export default function TeacherDashboardHomeScreen({ navigation }: any) {
   const { user } = useAuth();
   const [term, setTerm] = useState<any>(null);
   const [studentCount, setStudentCount] = useState<number | null>(null);
