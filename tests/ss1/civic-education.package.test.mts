@@ -119,5 +119,5 @@ test('Current Civic Education coverage references resolve and retain their parti
   assert(p.open_items.some(item => item.id === 'CIVIC-EDUCATION-ALIAS-APPROVAL' && item.blocks_delivery));
   assert(p.open_items.some(item => item.id === 'CIVIC-EDUCATION-ALIAS-APPROVAL-T2' && item.blocks_delivery));
   assert(p.open_items.some(item => item.id === 'CIVIC-EDUCATION-ALIAS-APPROVAL-T3' && item.blocks_delivery));
-  assert(p.open_items.some(item => item.id === 'CIVIC-EDUCATION-T1-W01-REFERENCE-REUSE' && item.blocks_delivery));
+  assert(p.open_items.some(item => item.id === 'CIVIC-EDUCATION-T1-W01-MEANING-REFERENCE-REUSE' && item.blocks_delivery));
 });
