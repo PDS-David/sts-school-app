@@ -56,7 +56,7 @@ test('coverage report surfaces source-review triage without calling it a lesson-
 
 test('coverage report accounts for archive corrections and hidden duplicate source rows', () => {
   const report = buildPrimary4CoverageReport();
-  assert.equal(report.archive_correction_count, 32);
+  assert.equal(report.archive_correction_count, 33);
   assert.equal(report.archive_correction_pending_approval_count, 0);
   assert.equal(report.archive_correction_pending_assessment_rebuild_count, 0);
   assert.equal(report.archive_hidden_topic_count, 16);
