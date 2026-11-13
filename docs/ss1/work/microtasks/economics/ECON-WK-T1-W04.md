@@ -2,7 +2,7 @@
 
 ## Task identity and status
 - Task ID: `ECON-WK-T1-W04`
-- Status: `IN_PROGRESS` (content indexing and supplement authored; importer/compiler and runtime verification not claimed)
+- Status: `IMPLEMENTED_TESTING_DEFERRED` (content indexing and supplement authored; importer/compiler and runtime verification not claimed)
 - Subject: Economics, SS1, First Term
 - Topic as printed: “Importance of opportunity cost to individual”
 - Scope retained: the CONTENTS and teaching body also cover firms/organisations and government. The source heading is not silently rewritten.
@@ -80,3 +80,10 @@ After PR integration, refresh the Economics package and queue from current maste
 - The first PR integrity workflow detected that the manually stored `body_sha256` included a trailing newline not present in the actual serialized lesson body. The lesson text itself was not changed.
 - Recomputed the digest from the exact stored body bytes and updated `body_sha256` to `f63e6476c93cc64a0526fe081cadd96d3badbf13619da5e05e75845c3a9268aa` in package commit `f8e62cdf2a04514ca6b2dcd84cf687c2ae66b3dc`.
 - Updated the queue task to IN_PROGRESS and its checkpoint reference in commit `a55b43e9ee087d6623e7eed6dac3b504b47df1ba`. Do not mark this task implemented/testing-deferred again until the integrity and registered-subject compiler workflows rerun successfully.
+
+
+## Automated validation result
+- Package integrity workflow passed (package integrity 43454377693 SUCCESS).
+- Registered-subject source-anchor/compiler audit passed ( all-subject source-anchor/compiler audit 43454377717 SUCCESS).
+- This verifies automated package integrity and plan-only compilation for this branch. Owner content approval remains PENDING; independent verification remains DEFERRED. No database or student-device/runtime test is claimed.
+- Queue/checkpoint update commit: `f63e29447059b8dca49d454d32c888a6139c7e4e`.
