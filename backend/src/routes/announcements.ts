@@ -78,7 +78,7 @@ router.get('/', async (req, res) => {
 const createSchema = z.object({
   title: z.string().trim().min(1).max(200),
   body: z.string().trim().min(1).max(5000),
-  audience_role: z.enum(['student', 'parent', 'teacher', 'finance_admin']).nullish(),
+  audience_role: z.enum(['student', 'parent', 'teacher']).nullish(),
   class_name: z.string().trim().min(1).max(100).nullish(),
   expires_at: z.string().datetime({ offset: true }).nullish(),
   school_code: z.string().trim().min(1).max(50).nullish(),
