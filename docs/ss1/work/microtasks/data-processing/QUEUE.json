@@ -30,7 +30,8 @@
     "DP-WK-T1-W02 (2026-11-07) indexed 1st Term Week 2 (lines 287-429, digest c5d048b437c13cff6b205906da399d2bed18f01bc0cadc0503d8fc346ac5366b) as 18 coverage rows (11 PARTIAL, 7 UNRESOLVED, 0 SUPPORTED) and 9 open items (7 blocking). The week has no table, picture or drawing; NUMBER SYSTEM (REVISION) is a lead sentence and four bare labels, classified by its body; the 13 questions have no key and four depend on number-system content never taught. One dated-citation FACTUAL_DEPENDENCY and three LESSON follow-ups were appended; no lesson, answer, rule, correction or asset was authored and package_status stays PENDING. next_runnable was recomputed by the stated rule, which excludes TEST items. Nothing was run; testing deferred by owner.",
     "DP-INV-T3 (2026-11-13) opened the exact 3rd Term Data Processing DOCX from the user-attached composite archive; archive and member hashes verified against SOURCE_ASSIGNMENTS.csv. Subject/class header confirms Data Processing, SS1. Inventory DP-INV-T3.md records scheme and nine actual body weeks, assessments, legacy software/UI claims, formula validation flags and 10 screenshot locations. DOCX inspected with python-docx 1.2.0: 588 paragraphs, no Word tables, 10 inline images/media parts, no equations/hyperlinks. Embedded screenshot at paragraph 461 shows student-like names and ID numbers; a separate preservation task requires synthetic/redacted replacement before learner-facing reuse. 25 bounded follow-up tasks appended: nine week indexes, opening scheme, revision/exam marker, two preservation tasks, two factual audits and ten visual dispositions. No subject package content or approvals changed; no tests/importer/device checks run. Testing deferred.",
     "DP-TEST-PACKAGE (2026-11-13): added tests/ss1/data-processing.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; current authored lesson body hash/objectives/practice/marking integrity without fabricated approval or verification; two PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and coverage reference/status boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed.",
-    "DP-WK-T3-W01 (2026-11-13): source member hash verified; indexed original DOCX paragraphs 27–79. Added PARTIAL coverage for definition, basic features, functions and uses pending parsed-body binding; PARTIAL coverage for the bare MICROSOFT WORD heading (p43, no explanation); PARTIAL coverage for the Week 1 text-editor/Notepad question because Week 2 p92–95 identifies Notepad as a text editor. Recorded evaluation p45–47, general evaluation p57–61, reading p63–64, weekend MCQs p66–73 and theory p75–77. Added a blocking question-sequencing open item and tasks for sequence decision and lesson authoring. No Word-specific procedure or answers invented."
+    "DP-WK-T3-W01 (2026-11-13): source member hash verified; indexed original DOCX paragraphs 27–79. Added PARTIAL coverage for definition, basic features, functions and uses pending parsed-body binding; PARTIAL coverage for the bare MICROSOFT WORD heading (p43, no explanation); PARTIAL coverage for the Week 1 text-editor/Notepad question because Week 2 p92–95 identifies Notepad as a text editor. Recorded evaluation p45–47, general evaluation p57–61, reading p63–64, weekend MCQs p66–73 and theory p75–77. Added a blocking question-sequencing open item and tasks for sequence decision and lesson authoring. No Word-specific procedure or answers invented.",
+    "DP-PRE-T3 (2026-11-13): inspected original third-term Data Processing DOCX paragraphs 1–27. Recorded title, subject/class, WEEK/TOPIC header with trailing tabs, twelve scheme rows (initial Revision; Word Processing I–III; Spreadsheet I–III; Database Management I–III; Revision; Examination), three references, and first body marker WEEK ONE. Scheme rows are plain paragraphs with no WEEK <number> body marker, so no classify_marker rule or marker coverage entry is needed. Rows 2–10 map to body Weeks 1–9; rows 1,11,12 remain scheme-only."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -46,9 +47,9 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 11,
+    "IMPLEMENTED_TESTING_DEFERRED": 12,
     "BLOCKED": 2,
-    "PENDING": 68
+    "PENDING": 67
   },
   "items": [
     {
@@ -2372,8 +2373,8 @@
         "DP-INV-T3",
         "DP-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by DP-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Exact source member hash verified. Original DOCX paragraphs 1–24 inspected: title, subject/class, scheme header, twelve scheme rows and three references. Scheme rows 1 (Revision), 11 (Revision) and 12 (Examination) are scheme-only; rows 2–10 map to body Weeks 1–9. Body begins at WEEK ONE paragraph 27. The scheme rows are bare text labels without WEEK <number> prefixes; no classify_marker rule or MARKER coverage entry is required. No scheme-only revision/examination row was turned into a lesson.",
       "completion_condition": "Record exact source sections, instructional boundaries and assessment prompts. Preserve source wording; do not invent content, answer keys, approval or verification."
     },
     {
@@ -3053,7 +3054,6 @@
     "DP-WK-T3-W07",
     "DP-WK-T3-W08",
     "DP-WK-T3-W09",
-    "DP-PRE-T3",
     "DP-MARK-T3-REVEXAM",
     "DP-PRES-T3-LEGACY-UI",
     "DP-PRES-T3-SAMPLE-DATA",
