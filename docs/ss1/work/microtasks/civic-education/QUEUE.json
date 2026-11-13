@@ -28,24 +28,54 @@
     "CIV-WK-T1-W01 (2026-11-06) indexed 1st Term Week 1 (mammoth lines 121-172, digest ed1a4c1908619ef6e710bffb3e95bdf5c7b5f500d9dd97e3e80f2610846cd275) from the verified member: four sections (definition 127-129, NEEDS 131-141 with five points, OBJECTIVES IN SCHOOLS 143-157 with intro 145 and six points, IMPORTANCE TO NATION BUILDING 159-171 with intro 161, lead 163 and four points), all 25 non-blank lines assigned, plus the scheme row 1 promise and 15 preserved source defects. The census confirms CIV-INV-T1 that this week carries no assessment block of any kind, and that EVALUATION, QUESTION, TEST, EXERCISE, WEEKEND, READING, THEORY, ANSWER, MARKING, SCORE, RUBRIC, PRACTICE, HOMEWORK and CLASS WORK never occur anywhere in the document. The three point lists are Word auto-numbered (decimal a-f styles differ per list) and their ordinals are absent from the text view. Evidence-only task: no coverage row, rule, lesson, correction, asset, answer or new queue item was written and civic-education.json stays PENDING and untouched; the next action is a Week 1 authoring item, named in the implementation reference and gated by CIV-FACT-CONTENT-APPROVAL. Nothing was run; testing deferred by owner.",
     "2026-11-06 closeout correction: CIV-LES-T1-W01-MEANING provides the missing bounded authoring follow-up. Drafting does not depend on final content approval; all approval and release gates remain blocked until their own evidence is supplied. Earlier no-authoring/gated-next-action notes describe their historical task scope, not a prohibition on this new pending draft.",
     "CIV-LES-T1-W01-MEANING (2026-11-06) authored the first lesson and the first coverage row this subject has: SUP-SS1-CIVIC-EDUCATION-T1-W01-MEANING, body SHA-256 0b468a41b9cea74ccd9d2eeb5ed83b6f745c0a53b920c3ef063e17939265aff9, 3 original exercises at 4+5+6 = 15 marks, teaching the meaning of civic education, a right against a responsibility, and informed participation as two checkable moves. The definition is independently sourced from NERDC and from the UNICEF Innocenti explainer (URLs and exact sections in the lesson provenance) and the scheme's own sentences are not reproduced, so COV-CIV-T1-W01-MEANING is IMPLEMENTED_EQUIVALENT for the meaning objective only; the week's needs, school-objective and nation-building blocks, the \"reasons\" half of scheme line 15 and the absent Week 1 assessment remain open and Week 1 is not complete. Two owner decisions were recorded as blocking open items - which of the scheme's two definitions the class teaches, and permission for the two quoted NERDC phrases. content_approval, verification, package_status, the three alias approvals and CIV-FACT-CONTENT-APPROVAL are unchanged. Nothing was run; testing deferred by owner.",
-    "CIV-WK-T1-W02 (2026-11-07) indexed 1st Term Week 2 (mammoth lines 173-210, digest 1dfa4413154b91e1dd63f78e9fede595bea987f5ec3c638d17d9737688377915) from the verified member: definition 177-179, TYPES OF VALUE 181-197 (seven-item list), SELFLESSNESS 199, JUSTICE 201 and the Assignment 205-209, all 17 non-blank lines assigned. Six coverage rows (PARTIAL x4, UNRESOLVED x2) and one blocking CONTENT open item were written to civic-education.json, which stays PENDING; no lesson, rule, correction, asset or answer was authored. Lines 199 and 201 were reported as stopping mid-sentence in the task brief but end with a full stop; nothing was completed. The Assignment has no answer or marks in the source. One bounded follow-up, CIV-LES-T1-W02-VALUES-TYPES, was added. Nothing was run; testing deferred by owner."
+    "CIV-WK-T1-W02 (2026-11-07) indexed 1st Term Week 2 (mammoth lines 173-210, digest 1dfa4413154b91e1dd63f78e9fede595bea987f5ec3c638d17d9737688377915) from the verified member: definition 177-179, TYPES OF VALUE 181-197 (seven-item list), SELFLESSNESS 199, JUSTICE 201 and the Assignment 205-209, all 17 non-blank lines assigned. Six coverage rows (PARTIAL x4, UNRESOLVED x2) and one blocking CONTENT open item were written to civic-education.json, which stays PENDING; no lesson, rule, correction, asset or answer was authored. Lines 199 and 201 were reported as stopping mid-sentence in the task brief but end with a full stop; nothing was completed. The Assignment has no answer or marks in the source. One bounded follow-up, CIV-LES-T1-W02-VALUES-TYPES, was added. Nothing was run; testing deferred by owner.",
+    "CIV-INV-T3 (2026-11-13) opened the exact 3rd Term Civic Education DOCX from the user-attached composite archive; archive/member hashes verified against SOURCE_ASSIGNMENTS.csv. Header confirms Civic Education (source alias spelling CIVICS EDUCATION; alias approval remains open). Inventory CIV-INV-T3.md records the scheme, five combined body blocks, assessment boundaries, week-label mismatches, source-quality/factual flags and zero visual assets. DOCX inspected with python-docx 1.2.0 using 1-based Word body paragraph locators; block digests are paragraph-text digests, not Mammoth digests or DOCX hashes. No lesson/package/coverage/rule/correction/asset/approval changes and no tests/importer/device checks. 12 bounded follow-up tasks appended: five body indexes, scheme index, scheme-gap and revision/exam disposition, preservation/neutrality and three factual dependency audits. Testing deferred.",
+    "CIV-TEST-PACKAGE (2026-11-13): added tests/ss1/civic-education.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; current authored lesson body hash/objectives/practice/marking integrity without fabricated approval or verification; three PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and coverage reference/status boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed.",
+    "CIV-PRE-T3 (2026-11-13): verified source hash; inspected ordinary-paragraph scheme at original DOCX paragraphs 2–38 and body markers. Scheme/body mapping: Week1 revision (no body); Weeks2–3 Cultism → WEEKS 2 and 3 p42; Weeks4–5 Law and Order → WEEKS 4 & 5 p149; Week6 Constituted Authority → WEEK 6 p244; Week7 Employment/Unemployment → WEEKS 7 & 8 p306; Weeks8–9 Capitalist Democracy → WEEK 9 p368; Week10 revision (no body); Weeks11–12 examination/closing (no body). Added eight source-bound WHOLE_LINE SCHEME_ONLY classify_marker rules and one MARKER coverage entry referencing all eight. No scheme row was converted into a lesson.",
+    "CIV-PRE-T1 (2026-11-13): verified exact member SHA-256; inspected the original Word table as 13 rows × 2 columns. Recorded header plus all twelve scheme rows verbatim in CIV-PRE-T1.md, preserving EXCETATION, defrend, Capentry and 12–13 (en dash). Scheme rows 1–8 map to actual body WEEK ONE through WEEK EIGHT; scheme rows 9–13 (Weeks 9,10,11 and 12–13 Revision/Examination) have no corresponding body marker. The document contains exactly eight body week markers. No package coverage, rule, lesson, correction or answer was changed, in accordance with task scope.",
+    "CIV-WK-T1-W03 (2026-11-13): source week indexed using original DOCX paragraphs 49–65 and existing Mammoth lines 211–244/body digest. Recorded ACCEPTABLE SOCIETAL VALUES (no TOPIC prefix), TYPES OF JUSTICE (distributive, procedure, restoration/restitution, retributive), four IMPORTANCE OF JUSTICE points and three IMPORTANCE OF VALUES points. No assessment block. Preserved scheme typo EXCETATION and its 'Opportunity to defrend oneself' entry; that latter topic is taught separately in WEEK FOUR p66–78, headed 'OPPORTUNITY TO DEFENT ONESELF'. No package coverage/rules/lessons/corrections/answers were added.",
+    "CIV-WK-T1-W04 (2026-11-13): source week indexed using original DOCX paragraphs 66–80 and existing Mammoth lines 245–274/body digest. Recorded fairness/self-defence definitions, three benefits, four numbered advice points and assignment 'Explain five importance of defending one self'. Preserved heading spelling DEFENT and point 3 verbatim ('Do not use sexually attractive or provocative diseases especially in the public'); no correction guessed. The potentially unsafe/garbled advice is linked to CIV-PRES-T1-DEFENCE-ADVICE for source-preservation review. No package coverage/rules/lessons/corrections/answers added.",
+    "CIV-WK-T1-W05 (2026-11-13): source week indexed using original DOCX paragraphs 81–126 and existing Mammoth lines 275–370/block digest. Recorded youth empowerment definition; life/work coping skills; manipulating skills (power, unsolicited rescuing/helping, guilt, weakness); intellectual skills; communication skills; artistic skills; and assignment. The queue brief describes fifteen Chesney M. (2005) coping strategies, but the original DOCX contains fourteen separate list paragraphs (89–102); discrepancy retained, no fifteenth invented. The assignment asks for five government roles in empowering Nigerian youth; general government is taught in WEEK EIGHT, but this Week Five section supplies no youth-specific roles. No package coverage/rules/lessons/corrections/answers added.",
+    "CIV-WK-T1-W06 (2026-11-13): indexed original DOCX paragraphs 129–139 and retained Mammoth lines 371–392/block digest. Recorded all seven numbered importance/benefit points and assignment 'Write out eight (8) problems of youth empowerment in Nigeria'. Week Six teaches benefits, not problems; the assessment mismatch is recorded without inventing eight problems or answers. No package coverage/rules/lessons/corrections/answers added.",
+    "CIV-WK-T1-W07 (2026-11-13): indexed original DOCX paragraphs 140–156 and retained Mammoth lines 393–432/block digest. Recorded citizenship definition, four goals (leadership, democracy, duties/obligations, national unity), acquisition by birth, registration, naturalization and dual citizenship, plus assignment 'Explain five roles of a patriotic citizens in Nigeria'. No evaluation block. Citizenship acquisition claims remain verbatim for CIV-FACT-T1-CITIZENSHIP-LAW review; no legal claims corrected or answered. No package coverage/rules/lessons/corrections/answers added.",
+    "CIV-WK-T1-W08 (2026-11-13): indexed original DOCX paragraphs 160–197 and retained Mammoth lines 433–511/block digest. Recorded government definition; three tiers; federal executive; bicameral federal legislature and unicameral state House of Assembly; judiciary; six executive functions; nine legislative functions; judiciary symbol and four functions. No evaluation, reading, weekend assignment or assignment block; no Week Nine marker, file ends after Week Eight. Constitutional-office and powers claims remain verbatim for CIV-FACT-T1-GOVERNMENT-STRUCTURE. No package coverage/rules/lessons/corrections/answers added.",
+    "CIV-MARK-T1-SCHEME-GAPS (2026-11-13): mapped all scheme rows to actual body markers and added four named blocking CONTENT open items with exact source locators: Community Service (row4, Mammoth 39–45), HIV/AIDS meaning/causes/transmission/signs (row5, 47–53), HIV/AIDS prevention/care/stigma (row6, 55–65), Nationalism (row11, 107–113). Body Week Four self-defence is a subtopic under scheme row3, not row4. Body Weeks5–8 map to scheme labels7–10; do not renumber. No missing content authored.",
+    "CIV-MARK-T1-REVEXAM (2026-11-13): scheme row 13 is exactly '12 – 13' (en dash) / 'REVISION AND EXAMINATION' at Mammoth lines115–117. No Week Nine or later body marker, revision note, examination paper or marking scheme exists. Recorded as scheme-only in CIV-MARK-T1-REVEXAM.md; no lesson or assessment invented.",
+    "CIV-VIS-T1-TBL-SCHEME (2026-11-13): original source contains one native 13×2 Word table, no images/drawings/VML/OLE/text boxes. It is structured data, not a picture. Package schema has no structured source-table field; this task prohibits lessons/coverage/rules/corrections/answers. Preserve original archive member by exact source hash and use the cell-separated transcription in CIV-PRE-T1.md for review; no image asset or flattened lesson string added. No package schema change.",
+    "CIV-PRES-T1-DEFENCE-ADVICE (2026-11-13): preserved exact Week Four self-defence wording from original DOCX paragraphs 69, 71–78 / Mammoth lines 251–269: definition says self-defence is 'the use of force to protect oneself against someone attacking us'; benefits are reducing conflict, preventing injustice and promoting peace; four steps include the exact garbled point 'Do not use sexually attractive or provocative diseases especially in the public' and the suspicious-gift advice. No intended word guessed or rewritten; no legal/safety guidance added. Future correction/clarification must be separate from the source wording.",
+    "CIV-FACT-T1-CITIZENSHIP-LAW (2026-11-13): source claims at original DOCX p151–154 reviewed against PLAC Constitution 2023 (1st–5th alterations, third revision Oct2023), Ministry of Interior Citizenship Requirements PDF (May2025), current NIS passport page and June2026 prioritised Constitution Alteration Bills report. Flags recorded: source's territorial birth generalisation is overbroad against s25; adoption is not listed as a separate s26 registration category and NIS adopted-child court-order item is for passport processing; Ministry PDF cites 26(2A)/(2B) not present in the 2023 consolidated text (proposal/status reconciliation needed); 15-year residence statement omits s27(2)(g)'s alternative route; 21-year claim not supported by s27 text's 'full age and capacity'; dual-citizenship statement conflates Nigerian citizenship by descent with other state's nationality; Ministry of Internal Affairs name is outdated. No corrected rule authored; separate correction task required.",
+    "CIV-FACT-T1-SELF-DEFENCE-LAW (2026-11-13): reviewed Week Four source p69 and p75–78 against Constitution 2023 s33(2)(a); Criminal Code Act Cap C38 ss286–288 (PLAC consolidated text; original commencement 1 Jun 1916; s1A saves Northern States Penal Code); Kaduna State Penal Code Law 2017 ss22–30 (Law No.5 2017, commenced 29 May 2017) as a jurisdiction-specific example. Source's generic 'use of force' definition omits statutory limits; four lifestyle tips are not legal tests/procedures; garbled 'sexually attractive or provocative diseases' phrase preserved, not interpreted. No corrected rule/legal advice/lesson authored.",
+    "CIV-FACT-T1-GOVERNMENT-STRUCTURE (2026-11-13): reviewed original Week Eight DOCX p164–195 against PLAC consolidated Constitution (Oct2023). Sections reviewed: ss2–7 (federal/state/local system), 4–6 (legislative/executive/judicial powers), 47–49 (National Assembly), 58–59 and 80–81 (assent/appropriation), 88–90 (investigation/State House), 130–148 (federal executive), 217–218 (external defence/Commander-in-Chief), 230–232 (Supreme Court/CJN/original jurisdiction), 270–272 (Chief Judge/state High Court), Fourth Schedule. Flags: 'Chief Justice of the Federation'/'Chief Justice of the State' titles; executive composition simplified; protection of life/property broad; treaty 'approval' shorthand; investigation points 8–9 overlap and powers limited; judicial functions too general. No corrected rule/lesson authored.",
+    "CIV-WK-T2-W01 (2026-11-13): exact source hash verified; original DOCX paragraphs 1–41 inspected. Scheme row 'Revision of Last Term’s Work' (p6); body WEEK ONE p38, TOPIC 'Reviewed of last Term’s work' p39; one teacher instruction p41 ('Teacher Review last Term work with the students and corrected them where necessary.'). No student-facing teaching content and no evaluation. Recorded as review/instruction only; no prior-term content invented, no package coverage/rules/lessons/corrections/answers added.",
+    "CIV-WK-T2-W02 (2026-11-13): verified exact second-term member hash; indexed original DOCX p43–60 / Mammoth lines85–120 and block digest. Recorded voter education definition, voting definition, polling-station/ballot-paper/thumbprint process, voter registration, source's age/eligibility statement, public display of voter list and evaluation referral 'See your work book for the exercise.' Workbook is not supplied. Electoral eligibility and procedure claims remain for CIV-FACT-T2-ELECTORAL-LAW; no corrections/answers/lesson/coverage/rules added.",
+    "CIV-WK-T2-W03 (2026-11-13): verified source hash; indexed original DOCX p61–77 / Mammoth lines121–156 and block digest. Recorded process of voting (registration, voter card, accreditation, ballot paper), five separate importance statements, and evaluation. TOPIC repeats WEEK TWO's 'VOTER EDUCATION'; keep separate week bodies and record duplicate-title hazard. The five statements are separate paragraphs but numbering is not exposed in raw text. Preserved p73 garbled 'either to vote against during election period' verbatim. No lesson/coverage/rules/correction/answer added.",
+    "CIV-WK-T2-W04 (2026-11-13): indexed original DOCX p79–92 / Mammoth lines157–190, block digest 33f5e7d0f9f91e274a894c3b29d09a9f6bca0b76a0e7a92f8a2eae29a1a8a6c8. Recorded meaning of election, five importance points (choice of leaders, democracy, peaceful change, checks on leaders, political education/campaigns/manifestoes). Evaluation refers only to unsupplied workbook; no question/answer in source. Preserved political/historical examples and spellings for later factual review; no corrections/lesson/coverage/rules added.",
+    "CIV-WK-T2-W05 (2026-11-13): verified source hash; indexed original DOCX p94–112 / Mammoth lines187–226 and block digest. Recorded INEC description, five functions, SIEC heading and local-government powers, unfinished sentence 'has power to ', SIEC chairman + seven members appointed by INEC claim. Scheme promises INEC composition but no composition list appears in body. Evaluation refers only to unsupplied workbook. Institutional claims and APC/PDP party examples reserved for CIV-FACT-T2-ELECTORAL-LAW / CIV-FACT-T2-NEUTRALITY. No lesson/coverage/rules/corrections/answers added.",
+    "CIV-WK-T2-W06 (2026-11-13): indexed original DOCX p114–124 / Mammoth lines227–250, block digest 7912400a484f58bf1e0e1c09c744edd4e4bca25ca6efa34317fb5f793fb99233. Heading FREE AND FAIR ELECTION has no TOPIC: prefix. Body gives introductory electoral-malpractice context and five reasons: peaceful coexistence; emergence of visionary/dedicated leaders; international reputation; stronger democratic institutions; fostering democracy. Scheme promises meaning, but no separate definition line exists. Evaluation points to unsupplied workbook. No lesson/coverage/rules/corrections/answers added.",
+    "CIV-WK-T2-W07 (2026-11-13): indexed original DOCX p126–155 / Mammoth lines251–310, block digest 64c8d01ca1f8b5ed666a16d5b1568f3a845bfd0ead1f661a52b97bdad9dd4549. Recorded eight forms of malpractice, causes, five prevention measures and workbook-only evaluation. Scheme promises meaning but no definition line exists. Paragraph144 is overtly partisan: criticises PDP, praises Buhari/APC and dates the 2015 presidential election to April; preserve as source text for CIV-FACT-T2-NEUTRALITY, do not teach as fact. No lesson/coverage/rules/corrections/answers added.",
+    "CIV-WK-T2-W08 (2026-11-13): indexed original DOCX p156–183 / Mammoth lines311–368, block digest 7bf55d4220c4968441f547d0aa757b09b918371b37ce9dce44a0c9c42413a2a0. Recorded need for planning (five points), benefits (five points), consequences (five points), meaning/definition (p179–180, placed last), and workbook-only evaluation. This is economic/development planning, not electoral content. Preserved source spellings CONSEQUENCIS and 'Singa pore'; no claims verified or rewritten. No lesson/coverage/rules/corrections/answers added.",
+    "CIV-WK-T2-W09 (2026-11-13): indexed original DOCX p185–200 / Mammoth lines369–402, block digest 57ea3043b537c32e20af05c6a84df73e2dfbe8d6f0b98f1cbafdc358dd9b11d. Recorded Constitution meaning, sources (history, Acts of Parliament, customs/traditions, U.S. Constitution as 1979 model, named Nigerian authors/books) and evaluation referring to unsupplied Akwa past-question papers. Preserved 'Path to Nigeria Freedom', 'Myodyssey', 'Chiefy Anthony Enahoro' and other source spelling/punctuation. Current Constitution claim reserved for CIV-FACT-T2-CONSTITUTION; no correction/lesson/coverage/rules/answers added.",
+    "CIV-WK-T2-W10 (2026-11-13): indexed original DOCX p202–248 / Mammoth lines403–499, block digest 3d358321e2e3fe635260a7185f3d8f37458ac74d52cd3cfc7fb8213aa5f1f936. Recorded six feature headings, five FUNCTION points, two unheaded blocks (preserved as unlabelled), five DEMERITS claims and evaluation ('Treat Akwa Past Question Papers', 'Nos 1 -100', 'Best wishes.'). Paragraph216 cites the 1979 Constitution beneath a 1999 heading; the source's 1999 constitutional claims and demerits are reserved for CIV-FACT-T2-CONSTITUTION / CIV-FACT-T2-NEUTRALITY. No headings, lessons, coverage, rules, corrections or answers invented.",
+    "CIV-PRE-T2 (2026-11-13): verified second-term DOCX preamble paragraphs 1–37. Header TERM: 2ND TERM; SUBJECT: CIVIC EDUCATION; SS 1; SCHEME OF WORK; WEEKS/TOPICS; nine topic groups and subtopics; split 'The current Nigerian' / 'Constitution' feature/function topic; final row '12 & 13 Test & Examination'. Scheme is ordinary paragraphs, not a table; ten paragraphs carry Word auto-numbering not present in text. No teaching text before WEEK ONE.",
+    "CIV-MARK-T2-SCHEME-GAPS (2026-11-13): reconciled scheme to ten body weeks and added three blocking CONTENT open items: missing INEC composition (scheme lines35–37), missing meaning of free/fair elections (39–41), missing meaning of electoral malpractice (45–47). Week1 is review-only; voter education spans Weeks2–3 with repeated title; Week8 planning is separate; no Week11–13 body. No missing content authored.",
+    "CIV-MARK-T2-REVEXAM (2026-11-13): scheme row at line73 is '12 & 13 Test & Examination'; final evaluation lines489–495 directs teacher to 'Treat Akwa Past Question Papers', 'Nos 1 -100', 'Best wishes.' No test/examination paper, past-question text or marking scheme is in source; Akwa papers not supplied. Scheme-only marker, not a WEEK12/13 lesson."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 7,
-    "SOURCE_WEEK_INDEXING": 18,
-    "SOURCE_PREAMBLE_INDEXING": 2,
-    "SOURCE_MARKER_DISPOSITION": 4,
+    "FACTUAL_DEPENDENCY": 10,
+    "SOURCE_WEEK_INDEXING": 23,
+    "SOURCE_PREAMBLE_INDEXING": 3,
+    "SOURCE_MARKER_DISPOSITION": 6,
     "VISUAL_DISPOSITION": 1,
-    "SOURCE_PRESERVATION": 2,
+    "SOURCE_PRESERVATION": 3,
     "LESSON": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 8,
-    "PENDING": 34,
-    "BLOCKED": 1
+    "IMPLEMENTED_TESTING_DEFERRED": 38,
+    "BLOCKED": 1,
+    "PENDING": 16
   },
   "items": [
     {
@@ -251,8 +281,8 @@
       "depends_on": [
         "CIV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13 from user-attached archive. Archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e verified; member SHA-256 8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1 and 50,715 bytes verified against SOURCE_ASSIGNMENTS.csv. Header paragraph 3: \"S.S.1.       CIVICS   EDUCATION\"; canonical Civic Education retained and alias approval remains open. Inventory: docs/ss1/work/microtasks/civic-education/CIV-INV-T3.md. DOCX inspected with python-docx 1.2.0: 435 paragraphs, no tables, inline shapes, media, drawings, objects, text boxes, equations or hyperlinks. Five combined body blocks indexed by Word paragraph positions and reproducible paragraph-text digests. Scheme gaps, assessment boundaries and factual/neutrality flags recorded. No lesson, package, coverage, rule, correction, asset or approval state changed. No tests/importer/database/device checks run; testing deferred.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -281,8 +311,8 @@
         "CIV-SRC-T2",
         "CIV-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/civic-education.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Test file authored 2026-11-13 at tests/ss1/civic-education.package.test.mts. It parses the current pending package, matches all three source registrations against SOURCE_ASSIGNMENTS.csv (member/hash/term), validates the one existing lesson body hash and marking totals while preserving PENDING content approval and DEFERRED verification, guards the three source-alias rules with wrong-hash/ambiguous/missing-anchor probes, and checks coverage reference resolution/current status counts. Per task contract, tests were written but NOT RUN; package remains PENDING and owner/content/permission gates remain open.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -411,8 +441,8 @@
         "CIV-INV-T1",
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Original DOCX paragraphs 49–65 inspected; retained the task's Mammoth 1.12.2 locator lines 211–244 and exact block SHA-256 60fd0099c08e4d3d38c9c47507fda014c3715d59ecd0bf7b37e41b75e281b4ec. Indexed heading, four justice types, four importance-of-justice points and three importance-of-values points. No assessment block exists. Recorded scheme/body mismatch: scheme row says EXCETATION and includes defrend oneself, which appears as the separate Week Four body heading OPPORTUNITY TO DEFENT ONESELF. No package coverage, rule, lesson, correction or answer changed, as explicitly required.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching sha256 60fd0099c08e4d3d38c9c47507fda014c3715d59ecd0bf7b37e41b75e281b4ec; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -446,8 +476,8 @@
         "CIV-INV-T1",
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Original DOCX paragraphs 66–80 inspected; retained the task's Mammoth 1.12.2 locator lines 245–274 and exact block SHA-256 9b1e5d2ba70914b9401a0f5fa38ac977b157a86423057e3d64bb18cad7eac0a2. Indexed fairness/self-defence definitions, three benefits, four advice points and the assignment. Preserved the source spelling DEFENT and the exact point 3 wording 'Do not use sexually attractive or provocative diseases especially in the public'; no intended word guessed. Linked the concern to CIV-PRES-T1-DEFENCE-ADVICE. No package coverage, rule, lesson, correction or answer changed.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching sha256 9b1e5d2ba70914b9401a0f5fa38ac977b157a86423057e3d64bb18cad7eac0a2; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -481,8 +511,8 @@
         "CIV-INV-T1",
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Original DOCX paragraphs 81–126 inspected; retained Mammoth 1.12.2 lines 275–370 and block SHA-256 8e31d34913f624400a1e453c4ef1f221b3ef15fd59080cb7e61bf62bb9d82ccf. Indexed definition, five skill groupings, all listed subskills, and assignment. The task brief says fifteen coping strategies, but the original DOCX has fourteen separate strategy paragraphs (89–102); this discrepancy is recorded without inventing a fifteenth. Assignment asks government roles in empowering youth, while general government teaching is in Week Eight and no youth-specific government roles are supplied here. No package coverage/rules/lessons/corrections/answers changed.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching sha256 8e31d34913f624400a1e453c4ef1f221b3ef15fd59080cb7e61bf62bb9d82ccf; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -516,8 +546,8 @@
         "CIV-INV-T1",
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Original DOCX paragraphs 129–139 inspected; retained Mammoth 1.12.2 lines 371–392 and block SHA-256 21c28cdb999ece33d7c4d662e3daee41738f7a120725fc4fe175f9558b12e52e. Indexed all seven benefits and the assignment. The body teaches benefits, but the assignment asks for eight problems of youth empowerment; this mismatch is recorded, not answered or corrected. No package coverage, rule, lesson, correction or answer changed.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching sha256 21c28cdb999ece33d7c4d662e3daee41738f7a120725fc4fe175f9558b12e52e; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -551,8 +581,8 @@
         "CIV-INV-T1",
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Original DOCX paragraphs 140–156 inspected; retained Mammoth 1.12.2 lines 393–432 and block SHA-256 59878b0c569a280014879e25e4f01c202ea231147ad495ad3ac4bcf8d149f159. Indexed citizenship definition, four goals, four acquisition methods and assignment. No evaluation block exists. Acquisition claims (territorial/birth rules, marriage/registration, naturalization 15-year residence/age condition, dual citizenship) left verbatim for the dedicated CIV-FACT-T1-CITIZENSHIP-LAW task; no correction or legal answer invented. No package coverage/rules/lessons/corrections/answers changed.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching sha256 59878b0c569a280014879e25e4f01c202ea231147ad495ad3ac4bcf8d149f159; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -586,8 +616,8 @@
         "CIV-INV-T1",
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Original DOCX paragraphs 160–197 inspected; retained Mammoth 1.12.2 lines 433–511 and block SHA-256 1b8a0d08f5c7b0c79ee0cbf0287eac36bf8ae0c8dc554e889160c3c895355437. Indexed government definition, three tiers, structure and executive/legislature/judiciary functions. No evaluation, reading, weekend or assignment block; no Week Nine marker and source ends at line503. Constitutional-office/power claims left verbatim for CIV-FACT-T1-GOVERNMENT-STRUCTURE. No package coverage/rules/lessons/corrections/answers changed.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching sha256 1b8a0d08f5c7b0c79ee0cbf0287eac36bf8ae0c8dc554e889160c3c895355437; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -621,8 +651,8 @@
         "CIV-INV-T1",
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Verified source member SHA-256 and inspected original DOCX structure directly: 13-row × 2-column Word table; preserved all row labels and wording, including EXCETATION, defrend, Capentry and 12–13 en dash. Recorded scheme/body mapping: rows 1–8 map to body WEEK ONE through WEEK EIGHT; rows 9–13 have no separate body marker. The body has exactly eight week markers. No lesson, coverage, rule, correction or answer was added, as this task explicitly prohibits those changes. Mammoth raw-text digest/line locators retained from existing task evidence; no tests/importer/device runs.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -656,8 +686,8 @@
         "CIV-INV-T1",
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Reconciled all 12 scheme rows with the eight actual body markers using the original DOCX table and paragraph headings. Added four named blocking CONTENT open items with exact scheme locators: Community Service (row4, lines39–45), HIV/AIDS meaning/causes/transmission/signs (row5, lines47–53), HIV/AIDS prevention/care/stigma (row6, lines55–65), and Nationalism (row11, lines107–113). Confirmed body Week Four self-defence is a bullet under scheme row3, not the row4 community-service lesson. Body Weeks Five–Eight correspond to scheme week labels 7–10; no body renumbering. No lesson, coverage, rule, correction or answer was authored.",
       "completion_condition": "Every scheme row is mapped to a body week or explicitly recorded as having no body; no missing content is invented, no lesson is written and no body week is renumbered."
     },
     {
@@ -691,8 +721,8 @@
         "CIV-INV-T1",
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Scheme table row 13 contains the exact label '12 – 13' (en dash) and topic 'REVISION AND EXAMINATION' at Mammoth lines115–117. No WEEK NINE or later body marker, revision note, examination paper or marking scheme exists anywhere in the document. Classified as a scheme-only marker in CIV-MARK-T1-REVEXAM.md; no teaching lesson, rule, coverage, question or marking guide invented.",
       "completion_condition": "Marker classified with its exact locator and an explicit statement that no revision note, examination paper or marking scheme exists; nothing invented."
     },
     {
@@ -726,8 +756,8 @@
         "CIV-INV-T1",
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Original DOCX table inspected: one native 13×2 Word table (header + 12 rows); zero image blips, VML/pict, text boxes or OLE objects. The table is structured curriculum data, not an image. The existing package schema has no structured source-table field, and this task forbids lessons, coverage, rules, corrections or answers. Disposition: preserve the original archive member byte-for-byte under its verified source ID/hash and retain the cell-separated transcription in CIV-PRE-T1.md; do not add an image asset or flatten the table into a lesson string. No schema/package field added.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -761,8 +791,8 @@
         "CIV-INV-T1",
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Exact Week Four wording preserved from original DOCX paragraphs 69, 71–78 and Mammoth lines 251–269. Recorded the definition, three benefits, four numbered steps, the garbled third step verbatim and the suspicious-gift point. No intended word guessed, no correction or safety/legal guidance added. Any future correction must be separate from source text.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -795,8 +825,8 @@
         "CIV-INV-T1",
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Reviewed the exact source claims at original DOCX paragraphs 151–154 against the PLAC consolidated Constitution updated through the Fifth Alteration (October 2023), Ministry of Interior citizenship requirements PDF (May 2025), current NIS passport guidance and June 2026 Constitution Alteration Bill report. Recorded each claim, locator, source, date and flag in CIV-FACT-T1-CITIZENSHIP-LAW.md. Flagged territorial birth oversimplification; adoption/registration vs passport-document confusion; Ministry 2025 portal subsections 26(2A)/(2B) discrepancy with 2023 consolidated Constitution; 15-year naturalization simplification; unsupported 21-year age statement; dual-nationality overgeneralization; and outdated Ministry name. No corrected rule or package text authored, per task.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -829,8 +859,8 @@
         "CIV-INV-T1",
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Reviewed Week Eight original DOCX paragraphs 164–195 against PLAC consolidated Constitution (October 2023): ss2–7, 4–6, 47–49, 58–59, 80–81, 88–90, 130–148, 217–218, 230–232, 270–272 and Fourth Schedule. Recorded all source claims and section locators. Flagged judiciary head titles, the oversimplified executive composition, generic protection-of-life/property function, treaty approval shorthand, duplicated/unbounded investigation claims, and generic judicial dispute/guilt claims. No corrected rule or lesson authored.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -863,8 +893,8 @@
         "CIV-INV-T1",
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Reviewed original DOCX Week Four definition/benefits/advice (paragraphs 69,71–78) against Constitution 2023 s33(2)(a), Criminal Code Act Cap C38 ss286–288 (PLAC consolidated text; Act originally commenced 1 June 1916 and contains Northern States savings), and Kaduna State Penal Code Law 2017 ss22–30 (commenced 29 May 2017) as a jurisdiction-specific Penal Code example. Recorded legal limits, jurisdiction/date boundaries, and separated the source's four personal-safety recommendations from law. Garbled point preserved verbatim and not interpreted. No corrected rule, legal advice or lesson authored.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -898,8 +928,8 @@
         "CIV-INV-T2",
         "CIV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Verified exact second-term DOCX member hash and inspected original paragraphs 1–41. Scheme row 'Revision of Last Term’s Work' is followed by body WEEK ONE / TOPIC: 'Reviewed of last Term’s work' and one teacher instruction: 'Teacher Review last Term work with the students and corrected them where necessary.' No student-facing teaching content or evaluation block exists. Recorded as review/instruction only; did not invent last-term content, lesson objectives, coverage, rules, corrections or answers.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -933,8 +963,8 @@
         "CIV-INV-T2",
         "CIV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Verified second-term source hash; inspected original DOCX paragraphs 43–60. Indexed voter education definition, voting definition/process, voter registration/list display and evaluation referral to an unsupplied workbook. Retained Mammoth lines85–120 and block digest b050de97dd85a021799f2b6f025a39e43cc5680e8d8faae24261537f1be33de1. Age/eligibility and polling procedure claims left verbatim for CIV-FACT-T2-ELECTORAL-LAW. No lessons, coverage, rules, corrections or answers added.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -968,8 +998,8 @@
         "CIV-INV-T2",
         "CIV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Verified second-term member hash; inspected original DOCX paragraphs 61–77. Indexed Process of Voting, five importance-of-voting statements and Evaluation. The heading repeats Week Two's TOPIC: VOTER EDUCATION; recorded duplicate-title hazard without merging weeks. The five points are separate paragraphs but list numbering is absent from raw text. Preserved p73 phrase 'either to vote against during election period' verbatim. Retained Mammoth lines121–156 and block digest 0acd4692fd6b5d442885f5c30ddd7987aceba51cb5034f81b1cfd5ab176ea9b8. No lesson, coverage, rules, correction or answer added.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1003,8 +1033,8 @@
         "CIV-INV-T2",
         "CIV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Verified source hash; inspected original DOCX paragraphs 79–92. Indexed election definition, choice of leaders, democracy, peaceful change, checks on leaders and political education through campaigns/manifestoes. Evaluation only refers to an unsupplied workbook; no student question appears. Preserved historical/political examples and spellings (Goodluck Ebele Jonathan, Mohammadu Buhari, Sanni Abacha) for later fact review; no correction or answer added. Retained Mammoth lines157–190 and block digest 33f5e7d0f9f91e274a894c3b29d09a9f6bca0b76a0e7a92f8a2eae29a1a8a6c8.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1038,8 +1068,8 @@
         "CIV-INV-T2",
         "CIV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Verified second-term source hash; inspected original DOCX paragraphs 94–112. Indexed INEC description, five electoral-commission functions, SIEC heading/powers, unfinished 'has power to' sentence and SIEC composition claim; recorded missing INEC composition despite scheme promise. Evaluation is workbook-only. Retained Mammoth lines187–226 and block digest 5a3221d85029c7732764f52b711c5109719a865a9924545949e2677ed583bd85. INEC/SIEC institutional claims and party names are reserved for CIV-FACT-T2-ELECTORAL-LAW and CIV-FACT-T2-NEUTRALITY. No lesson/coverage/rules/corrections/answers added.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1073,8 +1103,8 @@
         "CIV-INV-T2",
         "CIV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Verified second-term source hash; inspected original DOCX paragraphs 114–124. Indexed heading FREE AND FAIR ELECTION (no TOPIC prefix), introductory electoral-malpractice context, five reasons for free/fair elections and workbook-only evaluation. The scheme promises 'Meaning, Importance' but no separate definition line appears; the heading is the only meaning label. Retained Mammoth lines227–250 and block digest 7912400a484f58bf1e0e1c09c744edd4e4bca25ca6efa34317fb5f793fb99233. No lesson/coverage/rules/corrections/answers added.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1108,8 +1138,8 @@
         "CIV-INV-T2",
         "CIV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Verified second-term source hash; inspected original DOCX paragraphs 126–155. Indexed eight forms of electoral malpractice, causes, five prevention measures and workbook-only evaluation. The scheme promises a meaning/definition but no definition line exists. Paragraph 144 names PDP/APC and praises Buhari; preserved for CIV-FACT-T2-NEUTRALITY, not carried as factual teaching. Retained Mammoth lines251–310 and block digest 64c8d01ca1f8b5ed666a16d5b1568f3a845bfd0ead1f661a52b97bdad9dd4549. No lesson/coverage/rules/corrections/answers added.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1143,8 +1173,8 @@
         "CIV-INV-T2",
         "CIV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Verified second-term source hash; inspected original DOCX paragraphs 156–183. Indexed five reasons for planning, five benefits, five consequences and the definition (placed after all three sections), plus workbook-only evaluation. Recorded that this is economic/development planning, not electoral material. Preserved source spelling CONSEQUENCIS and 'Singa pore'; no factual claims verified here. Retained Mammoth lines311–368 and block digest 7bf55d4220c4968441f547d0aa757b09b918371b37ce9dce44a0c9c42413a2a0. No lesson/coverage/rules/corrections/answers added.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1178,8 +1208,8 @@
         "CIV-INV-T2",
         "CIV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Verified second-term source hash; inspected original DOCX paragraphs 185–200. Indexed constitution meaning, five sources and evaluation reference to unsupplied Akwa past-question papers. Preserved historical/book-title/name wording and errors exactly; current-constitution claim reserved for CIV-FACT-T2-CONSTITUTION. Retained Mammoth lines369–402 and block digest 57ea3043b537c32e20af05c6a84df73e2dfbe8d6f0b98f1cbafdc358dd9b11d. No lesson/coverage/rules/corrections/answers added.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1213,8 +1243,8 @@
         "CIV-INV-T2",
         "CIV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Verified second-term source hash; inspected original DOCX paragraphs 202–248. Indexed six feature headings, five function points, two unheaded blocks (preserved as unlabelled), five demerit claims and evaluation/past-question reference. Recorded 1979 Constitution reference under 1999 heading and source demerit claims for CIV-FACT-T2-CONSTITUTION/NEUTRALITY. Retained Mammoth lines403–499 and block digest 3d358321e2e3fe635260a7185f3d8f37458ac74d52cd3cfc7fb8213aa5f1f936. No lesson/coverage/rules/corrections/answers added.",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1248,8 +1278,8 @@
         "CIV-INV-T2",
         "CIV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Verified exact second-term source hash and inspected original DOCX paragraphs 1–37. Recorded header, scheme column heading, nine topic groups/subtopics, split 'The current Nigerian' / 'Constitution' label, auto-numbering and final 12&13 Test & Examination row. Scheme is ordinary paragraphs, not a Word table; no teaching text occurs before WEEK ONE. No lesson/coverage/rule/correction/answer added.",
       "completion_condition": "Opening classified with exact locators; scheme topics recorded verbatim; nothing marked approved."
     },
     {
@@ -1283,8 +1313,8 @@
         "CIV-INV-T2",
         "CIV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Reconciled all nine scheme topic groups against ten body weeks. Added three named blocking CONTENT open items with exact scheme locators: INEC composition (scheme lines 35–37), meaning of free/fair elections (lines39–41), and meaning of electoral malpractice (lines45–47). Recorded Week1 review-only, voter education spread across Weeks2–3 (duplicate title), Week8 planning separate, and no Week11–13 body. No missing content authored.",
       "completion_condition": "Gaps recorded with locators; nothing invented; nothing marked approved."
     },
     {
@@ -1318,8 +1348,8 @@
         "CIV-INV-T2",
         "CIV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Recorded scheme final row '12 & 13 [tabs] Test & Examination' at Mammoth line73 and final evaluation lines489–495 ('Treat Akwa Past Question Papers', 'Nos 1 -100', 'Best wishes.'). The source contains no test, examination paper, past-question text or marking scheme; referenced Akwa papers are not supplied. Scheme-only marker; no WEEK TWELVE/THIRTEEN body and no lesson invented.",
       "completion_condition": "Markers classified with exact locators and an explicit statement that no paper or marking scheme exists in the source; nothing invented."
     },
     {
@@ -1525,6 +1555,438 @@
       "status": "PENDING",
       "implementation_reference": "Not started. Created by CIV-WK-T1-W02 (2026-11-07) as the single bounded follow-up for the gaps in its coverage rows and open item CIVIC-EDUCATION-T1-W02-VALUES-GAPS.",
       "completion_condition": "One original lesson with checked provenance, UTF-8 body hash and answered marked questions, and objective-level coverage updates limited to the Week 2 values-types rows. Keep the source records, the scheme-only values and all approval/release gates intact; record any necessary owner choice immediately; no approval or verification fabricated."
+    },
+    {
+      "id": "CIV-WK-T3-W02-03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-0dc1f445683f",
+      "term": "3rd Term",
+      "week_or_locator": "Word body paragraphs 42–148; `WEEKS 2 and 3`; digest e1f97adfc85c4a6681f5c80a8acf13b8350e501534da1c6a047f9ecfe11d25c2",
+      "objective": "Index Cultism: meaning p44; characteristics p45–53; groups/examples p55–78; origin p81–87; reasons p88–95; consequences p97–104; government position p106–110; society position p112–117; prevention p120–128; revision p130–136; essay questions p138–146. Preserve as one combined block; do not split into invented week lessons. Flag group lists and generalised claims for evidence and safeguarding review.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/civic-education.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CIVIC EDUCATION.docx",
+          "member_sha256": "8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T3-W02-03.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T3",
+        "CIV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by CIV-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/civic-education/CIV-INV-T3.md.",
+      "completion_condition": "Record the source content and objective/assessment boundaries at the cited locator. Preserve original wording; do not invent missing content, answers, approvals or verification."
+    },
+    {
+      "id": "CIV-WK-T3-W04-05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-0dc1f445683f",
+      "term": "3rd Term",
+      "week_or_locator": "Word body paragraphs 149–243; `WEEKS 4 & 5`; digest 8d5be349145ace605fd4e55b03425a37c352b42fa6af1104b9c7b9943b403bb3",
+      "objective": "Index Law and Order: definitions p151–158; manifestations p160–171; importance p174–180; agencies p182–191; agency roles p193–203; citizen roles p206–212; revision p214–227; weekend assignment p228–240; reading assignment p242. Preserve legacy/current agency naming for later factual review.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/civic-education.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CIVIC EDUCATION.docx",
+          "member_sha256": "8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T3-W04-05.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T3",
+        "CIV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by CIV-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/civic-education/CIV-INV-T3.md.",
+      "completion_condition": "Record the source content and objective/assessment boundaries at the cited locator. Preserve original wording; do not invent missing content, answers, approvals or verification."
+    },
+    {
+      "id": "CIV-WK-T3-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-0dc1f445683f",
+      "term": "3rd Term",
+      "week_or_locator": "Word body paragraphs 244–305; `WEEK 6`; digest e498f658cee4838505538c6b178089de6b02ebe1037b21b663f92b60656f666b",
+      "objective": "Index Respect for Constituted Authority: introduction and power/authority p245–249; constituted authority p251–252; respect p254–255; types p257–261; how leaders emerge p263–269; importance p270–276; revision p278–281; weekend assignment p283–299; reading assignment p301–303. Retain source spelling `CONSTITUED`.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/civic-education.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CIVIC EDUCATION.docx",
+          "member_sha256": "8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T3-W06.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T3",
+        "CIV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by CIV-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/civic-education/CIV-INV-T3.md.",
+      "completion_condition": "Record the source content and objective/assessment boundaries at the cited locator. Preserve original wording; do not invent missing content, answers, approvals or verification."
+    },
+    {
+      "id": "CIV-WK-T3-W07-08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-0dc1f445683f",
+      "term": "3rd Term",
+      "week_or_locator": "Word body paragraphs 306–367; `WEEKS 7 & 8`; digest 0109f949dfe364294716fa5cfe0eed4427366d10cc5bd31b1795ec6195acaa9f",
+      "objective": "Index Employment and Unemployment: definitions p308–309; factors p312–318; poverty p320; poverty alleviation p322–331; guaranteed employment p333–341; revision p343–355; weekend assignment p358–361; reading assignment p363–364. Preserve combined source label; do not create separate week bodies.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/civic-education.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CIVIC EDUCATION.docx",
+          "member_sha256": "8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T3-W07-08.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T3",
+        "CIV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by CIV-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/civic-education/CIV-INV-T3.md.",
+      "completion_condition": "Record the source content and objective/assessment boundaries at the cited locator. Preserve original wording; do not invent missing content, answers, approvals or verification."
+    },
+    {
+      "id": "CIV-WK-T3-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-0dc1f445683f",
+      "term": "3rd Term",
+      "week_or_locator": "Word body paragraphs 368–435; `WEEK 9`; digest 875e5af48e132e7629b8b9fc90cdd5e4dac8f4bfc7a7c621c57e8825df4ba609",
+      "objective": "Index Capitalist Democracy: definitions p370–371; features p374–380; impediments p383–389; political parties p391–393; competition methods p395–402; revision p405–419; weekend assignment p422–425; reading assignment p428–430; reference p435. Keep political-party treatment neutral and date-grounded.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/civic-education.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CIVIC EDUCATION.docx",
+          "member_sha256": "8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T3-W09.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T3",
+        "CIV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by CIV-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/civic-education/CIV-INV-T3.md.",
+      "completion_condition": "Record the source content and objective/assessment boundaries at the cited locator. Preserve original wording; do not invent missing content, answers, approvals or verification."
+    },
+    {
+      "id": "CIV-PRE-T3",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-0dc1f445683f",
+      "term": "3rd Term",
+      "week_or_locator": "Word body paragraphs 2–38; third-term scheme",
+      "objective": "Index the ordinary-paragraph scheme (not a Word table): Week 1 revision; Weeks 2–3 Cultism; Weeks 4–5 Law and Order; Week 6 Constituted Authority; Week 7 Employment and Unemployment; Weeks 8–9 Capitalist Democracy; Week 10 revision; Weeks 11 & 12 examination/closing. Record mapping to actual body labels, without renumbering or inventing lessons.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/civic-education.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CIVIC EDUCATION.docx",
+          "member_sha256": "8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-PRE-T3.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T3",
+        "CIV-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Verified exact third-term source hash and inspected original DOCX paragraphs 2–38 and body markers. Recorded all eight ordinary-paragraph scheme rows and their actual body mapping in CIV-PRE-T3.md. Added eight source-bound classify_marker rules (SCHEME_ONLY, WHOLE_LINE) so the scheme's WEEK-number paragraphs cannot be mistaken for teaching bodies, and one MARKER coverage entry linked to all eight rules. Week 1 revision, Week 10 revision and Weeks 11–12 examination/closing have no separate body. Actual teaching body labels are WEEKS 2 and 3, WEEKS 4 & 5, WEEK 6, WEEKS 7 & 8 and WEEK 9. No lesson or answer invented; tests not run.",
+      "completion_condition": "Record the source content and objective/assessment boundaries at the cited locator. Preserve original wording; do not invent missing content, answers, approvals or verification."
+    },
+    {
+      "id": "CIV-MARK-T3-SCHEME-GAPS",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-0dc1f445683f",
+      "term": "3rd Term",
+      "week_or_locator": "Scheme paragraphs 6–38 compared with body paragraphs 42–435",
+      "objective": "Record Week 1 and Week 10 as revision markers, Weeks 11–12 as examination/closing markers, and actual body labels as WEEKS 2 and 3, WEEKS 4 & 5, WEEK 6, WEEKS 7 & 8, WEEK 9. Employment is scheme Week 7/body Weeks 7 & 8; capitalist democracy is scheme Weeks 8–9/body Week 9. Do not split or renumber.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/civic-education.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CIVIC EDUCATION.docx",
+          "member_sha256": "8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-MARK-T3-SCHEME-GAPS.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T3",
+        "CIV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by CIV-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/civic-education/CIV-INV-T3.md.",
+      "completion_condition": "Record the source content and objective/assessment boundaries at the cited locator. Preserve original wording; do not invent missing content, answers, approvals or verification."
+    },
+    {
+      "id": "CIV-MARK-T3-REVEXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-0dc1f445683f",
+      "term": "3rd Term",
+      "week_or_locator": "Scheme paragraphs 36 and 38; embedded body revision/assignment sections",
+      "objective": "Record that revision questions are embedded in topic blocks but there is no separate general revision section, exam paper, examination questions section, marking guide or answer key. Do not infer an assessment from the scheme marker.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/civic-education.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CIVIC EDUCATION.docx",
+          "member_sha256": "8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-MARK-T3-REVEXAM.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T3",
+        "CIV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by CIV-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/civic-education/CIV-INV-T3.md.",
+      "completion_condition": "Record the source content and objective/assessment boundaries at the cited locator. Preserve original wording; do not invent missing content, answers, approvals or verification."
+    },
+    {
+      "id": "CIV-PRES-T3-CULTISM-CLAIMS",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-0dc1f445683f",
+      "term": "3rd Term",
+      "week_or_locator": "Cultism paragraphs 55–78, 81–87, 97–117",
+      "objective": "Preserve named group examples and claims about membership, conduct, mental health and criminality as source wording only. The list is not a verified directory. Require reliable evidence, safeguarding and neutrality review before student-facing reuse; do not expand the list or add operational details.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/civic-education.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CIVIC EDUCATION.docx",
+          "member_sha256": "8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-PRES-T3-CULTISM-CLAIMS.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T3",
+        "CIV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by CIV-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/civic-education/CIV-INV-T3.md.",
+      "completion_condition": "Record the source content and objective/assessment boundaries at the cited locator. Preserve original wording; do not invent missing content, answers, approvals or verification."
+    },
+    {
+      "id": "CIV-FACT-T3-INSTITUTIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-0dc1f445683f",
+      "term": "3rd Term",
+      "week_or_locator": "Law and Order p182–203; Constituted Authority p245–276",
+      "objective": "Verify current names, statutory mandates and jurisdiction for Police, Armed Forces, Public Complaints Commission, organs of government, Nigerian Prisons Service, Customs, EFCC, ICPC, FRSC and Code of Conduct Bureau using primary Nigerian legal/institutional sources and effective dates. Preserve source wording separately from corrections.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/civic-education.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CIVIC EDUCATION.docx",
+          "member_sha256": "8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-FACT-T3-INSTITUTIONS.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T3",
+        "CIV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by CIV-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/civic-education/CIV-INV-T3.md.",
+      "completion_condition": "Record the source content and objective/assessment boundaries at the cited locator. Preserve original wording; do not invent missing content, answers, approvals or verification."
+    },
+    {
+      "id": "CIV-FACT-T3-CULTISM-HISTORY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-0dc1f445683f",
+      "term": "3rd Term",
+      "week_or_locator": "Cultism p55–87 and government position p106–110",
+      "objective": "Verify the Pyrates Confraternity/University of Ibadan/1952 history, stated founding aims, subsequent splintering and historical claims about traditional associations. Use credible historical or institutional sources; do not add operational cult details.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/civic-education.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CIVIC EDUCATION.docx",
+          "member_sha256": "8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-FACT-T3-CULTISM-HISTORY.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T3",
+        "CIV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by CIV-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/civic-education/CIV-INV-T3.md.",
+      "completion_condition": "Record the source content and objective/assessment boundaries at the cited locator. Preserve original wording; do not invent missing content, answers, approvals or verification."
+    },
+    {
+      "id": "CIV-FACT-T3-EMPLOYMENT-CLAIMS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-0dc1f445683f",
+      "term": "3rd Term",
+      "week_or_locator": "Employment p308–341",
+      "objective": "Classify claims about unemployment, poverty, full employment, savings/investment, quality of life and guaranteed employment as definitions, normative claims or empirical claims. Any current Nigerian statistic or causal claim requires dated authoritative evidence; do not invent statistics.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/civic-education.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CIVIC EDUCATION.docx",
+          "member_sha256": "8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-FACT-T3-EMPLOYMENT-CLAIMS.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T3",
+        "CIV-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by CIV-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/civic-education/CIV-INV-T3.md.",
+      "completion_condition": "Record the source content and objective/assessment boundaries at the cited locator. Preserve original wording; do not invent missing content, answers, approvals or verification."
     }
   ],
   "review": {
@@ -1540,35 +2002,21 @@
     }
   },
   "next_runnable": [
-    "CIV-INV-T3",
-    "CIV-TEST-PACKAGE",
-    "CIV-WK-T1-W03",
-    "CIV-WK-T1-W04",
-    "CIV-WK-T1-W05",
-    "CIV-WK-T1-W06",
-    "CIV-WK-T1-W07",
-    "CIV-WK-T1-W08",
-    "CIV-PRE-T1",
-    "CIV-MARK-T1-SCHEME-GAPS",
-    "CIV-MARK-T1-REVEXAM",
-    "CIV-VIS-T1-TBL-SCHEME",
-    "CIV-PRES-T1-DEFENCE-ADVICE",
-    "CIV-FACT-T1-CITIZENSHIP-LAW",
-    "CIV-FACT-T1-GOVERNMENT-STRUCTURE",
-    "CIV-FACT-T1-SELF-DEFENCE-LAW",
-    "CIV-WK-T2-W01",
-    "CIV-WK-T2-W02",
-    "CIV-WK-T2-W03",
-    "CIV-WK-T2-W04",
-    "CIV-WK-T2-W05",
-    "CIV-WK-T2-W06",
-    "CIV-WK-T2-W07",
-    "CIV-WK-T2-W08",
-    "CIV-WK-T2-W09",
-    "CIV-WK-T2-W10",
-    "CIV-PRE-T2",
-    "CIV-MARK-T2-SCHEME-GAPS",
-    "CIV-MARK-T2-REVEXAM",
-    "CIV-LES-T1-W02-VALUES-TYPES"
+    "CIV-PRES-T2-LISTS",
+    "CIV-FACT-T2-ELECTORAL-LAW",
+    "CIV-FACT-T2-CONSTITUTION",
+    "CIV-FACT-T2-NEUTRALITY",
+    "CIV-LES-T1-W02-VALUES-TYPES",
+    "CIV-WK-T3-W02-03",
+    "CIV-WK-T3-W04-05",
+    "CIV-WK-T3-W06",
+    "CIV-WK-T3-W07-08",
+    "CIV-WK-T3-W09",
+    "CIV-MARK-T3-SCHEME-GAPS",
+    "CIV-MARK-T3-REVEXAM",
+    "CIV-PRES-T3-CULTISM-CLAIMS",
+    "CIV-FACT-T3-INSTITUTIONS",
+    "CIV-FACT-T3-CULTISM-HISTORY",
+    "CIV-FACT-T3-EMPLOYMENT-CLAIMS"
   ]
 }
