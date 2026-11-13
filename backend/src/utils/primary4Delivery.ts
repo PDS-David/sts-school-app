@@ -275,20 +275,115 @@ export function safePrimary4Topic<T extends Primary4Topic>(topic: T): T {
   } as T;
 }
 
+const PRIMARY4_WITHDRAWN_ASSESSMENT_PREFIX = '__PRIMARY4_WITHDRAWN__:'; 
+type Primary4Query = (sql: string, params?: unknown[]) => Promise<{ rows: any[] }>;
+
+/** Retire cached notes and topic assessments when a Primary 4 replacement is approved or withheld.
+ * The replacement source hash is stored on the newly generated assessment; stale assessments
+ * are closed and tagged so they cannot be taken or submitted after a source correction.
+ */
+export async function retireStalePrimary4Cache(
+  query: Primary4Query,
+  topicId: unknown,
+  delivery: Primary4SourceDelivery,
+) {
+  const fingerprint = delivery.kind === 'matched' ? delivery.sourceHash : '__withheld__';
+  const tombstone = `${PRIMARY4_WITHDRAWN_ASSESSMENT_PREFIX}${delivery.topicId ?? topicId}`;
+  const clearSummary = delivery.kind === 'withheld' || delivery.source === 'archive-correction';
+  const { rows } = await query(
+    `WITH target AS MATERIALIZED (
+       SELECT t.id, t.generated_assessment_id
+       FROM topics t JOIN subjects s ON s.id=t.subject_id
+       WHERE t.id=$1 AND t.school_code='primary' AND t.class_name='Primary 4'
+       FOR UPDATE OF t
+     ),
+     stale AS MATERIALIZED (
+       SELECT a.id FROM assessments a JOIN target ON a.id=target.generated_assessment_id
+       WHERE a.content_fingerprint IS DISTINCT FROM $2
+     ),
+     closed AS (
+       UPDATE assessments a SET status='closed', content_fingerprint=$3
+       WHERE a.id IN (SELECT id FROM stale)
+         AND a.school_code='primary' AND a.class_name='Primary 4'
+       RETURNING a.id
+     ),
+     updated AS (
+       UPDATE topics t SET
+         summary=CASE WHEN $4 THEN NULL ELSE t.summary END,
+         generated_assessment_id=CASE WHEN EXISTS (SELECT 1 FROM stale) THEN NULL ELSE t.generated_assessment_id END
+       FROM target
+       WHERE t.id=target.id
+         AND ($4 OR EXISTS (SELECT 1 FROM stale))
+       RETURNING t.id
+     )
+     SELECT (SELECT count(*) FROM stale) AS retired,
+            (SELECT count(*) FROM closed) AS closed_assessments,
+            (SELECT count(*) FROM updated) AS updated_topics`,
+    [topicId, fingerprint, tombstone, clearSummary],
+  );
+  return {
+    retired: Number(rows[0]?.retired ?? 0) > 0,
+    closedAssessments: Number(rows[0]?.closed_assessments ?? 0),
+    updatedTopic: Number(rows[0]?.updated_topics ?? 0) > 0,
+  };
+}
+
+export async function primary4AssessmentDeliverable(query: Primary4Query, assessmentId: unknown) {
+  const { rows: markerRows } = await query(
+    'SELECT content_fingerprint FROM assessments WHERE id=$1',
+    [assessmentId],
+  );
+  if (String(markerRows[0]?.content_fingerprint ?? '').startsWith(PRIMARY4_WITHDRAWN_ASSESSMENT_PREFIX)) {
+    return { ok: false as const, reason: 'This Primary 4 assessment has been withdrawn because its lesson source was corrected or withheld.' };
+  }
+  const { rows } = await query(
+    `SELECT t.*, sub.name AS subject_name, a.content_fingerprint
+       FROM topics t JOIN subjects sub ON sub.id=t.subject_id
+       JOIN assessments a ON a.id=t.generated_assessment_id
+      WHERE t.generated_assessment_id=$1
+        AND t.school_code='primary' AND t.class_name='Primary 4'`,
+    [assessmentId],
+  );
+  for (const topic of rows) {
+    const delivery = resolvePrimary4SourceDelivery(topic);
+    if (!delivery) continue;
+    const current = delivery.kind === 'matched' ? delivery.sourceHash : '__withheld__';
+    if (delivery.kind === 'withheld' || (delivery.source !== 'primary4-export' && topic.content_fingerprint !== current)) {
+      await retireStalePrimary4Cache(query, topic.id, delivery);
+      return { ok: false as const, reason: 'This Primary 4 assessment has been withdrawn because its lesson source changed or is awaiting approval.' };
+    }
+  }
+  return { ok: true as const };
+}
+
 /** Exclude stale generated assessments whose Primary 4 source no longer matches an approved source. */
 export async function primary4WithdrawnAssessmentIds(
-  query: (sql: string, params?: unknown[]) => Promise<{ rows: any[] }>,
+  query: Primary4Query,
   assessmentIds: Array<string | number>,
 ): Promise<Set<string | number>> {
   if (!assessmentIds.length) return new Set();
+  const withdrawn = new Set<string | number>();
+  const { rows: markedRows } = await query(
+    'SELECT id FROM assessments WHERE id=ANY($1) AND left(content_fingerprint, length($2))=$2',
+    [assessmentIds, PRIMARY4_WITHDRAWN_ASSESSMENT_PREFIX],
+  );
+  for (const row of markedRows) withdrawn.add(row.id);
   const { rows } = await query(
-    `SELECT t.*, sub.name AS subject_name
+    `SELECT t.*, sub.name AS subject_name, a.content_fingerprint
        FROM topics t JOIN subjects sub ON sub.id=t.subject_id
+       JOIN assessments a ON a.id=t.generated_assessment_id
       WHERE t.generated_assessment_id=ANY($1)
         AND t.school_code='primary' AND t.class_name='Primary 4'`,
     [assessmentIds],
   );
-  return new Set(rows
-    .filter((topic: any) => resolvePrimary4SourceDelivery(topic)?.kind === 'withheld')
-    .map((topic: any) => topic.generated_assessment_id));
+  for (const topic of rows) {
+    const delivery = resolvePrimary4SourceDelivery(topic);
+    if (!delivery) continue;
+    const current = delivery.kind === 'matched' ? delivery.sourceHash : '__withheld__';
+    if (delivery.kind === 'withheld' || (delivery.source !== 'primary4-export' && topic.content_fingerprint !== current)) {
+      await retireStalePrimary4Cache(query, topic.id, delivery);
+      withdrawn.add(topic.generated_assessment_id);
+    }
+  }
+  return withdrawn;
 }
