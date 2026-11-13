@@ -53,7 +53,7 @@
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 25,
     "BLOCKED": 1,
-    "PENDING": 96
+    "PENDING": 97
   },
   "items": [
     {
@@ -4469,6 +4469,35 @@
       "status": "PENDING",
       "implementation_reference": "Not started. Fact review records required corrections; this separate lesson task is responsible for the original replacement teaching. No source wording is edited by the factual-review task.",
       "completion_condition": "One original supplement with accurate scientific-method, hypothesis/theory/law and branch teaching, provenance, examples and fully marked practice exists; corresponding Week One coverage is linked truthfully; approval remains PENDING and verification DEFERRED."
+    },
+    {
+      "id": "CHEM-REF-T1A-W01-READING-REFERENCES",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "term": "1st Term",
+      "week_or_locator": "Opening reference list lines 75-85 and Week One reading assignment lines 215-219",
+      "objective": "Verify the exact bibliographic identity and availability of both Week One reading references. Compare the opening reference list with the reading-assignment wording; identify the full title, author/editor, publisher, edition/year and the page range for the exact edition available to the school. Resolve whether 'New School Chemistry for Senior Secondary School' and 'New School Chemistry for SSS' refer to the same intended edition, and verify the Ojokuku title where 'Collegs' is a source typo. Use publisher or library catalogue records and, where page ranges are concerned, inspect the actual edition. Do not infer that page 2-7 or 2-15 has been checked from a catalogue record; do not silently substitute another edition or claim permission to reproduce book content.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1A-W01.md",
+        "docs/ss1/work/microtasks/chemistry/CHEM-FACT-T1A-W01-STATEMENTS.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-REF-T1A-W01-READING-REFERENCES.md"
+      ],
+      "depends_on": [
+        "CHEM-SRC-T1A",
+        "CHEM-INV-T1A",
+        "CHEM-IDX-T1A-W01",
+        "CHEM-FACT-T1A-W01-STATEMENTS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Public catalogues corroborate the Ababio author identity and related title variants, but do not establish the exact school edition or assigned pages. See CHEM-FACT-T1A-W01-STATEMENTS.md.",
+      "completion_condition": "A findings note identifies both books and the exact edition/page status from primary publisher/library evidence or marks any unresolved field honestly; no uninspected page range is called verified and no copyrighted lesson text is copied."
     }
   ],
   "review": {
@@ -4542,6 +4571,7 @@
     "CHEM-LES-T1A-W07-ION-DISTILLATION-GAPS",
     "CHEM-FACT-T1A-W07-STATEMENTS",
     "CHEM-LES-T1A-W08-OXIDATION-NUMBER-CALCULATION",
-    "CHEM-FACT-T1A-W08-NOMENCLATURE-EXAMPLES"
+    "CHEM-FACT-T1A-W08-NOMENCLATURE-EXAMPLES",
+    "CHEM-REF-T1A-W01-READING-REFERENCES"
   ]
 }
