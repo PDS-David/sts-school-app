@@ -3,6 +3,7 @@ import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api, { flushOutbox } from './client';
 import { onForcedLogout } from './authEvents';
+import { isRestorableUser } from './authSession';
 import { setSecureItem, deleteSecureItems } from './secureTokenStorage';
 import { setCacheNamespace, outboxCount, isOnline } from '../offline';
 import { registerForPushNotifications, unregisterPushToken } from './pushRegistration';
@@ -69,16 +70,39 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [mustSetSecurityQuestion, setMustSetSecurityQuestion] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Restore session on mount
+  // Restore session on mount. Storage can reject (device storage/key-value
+  // corruption, quota or native bridge failure), and JSON.parse can throw if
+  // an interrupted write left malformed data. Always release the startup
+  // gate so a recoverable storage problem cannot strand the app on its
+  // permanent splash spinner.
   useEffect(() => {
-    AsyncStorage.getItem('user').then((raw) => {
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        setUser(parsed);
-        setCacheNamespace(parsed.id);
+    const restoreSession = async () => {
+      try {
+        const raw = await AsyncStorage.getItem('user');
+        if (raw) {
+          const parsed: unknown = JSON.parse(raw);
+          if (isRestorableUser(parsed)) {
+            setUser(parsed as User);
+            setCacheNamespace(parsed.id);
+            // Re-register an already-authorized device after reinstall/token
+            // rotation or a previous transient registration failure, without
+            // prompting for notification permission during app startup.
+            registerForPushNotifications({ requestPermission: false }).catch(() => {});
+            flushOutbox().catch(() => {});
+          } else {
+            await AsyncStorage.removeItem('user');
+            setCacheNamespace(null);
+          }
+        }
+      } catch (error) {
+        console.warn('[AuthContext] Unable to restore saved session; returning to sign-in.', error);
+        setCacheNamespace(null);
+        try { await AsyncStorage.removeItem('user'); } catch { /* storage is unavailable; remain signed out in memory */ }
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
-    });
+    };
+    restoreSession();
   }, []);
 
   // If client.ts's response interceptor fails to refresh the access token
@@ -119,6 +143,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await AsyncStorage.setItem('user', JSON.stringify(data.user));
     setCacheNamespace(data.user.id);
     setUser(data.user);
+    // Resume this account's pending work after a successful sign-in, even
+    // when connectivity never emitted a new reconnect event.
+    flushOutbox().catch(() => {});
     setMustChangePw(!!data.must_change_pw);
     setMustSetSecurityQuestion(!!data.must_set_security_question);
     // Best effort, never blocks login — a denied permission or offline
@@ -135,10 +162,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // safe, but invisible) until this user comes back and signs in again.
     // Try to flush first; only bother the person with a choice if that
     // wasn't possible.
-    let pending = await outboxCount();
-    if (pending > 0 && (await isOnline())) {
+    const readPendingCount = async (): Promise<number | null> => {
+      try {
+        return await outboxCount();
+      } catch {
+        Alert.alert(
+          'Cannot check saved changes',
+          'Device storage is unavailable or the offline queue is damaged. Reconnect or resolve the storage problem before signing out so unsynced work is not put at risk.',
+        );
+        return null;
+      }
+    };
+    let pending = await readPendingCount();
+    if (pending === null) return;
+    let online = false;
+    try { online = await isOnline(); } catch { /* treat connectivity lookup failure as offline */ }
+    if (pending > 0 && online) {
       await flushOutbox().catch(() => {});
-      pending = await outboxCount();
+      pending = await readPendingCount();
+      if (pending === null) return;
     }
     if (pending > 0) {
       const proceed = await new Promise<boolean>((resolve) => {

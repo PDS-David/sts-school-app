@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import rateLimit from 'express-rate-limit';
+import { createHash } from 'node:crypto';
 import bcrypt from 'bcryptjs';
 import { query } from '../db/pool.js';
 import { signAccess, signRefresh, verifyRefresh } from '../utils/jwt.js';
@@ -11,11 +13,32 @@ import type { AuthUser, Role } from '../types/index.js';
 
 const router = Router();
 
+// Login attempts are keyed by normalized account name as well as the
+// existing process-wide IP limiter. This prevents a distributed attacker
+// from trying unlimited passwords against one account, and prevents one
+// user's failed attempts from consuming another user's account quota.
+const loginAttemptLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: (req) => {
+    const username = typeof req.body?.username === 'string'
+      ? req.body.username.trim().toLowerCase().slice(0, 128)
+      : '';
+    const digest = createHash('sha256').update(username).digest('hex');
+    return `login:${digest}`;
+  },
+  skipSuccessfulRequests: true,
+  message: { error: 'Too many failed login attempts for this username. Try again in 15 minutes.' },
+});
+
 // ── POST /auth/login ──────────────────────────────────────────────────────────
-router.post('/login', async (req, res) => {
-  const { username, password } = req.body as { username: string; password: string };
-  if (!username || !password) {
-    return res.status(400).json({ error: 'username and password required' });
+router.post('/login', loginAttemptLimiter, async (req, res) => {
+  const { username, password } = req.body as { username?: string; password?: string };
+  if (typeof username !== 'string' || !username.trim() || username.length > 128 ||
+      typeof password !== 'string' || !password) {
+    return res.status(400).json({ error: 'A valid username (maximum 128 characters) and password are required' });
   }
 
   const { rows } = await query(

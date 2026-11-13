@@ -2,7 +2,7 @@
 
 - **Task ID:** BSEC-004
 - **Title:** Make bulk attendance writes all-or-nothing
-- **Status:** review (all required checks passing)
+- **Status:** merged
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
@@ -24,5 +24,6 @@
 - **Concurrency:** PR #698 changes mobile attendance recovery only. PR #700/#688 changes scores.ts; this PR does not touch it. No active PR changes backend/src/routes/attendance.ts.
 - **CI correction:** the PostgreSQL test file was renamed to backend-attendance-bulk.integration.test.mts so it is not misclassified by the separate JSS3 database-test registry; the workflow command and path filter now use the new name. No tests were removed or weakened.
 - **Final verification:** Backend attendance batch integrity workflow 43447509285, JSS3 implementation/asset checks 43447509134, and SS1 package integrity gate 43447509081 all passed on implementation commit 07d92fc063033597ae33958d46773e87c43cc48c.
-- **Remaining:** PR review/merge. Do not mark the overall backend/security assignment complete.
+- **Merged:** PR #704 merged at 2026-11-13T15:26:44Z; merge commit 4fa2df74d8bc33e29e34ce0fb24a7b6cf817f9c1.
+- **Remaining:** continue the backend/security audit. This checkpoint does not mark the overall assignment complete.
 - **Exact next action:** review PR #704 and merge only after owner approval; then refresh from master and continue the backend audit.

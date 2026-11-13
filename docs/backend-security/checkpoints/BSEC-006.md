@@ -2,7 +2,7 @@
 
 - **Task ID:** BSEC-006
 - **Title:** Stop the API safely after uncaught exceptions and unhandled rejections
-- **Status:** review (all required checks passing)
+- **Status:** merged
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
@@ -21,5 +21,6 @@
 - **Verification:** index.ts inspection confirms both process handlers only log and keep the server running. Node process safety guidance requires termination after uncaught exceptions rather than continuing. No production data accessed or changed.
 - **PR:** https://github.com/PDS-David/sts-school-app/pull/706
 - **Final verification:** Backend fatal process shutdown workflow 43447612327, JSS3 implementation/asset checks 43447612237, and SS1 package integrity gate 43447612300 all passed on implementation commit 64fac2f99a2c946d32dc1a3402695ff81bbba5d3. Both child-process tests proved non-zero termination after graceful server/dependency shutdown.
-- **Remaining:** PR review/merge. Do not mark the overall backend/security assignment complete.
+- **Merged:** PR #706 merged at 2026-11-13T15:28:09Z; merge commit 15c0b1c9e43f4f872bf5d90e1c3d0a6d5d1bb2b2.
+- **Remaining:** continue the backend/security audit. This checkpoint does not mark the overall assignment complete.
 - **Exact next action:** inspect the backup scheduler lifecycle, then add a stop callback and a shared fatal shutdown helper.

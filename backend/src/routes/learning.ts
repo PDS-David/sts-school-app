@@ -255,6 +255,98 @@ router.delete('/materials/:id', requirePerm('materials.write'), async (req, res)
 // TOPICS
 // ════════════════════════════════════════════════════════
 
+// ── GET /achievements/me — earned badges derived from verified learning data ──
+// No duplicate badge ledger is maintained: topic passes and assessment
+// submissions are the source of truth, so achievements cannot drift from
+// grades or be duplicated by retries. Students can read only their own data.
+router.get('/achievements/me', requireRole('student'), async (req, res) => {
+  const { rows: studentRows } = await query(
+    'SELECT id FROM students WHERE user_id=$1 AND deleted_at IS NULL LIMIT 1',
+    [req.user!.id],
+  );
+  const student = studentRows[0];
+  if (!student) return res.status(404).json({ error: 'No active student record for this account' });
+
+  const [{ rows: topicRows }, { rows: assessmentRows }] = await Promise.all([
+    query(
+      `SELECT COUNT(*) FILTER (WHERE passed IS TRUE)::int AS passed_topics,
+              MIN(completed_at) FILTER (WHERE passed IS TRUE) AS first_topic_passed_at,
+              (SELECT completed_at FROM topic_completions
+                WHERE student_id=$1 AND passed IS TRUE ORDER BY completed_at OFFSET 9 LIMIT 1) AS tenth_topic_passed_at,
+              (SELECT completed_at FROM topic_completions
+                WHERE student_id=$1 AND passed IS TRUE ORDER BY completed_at OFFSET 24 LIMIT 1) AS twenty_fifth_topic_passed_at
+         FROM topic_completions WHERE student_id=$1`,
+      [student.id],
+    ),
+    query(
+      `SELECT COUNT(*)::int AS submitted_assessments,
+              MIN(sub.submitted_at) AS first_assessment_at,
+              COUNT(*) FILTER (
+                WHERE sub.fully_graded IS TRUE AND a.total_marks > 0
+                  AND NOT EXISTS (
+                    SELECT 1 FROM submission_answers sa
+                     WHERE sa.submission_id=sub.id
+                       AND sa.grading_status IN ('ai_graded','ai_unavailable')
+                  )
+                  AND sub.total_score >= a.total_marks * 0.8
+              )::int AS high_scores,
+              MIN(sub.submitted_at) FILTER (
+                WHERE sub.fully_graded IS TRUE AND a.total_marks > 0
+                  AND NOT EXISTS (
+                    SELECT 1 FROM submission_answers sa
+                     WHERE sa.submission_id=sub.id
+                       AND sa.grading_status IN ('ai_graded','ai_unavailable')
+                  )
+                  AND sub.total_score >= a.total_marks * 0.8
+              ) AS first_high_score_at,
+              COUNT(*) FILTER (
+                WHERE sub.fully_graded IS TRUE AND a.total_marks > 0
+                  AND NOT EXISTS (
+                    SELECT 1 FROM submission_answers sa
+                     WHERE sa.submission_id=sub.id
+                       AND sa.grading_status IN ('ai_graded','ai_unavailable')
+                  )
+                  AND sub.total_score >= a.total_marks
+              )::int AS perfect_scores,
+              MIN(sub.submitted_at) FILTER (
+                WHERE sub.fully_graded IS TRUE AND a.total_marks > 0
+                  AND NOT EXISTS (
+                    SELECT 1 FROM submission_answers sa
+                     WHERE sa.submission_id=sub.id
+                       AND sa.grading_status IN ('ai_graded','ai_unavailable')
+                  )
+                  AND sub.total_score >= a.total_marks
+              ) AS first_perfect_score_at
+         FROM submissions sub
+         JOIN assessments a ON a.id=sub.assessment_id
+        WHERE sub.student_id=$1`,
+      [student.id],
+    ),
+  ]);
+
+  const topicsPassed = Number(topicRows[0]?.passed_topics ?? 0);
+  const assessmentsSubmitted = Number(assessmentRows[0]?.submitted_assessments ?? 0);
+  const highScores = Number(assessmentRows[0]?.high_scores ?? 0);
+  const perfectScores = Number(assessmentRows[0]?.perfect_scores ?? 0);
+  const badges = [
+    { id: 'topic-first', title: 'First Topic Passed', description: 'Pass your first topic assessment.', icon: 'book', progress: Math.min(topicsPassed, 1), target: 1, earned: topicsPassed >= 1, earned_at: topicRows[0]?.first_topic_passed_at ?? null },
+    { id: 'topic-explorer', title: 'Topic Explorer', description: 'Pass 10 topic assessments.', icon: 'compass', progress: Math.min(topicsPassed, 10), target: 10, earned: topicsPassed >= 10, earned_at: topicsPassed >= 10 ? topicRows[0]?.tenth_topic_passed_at ?? null : null },
+    { id: 'topic-scholar', title: 'Topic Scholar', description: 'Pass 25 topic assessments.', icon: 'graduation-cap', progress: Math.min(topicsPassed, 25), target: 25, earned: topicsPassed >= 25, earned_at: topicsPassed >= 25 ? topicRows[0]?.twenty_fifth_topic_passed_at ?? null : null },
+    { id: 'assessment-first', title: 'Assessment Starter', description: 'Submit your first assessment.', icon: 'clipboard', progress: Math.min(assessmentsSubmitted, 1), target: 1, earned: assessmentsSubmitted >= 1, earned_at: assessmentRows[0]?.first_assessment_at ?? null },
+    { id: 'assessment-ace', title: 'Assessment Ace', description: 'Earn at least 80% on a fully graded assessment.', icon: 'star', progress: Math.min(highScores, 1), target: 1, earned: highScores >= 1, earned_at: assessmentRows[0]?.first_high_score_at ?? null },
+    { id: 'perfect-score', title: 'Perfect Score', description: 'Earn full marks on a fully graded assessment.', icon: 'trophy', progress: Math.min(perfectScores, 1), target: 1, earned: perfectScores >= 1, earned_at: assessmentRows[0]?.first_perfect_score_at ?? null },
+  ];
+  return res.json({ badges, summary: { topics_passed: topicsPassed, assessments_submitted: assessmentsSubmitted, high_scores: highScores, perfect_scores: perfectScores } });
+});
+
+
+
+
+
+
+
+
+
 router.get('/topics', requirePerm('topics.read'), async (req, res) => {
   const { subject_id, class_name, term_id, term_label, school_code } = req.query as Record<string, string>;
   const user = req.user!;
@@ -1162,6 +1254,40 @@ router.post('/questions', requirePerm('questions.write'), async (req, res) => {
 // ════════════════════════════════════════════════════════
 // ASSESSMENTS
 // ════════════════════════════════════════════════════════
+
+// Parent-only summary of published tests for active linked wards. This is
+// deliberately separate from the class-wide assessment endpoint: parents
+// never receive question content, submissions from other students, or draft tests.
+router.get('/parent/upcoming-assessments', requireRole('parent'), async (req, res) => {
+  const { rows } = await query(
+    `SELECT DISTINCT a.id, a.school_code, a.title, a.start_at, a.end_at, a.class_name,
+            sub.name AS subject_name
+       FROM parent_wards pw
+       JOIN students st ON st.id=pw.student_id AND st.deleted_at IS NULL
+       JOIN assessments a ON a.school_code=st.school_code
+         AND (a.class_name IS NULL OR a.class_name=st.class_name)
+       JOIN subjects sub ON sub.id=a.subject_id AND sub.school_code=a.school_code
+      WHERE pw.parent_id=$1
+        AND a.status='open'
+        AND (a.start_at IS NULL OR a.start_at >= now())
+        AND (a.end_at IS NULL OR a.end_at >= now())
+      ORDER BY a.start_at ASC NULLS LAST, a.title ASC`,
+    [req.user!.id],
+  );
+  const ids = rows.map((r: any) => r.id);
+  const [jss3Gone, ss1Gone, agGone, englishGone, primary4Gone] = await Promise.all([
+    withdrawnAssessmentIds(query, ids),
+    ss1WithdrawnAssessmentIds(query, ids),
+    agriculturalScienceWithdrawnAssessmentIds(query, ids),
+    englishWithdrawnAssessmentIds(query, ids),
+    primary4WithdrawnAssessmentIds(query, ids),
+  ]);
+  const withdrawn = new Set([...jss3Gone, ...ss1Gone, ...agGone, ...englishGone, ...primary4Gone]);
+  return res.json({ assessments: rows.filter((r: any) => !withdrawn.has(r.id)) });
+});
+
+
+
 
 router.get('/assessments', requirePerm('assessments.read'), async (req, res) => {
   const { class_name, subject_id, status, school_code } = req.query as Record<string, string>;

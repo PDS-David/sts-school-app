@@ -42,18 +42,39 @@ export function AppHeader({ title, subtitle, onPressAvatar, onPressBell, rightEx
       <View style={styles.actions}>
         {rightExtra}
 
-        <TouchableOpacity style={styles.iconBtn} onPress={onPressBell} activeOpacity={0.7}>
-          <Ionicons name="notifications-outline" size={23} color={Colors.white} />
-          {unreadCount > 0 && (
-            <View style={styles.badge}>
-              <Text style={styles.badgeText}>{unreadCount > 9 ? '9+' : unreadCount}</Text>
-            </View>
-          )}
-        </TouchableOpacity>
+        {onPressBell ? (
+          <TouchableOpacity
+            style={styles.iconBtn}
+            onPress={onPressBell}
+            activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel={unreadCount > 0 ? `Notifications, ${unreadCount} unread` : 'Notifications'}
+            accessibilityHint="Opens your notifications"
+          >
+            <Ionicons name="notifications-outline" size={23} color={Colors.white} />
+            {unreadCount > 0 && (
+              <View style={styles.badge}>
+                <Text style={styles.badgeText}>{unreadCount > 9 ? '9+' : unreadCount}</Text>
+              </View>
+            )}
+          </TouchableOpacity>
+        ) : null}
 
-        <TouchableOpacity style={styles.avatar} onPress={onPressAvatar} activeOpacity={0.7}>
-          <Text style={styles.avatarText}>{(user?.username?.[0] ?? '?').toUpperCase()}</Text>
-        </TouchableOpacity>
+        {onPressAvatar ? (
+          <TouchableOpacity
+            style={styles.avatar}
+            onPress={onPressAvatar}
+            activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel="Open profile"
+          >
+            <Text style={styles.avatarText}>{(user?.username?.[0] ?? '?').toUpperCase()}</Text>
+          </TouchableOpacity>
+        ) : (
+          <View style={styles.avatar} accessibilityRole="image" accessibilityLabel={`${user?.username ?? 'User'} profile`}>
+            <Text style={styles.avatarText}>{(user?.username?.[0] ?? '?').toUpperCase()}</Text>
+          </View>
+        )}
       </View>
     </View>
   );
@@ -70,14 +91,14 @@ const styles = StyleSheet.create({
   title: { color: Colors.white, fontSize: Fonts.sizes.xl, fontWeight: '800' },
   subtitle: { color: Colors.white + 'CC', fontSize: Fonts.sizes.xs, marginTop: 2 },
   actions: { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm },
-  iconBtn: { padding: 4 },
+  iconBtn: { width: 44, height: 44, alignItems: 'center', justifyContent: 'center' },
   badge: {
     position: 'absolute', top: -2, right: -2, minWidth: 16, height: 16, borderRadius: 8,
     backgroundColor: Colors.accent, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 3,
   },
   badgeText: { color: Colors.white, fontSize: 9, fontWeight: '800' },
   avatar: {
-    width: 34, height: 34, borderRadius: 17, backgroundColor: Colors.white + '30',
+    width: 44, height: 44, borderRadius: 22, backgroundColor: Colors.white + '30',
     alignItems: 'center', justifyContent: 'center',
   },
   avatarText: { color: Colors.white, fontWeight: '800', fontSize: Fonts.sizes.md },

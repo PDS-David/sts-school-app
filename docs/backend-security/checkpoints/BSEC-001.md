@@ -2,7 +2,7 @@
 
 - **Task ID:** BSEC-001
 - **Title:** Enforce database-authoritative authorization claims on every authenticated request
-- **Status:** review
+- **Status:** merged
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
@@ -23,5 +23,6 @@
 - **Commits:** 627ac0565bdf4d23161f36fb5c8429962e16eef6; 30f0148487f63de5e47e70c7b54c76ec44f2f779; bf5d9f605ec94e5bcef771ca44f13c8798707134; e76e562523f3fded4b74809b68f1a4649cb44495; 16c9362114cc76c50aa619bc6d843437e04371bb; 1e58cbc52e5e2006812cab16f21f220ece6c7620; 9867b28f43bed14cb70385018b5f85c0095d7a0a.
 - **Verification:** GitHub Actions run https://github.com/PDS-David/sts-school-app/actions/runs/43444413357 completed successfully. Steps passed: locked workspace dependency installation, four authorization-claim regression tests, and backend TypeScript typecheck. Branch comparison: 7 commits ahead of master, 0 behind; six changed paths. Source files were fetched back from GitHub for review. No live database or production data was changed.
 - **Concurrency:** open PR #686 changes backend/src/routes/learning.ts; this task does not touch that file. The historical fix/agent4-security-reconciliation branch is 5 commits ahead but 4,458 behind master and has no open PR; it was not reused. No other open PR changes the files in this task.
-- **Remaining:** PR review/merge. After merge, continue with the next independent backend defect; do not mark the overall backend/security assignment complete.
+- **Merged:** PR #692 merged at 2026-11-13T15:22:41Z; merge commit 380f6ff832cf4d3e608f2c6f6d413edbb0c45015.
+- **Remaining:** continue the backend/security audit. This checkpoint does not mark the overall assignment complete.
 - **Exact next action:** review PR #692 and merge only after owner approval; then refresh from master and begin BSEC-002 on the next independently scoped data-integrity defect.

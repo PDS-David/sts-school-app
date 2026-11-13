@@ -5,6 +5,16 @@
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
+-- Applied migration history. The runner also creates this table before
+-- migrating an existing database, while this definition keeps fresh installs
+-- self-contained.
+CREATE TABLE IF NOT EXISTS public.schema_migrations (
+  version    TEXT PRIMARY KEY,
+  name       TEXT NOT NULL,
+  checksum   TEXT NOT NULL,
+  applied_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
 -- ── Schools ───────────────────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS schools (
   id          SERIAL PRIMARY KEY,
@@ -32,13 +42,9 @@ VALUES
 ON CONFLICT DO NOTHING;
 
 -- ── Users & Roles ─────────────────────────────────────────────────────────────
--- Postgres has no `CREATE TYPE IF NOT EXISTS`, and migrate.ts re-runs this
--- whole file verbatim every time (no migration-tracking table) — so on an
--- already-migrated database this line failed with "type already exists"
--- and aborted the entire migration before anything below it ran (found in
--- QA Pass 3 while adding the ALTER statements further down: `db:migrate`
--- had only ever been tested against a brand-new, never-migrated database).
--- Wrapped so it's a no-op if the type is already there.
+-- Postgres has no `CREATE TYPE IF NOT EXISTS`. Keep this guarded so
+-- clean schema replay remains idempotent for fresh-install/bootstrap tooling.
+-- Incremental production changes belong in numbered backend/migrations files.
 DO $$ BEGIN
   CREATE TYPE user_role AS ENUM ('student','parent','teacher','admin');
 EXCEPTION WHEN duplicate_object THEN NULL;
@@ -886,3 +892,34 @@ CREATE TABLE IF NOT EXISTS announcements (
   expires_at    TIMESTAMPTZ
 );
 CREATE INDEX IF NOT EXISTS idx_announcements_school ON announcements(school_code, created_at DESC);
+
+
+-- ── School calendar events ───────────────────────────────────────────────────
+-- School calendar events (OPS-01 migration ledger sequence).
+CREATE TABLE IF NOT EXISTS school_events (
+  id            BIGSERIAL PRIMARY KEY,
+  school_code   TEXT NOT NULL REFERENCES schools(code) ON DELETE CASCADE,
+  title         TEXT NOT NULL,
+  description   TEXT,
+  event_type    TEXT NOT NULL DEFAULT 'event'
+                CHECK (event_type IN ('event','exam','holiday','meeting','deadline')),
+  audience_role TEXT
+                CHECK (audience_role IN ('student','parent','teacher')),
+  class_name    TEXT,
+  start_at      TIMESTAMPTZ NOT NULL,
+  end_at        TIMESTAMPTZ,
+  created_by    UUID REFERENCES users(id) ON DELETE SET NULL,
+  created_at    TIMESTAMPTZ DEFAULT now(),
+  CHECK (end_at IS NULL OR end_at >= start_at)
+);
+
+CREATE INDEX IF NOT EXISTS idx_school_events_school_start
+  ON school_events(school_code, start_at);
+CREATE INDEX IF NOT EXISTS idx_school_events_class_start
+  ON school_events(school_code, class_name, start_at);
+
+-- Stamp the immutable baseline for clean bootstrap/schema.sql installs.
+-- Keep this checksum synchronized with backend/migrations/0001_baseline.sql.
+INSERT INTO public.schema_migrations(version,name,checksum)
+VALUES ('0001','0001_baseline.sql','c7fa9116e76019f76391377e5ec99054bc9f996a61472026b1cced5351e2348e')
+ON CONFLICT (version) DO NOTHING;

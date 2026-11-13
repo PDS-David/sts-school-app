@@ -2,7 +2,7 @@
 
 - **Task ID:** BSEC-005
 - **Title:** Validate teacher school/class/subject assignments atomically in admin user management
-- **Status:** review (all required checks passing)
+- **Status:** merged
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
@@ -21,5 +21,7 @@
   6. Regression tests prove invalid assignments do not leave users or partially changed assignments.
   7. Backend typecheck and focused PostgreSQL integration tests pass; no production data mutation.
 - **Verification:** admin.ts source inspection confirms separate autocommit user and subject writes, and schema confirms teacher_subjects references subjects without a school-composite constraint. No production data accessed or changed.
-- **Remaining:** implement transactional validation/update helpers, integration tests and CI; open PR; verify checks.
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/705
+- **Merged:** PR #705 merged at 2026-11-13T15:27:18Z; merge commit 7160e4c6169c77f693a92cc35b20a845af5d0f67.
+- **Remaining:** continue the backend/security audit. This checkpoint does not mark the overall assignment complete.
 - **Exact next action:** inspect the complete admin user create/update route and implement a reusable same-school teacher-assignment validator that runs inside each write transaction.

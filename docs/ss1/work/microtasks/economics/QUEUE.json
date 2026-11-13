@@ -48,9 +48,9 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 12,
+    "IMPLEMENTED_TESTING_DEFERRED": 13,
     "BLOCKED": 3,
-    "PENDING": 77
+    "PENDING": 79
   },
   "items": [
     {
@@ -496,8 +496,8 @@
         "ECON-INV-T1",
         "ECON-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Week table, lines 250-300, SHA-256 3f34480ce990164ec6ea6007b4eb1e0b4b107de63687ea63549f030c8f8b3cb9; assessment blocks listed there).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in branch agent/economics-week-four-20261113. Commit 8aa4e128c05378d94c6d4ceab3157e06b6097c12 adds source-bound objective/question coverage, an original three-agent opportunity-cost supplement with model answers and marking, and explicit open items for unanswered revision, nominal/real-cost and reading-rights gaps. Testing remains deferred by owner; see ECON-WK-T1-W04.md. Exact body hash was recalculated from the serialized lesson body after CI found the previous stored digest included an extra trailing newline; corrected body_sha256=f63e6476c93cc64a0526fe081cadd96d3badbf13619da5e05e75845c3a9268aa in package commit f8e62cdf2a04514ca6b2dcd84cf687c2ae66b3dc. Await the rerun of the integrity/compiler workflow before returning the task to IMPLEMENTED_TESTING_DEFERRED. Automated PR checks now passed: package integrity 43454377693 SUCCESS; all-subject source-anchor/compiler audit 43454377717 SUCCESS. Independent owner content approval remains PENDING and lesson.state.verification remains DEFERRED; see the durable checkpoint.",
       "completion_condition": "Week 4 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
     },
     {
@@ -3491,6 +3491,117 @@
       "status": "PENDING",
       "implementation_reference": "Created by ECON-WK-T1-W03 (2026-11-13); see docs/ss1/work/microtasks/economics/ECON-WK-T1-W03.md.",
       "completion_condition": "Use reliable evidence and preserve source questions separately. Do not invent answers, country facts or lesson approval."
+    },
+    {
+      "id": "ECON-FACT-T1-W04-NOMINAL-REAL-COST",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week Four WEEKEND ASSIGNMENT item 3, Mammoth lines 291–296; SECTION B question 1, Mammoth lines 298–300.",
+      "objective": "Resolve the undefined terms nominal cost, money cost and real cost used by Week Four questions. Identify the economics meaning intended by the source, distinguish it from opportunity cost and accounting-cost meanings, and document dated authoritative teaching references. If the terms are ambiguous or not standard in this context, record that finding and request a teacher decision rather than forcing an answer.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W04.md"
+      ],
+      "depends_on": [
+        "ECON-WK-T1-W04",
+        "ECON-FACT-T1-W03-MONEY-COST"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by ECON-WK-T1-W04; the Week Four supplement leaves Weekend Assignment item 3 and Section B question 1 unresolved.",
+      "completion_condition": "Provide reliable, dated definitions and a clear distinction; if the source terminology is ambiguous, retain the questions as unresolved pending teacher direction."
+    },
+    {
+      "id": "ECON-LES-T1-W04-NOMINAL-REAL-COST",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week Four WEEKEND ASSIGNMENT item 3 and SECTION B question 1, Mammoth lines 291–300.",
+      "objective": "After ECON-FACT-T1-W04-NOMINAL-REAL-COST, author a concise SS1-level explanation of the verified terms nominal cost, money cost and real cost, with a worked example, answer to both printed questions and criterion-level marking guidance.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W04.md"
+      ],
+      "depends_on": [
+        "ECON-FACT-T1-W04-NOMINAL-REAL-COST"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by ECON-WK-T1-W04; no answer is supplied until the factual terminology review is complete.",
+      "completion_condition": "Lesson uses the verified definitions, answers both questions without ambiguity, and includes a worked example and marking guide."
+    },
+    {
+      "id": "ECON-LES-T1-W04-REVISION-QUESTIONS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week Four REVISION/GENERAL EVALUATION, Mammoth lines 284–289.",
+      "objective": "Resolve the four Week Four revision questions not covered by existing approved lessons: list ten renowned economists; explain the importance of a scale of preference; give five definitions of Economics; and differentiate wants from needs. Reuse prior lessons only when they fully answer the question, and do not invent economist names, unverified quotations or a definition of needs.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W04.md"
+      ],
+      "depends_on": [
+        "ECON-WK-T1-W04",
+        "ECON-FACT-T1-DEFINITIONS",
+        "ECON-LES-T1-W03-MONEY-COST"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by ECON-WK-T1-W04. The five-reason question is already covered by SUP-SS1-ECONOMICS-T1-W01-WHY-STUDY; the other four remain open pending earlier fact/lesson work.",
+      "completion_condition": "Each revision question is answered from approved source material or remains explicitly unresolved with a teacher decision; no unverified quotation or unsupported definition is added."
     }
   ],
   "review": {
@@ -3506,7 +3617,6 @@
     }
   },
   "next_runnable": [
-    "ECON-WK-T1-W04",
     "ECON-WK-T1-W05",
     "ECON-WK-T1-W06",
     "ECON-WK-T1-W07",
