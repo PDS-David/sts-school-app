@@ -54,3 +54,9 @@ The reference section is lines 39-40. It names Essential Geography for Senior Se
 - PR #693 check run 131950210888 failed in the registered-subject compiler at the scheme-only marker rule: the loader could not match the whole-line anchor "Revision.".
 - The inventory's visible source token remains "Revision." at scheme line 37. The rule now uses the exact visible substring "Revision" with SUBSTRING matching; compiler uniqueness validation is retained. This is not a fabricated approval or a relaxation of uniqueness.
 - Task status is IN_PROGRESS until the compiler workflow is rerun and passes. If it still fails, the rule will remain unverified and be revised from actual source evidence.
+
+
+## Compiler validation correction 2
+- The second registered-subject compiler run matched the Revision substring but failed at COV-GEO-T1-IDENTITY because SUPPORTED coverage requires a source teaching-row target. The identity record is metadata, not a teaching lesson, so its status is now UNRESOLVED with no lesson_ids; the existing source-alias owner gate remains authoritative.
+- The compiler also requires a MARKER coverage entry to reference its marker disposition. COV-GEO-T1-SCHEME-11-REVISION now points to the source-bound classify_marker rule SS1-SRC-1c1c1bdcecb4-R002.
+- Task remains IN_PROGRESS until the next registered-subject compiler run passes. No source approval or teaching evidence was fabricated.
