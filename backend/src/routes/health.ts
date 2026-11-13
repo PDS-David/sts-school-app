@@ -3,13 +3,28 @@ import { pool } from '../db/pool.js';
 
 export type DatabaseProbe = () => Promise<unknown>;
 
+async function probeDatabase(): Promise<void> {
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    await client.query("SET LOCAL statement_timeout = '5s'");
+    await client.query('SELECT 1');
+    await client.query('COMMIT');
+  } catch (error) {
+    await client.query('ROLLBACK').catch(() => undefined);
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
 /**
  * Health endpoints suitable for an external process manager.
  * The readiness response deliberately exposes no host, query, credentials,
  * exception message or database metadata.
  */
 export function createHealthRouter(
-  checkDatabase: DatabaseProbe = () => pool.query({ text: 'SELECT 1', query_timeout: 5_000 }),
+  checkDatabase: DatabaseProbe = probeDatabase,
 ) {
   const router = Router();
 
