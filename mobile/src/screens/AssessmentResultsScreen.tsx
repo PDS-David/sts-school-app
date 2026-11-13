@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, FlatList, RefreshControl, TouchableOpacity } from 'react-native';
 import api from '../api/client';
-import { Card, Loader, Empty, SectionHeader, Badge } from '../components/UI';
+import { Card, Btn, Loader, Empty, SectionHeader, Badge } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 
 export default function AssessmentResultsScreen({ route, navigation }: any) {
@@ -9,12 +9,21 @@ export default function AssessmentResultsScreen({ route, navigation }: any) {
   const [results,   setResults]   = useState<any[]>([]);
   const [loading,   setLoading]   = useState(true);
   const [refreshing,setRefreshing]= useState(false);
+  const [loadError, setLoadError] = useState('');
 
-  const fetch = async () => {
+  const fetch = async (isRefresh = false) => {
+    if (isRefresh) setRefreshing(true);
+    else setLoading(true);
+    setLoadError('');
     try {
       const { data } = await api.get(`/learning/assessments/${assessmentId}/results`);
-      setResults(data.results);
-    } catch { } finally { setLoading(false); setRefreshing(false); }
+      setResults(data.results ?? []);
+    } catch (e: any) {
+      setLoadError(e?.response?.data?.error ?? 'Could not load assessment results. Check your connection and try again.');
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
+    }
   };
   useEffect(() => { fetch(); }, []);
 
@@ -26,8 +35,16 @@ export default function AssessmentResultsScreen({ route, navigation }: any) {
 
   if (loading) return <Loader />;
 
+  if (loadError && results.length === 0) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={loadError} />
+      <Btn label="Retry loading results" onPress={() => fetch()} variant="outline" />
+    </View>
+  );
+
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
+      {!!loadError && <Text style={{ color: Colors.error, paddingHorizontal: Spacing.md, paddingTop: Spacing.sm }}>{loadError}</Text>}
       {/* Summary strip */}
       {results.length > 0 && (
         <View style={styles.strip}>
@@ -49,7 +66,7 @@ export default function AssessmentResultsScreen({ route, navigation }: any) {
         data={results}
         keyExtractor={r => r.id}
         contentContainerStyle={{ padding: Spacing.sm }}
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); fetch(); }} />}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => fetch(true)} />}
         ListEmptyComponent={<Empty message="No submissions yet" />}
         renderItem={({ item: r, index }) => {
           const score = Number(r.total_score ?? 0);

@@ -30,7 +30,8 @@
     "COM-FACT-T2-TBL-DOMFOR-CLAIMS (2026-11-06): the two Foreign cells of block 138 were checked against dated authoritative sources. Row 2 (different currencies) is true with exceptions (currency unions such as the euro area and the West African CFA franc; invoicing in a third currency); row 3 (different weights and measures) is not to be taught as written (SI is the internationally agreed, preferred system of world trade; Nigeria's Cap. W3 makes trade within Nigeria exclusively metric from 1 January 1979). Endorsed claim limits are recorded in open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS, which no longer blocks delivery; the paired-row restatement item still does. Nigerian indigenous-measures regulations, later amendments to Cap. W3 and the revocation order were not read and stay open. next_runnable recomputed without deferred TEST tasks (COM-TEST-PACKAGE excluded). No teaching text drafted, nothing approved or verified, app display unchecked.",
     "COM-INV-T3 (2026-11-13) opened the exact 3rd Term Commerce .doc source from the user-attached composite archive; archive and member hashes verified against SOURCE_ASSIGNMENTS.csv. Source read with antiword 0.37 and privately converted/rendered with LibreOffice 25.2.3.2 for layout inspection. Inventory COM-INV-T3.md records scheme, nine teaching bodies (including combined Weeks 7–8), revision marker, assessment sections, three structured comparison tables and four drawn cheque/bill/promissory-note visual groups. Sample forms contain names, addresses, bank details, dates and amounts; do not reuse without synthetic replacement/redaction. Current institutional/legal claims are flagged for dated primary-source review. 21 bounded follow-up tasks appended: nine week indexes, preamble, revision marker, seven visual dispositions, one sample-data preservation item and two factual dependencies. No package/lesson/coverage/rule/correction/asset/approval changes; no tests/importer/device checks. Testing deferred.",
     "COM-TEST-PACKAGE (2026-11-13): added tests/ss1/commerce.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; three PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current partial/unresolved coverage/open-item boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no curriculum content or approval state changed.",
-    "COM-PRE-T3 (2026-11-13): verified preamble in original Commerce .doc. Lines 4–20 contain the title, wrapped subject/class header (CLASS label at line5, SS1 at line6), WEEKS/TOPICS header and ten scheme rows: Week1,2,3,4,5,6,7–8,9,10,11 Revision. The first body marker is WEEK 1 at line22. Numeric scheme rows do not use same-line WEEK <number> body markers; no preamble rule or marker coverage is needed. No standalone bibliography/reference list appears in the opening; reading assignments are embedded in body blocks. Week11 Revision is scheme-only."
+    "COM-PRE-T3 (2026-11-13): verified preamble in original Commerce .doc. Lines 4–20 contain the title, wrapped subject/class header (CLASS label at line5, SS1 at line6), WEEKS/TOPICS header and ten scheme rows: Week1,2,3,4,5,6,7–8,9,10,11 Revision. The first body marker is WEEK 1 at line22. Numeric scheme rows do not use same-line WEEK <number> body markers; no preamble rule or marker coverage is needed. No standalone bibliography/reference list appears in the opening; reading assignments are embedded in body blocks. Week11 Revision is scheme-only.",
+    "COM-PRE-T1 (2026-11-13): indexed the unlabelled First Term opening/scheme block using the previously hash-verified COM-INV-T1 evidence. Added nine scheme-to-body locator coverage records (rows 2-10) as UNRESOLVED until each week's objective-level indexing; retained existing row 1 coverage; rows 11-12 remain assigned to COM-MARK-T1-SCHEME-REVEXAM. No lesson or rule authored; tests/importer/database/device checks deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -45,9 +46,9 @@
     "LESSON": 5
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 12,
+    "IMPLEMENTED_TESTING_DEFERRED": 13,
     "BLOCKED": 2,
-    "PENDING": 56
+    "PENDING": 55
   },
   "items": [
     {
@@ -345,8 +346,8 @@
         "COM-INV-T1",
         "COM-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PENDING - by design: no scheme/identity coverage or rule is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (opening 1-36, scheme rows 25-36).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented on agent/commerce from the previously verified source inventory. The opening block (lines 1-36; SHA-256 d8658c5c643ff3336b8b240a9c89a6abbdd1a45ba35f2a423ff25ef45cdad092) is indexed as preamble/scheme, not a teaching week. Existing row 1 coverage is retained; added COV-COM-T1-SCHEME-2..10 with exact scheme-row line locators, the opening-block digest, mapped week body ranges/digests and UNRESOLVED status pending week-specific objective review. Week mapping and differences are recorded in COM-PRE-T1.md. Scheme rows 11-12 remain for COM-MARK-T1-SCHEME-REVEXAM. No lesson, parser rule, approval or verification was invented.",
       "completion_condition": "Identity and scheme rows are represented under the existing schema with exact provenance; rows 11-12 are left to the marker item; no lesson or coverage entry is invented from a scheme heading. Testing deferred by owner."
     },
     {
@@ -2588,7 +2589,6 @@
     }
   },
   "next_runnable": [
-    "COM-PRE-T1",
     "COM-WK-T1-W02",
     "COM-WK-T1-W03",
     "COM-WK-T1-W04",

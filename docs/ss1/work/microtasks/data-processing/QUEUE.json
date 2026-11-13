@@ -31,7 +31,8 @@
     "DP-INV-T3 (2026-11-13) opened the exact 3rd Term Data Processing DOCX from the user-attached composite archive; archive and member hashes verified against SOURCE_ASSIGNMENTS.csv. Subject/class header confirms Data Processing, SS1. Inventory DP-INV-T3.md records scheme and nine actual body weeks, assessments, legacy software/UI claims, formula validation flags and 10 screenshot locations. DOCX inspected with python-docx 1.2.0: 588 paragraphs, no Word tables, 10 inline images/media parts, no equations/hyperlinks. Embedded screenshot at paragraph 461 shows student-like names and ID numbers; a separate preservation task requires synthetic/redacted replacement before learner-facing reuse. 25 bounded follow-up tasks appended: nine week indexes, opening scheme, revision/exam marker, two preservation tasks, two factual audits and ten visual dispositions. No subject package content or approvals changed; no tests/importer/device checks run. Testing deferred.",
     "DP-TEST-PACKAGE (2026-11-13): added tests/ss1/data-processing.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; current authored lesson body hash/objectives/practice/marking integrity without fabricated approval or verification; two PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and coverage reference/status boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed.",
     "DP-WK-T3-W01 (2026-11-13): source member hash verified; indexed original DOCX paragraphs 27–79. Added PARTIAL coverage for definition, basic features, functions and uses pending parsed-body binding; PARTIAL coverage for the bare MICROSOFT WORD heading (p43, no explanation); PARTIAL coverage for the Week 1 text-editor/Notepad question because Week 2 p92–95 identifies Notepad as a text editor. Recorded evaluation p45–47, general evaluation p57–61, reading p63–64, weekend MCQs p66–73 and theory p75–77. Added a blocking question-sequencing open item and tasks for sequence decision and lesson authoring. No Word-specific procedure or answers invented.",
-    "DP-PRE-T3 (2026-11-13): inspected original third-term Data Processing DOCX paragraphs 1–27. Recorded title, subject/class, WEEK/TOPIC header with trailing tabs, twelve scheme rows (initial Revision; Word Processing I–III; Spreadsheet I–III; Database Management I–III; Revision; Examination), three references, and first body marker WEEK ONE. Scheme rows are plain paragraphs with no WEEK <number> body marker, so no classify_marker rule or marker coverage entry is needed. Rows 2–10 map to body Weeks 1–9; rows 1,11,12 remain scheme-only."
+    "DP-PRE-T3 (2026-11-13): inspected original third-term Data Processing DOCX paragraphs 1–27. Recorded title, subject/class, WEEK/TOPIC header with trailing tabs, twelve scheme rows (initial Revision; Word Processing I–III; Spreadsheet I–III; Database Management I–III; Revision; Examination), three references, and first body marker WEEK ONE. Scheme rows are plain paragraphs with no WEEK <number> body marker, so no classify_marker rule or marker coverage entry is needed. Rows 2–10 map to body Weeks 1–9; rows 1,11,12 remain scheme-only.",
+    "DP-PRE-T1 (2026-11-13): recorded the hash-verified First Term opening block as preamble/scheme/reference material, mapped scheme rows 1-10 to exact body ranges/digests without creating coverage from scheme headings, preserved the existing row 1/2 coverage, and recorded the three bibliographic entries as unverified external references with a permission follow-up. Rows 11-12 remain with DP-MARK-T1-REVEXAM. No lesson, parser rule, approval or verification was invented; tests/importer/database/device checks deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -47,9 +48,9 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 12,
+    "IMPLEMENTED_TESTING_DEFERRED": 13,
     "BLOCKED": 2,
-    "PENDING": 67
+    "PENDING": 66
   },
   "items": [
     {
@@ -347,8 +348,8 @@
         "DP-INV-T1",
         "DP-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (opening 1-81, scheme rows 49-71, references 75-81).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented on agent/data-processing from the hash-verified DP-INV-T1 inventory. The opening block lines 1-81 (SHA-256 07f34cdccb656a70155d2a989ffc5a737c39292a710d37021c16e7e6307c1d54) is recorded as preamble/scheme/reference material. The existing package source registration and alias establish the exact identity; existing row 1 and row 2 scheme coverage is retained. Added non-coverage verification evidence for scheme rows 1-10 mapped to exact week body ranges/digests and explicit drift, plus a nonblocking permission follow-up for the three references at lines 77, 79 and 81. No coverage or lesson was invented from scheme headings. Rows 11-12 remain with DP-MARK-T1-REVEXAM. See docs/ss1/work/microtasks/data-processing/DP-PRE-T1.md.",
       "completion_condition": "Identity, scheme rows and the three references are represented under the existing schema with exact provenance; rows 11-12 are left to the marker item; no lesson or coverage entry is invented from a scheme heading. Testing deferred by owner."
     },
     {
@@ -3013,7 +3014,6 @@
     }
   },
   "next_runnable": [
-    "DP-PRE-T1",
     "DP-WK-T1-W03",
     "DP-WK-T1-W04",
     "DP-WK-T1-W05",

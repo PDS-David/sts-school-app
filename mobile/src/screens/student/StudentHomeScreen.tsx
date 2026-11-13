@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, RefreshControl } 
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
+import { useNotifications } from '../../components/NotificationsContext';
 import { Card, Loader } from '../../components/UI';
 import { PageContainer } from '../../components/layout';
 import { Colors, Spacing, Fonts, Radius } from '../../theme';
@@ -12,6 +13,8 @@ import { openNotifications, openBraineeChat, openTextStudy } from '../../navigat
 
 export default function StudentHomeScreen({ navigation }: any) {
   const { user } = useAuth();
+  const { notifications, refresh: refreshNotifications, announcementsLoaded, announcementsError } = useNotifications();
+  const announcements = notifications.filter(n => n.kind === 'announcement').slice(0, 3);
   const [tasks, setTasks] = useState<any[]>([]);
   const [materials, setMaterials] = useState<any[]>([]);
   const [recentScores, setRecentScores] = useState<any[]>([]);
@@ -40,8 +43,9 @@ export default function StudentHomeScreen({ navigation }: any) {
         setRecentScores((r.data.scores ?? []).slice(0, 3));
       }
     } catch { /* no linked student record yet, or offline */ }
+    await refreshNotifications();
     setLoading(false);
-  }, []);
+  }, [refreshNotifications]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -78,47 +82,28 @@ export default function StudentHomeScreen({ navigation }: any) {
           </TouchableOpacity>
         ))}
 
-        {/* Announcements */}
+        {/* Announcements are loaded from the school/class/role-scoped API feed. */}
         <Text style={styles.sectionLabel}>Announcements</Text>
-        <Card style={styles.emptyCard}>
-          <Text style={styles.emptyText}>No announcements yet. Your school admin can post updates here.</Text>
-        </Card>
-
-        {/* Continue learning */}
-        <Text style={styles.sectionLabel}>Continue Learning</Text>
-        {materials.length === 0 ? (
-          <Card style={styles.emptyCard}><Text style={styles.emptyText}>No materials uploaded yet.</Text></Card>
-        ) : materials.map((m) => (
-          <TouchableOpacity key={m.id} onPress={() => navigation.navigate('LearningTab', { screen: 'Materials' })}>
-            <Card style={styles.rowCard}>
-              <View style={[styles.rowIcon, { backgroundColor: Colors.primary + '20' }]}>
-                <Ionicons name="book" size={20} color={Colors.primary} />
-              </View>
-              <View style={{ flex: 1 }}>
-                <Text style={styles.rowTitle}>{m.title}</Text>
-                <Text style={styles.rowMeta}>{m.subject_name}</Text>
-              </View>
-              <Ionicons name="chevron-forward" size={18} color={Colors.textSub} />
-            </Card>
-          </TouchableOpacity>
-        ))}
-
-        {/* Recent activity */}
-        <Text style={styles.sectionLabel}>Recent Activity</Text>
-        {recentScores.length === 0 ? (
-          <Card style={styles.emptyCard}><Text style={styles.emptyText}>No graded scores yet this term.</Text></Card>
-        ) : recentScores.map((s, i) => (
-          <Card key={i} style={styles.rowCard}>
-            <View style={[styles.rowIcon, { backgroundColor: Colors.success + '20' }]}>
-              <Ionicons name="bar-chart" size={20} color={Colors.success} />
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.rowTitle}>{s.subject_name}</Text>
-              <Text style={styles.rowMeta}>Grade {s.grade ?? '—'}</Text>
-            </View>
+        {announcementsError ? (
+          <Card style={styles.emptyCard}>
+            <Text style={styles.emptyText}>{announcements.length ? 'Could not refresh announcements. Showing the last available notices.' : 'Could not load announcements. Pull down to retry.'}</Text>
+          </Card>
+        ) : null}
+        {!announcementsError && !announcementsLoaded ? (
+          <Card style={styles.emptyCard}><Text style={styles.emptyText}>Loading announcements…</Text></Card>
+        ) : null}
+        {!announcementsError && announcementsLoaded && announcements.length === 0 ? (
+          <Card style={styles.emptyCard}>
+            <Text style={styles.emptyText}>No announcements yet. Your school admin can post updates here.</Text>
+          </Card>
+        ) : null}
+        {announcements.map(item => (
+          <Card key={item.id} style={styles.emptyCard}>
+            <Text style={styles.rowTitle}>{item.title}</Text>
+            <Text style={styles.emptyText}>{item.body}</Text>
+            <Text style={styles.rowMeta}>{new Date(item.createdAt).toLocaleDateString()}</Text>
           </Card>
         ))}
-
         </PageContainer>
         <View style={{ height: Spacing.xl * 2 }} />
       </ScrollView>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { View, Text, StyleSheet, ScrollView, RefreshControl } from 'react-native';
+import { View, Text, ScrollView, RefreshControl, TouchableOpacity } from 'react-native';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
 import { Card, Loader } from '../../components/UI';
@@ -14,30 +14,26 @@ import { openNotifications } from '../../navigation/navigationRef';
 // AND a FAB with the same destinations) now lives in that one real
 // Sidebar instead (see TeacherTabs.tsx's QUICK_ACTIONS). Student count
 // folds into the header subtitle rather than a separate centre stat row.
-export default function TeacherDashboardHomeScreen() {
+export default function TeacherDashboardHomeScreen({ navigation }: any) {
   const { user } = useAuth();
   const [term, setTerm] = useState<any>(null);
   const [studentCount, setStudentCount] = useState<number | null>(null);
+  const [overview, setOverview] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
   const load = useCallback(async () => {
     try {
-      // A teacher with no assigned_class (a subject-only specialist) no
-      // longer gets a whole-school student count from GET /students with
-      // no class_name (Pass 20 tightened that to prevent an unscoped
-      // roster fetch) — skip the call entirely for that case rather than
-      // show a misleading "0 Students" stat.
-      const calls: [Promise<any>, Promise<any>] = [
+      const [t, o] = await Promise.all([
         api.get('/academic/terms/current'),
-        user?.assigned_class ? api.get('/students') : Promise.resolve({ data: { students: null } }),
-      ];
-      const [t, s] = await Promise.all(calls);
+        api.get('/scores/teacher/overview'),
+      ]);
       setTerm(t.data.term);
-      setStudentCount(s.data.students?.length ?? null);
+      setOverview(o.data);
+      setStudentCount(o.data.summary?.student_count ?? 0);
     } catch { /* offline */ }
     setLoading(false);
-  }, []);
+  }, [user?.assigned_class]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -62,6 +58,29 @@ export default function TeacherDashboardHomeScreen() {
               Use Classes, Chats, or More to get started — or Quick Actions in the sidebar for Enter Scores, Attendance, and Students.
             </Text>
           </Card>
+          {overview?.summary ? (
+            <>
+              <Card style={{ marginTop: Spacing.md }}>
+                <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm }}>Pending marks this term</Text>
+                <Text style={{ color: Colors.text, fontSize: 30, fontWeight: '800' }}>{overview.summary.pending_score_entries ?? 0}</Text>
+                <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.xs }}>
+                  {overview.summary.marked_score_entries ?? 0} of {overview.summary.expected_score_entries ?? 0} expected subject marks entered
+                </Text>
+                <TouchableOpacity onPress={() => navigation.getParent()?.navigate('ClassesTab', { screen: 'ScoreEntry' })} style={{ marginTop: 10 }}>
+                  <Text style={{ color: Colors.primary, fontWeight: '700' }}>Enter or complete marks</Text>
+                </TouchableOpacity>
+              </Card>
+              <Card style={{ marginTop: Spacing.sm }}>
+                <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm }}>Term performance</Text>
+                <Text style={{ color: Colors.text, fontSize: Fonts.sizes.md, fontWeight: '700', marginTop: 5 }}>
+                  Average: {overview.summary.average_score ?? '—'} · Pass rate: {overview.summary.pass_rate == null ? '—' : `${overview.summary.pass_rate}%`}
+                </Text>
+                <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.xs, marginTop: 4 }}>
+                  {overview.summary.attendance_rate == null ? 'Attendance analytics unavailable for this assignment scope' : `Average attendance: ${overview.summary.attendance_rate}%`}
+                </Text>
+              </Card>
+            </>
+          ) : null}
         </PageContainer>
       </ScrollView>
     </View>

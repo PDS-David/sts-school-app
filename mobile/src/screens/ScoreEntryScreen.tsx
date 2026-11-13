@@ -50,6 +50,14 @@ export default function ScoreEntryScreen({ navigation }: any) {
   const [rows,      setRows]      = useState<ScoreRow[]>([]);
   const [loading,   setLoading]   = useState(true);
   const [saving,    setSaving]    = useState(false);
+  const [setupError, setSetupError] = useState('');
+  const [setupRetry, setSetupRetry] = useState(0);
+  const [rosterLoading, setRosterLoading] = useState(false);
+  const [rosterError, setRosterError] = useState('');
+  const [rosterRetry, setRosterRetry] = useState(0);
+  const [scoresLoading, setScoresLoading] = useState(false);
+  const [scoresError, setScoresError] = useState('');
+  const [scoresRetry, setScoresRetry] = useState(0);
   const [schoolCfg, setSchoolCfg] = useState({ ca1_max: 20, ca2_max: 20, exam_max: 60 });
   const [showNewSub, setShowNewSub] = useState(false);
   const [newSubName, setNewSubName] = useState('');
@@ -60,47 +68,36 @@ export default function ScoreEntryScreen({ navigation }: any) {
     // Admin: wait until a school is actually selected before fetching,
     // otherwise this repeats the exact "school_code=NULL" empty-result bug.
     if (isAdmin && !effectiveSchoolCode) { setLoading(false); return; }
+    let cancelled = false;
     setLoading(true);
+    setSetupError('');
     const sc = effectiveSchoolCode ?? undefined;
     Promise.all([
       api.get('/academic/subjects', { params: { school_code: sc } }),
       api.get('/academic/terms', { params: { school_code: sc } }),
-      // Found in the Pass 20 audit: this used to derive the class list from
-      // GET /students (fetching every student in the school just to read
-      // off distinct class_name values), which for a non-class teacher
-      // meant pulling the FULL roster — names, admission numbers, dates of
-      // birth — for a school-wide student list this screen never actually
-      // needed. GET /academic/classes returns just the class names, no
-      // student records attached, so it can't over-expose anything.
       api.get('/academic/classes', { params: { school_code: sc } }),
       api.get('/academic/schools'),
     ]).then(([sub, t, c, schoolsRes]) => {
+      if (cancelled) return;
       setSubjects(sub.data.subjects);
       setTerms(t.data.terms);
-      // A class teacher's assigned_class always wins on the backend (see
-      // GET /students, Pass 20) — so the picker only offers other classes
-      // when this account has no assigned_class of its own to be pinned to
-      // (a subject specialist), matching exactly what the backend will
-      // actually honor. Showing a full class list to a class teacher, only
-      // to have every choice silently come back as their own class anyway,
-      // would just be confusing.
       const cls = (user?.role === 'teacher' && user?.assigned_class)
         ? [user.assigned_class]
         : [...new Set((c.data.classes as any[]).map((x: any) => x.name))].sort();
       setClasses(cls);
       setSelClass(cls[0] ?? '');
-      // current term
       const cur = t.data.terms.find((x: Term & { is_current: boolean }) => x.is_current);
       setSelTerm(cur ? cur.id : '');
-      // school config for max scores — match by the actual school code in
-      // view, not just whichever school happens to come back first.
       const schools = schoolsRes.data.schools ?? [];
       const match = schools.find((s: any) => s.code === effectiveSchoolCode) ?? schools[0];
       if (match) {
         setSchoolCfg({ ca1_max: match.ca1_max, ca2_max: match.ca2_max, exam_max: match.exam_max });
       }
-    }).catch(() => {}).finally(() => setLoading(false));
-  }, [effectiveSchoolCode]);
+    }).catch(() => {
+      if (!cancelled) setSetupError('Could not load classes, subjects and terms. Check your connection and try again.');
+    }).finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
+  }, [effectiveSchoolCode, setupRetry]);
 
   // Fetch just the selected class's roster — one class at a time, not the
   // whole school. GET /students now requires a non-class-teacher to name a
@@ -111,32 +108,48 @@ export default function ScoreEntryScreen({ navigation }: any) {
     if (!selClass) { setStudents([]); return; }
     const sc = effectiveSchoolCode ?? undefined;
     let cancelled = false;
+    setRosterLoading(true);
+    setRosterError('');
     api.get('/students', { params: { school_code: sc, class_name: selClass } })
       .then(({ data }) => { if (!cancelled) setStudents(data.students ?? []); })
-      .catch(() => { if (!cancelled) setStudents([]); });
+      .catch(() => { if (!cancelled) { setStudents([]); setRosterError('Could not load this class roster. Retry before entering scores.'); } })
+      .finally(() => { if (!cancelled) setRosterLoading(false); });
     return () => { cancelled = true; };
-  }, [selClass, effectiveSchoolCode]);
+  }, [selClass, effectiveSchoolCode, rosterRetry]);
 
-  // Rebuild rows when class/subject/term changes
+  // Rebuild rows when class/subject/term changes. Never expose blank score
+  // inputs as editable when the existing values failed to load.
   useEffect(() => {
-    if (!selClass) return;
+    if (!selClass || rosterLoading || rosterError) return;
     const classStudents = students.filter(s => s.class_name === selClass);
-    setRows(classStudents.map(s => ({ student_id: s.id, name: s.full_name, ca1: '', ca2: '', exam: '' })));
-    // Pre-fill existing scores if subject+term selected
-    if (selSub && selTerm) {
-      api.get(`/scores?class_name=${encodeURIComponent(selClass)}&subject_id=${selSub}&term_id=${selTerm}`)
-        .then(({ data }) => {
-          const scoreMap: Record<string, any> = {};
-          data.scores.forEach((sc: any) => { scoreMap[sc.student_id] = sc; });
-          setRows(classStudents.map(s => ({
-            student_id: s.id, name: s.full_name,
-            ca1:  String(scoreMap[s.id]?.ca1  ?? ''),
-            ca2:  String(scoreMap[s.id]?.ca2  ?? ''),
-            exam: String(scoreMap[s.id]?.exam ?? ''),
-          })));
-        }).catch(() => {});
+    const blankRows = classStudents.map(s => ({ student_id: s.id, name: s.full_name, ca1: '', ca2: '', exam: '' }));
+    setRows(blankRows);
+    if (!selSub || !selTerm) {
+      setScoresLoading(false);
+      setScoresError('');
+      return;
     }
-  }, [selClass, selSub, selTerm, students]);
+    let cancelled = false;
+    setScoresLoading(true);
+    setScoresError('');
+    api.get(`/scores?class_name=${encodeURIComponent(selClass)}&subject_id=${selSub}&term_id=${selTerm}`)
+      .then(({ data }) => {
+        if (cancelled) return;
+        const scoreMap: Record<string, any> = {};
+        data.scores.forEach((sc: any) => { scoreMap[sc.student_id] = sc; });
+        setRows(classStudents.map(s => ({
+          student_id: s.id, name: s.full_name,
+          ca1: String(scoreMap[s.id]?.ca1 ?? ''),
+          ca2: String(scoreMap[s.id]?.ca2 ?? ''),
+          exam: String(scoreMap[s.id]?.exam ?? ''),
+        })));
+      })
+      .catch(() => {
+        if (!cancelled) setScoresError('Could not load saved scores. Retry before editing so existing marks are not overlooked.');
+      })
+      .finally(() => { if (!cancelled) setScoresLoading(false); });
+    return () => { cancelled = true; };
+  }, [selClass, selSub, selTerm, students, rosterLoading, rosterError, scoresRetry]);
 
   const updateRow = (idx: number, field: 'ca1'|'ca2'|'exam', val: string) => {
     setRows(prev => prev.map((r, i) => i === idx ? { ...r, [field]: val } : r));
@@ -185,6 +198,15 @@ export default function ScoreEntryScreen({ navigation }: any) {
   };
 
   if (loading) return <Loader />;
+
+  if (setupError) {
+    return (
+      <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+        <Empty message={setupError} />
+        <Btn label="Retry loading" onPress={() => { setLoading(true); setSetupRetry(v => v + 1); }} variant="outline" />
+      </View>
+    );
+  }
 
   if (isAdmin && !effectiveSchoolCode) {
     return (
@@ -257,7 +279,17 @@ export default function ScoreEntryScreen({ navigation }: any) {
       </PageContainer>
 
       {/* Score grid */}
-      {rows.length === 0
+      {rosterError ? (
+        <PageContainer style={{ padding: Spacing.md }}>
+          <Empty message={rosterError} />
+          <Btn label="Retry roster" onPress={() => setRosterRetry(v => v + 1)} variant="outline" />
+        </PageContainer>
+      ) : rosterLoading ? <Loader /> : scoresLoading ? <Loader /> : scoresError ? (
+        <PageContainer style={{ padding: Spacing.md }}>
+          <Empty message={scoresError} />
+          <Btn label="Retry saved scores" onPress={() => setScoresRetry(v => v + 1)} variant="outline" />
+        </PageContainer>
+      ) : rows.length === 0
         ? (
           <PageContainer style={{ padding: Spacing.sm }}>
             <Card style={styles.emptyCard}>
@@ -301,7 +333,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
                   );
                 })}
               </Card>
-              <Btn label={saving ? 'Saving…' : 'Save All Scores'} onPress={handleSave} loading={saving} style={{ marginTop: Spacing.md }} />
+              <Btn label={saving ? 'Saving…' : 'Save All Scores'} onPress={handleSave} loading={saving} disabled={saving || rosterLoading || !!rosterError || scoresLoading || !!scoresError || !selSub || !selTerm || rows.length === 0} style={{ marginTop: Spacing.md }} />
             </PageContainer>
           </ScrollView>
         )

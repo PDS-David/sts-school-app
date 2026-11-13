@@ -211,7 +211,14 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
     }
     for (const c of p.delivery_corrections) {
       const original = byId.get(c.source_lesson_id), replacement = byId.get(c.replacement_id), source = p.sources.find(s => s.source_id === c.source_id);
-      must(original && replacement && source && original.source_id === c.source_id && original.body_sha256 === c.body_sha256 && source.sha256 === c.source_sha256 && p.lessons.some(l => l.id === c.replacement_id) && original.row.termLabel === replacement.row.termLabel, `correction identity ${c.id}`);
+      must(!!original, `correction ${c.id}: original lesson not found ${c.source_lesson_id}; parsed source lesson candidates: ${plan.identified_rows.filter(r => r.source_id === c.source_id).map(r => `${r.id} [${r.row.weekLabel}: ${r.row.title}]`).join(' | ') || 'none'}`);
+      must(!!replacement, `correction ${c.id}: replacement lesson not found ${c.replacement_id}`);
+      must(!!source, `correction ${c.id}: source record not found ${c.source_id}`);
+      must(original?.source_id === c.source_id, `correction ${c.id}: original source ID mismatch; expected ${c.source_id}, got ${original?.source_id ?? 'null'}`);
+      must(original?.body_sha256 === c.body_sha256, `correction ${c.id}: original body hash mismatch; expected ${c.body_sha256}, got ${original?.body_sha256 ?? 'missing'}`);
+      must(source?.sha256 === c.source_sha256, `correction ${c.id}: source SHA-256 mismatch; expected ${c.source_sha256}, got ${source?.sha256 ?? 'missing'}`);
+      must(p.lessons.some(l => l.id === c.replacement_id), `correction ${c.id}: replacement is not declared in package lessons`);
+      must(original && replacement && original.row.termLabel === replacement.row.termLabel, `correction ${c.id}: term mismatch; original ${original?.row.termLabel ?? 'missing'}, replacement ${replacement?.row.termLabel ?? 'missing'}`);
       must(!corrected.has(c.source_lesson_id), `duplicate correction ${c.source_lesson_id}`); corrected.add(c.source_lesson_id);
       plan.corrections.push(c);
     }

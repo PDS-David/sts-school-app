@@ -19,6 +19,7 @@ import { useIsWide } from '../components/layout';
 import TeacherDashboardHomeScreen from '../screens/teacher/TeacherDashboardHomeScreen';
 import TeacherClassesScreen from '../screens/teacher/TeacherClassesScreen';
 import TeacherMoreScreen from '../screens/teacher/TeacherMoreScreen';
+import TeacherAnalyticsScreen from '../screens/teacher/TeacherAnalyticsScreen';
 import ChatsScreen from '../screens/chats/ChatsScreen';
 import ChatThreadScreen from '../screens/chats/ChatThreadScreen';
 
@@ -82,6 +83,7 @@ function MoreStackNavigator() {
   return (
     <MoreStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <MoreStack.Screen name="More" component={TeacherMoreScreen} />
+      <MoreStack.Screen name="TeacherAnalytics" component={TeacherAnalyticsScreen} />
       <MoreStack.Screen name="WeeklyEfforts" component={WeeklyEffortsScreen} options={{ headerShown: true, title: 'Weekly Efforts', ...opts }} />
       <MoreStack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', ...opts }} />
       {/* No local "SecurityQuestionSetup" registration (deliberately removed

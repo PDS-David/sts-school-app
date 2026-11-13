@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
 import { useWards } from '../../api/WardContext';
+import { useNotifications } from '../../components/NotificationsContext';
 import { Card, Loader } from '../../components/UI';
 import { PageContainer, StatChipRow, StatChip } from '../../components/layout';
 import { Colors, Spacing, Fonts, Radius } from '../../theme';
@@ -14,18 +15,27 @@ import { openNotifications } from '../../navigation/navigationRef';
 export default function ParentHomeScreen({ navigation }: any) {
   const { user } = useAuth();
   const { wards, selectedWardId, selectWard, loading: wardsLoading } = useWards();
+  const { notifications, refresh: refreshNotifications, announcementsLoaded, announcementsError } = useNotifications();
+  const announcements = notifications.filter(n => n.kind === 'announcement').slice(0, 3);
   const [report, setReport] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
   const load = useCallback(async () => {
-    if (!selectedWardId) { setLoading(false); return; }
+    if (!selectedWardId) {
+      // Announcements are account-scoped, not ward-scoped. Refresh them even
+      // when no child is linked/selected so the dashboard's retry message works.
+      await refreshNotifications();
+      setLoading(false);
+      return;
+    }
     try {
       const { data } = await api.get(`/scores/report/${selectedWardId}`);
       setReport(data);
     } catch { /* offline or not yet loaded */ }
+    await refreshNotifications();
     setLoading(false);
-  }, [selectedWardId]);
+  }, [selectedWardId, refreshNotifications]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -76,9 +86,26 @@ export default function ParentHomeScreen({ navigation }: any) {
         )}
 
         <Text style={styles.sectionLabel}>School Announcements</Text>
-        <Card style={{ marginHorizontal: Spacing.md }}>
-          <Text style={styles.hint}>No announcements yet. Your school admin can post updates here.</Text>
-        </Card>
+        {announcementsError ? (
+          <Card style={{ marginHorizontal: Spacing.md }}>
+            <Text style={styles.hint}>{announcements.length ? 'Could not refresh announcements. Showing the last available notices.' : 'Could not load announcements. Pull down to retry.'}</Text>
+          </Card>
+        ) : null}
+        {!announcementsError && !announcementsLoaded ? (
+          <Card style={{ marginHorizontal: Spacing.md }}><Text style={styles.hint}>Loading announcements…</Text></Card>
+        ) : null}
+        {!announcementsError && announcementsLoaded && announcements.length === 0 ? (
+          <Card style={{ marginHorizontal: Spacing.md }}>
+            <Text style={styles.hint}>No announcements yet. Your school admin can post updates here.</Text>
+          </Card>
+        ) : null}
+        {announcements.map(item => (
+          <Card key={item.id} style={{ marginHorizontal: Spacing.md }}>
+            <Text style={styles.announcementTitle}>{item.title}</Text>
+            <Text style={styles.hint}>{item.body}</Text>
+            <Text style={styles.announcementDate}>{new Date(item.createdAt).toLocaleDateString()}</Text>
+          </Card>
+        ))}
         </PageContainer>
 
         <View style={{ height: Spacing.xl * 2 }} />
@@ -106,4 +133,6 @@ const styles = StyleSheet.create({
   wardChipSub: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 1 },
   wardChipTextActive: { color: Colors.white },
   hint: { fontSize: Fonts.sizes.sm, color: Colors.textSub },
+  announcementTitle: { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.text, marginBottom: 4 },
+  announcementDate: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 6 },
 });

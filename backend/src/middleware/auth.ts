@@ -2,6 +2,7 @@ import type { Request, Response, NextFunction } from 'express';
 import { verifyAccess } from '../utils/jwt.js';
 import { hasPerm } from '../utils/rbac.js';
 import { query } from '../db/pool.js';
+import { hydrateAuthUser } from '../utils/authClaims.js';
 import type { Role } from '../types/index.js';
 
 export async function requireAuth(req: Request, res: Response, next: NextFunction) {
@@ -17,15 +18,19 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
     return res.status(401).json({ error: 'Token expired or invalid' });
   }
 
-  // The JWT itself only proves the token was validly issued and hasn't
-  // expired yet — it says nothing about whether the account has since been
-  // deactivated or its access window has since lapsed. Login/refresh already
-  // check that, but without this check a deactivated user's *existing*
-  // access token kept working for up to its full remaining lifetime
-  // (JWT_EXPIRES_IN) after an admin deactivated them. One indexed lookup per
-  // request to close that window.
+  // A signed JWT proves who issued the token and identifies its subject. It
+  // is not the source of truth for mutable authorization attributes: an
+  // administrator can change a role, school, class, or teacher-subject
+  // assignment while the access token is still valid. Load those attributes
+  // with the existing account-state check so revocations and reassignment
+  // take effect on the very next authenticated request.
   const { rows } = await query(
-    `SELECT u.is_active, u.access_expires_at, u.revocation_reason, u.pending_admin_review,
+    `SELECT u.username, u.role, u.school_code, u.assigned_class,
+            COALESCE((
+              SELECT array_agg(ts.subject_id ORDER BY ts.subject_id)
+              FROM teacher_subjects ts WHERE ts.user_id=u.id
+            ), ARRAY[]::integer[]) AS assigned_subject_ids,
+            u.is_active, u.access_expires_at, u.revocation_reason, u.pending_admin_review,
             (u.role = 'student' AND EXISTS (
               SELECT 1 FROM students s WHERE s.user_id=u.id AND s.deleted_at IS NOT NULL
             )) AS student_deleted
@@ -54,7 +59,13 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
     return res.status(403).json({ error: 'Your account is awaiting admin approval.', code: 'PENDING_APPROVAL' });
   }
 
-  req.user = user;
+  req.user = hydrateAuthUser(user, {
+    username: dbUser.username,
+    role: dbUser.role as Role,
+    school_code: dbUser.school_code,
+    assigned_class: dbUser.assigned_class,
+    assigned_subject_ids: dbUser.assigned_subject_ids,
+  });
   next();
 }
 

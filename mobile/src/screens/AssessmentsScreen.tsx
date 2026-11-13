@@ -22,12 +22,19 @@ export default function AssessmentsScreen({ navigation }: any) {
   const isAdmin = user?.role === 'admin';
   const [assessments, setAssessments] = useState<any[]>([]);
   const [loading,     setLoading]     = useState(true);
+  const [loadError, setLoadError] = useState('');
 
   const fetch = async () => {
+    setLoading(true);
+    setLoadError('');
     try {
       const { data } = await api.get('/learning/assessments');
-      setAssessments(data.assessments);
-    } catch { } finally { setLoading(false); }
+      setAssessments(data.assessments ?? []);
+    } catch (e: any) {
+      setLoadError(e?.response?.data?.error ?? 'Could not load assessments. Check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
   };
   useEffect(() => { fetch(); }, []);
 
@@ -47,13 +54,20 @@ export default function AssessmentsScreen({ navigation }: any) {
   const handleStatusChange = async (a: any, status: 'open' | 'closed' | 'draft') => {
     try {
       await api.put(`/learning/assessments/${a.id}/status`, { status });
-      fetch();
+      await fetch();
     } catch (e: any) {
       Alert.alert('Error', e?.response?.data?.error ?? 'Could not update status');
     }
   };
 
   if (loading) return <Loader />;
+
+  if (loadError) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={loadError} />
+      <Btn label="Retry loading assessments" onPress={fetch} variant="outline" />
+    </View>
+  );
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
