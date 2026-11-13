@@ -2,7 +2,7 @@
 
 Task ID: SMM-002
 Status: IMPLEMENTED IN BRANCH — awaiting CI/PR review; no runtime verification claimed
-Base: `agent/ops-01-migration-ledger-20261113` at OPS-01 PR #708 head `7398f32772edf44827a7a960a51632211bfae30c`
+Base: `agent/ops-01-migration-ledger-20261113` at OPS-01 PR #708 head `013f830a654a2cddd2f550fe653e8568dfc97477`
 Branch: `agent/calendar-parent-upcoming-ops01-20261113` (stacked on OPS-01 PR #708)
 
 ## Scope delivered
