@@ -27,24 +27,27 @@
     "COM-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, marker, week-indexing and visual items; the 3rd Term inventory remains unread. No lesson, coverage entry, rule, correction or asset was written.",
     "COM-WK-T1-W01 (2026-11-05) indexed 1st Term Week 1 at objective level: 14 coverage entries (7 PARTIAL, 7 UNRESOLVED) and 10 open items in commerce.json, with the COM-FACT-T1-W01-SCOPE decision item and three lesson tasks appended. Week 1 is indexed, not certified: no lesson, no parsed row, no answer key and no approval exists. Source bytes and private extracts stayed outside Git.",
     "COM-VIS-T2-TBL-DOMFOR (2026-11-06): block 138 (Domestic vs Foreign Trade, 4 rows x 2 columns) re-read from the 2nd Term member with its hash verified. The importer's mammoth extractRawText emits its eight cells as consecutive paragraphs, so pairs survive by position only; the smallest repair under the existing schema is an explicit paired-row restatement in a Week 2 supplement (open item COMMERCE-T2-TBL-DOMFOR-REPRESENTATION). The Foreign cells of rows 2 and 3 are universal-sounding claims kept as source claims; follow-up COM-FACT-T2-TBL-DOMFOR-CLAIMS and open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS added. App display not verified; no lesson or coverage created.",
-    "COM-FACT-T2-TBL-DOMFOR-CLAIMS (2026-11-06): the two Foreign cells of block 138 were checked against dated authoritative sources. Row 2 (different currencies) is true with exceptions (currency unions such as the euro area and the West African CFA franc; invoicing in a third currency); row 3 (different weights and measures) is not to be taught as written (SI is the internationally agreed, preferred system of world trade; Nigeria's Cap. W3 makes trade within Nigeria exclusively metric from 1 January 1979). Endorsed claim limits are recorded in open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS, which no longer blocks delivery; the paired-row restatement item still does. Nigerian indigenous-measures regulations, later amendments to Cap. W3 and the revocation order were not read and stay open. next_runnable recomputed without deferred TEST tasks (COM-TEST-PACKAGE excluded). No teaching text drafted, nothing approved or verified, app display unchecked."
+    "COM-FACT-T2-TBL-DOMFOR-CLAIMS (2026-11-06): the two Foreign cells of block 138 were checked against dated authoritative sources. Row 2 (different currencies) is true with exceptions (currency unions such as the euro area and the West African CFA franc; invoicing in a third currency); row 3 (different weights and measures) is not to be taught as written (SI is the internationally agreed, preferred system of world trade; Nigeria's Cap. W3 makes trade within Nigeria exclusively metric from 1 January 1979). Endorsed claim limits are recorded in open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS, which no longer blocks delivery; the paired-row restatement item still does. Nigerian indigenous-measures regulations, later amendments to Cap. W3 and the revocation order were not read and stay open. next_runnable recomputed without deferred TEST tasks (COM-TEST-PACKAGE excluded). No teaching text drafted, nothing approved or verified, app display unchecked.",
+    "COM-INV-T3 (2026-11-13) opened the exact 3rd Term Commerce .doc source from the user-attached composite archive; archive and member hashes verified against SOURCE_ASSIGNMENTS.csv. Source read with antiword 0.37 and privately converted/rendered with LibreOffice 25.2.3.2 for layout inspection. Inventory COM-INV-T3.md records scheme, nine teaching bodies (including combined Weeks 7–8), revision marker, assessment sections, three structured comparison tables and four drawn cheque/bill/promissory-note visual groups. Sample forms contain names, addresses, bank details, dates and amounts; do not reuse without synthetic replacement/redaction. Current institutional/legal claims are flagged for dated primary-source review. 21 bounded follow-up tasks appended: nine week indexes, preamble, revision marker, seven visual dispositions, one sample-data preservation item and two factual dependencies. No package/lesson/coverage/rule/correction/asset/approval changes; no tests/importer/device checks. Testing deferred.",
+    "COM-TEST-PACKAGE (2026-11-13): added tests/ss1/commerce.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; three PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current partial/unresolved coverage/open-item boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no curriculum content or approval state changed.",
+    "COM-PRE-T3 (2026-11-13): verified preamble in original Commerce .doc. Lines 4–20 contain the title, wrapped subject/class header (CLASS label at line5, SS1 at line6), WEEKS/TOPICS header and ten scheme rows: Week1,2,3,4,5,6,7–8,9,10,11 Revision. The first body marker is WEEK 1 at line22. Numeric scheme rows do not use same-line WEEK <number> body markers; no preamble rule or marker coverage is needed. No standalone bibliography/reference list appears in the opening; reading assignments are embedded in body blocks. Week11 Revision is scheme-only."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 8,
-    "SOURCE_PREAMBLE_INDEXING": 2,
-    "SOURCE_WEEK_INDEXING": 19,
-    "SOURCE_MARKER_DISPOSITION": 3,
-    "VISUAL_DISPOSITION": 3,
-    "SOURCE_PRESERVATION": 2,
+    "FACTUAL_DEPENDENCY": 10,
+    "SOURCE_PREAMBLE_INDEXING": 3,
+    "SOURCE_WEEK_INDEXING": 28,
+    "SOURCE_MARKER_DISPOSITION": 4,
+    "VISUAL_DISPOSITION": 10,
+    "SOURCE_PRESERVATION": 3,
     "LESSON": 5
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 9,
-    "PENDING": 38,
-    "BLOCKED": 2
+    "IMPLEMENTED_TESTING_DEFERRED": 12,
+    "BLOCKED": 2,
+    "PENDING": 56
   },
   "items": [
     {
@@ -250,8 +253,8 @@
       "depends_on": [
         "COM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13 from user-attached composite archive. Archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e verified; member SHA-256 a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589 and 169,472 bytes verified against SOURCE_ASSIGNMENTS.csv. Header confirms Commerce, SS1. Source read with antiword 0.37 (66,284 characters, 1,387 lines); converted privately with LibreOffice 25.2.3.2 for structural/rendered inspection (22 pages). Converted structure: 3 Word tables, 6 VML pict groups/6 drawings and 30 text-box elements; no raster media parts. Nine teaching bodies indexed (Weeks 1–6, combined Weeks 7–8, Week 9, Week 10); Week 11 revision is scheme-only. Visuals include 3 comparison tables, cheque-crossing diagrams, a bill-of-exchange form and promissory-note form. Sample forms contain names, addresses, bank details, dates and amounts; flagged for synthetic replacement/redaction. Inventory: docs/ss1/work/microtasks/commerce/COM-INV-T3.md. No lesson/package/coverage/rule/correction/asset/approval changes; no tests/importer/database/device checks. Testing deferred.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -280,8 +283,8 @@
         "COM-SRC-T2",
         "COM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/commerce.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Test file authored 2026-11-13 at tests/ss1/commerce.package.test.mts. It parses the current pending package, matches all three source registrations against SOURCE_ASSIGNMENTS.csv (member/hash/term), confirms no lessons/corrections/assets or fabricated approval/verification, guards the three source-alias rules with wrong-hash/ambiguous/missing-anchor probes, and checks coverage references/current status counts and owner gates. Per task contract, tests were written but NOT RUN; package remains PENDING and owner/content/permission gates remain open.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -1807,6 +1810,769 @@
       "implementation_reference": "Raised by COM-WK-T2-W02 on 2026-11-07; not implemented.",
       "completion_condition": "One comparison supplement exists and representation open item is closed only after actual teaching exists.",
       "required_attachments": []
+    },
+    {
+      "id": "COM-WK-T3-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword 0.37 lines 22–149; WEEK 1; digest 3839620bf70387d0585abb79cdd160a944ad0e23f700595fab0348e15f22e370",
+      "objective": "Index Forms of Business Units: private/public enterprise and forms (lines 28–43), factors influencing business-unit choice (44–53), sole proprietorship (54–59), characteristics (60–75), advantages (76–87), review questions (88–90), disadvantages (91–111), review questions (112–116), weekend assignment (118–130), theory (131–135), reading assignment (136–138), general evaluation questions (139–149). Preserve the full sequence and assessment blocks.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T3-W01.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record exact source content, assessment boundaries and evidence. Preserve original wording; do not invent current legal/economic facts, answers, approvals or verification."
+    },
+    {
+      "id": "COM-WK-T3-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 150–307; WEEK 2; digest 5891e096feedeba9fc1ed213917891f12af24b0b8c14e31a22711de9d0870252",
+      "objective": "Index Partnership: definition and conditions suitable for formation (159–175), formation (176–181), partnership deed (182–195), features (196–206), advantages (207–218), disadvantages (219–233), review questions (234–240), rights of partners (241–251), sources of capital/finance (252–259), dissolution (260–274), review questions (275–277), weekend assignment (278–294), theory (295–297), reading assignment (298–300), general evaluation (301–307).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T3-W02.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record exact source content, assessment boundaries and evidence. Preserve original wording; do not invent current legal/economic facts, answers, approvals or verification."
+    },
+    {
+      "id": "COM-WK-T3-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 308–420; WEEK 3; digest 735d3f3cc2ced579f3b6a559673008750636e889af1a6205269a9d1a443d7e61",
+      "objective": "Index Partnership types: types of partnership (314–317), ordinary/general partnership (318–337), types of ordinary partners (338–351), review questions (352–355), limited partnership (356–381), demerits/limitations of a limited partner (382–388), review questions (389–392), weekend assignment (393–406), theory (407–410), reading assignment (411–413), general evaluation (414–420).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T3-W03.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record exact source content, assessment boundaries and evidence. Preserve original wording; do not invent current legal/economic facts, answers, approvals or verification."
+    },
+    {
+      "id": "COM-WK-T3-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 421–554; WEEK 4; digest dd1110097727ffa954dcc8be94d296257ad9db36644984e03fea41fcb9281d7e",
+      "objective": "Index Money: contents (423–428), trade by barter (429–453), money (454–456), characteristics/qualities (457–475), functions (476–492), forms (493–498), counter trade (499–504), advantages of counter trade (505–520), review questions (521–525), weekend assignment (526–538), theory (539–541), reading assignment (542–544), general evaluation (545–554).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T3-W04.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record exact source content, assessment boundaries and evidence. Preserve original wording; do not invent current legal/economic facts, answers, approvals or verification."
+    },
+    {
+      "id": "COM-WK-T3-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 555–662; WEEK 5; digest 163cf262e53e74fbc2df4bc86fcf1498c3b30ec5e849918e4bb9971687e72a01",
+      "objective": "Index Central Bank: contents (557–561), definition/introduction (562–565), features (566–573), functions (574–623), review questions (624–628), weekend assignment (629–644), theory (645–648), reading assignment (649–653), general evaluation (654–662). Flag statutory functions and institutional claims for dated primary-source verification.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T3-W05.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record exact source content, assessment boundaries and evidence. Preserve original wording; do not invent current legal/economic facts, answers, approvals or verification."
+    },
+    {
+      "id": "COM-WK-T3-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 663–840; WEEK 6; digest 71e6a32821e7e6ff91a6fd0dfefaaa1dc5b58f951329d0da4d1cd56351d8dcb8",
+      "objective": "Index Commercial Banks: contents (665–669), definition (670–678), characteristics (679–687), functions (688–706), types of bank accounts (707–736), current-account opening procedures (737–749), bank advances/credit facilities (750–756), good banking security (757–766), securities (767–786), loan vs overdraft comparison (787–802; structured table), review questions (803–808), weekend assignment (809–823), theory (824–827), reading assignment (828–830), general evaluation (831–840).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T3-W06.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record exact source content, assessment boundaries and evidence. Preserve original wording; do not invent current legal/economic facts, answers, approvals or verification."
+    },
+    {
+      "id": "COM-WK-T3-W07-08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 841–1024; WEEK 7–8; digest c3cb6a7bf77497f0e8f3912b82f369f5443ed4807a874d116453b295e61a3435",
+      "objective": "Index the combined Cheque System block: cheque definition and parties (848–857), advantages of payment by cheque (858–874), types of cheques (875–896), types of crossing (897–923), effects of general crossing (924–949), effects of special crossing (950–953), associated terms (954–971), reasons for dishonour (972–986), review questions (987–995), weekend assignment (996–1009), theory (1010–1012), reading assignment (1013–1015), general evaluation (1016–1024). Preserve as the source's combined Weeks 7–8 block.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T3-W07-08.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record exact source content, assessment boundaries and evidence. Preserve original wording; do not invent current legal/economic facts, answers, approvals or verification."
+    },
+    {
+      "id": "COM-WK-T3-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 1025–1224; WEEK 9; digest 72b0b59ef13b25dc5498931cad90748deb07870af63134c523bd309578e42b3d",
+      "objective": "Index Negotiable Instruments: contents (1026–1030), negotiable instruments and bill of exchange (1031–1071), parties to bill (1072–1081), exchange for value (1082–1089), types of bills (1090–1093), trade benefits (1094–1104), advantages (1105–1111), dishonoured bills and holder's steps (1112–1131), comparison of bill and cheque (1132–1143; table), other bill terms/days of grace (1144–1153), promissory notes (1154–1175), parties (1176–1179), bill vs promissory note comparison (1180–1192; table), review question (1193–1196), weekend assignment (1197–1210), theory (1211–1213), reading assignment (1214–1216), general evaluation (1217–1224). Flag legal statements for primary-source review.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T3-W09.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record exact source content, assessment boundaries and evidence. Preserve original wording; do not invent current legal/economic facts, answers, approvals or verification."
+    },
+    {
+      "id": "COM-WK-T3-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 1225–1387; WEEK 10; digest 5f6a9eef2f1b7693a1df898db954c4743de7a8110be17cf01b1522cc61f6d11a",
+      "objective": "Index Other Financial Institutions: contents (1227–1233), merchant/investment banks (1235–1252), development banks (1253–1267), examples in Nigeria (1268–1274), evaluation (1275–1278), reading assignment (1279–1280), weekend assignment (1281–1298), theory (1299–1301), second reading assignment (1302–1304), general evaluation (1305–1313), plus the drawn bill/promissory-note examples at the end of the document (1325–1384) for separate visual disposition. Preserve all example data as source-only until redaction review.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T3-W10.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record exact source content, assessment boundaries and evidence. Preserve original wording; do not invent current legal/economic facts, answers, approvals or verification."
+    },
+    {
+      "id": "COM-PRE-T3",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 1–21; opening, scheme and references",
+      "objective": "Index the opening and scheme. Subject/class heading identifies Commerce, SS1; the CLASS label wraps onto the following line. Scheme rows cover Week 1 Business Organisations/Sole Proprietorship; Week 2 Partnership; Week 3 Partnership; Week 4 Money; Week 5 Central Bank; Week 6 Commercial Bank; Weeks 7–8 Cheque System; Week 9 Negotiable Instruments; Week 10 Other Financial Institutions; Week 11 Revision. The scheme is preamble, not a teaching body. The first body marker is WEEK 1 at line 22; no standalone bibliography/reference list appears in the opening.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-PRE-T3.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Exact source member hash verified. Antiword lines 4–20 inspected: title, wrapped subject/class header, WEEKS/TOPICS heading and ten scheme rows, including combined 7–8 and scheme-only Week 11 Revision. First actual body marker is WEEK 1 at line22. Scheme rows use bare numeric labels, not same-line WEEK <number> body markers; no classify_marker rule or MARKER coverage entry is required. No separate bibliography/reference list appears in the opening; reading assignments are embedded in body weeks.",
+      "completion_condition": "Record exact source content, assessment boundaries and evidence. Preserve original wording; do not invent current legal/economic facts, answers, approvals or verification."
+    },
+    {
+      "id": "COM-MARK-T3-REVISION",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Scheme Week 11 Revision; body ends after Week 10 at line 1387",
+      "objective": "Disposition the Week 11 Revision marker. The source has general evaluation questions after teaching units, but no separately headed Week 11 revision body or examination paper. Record the marker as scheme-only; do not create a Week 11 lesson or invent an examination.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-MARK-T3-REVISION.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record exact source content, assessment boundaries and evidence. Preserve original wording; do not invent current legal/economic facts, answers, approvals or verification."
+    },
+    {
+      "id": "COM-PRES-T3-SAMPLE-FINANCIAL-RECORDS",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Cheque-crossing diagrams (lines 897–953) and sample negotiable-instrument forms (lines 1325–1384; rendered PDF pages 15, 16, 18 and 20)",
+      "objective": "Preserve the sample cheque, bill-of-exchange and promissory-note forms as source evidence only. They contain named individuals, addresses, bank branding, dates and monetary amounts. Do not copy these into the package or assets; any learner-facing replacement must use synthetic names, fictional addresses, non-operational account details and a clear teaching-example label. Record reuse rights separately.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-PRES-T3-SAMPLE-FINANCIAL-RECORDS.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record exact source content, assessment boundaries and evidence. Preserve original wording; do not invent current legal/economic facts, answers, approvals or verification."
+    },
+    {
+      "id": "COM-FACT-T3-BANK-INSTITUTIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Central Bank lines 562–623; commercial banks lines 670–786; development/merchant banks lines 1235–1274",
+      "objective": "Verify current Nigerian financial institution names, legal status and statutory functions, especially the listed development-bank examples (BOI, NARDB, FMBN, Urban Development Bank, Nigerian Educational Bank and NEXIM) and the descriptions of merchant/development banks. Use current primary laws and official institution sources with effective/reference dates; distinguish historical names from institutions currently operating.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-FACT-T3-BANK-INSTITUTIONS.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record exact source content, assessment boundaries and evidence. Preserve original wording; do not invent current legal/economic facts, answers, approvals or verification."
+    },
+    {
+      "id": "COM-FACT-T3-NEGOTIABLE-INSTRUMENTS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Cheque system lines 848–986; negotiable instruments lines 1031–1192",
+      "objective": "Verify cheque crossing, parties, dishonour, days of grace, bills of exchange, promissory notes, acceptance, noting/protest and negotiability against the Bills of Exchange Act and current CBN/Nigerian payment-system rules. Check the source's claim that a promissory note is not a good negotiable instrument and the table distinctions; keep source wording separate from corrected legal teaching and cite effective dates.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-FACT-T3-NEGOTIABLE-INSTRUMENTS.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record exact source content, assessment boundaries and evidence. Preserve original wording; do not invent current legal/economic facts, answers, approvals or verification."
+    },
+    {
+      "id": "COM-VIS-T3-TABLE-LOAN-OVERDRAFT",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 787–801; rendered PDF table in Week 6",
+      "objective": "Inspect and disposition the exact source visual: Structured 7-row, 4-column comparison of loan and overdraft; inspect labels, cell content, legibility and any financial/legal inaccuracies. Preserve the original structure privately; determine instructional value, accuracy, accessible alt text, rights/reuse status and whether to retain, redraw or replace.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "backend/src/db/ss1/assets/commerce",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-VIS-T3-TABLE-LOAN-OVERDRAFT.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record source locator, visual structure, decision, accuracy review, accessibility description and reuse status. Do not publish identifying, misleading or legally inaccurate examples."
+    },
+    {
+      "id": "COM-VIS-T3-TABLE-BILL-CHEQUE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 1132–1143; rendered PDF table in Week 9",
+      "objective": "Inspect and disposition the exact source visual: Structured comparison of bill of exchange and cheque; includes drawer/drawee/payee, payment time, acceptance, crossing, discounting and dishonour. Preserve the original structure privately; determine instructional value, accuracy, accessible alt text, rights/reuse status and whether to retain, redraw or replace.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "backend/src/db/ss1/assets/commerce",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-VIS-T3-TABLE-BILL-CHEQUE.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record source locator, visual structure, decision, accuracy review, accessibility description and reuse status. Do not publish identifying, misleading or legally inaccurate examples."
+    },
+    {
+      "id": "COM-VIS-T3-TABLE-BILL-PROMISSORY",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 1180–1192; rendered PDF table in Week 9",
+      "objective": "Inspect and disposition the exact source visual: Structured comparison of bill of exchange and promissory note; preserve table structure and flag legal terminology for verification. Preserve the original structure privately; determine instructional value, accuracy, accessible alt text, rights/reuse status and whether to retain, redraw or replace.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "backend/src/db/ss1/assets/commerce",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-VIS-T3-TABLE-BILL-PROMISSORY.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record source locator, visual structure, decision, accuracy review, accessibility description and reuse status. Do not publish identifying, misleading or legally inaccurate examples."
+    },
+    {
+      "id": "COM-VIS-T3-CHEQUE-GENERAL-CROSSING",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 897–923; rendered PDF pages 15–16",
+      "objective": "Inspect and disposition the exact source visual: Word-drawn general-crossing examples with parallel lines and labels; assess whether each example is necessary and whether current cheque law/terminology is accurate. Preserve the original structure privately; determine instructional value, accuracy, accessible alt text, rights/reuse status and whether to retain, redraw or replace.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "backend/src/db/ss1/assets/commerce",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-VIS-T3-CHEQUE-GENERAL-CROSSING.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record source locator, visual structure, decision, accuracy review, accessibility description and reuse status. Do not publish identifying, misleading or legally inaccurate examples."
+    },
+    {
+      "id": "COM-VIS-T3-CHEQUE-SPECIAL-CROSSING",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 918–953; rendered PDF page 16",
+      "objective": "Inspect and disposition the exact source visual: Word-drawn special-crossing examples naming a bank and adding crossing restrictions; verify legal accuracy and ensure the bank branding is not presented as current endorsement. Preserve the original structure privately; determine instructional value, accuracy, accessible alt text, rights/reuse status and whether to retain, redraw or replace.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "backend/src/db/ss1/assets/commerce",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-VIS-T3-CHEQUE-SPECIAL-CROSSING.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record source locator, visual structure, decision, accuracy review, accessibility description and reuse status. Do not publish identifying, misleading or legally inaccurate examples."
+    },
+    {
+      "id": "COM-VIS-T3-BILL-OF-EXCHANGE-FORM",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 1038–1071 and 1325–1361; rendered PDF page 18",
+      "objective": "Inspect and disposition the exact source visual: Word-drawn sample bill of exchange with names, address, bank-style details, date and monetary value; redact/replace with synthetic data before reuse. Preserve the original structure privately; determine instructional value, accuracy, accessible alt text, rights/reuse status and whether to retain, redraw or replace.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "backend/src/db/ss1/assets/commerce",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-VIS-T3-BILL-OF-EXCHANGE-FORM.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record source locator, visual structure, decision, accuracy review, accessibility description and reuse status. Do not publish identifying, misleading or legally inaccurate examples."
+    },
+    {
+      "id": "COM-VIS-T3-PROMISSORY-NOTE-FORM",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-d436db5f412d",
+      "term": "3rd Term",
+      "week_or_locator": "Antiword lines 1154–1179 and 1365–1384; rendered PDF page 20",
+      "objective": "Inspect and disposition the exact source visual: Word-drawn sample promissory note with named parties, address, date, amounts and stamp elements; redact/replace with synthetic data before reuse. Preserve the original structure privately; determine instructional value, accuracy, accessible alt text, rights/reuse status and whether to retain, redraw or replace.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 COMMERCE.doc",
+          "member_sha256": "a5d127fef6807a87a063f71c20c404036e476a46032037ffd74da12a72995589"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "backend/src/db/ss1/assets/commerce",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-VIS-T3-PROMISSORY-NOTE-FORM.md"
+      ],
+      "depends_on": [
+        "COM-INV-T3",
+        "COM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "completion_condition": "Record source locator, visual structure, decision, accuracy review, accessibility description and reuse status. Do not publish identifying, misleading or legally inaccurate examples."
     }
   ],
   "review": {
@@ -1822,8 +2588,6 @@
     }
   },
   "next_runnable": [
-    "COM-INV-T3",
-    "COM-TEST-PACKAGE",
     "COM-PRE-T1",
     "COM-WK-T1-W02",
     "COM-WK-T1-W03",
@@ -1852,6 +2616,26 @@
     "COM-WK-T2-W09",
     "COM-VIS-T2-EQ-TOT",
     "COM-FACT-T2-W02-CLAIMS",
-    "COM-LES-T2-W02-DOMFOR"
+    "COM-LES-T2-W02-DOMFOR",
+    "COM-WK-T3-W01",
+    "COM-WK-T3-W02",
+    "COM-WK-T3-W03",
+    "COM-WK-T3-W04",
+    "COM-WK-T3-W05",
+    "COM-WK-T3-W06",
+    "COM-WK-T3-W07-08",
+    "COM-WK-T3-W09",
+    "COM-WK-T3-W10",
+    "COM-MARK-T3-REVISION",
+    "COM-PRES-T3-SAMPLE-FINANCIAL-RECORDS",
+    "COM-FACT-T3-BANK-INSTITUTIONS",
+    "COM-FACT-T3-NEGOTIABLE-INSTRUMENTS",
+    "COM-VIS-T3-TABLE-LOAN-OVERDRAFT",
+    "COM-VIS-T3-TABLE-BILL-CHEQUE",
+    "COM-VIS-T3-TABLE-BILL-PROMISSORY",
+    "COM-VIS-T3-CHEQUE-GENERAL-CROSSING",
+    "COM-VIS-T3-CHEQUE-SPECIAL-CROSSING",
+    "COM-VIS-T3-BILL-OF-EXCHANGE-FORM",
+    "COM-VIS-T3-PROMISSORY-NOTE-FORM"
   ]
 }
