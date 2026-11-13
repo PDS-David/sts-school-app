@@ -31,7 +31,7 @@ Worker branch: `agent/frontend-learning-discovery-20261113`
 ## Commits
 - `5404da2dfd263f217e4123f9a97752ed6f149757` — add subject discovery retry state.
 - `c68e73fe6d0f457bfeccd79db5404a5d98ee2cef` — distinguish topic load errors from empty subjects.
-- Checkpoint commit: pending.
+- Checkpoint created in commit `12d2f34b5bd7465332d1ca24089be9210c92dd84`.
 
 ## Verification
 - Static inspection confirms both retry controls reissue the existing GET endpoints.
