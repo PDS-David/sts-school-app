@@ -69,22 +69,23 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
   }, [alreadySubmitted, submissionId, reviewRetry]);
 
   useEffect(() => {
-    // Found in QA Pass 6: this used to call the unrelated, unscoped
-    // GET /learning/questions (which 403s for students — questions.read is
-    // admin-only) and slice the first 20 results, with no actual
-    // connection to this assessment. GET /learning/assessments/:id/questions
-    // now returns the real, ordered question set (answers stripped) for
-    // exactly this assessment.
+    let cancelled = false;
+    setLoading(true);
+    setLoadError('');
+    // Student endpoint returns this assessment's ordered questions with answer keys stripped.
     api.get(`/learning/assessments/${assessmentId}/questions`)
       .then(({ data }) => {
+        if (cancelled) return;
         setQuestions(data.questions ?? []);
         setLoading(false);
       })
       .catch((e) => {
+        if (cancelled) return;
         setLoadError(e?.response?.data?.error ?? 'Could not load this assessment');
         setLoading(false);
       });
-  }, [assessmentId]);
+    return () => { cancelled = true; };
+  }, [assessmentId, questionRetry]);
 
   const select = (questionId: number, key: string) => {
     setAnswers(prev => ({ ...prev, [questionId]: key }));
@@ -110,6 +111,7 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
   };
 
   const doSubmit = async () => {
+    if (submitting || submitted) return;
     setSubmitting(true);
     try {
       const payload: Record<string, string> = {};
@@ -124,6 +126,14 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
 
   if (reviewLoading) return <Loader />;
 
+  if (reviewMode && reviewError) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={reviewError} />
+      {!!submissionId && <Btn label="Retry submission review" onPress={() => setReviewRetry(v => v + 1)} variant="outline" />}
+      <Btn label="Back to Assessments" onPress={() => navigation.goBack()} variant="ghost" style={{ marginTop: Spacing.sm }} />
+    </View>
+  );
+
   if (reviewMode && reviewData) {
     const sub = reviewData.submission;
     const revAnswers: any[] = reviewData.answers ?? [];
@@ -134,7 +144,7 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
         'This will replace your current answers and score with a new attempt. Your previous submission cannot be recovered afterward.',
         [
           { text: 'Cancel', style: 'cancel' },
-          { text: 'Retake', style: 'destructive', onPress: () => setReviewMode(false) },
+          { text: 'Retake', style: 'destructive', onPress: () => { setAnswers({}); setCurrent(0); setReviewError(''); setReviewMode(false); } },
         ],
       );
     };
@@ -170,7 +180,13 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
   }
 
   if (loading) return <Loader />;
-  if (loadError) return <Empty message={loadError} />;
+  if (loadError) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={loadError} />
+      <Btn label="Retry loading questions" onPress={() => setQuestionRetry(v => v + 1)} variant="outline" />
+      <Btn label="Back to Assessments" onPress={() => navigation.goBack()} variant="ghost" style={{ marginTop: Spacing.sm }} />
+    </View>
+  );
   if (questions.length === 0) return <Empty message="No questions available for this assessment" />;
 
   if (submitted && result) {
