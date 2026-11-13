@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { shouldEnqueueOfflineWrite } from '../../mobile/src/offline/replayPolicy.ts';
+import { shouldEnqueueOfflineWrite, isAccountSwitchCancellation } from '../../mobile/src/offline/replayPolicy.ts';
 import { createSerialQueue } from '../../mobile/src/offline/serialQueue.ts';
 import { createOutboxStore } from '../../mobile/src/offline/outboxStore.ts';
 import { isRestorableUser } from '../../mobile/src/api/authSession.ts';
@@ -174,9 +174,7 @@ test('outbox validates queued request records before replay', async () => {
 });
 
 test('account-switch cancellations are not treated as offline failures', () => {
-  const isOfflineNetworkFailure = (error: { code?: string } | undefined) =>
-    error?.code !== 'ERR_CANCELED';
-  assert.equal(isOfflineNetworkFailure({ code: 'ERR_CANCELED' }), false);
-  assert.equal(isOfflineNetworkFailure({ code: 'ECONNABORTED' }), true);
-  assert.equal(isOfflineNetworkFailure(undefined), true);
+  assert.equal(isAccountSwitchCancellation({ code: 'ERR_CANCELED' }), true);
+  assert.equal(isAccountSwitchCancellation({ code: 'ECONNABORTED' }), false);
+  assert.equal(isAccountSwitchCancellation(undefined), false);
 });
