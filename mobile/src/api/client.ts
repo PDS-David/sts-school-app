@@ -324,7 +324,8 @@ export function flushOutbox(): Promise<{ synced: number; failed: number; remaini
   const existing = inFlightFlushes.get(userNamespace);
   if (existing) return existing;
 
-  const flushPromise = (async () => {
+  let flushPromise!: Promise<{ synced: number; failed: number; remaining: number }>;
+  flushPromise = (async () => {
     try {
       const queue = await getOutbox(userNamespace);
       let synced = 0;
