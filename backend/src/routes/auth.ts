@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import bcrypt from 'bcryptjs';
+import rateLimit from 'express-rate-limit';
 import { query } from '../db/pool.js';
 import { signAccess, signRefresh, verifyRefresh } from '../utils/jwt.js';
 import { requireAuth } from '../middleware/auth.js';
@@ -10,8 +11,27 @@ import type { AuthUser, Role } from '../types/index.js';
 
 const router = Router();
 
+// The process-wide /auth IP limiter is defense-in-depth, but users at a
+// school often share one public IP. Also cap failed attempts by normalized
+// account name so one learner's mistakes cannot consume another learner's
+// login quota, and a distributed attacker cannot brute-force one account.
+const loginAttemptLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: (req) => {
+    const username = typeof req.body?.username === 'string'
+      ? req.body.username.trim().toLowerCase()
+      : 'missing';
+    return `login:${username}`;
+  },
+  skipSuccessfulRequests: true,
+  message: { error: 'Too many failed login attempts for this username. Try again in 15 minutes.' },
+});
+
 // ── POST /auth/login ──────────────────────────────────────────────────────────
-router.post('/login', async (req, res) => {
+router.post('/login', loginAttemptLimiter, async (req, res) => {
   const { username, password } = req.body as { username: string; password: string };
   if (!username || !password) {
     return res.status(400).json({ error: 'username and password required' });
