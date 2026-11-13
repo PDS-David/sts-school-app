@@ -222,6 +222,11 @@ api.interceptors.response.use(
         //     single-use server-side — silently "succeeding" offline would
         //     tell the student their PIN worked when the server has never
         //     seen it, then fail for real once the queue flushes).
+        //   - Student/admin account provisioning returns one-time credentials;
+        //     promotion/restore and class-lock actions change role-scoped
+        //     records; financial writes must be server-confirmed before being
+        //     shown as paid/created; academic setup mutations must be confirmed
+        //     before a form clears and a refreshed school list is expected.
         const url = original.url ?? '';
         if (
           url.startsWith('/ai/') || url.startsWith('/auth/') ||
@@ -229,6 +234,14 @@ api.interceptors.response.use(
           /^\/learning\/assessments(?:\?|$)/.test(url) ||
           /^\/learning\/assessments\/[^/]+\/submit(?:\?|$)/.test(url) ||
           /^\/learning\/questions(?:\?|$)/.test(url) ||
+          /^\/students(?:\?|$)/.test(url) ||
+          /^\/students\/[^/]+\/(?:promotion|restore)(?:\?|$)/.test(url) ||
+          /^\/admin\/users(?:\/.*)?(?:\?|$)/.test(url) ||
+          /^\/academic\/(?:terms|subjects)(?:\/[^/]+)?(?:\?|$)/.test(url) ||
+          /^\/academic\/class-locks(?:\?|$)/.test(url) ||
+          /^\/finance\/fee-items(?:\?|$)/.test(url) ||
+          /^\/finance\/invoices(?:\?|$)/.test(url) ||
+          /^\/finance\/invoices\/[^/]+\/status(?:\?|$)/.test(url) ||
           url.startsWith('/learning/term-pins/redeem')
         ) {
           return Promise.reject(error);
