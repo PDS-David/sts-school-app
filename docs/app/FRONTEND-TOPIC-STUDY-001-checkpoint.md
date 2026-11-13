@@ -2,7 +2,7 @@
 
 - Status: implementation committed; awaiting CI and review.
 - Base branch: `master`
-- Base commit: `acc6ff5f62113df659fbd0f39afe18ac44e7debf`
+- Base commit: `7451e263136b4fedc5fd876f5822c755b6c7b1c7`
 - Worker branch: `agent/frontend-topic-study-feedback-20261113`
 
 ## Commits
