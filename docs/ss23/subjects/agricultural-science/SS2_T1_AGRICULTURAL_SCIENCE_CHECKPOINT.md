@@ -132,3 +132,25 @@ Six technical/content issues remain delivery blockers: drought is listed as a cl
 ## CI evidence
 
 GitHub Actions run **43474264243** completed successfully after Weeks 4-6 were added: backend TypeScript typecheck passed and all 24 SS23 Node tests passed (24 passed, 0 failed). Week 7 was added after this run and still requires a fresh validation run.
+
+
+## Weeks 8–9 — Plant nutrients, nutrient cycles and water in crop production
+
+A combined Weeks 8-9 unit is drafted from the single Week Eight body, consistent with the source map's two-week scheme range. It covers macro- and micronutrient classification; functions and common deficiency symptoms for N, P, K, Ca, Mg, S, Fe, Mn, Cu, Zn, B, Mo, Cl and Ni; nitrogen inputs, transformations and losses; carbon and water cycles; soil-water forms; water conservation; the importance of water and organic matter; and factors affecting nutrient availability. Eighteen original-source assessment prompts have authored answers and marking criteria, with three authored practice supplements.
+
+Four new factual references support the nutrient and cycle material: FAO Plant Nutrition for Food Security, RHS nutrient-deficiency guidance, NOAA's carbon-cycle explanation and USGS's water-cycle reference. The existing USDA NRCS Soil Biology Primer supports soil organisms and microbial nutrient transformations.
+
+Three source figures (nitrogen, carbon and water cycles) are hashed and recorded as pending source-extract references. The nitrogen figure carries an FLRC 2014 credit, the carbon-cycle figure has an Alamy watermark, and the water-cycle image has no verified rights record. Two original diagrams have been authored: a nitrogen-cycle diagram and a combined carbon/water-cycle diagram.
+
+The main blockers are: the scheme assigns Weeks 8-9 but the body has only one Week Eight heading; the source's nutrient table omits requested functions/deficiencies for sulphur and micronutrients; nitrogen inputs, transformations and losses are conflated; carbon and water cycle explanations require technical correction; and source figure permissions remain unverified. The O.A. Iwena Chapter 18 pages 187-201 reading reference is unverified and non-blocking.
+
+## Updated First Term package totals
+
+- 7 units: Weeks 1, 2, 3, combined Weeks 4-5, Week 6, Week 7 and combined Weeks 8-9.
+- 128 assessment/practice items: 109 original-source prompts and 19 authored supplements.
+- 47 asset records: 42 pending source-extract references and 5 stored authored SVG diagrams.
+- 18 external factual references.
+- 35 open items: 30 delivery-blocking and 5 non-blocking.
+- Package status remains PENDING; student routes intentionally serve no lessons until blocking items are resolved and evidence-backed approval/verification is recorded.
+
+**Next exact task:** audit and draft Week 10 (Nutrient Availability), preserving the source's topic boundaries, assessments and figures. Then continue SS2 Agricultural Science Term 2 and Term 3.
