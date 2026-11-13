@@ -20,12 +20,14 @@ test('Primary 4 export manifest records 248 unique topic identities across the 1
   assert.equal(manifest.provenance.original_archive_independently_rehashed, false);
 });
 
-test('archive correction takes precedence over the superseded Primary 4 export source', () => {
+test('approved archive correction takes precedence over the superseded Primary 4 export source', () => {
   const result = resolvePrimary4SourceDelivery(baseTopic);
-  assert.equal(result?.kind, 'withheld');
-  if (result?.kind === 'withheld') {
+  assert.equal(result?.kind, 'matched');
+  if (result?.kind === 'matched') {
     assert.equal(result.source, 'archive-correction');
-    assert.match(result.reason, /pending owner approval/i);
+    assert.equal(result.displayTitle, 'CHANGES IN NATURE');
+    assert.match(result.text, /Content approval: APPROVED/);
+    assert.match(result.text, /Assessment rebuild: VERIFIED/);
   }
 });
 
@@ -124,13 +126,13 @@ test('archive correction package contains structurally complete lessons and expl
     assert.ok(record.examples.length >= 2, record.title);
     assert.ok(record.activity.length >= 20, record.title);
     assert.ok(record.evaluation.length >= 3, record.title);
-    assert.equal(record.content_approval, 'PENDING_OWNER_REVIEW');
+    assert.equal(record.content_approval, 'APPROVED');
     assert.equal(record.pedagogical_verification, 'VERIFIED');
-    assert.equal(record.assessment_rebuild_status, 'PENDING');
+    assert.equal(record.assessment_rebuild_status, 'VERIFIED');
   }
 });
 
-test('approved archive corrections replace stale exported text and clear cached learner content', () => {
+test('approved archive corrections replace the stale exported lesson body', () => {
   const correction = (archiveCorrections.corrections as any[])[0];
   const topic = {
     ...baseTopic,
@@ -144,16 +146,15 @@ test('approved archive corrections replace stale exported text and clear cached 
     generated_assessment_id: 77,
   };
   const result = resolvePrimary4SourceDelivery(topic);
-  assert.equal(result?.kind, 'withheld');
-  if (result?.kind === 'withheld') {
+  assert.equal(result?.kind, 'matched');
+  if (result?.kind === 'matched') {
     assert.equal(result.source, 'archive-correction');
-    assert.match(result.reason, /pending owner approval/i);
+    assert.equal(result.displayTitle, correction.title);
   }
   const safe = safePrimary4Topic(topic);
-  assert.equal(safe.source_reference, null);
-  assert.equal(safe.summary, null);
-  assert.equal(safe.generated_assessment_id, null);
+  assert.equal(safe.source_reference, result && result.kind === 'matched' ? result.text : null);
   assert.equal(safe.title, correction.title);
+  assert.equal((safe as any).primary4_delivery.status, 'archive-correction-match');
 });
 
 test('superseded Primary 4 outline and merged rows are explicitly hidden from student delivery', () => {
