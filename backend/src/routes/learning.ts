@@ -1298,33 +1298,48 @@ router.get('/questions', requirePerm('questions.read'), async (req, res) => {
   return res.json({ questions: rows });
 });
 
-router.post('/questions', requirePerm('questions.write'), async (req, res) => {
-  const { subject_id, class_name, term_id, type, stem, options, correct_keys, marks, school_code } = req.body;
+const questionCreateSchema = z.object({
+  subject_id: z.coerce.number().int().positive(),
+  class_name: z.string().trim().min(1).max(100).nullable().optional(),
+  term_id: z.coerce.number().int().positive().nullable().optional(),
+  type: z.enum(['mcq', 'essay']).optional(),
+  stem: z.string().trim().min(1).max(10000),
+  options: z.unknown().optional(),
+  correct_keys: z.array(z.string().min(1)).optional(),
+  marks: z.number().int().positive().max(1000).optional(),
+  school_code: z.string().trim().min(1).max(50).optional(),
+});
 
-  // Added in Pass 19: the same scoping gap as /materials and /assessments
-  // (flagged as a follow-up when those two were fixed in Pass 17, since a
-  // question feeds directly into an assessment) — a teacher could publish a
-  // question for any class/subject in their school, whether or not they
-  // actually teach it. Same rule as the other two: allowed for the
-  // teacher's own assigned class (any subject) or their own assigned
-  // subject (any class).
-  const scopeError = await checkTeacherContentScope(req.user!, { class_name: class_name ?? null, subject_id });
+router.post('/questions', requirePerm('questions.write'), async (req, res) => {
+  const parsed = questionCreateSchema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
+  const data = parsed.data;
+  const target = resolveContentSchool(req.user!, data.school_code);
+  if ('error' in target) return res.status(target.status).json({ error: target.error });
+
+  const scopeError = await checkTeacherContentScope(req.user!, {
+    class_name: data.class_name ?? null,
+    subject_id: data.subject_id,
+  });
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
-  // Same admin-NULL-school_code fix already applied to /materials and
-  // /assessments: admin accounts have school_code=null, so always writing
-  // req.user.school_code silently created questions invisible to every
-  // teacher's GET /questions (which filters by their own non-null
-  // school_code). Accept an explicit school_code in the body for admin only.
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+  const result = await withTransaction(async (client) => {
+    const referenceError = await validateContentReferences(
+      client, target.schoolCode, data.subject_id, data.term_id ?? null,
+    );
+    if (referenceError) return { ok: false as const, ...referenceError };
 
-  const { rows } = await query(
-    `INSERT INTO questions(school_code,subject_id,class_name,term_id,type,stem,options,correct_keys,marks,created_by)
-     VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
-    [sc, subject_id, class_name ?? null, term_id ?? null,
-     type ?? 'mcq', stem, JSON.stringify(options ?? []), correct_keys ?? [], marks ?? 1, req.user!.id],
-  );
-  return res.status(201).json({ question: rows[0] });
+    const { rows } = await client.query(
+      `INSERT INTO questions(school_code,subject_id,class_name,term_id,type,stem,options,correct_keys,marks,created_by)
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
+      [target.schoolCode, data.subject_id, data.class_name ?? null, data.term_id ?? null,
+       data.type ?? 'mcq', data.stem, JSON.stringify(data.options ?? []),
+       data.correct_keys ?? [], data.marks ?? 1, req.user!.id],
+    );
+    return { ok: true as const, question: rows[0] };
+  });
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  return res.status(201).json({ question: result.question });
 });
 
 // ════════════════════════════════════════════════════════
