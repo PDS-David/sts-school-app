@@ -25,6 +25,7 @@ Branch: `agent/ops-01-migration-ledger-20261113`
 
 ## Commits
 - Migration runner: `ee941edb74f284c21f972f1b192c0768cf2a9d8b`.
+- Integration-test registration and guard fixes: `bcdd9f6af8b085f2c93720ffd1f26b1066ac7104` plus subsequent runner commits `a2465810bbcc86397ead090a6d70816e5275542a`, `11f6e115c8513247d2760592d141b05b6dca596a`, `0cf7f94ead91aa2d50d34209fe86235e3c1ea96c`, `04875c81ae0d15aaf3451a40620f0921f2fc75e8`.
 - Safety guards/order: `5dfe791e95f023cbed328daa7490c6ae67e8cc9a`.
 - Fresh schema ledger: `38164a0e20456e44ef66ae3e7c99c7fc59a0e4bd`.
 - Baseline marker: `78f87f0954683acd6c1cf57c4e59ad5281ec2f56`.
