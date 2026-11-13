@@ -75,7 +75,7 @@ function sourceReference(pkg: LessonPackage, lesson: PackageLesson): string {
     `Curriculum source: ${sourceUrl}`,
     `Term allocation: ${termAllocation}`,
     pkg.provenance.source_note ?? pkg.provenance.database_export_finding ?? pkg.provenance.authoring_note ?? '',
-    `Content approval: ${pkg.provenance.content_approval}. Pedagogical verification: ${pkg.provenance.pedagogical_verification}.`,
+    `Content approval: ${pkg.provenance.content_approval}. Pedagogical verification: ${pkg.provenance.pedagogical_verification}. Assessment rebuild: ${pkg.provenance.assessment_rebuild_status ?? 'PENDING'}.`,
     '',
     `LESSON TITLE: ${lesson.title}`,
     `CLASS: Primary 4 | SUBJECT: ${pkg.subject_name} | TERM: ${term}`,
