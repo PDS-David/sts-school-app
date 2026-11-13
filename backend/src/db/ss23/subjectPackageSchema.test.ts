@@ -214,8 +214,10 @@ test('loads the SS2 Agricultural Science soil draft and keeps delivery blocked',
   assert.equal(pkg.class_name, 'SS 2');
   assert.equal(pkg.package_status, 'PENDING');
   assert.equal(pkg.units.length, 2);
-  assert.equal(pkg.assets.length, 5);
-  assert.ok(pkg.assets.every(asset => asset.path.startsWith('source-extract://') && asset.state.verification === 'DEFERRED'));
+  assert.equal(pkg.assets.length, 6);
+  assert.equal(pkg.assets.filter(asset => asset.path.startsWith('source-extract://')).length, 5);
+  assert.ok(pkg.assets.every(asset => asset.state.verification === 'DEFERRED'));
+  assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/soil-sedimentation-jar.svg' && asset.state.implementation === 'IMPLEMENTED'));
   assert.equal(pkg.sources[0].source_id, 'SS23-SRC-225f920d3751');
   assert.ok(pkg.open_items.length >= 5);
   assert.ok(pkg.open_items.every(item => item.blocks_delivery));
