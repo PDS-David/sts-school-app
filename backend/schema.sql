@@ -5,6 +5,16 @@
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
+-- Applied migration history. The runner also creates this table before
+-- migrating an existing database, while this definition keeps fresh installs
+-- self-contained.
+CREATE TABLE IF NOT EXISTS public.schema_migrations (
+  version    TEXT PRIMARY KEY,
+  name       TEXT NOT NULL,
+  checksum   TEXT NOT NULL,
+  applied_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
 -- ── Schools ───────────────────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS schools (
   id          SERIAL PRIMARY KEY,
