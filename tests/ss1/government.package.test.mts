@@ -334,7 +334,7 @@ test('Week One colonial-administration replacement corrects history and binds th
     'about 1760 to 1840', 'transatlantic slave trade', 'colonial forced-labour systems',
     'civilizing mission', 'Lugard’s High Commissionership',
     'Native Courts Proclamation (1900)', 'Native Authority (Enforcement) Proclamation (1907)',
-    'decentralised communities',
+    'decentralised political institutions',
   ]) {
     assert(lesson.body.includes(phrase), `missing Week One teaching: ${phrase}`);
   }
