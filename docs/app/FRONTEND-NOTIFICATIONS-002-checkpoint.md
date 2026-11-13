@@ -30,7 +30,7 @@ Worker branch: `agent/frontend-notification-recovery-current-20261113`
 ## Commits
 - `6c1d1af13250519107cba4b14c68ce5da5ca3ca7` — add partial feed failure tracking to current provider.
 - `9954a53c220a0ee6770b7db3c2b45b769fc89497` — add retry and unread UI on current screen.
-- Checkpoint commit: pending.
+- Checkpoint commit: `a9fca6d471dc2e2ad9f0fd8973145e4d26139ec4`.
 
 ## Verification
 - Static inspection confirms account-switch resets, refresh-generation protection and last-successful announcement fallback from master remain.
