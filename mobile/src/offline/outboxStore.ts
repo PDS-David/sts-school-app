@@ -16,6 +16,7 @@ export function createOutboxStore<T extends { id: string }>(
   storage: OutboxStorage,
   getNamespace: () => string,
   prefix = 'offline_outbox:',
+  isValidItem?: (value: unknown) => value is T,
 ) {
   const serializeMutation = createSerialQueue();
   const keyForCurrentNamespace = () => `${prefix}${getNamespace()}`;
@@ -24,7 +25,9 @@ export function createOutboxStore<T extends { id: string }>(
     const raw = await storage.getItem(key);
     if (raw === null) return [];
     const parsed: unknown = JSON.parse(raw);
-    if (!Array.isArray(parsed)) throw new Error('Stored offline outbox is not a list');
+    if (!Array.isArray(parsed) || (isValidItem && parsed.some((item) => !isValidItem(item)))) {
+      throw new Error('Stored offline outbox contains invalid data');
+    }
     return parsed as T[];
   }
 
