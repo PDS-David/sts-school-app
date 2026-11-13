@@ -1,7 +1,7 @@
 {
   "version": 1,
   "repository": "PDS-David/sts-school-app",
-  "updated_at": "2026-11-13T18:00:00Z",
+  "updated_at": "2026-11-13T21:35:00Z",
   "lease_policy": {
     "lease_minutes": 45,
     "heartbeat_minutes": 10,
@@ -12,11 +12,11 @@
       "id": "ORCH-001",
       "title": "Implement durable task registry and validation",
       "gate": "operations",
-      "status": "review",
+      "status": "completed",
       "priority": "P0",
       "owner": null,
       "created_at": "2026-11-13T14:30:00Z",
-      "updated_at": "2026-11-13T18:00:00Z",
+      "updated_at": "2026-11-13T21:35:00Z",
       "heartbeat_at": null,
       "lease_expires_at": null,
       "depends_on": [],
@@ -31,11 +31,12 @@
         "Documentation explains recovery and limitations"
       ],
       "checkpoint": ".github/work-orchestrator/checkpoints/ORCH-001.md",
-      "pull_request": "https://github.com/PDS-David/sts-school-app/pull/683",
+      "pull_request": "https://github.com/PDS-David/sts-school-app/pull/829",
       "verification": [
         {
+          "kind": "GitHub Actions CI",
           "result": "passed",
-          "evidence": "GitHub Actions run 43442326666: initial registry validation and queue summary passed. Expanded unit tests and dashboard checks are pending CI."
+          "evidence": "GitHub Actions STS Work Queue Health run #27 (43510229607) passed registry validation, validator unit tests, dashboard generation, and dashboard publication on PR #829 head fd8368bcd292b52a57949134d4b01b0a24850e1f; PR #829 merged as 5599f265e2b6925f1aaabfdbea8838b4ead0b3f1. SS1 package integrity run #1741 and JSS3 implementation/asset run #3901 also passed."
         }
       ]
     },
@@ -71,11 +72,11 @@
       "id": "ORCH-003",
       "title": "Create completion-gate dashboard from task evidence",
       "gate": "operations",
-      "status": "review",
+      "status": "completed",
       "priority": "P2",
       "owner": null,
       "created_at": "2026-11-13T14:30:00Z",
-      "updated_at": "2026-11-13T18:00:00Z",
+      "updated_at": "2026-11-13T21:35:00Z",
       "heartbeat_at": null,
       "lease_expires_at": null,
       "depends_on": [
@@ -92,8 +93,14 @@
         "Never infer completion from unchecked status"
       ],
       "checkpoint": ".github/work-orchestrator/checkpoints/ORCH-003.md",
-      "pull_request": "https://github.com/PDS-David/sts-school-app/pull/683",
-      "verification": []
+      "pull_request": "https://github.com/PDS-David/sts-school-app/pull/829",
+      "verification": [
+        {
+          "kind": "Dashboard generation and publication",
+          "result": "passed",
+          "evidence": "GitHub Actions STS Work Queue Health run #27 (43510229607) passed registry validation, validator unit tests, dashboard generation, and dashboard publication on PR #829 head fd8368bcd292b52a57949134d4b01b0a24850e1f; PR #829 merged as 5599f265e2b6925f1aaabfdbea8838b4ead0b3f1. SS1 package integrity run #1741 and JSS3 implementation/asset run #3901 also passed."
+        }
+      ]
     }
   ]
 }
