@@ -36,7 +36,7 @@ Worker branch: `agent/frontend-admin-users-recovery-20261113`
 - `c613abcd4f46d52c2e0202f267d7be4c29dee004` — add user form validation and saving guard.
 - `4fb076fe39c1e18988b5e12b876f97cbb3d1839f` — add retries inside the user form.
 - `a62ab14edffb285a3f28efeaaf3de38b987f0050` — add retry for user list refresh failures.
-- Checkpoint commit: pending.
+- Checkpoint commit: `61e60c3354070e2955031c7010db9dd022d59f78`.
 
 ## Verification
 - Static inspection confirms school/class/subject lookup calls remain scoped by school_code.
