@@ -322,7 +322,7 @@ A unitary system concentrates ultimate constitutional authority at the centre, a
 
 ## Provenance and status
 - Lesson ID: `SUP-SS1-GOVERNMENT-T1-W10-CORRECTED`
-- Body SHA-256 (UTF-8): `435a3cb868a5fff1faae68cd7ce348639569e5686d8b74e97aa397f33d198f3b`
+- Body SHA-256 (UTF-8): `ed8e1147bd98ee9e50671852ea90afa7b06b923f776f946d9842c8c20b5979e8`
 - Nigeria: Constitution sections 2(2), 4, 7, 14(3)–(4), 153; Second Schedule Part II Item L; Third Schedule Part I C; Fourth Schedule; Federal Character Commission (Establishment, etc.) Act 1996 No.34.
 - Comparative examples: official UK Parliament, French Constitution (1958), Italian Constitution, U.S. Constitution, Indian Constitution/Supreme Court, Russian Constitution (1993, amendments 2020) and Klimovich (2024) on Russian centre–regional centralisation.
 - Content approval: PENDING. Verification: DEFERRED. No importer/database/device test is claimed.
