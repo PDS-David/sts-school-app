@@ -29,16 +29,12 @@ export default function ParentActivitiesScreen({ navigation }: any) {
   const [refreshing, setRefreshing] = useState(false);
   const [testsError, setTestsError] = useState(false);
   const [eventsError, setEventsError] = useState(false);
-  const [testsError, setTestsError] = useState(false);
-  const [eventsError, setEventsError] = useState(false);
 
   const load = useCallback(async () => {
     const [testsResult, eventsResult] = await Promise.allSettled([
       api.get('/learning/parent/upcoming-assessments'),
       api.get('/school-events'),
     ]);
-    setTestsError(testsResult.status === 'rejected');
-    setEventsError(eventsResult.status === 'rejected');
     setTestsError(testsResult.status === 'rejected');
     setEventsError(eventsResult.status === 'rejected');
     if (testsResult.status === 'fulfilled') setAssessments(testsResult.value.data.assessments ?? []);
