@@ -14,7 +14,21 @@ const state = z.object({
   implementation: z.enum(['DRAFT', 'IMPLEMENTED']),
   verification: z.enum(['DEFERRED', 'VERIFIED']),
   verification_reference: text.nullable(),
-}).strict();
+}).strict().superRefine((value, ctx) => {
+  if (value.content_approval === 'APPROVED' && !value.approval_reference?.trim()) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Approved content requires a real approval reference', path: ['approval_reference'] });
+  }
+  if (value.verification === 'VERIFIED' && !value.verification_reference?.trim()) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Verified content requires a verification reference', path: ['verification_reference'] });
+  }
+  if (value.verification === 'DEFERRED' && value.verification_reference !== null) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Deferred verification cannot claim a verification reference', path: ['verification_reference'] });
+  }
+  if (value.verification === 'VERIFIED' &&
+      (value.content_approval !== 'APPROVED' || value.implementation !== 'IMPLEMENTED')) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Verified content must also be approved and implemented' });
+  }
+});
 const provenance = z.object({
   source_id: z.string().regex(/^SS23-(?:SRC|EXT)-[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/),
   source_sha256: digest,
