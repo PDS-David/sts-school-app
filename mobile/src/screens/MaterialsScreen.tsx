@@ -10,7 +10,7 @@ import api from '../api/client';
 import { useAuth } from '../api/AuthContext';
 import { Card, Btn, Input, Loader, Empty, SectionHeader, Badge } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
-import { getMaterialDownloadTarget } from '../utils/materialDownload';
+import { getMaterialDownloadTarget, isSafeMaterialUrl } from '../utils/materialDownload';
 
 const TYPE_ICON: Record<string, string> = {
   pdf: 'document-text', video: 'videocam', doc: 'document', link: 'link',
@@ -52,7 +52,7 @@ export default function MaterialsScreen({ route }: any) {
   useEffect(() => { fetch(); }, [filterSub]);
 
   const handleOpen = async (url: string) => {
-    if (typeof url !== 'string' || !/^https:\/\//i.test(url)) {
+    if (!isSafeMaterialUrl(url)) {
       Alert.alert('Invalid material link', 'Only secure HTTPS links can be opened.');
       return;
     }
@@ -99,6 +99,7 @@ export default function MaterialsScreen({ route }: any) {
 
   const handleSave = async () => {
     if (!form.title || !form.url) { Alert.alert('Title and URL required'); return; }
+    if (!isSafeMaterialUrl(form.url)) { Alert.alert('Invalid URL', 'Material links must use a valid HTTPS address.'); return; }
     try {
       await api.post('/learning/materials', { ...form, subject_id: Number(form.subject_id) || null });
       setModal(false);
