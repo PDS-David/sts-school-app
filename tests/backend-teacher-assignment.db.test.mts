@@ -110,7 +110,6 @@ test('teacher creation rejects a subject from another school before creating the
       full_name: 'Cross School Teacher',
       role: 'teacher',
       school_code: 'primary',
-      assigned_class: 'Primary 1',
       assigned_subject_ids: [foreignSubjectId],
       initial_password: 'Bsec5-Strong-Password!',
     });
