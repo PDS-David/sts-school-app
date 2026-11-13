@@ -288,7 +288,7 @@ export async function retireStalePrimary4Cache(
   delivery: Primary4SourceDelivery,
 ) {
   const fingerprint = delivery.kind === 'matched' ? delivery.sourceHash : '__withheld__';
-  const tombstone = `${PRIMARY4_WITHDRAWN_ASSESSMENT_PREFIX}${delivery.topicId ?? topicId}`;
+  const tombstone = `${PRIMARY4_WITHDRAWN_ASSESSMENT_PREFIX}${String(delivery.topicId ?? topicId)}`;
   const clearSummary = delivery.kind === 'withheld' || delivery.source === 'archive-correction';
   const { rows } = await query(
     `WITH target AS MATERIALIZED (
