@@ -1,18 +1,218 @@
-import { readFileSync } from 'fs';
-import { fileURLToPath } from 'url';
-import path from 'path';
+import { createHash } from 'node:crypto';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+import type { PoolClient } from 'pg';
 import { pool } from './pool.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const SCHEMA_PATH = path.resolve(__dirname, '../../schema.sql');
+const MIGRATIONS_DIR = path.resolve(__dirname, '../../migrations');
+const LOCK_NAMESPACE = 1937001;
+const LOCK_ID = 3;
 
-export async function runMigrations() {
-  const schemaPath = path.resolve(__dirname, '../../schema.sql');
-  const sql = readFileSync(schemaPath, 'utf-8');
-  console.log('Running migrations…');
-  await pool.query(sql);
-  console.log('Migrations complete.');
-  await pool.end();
+type Mode = '--all' | '--fresh' | '--status';
+type Migration = { version: string; name: string; checksum: string; sql: string };
+type AppliedMigration = { version: string; name: string; checksum: string };
+
+function checksum(content: string): string {
+  return createHash('sha256').update(content).digest('hex');
 }
 
-// Allow direct execution: tsx src/db/migrate.ts
-runMigrations().catch(e => { console.error(e); process.exit(1); });
+function readMigrations(): Migration[] {
+  if (!existsSync(MIGRATIONS_DIR)) {
+    throw new Error(`Migrations directory is missing: ${MIGRATIONS_DIR}`);
+  }
+  const files = readdirSync(MIGRATIONS_DIR).filter(name => name.endsWith('.sql')).sort();
+  if (!files.length) throw new Error('No numbered migration files found.');
+
+  const migrations = files.map(name => {
+    if (!/^\d{4}_[a-z0-9_-]+\.sql$/i.test(name)) {
+      throw new Error(`Invalid migration filename "${name}". Use NNNN_lowercase-description.sql.`);
+    }
+    const sql = readFileSync(path.join(MIGRATIONS_DIR, name), 'utf8');
+    return {
+      version: name.slice(0, 4),
+      name,
+      checksum: checksum(sql),
+      sql,
+    };
+  });
+
+  const versions = new Set<string>();
+  for (const migration of migrations) {
+    if (versions.has(migration.version)) throw new Error(`Duplicate migration version ${migration.version}.`);
+    versions.add(migration.version);
+  }
+  return migrations;
+}
+
+async function ledgerExists(client: PoolClient): Promise<boolean> {
+  const { rows } = await client.query(
+    "SELECT to_regclass('public.schema_migrations') IS NOT NULL AS present",
+  );
+  return Boolean(rows[0]?.present);
+}
+
+async function ensureLedger(client: PoolClient): Promise<void> {
+  await client.query(`
+    CREATE TABLE IF NOT EXISTS public.schema_migrations (
+      version TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      checksum TEXT NOT NULL,
+      applied_at TIMESTAMPTZ NOT NULL DEFAULT now()
+    )
+  `);
+}
+
+async function getApplied(client: PoolClient): Promise<AppliedMigration[]> {
+  if (!(await ledgerExists(client))) return [];
+  const { rows } = await client.query(
+    'SELECT version, name, checksum FROM public.schema_migrations ORDER BY version',
+  );
+  return rows as AppliedMigration[];
+}
+
+async function assertNoUntrackedApplicationSchema(client: PoolClient): Promise<void> {
+  const { rows } = await client.query(`
+    SELECT table_name
+      FROM information_schema.tables
+     WHERE table_schema='public'
+       AND table_type='BASE TABLE'
+       AND table_name IN ('schools','users','students','classes','terms','scores')
+     LIMIT 1
+  `);
+  if (rows[0]) {
+    throw new Error(
+      'An application schema already exists without a migration baseline. Refusing to mark it migrated. ' +
+      'Use --fresh only for a clean installation, or complete the owner-approved OPS-05 drift review before adopting an existing database.',
+    );
+  }
+}
+
+async function acquireLock(client: PoolClient): Promise<void> {
+  await client.query('SELECT pg_advisory_lock($1, $2)', [LOCK_NAMESPACE, LOCK_ID]);
+}
+
+async function releaseLock(client: PoolClient): Promise<void> {
+  await client.query('SELECT pg_advisory_unlock($1, $2)', [LOCK_NAMESPACE, LOCK_ID]);
+}
+
+function assertAppliedChecksums(migrations: Migration[], applied: AppliedMigration[]): void {
+  const byVersion = new Map(migrations.map(m => [m.version, m]));
+  for (const row of applied) {
+    const source = byVersion.get(row.version);
+    if (!source) {
+      throw new Error(`Database has applied migration ${row.version} (${row.name}), but that file is missing from backend/migrations/.`);
+    }
+    if (source.name !== row.name || source.checksum !== row.checksum) {
+      throw new Error(
+        `Checksum/name mismatch for applied migration ${row.version}. Never edit an applied migration; restore the original file and add a new numbered migration.`,
+      );
+    }
+  }
+}
+
+async function applyAll(client: PoolClient, migrations: Migration[]): Promise<void> {
+  await ensureLedger(client);
+  const applied = await getApplied(client);
+
+  // A production database with a pre-existing schema must not be silently
+  // adopted as version 0001. OPS-05 owns drift evidence and explicit adoption.
+  if (!applied.length) await assertNoUntrackedApplicationSchema(client);
+  assertAppliedChecksums(migrations, applied);
+
+  const appliedVersions = new Set(applied.map(row => row.version));
+  for (const migration of migrations) {
+    if (appliedVersions.has(migration.version)) continue;
+
+    await client.query('BEGIN');
+    try {
+      if (migration.sql.trim()) await client.query(migration.sql);
+      await client.query(
+        'INSERT INTO public.schema_migrations(version,name,checksum) VALUES($1,$2,$3)',
+        [migration.version, migration.name, migration.checksum],
+      );
+      await client.query('COMMIT');
+      console.log(`Applied ${migration.version} ${migration.name}`);
+    } catch (error) {
+      await client.query('ROLLBACK');
+      throw new Error(`Migration ${migration.name} failed; transaction rolled back.`, { cause: error });
+    }
+  }
+}
+
+async function applyFresh(client: PoolClient, migrations: Migration[]): Promise<void> {
+  const baseline = migrations.find(m => m.version === '0001');
+  if (!baseline || baseline.name !== '0001_baseline.sql') {
+    throw new Error('Fresh install requires migrations/0001_baseline.sql.');
+  }
+
+  await ensureLedger(client);
+  const applied = await getApplied(client);
+  assertAppliedChecksums(migrations, applied);
+  if (applied.some(row => row.version !== '0001')) {
+    throw new Error('Refusing --fresh after incremental migrations have been applied. Use --all.');
+  }
+
+  const schema = readFileSync(SCHEMA_PATH, 'utf8');
+  console.log('Applying complete schema.sql for a fresh installation…');
+  await client.query(schema);
+
+  if (!applied.some(row => row.version === '0001')) {
+    await client.query(
+      'INSERT INTO public.schema_migrations(version,name,checksum) VALUES($1,$2,$3)',
+      [baseline.version, baseline.name, baseline.checksum],
+    );
+  }
+  console.log('Fresh schema applied and baseline migration stamped.');
+}
+
+async function printStatus(client: PoolClient, migrations: Migration[]): Promise<void> {
+  const exists = await ledgerExists(client);
+  const applied = exists ? await getApplied(client) : [];
+  assertAppliedChecksums(migrations, applied);
+  const appliedVersions = new Set(applied.map(row => row.version));
+
+  console.log(exists ? 'Migration ledger:' : 'Migration ledger does not exist (read-only status).');
+  for (const migration of migrations) {
+    console.log(`${appliedVersions.has(migration.version) ? '[applied]' : '[pending]'} ${migration.version} ${migration.name}`);
+  }
+  if (!exists) {
+    console.log('Use --fresh for a clean installation. Existing databases require OPS-05 drift review before baseline adoption.');
+  }
+}
+
+export async function runMigrations(mode: Mode = '--all'): Promise<void> {
+  if (!['--all', '--fresh', '--status'].includes(mode)) {
+    throw new Error('Usage: migrate.ts [--all|--fresh|--status]');
+  }
+  const migrations = readMigrations();
+  const client = await pool.connect();
+  let locked = false;
+  try {
+    if (mode === '--status') {
+      await printStatus(client, migrations);
+      return;
+    }
+
+    await acquireLock(client);
+    locked = true;
+    if (mode === '--fresh') await applyFresh(client, migrations);
+    else await applyAll(client, migrations);
+  } finally {
+    if (locked) await releaseLock(client);
+    client.release();
+  }
+}
+
+const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (isMain) {
+  const mode = (process.argv[2] ?? '--all') as Mode;
+  runMigrations(mode)
+    .catch(error => {
+      console.error(error instanceof Error ? error.message : 'Migration failed.');
+      process.exitCode = 1;
+    })
+    .finally(() => pool.end());
+}
