@@ -165,7 +165,7 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
     parent_name:      z.string().optional(),
     parent_phone: z.string().optional().refine((value) => {
       if (!value?.trim()) return true;
-      const digits = value.replace(/\\D/g, '');
+      const digits = value.replace(/\D/g, '');
       return digits.length >= 10 && digits.length <= 15;
     }, { message: 'Parent phone must contain between 10 and 15 digits' }),
     parent_email:     z.string().optional(),
