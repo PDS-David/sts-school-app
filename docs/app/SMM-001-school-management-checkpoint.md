@@ -45,6 +45,7 @@ Worker branch: agent/school-management-feature-completion-20261113
 - `c8af650ff83ecc547eb3be6db90c9c2cf2bb25c1` — preserve cached announcements and expose refresh error state.
 - `c8112748cb277121e478dfe2c8b8271eb3c1f6c3` and `322dd8cf9a417b8c6cfd701b246e609861a8a3a5` — distinguish announcement load errors from an empty feed.
 - `9c5946a6e605ce368fe80e3efac55340f3381cd3` and `2a456cee1d121748f880e2efcff55bba8cdbdbed` — keep previously loaded notices visible while showing refresh warnings.
+- `45ae7351c2742e4b4d43efeb3d878a98a8c146b7` — clear cached announcements when the authenticated role/school/class scope changes.
 
 ## Tests
 - No automated tests/typecheck run: this session has GitHub repository write/read access but no local checkout or command execution environment for this repository.
