@@ -309,6 +309,8 @@ Colonial rule brought constitutional, administrative, educational, transport and
 - Package lesson: `SUP-SS1-GOVERNMENT-T2-W02-CORRECTED`.
 - Body SHA-256 (UTF-8): `c6568aa5796f191fbb17528ed035826ca045f6a93b4a4030e7d88fed3530f598`.
 - Correction record: `CORR-GOV-T2-W02-ROW-REPLACEMENT`; exact compiler-parsed original row is bound to `SS1-SRC-c76f430c7cf8:BODY:8d08df9bf392097c3b9501f9e94abd0fd0301ddda3a6c0a44dc03309eb4b5292` with body hash `8d08df9bf392097c3b9501f9e94abd0fd0301ddda3a6c0a44dc03309eb4b5292`.
+- Government package regression suite: **38 passed, 0 failed** on commit `0b9ea4804dc7a20f5cfecf087a785976f3e189bc`.
+- All-subject plan-only compile: **passed**, with 1,144 compiled rows, 1,144 identified rows and 840 dispositions. The plan is **not ready for delivery**: 171 unapproved assets, 905 incomplete-coverage blockers, 91 lessons awaiting approval, 3 sources without parsed lessons, 516 open items, 13 pending packages and 14 sources without coverage remain.
 - Content approval: PENDING.
 - Independent verification: DEFERRED.
 - Database import, student-facing API, frontend/device and teacher-acceptance tests have not been performed.
