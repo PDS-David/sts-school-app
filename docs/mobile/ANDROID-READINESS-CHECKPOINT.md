@@ -57,12 +57,17 @@
 - Announcements are in-app feeds and the backend explicitly does not push them. Push provider delivery to a real device is not verified.
 - Existing GET cache has a per-user 500-entry cap and write invalidation. Cache freshness remains best-effort; no explicit max-age policy was added.
 
+## Follow-up typecheck fixes
+
+- First follow-up CI rerun confirmed the `flushPromise` TS2454 issue was resolved, but exposed a second mobile TypeScript error in the newer `NotificationsScreen.tsx`: the screen passed an unsupported `size="sm"` prop to the shared `Btn` component.
+- Updated the retry button to use the component's supported `style` prop for compact padding. This is included in PR #792; CI for the latest head must confirm the complete typecheck and Android export.
+
 ## Verification and limitations
 
 - Static source inspection and branch comparison completed.
 - The post-merge Android workflow run [43452520723](https://github.com/PDS-David/sts-school-app/actions/runs/43452520723) executed all 17 offline outbox regression tests successfully (17 passed, 0 failed).
 - The same run failed mobile TypeScript validation at `mobile/src/api/client.ts(349,50)` with TS2454 (`flushPromise` used before assignment); Android bundle export and artifact upload were skipped.
-- PR #792 moves in-flight promise cleanup outside the promise initializer while preserving per-account deduplication. A fresh CI run for this follow-up is still pending verification.
+- PR #792 moves in-flight promise cleanup outside the promise initializer while preserving per-account deduplication. A fresh CI run for the latest PR #792 head (including the NotificationsScreen button-prop fix) is still pending verification.
 - A local checkout was attempted earlier, but the environment could not resolve github.com. No local Expo export, emulator or device test was run.
 - No EAS APK/AAB build was produced. Release credentials/availability were not verified.
 - No physical-device verification is claimed.
