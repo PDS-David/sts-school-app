@@ -86,6 +86,19 @@
       "observed_subject": "SUBJECT:  GEOGRAPHY\t\t\t\t\t\t\t        CLASS:  SS1",
       "canonical_subject": "Geography",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-1c1c1bdcecb4-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "source_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c",
+      "anchor": "Revision.",
+      "kind": "SCHEME_ONLY",
+      "match_mode": "WHOLE_LINE",
+      "evidence": {
+        "locator": "getBody line 37, scheme row 11, inside scheme block lines 23-37 (SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032)",
+        "explanation": "The unique Revision. row is in the scheme and has no WEEK ELEVEN body. Classify this scheme row only; do not split a week or remove any teaching text."
+      }
     }
   ],
   "lessons": [],
@@ -229,6 +242,248 @@
         {
           "locator": "line 89 SHA-256 677357216f782842f3ec7807bf473aa4c294e07a5a868f4baf4a64538f5d82fd",
           "explanation": "Theory item 2 'State two importance of geography' is answerable from lines 59-65 and accepts any two of the seven; the source does not say so, and no marks are given. Bounded follow-up GEO-LES-T1-W01-KEYED-PRACTICE is appended; no answer is fabricated here."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T1-IDENTITY",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "objective": "Source identity: SS1 First Term Geography e-learning note and its subject/class heading.",
+      "objective_locator": "getBody lines 18-19; combined block SHA-256 b4bda78d8bcc62f32bf49f1faf55a1b47a57fd530b8401d064053c266ec74372; subject/class line 19 equals registered header_text and occurs once.",
+      "status": "SUPPORTED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "getBody lines 18-19; SHA-256 b4bda78d8bcc62f32bf49f1faf55a1b47a57fd530b8401d064053c266ec74372",
+          "explanation": "Line 18 is FIRST TERM E-LEARNING NOTE. Line 19 is the unique registered Geography/SS1 subject-class header. This records source identity only, not a teaching objective."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T1-SCHEME-1",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "objective": "First Term Geography scheme row 1: Introduction to Geography: Meaning, Nature, Scope and Value of Geography.",
+      "objective_locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 1 at line(s) 24; mapped by sequence to WEEK ONE body lines 43-89, SHA-256 52f0cbe7b5b1c8c618b747159993961a1d1c96e2c2f6560a88ac156192e11aa5",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-1c1c1bdcecb4:BODY:52f0cbe7b5b1c8c618b747159993961a1d1c96e2c2f6560a88ac156192e11aa5"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 1, line(s) 24",
+          "explanation": "The scheme row is a planned topic, not proof of instruction. The first three rows omit their numerals; row-to-body binding follows the ordered scheme and the explicit WEEK labels."
+        },
+        {
+          "locator": "WEEK ONE body lines 43-89, SHA-256 52f0cbe7b5b1c8c618b747159993961a1d1c96e2c2f6560a88ac156192e11aa5",
+          "explanation": "Meaning, Scope and Value are covered by existing objective-level records; Nature is not taught. The week body is identified here; its detailed objective coverage is not asserted by this preamble task."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T1-SCHEME-2",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "objective": "First Term Geography scheme row 2: The Solar System: The Universe, The Planets, The Earth.",
+      "objective_locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 2 at line(s) 25; mapped by sequence to WEEK TWO body lines 92-180, SHA-256 2a30150d4cb0d3991540598cfe3ee7437dbd35a2f7692b041e10cb4911e98603",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-1c1c1bdcecb4:BODY:2a30150d4cb0d3991540598cfe3ee7437dbd35a2f7692b041e10cb4911e98603"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 2, line(s) 25",
+          "explanation": "The scheme row is a planned topic, not proof of instruction. The first three rows omit their numerals; row-to-body binding follows the ordered scheme and the explicit WEEK labels."
+        },
+        {
+          "locator": "WEEK TWO body lines 92-180, SHA-256 2a30150d4cb0d3991540598cfe3ee7437dbd35a2f7692b041e10cb4911e98603",
+          "explanation": "Week Two objective-level indexing remains pending. The week body is identified here; its detailed objective coverage is not asserted by this preamble task."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T1-SCHEME-3",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "objective": "First Term Geography scheme row 3: The Earth as a Planet; Shape and Size of the Earth, Proof of the Earth’s Sphericity. The Movement of the Earth: Rotation & Revolution.",
+      "objective_locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 3 at line(s) 26-27; mapped by sequence to WEEK THREE body lines 183-268, SHA-256 5bbc2357e24a5ef6139bc99bc1351c119dc4f7188345e35c5f12bf001a452d25",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-1c1c1bdcecb4:BODY:5bbc2357e24a5ef6139bc99bc1351c119dc4f7188345e35c5f12bf001a452d25"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 3, line(s) 26-27",
+          "explanation": "The scheme row is a planned topic, not proof of instruction. The first three rows omit their numerals; row-to-body binding follows the ordered scheme and the explicit WEEK labels."
+        },
+        {
+          "locator": "WEEK THREE body lines 183-268, SHA-256 5bbc2357e24a5ef6139bc99bc1351c119dc4f7188345e35c5f12bf001a452d25",
+          "explanation": "Week Three objective-level indexing remains pending. The week body is identified here; its detailed objective coverage is not asserted by this preamble task."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T1-SCHEME-4",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "objective": "First Term Geography scheme row 4: Latitude and Longitude: Definition, Uses, Similarities & Differences, Great and Small Circles.",
+      "objective_locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 4 at line(s) 28-29; mapped by sequence to WEEK FOUR body lines 271-349, SHA-256 f4dcfa072ca8e066e081d015463d1f147bd5f61fdd7c54d311c5284e0d44ea64",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-1c1c1bdcecb4:BODY:f4dcfa072ca8e066e081d015463d1f147bd5f61fdd7c54d311c5284e0d44ea64"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 4, line(s) 28-29",
+          "explanation": "The scheme row is a planned topic, not proof of instruction. The first three rows omit their numerals; row-to-body binding follows the ordered scheme and the explicit WEEK labels."
+        },
+        {
+          "locator": "WEEK FOUR body lines 271-349, SHA-256 f4dcfa072ca8e066e081d015463d1f147bd5f61fdd7c54d311c5284e0d44ea64",
+          "explanation": "Week Four objective-level indexing remains pending. The week body is identified here; its detailed objective coverage is not asserted by this preamble task."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T1-SCHEME-5",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "objective": "First Term Geography scheme row 5: Latitude and Longitude: Standard Time Zone, Calculation of Distances, Local Time, International Date Line (IDL).",
+      "objective_locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 5 at line(s) 30-31; mapped by sequence to WEEK FIVE body lines 352-413, SHA-256 aaf418295fc5be4a720a35f23d1a45efb9bed91b3319ee1a2ae3e56141dbde17",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-1c1c1bdcecb4:BODY:aaf418295fc5be4a720a35f23d1a45efb9bed91b3319ee1a2ae3e56141dbde17"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 5, line(s) 30-31",
+          "explanation": "The scheme row is a planned topic, not proof of instruction. The first three rows omit their numerals; row-to-body binding follows the ordered scheme and the explicit WEEK labels."
+        },
+        {
+          "locator": "WEEK FIVE body lines 352-413, SHA-256 aaf418295fc5be4a720a35f23d1a45efb9bed91b3319ee1a2ae3e56141dbde17",
+          "explanation": "Week Five objective-level indexing remains pending. The week body is identified here; its detailed objective coverage is not asserted by this preamble task."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T1-SCHEME-6",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "objective": "First Term Geography scheme row 6: The Structure of the Earth: The Outer Zone.",
+      "objective_locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 6 at line(s) 32; mapped by sequence to WEEK SIX body lines 416-492, SHA-256 3463c9b15cac38935748f50afe5be4eb28595f45901afa1bb3f0dea9a997ca70",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-1c1c1bdcecb4:BODY:3463c9b15cac38935748f50afe5be4eb28595f45901afa1bb3f0dea9a997ca70"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 6, line(s) 32",
+          "explanation": "The scheme row is a planned topic, not proof of instruction. The first three rows omit their numerals; row-to-body binding follows the ordered scheme and the explicit WEEK labels."
+        },
+        {
+          "locator": "WEEK SIX body lines 416-492, SHA-256 3463c9b15cac38935748f50afe5be4eb28595f45901afa1bb3f0dea9a997ca70",
+          "explanation": "Week Six objective-level indexing remains pending. The week body is identified here; its detailed objective coverage is not asserted by this preamble task."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T1-SCHEME-7",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "objective": "First Term Geography scheme row 7: The Structure of the Earth: The Interior Zone.",
+      "objective_locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 7 at line(s) 33; mapped by sequence to WEEK SEVEN body lines 495-537, SHA-256 b35a7a8bd9a2bd1c71d08933e7cba684d9865e12c69fa52a985ddc14e395aee7",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-1c1c1bdcecb4:BODY:b35a7a8bd9a2bd1c71d08933e7cba684d9865e12c69fa52a985ddc14e395aee7"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 7, line(s) 33",
+          "explanation": "The scheme row is a planned topic, not proof of instruction. The first three rows omit their numerals; row-to-body binding follows the ordered scheme and the explicit WEEK labels."
+        },
+        {
+          "locator": "WEEK SEVEN body lines 495-537, SHA-256 b35a7a8bd9a2bd1c71d08933e7cba684d9865e12c69fa52a985ddc14e395aee7",
+          "explanation": "Week Seven objective-level indexing remains pending. The week body is identified here; its detailed objective coverage is not asserted by this preamble task."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T1-SCHEME-8",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "objective": "First Term Geography scheme row 8: Rocks of the Earth: Types and Characteristics.",
+      "objective_locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 8 at line(s) 34; mapped by sequence to WEEK EIGHT body lines 540-604, SHA-256 d09e611390ae4688a763220f81b050507e313dc45735a92e9e39c53ef5df7e8f",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-1c1c1bdcecb4:BODY:d09e611390ae4688a763220f81b050507e313dc45735a92e9e39c53ef5df7e8f"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 8, line(s) 34",
+          "explanation": "The scheme row is a planned topic, not proof of instruction. The first three rows omit their numerals; row-to-body binding follows the ordered scheme and the explicit WEEK labels."
+        },
+        {
+          "locator": "WEEK EIGHT body lines 540-604, SHA-256 d09e611390ae4688a763220f81b050507e313dc45735a92e9e39c53ef5df7e8f",
+          "explanation": "Week Eight objective-level indexing remains pending. The week body is identified here; its detailed objective coverage is not asserted by this preamble task."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T1-SCHEME-9",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "objective": "First Term Geography scheme row 9: Basic Concept of Geographic Information System (GIS).",
+      "objective_locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 9 at line(s) 35; mapped by sequence to WEEK NINE body lines 607-636, SHA-256 ede7fe0e59c1fb969cb80844d5c87954546007346d762f4812110f37ff678b3e",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-1c1c1bdcecb4:BODY:ede7fe0e59c1fb969cb80844d5c87954546007346d762f4812110f37ff678b3e"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 9, line(s) 35",
+          "explanation": "The scheme row is a planned topic, not proof of instruction. The first three rows omit their numerals; row-to-body binding follows the ordered scheme and the explicit WEEK labels."
+        },
+        {
+          "locator": "WEEK NINE body lines 607-636, SHA-256 ede7fe0e59c1fb969cb80844d5c87954546007346d762f4812110f37ff678b3e",
+          "explanation": "Week Nine objective-level indexing remains pending. The week body is identified here; its detailed objective coverage is not asserted by this preamble task."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T1-SCHEME-10",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "objective": "First Term Geography scheme row 10: Major Land Form Features: Types of Land Forms, Mountain.",
+      "objective_locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 10 at line(s) 36; mapped by sequence to WEEK TEN body lines 639-707, SHA-256 5b6c935769ac6e9fee6360e672ac636c6d18beeaefaf0e38a27b5655e7724080",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-1c1c1bdcecb4:BODY:5b6c935769ac6e9fee6360e672ac636c6d18beeaefaf0e38a27b5655e7724080"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 10, line(s) 36",
+          "explanation": "The scheme row is a planned topic, not proof of instruction. The first three rows omit their numerals; row-to-body binding follows the ordered scheme and the explicit WEEK labels."
+        },
+        {
+          "locator": "WEEK TEN body lines 639-707, SHA-256 5b6c935769ac6e9fee6360e672ac636c6d18beeaefaf0e38a27b5655e7724080",
+          "explanation": "Week Ten objective-level indexing remains pending. The week body is identified here; its detailed objective coverage is not asserted by this preamble task."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T1-SCHEME-11-REVISION",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "objective": "Scheme-only row 11: Revision.",
+      "objective_locator": "scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032; row 11 line 37; no corresponding body row exists.",
+      "status": "MARKER",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 37 within scheme block lines 23-37, SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032",
+          "explanation": "The inventory found no WEEK ELEVEN body. This row is a scheme-only marker and is classified by the source rule added for this task; it must not create a teaching week."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T1-REFERENCE",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "objective": "Source reference list: Essential Geography for Senior Secondary Schools by O.A. Iwena.",
+      "objective_locator": "getBody lines 39-40; reference entry line 40 SHA-256 af634813ec13a3bece122248b9baf7c6ef8bea0f597f6ba596c323de4a9cb16a; reference block 39-40.",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "getBody lines 39-40; line 40 SHA-256 af634813ec13a3bece122248b9baf7c6ef8bea0f597f6ba596c323de4a9cb16a",
+          "explanation": "The school source lists the book, but the book was not supplied or checked. The page range in the Week One reading assignment remains unverified; this bibliographic pointer is not teaching content."
         }
       ]
     }
