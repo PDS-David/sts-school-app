@@ -2,7 +2,7 @@
 
 ## Task identity and status
 - Task ID: `FA-WK-T1-W02`
-- Status: `IMPLEMENTED_TESTING_DEFERRED`
+- Status: `IN_PROGRESS`
 - Subject: Financial Accounting, SS1, First Term
 - Topic: “TRANSACTIONS – MEANING AND CLASSIFICATION”
 - Content supplement is implemented; owner content approval remains PENDING and importer/compiler/runtime verification remains DEFERRED.
@@ -17,7 +17,7 @@
 
 ## Implemented student-facing material
 - Lesson ID: `SUP-SS1-FINANCIAL-ACCOUNTING-T1-W02-TRANSACTIONS`.
-- Body SHA-256: `6941e2fd0553aadec86c5df22c80ff46b09b39b35660dd6b576e8d2e5572e32d`.
+- Body SHA-256: `3be6f3eef661a24e2459e3a727d573cadfd18ae11325bdb81ddf9592a82f671e`.
 - Teaches transaction meaning, monetary quantification, cash transaction, credit transaction and a step-by-step classification test.
 - Explains that “cash” includes immediate payment by cheque, bank draft and postal order, not only notes and coins.
 - Distinguishes non-financial business events from recordable accounting transactions.
@@ -78,3 +78,8 @@
 
 ## Exact next action
 After PR integration, refresh the Financial Accounting package and queue from current master, check branch ownership again, then implement `FA-WK-T1-W03` from its registered source section.
+
+## CI integrity correction
+- The first PR integrity workflow detected that the manually stored `body_sha256` included a trailing newline not present in the actual serialized lesson body. The lesson text itself was not changed.
+- Recomputed the digest from the exact stored body bytes and updated `body_sha256` to `3be6f3eef661a24e2459e3a727d573cadfd18ae11325bdb81ddf9592a82f671e` in package commit `a4f8255a86b4252932fe55d089f141d0fd127cd6`.
+- Updated the queue task to IN_PROGRESS and its checkpoint reference in commit `37353e50cc8e6be7f4cece8afc7dfa518e4e41b2`. Do not mark this task implemented/testing-deferred again until the integrity and registered-subject compiler workflows rerun successfully.
