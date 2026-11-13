@@ -2,7 +2,7 @@
 
 Task ID: SMM-004
 Status: IMPLEMENTED — stacked behind current-master OPS-01 and calendar
-Base: `agent/calendar-rebased-20261113` (PR #740; depends on OPS-01 PR #737)
+PR base: `master` (this branch includes OPS-01 PR #737 and calendar PR #740 before achievements)
 Branch: `agent/student-achievements-rebased-20261113`
 
 ## Scope delivered
