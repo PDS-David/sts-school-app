@@ -66,7 +66,7 @@ Specific content findings:
 - No source text, source hash, source rule or original question was changed.
 - No answer to the source's questions was inserted into the original source.
 - Added `CHEM-LES-T1A-W01-SCIENCE-FOUNDATIONS` as a separate original lesson task to teach the corrected science-method and branch content with provenance and marked practice.
-- Added non-blocking factual open item `CHEM-T1A-W01-READING-REFERENCES` for exact book/edition/page verification.
+- Added follow-up factual task `CHEM-REF-T1A-W01-READING-REFERENCES` for exact book/edition/page verification; the task remains PENDING.
 - The source's reading references remain unverified; content approval and classroom verification remain pending/deferred.
 
 ## References consulted
