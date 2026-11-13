@@ -209,7 +209,7 @@ test('loads the SS2 Agricultural Science soil draft and keeps delivery blocked',
   assert.equal(pkg.class_name, 'SS 2');
   assert.equal(pkg.package_status, 'PENDING');
   assert.equal(pkg.units.length, 2);
-  assert.equal(pkg.sources[0].source_id, 'SS23-SRC-237dbcc77749');
+  assert.equal(pkg.sources[0].source_id, 'SS23-SRC-225f920d3751');
   assert.ok(pkg.open_items.length >= 5);
   assert.ok(pkg.open_items.every(item => item.blocks_delivery));
   assert.ok(pkg.units.every(unit => unit.state.content_approval === 'PENDING'));
