@@ -61,7 +61,8 @@
     "CIV-MARK-T2-REVEXAM (2026-11-13): scheme row at line73 is '12 & 13 Test & Examination'; final evaluation lines489–495 directs teacher to 'Treat Akwa Past Question Papers', 'Nos 1 -100', 'Best wishes.' No test/examination paper, past-question text or marking scheme is in source; Akwa papers not supplied. Scheme-only marker, not a WEEK12/13 lesson.",
     "2026-11-13 CIV-PRES-T2-LISTS: source-preservation audit completed from the user-attached archive. Archive/member hashes verified; 86 numbered paragraphs resolved through OOXML numbering definitions and recorded in CIV-PRES-T2-LISTS.md. No source wording or package content changed. Automated/runtime testing remains deferred.",
     "2026-11-13 CIV-FACT-T2-ELECTORAL-LAW: factual dependency audit completed. Used the hash-verified source DOCX and current enacted electoral statute (Electoral Act 2026, Act No.1) plus Constitution consolidated through Fifth Alteration (2023); separated exact source text from statutory assessment. No content corrections or lesson/package changes. Automated/runtime testing remains deferred.",
-    "2026-11-13 CIV-FACT-T2-CONSTITUTION: constitutional factual dependency audit completed against the 1999 Constitution consolidated through Fifth Alteration (2023); source wording kept distinct from legal findings and Sixth Alteration Bill treated as pending based on latest official status located. No content/package corrections or approvals. Automated/runtime testing remains deferred."
+    "2026-11-13 CIV-FACT-T2-CONSTITUTION: constitutional factual dependency audit completed against the 1999 Constitution consolidated through Fifth Alteration (2023); source wording kept distinct from legal findings and Sixth Alteration Bill treated as pending based on latest official status located. No content/package corrections or approvals. Automated/runtime testing remains deferred.",
+    "2026-11-13 CIV-FACT-T2-NEUTRALITY: neutrality disposition completed for party-name examples, partisan language, broad causal claims and contested constitutional evaluations. Exact source wording retained and attributed; no factual claims/counter-claims verified or added. Software/runtime testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -76,9 +77,9 @@
     "LESSON": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 41,
+    "IMPLEMENTED_TESTING_DEFERRED": 42,
     "BLOCKED": 1,
-    "PENDING": 13
+    "PENDING": 12
   },
   "items": [
     {
@@ -1499,8 +1500,8 @@
         "CIV-WK-T2-W07",
         "CIV-WK-T2-W10"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-13: Added CIV-FACT-T2-NEUTRALITY.md. Preserved exact source excerpts at L199, L279, L283, L287, L291 and L477–485; classified partisan examples, motive attributions, causal generalisations and constitutional criticisms as source viewpoint/contested evaluation. Recorded dated-primary-evidence requirements for any later factual treatment. No counter-claims, lesson/package/coverage/rule/correction/answer/asset edits or approval. Tests/importer/database/device checks not run; deferred.",
       "completion_condition": "Statements recorded with locators and a neutrality disposition; nothing rewritten; nothing marked approved."
     },
     {
@@ -2005,7 +2006,6 @@
     }
   },
   "next_runnable": [
-    "CIV-FACT-T2-NEUTRALITY",
     "CIV-LES-T1-W02-VALUES-TYPES",
     "CIV-WK-T3-W02-03",
     "CIV-WK-T3-W04-05",
