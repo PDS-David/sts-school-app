@@ -1471,7 +1471,33 @@
     }
   ],
   "delivery_corrections": [],
-  "assets": [],
+  "assets": [
+    {
+      "id": "YO-T1-W03-EDE-VOWEL-CHART-1",
+      "lesson_id": "SUP-SS1-YORUBA-T1-W03-EDE",
+      "path": "backend/src/db/ss1/assets/yoruba/yoruba-t1-w03-vowel-chart.svg",
+      "sha256": "4b0b993d378869e542a0ecf030d6263a647c1f581194492899e9e1bd77d5acdd",
+      "bytes": 3579,
+      "media_type": "image/svg+xml",
+      "alt": "Yoruba oral vowels arranged by tongue height and front/central/back position, with five nasal-vowel spellings and IPA below.",
+      "order": 1,
+      "source_locator": "SS1 Yoruba First Term Week 3, EDE — vowel chart; original accessible chart created to replace the damaged tab-positioned source chart.",
+      "provenance": {
+        "title": "Original project-authored Yoruba vowel chart",
+        "locator": "Original SVG authored for SUP-SS1-YORUBA-T1-W03-EDE; it is not copied from the source chart.",
+        "rights": "Original vector artwork created for this lesson; no third-party diagram is reproduced.",
+        "reuse_status": "PERMITTED",
+        "attribution": "Created for SS1 Yoruba by the project team."
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    }
+  ],
   "coverage": [
     {
       "id": "YO-T1-W01-SCHEME-EDE",
@@ -12020,7 +12046,7 @@
     {
       "id": "YORUBA-T1-W03-VOWEL-CHART-DELIVERY",
       "kind": "VISUAL",
-      "detail": "The source ATE FAWELI is a complex vowel chart with tab-positioned labels and paired Word connector objects. The EDE draft provides structured text tables for vowel classes but does not yet include a dedicated accessible visual chart asset.",
+      "detail": "The source ATE FAWELI is a complex vowel chart with tab-positioned labels and paired Word connector objects. The EDE draft provides structured text tables for vowel classes but does not yet include a dedicated accessible visual chart asset. An original accessible SVG chart has now been authored and registered as YO-T1-W03-EDE-VOWEL-CHART-1; it still requires SVG safety/hash/runtime delivery verification before this blocker can close.",
       "required_action": "Create and validate a structured accessible vowel chart asset, with tone/sub-dot-safe labels and a source locator, before claiming the chart objective fully delivered.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b",
