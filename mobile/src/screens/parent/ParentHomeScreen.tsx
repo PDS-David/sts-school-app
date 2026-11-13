@@ -22,7 +22,13 @@ export default function ParentHomeScreen({ navigation }: any) {
   const [refreshing, setRefreshing] = useState(false);
 
   const load = useCallback(async () => {
-    if (!selectedWardId) { setLoading(false); return; }
+    if (!selectedWardId) {
+      // Announcements are account-scoped, not ward-scoped. Refresh them even
+      // when no child is linked/selected so the dashboard's retry message works.
+      await refreshNotifications();
+      setLoading(false);
+      return;
+    }
     try {
       const { data } = await api.get(`/scores/report/${selectedWardId}`);
       setReport(data);
