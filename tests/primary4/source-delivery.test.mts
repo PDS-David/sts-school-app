@@ -37,14 +37,20 @@ test('source delivery does not match another class, school, subject, term, title
   for (const changed of [
     { subject_name: 'Basic Technology' }, { term_label: '2nd Term' },
     { title: 'Different title' }, { order_index: 2 },
-    { source_reference: outline + ' changed' },
   ]) {
     assert.equal(resolvePrimary4SourceDelivery({ ...baseTopic, ...changed })?.kind, 'withheld');
   }
 });
 
-test('safe topic projection removes drifted source, summary and generated assessment link', () => {
-  const safe = safePrimary4Topic({ ...baseTopic, source_reference: outline + ' changed', summary: 'stale lesson', generated_assessment_id: 91 });
+test('safe topic projection removes a drifted original export source, summary and assessment link', () => {
+  const record = manifest.records.find((item: any) => item.id === 300) as any;
+  const topic = {
+    id: record.id, school_code: 'primary', class_name: 'Primary 4',
+    subject_name: record.subject, term_label: record.term, order_index: record.order_index,
+    title: record.title, source_reference: 'changed original source body',
+    summary: 'stale lesson', generated_assessment_id: 91,
+  };
+  const safe = safePrimary4Topic(topic);
   assert.equal(safe.source_reference, null);
   assert.equal(safe.summary, null);
   assert.equal(safe.generated_assessment_id, null);
