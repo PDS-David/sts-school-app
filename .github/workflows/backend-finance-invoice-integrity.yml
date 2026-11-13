@@ -1,0 +1,51 @@
+name: Backend finance invoice integrity
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "backend/src/routes/finance.ts"
+      - "tests/backend-finance-invoice-integrity.integration.test.mts"
+      - ".github/workflows/backend-finance-invoice-integrity.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  finance-invoice-integrity:
+    name: PostgreSQL finance invoice integrity regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: sts_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d sts_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/sts_test
+      NODE_ENV: test
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install locked workspace dependencies
+        run: npm ci --ignore-scripts
+      - name: Bootstrap disposable PostgreSQL schema
+        run: npm run db:bootstrap --workspace=backend
+      - name: Run finance invoice integrity regressions
+        run: node --import tsx --test tests/backend-finance-invoice-integrity.integration.test.mts
+      - name: Typecheck backend
+        run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
