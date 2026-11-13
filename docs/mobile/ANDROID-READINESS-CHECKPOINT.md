@@ -1,0 +1,30 @@
+# Android/mobile readiness checkpoint
+
+- Task ID: MOB-ANDROID-001
+- Status: IN PROGRESS — first confirmed offline-sync defect fixed; broader acceptance audit remains open.
+- Branch: `agent/mobile-android-readiness-20261113`
+- Base: `master` at `982c1d2d94e9bfbbb890d027c620b8a16e7f3f26`
+- Latest implementation commit: `bd32033668340178622282003cdcf1d6df68147f`
+- Changed files:
+  - `mobile/src/api/client.ts`
+- Ownership check:
+  - No branch matching `offline` was found.
+  - Open mobile PR #685 changes only the student and parent home screens plus its checkpoint; this task's API client change does not overlap.
+  - Existing `mobile/add-expo-audio-dependency-2026-11-11` and `fix/mobile-svg-safety-regex-2026-11-11` branches do not indicate ownership of the API client.
+- Finding and fix:
+  - `flushOutbox()` replayed queued writes through the normal Axios response interceptor. If connectivity failed during replay, that interceptor enqueued a new copy and returned a synthetic 202 response; the flusher then removed the old entry. This could churn/duplicate queued writes and lose stable retry identity.
+  - Outbox replay now marks its request with an internal `_skipOfflineQueue` flag. The network-failure interceptor rejects marked replays rather than re-enqueueing them, so the existing flusher retains the original item for the next retry.
+- Verification:
+  - Static control-flow trace of `mobile/src/api/client.ts` and `mobile/src/offline/storage.ts`.
+  - No local checkout, package installation, TypeScript run, automated test, Expo export, EAS build, emulator, or physical-device execution was available through the repository connector in this session.
+  - No device verification is claimed.
+- Remaining acceptance work:
+  - Add/run a regression test proving replay network failure retains exactly one original outbox item.
+  - Audit auth/session restore and role navigation; offline namespace isolation and logout/switch-user behavior.
+  - Audit cache freshness, write queue authorization/idempotency and synchronization conflict handling.
+  - Audit assessments, learning resources, file viewing/downloads, notifications and permission enforcement.
+  - Verify network recovery, startup/crash handling and supported Android API/device compatibility.
+  - Verify production API target and staging/production config, dependency lock consistency, Android export and EAS release credentials/build.
+  - Obtain emulator/physical-device smoke evidence before claiming device readiness.
+- Exact next action:
+  - Inspect the repository's mobile test harness and CI workflow, add a focused regression test for the outbox replay bypass, then run the canonical mobile typecheck/test and Android export workflows before proceeding to the next independent readiness gap.
