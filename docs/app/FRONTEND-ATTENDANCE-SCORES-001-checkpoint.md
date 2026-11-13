@@ -32,5 +32,5 @@
 ## Remaining work
 - Check the Mobile TypeScript and package integrity workflow results.
 - Fix any genuine errors without weakening checks.
-- Revisit admin attendance school scoping: backend GET currently scopes attendance using the authenticated user's school, while admin selection is client-side. This requires a coordinated backend scope change and is intentionally not hidden by this UI-only patch.
+- Admin attendance read scoping has now been corrected: the UI sends selected school_code; backend requires it for admin reads, checks that the requested term belongs to that school, and filters the register by exact school_code.
 - Next action: wait for CI, inspect any failures, then update this checkpoint and PR evidence.
