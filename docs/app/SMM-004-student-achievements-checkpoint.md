@@ -28,10 +28,12 @@ Branch: `agent/student-achievements-20261113`
 - `9338fb715115f6e5b26e6036619c86c9558663d9` — achievements screen.
 - `ee68e9d9a0443242a6892f8c2f7a9abbc83a0d04` — profile link.
 - `4f15dfbbc434a933a8c57dce1aa13488b7c39e62` — navigator registration.
+- `cc5883df0faf7aad0bf318c601b83fae7e2a9f42` — move the route away from the assessment route insertion point to avoid PR overlap.
+- `61ed730d14992ad6269e625d0e85e3e4b7fe9675` — exclude unreviewed AI essays from score-based badges.
 
 ## Verification
 - Static review confirms the route requires student role, resolves student ID from the authenticated user, and returns only that student's aggregate achievements.
-- Score-based badges require `fully_graded=true`, avoiding provisional AI marks.
+- Score-based badges require `fully_graded=true` and also explicitly reject submissions with any `submission_answers.grading_status` of `ai_graded` or `ai_unavailable`; this guards against the documented stale `fully_graded` flag that can still be true while an essay awaits review.
 - No new schema was added intentionally: the existing `topic_completions`, `submissions`, and `assessments` records are the authoritative evidence, and computing badges avoids duplicate mutable state.
 - No automated tests, TypeScript build, or live DB test have been run because no local repository execution environment is available in this session.
 
