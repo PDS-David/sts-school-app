@@ -4,7 +4,7 @@ import { saveAttendanceBulk } from '../utils/attendanceWrites.js';
 import { requireAuth, requirePerm } from '../middleware/auth.js';
 import { hasPerm } from '../utils/rbac.js';
 import { audit } from '../utils/audit.js';
-import { checkTeacherStudentScope } from '../utils/scope.js';
+import { checkTeacherStudentScope, checkTermSchoolScope } from '../utils/scope.js';
 
 const router = Router();
 router.use(requireAuth);
@@ -146,9 +146,13 @@ router.get('/class-records/:student_id/:term_id', async (req, res) => {
     return res.status(403).json({ error: 'Access denied' });
   }
 
+  const parsedTermId = Number(term_id);
+  const termScopeError = await checkTermSchoolScope(student.school_code, parsedTermId);
+  if (termScopeError) return res.status(termScopeError.status).json({ error: termScopeError.error });
+
   const { rows } = await query(
     `SELECT * FROM class_records WHERE student_id=$1 AND term_id=$2`,
-    [student_id, term_id],
+    [student_id, parsedTermId],
   );
   return res.json({ class_record: rows[0] ?? null });
 });

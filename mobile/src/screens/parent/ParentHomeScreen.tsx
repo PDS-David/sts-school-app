@@ -5,7 +5,7 @@ import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
 import { useWards } from '../../api/WardContext';
 import { useNotifications } from '../../components/NotificationsContext';
-import { Card, Loader } from '../../components/UI';
+import { Card, Loader, Btn } from '../../components/UI';
 import { PageContainer, StatChipRow, StatChip } from '../../components/layout';
 import { Colors, Spacing, Fonts, Radius } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
@@ -19,20 +19,31 @@ export default function ParentHomeScreen({ navigation }: any) {
   const announcements = notifications.filter(n => n.kind === 'announcement').slice(0, 3);
   const [report, setReport] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [reportLoading, setReportLoading] = useState(false);
+  const [reportError, setReportError] = useState('');
   const [refreshing, setRefreshing] = useState(false);
 
   const load = useCallback(async () => {
     if (!selectedWardId) {
       // Announcements are account-scoped, not ward-scoped. Refresh them even
       // when no child is linked/selected so the dashboard's retry message works.
+      setReport(null);
+      setReportError('');
       await refreshNotifications();
       setLoading(false);
       return;
     }
+    setReportLoading(true);
+    setReportError('');
+    setReport(null);
     try {
       const { data } = await api.get(`/scores/report/${selectedWardId}`);
       setReport(data);
-    } catch { /* offline or not yet loaded */ }
+    } catch (e: any) {
+      setReportError(e?.response?.data?.error ?? 'Could not load this child’s report. Check your connection and retry.');
+    } finally {
+      setReportLoading(false);
+    }
     await refreshNotifications();
     setLoading(false);
   }, [selectedWardId, refreshNotifications]);
@@ -74,7 +85,14 @@ export default function ParentHomeScreen({ navigation }: any) {
         )}
 
         <Text style={styles.sectionLabel}>Child Summary</Text>
-        {report?.summary ? (
+        {reportError ? (
+          <Card style={{ marginHorizontal: Spacing.md }}>
+            <Text style={styles.hint}>{reportError}</Text>
+            <Btn label="Retry report" variant="outline" onPress={() => load()} style={{ marginTop: Spacing.sm }} />
+          </Card>
+        ) : reportLoading ? (
+          <Card style={{ marginHorizontal: Spacing.md }}><Text style={styles.hint}>Loading this child’s report…</Text></Card>
+        ) : report?.summary ? (
           <StatChipRow>
             <StatChip value={report.summary.average ?? '—'} label="Average" />
             <StatChip value={report.attendance?.days_present ?? '—'} label="Days Present" />
@@ -115,7 +133,6 @@ export default function ParentHomeScreen({ navigation }: any) {
         icon="add"
         actions={[
           { icon: 'chatbubble-outline', label: 'Message teacher', onPress: () => navigation.getParent()?.navigate('ChatsTab') },
-          { icon: 'alert-circle-outline', label: 'Report absence', onPress: () => navigation.getParent()?.navigate('ChatsTab') },
           { icon: 'document-text-outline', label: 'View report', onPress: () => navigation.getParent()?.navigate('ProgressTab') },
         ]}
       />
