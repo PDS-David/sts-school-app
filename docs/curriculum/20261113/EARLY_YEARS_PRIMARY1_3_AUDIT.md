@@ -1,0 +1,269 @@
+# Early Years and Primary 1–3 Curriculum / Delivery Audit
+
+**Audit date:** 2026-11-13  
+**Branch:** `curriculum/early-years-primary1-3-completion`  
+**Scope:** Pre-Nursery, Reception, Primary 1, Primary 2, Primary 3  
+**Status:** BASELINE AUDIT — NOT CURRICULUM-COMPLETE; source and owner gates remain open.
+
+## Executive finding
+
+The repository has class names and a reasonably defensive source-ingestion resolver for Pre-Nursery, Reception and Primary 1–3, but it does **not** contain the source archive, class-by-class curriculum export, or curriculum packages needed to verify and complete these five classes. The only curriculum source archive in the master tree is the SS1 archive. The only committed Primary-class export manifest is for Primary 4. The database itself was not accessible in this audit, so live topic rows, class registrations, learner records, assets and progress data have not been independently counted.
+
+A critical structural mismatch is already visible: the Primary school seed registers 11 subjects globally, while the current NERDC-approved Primary 1–3 offering is 9 compulsory subjects plus optional Arabic (9–10 total). The mobile Learning screen retrieves the whole-school subject list rather than a class-specific curriculum list. Consequently, the current interface can expose subjects that are not part of a learner's class curriculum and cannot show a reliable class-specific missing-subject state.
+
+No lesson content has been invented to fill the source gap. This report records verified structures, current implementation, mismatches, and the evidence required to complete the work safely.
+
+## 1. Repository structures discovered
+
+### Class and subject registration
+
+- `backend/src/db/seed.ts` defines the Primary classes in this order: Pre-Nursery, Reception, Nursery 1, Nursery 2, KG 1, KG 2, Primary 1–6.
+- The same file seeds one **school-wide** Primary subject list: English Language, Mathematics, Basic Science, Social Studies, Yoruba, CRS/IRS, Civic Education, Physical & Health Education, Cultural & Creative Arts, Computer Studies, Home Economics. There is no class-to-subject registration table in the inspected schema.
+- The seed script defines 1st, 2nd and 3rd Term records for 2026/2027, but no live database was queried; the script is not proof that these rows are currently installed.
+- `backend/src/db/addEarlyYearsClasses.ts` inserts Pre-Nursery and Reception into an existing database. It is idempotent, but it does not reposition pre-existing class rows.
+- `backend/src/db/ingestTopics.ts` has explicit class-name patterns for Pre-Nursery, Reception, Nursery 1/2, KG 1/2 and Primary 1–6. It checks a filename before parent folders, and separately flags filename/folder disagreements. It also checks cross-class byte-identical source documents.
+- `backend/src/db/primaryCurriculumResolutions.ts` contains exact-source exclusions, subject overrides and duplicate decisions for Primary source documents. These rules are preserved; no fuzzy class or subject rule was added.
+- `backend/src/db/primary4/sourceManifest.json` is a Primary 4 manifest only. No corresponding Early Years or Primary 1–3 source manifest exists in the master tree.
+- No Early Years or Primary 1–3 lesson package, asset manifest, class-specific coverage report or delivery test suite was found in the master tree.
+
+### Class-by-class baseline
+
+| Class | Repository class entry / resolver | Authoritative curriculum baseline | Repository evidence status |
+|---|---|---|---|
+| Pre-Nursery | Present in seed and explicit filename resolver | The NERDC one-year pre-primary curriculum is for children aged 5 and 5+; it does not establish a separate Pre-Nursery programme for a younger age band. | **UNRESOLVED** — age band, school framework and source documents absent |
+| Reception | Present in seed and explicit filename resolver | Provisionally aligns with the NERDC one-year pre-primary curriculum only if Reception is the school's age-5/5+ pre-primary year. Six developmental domains apply. | **PARTIAL** — official baseline found; local Reception source sequence and age confirmation absent |
+| Primary 1 | Present in seed and explicit filename resolver | NERDC/FME revised Primary 1–3 subject offering: 9 compulsory subjects plus optional Arabic; three-term school structure. | **PARTIAL** — subject baseline found; school term/topic sequence and source lessons absent |
+| Primary 2 | Present in seed and explicit filename resolver | Same Primary 1–3 curriculum band; implementation is phased from the beginning of the three-year cycle at Primary 1. | **PARTIAL** — cohort/version mapping for the 2026/27 session is not recorded; school term/topic sequence absent |
+| Primary 3 | Present in seed and explicit filename resolver | Same Primary 1–3 curriculum band, with the same phased-implementation issue. | **PARTIAL** — cohort/version mapping for the 2026/27 session is not recorded; school term/topic sequence absent |
+
+## 2. Authoritative Early Years curriculum baseline
+
+NERDC's **One Year Pre-Primary Education Curriculum and Teachers' Guide**, first published 2016, reprinted 2018 and reviewed 2024, explicitly targets children aged five and five-plus and describes a one-year pre-primary programme. It is play-based and organized around six interrelated developmental domains:
+
+1. Physical development
+2. Social and emotional development
+3. Cognitive development
+4. Language development
+5. Creative art
+6. National values and consciousness
+
+The curriculum provides developmental indicators, sample activities, sample teaching/learning resources and evaluation guidance. Its suggested approaches include play, rhymes, stories, songs, sensory and movement activities. It provides termly child-development checklists/report cards and says assessment at this level is observational and developmental, not grading or ranking children. The guide also includes observation notes, portfolios, anecdotal records, rating scales, running records/teacher notes and reflective diaries.
+
+**Reception mapping is provisional:** use this curriculum only if Reception is confirmed as the school's one-year pre-primary class for five-year-old/five-plus learners. It must not be copied wholesale into Pre-Nursery. The school has separately registered Pre-Nursery, but no age band or age-appropriate Pre-Nursery curriculum was found in the repository.
+
+Official source: NERDC, *One Year Pre-Primary Education Curriculum and Teachers' Guide* (reviewed 2024), https://ppec.nerdcportals.com.ng/pre_primary/web/ppec_tg.pdf
+
+## 3. Authoritative Primary 1–3 subject baseline
+
+NERDC's special notice on approved subject offerings, dated **8 September 2025**, identifies the following Primary 1–3 offering:
+
+| # | Approved subject | Registration rule |
+|---:|---|---|
+| 1 | English Studies | Compulsory |
+| 2 | Mathematics | Compulsory |
+| 3 | Nigerian Languages (Hausa, Igbo or Yoruba) | One language only |
+| 4 | Basic Science | Compulsory |
+| 5 | Physical & Health Education | Compulsory |
+| 6 | CRS or Islamic Studies | CRS for Christian pupils; Islamic Studies for Muslim pupils |
+| 7 | Nigerian History | Compulsory |
+| 8 | Social and Citizenship Studies | Compulsory |
+| 9 | Cultural & Creative Arts (CCA) | Compulsory |
+| 10 | Arabic Language | Optional |
+
+The notice specifies a minimum of nine and maximum of ten subjects. The Federal Ministry of Education's 3 September 2025 press release says the revised curriculum takes effect in the 2025/26 academic year and that Nigerian History is compulsory from Primary 1 to JSS 3. NERDC's notice says implementation begins at the start of each three-year education cycle, beginning at Primary 1. The repository does not store a curriculum-version/cohort field for each class; therefore the precise P2/P3 rollout assignment for the 2026/27 school session must be recorded before lessons are mapped to a version.
+
+Official sources:
+- NERDC, *Special Notice on the List of Approved Subjects/Offerings for the Newly Revised Basic and Senior Secondary Education Curriculum* (8 September 2025), https://nerdc.org.ng/ecurriculum/Doc/NERDC-approved-subjects-notice.pdf
+- Federal Ministry of Education, *Lighter Load, Stronger Minds: FG Overhauls Curriculum for a Smarter Generation* (3 September 2025), https://nerdc.gov.ng/content_manager/pdf_files/Press%20Release%20On%20New%20FG%20Curriculum.pdf
+- NERDC, Primary 1–3 curriculum document index, https://www.nerdc.gov.ng/content_manager/pri1-3.html
+
+### Seed-to-approved-subject mismatches
+
+The current `PRIMARY_SUBJECTS` array is not a class-specific registration. Compared with the 2025 approved Primary 1–3 offering:
+
+- `English Language` is named differently from `English Studies`.
+- `Social Studies` and `Civic Education` are separate seeded subjects; the new offering is the combined `Social and Citizenship Studies`.
+- `Nigerian History` is missing.
+- `Arabic Language` is not registered as an optional subject.
+- `CRS/IRS` is a combined seeded name, whereas the approved list specifies CRS **or** Islamic Studies for the respective pupils.
+- `Computer Studies` and `Home Economics` appear in the seed but are not separate Primary 1–3 offerings in the 2025 notice.
+- `Yoruba` is present, but the curriculum permits one of Hausa, Igbo or Yoruba; the school-level language choice should be explicit rather than assuming every learner studies multiple Nigerian languages.
+
+Do not delete or globally rename existing subject rows as a shortcut: Primary 4–6, historic scores, topic references and other agents' work may depend on them. A versioned, class-specific curriculum-to-subject mapping is needed before data migration.
+
+## 4. Known Primary source-resolution decisions
+
+The following exact-name rules already exist and must be preserved:
+
+- `PRY 1 PHE 3RD TERM.doc` is excluded because its content duplicates the correctly named Primary 1 ICT third-term source.
+- `PRY 2 PHE 3RD TERM.docx` and `PRY 2 PHE 3RD TERM_1.docx` are excluded as byte-identical misplaced copies of the retained Primary 1 PHE second-term source; the available evidence does not support assigning them to Primary 2 third term.
+- `PRY 3 HOME ECONS 2ND TERM.docx` is excluded because it is the Primary 4 Home Economics source, not a Primary 3 source.
+- `PRY 3 AGRIC SCIENCE 3RD TERM.docx` and `PRY 4 AGRIC 3RD TERM.docx` are an acknowledged byte-identical cross-class pair retained in both classes by an existing owner decision.
+- The Primary 1 PHE second-term source uses Lesson 1–4 headings; an exact-source transformation maps those to four named week entries.
+- Exact topic overrides exist for Primary 1 Mathematics third term and Primary 3 Computer Studies third term. They are source-specific, not general parser heuristics.
+
+These are code-level decisions, not a fresh rehash of the original Word files. The source documents and original Primary 1–3 archive were not found in the repository or current Library files, so the source hashes and lesson bodies could not be independently revalidated in this audit.
+
+## 5. Student application delivery and progress
+
+### Verified code path
+
+- `mobile/src/screens/student/StudentLearningScreen.tsx` requests `GET /academic/subjects` and displays every returned school subject as a student tile. It does not send or resolve the learner's class when building this list.
+- `backend/src/routes/academic.ts` returns all subjects for the learner's school; there is no class/subject join in the inspected schema.
+- `mobile/src/screens/SubjectTopicsScreen.tsx` requests `GET /learning/topics?subject_id=...`. The backend `GET /learning/topics` resolves student/parent class visibility on the server and filters topics to those classes (plus class-neutral rows).
+- Ordered topics are grouped by subject, class and term; a term PIN unlocks the first item and each later item depends on passing the preceding item. `POST /learning/topics/:id/complete` rechecks class access and the same sequence lock before completing a topic.
+- Topic completion is recorded in `topic_completions`; assessments and submissions use the existing general assessment path.
+- The SS1 package delivery system is explicitly class/subject package-gated; it is not a Primary or Early Years delivery mechanism.
+
+### Delivery gaps
+
+1. **Class-specific subject navigation is missing.** The student sees the same school-wide Primary subject list regardless of whether they are in Pre-Nursery, Reception, Primary 1, 2 or 3. A class-specific registration layer is required.
+2. **Early Years delivery is not development-domain based.** No Reception/Pre-Nursery checklist, observation, portfolio or termly developmental report-card interface was found. A generic topic completion or numeric assessment is not a substitute for the NERDC pre-primary developmental assessment.
+3. **Primary 1–3 topic completeness cannot be counted.** There is no class-specific Primary 1–3 source export/manifest in the repository and no live DB connection was available to count topics by class, subject and term.
+4. **Teacher/parent support is not evidenced for Early Years.** Existing parent progress and teacher tools were not verified against a child-development checklist or portfolio workflow.
+5. **Assets are unverified.** No Early Years/Primary 1–3 asset manifest or dedicated asset directory was found; image/audio/video availability and appropriateness were not tested.
+6. **Actual device delivery is unverified.** Screens were inspected statically; no test account, live API, emulator or physical device was available. Do not claim the lessons were opened successfully by a learner.
+7. **Incomplete activity handling is only generic.** Topic completion and assessment submission exist, but there is no Early Years observation state or developmental-domain progress state.
+
+## 6. Class-resolution and promotion-order risk
+
+The source importer has useful safeguards: filename-first resolution avoids a known Pre-Nursery/Reception shared-folder misclassification; folder-vs-filename disagreement is separately blocked; byte-identical cross-class files are detected unless explicitly acknowledged.
+
+A separate application risk needs an owner decision before changing class progression:
+
+- `seed.ts` lists classes in the order Pre-Nursery → Reception → Nursery 1 → Nursery 2 → KG 1 → KG 2 → Primary 1… .
+- `addEarlyYearsClasses.ts` appends Pre-Nursery and Reception to an already-seeded database; it does not reorder the `classes.id` values.
+- The student promotion/demotion route selects class names with `ORDER BY id ASC` and moves to the adjacent row. Thus fresh and previously seeded databases can have different promotion sequences. An existing database receiving the two new classes late may put them after Primary 6. The intended progression order must be confirmed and then encoded explicitly; relying on insertion IDs is not safe.
+
+**Owner decision required:** confirm the full progression order of Pre-Nursery, Nursery 1, Nursery 2, Reception, KG 1, KG 2 and Primary 1 (or provide the school's actual order). No promotion-order code was changed pending that decision.
+
+## 7. Automated checks added in this batch
+
+A focused regression test file covers:
+- class inference for Pre-Nursery, Reception, Nursery 1/2, KG 1/2 and Primary 1–3 filename aliases;
+- shared Pre-Nursery/Reception folders;
+- class-folder mismatch detection;
+- existing Primary source exclusions and the acknowledged Primary 3/4 Agricultural Science duplicate.
+
+**Execution status:** tests have been authored but not run in this environment. No database, API, mobile, emulator or device test was run. CI status has not been checked.
+
+## 8. Evidence still required to complete the assignment
+
+- Original Pre-Nursery, Reception and Primary 1–3 source archive(s), including any schemes of work and teacher notes; verify member hashes and inspect source layouts.
+- School-confirmed age bands and learning-area framework for Pre-Nursery; confirmation that Reception maps to the age-five/5+ NERDC one-year pre-primary curriculum.
+- School-confirmed curriculum rollout/version for Primary 1, Primary 2 and Primary 3 in the 2026/27 session.
+- School's selected Nigerian language and CRS/Islamic Studies rule; confirmation whether Arabic is offered.
+- Read-only export of live classes, subjects, topics, materials, assessments, assets, student class mappings and progress rows for the five classes. No live database credentials or export were present in this audit.
+- Confirmed early-years progression order.
+- Test users/parent/teacher roles and a test environment for student, teacher and parent delivery journeys.
+
+Until these are available, the five classes remain **INCOMPLETE**. This audit deliberately does not equate the existence of class rows or generic subjects with curriculum completion.
+
+
+## 9. Follow-up verification: revised Primary 1–3 curriculum structure
+
+A second check of NERDC's live curriculum portals exposes an important classification issue that must be resolved before changing subject registration:
+
+- NERDC's **New Curriculum Subjects** page for Basic Education (Primary 1–3) lists a minimum of 6 and maximum of 7 subject groups: English Studies, Mathematics, Nigerian Languages, Basic Science and Technology (BST), Religion and National Values (RNV), Cultural & Creative Arts (CCA), and optional Arabic Language. The RNV description says Social Studies, Civic Education and Security Education are themes within that curriculum, and CRS and Islamic Studies themes should be taught in separate classes.
+- The Federal Ministry of Education's 3 September 2025 press release describes the Primary 1–3 load as 9–10 subjects and states that Nigerian History is compulsory from Primary 1 to JSS 3.
+- NERDC's revised curriculum landing page links to separate revised Primary 1, Primary 2 and Primary 3 curriculum documents. Its legacy Primary 1–3 curriculum index and subject listing still expose older subject names and groupings.
+
+These sources are not safely reconciled by simply treating every theme as a separate subject, nor by counting only the portal's top-level groups. The earlier table in Section 3 is therefore a **provisional policy-level subject inventory**, not a verified class registration manifest. Before implementation, map each Primary 1, 2 and 3 class against its actual revised grade-level curriculum document and record whether the school is implementing the new grouping or a transitional approved offering. Preserve legacy subject rows and historic scores while making that mapping explicit.
+
+Official references checked 13 November 2026:
+- NERDC, New Curriculum Subjects (Primary 1–3): https://nerdc.org.ng/CurriculumStructure.aspx
+- NERDC, New Revised Basic Education Curriculum (separate Primary 1, 2 and 3 links): https://www.nerdc.gov.ng/content_manager/new_curriculum_home.html
+- Federal Ministry of Education, press release (3 September 2025): https://nerdc.gov.ng/content_manager/pdf_files/Press%20Release%20On%20New%20FG%20Curriculum.pdf
+- NERDC, legacy Primary 1–3 curriculum index: https://www.nerdc.gov.ng/content_manager/pri1-3.html
+
+The revised grade-level document links were reachable from the official NERDC page but the document host returned HTTP 403 to this audit client. The full grade-level PDFs must therefore be supplied or made accessible before a source-by-source term/topic crosswalk can be claimed.
+
+## 10. Current execution boundary
+
+The existing branch remains one commit ahead of, and zero commits behind, `master` at the time of this follow-up check. This follow-up changes the audit evidence only; it does not change class-resolution, promotion, subject seeding, student delivery, or production data. No curriculum content or delivery status is marked complete without the missing source and runtime evidence.
+
+
+## 11. Newly verified official source: Primary 1 Cultural and Creative Arts
+
+A source-level inspection after the initial audit found an indexed, readable copy of the official **New Revised Basic Education Curriculum: Cultural and Creative Arts for Primary 1**, published by NERDC in September 2025:
+
+https://lmis.nerdcportals.com.ng/pry_1/web/12.pdf
+
+The PDF is 16 topic entries long in its Primary 1 contents overview. It explicitly includes the curriculum fields needed for later authoring: learning outcomes, focal competencies, performance objectives, knowledge/skills, learning activities, teaching/learning resources and evaluation guides. It describes a thematic, spiral, activity-driven, learner-centred approach. This is a genuine official source document, not a school-authored lesson package.
+
+### Extracted Primary 1 CCA topic inventory
+
+| Theme | Topic |
+|---|---|
+| Arts and Crafts | Arts |
+| Arts and Crafts | Scribbling and Drawing |
+| Arts and Crafts | Letters and Numbers |
+| Arts and Crafts | Colours |
+| Arts and Crafts | Crafts |
+| Arts and Crafts | Decorative Artwork |
+| Arts and Crafts | Paper Crafts |
+| Arts and Crafts | Lines |
+| Arts and Crafts | Shapes and Texture |
+| Arts and Crafts | Art Materials and Tools |
+| Culture and Tradition | Culture |
+| Culture and Tradition | Ceremonies in Nigeria |
+| Culture and Tradition | Body Beautification |
+| Performing Arts and Entertainment | Cultural Rhymes |
+| Performing Arts and Entertainment | Folktales |
+| Performing Arts and Entertainment | Songs |
+
+### Delivery and assessment evidence in the source
+
+Examples of curriculum-aligned activity/resource/evaluation patterns include:
+
+- Scribbling and drawing: pencil grip, free scribbles, tracing straight/curved/zig-zag lines; pencils, crayons, drawing books and tracing sheets; evaluate the pupil's ability to scribble, draw and reproduce lines.
+- Letters and numbers: trace and draw A–Z and numbers 1–20; use traceable letters/numbers, posters, flashcards and writing books; evaluate letter recognition, case recognition and tracing.
+- Colours: identify primary/secondary colours, colour simple objects and make hand/finger-print patterns; use colour cards, paper, crayons and a colour wheel; evaluate identification, drawing/colouring and pattern-making.
+- Paper crafts: make simple 2-D and 3-D forms; use paper, child-safe scissors and non-toxic adhesive; evaluate material identification, safe cutting and assembly.
+- Shapes and texture: identify and draw simple shapes, compare smooth/rough surfaces and create patterns; use shape cut-outs, paper, pencils and safe tactile samples.
+- Culture and ceremonies: identify cultural elements and Nigerian ceremonies, discuss and observe examples; use culturally varied artefacts, attire, songs and audio-visual material; evaluate pupils' ability to describe and give examples respectfully.
+- Cultural rhymes, folktales and songs: listen, recite/sing, use movement and identify simple lessons; use rhymes, stories and audio-visual equipment; evaluate participation, recall, expression and understanding.
+
+The source includes a specific safety cue for paper craft: use safety scissors for children and non-toxic adhesives. These are authoring requirements if this source is converted into interactive child activities.
+
+### Limits of this evidence
+
+- The document is Primary 1 CCA only. It does not establish completeness for any other subject or class.
+- The contents overview does not allocate these 16 topics to the school's 1st, 2nd and 3rd terms. No term split has been invented.
+- The PDF was inspected through its indexed official source; this is not evidence that the app currently serves it, that any asset URL loads in the app, or that a learner can complete/submit its activities.
+- The PDF's presence does not replace the school's original source archive, local lesson notes, or the live database export.
+
+This source corrects the earlier blanket statement that no revised Primary 1–3 curriculum document could be inspected: at least this Primary 1 subject PDF is readable. The separate class curriculum landing page still returned access errors for Primary 1–3 directory navigation, so the remaining subject documents require individual discovery and inspection.
+
+## 12. Current evidence status after the source discovery
+
+| Class | New evidence in this pass | Completion status |
+|---|---|---|
+| Pre-Nursery | No age-specific official/local programme located | INCOMPLETE |
+| Reception | NERDC one-year pre-primary baseline, conditional on age/class mapping | INCOMPLETE |
+| Primary 1 | Official CCA curriculum topic inventory inspected; other subjects and term mapping still outstanding | INCOMPLETE |
+| Primary 2 | No new subject-level PDF inspected in this pass | INCOMPLETE |
+| Primary 3 | No new subject-level PDF inspected in this pass | INCOMPLETE |
+
+No app code, database rows, source importer, or production data was changed by this evidence update.
+
+
+## 13. Additional official-source reconciliation (13 November 2026)
+
+A second pass across NERDC's public curriculum portals confirms that the curriculum evidence must distinguish **subject groups**, **individual subject offerings**, and **class-specific revised documents**:
+
+- NERDC's current revised BEC landing page links separately to Primary 1, Primary 2 and Primary 3 curriculum collections. The links resolve to the official LMIS host, but the Primary 1 and Primary 2 collection roots returned HTTP 403 in this audit environment and the Primary 3 root returned HTTP 404. This is an access limitation, not proof that the documents do not exist.
+- NERDC's older Primary 1–3 curriculum index lists combined/legacy curriculum PDFs (including Basic Science and Technology, CCA, English Studies, Mathematics, National Values and Pre-Vocational Studies). It is useful as a legacy source index, but must not be mistaken for the September 2025 class-specific revised curriculum.
+- NERDC's e-Curriculum structure pages describe Primary 1–3 as six compulsory subject groups with a seventh optional Arabic group. The separate September 2025 NERDC approved-subject notice and Federal Ministry press release describe nine compulsory individual subjects plus optional Arabic (nine to ten subjects). These statements are not directly interchangeable: group counts aggregate related subjects, while the press release/notice count individual offerings. Keep both representations in the curriculum mapping and do not seed six groups as if they were the individual student subjects.
+- The older public Subject Listings portal still displays a broad list of Primary 1–3 individual subjects, including some that do not appear as standalone offerings in the 2025 approved-subject notice. Treat this as legacy portal data unless a current revised document or school adoption record confirms otherwise.
+
+Official references:
+- NERDC, New Revised Basic Education Curriculum landing page (separate Primary 1, 2 and 3 links): https://www.nerdc.gov.ng/content_manager/new_curriculum_home.html
+- NERDC, Primary 1–3 legacy curriculum index: https://www.nerdc.gov.ng/content_manager/pri1-3.html
+- NERDC e-Curriculum, Primary 1–3 subject-group structure: https://nerdc.org.ng/CurriculumStructure.aspx
+- NERDC e-Curriculum, Primary 1–3 subject groups: https://www.nerdc.org.ng/SubjectGroups.aspx
+- NERDC e-Curriculum, Primary 1–3 legacy subject listings: https://nerdc.org.ng/SubjectListings.aspx
+
+## 14. Focused regression-test execution
+
+A dedicated GitHub Actions workflow, `.github/workflows/early-years-primary1-3-resolution.yml`, now runs the existing resolver/duplicate-regression test file when the relevant importer, resolution rules, tests or workflow change. This closes the previous gap where the test file existed but no focused CI job executed it. The workflow was queued against the new branch commit at the time of this update; its result must be checked before describing these tests as passing. It validates class-name resolution and source-resolution safeguards only; it does not validate lesson completeness, database state, or app delivery.
