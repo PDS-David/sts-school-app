@@ -27,12 +27,16 @@ export default function ParentActivitiesScreen({ navigation }: any) {
   const [events, setEvents] = useState<SchoolEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [testsError, setTestsError] = useState(false);
+  const [eventsError, setEventsError] = useState(false);
 
   const load = useCallback(async () => {
     const [testsResult, eventsResult] = await Promise.allSettled([
       api.get('/learning/parent/upcoming-assessments'),
       api.get('/school-events'),
     ]);
+    setTestsError(testsResult.status === 'rejected');
+    setEventsError(eventsResult.status === 'rejected');
     if (testsResult.status === 'fulfilled') setAssessments(testsResult.value.data.assessments ?? []);
     if (eventsResult.status === 'fulfilled') setEvents(eventsResult.value.data.events ?? []);
     setLoading(false);
@@ -50,9 +54,10 @@ export default function ParentActivitiesScreen({ navigation }: any) {
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />}
       >
         <Text style={styles.section}>Upcoming Tests</Text>
-        {assessments.length === 0 ? (
+        {testsError ? <Card><Text style={styles.sub}>{assessments.length ? 'Could not refresh upcoming tests. Showing the last available list.' : 'Could not load upcoming tests. Pull down to retry.'}</Text></Card> : null}
+        {!testsError && assessments.length === 0 ? (
           <Card><Text style={styles.sub}>No upcoming tests have been published for your children.</Text></Card>
-        ) : assessments.map(test => (
+        ) : !testsError ? assessments.map(test => (
           <Card key={test.id} style={styles.card}>
             <View style={styles.icon}><Ionicons name="clipboard-outline" size={22} color={Colors.primary} /></View>
             <View style={styles.content}>
@@ -65,9 +70,10 @@ export default function ParentActivitiesScreen({ navigation }: any) {
         ))}
 
         <Text style={styles.section}>School Calendar & Events</Text>
-        {events.length === 0 ? (
+        {eventsError ? <Card><Text style={styles.sub}>{events.length ? 'Could not refresh school events. Showing the last available list.' : 'Could not load school events. Pull down to retry.'}</Text></Card> : null}
+        {!eventsError && events.length === 0 ? (
           <Card><Text style={styles.sub}>No school events are scheduled in the current calendar window.</Text></Card>
-        ) : events.map(event => (
+        ) : !eventsError ? events.map(event => (
           <Card key={String(event.id)} style={styles.card}>
             <View style={styles.icon}><Ionicons name={event.event_type === 'holiday' ? 'sunny-outline' : event.event_type === 'exam' ? 'school-outline' : 'calendar-outline'} size={22} color={Colors.primary} /></View>
             <View style={styles.content}>
