@@ -2,14 +2,14 @@
 
 - **Task ID:** BSEC-002
 - **Title:** Make student and parent auto-provisioning atomic and concurrency-safe
-- **Status:** review
+- **Status:** review (all required checks passing)
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
 - **Working branch:** agent/backend-parent-provisioning-atomicity-20261113
 - **PR:** https://github.com/PDS-David/sts-school-app/pull/702
-- **Latest implementation commit:** pending rename/CI verification
-- **Checkpoint commit:** pending
+- **Latest implementation commit:** ab098a40b0bbc1d0357dfa2538a835c10cfe6a79
+- **Checkpoint commit:** this update
 - **Changed files:**
   - backend/src/routes/students.ts
   - backend/src/utils/parentProvisioning.ts
@@ -22,5 +22,7 @@
 - **Commits:** 8920c479b64dc31214fcfbfa0e82e138f3157134; 1bb0789b9aedb8f56888525b0b5bfbaaf9f28ba7; a5da4c74834b6672b1d3d431a743499f07e0d22e; 487c7174dcdc75fd37c6b54f8ff6e5969b4672ca; 31dd5123f07c0b185f3ef8dd081192570a4531b7; 139d5a3806d271d22976e0f483d5de8eda793090.
 - **Verification:** GitHub Actions run https://github.com/PDS-David/sts-school-app/actions/runs/43445137970 completed successfully. Passed: PostgreSQL 16 service initialization, locked dependency installation, disposable database bootstrap, transaction/concurrency integration tests and backend TypeScript typecheck. Branch comparison before PR: 6 commits ahead of master, 0 behind; five changed paths. No production database or production data was touched.
 - **Concurrency:** PR #692 changes auth middleware/claims only. PR #686 changes learning/schoolEvents. This PR changes the student creation handler and parent provisioning helper; no active PR changes parentProvisioning.ts.
+- **CI correction:** the PostgreSQL test file was renamed to backend-parent-provisioning.integration.test.mts so it is not misclassified by the separate JSS3 database-test registry; the workflow command and path filter now use the new name. No tests were removed or weakened.
+- **Final verification:** Backend parent provisioning workflow 43447497936, JSS3 implementation/asset checks 43447497954, and SS1 package integrity gate 43447497996 all passed on implementation commit ab098a40b0bbc1d0357dfa2538a835c10cfe6a79.
 - **Remaining:** PR review/merge. Do not mark the overall backend/security assignment complete.
 - **Exact next action:** review PR #702 and merge only after owner approval; then refresh from master and continue to the next backend defect.
