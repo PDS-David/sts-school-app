@@ -72,7 +72,7 @@ export function TermsMgmtScreen({ navigation }: any) {
     try {
       await api.post('/academic/terms', { ...form, name: form.name.trim(), academic_year: form.academic_year.trim(), is_current: isCurrent, days_opened: days });
       setModal(false);
-      fetch();
+      await fetch();
     } catch (e: any) { setInfoDialog({ title: 'Could not save term', message: e?.response?.data?.error ?? 'Save failed. Check your connection and try again.' }); }
     finally { setSaving(false); }
   };
@@ -82,7 +82,7 @@ export function TermsMgmtScreen({ navigation }: any) {
     setUpdatingCurrent(t.id);
     try {
       await api.put(`/academic/terms/${t.id}`, { is_current: true });
-      fetch();
+      await fetch();
     } catch (e: any) {
       setInfoDialog({ title: 'Could not set current term', message: e?.response?.data?.error ?? 'Check your connection and try again.' });
     } finally { setUpdatingCurrent(null); }
@@ -204,7 +204,7 @@ export function SubjectsMgmtScreen({ navigation }: any) {
     setSaving(true);
     try {
       await api.post('/academic/subjects', { name: name.trim(), code: code.trim(), school_code: selectedSchoolCode ?? undefined });
-      setName(''); setCode(''); fetch();
+      setName(''); setCode(''); await fetch();
     } catch (e: any) { setInfoDialog({ title: 'Could not add subject', message: e?.response?.data?.error ?? 'Check your connection and try again.' }); }
     finally { setSaving(false); }
   };
@@ -220,7 +220,7 @@ export function SubjectsMgmtScreen({ navigation }: any) {
     setDeleteConfirm(null);
     try {
       await api.delete(`/academic/subjects/${subject.id}`);
-      fetch();
+      await fetch();
     } catch (e: any) {
       setInfoDialog({ title: 'Could not delete subject', message: e?.response?.data?.error ?? 'This subject may already have academic records. Check and try again.' });
     } finally { setDeletingId(null); }
