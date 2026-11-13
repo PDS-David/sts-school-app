@@ -47,6 +47,8 @@ Worker branch: `agent/frontend-academic-setup-current-20261113`
 - Automated tests, TypeScript and device checks were not run because no local checkout/command execution environment is available.
 - No runtime readiness claim is made.
 
+- Term/subject live-response policy is provided by shared API PR #776; merge it before this UI PR.
+
 ## Remaining work
 - Verify term creation/current-term selection across both schools, including date/day boundaries and failed requests.
 - Verify subject creation/deletion for teacher/admin roles and delete-denied cases when records already reference a subject.
