@@ -22,6 +22,10 @@ This repository is the durable source of truth for multi-agent work. Agent sessi
 - `tests/test_validate_work_queue.py`: regression tests for queue invariants and dashboard evidence rules.
 - `work-queue.yml`: scheduled and change-triggered validation, unit tests and dashboard reporting.
 
+## Worker claim protocol
+
+A claim is provisional until its registry change is merged into the default branch. Workers must not begin task work from an unmerged claim PR. The claim PR must set the single task record to `in_progress` with one owner, a fresh heartbeat, lease expiry, and checkpoint. Before starting, the worker must update its branch from the latest default branch and rerun the queue validator. If another claim has already landed, the task record must be reconciled rather than overwritten. A single canonical task record can name only one active owner; duplicate task IDs and duplicate active ownership by the same worker are rejected by validation. This is a Git/PR-mediated claim protocol, not a standalone distributed lock service.
+
 ## Worker lease protocol
 
 - Default lease: 45 minutes.
@@ -54,7 +58,7 @@ Strict mode fails on operational warnings. Structural validation rejects malform
 
 - One active owner per task.
 - Declare file ownership in each task.
-- Avoid overlapping file ownership across concurrent tasks; the validator rejects duplicate active ownership by the same worker.
+- Avoid overlapping file ownership across concurrent tasks. Claims are not active until merged; always refresh against the latest default branch before beginning work. The validator rejects duplicate task IDs and duplicate active ownership by the same worker, but the PR process remains the serialization boundary rather than a transactional lock API.
 - Never store secrets, tokens, personal student data or credentials in task records/checkpoints.
 - Do not mark work complete because a PR exists or code merely compiles.
 - A green workflow is evidence only for the checks it actually ran.
