@@ -99,7 +99,7 @@ export function TermsMgmtScreen({ navigation }: any) {
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <PageContainer style={{ padding: Spacing.sm, paddingBottom: 0 }}>
-        {!!loadError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry terms' variant='outline' size='sm' onPress={() => fetch()} /></View>}
+        {!!loadError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry terms' variant='outline' onPress={() => fetch()} /></View>}
         <TouchableOpacity style={styles.addBtn} onPress={openAddModal}>
           <Ionicons name="add-circle" size={20} color={Colors.white} />
           <Text style={styles.addBtnTxt}>Add Term</Text>
@@ -231,7 +231,7 @@ export function SubjectsMgmtScreen({ navigation }: any) {
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <PageContainer style={{ padding: Spacing.sm }}>
-        {!!loadError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry subjects' variant='outline' size='sm' onPress={() => fetch()} /></View>}
+        {!!loadError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry subjects' variant='outline' onPress={() => fetch()} /></View>}
         <Card>
           <SectionHeader title="Add Subject" />
           <View style={isWide ? styles.filterRow : undefined}>
