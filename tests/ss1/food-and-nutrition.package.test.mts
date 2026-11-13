@@ -96,13 +96,13 @@ test('Current coverage remains explicitly partial/marker-only and all references
   const p = packageSchema.parse(raw);
   const sourceIds = new Set(p.sources.map(source => source.source_id));
   const ruleIds = new Set(p.source_rules.map(rule => rule.id));
-  assert.equal(p.coverage.length, 8);
+  assert.equal(p.coverage.length, 21);
   assert.deepEqual(
     p.coverage.reduce((counts, entry) => {
       counts[entry.status] = (counts[entry.status] ?? 0) + 1;
       return counts;
     }, {} as Record<string, number>),
-    { PARTIAL: 6, UNRESOLVED: 1, MARKER: 1 },
+    { PARTIAL: 7, UNRESOLVED: 1, MARKER: 1, SUPPORTED: 12 },
   );
   for (const entry of p.coverage) {
     assert(sourceIds.has(entry.source_id), `unknown source in ${entry.id}`);
@@ -112,4 +112,8 @@ test('Current coverage remains explicitly partial/marker-only and all references
   assert(p.open_items.some(item => item.id === 'FOOD-AND-NUTRITION-T1-W01-COVERAGE' && item.blocks_delivery));
   assert(p.open_items.some(item => item.id === 'FOOD-AND-NUTRITION-T1-W01-NUTRITION-CLAIMS' && item.blocks_delivery));
   assert(p.open_items.some(item => item.id === 'FOOD-AND-NUTRITION-T1-W01-THIN-TEACHING' && !item.blocks_delivery));
+  assert(p.coverage.some(entry => entry.id === 'COV-FN-T1-W02-CAREER-OVERVIEW' && entry.status === 'PARTIAL'));
+  assert.equal(p.coverage.filter(entry => entry.id.startsWith('COV-FN-T1-W02-CAREER-') && entry.status === 'SUPPORTED').length, 12);
+  assert(p.open_items.some(item => item.id === 'FOOD-AND-NUTRITION-T1-W02-CAREER-DESCRIPTIONS' && item.blocks_delivery));
+  assert(p.open_items.some(item => item.id === 'FOOD-AND-NUTRITION-T1-W02-MISFILED-EVALUATION' && item.blocks_delivery));
 });
