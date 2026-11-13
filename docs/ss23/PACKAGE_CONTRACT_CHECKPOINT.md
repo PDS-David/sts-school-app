@@ -13,7 +13,7 @@ Base: `master` @ `b8651cebaa480097fd1c40c9b02c11b228187caa`
 
 - `backend/src/db/ss23/subjectPackageSchema.ts`
 - `backend/src/db/ss23/subjectPackageSchema.test.ts`
-- `backend/src/db/ss23/subjects/agricultural-science.json` (SS2 First Term Weeks 1-5 draft with 58 source assessment prompts and 12 authored practice supplements)
+- `backend/src/db/ss23/subjects/agricultural-science.json` (SS2 First Term Weeks 1-6 draft with 75 source assessment prompts and 14 authored practice supplements)
 - `backend/src/db/ss23/assets/agricultural-science/soil-sedimentation-jar.svg` (authored practical diagram)
 - `backend/src/db/ss23/loader.ts` and `studentDelivery.ts` (registered package loading and fail-closed student delivery)
 - `backend/src/db/ss23/studentDelivery.test.ts` and SS23 routes in `backend/src/routes/learning.ts`
@@ -55,4 +55,4 @@ The workflow installs locked dependencies, type-checks the backend and runs the 
 
 ## Exact next action
 
-The SS2 Agricultural Science First Term Weeks 1-3 draft now includes all 58 original-source assessment prompts with authored answers and mark-by-mark guidance, 23 pending source-figure references, and an authored sedimentation diagram. Resolve the remaining technical/rights/visual blockers, verify the assessment set, complete the remaining five practicals and continue source-complete SS2 Agriculture lessons. The loader and class-safe routes are implemented but currently serve no lessons because the package is PENDING and all ten blocking open items remain, including the Week 8-9 scheme/body coverage verification, unresolved machinery technical corrections and figure-rights review. Preserve SS3 as exam preparation only.
+The SS2 Agricultural Science First Term Weeks 1-3 draft now includes all 75 original-source assessment prompts with authored answers and mark-by-mark guidance, 37 pending source-figure references, and an authored sedimentation diagram. Resolve the remaining technical/rights/visual blockers, verify the assessment set, complete the remaining five practicals and continue source-complete SS2 Agriculture lessons. The loader and class-safe routes are implemented but currently serve no lessons because the package is PENDING and all ten blocking open items remain, including the Week 8-9 scheme/body coverage verification, unresolved machinery technical corrections and figure-rights review. Preserve SS3 as exam preparation only.
