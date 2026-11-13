@@ -31,9 +31,13 @@ const ss3Source = {
   term: '1st Term',
   header_text: 'AGRICULTURAL SCIENCE / SS 3 / FIRST TERM',
 };
-const practice = () => ({
+const practice = (source: any) => ({
   id: 'Q1',
+  question_origin: 'AUTHORED_SUPPLEMENT',
+  question_locator: 'Authored schema-test question.',
   question: 'Explain one reason soil texture matters to crop growth.',
+  answer_origin: 'AUTHORED_SUPPLEMENT',
+  answer_locator: 'Authored schema-test model answer and marking guide.',
   answer: 'Soil texture influences how soil holds and transmits water and air.',
   explanation: 'Particle size affects pore spaces. Sandy soils generally drain quickly, while finer-textured soils retain more water.',
   marks: 2,
@@ -41,6 +45,7 @@ const practice = () => ({
     { criterion: 'Identifies water retention or drainage as an effect of texture.', marks: 1 },
     { criterion: 'Explains the relationship between particle size and water movement.', marks: 1 },
   ],
+  provenance: [{ source_id: source.source_id, source_sha256: source.sha256, role: 'ORIGINAL_SOURCE', locator: 'Source document, soil texture section', rights: source.rights, attribution: source.attribution, reuse_status: 'PENDING' }],
 });
 const state = {
   content_approval: 'PENDING',
@@ -61,7 +66,7 @@ const ss2Unit = {
   objectives: ['Define soil in relation to plant growth.', 'Compare sandy, clayey and loamy soils using their properties.'],
   body: longBody,
   body_sha256: sha256(longBody),
-  practice: [practice(), { ...practice(), id: 'Q2', question: 'State two properties of clayey soil.' }],
+  practice: [practice(ss2Source), { ...practice(ss2Source), id: 'Q2', question: 'State two properties of clayey soil.' }],
   provenance: [{
     source_id: ss2Source.source_id,
     source_sha256: ss2Source.sha256,
@@ -113,7 +118,7 @@ const ss3Unit = {
   objectives: ['Recall the meaning of animal nutrition.', 'Answer examination-style questions on malnutrition.'],
   body: longBody,
   body_sha256: sha256(longBody),
-  practice: [practice(), { ...practice(), id: 'Q2', question: 'State two effects of malnutrition in farm animals.' }],
+  practice: [practice(ss3Source), { ...practice(ss3Source), id: 'Q2', question: 'State two effects of malnutrition in farm animals.' }],
   provenance: [{
     source_id: ss3Source.source_id,
     source_sha256: ss3Source.sha256,
@@ -199,5 +204,18 @@ test('rejects approval or verification claims without evidence references', () =
     verification: 'VERIFIED',
     verification_reference: null,
   };
+  assert.equal(packageSchema.safeParse(invalid).success, false);
+});
+
+test('requires original-source provenance for source-derived questions', () => {
+  const invalid: any = structuredClone(ss2Package);
+  invalid.units[0].practice[0].question_origin = 'ORIGINAL_SOURCE';
+  invalid.units[0].practice[0].provenance = invalid.units[0].practice[0].provenance.filter((ref: any) => ref.role !== 'ORIGINAL_SOURCE');
+  assert.equal(packageSchema.safeParse(invalid).success, false);
+});
+
+test('rejects question-level provenance with a mismatched source hash', () => {
+  const invalid: any = structuredClone(ss2Package);
+  invalid.units[0].practice[0].provenance[0].source_sha256 = 'd'.repeat(64);
   assert.equal(packageSchema.safeParse(invalid).success, false);
 });
