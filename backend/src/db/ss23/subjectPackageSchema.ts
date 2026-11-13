@@ -183,6 +183,8 @@ function validateReferences(pkg: {
   open_items: z.infer<typeof openItemSchema>[];
   units: Array<z.infer<typeof ss2UnitSchema> | z.infer<typeof ss3UnitSchema>>;
 }, ctx: z.RefinementCtx) {
+  const issue = (message: string, path: (string | number)[]) =>
+    ctx.addIssue({ code: z.ZodIssueCode.custom, message, path });
   const original = new Map(pkg.sources.map(source => [source.source_id, source]));
   const all = new Map<string, { sha256: string; class_name: string; term: string; canonical_subject: string }>();
   const allSourceIds = [...pkg.sources.map(source => source.source_id), ...pkg.external_sources.map(source => source.source_id)];
@@ -193,8 +195,6 @@ function validateReferences(pkg: {
   }
   for (const source of pkg.sources) all.set(source.source_id, source);
   for (const source of pkg.external_sources) all.set(source.source_id, source);
-  const issue = (message: string, path: (string | number)[]) =>
-    ctx.addIssue({ code: z.ZodIssueCode.custom, message, path });
 
   for (const rule of pkg.source_rules) {
     const source = original.get(rule.source_id);
