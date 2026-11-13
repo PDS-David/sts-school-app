@@ -31,7 +31,6 @@ Worker branch: `agent/frontend-student-enrollment-recovery-20261113`
 
 ## Changed files
 - `mobile/src/screens/AddStudentScreen.tsx`
-- `mobile/src/api/client.ts`
 
 ## Commits
 - `1ded2b2305fed0e584fca773e4c46ee81815e1f2` — enrollment form recovery and validation.
@@ -45,6 +44,8 @@ Worker branch: `agent/frontend-student-enrollment-recovery-20261113`
 - Existing server-side phone/account de-duplication and student permissions remain unchanged.
 - Automated tests, TypeScript and device checks were not run because no local checkout/command execution environment is available.
 - No runtime enrollment-readiness claim is made.
+
+- Account-provisioning offline exclusion was moved to shared API policy PR #760 to avoid overlapping client.ts changes.
 
 ## Remaining work
 - Verify new parent account creation, sibling account linking, and enrollment without parent details.
