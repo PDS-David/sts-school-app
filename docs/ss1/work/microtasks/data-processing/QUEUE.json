@@ -48,9 +48,9 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 13,
-    "BLOCKED": 2,
-    "PENDING": 66
+    "IMPLEMENTED_TESTING_DEFERRED": 14,
+    "BLOCKED": 4,
+    "PENDING": 65
   },
   "items": [
     {
@@ -459,8 +459,8 @@
         "DP-INV-T1",
         "DP-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Week table, lines 435-581, SHA-256 23f33f0dfe418f06a5570aa13bc045679fcc1dab8de099cd55d87f70dd832c65; assessment blocks listed there).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in branch agent/data-processing-week-three-20261113. Package content commit b82a184a6e5e2dffcee1f53ccc960cf74cc4c102; open-item/task cross-reference correction 7ad5cb56546aed44b42bd2238bf52b62e62c8b02. Adds a new generation-of-computers supplement, objective/assessment coverage, proposed answers and open items for scheme drift, dated-generation review and reading rights. Testing remains deferred; see DP-WK-T1-W03.md. Exact body hash was recalculated from the serialized lesson body after CI found the previous stored digest included an extra trailing newline; corrected body_sha256=5a1696f3827eeefba9d577365add8514647ea0c2c89d9b44d80ca67a7bd9374f in package commit 0a8756dfb843ad653a56a0dc28bb0cfed345ae80. Await the rerun of the integrity/compiler workflow before returning the task to IMPLEMENTED_TESTING_DEFERRED. Automated PR checks now passed: package integrity 43454395135 SUCCESS; all-subject source-anchor/compiler audit 43454395359 SUCCESS. Independent owner content approval remains PENDING and lesson.state.verification remains DEFERRED; see the durable checkpoint.",
       "completion_condition": "Week 3 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
     },
     {
@@ -2999,6 +2999,78 @@
       "status": "PENDING",
       "implementation_reference": "Created by DP-WK-T3-W01 (2026-11-13); see docs/ss1/work/microtasks/data-processing/DP-WK-T3-W01.md.",
       "completion_condition": "Preserve source text and sequence boundaries; do not invent Microsoft Word procedures or misclassify Notepad. Any new teaching text must be accurate, version-labelled and independently verified."
+    },
+    {
+      "id": "DP-OWNER-T1-W03-SCHEME-ALIGNMENT",
+      "kind": "OWNER_ACTION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "Week Three body lines 435–581; compare the scheme lines 49–51.",
+      "objective": "Confirm whether the Week Three 'Generations of Computers' section is an approved extension of the scheme's 'History of Computing' or whether the First Term scheme requires an authorised correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W03.md"
+      ],
+      "depends_on": [
+        "DP-WK-T1-W03"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Created by DP-WK-T1-W03; no scheme row explicitly names generations of computers.",
+      "completion_condition": "Owner/teacher confirms the intended scheme mapping. Do not silently change the source or merge distinct weekly topics."
+    },
+    {
+      "id": "DP-OWNER-T1-W03-READING-RIGHTS",
+      "kind": "OWNER_ACTION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "Week Three reading assignment, Mammoth lines 547–552.",
+      "objective": "Confirm the exact edition and reuse rights for 'A Handbook On Computer Studies' by Niyi Adekolegan, Chapter 2 pages 9–10.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W03.md"
+      ],
+      "depends_on": [
+        "DP-WK-T1-W03"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Created by DP-WK-T1-W03; the referenced book is not included in the owner-supplied archive.",
+      "completion_condition": "Owner confirms the exact title/edition and rights. Until then retain the reading pointer only."
     }
   ],
   "review": {
@@ -3014,7 +3086,6 @@
     }
   },
   "next_runnable": [
-    "DP-WK-T1-W03",
     "DP-WK-T1-W04",
     "DP-WK-T1-W05",
     "DP-WK-T1-W06",
