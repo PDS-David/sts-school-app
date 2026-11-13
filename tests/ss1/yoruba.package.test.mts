@@ -36,7 +36,7 @@ test('Every Yoruba lesson has a unique ID, exact UTF-8 body hash and complete ma
 });
 
 test('First-Term Weeks One to Three have EDE, ASA and LITIRESO drafts linked from coverage', () => {
-  for (const week of ['W01', 'W02', 'W03']) {
+  for (const week of ['W01', 'W02', 'W03', 'W04']) {
     for (const strand of ['EDE', 'ASA', 'LIT']) {
       const lessonId = `SUP-SS1-YORUBA-T1-${week}-${strand}`;
       const lesson = p.lessons.find(item => item.id === lessonId);
@@ -45,7 +45,7 @@ test('First-Term Weeks One to Three have EDE, ASA and LITIRESO drafts linked fro
     }
   }
   const firstTermDrafts = p.lessons.filter(lesson => lesson.term === '1st Term');
-  assert.equal(firstTermDrafts.length, 9);
+  assert.equal(firstTermDrafts.length, 12);
 });
 
 test('Yoruba drafts preserve under-dotted letters, tone marks and the taught sound inventories', () => {
@@ -68,7 +68,7 @@ test('Uncertain source wording is tracked instead of being silently repaired', (
 
 test('New lesson drafts are not misrepresented as approved or verified', () => {
   const drafts = p.lessons.filter(lesson => lesson.id.startsWith('SUP-SS1-YORUBA-T1-W'));
-  assert.equal(drafts.length, 9);
+  assert.equal(drafts.length, 12);
   for (const lesson of drafts) {
     assert.equal(lesson.state.content_approval, 'PENDING', lesson.id);
     assert.equal(lesson.state.implementation, 'DRAFT', lesson.id);
@@ -98,4 +98,6 @@ test('Week Three vowel chart asset has a registered lesson, correct hash and exa
 
 test('Yoruba package retains explicit source-expert, visual and classroom verification gates', () => {
   assert(p.open_items.some(item => item.id === 'YORUBA-T1-W03-VOWEL-CHART-DELIVERY' && item.blocks_delivery));
+  assert(p.open_items.some(item => item.id === 'YORUBA-T1-W04-CONSONANT-CHART' && item.blocks_delivery));
+  assert(p.open_items.some(item => item.id === 'YORUBA-T1-W04-ASA-RECIPE-DETAIL' && item.blocks_delivery));
 });
