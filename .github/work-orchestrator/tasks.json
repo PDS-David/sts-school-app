@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "repository": "PDS-David/sts-school-app",
+  "updated_at": "2026-11-13T18:00:00Z",
+  "lease_policy": {
+    "lease_minutes": 45,
+    "heartbeat_minutes": 10,
+    "recovery_grace_minutes": 15
+  },
+  "tasks": [
+    {
+      "id": "ORCH-001",
+      "title": "Implement durable task registry and validation",
+      "gate": "operations",
+      "status": "review",
+      "priority": "P0",
+      "owner": null,
+      "created_at": "2026-11-13T14:30:00Z",
+      "updated_at": "2026-11-13T18:00:00Z",
+      "heartbeat_at": null,
+      "lease_expires_at": null,
+      "depends_on": [],
+      "files": [
+        ".github/work-orchestrator/**",
+        "scripts/validate_work_queue.py"
+      ],
+      "acceptance_criteria": [
+        "Task schema and registry are committed",
+        "Validator checks required fields, unique IDs, dependencies and state invariants",
+        "Workflow validates and reports the queue",
+        "Documentation explains recovery and limitations"
+      ],
+      "checkpoint": ".github/work-orchestrator/checkpoints/ORCH-001.md",
+      "pull_request": "https://github.com/PDS-David/sts-school-app/pull/683",
+      "verification": [
+        {
+          "result": "passed",
+          "evidence": "GitHub Actions run 43442326666: initial registry validation and queue summary passed. Expanded unit tests and dashboard checks are pending CI."
+        }
+      ]
+    },
+    {
+      "id": "ORCH-002",
+      "title": "Integrate agent-platform worker launch and recovery adapter",
+      "gate": "operations",
+      "status": "blocked",
+      "priority": "P1",
+      "owner": null,
+      "created_at": "2026-11-13T14:30:00Z",
+      "updated_at": "2026-11-13T18:00:00Z",
+      "heartbeat_at": null,
+      "lease_expires_at": null,
+      "depends_on": [
+        "ORCH-001"
+      ],
+      "files": [
+        ".github/work-orchestrator/adapters/**"
+      ],
+      "acceptance_criteria": [
+        "Document supported agent execution platform and authentication model",
+        "Implement safe launch/resume adapter using supported API",
+        "Expired task can be requeued without duplicate workers",
+        "Adapter tests cover timeout and duplicate launch"
+      ],
+      "checkpoint": ".github/work-orchestrator/checkpoints/ORCH-002.md",
+      "pull_request": null,
+      "verification": [],
+      "blocker": "The repository integration does not identify an agent execution platform or expose its supported launch/resume API and authentication contract. Do not invent an endpoint or wire arbitrary credentials. Provide the platform name and authorized API contract to proceed."
+    },
+    {
+      "id": "ORCH-003",
+      "title": "Create completion-gate dashboard from task evidence",
+      "gate": "operations",
+      "status": "review",
+      "priority": "P2",
+      "owner": null,
+      "created_at": "2026-11-13T14:30:00Z",
+      "updated_at": "2026-11-13T18:00:00Z",
+      "heartbeat_at": null,
+      "lease_expires_at": null,
+      "depends_on": [
+        "ORCH-001"
+      ],
+      "files": [
+        ".github/work-orchestrator/**",
+        "scripts/**"
+      ],
+      "acceptance_criteria": [
+        "Summarize gate progress from task records",
+        "Distinguish verified, unverified, blocked and stalled work",
+        "Link PRs and workflow evidence",
+        "Never infer completion from unchecked status"
+      ],
+      "checkpoint": ".github/work-orchestrator/checkpoints/ORCH-003.md",
+      "pull_request": "https://github.com/PDS-David/sts-school-app/pull/683",
+      "verification": []
+    }
+  ]
+}
