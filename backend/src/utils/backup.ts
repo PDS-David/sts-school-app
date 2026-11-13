@@ -19,7 +19,18 @@ export const BACKUP_INTERVAL_DAYS = 7;
 
 export interface BackupTable {
   name: string;
-  columns: { name: string; type: string }[];
+  columns: {
+    name: string;
+    type: string;
+    udt_name?: string;
+    character_maximum_length?: number | null;
+    numeric_precision?: number | null;
+    numeric_scale?: number | null;
+    is_nullable?: string;
+    column_default?: string | null;
+    is_identity?: string;
+    is_generated?: string;
+  }[];
   rows: unknown[][];
 }
 export interface BackupPayload {
@@ -85,7 +96,8 @@ export async function collectPayload(): Promise<BackupPayload> {
     const tables: BackupTable[] = [];
     for (const { table_name } of tbls) {
       const { rows: cols } = await client.query(
-        `SELECT column_name, data_type FROM information_schema.columns
+        `SELECT column_name, data_type, udt_name, character_maximum_length, numeric_precision, numeric_scale,
+               is_nullable, column_default, is_identity, is_generated FROM information_schema.columns
           WHERE table_schema='public' AND table_name=$1 ORDER BY ordinal_position`, [table_name]);
       const ident = '"' + String(table_name).replace(/"/g, '""') + '"';
       // Anything the JS driver would round or reformat (timestamps keep microseconds, dates, numerics,
@@ -98,7 +110,18 @@ export async function collectPayload(): Promise<BackupPayload> {
       const res = await client.query({ text: `SELECT ${select} FROM public.${ident}`, rowMode: 'array' });
       tables.push({
         name: table_name,
-        columns: cols.map((c: any) => ({ name: c.column_name, type: c.data_type })),
+        columns: cols.map((c: any) => ({
+          name: c.column_name,
+          type: c.data_type,
+          udt_name: c.udt_name,
+          character_maximum_length: c.character_maximum_length,
+          numeric_precision: c.numeric_precision,
+          numeric_scale: c.numeric_scale,
+          is_nullable: c.is_nullable,
+          column_default: c.column_default,
+          is_identity: c.is_identity,
+          is_generated: c.is_generated,
+        })),
         rows: res.rows as unknown[][],
       });
     }
