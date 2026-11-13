@@ -1,5 +1,9 @@
 name: Primary 4 Curriculum Validation
 
+concurrency:
+  group: primary4-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches:
