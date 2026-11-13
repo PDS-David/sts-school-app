@@ -241,7 +241,7 @@ export default function AttendanceScreen({ navigation }: any) {
               />
             </View>
           ))}
-          <Btn label={saving ? 'Saving…' : 'Save Attendance'} onPress={handleSave} loading={saving} style={{ marginTop: Spacing.md }} />
+          <Btn label={saving ? 'Saving…' : 'Save Attendance'} onPress={handleSave} loading={saving} disabled={saving || rosterLoading || !!rosterError || attendanceLoading || !!attendanceError || classStudents.length === 0} style={{ marginTop: Spacing.md }} />
         </Card>
       </PageContainer>
     </ScrollView>
