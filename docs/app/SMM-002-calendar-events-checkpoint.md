@@ -21,10 +21,15 @@ Branch: `agent/calendar-parent-upcoming-20261113`
 - `backend/src/routes/schoolEvents.ts` (new)
 - `backend/src/index.ts`
 - `backend/src/routes/learning.ts`
+- `mobile/src/screens/SchoolCalendarScreen.tsx` (new shared student/teacher calendar screen)
 - `mobile/src/screens/parent/ParentActivitiesScreen.tsx`
 - `mobile/src/screens/admin/AdminSchoolEventsScreen.tsx` (new)
 - `mobile/src/screens/admin/AdminMoreScreen.tsx`
 - `mobile/src/navigation/AdminTabs.tsx`
+- `mobile/src/navigation/TeacherTabs.tsx`
+- `mobile/src/navigation/StudentTabs.tsx`
+- `mobile/src/screens/teacher/TeacherMoreScreen.tsx`
+- `mobile/src/screens/student/StudentProfileScreen.tsx`
 - This checkpoint.
 
 ## Commits
@@ -42,6 +47,9 @@ Branch: `agent/calendar-parent-upcoming-20261113`
 - `137834eba22c9488f1bafce266eb953e1f284e33` — reject the unreachable finance-admin audience.
 - `f833cbd26d850fb19db1668e44775b00b41af9b1` — remove the finance-admin audience option.
 - `928528e655645257df07e748789eaf2a410c4f7d` — enforce subject/school ownership on parent test queries.
+- `40dd2b84441417716aa7316d1095a6b491fcd94b` — shared calendar screen for students/teachers.
+- `ff27c3f9c0afece28bde81a72f5d3bee44a78c6f` and `d4e7c5f84d3c6bff039d2973c97bc092e09c5915` — teacher calendar link and route.
+- `f868c9815aaf9278a82fc46bc9904097e7cccc43` and `724c73cc241ccd2dce962639d35c52206bad43d2` — student calendar link and route.
 
 ## Verification
 - Static checks: confirmed the learning router applies `requireAuth`; event router applies `requireAuth`; event POST/DELETE use `requireRole('admin')`; class validation checks the same school's `classes` row; schema table and indexes are present.
