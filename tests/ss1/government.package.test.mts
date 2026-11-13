@@ -367,7 +367,9 @@ test('Week One colonial-administration replacement corrects history and binds th
     assert.equal(coverage?.status, 'IMPLEMENTED_EQUIVALENT', id);
     assert(coverage?.lesson_ids.includes(lesson.id), id);
   }
-  assert.equal(p.coverage.find(entry => entry.id === 'COV-GOV-T2-W01-COLONIAL-IMPACTS')?.status, 'UNRESOLVED');
+  const colonialImpacts = p.coverage.find(entry => entry.id === 'COV-GOV-T2-W01-COLONIAL-IMPACTS');
+  assert.equal(colonialImpacts?.status, 'IMPLEMENTED_EQUIVALENT');
+  assert(colonialImpacts?.lesson_ids.includes('SUP-SS1-GOVERNMENT-T2-W02-CORRECTED'));
   assert.equal(p.coverage.find(entry => entry.id === 'COV-GOV-T2-W01-READING')?.status, 'PARTIAL');
   assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W01-REGIONAL-SCOPE-DISCREPANCY')?.blocks_delivery, true);
   assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W01-EVALUATION-QUESTIONS-MISSING')?.blocks_delivery, false);
