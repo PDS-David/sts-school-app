@@ -111,6 +111,14 @@ test('learning content writes and reads reject cross-school subject, term and qu
     );
     questionIds.push(Number(wrongTermQuestion[0].id));
 
+    const { rows: adminState } = await query(
+      'SELECT role, is_active, pending_admin_review FROM users WHERE id=$1',
+      [admin.id],
+    );
+    assert.equal(adminState[0].role, 'admin');
+    assert.equal(adminState[0].is_active, true);
+    assert.equal(adminState[0].pending_admin_review, false);
+
     const started = await startServer();
     server = started.server;
     const headers = (token: string) => ({
@@ -146,7 +154,8 @@ test('learning content writes and reads reject cross-school subject, term and qu
       school_code: 'primary', subject_id: subjectIds[2], term_id: termIds[0], class_name: 'Primary 4',
       type: 'mcq', stem: 'Foreign subject question', options: [], correct_keys: ['A'], marks: 1,
     }, admin.token);
-    assert.equal(wrongSubjectQuestionResponse.status, 400);
+    const wrongSubjectQuestionBody = await wrongSubjectQuestionResponse.json();
+    assert.equal(wrongSubjectQuestionResponse.status, 400, JSON.stringify(wrongSubjectQuestionBody));
 
     const wrongTermQuestionResponse = await post('/questions', {
       school_code: 'primary', subject_id: subjectIds[0], term_id: termIds[1], class_name: 'Primary 4',
