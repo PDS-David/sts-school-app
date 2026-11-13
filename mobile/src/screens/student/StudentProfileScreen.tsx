@@ -11,6 +11,7 @@ export default function StudentProfileScreen({ navigation }: any) {
   const { user, logout } = useAuth();
 
   const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; onPress?: () => void }[] = [
+    { icon: 'ribbon-outline', label: 'Badges & Achievements', sub: 'Milestones earned through learning and assessments', onPress: () => navigation.navigate('StudentAchievements') },
     { icon: 'calendar-outline', label: 'School Calendar', sub: 'View school events and important dates', onPress: () => navigation.navigate('SchoolCalendar') },
     { icon: 'bar-chart-outline', label: 'Progress', sub: 'Your results across terms', onPress: () => navigation.getParent()?.navigate('AssessmentsTab', { screen: 'MyResults' }) },
     { icon: 'calendar-outline', label: 'Attendance', sub: 'Days opened & present — inside your Results', onPress: () => navigation.getParent()?.navigate('AssessmentsTab', { screen: 'MyResults' }) },
