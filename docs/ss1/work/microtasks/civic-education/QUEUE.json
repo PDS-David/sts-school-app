@@ -58,7 +58,8 @@
     "CIV-WK-T2-W10 (2026-11-13): indexed original DOCX p202–248 / Mammoth lines403–499, block digest 3d358321e2e3fe635260a7185f3d8f37458ac74d52cd3cfc7fb8213aa5f1f936. Recorded six feature headings, five FUNCTION points, two unheaded blocks (preserved as unlabelled), five DEMERITS claims and evaluation ('Treat Akwa Past Question Papers', 'Nos 1 -100', 'Best wishes.'). Paragraph216 cites the 1979 Constitution beneath a 1999 heading; the source's 1999 constitutional claims and demerits are reserved for CIV-FACT-T2-CONSTITUTION / CIV-FACT-T2-NEUTRALITY. No headings, lessons, coverage, rules, corrections or answers invented.",
     "CIV-PRE-T2 (2026-11-13): verified second-term DOCX preamble paragraphs 1–37. Header TERM: 2ND TERM; SUBJECT: CIVIC EDUCATION; SS 1; SCHEME OF WORK; WEEKS/TOPICS; nine topic groups and subtopics; split 'The current Nigerian' / 'Constitution' feature/function topic; final row '12 & 13 Test & Examination'. Scheme is ordinary paragraphs, not a table; ten paragraphs carry Word auto-numbering not present in text. No teaching text before WEEK ONE.",
     "CIV-MARK-T2-SCHEME-GAPS (2026-11-13): reconciled scheme to ten body weeks and added three blocking CONTENT open items: missing INEC composition (scheme lines35–37), missing meaning of free/fair elections (39–41), missing meaning of electoral malpractice (45–47). Week1 is review-only; voter education spans Weeks2–3 with repeated title; Week8 planning is separate; no Week11–13 body. No missing content authored.",
-    "CIV-MARK-T2-REVEXAM (2026-11-13): scheme row at line73 is '12 & 13 Test & Examination'; final evaluation lines489–495 directs teacher to 'Treat Akwa Past Question Papers', 'Nos 1 -100', 'Best wishes.' No test/examination paper, past-question text or marking scheme is in source; Akwa papers not supplied. Scheme-only marker, not a WEEK12/13 lesson."
+    "CIV-MARK-T2-REVEXAM (2026-11-13): scheme row at line73 is '12 & 13 Test & Examination'; final evaluation lines489–495 directs teacher to 'Treat Akwa Past Question Papers', 'Nos 1 -100', 'Best wishes.' No test/examination paper, past-question text or marking scheme is in source; Akwa papers not supplied. Scheme-only marker, not a WEEK12/13 lesson.",
+    "2026-11-13 CIV-PRES-T2-LISTS: source-preservation audit completed from the user-attached archive. Archive/member hashes verified; 86 numbered paragraphs resolved through OOXML numbering definitions and recorded in CIV-PRES-T2-LISTS.md. No source wording or package content changed. Automated/runtime testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -73,9 +74,9 @@
     "LESSON": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 38,
+    "IMPLEMENTED_TESTING_DEFERRED": 39,
     "BLOCKED": 1,
-    "PENDING": 16
+    "PENDING": 15
   },
   "items": [
     {
@@ -1386,8 +1387,8 @@
         "CIV-WK-T2-W07",
         "CIV-WK-T2-W10"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-13: Added CIV-PRES-T2-LISTS.md after verifying the attached composite archive SHA-256 and exact CIVIC.docx member SHA-256. Inspected word/document.xml and word/numbering.xml: all 86 w:numPr paragraphs (10 scheme, 76 body), 17 numbering instances, all level 0; 79 decimal and 7 lowerRoman entries. Registered every item in original paragraph order with Word paragraph and Mammoth line locators; preserved source wording and truncated passages. No package/lesson/coverage/rule/correction/answer/asset/approval changes. Tests/importer/database/device checks not run; deferred.",
       "completion_condition": "List units recorded with locators and numbering evidence; nothing corrected; nothing marked approved."
     },
     {
@@ -2002,7 +2003,6 @@
     }
   },
   "next_runnable": [
-    "CIV-PRES-T2-LISTS",
     "CIV-FACT-T2-ELECTORAL-LAW",
     "CIV-FACT-T2-CONSTITUTION",
     "CIV-FACT-T2-NEUTRALITY",
