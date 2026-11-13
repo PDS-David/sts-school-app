@@ -23,13 +23,8 @@ Branch: `agent/student-achievements-20261113`
 - This checkpoint.
 
 ## Commits
-- `95c30c34880573aed29748664a800130fff53dd9` — achievements API.
-- `4ac1dbb5f113d50954f69ad714d1aa36bfd942f5` — threshold earned dates.
-- `9338fb715115f6e5b26e6036619c86c9558663d9` — achievements screen.
-- `ee68e9d9a0443242a6892f8c2f7a9abbc83a0d04` — profile link.
-- `4f15dfbbc434a933a8c57dce1aa13488b7c39e62` — navigator registration.
-- `cc5883df0faf7aad0bf318c601b83fae7e2a9f42` — move the route away from the assessment route insertion point to avoid PR overlap.
-- `61ed730d14992ad6269e625d0e85e3e4b7fe9675` — exclude unreviewed AI essays from score-based badges.
+- Latest implementation commit: `61ed730d14992ad6269e625d0e85e3e4b7fe9675`.
+- Durable checkpoint commit / branch head at last checkpoint: `a84be8d15d3c0687765f8b5003dc919201818eee`.
 
 ## Verification
 - Static review confirms the route requires student role, resolves student ID from the authenticated user, and returns only that student's aggregate achievements.
