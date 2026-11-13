@@ -1,6 +1,17 @@
 name: Android mobile readiness
 
 on:
+  push:
+    branches:
+      - "agent/mobile-android-readiness-*"
+    paths:
+      - "mobile/**"
+      - "config/apiTarget.js"
+      - "config/apiTarget.test.js"
+      - "tests/mobile/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/mobile-android-readiness.yml"
   pull_request:
     paths:
       - "mobile/**"
@@ -35,7 +46,8 @@ jobs:
       - name: Offline outbox regression tests
         run: npm run test:mobile:offline
       - name: Validate mobile TypeScript
-        run: npx tsc --noEmit -p mobile/tsconfig.json
+        working-directory: mobile
+        run: npx tsc --noEmit -p tsconfig.json
       - name: Export Android JavaScript bundle
         working-directory: mobile
         env:
