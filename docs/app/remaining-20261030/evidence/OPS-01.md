@@ -19,6 +19,7 @@ Branch: `agent/ops-01-migration-ledger-20261113`
 - `backend/package.json`
 - `backend/migrations/0001_baseline.sql` (new)
 - `backend/migrations/README.md` (new)
+- `README.md`
 - `backend/migrations/README.md` (new)
 - This evidence file.
 
@@ -35,6 +36,7 @@ Branch: `agent/ops-01-migration-ledger-20261113`
 - Enforce contiguous migration numbering: `0b5b7def1f70d36e8b248eba297510cf0f6ebbcc`.
 - Atomic fresh schema replay: `3d81ad5deaab7b944eb92ad15a09611fe1d27509`.
 - Restrict `--fresh` to an empty application schema: `8afbacc228e427a78eb4ec9cf699b6387bcb8731`.
+- Update root database setup instructions: `5e5b973a870d095a3e183c186bfbb6990741bc72`.
 
 ## Verification
 - Static review confirms default mode is `--all`, `--status` does not create the ledger, migration SQL is wrapped in BEGIN/COMMIT with rollback on error, and the advisory lock is released in a finally block. Fresh schema replay stamps the immutable baseline; `--fresh` is restricted to an empty application schema; default `--all` refuses an untracked schema or an empty uninitialized database.
