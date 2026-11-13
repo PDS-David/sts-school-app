@@ -17,13 +17,17 @@ export function setCacheNamespace(userId: string | null): void {
   namespace = userId ?? 'anon';
 }
 
+export function getCacheNamespace(): string {
+  return namespace;
+}
+
 // ── GET response cache ────────────────────────────────────────────────────────
 // Every successful GET response is cached here, keyed by request URL (and the
 // signed-in user), so that screens can keep showing data (materials,
 // questions, messages, students…) even with no network connection.
 
 const CACHE_PREFIX = 'offline_cache:';
-const cacheKey = (url: string) => `${CACHE_PREFIX}${namespace}:${url}`;
+const cacheKey = (url: string, userNamespace = namespace) => `${CACHE_PREFIX}${userNamespace}:${url}`;
 
 // Caps how many distinct GET responses are kept per user, evicting the
 // least-recently-fetched ones first. Without a cap, a device used every
@@ -35,39 +39,39 @@ const cacheKey = (url: string) => `${CACHE_PREFIX}${namespace}:${url}`;
 // app actually has.
 const MAX_CACHE_ENTRIES = 500;
 const MANIFEST_PREFIX = 'offline_cache_manifest:';
-const manifestKey = () => `${MANIFEST_PREFIX}${namespace}`;
+const manifestKey = (userNamespace = namespace) => `${MANIFEST_PREFIX}${userNamespace}`;
 
-async function touchManifest(url: string): Promise<void> {
+async function touchManifest(url: string, userNamespace: string): Promise<void> {
   try {
-    const raw = await AsyncStorage.getItem(manifestKey());
+    const raw = await AsyncStorage.getItem(manifestKey(userNamespace));
     const list: string[] = raw ? JSON.parse(raw) : [];
     const next = list.filter((u) => u !== url);
     next.push(url); // most-recently-fetched goes last
     while (next.length > MAX_CACHE_ENTRIES) {
       const evictUrl = next.shift();
-      if (evictUrl) await AsyncStorage.removeItem(cacheKey(evictUrl));
+      if (evictUrl) await AsyncStorage.removeItem(cacheKey(evictUrl, userNamespace));
     }
-    await AsyncStorage.setItem(manifestKey(), JSON.stringify(next));
+    await AsyncStorage.setItem(manifestKey(userNamespace), JSON.stringify(next));
   } catch {
     // best-effort — the cache entry itself is already saved either way
   }
 }
 
-export async function cacheSet(url: string, data: unknown): Promise<void> {
+export async function cacheSet(url: string, data: unknown, userNamespace = namespace): Promise<void> {
   try {
     await AsyncStorage.setItem(
-      cacheKey(url),
+      cacheKey(url, userNamespace),
       JSON.stringify({ data, cachedAt: Date.now() }),
     );
-    await touchManifest(url);
+    await touchManifest(url, userNamespace);
   } catch {
     // Storage full or unavailable — caching is best-effort, never throw.
   }
 }
 
-export async function cacheGet(url: string): Promise<{ data: unknown; cachedAt: number } | null> {
+export async function cacheGet(url: string, userNamespace = namespace): Promise<{ data: unknown; cachedAt: number } | null> {
   try {
-    const raw = await AsyncStorage.getItem(cacheKey(url));
+    const raw = await AsyncStorage.getItem(cacheKey(url, userNamespace));
     return raw ? JSON.parse(raw) : null;
   } catch {
     return null;
@@ -81,15 +85,15 @@ export async function cacheGet(url: string): Promise<{ data: unknown; cachedAt: 
 // pre-write cached copy — until now the cache had no invalidation at all
 // and could only go stale on its own schedule (next unrelated fetch to the
 // same URL), regardless of writes that had already changed that data.
-export async function cacheInvalidatePrefix(prefix: string): Promise<void> {
+export async function cacheInvalidatePrefix(prefix: string, userNamespace = namespace): Promise<void> {
   try {
-    const raw = await AsyncStorage.getItem(manifestKey());
+    const raw = await AsyncStorage.getItem(manifestKey(userNamespace));
     const list: string[] = raw ? JSON.parse(raw) : [];
     const toDrop = list.filter((u) => u.split('?')[0].startsWith(prefix));
     if (toDrop.length === 0) return;
-    await Promise.all(toDrop.map((u) => AsyncStorage.removeItem(cacheKey(u))));
+    await Promise.all(toDrop.map((u) => AsyncStorage.removeItem(cacheKey(u, userNamespace))));
     const remaining = list.filter((u) => !toDrop.includes(u));
-    await AsyncStorage.setItem(manifestKey(), JSON.stringify(remaining));
+    await AsyncStorage.setItem(manifestKey(userNamespace), JSON.stringify(remaining));
   } catch {
     // best-effort — a missed invalidation just means that one cached
     // screen stays stale until its own next fetch, same as before this fix
@@ -125,26 +129,27 @@ const outbox = createOutboxStore<QueuedRequest>(
   isQueuedRequest,
 );
 
-export function getOutbox(): Promise<QueuedRequest[]> {
-  return outbox.getAll();
+export function getOutbox(userNamespace?: string): Promise<QueuedRequest[]> {
+  return outbox.getAll(userNamespace);
 }
 
 export function enqueueRequest(
   req: Omit<QueuedRequest, 'id' | 'createdAt'>,
+  userNamespace?: string,
 ): Promise<QueuedRequest> {
   const queued: QueuedRequest = {
     ...req,
     id: `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
     createdAt: Date.now(),
   };
-  return outbox.enqueue(queued);
+  return outbox.enqueue(queued, userNamespace);
 }
 
-export function removeFromOutbox(id: string): Promise<void> {
-  return outbox.remove(id);
+export function removeFromOutbox(id: string, userNamespace?: string): Promise<void> {
+  return outbox.remove(id, userNamespace);
 }
 
-export function outboxCount(): Promise<number> {
-  return outbox.count();
+export function outboxCount(userNamespace?: string): Promise<number> {
+  return outbox.count(userNamespace);
 }
 
