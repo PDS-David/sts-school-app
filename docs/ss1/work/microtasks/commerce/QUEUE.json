@@ -29,7 +29,8 @@
     "COM-VIS-T2-TBL-DOMFOR (2026-11-06): block 138 (Domestic vs Foreign Trade, 4 rows x 2 columns) re-read from the 2nd Term member with its hash verified. The importer's mammoth extractRawText emits its eight cells as consecutive paragraphs, so pairs survive by position only; the smallest repair under the existing schema is an explicit paired-row restatement in a Week 2 supplement (open item COMMERCE-T2-TBL-DOMFOR-REPRESENTATION). The Foreign cells of rows 2 and 3 are universal-sounding claims kept as source claims; follow-up COM-FACT-T2-TBL-DOMFOR-CLAIMS and open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS added. App display not verified; no lesson or coverage created.",
     "COM-FACT-T2-TBL-DOMFOR-CLAIMS (2026-11-06): the two Foreign cells of block 138 were checked against dated authoritative sources. Row 2 (different currencies) is true with exceptions (currency unions such as the euro area and the West African CFA franc; invoicing in a third currency); row 3 (different weights and measures) is not to be taught as written (SI is the internationally agreed, preferred system of world trade; Nigeria's Cap. W3 makes trade within Nigeria exclusively metric from 1 January 1979). Endorsed claim limits are recorded in open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS, which no longer blocks delivery; the paired-row restatement item still does. Nigerian indigenous-measures regulations, later amendments to Cap. W3 and the revocation order were not read and stay open. next_runnable recomputed without deferred TEST tasks (COM-TEST-PACKAGE excluded). No teaching text drafted, nothing approved or verified, app display unchecked.",
     "COM-INV-T3 (2026-11-13) opened the exact 3rd Term Commerce .doc source from the user-attached composite archive; archive and member hashes verified against SOURCE_ASSIGNMENTS.csv. Source read with antiword 0.37 and privately converted/rendered with LibreOffice 25.2.3.2 for layout inspection. Inventory COM-INV-T3.md records scheme, nine teaching bodies (including combined Weeks 7–8), revision marker, assessment sections, three structured comparison tables and four drawn cheque/bill/promissory-note visual groups. Sample forms contain names, addresses, bank details, dates and amounts; do not reuse without synthetic replacement/redaction. Current institutional/legal claims are flagged for dated primary-source review. 21 bounded follow-up tasks appended: nine week indexes, preamble, revision marker, seven visual dispositions, one sample-data preservation item and two factual dependencies. No package/lesson/coverage/rule/correction/asset/approval changes; no tests/importer/device checks. Testing deferred.",
-    "COM-TEST-PACKAGE (2026-11-13): added tests/ss1/commerce.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; three PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current partial/unresolved coverage/open-item boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no curriculum content or approval state changed."
+    "COM-TEST-PACKAGE (2026-11-13): added tests/ss1/commerce.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; three PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current partial/unresolved coverage/open-item boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no curriculum content or approval state changed.",
+    "COM-PRE-T3 (2026-11-13): verified preamble in original Commerce .doc. Lines 4–20 contain the title, wrapped subject/class header (CLASS label at line5, SS1 at line6), WEEKS/TOPICS header and ten scheme rows: Week1,2,3,4,5,6,7–8,9,10,11 Revision. The first body marker is WEEK 1 at line22. Numeric scheme rows do not use same-line WEEK <number> body markers; no preamble rule or marker coverage is needed. No standalone bibliography/reference list appears in the opening; reading assignments are embedded in body blocks. Week11 Revision is scheme-only."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -44,9 +45,9 @@
     "LESSON": 5
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 11,
+    "IMPLEMENTED_TESTING_DEFERRED": 12,
     "BLOCKED": 2,
-    "PENDING": 57
+    "PENDING": 56
   },
   "items": [
     {
@@ -2140,7 +2141,7 @@
       "source_id": "SS1-SRC-d436db5f412d",
       "term": "3rd Term",
       "week_or_locator": "Antiword lines 1–21; opening, scheme and references",
-      "objective": "Index the opening and scheme. Subject/class heading identifies Commerce, SS1. Scheme rows cover Week 1 Business Organisations/Sole Proprietorship; Week 2 Partnership; Week 3 Partnership; Week 4 Money; Week 5 Central Bank; Week 6 Commercial Bank; Weeks 7–8 Cheque System; Week 9 Negotiable Instruments; Week 10 Other Financial Institutions; Week 11 Revision. References are listed at lines 21 onward. The scheme is not itself a teaching body; preserve its exact sequence.",
+      "objective": "Index the opening and scheme. Subject/class heading identifies Commerce, SS1; the CLASS label wraps onto the following line. Scheme rows cover Week 1 Business Organisations/Sole Proprietorship; Week 2 Partnership; Week 3 Partnership; Week 4 Money; Week 5 Central Bank; Week 6 Commercial Bank; Weeks 7–8 Cheque System; Week 9 Negotiable Instruments; Week 10 Other Financial Institutions; Week 11 Revision. The scheme is preamble, not a teaching body. The first body marker is WEEK 1 at line 22; no standalone bibliography/reference list appears in the opening.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
         "docs/ss1/contracts/CONTRACT.md",
@@ -2166,8 +2167,8 @@
         "COM-INV-T3",
         "COM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by COM-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/commerce/COM-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Exact source member hash verified. Antiword lines 4–20 inspected: title, wrapped subject/class header, WEEKS/TOPICS heading and ten scheme rows, including combined 7–8 and scheme-only Week 11 Revision. First actual body marker is WEEK 1 at line22. Scheme rows use bare numeric labels, not same-line WEEK <number> body markers; no classify_marker rule or MARKER coverage entry is required. No separate bibliography/reference list appears in the opening; reading assignments are embedded in body weeks.",
       "completion_condition": "Record exact source content, assessment boundaries and evidence. Preserve original wording; do not invent current legal/economic facts, answers, approvals or verification."
     },
     {
@@ -2625,7 +2626,6 @@
     "COM-WK-T3-W07-08",
     "COM-WK-T3-W09",
     "COM-WK-T3-W10",
-    "COM-PRE-T3",
     "COM-MARK-T3-REVISION",
     "COM-PRES-T3-SAMPLE-FINANCIAL-RECORDS",
     "COM-FACT-T3-BANK-INSTITUTIONS",
