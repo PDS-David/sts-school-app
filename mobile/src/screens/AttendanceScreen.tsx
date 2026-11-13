@@ -42,6 +42,14 @@ export default function AttendanceScreen({ navigation }: any) {
   const [entries,  setEntries]  = useState<Record<string, string>>({});
   const [loading,  setLoading]  = useState(true);
   const [saving,   setSaving]   = useState(false);
+  const [setupError, setSetupError] = useState('');
+  const [setupRetry, setSetupRetry] = useState(0);
+  const [rosterError, setRosterError] = useState('');
+  const [rosterLoading, setRosterLoading] = useState(false);
+  const [rosterRetry, setRosterRetry] = useState(0);
+  const [attendanceError, setAttendanceError] = useState('');
+  const [attendanceLoading, setAttendanceLoading] = useState(false);
+  const [attendanceRetry, setAttendanceRetry] = useState(0);
   const [daysOpened, setDaysOpened] = useState('');
   // Also teacher-filled, per the same PUT /academic/terms/:id save as
   // daysOpened — school's own decision that the class teacher, not admin,
@@ -50,20 +58,17 @@ export default function AttendanceScreen({ navigation }: any) {
 
   useEffect(() => {
     if (isAdmin && !effectiveSchoolCode) { setLoading(false); return; }
+    let cancelled = false;
     setLoading(true);
+    setSetupError('');
     const sc = effectiveSchoolCode ?? undefined;
-    // Found in the Pass 20 audit: this used to derive the class list from
-    // GET /students, fetching the whole school's roster just to read off
-    // class names. GET /academic/classes carries no student data at all —
-    // see ScoreEntryScreen.tsx for the identical reasoning. A class
-    // teacher's own class always wins on the backend regardless of what's
-    // asked for, so the picker only offers other classes when this account
-    // isn't pinned to one of its own.
+    // Fetch only class and term metadata; student records remain class-scoped below.
     Promise.all([
       api.get('/academic/classes', { params: { school_code: sc } }),
       api.get('/academic/terms', { params: { school_code: sc } }),
     ])
       .then(([c, t]) => {
+        if (cancelled) return;
         const cls = (user?.role === 'teacher' && user?.assigned_class)
           ? [user.assigned_class]
           : [...new Set((c.data.classes as any[]).map((x: any) => x.name))].sort();
@@ -73,29 +78,35 @@ export default function AttendanceScreen({ navigation }: any) {
         const cur = t.data.terms.find((x: any) => x.is_current);
         if (cur) { setSelTerm(cur.id); setDaysOpened(String(cur.days_opened ?? '')); setNextTermBegins(cur.next_term_begins ?? ''); }
       })
-      .catch(() => {})
-      .finally(() => setLoading(false));
-  }, [effectiveSchoolCode]);
+      .catch(() => { if (!cancelled) setSetupError('Could not load classes and terms. Check your connection and try again.'); })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
+  }, [effectiveSchoolCode, setupRetry]);
 
   // One class's roster at a time, fetched fresh whenever the selected class
   // changes — not the whole school in one shot.
   useEffect(() => {
     if (!selClass) { setStudents([]); return; }
     let cancelled = false;
+    setRosterLoading(true);
+    setRosterError('');
     api.get('/students', { params: { school_code: effectiveSchoolCode ?? undefined, class_name: selClass } })
       .then(({ data }) => { if (!cancelled) setStudents(data.students ?? []); })
-      .catch(() => { if (!cancelled) setStudents([]); });
+      .catch(() => { if (!cancelled) { setStudents([]); setRosterError('Could not load this class roster. Try again before entering attendance.'); } })
+      .finally(() => { if (!cancelled) setRosterLoading(false); });
     return () => { cancelled = true; };
-  }, [selClass, effectiveSchoolCode]);
+  }, [selClass, effectiveSchoolCode, rosterRetry]);
 
   // Pre-fill existing attendance
   useEffect(() => {
-    if (!selClass || !selTerm) return;
+    if (!selClass || !selTerm || rosterLoading || rosterError) return;
     const classStudents = students.filter(s => s.class_name === selClass);
     const init: Record<string, string> = {};
     classStudents.forEach(s => { init[s.id] = ''; });
 
     let cancelled = false;
+    setAttendanceLoading(true);
+    setAttendanceError('');
     api.get(`/attendance?class_name=${encodeURIComponent(selClass)}&term_id=${selTerm}`)
       .then(r => {
         if (cancelled) return;
@@ -105,10 +116,16 @@ export default function AttendanceScreen({ navigation }: any) {
         }
         setEntries(existing);
       })
-      .catch(() => { if (!cancelled) setEntries(init); });
+      .catch(() => {
+        if (!cancelled) {
+          setEntries(init);
+          setAttendanceError('Could not load saved attendance. Retry before editing so existing records are not accidentally overlooked.');
+        }
+      })
+      .finally(() => { if (!cancelled) setAttendanceLoading(false); });
 
     return () => { cancelled = true; };
-  }, [selClass, selTerm, students]);
+  }, [selClass, selTerm, students, rosterLoading, rosterError, attendanceRetry]);
 
   const handleSave = async () => {
     if (!selTerm) { Alert.alert('Select a term first'); return; }
@@ -133,6 +150,15 @@ export default function AttendanceScreen({ navigation }: any) {
   };
 
   if (loading) return <Loader />;
+
+  if (setupError) {
+    return (
+      <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+        <Empty message={setupError} />
+        <Btn label="Retry loading" onPress={() => { setLoading(true); setSetupRetry(v => v + 1); }} variant="outline" />
+      </View>
+    );
+  }
 
   if (isAdmin && !effectiveSchoolCode) {
     return (
@@ -193,7 +219,17 @@ export default function AttendanceScreen({ navigation }: any) {
             <Text style={[styles.th, { flex: 2, textAlign: 'left' }]}>Student</Text>
             <Text style={styles.th}>Days Present</Text>
           </View>
-          {classStudents.map((s, i) => (
+          {rosterError ? (
+            <View style={styles.loadErrorWrap}>
+              <Text style={styles.loadError}>{rosterError}</Text>
+              <Btn label="Retry roster" onPress={() => setRosterRetry(v => v + 1)} variant="outline" />
+            </View>
+          ) : rosterLoading ? <Loader /> : attendanceError ? (
+            <View style={styles.loadErrorWrap}>
+              <Text style={styles.loadError}>{attendanceError}</Text>
+              <Btn label="Retry saved attendance" onPress={() => setAttendanceRetry(v => v + 1)} variant="outline" />
+            </View>
+          ) : classStudents.length === 0 ? <Empty message="No students are registered in this class yet." /> : classStudents.map((s, i) => (
             <View key={s.id} style={[styles.row, i % 2 === 0 && styles.rowAlt]}>
               <Text style={[styles.td, { flex: 2, textAlign: 'left' }]} numberOfLines={1}>{s.full_name}</Text>
               <Input
@@ -205,7 +241,7 @@ export default function AttendanceScreen({ navigation }: any) {
               />
             </View>
           ))}
-          <Btn label={saving ? 'Saving…' : 'Save Attendance'} onPress={handleSave} loading={saving} style={{ marginTop: Spacing.md }} />
+          <Btn label={saving ? 'Saving…' : 'Save Attendance'} onPress={handleSave} loading={saving} disabled={saving || rosterLoading || !!rosterError || attendanceLoading || !!attendanceError || classStudents.length === 0} style={{ marginTop: Spacing.md }} />
         </Card>
       </PageContainer>
     </ScrollView>
@@ -213,6 +249,8 @@ export default function AttendanceScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
+  loadErrorWrap: { paddingVertical: Spacing.md },
+  loadError: { color: Colors.error, fontSize: Fonts.sizes.sm, marginBottom: Spacing.sm },
   container:   { flex: 1, backgroundColor: Colors.background },
   filterLabel: { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.textSub, marginBottom: 2, marginTop: Spacing.xs },
   filterRow:   { flexDirection: 'row', gap: Spacing.md, alignItems: 'flex-start' },
