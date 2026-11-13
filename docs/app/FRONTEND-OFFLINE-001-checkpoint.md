@@ -20,9 +20,11 @@ The generic offline outbox returns synthetic queued responses for writes. Severa
 ## Implemented
 Exclude the following write endpoints from synthetic offline queueing so they fail visibly when the server is unavailable:
 - `/students` (student provisioning)
+- `/students/:id/promotion` and `/students/:id/restore` (class progression and restore actions)
 - `/admin/users` (admin account provisioning)
 - `/academic/terms` and `/academic/terms/:id`
 - `/academic/subjects` and `/academic/subjects/:id`
+- `/academic/class-locks` (class lock/unlock)
 - `/finance/fee-items`
 - `/finance/invoices`
 - `/finance/invoices/:id/status`
@@ -33,7 +35,8 @@ Assessment submission and Term PIN exclusions already in master remain unchanged
 - `mobile/src/api/client.ts`
 
 ## Commits
-- `9ace6f38e8e6122c5cd6441d7292d026c9243e85` — require live confirmation for account, finance and academic writes.
+- `9ace6f38e8e6122c5cd6441d7292d026c9243e85` — initial immediate-confirmation exclusions.
+- `032dad074773f0978bac697b23701da0eef34cd3` — extend live confirmation to promotion, restore and class locks.
 - Checkpoint commit: `36ff1b21ea9e1d571aef82c264b1bd3ba2f71117`.
 
 ## Verification
