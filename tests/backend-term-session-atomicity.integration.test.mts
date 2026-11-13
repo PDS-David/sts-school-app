@@ -52,7 +52,7 @@ async function startServer(): Promise<{ server: Server; baseUrl: string }> {
 
 test('term creation conflicts are deterministic and concurrent current-term switches remain atomic', async () => {
   const suffix = randomUUID();
-  const academicYear = `BSEC17/${suffix}`;
+  const academicYear = `BSEC17/${suffix.slice(0, 8)}`;
   const admin = await createUser('admin', 'admin', null);
   const foreignTeacher = await createUser('foreign-teacher', 'teacher', 'secondary');
   const termIds: number[] = [];
