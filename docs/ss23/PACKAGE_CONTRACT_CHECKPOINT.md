@@ -41,7 +41,7 @@ Thirteen Node tests cover valid SS2/SS3 package shapes, question/answer provenan
 - superficial lesson bodies;
 - approval or verification claims without supporting references.
 
-The workflow installs locked dependencies, type-checks the backend and runs the schema tests. Because this workflow is introduced in this PR, it cannot execute on this PR until it is present on the base branch. Latest package-contract commit: `943d9be62030d9c6c9c821c07ab3ef17b2157e8d`. No successful CI result is claimed yet.
+The workflow installs locked dependencies, type-checks the backend and runs the schema tests. Because this workflow is introduced in this PR, it cannot execute on this PR until it is present on the base branch. Latest package-contract commit: `943d9be62030d9c6c9c821c07ab3ef17b2157e8d`. GitHub Actions run 43471333725 completed successfully on the stacked Agriculture PR: backend TypeScript typecheck passed and all 13 SS23 Node tests passed.
 
 ## Remaining work
 
