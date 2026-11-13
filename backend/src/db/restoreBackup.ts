@@ -34,11 +34,109 @@ export function fkOrder(names: string[], edges: [string, string][]): string[] {
   return out;
 }
 
+/**
+ * Reject malformed or partial payloads before opening a destructive restore
+ * transaction. The encrypted container authenticates bytes, not the schema
+ * shape or completeness of a backup created by an older application build.
+ */
+export function validateBackupPayloadShape(p: BackupPayload): void {
+  if (!p || p.version !== 1 || typeof p.database !== 'string' ||
+      !p.database || typeof p.created_at !== 'string' || !Array.isArray(p.tables)) {
+    throw new Error('Backup payload is malformed or uses an unsupported version.');
+  }
+
+  const tableNames = new Set<string>();
+  for (const table of p.tables) {
+    if (!table || typeof table.name !== 'string' || !table.name ||
+        tableNames.has(table.name) || !Array.isArray(table.columns) ||
+        !table.columns.length || !Array.isArray(table.rows)) {
+      throw new Error('Backup payload contains an invalid or duplicate table definition.');
+    }
+    tableNames.add(table.name);
+
+    const columnNames = new Set<string>();
+    for (const column of table.columns) {
+      if (!column || typeof column.name !== 'string' || !column.name ||
+          typeof column.type !== 'string' || !column.type || columnNames.has(column.name)) {
+        throw new Error(`Backup table "${table.name}" contains an invalid or duplicate column definition.`);
+      }
+      columnNames.add(column.name);
+    }
+    for (let index = 0; index < table.rows.length; index++) {
+      const row = table.rows[index];
+      if (!Array.isArray(row) || row.length !== table.columns.length) {
+        throw new Error(`Backup table "${table.name}" row ${index + 1} does not match its column count.`);
+      }
+    }
+  }
+}
+
+/**
+ * Ensure the backup describes the complete target schema. TRUNCATE ... CASCADE
+ * can erase dependent tables not named in the backup, so a partial/older
+ * backup must be refused rather than silently destroying unrepresented data.
+ */
+async function validateTargetSchema(
+  client: import('pg').PoolClient,
+  tables: BackupPayload['tables'],
+  present: Set<string>,
+): Promise<void> {
+  const backupNames = new Set(tables.map(table => table.name));
+  const targetNames = new Set([...present].filter(name => name !== 'app_bootstrap' && name !== 'backup_log'));
+
+  const extra = [...targetNames].filter(name => !backupNames.has(name)).sort();
+  if (extra.length) {
+    throw new Error(
+      'Target has tables not present in backup (refusing TRUNCATE ... CASCADE): ' + extra.join(', '),
+    );
+  }
+
+  for (const table of tables) {
+    const { rows: currentColumns } = await client.query(
+      `SELECT column_name, data_type, udt_name, character_maximum_length,
+              numeric_precision, numeric_scale, is_nullable, column_default,
+              is_identity, is_generated
+       FROM information_schema.columns
+       WHERE table_schema='public' AND table_name=$1
+       ORDER BY ordinal_position`,
+      [table.name],
+    );
+    if (currentColumns.length !== table.columns.length) {
+      throw new Error(`Target schema mismatch for "${table.name}": column count differs from backup.`);
+    }
+
+    const currentByName = new Map(currentColumns.map((column: any) => [column.column_name, column]));
+    for (const backupColumn of table.columns) {
+      const current = currentByName.get(backupColumn.name) as Record<string, unknown> | undefined;
+      if (!current || current.data_type !== backupColumn.type) {
+        throw new Error(`Target schema mismatch for "${table.name}.${backupColumn.name}": column is missing or has a different type.`);
+      }
+      const metadata = [
+        'udt_name',
+        'character_maximum_length',
+        'numeric_precision',
+        'numeric_scale',
+        'is_nullable',
+        'column_default',
+        'is_identity',
+        'is_generated',
+      ] as const;
+      for (const field of metadata) {
+        const backupValue = (backupColumn as Record<string, unknown>)[field];
+        if (backupValue !== undefined && backupValue !== current[field]) {
+          throw new Error(`Target schema mismatch for "${table.name}.${backupColumn.name}": ${field} differs from backup.`);
+        }
+      }
+    }
+  }
+}
+
 const toParam = (v: unknown, type: string) =>
   v === null || v === undefined ? null
     : (type === 'json' || type === 'jsonb') ? JSON.stringify(v) : v;
 
 export async function restore(p: BackupPayload, opts: { apply: boolean; confirmDatabase?: string }) {
+  validateBackupPayloadShape(p);
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
@@ -50,6 +148,8 @@ export async function restore(p: BackupPayload, opts: { apply: boolean; confirmD
     const tables = p.tables.filter(t => t.name !== 'app_bootstrap' && t.name !== 'backup_log');
     const missing = tables.filter(t => !present.has(t.name)).map(t => t.name);
     if (missing.length) throw new Error('Target is missing tables (run db:bootstrap first): ' + missing.join(', '));
+
+    await validateTargetSchema(client, tables, present);
 
     const { rows: fks } = await client.query(
       `SELECT cl.relname AS child, pl.relname AS parent FROM pg_constraint c
