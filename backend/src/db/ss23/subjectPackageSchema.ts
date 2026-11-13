@@ -16,7 +16,7 @@ const state = z.object({
   verification_reference: text.nullable(),
 }).strict();
 const provenance = z.object({
-  source_id: z.string().regex(/^SS23-(?:SRC|EXT)-[A-Z0-9]+(?:-[A-Z0-9]+)*$/),
+  source_id: z.string().regex(/^SS23-(?:SRC|EXT)-[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/),
   source_sha256: digest,
   role: z.enum(['ORIGINAL_SOURCE', 'AUTHORED_SUPPLEMENT']),
   locator: text,
@@ -58,7 +58,7 @@ export const sourceSchema = z.object({
   reuse_status: z.enum(['PERMITTED', 'PENDING']),
 }).strict();
 
-export const externalSourceSchema = z.object({
+const externalSourceBaseSchema = z.object({
   source_id: externalSourceId,
   sha256: digest,
   class_name: z.enum(['SS 2', 'SS 3']),
@@ -71,7 +71,9 @@ export const externalSourceSchema = z.object({
   rights: text,
   attribution: text,
   reuse_status: z.enum(['PERMITTED', 'PENDING']),
-}).strict().superRefine((source, ctx) => {
+}).strict();
+
+export const externalSourceSchema = externalSourceBaseSchema.superRefine((source, ctx) => {
   if (sha256(source.content) !== source.sha256) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'External source content hash mismatch', path: ['sha256'] });
   }
@@ -240,16 +242,16 @@ export const ss3PackageSchema = z.object({
   class_name: z.literal('SS 3'),
   delivery_mode: z.literal('EXAM_PREPARATION'),
   sources: z.array(sourceSchema.extend({ class_name: z.literal('SS 3'), term: z.enum(['1st Term', '2nd Term']) })).min(1),
-  external_sources: z.array(externalSourceSchema.extend({ class_name: z.literal('SS 3'), term: z.enum(['1st Term', '2nd Term']) })),
+  external_sources: z.array(externalSourceBaseSchema.extend({ class_name: z.literal('SS 3'), term: z.enum(['1st Term', '2nd Term']) }).superRefine((source, ctx) => {
+    if (sha256(source.content) !== source.sha256) ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'External source content hash mismatch', path: ['sha256'] });
+  })),
   units: z.array(ss3UnitSchema).min(1),
 }).strict().superRefine((pkg, ctx) => {
-  if (pkg.sources.some(source => source.term === '3rd Term') || pkg.units.some(unit => unit.term === '3rd Term')) {
-    ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'SS3 exam-preparation packages cannot introduce a third term', path: ['units'] });
-  }
+  // SS3 source and unit schemas expose only first and second terms.
   validateReferences(pkg, ctx);
 });
 
-export const packageSchema = z.discriminatedUnion('class_name', [ss2PackageSchema, ss3PackageSchema]);
+export const packageSchema = z.union([ss2PackageSchema, ss3PackageSchema]);
 export type Ss23Package = z.infer<typeof packageSchema>;
 export type Ss23SourceRule = z.infer<typeof sourceRuleSchema>;
 
