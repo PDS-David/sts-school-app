@@ -89,6 +89,9 @@ test('Geography source-alias guards reject wrong hashes, ambiguous anchors and m
 test('Current Geography coverage remains supported/partial/unresolved and has no lesson targets', () => {
   const p = packageSchema.parse(raw);
   const sourceIds = new Set(p.sources.map(source => source.source_id));
+  const ruleIds = new Set(p.source_rules.map(rule => rule.id));
+  const lessonIds = new Set(p.lessons.map(lesson => lesson.id));
+  const sourceBodyTarget = (id: string) => [...sourceIds].some(sourceId => id.startsWith(sourceId + ':BODY:'));
   assert.equal(p.coverage.length, 7);
   assert.deepEqual(
     p.coverage.reduce((counts, entry) => {
@@ -100,7 +103,8 @@ test('Current Geography coverage remains supported/partial/unresolved and has no
   for (const entry of p.coverage) {
     assert(sourceIds.has(entry.source_id), `unknown source in ${entry.id}`);
     assert(entry.evidence.length > 0, `missing source evidence in ${entry.id}`);
-    assert.equal(entry.lesson_ids.length, 0, `no Geography lessons exist yet for ${entry.id}`);
+    for (const id of entry.lesson_ids) assert(lessonIds.has(id) || ruleIds.has(id) || sourceBodyTarget(id), `unresolved target ${entry.id} -> ${id}`);
+    if (entry.status === 'SUPPORTED') assert(entry.lesson_ids.some(sourceBodyTarget), `supported source coverage has no parsed source-body target: ${entry.id}`);
   }
   assert(p.open_items.some(item => item.id === 'GEOGRAPHY-T1-W01-STATE-CAPITALS-SCOPE' && item.blocks_delivery));
 });
