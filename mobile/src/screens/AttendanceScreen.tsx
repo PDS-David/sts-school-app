@@ -48,6 +48,7 @@ export default function AttendanceScreen({ navigation }: any) {
   const [rosterLoading, setRosterLoading] = useState(false);
   const [rosterRetry, setRosterRetry] = useState(0);
   const [attendanceError, setAttendanceError] = useState('');
+  const [attendanceLoading, setAttendanceLoading] = useState(false);
   const [attendanceRetry, setAttendanceRetry] = useState(0);
   const [daysOpened, setDaysOpened] = useState('');
   // Also teacher-filled, per the same PUT /academic/terms/:id save as
@@ -104,6 +105,7 @@ export default function AttendanceScreen({ navigation }: any) {
     classStudents.forEach(s => { init[s.id] = ''; });
 
     let cancelled = false;
+    setAttendanceLoading(true);
     setAttendanceError('');
     api.get(`/attendance?class_name=${encodeURIComponent(selClass)}&term_id=${selTerm}`)
       .then(r => {
@@ -119,7 +121,8 @@ export default function AttendanceScreen({ navigation }: any) {
           setEntries(init);
           setAttendanceError('Could not load saved attendance. Retry before editing so existing records are not accidentally overlooked.');
         }
-      });
+      })
+      .finally(() => { if (!cancelled) setAttendanceLoading(false); });
 
     return () => { cancelled = true; };
   }, [selClass, selTerm, students, rosterLoading, rosterError, attendanceRetry]);
