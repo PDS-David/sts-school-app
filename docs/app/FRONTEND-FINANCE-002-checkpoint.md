@@ -36,7 +36,7 @@ Worker branch: `agent/frontend-finance-actions-current-20261113`
 
 ## Commits
 - `b081e520523331b58fb34c0ce52a98f25889497f` — reapply finance action recovery on current master.
-- Checkpoint commit: pending.
+- Checkpoint commit: `e07d1253bab29e9813d17e0943f1a31bdcdb7575`.
 
 ## Verification
 - Static inspection confirms parent remains read-only and finance_admin remains the only write-enabled role.
