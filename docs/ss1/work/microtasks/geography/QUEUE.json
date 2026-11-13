@@ -22,7 +22,8 @@
     "GEO-WK-T1-W01 (2026-11-07) indexed Week 1 at objective level: meaning, scope and value mapped SUPPORTED to the reproduced generic parsed-row id; 'Nature' is named in the scheme row and never taught, the state-capital questions at lines 75 and 88 are taught nowhere in the document, the reading pointer is unverified and the source has no answer key, so two PARTIAL rows and two UNRESOLVED rows plus three lesson items (one BLOCKED on an owner decision) were appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written.",
     "GEO-INV-T3 (2026-11-13) inspected the exact 3rd Term Geography .doc from the owner-attached composite archive; archive/member hashes verified against SOURCE_ASSIGNMENTS.csv. Source extracted with antiword 0.37 and privately converted/rendered with LibreOffice 25.2.3.2 for structure. Inventory GEO-INV-T3.md records scheme, nine body blocks (combined Weeks 1–2, then Weeks 3–10), evaluation/assignment sections, one 38x4 state/capital/slogan table, a drawn Nigeria location/boundary sketch, and a tab-aligned thermal plant list. Geography/population/census/industry/agriculture/mineral/power claims are flagged for dated authoritative verification. 16 bounded follow-up tasks appended: nine week indexes, preamble, two visual dispositions plus one tabular-list disposition, and three factual dependencies. No lessons/package/coverage/rules/corrections/assets/approval changed; no tests/importer/device checks. Testing deferred.",
     "GEO-TEST-PACKAGE (2026-11-13): added tests/ss1/geography.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; three PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current supported/partial/unresolved coverage/open-item boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no curriculum content or approval state changed.",
-    "GEO-PRE-T3 (2026-11-13): inspected exact third-term Geography source preamble and scheme rows. Recorded the title, subject/class, SCHEME OF WORK, WEEK/TOPIC header and nine rows (1–2 combined, then 3–10) in GEO-PRE-T3.md. Scheme rows use a WEEK/TOPIC column header followed by bare numeric labels; they are not same-line WEEK <number> body markers. The first actual body marker is WEEK ONE AND TWO. No classify_marker rule or MARKER coverage entry is needed; scheme rows remain preamble, not lessons. No revision/exam row is present."
+    "GEO-PRE-T3 (2026-11-13): inspected exact third-term Geography source preamble and scheme rows. Recorded the title, subject/class, SCHEME OF WORK, WEEK/TOPIC header and nine rows (1–2 combined, then 3–10) in GEO-PRE-T3.md. Scheme rows use a WEEK/TOPIC column header followed by bare numeric labels; they are not same-line WEEK <number> body markers. The first actual body marker is WEEK ONE AND TWO. No classify_marker rule or MARKER coverage entry is needed; scheme rows remain preamble, not lessons. No revision/exam row is present.",
+    "GEO-PRE-T1 (2026-11-13): indexed non-week First Term blocks from GEO-INV-T1. Added source identity, ten scheme-to-body mappings (rows 1-10, rows 1-3 bound by order), Revision row 11 as MARKER with a unique source-bound WHOLE_LINE SCHEME_ONLY rule, and the reference-list pointer as UNRESOLVED. No scheme heading was treated as teaching; existing Week One objective coverage and open items were preserved. Tests/importer/database/device checks deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -36,9 +37,9 @@
     "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 9,
+    "IMPLEMENTED_TESTING_DEFERRED": 10,
     "BLOCKED": 2,
-    "PENDING": 40
+    "PENDING": 39
   },
   "items": [
     {
@@ -337,8 +338,8 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No preamble rule or coverage exists; geography.json has only the three source_alias rules and three alias open items. Inventory evidence: lines 1-17 empty (page 1 cover); 18 title; 19 subject/class line equals header_text and occurs once; block 18-19 SHA-256 b4bda78d8bcc62f32bf49f1faf55a1b47a57fd530b8401d064053c266ec74372; scheme block 21-37 SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032 (rows 23-37 bf7374729b4b8a317a0cd991497ec32d8f29e5233ab41301707033e1ac135611); reference 39-40 SHA-256 af634813ec13a3bece122248b9baf7c6ef8bea0f597f6ba596c323de4a9cb16a. Scheme rows 1-3 have no numerals; week 11 'Revision.' has no body row; there is no week 12. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented on agent/geography using GEO-INV-T1's verified member/archive hashes and exact getBody locators. Added source identity coverage for lines 18-19; mapped all ten scheme rows to ordered WEEK body labels and exact block hashes without treating headings as teaching; recorded row 11 as MARKER and added the source-bound WHOLE_LINE SCHEME_ONLY rule for the unique 'Revision.' anchor; mapped the bibliography entry at lines 39-40 as UNRESOLVED pending verification of the cited book/pages. Existing Week One objective coverage and open items remain unchanged. No lesson, content approval or verification invented. See GEO-PRE-T1.md.",
       "completion_condition": "Every non-week block is hash-accounted and either mapped to coverage with an exact locator or recorded as a precise open item; scheme rows are bound to body weeks by order where numerals are absent; no teaching, lesson or invented scheme row is written."
     },
     {
@@ -1915,7 +1916,6 @@
     "scope": "1st Term inventory executed from the supplied source; no importer, compiler or tests run; testing deferred."
   },
   "next_runnable": [
-    "GEO-PRE-T1",
     "GEO-MARK-T1",
     "GEO-WK-T1-W02",
     "GEO-WK-T1-W03",
