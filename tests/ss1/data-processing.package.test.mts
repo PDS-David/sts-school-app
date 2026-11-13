@@ -103,7 +103,7 @@ test('Current Data Processing coverage references resolve and preserve partial b
       counts[entry.status] = (counts[entry.status] ?? 0) + 1;
       return counts;
     }, {} as Record<string, number>),
-    { PARTIAL: 27, UNRESOLVED: 13, IMPLEMENTED_EQUIVALENT: 1, MARKER: 1 },
+    { PARTIAL: 28, UNRESOLVED: 13, IMPLEMENTED_EQUIVALENT: 1 },
   );
   for (const entry of p.coverage) {
     assert(sourceIds.has(entry.source_id), `unknown source in ${entry.id}`);
