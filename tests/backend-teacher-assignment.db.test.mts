@@ -156,7 +156,6 @@ test('teacher creation rolls back the user if subject insertion fails after the 
       full_name: 'Atomic Teacher Creation',
       role: 'teacher',
       school_code: 'primary',
-      assigned_class: 'Primary 1',
       assigned_subject_ids: [subjectId],
       initial_password: 'Bsec5-Strong-Password!',
     });
