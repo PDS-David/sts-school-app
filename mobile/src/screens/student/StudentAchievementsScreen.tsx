@@ -21,13 +21,15 @@ export default function StudentAchievementsScreen() {
   const [summary, setSummary] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [loadError, setLoadError] = useState(false);
 
   const load = useCallback(async () => {
     try {
       const { data } = await api.get('/learning/achievements/me');
       setBadges(data.badges ?? []);
       setSummary(data.summary ?? null);
-    } catch { /* preserve the last successful view when offline */ }
+      setLoadError(false);
+    } catch { setLoadError(true); /* preserve the last successful view when offline */ }
     setLoading(false);
   }, []);
 
@@ -43,6 +45,13 @@ export default function StudentAchievementsScreen() {
       <ScrollView contentContainerStyle={{ padding: Spacing.md }} refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />
       }>
+        {loadError ? (
+          <Card style={{ marginBottom: Spacing.md }}>
+            <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm }}>
+              {badges.length ? 'Could not refresh achievements. Showing the last available results.' : 'Could not load achievements. Pull down to retry.'}
+            </Text>
+          </Card>
+        ) : null}
         <Card style={{ marginBottom: Spacing.md }}>
           <Text style={{ color: Colors.text, fontSize: Fonts.sizes.md, fontWeight: '700' }}>Your learning milestones</Text>
           <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm, marginTop: 6 }}>
