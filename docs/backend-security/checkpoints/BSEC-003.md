@@ -2,22 +2,24 @@
 
 - **Task ID:** BSEC-003
 - **Title:** Fail closed when finance administrators list students without selecting a school
-- **Status:** in_progress
+- **Status:** review
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
 - **Working branch:** agent/backend-finance-student-roster-scope-20261113
-- **Last commit:** pending
-- **Files planned:** backend/src/routes/students.ts; new pure roster-scope resolver; role-specific regression tests; focused workflow; this checkpoint.
-- **Defect:** finance_admin is granted students.read and has school_code NULL by design. GET /students currently computes effectiveSchool as school_code ?? user.school_code for finance_admin. When the caller omits school_code, effectiveSchool is NULL and the SQL query omits the school predicate, exposing both campuses' student rosters.
-- **Scope boundary:** BSEC-002 PR #702 also edits backend/src/routes/students.ts, but only the POST /students handler and its imports/helper. This task changes only the GET /students scope logic near the top of that file; do not overwrite or edit the POST handler. Open PR #692 changes auth middleware only. No active PR changes the new roster-scope helper or tests.
-- **Acceptance criteria:**
-  1. finance_admin requests without a non-empty explicit school_code fail closed with HTTP 400.
-  2. finance_admin requests with an explicit school_code are filtered to that school.
-  3. admin retains the ability to query all schools when no school_code is supplied.
-  4. teacher school/class restrictions remain unchanged and caller-supplied school_code cannot widen them.
-  5. Regression tests cover finance_admin, admin and teacher scope behavior; backend typecheck passes.
-  6. Focused PR targets master and does not overwrite BSEC-002's POST /students work.
-- **Verification:** rbac.ts confirms finance_admin has students.read; students.ts confirms the missing school predicate when school_code and user.school_code are both null. No production data accessed or changed.
-- **Remaining:** implement fail-closed resolver, tests and CI; open PR; verify checks.
-- **Exact next action:** add a pure roster-scope resolver and use it only in GET /students.
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/703
+- **Latest implementation commit:** 3513870392fc7f55d8820243a87e548cce95193c
+- **Checkpoint commit:** pending
+- **Changed files:**
+  - backend/src/routes/students.ts (GET /students scope block only)
+  - backend/src/utils/studentRosterScope.ts
+  - tests/backend-student-roster-scope.test.mts
+  - .github/workflows/backend-student-roster-scope.yml
+  - docs/backend-security/checkpoints/BSEC-003.md
+- **Defect:** finance_admin is granted students.read and has school_code NULL by design. GET /students previously computed effectiveSchool as school_code ?? user.school_code. When the caller omitted school_code, effectiveSchool was NULL and the SQL query omitted the school predicate, exposing both campuses' student rosters. Teachers with a NULL school assignment could also fall through to an unfiltered roster.
+- **Implementation:** a pure role-aware resolver now requires an explicit non-empty school_code for finance_admin (HTTP 400), preserves admin's intentional all-school access, pins teachers to their current school and assigned class, and rejects teacher accounts with no school assignment (HTTP 403). Caller-supplied school_code cannot widen a teacher's scope.
+- **Regression coverage:** seven tests cover finance_admin missing/blank/explicit school selection, admin global and explicit filtering, teacher school/class pinning, subject-only teacher class selection and unassigned teacher rejection.
+- **Verification:** GitHub Actions run https://github.com/PDS-David/sts-school-app/actions/runs/43445428668 completed successfully. Passed: locked workspace dependency installation, all seven roster-scope regression tests and backend TypeScript typecheck. Branch comparison before PR: 5 commits ahead of master, 0 behind; five changed paths. No production database or data was accessed or changed.
+- **Concurrency:** PR #702 edits only the POST /students workflow later in backend/src/routes/students.ts; this PR changes only the GET /students scope block near the top. The edits are in separate hunks. PR #692 changes auth middleware/claims only.
+- **Remaining:** PR review/merge. Do not mark the overall backend/security assignment complete.
+- **Exact next action:** review PR #703 and merge only after owner approval; then refresh from master and continue the backend audit.
