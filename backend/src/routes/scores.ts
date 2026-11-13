@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { z } from 'zod';
-import { query } from '../db/pool.js';
+import { query, withTransaction } from '../db/pool.js';
+import type { PoolClient } from 'pg';
 import { requireAuth, requirePerm } from '../middleware/auth.js';
 import { getGrade } from '../utils/grades.js';
 import { audit } from '../utils/audit.js';
@@ -16,13 +17,73 @@ router.use(requireAuth);
 // on why /bulk needs this too, not just type/shape validation.
 const scoreEntrySchema = z.object({
   student_id:     z.string().uuid(),
-  subject_id:     z.number().int(),
-  term_id:        z.number().int(),
+  subject_id:     z.number().int().positive(),
+  term_id:        z.number().int().positive(),
   ca1:            z.number().min(0),
   ca2:            z.number().min(0),
   exam:           z.number().min(0),
   teacher_remark: z.string().optional(),
 });
+
+/**
+ * Validate and lock all three school-owned references for a score write.
+ * Subject-only teachers may enter only their assigned subjects; class
+ * teachers retain the class-wide subject access exposed by GET /scores.
+ */
+async function validateScoreWriteScope(
+  client: PoolClient,
+  user: AuthUser,
+  score: { student_id: string; subject_id: number; term_id: number },
+): Promise<{ schoolCode: string } | { status: number; error: string }> {
+  const { rows: studentRows } = await client.query(
+    'SELECT school_code, class_name, deleted_at FROM students WHERE id=$1 FOR SHARE',
+    [score.student_id],
+  );
+  const student = studentRows[0];
+  if (!student || student.deleted_at) return { status: 404, error: 'Student not found' };
+
+  const { rows: subjectRows } = await client.query(
+    'SELECT school_code FROM subjects WHERE id=$1 FOR SHARE',
+    [score.subject_id],
+  );
+  const subject = subjectRows[0];
+  if (!subject) return { status: 400, error: 'Subject not found' };
+
+  const { rows: termRows } = await client.query(
+    'SELECT school_code FROM terms WHERE id=$1 FOR SHARE',
+    [score.term_id],
+  );
+  const term = termRows[0];
+  if (!term) return { status: 404, error: 'Term not found' };
+
+  if (!student.school_code || subject.school_code !== student.school_code || term.school_code !== student.school_code) {
+    return { status: 400, error: 'Student, subject and term must all belong to the same school.' };
+  }
+
+  if (user.role !== 'admin') {
+    if (user.role !== 'teacher') return { status: 403, error: 'Not authorized to write scores' };
+    if (!user.school_code || user.school_code !== student.school_code) {
+      return { status: 403, error: "You can't write scores outside your school" };
+    }
+    if (user.assigned_class) {
+      if (student.class_name !== user.assigned_class) {
+        return { status: 403, error: "You can't write scores outside your assigned class" };
+      }
+    } else if (!(user.assigned_subject_ids ?? []).some(id => Number(id) === score.subject_id)) {
+      return { status: 403, error: 'You can only enter scores for your assigned subjects.' };
+    }
+
+    const { rows: locks } = await client.query(
+      'SELECT locked_at FROM class_locks WHERE school_code=$1 AND class_name=$2 AND term_id=$3 FOR SHARE',
+      [student.school_code, student.class_name, score.term_id],
+    );
+    if (locks[0]) {
+      return { status: 403, error: 'This class is locked for the selected term. Ask an administrator to unlock it.' };
+    }
+  }
+
+  return { schoolCode: student.school_code };
+}
 
 // ── GET /scores/teacher/overview — aggregate-only marking and class analytics ──
 // A missing score row represents an unentered subject/term mark. This endpoint
@@ -154,8 +215,8 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
                     t.id AS term_id, t.name AS term_name
              FROM scores sc
              JOIN students s   ON s.id = sc.student_id
-             JOIN subjects sub ON sub.id = sc.subject_id
-             JOIN terms t      ON t.id  = sc.term_id
+             JOIN subjects sub ON sub.id = sc.subject_id AND sub.school_code = s.school_code
+             JOIN terms t      ON t.id  = sc.term_id AND t.school_code = s.school_code
              WHERE 1=1`;
   const params: unknown[] = [];
 
@@ -165,7 +226,8 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
   if (student_id) { params.push(student_id); sql += ` AND sc.student_id=$${params.length}`; }
   // Teachers see only their school
   if (user.role === 'teacher') {
-    params.push(user.school_code); sql += ` AND s.school_code=$${params.length}`;
+    if (!user.school_code) return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
+    params.push(user.school_code); sql += ` AND s.school_code=${params.length}`;
     if (user.assigned_class) {
       params.push(user.assigned_class); sql += ` AND s.class_name=$${params.length}`;
     } else if (user.assigned_subject_ids && user.assigned_subject_ids.length > 0) {
@@ -206,6 +268,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
     params.push(school_code); sql += ` AND s.school_code=$${params.length}`;
   }
 
+  if (user.role !== 'admin') sql += ' AND s.deleted_at IS NULL';
   sql += ' ORDER BY s.class_name, s.full_name, sub.name';
   const { rows } = await query(sql, params);
   return res.json({ scores: rows });
@@ -215,137 +278,107 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
 router.post('/', requirePerm('grades.write'), async (req, res) => {
   const parsed = scoreEntrySchema.safeParse(req.body);
   if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
-
   const d = parsed.data;
 
-  const scopeViolation = await checkTeacherStudentScope(req.user!, d.student_id, d.term_id);
-  if (scopeViolation) return res.status(scopeViolation.status).json({ error: scopeViolation.error });
+  const result = await withTransaction(async (client) => {
+    const scope = await validateScoreWriteScope(client, req.user!, d);
+    if ('error' in scope) return { ok: false as const, status: scope.status, error: scope.error };
 
-  // Fetch school config for max validation
-  const { rows: schRows } = await query(
-    `SELECT sc.ca1_max, sc.ca2_max, sc.exam_max
-     FROM schools sc JOIN students st ON st.school_code=sc.code
-     WHERE st.id=$1`, [d.student_id],
-  );
-  const cfg = schRows[0] ?? { ca1_max: 20, ca2_max: 20, exam_max: 60 };
-  if (d.ca1 > cfg.ca1_max || d.ca2 > cfg.ca2_max || d.exam > cfg.exam_max) {
-    return res.status(400).json({
-      error: `Score exceeds maximum (CA1≤${cfg.ca1_max}, CA2≤${cfg.ca2_max}, Exam≤${cfg.exam_max})`,
-    });
-  }
-
-  const grade = getGrade(d.ca1 + d.ca2 + d.exam);
-
-  const { rows } = await query(
-    // class_name (DATA-03): stamped from the students row at write time, never
-    // from the request. On conflict the original stamp is kept; a row that has
-    // none yet (recorded before this column existed) is stamped now.
-    `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at,class_name)
-     VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT class_name FROM students WHERE id=$1))
-     ON CONFLICT(student_id,subject_id,term_id)
-     DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now(),
-                   class_name=COALESCE(scores.class_name, EXCLUDED.class_name)
-     RETURNING *`,
-    [d.student_id, d.subject_id, d.term_id, d.ca1, d.ca2, d.exam,
-     grade, d.teacher_remark ?? null, req.user!.id],
-  );
-  await audit(req.user!, 'save_score', 'score', String(rows[0].id));
-  return res.json({ score: rows[0] });
-});
-
-// ── POST /scores/bulk  (batch entry for a whole class) ────────────────────────
-router.post('/bulk', requirePerm('grades.write'), async (req, res) => {
-  // Found live in Pass 10: this is the endpoint ScoreEntryScreen.tsx (the
-  // only mobile screen that writes scores) actually calls — but unlike
-  // POST /scores above, it never ran the shape/type schema, and never
-  // checked ca1/ca2/exam against the school's ca1_max/ca2_max/exam_max at
-  // all. Live-verified before this fix: a same-school teacher could submit
-  // e.g. ca1=50 for a school where ca1_max=15 and it saved silently
-  // (grade/total computed off the inflated number); a large enough value
-  // (e.g. ca1=999) instead crashed with a raw Postgres numeric-field-
-  // overflow surfaced as a generic 500, since the generated `total` column
-  // is NUMERIC(5,2). Both are now caught with the same 400 the single-score
-  // route already gives, before anything is written.
-  const bodySchema = z.object({ scores: z.array(scoreEntrySchema).min(1) });
-  const parsed = bodySchema.safeParse(req.body);
-  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
-  const { scores } = parsed.data;
-
-  // Check every distinct (student, term) pair in the batch is in scope
-  // before writing any of it — a partial batch write (some students saved,
-  // one silently rejected midway) would be worse than rejecting the whole
-  // request. Keyed by student+term rather than just student, since the
-  // class-lock check inside checkTeacherStudentScope() is per-term — a
-  // student could in principle appear in the same batch under two
-  // different term_ids (unusual, but the schema doesn't forbid it), and
-  // each needs its own lock check.
-  const uniquePairs = [...new Map(scores.map(s => [`${s.student_id}:${s.term_id}`, s])).values()];
-  for (const s of uniquePairs) {
-    const scopeViolation = await checkTeacherStudentScope(req.user!, s.student_id, s.term_id);
-    if (scopeViolation) return res.status(scopeViolation.status).json({ error: scopeViolation.error });
-  }
-
-  // Same per-school max-score check as POST /scores, run for every row
-  // before any write — a batch is usually all one school, but each row is
-  // still checked individually since nothing stops a client from mixing
-  // student_ids across schools in one payload.
-  type ScoreCfg = { ca1_max: number; ca2_max: number; exam_max: number };
-  const cfgCache = new Map<string, ScoreCfg>();
-  const getScoreCfg = async (studentId: string): Promise<ScoreCfg> => {
-    const cached = cfgCache.get(studentId);
-    if (cached) return cached;
-    const { rows: schRows } = await query(
-      `SELECT sc.ca1_max, sc.ca2_max, sc.exam_max
-       FROM schools sc JOIN students st ON st.school_code=sc.code
-       WHERE st.id=$1`, [studentId],
+    const { rows: schRows } = await client.query(
+      'SELECT ca1_max, ca2_max, exam_max FROM schools WHERE code=$1 FOR SHARE',
+      [scope.schoolCode],
     );
-    const cfg: ScoreCfg = schRows[0] ?? { ca1_max: 20, ca2_max: 20, exam_max: 60 };
-    cfgCache.set(studentId, cfg);
-    return cfg;
-  };
-  for (const s of scores) {
-    const cfg = await getScoreCfg(s.student_id);
-    if (s.ca1 > cfg.ca1_max || s.ca2 > cfg.ca2_max || s.exam > cfg.exam_max) {
-      return res.status(400).json({
-        error: `Score exceeds maximum for one or more students (CA1≤${cfg.ca1_max}, CA2≤${cfg.ca2_max}, Exam≤${cfg.exam_max})`,
-      });
+    const cfg = schRows[0] ?? { ca1_max: 20, ca2_max: 20, exam_max: 60 };
+    if (d.ca1 > Number(cfg.ca1_max) || d.ca2 > Number(cfg.ca2_max) || d.exam > Number(cfg.exam_max)) {
+      return {
+        ok: false as const,
+        status: 400,
+        error: `Score exceeds maximum (CA1≤${cfg.ca1_max}, CA2≤${cfg.ca2_max}, Exam≤${cfg.exam_max})`,
+      };
     }
-  }
 
-  const saved = [];
-  for (const s of scores) {
-    const grade = getGrade(s.ca1 + s.ca2 + s.exam);
-    const { rows } = await query(
-      // class_name stamp: same rule as POST /scores above (DATA-03).
+    const grade = getGrade(d.ca1 + d.ca2 + d.exam);
+    const { rows } = await client.query(
       `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at,class_name)
        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT class_name FROM students WHERE id=$1))
        ON CONFLICT(student_id,subject_id,term_id)
        DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now(),
                      class_name=COALESCE(scores.class_name, EXCLUDED.class_name)
        RETURNING *`,
-      [s.student_id, s.subject_id, s.term_id, s.ca1, s.ca2, s.exam,
-       grade, s.teacher_remark ?? null, req.user!.id],
+      [d.student_id, d.subject_id, d.term_id, d.ca1, d.ca2, d.exam,
+       grade, d.teacher_remark ?? null, req.user!.id],
     );
-    saved.push(rows[0]);
-  }
+    return { ok: true as const, score: rows[0] };
+  });
 
-  // ScoreEntryScreen.tsx (the only mobile screen that writes scores) calls
-  // this endpoint, not POST / above — which means bulk saves were never
-  // showing up in the admin Audit Log at all until now. One summary entry
-  // per batch (not one per row) keeps the log readable for a 30-student
-  // class save.
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  await audit(req.user!, 'save_score', 'score', String(result.score.id));
+  return res.json({ score: result.score });
+});
+
+// ── POST /scores/bulk  (batch entry for a whole class) ────────────────────────
+router.post('/bulk', requirePerm('grades.write'), async (req, res) => {
+  const bodySchema = z.object({
+    scores: z.array(scoreEntrySchema).min(1).max(500)
+      .refine(items => new Set(items.map(s => `${s.student_id}:${s.subject_id}:${s.term_id}`)).size === items.length,
+        'A student/subject/term score may appear only once per batch'),
+  });
+  const parsed = bodySchema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
+  const { scores } = parsed.data;
+
+  // Validate and write the entire batch in one transaction. A failure on any
+  // row (scope, school maxima, FK, numeric precision, or a database trigger)
+  // rolls back every upsert rather than leaving a partially marked class.
+  const result = await withTransaction(async (client) => {
+    for (const score of scores) {
+      const scope = await validateScoreWriteScope(client, req.user!, score);
+      if ('error' in scope) {
+        return { ok: false as const, status: scope.status, error: scope.error };
+      }
+
+      const { rows: schRows } = await client.query(
+        'SELECT ca1_max, ca2_max, exam_max FROM schools WHERE code=$1 FOR SHARE',
+        [scope.schoolCode],
+      );
+      const cfg = schRows[0] ?? { ca1_max: 20, ca2_max: 20, exam_max: 60 };
+      if (score.ca1 > Number(cfg.ca1_max) || score.ca2 > Number(cfg.ca2_max) || score.exam > Number(cfg.exam_max)) {
+        return {
+          ok: false as const,
+          status: 400,
+          error: `Score exceeds maximum for one or more students (CA1≤${cfg.ca1_max}, CA2≤${cfg.ca2_max}, Exam≤${cfg.exam_max})`,
+        };
+      }
+    }
+
+    const saved = [];
+    for (const score of scores) {
+      const grade = getGrade(score.ca1 + score.ca2 + score.exam);
+      const { rows } = await client.query(
+        `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at,class_name)
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT class_name FROM students WHERE id=$1))
+         ON CONFLICT(student_id,subject_id,term_id)
+         DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now(),
+                       class_name=COALESCE(scores.class_name, EXCLUDED.class_name)
+         RETURNING *`,
+        [score.student_id, score.subject_id, score.term_id, score.ca1, score.ca2, score.exam,
+         grade, score.teacher_remark ?? null, req.user!.id],
+      );
+      saved.push(rows[0]);
+    }
+    return { ok: true as const, saved };
+  });
+
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  const saved = result.saved;
+
   const subjectIds = [...new Set(scores.map(s => s.subject_id))];
-  const termIds    = [...new Set(scores.map(s => s.term_id))];
+  const termIds = [...new Set(scores.map(s => s.term_id))];
   await audit(
     req.user!, 'save_scores_bulk', 'score', undefined,
     `${saved.length} score(s) saved — subject(s) ${subjectIds.join(',')}, term(s) ${termIds.join(',')}`,
   );
 
-  // Push the affected students. scores.student_id references students.id,
-  // not users.id directly (a student may not even have a login) — resolve
-  // through students.user_id the same way GET /scores/report/:student_id
-  // above already does. One push per student per batch save, not one per
-  // row, matching the "one audit entry per batch" pattern just above.
   const studentIds = [...new Set(saved.map(s => s.student_id))];
   const { rows: studentUserRows } = await query(
     `SELECT user_id FROM students WHERE id = ANY($1) AND user_id IS NOT NULL`, [studentIds],
@@ -447,9 +480,11 @@ router.get('/report/:student_id', async (req, res) => {
     `SELECT sc.*, sub.name AS subject_name,
             (SELECT ROUND(AVG(s2.total),2) FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
              WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
+               AND st2.school_code=$4
                AND COALESCE(s2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)) AS class_average,
             (SELECT MAX(s2.total) FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
              WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
+               AND st2.school_code=$4
                AND COALESCE(s2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)) AS class_highest,
             -- Position within the class for THIS subject/term — standard
             -- competition ranking (ties share a position; the next distinct
@@ -460,13 +495,14 @@ router.get('/report/:student_id', async (req, res) => {
             -- rebuilt the template to match it.
             (SELECT COUNT(*)+1 FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
              WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
+               AND st2.school_code=$4
                AND COALESCE(s2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)
                AND s2.total > sc.total) AS subject_position
      FROM scores sc
-     JOIN subjects sub ON sub.id=sc.subject_id
+     JOIN subjects sub ON sub.id=sc.subject_id AND sub.school_code=$4
      WHERE sc.student_id=$2 AND sc.term_id=$3
      ORDER BY sub.name`,
-    [student.class_name, student.id, resolvedTermId],
+    [student.class_name, student.id, resolvedTermId, student.school_code],
   );
 
   const { rows: attRows } = await query(
@@ -504,8 +540,9 @@ router.get('/report/:student_id', async (req, res) => {
     `SELECT s3.student_id, SUM(s3.total) AS grand_total
      FROM scores s3 JOIN students st3 ON st3.id = s3.student_id
      WHERE COALESCE(s3.class_name, st3.class_name) = $1 AND s3.term_id = $2
+       AND st3.school_code=$3
      GROUP BY s3.student_id`,
-    [termClass, resolvedTermId],
+    [termClass, resolvedTermId, student.school_code],
   );
   const classSize = classTotals.length;
   const myTotal = classTotals.find((r) => r.student_id === student.id)?.grand_total;
@@ -575,10 +612,10 @@ router.get('/session-report/:student_id', async (req, res) => {
 
   const { rows: scoreRows } = await query(
     `SELECT sc.*, sub.name AS subject_name
-     FROM scores sc JOIN subjects sub ON sub.id = sc.subject_id
+     FROM scores sc JOIN subjects sub ON sub.id = sc.subject_id AND sub.school_code=$3
      WHERE sc.student_id=$1 AND sc.term_id = ANY($2::int[])
      ORDER BY sub.name`,
-    [student.id, termIds],
+    [student.id, termIds, student.school_code],
   );
 
   // Group each subject's per-term totals together
