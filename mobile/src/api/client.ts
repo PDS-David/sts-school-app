@@ -166,6 +166,11 @@ api.interceptors.response.use(
       }
     }
 
+    // Outbox replay must never enqueue itself again. If connectivity drops
+    // during a replay, reject so flushOutbox leaves the original item in place
+    // for the next reconnect instead of replacing it with a duplicate entry.
+    if (original?._skipOfflineQueue) return Promise.reject(error);
+
     // ── Offline handling: only kicks in when the request never reached the
     //    server at all (no response object = network-level failure). Real
     //    server errors (4xx/5xx) are left alone and rejected normally. ──────────
@@ -288,7 +293,9 @@ export function flushOutbox(): Promise<{ synced: number; failed: number; remaini
       let failed = 0;
       for (const item of queue) {
         try {
-          await api.request({ method: item.method, url: item.url, data: item.data });
+          // Bypass the normal offline-write interceptor: a failed replay must
+          // leave this same queue item pending, not enqueue a second copy.
+          await api.request({ method: item.method, url: item.url, data: item.data, _skipOfflineQueue: true } as any);
           await removeFromOutbox(item.id);
           synced++;
         } catch (e: any) {
