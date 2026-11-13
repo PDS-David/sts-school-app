@@ -18,7 +18,8 @@ Into a single unified **Expo React Native Android app** backed by a **Node.js/Ex
 ```
 sts-school-app/
 ├── backend/          → Node.js + Express + TypeScript + PostgreSQL
-│   ├── schema.sql    → Full database schema (run this first)
+│   ├── schema.sql    → Complete fresh-install schema
+│   ├── migrations/   → Immutable numbered incremental migrations
 │   └── src/
 │       ├── routes/   → auth, students, scores, attendance, academic,
 │       │               messages, weeklyEfforts, learning, admin
@@ -103,7 +104,7 @@ A class teacher can "close" her own class's records for a term from Classes → 
 
 `DELETE /students/:id` no longer permanently erases a student. A teacher may delete a student under their own class or subject care directly (no admin approval needed); the record is flagged `deleted_at`/`deleted_by` rather than removed, so every historical score/attendance/class-record/weekly-effort/submission/invoice tied to that student still resolves correctly. A deleted student disappears from the roster, ward list, self-lookup, and materials/assessments visibility for everyone, and can't be written to again (scores, attendance, etc. all 404) until an admin restores it from Admin → Deleted Students, a one-tap action against `POST /students/:id/restore`. Both the delete and the restore are recorded in the Audit Log.
 
-**Migration note:** if you have an existing database, run the updated `backend/schema.sql` (or just its two `ALTER TABLE ... ADD COLUMN IF NOT EXISTS` statements and the `CREATE INDEX` for `students.deleted_at`/`deleted_by`) before deploying this change — both columns are nullable, so this is a safe, additive migration with no downtime or backfill required.
+**Migration note:** do not replay `backend/schema.sql` against an existing production database. New schema changes use numbered files in `backend/migrations/` and the versioned runner (`npm run db:migrate --workspace backend`). The runner verifies SHA-256 checksums and refuses to baseline an existing untracked schema. Existing databases without a migration ledger require the owner-approved OPS-05 schema-drift review before adoption.
 
 ## Content Scope (materials, questions & assessments)
 
@@ -160,7 +161,8 @@ connection role must be able to create objects in `public` and install `pgcrypto
 (or it may already be installed). The existing pool enables SSL when
 `NODE_ENV=production`; this is independent of the hosting provider. No Render or
 Supabase-specific SDK/service is required. Do not run `db:migrate` or `db:seed`
-before this command: the bootstrap itself applies the complete schema.
+before this command: the bootstrap itself applies the complete schema and stamps
+its immutable `0001_baseline.sql` migration marker.
 
 Schema, foundation and an `app_bootstrap` completion/checksum record are committed
 atomically. Failure rolls back the transaction. Concurrent bootstrap invocations
@@ -171,8 +173,20 @@ extension-owned objects may already exist.
 
 A repeated invocation with the same schema/foundation checksum is a no-op. It
 never resets current terms or replays schema over a database already in use.
-A different checksum is refused: use a separately reviewed migration for later
-schema changes (`db:migrate` remains the existing manual cumulative-schema tool).
+A different checksum is refused: use a separately reviewed numbered migration
+for later schema changes. Never edit a migration after it has been applied; the
+runner aborts if an applied migration's name or checksum changes.
+
+For migration operations (run from the repository root):
+
+```bash
+npm run db:migrate:status --workspace backend  # read-only status
+npm run db:migrate --workspace backend         # apply pending numbered migrations
+npm run db:migrate:fresh --workspace backend   # complete schema replay on an empty application schema only
+```
+
+`db:migrate` defaults to `--all`. An existing database with no baseline is not
+silently adopted; complete OPS-05 drift review and owner approval first.
 The completion marker is not a schema-drift checker or a repair mechanism.
 Neither application startup nor `npm run build` runs bootstrap/migrations.
 
