@@ -189,3 +189,15 @@ test('rejects superficial lesson bodies', () => {
   invalid.units[0].body_sha256 = sha256(invalid.units[0].body);
   assert.equal(packageSchema.safeParse(invalid).success, false);
 });
+
+test('rejects approval or verification claims without evidence references', () => {
+  const invalid: any = structuredClone(ss2Package);
+  invalid.units[0].state = {
+    content_approval: 'APPROVED',
+    approval_reference: null,
+    implementation: 'IMPLEMENTED',
+    verification: 'VERIFIED',
+    verification_reference: null,
+  };
+  assert.equal(packageSchema.safeParse(invalid).success, false);
+});
