@@ -94,7 +94,7 @@ When a corrected or researched Primary 4 lesson is opened through the learning r
 4. The learning route regenerates the lesson summary and a fresh five-question standard assessment from the approved lesson source on the next topic-completion request.
 5. Assessment question retrieval, submission and answer review reject stale or withdrawn Primary 4 assessments.
 
-The tests verify the source fingerprint, stale assessment retirement, topic-link clearing, and rejection of an assessment built from old lesson content. The production database is not directly connected in this session, so existing live rows are not bulk-updated here; the deployed learning route performs this rebuild safely when the affected lesson is next accessed.
+The tests verify the source fingerprint, stale assessment retirement, topic-link clearing, and rejection of an assessment built from old lesson content. The production database is not directly connected in this session, so existing live rows are not bulk-updated here; the deployed learning route performs this rebuild safely when the affected lesson is next accessed. The audited ingestion path also refreshes existing researched-package rows only when their exact subject/term/order/title/package-filename identity matches, closes their stale linked assessments, and clears their cached summaries/assessment links. It never rewrites original archive rows.
 
 ## Verification
 
