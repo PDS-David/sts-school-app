@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, RefreshControl, TouchableOpacity, Image, Alert } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, RefreshControl, TouchableOpacity, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../api/client';
 import { Card, Btn, Loader, Empty, GradePill, RowItem, SectionHeader } from '../components/UI';
@@ -8,6 +8,7 @@ import { useAuth } from '../api/AuthContext';
 import { useWards } from '../api/WardContext';
 import { getSchoolBrand } from '../schoolBranding';
 import { buildTermReportHtml, printReportHtml, exportReportHtml } from '../utils/reportPdf';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 
 export default function MyResultsScreen({ route, navigation }: any) {
   // A parent can pass a specific parentStudentId via route (e.g. from a student
@@ -24,6 +25,7 @@ export default function MyResultsScreen({ route, navigation }: any) {
   const [refreshing,setRefreshing]= useState(false);
   const [error,     setError]     = useState('');
   const [pdfBusy, setPdfBusy] = useState<'print' | 'export' | null>(null);
+  const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
 
   const fetchReport = async () => {
     setError('');
@@ -106,7 +108,7 @@ export default function MyResultsScreen({ route, navigation }: any) {
       const html = await buildTermReportHtml(report, brand);
       await printReportHtml(html);
     } catch (e: any) {
-      Alert.alert('Could not print', e?.message ?? 'Something went wrong.');
+      setInfoDialog({ title: 'Could not print report', message: e?.message ?? 'Something went wrong. Please try again.' });
     } finally {
       setPdfBusy(null);
     }
@@ -118,7 +120,7 @@ export default function MyResultsScreen({ route, navigation }: any) {
       const html = await buildTermReportHtml(report, brand);
       await exportReportHtml(html, `${student.full_name}-${term?.name ?? 'report'}`.replace(/\s+/g, '_'));
     } catch (e: any) {
-      Alert.alert('Could not export', e?.message ?? 'Something went wrong.');
+      setInfoDialog({ title: 'Could not export report', message: e?.message ?? 'Something went wrong. Please try again.' });
     } finally {
       setPdfBusy(null);
     }
@@ -247,6 +249,7 @@ export default function MyResultsScreen({ route, navigation }: any) {
           <Text style={styles.nextTerm}>📅  Next term begins: {term.next_term_begins}</Text>
         </Card>
       )}
+      <ConfirmDialog visible={!!infoDialog} title={infoDialog?.title ?? ''} message={infoDialog?.message ?? ''} hideCancel onConfirm={() => setInfoDialog(null)} onCancel={() => setInfoDialog(null)} />
     </ScrollView>
   );
 }
