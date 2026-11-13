@@ -137,7 +137,7 @@ if (!SERVER_URL) {
   });
 
   test('existing untracked application schema is never auto-baselined or fresh-replayed', async () => {
-    const client = await dbClient(DB_EXISTING);
+    let client = await dbClient(DB_EXISTING);
     try { await client.query('CREATE TABLE schools (code TEXT PRIMARY KEY)'); }
     finally { await client.end(); }
 
