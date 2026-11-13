@@ -85,7 +85,7 @@ test('Economics source-rule guards reject wrong hashes, ambiguous anchors and mi
       text: rule.anchor,
     };
     assert.throws(() => applyRules({ ...input, sha256: '0'.repeat(64) }, [rule]), /source mismatch/);
-    assert.throws(() => applyRules({ ...input, text: rule.anchor + '\\n' + rule.anchor }, [rule]), /ambiguous/);
+    assert.throws(() => applyRules({ ...input, text: rule.anchor + '\n' + rule.anchor }, [rule]), /ambiguous/);
     assert.throws(() => applyRules({ ...input, text: 'anchor absent' }, [rule]), /missing/);
   }
   assert.equal(p.source_rules.filter(rule => rule.op === 'source_alias').length, 3);
