@@ -30,7 +30,8 @@
     "2026-11-08 FA-INV-T3: appended the 3rd Term inventory items (18) and set FA-INV-T3 to IMPLEMENTED_TESTING_DEFERRED. All 18 new items are PENDING because no coverage, lesson, disposition, preservation record or factual check has been written. The body has seven week labels covering ten weeks, no table or equation, one header picture (a third-party tutor letterhead, a provenance question for the owner) and no revision or examination marker, so no marker item was added. No answer key is printed for any question. Nothing is approved, verified or deployed.",
     "FA-TEST-PACKAGE (2026-11-13): added tests/ss1/financial-accounting.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; explicit PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current partial/unresolved coverage/open-item boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed.",
     "FA-PRE-T1 (2026-11-13): verified first-term source member hash and inspected original DOCX paragraphs 15–31. Recorded title, subject/class heading, scheme heading, literal WEEK/TOPIC header with trailing space and all seven scheme rows verbatim in FA-PRE-T1.md. Mixed row numbering/separators preserved; row 1 has no literal number; row 4–5 continues in a following paragraph. No preamble coverage entry or classify_marker rule was added; the scheme is before the first body week and is recorded in FA-PRE-T1.md because scheme rows do not contain body week markers and the body begins at WEEK ONE. Verified no REVISION occurrence and EXAMINATION occurs twice only in prose, not as a section. No scheme row became a lesson.",
-    "2026-11-13 FA-WK-T1-W02 completed: six objective-level coverage entries (two PARTIAL, four UNRESOLVED); exact evaluation wording at lines 313/315 and all ten weekend transactions at lines 329-347 recorded. Jan 28 payment term is ambiguous; Jan 2 is not double-entry coverage. Added bounded lesson task FA-LES-T1-W02-TRANSACTION-CLASSIFICATION and blocking open items for unanswered assessment and missing external reading pages 16-17. Diagram geometry remains assigned to FA-VIS-T1-W02-T03-DIAGRAMS. Source unchanged."
+    "2026-11-13 FA-WK-T1-W02 completed: six objective-level coverage entries (two PARTIAL, four UNRESOLVED); exact evaluation wording at lines 313/315 and all ten weekend transactions at lines 329-347 recorded. Jan 28 payment term is ambiguous; Jan 2 is not double-entry coverage. Added bounded lesson task FA-LES-T1-W02-TRANSACTION-CLASSIFICATION and blocking open items for unanswered assessment and missing external reading pages 16-17. Diagram geometry remains assigned to FA-VIS-T1-W02-T03-DIAGRAMS. Source unchanged.",
+    "2026-11-13 FA-LES-T1-W02-TRANSACTION-CLASSIFICATION implemented as original supplement. Answers both evaluation questions and all ten weekend items, flags Jan 28 payment ambiguity, and includes six keyed practice questions totalling 26 marks. Approval remains PENDING; verification DEFERRED; external reading pages 16-17 and diagram remain unresolved."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -44,9 +45,9 @@
     "LESSON": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 10,
+    "IMPLEMENTED_TESTING_DEFERRED": 11,
     "BLOCKED": 2,
-    "PENDING": 60
+    "PENDING": 59
   },
   "items": [
     {
@@ -2708,8 +2709,8 @@
         "FA-SRC-T1",
         "FA-WK-T1-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. FA-WK-T1-W02 indexes the source prompts and identifies the missing answer key.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as SUP-SS1-FINANCIAL-ACCOUNTING-T1-W02-TRANSACTION-CLASSIFICATION in financial-accounting.json; body SHA-256 cc45ba431250fca46bb4e3da578961bf9054feec89721be1f71c848bffd77fad. Provides full answers to source evaluation questions 313/315 and a reasoned key for all ten weekend items, explicitly flags Jan 28 as ambiguous, and includes six original practice questions with marking criteria (26 marks). Linked transaction meaning, cash/credit, evaluation and weekend assignment coverage as IMPLEMENTED_EQUIVALENT. Content approval PENDING; verification DEFERRED; external textbook pages 16-17 and diagram remain unresolved. See FA-LES-T1-W02-TRANSACTION-CLASSIFICATION.md.",
       "completion_condition": "An original supplement teaches transaction meaning and cash/credit classification, provides reasoned answers to both evaluation questions and all ten weekend items, and includes original marked practice. It does not claim to reproduce the missing textbook or teach double entry ahead of Weeks Four–Five. Approval remains PENDING; verification DEFERRED."
     }
   ],
@@ -2726,7 +2727,6 @@
     }
   },
   "next_runnable": [
-    "FA-LES-T1-W02-TRANSACTION-CLASSIFICATION",
     "FA-WK-T1-W03",
     "FA-WK-T1-W04-W05",
     "FA-WK-T1-W06-W07",
