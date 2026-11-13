@@ -49,6 +49,6 @@ jobs:
       - name: Bootstrap disposable PostgreSQL schema
         run: npm run db:bootstrap --workspace=backend
       - name: Run attendance transaction regressions
-        run: node --import tsx --test tests/backend-attendance-bulk.db.test.mts
+        run: node --import tsx --test tests/backend-attendance-bulk.integration.test.mts
       - name: Typecheck backend
         run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
