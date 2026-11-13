@@ -245,6 +245,12 @@ test('learning content writes and reads reject cross-school subject, term and qu
     const legacyQuestionPayload = await legacyQuestionResponse.json() as { questions: unknown[] };
     assert.equal(legacyQuestionPayload.questions.length, 0,
       'assessment question delivery must filter legacy cross-school question links');
+    const studentLegacyAssessment = await get(
+      `/assessments/${legacyAssessment[0].id}/questions`,
+      student.token,
+    );
+    assert.equal(studentLegacyAssessment.status, 404,
+      'students must not open legacy assessments whose subject or term belongs to another school');
 
     const validQuestionResponse = await get(`/assessments/${validAssessmentPayload.assessment.id}/questions`, admin.token);
     assert.equal(validQuestionResponse.status, 200);
