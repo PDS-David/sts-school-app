@@ -70,13 +70,21 @@ export default function EssayAnswerReviewScreen({ route }: any) {
     save(answer, suggested);
   };
 
-  if (loading) return <Loader />;
+  if (loading && answers.length === 0) return <Loader />;
+  if (loadError && answers.length === 0) return (
+    <View style={{ flex: 1, justifyContent: 'center', padding: Spacing.md, backgroundColor: Colors.background }}>
+      <Empty message={loadError} />
+      <Btn label='Retry loading answers' variant='outline' onPress={() => { setLoading(true); load(); }} />
+    </View>
+  );
 
   return (
     <ScrollView
       contentContainerStyle={{ padding: Spacing.md }}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); load(); }} />}
     >
+      {!!loadError && <Card style={{ marginBottom: Spacing.md }}><Text style={{ color: Colors.error }}>{loadError}</Text><Btn label='Retry loading answers' variant='outline' onPress={() => load()} style={{ marginTop: Spacing.sm }} /></Card>}
+      {answers.length === 0 && !loadError ? <Empty message='No answers are awaiting review.' /> : null}
       {answers.map((a) => (
         <Card key={a.id} style={styles.card}>
           <View style={styles.headerRow}>
@@ -115,19 +123,21 @@ export default function EssayAnswerReviewScreen({ route }: any) {
               <View style={styles.gradeRow}>
                 <Input
                   value={drafts[a.id] ?? a.awarded_points ?? a.ai_suggested_points ?? ''}
-                  onChangeText={(v) => setDrafts((d) => ({ ...d, [a.id]: v }))}
+                  onChangeText={(v) => { setDrafts((d) => ({ ...d, [a.id]: v })); setSaveErrors((e) => ({ ...e, [a.id]: '' })); }}
                   placeholder={`0 - ${a.max_points}`}
                   keyboardType="numeric"
                   style={{ width: 90 }}
                 />
-                <Btn label="Save score" onPress={() => save(a)} loading={saving === a.id} style={{ flex: 1 }} />
+                <Btn label="Save score" onPress={() => save(a)} loading={saving === a.id} disabled={saving !== null} style={{ flex: 1 }} />
               </View>
+              {!!saveErrors[a.id] && <Text style={styles.warnText}>{saveErrors[a.id]}</Text>}
               {a.grading_status === 'ai_graded' && (
                 <Btn
                   label={`Accept Brainee's ${a.ai_suggested_points}/${a.max_points}`}
                   onPress={() => acceptSuggestion(a)}
                   variant="outline"
                   loading={saving === a.id}
+                  disabled={saving !== null}
                   style={{ marginTop: Spacing.xs }}
                 />
               )}
