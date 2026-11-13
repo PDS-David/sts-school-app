@@ -38,7 +38,7 @@ Worker branch: `agent/frontend-assessment-recovery-20261113`
 - `28290fb26be71fb82f301a771cb58f90d35c109e` — question retry and submission guards.
 - `8e7eee36570b64738893178269f012f61b06da43` — require live confirmation for exam submission.
 - `53e503bbd50b1cd28bfaade673595e4f04ea13ab` — document immediate-result offline exclusion.
-- Checkpoint commit: pending.
+- Checkpoint created in commit `84eb935ee000ac777474b345887dab37c1244be1`.
 
 ## Verification
 - Static inspection confirms assessment list and question retries reissue their existing GET endpoints.
