@@ -22,6 +22,8 @@
 - Both screens render ConfirmDialog for print/export errors.
 - CI pending; no PDF print/export device/browser test is claimed.
 
+- Follow-up on shared blocker: PR #788 now has passing Mobile TypeScript, Android readiness and SS1 package-integrity checks on its latest head. It is still open; rerun this branch's checks after #788 merges. PR #788's JSS3 and cross-subject package audits were still in progress at the last check.
+
 ## Remaining work
 - Check mobile TypeScript and Android readiness.
 - Validate report printing/export in browser and native runtime when a device/browser test environment is available.
