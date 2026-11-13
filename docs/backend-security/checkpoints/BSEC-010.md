@@ -1,0 +1,22 @@
+# Checkpoint — BSEC-010
+
+- **Task ID:** BSEC-010
+- **Title:** Serialize activation and forgotten-password attempts to enforce account lockouts
+- **Status:** implementation committed; CI verification pending
+- **Owner:** ChatGPT implementation worker
+- **Base branch:** master
+- **Working branch:** agent/backend-credential-attempt-locking-20261113
+- **Latest implementation commit:** pending
+- **Changed files:**
+  - backend/src/routes/auth.ts
+  - backend/src/utils/credentialAttempts.ts
+  - tests/backend-credential-attempts.integration.test.mts
+  - .github/workflows/backend-credential-attempt-locking.yml
+  - this checkpoint
+- **Defect:** POST /auth/activate and POST /auth/forgot-password/reset read per-account failure counters, verify credentials, then update counters in separate autocommit statements. Concurrent wrong attempts could read the same count and overwrite one another, allowing parallel requests to bypass the five-attempt/hour lockout. Concurrent activation attempts could also race to consume the same one-time activation code.
+- **Implementation:** both flows now select the user row FOR UPDATE inside a PostgreSQL transaction. Failed-attempt increments, lockout timestamps and audit records commit atomically. Activation code consumption and initial password creation are one transaction, so only one request can consume the code. Password reset preserves existing active/expiry/security-question checks and response behavior.
+- **Regression coverage:** PostgreSQL tests cover six simultaneous wrong activation codes, concurrent one-time activation, six simultaneous wrong recovery answers, and successful recovery clearing lockout state.
+- **Verification:** source and tests fetched back from GitHub and reviewed. Dedicated PostgreSQL 16 workflow added; CI pending. No production accounts or data were accessed or changed.
+- **Remaining:** run PostgreSQL integration tests and backend TypeScript typecheck; correct genuine failures; open focused PR; verify required checks.
+- **Exact next action:** inspect current branch head and CI run for Backend credential attempt locking.
+- **Repository hygiene note:** one helper-file creation was accidentally sent to master without its branch argument; the file was immediately removed in commit 3e0f985972ad485f60fe5940c8cee60535e774b6. The helper exists only on this dedicated branch. Verify master no longer contains that path.
