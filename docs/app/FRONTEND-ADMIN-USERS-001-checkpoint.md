@@ -33,7 +33,7 @@ Worker branch: `agent/frontend-admin-users-current-20261113`
 
 ## Commits
 - `3165082e4113bc9005a53a9edd76137e9fbde462` — reapply the focused implementation on current master.
-- Checkpoint commit: pending.
+- Checkpoint commit: `b4ac4ed5be4927dbcb3a0187832a5410cdfd39fa`.
 
 ## Verification
 - Static inspection confirms school/class/subject lookup calls remain scoped by school_code.
