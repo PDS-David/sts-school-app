@@ -81,6 +81,27 @@ test('AI endpoints enforce a per-account limit without Redis and isolate users s
       const adminResponse = await sendInvalidChat(tokenAdmin);
       assert.equal(adminResponse.status, 400, 'the existing administrator bypass must be preserved');
     }
+
+    const oversizedChat = await fetch(`http://127.0.0.1:${port}/ai/chat`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${tokenAdmin}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'x'.repeat(4001) }),
+    });
+    assert.equal(oversizedChat.status, 400, 'oversized prompts must be rejected before provider invocation');
+
+    const oversizedHistory = await fetch(`http://127.0.0.1:${port}/ai/chat`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${tokenAdmin}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'hello', history: Array.from({ length: 7 }, () => ({ role: 'user', text: 'hello' })) }),
+    });
+    assert.equal(oversizedHistory.status, 400, 'history must be capped at six validated turns');
+
+    const oversizedTopic = await fetch(`http://127.0.0.1:${port}/ai/explain`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${tokenAdmin}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ topic: 'x'.repeat(1001) }),
+    });
+    assert.equal(oversizedTopic.status, 400, 'explain topics must be bounded before provider invocation');
   } finally {
     if (server) {
       server.closeAllConnections();
