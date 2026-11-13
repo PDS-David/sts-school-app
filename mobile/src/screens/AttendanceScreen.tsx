@@ -109,7 +109,7 @@ export default function AttendanceScreen({ navigation }: any) {
     let cancelled = false;
     setAttendanceLoading(true);
     setAttendanceError('');
-    api.get(`/attendance?class_name=${encodeURIComponent(selClass)}&term_id=${selTerm}`)
+    api.get('/attendance', { params: { class_name: selClass, term_id: selTerm, school_code: effectiveSchoolCode ?? undefined } })
       .then(r => {
         if (cancelled) return;
         const existing: Record<string, string> = { ...init };
