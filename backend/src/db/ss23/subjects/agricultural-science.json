@@ -49,7 +49,7 @@
       "term": "1st Term",
       "canonical_subject": "Agricultural Science",
       "title": "Physical Properties — FAO Soils Portal",
-      "url": "https://www.fao.org/soils-portal/soil-survey/soil-properties/physical-properties/en/",
+      "url": "https://www.fao.org/soils-portal/data-hub/soil-properties/physical-properties/en/",
       "content": "FAO describes soil texture as determined by the mineral components sand, silt and clay. Texture affects the retention of water and nutrients. Soil structure is formed when textural components aggregate into peds; structure affects aeration, water movement, heat transfer, root growth and resistance to erosion.",
       "evidence": {
         "locator": "Physical Properties, Soil Structure and Soil Texture sections",
@@ -74,6 +74,23 @@
       },
       "rights": "Factual summary paraphrased for educational context; no protected text or figures reproduced.",
       "attribution": "USDA Natural Resources Conservation Service, National Agronomy Manual, Part 508.",
+      "reuse_status": "PERMITTED"
+    },
+    {
+      "source_id": "SS23-EXT-PSU-SOIL-ACIDITY-AGLIME",
+      "sha256": "c1b2eee1fc56b5e63abeefb0e249e403ae3f70246846a29c3b6ad0638a6ceca5",
+      "class_name": "SS 2",
+      "term": "1st Term",
+      "canonical_subject": "Agricultural Science",
+      "title": "Soil Acidity and Aglime — Penn State Extension",
+      "url": "https://extension.psu.edu/soil-acidity-and-aglime",
+      "content": "Penn State Extension explains that agricultural liming materials neutralize soil acidity, commonly through carbonates, oxides or hydroxides. Calcium sulfate (gypsum) and magnesium sulfate are not liming materials because they do not neutralize soil acidity. Lime recommendations should be based on a soil test.",
+      "evidence": {
+        "locator": "Aglime Materials section",
+        "explanation": "Supports the technical review of the school's listing of gypsum as a liming material."
+      },
+      "rights": "Factual summary paraphrased for educational context; no protected text or figures reproduced.",
+      "attribution": "Penn State Extension, Soil Acidity and Aglime.",
       "reuse_status": "PERMITTED"
     }
   ],
@@ -450,6 +467,15 @@
           "rights": "Factual summary paraphrased for educational context; no protected text or figures reproduced.",
           "attribution": "USDA NRCS, National Agronomy Manual.",
           "reuse_status": "PERMITTED"
+        },
+        {
+          "source_id": "SS23-EXT-PSU-SOIL-ACIDITY-AGLIME",
+          "source_sha256": "c1b2eee1fc56b5e63abeefb0e249e403ae3f70246846a29c3b6ad0638a6ceca5",
+          "role": "AUTHORED_SUPPLEMENT",
+          "locator": "Aglime Materials section",
+          "rights": "Factual summary paraphrased for educational context; no protected text or figures reproduced.",
+          "attribution": "Penn State Extension, Soil Acidity and Aglime.",
+          "reuse_status": "PERMITTED"
         }
       ],
       "state": {
@@ -639,6 +665,22 @@
           "explanation": "Supports the comparison of the school's particle-size table with a recognized classification."
         }
       ]
+    },
+    {
+      "id": "COV-SS2-AG-T1-EXT-PSU-LIMING",
+      "source_id": "SS23-EXT-PSU-SOIL-ACIDITY-AGLIME",
+      "objective": "Distinguish soil-acidity-neutralizing lime from gypsum",
+      "objective_locator": "Penn State Extension, Aglime Materials",
+      "status": "SUPPORTED",
+      "unit_ids": [
+        "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W02-SOIL-FORMATION"
+      ],
+      "evidence": [
+        {
+          "locator": "Aglime Materials section",
+          "explanation": "The reference states that calcium sulfate (gypsum) is not a liming material because it does not neutralize soil acidity."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -682,7 +724,7 @@
       "id": "AG2-T1-SOIL-LIMING",
       "kind": "FACT",
       "detail": "The source lists gypsum as a liming material; its role needs technical review before students are taught it as a general acidity-correction material.",
-      "required_action": "Have the subject specialist verify the source list and approve the correct distinction between lime and gypsum.",
+      "required_action": "Subject specialist must decide how to annotate or correct the source's gypsum entry using the technical reference; if gypsum is retained, distinguish its calcium/sulfur or sodic-soil uses from acidity-neutralizing lime.",
       "affected_ids": [
         "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W02-SOIL-FORMATION",
         "SS23-SRC-237dbcc77749"
