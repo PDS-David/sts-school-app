@@ -8,11 +8,11 @@ import { AppHeader } from '../../components/AppHeader';
 import { openNotifications } from '../../navigation/navigationRef';
 
 type UpcomingAssessment = {
-  id: string; title: string; subject_name: string; class_name: string | null;
+  id: string; school_code: string; title: string; subject_name: string; class_name: string | null;
   start_at: string | null; end_at: string | null;
 };
 type SchoolEvent = {
-  id: number; title: string; description: string | null; event_type: string;
+  id: number; school_code: string; title: string; description: string | null; event_type: string;
   start_at: string; end_at: string | null; class_name: string | null;
 };
 
@@ -57,7 +57,7 @@ export default function ParentActivitiesScreen({ navigation }: any) {
             <View style={styles.icon}><Ionicons name="clipboard-outline" size={22} color={Colors.primary} /></View>
             <View style={styles.content}>
               <Text style={styles.title}>{test.title}</Text>
-              <Text style={styles.sub}>{test.subject_name}{test.class_name ? ` · ${test.class_name}` : ''}</Text>
+              <Text style={styles.sub}>{test.school_code} · {test.subject_name}{test.class_name ? ` · ${test.class_name}` : ''}</Text>
               <Text style={styles.date}>{dateLabel(test.start_at)}</Text>
               {test.end_at ? <Text style={styles.sub}>Closes: {dateLabel(test.end_at)}</Text> : null}
             </View>
@@ -72,7 +72,7 @@ export default function ParentActivitiesScreen({ navigation }: any) {
             <View style={styles.icon}><Ionicons name={event.event_type === 'holiday' ? 'sunny-outline' : event.event_type === 'exam' ? 'school-outline' : 'calendar-outline'} size={22} color={Colors.primary} /></View>
             <View style={styles.content}>
               <Text style={styles.title}>{event.title}</Text>
-              <Text style={styles.sub}>{event.event_type.toUpperCase()}{event.class_name ? ` · ${event.class_name}` : ''}</Text>
+              <Text style={styles.sub}>{event.school_code} · {event.event_type.toUpperCase()}{event.class_name ? ` · ${event.class_name}` : ''}</Text>
               <Text style={styles.date}>{dateLabel(event.start_at)}</Text>
               {event.end_at ? <Text style={styles.sub}>Ends: {dateLabel(event.end_at)}</Text> : null}
               {event.description ? <Text style={styles.sub}>{event.description}</Text> : null}
