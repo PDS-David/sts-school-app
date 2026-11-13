@@ -29,7 +29,7 @@ Worker branch: `agent/frontend-parent-dashboard-recovery-20261113`
 
 ## Commits
 - `c26b77071ee902c39ababf380d5c4c0bf9de61f1` — add parent report recovery and remove misleading action.
-- Checkpoint commit: pending.
+- Checkpoint commit: `5088a9d0441270c965491d25b3a07a1f65a99cf0`.
 
 ## Verification
 - Static inspection confirms report requests still use the selected ward's existing `/scores/report/:studentId` endpoint.
