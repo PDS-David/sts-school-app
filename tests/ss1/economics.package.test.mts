@@ -101,13 +101,13 @@ test('Coverage references resolve and current status counts preserve partial wor
   const sourceIds = new Set(p.sources.map(source => source.source_id));
   const ruleIds = new Set(p.source_rules.map(rule => rule.id));
   const lessonIds = new Set(p.lessons.map(lesson => lesson.id));
-  assert.equal(p.coverage.length, 26);
+  assert.equal(p.coverage.length, 35);
   assert.deepEqual(
     p.coverage.reduce((counts, entry) => {
       counts[entry.status] = (counts[entry.status] ?? 0) + 1;
       return counts;
     }, {} as Record<string, number>),
-    { MARKER: 2, PARTIAL: 9, IMPLEMENTED_EQUIVALENT: 1, UNRESOLVED: 14 },
+    { MARKER: 2, PARTIAL: 11, IMPLEMENTED_EQUIVALENT: 1, UNRESOLVED: 15, SUPPORTED: 6 },
   );
   for (const entry of p.coverage) {
     assert(sourceIds.has(entry.source_id), `unknown source in ${entry.id}`);
