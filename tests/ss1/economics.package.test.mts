@@ -107,7 +107,7 @@ test('Coverage references resolve and current status counts preserve partial wor
       counts[entry.status] = (counts[entry.status] ?? 0) + 1;
       return counts;
     }, {} as Record<string, number>),
-    { MARKER: 2, PARTIAL: 11, IMPLEMENTED_EQUIVALENT: 1, UNRESOLVED: 15, SUPPORTED: 6 },
+    { MARKER: 2, PARTIAL: 17, IMPLEMENTED_EQUIVALENT: 1, UNRESOLVED: 15 },
   );
   for (const entry of p.coverage) {
     assert(sourceIds.has(entry.source_id), `unknown source in ${entry.id}`);
