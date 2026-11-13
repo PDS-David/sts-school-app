@@ -13,8 +13,10 @@ interface BtnProps {
   disabled?: boolean;
   variant?: 'primary' | 'outline' | 'danger' | 'ghost';
   style?: StyleProp<ViewStyle>;
+  accessibilityLabel?: string;
+  accessibilityHint?: string;
 }
-export function Btn({ label, onPress, loading, disabled, variant = 'primary', style }: BtnProps) {
+export function Btn({ label, onPress, loading, disabled, variant = 'primary', style, accessibilityLabel, accessibilityHint }: BtnProps) {
   const isPrimary = variant === 'primary';
   const isOutline = variant === 'outline';
   const isDanger  = variant === 'danger';
@@ -32,6 +34,10 @@ export function Btn({ label, onPress, loading, disabled, variant = 'primary', st
       onPress={onPress}
       disabled={disabled || loading}
       activeOpacity={0.8}
+      accessibilityRole='button'
+      accessibilityLabel={accessibilityLabel ?? label}
+      accessibilityHint={accessibilityHint}
+      accessibilityState={{ disabled: !!disabled || !!loading, busy: !!loading }}
     >
       {loading
         ? <ActivityIndicator color={isOutline ? Colors.primary : Colors.white} size="small" />
@@ -57,8 +63,10 @@ interface InputProps {
   style?: StyleProp<ViewStyle>;
   error?: string;
   autoCapitalize?: 'none' | 'sentences' | 'words';
+  accessibilityLabel?: string;
+  accessibilityHint?: string;
 }
-export function Input({ label, error, style, multiline, numberOfLines, ...rest }: InputProps) {
+export function Input({ label, error, style, multiline, numberOfLines, accessibilityLabel, accessibilityHint, ...rest }: InputProps) {
   return (
     <View style={[{ marginBottom: Spacing.sm }, style]}>
       {label ? <Text style={styles.label}>{label}</Text> : null}
@@ -67,6 +75,8 @@ export function Input({ label, error, style, multiline, numberOfLines, ...rest }
         placeholderTextColor={Colors.textSub}
         multiline={multiline}
         numberOfLines={numberOfLines}
+        accessibilityLabel={accessibilityLabel ?? label ?? rest.placeholder}
+        accessibilityHint={error ?? accessibilityHint}
         {...rest}
       />
       {error ? <Text style={styles.errText}>{error}</Text> : null}
