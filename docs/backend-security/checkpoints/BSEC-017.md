@@ -2,7 +2,7 @@
 
 - **Task ID:** BSEC-017
 - **Title:** Serialize academic term creation and current-term updates
-- **Status:** in_progress
+- **Status:** implementation and focused verification passed; PR review pending
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Working branch:** agent/backend-term-session-atomicity-20261113
@@ -17,4 +17,6 @@
   5. Validate request types and return 404 for nonexistent update targets.
   6. Add PostgreSQL HTTP integration regressions for concurrent duplicate creation and current-term switching rollback/consistency.
   7. Backend TypeScript and focused PostgreSQL tests pass; no production data changes.
-- **Exact next action:** inspect terms schema and implement transaction-scoped school locking for POST/PUT /terms.
+- **Verification:** Backend term session atomicity workflow 43471161305 passed (PostgreSQL 16 integration tests and backend TypeScript typecheck). Existing academic term tenant-isolation regressions also passed in workflow 43471161373, including the new term-session regression step.
+- **Remaining:** PR review/merge; no production data or database was changed.
+- **Exact next action:** review PR #809 and merge only after all required repository checks pass.
