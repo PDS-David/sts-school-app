@@ -228,13 +228,15 @@ test('loads the SS2 Agricultural Science soil package with source assessment cov
   const pkg = packageSchema.parse(JSON.parse(raw));
   assert.equal(pkg.class_name, 'SS 2');
   assert.equal(pkg.package_status, 'PENDING');
-  assert.equal(pkg.units.length, 5);
+  assert.equal(pkg.units.length, 6);
   assert.equal(pkg.units[0].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 14);
   assert.equal(pkg.units[1].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 13);
   assert.equal(pkg.units[2].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 17);
   assert.equal(pkg.units[3].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 14);
   assert.equal(pkg.units[4].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 17);
-  assert.equal(pkg.units.reduce((total, unit) => total + unit.practice.length, 0), 89);
+  assert.equal(pkg.units[5].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 16);
+  assert.equal(pkg.units.reduce((total, unit) => total + unit.practice.length, 0), 107);
+  assert.equal(pkg.units.reduce((total, unit) => total + unit.practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 0), 91);
   assert.ok(pkg.units.every(unit => unit.practice.every(question => question.answer_origin === 'AUTHORED_SUPPLEMENT')));
   assert.equal(pkg.sources[0].source_id, 'SS23-SRC-225f920d3751');
   assert.equal(pkg.assets.length, 40);
@@ -243,8 +245,8 @@ test('loads the SS2 Agricultural Science soil package with source assessment cov
   assert.ok(pkg.open_items.length >= 5);
   assert.ok(pkg.open_items.some(item => item.blocks_delivery));
   assert.ok(pkg.open_items.some(item => !item.blocks_delivery));
-  assert.equal(pkg.open_items.length, 22);
-  assert.equal(pkg.external_sources.length, 12);
+  assert.equal(pkg.open_items.length, 29);
+  assert.equal(pkg.external_sources.length, 14);
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/irrigation-systems.svg' && asset.state.implementation === 'IMPLEMENTED'));
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/drainage-systems.svg' && asset.state.implementation === 'IMPLEMENTED'));
   assert.ok(pkg.units.every(unit => unit.state.content_approval === 'PENDING'));
