@@ -24,6 +24,7 @@ export function ClassSummaryScreen({ navigation }: any) {
   const [scoresLoading, setScoresLoading] = useState(false);
   const [scoresError, setScoresError] = useState('');
   const [scoresRetry, setScoresRetry] = useState(0);
+  const [setupRetry, setSetupRetry] = useState(0);
   const [refreshing,setRefreshing]= useState(false);
 
   // Compact switcher lives in the native header now, not as a full-width
@@ -57,7 +58,7 @@ export function ClassSummaryScreen({ navigation }: any) {
       if (!cancelled) setSetupError(e?.response?.data?.error ?? 'Could not load classes, terms and subjects for this school.');
     }).finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
-  }, [selectedSchoolCode]);
+  }, [selectedSchoolCode, setupRetry]);
 
   const fetchScores = useCallback(async () => {
     if (!selClass || !selTerm) { setScores([]); setScoresError(''); setScoresLoading(false); setRefreshing(false); return; }
@@ -92,6 +93,12 @@ export function ClassSummaryScreen({ navigation }: any) {
     .sort((a, b) => b.total - a.total);
 
   if (loading) return <Loader />;
+  if (setupError) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={setupError} />
+      <Btn label='Retry school setup' variant='outline' onPress={() => { setLoading(true); setSetupError(''); /* effect reruns when school changes; retry counter handled below */ setSetupRetry(v => v + 1); }} />
+    </View>
+  );
 
   return (
     <ScrollView
@@ -99,7 +106,7 @@ export function ClassSummaryScreen({ navigation }: any) {
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); fetchScores(); }} />}
     >
       <PageContainer style={{ padding: Spacing.sm }}>
-        <Card>
+        {classes.length === 0 ? <Card><Empty message='No student classes are available for this school.' /></Card> : <Card>
           <View style={isWide ? styles.filterRow : undefined}>
             <View style={isWide ? styles.filterCol : undefined}>
               <View style={styles.pickerWrap}>
@@ -116,11 +123,13 @@ export function ClassSummaryScreen({ navigation }: any) {
               </View>
             </View>
           </View>
-        </Card>
+        </Card>}
 
         <Card>
           <SectionHeader title={`${selClass} Rankings`} />
-          {ranked.length === 0 ? <Empty message="No scores for this selection" /> : (
+          {scoresLoading ? <Loader /> : scoresError ? (
+            <View><Empty message={scoresError} /><Btn label='Retry scores' variant='outline' onPress={() => setScoresRetry(v => v + 1)} /></View>
+          ) : ranked.length === 0 ? <Empty message='No scores for this selection' /> : (
             <>
               <View style={styles.tableHeader}>
                 {['Pos','Student','Subjects','Total','Avg'].map(h => (
