@@ -88,55 +88,22 @@ export default function StudentHomeScreen({ navigation }: any) {
           <Card style={styles.emptyCard}>
             <Text style={styles.emptyText}>{announcements.length ? 'Could not refresh announcements. Showing the last available notices.' : 'Could not load announcements. Pull down to retry.'}</Text>
           </Card>
-        ) : !announcementsLoaded ? (
+        ) : null}
+        {!announcementsError && !announcementsLoaded ? (
           <Card style={styles.emptyCard}><Text style={styles.emptyText}>Loading announcements…</Text></Card>
-        ) : announcements.length === 0 ? (
+        ) : null}
+        {!announcementsError && announcementsLoaded && announcements.length === 0 ? (
           <Card style={styles.emptyCard}>
             <Text style={styles.emptyText}>No announcements yet. Your school admin can post updates here.</Text>
           </Card>
-        ) : announcements.map(item => (
+        ) : null}
+        {announcements.map(item => (
           <Card key={item.id} style={styles.emptyCard}>
             <Text style={styles.rowTitle}>{item.title}</Text>
             <Text style={styles.emptyText}>{item.body}</Text>
             <Text style={styles.rowMeta}>{new Date(item.createdAt).toLocaleDateString()}</Text>
           </Card>
         ))}
-
-        {/* Continue learning */}
-        <Text style={styles.sectionLabel}>Continue Learning</Text>
-        {materials.length === 0 ? (
-          <Card style={styles.emptyCard}><Text style={styles.emptyText}>No materials uploaded yet.</Text></Card>
-        ) : materials.map((m) => (
-          <TouchableOpacity key={m.id} onPress={() => navigation.navigate('LearningTab', { screen: 'Materials' })}>
-            <Card style={styles.rowCard}>
-              <View style={[styles.rowIcon, { backgroundColor: Colors.primary + '20' }]}>
-                <Ionicons name="book" size={20} color={Colors.primary} />
-              </View>
-              <View style={{ flex: 1 }}>
-                <Text style={styles.rowTitle}>{m.title}</Text>
-                <Text style={styles.rowMeta}>{m.subject_name}</Text>
-              </View>
-              <Ionicons name="chevron-forward" size={18} color={Colors.textSub} />
-            </Card>
-          </TouchableOpacity>
-        ))}
-
-        {/* Recent activity */}
-        <Text style={styles.sectionLabel}>Recent Activity</Text>
-        {recentScores.length === 0 ? (
-          <Card style={styles.emptyCard}><Text style={styles.emptyText}>No graded scores yet this term.</Text></Card>
-        ) : recentScores.map((s, i) => (
-          <Card key={i} style={styles.rowCard}>
-            <View style={[styles.rowIcon, { backgroundColor: Colors.success + '20' }]}>
-              <Ionicons name="bar-chart" size={20} color={Colors.success} />
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.rowTitle}>{s.subject_name}</Text>
-              <Text style={styles.rowMeta}>Grade {s.grade ?? '—'}</Text>
-            </View>
-          </Card>
-        ))}
-
         </PageContainer>
         <View style={{ height: Spacing.xl * 2 }} />
       </ScrollView>
