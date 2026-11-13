@@ -3,7 +3,6 @@ import { test } from 'node:test';
 import {
   packageSchema,
   sha256,
-  type Ss23Package,
 } from './subjectPackageSchema.js';
 
 const longBody = ('Soil is a natural resource that supports plant growth. It contains mineral particles, organic matter, water, air and living organisms. Farmers study soil properties to choose suitable crops and manage water and nutrients. ').repeat(5);
@@ -93,7 +92,7 @@ const basePackage = {
   }],
   open_items: [],
 };
-const ss2Package: Ss23Package = {
+const ss2Package: any = {
   ...basePackage,
   class_name: 'SS 2',
   delivery_mode: 'INSTRUCTIONAL',
@@ -149,13 +148,13 @@ test('accepts an SS3 exam-preparation package with named examination targets', (
 });
 
 test('rejects SS3 third-term source material', () => {
-  const invalid = structuredClone(ss3Package);
+  const invalid: any = structuredClone(ss3Package);
   invalid.sources[0].term = '3rd Term';
   assert.equal(packageSchema.safeParse(invalid).success, false);
 });
 
 test('rejects normal instructional mode for SS3', () => {
-  const invalid = structuredClone(ss3Package);
+  const invalid: any = structuredClone(ss3Package);
   invalid.delivery_mode = 'INSTRUCTIONAL';
   assert.equal(packageSchema.safeParse(invalid).success, false);
 });
