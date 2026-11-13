@@ -81,7 +81,7 @@ Three embedded source figures (a watermarked farmstead layout and two calculatio
 - 70 assessment/practice items: 58 original-source prompts and 12 authored supplements.
 - 24 asset records: 23 pending source-extract references and one stored authored SVG.
 - 10 external factual references.
-- 16 open items: 15 delivery-blocking and one non-blocking.
+- 16 open items: 14 delivery-blocking and two non-blocking.
 - Package status remains PENDING; the student routes intentionally serve no lessons until blocking items are resolved and evidence-backed approval/verification is recorded.
 
 **Next exact task:** audit and draft Week 6 (Irrigation and Drainage), preserving its source text, assessments and figures. Then proceed to Week 7, and only after that verify the combined Week 8-9 nutrient-cycle coverage and Week 10 nutrient-availability content.
