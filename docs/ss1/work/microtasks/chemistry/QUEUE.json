@@ -35,7 +35,8 @@
     "CHEM-IDX-T1A-W07 (2026-11-08) indexed 1st Term WEEK SEVEN (mammoth lines 1336-1489, sha256 8afae8fe7429d6acf133b984dc4a283f6eb0c848477350e2c19cff942ebfb66d) into 12 hashed sections and added seven coverage entries, none with lesson ids: five PARTIAL (scheme row, atoms and molecules, ions and radicals, Dalton's theory and its modifications, assessment links to other weeks) and two UNRESOLVED (the cation in H2S04, the iron cation in FeS04 and how an atom becomes an ion; and which liquid distils first). The week holds no picture, text box, Word table or equation, so it needs no picture disposition. Two corrections to the item objective are recorded in its implementation_reference: the character before 'S' in DALTON'S is U+2019, not U+FFFD, and the quoted section ranges run to trailing blank lines. No exercise, weekend or theory question has an answer or mark. Follow-ups appended: CHEM-LES-T1A-W07-ION-DISTILLATION-GAPS (LESSON, PENDING) and CHEM-FACT-T1A-W07-STATEMENTS (FACTUAL_DEPENDENCY, PENDING). Items 117->119. No lesson, delivery, schema, compiler, parser or importer change; chemistry.json edited for coverage only. Evidence note: docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1A-W07.md. Not approved, not verified; nothing run (testing deferred by owner).",
     "2026-11-13 CHEM-IDX-T1A-W08: verified the owner-attached archive/member hashes; retained the established Mammoth raw-text range/hash; indexed binary naming, radicals/variable oxidation numbers, ternary/quaternary compounds, hydrogen salts and all assessment blocks. Original DOCX structure contains 52 subscript and 4 superscript runs, no embedded teaching images/tables, and no source answer key/marks. Added six PARTIAL and one UNRESOLVED coverage records plus follow-up lesson/factual-review tasks. Package remains PENDING; no tests or approval performed.",
     "2026-11-13 owner re-supplied the composite archive; SHA-256 verified as 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e. Chemistry source-member hashes for all four assigned term files match sourceRegistry. CHEM-LES-T1A-W01-ADVERSE-EFFECTS authored as a new original supplement with National Academies Press/NRC, CDC/NIOSH and WHO provenance; six keyed practice questions (26 marks); linked to COV-CHEM-T1A-W01-ADVERSE-EFFECTS as IMPLEMENTED_EQUIVALENT. Content approval remains PENDING, verification DEFERRED; review open item added. No test/compiler/importer run.",
-    "2026-11-13 CHEM-FACT-T1A-W01-STATEMENTS findings-only review completed from Week One source locators and authoritative science-education/chemistry references. Identified a false theory-to-law progression, imprecise hypothesis/prediction wording, a non-universal seven-stage list with 'Pattern' not a required canonical stage, incomplete branch descriptions, and unresolved bibliographic edition/page details. No source wording changed and no replacement teaching was authored in this fact task. Added CHEM-LES-T1A-W01-SCIENCE-FOUNDATIONS as the bounded follow-up lesson and a non-blocking textbook-reference fact item."
+    "2026-11-13 CHEM-FACT-T1A-W01-STATEMENTS findings-only review completed from Week One source locators and authoritative science-education/chemistry references. Identified a false theory-to-law progression, imprecise hypothesis/prediction wording, a non-universal seven-stage list with 'Pattern' not a required canonical stage, incomplete branch descriptions, and unresolved bibliographic edition/page details. No source wording changed and no replacement teaching was authored in this fact task. Added CHEM-LES-T1A-W01-SCIENCE-FOUNDATIONS as the bounded follow-up lesson and a non-blocking textbook-reference fact item.",
+    "2026-11-13 CHEM-LES-T1A-W01-SCIENCE-FOUNDATIONS authored as a separate supplement after CHEM-FACT-T1A-W01-STATEMENTS. Covers iterative scientific inquiry, hypothesis/prediction, theory/law distinction, physical/organic/inorganic branches, analytical chemistry and biochemistry; seven keyed practice items, 26 marks. Coverage entries for definition, branches and method linked as IMPLEMENTED_EQUIVALENT. Approval remains PENDING, verification DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 4,
@@ -51,9 +52,9 @@
     "LESSON": 8
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 25,
+    "IMPLEMENTED_TESTING_DEFERRED": 26,
     "BLOCKED": 1,
-    "PENDING": 97
+    "PENDING": 96
   },
   "items": [
     {
@@ -4466,8 +4467,8 @@
         "CHEM-IDX-T1A-W01",
         "CHEM-FACT-T1A-W01-STATEMENTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Fact review records required corrections; this separate lesson task is responsible for the original replacement teaching. No source wording is edited by the factual-review task.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented on agent/ss1-chemistry-continuation-20261113. Added SUP-SS1-CHEM-T1A-W01-SCIENCE-FOUNDATIONS to backend/src/db/ss1/subjects/chemistry.json; body SHA-256 6a03ec3b02553bf67822e57d8356df2afe3f963c3bcf4ad295dd7d843df09940. Updated COV-CHEM-T1A-W01-DEFINITION, -BRANCHES and -METHOD to IMPLEMENTED_EQUIVALENT with lesson links; added blocking review item CHEM-T1A-W01-SCIENCE-FOUNDATIONS-REVIEW. Seven original questions with answer keys and marking criteria total 26 marks. Content approval PENDING; verification DEFERRED; no tests/compiler/importer run. See CHEM-LES-T1A-W01-SCIENCE-FOUNDATIONS.md.",
       "completion_condition": "One original supplement with accurate scientific-method, hypothesis/theory/law and branch teaching, provenance, examples and fully marked practice exists; corresponding Week One coverage is linked truthfully; approval remains PENDING and verification DEFERRED."
     },
     {
@@ -4513,7 +4514,6 @@
     }
   },
   "next_runnable": [
-    "CHEM-LES-T1A-W01-SCIENCE-FOUNDATIONS",
     "CHEM-CMP-T1",
     "CHEM-TEST-PACKAGE",
     "CHEM-IDX-T1A-W09",
