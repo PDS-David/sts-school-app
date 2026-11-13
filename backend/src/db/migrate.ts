@@ -27,7 +27,7 @@ function readMigrations(): Migration[] {
   if (!files.length) throw new Error('No numbered migration files found.');
 
   const migrations = files.map(name => {
-    if (!/^\d{4}_[a-z0-9_-]+\.sql$/i.test(name)) {
+    if (!/^\d{4}_[a-z0-9_-]+\.sql$/.test(name)) {
       throw new Error(`Invalid migration filename "${name}". Use NNNN_lowercase-description.sql.`);
     }
     const sql = readFileSync(path.join(MIGRATIONS_DIR, name), 'utf8');
@@ -40,8 +40,12 @@ function readMigrations(): Migration[] {
   });
 
   const versions = new Set<string>();
-  for (const migration of migrations) {
+  for (const [index, migration] of migrations.entries()) {
     if (versions.has(migration.version)) throw new Error(`Duplicate migration version ${migration.version}.`);
+    const expected = String(index + 1).padStart(4, '0');
+    if (migration.version !== expected) {
+      throw new Error(`Migration sequence gap: expected ${expected}, found ${migration.version}.`);
+    }
     versions.add(migration.version);
   }
   return migrations;
