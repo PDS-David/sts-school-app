@@ -167,7 +167,8 @@
     "SOURCE_WEEK_INDEXING": 27
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 169
+    "IMPLEMENTED_TESTING_DEFERRED": 168,
+    "VERIFIED": 1
   },
   "items": [
     {
@@ -4185,9 +4186,10 @@
         "AG-SRC-T2",
         "AG-SRC-T3"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "The package test file was written and committed. Initial task note that execution was deferred is historical and superseded for automated CI: PR #545 run 42993422155 successfully executed the Agricultural Science package suite (8/8), asset-plan suite (4/4), SVG safety/ingestion suite (5/5) and authenticated asset-route/native mobile-renderer suite (13/13). Total 30 passed, 0 failed, 0 skipped. The asset-plan rebuild verified all 40 assets against exact compiler rows and withheld CSV emission while approvals are pending. The package validator returned valid:true; the package remains PENDING with 90 blocking open items and 47 unapproved/unverified lessons. Repository-wide integrity run 42993422330 also passed TypeScript, JSON, hash, SVG and all-package validation.",
-      "completion_condition": "Test code is written and committed; automated package, asset-plan, SVG-safety and authenticated route/mobile-renderer verification completed successfully in run 42993422155 (30 passed, 0 failed), with repository integrity checks passing in run 42993422330. Do not treat these automated results as lesson approval or classroom verification; retain the package's human approval and lesson-verification gates."
+      "status": "VERIFIED",
+      "implementation_reference": "The package test file was written and committed. Initial task note that execution was deferred is historical and superseded for automated CI: PR #545 run 42993422155 successfully executed the Agricultural Science package suite (8/8), asset-plan suite (4/4), SVG safety/ingestion suite (5/5) and authenticated asset-route/native mobile-renderer suite (13/13). Total 30 passed, 0 failed, 0 skipped. The asset-plan rebuild verified all 40 assets against exact compiler rows and withheld CSV emission while approvals are pending. The package validator returned valid:true; the package remains PENDING with 90 blocking open items and 47 unapproved/unverified lessons. Repository-wide integrity run 42993422330 also passed TypeScript, JSON, hash, SVG and all-package validation. Latest run 43084973402 on c6fad5d also passed all Agricultural Science-specific checks; see verification_reference. Separate visual asset rendering remains deferred for all 40 assets.",
+      "completion_condition": "Test code is written and committed; automated package, asset-plan, SVG-safety and authenticated route/mobile-renderer verification completed successfully in run 42993422155 (30 passed, 0 failed), with repository integrity checks passing in run 42993422330. Do not treat these automated results as lesson approval or classroom verification; retain the package's human approval and lesson-verification gates.",
+      "verification_reference": "GitHub Actions run 43084973402, commit c6fad5d5cdf40749bb93ad4c00e4e4d9aad6ff3d: Validate SS1 Agricultural Science package. Passed package tests (lesson body hashes, approvals, assets), asset-plan tests, subject-scoped text import plan, source-bound asset plan/approval withholding, safe SVG ingestion, authenticated asset-route/native mobile-renderer contracts, and Agricultural Science-only package integrity validation. All 40 visual assets were correctly withheld because individual rendering verification remains DEFERRED; this task verifies the automated package/test guardrails, not those assets' visual approval."
     },
     {
       "id": "AG-VIS-T1-BRANDING",
