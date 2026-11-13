@@ -30,7 +30,7 @@ Worker branch: `agent/frontend-promotion-recovery-20261113`
 
 ## Commits
 - `e3643aced4772feb75d4e3d8d1f8ff1fead0ae48` — add promotion roster recovery and confirm retain.
-- Checkpoint commit: pending.
+- Checkpoint commit: `bba577912e62ff00de13ce966a2330e58d11e6b1`.
 
 ## Verification
 - Static inspection confirms the screen continues to call the existing `POST /students/:id/promotion` endpoint.
