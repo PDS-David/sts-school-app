@@ -36,6 +36,7 @@ export function TermsMgmtScreen({ navigation }: any) {
   const fetch = async () => {
     setLoading(true);
     setLoadError('');
+    setTerms([]);
     try {
       const { data } = await api.get('/academic/terms', { params: { school_code: selectedSchoolCode } });
       setTerms(data.terms ?? []);
@@ -53,12 +54,19 @@ export function TermsMgmtScreen({ navigation }: any) {
 
   const handleSave = async () => {
     if (saving) return;
-    if (!form.name.trim() || !form.academic_year.trim()) { setInfoDialog({ title: 'Required fields', message: 'Enter the term name and academic year.' }); return; }
+    if (!form.name.trim() || !form.academic_year.trim() || !form.school_code.trim()) { setInfoDialog({ title: 'Required fields', message: 'Enter the term name, academic year and school code.' }); return; }
     const days = form.days_opened.trim() ? Number(form.days_opened) : 0;
     if (!Number.isInteger(days) || days < 0) { setInfoDialog({ title: 'Invalid school days', message: 'Days school opened must be a whole number of zero or more.' }); return; }
     const datePattern = /^\d{4}-\d{2}-\d{2}$/;
-    if (form.start_date && !datePattern.test(form.start_date)) { setInfoDialog({ title: 'Invalid start date', message: 'Use YYYY-MM-DD for the start date.' }); return; }
-    if (form.end_date && !datePattern.test(form.end_date)) { setInfoDialog({ title: 'Invalid end date', message: 'Use YYYY-MM-DD for the end date.' }); return; }
+    const validDate = (value: string) => {
+      if (!value) return true;
+      if (!datePattern.test(value)) return false;
+      const [year, month, day] = value.split('-').map(Number);
+      const date = new Date(year, month - 1, day);
+      return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+    };
+    if (!validDate(form.start_date)) { setInfoDialog({ title: 'Invalid start date', message: 'Enter a real calendar date in YYYY-MM-DD format.' }); return; }
+    if (!validDate(form.end_date)) { setInfoDialog({ title: 'Invalid end date', message: 'Enter a real calendar date in YYYY-MM-DD format.' }); return; }
     if (form.start_date && form.end_date && form.end_date < form.start_date) { setInfoDialog({ title: 'Invalid date range', message: 'The end date must not be earlier than the start date.' }); return; }
     setSaving(true);
     try {
@@ -180,6 +188,7 @@ export function SubjectsMgmtScreen({ navigation }: any) {
   const fetch = async () => {
     setLoading(true);
     setLoadError('');
+    setSubjects([]);
     try {
       const { data } = await api.get('/academic/subjects', { params: { school_code: selectedSchoolCode ?? undefined } });
       setSubjects(data.subjects ?? []);
