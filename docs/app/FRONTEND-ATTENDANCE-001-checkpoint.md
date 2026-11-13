@@ -33,7 +33,7 @@ Worker branch: `agent/frontend-attendance-recovery-20261113`
 - `d65be635b335d6fe24fbbf94d322f1aee7a49e63` — add setup, roster and saved-attendance recovery states.
 - `fe652b32e56cd19458f8fdf5f5ece3684960cced` — block edits while saved attendance is loading.
 - `59a59517da4523a84f86aac46909562af360ea92` — prevent saving before roster and saved records are ready.
-- Checkpoint commit: pending.
+- Checkpoint created in commit `5e5a0ccdbe81dd3f3a66d5c50d88f7cf1a16ebf8`.
 
 ## Verification
 - Static inspection confirms retries use the existing class/term, roster and attendance endpoints.
