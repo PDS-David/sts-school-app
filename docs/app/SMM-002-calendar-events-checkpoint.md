@@ -32,7 +32,7 @@ Branch: `agent/calendar-rebased-20261113`
 ## Verification
 - Static review confirms authenticated reads, admin-only event writes, same-school class validation, ward-derived parent/student visibility and metadata-only parent assessment responses.
 - The OPS-01 disposable PostgreSQL test checks that migration `0002_school_events.sql` creates the event table when present.
-- Combined CI and feature-specific route/device tests are pending. No production database was changed.
+- GitHub Actions run `43455081897` passed backend/mobile typechecks, static regressions, PostgreSQL schema replay and the migration-ledger integration suite. The suite verified `0002_school_events.sql` creates `school_events` in a disposable database. Feature-specific route authorization tests and device acceptance remain outstanding. No production database was changed.
 
 ## Remaining
 - Verify backend/mobile typechecks and PostgreSQL migration replay on the stacked branch.
