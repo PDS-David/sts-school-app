@@ -1,12 +1,13 @@
 # Android/mobile readiness checkpoint
 
 - Task ID: MOB-ANDROID-001
-- Status: IN PROGRESS — implementation expanded and rebased onto current master; automated/device/release gates remain open.
-- Branch: `agent/mobile-android-readiness-20261113-v2`
-- Base: `master` at `03aa60f0f448caed371e8da9a30ff1f91cb0cbf5`
+- Status: IN PROGRESS — core implementation merged in PR #727; follow-up TypeScript fix is under review in PR #792; Android export, device and release gates remain open.
+- Follow-up branch: `agent/mobile-android-tsc-fix-20261113`
+- Follow-up base: `master` at `b8651cebaa480097fd1c40c9b02c11b228187caa`
 - Latest implementation commit before this checkpoint: `3afd0c18aeb826ba122002d8c8f6adb5fdda9d6e`
-- Current PR: [#727](https://github.com/PDS-David/sts-school-app/pull/727), draft and awaiting CI/review.
-- Prior PR #696 was based on an older master, became 82 commits behind, and was closed as superseded by #727.
+- Core implementation PR [#727](https://github.com/PDS-David/sts-school-app/pull/727) merged on 2026-11-13 (merge commit `2542dd1bc8910b2d7ce53ebf5663ae82c94f86ad`).
+- Follow-up PR [#792](https://github.com/PDS-David/sts-school-app/pull/792) fixes the TypeScript errors found by post-merge CI; it is ready for review and not yet merged.
+- Prior PR #696 was closed as superseded by #727.
 - Ownership/rebase check:
   - Master advanced after the original branch was created. Its changes touched notification context, role dashboards/navigation and curriculum/backend files, but did not overlap the 18 paths carried forward here.
   - Created this branch from the current master and reapplied only the mobile readiness paths. Comparison is 18 commits ahead, 0 behind.
@@ -56,14 +57,20 @@
 - Announcements are in-app feeds and the backend explicitly does not push them. Push provider delivery to a real device is not verified.
 - Existing GET cache has a per-user 500-entry cap and write invalidation. Cache freshness remains best-effort; no explicit max-age policy was added.
 
+## Follow-up typecheck fixes
+
+- First follow-up CI rerun confirmed the `flushPromise` TS2454 issue was resolved, but exposed a second mobile TypeScript error in the newer `NotificationsScreen.tsx`: the screen passed an unsupported `size="sm"` prop to the shared `Btn` component.
+- Updated the retry button to use the component's supported `style` prop for compact padding. This is included in PR #792; the latest CI run confirms the complete typecheck and Android export.
+
 ## Verification and limitations
 
 - Static source inspection and branch comparison completed.
-- 17 regression tests are authored; **they have not been executed**.
-- Latest PR workflow run: [43452096073](https://github.com/PDS-David/sts-school-app/actions/runs/43452096073), still queued with no job steps reported at the last check.
-- A local checkout was attempted, but the environment could not resolve github.com. No local npm install, Node test, TypeScript check, Expo export, emulator or device test was run.
-- The new GitHub Actions workflow was added. Recent workflow attempts were reported as cancelled before any test/type/export steps produced results; no successful CI result or artifact is claimed.
+- The post-merge Android workflow run [43452520723](https://github.com/PDS-David/sts-school-app/actions/runs/43452520723) executed all 17 offline outbox regression tests successfully (17 passed, 0 failed).
+- The same run failed mobile TypeScript validation at `mobile/src/api/client.ts(349,50)` with TS2454 (`flushPromise` used before assignment); Android bundle export and artifact upload were skipped.
+- PR #792 moves in-flight promise cleanup outside the promise initializer while preserving per-account deduplication. Latest Android readiness run [43468513417](https://github.com/PDS-David/sts-school-app/actions/runs/43468513417) passed all gates: dependency install, 17/17 offline tests, mobile TypeScript validation, Android Expo JS export and artifact upload. Artifact [mobile-android-js-bundle](https://github.com/PDS-David/sts-school-app/actions/runs/43468513417) (6,139,964 bytes; expires 2026-11-20; SHA-256 `b7d0f4a144b9821dff9d507d29e916a5a1ad4391ca2496dd3c2c544d0d059e99`). This is an exported JavaScript bundle, **not an installable APK/AAB**.
+- A local checkout was attempted earlier, but the environment could not resolve github.com. No local Expo export, emulator or device test was run.
 - No EAS APK/AAB build was produced. Release credentials/availability were not verified.
+- CI `npm ci` reported 16 dependency audit findings (2 low, 10 moderate, 4 high); a scoped audit and remediation review remain outstanding before production release.
 - No physical-device verification is claimed.
 
 ## Remaining acceptance work
@@ -77,4 +84,4 @@
 
 ## Exact next action
 
-Check the current branch's Android readiness workflow runs. If they remain cancelled without starting, ask the repository owner to enable/retry Actions for this workflow or provide a runner; then run the 17 regression tests, TypeScript check and Android export before proceeding to emulator/device and EAS build verification.
+The automated PR #792 gates now pass. Next: review/remediate dependency audit findings; run staging role/auth/offline/assessment/material/push smoke tests; verify installation/startup and file/share behavior on physical Android devices; then build and verify internal APK and production AAB with authorized EAS credentials. Do not mark this task complete until those acceptance results are recorded.

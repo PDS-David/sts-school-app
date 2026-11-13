@@ -319,59 +319,61 @@ api.interceptors.response.use(
 // collapse into a single actual flush and all await the same result.
 const inFlightFlushes = new Map<string, Promise<{ synced: number; failed: number; remaining: number }>>();
 
-export function flushOutbox(): Promise<{ synced: number; failed: number; remaining: number }> {
+export async function flushOutbox(): Promise<{ synced: number; failed: number; remaining: number }> {
   const userNamespace = getCacheNamespace();
   const existing = inFlightFlushes.get(userNamespace);
   if (existing) return existing;
 
-  let flushPromise!: Promise<{ synced: number; failed: number; remaining: number }>;
-  flushPromise = (async () => {
-    try {
-      const queue = await getOutbox(userNamespace);
-      let synced = 0;
-      let failed = 0;
-      for (const item of queue) {
-        // Do not continue replaying account A's queue after the app has
-        // switched to account B (or signed out) while this flush was running.
-        if (getCacheNamespace() !== userNamespace) break;
-        try {
-          await api.request({
-            method: item.method,
-            url: item.url,
-            data: item.data,
-            _skipOfflineQueue: true,
-            _cacheNamespace: userNamespace,
-          } as any);
+  // Keep cleanup outside the promise initializer. Referencing the promise
+  // from its own initializer's finally block triggers TS2454 under the
+  // mobile TypeScript project settings.
+  const flushPromise = (async () => {
+    const queue = await getOutbox(userNamespace);
+    let synced = 0;
+    let failed = 0;
+    for (const item of queue) {
+      // Do not continue replaying account A's queue after the app has
+      // switched to account B (or signed out) while this flush was running.
+      if (getCacheNamespace() !== userNamespace) break;
+      try {
+        await api.request({
+          method: item.method,
+          url: item.url,
+          data: item.data,
+          _skipOfflineQueue: true,
+          _cacheNamespace: userNamespace,
+        } as any);
+        await removeFromOutbox(item.id, userNamespace);
+        synced++;
+      } catch (e: any) {
+        const status = e?.response?.status;
+        if (shouldDiscardOutboxFailure(status)) {
+          // Invalid payload/resource errors cannot succeed unchanged. Keep
+          // 401/403/409 items: they may need re-authentication, restored
+          // permissions or conflict resolution, and must not be silently lost.
           await removeFromOutbox(item.id, userNamespace);
-          synced++;
-        } catch (e: any) {
-          const status = e?.response?.status;
-          if (shouldDiscardOutboxFailure(status)) {
-            // Invalid payload/resource errors cannot succeed unchanged. Keep
-            // 401/403/409 items: they may need re-authentication, restored
-            // permissions or conflict resolution, and must not be silently lost.
-            await removeFromOutbox(item.id, userNamespace);
-            failed++;
-          }
-          if (shouldStopOutboxFlush(status)) {
-            // The refresh token has expired/revoked. Do not send the rest of
-            // this user's queue without a valid session; keep all remaining
-            // entries for the next successful sign-in.
-            break;
-          }
+          failed++;
+        }
+        if (shouldStopOutboxFlush(status)) {
+          // The refresh token has expired/revoked. Do not send the rest of
+          // this user's queue without a valid session; keep all remaining
+          // entries for the next successful sign-in.
+          break;
         }
       }
-      const remaining = (await getOutbox(userNamespace)).length;
-      return { synced, failed, remaining };
-    } finally {
-      if (inFlightFlushes.get(userNamespace) === flushPromise) {
-        inFlightFlushes.delete(userNamespace);
-      }
     }
+    const remaining = (await getOutbox(userNamespace)).length;
+    return { synced, failed, remaining };
   })();
 
   inFlightFlushes.set(userNamespace, flushPromise);
-  return flushPromise;
+  try {
+    return await flushPromise;
+  } finally {
+    if (inFlightFlushes.get(userNamespace) === flushPromise) {
+      inFlightFlushes.delete(userNamespace);
+    }
+  }
 }
 
 // Auto-sync whenever connectivity comes back.
