@@ -85,3 +85,25 @@ Three embedded source figures (a watermarked farmstead layout and two calculatio
 - Package status remains PENDING; the student routes intentionally serve no lessons until blocking items are resolved and evidence-backed approval/verification is recorded.
 
 **Next exact task:** audit and draft Week 6 (Irrigation and Drainage), preserving its source text, assessments and figures. Then proceed to Week 7, and only after that verify the combined Week 8-9 nutrient-cycle coverage and Week 10 nutrient-availability content.
+
+
+## Week 6 — Irrigation and drainage
+
+Week 6 is drafted with irrigation meaning and selection factors; surface, sprinkler, drip/micro and subsurface irrigation; advantages and limitations; irrigation problems and disease prevention; drainage meaning, importance and surface/subsurface systems; and the relationship between irrigation, leaching and drainage. Seventeen original-source assessment prompts have authored answers, explanations and mark-by-mark criteria, with two authored application questions.
+
+Two external factual references support the technical corrections: USDA NRCS on irrigation-method classification and selection, and FAO on salinity, leaching and drainage. The lesson flags four source issues for specialist approval: drip is incorrectly grouped under overhead irrigation; surface irrigation is confused with removal of excess rainwater (drainage); irrigation is said to reduce salt without the conditions of suitable water and adequate drainage; and the statement about using high-salt water in drip systems is ambiguous/incomplete.
+
+Fourteen embedded source images (image26-image39) have hashes, byte counts, locators and alt text recorded. Several are third-party mobile screenshots and one centre-pivot photograph carries an Alamy watermark; rights remain pending. Two original diagrams have been added: irrigation methods and surface/subsurface drainage.
+
+The Week Six reading assignment cites O.A. Iwena, Chapter 19, pages 204-208; the edition was not supplied, so the reference is recorded as non-blocking and unverified.
+
+## Updated First Term package totals
+
+- 5 units: Weeks 1, 2, 3, combined Weeks 4-5, and Week 6.
+- 89 assessment/practice items: 75 original-source prompts and 14 authored supplements.
+- 40 asset records: 37 pending source-extract references and 3 stored authored SVG diagrams.
+- 12 external factual references.
+- 22 open items: 19 delivery-blocking and 3 non-blocking.
+- Package status remains PENDING; the student routes intentionally serve no lessons until blocking items are resolved and evidence-backed approval/verification is recorded.
+
+**Next exact task:** audit and draft Week 7, preserving the source text, assessments and figures; then verify the combined Weeks 8-9 nutrient-cycle coverage and Week 10.
