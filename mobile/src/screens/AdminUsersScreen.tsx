@@ -67,6 +67,13 @@ export default function AdminUsersScreen() {
   const isWide = useIsWide();
   const [users,   setUsers]   = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [schoolsError, setSchoolsError] = useState('');
+  const [schoolsRetry, setSchoolsRetry] = useState(0);
+  const [lookupError, setLookupError] = useState('');
+  const [lookupLoading, setLookupLoading] = useState(false);
+  const [lookupRetry, setLookupRetry] = useState(0);
+  const [saving, setSaving] = useState(false);
   const [modal,   setModal]   = useState(false);
   // Alert.alert() doesn't reliably render on web via react-native-web —
   // same documented root cause as the Log Out bug ConfirmDialog.tsx was
@@ -105,22 +112,37 @@ export default function AdminUsersScreen() {
   });
 
   const fetchUsers = async () => {
+    setLoading(true);
+    setLoadError('');
     try {
       const { data } = await api.get('/admin/users');
       setUsers(data.users ?? []);
-    } catch { } finally { setLoading(false); }
+    } catch (e: any) {
+      setLoadError(e?.response?.data?.error ?? 'Could not load user accounts. Check your connection and retry.');
+    } finally { setLoading(false); }
   };
   useEffect(() => { fetchUsers(); }, []);
-  useEffect(() => { api.get('/academic/schools').then(({ data }) => setSchools(data.schools ?? [])).catch(() => {}); }, []);
+  useEffect(() => {
+    let cancelled = false;
+    setSchoolsError('');
+    api.get('/academic/schools')
+      .then(({ data }) => { if (!cancelled) setSchools(data.schools ?? []); })
+      .catch((e: any) => { if (!cancelled) setSchoolsError(e?.response?.data?.error ?? 'Could not load schools. Retry before creating or editing a school-linked account.'); });
+    return () => { cancelled = true; };
+  }, [schoolsRetry]);
 
   // Prefetch classes + subjects for every school once, up front, rather than
   // re-fetching on every School picker change — dataset per school is small
   // and there are only ever a couple of schools.
   useEffect(() => {
-    if (!schools.length) return;
+    if (!schools.length) { setLookupLoading(false); return; }
+    let cancelled = false;
+    setLookupLoading(true);
+    setLookupError('');
     (async () => {
       const classesMap: Record<string, {id:number; name:string}[]> = {};
       const subjectsMap: Record<string, {id:number; name:string}[]> = {};
+      const failed: string[] = [];
       await Promise.all(schools.map(async (s) => {
         try {
           const [{ data: classesData }, { data: subjectsData }] = await Promise.all([
@@ -129,12 +151,16 @@ export default function AdminUsersScreen() {
           ]);
           classesMap[s.code] = classesData.classes ?? [];
           subjectsMap[s.code] = subjectsData.subjects ?? [];
-        } catch { }
+        } catch { failed.push(s.name); }
       }));
+      if (cancelled) return;
       setClassesBySchool(classesMap);
       setSubjectsBySchool(subjectsMap);
+      if (failed.length) setLookupError(`Could not load class/subject options for: ${failed.join(', ')}.`);
+      setLookupLoading(false);
     })();
-  }, [schools]);
+    return () => { cancelled = true; };
+  }, [schools, lookupRetry]);
 
   const availableClasses = classesBySchool[form.school_code] ?? [];
   const availableSubjects = subjectsBySchool[form.school_code] ?? [];
