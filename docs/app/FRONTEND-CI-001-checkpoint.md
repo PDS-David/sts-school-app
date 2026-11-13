@@ -28,7 +28,7 @@ Worker branch: `agent/frontend-mobile-typecheck-20261113`
 - `41dcb3464d413dc40a7b05e83c1112ec0f0da567` — add mobile typecheck script.
 - `9ab62d8e6cf2a93889a9b84791dea6bfe56b7026` — expose root typecheck command.
 - `a8dcd5f550455a37a5cca22c34f6003911e0dae3` — add GitHub Actions workflow.
-- Checkpoint commit: pending.
+- Checkpoint commit: `50b6a059d226327a268e14341344a02d2f7835d1`.
 
 ## Verification
 - Static inspection confirms the mobile package already declares TypeScript and extends Expo's base tsconfig.
