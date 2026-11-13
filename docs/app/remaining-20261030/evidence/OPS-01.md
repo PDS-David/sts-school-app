@@ -41,11 +41,11 @@ Branch: `agent/ops-01-migration-ledger-20261113`
 ## Verification
 - Static review confirms default mode is `--all`, `--status` does not create the ledger, migration SQL is wrapped in BEGIN/COMMIT with rollback on error, and the advisory lock is released in a finally block. Fresh schema replay stamps the immutable baseline; `--fresh` is restricted to an empty application schema; default `--all` refuses an untracked schema or an empty uninitialized database.
 - Static review confirms an existing schema without a baseline is refused rather than stamped automatically.
-- No migration command or live database was run in this session. The repository's PR verify workflow must typecheck the backend and replay the fresh schema before merge.
+- GitHub Actions run `43448651428` passed the repository `verify` job, including backend/mobile typechecks, static regressions, PostgreSQL schema replay and existing integration checks. The workflow does not execute the new migration runner itself. No live database migration command was run in this session.
 - Existing databases must not be adopted until OPS-05 schema-drift evidence and owner approval exist.
 
 ## Remaining
-- CI typecheck/schema replay and review.
+- Add or run a disposable-PostgreSQL integration check for `--fresh`, `--all` idempotency, `--status` read-only behavior, checksum mismatch refusal and migration rollback; then review.
 - Add a numbered migration for the school_events table in the calendar PR, using this runner as its base dependency.
 - Existing production database baseline adoption remains blocked on OPS-05 owner-approved drift evidence.
 
