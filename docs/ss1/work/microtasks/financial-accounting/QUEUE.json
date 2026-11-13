@@ -32,7 +32,8 @@
     "FA-PRE-T1 (2026-11-13): verified first-term source member hash and inspected original DOCX paragraphs 15–31. Recorded title, subject/class heading, scheme heading, literal WEEK/TOPIC header with trailing space and all seven scheme rows verbatim in FA-PRE-T1.md. Mixed row numbering/separators preserved; row 1 has no literal number; row 4–5 continues in a following paragraph. No preamble coverage entry or classify_marker rule was added; the scheme is before the first body week and is recorded in FA-PRE-T1.md because scheme rows do not contain body week markers and the body begins at WEEK ONE. Verified no REVISION occurrence and EXAMINATION occurs twice only in prose, not as a section. No scheme row became a lesson.",
     "2026-11-13 FA-WK-T1-W02 completed: six objective-level coverage entries (two PARTIAL, four UNRESOLVED); exact evaluation wording at lines 313/315 and all ten weekend transactions at lines 329-347 recorded. Jan 28 payment term is ambiguous; Jan 2 is not double-entry coverage. Added bounded lesson task FA-LES-T1-W02-TRANSACTION-CLASSIFICATION and blocking open items for unanswered assessment and missing external reading pages 16-17. Diagram geometry remains assigned to FA-VIS-T1-W02-T03-DIAGRAMS. Source unchanged.",
     "2026-11-13 FA-LES-T1-W02-TRANSACTION-CLASSIFICATION implemented as original supplement. Answers both evaluation questions and all ten weekend items, flags Jan 28 payment ambiguity, and includes six keyed practice questions totalling 26 marks. Approval remains PENDING; verification DEFERRED; external reading pages 16-17 and diagram remain unresolved.",
-    "2026-11-13 FA-WK-T1-W03 completed as source indexing only. Twelve objective-level coverage records added; format boxes, route diagram and source wording defects remain assigned to existing visual/preservation tasks. Added bounded answer-key lesson task FA-LES-T1-W03-LEDGER-JOURNAL-ANSWER-KEY and blocking open items for unanswered assessment and missing textbook page 41. No source edits or answers invented."
+    "2026-11-13 FA-WK-T1-W03 completed as source indexing only. Twelve objective-level coverage records added; format boxes, route diagram and source wording defects remain assigned to existing visual/preservation tasks. Added bounded answer-key lesson task FA-LES-T1-W03-LEDGER-JOURNAL-ANSWER-KEY and blocking open items for unanswered assessment and missing textbook page 41. No source edits or answers invented.",
+    "2026-11-13 FA-LES-T1-W03-LEDGER-JOURNAL-ANSWER-KEY implemented. Original supplement answers evaluation, five MCQs and theory questions; explains journal entries still follow double entry; source wording remains preserved. Six practice items have complete answers/marking (21 marks). Visual formats and external reading page 41 remain unresolved; approval PENDING, verification DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -46,9 +47,9 @@
     "LESSON": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 12,
+    "IMPLEMENTED_TESTING_DEFERRED": 13,
     "BLOCKED": 2,
-    "PENDING": 59
+    "PENDING": 58
   },
   "items": [
     {
@@ -2747,8 +2748,8 @@
         "FA-SRC-T1",
         "FA-WK-T1-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. FA-WK-T1-W03 indexes the exact questions and source locators and identifies the missing answer key.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as SUP-SS1-FINANCIAL-ACCOUNTING-T1-W03-LEDGER-JOURNAL in financial-accounting.json; body SHA-256 227666f08e99f746064688224f256710cff0ff06cfcfd8e72e0e19d2f2f9bb1f. Teaches books of accounts, ledger and journal roles, debit/credit, double entry and posting; explicitly corrects the source's misleading line 461 in separate original teaching while preserving source wording. Answers evaluation, five MCQs and theory questions with marking; six practice items total 21 marks. Format coverage remains PARTIAL pending FA-VIS-T1-W03-FORMATS; page 41 remains unresolved. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "An original supplement accurately teaches ledger/journal roles and posting, answers the two evaluation questions, five MCQs and two theory questions with marking criteria, and explicitly handles the inaccurate double-entry claim without editing the source. Formats and diagrams remain delegated; page 41 is not reproduced. Approval PENDING; verification DEFERRED."
     }
   ],
@@ -2765,7 +2766,6 @@
     }
   },
   "next_runnable": [
-    "FA-LES-T1-W03-LEDGER-JOURNAL-ANSWER-KEY",
     "FA-WK-T1-W04-W05",
     "FA-WK-T1-W06-W07",
     "FA-WK-T1-W08",
