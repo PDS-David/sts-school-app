@@ -539,3 +539,42 @@ test('Week Five constitutional replacement corrects composition, franchise and 1
   }
   assert.equal(p.package_status, 'PENDING');
 });
+
+
+test('Week Six Lyttleton and 1958 conference replacement corrects institutions and venue', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(entry => entry.id === 'SUP-SS1-GOVERNMENT-T2-W06-CORRECTED');
+  assert(lesson, 'Week Six replacement lesson is missing');
+  assert.equal(hash(lesson.body), lesson.body_sha256);
+  assert.equal(lesson.practice.length, 8);
+  assert.equal(lesson.practice.reduce((sum, question) => sum + question.marks, 0), 48);
+  assert.equal(new Set(lesson.practice.map(question => question.id)).size, 8);
+  for (const phrase of ['1 October 1954', 'Governor-General', 'Federal Executive Council', 'indirect electoral', 'derivation', 'Chick Commission', 'Lancaster House, London', '29 September to 27 October 1958', 'Willink Commission', '1 October 1960']) {
+    assert(lesson.body.includes(phrase), `Week Six lesson missing concept: ${phrase}`);
+  }
+  assert.equal(lesson.state.content_approval, 'PENDING');
+  assert.equal(lesson.state.approval_reference, null);
+  assert.equal(lesson.state.implementation, 'IMPLEMENTED');
+  assert.equal(lesson.state.verification, 'DEFERRED');
+  assert.equal(lesson.state.verification_reference, null);
+  const correction = p.delivery_corrections.find(entry => entry.id === 'CORR-GOV-T2-W06-ROW-REPLACEMENT');
+  assert(correction);
+  assert.equal(correction.source_lesson_id, 'SS1-SRC-c76f430c7cf8:BODY:b141f58891477da0bfd483e0f4fe7e5bfb8918efe1a5c97294e865c96ea6d1e2');
+  assert.equal(correction.body_sha256, 'b141f58891477da0bfd483e0f4fe7e5bfb8918efe1a5c97294e865c96ea6d1e2');
+  assert.equal(correction.replacement_id, lesson.id);
+  for (const id of ["COV-GOV-T2-SCHEME-W06-LYTTLETON-CONSTITUTION","COV-GOV-T2-W06-LYTTLETON-CONSTITUTION","COV-GOV-T2-W06-FEDERAL-STRUCTURE","COV-GOV-T2-W06-1958-CONSTITUTIONAL-CONFERENCE"]) {
+    const coverage = p.coverage.find(entry => entry.id === id);
+    assert(coverage);
+    assert.equal(coverage.status, 'IMPLEMENTED_EQUIVALENT', id);
+    assert(coverage.lesson_ids.includes(lesson.id), id);
+  }
+  const venueGate = p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W06-CONFERENCE-PLACE-DISCREPANCY');
+  assert(venueGate);
+  assert.equal(venueGate.blocks_delivery, true);
+  for (const id of ["GOVERNMENT-T2-W06-LYTTLETON-SPEAKER-FACT","GOVERNMENT-T2-W06-LYTTLETON-ELECTORAL-FACT","GOVERNMENT-T2-W06-LYTTLETON-EXECUTIVE-FACT","GOVERNMENT-T2-W06-LYTTLETON-REVENUE-FACT","GOVERNMENT-T2-W06-LYTTLETON-REGIONALISM-FACT","GOVERNMENT-T2-W06-CONFERENCE-OUTCOMES-FACT","GOVERNMENT-T2-W06-EVALUATION-QUESTIONS-MISSING","GOVERNMENT-T2-W06-PRACTICE-VERIFICATION"]) {
+    const item = p.open_items.find(entry => entry.id === id);
+    assert(item);
+    assert.equal(item.blocks_delivery, false, id);
+  }
+  assert.equal(p.package_status, 'PENDING');
+});
