@@ -84,7 +84,7 @@ test('Financial Accounting source-alias guards reject wrong hashes, ambiguous an
       text: rule.anchor,
     };
     assert.throws(() => applyRules({ ...input, sha256: '0'.repeat(64) }, [rule]), /source mismatch/);
-    assert.throws(() => applyRules({ ...input, text: rule.anchor + '\\n' + rule.anchor }, [rule]), /ambiguous/);
+    assert.throws(() => applyRules({ ...input, text: rule.anchor + '\n' + rule.anchor }, [rule]), /ambiguous/);
     assert.throws(() => applyRules({ ...input, text: 'anchor absent' }, [rule]), /missing/);
   }
 });
