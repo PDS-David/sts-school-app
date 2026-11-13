@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
+// Keep the package loader and student-delivery security tests in this workflow entrypoint.
+import './studentDelivery.test.js';
 import {
   packageSchema,
   sha256,
