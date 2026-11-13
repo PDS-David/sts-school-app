@@ -48,8 +48,9 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 13,
+    "IMPLEMENTED_TESTING_DEFERRED": 12,
     "BLOCKED": 3,
+    "IN_PROGRESS": 1,
     "PENDING": 79
   },
   "items": [
@@ -496,8 +497,8 @@
         "ECON-INV-T1",
         "ECON-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Implemented in branch agent/economics-week-four-20261113. Commit 8aa4e128c05378d94c6d4ceab3157e06b6097c12 adds source-bound objective/question coverage, an original three-agent opportunity-cost supplement with model answers and marking, and explicit open items for unanswered revision, nominal/real-cost and reading-rights gaps. Testing remains deferred by owner; see ECON-WK-T1-W04.md.",
+      "status": "IN_PROGRESS",
+      "implementation_reference": "Implemented in branch agent/economics-week-four-20261113. Commit 8aa4e128c05378d94c6d4ceab3157e06b6097c12 adds source-bound objective/question coverage, an original three-agent opportunity-cost supplement with model answers and marking, and explicit open items for unanswered revision, nominal/real-cost and reading-rights gaps. Testing remains deferred by owner; see ECON-WK-T1-W04.md. Exact body hash was recalculated from the serialized lesson body after CI found the previous stored digest included an extra trailing newline; corrected body_sha256=f63e6476c93cc64a0526fe081cadd96d3badbf13619da5e05e75845c3a9268aa in package commit f8e62cdf2a04514ca6b2dcd84cf687c2ae66b3dc. Await the rerun of the integrity/compiler workflow before returning the task to IMPLEMENTED_TESTING_DEFERRED.",
       "completion_condition": "Week 4 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
     },
     {
