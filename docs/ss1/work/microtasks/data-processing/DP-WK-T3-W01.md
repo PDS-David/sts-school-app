@@ -37,8 +37,8 @@ The Week 1 evaluation and theory ask for the difference between a text editor an
 
 ## Coverage changes
 
-- Four SUPPORTED entries added: word-processing definition, basic features, functions and uses.
-- One MARKER entry added for the bare Microsoft Word heading (paragraph 43); it has no lesson target.
+- Four PARTIAL entries added: word-processing definition, basic features, functions and uses. They remain PARTIAL until exact parsed source-body targets are bound; no unsupported SUPPORTED claim is made.
+- One PARTIAL entry added for the bare Microsoft Word heading (paragraph 43); it has no explanatory content and no marker rule/lesson target.
 - One PARTIAL entry added for the text-editor/Notepad question because the explanatory distinction appears later in Week 2.
 - No lesson ID was attached because no Week 1 lesson body exists yet.
 
