@@ -153,6 +153,38 @@ test('concurrent class-code claims can link one student to only one account', as
   }
 });
 
+test('soft-deleted enrollment records cannot be claimed through public self-registration', async () => {
+  const admissionNumber = admission('DELETED');
+  const username = `bsec8-deleted-${suffix()}`;
+  let studentId: string | undefined;
+
+  try {
+    const { rows } = await query(
+      `INSERT INTO students(full_name,class_name,school_code,admission_number,deleted_at)
+       VALUES($1,$2,'primary',$3,now()) RETURNING id`,
+      ['BSEC8 Deleted Student', 'Primary 1', admissionNumber],
+    );
+    studentId = rows[0].id;
+
+    const result = await registerSelfServiceAccount({
+      role: 'student',
+      fullName: 'BSEC8 Deleted Student',
+      phone: '08000000000',
+      schoolCode: 'primary',
+      username,
+      passwordHash: 'test-password-hash',
+      admissionNumber,
+    });
+    assert.deepEqual(result, { kind: 'student_not_found' });
+
+    const { rows: accounts } = await query('SELECT id FROM users WHERE username=$1', [username]);
+    assert.equal(accounts.length, 0);
+  } finally {
+    if (studentId) await query('DELETE FROM students WHERE id=$1', [studentId]);
+    await query('DELETE FROM users WHERE username=$1', [username]);
+  }
+});
+
 test('failed student-link write rolls back the newly inserted self-registration account', async () => {
   const admissionNumber = admission('ROLLBACK');
   const username = `bsec8-rollback-${suffix()}`;
