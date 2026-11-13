@@ -45,9 +45,9 @@ test('all Primary 4 researched packages pass the owner approval and verification
 });
 
 test('approved Primary 4 package refresh updates only exact researched rows and retires their stale assessments', async () => {
-  let captured: { sql: string; params?: unknown[] } | null = null;
+  const captured: Array<{ sql: string; params?: unknown[] }> = [];
   const query = async (sql: string, params?: unknown[]) => {
-    captured = { sql, params };
+    captured.push({ sql, params });
     return { rows: [{ refreshed_count: '2', closed_assessment_count: '1' }] };
   };
   const planned = [{
