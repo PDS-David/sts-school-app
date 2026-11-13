@@ -213,8 +213,7 @@ api.interceptors.response.use(
         //
         // Immediate-result workflows need the same treatment: the caller
         // needs the real response body right now, not a synthetic queued
-        // stand-in. This includes Term-PIN gates, assessment submission and
-        // financial writes that must not be reported as settled while offline:
+        // stand-in. This includes Term-PIN gates and assessment submission:
         //   - POST /topics/:id/complete returns the actual summary/practice
         //     questions/assessment status the screen renders immediately —
         //     a queued `{queued:true}` has none of that.
@@ -230,9 +229,6 @@ api.interceptors.response.use(
           /^\/learning\/assessments(?:\?|$)/.test(url) ||
           /^\/learning\/assessments\/[^/]+\/submit(?:\?|$)/.test(url) ||
           /^\/learning\/questions(?:\?|$)/.test(url) ||
-          /^\/finance\/fee-items(?:\?|$)/.test(url) ||
-          /^\/finance\/invoices(?:\?|$)/.test(url) ||
-          /^\/finance\/invoices\/[^/]+\/status(?:\?|$)/.test(url) ||
           url.startsWith('/learning/term-pins/redeem')
         ) {
           return Promise.reject(error);
