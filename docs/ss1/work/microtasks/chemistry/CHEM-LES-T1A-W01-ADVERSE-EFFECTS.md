@@ -12,7 +12,7 @@ Status: **IMPLEMENTED_TESTING_DEFERRED**. The original source gap is supplied by
 
 ## Implementation
 - Added `SUP-SS1-CHEM-T1A-W01-ADVERSE-EFFECTS` to `backend/src/db/ss1/subjects/chemistry.json`.
-- Lesson body SHA-256: `14165763c335ea377078e8edc10360ae9340517595173199a1159abd9637cbf1`.
+- Lesson body SHA-256: `210e76e83f7ec84f102dbef2348eb77abb4fbd009c245b8ae37706224c0b71c1`.
 - Teaching covers hazard versus risk, four exposure routes, irritation, corrosive injury, acute poisoning/organ effects, sensitisation, chronic harm, environmental effects, the five-level hierarchy of controls and school-learner safety boundaries.
 - Added six original keyed practice questions with marking criteria totalling 26 marks.
 - Updated `COV-CHEM-T1A-W01-ADVERSE-EFFECTS` to `IMPLEMENTED_EQUIVALENT` and linked the lesson; evidence explicitly says the source itself has no teaching text.
