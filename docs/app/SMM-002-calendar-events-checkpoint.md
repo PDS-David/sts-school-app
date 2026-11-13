@@ -36,6 +36,12 @@ Branch: `agent/calendar-parent-upcoming-20261113`
 - `1b32ffc3dfc77c34449122db2799727da8e166f2` — admin event screen.
 - `44d40fcbfab72c4a7c3bd7f085c6cd55e86a331b` — admin menu link.
 - `4828a504050c6b8d03049d7521f646a2fcc99ce4` — admin route registration.
+- `11b269e9fb02c7a1a8a22931f36fd00144c9aa42` — include school code in event feeds.
+- `cf9c456bf271813eb151c601aa5a021891ee1712` — include school code in parent test feed.
+- `026d0b3d3fa5df0078229366c47aa55589333d53` — display school for multi-school parent calendars.
+- `137834eba22c9488f1bafce266eb953e1f284e33` — reject the unreachable finance-admin audience.
+- `f833cbd26d850fb19db1668e44775b00b41af9b1` — remove the finance-admin audience option.
+- `928528e655645257df07e748789eaf2a410c4f7d` — enforce subject/school ownership on parent test queries.
 
 ## Verification
 - Static checks: confirmed the learning router applies `requireAuth`; event router applies `requireAuth`; event POST/DELETE use `requireRole('admin')`; class validation checks the same school's `classes` row; schema table and indexes are present.
