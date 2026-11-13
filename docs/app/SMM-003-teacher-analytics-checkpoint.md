@@ -23,14 +23,8 @@ Branch: `agent/teacher-marking-analytics-20261113`
 - This checkpoint.
 
 ## Commits
-- `6c139381b84666b04445d67579e63d05e4f59058` — aggregate overview endpoint.
-- `c620bc6e58592522a23134157a618cb79f0bd299` — dashboard summary.
-- `9eaca6b280656771489a7034909f6840178152cd` — score-entry navigation fix.
-- `4bc5a3f62d6de145439e87b083fff91266c753ba` — analytics screen.
-- `02b4cca051ca2c5425a37800565c842c830dab6e` — More menu.
-- `791516fdc05788777751c7f7be3c95197cc7aa65` — route registration.
-- `7a61e0919af9df0624ca3f124271e2530fec0a20` — attendance denominator fix.
-- `b2f4f325c0b26e3e5eaf3903f9401412bfcb0312` — enforce same-school subject scope.
+- Latest implementation commit: `b2f4f325c0b26e3e5eaf3903f9401412bfcb0312`.
+- Durable checkpoint commit / branch head at last checkpoint: `e6315de74651d89d34fe491484fc4d84dd51f89c`.
 
 ## Verification
 - Static review confirmed the route is behind `requirePerm('grades.read')`; teachers already have that permission.
