@@ -211,9 +211,9 @@ api.interceptors.response.use(
         // device by the time it flushed. These now fail immediately and
         // honestly too, same as AI requests.
         //
-        // Two Term-PIN-gating requests need the same treatment, for the
-        // same "the caller needs the real response body right now, not a
-        // synthetic queued stand-in" reason as AI requests above:
+        // Immediate-result workflows need the same treatment: the caller
+        // needs the real response body right now, not a synthetic queued
+        // stand-in. This includes Term-PIN gates and assessment submission:
         //   - POST /topics/:id/complete returns the actual summary/practice
         //     questions/assessment status the screen renders immediately —
         //     a queued `{queued:true}` has none of that.
