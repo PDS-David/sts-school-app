@@ -1,0 +1,31 @@
+name: SS23 package contract tests
+
+on:
+  pull_request:
+    paths:
+      - "backend/src/db/ss23/**"
+      - ".github/workflows/ss23-package-schema.yml"
+  push:
+    branches: [master]
+    paths:
+      - "backend/src/db/ss23/**"
+      - ".github/workflows/ss23-package-schema.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  package-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24.19.0"
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+      - name: Type-check backend
+        run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
+      - name: Validate SS2 and SS3 package contracts
+        run: node --import tsx --test backend/src/db/ss23/subjectPackageSchema.test.ts
