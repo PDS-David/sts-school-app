@@ -4,3 +4,8 @@ export function shouldEnqueueOfflineWrite(
 ): boolean {
   return request?._skipOfflineQueue !== true;
 }
+
+/** Axios account-switch cancellations must never be queued as offline writes. */
+export function isAccountSwitchCancellation(error: { code?: string } | undefined): boolean {
+  return error?.code === 'ERR_CANCELED';
+}
