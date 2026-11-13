@@ -5,6 +5,7 @@ import { createSerialQueue } from '../../mobile/src/offline/serialQueue.ts';
 import { createOutboxStore } from '../../mobile/src/offline/outboxStore.ts';
 import { isRestorableUser } from '../../mobile/src/api/authSession.ts';
 import { shouldDiscardOutboxFailure } from '../../mobile/src/offline/outboxFailurePolicy.ts';
+import { shouldStopOutboxFlush } from '../../mobile/src/offline/outboxFlushPolicy.ts';
 import { getMaterialDownloadTarget, isSafeMaterialUrl } from '../../mobile/src/utils/materialDownload.ts';
 
 test('normal failed writes remain eligible for offline queueing', () => {
@@ -143,8 +144,16 @@ test('material downloads reject insecure and non-web URL schemes', () => {
 
 test('material links require a valid HTTPS URL', () => {
   assert.equal(isSafeMaterialUrl('https://school.example/material.pdf'), true);
+  assert.equal(isSafeMaterialUrl('https://school.example:8443/files/material.pdf'), true);
   assert.equal(isSafeMaterialUrl('http://school.example/material.pdf'), false);
   assert.equal(isSafeMaterialUrl('https://'), false);
   assert.equal(isSafeMaterialUrl('https://school.example/a b.pdf'), false);
   assert.equal(isSafeMaterialUrl('javascript:alert(1)'), false);
+});
+
+test('outbox replay stops after an expired session response', () => {
+  assert.equal(shouldStopOutboxFlush(401), true);
+  assert.equal(shouldStopOutboxFlush(403), false);
+  assert.equal(shouldStopOutboxFlush(409), false);
+  assert.equal(shouldStopOutboxFlush(undefined), false);
 });
