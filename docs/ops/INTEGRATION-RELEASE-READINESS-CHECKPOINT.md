@@ -78,3 +78,14 @@
 ## Exact next action
 
 Refresh the latest open PR list and Actions run/job results. Fetch current #708 head and required checks; wait for all required jobs to complete, inspect failures and logs, and merge #708 only if every required check passes and GitHub confirms it is mergeable. Then revalidate #710 against the merged master before considering it. In parallel, request owner-authorised Render/backup evidence; do not infer current database status from the historical expiry schedule.
+
+
+## Update — 2026-11-13 15:17 UTC
+
+- Master advanced during this inspection to `6e98fa46c2ef400527c9615d5afff237a8b1f8fd` (merge of PR #682). The checkpoint branch initially fell 46 commits behind current master; it has been refreshed by a two-parent merge commit so the PR is based on the latest inspected master without dropping any master changes.
+- PR #708 head is now `78b9434821593bac68bf7a422c1143657b0919d1`. Its latest integrity gate run #43450585649 passed backend/mobile TypeScript, hashes, JSON, package validators and related static checks. The JSS3/acceptance workflow for that head was still queued (#43450584916); earlier run #43449643758 on the prior head failed the static/focused regressions, so the current rerun must finish and be inspected before merge. Other workflow runs on the PR head were queued/in progress. Therefore #708 remains unmerged.
+- PR #696 Android workflow #43450462430 ran offline replay regression tests and mobile TypeScript successfully, but Android JS bundle export was cancelled; the build artifact step was skipped. No signed AAB or device result exists.
+- PR #714 has a new integrity workflow run queued (#43450732890); its status is not yet a pass. CodeRabbit review was skipped because manual review is required for this OSS repository.
+- A direct HTTPS request to the configured Render root endpoint could not resolve DNS from this execution environment (`curl: (6) Could not resolve host`). This is an environment/network limitation and does not prove the service is down. The source exposes only `GET /` as a basic process response; no dedicated `/health` route was found in `backend/src/index.ts`.
+- GitHub branch-protection endpoint returned 403 to the connected integration, so required-check/ruleset policy could not be independently read. PR mergeability alone is not proof that required checks passed.
+- Exact continuation: refresh #708's head checks until all are complete; inspect the JSS3/static test failure logs if the rerun fails; only merge after all required checks pass. Then validate #710 against the merged #708 base. Keep the production blockers above open.

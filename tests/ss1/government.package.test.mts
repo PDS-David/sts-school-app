@@ -1,5 +1,5 @@
-// Automated Government package regression suite; write-only in this phase.
-// Owner instruction: do not run tests, typechecks, importer checks or database/device checks yet.
+// Automated Government package regression suite.
+// Owner instruction updated 2026-11-13: run these checks as part of the SS1 completion and integration audit.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -215,4 +215,215 @@ test('delivery corrections record the original source row hash (the compiler rej
     const originalRowHash = String(correction.source_lesson_id).split(':BODY:')[1];
     assert.equal(correction.body_sha256, originalRowHash, `${correction.id}: body_sha256 must equal the original row hash in source_lesson_id`);
   }
+});
+
+
+test('Week Nine political socialization replacement accounts for all 11 source exercises and constitutional scope', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(entry => entry.id === 'SUP-SS1-GOVERNMENT-T1-W09-CORRECTED');
+  assert(lesson, 'Week Nine replacement lesson is missing');
+  assert.equal(hash(lesson.body), lesson.body_sha256);
+  assert.equal(lesson.practice.length, 11);
+  assert.equal(lesson.practice.reduce((sum, question) => sum + question.marks, 0), 39);
+  assert.equal(new Set(lesson.practice.map(question => question.id)).size, 11);
+  for (const agent of ['FAMILY', 'SCHOOL', 'PEER GROUPS', 'POLITICAL PARTIES', 'MASS MEDIA', 'RELIGIOUS GROUPS', 'PRESSURE GROUPS']) {
+    assert(lesson.body.includes(agent), `missing political socialization agent: ${agent}`);
+  }
+  for (const section of ['Section 10', 'Section 14(2)(c)', 'Section 38', 'Section 40', 'Section 42']) {
+    assert(lesson.body.includes(section), `missing constitutional protection: ${section}`);
+  }
+  assert.equal(lesson.state.content_approval, 'PENDING');
+  assert.equal(lesson.state.approval_reference, null);
+  assert.equal(lesson.state.verification, 'DEFERRED');
+  assert.equal(lesson.state.verification_reference, null);
+  assert.equal(p.package_status, 'PENDING');
+
+  const correction = p.delivery_corrections.find(entry => entry.id === 'CORR-GOV-T1-W09-ROW-REPLACEMENT');
+  assert(correction);
+  assert.equal(correction.source_lesson_id, 'SS1-SRC-40ce7dcaf672:BODY:7b1d7ed3a759c954f4e04651fa26320b0d3c0b1977027cd18a0317ef08d3d151');
+  assert.equal(correction.body_sha256, '7b1d7ed3a759c954f4e04651fa26320b0d3c0b1977027cd18a0317ef08d3d151');
+  assert.equal(correction.replacement_id, lesson.id);
+  assert.equal(correction.evidence.objective_scope_audit.practice_item_count, 11);
+  assert.equal(correction.evidence.objective_scope_audit.practice_total_marks, 39);
+
+  for (const id of [
+    'COV-GOV-T1-W09-POLITICAL-SOCIALIZATION',
+    'COV-GOV-T1-W09-AGENTS',
+    'COV-GOV-T1-W09-RELIGIOUS-GROUPS',
+    'COV-GOV-T1-W09-ASSESSMENT-KEYS',
+  ]) {
+    const coverage = p.coverage.find(entry => entry.id === id);
+    assert.equal(coverage?.status, 'IMPLEMENTED_EQUIVALENT', id);
+    assert(coverage?.lesson_ids.includes(lesson.id), id);
+  }
+  const reading = p.coverage.find(entry => entry.id === 'COV-GOV-T1-W09-READING');
+  assert.equal(reading?.status, 'PARTIAL');
+  const readingOpenItem = p.open_items.find(entry => entry.id === 'GOVERNMENT-T1-W09-READING-VERIFICATION');
+  assert(readingOpenItem);
+  assert.equal(readingOpenItem.blocks_delivery, false);
+});
+
+
+test('Week Ten unitary/federal and Federal Character replacement covers all 15 source exercises', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(entry => entry.id === 'SUP-SS1-GOVERNMENT-T1-W10-CORRECTED');
+  assert(lesson, 'Week Ten replacement lesson is missing');
+  assert.equal(hash(lesson.body), lesson.body_sha256);
+  assert.equal(lesson.practice.length, 15);
+  assert.equal(lesson.practice.reduce((sum, question) => sum + question.marks, 0), 59);
+  assert.equal(new Set(lesson.practice.map(question => question.id)).size, 15);
+  for (const phrase of [
+    'United Kingdom', 'France', 'Italy', 'Nigeria', 'United States', 'India', 'Russia',
+    'Federal Character Principle', 'Federal Character Commission',
+    'Second Schedule, Part II, Item L', 'Fourth Schedule',
+    'Section 14(3)', 'Section 14(4)',
+  ]) {
+    assert(lesson.body.includes(phrase), `missing Week Ten coverage: ${phrase}`);
+  }
+  const ukQuestion = lesson.practice.find(question => question.id === 'T1W10-WEEKEND-02-854');
+  assert(ukQuestion?.question.includes("United Kingdom"));
+  assert(ukQuestion?.answer.includes("not a universal feature"));
+  const allocationQuestion = lesson.practice.find(question => question.id === 'T1W10-WEEKEND-04-854');
+  assert(allocationQuestion?.answer.includes('Second Schedule'));
+  assert.equal(lesson.state.content_approval, 'PENDING');
+  assert.equal(lesson.state.approval_reference, null);
+  assert.equal(lesson.state.verification, 'DEFERRED');
+  assert.equal(lesson.state.verification_reference, null);
+  assert.equal(p.package_status, 'PENDING');
+
+  const correction = p.delivery_corrections.find(entry => entry.id === 'CORR-GOV-T1-W10-ROW-REPLACEMENT');
+  assert(correction);
+  assert.equal(correction.source_lesson_id, 'SS1-SRC-40ce7dcaf672:BODY:ee1e05d99499ee072b0f55cda5a1e30fce140fbf305e42be956fe61b468f14b1');
+  assert.equal(correction.body_sha256, 'ee1e05d99499ee072b0f55cda5a1e30fce140fbf305e42be956fe61b468f14b1');
+  assert.equal(correction.replacement_id, lesson.id);
+  assert.equal(correction.evidence.objective_scope_audit.practice_item_count, 15);
+  assert.equal(correction.evidence.objective_scope_audit.practice_total_marks, 59);
+
+  for (const id of [
+    'COV-GOV-T1-W10-UNITARY',
+    'COV-GOV-T1-W10-UNITARY-EXAMPLES',
+    'COV-GOV-T1-W10-UNITARY-FEATURES',
+    'COV-GOV-T1-W10-FEDERAL',
+    'COV-GOV-T1-W10-FEDERAL-EXAMPLES',
+    'COV-GOV-T1-W10-FEDERAL-FEATURES',
+    'COV-GOV-T1-W10-FEDERAL-CHARACTER',
+    'COV-GOV-T1-W10-ASSESSMENT-KEYS',
+  ]) {
+    const coverage = p.coverage.find(entry => entry.id === id);
+    assert.equal(coverage?.status, 'IMPLEMENTED_EQUIVALENT', id);
+    assert(coverage?.lesson_ids.includes(lesson.id), id);
+  }
+  const reading = p.coverage.find(entry => entry.id === 'COV-GOV-T1-W10-READING');
+  assert.equal(reading?.status, 'PARTIAL');
+  const readingOpenItem = p.open_items.find(entry => entry.id === 'GOVERNMENT-T1-W10-READING-VERIFICATION');
+  assert(readingOpenItem);
+  assert.equal(readingOpenItem.blocks_delivery, false);
+});
+
+
+test('Week One colonial-administration replacement corrects history and binds the exact original row', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(entry => entry.id === 'SUP-SS1-GOVERNMENT-T2-W01-CORRECTED');
+  assert(lesson, 'Week One replacement lesson is missing');
+  assert.equal(hash(lesson.body), lesson.body_sha256);
+  assert.equal(lesson.practice.length, 7);
+  assert.equal(lesson.practice.reduce((sum, question) => sum + question.marks, 0), 33);
+  assert.equal(new Set(lesson.practice.map(question => question.id)).size, 7);
+  for (const phrase of [
+    'Berlin Conference', '15 November 1884', '26 February 1885',
+    'about 1760 to 1840', 'transatlantic slave trade', 'colonial forced-labour systems',
+    'civilizing mission', 'Lugard’s High Commissionership',
+    'Native Courts Proclamation (1900)', 'Native Authority (Enforcement) Proclamation (1907)',
+    'decentralised political institutions',
+  ]) {
+    assert(lesson.body.includes(phrase), `missing Week One teaching: ${phrase}`);
+  }
+  assert(!lesson.body.includes('formalised between 1914 and 1917'));
+  assert.equal(lesson.state.content_approval, 'PENDING');
+  assert.equal(lesson.state.approval_reference, null);
+  assert.equal(lesson.state.verification, 'DEFERRED');
+  assert.equal(lesson.state.verification_reference, null);
+  assert.equal(p.package_status, 'PENDING');
+
+  const correction = p.delivery_corrections.find(entry => entry.id === 'CORR-GOV-T2-W01-ROW-REPLACEMENT');
+  assert(correction);
+  assert.equal(correction.source_lesson_id, 'SS1-SRC-c76f430c7cf8:BODY:ec86c6581e3f2b192f07854c3d6eb84e1927a3bb8e967e7143b0ebf2219c7993');
+  assert.equal(correction.body_sha256, 'ec86c6581e3f2b192f07854c3d6eb84e1927a3bb8e967e7143b0ebf2219c7993');
+  assert.equal(correction.source_sha256, 'bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782');
+  assert.equal(correction.replacement_id, lesson.id);
+  assert.equal(correction.evidence.objective_scope_audit.practice_item_count, 7);
+  assert.equal(correction.evidence.objective_scope_audit.practice_total_marks, 33);
+
+  for (const id of [
+    'COV-GOV-T2-W01-HISTORICAL-BACKGROUND',
+    'COV-GOV-T2-W01-REASONS-COLONIALISM',
+    'COV-GOV-T2-W01-INDIRECT-RULE-DEFINITION',
+    'COV-GOV-T2-W01-INDIRECT-RULE-FEATURES',
+    'COV-GOV-T2-W01-INDIRECT-RULE-REASONS',
+    'COV-GOV-T2-W01-TRADITIONAL-RULERS-ROLES',
+    'COV-GOV-T2-W01-NORTHERN-NIGERIA',
+  ]) {
+    const coverage = p.coverage.find(entry => entry.id === id);
+    assert.equal(coverage?.status, 'IMPLEMENTED_EQUIVALENT', id);
+    assert(coverage?.lesson_ids.includes(lesson.id), id);
+  }
+  const colonialImpacts = p.coverage.find(entry => entry.id === 'COV-GOV-T2-W01-COLONIAL-IMPACTS');
+  assert.equal(colonialImpacts?.status, 'IMPLEMENTED_EQUIVALENT');
+  assert(colonialImpacts?.lesson_ids.includes('SUP-SS1-GOVERNMENT-T2-W02-CORRECTED'));
+  assert.equal(p.coverage.find(entry => entry.id === 'COV-GOV-T2-W01-READING')?.status, 'PARTIAL');
+  assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W01-REGIONAL-SCOPE-DISCREPANCY')?.blocks_delivery, true);
+  assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W01-EVALUATION-QUESTIONS-MISSING')?.blocks_delivery, false);
+});
+
+
+test('Week Two Western/Eastern indirect-rule replacement is sourced, marked and regionally qualified', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(entry => entry.id === 'SUP-SS1-GOVERNMENT-T2-W02-CORRECTED');
+  assert(lesson, 'Week Two replacement lesson is missing');
+  assert.equal(hash(lesson.body), lesson.body_sha256);
+  assert.equal(lesson.practice.length, 8);
+  assert.equal(lesson.practice.reduce((sum, question) => sum + question.marks, 0), 46);
+  assert.equal(new Set(lesson.practice.map(question => question.id)).size, 8);
+  for (const phrase of [
+    'Oyo Mesi', 'warrant chiefs', "Women's War", 'Mary Slessor',
+    'Clifford Constitution of 1922', 'first elections under this arrangement took place in 1923',
+    'West African Currency Board', 'Tenerife', 'Ovonramwen',
+    'English, French and Portuguese', 'industrial development was uneven',
+  ]) {
+    assert(lesson.body.includes(phrase), `missing Week Two teaching: ${phrase}`);
+  }
+  assert.equal(lesson.state.content_approval, 'PENDING');
+  assert.equal(lesson.state.verification, 'DEFERRED');
+  assert.equal(p.package_status, 'PENDING');
+
+  const correction = p.delivery_corrections.find(entry => entry.id === 'CORR-GOV-T2-W02-ROW-REPLACEMENT');
+  assert(correction);
+  assert.equal(correction.source_lesson_id, 'SS1-SRC-c76f430c7cf8:BODY:8d08df9bf392097c3b9501f9e94abd0fd0301ddda3a6c0a44dc03309eb4b5292');
+  assert.equal(correction.body_sha256, '8d08df9bf392097c3b9501f9e94abd0fd0301ddda3a6c0a44dc03309eb4b5292');
+  assert.equal(correction.source_sha256, 'bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782');
+  assert.equal(correction.replacement_id, lesson.id);
+  assert.equal(correction.evidence.objective_scope_audit.practice_item_count, 8);
+  assert.equal(correction.evidence.objective_scope_audit.practice_total_marks, 46);
+
+  for (const id of [
+    'COV-GOV-T2-W02-WESTERN-INDIRECT-RULE',
+    'COV-GOV-T2-W02-EASTERN-INDIRECT-RULE',
+    'COV-GOV-T2-W02-EASTERN-FAILURE-REASONS',
+    'COV-GOV-T2-W02-MERITS-INDIRECT-RULE',
+    'COV-GOV-T2-W02-DEMERITS-INDIRECT-RULE',
+    'COV-GOV-T2-W02-POSITIVE-COLONIAL-IMPACTS',
+    'COV-GOV-T2-W02-NEGATIVE-COLONIAL-IMPACTS',
+    'COV-GOV-T2-W01-COLONIAL-IMPACTS',
+    'COV-GOV-T2-SCHEME-W01-02-COLONIAL-IMPACTS',
+  ]) {
+    const coverage = p.coverage.find(entry => entry.id === id);
+    assert.equal(coverage?.status, 'IMPLEMENTED_EQUIVALENT', id);
+    assert(coverage?.lesson_ids.includes(lesson.id), id);
+  }
+  assert.equal(p.coverage.find(entry => entry.id === 'COV-GOV-T2-W02-EVALUATION-MARKER')?.status, 'PARTIAL');
+  assert.equal(p.coverage.find(entry => entry.id === 'COV-GOV-T2-W02-PRACTICE-POINTER')?.status, 'PARTIAL');
+  assert.equal(p.coverage.find(entry => entry.id === 'COV-GOV-T2-SCHEME-W01-02-INDIRECT-RULE-NIGERIA')?.status, 'PARTIAL');
+  assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W02-REGIONAL-SCOPE-DISCREPANCY')?.blocks_delivery, true);
+  assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W02-CURRENCY-BANKING-FACT')?.blocks_delivery, false);
+  assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W02-EVALUATION-QUESTIONS-MISSING')?.blocks_delivery, false);
 });

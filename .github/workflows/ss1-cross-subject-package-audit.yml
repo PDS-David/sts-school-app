@@ -14,6 +14,7 @@ on:
       - "docs/ss1/sources/**"
       - "scripts/ss1/**"
       - "tests/ss1/technical-drawing.*.test.mts"
+      - "tests/ss1/government.package.test.mts"
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/ss1-cross-subject-package-audit.yml"
@@ -48,6 +49,10 @@ jobs:
           python scripts/ss1/prepare_sources.py \
             --archive docs/ss1/sources/SSS1-original.zip \
             --output "$RUNNER_TEMP/ss1-staged"
+      - name: Run Government package regression tests
+        run: |
+          node --import tsx --test tests/ss1/government.package.test.mts
+          node --import tsx backend/src/db/ss1/validateSubjectPackages.ts government
       - name: Install WMF conversion tools
         run: |
           sudo apt-get update -qq
