@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { shouldEnqueueOfflineWrite } from '../../mobile/src/offline/replayPolicy.ts';
 import { createSerialQueue } from '../../mobile/src/offline/serialQueue.ts';
+import { createOutboxStore } from '../../mobile/src/offline/outboxStore.ts';
 
 test('normal failed writes remain eligible for offline queueing', () => {
   assert.equal(shouldEnqueueOfflineWrite({}), true);
@@ -32,4 +33,60 @@ test('a failed outbox mutation does not block later mutations', async () => {
   await assert.rejects(run(async () => { throw new Error('storage failure'); }), /storage failure/);
   const result = await run(async () => 'next operation completed');
   assert.equal(result, 'next operation completed');
+});
+
+function memoryStorage() {
+  const values = new Map<string, string>();
+  return {
+    values,
+    async getItem(key: string) { return values.get(key) ?? null; },
+    async setItem(key: string, value: string) { values.set(key, value); },
+  };
+}
+
+test('outbox writes reject when durable storage fails', async () => {
+  const storage = memoryStorage();
+  const outbox = createOutboxStore<{ id: string }>(
+    { ...storage, async setItem() { throw new Error('disk unavailable'); } },
+    () => 'student-a',
+  );
+  await assert.rejects(outbox.enqueue({ id: 'pending-1' }), /disk unavailable/);
+});
+
+test('outbox rejects corrupt persisted data instead of overwriting queued work', async () => {
+  const storage = memoryStorage();
+  storage.values.set('offline_outbox:student-a', '{broken');
+  const outbox = createOutboxStore<{ id: string }>(storage, () => 'student-a');
+  await assert.rejects(outbox.enqueue({ id: 'new-write' }));
+  assert.equal(storage.values.get('offline_outbox:student-a'), '{broken');
+});
+
+test('queued mutations retain the account namespace captured before waiting', async () => {
+  const storage = memoryStorage();
+  let namespace = 'student-a';
+  let releaseFirstWrite!: () => void;
+  let firstWriteStarted!: () => void;
+  const started = new Promise<void>(resolve => { firstWriteStarted = resolve; });
+  const release = new Promise<void>(resolve => { releaseFirstWrite = resolve; });
+  const delayedStorage = {
+    async getItem(key: string) { return storage.getItem(key); },
+    async setItem(key: string, value: string) {
+      if (key === 'offline_outbox:student-a' && !storage.values.has(key)) {
+        firstWriteStarted();
+        await release;
+      }
+      await storage.setItem(key, value);
+    },
+  };
+  const outbox = createOutboxStore<{ id: string }>(delayedStorage, () => namespace);
+  const first = outbox.enqueue({ id: 'first' });
+  await started;
+  const second = outbox.enqueue({ id: 'second' });
+  namespace = 'student-b';
+  releaseFirstWrite();
+  await Promise.all([first, second]);
+  assert.deepEqual(JSON.parse(storage.values.get('offline_outbox:student-a')!), [
+    { id: 'first' }, { id: 'second' },
+  ]);
+  assert.deepEqual(await outbox.getAll(), []);
 });
