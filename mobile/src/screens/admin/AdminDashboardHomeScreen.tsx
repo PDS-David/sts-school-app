@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { View, Text, ScrollView, RefreshControl, Alert } from 'react-native';
+import { View, Text, ScrollView, RefreshControl } from 'react-native';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
 import { useAdminSchool } from '../../api/AdminSchoolContext';
@@ -40,6 +40,7 @@ function BackupCard() {
   const [st, setSt] = useState<BackupStatus | null>(null);
   const [statusError, setStatusError] = useState('');
   const [busy, setBusy] = useState(false);
+  const [confirming, setConfirming] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
 
   const refresh = useCallback(async () => {
@@ -62,9 +63,7 @@ function BackupCard() {
     }
     setBusy(false);
   };
-  const confirm = () => Alert.alert('Back up now?',
-    'This emails an encrypted copy of the whole database to the admin recipients.',
-    [{ text: 'Cancel', style: 'cancel' }, { text: 'Back up', onPress: run }]);
+  const confirm = () => setConfirming(true);
 
   if (!st) return (
     <Card style={{ marginTop: Spacing.md }}>
@@ -90,7 +89,15 @@ function BackupCard() {
       </Text>
       {!!statusError && <Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm, marginTop: 6 }}>{statusError}</Text>}
       {msg ? <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm, marginTop: 6 }}>{msg}</Text> : null}
-      <Btn label="Back up now" onPress={confirm} loading={busy} disabled={busy || !st.configured} style={{ marginTop: Spacing.sm }} />
+      {confirming ? (
+        <View style={{ marginTop: Spacing.sm, gap: Spacing.sm }}>
+          <Text style={{ color: Colors.text, fontSize: Fonts.sizes.sm }}>Send an encrypted copy of the whole database to the configured admin recipients?</Text>
+          <View style={{ flexDirection: 'row', gap: Spacing.sm }}>
+            <Btn label="Cancel" variant="outline" onPress={() => setConfirming(false)} style={{ flex: 1 }} disabled={busy} />
+            <Btn label="Confirm backup" onPress={() => { setConfirming(false); run(); }} style={{ flex: 1 }} loading={busy} disabled={busy} />
+          </View>
+        </View>
+      ) : <Btn label="Back up now" onPress={confirm} loading={busy} disabled={busy || !st.configured} style={{ marginTop: Spacing.sm }} />}
     </Card>
   );
 }
