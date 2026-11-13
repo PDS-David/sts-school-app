@@ -486,3 +486,28 @@ test('Technical Drawing subject alias approval is recorded without implying less
   assert.equal(subject.package_status, 'PENDING', 'alias approval must not certify the whole package');
   assert.ok(subject.lessons.every(lesson => lesson.state.content_approval === 'PENDING'), 'owner alias approval must not silently approve teaching content');
 });
+
+
+test('Technical Drawing revision and polygon objectives with incomplete teaching remain explicitly partial', async () => {
+  const subject = packageSchema.parse(JSON.parse(await readFile(packagePath, 'utf8')));
+  const expectedPartialIds = [
+    'COV-TD-T2-W01-REVISION-TRIANGLE-PERIMETER-ANGLE',
+    'COV-TD-T2-W01-REVISION-TRIANGLE-BASE-HEIGHT-VERTICAL',
+    'COV-TD-T2-W01-REVISION-TRIANGLE-PERIMETER-RATIO',
+    'COV-TD-T2-W01-REVISION-SIMILAR-TRIANGLE-PERIMETER',
+    'COV-TD-T2-W01-REVISION-OCTAGON-SQUARE',
+    'COV-TD-T2-W03-REGULAR-PENTAGON',
+    'COV-TD-T2-W03-REGULAR-HEXAGON',
+    'COV-TD-T2-W03-REGULAR-OCTAGON',
+    'COV-TD-T2-W03-GENERAL-POLYGON-METHODS',
+    'COV-TD-T2-W03-TWO-TRIANGLE-BASE-METHOD',
+  ];
+  const partial = subject.coverage.filter(entry => entry.status === 'PARTIAL').map(entry => entry.id).sort();
+  assert.deepEqual(partial, [...expectedPartialIds].sort(), 'incomplete objectives must not be silently upgraded to SUPPORTED');
+  for (const id of expectedPartialIds) {
+    const entry = subject.coverage.find(item => item.id === id);
+    assert.ok(entry, `partial coverage entry missing: ${id}`);
+    assert.ok(entry.lesson_ids.length > 0, `partial coverage must retain its source/lesson binding: ${id}`);
+  }
+  assert.equal(subject.package_status, 'PENDING', 'partial teaching coverage cannot be released as a completed subject');
+});
