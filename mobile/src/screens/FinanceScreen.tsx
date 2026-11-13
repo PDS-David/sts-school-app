@@ -202,7 +202,7 @@ export default function FinanceScreen({ navigation }: any) {
           <View style={styles.sectionRow}>
             <SectionHeader title="Fee Schedule" />
             {isFinanceAdmin && (
-              <TouchableOpacity onPress={() => setFeeModal(true)} style={styles.addBtn}>
+              <TouchableOpacity onPress={() => setFeeModal(true)} style={styles.addBtn} accessibilityRole='button' accessibilityLabel='Add fee item'>
                 <Ionicons name="add" size={20} color={Colors.white} />
               </TouchableOpacity>
             )}
@@ -238,7 +238,7 @@ export default function FinanceScreen({ navigation }: any) {
               </View>
               <Text style={styles.invAmt}>₦{Number(inv.total).toLocaleString()}</Text>
               {isFinanceAdmin && inv.status !== 'paid' && (
-                <Btn label={updatingInvoiceId === inv.id ? 'Updating…' : 'Mark as Paid'} onPress={() => markPaid(inv.id)} variant="outline" style={{ marginTop: Spacing.sm }} disabled={updatingInvoiceId !== null} loading={updatingInvoiceId === inv.id} />
+                <Btn label={updatingInvoiceId === inv.id ? 'Updating…' : 'Mark as Paid'} onPress={() => setConfirmPaid(inv)} variant='outline' style={{ marginTop: Spacing.sm }} disabled={updatingInvoiceId !== null} loading={updatingInvoiceId === inv.id} accessibilityLabel={`Mark invoice for ${inv.student_name} as paid`} />
               )}
             </Card>
           )}
@@ -263,6 +263,11 @@ export default function FinanceScreen({ navigation }: any) {
       <Modal visible={invModal} animationType="slide" onRequestClose={() => setInvModal(false)}>
         <ScrollView style={styles.modalWrapOuter} contentContainerStyle={styles.modalWrap} keyboardShouldPersistTaps="handled">
           <SectionHeader title="New Invoice" />
+          {invOptionsLoading ? <Loader /> : invOptionsError ? (
+            <View><Empty message={invOptionsError} /><Btn label='Retry students and terms' variant='outline' onPress={() => loadInvoiceOptions()} /></View>
+          ) : !students.length || !terms.length ? (
+            <Empty message='Students and academic terms must be available before an invoice can be created.' />
+          ) : null}
 
           <Text style={styles.filterLabel}>Student</Text>
           <View style={styles.pickerWrap}>
@@ -290,7 +295,7 @@ export default function FinanceScreen({ navigation }: any) {
           ) : feeItems.map(f => {
             const checked = invForm.fee_item_ids.includes(f.id);
             return (
-              <TouchableOpacity key={f.id} style={styles.checkRow} onPress={() => toggleFeeItem(f.id)}>
+              <TouchableOpacity key={f.id} style={styles.checkRow} onPress={() => toggleFeeItem(f.id)} accessibilityRole='checkbox' accessibilityState={{ checked }} accessibilityLabel={`${f.name}, ₦${Number(f.amount).toLocaleString()}`}>
                 <Ionicons name={checked ? 'checkbox' : 'square-outline'} size={22} color={checked ? Colors.primary : Colors.textSub} />
                 <Text style={styles.checkLabel}>{f.name} {f.class_name ? `(${f.class_name})` : '(All)'}</Text>
                 <Text style={styles.feeAmt}>₦{Number(f.amount).toLocaleString()}</Text>
@@ -305,10 +310,12 @@ export default function FinanceScreen({ navigation }: any) {
 
           <View style={styles.modalActions}>
             <Btn label="Cancel" onPress={() => setInvModal(false)} variant="outline" style={{ flex: 1 }} disabled={saving} />
-            <Btn label={saving ? 'Creating…' : 'Create Invoice'} onPress={handleCreateInvoice} style={{ flex: 1 }} disabled={saving} />
+            <Btn label={saving ? 'Creating…' : 'Create Invoice'} onPress={handleCreateInvoice} style={{ flex: 1 }} disabled={saving || invOptionsLoading || !!invOptionsError || !students.length || !terms.length || !feeItems.length} loading={saving} />
           </View>
         </ScrollView>
       </Modal>
+      <ConfirmDialog visible={!!confirmPaid} title='Mark invoice as paid?' message={confirmPaid ? `Mark ${confirmPaid.student_name}’s invoice of ₦${Number(confirmPaid.total).toLocaleString()} as paid?` : ''} confirmLabel='Mark as paid' onConfirm={markPaid} onCancel={() => setConfirmPaid(null)} />
+      <ConfirmDialog visible={!!infoDialog} title={infoDialog?.title ?? ''} message={infoDialog?.message ?? ''} hideCancel onConfirm={() => setInfoDialog(null)} onCancel={() => setInfoDialog(null)} />
     </View>
   );
 }
