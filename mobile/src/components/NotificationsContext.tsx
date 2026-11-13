@@ -16,6 +16,8 @@ interface NotificationsState {
   loading: boolean;
   announcementsLoaded: boolean;
   announcementsError: boolean;
+  feedErrors: string[];
+  readIds: Set<string>;
   refresh: () => Promise<void>;
   markAllRead: () => void;
 }
@@ -30,6 +32,7 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
   const [readIds, setReadIds] = useState<Set<string>>(new Set());
   const [announcementsLoaded, setAnnouncementsLoaded] = useState(false);
   const [announcementsError, setAnnouncementsError] = useState(false);
+  const [feedErrors, setFeedErrors] = useState<string[]>([]);
 
   // Keep the last successful announcement response if a later refresh fails.
   // Refs avoid changing refresh's identity and triggering home-screen loops.
@@ -46,6 +49,7 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
       setReadIds(new Set());
       setAnnouncementsLoaded(false);
       setAnnouncementsError(false);
+      setFeedErrors([]);
       setLoading(false);
       return;
     }
@@ -58,10 +62,12 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
       setReadIds(new Set());
       setAnnouncementsLoaded(false);
       setAnnouncementsError(false);
+      setFeedErrors([]);
     }
 
     setLoading(true);
     const items: AppNotification[] = [];
+    const failedSources: string[] = [];
 
     try {
       // Students only: parents use the separate ward-scoped upcoming-tests endpoint.
@@ -78,7 +84,7 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
           });
         }
       }
-    } catch { /* an unavailable assessment feed does not block other sources */ }
+    } catch { failedSources.push('assessment alerts'); }
 
     try {
       const { data } = await api.get('/messages/contacts');
@@ -92,7 +98,7 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
           createdAt: c.last_message_at ?? new Date().toISOString(),
         });
       }
-    } catch { /* an unavailable messages feed does not block other sources */ }
+    } catch { failedSources.push('message alerts'); }
 
     let announcementItems: AppNotification[] = [];
     let announcementSucceeded = false;
@@ -106,7 +112,7 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
         createdAt: a.created_at ?? new Date().toISOString(),
       }));
       announcementSucceeded = true;
-    } catch { /* retain the last successful announcement feed and expose the error */ }
+    } catch { failedSources.push('announcements'); }
 
     // A newer refresh or account switch supersedes this response.
     if (generation !== refreshGenerationRef.current) return;
@@ -119,6 +125,7 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
     setNotifications(items);
     setAnnouncementsLoaded(previous => previous || announcementSucceeded);
     setAnnouncementsError(!announcementSucceeded);
+    setFeedErrors(failedSources);
     setLoading(false);
   }, [user]);
 
@@ -132,7 +139,7 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
 
   return (
     <NotificationsContext.Provider value={{
-      notifications, unreadCount, loading, announcementsLoaded, announcementsError, refresh, markAllRead,
+      notifications, unreadCount, loading, announcementsLoaded, announcementsError, feedErrors, readIds, refresh, markAllRead,
     }}>
       {children}
     </NotificationsContext.Provider>
