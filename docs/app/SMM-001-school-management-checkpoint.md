@@ -1,7 +1,7 @@
 # School-management feature completion checkpoint
 
 Task ID: SMM-001
-Status: IN PROGRESS — baseline inspected; implementation not yet started
+Status: IN PROGRESS — announcement dashboard integration implemented; broader feature work remains
 Base branch: master
 Base commit: 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
 Worker branch: agent/school-management-feature-completion-20261113
@@ -15,13 +15,18 @@ Worker branch: agent/school-management-feature-completion-20261113
 - Existing open PRs #682, #683, #684 do not touch the requested school-management features. Historical branches `app/prd-01-announcements` and `app/asm-04-marking-backlog` are 3,827+ commits behind current master and are not safe bases.
 
 ## Changed files
-- This checkpoint file only.
+- `mobile/src/screens/student/StudentHomeScreen.tsx` — replaced the hard-coded empty announcements card with the latest three announcement items from the already-scoped notification feed; pull-to-refresh refreshes the feed.
+- `mobile/src/screens/parent/ParentHomeScreen.tsx` — same for parent dashboard; the backend's parent/ward scoping remains authoritative.
+- This checkpoint file.
 
 ## Commits
-- Initial checkpoint commit: pending.
+- `b30835c24ff2de7c2fbb1e149d8c6165133f4e2a` — initial durable checkpoint.
+- `9b74a964985cc4bab131e626fdf9ca5bdaa07c3a` — student dashboard announcement integration.
+- `59761d8ee5e95430e443f1a59a1fdc3d992701f8` — parent dashboard announcement integration.
 
 ## Tests
-- No tests run yet. Repository inspection used GitHub's current master file contents and commit/PR metadata; no local checkout or runtime/database was available in this session at checkpoint creation.
+- No automated tests/typecheck run: this session has GitHub repository write/read access but no local checkout or command execution environment for this repository.
+- Static verification: both dashboards consume `useNotifications()`; the existing provider fetches `/announcements`, and the backend endpoint scopes student/parent announcements to their own active student/ward rows. No permissions or backend query were widened.
 
 ## Remaining work
 1. Inspect current schema, route permissions, mobile navigators and feature-specific tests before changing each feature.
@@ -30,4 +35,4 @@ Worker branch: agent/school-management-feature-completion-20261113
 4. Update evidence and open focused PRs; do not claim runtime/device verification without it.
 
 ## Exact next action
-Inspect `backend/schema.sql`, `backend/src/routes/learning.ts`, `backend/src/utils/rbac.ts`, role navigators and test files for existing calendar/event/achievement/analytics implementations; then select the smallest missing vertical slice and implement it without overlapping other agents.
+Open a focused PR for the dashboard announcement integration. Then inspect and implement the parent-scoped upcoming-assessment/event path and calendar data model as a separate unit. Preserve the existing rule that teachers cannot access AI-generated essay marks; any teacher backlog metric must be aggregate-only and separately permissioned.
