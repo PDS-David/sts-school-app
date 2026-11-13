@@ -104,6 +104,13 @@ test('learning content writes and reads reject cross-school subject, term and qu
     );
     questionIds.push(Number(secondaryQuestion[0].id));
 
+    const { rows: wrongTermQuestion } = await query(
+      `INSERT INTO questions(school_code,subject_id,class_name,term_id,type,stem,options,correct_keys,marks,created_by)
+       VALUES('primary',$1,'Primary 4',$2,'mcq','Wrong term question','[]'::jsonb,ARRAY['A'],1,$3) RETURNING id`,
+      [subjectIds[0], termIds[1], teacher.id],
+    );
+    questionIds.push(Number(wrongTermQuestion[0].id));
+
     const started = await startServer();
     server = started.server;
     const headers = (token: string) => ({
@@ -169,7 +176,7 @@ test('learning content writes and reads reject cross-school subject, term and qu
 
     const wrongTermQuestionAssessment = await post('/assessments', {
       subject_id: subjectIds[0], term_id: termIds[0], class_name: 'Primary 4',
-      title: 'Wrong term question', question_ids: [{ id: questionIds[2], points: 1 }],
+      title: 'Wrong term question', question_ids: [{ id: questionIds[3], points: 1 }],
     });
     assert.equal(wrongTermQuestionAssessment.status, 400);
 
