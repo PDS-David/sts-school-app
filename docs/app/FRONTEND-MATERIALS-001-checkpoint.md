@@ -7,7 +7,7 @@
 
 ## Commits
 - `d3dc3425cf0c8f9f03217510d184fa42b6e12f55` — add loading/error/retry, cross-platform feedback, guarded upload and confirmed deletion.
-- Checkpoint commit: pending.
+- Checkpoint commit: `6c0a694c2ea5d45d6135f79132acb2af980be52f`.
 
 ## Changes
 - Replace the silent materials/subjects fetch catch with a visible error state and retry.
