@@ -27,6 +27,7 @@ import { getSecureItem, setSecureItem, deleteSecureItems, migrateLegacyTokens } 
 import { resolveApiBaseUrl } from '../../config/apiTarget';
 import { shouldEnqueueOfflineWrite } from '../offline/replayPolicy';
 import { shouldDiscardOutboxFailure } from '../offline/outboxFailurePolicy';
+import { shouldStopOutboxFlush } from '../offline/outboxFlushPolicy';
 
 // Kicked off once at module load (not awaited here) and awaited lazily by
 // the request interceptor below, so the very first request — and every
@@ -308,6 +309,12 @@ export function flushOutbox(): Promise<{ synced: number; failed: number; remaini
             // permissions or conflict resolution, and must not be silently lost.
             await removeFromOutbox(item.id);
             failed++;
+          }
+          if (shouldStopOutboxFlush(status)) {
+            // The refresh token has expired/revoked. Do not send the rest of
+            // this user's queue without a valid session; keep all remaining
+            // entries for the next successful sign-in.
+            break;
           }
           // Otherwise (network/server error) leave it queued for the next attempt.
         }
