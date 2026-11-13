@@ -17,6 +17,7 @@ import { useIsWide } from '../components/layout';
 // teacher's grading surface is only ScoreEntryScreen — CA1/CA2/Exam scores
 // for their own subject or class — reached from the Classes tab below.
 import TeacherDashboardHomeScreen from '../screens/teacher/TeacherDashboardHomeScreen';
+import SchoolCalendarScreen from '../screens/SchoolCalendarScreen';
 import TeacherClassesScreen from '../screens/teacher/TeacherClassesScreen';
 import TeacherMoreScreen from '../screens/teacher/TeacherMoreScreen';
 import ChatsScreen from '../screens/chats/ChatsScreen';
@@ -83,6 +84,7 @@ function MoreStackNavigator() {
     <MoreStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <MoreStack.Screen name="More" component={TeacherMoreScreen} />
       <MoreStack.Screen name="WeeklyEfforts" component={WeeklyEffortsScreen} options={{ headerShown: true, title: 'Weekly Efforts', ...opts }} />
+      <MoreStack.Screen name="SchoolCalendar" component={SchoolCalendarScreen} options={{ headerShown: false }} />
       <MoreStack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', ...opts }} />
       {/* No local "SecurityQuestionSetup" registration (deliberately removed
           this session): nothing in the teacher's own screens links to it
