@@ -374,3 +374,56 @@ test('Week One colonial-administration replacement corrects history and binds th
   assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W01-REGIONAL-SCOPE-DISCREPANCY')?.blocks_delivery, true);
   assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W01-EVALUATION-QUESTIONS-MISSING')?.blocks_delivery, false);
 });
+
+
+test('Week Two Western/Eastern indirect-rule replacement is sourced, marked and regionally qualified', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(entry => entry.id === 'SUP-SS1-GOVERNMENT-T2-W02-CORRECTED');
+  assert(lesson, 'Week Two replacement lesson is missing');
+  assert.equal(hash(lesson.body), lesson.body_sha256);
+  assert.equal(lesson.practice.length, 8);
+  assert.equal(lesson.practice.reduce((sum, question) => sum + question.marks, 0), 46);
+  assert.equal(new Set(lesson.practice.map(question => question.id)).size, 8);
+  for (const phrase of [
+    'Oyo Mesi', 'warrant chiefs', "Women's War", 'Mary Slessor',
+    'Clifford Constitution of 1922', 'first elections under this arrangement took place in 1923',
+    'West African Currency Board', 'Tenerife', 'Ovonramwen',
+    'English, French and Portuguese', 'industrial development was uneven',
+  ]) {
+    assert(lesson.body.includes(phrase), `missing Week Two teaching: ${phrase}`);
+  }
+  assert.equal(lesson.state.content_approval, 'PENDING');
+  assert.equal(lesson.state.verification, 'DEFERRED');
+  assert.equal(p.package_status, 'PENDING');
+
+  const correction = p.delivery_corrections.find(entry => entry.id === 'CORR-GOV-T2-W02-ROW-REPLACEMENT');
+  assert(correction);
+  assert.equal(correction.source_lesson_id, 'SS1-SRC-c76f430c7cf8:BODY:8d08df9bf392097c3b9501f9e94abd0fd0301ddda3a6c0a44dc03309eb4b5292');
+  assert.equal(correction.body_sha256, '8d08df9bf392097c3b9501f9e94abd0fd0301ddda3a6c0a44dc03309eb4b5292');
+  assert.equal(correction.source_sha256, 'bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782');
+  assert.equal(correction.replacement_id, lesson.id);
+  assert.equal(correction.evidence.objective_scope_audit.practice_item_count, 8);
+  assert.equal(correction.evidence.objective_scope_audit.practice_total_marks, 46);
+
+  for (const id of [
+    'COV-GOV-T2-W02-WESTERN-INDIRECT-RULE',
+    'COV-GOV-T2-W02-EASTERN-INDIRECT-RULE',
+    'COV-GOV-T2-W02-EASTERN-FAILURE-REASONS',
+    'COV-GOV-T2-W02-MERITS-INDIRECT-RULE',
+    'COV-GOV-T2-W02-DEMERITS-INDIRECT-RULE',
+    'COV-GOV-T2-W02-POSITIVE-COLONIAL-IMPACTS',
+    'COV-GOV-T2-W02-NEGATIVE-COLONIAL-IMPACTS',
+    'COV-GOV-T2-W01-COLONIAL-IMPACTS',
+    'COV-GOV-T2-SCHEME-W01-02-COLONIAL-IMPACTS',
+  ]) {
+    const coverage = p.coverage.find(entry => entry.id === id);
+    assert.equal(coverage?.status, 'IMPLEMENTED_EQUIVALENT', id);
+    assert(coverage?.lesson_ids.includes(lesson.id), id);
+  }
+  assert.equal(p.coverage.find(entry => entry.id === 'COV-GOV-T2-W02-EVALUATION-MARKER')?.status, 'MARKER');
+  assert.equal(p.coverage.find(entry => entry.id === 'COV-GOV-T2-W02-PRACTICE-POINTER')?.status, 'PARTIAL');
+  assert.equal(p.coverage.find(entry => entry.id === 'COV-GOV-T2-SCHEME-W01-02-INDIRECT-RULE-NIGERIA')?.status, 'PARTIAL');
+  assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W02-REGIONAL-SCOPE-DISCREPANCY')?.blocks_delivery, true);
+  assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W02-CURRENCY-BANKING-FACT')?.blocks_delivery, false);
+  assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W02-EVALUATION-QUESTIONS-MISSING')?.blocks_delivery, false);
+});
