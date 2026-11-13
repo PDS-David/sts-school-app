@@ -30,24 +30,27 @@
     "2026-11-06 ECON-LES-T1-W01-WHY-STUDY: lesson SUP-SS1-ECONOMICS-T1-W01-WHY-STUDY authored in economics.json (body SHA-256 57d1e48f9976c6b8b52e330a25dc90f887b146879f8ebee38122672bf7cf6254, 4 practice items / 27 marks) and COV-ECON-T1-W01-WHY-STUDY upgraded PARTIAL -> SUPPORTED with only the lesson id bound. The model answer and its marks are proposals: Week 1 prints no key, so the printed assessment blocks stay UNRESOLVED, the line 95 attribution question stays unanswered, and ECONOMICS-T1-W01-COVERAGE and ECONOMICS-T1-W01-PARSED-ROW-MISSING remain open and blocking respectively non-blocking. Week 1 is not complete.",
     "2026-11-07 ECON-WK-T1-W02: indexed Week Two lines 117-169 of the 1st Term source into 12 coverage entries (5 PARTIAL, 7 UNRESOLVED) and 9 open items (6 blocking), and appended ECON-FACT-T1-W02-TEACHER-DECISIONS (BLOCKED) plus four lesson tasks. Nothing is approved, verified or deliverable; no key exists in the source for any of the 16 questions; the art option, behavioural science, economic rent and the economic units are not taught in the source. Week 2 is not complete.",
     "2026-11-08 ECON-INV-T3 (A3): inventoried the 3rd Term original (legacy .doc; ten labelled weeks WEEK ONE to WEEK TEN, a thirteen-row scheme whose revision and examination rows have no body) and appended 26 items: ECON-PRE-T3, ECON-WK-T3-W01 to W10, ECON-MARK-T3-REVEXAM, ten ECON-VIS-T3-* visual items, ECON-PRES-T3-SOURCE-WORDING, ECON-PRES-T3-CALCULATIONS, ECON-FACT-T3-LAW-AND-DATA and ECON-FACT-T3-CALCULATION-VERIFY. Table, drawing and header-image counts describe a LibreOffice conversion, not the original binary. Nothing is approved, verified or deliverable; no key exists in the source; no lesson, coverage entry, rule, correction or asset was written.",
-    "2026-11-08 ECON-PRE-T1 (A3): classified the 1st Term opening block as scheme-only (rules -R002 title/scheme heading lines 18-24 and -R003 reference list lines 38-41, with MARKER coverage COV-ECON-T1-TITLE and COV-ECON-T1-REFERENCES) and recorded the scheme-to-body mapping; lines 25-36 are twelve lines carrying thirteen week numbers; rows 11 and 12 & 13 remain with ECON-MARK-T1-REVEXAM. Nothing approved, verified or deliverable; no lesson or week coverage written."
+    "2026-11-08 ECON-PRE-T1 (A3): classified the 1st Term opening block as scheme-only (rules -R002 title/scheme heading lines 18-24 and -R003 reference list lines 38-41, with MARKER coverage COV-ECON-T1-TITLE and COV-ECON-T1-REFERENCES) and recorded the scheme-to-body mapping; lines 25-36 are twelve lines carrying thirteen week numbers; rows 11 and 12 & 13 remain with ECON-MARK-T1-REVEXAM. Nothing approved, verified or deliverable; no lesson or week coverage written.",
+    "ECON-TEST-PACKAGE (2026-11-13): added tests/ss1/economics.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; the current authored lesson body hash/objective/practice/marking integrity without fabricating approval or verification; source-rule wrong-hash/ambiguous/missing-anchor guards; coverage reference resolution/status counts; and owner alias gates. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed.",
+    "ECON-WK-T1-W03 (2026-11-13): verified first-term source member hash and read the full Week 3 section plus the entire first-term source. Added six SUPPORTED objective entries (human wants, scarcity, choice, scale of preference, importance and opportunity cost); economic goods is PARTIAL because the evaluation precedes its Week 8 teaching; money cost is UNRESOLVED because it is asked but never defined in the source; West Africa application is PARTIAL because only a prompt is supplied. Recorded evaluation at Mammoth lines 193–195 and 220–222, reading line 224, general evaluation 227–232, weekend MCQs 234–240 and Section B 242–247. Added three blocking open items and four follow-up tasks; updated existing dated-examples task for the West Africa prompt. No answers invented, lesson content not fabricated, no tests run."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 9,
+    "FACTUAL_DEPENDENCY": 10,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 31,
     "SOURCE_MARKER_DISPOSITION": 3,
     "VISUAL_DISPOSITION": 20,
     "SOURCE_PRESERVATION": 6,
-    "LESSON": 9
+    "LESSON": 11,
+    "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 10,
-    "PENDING": 75,
-    "BLOCKED": 3
+    "IMPLEMENTED_TESTING_DEFERRED": 12,
+    "BLOCKED": 3,
+    "PENDING": 77
   },
   "items": [
     {
@@ -283,8 +286,8 @@
         "ECON-SRC-T2",
         "ECON-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/economics.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Test file authored 2026-11-13 at tests/ss1/economics.package.test.mts. It parses the current pending package, matches all three source registrations against SOURCE_ASSIGNMENTS.csv (member/hash/term), validates the one existing lesson body hash and marking totals while preserving PENDING content approval and DEFERRED verification, guards the five source rules with wrong-hash/ambiguous/missing-anchor probes, and checks coverage reference resolution/current status counts. Per task contract, tests were written but NOT RUN; package remains PENDING and owner/content/permission gates remain open.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -456,8 +459,8 @@
         "ECON-INV-T1",
         "ECON-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Week table, lines 172-247, SHA-256 98bac31f435a7d6d60f273226168882ffecb7f1853ac0abea8d9676142602ee2; assessment blocks listed there).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Verified exact source member hash and read full Week 3 block plus the rest of the assigned first-term source. Added six SUPPORTED coverage entries for human wants, scarcity, choice, scale of preference, its importance and opportunity cost; added PARTIAL coverage for economic goods (taught later in Week 8) and West Africa application (prompt only); added UNRESOLVED coverage for money cost (asked but never explained). Recorded all evaluation, reading, general-evaluation, weekend MCQ and Section B blocks in ECON-WK-T1-W03.md. Added three precise blocking open items and four follow-up tasks (money-cost source/lesson, cross-week sequencing, West Africa fact/lesson). Existing dated-example fact task updated to include Week 3. No answers or missing content invented; tests not run.",
       "completion_condition": "Week 3 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
     },
     {
@@ -1168,8 +1171,8 @@
       "kind": "FACTUAL_DEPENDENCY",
       "source_id": "SS1-SRC-2ab0c50bcab6",
       "term": "1st Term",
-      "week_or_locator": "date-sensitive examples: 562-569 (state budget for 2010), 572-577 (Jos 2001-2004), 606-607 and 610-614 (Naira amounts), 231 (West Africa), 952 and 1046 (Nigeria)",
-      "objective": "Verify later, with dated authoritative sources, or explicitly date as illustrative, the source's current-affairs examples before a lesson presents them as current: the `budget estimate of a state for 2010` used for a bar-chart exercise (562-569), the carrot/onion production data for 2001-2004 (572-577), the undated Naira amounts in the weekend sales and pie exercises (606-607, 610-614), the `Has the concept of opportunity cost any relevance to the West Africa countries?` question (231) and the Nigeria references (952, 1046). Each must be presented as a dated illustration, not as a current statistic; keep the source's original wording distinct from any updated figure, cite primary or authoritative data for any replacement, and stay neutral on contested policy or social claims. Record nothing as verified until the evidence exists.",
+      "week_or_locator": "date-sensitive examples: 562-569 (state budget for 2010), 572-577 (Jos 2001-2004), 606-607 and 610-614 (Naira amounts), 231 (West Africa), 952 and 1046 (Nigeria); Week 3 Mammoth line 231 / antiword lines 380–381",
+      "objective": "Verify later, with dated authoritative sources, or explicitly date as illustrative, the source's current-affairs examples before a lesson presents them as current: the `budget estimate of a state for 2010` used for a bar-chart exercise (562-569), the carrot/onion production data for 2001-2004 (572-577), the undated Naira amounts in the weekend sales and pie exercises (606-607, 610-614), the `Has the concept of opportunity cost any relevance to the West Africa countries?` question (231) and the Nigeria references (952, 1046). Each must be presented as a dated illustration, not as a current statistic; keep the source's original wording distinct from any updated figure, cite primary or authoritative data for any replacement, and stay neutral on contested policy or social claims. Record nothing as verified until the evidence exists. Include the Week 3 general-evaluation prompt asking whether opportunity cost is relevant to West African countries (Mammoth line 231; antiword lines 380–381). Require a grounded, dated regional application or explicitly retain it as open-ended reasoning; do not invent regional facts.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
         "docs/ss1/contracts/CONTRACT.md",
@@ -3350,6 +3353,144 @@
       "status": "PENDING",
       "implementation_reference": "Inventory (ECON-INV-T3): the arithmetic was not rechecked in the inventory.",
       "completion_condition": "Every worked example is rechecked with a recorded derivation; correct values are separated from the preserved source text; no answer is adopted unverified. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-FACT-T1-W03-MONEY-COST",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week 3 general evaluation Mammoth line 232; antiword line 382",
+      "objective": "Verify a standard SS1-level definition of money cost and its distinction from opportunity cost using reliable economics teaching references. Provide a dated source and examples that do not confuse accounting expenditure, explicit cost and the next-best alternative forgone.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W03.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-FACT-T1-W03-MONEY-COST.md"
+      ],
+      "depends_on": [
+        "ECON-WK-T1-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by ECON-WK-T1-W03 (2026-11-13); see docs/ss1/work/microtasks/economics/ECON-WK-T1-W03.md.",
+      "completion_condition": "Use reliable evidence and preserve source questions separately. Do not invent answers, country facts or lesson approval."
+    },
+    {
+      "id": "ECON-SEQ-T1-W03-ECONOMIC-GOODS",
+      "kind": "SCOPE_DECOMPOSITION",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week 3 Mammoth lines 227–230; later Week 8 antiword lines 1182 and 1187",
+      "objective": "Resolve the sequencing of the Week 3 economic-goods evaluation: the source teaches the definitions later in Week 8. Decide whether to move/relabel the question or explicitly treat it as prior-learning retrieval. Do not author a duplicate lesson or count Week 8 content as Week 3 teaching.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W03.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-SEQ-T1-W03-ECONOMIC-GOODS.md"
+      ],
+      "depends_on": [
+        "ECON-WK-T1-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by ECON-WK-T1-W03 (2026-11-13); see docs/ss1/work/microtasks/economics/ECON-WK-T1-W03.md.",
+      "completion_condition": "Use reliable evidence and preserve source questions separately. Do not invent answers, country facts or lesson approval."
+    },
+    {
+      "id": "ECON-LES-T1-W03-MONEY-COST",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week 3 Mammoth line 232; antiword line 382",
+      "objective": "After ECON-FACT-T1-W03-MONEY-COST is complete, add a short sourced teaching note distinguishing money cost from opportunity cost, with an SS1-level worked example and a marking guide for the source question.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W03.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-LES-T1-W03-MONEY-COST.md"
+      ],
+      "depends_on": [
+        "ECON-WK-T1-W03",
+        "ECON-FACT-T1-W03-MONEY-COST"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by ECON-WK-T1-W03 (2026-11-13); see docs/ss1/work/microtasks/economics/ECON-WK-T1-W03.md.",
+      "completion_condition": "Use reliable evidence and preserve source questions separately. Do not invent answers, country facts or lesson approval."
+    },
+    {
+      "id": "ECON-LES-T1-W03-WEST-AFRICA-APPLICATION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week 3 Mammoth line 231; antiword lines 380–381",
+      "objective": "After the existing dated-examples fact review, add a short neutral application showing how opportunity cost affects a realistic West African decision, using dated, grounded sources or explicitly keeping the prompt open-ended. Avoid unsupported claims about countries or regional economies.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W03.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-LES-T1-W03-WEST-AFRICA-APPLICATION.md"
+      ],
+      "depends_on": [
+        "ECON-WK-T1-W03",
+        "ECON-FACT-T1-DATED-EXAMPLES"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by ECON-WK-T1-W03 (2026-11-13); see docs/ss1/work/microtasks/economics/ECON-WK-T1-W03.md.",
+      "completion_condition": "Use reliable evidence and preserve source questions separately. Do not invent answers, country facts or lesson approval."
     }
   ],
   "review": {
@@ -3365,8 +3506,6 @@
     }
   },
   "next_runnable": [
-    "ECON-TEST-PACKAGE",
-    "ECON-WK-T1-W03",
     "ECON-WK-T1-W04",
     "ECON-WK-T1-W05",
     "ECON-WK-T1-W06",
@@ -3414,6 +3553,8 @@
     "ECON-WK-T3-W10",
     "ECON-MARK-T3-REVEXAM",
     "ECON-VIS-T3-HEADER-MEDIA",
-    "ECON-PRES-T3-SOURCE-WORDING"
+    "ECON-PRES-T3-SOURCE-WORDING",
+    "ECON-FACT-T1-W03-MONEY-COST",
+    "ECON-SEQ-T1-W03-ECONOMIC-GOODS"
   ]
 }
