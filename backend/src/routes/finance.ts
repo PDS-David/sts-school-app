@@ -1,6 +1,7 @@
 import { Router, type Request, type Response, type NextFunction } from 'express';
 import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requireRole } from '../middleware/auth.js';
+import { z } from 'zod';
 
 const router = Router();
 router.use(requireAuth);
@@ -88,62 +89,92 @@ router.get('/invoices', async (req, res) => {
 });
 
 // ── POST /finance/invoices — finance_admin only ─────────────────────────────────
+const createInvoiceSchema = z.object({
+  student_id: z.string().uuid(),
+  term_id: z.number().int().positive(),
+  fee_item_ids: z.array(z.number().int().positive()).min(1).max(100)
+    .refine(ids => new Set(ids).size === ids.length, 'fee_item_ids must not contain duplicates'),
+});
+
+// ── POST /finance/invoices — finance_admin only ─────────────────────────────────
 router.post('/invoices', requireRole('finance_admin'), async (req, res) => {
-  const { student_id, term_id, fee_item_ids } = req.body as {
-    student_id: string; term_id: number; fee_item_ids: number[];
-  };
-
-  // Found in QA Pass 8: none of this was validated before — live-verified
-  // that a primary-school student could be invoiced using a secondary
-  // school's fee item (wrong amount charged, no error), that a nonexistent
-  // fee_item_id was silently dropped from the total instead of rejected
-  // (invoice created for less than intended with no indication anything was
-  // wrong), and that an empty fee_item_ids array created a real ₦0 invoice.
-  if (!Array.isArray(fee_item_ids) || fee_item_ids.length === 0) {
-    return res.status(400).json({ error: 'fee_item_ids must be a non-empty array.' });
-  }
-
-  const { rows: studentRows } = await query('SELECT school_code FROM students WHERE id=$1', [student_id]);
-  if (!studentRows[0]) return res.status(404).json({ error: 'Student not found' });
-  const studentSchool = studentRows[0].school_code;
-
-  const { rows: termRows } = await query('SELECT school_code FROM terms WHERE id=$1', [term_id]);
-  if (!termRows[0]) return res.status(404).json({ error: 'Term not found' });
-  if (termRows[0].school_code !== studentSchool) {
-    return res.status(400).json({ error: "That term belongs to a different school than the student." });
-  }
-
-  const { rows: items } = await query(
-    'SELECT * FROM fee_items WHERE id = ANY($1)', [fee_item_ids],
-  );
-  if (items.length !== fee_item_ids.length) {
-    return res.status(400).json({ error: 'One or more fee_item_ids do not exist.' });
-  }
-  const mismatched = items.find(i => i.school_code !== studentSchool);
-  if (mismatched) {
+  const parsed = createInvoiceSchema.safeParse(req.body);
+  if (!parsed.success) {
     return res.status(400).json({
-      error: `Fee item "${mismatched.name}" belongs to a different school than the student.`,
+      error: 'Invalid invoice request: ' + parsed.error.issues.map(issue => issue.path.join('.') || 'body').join(', '),
     });
   }
 
-  const total = items.reduce((s, i) => s + Number(i.amount), 0);
-  // DATA-01: header and every line commit together or not at all, so a failure
-  // part-way through the loop cannot leave an invoice whose total does not
-  // match its lines. All validation and the total above stay outside the
-  // transaction and unchanged; the total is still computed from the validated
-  // fee items, never from client input.
-  const invoice = await withTransaction(async (client) => {
-    const { rows } = await client.query(
+  const { student_id, term_id, fee_item_ids } = parsed.data;
+
+  // Lock and validate every source row inside the same transaction as the
+  // invoice write. FOR SHARE prevents concurrent edits/deletes from changing
+  // school/class applicability after validation but before invoice commit.
+  // Lock fee items in primary-key order to keep concurrent multi-item invoices
+  // from acquiring the same row locks in different orders.
+  const result = await withTransaction(async (client) => {
+    const { rows: studentRows } = await client.query(
+      'SELECT school_code, class_name FROM students WHERE id=$1 AND deleted_at IS NULL FOR SHARE',
+      [student_id],
+    );
+    const student = studentRows[0];
+    if (!student) return { ok: false as const, status: 404, error: 'Active student not found' };
+
+    const { rows: termRows } = await client.query(
+      'SELECT school_code FROM terms WHERE id=$1 FOR SHARE',
+      [term_id],
+    );
+    const term = termRows[0];
+    if (!term) return { ok: false as const, status: 404, error: 'Term not found' };
+    if (term.school_code !== student.school_code) {
+      return { ok: false as const, status: 400, error: 'That term belongs to a different school than the student.' };
+    }
+
+    const { rows: items } = await client.query(
+      'SELECT * FROM fee_items WHERE id = ANY($1::int[]) ORDER BY id FOR SHARE',
+      [fee_item_ids],
+    );
+    if (items.length !== fee_item_ids.length) {
+      return { ok: false as const, status: 400, error: 'One or more fee_item_ids do not exist.' };
+    }
+
+    const wrongSchool = items.find(item => item.school_code !== student.school_code);
+    if (wrongSchool) {
+      return {
+        ok: false as const,
+        status: 400,
+        error: `Fee item "${wrongSchool.name}" belongs to a different school than the student.`,
+      };
+    }
+
+    const wrongClass = items.find(item => item.class_name != null && item.class_name !== student.class_name);
+    if (wrongClass) {
+      return {
+        ok: false as const,
+        status: 400,
+        error: `Fee item "${wrongClass.name}" does not apply to class "${student.class_name}".`,
+      };
+    }
+
+    const total = items.reduce((sum, item) => sum + Number(item.amount), 0);
+    const { rows: invoiceRows } = await client.query(
       'INSERT INTO invoices(student_id,term_id,total) VALUES($1,$2,$3) RETURNING *',
       [student_id, term_id, total],
     );
+    const invoice = invoiceRows[0];
+
     for (const item of items) {
-      await client.query('INSERT INTO invoice_items(invoice_id,fee_item_id,amount) VALUES($1,$2,$3)',
-        [rows[0].id, item.id, item.amount]);
+      await client.query(
+        'INSERT INTO invoice_items(invoice_id,fee_item_id,amount) VALUES($1,$2,$3)',
+        [invoice.id, item.id, item.amount],
+      );
     }
-    return rows[0];
+
+    return { ok: true as const, invoice };
   });
-  return res.status(201).json({ invoice });
+
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  return res.status(201).json({ invoice: result.invoice });
 });
 
 // ── PUT /finance/invoices/:id/status — finance_admin only ──────────────────────
