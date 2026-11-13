@@ -1,0 +1,22 @@
+# Checkpoint — BSEC-008
+
+- **Task ID:** BSEC-008
+- **Title:** Make public student/parent registration and student self-claim atomic and concurrency-safe
+- **Status:** implementation committed; CI verification pending
+- **Owner:** ChatGPT implementation worker
+- **Base branch:** master
+- **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
+- **Working branch:** agent/backend-self-registration-atomicity-20261113
+- **Latest implementation commit:** 40dcf10d9e924ae7ce8236d58207e46849a562b7
+- **Changed files:**
+  - backend/src/routes/auth.ts
+  - backend/src/utils/selfRegistration.ts
+  - tests/backend-self-registration.integration.test.mts
+  - .github/workflows/backend-self-registration.yml
+  - this checkpoint
+- **Defects:** public student registration checked an unclaimed admission row, inserted a user, then linked the student in separate autocommit queries. Self-claim had the same check-then-write race and updated the class-code failure counter without row locking. Parent registration checked normalized phone uniqueness and inserted the account/link in separate queries, allowing concurrent duplicate parent accounts and orphaned records after partial failures.
+- **Implementation:** self-registration and self-claim now use PostgreSQL transactions. Student rows and class-code rows are locked with FOR UPDATE; user creation, enrollment/ward linking, class-code counter reset, and audit-log insertion commit together. Transaction-scoped advisory locks serialize normalized parent phone suffixes using the same key as admin-side parent provisioning, and serialize generated usernames. Student/parent registration rejects soft-deleted enrollment rows. Existing public roles, minimum password length, pending-admin-review behavior, and response semantics are preserved.
+- **Regression coverage:** disposable PostgreSQL integration tests cover concurrent student self-registration, concurrent normalized-phone parent registration, concurrent class-code claims, and rollback when student linking fails after user insertion.
+- **Verification:** source and tests fetched back from GitHub and reviewed. Dedicated PostgreSQL workflow added; CI run pending. No production database or production account data was accessed or changed.
+- **Remaining:** run focused PostgreSQL integration tests and backend TypeScript typecheck; correct any genuine failures; open focused PR; verify all required checks.
+- **Exact next action:** inspect the current branch head and run Backend public self-registration integrity workflow; fetch logs and fix any failures without weakening assertions.
