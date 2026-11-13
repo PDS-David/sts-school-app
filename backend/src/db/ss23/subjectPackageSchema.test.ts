@@ -214,6 +214,9 @@ test('loads the SS2 Agricultural Science soil draft and keeps delivery blocked',
   assert.equal(pkg.class_name, 'SS 2');
   assert.equal(pkg.package_status, 'PENDING');
   assert.equal(pkg.units.length, 2);
+  assert.equal(pkg.units[0].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 14);
+  assert.equal(pkg.units[1].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 13);
+  assert.ok(pkg.units.every(unit => unit.practice.every(question => question.answer_origin === 'AUTHORED_SUPPLEMENT')));
   assert.equal(pkg.assets.length, 6);
   assert.equal(pkg.assets.filter(asset => asset.path.startsWith('source-extract://')).length, 5);
   assert.ok(pkg.assets.every(asset => asset.state.verification === 'DEFERRED'));
