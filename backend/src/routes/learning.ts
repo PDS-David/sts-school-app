@@ -1163,6 +1163,40 @@ router.post('/questions', requirePerm('questions.write'), async (req, res) => {
 // ASSESSMENTS
 // ════════════════════════════════════════════════════════
 
+// Parent-only summary of published tests for active linked wards. This is
+// deliberately separate from the class-wide assessment endpoint: parents
+// never receive question content, submissions from other students, or draft tests.
+router.get('/parent/upcoming-assessments', requireRole('parent'), async (req, res) => {
+  const { rows } = await query(
+    `SELECT DISTINCT a.id, a.school_code, a.title, a.start_at, a.end_at, a.class_name,
+            sub.name AS subject_name
+       FROM parent_wards pw
+       JOIN students st ON st.id=pw.student_id AND st.deleted_at IS NULL
+       JOIN assessments a ON a.school_code=st.school_code
+         AND (a.class_name IS NULL OR a.class_name=st.class_name)
+       JOIN subjects sub ON sub.id=a.subject_id AND sub.school_code=a.school_code
+      WHERE pw.parent_id=$1
+        AND a.status='open'
+        AND (a.start_at IS NULL OR a.start_at >= now())
+        AND (a.end_at IS NULL OR a.end_at >= now())
+      ORDER BY a.start_at ASC NULLS LAST, a.title ASC`,
+    [req.user!.id],
+  );
+  const ids = rows.map((r: any) => r.id);
+  const [jss3Gone, ss1Gone, agGone, englishGone, primary4Gone] = await Promise.all([
+    withdrawnAssessmentIds(query, ids),
+    ss1WithdrawnAssessmentIds(query, ids),
+    agriculturalScienceWithdrawnAssessmentIds(query, ids),
+    englishWithdrawnAssessmentIds(query, ids),
+    primary4WithdrawnAssessmentIds(query, ids),
+  ]);
+  const withdrawn = new Set([...jss3Gone, ...ss1Gone, ...agGone, ...englishGone, ...primary4Gone]);
+  return res.json({ assessments: rows.filter((r: any) => !withdrawn.has(r.id)) });
+});
+
+
+
+
 router.get('/assessments', requirePerm('assessments.read'), async (req, res) => {
   const { class_name, subject_id, status, school_code } = req.query as Record<string, string>;
   const user = req.user!;
