@@ -133,4 +133,3 @@ export function outboxCount(): Promise<number> {
   return outbox.count();
 }
 
-export { setOutbox };
