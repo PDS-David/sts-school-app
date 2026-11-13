@@ -17,6 +17,7 @@ import { resolveSs1MathematicsDelivery, safeSs1MathematicsTopic, mathematicsAsse
 import { resolveAgriculturalScienceDelivery, resolveAgriculturalScienceSupplement, resolveAgriculturalScienceSourceProjection, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, retireStaleAgriculturalScienceSupplementCache, retireStaleAgriculturalScienceSourceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
 import { listStudentSs1Lessons, getStudentSs1Lesson, listStudentSs1Assets, readStudentSs1Asset, studentSs1LessonPreview } from '../db/ss1/studentDelivery.js';
+import { listStudentSs23Units, getStudentSs23Unit, listStudentSs23Assets, readStudentSs23Asset, studentSs23UnitPreview, safeStudentSs23Unit, type Ss23ClassName } from '../db/ss23/studentDelivery.js';
 import { resolvePrimary4SourceDelivery, safePrimary4Topic, primary4WithdrawnAssessmentIds, primary4AssessmentDeliverable, retireStalePrimary4Cache } from '../utils/primary4Delivery.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
@@ -200,6 +201,116 @@ router.get('/ss1/assets/:assetId', requirePerm('topics.read'), async (req, res) 
   const unlockedTerms = await redeemedSs1Terms(studentId);
   if (!unlockedTerms.has(result.asset.term)) {
     return res.status(423).json({ error: 'Redeem the Term PIN to unlock this lesson asset.' });
+  }
+  res.set('Content-Type', result.asset.media_type);
+  res.set('Content-Length', String(result.bytes.length));
+  res.set('ETag', `"${result.asset.sha256}"`);
+  res.set('Cache-Control', 'private, max-age=3600');
+  return res.send(result.bytes);
+});
+
+// SS2 instructional lessons and SS3 examination-preparation resources are
+// delivered only from individually approved, implemented and verified packages.
+// Class membership is resolved server-side; request parameters never select a class.
+async function ss23StudentContext(user: AuthUser): Promise<{ studentId: string; className: Ss23ClassName } | null> {
+  if (user.role !== 'student') return null;
+  const classes = await resolveViewerClassNames(user);
+  if (!Array.isArray(classes)) return null;
+  const allowed = classes.filter((name): name is Ss23ClassName => name === 'SS 2' || name === 'SS 3');
+  if (allowed.length !== 1) return null;
+  const className = allowed[0];
+  const { rows } = await query(
+    'SELECT id FROM students WHERE user_id=$1 AND class_name=$2 AND deleted_at IS NULL',
+    [user.id, className],
+  );
+  return rows[0]?.id ? { studentId: rows[0].id, className } : null;
+}
+
+async function redeemedSs23Terms(studentId: string): Promise<Set<string>> {
+  if (!termPinEnforced()) return new Set(['1st Term', '2nd Term', '3rd Term']);
+  const { rows } = await query(
+    'SELECT term_label FROM term_access_pins WHERE student_id=$1 AND redeemed_at IS NOT NULL',
+    [studentId],
+  );
+  return new Set(rows.map((row: any) => String(row.term_label)));
+}
+
+function studentSs23Assets(unitId: string, className: Ss23ClassName) {
+  return listStudentSs23Assets(unitId, className).map(asset => ({
+    id: asset.id,
+    alt: asset.alt,
+    mime: asset.media_type,
+    url: `/learning/ss23/assets/${encodeURIComponent(asset.id)}`,
+    order: asset.order,
+  }));
+}
+
+router.get('/ss23/lessons', requirePerm('topics.read'), async (req, res) => {
+  const context = await ss23StudentContext(req.user!);
+  if (!context || context.className !== 'SS 2') return res.json({ units: [] });
+  const subjectName = typeof req.query.subject_name === 'string' ? req.query.subject_name : undefined;
+  if (subjectName && subjectName.trim().length > 120) {
+    return res.status(400).json({ error: 'subject_name is too long' });
+  }
+  const unlockedTerms = await redeemedSs23Terms(context.studentId);
+  const units = listStudentSs23Units('SS 2', subjectName).map(unit => {
+    const locked = !unlockedTerms.has(unit.term);
+    if (locked) return { ...studentSs23UnitPreview(unit, true), assets: [] };
+    return {
+      ...safeStudentSs23Unit(unit),
+      ...studentSs23UnitPreview(unit, false),
+      assets: studentSs23Assets(unit.id, 'SS 2'),
+    };
+  });
+  return res.json({ units });
+});
+
+router.get('/ss23/preparation', requirePerm('topics.read'), async (req, res) => {
+  const context = await ss23StudentContext(req.user!);
+  if (!context || context.className !== 'SS 3') return res.json({ units: [] });
+  const subjectName = typeof req.query.subject_name === 'string' ? req.query.subject_name : undefined;
+  if (subjectName && subjectName.trim().length > 120) {
+    return res.status(400).json({ error: 'subject_name is too long' });
+  }
+  const unlockedTerms = await redeemedSs23Terms(context.studentId);
+  const units = listStudentSs23Units('SS 3', subjectName).map(unit => {
+    const locked = !unlockedTerms.has(unit.term);
+    if (locked) return { ...studentSs23UnitPreview(unit, true), assets: [] };
+    return {
+      ...safeStudentSs23Unit(unit),
+      ...studentSs23UnitPreview(unit, false),
+      assets: studentSs23Assets(unit.id, 'SS 3'),
+    };
+  });
+  return res.json({ units });
+});
+
+router.get('/ss23/units/:unitId', requirePerm('topics.read'), async (req, res) => {
+  const context = await ss23StudentContext(req.user!);
+  if (!context) return res.status(404).json({ error: 'Unit not found' });
+  const unit = getStudentSs23Unit(req.params.unitId, context.className);
+  if (!unit) return res.status(404).json({ error: 'Unit not found' });
+  const unlockedTerms = await redeemedSs23Terms(context.studentId);
+  if (!unlockedTerms.has(unit.term)) {
+    return res.status(423).json({ error: 'Redeem the Term PIN to unlock this curriculum unit.' });
+  }
+  return res.json({
+    unit: {
+      ...safeStudentSs23Unit(unit),
+      ...studentSs23UnitPreview(unit, false),
+      assets: studentSs23Assets(unit.id, context.className),
+    },
+  });
+});
+
+router.get('/ss23/assets/:assetId', requirePerm('topics.read'), async (req, res) => {
+  const context = await ss23StudentContext(req.user!);
+  if (!context) return res.status(404).json({ error: 'Asset not found' });
+  const result = readStudentSs23Asset(req.params.assetId, context.className);
+  if (!result) return res.status(404).json({ error: 'Asset not found' });
+  const unlockedTerms = await redeemedSs23Terms(context.studentId);
+  if (!unlockedTerms.has(result.asset.term)) {
+    return res.status(423).json({ error: 'Redeem the Term PIN to unlock this curriculum asset.' });
   }
   res.set('Content-Type', result.asset.media_type);
   res.set('Content-Length', String(result.bytes.length));
