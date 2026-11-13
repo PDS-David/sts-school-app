@@ -50,7 +50,7 @@ Worker branch: `agent/frontend-assessment-recovery-20261113`
 - `176483a14b70b762840e46a8e3b1282ac0b62834` — assessment authoring setup recovery and draft count validation.
 - `a82d7f376cd29a72d6ce777181db1e7a08dd817b` — require live responses for assessment authoring.
 - Initial checkpoint: `84eb935ee000ac777474b345887dab37c1244be1`.
-- Final checkpoint update: pending.
+- Final checkpoint update: `5015fa5c725fe11430f5b9e8e7a9e977698e3d58`.
 
 ## Verification
 - Static inspection confirms list/question/results retry paths reissue their existing GET endpoints.
