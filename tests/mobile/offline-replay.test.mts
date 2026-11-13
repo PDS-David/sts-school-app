@@ -5,6 +5,7 @@ import { createSerialQueue } from '../../mobile/src/offline/serialQueue.ts';
 import { createOutboxStore } from '../../mobile/src/offline/outboxStore.ts';
 import { isRestorableUser } from '../../mobile/src/api/authSession.ts';
 import { shouldDiscardOutboxFailure } from '../../mobile/src/offline/outboxFailurePolicy.ts';
+import { getMaterialDownloadTarget } from '../../mobile/src/utils/materialDownload.ts';
 
 test('normal failed writes remain eligible for offline queueing', () => {
   assert.equal(shouldEnqueueOfflineWrite({}), true);
@@ -118,4 +119,24 @@ test('outbox discards permanent invalid-request failures only', () => {
   assert.equal(shouldDiscardOutboxFailure(422), true);
   assert.equal(shouldDiscardOutboxFailure(undefined), false);
   assert.equal(shouldDiscardOutboxFailure(500), false);
+});
+
+test('material downloads accept HTTPS and generate safe local filenames', () => {
+  const target = getMaterialDownloadTarget(
+    'https://cdn.example.test/files/lesson-notes.pdf?download=1',
+    '../../Lesson Notes',
+    'pdf',
+  );
+  assert.deepEqual(target, {
+    url: 'https://cdn.example.test/files/lesson-notes.pdf?download=1',
+    fileName: 'Lesson_Notes.pdf',
+    mimeType: 'application/pdf',
+  });
+});
+
+test('material downloads reject insecure and non-web URL schemes', () => {
+  assert.equal(getMaterialDownloadTarget('http://example.test/a.pdf', 'Notes', 'pdf'), null);
+  assert.equal(getMaterialDownloadTarget('file:///etc/passwd', 'Notes', 'pdf'), null);
+  assert.equal(getMaterialDownloadTarget('javascript:alert(1)', 'Notes', 'pdf'), null);
+  assert.equal(getMaterialDownloadTarget('', 'Notes', 'pdf'), null);
 });
