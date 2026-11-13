@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../api/client';
-import { Card, Btn, Loader, SectionHeader } from '../components/UI';
+import { Card, Btn, Loader, Empty, SectionHeader } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAuth } from '../api/AuthContext';
 import { useAdminSchool } from '../api/AdminSchoolContext';
@@ -144,6 +144,12 @@ export default function ClassLockScreen({ navigation }: any) {
   };
 
   if (loading) return <Loader />;
+  if (setupError) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={setupError} />
+      <Btn label='Retry class and term setup' variant='outline' onPress={() => setSetupRetry(v => v + 1)} />
+    </View>
+  );
 
   const noClassAssigned = !isAdmin && !user?.assigned_class;
 
@@ -195,41 +201,62 @@ export default function ClassLockScreen({ navigation }: any) {
                       {terms.map(t => <Picker.Item key={t.id} label={`${t.name} (${t.academic_year})`} value={t.id} />)}
                     </Picker>
                   </View>
+                  {terms.length === 0 ? <Text style={styles.statusSub}>No academic terms are available for this school.</Text> : null}
                 </View>
               </View>
             </Card>
 
             {selClass && selTerm !== '' && (
-              <Card>
-                <View style={styles.statusRow}>
-                  <Ionicons
-                    name={lock ? 'lock-closed' : 'lock-open-outline'}
-                    size={22}
-                    color={lock ? Colors.error : Colors.success}
-                  />
-                  <View style={{ flex: 1, marginLeft: Spacing.sm }}>
-                    <Text style={styles.statusTitle}>{lock ? 'Locked' : 'Open'}</Text>
-                    {lock && (
-                      <Text style={styles.statusSub}>
-                        Locked by {lock.locked_by_name ?? 'a class teacher'} on{' '}
-                        {new Date(lock.locked_at).toLocaleDateString()}
-                      </Text>
-                    )}
+              lockLoading ? <Loader /> : lockError ? (
+                <Card>
+                  <Empty message={lockError} />
+                  <Btn label='Retry lock status' variant='outline' onPress={() => setLockRetry(v => v + 1)} />
+                </Card>
+              ) : (
+                <Card>
+                  <View style={styles.statusRow}>
+                    <Ionicons
+                      name={lock ? 'lock-closed' : 'lock-open-outline'}
+                      size={22}
+                      color={lock ? Colors.error : Colors.success}
+                    />
+                    <View style={{ flex: 1, marginLeft: Spacing.sm }}>
+                      <Text style={styles.statusTitle}>{lock ? 'Locked' : 'Open'}</Text>
+                      {lock && (
+                        <Text style={styles.statusSub}>
+                          Locked by {lock.locked_by_name ?? 'a class teacher'} on{' '}
+                          {new Date(lock.locked_at).toLocaleDateString()}
+                        </Text>
+                      )}
+                    </View>
                   </View>
-                </View>
-                <Btn
-                  label={lock ? 'Unlock This Class' : 'Lock This Class'}
-                  onPress={() => toggleLock(!lock)}
-                  loading={busy}
-                  variant={lock ? 'outline' : 'primary'}
-                  style={{ marginTop: Spacing.sm }}
-                />
-              </Card>
+                  <Btn
+                    label={lock ? 'Unlock This Class' : 'Lock This Class'}
+                    onPress={() => setConfirmLock(!lock)}
+                    loading={busy}
+                    disabled={busy || lockLoading}
+                    variant={lock ? 'outline' : 'primary'}
+                    style={{ marginTop: Spacing.sm }}
+                  />
+                </Card>
+              )
             )}
           </>
         )}
       </PageContainer>
       </ScrollView>
+      <ConfirmDialog
+        visible={confirmLock !== null}
+        title={confirmLock ? 'Lock this class?' : 'Unlock this class?'}
+        message={confirmLock
+          ? `Lock ${selClass} for this term? This blocks score, attendance, remark and weekly-effort changes for all teachers until it is unlocked.`
+          : `Unlock ${selClass} for this term? Teachers will be able to edit score, attendance, remark and weekly-effort records again.`}
+        confirmLabel={confirmLock ? 'Lock class' : 'Unlock class'}
+        destructive={confirmLock === true}
+        onConfirm={() => { const value = confirmLock; setConfirmLock(null); if (value !== null) toggleLock(value); }}
+        onCancel={() => setConfirmLock(null)}
+      />
+      <ConfirmDialog visible={!!infoDialog} title={infoDialog?.title ?? ''} message={infoDialog?.message ?? ''} hideCancel onConfirm={() => setInfoDialog(null)} onCancel={() => setInfoDialog(null)} />
     </View>
   );
 }
