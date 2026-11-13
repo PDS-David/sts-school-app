@@ -113,6 +113,17 @@ function assertAppliedChecksums(migrations: Migration[], applied: AppliedMigrati
   }
 }
 
+function assertSequentialHistory(migrations: Migration[], applied: AppliedMigration[]): void {
+  const appliedVersions = new Set(applied.map(row => row.version));
+  let pendingSeen = false;
+  for (const migration of migrations) {
+    if (!appliedVersions.has(migration.version)) pendingSeen = true;
+    else if (pendingSeen) {
+      throw new Error(`Migration history is out of sequence at ${migration.version}. Review schema_migrations before continuing.`);
+    }
+  }
+}
+
 async function applyAll(client: PoolClient, migrations: Migration[]): Promise<void> {
   await ensureLedger(client);
   const applied = await getApplied(client);
@@ -121,6 +132,7 @@ async function applyAll(client: PoolClient, migrations: Migration[]): Promise<vo
   // adopted as version 0001. OPS-05 owns drift evidence and explicit adoption.
   if (!applied.length) await assertNoUntrackedApplicationSchema(client);
   assertAppliedChecksums(migrations, applied);
+  assertSequentialHistory(migrations, applied);
 
   const appliedVersions = new Set(applied.map(row => row.version));
   for (const migration of migrations) {
@@ -151,6 +163,7 @@ async function applyFresh(client: PoolClient, migrations: Migration[]): Promise<
   await ensureLedger(client);
   const applied = await getApplied(client);
   assertAppliedChecksums(migrations, applied);
+  if (!applied.length) await assertNoUntrackedApplicationSchema(client);
   if (applied.some(row => row.version !== '0001')) {
     throw new Error('Refusing --fresh after incremental migrations have been applied. Use --all.');
   }
@@ -172,6 +185,7 @@ async function printStatus(client: PoolClient, migrations: Migration[]): Promise
   const exists = await ledgerExists(client);
   const applied = exists ? await getApplied(client) : [];
   assertAppliedChecksums(migrations, applied);
+  assertSequentialHistory(migrations, applied);
   const appliedVersions = new Set(applied.map(row => row.version));
 
   console.log(exists ? 'Migration ledger:' : 'Migration ledger does not exist (read-only status).');
@@ -201,8 +215,8 @@ export async function runMigrations(mode: Mode = '--all'): Promise<void> {
     if (mode === '--fresh') await applyFresh(client, migrations);
     else await applyAll(client, migrations);
   } finally {
-    if (locked) await releaseLock(client);
-    client.release();
+    try { if (locked) await releaseLock(client); }
+    finally { client.release(); }
   }
 }
 
