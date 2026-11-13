@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { shouldEnqueueOfflineWrite } from '../../mobile/src/offline/replayPolicy.ts';
+import { createSerialQueue } from '../../mobile/src/offline/serialQueue.ts';
 
 test('normal failed writes remain eligible for offline queueing', () => {
   assert.equal(shouldEnqueueOfflineWrite({}), true);
@@ -14,7 +15,6 @@ test('requests without config remain eligible for offline queueing', () => {
   assert.equal(shouldEnqueueOfflineWrite(undefined), true);
 });
 
-import { createSerialQueue } from '../../mobile/src/offline/serialQueue.ts';
 
 test('concurrent outbox mutations execute in FIFO order', async () => {
   const run = createSerialQueue();
