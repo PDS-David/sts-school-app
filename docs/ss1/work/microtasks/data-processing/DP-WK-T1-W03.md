@@ -2,7 +2,7 @@
 
 ## Task identity and status
 - Task ID: `DP-WK-T1-W03`
-- Status: `IN_PROGRESS`
+- Status: `IMPLEMENTED_TESTING_DEFERRED`
 - Subject: Data Processing, SS1, First Term
 - Source topic: `TOPIC: GENERATIONS OF COMPUTERS`
 - Content supplement is implemented; owner content approval remains PENDING and importer/compiler/runtime verification remains DEFERRED.
@@ -104,3 +104,10 @@ After PR integration, refresh Data Processing package and queue from current mas
 - The first PR integrity workflow detected that the manually stored `body_sha256` included a trailing newline not present in the actual serialized lesson body. The lesson text itself was not changed.
 - Recomputed the digest from the exact stored body bytes and updated `body_sha256` to `5a1696f3827eeefba9d577365add8514647ea0c2c89d9b44d80ca67a7bd9374f` in package commit `0a8756dfb843ad653a56a0dc28bb0cfed345ae80`.
 - Updated the queue task to IN_PROGRESS and its checkpoint reference in commit `eee9922a141bd49cf84ed17e2bd80a2e7c6d0cb0`. Do not mark this task implemented/testing-deferred again until the integrity and registered-subject compiler workflows rerun successfully.
+
+
+## Automated validation result
+- Package integrity workflow passed (package integrity 43454395135 SUCCESS).
+- Registered-subject source-anchor/compiler audit passed ( all-subject source-anchor/compiler audit 43454395359 SUCCESS).
+- This verifies automated package integrity and plan-only compilation for this branch. Owner content approval remains PENDING; independent verification remains DEFERRED. No database or student-device/runtime test is claimed.
+- Queue/checkpoint update commit: `ae52e215e75dd590b56fabb724eaf5a12961617e`.
