@@ -48,9 +48,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 13,
+    "IMPLEMENTED_TESTING_DEFERRED": 14,
     "BLOCKED": 4,
-    "IN_PROGRESS": 1,
     "PENDING": 65
   },
   "items": [
@@ -460,8 +459,8 @@
         "DP-INV-T1",
         "DP-SRC-T1"
       ],
-      "status": "IN_PROGRESS",
-      "implementation_reference": "Implemented in branch agent/data-processing-week-three-20261113. Package content commit b82a184a6e5e2dffcee1f53ccc960cf74cc4c102; open-item/task cross-reference correction 7ad5cb56546aed44b42bd2238bf52b62e62c8b02. Adds a new generation-of-computers supplement, objective/assessment coverage, proposed answers and open items for scheme drift, dated-generation review and reading rights. Testing remains deferred; see DP-WK-T1-W03.md. Exact body hash was recalculated from the serialized lesson body after CI found the previous stored digest included an extra trailing newline; corrected body_sha256=5a1696f3827eeefba9d577365add8514647ea0c2c89d9b44d80ca67a7bd9374f in package commit 0a8756dfb843ad653a56a0dc28bb0cfed345ae80. Await the rerun of the integrity/compiler workflow before returning the task to IMPLEMENTED_TESTING_DEFERRED.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in branch agent/data-processing-week-three-20261113. Package content commit b82a184a6e5e2dffcee1f53ccc960cf74cc4c102; open-item/task cross-reference correction 7ad5cb56546aed44b42bd2238bf52b62e62c8b02. Adds a new generation-of-computers supplement, objective/assessment coverage, proposed answers and open items for scheme drift, dated-generation review and reading rights. Testing remains deferred; see DP-WK-T1-W03.md. Exact body hash was recalculated from the serialized lesson body after CI found the previous stored digest included an extra trailing newline; corrected body_sha256=5a1696f3827eeefba9d577365add8514647ea0c2c89d9b44d80ca67a7bd9374f in package commit 0a8756dfb843ad653a56a0dc28bb0cfed345ae80. Await the rerun of the integrity/compiler workflow before returning the task to IMPLEMENTED_TESTING_DEFERRED. Automated PR checks now passed: package integrity 43454395135 SUCCESS; all-subject source-anchor/compiler audit 43454395359 SUCCESS. Independent owner content approval remains PENDING and lesson.state.verification remains DEFERRED; see the durable checkpoint.",
       "completion_condition": "Week 3 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
     },
     {
