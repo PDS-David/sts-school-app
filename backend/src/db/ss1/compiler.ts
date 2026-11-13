@@ -211,7 +211,7 @@ export function compilePackages(rawPackages: unknown[], inputs: SourceInput[], p
     }
     for (const c of p.delivery_corrections) {
       const original = byId.get(c.source_lesson_id), replacement = byId.get(c.replacement_id), source = p.sources.find(s => s.source_id === c.source_id);
-      must(!!original, `correction ${c.id}: original lesson not found ${c.source_lesson_id}`);
+      must(!!original, `correction ${c.id}: original lesson not found ${c.source_lesson_id}; parsed source lesson candidates: ${plan.identified_rows.filter(r => r.source_id === c.source_id).map(r => `${r.id} [${r.row.weekLabel}: ${r.row.title}]`).join(' | ') || 'none'}`);
       must(!!replacement, `correction ${c.id}: replacement lesson not found ${c.replacement_id}`);
       must(!!source, `correction ${c.id}: source record not found ${c.source_id}`);
       must(original?.source_id === c.source_id, `correction ${c.id}: original source ID mismatch; expected ${c.source_id}, got ${original?.source_id ?? 'null'}`);
