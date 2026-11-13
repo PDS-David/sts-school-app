@@ -9,6 +9,8 @@
   - `mobile/src/api/client.ts`
   - `mobile/src/api/AuthContext.tsx`
   - `mobile/src/offline/replayPolicy.ts`
+  - `mobile/src/offline/storage.ts`
+  - `mobile/src/offline/serialQueue.ts`
   - `tests/mobile/offline-replay.test.mts`
   - `package.json`
   - `README.md`
@@ -22,7 +24,8 @@
 - Verification:
   - Static control-flow trace of `mobile/src/api/client.ts` and `mobile/src/offline/storage.ts`.
   - Hardened cold-start session restoration: storage read/JSON parsing failures now return to the signed-out state and always clear the startup loading gate; malformed persisted user records are discarded.
-  - Extracted the offline replay enqueue decision into a pure helper, added three focused Node test cases, and added the root command `npm run test:mobile:offline`. The tests are authored but not yet executed.
+  - Extracted the offline replay enqueue decision into a pure helper, added three focused Node test cases, and added the root command `npm run test:mobile:offline`.
+  - Fixed a second offline outbox race: concurrent network failures previously performed overlapping read-modify-write cycles against AsyncStorage and could overwrite one another. Outbox enqueue/removal mutations now use a FIFO async serial queue. Added tests for FIFO order and queue recovery after a rejected operation. Five regression cases are authored but not yet executed.
   - Static release/config review: `mobile/app.json` points to the HTTPS production API origin and its Android package name matches `mobile/google-services.json`; `mobile/eas.json` defines internal APK and production AAB profiles.
   - Static navigation review: `RootNavigator` routes student, parent, teacher, admin and finance-admin roles to separate navigators. Push registration, backend Expo delivery, foreground display and supported message/assessment/score tap routing exist; live device delivery remains unverified.
   - Materials are URL-based and opened with `Linking.openURL`; the current screen does not implement native file downloads or an offline file library. Updated the README to replace its stale claim that no push wiring exists and to distinguish implemented code from unverified live delivery.
@@ -30,7 +33,7 @@
   - No device verification is claimed.
 - Remaining acceptance work:
   - Add/run a regression test proving replay network failure retains exactly one original outbox item.
-  - Add/run regression tests for both fixes. Audit token/session validation, role navigation, offline namespace isolation and logout/switch-user behavior.
+  - Run the five offline regression tests. Audit token/session validation, role navigation, offline namespace isolation and logout/switch-user behavior.
   - Audit cache freshness, write queue authorization/idempotency and synchronization conflict handling.
   - Audit assessments, learning resources, file viewing/downloads, notifications and permission enforcement.
   - Verify network recovery, startup/crash handling and supported Android API/device compatibility.
