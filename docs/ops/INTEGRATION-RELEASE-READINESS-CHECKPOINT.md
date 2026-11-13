@@ -89,3 +89,11 @@ Refresh the latest open PR list and Actions run/job results. Fetch current #708 
 - A direct HTTPS request to the configured Render root endpoint could not resolve DNS from this execution environment (`curl: (6) Could not resolve host`). This is an environment/network limitation and does not prove the service is down. The source exposes only `GET /` as a basic process response; no dedicated `/health` route was found in `backend/src/index.ts`.
 - GitHub branch-protection endpoint returned 403 to the connected integration, so required-check/ruleset policy could not be independently read. PR mergeability alone is not proof that required checks passed.
 - Exact continuation: refresh #708's head checks until all are complete; inspect the JSS3/static test failure logs if the rerun fails; only merge after all required checks pass. Then validate #710 against the merged #708 base. Keep the production blockers above open.
+
+
+## Update — 2026-11-13 15:18 UTC
+
+- Latest observed `master` advanced to `af406a3e73f811ec27f02ba3b7e19b51873664bc` (merge of PR #685). The checkpoint branch has been refreshed to this master snapshot with a merge commit; the checkpoint remains the only branch-specific file.
+- The first follow-up commit for ORCH-001 URL validation had an escaping mistake and its CI run #43450954587 failed. The correction is now committed at `6e555135d6a478c7c4c9fc07b800a4a03953cb82` with the intended single-backslash Python raw regex `r"^https://\S+$"`; run #43450997964 was pending at last inspection. Do not merge PR #717 until this latest run passes.
+- PR #708's current required workflow state was not returned by the latest first-page Actions query; the prior run on head `78b9434` had its integrity gate pass, while the main acceptance/JSS3 run remained queued. Refresh checks by exact run ID/commit before any merge.
+- PR #714 checks from its earlier branch head are stale after the checkpoint refresh; rerun and inspect current-head checks before merging the documentation PR.
