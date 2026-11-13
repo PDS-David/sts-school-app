@@ -225,7 +225,7 @@ All secondary and copyrighted sources are paraphrased in original wording; no te
 
 ## Provenance and status
 - Lesson ID: `SUP-SS1-GOVERNMENT-T2-W01-CORRECTED`
-- Body SHA-256 (UTF-8): `bef8fca8a27366d18e2b5ade80a44a945ee6d716319a702489fe9c573d70f374`
+- Body SHA-256 (UTF-8): `e2a29dea056139b150fa81f8d0d29846cc72c5d1b80a978c132e08f42dfbb5a0`
 - Berlin Conference: German Federal Foreign Office (12 November 2024) and General Act of Berlin (1885).
 - West African decolonization dates: United Nations and Decolonization former-territory list.
 - First Industrial Revolution: Encyclopaedia Britannica, c.1760–1840.
