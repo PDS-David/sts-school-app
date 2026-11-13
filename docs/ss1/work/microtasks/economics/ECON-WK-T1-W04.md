@@ -2,7 +2,7 @@
 
 ## Task identity and status
 - Task ID: `ECON-WK-T1-W04`
-- Status: `IMPLEMENTED_TESTING_DEFERRED` (content indexing and supplement authored; importer/compiler and runtime verification not claimed)
+- Status: `IN_PROGRESS` (content indexing and supplement authored; importer/compiler and runtime verification not claimed)
 - Subject: Economics, SS1, First Term
 - Topic as printed: “Importance of opportunity cost to individual”
 - Scope retained: the CONTENTS and teaching body also cover firms/organisations and government. The source heading is not silently rewritten.
@@ -17,7 +17,7 @@
 
 ## Implemented student-facing material
 - Lesson ID: `SUP-SS1-ECONOMICS-T1-W04-OPPORTUNITY-COST-APPLICATIONS`
-- Body SHA-256: `5624968cd09f770141e05da85cb0d09646733a83b3b1e638c58fba7b9e4e1a00`
+- Body SHA-256: `f63e6476c93cc64a0526fe081cadd96d3badbf13619da5e05e75845c3a9268aa`
 - Explains all five individual applications, all four firm/organisation applications and all four government applications.
 - Includes three clearly hypothetical worked examples, a six-step opportunity-cost decision method, common misconception guidance, and original practice with answers and criterion-level marking.
 - Answers the two printed EVALUATION questions and Section B question 2.
@@ -75,3 +75,8 @@
 
 ## Exact next action
 After PR integration, refresh the Economics package and queue from current master, check branch ownership again, then implement `ECON-WK-T1-W05` using the matching source section and its recorded hashes.
+
+## CI integrity correction
+- The first PR integrity workflow detected that the manually stored `body_sha256` included a trailing newline not present in the actual serialized lesson body. The lesson text itself was not changed.
+- Recomputed the digest from the exact stored body bytes and updated `body_sha256` to `f63e6476c93cc64a0526fe081cadd96d3badbf13619da5e05e75845c3a9268aa` in package commit `f8e62cdf2a04514ca6b2dcd84cf687c2ae66b3dc`.
+- Updated the queue task to IN_PROGRESS and its checkpoint reference in commit `a55b43e9ee087d6623e7eed6dac3b504b47df1ba`. Do not mark this task implemented/testing-deferred again until the integrity and registered-subject compiler workflows rerun successfully.
