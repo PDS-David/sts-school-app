@@ -161,6 +161,10 @@ export function SubjectsMgmtScreen({ navigation }: any) {
   const isWide = useIsWide();
   const [subjects, setSubjects] = useState<any[]>([]);
   const [loading,  setLoading]  = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
+  const [deleteConfirm, setDeleteConfirm] = useState<{ id: number; name: string } | null>(null);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
   const [name,     setName]     = useState('');
   const [code,     setCode]     = useState('');
   const [saving,   setSaving]   = useState(false);
@@ -175,48 +179,50 @@ export function SubjectsMgmtScreen({ navigation }: any) {
 
   const fetch = async () => {
     setLoading(true);
+    setLoadError('');
     try {
       const { data } = await api.get('/academic/subjects', { params: { school_code: selectedSchoolCode ?? undefined } });
-      setSubjects(data.subjects);
-    }
-    catch { } finally { setLoading(false); }
+      setSubjects(data.subjects ?? []);
+    } catch (e: any) {
+      setLoadError(e?.response?.data?.error ?? 'Could not load subjects for the selected school.');
+    } finally { setLoading(false); }
   };
   useEffect(() => { fetch(); }, [selectedSchoolCode]);
 
   const handleAdd = async () => {
-    if (!name.trim()) { Alert.alert('Subject name required'); return; }
+    if (saving) return;
+    if (!name.trim()) { setInfoDialog({ title: 'Subject name required', message: 'Enter a subject name before adding it.' }); return; }
     setSaving(true);
     try {
       await api.post('/academic/subjects', { name: name.trim(), code: code.trim(), school_code: selectedSchoolCode ?? undefined });
       setName(''); setCode(''); fetch();
-    }
-    catch (e: any) { Alert.alert('Error', e?.response?.data?.error ?? 'Failed'); }
+    } catch (e: any) { setInfoDialog({ title: 'Could not add subject', message: e?.response?.data?.error ?? 'Check your connection and try again.' }); }
     finally { setSaving(false); }
   };
 
-  const handleDelete = (id: number) => {
-    Alert.alert(
-      'Delete subject?',
-      'This is blocked if any scores, materials, questions, or assessments have already been recorded against it — deleting only works for a subject with no history.',
-      [
-        { text: 'Cancel', style: 'cancel' },
-        { text: 'Delete', style: 'destructive', onPress: async () => {
-          try {
-            await api.delete(`/academic/subjects/${id}`);
-            fetch();
-          } catch (e: any) {
-            Alert.alert('Error', e?.response?.data?.error ?? 'Could not delete this subject');
-          }
-        }},
-      ],
-    );
+  const handleDelete = (subject: any) => {
+    setDeleteConfirm({ id: subject.id, name: subject.name });
   };
 
-  if (loading) return <Loader />;
+  const confirmDelete = async () => {
+    if (!deleteConfirm || deletingId !== null) return;
+    const subject = deleteConfirm;
+    setDeletingId(subject.id);
+    setDeleteConfirm(null);
+    try {
+      await api.delete(`/academic/subjects/${subject.id}`);
+      fetch();
+    } catch (e: any) {
+      setInfoDialog({ title: 'Could not delete subject', message: e?.response?.data?.error ?? 'This subject may already have academic records. Check and try again.' });
+    } finally { setDeletingId(null); }
+  };
+
+  if (loading && subjects.length === 0) return <Loader />;
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <PageContainer style={{ padding: Spacing.sm }}>
+        {!!loadError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry subjects' variant='outline' size='sm' onPress={() => fetch()} /></View>}
         <Card>
           <SectionHeader title="Add Subject" />
           <View style={isWide ? styles.filterRow : undefined}>
@@ -227,7 +233,7 @@ export function SubjectsMgmtScreen({ navigation }: any) {
               <Input label="Code (optional)" value={code} onChangeText={setCode} placeholder="e.g. MTH" />
             </View>
           </View>
-          <Btn label={saving ? 'Adding…' : 'Add Subject'} onPress={handleAdd} loading={saving} />
+          <Btn label={saving ? 'Adding…' : 'Add Subject'} onPress={handleAdd} loading={saving} disabled={saving} />
           {!isAdmin && (
             <Text style={styles.hint}>You can add subjects here. Removing a subject requires an admin.</Text>
           )}
@@ -239,14 +245,14 @@ export function SubjectsMgmtScreen({ navigation }: any) {
         // See AdminUsersScreen.tsx's FlatList for why this is set explicitly.
         removeClippedSubviews={false}
         contentContainerStyle={{ paddingHorizontal: Spacing.sm, ...(isWide ? { alignItems: 'center' as const } : null) }}
-        ListEmptyComponent={<Empty message="No subjects yet" />}
+        ListEmptyComponent={<Empty message={loadError ? 'Subjects could not be loaded.' : 'No subjects yet'} />}
         renderItem={({ item: s }) => (
           <PageContainer style={{ width: '100%' }}>
             <View style={styles.subRow}>
               <Text style={styles.subName}>{s.name}</Text>
               {s.code && <Text style={styles.subCode}>{s.code}</Text>}
               {isAdmin && (
-                <TouchableOpacity onPress={() => handleDelete(s.id)} style={{ padding: 6 }}>
+                <TouchableOpacity onPress={() => handleDelete(s)} style={{ padding: 6 }} accessibilityRole='button' accessibilityLabel={`Delete subject ${s.name}`} disabled={deletingId !== null}>
                   <Ionicons name="trash-outline" size={18} color={Colors.error} />
                 </TouchableOpacity>
               )}
@@ -254,6 +260,8 @@ export function SubjectsMgmtScreen({ navigation }: any) {
           </PageContainer>
         )}
       />
+      <ConfirmDialog visible={!!infoDialog} title={infoDialog?.title ?? ''} message={infoDialog?.message ?? ''} hideCancel onConfirm={() => setInfoDialog(null)} onCancel={() => setInfoDialog(null)} />
+      <ConfirmDialog visible={!!deleteConfirm} title='Delete subject?' message={`Delete ${deleteConfirm?.name ?? 'this subject'}? This is blocked if scores, materials, questions or assessments already reference it.`} confirmLabel='Delete' destructive onConfirm={confirmDelete} onCancel={() => setDeleteConfirm(null)} />
     </View>
   );
 }
