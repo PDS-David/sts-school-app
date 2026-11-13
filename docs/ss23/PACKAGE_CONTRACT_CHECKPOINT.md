@@ -13,6 +13,8 @@ Base: `master` @ `b8651cebaa480097fd1c40c9b02c11b228187caa`
 
 - `backend/src/db/ss23/subjectPackageSchema.ts`
 - `backend/src/db/ss23/subjectPackageSchema.test.ts`
+- `backend/src/db/ss23/subjects/agricultural-science.json` (SS2 First Term Weeks 1-2 draft with 27 source assessment prompts and 10 authored practice supplements)
+- `backend/src/db/ss23/assets/agricultural-science/soil-sedimentation-jar.svg` (authored practical diagram)
 - `.github/workflows/ss23-package-schema.yml`
 
 ## Contract boundaries
@@ -29,7 +31,7 @@ Base: `master` @ `b8651cebaa480097fd1c40c9b02c11b228187caa`
 
 ## Tests authored
 
-Twelve Node tests cover valid SS2/SS3 package shapes and rejection of:
+Thirteen Node tests cover valid SS2/SS3 package shapes, question/answer provenance, the real Agricultural Science draft package, and rejection of:
 - SS3 third-term sources;
 - SS3 normal instructional mode;
 - stale lesson body hashes;
@@ -43,7 +45,7 @@ The workflow installs locked dependencies, type-checks the backend and runs the 
 
 ## Remaining work
 
-1. Run the new schema test and backend typecheck after the workflow is available on the base branch; fix every issue found.
+1. Run the schema test and backend typecheck on the stacked Agricultural Science PR; fix every issue found.
 2. Implement the SS23 package loader/compiler. Verify source archive-member paths, byte counts and SHA-256 values; apply source rules without rewriting instructional text; build coverage and blockers.
 3. Implement separate SS2 instructional and SS3 exam-preparation student delivery routes. Enforce class, term and approval gates; prevent locked content from exposing answers or assets.
 4. Add delivery integration tests for authorized SS2/SS3 students, wrong-class access, locked terms, stale hashes, missing assets, and unapproved content.
@@ -51,4 +53,4 @@ The workflow installs locked dependencies, type-checks the backend and runs the 
 
 ## Exact next action
 
-Use the Agricultural Science source map in PR #791 to create the SS2 First Term Weeks 1-2 Soil unit. Inspect the full original document, including embedded figures/tables; create substantive explanations and worked examples; add practice questions with verified answers, explanations and mark-by-mark criteria; then implement the loader and student route so the unit is actually accessible. Preserve SS3 as exam preparation only.
+The SS2 Agricultural Science First Term Weeks 1-2 Soil draft now includes all 27 original-source assessment prompts with authored answers and mark-by-mark guidance, five source-figure references, and an authored sedimentation diagram. Resolve its remaining technical/rights/visual blockers and verify the assessment set, then implement the loader and student route so approved units are actually accessible. Preserve SS3 as exam preparation only.
