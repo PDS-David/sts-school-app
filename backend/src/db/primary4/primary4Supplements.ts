@@ -73,6 +73,7 @@ function sourceReference(pkg: LessonPackage, lesson: PackageLesson): string {
     `Rights status: ${pkg.provenance.rights_status ?? 'NOT_SPECIFIED'}`,
     `Curriculum basis: ${pkg.provenance.scheme_basis ?? pkg.provenance.curriculum_basis ?? ''}`,
     `Curriculum source: ${sourceUrl}`,
+    ...(pkg.provenance.state_scheme_source ? [`State scheme source: ${pkg.provenance.state_scheme_source}`] : []),
     `Term allocation: ${termAllocation}`,
     pkg.provenance.source_note ?? pkg.provenance.database_export_finding ?? pkg.provenance.authoring_note ?? '',
     `Content approval: ${pkg.provenance.content_approval}. Pedagogical verification: ${pkg.provenance.pedagogical_verification}. Assessment rebuild: ${pkg.provenance.assessment_rebuild_status ?? 'PENDING'}.`,
