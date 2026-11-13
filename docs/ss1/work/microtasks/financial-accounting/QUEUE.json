@@ -44,7 +44,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 9,
-    "BLOCKED": 2,
+    "BLOCKED": 3,
+    "IN_PROGRESS": 1,
     "PENDING": 60
   },
   "items": [
@@ -417,8 +418,8 @@
         "FA-INV-T1",
         "FA-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T1.md.",
+      "status": "IN_PROGRESS",
+      "implementation_reference": "Implemented in branch agent/financial-accounting-week-two-20261113. Commit 95822c9703b658a654a62b3973c6c5b1a5288c89 adds source-bound Week 2 objective/assessment coverage and an original transaction-classification lesson with model answers and proposed marking. Jan 28 remains unresolved; diagram and external reading remain open. Testing deferred; see FA-WK-T1-W02.md. Exact body hash was recalculated from the serialized lesson body after CI found the previous stored digest included an extra trailing newline; corrected body_sha256=3be6f3eef661a24e2459e3a727d573cadfd18ae11325bdb81ddf9592a82f671e in package commit a4f8255a86b4252932fe55d089f141d0fd127cd6. Await the rerun of the integrity/compiler workflow before returning the task to IMPLEMENTED_TESTING_DEFERRED.",
       "completion_condition": "Week 2 objective-level coverage or marker rules exist under the existing schema for meaning/classification of transactions and every assessment block, with exact locators; the classification diagram's disposition is delegated to FA-VIS-T1-W02-T03-DIAGRAMS; unanswered items become precise open items plus a small lesson task."
     },
     {
@@ -2672,6 +2673,78 @@
       "status": "PENDING",
       "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T3.md.",
       "completion_condition": "The alignment inference, each undelivered promise and each off-topic or unanswerable assessment item is recorded with block numbers; nothing is invented or decided."
+    },
+    {
+      "id": "FA-OWNER-T1-W02-JAN28-PAYMENT-STATUS",
+      "kind": "OWNER_ACTION",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "term": "1st Term",
+      "week_or_locator": "Week Two weekend assignment Jan 28 item, Mammoth lines 325–345.",
+      "objective": "Supply the omitted payment condition for 'Sold goods to Akinyemi N7,000': was payment received immediately or deferred to a later date?",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "c6d4a1b32ff8eb5377f8e7f1014cccfc4345a706bbeb333131a5d50afa6a3edb"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "FA-WK-T1-W02"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Created by FA-WK-T1-W02; the source omits the payment timing, so no cash/credit answer is asserted.",
+      "completion_condition": "Teacher/owner confirms the payment timing or authorises the item to remain excluded from marking."
+    },
+    {
+      "id": "FA-LES-T1-W02-JAN28-CLASSIFICATION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "term": "1st Term",
+      "week_or_locator": "Week Two weekend assignment Jan 28 item, Mammoth lines 325–345.",
+      "objective": "After FA-OWNER-T1-W02-JAN28-PAYMENT-STATUS, update the proposed answer key with the correct classification and one-mark marking criterion, preserving the source wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "c6d4a1b32ff8eb5377f8e7f1014cccfc4345a706bbeb333131a5d50afa6a3edb"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "FA-OWNER-T1-W02-JAN28-PAYMENT-STATUS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created by FA-WK-T1-W02; task is intentionally dependent on an owner clarification.",
+      "completion_condition": "Classification follows the supplied payment timing; if no clarification is supplied, retain the item as ungraded and unresolved."
     }
   ],
   "review": {
@@ -2687,7 +2760,6 @@
     }
   },
   "next_runnable": [
-    "FA-WK-T1-W02",
     "FA-WK-T1-W03",
     "FA-WK-T1-W04-W05",
     "FA-WK-T1-W06-W07",
