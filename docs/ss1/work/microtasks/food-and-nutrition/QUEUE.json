@@ -46,8 +46,9 @@
     "LESSON": 7
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 11,
+    "IMPLEMENTED_TESTING_DEFERRED": 10,
     "BLOCKED": 2,
+    "IN_PROGRESS": 1,
     "PENDING": 55
   },
   "items": [
@@ -457,8 +458,8 @@
         "FN-INV-T1",
         "FN-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Implemented on agent/food-and-nutrition using the verified source member and FN-INV-T1 evidence. Added objective-level coverage for the overall relationship and each of the thirteen named disciplines using Week 3 lines 189-225 and exact body SHA-256 5ea5a6577e5feea1074ed64173cafae653c2634b6975d45cc17013b66f60e606; agriculture is PARTIAL, the other subject relationships are UNRESOLVED because the source lists names without explanations. Added an UNRESOLVED assessment entry because the section contains no questions. Added precise open items for missing explanations, missing assessment and the FAO/Rome factual claim; handed the latter to FN-FACT-T1-NUTRITION-CLAIMS by adding the Week 3 dependency. Added two bounded lesson tasks. No lesson, answer, factual approval or classroom observation was invented. See FN-WK-T1-W03.md.",
+      "status": "IN_PROGRESS",
+      "implementation_reference": "Initial PR #699 registered-subject compiler run failed because the source body ID derived from the inventory hash was not present in the compiler's parsed-row map. Removed the unverified lesson_ids from the new PARTIAL/UNRESOLVED coverage records; retained exact source line ranges and hashes. Those entries remain incomplete until the parser's exact body identity is independently confirmed. Task remains IN_PROGRESS pending a passing compiler workflow. See FN-WK-T1-W03.md.",
       "completion_condition": "Week 3 objective-level coverage or marker rules exist under the existing schema for the relationship objective and the thirteen subjects, with exact locators; missing explanations and assessment are precise open items plus small lesson tasks; the FAO claim is handed to the fact item."
     },
     {
@@ -2600,7 +2601,6 @@
     "FN-MARK-T3-REVEXAM",
     "FN-PRES-T3-COOKING-PROCESSES",
     "FN-PRES-T3-SOURCE-WORDING",
-    "FN-FACT-T1-W02-CAREER-ROLES",
-    "FN-LES-T1-W03-RELATIONSHIPS"
+    "FN-FACT-T1-W02-CAREER-ROLES"
   ]
 }
