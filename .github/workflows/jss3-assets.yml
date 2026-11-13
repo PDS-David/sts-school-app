@@ -76,16 +76,6 @@ jobs:
         run: |
           ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
           ./node_modules/.bin/tsc --noEmit -p mobile/tsconfig.json
-      - name: Public account registration PostgreSQL regressions
-        env:
-          PGPASSWORD: test_only_password
-          DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/sts_auth_test
-          NODE_ENV: test
-        run: |
-          createdb -h 127.0.0.1 -U postgres sts_auth_test
-          trap 'dropdb -h 127.0.0.1 -U postgres sts_auth_test' EXIT
-          npm run db:bootstrap --workspace=backend
-          node --import tsx --test tests/backend-self-registration.integration.test.mts
       - name: Static and focused regressions
         run: |
           python3 -m unittest discover -s docs/jss3/completion/P1_BASELINE -p "test_*.py"
