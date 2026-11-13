@@ -3,6 +3,7 @@ import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api, { flushOutbox } from './client';
 import { onForcedLogout } from './authEvents';
+import { isRestorableUser } from './authSession';
 import { setSecureItem, deleteSecureItems } from './secureTokenStorage';
 import { setCacheNamespace, outboxCount, isOnline } from '../offline';
 import { registerForPushNotifications, unregisterPushToken } from './pushRegistration';
@@ -79,10 +80,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       try {
         const raw = await AsyncStorage.getItem('user');
         if (raw) {
-          const parsed = JSON.parse(raw) as User;
-          const validRole = ['student', 'parent', 'teacher', 'admin', 'finance_admin'].includes(parsed?.role);
-          if (parsed && typeof parsed.id === 'string' && parsed.id.length > 0 && validRole) {
-            setUser(parsed);
+          const parsed: unknown = JSON.parse(raw);
+          if (isRestorableUser(parsed)) {
+            setUser(parsed as User);
             setCacheNamespace(parsed.id);
           } else {
             await AsyncStorage.removeItem('user');
