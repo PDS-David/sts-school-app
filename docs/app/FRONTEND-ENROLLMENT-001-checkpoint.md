@@ -36,6 +36,8 @@ Worker branch: `agent/frontend-enrollment-current-20261113`
 - `76188898157209e91f016ac619a9ece7544af4b7` — reapply the focused implementation on current master.
 - Checkpoint commit: `7fa67b5d2924795e515915bd12d4eaa37bff7f7b`.
 
+- CI evidence: Mobile TypeScript workflow run 43458379114 completed successfully on the current-master PR head.
+
 ## Verification
 - Static inspection confirms class list is scoped to selected school and stale class selections are cleared on school changes.
 - Static inspection confirms one-time parent credentials are shown in an in-app dialog after a real server response.
