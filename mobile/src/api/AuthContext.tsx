@@ -84,6 +84,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           if (isRestorableUser(parsed)) {
             setUser(parsed as User);
             setCacheNamespace(parsed.id);
+            // Re-register an already-authorized device after reinstall/token
+            // rotation or a previous transient registration failure, without
+            // prompting for notification permission during app startup.
+            registerForPushNotifications({ requestPermission: false }).catch(() => {});
           } else {
             await AsyncStorage.removeItem('user');
             setCacheNamespace(null);
