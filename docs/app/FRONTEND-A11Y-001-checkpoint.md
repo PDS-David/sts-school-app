@@ -38,7 +38,7 @@ Worker branch: `agent/frontend-accessibility-header-latest-20261113`
 - `8dc1ef672c10da2596dfc4d0cd642931c65a1bca` — reapply accessibility changes to `mobile/src/components/AppHeader.tsx` on current master.
 - `e407bc11b0452d11375bb6d0bc0bb7a7197e5dea` — reapply accessibility changes to `mobile/src/components/Sidebar.tsx` on current master.
 - `183ba6c43b1da8944066568c54f6515c9979e7f7` — reapply accessibility changes to `mobile/src/components/FAB.tsx` on current master.
-- Checkpoint commit: pending.
+- Checkpoint commit: `b611c7ab1ebe7cc3c8b07f899bfc04e72ad5efb2`.
 
 ## Verification
 - Static inspection confirms the avatar no longer advertises a button when it has no action.
