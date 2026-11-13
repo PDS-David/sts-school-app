@@ -17,8 +17,10 @@ This repository is the durable source of truth for multi-agent work. Agent sessi
 - `tasks.json`: durable task queue and current ownership.
 - `task.schema.json`: task record contract.
 - `checkpoints/TASK-XXXX.md`: human-readable resume instructions.
-- `scripts/validate_work_queue.py`: dependency-free structural validator.
-- `work-queue.yml`: scheduled and change-triggered validation/reporting.
+- `scripts/validate_work_queue.py`: dependency-free structural and lifecycle validator.
+- `scripts/build_completion_dashboard.py`: evidence-driven completion-gate dashboard.
+- `tests/test_validate_work_queue.py`: regression tests for queue invariants and dashboard evidence rules.
+- `work-queue.yml`: scheduled and change-triggered validation, unit tests and dashboard reporting.
 
 ## Worker lease protocol
 
@@ -27,7 +29,7 @@ This repository is the durable source of truth for multi-agent work. Agent sessi
 - Recovery grace: 15 minutes after lease expiry.
 - A worker must commit or checkpoint before a planned handoff.
 - A worker must not claim a task owned by another worker with a valid lease.
-- Reassignment is a controller decision; v1 reports expired leases but does not pretend to launch replacement agents. Agent-platform launch integration is a separate adapter.
+- Reassignment is a controller decision; v1 reports expired leases but does not pretend to launch replacement agents. Agent-platform launch integration remains blocked until the actual execution platform and its supported API/authentication contract are identified; no endpoint or credential scheme is assumed.
 
 All timestamps are ISO-8601 UTC with a trailing `Z`. Use unique task IDs. Keep tasks small enough to complete in approximately 30–90 minutes. Split larger work.
 
@@ -46,13 +48,13 @@ python scripts/validate_work_queue.py
 python scripts/validate_work_queue.py --strict
 ```
 
-Strict mode fails on expired leases, missing checkpoints for active tasks, unresolved dependencies, and completed tasks without evidence. Scheduled reporting uses non-strict mode so it can report stalled work without making the workflow itself fail.
+Strict mode fails on operational warnings. Structural validation rejects malformed records, duplicate active ownership, dependency cycles, invalid leases, and completed tasks without passing evidence. Scheduled reporting uses non-strict mode so it can report stalled work without making the workflow itself fail.
 
 ## Safety and concurrency
 
 - One active owner per task.
 - Declare file ownership in each task.
-- Avoid overlapping file ownership across concurrent tasks.
+- Avoid overlapping file ownership across concurrent tasks; the validator rejects duplicate active ownership by the same worker.
 - Never store secrets, tokens, personal student data or credentials in task records/checkpoints.
 - Do not mark work complete because a PR exists or code merely compiles.
 - A green workflow is evidence only for the checks it actually ran.
