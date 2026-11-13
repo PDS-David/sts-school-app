@@ -127,3 +127,8 @@ Six technical/content issues remain delivery blockers: drought is listed as a cl
 - Package status remains PENDING; the student routes intentionally serve no lessons until blocking items are resolved and evidence-backed approval/verification is recorded.
 
 **Next exact task:** audit the combined Weeks 8-9 Plant Nutrients/Nutrient Cycles source body and assessments, then draft the combined unit only if the supplied content supports the full two-week scheme range. Follow with Week 10 nutrient availability.
+
+
+## CI evidence
+
+GitHub Actions run **43474264243** completed successfully after Weeks 4-6 were added: backend TypeScript typecheck passed and all 24 SS23 Node tests passed (24 passed, 0 failed). Week 7 was added after this run and still requires a fresh validation run.
