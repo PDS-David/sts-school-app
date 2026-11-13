@@ -547,9 +547,9 @@ export default function AdminUsersScreen() {
       <Modal visible={modal} animationType="slide" onRequestClose={() => setModal(false)}>
         <ScrollView style={styles.modalWrapOuter} contentContainerStyle={styles.modalWrap} keyboardShouldPersistTaps="handled">
           <SectionHeader title={editUser ? 'Edit User' : 'New User'} />
-          {!!schoolsError && <Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm, marginBottom: Spacing.sm }}>{schoolsError} Use Retry schools on the list screen before saving.</Text>}
+          {!!schoolsError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{schoolsError}</Text><Btn label='Retry schools' variant='outline' size='sm' onPress={() => setSchoolsRetry(v => v + 1)} /></View>}
           {!!lookupLoading && <Text style={styles.expiryHint}>Loading class and subject options…</Text>}
-          {!!lookupError && <Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm, marginBottom: Spacing.sm }}>{lookupError} Retry class/subject options on the list screen.</Text>}
+          {!!lookupError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{lookupError}</Text><Btn label='Retry class/subject options' variant='outline' size='sm' onPress={() => setLookupRetry(v => v + 1)} /></View>}
           {!editUser && !isNewClassTeacher && (
             <Input label="Username" value={form.username} onChangeText={v => setForm(f => ({ ...f, username: v }))} autoCapitalize="none" />
           )}
