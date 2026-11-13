@@ -189,7 +189,7 @@ router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
     if (is_current === true) {
       await client.query(
         'UPDATE terms SET is_current=FALSE WHERE school_code=$1 AND id<>$2',
-        [term.school_code, req.params.id],
+        [term.school_code, termId],
       );
     }
 
