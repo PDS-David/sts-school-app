@@ -23,6 +23,8 @@
 - Static inspection: local cache errors are isolated from the API send result.
 - CI pending; no live multi-conversation race or offline-device test is claimed.
 
+- CI on current-master head `e31f7228b65e9d7026094e7b8157d66781607dd3`: Mobile TypeScript and SS1 package integrity passed; Android readiness and JSS3 implementation/assets checks are still in progress.
+
 ## Remaining work
 - Check mobile TypeScript and Android readiness.
 - Verify online/offline message delivery with two accounts on devices when available.
