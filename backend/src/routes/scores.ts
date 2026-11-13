@@ -5,7 +5,7 @@ import { requireAuth, requirePerm } from '../middleware/auth.js';
 import { getGrade } from '../utils/grades.js';
 import { audit } from '../utils/audit.js';
 import { termRank } from '../utils/terms.js';
-import { checkTeacherStudentScope } from '../utils/scope.js';
+import { checkTeacherStudentScope, checkTermSchoolScope } from '../utils/scope.js';
 import type { AuthUser } from '../types/index.js';
 import { sendPushToUser } from '../utils/push.js';
 
@@ -425,7 +425,14 @@ router.get('/report/:student_id', async (req, res) => {
   }
   if (!resolvedTermId) return res.status(404).json({ error: 'No active term' });
 
-  const { rows: termRows } = await query('SELECT * FROM terms WHERE id=$1', [resolvedTermId]);
+  const parsedTermId = Number(resolvedTermId);
+  const termScopeError = await checkTermSchoolScope(student.school_code, parsedTermId);
+  if (termScopeError) return res.status(termScopeError.status).json({ error: termScopeError.error });
+
+  const { rows: termRows } = await query(
+    'SELECT * FROM terms WHERE id=$1 AND school_code=$2',
+    [parsedTermId, student.school_code],
+  );
   const term = termRows[0];
 
   // DATA-03: class comparison uses the class recorded on each score row
