@@ -88,7 +88,7 @@ test('blocks approved-looking content while package-level open items remain', ()
 test('keeps SS2 and SS3 delivery class-separated', () => {
   const delivery = createSs23StudentDelivery([approvedPackage()]);
   const ss2Units = delivery.listUnits('SS 2');
-  assert.equal(ss2Units.length, 5);
+  assert.equal(ss2Units.length, 6);
   assert.deepEqual(delivery.listUnits('SS 3'), []);
   assert.equal(delivery.getUnit(ss2Units[0].id, 'SS 3'), null);
 });
