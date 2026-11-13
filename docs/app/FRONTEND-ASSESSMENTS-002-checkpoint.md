@@ -9,7 +9,7 @@
 - `6930b1509ec9a88d86d5e32ef62e192e44806b73` — add confirmation before admin assessment publish/close and web-compatible error feedback.
 - `732907049c5b825d895bcdabf73086c05bd67e7c` — replace native alerts for student assessment submit, error and retake confirmation.
 - `3fe327d106d210b79ed3f876589f39f1e40319c5` — ensure the review-mode confirmation dialog is rendered as a valid sibling.
-- Checkpoint commit: pending.
+- Checkpoint commit: `6588b05ab53f0a7c5ba4bb5cb6423f4355b5e2ea`.
 
 ## Changes
 - Admins must confirm publish/close state transitions; API errors are displayed in the shared cross-platform ConfirmDialog.
