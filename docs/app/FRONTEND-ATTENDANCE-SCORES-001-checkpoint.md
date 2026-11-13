@@ -30,6 +30,8 @@
 
 - PR #788 has merged into master, resolving the two pre-existing TypeScript blockers. Fresh checks on this refreshed branch are pending.
 
+- CI passed on current-master head `f6d2752fc9be858ac3d3961460a868d0bbcb4dcb`: Mobile TypeScript, Android mobile readiness, SS1 package integrity, backend attendance batch integrity, backend academic term tenant isolation, backend student report term scope, and JSS3 implementation/assets all completed successfully.
+
 ## Remaining work
 - Check the Mobile TypeScript and package integrity workflow results.
 - Fix any genuine errors without weakening checks.
