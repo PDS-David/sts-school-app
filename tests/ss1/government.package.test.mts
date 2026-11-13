@@ -1,5 +1,5 @@
-// Automated Government package regression suite; write-only in this phase.
-// Owner instruction: do not run tests, typechecks, importer checks or database/device checks yet.
+// Automated Government package regression suite.
+// Owner instruction updated 2026-11-13: run these checks as part of the SS1 completion and integration audit.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -318,4 +318,57 @@ test('Week Ten unitary/federal and Federal Character replacement covers all 15 s
   const readingOpenItem = p.open_items.find(entry => entry.id === 'GOVERNMENT-T1-W10-READING-VERIFICATION');
   assert(readingOpenItem);
   assert.equal(readingOpenItem.blocks_delivery, false);
+});
+
+
+test('Week One colonial-administration replacement corrects history and binds the exact original row', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(entry => entry.id === 'SUP-SS1-GOVERNMENT-T2-W01-CORRECTED');
+  assert(lesson, 'Week One replacement lesson is missing');
+  assert.equal(hash(lesson.body), lesson.body_sha256);
+  assert.equal(lesson.practice.length, 7);
+  assert.equal(lesson.practice.reduce((sum, question) => sum + question.marks, 0), 33);
+  assert.equal(new Set(lesson.practice.map(question => question.id)).size, 7);
+  for (const phrase of [
+    'Berlin Conference', '15 November 1884', '26 February 1885',
+    'c.1760–1840', 'transatlantic slave trade', 'colonial forced labour',
+    'civilizing mission', 'Lugard’s High Commissionership',
+    'Native Courts Proclamation (1900)', 'Native Authority (Enforcement) Proclamation (1907)',
+    'decentralised communities',
+  ]) {
+    assert(lesson.body.includes(phrase), `missing Week One teaching: ${phrase}`);
+  }
+  assert(!lesson.body.includes('formalised between 1914 and 1917'));
+  assert.equal(lesson.state.content_approval, 'PENDING');
+  assert.equal(lesson.state.approval_reference, null);
+  assert.equal(lesson.state.verification, 'DEFERRED');
+  assert.equal(lesson.state.verification_reference, null);
+  assert.equal(p.package_status, 'PENDING');
+
+  const correction = p.delivery_corrections.find(entry => entry.id === 'CORR-GOV-T2-W01-ROW-REPLACEMENT');
+  assert(correction);
+  assert.equal(correction.source_lesson_id, 'SS1-SRC-c76f430c7cf8:BODY:ec86c6581e3f2b192f07854c3d6eb84e1927a3bb8e967e7143b0ebf2219c7993');
+  assert.equal(correction.body_sha256, 'ec86c6581e3f2b192f07854c3d6eb84e1927a3bb8e967e7143b0ebf2219c7993');
+  assert.equal(correction.source_sha256, 'bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782');
+  assert.equal(correction.replacement_id, lesson.id);
+  assert.equal(correction.evidence.objective_scope_audit.practice_item_count, 7);
+  assert.equal(correction.evidence.objective_scope_audit.practice_total_marks, 33);
+
+  for (const id of [
+    'COV-GOV-T2-W01-HISTORICAL-BACKGROUND',
+    'COV-GOV-T2-W01-REASONS-COLONIALISM',
+    'COV-GOV-T2-W01-INDIRECT-RULE-DEFINITION',
+    'COV-GOV-T2-W01-INDIRECT-RULE-FEATURES',
+    'COV-GOV-T2-W01-INDIRECT-RULE-REASONS',
+    'COV-GOV-T2-W01-TRADITIONAL-RULERS-ROLES',
+    'COV-GOV-T2-W01-NORTHERN-NIGERIA',
+  ]) {
+    const coverage = p.coverage.find(entry => entry.id === id);
+    assert.equal(coverage?.status, 'IMPLEMENTED_EQUIVALENT', id);
+    assert(coverage?.lesson_ids.includes(lesson.id), id);
+  }
+  assert.equal(p.coverage.find(entry => entry.id === 'COV-GOV-T2-W01-COLONIAL-IMPACTS')?.status, 'UNRESOLVED');
+  assert.equal(p.coverage.find(entry => entry.id === 'COV-GOV-T2-W01-READING')?.status, 'PARTIAL');
+  assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W01-REGIONAL-SCOPE-DISCREPANCY')?.blocks_delivery, true);
+  assert.equal(p.open_items.find(entry => entry.id === 'GOVERNMENT-T2-W01-EVALUATION-QUESTIONS-MISSING')?.blocks_delivery, false);
 });
