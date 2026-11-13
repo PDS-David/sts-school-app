@@ -20,7 +20,8 @@
     "GEO-INV-T1 inventoried the 1st Term document (scheme rows 1-11, WEEK ONE..WEEK TEN, markers, visual groups); thirteen indexing/visual items appended. No coverage or rule was written by the inventory.",
     "GEO-INV-T2 (2026-10-30) inventoried the 2nd Term original (nine scheme rows covering weeks 1-11, eight week labels covering weeks 1-10, 46 markers, header letterhead image, two weather tables, two drawing objects); eleven indexing/visual items appended. The 3rd Term inventory remains unread. No coverage, lesson, rule, correction or asset was written.",
     "GEO-WK-T1-W01 (2026-11-07) indexed Week 1 at objective level: meaning, scope and value mapped SUPPORTED to the reproduced generic parsed-row id; 'Nature' is named in the scheme row and never taught, the state-capital questions at lines 75 and 88 are taught nowhere in the document, the reading pointer is unverified and the source has no answer key, so two PARTIAL rows and two UNRESOLVED rows plus three lesson items (one BLOCKED on an owner decision) were appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written.",
-    "GEO-INV-T3 (2026-11-13) inspected the exact 3rd Term Geography .doc from the owner-attached composite archive; archive/member hashes verified against SOURCE_ASSIGNMENTS.csv. Source extracted with antiword 0.37 and privately converted/rendered with LibreOffice 25.2.3.2 for structure. Inventory GEO-INV-T3.md records scheme, nine body blocks (combined Weeks 1–2, then Weeks 3–10), evaluation/assignment sections, one 38x4 state/capital/slogan table, a drawn Nigeria location/boundary sketch, and a tab-aligned thermal plant list. Geography/population/census/industry/agriculture/mineral/power claims are flagged for dated authoritative verification. 16 bounded follow-up tasks appended: nine week indexes, preamble, two visual dispositions plus one tabular-list disposition, and three factual dependencies. No lessons/package/coverage/rules/corrections/assets/approval changed; no tests/importer/device checks. Testing deferred."
+    "GEO-INV-T3 (2026-11-13) inspected the exact 3rd Term Geography .doc from the owner-attached composite archive; archive/member hashes verified against SOURCE_ASSIGNMENTS.csv. Source extracted with antiword 0.37 and privately converted/rendered with LibreOffice 25.2.3.2 for structure. Inventory GEO-INV-T3.md records scheme, nine body blocks (combined Weeks 1–2, then Weeks 3–10), evaluation/assignment sections, one 38x4 state/capital/slogan table, a drawn Nigeria location/boundary sketch, and a tab-aligned thermal plant list. Geography/population/census/industry/agriculture/mineral/power claims are flagged for dated authoritative verification. 16 bounded follow-up tasks appended: nine week indexes, preamble, two visual dispositions plus one tabular-list disposition, and three factual dependencies. No lessons/package/coverage/rules/corrections/assets/approval changed; no tests/importer/device checks. Testing deferred.",
+    "GEO-TEST-PACKAGE (2026-11-13): added tests/ss1/geography.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; three PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current supported/partial/unresolved coverage/open-item boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no curriculum content or approval state changed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -34,9 +35,9 @@
     "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 7,
-    "PENDING": 42,
-    "BLOCKED": 2
+    "IMPLEMENTED_TESTING_DEFERRED": 8,
+    "BLOCKED": 2,
+    "PENDING": 41
   },
   "items": [
     {
@@ -272,8 +273,8 @@
         "GEO-SRC-T2",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/geography.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Test file authored 2026-11-13 at tests/ss1/geography.package.test.mts. It parses the current pending package, matches all three source registrations against SOURCE_ASSIGNMENTS.csv (member/hash/term), confirms no lessons/corrections/assets or fabricated approval/verification, guards the three source-alias rules with wrong-hash/ambiguous/missing-anchor probes, and checks coverage reference/current status counts and owner gates. Per task contract, tests were written but NOT RUN; package remains PENDING and owner/content/permission gates remain open.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -1913,7 +1914,6 @@
     "scope": "1st Term inventory executed from the supplied source; no importer, compiler or tests run; testing deferred."
   },
   "next_runnable": [
-    "GEO-TEST-PACKAGE",
     "GEO-PRE-T1",
     "GEO-MARK-T1",
     "GEO-WK-T1-W02",
