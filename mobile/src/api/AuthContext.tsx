@@ -175,7 +175,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
     let pending = await readPendingCount();
     if (pending === null) return;
-    if (pending > 0 && (await isOnline())) {
+    let online = false;
+    try { online = await isOnline(); } catch { /* treat connectivity lookup failure as offline */ }
+    if (pending > 0 && online) {
       await flushOutbox().catch(() => {});
       pending = await readPendingCount();
       if (pending === null) return;
