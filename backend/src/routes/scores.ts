@@ -276,42 +276,42 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
 router.post('/', requirePerm('grades.write'), async (req, res) => {
   const parsed = scoreEntrySchema.safeParse(req.body);
   if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
-
   const d = parsed.data;
 
-  const scopeViolation = await checkTeacherStudentScope(req.user!, d.student_id, d.term_id);
-  if (scopeViolation) return res.status(scopeViolation.status).json({ error: scopeViolation.error });
+  const result = await withTransaction(async (client) => {
+    const scope = await validateScoreWriteScope(client, req.user!, d);
+    if ('error' in scope) return { ok: false as const, status: scope.status, error: scope.error };
 
-  // Fetch school config for max validation
-  const { rows: schRows } = await query(
-    `SELECT sc.ca1_max, sc.ca2_max, sc.exam_max
-     FROM schools sc JOIN students st ON st.school_code=sc.code
-     WHERE st.id=$1`, [d.student_id],
-  );
-  const cfg = schRows[0] ?? { ca1_max: 20, ca2_max: 20, exam_max: 60 };
-  if (d.ca1 > cfg.ca1_max || d.ca2 > cfg.ca2_max || d.exam > cfg.exam_max) {
-    return res.status(400).json({
-      error: `Score exceeds maximum (CA1≤${cfg.ca1_max}, CA2≤${cfg.ca2_max}, Exam≤${cfg.exam_max})`,
-    });
-  }
+    const { rows: schRows } = await client.query(
+      'SELECT ca1_max, ca2_max, exam_max FROM schools WHERE code=$1 FOR SHARE',
+      [scope.schoolCode],
+    );
+    const cfg = schRows[0] ?? { ca1_max: 20, ca2_max: 20, exam_max: 60 };
+    if (d.ca1 > Number(cfg.ca1_max) || d.ca2 > Number(cfg.ca2_max) || d.exam > Number(cfg.exam_max)) {
+      return {
+        ok: false as const,
+        status: 400,
+        error: `Score exceeds maximum (CA1≤${cfg.ca1_max}, CA2≤${cfg.ca2_max}, Exam≤${cfg.exam_max})`,
+      };
+    }
 
-  const grade = getGrade(d.ca1 + d.ca2 + d.exam);
+    const grade = getGrade(d.ca1 + d.ca2 + d.exam);
+    const { rows } = await client.query(
+      `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at,class_name)
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT class_name FROM students WHERE id=$1))
+       ON CONFLICT(student_id,subject_id,term_id)
+       DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now(),
+                     class_name=COALESCE(scores.class_name, EXCLUDED.class_name)
+       RETURNING *`,
+      [d.student_id, d.subject_id, d.term_id, d.ca1, d.ca2, d.exam,
+       grade, d.teacher_remark ?? null, req.user!.id],
+    );
+    return { ok: true as const, score: rows[0] };
+  });
 
-  const { rows } = await query(
-    // class_name (DATA-03): stamped from the students row at write time, never
-    // from the request. On conflict the original stamp is kept; a row that has
-    // none yet (recorded before this column existed) is stamped now.
-    `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at,class_name)
-     VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT class_name FROM students WHERE id=$1))
-     ON CONFLICT(student_id,subject_id,term_id)
-     DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now(),
-                   class_name=COALESCE(scores.class_name, EXCLUDED.class_name)
-     RETURNING *`,
-    [d.student_id, d.subject_id, d.term_id, d.ca1, d.ca2, d.exam,
-     grade, d.teacher_remark ?? null, req.user!.id],
-  );
-  await audit(req.user!, 'save_score', 'score', String(rows[0].id));
-  return res.json({ score: rows[0] });
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  await audit(req.user!, 'save_score', 'score', String(result.score.id));
+  return res.json({ score: result.score });
 });
 
 // ── POST /scores/bulk  (batch entry for a whole class) ────────────────────────
