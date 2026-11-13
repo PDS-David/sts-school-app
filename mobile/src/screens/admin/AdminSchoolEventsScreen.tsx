@@ -14,6 +14,7 @@ const ROLES = ['', 'student', 'parent', 'teacher'];
 export default function AdminSchoolEventsScreen() {
   const { user } = useAuth();
   const [events, setEvents] = useState<any[]>([]);
+  const [editingId, setEditingId] = useState<number | null>(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [schoolCode, setSchoolCode] = useState(user?.school_code ?? '');
@@ -52,19 +53,39 @@ export default function AdminSchoolEventsScreen() {
     }
     setSaving(true);
     try {
-      await api.post('/school-events', {
+      const payload = {
         title: title.trim(), description: description.trim() || null,
         event_type: eventType, audience_role: audienceRole || null,
         class_name: className.trim() || null, start_at: parsedStart.toISOString(),
         end_at: parsedEnd ? parsedEnd.toISOString() : null,
         school_code: schoolCode.trim() || undefined,
-      });
-      setTitle(''); setDescription(''); setClassName(''); setStartAt(''); setEndAt('');
-      Alert.alert('Event created', 'The event is now available to its selected audience.');
+      };
+      if (editingId != null) await api.put(`/school-events/${editingId}`, payload);
+      else await api.post('/school-events', payload);
+      setTitle(''); setDescription(''); setClassName(''); setStartAt(''); setEndAt(''); setEditingId(null);
+      Alert.alert(editingId != null ? 'Event updated' : 'Event created', 'The event is now available to its selected audience.');
       await load();
     } catch (error: any) {
       Alert.alert('Could not create event', error?.response?.data?.error ?? 'Please check the details and try again.');
     } finally { setSaving(false); }
+  };
+
+  const startEdit = (event: any) => {
+    setEditingId(event.id);
+    setTitle(event.title ?? '');
+    setDescription(event.description ?? '');
+    setSchoolCode(event.school_code ?? '');
+    setClassName(event.class_name ?? '');
+    setEventType(event.event_type ?? 'event');
+    setAudienceRole(event.audience_role ?? '');
+    setStartAt(event.start_at ? new Date(event.start_at).toISOString() : '');
+    setEndAt(event.end_at ? new Date(event.end_at).toISOString() : '');
+  };
+
+  const cancelEdit = () => {
+    setEditingId(null); setTitle(''); setDescription(''); setClassName('');
+    setStartAt(''); setEndAt(''); setEventType('event'); setAudienceRole('');
+    setSchoolCode(user?.school_code ?? '');
   };
 
   const remove = (id: number) => {
@@ -96,7 +117,8 @@ export default function AdminSchoolEventsScreen() {
           <View style={styles.chips}>{ROLES.map(role => <TouchableOpacity key={role || 'all'} onPress={() => setAudienceRole(role)} style={[styles.chip, audienceRole === role && styles.activeChip]}><Text style={[styles.chipText, audienceRole === role && styles.activeText]}>{role || 'All roles'}</Text></TouchableOpacity>)}</View>
           <TextInput value={startAt} onChangeText={setStartAt} placeholder="Start date/time (ISO 8601)" style={styles.input} autoCapitalize="none" />
           <TextInput value={endAt} onChangeText={setEndAt} placeholder="End date/time (optional, ISO 8601)" style={styles.input} autoCapitalize="none" />
-          <TouchableOpacity disabled={saving} onPress={create} style={[styles.submit, saving && { opacity: 0.6 }]}><Text style={styles.submitText}>{saving ? 'Saving…' : 'Publish event'}</Text></TouchableOpacity>
+          <TouchableOpacity disabled={saving} onPress={create} style={[styles.submit, saving && { opacity: 0.6 }]}><Text style={styles.submitText}>{saving ? 'Saving…' : editingId != null ? 'Update event' : 'Publish event'}</Text></TouchableOpacity>
+          {editingId != null ? <TouchableOpacity onPress={cancelEdit} style={{ padding: 10, alignItems: 'center' }}><Text style={{ color: Colors.textSub }}>Cancel editing</Text></TouchableOpacity> : null}
         </Card>
 
         <Text style={styles.section}>Scheduled events</Text>
@@ -107,7 +129,10 @@ export default function AdminSchoolEventsScreen() {
               <Text style={styles.help}>{event.event_type} · {new Date(event.start_at).toLocaleString()}</Text>
               <Text style={styles.help}>{event.school_code}{event.class_name ? ` · ${event.class_name}` : ''}{event.audience_role ? ` · ${event.audience_role}` : ' · all roles'}</Text>
             </View>
-            <TouchableOpacity onPress={() => remove(event.id)} accessibilityLabel={`Delete ${event.title}`}><Ionicons name="trash-outline" size={20} color={Colors.error} /></TouchableOpacity>
+            <View style={{ flexDirection: 'row', gap: 12 }}>
+              <TouchableOpacity onPress={() => startEdit(event)} accessibilityLabel={`Edit ${event.title}`}><Ionicons name="create-outline" size={20} color={Colors.primary} /></TouchableOpacity>
+              <TouchableOpacity onPress={() => remove(event.id)} accessibilityLabel={`Delete ${event.title}`}><Ionicons name="trash-outline" size={20} color={Colors.error} /></TouchableOpacity>
+            </View>
           </Card>
         ))}
       </ScrollView>
