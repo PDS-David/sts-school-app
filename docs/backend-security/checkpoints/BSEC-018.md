@@ -2,9 +2,10 @@
 
 - **Task ID:** BSEC-018
 - **Title:** Enforce school and term scope on whole-class attendance and class-record reads
-- **Status:** in_progress
+- **Status:** implementation and focused verification passed; PR review pending
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
+- **Base commit:** 7451e263136b4fedc5fd876f5822c755b6c7b1c7
 - **Working branch:** agent/backend-attendance-report-scope-20261113
 - **Changed files planned:** backend/src/routes/attendance.ts; PostgreSQL HTTP integration test; focused workflow; this checkpoint.
 - **Agent coordination:** PR #797 changes finance.ts; PR #801 changes weeklyEfforts.ts; PR #809 changes academic.ts. No active PR changes attendance.ts or the new attendance read-scope test.
@@ -17,4 +18,7 @@
   5. Soft-deleted student records are excluded from non-admin whole-class reports.
   6. PostgreSQL HTTP regressions prove cross-school reads are denied and valid same-school reads remain available.
   7. Backend TypeScript and focused tests pass; no production data changes.
-- **Exact next action:** add fail-closed school/term checks and school predicates to both GET /attendance and GET /attendance/class-records, then add HTTP regressions.
+- **Latest implementation commit:** 9967f4fa7ba2ca51d462817d21cb62f75d0733eb
+- **Verification:** Backend attendance report tenant scope workflow 43470650104 passed (PostgreSQL 16 HTTP scope regressions and backend TypeScript typecheck). Existing attendance batch integrity, student report term scope and academic term tenant-isolation workflows also passed on the same head SHA.
+- **Remaining:** PR review/merge. No production records or data were changed.
+- **Exact next action:** review PR #815 and merge after all required repository checks pass.
