@@ -46,3 +46,12 @@ The source wording at lines 195-197 says that both come under one world organiza
 - Status: IMPLEMENTED_TESTING_DEFERRED
 - Changed files: backend/src/db/ss1/subjects/food-and-nutrition.json, docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json, this evidence note.
 - Next eligible task: FN-WK-T1-W04 (and FN-LES-T1-W03-RELATIONSHIPS), subject to current-master refresh and branch-ownership check.
+
+## Durable checkpoint
+- Task ID: FN-WK-T1-W03
+- Status: IMPLEMENTED_TESTING_DEFERRED
+- Changed files: backend/src/db/ss1/subjects/food-and-nutrition.json; docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json; docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W03.md.
+- Implementation commits: package 3dd10c725bb4e2b821551fb123bf0bb9a46d1c47; queue 95ca68b7ba71351e849a0bb4500b218352b44598; queue-count reconciliation 279e0f9b38a847e18ed856af32c7e92c570d2bf0. Evidence-note creation commit: 1759b8eb5461d0afb75f4fc516ff7c72e16efcaa.
+- Tests: package/queue JSON parsing and ID uniqueness checks performed in the authoring session; no subject test suite, TypeScript, importer/compiler, database or device checks run (owner protocol defers these gates).
+- Remaining work: explain all thirteen subject relationships in a new lesson; author an original assessment with answer and marking guide; verify the FAO/Rome statement; later complete Week 4–11 and other term tasks.
+- Exact next action after this PR is integrated: implement FN-LES-T1-W03-RELATIONSHIPS before continuing the next week index; it is now eligible in QUEUE.json.
