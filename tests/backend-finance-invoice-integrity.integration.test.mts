@@ -204,19 +204,6 @@ test('invoice creation rechecks fee-item class ownership after a concurrent upda
   try {
     const started = await startFinanceServer();
     server = started.server;
-    const sendInvoice = fetch(`${started.baseUrl}/invoices`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${fixture.token}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        student_id: fixture.studentId,
-        term_id: fixture.termId,
-        fee_item_ids: [fixture.feeItemIds[0]],
-      }),
-    });
-
     await lockClient.query('BEGIN');
     await lockClient.query('SELECT id FROM fee_items WHERE id=$1 FOR UPDATE', [fixture.feeItemIds[0]]);
 
