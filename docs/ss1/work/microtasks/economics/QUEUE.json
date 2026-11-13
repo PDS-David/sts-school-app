@@ -30,7 +30,8 @@
     "2026-11-06 ECON-LES-T1-W01-WHY-STUDY: lesson SUP-SS1-ECONOMICS-T1-W01-WHY-STUDY authored in economics.json (body SHA-256 57d1e48f9976c6b8b52e330a25dc90f887b146879f8ebee38122672bf7cf6254, 4 practice items / 27 marks) and COV-ECON-T1-W01-WHY-STUDY upgraded PARTIAL -> SUPPORTED with only the lesson id bound. The model answer and its marks are proposals: Week 1 prints no key, so the printed assessment blocks stay UNRESOLVED, the line 95 attribution question stays unanswered, and ECONOMICS-T1-W01-COVERAGE and ECONOMICS-T1-W01-PARSED-ROW-MISSING remain open and blocking respectively non-blocking. Week 1 is not complete.",
     "2026-11-07 ECON-WK-T1-W02: indexed Week Two lines 117-169 of the 1st Term source into 12 coverage entries (5 PARTIAL, 7 UNRESOLVED) and 9 open items (6 blocking), and appended ECON-FACT-T1-W02-TEACHER-DECISIONS (BLOCKED) plus four lesson tasks. Nothing is approved, verified or deliverable; no key exists in the source for any of the 16 questions; the art option, behavioural science, economic rent and the economic units are not taught in the source. Week 2 is not complete.",
     "2026-11-08 ECON-INV-T3 (A3): inventoried the 3rd Term original (legacy .doc; ten labelled weeks WEEK ONE to WEEK TEN, a thirteen-row scheme whose revision and examination rows have no body) and appended 26 items: ECON-PRE-T3, ECON-WK-T3-W01 to W10, ECON-MARK-T3-REVEXAM, ten ECON-VIS-T3-* visual items, ECON-PRES-T3-SOURCE-WORDING, ECON-PRES-T3-CALCULATIONS, ECON-FACT-T3-LAW-AND-DATA and ECON-FACT-T3-CALCULATION-VERIFY. Table, drawing and header-image counts describe a LibreOffice conversion, not the original binary. Nothing is approved, verified or deliverable; no key exists in the source; no lesson, coverage entry, rule, correction or asset was written.",
-    "2026-11-08 ECON-PRE-T1 (A3): classified the 1st Term opening block as scheme-only (rules -R002 title/scheme heading lines 18-24 and -R003 reference list lines 38-41, with MARKER coverage COV-ECON-T1-TITLE and COV-ECON-T1-REFERENCES) and recorded the scheme-to-body mapping; lines 25-36 are twelve lines carrying thirteen week numbers; rows 11 and 12 & 13 remain with ECON-MARK-T1-REVEXAM. Nothing approved, verified or deliverable; no lesson or week coverage written."
+    "2026-11-08 ECON-PRE-T1 (A3): classified the 1st Term opening block as scheme-only (rules -R002 title/scheme heading lines 18-24 and -R003 reference list lines 38-41, with MARKER coverage COV-ECON-T1-TITLE and COV-ECON-T1-REFERENCES) and recorded the scheme-to-body mapping; lines 25-36 are twelve lines carrying thirteen week numbers; rows 11 and 12 & 13 remain with ECON-MARK-T1-REVEXAM. Nothing approved, verified or deliverable; no lesson or week coverage written.",
+    "ECON-TEST-PACKAGE (2026-11-13): added tests/ss1/economics.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; the current authored lesson body hash/objective/practice/marking integrity without fabricating approval or verification; source-rule wrong-hash/ambiguous/missing-anchor guards; coverage reference resolution/status counts; and owner alias gates. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -45,9 +46,9 @@
     "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 10,
-    "PENDING": 75,
-    "BLOCKED": 3
+    "IMPLEMENTED_TESTING_DEFERRED": 11,
+    "BLOCKED": 3,
+    "PENDING": 74
   },
   "items": [
     {
@@ -283,8 +284,8 @@
         "ECON-SRC-T2",
         "ECON-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/economics.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Test file authored 2026-11-13 at tests/ss1/economics.package.test.mts. It parses the current pending package, matches all three source registrations against SOURCE_ASSIGNMENTS.csv (member/hash/term), validates the one existing lesson body hash and marking totals while preserving PENDING content approval and DEFERRED verification, guards the five source rules with wrong-hash/ambiguous/missing-anchor probes, and checks coverage reference resolution/current status counts. Per task contract, tests were written but NOT RUN; package remains PENDING and owner/content/permission gates remain open.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -3365,7 +3366,6 @@
     }
   },
   "next_runnable": [
-    "ECON-TEST-PACKAGE",
     "ECON-WK-T1-W03",
     "ECON-WK-T1-W04",
     "ECON-WK-T1-W05",
