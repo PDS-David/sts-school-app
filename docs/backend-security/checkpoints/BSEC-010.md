@@ -6,7 +6,7 @@
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Working branch:** agent/backend-credential-attempt-locking-20261113
-- **Latest implementation commit:** 093fdc6b3732f8a42028821135bcd45034de8591
+- **Latest branch commit:** 66247c9f03c633cce1f957872c4e76a7808ccdeb
 - **PR:** https://github.com/PDS-David/sts-school-app/pull/731
 - **Changed files:**
   - backend/src/routes/auth.ts
@@ -17,7 +17,7 @@
 - **Defect:** POST /auth/activate and POST /auth/forgot-password/reset read per-account failure counters, verify credentials, then update counters in separate autocommit statements. Concurrent wrong attempts could read the same count and overwrite one another, allowing parallel requests to bypass the five-attempt/hour lockout. Concurrent activation attempts could also race to consume the same one-time activation code.
 - **Implementation:** both flows now select the user row FOR UPDATE inside a PostgreSQL transaction. Failed-attempt increments, lockout timestamps and audit records commit atomically. Activation code consumption and initial password creation are one transaction, so only one request can consume the code. Password reset preserves existing active/expiry/security-question checks and response behavior.
 - **Regression coverage:** PostgreSQL tests cover six simultaneous wrong activation codes, concurrent one-time activation, six simultaneous wrong recovery answers, and successful recovery clearing lockout state.
-- **Verification:** GitHub Actions run 43452524489 passed: locked workspace dependency installation, PostgreSQL 16 schema bootstrap, all four credential lockout/activation regressions, and backend TypeScript typecheck. No production accounts or data were accessed or changed.
+- **Verification:** GitHub Actions run 43452877003 passed: locked dependency installation, PostgreSQL 16 bootstrap, all four credential lockout/activation regressions and backend TypeScript typecheck. Repository-wide JSS3 checks 43452876515 and SS1 package integrity 43452876468 also passed. No production accounts or data were accessed or changed.
 - **Remaining:** confirm repository-wide JSS3 and SS1 gates; PR review/merge. Do not mark the overall backend/security assignment complete.
 - **Exact next action:** inspect current branch head and CI run for Backend credential attempt locking.
 - **Repository hygiene note:** one helper-file creation was accidentally sent to master without its branch argument; the file was immediately removed in commit 3e0f985972ad485f60fe5940c8cee60535e774b6. The helper exists only on this dedicated branch. Verify master no longer contains that path.
