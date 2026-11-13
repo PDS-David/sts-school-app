@@ -102,7 +102,7 @@ async function assertNoUntrackedApplicationSchema(client: PoolClient): Promise<v
   `);
   if (rows[0]) {
     throw new Error(
-      'The public schema contains untracked objects. Refusing clean schema replay or baseline adoption. ' +
+      'An application schema already exists without a migration baseline, or the public schema contains untracked objects. ' +
       'Use --fresh only for a genuinely clean installation, or complete the owner-approved OPS-05 drift review before adopting an existing database.',
     );
   }
