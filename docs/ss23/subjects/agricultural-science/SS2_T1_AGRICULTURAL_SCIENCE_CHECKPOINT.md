@@ -154,3 +154,8 @@ The main blockers are: the scheme assigns Weeks 8-9 but the body has only one We
 - Package status remains PENDING; student routes intentionally serve no lessons until blocking items are resolved and evidence-backed approval/verification is recorded.
 
 **Next exact task:** audit and draft Week 10 (Nutrient Availability), preserving the source's topic boundaries, assessments and figures. Then continue SS2 Agricultural Science Term 2 and Term 3.
+
+
+## Asset integrity test update
+
+A new student-delivery test now verifies the actual byte count and SHA-256 for all five stored authored SVG assets, not only the sedimentation jar. The Weeks 8-9 package and the expanded 25-test suite require a fresh CI run on this branch.
