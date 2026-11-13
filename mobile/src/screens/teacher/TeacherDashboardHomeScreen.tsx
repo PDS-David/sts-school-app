@@ -20,18 +20,22 @@ export default function TeacherDashboardHomeScreen({ navigation }: any) {
   const [studentCount, setStudentCount] = useState<number | null>(null);
   const [overview, setOverview] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
   const [refreshing, setRefreshing] = useState(false);
 
   const load = useCallback(async () => {
+    setLoadError('');
+    const errors: string[] = [];
     try {
-      const [t, o] = await Promise.all([
-        api.get('/academic/terms/current'),
-        api.get('/scores/teacher/overview'),
-      ]);
-      setTerm(t.data.term);
-      setOverview(o.data);
-      setStudentCount(o.data.summary?.student_count ?? 0);
-    } catch { /* offline */ }
+      const { data } = await api.get('/academic/terms/current');
+      setTerm(data.term);
+    } catch { errors.push('term details'); }
+    try {
+      const { data } = await api.get('/scores/teacher/overview');
+      setOverview(data);
+      setStudentCount(data.summary?.student_count ?? 0);
+    } catch { errors.push('marking analytics'); }
+    if (errors.length) setLoadError(`Could not refresh ${errors.join(' and ')}. Pull down or retry to try again.`);
     setLoading(false);
   }, [user?.assigned_class]);
 
@@ -53,6 +57,7 @@ export default function TeacherDashboardHomeScreen({ navigation }: any) {
       />
       <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />}>
         <PageContainer style={{ padding: Spacing.md }}>
+          {!!loadError && <Card style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><TouchableOpacity onPress={() => load()} style={{ marginTop: Spacing.sm }}><Text style={{ color: Colors.primary, fontWeight: '700' }}>Retry dashboard</Text></TouchableOpacity></Card>}
           <Card>
             <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm }}>
               Use Classes, Chats, or More to get started — or Quick Actions in the sidebar for Enter Scores, Attendance, and Students.
