@@ -25,7 +25,7 @@ function resourcePrefix(url: string): string {
 import { emitForcedLogout } from './authEvents';
 import { getSecureItem, setSecureItem, deleteSecureItems, migrateLegacyTokens } from './secureTokenStorage';
 import { resolveApiBaseUrl } from '../../config/apiTarget';
-import { shouldEnqueueOfflineWrite } from '../offline/replayPolicy';
+import { shouldEnqueueOfflineWrite, isAccountSwitchCancellation } from '../offline/replayPolicy';
 import { shouldDiscardOutboxFailure } from '../offline/outboxFailurePolicy';
 import { shouldStopOutboxFlush } from '../offline/outboxFlushPolicy';
 
@@ -130,7 +130,7 @@ api.interceptors.response.use(
   async (error) => {
     // Account-switch cancellations are intentional, not network failures;
     // never turn them into queued writes for the previous session.
-    if (error?.code === 'ERR_CANCELED') return Promise.reject(error);
+    if (isAccountSwitchCancellation(error)) return Promise.reject(error);
     const original = error.config;
     const requestNamespace = (original as any)?._cacheNamespace ?? getCacheNamespace();
     const method = (original?.method ?? 'get').toLowerCase();
