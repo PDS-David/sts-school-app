@@ -2,22 +2,25 @@
 
 - **Task ID:** BSEC-004
 - **Title:** Make bulk attendance writes all-or-nothing
-- **Status:** in_progress
+- **Status:** review
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
 - **Working branch:** agent/backend-attendance-bulk-atomicity-20261113
-- **Last commit:** pending
-- **Files planned:** backend/src/routes/attendance.ts; new attendance persistence helper; PostgreSQL integration tests; focused workflow; this checkpoint.
-- **Defect:** PUT /attendance/bulk validates the full request before writing, but persists each row using separate pool.query calls without a transaction. A database error or concurrent deletion after prevalidation can leave only part of the class attendance batch committed while the request fails.
-- **Scope boundary:** no active PR changes backend/src/routes/attendance.ts or the new persistence helper. PR #698 changes only mobile attendance recovery UI. PR #700 and branch agent/teacher-marking-analytics-20261113 change backend/src/routes/scores.ts; this task does not touch scores.ts.
-- **Acceptance criteria:**
-  1. All bulk attendance upserts use one PostgreSQL transaction/client.
-  2. Any row failure rolls back every write in the batch.
-  3. Successful batches still upsert each row and preserve existing route validation and audit behavior.
-  4. PostgreSQL integration tests prove success and rollback after a later-row FK violation.
-  5. Backend typecheck and focused tests pass; no production database mutation.
-  6. Focused PR targets master.
-- **Verification:** source inspection confirms individual pool.query writes after validation; no transaction encloses the loop. No production data accessed or changed.
-- **Remaining:** implement transaction helper, wire bulk route, add disposable-PostgreSQL tests/workflow, run checks and open PR.
-- **Exact next action:** extract the bulk attendance persistence loop into a transaction-backed helper and add integration coverage.
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/704
+- **Latest implementation commit:** 1bc05e3deab07f078af9068dcb4d6f54190221aa
+- **Checkpoint commit:** pending
+- **Changed files:**
+  - backend/src/routes/attendance.ts
+  - backend/src/utils/attendanceWrites.ts
+  - tests/backend-attendance-bulk.db.test.mts
+  - .github/workflows/backend-attendance-bulk.yml
+  - docs/backend-security/checkpoints/BSEC-004.md
+- **Defect:** PUT /attendance/bulk validated the full request before writing, but persisted each row using separate pool.query calls without a transaction. A database error or concurrent deletion after prevalidation could leave only part of the class attendance batch committed while the request failed.
+- **Implementation:** extracted the persistence loop into saveAttendanceBulk and moved every upsert onto one withTransaction client. Route-level scope checks, value validation, audit behavior and response shape remain unchanged.
+- **Regression coverage:** PostgreSQL integration tests prove successful batch upserts and rollback of the first row when a later row violates the student foreign key.
+- **Commits:** dd70e61e38b299e4e32b57b52181f56292193d95; 8d54edbc853c51d60d9bdb8501ebffb9225d11b1; 504c66283af4d0d7de514e8cddd883af7293e236; 1618cf0c3667cb18b3cccd5f6fefc0a395a6b3b3; 1bc05e3deab07f078af9068dcb4d6f54190221aa.
+- **Verification:** GitHub Actions run https://github.com/PDS-David/sts-school-app/actions/runs/43446008820 completed successfully. Passed: PostgreSQL 16 service initialization, locked dependency installation, disposable database bootstrap, attendance success/rollback integration tests and backend TypeScript typecheck. Branch comparison before PR: 5 commits ahead of master, 0 behind; five changed paths. No production database or data was changed.
+- **Concurrency:** PR #698 changes mobile attendance recovery only. PR #700/#688 changes scores.ts; this PR does not touch it. No active PR changes backend/src/routes/attendance.ts.
+- **Remaining:** PR review/merge. Do not mark the overall backend/security assignment complete.
+- **Exact next action:** review PR #704 and merge only after owner approval; then refresh from master and continue the backend audit.
