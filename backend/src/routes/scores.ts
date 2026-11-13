@@ -24,6 +24,125 @@ const scoreEntrySchema = z.object({
   teacher_remark: z.string().optional(),
 });
 
+// ── GET /scores/teacher/overview — aggregate-only marking and class analytics ──
+// A missing score row represents an unentered subject/term mark. This endpoint
+// returns counts and aggregates only; it never returns student names, answer
+// content, or AI essay marks. It follows the same class-vs-subject boundary as
+// GET /scores and ScoreEntryScreen.
+router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => {
+  const user = req.user!;
+  const schoolCode = user.role === 'admin'
+    ? (typeof req.query.school_code === 'string' ? req.query.school_code : null)
+    : user.school_code;
+  if (!schoolCode) return res.status(400).json({ error: 'school_code is required' });
+
+  const className = user.role === 'teacher'
+    ? user.assigned_class
+    : (typeof req.query.class_name === 'string' ? req.query.class_name : null);
+  const subjectIds = user.role === 'teacher' && !user.assigned_class
+    ? user.assigned_subject_ids
+    : null;
+
+  if (user.role === 'teacher' && !className && (!subjectIds || subjectIds.length === 0)) {
+    return res.json({
+      term: null,
+      summary: { student_count: 0, expected_score_entries: 0, marked_score_entries: 0, pending_score_entries: 0, average_score: null, pass_rate: null, attendance_rate: null, attendance_records: 0, weekly_effort_entries: 0 },
+      subjects: [],
+    });
+  }
+
+  const { rows: terms } = await query(
+    'SELECT id, name, academic_year, days_opened FROM terms WHERE school_code=$1 AND is_current=TRUE LIMIT 1',
+    [schoolCode],
+  );
+  const term = terms[0];
+  if (!term) {
+    return res.json({
+      term: null,
+      summary: { student_count: 0, expected_score_entries: 0, marked_score_entries: 0, pending_score_entries: 0, average_score: null, pass_rate: null, attendance_rate: null, attendance_records: 0, weekly_effort_entries: 0 },
+      subjects: [],
+    });
+  }
+
+  const scopeParams = [schoolCode, className, subjectIds, term.id];
+  const scopeWhere = `st.school_code=$1 AND su.school_code=$1 AND st.deleted_at IS NULL
+    AND ($2::text IS NULL OR st.class_name=$2)
+    AND ($3::int[] IS NULL OR su.id=ANY($3))`;
+
+  const { rows: aggregateRows } = await query(
+    `SELECT COUNT(DISTINCT st.id)::int AS student_count,
+            COUNT(*)::int AS expected_score_entries,
+            COUNT(sc.id)::int AS marked_score_entries,
+            (COUNT(*) - COUNT(sc.id))::int AS pending_score_entries,
+            ROUND(AVG(sc.total), 1) AS average_score,
+            CASE WHEN COUNT(sc.id)=0 THEN NULL
+              ELSE ROUND(COUNT(sc.id) FILTER (WHERE sc.total >= 40) * 100.0 / COUNT(sc.id), 1)
+            END AS pass_rate
+       FROM students st
+       CROSS JOIN subjects su
+       LEFT JOIN scores sc ON sc.student_id=st.id AND sc.subject_id=su.id AND sc.term_id=$4
+      WHERE ${scopeWhere}`,
+    scopeParams,
+  );
+
+  const { rows: subjectRows } = await query(
+    `SELECT su.id AS subject_id, su.name AS subject_name,
+            COUNT(*)::int AS expected_score_entries,
+            COUNT(sc.id)::int AS marked_score_entries,
+            (COUNT(*) - COUNT(sc.id))::int AS pending_score_entries,
+            ROUND(AVG(sc.total), 1) AS average_score
+       FROM students st
+       CROSS JOIN subjects su
+       LEFT JOIN scores sc ON sc.student_id=st.id AND sc.subject_id=su.id AND sc.term_id=$4
+      WHERE ${scopeWhere}
+      GROUP BY su.id, su.name
+      ORDER BY su.name`,
+    scopeParams,
+  );
+
+  // Attendance and weekly-effort aggregates are class-teacher-only. A
+  // subject-only teacher's record scope does not include whole-class registers.
+  let attendanceRate: number | null = null;
+  let attendanceRecords = 0;
+  let weeklyEffortEntries = 0;
+  if (user.role === 'admin' || className) {
+    const classParams = [schoolCode, className, term.id, term.days_opened];
+    const { rows: attendanceRows } = await query(
+      `SELECT COUNT(a.id)::int AS attendance_records,
+              ROUND(AVG(100.0 * a.days_present / NULLIF($4::numeric, 0)), 1) AS attendance_rate
+         FROM attendance a
+         JOIN students st ON st.id=a.student_id
+        WHERE st.school_code=$1 AND st.deleted_at IS NULL
+          AND ($2::text IS NULL OR st.class_name=$2) AND a.term_id=$3`,
+      classParams,
+    );
+    attendanceRate = attendanceRows[0]?.attendance_rate == null ? null : Number(attendanceRows[0].attendance_rate);
+    attendanceRecords = attendanceRows[0]?.attendance_records ?? 0;
+    const { rows: effortRows } = await query(
+      `SELECT COUNT(*)::int AS weekly_effort_entries
+         FROM weekly_efforts we JOIN students st ON st.id=we.student_id
+        WHERE st.school_code=$1 AND st.deleted_at IS NULL
+          AND ($2::text IS NULL OR st.class_name=$2) AND we.term_id=$3`,
+      classParams,
+    );
+    weeklyEffortEntries = effortRows[0]?.weekly_effort_entries ?? 0;
+  }
+
+  const summary = aggregateRows[0] ?? {};
+  return res.json({
+    term,
+    summary: {
+      ...summary,
+      average_score: summary.average_score == null ? null : Number(summary.average_score),
+      pass_rate: summary.pass_rate == null ? null : Number(summary.pass_rate),
+      attendance_rate: attendanceRate,
+      attendance_records: attendanceRecords,
+      weekly_effort_entries: weeklyEffortEntries,
+    },
+    subjects: subjectRows,
+  });
+});
+
 // ── GET /scores?term_id=&class_name=&subject_id=&school_code= ─────────────────
 router.get('/', requirePerm('grades.read'), async (req, res) => {
   const { term_id, class_name, subject_id, student_id, school_code } = req.query as Record<string, string>;
