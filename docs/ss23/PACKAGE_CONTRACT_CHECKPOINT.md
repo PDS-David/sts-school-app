@@ -29,16 +29,17 @@ Base: `master` @ `b8651cebaa480097fd1c40c9b02c11b228187caa`
 
 ## Tests authored
 
-Nine Node tests cover valid SS2/SS3 package shapes and rejection of:
+Ten Node tests cover valid SS2/SS3 package shapes and rejection of:
 - SS3 third-term sources;
 - SS3 normal instructional mode;
 - stale lesson body hashes;
 - marking totals that do not equal the awarded marks;
 - missing answer explanations;
 - mismatched source provenance;
-- superficial lesson bodies.
+- superficial lesson bodies;
+- approval or verification claims without supporting references.
 
-The workflow installs locked dependencies, type-checks the backend and runs the schema tests. Because this workflow is introduced in this PR, it cannot execute on this PR until it is present on the base branch. No successful CI result is claimed yet.
+The workflow installs locked dependencies, type-checks the backend and runs the schema tests. Because this workflow is introduced in this PR, it cannot execute on this PR until it is present on the base branch. Latest package-contract commit: `943d9be62030d9c6c9c821c07ab3ef17b2157e8d`. No successful CI result is claimed yet.
 
 ## Remaining work
 
