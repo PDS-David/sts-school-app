@@ -40,3 +40,17 @@ File: `backend/src/db/ss23/subjects/agricultural-science.json`
 ## Exact next action
 
 Run the schema test and backend typecheck on this branch. Fix every failure. Then implement the SS23 package loader/compiler and class-safe student delivery route, with tests proving that pending content, wrong-class access, missing assets and unresolved blockers cannot be served. Inspect and recover the original figures before requesting subject approval.
+
+
+## Student delivery implementation
+
+The SS23 package loader and fail-closed student delivery service are implemented. Student routes were added in `backend/src/routes/learning.ts`:
+
+- `GET /learning/ss23/lessons` — SS2 instructional lessons only.
+- `GET /learning/ss23/preparation` — SS3 exam-preparation resources only.
+- `GET /learning/ss23/units/:unitId` — class-bound unit access.
+- `GET /learning/ss23/assets/:assetId` — class- and term-bound verified assets.
+
+The server resolves a student's class membership; clients cannot choose a class. Term PIN redemption is checked. Student projections omit model answers, explanations, marking criteria and source provenance. Assets are served only after approval, implementation, verification, permitted reuse and byte/hash checks. The current Agriculture package remains PENDING with seven blockers, so **these routes currently return no Agriculture lesson content**.
+
+GitHub Actions run 43472154140 passed: backend TypeScript typecheck and 24/24 SS23 Node tests. Tests cover package loading, wrong-class access, fail-closed pending packages, answer-key hiding, term/asset gating, path traversal and stale asset hashes.
