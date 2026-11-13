@@ -1,6 +1,6 @@
 # GEO-PRE-T1 — Geography First Term preamble and scheme indexing
 
-Status: IMPLEMENTED_TESTING_DEFERRED. Content approval and verification remain pending/deferred.
+Status: IN_PROGRESS. Content approval remains pending; verification is not complete.
 
 ## Source evidence
 - Source ID: SS1-SRC-1c1c1bdcecb4
@@ -49,3 +49,8 @@ The reference section is lines 39-40. It names Essential Geography for Senior Se
 - Status: IMPLEMENTED_TESTING_DEFERRED
 - Changed files: backend/src/db/ss1/subjects/geography.json, docs/ss1/work/microtasks/geography/QUEUE.json, docs/ss1/work/microtasks/geography/GEO-PRE-T1.md.
 - Next eligible item: GEO-MARK-T1, subject to current-master refresh and branch-ownership check.
+
+## Compiler validation correction
+- PR #693 check run 131950210888 failed in the registered-subject compiler at the scheme-only marker rule: the loader could not match the whole-line anchor "Revision.".
+- The inventory's visible source token remains "Revision." at scheme line 37. The rule now uses the exact visible substring "Revision" with SUBSTRING matching; compiler uniqueness validation is retained. This is not a fabricated approval or a relaxation of uniqueness.
+- Task status is IN_PROGRESS until the compiler workflow is rerun and passes. If it still fails, the rule will remain unverified and be revised from actual source evidence.
