@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import {
   packageSchema,
@@ -218,4 +219,22 @@ test('rejects question-level provenance with a mismatched source hash', () => {
   const invalid: any = structuredClone(ss2Package);
   invalid.units[0].practice[0].provenance[0].source_sha256 = 'd'.repeat(64);
   assert.equal(packageSchema.safeParse(invalid).success, false);
+});
+
+test('loads the SS2 Agricultural Science soil package with source assessment coverage and blocked delivery', () => {
+  const raw = readFileSync(new URL('./subjects/agricultural-science.json', import.meta.url), 'utf8');
+  const pkg = packageSchema.parse(JSON.parse(raw));
+  assert.equal(pkg.class_name, 'SS 2');
+  assert.equal(pkg.package_status, 'PENDING');
+  assert.equal(pkg.units.length, 2);
+  assert.equal(pkg.units[0].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 14);
+  assert.equal(pkg.units[1].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 13);
+  assert.ok(pkg.units.every(unit => unit.practice.every(question => question.answer_origin === 'AUTHORED_SUPPLEMENT')));
+  assert.equal(pkg.sources[0].source_id, 'SS23-SRC-225f920d3751');
+  assert.equal(pkg.assets.length, 6);
+  assert.equal(pkg.assets.filter(asset => asset.path.startsWith('source-extract://')).length, 5);
+  assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/soil-sedimentation-jar.svg' && asset.state.implementation === 'IMPLEMENTED'));
+  assert.ok(pkg.open_items.length >= 5);
+  assert.ok(pkg.open_items.every(item => item.blocks_delivery));
+  assert.ok(pkg.units.every(unit => unit.state.content_approval === 'PENDING'));
 });
