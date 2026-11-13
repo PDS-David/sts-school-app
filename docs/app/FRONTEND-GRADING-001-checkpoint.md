@@ -32,7 +32,7 @@ Worker branch: `agent/frontend-essay-review-clean-20261113`
 
 ## Commits
 - `7e4e640d1ba4874bbe01b1d63cf18c04b868f056` — essay review recovery, score validation and suggestion-save correction.
-- Checkpoint commit: pending.
+- Checkpoint commit: `41782246b567c8fbf230c7bc9b7708d35cffae8d`.
 
 ## Verification
 - Static inspection confirms the review GET failure is no longer interpreted as a valid empty answer list.
