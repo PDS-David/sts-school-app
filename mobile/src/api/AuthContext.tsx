@@ -88,6 +88,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             // rotation or a previous transient registration failure, without
             // prompting for notification permission during app startup.
             registerForPushNotifications({ requestPermission: false }).catch(() => {});
+            flushOutbox().catch(() => {});
           } else {
             await AsyncStorage.removeItem('user');
             setCacheNamespace(null);
@@ -142,6 +143,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await AsyncStorage.setItem('user', JSON.stringify(data.user));
     setCacheNamespace(data.user.id);
     setUser(data.user);
+    // Resume this account's pending work after a successful sign-in, even
+    // when connectivity never emitted a new reconnect event.
+    flushOutbox().catch(() => {});
     setMustChangePw(!!data.must_change_pw);
     setMustSetSecurityQuestion(!!data.must_set_security_question);
     // Best effort, never blocks login — a denied permission or offline
