@@ -36,9 +36,9 @@ Weeks 8-9 are represented as one combined unit because the scheme assigns the Pl
 
 ## Tests and CI evidence
 
-Twenty-four Node tests cover valid SS2/SS3 package shapes, question/answer provenance, the real Agricultural Science draft package, registered-package loading, class separation, answer-key hiding, term/asset gating and file integrity.
+Twenty-five Node tests cover valid SS2/SS3 package shapes, question/answer provenance, the real Agricultural Science draft package, registered-package loading, class separation, answer-key hiding, term/asset gating and file integrity.
 
-GitHub Actions run **43474891512** passed after Weeks 1-7 and the full First Term source-figure inventory were present: backend TypeScript typecheck passed and all 24 SS23 Node tests passed (24 passed, 0 failed). The Weeks 8-9 package extension and corresponding test assertions were added afterward and await a fresh run.
+GitHub Actions run **43474891512** passed after Weeks 1-7 and the full First Term source-figure inventory were present: backend TypeScript typecheck passed and all 24 SS23 Node tests passed (24 passed, 0 failed). The Weeks 8-9 package extension and a new test that verifies the bytes and SHA-256 of all five stored SVG assets were added afterward; the current 25-test suite awaits a fresh run.
 
 ## Remaining work
 
