@@ -3,7 +3,7 @@
 Task ID: SMM-002
 Status: IMPLEMENTED IN BRANCH — awaiting CI/PR review; no runtime verification claimed
 Base: `agent/ops-01-migration-ledger-20261113` at OPS-01 PR #708 head `013f830a654a2cddd2f550fe653e8568dfc97477`
-Branch: `agent/calendar-parent-upcoming-ops01-20261113` (stacked on OPS-01 PR #708)
+Branch: `agent/calendar-parent-upcoming-ops01-v2-20261113` (stacked on OPS-01 PR #708)
 
 ## Scope delivered
 - Added `school_events` to the replayable PostgreSQL schema with school ownership, event type/audience checks, start/end validation, and calendar indexes.
@@ -36,8 +36,10 @@ Branch: `agent/calendar-parent-upcoming-ops01-20261113` (stacked on OPS-01 PR #7
 ## Commits
 - OPS-01 migration-ledger base: `7398f32772edf44827a7a960a51632211bfae30c` (PR #708).
 - Calendar migration: `2f9d9096130ca4c30528a49d6672f4493494bfea`.
-- Latest calendar screen implementation: `028bdde09cb14b03998306ccbc3fbaa5fe92ddb0`.
-- Checkpoint copy: `3c97d0b5f0dc31506dfd59af64c2ba69b658d8dd`.
+- School events migration: `648664f3851f190cd593ee56d2a429419c324bd7`.
+- School events API: `659b9858356f4079ec53e34b6db3141cac5c87b8`.
+- Latest admin calendar screen implementation: `0c6f11858be12755cc1fa5301981b37fca2e667d`.
+- Checkpoint commit: `2cf5fb5665ab807867f8c0482905ebf9fa1af75a`.
 
 ## Verification
 - Static checks: confirmed the learning router applies `requireAuth`; event router applies `requireAuth`; event POST/PUT/DELETE use `requireRole('admin')`; class validation checks the same school's `classes` row; schema table and indexes are present.
