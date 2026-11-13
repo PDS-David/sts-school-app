@@ -87,7 +87,7 @@ async function validateTargetSchema(
   const extra = [...targetNames].filter(name => !backupNames.has(name)).sort();
   if (extra.length) {
     throw new Error(
-      'Target has tables not present in backup (refusing TRUNCATE ... CASCADE): ' + extra.join(', '),
+      'Target has tables not present in backup (refusing destructive restore): ' + extra.join(', '),
     );
   }
 
@@ -165,7 +165,7 @@ export async function restore(p: BackupPayload, opts: { apply: boolean; confirmD
     }
     if (opts.confirmDatabase !== database) throw new Error('--confirm-database must equal the connected database name.');
 
-    await client.query(`TRUNCATE ${order.map(ident).join(', ')} RESTART IDENTITY CASCADE`);
+    await client.query(`TRUNCATE ${order.map(ident).join(', ')} RESTART IDENTITY`);
     for (const name of order) {
       const t = byName.get(name)!;
       if (!t.rows.length) continue;
