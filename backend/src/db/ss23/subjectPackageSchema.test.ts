@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
-// Keep the package loader and student-delivery security tests in this workflow entrypoint.
+// This entrypoint imports studentDelivery.test.ts so the workflow covers package contracts and delivery security together.
 import './studentDelivery.test.js';
 import {
   packageSchema,
