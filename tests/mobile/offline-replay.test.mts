@@ -157,3 +157,18 @@ test('outbox replay stops after an expired session response', () => {
   assert.equal(shouldStopOutboxFlush(409), false);
   assert.equal(shouldStopOutboxFlush(undefined), false);
 });
+
+test('outbox validates queued request records before replay', async () => {
+  const storage = memoryStorage();
+  storage.values.set('offline_outbox:student-a', JSON.stringify([{ id: 'missing-method' }]));
+  const outbox = createOutboxStore<{ id: string }>(
+    storage,
+    () => 'student-a',
+    'offline_outbox:',
+    (value): value is { id: string } => !!value && typeof value === 'object'
+      && typeof (value as { id?: unknown }).id === 'string'
+      && typeof (value as { method?: unknown }).method === 'string',
+  );
+  await assert.rejects(outbox.getAll(), /invalid data/);
+  assert.equal(JSON.parse(storage.values.get('offline_outbox:student-a')!).length, 1);
+});
