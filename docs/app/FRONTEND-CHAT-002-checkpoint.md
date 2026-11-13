@@ -39,7 +39,7 @@ Worker branch: `agent/frontend-chat-recovery-20261113`
 - `079951f86613f76ebe9c11efc07cb8b597b066cb` — add admin message recovery.
 - `a8d131fed074bfe1a3afa2cdfcd3946376eb92ee` — remove obsolete native alert import.
 - `0c546f7449be1e085b96d3b56cf7fad09d7903fc` — tighten admin messaging control states.
-- Checkpoint commit: pending.
+- Checkpoint commit: `3740ed6c6146e803223fe1da607cf4fd9d793ab2`.
 
 ## Verification
 - Static inspection confirms chat history uses the existing conversation endpoint, which marks received messages read server-side as before.
