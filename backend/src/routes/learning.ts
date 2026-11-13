@@ -1174,7 +1174,7 @@ router.get('/parent/upcoming-assessments', requireRole('parent'), async (req, re
        JOIN students st ON st.id=pw.student_id AND st.deleted_at IS NULL
        JOIN assessments a ON a.school_code=st.school_code
          AND (a.class_name IS NULL OR a.class_name=st.class_name)
-       JOIN subjects sub ON sub.id=a.subject_id
+       JOIN subjects sub ON sub.id=a.subject_id AND sub.school_code=a.school_code
       WHERE pw.parent_id=$1
         AND a.status='open'
         AND (a.start_at IS NULL OR a.start_at >= now())
