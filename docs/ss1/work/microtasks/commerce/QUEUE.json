@@ -28,7 +28,8 @@
     "COM-WK-T1-W01 (2026-11-05) indexed 1st Term Week 1 at objective level: 14 coverage entries (7 PARTIAL, 7 UNRESOLVED) and 10 open items in commerce.json, with the COM-FACT-T1-W01-SCOPE decision item and three lesson tasks appended. Week 1 is indexed, not certified: no lesson, no parsed row, no answer key and no approval exists. Source bytes and private extracts stayed outside Git.",
     "COM-VIS-T2-TBL-DOMFOR (2026-11-06): block 138 (Domestic vs Foreign Trade, 4 rows x 2 columns) re-read from the 2nd Term member with its hash verified. The importer's mammoth extractRawText emits its eight cells as consecutive paragraphs, so pairs survive by position only; the smallest repair under the existing schema is an explicit paired-row restatement in a Week 2 supplement (open item COMMERCE-T2-TBL-DOMFOR-REPRESENTATION). The Foreign cells of rows 2 and 3 are universal-sounding claims kept as source claims; follow-up COM-FACT-T2-TBL-DOMFOR-CLAIMS and open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS added. App display not verified; no lesson or coverage created.",
     "COM-FACT-T2-TBL-DOMFOR-CLAIMS (2026-11-06): the two Foreign cells of block 138 were checked against dated authoritative sources. Row 2 (different currencies) is true with exceptions (currency unions such as the euro area and the West African CFA franc; invoicing in a third currency); row 3 (different weights and measures) is not to be taught as written (SI is the internationally agreed, preferred system of world trade; Nigeria's Cap. W3 makes trade within Nigeria exclusively metric from 1 January 1979). Endorsed claim limits are recorded in open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS, which no longer blocks delivery; the paired-row restatement item still does. Nigerian indigenous-measures regulations, later amendments to Cap. W3 and the revocation order were not read and stay open. next_runnable recomputed without deferred TEST tasks (COM-TEST-PACKAGE excluded). No teaching text drafted, nothing approved or verified, app display unchecked.",
-    "COM-INV-T3 (2026-11-13) opened the exact 3rd Term Commerce .doc source from the user-attached composite archive; archive and member hashes verified against SOURCE_ASSIGNMENTS.csv. Source read with antiword 0.37 and privately converted/rendered with LibreOffice 25.2.3.2 for layout inspection. Inventory COM-INV-T3.md records scheme, nine teaching bodies (including combined Weeks 7–8), revision marker, assessment sections, three structured comparison tables and four drawn cheque/bill/promissory-note visual groups. Sample forms contain names, addresses, bank details, dates and amounts; do not reuse without synthetic replacement/redaction. Current institutional/legal claims are flagged for dated primary-source review. 21 bounded follow-up tasks appended: nine week indexes, preamble, revision marker, seven visual dispositions, one sample-data preservation item and two factual dependencies. No package/lesson/coverage/rule/correction/asset/approval changes; no tests/importer/device checks. Testing deferred."
+    "COM-INV-T3 (2026-11-13) opened the exact 3rd Term Commerce .doc source from the user-attached composite archive; archive and member hashes verified against SOURCE_ASSIGNMENTS.csv. Source read with antiword 0.37 and privately converted/rendered with LibreOffice 25.2.3.2 for layout inspection. Inventory COM-INV-T3.md records scheme, nine teaching bodies (including combined Weeks 7–8), revision marker, assessment sections, three structured comparison tables and four drawn cheque/bill/promissory-note visual groups. Sample forms contain names, addresses, bank details, dates and amounts; do not reuse without synthetic replacement/redaction. Current institutional/legal claims are flagged for dated primary-source review. 21 bounded follow-up tasks appended: nine week indexes, preamble, revision marker, seven visual dispositions, one sample-data preservation item and two factual dependencies. No package/lesson/coverage/rule/correction/asset/approval changes; no tests/importer/device checks. Testing deferred.",
+    "COM-TEST-PACKAGE (2026-11-13): added tests/ss1/commerce.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; three PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current partial/unresolved coverage/open-item boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no curriculum content or approval state changed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -43,9 +44,9 @@
     "LESSON": 5
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 10,
-    "PENDING": 58,
-    "BLOCKED": 2
+    "IMPLEMENTED_TESTING_DEFERRED": 11,
+    "BLOCKED": 2,
+    "PENDING": 57
   },
   "items": [
     {
@@ -281,8 +282,8 @@
         "COM-SRC-T2",
         "COM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/commerce.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Test file authored 2026-11-13 at tests/ss1/commerce.package.test.mts. It parses the current pending package, matches all three source registrations against SOURCE_ASSIGNMENTS.csv (member/hash/term), confirms no lessons/corrections/assets or fabricated approval/verification, guards the three source-alias rules with wrong-hash/ambiguous/missing-anchor probes, and checks coverage references/current status counts and owner gates. Per task contract, tests were written but NOT RUN; package remains PENDING and owner/content/permission gates remain open.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -2586,7 +2587,6 @@
     }
   },
   "next_runnable": [
-    "COM-TEST-PACKAGE",
     "COM-PRE-T1",
     "COM-WK-T1-W02",
     "COM-WK-T1-W03",
