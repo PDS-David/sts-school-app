@@ -27,7 +27,9 @@
     "FA-INV-T1 appended the 1st Term inventory items (20) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 20 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten in seven labelled sections, from the document itself (FA-INV-T1.md); no revision or examination section exists, so no marker item was created. The document SHA-256 was verified in this run from the composite archive; nothing was run (tests, typechecks, importer, DB, device).",
     "FA-INV-T2 appended the 2nd Term inventory items (18) and is IMPLEMENTED_TESTING_DEFERRED. Counts reflect items, not content completeness: the new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. The week count is ten in five labelled sections (WEEK ONE, WEEK TWO - THREE, WEEK FOUR, WEEK FIVE – SIX, WEEK SEVEN – TEN), from the document itself (FA-INV-T2.md); there is no revision or examination section, so no marker item was created. The document ends with a questions-1-to-5 prompt whose questions are absent. The document SHA-256 was verified in this run from the supplied 2nd Term zip; the composite archive hash was not checked; nothing was run (tests, typechecks, importer, DB, device).",
     "2026-11-07 FA-WK-T1-W01: indexed Week One lines 65-263 of the 1st Term source into 11 coverage entries (6 PARTIAL, 5 UNRESOLVED) and 8 open items (6 blocking), and appended FA-FACT-T1-W01-TEACHER-DECISIONS (BLOCKED) plus six lesson tasks. Nothing is approved, verified or deliverable; the source prints no key for any of the 12 questions and does not teach the duties of an accountant. Week 1 is not complete.",
-    "2026-11-08 FA-INV-T3: appended the 3rd Term inventory items (18) and set FA-INV-T3 to IMPLEMENTED_TESTING_DEFERRED. All 18 new items are PENDING because no coverage, lesson, disposition, preservation record or factual check has been written. The body has seven week labels covering ten weeks, no table or equation, one header picture (a third-party tutor letterhead, a provenance question for the owner) and no revision or examination marker, so no marker item was added. No answer key is printed for any question. Nothing is approved, verified or deployed."
+    "2026-11-08 FA-INV-T3: appended the 3rd Term inventory items (18) and set FA-INV-T3 to IMPLEMENTED_TESTING_DEFERRED. All 18 new items are PENDING because no coverage, lesson, disposition, preservation record or factual check has been written. The body has seven week labels covering ten weeks, no table or equation, one header picture (a third-party tutor letterhead, a provenance question for the owner) and no revision or examination marker, so no marker item was added. No answer key is printed for any question. Nothing is approved, verified or deployed.",
+    "FA-TEST-PACKAGE (2026-11-13): added tests/ss1/financial-accounting.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; explicit PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current partial/unresolved coverage/open-item boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed.",
+    "FA-PRE-T1 (2026-11-13): verified first-term source member hash and inspected original DOCX paragraphs 15–31. Recorded title, subject/class heading, scheme heading, literal WEEK/TOPIC header with trailing space and all seven scheme rows verbatim in FA-PRE-T1.md. Mixed row numbering/separators preserved; row 1 has no literal number; row 4–5 continues in a following paragraph. No preamble coverage entry or classify_marker rule was added; the scheme is before the first body week and is recorded in FA-PRE-T1.md because scheme rows do not contain body week markers and the body begins at WEEK ONE. Verified no REVISION occurrence and EXAMINATION occurs twice only in prose, not as a section. No scheme row became a lesson."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -41,9 +43,9 @@
     "LESSON": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 7,
-    "PENDING": 62,
-    "BLOCKED": 2
+    "IMPLEMENTED_TESTING_DEFERRED": 9,
+    "BLOCKED": 2,
+    "PENDING": 60
   },
   "items": [
     {
@@ -279,8 +281,8 @@
         "FA-SRC-T2",
         "FA-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/financial-accounting.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Test file authored 2026-11-13 at tests/ss1/financial-accounting.package.test.mts. It parses the current pending package, matches all three registered sources against SOURCE_ASSIGNMENTS.csv (member/hash/term), checks no fabricated approval/verification or student-delivery content, guards the two existing source-alias rules with wrong-hash/ambiguous/missing-anchor probes, and checks current partial/unresolved coverage boundaries and owner gates. Per task contract, tests were written but NOT RUN; package remains PENDING and owner/content gates remain open.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -341,8 +343,8 @@
         "FA-INV-T1",
         "FA-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T1.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Exact source member SHA-256 verified. Original DOCX paragraphs 15–29 inspected; existing Mammoth 1.12.2 locators (title/header/scheme lines 33–61) retained. Recorded title, subject/class header, literal WEEK/TOPIC header including trailing space, seven scheme rows and mixed row separators in FA-PRE-T1.md. No preamble coverage entry or classify_marker rule was added because the scheme rows are outside the body week split. No classify_marker rule was added: scheme rows do not contain body week markers and first teaching body begins at WEEK ONE. Confirmed no REVISION occurrence and two EXAMINATION occurrences are ordinary instructional prose, not exam sections. No lesson or approval invented; tests remain not run.",
       "completion_condition": "The preamble is represented under the existing schema (or explicitly recorded as needing no rule beyond the week split), with the seven scheme rows, their mixed numbering and the trailing-space header preserved verbatim; no lesson is created from a scheme row; no approval or verification is invented."
     },
     {
@@ -2685,8 +2687,6 @@
     }
   },
   "next_runnable": [
-    "FA-TEST-PACKAGE",
-    "FA-PRE-T1",
     "FA-WK-T1-W02",
     "FA-WK-T1-W03",
     "FA-WK-T1-W04-W05",
