@@ -6,7 +6,7 @@
 - Follow-up base: `master` at `b8651cebaa480097fd1c40c9b02c11b228187caa`
 - Latest implementation commit before this checkpoint: `3afd0c18aeb826ba122002d8c8f6adb5fdda9d6e`
 - Core implementation PR [#727](https://github.com/PDS-David/sts-school-app/pull/727) merged on 2026-11-13 (merge commit `2542dd1bc8910b2d7ce53ebf5663ae82c94f86ad`).
-- Follow-up PR [#792](https://github.com/PDS-David/sts-school-app/pull/792) fixes a TypeScript initialization error found by post-merge CI; it is draft and not merged.
+- Follow-up PR [#792](https://github.com/PDS-David/sts-school-app/pull/792) fixes the TypeScript errors found by post-merge CI; it is ready for review and not yet merged.
 - Prior PR #696 was closed as superseded by #727.
 - Ownership/rebase check:
   - Master advanced after the original branch was created. Its changes touched notification context, role dashboards/navigation and curriculum/backend files, but did not overlap the 18 paths carried forward here.
@@ -60,7 +60,7 @@
 ## Follow-up typecheck fixes
 
 - First follow-up CI rerun confirmed the `flushPromise` TS2454 issue was resolved, but exposed a second mobile TypeScript error in the newer `NotificationsScreen.tsx`: the screen passed an unsupported `size="sm"` prop to the shared `Btn` component.
-- Updated the retry button to use the component's supported `style` prop for compact padding. This is included in PR #792; CI for the latest head must confirm the complete typecheck and Android export.
+- Updated the retry button to use the component's supported `style` prop for compact padding. This is included in PR #792; the latest CI run confirms the complete typecheck and Android export.
 
 ## Verification and limitations
 
