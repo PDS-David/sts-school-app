@@ -106,8 +106,8 @@ test('concurrent class-code claims can link one student to only one account', as
   const className = `BSEC8 Claim ${suffix()}`;
   const admissionNumber = admission('CLAIM-RACE');
   const accessCode = `claim-${suffix()}`;
-  const usernames = ['not-used-directly-a', 'not-used-directly-b'];
   let studentId: string | undefined;
+  let claimedUsername: string | undefined;
   let accessCodeId: number | undefined;
 
   try {
@@ -135,6 +135,7 @@ test('concurrent class-code claims can link one student to only one account', as
 
     assert.equal(results.filter(result => result.kind === 'claimed').length, 1);
     assert.equal(results.filter(result => result.kind === 'student_not_found').length, 1);
+    claimedUsername = results.find((result): result is Extract<typeof result, { kind: 'claimed' }> => result.kind === 'claimed')?.username;
 
     const { rows: linked } = await query('SELECT user_id FROM students WHERE id=$1', [studentId]);
     assert.ok(linked[0].user_id);
@@ -145,6 +146,7 @@ test('concurrent class-code claims can link one student to only one account', as
     assert.equal(accounts.length, 1);
     assert.equal(accounts[0].id, linked[0].user_id);
   } finally {
+    if (claimedUsername) await query('DELETE FROM users WHERE username=$1', [claimedUsername]);
     if (studentId) await query('DELETE FROM students WHERE id=$1', [studentId]);
     if (accessCodeId) await query('DELETE FROM class_access_codes WHERE id=$1', [accessCodeId]);
   }
