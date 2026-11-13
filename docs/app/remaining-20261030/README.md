@@ -16,6 +16,34 @@ It is **not** an approval, a test result, a queue status change, or a claim that
 
 Counts are implementation counts. They are not content completeness, curriculum approval or test evidence.
 
+## Current implementation status — 13 November 2026
+
+The table above is the historical 30 October snapshot, not a live status board. Subsequent repository work has completed or is actively delivering several of those tasks:
+
+| Task | Current status | Evidence / PR |
+|---|---|---|
+| SEC-01, SEC-03, SEC-04, SEC-05 | Implemented on current master | `scores.ts` report scoping; `students.ts` promotion scope; `NotificationsContext.tsx` student-only assessment feed; `admin.ts` + `AdminUsersScreen.tsx` blank-to-null normalization |
+| ASM-03, ASM-04 | Implemented on current master | `learning.ts` transaction boundaries and shared `PENDING_REVIEW_SQL`/pending counts |
+| DATA-01, DATA-04 | Implemented on current master | `finance.ts` invoice transaction; `schema.sql` + `utils/push.ts` durable push-delivery records |
+| OPS-02 | Implemented on current master | `db/pool.ts` certificate validation defaults, optional CA and explicit warned escape hatch |
+| Teacher marking overview / analytics | Implemented on current master | `GET /scores/teacher/overview`, teacher dashboard and analytics screen; SMM-003 checkpoint |
+| OPS-01 | Open, PostgreSQL integration tests passing | PR #737; verify run `43453221768` |
+| Calendar, school events, parent upcoming tests | Open, stacked on OPS-01 | PR #740; SMM-002 checkpoint |
+| Student badges and achievements | Open, stacked on calendar | PR #743; SMM-004 checkpoint |
+| Admin announcement authoring | Open, stacked on achievements | PR #744; SMM-005 checkpoint |
+| PRD-01 announcements | Existing read API/notification feed on master; admin authoring UI in PR #744 | SMM-001 and SMM-005 checkpoints |
+
+Do not reassign already implemented tasks. Current CI/device verification gaps are recorded in each checkpoint; code presence is not device acceptance.
+
+### Still open or gated
+
+- **DATA-02** offline replay idempotency — not yet implemented; depends on OPS-01.
+- **VER-01 / VER-02** repeatable test harness and manual CI coverage — still open.
+- **ASM-01 / ASM-02, SEC-02, DATA-03, OPS-03, OPS-04, PRD-02** remain gated by the owner decisions D1, D2, D4, D5, D6, D7 or D9 respectively. Do not invent approvals or policy choices.
+- **OPS-05, VER-03, VER-04, JSS3-01, JSS3-02** remain gated by owner credentials, testing/device access or source/approval evidence.
+
+Merge the current feature stack in dependency order: **#737 → #740 → #743 → #744**. The PR branches intentionally carry their prerequisite commits so each can be verified as a complete tree; after each merge the next PR's remaining diff narrows to its own feature.
+
 ## How to use
 
 1. Read `PROTOCOL.md` once. It overrides every prompt on safety.
