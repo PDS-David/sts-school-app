@@ -29,7 +29,7 @@ Branch: `agent/student-achievements-master-merged-ops-20261113`
 
 ## Verification
 - Static review confirms student-only access, identity-derived student lookup and exclusion of provisional AI essay grades.
-- Combined CI, threshold/API tests and device acceptance are pending.
+- Mobile TypeScript passed in run `43457559359`. The cumulative JSS3/static suite and package integrity gate failed on an unrelated stale Financial Accounting lesson hash in `backend/src/db/ss1/subjects/financial-accounting.json`, a file outside this feature and under another agent's active work. Do not modify it here. Threshold/API tests and device acceptance remain outstanding.
 
 ## Remaining
 - Add threshold-boundary and student-only API tests.
