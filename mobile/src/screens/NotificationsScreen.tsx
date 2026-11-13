@@ -32,7 +32,7 @@ export default function NotificationsScreen({ navigation }: any) {
         ListHeaderComponent={feedErrors.length > 0 ? (
           <View style={styles.errorBanner}>
             <Text style={styles.errorText}>Some notification sources could not be refreshed: {feedErrors.join(', ')}.</Text>
-            <Btn label="Retry notifications" variant="outline" onPress={refresh} />
+            <Btn label="Retry notifications" variant="outline" size="sm" onPress={refresh} />
           </View>
         ) : null}
         ListEmptyComponent={loading ? <Loader /> : feedErrors.length > 0 ? (
