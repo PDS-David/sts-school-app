@@ -36,7 +36,7 @@ Worker branch: `agent/frontend-student-enrollment-recovery-20261113`
 ## Commits
 - `1ded2b2305fed0e584fca773e4c46ee81815e1f2` — enrollment form recovery and validation.
 - `ac3a3f1da6a82b2ecee7e8b246c1a5cf948c2fde` — require live account provisioning responses.
-- Checkpoint commit: pending.
+- Checkpoint commit: `428235e72fb4eb62ae87b023c90dd112487c26b1`.
 
 ## Verification
 - Static inspection confirms class list is scoped to selected school and stale class selections are cleared on school changes.
