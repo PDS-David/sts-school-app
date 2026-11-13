@@ -29,7 +29,7 @@ Base: `master` @ `b8651cebaa480097fd1c40c9b02c11b228187caa`
 
 ## Tests authored
 
-Ten Node tests cover valid SS2/SS3 package shapes and rejection of:
+Twelve Node tests cover valid SS2/SS3 package shapes and rejection of:
 - SS3 third-term sources;
 - SS3 normal instructional mode;
 - stale lesson body hashes;
