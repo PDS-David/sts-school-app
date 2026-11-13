@@ -19,7 +19,7 @@ export function createOutboxStore<T extends { id: string }>(
   isValidItem?: (value: unknown) => value is T,
 ) {
   const serializeMutation = createSerialQueue();
-  const keyForCurrentNamespace = () => `${prefix}${getNamespace()}`;
+  const keyForCurrentNamespace = (namespace = getNamespace()) => `${prefix}${namespace}`;
 
   async function read(key: string): Promise<T[]> {
     const raw = await storage.getItem(key);
@@ -36,12 +36,12 @@ export function createOutboxStore<T extends { id: string }>(
   }
 
   return {
-    getAll(): Promise<T[]> {
-      const key = keyForCurrentNamespace();
+    getAll(namespace?: string): Promise<T[]> {
+      const key = keyForCurrentNamespace(namespace);
       return read(key);
     },
-    enqueue(item: T): Promise<T> {
-      const key = keyForCurrentNamespace();
+    enqueue(item: T, namespace?: string): Promise<T> {
+      const key = keyForCurrentNamespace(namespace);
       return serializeMutation(async () => {
         const items = await read(key);
         items.push(item);
@@ -49,15 +49,15 @@ export function createOutboxStore<T extends { id: string }>(
         return item;
       });
     },
-    remove(id: string): Promise<void> {
-      const key = keyForCurrentNamespace();
+    remove(id: string, namespace?: string): Promise<void> {
+      const key = keyForCurrentNamespace(namespace);
       return serializeMutation(async () => {
         const items = await read(key);
         await write(key, items.filter((item) => item.id !== id));
       });
     },
-    async count(): Promise<number> {
-      return (await read(keyForCurrentNamespace())).length;
+    async count(namespace?: string): Promise<number> {
+      return (await read(keyForCurrentNamespace(namespace))).length;
     },
   };
 }
