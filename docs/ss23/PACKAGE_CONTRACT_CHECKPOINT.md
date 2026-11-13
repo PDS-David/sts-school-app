@@ -9,7 +9,7 @@ Base: `master`
 
 **PACKAGE CONTRACT, LOADER AND FAIL-CLOSED DELIVERY IMPLEMENTED. SS2 AGRICULTURAL SCIENCE FIRST TERM WEEKS 1-9 DRAFTED; CURRICULUM APPROVAL AND FINAL VALIDATION PENDING.**
 
-The package is structurally validated in CI for the earlier Weeks 1-7 state. The Weeks 8-9 extension is on this branch and requires a fresh CI run. No SS2 or SS3 lesson package is certified for student release by this work. All SS2 Agriculture units and assets remain pending approval; the student routes intentionally serve no lesson content until blockers and evidence-backed approvals are resolved.
+The Weeks 1-9 package is structurally validated in CI. GitHub Actions run 43476440171 passed the backend TypeScript typecheck and all 25 SS23 Node tests. No SS2 or SS3 lesson package is certified for student release by this work. All SS2 Agriculture units and assets remain pending approval; the student routes intentionally serve no lesson content until blockers and evidence-backed approvals are resolved.
 
 ## Current SS2 Agricultural Science First Term scope
 
@@ -36,9 +36,9 @@ Weeks 8-9 are represented as one combined unit because the scheme assigns the Pl
 
 ## Tests and CI evidence
 
-Twenty-five Node tests cover valid SS2/SS3 package shapes, question/answer provenance, the real Agricultural Science draft package, registered-package loading, class separation, answer-key hiding, term/asset gating and file integrity.
+Twenty-five Node tests cover valid SS2/SS3 package shapes, question/answer provenance, the real Agricultural Science draft package, registered-package loading, class separation, answer-key hiding, term/asset gating and file integrity, including byte-count and SHA-256 checks for all five stored SVG assets.
 
-GitHub Actions run **43474891512** passed after Weeks 1-7 and the full First Term source-figure inventory were present: backend TypeScript typecheck passed and all 24 SS23 Node tests passed (24 passed, 0 failed). The Weeks 8-9 package extension and a new test that verifies the bytes and SHA-256 of all five stored SVG assets were added afterward; the current 25-test suite awaits a fresh run.
+GitHub Actions run **43476440171** passed after the Weeks 8-9 package extension: backend TypeScript typecheck passed and all 25 SS23 Node tests passed (25 passed, 0 failed). The suite includes byte-count and SHA-256 checks for all five stored SVG assets.
 
 ## Remaining work
 
