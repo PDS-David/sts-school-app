@@ -1320,6 +1320,36 @@
         "DP-LES-T3-W01-WORD-PROCESSING"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-SCHEME-MAP",
+      "kind": "VERIFICATION",
+      "detail": "The 1st Term opening block (lines 1-81; SHA-256 07f34cdccb656a70155d2a989ffc5a737c39292a710d37021c16e7e6307c1d54) contains source identity, scheme and references, not a teaching week. Scheme-to-body map: row 1 Introduction to Data Processing (49) → Week One 87-281 (836f73d0570e28df4dca685d5e34818d0de10e41ee72d8226e422ace997b6567); row 2 History of Computing (51) → Week Two 287-429 (c5d048b437c13cff6b205906da399d2bed18f01bc0cadc0503d8fc346ac5366b), which also adds NUMBER SYSTEM (REVISION) at 379-392; row 3 History of Computer I. (53) → Week Three 435-581 (23f33f0dfe418f06a5570aa13bc045679fcc1dab8de099cd55d87f70dd832c65), whose actual topic is GENERATIONS OF COMPUTERS, absent from the scheme; row 4 History of Computer II. (55) → Week Four 585-725 (210e0a92f9873777c7b9ffe98c3ca60de11c8e6b05a89344fd7c1b4fa35440cd); row 5 Classification of Computer by Types (57) → Week Five 729-827 (83265555dcb256a4cd41958b45dd22a1618be77da7fc2b6384229abf0ead1a54); row 6 Classification of Computers by Size (59) → Week Six 833-955 (f5baab600d56c2f882b56fe1ba4cc979b80be57cf0379e0080e371b1c27dc020); row 7 Digitalization of Data I. (61) → Week Seven 961-1193 (217a893e0cb0aa5333726149e6d6a1d02bf70bff44646d49aa5b0813cda519fc), which adds early counting devices and the information-age table; row 8 Digitalization of Data II. (63) → Week Eight 1197-1455 (ee64f1ac95194f79236dd14b516909f92668b6b3987ddf26bf7f246b31912685), which covers components, hardware, software and peopleware; row 9 ICT Application in Everyday Life (65) → Week Nine 1459-1607 (7c54fd0952ff030b07ba5ee999adb19c57fc586ff569525d6fb5579b893fe89b); row 10 Data and Information (67) → Week Ten 1613-1771 (e581a7b51abd74f527a8f2b59a11cf64fc385346bf20a586dddf01cf946b3901). Scheme rows 3 and 4 both say History of Computer although their bodies differ. Rows 11 Revision (69) and 12 Examination (71) have no body and are reserved for DP-MARK-T1-REVEXAM. Existing scheme coverage for rows 1 and 2 is retained; no coverage or lesson is created from scheme headings.",
+      "required_action": "Keep this as scheme-to-body evidence only. Let each week-indexing task determine objective-level support from its actual body; do not convert scheme labels into coverage or lessons. Keep rows 11-12 with DP-MARK-T1-REVEXAM.",
+      "affected_ids": [
+        "DP-PRE-T1",
+        "DP-WK-T1-W03",
+        "DP-WK-T1-W04",
+        "DP-WK-T1-W05",
+        "DP-WK-T1-W06",
+        "DP-WK-T1-W07",
+        "DP-WK-T1-W08",
+        "DP-WK-T1-W09",
+        "DP-WK-T1-W10",
+        "DP-MARK-T1-REVEXAM"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "DATA-PROCESSING-T1-REFERENCE-LIST",
+      "kind": "PERMISSION",
+      "detail": "The 1st Term Data Processing source lists three references in the opening block: 'Data Processing forSenior Secondary Education by Hiit Plc.' (line 77); 'A Handbook on Computer Studies by NiyiAdekolegan.' (line 79); and 'On-line Materials.' (line 81). The first title is printed without a space between 'for' and 'Senior'; the second author's name is printed without a space between 'Niyi' and 'Adekolegan'. The source provides no edition, publication year, page range or URL for these entries. These are bibliographic statements in the school source only; none of the books or online materials was supplied or consulted, and no reuse permission is inferred.",
+      "required_action": "Before a lesson relies on or reproduces any of these external materials, identify the exact edition/URL, verify access and reuse rights, and record the actual provenance. Do not infer textbook content, page references or permissions from this list.",
+      "affected_ids": [
+        "DP-PRE-T1",
+        "SS1-SRC-a92792eaa7ef"
+      ],
+      "blocks_delivery": false
     }
   ]
 }
