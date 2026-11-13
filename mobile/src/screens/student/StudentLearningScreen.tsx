@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../api/client';
-import { Card, Loader } from '../../components/UI';
+import { Card, Loader, Empty, Btn } from '../../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
 import { openNotifications } from '../../navigation/navigationRef';
@@ -16,15 +16,31 @@ const SHORTCUTS: { icon: keyof typeof Ionicons.glyphMap; label: string; typeFilt
 export default function StudentLearningScreen({ navigation }: any) {
   const [subjects, setSubjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [retry, setRetry] = useState(0);
 
   useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    setLoadError('');
     api.get('/academic/subjects')
-      .then(({ data }) => setSubjects(data.subjects ?? []))
-      .catch(() => {})
-      .finally(() => setLoading(false));
-  }, []);
+      .then(({ data }) => { if (!cancelled) setSubjects(data.subjects ?? []); })
+      .catch(() => { if (!cancelled) setLoadError('Could not load your subjects. Check your connection and try again.'); })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
+  }, [retry]);
 
   if (loading) return <Loader />;
+
+  if (loadError) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background }}>
+      <AppHeader title="Learning" onPressBell={() => openNotifications()} />
+      <View style={{ flex: 1, justifyContent: 'center', padding: Spacing.md }}>
+        <Empty message={loadError} />
+        <Btn label="Retry loading subjects" variant="outline" onPress={() => { setLoading(true); setRetry(v => v + 1); }} />
+      </View>
+    </View>
+  );
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
