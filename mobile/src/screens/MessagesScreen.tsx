@@ -98,24 +98,41 @@ export default function MessagesScreen() {
   const sendMessage = async () => {
     if (!body.trim() || !activeContact || sending || threadLoading || !!threadError) return;
     const outgoing = body.trim();
+    const recipientId = activeContact.id;
+    const conversationRequest = threadRequestRef.current;
     setSending(true);
     setSendError('');
     try {
-      const { data } = await api.post('/messages', { recipient_id: activeContact.id, body: outgoing });
-      setBody('');
+      const { data } = await api.post('/messages', { recipient_id: recipientId, body: outgoing });
+      // A user may navigate to another conversation while this request is
+      // in flight. Never clear that conversation's draft or append the
+      // previous recipient's message to its thread.
+      const stillOnConversation = threadRequestRef.current === conversationRequest && activeContact?.id === recipientId;
+      if (stillOnConversation) setBody(current => current === outgoing ? '' : current);
       // Append directly instead of re-fetching: works the same whether the
-      // message actually reached the server or was queued offline (in which
-      // case `data.message.pending` is true and it'll sync automatically).
+      // message reached the server or was queued offline (pending=true).
       if (data?.message) {
-        setThread(prev => [...prev, data.message]);
-        const convoUrl = `/messages/conversation/${activeContact.id}`;
-        const cached = await cacheGet(convoUrl);
-        const prevMessages = (cached?.data as any)?.messages ?? [];
-        await cacheSet(convoUrl, { messages: [...prevMessages, data.message] });
+        if (stillOnConversation) {
+          setThread(prev => [...prev, data.message]);
+          setTimeout(() => flatRef.current?.scrollToEnd({ animated: true }), 100);
+        }
+        // Cache persistence is best-effort after the API has accepted/queued
+        // the message. A cache write failure must not tell the user the send
+        // failed or encourage a duplicate message.
+        try {
+          const convoUrl = `/messages/conversation/${recipientId}`;
+          const cached = await cacheGet(convoUrl);
+          const prevMessages = (cached?.data as any)?.messages ?? [];
+          await cacheSet(convoUrl, { messages: [...prevMessages, data.message] });
+        } catch {
+          // The server/outbox result is authoritative; the conversation can
+          // be fetched again when the user next opens it.
+        }
       }
-      setTimeout(() => flatRef.current?.scrollToEnd({ animated: true }), 100);
     } catch (e: any) {
-      setSendError(e?.response?.data?.error ?? 'Could not send message. Your draft is still here; retry when connected.');
+      if (threadRequestRef.current === conversationRequest && activeContact?.id === recipientId) {
+        setSendError(e?.response?.data?.error ?? 'Could not send message. Your draft is still here; retry when connected.');
+      }
     } finally { setSending(false); }
   };
 
