@@ -14,6 +14,7 @@ export default function StudentProfileScreen({ navigation }: any) {
     { icon: 'bar-chart-outline', label: 'Progress', sub: 'Your results across terms', onPress: () => navigation.getParent()?.navigate('AssessmentsTab', { screen: 'MyResults' }) },
     { icon: 'calendar-outline', label: 'Attendance', sub: 'Days opened & present — inside your Results', onPress: () => navigation.getParent()?.navigate('AssessmentsTab', { screen: 'MyResults' }) },
     { icon: 'settings-outline', label: 'Settings', sub: 'Change password and preferences', onPress: () => navigation.navigate('ChangePassword') },
+    { icon: 'calendar-outline', label: 'School Calendar', sub: 'View school events and important dates', onPress: () => navigation.navigate('SchoolCalendar') },
     { icon: 'help-circle-outline', label: 'Security Question', sub: 'Used to reset your password if you forget it', onPress: () => navigation.navigate('SecurityQuestionSetup') },
   ];
 
