@@ -37,6 +37,22 @@ Each exported topic was compared with the canonical Word document selected by su
 
 - 227 of 248 records have at least 95% token-presence coverage.
 - 21 records fall below 95%. Manual inspection found that these records do contain lesson-level source text; the lower token ratio is caused by comparing an individual lesson block with a larger multi-topic document or outline. Two short teaching notes within this group were strengthened by the Roman Numerals and English My Family corrections. The 21 records are not treated as 21 missing topics.
+
+The 21 lower-ratio records are:
+
+| Export IDs | Subject | Manual source disposition |
+|---|---|---|
+| 262 | Civic Education | Full 571-word topic note is present in the export. |
+| 234–237 | Computer Studies | Four lesson blocks contain objectives, teaching content and evaluation; retained as source-backed lessons. |
+| 294, 296, 297 | English Language | Reading, grammar, speech-work and composition source content is present; retained. |
+| 299 | English Language | Short composition/structure block expanded by the approved archive correction. |
+| 444 | Home Economics | Full permanent-stitches lesson note is present; retained. |
+| 311 | Mathematics | Original Roman Numerals note was a compact table and objectives; expanded into a complete lesson with symbol values, reading/writing rules, worked examples and evaluation. |
+| 319, 320, 322, 323 | Physical & Health Education | Four lesson blocks contain substantive teaching notes and evaluation; retained. |
+| 245–247, 249–251 | Social Studies | Six lesson blocks contain substantive content and evaluation; retained. |
+
+The manual review therefore treats this metric as a document-to-topic ratio warning, not evidence that those 21 topic records were absent. The two compact English/Mathematics cases in this group have explicit corrections.
+
 - The source-length audit flagged 45 records: 22 `HIGH_SHORT_SOURCE` and 23 `SHORT_SOURCE_REVIEW`.
 - All 45 length-flagged rows now have an explicit disposition: 32 are replaced with expanded lesson notes and 13 are suppressed as superseded outline/merged rows. Three additional superseded rows are also hidden, giving 16 hidden IDs total.
 - Length flags are triage indicators, not a lesson-quality verdict. The coverage tests assert that no length-flagged row is left without a correction or an explicit suppression.
