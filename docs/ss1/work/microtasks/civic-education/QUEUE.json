@@ -31,7 +31,8 @@
     "CIV-WK-T1-W02 (2026-11-07) indexed 1st Term Week 2 (mammoth lines 173-210, digest 1dfa4413154b91e1dd63f78e9fede595bea987f5ec3c638d17d9737688377915) from the verified member: definition 177-179, TYPES OF VALUE 181-197 (seven-item list), SELFLESSNESS 199, JUSTICE 201 and the Assignment 205-209, all 17 non-blank lines assigned. Six coverage rows (PARTIAL x4, UNRESOLVED x2) and one blocking CONTENT open item were written to civic-education.json, which stays PENDING; no lesson, rule, correction, asset or answer was authored. Lines 199 and 201 were reported as stopping mid-sentence in the task brief but end with a full stop; nothing was completed. The Assignment has no answer or marks in the source. One bounded follow-up, CIV-LES-T1-W02-VALUES-TYPES, was added. Nothing was run; testing deferred by owner.",
     "CIV-INV-T3 (2026-11-13) opened the exact 3rd Term Civic Education DOCX from the user-attached composite archive; archive/member hashes verified against SOURCE_ASSIGNMENTS.csv. Header confirms Civic Education (source alias spelling CIVICS EDUCATION; alias approval remains open). Inventory CIV-INV-T3.md records the scheme, five combined body blocks, assessment boundaries, week-label mismatches, source-quality/factual flags and zero visual assets. DOCX inspected with python-docx 1.2.0 using 1-based Word body paragraph locators; block digests are paragraph-text digests, not Mammoth digests or DOCX hashes. No lesson/package/coverage/rule/correction/asset/approval changes and no tests/importer/device checks. 12 bounded follow-up tasks appended: five body indexes, scheme index, scheme-gap and revision/exam disposition, preservation/neutrality and three factual dependency audits. Testing deferred.",
     "CIV-TEST-PACKAGE (2026-11-13): added tests/ss1/civic-education.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; current authored lesson body hash/objectives/practice/marking integrity without fabricated approval or verification; three PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and coverage reference/status boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed.",
-    "CIV-PRE-T3 (2026-11-13): verified source hash; inspected ordinary-paragraph scheme at original DOCX paragraphs 2–38 and body markers. Scheme/body mapping: Week1 revision (no body); Weeks2–3 Cultism → WEEKS 2 and 3 p42; Weeks4–5 Law and Order → WEEKS 4 & 5 p149; Week6 Constituted Authority → WEEK 6 p244; Week7 Employment/Unemployment → WEEKS 7 & 8 p306; Weeks8–9 Capitalist Democracy → WEEK 9 p368; Week10 revision (no body); Weeks11–12 examination/closing (no body). Added eight source-bound WHOLE_LINE SCHEME_ONLY classify_marker rules and one MARKER coverage entry referencing all eight. No scheme row was converted into a lesson."
+    "CIV-PRE-T3 (2026-11-13): verified source hash; inspected ordinary-paragraph scheme at original DOCX paragraphs 2–38 and body markers. Scheme/body mapping: Week1 revision (no body); Weeks2–3 Cultism → WEEKS 2 and 3 p42; Weeks4–5 Law and Order → WEEKS 4 & 5 p149; Week6 Constituted Authority → WEEK 6 p244; Week7 Employment/Unemployment → WEEKS 7 & 8 p306; Weeks8–9 Capitalist Democracy → WEEK 9 p368; Week10 revision (no body); Weeks11–12 examination/closing (no body). Added eight source-bound WHOLE_LINE SCHEME_ONLY classify_marker rules and one MARKER coverage entry referencing all eight. No scheme row was converted into a lesson.",
+    "CIV-PRE-T1 (2026-11-13): verified exact member SHA-256; inspected the original Word table as 13 rows × 2 columns. Recorded header plus all twelve scheme rows verbatim in CIV-PRE-T1.md, preserving EXCETATION, defrend, Capentry and 12–13 (en dash). Scheme rows 1–8 map to actual body WEEK ONE through WEEK EIGHT; scheme rows 9–13 (Weeks 9,10,11 and 12–13 Revision/Examination) have no corresponding body marker. The document contains exactly eight body week markers. No package coverage, rule, lesson, correction or answer was changed, in accordance with task scope."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -46,9 +47,9 @@
     "LESSON": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 11,
+    "IMPLEMENTED_TESTING_DEFERRED": 12,
     "BLOCKED": 1,
-    "PENDING": 43
+    "PENDING": 42
   },
   "items": [
     {
@@ -624,8 +625,8 @@
         "CIV-INV-T1",
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-13. Verified source member SHA-256 and inspected original DOCX structure directly: 13-row × 2-column Word table; preserved all row labels and wording, including EXCETATION, defrend, Capentry and 12–13 en dash. Recorded scheme/body mapping: rows 1–8 map to body WEEK ONE through WEEK EIGHT; rows 9–13 have no separate body marker. The body has exactly eight week markers. No lesson, coverage, rule, correction or answer was added, as this task explicitly prohibits those changes. Mammoth raw-text digest/line locators retained from existing task evidence; no tests/importer/device runs.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -1981,7 +1982,6 @@
     "CIV-WK-T1-W06",
     "CIV-WK-T1-W07",
     "CIV-WK-T1-W08",
-    "CIV-PRE-T1",
     "CIV-MARK-T1-SCHEME-GAPS",
     "CIV-MARK-T1-REVEXAM",
     "CIV-VIS-T1-TBL-SCHEME",
