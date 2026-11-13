@@ -105,3 +105,51 @@ Refresh the latest open PR list and Actions run/job results. Fetch current #708 
 - Latest known #708 integrity gate #43450585649 passed, but its JSS3/static acceptance run #43450584916 was still queued. Earlier static/focused regressions failed on an earlier head; current-head success has not been demonstrated.
 - PR #717 contains the corrected queue URL validator and regression tests. The first follow-up CI run failed because of an escaping typo; the second correction is at `6e555135d6a478c7c4c9fc07b800a4a03953cb82`, and its workflow #43450997964 was pending with no jobs reported at the last poll. PR #683 remains blocked until this follow-up is green and its own workflow reruns successfully.
 - PR #714's checkpoint branch is now exactly based on current master `af406a3e73f811ec27f02ba3b7e19b51873664bc`, 3 commits ahead and 0 behind; the checkpoint is fetched back and the PR is mergeable. Its current-head workflow evidence still needs a fresh check.
+
+---
+
+## Continuation update — 2026-11-13 17:07 UTC
+
+This section supersedes earlier PR-state snapshots above. It records subsequent integration work without deleting the historical evidence.
+
+### Previously owned integration deliverables
+
+- This checkpoint was merged through PR #714 on 2026-11-13 at 15:27 UTC.
+- The durable work-queue HTTPS URL validator fix and regression tests were merged through PR #717 at 16:06 UTC.
+- The work-orchestrator implementation PR #683 was merged at 16:05 UTC after the URL validator defect was corrected in #717.
+- The diagnostic dependency audit PR #707 was merged at 15:27 UTC. It is an audit workflow, not proof that all vulnerabilities were remediated.
+- The first migration/calendar PRs #708 and #710 were closed as superseded, not merged. Their replacements were integrated in the correct order: migration ledger PR #737 merged at 15:52 UTC, then calendar/events PR #764 merged. #737's disposable PostgreSQL migration suite passed 3 integration tests, and its JSS3 verify run #43453221768 passed. #764's combined run #43455081897 passed backend/mobile TypeScript, static regressions, PostgreSQL schema replay and migration-ledger tests. No production DB was touched.
+- Achievements PR #766 and announcement authoring PR #768 were also merged. Their prior PRs #743/#744 were superseded rather than merged.
+- Android core implementation PR #727 was merged. Follow-up PR #792 was closed as superseded after its verified mobile implementation and checkpoint were carried onto the current CI-repair branch through PR #803.
+
+### Current CI repair integration
+
+- PR #788 remains OPEN and is the current master CI repair unit. Its original CI identified two independent problems: stale Financial Accounting Week 3 body hash and Geography coverage COV-GEO-T1-SCHEME-3 incorrectly listing a source BODY locator as a parsed lesson ID.
+- Child PR #798 was reviewed and merged into the #788 branch at commit `420e82e6d1ab71a5ca07888fbc0f65a3ff12f093`. It removed only the invalid `lesson_ids` entry; the coverage remains `UNRESOLVED`, and exact source locator/hash evidence remains in `objective_locator`/evidence. It does not fabricate a lesson or claim teaching coverage.
+- Android follow-up PR #803 was merged into the #788 branch at `2e3d126239e288f1fff00970b2f9d50eb6f73aa9`. It carries the safer outbox flush-promise cleanup, supported notification retry styling and the updated Android checkpoint from #792.
+- On the combined #788 head `2e3d126239e288f1fff00970b2f9d50eb6f73aa9`, the latest run set was still in progress at the last poll: package integrity, cross-subject compiler, JSS3/PostgreSQL acceptance, mobile TypeScript and Android readiness were queued/running. Earlier #788 head `420e82e` passed package integrity, mobile TypeScript, Android readiness, Agricultural Science, Catering Craft and all-subject compiler checks; the current head must pass its own reruns before #788 can merge.
+- PR #792 is closed as superseded by #803/#788. PR #803 is merged into the #788 branch, not directly into master.
+
+### Updated production / release assessment
+
+- Current master includes a dedicated versioned migration ledger and migration 0002 for school events. These are code/test integration results, not evidence that the production DB has adopted the ledger or applied migration 0002.
+- The API exposes only a basic root `GET /` response (`status: ok`, app name and static version). No dedicated liveness/readiness route was found, and the root response does not test database connectivity. Attempts to open the configured Render API root and `/health` endpoint from the available web environment were inaccessible; this is not proof of service outage or health.
+- The configured client API origin remains `https://sts-school-backend.onrender.com`. No provider-side Render access, live database status, service environment, deployment event or secret inventory is available through this repository connection.
+- The historical Free Postgres expiry on 2026-10-04 remains confirmed. The 2026-11-12 database creation date in `REBUILD_DATABASE.md` is an example schedule, not a verified current resource. The replacement's plan, creation date, availability and backup configuration remain UNKNOWN.
+- OPS-05 remains BLOCKED on owner credentials/approval. No current production dump, checksum, provider snapshot, disposable restore rehearsal or drift result has been evidenced. Free Render Postgres has no provider backups; the runbook requires weekly off-provider `pg_dump` and a restore rehearsal until paid automatic backups are verified.
+- The workflow inventory has grown substantially and includes mobile Android readiness, backend regression, migration and curriculum validation workflows. It still contains no general backend production deployment workflow, no `render.yaml`, Dockerfile or Procfile. `build-french-mobile-release.yml` is a mobile build workflow, not a backend deployment workflow.
+- `mobile/eas.json` defines an Android production App Bundle profile. CI has exported an Android JavaScript bundle and passed offline replay tests/TypeScript on verified heads, but no signed APK/AAB, EAS production build, emulator install/upgrade, physical-device test, or store submission is evidenced.
+- Dependency audit output in current mobile CI reported 16 findings (2 low, 10 moderate, 4 high) on the source Android branch. The earlier diagnostic audit PR #707 reported 40 findings on its own historical dependency snapshot. A current, post-integration audit/remediation result is still required.
+
+### Current blockers and exact next actions
+
+1. Refresh PR #788's current-head checks for `2e3d126239e288f1fff00970b2f9d50eb6f73aa9`. Require all required checks to complete successfully; investigate any new failure and rerun. Merge #788 only after its current-head checks pass.
+2. Once #788 is merged, verify master contains the Android promise cleanup, supported retry styling, financial-accounting body hash and Geography unresolved coverage correction. Close any superseded duplicate branches/PRs only after confirming their changes are included.
+3. Add a non-sensitive DB readiness health endpoint or equivalent documented probe, then configure/verify the provider health check with owner approval. Do not call the static root response database health.
+4. Obtain owner-authorised Render evidence for the current DB plan, creation date, availability and backup policy. If still Free, calculate the real expiry from the dashboard's actual creation date and upgrade before the deadline.
+5. Execute OPS-05 only after explicit owner approval: read-only drift check, current backup, checksum, disposable restore rehearsal and private evidence record. Never commit connection strings, dump files or student data.
+6. Establish the real backend deployment mechanism and a documented rollback procedure. Do not create a production deploy workflow that guesses provider settings or secrets.
+7. Complete a signed EAS production AAB build and install/upgrade tests on supported Android devices; verify API connectivity, login, offline replay, push/notification behaviour and role-scoped flows.
+8. Run a fresh dependency audit against the exact post-merge lockfiles and remediate exploitable vulnerabilities without suppressing audit failures.
+
+**Current task status:** code-level integration is active; production release remains BLOCKED. The next worker must start with the current #788 check runs on the exact head SHA above, not the historical runs.
