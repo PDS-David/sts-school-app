@@ -91,8 +91,17 @@ api.interceptors.request.use(async (config) => {
   if ((config as any)._cacheNamespace === undefined) {
     (config as any)._cacheNamespace = getCacheNamespace();
   }
+  const requestNamespace = (config as any)._cacheNamespace as string;
   await tokenMigration;
+  // Never attach whichever account's token happens to be in SecureStore now
+  // to a request that was created under a different signed-in account.
+  if (requestNamespace !== getCacheNamespace()) {
+    throw new axios.CanceledError('Session changed before request could be sent');
+  }
   const token = await getSecureItem('access_token');
+  if (requestNamespace !== getCacheNamespace()) {
+    throw new axios.CanceledError('Session changed before request could be sent');
+  }
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
@@ -119,6 +128,9 @@ api.interceptors.response.use(
     return res;
   },
   async (error) => {
+    // Account-switch cancellations are intentional, not network failures;
+    // never turn them into queued writes for the previous session.
+    if (error?.code === 'ERR_CANCELED') return Promise.reject(error);
     const original = error.config;
     const requestNamespace = (original as any)?._cacheNamespace ?? getCacheNamespace();
     const method = (original?.method ?? 'get').toLowerCase();
