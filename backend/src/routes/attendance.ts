@@ -92,9 +92,9 @@ router.get('/', requirePerm('attendance.read'), async (req, res) => {
      FROM attendance a
      JOIN students s ON s.id = a.student_id
      WHERE s.class_name = $1 AND a.term_id = $2
-       AND s.deleted_at IS NULL
+       AND ($4::boolean OR s.deleted_at IS NULL)
        AND ($3::text IS NULL OR s.school_code = $3)`,
-    [effectiveClass, parsedTermId, user.school_code ?? null],
+    [effectiveClass, parsedTermId, user.school_code ?? null, user.role === 'admin'],
   );
   return res.json({ attendance: rows });
 });
@@ -201,10 +201,10 @@ router.get('/class-records', requirePerm('classRecord.read'), async (req, res) =
      FROM class_records cr
      JOIN students s ON s.id = cr.student_id
      WHERE s.class_name = $1 AND cr.term_id = $2
-       AND s.deleted_at IS NULL
+       AND ($4::boolean OR s.deleted_at IS NULL)
        AND ($3::text IS NULL OR s.school_code = $3)
      ORDER BY s.full_name`,
-    [effectiveClass, parsedTermId, user.school_code ?? null],
+    [effectiveClass, parsedTermId, user.school_code ?? null, user.role === 'admin'],
   );
   return res.json({ class_records: rows });
 });
