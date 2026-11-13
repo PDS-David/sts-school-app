@@ -34,7 +34,7 @@ Worker branch: `agent/frontend-finance-feedback-20261113`
 ## Commits
 - `17680209a4e14da9a6ae4b9bdd9d564f522b92f4` — add visible finance loading/payment feedback and amount validation.
 - `fdb99977966ba228e2044eb6c38f2737eab9a07e` — clear stale load error when retrying.
-- Checkpoint commit: pending.
+- Checkpoint created in commit `71416b888d2bb09da57dee35c396a5d10064eb0f`.
 
 ## Verification
 - Static inspection: the new load retry calls the same existing scoped fetch routine; no API path or role boundary changed.
@@ -49,4 +49,4 @@ Worker branch: `agent/frontend-finance-feedback-20261113`
 - Verify parent read-only invoices and ward switching on real parent accounts.
 
 ## Exact next action
-Refresh current `master` and compare the branch before opening a focused PR. Then continue the wider frontend audit with a separate role journey; preserve finance_admin-only write access and parent ward scoping.
+Open a focused PR after the verified comparison against current `master` (base `982c1d2d94e9bfbbb890d027c620b8a16e7f3f26`; branch 3 commits ahead, 0 behind). Then continue the wider frontend audit with a separate role journey; preserve finance_admin-only write access and parent ward scoping.
