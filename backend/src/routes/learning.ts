@@ -1620,6 +1620,18 @@ router.get('/assessments/:id/questions', async (req, res) => {
   const assessment = aRows[0];
   if (!assessment) return res.status(404).json({ error: 'Assessment not found' });
 
+  if (user.role !== 'admin') {
+    const { rows: validReferences } = await query(
+      `SELECT 1 FROM subjects s
+        WHERE s.id=$1 AND s.school_code=$2
+          AND ($3::int IS NULL OR EXISTS (
+            SELECT 1 FROM terms t WHERE t.id=$3 AND t.school_code=$2
+          ))`,
+      [assessment.subject_id, assessment.school_code, assessment.term_id],
+    );
+    if (!validReferences[0]) return res.status(404).json({ error: 'Assessment not found' });
+  }
+
   if (user.role === 'student') {
     const { rows: stRows } = await query(
       'SELECT school_code, class_name FROM students WHERE user_id=$1', [user.id],
