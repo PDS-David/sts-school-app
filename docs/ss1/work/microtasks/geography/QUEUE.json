@@ -37,8 +37,9 @@
     "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 10,
+    "IMPLEMENTED_TESTING_DEFERRED": 9,
     "BLOCKED": 2,
+    "IN_PROGRESS": 1,
     "PENDING": 39
   },
   "items": [
@@ -338,8 +339,8 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Implemented on agent/geography using GEO-INV-T1's verified member/archive hashes and exact getBody locators. Added source identity coverage for lines 18-19; mapped all ten scheme rows to ordered WEEK body labels and exact block hashes without treating headings as teaching; recorded row 11 as MARKER and added the source-bound WHOLE_LINE SCHEME_ONLY rule for the unique 'Revision.' anchor; mapped the bibliography entry at lines 39-40 as UNRESOLVED pending verification of the cited book/pages. Existing Week One objective coverage and open items remain unchanged. No lesson, content approval or verification invented. See GEO-PRE-T1.md.",
+      "status": "IN_PROGRESS",
+      "implementation_reference": "Initial PR #693 compiler workflow found the source-bound marker anchor did not match the loader's extracted text as a whole line ('Revision.'; check run 131950210888). The rule is being corrected to bind the exact visible, unique substring 'Revision' with SUBSTRING matching; uniqueness remains enforced by compiler.once. Task remains IN_PROGRESS until the registered-subject compiler workflow passes. See GEO-PRE-T1.md.",
       "completion_condition": "Every non-week block is hash-accounted and either mapped to coverage with an exact locator or recorded as a precise open item; scheme rows are bound to body weeks by order where numerals are absent; no teaching, lesson or invented scheme row is written."
     },
     {
