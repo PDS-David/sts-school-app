@@ -185,6 +185,12 @@ function validateReferences(pkg: {
 }, ctx: z.RefinementCtx) {
   const original = new Map(pkg.sources.map(source => [source.source_id, source]));
   const all = new Map<string, { sha256: string; class_name: string; term: string; canonical_subject: string }>();
+  const allSourceIds = [...pkg.sources.map(source => source.source_id), ...pkg.external_sources.map(source => source.source_id)];
+  if (new Set(allSourceIds).size !== allSourceIds.length) issue('Duplicate source IDs', ['sources']);
+  for (const source of [...pkg.sources, ...pkg.external_sources]) {
+    if (source.canonical_subject !== pkg.canonical_subject) issue('Source canonical subject does not match package', ['sources', source.source_id]);
+    if (source.source_id.startsWith('SS23-SRC-') && source.source_id !== `SS23-SRC-${source.sha256.slice(0, 12)}`) issue('Original source ID is not derived from its SHA-256', ['sources', source.source_id]);
+  }
   for (const source of pkg.sources) all.set(source.source_id, source);
   for (const source of pkg.external_sources) all.set(source.source_id, source);
   const issue = (message: string, path: (string | number)[]) =>
@@ -196,6 +202,9 @@ function validateReferences(pkg: {
   }
   const unitIds = new Set(pkg.units.map(unit => unit.id));
   if (unitIds.size !== pkg.units.length) issue('Duplicate unit IDs', ['units']);
+  if (new Set(pkg.source_rules.map(rule => rule.id)).size !== pkg.source_rules.length) issue('Duplicate source-rule IDs', ['source_rules']);
+  if (new Set(pkg.coverage.map(row => row.id)).size !== pkg.coverage.length) issue('Duplicate coverage IDs', ['coverage']);
+  if (new Set(pkg.assets.map(asset => asset.id)).size !== pkg.assets.length) issue('Duplicate asset IDs', ['assets']);
   for (const [index, unit] of pkg.units.entries()) {
     if (unit.subject !== pkg.canonical_subject) issue('Unit subject does not match package subject', ['units', index, 'subject']);
     if (sha256(unit.body) !== unit.body_sha256) issue('Unit body hash mismatch', ['units', index, 'body_sha256']);
@@ -213,6 +222,10 @@ function validateReferences(pkg: {
     if (!unitIds.has(asset.unit_id)) issue('Asset references an unknown unit', ['assets', index, 'unit_id']);
     const source = all.get(asset.provenance.source_id);
     if (!source || source.sha256 !== asset.provenance.source_sha256) issue('Asset provenance source/hash is missing or mismatched', ['assets', index, 'provenance']);
+    const unit = pkg.units.find(candidate => candidate.id === asset.unit_id);
+    if (source && unit && (source.class_name !== unit.class_name || source.term !== unit.term)) issue('Asset provenance class/term does not match its unit', ['assets', index, 'provenance']);
+    if (asset.provenance.role === 'ORIGINAL_SOURCE' && !asset.provenance.source_id.startsWith('SS23-SRC-')) issue('Original asset provenance must reference SS23-SRC', ['assets', index, 'provenance', 'role']);
+    if (asset.provenance.role === 'AUTHORED_SUPPLEMENT' && !asset.provenance.source_id.startsWith('SS23-EXT-')) issue('Supplementary asset provenance must reference SS23-EXT', ['assets', index, 'provenance', 'role']);
   }
   for (const [index, row] of pkg.coverage.entries()) {
     if (!all.has(row.source_id)) issue('Coverage references an unknown source', ['coverage', index, 'source_id']);
