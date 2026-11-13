@@ -143,47 +143,47 @@ test('learning content writes and reads reject cross-school subject, term and qu
     materialIds.push(validMaterialPayload.material.id);
 
     const wrongSubjectQuestionResponse = await post('/questions', {
-      subject_id: subjectIds[2], term_id: termIds[0], class_name: 'Primary 4',
+      school_code: 'primary', subject_id: subjectIds[2], term_id: termIds[0], class_name: 'Primary 4',
       type: 'mcq', stem: 'Foreign subject question', options: [], correct_keys: ['A'], marks: 1,
-    });
+    }, admin.token);
     assert.equal(wrongSubjectQuestionResponse.status, 400);
 
     const wrongTermQuestionResponse = await post('/questions', {
-      subject_id: subjectIds[0], term_id: termIds[1], class_name: 'Primary 4',
+      school_code: 'primary', subject_id: subjectIds[0], term_id: termIds[1], class_name: 'Primary 4',
       type: 'mcq', stem: 'Foreign term question', options: [], correct_keys: ['A'], marks: 1,
-    });
+    }, admin.token);
     assert.equal(wrongTermQuestionResponse.status, 400);
 
     const validQuestion = await post('/questions', {
-      subject_id: subjectIds[0], term_id: termIds[0], class_name: 'Primary 4',
+      school_code: 'primary', subject_id: subjectIds[0], term_id: termIds[0], class_name: 'Primary 4',
       type: 'mcq', stem: 'Valid new question', options: [], correct_keys: ['A'], marks: 1,
-    });
+    }, admin.token);
     assert.equal(validQuestion.status, 201);
     const validQuestionPayload = await validQuestion.json() as { question: { id: number } };
     questionIds.push(validQuestionPayload.question.id);
 
     const foreignSchoolQuestionAssessment = await post('/assessments', {
-      subject_id: subjectIds[0], term_id: termIds[0], class_name: 'Primary 4',
+      school_code: 'primary', subject_id: subjectIds[0], term_id: termIds[0], class_name: 'Primary 4',
       title: 'Foreign school question', question_ids: [{ id: questionIds[2], points: 1 }],
-    });
+    }, admin.token);
     assert.equal(foreignSchoolQuestionAssessment.status, 400);
 
     const wrongSubjectQuestionAssessment = await post('/assessments', {
-      subject_id: subjectIds[0], term_id: termIds[0], class_name: 'Primary 4',
+      school_code: 'primary', subject_id: subjectIds[0], term_id: termIds[0], class_name: 'Primary 4',
       title: 'Wrong subject question', question_ids: [{ id: questionIds[1], points: 1 }],
-    });
+    }, admin.token);
     assert.equal(wrongSubjectQuestionAssessment.status, 400);
 
     const wrongTermQuestionAssessment = await post('/assessments', {
-      subject_id: subjectIds[0], term_id: termIds[0], class_name: 'Primary 4',
+      school_code: 'primary', subject_id: subjectIds[0], term_id: termIds[0], class_name: 'Primary 4',
       title: 'Wrong term question', question_ids: [{ id: questionIds[3], points: 1 }],
-    });
+    }, admin.token);
     assert.equal(wrongTermQuestionAssessment.status, 400);
 
     const validAssessment = await post('/assessments', {
-      subject_id: subjectIds[0], term_id: termIds[0], class_name: 'Primary 4',
+      school_code: 'primary', subject_id: subjectIds[0], term_id: termIds[0], class_name: 'Primary 4',
       title: 'Valid assessment', question_ids: [{ id: questionIds[0], points: 3 }],
-    });
+    }, admin.token);
     assert.equal(validAssessment.status, 201);
     const validAssessmentPayload = await validAssessment.json() as { assessment: { id: string; total_marks: number } };
     assessmentIds.push(validAssessmentPayload.assessment.id);
