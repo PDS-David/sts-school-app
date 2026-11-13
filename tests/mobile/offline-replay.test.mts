@@ -4,6 +4,7 @@ import { shouldEnqueueOfflineWrite } from '../../mobile/src/offline/replayPolicy
 import { createSerialQueue } from '../../mobile/src/offline/serialQueue.ts';
 import { createOutboxStore } from '../../mobile/src/offline/outboxStore.ts';
 import { isRestorableUser } from '../../mobile/src/api/authSession.ts';
+import { shouldDiscardOutboxFailure } from '../../mobile/src/offline/outboxFailurePolicy.ts';
 
 test('normal failed writes remain eligible for offline queueing', () => {
   assert.equal(shouldEnqueueOfflineWrite({}), true);
@@ -103,4 +104,18 @@ test('persisted session accepts only known roles and a non-empty user ID', () =>
   assert.equal(isRestorableUser({ id: 'user-7', role: 'student' }), false);
   assert.equal(isRestorableUser(null), false);
   assert.equal(isRestorableUser('not-json-object'), false);
+});
+
+test('outbox retains writes rejected by authentication, permissions or conflicts', () => {
+  assert.equal(shouldDiscardOutboxFailure(401), false);
+  assert.equal(shouldDiscardOutboxFailure(403), false);
+  assert.equal(shouldDiscardOutboxFailure(409), false);
+});
+
+test('outbox discards permanent invalid-request failures only', () => {
+  assert.equal(shouldDiscardOutboxFailure(400), true);
+  assert.equal(shouldDiscardOutboxFailure(404), true);
+  assert.equal(shouldDiscardOutboxFailure(422), true);
+  assert.equal(shouldDiscardOutboxFailure(undefined), false);
+  assert.equal(shouldDiscardOutboxFailure(500), false);
 });
