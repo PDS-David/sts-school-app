@@ -108,7 +108,22 @@ export interface QueuedRequest {
   createdAt: number;
 }
 
-const outbox = createOutboxStore<QueuedRequest>(AsyncStorage, () => namespace);
+function isQueuedRequest(value: unknown): value is QueuedRequest {
+  if (!value || typeof value !== 'object') return false;
+  const item = value as Record<string, unknown>;
+  return typeof item.id === 'string'
+    && item.id.length > 0
+    && ['post', 'put', 'patch', 'delete'].includes(item.method as string)
+    && typeof item.url === 'string'
+    && typeof item.createdAt === 'number';
+}
+
+const outbox = createOutboxStore<QueuedRequest>(
+  AsyncStorage,
+  () => namespace,
+  'offline_outbox:',
+  isQueuedRequest,
+);
 
 export function getOutbox(): Promise<QueuedRequest[]> {
   return outbox.getAll();
