@@ -5,6 +5,7 @@ import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { audit } from '../utils/audit.js';
 import { checkTeacherDeleteScope, checkTeacherRosterScope } from '../utils/scope.js';
+import { resolveStudentRosterScope } from '../utils/studentRosterScope.js';
 import { createStudentWithParent } from '../utils/parentProvisioning.js';
 
 const router = Router();
@@ -15,11 +16,13 @@ router.get('/', requirePerm('students.read'), async (req, res) => {
   const { school_code, class_name, search } = req.query as Record<string, string>;
   const user = req.user!;
 
-  // Scope: teachers see their own class; admin sees all. finance_admin also
-  // has school_code=NULL and needs to pick a student when creating an
-  // invoice, so it gets the same explicit-school-code override as admin.
-  const effectiveSchool = (user.role === 'admin' || user.role === 'finance_admin') ? (school_code ?? user.school_code) : user.school_code;
-  const effectiveClass  = user.role === 'teacher' ? (user.assigned_class ?? class_name) : class_name;
+  // Resolve role-specific roster scope before constructing SQL. Finance
+  // administrators must explicitly select a campus; teachers can never widen
+  // their school/class scope with query parameters.
+  const scope = resolveStudentRosterScope(user, { school_code, class_name });
+  if ('error' in scope) return res.status(scope.status).json({ error: scope.error });
+  const effectiveSchool = scope.schoolCode;
+  const effectiveClass = scope.className;
 
   // A teacher who is a class teacher (assigned_class set) is always pinned
   // to their own class above, same as before — a hybrid teacher (also has
