@@ -26,6 +26,7 @@ import { emitForcedLogout } from './authEvents';
 import { getSecureItem, setSecureItem, deleteSecureItems, migrateLegacyTokens } from './secureTokenStorage';
 import { resolveApiBaseUrl } from '../../config/apiTarget';
 import { shouldEnqueueOfflineWrite } from '../offline/replayPolicy';
+import { shouldDiscardOutboxFailure } from '../offline/outboxFailurePolicy';
 
 // Kicked off once at module load (not awaited here) and awaited lazily by
 // the request interceptor below, so the very first request — and every
@@ -301,9 +302,10 @@ export function flushOutbox(): Promise<{ synced: number; failed: number; remaini
           synced++;
         } catch (e: any) {
           const status = e?.response?.status;
-          if (status && status >= 400 && status < 500) {
-            // Permanently invalid request (bad data, forbidden, etc.) — drop it,
-            // retrying won't help.
+          if (shouldDiscardOutboxFailure(status)) {
+            // Invalid payload/resource errors cannot succeed unchanged. Keep
+            // 401/403/409 items: they may need re-authentication, restored
+            // permissions or conflict resolution, and must not be silently lost.
             await removeFromOutbox(item.id);
             failed++;
           }
