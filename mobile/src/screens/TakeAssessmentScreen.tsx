@@ -28,6 +28,7 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
   const [submitted,  setSubmitted]  = useState(false);
   const [result,     setResult]     = useState<any>(null);
   const [current,    setCurrent]    = useState(0);
+  const [questionRetry, setQuestionRetry] = useState(0);
 
   // Previously a student could reopen an assessment they'd already
   // submitted and silently overwrite their (possibly AI-graded) prior
@@ -37,22 +38,35 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
   // "Retake" button below rather than the default path. The backend's
   // resubmission support (upsert on submissions) is unchanged/still used —
   // this only changes what the student sees before that happens.
-  const [reviewMode,    setReviewMode]    = useState(!!alreadySubmitted && !!submissionId);
-  const [reviewLoading, setReviewLoading] = useState(!!alreadySubmitted && !!submissionId);
+  const [reviewMode,    setReviewMode]    = useState(!!alreadySubmitted);
+  const [reviewLoading, setReviewLoading] = useState(!!alreadySubmitted);
   const [reviewData,    setReviewData]    = useState<any>(null);
+  const [reviewError,   setReviewError]   = useState('');
+  const [reviewRetry,   setReviewRetry]   = useState(0);
 
   useEffect(() => {
-    if (!alreadySubmitted || !submissionId) return;
+    if (!alreadySubmitted) return;
+    let cancelled = false;
+    setReviewLoading(true);
+    setReviewError('');
+    if (!submissionId) {
+      setReviewError('Your previous submission was detected, but its review reference is unavailable. Your existing attempt has been preserved. Return to Assessments or contact your teacher.');
+      setReviewLoading(false);
+      return;
+    }
     api.get(`/learning/submissions/${submissionId}/answers`)
-      .then(({ data }) => { setReviewData(data); setReviewLoading(false); })
-      .catch(() => {
-        // Fall back to a normal fresh attempt rather than stranding the
-        // student on a broken review screen — e.g. if the submission was
-        // somehow removed between the list load and opening this screen.
-        setReviewMode(false);
+      .then(({ data }) => {
+        if (cancelled) return;
+        setReviewData(data);
+        setReviewLoading(false);
+      })
+      .catch((e: any) => {
+        if (cancelled) return;
+        setReviewError(e?.response?.data?.error ?? 'Could not load your previous submission. Retry the review; your existing attempt has not been changed.');
         setReviewLoading(false);
       });
-  }, [alreadySubmitted, submissionId]);
+    return () => { cancelled = true; };
+  }, [alreadySubmitted, submissionId, reviewRetry]);
 
   useEffect(() => {
     // Found in QA Pass 6: this used to call the unrelated, unscoped
