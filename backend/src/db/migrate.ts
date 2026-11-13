@@ -177,12 +177,18 @@ async function applyFresh(client: PoolClient, migrations: Migration[]): Promise<
 
   const schema = readFileSync(SCHEMA_PATH, 'utf8');
   console.log('Applying complete schema.sql for a fresh installation…');
-  await client.query(schema);
-
-  const appliedAfterSchema = await getApplied(client);
-  assertAppliedChecksums(migrations, appliedAfterSchema);
-  if (!appliedAfterSchema.some(row => row.version === '0001')) {
-    throw new Error('schema.sql did not stamp the immutable 0001 baseline migration.');
+  await client.query('BEGIN');
+  try {
+    await client.query(schema);
+    const appliedAfterSchema = await getApplied(client);
+    assertAppliedChecksums(migrations, appliedAfterSchema);
+    if (!appliedAfterSchema.some(row => row.version === '0001')) {
+      throw new Error('schema.sql did not stamp the immutable 0001 baseline migration.');
+    }
+    await client.query('COMMIT');
+  } catch (error) {
+    await client.query('ROLLBACK');
+    throw new Error('Fresh schema replay failed; transaction rolled back.', { cause: error });
   }
   console.log('Fresh schema applied and baseline migration stamped.');
 }
