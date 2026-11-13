@@ -62,7 +62,7 @@ test('approved Primary 4 package refresh updates only exact researched rows and 
   const result = await refreshPrimary4PackageRows(query, 'primary', planned);
   assert.deepEqual(result, { refreshedCount: 2, closedAssessmentCount: 1 });
   assert.equal(captured.length, 1);
-  assert.match(captured[0].sql, /t\\.source_file LIKE 'P4-RESEARCHED-%'/);
+  assert.ok(captured[0].sql.includes("t.source_file LIKE 'P4-RESEARCHED-%'"));
   assert.match(captured[0].sql, /content_fingerprint='__PRIMARY4_WITHDRAWN__:'/);
   assert.match(captured[0].sql, /summary=NULL/);
   assert.match(captured[0].sql, /generated_assessment_id=NULL/);
