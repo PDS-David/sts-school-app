@@ -48,27 +48,58 @@ test('Every package source matches exactly one manifest assignment by ID, member
   }
 });
 
-test('Existing Civic Education lesson hash and marking are valid without fabricated approval', () => {
+test('Every Civic Education lesson has a valid body hash, complete marking and separate approval/verification state', () => {
   const p = packageSchema.parse(raw);
-  assert.equal(p.lessons.length, 1);
-  const lesson = p.lessons[0];
-  assert.equal(lesson.id, 'SUP-SS1-CIVIC-EDUCATION-T1-W01-MEANING');
-  assert.equal(hash(lesson.body), lesson.body_sha256);
-  assert.equal(lesson.subject, 'Civic Education');
-  assert.equal(lesson.class_name, 'SS 1');
-  assert.equal(lesson.term, '1st Term');
-  assert(lesson.objectives.length > 0);
-  assert(lesson.practice.length > 0);
-  for (const question of lesson.practice) {
-    assert(question.answer.trim().length > 0);
-    assert.equal(question.marks, question.marking.reduce((sum, mark) => sum + mark.marks, 0), question.id);
-    assert(question.marking.every(mark => mark.criterion.trim() && mark.marks > 0), question.id);
+  assert.deepEqual(
+    p.lessons.map(lesson => lesson.id).sort(),
+    [
+      'SUP-SS1-CIVIC-EDUCATION-T1-W01-MEANING',
+      'SUP-SS1-CIVIC-EDUCATION-T1-W02-VALUES-TYPES',
+    ].sort(),
+  );
+  for (const lesson of p.lessons) {
+    assert.equal(hash(lesson.body), lesson.body_sha256, lesson.id);
+    assert.equal(lesson.subject, 'Civic Education');
+    assert.equal(lesson.class_name, 'SS 1');
+    assert(lesson.objectives.length > 0, lesson.id);
+    assert(lesson.practice.length > 0, lesson.id);
+    for (const question of lesson.practice) {
+      assert(question.answer.trim().length > 0, question.id);
+      assert.equal(question.marks, question.marking.reduce((sum, mark) => sum + mark.marks, 0), question.id);
+      assert(question.marking.every(mark => mark.criterion.trim() && mark.marks > 0), question.id);
+    }
+    assert.equal(lesson.state.content_approval, 'PENDING', lesson.id);
+    assert.equal(lesson.state.approval_reference, null, lesson.id);
+    assert.equal(lesson.state.implementation, 'IMPLEMENTED', lesson.id);
+    assert.equal(lesson.state.verification, 'DEFERRED', lesson.id);
+    assert.equal(lesson.state.verification_reference, null, lesson.id);
   }
-  assert.equal(lesson.state.content_approval, 'PENDING');
-  assert.equal(lesson.state.approval_reference, null);
-  assert.equal(lesson.state.implementation, 'IMPLEMENTED');
-  assert.equal(lesson.state.verification, 'DEFERRED');
-  assert.equal(lesson.state.verification_reference, null);
+  assert.equal(p.package_status, 'PENDING');
+});
+
+test('T1 Week 2 values supplement covers only the five body-listed values and keys the four-value assignment', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(entry => entry.id === 'SUP-SS1-CIVIC-EDUCATION-T1-W02-VALUES-TYPES');
+  assert(lesson);
+  for (const value of ['HARD WORK', 'DISCIPLINE', 'LOVE', 'CONTENTMENT', 'INTEGRITY']) {
+    assert(lesson.body.includes(value), `missing lesson section: ${value}`);
+  }
+  assert.equal(lesson.practice.length, 4);
+  const discussion = lesson.practice.find(question => question.id === 'C1W2-Q4');
+  assert(discussion);
+  assert.equal(discussion.marks, 16);
+  assert.equal(discussion.marking.reduce((sum, mark) => sum + mark.marks, 0), 16);
+  assert(lesson.body.includes('recorded as scheme-only'));
+  const valuesCoverage = p.coverage.find(entry => entry.id === 'COV-CIV-T1-W02-TYPES-UNDEFINED');
+  const assignmentCoverage = p.coverage.find(entry => entry.id === 'COV-CIV-T1-W02-ASSIGNMENT');
+  assert.equal(valuesCoverage?.status, 'IMPLEMENTED_EQUIVALENT');
+  assert(valuesCoverage?.lesson_ids.includes(lesson.id));
+  assert.equal(assignmentCoverage?.status, 'IMPLEMENTED_EQUIVALENT');
+  assert(assignmentCoverage?.lesson_ids.includes(lesson.id));
+  const remainingGaps = p.open_items.find(entry => entry.id === 'CIVIC-EDUCATION-T1-W02-VALUES-GAPS');
+  assert(remainingGaps?.blocks_delivery);
+  assert(remainingGaps?.affected_ids.includes('COV-CIV-T1-W02-SELFLESSNESS'));
+  assert(remainingGaps?.affected_ids.includes('COV-CIV-T1-W02-JUSTICE'));
 });
 
 test('Civic Education source-alias guards reject wrong hashes, ambiguous anchors and missing anchors', () => {
@@ -110,7 +141,7 @@ test('Current Civic Education coverage references resolve and retain their parti
       counts[entry.status] = (counts[entry.status] ?? 0) + 1;
       return counts;
     }, {} as Record<string, number>),
-    { IMPLEMENTED_EQUIVALENT: 1, PARTIAL: 4, UNRESOLVED: 2, MARKER: 1 },
+    { IMPLEMENTED_EQUIVALENT: 2, PARTIAL: 4, UNRESOLVED: 2, MARKER: 1 },
   );
   for (const entry of p.coverage) {
     assert(sourceIds.has(entry.source_id), `unknown source in ${entry.id}`);
