@@ -4,6 +4,7 @@ import { query } from '../db/pool.js';
 import { signAccess, signRefresh, verifyRefresh } from '../utils/jwt.js';
 import { requireAuth } from '../middleware/auth.js';
 import { audit } from '../utils/audit.js';
+import { claimStudentAccount, registerSelfServiceAccount } from '../utils/selfRegistration.js';
 import { normalizeAnswer, usernameBaseFromName } from '../utils/password.js';
 import type { AuthUser, Role } from '../types/index.js';
 
@@ -408,7 +409,7 @@ router.get('/self-claim/roster', async (req, res) => {
   const className = String(req.query.class_name ?? '').trim();
   if (!schoolCode || !className) return res.status(400).json({ error: 'school_code and class_name are required' });
   const { rows } = await query(
-    'SELECT id, full_name FROM students WHERE school_code=$1 AND class_name=$2 AND user_id IS NULL ORDER BY full_name',
+    'SELECT id, full_name FROM students WHERE school_code=$1 AND class_name=$2 AND user_id IS NULL AND deleted_at IS NULL ORDER BY full_name',
     [schoolCode, className],
   );
   return res.json({ students: rows });
@@ -418,92 +419,36 @@ router.post('/self-claim', async (req, res) => {
   const { school_code, class_name, student_id, code, admission_number, new_password } = req.body as {
     school_code?: string; class_name?: string; student_id?: string; code?: string; admission_number?: string; new_password?: string;
   };
-  if (!school_code || !class_name || !student_id || !code || !admission_number || !new_password) {
+  if (!school_code?.trim() || !class_name?.trim() || !student_id || !code || !admission_number?.trim() || !new_password) {
     return res.status(400).json({ error: 'school_code, class_name, student_id, code, admission_number, and new_password are required' });
   }
   if (new_password.length < 8) {
     return res.status(400).json({ error: 'New password must be at least 8 characters' });
   }
 
-  const { rows: ccRows } = await query(
-    'SELECT * FROM class_access_codes WHERE school_code=$1 AND class_name=$2', [school_code, class_name],
-  );
-  const cc = ccRows[0];
-  // The class code and the admission number check two different things,
-  // and both are required: the code proves "a teacher actually told
-  // whoever's typing this to do it" — it's shared with the whole class,
-  // so on its own it does NOT prove which specific student this is. The
-  // admission number is the one thing here that's actually private to a
-  // single student (never returned by the roster endpoint below, which
-  // only ever sends id+full_name) — it's what stops one classmate, or
-  // anyone else who was simply told the shared code, from picking a
-  // DIFFERENT classmate's name off the roster and claiming their account
-  // instead of their own.
-  const genericFail = () => res.status(401).json({ error: 'Incorrect class code, or self-claim is not available for this class.' });
-  if (!cc) return genericFail();
+  const passwordHash = await bcrypt.hash(new_password, 10);
+  const result = await claimStudentAccount({
+    schoolCode: school_code.trim(),
+    className: class_name.trim(),
+    studentId: student_id,
+    admissionNumber: admission_number,
+    accessCode: code,
+    passwordHash,
+  });
 
-  if (cc.locked_until && new Date(cc.locked_until).getTime() > Date.now()) {
-    const mins = Math.ceil((new Date(cc.locked_until).getTime() - Date.now()) / 60000);
-    return res.status(429).json({ error: `Too many incorrect attempts for this class. Try again in about ${mins} minute(s), or ask your school admin.` });
+  if (result.kind === 'locked') {
+    return res.status(429).json({
+      error: `Too many incorrect attempts for this class. Try again in about ${result.retryAfterMinutes} minute(s), or ask your school admin.`,
+    });
   }
-
-  if (cc.code !== code.trim()) {
-    const fails = (cc.fail_count ?? 0) + 1;
-    const LOCK_THRESHOLD = 5;
-    if (fails >= LOCK_THRESHOLD) {
-      await query(
-        `UPDATE class_access_codes SET fail_count=0, locked_until=now() + interval '1 hour' WHERE id=$1`,
-        [cc.id],
-      );
-    } else {
-      await query('UPDATE class_access_codes SET fail_count=$1 WHERE id=$2', [fails, cc.id]);
-    }
-    await audit(null, 'self_claim_failed', 'class_access_code', String(cc.id), `attempt ${fails}`);
-    return genericFail();
+  if (result.kind === 'invalid_code') {
+    return res.status(401).json({ error: 'Incorrect class code, or self-claim is not available for this class.' });
   }
-
-  const { rows: stRows } = await query(
-    'SELECT id, full_name FROM students WHERE id=$1 AND school_code=$2 AND class_name=$3 AND user_id IS NULL AND admission_number=$4',
-    [student_id, school_code, class_name, admission_number.trim()],
-  );
-  const student = stRows[0];
-  // Deliberately the same 404, with the same message, whether the
-  // admission number was wrong, the student was already claimed, or
-  // student_id was tampered with — a caller can never learn which one
-  // was the problem, matching the class-code check's own generic-failure
-  // pattern above.
-  if (!student) {
+  if (result.kind === 'student_not_found') {
     return res.status(404).json({ error: 'That student was not found, or already has an account. If you already have an account, use Forgot Password instead.' });
   }
 
-  const baseUsername = usernameBaseFromName(student.full_name);
-  let uname = baseUsername;
-  for (let suffix = 1; ; suffix++) {
-    const { rows: taken } = await query('SELECT id FROM users WHERE username=$1', [uname]);
-    if (!taken.length) break;
-    uname = `${baseUsername}${suffix}`;
-  }
-
-  const hash = await bcrypt.hash(new_password, 10);
-  const { rows: newUserRows } = await query(
-    `INSERT INTO users(username,password_hash,role,full_name,school_code,must_change_pw)
-     VALUES($1,$2,'student',$3,$4,FALSE) RETURNING id,username`,
-    [uname, hash, student.full_name, school_code],
-  );
-  const newUser = newUserRows[0];
-
-  // Resets the code's own fail counter on a successful claim too — a
-  // string of wrong attempts by one student right before a different
-  // student succeeds shouldn't carry a stale count forward against the
-  // rest of the class.
-  await query(
-    'UPDATE students SET user_id=$1 WHERE id=$2',
-    [newUser.id, student.id],
-  );
-  await query('UPDATE class_access_codes SET fail_count=0 WHERE id=$1', [cc.id]);
-  await audit(null, 'self_claim_success', 'user', newUser.id, `student ${student.id} in ${school_code}/${class_name}`);
-
-  return res.status(201).json({ username: newUser.username });
+  return res.status(201).json({ username: result.username });
 });
 
 // UPDATE (this session): the note that used to be here said self-signup for
@@ -536,77 +481,54 @@ router.post('/self-register', async (req, res) => {
   if (password.length < 8) {
     return res.status(400).json({ error: 'Password must be at least 8 characters' });
   }
-  const uname = username.trim().toLowerCase();
-  const { rows: takenRows } = await query('SELECT id FROM users WHERE username=$1', [uname]);
-  if (takenRows[0]) {
-    return res.status(409).json({ error: 'That username is already taken — pick another.' });
+  if (role === 'student' && !admission_number?.trim()) {
+    return res.status(400).json({ error: 'admission_number is required for student self-registration' });
   }
-
-  let studentIdToLink: string | null = null; // student role only
-  let wardStudentId: string | null = null;   // parent role only
-
-  if (role === 'student') {
-    if (!admission_number?.trim()) {
-      return res.status(400).json({ error: 'admission_number is required for student self-registration' });
-    }
-    const { rows } = await query(
-      'SELECT id FROM students WHERE school_code=$1 AND admission_number=$2 AND user_id IS NULL',
-      [school_code, admission_number.trim()],
-    );
-    if (!rows[0]) {
-      return res.status(404).json({ error: "We couldn't find a matching enrollment record for that admission number at this school, or it already has an account. Contact your school admin." });
-    }
-    studentIdToLink = rows[0].id;
-  }
-
   if (role === 'parent') {
     if (!ward_admission_number?.trim()) {
-      return res.status(400).json({ error: "ward_admission_number is required for parent self-registration" });
+      return res.status(400).json({ error: 'ward_admission_number is required for parent self-registration' });
     }
-    const { rows } = await query(
-      'SELECT id FROM students WHERE school_code=$1 AND admission_number=$2',
-      [school_code, ward_admission_number.trim()],
-    );
-    if (!rows[0]) {
-      return res.status(404).json({ error: "We couldn't find a matching enrollment record for that admission number at this school. Contact your school admin." });
-    }
-    wardStudentId = rows[0].id;
-
-    // Same phone-based dedupe as parentProvisioning.ts (admin-side auto-link
-    // on student creation) — if a parent account with this phone already
-    // exists, self-registration must not silently take it over (anyone
-    // claiming the same phone number could otherwise reset a stranger's
-    // password with zero proof). Reject and point to account recovery instead.
-    const last10 = phone.replace(/\D/g, '').slice(-10);
-    const { rows: existingParent } = await query(
-      `SELECT id FROM users WHERE role='parent' AND right(regexp_replace(phone,'\\D','','g'),10)=$1`,
-      [last10],
-    );
-    if (existingParent[0]) {
-      return res.status(409).json({ error: 'An account already exists for this phone number. Use Forgot Password to recover it, or contact your school admin.' });
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length < 10 || phoneDigits.length > 15) {
+      return res.status(400).json({ error: 'Parent phone must contain between 10 and 15 digits' });
     }
   }
 
-  const hash = await bcrypt.hash(password, 10);
-  const { rows: newUserRows } = await query(
-    `INSERT INTO users(username,password_hash,role,full_name,phone,school_code,pending_admin_review,must_change_pw)
-     VALUES($1,$2,$3,$4,$5,$6,TRUE,FALSE) RETURNING id,username`,
-    [uname, hash, role, full_name.trim(), phone.trim(), school_code],
-  );
-  const newUser = newUserRows[0];
+  const normalizedUsername = username.trim().toLowerCase();
+  const normalizedSchool = school_code.trim();
+  const normalizedName = full_name.trim();
+  const normalizedPhone = phone.trim();
+  const passwordHash = await bcrypt.hash(password, 10);
 
-  if (studentIdToLink) {
-    await query('UPDATE students SET user_id=$1 WHERE id=$2', [newUser.id, studentIdToLink]);
+  const result = await registerSelfServiceAccount({
+    role: role as 'student' | 'parent' | 'teacher',
+    fullName: normalizedName,
+    phone: normalizedPhone,
+    schoolCode: normalizedSchool,
+    username: normalizedUsername,
+    passwordHash,
+    admissionNumber: admission_number?.trim(),
+    wardAdmissionNumber: ward_admission_number?.trim(),
+  });
+
+  if (result.kind === 'username_taken') {
+    return res.status(409).json({ error: 'That username is already taken — pick another.' });
   }
-  if (wardStudentId) {
-    await query(
-      'INSERT INTO parent_wards(parent_id, student_id) VALUES ($1,$2) ON CONFLICT DO NOTHING',
-      [newUser.id, wardStudentId],
-    );
+  if (result.kind === 'school_not_found') {
+    return res.status(404).json({ error: 'The selected school was not found.' });
+  }
+  if (result.kind === 'student_not_found') {
+    return res.status(404).json({
+      error: role === 'parent'
+        ? "We couldn't find a matching enrollment record for that admission number at this school. Contact your school admin."
+        : "We couldn't find a matching enrollment record for that admission number at this school, or it already has an account. Contact your school admin.",
+    });
+  }
+  if (result.kind === 'parent_phone_exists') {
+    return res.status(409).json({ error: 'An account already exists for this phone number. Use Forgot Password to recover it, or contact your school admin.' });
   }
 
-  await audit(null, 'self_register', 'user', newUser.id, `role=${role} school=${school_code}`);
-  return res.status(201).json({ username: newUser.username });
+  return res.status(201).json({ username: result.username });
 });
 
 // ── Staff account activation (Task C) ────────────────────────────────────────
