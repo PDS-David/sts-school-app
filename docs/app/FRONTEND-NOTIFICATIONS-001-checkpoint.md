@@ -34,7 +34,7 @@ Worker branch: `agent/frontend-notification-recovery-latest-20261113`
 ## Commits
 - `6ce9109e3f335d7663b07364120acede1662e4a9` — source failure tracking and read state.
 - `662717a872b928698936bee5dd0a19d5fc7c86eb` — notification UI retry and unread indicators.
-- Checkpoint commit: pending.
+- Checkpoint commit: `395a0ba368e33b4bed9d77c29b7cf4f54c1fe009`.
 
 ## Verification
 - Static inspection confirms each source remains independent: one failed source does not suppress results from the others.
