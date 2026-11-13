@@ -66,3 +66,11 @@ The reference section is lines 39-40. It names Essential Geography for Senior Se
 - PR #693's registered-subject compiler run 43445525256 failed at `COV-GEO-T1-SCHEME-2` with a source body ID in `lesson_ids`.
 - The coverage record was already UNRESOLVED; the body ID was not a lesson ID and the preamble task does not claim Week Two instruction. Removed the unverified `lesson_ids` value; kept the scheme/body locators and explanation unchanged.
 - Queue task remains IN_PROGRESS pending a clean compiler rerun. The next curriculum task remains GEO-MARK-T1; Week Two lesson indexing is still separate.
+
+
+## Compiler validation correction 4 — Week Three scheme row
+
+- The registered-subject compiler run `43467708156` failed at `COV-GEO-T1-SCHEME-3` because the UNRESOLVED coverage record included `SS1-SRC-1c1c1bdcecb4:BODY:5bbc2357e24a5ef6139bc99bc1351c119dc4f7188345e35c5f12bf001a452d25` in `lesson_ids`.
+- That value is a source body locator/hash, not a registered parsed lesson ID. An unresolved scheme objective may retain the week locator in `objective_locator` and `evidence`, but it must not masquerade as a lesson target.
+- Removed only that invalid `lesson_ids` value. Coverage remains `UNRESOLVED`; no lesson or teaching claim was created.
+- GEO-PRE-T1 remains IN_PROGRESS until a fresh all-subject compiler run passes. Week Three objective indexing and lesson work remain separate.
