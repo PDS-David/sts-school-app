@@ -26,7 +26,7 @@ Worker branch: `agent/frontend-notification-recovery-master-20261113`
 ## Commits
 - `b094d9a2b8fd0eee2b70dcc1da21fdbb14a04d76` — reapply notification recovery in `mobile/src/components/NotificationsContext.tsx` on latest master.
 - `486df860027d47717b323bdb22e84e4f9d9e6314` — reapply notification recovery in `mobile/src/screens/NotificationsScreen.tsx` on latest master.
-- Checkpoint commit: pending.
+- Checkpoint commit: `b86e3339b5995c3d3cc479e1c9e7efb045be9cc9`.
 
 ## Verification
 - Static inspection confirms existing user-switch resets, refresh-generation protection and announcement fallback remain.
