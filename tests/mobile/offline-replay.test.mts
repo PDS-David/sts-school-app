@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { shouldEnqueueOfflineWrite } from '../../mobile/src/offline/replayPolicy.ts';
 import { createSerialQueue } from '../../mobile/src/offline/serialQueue.ts';
 import { createOutboxStore } from '../../mobile/src/offline/outboxStore.ts';
+import { isRestorableUser } from '../../mobile/src/api/authSession.ts';
 
 test('normal failed writes remain eligible for offline queueing', () => {
   assert.equal(shouldEnqueueOfflineWrite({}), true);
@@ -89,4 +90,16 @@ test('queued mutations retain the account namespace captured before waiting', as
     { id: 'first' }, { id: 'second' },
   ]);
   assert.deepEqual(await outbox.getAll(), []);
+});
+
+test('persisted session accepts only known roles and a non-empty user ID', () => {
+  assert.equal(isRestorableUser({ id: 'user-1', role: 'student' }), true);
+  assert.equal(isRestorableUser({ id: 'user-2', role: 'parent' }), true);
+  assert.equal(isRestorableUser({ id: 'user-3', role: 'teacher' }), true);
+  assert.equal(isRestorableUser({ id: 'user-4', role: 'admin' }), true);
+  assert.equal(isRestorableUser({ id: 'user-5', role: 'finance_admin' }), true);
+  assert.equal(isRestorableUser({ id: '', role: 'student' }), false);
+  assert.equal(isRestorableUser({ id: 'user-6', role: 'unknown' }), false);
+  assert.equal(isRestorableUser(null), false);
+  assert.equal(isRestorableUser('not-json-object'), false);
 });
