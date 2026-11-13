@@ -1,0 +1,50 @@
+name: Android mobile readiness
+
+on:
+  pull_request:
+    paths:
+      - "mobile/**"
+      - "config/apiTarget.js"
+      - "config/apiTarget.test.js"
+      - "tests/mobile/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/mobile-android-readiness.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mobile-android-readiness-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  mobile-checks:
+    name: Mobile tests, types and Android bundle
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install workspace dependencies
+        run: npm ci
+      - name: Offline outbox regression tests
+        run: npm run test:mobile:offline
+      - name: Validate mobile TypeScript
+        run: npx tsc --noEmit -p mobile/tsconfig.json
+      - name: Export Android JavaScript bundle
+        working-directory: mobile
+        env:
+          CI: "1"
+        run: npx expo export --platform android --output-dir ../artifacts/mobile-android
+      - name: Upload Android bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-android-js-bundle
+          path: artifacts/mobile-android/
+          if-no-files-found: error
+          retention-days: 7
