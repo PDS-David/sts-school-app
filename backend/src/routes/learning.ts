@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import { z } from 'zod';
+import type { PoolClient } from 'pg';
 import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scope.js';
@@ -23,6 +25,58 @@ const termPinEnforced = () => process.env.TERM_PIN_ENFORCED === 'true';
 
 const router = Router();
 router.use(requireAuth);
+
+type ContentReferenceError = { status: 400; error: string } | null;
+
+/**
+ * Lock and validate the school-owned reference rows before a learning-content
+ * write. The row locks prevent an administrator changing a subject/term's
+ * school assignment between validation and persistence.
+ */
+async function validateContentReferences(
+  client: PoolClient,
+  schoolCode: string,
+  subjectId: number,
+  termId: number | null,
+): Promise<ContentReferenceError> {
+  const { rows: schoolRows } = await client.query(
+    'SELECT code FROM schools WHERE code=$1 FOR SHARE',
+    [schoolCode],
+  );
+  if (!schoolRows[0]) return { status: 400, error: 'Unknown school_code.' };
+
+  const { rows: subjectRows } = await client.query(
+    'SELECT id FROM subjects WHERE id=$1 AND school_code=$2 FOR SHARE',
+    [subjectId, schoolCode],
+  );
+  if (!subjectRows[0]) return { status: 400, error: 'subject_id must belong to the target school.' };
+
+  if (termId != null) {
+    const { rows: termRows } = await client.query(
+      'SELECT id FROM terms WHERE id=$1 AND school_code=$2 FOR SHARE',
+      [termId, schoolCode],
+    );
+    if (!termRows[0]) return { status: 400, error: 'term_id must belong to the target school.' };
+  }
+  return null;
+}
+
+function resolveContentSchool(
+  user: AuthUser,
+  requestedSchoolCode?: string,
+): { schoolCode: string } | { status: 400 | 403; error: string } {
+  if (user.role === 'admin') {
+    const schoolCode = requestedSchoolCode?.trim();
+    return schoolCode
+      ? { schoolCode }
+      : { status: 400, error: 'school_code is required when an administrator creates learning content.' };
+  }
+  const schoolCode = user.school_code?.trim();
+  return schoolCode
+    ? { schoolCode }
+    : { status: 403, error: 'Your account is not assigned to a school.' };
+}
+
 
 // Individually certified SS1 package lessons are read-only student content.
 // Existing database topics, term PINs and topic-completion sequencing remain unchanged.
@@ -171,9 +225,10 @@ router.get('/materials', requirePerm('materials.read'), async (req, res) => {
 
   let sql = `SELECT m.*,sub.name AS subject_name,u.full_name AS uploaded_by
              FROM materials m
-             JOIN subjects sub ON sub.id=m.subject_id
+             JOIN subjects sub ON sub.id=m.subject_id AND sub.school_code=m.school_code
              JOIN users u ON u.id=m.created_by
-             WHERE m.school_code=$1`;
+             WHERE m.school_code=$1
+               AND (m.term_id IS NULL OR EXISTS (SELECT 1 FROM terms t WHERE t.id=m.term_id AND t.school_code=m.school_code))`;
   const params: unknown[] = [sc];
 
   if (user.role === 'teacher') {
@@ -1213,7 +1268,9 @@ router.put('/study-plan/subjects/:subject_id', requireRole('student'), async (re
 
 router.get('/questions', requirePerm('questions.read'), async (req, res) => {
   const { subject_id, class_name, type } = req.query as Record<string, string>;
-  let sql = `SELECT * FROM questions WHERE school_code=$1`;
+  let sql = `SELECT * FROM questions q WHERE school_code=$1
+               AND EXISTS (SELECT 1 FROM subjects sub WHERE sub.id=q.subject_id AND sub.school_code=q.school_code)
+               AND (q.term_id IS NULL OR EXISTS (SELECT 1 FROM terms t WHERE t.id=q.term_id AND t.school_code=q.school_code))`;
   const params: unknown[] = [req.user!.school_code];
   if (subject_id) { params.push(subject_id); sql += ` AND subject_id=$${params.length}`; }
   if (class_name) { params.push(class_name); sql += ` AND class_name=$${params.length}`; }
@@ -1266,7 +1323,7 @@ router.get('/parent/upcoming-assessments', requireRole('parent'), async (req, re
        JOIN students st ON st.id=pw.student_id AND st.deleted_at IS NULL
        JOIN assessments a ON a.school_code=st.school_code
          AND (a.class_name IS NULL OR a.class_name=st.class_name)
-       JOIN subjects sub ON sub.id=a.subject_id AND sub.school_code=a.school_code
+       JOIN subjects sub ON sub.id=a.subject_id AND sub.school_code=a.school_code AND sub.school_code=a.school_code
       WHERE pw.parent_id=$1
         AND a.status='open'
         AND (a.start_at IS NULL OR a.start_at >= now())
@@ -1329,7 +1386,8 @@ router.get('/assessments', requirePerm('assessments.read'), async (req, res) => 
                     (SELECT COUNT(*) FROM assessment_questions aq WHERE aq.assessment_id=a.id) AS question_count
                     ${submittedCol}
              FROM assessments a JOIN subjects sub ON sub.id=a.subject_id
-             WHERE a.school_code=$1`;
+             WHERE a.school_code=$1
+               AND (a.term_id IS NULL OR EXISTS (SELECT 1 FROM terms t WHERE t.id=a.term_id AND t.school_code=a.school_code))`;
 
   if (viewerClasses) {
     if (!viewerClasses.length) return res.json({ assessments: [] });
