@@ -172,9 +172,10 @@ extension-owned objects may already exist.
 
 A repeated invocation with the same schema/foundation checksum is a no-op. It
 never resets current terms or replays schema over a database already in use.
-A different checksum is refused: use a separately reviewed migration for later
-schema changes (`db:migrate` remains the existing manual cumulative-schema tool).
-The completion marker is not a schema-drift checker or a repair mechanism.
+The clean bootstrap stamps the immutable `0001_baseline.sql` migration marker.
+A different checksum is refused: use a new numbered migration for later schema
+changes; never edit an applied migration. The completion marker is not a
+schema-drift checker or a repair mechanism.
 Neither application startup nor `npm run build` runs bootstrap/migrations.
 
 For migration operations (run from the repository root):
