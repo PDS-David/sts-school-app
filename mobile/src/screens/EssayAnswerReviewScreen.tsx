@@ -48,7 +48,7 @@ export default function EssayAnswerReviewScreen({ route }: any) {
     const raw = rawOverride ?? drafts[answer.id] ?? answer.awarded_points ?? answer.ai_suggested_points ?? '0';
     const points = Number(raw);
     const maxPoints = Number(answer.max_points);
-    if (!Number.isFinite(points) || !Number.isFinite(maxPoints) || points < 0 || points > maxPoints) {
+    if (!String(raw).trim() || !Number.isFinite(points) || !Number.isFinite(maxPoints) || points < 0 || points > maxPoints) {
       setSaveErrors((errors) => ({ ...errors, [answer.id]: `Enter a valid score between 0 and ${answer.max_points}.` }));
       return;
     }
