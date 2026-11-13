@@ -98,7 +98,7 @@ import {
   applyJss3SecondTermSourceTextResolution,
   resolveJss3SecondTermParsedTopic,
 } from './jss3SecondTermResolutions.js';
-import { assertPrimary4SupplementCorpus, buildPrimary4SupplementRows, primary4SupplementApprovalIssues } from './primary4/primary4Supplements.js';
+import { assertPrimary4SupplementCorpus, buildPrimary4SupplementRows, primary4SupplementApprovalIssues, refreshPrimary4PackageRows } from './primary4/primary4Supplements.js';
 import {
   JSS3_EXCLUDED_SUBJECTS,
   JSS3_THIRD_TERM_REVIEWED_SOURCES,
@@ -1260,73 +1260,11 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
         );
       }
 
-      // Refresh only researched Primary 4 package rows whose stable identity
-      // (subject, term, order, title and generated package filename) still matches.
-      // Original archive rows are never rewritten by this path. Old assessment
-      // links are closed and tombstoned before the approved source is replaced.
-      const { rows: refreshedPackages } = await query(
-        `WITH planned AS (
-           SELECT *
-           FROM jsonb_to_recordset($2::jsonb) AS p(
-             subject_id integer,
-             class_name text,
-             term_label text,
-             title text,
-             source_reference text,
-             order_index integer,
-             source_file text
-           )
-         ),
-         stale AS MATERIALIZED (
-           SELECT t.id, t.generated_assessment_id
-           FROM topics t
-           JOIN planned p
-             ON p.subject_id=t.subject_id
-            AND p.class_name=t.class_name
-            AND p.term_label=t.term_label
-            AND p.order_index=t.order_index
-            AND p.title=t.title
-            AND p.source_file=t.source_file
-           WHERE t.school_code=$1
-             AND t.class_name='Primary 4'
-             AND t.source_file LIKE 'P4-RESEARCHED-%'
-             AND t.source_reference IS DISTINCT FROM p.source_reference
-         ),
-         closed AS (
-           UPDATE assessments a
-           SET status='closed',
-               content_fingerprint='__PRIMARY4_WITHDRAWN__:' || stale.id::text
-           FROM stale
-           WHERE a.id=stale.generated_assessment_id
-             AND a.school_code=$1
-             AND a.class_name='Primary 4'
-           RETURNING a.id
-         ),
-         refreshed AS (
-           UPDATE topics t
-           SET source_reference=p.source_reference,
-               summary=NULL,
-               generated_assessment_id=NULL
-           FROM planned p
-           WHERE t.school_code=$1
-             AND t.class_name='Primary 4'
-             AND t.subject_id=p.subject_id
-             AND t.term_label=p.term_label
-             AND t.order_index=p.order_index
-             AND t.title=p.title
-             AND t.source_file=p.source_file
-             AND t.source_file LIKE 'P4-RESEARCHED-%'
-             AND t.source_reference IS DISTINCT FROM p.source_reference
-           RETURNING t.id
-         )
-         SELECT (SELECT count(*) FROM refreshed) AS refreshed_count,
-                (SELECT count(*) FROM closed) AS closed_assessment_count`,
-        [schoolCode, plannedPayload],
-      );
-      const refreshedPackageCount = Number(refreshedPackages[0]?.refreshed_count ?? 0);
-      const closedPackageAssessmentCount = Number(refreshedPackages[0]?.closed_assessment_count ?? 0);
-      if (refreshedPackageCount > 0) {
-        console.log(`\\n↻ Refreshed ${refreshedPackageCount} approved Primary 4 researched lesson source(s); retired ${closedPackageAssessmentCount} stale assessment(s).`);
+      // Refresh only exact-identity researched package rows whose approved
+      // lesson source changed. Original archive rows are never rewritten here.
+      const refreshedPackages = await refreshPrimary4PackageRows(query, schoolCode, plannedRows);
+      if (refreshedPackages.refreshedCount > 0) {
+        console.log(`\\n↻ Refreshed ${refreshedPackages.refreshedCount} approved Primary 4 researched lesson source(s); retired ${refreshedPackages.closedAssessmentCount} stale assessment(s).`);
       }
 
       // Keep write round-trips bounded while avoiding thousands of per-topic
