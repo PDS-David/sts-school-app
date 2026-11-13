@@ -331,7 +331,7 @@ test('Week One colonial-administration replacement corrects history and binds th
   assert.equal(new Set(lesson.practice.map(question => question.id)).size, 7);
   for (const phrase of [
     'Berlin Conference', '15 November 1884', '26 February 1885',
-    '1760–1840', 'transatlantic slave trade', 'colonial forced labour',
+    'about 1760 to 1840', 'transatlantic slave trade', 'colonial forced labour',
     'civilizing mission', 'Lugard’s High Commissionership',
     'Native Courts Proclamation (1900)', 'Native Authority (Enforcement) Proclamation (1907)',
     'decentralised communities',
