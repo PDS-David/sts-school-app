@@ -215,8 +215,8 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
                     t.id AS term_id, t.name AS term_name
              FROM scores sc
              JOIN students s   ON s.id = sc.student_id
-             JOIN subjects sub ON sub.id = sc.subject_id
-             JOIN terms t      ON t.id  = sc.term_id
+             JOIN subjects sub ON sub.id = sc.subject_id AND sub.school_code = s.school_code
+             JOIN terms t      ON t.id  = sc.term_id AND t.school_code = s.school_code
              WHERE 1=1`;
   const params: unknown[] = [];
 
@@ -226,7 +226,8 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
   if (student_id) { params.push(student_id); sql += ` AND sc.student_id=$${params.length}`; }
   // Teachers see only their school
   if (user.role === 'teacher') {
-    params.push(user.school_code); sql += ` AND s.school_code=$${params.length}`;
+    if (!user.school_code) return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
+    params.push(user.school_code); sql += ` AND s.school_code=${params.length}`;
     if (user.assigned_class) {
       params.push(user.assigned_class); sql += ` AND s.class_name=$${params.length}`;
     } else if (user.assigned_subject_ids && user.assigned_subject_ids.length > 0) {
@@ -267,6 +268,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
     params.push(school_code); sql += ` AND s.school_code=$${params.length}`;
   }
 
+  if (user.role !== 'admin') sql += ' AND s.deleted_at IS NULL';
   sql += ' ORDER BY s.class_name, s.full_name, sub.name';
   const { rows } = await query(sql, params);
   return res.json({ scores: rows });
@@ -480,9 +482,11 @@ router.get('/report/:student_id', async (req, res) => {
     `SELECT sc.*, sub.name AS subject_name,
             (SELECT ROUND(AVG(s2.total),2) FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
              WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
+               AND st2.school_code=$4
                AND COALESCE(s2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)) AS class_average,
             (SELECT MAX(s2.total) FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
              WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
+               AND st2.school_code=$4
                AND COALESCE(s2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)) AS class_highest,
             -- Position within the class for THIS subject/term — standard
             -- competition ranking (ties share a position; the next distinct
@@ -493,13 +497,14 @@ router.get('/report/:student_id', async (req, res) => {
             -- rebuilt the template to match it.
             (SELECT COUNT(*)+1 FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
              WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
+               AND st2.school_code=$4
                AND COALESCE(s2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)
                AND s2.total > sc.total) AS subject_position
      FROM scores sc
-     JOIN subjects sub ON sub.id=sc.subject_id
+     JOIN subjects sub ON sub.id=sc.subject_id AND sub.school_code=$4
      WHERE sc.student_id=$2 AND sc.term_id=$3
      ORDER BY sub.name`,
-    [student.class_name, student.id, resolvedTermId],
+    [student.class_name, student.id, resolvedTermId, student.school_code],
   );
 
   const { rows: attRows } = await query(
@@ -537,8 +542,9 @@ router.get('/report/:student_id', async (req, res) => {
     `SELECT s3.student_id, SUM(s3.total) AS grand_total
      FROM scores s3 JOIN students st3 ON st3.id = s3.student_id
      WHERE COALESCE(s3.class_name, st3.class_name) = $1 AND s3.term_id = $2
+       AND st3.school_code=$3
      GROUP BY s3.student_id`,
-    [termClass, resolvedTermId],
+    [termClass, resolvedTermId, student.school_code],
   );
   const classSize = classTotals.length;
   const myTotal = classTotals.find((r) => r.student_id === student.id)?.grand_total;
@@ -608,10 +614,10 @@ router.get('/session-report/:student_id', async (req, res) => {
 
   const { rows: scoreRows } = await query(
     `SELECT sc.*, sub.name AS subject_name
-     FROM scores sc JOIN subjects sub ON sub.id = sc.subject_id
+     FROM scores sc JOIN subjects sub ON sub.id = sc.subject_id AND sub.school_code=$3
      WHERE sc.student_id=$1 AND sc.term_id = ANY($2::int[])
      ORDER BY sub.name`,
-    [student.id, termIds],
+    [student.id, termIds, student.school_code],
   );
 
   // Group each subject's per-term totals together
