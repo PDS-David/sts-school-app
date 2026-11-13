@@ -17,6 +17,9 @@ export default function CreateAssessmentScreen({ navigation }: any) {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [selected,  setSelected]  = useState<number[]>([]);
   const [saving,    setSaving]    = useState(false);
+  const [setupLoading, setSetupLoading] = useState(true);
+  const [setupError, setSetupError] = useState('');
+  const [setupRetry, setSetupRetry] = useState(0);
 
   const [form, setForm] = useState({
     title: '', subject_id: '', class_name: '', start_at: '', end_at: '',
@@ -36,28 +39,26 @@ export default function CreateAssessmentScreen({ navigation }: any) {
   const [savingDraftIdx, setSavingDraftIdx] = useState<number | null>(null);
 
   useEffect(() => {
+    let cancelled = false;
+    setSetupLoading(true);
+    setSetupError('');
     Promise.all([
       api.get('/academic/subjects'),
-      // Found while auditing teacher content-scope (Pass 17/19): this
-      // previously derived the class list from GET /students, which for a
-      // teacher restricts to their own assigned_class whenever one is set —
-      // so a teacher who is BOTH a class teacher AND a subject specialist
-      // (has assigned_class AND assigned_subject_id) only ever saw their own
-      // class here, even though the backend already lets them create an
-      // assessment for their subject in any class. GET /academic/classes
-      // isn't roster-scoped (it just lists the school's classes, no student
-      // data), so it gives every teacher the full, correct set of classes to
-      // pick from — the backend (checkTeacherContentScope) is still what
-      // actually enforces which of those choices are allowed to save.
       api.get('/academic/classes'),
       api.get('/learning/questions'),
     ]).then(([s, c, q]) => {
-      setSubjects(s.data.subjects);
+      if (cancelled) return;
+      setSubjects(s.data.subjects ?? []);
       const cls = [...new Set((c.data.classes as any[]).map((x: any) => x.name))].sort();
       setClasses(cls);
-      setQuestions(q.data.questions);
-    }).catch(() => {});
-  }, []);
+      setQuestions(q.data.questions ?? []);
+    }).catch((e: any) => {
+      if (!cancelled) setSetupError(e?.response?.data?.error ?? 'Could not load subjects, classes and the question bank. Check your connection and retry.');
+    }).finally(() => {
+      if (!cancelled) setSetupLoading(false);
+    });
+    return () => { cancelled = true; };
+  }, [setupRetry]);
 
   // Filter questions by selected subject
   const filteredQ = form.subject_id
@@ -70,6 +71,7 @@ export default function CreateAssessmentScreen({ navigation }: any) {
   };
 
   const handleCreate = async () => {
+    if (saving) return;
     if (!form.title.trim())   { Alert.alert('Title required'); return; }
     if (!form.subject_id)     { Alert.alert('Subject required'); return; }
     if (!form.class_name)     { Alert.alert('Class required'); return; }
@@ -105,6 +107,11 @@ export default function CreateAssessmentScreen({ navigation }: any) {
 
   const requestDrafts = async () => {
     if (!draftTopic.trim()) { setDraftError('Enter a topic first'); return; }
+    const requestedCount = Number(draftCount);
+    if (!Number.isInteger(requestedCount) || requestedCount < 1 || requestedCount > 10) {
+      setDraftError('Enter a whole number from 1 to 10.');
+      return;
+    }
     setDraftLoading(true);
     setDraftError('');
     try {
@@ -114,7 +121,7 @@ export default function CreateAssessmentScreen({ navigation }: any) {
         subject: subjectName,
         class_name: form.class_name || undefined,
         type: draftType,
-        count: Number(draftCount) || 3,
+        count: requestedCount,
       });
       setDrafts(Array.isArray(result) ? result : []);
     } catch (e: any) {
@@ -123,6 +130,7 @@ export default function CreateAssessmentScreen({ navigation }: any) {
   };
 
   const keepDraft = async (draft: DraftQuestion, index: number) => {
+    if (savingDraftIdx !== null) return;
     if (!form.subject_id || !form.class_name) {
       Alert.alert('Pick a subject and class first', 'Brainee\'s drafts are saved against the subject/class chosen above.');
       return;
@@ -145,6 +153,15 @@ export default function CreateAssessmentScreen({ navigation }: any) {
       Alert.alert('Error', e?.response?.data?.error ?? 'Could not save that draft');
     } finally { setSavingDraftIdx(null); }
   };
+
+  if (setupLoading) return <Loader />;
+
+  if (setupError) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Text style={{ color: Colors.error, textAlign: 'center', marginBottom: Spacing.md }}>{setupError}</Text>
+      <Btn label="Retry loading assessment setup" onPress={() => setSetupRetry(v => v + 1)} variant="outline" />
+    </View>
+  );
 
   return (
     <ScrollView style={styles.containerOuter} contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
