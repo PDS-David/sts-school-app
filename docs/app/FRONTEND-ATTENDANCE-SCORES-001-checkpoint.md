@@ -11,7 +11,7 @@
 - `3bda2ede0b90b00e77777709ae5a74ddd45c3f80` — refresh attendance screen on current master.
 - `1f62b8737597998df51cf6a3547d4e00e666eccc` — refresh score entry screen on current master.
 - `82d7bb24aace1dff63cd7af4117ff68d8a8d6bd2` — refresh term-school isolation integration test on current master.
-- Checkpoint commit: pending.
+- Checkpoint commit: `a0ed3565da41cd881e7676025a9463d712ada616`.
 
 ## Changes
 - Attendance: validate days opened as a non-negative whole number; validate entered days present as whole, non-negative values not exceeding the target days-opened limit.
