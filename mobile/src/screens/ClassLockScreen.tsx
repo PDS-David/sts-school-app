@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { View, Text, StyleSheet, ScrollView, Alert } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../api/client';
@@ -8,6 +8,7 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAuth } from '../api/AuthContext';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 import { PageContainer, useIsWide } from '../components/layout';
 
 interface Term { id: number; name: string; academic_year: string; }
@@ -43,43 +44,83 @@ export default function ClassLockScreen({ navigation }: any) {
   const [selTerm,  setSelTerm]  = useState<number | ''>('');
   const [lock,     setLock]     = useState<ClassLock | null>(null);
   const [loading,  setLoading]  = useState(true);
+  const [setupError, setSetupError] = useState('');
+  const [setupRetry, setSetupRetry] = useState(0);
+  const [lockLoading, setLockLoading] = useState(false);
+  const [lockError, setLockError] = useState('');
+  const [lockRetry, setLockRetry] = useState(0);
+  const [confirmLock, setConfirmLock] = useState<boolean | null>(null);
+  const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
   const [busy,     setBusy]     = useState(false);
 
   // Teacher: only their own assigned class is relevant here at all — they
   // can't lock/unlock anyone else's (enforced server-side too). Admin:
   // picks from every class in whichever school is selected in the switcher.
   useEffect(() => {
-    if (isAdmin && !effectiveSchoolCode) { setLoading(false); return; }
+    let cancelled = false;
     setLoading(true);
+    setSetupError('');
+    setClasses([]);
+    setTerms([]);
+    setSelClass('');
+    setSelTerm('');
+    setLock(null);
+    if (isAdmin && !effectiveSchoolCode) {
+      setSetupError('Select a school before managing class locks.');
+      setLoading(false);
+      return;
+    }
     const sc = effectiveSchoolCode ?? undefined;
     if (!isAdmin) {
       if (user?.assigned_class) setSelClass(user.assigned_class);
       api.get('/academic/terms', { params: { school_code: sc } })
-        .then(t => { setTerms(t.data.terms); setLoading(false); })
-        .catch(() => setLoading(false));
+        .then(({ data }) => {
+          if (!cancelled) {
+            setTerms(data.terms ?? []);
+            const current = (data.terms ?? []).find((term: any) => term.is_current);
+            if (current) setSelTerm(current.id);
+          }
+        })
+        .catch((e: any) => { if (!cancelled) setSetupError(e?.response?.data?.error ?? 'Could not load academic terms. Retry before changing a class lock.'); })
+        .finally(() => { if (!cancelled) setLoading(false); });
     } else {
       Promise.all([
         api.get('/academic/classes', { params: { school_code: sc } }),
         api.get('/academic/terms',   { params: { school_code: sc } }),
-      ]).then(([c, t]) => {
-        setClasses(c.data.classes.map((x: any) => x.name));
-        setTerms(t.data.terms);
-        setLoading(false);
-      }).catch(() => setLoading(false));
+      ]).then(([classesRes, termsRes]) => {
+        if (cancelled) return;
+        const names = (classesRes.data.classes ?? []).map((x: any) => x.name);
+        const schoolTerms = termsRes.data.terms ?? [];
+        setClasses(names);
+        setTerms(schoolTerms);
+        if (names.length) setSelClass(names[0]);
+        const current = schoolTerms.find((term: any) => term.is_current);
+        if (current) setSelTerm(current.id);
+      }).catch((e: any) => { if (!cancelled) setSetupError(e?.response?.data?.error ?? 'Could not load classes and terms for this school. Retry before changing a class lock.'); })
+        .finally(() => { if (!cancelled) setLoading(false); });
     }
-  }, [isAdmin, effectiveSchoolCode]);
+    return () => { cancelled = true; };
+  }, [isAdmin, effectiveSchoolCode, setupRetry]);
 
-  const fetchLock = useCallback(() => {
-    if (!selClass || !selTerm) { setLock(null); return; }
-    api.get('/academic/class-locks', {
-      params: { class_name: selClass, term_id: selTerm, school_code: isAdmin ? effectiveSchoolCode ?? undefined : undefined },
-    }).then(({ data }) => setLock(data.lock)).catch(() => setLock(null));
-  }, [selClass, selTerm, isAdmin, effectiveSchoolCode]);
+  const fetchLock = useCallback(async () => {
+    if (!selClass || !selTerm) { setLock(null); setLockError(''); setLockLoading(false); return; }
+    setLockLoading(true);
+    setLockError('');
+    try {
+      const { data } = await api.get('/academic/class-locks', {
+        params: { class_name: selClass, term_id: selTerm, school_code: isAdmin ? effectiveSchoolCode ?? undefined : undefined },
+      });
+      setLock(data.lock ?? null);
+    } catch (e: any) {
+      setLock(null);
+      setLockError(e?.response?.data?.error ?? 'Could not verify the current lock status. Retry before changing this class.');
+    } finally { setLockLoading(false); }
+  }, [selClass, selTerm, isAdmin, effectiveSchoolCode, lockRetry]);
 
   useEffect(() => { fetchLock(); }, [fetchLock]);
 
   const toggleLock = async (locked: boolean) => {
-    if (!selClass || !selTerm) return;
+    if (!selClass || !selTerm || busy || lockLoading || lockError) return;
     setBusy(true);
     try {
       await api.put('/academic/class-locks', {
@@ -88,12 +129,15 @@ export default function ClassLockScreen({ navigation }: any) {
         school_code: isAdmin ? effectiveSchoolCode ?? undefined : undefined,
         locked,
       });
-      fetchLock();
-      Alert.alert(locked ? 'Class locked' : 'Class unlocked', locked
-        ? `${selClass} is now closed for this term — no scores, attendance, remarks, or weekly efforts can be saved until it's unlocked.`
-        : `${selClass} is open again for this term.`);
+      await fetchLock();
+      setInfoDialog({
+        title: locked ? 'Class locked' : 'Class unlocked',
+        message: locked
+          ? `${selClass} is now closed for this term. Scores, attendance, remarks and weekly efforts cannot be saved until it is unlocked.`
+          : `${selClass} is open again for this term.`,
+      });
     } catch (e: any) {
-      Alert.alert('Error', e?.response?.data?.error ?? 'Could not update the lock. Check your connection and try again.');
+      setInfoDialog({ title: 'Could not update class lock', message: e?.response?.data?.error ?? 'Check your connection and try again.' });
     } finally {
       setBusy(false);
     }
