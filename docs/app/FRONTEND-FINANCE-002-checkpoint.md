@@ -33,7 +33,6 @@ Worker branch: `agent/frontend-finance-actions-recovery-20261113`
 
 ## Changed files
 - `mobile/src/screens/FinanceScreen.tsx`
-- `mobile/src/api/client.ts`
 
 ## Commits
 - `e661f7b5a449df27edbafcfc53a8e95c4b96d537` — finance in-app feedback and invoice option recovery.
@@ -49,6 +48,8 @@ Worker branch: `agent/frontend-finance-actions-recovery-20261113`
 - Existing finance endpoints and server-side validation remain unchanged.
 - Automated tests, TypeScript and device checks were not run because no local checkout/command execution environment is available.
 - No runtime or accounting-readiness claim is made.
+
+- Financial-write offline exclusion was moved to shared API policy PR #760 to avoid overlapping client.ts changes.
 
 ## Remaining work
 - Verify fee item creation, invoice creation and payment status update for finance_admin.
