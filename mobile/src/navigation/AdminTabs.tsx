@@ -29,9 +29,9 @@ import { navigationRef } from './navigationRef';
 // separate stacks, but only if the name doesn't change.
 import AdminDashboardHomeScreen from '../screens/admin/AdminDashboardHomeScreen';
 import AdminMoreScreen from '../screens/admin/AdminMoreScreen';
-import AdminAnnouncementsScreen from '../screens/admin/AdminAnnouncementsScreen';
 import AdminTermPinsScreen from '../screens/admin/AdminTermPinsScreen';
 import AdminClassCodesScreen from '../screens/admin/AdminClassCodesScreen';
+import AdminAnnouncementsScreen from '../screens/admin/AdminAnnouncementsScreen';
 import MessagesScreen from '../screens/MessagesScreen';
 
 import MyResultsScreen from '../screens/MyResultsScreen';
@@ -116,9 +116,9 @@ function MoreStackNavigator() {
           menu in between, meaning Change Password/Security Question/Audit
           Log/Export Excel had no tap path to reach them at all. */}
       <MoreStack.Screen name="AdminMore" component={AdminMoreScreen} />
-      <MoreStack.Screen name="AdminAnnouncements" component={AdminAnnouncementsScreen} />
       <MoreStack.Screen name="AdminUsers" component={AdminUsersScreen} options={{ headerShown: true, title: 'Users', ...opts }} />
       <MoreStack.Screen name="AdminTermPins" component={AdminTermPinsScreen} options={{ headerShown: true, title: 'Term PINs', ...opts }} />
+      <MoreStack.Screen name="AdminAnnouncements" component={AdminAnnouncementsScreen} />
       <MoreStack.Screen name="AdminClassCodes" component={AdminClassCodesScreen} options={{ headerShown: true, title: 'Class Codes', ...opts }} />
       <MoreStack.Screen name="AuditLog" component={AuditLogScreen} options={{ headerShown: true, title: 'Audit Log', ...opts }} />
       <MoreStack.Screen name="ExportExcel" component={ExportExcelScreen} options={{ headerShown: true, title: 'Export Excel', ...opts }} />
