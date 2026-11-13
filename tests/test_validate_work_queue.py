@@ -30,6 +30,25 @@ class WorkQueueValidationTests(unittest.TestCase):
         self.assertEqual(errors, [])
         self.assertEqual(warnings, [])
 
+    def test_review_task_accepts_https_pull_request_url_containing_s(self):
+        review = task(
+            status="review",
+            checkpoint=".github/work-orchestrator/checkpoints/ORCH-001.md",
+            pull_request="https://github.com/PDS-David/sts-school-app/pull/683",
+        )
+        errors, warnings = MODULE.validate({"version": 1, "tasks": [review]})
+        self.assertEqual(errors, [])
+        self.assertEqual(warnings, [])
+
+    def test_review_task_rejects_non_https_pull_request_url(self):
+        review = task(
+            status="review",
+            checkpoint=".github/work-orchestrator/checkpoints/ORCH-001.md",
+            pull_request="http://github.com/PDS-David/sts-school-app/pull/683",
+        )
+        errors, _ = MODULE.validate({"version": 1, "tasks": [review]})
+        self.assertTrue(any("review task requires an https pull_request URL" in item for item in errors))
+
     def test_non_object_root_is_reported_not_crashed(self):
         errors, _ = MODULE.validate([])
         self.assertIn("registry root must be a JSON object", errors)
