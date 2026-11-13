@@ -62,7 +62,8 @@
     "2026-11-13 CIV-PRES-T2-LISTS: source-preservation audit completed from the user-attached archive. Archive/member hashes verified; 86 numbered paragraphs resolved through OOXML numbering definitions and recorded in CIV-PRES-T2-LISTS.md. No source wording or package content changed. Automated/runtime testing remains deferred.",
     "2026-11-13 CIV-FACT-T2-ELECTORAL-LAW: factual dependency audit completed. Used the hash-verified source DOCX and current enacted electoral statute (Electoral Act 2026, Act No.1) plus Constitution consolidated through Fifth Alteration (2023); separated exact source text from statutory assessment. No content corrections or lesson/package changes. Automated/runtime testing remains deferred.",
     "2026-11-13 CIV-FACT-T2-CONSTITUTION: constitutional factual dependency audit completed against the 1999 Constitution consolidated through Fifth Alteration (2023); source wording kept distinct from legal findings and Sixth Alteration Bill treated as pending based on latest official status located. No content/package corrections or approvals. Automated/runtime testing remains deferred.",
-    "2026-11-13 CIV-FACT-T2-NEUTRALITY: neutrality disposition completed for party-name examples, partisan language, broad causal claims and contested constitutional evaluations. Exact source wording retained and attributed; no factual claims/counter-claims verified or added. Software/runtime testing remains deferred."
+    "2026-11-13 CIV-FACT-T2-NEUTRALITY: neutrality disposition completed for party-name examples, partisan language, broad causal claims and contested constitutional evaluations. Exact source wording retained and attributed; no factual claims/counter-claims verified or added. Software/runtime testing remains deferred.",
+    "2026-11-13 CIV-LES-T1-W02-VALUES-TYPES: original five-values supplement and keyed marked assessment authored. Only the two relevant Week 2 values-types coverage rows were advanced; the broader Week 2 content blocker remains open. Content approval and software/runtime verification remain pending/deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -77,9 +78,9 @@
     "LESSON": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 42,
+    "IMPLEMENTED_TESTING_DEFERRED": 43,
     "BLOCKED": 1,
-    "PENDING": 12
+    "PENDING": 11
   },
   "items": [
     {
@@ -1556,8 +1557,8 @@
         "CIV-SRC-T1",
         "CIV-WK-T1-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Created by CIV-WK-T1-W02 (2026-11-07) as the single bounded follow-up for the gaps in its coverage rows and open item CIVIC-EDUCATION-T1-W02-VALUES-GAPS.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-13: Authored original supplement SUP-SS1-CIVIC-EDUCATION-T1-W02-VALUES-TYPES in civic-education.json and CIV-LES-T1-W02-VALUES-TYPES.md. Defines the five body-listed values left bare, with attributes and everyday manifestations; adds four original questions with complete answers and criterion marks (four-value discussion keyed for 16 marks). UTF-8 body SHA-256 1c425c076ea5ac6522e286c4765a28f603af87c6e427a517765eefeacb26d730. Updated only COV-CIV-T1-W02-TYPES-UNDEFINED and COV-CIV-T1-W02-ASSIGNMENT to IMPLEMENTED_EQUIVALENT. Honesty, faithfulness, self-control and selfishness remain scheme-only; source definition, selflessness/justice and other Week 2 gaps remain open. Named-person and effects claims omitted, not fact-checked or taught. Content approval PENDING, verification DEFERRED, package_status PENDING.",
       "completion_condition": "One original lesson with checked provenance, UTF-8 body hash and answered marked questions, and objective-level coverage updates limited to the Week 2 values-types rows. Keep the source records, the scheme-only values and all approval/release gates intact; record any necessary owner choice immediately; no approval or verification fabricated."
     },
     {
@@ -2006,7 +2007,6 @@
     }
   },
   "next_runnable": [
-    "CIV-LES-T1-W02-VALUES-TYPES",
     "CIV-WK-T3-W02-03",
     "CIV-WK-T3-W04-05",
     "CIV-WK-T3-W06",
