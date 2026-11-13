@@ -35,7 +35,7 @@ Branch: `agent/student-achievements-20261113`
 - Static review confirms the route requires student role, resolves student ID from the authenticated user, and returns only that student's aggregate achievements.
 - Score-based badges require `fully_graded=true` and also explicitly reject submissions with any `submission_answers.grading_status` of `ai_graded` or `ai_unavailable`; this guards against the documented stale `fully_graded` flag that can still be true while an essay awaits review.
 - No new schema was added intentionally: the existing `topic_completions`, `submissions`, and `assessments` records are the authoritative evidence, and computing badges avoids duplicate mutable state.
-- No automated tests, TypeScript build, or live DB test have been run because no local repository execution environment is available in this session.
+- GitHub Actions run `43445284511` completed successfully for the latest PR head: backend/mobile typechecks, static/focused regressions, PostgreSQL schema replay and existing integration checks all passed. These repository-wide checks do not include a dedicated threshold-boundary or achievements-query test. No local device test was run.
 
 ## Remaining
 - Add executable tests for threshold boundaries and the student-only API; run backend/mobile typechecks when a local runtime is available.
