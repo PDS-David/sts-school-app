@@ -48,8 +48,7 @@
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 10,
     "BLOCKED": 2,
-    "IN_PROGRESS": 1,
-    "PENDING": 55
+    "PENDING": 56
   },
   "items": [
     {
@@ -458,7 +457,7 @@
         "FN-INV-T1",
         "FN-SRC-T1"
       ],
-      "status": "IN_PROGRESS",
+      "status": "PENDING",
       "implementation_reference": "Initial PR #699 registered-subject compiler run failed because the source body ID derived from the inventory hash was not present in the compiler's parsed-row map. Removed the unverified lesson_ids from the new PARTIAL/UNRESOLVED coverage records; retained exact source line ranges and hashes. Those entries remain incomplete until the parser's exact body identity is independently confirmed. Task remains IN_PROGRESS pending a passing compiler workflow. See FN-WK-T1-W03.md.",
       "completion_condition": "Week 3 objective-level coverage or marker rules exist under the existing schema for the relationship objective and the thirteen subjects, with exact locators; missing explanations and assessment are precise open items plus small lesson tasks; the FAO claim is handed to the fact item."
     },
@@ -2555,6 +2554,7 @@
     }
   },
   "next_runnable": [
+    "FN-WK-T1-W03",
     "FN-WK-T1-W04",
     "FN-WK-T1-W05",
     "FN-WK-T1-W06",
