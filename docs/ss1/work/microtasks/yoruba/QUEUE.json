@@ -3269,11 +3269,11 @@
         "YO-WK-T1-W01",
         "YO-FACT-T1-W01-DEFECTS"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "YO-LES-T1-W01-EDE",
       "week_or_locator": "1st Term Week 1, EDE part: source lines 63-101 (objectives YO-T1-W01-EDE-01..05)",
       "objective": "Author the Week 1 EDE lesson that replaces the source text for delivery: speech organs and their two classes, articulators (afipe asunsi and akanmole), and tongue and lip position for the twelve vowels, with corrected spelling, an approved tone/sub-dot notation, and practice with full answers and marking.",
-      "implementation_reference": "Not authored. Required by YO-WK-T1-W01 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5). The EDE part (lines 63-101, SHA-256 5e55d8601e599af6f4bd94ba38d823e8a65d44620658b540522457cd0ff644ee) teaches five objectives, all PARTIAL: definition (65-67, 9316a3f2...), two organ classes (69-73, c649f234...), afipe (77-83, 58a1bf0f...), tongue position (85-95, a6668cfd...), lip position (97-101, a8e7c684...). Defects and notation gaps: line 93 central set \"a, en\" should be \"a, an\"; evigi/erigi, iwaju a lo n, aarin lion, aja enu/aja-enu, Eju isale; e/o letters cannot be separated as e/e-dot and o/o-dot. Open items YORUBA-T1-W01-SOURCE-DEFECTS and YORUBA-T1-W01-NOTATION must be decided first. No lesson is authored in YO-WK-T1-W01. Provisional draft exists in yoruba.json on branch agent/yoruba-t1-week2-lesson-drafts-20261113; status remains PENDING pending source-defect/notation review, approval and verification.",
+      "implementation_reference": "Implemented in backend/src/db/ss1/subjects/yoruba.json, SUP-SS1-YORUBA-T1-W01-EDE. Updated speech-organ terms (Èrìgì, Ìwájú ahọ́n, Àárín ahọ́n, Ẹ̀yìn ahọ́n, eyín ìsàlẹ̀, Àjà ẹnu), seven oral and five nasal vowels, underdotted ẹ/ọ and tone-mark convention. Six practice questions include complete answers and marking criteria. body_sha256 is recorded in the package; content approval PENDING; verification DEFERRED.",
       "completion_condition": "A lesson in yoruba.json teaches every Week 1 EDE objective, uses the corrections and notation decision agreed in YO-FACT-T1-W01-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance, and PENDING content approval; no fact is invented and no schema or compiler edit is made."
     },
     {
@@ -3313,11 +3313,11 @@
         "YO-WK-T1-W01",
         "YO-FACT-T1-W01-DEFECTS"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "YO-LES-T1-W01-ASA",
       "week_or_locator": "1st Term Week 1, ASA part: source lines 105-233 (objectives YO-T1-W01-ASA-01..03)",
       "objective": "Author the Week 1 ASA lesson that replaces the source text for delivery: home training as moral upbringing, greetings by time of day, and greetings by occupation with their responses, using the two source tables as structure and supplying corrected wording and practice with full answers and marking.",
-      "implementation_reference": "Not authored. Required by YO-WK-T1-W01 (2026-10-29). The ASA part (lines 105-233, SHA-256 1fee1829482f7a88df25539567596636baf3314bef80e25bfb5d75b7f9abb400) has a short definition (107-113, e23f07dc...) and two flattened Word tables: IGBA/AKOKO with seven time greetings (table 0, 8 rows x 24 cells; text lines 117-165, 7d14e249...) and ISE/IKINI/IDAHUN with seven occupation greetings and responses (table 1, 8 rows x 32 cells; text lines 169-233, 877987fb...). Table structure is not represented in extractRawText; YO-VIS-T1-03 owns the structural capture. Defects: line 199 Babalawo greeting garbled, line 231 Iya oloja greeting unexplained, mixed-case Roman numerals, no tone marks. No lesson is authored in YO-WK-T1-W01. Provisional draft exists in yoruba.json on branch agent/yoruba-t1-week2-lesson-drafts-20261113; status remains PENDING pending source-defect/notation review, approval and verification.",
+      "implementation_reference": "Implemented in backend/src/db/ss1/subjects/yoruba.json, SUP-SS1-YORUBA-T1-W01-ASA. Includes home training, ìwà ọmọlúàbí, greetings by time, sourced occupational/special-person greetings and responses, and the separate Ọ̀tayò/Ayò greeting. Seven practice questions include the six source special-greeting prompts, full answers and marking criteria. Unverified civil-service/Ìjoyè formula is explicitly replaced with a generic respectful greeting, not presented as a traditional fixed formula. body_sha256 is recorded in the package; content approval PENDING; verification DEFERRED.",
       "completion_condition": "A lesson in yoruba.json teaches the three Week 1 ASA objectives with the table structure preserved, approved corrections and notation, practice with complete answers and marking, body_sha256, provenance and PENDING approval; no greeting is invented and no schema or compiler edit is made."
     },
     {
@@ -3357,11 +3357,11 @@
         "YO-WK-T1-W01",
         "YO-FACT-T1-W01-DEFECTS"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "YO-LES-T1-W01-LIT",
       "week_or_locator": "1st Term Week 1, LITIRESO part: source lines 237-279 (objectives YO-T1-W01-LIT-01..03)",
       "objective": "Author the Week 1 LITIRESO lesson that replaces the source text for delivery: the definition of literature, litireso alohun and its three sub-types, litireso apileko and its three sub-types, with corrected wording and practice with full answers and marking.",
-      "implementation_reference": "Not authored. Required by YO-WK-T1-W01 (2026-10-29). The LITIRESO part (lines 237-279, SHA-256 16a4aa757b260440ca15e8bc5911c7f9b0005a68948f2c8ee7d2073df106f97d) defines literature and its two types (239-247, 88c3ab93...), alohun and three sub-types (249-265, a6205bc4...), apileko and three sub-types (267-279, 50ab3768...). Defects: line 253 explanatory sentence garbled, line 269 \"yin\" for \"yi\", sub-type lists use a./b./d. with c omitted, no tone marks. No lesson is authored in YO-WK-T1-W01. Provisional draft exists in yoruba.json on branch agent/yoruba-t1-week2-lesson-drafts-20261113; status remains PENDING pending source-defect/notation review, approval and verification.",
+      "implementation_reference": "Implemented in backend/src/db/ss1/subjects/yoruba.json, SUP-SS1-YORUBA-T1-W01-LIT. Defines lítírésọ̀ alohùn and lítírésọ̀ àpilẹ̀kọ, corrects the corrupted explanatory passage with original prose, covers ewì/ọ̀rọ̀ àròsọ/eré oníṣe and the five source oral-celebration forms (ẹ̀kún-ìyàwó, rárà, bọ̀lọ̀jọ̀, àpèpè, dàdákúàdà), including regional associations and a full answer key/marking scheme. body_sha256 is recorded in the package; content approval PENDING; verification DEFERRED.",
       "completion_condition": "A lesson in yoruba.json teaches the three Week 1 LITIRESO objectives with corrected wording and approved notation, practice with complete answers and marking, body_sha256, provenance and PENDING approval; no definition is invented and no schema or compiler edit is made."
     },
     {
@@ -7237,9 +7237,5 @@
       "availability": "User attachment; not committed to Git. Attach this archive (or the exact member) to source-reading workers."
     }
   },
-  "next_runnable": [
-    "YO-LES-T1-W01-EDE",
-    "YO-LES-T1-W01-ASA",
-    "YO-LES-T1-W01-LIT"
-  ]
+  "next_runnable": []
 }
