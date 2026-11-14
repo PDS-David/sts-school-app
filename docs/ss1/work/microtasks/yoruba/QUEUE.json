@@ -3225,11 +3225,11 @@
       "depends_on": [
         "YO-SRC-T3"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "YO-FND-T3-01",
       "week_or_locator": "flat unnumbered scheme (line 5 \"Ose: \", groups lines 7-83) and Yoruba ordinal teaching headings (\"OSE KINNI\" ... \"OSE KEWAA\") across the whole document",
       "objective": "State the specific limitation that prevents the current schema/compiler/parser from expressing this document's week structure, and request a bounded foundation change. Do not edit schema or compiler here.",
-      "implementation_reference": "Raised by YO-INV-T3 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5). Specific limitations: (1) no English \"week\" marker and no numeral appears on any scheme line: line 5 is only \"Ose: \", and each of the eleven groups begins with the repeated prefixes \"EDE:\", \"ASA:\" and \"LIT:\" and carries no week number or label. ingestTopics.ts WEEK_MARKER (English \"week\" plus a numeral or English ordinal) never matches, and compiler.ts applyRules split_before/attach_stranded_label operate on numeric week labels only; the groups can be located only by position (line ranges), and \"EDE:\" occurs ten times, so no unique text anchor exists per group. (2) The ten teaching headings are Yoruba ordinals without numerals; the body has ten sections for eleven scheme groups, and the revision/test pair has no body while the schema has no representation for a scheme row without a body. (3) Part labels are not uniform: week 3 has no ASA heading, weeks 4, 7 and 9 have no EDE heading, week 7 uses \"IWE ITOKASI:\", week 9 uses AKAYE 1/2 instead of an EDE heading, and week 10 repeats its ASA block; a per-part anchor grammar cannot assume uniform headings. (4) Week 6's teaching label alone carries leading tabs; trimmed anchors are unique here because each label occurs once, but exact untrimmed anchors differ. Root issue is shared with YO-FND-T1-01 and YO-FND-T2-01 (Yoruba ordinal labels). No schema or compiler change was made here.",
+      "implementation_reference": "Implemented in docs/ss1/work/microtasks/yoruba/YO-FND-T3-01.md. Current parser does not split the unmodified Yoruba ordinal headings, but the existing split_before rule already inserts numeric WEEK markers before unique line-initial anchors; the ten exact anchors (including Week 6's three leading tabs) are recorded. Positional scheme groups can be mapped with existing coverage locators and lesson IDs; the revision/test pair is already represented by SCHEME_ONLY marker coverage. Nonuniform strands are content-mapping gaps, not parser gaps. No shared schema/compiler change is required for parsing or coverage. A bounded optional display_label enhancement is proposed only if native Yoruba ordinals must be shown as week labels. No parser/compiler/test run; testing deferred.",
       "completion_condition": "The limitation is stated precisely with anchors and locators and a bounded foundation change is requested (for example a per-source label grammar, a positional scheme-group representation and a scheme-row-without-body representation); schema and compiler are not edited here; if maintainers decline, the reason is recorded in this item."
     },
     {
@@ -7237,7 +7237,5 @@
       "availability": "User attachment; not committed to Git. Attach this archive (or the exact member) to source-reading workers."
     }
   },
-  "next_runnable": [
-    "YO-FND-T3-01"
-  ]
+  "next_runnable": []
 }
