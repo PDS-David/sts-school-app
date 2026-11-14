@@ -11286,26 +11286,6 @@
       "blocks_delivery": true
     },
     {
-      "id": "YORUBA-T1-W01-SOURCE-DEFECTS",
-      "kind": "CONTENT",
-      "detail": "Defects in the Week 1 body (lines 61-310): (1) line 93 central vowel set \"a, en\" should read \"a, an\"; \"en\" duplicates the front nasal vowel at line 91 and the 5+2+5 vowel inventory does not close otherwise; (2) line 71 \"evigi\" vs line 83 \"erigi\", \"iwaju a lo n\" and \"aarin lion\" for iwaju ahon / aarin ahon, spaced \"e yin isale\", and both \"aja enu\" and \"aja-enu\" listed; (3) line 81 \"Eju isale\" where line 71 has \"eyin isale\"; (4) line 199 Babalawo greeting \"Aboru boye, sboye bo sise\" garbled; (5) line 253 explanatory sentence garbled (quoted in LIT-02); (6) line 269 \"Litireso yin je litireso alakosile\" (yin for yi); (7) sub-type lists at 261-265 and 275-279 use a., b., d. (c omitted); (8) time-table numerals mix case (Iv for IV, etc.); (9) \"Ontayo\" in the Ise asetilewa list (line 299) is unexplained.",
-      "required_action": "Subject expert confirms or corrects each defect; lessons must not copy the uncorrected text. No correction wording is authored here.",
-      "affected_ids": [
-        "SS1-SRC-48b641249e3b"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "YORUBA-T1-W01-NOTATION",
-      "kind": "CONTENT",
-      "detail": "The document has no tone-marked or sub-dot letters at all (verified in YO-INV-T1: 0 characters in U+1E00-U+1EFF, 0 combining marks, 0 accented Latin-1 letters). Week 1 vowel sets are written with plain e/o, so e/e-dot and o/o-dot cannot be distinguished and the EDE-04/EDE-05 sets cannot be verified; greetings and definitions also lack tone marks, which changes meaning and orthography in Yoruba.",
-      "required_action": "Subject expert supplies tone-marked and sub-dotted forms (or approves a documented ASCII convention) for the Week 1 material; no marks were added or normalised in this inventory.",
-      "affected_ids": [
-        "SS1-SRC-48b641249e3b"
-      ],
-      "blocks_delivery": true
-    },
-    {
       "id": "YORUBA-T1-W01-ASSESSMENT-GAPS",
       "kind": "CONTENT",
       "detail": "The six Igbelewon questions (lines 281-293) and the six Ise asetilewa greeting tasks (lines 295-307) have no answers, solutions or marking scheme. The Igbelewon questions also rely on Word automatic numbering, which extractRawText does not emit.",
@@ -12949,17 +12929,6 @@
       "blocks_delivery": true
     },
     {
-      "id": "YORUBA-T1-W01-GREETING-LEXICON-REVIEW",
-      "kind": "FACT",
-      "detail": "The source greeting tables contain unclear or corrupted entries, including 'Ontayo' and several occupational greetings whose wording/response cannot be reliably reconstructed from the extracted text. The replacement draft teaches common, standard greetings by time and occasion and does not claim to repair every source-table phrase.",
-      "required_action": "Yoruba subject expert to inspect the original greeting tables and confirm or replace the unclear greetings and responses before Week 1 ASA is approved.",
-      "affected_ids": [
-        "SS1-SRC-48b641249e3b",
-        "SUP-SS1-YORUBA-T1-W01-ASA"
-      ],
-      "blocks_delivery": true
-    },
-    {
       "id": "YORUBA-T1-W03-ASA-PROVERB-REVIEW",
       "kind": "FACT",
       "detail": "The source proverb examples and glosses contain several garbled lines and no tone marks; the Week 3 ASA replacement uses original classroom examples and clearly labels them as newly authored, not inherited traditional proverbs. The source category 'isiri' is provisionally represented as encouragement (ìṣìrí), pending confirmation.",
@@ -13044,6 +13013,30 @@
       "affected_ids": [
         "SS1-SRC-48b641249e3b",
         "SUP-SS1-YORUBA-T1-W06-ASA"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W01-SOURCE-DECISION-IMPLEMENTATION",
+      "kind": "CONTENT",
+      "detail": "The Week 1 source-defect decision is recorded in docs/ss1/work/microtasks/yoruba/YO-FACT-T1-W01-DEFECTS.md. It resolves the central nasal-vowel set, speech-organ spellings, Babalawo greeting/response, corrupted oral-literature explanation, written-literature sentence, subtype numbering, time-table numerals and Ontayo/Ọ̀tayò classification. The source greeting table is replaced in student material with sourced alternatives; Ontayo is an Ayò-player greeting, not an occupation. The original DOCX remains unchanged.",
+      "required_action": "Apply the recorded corrections and Unicode tone/sub-dot convention to SUP-SS1-YORUBA-T1-W01-EDE, SUP-SS1-YORUBA-T1-W01-ASA and SUP-SS1-YORUBA-T1-W01-LIT. Recompute each body_sha256 and retain PENDING content approval. Do not close this implementation item until all three replacement lessons use the decision.",
+      "affected_ids": [
+        "SUP-SS1-YORUBA-T1-W01-EDE",
+        "SUP-SS1-YORUBA-T1-W01-ASA",
+        "SUP-SS1-YORUBA-T1-W01-LIT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W01-NOTATION-IMPLEMENTATION",
+      "kind": "CONTENT",
+      "detail": "The term-wide Yoruba orthography decision is recorded in docs/ss1/work/microtasks/yoruba/YO-FACT-T1-W01-DEFECTS.md: seven oral vowels, five nasal-vowel spellings, ẹ/ọ/ṣ distinctions, high acute, low grave and unmarked mid tone; no circumflex/caron/macron substitutions. The decision is complete; application to the Week 1 replacement material is not yet complete.",
+      "required_action": "Apply the notation to all Yoruba words, vowel inventories, greetings and examples in the three Week 1 replacement lessons, checking each lexical tone against a reliable source. Extend the same convention to the remaining terms as their source-defect tasks are completed.",
+      "affected_ids": [
+        "SUP-SS1-YORUBA-T1-W01-EDE",
+        "SUP-SS1-YORUBA-T1-W01-ASA",
+        "SUP-SS1-YORUBA-T1-W01-LIT"
       ],
       "blocks_delivery": true
     }
