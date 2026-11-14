@@ -102,7 +102,7 @@ test('Week Three vowel chart asset has a registered lesson, correct hash and exa
 });
 
 test('Yoruba package retains explicit source-expert, visual and classroom verification gates', () => {
-  assert(p.open_items.some(item => item.id === 'YORUBA-T1-W03-VOWEL-CHART-DELIVERY' && item.blocks_delivery));
+  assert(p.open_items.some(item => item.id === 'YORUBA-T1-W03-VOWEL-CHART-RUNTIME-VERIFY' && item.blocks_delivery));
   assert(p.open_items.some(item => item.id === 'YORUBA-T1-W04-CONSONANT-CHART' && item.blocks_delivery));
   assert(p.open_items.some(item => item.id === 'YORUBA-T1-W04-ASA-RECIPE-DETAIL' && item.blocks_delivery));
   assert(p.open_items.some(item => item.id === 'YORUBA-T1-W05-TONE-EXAMPLES' && item.blocks_delivery));

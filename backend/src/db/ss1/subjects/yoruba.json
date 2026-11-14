@@ -587,7 +587,7 @@
       "state": {
         "content_approval": "PENDING",
         "approval_reference": null,
-        "implementation": "IMPLEMENTED",
+        "implementation": "DRAFT",
         "verification": "DEFERRED",
         "verification_reference": null
       }
@@ -745,7 +745,7 @@
       "state": {
         "content_approval": "PENDING",
         "approval_reference": null,
-        "implementation": "IMPLEMENTED",
+        "implementation": "DRAFT",
         "verification": "DEFERRED",
         "verification_reference": null
       }
@@ -891,7 +891,7 @@
       "state": {
         "content_approval": "PENDING",
         "approval_reference": null,
-        "implementation": "IMPLEMENTED",
+        "implementation": "DRAFT",
         "verification": "DEFERRED",
         "verification_reference": null
       }
@@ -1079,7 +1079,7 @@
       "state": {
         "content_approval": "PENDING",
         "approval_reference": null,
-        "implementation": "IMPLEMENTED",
+        "implementation": "DRAFT",
         "verification": "DEFERRED",
         "verification_reference": null
       }
@@ -1274,7 +1274,7 @@
       "state": {
         "content_approval": "PENDING",
         "approval_reference": null,
-        "implementation": "IMPLEMENTED",
+        "implementation": "DRAFT",
         "verification": "DEFERRED",
         "verification_reference": null
       }
@@ -1421,7 +1421,7 @@
       "state": {
         "content_approval": "PENDING",
         "approval_reference": null,
-        "implementation": "IMPLEMENTED",
+        "implementation": "DRAFT",
         "verification": "DEFERRED",
         "verification_reference": null
       }
@@ -1596,7 +1596,7 @@
       "state": {
         "content_approval": "PENDING",
         "approval_reference": null,
-        "implementation": "IMPLEMENTED",
+        "implementation": "DRAFT",
         "verification": "DEFERRED",
         "verification_reference": null
       }
@@ -1741,7 +1741,7 @@
       "state": {
         "content_approval": "PENDING",
         "approval_reference": null,
-        "implementation": "IMPLEMENTED",
+        "implementation": "DRAFT",
         "verification": "DEFERRED",
         "verification_reference": null
       }
@@ -1878,7 +1878,7 @@
       "state": {
         "content_approval": "PENDING",
         "approval_reference": null,
-        "implementation": "IMPLEMENTED",
+        "implementation": "DRAFT",
         "verification": "DEFERRED",
         "verification_reference": null
       }
@@ -2033,7 +2033,7 @@
       "state": {
         "content_approval": "PENDING",
         "approval_reference": null,
-        "implementation": "IMPLEMENTED",
+        "implementation": "DRAFT",
         "verification": "DEFERRED",
         "verification_reference": null
       }
@@ -2206,7 +2206,7 @@
       "state": {
         "content_approval": "PENDING",
         "approval_reference": null,
-        "implementation": "IMPLEMENTED",
+        "implementation": "DRAFT",
         "verification": "DEFERRED",
         "verification_reference": null
       }
@@ -2343,7 +2343,7 @@
       "state": {
         "content_approval": "PENDING",
         "approval_reference": null,
-        "implementation": "IMPLEMENTED",
+        "implementation": "DRAFT",
         "verification": "DEFERRED",
         "verification_reference": null
       }
@@ -13340,6 +13340,61 @@
       "affected_ids": [
         "SS1-SRC-48b641249e3b",
         "SUP-SS1-YORUBA-T1-W06-ASA"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W01-GREETING-LEXICON-REVIEW",
+      "kind": "FACT",
+      "detail": "The source contains uncertain or damaged occupational-greeting forms and responses. The replacement lesson uses documented or clearly labelled general alternatives; it does not claim that corrupted source strings have been recovered exactly.",
+      "required_action": "A Yoruba language expert must inspect the original Week 1 source page and confirm the local occupational greeting forms and responses before any uncertain form is represented as source-exact or fully covered.",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b",
+        "SUP-SS1-YORUBA-T1-W01-ASA"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W02-ASA-LEXICAL-REVIEW",
+      "kind": "FACT",
+      "detail": "The source list includes incomplete or uncertain forms: 'Ise owo bii,' (truncated), 'Eni hihu' (unclear), and forms recorded as 'ise isegun', 'epo fifo' and 'ikoko mimo'. The replacement draft supplies clearly identified additional examples but does not claim these are exact corrections of the source terms.",
+      "required_action": "A Yoruba subject expert must inspect the original page and confirm or replace each uncertain term before the ASA objective can be marked fully covered.",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b",
+        "SUP-SS1-YORUBA-T1-W02-ASA"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W03-ASA-PROVERB-REVIEW",
+      "kind": "FACT",
+      "detail": "The source proverb examples and glosses contain several garbled lines and no tone marks; the Week 3 ASA replacement uses original classroom examples and clearly labels them as newly authored, not inherited traditional proverbs. The source category 'isiri' is provisionally represented as encouragement (ìṣìrí), pending confirmation.",
+      "required_action": "Yoruba subject expert to confirm the source category wording and review any source proverb/gloss that is to be restored as a traditional example.",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b",
+        "SUP-SS1-YORUBA-T1-W03-ASA"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W04-CONSONANT-CHART",
+      "kind": "VISUAL",
+      "detail": "The source consonant chart is empty in extracted text. The Week 4 EDE draft supplies a text-based classification of place and manner, but no verified visual consonant chart has been produced.",
+      "required_action": "Create and validate an accessible consonant place/manner chart and confirm the IPA/phonetic labels with a Yoruba phonetics reviewer.",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b",
+        "SUP-SS1-YORUBA-T1-W04-EDE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W04-ASA-RECIPE-DETAIL",
+      "kind": "FACT",
+      "detail": "The source recipe for àádùn contains damaged/unclear ingredient words. The draft provides a safe general description and flags regional variation rather than guessing exact ingredient names.",
+      "required_action": "Yoruba home-economics/ASA reviewer to confirm the exact local ingredient names and method intended by the original Week 4 source.",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b",
+        "SUP-SS1-YORUBA-T1-W04-ASA"
       ],
       "blocks_delivery": true
     }
