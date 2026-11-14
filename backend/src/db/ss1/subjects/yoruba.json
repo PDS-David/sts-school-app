@@ -146,6 +146,18 @@
         "locator": "3RD TERM S1 YORUBA.docx; Mammoth 1.12.2 extractRawText() lines 81–83 (line 82 blank); exact block SHA-256 a8579d59815b77e42e64ccf1a8134d8ba38ca3a2620e47a3df08c1224f3934c3",
         "explanation": "The 129-character two-paragraph scheme block occurs once in the source. It consists of the EDE revision line and an unlabelled revision/test line. Both occurrences of “Atunyewo” in the document are these two lines. The pair is in the preamble before the first parsed teaching section, not inside a parsed lesson row, so the schema-supported SCHEME_ONLY disposition is required. It records the scheme marker without creating revision/examination teaching or removing any teaching body."
       }
+    },
+    {
+      "id": "SS1-SRC-4cc6aae9ed7d-R003",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "source_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3",
+      "anchor": "ILANA ISE OSOOSE FUN SAA KETA",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "3RD TERM S1 YORUBA.docx; Mammoth 1.12.2 extractRawText() line 3; exact line SHA-256 7bd5ada94688eadae2f86aa9c645ef97bcc4c5c36351f9779f62e7f75490f4f7",
+        "explanation": "The unique heading introduces the flat third-term scheme in the preamble, before the first teaching section at line 121. It is metadata/scheme structure, not a teaching body. The scheme objectives themselves remain separately represented by the week-specific coverage entries; this marker does not replace or discard them."
+      }
     }
   ],
   "lessons": [
@@ -10569,6 +10581,22 @@
         {
           "locator": "APA KEJI paragraphs 1225-1228; Mammoth lines 2451-2457; paragraph-text SHA-256 ede9eabba61c5236340e1f6b3dd37a3f6e43601b8779250d1c154b203d509514",
           "explanation": "Three written prompts: write a letter to a friend about a new school; name funeral-poetry types used for Oku Pipe; explain their themes with examples. The literature prompts have no corresponding Week 10 teaching body; no answers or marks are supplied."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-PREAMBLE-SCHEME-HEADER",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Third-term scheme-of-work heading in the document preamble; source-only marker, not a teaching objective or lesson.",
+      "objective_locator": "extractRawText line 3, “ILANA ISE OSOOSE FUN SAA KETA” (SHA-256 7bd5ada94688eadae2f86aa9c645ef97bcc4c5c36351f9779f62e7f75490f4f7)",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-4cc6aae9ed7d-R003"
+      ],
+      "evidence": [
+        {
+          "locator": "YO-PRE-T3-1.md; title line 1 and scheme heading/rows lines 3-83",
+          "explanation": "The heading precedes the flat eleven-group scheme and all ten teaching sections. The marker classifies only the preamble heading; each of the ten instructional scheme groups is mapped to its corresponding YO-T3-W01..W10 scheme coverage entries, and the revision/test pair is already represented by YO-T3-W11-SCHEME-REVISION-TEST."
         }
       ]
     }
