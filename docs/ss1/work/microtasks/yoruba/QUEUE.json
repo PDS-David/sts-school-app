@@ -3400,11 +3400,11 @@
         "YO-SRC-T1",
         "YO-WK-T1-W01"
       ],
-      "status": "BLOCKED",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "YO-FACT-T1-W01-DEFECTS",
       "week_or_locator": "1st Term Week 1, source lines 61-310 (all three EKA ISE parts)",
       "objective": "Obtain one recorded subject-expert decision on the Week 1 source defects and on the tone/sub-dot notation, so the three Week 1 lessons can be authored without copying errors.",
-      "implementation_reference": "Raised by YO-WK-T1-W01 (2026-10-29). Decisions needed, with locators: (1) line 93 central vowel set \"a, en\" vs \"a, an\" (open item YORUBA-T1-W01-SOURCE-DEFECTS); (2) spelling pairs evigi/erigi (71/83), iwaju a lo n and aarin lion (71), aja enu/aja-enu (71), Eju isale (81) vs eyin isale (71); (3) garbled Babalawo greeting line 199, garbled explanation line 253, \"yin\" for \"yi\" line 269; (4) a./b./d. sub-type letters at 261-265 and 275-279; (5) mixed-case Roman numerals in the time table (I, Ii, Iii, Iv, V, Vi, Vii); (6) unexplained \"Ontayo\" line 299; (7) tone and sub-dot forms for every Week 1 word (open item YORUBA-T1-W01-NOTATION; the document has no diacritics at all). No correction is invented in this item. Provisional Week 1 replacement drafts now exist; unclear greetings and source terminology remain flagged. This does not satisfy the named-expert decision requirement; status remains BLOCKED.",
+      "implementation_reference": "Decision recorded in docs/ss1/work/microtasks/yoruba/YO-FACT-T1-W01-DEFECTS.md and reflected in backend/src/db/ss1/subjects/yoruba.json open items. The decision resolves all nine listed source defects and establishes the term-wide standard: seven oral vowels, five nasal vowels, ẹ/ọ/ṣ distinctions, high acute, low grave, mid unmarked, no circumflex/caron/macron. Speech-organ spellings follow WAEC 2019; Ayò/Ọ̀tayò follows WAEC 2022; oral/written literature distinction follows NOUN YOR215 by Prof. Philip Adédòtun Ògúndèjì and Prof. Adésọlá Olátéjú; occupational greetings use published Yoruba greeting references. Original DOCX unchanged; source inventory hashes reused, archive not reopened. Three lesson bodies still need to apply the decision; package implementation open items remain. No tests or compiler/parser/importer run; testing deferred.",
       "completion_condition": "Every listed defect and the notation decision is resolved by a named expert decision recorded with evidence and locators; the three Week 1 lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
     },
     {
@@ -7237,5 +7237,9 @@
       "availability": "User attachment; not committed to Git. Attach this archive (or the exact member) to source-reading workers."
     }
   },
-  "next_runnable": []
+  "next_runnable": [
+    "YO-LES-T1-W01-EDE",
+    "YO-LES-T1-W01-ASA",
+    "YO-LES-T1-W01-LIT"
+  ]
 }
