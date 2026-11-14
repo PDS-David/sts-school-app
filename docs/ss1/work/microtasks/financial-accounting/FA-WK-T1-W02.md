@@ -47,7 +47,7 @@
 ## Coverage and open items
 - Added ten objective/assessment coverage records for transaction meaning, monetary recognition, cash and credit definitions, diagram, evaluation, weekend assignment, ambiguous Jan 28 and reading pointer.
 - Added open items for the diagram, missing Jan 28 payment timing, unavailable reading source and imprecise non-financial-question wording.
-- Added owner clarification task `FA-OWNER-T1-W02-JAN28-PAYMENT-STATUS` (BLOCKED) and follow-on lesson/key task `FA-LES-T1-W02-JAN28-CLASSIFICATION` (PENDING).
+- Resolved the Jan 28 delivery blocker without inventing the source fact: the original item remains ungraded and excluded from the source-question score; two clearly labelled teacher-created variants demonstrate immediate cash payment and deferred credit payment. Both the owner-action fallback and follow-on practice task are IMPLEMENTED_TESTING_DEFERRED.
 - Existing visual and external-material tasks remain authoritative; no duplicate diagram or reading task was created.
 
 ## Changed files

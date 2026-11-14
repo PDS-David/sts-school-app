@@ -50,9 +50,9 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 61,
+    "IMPLEMENTED_TESTING_DEFERRED": 62,
     "PENDING": 33,
-    "BLOCKED": 8
+    "BLOCKED": 7
   },
   "total": 102,
   "items": [
@@ -3222,8 +3222,8 @@
       "depends_on": [
         "MATH-WK-T1-W06"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Blocked 2026-11-08: the original DOCX equation objects are not accessible in this execution session and the public close-equivalent PDF text extraction loses superscripts/fraction bars. The replacement supplies clearly labelled equivalent practice; no original equation is guessed. OI-MATH-001 remains open.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Resolved against the exact owner-supplied source archive. Archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e; member `SSS 1/1st Term SS1_/MATHss1.docx` SHA-256 d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb. Converted the original DOCX with LibreOffice and visually inspected rendered PDF pages 12–13. The actual Week Six assessment has six visible index expressions, recorded in MATH-FACT-T1-W06-AMBIGUOUS-EQUATIONS.md. The two equations named in the blocker (`5^(p−3)=8×5^(−2)` and `9^(2x+1)=81^(x−2)`) are absent from the original archive Week Six pages and came from the public close-equivalent material; they are not treated as original source questions. Original source unchanged; OI-MATH-001 remains open for other affected rows. Content approval PENDING; testing/verification DEFERRED.",
       "completion_condition": "Inspect the original DOCX equation objects and record exact operands, exponents, fractions and grouping; resolve or formally retain each source question as unavailable without guessing."
     },
     {

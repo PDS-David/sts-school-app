@@ -111,3 +111,10 @@ After PR integration, refresh Data Processing package and queue from current mas
 - Registered-subject source-anchor/compiler audit passed ( all-subject source-anchor/compiler audit 43454395359 SUCCESS).
 - This verifies automated package integrity and plan-only compilation for this branch. Owner content approval remains PENDING; independent verification remains DEFERRED. No database or student-device/runtime test is claimed.
 - Queue/checkpoint update commit: `ae52e215e75dd590b56fabb724eaf5a12961617e`.
+
+
+## Scheme mapping disposition
+- The Week Three body heading “Generations of Computers” is delivered as the detailed historical subtopic for the scheme's “History of Computing” / “History of Computer I” sequence.
+- This is the minimum-change mapping: no new scheme row is created, no source wording is rewritten, and Week Three remains distinct from Week Four's “History of Computer II.”
+- The package coverage entry `COV-DP-T1-W03-SCHEME-DRIFT` is now `IMPLEMENTED_EQUIVALENT` and binds to `SUP-SS1-DATA-PROCESSING-T1-W03-GENERATIONS`.
+- This delivery mapping is not teacher content approval. Content approval remains PENDING; verification/testing remains DEFERRED.

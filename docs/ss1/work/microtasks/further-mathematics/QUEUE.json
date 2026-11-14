@@ -43,8 +43,8 @@
     "SOURCE_SECTION_INDEXING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 108,
-    "BLOCKED": 7
+    "IMPLEMENTED_TESTING_DEFERRED": 109,
+    "BLOCKED": 6
   },
   "items": [
     {
@@ -387,8 +387,8 @@
       "depends_on": [
         "FM-WK-T1-W02"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Left unresolved 2026-11-08 as explicitly permitted by the task completion condition. The exact original legacy .doc bytes and ObjectPool/ObjLocation FSPA table are not accessible in this execution session, so the two 41-byte Equation Native MTEF streams cannot be decoded and anchor-to-object mapping cannot be established. The public close-equivalent PDF does not prove the exact embedded object contents or anchor mapping. No owner/teacher reading of the original page has been supplied. The replacement already states the mathematical rejection reasons in words, so this blocker does not prevent drafting; however OI-FM-T1-W02-NOTATION-LOSS and OI-FM-T1-W02-FACT-DEFECTS remain open and block delivery acceptance. Original source row remains unchanged.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Resolved from the exact user-supplied archive, not a public close-equivalent. Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e; member SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc SHA-256 995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145. Converted that exact legacy .doc member with LibreOffice to PDF and visually inspected the original rendered pages 6–7. Page 7 shows the two previously lost embedded conclusions exactly: x = log_5(-25) following 5^x = -25, and x = log_3(-3) following 3^x = -3. This is a source-render reading of the original member; it is not an MTEF byte decode and does not claim an ObjectPool/ObjLocation anchor-to-stream mapping. Both logarithms have negative arguments and therefore have no real-valued solution; the replacement's verbal rejection of both negative branches is mathematically justified. The exact visible object content and rendering method are now recorded. Source row unchanged. Residual notation-loss and source-defect OIs remain open; approval pending and verification deferred.",
       "completion_condition": "The displayed content of the two objects is recorded with its method (decoded bytes or owner statement), or the item is left unresolved with the reason; no lesson is authored here and the source row is not edited."
     },
     {
@@ -2202,7 +2202,7 @@
         "FM-INV-T3"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "OI-FM-003 and COV-FM-T3-SCHEME (UNRESOLVED, no lesson_ids). Blocked until FM-INV-T3 has confirmed the absence from the document and the owner supplies the material or confirms. Nothing in the repository supplies it.",
+      "implementation_reference": "Re-inspected the exact user-supplied archive (SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e). It contains member `SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx` (SHA-256 83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5). The member has instructional bodies headed Week 2 through Week 6 and Week 8; it does not supply a visible scheme-of-work table or bodies for Weeks 1, 7, 9–12. This confirms the current supplied archive contains partial Third Term Further Mathematics material, not a complete term. The owner must still confirm whether this is the whole source set or supply the missing scheme/weeks; no scheme is inferred. Keep BLOCKED.",
       "completion_condition": "Material supplied (then a new registration/indexing item is appended) or the owner confirmation is recorded and the open item updated."
     },
     {

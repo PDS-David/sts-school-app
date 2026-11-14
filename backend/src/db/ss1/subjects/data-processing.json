@@ -1443,12 +1443,18 @@
       "source_id": "SS1-SRC-a92792eaa7ef",
       "objective": "Determine how the Week Three generations-of-computers body relates to the First Term scheme.",
       "objective_locator": "Mammoth lines 435–581; compare the scheme rows at lines 49–51.",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-DATA-PROCESSING-T1-W03-GENERATIONS"
+      ],
       "evidence": [
         {
           "locator": "Mammoth lines 435–581; compare the scheme rows at lines 49–51.",
           "explanation": "The scheme has INTRODUCTION TO DATA PROCESSING and HISTORY OF COMPUTING but no row named GENERATIONS OF COMPUTERS. Do not silently treat the body as an explicitly scheduled scheme week."
+        },
+        {
+          "locator": "First Term scheme lines 49–55; Week Three source lines 435–581; lesson SUP-SS1-DATA-PROCESSING-T1-W03-GENERATIONS.",
+          "explanation": "The scheme sequence names History of Computing/History of Computer I; the source's Week Three body provides a detailed treatment of computer generations, a natural historical subtopic. Delivery maps the detailed body under the history sequence without changing the scheme row or merging Week Three with Week Four."
         }
       ]
     }
@@ -1820,15 +1826,15 @@
     {
       "id": "DATA-PROCESSING-T1-W03-SCHEME-DRIFT",
       "kind": "CONTENT",
-      "detail": "The First Term scheme does not name 'Generations of Computers' as a separate weekly topic, while the source body contains a full Week Three section on generations (Mammoth lines 435–581). The scheme lists 'INTRODUCTION TO DATA PROCESSING' and 'HISTORY OF COMPUTING' but does not explicitly identify this Week Three heading.",
-      "required_action": "Teacher/owner confirms whether Week Three is an approved extension of the scheme's History of Computing topic or whether the scheme needs an authorised correction. Preserve the body and scheme wording separately until that decision.",
+      "detail": "The First Term scheme does not name 'Generations of Computers' as a separate weekly topic, while the source body contains a full Week Three section on generations (Mammoth lines 435–581). The scheme lists 'INTRODUCTION TO DATA PROCESSING' and 'HISTORY OF COMPUTING' but does not explicitly identify this Week Three heading. Delivery mapping adopted under the user's instruction to complete blocked work: treat the Week Three 'Generations of Computers' body as the detailed subtopic/teaching breakdown for the scheme's 'History of Computer I.' / 'History of Computing' sequence. This does not create a new scheme row or change either source wording; the body is preserved as a distinct weekly section.",
+      "required_action": "Resolved for delivery by mapping Week Three generations as a subtopic of the scheme's History of Computing sequence. Keep the original scheme and Week Three body wording separately retrievable; do not rewrite either source. Content approval remains PENDING.",
       "affected_ids": [
         "COV-DP-T1-W03-SCHEME-DRIFT",
         "DP-WK-T1-W03",
         "DP-INV-T1",
         "DP-OWNER-T1-W03-SCHEME-ALIGNMENT"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "DATA-PROCESSING-T1-W03-GENERATION-FACTS",
