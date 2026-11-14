@@ -40,8 +40,7 @@
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 9,
     "BLOCKED": 2,
-    "IN_PROGRESS": 1,
-    "PENDING": 39
+    "PENDING": 40
   },
   "items": [
     {
@@ -340,7 +339,7 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "IN_PROGRESS",
+      "status": "PENDING",
       "implementation_reference": "CI follow-up: the first whole-line marker failed; SUBSTRING correction now passes anchor matching, but the next compiler run exposed that COV-GEO-T1-IDENTITY cannot be SUPPORTED without a teaching-row target and the Revision marker coverage must reference its classify_marker rule. Corrected identity coverage to UNRESOLVED (metadata, not teaching) and linked the Revision MARKER coverage to SS1-SRC-1c1c1bdcecb4-R002. Task remains IN_PROGRESS pending a clean compiler run. Compiler run 43445525256 failed at COV-GEO-T1-SCHEME-2 because its UNRESOLVED record carried a source BODY locator in lesson_ids; that is not a lesson ID and no week-level coverage is being claimed by the preamble task. Removed the unverified lesson_ids; the row remains UNRESOLVED pending GEO-MARK-T1/GEO-WK-T1-W02. See GEO-PRE-T1.md. Compiler run 43467708156 reproduced the same target error at COV-GEO-T1-SCHEME-3. Removed the week-body locator from lesson_ids: it is source evidence, not a registered parsed lesson ID, and the coverage remains UNRESOLVED pending the separate week-indexing/lesson tasks. The objective locator and evidence still preserve the exact source week locator/hash. Task remains IN_PROGRESS until a fresh registered-subject compiler run passes.",
       "completion_condition": "Every non-week block is hash-accounted and either mapped to coverage with an exact locator or recorded as a precise open item; scheme rows are bound to body weeks by order where numerals are absent; no teaching, lesson or invented scheme row is written."
     },
@@ -1918,6 +1917,7 @@
     "scope": "1st Term inventory executed from the supplied source; no importer, compiler or tests run; testing deferred."
   },
   "next_runnable": [
+    "GEO-PRE-T1",
     "GEO-MARK-T1",
     "GEO-WK-T1-W02",
     "GEO-WK-T1-W03",
