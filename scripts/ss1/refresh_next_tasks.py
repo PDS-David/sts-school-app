@@ -17,7 +17,7 @@ for path in sorted((ROOT/'docs/ss1/work/microtasks').glob('*/QUEUE.json')):
         missing=set(item.get('depends_on',[]))-byid.keys()
         if missing:raise ValueError(f"{item['id']}: missing dependencies {sorted(missing)}")
     totals.update(i['status'] for i in items)
-    ready=[i for i in items if i['status']=='PENDING' and i['kind']!='TEST' and all(byid[d]['status'] in DONE for d in i.get('depends_on',[]))]
+    ready=[i for i in items if i['status']=='PENDING' and i['kind'] not in {'TEST','SCOPE_DECOMPOSITION'} and all(byid[d]['status'] in DONE for d in i.get('depends_on',[]))]
     slug=path.parent.name
     if not ready:
         outputs[path.parent/'NEXT_TASK.md']=f'# {slug}\n\nNo dependency-ready non-test task is recorded at {BASE}. Do not invent one or treat this as subject completion. Review BLOCKED and deferred TEST entries with their exact input gates.\n'
