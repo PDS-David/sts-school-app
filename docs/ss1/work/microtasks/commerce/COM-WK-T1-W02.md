@@ -24,7 +24,7 @@
 - Treats age and sex neutrally; no occupation is described as belonging to one sex.
 - Explains direct/indirect services using the source's payment-based scheme and notes that the payer/employer matters.
 - Answers both EVALUATION blocks, THEORY questions and four unambiguous WEEKEND ASSIGNMENT items with proposed criterion-level marking.
-- Weekend item 4 remains ungraded because the source lists policemen as indirect and then identifies a teacher as indirect in item 5, making both options defensible under the source's own model.
+- The original Weekend item 4 is retained as an unscored source defect; the student lesson now supplies a clearly worded replacement question with an explicit public-employment/payment context, and coverage is IMPLEMENTED_EQUIVALENT.
 - The lesson distinguishes commercial activities from the primary/secondary/tertiary sector model. The source's “secondary occupation” wording is preserved and explicitly flagged as inconsistent, supported by official NCERT and MOHEST SS1 Commerce materials.
 
 ## Exact assessment disposition
