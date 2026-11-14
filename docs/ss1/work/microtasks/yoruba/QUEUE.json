@@ -70,7 +70,8 @@
     "YO-T1-W05 provisional replacement drafts were added: EDE (high/mid/low and contour tones), ASA (marriage and mutual-help proverbs), and LITIRESO (a structured method for analysing the approved prose text). All remain DRAFT/PENDING approval/DEFERRED verification. The source's unmarked tone examples and missing WAEC/NECO prose title remain explicit blockers.",
     "YO-T1-W06 drafts added: EDE syllable structure (V, CV, N) and ASA proverbs about work/occupations. The source contains no Week 6 LITIRESO row, so none was invented. Both lessons remain DRAFT/PENDING approval/DEFERRED verification; uncertain syllabic-nasal examples and damaged proverb lines remain open.",
     "Week 5 EDE and ASA lesson bodies were expanded to retain the four separate assessment prompts; their stored SHA-256 values were aligned with the exact committed UTF-8 body text. The prior integrity run identified the mismatch; this checkpoint commit requests a fresh CI validation. All 17 new lesson drafts remain pending approval and verification.",
-    "Week 5 ASA final practice prompt restored its complete explanatory clause; its existing body hash now corresponds to the exact committed lesson text. Requesting fresh integrity and Yoruba regression checks after the previous run identified the shortened prompt."
+    "Week 5 ASA final practice prompt restored its complete explanatory clause; its existing body hash now corresponds to the exact committed lesson text. Requesting fresh integrity and Yoruba regression checks after the previous run identified the shortened prompt.",
+    "YO-PRE-T3-1 (2026-11-14) indexed the third-term title and flat scheme preamble. Title line 1, scheme lines 3-83, full preamble lines 1-113, each of the eleven groups, and the unique scheme heading are hash-accounted in YO-PRE-T3-1.md. Groups 1-10 map by position to YO-T3-W01..W10 and their Yoruba ordinal body headings; group 11 maps to the existing revision/test marker YO-T3-W11-SCHEME-REVISION-TEST. Header/footer metadata recorded. Added SCHEME_ONLY rule R003 and MARKER coverage YO-T3-PREAMBLE-SCHEME-HEADER. No lesson authored; approval pending and testing deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -86,8 +87,8 @@
     "ASSET": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 44,
-    "PENDING": 81,
+    "IMPLEMENTED_TESTING_DEFERRED": 45,
+    "PENDING": 80,
     "BLOCKED": 40
   },
   "items": [
@@ -3142,11 +3143,11 @@
       "depends_on": [
         "YO-SRC-T3"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "YO-PRE-T3-1",
       "week_or_locator": "document title and flat eleven-group scheme before the first teaching heading (extractRawText lines 1-83; title line 1, heading line 3, \"Ose: \" line 5, groups lines 7-83)",
       "objective": "Index the non-week front matter of the 3rd Term Yoruba document: the title line (1) and the flat scheme (3-83). Hash-account both, map every group to its YO-WK-T3 week item (groups 1-10 to W01-W10, the revision pair to W11), record that the scheme carries no week numbers or per-week labels, record the header/footer parts outside extractRawText, and do not invent teaching.",
-      "implementation_reference": "Not yet indexed. Found by YO-INV-T3 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5). Title line 1, 60 characters, SHA-256 cd75f590d1060a7b6cefbd92ba58e0bf42064f11a9439b9f0db209a4a1d87504; it equals the registered header_text. Scheme heading line 3 \"ILANA ISE OSOOSE FUN SAA KETA\", line 5 \"Ose: \" with no numerals, and eleven EDE/ASA/LIT groups at lines 7-83; lines 3-83 are 2,396 characters, SHA-256 e01907be4a3a91ab933ac6a10b39b9a21f93e2cb43cb979686e5540f4e87736e; the whole front matter lines 1-113 is SHA-256 d2054cef3116d98e5bfc049a5a407b1f81dd2c7c4876ba5b0b263ffbbbcbc165. Rows are paragraphs with tabs, not a Word table; 198 paragraphs carry automatic list numbering that extractRawText does not emit. word/header1.xml holds a NAME/CLASS fill-in line and word/footer2.xml holds \"1GSCHS/3RD TERM/YOR/SS1\"; both are outside extractRawText and non-teaching. No objective-level coverage exists.",
+      "implementation_reference": "Implemented on agent/yoruba-t3-preamble-20261114. Evidence: docs/ss1/work/microtasks/yoruba/YO-PRE-T3-1.md. Added SCHEME_ONLY rule SS1-SRC-4cc6aae9ed7d-R003 for the unique line-3 scheme heading and MARKER coverage YO-T3-PREAMBLE-SCHEME-HEADER. Title line 1, scheme lines 3-83 and full preamble lines 1-113 are hash-accounted; all eleven scheme groups map positionally to YO-T3-W01..W11 and matching source headings/marker. Header/footer metadata recorded. No teaching or approval invented. Testing deferred.",
       "completion_condition": "Both front-matter blocks are hash-accounted with locators and every scheme group is mapped to its YO-WK-T3 item or a precise open item; header/footer metadata is recorded; the scheme rows are not treated as teaching bodies; no lesson is authored and no schema/compiler edit is made."
     },
     {
@@ -7237,11 +7238,7 @@
     }
   },
   "next_runnable": [
-    "YO-SCOPE-OBJECTIVE-INDEXING",
-    "YO-TEST-PACKAGE",
-    "YO-LES-T1-W02-EDE",
-    "YO-LES-T1-W02-ASA",
-    "YO-LES-T1-W02-LIT",
-    "YO-LES-T1-W03-EDE"
+    "YO-PRE-T3-2",
+    "YO-FND-T3-01"
   ]
 }
