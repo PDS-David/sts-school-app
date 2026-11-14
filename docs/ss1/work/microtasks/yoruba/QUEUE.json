@@ -3184,11 +3184,11 @@
       "depends_on": [
         "YO-SRC-T3"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "YO-PRE-T3-2",
       "week_or_locator": "IWE ITOKASI reference list (extractRawText lines 91-113; 11 titles)",
       "objective": "Index the IWE ITOKASI bibliography of the 3rd Term Yoruba document: hash-account lines 91-113, list each title with its line, record which titles the body actually uses (Iya Atata at 623, 919 and 1235) and which appear only in the list, and record that a bibliography is not teaching content.",
-      "implementation_reference": "Not yet indexed. Found by YO-INV-T3 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5). Lines 91-113, 478 characters, 11 titles, SHA-256 c5da812e2f7d9fc5ced97d036b8496498a1f43d771bf3a52756746e9aaa728aa. Titles: Imo, Ede, Asa Ati Litireso (S.Y Adewoyin, 93); Eto Iro ati Girama fun Sekondiri Agba (Folarin Olatubosun, 95); Akojopo Alo Apagbe (Amoo, 97); Oriki Orile Metadinlogbon (Babalola, 99); Iremoje Ere Isipa Ode (Ajuwon, 101); Igbeyin Lalayonta (Ajewole, 103); Iya Atata (Fadiya, 105); Ore Mi (Aderibigbe, 107); Egun Ori Ikunle (Lasunkanmi Tela, 109); Omo Ti A Fise Wo (Ojukorola Oluwadamilare, 111); Ewi Igbalode (Taiwo Olunlade, 113). Iya Atata is the only title used in the body (weeks 2-4 LIT at 623, 919 and 1235); the other ten appear only here. yoruba.json has no coverage entry.",
+      "implementation_reference": "Implemented in docs/ss1/work/microtasks/yoruba/YO-PRE-T3-2.md. Reuses the prior source-inventory evidence in YO-INV-T3.md: bibliography lines 91–113, 478 characters, SHA-256 c5da812e2f7d9fc5ced97d036b8496498a1f43d771bf3a52756746e9aaa728aa; source-member SHA-256 a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3. Eleven titles and line locators are indexed; Iya Atata is the only title cited in the body (lines 623, 919, 1235); the other ten are bibliography-only. No lesson/coverage is claimed from a reference list. The archive was not reopened in this task; the earlier inventory's hash verification is cited as prior evidence. Testing deferred; approval pending; verification deferred.",
       "completion_condition": "The list is hash-accounted with a locator for each title, the titles used by the body are identified with evidence, and the bibliography is not treated as teaching; no lesson is authored and no schema/compiler edit is made."
     },
     {
@@ -7238,7 +7238,6 @@
     }
   },
   "next_runnable": [
-    "YO-PRE-T3-2",
     "YO-FND-T3-01"
   ]
 }
