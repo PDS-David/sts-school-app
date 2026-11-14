@@ -536,8 +536,8 @@
         "YO-WK-T1-W02",
         "YO-FACT-T1-W02-DEFECTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by YO-WK-T1-W02 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5). The EDE part (source lines 313-405 (objectives YO-T1-W02-EDE-01..05)) teaches five objectives, all PARTIAL. Defects and notation gaps are listed in YORUBA-T1-W02-SOURCE-DEFECTS and YORUBA-T1-W02-NOTATION and must be decided in YO-FACT-T1-W02-DEFECTS first. No lesson is authored in YO-WK-T1-W02. Provisional draft now exists in yoruba.json on branch agent/yoruba-t1-week2-lesson-drafts-20261113; status remains PENDING because YO-FACT-T1-W02-DEFECTS is not resolved by a named Yoruba expert and the draft is not approved or verified.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in backend/src/db/ss1/subjects/yoruba.json, SUP-SS1-YORUBA-T1-W02-EDE. Contains the 18 consonants with IPA, seven oral and five nasal vowels with a complete 12-row IPA table, tone/underdot rules, clear examples for gb and p, and a practical vowel-chart drawing task with a 10-mark rubric. Six practice items include answers and marking. body_sha256 recorded; content approval PENDING; verification DEFERRED.",
       "completion_condition": "A lesson in yoruba.json teaches every Week 2 EDE objective, uses the corrections and notation decision agreed in YO-FACT-T1-W02-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance, and PENDING content approval; no fact is invented and no schema or compiler edit is made."
     },
     {
@@ -580,8 +580,8 @@
         "YO-WK-T1-W02",
         "YO-FACT-T1-W02-DEFECTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by YO-WK-T1-W02 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5). The ASA part (source lines 407-443 (objectives YO-T1-W02-ASA-01..03)) teaches three objectives, all PARTIAL. Defects and notation gaps are listed in YORUBA-T1-W02-SOURCE-DEFECTS and YORUBA-T1-W02-NOTATION and must be decided in YO-FACT-T1-W02-DEFECTS first. No lesson is authored in YO-WK-T1-W02. Provisional draft now exists in yoruba.json on branch agent/yoruba-t1-week2-lesson-drafts-20261113; status remains PENDING because YO-FACT-T1-W02-DEFECTS is not resolved by a named Yoruba expert and the draft is not approved or verified.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in backend/src/db/ss1/subjects/yoruba.json, SUP-SS1-YORUBA-T1-W02-ASA. Replaces corrupted/truncated source occupation phrases with 13 clearly described traditional livelihoods and crafts; corrects gbàgbọ́ and ìran kọ̀ọ̀kan; teaches work ethics and Iṣẹ́ lóògùn ìṣẹ́. Six practice items include answers and marking. body_sha256 recorded; content approval PENDING; verification DEFERRED.",
       "completion_condition": "A lesson in yoruba.json teaches every Week 2 ASA objective, uses the corrections and notation decision agreed in YO-FACT-T1-W02-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance, and PENDING content approval; no fact is invented and no schema or compiler edit is made."
     },
     {
@@ -624,8 +624,8 @@
         "YO-WK-T1-W02",
         "YO-FACT-T1-W02-DEFECTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by YO-WK-T1-W02 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5). The LIT part (source lines 445-463 (objectives YO-T1-W02-LIT-01..03)) teaches three objectives, all PARTIAL. Defects and notation gaps are listed in YORUBA-T1-W02-SOURCE-DEFECTS and YORUBA-T1-W02-NOTATION and must be decided in YO-FACT-T1-W02-DEFECTS first. No lesson is authored in YO-WK-T1-W02. Provisional draft now exists in yoruba.json on branch agent/yoruba-t1-week2-lesson-drafts-20261113; status remains PENDING because YO-FACT-T1-W02-DEFECTS is not resolved by a named Yoruba expert and the draft is not approved or verified.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in backend/src/db/ss1/subjects/yoruba.json, SUP-SS1-YORUBA-T1-W02-LIT. Replaces corrupted source prose with original explanations of literary language, voice, drums, song and dance; includes òwe, àfiwé, àtúnsọ, àpèjúwe and àkànlò èdè. Six practice items include answers and marking. body_sha256 recorded; content approval PENDING; verification DEFERRED.",
       "completion_condition": "A lesson in yoruba.json teaches every Week 2 LIT objective, uses the corrections and notation decision agreed in YO-FACT-T1-W02-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance, and PENDING content approval; no fact is invented and no schema or compiler edit is made."
     },
     {
@@ -667,8 +667,8 @@
         "YO-SRC-T1",
         "YO-WK-T1-W02"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Raised by YO-WK-T1-W02 (2026-10-29). Decisions needed, with locators: (1) the third sound class labelled \"d.\" at line 325 and the second consonant written s at line 359, both against the 18-consonant count printed at 327; (2) whether the vowel IPA table (381-403) should have twelve rows and which row is missing, given that A is transcribed /an/ and An /a/ and that the nasal rows carry oral symbols; (3) the correct transcription of J, P, Gb and the two s rows in the consonant table (343, 353, 339, 357-359); (4) the thirteen occupation names at 415-441, in particular the truncated \"Ise owo bii,\" at 421 and the unrecognisable \"eni hihu\" at 425; (5) the garbled sentences at 413, 449, 453, 455, 457, 461 and 467; (6) \"mejia\" versus \"mejila\" at 377; (7) the five Igbelewon answers and the marking for the vowel-chart task at 477; (8) one tone, sub-dot and IPA notation for the whole term (YORUBA-T1-W02-NOTATION; the week has no diacritics at all). No correction is invented in this item. Agent drafted proposed EDE IPA/orthography corrections and recorded unresolved ASA source terms in YORUBA-T1-W02-ASA-LEXICAL-REVIEW. This does not satisfy the named-expert decision requirement; status remains BLOCKED.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Decision recorded in docs/ss1/work/microtasks/yoruba/YO-FACT-T1-W02-DEFECTS.md. Corrects three sound-class lettering, 18-consonant inventory (s/ṣ distinction), IPA symbols, seven oral/five nasal vowels and all 12 vowel IPA rows. Unrecoverable examples `fig be`, `apepo`, truncated occupation text and corrupted ASA/LIT prose are not guessed; the replacement lessons use clear examples and original explanatory prose. The term-wide tone/underdot convention is applied. No source DOCX edit; prior source inventory hashes reused. Testing deferred.",
       "completion_condition": "Every listed defect and the notation decision is resolved by a named expert decision recorded with evidence and locators; the three Week 2 lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
     },
     {
