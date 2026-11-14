@@ -752,8 +752,8 @@
         "YO-WK-T1-W03",
         "YO-FACT-T1-W03-DEFECTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by YO-WK-T1-W03 (2026-10-29, master bf2bbf23164abc5ad0dd58472147a75c4c5e6e46). The EDE part (source lines 485-573 (objectives YO-T1-W03-EDE-01..07)) teaches seven objectives, all PARTIAL. Defects and notation gaps are listed in YORUBA-T1-W03-SOURCE-DEFECTS and YORUBA-T1-W03-NOTATION and must be decided in YO-FACT-T1-W03-DEFECTS first. No lesson is authored in YO-WK-T1-W03. Provisional draft exists in yoruba.json on branch agent/yoruba-t1-week2-lesson-drafts-20261113; remains PENDING until source defects/notation and any visual delivery gaps are reviewed, approved and verified.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in backend/src/db/ss1/subjects/yoruba.json, SUP-SS1-YORUBA-T1-W03-EDE. Teaches the four independent vowel-description criteria, seven oral/five nasal spellings, front/central/back and high/mid/low distinctions, lip rounding, and the accessible vowel chart. Six practice items include a chart-drawing task with a 10-mark rubric. body_sha256 recorded; content approval PENDING; verification DEFERRED.",
       "completion_condition": "A lesson in yoruba.json teaches every Week 3 EDE objective, uses the corrections and notation decision agreed in YO-FACT-T1-W03-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance, and PENDING content approval; no fact is invented and no schema or compiler edit is made."
     },
     {
@@ -796,8 +796,8 @@
         "YO-WK-T1-W03",
         "YO-FACT-T1-W03-DEFECTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by YO-WK-T1-W03 (2026-10-29, master bf2bbf23164abc5ad0dd58472147a75c4c5e6e46). The ASA part (source lines 575-679 (objectives YO-T1-W03-ASA-01..08)) teaches eight objectives, all PARTIAL. Defects and notation gaps are listed in YORUBA-T1-W03-SOURCE-DEFECTS and YORUBA-T1-W03-NOTATION and must be decided in YO-FACT-T1-W03-DEFECTS first. No lesson is authored in YO-WK-T1-W03. Provisional draft exists in yoruba.json on branch agent/yoruba-t1-week2-lesson-drafts-20261113; remains PENDING until source defects/notation and any visual delivery gaps are reviewed, approved and verified.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in backend/src/db/ss1/subjects/yoruba.json, SUP-SS1-YORUBA-T1-W03-ASA. Corrects the category to ìsírí (plain s), retains five proverb categories, labels all examples as newly composed, and adds two examples each for ìmọ̀ràn, ìbáwí and ìkìlọ̀ with glosses. Six practice items include full answers and marking. body_sha256 recorded; content approval PENDING; verification DEFERRED.",
       "completion_condition": "A lesson in yoruba.json teaches every Week 3 ASA objective, uses the corrections and notation decision agreed in YO-FACT-T1-W03-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance, and PENDING content approval; no fact is invented and no schema or compiler edit is made."
     },
     {
@@ -840,8 +840,8 @@
         "YO-WK-T1-W03",
         "YO-FACT-T1-W03-DEFECTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by YO-WK-T1-W03 (2026-10-29, master bf2bbf23164abc5ad0dd58472147a75c4c5e6e46). The LIT part (source lines 683-697 (objectives YO-T1-W03-LIT-01..04)) teaches four objectives, all PARTIAL. Defects and notation gaps are listed in YORUBA-T1-W03-SOURCE-DEFECTS and YORUBA-T1-W03-NOTATION and must be decided in YO-FACT-T1-W03-DEFECTS first. No lesson is authored in YO-WK-T1-W03. Provisional draft exists in yoruba.json on branch agent/yoruba-t1-week2-lesson-drafts-20261113; remains PENDING until source defects/notation and any visual delivery gaps are reviewed, approved and verified.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in backend/src/db/ss1/subjects/yoruba.json, SUP-SS1-YORUBA-T1-W03-LIT. Standardises lítírésọ̀ alohùn/àtẹnudẹnu, covers eré oníṣe, ewì egúngún, ìjálá, oríkì and ìtàn ìdí-abájọ, and explains kíkì/kíké as performance actions without guessing at corrupted source terms. Six practice items include answers and marking. body_sha256 recorded; content approval PENDING; verification DEFERRED.",
       "completion_condition": "A lesson in yoruba.json teaches every Week 3 LIT objective, uses the corrections and notation decision agreed in YO-FACT-T1-W03-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance, and PENDING content approval; no fact is invented and no schema or compiler edit is made."
     },
     {
@@ -883,8 +883,8 @@
         "YO-SRC-T1",
         "YO-WK-T1-W03"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Raised by YO-WK-T1-W03 (2026-10-29). Decisions needed, with locators: (1) how many articulatory criteria Week 3 teaches and their labels, given that 491 announces four but 493-511 carry eight numbered paragraphs with \"Ipo ti afase wa\" twice and a truncated line at 507; (2) the correct classification of the perese and roboto sets at 513 and 515, which mix oral and nasal vowels, and whether a and i at 521 and 527 should carry written letters instead of automatic numbering; (3) the layout of the ATE FAWELI chart at 551-569, whose 16 connectors and tab-positioned labels do not extract as a grid (YO-VIS-T1-01); (4) the definition at 579 (\"afo\", \"iriir\") and whether 583 or 677 is the intended wording; (5) the thirteen proverb glosses at 591-659, in particular 601-603, 625-627, 629-631, 633-635, 641-643, 645-647 and 653-657, and the meaning of the fifth category name \"isiri\" (651); (6) the LITIRESO fragment at 687 and the undefined term \"atenudenu\"; (7) the four Igbelewon answers and the marking for the three-type task at 713-719, including the \"faweeli\" spelling at 703 and the conflated prompt at 709; (8) one tone, sub-dot and nasal-vowel notation for the whole term (YORUBA-T1-W03-NOTATION; the week has no diacritics at all). No correction is invented in this item. Provisional replacement drafts use corrected general vowel phonology and original labelled classroom proverb examples; source proverb wording and vowel-chart asset remain unresolved. Named-expert decision is still required; status remains BLOCKED.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Decision recorded in docs/ss1/work/microtasks/yoruba/YO-FACT-T1-W03-DEFECTS.md. Establishes four vowel-description criteria; separates oral/nasal quality from tongue height/frontness and lip rounding; rejects the mixed perese/roboto lists as vowel inventories; confirms ìsírí (plain s) as encouragement; replaces corrupted proverb glosses and LITIRESO strings with original teaching examples rather than guessing. The term-wide tone/underdot standard is applied. Source archive not reopened; prior inventory hashes reused. Testing deferred.",
       "completion_condition": "Every listed defect and the notation decision is resolved by a named expert decision recorded with evidence and locators; the three Week 3 lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
     },
     {
@@ -3436,8 +3436,8 @@
         "YO-FACT-T1-W03-DEFECTS",
         "YO-LES-T1-W03-EDE"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Not yet authored. YO-VIS-T1-01 (2026-10-30) fixed the content reading: the source figure at lines 551-569 is two identical 8-connector grids with no text boxes and no media, and its letters are tab-positioned paragraphs (left panel oral i/U/e/o/e/o/a, right panel nasal in/un/en/on/an). The asset is to be rebuilt from the prose lists at 521-533 (seven oral vowels with height, backness and lip posture) and 537-545 (five nasal vowels), not from the tab layout, which extraction flattens. Original SVG created and registered in yoruba.json as YO-T1-W03-EDE-VOWEL-CHART-1; awaiting safety/hash/runtime verification, so task remains BLOCKED pending verification.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in backend/src/db/ss1/assets/yoruba/yoruba-t1-w03-vowel-chart.svg and registered as YO-T1-W03-EDE-VOWEL-CHART-1. Static SHA-256 f04606a8d65e14d030ab2a05003cebda73263cbcd363e2b25089c0b01bbc2db4 matches the package record; 3578 UTF-8 bytes. Static inspection found no script, foreignObject, event-handler attributes or external HTTP references, and all twelve vowel spellings are present. Runtime rendering verification is deferred; no test run.",
       "completion_condition": "An authored SVG at backend/src/db/ss1/assets/yoruba/yo1-w3-vowel-chart.svg, recorded in yoruba.json assets[] with its sha256, byte size, media_type image/svg+xml, alt text naming both panels and every vowel, and a rights record stating a labelled derivative authored for Sow the Seed Schools; sub-dot letters follow the notation decision recorded under YO-FACT-T1-W03-DEFECTS and no letter is invented where the source is ambiguous. No render of the source DOCX is committed and nothing is displayed in the app in this task. Testing deferred by owner."
     },
     {
