@@ -15,7 +15,7 @@ Option A from `GEOGRAPHY-T1-W01-STATE-CAPITALS-SCOPE` was implemented as the sma
 ## Implemented lesson
 
 - Lesson ID: `SUP-SS1-GEOGRAPHY-T1-W01-STATE-CAPITALS-EXTENSION`
-- Four exact pairs: Lagos— I keja; Ebonyi—Abakaliki; Plateau—Jos; Ogun—Abeokuta.
+- Four exact pairs: Lagos—Ikeja; Ebonyi—Abakaliki; Plateau—Jos; Ogun—Abeokuta.
 - Label: OUTSIDE SCHEME ROW 1.
 - The source's original assessment wording is not edited.
 - Two practice items each have a complete answer key and a 4-mark allocation (four criteria × one mark = four marks).
