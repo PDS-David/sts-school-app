@@ -47,9 +47,9 @@
     "VISUAL": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 112,
-    "PENDING": 4,
-    "BLOCKED": 6
+    "IMPLEMENTED_TESTING_DEFERRED": 113,
+    "BLOCKED": 6,
+    "PENDING": 3
   },
   "items": [
     {
@@ -1959,8 +1959,8 @@
         "FR-LES-T1-W01-NEIGHBOURS",
         "FR-LES-T1-W01-BENEFITS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "french.json delivery_corrections[id=SS1-02-french-COR-001] source_lesson_id=SS1-SRC-945dfb24eaf6:BODY:09796ff91bf3f02297f223ab8c67f3ea7e339d18ada14a42552e5ae6025f493d body_sha256=09796ff91bf3f02297f223ab8c67f3ea7e339d18ada14a42552e5ae6025f493d replacement_id=SUP-SS1-FRENCH-PURPOSE-T1. The binding exists as code. Its stated reason keeps 'whole-block objective scope subject to deferred review'; that review is NOT done (see FR-WK-T1-W01). Do not activate delivery until the review closes. Review 2026-10-28: FR-WK-T1-W01 has now demonstrated incomplete objective scope; binding code is retained but its scope completion is reopened. Package remains PENDING with blocking gaps.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Reviewed 2026-11-14 in FR-COR-001.md against the current objective coverage, Week 1 source audit, three linked lesson records and CORRECTION-OBJECTIVE-EXERCISE-RECONCILIATION-2026-11-11.md. Verdict: the purpose lesson alone does not preserve the full source-row scope; OBJ-2 and OBJ-3 remain PARTIAL, while OBJ-4 and OBJ-5 are separately covered by neighbours/benefits supplements. Week 1 has no source exercise to replace. Review is complete, but this correction is not a full-scope equivalent and must not be activated as one until the remaining gaps receive primary evidence or explicit teacher/owner scope decisions. No approval or verification inferred; testing deferred.",
       "completion_condition": "Existing binding code is not proof of scope completion. Reconcile every displaced Week 1 objective against corrected/supplement teaching; keep all unresolved claims and missing material open. A one-to-one replacement may activate only when its one replacement lesson covers the complete intended row scope. No teacher approval or runtime verification is implied."
     },
     {
@@ -3620,8 +3620,8 @@
     "notes": "Separate oral accent lesson implemented with live teacher model and 10-point oral observation checklist. Oral open item resolved; punctuation drawing p278 remains blocked visual disposition. No audio asset supplied; tests deferred."
   },
   "next_runnable": [
-    "FR-COR-001",
-    "FR-FACT-T1-W02-HEADS-OF-STATE"
+    "FR-FACT-T1-W02-HEADS-OF-STATE",
+    "FR-FACT-REPLACEMENT-SCOPE"
   ],
   "total": 122,
   "audit_snapshot": {
