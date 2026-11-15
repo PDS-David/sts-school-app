@@ -6846,6 +6846,60 @@
         "COV-GEO-T2-W10-SOURCE-ASSESSMENT"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "GEOGRAPHY-T1-MARKER-EXACT-ANCHORS",
+      "kind": "CONTENT",
+      "detail": "The 1st Term Geography inventory records 56 marker occurrences by line/category, but does not preserve the complete exact source line text for every occurrence. Generic headings repeat (for example, EVALUATION QUESTIONS); the contract requires every classify_marker anchor to occur exactly once in the unmodified getBody() text.",
+      "required_action": "Read the original Geography .doc member with getBody() and record each full marker line plus enough surrounding exact text to establish a unique anchor. Verify uniqueness against all 708 lines before adding classify_marker rules. If any repeated heading cannot be uniquely anchored, retain a precise per-occurrence open item rather than adding a broad rule.",
+      "affected_ids": [],
+      "blocks_delivery": true,
+      "source_id": "SS1-SRC-1c1c1bdcecb4"
+    },
+    {
+      "id": "GEOGRAPHY-T1-W03-UNLABELLED-SECTIONS",
+      "kind": "CONTENT",
+      "detail": "Week Three has the unnumbered subsection “B: EARTH REVOLUTION” at lines 228-231 and “Dawn and Twilight” at lines 242-243 without a separate evaluation block.",
+      "required_action": "Map the exact source lines to Week Three coverage, preserve their sequence, and determine whether the dawn/twilight content has any source questions. Do not invent a marker or assessment.",
+      "affected_ids": [],
+      "blocks_delivery": true,
+      "source_id": "SS1-SRC-1c1c1bdcecb4"
+    },
+    {
+      "id": "GEOGRAPHY-T1-W05-READING-ASSIGNMENT-GLUED",
+      "kind": "CONTENT",
+      "detail": "Week Five's READING ASSIGNMENT marker is appended to the end of the preceding general-evaluation line at getBody line 402 after a long run of spaces.",
+      "required_action": "Inspect the original source line and Word formatting to confirm the marker boundary; preserve the preceding question text and assignment label separately in coverage without splitting the source line by guess.",
+      "affected_ids": [],
+      "blocks_delivery": true,
+      "source_id": "SS1-SRC-1c1c1bdcecb4"
+    },
+    {
+      "id": "GEOGRAPHY-T1-W09-MISSING-EVALUATION-READING",
+      "kind": "CONTENT",
+      "detail": "Week Nine (lines 607-636) has no EVALUATION QUESTIONS marker and no READING ASSIGNMENT marker; it has only GENERAL EVALUATION QUESTIONS at line 620.",
+      "required_action": "Record the absence as source structure; confirm whether the scheme/teacher requires separate evaluation or reading tasks. Do not invent source questions or classify the General Evaluation marker as teaching.",
+      "affected_ids": [],
+      "blocks_delivery": true,
+      "source_id": "SS1-SRC-1c1c1bdcecb4"
+    },
+    {
+      "id": "GEOGRAPHY-T1-W10-LETTERED-LISTS",
+      "kind": "CONTENT",
+      "detail": "Week Ten uses lettered subsections (a)-(d) at lines 645, 653, 663 and 668, followed by tab-aligned two-column importance/disadvantage lists at lines 673-684; these are not a Word table.",
+      "required_action": "Map each subsection and each tab-aligned list to the appropriate Week Ten objective, preserving labels, tabs, order and the two-column relationship. Do not flatten into unrelated prose.",
+      "affected_ids": [],
+      "blocks_delivery": true,
+      "source_id": "SS1-SRC-1c1c1bdcecb4"
+    },
+    {
+      "id": "GEOGRAPHY-T1-MISSING-DRAWING-PROMPTS",
+      "kind": "CONTENT",
+      "detail": "Week Six Theory line 491, Week Seven Theory line 536 and Week Ten Theory lines 705-706 request drawings, but the source file contains no corresponding diagram/map/figure. The only embedded JPEGs are vendor letterheads.",
+      "required_action": "Record each drawing prompt as a missing-asset/open item and obtain an appropriately licensed or independently created teaching figure only after teacher approval. Do not bind either branding JPEG as a geography diagram.",
+      "affected_ids": [],
+      "blocks_delivery": true,
+      "source_id": "SS1-SRC-1c1c1bdcecb4"
     }
   ]
 }
