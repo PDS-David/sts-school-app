@@ -56,8 +56,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 79,
-    "BLOCKED": 1,
-    "PENDING": 43
+    "BLOCKED": 9,
+    "PENDING": 35
   },
   "items": [
     {
@@ -2060,8 +2060,8 @@
         "CHEM-SRC-T1B",
         "CHEM-IDX-T1B-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "status": "BLOCKED",
+      "implementation_reference": "Preliminary disposition recorded in CHEM-VIS-T1B-W02-TABLES.md. Source archive is needed to calculate per-object hashes, inspect exact pixels/cells and satisfy the task's integrity condition; no approval or correction claimed.",
       "completion_condition": "Each table has a recorded disposition with locator; layout tables identified as such; nothing marked approved."
     },
     {
@@ -2097,8 +2097,8 @@
         "CHEM-IDX-T1B-W03",
         "CHEM-IDX-T1B-W05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "status": "BLOCKED",
+      "implementation_reference": "Preliminary disposition recorded in CHEM-VIS-T1B-W03-W05-ATOM.md. Source archive is needed to calculate per-object hashes, inspect exact pixels/cells and satisfy the task's integrity condition; no approval or correction claimed.",
       "completion_condition": "Diagram and non-content objects recorded with locators; accuracy check outcome recorded; nothing marked approved."
     },
     {
@@ -2133,8 +2133,8 @@
         "CHEM-SRC-T1B",
         "CHEM-IDX-T1B-W05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "status": "BLOCKED",
+      "implementation_reference": "Preliminary disposition recorded in CHEM-VIS-T1B-W05-ORBITALS.md. Source archive is needed to calculate per-object hashes, inspect exact pixels/cells and satisfy the task's integrity condition; no approval or correction claimed.",
       "completion_condition": "Each diagram has a recorded disposition and accuracy finding with locator and hash; nothing marked approved."
     },
     {
@@ -2169,8 +2169,8 @@
         "CHEM-SRC-T1B",
         "CHEM-IDX-T1B-W05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "status": "BLOCKED",
+      "implementation_reference": "Preliminary disposition recorded in CHEM-VIS-T1B-W05-ION-IMAGES.md. Source archive is needed to calculate per-object hashes, inspect exact pixels/cells and satisfy the task's integrity condition; no approval or correction claimed.",
       "completion_condition": "Each picture transcribed or dispositioned with locator and hash; mis-set notation recorded; nothing marked approved."
     },
     {
@@ -2205,8 +2205,8 @@
         "CHEM-SRC-T1B",
         "CHEM-IDX-T1B-W05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "status": "BLOCKED",
+      "implementation_reference": "Preliminary disposition recorded in CHEM-VIS-T1B-W05-TABLE.md. Source archive is needed to calculate per-object hashes, inspect exact pixels/cells and satisfy the task's integrity condition; no approval or correction claimed.",
       "completion_condition": "Table disposition recorded with locator and hash; nothing marked approved."
     },
     {
@@ -2241,8 +2241,8 @@
         "CHEM-SRC-T1B",
         "CHEM-IDX-T1B-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "status": "BLOCKED",
+      "implementation_reference": "Preliminary disposition recorded in CHEM-VIS-T1B-W07-TABLES.md. Source archive is needed to calculate per-object hashes, inspect exact pixels/cells and satisfy the task's integrity condition; no approval or correction claimed.",
       "completion_condition": "Each table has a recorded disposition with locator and hash; the Table 2.1 reference resolved or recorded as unresolved; nothing marked approved."
     },
     {
@@ -2277,8 +2277,8 @@
         "CHEM-SRC-T1B",
         "CHEM-IDX-T1B-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "status": "BLOCKED",
+      "implementation_reference": "Preliminary disposition recorded in CHEM-VIS-T1B-W09-APPARATUS.md. Source archive is needed to calculate per-object hashes, inspect exact pixels/cells and satisfy the task's integrity condition; no approval or correction claimed.",
       "completion_condition": "Each image has a recorded disposition with locator and hash; nothing marked approved."
     },
     {
@@ -2313,8 +2313,8 @@
         "CHEM-SRC-T1B",
         "CHEM-IDX-T1B-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "status": "BLOCKED",
+      "implementation_reference": "Preliminary disposition recorded in CHEM-VIS-T1B-W09-TABLES.md. Source archive is needed to calculate per-object hashes, inspect exact pixels/cells and satisfy the task's integrity condition; no approval or correction claimed.",
       "completion_condition": "Each table has a recorded disposition with locator and hash; nothing marked approved."
     },
     {
@@ -4517,14 +4517,6 @@
     }
   },
   "next_runnable": [
-    "CHEM-VIS-T1B-W02-TABLES",
-    "CHEM-VIS-T1B-W03-W05-ATOM",
-    "CHEM-VIS-T1B-W05-ORBITALS",
-    "CHEM-VIS-T1B-W05-ION-IMAGES",
-    "CHEM-VIS-T1B-W05-TABLE",
-    "CHEM-VIS-T1B-W07-TABLES",
-    "CHEM-VIS-T1B-W09-APPARATUS",
-    "CHEM-VIS-T1B-W09-TABLES",
     "CHEM-PRES-T1B-FORMULAE",
     "CHEM-PRES-T1B-ACTIVITIES",
     "CHEM-PRES-T1B-WORKED",
