@@ -10,7 +10,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { ss23PackageSchema, registrySchema, type RegistryRow, type Ss23Package } from './subjectPackageSchema.js';
+import { ss23PackageSchema, registrySchema, type RegistryRow, type Ss23Package } from './registrySchema.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 export const repoRoot = path.resolve(here, '../../../..');

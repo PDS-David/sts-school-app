@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import { z } from 'zod';
+import type { PoolClient } from 'pg';
 import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scope.js';
@@ -15,6 +17,7 @@ import { resolveSs1MathematicsDelivery, safeSs1MathematicsTopic, mathematicsAsse
 import { resolveAgriculturalScienceDelivery, resolveAgriculturalScienceSupplement, resolveAgriculturalScienceSourceProjection, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, retireStaleAgriculturalScienceSupplementCache, retireStaleAgriculturalScienceSourceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
 import { listStudentSs1Lessons, getStudentSs1Lesson, listStudentSs1Assets, readStudentSs1Asset, studentSs1LessonPreview } from '../db/ss1/studentDelivery.js';
+import { listStudentSs23Units, getStudentSs23Unit, listStudentSs23Assets, readStudentSs23Asset, studentSs23UnitPreview, safeStudentSs23Unit, type Ss23ClassName } from '../db/ss23/studentDelivery.js';
 import { resolvePrimary4SourceDelivery, safePrimary4Topic, primary4WithdrawnAssessmentIds, primary4AssessmentDeliverable, retireStalePrimary4Cache } from '../utils/primary4Delivery.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
@@ -23,6 +26,58 @@ const termPinEnforced = () => process.env.TERM_PIN_ENFORCED === 'true';
 
 const router = Router();
 router.use(requireAuth);
+
+type ContentReferenceError = { status: 400; error: string } | null;
+
+/**
+ * Lock and validate the school-owned reference rows before a learning-content
+ * write. The row locks prevent an administrator changing a subject/term's
+ * school assignment between validation and persistence.
+ */
+async function validateContentReferences(
+  client: PoolClient,
+  schoolCode: string,
+  subjectId: number,
+  termId: number | null,
+): Promise<ContentReferenceError> {
+  const { rows: schoolRows } = await client.query(
+    'SELECT code FROM schools WHERE code=$1 FOR SHARE',
+    [schoolCode],
+  );
+  if (!schoolRows[0]) return { status: 400, error: 'Unknown school_code.' };
+
+  const { rows: subjectRows } = await client.query(
+    'SELECT id FROM subjects WHERE id=$1 AND school_code=$2 FOR SHARE',
+    [subjectId, schoolCode],
+  );
+  if (!subjectRows[0]) return { status: 400, error: 'subject_id must belong to the target school.' };
+
+  if (termId != null) {
+    const { rows: termRows } = await client.query(
+      'SELECT id FROM terms WHERE id=$1 AND school_code=$2 FOR SHARE',
+      [termId, schoolCode],
+    );
+    if (!termRows[0]) return { status: 400, error: 'term_id must belong to the target school.' };
+  }
+  return null;
+}
+
+function resolveContentSchool(
+  user: AuthUser,
+  requestedSchoolCode?: string,
+): { schoolCode: string } | { status: 400 | 403; error: string } {
+  if (user.role === 'admin') {
+    const schoolCode = requestedSchoolCode?.trim() || user.school_code?.trim();
+    return schoolCode
+      ? { schoolCode }
+      : { status: 400, error: 'school_code is required when an administrator creates learning content.' };
+  }
+  const schoolCode = user.school_code?.trim();
+  return schoolCode
+    ? { schoolCode }
+    : { status: 403, error: 'Your account is not assigned to a school.' };
+}
+
 
 // Individually certified SS1 package lessons are read-only student content.
 // Existing database topics, term PINs and topic-completion sequencing remain unchanged.
@@ -154,6 +209,116 @@ router.get('/ss1/assets/:assetId', requirePerm('topics.read'), async (req, res) 
   return res.send(result.bytes);
 });
 
+// SS2 instructional lessons and SS3 examination-preparation resources are
+// delivered only from individually approved, implemented and verified packages.
+// Class membership is resolved server-side; request parameters never select a class.
+async function ss23StudentContext(user: AuthUser): Promise<{ studentId: string; className: Ss23ClassName } | null> {
+  if (user.role !== 'student') return null;
+  const classes = await resolveViewerClassNames(user);
+  if (!Array.isArray(classes)) return null;
+  const allowed = classes.filter((name): name is Ss23ClassName => name === 'SS 2' || name === 'SS 3');
+  if (allowed.length !== 1) return null;
+  const className = allowed[0];
+  const { rows } = await query(
+    'SELECT id FROM students WHERE user_id=$1 AND class_name=$2 AND deleted_at IS NULL',
+    [user.id, className],
+  );
+  return rows[0]?.id ? { studentId: rows[0].id, className } : null;
+}
+
+async function redeemedSs23Terms(studentId: string): Promise<Set<string>> {
+  if (!termPinEnforced()) return new Set(['1st Term', '2nd Term', '3rd Term']);
+  const { rows } = await query(
+    'SELECT term_label FROM term_access_pins WHERE student_id=$1 AND redeemed_at IS NOT NULL',
+    [studentId],
+  );
+  return new Set(rows.map((row: any) => String(row.term_label)));
+}
+
+function studentSs23Assets(unitId: string, className: Ss23ClassName) {
+  return listStudentSs23Assets(unitId, className).map(asset => ({
+    id: asset.id,
+    alt: asset.alt,
+    mime: asset.media_type,
+    url: `/learning/ss23/assets/${encodeURIComponent(asset.id)}`,
+    order: asset.order,
+  }));
+}
+
+router.get('/ss23/lessons', requirePerm('topics.read'), async (req, res) => {
+  const context = await ss23StudentContext(req.user!);
+  if (!context || context.className !== 'SS 2') return res.json({ units: [] });
+  const subjectName = typeof req.query.subject_name === 'string' ? req.query.subject_name : undefined;
+  if (subjectName && subjectName.trim().length > 120) {
+    return res.status(400).json({ error: 'subject_name is too long' });
+  }
+  const unlockedTerms = await redeemedSs23Terms(context.studentId);
+  const units = listStudentSs23Units('SS 2', subjectName).map(unit => {
+    const locked = !unlockedTerms.has(unit.term);
+    if (locked) return { ...studentSs23UnitPreview(unit, true), assets: [] };
+    return {
+      ...safeStudentSs23Unit(unit),
+      ...studentSs23UnitPreview(unit, false),
+      assets: studentSs23Assets(unit.id, 'SS 2'),
+    };
+  });
+  return res.json({ units });
+});
+
+router.get('/ss23/preparation', requirePerm('topics.read'), async (req, res) => {
+  const context = await ss23StudentContext(req.user!);
+  if (!context || context.className !== 'SS 3') return res.json({ units: [] });
+  const subjectName = typeof req.query.subject_name === 'string' ? req.query.subject_name : undefined;
+  if (subjectName && subjectName.trim().length > 120) {
+    return res.status(400).json({ error: 'subject_name is too long' });
+  }
+  const unlockedTerms = await redeemedSs23Terms(context.studentId);
+  const units = listStudentSs23Units('SS 3', subjectName).map(unit => {
+    const locked = !unlockedTerms.has(unit.term);
+    if (locked) return { ...studentSs23UnitPreview(unit, true), assets: [] };
+    return {
+      ...safeStudentSs23Unit(unit),
+      ...studentSs23UnitPreview(unit, false),
+      assets: studentSs23Assets(unit.id, 'SS 3'),
+    };
+  });
+  return res.json({ units });
+});
+
+router.get('/ss23/units/:unitId', requirePerm('topics.read'), async (req, res) => {
+  const context = await ss23StudentContext(req.user!);
+  if (!context) return res.status(404).json({ error: 'Unit not found' });
+  const unit = getStudentSs23Unit(req.params.unitId, context.className);
+  if (!unit) return res.status(404).json({ error: 'Unit not found' });
+  const unlockedTerms = await redeemedSs23Terms(context.studentId);
+  if (!unlockedTerms.has(unit.term)) {
+    return res.status(423).json({ error: 'Redeem the Term PIN to unlock this curriculum unit.' });
+  }
+  return res.json({
+    unit: {
+      ...safeStudentSs23Unit(unit),
+      ...studentSs23UnitPreview(unit, false),
+      assets: studentSs23Assets(unit.id, context.className),
+    },
+  });
+});
+
+router.get('/ss23/assets/:assetId', requirePerm('topics.read'), async (req, res) => {
+  const context = await ss23StudentContext(req.user!);
+  if (!context) return res.status(404).json({ error: 'Asset not found' });
+  const result = readStudentSs23Asset(req.params.assetId, context.className);
+  if (!result) return res.status(404).json({ error: 'Asset not found' });
+  const unlockedTerms = await redeemedSs23Terms(context.studentId);
+  if (!unlockedTerms.has(result.asset.term)) {
+    return res.status(423).json({ error: 'Redeem the Term PIN to unlock this curriculum asset.' });
+  }
+  res.set('Content-Type', result.asset.media_type);
+  res.set('Content-Length', String(result.bytes.length));
+  res.set('ETag', `"${result.asset.sha256}"`);
+  res.set('Cache-Control', 'private, max-age=3600');
+  return res.send(result.bytes);
+});
+
 // ════════════════════════════════════════════════════════
 // MATERIALS
 // ════════════════════════════════════════════════════════
@@ -171,9 +336,10 @@ router.get('/materials', requirePerm('materials.read'), async (req, res) => {
 
   let sql = `SELECT m.*,sub.name AS subject_name,u.full_name AS uploaded_by
              FROM materials m
-             JOIN subjects sub ON sub.id=m.subject_id
+             JOIN subjects sub ON sub.id=m.subject_id AND sub.school_code=m.school_code
              JOIN users u ON u.id=m.created_by
-             WHERE m.school_code=$1`;
+             WHERE m.school_code=$1
+               AND (m.term_id IS NULL OR EXISTS (SELECT 1 FROM terms t WHERE t.id=m.term_id AND t.school_code=m.school_code))`;
   const params: unknown[] = [sc];
 
   if (user.role === 'teacher') {
@@ -211,26 +377,45 @@ router.get('/materials', requirePerm('materials.read'), async (req, res) => {
   return res.json({ materials: rows });
 });
 
-router.post('/materials', requirePerm('materials.write'), async (req, res) => {
-  const { subject_id, class_name, term_id, title, type, url, school_code } = req.body;
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+const materialCreateSchema = z.object({
+  subject_id: z.coerce.number().int().positive(),
+  class_name: z.string().trim().min(1).max(100).nullable().optional(),
+  term_id: z.coerce.number().int().positive().nullable().optional(),
+  title: z.string().trim().min(1).max(255),
+  type: z.string().trim().min(1).max(40),
+  url: z.string().trim().min(1).max(2048),
+  school_code: z.string().trim().min(1).max(50).optional(),
+});
 
-  // Found alongside the same-shape bug on /assessments below: a teacher
-  // could previously publish a material for any class/subject in their
-  // school, whether or not they actually teach it. A teacher may write here
-  // for their own assigned_class (any subject) or their own
-  // assigned_subject_id (any class) — see checkTeacherContentScope() for
-  // the full rule; admin is unrestricted as everywhere else.
-  const scopeError = await checkTeacherContentScope(req.user!, { class_name: class_name ?? null, subject_id });
+router.post('/materials', requirePerm('materials.write'), async (req, res) => {
+  const parsed = materialCreateSchema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
+  const data = parsed.data;
+  const target = resolveContentSchool(req.user!, data.school_code);
+  if ('error' in target) return res.status(target.status).json({ error: target.error });
+
+  const scopeError = await checkTeacherContentScope(req.user!, {
+    class_name: data.class_name ?? null,
+    subject_id: data.subject_id,
+  });
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
-  const { rows } = await query(
-    `INSERT INTO materials(school_code,subject_id,class_name,term_id,title,type,url,created_by)
-     VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
-    [sc, subject_id, class_name ?? null, term_id ?? null,
-     title, type, url, req.user!.id],
-  );
-  return res.status(201).json({ material: rows[0] });
+  const result = await withTransaction(async (client) => {
+    const referenceError = await validateContentReferences(
+      client, target.schoolCode, data.subject_id, data.term_id ?? null,
+    );
+    if (referenceError) return { ok: false as const, ...referenceError };
+
+    const { rows } = await client.query(
+      `INSERT INTO materials(school_code,subject_id,class_name,term_id,title,type,url,created_by)
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
+      [target.schoolCode, data.subject_id, data.class_name ?? null, data.term_id ?? null,
+       data.title, data.type, data.url, req.user!.id],
+    );
+    return { ok: true as const, material: rows[0] };
+  });
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  return res.status(201).json({ material: result.material });
 });
 
 router.delete('/materials/:id', requirePerm('materials.write'), async (req, res) => {
@@ -254,6 +439,98 @@ router.delete('/materials/:id', requirePerm('materials.write'), async (req, res)
 // ════════════════════════════════════════════════════════
 // TOPICS
 // ════════════════════════════════════════════════════════
+
+// ── GET /achievements/me — earned badges derived from verified learning data ──
+// No duplicate badge ledger is maintained: topic passes and assessment
+// submissions are the source of truth, so achievements cannot drift from
+// grades or be duplicated by retries. Students can read only their own data.
+router.get('/achievements/me', requireRole('student'), async (req, res) => {
+  const { rows: studentRows } = await query(
+    'SELECT id FROM students WHERE user_id=$1 AND deleted_at IS NULL LIMIT 1',
+    [req.user!.id],
+  );
+  const student = studentRows[0];
+  if (!student) return res.status(404).json({ error: 'No active student record for this account' });
+
+  const [{ rows: topicRows }, { rows: assessmentRows }] = await Promise.all([
+    query(
+      `SELECT COUNT(*) FILTER (WHERE passed IS TRUE)::int AS passed_topics,
+              MIN(completed_at) FILTER (WHERE passed IS TRUE) AS first_topic_passed_at,
+              (SELECT completed_at FROM topic_completions
+                WHERE student_id=$1 AND passed IS TRUE ORDER BY completed_at OFFSET 9 LIMIT 1) AS tenth_topic_passed_at,
+              (SELECT completed_at FROM topic_completions
+                WHERE student_id=$1 AND passed IS TRUE ORDER BY completed_at OFFSET 24 LIMIT 1) AS twenty_fifth_topic_passed_at
+         FROM topic_completions WHERE student_id=$1`,
+      [student.id],
+    ),
+    query(
+      `SELECT COUNT(*)::int AS submitted_assessments,
+              MIN(sub.submitted_at) AS first_assessment_at,
+              COUNT(*) FILTER (
+                WHERE sub.fully_graded IS TRUE AND a.total_marks > 0
+                  AND NOT EXISTS (
+                    SELECT 1 FROM submission_answers sa
+                     WHERE sa.submission_id=sub.id
+                       AND sa.grading_status IN ('ai_graded','ai_unavailable')
+                  )
+                  AND sub.total_score >= a.total_marks * 0.8
+              )::int AS high_scores,
+              MIN(sub.submitted_at) FILTER (
+                WHERE sub.fully_graded IS TRUE AND a.total_marks > 0
+                  AND NOT EXISTS (
+                    SELECT 1 FROM submission_answers sa
+                     WHERE sa.submission_id=sub.id
+                       AND sa.grading_status IN ('ai_graded','ai_unavailable')
+                  )
+                  AND sub.total_score >= a.total_marks * 0.8
+              ) AS first_high_score_at,
+              COUNT(*) FILTER (
+                WHERE sub.fully_graded IS TRUE AND a.total_marks > 0
+                  AND NOT EXISTS (
+                    SELECT 1 FROM submission_answers sa
+                     WHERE sa.submission_id=sub.id
+                       AND sa.grading_status IN ('ai_graded','ai_unavailable')
+                  )
+                  AND sub.total_score >= a.total_marks
+              )::int AS perfect_scores,
+              MIN(sub.submitted_at) FILTER (
+                WHERE sub.fully_graded IS TRUE AND a.total_marks > 0
+                  AND NOT EXISTS (
+                    SELECT 1 FROM submission_answers sa
+                     WHERE sa.submission_id=sub.id
+                       AND sa.grading_status IN ('ai_graded','ai_unavailable')
+                  )
+                  AND sub.total_score >= a.total_marks
+              ) AS first_perfect_score_at
+         FROM submissions sub
+         JOIN assessments a ON a.id=sub.assessment_id
+        WHERE sub.student_id=$1`,
+      [student.id],
+    ),
+  ]);
+
+  const topicsPassed = Number(topicRows[0]?.passed_topics ?? 0);
+  const assessmentsSubmitted = Number(assessmentRows[0]?.submitted_assessments ?? 0);
+  const highScores = Number(assessmentRows[0]?.high_scores ?? 0);
+  const perfectScores = Number(assessmentRows[0]?.perfect_scores ?? 0);
+  const badges = [
+    { id: 'topic-first', title: 'First Topic Passed', description: 'Pass your first topic assessment.', icon: 'book', progress: Math.min(topicsPassed, 1), target: 1, earned: topicsPassed >= 1, earned_at: topicRows[0]?.first_topic_passed_at ?? null },
+    { id: 'topic-explorer', title: 'Topic Explorer', description: 'Pass 10 topic assessments.', icon: 'compass', progress: Math.min(topicsPassed, 10), target: 10, earned: topicsPassed >= 10, earned_at: topicsPassed >= 10 ? topicRows[0]?.tenth_topic_passed_at ?? null : null },
+    { id: 'topic-scholar', title: 'Topic Scholar', description: 'Pass 25 topic assessments.', icon: 'graduation-cap', progress: Math.min(topicsPassed, 25), target: 25, earned: topicsPassed >= 25, earned_at: topicsPassed >= 25 ? topicRows[0]?.twenty_fifth_topic_passed_at ?? null : null },
+    { id: 'assessment-first', title: 'Assessment Starter', description: 'Submit your first assessment.', icon: 'clipboard', progress: Math.min(assessmentsSubmitted, 1), target: 1, earned: assessmentsSubmitted >= 1, earned_at: assessmentRows[0]?.first_assessment_at ?? null },
+    { id: 'assessment-ace', title: 'Assessment Ace', description: 'Earn at least 80% on a fully graded assessment.', icon: 'star', progress: Math.min(highScores, 1), target: 1, earned: highScores >= 1, earned_at: assessmentRows[0]?.first_high_score_at ?? null },
+    { id: 'perfect-score', title: 'Perfect Score', description: 'Earn full marks on a fully graded assessment.', icon: 'trophy', progress: Math.min(perfectScores, 1), target: 1, earned: perfectScores >= 1, earned_at: assessmentRows[0]?.first_perfect_score_at ?? null },
+  ];
+  return res.json({ badges, summary: { topics_passed: topicsPassed, assessments_submitted: assessmentsSubmitted, high_scores: highScores, perfect_scores: perfectScores } });
+});
+
+
+
+
+
+
+
+
 
 router.get('/topics', requirePerm('topics.read'), async (req, res) => {
   const { subject_id, class_name, term_id, term_label, school_code } = req.query as Record<string, string>;
@@ -1121,7 +1398,9 @@ router.put('/study-plan/subjects/:subject_id', requireRole('student'), async (re
 
 router.get('/questions', requirePerm('questions.read'), async (req, res) => {
   const { subject_id, class_name, type } = req.query as Record<string, string>;
-  let sql = `SELECT * FROM questions WHERE school_code=$1`;
+  let sql = `SELECT * FROM questions q WHERE q.school_code=$1
+               AND EXISTS (SELECT 1 FROM subjects sub WHERE sub.id=q.subject_id AND sub.school_code=q.school_code)
+               AND (q.term_id IS NULL OR EXISTS (SELECT 1 FROM terms t WHERE t.id=q.term_id AND t.school_code=q.school_code))`;
   const params: unknown[] = [req.user!.school_code];
   if (subject_id) { params.push(subject_id); sql += ` AND subject_id=$${params.length}`; }
   if (class_name) { params.push(class_name); sql += ` AND class_name=$${params.length}`; }
@@ -1130,38 +1409,87 @@ router.get('/questions', requirePerm('questions.read'), async (req, res) => {
   return res.json({ questions: rows });
 });
 
-router.post('/questions', requirePerm('questions.write'), async (req, res) => {
-  const { subject_id, class_name, term_id, type, stem, options, correct_keys, marks, school_code } = req.body;
+const questionCreateSchema = z.object({
+  subject_id: z.coerce.number().int().positive(),
+  class_name: z.string().trim().min(1).max(100).nullable().optional(),
+  term_id: z.coerce.number().int().positive().nullable().optional(),
+  type: z.enum(['mcq', 'essay']).optional(),
+  stem: z.string().trim().min(1).max(10000),
+  options: z.unknown().optional(),
+  correct_keys: z.array(z.string().min(1)).optional(),
+  marks: z.number().int().positive().max(1000).optional(),
+  school_code: z.string().trim().min(1).max(50).optional(),
+});
 
-  // Added in Pass 19: the same scoping gap as /materials and /assessments
-  // (flagged as a follow-up when those two were fixed in Pass 17, since a
-  // question feeds directly into an assessment) — a teacher could publish a
-  // question for any class/subject in their school, whether or not they
-  // actually teach it. Same rule as the other two: allowed for the
-  // teacher's own assigned class (any subject) or their own assigned
-  // subject (any class).
-  const scopeError = await checkTeacherContentScope(req.user!, { class_name: class_name ?? null, subject_id });
+router.post('/questions', requirePerm('questions.write'), async (req, res) => {
+  const parsed = questionCreateSchema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
+  const data = parsed.data;
+  const target = resolveContentSchool(req.user!, data.school_code);
+  if ('error' in target) return res.status(target.status).json({ error: target.error });
+
+  const scopeError = await checkTeacherContentScope(req.user!, {
+    class_name: data.class_name ?? null,
+    subject_id: data.subject_id,
+  });
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
-  // Same admin-NULL-school_code fix already applied to /materials and
-  // /assessments: admin accounts have school_code=null, so always writing
-  // req.user.school_code silently created questions invisible to every
-  // teacher's GET /questions (which filters by their own non-null
-  // school_code). Accept an explicit school_code in the body for admin only.
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+  const result = await withTransaction(async (client) => {
+    const referenceError = await validateContentReferences(
+      client, target.schoolCode, data.subject_id, data.term_id ?? null,
+    );
+    if (referenceError) return { ok: false as const, ...referenceError };
 
-  const { rows } = await query(
-    `INSERT INTO questions(school_code,subject_id,class_name,term_id,type,stem,options,correct_keys,marks,created_by)
-     VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
-    [sc, subject_id, class_name ?? null, term_id ?? null,
-     type ?? 'mcq', stem, JSON.stringify(options ?? []), correct_keys ?? [], marks ?? 1, req.user!.id],
-  );
-  return res.status(201).json({ question: rows[0] });
+    const { rows } = await client.query(
+      `INSERT INTO questions(school_code,subject_id,class_name,term_id,type,stem,options,correct_keys,marks,created_by)
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
+      [target.schoolCode, data.subject_id, data.class_name ?? null, data.term_id ?? null,
+       data.type ?? 'mcq', data.stem, JSON.stringify(data.options ?? []),
+       data.correct_keys ?? [], data.marks ?? 1, req.user!.id],
+    );
+    return { ok: true as const, question: rows[0] };
+  });
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  return res.status(201).json({ question: result.question });
 });
 
 // ════════════════════════════════════════════════════════
 // ASSESSMENTS
 // ════════════════════════════════════════════════════════
+
+// Parent-only summary of published tests for active linked wards. This is
+// deliberately separate from the class-wide assessment endpoint: parents
+// never receive question content, submissions from other students, or draft tests.
+router.get('/parent/upcoming-assessments', requireRole('parent'), async (req, res) => {
+  const { rows } = await query(
+    `SELECT DISTINCT a.id, a.school_code, a.title, a.start_at, a.end_at, a.class_name,
+            sub.name AS subject_name
+       FROM parent_wards pw
+       JOIN students st ON st.id=pw.student_id AND st.deleted_at IS NULL
+       JOIN assessments a ON a.school_code=st.school_code
+         AND (a.class_name IS NULL OR a.class_name=st.class_name)
+       JOIN subjects sub ON sub.id=a.subject_id AND sub.school_code=a.school_code AND sub.school_code=a.school_code
+      WHERE pw.parent_id=$1
+        AND a.status='open'
+        AND (a.start_at IS NULL OR a.start_at >= now())
+        AND (a.end_at IS NULL OR a.end_at >= now())
+      ORDER BY a.start_at ASC NULLS LAST, a.title ASC`,
+    [req.user!.id],
+  );
+  const ids = rows.map((r: any) => r.id);
+  const [jss3Gone, ss1Gone, agGone, englishGone, primary4Gone] = await Promise.all([
+    withdrawnAssessmentIds(query, ids),
+    ss1WithdrawnAssessmentIds(query, ids),
+    agriculturalScienceWithdrawnAssessmentIds(query, ids),
+    englishWithdrawnAssessmentIds(query, ids),
+    primary4WithdrawnAssessmentIds(query, ids),
+  ]);
+  const withdrawn = new Set([...jss3Gone, ...ss1Gone, ...agGone, ...englishGone, ...primary4Gone]);
+  return res.json({ assessments: rows.filter((r: any) => !withdrawn.has(r.id)) });
+});
+
+
+
 
 router.get('/assessments', requirePerm('assessments.read'), async (req, res) => {
   const { class_name, subject_id, status, school_code } = req.query as Record<string, string>;
@@ -1202,8 +1530,9 @@ router.get('/assessments', requirePerm('assessments.read'), async (req, res) => 
   let sql = `SELECT a.*,sub.name AS subject_name,
                     (SELECT COUNT(*) FROM assessment_questions aq WHERE aq.assessment_id=a.id) AS question_count
                     ${submittedCol}
-             FROM assessments a JOIN subjects sub ON sub.id=a.subject_id
-             WHERE a.school_code=$1`;
+             FROM assessments a JOIN subjects sub ON sub.id=a.subject_id AND sub.school_code=a.school_code
+             WHERE a.school_code=$1
+               AND (a.term_id IS NULL OR EXISTS (SELECT 1 FROM terms t WHERE t.id=a.term_id AND t.school_code=a.school_code))`;
 
   if (viewerClasses) {
     if (!viewerClasses.length) return res.json({ assessments: [] });
@@ -1247,46 +1576,88 @@ router.get('/assessments', requirePerm('assessments.read'), async (req, res) => 
   return res.json({ assessments: visibleRows });
 });
 
-router.post('/assessments', requirePerm('assessments.create'), async (req, res) => {
-  const { subject_id, class_name, term_id, title, start_at, end_at, shuffle, question_ids, school_code } = req.body as {
-    subject_id: number; class_name: string; term_id?: number; title: string;
-    start_at?: string; end_at?: string; shuffle?: boolean;
-    question_ids: Array<{ id: number; points: number }>; school_code?: string;
-  };
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+const assessmentCreateSchema = z.object({
+  subject_id: z.coerce.number().int().positive(),
+  class_name: z.string().trim().min(1).max(100),
+  term_id: z.coerce.number().int().positive().nullable().optional(),
+  title: z.string().trim().min(1).max(255),
+  start_at: z.string().optional(),
+  end_at: z.string().optional(),
+  shuffle: z.boolean().optional(),
+  question_ids: z.array(z.object({
+    id: z.coerce.number().int().positive(),
+    points: z.coerce.number().int().positive().max(1000).optional(),
+  })).min(1).max(200)
+    .refine(items => new Set(items.map(item => item.id)).size === items.length,
+      'question_ids must not contain duplicates'),
+  school_code: z.string().trim().min(1).max(50).optional(),
+});
 
-  // Same rule as POST /materials above — a teacher may only schedule an
-  // assessment for their own assigned class (any subject) or their own
-  // assigned subject (any class in their school).
-  const scopeError = await checkTeacherContentScope(req.user!, { class_name, subject_id });
+router.post('/assessments', requirePerm('assessments.create'), async (req, res) => {
+  const parsed = assessmentCreateSchema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
+  const data = parsed.data;
+  const target = resolveContentSchool(req.user!, data.school_code);
+  if ('error' in target) return res.status(target.status).json({ error: target.error });
+
+  const scopeError = await checkTeacherContentScope(req.user!, {
+    class_name: data.class_name,
+    subject_id: data.subject_id,
+  });
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
-  const total_marks = (question_ids ?? []).reduce((s, q) => s + (q.points ?? 1), 0);
-  // ASM-03: header and question links commit together or not at all, so a
-  // failure part-way through the loop cannot leave an assessment with missing
-  // questions and a total_marks that no longer matches them.
-  const assessment = await withTransaction(async (client) => {
+  const result = await withTransaction(async (client) => {
+    const referenceError = await validateContentReferences(
+      client, target.schoolCode, data.subject_id, data.term_id ?? null,
+    );
+    if (referenceError) return { ok: false as const, ...referenceError };
+
+    const questionIds = data.question_ids.map(item => item.id);
+    const { rows: questions } = await client.query(
+      'SELECT id, school_code, subject_id, class_name, term_id FROM questions WHERE id=ANY($1::int[]) ORDER BY id FOR SHARE',
+      [questionIds],
+    );
+    if (questions.length !== questionIds.length) {
+      return { ok: false as const, status: 400, error: 'One or more question_ids do not exist.' };
+    }
+
+    const invalidQuestion = questions.find(question =>
+      question.school_code !== target.schoolCode ||
+      Number(question.subject_id) !== data.subject_id ||
+      (question.class_name != null && question.class_name !== data.class_name) ||
+      (question.term_id != null && Number(question.term_id) !== (data.term_id ?? null)),
+    );
+    if (invalidQuestion) {
+      return {
+        ok: false as const,
+        status: 400,
+        error: 'Every question must belong to the assessment school and subject, and any class/term-specific question must match the assessment.',
+      };
+    }
+
+    const totalMarks = data.question_ids.reduce((sum, item) => sum + (item.points ?? 1), 0);
     const { rows } = await client.query(
       `INSERT INTO assessments(school_code,subject_id,class_name,term_id,title,total_marks,
          start_at,end_at,shuffle,created_by)
        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
-      [sc, subject_id, class_name, term_id ?? null, title, total_marks,
-       start_at ?? null, end_at ?? null, shuffle !== false, req.user!.id],
+      [target.schoolCode, data.subject_id, data.class_name, data.term_id ?? null,
+       data.title, totalMarks, data.start_at ?? null, data.end_at ?? null,
+       data.shuffle !== false, req.user!.id],
     );
     const created = rows[0];
 
-    // Link questions
-    for (let i = 0; i < (question_ids ?? []).length; i++) {
-      const q = question_ids[i];
+    for (let index = 0; index < data.question_ids.length; index++) {
+      const item = data.question_ids[index];
       await client.query(
         `INSERT INTO assessment_questions(assessment_id,question_id,points,order_index)
-         VALUES($1,$2,$3,$4) ON CONFLICT DO NOTHING`,
-        [created.id, q.id, q.points ?? 1, i],
+         VALUES($1,$2,$3,$4)`,
+        [created.id, item.id, item.points ?? 1, index],
       );
     }
-    return created;
+    return { ok: true as const, assessment: created };
   });
-  return res.status(201).json({ assessment });
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  return res.status(201).json({ assessment: result.assessment });
 });
 
 // ── PUT /assessments/:id/status  (draft → open → closed) ──────────────────────
@@ -1360,6 +1731,18 @@ router.get('/assessments/:id/questions', async (req, res) => {
   const assessment = aRows[0];
   if (!assessment) return res.status(404).json({ error: 'Assessment not found' });
 
+  if (user.role !== 'admin') {
+    const { rows: validReferences } = await query(
+      `SELECT 1 FROM subjects s
+        WHERE s.id=$1 AND s.school_code=$2
+          AND ($3::int IS NULL OR EXISTS (
+            SELECT 1 FROM terms t WHERE t.id=$3 AND t.school_code=$2
+          ))`,
+      [assessment.subject_id, assessment.school_code, assessment.term_id],
+    );
+    if (!validReferences[0]) return res.status(404).json({ error: 'Assessment not found' });
+  }
+
   if (user.role === 'student') {
     const { rows: stRows } = await query(
       'SELECT school_code, class_name FROM students WHERE user_id=$1', [user.id],
@@ -1405,8 +1788,13 @@ router.get('/assessments/:id/questions', async (req, res) => {
   const { rows: qRows } = await query(
     `SELECT ${cols}, aq.points, aq.order_index
      FROM assessment_questions aq JOIN questions q ON q.id = aq.question_id
-     WHERE aq.assessment_id=$1 ORDER BY aq.order_index`,
-    [req.params.id],
+     WHERE aq.assessment_id=$1
+       AND q.school_code=$2
+       AND q.subject_id=$3
+       AND (q.class_name IS NULL OR q.class_name=$4)
+       AND (q.term_id IS NULL OR q.term_id IS NOT DISTINCT FROM $5)
+     ORDER BY aq.order_index`,
+    [req.params.id, assessment.school_code, assessment.subject_id, assessment.class_name, assessment.term_id],
   );
   return res.json({ assessment, questions: qRows });
 });

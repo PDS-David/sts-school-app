@@ -37,6 +37,30 @@ import type { AuthUser } from '../types/index.js';
  * first. Returns null when the write is allowed, or a {status, error} pair
  * to send back as-is when it isn't.
  */
+/**
+ * A student record and every academic record written for it must reference
+ * a term owned by the same school. The FK on term_id alone only proves that
+ * the term exists; it does not enforce tenant consistency.
+ */
+export async function checkTermSchoolScope(
+  schoolCode: string | null,
+  termId: number,
+): Promise<{ status: number; error: string } | null> {
+  if (!Number.isSafeInteger(termId) || termId <= 0) {
+    return { status: 400, error: 'A valid term_id is required' };
+  }
+  if (!schoolCode) {
+    return { status: 400, error: 'A school is required to validate this term' };
+  }
+
+  const { rows } = await query('SELECT school_code FROM terms WHERE id=$1', [termId]);
+  if (!rows[0]) return { status: 404, error: 'Term not found' };
+  if (rows[0].school_code !== schoolCode) {
+    return { status: 400, error: 'The selected term belongs to a different school than the student.' };
+  }
+  return null;
+}
+
 export async function checkTeacherStudentScope(
   user: AuthUser,
   studentId: string,
@@ -48,6 +72,11 @@ export async function checkTeacherStudentScope(
   const student = rows[0];
   if (!student) return { status: 404, error: 'Student not found' };
   if (student.deleted_at) return { status: 404, error: 'Student not found' };
+
+  if (termId !== undefined) {
+    const termScopeError = await checkTermSchoolScope(student.school_code, termId);
+    if (termScopeError) return termScopeError;
+  }
 
   if (user.role === 'admin') return null;
   if (user.role !== 'teacher') {
@@ -63,7 +92,7 @@ export async function checkTeacherStudentScope(
     return { status: 403, error: "You can't write records for a student outside your assigned class" };
   }
 
-  if (termId) {
+  if (termId !== undefined) {
     const { rows: lockRows } = await query(
       `SELECT cl.locked_at, u.full_name AS locked_by_name
        FROM class_locks cl LEFT JOIN users u ON u.id = cl.locked_by

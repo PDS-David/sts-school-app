@@ -25,16 +25,20 @@ export default function PromoteStudentsScreen() {
   const { user } = useAuth();
   const [students, setStudents] = useState<StudentRow[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
   const [busyId, setBusyId] = useState<string | null>(null);
-  const [confirm, setConfirm] = useState<{ student: StudentRow; action: 'promote' | 'demote'; toLabel: string } | null>(null);
+  const [confirm, setConfirm] = useState<{ student: StudentRow; action: 'promote' | 'demote' | 'retain'; toLabel: string } | null>(null);
   const [info, setInfo] = useState<{ title: string; message: string } | null>(null);
 
   const fetchRoster = useCallback(() => {
     if (!user?.assigned_class) { setLoading(false); return; }
     setLoading(true);
+    setLoadError('');
     api.get('/students')
-      .then(({ data }) => setStudents(data.students))
-      .catch(() => setStudents([]))
+      .then(({ data }) => setStudents(data.students ?? []))
+      .catch((e: any) => {
+        setLoadError(e?.response?.data?.error ?? 'Could not load your assigned-class roster. Check your connection and retry.');
+      })
       .finally(() => setLoading(false));
   }, [user?.assigned_class]);
 
@@ -63,6 +67,12 @@ export default function PromoteStudentsScreen() {
   };
 
   if (loading) return <Loader />;
+  if (loadError) return (
+    <View style={{ flex: 1, justifyContent: 'center', padding: Spacing.md, backgroundColor: Colors.background }}>
+      <Empty message={loadError} />
+      <Btn label='Retry class roster' variant='outline' onPress={() => fetchRoster()} />
+    </View>
+  );
 
   const noClassAssigned = !user?.assigned_class;
 
@@ -100,6 +110,7 @@ export default function PromoteStudentsScreen() {
                     label="Demote"
                     variant="outline"
                     loading={busyId === s.id}
+                    disabled={busyId !== null}
                     onPress={() => setConfirm({ student: s, action: 'demote', toLabel: 'a lower class' })}
                     style={styles.actionBtn}
                   />
@@ -107,13 +118,15 @@ export default function PromoteStudentsScreen() {
                     label="Retain"
                     variant="ghost"
                     loading={busyId === s.id}
-                    onPress={() => runAction(s, 'retain')}
+                    onPress={() => setConfirm({ student: s, action: 'retain', toLabel: s.class_name })}
+                    disabled={busyId !== null}
                     style={styles.actionBtn}
                   />
                   <Btn
                     label="Promote"
                     variant="primary"
                     loading={busyId === s.id}
+                    disabled={busyId !== null}
                     onPress={() => setConfirm({ student: s, action: 'promote', toLabel: 'the next class' })}
                     style={styles.actionBtn}
                   />
@@ -127,9 +140,11 @@ export default function PromoteStudentsScreen() {
       {confirm && (
         <ConfirmDialog
           visible
-          title={confirm.action === 'promote' ? 'Promote this student?' : 'Demote this student?'}
-          message={`Move ${confirm.student.full_name} to ${confirm.toLabel}? This changes their class right away.`}
-          confirmLabel={confirm.action === 'promote' ? 'Promote' : 'Demote'}
+          title={confirm.action === 'promote' ? 'Promote this student?' : confirm.action === 'demote' ? 'Demote this student?' : 'Retain this student?'}
+          message={confirm.action === 'retain'
+            ? `Keep ${confirm.student.full_name} in ${confirm.student.class_name}? This records the retain decision.`
+            : `Move ${confirm.student.full_name} to ${confirm.toLabel}? This changes their class right away.`}
+          confirmLabel={confirm.action === 'promote' ? 'Promote' : confirm.action === 'demote' ? 'Demote' : 'Retain'}
           destructive={confirm.action === 'demote'}
           onConfirm={() => runAction(confirm.student, confirm.action)}
           onCancel={() => setConfirm(null)}

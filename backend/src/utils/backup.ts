@@ -19,7 +19,18 @@ export const BACKUP_INTERVAL_DAYS = 7;
 
 export interface BackupTable {
   name: string;
-  columns: { name: string; type: string }[];
+  columns: {
+    name: string;
+    type: string;
+    udt_name?: string;
+    character_maximum_length?: number | null;
+    numeric_precision?: number | null;
+    numeric_scale?: number | null;
+    is_nullable?: string;
+    column_default?: string | null;
+    is_identity?: string;
+    is_generated?: string;
+  }[];
   rows: unknown[][];
 }
 export interface BackupPayload {
@@ -83,9 +94,12 @@ export async function collectPayload(): Promise<BackupPayload> {
       `SELECT table_name FROM information_schema.tables
         WHERE table_schema='public' AND table_type='BASE TABLE' ORDER BY table_name`);
     const tables: BackupTable[] = [];
+    const excludedTables = new Set(['app_bootstrap', 'backup_log', 'schema_migrations']);
     for (const { table_name } of tbls) {
+      if (excludedTables.has(table_name)) continue;
       const { rows: cols } = await client.query(
-        `SELECT column_name, data_type FROM information_schema.columns
+        `SELECT column_name, data_type, udt_name, character_maximum_length, numeric_precision, numeric_scale,
+               is_nullable, column_default, is_identity, is_generated FROM information_schema.columns
           WHERE table_schema='public' AND table_name=$1 ORDER BY ordinal_position`, [table_name]);
       const ident = '"' + String(table_name).replace(/"/g, '""') + '"';
       // Anything the JS driver would round or reformat (timestamps keep microseconds, dates, numerics,
@@ -98,7 +112,18 @@ export async function collectPayload(): Promise<BackupPayload> {
       const res = await client.query({ text: `SELECT ${select} FROM public.${ident}`, rowMode: 'array' });
       tables.push({
         name: table_name,
-        columns: cols.map((c: any) => ({ name: c.column_name, type: c.data_type })),
+        columns: cols.map((c: any) => ({
+          name: c.column_name,
+          type: c.data_type,
+          udt_name: c.udt_name,
+          character_maximum_length: c.character_maximum_length,
+          numeric_precision: c.numeric_precision,
+          numeric_scale: c.numeric_scale,
+          is_nullable: c.is_nullable,
+          column_default: c.column_default,
+          is_identity: c.is_identity,
+          is_generated: c.is_generated,
+        })),
         rows: res.rows as unknown[][],
       });
     }
@@ -259,8 +284,27 @@ export async function sendReminderIfDue(): Promise<boolean> {
 }
 
 /** Hourly check. Safe on a single instance; the advisory lock also protects against duplicate instances. */
-export function startBackupScheduler() {
-  const tick = () => sendReminderIfDue().catch(e => console.error('[backup] reminder check failed:', e?.message));
-  setTimeout(tick, 60_000).unref();
-  setInterval(tick, 60 * 60 * 1000).unref();
+export function startBackupScheduler(): () => Promise<void> {
+  let stopped = false;
+  let inFlight: Promise<void> | undefined;
+  const tick = () => {
+    if (stopped || inFlight) return;
+    inFlight = sendReminderIfDue()
+      .then(
+        () => undefined,
+        (e) => { console.error('[backup] reminder check failed:', e?.message); },
+      )
+      .finally(() => { inFlight = undefined; });
+  };
+  const initial = setTimeout(tick, 60_000);
+  const interval = setInterval(tick, 60 * 60 * 1000);
+  initial.unref();
+  interval.unref();
+
+  return async () => {
+    stopped = true;
+    clearTimeout(initial);
+    clearInterval(interval);
+    await inFlight;
+  };
 }

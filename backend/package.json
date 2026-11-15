@@ -7,6 +7,7 @@
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
     "build": "tsc -p tsconfig.json",
+    "test:auth-claims": "node --import tsx --test ../tests/backend-auth-claims.test.mts",
     "db:bootstrap": "node --import tsx src/db/bootstrap.ts",
     "db:create-staging-admin": "node --import tsx src/db/createStagingAdmin.ts",
     "db:create-first-admin": "node --import tsx src/db/createFirstAdmin.ts",
@@ -28,7 +29,9 @@
     "test:ss1:mathematics": "node --import tsx --test ../tests/ss1/mathematics.package.test.mts ../tests/ss1/mathematics.delivery.test.mts && node --import tsx src/db/ss1/validateSubjectPackages.ts mathematics",
     "test:ss1:literature": "node --import tsx --test ../tests/ss1/literature.package.test.mts ../tests/ss1/literature.delivery.test.mts && node --import tsx src/db/ss1/validateSubjectPackages.ts literature",
     "test:primary4": "node --import tsx --test ../tests/primary4/source-delivery.test.mts ../tests/primary4/home-economics-package.test.mts ../tests/primary4/home-economics-term3.test.mts ../tests/primary4/basic-science-term3.test.mts ../tests/primary4/basic-technology-terms1-2.test.mts ../tests/primary4/primary4-ingestion.test.mts ../tests/primary4/coverage-report.test.mts",
-    "audit:primary4": "node --import tsx src/db/primary4/buildPrimary4CoverageReport.ts"
+    "audit:primary4": "node --import tsx src/db/primary4/buildPrimary4CoverageReport.ts",
+    "db:migrate:status": "tsx src/db/migrate.ts --status",
+    "db:migrate:fresh": "tsx src/db/migrate.ts --fresh"
   },
   "dependencies": {
     "@google/genai": "^1.48.0",
@@ -43,21 +46,20 @@
     "jsonwebtoken": "^9.0.2",
     "jszip": "^3.10.1",
     "mammoth": "^1.12.2",
-    "multer": "^1.4.5-lts.1",
-    "nodemailer": "^6.9.13",
+    "multer": "^2.5.0",
+    "nodemailer": "^10.5.0",
     "pg": "^8.11.3",
     "word-extractor": "^1.0.4",
-    "xlsx": "^0.18.5",
-    "zod": "^3.23.8"
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.6",
-    "@types/multer": "^1.4.11",
+    "@types/multer": "^2.3.0",
     "@types/node": "^22.7.4",
-    "@types/nodemailer": "^6.4.14",
     "@types/pg": "^8.11.6",
     "tsx": "^4.19.1",
     "typescript": "^5.6.3"

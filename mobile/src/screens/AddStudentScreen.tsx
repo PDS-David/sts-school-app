@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Alert } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import api from '../api/client';
 import { Card, Btn, Input, SectionHeader } from '../components/UI';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 import { Colors, Spacing, Fonts } from '../theme';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 
@@ -19,6 +20,9 @@ const GENDERS = ['M', 'F', 'Other'] as const;
 export default function AddStudentScreen({ navigation }: any) {
   const { selectedSchoolCode } = useAdminSchool();
   const [classes, setClasses] = useState<string[]>([]);
+  const [classLoading, setClassLoading] = useState(true);
+  const [classError, setClassError] = useState('');
+  const [classRetry, setClassRetry] = useState(0);
 
   const [fullName, setFullName] = useState('');
   const [className, setClassName] = useState('');
@@ -31,29 +35,54 @@ export default function AddStudentScreen({ navigation }: any) {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState(false);
+  const [dialog, setDialog] = useState<{ title: string; message: string; onDone?: () => void } | null>(null);
 
   useEffect(() => {
+    let cancelled = false;
+    setClassLoading(true);
+    setClassError('');
+    setClasses([]);
+    setClassName('');
     api.get('/academic/classes', { params: { school_code: selectedSchoolCode ?? undefined } })
       .then(({ data }) => {
-        const names = data.classes.map((c: any) => c.name);
+        if (cancelled) return;
+        const names = (data.classes ?? []).map((c: any) => c.name);
         setClasses(names);
-        if (names.length && !className) setClassName(names[0]);
+        if (names.length) setClassName(names[0]);
       })
-      .catch(() => {});
-  }, [selectedSchoolCode]);
+      .catch((e: any) => {
+        if (!cancelled) setClassError(e?.response?.data?.error ?? 'Could not load classes for this school. Retry before enrolling a student.');
+      })
+      .finally(() => { if (!cancelled) setClassLoading(false); });
+    return () => { cancelled = true; };
+  }, [selectedSchoolCode, classRetry]);
 
   const validate = () => {
     const e: Record<string, string> = {};
     if (fullName.trim().length < 2) e.fullName = 'Enter the student\u2019s full name.';
-    if (!className) e.className = 'Select a class.';
-    if (parentPhone.trim() && parentPhone.trim().replace(/\D/g, '').length < 10) {
-      e.parentPhone = 'Enter a full phone number, or leave blank if no parent account is needed yet.';
+    if (!className || !classes.includes(className)) e.className = 'Select a valid class for the selected school.';
+    const phoneDigits = parentPhone.trim().replace(/\D/g, '');
+    if (parentPhone.trim() && (phoneDigits.length < 10 || phoneDigits.length > 15)) {
+      e.parentPhone = 'Enter a phone number containing 10 to 15 digits, or leave blank if no parent account is needed yet.';
+    }
+    if (dob.trim()) {
+      const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dob.trim());
+      const parsed = match ? new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3])) : null;
+      if (!match || !parsed || parsed.getFullYear() !== Number(match[1]) || parsed.getMonth() !== Number(match[2]) - 1 || parsed.getDate() !== Number(match[3])) {
+        e.dob = 'Enter a valid date in YYYY-MM-DD format.';
+      } else if (parsed > new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())) {
+        e.dob = 'Date of birth cannot be in the future.';
+      }
+    }
+    if (parentEmail.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(parentEmail.trim())) {
+      e.parentEmail = 'Enter a valid email address.';
     }
     setErrors(e);
     return Object.keys(e).length === 0;
   };
 
   const submit = async () => {
+    if (saving || classLoading || classError || !classes.length) return;
     if (!validate()) return;
     setSaving(true);
     try {
@@ -70,24 +99,22 @@ export default function AddStudentScreen({ navigation }: any) {
       });
 
       if (data.parent?.temporary_password) {
-        Alert.alert(
-          'Student & parent account created',
-          `${fullName.trim()} has been enrolled.\n\nA new parent account was created:\n` +
-          `Username: ${data.parent.username}\nTemporary password: ${data.parent.temporary_password}\n\n` +
-          `Hand these to the parent — they\u2019ll be asked to change the password on first login.`,
-          [{ text: 'Done', onPress: () => navigation.goBack() }],
-        );
+        setDialog({
+          title: 'Student & parent account created',
+          message: `${fullName.trim()} has been enrolled.\n\nA new parent account was created:\nUsername: ${data.parent.username}\nTemporary password: ${data.parent.temporary_password}\n\nHand these to the parent — they’ll be asked to change the password on first login.`,
+          onDone: () => navigation.goBack(),
+        });
       } else if (data.parent?.username) {
-        Alert.alert(
-          'Student created',
-          `${fullName.trim()} has been enrolled and linked to the existing parent account "${data.parent.username}" (matched by phone number — likely a sibling).`,
-          [{ text: 'Done', onPress: () => navigation.goBack() }],
-        );
+        setDialog({
+          title: 'Student created',
+          message: `${fullName.trim()} has been enrolled and linked to the existing parent account "${data.parent.username}" (matched by phone number — likely a sibling).`,
+          onDone: () => navigation.goBack(),
+        });
       } else {
-        Alert.alert('Student created', `${fullName.trim()} has been enrolled.`, [{ text: 'Done', onPress: () => navigation.goBack() }]);
+        setDialog({ title: 'Student created', message: `${fullName.trim()} has been enrolled.`, onDone: () => navigation.goBack() });
       }
     } catch (e: any) {
-      Alert.alert('Error', e?.response?.data?.error?.formErrors?.[0] ?? e?.response?.data?.error ?? 'Could not create this student. Check your connection and try again.');
+      setDialog({ title: 'Could not enroll student', message: e?.response?.data?.error?.formErrors?.[0] ?? e?.response?.data?.error ?? 'Could not create this student. Check your connection and try again.' });
     } finally {
       setSaving(false);
     }
@@ -100,9 +127,13 @@ export default function AddStudentScreen({ navigation }: any) {
         <Input label="Full name" value={fullName} onChangeText={setFullName} placeholder="e.g. Ade Ibrahim" error={errors.fullName} />
 
         <Text style={styles.label}>Class</Text>
-        <Picker selectedValue={className} onValueChange={setClassName} style={styles.picker}>
-          {classes.map((c) => <Picker.Item key={c} label={c} value={c} />)}
-        </Picker>
+        {classLoading ? <Text style={styles.hint}>Loading classes…</Text> : classError ? (
+          <View><Text style={styles.errText}>{classError}</Text><Btn label='Retry classes' variant='outline' onPress={() => setClassRetry(v => v + 1)} /></View>
+        ) : classes.length === 0 ? <Text style={styles.errText}>No classes have been set up for this school. Create classes before enrolling students.</Text> : (
+          <Picker selectedValue={className} onValueChange={setClassName} style={styles.picker}>
+            {classes.map((c) => <Picker.Item key={c} label={c} value={c} />)}
+          </Picker>
+        )}
         {errors.className ? <Text style={styles.errText}>{errors.className}</Text> : null}
 
         <Text style={styles.label}>Gender</Text>
@@ -110,7 +141,7 @@ export default function AddStudentScreen({ navigation }: any) {
           {GENDERS.map((g) => <Picker.Item key={g} label={g} value={g} />)}
         </Picker>
 
-        <Input label="Date of birth (optional)" value={dob} onChangeText={setDob} placeholder="YYYY-MM-DD" />
+        <Input label="Date of birth (optional)" value={dob} onChangeText={setDob} placeholder="YYYY-MM-DD" error={errors.dob} />
         <Input label="Admission number (optional)" value={admissionNumber} onChangeText={setAdmissionNumber} placeholder="e.g. STS/2026/041" />
       </Card>
 
@@ -121,11 +152,12 @@ export default function AddStudentScreen({ navigation }: any) {
         </Text>
         <Input label="Parent/guardian name" value={parentName} onChangeText={setParentName} placeholder="e.g. Mrs. Ibrahim" />
         <Input label="Parent phone" value={parentPhone} onChangeText={setParentPhone} placeholder="e.g. 08012345678" keyboardType="phone-pad" error={errors.parentPhone} />
-        <Input label="Parent email (optional)" value={parentEmail} onChangeText={setParentEmail} placeholder="optional" keyboardType="email-address" autoCapitalize="none" />
+        <Input label="Parent email (optional)" value={parentEmail} onChangeText={setParentEmail} placeholder="optional" keyboardType="email-address" autoCapitalize="none" error={errors.parentEmail} />
       </Card>
 
-      <Btn label="Enroll Student" onPress={submit} loading={saving} />
+      <Btn label="Enroll Student" onPress={submit} loading={saving} disabled={saving || classLoading || !!classError || classes.length === 0 || !className} />
       <View style={{ height: Spacing.xl }} />
+      <ConfirmDialog visible={!!dialog} title={dialog?.title ?? ''} message={dialog?.message ?? ''} hideCancel onConfirm={() => { const done = dialog?.onDone; setDialog(null); done?.(); }} onCancel={() => setDialog(null)} />
     </ScrollView>
   );
 }

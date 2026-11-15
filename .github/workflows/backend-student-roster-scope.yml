@@ -1,0 +1,34 @@
+name: Backend student roster scope
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "backend/src/routes/students.ts"
+      - "backend/src/utils/studentRosterScope.ts"
+      - "backend/src/types/index.ts"
+      - "tests/backend-student-roster-scope.test.mts"
+      - ".github/workflows/backend-student-roster-scope.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  roster-scope:
+    name: Role-specific student roster authorization and typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install locked workspace dependencies
+        run: npm ci --ignore-scripts
+      - name: Run student roster scope regressions
+        run: node --import tsx --test tests/backend-student-roster-scope.test.mts
+      - name: Typecheck backend
+        run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json

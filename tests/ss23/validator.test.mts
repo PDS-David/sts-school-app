@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { checkPackage, loadRegistry, readiness, sha256 } from '../../backend/src/db/ss23/validateSubjectPackages.ts';
-import { ss23PackageSchema } from '../../backend/src/db/ss23/subjectPackageSchema.ts';
+import { ss23PackageSchema } from '../../backend/src/db/ss23/registrySchema.ts';
 
 const registry = loadRegistry();
 const src = registry.find(r => r.class_name === 'SS 2' && r.assigned_subject_slug === 'agricultural-science' && r.term === '1st Term')!;

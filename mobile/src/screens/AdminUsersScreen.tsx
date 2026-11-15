@@ -67,6 +67,13 @@ export default function AdminUsersScreen() {
   const isWide = useIsWide();
   const [users,   setUsers]   = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [schoolsError, setSchoolsError] = useState('');
+  const [schoolsRetry, setSchoolsRetry] = useState(0);
+  const [lookupError, setLookupError] = useState('');
+  const [lookupLoading, setLookupLoading] = useState(false);
+  const [lookupRetry, setLookupRetry] = useState(0);
+  const [saving, setSaving] = useState(false);
   const [modal,   setModal]   = useState(false);
   // Alert.alert() doesn't reliably render on web via react-native-web —
   // same documented root cause as the Log Out bug ConfirmDialog.tsx was
@@ -105,22 +112,37 @@ export default function AdminUsersScreen() {
   });
 
   const fetchUsers = async () => {
+    setLoading(true);
+    setLoadError('');
     try {
       const { data } = await api.get('/admin/users');
       setUsers(data.users ?? []);
-    } catch { } finally { setLoading(false); }
+    } catch (e: any) {
+      setLoadError(e?.response?.data?.error ?? 'Could not load user accounts. Check your connection and retry.');
+    } finally { setLoading(false); }
   };
   useEffect(() => { fetchUsers(); }, []);
-  useEffect(() => { api.get('/academic/schools').then(({ data }) => setSchools(data.schools ?? [])).catch(() => {}); }, []);
+  useEffect(() => {
+    let cancelled = false;
+    setSchoolsError('');
+    api.get('/academic/schools')
+      .then(({ data }) => { if (!cancelled) setSchools(data.schools ?? []); })
+      .catch((e: any) => { if (!cancelled) setSchoolsError(e?.response?.data?.error ?? 'Could not load schools. Retry before creating or editing a school-linked account.'); });
+    return () => { cancelled = true; };
+  }, [schoolsRetry]);
 
   // Prefetch classes + subjects for every school once, up front, rather than
   // re-fetching on every School picker change — dataset per school is small
   // and there are only ever a couple of schools.
   useEffect(() => {
-    if (!schools.length) return;
+    if (!schools.length) { setLookupLoading(false); return; }
+    let cancelled = false;
+    setLookupLoading(true);
+    setLookupError('');
     (async () => {
       const classesMap: Record<string, {id:number; name:string}[]> = {};
       const subjectsMap: Record<string, {id:number; name:string}[]> = {};
+      const failed: string[] = [];
       await Promise.all(schools.map(async (s) => {
         try {
           const [{ data: classesData }, { data: subjectsData }] = await Promise.all([
@@ -129,12 +151,16 @@ export default function AdminUsersScreen() {
           ]);
           classesMap[s.code] = classesData.classes ?? [];
           subjectsMap[s.code] = subjectsData.subjects ?? [];
-        } catch { }
+        } catch { failed.push(s.name); }
       }));
+      if (cancelled) return;
       setClassesBySchool(classesMap);
       setSubjectsBySchool(subjectsMap);
+      if (failed.length) setLookupError(`Could not load class/subject options for: ${failed.join(', ')}.`);
+      setLookupLoading(false);
     })();
-  }, [schools]);
+    return () => { cancelled = true; };
+  }, [schools, lookupRetry]);
 
   const availableClasses = classesBySchool[form.school_code] ?? [];
   const availableSubjects = subjectsBySchool[form.school_code] ?? [];
@@ -182,6 +208,24 @@ export default function AdminUsersScreen() {
   };
 
   const handleSave = async () => {
+    if (saving) return;
+    if (!editUser && !isNewClassTeacher && !form.username.trim()) {
+      setInfoDialog({ title: 'Username required', message: 'Enter a username for this account.' });
+      return;
+    }
+    if (SCHOOL_ROLES.includes(form.role) && !form.school_code) {
+      setInfoDialog({ title: 'School required', message: 'Select a school for this account.' });
+      return;
+    }
+    const phoneDigits = form.phone.trim().replace(/\D/g, '');
+    if (form.phone.trim() && (phoneDigits.length < 10 || phoneDigits.length > 15)) {
+      setInfoDialog({ title: 'Invalid phone number', message: 'Enter a phone number containing 10 to 15 digits, or leave the field blank.' });
+      return;
+    }
+    if (form.role === 'teacher' && form.school_code && (lookupLoading || !classesBySchool[form.school_code] || !subjectsBySchool[form.school_code])) {
+      setInfoDialog({ title: 'School options unavailable', message: 'Wait for this school’s class and subject options to load, or retry the lookup before saving a teacher account.' });
+      return;
+    }
     // access_expires_at only applies to teacher/parent roles. An empty string
     // means "no expiry" — for edits that has to be sent explicitly (clear_expiry)
     // since the backend otherwise leaves an existing expiry untouched.
@@ -210,6 +254,7 @@ export default function AdminUsersScreen() {
       delete payload.access_expires_at;
       if (editUser && showsExpiry) payload.clear_expiry = true;
     }
+    setSaving(true);
     try {
       if (editUser) {
         await api.put(`/admin/users/${editUser.id}`, payload);
@@ -245,6 +290,8 @@ export default function AdminUsersScreen() {
       }
     } catch (e: any) {
       setInfoDialog({ title: 'Error', message: e?.response?.data?.error ?? 'Save failed' });
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -346,11 +393,20 @@ export default function AdminUsersScreen() {
     });
   };
 
-  if (loading) return <Loader />;
+  if (loading && users.length === 0) return <Loader />;
+  if (loadError && users.length === 0) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={loadError} />
+      <Btn label='Retry loading users' variant='outline' onPress={() => fetchUsers()} />
+    </View>
+  );
 
   return (
     <View style={styles.container}>
       <PageContainer style={{ padding: Spacing.sm, paddingBottom: 0 }}>
+        {!!loadError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry user list' variant='outline' onPress={() => fetchUsers()} /></View>}
+        {!!schoolsError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{schoolsError}</Text><Btn label='Retry schools' variant='outline' onPress={() => setSchoolsRetry(v => v + 1)} /></View>}
+        {!!lookupError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{lookupError}</Text><Btn label='Retry class/subject options' variant='outline' onPress={() => setLookupRetry(v => v + 1)} /></View>}
         <TouchableOpacity style={styles.addBtn} onPress={openNew}>
           <Ionicons name="person-add" size={20} color={Colors.white} />
           <Text style={styles.addBtnText}>Add User</Text>
@@ -491,6 +547,9 @@ export default function AdminUsersScreen() {
       <Modal visible={modal} animationType="slide" onRequestClose={() => setModal(false)}>
         <ScrollView style={styles.modalWrapOuter} contentContainerStyle={styles.modalWrap} keyboardShouldPersistTaps="handled">
           <SectionHeader title={editUser ? 'Edit User' : 'New User'} />
+          {!!schoolsError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{schoolsError}</Text><Btn label='Retry schools' variant='outline' onPress={() => setSchoolsRetry(v => v + 1)} /></View>}
+          {!!lookupLoading && <Text style={styles.expiryHint}>Loading class and subject options…</Text>}
+          {!!lookupError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{lookupError}</Text><Btn label='Retry class/subject options' variant='outline' onPress={() => setLookupRetry(v => v + 1)} /></View>}
           {!editUser && !isNewClassTeacher && (
             <Input label="Username" value={form.username} onChangeText={v => setForm(f => ({ ...f, username: v }))} autoCapitalize="none" />
           )}
@@ -607,7 +666,7 @@ export default function AdminUsersScreen() {
           )}
           <View style={{ flexDirection: 'row', gap: Spacing.sm, marginTop: Spacing.md }}>
             <Btn label="Cancel" onPress={() => setModal(false)} variant="outline" style={{ flex: 1 }} />
-            <Btn label="Save"   onPress={handleSave}            style={{ flex: 1 }} />
+            <Btn label={saving ? 'Saving…' : 'Save'} onPress={handleSave} loading={saving} disabled={saving || (form.role === 'teacher' && !!form.school_code && (lookupLoading || !classesBySchool[form.school_code] || !subjectsBySchool[form.school_code]))} style={{ flex: 1 }} />
           </View>
         </ScrollView>
       </Modal>

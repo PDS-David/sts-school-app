@@ -90,6 +90,10 @@ router.get('/', requirePerm('weeklyEfforts.read'), async (req, res) => {
   if (term_id)    { params.push(term_id);    sql += ` AND we.term_id=$${params.length}`; }
   if (week)       { params.push(week);       sql += ` AND we.week=$${params.length}`; }
 
+  // Soft-deleted student records are retained for administrative history,
+  // but must not remain visible to ordinary learner/parent/teacher feeds.
+  if (user.role !== 'admin') sql += ' AND s.deleted_at IS NULL';
+
   // Scope
   if (user.role === 'teacher') {
     // Always restrict to the teacher's own school — a subject-only teacher
@@ -134,9 +138,13 @@ router.get('/', requirePerm('weeklyEfforts.read'), async (req, res) => {
 });
 
 // ── Shared: may this user see/reply to this weekly_effort's feedback thread? ──
-async function checkWeeklyEffortAccess(user: { id: string; role: string; school_code: string | null }, weeklyEffortId: string) {
+async function checkWeeklyEffortAccess(
+  user: { id: string; role: string; school_code: string | null; assigned_class?: string | null },
+  weeklyEffortId: string,
+) {
   const { rows } = await query(
-    `SELECT we.id, s.id AS student_id, s.school_code, s.user_id AS student_user_id
+    `SELECT we.id, we.teacher_id, s.id AS student_id, s.school_code,
+            s.class_name, s.user_id AS student_user_id, s.deleted_at
      FROM weekly_efforts we JOIN students s ON s.id = we.student_id
      WHERE we.id=$1`,
     [weeklyEffortId],
@@ -145,15 +153,36 @@ async function checkWeeklyEffortAccess(user: { id: string; role: string; school_
   if (!rec) return { status: 404, error: 'Weekly effort not found' };
 
   if (user.role === 'admin') return null;
+  if (rec.deleted_at) return { status: 404, error: 'Weekly effort not found' };
+
   if (user.role === 'teacher') {
-    return rec.school_code === user.school_code ? null : { status: 403, error: 'Wrong school' };
+    if (!user.school_code || rec.school_code !== user.school_code) {
+      return { status: 403, error: 'Wrong school' };
+    }
+    // Match GET /weekly-efforts: a class teacher sees the records for their
+    // assigned class; a subject-only teacher (no assigned_class) sees only
+    // records they personally logged. School membership alone is not enough.
+    if (user.assigned_class) {
+      return rec.class_name === user.assigned_class
+        ? null
+        : { status: 403, error: 'Outside your assigned class' };
+    }
+    return rec.teacher_id === user.id
+      ? null
+      : { status: 403, error: 'You may only access feedback for records you logged' };
   }
+
   if (user.role === 'student') {
     return rec.student_user_id === user.id ? null : { status: 403, error: 'Access denied' };
   }
   if (user.role === 'parent') {
-    const { rows: pw } = await query('SELECT 1 FROM parent_wards WHERE parent_id=$1 AND student_id=$2', [user.id, rec.student_id]);
-    return pw.length ? null : { status: 403, error: 'Not your ward' };
+    const { rows: pw } = await query(
+      `SELECT 1 FROM parent_wards pw
+        JOIN students s ON s.id=pw.student_id
+       WHERE pw.parent_id=$1 AND pw.student_id=$2 AND s.deleted_at IS NULL`,
+      [user.id, rec.student_id],
+    );
+    return pw.length ? null : { status: 403, error: 'Not your active ward' };
   }
   return { status: 403, error: 'Access denied' };
 }

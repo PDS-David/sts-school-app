@@ -1,0 +1,34 @@
+name: Backend fatal process shutdown
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "backend/src/index.ts"
+      - "backend/src/utils/backup.ts"
+      - "backend/src/utils/fatalProcessHandlers.ts"
+      - "tests/backend-fatal-process.test.mts"
+      - ".github/workflows/backend-fatal-process.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  fatal-shutdown:
+    name: Fatal process shutdown regression and backend typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install locked workspace dependencies
+        run: npm ci --ignore-scripts
+      - name: Run fatal process shutdown regressions
+        run: node --import tsx --test tests/backend-fatal-process.test.mts
+      - name: Typecheck backend
+        run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json

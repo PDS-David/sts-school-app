@@ -13,7 +13,9 @@ import api from './client';
 // Returns the token that was registered (or null if registration didn't
 // happen), so logout() can pass the same value to the unregister endpoint
 // without asking the OS for it a second time.
-export async function registerForPushNotifications(): Promise<string | null> {
+export async function registerForPushNotifications(
+  options: { requestPermission?: boolean } = {},
+): Promise<string | null> {
   // expo-notifications has no web implementation for remote push tokens —
   // calling getExpoPushTokenAsync() on web throws. Web sessions simply
   // don't get push notifications; everything else works the same as on
@@ -24,7 +26,7 @@ export async function registerForPushNotifications(): Promise<string | null> {
 
   const { status: existing } = await Notifications.getPermissionsAsync();
   let finalStatus = existing;
-  if (existing !== 'granted') {
+  if (existing !== 'granted' && options.requestPermission !== false) {
     const { status } = await Notifications.requestPermissionsAsync();
     finalStatus = status;
   }

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, Image, useWindowDimensions } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, useWindowDimensions } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import { Ionicons } from '@expo/vector-icons';
 import api, { BASE_URL } from '../api/client';
@@ -8,6 +8,7 @@ import { loadLessonAssets } from '../api/lessonAssets';
 import { lessonImageLabel } from '../api/lessonImage';
 import { attributionLines } from '../api/lessonAttribution';
 import { Card, Btn, Loader, SectionHeader } from '../components/UI';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 
 // A lesson picture (Music notation, Basic Technology diagram) served by
@@ -158,6 +159,7 @@ export default function TopicDetailScreen({ route, navigation }: any) {
   const [assets, setAssets]         = useState<any[]>([]);
   const [attributions, setAttributions] = useState<any[]>([]);
   const [token, setToken]           = useState<string | null>(null);
+  const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
 
   const [assetError, setAssetError] = useState(false);
   const [assetsLoading, setAssetsLoading] = useState(false);
@@ -199,10 +201,10 @@ export default function TopicDetailScreen({ route, navigation }: any) {
       setNote(data.note);
     } catch (e: any) {
       const msg = e?.response?.data?.error;
-      Alert.alert(
-        'Could not load this topic',
-        msg ?? "You're offline — getting a new topic's study notes needs a connection. Try again once you're back online.",
-      );
+      setInfoDialog({
+        title: 'Could not load this topic',
+        message: msg ?? "You're offline — getting a new topic's study notes needs a connection. Try again once you're back online.",
+      });
     } finally {
       setLoading(false);
     }
@@ -312,6 +314,7 @@ export default function TopicDetailScreen({ route, navigation }: any) {
       )}
 
       <View style={{ height: Spacing.xl }} />
+      <ConfirmDialog visible={!!infoDialog} title={infoDialog?.title ?? ''} message={infoDialog?.message ?? ''} hideCancel onConfirm={() => setInfoDialog(null)} onCancel={() => setInfoDialog(null)} />
     </ScrollView>
   );
 }

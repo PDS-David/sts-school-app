@@ -16,6 +16,35 @@ It is **not** an approval, a test result, a queue status change, or a claim that
 
 Counts are implementation counts. They are not content completeness, curriculum approval or test evidence.
 
+## Current implementation status — 13 November 2026
+
+The table above is the historical 30 October snapshot, not a live status board. Subsequent repository work has completed or is actively delivering these tasks:
+
+| Task | Current status | Evidence / PR |
+|---|---|---|
+| SEC-01, SEC-03, SEC-04, SEC-05 | Implemented on current master | `scores.ts` report scoping; `students.ts` promotion scope; `NotificationsContext.tsx` student-only assessment feed; `admin.ts` + `AdminUsersScreen.tsx` blank-to-null normalization |
+| ASM-03, ASM-04 | Implemented on current master | `learning.ts` transaction boundaries and shared pending-review query/counts |
+| DATA-01, DATA-04 | Implemented on current master | `finance.ts` invoice transaction; push-delivery receipt records |
+| OPS-01 | Merged to master | PR #737; migration runner and disposable PostgreSQL tests passed |
+| OPS-02 | Implemented on current master | `db/pool.ts` certificate validation defaults, optional CA and explicit warned escape hatch |
+| Teacher marking overview / analytics | Implemented on current master | `GET /scores/teacher/overview`, teacher dashboard and analytics screen; SMM-003 checkpoint |
+| Calendar, school events, parent upcoming tests | Open | PR #764; SMM-002 checkpoint |
+| Student badges and achievements | Open | PR #766; SMM-004 checkpoint |
+| Admin announcement authoring | Open | PR #768; SMM-005 checkpoint |
+| PRD-01 announcements | Existing read API/notification feed on master; admin authoring UI open | SMM-001 and SMM-005 checkpoints |
+
+Do not reassign already implemented tasks. Current CI/device verification gaps are recorded in each checkpoint; code presence is not device acceptance.
+
+### Still open or gated
+
+- **DATA-02** offline replay idempotency — not yet implemented; OPS-01 dependency is now satisfied.
+- **VER-01** root test/typecheck command set — partial implementation in PR #771; complete non-DB test inventory remains open.
+- **VER-02** manual CI coverage for tests not in push verification — still open.
+- **ASM-01 / ASM-02, SEC-02, DATA-03, OPS-03, OPS-04, PRD-02** remain gated by owner decisions D1, D2, D4, D5, D6, D7 or D9 respectively. Do not invent approvals or policy choices.
+- **OPS-05, VER-03, VER-04, JSS3-01, JSS3-02** remain gated by owner credentials, testing/device access or source/approval evidence.
+
+Merge order for the current feature stack: **#764 → #766 → #768**. PR #737 is already merged. The root test harness PR #771 includes these prerequisite commits and should merge after #768.
+
 ## How to use
 
 1. Read `PROTOCOL.md` once. It overrides every prompt on safety.

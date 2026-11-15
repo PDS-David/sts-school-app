@@ -21,3 +21,19 @@ ZIP integrity test passed for all six. Subject slugs in the CSV come from filena
 5. Header/filename mismatches not yet checked (e.g. `ENGLISH.txt` titled "ALPHA TERM"; "Alpha/Sigma" term names vs First/Second).
 
 Not done: week/topic extraction, per-subject coverage, any lesson content.
+
+
+## Re-supplied combined archives (2026-11-13)
+
+The owner re-attached combined SS2 and SS3 archives. See [RECEIPT_20261113.md](RECEIPT_20261113.md) for exact archive SHA-256 values, member counts, term-folder distribution and the reconciliation boundary.
+
+A new deterministic reconciliation utility is available at `scripts/ss23/reconcile_received_archives.py`. It compares class, term, member SHA-256 and byte count as a multiset, so duplicate files are counted and changed member path prefixes do not create false mismatches. Run it against the attached archives and this register before accepting the re-issued source set:
+
+```sh
+python3 -I scripts/ss23/reconcile_received_archives.py \
+  --ss2 "/path/to/SSS 2-20260507T072840Z-3-001.zip" \
+  --ss3 "/path/to/SSS 3-20260507T072839Z-3-001.zip" \
+  --assignments docs/ss23/sources/SOURCE_ASSIGNMENTS.csv
+```
+
+The tool does not change the register or infer subject mappings. A passing result establishes member identity by class/term/hash/bytes; subject names and document headers still require separate review.

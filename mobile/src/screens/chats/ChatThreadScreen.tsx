@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import {
   View, Text, StyleSheet, FlatList, TouchableOpacity,
-  KeyboardAvoidingView, Platform, Alert,
+  KeyboardAvoidingView, Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../api/client';
-import { Loader, Empty, Input } from '../../components/UI';
+import { Loader, Empty, Input, Btn } from '../../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../../theme';
 import { useAuth } from '../../api/AuthContext';
 
@@ -21,24 +21,37 @@ export default function ChatThreadScreen({ route, navigation }: any) {
   const [thread, setThread] = useState<Msg[]>([]);
   const [body, setBody] = useState('');
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [loadRetry, setLoadRetry] = useState(0);
   const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState('');
   const flatRef = useRef<FlatList>(null);
 
   useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    setLoadError('');
+    setSendError('');
     navigation.setOptions({ title: contact.full_name });
     api.get(`/messages/conversation/${contact.id}`)
       .then(({ data }) => {
+        if (cancelled) return;
         setThread(data.messages ?? []);
         setTimeout(() => flatRef.current?.scrollToEnd({ animated: false }), 100);
       })
-      .catch(() => {})
-      .finally(() => setLoading(false));
-  }, [contact.id]);
+      .catch((e: any) => {
+        if (cancelled) return;
+        setLoadError(e?.response?.data?.error ?? 'Could not load this conversation. Check your connection and try again.');
+      })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
+  }, [contact.id, loadRetry]);
 
   const sendMessage = async () => {
-    if (!body.trim()) return;
+    if (!body.trim() || sending) return;
     const outgoing = body.trim();
     setSending(true);
+    setSendError('');
     try {
       const { data } = await api.post('/messages', { recipient_id: contact.id, body: outgoing });
       setBody('');
@@ -47,11 +60,18 @@ export default function ChatThreadScreen({ route, navigation }: any) {
       }
       setTimeout(() => flatRef.current?.scrollToEnd({ animated: true }), 100);
     } catch (e: any) {
-      Alert.alert('Error', e?.response?.data?.error ?? 'Could not send message');
+      setSendError(e?.response?.data?.error ?? 'Could not send message. Your draft is still here; retry when connected.');
     } finally { setSending(false); }
   };
 
   if (loading) return <Loader />;
+  if (loadError) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={loadError} />
+      <Btn label="Retry loading conversation" onPress={() => setLoadRetry(v => v + 1)} variant="outline" />
+      <Btn label="Back to chats" onPress={() => navigation.goBack()} variant="ghost" style={{ marginTop: Spacing.sm }} />
+    </View>
+  );
 
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
@@ -68,6 +88,7 @@ export default function ChatThreadScreen({ route, navigation }: any) {
         </View>
       </View>
 
+      {!!sendError && <Text style={{ color: Colors.error, paddingHorizontal: Spacing.md, paddingTop: Spacing.xs }}>{sendError}</Text>}
       <FlatList
         ref={flatRef}
         data={thread}
@@ -93,13 +114,13 @@ export default function ChatThreadScreen({ route, navigation }: any) {
       <View style={styles.inputRow}>
         <Input
           value={body}
-          onChangeText={setBody}
+          onChangeText={(value) => { setBody(value); setSendError(''); }}
           placeholder="Type a message…"
           style={{ flex: 1, marginBottom: 0 }}
           multiline
           numberOfLines={2}
         />
-        <TouchableOpacity style={styles.sendBtn} onPress={sendMessage} disabled={sending}>
+        <TouchableOpacity style={[styles.sendBtn, (!body.trim() || sending) && { opacity: 0.5 }]} onPress={sendMessage} disabled={sending || !body.trim()} accessibilityRole='button' accessibilityLabel='Send message'>
           <Ionicons name="send" size={20} color={Colors.white} />
         </TouchableOpacity>
       </View>

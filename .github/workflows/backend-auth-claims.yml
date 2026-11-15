@@ -1,0 +1,35 @@
+name: Backend authorization claims
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "backend/src/middleware/auth.ts"
+      - "backend/src/utils/authClaims.ts"
+      - "backend/src/types/index.ts"
+      - "backend/package.json"
+      - "tests/backend-auth-claims.test.mts"
+      - ".github/workflows/backend-auth-claims.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  auth-claims:
+    name: Authorization claim regression and backend typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install locked workspace dependencies
+        run: npm ci --ignore-scripts
+      - name: Run authorization claim regressions
+        run: npm run test:auth-claims --workspace=backend
+      - name: Typecheck backend
+        run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json

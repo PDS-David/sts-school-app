@@ -1,12 +1,13 @@
 import { Router } from 'express';
 import bcrypt from 'bcryptjs';
-import { query } from '../db/pool.js';
+import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requireRole } from '../middleware/auth.js';
 import { audit } from '../utils/audit.js';
 import { sendAdminLogEmail } from '../utils/email.js';
 import * as XLSX from 'xlsx';
 import { generateTempPassword, generateNumericPin } from '../utils/password.js';
 import { getBackupStatus, runBackup, BackupConfigError } from '../utils/backup.js';
+import { normalizeTeacherSubjectIds, TeacherAssignmentValidationError, validateTeacherAssignments } from '../utils/teacherAssignments.js';
 
 const router = Router();
 router.use(requireAuth, requireRole('admin'));
@@ -133,20 +134,45 @@ router.post('/users', async (req, res) => {
     if (!initial_password || String(initial_password).length < 8) {
       return res.status(400).json({ error: 'initial_password is required for a teacher and must be at least 8 characters' });
     }
-    const hash = await bcrypt.hash(String(initial_password), 10);
-    const { rows } = await query(
-      `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,
-         phone,email,must_change_pw,access_expires_at,activation_code)
-       VALUES($1,$2,'teacher',$3,$4,$5,$6,$7,TRUE,$8,NULL) RETURNING id,username,role,school_code,access_expires_at`,
-      [uname, hash, full_name, schoolCodeN,
-       assignedClassN, phoneN, emailN, expiresAt],
-    );
-    const subjectIds: number[] = Array.isArray(assigned_subject_ids) ? assigned_subject_ids : [];
-    for (const sid of subjectIds) {
-      await query('INSERT INTO teacher_subjects(user_id, subject_id) VALUES($1,$2) ON CONFLICT DO NOTHING', [rows[0].id, sid]);
+
+    let subjectIds: number[];
+    try {
+      subjectIds = normalizeTeacherSubjectIds(assigned_subject_ids);
+    } catch (error) {
+      if (error instanceof TeacherAssignmentValidationError) {
+        return res.status(400).json({ error: error.message });
+      }
+      throw error;
     }
-    await audit(req.user!, 'add_user', 'user', rows[0].id, `teacher: ${full_name} (admin-set password)`);
-    return res.status(201).json({ user: rows[0] });
+
+    const hash = await bcrypt.hash(String(initial_password), 10);
+    let createdUser;
+    try {
+      createdUser = await withTransaction(async (client) => {
+        await validateTeacherAssignments(client, schoolCodeN, assignedClassN, subjectIds);
+        const { rows } = await client.query(
+          `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,
+             phone,email,must_change_pw,access_expires_at,activation_code)
+           VALUES($1,$2,'teacher',$3,$4,$5,$6,$7,TRUE,$8,NULL) RETURNING id,username,role,school_code,access_expires_at`,
+          [uname, hash, full_name, schoolCodeN, assignedClassN, phoneN, emailN, expiresAt],
+        );
+        for (const sid of subjectIds) {
+          await client.query(
+            'INSERT INTO teacher_subjects(user_id, subject_id) VALUES($1,$2)',
+            [rows[0].id, sid],
+          );
+        }
+        return rows[0];
+      });
+    } catch (error) {
+      if (error instanceof TeacherAssignmentValidationError) {
+        return res.status(400).json({ error: error.message });
+      }
+      throw error;
+    }
+
+    await audit(req.user!, 'add_user', 'user', createdUser.id, `teacher: ${full_name} (admin-set password)`);
+    return res.status(201).json({ user: createdUser });
   }
 
   // Task C: admin no longer generates a temp password to hand out — the
@@ -164,10 +190,6 @@ router.post('/users', async (req, res) => {
     [uname, role, full_name, schoolCodeN,
      assignedClassN, phoneN, emailN, expiresAt, activationCode],
   );
-  const subjectIds: number[] = Array.isArray(assigned_subject_ids) ? assigned_subject_ids : [];
-  for (const sid of subjectIds) {
-    await query('INSERT INTO teacher_subjects(user_id, subject_id) VALUES($1,$2) ON CONFLICT DO NOTHING', [rows[0].id, sid]);
-  }
   await audit(req.user!, 'add_user', 'user', rows[0].id, `${role}: ${full_name}`);
   return res.status(201).json({ user: { ...rows[0], activation_code: activationCode } });
 });
@@ -194,46 +216,82 @@ router.post('/users/:id/reissue-activation-code', async (req, res) => {
 
 router.put('/users/:id', async (req, res) => {
   const { full_name, role, school_code, assigned_class, assigned_subject_ids, is_active, phone, email, access_expires_at, clear_expiry, revocation_reason } = req.body;
-  // Blank text must never be persisted: COALESCE would write '' over the stored
-  // value. Normalised here to null, which COALESCE treats as "leave unchanged".
   const schoolCodeN = blankToNull(school_code);
   const assignedClassN = blankToNull(assigned_class);
   const phoneN = blankToNull(phone);
   const emailN = blankToNull(email);
-  // clear_expiry: true lets the admin explicitly remove an expiry (grant indefinite access)
-  // without that being confused with "field simply not sent" (which COALESCE would ignore).
-  //
-  // revocation_reason: optional note admin attaches when deactivating a user
-  // or ending their access — surfaced back to the user at login/refresh and
-  // in the forgot-password flow instead of a generic "contact admin"
-  // message. Auto-cleared whenever this same request reactivates the user
-  // (is_active=true), since a reason for a revocation that's just been
-  // undone is stale and would otherwise keep showing on their next login.
   const reactivating = is_active === true;
-  const { rows } = await query(
-    `UPDATE users SET full_name=COALESCE($1,full_name), role=COALESCE($2,role),
-       school_code=COALESCE($3,school_code),
-       -- Staff accounts (admin, finance_admin) have no class: clear it explicitly,
-       -- because a null parameter alone would leave an existing value in place.
-       assigned_class=CASE WHEN COALESCE($2,role) IN ('admin','finance_admin') THEN NULL
-                           ELSE COALESCE($4,assigned_class) END,
-       is_active=COALESCE($5,is_active),
-       phone=COALESCE($6,phone), email=COALESCE($7,email),
-       access_expires_at = CASE WHEN $9 THEN NULL ELSE COALESCE($8, access_expires_at) END,
-       revocation_reason = CASE WHEN $11 THEN NULL ELSE COALESCE($12, revocation_reason) END
-     WHERE id=$10 RETURNING id,username,role,is_active,access_expires_at,revocation_reason`,
-    [full_name, role, schoolCodeN, assignedClassN, is_active, phoneN, emailN,
-     access_expires_at ?? null, !!clear_expiry, req.params.id, reactivating, revocation_reason ?? null],
-  );
-  if (!rows[0]) return res.status(404).json({ error: 'User not found' });
-  if (Array.isArray(assigned_subject_ids)) {
-    await query('DELETE FROM teacher_subjects WHERE user_id=$1', [req.params.id]);
-    for (const sid of assigned_subject_ids) {
-      await query('INSERT INTO teacher_subjects(user_id, subject_id) VALUES($1,$2) ON CONFLICT DO NOTHING', [req.params.id, sid]);
+  const hasSubjectIds = assigned_subject_ids !== undefined;
+
+  let result: { user: any | null };
+  try {
+    result = await withTransaction(async (client) => {
+      const { rows: currentRows } = await client.query(
+        'SELECT role,school_code,assigned_class FROM users WHERE id=$1 FOR UPDATE',
+        [req.params.id],
+      );
+      if (!currentRows[0]) return { user: null };
+
+      const current = currentRows[0];
+      const nextRole = role ?? current.role;
+      const nextSchool = schoolCodeN ?? current.school_code;
+      const nextClass = (nextRole === 'admin' || nextRole === 'finance_admin')
+        ? null
+        : (assignedClassN ?? current.assigned_class);
+
+      let nextSubjectIds: number[] = [];
+      if (nextRole === 'teacher') {
+        if (hasSubjectIds) {
+          nextSubjectIds = normalizeTeacherSubjectIds(assigned_subject_ids);
+        } else {
+          const { rows: existingSubjects } = await client.query(
+            'SELECT subject_id FROM teacher_subjects WHERE user_id=$1 ORDER BY subject_id',
+            [req.params.id],
+          );
+          nextSubjectIds = existingSubjects.map((row) => Number(row.subject_id));
+        }
+        await validateTeacherAssignments(client, nextSchool, nextClass, nextSubjectIds);
+      }
+
+      const { rows } = await client.query(
+        `UPDATE users SET full_name=COALESCE($1,full_name), role=COALESCE($2,role),
+           school_code=COALESCE($3,school_code),
+           assigned_class=CASE WHEN COALESCE($2,role) IN ('admin','finance_admin') THEN NULL
+                               ELSE COALESCE($4,assigned_class) END,
+           is_active=COALESCE($5,is_active),
+           phone=COALESCE($6,phone), email=COALESCE($7,email),
+           access_expires_at = CASE WHEN $9 THEN NULL ELSE COALESCE($8, access_expires_at) END,
+           revocation_reason = CASE WHEN $11 THEN NULL ELSE COALESCE($12, revocation_reason) END
+         WHERE id=$10 RETURNING id,username,role,is_active,access_expires_at,revocation_reason`,
+        [full_name, role, schoolCodeN, assignedClassN, is_active, phoneN, emailN,
+         access_expires_at ?? null, !!clear_expiry, req.params.id, reactivating, revocation_reason ?? null],
+      );
+      if (!rows[0]) return { user: null };
+
+      // Replace assignments in the same transaction as the user update.
+      // Changing away from teacher always removes now-irrelevant grants.
+      if (nextRole !== 'teacher' || hasSubjectIds) {
+        await client.query('DELETE FROM teacher_subjects WHERE user_id=$1', [req.params.id]);
+        for (const sid of nextSubjectIds) {
+          await client.query(
+            'INSERT INTO teacher_subjects(user_id, subject_id) VALUES($1,$2)',
+            [req.params.id, sid],
+          );
+        }
+      }
+
+      return { user: rows[0] };
+    });
+  } catch (error) {
+    if (error instanceof TeacherAssignmentValidationError) {
+      return res.status(400).json({ error: error.message });
     }
+    throw error;
   }
+
+  if (!result.user) return res.status(404).json({ error: 'User not found' });
   await audit(req.user!, 'edit_user', 'user', req.params.id);
-  return res.json({ user: rows[0] });
+  return res.json({ user: result.user });
 });
 
 router.post('/users/:id/reset-password', async (req, res) => {

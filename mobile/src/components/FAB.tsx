@@ -29,7 +29,7 @@ export function FAB({ icon = 'add', actions }: FabProps) {
 
   return (
     <>
-      <TouchableOpacity style={styles.fab} onPress={handlePress} activeOpacity={0.85}>
+      <TouchableOpacity style={styles.fab} onPress={handlePress} activeOpacity={0.85} accessibilityRole='button' accessibilityLabel={actions.length === 1 ? actions[0].label : 'Open quick actions'} accessibilityHint={actions.length === 1 ? undefined : 'Opens a list of available actions'}>
         <Ionicons name={icon} size={26} color={Colors.white} />
       </TouchableOpacity>
 
@@ -43,6 +43,8 @@ export function FAB({ icon = 'add', actions }: FabProps) {
                   style={[styles.menuItem, i < actions.length - 1 && styles.menuItemBorder]}
                   onPress={() => { setOpen(false); a.onPress(); }}
                   activeOpacity={0.7}
+                  accessibilityRole='button'
+                  accessibilityLabel={a.label}
                 >
                   <Ionicons name={a.icon} size={20} color={Colors.primary} />
                   <Text style={styles.menuLabel}>{a.label}</Text>

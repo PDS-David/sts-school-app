@@ -11,7 +11,9 @@ export default function TeacherMoreScreen({ navigation }: any) {
   const { user, logout } = useAuth();
 
   const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; onPress?: () => void }[] = [
+    { icon: 'calendar-outline', label: 'School Calendar', sub: 'View school events and important dates', onPress: () => navigation.navigate('SchoolCalendar') },
     { icon: 'trending-up-outline', label: 'Weekly Efforts', sub: 'Log weekly student effort', onPress: () => navigation.navigate('WeeklyEfforts') },
+    { icon: 'bar-chart-outline', label: 'Analytics & Marking', sub: 'Review pending marks and class performance', onPress: () => navigation.navigate('TeacherAnalytics') },
     { icon: 'settings-outline', label: 'Settings', sub: 'Change password and preferences', onPress: () => navigation.navigate('ChangePassword') },
     // No "Security Question" entry here (deliberately, not an omission):
     // per explicit school-owner policy, a teacher who forgets their

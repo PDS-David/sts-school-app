@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, RefreshControl, Image, Alert } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, RefreshControl, Image } from 'react-native';
 import api from '../api/client';
 import { Card, Btn, Loader, Empty, GradePill, RowItem, SectionHeader, Badge } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
@@ -7,6 +7,7 @@ import { useAuth } from '../api/AuthContext';
 import { useWards } from '../api/WardContext';
 import { getSchoolBrand } from '../schoolBranding';
 import { buildSessionReportHtml, printReportHtml, exportReportHtml } from '../utils/reportPdf';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 
 // A session is fixed at exactly 3 terms (1st, 2nd, 3rd). This screen collates
 // whichever terms have been entered so far for the resolved academic year
@@ -22,6 +23,8 @@ export default function SessionReportScreen({ route }: any) {
   const [loading,    setLoading]    = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error,      setError]      = useState('');
+  const [pdfBusy, setPdfBusy] = useState<'print' | 'export' | null>(null);
+  const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
 
   const fetchReport = async () => {
     setError('');
@@ -61,7 +64,15 @@ export default function SessionReportScreen({ route }: any) {
   useEffect(() => { fetchReport(); }, [effectiveWardId, academicYearParam]);
 
   if (loading) return <Loader />;
-  if (error)   return <Empty message={error} />;
+  if (error) {
+    const retryable = !error.startsWith('Select a child') && !error.startsWith('No student record') && !error.startsWith('No student selected');
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', backgroundColor: Colors.background, padding: Spacing.md }}>
+        <Empty message={error} />
+        {retryable ? <Btn label="Try again" variant="outline" onPress={() => { setLoading(true); fetchReport(); }} /> : null}
+      </View>
+    );
+  }
   if (!report || !report.student) return <Empty message="No session report available" />;
 
   const { student, academic_year, terms, terms_present, is_complete_session, subjects, attendance, summary } = report;
@@ -69,15 +80,13 @@ export default function SessionReportScreen({ route }: any) {
 
   // Same restriction as MyResultsScreen.tsx — admin + parent only.
   const canPrintExport = user?.role === 'admin' || user?.role === 'parent';
-  const [pdfBusy, setPdfBusy] = useState<'print' | 'export' | null>(null);
-
   const handlePrint = async () => {
     setPdfBusy('print');
     try {
       const html = await buildSessionReportHtml(report, brand);
       await printReportHtml(html);
     } catch (e: any) {
-      Alert.alert('Could not print', e?.message ?? 'Something went wrong.');
+      setInfoDialog({ title: 'Could not print report', message: e?.message ?? 'Something went wrong. Please try again.' });
     } finally {
       setPdfBusy(null);
     }
@@ -89,7 +98,7 @@ export default function SessionReportScreen({ route }: any) {
       const html = await buildSessionReportHtml(report, brand);
       await exportReportHtml(html, `${student.full_name}-Session-${academic_year}`.replace(/\s+/g, '_'));
     } catch (e: any) {
-      Alert.alert('Could not export', e?.message ?? 'Something went wrong.');
+      setInfoDialog({ title: 'Could not export report', message: e?.message ?? 'Something went wrong. Please try again.' });
     } finally {
       setPdfBusy(null);
     }
@@ -167,6 +176,7 @@ export default function SessionReportScreen({ route }: any) {
         ))}
         {!subjects.length && <Text style={styles.pendingTxt}>No scores recorded for any term in this session yet.</Text>}
       </Card>
+      <ConfirmDialog visible={!!infoDialog} title={infoDialog?.title ?? ''} message={infoDialog?.message ?? ''} hideCancel onConfirm={() => setInfoDialog(null)} onCancel={() => setInfoDialog(null)} />
     </ScrollView>
   );
 }

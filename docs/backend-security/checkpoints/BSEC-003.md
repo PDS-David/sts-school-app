@@ -1,0 +1,26 @@
+# Checkpoint — BSEC-003
+
+- **Task ID:** BSEC-003
+- **Title:** Fail closed when finance administrators list students without selecting a school
+- **Status:** review
+- **Owner:** ChatGPT implementation worker
+- **Base branch:** master
+- **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
+- **Working branch:** agent/backend-finance-student-roster-scope-20261113
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/703
+- **Latest implementation commit:** 3513870392fc7f55d8820243a87e548cce95193c
+- **Checkpoint commit:** pending
+- **Changed files:**
+  - backend/src/routes/students.ts (GET /students scope block only)
+  - backend/src/utils/studentRosterScope.ts
+  - tests/backend-student-roster-scope.test.mts
+  - .github/workflows/backend-student-roster-scope.yml
+  - docs/backend-security/checkpoints/BSEC-003.md
+- **Defect:** finance_admin is granted students.read and has school_code NULL by design. GET /students previously computed effectiveSchool as school_code ?? user.school_code. When the caller omitted school_code, effectiveSchool was NULL and the SQL query omitted the school predicate, exposing both campuses' student rosters. Teachers with a NULL school assignment could also fall through to an unfiltered roster.
+- **Implementation:** a pure role-aware resolver now requires an explicit non-empty school_code for finance_admin (HTTP 400), preserves admin's intentional all-school access, pins teachers to their current school and assigned class, and rejects teacher accounts with no school assignment (HTTP 403). Caller-supplied school_code cannot widen a teacher's scope.
+- **Regression coverage:** seven tests cover finance_admin missing/blank/explicit school selection, admin global and explicit filtering, teacher school/class pinning, subject-only teacher class selection and unassigned teacher rejection.
+- **Commits:** ceacf2c06165b9eb7f2e747fa757bff9529aa121; c7fd7f86e7ed52cad6e2afe0d0f24b4125667fd8; 8b59c5cde0936264ba277fbbf06cdc253e916c98; 1845ed7653901c7568c44a058ee8d2a4d00c443f; 3513870392fc7f55d8820243a87e548cce95193c; 473649a055fce922df9a3e5f414b64ab9bbd4f5d.
+- **Verification:** GitHub Actions run https://github.com/PDS-David/sts-school-app/actions/runs/43445428668 completed successfully. Passed: locked workspace dependency installation, all seven roster-scope regression tests and backend TypeScript typecheck. Branch comparison before PR: 5 commits ahead of master, 0 behind; five changed paths. No production database or data was accessed or changed.
+- **Concurrency:** PR #702 edits only the POST /students workflow later in backend/src/routes/students.ts; this PR changes only the GET /students scope block near the top. The edits are in separate hunks. PR #692 changes auth middleware/claims only.
+- **Remaining:** PR review/merge. Do not mark the overall backend/security assignment complete.
+- **Exact next action:** review PR #703 and merge only after owner approval; then refresh from master and continue the backend audit.

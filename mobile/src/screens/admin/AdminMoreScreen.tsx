@@ -20,6 +20,8 @@ export default function AdminMoreScreen({ navigation }: any) {
   const { user, logout } = useAuth();
 
   const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; onPress?: () => void }[] = [
+    { icon: 'megaphone-outline', label: 'Announcements', sub: 'Publish school and class notices', onPress: () => navigation.navigate('AdminAnnouncements') },
+    { icon: 'calendar-outline', label: 'School Calendar', sub: 'Publish and manage school events', onPress: () => navigation.navigate('SchoolEvents') },
     { icon: 'person-outline', label: 'Users', sub: 'Manage teacher/parent/student/admin accounts', onPress: () => navigation.navigate('AdminUsers') },
     { icon: 'key-outline', label: 'Term PINs', sub: 'Generate and view student access PINs per term', onPress: () => navigation.navigate('AdminTermPins') },
     { icon: 'people-circle-outline', label: 'Class Codes', sub: 'Generate the code students use to set up their own account', onPress: () => navigation.navigate('AdminClassCodes') },

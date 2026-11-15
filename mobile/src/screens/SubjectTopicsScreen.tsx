@@ -17,14 +17,16 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
   const [loading, setLoading]       = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [fromCache, setFromCache]   = useState(false);
+  const [topicsError, setTopicsError] = useState('');
 
   const fetchTopics = async () => {
+    setTopicsError('');
     try {
       const res: any = await api.get(`/learning/topics?subject_id=${subjectId}`);
       setTopics(res.data.topics ?? []);
       setFromCache(!!res.fromCache);
     } catch {
-      // leave whatever's already on screen
+      setTopicsError('Could not load topics for this subject. Check your connection and try again.');
     }
     try {
       const packageRes: any = await api.get(`/learning/ss1/lessons?subject_name=${encodeURIComponent(subjectName)}`);
@@ -52,6 +54,13 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
     )));
 
   if (loading) return <Loader />;
+
+  if (topicsError) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={topicsError} />
+      <Btn label="Retry loading topics" variant="outline" onPress={() => { setLoading(true); fetchTopics(); }} />
+    </View>
+  );
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
