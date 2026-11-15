@@ -35,7 +35,7 @@ test('Every Yoruba lesson has a unique ID, exact UTF-8 body hash and complete ma
   }
 });
 
-test('First-Term Weeks One to Five have EDE, ASA and LITIRESO drafts linked from coverage, with Week Seven orthography'), () => {
+test('First-Term Weeks One to Five have EDE, ASA and LITIRESO drafts linked from coverage, with Week Seven orthography', () => {
   for (const week of ['W01', 'W02', 'W03', 'W04', 'W05']) {
     for (const strand of ['EDE', 'ASA', 'LIT']) {
       const lessonId = `SUP-SS1-YORUBA-T1-${week}-${strand}`;
