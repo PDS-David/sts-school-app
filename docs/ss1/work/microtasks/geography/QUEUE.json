@@ -51,9 +51,9 @@
     "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 23,
+    "IMPLEMENTED_TESTING_DEFERRED": 25,
     "BLOCKED": 1,
-    "PENDING": 27
+    "PENDING": 25
   },
   "items": [
     {
@@ -1265,8 +1265,8 @@
         "GEO-SRC-T1",
         "GEO-WK-T1-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by GEO-WK-T1-W01 (2026-11-07): the word nature occurs only in the scheme row at line 24, the Week 1 subtitle at line 44 omits it, and no paragraph teaches it; COV-GEO-T1-W01-NATURE is PARTIAL and GEOGRAPHY-T1-W01-COVERAGE is open. GEO-WK-T1-W01 authors no definition.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as SUP-SS1-GEOGRAPHY-T1-W01-NATURE in geography.json; bound to COV-GEO-T1-W01-NATURE (IMPLEMENTED_EQUIVALENT). See GEO-LES-T1-W01-NATURE.md. Six keyed questions with complete answers/marks. Approval PENDING, verification DEFERRED.",
       "completion_condition": "A lesson in geography.json teaches the nature of geography, labels itself a Week 1 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-GEO-T1-W01-NATURE then cites it with evidence; no source byte, correction or shared file is edited."
     },
     {
@@ -1304,8 +1304,8 @@
         "GEO-SRC-T1",
         "GEO-WK-T1-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by GEO-WK-T1-W01 (2026-11-07): no answer, mark or key exists anywhere in the 1st Term document; COV-GEO-T1-W01-ASSESSMENT-KEYS is UNRESOLVED and GEOGRAPHY-T1-W01-COVERAGE is open. GEO-WK-T1-W01 authors no answer.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as SUP-SS1-GEOGRAPHY-T1-W01-KEYED-PRACTICE in geography.json; bound to COV-GEO-T1-W01-ASSESSMENT-KEYS (IMPLEMENTED_EQUIVALENT). See GEO-LES-T1-W01-KEYED-PRACTICE.md. Seven keyed questions with complete answers/marks; state-capital items excluded; Music MCQ provisional pending teacher confirmation. Approval PENDING, verification DEFERRED.",
       "completion_condition": "A lesson in geography.json provides complete answers and marking that sums exactly for the listed Week 1 items, labels itself a Week 1 keyed-practice supplement, has body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-GEO-T1-W01-ASSESSMENT-KEYS then cites it with evidence; no answer is inferred outside taught text and no source byte, correction or shared file is edited."
     },
     {
@@ -1940,8 +1940,6 @@
     "GEO-WK-T2-W09",
     "GEO-WK-T2-W10",
     "GEO-VIS-T2",
-    "GEO-LES-T1-W01-NATURE",
-    "GEO-LES-T1-W01-KEYED-PRACTICE",
     "GEO-WK-T3-W01-02",
     "GEO-WK-T3-W03",
     "GEO-WK-T3-W04",
