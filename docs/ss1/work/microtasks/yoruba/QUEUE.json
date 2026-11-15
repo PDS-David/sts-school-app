@@ -1569,11 +1569,10 @@
       ],
       "depends_on": [
         "YO-SRC-T1",
-        "YO-WK-T1-W07",
-        "YO-FACT-T1-W07-DEFECTS"
+        "YO-WK-T1-W07"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Added SUP-SS1-YORUBA-T1-W07-EDE-ORTHOGRAPHY with standard 1974 orthography, tone/underdot rules, eight documented spelling pairs, word division, nasalised forms and eight keyed questions (35 marks). Exact school-source table reconciliation remains a separate open item.",
+      "implementation_reference": "Independent EDE supplement is complete and uses the adopted JCCE 1974 standard orthography policy (YO-ORTHOGRAPHY-POLICY.md; YO-FACT-T1-W07-DECISIONS.md). The original source-table alignment and ASA strand remain separate open items; the lesson does not reuse defective source rows.",
       "completion_condition": "A lesson in yoruba.json teaches every Week 7 EDE objective with a corrected, aligned table that the expert decision in YO-FACT-T1-W07-DEFECTS approves, uses the approved notation for every form, explains each change by its rule, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance, and PENDING content approval; no fact is invented and no schema or compiler edit is made."
     },
     {
@@ -1660,7 +1659,7 @@
         "YO-WK-T1-W07"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "EDE orthography decision recorded in YO-FACT-T1-W07-DECISIONS.md; ASA benefits still lack an owner-approved authoritative source/scope, and exact source table cell alignment/IFIYESI note requires the original DOCX. Do not mark this combined defect item complete.",
+      "implementation_reference": "EDE orthography decision and separate standard spelling lesson are complete. Combined Week Seven defect task remains blocked only for exact source-table reconciliation, ASA definition/benefits and assessment gaps; see YORUBA-T1-W07-SOURCE-DEFECTS, YORUBA-T1-W07-BENEFITS-MISSING and YORUBA-T1-W07-ASSESSMENT-GAPS.",
       "completion_condition": "Every listed defect, the notation decision, the missing-benefits decision and the table-alignment decision are resolved by a named expert decision recorded with evidence and locators; the two Week 7 lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
     },
     {
