@@ -1,6 +1,6 @@
 # Yorùbá SS1 — First Term, Week 5, LITIRESO: Ìtúpalẹ̀ Ìwé Ìtàn Àròsọ (Prose Analysis)
 
-**Draft state:** Original practice lesson prepared to fill the empty Week 5 LITIRESO teaching body. The prose below is newly authored for classroom practice; it is **not** represented as the WAEC/NECO prescribed set text. The exact prescribed title/edition remains to be confirmed by the school. This draft has not been inserted into `yoruba.json`, approved or tested.
+**Draft state:** Supplementary original practice lesson prepared to provide Week 5 LITIRESO skills coverage while the required WAEC/NECO set text is unavailable. The prose below is newly authored for classroom practice; it does **not** replace the prescribed-text lesson and is **not** represented as the WAEC/NECO set text. The exact prescribed title/edition remains to be confirmed by the school. The package stores this separately as `SUP-SS1-YORUBA-T1-W05-LIT-PRACTICE`; the main prescribed-text lesson remains open.
 
 ## Àfojúsùn ẹ̀kọ́ (Learning objectives)
 
