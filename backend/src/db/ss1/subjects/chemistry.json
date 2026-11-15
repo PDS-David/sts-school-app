@@ -642,6 +642,101 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-CHEM-T1A-W03-BUNSEN-BURNER-FUNCTION",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Chemistry",
+      "title": "The Bunsen burner and its function",
+      "objectives": [
+        "Identify a Bunsen burner as a laboratory heating apparatus.",
+        "State the main function of a Bunsen burner.",
+        "Distinguish a Bunsen burner from apparatus used to measure or support materials.",
+        "State basic safety boundaries for supervised use of a Bunsen burner."
+      ],
+      "body": "# The Bunsen burner and its function\n\nA **Bunsen burner** is a laboratory heating apparatus that produces a controllable flame. Its main function is to provide heat for suitable laboratory activities, such as heating a substance in an appropriate heat-resistant container.\n\nA Bunsen burner is a **source of heat**. It is not used to measure mass, measure liquid volume, or support glassware. Other apparatus, such as a tripod stand and wire gauze, may be used to support suitable containers during heating, but they do not produce the flame.\n\n## Important safety points\n\n- A Bunsen burner must be used only when the teacher has authorised and is supervising the activity.\n- Flammable liquids, vapours and materials must be kept away from an open flame.\n- A lit burner must never be left unattended.\n- Hair and loose clothing must be secured, and appropriate eye protection and protective clothing must be worn.\n- The burner and gas supply must be turned off when no longer in use, following the teacher's instructions.\n\nThis lesson explains the burner's function and basic safety boundaries. It does not provide a lighting procedure or authorise students to carry out heating activities independently.\n\n## Remember\n\n**Main function:** A Bunsen burner provides a flame that is used as a source of heat in suitable laboratory work.",
+      "body_sha256": "3486931c1d44c96d92ff38e158c51306d1a23667bb1b48ff491032897137ace3",
+      "practice": [
+        {
+          "id": "CHEM-T1A-W03-BURNER-Q1",
+          "question": "What is the main function of a Bunsen burner?",
+          "answer": "Its main function is to provide a flame as a source of heat for suitable laboratory activities.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies it as a heating apparatus or source of heat.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that it provides a flame for suitable laboratory activities.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "CHEM-T1A-W03-BURNER-Q2",
+          "question": "Does a Bunsen burner measure the volume of a liquid or provide heat? Choose the correct function and explain.",
+          "options": [
+            "It measures liquid volume.",
+            "It provides heat.",
+            "It measures mass."
+          ],
+          "answer": "It provides heat. It produces a flame used as a source of heat in suitable laboratory activities.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Selects that it provides heat.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains that it produces a flame used as a heat source.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "CHEM-T1A-W03-BURNER-Q3",
+          "question": "State two safety points that must be observed around a Bunsen burner.",
+          "answer": "Any two: keep flammable materials away from the flame; never leave a lit burner unattended; use it only with teacher authorisation and supervision; secure hair and loose clothing; wear appropriate eye protection and protective clothing; turn off the burner and gas supply when no longer in use as directed.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "One valid safety point.",
+              "marks": 1
+            },
+            {
+              "criterion": "A second distinct valid safety point.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Lab & Safety Equipment, American Chemical Society",
+          "locator": "High School Chemistry equipment list identifies Bunsen burners as laboratory equipment; the ACS secondary-school safety guidance describes burner use only where flammable materials are absent.",
+          "url": "https://www.acs.org/education/policies/middle-and-high-school-chemistry/classroom-and-lab-facilities/safety-equipment.html",
+          "rights": "PENDING: source webpage reuse terms not established; paraphrased instructional facts only.",
+          "reuse_status": "PENDING",
+          "attribution": "American Chemical Society."
+        },
+        {
+          "title": "School Chemistry Laboratory Safety Guide, CPSC/NIOSH",
+          "locator": "Student general work procedure, PDF page 6: keep flammable solvents away when lighting a flame, do not leave lit Bunsen burners unattended, and turn off heating apparatus and gas valves when not in use.",
+          "url": "https://www.cdc.gov/niosh/docs/2007-107/pdfs/2007-107.pdf",
+          "rights": "Public-domain U.S. government publication; verify local adaptation requirements before reuse of any quoted material.",
+          "reuse_status": "PERMITTED",
+          "attribution": "U.S. Consumer Product Safety Commission and National Institute for Occupational Safety and Health, DHHS (NIOSH) Publication No. 2007–107."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [],
@@ -978,12 +1073,18 @@
       "source_id": "SS1-SRC-58b4a44c3afa",
       "objective": "Function of the Bunsen burner (revision question on laboratory apparatus)",
       "objective_locator": "general evaluation/revision question 573(c) (line 573); no teaching text for it in lines 416-607 or in Week Two lines 273-325",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-CHEM-T1A-W03-BUNSEN-BURNER-FUNCTION"
+      ],
       "evidence": [
         {
           "locator": "line 573 ('State the function of the following laboratory apparatuses: a) Fume cupboard b) Burette (c) Bunsen burner') against Week Two lines 269 and 273-325",
           "explanation": "The revision question sends the learner back to Week Two apparatus. Week Two has entries for the fume cupboard (293) and the burette (305) but no entry for the Bunsen burner, which Week Two names only in the list at line 269 (COV-CHEM-T1A-W02-APPARATUS-USES). Nothing in Week Three describes it either. No coverage is claimed for the fume cupboard or the burette here; they are Week Two's. The gap becomes the bounded lesson item CHEM-LES-T1A-W03-BUNSEN-BURNER."
+        },
+        {
+          "locator": "Supplementary lesson SUP-SS1-CHEM-T1A-W03-BUNSEN-BURNER-FUNCTION; ACS high-school chemistry equipment guidance; CPSC/NIOSH School Chemistry Laboratory Safety Guide, student general work procedure, PDF page 6.",
+          "explanation": "The missing Bunsen-burner function is taught in a separately attributed supplementary lesson: the burner provides a flame as a heat source for suitable laboratory activities. Safety boundaries include teacher authorisation/supervision, keeping flammables away, never leaving a lit burner unattended, securing hair/clothing, and turning off heat/gas when no longer in use. No lighting procedure or independent practical is prescribed. Content approval remains PENDING and verification DEFERRED."
         }
       ]
     },
