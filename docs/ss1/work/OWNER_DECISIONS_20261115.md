@@ -753,3 +753,166 @@ This is a queue-state count, not a claim that 1,622 items are student-use ready 
 - **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the completion gate is the package/object named above.
 - **Evidence locator:** Week Two READING ASSIGNMENT, Mammoth lines 163–165.
 - **Who must answer:** Owner (with foundation/rights lead where indicated).
+
+## Per-item options, consequences and downstream effects — batch 2
+
+### DP-FACT-CONTENT-APPROVAL — data-processing
+- **Exact question:** Owner content approval and later verification of any data-processing lessons. Separate stage; no agent may invent an approval_reference or verification.
+- **Options and consequences:** A. Owner reviews completed identified objects and supplies dated approval references per lesson/asset; only then may approval move forward. B. Owner returns named defects; add correction items and keep approval pending until corrected material is reviewed.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** package approval and verification
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### DP-FACT-T1-W01-TEACHER-DECISIONS — data-processing
+- **Exact question:** Obtain one recorded subject-expert decision on every Week 1 question the source leaves open, so the four appended lessons bind to a decision instead of invented content: (1) whether Week 1 teaches the manual versus electronic distinction or the outcome line at 91 is reworded, given the contrast is printed at 1721-1723 in Week Ten; (2) the explanation and example for each of the eight properties at 131-145 and for the gathering and collation stages at 153 and 155; (3) whether storage belongs to the cycle stage at 161 or the processing activity at 217 in this week; (4) the answer, mark and marker for each of the 14 questions, per DATA-PROCESSING-T1-W01-ASSESSMENT-NO-KEY; (5) weekend item 4 at 267-269, where the taught text supports two options and excludes a third; (6) whether GENERAL EVALUATION 4 at 241 is taught in Week 1, moved, or removed; (7) the rights position and edition for the reading set at 247-249, which gives no pages, edition or year; (8) how the repeated questions at 235/279 and 237/281 are used and marked. Representation of the cycle flow at 105 and 169 stays with DP-VIS-T1-W01-CYCLE, the printed numbering with DP-PRES-T1-NUMBERING and the storage-media currency with DP-FACT-T1-HARDWARE-MODELS; name the owner of each rather than deciding it here.
+- **Options and consequences:** A. Supply exact edition/material identity and licence or written permission for school delivery; reuse only within that scope. B. Decline reuse and approve an original equivalent, a bare pointer, or omission. Do not copy or deliver third-party material without permission.
+- **What is blocked behind it:** DP-LES-T1-W01-MANUAL-ELECTRONIC, DP-LES-T1-W01-PROPERTIES-CYCLE, DP-LES-T1-W01-KEY-ASSESSMENT, DP-LES-T1-W01-COMPUTER-TOOL
+- **Evidence locator:** 1st Term Week 1, lines 87-281 SHA-256 836f73d0570e28df4dca685d5e34818d0de10e41ee72d8226e422ace997b6567; specifically lines 91, 129-145, 149-163, 167-175, 179-183, 233-243, 247-249, 253-273, 277-281
+- **Who must answer:** Named subject teacher/expert.
+
+### DP-OWNER-T1-W03-READING-RIGHTS — data-processing
+- **Exact question:** Confirm the exact edition and reuse rights for 'A Handbook On Computer Studies' by Niyi Adekolegan, Chapter 2 pages 9–10.
+- **Options and consequences:** A. Supply exact edition/material identity and licence or written permission for school delivery; reuse only within that scope. B. Decline reuse and approve an original equivalent, a bare pointer, or omission. Do not copy or deliver third-party material without permission.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** Week Three reading assignment, Mammoth lines 547–552.
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### ECON-FACT-CONTENT-APPROVAL — economics
+- **Exact question:** Owner content approval and later verification of any economics lessons. Separate stage; no agent may invent an approval_reference or verification.
+- **Options and consequences:** A. Owner reviews completed identified objects and supplies dated approval references per lesson/asset; only then may approval move forward. B. Owner returns named defects; add correction items and keep approval pending until corrected material is reviewed.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** package approval and verification
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### ECON-FACT-T1-W01-TEACHER-DECISIONS — economics
+- **Exact question:** Owner or teacher decides the seven Week 1 questions this indexing could not answer: 1. Which enumeration of mankind economic activities Week 1 teaches: the four items printed in the scope section at line 66 (production, exchange, distribution and consumption) or the three-item set that WEEKEND ASSIGNMENT item 5 at line 112 assumes. 2. Whether GENERAL EVALUATION QUESTIONS 3, 4 and 5 (lines 103-105) belong to Week 1 at all, and if they do, which approved material supplies the classical and neo-classical schools, given that classical and school of thought occur in the whole 1,060-line extract only inside those three question lines. 3. Whether producer goods (line 102) are taught in Week 1 or left where the source teaches them, at line 820 under the printed label Capital / Producer goods inside the Week Eight goods classification at lines 815-822. 4. Who authors the answer key and the mark allocation for the eighteen Week 1 questions, and on what basis, since no key, marking wording, rubric or mark total occurs in the source. 5. Whether the duplicated question (line 72 and line 116, same words, different terminal punctuation) is delivered twice, once, or rewritten as two distinct questions. 6. Which Longe edition the reading assignment at line 98 and the reference-books entry at line 39 both refer to, and what rights permit using pages 1 to 3. 7. Whether the printed names Alfred Marshal, H. J. Daven Port, Edvins Canon and Robins are normalised in teaching and, if so, how the corrected attribution is kept visibly separate from the source wording. Record each decision with who took it and the evidence used; do not let a lesson infer any of them.
+- **Options and consequences:** A. Supply exact edition/material identity and licence or written permission for school delivery; reuse only within that scope. B. Decline reuse and approve an original equivalent, a bare pointer, or omission. Do not copy or deliver third-party material without permission.
+- **What is blocked behind it:** ECON-LES-T1-W01-SCOPE-BRANCHES, ECON-LES-T1-W01-KEY-ASSESSMENT, ECON-LES-T1-W01-SCHOOLS-PRODUCER-GOODS
+- **Evidence locator:** Week One scope section lines 64-69 SHA-256 dd622e2929e1802e9746ec488e516528d3bde7babdb09fc937712517c7cfe348, GENERAL EVALUATION QUESTIONS lines 100-105 SHA-256 78877dc4888c18fa29f2a34029ac2e32017863521423138e89abfb692b4aedd0, WEEKEND ASSIGNMENT lines 107-112 SHA-256 215274a803e5d2f2865b2bff24da8a5393d24c65bdf748b8a18f066680fe6465 and SECTION B lines 114-116 SHA-256 8bab18ad9cc93dafc8550025de8c03eb160901cfd9d6b45a4d8b0b4034fbae44. The unresolved questions sit at lines 66 and 101-105 and 108-112 and 116.
+- **Who must answer:** Named subject teacher/expert.
+
+### ECON-FACT-T1-W02-TEACHER-DECISIONS — economics
+- **Exact question:** Owner or teacher decides the Week 2 questions this indexing could not answer: 1. What the lesson teaches about the Art option of the line 120 question, given that the source gives only the denial at line 125. 2. The headline classification and how lines 125, 128, 129, 130 and 131 are reconciled (social science that uses scientific method; deductive and inductive; probability versus unpredictability). 3. Which approved material supplies behavioural science (line 153), economic rent (line 156) and the principal economic units (line 157), and whether lines 154 and 155 are answered from Week 1 lines 54 and 65. 4. Who authors the answer key and mark allocation for the 16 Week 2 questions, and on what basis, since the source prints none. 5. Whether the repeated questions (lines 134 and 169; 146-147 and 168) are delivered once, twice or rewritten, and how the Week Nine revision questions at 968-970 are bound to this teaching. 6. Which Longe edition page 11 (line 150) belongs to and what rights permit its use, decided with Week 1 decision 6. 7. Whether the open-ended 'etc' at line 143 is kept as printed or the list is extended, and by whom. Record each decision with who took it and the evidence used; do not let a lesson infer any of them.
+- **Options and consequences:** A. Supply exact edition/material identity and licence or written permission for school delivery; reuse only within that scope. B. Decline reuse and approve an original equivalent, a bare pointer, or omission. Do not copy or deliver third-party material without permission.
+- **What is blocked behind it:** ECON-LES-T1-W02-SCIENCE-SOCIAL-SCIENCE, ECON-LES-T1-W02-UNTAUGHT-TERMS, ECON-LES-T1-W02-KEY-ASSESSMENT
+- **Evidence locator:** Week Two classification section lines 123-131 SHA-256 a20124fe00656f514a9e42922ade76dfe6644abd363c387a6854184e4d868753, EVALUATION lines 133-135 SHA-256 f11432db267044717880501f413c23e6d78b7b9515b760a6ffb14fe23a4c0434 and 145-147 SHA-256 a59ab3f1e981fc770f0316c0d487b5153d187ed7a2762863d81e95a6c15b2066, GENERAL EVALUATION QUESTIONS lines 152-157 SHA-256 2296d00125094242e950181a5ce512fe692415d905a9f5638539fc7d9eabcaa2, WEEKEND ASSIGNMENT lines 159-165 SHA-256 c422685f7b2ecedf774c89d20f22e9140658bcb8122bd15dcc6dbd80ca7ea0fc and SECTION B lines 167-169 SHA-256 66a0fd4b749def28fbea5333785bd6743babd99831f25815affb662838ac9415.
+- **Who must answer:** Named subject teacher/expert.
+
+### FA-FACT-CONTENT-APPROVAL — financial-accounting
+- **Exact question:** Owner content approval and later verification of any financial-accounting lessons. Separate stage; no agent may invent an approval_reference or verification.
+- **Options and consequences:** A. Owner reviews completed identified objects and supplies dated approval references per lesson/asset; only then may approval move forward. B. Owner returns named defects; add correction items and keep approval pending until corrected material is reviewed.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** package approval and verification
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### FA-FACT-T1-W01-TEACHER-DECISIONS — financial-accounting
+- **Exact question:** Owner or teacher decides the Week 1 questions this indexing could not answer: 1. Which approved material supplies the duties of an accountant (line 233), since the source never teaches them. 2. The expected answers and wording for weekend items 2, 3 and 4 (lines 247, 249, 251), including whose purpose item 3 means and whether item 4 counts the six verbs of line 87 as stages. 3. Who authors the answer key and mark allocation for the 12 Week 1 questions, and on what basis, since the source prints none. 4. How the number-of-items questions are keyed (three of five differences, five of nine reasons, eight of ten users) and whether the repeated definition question (lines 187 and 259) is delivered once or twice. 5. Whether line 231 benefits and line 261 reasons are keyed from the one importance list at lines 195-211. 6. Whether the external reading at line 239 is replaced by an original equivalent or kept as a bare pointer, together with FA-FACT-T1-EXTERNAL-MATERIALS. Record each decision with who took it and the evidence used; do not let a lesson infer any of them.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** FA-LES-T1-W01-ACCOUNTANT-DUTIES, FA-LES-T1-W01-KEY-ASSESSMENT
+- **Evidence locator:** Week One EVALUATION lines 185-189 SHA-256 6af921ada2622cc14b99286d3660f3f8e7e022965458b7519fd93e017fab815e and 229-233 SHA-256 886d3384b20f6b1c61968ba244fd5facbf339e471eb3237f95ee47be0d2c93cf, WEEKEND ASSIGNMENT lines 243-253 SHA-256 4a99a2378f0afa25f930aefb648b187a8b50d2935e0729dc1c407f8a2bf4acf1 and THEORY lines 257-263 SHA-256 243d375e29f98b8fc2d68efdb86bbe203b3af5a86131548098756d8542eac1e4.
+- **Who must answer:** Named subject teacher/expert.
+
+### FN-FACT-CONTENT-APPROVAL — food-and-nutrition
+- **Exact question:** Owner content approval and later verification of any food-and-nutrition lessons. Separate stage; no agent may invent an approval_reference, verification or classroom practical observation.
+- **Options and consequences:** A. Owner reviews completed identified objects and supplies dated approval references per lesson/asset; only then may approval move forward. B. Owner returns named defects; add correction items and keep approval pending until corrected material is reviewed.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** package approval and verification
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### FN-FACT-T1-W01-TEACHER-DECISIONS — food-and-nutrition
+- **Exact question:** Owner or teacher decides the Week 1 questions this indexing could not answer: 1. Whether Week 1 gets an original authored assessment (visibly the author's proposal) or adopts the evaluation at line 185 as its own, given that FN-WK-T1-W02 indexes that line with the Week 2 block. 2. Who authors the key and mark allocation for whichever assessment is delivered, and on what basis, since the source prints none. 3. Which approved material, if any, explains the six factors and the eight importance points, and whether the open-ended 'include' at line 141 is kept. 4. Whether the health claims at lines 113, 123, 129 and 133 are verified through FN-FACT-T1-NUTRITION-CLAIMS before any lesson adopts them. Record each decision with who took it and the evidence used; do not let a lesson infer any of them.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** FN-LES-T1-W01-ASSESSMENT
+- **Evidence locator:** Week 1 body lines 107-153 SHA-256 f34469bf0472df86f85c5153d24d5e71b4cf734aeeee66718569fd146867ba97 and the cross-referenced evaluation at line 185 SHA-256 8eee0f0136f411fa247c88fa5902952dd5024d2cffcf2b371f6695848de8501a.
+- **Who must answer:** Named subject teacher/expert.
+
+### FR-ASSET-EXAM-AUDIO-ACQUISITION — french
+- **Exact question:** Obtain the identified, permitted audio for T3 week 1 and its provenance/rights record, or record the owner's approval of the original equivalent instead.
+- **Options and consequences:** A. Supply exact edition/material identity and licence or written permission for school delivery; reuse only within that scope. B. Decline reuse and approve an original equivalent, a bare pointer, or omission. Do not copy or deliver third-party material without permission.
+- **What is blocked behind it:** FR-ASSET-EXAM-AUDIO-INSTALL
+- **Evidence locator:** permitted exam-practice audio (if required)
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### FR-ASSET-EXAM-AUDIO-INSTALL — french
+- **Exact question:** Install the acquired audio as a contract-compliant asset (path, sha256, bytes, media_type audio/mpeg or audio/wav, alt, order, locator, provenance) if audio was acquired.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** FR-VERIFY-ORAL-OBSERVATION
+- **Evidence locator:** backend/src/db/ss1/assets/french/
+- **Who must answer:** Owner or named subject teacher, according to scope.
+
+### FR-VERIFY-ORAL-OBSERVATION — french
+- **Exact question:** Deferred oral/listening observation of the dialogue and any installed audio. Written coverage must stay distinct from observed oral performance.
+- **Options and consequences:** A. Keep DEFERRED for the separately authorised verification stage; do not claim PASS now. B. At that later stage, provide the required verifier/teacher observation and exact test evidence.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** oral/listening observation
+- **Who must answer:** Owner or named subject teacher, according to scope.
+
+### FR-FACT-T1-W02-HEADS-OF-STATE — french
+- **Exact question:** After the owner or teacher states the intended scope of the headings 'Chefs d'etats/presidents' and 'Mornaies.', record dated official sources for any heads of state the scope requires, with retrieval dates. Do not author a lesson and do not invent leaders.
+- **Options and consequences:** A. Approve the exact source-to-subject/term alias after reviewing header evidence and provide a real approval reference. B. Reject or narrow the alias and provide the correct mapping; source identity remains unresolved.
+- **What is blocked behind it:** FR-SCOPE-AUTHORING-FINISH
+- **Evidence locator:** Week 2 children 75-76 (objectives FRENCH-T1-W02-OBJ-4 and -5)
+- **Who must answer:** Named subject teacher/expert.
+
+### FR-FACT-CONTENT-APPROVAL — french
+- **Exact question:** Owner content approval and later verification of the French lessons. Separate stage; not invented by any agent.
+- **Options and consequences:** A. Owner reviews completed identified objects and supplies dated approval references per lesson/asset; only then may approval move forward. B. Owner returns named defects; add correction items and keep approval pending until corrected material is reviewed.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** package_status PENDING; 27 lessons
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### FR-OWNER-T1-W03-EXPRESSIONS — french
+- **Exact question:** Owner: supply intended meanings or explicitly approve replacement/omission for each listed row. Then update exact coverage; do not infer Easter versus Passover or repair incomplete wording by guesswork.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** Week 3 children 92,96,114,126,128
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### FR-OWNER-T1-W06-OCCUPATIONS — french
+- **Exact question:** Owner/teacher supplies the intended occupation for 'computateur' and 'couteur', or explicitly approves the project’s labelled replacement/omission.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** Week 6 table rows 12 and 26
+- **Who must answer:** Named subject teacher/expert.
+
+### FM-FACT-EQUATION-EXTRACTOR-DECISION — further-mathematics
+- **Exact question:** Owner decision (SS1-01/SS1-08): adopt an equation-aware SS1 extractor with a reviewed ID migration, or rely on replacement lessons for every affected row.
+- **Options and consequences:** A. Approve a versioned shared foundation change with migration/compatibility review and a change reference. B. Retain current representation and create source-faithful replacement lessons or unresolved dispositions; do not change shared schema in a subject package.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** open_items OI-FM-001
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### FM-FACT-T3-MISSING-MATERIAL — further-mathematics
+- **Exact question:** Obtain from the owner the missing 3rd Term material (scheme of work and Weeks 1, 7, 9-12, if they exist), or the owner's confirmation that the supplied document is the whole term. Do not infer a scheme from filenames.
+- **Options and consequences:** A. Supply the exact missing source/material, then register and hash it before indexing. B. Confirm no source exists and decide whether an approved equivalent or explicit exclusion is required; do not infer missing source content.
+- **What is blocked behind it:** FM-SCOPE-OI-FM-003
+- **Evidence locator:** open_items OI-FM-003
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### FM-FACT-VENDOR-PERMISSION — further-mathematics
+- **Exact question:** Owner confirms the licence under which the school may deliver the commercial tutor's notes, and approves removal of branding and contact details from anything delivered.
+- **Options and consequences:** A. Supply exact edition/material identity and licence or written permission for school delivery; reuse only within that scope. B. Decline reuse and approve an original equivalent, a bare pointer, or omission. Do not copy or deliver third-party material without permission.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** open_items OI-FM-004 and OI-FM-007 (1st, 2nd and 3rd Term sources)
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### FM-FACT-ALIAS-APPROVAL — further-mathematics
+- **Exact question:** Owner approval of the three source_alias rules, replacing each "PENDING-OWNER" approval_reference with a real reference. The 3rd Term alias rests only on a cited textbook title.
+- **Options and consequences:** A. Approve the exact source-to-subject/term alias after reviewing header evidence and provide a real approval reference. B. Reject or narrow the alias and provide the correct mapping; source identity remains unresolved.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** RULE-FM-T1-ALIAS, RULE-FM-T2-ALIAS, RULE-FM-T3-ALIAS approval_reference
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### FM-FACT-CONTENT-APPROVAL — further-mathematics
+- **Exact question:** Owner/teacher content review of the six authored 3rd Term supplements and the flowchart SVG; record approval_reference values. Approval is separate from implementation and verification.
+- **Options and consequences:** A. Owner reviews completed identified objects and supplies dated approval references per lesson/asset; only then may approval move forward. B. Owner returns named defects; add correction items and keep approval pending until corrected material is reviewed.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** open_items OI-FM-005
+- **Who must answer:** Named subject teacher/expert.
+
+### FM-TEST-FULL-SOURCE-REGRESSION — further-mathematics
+- **Exact question:** Deferred: after the week, preamble and equation items land, write/extend source-dependent regression checks and run them in the authorised verification stage.
+- **Options and consequences:** A. Keep DEFERRED for the separately authorised verification stage; do not claim PASS now. B. At that later stage, provide the required verifier/teacher observation and exact test evidence.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** later source-dependent regression for all three terms
+- **Who must answer:** Owner (foundation/rights lead where indicated).
