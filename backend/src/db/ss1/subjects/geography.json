@@ -6832,6 +6832,20 @@
         "COV-GEO-T2-W01-SOURCE-ASSESSMENT"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "GEOGRAPHY-T2-MARKER-EXACT-ANCHORS",
+      "kind": "CONTENT",
+      "detail": "The Week 1-10 inventory supplies line numbers and marker categories but not the exact full source lines for every repeated evaluation/assignment heading. The contract requires each classify_marker anchor to occur exactly once in the unmodified extracted text; repeated generic labels such as Evaluation Questions cannot safely be registered from line numbers alone.",
+      "required_action": "Recover the original Week 2 source member and read the complete unmodified getBody() text. For each of the 46 listed occurrences, capture a unique exact anchor or retain a precise per-occurrence open item; validate uniqueness against the complete original source before writing any classify_marker rule. Never mark a marker as teaching coverage.",
+      "affected_ids": [
+        "COV-GEO-T2-W01-SOURCE-ASSESSMENT",
+        "COV-GEO-T2-W06-07-SOURCE-ASSESSMENT",
+        "COV-GEO-T2-W08-GIS-ASSESSMENT",
+        "COV-GEO-T2-W09-SOURCE-ASSESSMENT",
+        "COV-GEO-T2-W10-SOURCE-ASSESSMENT"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
