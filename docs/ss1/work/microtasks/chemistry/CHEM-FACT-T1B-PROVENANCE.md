@@ -66,6 +66,6 @@ Week-level media disposition from the inventory:
 - A learner-facing image can be used only after an explicit licence or permission is documented, or after replacing it with an independently created/appropriately licensed asset.
 
 ## Remaining precise gap
-The current inventory provides host totals and week-level media groups but not a complete URL-by-paragraph map for all 113 external targets. That map requires reading the original DOCX relationships and hyperlink elements together. Rights remain unresolved until each reused text/image is mapped to its specific source and licence.
+The current inventory provides host totals and week-level media groups but not a complete URL-by-paragraph map for all 113 external targets. It does not provide the exact paragraph-to-week relationship for each URL. That map requires reading the original DOCX relationships and hyperlink elements together. Rights remain unresolved until each reused text/image is mapped to its specific source and licence.
 
 No source wording, lesson, coverage, correction or approval is changed. No tests, importer, database or device checks were performed.
