@@ -916,3 +916,376 @@ This is a queue-state count, not a claim that 1,622 items are student-use ready 
 - **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
 - **Evidence locator:** later source-dependent regression for all three terms
 - **Who must answer:** Owner (foundation/rights lead where indicated).
+
+## Per-item options, consequences and downstream effects — batch 3
+
+### GEO-FACT-CONTENT-APPROVAL — geography
+- **Exact question:** Owner content approval and later verification of any geography lessons. Separate stage; no agent may invent an approval_reference or verification.
+- **Options and consequences:** A. Owner reviews completed identified objects and supplies dated approval references per lesson/asset; only then may approval move forward. B. Owner returns named defects; add correction items and keep approval pending until corrected material is reviewed.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** package approval and verification
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### GOV-FACT-CONTENT-APPROVAL — government
+- **Exact question:** Owner content approval and later verification of any government lessons. Separate stage; no agent may invent an approval_reference or verification.
+- **Options and consequences:** A. Owner reviews completed identified objects and supplies dated approval references per lesson/asset; only then may approval move forward. B. Owner returns named defects; add correction items and keep approval pending until corrected material is reviewed.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** package approval and verification
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### LIT-FACT-MARKER-VOCABULARY — literature
+- **Exact question:** Owner/foundation decision: the shared schema's classify_marker kinds (REVISION, EXAMINATION, SCHEME_ONLY) cannot describe class-work or assignment markers. 1st Term has 13 (9 class work, 4 assignment; LIT-MARK-T1.md); 2nd and 3rd Term have 7 assignment markers each (LIT-INV-T2.md, LIT-INV-T3.md). Decide whether to request a versioned foundation change or leave the markers as unclassified body text. This item changes no schema and writes nothing in the package.
+- **Options and consequences:** A. Approve a versioned shared foundation change with migration/compatibility review and a change reference. B. Retain current representation and create source-faithful replacement lessons or unresolved dispositions; do not change shared schema in a subject package.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** classify_marker vocabulary in backend/src/db/ss1/subjectPackageSchema.ts
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### MATH-OWNER-LOG-METHOD — mathematics
+- **Exact question:** Owner/teacher states whether logarithm lessons use mathematical tables (and supplies the edition with reuse permission) or a calculator method.
+- **Options and consequences:** A. Supply exact edition/material identity and licence or written permission for school delivery; reuse only within that scope. B. Decline reuse and approve an original equivalent, a bare pointer, or omission. Do not copy or deliver third-party material without permission.
+- **What is blocked behind it:** MATH-LES-T1-W08-LOGARITHMS, MATH-LES-T1-W09-LOG-POWERS
+- **Evidence locator:** OI-MATH-003 remaining question
+- **Who must answer:** Named subject teacher/expert.
+
+### MATH-OWNER-RIGHTS-PERMISSION — mathematics
+- **Exact question:** Owner confirms whether any embedded third-party tutor material may be reused or must be excluded from delivery.
+- **Options and consequences:** A. Supply exact edition/material identity and licence or written permission for school delivery; reuse only within that scope. B. Decline reuse and approve an original equivalent, a bare pointer, or omission. Do not copy or deliver third-party material without permission.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** licence/permission for embedded commercial tutor material
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### MATH-OWNER-EQUATION-STRATEGY — mathematics
+- **Exact question:** Owner/foundation decides between an equation-aware SS1 extractor (reviewed migration changing content-bound row IDs) and replacement lessons for every affected row.
+- **Options and consequences:** A. Approve a versioned shared foundation change with migration/compatibility review and a change reference. B. Retain current representation and create source-faithful replacement lessons or unresolved dispositions; do not change shared schema in a subject package.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** OI-MATH-001 foundation decision
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### MATH-APPROVAL-ALIASES — mathematics
+- **Exact question:** Owner confirmation of the three heading aliases so each approval_reference can replace 'PENDING-OWNER'.
+- **Options and consequences:** A. Approve the exact source-to-subject/term alias after reviewing header evidence and provide a real approval reference. B. Reject or narrow the alias and provide the correct mapping; source identity remains unresolved.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** RULE-MATH-T1-ALIAS, RULE-MATH-T2-ALIAS, RULE-MATH-T3-ALIAS
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### MATH-APPROVAL-CONTENT — mathematics
+- **Exact question:** Owner/teacher reviews the six authored T1 supplements and records an approval_reference per lesson, or returns defects.
+- **Options and consequences:** A. Owner reviews completed identified objects and supplies dated approval references per lesson/asset; only then may approval move forward. B. Owner returns named defects; add correction items and keep approval pending until corrected material is reviewed.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** six authored supplements (OI-MATH-005)
+- **Who must answer:** Named subject teacher/expert.
+
+### MATH-CMP-D4-TESTS — mathematics
+- **Exact question:** Deferred: compare #71's 4-test mathematics.test.mts with master's tests/ss1/mathematics.package.test.mts and decide which checks, if any, merit a port against master's schema.
+- **Options and consequences:** A. Keep DEFERRED for the separately authorised verification stage; do not claim PASS now. B. At that later stage, provide the required verifier/teacher observation and exact test evidence.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** tests/ss1/mathematics.test.mts on #71 head
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### MATH-TEST-FULL-SOURCE-REGRESSION — mathematics
+- **Exact question:** Deferred: regression check of every parsed row and marker against the final package once indexing, ports and approvals are complete.
+- **Options and consequences:** A. Keep DEFERRED for the separately authorised verification stage; do not claim PASS now. B. At that later stage, provide the required verifier/teacher observation and exact test evidence.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** full-source regression after all week/preamble indexing
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### PHYS-OWNER-ALIAS-T3 — physics
+- **Exact question:** Owner records approval of the Third Term Physics source alias. The original filename is 3RD TERM S1 PHYSICS.doc and the rendered header/body identify SS1/3rd Term/Physics; the remaining issue is formal source-alias approval, not missing subject evidence.
+- **Options and consequences:** A. Supply the exact missing source/material, then register and hash it before indexing. B. Confirm no source exists and decide whether an approved equivalent or explicit exclusion is required; do not infer missing source content.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** alias approval_reference for the 3rd Term source (only if registration finds no subject heading)
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### PHYS-OWNER-EXTRACTION-STRATEGY — physics
+- **Exact question:** Owner/foundation decides the repository-wide strategy for embedded equations, superscripts, subscripts, fractions and figures in legacy .doc files. Physics source audit demonstrates that rendered PDFs recover formula/figure objects omitted by text-only extraction.
+- **Options and consequences:** A. Approve a versioned shared foundation change with migration/compatibility review and a change reference. B. Retain current representation and create source-faithful replacement lessons or unresolved dispositions; do not change shared schema in a subject package.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** superscript/subscript/fraction/figure recovery (branch OI-PHYS-001)
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### PHYS-APPROVAL-CONTENT — physics
+- **Exact question:** Teacher reviews all 33 Physics lesson objects and 30 registered assets, then records approval_reference per lesson/asset or returns defects. All content_approval fields remain PENDING; no approval is inferred.
+- **Options and consequences:** A. Owner reviews completed identified objects and supplies dated approval references per lesson/asset; only then may approval move forward. B. Owner returns named defects; add correction items and keep approval pending until corrected material is reviewed.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** ported supplements
+- **Who must answer:** Named subject teacher/expert.
+
+### PHYS-TEST-FULL-SOURCE-REGRESSION — physics
+- **Exact question:** Run the final regression after authoring: compare all original parsed rows and markers with the final package, validate source hashes, lesson/asset hashes, coverage and delivery corrections, then record the CI result. Authoring and coverage are now complete.
+- **Options and consequences:** A. Keep DEFERRED for the separately authorised verification stage; do not claim PASS now. B. At that later stage, provide the required verifier/teacher observation and exact test evidence.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** full-source regression
+- **Who must answer:** Owner or named subject teacher, according to scope.
+
+### PHYS-FACT-T1-W01-SCOPE — physics
+- **Exact question:** Teacher reviews/approves the two independent Week One supplements (laboratory familiarisation and scientific method) and confirms their placement. The original source facts have been reconciled visually: formulae are present as equation images, Time unit/derivation cells are present, and genuine SI-symbol/count defects are corrected in the replacement. Seven derived quantities and cross-week retrieval items are now covered by keyed practice.
+- **Options and consequences:** A. Approve a versioned shared foundation change with migration/compatibility review and a change reference. B. Retain current representation and create source-faithful replacement lessons or unresolved dispositions; do not change shared schema in a subject package.
+- **What is blocked behind it:** PHYS-LES-T1-W01-LABORATORY, PHYS-LES-T1-W01-KEY-ASSESSMENT
+- **Evidence locator:** WEEK ONE, parsed row 0 (body lines 41-191, sha256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc); the scheme row at getBody() line 24 (sha256 107871e4a26a044a789c101b4fd1778fddfe046ce599b8cdcbee1f19fece62cc); the two EVALUATION blocks (sha256 13fbd968dc602854a2b4c11d5f460c86d6fa1468ab3b3953e29a15b9657d7dbb and f36ebd540908d5a7d2f543a394513fa0ca5a22a5b4fca9a68fb2e613e9822ed1); WEEKEND ASSIGNMENT (sha256 f13123b9c03651004f38dfa7af99fe84845a34bc644a27d54f1d1f20ddb48b85); THEORY (sha256 5759524099c558672bf2d297392244c38c60e00f819fe260fe4c61cd04cc60e0); cross-week teaching at lines 195, 591, 883, 987, 1096, 1128 and 1218
+- **Who must answer:** Named subject teacher/expert.
+
+### PHYS-FACT-T1-W02-SCOPE — physics
+- **Exact question:** Teacher reviews the replacement assessment scope: keep pipette/hydrometer as labelled extensions, retain force dimensions as Week One retrieval, include volume (present in the scheme/outline), and approve the clear replacement questions for unreadable figures/ambiguous wording. Source arithmetic, control-character and missing-option findings have already been reconciled and corrected in the learner replacement.
+- **Options and consequences:** A. Supply the exact missing source/material, then register and hash it before indexing. B. Confirm no source exists and decide whether an approved equivalent or explicit exclusion is required; do not infer missing source content.
+- **What is blocked behind it:** PHYS-LES-T1-W02-KEY-ASSESSMENT, PHYS-COR-T1-W02-BINDING
+- **Evidence locator:** WEEK TWO, parsed row 1 (body lines 194-340, sha256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e); scheme row line 25 (sha256 18bb82f110afd09fa9e504a5c737c6e3f57d2dd2d5a9e235d51e5e613a1849a3); the nine numbered questions in open item PHYSICS-T1-W02-FACT-DEFECTS and the wording defects in PHYSICS-T1-W02-SOURCE-DEFECTS
+- **Who must answer:** Named subject teacher/expert.
+
+### TD-MISSING-T1 — technical-drawing
+- **Exact question:** Record the 1st Term Technical Drawing source as an unresolved item: no document for this term is in the assignment manifest. The owner supplies it, or confirms it does not exist.
+- **Options and consequences:** A. Supply the exact missing source/material, then register and hash it before indexing. B. Confirm no source exists and decide whether an approved equivalent or explicit exclusion is required; do not infer missing source content.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** 1st Term Technical Drawing document (not supplied)
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### TD-MISSING-T3 — technical-drawing
+- **Exact question:** Record the 3rd Term Technical Drawing source as an unresolved item: no document for this term is in the assignment manifest. The owner supplies it, or confirms it does not exist.
+- **Options and consequences:** A. Supply the exact missing source/material, then register and hash it before indexing. B. Confirm no source exists and decide whether an approved equivalent or explicit exclusion is required; do not infer missing source content.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** 3rd Term Technical Drawing document (not supplied)
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### YO-FACT-T1-W05-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the eight Week 5 source defects and on the tone notation, and a decision on the empty LITIRESO strand, so the three Week 5 lessons can be authored without copying errors.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T1-W05-EDE, YO-LES-T1-W05-ASA, YO-LES-T1-W05-LIT
+- **Evidence locator:** 1st Term Week 5, source lines 1171-1284 (all three strands)
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T1-W06-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the eight Week 6 source defects, on the tone notation, and on the presentation of the five syllable segmentations, so the two Week 6 lessons can be authored without copying errors.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T1-W06-EDE, YO-LES-T1-W06-ASA
+- **Evidence locator:** 1st Term Week 6, source lines 1285-1502 (both strands)
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T1-W07-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the seven Week 7 source defects, on the tone notation, on the missing benefits of iwa omoluabi and on how table 8 is to be corrected and aligned, so the two Week 7 lessons can be authored without copying errors.
+- **Options and consequences:** A. Supply the exact missing source/material, then register and hash it before indexing. B. Confirm no source exists and decide whether an approved equivalent or explicit exclusion is required; do not infer missing source content.
+- **What is blocked behind it:** YO-LES-T1-W07-EDE, YO-LES-T1-W07-ASA
+- **Evidence locator:** 1st Term Week 7, source lines 1503-1684 (both strands)
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T1-W08-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the eight Week 8 source defects, on the tone notation, on the set literature text and on how the essay and occupation material is to be completed, so the three Week 8 lessons can be authored without copying errors.
+- **Options and consequences:** A. Supply exact prescribed title/edition/pages or approved substitute, with permissions for any reproduction. B. Confirm no text may be supplied/reproduced and approve analysis-only teaching or explicit exclusion; do not invent text or proverbs.
+- **What is blocked behind it:** YO-LES-T1-W08-EDE, YO-LES-T1-W08-ASA, YO-LES-T1-W08-LIT
+- **Evidence locator:** 1st Term Week 8, source lines 1685-1781 (all three strands)
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T2-W01-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the Week 1 source defects and on the tone and sub-dot notation, so the three Week 1 lessons can be authored without copying errors.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T2-W01-EDE, YO-LES-T2-W01-ASA, YO-LES-T2-W01-LIT
+- **Evidence locator:** 2nd Term Week 1, source lines 149-854
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T2-W02-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the Week 2 source defects and on the tone and sub-dot notation, so the three Week 2 lessons can be authored without copying errors.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T2-W02-EDE, YO-LES-T2-W02-ASA, YO-LES-T2-W02-LIT
+- **Evidence locator:** 2nd Term Week 2, source lines 855-1074
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T2-W03-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the Week 3 source defects and on the tone and sub-dot notation, so the three Week 3 lessons can be authored without copying errors.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T2-W03-EDE, YO-LES-T2-W03-ASA, YO-LES-T2-W03-LIT
+- **Evidence locator:** 2nd Term Week 3, source lines 1075-1302
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T2-W04-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the Week 4 source defects and on the tone and sub-dot notation, so the three Week 4 lessons can be authored without copying errors.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T2-W04-EDE, YO-LES-T2-W04-ASA, YO-LES-T2-W04-LIT
+- **Evidence locator:** 2nd Term Week 4, source lines 1303-1450
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T2-W05-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the Week 5 source defects and on the tone and sub-dot notation, so the three Week 5 lessons can be authored without copying errors.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T2-W05-EDE, YO-LES-T2-W05-ASA, YO-LES-T2-W05-LIT
+- **Evidence locator:** 2nd Term Week 5, source lines 1451-1610
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T2-W06-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the Week 6 source defects and on the tone and sub-dot notation, so the three Week 6 lessons can be authored without copying errors.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T2-W06-EDE, YO-LES-T2-W06-ASA, YO-LES-T2-W06-LIT
+- **Evidence locator:** 2nd Term Week 6, source lines 1611-1682
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T2-W07-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the Week 7 source defects and on the tone and sub-dot notation, so the three Week 7 lessons can be authored without copying errors.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T2-W07-EDE, YO-LES-T2-W07-ASA, YO-LES-T2-W07-LIT
+- **Evidence locator:** 2nd Term Week 7, source lines 1683-2016
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T2-W08-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the absent Week 8 body, the selected literature text, the scheme defects and the tone and sub-dot notation, so the three Week 8 lessons can be authored without inventing content.
+- **Options and consequences:** A. Supply the exact missing source/material, then register and hash it before indexing. B. Confirm no source exists and decide whether an approved equivalent or explicit exclusion is required; do not infer missing source content.
+- **What is blocked behind it:** YO-LES-T2-W08-EDE, YO-LES-T2-W08-ASA, YO-LES-T2-W08-LIT
+- **Evidence locator:** 2nd Term Week 8, scheme lines 93-105 (no teaching section exists)
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T2-W09-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the Week 9 defects, the aroko asotan/oniroyin mapping, the five name types, the absent aalo strand, the book reference and the tone and sub-dot notation, so the three Week 9 lessons can be authored without inventing content.
+- **Options and consequences:** A. Supply the exact missing source/material, then register and hash it before indexing. B. Confirm no source exists and decide whether an approved equivalent or explicit exclusion is required; do not infer missing source content.
+- **What is blocked behind it:** YO-LES-T2-W09-EDE, YO-LES-T2-W09-ASA, YO-LES-T2-W09-LIT
+- **Evidence locator:** 2nd Term Week 9, scheme lines 107-123 and section lines 2017-2220
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T2-W10-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the Week 10 defects, the untaught Oriki and ipolowo pelu ohun enu, the ten-type noun classification, the five-against-ten noun types and five-against-six goods counts, the absent literature strand, the textbook reference and the tone and sub-dot notation, so the three Week 10 lessons can be authored without inventing content.
+- **Options and consequences:** A. Supply the exact missing source/material, then register and hash it before indexing. B. Confirm no source exists and decide whether an approved equivalent or explicit exclusion is required; do not infer missing source content.
+- **What is blocked behind it:** YO-LES-T2-W10-EDE, YO-LES-T2-W10-ASA, YO-LES-T2-W10-LIT
+- **Evidence locator:** 2nd Term Week 10, scheme lines 125-137 and section lines 2221-2433
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T3-W01-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the Week 1 source defects and on the tone and sub-dot notation, so the three Week 1 lessons can be authored without copying errors.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T3-W01-EDE, YO-LES-T3-W01-ASA, YO-LES-T3-W01-LIT
+- **Evidence locator:** 3rd Term Week 1, source lines 121-426
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T3-W02-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the Week 2 source defects and on the tone and sub-dot notation, so the three Week 2 lessons can be authored without copying errors.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T3-W02-EDE, YO-LES-T3-W02-ASA, YO-LES-T3-W02-LIT
+- **Evidence locator:** 3rd Term Week 2, source lines 427-678
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T3-W03-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the Week 3 source defects, on the tone and sub-dot notation, and on an approved external source for the untaught strands, so the three Week 3 lessons can be authored without copying errors.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T3-W03-EDE, YO-LES-T3-W03-ASA, YO-LES-T3-W03-LIT
+- **Evidence locator:** 3rd Term Week 3, source lines 679-962
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T3-W04-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the fourteen Week 4 source defects, on the tone/sub-dot and en-dash notation, and on the disposition of the off-scheme Apa keji questions, so the Week 4 lessons can be authored without copying errors.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T3-W04-EDE, YO-LES-T3-W04-ASA
+- **Evidence locator:** 3rd Term Week 4, section lines 963-1280 (sha256 c2b144f4d427ad8c6b8ad30b4d6495ee231821698cd76bf9b5d9cd4cc0e51171)
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T3-W04-SELECTED-TEXT — yoruba
+- **Exact question:** Obtain the recommended prose text for chapters 3 and 4 (Iya Atata, Fadiya O., WAEC) or written confirmation that it must not be reproduced, so the Week 4 LIT lesson can be authored on a lawful basis.
+- **Options and consequences:** A. Supply exact prescribed title/edition/pages or approved substitute, with permissions for any reproduction. B. Confirm no text may be supplied/reproduced and approve analysis-only teaching or explicit exclusion; do not invent text or proverbs.
+- **What is blocked behind it:** YO-LES-T3-W04-LIT
+- **Evidence locator:** 3rd Term Week 4, LITIRESO part lines 1225-1243 (sha256 044d545ee35c00bfd27959cf0a997f568fb6b3ac1a3dad36963dd0b7496aaa2c)
+- **Who must answer:** Owner or named subject teacher, according to scope.
+
+### YO-LES-T3-W04-LIT — yoruba
+- **Exact question:** Author the Week 4 LIT lesson: reading guidance for chapters 3 and 4 of the recommended prose text and a taught method of atupale (analysis), with practice and marking, using only text the owner has cleared for reproduction.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** 3rd Term Week 4, LITIRESO part lines 1225-1243 (objects YO-T3-W04-LIT-01 and YO-T3-W04-LIT-02)
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### YO-LES-T3-W05-LIT — yoruba
+- **Exact question:** Author the Week 5 LITIRESO lesson on the government-selected text, once the owner records which text is set and what may be reproduced.
+- **Options and consequences:** A. Supply exact prescribed title/edition/pages or approved substitute, with permissions for any reproduction. B. Confirm no text may be supplied/reproduced and approve analysis-only teaching or explicit exclusion; do not invent text or proverbs.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** 3rd Term Week 5, LITIRESO strand (scheme line 39 only; no section)
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### YO-FACT-T3-W05-DEFECTS — yoruba
+- **Exact question:** Decide the corrections and the notation for the Week 5 text so the three lesson items do not copy its defects.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T3-W05-EDE, YO-LES-T3-W05-ASA
+- **Evidence locator:** 3rd Term Week 5, section lines 1281-1356 (sha256 b35e84fdb051d5e6bbe0af565db59832c6a94a2b12e8548b78d5b3f6ae0adbbc)
+- **Who must answer:** Owner or named subject teacher, according to scope.
+
+### YO-FACT-T3-W05-SELECTED-TEXT — yoruba
+- **Exact question:** Obtain the government-selected text set for Week 5 (or written confirmation that none may be used), so the LIT lesson can be authored on a lawful basis.
+- **Options and consequences:** A. Supply exact prescribed title/edition/pages or approved substitute, with permissions for any reproduction. B. Confirm no text may be supplied/reproduced and approve analysis-only teaching or explicit exclusion; do not invent text or proverbs.
+- **What is blocked behind it:** YO-LES-T3-W05-LIT
+- **Evidence locator:** 3rd Term Week 5, LITIRESO scheme row 39 (sha256 877c508bb10a799b4103aff69547f7f9171524e212c5aeb6c5a975ab1e721547)
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### YO-LES-T3-W06-LIT — yoruba
+- **Exact question:** Author the Week 6 LITIRESO lesson on Ese Ifa as a source of Yoruba thought and on Alo Apagbe, which the scheme sets and the source names but does not teach, once the owner records which Alo Apagbe text may be used and what may be quoted.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** 3rd Term Week 6, LITIRESO part lines 1523-1573 (objects YO-T3-W06-LIT-01..04)
+- **Who must answer:** Owner (foundation/rights lead where indicated).
+
+### YO-FACT-T3-W06-DEFECTS — yoruba
+- **Exact question:** Decide the corrections and the notation for the Week 6 text so the lesson items do not copy its defects.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T3-W06-EDE, YO-LES-T3-W06-ASA
+- **Evidence locator:** 3rd Term Week 6, section lines 1357-1624 (sha256 db4a9dda52e6cbc5a4b47aa8b20dc8d24a799c00f2611f15f671cf88eaedb107)
+- **Who must answer:** Owner or named subject teacher, according to scope.
+
+### YO-FACT-T3-W06-CONTENT-DECISIONS — yoruba
+- **Exact question:** Decide how the four Week 6 content gaps are to be filled: Oro Apejuwe, Alo Apagbe, the guarantor's role in eto iyawo, and the external IWE KIKA pages.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T3-W06-LIT
+- **Evidence locator:** 3rd Term Week 6, scheme lines 41-51 and section lines 1357-1624
+- **Who must answer:** Owner or named subject teacher, according to scope.
+
+### YO-LES-T3-W07-LIT — yoruba
+- **Exact question:** Author the Week 7 LITIRESO lesson on ewi alohun as a source of Yoruba thought and power: ofo (what it is, its power, the quoted example and its materials), ogede and itan riro, with the title dispute and the two cited readings resolved.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the stated package/object completion gate remains open.
+- **Evidence locator:** 3rd Term Week 7, scheme line 59 (in scheme group 53-59, sha256 bc4ea6d4912b5e8e8835e851182c143dc8b67dfcc12bdb6a444b4cbe32ef9676) and body lines 1783-1847 (sha256 263b3964c3e26b7153a04a1db8218307a0803c21894a927889be4da50e8a0892); objectives YO-T3-W07-SCHEME-LIT and -LIT-01..04, -REF-01
+- **Who must answer:** Owner or named subject teacher, according to scope.
+
+### YO-FACT-T3-W07-DEFECTS — yoruba
+- **Exact question:** Obtain one recorded subject-expert decision on the fifteen Week 7 source defects and on the scheme-to-body mismatches (osomaalo, elesin/ijoye, the LIT title), before any Week 7 lesson is authored.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T3-W07-EDE, YO-LES-T3-W07-ASA, YO-LES-T3-W07-LIT
+- **Evidence locator:** 3rd Term Week 7, body lines 1625-1878 (sha256 959e6d0882d7b3c6d96c337bd9feeabbbcd4bab7e767e900660c4230d57a69e2) and scheme lines 53-59 (sha256 bc4ea6d4912b5e8e8835e851182c143dc8b67dfcc12bdb6a444b4cbe32ef9676)
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T3-W07-CONTENT-DECISIONS — yoruba
+- **Exact question:** Obtain one recorded content decision on how the Week 7 gaps are to be filled: the oriki and ibi ti o ti n jeyo bodies, a stated identification procedure, osomaalo, the elesin/ijoye role, ogede and itan riro, and whether the off-week funeral exercises are moved or retained.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T3-W07-LIT
+- **Evidence locator:** 3rd Term Week 7, body lines 1625-1878 (sha256 959e6d0882d7b3c6d96c337bd9feeabbbcd4bab7e767e900660c4230d57a69e2) and scheme lines 53-59 (sha256 bc4ea6d4912b5e8e8835e851182c143dc8b67dfcc12bdb6a444b4cbe32ef9676)
+- **Who must answer:** Owner or named subject teacher, according to scope.
+
+### YO-FACT-T3-W09-NOTATION — yoruba
+- **Exact question:** Obtain a named Yoruba-language expert decision on tone marks, sub-dots and approved spelling/IPA conventions for Week 9 before corrected student lessons are authored.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T3-W09-EDE, YO-LES-T3-W09-ASA, YO-LES-T3-W09-LIT-READING, YO-LES-T3-W09-LIT-PROVERBS
+- **Evidence locator:** Week 9 source text, lines 2161-2312; no tone marks or sub-dot characters in the registered source
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T3-W09-LIT-SOURCE — yoruba
+- **Exact question:** Identify and obtain the exact WAEC/NECO selected literature text and proverb collection named by the Week 9 scheme, or record the authorised scope decision that the objective is excluded.
+- **Options and consequences:** A. Supply exact prescribed title/edition/pages or approved substitute, with permissions for any reproduction. B. Confirm no text may be supplied/reproduced and approve analysis-only teaching or explicit exclusion; do not invent text or proverbs.
+- **What is blocked behind it:** YO-LES-T3-W09-LIT-PROVERBS
+- **Evidence locator:** Week 9 LITIRESO scheme group lines 69-73; body lines 2249-2305
+- **Who must answer:** Owner or named subject teacher, according to scope.
+
+### YO-FACT-T3-W09-ASA-CONTEXT — yoruba
+- **Exact question:** Obtain subject-expert verification and respectful historical context for the source's descriptions of Alaafin burial practices, human sacrifice, attendants and modern changes.
+- **Options and consequences:** A. Keep DEFERRED for the separately authorised verification stage; do not claim PASS now. B. At that later stage, provide the required verifier/teacher observation and exact test evidence.
+- **What is blocked behind it:** YO-LES-T3-W09-ASA
+- **Evidence locator:** Week 9 ASA paragraphs 1105-1122; Mammoth lines 2211-2245
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T3-W10-NOTATION — yoruba
+- **Exact question:** Obtain a named Yoruba-language expert decision on tone marks, sub-dots and approved spelling/IPA conventions for Week 10 before corrected student lessons are authored.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T3-W10-EDE-ESSAY, YO-LES-T3-W10-ASA, YO-LES-T3-W10-LIT
+- **Evidence locator:** Week 10 source text, lines 2313-2463; no tone marks or sub-dot characters in the registered source
+- **Who must answer:** Named subject teacher/expert.
+
+### YO-FACT-T3-W10-LIT-SOURCE — yoruba
+- **Exact question:** Identify and obtain the exact WAEC/NECO selected literature text named by the Week 10 scheme, or record an authorised scope decision that the objective is excluded.
+- **Options and consequences:** A. Supply exact prescribed title/edition/pages or approved substitute, with permissions for any reproduction. B. Confirm no text may be supplied/reproduced and approve analysis-only teaching or explicit exclusion; do not invent text or proverbs.
+- **What is blocked behind it:** YO-LES-T3-W10-LIT
+- **Evidence locator:** Week 10 LITIRESO scheme group lines 75-79; body lines 2313-2463
+- **Who must answer:** Owner or named subject teacher, according to scope.
+
+### YO-FACT-T3-W10-ASA-REVIEW — yoruba
+- **Exact question:** Obtain a Yoruba cultural/history subject-expert review of the Oku Sise description and a teacher/owner decision on the duplicated block before a student lesson is authored.
+- **Options and consequences:** A. Provide a named teacher/subject-expert decision for each ambiguity, including wording, answer/key/marks as relevant, with dated evidence and locators. B. Approve a clearly labelled independently sourced equivalent or explicitly exclude/move the disputed objective; record the consequences. Until then dependent teaching stays PARTIAL/UNRESOLVED.
+- **What is blocked behind it:** YO-LES-T3-W10-ASA
+- **Evidence locator:** Week 10 ASA paragraphs 1182-1209; Mammoth lines 2365-2419
+- **Who must answer:** Named subject teacher/expert.
