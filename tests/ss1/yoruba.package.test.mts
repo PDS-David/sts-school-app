@@ -50,7 +50,7 @@ test('First-Term Weeks One to Five have EDE, ASA and LITIRESO drafts linked from
     assert(p.coverage.some(item => item.lesson_ids.includes(lessonId)), `no coverage link for ${lessonId}`);
   }
   const firstTermDrafts = p.lessons.filter(lesson => lesson.term === '1st Term');
-  assert.equal(firstTermDrafts.length, 17);
+  assert.equal(firstTermDrafts.length, 18);
 });
 
 test('Yoruba drafts preserve under-dotted letters, tone marks and the taught sound inventories', () => {
@@ -73,10 +73,16 @@ test('Uncertain source wording is tracked instead of being silently repaired', (
 
 test('New lesson drafts are not misrepresented as approved or verified', () => {
   const drafts = p.lessons.filter(lesson => lesson.id.startsWith('SUP-SS1-YORUBA-T1-W'));
-  assert.equal(drafts.length, 17);
+  assert.equal(drafts.length, 18);
+  // Lessons whose content and assessments are written (Weeks 5 and 6). Written is not approved:
+  // content_approval stays PENDING and verification DEFERRED, so student delivery still excludes them.
+  const written = new Set([
+    'SUP-SS1-YORUBA-T1-W05-EDE', 'SUP-SS1-YORUBA-T1-W05-ASA', 'SUP-SS1-YORUBA-T1-W05-LIT-PRACTICE',
+    'SUP-SS1-YORUBA-T1-W06-EDE', 'SUP-SS1-YORUBA-T1-W06-ASA',
+  ]);
   for (const lesson of drafts) {
     assert.equal(lesson.state.content_approval, 'PENDING', lesson.id);
-    assert.equal(lesson.state.implementation, 'DRAFT', lesson.id);
+    assert.equal(lesson.state.implementation, written.has(lesson.id) ? 'IMPLEMENTED' : 'DRAFT', lesson.id);
     assert.equal(lesson.state.verification, 'DEFERRED', lesson.id);
     assert.equal(lesson.state.approval_reference, null);
     assert.equal(lesson.state.verification_reference, null);
