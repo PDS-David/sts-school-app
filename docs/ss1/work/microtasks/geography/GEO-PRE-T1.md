@@ -1,6 +1,6 @@
 # GEO-PRE-T1 — Geography First Term preamble and scheme indexing
 
-Status: IN_PROGRESS. Content approval remains pending; verification is not complete.
+Status: **IMPLEMENTED — TESTING DEFERRED BY OWNER**. Content approval remains pending; verification is not complete.
 
 ## Source evidence
 - Source ID: SS1-SRC-1c1c1bdcecb4
@@ -74,3 +74,13 @@ The reference section is lines 39-40. It names Essential Geography for Senior Se
 - That value is a source body locator/hash, not a registered parsed lesson ID. An unresolved scheme objective may retain the week locator in `objective_locator` and `evidence`, but it must not masquerade as a lesson target.
 - Removed only that invalid `lesson_ids` value. Coverage remains `UNRESOLVED`; no lesson or teaching claim was created.
 - GEO-PRE-T1 remains IN_PROGRESS until a fresh all-subject compiler run passes. Week Three objective indexing and lesson work remain separate.
+
+
+## Final implementation disposition (current master)
+
+- All preamble blocks outside the ten parsed week spans are hash-accounted: title/identity lines 18–19, scheme block lines 21–37 (including all eleven rows), and reference lines 39–40.
+- Scheme rows 1–10 are bound by their source order and the body labels; rows 1–3 have no printed numerals and are explicitly documented as order-based mappings.
+- Scheme row 11, `Revision.`, is represented as `MARKER` coverage and source rule `SS1-SRC-1c1c1bdcecb4-R002` (`classify_marker`, `SCHEME_ONLY`, `SUBSTRING` anchor `Revision`). No Week Eleven lesson is fabricated.
+- Identity coverage remains `UNRESOLVED` because it is source metadata rather than a teaching row. Reference-list coverage remains `UNRESOLVED` because the cited book was not supplied or consulted. These are precise dispositions, not missing index work.
+- The four compiler corrections above have been incorporated in the package; no compiler/test run was performed in this implementation stage, as testing is deferred until the implementation stage is complete.
+- No source wording, lesson body, approval state or verification state was changed by this task.
