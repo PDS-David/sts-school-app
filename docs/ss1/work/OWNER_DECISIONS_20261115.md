@@ -716,3 +716,40 @@ This is a queue-state count, not a claim that 1,622 items are student-use ready 
 - **Owner-supplied materials:** exact prescribed literature texts, missing term/week source documents, specified textbook editions/pages, and any licensed audio/media not in the archive.
 - **Later verification stage:** package test items, oral/listening observations, laboratory/practical observations, device checks, and final source-dependent regression. Keep these DEFERRED; do not mark them complete during authoring.
 - **Authoring can continue now:** all PENDING tasks whose dependencies are already IMPLEMENTED_TESTING_DEFERRED. Do not wait for an unrelated decision; keep dependent lessons separate and scoped.
+
+## Per-item options, consequences and downstream effects — batch 1
+
+### CHEM-FACT-CONTENT-APPROVAL — chemistry
+- **Exact question:** Owner content approval and later verification of any chemistry lessons. Separate stage; no agent may invent an approval_reference, verification or laboratory observation.
+- **Options and consequences:** A. Owner reviews the completed, identified package objects and supplies a dated approval reference per lesson/asset; only then may approval move forward. B. Owner returns named defects; authoring/correction items are added and approval remains pending until corrected material is reviewed. No approval or verification is implied.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the completion gate is the package/object named above.
+- **Evidence locator:** package approval and verification
+- **Who must answer:** Owner (with foundation/rights lead where indicated).
+
+### CIV-FACT-CONTENT-APPROVAL — civic-education
+- **Exact question:** Owner content approval and later verification of any civic-education lessons. Separate stage; no agent may invent an approval_reference or verification.
+- **Options and consequences:** A. Owner reviews the completed, identified package objects and supplies a dated approval reference per lesson/asset; only then may approval move forward. B. Owner returns named defects; authoring/correction items are added and approval remains pending until corrected material is reviewed. No approval or verification is implied.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the completion gate is the package/object named above.
+- **Evidence locator:** package approval and verification
+- **Who must answer:** Owner (with foundation/rights lead where indicated).
+
+### COM-FACT-CONTENT-APPROVAL — commerce
+- **Exact question:** Owner content approval and later verification of any commerce lessons. Separate stage; no agent may invent an approval_reference or verification.
+- **Options and consequences:** A. Owner reviews the completed, identified package objects and supplies a dated approval reference per lesson/asset; only then may approval move forward. B. Owner returns named defects; authoring/correction items are added and approval remains pending until corrected material is reviewed. No approval or verification is implied.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the completion gate is the package/object named above.
+- **Evidence locator:** package approval and verification
+- **Who must answer:** Owner (with foundation/rights lead where indicated).
+
+### COM-FACT-T1-W01-SCOPE — commerce
+- **Exact question:** Obtain one recorded subject-expert decision on every Week 1 scope and wording question so the three appended lessons can bind to it without invented content: (1) whether the scope of commerce is taught in Week 1 at all, given that the word occurs only at lines 25, 40 and 323 and no Week 1 line states it (COMMERCE-T1-W01-SCOPE-GAP); (2) whether the three sections the body teaches but the CONTENT outline at 42-44 omits - the definition at 47, the delaying factors at 69-77 and the growth factors at 80-86 - are Week 1 content or not (COMMERCE-T1-W01-OUTLINE-GAP); (3) whether the seven aids to trade named at lines 93-94, the six unexplained functions at 50-55 and the two divisions at 90-91 must be explained in Week 1 or stay as lists (COV-COM-T1-W01-DIVISIONS, -FUNCTIONS, -GROWTH-FACTORS); (4) whether the out-of-week assessment items - Weekend question 5 on a basic want of man, THEORY question 1 and GENERAL EVALUATION question 2 on ancillary services, THEORY question 2 and GENERAL EVALUATION question 5 on transport, GENERAL EVALUATION question 3 on advertising - stay in Week 1, and whether the phrase ancillary services to trade is the same list as the seven aids to trade at 93-94 (COMMERCE-T1-W01-OUT-OF-WEEK-ITEMS); (5) whether the Week 1 GENERAL EVALUATION tests the week or the term, since question 4 is answered in Week Ten (COMMERCE-T1-W01-ASSESSMENT-SCOPE); (6) whether the five history stages and the sixteen factor lines may be taught as stated while COM-FACT-T1-HISTORY-NIGERIA has no dated source (COMMERCE-T1-W01-HISTORY-FACTS); (7) one disposition per numbered defect in COMMERCE-T1-W01-SOURCE-DEFECTS, including the wording of the definition at line 47, which makes commerce a field of study rather than an activity. Do not answer the source objective items or supply a ranking of the divisions without recording the basis.
+- **Options and consequences:** A. Keep the item DEFERRED for the separately authorised verification stage; do not claim PASS now. B. At the later stage, provide the required verifier/teacher observation and exact test evidence. Running/marking it complete now would violate the current deferral.
+- **What is blocked behind it:** COM-LES-T1-W01-SCOPE, COM-LES-T1-W01-KEY-ASSESSMENT, COM-LES-T1-W01-ANCILLARY-SERVICES
+- **Evidence locator:** 1st Term Week 1, lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1); specifically lines 25, 40, 42-44, 47, 57-62, 66, 68-77, 79-86, 88-94, 98, 110, 113-114, 117-121, 323, 341-351, 983-1013
+- **Who must answer:** Named subject teacher/expert.
+
+### COM-OWNER-T1-W02-READING-RIGHTS — commerce
+- **Exact question:** Confirm exact editions and reuse rights for Essential Commerce for SSS by O. A. Longe pages 9–12 and Comprehensive Commerce for SSS by J. U. Anyaele pages 42–43.
+- **Options and consequences:** A. Supply the exact edition/material identity and a licence or written permission covering the intended school delivery; reuse only within that scope. B. Decline reuse and approve an original equivalent, a bare reading pointer, or omission of the objective. No third-party text/media is copied or delivered without permission.
+- **What is blocked behind it:** No same-queue item directly names this blocker as a dependency; the completion gate is the package/object named above.
+- **Evidence locator:** Week Two READING ASSIGNMENT, Mammoth lines 163–165.
+- **Who must answer:** Owner (with foundation/rights lead where indicated).
