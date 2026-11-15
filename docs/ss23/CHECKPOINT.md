@@ -21,10 +21,18 @@ Not run: `npm run validate:ss1` (no code changed; SS1 status is not evidence for
 |---|---|---|
 | SS23-00 baseline | done | this file |
 | SS23-S0 source receipt + inventory | done | `docs/ss23/sources/` (100 members hashed; not committed as extracts) |
+| SS23-S1 header verification (100 members) | done | `docs/ss23/sources/HEADER_VERIFICATION.csv`; `scripts/ss23/verify_headers.py`. 84 verified; 11 subject+class OK but term label absent (term taken from folder); 5 flagged (below). Screen is regex-based on the first 1500 chars; not a content review. Not run through any validator |
 | SS23-01 generalise validator to SS2/SS3 | pending | needs owner policy answers below |
 | SS23-02… per-subject packages | pending | after SS23-01; SS2 alphabetical, one PR per subject |
 
+## SS23-S1 flagged members
+- SS2 T2 Geography: header says `CLASS: SS3`, but topics (environmental conservation, manufacturing, relief landforms, population, settlement) differ from the SS3 T2 Geography file (tourism, remote sensing, GIS, mock exams). Likely an SS2 note with a header typo; owner to confirm.
+- SS2 T2 Data processing: file has no scheme of work or header; it starts at "WEEK : 2 Relational Database". Week 1 and the scheme are missing from this file.
+- SS2 T2 `F _ N (1) (1).docx`: header says FIRST term (known T1 duplicate).
+- SS2 T1 Financial Accounting: header names no class or term. SS2 T3 English Language: no class in header.
+
 ## Owner decisions still needed (one message)
+0. SS2 T2 Geography header says SS3: confirm it is SS2 content with a typo.
 1. SS3 policy: `ingestTopics.ts` treats SS 3 as audit-only. Keep that, or deliver SS3 as normal curriculum?
 2. SS3 Third Term (empty archive), missing Technical Drawing / Catering Craft / SS3 T2 Food & Nutrition, and duplicated Literature and Book-keeping terms: supply the real files, or authorise clearly-labelled authored supplementary content from the national syllabus?
 
