@@ -19,7 +19,7 @@ Status: **IMPLEMENTED — TESTING DEFERRED BY OWNER**. Content approval remains 
 ## Implementation
 - Added `SUP-SS1-GEOGRAPHY-T1-W10-MOUNTAINS`.
 - Added formation explanations and text diagrams for all four mountain types.
-- Added nine keyed practice items with marking, totalling 42 marks.
+- Added nine keyed practice items with marking, totalling 41 marks.
 - Added five objective-level coverage records and upgraded `COV-GEO-T1-SCHEME-10` to `IMPLEMENTED_EQUIVALENT`.
 - Added `CORR-GEO-T1-W10-MOUNTAIN-FORMATION-AND-EXAMPLE-REPAIRS`, bound to the exact source row/hash.
 - Added non-blocking follow-ups for the missing original illustration and the unverified `Essential Geography` pages 31–33 pointer.
@@ -31,5 +31,5 @@ USGS, What is a fault and what are the different types?: https://www.usgs.gov/fa
 NPS, Erosional Volcanic Landforms: https://www.nps.gov/subjects/volcanoes/erosional-volcanic-landforms.htm
 
 ## Integrity and deferred verification
-Body hash refreshed by the repository's `refreshIntegrityHashes.ts` script: `d4d880c4c0dc3c23ffd4f59834b0a550adf2d7dce7f7099fb67a5394f6230eaf`.
+Body hash refreshed by the repository's `refreshIntegrityHashes.ts` script: `c7c4185d546687cb498b7cbe13138ac8951af0b6126ec80bbe20b120a1f6df15`.
 Not run: package validator, tests, TypeScript, importer, database integration or device checks. No PASS is claimed. Package remains PENDING because content approval and other source-level gates remain open.
