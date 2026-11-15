@@ -959,6 +959,105 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-CHEM-T1A-W06-SOLUBILITY-GAPS",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Chemistry",
+      "title": "Solubility and separation ideas: lead(II) chloride, sodium chloride and ammonium chloride",
+      "objectives": [
+        "Define solubility and explain why temperature matters.",
+        "Compare the solubility of lead(II) chloride and sodium chloride in cold and hot water.",
+        "Describe conceptually how a large solubility difference can support separation of a two-salt mixture.",
+        "Explain why ammonium chloride complicates a simple three-salt separation claim.",
+        "Recognise that no practical handling or disposal instruction is provided for lead compounds."
+      ],
+      "body": "# Solubility and separation ideas: lead(II) chloride, sodium chloride and ammonium chloride\n\n## 1. What does solubility mean?\n\n**Solubility** describes how much of a substance can dissolve in a given solvent at a stated temperature. Some substances dissolve more when the temperature rises; others change only a little.\n\n## 2. Compare the three salts\n\n| Substance | Formula | Behaviour in water |\n|---|---|---|\n| Lead(II) chloride | PbCl₂ | Sparingly soluble in cold water; much more soluble in hot water. |\n| Sodium chloride | NaCl | Readily soluble in water; its solubility changes only modestly as temperature rises. |\n| Ammonium chloride | NH₄Cl | Soluble in water; its solubility increases noticeably as temperature rises. |\n\nThe difference in solubility is useful when discussing separation of mixtures. A substance that remains mostly undissolved under one set of conditions may be separated conceptually from substances that dissolve under those conditions.\n\n## 3. A two-salt separation idea: PbCl₂ and NaCl\n\nIn a **theoretical** mixture of lead(II) chloride and sodium chloride, the large difference in their cold-water solubilities can be used to explain a separation:\n- Much of the NaCl can dissolve in water.\n- Most of the PbCl₂ remains undissolved in cold water because it is only sparingly soluble.\n- The solid and liquid portions can therefore be distinguished by the separation principle of filtration.\n- The dissolved NaCl can be recovered conceptually by crystallisation after the solvent is removed.\n\nThis is an explanation of separation principles, not a laboratory procedure or instruction to handle lead compounds.\n\n## 4. An important limitation when NH₄Cl is also present\n\nNH₄Cl dissolves in water and becomes more soluble as temperature rises. Lead(II) chloride is also reported to be readily soluble in ammonium chloride solution. This means that a simple statement such as “cold water dissolves only the sodium chloride and ammonium chloride while all lead(II) chloride remains separate” is too absolute. The presence of ammonium chloride can affect the solubility of lead(II) chloride.\n\nFor that reason, the three-component mixture PbCl₂, NaCl and NH₄Cl cannot be assumed to separate cleanly from a single general solubility rule. A complete separation scheme would need additional verified chemical-equilibrium information and teacher-approved risk assessment. This lesson gives the solubility concepts only; it does not prescribe a practical procedure.\n\n## 5. Key points\n\n1. PbCl₂ is sparingly soluble in cold water and more soluble in hot water.\n2. NaCl is readily soluble in water, and its solubility changes relatively little with temperature.\n3. NH₄Cl is soluble in water and becomes more soluble as temperature rises.\n4. NH₄Cl solution can increase the solubility of PbCl₂, so a three-salt separation claim must be treated carefully.\n5. Lead compounds are hazardous. This lesson gives no handling, treatment or disposal instructions.",
+      "body_sha256": "6762870b32d51530b6e145f97751377622a0add0a80d0606363847acaae4549e",
+      "practice": [
+        {
+          "id": "CHEM-T1A-W06-GAP-Q1",
+          "question": "Compare the solubility of PbCl₂ in cold water and hot water.",
+          "answer": "Lead(II) chloride is sparingly soluble in cold water, but much more of it dissolves in hot water.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that PbCl₂ is sparingly soluble in cold water.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that its solubility is greater in hot water.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "CHEM-T1A-W06-GAP-Q2",
+          "question": "How does the solubility of NaCl change as water temperature rises, compared with PbCl₂?",
+          "answer": "NaCl is readily soluble and its solubility increases only modestly with temperature; PbCl₂ shows a much greater increase.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that NaCl solubility changes only slightly/modestly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Contrasts this with the stronger increase for PbCl₂.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "CHEM-T1A-W06-GAP-Q3",
+          "question": "Why must a proposed separation of PbCl₂, NaCl and NH₄Cl be treated carefully?",
+          "answer": "NH₄Cl dissolves in water and its solution can increase the solubility of PbCl₂, so it is not safe to assume all PbCl₂ remains undissolved in a simple cold-water separation.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that NH₄Cl is soluble in water.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that ammonium chloride solution can increase PbCl₂ solubility / invalidates the simple assumption.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Lead chloride — PubChem CID 24459",
+          "locator": "Peer-reviewed solubility data, including 0.673 g/100 mL at 0 °C, 0.99 g/100 mL at 20 °C, 3.34 g/100 mL at 100 °C; Merck Index entry also reports ready solubility in ammonium chloride solution.",
+          "url": "https://pubchem.ncbi.nlm.nih.gov/compound/Lead-chloride",
+          "rights": "PENDING: PubChem aggregates depositor data; underlying reuse terms vary. Facts paraphrased.",
+          "reuse_status": "PENDING",
+          "attribution": "PubChem, National Center for Biotechnology Information (NCBI); cited underlying sources include Merck Index and Kirk-Othmer."
+        },
+        {
+          "title": "Sodium chloride — European Standard EN 973:2009",
+          "locator": "Solubility curve/table for NaCl in water from 0 to 100 °C: solubility rises modestly compared with the lead(II) chloride values.",
+          "url": "https://preview.sist.si/sist-preview/30408/00c86efe3d744cd285bf0c3d8f7dfda1/SIST-EN-973-2009.pdf",
+          "rights": "PENDING: standards text reuse terms not established; only data paraphrased.",
+          "reuse_status": "PENDING",
+          "attribution": "SIST EN 973:2009."
+        },
+        {
+          "title": "Ammonium and potassium salt solubility data — Argonne National Laboratory",
+          "locator": "Table 2 gives NH₄Cl solubility in water increasing from 5.50 mol/kg at 0 °C to 8.56 mol/kg at 40 °C.",
+          "url": "https://publications.anl.gov/anlpubs/2016/04/125740.pdf",
+          "rights": "PENDING: verify report-specific reuse terms; tabulated data paraphrased.",
+          "reuse_status": "PENDING",
+          "attribution": "Argonne National Laboratory."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [],
@@ -1667,12 +1766,18 @@
       "source_id": "SS1-SRC-58b4a44c3afa",
       "objective": "Solubility facts the questions need for lead(II) chloride and sodium chloride",
       "objective_locator": "evaluation question 1193 (PbCl2 and NaCl) and general evaluation question 1295 (NaCl, PbCl2 and NH4Cl); no solubility statement for either salt in lines 1116-1335",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-CHEM-T1A-W06-SOLUBILITY-GAPS"
+      ],
       "evidence": [
         {
           "locator": "lines 1193 and 1295 against lines 1157, 1171-1183, 1199 and 1205",
           "explanation": "Both questions ask how to separate mixtures that contain PbCl2 and NaCl. The week teaches the techniques generally (crystallization, fractional crystallization on different solubilities at different temperatures at 1183, filtration at 1135, and sublimation of ammonium chloride at 1205) but never states how PbCl2 or NaCl dissolves in cold or hot water, which is what such an answer depends on. No sentence supplies it. The gap is recorded as written and nothing is invented. The gap becomes the bounded lesson item CHEM-LES-T1A-W06-SOLUBILITY-GAPS."
+        },
+        {
+          "locator": "Supplementary lesson SUP-SS1-CHEM-T1A-W06-SOLUBILITY-GAPS; PubChem lead chloride solubility record; EN 973:2009 NaCl solubility table; Argonne National Laboratory NH₄Cl solubility table.",
+          "explanation": "The missing qualitative solubility comparison is taught separately. It distinguishes the strong temperature dependence of PbCl₂ from the modest change for NaCl, records NH₄Cl's increasing solubility, and notes that NH₄Cl solution can increase PbCl₂ solubility. The lesson gives only conceptual separation principles and no handling/disposal procedure. Content approval PENDING, verification DEFERRED."
         }
       ]
     },
