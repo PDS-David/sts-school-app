@@ -12614,8 +12614,8 @@
     {
       "id": "YORUBA-T1-W07-SOURCE-DEFECTS",
       "kind": "CONTENT",
-      "detail": "Seven defects found in Week 7 (lines 1503-1684): (1) 1509-1511: the definition is a single run-on sentence with \"fi enu ko le lori\", nothing states what changed or why, and 1511 has no final stop before the table; (2) table 8 at 1513-1639: the IFIYESI column is filled in only four of the five data rows (the row at 1583-1605 has none), its notes are not tied to individual pairs, every cell stacks several forms as separate paragraphs so extraction joins them without separators (\"AiyaAiyeEiye\"), \"Ebute-Meta\" is repeated unchanged in the second row, and the fifth row pairs eight new forms with seven old ones (\"Wi pe\" has no old counterpart, so positional pairing breaks from the third item); (3) 1531: the note writes a capital \"I\" for the lower-case vowel and uses curly double quotes, the only non-ASCII characters in the week; (4) 1541/1549 and 1535-1549: the place names carry no tone marks and no sub-dot letters (\"Osogbo\", \"Ogbomoso\", \"Ota\"), so the spellings the row teaches are incomplete; (5) ASA 1647-1649: a two-sentence definition then a new sentence beginning with lower-case \"ise\", with \"ko eso rode\" garbled and \"bii\" for \"bi\", and no benefit of good character anywhere; (6) ASA 1651-1667: eight bare noun phrases with no definition, example or explanation, and no link back to the definition at 1647; (7) 1671-1681: four questions and one practical, all automatically numbered, with no answers or marks, the practical repeating question 1673, and both asking for ten old spellings while the table supplies 24 in five unequal groups whose last group cannot be paired.",
-      "required_action": "Obtain one recorded subject-expert decision on every listed defect together with the notation decision (YORUBA-T1-W07-NOTATION) under YO-FACT-T1-W07-DEFECTS; the Week 7 lessons must not copy the uncorrected text and must not reuse the table's misaligned rows. No correction wording is authored here.",
+      "detail": "The EDE spelling/orthography strand now has an evidence-based working decision in YO-FACT-T1-W07-DECISIONS.md and a new standard orthography lesson. Remaining source defects are the exact five-row table alignment and missing IFIYESI note, the unresolved/possibly non-equivalent “Okorin → Okunrin” entry, the garbled ASA definition and unexplained eight behaviours, the missing benefits of good character, and the unanswered/duplicated assessment questions. These remain separate open items; the new EDE lesson does not copy the defective source text.",
+      "required_action": "Use the orthography policy and supplementary EDE lesson for learner-facing spelling instruction. Recover the original Week Seven DOCX table to reconcile all 24 forms and the missing note. For ASA, obtain an authoritative named source for the benefits or an owner-approved scope decision; then rewrite the definition/eight behaviours and supply a complete answer key and marking scheme. Do not copy the uncorrected source paragraph/table.",
       "affected_ids": [
         "YO-T1-W07-SCHEME-EDE",
         "YO-T1-W07-SCHEME-ASA",
@@ -12635,8 +12635,8 @@
     {
       "id": "YORUBA-T1-W07-NOTATION",
       "kind": "CONTENT",
-      "detail": "The Week 7 text contains no tone-marked or sub-dot character: across lines 1503-1684 there are 0 characters in U+00C0-U+024F and 0 combining marks. The only non-ASCII characters are one pair of curly double quotes (U+201C/U+201D) at 1531. This is the same document-wide condition as YORUBA-T1-W01..W06-NOTATION, but in a week whose subject is spelling it is decisive: the old and new forms in table 8 are exactly where sub-dot letters (o, e, s) and vowel marks belong, so \"Osogbo\", \"Ogbomoso\", \"Ota\", \"Olopaa\", \"Alaaanu\" and every other form omit letters the lesson is about, and the difference between \"Olopa\" and \"Olopaa\" cannot be seen as a vowel-length change in the orthography the document itself uses.",
-      "required_action": "Apply the term-wide notation decision recorded in YO-FACT-T1-W05-DEFECTS (or the superseding decision in YO-FACT-T1-W06/W07-DEFECTS) to every old and new form in table 8 and to the ASA list before the lessons are authored. Until then the spellings cannot be verified.",
+      "detail": "The original Week Seven source text (lines 1503-1684) contains no tone-marked or under-dotted characters, so its spelling table is not suitable as a standard learner-facing model. The new supplementary EDE lesson now applies the adopted JCCE 1974 orthography policy, including acute high tone, grave low tone, unmarked mid tone, ẹ/ọ/ṣ and standard word division. The original source remains unchanged and exact table reconciliation is tracked separately.",
+      "required_action": "Use YO-ORTHOGRAPHY-POLICY.md for the new learner-facing EDE material. Before reusing or correcting the original school table, recover the source DOCX and reconcile each exact old/new form under YO-FACT-T1-W07-DECISIONS.md; retain uncertain lexical items as open questions rather than guessing.",
       "affected_ids": [
         "YO-T1-W07-SCHEME-EDE",
         "YO-T1-W07-SCHEME-ASA",
@@ -12651,7 +12651,7 @@
         "YO-T1-W07-ASA-03",
         "YO-T1-W07-ASSESS"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "YORUBA-T1-W07-BENEFITS-MISSING",
