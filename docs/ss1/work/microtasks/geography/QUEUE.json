@@ -51,9 +51,9 @@
     "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 46,
+    "IMPLEMENTED_TESTING_DEFERRED": 47,
     "BLOCKED": 1,
-    "PENDING": 4
+    "PENDING": 3
   },
   "items": [
     {
@@ -390,8 +390,8 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No classify_marker rule exists for this source; geography.json has only three source_alias rules. Inventory counts from GEO-INV-T1: 16 EVALUATION QUESTIONS, 2 singular EVALUATION QUESTION, 9 GENERAL EVALUATION*, 9 READING ASSIGNMENT, 10 WEEKEND ASSIGNMENT, 10 THEORY. Week 9 has no EVALUATION QUESTIONS and no READING ASSIGNMENT; Week 5's READING ASSIGNMENT label sits at the end of line 402 after a long run of spaces. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "All 56 marker occurrences and all unlabelled/irregular sections are inventoried in GEO-MARK-T1.md. Generic repeated headings were not given non-unique classify_marker rules; six precise blocking open items in geography.json require exact-anchor recovery, Week 3/5/9/10 structural mapping and absent drawing assets. No marker is treated as teaching coverage.",
       "completion_condition": "Every marker occurrence and irregular section has a rule-and-coverage disposition or a precise open item; anchors occur exactly once in the unmodified extracted text; no marker is treated as covering teaching; no lesson is authored."
     },
     {
@@ -1930,7 +1930,6 @@
     "scope": "1st Term inventory executed from the supplied source; no importer, compiler or tests run; testing deferred."
   },
   "next_runnable": [
-    "GEO-MARK-T1",
     "GEO-VIS-T1",
     "GEO-VIS-T2",
     "GEO-VIS-T3-STATE-CAPITALS-TABLE"
