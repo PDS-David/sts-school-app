@@ -737,6 +737,105 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-CHEM-T1A-W04-SYMBOLS-VALENCY-GAPS",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Chemistry",
+      "title": "Element symbols and valency: silicon, manganese, caesium, cobalt, oxygen and potassium",
+      "objectives": [
+        "Write the correct symbols for silicon, manganese, caesium and cobalt.",
+        "Define valency as the combining capacity of an atom or ion.",
+        "State the common valencies of oxygen and potassium.",
+        "Distinguish an element's valency from the sign of its common ionic charge.",
+        "Use potassium and oxide ions to explain the formula K₂O."
+      ],
+      "body": "# Element symbols and valency: silicon, manganese, caesium, cobalt, oxygen and potassium\n\n## 1. What is a chemical symbol?\n\nA **chemical symbol** is the short form used to represent an element. A symbol has one or two letters. The first letter is always capital; if there is a second letter, it is lowercase.\n\n| Element | Correct symbol |\n|---|---|\n| Silicon | Si |\n| Manganese | Mn |\n| Caesium | Cs |\n| Cobalt | Co |\n\nDo not write these as SI, MN, CS or CO. The correct capitalisation matters because changing a letter's case can change the meaning of a symbol.\n\n## 2. What is valency?\n\n**Valency** is the combining capacity of an atom or ion when it forms a compound. At this level, valency is written as a positive whole number. When discussing ions, the charge sign is shown separately.\n\n| Element | Symbol | Common valency | Common ion |\n|---|---|---:|---|\n| Oxygen | O | 2 | O²⁻ (oxide ion) |\n| Potassium | K | 1 | K⁺ (potassium ion) |\n\nRemember the difference:\n- Valency: oxygen 2; potassium 1.\n- Common ion charge: oxide 2−; potassium 1+.\n\n## 3. Why do these values matter?\n\nValency helps us work out the simplest formula of an ionic compound. The total positive and negative charges must balance so that the compound is electrically neutral.\n\nFor example, potassium forms K⁺ and oxygen forms O²⁻. Two potassium ions are needed to balance one oxide ion, so the formula is **K₂O** (potassium oxide).\n\nThis is a worked explanation of the symbols and valencies requested by the source questions. It does not change the original source text.\n\n## 4. Key points\n\n1. Silicon is Si.\n2. Manganese is Mn.\n3. Caesium is Cs.\n4. Cobalt is Co.\n5. Oxygen has common valency 2.\n6. Potassium has common valency 1.\n7. Valency is written as a positive number; an ion's charge includes its plus or minus sign.",
+      "body_sha256": "a3ffc5a4637e422deea4ba66fe91c751f498135f40e16c5d51185b461807dfb0",
+      "practice": [
+        {
+          "id": "CHEM-T1A-W04-GAP-Q1",
+          "question": "Write the chemical symbols for (a) silicon, (b) manganese, (c) caesium and (d) cobalt.",
+          "answer": "(a) Si (b) Mn (c) Cs (d) Co.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Silicon: Si.",
+              "marks": 1
+            },
+            {
+              "criterion": "Manganese: Mn.",
+              "marks": 1
+            },
+            {
+              "criterion": "Caesium: Cs.",
+              "marks": 1
+            },
+            {
+              "criterion": "Cobalt: Co.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "CHEM-T1A-W04-GAP-Q2",
+          "question": "State the common valency of (a) oxygen and (b) potassium.",
+          "answer": "(a) Oxygen: 2. (b) Potassium: 1.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Oxygen has common valency 2.",
+              "marks": 1
+            },
+            {
+              "criterion": "Potassium has common valency 1.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "CHEM-T1A-W04-GAP-Q3",
+          "question": "Potassium forms K⁺ and oxygen forms O²⁻. Write the formula of potassium oxide and explain why it contains two potassium ions for every oxide ion.",
+          "answer": "The formula is K₂O. Two K⁺ ions give a total charge of +2, which balances the −2 charge on one O²⁻ ion.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Writes the correct formula K₂O.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains that two +1 charges balance one −2 charge.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "IUPAC Periodic Table of Elements",
+          "locator": "Official element table and symbol/name listings: silicon Si, manganese Mn, caesium Cs and cobalt Co.",
+          "url": "https://iupac.org/what-we-do/periodic-table-of-elements/",
+          "rights": "PENDING: IUPAC webpage reuse terms not established; facts paraphrased and element symbols are factual identifiers.",
+          "reuse_status": "PENDING",
+          "attribution": "International Union of Pure and Applied Chemistry (IUPAC)."
+        },
+        {
+          "title": "Chemistry 2e, section 2.6 Ionic and Molecular Compounds, OpenStax",
+          "locator": "Figure 2.29 and surrounding text: group 1 potassium forms K+; group 16 oxygen forms O2−; ionic compound charges balance to produce neutral formulas.",
+          "url": "https://openstax.org/books/chemistry-2e/pages/2-6-ionic-and-molecular-compounds",
+          "rights": "CC BY 4.0; attribute OpenStax and retain license notice for adapted content.",
+          "reuse_status": "PERMITTED",
+          "attribution": "OpenStax, Chemistry 2e, Rice University."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [],
@@ -1125,12 +1224,18 @@
       "source_id": "SS1-SRC-58b4a44c3afa",
       "objective": "Symbols the questions ask for but the tables do not give",
       "objective_locator": "evaluation question 703 (silicon, line 703) and theory question 1(b) (manganese, caesium, cobalt, lines 857-859); no matching row in lines 633-695",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-CHEM-T1A-W04-SYMBOLS-VALENCY-GAPS"
+      ],
       "evidence": [
         {
           "locator": "lines 703 and 857-859 against the symbol lists at 633-649, 653-671 and 677-695",
           "explanation": "Question 703 lists nine elements; eight of them (iodine, fluorine, sulphur, silver, iron, copper, potassium, sodium) have a row in the symbol lists, but silicon has none (it appears only in the metalloid sentence at 715, without a symbol). Theory question 857-859 asks for the symbols of manganese, caesium and cobalt, none of which appears anywhere in the week. Both gaps are recorded as written and nothing is invented. The gap becomes the bounded lesson item CHEM-LES-T1A-W04-SYMBOLS-VALENCY-GAPS."
+        },
+        {
+          "locator": "Supplementary lesson SUP-SS1-CHEM-T1A-W04-SYMBOLS-VALENCY-GAPS; IUPAC Periodic Table; OpenStax Chemistry 2e section 2.6.",
+          "explanation": "The missing requested symbols (Si, Mn, Cs, Co) and common valencies (oxygen 2, potassium 1) are taught in a separately attributed lesson. The lesson distinguishes positive-number valency from ionic charge and demonstrates charge balance in K₂O. Original source text remains unchanged; approval is PENDING and verification DEFERRED."
         }
       ]
     },
@@ -1167,12 +1272,18 @@
       "source_id": "SS1-SRC-58b4a44c3afa",
       "objective": "Valencies the questions ask for but the table does not give",
       "objective_locator": "general evaluation question 825(a) oxygen and 825(b) potassium (line 825) and weekend question 1 (line 837); no matching row in lines 759-783",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-CHEM-T1A-W04-SYMBOLS-VALENCY-GAPS"
+      ],
       "evidence": [
         {
           "locator": "lines 825 and 837 against the valency table at 759-783",
           "explanation": "Question 825 asks for the valency of oxygen, potassium, sulphur, SO4 2- and NH4+. Sulphur has a row (769) and the two radicals have rows (813, 803), but oxygen and potassium have no valency row, and weekend question 837 also concerns oxygen's combining power. No sentence in the week states either valency. Both gaps are recorded as written and nothing is invented. The gap becomes the bounded lesson item CHEM-LES-T1A-W04-SYMBOLS-VALENCY-GAPS."
+        },
+        {
+          "locator": "Supplementary lesson SUP-SS1-CHEM-T1A-W04-SYMBOLS-VALENCY-GAPS; IUPAC Periodic Table; OpenStax Chemistry 2e section 2.6.",
+          "explanation": "The missing requested symbols (Si, Mn, Cs, Co) and common valencies (oxygen 2, potassium 1) are taught in a separately attributed lesson. The lesson distinguishes positive-number valency from ionic charge and demonstrates charge balance in K₂O. Original source text remains unchanged; approval is PENDING and verification DEFERRED."
         }
       ]
     },
