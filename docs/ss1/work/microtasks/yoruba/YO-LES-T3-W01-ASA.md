@@ -102,7 +102,7 @@ Orísun SS1 tún ṣe àkọsílẹ̀ àwọn àpẹẹrẹ bí `Eyinafe`, `Ajis
 
 **5. Ṣàlàyé inagijẹ àti àbísọ pẹ̀lú àpẹẹrẹ kan fún ọ̀kọ̀ọ̀kan. (3 àmì)**  
 Ìdáhùn: Inagijẹ jẹ́ orúkọ àpèlé tó ń ṣàpèjúwe ìwà tàbí ìrísí; àpẹẹrẹ ìdánilẹ́kọ̀ọ́ `Bọ́lá kékeré`. Àbísọ jẹ́ orúkọ tó ní í ṣe pẹ̀lú ìdílé, ẹ̀sìn tàbí ìṣẹ̀lẹ̀; àpẹẹrẹ `Adébísí`.  
-Ìpín àmì: ìtumọ̀ inagijẹ (1), àpẹẹrẹ (0.5), ìtumọ̀ àbísọ (1), àpẹẹrẹ (0.5).
+Ìpín àmì: ìtumọ̀ inagijẹ (1), ìtumọ̀ àbísọ (1), àpẹẹrẹ ọ̀kọ̀ọ̀kan (1).
 
 **Àpapọ̀: 20 àmì.**
 
