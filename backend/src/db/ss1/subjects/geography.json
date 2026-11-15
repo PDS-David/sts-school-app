@@ -105,9 +105,9 @@
       "op": "classify_marker",
       "source_id": "SS1-SRC-ba9dee61c27c",
       "source_sha256": "fa120c0e9f2f7a47df2c775afdfe049b41ab2acb1972c1457b31c85e70b3a2e5",
-      "anchor": "REVISION",
+      "anchor": "REVISION / MOUNTAINS",
       "kind": "SCHEME_ONLY",
-      "match_mode": "WHOLE_LINE",
+      "match_mode": "SUBSTRING",
       "evidence": {
         "locator": "GEO-INV-T2.md, getBody line 17, scheme row 9 (Weeks 11), scheme block lines 5-17 SHA-256 16f8346eaa97420d7393afa489cfd66d4aeec3126c08eda9e58cd0d7c8efb52c.",
         "explanation": "The exact REVISION row exists in the scheme but no Week Eleven body exists. Classify only this preamble row as scheme-only; preserve the source and do not fabricate revision teaching or an examination."
