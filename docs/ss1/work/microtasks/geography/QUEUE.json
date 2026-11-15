@@ -51,9 +51,9 @@
     "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 42,
+    "IMPLEMENTED_TESTING_DEFERRED": 43,
     "BLOCKED": 1,
-    "PENDING": 8
+    "PENDING": 7
   },
   "items": [
     {
@@ -884,8 +884,8 @@
         "GEO-INV-T2",
         "GEO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No classify_marker rule exists for this source. Inventory counts (GEO-INV-T2): 16 Evaluation Questions variants, 8 General Evaluation, 6 Reading Assignment, 8 Weekend Assignment, 8 Theory (46 in all). The exact spellings and lines are in the locator. Week 1 scheme row says REVISION / MOUNTAINS but the body has no revision text.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "All 46 recurring marker occurrences and irregular sections are inventoried in GEO-MARK-T2.md with exact line locators and dispositions. No generic classify_marker rule was fabricated because repeated heading anchors cannot be proven unique from inventory-only text; blocking open item GEOGRAPHY-T2-MARKER-EXACT-ANCHORS requires the original unmodified text for uniqueness checks. Week 6-7 unlabelled weather-recording block is covered by its lesson; Week 8 missing evaluation/reading and Week 10 missing direction step are separately open. No marker is treated as teaching.",
       "completion_condition": "Every marker occurrence and irregular section has a rule-and-coverage disposition or a precise open item; anchors occur exactly once in the unmodified extracted text; no marker is treated as covering teaching; no lesson is authored."
     },
     {
@@ -1932,7 +1932,6 @@
   "next_runnable": [
     "GEO-MARK-T1",
     "GEO-VIS-T1",
-    "GEO-MARK-T2",
     "GEO-VIS-T2",
     "GEO-VIS-T3-STATE-CAPITALS-TABLE",
     "GEO-FACT-T3-LOCATION-POPULATION",
