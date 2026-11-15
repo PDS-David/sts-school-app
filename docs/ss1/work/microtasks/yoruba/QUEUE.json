@@ -87,8 +87,8 @@
     "ASSET": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 74,
-    "PENDING": 58,
+    "IMPLEMENTED_TESTING_DEFERRED": 75,
+    "PENDING": 57,
     "BLOCKED": 41
   },
   "items": [
@@ -1572,8 +1572,8 @@
         "YO-WK-T1-W07",
         "YO-FACT-T1-W07-DEFECTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by YO-WK-T1-W07 (2026-10-30, base 7c0e86c). The EDE part (source lines 1505-1641 (objectives YO-T1-W07-EDE-01..06)) is indexed as YO-T1-W07-EDE-01..06, all PARTIAL. Defects and notation gaps are listed in YORUBA-T1-W07-SOURCE-DEFECTS and YORUBA-T1-W07-NOTATION and must be decided in YO-FACT-T1-W07-DEFECTS first. No lesson is authored in YO-WK-T1-W07.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added SUP-SS1-YORUBA-T1-W07-EDE-ORTHOGRAPHY with standard 1974 orthography, tone/underdot rules, eight documented spelling pairs, word division, nasalised forms and eight keyed questions (35 marks). Exact school-source table reconciliation remains a separate open item.",
       "completion_condition": "A lesson in yoruba.json teaches every Week 7 EDE objective with a corrected, aligned table that the expert decision in YO-FACT-T1-W07-DEFECTS approves, uses the approved notation for every form, explains each change by its rule, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance, and PENDING content approval; no fact is invented and no schema or compiler edit is made."
     },
     {
@@ -1660,7 +1660,7 @@
         "YO-WK-T1-W07"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "Raised by YO-WK-T1-W07 (2026-10-30). Decisions needed, with locators: (1) the definition sentence at 1509-1511 and what, if anything, is to be added about the 1974 decision; (2) table 8 at 1513-1639: the empty IFIYESI cell in the fourth row, the unchanged \"Ebute-Meta\" pair, the eight-against-seven fifth row and the correct pairing of \"Wi pe\", \"Gegebi\" and \"Gbagbo\"; (3) whether \"Okorin\" to \"Okunrin\" is a spelling change or a different word (1587/1599) and whether \"Lailai\" to \"Laelae\" belongs under vowel length; (4) the correct tone-marked and sub-dotted form of every old and new entry in the table; (5) the ASA definition at 1647-1649, including \"ko eso rode\" and \"bii\"; (6) the eight behaviours at 1653-1667: a definition and one example for each; (7) the benefits of iwa omoluabi, with the authoritative source to be named (YORUBA-T1-W07-BENEFITS-MISSING); (8) the exercise block at 1671-1681: expected answers, marks, and which ten old spellings the practical is to use; (9) the tone notation to be applied (YORUBA-T1-W07-NOTATION). No correction is invented in this item.",
+      "implementation_reference": "EDE orthography decision recorded in YO-FACT-T1-W07-DECISIONS.md; ASA benefits still lack an owner-approved authoritative source/scope, and exact source table cell alignment/IFIYESI note requires the original DOCX. Do not mark this combined defect item complete.",
       "completion_condition": "Every listed defect, the notation decision, the missing-benefits decision and the table-alignment decision are resolved by a named expert decision recorded with evidence and locators; the two Week 7 lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
     },
     {
@@ -7551,5 +7551,7 @@
       "availability": "User attachment; not committed to Git. Attach this archive (or the exact member) to source-reading workers."
     }
   },
-  "next_runnable": []
+  "next_runnable": [
+    "YO-SCOPE-OBJECTIVE-INDEXING"
+  ]
 }
