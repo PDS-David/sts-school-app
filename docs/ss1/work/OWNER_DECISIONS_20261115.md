@@ -670,3 +670,27 @@ Current subject counts in this batch: literature: 1; mathematics: 7; physics: 6;
 - **Completion gate:** Expert verifies the cultural content, teacher/owner decides duplicate disposition, and a safe student-facing scope is recorded.
 - **Dependencies:** YO-SRC-T3, YO-WK-T3-W10
 
+
+## Consolidated owner action order
+
+The three batches above contain **81 BLOCKED queue items** across 16 subjects, read from the subject queues on master at `b09aea28a2861f49b757e3a3f8a5b84f80c6fbf9`. Subject breakdown: Chemistry 1; Civic Education 1; Commerce 3; Data Processing 3; Economics 3; Financial Accounting 2; Food and Nutrition 2; French 7; Further Mathematics 6; Geography 1; Government 1; Literature 1; Mathematics 7; Physics 6; Technical Drawing 2; Yoruba 35. Biology, Agricultural Science, Bookkeeping, Catering Craft and English had no BLOCKED items in their queues at this base. A queue's PENDING items are not included in this blocked-item count.
+
+### Priority 1 — missing source materials, rights and prescribed texts
+
+Resolve missing Technical Drawing term sources (TD-MISSING-T1, TD-MISSING-T3); Further Mathematics Third Term source scope (FM-FACT-T3-MISSING-MATERIAL); Yoruba selected literature texts and authorised replacements (all YO-*-SELECTED-TEXT / YO-*-LIT-SOURCE items); French exam audio and rights (FR-ASSET-EXAM-AUDIO-ACQUISITION / INSTALL); and external reading rights for Commerce, Data Processing and Further Mathematics. Until these are supplied or an explicit exclusion/equivalent is approved, dependent lessons cannot lawfully or factually be completed.
+
+### Priority 2 — named subject-expert / teacher decisions
+
+Yoruba's 35 blockers principally require verified tone/sub-dot orthography, correction decisions for defective source passages, mapping of scheme objectives to body text, missing strand content, and safe cultural/history review. Economics, Commerce, Data Processing, Financial Accounting, Food and Nutrition, French, Physics and Mathematics have week-specific scope, answer-key, factual, extraction or teaching-method decisions. Each must cite the source locator and the named decision-maker; no agent should invent a correction or mark an answer key as authoritative.
+
+### Priority 3 — owner/foundation and schema decisions
+
+Resolve the repository-wide equation extraction strategy affecting Further Mathematics, Mathematics and Physics; the Literature marker vocabulary gap; alias approvals; and vendor-material permission. A shared schema/compiler change must be owned by the foundation/integrator, not smuggled into a subject package.
+
+### Priority 4 — approvals and later verification
+
+Content-approval items remain separate from authoring. A blanket chat statement does not create the per-lesson/per-asset `approval_reference` required by the contract. Record the authorised approver role, scope/version, date and reference against each relevant object. Oral/listening observations and tests remain deferred until the owner explicitly opens the verification stage. Do not set approval, verification, certification or deployment fields early.
+
+### Integrity note
+
+No queue, subject package, approval state, verification state, source content, or test result was changed by this brief. The only content change is this decision register. The source archive supplied in this conversation was SHA-256 verified as `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`, matching the archive hash in the SS1 protocol. The current user-supplied archive has 61 document entries; its presence does not itself clear a subject-specific source gap unless the required exact source member and hash are verified.
