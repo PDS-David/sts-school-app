@@ -257,3 +257,416 @@ Current subject counts in this batch: economics: 3; financial-accounting: 2; foo
 - **Completion gate:** Approval references and later verification evidence exist for the lessons that are authored; none is fabricated.
 - **Dependencies:** GOV-INV-T1, GOV-INV-T2, GOV-INV-T3, GOV-TEST-PACKAGE
 
+
+## Decision items — final batch
+
+Current subject counts in this batch: literature: 1; mathematics: 7; physics: 6; technical-drawing: 2; yoruba: 35. Blocked items in this batch: 51.
+
+### LIT-FACT-MARKER-VOCABULARY — literature (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Owner/foundation decision: the shared schema's classify_marker kinds (REVISION, EXAMINATION, SCHEME_ONLY) cannot describe class-work or assignment markers. 1st Term has 13 (9 class work, 4 assignment; LIT-MARK-T1.md); 2nd and 3rd Term have 7 assignment markers each (LIT-INV-T2.md, LIT-INV-T3.md). Decide whether to request a versioned foundation change or leave the markers as unclassified body text. This item changes no schema and writes nothing in the package.
+- **Evidence locator:** classify_marker vocabulary in backend/src/db/ss1/subjectPackageSchema.ts
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** A recorded decision (change requested with reference, or accepted as unclassified body text) is cited here; no schema file is edited by this package.
+- **Dependencies:** LIT-MARK-T1
+
+### MATH-OWNER-LOG-METHOD — mathematics (OWNER_DECISION)
+
+- **Question / objective:** Owner/teacher states whether logarithm lessons use mathematical tables (and supplies the edition with reuse permission) or a calculator method.
+- **Evidence locator:** OI-MATH-003 remaining question
+- **Decision owner:** Owner
+- **Completion gate:** Decision and any permission/edition reference recorded in OI-MATH-003; unblocks MATH-LES-T1-W08-LOGARITHMS and MATH-LES-T1-W09-LOG-POWERS.
+- **Dependencies:** MATH-FACT-LOG-TABLES
+
+### MATH-OWNER-RIGHTS-PERMISSION — mathematics (OWNER_DECISION)
+
+- **Question / objective:** Owner confirms whether any embedded third-party tutor material may be reused or must be excluded from delivery.
+- **Evidence locator:** licence/permission for embedded commercial tutor material
+- **Decision owner:** Owner
+- **Completion gate:** Decision recorded in the open item raised by the advert inspections.
+- **Dependencies:** MATH-FACT-ADVERT-T2, MATH-FACT-ADVERT-T3
+
+### MATH-OWNER-EQUATION-STRATEGY — mathematics (OWNER_DECISION)
+
+- **Question / objective:** Owner/foundation decides between an equation-aware SS1 extractor (reviewed migration changing content-bound row IDs) and replacement lessons for every affected row.
+- **Evidence locator:** OI-MATH-001 foundation decision
+- **Decision owner:** Owner
+- **Completion gate:** Decision recorded; follow-up tasks appended by the owner or integration worker.
+- **Dependencies:** MATH-SRC-T1, MATH-SRC-T2, MATH-SRC-T3
+
+### MATH-APPROVAL-ALIASES — mathematics (OWNER_APPROVAL)
+
+- **Question / objective:** Owner confirmation of the three heading aliases so each approval_reference can replace 'PENDING-OWNER'.
+- **Evidence locator:** RULE-MATH-T1-ALIAS, RULE-MATH-T2-ALIAS, RULE-MATH-T3-ALIAS
+- **Decision owner:** Owner
+- **Completion gate:** Owner confirmation recorded and referenced in each rule; nothing else changed.
+- **Dependencies:** MATH-FACT-HEADER-T1, MATH-FACT-HEADER-T2, MATH-FACT-HEADER-T3
+
+### MATH-APPROVAL-CONTENT — mathematics (OWNER_APPROVAL)
+
+- **Question / objective:** Owner/teacher reviews the six authored T1 supplements and records an approval_reference per lesson, or returns defects.
+- **Evidence locator:** six authored supplements (OI-MATH-005)
+- **Decision owner:** Owner
+- **Completion gate:** Approval references recorded per lesson, or defects appended as correction items.
+- **Dependencies:** MATH-LES-T1-W01-DIVISIBILITY-INTEGERS, MATH-LES-T1-W03-BASE-OPERATIONS, MATH-LES-T1-W04-MODULAR-ARITHMETIC, MATH-LES-T1-W05-STANDARD-FORM, MATH-LES-T1-W06-INDICES, MATH-LES-T1-W10-EQUATIONS-VARIATION
+
+### MATH-CMP-D4-TESTS — mathematics (BRANCH_COMPARISON)
+
+- **Question / objective:** Deferred: compare #71's 4-test mathematics.test.mts with master's tests/ss1/mathematics.package.test.mts and decide which checks, if any, merit a port against master's schema.
+- **Evidence locator:** tests/ss1/mathematics.test.mts on #71 head
+- **Decision owner:** Owner-designated verification lead (later phase)
+- **Completion gate:** Comparison note recorded in the authorised verification stage; no test run in this queue.
+- **Dependencies:** MATH-TEST-PACKAGE-EXISTING
+
+### MATH-TEST-FULL-SOURCE-REGRESSION — mathematics (TEST)
+
+- **Question / objective:** Deferred: regression check of every parsed row and marker against the final package once indexing, ports and approvals are complete.
+- **Evidence locator:** full-source regression after all week/preamble indexing
+- **Decision owner:** Owner-designated verification lead (later phase)
+- **Completion gate:** Run only in the later authorised verification stage; nothing is run by this queue.
+- **Dependencies:** MATH-SCOPE-AUTHORING-FINISH, MATH-TEST-PACKAGE-EXISTING
+
+### PHYS-OWNER-ALIAS-T3 — physics (OWNER_APPROVAL)
+
+- **Question / objective:** Owner records approval of the Third Term Physics source alias. The original filename is 3RD TERM S1 PHYSICS.doc and the rendered header/body identify SS1/3rd Term/Physics; the remaining issue is formal source-alias approval, not missing subject evidence.
+- **Evidence locator:** alias approval_reference for the 3rd Term source (only if registration finds no subject heading)
+- **Decision owner:** Owner
+- **Completion gate:** Owner confirmation recorded as the rule's approval_reference, or the item closed as not needed once registration shows a Physics heading.
+- **Dependencies:** PHYS-SRC-T3
+
+### PHYS-OWNER-EXTRACTION-STRATEGY — physics (OWNER_DECISION)
+
+- **Question / objective:** Owner/foundation decides the repository-wide strategy for embedded equations, superscripts, subscripts, fractions and figures in legacy .doc files. Physics source audit demonstrates that rendered PDFs recover formula/figure objects omitted by text-only extraction.
+- **Evidence locator:** superscript/subscript/fraction/figure recovery (branch OI-PHYS-001)
+- **Decision owner:** Owner
+- **Completion gate:** Decision recorded; follow-up tasks appended by the owner or integration worker.
+- **Dependencies:** PHYS-SRC-T1, PHYS-SRC-T2, PHYS-SRC-T3
+
+### PHYS-APPROVAL-CONTENT — physics (OWNER_APPROVAL)
+
+- **Question / objective:** Teacher reviews all 33 Physics lesson objects and 30 registered assets, then records approval_reference per lesson/asset or returns defects. All content_approval fields remain PENDING; no approval is inferred.
+- **Evidence locator:** ported supplements
+- **Decision owner:** Owner
+- **Completion gate:** Approval references recorded per lesson, or defects appended as correction items. No approval is invented.
+- **Dependencies:** PHYS-PORT-D1-T2-L001, PHYS-PORT-D1-T2-L002, PHYS-PORT-D1-T3-L003, PHYS-PORT-D1-T3-L004, PHYS-PORT-D1-T3-L005
+
+### PHYS-TEST-FULL-SOURCE-REGRESSION — physics (TEST)
+
+- **Question / objective:** Run the final regression after authoring: compare all original parsed rows and markers with the final package, validate source hashes, lesson/asset hashes, coverage and delivery corrections, then record the CI result. Authoring and coverage are now complete.
+- **Evidence locator:** full-source regression
+- **Decision owner:** Owner-designated verification lead (later phase)
+- **Completion gate:** Run only in the later authorised verification stage; nothing is run by this queue.
+- **Dependencies:** PHYS-SCOPE-AUTHORING-FINISH, PHYS-TEST-PACKAGE-NEW
+
+### PHYS-FACT-T1-W01-SCOPE — physics (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Teacher reviews/approves the two independent Week One supplements (laboratory familiarisation and scientific method) and confirms their placement. The original source facts have been reconciled visually: formulae are present as equation images, Time unit/derivation cells are present, and genuine SI-symbol/count defects are corrected in the replacement. Seven derived quantities and cross-week retrieval items are now covered by keyed practice.
+- **Evidence locator:** WEEK ONE, parsed row 0 (body lines 41-191, sha256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc); the scheme row at getBody() line 24 (sha256 107871e4a26a044a789c101b4fd1778fddfe046ce599b8cdcbee1f19fece62cc); the two EVALUATION blocks (sha256 13fbd968dc602854a2b4c11d5f460c86d6fa1468ab3b3953e29a15b9657d7dbb and f36ebd540908d5a7d2f543a394513fa0ca5a22a5b4fca9a68fb2e613e9822ed1); WEEKEND ASSIGNMENT (sha256 f13123b9c03651004f38dfa7af99fe84845a34bc644a27d54f1d1f20ddb48b85); THEORY (sha256 5759524099c558672bf2d297392244c38c60e00f819fe260fe4c61cd04cc60e0); cross-week teaching at lines 195, 591, 883, 987, 1096, 1128 and 1218
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every numbered item has a named expert decision recorded with its evidence and locators; the three lesson items then bind to those decisions; no correction is invented, no lesson authored and no shared file edited here.
+- **Dependencies:** PHYS-SRC-T1, PHYS-WK-T1-W01
+
+### PHYS-FACT-T1-W02-SCOPE — physics (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Teacher reviews the replacement assessment scope: keep pipette/hydrometer as labelled extensions, retain force dimensions as Week One retrieval, include volume (present in the scheme/outline), and approve the clear replacement questions for unreadable figures/ambiguous wording. Source arithmetic, control-character and missing-option findings have already been reconciled and corrected in the learner replacement.
+- **Evidence locator:** WEEK TWO, parsed row 1 (body lines 194-340, sha256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e); scheme row line 25 (sha256 18bb82f110afd09fa9e504a5c737c6e3f57d2dd2d5a9e235d51e5e613a1849a3); the nine numbered questions in open item PHYSICS-T1-W02-FACT-DEFECTS and the wording defects in PHYSICS-T1-W02-SOURCE-DEFECTS
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every numbered item has a named expert decision recorded with its evidence and locators; the key-assessment lesson and the correction binding then bind to those decisions; no lesson authored and no shared file edited here.
+- **Dependencies:** PHYS-SRC-T1, PHYS-WK-T1-W02
+
+### TD-MISSING-T1 — technical-drawing (MISSING_MATERIAL)
+
+- **Question / objective:** Record the 1st Term Technical Drawing source as an unresolved item: no document for this term is in the assignment manifest. The owner supplies it, or confirms it does not exist.
+- **Evidence locator:** 1st Term Technical Drawing document (not supplied)
+- **Decision owner:** Owner
+- **Completion gate:** Blocked on the owner. When a document is supplied, a new registration item is appended with its manifest row; until then an open item names the missing term. Never marked complete and no scheme is invented.
+- **Dependencies:** TD-SRC-T2
+
+### TD-MISSING-T3 — technical-drawing (MISSING_MATERIAL)
+
+- **Question / objective:** Record the 3rd Term Technical Drawing source as an unresolved item: no document for this term is in the assignment manifest. The owner supplies it, or confirms it does not exist.
+- **Evidence locator:** 3rd Term Technical Drawing document (not supplied)
+- **Decision owner:** Owner
+- **Completion gate:** Blocked on the owner. When a document is supplied, a new registration item is appended with its manifest row; until then an open item names the missing term. Never marked complete and no scheme is invented.
+- **Dependencies:** TD-SRC-T2
+
+### YO-FACT-T1-W05-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the eight Week 5 source defects and on the tone notation, and a decision on the empty LITIRESO strand, so the three Week 5 lessons can be authored without copying errors.
+- **Evidence locator:** 1st Term Week 5, source lines 1171-1284 (all three strands)
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed defect, the notation decision and the set-text decision are resolved by a named expert or owner decision recorded with evidence and locators; the three Week 5 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T1, YO-WK-T1-W05
+
+### YO-FACT-T1-W06-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the eight Week 6 source defects, on the tone notation, and on the presentation of the five syllable segmentations, so the two Week 6 lessons can be authored without copying errors.
+- **Evidence locator:** 1st Term Week 6, source lines 1285-1502 (both strands)
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed defect, the notation decision and the segmentation-presentation decision are resolved by a named expert decision recorded with evidence and locators; the two Week 6 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T1, YO-WK-T1-W06
+
+### YO-FACT-T1-W07-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the seven Week 7 source defects, on the tone notation, on the missing benefits of iwa omoluabi and on how table 8 is to be corrected and aligned, so the two Week 7 lessons can be authored without copying errors.
+- **Evidence locator:** 1st Term Week 7, source lines 1503-1684 (both strands)
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed defect, the notation decision, the missing-benefits decision and the table-alignment decision are resolved by a named expert decision recorded with evidence and locators; the two Week 7 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T1, YO-WK-T1-W07
+
+### YO-FACT-T1-W08-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the eight Week 8 source defects, on the tone notation, on the set literature text and on how the essay and occupation material is to be completed, so the three Week 8 lessons can be authored without copying errors.
+- **Evidence locator:** 1st Term Week 8, source lines 1685-1781 (all three strands)
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed defect, the notation decision, the set-text decision and the essay/occupation completion decisions are resolved by a named expert decision recorded with evidence and locators; the three Week 8 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T1, YO-WK-T1-W08
+
+### YO-FACT-T2-W01-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the Week 1 source defects and on the tone and sub-dot notation, so the three Week 1 lessons can be authored without copying errors.
+- **Evidence locator:** 2nd Term Week 1, source lines 149-854
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed defect and the notation decision is resolved by a named expert decision recorded with evidence and locators; the three Week 1 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T2, YO-WK-T2-W01
+
+### YO-FACT-T2-W02-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the Week 2 source defects and on the tone and sub-dot notation, so the three Week 2 lessons can be authored without copying errors.
+- **Evidence locator:** 2nd Term Week 2, source lines 855-1074
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed defect and the notation decision is resolved by a named expert decision recorded with evidence and locators; the three Week 2 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T2, YO-WK-T2-W02
+
+### YO-FACT-T2-W03-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the Week 3 source defects and on the tone and sub-dot notation, so the three Week 3 lessons can be authored without copying errors.
+- **Evidence locator:** 2nd Term Week 3, source lines 1075-1302
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed defect and the notation decision is resolved by a named expert decision recorded with evidence and locators; the three Week 3 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T2, YO-WK-T2-W03
+
+### YO-FACT-T2-W04-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the Week 4 source defects and on the tone and sub-dot notation, so the three Week 4 lessons can be authored without copying errors.
+- **Evidence locator:** 2nd Term Week 4, source lines 1303-1450
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed defect and the notation decision is resolved by a named expert decision recorded with evidence and locators; the three Week 4 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T2, YO-WK-T2-W04
+
+### YO-FACT-T2-W05-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the Week 5 source defects and on the tone and sub-dot notation, so the three Week 5 lessons can be authored without copying errors.
+- **Evidence locator:** 2nd Term Week 5, source lines 1451-1610
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed defect and the notation decision is resolved by a named expert decision recorded with evidence and locators; the three Week 5 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T2, YO-WK-T2-W05
+
+### YO-FACT-T2-W06-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the Week 6 source defects and on the tone and sub-dot notation, so the three Week 6 lessons can be authored without copying errors.
+- **Evidence locator:** 2nd Term Week 6, source lines 1611-1682
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed defect and the notation decision is resolved by a named expert decision recorded with evidence and locators; the three Week 6 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T2, YO-WK-T2-W06
+
+### YO-FACT-T2-W07-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the Week 7 source defects and on the tone and sub-dot notation, so the three Week 7 lessons can be authored without copying errors.
+- **Evidence locator:** 2nd Term Week 7, source lines 1683-2016
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed defect and the notation decision is resolved by a named expert decision recorded with evidence and locators; the three Week 7 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T2, YO-WK-T2-W07
+
+### YO-FACT-T2-W08-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the absent Week 8 body, the selected literature text, the scheme defects and the tone and sub-dot notation, so the three Week 8 lessons can be authored without inventing content.
+- **Evidence locator:** 2nd Term Week 8, scheme lines 93-105 (no teaching section exists)
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed decision is resolved by a named expert decision recorded with evidence and locators; the three Week 8 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T2, YO-WK-T2-W08
+
+### YO-FACT-T2-W09-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the Week 9 defects, the aroko asotan/oniroyin mapping, the five name types, the absent aalo strand, the book reference and the tone and sub-dot notation, so the three Week 9 lessons can be authored without inventing content.
+- **Evidence locator:** 2nd Term Week 9, scheme lines 107-123 and section lines 2017-2220
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed decision is resolved by a named expert decision recorded with evidence and locators; the three Week 9 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T2, YO-WK-T2-W09
+
+### YO-FACT-T2-W10-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the Week 10 defects, the untaught Oriki and ipolowo pelu ohun enu, the ten-type noun classification, the five-against-ten noun types and five-against-six goods counts, the absent literature strand, the textbook reference and the tone and sub-dot notation, so the three Week 10 lessons can be authored without inventing content.
+- **Evidence locator:** 2nd Term Week 10, scheme lines 125-137 and section lines 2221-2433
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed decision is resolved by a named expert decision recorded with evidence and locators; the three Week 10 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T2, YO-WK-T2-W10
+
+### YO-FACT-T3-W01-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the Week 1 source defects and on the tone and sub-dot notation, so the three Week 1 lessons can be authored without copying errors.
+- **Evidence locator:** 3rd Term Week 1, source lines 121-426
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed defect and the notation decision is resolved by a named expert decision recorded with evidence and locators; the three Week 1 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W01
+
+### YO-FACT-T3-W02-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the Week 2 source defects and on the tone and sub-dot notation, so the three Week 2 lessons can be authored without copying errors.
+- **Evidence locator:** 3rd Term Week 2, source lines 427-678
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed defect and the notation and external-text decisions are resolved by a named expert decision recorded with evidence and locators; the three Week 2 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W02
+
+### YO-FACT-T3-W03-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the Week 3 source defects, on the tone and sub-dot notation, and on an approved external source for the untaught strands, so the three Week 3 lessons can be authored without copying errors.
+- **Evidence locator:** 3rd Term Week 3, source lines 679-962
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed defect, the notation decision and the external-source decision are resolved by a named expert decision recorded with evidence and locators; the three Week 3 lesson items may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W03
+
+### YO-FACT-T3-W04-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the fourteen Week 4 source defects, on the tone/sub-dot and en-dash notation, and on the disposition of the off-scheme Apa keji questions, so the Week 4 lessons can be authored without copying errors.
+- **Evidence locator:** 3rd Term Week 4, section lines 963-1280 (sha256 c2b144f4d427ad8c6b8ad30b4d6495ee231821698cd76bf9b5d9cd4cc0e51171)
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every numbered defect, the notation decision and the Apa keji disposition are resolved by a named expert decision recorded with evidence and locators; YO-LES-T3-W04-EDE and YO-LES-T3-W04-ASA may then bind to that decision; no correction is invented and no lesson is authored here.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W04
+
+### YO-FACT-T3-W04-SELECTED-TEXT — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain the recommended prose text for chapters 3 and 4 (Iya Atata, Fadiya O., WAEC) or written confirmation that it must not be reproduced, so the Week 4 LIT lesson can be authored on a lawful basis.
+- **Evidence locator:** 3rd Term Week 4, LITIRESO part lines 1225-1243 (sha256 044d545ee35c00bfd27959cf0a997f568fb6b3ac1a3dad36963dd0b7496aaa2c)
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** The owner supplies the chapters or an approved substitute, or records that the lesson must be authored without the text; the answer is recorded with a reference and YO-LES-T3-W04-LIT may then proceed within the recorded permission; no text is copied into the repository.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W04
+
+### YO-LES-T3-W04-LIT — yoruba (LESSON)
+
+- **Question / objective:** Author the Week 4 LIT lesson: reading guidance for chapters 3 and 4 of the recommended prose text and a taught method of atupale (analysis), with practice and marking, using only text the owner has cleared for reproduction.
+- **Evidence locator:** 3rd Term Week 4, LITIRESO part lines 1225-1243 (objects YO-T3-W04-LIT-01 and YO-T3-W04-LIT-02)
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** A lesson in yoruba.json teaches the reading and the analysis method for chapters 3 and 4 within the permission recorded in YO-FACT-T3-W04-SELECTED-TEXT, reproduces no uncleared text, has practice with complete answers and marking, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented and no schema or compiler edit is made.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W04, YO-FACT-T3-W04-SELECTED-TEXT
+
+### YO-LES-T3-W05-LIT — yoruba (LESSON)
+
+- **Question / objective:** Author the Week 5 LITIRESO lesson on the government-selected text, once the owner records which text is set and what may be reproduced.
+- **Evidence locator:** 3rd Term Week 5, LITIRESO strand (scheme line 39 only; no section)
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** The LITIRESO lesson is authored from the text or substitute the owner records, within the permission recorded, with analysis and practice that can be marked; body_sha256 over the UTF-8 body, provenance and PENDING content approval; no text is copied into the repository without permission and no fact is invented.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W05, YO-FACT-T3-W05-SELECTED-TEXT
+
+### YO-FACT-T3-W05-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Decide the corrections and the notation for the Week 5 text so the three lesson items do not copy its defects.
+- **Evidence locator:** 3rd Term Week 5, section lines 1281-1356 (sha256 b35e84fdb051d5e6bbe0af565db59832c6a94a2b12e8548b78d5b3f6ae0adbbc)
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Each defect in YORUBA-T3-W05-SOURCE-DEFECTS and each notation question in YORUBA-T3-W05-NOTATION is answered with the wording and marks to be used, recorded with a reference; the answers are binding on YO-LES-T3-W05-EDE and YO-LES-T3-W05-ASA.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W05
+
+### YO-FACT-T3-W05-SELECTED-TEXT — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain the government-selected text set for Week 5 (or written confirmation that none may be used), so the LIT lesson can be authored on a lawful basis.
+- **Evidence locator:** 3rd Term Week 5, LITIRESO scheme row 39 (sha256 877c508bb10a799b4103aff69547f7f9171524e212c5aeb6c5a975ab1e721547)
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** The owner supplies the text or an approved substitute, or records that the lesson must be authored without it; the answer is recorded with a reference and YO-LES-T3-W05-LIT may then proceed within the recorded permission; no text is copied into the repository.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W05
+
+### YO-LES-T3-W06-LIT — yoruba (LESSON)
+
+- **Question / objective:** Author the Week 6 LITIRESO lesson on Ese Ifa as a source of Yoruba thought and on Alo Apagbe, which the scheme sets and the source names but does not teach, once the owner records which Alo Apagbe text may be used and what may be quoted.
+- **Evidence locator:** 3rd Term Week 6, LITIRESO part lines 1523-1573 (objects YO-T3-W06-LIT-01..04)
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** The LITIRESO lesson is authored from the Ese Ifa material and from the Alo Apagbe text or substitute the owner records, within the permission recorded, with analysis and practice that can be marked; body_sha256 over the UTF-8 body, provenance and PENDING content approval; no text is copied into the repository without permission and no fact is invented.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W06, YO-FACT-T3-W06-CONTENT-DECISIONS
+
+### YO-FACT-T3-W06-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Decide the corrections and the notation for the Week 6 text so the lesson items do not copy its defects.
+- **Evidence locator:** 3rd Term Week 6, section lines 1357-1624 (sha256 db4a9dda52e6cbc5a4b47aa8b20dc8d24a799c00f2611f15f671cf88eaedb107)
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Each defect in YORUBA-T3-W06-SOURCE-DEFECTS and each notation question in YORUBA-T3-W06-NOTATION is answered with the wording and marks to be used, recorded with a reference; the answers are binding on YO-LES-T3-W06-EDE and YO-LES-T3-W06-ASA.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W06
+
+### YO-FACT-T3-W06-CONTENT-DECISIONS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Decide how the four Week 6 content gaps are to be filled: Oro Apejuwe, Alo Apagbe, the guarantor's role in eto iyawo, and the external IWE KIKA pages.
+- **Evidence locator:** 3rd Term Week 6, scheme lines 41-51 and section lines 1357-1624
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Each of the four gaps is answered with the content source, the wording to use, the permission and the owner decision reference; Oro Apejuwe is authored as lesson content rather than claimed from the source; the answers are binding on YO-LES-T3-W06-EDE, YO-LES-T3-W06-ASA and YO-LES-T3-W06-LIT.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W06
+
+### YO-LES-T3-W07-LIT — yoruba (LESSON)
+
+- **Question / objective:** Author the Week 7 LITIRESO lesson on ewi alohun as a source of Yoruba thought and power: ofo (what it is, its power, the quoted example and its materials), ogede and itan riro, with the title dispute and the two cited readings resolved.
+- **Evidence locator:** 3rd Term Week 7, scheme line 59 (in scheme group 53-59, sha256 bc4ea6d4912b5e8e8835e851182c143dc8b67dfcc12bdb6a444b4cbe32ef9676) and body lines 1783-1847 (sha256 263b3964c3e26b7153a04a1db8218307a0803c21894a927889be4da50e8a0892); objectives YO-T3-W07-SCHEME-LIT and -LIT-01..04, -REF-01
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** A lesson in yoruba.json defines ofo, ogede and itan riro as the source presents them, resolves the title question, treats the quoted ofo with its lines and materials labelled, states what the cited pages contribute only if they were supplied, and carries practice with complete answers and marking, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no text is copied from an unsupplied book and no schema or compiler edit is made.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W07, YO-FACT-T3-W07-DEFECTS, YO-FACT-T3-W07-CONTENT-DECISIONS
+
+### YO-FACT-T3-W07-DEFECTS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded subject-expert decision on the fifteen Week 7 source defects and on the scheme-to-body mismatches (osomaalo, elesin/ijoye, the LIT title), before any Week 7 lesson is authored.
+- **Evidence locator:** 3rd Term Week 7, body lines 1625-1878 (sha256 959e6d0882d7b3c6d96c337bd9feeabbbcd4bab7e767e900660c4230d57a69e2) and scheme lines 53-59 (sha256 bc4ea6d4912b5e8e8835e851182c143dc8b67dfcc12bdb6a444b4cbe32ef9676)
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Each defect in YORUBA-T3-W07-SOURCE-DEFECTS and each mismatch in YORUBA-T3-W07-SCHEME-MAPPING is answered with the treatment to be used, recorded with a reference; the answer binds YO-LES-T3-W07-EDE, -ASA and -LIT and any later presentation of the week.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W07
+
+### YO-FACT-T3-W07-CONTENT-DECISIONS — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain one recorded content decision on how the Week 7 gaps are to be filled: the oriki and ibi ti o ti n jeyo bodies, a stated identification procedure, osomaalo, the elesin/ijoye role, ogede and itan riro, and whether the off-week funeral exercises are moved or retained.
+- **Evidence locator:** 3rd Term Week 7, body lines 1625-1878 (sha256 959e6d0882d7b3c6d96c337bd9feeabbbcd4bab7e767e900660c4230d57a69e2) and scheme lines 53-59 (sha256 bc4ea6d4912b5e8e8835e851182c143dc8b67dfcc12bdb6a444b4cbe32ef9676)
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Every listed gap has a recorded decision saying whether it is filled from the source, commissioned as new authored content, or dropped with a stated reason, and whether the funeral exercises move to Week 8; the decisions bind the three Week 7 lessons.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W07
+
+### YO-FACT-T3-W09-NOTATION — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain a named Yoruba-language expert decision on tone marks, sub-dots and approved spelling/IPA conventions for Week 9 before corrected student lessons are authored.
+- **Evidence locator:** Week 9 source text, lines 2161-2312; no tone marks or sub-dot characters in the registered source
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** A named expert decision records approved tone/sub-dot spellings and notation examples with provenance; no source text is silently normalised.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W09
+
+### YO-FACT-T3-W09-LIT-SOURCE — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Identify and obtain the exact WAEC/NECO selected literature text and proverb collection named by the Week 9 scheme, or record the authorised scope decision that the objective is excluded.
+- **Evidence locator:** Week 9 LITIRESO scheme group lines 69-73; body lines 2249-2305
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** The prescribed title and authorised content are identified with exact source evidence, or an explicit owner/teacher scope decision is recorded. No proverbs are invented.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W09
+
+### YO-FACT-T3-W09-ASA-CONTEXT — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain subject-expert verification and respectful historical context for the source's descriptions of Alaafin burial practices, human sacrifice, attendants and modern changes.
+- **Evidence locator:** Week 9 ASA paragraphs 1105-1122; Mammoth lines 2211-2245
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** A named Yoruba cultural/history expert supplies dated, contextualised evidence and a safe teaching recommendation.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W09
+
+### YO-FACT-T3-W10-NOTATION — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain a named Yoruba-language expert decision on tone marks, sub-dots and approved spelling/IPA conventions for Week 10 before corrected student lessons are authored.
+- **Evidence locator:** Week 10 source text, lines 2313-2463; no tone marks or sub-dot characters in the registered source
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** A named expert decision records approved tone/sub-dot spellings and notation examples with provenance; no source text is silently normalised.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W10
+
+### YO-FACT-T3-W10-LIT-SOURCE — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Identify and obtain the exact WAEC/NECO selected literature text named by the Week 10 scheme, or record an authorised scope decision that the objective is excluded.
+- **Evidence locator:** Week 10 LITIRESO scheme group lines 75-79; body lines 2313-2463
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** The exact prescribed text is identified with source evidence, or an explicit owner/teacher scope decision is recorded. No literary content is invented.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W10
+
+### YO-FACT-T3-W10-ASA-REVIEW — yoruba (FACTUAL_DEPENDENCY)
+
+- **Question / objective:** Obtain a Yoruba cultural/history subject-expert review of the Oku Sise description and a teacher/owner decision on the duplicated block before a student lesson is authored.
+- **Evidence locator:** Week 10 ASA paragraphs 1182-1209; Mammoth lines 2365-2419
+- **Decision owner:** Named subject expert or teacher; owner supplies any missing scope/permission decision.
+- **Completion gate:** Expert verifies the cultural content, teacher/owner decides duplicate disposition, and a safe student-facing scope is recorded.
+- **Dependencies:** YO-SRC-T3, YO-WK-T3-W10
+
