@@ -9,11 +9,14 @@ on:
       - "mobile/package.json"
       - "mobile/app.json"
       - "mobile/eas.json"
-      - "package-lock.json"
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: build-french-mobile-release
+  cancel-in-progress: false
 
 jobs:
   android-production:
@@ -21,6 +24,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
+      - name: Require Expo build credentials
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: |
+          if [ -z "$EXPO_TOKEN" ]; then
+            echo "::error::GitHub repository secret EXPO_TOKEN is not configured. Add an Expo access token as EXPO_TOKEN, then rerun this workflow."
+            exit 1
+          fi
+
       - name: Check out master
         uses: actions/checkout@v4
 
@@ -37,17 +49,8 @@ jobs:
         working-directory: mobile
         run: npx expo export --platform android --output-dir /tmp/ss1-french-mobile-export
 
-      - name: Require Expo build credentials
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-        run: |
-          if [ -z "$EXPO_TOKEN" ]; then
-            echo "::error::GitHub repository secret EXPO_TOKEN is not configured. Add an Expo access token as EXPO_TOKEN, then rerun this workflow."
-            exit 1
-          fi
-
       - name: Build Android production app (not submitted to Play Store)
         working-directory: mobile
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-        run: npx eas-cli@latest build --platform android --profile production --non-interactive --wait
+        run: npx eas-cli@27.10.0 build --platform android --profile production --non-interactive --wait
