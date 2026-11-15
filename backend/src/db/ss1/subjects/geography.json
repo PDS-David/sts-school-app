@@ -99,6 +99,19 @@
         "locator": "getBody line 37, scheme row 11, inside scheme block lines 23-37 (SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032)",
         "explanation": "The unique Revision. row is in the scheme and has no WEEK ELEVEN body. Classify this scheme row only; do not split a week or remove any teaching text."
       }
+    },
+    {
+      "id": "SS1-SRC-ba9dee61c27c-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-ba9dee61c27c",
+      "source_sha256": "fa120c0e9f2f7a47df2c775afdfe049b41ab2acb1972c1457b31c85e70b3a2e5",
+      "anchor": "REVISION",
+      "kind": "SCHEME_ONLY",
+      "match_mode": "WHOLE_LINE",
+      "evidence": {
+        "locator": "GEO-INV-T2.md, getBody line 17, scheme row 9 (Weeks 11), scheme block lines 5-17 SHA-256 16f8346eaa97420d7393afa489cfd66d4aeec3126c08eda9e58cd0d7c8efb52c.",
+        "explanation": "The exact REVISION row exists in the scheme but no Week Eleven body exists. Classify only this preamble row as scheme-only; preserve the source and do not fabricate revision teaching or an examination."
+      }
     }
   ],
   "lessons": [
@@ -5164,6 +5177,94 @@
         {
           "locator": "Supplementary lesson SUP-SS1-GEOGRAPHY-T3-W01-02-LOCATOR-MAP; United Nations Map No. 4228 Rev. 1 (August 2014), map legend and disclaimer.",
           "explanation": "The original source sketch is retained only as source evidence. It is replaced for learner use by a link to the United Nations locator/political map, which provides states, FCT, capital symbols, neighbours, major features, scale and orientation. The map date and UN disclaimer are stated in the lesson."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T2-SCHEME-1",
+      "source_id": "SS1-SRC-ba9dee61c27c",
+      "objective": "Second Term Week One: Revision / Mountains",
+      "objective_locator": "GEO-INV-T2.md scheme row 1, getBody line 8; scheme block lines 5-17 SHA-256 16f8346eaa97420d7393afa489cfd66d4aeec3126c08eda9e58cd0d7c8efb52c.",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-GEOGRAPHY-T2-W01-MOUNTAINS"
+      ],
+      "evidence": [
+        {
+          "locator": "GEO-INV-T2.md; exact scheme and week locators recorded above.",
+          "explanation": "The source body at lines 23-96 teaches mountains but does not contain the promised revision of First Term. Mountain content is present in the original body; the missing revision objective remains partial."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T2-SCHEME-6-7",
+      "source_id": "SS1-SRC-ba9dee61c27c",
+      "objective": "Second Term Weeks Six-Seven: Weather and Climate",
+      "objective_locator": "GEO-INV-T2.md scheme row 5, getBody line 12; scheme block lines 5-17 SHA-256 16f8346eaa97420d7393afa489cfd66d4aeec3126c08eda9e58cd0d7c8efb52c.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "GEO-INV-T2.md; exact scheme and week locators recorded above.",
+          "explanation": "The combined body at lines 295-448 is indexed; no corresponding lesson is registered in this package yet. Preserve the combined source span and do not split into fabricated weekly content."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T2-SCHEME-8",
+      "source_id": "SS1-SRC-ba9dee61c27c",
+      "objective": "Second Term Week Eight: Components of Geographic Information Systems",
+      "objective_locator": "GEO-INV-T2.md scheme row 6, getBody line 13; scheme block lines 5-17 SHA-256 16f8346eaa97420d7393afa489cfd66d4aeec3126c08eda9e58cd0d7c8efb52c.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "GEO-INV-T2.md; exact scheme and week locators recorded above.",
+          "explanation": "The body at lines 451-490 is indexed; lesson and complete assessment coverage are still outstanding."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T2-SCHEME-9",
+      "source_id": "SS1-SRC-ba9dee61c27c",
+      "objective": "Second Term Week Nine: Introduction to Map Reading, map types and scale",
+      "objective_locator": "GEO-INV-T2.md scheme row 7, getBody lines 14-15; scheme block lines 5-17 SHA-256 16f8346eaa97420d7393afa489cfd66d4aeec3126c08eda9e58cd0d7c8efb52c.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "GEO-INV-T2.md; exact scheme and week locators recorded above.",
+          "explanation": "The body at lines 493-580 is indexed; lesson and complete assessment coverage are still outstanding."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T2-SCHEME-10",
+      "source_id": "SS1-SRC-ba9dee61c27c",
+      "objective": "Second Term Week Ten: Map Distances, conversion, direction and bearing",
+      "objective_locator": "GEO-INV-T2.md scheme row 8, getBody line 16; scheme block lines 5-17 SHA-256 16f8346eaa97420d7393afa489cfd66d4aeec3126c08eda9e58cd0d7c8efb52c.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "GEO-INV-T2.md; exact scheme and week locators recorded above.",
+          "explanation": "The body at lines 583-659 is indexed; lesson and complete assessment coverage are still outstanding."
+        }
+      ]
+    },
+    {
+      "id": "COV-GEO-T2-SCHEME-11-REVISION",
+      "source_id": "SS1-SRC-ba9dee61c27c",
+      "objective": "Scheme-only Week Eleven revision row; no Week Eleven teaching body exists in the source.",
+      "objective_locator": "GEO-INV-T2.md, getBody line 17; scheme row 9; scheme block lines 5-17 SHA-256 16f8346eaa97420d7393afa489cfd66d4aeec3126c08eda9e58cd0d7c8efb52c.",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-ba9dee61c27c-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "Source rule SS1-SRC-ba9dee61c27c-R002; GEO-INV-T2.md lines 17 and scheme table.",
+          "explanation": "The rule classifies only the unique preamble REVISION row as SCHEME_ONLY. There is no source body to teach and no revision lesson has been invented."
         }
       ]
     }
