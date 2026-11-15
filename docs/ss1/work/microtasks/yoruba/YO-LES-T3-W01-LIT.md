@@ -1,7 +1,7 @@
 # SS1 Yorùbá — Term 3, Week 1 (LITIRESO)
 ## Ìtúpalẹ̀ Ewì Àpilẹ̀kọ: Amúyẹ Ewì àti Kókó Ewì
 
-**Ìpò:** Ẹ̀kọ́ ìtúpalẹ̀ ewì tuntun pẹ̀lú ewì àpẹẹrẹ tí a dá sílẹ̀ fún kíláàsì. Kì í ṣe ewì tí WAEC/NECO yàn. Ọ̀rọ̀ `àkúdé gbólóhùn` wà nínú orísun, ṣùgbọ́n orísun kò ṣàlàyé rẹ̀; a kò ṣe ìtumọ̀ àròsọ fún un.
+**Ìpò:** Ẹ̀kọ́ àfikún fún ìdánrawò pẹ̀lú ewì àpẹẹrẹ tí a dá sílẹ̀ fún kíláàsì. Kì í ṣe ewì tí WAEC/NECO yàn, bẹ́ẹ̀ ni kò tíì pé gẹ́gẹ́ bí gbogbo ẹ̀kọ́ LITIRESO ọ̀sẹ̀ yìí. Ẹ̀kọ́ àkọ́kọ́ ṣì nílò ìtumọ̀ tó dájú fún `àkúdé gbólóhùn` àti ìmúdájú àmì ohùn fún àpẹẹrẹ `ìfọ̀rọ̀dárà` inú orísun. A kò ṣe ìtumọ̀ àròsọ fún àwọn méjèèjì.
 
 ### Àwọn àfojúsùn ẹ̀kọ́
 
@@ -160,6 +160,8 @@ Kókó pàtàkì ni pé ẹ̀kọ́ àti ìmọ̀ ṣe pàtàkì; akẹ́kọ̀�
 3. Saami amúyẹ kọ̀ọ̀kan, kí o sì ṣàlàyé ipa rẹ̀.
 
 ## 8. Ààlà àti ìtọ́kasí
+
+**Ààlà ìparí:** Ẹ̀kọ́ yìí ń kọ́ àwọn amúyẹ tí a lè ṣàlàyé pẹ̀lú ẹ̀rí tó wà. Kò pa àìpé `àkúdé gbólóhùn` tàbí ìfọ̀rọ̀dárà tí kò ní àmì ohùn rẹ́. Nítorí náà, a tọ́jú rẹ̀ gẹ́gẹ́ bí ẹ̀kọ́ àfikún, a sì fi iṣẹ́ LITIRESO ọ̀sẹ̀ yìí sí ipò BLOCKED títí ìmúdájú bá dé.
 
 Ewì “Ọ̀nà Ẹ̀kọ́” jẹ́ àpilẹ̀kọ tuntun fún ìdánilẹ́kọ̀ọ́. Kò yẹ kí a pè é ní ewì tí WAEC/NECO yàn. Àpẹẹrẹ `ìfọ̀rọ̀dárà` inú orísun kò ní àmì ohùn; `àkúdé gbólóhùn` kò ní ìtumọ̀ tó ṣe kedere nínú orísun. Àwọn méjèèjì ṣì nílò ìmúdájú olùkọ́ Yorùbá.
 
