@@ -17,7 +17,7 @@ Status: **IMPLEMENTED — TESTING DEFERRED BY OWNER**. Content approval remains 
 
 ## Implementation
 - Added `SUP-SS1-GEOGRAPHY-T1-W08-ROCKS-OF-THE-EARTH`.
-- Added ten keyed practice items with answers and marking, totalling 43 marks.
+- Added ten keyed practice items with answers and marking, totalling 47 marks.
 - Added five objective-level coverage records and upgraded `COV-GEO-T1-SCHEME-8` to `IMPLEMENTED_EQUIVALENT`.
 - Added `CORR-GEO-T1-W08-ROCKS-FOSSILS-METAMORPHIC-AND-ITEM-REPAIR`, bound to the exact source row/hash.
 - Added a non-blocking open item for the unverified `Essential Geography` pages 24–25 pointer.
@@ -29,5 +29,5 @@ NPS, Rock ID — Teachers: https://www.nps.gov/teachers/classrooms/rock-id.htm
 NPS, Activity 1: Types of Rocks: https://www.nps.gov/choh/learn/kidsyouth/activity-1-types-of-rocks.htm
 
 ## Integrity and deferred verification
-Body hash refreshed by the repository's `refreshIntegrityHashes.ts` script: `a9a695edfa5a569e5d627cbdd8117c6ce245d0f9254d409821e9363e93c14cd4`.
+Body hash refreshed by the repository's `refreshIntegrityHashes.ts` script: `326b38ddf27b5fd72c69e20870b89540a9bc3497b5c166fa0a5633375991335a`.
 Not run: package validator, tests, TypeScript, importer, database integration or device checks. No PASS is claimed. Package remains PENDING because other source approvals and weeks remain open.
