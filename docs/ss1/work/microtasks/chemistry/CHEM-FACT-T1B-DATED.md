@@ -16,7 +16,7 @@ Status: **IMPLEMENTED_TESTING_DEFERRED** (findings and locators only; no correct
 | Plasma described as a state of matter and associated debate wording | Week 2, line 1041; Week 2 range 729-1346, SHA-256 `7bf6ab74ead834c12c50830bc00f89df57cfa5e5d1610f1feaac029ac33f3d3c` | Scientific terminology and the historical framing of the “debate” require current authoritative scientific context. |
 | First twenty elements list | Week 3, line 1355; Week 3 range 1347-1454, SHA-256 `3e805204787d90c9f63f5343c184769145fcc1722b64b86e7594bf0bdcfd1997` | Verify symbol/name spelling and order against an authoritative periodic table. |
 | Nucleus discovery dates | Week 3, line 1375; same Week 3 range hash | Historical attribution and dates require a primary scientific-history source. |
-| Atomic weights and isotopic abundance | Week 6b, lines 1897-1943; Week 6b range 1895-1958, SHA-256 `198588d902014ae9544f78e500e0268fb387d425de45530fb27ba3e99bbac50d0` | Standard atomic weights are periodically evaluated and published by IUPAC; the source document was created in 2017 and should not be assumed current. |
+| Atomic weights and isotopic abundance | Week 6b, lines 1897-1943; Week 6b range 1895-1958, SHA-256 `198588d902014ae9544f78e500e0268fb387d425de45530fb27fe5bdb0ae2620` | Standard atomic weights are periodically evaluated and published by IUPAC; the source document was created in 2017 and should not be assumed current. |
 | IUPAC naming conventions | Week 7, lines 1959-2712; range SHA-256 `168837ded68a245e5e1a6ed422a7632164a4b72d2587de7e3d66d7977ff7d42b` | Nomenclature conventions and examples require checking against current IUPAC recommendations. |
 
 ## Document age
