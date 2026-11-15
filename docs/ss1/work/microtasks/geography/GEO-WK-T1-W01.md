@@ -23,6 +23,6 @@ Status: **IMPLEMENTED — TESTING DEFERRED BY OWNER**. Content approval remains 
 ## Integrity and deferred verification
 The two new lesson body hashes were refreshed by the repository's `refreshIntegrityHashes.ts` script:
 - Nature: `3f1d5e12f56b89086b012d51fa5c4dd1cbec49cd79d12f307d31f25d861f2f03`
-- Keyed practice: `c9f4a6b6b8ff841bfce0495c652d9f8d44be77256142ee3e8979fd870b264853`
+- Keyed practice: `1de7c0bc4d7d8ddba10274d7ed34459a019b61d9eea5be2cd02d709830214d99`
 
 Not run: package validator, tests, TypeScript, importer, database integration or device checks. No PASS is claimed.

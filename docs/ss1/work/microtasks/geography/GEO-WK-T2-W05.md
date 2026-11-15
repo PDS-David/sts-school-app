@@ -28,5 +28,5 @@ EPA, Ag 101 — Nitrogen: https://www.epa.gov/sites/default/files/2015-07/docume
 EPA, Watershed Ecology — Food Webs and Trophic Ecology: https://cfpub.epa.gov/watertrain/pdf/modules/WatershedEcology.pdf
 
 ## Integrity and deferred verification
-Body hash refreshed by the repository's `refreshIntegrityHashes.ts` script: `412571ed0b8af8fc0a3b37a711a8fe836cdb272e77c196e0d46702e28d001988`.
+Body hash refreshed by the repository's `refreshIntegrityHashes.ts` script: `361e5fb9b685257f38269f51220fd7ae6927ada9a37fca1f1678d70f4b68c102`.
 Not run: package validator, tests, TypeScript, importer, database integration or device checks. No PASS is claimed.
