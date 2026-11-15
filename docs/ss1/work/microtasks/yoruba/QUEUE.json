@@ -7265,6 +7265,234 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "backend/src/db/ss1/subjects/yoruba.json: SUP-SS1-YORUBA-T1-W05-LIT-PRACTICE; docs/ss1/work/microtasks/yoruba/YO-LES-T1-W05-LIT.md. Content approval remains PENDING; verification deferred.",
       "completion_condition": "A lesson in yoruba.json teaches the Week 5 LITIRESO objective against the set text named in YORUBA-T1-W05-LITIRESO-EMPTY, uses the notation and corrections agreed in YO-FACT-T1-W05-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance, and PENDING content approval; no fact is invented and no schema or compiler edit is made. The lesson cannot be completed before the owner names the text."
+    },
+    {
+      "id": "YO-LES-T3-W08-EDE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "term": "3rd Term",
+      "week_or_locator": "OSE KEJO / Week 8; source paragraphs 940–1047",
+      "objective": "Author the Week 8 EDE argumentative-essay lesson: definition, two positions, structure, linking expressions, worked outline, a complete model essay and practice with complete answers and marking.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T3.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T3-W08.md",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T3-W08-EDE.md",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
+          "member_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T3-W08-EDE.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T3",
+        "YO-INV-T3",
+        "YO-WK-T3-W08"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "SUP-SS1-YORUBA-T3-W08-EDE in yoruba.json; YO-LES-T3-W08-EDE.md. Model essay and four-question, 20-mark assessment are included. Content approval PENDING; verification DEFERRED.",
+      "completion_condition": "Lesson body, model essay, four questions, answers and marking are committed; marking totals 20; body hash recorded; testing remains deferred."
+    },
+    {
+      "id": "YO-LES-T3-W08-ASA",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "term": "3rd Term",
+      "week_or_locator": "OSE KEJO / Week 8; source paragraphs 940–1047",
+      "objective": "Author the Week 8 ASA lesson on source-described Yoruba funeral customs with respectful historical attribution, clear distinction from current universal practice, and practice with complete answers and marking.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T3.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T3-W08.md",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T3-W08-EDE.md",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
+          "member_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T3-W08-EDE.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T3",
+        "YO-INV-T3",
+        "YO-WK-T3-W08"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "SUP-SS1-YORUBA-T3-W08-ASA in yoruba.json; YO-LES-T3-W08-EDE.md. Historical-context review remains a separate BLOCKED factual gate; content approval PENDING.",
+      "completion_condition": "Lesson and two answered/marked practice questions are committed; historical claims remain explicitly attributed and non-universal; testing remains deferred."
+    },
+    {
+      "id": "YO-LES-T3-W08-LIT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "term": "3rd Term",
+      "week_or_locator": "OSE KEJO / Week 8; source paragraphs 940–1047",
+      "objective": "Complete the Week 8 LITIRESO lesson on oral poetry forms named by the scheme, including ijala, rara, olele, ege and igbala-sisin, with sourced definitions, examples and practice.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T3.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T3-W08.md",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T3-W08-EDE.md",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
+          "member_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T3-W08-EDE.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T3",
+        "YO-INV-T3",
+        "YO-WK-T3-W08"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "A partial lesson SUP-SS1-YORUBA-T3-W08-LIT exists in yoruba.json. The source does not adequately teach ijala, rara, olele, ege or igbala-sisin; see YO-LES-T3-W08-EDE.md and the linked factual gate.",
+      "completion_condition": "Requires a competent Yoruba literature source/expert decision for each missing form before the lesson can be completed."
+    },
+    {
+      "id": "YO-FACT-T3-W08-ASA-CONTEXT",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "term": "3rd Term",
+      "week_or_locator": "OSE KEJO / Week 8; source paragraphs 940–1047",
+      "objective": "Obtain subject-expert historical and cultural review of the Week 8 source's specific funeral-practice claims; distinguish documented historical/local practices from current practice and avoid universalising.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T3.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T3-W08.md",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T3-W08-EDE.md",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
+          "member_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T3-W08-EDE.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T3",
+        "YO-INV-T3",
+        "YO-WK-T3-W08"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "The partial ASA lesson attributes claims to the supplied source and explicitly warns that practices vary. Expert review remains outstanding.",
+      "completion_condition": "A named Yoruba culture/history reviewer must confirm or correct the source claims and the lesson's historical context."
+    },
+    {
+      "id": "YO-FACT-T3-W08-LIT-FORMS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "term": "3rd Term",
+      "week_or_locator": "OSE KEJO / Week 8; source paragraphs 940–1047",
+      "objective": "Obtain authoritative definitions, context and examples for the scheme's oral-poetry forms ijala, rara, olele, ege and igbala-sisin, which are not adequately taught in the source body.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T3.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T3-W08.md",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T3-W08-EDE.md",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
+          "member_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T3-W08-EDE.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T3",
+        "YO-INV-T3",
+        "YO-WK-T3-W08"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "The partial LITIRESO lesson records the missing forms and does not invent definitions. See YO-LES-T3-W08-EDE.md.",
+      "completion_condition": "Provide a named subject-expert source or approved textbook reference for each form and confirm the school's intended scope."
+    },
+    {
+      "id": "YO-FACT-T3-W08-NOTATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "term": "3rd Term",
+      "week_or_locator": "OSE KEJO / Week 8; source paragraphs 940–1047",
+      "objective": "Obtain competent Yoruba-language review of tone marks, underdotted vowels and lexical spellings across all three Week 8 lessons before student delivery.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T3.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T3-W08.md",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T3-W08-EDE.md",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
+          "member_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T3-W08-EDE.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T3",
+        "YO-INV-T3",
+        "YO-WK-T3-W08"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "The combined Week 8 implementation record identifies the source's unmarked ASCII and records PENDING orthography review.",
+      "completion_condition": "A named Yoruba-language reviewer must approve or correct the lexical tone and underdot forms."
     }
   ],
   "review": {
