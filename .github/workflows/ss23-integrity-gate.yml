@@ -1,0 +1,36 @@
+name: SS23 package integrity gate
+# Not path-filtered (same policy as the SS1 gate): runs on every PR and every push to master.
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ss23-integrity-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  integrity:
+    name: SS2/SS3 integrity (types, hashes, packages, tests, SS1 unaffected)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+      - name: TypeScript typecheck (backend)
+        run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
+      - name: SS23 integrity hashes are current
+        run: npm run ss23:refresh-hashes -- --check
+      - name: SS23 package validation
+        run: npm run validate:ss23
+      - name: SS23 validator tests (with negative controls)
+        run: npm run test:ss23
+      - name: SS1 packages still valid
+        run: npm run validate:ss1
