@@ -55,9 +55,9 @@
     "LESSON": 8
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 37,
+    "IMPLEMENTED_TESTING_DEFERRED": 38,
     "BLOCKED": 1,
-    "PENDING": 85
+    "PENDING": 84
   },
   "items": [
     {
@@ -4404,8 +4404,8 @@
         "CHEM-SRC-T1A",
         "CHEM-IDX-T1A-W08"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by CHEM-IDX-T1A-W08. The source asks for oxidation-number calculations but does not teach a general calculation method. See COV-CHEM-T1A-W08-OXIDATION-NUMBER-METHOD and CHEM-T1A-W08-OXIDATION-NUMBER-METHOD. No teaching or answers are authored in the indexing item.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as SUP-SS1-CHEM-T1A-W08-OXIDATION-NUMBER-CALCULATION in backend/src/db/ss1/subjects/chemistry.json; bound to COV-CHEM-T1A-W08-OXIDATION-NUMBER-METHOD (IMPLEMENTED_EQUIVALENT). See CHEM-LES-T1A-W08-OXIDATION-NUMBER-CALCULATION.md. Six keyed questions (12 marks). Approval PENDING, verification DEFERRED.",
       "completion_condition": "Original lesson explains and works the missing method, contains complete keyed practice and marks, carries source provenance and reuse status, has a valid body hash, and is bound to the unresolved coverage entry; content approval remains PENDING and verification DEFERRED."
     },
     {
@@ -4558,7 +4558,6 @@
     "CHEM-IDX-T3-W10",
     "CHEM-VIS-T3-BRANDING-JPEG",
     "CHEM-FACT-T1A-W07-STATEMENTS",
-    "CHEM-LES-T1A-W08-OXIDATION-NUMBER-CALCULATION",
     "CHEM-FACT-T1A-W08-NOMENCLATURE-EXAMPLES"
   ]
 }
