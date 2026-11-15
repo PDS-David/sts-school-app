@@ -52,8 +52,7 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 47,
-    "BLOCKED": 1,
-    "PENDING": 3
+    "BLOCKED": 4
   },
   "items": [
     {
@@ -808,8 +807,8 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No visual disposition exists and no asset is registered. Inventory evidence: cover JPEG 3306x2515, 870,389 bytes, Data offset 2396, SHA-256 b334a0e127cb7f94bf10dd46672a8545fe303971ba10d0dc9a50600962ddea9a; header letterhead JPEG 949x359, 106,941 bytes, WordDocument offset 109649, SHA-256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14 (byte-identical to the Further Mathematics 2nd Term header image); solar table 99-109 has 50 cell marks (5x10) while antiword reports 4 columns; latitude/longitude block 305-319 is tab text with two 0x08 anchors at 307; no map, diagram or figure image is embedded, so the three drawing prompts have no supplied figure. Rendering was not possible in this environment (no LibreOffice or Word), so placement is unverified. Not approved, not verified; testing deferred by owner.",
+      "status": "BLOCKED",
+      "implementation_reference": "Preliminary disposition and exact source requirements recorded in GEO-VIS-T1.md. Original archive/render is required for direct visual/table inspection; no asset or slogan is invented.",
       "completion_condition": "Each listed group has a disposition based on actual inspection (a text extraction alone is not visual inspection); branding assets stay unbound without an owner permission reference and no contact details are published; the missing diagrams are recorded as gaps for the week items."
     },
     {
@@ -1226,8 +1225,8 @@
         "GEO-INV-T2",
         "GEO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No visual disposition exists and no asset is registered. Inventory evidence (GEO-INV-T2): one JPEG 949x359, 106,941 bytes, WordDocument offset 83025, SHA-256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14 (byte-identical to the header image in the Geography 1st Term source and Further Mathematics); no page-1 cover image in this document; two Word tables of 2 rows by 13 cells; two drawing-object groups found in a LibreOffice .docx conversion (compass group with text boxes, bearing line shape); neither rendered.",
+      "status": "BLOCKED",
+      "implementation_reference": "Preliminary disposition and exact source requirements recorded in GEO-VIS-T2.md. Original archive/render is required for direct visual/table inspection; no asset or slogan is invented.",
       "completion_condition": "Each listed group has a disposition based on actual inspection (a text extraction alone is not visual inspection); the branding asset stays unbound without an owner permission reference and no contact details are published; missing diagrams are recorded as gaps for the week items."
     },
     {
@@ -1775,8 +1774,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "BLOCKED",
+      "implementation_reference": "Preliminary disposition and exact source requirements recorded in GEO-VIS-T3-STATE-CAPITALS-TABLE.md. Original archive/render is required for direct visual/table inspection; no asset or slogan is invented.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     },
     {
@@ -1929,9 +1928,5 @@
     "reviewed_master_sha": "451369d1f5c77bf8f3360e0b17926b4251388848",
     "scope": "1st Term inventory executed from the supplied source; no importer, compiler or tests run; testing deferred."
   },
-  "next_runnable": [
-    "GEO-VIS-T1",
-    "GEO-VIS-T2",
-    "GEO-VIS-T3-STATE-CAPITALS-TABLE"
-  ]
+  "next_runnable": []
 }
