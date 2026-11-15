@@ -694,3 +694,25 @@ Content-approval items remain separate from authoring. A blanket chat statement 
 ### Integrity note
 
 No queue, subject package, approval state, verification state, source content, or test result was changed by this brief. The only content change is this decision register. The source archive supplied in this conversation was SHA-256 verified as `024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e`, matching the archive hash in the SS1 protocol. The current user-supplied archive has 61 document entries; its presence does not itself clear a subject-specific source gap unless the required exact source member and hash are verified.
+
+## Live queue snapshot — 15 November 2026
+
+Recounted from all 21 subject QUEUE.json files on the current master snapshot (base `b09aea28a2861f49b757e3a3f8a5b84f80c6fbf9`):
+
+| Status | Count |
+|---|---:|
+| IMPLEMENTED_TESTING_DEFERRED | 1,622 |
+| VERIFIED (pre-existing queue state; not re-verified in this session) | 56 |
+| PENDING | 556 |
+| BLOCKED | 81 |
+| **Total queue items** | **2,315** |
+
+This is a queue-state count, not a claim that 1,622 items are student-use ready or that 56 items were independently verified during this session. The owner instruction defers the final verification stage; no tests or acceptance checks were run here. The 556 PENDING items remain implementation work, not a reason to stop at this decision register. The 81 BLOCKED items also remain open: some are genuine teacher/owner/source/rights decisions, while others are package-approval or later-verification placeholders whose dependencies (including authored packages) are not yet complete. A blocked approval placeholder must not be misrepresented as a missing approval for content that does not yet exist.
+
+## Decision routing rules
+
+- **Owner / foundation:** repository-wide equation-extraction and ID-migration strategy; shared marker vocabulary; alias and commercial-material permissions; explicit scope changes; missing source-set completeness confirmations.
+- **Subject teacher / named subject expert:** curriculum-scope conflicts, ambiguous terminology, answer keys/mark allocations not supported by the source, language orthography/IPA/tone conventions, and cultural/history context requiring specialist review.
+- **Owner-supplied materials:** exact prescribed literature texts, missing term/week source documents, specified textbook editions/pages, and any licensed audio/media not in the archive.
+- **Later verification stage:** package test items, oral/listening observations, laboratory/practical observations, device checks, and final source-dependent regression. Keep these DEFERRED; do not mark them complete during authoring.
+- **Authoring can continue now:** all PENDING tasks whose dependencies are already IMPLEMENTED_TESTING_DEFERRED. Do not wait for an unrelated decision; keep dependent lessons separate and scoped.
