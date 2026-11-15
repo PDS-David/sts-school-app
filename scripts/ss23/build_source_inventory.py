@@ -29,6 +29,7 @@ for zf in sorted(os.listdir(A)):
 for sha,ix in byhash.items():
     if len(ix)>1:
         for k in ix:
+            rows[k]['source_id']+='-'+rows[k]['class_']+'T'+rows[k]['term'][0]  # byte-identical twins need distinct ids
             rows[k]['mapping_status']='BYTE_IDENTICAL_DUPLICATE_ACROSS_MEMBERS:'+';'.join(rows[j]['archive_member'] for j in ix if j!=k)
 cols=['source_id','class_','term','archive','archive_sha256','archive_member','sha256','bytes','filename_subject','mapping_status']
 with open(OUT,'w',newline='') as f:

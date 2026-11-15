@@ -22,8 +22,8 @@ Not run: `npm run validate:ss1` (no code changed; SS1 status is not evidence for
 | SS23-00 baseline | done | this file |
 | SS23-S0 source receipt + inventory | done | `docs/ss23/sources/` (100 members hashed; not committed as extracts) |
 | SS23-S1 header verification (100 members) | done | `docs/ss23/sources/HEADER_VERIFICATION.csv`; `scripts/ss23/verify_headers.py`. 84 verified; 11 subject+class OK but term label absent (term taken from folder); 5 flagged (below). Screen is regex-based on the first 1500 chars; not a content review. Not run through any validator |
-| SS23-01 generalise validator to SS2/SS3 | pending | needs owner policy answers below |
-| SS23-02… per-subject packages | pending | after SS23-01; SS2 alphabetical, one PR per subject |
+| SS23-01 generalise validator to SS2/SS3 | done (code), not run in CI | additive `backend/src/db/ss23/` (schema, validator, refresh-hashes, registry of 100 sources); SS1 untouched except `export` on `openItemSchema`. Local: `npm run test:ss23` 23/23 pass (incl. negative controls); `npm run validate:ss23` valid, 0 packages, readiness 99 MISSING_PACKAGE + 27 SOURCE_MISSING; `npm run validate:ss1` still valid; backend `tsc --noEmit` clean (Node 22.23.4; CI pins 24.19.0). New CI gate `.github/workflows/ss23-integrity-gate.yml` NOT yet run. Student delivery (`studentDelivery.ts`, `routes/learning.ts`) is SS1-only and NOT yet extended (SS23-Q) |
+| SS23-02… per-subject packages | next | SS2 alphabetical (agricultural-science first), one PR per subject; read `ss23/validateSubjectPackages.ts` readiness matrix |
 
 ## SS23-S1 flagged members
 - SS2 T2 Geography: header says `CLASS: SS3`, but topics (environmental conservation, manufacturing, relief landforms, population, settlement) differ from the SS3 T2 Geography file (tourism, remote sensing, GIS, mock exams). Likely an SS2 note with a header typo; owner to confirm.
