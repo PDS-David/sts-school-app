@@ -24,7 +24,8 @@
     "GEO-TEST-PACKAGE (2026-11-13): added tests/ss1/geography.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; three PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current supported/partial/unresolved coverage/open-item boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no curriculum content or approval state changed.",
     "GEO-PRE-T3 (2026-11-13): inspected exact third-term Geography source preamble and scheme rows. Recorded the title, subject/class, SCHEME OF WORK, WEEK/TOPIC header and nine rows (1–2 combined, then 3–10) in GEO-PRE-T3.md. Scheme rows use a WEEK/TOPIC column header followed by bare numeric labels; they are not same-line WEEK <number> body markers. The first actual body marker is WEEK ONE AND TWO. No classify_marker rule or MARKER coverage entry is needed; scheme rows remain preamble, not lessons. No revision/exam row is present.",
     "GEO-PRE-T1 (2026-11-13): indexed non-week First Term blocks from GEO-INV-T1. Added source identity, ten scheme-to-body mappings (rows 1-10, rows 1-3 bound by order), Revision row 11 as MARKER with a unique source-bound WHOLE_LINE SCHEME_ONLY rule, and the reference-list pointer as UNRESOLVED. No scheme heading was treated as teaching; existing Week One objective coverage and open items were preserved. Tests/importer/database/device checks deferred.",
-    "2026-11-13 compiler repair for COV-GEO-T1-SCHEME-3: removed the source BODY locator from lesson_ids because UNRESOLVED coverage cannot target a non-lesson identity. Kept status UNRESOLVED and retained the exact Week Three source locator/hash in objective_locator/evidence. No instructional coverage is claimed. GEO-PRE-T1 remains IN_PROGRESS pending compiler rerun."
+    "2026-11-13 compiler repair for COV-GEO-T1-SCHEME-3: removed the source BODY locator from lesson_ids because UNRESOLVED coverage cannot target a non-lesson identity. Kept status UNRESOLVED and retained the exact Week Three source locator/hash in objective_locator/evidence. No instructional coverage is claimed. GEO-PRE-T1 remains IN_PROGRESS pending compiler rerun.",
+    "GEO-WK-T1-W02 (2026-11-15): inspected the hash-verified First Term .doc source and indexed the entire Week Two solar-system/universe block, including the source's solar-system table, both evaluation blocks, general evaluation, reading assignment, weekend assignment and theory. Authored SUP-SS1-GEOGRAPHY-T1-W02-SOLAR-SYSTEM with seven fully keyed practice items (29 marks), objective-level coverage, and CORR-GEO-T1-W02-SOLAR-SYSTEM-CURRENT-FACTS binding the exact source row hash to the supplement. Corrected the obsolete nine-planet/Pluto classification, Mercury/Venus temperature claims, gravity/oxygen exclusivity, Saturn ring simplification and Uranus rotation claim using IAU/NASA primary sources. The original source remains unchanged; source table moon counts are not reproduced. Textbook pages 5-7 remain an explicitly non-blocking unverified pointer. Tests/typecheck/importer/database/device checks were not run; content approval remains PENDING and verification DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -38,9 +39,9 @@
     "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 10,
+    "IMPLEMENTED_TESTING_DEFERRED": 11,
     "BLOCKED": 1,
-    "PENDING": 40
+    "PENDING": 39
   },
   "items": [
     {
@@ -453,9 +454,9 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 92-180, block SHA-256 2a30150d4cb0d3991540598cfe3ee7437dbd35a2f7692b041e10cb4911e98603; markers: EVALUATION QUESTIONS 111, 157; GENERAL EVALUATION QUESTIONS 161; READING ASSIGNMENT 168; WEEKEND ASSIGNMENT 171 (page break); THEORY 178. Observation recorded by GEO-INV-T1: The solar-system table (lines 99-109) and its 'nine planets' including Pluto are content the item must verify against an authoritative source. Not approved, not verified; testing deferred by owner.",
-      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/geography.json: lesson SUP-SS1-GEOGRAPHY-T1-W02-SOLAR-SYSTEM; correction CORR-GEO-T1-W02-SOLAR-SYSTEM-CURRENT-FACTS binds exact source row SS1-SRC-1c1c1bdcecb4:BODY:2a30150d4cb0d3991540598cfe3ee7437dbd35a2f7692b041e10cb4911e98603; coverage COV-GEO-T1-SCHEME-2 and COV-GEO-T1-W02-SOLAR-SYSTEM, -UNIVERSE-GALAXY, -PLANETS, -SATELLITE-ORBIT, -ROTATION-REVOLUTION, -ASSESSMENT. Evidence: docs/ss1/work/microtasks/geography/GEO-WK-T1-W02.md. Lesson body hash refreshed by the repository's refreshIntegrityHashes.ts script. Content approval remains PENDING; verification remains DEFERRED; testing not run by owner instruction.",
+      "completion_condition": "Completed as implemented: every Week Two scheme objective and teaching strand has an equivalent lesson; the exact source row is replaced at delivery by a source-bound correction; source assessments are answered with a complete marking guide; factual corrections have authoritative provenance. The unverified textbook page pointer remains a non-blocking open item."
     },
     {
       "id": "GEO-WK-T1-W03",
