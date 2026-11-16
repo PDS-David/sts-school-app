@@ -430,3 +430,46 @@ test('parent fee schedules follow linked ward campuses and cannot be widened by 
     await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[parent.id, primaryOnlyParent.id]]);
   }
 });
+
+
+test('fee item creation rejects invalid amounts and unknown or missing campuses', async () => {
+  const financeAdmin = await createInvoiceViewer('fee-item-validation', 'finance_admin');
+  let server: Server | undefined;
+  const createdIds: number[] = [];
+
+  try {
+    const started = await startFinanceServer();
+    server = started.server;
+    const send = (body: unknown) => fetch(`${started.baseUrl}/fee-items`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${financeAdmin.token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    const missingSchool = await send({ name: 'Valid fee', amount: 100 });
+    assert.equal(missingSchool.status, 400, 'finance_admin must explicitly select a campus');
+
+    const invalidAmount = await send({ name: 'Invalid fee', amount: 0, school_code: 'primary' });
+    assert.equal(invalidAmount.status, 400, 'fee amounts must be greater than zero');
+
+    const unknownSchool = await send({ name: 'Unknown campus fee', amount: 100, school_code: 'unknown' });
+    assert.equal(unknownSchool.status, 400, 'fee items cannot be created for an unknown campus');
+
+    const valid = await send({ name: '  Valid fee  ', amount: '125.50', class_name: 'Primary 4', school_code: 'primary' });
+    assert.equal(valid.status, 201);
+    const payload = await valid.json() as { fee_item: { id: number; name: string; amount: string | number } };
+    createdIds.push(payload.fee_item.id);
+    assert.equal(payload.fee_item.name, 'Valid fee');
+    assert.equal(Number(payload.fee_item.amount), 125.5);
+  } finally {
+    if (server) {
+      server.closeAllConnections();
+      await new Promise<void>(resolve => server!.close(() => resolve()));
+    }
+    if (createdIds.length) await query('DELETE FROM fee_items WHERE id=ANY($1::int[])', [createdIds]);
+    await query('DELETE FROM users WHERE id=$1', [financeAdmin.id]);
+  }
+});
