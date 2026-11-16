@@ -7,6 +7,7 @@ import {
   packageSchema,
   sha256,
 } from './subjectPackageSchema.js';
+import { loadSs23Packages } from './loader.js';
 
 const longBody = ('Soil is a natural resource that supports plant growth. It contains mineral particles, organic matter, water, air and living organisms. Farmers study soil properties to choose suitable crops and manage water and nutrients. ').repeat(5);
 const sourceHash = 'a'.repeat(64);
@@ -320,4 +321,39 @@ test('loads the SS2 Agricultural Science package with source assessment coverage
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/nitrogen-cycle.svg' && asset.state.implementation === 'IMPLEMENTED'));
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/carbon-water-cycles.svg' && asset.state.implementation === 'IMPLEMENTED'));
   assert.ok(pkg.units.every(unit => unit.state.content_approval === 'PENDING'));
+});
+
+
+test('loads the source-mapped SS2 Chemistry package without overstating term coverage', () => {
+  const raw = readFileSync(new URL('./subjects/chemistry.json', import.meta.url), 'utf8');
+  const pkg = packageSchema.parse(JSON.parse(raw));
+  assert.equal(pkg.class_name, 'SS 2');
+  assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
+  assert.equal(pkg.package_status, 'PENDING');
+  assert.equal(pkg.sources.length, 3);
+  assert.equal(pkg.units.length, 3);
+  assert.deepEqual(pkg.units.map(unit => unit.week_label), ['1', '2', '3']);
+  assert.ok(pkg.units.every(unit => unit.term === '1st Term'));
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2CHEM-COV-T1')?.status, 'PARTIAL');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2CHEM-COV-T2')?.status, 'UNRESOLVED');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2CHEM-COV-T3')?.status, 'UNRESOLVED');
+  assert.ok(pkg.open_items.some(item => item.id === 'SS2CHEM-REMAINING-CURRICULUM' && item.blocks_delivery));
+  assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
+});
+
+
+test('registered SS2/SS3 packages preserve class-specific delivery modes and SS3 has no third term', () => {
+  const packages = loadSs23Packages();
+  assert.ok(packages.some(pkg => pkg.class_name === 'SS 2' && pkg.subject_slug === 'chemistry'));
+  for (const pkg of packages) {
+    if (pkg.class_name === 'SS 2') {
+      assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL', pkg.subject_slug);
+    } else {
+      assert.equal(pkg.class_name, 'SS 3');
+      assert.equal(pkg.delivery_mode, 'EXAM_PREPARATION', pkg.subject_slug);
+      // Compared as strings: the SS 3 schema types already exclude '3rd Term'; this guards the runtime data.
+      assert.ok(pkg.units.every(unit => String(unit.term) !== '3rd Term'), pkg.subject_slug);
+      assert.ok(pkg.sources.every(source => String(source.term) !== '3rd Term'), pkg.subject_slug);
+    }
+  }
 });
