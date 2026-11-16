@@ -65,7 +65,6 @@ async function main() {
     let raw = original;
     const label = file.label;
 
-    // Current packages use units; the legacy audit shape uses lessons.
     const bodies = Array.isArray(data.units) ? data.units : Array.isArray(data.lessons) ? data.lessons : [];
     for (const unit of bodies) {
       if (typeof unit.body !== 'string') continue;
@@ -106,7 +105,7 @@ async function main() {
       if (bytes.byteLength !== asset.bytes) {
         changes.push(label + ': asset ' + asset.id + ' bytes ' + asset.bytes + ' -> ' + bytes.byteLength);
         const pattern = new RegExp(
-          '("sha256": "' + nextSha + '",\\\\s*"bytes": )' + asset.bytes + '\\\\b|("bytes": )' + asset.bytes + '(,\\\\s*"sha256": "' + nextSha + '")',
+          '("sha256": "' + nextSha + '",\\s*"bytes": )' + asset.bytes + '\\b|("bytes": )' + asset.bytes + '(,\\s*"sha256": "' + nextSha + '")',
           'g',
         );
         if (!pattern.test(raw)) throw new Error(label + ' ' + asset.id + ': cannot locate bytes field next to sha256; fix by hand');
