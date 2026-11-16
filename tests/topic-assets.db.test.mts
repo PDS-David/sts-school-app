@@ -33,6 +33,7 @@ if (!URL_) {
   process.env.TERM_PIN_ENFORCED = 'false';
 
   const TEST_SC = 'zz_t2test';
+  const TEST_SC_B = 'zz_t2test_other';
   const sha = (b: Buffer) => createHash('sha256').update(b).digest('hex');
 
   // Tiny but signature-valid images.
@@ -52,6 +53,8 @@ if (!URL_) {
   let server: ReturnType<ReturnType<typeof express>['listen']>;
   let base = '';
   let tokenA = '', tokenB = '';
+  let tokenAdminA = '', tokenAdminB = '', tokenTeacherA = '', tokenTeacherB = '';
+  let subjectA = 0, subjectB = 0;
   let generatedAssessmentId = '';
   const topicId: Record<string, number> = {}; // "Music|2" → id
   let topicSnapshot: any[] = [];
@@ -70,12 +73,13 @@ if (!URL_) {
   }
 
   async function cleanup() {
-    await query('DELETE FROM topics WHERE school_code=$1', [TEST_SC]);            // cascades topic_assets
-    await query('DELETE FROM assessments WHERE school_code=$1', [TEST_SC]);         // topic-generated assessment fixture
-    await query('DELETE FROM subjects WHERE school_code=$1', [TEST_SC]);
-    await query('DELETE FROM students WHERE school_code=$1', [TEST_SC]);
-    await query('DELETE FROM users WHERE school_code=$1 OR username LIKE $2', [TEST_SC, 'zz_t2test_%']);
-    await query('DELETE FROM schools WHERE code=$1', [TEST_SC]);
+    await query('DELETE FROM materials WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
+    await query('DELETE FROM topics WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]); // cascades topic_assets
+    await query('DELETE FROM assessments WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
+    await query('DELETE FROM subjects WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
+    await query('DELETE FROM students WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
+    await query('DELETE FROM users WHERE school_code = ANY($1) OR username LIKE $2', [[TEST_SC, TEST_SC_B], 'zz_t2test_%']);
+    await query('DELETE FROM schools WHERE code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
   }
 
   async function residue() {
@@ -86,7 +90,8 @@ if (!URL_) {
       subjects: await count('SELECT count(*) n FROM subjects WHERE school_code=$1', [TEST_SC]),
       students: await count('SELECT count(*) n FROM students WHERE school_code=$1', [TEST_SC]),
       users: await count("SELECT count(*) n FROM users WHERE school_code=$1 OR username LIKE 'zz_t2test_%'", [TEST_SC]),
-      schools: await count('SELECT count(*) n FROM schools WHERE code=$1', [TEST_SC]),
+      schools: await count('SELECT count(*) n FROM schools WHERE code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
+      materials: await count('SELECT count(*) n FROM materials WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
     };
   }
 
@@ -95,11 +100,13 @@ if (!URL_) {
     await query(schemaSql);
     await cleanup(); // clear any residue from an earlier aborted run
     // Same statement migrate.ts sends — run twice below in the first test.
-    await query('INSERT INTO schools(code, name) VALUES($1,$2)', [TEST_SC, 'T2 TEST SCHOOL (delete me)']);
+    await query('INSERT INTO schools(code, name) VALUES($1,$2),($3,$4)', [TEST_SC, 'T2 TEST SCHOOL (delete me)', TEST_SC_B, 'T2 TEST OTHER SCHOOL (delete me)']);
     const subj: Record<string, number> = {};
     for (const name of ['Music', 'Basic Technology']) {
       subj[name] = (await query('INSERT INTO subjects(school_code, name) VALUES($1,$2) RETURNING id', [TEST_SC, name])).rows[0].id;
     }
+    subjectA = subj.Music;
+    subjectB = (await query('INSERT INTO subjects(school_code, name) VALUES($1,$2) RETURNING id', [TEST_SC_B, 'Music'])).rows[0].id;
     const ins = async (subject: string, term: string, order: number, title: string) => {
       const r = await query(
         `INSERT INTO topics(school_code, subject_id, class_name, term_label, title, description, source_reference, source_file, order_index)
@@ -124,6 +131,23 @@ if (!URL_) {
     };
     tokenA = await mk('A', 'JSS 3');
     tokenB = await mk('B', 'JSS 1');
+    const mkStaff = async (tag: string, role: 'admin' | 'teacher', schoolCode: string, subjectIds: number[] = []) => {
+      const username = 'zz_t2test_' + tag;
+      const u = await query(
+        'INSERT INTO users(username,password_hash,role,school_code,full_name) VALUES($1,\'x\',$2,$3,$4) RETURNING id',
+        [username, role, schoolCode, 'T2 TEST ' + tag],
+      );
+      created.userIds.push(u.rows[0].id);
+      return signAccess({
+        id: u.rows[0].id, username, role, school_code: schoolCode,
+        assigned_class: role === 'teacher' ? 'JSS 3' : null,
+        assigned_subject_ids: subjectIds,
+      });
+    };
+    tokenAdminA = await mkStaff('ADMIN_A', 'admin', TEST_SC);
+    tokenAdminB = await mkStaff('ADMIN_B', 'admin', TEST_SC_B);
+    tokenTeacherA = await mkStaff('TEACHER_A', 'teacher', TEST_SC, [subjectA]);
+    tokenTeacherB = await mkStaff('TEACHER_B', 'teacher', TEST_SC, [subjectA]);
     topicSnapshot = await snapshot();
     const linkedTopic = (await query('SELECT subject_id FROM topics WHERE id=$1', [topicId['Music|4']])).rows[0];
     generatedAssessmentId = (await query(
