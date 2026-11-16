@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { createHash } from 'node:crypto';
 import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
-import { audit } from '../utils/audit.js';
+import { auditContextFromRequest, auditInTransaction, auditStrict } from '../utils/audit.js';
 import { checkTeacherDeleteScope, checkTeacherRosterScope } from '../utils/scope.js';
 import { resolveStudentRosterScope } from '../utils/studentRosterScope.js';
 import { createStudentWithParent } from '../utils/parentProvisioning.js';
@@ -241,18 +241,25 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
       parent_phone: d.parent_phone,
       parent_email: d.parent_email ?? null,
     } : undefined,
+    async (client, student, parentRecord) => {
+      await auditInTransaction(
+        client, req.user!, 'add_student', 'student', String(student.id), 'student record created',
+        auditContextFromRequest(req, { schoolCode: d.school_code, metadata: { class_name: d.class_name, parent_linked: !!parentRecord } }),
+      );
+      if (parentRecord?.created) {
+        await auditInTransaction(
+          client, req.user!, 'add_parent_auto', 'user', parentRecord.id, 'parent account auto-provisioned',
+          auditContextFromRequest(req, { schoolCode: d.school_code, metadata: { linked_student_id: String(student.id) } }),
+        );
+      }
+    },
   );
 
   const studentId = String(result.student.id);
-  await audit(req.user!, 'add_student', 'student', studentId, d.full_name);
-
   let parent: { id: string; username: string; temporary_password?: string } | undefined;
   if (result.parent) {
     const { created, ...parentDetails } = result.parent;
     parent = parentDetails;
-    if (created) {
-      await audit(req.user!, 'add_parent_auto', 'user', parent.id, `auto-provisioned for phone ${d.parent_phone}`);
-    }
   }
 
   return res.status(201).json({ student: result.student, parent });
@@ -268,19 +275,24 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
   const { full_name, class_name, gender, date_of_birth, admission_number } = req.body;
-  const { rows } = await query(
-    `UPDATE students SET full_name=COALESCE($1,full_name), class_name=COALESCE($2,class_name),
-            gender=COALESCE($3,gender), date_of_birth=COALESCE($4,date_of_birth),
-            admission_number=COALESCE($5,admission_number)
-     WHERE id=$6 AND deleted_at IS NULL AND ($7::text IS NULL OR school_code=$7) RETURNING *`,
-    [full_name, class_name, gender, date_of_birth, admission_number, req.params.id, req.user!.school_code ?? null],
-  );
-  // A soft-deleted record can't be edited until it's restored — the same
-  // WHERE ... AND deleted_at IS NULL above means this 404 also covers "id
-  // doesn't exist", exactly like every other scoped lookup in this file.
-  if (!rows[0]) return res.status(404).json({ error: 'Student not found' });
-  await audit(req.user!, 'edit_student', 'student', rows[0].id, full_name);
-  return res.json({ student: rows[0] });
+  const updated = await withTransaction(async (client) => {
+    const { rows } = await client.query(
+      `UPDATE students SET full_name=COALESCE($1,full_name), class_name=COALESCE($2,class_name),
+              gender=COALESCE($3,gender), date_of_birth=COALESCE($4,date_of_birth),
+              admission_number=COALESCE($5,admission_number)
+       WHERE id=$6 AND deleted_at IS NULL AND ($7::text IS NULL OR school_code=$7) RETURNING *`,
+      [full_name, class_name, gender, date_of_birth, admission_number, req.params.id, req.user!.school_code ?? null],
+    );
+    if (!rows[0]) return null;
+    await auditInTransaction(
+      client, req.user!, 'edit_student', 'student', rows[0].id, 'student record updated',
+      auditContextFromRequest(req, { schoolCode: rows[0].school_code, metadata: { changed_fields: Object.keys(req.body ?? {}).filter(key => !/password|token|secret|pin/i.test(key)) } }),
+    );
+    return rows[0];
+  });
+  // A soft-deleted record can't be edited until it's restored.
+  if (!updated) return res.status(404).json({ error: 'Student not found' });
+  return res.json({ student: updated });
 });
 
 // ── POST /students/:id/promotion ──────────────────────────────────────────────
@@ -337,7 +349,7 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
   }
 
   if (action === 'retain') {
-    await audit(user, 'retain_class', 'student', student.id, `${student.full_name} retained in ${student.class_name}`);
+    await auditStrict(user, 'retain_class', 'student', student.id, 'student retained in current class', auditContextFromRequest(req, { schoolCode: student.school_code, metadata: { class_name: student.class_name } }));
     return res.json({ ok: true, action, from_class: student.class_name, to_class: student.class_name });
   }
 
@@ -364,15 +376,21 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
   }
   const toClass = names[targetIdx];
 
-  const { rows } = await query(
-    'UPDATE students SET class_name=$1 WHERE id=$2 RETURNING *',
-    [toClass, student.id],
-  );
-  await audit(
-    user, action === 'promote' ? 'promote_class' : 'demote_class', 'student', student.id,
-    `${student.full_name}: ${student.class_name} -> ${toClass}`,
-  );
-  return res.json({ ok: true, action, from_class: student.class_name, to_class: toClass, student: rows[0] });
+  const updated = await withTransaction(async (client) => {
+    const { rows } = await client.query(
+      'UPDATE students SET class_name=$1 WHERE id=$2 RETURNING *',
+      [toClass, student.id],
+    );
+    if (!rows[0]) return null;
+    await auditInTransaction(
+      client, user, action === 'promote' ? 'promote_class' : 'demote_class', 'student', student.id,
+      'student class placement changed',
+      auditContextFromRequest(req, { schoolCode: student.school_code, metadata: { from_class: student.class_name, to_class: toClass } }),
+    );
+    return rows[0];
+  });
+  if (!updated) return res.status(404).json({ error: 'Student not found' });
+  return res.json({ ok: true, action, from_class: student.class_name, to_class: toClass, student: updated });
 });
 
 // ── DELETE /students/:id ──────────────────────────────────────────────────────
@@ -407,7 +425,7 @@ router.delete('/:id', requirePerm('grades.write'), async (req, res) => {
   );
   if (!rows[0]) return res.status(404).json({ error: 'Student not found' });
 
-  await audit(
+  await auditStrict(
     user, 'delete_student', 'student', req.params.id,
     `${rows[0].full_name} (deleted by ${user.role}; recoverable via restore)`,
   );
@@ -422,7 +440,7 @@ router.post('/:id/restore', requireRole('admin'), async (req, res) => {
     [req.params.id, req.user!.school_code ?? null],
   );
   if (!rows[0]) return res.status(404).json({ error: 'No deleted student found with that id' });
-  await audit(req.user!, 'restore_student', 'student', req.params.id, rows[0].full_name);
+  await auditStrict(req.user!, 'restore_student', 'student', req.params.id, rows[0].full_name);
   return res.json({ ok: true, student: rows[0] });
 });
 
@@ -457,7 +475,7 @@ router.post('/:id/link-parent', requirePerm('grades.write'), async (req, res) =>
 
   if (!result.ok) return res.status(result.status).json({ error: result.error });
   if (result.linked) {
-    await audit(req.user!, 'link_parent', 'student', studentId.data, `parent ${parentId}`);
+    await auditStrict(req.user!, 'link_parent', 'student', studentId.data, `parent ${parentId}`);
   }
   return res.json({ ok: true, linked: result.linked });
 });
@@ -483,7 +501,7 @@ router.delete('/:id/unlink-parent/:parentId', requirePerm('grades.write'), async
 
   if (!result.ok) return res.status(result.status).json({ error: result.error });
   if (result.unlinked) {
-    await audit(req.user!, 'unlink_parent', 'student', studentId.data, `parent ${parentId.data}`);
+    await auditStrict(req.user!, 'unlink_parent', 'student', studentId.data, `parent ${parentId.data}`);
   }
   return res.json({ ok: true, unlinked: result.unlinked });
 });
@@ -565,7 +583,7 @@ router.post('/:id/link-user', requireRole('admin'), async (req, res) => {
 
   if (!result.ok) return res.status(result.status).json({ error: result.error });
   if (result.linked) {
-    await audit(req.user!, 'link_student_user', 'student', studentId.data, `user ${userId}`);
+    await auditStrict(req.user!, 'link_student_user', 'student', studentId.data, `user ${userId}`);
   }
   return res.json({ ok: true, student: result.student, linked: result.linked });
 });
@@ -587,7 +605,7 @@ router.delete('/:id/unlink-user', requireRole('admin'), async (req, res) => {
   });
   if (!result.ok) return res.status(result.status).json({ error: result.error });
   if (result.unlinked) {
-    await audit(req.user!, 'unlink_student_user', 'student', studentId.data, '');
+    await auditStrict(req.user!, 'unlink_student_user', 'student', studentId.data, '');
   }
   return res.json({ ok: true, unlinked: result.unlinked });
 });
