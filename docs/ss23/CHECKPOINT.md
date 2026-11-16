@@ -21,7 +21,7 @@ This section supersedes the historical branch/PR status in the checkpoint below.
 ### SS23-VALIDATOR-ALIGN-01 — current task
 
 - Branch: `agent/ss23-validator-contract-alignment-20261116`
-- Status: **IMPLEMENTED; CI NOT YET RUN ON THIS BRANCH.**
+- Status: **PR OPEN (#853); CI RUN NOT YET OBSERVED.**
 - Changed files:
   - `backend/src/db/ss23/validateSubjectPackages.ts` — validates current root-level unit packages with the merged unit schema and registry, while retaining legacy audit-package validation; readiness now counts the current package.
   - `backend/src/db/ss23/refreshIntegrityHashes.ts` — checks root-level unit packages and legacy class subdirectories; refreshes unit/lesson body hashes and stored asset hashes; missing unapproved source-extract references remain non-deliverable metadata, while approved missing assets fail.
@@ -38,7 +38,9 @@ This section supersedes the historical branch/PR status in the checkpoint below.
   - `npm run test:ss23`: NOT RUN locally.
   - Backend TypeScript typecheck: NOT RUN locally.
   - PR CI: pending; do not describe this task as tested until the SS23 integrity gate passes.
-- Exact next action: open a PR against `master`, inspect the SS23 integrity-gate run, fix any failure on this branch, and update this checkpoint with the resulting run and commit.
+- PR: [#853](https://github.com/PDS-David/sts-school-app/pull/853), base `master`, head `agent/ss23-validator-contract-alignment-20261116`; PR head before this checkpoint update: `de8b163427e90212791808d24f036ff4bb073aba`.
+- CI: `fetch_commit_workflow_runs` returned no run for that head at the time of this update. Do not mark the gate passed; inspect the PR checks and record the run when available.
+- Exact next action: inspect the SS23 integrity-gate run for PR #853, fix any failure on this branch, then update this checkpoint with the resulting run and commit.
 
 ### Owner decisions and source limitations
 
