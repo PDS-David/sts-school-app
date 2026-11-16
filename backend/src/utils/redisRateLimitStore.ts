@@ -35,11 +35,17 @@ function configuredRedisUrl(): string | null {
 
 export function assertRateLimitRedisConfigured(env: NodeJS.ProcessEnv = process.env): void {
   if (env.NODE_ENV !== 'production') return;
-  if (!(env.RATE_LIMIT_REDIS_URL?.trim() || env.REDIS_URL?.trim())) {
+  const raw = env.RATE_LIMIT_REDIS_URL?.trim() || env.REDIS_URL?.trim();
+  if (!raw) {
     throw new Error(
       'Production startup refused: configure RATE_LIMIT_REDIS_URL (or REDIS_URL) ' +
       'to enable shared Redis-backed request limits. Process-local limits are not an acceptable production fallback.',
     );
+  }
+  try {
+    parseRedisConfig(raw);
+  } catch (error) {
+    throw new Error('Production startup refused: RATE_LIMIT_REDIS_URL/REDIS_URL is invalid.', { cause: error });
   }
 }
 
@@ -157,6 +163,7 @@ class RedisClient {
 
     this.socket = socket;
     this.buffer = Buffer.alloc(0);
+    socket.unref();
     socket.on('data', chunk => this.handleData(chunk));
     socket.on('error', error => this.fail(error));
     socket.on('close', () => this.fail(new Error('Redis connection closed.')));
@@ -184,6 +191,7 @@ class RedisClient {
     const socket = this.socket;
     if (!socket?.writable) return Promise.reject(new Error('Redis connection is not writable.'));
     return new Promise((resolve, reject) => {
+      socket.ref();
       this.pending.push({ resolve, reject });
       socket.write(encodeCommand(args), error => {
         if (error) this.fail(error);
@@ -209,6 +217,7 @@ class RedisClient {
       if (parsed.error) pending.reject(parsed.error);
       else pending.resolve(parsed.value);
     }
+    if (this.pending.length === 0) this.socket?.unref();
   }
 
   private fail(error: Error): void {
