@@ -2,11 +2,13 @@ import { Router } from 'express';
 import { z } from 'zod';
 import type { PoolClient } from 'pg';
 import { query, withTransaction } from '../db/pool.js';
+import { verifyTopicAssetPayload } from '../db/attachTopicAssets.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scope.js';
 import { generate, generateJSON } from '../utils/ai.js';
 import { sendPushToClass } from '../utils/push.js';
 import type { AuthUser } from '../types/index.js';
+import { isSafeExternalMaterialUrl } from '../utils/materialUrl.js';
 import { attributionsForTopic, publicAttribution } from '../db/jss3Attributions.js';
 import { resolveSequenceGroup, studentTopicPreview } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
@@ -75,6 +77,28 @@ function resolveContentSchool(
   const schoolCode = user.school_code?.trim();
   return schoolCode
     ? { schoolCode }
+    : { status: 403, error: 'Your account is not assigned to a school.' };
+}
+
+function resolveLearningAssetSchool(
+  user: AuthUser,
+  requestedSchoolCode?: string,
+): { schoolCode: string } | { status: 400 | 403; error: string } {
+  const ownSchool = user.school_code?.trim();
+  if (user.role === 'admin') {
+    if (ownSchool) {
+      if (requestedSchoolCode?.trim() && requestedSchoolCode.trim() !== ownSchool) {
+        return { status: 403, error: 'This administrator is restricted to their assigned school.' };
+      }
+      return { schoolCode: ownSchool };
+    }
+    const requested = requestedSchoolCode?.trim();
+    return requested
+      ? { schoolCode: requested }
+      : { status: 400, error: 'school_code is required for a global administrator to access school assets.' };
+  }
+  return ownSchool
+    ? { schoolCode: ownSchool }
     : { status: 403, error: 'Your account is not assigned to a school.' };
 }
 
