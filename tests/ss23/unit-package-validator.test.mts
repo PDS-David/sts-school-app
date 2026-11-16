@@ -99,6 +99,7 @@ test('does not treat a subject-level package as term coverage when the term has 
   assert.ok(agriculture);
   const packageWithoutLaterTerms = structuredClone(agriculture);
   packageWithoutLaterTerms.sources = packageWithoutLaterTerms.sources.filter(source => source.term === '1st Term');
+  packageWithoutLaterTerms.external_sources = packageWithoutLaterTerms.external_sources.filter(source => source.term === '1st Term');
   packageWithoutLaterTerms.units = packageWithoutLaterTerms.units.filter(unit => unit.term === '1st Term');
   const matrix = readinessForUnitPackages(registry, [packageWithoutLaterTerms]);
   for (const term of ['2nd Term', '3rd Term']) {
