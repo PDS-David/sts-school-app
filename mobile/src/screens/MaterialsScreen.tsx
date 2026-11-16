@@ -88,18 +88,35 @@ export default function MaterialsScreen({ route }: any) {
       return;
     }
     setDownloadingId(String(material.id));
+    let downloaded: File | null = null;
+    let createdDuringDownload = false;
     try {
       const directory = new Directory(Paths.document, 'learning-materials');
       directory.create({ idempotent: true, intermediates: true });
-      let downloaded = new File(directory, target.fileName);
+      downloaded = new File(directory, target.fileName);
+      if (downloaded.exists && (!Number.isFinite(downloaded.size) || downloaded.size <= 0 || downloaded.size > target.maxBytes)) {
+        downloaded.delete();
+      }
       if (!downloaded.exists) {
+        createdDuringDownload = true;
         const task = File.createDownloadTask(target.url, downloaded);
         const result = await task.downloadAsync();
         if (!result || !result.exists) throw new Error('The download did not produce a file.');
         downloaded = result;
       }
+
+      if (!Number.isFinite(downloaded.size) || downloaded.size <= 0 || downloaded.size > target.maxBytes) {
+        downloaded.delete();
+        throw new Error('Downloaded material is empty or exceeds the 25 MB size limit.');
+      }
+      const actualMime = typeof downloaded.type === 'string' ? downloaded.type.toLowerCase() : '';
+      if (!actualMime || (actualMime !== target.mimeType && actualMime !== 'application/octet-stream')) {
+        downloaded.delete();
+        throw new Error('Downloaded content type does not match the declared material type.');
+      }
+
       if (!(await Sharing.isAvailableAsync())) {
-        setDialog({ title: 'Download complete', message: 'The file is saved in the app documents folder, but sharing is unavailable on this device.', hideCancel: true });
+        setDialog({ title: 'Download complete', message: 'The verified file is saved in the app documents folder, but sharing is unavailable on this device.', hideCancel: true });
         return;
       }
       await Sharing.shareAsync(downloaded.uri, {
@@ -107,7 +124,8 @@ export default function MaterialsScreen({ route }: any) {
         dialogTitle: 'Save or open learning material',
       });
     } catch {
-      setDialog({ title: 'Download failed', message: 'The link may require sign-in or may not point directly to a downloadable file. Try opening the link instead.', hideCancel: true });
+      if (createdDuringDownload && downloaded?.exists) downloaded.delete();
+      setDialog({ title: 'Download failed', message: 'The link may require sign-in, exceed the 25 MB limit, or return content that does not match its declared file type. Try opening the link instead.', hideCancel: true });
     } finally {
       setDownloadingId(null);
     }
