@@ -9,6 +9,10 @@ export interface AppNotification {
   title: string;
   body: string;
   createdAt: string;
+  target?:
+    | { type: 'message'; contact: { id: string; username: string; full_name: string; role: string }; screen: 'Messages' | 'ChatThread' }
+    | { type: 'assessment'; assessmentId: string; title: string }
+    | { type: 'score' };
 }
 
 interface NotificationsState {
@@ -21,6 +25,7 @@ interface NotificationsState {
   readIds: Set<string>;
   refresh: () => Promise<void>;
   markAllRead: () => void;
+  markRead: (id: string) => void;
 }
 
 const NotificationsContext = createContext<NotificationsState>({} as NotificationsState);
@@ -119,6 +124,7 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
             title: 'Assessment open',
             body: a.title ?? 'A new assessment is available to take',
             createdAt: a.created_at ?? new Date().toISOString(),
+            target: { type: 'assessment', assessmentId: String(a.id), title: a.title ?? '' },
           });
         }
       }
@@ -137,6 +143,11 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
           title: `New message from ${c.full_name}`,
           body: c.unread_count === 1 ? '1 unread message' : `${c.unread_count} unread messages`,
           createdAt: c.last_message_at ?? new Date().toISOString(),
+          target: {
+            type: 'message',
+            contact: { id: c.id, username: c.username, full_name: c.full_name, role: c.role },
+            screen: user.role === 'admin' || user.role === 'finance_admin' ? 'Messages' : 'ChatThread',
+          },
         });
       }
     } catch { failedSources.push('message alerts'); }
@@ -177,10 +188,18 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
 
   const unreadCount = notifications.filter(n => !readIds.has(n.id)).length;
   const markAllRead = () => setReadIds(new Set(notifications.map(n => n.id)));
+  const markRead = useCallback((id: string) => {
+    setReadIds(current => {
+      if (current.has(id)) return current;
+      const next = new Set(current);
+      next.add(id);
+      return next;
+    });
+  }, []);
 
   return (
     <NotificationsContext.Provider value={{
-      notifications, unreadCount, loading, announcementsLoaded, announcementsError, feedErrors, readIds, refresh, markAllRead,
+      notifications, unreadCount, loading, announcementsLoaded, announcementsError, feedErrors, readIds, refresh, markAllRead, markRead,
     }}>
       {children}
     </NotificationsContext.Provider>
