@@ -88,6 +88,7 @@ test('external factual corrections are source-bound and covered', () => {
     'SS23-EXT-FAO-IPM',
     'SS23-EXT-NAFDAC-PESTICIDE-REG',
     'SS23-EXT-NAFDAC-BANNED-PESTICIDES-2026',
+    'SS23-EXT-FAO-FARMSTEAD-PLANNING',
   ];
   for (const id of expected) {
     assert.ok(external.has(id), 'missing external reference ' + id);
@@ -102,6 +103,28 @@ test('external factual corrections are source-bound and covered', () => {
 
 
 
+
+
+test('First-Term textbook page gaps have accessible supplementary reading alternatives', () => {
+  const replacements = [
+    ['SUP-SS2-AGRICULTURAL-SCIENCE-T1-W03-FARM-MACHINERY', 'AG2-T1-W03-READING-REFERENCE'],
+    ['SUP-SS2-AGRICULTURAL-SCIENCE-T1-W04-05-FARM-SURVEY-PLANNING', 'AG2-T1-W04-05-READING-REFERENCE'],
+    ['SUP-SS2-AGRICULTURAL-SCIENCE-T1-W06-IRRIGATION-DRAINAGE', 'AG2-T1-W06-READING-REFERENCE'],
+    ['SUP-SS2-AGRICULTURAL-SCIENCE-T1-W07-ENVIRONMENTAL-FACTORS', 'AG2-T1-W07-READING-REFERENCE'],
+    ['SUP-SS2-AGRICULTURAL-SCIENCE-T1-W08-09-PLANT-NUTRIENTS-CYCLES', 'AG2-T1-W08-09-READING-REFERENCE'],
+    ['SUP-SS2-AGRICULTURAL-SCIENCE-T1-W10-FARMING-PRACTICES', 'AG2-T1-W10-READING-REFERENCE'],
+  ];
+  for (const [unitId, oldItem] of replacements) {
+    const unit = pkg.units.find(item => item.id === unitId);
+    assert.ok(unit);
+    assert.match(unit.body, /Further reading — accessible supplementary resources/);
+    assert.match(unit.body, /not claimed to be page-equivalent/);
+    assert.ok(unit.provenance.some(ref => pkg.external_sources.some(source => source.source_id === ref.source_id)));
+    assert.ok(!pkg.open_items.some(item => item.id === oldItem));
+    assert.ok(pkg.coverage.some(row => row.unit_ids.includes(unitId) && row.id.includes('READING') && row.status === 'SUPPORTED'));
+  }
+  assert.equal(pkg.open_items.filter(item => !item.blocks_delivery).length, 1);
+});
 
 test('pest-control supplement requires monitoring-led IPM and current Nigerian pesticide registration', () => {
   const pests = pkg.units.find(unit => unit.id === 'SUP-SS2-AGRICULTURAL-SCIENCE-T2-W07-08-CROP-PESTS');

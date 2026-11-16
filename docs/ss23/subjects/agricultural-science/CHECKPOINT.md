@@ -22,26 +22,26 @@ A programmatic inspection of all 195 items found:
 
 This confirms that answer-guide fields exist and their mark totals are internally consistent. It does **not** establish that answers are factually correct, that all original source assessment questions have been captured, or that a subject specialist has approved them.
 
-The package now records 44 external factual references (13 additional source-hashed references in this PR) and 13 additional supported coverage rows for the T2 floriculture, crop-disease and safe pest-control clarifications. The supplements distinguish verified facts from the original school wording. The complete source tables and all remaining taxonomic or source-text questions still require original-page reconciliation and specialist review.
+The package now records 45 external factual references (14 additional source-hashed references in this PR) and 19 additional supported coverage rows: 13 for T2 floriculture, crop-disease and safe pest-control clarifications, plus six accessible T1 further-reading alternatives. The supplements distinguish verified facts from the original school wording. The complete source tables and all remaining taxonomic or source-text questions still require original-page reconciliation and specialist review.
 
 In particular, all 45 Second- and Third-Term practice items are labelled `AUTHORED_SUPPLEMENT`; none is labelled `ORIGINAL_SOURCE`. Their source assessment coverage remains incomplete and must be reconciled against the original school documents. Do not represent these 45 authored items as copied past questions or original source assessment items.
 
 ## Coverage and open-item audit
 
 Current package coverage rows:
-- `SUPPORTED`: 69
+- `SUPPORTED`: 75
 - `PARTIAL`: 25
 - `UNRESOLVED`: 5
 - `MARKER`: 4
 
-The package has 53 open items: 46 delivery-blocking and 7 non-blocking.
+The package has 47 open items: 46 delivery-blocking and 1 non-blocking. Six non-blocking First-Term textbook page-reference items were closed by adding accessible, topic-matched further-reading alternatives. The original O.A. Iwena chapter/page citations remain noted as unverified historical source references; the alternatives are not represented as page-equivalent.
 
 | Term | Open items | Blocking | Non-blocking |
 |---|---:|---:|---:|
 | First Term | 43 | 37 | 6 |
 | Second Term | 5 | 5 | 0 |
 | Third Term | 5 | 4 | 1 |
-| **Total** | **53** | **46** | **7** |
+| **Total** | **47** | **46** | **1** |
 
 The 53 items comprise 30 FACT, 11 VERIFICATION, 6 CONTENT, 4 PERMISSION, 1 OWNER_ACTION and 1 VISUAL item. First-Term review remains substantial; the newer Second- and Third-Term drafts do not close those earlier approval gates.
 
