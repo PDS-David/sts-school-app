@@ -254,7 +254,15 @@ test('loads the SS2 Agricultural Science package with source assessment coverage
   assert.equal(farmsteadReplacement.path, 'backend/src/db/ss23/assets/agricultural-science/farmstead-layout-school.svg');
   assert.equal(farmsteadReplacement.sha256, 'fb208caa90d4f2745d48b9c8682ecb6ed731027b468e085546d675bc5138397b');
   assert.equal(farmsteadReplacement.state.content_approval, 'PENDING');
-  assert.equal(farmsteadReplacement.state.verification, 'DEFERRED');
+  assert.equal(farmsteadReplacement.state.verification, 'VERIFIED');
+  assert.ok(farmsteadReplacement.state.verification_reference);
+  const authoredAssets = pkg.assets.filter(asset => asset.path.startsWith('backend/src/db/ss23/assets/agricultural-science/'));
+  assert.equal(authoredAssets.length, 6);
+  assert.ok(authoredAssets.every(asset =>
+    asset.state.verification === 'VERIFIED' &&
+    Boolean(asset.state.verification_reference) &&
+    asset.state.content_approval === 'PENDING'
+  ));
   assert.equal(pkg.coverage.some(row => row.id === 'COV-SS2-AG-T1-FARMSTEAD-SCHOOL-SCHEMATIC' && row.status === 'SUPPORTED'), true);
   assert.equal(pkg.assets.filter(asset => asset.path.startsWith('source-extract://')).length, 42);
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/soil-sedimentation-jar.svg' && asset.state.implementation === 'IMPLEMENTED'));
