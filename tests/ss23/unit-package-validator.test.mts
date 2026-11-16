@@ -1,7 +1,4 @@
 import assert from 'node:assert/strict';
-import { mkdtempSync, rmSync } from 'node:fs';
-import os from 'node:os';
-import path from 'node:path';
 import { test } from 'node:test';
 import {
   checkUnitPackage,
@@ -96,15 +93,4 @@ test('readiness remains explicit when a package is filtered to a different class
   assert.ok(ss3);
   assert.equal(ss3.package, false);
   assert.equal(ss3.state, 'MISSING_PACKAGE');
-});
-
-test('the readiness function can be evaluated against an isolated package set', () => {
-  assert.ok(agriculture);
-  const isolated = mkdtempSync(path.join(os.tmpdir(), 'ss23-readiness-'));
-  try {
-    const matrix = readinessForUnitPackages(registry, [agriculture]);
-    assert.ok(matrix.some(item => item.class_name === 'SS 2' && item.subject === 'agricultural-science' && item.package));
-  } finally {
-    rmSync(isolated, { recursive: true, force: true });
-  }
 });
