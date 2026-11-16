@@ -2237,6 +2237,33 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "ASSET-AG2-T1-SOIL-PROFILE-SCHOOL-SCHEMATIC",
+      "unit_id": "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W02-SOIL-FORMATION",
+      "path": "backend/src/db/ss23/assets/agricultural-science/soil-profile-school.svg",
+      "sha256": "80e5bc24c9fa61229ccf32c48ee406819c866f8325f1cf9767c0b79789157038",
+      "bytes": 3379,
+      "media_type": "image/svg+xml",
+      "alt": "Original generalized soil-profile schematic showing possible O, A, E, B, C and R horizons and explaining that horizon presence and depth vary.",
+      "order": 52,
+      "source_locator": "Original school-authored alternative to the soil-profile source image; not copied from the source figure.",
+      "provenance": {
+        "source_id": "SS23-EXT-CLEMSON-SOIL-JAR-TEST",
+        "source_sha256": "888587e5ebc3f930b36bf99dd79d82f148277f37505a75fe09bef2d5d121dd32",
+        "role": "AUTHORED_SUPPLEMENT",
+        "locator": "Soil Texture Analysis — The Jar Test, Procedure",
+        "rights": "Original SVG authored for this curriculum; no source diagram reproduced. Diagram is generalized and not a soil survey.",
+        "attribution": "Original Sow the Seed School SS2 Agricultural Science teaching schematic, informed by registered soil-profile reference.",
+        "reuse_status": "PERMITTED"
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "units": [
@@ -18094,6 +18121,22 @@
           "explanation": "Original diagram contrasts a PTO shaft connected to a rotary implement with a drawbar/hitch connected for towing; it is a general teaching aid, not machine-specific service guidance."
         }
       ]
+    },
+    {
+      "id": "COV-SS2-AG-T1-SOIL-PROFILE-SCHOOL-SCHEMATIC",
+      "source_id": "SS23-EXT-CLEMSON-SOIL-JAR-TEST",
+      "objective": "Identify generalized soil-profile horizons and understand that horizon presence and thickness vary among soils.",
+      "objective_locator": "First Term, Weeks 1-2, supplementary school-authored soil-profile diagram.",
+      "status": "SUPPORTED",
+      "unit_ids": [
+        "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W02-SOIL-FORMATION"
+      ],
+      "evidence": [
+        {
+          "locator": "Soil Texture Analysis — The Jar Test, Procedure",
+          "explanation": "Original generalized profile diagram labels possible O, A, E, B, C and R horizons and explicitly notes that horizons are not universal."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -18147,11 +18190,12 @@
     {
       "id": "AG2-T1-SOIL-VISUALS",
       "kind": "VISUAL",
-      "detail": "Five relevant embedded figures (two soil-structure figures and three soil-profile figures) were located in the original DOC and extracted from a LibreOffice-converted DOCX for review. Their derivative hashes and alt text are recorded, but the image bytes are not yet stored as delivery assets; source terminology, image rights and profile-label inconsistencies remain unresolved.",
-      "required_action": "Verify the figure labels against the written source, approve the vocabulary/profile model, confirm reuse rights, and replace the source-extract locators with stored asset files whose bytes and hashes are checked by the loader.",
+      "detail": "An original school-authored generalized soil-profile SVG has been added as a rights-safe alternative to the watermarked source profile image. It shows possible O, A, E, B, C and R horizons and states clearly that not every soil contains every horizon and that thickness/depth varies. The source watermarked image remains provenance-only and non-deliverable. The replacement needs technical verification and subject-lead approval.",
+      "required_action": "Review the horizon labels and descriptions against the registered soil-profile reference; confirm the diagram is suitable as a generalized SS2 illustration rather than a universal profile; verify the stored SVG and approve its classroom use. Keep the source watermarked image non-deliverable unless separately licensed. Keep the item blocking until verification and subject-lead approval are recorded.",
       "affected_ids": [
         "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W02-SOIL-FORMATION",
-        "SS23-SRC-225f920d3751"
+        "SS23-SRC-225f920d3751",
+        "ASSET-AG2-T1-SOIL-PROFILE-SCHOOL-SCHEMATIC"
       ],
       "blocks_delivery": true
     },
